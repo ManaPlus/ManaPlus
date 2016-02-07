@@ -678,7 +678,7 @@ int TestLauncher::calcFps(const timeval &start,
     if (mtime == 0)
         return 100000;
 
-    return static_cast<int>(static_cast<long>(calls) * 10000 / mtime);
+    return CAST_S32(static_cast<long>(calls) * 10000 / mtime);
 }
 
 #endif

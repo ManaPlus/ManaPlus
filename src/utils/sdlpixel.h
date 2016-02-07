@@ -86,31 +86,31 @@ inline void SDLputPixel(SDL_Surface* surface, int x, int y,
     SDL_LockSurface(surface);
 
     Uint8 *const p = static_cast<uint8_t*>(surface->pixels)
-        + static_cast<size_t>(y * surface->pitch + x * bpp);
+        + CAST_SIZE(y * surface->pitch + x * bpp);
 
     const Uint32 pixel = SDL_MapRGB(surface->format,
-        static_cast<uint8_t>(color.r), static_cast<uint8_t>(color.g),
-        static_cast<uint8_t>(color.b));
+        CAST_U8(color.r), CAST_U8(color.g),
+        CAST_U8(color.b));
 
     switch (bpp)
     {
         case 1:
-            *p = static_cast<uint8_t>(pixel);
+            *p = CAST_U8(pixel);
             break;
 
         case 2:
-            *reinterpret_cast<uint16_t*>(p) = static_cast<uint16_t>(pixel);
+            *reinterpret_cast<uint16_t*>(p) = CAST_U16(pixel);
             break;
 
         case 3:
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
-            p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-            p[2] = static_cast<uint8_t>((pixel) & 0xff);
+            p[0] = CAST_U8((pixel >> 16) & 0xff);
+            p[1] = CAST_U8((pixel >> 8) & 0xff);
+            p[2] = CAST_U8((pixel) & 0xff);
 #else
-            p[0] = static_cast<uint8_t>((pixel) & 0xff);
-            p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
-            p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+            p[0] = CAST_U8((pixel) & 0xff);
+            p[1] = CAST_U8((pixel >> 8) & 0xff);
+            p[2] = CAST_U8((pixel >> 16) & 0xff);
 #endif
             break;
 
@@ -190,40 +190,40 @@ inline void SDLputPixelAlpha(SDL_Surface* surface, int x, int y,
     SDL_LockSurface(surface);
 
     Uint8 *const p = static_cast<uint8_t*>(surface->pixels)
-        + static_cast<size_t>(y * surface->pitch + x * bpp);
+        + CAST_SIZE(y * surface->pitch + x * bpp);
 
     const Uint32 pixel = SDL_MapRGB(surface->format,
-        static_cast<uint8_t>(color.r),
-        static_cast<uint8_t>(color.g),
-        static_cast<uint8_t>(color.b));
+        CAST_U8(color.r),
+        CAST_U8(color.g),
+        CAST_U8(color.b));
 
     switch (bpp)
     {
         case 1:
-            *p = static_cast<uint8_t>(pixel);
+            *p = CAST_U8(pixel);
             break;
 
         case 2:
             *reinterpret_cast<Uint16*>(p) = SDLAlpha16(
                 static_cast<unsigned short>(pixel),
                 *reinterpret_cast<unsigned short*>(p),
-                static_cast<unsigned char>(color.a), surface->format);
+                CAST_U8(color.a), surface->format);
             break;
 
         case 3:
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            p[2] = static_cast<uint8_t>((p[2] * (255 - color.a)
+            p[2] = CAST_U8((p[2] * (255 - color.a)
                 + color.b * color.a) >> 8);
-            p[1] = static_cast<uint8_t>((p[1] * (255 - color.a)
+            p[1] = CAST_U8((p[1] * (255 - color.a)
                 + color.g * color.a) >> 8);
-            p[0] = static_cast<uint8_t>((p[0] * (255 - color.a)
+            p[0] = CAST_U8((p[0] * (255 - color.a)
                 + color.r * color.a) >> 8);
 #else
-            p[0] = static_cast<uint8_t>((p[0] * (255 - color.a)
+            p[0] = CAST_U8((p[0] * (255 - color.a)
                 + color.b * color.a) >> 8);
-            p[1] = static_cast<uint8_t>((p[1] * (255 - color.a)
+            p[1] = CAST_U8((p[1] * (255 - color.a)
                 + color.g * color.a) >> 8);
-            p[2] = static_cast<uint8_t>((p[2] * (255 - color.a)
+            p[2] = CAST_U8((p[2] * (255 - color.a)
                 + color.r * color.a) >> 8);
 #endif
             break;
@@ -231,7 +231,7 @@ inline void SDLputPixelAlpha(SDL_Surface* surface, int x, int y,
         case 4:
             *reinterpret_cast<Uint32*>(p) = SDLAlpha32(pixel,
                 *reinterpret_cast<Uint32*>(p),
-                static_cast<unsigned char>(color.a));
+                CAST_U8(color.a));
             break;
         default:
             break;

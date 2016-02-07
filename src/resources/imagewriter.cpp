@@ -83,7 +83,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
     png_set_packing(png_ptr);
 
     png_bytep *const row_pointers
-        = new png_bytep[static_cast<size_t>(surface->h)];
+        = new png_bytep[CAST_SIZE(surface->h)];
 /*
     if (!row_pointers)
     {
@@ -96,7 +96,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
     for (int i = 0; i < surface->h; i++)
     {
         row_pointers[i] = static_cast<png_bytep>(static_cast<uint8_t *>(
-            surface->pixels) + static_cast<size_t>(i * surface->pitch));
+            surface->pixels) + CAST_SIZE(i * surface->pitch));
     }
 
     png_write_image(png_ptr, row_pointers);

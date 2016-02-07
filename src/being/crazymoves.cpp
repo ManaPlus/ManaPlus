@@ -738,17 +738,17 @@ void CrazyMoves::crazyMoveAe()
     if (emo == '?')
     {
         srand(tick_time);
-        emoteId = static_cast<unsigned char>(
+        emoteId = CAST_U8(
             1 + (rand() % EmoteDB::size()));
     }
     else
     {
         if (emo >= '0' && emo <= '9')
-            emoteId = static_cast<unsigned char>(emo - '0' + 1);
+            emoteId = CAST_U8(emo - '0' + 1);
         else if (emo >= 'a' && emo <= 'z')
-            emoteId = static_cast<unsigned char>(emo - 'a' + 11);
+            emoteId = CAST_U8(emo - 'a' + 11);
         else if (emo >= 'A' && emo <= 'Z')
-            emoteId = static_cast<unsigned char>(emo - 'A' + 37);
+            emoteId = CAST_U8(emo - 'A' + 37);
     }
     if (mMoveProgram[settings.crazyMoveState - 1] == 'e')
         localPlayer->emote(emoteId);

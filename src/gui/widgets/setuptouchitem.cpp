@@ -118,7 +118,7 @@ void SetupActionDropDown::fromWidget()
     if (!mDropDown || !mModel)
         return;
 
-    mValue = toString(static_cast<int>(mModel->getActionFromSelection(
+    mValue = toString(CAST_S32(mModel->getActionFromSelection(
         mDropDown->getSelected())));
 }
 

@@ -60,7 +60,7 @@ void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED)
         mRandCounter = 1000;
 
     chatHandler->talk(strprintf("\302\202\302e%dz%d",
-        static_cast<int>(emoteId), mRandCounter), GENERAL_CHANNEL);
+        CAST_S32(emoteId), mRandCounter), GENERAL_CHANNEL);
 }
 
 void PetHandler::catchPet(const Being *const being A_UNUSED) const
@@ -98,7 +98,7 @@ void PetHandler::unequip() const
 void PetHandler::setDirection(const unsigned char type) const
 {
     chatHandler->talk(strprintf("\302\202\302d%dg%d",
-        static_cast<int>(type), tick_time), GENERAL_CHANNEL);
+        CAST_S32(type), tick_time), GENERAL_CHANNEL);
 }
 
 void PetHandler::startAi(const bool start) const

@@ -58,9 +58,9 @@ Inventory::Inventory(const InventoryTypeT type, const int size1) :
     mInventoryListeners(),
     mVirtualRemove(),
     mType(type),
-    mSize(size1 == -1 ? static_cast<unsigned>(
+    mSize(size1 == -1 ? CAST_U32(
           inventoryHandler->getSize(type))
-          : static_cast<unsigned>(size1)),
+          : CAST_U32(size1)),
     mItems(new Item*[mSize]),
     mUsed(0)
 {
@@ -78,7 +78,7 @@ Inventory::~Inventory()
 
 Item *Inventory::getItem(const int index) const
 {
-    if (index < 0 || index >= static_cast<int>(mSize) || !mItems[index]
+    if (index < 0 || index >= CAST_S32(mSize) || !mItems[index]
         || mItems[index]->mQuantity <= 0)
     {
         return nullptr;
@@ -137,7 +137,7 @@ void Inventory::setItem(const int index,
                         const Equipm equipment,
                         const Equipped equipped)
 {
-    if (index < 0 || index >= static_cast<int>(mSize))
+    if (index < 0 || index >= CAST_S32(mSize))
     {
         logger->log("Warning: invalid inventory index: %d", index);
         return;
@@ -173,7 +173,7 @@ void Inventory::setCards(const int index,
                          const int *const cards,
                          const int size) const
 {
-    if (index < 0 || index >= static_cast<int>(mSize))
+    if (index < 0 || index >= CAST_S32(mSize))
     {
         logger->log("Warning: invalid inventory index: %d", index);
         return;
@@ -232,7 +232,7 @@ int Inventory::getFreeSlot() const
     Item **const i = std::find_if(mItems, mItems + mSize,
         std::not1(SlotUsed()));
     return (i == mItems + mSize) ? -1
-        : static_cast<int>(i - mItems);
+        : CAST_S32(i - mItems);
 }
 
 int Inventory::getLastUsedSlot() const
@@ -355,7 +355,7 @@ void Inventory::resize(const unsigned int newSize)
     delete [] mItems;
 
     mSize = newSize;
-    mItems = new Item*[static_cast<size_t>(mSize)];
+    mItems = new Item*[CAST_SIZE(mSize)];
     std::fill_n(mItems, mSize, static_cast<Item*>(nullptr));
 }
 
@@ -377,7 +377,7 @@ bool Inventory::addVirtualItem(const Item *const item,
 {
     if (item && !PlayerInfo::isItemProtected(item->getId()))
     {
-        if (index >= 0 && index < static_cast<int>(mSize))
+        if (index >= 0 && index < CAST_S32(mSize))
         {
             if (mItems[index] != nullptr)
                 return false;
@@ -434,7 +434,7 @@ void Inventory::virtualRemove(Item *const item,
 
 void Inventory::restoreVirtuals()
 {
-    const int sz = static_cast<int>(mSize);
+    const int sz = CAST_S32(mSize);
 
     logger->log("Inventory::restoreVirtuals 1");
     FOR_EACH (IntMapCIter, it, mVirtualRemove)
@@ -461,7 +461,7 @@ void Inventory::virtualRestore(const Item *const item,
         mVirtualRemove[index] -= amount;
         if (mVirtualRemove[index] < 0)
             mVirtualRemove.erase(index);
-        if (index < 0 || index >= static_cast<int>(mSize) || !mItems[index])
+        if (index < 0 || index >= CAST_S32(mSize) || !mItems[index])
             return;
         mItems[index]->mQuantity += amount;
     }
@@ -471,9 +471,9 @@ void Inventory::moveItem(const int index1,
                          const int index2)
 {
     if (index1 < 0 ||
-        index1 >= static_cast<int>(mSize) ||
+        index1 >= CAST_S32(mSize) ||
         index2 < 0 ||
-        index2 >= static_cast<int>(mSize))
+        index2 >= CAST_S32(mSize))
     {
         return;
     }

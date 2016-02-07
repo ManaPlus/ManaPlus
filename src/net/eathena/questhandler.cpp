@@ -39,7 +39,7 @@ void QuestHandler::setQeustActiveState(const int questId,
 {
     createOutPacket(CMSG_QUEST_ACTIVATE);
     outMsg.writeInt32(questId, "quest id");
-    outMsg.writeInt8(static_cast<int8_t>(active ? 1 : 0), "activate");
+    outMsg.writeInt8(CAST_S8(active ? 1 : 0), "activate");
 }
 
 }  // namespace EAthena

@@ -92,7 +92,7 @@ class ShopItems final : public ListModel
          * Returns the number of items in the shop.
          */
         int getNumberOfElements() override final A_WARN_UNUSED
-        { return static_cast<int>(mShopItems.size()); }
+        { return CAST_S32(mShopItems.size()); }
 
         bool empty() const A_WARN_UNUSED
         { return mShopItems.empty(); }

@@ -24,17 +24,17 @@
 
 InputActionT operator+(InputActionT action, const int& i)
 {
-    action = static_cast<InputActionT>(static_cast<int>(action) + i);
+    action = static_cast<InputActionT>(CAST_S32(action) + i);
     return action;
 }
 
 InputActionT operator+(InputActionT action, const unsigned int& i)
 {
-    action = static_cast<InputActionT>(static_cast<unsigned int>(action) + i);
+    action = static_cast<InputActionT>(CAST_U32(action) + i);
     return action;
 }
 
 int operator-(const InputActionT &action1, const InputActionT &action2)
 {
-    return static_cast<int>(action1) - static_cast<int>(action2);
+    return CAST_S32(action1) - CAST_S32(action2);
 }

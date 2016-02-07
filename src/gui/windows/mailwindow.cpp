@@ -252,7 +252,7 @@ void MailWindow::viewPrev(const int id)
             if (it == mMessages.begin())
             {
                 it = mMessages.end();
-                mListBox->setSelected(static_cast<int>(mMessages.size()) - 1);
+                mListBox->setSelected(CAST_S32(mMessages.size()) - 1);
             }
             else
             {

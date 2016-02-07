@@ -75,7 +75,7 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
         else if (walkStr == "walkswim" || walkStr == "swimwalk")  // legacy
             block |= BlockMask::GROUND | BlockMask::WATER;
     }
-    info->setBlockWalkMask(static_cast<unsigned char>(block ^ allFlags));
+    info->setBlockWalkMask(CAST_U8(block ^ allFlags));
 }
 
 bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,

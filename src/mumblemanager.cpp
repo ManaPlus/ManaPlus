@@ -70,7 +70,7 @@ uint16_t MumbleManager::getMapId(std::string mapName)
     else
     {
         mapName = mapName.substr(0, 3) + mapName[4];
-        res = static_cast<uint16_t>(atoi(mapName.c_str()));
+        res = CAST_U16(atoi(mapName.c_str()));
     }
     return res;
 }
@@ -280,7 +280,7 @@ void MumbleManager::setServer(const std::string &serverName)
     if (!mLinkedMem)
         return;
 
-    unsigned size = static_cast<unsigned>(serverName.size());
+    unsigned size = CAST_U32(serverName.size());
     if (size > sizeof(mLinkedMemCache.context) - 1)
         size = sizeof(mLinkedMemCache.context) - 1;
 

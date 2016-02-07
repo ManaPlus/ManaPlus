@@ -65,7 +65,7 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event)
     return event.key.keysym.scancode;
 #else
     if (event.key.keysym.sym)
-        return static_cast<int>(event.key.keysym.sym);
+        return CAST_S32(event.key.keysym.sym);
     else if (event.key.keysym.scancode > 1)
         return -event.key.keysym.scancode;
     return 0;
@@ -98,7 +98,7 @@ std::string KeyboardConfig::getKeyName(const int key)
     }
 
     // TRANSLATORS: long key name, should be short
-    return strprintf(_("key_%d"), static_cast<int>(key));
+    return strprintf(_("key_%d"), CAST_S32(key));
 }
 
 std::string KeyboardConfig::getKeyShortString(const std::string &key)
@@ -266,7 +266,7 @@ void KeyboardConfig::handleRepeat(const int time)
         {
             int &keyTime = (*it).second;
             if (time > keyTime && abs(time - keyTime)
-                > static_cast<signed>(mRepeatTime))
+                > CAST_S32(mRepeatTime))
             {
                 keyTime = time;
                 inputManager.triggerAction(getActionVectorByKey(key));

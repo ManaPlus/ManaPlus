@@ -40,7 +40,7 @@ DyePalette::DyePalette(const std::string &restrict description,
                        const uint8_t blockSize) :
     mColors()
 {
-    const size_t size = static_cast<size_t>(description.length());
+    const size_t size = CAST_SIZE(description.length());
     if (size == 0)
         return;
 
@@ -100,7 +100,7 @@ void DyePalette::hexToColor(const std::string &hexStr,
          i < blockSize && colorIdx < 4;
          i += 2, colorIdx ++)
     {
-        color.value[colorIdx] = static_cast<unsigned char>((
+        color.value[colorIdx] = CAST_U8((
             hexDecode(hexStr[i]) << 4)
             + hexDecode(hexStr[i + 1]));
     }
@@ -129,7 +129,7 @@ void DyePalette::getColor(const unsigned int intensity,
         return;
     }
 
-    const int last = static_cast<int>(mColors.size());
+    const int last = CAST_S32(mColors.size());
     if (last == 0)
         return;
 
@@ -193,8 +193,8 @@ void DyePalette::getColor(double intensity,
     intensity *= static_cast<double>(mColors.size() - 1);
 
     // Color indices
-    const int i = static_cast<int>(floor(intensity));
-    const int j = static_cast<int>(ceil(intensity));
+    const int i = CAST_S32(floor(intensity));
+    const int j = CAST_S32(ceil(intensity));
     const DyeColor &colorI = mColors[i];
 
     if (i == j)
@@ -211,11 +211,11 @@ void DyePalette::getColor(double intensity,
     const DyeColor &colorJ = mColors[j];
 
     // Perform the interpolation.
-    color[0] = static_cast<int>(rest * colorI.value[0] +
+    color[0] = CAST_S32(rest * colorI.value[0] +
         intensity * colorJ.value[0]);
-    color[1] = static_cast<int>(rest * colorI.value[1] +
+    color[1] = CAST_S32(rest * colorI.value[1] +
         intensity * colorJ.value[1]);
-    color[2] = static_cast<int>(rest * colorI.value[2] +
+    color[2] = CAST_S32(rest * colorI.value[2] +
         intensity * colorJ.value[2]);
 }
 
@@ -277,7 +277,7 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
     }
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++ pixels)
     {
@@ -377,7 +377,7 @@ void DyePalette::replaceAColor(uint32_t *restrict pixels,
 
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++pixels)
     {
@@ -470,7 +470,7 @@ void DyePalette::replaceSOGLColor(uint32_t *restrict pixels,
 
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++pixels)
     {
@@ -562,7 +562,7 @@ void DyePalette::replaceAOGLColor(uint32_t *restrict pixels,
 
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + static_cast<size_t>(bufSize);
+    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++pixels)
     {

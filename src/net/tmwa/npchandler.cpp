@@ -100,9 +100,9 @@ void NpcHandler::stringInput(const BeingId npcId,
                              const std::string &value) const
 {
     createOutPacket(CMSG_NPC_STR_RESPONSE);
-    outMsg.writeInt16(static_cast<int16_t>(value.length() + 9), "len");
+    outMsg.writeInt16(CAST_S16(value.length() + 9), "len");
     outMsg.writeBeingId(npcId, "npc id");
-    outMsg.writeString(value, static_cast<int>(value.length()), "value");
+    outMsg.writeString(value, CAST_S32(value.length()), "value");
     outMsg.writeInt8(0, "null byte");
 }
 
@@ -127,8 +127,8 @@ void NpcHandler::buyItem(const BeingId beingId A_UNUSED,
 {
     createOutPacket(CMSG_NPC_BUY_REQUEST);
     outMsg.writeInt16(8, "len");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
-    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
+    outMsg.writeInt16(CAST_S16(itemId), "item id");
 }
 
 void NpcHandler::buyItems(std::vector<ShopItem*> &items A_UNUSED) const
@@ -141,9 +141,9 @@ void NpcHandler::sellItem(const BeingId beingId A_UNUSED,
 {
     createOutPacket(CMSG_NPC_SELL_REQUEST);
     outMsg.writeInt16(8, "len");
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         itemId + INVENTORY_OFFSET), "index");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
 void NpcHandler::sellItems(std::vector<ShopItem*> &items A_UNUSED) const

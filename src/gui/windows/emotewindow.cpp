@@ -158,7 +158,7 @@ std::string EmoteWindow::getSelectedEmote() const
         return std::string();
 
     char chr[2];
-    chr[0] = static_cast<char>('0' + index);
+    chr[0] = CAST_8('0' + index);
     chr[1] = 0;
     return std::string("%%").append(&chr[0]);
 }
@@ -178,7 +178,7 @@ std::string EmoteWindow::getSelectedColor() const
         return std::string();
 
     char chr[2];
-    chr[0] = static_cast<char>('0' + index);
+    chr[0] = CAST_8('0' + index);
     chr[1] = 0;
     return std::string("##").append(&chr[0]);
 }

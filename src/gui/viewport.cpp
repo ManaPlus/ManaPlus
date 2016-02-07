@@ -138,9 +138,9 @@ void Viewport::draw(Graphics *graphics)
     const int midTileY = (graphics->mHeight + mScrollCenterOffsetY) / 2;
 
     const Vector &playerPos = localPlayer->getPosition();
-    const int player_x = static_cast<int>(playerPos.x)
+    const int player_x = CAST_S32(playerPos.x)
                          - midTileX + mCameraRelativeX;
-    const int player_y = static_cast<int>(playerPos.y)
+    const int player_y = CAST_S32(playerPos.y)
                          - midTileY + mCameraRelativeY;
 
     if (mScrollLaziness < 1)
@@ -155,28 +155,28 @@ void Viewport::draw(Graphics *graphics)
         {
             if (player_x > mPixelViewX + mScrollRadius)
             {
-                mPixelViewX += static_cast<int>(
+                mPixelViewX += CAST_S32(
                     static_cast<float>(player_x
                     - mPixelViewX - mScrollRadius) /
                     static_cast<float>(mScrollLaziness));
             }
             if (player_x < mPixelViewX - mScrollRadius)
             {
-                mPixelViewX += static_cast<int>(
+                mPixelViewX += CAST_S32(
                     static_cast<float>(player_x
                     - mPixelViewX + mScrollRadius) /
                     static_cast<float>(mScrollLaziness));
             }
             if (player_y > mPixelViewY + mScrollRadius)
             {
-                mPixelViewY += static_cast<int>(
+                mPixelViewY += CAST_S32(
                     static_cast<float>(player_y
                     - mPixelViewY - mScrollRadius) /
                     static_cast<float>(mScrollLaziness));
             }
             if (player_y < mPixelViewY - mScrollRadius)
             {
-                mPixelViewY += static_cast<int>(
+                mPixelViewY += CAST_S32(
                     static_cast<float>(player_y
                     - mPixelViewY + mScrollRadius) /
                     static_cast<float>(mScrollLaziness));
@@ -321,8 +321,8 @@ void Viewport::drawDebugPath(Graphics *const graphics)
         const Vector &playerPos = localPlayer->getPosition();
 
         debugPath = mMap->findPath(
-            static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
-            static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
+            CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
+            CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
             mousePosX / mapTileSize, mousePosY / mapTileSize,
             localPlayer->getBlockWalkMask(),
             500);
@@ -584,7 +584,7 @@ void Viewport::getMouseTile(const int x, int y,
 {
     const int tw = mMap->getTileWidth();
     const int th = mMap->getTileHeight();
-    destX = static_cast<int>(x + mPixelViewX)
+    destX = CAST_S32(x + mPixelViewX)
         / static_cast<float>(tw);
 
     if (mMap->isHeightsPresent())
@@ -614,7 +614,7 @@ void Viewport::getMouseTile(const int x, int y,
     }
     else
     {
-        destY = static_cast<int>((y + mPixelViewY) / static_cast<float>(th));
+        destY = CAST_S32((y + mPixelViewY) / static_cast<float>(th));
     }
 }
 
@@ -924,7 +924,7 @@ void Viewport::mouseMoved(MouseEvent &event)
 void Viewport::toggleMapDrawType()
 {
     settings.mapDrawType = static_cast<MapTypeT>(
-        static_cast<int>(settings.mapDrawType) + 1);
+        CAST_S32(settings.mapDrawType) + 1);
     if (settings.mapDrawType > MapType::BLACKWHITE)
         settings.mapDrawType = MapType::NORMAL;
     if (mMap)
@@ -978,8 +978,8 @@ void Viewport::moveCameraToActor(const BeingId actorId,
     const Vector &actorPos = actor->getPosition();
     const Vector &playerPos = localPlayer->getPosition();
     settings.cameraMode = 1;
-    mCameraRelativeX = static_cast<int>(actorPos.x - playerPos.x) + x;
-    mCameraRelativeY = static_cast<int>(actorPos.y - playerPos.y) + y;
+    mCameraRelativeX = CAST_S32(actorPos.x - playerPos.x) + x;
+    mCameraRelativeY = CAST_S32(actorPos.y - playerPos.y) + y;
 }
 
 void Viewport::moveCameraToPosition(const int x, const int y)
@@ -990,8 +990,8 @@ void Viewport::moveCameraToPosition(const int x, const int y)
     const Vector &playerPos = localPlayer->getPosition();
     settings.cameraMode = 1;
 
-    mCameraRelativeX = x - static_cast<int>(playerPos.x);
-    mCameraRelativeY = y - static_cast<int>(playerPos.y);
+    mCameraRelativeX = x - CAST_S32(playerPos.x);
+    mCameraRelativeY = y - CAST_S32(playerPos.y);
 }
 
 void Viewport::moveCameraRelative(const int x, const int y)

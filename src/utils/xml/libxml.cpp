@@ -108,7 +108,7 @@ namespace XML
             {
                 // Get length of file
                 file.seekg(0, std::ios::end);
-                size = static_cast<int>(file.tellg());
+                size = CAST_S32(file.tellg());
                 if (size < 0)
                 {
                     logger->log("Error loading XML file %s", filename.c_str());

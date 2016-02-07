@@ -389,7 +389,7 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
     int addVal = 3;
 
     while (buf - start + 1 < size
-           && *(buf + static_cast<size_t>(addVal)))
+           && *(buf + CAST_SIZE(addVal)))
     {
         unsigned char status = *buf;
         buf ++;

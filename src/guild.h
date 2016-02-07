@@ -151,7 +151,7 @@ class Guild final : public AvatarListModel
          * @return Returns the number of members in the guild.
          */
         int getNumberOfElements() override final A_WARN_UNUSED
-        { return static_cast<int>(mMembers.size()); }
+        { return CAST_S32(mMembers.size()); }
 
         Avatar *getAvatarAt(const int i) override final A_WARN_UNUSED;
 

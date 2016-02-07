@@ -48,7 +48,7 @@ void FlowContainer::widgetResized(const Event &event A_UNUSED)
         return;
     }
 
-    const int itemCount = static_cast<int>(mWidgets.size());
+    const int itemCount = CAST_S32(mWidgets.size());
 
     if (!mBoxWidth)
         mGridWidth = getWidth();

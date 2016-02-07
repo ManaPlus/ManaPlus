@@ -138,19 +138,19 @@ void ItemPopup::setItem(const Item *const item,
         {
             mItemName->setCaption(strprintf("%s (+%u), %d",
                 ii.getName(item->getColor()).c_str(),
-                static_cast<unsigned int>(item->getRefine()),
+                CAST_U32(item->getRefine()),
                 ii.getId()));
         }
         else
         {
             mItemName->setCaption(strprintf("%s (+%u), %d",
                 ii.getName().c_str(),
-                static_cast<unsigned int>(item->getRefine()),
+                CAST_U32(item->getRefine()),
                 ii.getId()));
         }
         mItemName->adjustSize();
         const unsigned minWidth = mItemName->getWidth() + 8;
-        if (static_cast<unsigned>(getWidth()) < minWidth)
+        if (CAST_U32(getWidth()) < minWidth)
             setWidth(minWidth);
     }
 }

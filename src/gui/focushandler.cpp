@@ -185,7 +185,7 @@ void FocusHandler::tabNext()
 
     int i;
     int focusedWidget = -1;
-    const int sz = static_cast<int>(mWidgets.size());
+    const int sz = CAST_S32(mWidgets.size());
     for (i = 0; i < sz; ++ i)
     {
         if (mWidgets[i] == mFocusedWidget)
@@ -256,7 +256,7 @@ void FocusHandler::tabPrevious()
 
     int i;
     int focusedWidget = -1;
-    const int sz = static_cast<int>(mWidgets.size());
+    const int sz = CAST_S32(mWidgets.size());
     for (i = 0; i < sz; ++ i)
     {
         if (mWidgets[i] == mFocusedWidget)
@@ -360,7 +360,7 @@ void FocusHandler::requestFocus(const Widget *const widget)
         return;
 
     int toBeFocusedIndex = -1;
-    for (unsigned int i = 0, sz = static_cast<unsigned int>(
+    for (unsigned int i = 0, sz = CAST_U32(
          mWidgets.size()); i < sz; ++i)
     {
         if (mWidgets[i] == widget)
@@ -426,7 +426,7 @@ void FocusHandler::focusNext()
 {
     int i;
     int focusedWidget = -1;
-    const int sz = static_cast<int>(mWidgets.size());
+    const int sz = CAST_S32(mWidgets.size());
     for (i = 0; i < sz; ++i)
     {
         if (mWidgets[i] == mFocusedWidget)
@@ -482,7 +482,7 @@ void FocusHandler::focusPrevious()
 
     int i;
     int focusedWidget = -1;
-    const int sz = static_cast<int>(mWidgets.size());
+    const int sz = CAST_S32(mWidgets.size());
     for (i = 0; i < sz; ++ i)
     {
         if (mWidgets[i] == mFocusedWidget)

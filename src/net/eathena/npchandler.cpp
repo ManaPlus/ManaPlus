@@ -102,9 +102,9 @@ void NpcHandler::stringInput(const BeingId npcId,
                              const std::string &value) const
 {
     createOutPacket(CMSG_NPC_STR_RESPONSE);
-    outMsg.writeInt16(static_cast<int16_t>(value.length() + 9), "len");
+    outMsg.writeInt16(CAST_S16(value.length() + 9), "len");
     outMsg.writeBeingId(npcId, "npc id");
-    outMsg.writeString(value, static_cast<int>(value.length()), "value");
+    outMsg.writeString(value, CAST_S32(value.length()), "value");
     outMsg.writeInt8(0, "null byte");
 }
 
@@ -129,8 +129,8 @@ void NpcHandler::buyItem(const BeingId beingId A_UNUSED,
 {
     createOutPacket(CMSG_NPC_BUY_REQUEST);
     outMsg.writeInt16(8, "len");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
-    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
+    outMsg.writeInt16(CAST_S16(itemId), "item id");
 }
 
 void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
@@ -155,7 +155,7 @@ void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
         return;
 
     createOutPacket(CMSG_NPC_BUY_REQUEST);
-    outMsg.writeInt16(static_cast<int16_t>(4 + pairSize * cnt), "len");
+    outMsg.writeInt16(CAST_S16(4 + pairSize * cnt), "len");
     FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
     {
         ShopItem *const item = *it;
@@ -169,15 +169,15 @@ void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
         {
             for (int f = 0; f < usedQuantity; f ++)
             {
-                outMsg.writeInt16(static_cast<int16_t>(1), "amount");
-                outMsg.writeInt16(static_cast<int16_t>(item->getId()),
+                outMsg.writeInt16(CAST_S16(1), "amount");
+                outMsg.writeInt16(CAST_S16(item->getId()),
                     "item id");
             }
         }
         else
         {
-            outMsg.writeInt16(static_cast<int16_t>(usedQuantity), "amount");
-            outMsg.writeInt16(static_cast<int16_t>(item->getId()), "item id");
+            outMsg.writeInt16(CAST_S16(usedQuantity), "amount");
+            outMsg.writeInt16(CAST_S16(item->getId()), "item id");
         }
     }
 }
@@ -187,9 +187,9 @@ void NpcHandler::sellItem(const BeingId beingId A_UNUSED,
 {
     createOutPacket(CMSG_NPC_SELL_REQUEST);
     outMsg.writeInt16(8, "len");
-    outMsg.writeInt16(static_cast<int16_t>(itemId + INVENTORY_OFFSET),
+    outMsg.writeInt16(CAST_S16(itemId + INVENTORY_OFFSET),
         "item index");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
 void NpcHandler::sellItems(std::vector<ShopItem*> &items) const
@@ -207,7 +207,7 @@ void NpcHandler::sellItems(std::vector<ShopItem*> &items) const
     }
 
     createOutPacket(CMSG_NPC_SELL_REQUEST);
-    outMsg.writeInt16(static_cast<int16_t>(4 + pairSize * cnt), "len");
+    outMsg.writeInt16(CAST_S16(4 + pairSize * cnt), "len");
     FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
     {
         ShopItem *const item = *it;
@@ -216,10 +216,10 @@ void NpcHandler::sellItems(std::vector<ShopItem*> &items) const
             continue;
         item->increaseUsedQuantity(-usedQuantity);
         item->update();
-        outMsg.writeInt16(static_cast<int16_t>(
+        outMsg.writeInt16(CAST_S16(
             item->getCurrentInvIndex() + INVENTORY_OFFSET),
             "item index");
-        outMsg.writeInt16(static_cast<int16_t>(usedQuantity), "amount");
+        outMsg.writeInt16(CAST_S16(usedQuantity), "amount");
     }
 }
 
@@ -234,24 +234,24 @@ void NpcHandler::produceMix(const int nameId,
                             const int materialId3) const
 {
     createOutPacket(CMSG_NPC_PRODUCE_MIX);
-    outMsg.writeInt16(static_cast<int16_t>(nameId), "name id");
-    outMsg.writeInt16(static_cast<int16_t>(materialId1), "material 1");
-    outMsg.writeInt16(static_cast<int16_t>(materialId2), "material 2");
-    outMsg.writeInt16(static_cast<int16_t>(materialId3), "material 3");
+    outMsg.writeInt16(CAST_S16(nameId), "name id");
+    outMsg.writeInt16(CAST_S16(materialId1), "material 1");
+    outMsg.writeInt16(CAST_S16(materialId2), "material 2");
+    outMsg.writeInt16(CAST_S16(materialId3), "material 3");
 }
 
 void NpcHandler::cooking(const CookingTypeT type,
                          const int nameId) const
 {
     createOutPacket(CMSG_NPC_COOKING);
-    outMsg.writeInt16(static_cast<int16_t>(type), "type");
-    outMsg.writeInt16(static_cast<int16_t>(nameId), "name id");
+    outMsg.writeInt16(CAST_S16(type), "type");
+    outMsg.writeInt16(CAST_S16(nameId), "name id");
 }
 
 void NpcHandler::repair(const int index) const
 {
     createOutPacket(CMSG_NPC_REPAIR);
-    outMsg.writeInt16(static_cast<int16_t>(index), "index");
+    outMsg.writeInt16(CAST_S16(index), "index");
 }
 
 void NpcHandler::refine(const int index) const
@@ -263,19 +263,19 @@ void NpcHandler::refine(const int index) const
 void NpcHandler::identify(const int index) const
 {
     createOutPacket(CMSG_NPC_IDENTIFY);
-    outMsg.writeInt16(static_cast<int16_t>(index), "index");
+    outMsg.writeInt16(CAST_S16(index), "index");
 }
 
 void NpcHandler::selectArrow(const int nameId) const
 {
     createOutPacket(CMSG_NPC_SELECT_ARROW);
-    outMsg.writeInt16(static_cast<int16_t>(nameId), "name id");
+    outMsg.writeInt16(CAST_S16(nameId), "name id");
 }
 
 void NpcHandler::selectAutoSpell(const int skillId) const
 {
     createOutPacket(CMSG_NPC_SELECT_AUTO_SPELL);
-    outMsg.writeInt32(static_cast<int16_t>(skillId), "skill id");
+    outMsg.writeInt32(CAST_S16(skillId), "skill id");
 }
 
 BeingId NpcHandler::getNpc(Net::MessageIn &msg,

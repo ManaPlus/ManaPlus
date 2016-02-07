@@ -92,7 +92,7 @@ void ShortcutContainer::widgetResized(const Event &event A_UNUSED)
     if (mGridWidth < 1)
         mGridWidth = 1;
 
-    mGridHeight = mMaxItems / static_cast<unsigned int>(mGridWidth);
+    mGridHeight = mMaxItems / CAST_U32(mGridWidth);
 
     if (mMaxItems % mGridWidth != 0 || mGridHeight < 1)
         ++mGridHeight;
@@ -110,7 +110,7 @@ int ShortcutContainer::getIndexFromGrid(const int pointX,
     int index = ((pointY / mBoxHeight) * mGridWidth) + pointX / mBoxWidth;
 
     if (!tRect.isPointInRect(pointX, pointY) ||
-        index >= static_cast<int>(mMaxItems) || index < 0)
+        index >= CAST_S32(mMaxItems) || index < 0)
     {
         index = -1;
     }

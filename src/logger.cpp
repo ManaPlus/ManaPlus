@@ -72,16 +72,16 @@
 #define DATESTREAM \
     timeStr << "[" \
         << ((((tv.tv_sec / 60) / 60) % 24 < 10) ? "0" : "") \
-        << static_cast<int>(((tv.tv_sec / 60) / 60) % 24) \
+        << CAST_S32(((tv.tv_sec / 60) / 60) % 24) \
         << ":" \
         << (((tv.tv_sec / 60) % 60 < 10) ? "0" : "") \
-        << static_cast<int>((tv.tv_sec / 60) % 60) \
+        << CAST_S32((tv.tv_sec / 60) % 60) \
         << ":" \
         << ((tv.tv_sec % 60 < 10) ? "0" : "") \
-        << static_cast<int>(tv.tv_sec % 60) \
+        << CAST_S32(tv.tv_sec % 60) \
         << "." \
         << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "") \
-        << static_cast<int>((tv.tv_usec / 10000) % 100) \
+        << CAST_S32((tv.tv_usec / 10000) % 100) \
         << "] ";
 
 Logger *logger = nullptr;          // Log object
@@ -234,9 +234,9 @@ void Logger::log(const char *const log_text, ...)
 
     unsigned size = 1024;
     if (strlen(log_text) * 3 > size)
-        size = static_cast<unsigned>(strlen(log_text) * 3);
+        size = CAST_U32(strlen(log_text) * 3);
 
-    char* buf = new char[static_cast<size_t>(size + 1)];
+    char* buf = new char[CAST_SIZE(size + 1)];
     va_list ap;
 
     // Use a temporary buffer to fill in the variables
@@ -273,9 +273,9 @@ void Logger::log_r(const char *const log_text, ...)
 
     unsigned size = 1024;
     if (strlen(log_text) * 3 > size)
-        size = static_cast<unsigned>(strlen(log_text) * 3);
+        size = CAST_U32(strlen(log_text) * 3);
 
-    char* buf = new char[static_cast<size_t>(size + 1)];
+    char* buf = new char[CAST_SIZE(size + 1)];
     va_list ap;
 
     // Use a temporary buffer to fill in the variables
@@ -384,7 +384,7 @@ void Logger::unimplimented(const int id)
         return;
 
     const std::string str = strprintf("Unimplimented packet: %d (0x%x)",
-        id, static_cast<unsigned int>(id));
+        id, CAST_U32(id));
     DebugMessageListener::distributeEvent(str);
     log(str);
 }

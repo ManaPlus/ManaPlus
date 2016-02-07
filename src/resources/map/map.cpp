@@ -1207,7 +1207,7 @@ void Map::saveExtraLayer() const restrict2
                 && item->mType != MapItemType::HOME)
             {
                 mapFile << x << " " << y << " "
-                    << static_cast<int>(item->mType) << " "
+                    << CAST_S32(item->mType) << " "
                     << item->mComment << std::endl;
             }
         }
@@ -1365,8 +1365,8 @@ void Map::indexTilesets() restrict2
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
     {
         const size_t sz = (*it)->size();
-        if (!s || static_cast<size_t>(s->getFirstGid()) + sSz
-            < static_cast<size_t>((*it)->getFirstGid()) + sz)
+        if (!s || CAST_SIZE(s->getFirstGid()) + sSz
+            < CAST_SIZE((*it)->getFirstGid()) + sz)
         {
             s = *it;
             sSz = sz;
@@ -1379,10 +1379,10 @@ void Map::indexTilesets() restrict2
         return;
     }
 
-    const int size = static_cast<int>(s->getFirstGid())
-        + static_cast<int>(s->size());
+    const int size = CAST_S32(s->getFirstGid())
+        + CAST_S32(s->size());
     mIndexedTilesetsSize = size;
-    mIndexedTilesets = new Tileset*[static_cast<size_t>(size)];
+    mIndexedTilesets = new Tileset*[CAST_SIZE(size)];
     std::fill_n(mIndexedTilesets, size, static_cast<Tileset*>(nullptr));
 
     FOR_EACH (Tilesets::const_iterator, it, mTilesets)
@@ -1391,7 +1391,7 @@ void Map::indexTilesets() restrict2
         if (s2)
         {
             const int start = s2->getFirstGid();
-            const int end = start + static_cast<int>(s2->size());
+            const int end = start + CAST_S32(s2->size());
             for (int f = start; f < end; f ++)
             {
                 if (f < size)
@@ -1546,7 +1546,7 @@ void Map::reduce() restrict2
                             ++ ri;
                             continue;
                         }
-                        const size_t pos = static_cast<size_t>(
+                        const size_t pos = CAST_SIZE(
                             x + y * layer2->mWidth);
                         img = layer2->mTiles[pos].image;
                         if (img)

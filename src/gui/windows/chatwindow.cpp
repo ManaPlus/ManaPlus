@@ -403,7 +403,7 @@ void ChatWindow::closeTab() const
 void ChatWindow::defaultTab()
 {
     if (mChatTabs)
-        mChatTabs->setSelectedTabByIndex(static_cast<unsigned>(0));
+        mChatTabs->setSelectedTabByIndex(CAST_U32(0));
 }
 
 void ChatWindow::action(const ActionEvent &event)
@@ -773,7 +773,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
             if (mCurHist != mHistory.end())
             {
                 mChatInput->setText(*mCurHist);
-                mChatInput->setCaretPosition(static_cast<unsigned>(
+                mChatInput->setCaretPosition(CAST_U32(
                         mChatInput->getText().length()));
             }
             else
@@ -797,7 +797,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
         --mCurHist;
         addCurrentToHistory();
         mChatInput->setText(*mCurHist);
-        mChatInput->setCaretPosition(static_cast<unsigned>(
+        mChatInput->setCaretPosition(CAST_U32(
                 mChatInput->getText().length()));
     }
     else if (actionId == InputAction::GUI_INSERT &&
@@ -828,7 +828,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
         {
             if (!mChatHistoryIndex)
             {
-                mChatHistoryIndex = static_cast<unsigned>(
+                mChatHistoryIndex = CAST_U32(
                     tab->getRows().size());
 
                 mChatInput->setText("");
@@ -848,7 +848,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
                 if (f == mChatHistoryIndex)
                     mChatInput->setText(*it);
             }
-            mChatInput->setCaretPosition(static_cast<unsigned>(
+            mChatInput->setCaretPosition(CAST_U32(
                 mChatInput->getText().length()));
         }
     }
@@ -860,11 +860,11 @@ void ChatWindow::keyPressed(KeyEvent &event)
         {
             const std::list<std::string> &rows = tab->getRows();
             const size_t &tabSize = rows.size();
-            if (static_cast<size_t>(mChatHistoryIndex) + 1 < tabSize)
+            if (CAST_SIZE(mChatHistoryIndex) + 1 < tabSize)
             {
                 mChatHistoryIndex ++;
             }
-            else if (static_cast<size_t>(mChatHistoryIndex) < tabSize)
+            else if (CAST_SIZE(mChatHistoryIndex) < tabSize)
             {
                 mChatHistoryIndex ++;
                 mChatInput->setText("");
@@ -884,7 +884,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
                 if (f == mChatHistoryIndex)
                     mChatInput->setText(*it);
             }
-            mChatInput->setCaretPosition(static_cast<unsigned>(
+            mChatInput->setCaretPosition(CAST_U32(
                     mChatInput->getText().length()));
         }
     }
@@ -1014,8 +1014,8 @@ void ChatWindow::addInputText(const std::string &text, const bool space)
 
     ss << inputText.substr(caretPos);
     mChatInput->setText(ss.str());
-    mChatInput->setCaretPosition(caretPos + static_cast<int>(
-        text.length()) + static_cast<int>(space));
+    mChatInput->setCaretPosition(caretPos + CAST_S32(
+        text.length()) + CAST_S32(space));
     requestChatFocus();
 }
 
@@ -1298,7 +1298,7 @@ void ChatWindow::postConnection()
                 skip --; \
                 continue; \
             } \
-            const unsigned char ch = static_cast<unsigned char>(msg.at(f)); \
+            const unsigned char ch = CAST_U8(msg.at(f)); \
             if (f + 2 < sz && msg.substr(f, 2) == "%%") \
             { \
                 newMsg += msg.at(f); \
@@ -1419,8 +1419,8 @@ void ChatWindow::autoComplete()
             .append(inputText.substr(caretPos,
             inputText.length() - caretPos)));
 
-        const int len = caretPos - static_cast<int>(name.length())
-            + static_cast<int>(newName.length());
+        const int len = caretPos - CAST_S32(name.length())
+            + CAST_S32(newName.length());
 
         if (startName > 0)
             mChatInput->setCaretPosition(len + 1);
@@ -1592,7 +1592,7 @@ bool ChatWindow::resortChatLog(std::string line,
                 {
                     const std::string nick = line.substr(0, idx2 - 1);
                     line = line.substr(idx2 + 6);
-                    localPetEmote(nick, static_cast<uint8_t>(
+                    localPetEmote(nick, CAST_U8(
                         atoi(line.c_str())));
                 }
                 else if (line.find(": \302\202\302m") != std::string::npos)
@@ -1608,7 +1608,7 @@ bool ChatWindow::resortChatLog(std::string line,
                 {
                     const std::string nick = line.substr(0, idx2 - 1);
                     line = line.substr(idx2 + 6);
-                    localPetDirection(nick, static_cast<uint8_t>(
+                    localPetDirection(nick, CAST_U8(
                         atoi(line.c_str())));
                 }
                 else if (line.find(": \302\202\302a") != std::string::npos)
@@ -1946,9 +1946,9 @@ bool ChatWindow::saveTab(const int num, ChatTab *const tab) const
         tab->getChannelName());
 
     serverConfig.setValue("chatWhisperFlags" + toString(num),
-        static_cast<int>(tab->getAllowHighlight())
-        + (2 * static_cast<int>(tab->getRemoveNames()))
-        + (4 * static_cast<int>(tab->getNoAway())));
+        CAST_S32(tab->getAllowHighlight())
+        + (2 * CAST_S32(tab->getRemoveNames()))
+        + (4 * CAST_S32(tab->getNoAway())));
 
     return true;
 }

@@ -80,7 +80,7 @@ void InventoryHandler::equipItem(const Item *const item) const
         return;
 
     createOutPacket(CMSG_PLAYER_EQUIP);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     // here we set flag for any slots,
     // probably better set to slot from item properties
@@ -93,7 +93,7 @@ void InventoryHandler::unequipItem(const Item *const item) const
         return;
 
     createOutPacket(CMSG_PLAYER_UNEQUIP);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
 }
 
@@ -103,7 +103,7 @@ void InventoryHandler::useItem(const Item *const item) const
         return;
 
     createOutPacket(CMSG_PLAYER_INVENTORY_USE);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     outMsg.writeInt32(item->getId(), "unused");
 }
@@ -114,9 +114,9 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
         return;
 
     createOutPacket(CMSG_PLAYER_INVENTORY_DROP);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
 void InventoryHandler::closeStorage() const
@@ -157,7 +157,7 @@ void InventoryHandler::moveItem2(const InventoryTypeT source,
     if (packet)
     {
         createOutPacket(packet);
-        outMsg.writeInt16(static_cast<int16_t>(slot + offset), "index");
+        outMsg.writeInt16(CAST_S16(slot + offset), "index");
         outMsg.writeInt32(amount, "amount");
     }
 }
@@ -169,7 +169,7 @@ void InventoryHandler::useCard(const Item *const item)
 
     mItemIndex = item->getInvIndex();
     createOutPacket(CMSG_PLAYER_USE_CARD);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         mItemIndex + INVENTORY_OFFSET), "index");
 }
 
@@ -177,9 +177,9 @@ void InventoryHandler::insertCard(const int cardIndex,
                                   const int itemIndex) const
 {
     createOutPacket(CMSG_PLAYER_INSERT_CARD);
-    outMsg.writeInt16(static_cast<int16_t>(cardIndex + INVENTORY_OFFSET),
+    outMsg.writeInt16(CAST_S16(cardIndex + INVENTORY_OFFSET),
         "card index");
-    outMsg.writeInt16(static_cast<int16_t>(itemIndex + INVENTORY_OFFSET),
+    outMsg.writeInt16(CAST_S16(itemIndex + INVENTORY_OFFSET),
         "item index");
 }
 
@@ -189,7 +189,7 @@ void InventoryHandler::favoriteItem(const Item *const item,
     if (!item)
         return;
     createOutPacket(CMSG_PLAYER_FAVORITE_ITEM);
-    outMsg.writeInt16(static_cast<int16_t>(item->getInvIndex()
+    outMsg.writeInt16(CAST_S16(item->getInvIndex()
         + INVENTORY_OFFSET),
         "item index");
     outMsg.writeInt8(favorite, "favorite flag");
@@ -200,7 +200,7 @@ void InventoryHandler::selectEgg(const Item *const item) const
     if (!item)
         return;
     createOutPacket(CMSG_PET_SELECT_EGG);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     menu = MenuType::Unknown;
 }
@@ -210,7 +210,7 @@ int InventoryHandler::convertFromServerSlot(const int serverSlot) const
     if (serverSlot < 0 || serverSlot > 15)
         return 0;
 
-    return static_cast<int>(EQUIP_CONVERT[serverSlot]);
+    return CAST_S32(EQUIP_CONVERT[serverSlot]);
 }
 
 void InventoryHandler::selectCart(const BeingId accountId,
@@ -224,7 +224,7 @@ void InventoryHandler::selectCart(const BeingId accountId,
 void InventoryHandler::identifyItem(const Item *const item) const
 {
     createOutPacket(CMSG_QUICK_IDENTIFY_ITEM);
-    outMsg.writeInt16(static_cast<int16_t>(item->getInvIndex()),
+    outMsg.writeInt16(CAST_S16(item->getInvIndex()),
         "item index");
 }
 

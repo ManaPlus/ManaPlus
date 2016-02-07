@@ -134,7 +134,7 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
             name,
             // TRANSLATORS: character level
             strprintf(_("Level: %u"),
-            static_cast<uint32_t>(
+            CAST_U32(
             mCharacter->data.mAttributes[Attributes::LEVEL])),
             // TRANSLATORS: character money
             strprintf(_("Money: %s"), Units::formatCurrency(

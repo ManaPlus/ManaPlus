@@ -328,12 +328,12 @@ bool TouchManager::processEvent(const MouseInput &mouseInput) restrict2
 
 bool TouchManager::isActionActive(const InputActionT index) restrict2 const
 {
-    if (static_cast<int>(index) < 0 ||
-        static_cast<int>(index) >= actionsSize)
+    if (CAST_S32(index) < 0 ||
+        CAST_S32(index) >= actionsSize)
     {
         return false;
     }
-    return mActions[static_cast<size_t>(index)];
+    return mActions[CAST_SIZE(index)];
 }
 
 void TouchManager::resize(const int width, const int height) restrict2

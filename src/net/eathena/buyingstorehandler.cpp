@@ -48,15 +48,15 @@ void BuyingStoreHandler::create(const std::string &name,
                                 std::vector<ShopItem*> &items) const
 {
     createOutPacket(CMSG_BUYINGSTORE_CREATE);
-    outMsg.writeInt16(static_cast<int16_t>(89 + items.size() * 8), "len");
+    outMsg.writeInt16(CAST_S16(89 + items.size() * 8), "len");
     outMsg.writeInt32(maxMoney, "limit money");
     outMsg.writeInt8(flag, "flag");
     outMsg.writeString(name, 80, "store name");
     FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *it;
-        outMsg.writeInt16(static_cast<int16_t>(item->getId()), "item id");
-        outMsg.writeInt16(static_cast<int16_t>(item->getQuantity()), "amount");
+        outMsg.writeInt16(CAST_S16(item->getId()), "item id");
+        outMsg.writeInt16(CAST_S16(item->getQuantity()), "amount");
         outMsg.writeInt32(item->getPrice(), "price");
     }
 }
@@ -87,11 +87,11 @@ void BuyingStoreHandler::sell(const Being *const being,
     outMsg.writeInt16(18, "len");
     outMsg.writeBeingId(being->getId(), "account id");
     outMsg.writeInt32(storeId, "store id");
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET),
         "index");
-    outMsg.writeInt16(static_cast<int16_t>(item->getId()), "item id");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+    outMsg.writeInt16(CAST_S16(item->getId()), "item id");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
 }  // namespace EAthena

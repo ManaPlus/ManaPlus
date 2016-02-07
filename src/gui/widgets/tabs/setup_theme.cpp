@@ -393,9 +393,9 @@ void Setup_Theme::apply()
         || config.getValue("chinaFont", "fonts/wqy-microhei.ttf")
         != mChinaFont
         || config.getIntValue("fontSize")
-        != static_cast<int>(mFontSizeDropDown->getSelected()) + 9
+        != CAST_S32(mFontSizeDropDown->getSelected()) + 9
         || config.getIntValue("npcfontSize")
-        != static_cast<int>(mNpcFontSizeDropDown->getSelected()) + 9)
+        != CAST_S32(mNpcFontSizeDropDown->getSelected()) + 9)
     {
         config.setValue("font", "fonts/" + getFileName(mFont));
         config.setValue("boldFont", "fonts/" + getFileName(mBoldFont));

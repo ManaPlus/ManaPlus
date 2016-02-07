@@ -113,7 +113,7 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
     placer(n, 0, mInfoButton);
     n ++;
 
-    for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
+    for (int i = 0; i < CAST_S32(mLoginData->characterSlots); i++)
     {
         CharacterDisplay *const character = new CharacterDisplay(this, this);
         character->setVisible(Visible_false);
@@ -183,7 +183,7 @@ void CharSelectDialog::action(const ActionEvent &event)
     // Check if a button of a character was pressed
     const Widget *const sourceParent = event.getSource()->getParent();
     int selected = -1;
-    for (unsigned int i = 0, sz = static_cast<unsigned int>(
+    for (unsigned int i = 0, sz = CAST_U32(
          mCharacterEntries.size()); i < sz; ++i)
     {
         if (mCharacterEntries[i] == sourceParent)
@@ -241,17 +241,17 @@ void CharSelectDialog::action(const ActionEvent &event)
                 // TRANSLATORS: char select dialog. player info message.
                 _("Hp: %u/%u\nMp: %u/%u\nLevel: %u\n"
                 "Experience: %u\nMoney: %s"),
-                static_cast<uint32_t>(
+                CAST_U32(
                 character->data.mAttributes[Attributes::HP]),
-                static_cast<uint32_t>(
+                CAST_U32(
                 character->data.mAttributes[Attributes::MAX_HP]),
-                static_cast<uint32_t>(
+                CAST_U32(
                 character->data.mAttributes[Attributes::MP]),
-                static_cast<uint32_t>(
+                CAST_U32(
                 character->data.mAttributes[Attributes::MAX_MP]),
-                static_cast<uint32_t>(
+                CAST_U32(
                 character->data.mAttributes[Attributes::LEVEL]),
-                static_cast<uint32_t>(
+                CAST_U32(
                 character->data.mAttributes[Attributes::EXP]),
                 Units::formatCurrency(
                 character->data.mAttributes[Attributes::MONEY]).c_str());
@@ -506,7 +506,7 @@ void CharSelectDialog::setCharacter(Net::Character *const character)
     if (!character)
         return;
     const int characterSlot = character->slot;
-    if (characterSlot >= static_cast<int>(mCharacterEntries.size()))
+    if (characterSlot >= CAST_S32(mCharacterEntries.size()))
     {
         logger->log("Warning: slot out of range: %d", character->slot);
         return;
@@ -562,10 +562,10 @@ bool CharSelectDialog::selectByName(const std::string &name,
             {
                 if (character->dummy && character->dummy->getName() == name)
                 {
-                    mCharacterView->show(static_cast<int>(i));
+                    mCharacterView->show(CAST_S32(i));
                     updateState();
                     if (selAction == Choose)
-                        attemptCharacterSelect(static_cast<int>(i));
+                        attemptCharacterSelect(CAST_S32(i));
                     return true;
                 }
             }
@@ -616,7 +616,7 @@ void CharSelectDialog::updateState()
 
 void CharSelectDialog::setName(const BeingId id, const std::string &newName)
 {
-    for (unsigned int i = 0, sz = static_cast<unsigned int>(
+    for (unsigned int i = 0, sz = CAST_U32(
          mCharacterEntries.size()); i < sz; ++i)
     {
         if (!mCharacterEntries[i])

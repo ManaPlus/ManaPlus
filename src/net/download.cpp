@@ -144,7 +144,7 @@ unsigned long Download::fadler32(FILE *const file)
     rewind(file);
 
     // Calculate Adler-32 checksum
-    char *const buffer = new char[static_cast<size_t>(fileSize)];
+    char *const buffer = new char[CAST_SIZE(fileSize)];
     const uInt read = static_cast<uInt>(fread(buffer, 1, fileSize, file));
     unsigned long adler = adler32(0L, Z_NULL, 0);
     adler = adler32(static_cast<uInt>(adler),
@@ -242,13 +242,13 @@ int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
     if (d->mOptions.cancel)
     {
         return d->mUpdateFunction(d->mPtr, DownloadStatus::Cancelled,
-                                  static_cast<size_t>(dltotal),
-                                  static_cast<size_t>(dlnow));
+                                  CAST_SIZE(dltotal),
+                                  CAST_SIZE(dlnow));
     }
 
     return d->mUpdateFunction(d->mPtr, DownloadStatus::Idle,
-                              static_cast<size_t>(dltotal),
-                              static_cast<size_t>(dlnow));
+                              CAST_SIZE(dltotal),
+                              CAST_SIZE(dlnow));
 }
 
 int Download::downloadThread(void *ptr)

@@ -44,7 +44,7 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
             character->setVisible(Visible_true);
         }
         const size_t sz = mCharacterEntries->size();
-        if (mSelected >= 0 && mSelected < static_cast<signed>(sz))
+        if (mSelected >= 0 && mSelected < CAST_S32(sz))
         {
             CharacterDisplay *const display = (*mCharacterEntries)[mSelected];
             if (display)
@@ -72,7 +72,7 @@ CharacterViewNormal::~CharacterViewNormal()
 
 void CharacterViewNormal::show(const int i)
 {
-    const int sz = static_cast<signed>(mCharacterEntries->size());
+    const int sz = CAST_S32(mCharacterEntries->size());
     if (i >= 0 && i < sz)
     {
         if (mSelected >= 0)
@@ -84,7 +84,7 @@ void CharacterViewNormal::show(const int i)
 
 void CharacterViewNormal::resize()
 {
-    const int sz = static_cast<signed>(mCharacterEntries->size());
+    const int sz = CAST_S32(mCharacterEntries->size());
     if (sz <= 0)
         return;
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];

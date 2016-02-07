@@ -55,8 +55,8 @@ void TextParticle::draw(Graphics *restrict const graphics,
         return;
     }
 
-    const int screenX = static_cast<int>(mPos.x) + offsetX;
-    const int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
+    const int screenX = CAST_S32(mPos.x) + offsetX;
+    const int screenY = CAST_S32(mPos.y) - CAST_S32(mPos.z)
         + offsetY;
 
     float alpha = mAlpha * 255.0F;
@@ -74,13 +74,13 @@ void TextParticle::draw(Graphics *restrict const graphics,
     }
 
     Color color = *mColor;
-    color.a = static_cast<unsigned int>(alpha);
+    color.a = CAST_U32(alpha);
 
     graphics->setColor(color);
     if (mOutline)
     {
         const Color &restrict color2 = theme->getColor(ThemeColorId::OUTLINE,
-            static_cast<int>(alpha));
+            CAST_S32(alpha));
         mTextFont->drawString(graphics,
             color, color2,
             mText,

@@ -55,7 +55,7 @@ void GuildRecv::processGuildPositionInfo(Net::MessageIn &msg)
 
     PlayerInfo::setGuildPositionFlags(GuildPositionFlags::Invite);
 
-    Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
+    Guild *const g = Guild::getGuild(CAST_S16(guildId));
     if (!g)
         return;
 

@@ -66,7 +66,7 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
             return -1;
         } /* if */
 
-        pos = static_cast<int>(current);
+        pos = CAST_S32(current);
         if (static_cast<PHYSFS_sint64>(pos) != current)
         {
             SDL_SetError("Can't fit current file position in an int!");
@@ -127,15 +127,15 @@ static PHYSFSSIZE physfsrwops_read(SDL_RWops *const rw,
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
     const PHYSFS_sint64 rc = PHYSFS_read(handle, ptr,
-        static_cast<unsigned int>(size),
-        static_cast<unsigned int>(maxnum));
+        CAST_U32(size),
+        CAST_U32(maxnum));
     if (rc != static_cast<PHYSFS_sint64>(maxnum))
     {
         if (!PHYSFS_eof(handle)) /* not EOF? Must be an error. */
             SDL_SetError("PhysicsFS error: %s", PHYSFS_getLastError());
     } /* if */
 
-    return static_cast<int>(rc);
+    return CAST_S32(rc);
 } /* physfsrwops_read */
 
 static PHYSFSSIZE physfsrwops_write(SDL_RWops *const rw, const void *ptr,
@@ -147,12 +147,12 @@ static PHYSFSSIZE physfsrwops_write(SDL_RWops *const rw, const void *ptr,
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
     const PHYSFS_sint64 rc = PHYSFS_write(handle, ptr,
-        static_cast<unsigned int>(size),
-        static_cast<unsigned int>(num));
+        CAST_U32(size),
+        CAST_U32(num));
     if (rc != static_cast<PHYSFS_sint64>(num))
         SDL_SetError("PhysicsFS error: %s", PHYSFS_getLastError());
 
-    return static_cast<int>(rc);
+    return CAST_S32(rc);
 } /* physfsrwops_write */
 
 static int physfsrwops_close(SDL_RWops *const rw)

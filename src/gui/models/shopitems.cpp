@@ -42,8 +42,8 @@ ShopItems::~ShopItems()
 
 std::string ShopItems::getElementAt(int i)
 {
-    if (i < 0 || static_cast<unsigned>(i)
-        >= static_cast<unsigned int>(mShopItems.size()) || !mShopItems.at(i))
+    if (i < 0 || CAST_U32(i)
+        >= CAST_U32(mShopItems.size()) || !mShopItems.at(i))
     {
         return "";
     }
@@ -105,7 +105,7 @@ ShopItem *ShopItems::addItem2(const int inventoryIndex,
 
 ShopItem *ShopItems::at(unsigned int i) const
 {
-    if (i >= static_cast<unsigned int>(mShopItems.size()))
+    if (i >= CAST_U32(mShopItems.size()))
         return nullptr;
 
     return mShopItems.at(i);
@@ -125,7 +125,7 @@ bool ShopItems::findInAllItems(std::vector<ShopItem*>::iterator &it,
 
 void ShopItems::erase(const unsigned int i)
 {
-    if (i >= static_cast<unsigned int>(mShopItems.size()))
+    if (i >= CAST_U32(mShopItems.size()))
         return;
 
     const ShopItem *const item = *(mShopItems.begin() + i);
@@ -137,7 +137,7 @@ void ShopItems::erase(const unsigned int i)
 
 void ShopItems::del(const unsigned int i)
 {
-    if (i >= static_cast<unsigned int>(mShopItems.size()))
+    if (i >= CAST_U32(mShopItems.size()))
         return;
 
     ShopItem *item = *(mShopItems.begin() + i);

@@ -30,7 +30,7 @@
 #include "localconsts.h"
 
 #define createOutPacket(name) MessageOut outMsg(name); \
-    outMsg.writeInt16(static_cast<int16_t>(name), #name)
+    outMsg.writeInt16(CAST_S16(name), #name)
 
 namespace Net
 {

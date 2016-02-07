@@ -56,11 +56,11 @@ void MarketHandler::buyItem(const int itemId,
         cnt = 100;
 
     createOutPacket(CMSG_NPC_MARKET_BUY);
-    outMsg.writeInt16(static_cast<int16_t>(4 + 6 * cnt), "len");
+    outMsg.writeInt16(CAST_S16(4 + 6 * cnt), "len");
     for (int f = 0; f < cnt; f ++)
     {
-        outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
-        outMsg.writeInt32(static_cast<int16_t>(amount2), "amount");
+        outMsg.writeInt16(CAST_S16(itemId), "item id");
+        outMsg.writeInt32(CAST_S16(amount2), "amount");
     }
 }
 
@@ -86,7 +86,7 @@ void MarketHandler::buyItems(std::vector<ShopItem*> &items) const
         return;
 
     createOutPacket(CMSG_NPC_MARKET_BUY);
-    outMsg.writeInt16(static_cast<int16_t>(4 + pairSize * cnt), "len");
+    outMsg.writeInt16(CAST_S16(4 + pairSize * cnt), "len");
     FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
     {
         ShopItem *const item = *it;
@@ -101,15 +101,15 @@ void MarketHandler::buyItems(std::vector<ShopItem*> &items) const
         {
             for (int f = 0; f < usedQuantity; f ++)
             {
-                outMsg.writeInt16(static_cast<int16_t>(item->getId()),
+                outMsg.writeInt16(CAST_S16(item->getId()),
                     "item id");
-                outMsg.writeInt32(static_cast<int16_t>(1), "amount");
+                outMsg.writeInt32(CAST_S16(1), "amount");
             }
         }
         else
         {
-            outMsg.writeInt16(static_cast<int16_t>(item->getId()), "item id");
-            outMsg.writeInt32(static_cast<int16_t>(usedQuantity), "amount");
+            outMsg.writeInt16(CAST_S16(item->getId()), "item id");
+            outMsg.writeInt32(CAST_S16(usedQuantity), "amount");
         }
     }
 }

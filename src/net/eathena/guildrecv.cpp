@@ -68,7 +68,7 @@ void GuildRecv::processGuildPositionInfo(Net::MessageIn &msg)
     msg.readInt32("unused");
     std::string guildName = msg.readString(24, "guild name");
 
-    Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
+    Guild *const g = Guild::getGuild(CAST_S16(guildId));
     if (!g)
         return;
 
@@ -98,7 +98,7 @@ void GuildRecv::processGuildMemberLogin(Net::MessageIn &msg)
     const BeingId accountId = msg.readBeingId("account id");
     const int charId = msg.readInt32("char id");
     const int online = msg.readInt32("flag");
-    const GenderT gender = Being::intToGender(static_cast<uint8_t>(
+    const GenderT gender = Being::intToGender(CAST_U8(
         msg.readInt16("sex")));
     msg.readInt16("hair");
     msg.readInt16("hair color");

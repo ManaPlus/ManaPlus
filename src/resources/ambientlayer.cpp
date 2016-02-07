@@ -64,9 +64,9 @@ AmbientLayer::AmbientLayer(Image *const img,
             // the default resolution...
             Image *const rescaledOverlay = resourceManager->getRescaled(
                 mImage,
-                static_cast<int>(mImage->mBounds.w) /
+                CAST_S32(mImage->mBounds.w) /
                 defaultScreenWidth * width,
-                static_cast<int>(mImage->mBounds.h) /
+                CAST_S32(mImage->mBounds.h) /
                 defaultScreenHeight * height);
 
             if (rescaledOverlay)
@@ -127,18 +127,18 @@ void AmbientLayer::draw(Graphics *const graphics, const int x,
     if (imageHelper->useOpenGL() == RENDER_SOFTWARE ||
         !mKeepRatio)
     {
-        graphics->drawPattern(mImage, static_cast<int>(-mPosX),
-            static_cast<int>(-mPosY), x + static_cast<int>(mPosX),
-            y + static_cast<int>(mPosY));
+        graphics->drawPattern(mImage, CAST_S32(-mPosX),
+            CAST_S32(-mPosY), x + CAST_S32(mPosX),
+            y + CAST_S32(mPosY));
     }
     else
     {
-        graphics->drawRescaledPattern(mImage, static_cast<int>(-mPosX),
-                static_cast<int>(-mPosY), x + static_cast<int>(mPosX),
-                y + static_cast<int>(mPosY),
-                static_cast<int>(mImage->mBounds.w)
+        graphics->drawRescaledPattern(mImage, CAST_S32(-mPosX),
+                CAST_S32(-mPosY), x + CAST_S32(mPosX),
+                y + CAST_S32(mPosY),
+                CAST_S32(mImage->mBounds.w)
                 / defaultScreenWidth * graphics->mWidth,
-                static_cast<int>(mImage->mBounds.h) / defaultScreenHeight
+                CAST_S32(mImage->mBounds.h) / defaultScreenHeight
                 * graphics->mHeight);
     }
 }

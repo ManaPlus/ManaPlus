@@ -501,7 +501,7 @@ void Gui::draw()
         }
 #endif
         Image *const mouseCursor = mMouseCursors->get(
-            static_cast<size_t>(mCursorType));
+            CAST_SIZE(mCursorType));
         if (mouseCursor)
         {
             mouseCursor->setAlpha(mMouseCursorAlpha);
@@ -648,7 +648,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
         }
 
         widgetWithMouseQueueCheckDone =
-            (static_cast<size_t>(iterations) == mWidgetWithMouseQueue.size());
+            (CAST_SIZE(iterations) == mWidgetWithMouseQueue.size());
     }
 
     // Check all widgets below the mouse to see if they are

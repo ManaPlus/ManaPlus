@@ -45,15 +45,15 @@ AdminHandler::AdminHandler() :
 void AdminHandler::announce(const std::string &text) const
 {
     createOutPacket(CMSG_ADMIN_ANNOUNCE);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4), "len");
-    outMsg.writeString(text, static_cast<int>(text.length()), "message");
+    outMsg.writeInt16(CAST_S16(text.length() + 4), "len");
+    outMsg.writeString(text, CAST_S32(text.length()), "message");
 }
 
 void AdminHandler::localAnnounce(const std::string &text) const
 {
     createOutPacket(CMSG_ADMIN_LOCAL_ANNOUNCE);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4), "len");
-    outMsg.writeString(text, static_cast<int>(text.length()), "message");
+    outMsg.writeInt16(CAST_S16(text.length() + 4), "len");
+    outMsg.writeString(text, CAST_S32(text.length()), "message");
 }
 
 void AdminHandler::hide(const bool h A_UNUSED) const
@@ -77,8 +77,8 @@ void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
     createOutPacket(CMSG_PLAYER_MAPMOVE);
     outMsg.writeString(map, 16, "map");
-    outMsg.writeInt16(static_cast<int16_t>(x), "x");
-    outMsg.writeInt16(static_cast<int16_t>(y), "y");
+    outMsg.writeInt16(CAST_S16(x), "x");
+    outMsg.writeInt16(CAST_S16(y), "y");
 }
 
 void AdminHandler::resetStats() const
@@ -114,8 +114,8 @@ void AdminHandler::mute(const Being *const being,
 
     createOutPacket(CMSG_ADMIN_MUTE);
     outMsg.writeBeingId(being->getId(), "account id");
-    outMsg.writeInt8(static_cast<int8_t>(type), "type");
-    outMsg.writeInt16(static_cast<int16_t>(limit), "value");
+    outMsg.writeInt8(CAST_S8(type), "type");
+    outMsg.writeInt16(CAST_S16(limit), "value");
 }
 
 void AdminHandler::muteName(const std::string &name) const
@@ -137,9 +137,9 @@ void AdminHandler::setTileType(const int x, const int y,
                                const int type) const
 {
     createOutPacket(CMSG_ADMIN_SET_TILE_TYPE);
-    outMsg.writeInt16(static_cast<int16_t>(x), "x");
-    outMsg.writeInt16(static_cast<int16_t>(y), "y");
-    outMsg.writeInt16(static_cast<int16_t>(type), "type");
+    outMsg.writeInt16(CAST_S16(x), "x");
+    outMsg.writeInt16(CAST_S16(y), "y");
+    outMsg.writeInt16(CAST_S16(type), "type");
 }
 
 void AdminHandler::unequipAll(const Being *const being) const

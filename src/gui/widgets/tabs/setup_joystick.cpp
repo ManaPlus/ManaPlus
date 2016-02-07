@@ -80,7 +80,7 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     else
     {
         unsigned int sel = config.getIntValue("selectedJoystick");
-        if (sel >= static_cast<unsigned int>(mNamesModel->size()))
+        if (sel >= CAST_U32(mNamesModel->size()))
             sel = 0;
         mNamesDropDown->setSelected(sel);
     }

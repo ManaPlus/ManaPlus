@@ -726,7 +726,7 @@ void Game::adjustPerfomance()
     {
         mNextAdjustTime = time + adjustDelay;
     }
-    else if (mNextAdjustTime < static_cast<unsigned>(time))
+    else if (mNextAdjustTime < CAST_U32(time))
     {
         mNextAdjustTime = time + adjustDelay;
 
@@ -1115,7 +1115,7 @@ void Game::updateHistory(const SDL_Event &event)
     if (!localPlayer || !settings.attackType)
         return;
 
-    if (static_cast<int>(event.key.keysym.sym) != -1)
+    if (CAST_S32(event.key.keysym.sym) != -1)
     {
         bool old = false;
 

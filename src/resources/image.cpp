@@ -72,8 +72,8 @@ Image::Image(SDL_Texture *restrict const image,
 
     if (mTexture)
     {
-        mBounds.w = static_cast<uint16_t>(width);
-        mBounds.h = static_cast<uint16_t>(height);
+        mBounds.w = CAST_U16(width);
+        mBounds.h = CAST_U16(height);
 
         mLoaded = true;
     }
@@ -118,8 +118,8 @@ Image::Image(SDL_Surface *restrict const image, const bool hasAlphaChannel0,
 
     if (mSDLSurface)
     {
-        mBounds.w = static_cast<uint16_t>(mSDLSurface->w);
-        mBounds.h = static_cast<uint16_t>(mSDLSurface->h);
+        mBounds.w = CAST_U16(mSDLSurface->w);
+        mBounds.h = CAST_U16(mSDLSurface->h);
 
         mLoaded = true;
     }
@@ -159,8 +159,8 @@ Image::Image(const GLuint glimage, const int width, const int height,
 
     mBounds.x = 0;
     mBounds.y = 0;
-    mBounds.w = static_cast<uint16_t>(width);
-    mBounds.h = static_cast<uint16_t>(height);
+    mBounds.w = CAST_U16(width);
+    mBounds.h = CAST_U16(height);
 
     if (mGLImage)
     {
@@ -314,11 +314,11 @@ void Image::setAlpha(const float alpha)
         {
 #ifdef USE_SDL2
             SDL_SetSurfaceAlphaMod(mSDLSurface,
-                static_cast<unsigned char>(255 * mAlpha));
+                CAST_U8(255 * mAlpha));
 #else
             // Set the alpha value this image is drawn at
             SDL_SetAlpha(mSDLSurface, SDL_SRCALPHA,
-                static_cast<unsigned char>(255 * mAlpha));
+                CAST_U8(255 * mAlpha));
 #endif
         }
         else
@@ -349,7 +349,7 @@ void Image::setAlpha(const float alpha)
                     const uint8_t sourceAlpha = mAlphaChannel[i];
                     if (sourceAlpha > 0)
                     {
-                        const uint8_t a = static_cast<uint8_t>(
+                        const uint8_t a = CAST_U8(
                             static_cast<float>(sourceAlpha) * mAlpha);
 
                         uint32_t c = (static_cast<uint32_t*>(
@@ -372,7 +372,7 @@ void Image::setAlpha(const float alpha)
                         const uint8_t sourceAlpha = mAlphaChannel[i];
                         if (sourceAlpha > 0)
                         {
-                            const uint8_t a = static_cast<uint8_t>(
+                            const uint8_t a = CAST_U8(
                                 static_cast<float>(sourceAlpha) * mAlpha);
 
                             uint32_t c = (static_cast<uint32_t*>(
@@ -395,7 +395,7 @@ void Image::setAlpha(const float alpha)
     {
         mAlpha = alpha;
         SDL_SetTextureAlphaMod(mTexture,
-            static_cast<unsigned char>(255 * mAlpha));
+            CAST_U8(255 * mAlpha));
     }
 #endif
     else

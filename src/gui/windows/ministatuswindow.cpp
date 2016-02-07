@@ -226,7 +226,7 @@ void MiniStatusWindow::updateBars()
 
 void MiniStatusWindow::setIcon(const int index, AnimatedSprite *const sprite)
 {
-    if (index >= static_cast<int>(mIcons.size()))
+    if (index >= CAST_S32(mIcons.size()))
         mIcons.resize(index + 1, nullptr);
 
     delete mIcons[index];
@@ -235,7 +235,7 @@ void MiniStatusWindow::setIcon(const int index, AnimatedSprite *const sprite)
 
 void MiniStatusWindow::eraseIcon(const int index)
 {
-    if (index < static_cast<int>(mIcons.size()))
+    if (index < CAST_S32(mIcons.size()))
     {
         delete mIcons[index];
         mIcons.erase(mIcons.begin() + index);

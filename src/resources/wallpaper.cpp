@@ -141,8 +141,8 @@ std::string Wallpaper::getWallpaper(const int width, const int height)
     {
         // Return randomly a wallpaper between vector[0] and
         // vector[vector.size() - 1]
-        srand(static_cast<unsigned>(time(nullptr)));
-        return wallPaperVector[static_cast<int>(static_cast<double>(
+        srand(CAST_U32(time(nullptr)));
+        return wallPaperVector[CAST_S32(static_cast<double>(
             wallPaperVector.size()) * rand() / (RAND_MAX + 1.0))];
     }
 

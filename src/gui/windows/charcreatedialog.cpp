@@ -163,7 +163,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     if (maxHairStyle)
     {
-        mHairStyle = (static_cast<unsigned int>(rand())
+        mHairStyle = (CAST_U32(rand())
             % maxHairStyle) + minHairStyle;
     }
     else
@@ -172,7 +172,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     }
     if (maxHairColor)
     {
-        mHairColor = (static_cast<unsigned int>(rand())
+        mHairColor = (CAST_U32(rand())
             % maxHairColor) + minHairColor;
     }
     else
@@ -440,7 +440,7 @@ void CharCreateDialog::action(const ActionEvent &event)
             std::vector<int> atts;
             for (size_t i = 0, sz = mAttributeSlider.size(); i < sz; i++)
             {
-                atts.push_back(static_cast<int>(
+                atts.push_back(CAST_S32(
                     mAttributeSlider[i]->getValue()));
             }
 
@@ -451,8 +451,8 @@ void CharCreateDialog::action(const ActionEvent &event)
                 mGender,
                 mHairStyle,
                 mHairColor,
-                static_cast<unsigned char>(mRace),
-                static_cast<unsigned char>(mLook),
+                CAST_U8(mRace),
+                CAST_U8(mLook),
                 atts);
         }
         else
@@ -568,7 +568,7 @@ void CharCreateDialog::updateSliders()
     {
         // Update captions
         mAttributeValue[i]->setCaption(
-                toString(static_cast<int>(mAttributeSlider[i]->getValue())));
+                toString(CAST_S32(mAttributeSlider[i]->getValue())));
         mAttributeValue[i]->adjustSize();
     }
 
@@ -610,7 +610,7 @@ int CharCreateDialog::getDistributedPoints() const
     int points = 0;
 
     for (size_t i = 0, sz = mAttributeSlider.size(); i < sz; i++)
-        points += static_cast<int>(mAttributeSlider[i]->getValue());
+        points += CAST_S32(mAttributeSlider[i]->getValue());
     return points;
 }
 
@@ -642,7 +642,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
         y += 29;
 
-    for (unsigned i = 0, sz = static_cast<unsigned>(labels.size());
+    for (unsigned i = 0, sz = CAST_U32(labels.size());
          i < sz; i++)
     {
         mAttributeLabel[i] = new Label(this, labels[i]);
@@ -704,8 +704,8 @@ void CharCreateDialog::updateHair()
         mHairStyle = Being::getNumOfHairstyles() - 1;
     else
         mHairStyle %= Being::getNumOfHairstyles();
-    if (mHairStyle < static_cast<signed>(minHairStyle)
-        || mHairStyle > static_cast<signed>(maxHairStyle))
+    if (mHairStyle < CAST_S32(minHairStyle)
+        || mHairStyle > CAST_S32(maxHairStyle))
     {
         mHairStyle = minHairStyle;
     }
@@ -722,8 +722,8 @@ void CharCreateDialog::updateHair()
         mHairColor = 0;
     if (mHairColor < 0)
         mHairColor += ColorDB::getHairSize();
-    if (mHairColor < static_cast<signed>(minHairColor)
-        || mHairColor > static_cast<signed>(maxHairColor))
+    if (mHairColor < CAST_S32(minHairColor)
+        || mHairColor > CAST_S32(maxHairColor))
     {
         mHairColor = minHairColor;
     }
@@ -767,7 +767,7 @@ void CharCreateDialog::updateLook()
         mLook = 0;
     }
     mPlayer->setSubtype(fromInt(mRace, BeingTypeId),
-        static_cast<uint8_t>(mLook));
+        CAST_U8(mLook));
     if (mRaceNameLabel)
     {
         mRaceNameLabel->setCaption(item.getName());

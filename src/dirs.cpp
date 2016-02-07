@@ -108,8 +108,8 @@ void extractAssets()
     for (int f = 0; f < 100; f ++)
     {
         std::string part = strprintf("manaplus-data.zip%u%u",
-            static_cast<unsigned int>(f / 10),
-            static_cast<unsigned int>(f % 10));
+            CAST_U32(f / 10),
+            CAST_U32(f % 10));
         logger->log("testing asset: " + part);
         SDL_RWops *const rw = SDL_RWFromFile(part.c_str(), "r");
         if (rw)
@@ -236,9 +236,9 @@ void Dirs::mountDataDir()
 #ifdef WIN32
         const int loc1 = path.find_last_of('/');
         const int loc2 = path.find_last_of('\\');
-        const int loc = static_cast<int>(std::max(loc1, loc2));
+        const int loc = CAST_S32(std::max(loc1, loc2));
 #else
-        const int loc = static_cast<int>(path.find_last_of('/'));
+        const int loc = CAST_S32(path.find_last_of('/'));
 #endif
         if (loc > 0)
         {

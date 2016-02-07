@@ -93,7 +93,7 @@ class SkillListBox final : public ListBox
             SkillModel *const model = static_cast<SkillModel*>(mListModel);
             updateAlpha();
 
-            mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
+            mHighlightColor.a = CAST_S32(mAlpha * 255.0F);
             graphics->setColor(mHighlightColor);
 
             const int width1 = getWidth();

@@ -44,8 +44,8 @@ bool SDL::getAllVideoModes(StringVect &modeList)
 
 #ifdef ANDROID
     const std::string modeString =
-        toString(static_cast<int>(modes[0]->w)).append("x")
-       .append(toString(static_cast<int>(modes[0]->h)));
+        toString(CAST_S32(modes[0]->w)).append("x")
+       .append(toString(CAST_S32(modes[0]->h)));
     logger->log("support mode: " + modeString);
     modeList.push_back(modeString);
     return true;
@@ -66,8 +66,8 @@ bool SDL::getAllVideoModes(StringVect &modeList)
         for (int i = 0; modes[i]; ++ i)
         {
             const std::string modeString =
-                toString(static_cast<int>(modes[i]->w)).append("x")
-                .append(toString(static_cast<int>(modes[i]->h)));
+                toString(CAST_S32(modes[i]->w)).append("x")
+                .append(toString(CAST_S32(modes[i]->h)));
             logger->log("support mode: " + modeString);
             modeList.push_back(modeString);
         }

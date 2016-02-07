@@ -55,7 +55,7 @@
     std::string GameModifiers::get##name1##String() \
     { \
         return gettext(getVarItem(&m##name1##Strings[0], \
-        static_cast<unsigned>(settings.name2), m##name1##Size)); \
+        CAST_U32(settings.name2), m##name1##Size)); \
     }
 
 #define addModifier2(name1, name2, str, sz, ...) \
@@ -289,7 +289,7 @@ std::string GameModifiers::getQuickDropCounterString()
     const unsigned int cnt = settings.quickDropCounter;
     if (cnt > 9)
     {
-        return strprintf("(%c) drop counter %u", static_cast<signed char>(
+        return strprintf("(%c) drop counter %u", CAST_S8(
             'a' + cnt - 10), cnt);
     }
     else
@@ -300,7 +300,7 @@ std::string GameModifiers::getQuickDropCounterString()
 
 void GameModifiers::setQuickDropCounter(const int n)
 {
-    if (n < 1 || n >= static_cast<signed>(mQuickDropCounterSize))
+    if (n < 1 || n >= CAST_S32(mQuickDropCounterSize))
         return;
     settings.quickDropCounter = n;
     config.setValue("quickDropCounter", n);

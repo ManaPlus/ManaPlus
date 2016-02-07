@@ -235,7 +235,7 @@ void GuiTable::draw(Graphics* graphics)
     const int y = rect.y;
     if (mOpaque)
     {
-        mBackgroundColor.a = static_cast<unsigned int>(mAlpha * 255.0F);
+        mBackgroundColor.a = CAST_U32(mAlpha * 255.0F);
         graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(Rect(0, 0, width, height));
     }
@@ -250,7 +250,7 @@ void GuiTable::draw(Graphics* graphics)
     if (first_row < 0)
         first_row = 0;
 
-    unsigned int rows_nr = static_cast<unsigned int>(1 +
+    unsigned int rows_nr = CAST_U32(1 +
         height / rHeight);  // May overestimate by one.
     unsigned int max_rows_nr;
     if (mModel->getRows() < first_row)
@@ -259,7 +259,7 @@ void GuiTable::draw(Graphics* graphics)
     }
     else
     {
-        max_rows_nr = static_cast<unsigned int>(
+        max_rows_nr = CAST_U32(
             mModel->getRows() - first_row);  // clip if neccessary:
     }
     if (max_rows_nr < rows_nr)
@@ -268,23 +268,23 @@ void GuiTable::draw(Graphics* graphics)
     // Now determine the first and last column
     // Take the easy way out; these are usually bounded and all visible.
     const unsigned first_column = 0;
-    const unsigned last_column1 = static_cast<unsigned int>(
+    const unsigned last_column1 = CAST_U32(
         mModel->getColumns());
 
     int y_offset = first_row * rHeight;
 
-    for (unsigned int r = static_cast<unsigned int>(first_row);
-         r < static_cast<unsigned int>(first_row) + rows_nr;
+    for (unsigned int r = CAST_U32(first_row);
+         r < CAST_U32(first_row) + rows_nr;
          ++r)
     {
         int x_offset = 0;
 
         for (unsigned c = first_column; c + 1 <= last_column1; ++c)
         {
-            Widget *const widget = mModel->getElementAt(static_cast<int>(r),
-                static_cast<int>(c));
-            const int cWidth = static_cast<int>(getColumnWidth(
-                static_cast<int>(c)));
+            Widget *const widget = mModel->getElementAt(CAST_S32(r),
+                CAST_S32(c));
+            const int cWidth = CAST_S32(getColumnWidth(
+                CAST_S32(c)));
             if (widget)
             {
                 Rect bounds(x_offset, y_offset, cWidth, rHeight);
@@ -299,19 +299,19 @@ void GuiTable::draw(Graphics* graphics)
 
                 if (mSelectedRow > -1)
                 {
-                    mHighlightColor.a = static_cast<unsigned int>(
+                    mHighlightColor.a = CAST_U32(
                         mAlpha * 255.0F);
                     graphics->setColor(mHighlightColor);
 
-                    if (mLinewiseMode && r == static_cast<unsigned>(
+                    if (mLinewiseMode && r == CAST_U32(
                         mSelectedRow) && c == 0)
                     {
                         graphics->fillRectangle(Rect(0, y_offset,
                             width, rHeight));
                     }
                     else if (!mLinewiseMode && mSelectedColumn > 0
-                             && c == static_cast<unsigned>(mSelectedColumn)
-                             && r == static_cast<unsigned>(mSelectedRow))
+                             && c == CAST_U32(mSelectedColumn)
+                             && r == CAST_U32(mSelectedRow))
                     {
                         graphics->fillRectangle(Rect(
                             x_offset, y_offset, cWidth, rHeight));
@@ -353,7 +353,7 @@ void GuiTable::safeDraw(Graphics* graphics)
     const int y = rect.y;
     if (mOpaque)
     {
-        mBackgroundColor.a = static_cast<unsigned int>(mAlpha * 255.0F);
+        mBackgroundColor.a = CAST_U32(mAlpha * 255.0F);
         graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(Rect(0, 0, width, height));
     }
@@ -368,7 +368,7 @@ void GuiTable::safeDraw(Graphics* graphics)
     if (first_row < 0)
         first_row = 0;
 
-    unsigned int rows_nr = static_cast<unsigned int>(
+    unsigned int rows_nr = CAST_U32(
         1 + height / rHeight);  // May overestimate by one.
     unsigned int max_rows_nr;
     if (mModel->getRows() < first_row)
@@ -377,7 +377,7 @@ void GuiTable::safeDraw(Graphics* graphics)
     }
     else
     {
-        max_rows_nr = static_cast<unsigned int>(
+        max_rows_nr = CAST_U32(
             mModel->getRows() - first_row);  // clip if neccessary:
     }
     if (max_rows_nr < rows_nr)
@@ -386,23 +386,23 @@ void GuiTable::safeDraw(Graphics* graphics)
     // Now determine the first and last column
     // Take the easy way out; these are usually bounded and all visible.
     const unsigned int first_column = 0;
-    const unsigned int last_column1 = static_cast<unsigned int>(
+    const unsigned int last_column1 = CAST_U32(
         mModel->getColumns());
 
     int y_offset = first_row * rHeight;
 
-    for (unsigned int r = static_cast<unsigned int>(first_row);
-         r < static_cast<unsigned int>(first_row + static_cast<int>(rows_nr));
+    for (unsigned int r = CAST_U32(first_row);
+         r < CAST_U32(first_row + CAST_S32(rows_nr));
          ++r)
     {
         int x_offset = 0;
 
         for (unsigned c = first_column; c + 1 <= last_column1; ++c)
         {
-            Widget *const widget = mModel->getElementAt(static_cast<int>(r),
-                static_cast<int>(c));
-            const int cWidth = static_cast<int>(getColumnWidth(
-                static_cast<int>(c)));
+            Widget *const widget = mModel->getElementAt(CAST_S32(r),
+                CAST_S32(c));
+            const int cWidth = CAST_S32(getColumnWidth(
+                CAST_S32(c)));
             if (widget)
             {
                 Rect bounds(x_offset, y_offset, cWidth, rHeight);
@@ -417,19 +417,19 @@ void GuiTable::safeDraw(Graphics* graphics)
 
                 if (mSelectedRow > -1)
                 {
-                    mHighlightColor.a = static_cast<unsigned int>(
+                    mHighlightColor.a = CAST_U32(
                         mAlpha * 255.0F);
                     graphics->setColor(mHighlightColor);
 
-                    if (mLinewiseMode && r == static_cast<unsigned>(
+                    if (mLinewiseMode && r == CAST_U32(
                         mSelectedRow) && c == 0)
                     {
                         graphics->fillRectangle(Rect(0, y_offset,
                             width, rHeight));
                     }
                     else if (!mLinewiseMode && mSelectedColumn > 0
-                             && c == static_cast<unsigned>(mSelectedColumn)
-                             && r == static_cast<unsigned>(mSelectedRow))
+                             && c == CAST_U32(mSelectedColumn)
+                             && r == CAST_U32(mSelectedRow))
                     {
                         graphics->fillRectangle(Rect(
                             x_offset, y_offset, cWidth, rHeight));

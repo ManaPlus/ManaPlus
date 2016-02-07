@@ -60,24 +60,24 @@ void ChatHandler::talk(const std::string &restrict text,
 
     createOutPacket(CMSG_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly
-    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
-    outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
+    outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
+    outMsg.writeString(mes, CAST_S32(mes.length() + 1), "message");
 }
 
 void ChatHandler::talkRaw(const std::string &mes) const
 {
     createOutPacket(CMSG_CHAT_MESSAGE);
-    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4), "len");
-    outMsg.writeString(mes, static_cast<int>(mes.length()), "message");
+    outMsg.writeInt16(CAST_S16(mes.length() + 4), "len");
+    outMsg.writeString(mes, CAST_S32(mes.length()), "message");
 }
 
 void ChatHandler::privateMessage(const std::string &restrict recipient,
                                  const std::string &restrict text)
 {
     createOutPacket(CMSG_CHAT_WHISPER);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 28 + 1), "len");
+    outMsg.writeInt16(CAST_S16(text.length() + 28 + 1), "len");
     outMsg.writeString(recipient, 24, "recipient nick");
-    outMsg.writeString(text, static_cast<int>(text.length()), "message");
+    outMsg.writeString(text, CAST_S32(text.length()), "message");
     outMsg.writeInt8(0, "null char");
     Ea::ChatRecv::mSentWhispers.push(recipient);
 }
@@ -107,7 +107,7 @@ void ChatHandler::sendRaw(const std::string &args) const
     {
         str = line.substr(0, pos);
 
-        const int16_t id = static_cast<int16_t>(parseNumber(str));
+        const int16_t id = CAST_S16(parseNumber(str));
         outMsg = new MessageOut(id);
         outMsg->writeInt16(id, "packet id");
         line = line.substr(pos + 1);
@@ -115,7 +115,7 @@ void ChatHandler::sendRaw(const std::string &args) const
     }
     else
     {
-        const int16_t id = static_cast<int16_t>(parseNumber(line));
+        const int16_t id = CAST_S16(parseNumber(line));
         outMsg = new MessageOut(id);
         outMsg->writeInt16(id, "packet id");
         delete outMsg;
@@ -145,17 +145,17 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
     {
         case 'b':
         {
-            outMsg.writeInt8(static_cast<unsigned char>(i), "raw");
+            outMsg.writeInt8(CAST_U8(i), "raw");
             break;
         }
         case 'w':
         {
-            outMsg.writeInt16(static_cast<int16_t>(i), "raw");
+            outMsg.writeInt16(CAST_S16(i), "raw");
             break;
         }
         case 'l':
         {
-            outMsg.writeInt32(static_cast<int32_t>(i), "raw");
+            outMsg.writeInt32(CAST_S32(i), "raw");
             break;
         }
         default:
@@ -201,10 +201,10 @@ void ChatHandler::createChatRoom(const std::string &title,
                                  const bool isPublic)
 {
     createOutPacket(CMSG_CREAYE_CHAT_ROOM);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         7 + 8 + 36), "len");
-    outMsg.writeInt16(static_cast<int16_t>(limit), "limit");
-    outMsg.writeInt8(static_cast<int8_t>(isPublic ? 1 : 0), "public");
+    outMsg.writeInt16(CAST_S16(limit), "limit");
+    outMsg.writeInt8(CAST_S8(isPublic ? 1 : 0), "public");
     outMsg.writeString(password, 8, "password");
     outMsg.writeString(title, 36, "title");
     ChatRecv::mChatRoom = title;
@@ -220,8 +220,8 @@ void ChatHandler::battleTalk(const std::string &text) const
 
     createOutPacket(CMSG_BATTLE_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly
-    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
-    outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
+    outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
+    outMsg.writeString(mes, CAST_S32(mes.length() + 1), "message");
 }
 
 void ChatHandler::joinChat(const ChatObject *const chat,
@@ -268,8 +268,8 @@ void ChatHandler::talkPet(const std::string &restrict text,
     const size_t sz = msg.size();
 
     createOutPacket(CMSG_PET_TALK);
-    outMsg.writeInt16(static_cast<int16_t>(sz + 4 + 1), "len");
-    outMsg.writeString(msg, static_cast<int>(sz), "message");
+    outMsg.writeInt16(CAST_S16(sz + 4 + 1), "len");
+    outMsg.writeString(msg, CAST_S32(sz), "message");
     outMsg.writeInt8(0, "zero byte");
 }
 
@@ -284,10 +284,10 @@ void ChatHandler::setChatRoomOptions(const int limit,
                                      const std::string &title) const
 {
     createOutPacket(CMSG_SET_CHAT_ROOM_OPTIONS);
-    const int sz = static_cast<int>(title.size());
-    outMsg.writeInt16(static_cast<int16_t>(15 + sz), "len");
-    outMsg.writeInt16(static_cast<int16_t>(limit), "limit");
-    outMsg.writeInt8(static_cast<int8_t>(isPublic ? 1 : 0), "type");
+    const int sz = CAST_S32(title.size());
+    outMsg.writeInt16(CAST_S16(15 + sz), "len");
+    outMsg.writeInt16(CAST_S16(limit), "limit");
+    outMsg.writeInt8(CAST_S8(isPublic ? 1 : 0), "type");
     outMsg.writeString(password, 8, "password");
     outMsg.writeString(title, sz, "title");
 }

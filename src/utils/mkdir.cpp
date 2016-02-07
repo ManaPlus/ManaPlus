@@ -52,7 +52,7 @@ int mkdir_r(const char *const pathname)
     strncpy(tmp, pathname, sizeof(tmp) - 1);
     tmp[PATH_MAX - 1] = '\0';
 
-    const int len = static_cast<int>(strlen(tmp));
+    const int len = CAST_S32(strlen(tmp));
 
     if (len < 1)
         return -1;
@@ -117,7 +117,7 @@ int mkdir_r(const char *const pathname)
     if (!pathname)
         return -1;
 
-    const size_t len = static_cast<size_t>(strlen(pathname));
+    const size_t len = CAST_SIZE(strlen(pathname));
     char *tmp = new char[len + 2];
     char *p = nullptr;
 

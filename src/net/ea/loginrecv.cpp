@@ -82,7 +82,7 @@ void LoginRecv::processLoginData(Net::MessageIn &msg)
     msg.readInt16("unused");
 
     // reserve bits for future usage
-    mToken.sex = Being::intToGender(static_cast<uint8_t>(
+    mToken.sex = Being::intToGender(CAST_U8(
         msg.readUInt8("gender") & 3U));
 
     for (int i = 0; i < worldCount; i++)
@@ -109,7 +109,7 @@ void LoginRecv::processLoginData(Net::MessageIn &msg)
 void LoginRecv::processLoginError(Net::MessageIn &msg)
 {
     const uint8_t code = msg.readUInt8("error");
-    logger->log("Login::error code: %u", static_cast<unsigned int>(code));
+    logger->log("Login::error code: %u", CAST_U32(code));
     std::string date = msg.readString(20, "date");
 
     switch (code)

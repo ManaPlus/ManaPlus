@@ -165,7 +165,7 @@ void Network::flush()
             toString(mOutSize)).append(" bytes"));
     }
 */
-    if (ret < static_cast<int>(mOutSize))
+    if (ret < CAST_S32(mOutSize))
     {
         SDL_mutexV(mMutexOut);
         setError("Error in TcpNet::send(): " +
@@ -188,7 +188,7 @@ void Network::skip(const int len)
     if (mInSize >= mToSkip)
     {
         mInSize -= mToSkip;
-        memmove(mInBuffer, mInBuffer + static_cast<size_t>(mToSkip), mInSize);
+        memmove(mInBuffer, mInBuffer + CAST_SIZE(mToSkip), mInSize);
         mToSkip = 0;
     }
     else
@@ -258,7 +258,7 @@ void Network::receive()
     while (mState == CONNECTED)
     {
         const int numReady = TcpNet::checkSockets(
-            set, (static_cast<uint32_t>(500)));
+            set, (CAST_U32(500)));
         switch (numReady)
         {
             case -1:
@@ -280,7 +280,7 @@ void Network::receive()
                 }
 
                 const int ret = TcpNet::recv(mSocket,
-                    mInBuffer + static_cast<size_t>(mInSize),
+                    mInBuffer + CAST_SIZE(mInSize),
                     BUFFER_SIZE - mInSize);
 
                 if (!ret)
@@ -305,7 +305,7 @@ void Network::receive()
                         {
                             mInSize -= mToSkip;
                             memmove(mInBuffer,
-                                mInBuffer + static_cast<size_t>(mToSkip),
+                                mInBuffer + CAST_SIZE(mToSkip),
                                 mInSize);
                             mToSkip = 0;
                         }
@@ -348,10 +348,10 @@ uint16_t Network::readWord(const int pos) const
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     return SDL_Swap16(*reinterpret_cast<uint16_t*>(
-        mInBuffer + static_cast<size_t>(pos)));
+        mInBuffer + CAST_SIZE(pos)));
 #else
     return (*reinterpret_cast<uint16_t*>(
-        mInBuffer + static_cast<size_t>(pos)));
+        mInBuffer + CAST_SIZE(pos)));
 #endif
 }
 

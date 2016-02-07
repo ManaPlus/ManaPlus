@@ -638,7 +638,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
                 if (itemShortcutWindow)
                 {
                     const int num = itemShortcutWindow->getTabIndex();
-                    if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
+                    if (num >= 0 && num < CAST_S32(SHORTCUT_TABS))
                     {
                         if (itemShortcut[num])
                             itemShortcut[num]->setItemSelected(item);
@@ -1047,7 +1047,7 @@ void ItemContainer::updateMatrix()
 
     mRedraw = true;
     delete []mShowMatrix;
-    mShowMatrix = new int[static_cast<size_t>(mGridRows * mGridColumns)];
+    mShowMatrix = new int[CAST_SIZE(mGridRows * mGridColumns)];
 
     std::vector<ItemIdPair*> sortedItems;
     int i = 0;

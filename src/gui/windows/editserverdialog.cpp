@@ -230,7 +230,7 @@ void EditServerDialog::action(const ActionEvent &event)
             mServer.description = mDescriptionField->getText();
             mServer.onlineListUrl = mOnlineListUrlField->getText();
             mServer.hostname = mServerAddressField->getText();
-            mServer.port = static_cast<int16_t>(atoi(
+            mServer.port = CAST_S16(atoi(
                 mPortField->getText().c_str()));
             mServer.persistentIp = mPersistentIp->isSelected();
 

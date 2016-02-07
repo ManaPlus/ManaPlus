@@ -517,8 +517,8 @@ void Being::setPosition(const Vector &restrict pos) restrict2
 
     if (mText)
     {
-        mText->adviseXY(static_cast<int>(pos.x),
-            static_cast<int>(pos.y) - getHeight() - mText->getHeight() - 6,
+        mText->adviseXY(CAST_S32(pos.x),
+            CAST_S32(pos.y) - getHeight() - mText->getHeight() - 6,
             mMoveNames);
     }
 }
@@ -581,11 +581,11 @@ void Being::setSpeech(const std::string &restrict text,
     {
         const size_t sz = mSpeech.size();
         if (sz < 200)
-            time = static_cast<int>(SPEECH_TIME - 300 + (3 * sz));
+            time = CAST_S32(SPEECH_TIME - 300 + (3 * sz));
     }
 
-    if (time < static_cast<int>(SPEECH_MIN_TIME))
-        time = static_cast<int>(SPEECH_MIN_TIME);
+    if (time < CAST_S32(SPEECH_MIN_TIME))
+        time = CAST_S32(SPEECH_MIN_TIME);
 
     // Check for links
     size_t start = mSpeech.find('[');
@@ -620,8 +620,8 @@ void Being::setSpeech(const std::string &restrict text,
 
     if (!mSpeech.empty())
     {
-        mSpeechTime = time <= static_cast<int>(SPEECH_MAX_TIME)
-            ? time : static_cast<int>(SPEECH_MAX_TIME);
+        mSpeechTime = time <= CAST_S32(SPEECH_MAX_TIME)
+            ? time : CAST_S32(SPEECH_MAX_TIME);
     }
 
     const int speech = mSpeechType;
@@ -1545,7 +1545,7 @@ void Being::setAction(const BeingActionT &restrict action,
         case BeingAction::PRESTAND:
         default:
             logger->log("Being::setAction unknown action: "
-                + toString(static_cast<unsigned>(action)));
+                + toString(CAST_U32(action)));
             break;
     }
 
@@ -1696,7 +1696,7 @@ void Being::nextTile() restrict2
         return;
     }
 
-    mActionTime += static_cast<int>(mSpeed / 10);
+    mActionTime += CAST_S32(mSpeed / 10);
     if ((mType != ActorType::Player || mUseDiagonal)
         && mX != pos.x && mY != pos.y)
     {
@@ -1752,7 +1752,7 @@ void Being::logic() restrict2
             sprite->update(time);
     }
 
-    int frameCount = static_cast<int>(getFrameCount());
+    int frameCount = CAST_S32(getFrameCount());
 
     switch (mAction)
     {
@@ -1845,7 +1845,7 @@ void Being::logic() restrict2
         frameCount = 10;
 
     if (!isAlive() && mSpeed && gameHandler->removeDeadBeings()
-        && static_cast<int> ((static_cast<float>(get_elapsed_time(mActionTime))
+        && CAST_S32 ((static_cast<float>(get_elapsed_time(mActionTime))
         / mSpeed)) >= frameCount)
     {
         if (mType != ActorType::Player && actorManager)
@@ -1882,7 +1882,7 @@ void Being::petLogic() restrict2
 
     const int time = tick_time;
     const int thinkTime = mInfo->getThinkTime();
-    if (abs(static_cast<int>(mMoveTime) - time) < thinkTime)
+    if (abs(CAST_S32(mMoveTime) - time) < thinkTime)
         return;
 
     mMoveTime = time;
@@ -2161,9 +2161,9 @@ int Being::getOffset(const signed char pos,
         const int time = get_elapsed_time(mActionTime);
         offset = (pos == BeingDirection::LEFT
             && neg == BeingDirection::RIGHT) ?
-            static_cast<int>((static_cast<float>(time)
+            CAST_S32((static_cast<float>(time)
             * static_cast<float>(mMap->getTileWidth())) / mSpeed) :
-            static_cast<int>((static_cast<float>(time)
+            CAST_S32((static_cast<float>(time)
             * static_cast<float>(mMap->getTileHeight())) / mSpeed);
     }
 
@@ -2440,7 +2440,7 @@ void Being::updateSprite(const unsigned int slot,
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
 
-    if (slot >= static_cast<unsigned int>(mSpriteIDs.size()))
+    if (slot >= CAST_U32(mSpriteIDs.size()))
         mSpriteIDs.resize(slot + 1, 0);
 
     if (slot && mSpriteIDs[slot] == id)
@@ -2458,16 +2458,16 @@ void Being::setSprite(const unsigned int slot,
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
 
-    if (slot >= static_cast<unsigned int>(size()))
+    if (slot >= CAST_U32(size()))
         ensureSize(slot + 1);
 
-    if (slot >= static_cast<unsigned int>(mSpriteIDs.size()))
+    if (slot >= CAST_U32(mSpriteIDs.size()))
         mSpriteIDs.resize(slot + 1, 0);
 
-    if (slot >= static_cast<unsigned int>(mSpriteColors.size()))
+    if (slot >= CAST_U32(mSpriteColors.size()))
         mSpriteColors.resize(slot + 1, "");
 
-    if (slot >= static_cast<unsigned int>(mSpriteColorsIds.size()))
+    if (slot >= CAST_U32(mSpriteColorsIds.size()))
         mSpriteColorsIds.resize(slot + 1, ItemColor_one);
 
     // disabled for now, because it may broke replace/reorder sprites logic
@@ -2654,7 +2654,7 @@ void Being::reReadConfig()
         mHideErased = config.getBoolValue("hideErased");
         mMoveNames = fromBool(config.getBoolValue("moveNames"), Move);
         mUseDiagonal = config.getBoolValue("useDiagonalSpeed");
-        mShowBadges = static_cast<uint8_t>(config.getIntValue("showBadges"));
+        mShowBadges = CAST_U8(config.getIntValue("showBadges"));
 
         mUpdateConfigTime = cur_time;
     }
@@ -2783,7 +2783,7 @@ void Being::setGender(const GenderT gender) restrict2
 
         // Reload all subsprites
         for (unsigned int i = 0;
-             i < static_cast<unsigned int>(mSpriteIDs.size());
+             i < CAST_U32(mSpriteIDs.size());
              i++)
         {
             if (mSpriteIDs.at(i) != 0)
@@ -2901,7 +2901,7 @@ void Being::drawSprites(Graphics *restrict const graphics,
 void Being::drawSpritesSDL(Graphics *restrict const graphics,
                            int posX, int posY) const restrict2
 {
-    const unsigned int sz = static_cast<unsigned int>(size());
+    const unsigned int sz = CAST_U32(size());
     for (unsigned int f = 0; f < sz; f ++)
     {
         const int rSprite = mSpriteHide[mSpriteRemap[f]];
@@ -3134,7 +3134,7 @@ void Being::recalcSpritesOrder() restrict2
 
     for (size_t slot = 0; slot < sz; slot ++)
     {
-        slotRemap.push_back(static_cast<int>(slot));
+        slotRemap.push_back(CAST_S32(slot));
 
         if (spriteIdSize <= slot)
             continue;
@@ -3177,7 +3177,7 @@ void Being::recalcSpritesOrder() restrict2
                                 mSpriteHide[remSprite] = repIt->second;
                                 if (repIt->second != 1)
                                 {
-                                    if (static_cast<unsigned>(remSprite)
+                                    if (CAST_U32(remSprite)
                                         != hairSlot)
                                     {
                                         setSprite(remSprite, repIt->second,
@@ -3299,7 +3299,7 @@ void Being::recalcSpritesOrder() restrict2
             const int val = slotRemap.at(slot);
             int id = 0;
 
-            if (static_cast<int>(spriteIdSize) > val)
+            if (CAST_S32(spriteIdSize) > val)
                 id = mSpriteIDs[val];
 
             int idx = -1;
@@ -3404,7 +3404,7 @@ int Being::searchSlotValue(const std::vector<int> &restrict slotRemap,
     for (size_t slot = 0; slot < sz; slot ++)
     {
         if (slotRemap[slot] == val)
-            return static_cast<int>(slot);
+            return CAST_S32(slot);
     }
     return getNumberOfLayers() - 1;
 }
@@ -3461,7 +3461,7 @@ void Being::undressItemById(const int id) restrict2
     {
         if (id == mSpriteIDs[f])
         {
-            setSprite(static_cast<unsigned int>(f), 0);
+            setSprite(CAST_U32(f), 0);
             break;
         }
     }
@@ -3677,7 +3677,7 @@ GenderT Being::intToGender(const uint8_t sex)
 
 int Being::getSpriteID(const int slot) const restrict2
 {
-    if (slot < 0 || static_cast<size_t>(slot) >= mSpriteIDs.size())
+    if (slot < 0 || CAST_SIZE(slot) >= mSpriteIDs.size())
         return -1;
 
     return mSpriteIDs[slot];
@@ -3685,7 +3685,7 @@ int Being::getSpriteID(const int slot) const restrict2
 
 ItemColor Being::getSpriteColor(const int slot) const restrict2
 {
-    if (slot < 0 || static_cast<size_t>(slot) >= mSpriteColorsIds.size())
+    if (slot < 0 || CAST_SIZE(slot) >= mSpriteColorsIds.size())
         return ItemColor_one;
 
     return mSpriteColorsIds[slot];

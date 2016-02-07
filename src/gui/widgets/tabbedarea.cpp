@@ -158,7 +158,7 @@ void TabbedArea::enableScrollButtons(const bool enable)
 
 int TabbedArea::getNumberOfTabs() const
 {
-    return static_cast<int>(mTabs.size());
+    return CAST_S32(mTabs.size());
 }
 
 Tab *TabbedArea::getTab(const std::string &name) const
@@ -318,7 +318,7 @@ void TabbedArea::removeTab(Tab *const tab)
     {
         const int index = getSelectedTabIndex();
         const size_t sz = mTabs.size();
-        if (index == static_cast<int>(sz) - 1 && sz == 1)
+        if (index == CAST_S32(sz) - 1 && sz == 1)
             tabIndexToBeSelected = -1;
         else
             tabIndexToBeSelected = index - 1;
@@ -346,7 +346,7 @@ void TabbedArea::removeTab(Tab *const tab)
         }
     }
 
-    const int tabsSize = static_cast<int>(mTabs.size());
+    const int tabsSize = CAST_S32(mTabs.size());
     if (tabIndexToBeSelected >= tabsSize)
         tabIndexToBeSelected = tabsSize - 1;
     if (tabIndexToBeSelected < -1)
@@ -421,7 +421,7 @@ void TabbedArea::setSelectedTab(Tab *const tab)
 
 int TabbedArea::getSelectedTabIndex() const
 {
-    for (unsigned int i = 0, sz = static_cast<unsigned int>(mTabs.size());
+    for (unsigned int i = 0, sz = CAST_U32(mTabs.size());
          i < sz; i++)
     {
         if (mTabs[i].first == mSelectedTab)
@@ -527,7 +527,7 @@ void TabbedArea::updateVisibleTabsWidth()
     for (size_t i = mTabScrollIndex, sz = mTabs.size(); i < sz; ++i)
     {
         if (mTabs[i].first)
-            mVisibleTabsWidth += static_cast<int>(mTabs[i].first->getWidth());
+            mVisibleTabsWidth += CAST_S32(mTabs[i].first->getWidth());
     }
 }
 
@@ -625,7 +625,7 @@ void TabbedArea::action(const ActionEvent& actionEvent)
         }
         else if (eventId == "shift_right")
         {
-            if (static_cast<size_t>(mTabScrollIndex) < mTabs.size() - 1)
+            if (CAST_SIZE(mTabScrollIndex) < mTabs.size() - 1)
                 ++mTabScrollIndex;
         }
         adjustTabPositions();
@@ -675,14 +675,14 @@ void TabbedArea::updateArrowEnableState()
 
 Tab *TabbedArea::getTabByIndex(const int index) const
 {
-    if (index < 0 || index >= static_cast<int>(mTabs.size()))
+    if (index < 0 || index >= CAST_S32(mTabs.size()))
         return nullptr;
     return static_cast<Tab*>(mTabs[index].first);
 }
 
 Widget *TabbedArea::getWidgetByIndex(const int index) const
 {
-    if (index < 0 || index >= static_cast<int>(mTabs.size()))
+    if (index < 0 || index >= CAST_S32(mTabs.size()))
         return nullptr;
     return mTabs[index].second;
 }
@@ -691,7 +691,7 @@ void TabbedArea::removeAll(const bool del)
 {
     if (getSelectedTabIndex() != -1)
     {
-        setSelectedTabByIndex(static_cast<unsigned int>(0));
+        setSelectedTabByIndex(CAST_U32(0));
     }
     while (getNumberOfTabs() > 0)
     {
@@ -755,7 +755,7 @@ void TabbedArea::keyPressed(KeyEvent& event)
         int index = getSelectedTabIndex();
         index++;
 
-        if (index >= static_cast<int>(mTabs.size()))
+        if (index >= CAST_S32(mTabs.size()))
             return;
         else
             setSelectedTab(mTabs[index].first);
@@ -778,7 +778,7 @@ void TabbedArea::selectNextTab()
 {
     int tab = getSelectedTabIndex();
     tab++;
-    if (tab == static_cast<int>(mTabs.size()))
+    if (tab == CAST_S32(mTabs.size()))
         tab = 0;
     setSelectedTab(mTabs[tab].first);
 }
@@ -788,7 +788,7 @@ void TabbedArea::selectPrevTab()
     int tab = getSelectedTabIndex();
 
     if (tab == 0)
-        tab = static_cast<int>(mTabs.size());
+        tab = CAST_S32(mTabs.size());
     if (tab < 0)
         return;
     tab--;

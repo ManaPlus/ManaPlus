@@ -232,7 +232,7 @@ int CompoundSprite::getNumberOfLayers() const
     if (mImage || mAlphaImage)
         return 1;
     else
-        return static_cast<int>(size());
+        return CAST_S32(size());
 }
 
 unsigned int CompoundSprite::getCurrentFrame() const
@@ -312,7 +312,7 @@ void CompoundSprite::ensureSize(size_t layerCount)
  */
 unsigned int CompoundSprite::getCurrentFrame(unsigned int layer) const
 {
-    if (layer >= static_cast<unsigned int>(mSprites.size()))
+    if (layer >= CAST_U32(mSprites.size()))
         return 0;
 
     const Sprite *const s = getSprite(layer);
@@ -327,7 +327,7 @@ unsigned int CompoundSprite::getCurrentFrame(unsigned int layer) const
  */
 unsigned int CompoundSprite::getFrameCount(unsigned int layer)
 {
-    if (layer >= static_cast<unsigned int>(mSprites.size()))
+    if (layer >= CAST_U32(mSprites.size()))
         return 0;
 
     const Sprite *const s = getSprite(layer);

@@ -226,8 +226,8 @@ void ItemShortcut::setItem(const int index,
 void ItemShortcut::swap(const int index1, const int index2)
 {
     if (index1 < 0 || index2 < 0
-        || static_cast<unsigned int>(index1) >= SHORTCUT_ITEMS
-        || static_cast<unsigned int>(index2) >= SHORTCUT_ITEMS)
+        || CAST_U32(index1) >= SHORTCUT_ITEMS
+        || CAST_U32(index2) >= SHORTCUT_ITEMS)
     {
         return;
     }

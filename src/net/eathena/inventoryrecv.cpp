@@ -97,7 +97,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         const int itemType = msg.readUInt8("item type");
         msg.readInt32("location");
         const int equipType = msg.readInt32("wear state");
-        const uint8_t refine = static_cast<uint8_t>(msg.readInt8("refine"));
+        const uint8_t refine = CAST_U8(msg.readInt8("refine"));
         int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
             cards[f] = msg.readInt16("card");

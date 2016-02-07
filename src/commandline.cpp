@@ -204,7 +204,7 @@ void parseOptions(const int argc, char *const argv[])
                 options.serverName = optarg;
                 break;
             case 'p':
-                options.serverPort = static_cast<uint16_t>(atoi(optarg));
+                options.serverPort = CAST_U16(atoi(optarg));
                 break;
             case 'u':
                 options.skipUpdate = true;
@@ -242,7 +242,7 @@ void parseOptions(const int argc, char *const argv[])
                 options.test = std::string(optarg);
                 break;
             case 'r':
-                options.renderer = static_cast<int>(atoi(optarg));
+                options.renderer = CAST_S32(atoi(optarg));
                 break;
             case 'y':
                 options.serverType = optarg;

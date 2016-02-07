@@ -129,7 +129,7 @@ int IPC::acceptLoop(void *ptr)
             ipc1->mNumReqs, req.c_str());
 
         const char *const respc = resp.c_str();
-        const int len = static_cast<int>(strlen(respc)) + 1;
+        const int len = CAST_S32(strlen(respc)) + 1;
         result = TcpNet::send(sock, respc, len);
         if (result < len)
         {

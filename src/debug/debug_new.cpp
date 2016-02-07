@@ -516,7 +516,7 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
         fprintf(new_output_fp,
                 "new%s: allocated %p (size %u, ",
                 is_array ? "[]" : "",
-                pointer, static_cast<unsigned>(size));
+                pointer, CAST_U32(size));
         if (line != 0)
             print_position(ptr->file, ptr->line);
         else
@@ -566,7 +566,7 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
                 "%s: pointer %p (size %u)\n\tat ",
                 msg,
                 reinterpret_cast<char*>(ptr) + ALIGNED_LIST_ITEM_SIZE,
-                static_cast<unsigned>(ptr->size));
+                CAST_U32(ptr->size));
         print_position(addr, 0);
         fprintf(new_output_fp, "\n\toriginally allocated at ");
         if (ptr->line != 0)
@@ -599,8 +599,8 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
             "delete%s: freed %p (size %u, %u bytes still allocated)\n",
             is_array ? "[]" : "",
             reinterpret_cast<char*>(ptr) + ALIGNED_LIST_ITEM_SIZE,
-            static_cast<unsigned>(ptr->size),
-            static_cast<unsigned>(total_mem_alloc));
+            CAST_U32(ptr->size),
+            CAST_U32(total_mem_alloc));
     }
     free(ptr);
     return;
@@ -646,7 +646,7 @@ int check_leaks()
         {
             fprintf(new_output_fp,
                     "Leaked object at %p (size %u, dump %u, ",
-                    pointer, static_cast<unsigned>(ptr->size), ptr->dumped);
+                    pointer, CAST_U32(ptr->size), ptr->dumped);
             if (ptr->line != 0)
                 print_position(ptr->file, ptr->line);
             else
@@ -704,7 +704,7 @@ int check_mem_corruption()
             fprintf(new_output_fp,
                 "Heap data corrupt near %p (size %u, ",
                 pointer,
-                static_cast<unsigned>(ptr->size));
+                CAST_U32(ptr->size));
 #if M_DEBUG_NEW_TAILCHECK
         }
         else

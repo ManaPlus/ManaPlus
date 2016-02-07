@@ -141,7 +141,7 @@ QuitDialog::~QuitDialog()
 void QuitDialog::placeOption(ContainerPlacer &placer,
                              RadioButton *const option)
 {
-    placer(0, static_cast<int>(mOptions.size()), option, 3);
+    placer(0, CAST_S32(mOptions.size()), option, 3);
     mOptions.push_back(option);
 }
 

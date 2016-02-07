@@ -120,7 +120,7 @@ void Palette::advanceGradient()
 
             if (grad == GradientType::PULSE)
             {
-                colVal = static_cast<int>(255.0 *
+                colVal = CAST_S32(255.0 *
                         sin(M_PI * colIndex / numOfColors));
 
                 const Color &col = elem->testColor;
@@ -135,12 +135,12 @@ void Palette::advanceGradient()
                 { // falling curve
                     if (delay)
                     {
-                        colVal = static_cast<int>(255.0 *
+                        colVal = CAST_S32(255.0 *
                              (cos(M_PI * pos / delay) + 1) / 2);
                     }
                     else
                     {
-                        colVal = static_cast<int>(255.0 *
+                        colVal = CAST_S32(255.0 *
                              (cos(M_PI * pos) + 1) / 2);
                     }
                 }
@@ -148,12 +148,12 @@ void Palette::advanceGradient()
                 { // ascending curve
                     if (delay)
                     {
-                        colVal = static_cast<int>(255.0 * (cos(M_PI *
+                        colVal = CAST_S32(255.0 * (cos(M_PI *
                             (delay - pos) / delay) + 1) / 2);
                     }
                     else
                     {
-                        colVal = static_cast<int>(255.0 * (cos(M_PI *
+                        colVal = CAST_S32(255.0 * (cos(M_PI *
                             (delay - pos)) + 1) / 2);
                     }
                 }
@@ -180,13 +180,13 @@ void Palette::advanceGradient()
 
                 destColVal = 1 - startColVal;
 
-                color.r = static_cast<int>(startColVal
+                color.r = CAST_S32(startColVal
                     * startCol.r + destColVal * destCol.r);
 
-                color.g = static_cast<int>(startColVal
+                color.g = CAST_S32(startColVal
                     * startCol.g + destColVal * destCol.g);
 
-                color.b = static_cast<int>(startColVal
+                color.b = CAST_S32(startColVal
                     * startCol.b + destColVal * destCol.b);
             }
         }

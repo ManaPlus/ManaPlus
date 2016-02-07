@@ -70,7 +70,7 @@ class IconsModel final : public ListModel
 
         int getNumberOfElements() override final
         {
-            return static_cast<int>(mStrings.size());
+            return CAST_S32(mStrings.size());
         }
 
         std::string getElementAt(int i) override final

@@ -38,22 +38,22 @@ ColorModel::~ColorModel()
 
 int ColorModel::getNumberOfElements()
 {
-    return static_cast<int>(mNames.size());
+    return CAST_S32(mNames.size());
 }
 
 std::string ColorModel::getElementAt(int i)
 {
     if (i >= getNumberOfElements() || i < 0)
         return "???";
-    return mNames[static_cast<size_t>(i)];
+    return mNames[CAST_SIZE(i)];
 }
 
 const ColorPair *ColorModel::getColorAt(const int i) const
 {
-    if (i >= static_cast<int>(mColors.size()) || i < 0)
+    if (i >= CAST_S32(mColors.size()) || i < 0)
         return &mColors[0];
 
-    return &mColors[static_cast<size_t>(i)];
+    return &mColors[CAST_SIZE(i)];
 }
 
 void ColorModel::add(const std::string &name, const Color *const color1,

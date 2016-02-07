@@ -47,15 +47,15 @@ AdminHandler::AdminHandler() :
 void AdminHandler::announce(const std::string &text) const
 {
     createOutPacket(CMSG_ADMIN_ANNOUNCE);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4), "len");
-    outMsg.writeString(text, static_cast<int>(text.length()), "message");
+    outMsg.writeInt16(CAST_S16(text.length() + 4), "len");
+    outMsg.writeString(text, CAST_S32(text.length()), "message");
 }
 
 void AdminHandler::localAnnounce(const std::string &text) const
 {
     createOutPacket(CMSG_ADMIN_LOCAL_ANNOUNCE);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4), "len");
-    outMsg.writeString(text, static_cast<int>(text.length()), "message");
+    outMsg.writeInt16(CAST_S16(text.length() + 4), "len");
+    outMsg.writeString(text, CAST_S32(text.length()), "message");
 }
 
 void AdminHandler::hide(const bool h A_UNUSED) const

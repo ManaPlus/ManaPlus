@@ -86,7 +86,7 @@ namespace
                     return nullptr;
                 cobj->setValue(NAME, value.first);
                 cobj->setValue(RELATION, toString(
-                    static_cast<int>(value.second->mRelation)));
+                    CAST_S32(value.second->mRelation)));
 
                 return cobj;
             }
@@ -105,7 +105,7 @@ namespace
                 if (!(*container)[name])
                 {
                     const int v = cobj->getValueInt(RELATION,
-                        static_cast<int>(Relation::NEUTRAL));
+                        CAST_S32(Relation::NEUTRAL));
 
                     (*container)[name] = new PlayerRelation(
                         static_cast<RelationT>(v));
@@ -175,7 +175,7 @@ int PlayerRelationsManager::getPlayerIgnoreStrategyIndex(
     for (size_t i = 0; i < sz; i++)
     {
         if ((*strategies)[i]->mShortName == name)
-            return static_cast<int>(i);
+            return CAST_S32(i);
     }
 
     return -1;
@@ -191,7 +191,7 @@ void PlayerRelationsManager::load(const bool oldConfig)
     clear();
 
     mPersistIgnores = cfg->getValue(PERSIST_IGNORE_LIST, 1);
-    mDefaultPermissions = static_cast<int>(cfg->getValue(DEFAULT_PERMISSIONS,
+    mDefaultPermissions = CAST_S32(cfg->getValue(DEFAULT_PERMISSIONS,
                                            mDefaultPermissions));
 
     const std::string ignore_strategy_name = cfg->getValue(
@@ -271,7 +271,7 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
     {
         const PlayerRelation *const r = (*it).second;
         unsigned int permissions = PlayerRelation::RELATION_PERMISSIONS[
-            static_cast<int>(r->mRelation)];
+            CAST_S32(r->mRelation)];
 
         switch (r->mRelation)
         {

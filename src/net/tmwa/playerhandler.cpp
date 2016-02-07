@@ -70,7 +70,7 @@ void PlayerHandler::increaseAttribute(const AttributesT attr) const
     if (attr >= Attributes::STR && attr <= Attributes::LUK)
     {
         createOutPacket(CMSG_STAT_UPDATE_REQUEST);
-        outMsg.writeInt16(static_cast<int16_t>(attr), "attribute id");
+        outMsg.writeInt16(CAST_S16(attr), "attribute id");
         outMsg.writeInt8(1, "increment");
     }
 }
@@ -108,9 +108,9 @@ void PlayerHandler::setDestination(const int x, const int y,
                                    const int direction) const
 {
     createOutPacket(CMSG_PLAYER_CHANGE_DEST);
-    outMsg.writeCoordinates(static_cast<uint16_t>(x),
-        static_cast<uint16_t>(y),
-        static_cast<unsigned char>(direction), "destination");
+    outMsg.writeCoordinates(CAST_U16(x),
+        CAST_U16(y),
+        CAST_U8(direction), "destination");
 }
 
 void PlayerHandler::changeAction(const BeingActionT &action) const

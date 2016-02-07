@@ -468,7 +468,7 @@ void Slider::setValue(const double value)
         mValue = mScaleStart;
     else
         mValue = value;
-    mValue = static_cast<int>((mValue - mScaleStart) / mStepLength)
+    mValue = CAST_S32((mValue - mScaleStart) / mStepLength)
         * mStepLength + mScaleStart;
 }
 
@@ -492,7 +492,7 @@ int Slider::valueToMarkerPosition(const double value) const
     else
         v = mDimension.height;
 
-    const int w = static_cast<int>((v - mMarkerLength)
+    const int w = CAST_S32((v - mMarkerLength)
             * (value  - mScaleStart)
             / (mScaleEnd - mScaleStart));
 

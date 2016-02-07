@@ -229,7 +229,7 @@ class ResourceManager final
         static void deleteInstance();
 
         int size() const A_WARN_UNUSED
-        { return static_cast<int>(mResources.size()); }
+        { return CAST_S32(mResources.size()); }
 
         typedef std::map<std::string, Resource*> Resources;
         typedef Resources::iterator ResourceIterator;

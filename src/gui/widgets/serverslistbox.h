@@ -53,11 +53,11 @@ class ServersListBox final : public ListBox
 
             updateAlpha();
 
-            mHighlightColor.a = static_cast<int>(mAlpha * 255.0F);
+            mHighlightColor.a = CAST_S32(mAlpha * 255.0F);
             graphics->setColor(mHighlightColor);
 
             const int height = getRowHeight();
-            mNotSupportedColor.a = static_cast<int>(mAlpha * 255.0F);
+            mNotSupportedColor.a = CAST_S32(mAlpha * 255.0F);
 
             // Draw filled rectangle around the selected list element
             if (mSelected >= 0)

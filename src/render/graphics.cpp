@@ -281,15 +281,15 @@ bool Graphics::setOpenGLMode() restrict2
     int w1 = 0;
     int h1 = 0;
     SDL_GetWindowSize(mWindow, &w1, &h1);
-    mRect.w = static_cast<int32_t>(w1 / mScale);
-    mRect.h = static_cast<int32_t>(h1 / mScale);
+    mRect.w = CAST_S32(w1 / mScale);
+    mRect.h = CAST_S32(h1 / mScale);
 
     createGLContext();
 #else  // USE_SDL2
 
     createGLContext();
-    mRect.w = static_cast<uint16_t>(mWindow->w / mScale);
-    mRect.h = static_cast<uint16_t>(mWindow->h / mScale);
+    mRect.w = CAST_U16(mWindow->w / mScale);
+    mRect.h = CAST_U16(mWindow->h / mScale);
 
 #endif  // USE_SDL2
 
@@ -514,8 +514,8 @@ bool Graphics::resizeScreen(const int width,
 #ifdef USE_SDL2
     endDraw();
 
-    mRect.w = static_cast<int32_t>(width / mScale);
-    mRect.h = static_cast<int32_t>(height / mScale);
+    mRect.w = CAST_S32(width / mScale);
+    mRect.h = CAST_S32(height / mScale);
     mWidth = width / mScale;
     mHeight = height / mScale;
     mActualWidth = width;
@@ -545,8 +545,8 @@ bool Graphics::resizeScreen(const int width,
 #ifdef __native_client__
     if (mOpenGL != RENDER_SOFTWARE)
     {
-        mRect.w = static_cast<int32_t>(width / mScale);
-        mRect.h = static_cast<int32_t>(height / mScale);
+        mRect.w = CAST_S32(width / mScale);
+        mRect.h = CAST_S32(height / mScale);
         mWidth = width / mScale;
         mHeight = height / mScale;
         mActualWidth = width;

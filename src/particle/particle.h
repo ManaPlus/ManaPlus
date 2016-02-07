@@ -94,13 +94,13 @@ class Particle notfinal : public Actor
          * Necessary for sorting with the other sprites.
          */
         int getPixelY() const restrict2 override A_WARN_UNUSED
-        { return static_cast<int>(mPos.y) - 16; }
+        { return CAST_S32(mPos.y) - 16; }
 
         /**
          * Necessary for sorting with the other sprites for sorting only.
          */
         int getSortPixelY() const restrict2 override A_WARN_UNUSED
-        { return static_cast<int>(mPos.y) - 16; }
+        { return CAST_S32(mPos.y) - 16; }
 
         /**
          * Creates a blank particle as a child of the current particle

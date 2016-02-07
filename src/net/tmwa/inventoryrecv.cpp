@@ -380,9 +380,9 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
             logger->log("Index: %d, ID: %d, Type: %d, Identified: %u, "
                 "Qty: %d, Cards: %d, %d, %d, %d, Refine: %u",
                 index, itemId, itemType,
-                static_cast<unsigned int>(identified), amount,
+                CAST_U32(identified), amount,
                 cards[0], cards[1], cards[2], cards[3],
-                static_cast<unsigned int>(refine));
+                CAST_U32(refine));
         }
 
         Ea::InventoryRecv::mInventoryItems.push_back(Ea::InventoryItem(

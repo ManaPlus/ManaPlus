@@ -130,7 +130,7 @@ void IntTextField::setValue(const int i)
 
     const std::string valStr = toString(mValue);
     setText(valStr);
-    setCaretPosition(static_cast<unsigned>(valStr.length()) + 1);
+    setCaretPosition(CAST_U32(valStr.length()) + 1);
 }
 
 void IntTextField::setDefaultValue(const int value)

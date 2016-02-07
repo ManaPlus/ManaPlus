@@ -31,8 +31,8 @@
 #include "debug.h"
 
 #define MAKEWORD(low, high) \
-    (static_cast<uint16_t>((static_cast<unsigned char>(low)) | \
-    (static_cast<uint16_t>(static_cast<unsigned char>(high))) << 8))
+    (CAST_U16((CAST_U8(low)) | \
+    (CAST_U16(CAST_U8(high))) << 8))
 
 namespace Net
 {
@@ -56,25 +56,25 @@ MessageIn::~MessageIn()
         {
             logger->log("Wrong actual or planned inbound packet size!");
             logger->log(" packet id: %u 0x%x",
-                static_cast<unsigned int>(mId),
-                static_cast<unsigned int>(mId));
+                CAST_U32(mId),
+                CAST_U32(mId));
             logger->log(" planned size: %u", mLength);
             logger->log(" read size: %u", mPos);
         }
     }
     else
     {
-        logger->log("Zero packet size: %d", static_cast<int>(mId));
+        logger->log("Zero packet size: %d", CAST_S32(mId));
     }
 }
 
 unsigned char MessageIn::readUInt8(const char *const str)
 {
-    unsigned char value = static_cast<unsigned char>(-1);
+    unsigned char value = CAST_U8(-1);
     if (mPos < mLength)
-        value = static_cast<unsigned char>(mData[mPos]);
+        value = CAST_U8(mData[mPos]);
 
-    DEBUGLOG2("readUInt8:  " + toStringPrint(static_cast<unsigned int>(value)),
+    DEBUGLOG2("readUInt8:  " + toStringPrint(CAST_U32(value)),
         mPos, str);
     mPos += 1;
     PacketCounters::incInBytes(1);
@@ -83,12 +83,12 @@ unsigned char MessageIn::readUInt8(const char *const str)
 
 signed char MessageIn::readInt8(const char *const str)
 {
-    signed char value = static_cast<signed char>(-1);
+    signed char value = CAST_S8(-1);
     if (mPos < mLength)
-        value = static_cast<signed char>(mData[mPos]);
+        value = CAST_S8(mData[mPos]);
 
-    DEBUGLOG2("readInt8:   " + toStringPrint(static_cast<unsigned int>(
-        static_cast<unsigned char>(value))),
+    DEBUGLOG2("readInt8:   " + toStringPrint(CAST_U32(
+        CAST_U8(value))),
         mPos, str);
     mPos += 1;
     PacketCounters::incInBytes(1);
@@ -120,7 +120,7 @@ uint8_t MessageIn::fromServerDirection(const uint8_t serverDir)
             return 8;
         default:
             logger->log("incorrect direction: %d",
-                static_cast<int>(serverDir));
+                CAST_S32(serverDir));
             return 0;
     }
 }
@@ -132,19 +132,19 @@ void MessageIn::readCoordinates(uint16_t &restrict x,
 {
     if (mPos + 3 <= mLength)
     {
-        const char *const data = mData + static_cast<size_t>(mPos);
+        const char *const data = mData + CAST_SIZE(mPos);
         uint16_t temp = MAKEWORD(data[1] & 0x00c0, data[0] & 0x00ff);
-        x = static_cast<uint16_t>(temp >> 6);
+        x = CAST_U16(temp >> 6);
         temp = MAKEWORD(data[2] & 0x00f0, data[1] & 0x003f);
-        y = static_cast<uint16_t>(temp >> 4);
+        y = CAST_U16(temp >> 4);
 
-        const uint8_t serverDir = static_cast<uint8_t>(data[2] & 0x000f);
+        const uint8_t serverDir = CAST_U8(data[2] & 0x000f);
         direction = fromServerDirection(serverDir);
 
         DEBUGLOG2(std::string("readCoordinates: ").append(toString(
-            static_cast<int>(x))).append(",").append(toString(
-            static_cast<int>(y))).append(",").append(toString(
-            static_cast<int>(serverDir))), mPos, str);
+            CAST_S32(x))).append(",").append(toString(
+            CAST_S32(y))).append(",").append(toString(
+            CAST_S32(serverDir))), mPos, str);
     }
     else
     {
@@ -165,23 +165,23 @@ void MessageIn::readCoordinatePair(uint16_t &restrict srcX,
 {
     if (mPos + 5 <= mLength)
     {
-        const char *const data = mData + static_cast<size_t>(mPos);
+        const char *const data = mData + CAST_SIZE(mPos);
         uint16_t temp = MAKEWORD(data[3], data[2] & 0x000f);
-        dstX = static_cast<uint16_t>(temp >> 2);
+        dstX = CAST_U16(temp >> 2);
 
         dstY = MAKEWORD(data[4], data[3] & 0x0003);
 
         temp = MAKEWORD(data[1], data[0]);
-        srcX = static_cast<uint16_t>(temp >> 6);
+        srcX = CAST_U16(temp >> 6);
 
         temp = MAKEWORD(data[2], data[1] & 0x003f);
-        srcY = static_cast<uint16_t>(temp >> 4);
+        srcY = CAST_U16(temp >> 4);
 
         DEBUGLOG2(std::string("readCoordinatePair: ").append(toString(
-            static_cast<int>(srcX))).append(",").append(toString(
-            static_cast<int>(srcY))).append(" ").append(toString(
-            static_cast<int>(dstX))).append(",").append(toString(
-            static_cast<int>(dstY))), mPos, str);
+            CAST_S32(srcX))).append(",").append(toString(
+            CAST_S32(srcY))).append(" ").append(toString(
+            CAST_S32(dstX))).append(",").append(toString(
+            CAST_S32(dstY))), mPos, str);
     }
     else
     {
@@ -197,14 +197,14 @@ void MessageIn::readCoordinatePair(uint16_t &restrict srcX,
 
 void MessageIn::skip(const unsigned int length, const char *const str)
 {
-    DEBUGLOG2("skip: " + toString(static_cast<int>(length)), mPos, str);
+    DEBUGLOG2("skip: " + toString(CAST_S32(length)), mPos, str);
     mPos += length;
     PacketCounters::incInBytes(length);
 }
 
 void MessageIn::skipToEnd(const char *const str)
 {
-    const int diff = static_cast<int>(mLength - mPos);
+    const int diff = CAST_S32(mLength - mPos);
     if (diff)
     {
         DEBUGLOG2("skip: " + toString(diff), mPos, str);
@@ -228,12 +228,12 @@ std::string MessageIn::readString(int length, const char *const dstr)
     }
 
     // Read the string
-    const char *const stringBeg = mData + static_cast<size_t>(mPos);
+    const char *const stringBeg = mData + CAST_SIZE(mPos);
     const char *const stringEnd
         = static_cast<const char *const>(memchr(stringBeg, '\0', length));
 
     const std::string str(stringBeg, stringEnd
-        ? stringEnd - stringBeg : static_cast<size_t>(length));
+        ? stringEnd - stringBeg : CAST_SIZE(length));
     DEBUGLOG2("readString: " + str, mPos, dstr);
     mPos += length;
     PacketCounters::incInBytes(length);
@@ -254,17 +254,17 @@ std::string MessageIn::readRawString(int length, const char *const dstr)
     }
 
     // Read the string
-    const char *const stringBeg = mData + static_cast<size_t>(mPos);
+    const char *const stringBeg = mData + CAST_SIZE(mPos);
     const char *const stringEnd
         = static_cast<const char *const>(memchr(stringBeg, '\0', length));
     std::string str(stringBeg, stringEnd
-        ? stringEnd - stringBeg : static_cast<size_t>(length));
+        ? stringEnd - stringBeg : CAST_SIZE(length));
 
     DEBUGLOG2("readString: " + str, mPos, dstr);
 
     if (stringEnd)
     {
-        const size_t len2 = static_cast<size_t>(length)
+        const size_t len2 = CAST_SIZE(length)
             - (stringEnd - stringBeg) - 1;
         const char *const stringBeg2 = stringEnd + 1;
         const char *const stringEnd2
@@ -298,9 +298,9 @@ unsigned char *MessageIn::readBytes(int length, const char *const dstr)
     }
 
     unsigned char *const buf
-        = new unsigned char[static_cast<size_t>(length + 2)];
+        = new unsigned char[CAST_SIZE(length + 2)];
 
-    memcpy(buf, mData + static_cast<size_t>(mPos), length);
+    memcpy(buf, mData + CAST_SIZE(mPos), length);
     buf[length] = 0;
     buf[length + 1] = 0;
     mPos += length;
@@ -308,7 +308,7 @@ unsigned char *MessageIn::readBytes(int length, const char *const dstr)
 #ifdef ENABLEDEBUGLOG
     std::string str;
     for (int f = 0; f < length; f ++)
-        str.append(strprintf("%02x", static_cast<unsigned>(buf[f])));
+        str.append(strprintf("%02x", CAST_U32(buf[f])));
     str += " ";
     for (int f = 0; f < length; f ++)
     {

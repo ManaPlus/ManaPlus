@@ -117,8 +117,8 @@ void PartyHandler::kick(const std::string &name) const
 void PartyHandler::chat(const std::string &text) const
 {
     createOutPacket(CMSG_PARTY_MESSAGE);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4), "len");
-    outMsg.writeString(text, static_cast<int>(text.length()), "text");
+    outMsg.writeInt16(CAST_S16(text.length() + 4), "len");
+    outMsg.writeString(text, CAST_S32(text.length()), "text");
 }
 
 void PartyHandler::setShareExperience(const PartyShareT share) const
@@ -127,8 +127,8 @@ void PartyHandler::setShareExperience(const PartyShareT share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(static_cast<int16_t>(share), "share exp");
-    outMsg.writeInt16(static_cast<int16_t>(Ea::PartyRecv::mShareItems),
+    outMsg.writeInt16(CAST_S16(share), "share exp");
+    outMsg.writeInt16(CAST_S16(Ea::PartyRecv::mShareItems),
         "share items");
 }
 
@@ -138,9 +138,9 @@ void PartyHandler::setShareItems(const PartyShareT share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(static_cast<int16_t>(Ea::PartyRecv::mShareExp),
+    outMsg.writeInt16(CAST_S16(Ea::PartyRecv::mShareExp),
         "share exp");
-    outMsg.writeInt16(static_cast<int16_t>(share), "share items");
+    outMsg.writeInt16(CAST_S16(share), "share items");
 }
 
 void PartyHandler::changeLeader(const std::string &name A_UNUSED) const

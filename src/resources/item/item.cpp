@@ -87,7 +87,7 @@ void Item::setId(const int id,
     mColor = color;
 
     // Types 0 and 1 are not equippable items.
-    mEquipment = fromBool(id && static_cast<int>(getInfo().getType())
+    mEquipment = fromBool(id && CAST_S32(getInfo().getType())
         >= 2, Equipm);
 
     if (mImage)

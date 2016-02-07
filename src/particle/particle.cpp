@@ -223,7 +223,7 @@ bool Particle::update() restrict2
     if (mAlive != AliveStatus::ALIVE &&
         mAlive != AliveStatus::DEAD_LONG_AGO)
     {
-        if ((static_cast<unsigned int>(mAlive) & mDeathEffectConditions)
+        if ((CAST_U32(mAlive) & mDeathEffectConditions)
             > 0x00  && !mDeathEffect.empty())
         {
             Particle *restrict const deathEffect = particleEngine->addEffect(
@@ -396,27 +396,27 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
                 char deathEffectConditions = 0x00;
                 if (XML::getBoolProperty(emitterNode, "on-floor", true))
                 {
-                    deathEffectConditions += static_cast<signed char>(
+                    deathEffectConditions += CAST_S8(
                         AliveStatus::DEAD_FLOOR);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-sky", true))
                 {
-                    deathEffectConditions += static_cast<signed char>(
+                    deathEffectConditions += CAST_S8(
                         AliveStatus::DEAD_SKY);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-other", false))
                 {
-                    deathEffectConditions += static_cast<signed char>(
+                    deathEffectConditions += CAST_S8(
                         AliveStatus::DEAD_OTHER);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-impact", true))
                 {
-                    deathEffectConditions += static_cast<signed char>(
+                    deathEffectConditions += CAST_S8(
                         AliveStatus::DEAD_IMPACT);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-timeout", true))
                 {
-                    deathEffectConditions += static_cast<signed char>(
+                    deathEffectConditions += CAST_S8(
                         AliveStatus::DEAD_TIMEOUT);
                 }
                 newParticle->setDeathEffect(

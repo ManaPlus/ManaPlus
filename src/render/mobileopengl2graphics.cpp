@@ -1268,7 +1268,7 @@ void MobileOpenGL2Graphics::finalize(ImageVertexes *restrict const vert)
     std::vector<GLuint> &vbos = ogl.mVbo;
     std::vector<GLuint>::const_iterator ivbo;
 
-    const int sz = static_cast<int>(floatTexPool.size());
+    const int sz = CAST_S32(floatTexPool.size());
     vbos.resize(sz);
     mglGenBuffers(sz, &vbos[0]);
 

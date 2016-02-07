@@ -152,7 +152,7 @@ namespace PhysFs
         logger->log("Loaded %s/%s", PhysFs::getRealDir(fileName.c_str()),
             fileName.c_str());
 
-        fileSize = static_cast<int>(PHYSFS_fileLength(file));
+        fileSize = CAST_S32(PHYSFS_fileLength(file));
         // Allocate memory and load the file
         void *const buffer = calloc(fileSize, 1);
         PHYSFS_read(file, buffer, 1, fileSize);

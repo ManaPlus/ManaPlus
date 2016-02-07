@@ -157,7 +157,7 @@ class TextBox final : public Widget,
          * @return The number of rows in the text.
          */
         unsigned int getNumberOfRows() const
-        { return static_cast<int>(mTextRows.size()); }
+        { return CAST_S32(mTextRows.size()); }
 
         /**
          * Gets the caret position in the text.

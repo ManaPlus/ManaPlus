@@ -38,8 +38,8 @@ void ItemRecv::processItemDropped(Net::MessageIn &msg)
     const Identified identify = fromInt(msg.readUInt8("identify"), Identified);
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
-    const int subX = static_cast<int>(msg.readInt8("sub x"));
-    const int subY = static_cast<int>(msg.readInt8("sub y"));
+    const int subX = CAST_S32(msg.readInt8("sub x"));
+    const int subY = CAST_S32(msg.readInt8("sub y"));
     const int amount = msg.readInt16("amount");
 
     if (actorManager)
@@ -67,8 +67,8 @@ void ItemRecv::processItemVisible(Net::MessageIn &msg)
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int amount = msg.readInt16("amount");
-    const int subX = static_cast<int>(msg.readInt8("sub x"));
-    const int subY = static_cast<int>(msg.readInt8("sub y"));
+    const int subX = CAST_S32(msg.readInt8("sub x"));
+    const int subY = CAST_S32(msg.readInt8("sub y"));
 
     if (actorManager)
     {

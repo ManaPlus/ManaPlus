@@ -166,7 +166,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     msg.readInt32("slot change");
     tempPlayer->setRename(msg.readInt32("rename (inverse)"));
 
-    const uint8_t gender = static_cast<uint8_t>(msg.readUInt8("gender"));
+    const uint8_t gender = CAST_U8(msg.readUInt8("gender"));
     if (gender != 99)
         tempPlayer->setGender(Being::intToGender(gender));
 }
@@ -177,7 +177,7 @@ void CharServerRecv::processCharLogin(Net::MessageIn &msg)
     const int slots = msg.readInt8("MAX_CHARS");
     msg.readInt8("sd->char_slots");
     msg.readInt8("MAX_CHARS");
-    loginData.characterSlots = static_cast<uint16_t>(slots);
+    loginData.characterSlots = CAST_U16(slots);
 
     msg.skip(20, "unused 0");
 
@@ -290,7 +290,7 @@ void CharServerRecv::processPincodeStatus(Net::MessageIn &msg)
 {
     mPinSeed = msg.readInt32("pincode seed");
     mPinAccountId = msg.readBeingId("account id");
-    const uint16_t state = static_cast<uint16_t>(msg.readInt16("state"));
+    const uint16_t state = CAST_U16(msg.readInt16("state"));
     switch (state)
     {
         case 0:  // pin ok

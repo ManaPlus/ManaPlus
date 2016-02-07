@@ -152,7 +152,7 @@ void SkillInfo::update()
         default:
             // TRANSLATORS: Skill type
             skillEffect = strprintf(typeStr, _("Unknown:"));
-            skillEffect.append(" ").append(toString(static_cast<int>(type)));
+            skillEffect.append(" ").append(toString(CAST_S32(type)));
             break;
     }
 

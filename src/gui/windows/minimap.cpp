@@ -375,9 +375,9 @@ void Minimap::draw2(Graphics *const graphics)
         if (userPalette)
             graphics->setColor(userPalette->getColor(type));
 
-        const int offsetHeight = static_cast<int>(static_cast<float>(
+        const int offsetHeight = CAST_S32(static_cast<float>(
                 dotSize - 1) * mHeightProportion);
-        const int offsetWidth = static_cast<int>(static_cast<float>(
+        const int offsetWidth = CAST_S32(static_cast<float>(
                 dotSize - 1) * mWidthProportion);
         const Vector &pos = being->getPosition();
 
@@ -414,15 +414,15 @@ void Minimap::draw2(Graphics *const graphics)
                                 UserColorId::PARTY));
                         }
 
-                        const int offsetHeight = static_cast<int>(
+                        const int offsetHeight = CAST_S32(
                             mHeightProportion);
-                        const int offsetWidth = static_cast<int>(
+                        const int offsetWidth = CAST_S32(
                             mWidthProportion);
 
                         graphics->fillRectangle(Rect(
-                            static_cast<int>(member->getX()
+                            CAST_S32(member->getX()
                             * mWidthProportion) + mMapOriginX - offsetWidth,
-                            static_cast<int>(member->getY()
+                            CAST_S32(member->getY()
                             * mHeightProportion) + mMapOriginY - offsetHeight,
                             2, 2));
                     }
@@ -443,9 +443,9 @@ void Minimap::draw2(Graphics *const graphics)
         + viewport->getCameraRelativeY())
         * mHeightProportion) / 32 + mMapOriginY;
 
-    const int w = static_cast<int>(static_cast<float>(
+    const int w = CAST_S32(static_cast<float>(
         gw) * mWidthProportion / 32);
-    const int h = static_cast<int>(static_cast<float>(
+    const int h = CAST_S32(static_cast<float>(
         gh) * mHeightProportion / 32);
 
     if (w <= a.width)

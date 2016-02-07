@@ -1262,7 +1262,7 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *restrict const vert)
     std::vector<GLuint> &vbos = ogl.mVbo;
     std::vector<GLuint>::const_iterator ivbo;
 
-    const int sz = static_cast<int>(intTexPool.size());
+    const int sz = CAST_S32(intTexPool.size());
     vbos.resize(sz);
     mglGenBuffers(sz, &vbos[0]);
 /*

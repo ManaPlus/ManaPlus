@@ -42,8 +42,8 @@ void SkillHandler::useBeing(const int id, const int level,
                             const BeingId beingId) const
 {
     createOutPacket(CMSG_SKILL_USE_BEING);
-    outMsg.writeInt16(static_cast<int16_t>(level), "skill level");
-    outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
+    outMsg.writeInt16(CAST_S16(level), "skill level");
+    outMsg.writeInt16(CAST_S16(id), "skill id");
     outMsg.writeInt32(toInt(beingId, int), "target id");
 }
 
@@ -51,10 +51,10 @@ void SkillHandler::usePos(const int id, const int level,
                           const int x, const int y) const
 {
     createOutPacket(CMSG_SKILL_USE_POSITION);
-    outMsg.writeInt16(static_cast<int16_t>(level), "skill level");
-    outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
-    outMsg.writeInt16(static_cast<int16_t>(x), "x");
-    outMsg.writeInt16(static_cast<int16_t>(y), "y");
+    outMsg.writeInt16(CAST_S16(level), "skill level");
+    outMsg.writeInt16(CAST_S16(id), "skill id");
+    outMsg.writeInt16(CAST_S16(x), "x");
+    outMsg.writeInt16(CAST_S16(y), "y");
 }
 
 void SkillHandler::usePos(const int id, const int level,
@@ -62,17 +62,17 @@ void SkillHandler::usePos(const int id, const int level,
                           const std::string &text) const
 {
     createOutPacket(CMSG_SKILL_USE_POSITION_MORE);
-    outMsg.writeInt16(static_cast<int16_t>(level), "level");
-    outMsg.writeInt16(static_cast<int16_t>(id), "id");
-    outMsg.writeInt16(static_cast<int16_t>(x), "x");
-    outMsg.writeInt16(static_cast<int16_t>(y), "y");
+    outMsg.writeInt16(CAST_S16(level), "level");
+    outMsg.writeInt16(CAST_S16(id), "id");
+    outMsg.writeInt16(CAST_S16(x), "x");
+    outMsg.writeInt16(CAST_S16(y), "y");
     outMsg.writeString(text, 80, "text");
 }
 
 void SkillHandler::useMap(const int id, const std::string &map) const
 {
     createOutPacket(CMSG_SKILL_USE_MAP);
-    outMsg.writeInt16(static_cast<int16_t>(id), "skill id");
+    outMsg.writeInt16(CAST_S16(id), "skill id");
     outMsg.writeString(map, 16, "map name");
 }
 

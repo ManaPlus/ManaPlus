@@ -66,7 +66,7 @@ void CharServerHandler::chooseCharacter(Net::Character *const character)
     mCharSelectDialog = nullptr;
 
     createOutPacket(CMSG_CHAR_SELECT);
-    outMsg.writeInt8(static_cast<unsigned char>(
+    outMsg.writeInt8(CAST_U8(
         mSelectedCharacter->slot), "slot");
 }
 
@@ -81,11 +81,11 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
     createOutPacket(CMSG_CHAR_CREATE);
     outMsg.writeString(name, 24, "login");
 
-    outMsg.writeInt8(static_cast<unsigned char>(slot), "slot");
-    outMsg.writeInt16(static_cast<int16_t>(hairColor), "hair color");
-    outMsg.writeInt16(static_cast<int16_t>(hairstyle), "hair style");
+    outMsg.writeInt8(CAST_U8(slot), "slot");
+    outMsg.writeInt16(CAST_S16(hairColor), "hair color");
+    outMsg.writeInt16(CAST_S16(hairstyle), "hair style");
     if (serverFeatures->haveRaceSelection())
-        outMsg.writeInt16(static_cast<int16_t>(race), "race");
+        outMsg.writeInt16(CAST_S16(race), "race");
     if (serverFeatures->haveCreateCharGender())
     {
         uint8_t sex = 0;
@@ -96,7 +96,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
         outMsg.writeInt8(sex, "gender");
     }
     if (serverFeatures->haveLookSelection())
-        outMsg.writeInt16(static_cast<int16_t>(look), "look");
+        outMsg.writeInt16(CAST_S16(look), "look");
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *const character,
@@ -180,8 +180,8 @@ void CharServerHandler::renameCharacter(const BeingId id,
 void CharServerHandler::changeSlot(const int oldSlot, const int newSlot)
 {
     createOutPacket(CMSG_CHAR_CHANGE_SLOT);
-    outMsg.writeInt16(static_cast<int16_t>(oldSlot), "old slot");
-    outMsg.writeInt16(static_cast<int16_t>(newSlot), "new slot");
+    outMsg.writeInt16(CAST_S16(oldSlot), "old slot");
+    outMsg.writeInt16(CAST_S16(newSlot), "new slot");
     outMsg.writeInt16(0, "unused");
 }
 

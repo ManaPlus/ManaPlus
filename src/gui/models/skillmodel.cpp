@@ -34,7 +34,7 @@ SkillModel::SkillModel() :
 
 SkillInfo *SkillModel::getSkillAt(const int i) const
 {
-    if (i < 0 || i >= static_cast<int>(mVisibleSkills.size()))
+    if (i < 0 || i >= CAST_S32(mVisibleSkills.size()))
         return nullptr;
     return mVisibleSkills.at(i);
 }

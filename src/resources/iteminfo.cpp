@@ -102,12 +102,12 @@ const std::string &ItemInfo::getSprite(const GenderT gender,
     {
         static const std::string empty;
         std::map<int, std::string>::const_iterator i =
-            mAnimationFiles.find(static_cast<int>(gender) +
+            mAnimationFiles.find(CAST_S32(gender) +
             toInt(race, int) * 4);
 
         if (i != mAnimationFiles.end())
             return i->second;
-        i = mAnimationFiles.find(static_cast<int>(gender));
+        i = mAnimationFiles.find(CAST_S32(gender));
         if (i != mAnimationFiles.end())
             return i->second;
         return empty;
@@ -162,7 +162,7 @@ const SoundInfo &ItemInfo::getSound(const ItemSoundEvent::Type event) const
 
     if (i == mSounds.end())
         return empty;
-    return (!i->second.empty()) ? i->second[static_cast<unsigned int>(rand())
+    return (!i->second.empty()) ? i->second[CAST_U32(rand())
         % i->second.size()] : empty;
 }
 
@@ -275,7 +275,7 @@ const std::string ItemInfo::replaceColors(std::string str,
 
     str = replaceAll(str, "%color%", name);
     if (!name.empty())
-        name[0] = static_cast<signed char>(toupper(name[0]));
+        name[0] = CAST_S8(toupper(name[0]));
 
     return replaceAll(str, "%Color%", name);
 }
@@ -397,7 +397,7 @@ void ItemInfo::setSprite(const std::string &animationFile,
                          const GenderT gender,
                          const int race)
 {
-    mAnimationFiles[static_cast<int>(gender) + race * 4] = animationFile;
+    mAnimationFiles[CAST_S32(gender) + race * 4] = animationFile;
 }
 
 std::string ItemInfo::getColorName(const ItemColor idx) const

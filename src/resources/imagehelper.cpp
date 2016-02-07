@@ -176,15 +176,15 @@ void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image)
         logger->log("Alpha: %d", format->alpha);
 #endif
         logger->log("Loss: %02x, %02x, %02x, %02x",
-            static_cast<unsigned int>(format->Rloss),
-            static_cast<unsigned int>(format->Gloss),
-            static_cast<unsigned int>(format->Bloss),
-            static_cast<unsigned int>(format->Aloss));
+            CAST_U32(format->Rloss),
+            CAST_U32(format->Gloss),
+            CAST_U32(format->Bloss),
+            CAST_U32(format->Aloss));
         logger->log("Shift: %02x, %02x, %02x, %02x",
-            static_cast<unsigned int>(format->Rshift),
-            static_cast<unsigned int>(format->Gshift),
-            static_cast<unsigned int>(format->Bshift),
-            static_cast<unsigned int>(format->Ashift));
+            CAST_U32(format->Rshift),
+            CAST_U32(format->Gshift),
+            CAST_U32(format->Bshift),
+            CAST_U32(format->Ashift));
         logger->log("Mask: %08x, %08x, %08x, %08x", format->Rmask,
             format->Gmask, format->Bmask, format->Amask);
     }

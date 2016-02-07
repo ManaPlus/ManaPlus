@@ -28,8 +28,8 @@
 
 TEST_CASE("Gender", "Enums")
 {
-    REQUIRE(static_cast<int>(Gender::FEMALE) == 1);
+    REQUIRE(CAST_S32(Gender::FEMALE) == 1);
     REQUIRE(Gender::FEMALE == static_cast<GenderT>(1));
-    REQUIRE(static_cast<int>(Gender::MALE) == 0);
+    REQUIRE(CAST_S32(Gender::MALE) == 0);
     REQUIRE(Gender::MALE == static_cast<GenderT>(0));
 }

@@ -348,14 +348,14 @@ void NpcDialog::action(const ActionEvent &event)
                         gui->resetClickCount();
                     const int selectedIndex = mItemList->getSelected();
 
-                    if (selectedIndex >= static_cast<int>(mItems.size())
+                    if (selectedIndex >= CAST_S32(mItems.size())
                         || selectedIndex < 0
                         || !PacketLimiter::limitPackets(
                         PacketType::PACKET_NPC_INPUT))
                     {
                         return;
                     }
-                    unsigned char choice = static_cast<unsigned char>(
+                    unsigned char choice = CAST_U8(
                         selectedIndex + 1);
                     printText = mItems[selectedIndex];
 
@@ -678,7 +678,7 @@ void NpcDialog::closeDialog()
 
 int NpcDialog::getNumberOfElements()
 {
-    return static_cast<int>(mItems.size());
+    return CAST_S32(mItems.size());
 }
 
 std::string NpcDialog::getElementAt(int i)
@@ -1118,7 +1118,7 @@ void NpcDialog::saveCamera()
     if (!viewport || mCameraMode >= 0)
         return;
 
-    mCameraMode = static_cast<int>(settings.cameraMode);
+    mCameraMode = CAST_S32(settings.cameraMode);
     mCameraX = viewport->getCameraRelativeX();
     mCameraY = viewport->getCameraRelativeY();
 }
@@ -1128,7 +1128,7 @@ void NpcDialog::restoreCamera()
     if (!viewport || mCameraMode == -1)
         return;
 
-    if (static_cast<int>(settings.cameraMode) != mCameraMode)
+    if (CAST_S32(settings.cameraMode) != mCameraMode)
         viewport->toggleCameraMode();
     if (mCameraMode)
     {
@@ -1206,7 +1206,7 @@ void NpcDialog::logic()
     if (mShowAvatar && mAvatarBeing)
     {
         mAvatarBeing->logic();
-        if (mPlayerBox->getWidth() < static_cast<signed>(3 * getPadding()))
+        if (mPlayerBox->getWidth() < CAST_S32(3 * getPadding()))
         {
             const Sprite *const sprite = mAvatarBeing->getSprite(0);
             if (sprite)

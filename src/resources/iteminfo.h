@@ -292,11 +292,11 @@ class ItemInfo final
         { return mProtected; }
 
         int getColorsSize() const
-        { return mColorsList ? static_cast<int>(mColorsList->size()) : 0; }
+        { return mColorsList ? CAST_S32(mColorsList->size()) : 0; }
 
         int getIconColorsSize() const
         {
-            return mIconColorsList ? static_cast<int>(mIconColorsList->size())
+            return mIconColorsList ? CAST_S32(mIconColorsList->size())
                 : 0;
         }
 

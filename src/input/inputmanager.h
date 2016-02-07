@@ -170,7 +170,7 @@ class InputManager final
         StringInpActionMap mNameMap;
         StringIntMap mChatMap;
 
-        InputFunction mKey[static_cast<size_t>(InputAction::TOTAL)];
+        InputFunction mKey[CAST_SIZE(InputAction::TOTAL)];
 };
 
 extern InputManager inputManager;

@@ -69,8 +69,8 @@ void VendingHandler::buy(const Being *const being,
     createOutPacket(CMSG_VENDING_BUY);
     outMsg.writeInt16(12, "len");
     outMsg.writeBeingId(being->getId(), "account id");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
-    outMsg.writeInt16(static_cast<int16_t>(index), "index");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
+    outMsg.writeInt16(CAST_S16(index), "index");
 }
 
 void VendingHandler::buy2(const Being *const being,
@@ -85,8 +85,8 @@ void VendingHandler::buy2(const Being *const being,
     outMsg.writeInt16(16, "len");
     outMsg.writeBeingId(being->getId(), "account id");
     outMsg.writeInt32(vendId, "vend id");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
-    outMsg.writeInt16(static_cast<int16_t>(index), "index");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
+    outMsg.writeInt16(CAST_S16(index), "index");
 }
 
 void VendingHandler::createShop(const std::string &name,
@@ -94,15 +94,15 @@ void VendingHandler::createShop(const std::string &name,
                                 std::vector<ShopItem*> &items) const
 {
     createOutPacket(CMSG_VENDING_CREATE_SHOP);
-    outMsg.writeInt16(static_cast<int16_t>(85 + items.size() * 8), "len");
+    outMsg.writeInt16(CAST_S16(85 + items.size() * 8), "len");
     outMsg.writeString(name, 80, "shop name");
-    outMsg.writeInt8(static_cast<int8_t>(flag ? 1 : 0), "flag");
+    outMsg.writeInt8(CAST_S8(flag ? 1 : 0), "flag");
     FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *it;
-        outMsg.writeInt16(static_cast<int16_t>(
+        outMsg.writeInt16(CAST_S16(
             item->getInvIndex() + INVENTORY_OFFSET), "index");
-        outMsg.writeInt16(static_cast<int16_t>(item->getQuantity()), "amount");
+        outMsg.writeInt16(CAST_S16(item->getQuantity()), "amount");
         outMsg.writeInt32(item->getPrice(), "price");
     }
 }

@@ -203,7 +203,7 @@ static std::string formatUnit(const int value, const int type)
     else
     {
         double amount = ud.conversion * value;
-        const unsigned int sz = static_cast<unsigned int>(ud.levels.size());
+        const unsigned int sz = CAST_U32(ud.levels.size());
 
         // If only the first level is needed, act like mix if false
         if (ud.mix && !ud.levels.empty() && ud.levels[1].count < amount)
@@ -211,7 +211,7 @@ static std::string formatUnit(const int value, const int type)
             std::string output;
             UnitLevel pl = ud.levels[0];
             ul = ud.levels[1];
-            int levelAmount = static_cast<int>(amount);
+            int levelAmount = CAST_S32(amount);
             int nextAmount = 0;
 
             if (ul.count)

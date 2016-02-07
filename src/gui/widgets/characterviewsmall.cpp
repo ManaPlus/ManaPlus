@@ -47,7 +47,7 @@ CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,
         {
             add(*it);
         }
-        const int sz = static_cast<signed>(mCharacterEntries->size());
+        const int sz = CAST_S32(mCharacterEntries->size());
         if (sz > 0)
         {
             mSelected = 0;
@@ -78,7 +78,7 @@ CharacterViewSmall::~CharacterViewSmall()
 
 void CharacterViewSmall::show(const int i)
 {
-    const int sz = static_cast<signed>(mCharacterEntries->size());
+    const int sz = CAST_S32(mCharacterEntries->size());
     if (sz <= 0)
         return;
     if (mSelectedEntry)
@@ -97,7 +97,7 @@ void CharacterViewSmall::show(const int i)
 
 void CharacterViewSmall::resize()
 {
-    const int sz = static_cast<signed>(mCharacterEntries->size());
+    const int sz = CAST_S32(mCharacterEntries->size());
     if (sz <= 0)
         return;
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];

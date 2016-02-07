@@ -55,7 +55,7 @@ class BeingsListModel final : public AvatarListModel
 
         int getNumberOfElements() override final
         {
-            return static_cast<int>(mMembers.size());
+            return CAST_S32(mMembers.size());
         }
 
         std::vector<Avatar*> mMembers;

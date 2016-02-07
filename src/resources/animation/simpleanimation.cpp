@@ -98,8 +98,8 @@ void SimpleAnimation::setFrame(int frame)
 
     if (frame < 0)
         frame = 0;
-    const unsigned int len = static_cast<unsigned>(mAnimation->getLength());
-    if (static_cast<unsigned>(frame) >= len)
+    const unsigned int len = CAST_U32(mAnimation->getLength());
+    if (CAST_U32(frame) >= len)
         frame = len - 1;
     mAnimationPhase = frame;
     mCurrentFrame = &mAnimation->mFrames[frame];
@@ -119,7 +119,7 @@ bool SimpleAnimation::update(const int timePassed)
         mAnimationTime -= mCurrentFrame->delay;
         mAnimationPhase++;
 
-        if (static_cast<size_t>(mAnimationPhase) >= mAnimation->getLength())
+        if (CAST_SIZE(mAnimationPhase) >= mAnimation->getLength())
             mAnimationPhase = 0;
 
         mCurrentFrame = &mAnimation->mFrames[mAnimationPhase];
@@ -132,7 +132,7 @@ int SimpleAnimation::getLength() const
     if (!mAnimation)
         return 0;
 
-    return static_cast<int>(mAnimation->getLength());
+    return CAST_S32(mAnimation->getLength());
 }
 
 Image *SimpleAnimation::getCurrentImage() const

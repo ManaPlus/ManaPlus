@@ -323,27 +323,27 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
             mDeathEffectConditions = 0x00;
             if (XML::getBoolProperty(propertyNode, "on-floor", true))
             {
-                mDeathEffectConditions += static_cast<signed char>(
+                mDeathEffectConditions += CAST_S8(
                     AliveStatus::DEAD_FLOOR);
             }
             if (XML::getBoolProperty(propertyNode, "on-sky", true))
             {
-                mDeathEffectConditions += static_cast<signed char>(
+                mDeathEffectConditions += CAST_S8(
                     AliveStatus::DEAD_SKY);
             }
             if (XML::getBoolProperty(propertyNode, "on-other", false))
             {
-                mDeathEffectConditions += static_cast<signed char>(
+                mDeathEffectConditions += CAST_S8(
                     AliveStatus::DEAD_OTHER);
             }
             if (XML::getBoolProperty(propertyNode, "on-impact", true))
             {
-                mDeathEffectConditions += static_cast<signed char>(
+                mDeathEffectConditions += CAST_S8(
                     AliveStatus::DEAD_IMPACT);
             }
             if (XML::getBoolProperty(propertyNode, "on-timeout", true))
             {
-                mDeathEffectConditions += static_cast<signed char>(
+                mDeathEffectConditions += CAST_S8(
                     AliveStatus::DEAD_TIMEOUT);
             }
         }
@@ -593,8 +593,8 @@ void ParticleEmitter::adjustSize(const int w, const int h)
         return;  // new dimensions are illegal
 
     // calculate the old rectangle
-    const int oldArea = static_cast<int>(
-        mParticlePosX.maxVal - mParticlePosX.minVal) * static_cast<int>(
+    const int oldArea = CAST_S32(
+        mParticlePosX.maxVal - mParticlePosX.minVal) * CAST_S32(
         mParticlePosX.maxVal - mParticlePosY.minVal);
     if (oldArea == 0)
     {
@@ -610,8 +610,8 @@ void ParticleEmitter::adjustSize(const int w, const int h)
     // adjust the output so that the particle density stays the same
     const float outputFactor = static_cast<float>(newArea)
         / static_cast<float>(oldArea);
-    mOutput.minVal = static_cast<int>(static_cast<float>(
+    mOutput.minVal = CAST_S32(static_cast<float>(
         mOutput.minVal) * outputFactor);
-    mOutput.maxVal = static_cast<int>(static_cast<float>(
+    mOutput.maxVal = CAST_S32(static_cast<float>(
         mOutput.maxVal) * outputFactor);
 }

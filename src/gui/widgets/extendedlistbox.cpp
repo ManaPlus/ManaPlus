@@ -59,7 +59,7 @@ void ExtendedListBox::draw(Graphics *graphics)
     updateAlpha();
     Font *const font = getFont();
 
-    const int height = static_cast<int>(mRowHeight);
+    const int height = CAST_S32(mRowHeight);
     const int pad2 = 2 + mPadding;
     const int width = mDimension.width;
     int textPos = (height - font->getHeight()) / 2 + mPadding;
@@ -89,7 +89,7 @@ void ExtendedListBox::draw(Graphics *graphics)
         {
             const size_t strSize = str.size();
             size_t divPos = strSize / 2;
-            if (divPos > 0 && static_cast<unsigned char>(
+            if (divPos > 0 && CAST_U8(
                 str[divPos - 1]) >= 0xc0)
             {
                 divPos --;
@@ -130,7 +130,7 @@ void ExtendedListBox::draw(Graphics *graphics)
 
     if (minY != -1)
     {
-        mHighlightColor.a = static_cast<unsigned int>(mAlpha * 255.0F);
+        mHighlightColor.a = CAST_U32(mAlpha * 255.0F);
         graphics->setColor(mHighlightColor);
         graphics->fillRectangle(Rect(mPadding, minY + mPadding,
             width - pad2, maxY - minY + height));
@@ -233,7 +233,7 @@ int ExtendedListBox::getSelectionByMouse(const int y) const
     if (mListItems.empty() && mSelectedItems.empty())
         return ListBox::getSelectionByMouse(y);
 
-    const int height = static_cast<int>(mRowHeight);
+    const int height = CAST_S32(mRowHeight);
     const size_t itemsSz = mListItems.size();
     for (size_t f = 0; f < itemsSz; f ++)
     {

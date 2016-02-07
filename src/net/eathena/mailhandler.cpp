@@ -70,21 +70,21 @@ void MailHandler::returnMessage(const int msgId) const
 void MailHandler::setAttach(const int index, const int amount) const
 {
     createOutPacket(CMSG_MAIL_SET_ATTACH);
-    outMsg.writeInt16(static_cast<int16_t>(index + INVENTORY_OFFSET), "index");
+    outMsg.writeInt16(CAST_S16(index + INVENTORY_OFFSET), "index");
     outMsg.writeInt32(amount, "amount");
 }
 
 void MailHandler::setAttachMoney(const int money) const
 {
     createOutPacket(CMSG_MAIL_SET_ATTACH);
-    outMsg.writeInt16(static_cast<int16_t>(0), "index");
+    outMsg.writeInt16(CAST_S16(0), "index");
     outMsg.writeInt32(money, "money");
 }
 
 void MailHandler::resetAttach(const int flag) const
 {
     createOutPacket(CMSG_MAIL_RESET_ATTACH);
-    outMsg.writeInt16(static_cast<int16_t>(flag), "flag");
+    outMsg.writeInt16(CAST_S16(flag), "flag");
 }
 
 void MailHandler::send(const std::string &name,
@@ -93,13 +93,13 @@ void MailHandler::send(const std::string &name,
 {
     if (message.size() > 255)
         message = message.substr(0, 255);
-    const int sz = static_cast<int>(message.size());
+    const int sz = CAST_S32(message.size());
 
     createOutPacket(CMSG_MAIL_SEND);
-    outMsg.writeInt16(static_cast<int16_t>(69 + sz), "len");
+    outMsg.writeInt16(CAST_S16(69 + sz), "len");
     outMsg.writeString(name, 24, "name");
     outMsg.writeString(title, 40, "title");
-    outMsg.writeInt8(static_cast<int8_t>(sz), "message size");
+    outMsg.writeInt8(CAST_S8(sz), "message size");
     outMsg.writeString(message, sz, "message");
 }
 

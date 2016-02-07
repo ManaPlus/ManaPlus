@@ -160,7 +160,7 @@ void Setup_Relations::reset()
         if ((*player_relations.getPlayerIgnoreStrategies())[i] ==
             player_relations.getPlayerIgnoreStrategy())
         {
-            selection = static_cast<int>(i);
+            selection = CAST_S32(i);
             break;
         }
     }

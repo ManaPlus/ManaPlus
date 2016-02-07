@@ -214,16 +214,16 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
 
     mFrameTime += time;
 
-    while ((mFrameTime > static_cast<unsigned int>(mFrame->delay) &&
+    while ((mFrameTime > CAST_U32(mFrame->delay) &&
            mFrame->delay > 0) ||
            (mFrame->type != Frame::ANIMATION &&
            mFrame->type != Frame::PAUSE))
     {
         bool fail(true);
-        mFrameTime -= static_cast<unsigned int>(mFrame->delay);
+        mFrameTime -= CAST_U32(mFrame->delay);
         mFrameIndex++;
 
-        if (mFrameIndex >= static_cast<unsigned int>(mAnimation->getLength()))
+        if (mFrameIndex >= CAST_U32(mAnimation->getLength()))
             mFrameIndex = 0;
 
         mFrame = &mAnimation->mFrames[mFrameIndex];
@@ -249,8 +249,8 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
                     if (frame->type == Frame::LABEL &&
                         mFrame->nextAction == frame->nextAction)
                     {
-                        mFrameIndex = static_cast<unsigned int>(i);
-                        if (mFrameIndex >= static_cast<unsigned int>(
+                        mFrameIndex = CAST_U32(i);
+                        if (mFrameIndex >= CAST_U32(
                             mAnimation->getLength()))
                         {
                             mFrameIndex = 0;
@@ -293,7 +293,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
         else
         {
             if (mFrame->rand == 100 || mFrameIndex
-                >= static_cast<unsigned int>(mAnimation->getLength()))
+                >= CAST_U32(mAnimation->getLength()))
             {
                 fail = false;
             }
@@ -376,7 +376,7 @@ bool AnimatedSprite::setSpriteDirection(const SpriteDirection::Type direction)
 unsigned int AnimatedSprite::getFrameCount() const restrict2
 {
     if (mAnimation)
-        return static_cast<unsigned int>(mAnimation->getLength());
+        return CAST_U32(mAnimation->getLength());
     else
         return 0;
 }

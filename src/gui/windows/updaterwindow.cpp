@@ -531,7 +531,7 @@ int UpdaterWindow::updateProgress(void *ptr,
         progress = 1.0F;
 
     uw->setLabel(std::string(uw->mCurrentFile).append(" (")
-        .append(toString(static_cast<int>(progress * 100))).append("%)"));
+        .append(toString(CAST_S32(progress * 100))).append("%)"));
 
     uw->setProgress(progress);
 
@@ -554,11 +554,11 @@ size_t UpdaterWindow::memoryWrite(void *ptr, size_t size,
     if (!uw)
         return 0;
     uw->mMemoryBuffer = static_cast<char*>(realloc(uw->mMemoryBuffer,
-        static_cast<size_t>(uw->mDownloadedBytes) + totalMem));
+        CAST_SIZE(uw->mDownloadedBytes) + totalMem));
     if (uw->mMemoryBuffer)
     {
         memcpy(&(uw->mMemoryBuffer[uw->mDownloadedBytes]), ptr, totalMem);
-        uw->mDownloadedBytes += static_cast<int>(totalMem);
+        uw->mDownloadedBytes += CAST_S32(totalMem);
     }
 
     return totalMem;
@@ -655,7 +655,7 @@ void UpdaterWindow::loadUpdates()
     }
 
     std::string fixPath = mUpdatesDir + "/fix";
-    const unsigned sz = static_cast<unsigned>(mUpdateFiles.size());
+    const unsigned sz = CAST_U32(mUpdateFiles.size());
     for (mUpdateIndex = 0; mUpdateIndex < sz; mUpdateIndex++)
     {
         const UpdateFile &file = mUpdateFiles[mUpdateIndex];
@@ -685,7 +685,7 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
     }
 
     const std::string fixPath = dir + "/fix";
-    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+    for (unsigned int updateIndex = 0, sz = CAST_U32(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
         const UpdateFile &file = updateFiles[updateIndex];
@@ -712,7 +712,7 @@ void UpdaterWindow::unloadUpdates(const std::string &dir)
     }
 
     const std::string fixPath = dir + "/fix";
-    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+    for (unsigned int updateIndex = 0, sz = CAST_U32(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
         UpdaterWindow::removeUpdateFile(dir,
@@ -728,7 +728,7 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
     std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), false);
 
-    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+    for (unsigned int updateIndex = 0, sz = CAST_U32(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
         const UpdateFile &file = updateFiles[updateIndex];
@@ -752,7 +752,7 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir)
     const std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), true);
 
-    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+    for (unsigned int updateIndex = 0, sz = CAST_U32(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
         std::string name = updateFiles[updateIndex].name;
@@ -815,11 +815,11 @@ void UpdaterWindow::logic()
 
         mProgressBar->setProgress(mDownloadProgress);
         if (mUpdateFiles.size()
-            && static_cast<size_t>(mUpdateIndex) <= mUpdateFiles.size())
+            && CAST_SIZE(mUpdateIndex) <= mUpdateFiles.size())
         {
             mProgressBar->setText(strprintf("%u/%u", mUpdateIndex
-                + mUpdateIndexOffset + 1, static_cast<unsigned>(
-                mUpdateFiles.size()) + static_cast<int>(
+                + mUpdateIndexOffset + 1, CAST_U32(
+                mUpdateFiles.size()) + CAST_S32(
                 mTempUpdateFiles.size()) + 1));
         }
         else
@@ -911,7 +911,7 @@ void UpdaterWindow::logic()
         case UPDATE_RESOURCES:
             if (mDownloadComplete)
             {
-                if (static_cast<size_t>(mUpdateIndex) < mUpdateFiles.size())
+                if (CAST_SIZE(mUpdateIndex) < mUpdateFiles.size())
                 {
                     UpdateFile thisFile = mUpdateFiles[mUpdateIndex];
                     if (thisFile.type == "music"
@@ -983,7 +983,7 @@ void UpdaterWindow::logic()
             if (mDownloadComplete)
             {
                 mValidateXml = false;
-                if (static_cast<size_t>(mUpdateIndex)
+                if (CAST_SIZE(mUpdateIndex)
                     < mTempUpdateFiles.size())
                 {
                     const UpdateFile thisFile = mTempUpdateFiles[mUpdateIndex];
@@ -1027,7 +1027,7 @@ void UpdaterWindow::logic()
             break;
         default:
             logger->log("UpdaterWindow::logic unknown status: "
-                        + toString(static_cast<unsigned>(mDownloadStatus)));
+                        + toString(CAST_U32(mDownloadStatus)));
             break;
     }
     BLOCK_END("UpdaterWindow::logic")
@@ -1085,7 +1085,7 @@ void UpdaterWindow::loadMods(const std::string &dir,
     splitToStringSet(modsList, modsString, '|');
 
     const std::string fixPath = dir + "/fix";
-    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+    for (unsigned int updateIndex = 0, sz = CAST_U32(
          updateFiles.size()); updateIndex < sz; updateIndex ++)
     {
         const UpdateFile &file = updateFiles[updateIndex];
@@ -1105,7 +1105,7 @@ void UpdaterWindow::loadMods(const std::string &dir,
     std::vector<UpdateFile> updateFiles2 = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), true);
 
-    for (unsigned int updateIndex = 0, sz = static_cast<unsigned int>(
+    for (unsigned int updateIndex = 0, sz = CAST_U32(
          updateFiles2.size()); updateIndex < sz; updateIndex ++)
     {
         const UpdateFile &file = updateFiles2[updateIndex];

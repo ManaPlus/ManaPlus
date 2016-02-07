@@ -220,8 +220,8 @@ void EventsManager::logEvent(const SDL_Event &event)
         case SDL_MOUSEMOTION:
             logger->log("event: SDL_MOUSEMOTION: %u,%d,%d",
                 event.motion.state,
-                static_cast<int>(event.motion.x),
-                static_cast<int>(event.motion.y));
+                CAST_S32(event.motion.x),
+                CAST_S32(event.motion.y));
             break;
         case SDL_FINGERDOWN:
         {
@@ -229,8 +229,8 @@ void EventsManager::logEvent(const SDL_Event &event)
             const int w = mainGraphics->mWidth;
             const int h = mainGraphics->mHeight;
             logger->log("event: SDL_FINGERDOWN: %u,%u (%f,%f) (%f,%f)",
-                static_cast<unsigned int>(touch.touchId),
-                static_cast<unsigned int>(touch.fingerId),
+                CAST_U32(touch.touchId),
+                CAST_U32(touch.fingerId),
                 touch.x * w, touch.y * w,
                 touch.dx * w, touch.dy * h);
             break;
@@ -241,8 +241,8 @@ void EventsManager::logEvent(const SDL_Event &event)
             const int w = mainGraphics->mWidth;
             const int h = mainGraphics->mHeight;
             logger->log("event: SDL_FINGERUP: %u,%u (%f,%f) (%f,%f)",
-                static_cast<unsigned int>(touch.touchId),
-                static_cast<unsigned int>(touch.fingerId),
+                CAST_U32(touch.touchId),
+                CAST_U32(touch.fingerId),
                 touch.x * w, touch.y * w,
                 touch.dx * w, touch.dy * h);
             break;
@@ -253,8 +253,8 @@ void EventsManager::logEvent(const SDL_Event &event)
             const int w = mainGraphics->mWidth;
             const int h = mainGraphics->mHeight;
             logger->log("event: SDL_FINGERMOTION: %u,%u (%f,%f) (%f,%f)",
-                static_cast<unsigned int>(touch.touchId),
-                static_cast<unsigned int>(touch.fingerId),
+                CAST_U32(touch.touchId),
+                CAST_U32(touch.fingerId),
                 touch.x * w, touch.y * h,
                 touch.dx * w, touch.dy * h);
             break;
@@ -265,11 +265,11 @@ void EventsManager::logEvent(const SDL_Event &event)
             const int w = mainGraphics->mWidth;
             const int h = mainGraphics->mHeight;
             logger->log("event: SDL_MULTIGESTURE: %u %f,%f (%f,%f) %d,%d",
-                static_cast<unsigned int>(gesture.touchId),
+                CAST_U32(gesture.touchId),
                 gesture.dTheta, gesture.dDist,
                 gesture.x * w, gesture.y * h,
-                static_cast<int>(gesture.numFingers),
-                static_cast<int>(gesture.padding));
+                CAST_S32(gesture.numFingers),
+                CAST_S32(gesture.padding));
             break;
         }
         case SDL_KEYDOWN:

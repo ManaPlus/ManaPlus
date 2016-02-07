@@ -202,7 +202,7 @@ Window::Window(const std::string &caption,
             {
                 mCaptionAlign = Graphics::LEFT;
             }
-            setTitleBarHeight(static_cast<unsigned int>(
+            setTitleBarHeight(CAST_U32(
                 getOption("titlebarHeight")));
             if (!mTitleBarHeight)
                 mTitleBarHeight = mCaptionFont->getHeight() + mPadding;
@@ -821,7 +821,7 @@ void Window::mousePressed(MouseEvent &event)
 
         mDragOffsetX = event.getX();
         mDragOffsetY = event.getY();
-        mMoved = event.getY() <= static_cast<int>(mTitleBarHeight);
+        mMoved = event.getY() <= CAST_S32(mTitleBarHeight);
     }
 
     const MouseButtonT button = event.getButton();
@@ -1290,8 +1290,8 @@ int Window::getResizeHandles(const MouseEvent &event)
     {
         if (mGrip &&
             (y > mTitleBarHeight ||
-            (static_cast<int>(y) < mPadding &&
-            static_cast<int>(mTitleBarHeight) > mPadding)))
+            (CAST_S32(y) < mPadding &&
+            CAST_S32(mTitleBarHeight) > mPadding)))
         {
             if (!getWindowArea().isPointInRect(x, y)
                 && event.getSource() == this)
@@ -1301,8 +1301,8 @@ int Window::getResizeHandles(const MouseEvent &event)
                 resizeHandles |= (y > mDimension.height - resizeBorderWidth)
                     ? BOTTOM : (y < resizeBorderWidth) ? TOP : 0;
             }
-            if (x >= static_cast<unsigned>(mGripRect.x)
-                && y >= static_cast<unsigned>(mGripRect.y))
+            if (x >= CAST_U32(mGripRect.x)
+                && y >= CAST_U32(mGripRect.y))
             {
                 mDragOffsetX = x;
                 mDragOffsetY = y;
@@ -1319,7 +1319,7 @@ bool Window::isResizeAllowed(const MouseEvent &event) const
     const int y = event.getY();
 
     if (mGrip &&
-        (y > static_cast<int>(mTitleBarHeight) ||
+        (y > CAST_S32(mTitleBarHeight) ||
         y < mPadding))
     {
         const int x = event.getX();

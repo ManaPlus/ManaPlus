@@ -76,7 +76,7 @@ void LoginHandler::loginAccount(LoginData *const loginData1) const
 void LoginHandler::chooseServer(const unsigned int server,
                                 const bool persistentIp) const
 {
-    if (static_cast<size_t>(server) >= LoginRecv::mWorlds.size() ||
+    if (CAST_SIZE(server) >= LoginRecv::mWorlds.size() ||
         !LoginRecv::mWorlds[server])
     {
         return;

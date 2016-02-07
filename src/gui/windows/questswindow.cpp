@@ -369,10 +369,10 @@ void QuestsWindow::rebuild(const bool playSound)
     FOR_EACH (std::vector<QuestItem*>::const_iterator, it, hidden)
         (*it)->completeFlag = -1;
 
-    if (updatedQuest == -1 || updatedQuest >= static_cast<int>(
+    if (updatedQuest == -1 || updatedQuest >= CAST_S32(
         mQuestLinks.size()))
     {
-        updatedQuest = static_cast<int>(mQuestLinks.size() - 1);
+        updatedQuest = CAST_S32(mQuestLinks.size() - 1);
     }
     if (updatedQuest >= 0)
     {

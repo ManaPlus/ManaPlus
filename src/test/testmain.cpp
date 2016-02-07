@@ -234,22 +234,22 @@ int TestMain::exec(const bool testAudio)
 
     if (!invokeNormalOpenBatchTest("14"))
     {
-        textureSize[static_cast<size_t>(RENDER_NORMAL_OPENGL)]
+        textureSize[CAST_SIZE(RENDER_NORMAL_OPENGL)]
             = readValue2(14);
     }
     if (!invokeModernOpenBatchTest("15"))
     {
-        textureSize[static_cast<size_t>(RENDER_MODERN_OPENGL)]
+        textureSize[CAST_SIZE(RENDER_MODERN_OPENGL)]
             = readValue2(15);
     }
     if (!invokeSafeOpenBatchTest("16"))
     {
-        textureSize[static_cast<size_t>(RENDER_SAFE_OPENGL)]
+        textureSize[CAST_SIZE(RENDER_SAFE_OPENGL)]
             = readValue2(16);
     }
     if (!invokeMobileOpenBatchTest("20"))
     {
-        textureSize[static_cast<size_t>(RENDER_GLES_OPENGL)]
+        textureSize[CAST_SIZE(RENDER_GLES_OPENGL)]
             = readValue2(20);
     }
     for (int f = 0; f < 6; f ++)
@@ -264,7 +264,7 @@ int TestMain::exec(const bool testAudio)
     if (!(detectMode & 15))
         openGLMode = RENDER_SOFTWARE;
 
-    writeConfig(openGLMode, rescaleTest[static_cast<size_t>(openGLMode)],
+    writeConfig(openGLMode, rescaleTest[CAST_SIZE(openGLMode)],
         soundTest, info, batchSize, textureSizeStr, detectMode);
     return 0;
 }
@@ -279,10 +279,10 @@ void TestMain::writeConfig(const RenderType openGLMode,
 {
     mConfig.init(settings.configDir + "/config.xml");
 
-    log->log("set mode to %d", static_cast<int>(openGLMode));
+    log->log("set mode to %d", CAST_S32(openGLMode));
 
     // searched values
-    mConfig.setValue("opengl", static_cast<int>(openGLMode));
+    mConfig.setValue("opengl", CAST_S32(openGLMode));
     mConfig.setValue("showBackground", !rescale);
     mConfig.setValue("sound", !sound);
 
@@ -341,7 +341,7 @@ int TestMain::readValue(const int ver, int def)
 
 int TestMain::invokeTest(const std::string &test)
 {
-    mConfig.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
+    mConfig.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
 
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test);
@@ -359,7 +359,7 @@ int TestMain::invokeTest4()
 
 int TestMain::invokeSoftwareRenderTest(const std::string &test)
 {
-    mConfig.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
+    mConfig.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
@@ -368,7 +368,7 @@ int TestMain::invokeSoftwareRenderTest(const std::string &test)
 
 int TestMain::invokeNormalOpenGLRenderTest(const std::string &test)
 {
-    mConfig.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
+    mConfig.setValue("opengl", CAST_S32(RENDER_NORMAL_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
@@ -377,7 +377,7 @@ int TestMain::invokeNormalOpenGLRenderTest(const std::string &test)
 
 int TestMain::invokeModernOpenGLRenderTest(const std::string &test)
 {
-    mConfig.setValue("opengl", static_cast<int>(RENDER_MODERN_OPENGL));
+    mConfig.setValue("opengl", CAST_S32(RENDER_MODERN_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
@@ -386,7 +386,7 @@ int TestMain::invokeModernOpenGLRenderTest(const std::string &test)
 
 int TestMain::invokeNormalOpenBatchTest(const std::string &test)
 {
-    mConfig.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
+    mConfig.setValue("opengl", CAST_S32(RENDER_NORMAL_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
 //    log->log("%s: %d", test.c_str(), ret);
@@ -395,7 +395,7 @@ int TestMain::invokeNormalOpenBatchTest(const std::string &test)
 
 int TestMain::invokeModernOpenBatchTest(const std::string &test)
 {
-    mConfig.setValue("opengl", static_cast<int>(RENDER_MODERN_OPENGL));
+    mConfig.setValue("opengl", CAST_S32(RENDER_MODERN_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
 //    log->log("%s: %d", test.c_str(), ret);
@@ -404,7 +404,7 @@ int TestMain::invokeModernOpenBatchTest(const std::string &test)
 
 int TestMain::invokeMobileOpenBatchTest(const std::string &test)
 {
-    mConfig.setValue("opengl", static_cast<int>(RENDER_GLES_OPENGL));
+    mConfig.setValue("opengl", CAST_S32(RENDER_GLES_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
 //    log->log("%s: %d", test.c_str(), ret);
@@ -413,7 +413,7 @@ int TestMain::invokeMobileOpenBatchTest(const std::string &test)
 
 int TestMain::invokeSafeOpenBatchTest(const std::string &test)
 {
-    mConfig.setValue("opengl", static_cast<int>(RENDER_SAFE_OPENGL));
+    mConfig.setValue("opengl", CAST_S32(RENDER_SAFE_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
 //    log->log("%s: %d", test.c_str(), ret);
@@ -422,7 +422,7 @@ int TestMain::invokeSafeOpenBatchTest(const std::string &test)
 
 int TestMain::invokeSafeOpenGLRenderTest(const std::string &test)
 {
-    mConfig.setValue("opengl", static_cast<int>(RENDER_SAFE_OPENGL));
+    mConfig.setValue("opengl", CAST_S32(RENDER_SAFE_OPENGL));
     mConfig.write();
     const int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);

@@ -40,7 +40,7 @@ ServerInfo mapServer;
 void GeneralRecv::processConnectionProblem(Net::MessageIn &msg)
 {
     const uint8_t code = msg.readUInt8("flag");
-    logger->log("Connection problem: %u", static_cast<unsigned int>(code));
+    logger->log("Connection problem: %u", CAST_U32(code));
 
     switch (code)
     {

@@ -150,7 +150,7 @@ DropDown::DropDown(const Widget2 *const widget,
     if (mSkin)
     {
         mSpacing = mSkin->getOption("spacing");
-        mFrameSize = static_cast<unsigned int>(mSkin->getOption("frameSize"));
+        mFrameSize = CAST_U32(mSkin->getOption("frameSize"));
         mPadding = mSkin->getPadding();
         mImagePadding = mSkin->getOption("imagePadding");
     }
@@ -219,7 +219,7 @@ void DropDown::draw(Graphics* graphics)
 
     updateAlpha();
 
-    const unsigned int alpha = static_cast<unsigned int>(mAlpha * 255.0F);
+    const unsigned int alpha = CAST_U32(mAlpha * 255.0F);
     const int pad = 2 * mPadding;
     mHighlightColor.a = alpha;
     mShadowColor.a = alpha;
@@ -294,7 +294,7 @@ void DropDown::safeDraw(Graphics* graphics)
 void DropDown::drawFrame(Graphics *graphics)
 {
     BLOCK_START("DropDown::drawFrame")
-    const int bs2 = static_cast<int>(getFrameSize());
+    const int bs2 = CAST_S32(getFrameSize());
     const Rect &rect = mDimension;
     graphics->drawImageRect(0, 0,
         rect.width + bs2, rect.height + bs2,
@@ -305,7 +305,7 @@ void DropDown::drawFrame(Graphics *graphics)
 void DropDown::safeDrawFrame(Graphics *graphics)
 {
     BLOCK_START("DropDown::drawFrame")
-    const int bs2 = static_cast<int>(getFrameSize());
+    const int bs2 = CAST_S32(getFrameSize());
     const Rect &rect = mDimension;
     graphics->drawImageRect(0, 0,
         rect.width + bs2, rect.height + bs2,
@@ -476,7 +476,7 @@ void DropDown::dropDown()
         int x = 0;
         int y = 0;
         getAbsolutePosition(x, y);
-        const int frame = static_cast<int>(mParent->getFrameSize());
+        const int frame = CAST_S32(mParent->getFrameSize());
         const int pad = mPopup->getPadding();
         const int pad2 = pad * 2;
 

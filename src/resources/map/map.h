@@ -290,7 +290,7 @@ class Map final : public Properties, public ConfigListener
                               const int y) const restrict2 A_WARN_UNUSED;
 
         int getActorsCount() const restrict2 A_WARN_UNUSED
-        { return static_cast<int>(mActors.size()); }
+        { return CAST_S32(mActors.size()); }
 
         void setPvpMode(const int mode) restrict2;
 

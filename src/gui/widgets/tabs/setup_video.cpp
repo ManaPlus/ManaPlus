@@ -263,13 +263,13 @@ void Setup_Video::apply()
 
     const int sel = mOpenGLDropDown->getSelected();
     RenderType mode = RENDER_SOFTWARE;
-    if (sel >= 0 && static_cast<unsigned int>(sel) < sizeof(indexToRender))
+    if (sel >= 0 && CAST_U32(sel) < sizeof(indexToRender))
         mode = indexToRender[mOpenGLDropDown->getSelected()];
 
     // OpenGL change
     if (mode != mOpenGLEnabled)
     {
-        config.setValue("opengl", static_cast<int>(mode));
+        config.setValue("opengl", CAST_S32(mode));
 
         // OpenGL can currently only be changed by restarting, notify user.
         CREATEWIDGET(OkDialog,
@@ -287,9 +287,9 @@ void Setup_Video::apply()
     }
 
     mFps = mFpsCheckBox->isSelected() ?
-        static_cast<int>(mFpsSlider->getValue()) : 0;
+        CAST_S32(mFpsSlider->getValue()) : 0;
 
-    mAltFps = static_cast<int>(mAltFpsSlider->getValue());
+    mAltFps = CAST_S32(mAltFpsSlider->getValue());
 
     mFpsSlider->setEnabled(mFps > 0);
 
@@ -336,7 +336,7 @@ void Setup_Video::cancel()
     config.setValue("screenheight", mainGraphics->mActualHeight);
 
     config.setValue("customcursor", mCustomCursorEnabled);
-    config.setValue("opengl", static_cast<int>(mOpenGLEnabled));
+    config.setValue("opengl", CAST_S32(mOpenGLEnabled));
     config.setValue("enableresize", mEnableResize);
     config.setValue("noframe", mNoFrame);
 }
@@ -443,7 +443,7 @@ void Setup_Video::action(const ActionEvent &event)
     }
     else if (id == "fpslimitcheckbox" || id == "fpslimitslider")
     {
-        int tempFps = static_cast<int>(mFpsSlider->getValue());
+        int tempFps = CAST_S32(mFpsSlider->getValue());
         if (id == "fpslimitcheckbox" && !mFpsSlider->isEnabled())
             tempFps = 60;
         else
@@ -458,8 +458,8 @@ void Setup_Video::action(const ActionEvent &event)
     }
     else if (id == "altfpslimitslider")
     {
-        int tempFps = static_cast<int>(mAltFpsSlider->getValue());
-        tempFps = tempFps > 0 ? tempFps : static_cast<int>(
+        int tempFps = CAST_S32(mAltFpsSlider->getValue());
+        tempFps = tempFps > 0 ? tempFps : CAST_S32(
             mAltFpsSlider->getScaleStart());
         mAltFps = tempFps;
         // TRANSLATORS: video settings label
@@ -486,7 +486,7 @@ void Setup_Video::action(const ActionEvent &event)
         {
             Configuration &conf = test->getConfig();
             const int val = conf.getValueInt("opengl", -1);
-            if (val >= 0 && static_cast<unsigned int>(val)
+            if (val >= 0 && CAST_U32(val)
                 < sizeof(renderToIndex) / sizeof(int))
             {
                 mOpenGLDropDown->setSelected(renderToIndex[val]);

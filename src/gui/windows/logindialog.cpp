@@ -130,7 +130,7 @@ LoginDialog::LoginDialog(LoginData &data,
 
     mUpdateTypeDropDown->setActionEventId("updatetype");
     mUpdateTypeDropDown->setSelected((mLoginData->updateType
-        | UpdateType::Custom) ^ static_cast<int>(UpdateType::Custom));
+        | UpdateType::Custom) ^ CAST_S32(UpdateType::Custom));
 
     if (!mCustomUpdateHost->isSelected())
         mUpdateHostText->setVisible(Visible_false);
@@ -339,7 +339,7 @@ void LoginDialog::prepareUpdate()
     }
 
     mLoginData->updateType = updateType;
-    serverConfig.setValue("updateType", static_cast<int>(updateType));
+    serverConfig.setValue("updateType", CAST_S32(updateType));
 
     mRegisterButton->setEnabled(false);
     mServerButton->setEnabled(false);

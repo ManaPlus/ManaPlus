@@ -159,8 +159,8 @@ class SocialNavigationTab final : public SocialTab
 
             // TRANSLATORS: social window label
             mCounterString = strprintf(_("Portals: %u/%u"),
-                static_cast<uint32_t>(online),
-                static_cast<uint32_t>(total));
+                CAST_U32(online),
+                CAST_U32(total));
             updateCounter();
         }
 
@@ -170,7 +170,7 @@ class SocialNavigationTab final : public SocialTab
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            if (avatars->size() <= static_cast<size_t>(num))
+            if (avatars->size() <= CAST_SIZE(num))
                 return;
 
             const Avatar *const ava = avatars->at(num);

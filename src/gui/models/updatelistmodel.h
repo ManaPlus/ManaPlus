@@ -47,7 +47,7 @@ class UpdateListModel final : public ListModel
         {
             if (!mLoginData)
                 return 0;
-            return static_cast<int>(mLoginData->updateHosts.size());
+            return CAST_S32(mLoginData->updateHosts.size());
         }
 
         std::string getElementAt(int i) override final

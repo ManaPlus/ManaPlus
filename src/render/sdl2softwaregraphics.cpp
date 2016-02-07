@@ -51,10 +51,10 @@ static unsigned int *cB = nullptr;
 #define defRectFromArea(rect, area) \
     const SDL_Rect rect = \
     { \
-        static_cast<int32_t>(area.x), \
-        static_cast<int32_t>(area.y), \
-        static_cast<int32_t>(area.width), \
-        static_cast<int32_t>(area.height) \
+        CAST_S32(area.x), \
+        CAST_S32(area.y), \
+        CAST_S32(area.width), \
+        CAST_S32(area.height) \
     }
 
 SDL2SoftwareGraphics::SDL2SoftwareGraphics() :
@@ -93,16 +93,16 @@ void SDL2SoftwareGraphics::drawRescaledImage(const Image *restrict const image,
 
     SDL_Rect srcRect =
     {
-        static_cast<int16_t>(bounds.x),
-        static_cast<int16_t>(bounds.y),
-        static_cast<uint16_t>(bounds.w),
-        static_cast<uint16_t>(bounds.h)
+        CAST_S16(bounds.x),
+        CAST_S16(bounds.y),
+        CAST_U16(bounds.w),
+        CAST_U16(bounds.h)
     };
 
     SDL_Rect dstRect =
     {
-        static_cast<int16_t>(dstX + top.xOffset),
-        static_cast<int16_t>(dstY + top.yOffset),
+        CAST_S16(dstX + top.xOffset),
+        CAST_S16(dstY + top.yOffset),
         0,
         0
     };
@@ -140,7 +140,7 @@ void SDL2SoftwareGraphics::drawImageInline(const Image *restrict const image,
     if (srcX < 0)
     {
         w += srcX;
-        dstX -= static_cast<int16_t>(srcX);
+        dstX -= CAST_S16(srcX);
         srcX = 0;
     }
     const int maxw = src->w - srcX;
@@ -150,7 +150,7 @@ void SDL2SoftwareGraphics::drawImageInline(const Image *restrict const image,
     if (srcY < 0)
     {
         h += srcY;
-        dstY -= static_cast<int16_t>(srcY);
+        dstY -= CAST_S16(srcY);
         srcY = 0;
     }
     const int maxh = src->h - srcY;
@@ -164,7 +164,7 @@ void SDL2SoftwareGraphics::drawImageInline(const Image *restrict const image,
     if (dx > 0)
     {
         w -= dx;
-        dstX += static_cast<int16_t>(dx);
+        dstX += CAST_S16(dx);
         srcX += dx;
     }
     dx = dstX + w - clipX - clip->w;
@@ -175,7 +175,7 @@ void SDL2SoftwareGraphics::drawImageInline(const Image *restrict const image,
     if (dy > 0)
     {
         h -= dy;
-        dstY += static_cast<int16_t>(dy);
+        dstY += CAST_S16(dy);
         srcY += dy;
     }
     dy = dstY + h - clipY - clip->h;
@@ -186,18 +186,18 @@ void SDL2SoftwareGraphics::drawImageInline(const Image *restrict const image,
     {
         SDL_Rect srcRect =
         {
-            static_cast<int16_t>(srcX),
-            static_cast<int16_t>(srcY),
-            static_cast<uint16_t>(w),
-            static_cast<uint16_t>(h)
+            CAST_S16(srcX),
+            CAST_S16(srcY),
+            CAST_U16(w),
+            CAST_U16(h)
         };
 
         SDL_Rect dstRect =
         {
-            static_cast<int16_t>(dstX),
-            static_cast<int16_t>(dstY),
-            static_cast<uint16_t>(w),
-            static_cast<uint16_t>(h)
+            CAST_S16(dstX),
+            CAST_S16(dstY),
+            CAST_U16(w),
+            CAST_U16(h)
         };
 
         SDL_LowerBlit(src, &srcRect, mSurface, &dstRect);
@@ -233,7 +233,7 @@ void SDL2SoftwareGraphics::drawImageCached(const Image *restrict const image,
     if (srcX < 0)
     {
         w += srcX;
-        x -= static_cast<int16_t>(srcX);
+        x -= CAST_S16(srcX);
         srcX = 0;
     }
     const int maxw = src->w - srcX;
@@ -243,7 +243,7 @@ void SDL2SoftwareGraphics::drawImageCached(const Image *restrict const image,
     if (srcY < 0)
     {
         h += srcY;
-        y -= static_cast<int16_t>(srcY);
+        y -= CAST_S16(srcY);
         srcY = 0;
     }
     const int maxh = src->h - srcY;
@@ -257,7 +257,7 @@ void SDL2SoftwareGraphics::drawImageCached(const Image *restrict const image,
     if (dx > 0)
     {
         w -= dx;
-        x += static_cast<int16_t>(dx);
+        x += CAST_S16(dx);
         srcX += dx;
     }
     dx = x + w - clipX - clip->w;
@@ -268,7 +268,7 @@ void SDL2SoftwareGraphics::drawImageCached(const Image *restrict const image,
     if (dy > 0)
     {
         h -= dy;
-        y += static_cast<int16_t>(dy);
+        y += CAST_S16(dy);
         srcY += dy;
     }
     dy = y + h - clipY - clip->h;
@@ -279,18 +279,18 @@ void SDL2SoftwareGraphics::drawImageCached(const Image *restrict const image,
     {
         SDL_Rect srcRect =
         {
-            static_cast<int16_t>(srcX),
-            static_cast<int16_t>(srcY),
-            static_cast<uint16_t>(w),
-            static_cast<uint16_t>(h)
+            CAST_S16(srcX),
+            CAST_S16(srcY),
+            CAST_U16(w),
+            CAST_U16(h)
         };
 
         SDL_Rect dstRect =
         {
-            static_cast<int16_t>(x),
-            static_cast<int16_t>(y),
-            static_cast<uint16_t>(w),
-            static_cast<uint16_t>(h)
+            CAST_S16(x),
+            CAST_S16(y),
+            CAST_U16(w),
+            CAST_U16(h)
         };
 
         SDL_LowerBlit(src, &srcRect, mSurface, &dstRect);
@@ -335,7 +335,7 @@ void SDL2SoftwareGraphics::drawPatternCached(const Image *restrict const image,
         if (y2 < 0)
         {
             h2 += y2;
-            dstY -= static_cast<int16_t>(y2);
+            dstY -= CAST_S16(y2);
             y2 = 0;
         }
         const int maxh = src->h - y2;
@@ -346,7 +346,7 @@ void SDL2SoftwareGraphics::drawPatternCached(const Image *restrict const image,
         if (dy > 0)
         {
             h2 -= dy;
-            dstY += static_cast<int16_t>(dy);
+            dstY += CAST_S16(dy);
             y2 += dy;
         }
         dy = dstY + h2 - clipY - clip->h;
@@ -364,7 +364,7 @@ void SDL2SoftwareGraphics::drawPatternCached(const Image *restrict const image,
                 if (x2 < 0)
                 {
                     w2 += x2;
-                    dstX -= static_cast<int16_t>(x2);
+                    dstX -= CAST_S16(x2);
                     x2 = 0;
                 }
                 const int maxw = src->w - x2;
@@ -375,7 +375,7 @@ void SDL2SoftwareGraphics::drawPatternCached(const Image *restrict const image,
                 if (dx > 0)
                 {
                     w2 -= dx;
-                    dstX += static_cast<int16_t>(dx);
+                    dstX += CAST_S16(dx);
                     x2 += dx;
                 }
                 dx = dstX + w2 - clipX - clip->w;
@@ -386,18 +386,18 @@ void SDL2SoftwareGraphics::drawPatternCached(const Image *restrict const image,
                 {
                     SDL_Rect srcRect =
                     {
-                        static_cast<int16_t>(x2),
-                        static_cast<int16_t>(y2),
-                        static_cast<uint16_t>(w2),
-                        static_cast<uint16_t>(h2)
+                        CAST_S16(x2),
+                        CAST_S16(y2),
+                        CAST_U16(w2),
+                        CAST_U16(h2)
                     };
 
                     SDL_Rect dstRect =
                     {
-                        static_cast<int16_t>(dstX),
-                        static_cast<int16_t>(dstY),
-                        static_cast<uint16_t>(w2),
-                        static_cast<uint16_t>(h2)
+                        CAST_S16(dstX),
+                        CAST_S16(dstY),
+                        CAST_U16(w2),
+                        CAST_U16(h2)
                     };
 
                     SDL_LowerBlit(src, &srcRect, mSurface, &dstRect);
@@ -458,7 +458,7 @@ void SDL2SoftwareGraphics::drawPatternInline(const Image *restrict const image,
         if (y2 < 0)
         {
             h2 += y2;
-            dstY -= static_cast<int16_t>(y2);
+            dstY -= CAST_S16(y2);
             y2 = 0;
         }
         const int maxh = src->h - y2;
@@ -469,7 +469,7 @@ void SDL2SoftwareGraphics::drawPatternInline(const Image *restrict const image,
         if (dy > 0)
         {
             h2 -= dy;
-            dstY += static_cast<int16_t>(dy);
+            dstY += CAST_S16(dy);
             y2 += dy;
         }
         dy = dstY + h2 - clipY - clip->h;
@@ -487,7 +487,7 @@ void SDL2SoftwareGraphics::drawPatternInline(const Image *restrict const image,
                 if (x2 < 0)
                 {
                     w2 += x2;
-                    dstX -= static_cast<int16_t>(x2);
+                    dstX -= CAST_S16(x2);
                     x2 = 0;
                 }
                 const int maxw = src->w - x2;
@@ -498,7 +498,7 @@ void SDL2SoftwareGraphics::drawPatternInline(const Image *restrict const image,
                 if (dx > 0)
                 {
                     w2 -= dx;
-                    dstX += static_cast<int16_t>(dx);
+                    dstX += CAST_S16(dx);
                     x2 += dx;
                 }
                 dx = dstX + w2 - clipX - clip->w;
@@ -509,18 +509,18 @@ void SDL2SoftwareGraphics::drawPatternInline(const Image *restrict const image,
                 {
                     SDL_Rect srcRect =
                     {
-                        static_cast<int16_t>(x2),
-                        static_cast<int16_t>(y2),
-                        static_cast<uint16_t>(w2),
-                        static_cast<uint16_t>(h2)
+                        CAST_S16(x2),
+                        CAST_S16(y2),
+                        CAST_U16(w2),
+                        CAST_U16(h2)
                     };
 
                     SDL_Rect dstRect =
                     {
-                        static_cast<int16_t>(dstX),
-                        static_cast<int16_t>(dstY),
-                        static_cast<uint16_t>(w2),
-                        static_cast<uint16_t>(h2)
+                        CAST_S16(dstX),
+                        CAST_S16(dstY),
+                        CAST_U16(w2),
+                        CAST_U16(h2)
                     };
 
                     SDL_LowerBlit(src, &srcRect, mSurface, &dstRect);
@@ -578,16 +578,16 @@ void SDL2SoftwareGraphics::drawRescaledPattern(const Image *
 
             SDL_Rect srcRect =
             {
-                static_cast<int16_t>(srcX),
-                static_cast<int16_t>(srcY),
-                static_cast<uint16_t>(dw),
-                static_cast<uint16_t>(dh)
+                CAST_S16(srcX),
+                CAST_S16(srcY),
+                CAST_U16(dw),
+                CAST_U16(dh)
             };
 
             SDL_Rect dstRect =
             {
-                static_cast<int16_t>(dstX),
-                static_cast<int16_t>(dstY),
+                CAST_S16(dstX),
+                CAST_S16(dstY),
                 0,
                 0
             };
@@ -646,13 +646,13 @@ void SDL2SoftwareGraphics::calcPatternInline(ImageVertexes *
 
             DoubleRect *const r = new DoubleRect();
             SDL_Rect &srcRect = r->src;
-            srcRect.x = static_cast<int16_t>(srcX);
-            srcRect.y = static_cast<int16_t>(srcY);
-            srcRect.w = static_cast<uint16_t>(dw);
-            srcRect.h = static_cast<uint16_t>(dh);
+            srcRect.x = CAST_S16(srcX);
+            srcRect.y = CAST_S16(srcY);
+            srcRect.w = CAST_U16(dw);
+            srcRect.h = CAST_U16(dh);
             SDL_Rect &dstRect = r->dst;
-            dstRect.x = static_cast<int16_t>(dstX);
-            dstRect.y = static_cast<int16_t>(dstY);
+            dstRect.x = CAST_S16(dstX);
+            dstRect.y = CAST_S16(dstY);
 
             if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
                 mSurface, &dstRect) == 1)
@@ -721,12 +721,12 @@ void SDL2SoftwareGraphics::calcTileSDL(ImageVertexes *restrict const vert,
     const SDL_Rect &bounds = image->mBounds;
 
     DoubleRect *rect = new DoubleRect();
-    rect->src.x = static_cast<int16_t>(bounds.x);
-    rect->src.y = static_cast<int16_t>(bounds.y);
-    rect->src.w = static_cast<uint16_t>(bounds.w);
-    rect->src.h = static_cast<uint16_t>(bounds.h);
-    rect->dst.x = static_cast<int16_t>(x + top.xOffset);
-    rect->dst.y = static_cast<int16_t>(y + top.yOffset);
+    rect->src.x = CAST_S16(bounds.x);
+    rect->src.y = CAST_S16(bounds.y);
+    rect->src.w = CAST_U16(bounds.w);
+    rect->src.h = CAST_U16(bounds.h);
+    rect->dst.x = CAST_S16(x + top.xOffset);
+    rect->dst.y = CAST_S16(y + top.yOffset);
     if (SDL_FakeUpperBlit(image->mSDLSurface, &rect->src,
         mSurface, &rect->dst) == 1)
     {
@@ -856,7 +856,7 @@ int SDL2SoftwareGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const
     if (srcx < 0)
     {
         w += srcx;
-        dstrect->x -= static_cast<int16_t>(srcx);
+        dstrect->x -= CAST_S16(srcx);
         srcx = 0;
     }
     int maxw = src->w - srcx;
@@ -868,7 +868,7 @@ int SDL2SoftwareGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const
     if (srcy < 0)
     {
         h += srcy;
-        dstrect->y -= static_cast<int16_t>(srcy);
+        dstrect->y -= CAST_S16(srcy);
         srcy = 0;
     }
     int maxh = src->h - srcy;
@@ -882,7 +882,7 @@ int SDL2SoftwareGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const
     if (dx > 0)
     {
         w -= dx;
-        dstrect->x += static_cast<int16_t>(dx);
+        dstrect->x += CAST_S16(dx);
         srcx += dx;
     }
     dx = dstrect->x + w - clipX - clip->w;
@@ -893,7 +893,7 @@ int SDL2SoftwareGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const
     if (dy > 0)
     {
         h -= dy;
-        dstrect->y += static_cast<int16_t>(dy);
+        dstrect->y += CAST_S16(dy);
         srcy += dy;
     }
     dy = dstrect->y + h - clipY - clip->h;
@@ -904,13 +904,13 @@ int SDL2SoftwareGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const
     {
         if (srcrect)
         {
-            srcrect->x = static_cast<int16_t>(srcx);
-            srcrect->y = static_cast<int16_t>(srcy);
-            srcrect->w = static_cast<int16_t>(w);
-            srcrect->h = static_cast<int16_t>(h);
+            srcrect->x = CAST_S16(srcx);
+            srcrect->y = CAST_S16(srcy);
+            srcrect->w = CAST_S16(w);
+            srcrect->h = CAST_S16(h);
         }
-        dstrect->w = static_cast<int16_t>(w);
-        dstrect->h = static_cast<int16_t>(h);
+        dstrect->w = CAST_S16(w);
+        dstrect->h = CAST_S16(h);
 
         return 1;
 //        return SDL_LowerBlit(src, &sr, dst, dstrect);
@@ -949,8 +949,8 @@ void SDL2SoftwareGraphics::fillRectangle(const Rect &restrict rectangle)
 
         const int bpp = mSurface->format->BytesPerPixel;
         const uint32_t pixel = SDL_MapRGB(mSurface->format,
-            static_cast<uint8_t>(mColor.r), static_cast<uint8_t>(mColor.g),
-            static_cast<uint8_t>(mColor.b));
+            CAST_U8(mColor.r), CAST_U8(mColor.g),
+            CAST_U8(mColor.b));
 
         switch (bpp)
         {
@@ -960,7 +960,7 @@ void SDL2SoftwareGraphics::fillRectangle(const Rect &restrict rectangle)
                     uint8_t *const p = static_cast<uint8_t *>(mSurface->pixels)
                         + y * mSurface->pitch;
                     for (x = x1; x < x2; x++)
-                        *(p + x) = static_cast<uint8_t>(pixel);
+                        *(p + x) = CAST_U8(pixel);
                 }
                 break;
             case 2:
@@ -972,9 +972,9 @@ void SDL2SoftwareGraphics::fillRectangle(const Rect &restrict rectangle)
                     {
                         uint8_t *const p = p0 + x * 2;
                         *reinterpret_cast<uint16_t *>(p) = SDLAlpha16(
-                            static_cast<uint16_t>(pixel),
+                            CAST_U16(pixel),
                             *reinterpret_cast<uint16_t *>(p),
-                            static_cast<uint8_t>(mColor.a), mSurface->format);
+                            CAST_U8(mColor.a), mSurface->format);
                     }
                 }
                 break;
@@ -993,13 +993,13 @@ void SDL2SoftwareGraphics::fillRectangle(const Rect &restrict rectangle)
                     {
                         uint8_t *const p = p0 + x * 3;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                        p[2] = static_cast<uint8_t>((p[2] * ca + cb) >> 8);
-                        p[1] = static_cast<uint8_t>((p[1] * ca + cg) >> 8);
-                        p[0] = static_cast<uint8_t>((p[0] * ca + cr) >> 8);
+                        p[2] = CAST_U8((p[2] * ca + cb) >> 8);
+                        p[1] = CAST_U8((p[1] * ca + cg) >> 8);
+                        p[0] = CAST_U8((p[0] * ca + cr) >> 8);
 #else
-                        p[0] = static_cast<uint8_t>((p[0] * ca + cb) >> 8);
-                        p[1] = static_cast<uint8_t>((p[1] * ca + cg) >> 8);
-                        p[2] = static_cast<uint8_t>((p[2] * ca + cr) >> 8);
+                        p[0] = CAST_U8((p[0] * ca + cb) >> 8);
+                        p[1] = CAST_U8((p[1] * ca + cg) >> 8);
+                        p[2] = CAST_U8((p[2] * ca + cr) >> 8);
 #endif
                     }
                 }
@@ -1103,10 +1103,10 @@ void SDL2SoftwareGraphics::fillRectangle(const Rect &restrict rectangle)
     {
         defRectFromArea(rect, area);
         const uint32_t color = SDL_MapRGBA(mSurface->format,
-            static_cast<int8_t>(mColor.r),
-            static_cast<int8_t>(mColor.g),
-            static_cast<int8_t>(mColor.b),
-            static_cast<int8_t>(mColor.a));
+            CAST_S8(mColor.r),
+            CAST_S8(mColor.g),
+            CAST_S8(mColor.b),
+            CAST_S8(mColor.a));
         SDL_FillRect(mSurface, &rect, color);
     }
 }
@@ -1210,20 +1210,20 @@ void SDL2SoftwareGraphics::drawHLine(int x1, int y, int x2) restrict2
         + y * mSurface->pitch + x1 * bpp;
 
     const uint32_t pixel = SDL_MapRGB(mSurface->format,
-        static_cast<uint8_t>(mColor.r),
-        static_cast<uint8_t>(mColor.g),
-        static_cast<uint8_t>(mColor.b));
+        CAST_U8(mColor.r),
+        CAST_U8(mColor.g),
+        CAST_U8(mColor.b));
     switch (bpp)
     {
         case 1:
             for (; x1 <= x2; ++x1)
-                *(p++) = static_cast<uint8_t>(pixel);
+                *(p++) = CAST_U8(pixel);
             break;
 
         case 2:
         {
             uint16_t* q = reinterpret_cast<uint16_t*>(p);
-            const uint16_t pixel1 = static_cast<uint16_t>(pixel);
+            const uint16_t pixel1 = CAST_U16(pixel);
             for (; x1 <= x2; ++x1)
                 *(q++) = pixel1;
             break;
@@ -1231,9 +1231,9 @@ void SDL2SoftwareGraphics::drawHLine(int x1, int y, int x2) restrict2
 
         case 3:
         {
-            const uint8_t b0 = static_cast<uint8_t>((pixel >> 16) & 0xff);
-            const uint8_t b1 = static_cast<uint8_t>((pixel >> 8) & 0xff);
-            const uint8_t b2 = static_cast<uint8_t>(pixel & 0xff);
+            const uint8_t b0 = CAST_U8((pixel >> 16) & 0xff);
+            const uint8_t b1 = CAST_U8((pixel >> 8) & 0xff);
+            const uint8_t b2 = CAST_U8(pixel & 0xff);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
             for (; x1 <= x2; ++x1)
             {
@@ -1259,8 +1259,8 @@ void SDL2SoftwareGraphics::drawHLine(int x1, int y, int x2) restrict2
             uint32_t *q = reinterpret_cast<uint32_t*>(p);
             if (mAlpha)
             {
-                unsigned char a = static_cast<unsigned char>(mColor.a);
-                unsigned char a1 = static_cast<unsigned char>(255U - a);
+                unsigned char a = CAST_U8(mColor.a);
+                unsigned char a1 = CAST_U8(255U - a);
                 const int b0 = (pixel & 0xff) * a;
                 const int g0 = (pixel & 0xff00) * a;
                 const int r0 = (pixel & 0xff0000) * a;
@@ -1335,9 +1335,9 @@ void SDL2SoftwareGraphics::drawVLine(int x, int y1, int y2) restrict2
         + y1 * mSurface->pitch + x * bpp;
 
     const uint32_t pixel = SDL_MapRGB(mSurface->format,
-        static_cast<uint8_t>(mColor.r),
-        static_cast<uint8_t>(mColor.g),
-        static_cast<uint8_t>(mColor.b));
+        CAST_U8(mColor.r),
+        CAST_U8(mColor.g),
+        CAST_U8(mColor.b));
 
     const int pitch = mSurface->pitch;
     switch (bpp)
@@ -1345,7 +1345,7 @@ void SDL2SoftwareGraphics::drawVLine(int x, int y1, int y2) restrict2
         case 1:
             for (; y1 <= y2; ++y1)
             {
-                *p = static_cast<uint8_t>(pixel);
+                *p = CAST_U8(pixel);
                 p += pitch;
             }
             break;
@@ -1354,16 +1354,16 @@ void SDL2SoftwareGraphics::drawVLine(int x, int y1, int y2) restrict2
             for (; y1 <= y2; ++ y1)
             {
                 *reinterpret_cast<uint16_t*>(p)
-                    = static_cast<uint16_t>(pixel);
+                    = CAST_U16(pixel);
                 p += pitch;
             }
             break;
 
         case 3:
         {
-            const uint8_t b0 = static_cast<uint8_t>((pixel >> 16) & 0xff);
-            const uint8_t b1 = static_cast<uint8_t>((pixel >> 8) & 0xff);
-            const uint8_t b2 = static_cast<uint8_t>(pixel & 0xff);
+            const uint8_t b0 = CAST_U8((pixel >> 16) & 0xff);
+            const uint8_t b1 = CAST_U8((pixel >> 8) & 0xff);
+            const uint8_t b2 = CAST_U8(pixel & 0xff);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
             for (; y1 <= y2; ++y1)
             {
@@ -1388,8 +1388,8 @@ void SDL2SoftwareGraphics::drawVLine(int x, int y1, int y2) restrict2
         {
             if (mAlpha)
             {
-                unsigned char a = static_cast<unsigned char>(mColor.a);
-                unsigned char a1 = static_cast<unsigned char>(255U - a);
+                unsigned char a = CAST_U8(mColor.a);
+                unsigned char a1 = CAST_U8(255U - a);
                 const int b0 = (pixel & 0xff) * a;
                 const int g0 = (pixel & 0xff00) * a;
                 const int r0 = (pixel & 0xff0000) * a;

@@ -35,22 +35,22 @@ ExtendedNamesModel::~ExtendedNamesModel()
 
 int ExtendedNamesModel::getNumberOfElements()
 {
-    return static_cast<int>(mNames.size());
+    return CAST_S32(mNames.size());
 }
 
 std::string ExtendedNamesModel::getElementAt(int i)
 {
     if (i >= getNumberOfElements() || i < 0)
         return "???";
-    return mNames[static_cast<size_t>(i)];
+    return mNames[CAST_SIZE(i)];
 }
 
 const Image *ExtendedNamesModel::getImageAt(int i)
 {
-    if (i >= static_cast<int>(mImages.size()) || i < 0)
+    if (i >= CAST_S32(mImages.size()) || i < 0)
         return nullptr;
 
-    return mImages[static_cast<size_t>(i)];
+    return mImages[CAST_SIZE(i)];
 }
 
 void ExtendedNamesModel::clear()

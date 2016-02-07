@@ -83,19 +83,19 @@ class Actor notfinal
          * Returns the pixels X coordinate of the actor.
          */
         int getPixelX() const A_WARN_UNUSED
-        { return static_cast<int>(mPos.x); }
+        { return CAST_S32(mPos.x); }
 
         /**
          * Returns the pixel Y coordinate of the actor.
          */
         virtual int getPixelY() const A_WARN_UNUSED
-        { return static_cast<int>(mPos.y); }
+        { return CAST_S32(mPos.y); }
 
         /**
          * Returns the pixel Y coordinate of the actor for sorting only.
          */
         virtual int getSortPixelY() const A_WARN_UNUSED
-        { return static_cast<int>(mPos.y) - mYDiff; }
+        { return CAST_S32(mPos.y) - mYDiff; }
 
         /**
          * Returns the x coordinate in tiles of the actor.

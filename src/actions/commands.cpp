@@ -392,7 +392,7 @@ impHandler(commandEmote)
 {
     if (localPlayer)
     {
-        localPlayer->emote(static_cast<uint8_t>(atoi(event.args.c_str())));
+        localPlayer->emote(CAST_U8(atoi(event.args.c_str())));
         return true;
     }
     return false;
@@ -965,7 +965,7 @@ impHandler(commandHomunEmote)
 
     if (homunculusHandler)
     {
-        homunculusHandler->emote(static_cast<uint8_t>(
+        homunculusHandler->emote(CAST_U8(
             atoi(event.args.c_str())));
         return true;
     }
@@ -1100,7 +1100,7 @@ impHandler(skill)
 
     StringVect vect;
     splitToStringVector(vect, event.args, ' ');
-    const int sz = static_cast<int>(vect.size());
+    const int sz = CAST_S32(vect.size());
     if (sz < 1)
         return true;
     const int skillId = atoi(vect[0].c_str());

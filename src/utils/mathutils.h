@@ -185,7 +185,7 @@ inline uint16_t getCrc16(const std::string &str)
     while (f != 0)
     {
         f --;
-        crc16 = static_cast<uint16_t>(
+        crc16 = CAST_U16(
             crc_table[(crc16 ^ (str[f])) & 0xff] ^ (crc16 >> 8));
     }
 
@@ -225,7 +225,7 @@ constexpr inline float weightedAverage(const float n1, const float n2,
 
 constexpr inline int roundDouble(const double v)
 {
-    return (v > 0.0) ? static_cast<int>(v + 0.5) : static_cast<int>(v - 0.5);
+    return (v > 0.0) ? CAST_S32(v + 0.5) : CAST_S32(v - 0.5);
 }
 
 constexpr2 inline int powerOfTwo(const unsigned int input)
@@ -239,8 +239,8 @@ constexpr2 inline int powerOfTwo(const unsigned int input)
 constexpr2 inline int fastSqrtInt(const unsigned int n)
 {
     if (n < 1000)
-        return static_cast<int>(square_roots[n]);
-    return static_cast<int>(sqrt(n));
+        return CAST_S32(square_roots[n]);
+    return CAST_S32(sqrt(n));
 }
 
 #endif  // UTILS_MATHUTILS_H

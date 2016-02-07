@@ -24,5 +24,5 @@
 
 ThemeColorIdT operator+(const ThemeColorIdT &id, const int& i)
 {
-    return static_cast<ThemeColorIdT>(static_cast<int>(id) + i);
+    return static_cast<ThemeColorIdT>(CAST_S32(id) + i);
 }

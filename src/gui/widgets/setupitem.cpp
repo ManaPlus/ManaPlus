@@ -993,14 +993,14 @@ void SetupItemSlider2::action(const ActionEvent &event A_UNUSED)
 
 void SetupItemSlider2::updateLabel()
 {
-    int val = static_cast<int>(mSlider->getValue()) - mMin;
+    int val = CAST_S32(mSlider->getValue()) - mMin;
     if (val < 0)
     {
         val = 0;
     }
     else
     {
-        const int sz = static_cast<signed>(mValues->size());
+        const int sz = CAST_S32(mValues->size());
         if (val >= sz)
             val = sz - 1;
     }

@@ -89,16 +89,16 @@ void ConfigManager::initConfiguration()
     config.setValue("hwaccel", false);
 #ifdef USE_OPENGL
 #if (defined __APPLE__)
-    config.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
+    config.setValue("opengl", CAST_S32(RENDER_NORMAL_OPENGL));
 #elif (defined ANDROID)
-    config.setValue("opengl", static_cast<int>(RENDER_GLES_OPENGL));
+    config.setValue("opengl", CAST_S32(RENDER_GLES_OPENGL));
 #elif (defined WIN32)
-    config.setValue("opengl", static_cast<int>(RENDER_SAFE_OPENGL));
+    config.setValue("opengl", CAST_S32(RENDER_SAFE_OPENGL));
 #else
-    config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
+    config.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
 #endif
 #else
-    config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
+    config.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
 #endif
     config.setValue("screen", false);
     config.setValue("sound", true);
@@ -174,7 +174,7 @@ void ConfigManager::storeSafeParameters()
 
     tmpOpengl = intToRenderType(config.getIntValue("opengl"));
 
-    config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
+    config.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
 
     config.write();
 
@@ -185,7 +185,7 @@ void ConfigManager::storeSafeParameters()
     }
 
     config.setValue("safemode", false);
-    config.setValue("opengl", static_cast<int>(tmpOpengl));
+    config.setValue("opengl", CAST_S32(tmpOpengl));
 }
 #elif !defined(ANDROID)
 void ConfigManager::storeSafeParameters()
@@ -264,9 +264,9 @@ void ConfigManager::storeSafeParameters()
         config.setValue("screenheight", 480);
     }
 #if defined(__APPLE__)
-    config.setValue("opengl", static_cast<int>(RENDER_NORMAL_OPENGL));
+    config.setValue("opengl", CAST_S32(RENDER_NORMAL_OPENGL));
 #else
-    config.setValue("opengl", static_cast<int>(RENDER_SOFTWARE));
+    config.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
 #endif
 
     config.write();
@@ -281,7 +281,7 @@ void ConfigManager::storeSafeParameters()
     if (!tmpOpengl)
     {
         config.setValue("hwaccel", tmpHwaccel);
-        config.setValue("opengl", static_cast<int>(tmpOpengl));
+        config.setValue("opengl", CAST_S32(tmpOpengl));
         config.setValue("fpslimit", tmpFpslimit);
         config.setValue("altfpslimit", tmpAltFpslimit);
         config.setValue("sound", tmpSound);
@@ -301,7 +301,7 @@ void ConfigManager::storeSafeParameters()
     }
     else
     {
-        config.setValue("opengl", static_cast<int>(tmpOpengl));
+        config.setValue("opengl", CAST_S32(tmpOpengl));
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
     }
@@ -346,7 +346,7 @@ void ConfigManager::checkConfigVersion()
     {
         if (config.getIntValue("speech") == BeingSpeech::TEXT_OVERHEAD)
         {
-            config.setValue("speech", static_cast<int>(
+            config.setValue("speech", CAST_S32(
                 BeingSpeech::NO_NAME_IN_BUBBLE));
         }
     }

@@ -298,7 +298,7 @@ void TextField::keyPressed(KeyEvent &event)
         std::string str = event.getText();
         mText.insert(mCaretPosition, str);
         mTextChanged = true;
-        mCaretPosition += static_cast<unsigned int>(str.size());
+        mCaretPosition += CAST_U32(str.size());
         event.consume();
         fixScroll();
         if (mSendAlwaysEvents)
@@ -314,7 +314,7 @@ void TextField::keyPressed(KeyEvent &event)
             if ((val >= '0' && val <= '9') || (val == '-' && !mCaretPosition))
             {
                 char buf[2];
-                buf[0] = static_cast<char>(val);
+                buf[0] = CAST_8(val);
                 buf[1] = 0;
                 mText.insert(mCaretPosition, std::string(buf));
                 mTextChanged = true;
@@ -327,7 +327,7 @@ void TextField::keyPressed(KeyEvent &event)
             }
         }
         else if (!mMaximum ||
-                 static_cast<int>(mText.size()) < mMaximum)
+                 CAST_S32(mText.size()) < mMaximum)
         {
             int len;
             if (val < 128)
@@ -342,13 +342,13 @@ void TextField::keyPressed(KeyEvent &event)
             char buf[4];
             for (int i = 0; i < len; ++ i)
             {
-                buf[i] = static_cast<char>(val >> (6 * (len - i - 1)));
+                buf[i] = CAST_8(val >> (6 * (len - i - 1)));
                 if (i > 0)
-                    buf[i] = static_cast<char>((buf[i] & 63) | 128);
+                    buf[i] = CAST_8((buf[i] & 63) | 128);
             }
 
             if (len > 1)
-                buf[0] |= static_cast<char>(255U << (8 - len));
+                buf[0] |= CAST_8(255U << (8 - len));
 
             mText.insert(mCaretPosition, std::string(buf, buf + len));
             mCaretPosition += len;
@@ -413,7 +413,7 @@ bool TextField::handleNormalKeys(const InputActionT action, bool &consumed)
         case InputAction::GUI_RIGHT:
         {
             consumed = true;
-            const unsigned sz = static_cast<unsigned>(mText.size());
+            const unsigned sz = CAST_U32(mText.size());
             while (mCaretPosition < sz)
             {
                 ++mCaretPosition;
@@ -429,7 +429,7 @@ bool TextField::handleNormalKeys(const InputActionT action, bool &consumed)
         case InputAction::GUI_DELETE:
         {
             consumed = true;
-            unsigned sz = static_cast<unsigned>(mText.size());
+            unsigned sz = CAST_U32(mText.size());
             while (mCaretPosition < sz)
             {
                 --sz;
@@ -462,7 +462,7 @@ bool TextField::handleNormalKeys(const InputActionT action, bool &consumed)
             break;
 
         case InputAction::GUI_END:
-            mCaretPosition = static_cast<unsigned>(mText.size());
+            mCaretPosition = CAST_U32(mText.size());
             consumed = true;
             break;
 
@@ -517,7 +517,7 @@ void TextField::handleCtrlKeys(const InputActionT action, bool &consumed)
         }
         case InputAction::GUI_E:
         {
-            mCaretPosition = static_cast<int>(mText.size());
+            mCaretPosition = CAST_S32(mText.size());
             consumed = true;
             break;
         }
@@ -584,7 +584,7 @@ void TextField::moveCaretBack()
 
 void TextField::moveCaretForward()
 {
-    const unsigned sz = static_cast<unsigned>(mText.size());
+    const unsigned sz = CAST_U32(mText.size());
     while (mCaretPosition < sz)
     {
         ++mCaretPosition;
@@ -595,7 +595,7 @@ void TextField::moveCaretForward()
 
 void TextField::caretDelete()
 {
-    unsigned sz = static_cast<unsigned>(mText.size());
+    unsigned sz = CAST_U32(mText.size());
     while (mCaretPosition < sz)
     {
         --sz;
@@ -609,12 +609,12 @@ void TextField::caretDelete()
 void TextField::handlePaste()
 {
     std::string text = getText();
-    size_t caretPos = static_cast<size_t>(getCaretPosition());
+    size_t caretPos = CAST_SIZE(getCaretPosition());
 
     if (retrieveBuffer(text, caretPos))
     {
         setText(text);
-        setCaretPosition(static_cast<unsigned int>(caretPos));
+        setCaretPosition(CAST_U32(caretPos));
     }
 }
 
@@ -649,7 +649,7 @@ void TextField::moveCaretWordBack()
 
 void TextField::moveCaretWordForward()
 {
-    const unsigned sz = static_cast<unsigned>(mText.size());
+    const unsigned sz = CAST_U32(mText.size());
     const unsigned int oldCaret = mCaretPosition;
     while (mCaretPosition < sz)
     {
@@ -731,9 +731,9 @@ void TextField::fixScroll()
 
 void TextField::setCaretPosition(unsigned int position)
 {
-    const unsigned int sz = static_cast<unsigned int>(mText.size());
+    const unsigned int sz = CAST_U32(mText.size());
     if (position > sz)
-        mCaretPosition = static_cast<int>(sz);
+        mCaretPosition = CAST_S32(sz);
     else
         mCaretPosition = position;
 
@@ -781,7 +781,7 @@ void TextField::focusLost(const Event &event A_UNUSED)
 
 void TextField::setText(const std::string& text)
 {
-    const unsigned int sz = static_cast<unsigned int>(text.size());
+    const unsigned int sz = CAST_U32(text.size());
     if (sz < mCaretPosition)
         mCaretPosition = sz;
     mText = text;

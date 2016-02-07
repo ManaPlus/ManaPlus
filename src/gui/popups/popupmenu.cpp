@@ -441,7 +441,7 @@ void PopupMenu::showPopup(const int x, const int y,
         if (being && !being->getName().empty())
         {
             mBrowserBox->addRow(strprintf("@@player_%u|%s >@@",
-                static_cast<unsigned>(being->getId()), (being->getName()
+                CAST_U32(being->getId()), (being->getName()
                 + being->getGenderSignWithSpace()).c_str()));
         }
         else if (actor->getType() == ActorType::FloorItem)
@@ -449,7 +449,7 @@ void PopupMenu::showPopup(const int x, const int y,
             const FloorItem *const floorItem
                 = static_cast<const FloorItem*>(actor);
             mBrowserBox->addRow(strprintf("@@flooritem_%u|%s >@@",
-                static_cast<unsigned>(actor->getId()),
+                CAST_U32(actor->getId()),
                 floorItem->getName().c_str()));
         }
     }
@@ -799,7 +799,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         mBrowserBox->addRow("disable away", _("Disable away"));
     }
     mBrowserBox->addRow("##3---");
-    if (tab->getType() == static_cast<int>(ChatTabType::PARTY))
+    if (tab->getType() == CAST_S32(ChatTabType::PARTY))
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: enable away messages in chat tab
@@ -1041,11 +1041,11 @@ void PopupMenu::handleLink(const std::string &link,
                 if (specialLayer)
                 {
                     const bool isHome = (mMapItem->getType()
-                        == static_cast<int>(MapItemType::HOME));
+                        == CAST_S32(MapItemType::HOME));
                     const int x = static_cast<const int>(mMapItem->getX());
                     const int y = static_cast<const int>(mMapItem->getY());
                     specialLayer->setTile(x, y,
-                        static_cast<int>(MapItemType::EMPTY));
+                        CAST_S32(MapItemType::EMPTY));
                     if (socialWindow)
                         socialWindow->removePortal(x, y);
                     if (isHome && localPlayer)
@@ -1493,7 +1493,7 @@ void PopupMenu::handleLink(const std::string &link,
         replaceAll(cmd, "'FLOORID'", toString(toInt(mFloorItemId, int)));
         replaceAll(cmd, "'ITEMID'", toString(mItemId));
         replaceAll(cmd, "'ITEMCOLOR'", toString(toInt(mItemColor, int)));
-        replaceAll(cmd, "'BEINGTYPEID'", toString(static_cast<int>(mType)));
+        replaceAll(cmd, "'BEINGTYPEID'", toString(CAST_S32(mType)));
         replaceAll(cmd, "'PLAYER'", localPlayer->getName());
         if (mItemIndex >= 0)
             replaceAll(cmd, "'INVINDEX'", toString(mItemIndex));
@@ -2163,7 +2163,7 @@ void PopupMenu::showWindowsPopup()
             continue;
 
         mBrowserBox->addRow(strprintf("show window_%d",
-            static_cast<int>(btn->key)),
+            CAST_S32(btn->key)),
             btn->text.c_str());
     }
     mBrowserBox->addRow("##3---");

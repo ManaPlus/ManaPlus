@@ -35,7 +35,7 @@ namespace EAthena
 
 void BankRecv::processBankStatus(Net::MessageIn &msg)
 {
-    const int money = static_cast<int>(msg.readInt64("money"));
+    const int money = CAST_S32(msg.readInt64("money"));
     msg.readInt16("reason");
     BankListener::distributeEvent(money);
 }
@@ -43,7 +43,7 @@ void BankRecv::processBankStatus(Net::MessageIn &msg)
 void BankRecv::processBankDeposit(Net::MessageIn &msg)
 {
     const int reason = msg.readInt16("reason");
-    const int money = static_cast<int>(msg.readInt64("money"));
+    const int money = CAST_S32(msg.readInt64("money"));
     msg.readInt32("balance");
     BankListener::distributeEvent(money);
     if (reason)
@@ -53,7 +53,7 @@ void BankRecv::processBankDeposit(Net::MessageIn &msg)
 void BankRecv::processBankWithdraw(Net::MessageIn &msg)
 {
     const int reason = msg.readInt16("reason");
-    const int money = static_cast<int>(msg.readInt64("money"));
+    const int money = CAST_S32(msg.readInt64("money"));
     msg.readInt32("balance");
     BankListener::distributeEvent(money);
     if (reason)

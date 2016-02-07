@@ -377,7 +377,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
     setEntry(mGreenSlider, mGreenText, col->g);
     setEntry(mBlueSlider, mBlueText, col->b);
 
-    mGradTypeSlider->setValue(static_cast<int>(grad));
+    mGradTypeSlider->setValue(CAST_S32(grad));
     updateGradType();
     mGradTypeSlider->setEnabled(true);
 }
@@ -406,7 +406,7 @@ void Setup_Colors::cancel()
     const UserColorIdT type = static_cast<UserColorIdT>(
         userPalette->getColorTypeAt(mSelected));
     const Color *const col = &userPalette->getColor(type);
-    mGradTypeSlider->setValue(static_cast<int>(
+    mGradTypeSlider->setValue(CAST_S32(
         userPalette->getGradientType(type)));
     const int delay = userPalette->getGradientDelay(type);
     setEntry(mGradDelaySlider, mGradDelayText, delay);
@@ -456,23 +456,23 @@ void Setup_Colors::updateColor()
     const UserColorIdT type = static_cast<UserColorIdT>(
         userPalette->getColorTypeAt(mSelected));
     const GradientTypeT grad = static_cast<GradientTypeT>(
-        static_cast<int>(mGradTypeSlider->getValue()));
-    const int delay = static_cast<int>(mGradDelaySlider->getValue());
+        CAST_S32(mGradTypeSlider->getValue()));
+    const int delay = CAST_S32(mGradDelaySlider->getValue());
     userPalette->setGradient(type, grad);
     userPalette->setGradientDelay(type, delay);
 
     if (grad == GradientType::STATIC)
     {
         userPalette->setColor(type,
-                static_cast<int>(mRedSlider->getValue()),
-                static_cast<int>(mGreenSlider->getValue()),
-                static_cast<int>(mBlueSlider->getValue()));
+                CAST_S32(mRedSlider->getValue()),
+                CAST_S32(mGreenSlider->getValue()),
+                CAST_S32(mBlueSlider->getValue()));
     }
     else if (grad == GradientType::PULSE)
     {
         userPalette->setTestColor(type, Color(
-                static_cast<int>(mRedSlider->getValue()),
-                static_cast<int>(mGreenSlider->getValue()),
-                static_cast<int>(mBlueSlider->getValue())));
+                CAST_S32(mRedSlider->getValue()),
+                CAST_S32(mGreenSlider->getValue()),
+                CAST_S32(mBlueSlider->getValue())));
     }
 }

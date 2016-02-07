@@ -98,5 +98,5 @@ TEST_CASE("MathUtils powerOfTwo")
 TEST_CASE("MathUtils tests fastSqrtInt")
 {
     for (int f = 0; f < 1005; f ++)
-        REQUIRE(fastSqrtInt(f) == static_cast<int>(sqrt(f)));
+        REQUIRE(fastSqrtInt(f) == CAST_S32(sqrt(f)));
 }

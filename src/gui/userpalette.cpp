@@ -31,7 +31,7 @@
 
 UserPalette *userPalette = nullptr;
 
-const std::string ColorTypeNames[static_cast<size_t>(
+const std::string ColorTypeNames[CAST_SIZE(
     UserColorId::USER_COLOR_LAST)] =
 {
     "",
@@ -107,7 +107,7 @@ std::string UserPalette::getConfigName(const std::string &typeName)
         }
         else
         {
-           res[pos] = static_cast<signed char>(tolower(typeName[i]));
+           res[pos] = CAST_S8(tolower(typeName[i]));
         }
         pos ++;
     }
@@ -116,14 +116,14 @@ std::string UserPalette::getConfigName(const std::string &typeName)
 }
 
 UserPalette::UserPalette() :
-    Palette(static_cast<int>(UserColorId::USER_COLOR_LAST))
+    Palette(CAST_S32(UserColorId::USER_COLOR_LAST))
 {
-    mColors[static_cast<size_t>(UserColorId::BEING)] = ColorElem();
-    mColors[static_cast<size_t>(UserColorId::PC)] = ColorElem();
-    mColors[static_cast<size_t>(UserColorId::SELF)] = ColorElem();
-    mColors[static_cast<size_t>(UserColorId::GM)] = ColorElem();
-    mColors[static_cast<size_t>(UserColorId::NPC)] = ColorElem();
-    mColors[static_cast<size_t>(UserColorId::MONSTER)] = ColorElem();
+    mColors[CAST_SIZE(UserColorId::BEING)] = ColorElem();
+    mColors[CAST_SIZE(UserColorId::PC)] = ColorElem();
+    mColors[CAST_SIZE(UserColorId::SELF)] = ColorElem();
+    mColors[CAST_SIZE(UserColorId::GM)] = ColorElem();
+    mColors[CAST_SIZE(UserColorId::NPC)] = ColorElem();
+    mColors[CAST_SIZE(UserColorId::MONSTER)] = ColorElem();
 
     addLabel(UserColorId::LABEL_BEING,
         // TRANSLATORS: palette label
@@ -415,7 +415,7 @@ UserPalette::~UserPalette()
             continue;
         const std::string &configName = ColorTypeNames[col->type];
         config.setValue(configName + "Gradient",
-            static_cast<int>(col->committedGrad));
+            CAST_S32(col->committedGrad));
         config.setValue(configName + "Delay", col->delay);
 
         if (col->grad == GradientType::STATIC ||
@@ -434,7 +434,7 @@ void UserPalette::setColor(const UserColorIdT type,
                            const int g,
                            const int b)
 {
-    Color &color = mColors[static_cast<size_t>(type)].color;
+    Color &color = mColors[CAST_SIZE(type)].color;
     color.r = r;
     color.g = g;
     color.b = b;
@@ -443,7 +443,7 @@ void UserPalette::setColor(const UserColorIdT type,
 void UserPalette::setGradient(const UserColorIdT type,
                               const GradientTypeT grad)
 {
-    ColorElem *const elem = &mColors[static_cast<size_t>(type)];
+    ColorElem *const elem = &mColors[CAST_SIZE(type)];
 
     if (elem->grad != GradientType::STATIC && grad == GradientType::STATIC)
     {
@@ -530,10 +530,10 @@ void UserPalette::addColor(const UserColorIdT type,
     const unsigned maxType = sizeof(ColorTypeNames)
         / sizeof(ColorTypeNames[0]);
 
-    if (static_cast<unsigned>(type) >= maxType)
+    if (CAST_U32(type) >= maxType)
         return;
 
-    const std::string &configName = ColorTypeNames[static_cast<size_t>(type)];
+    const std::string &configName = ColorTypeNames[CAST_SIZE(type)];
     char buffer[20];
     snprintf(buffer, sizeof(buffer), "0x%06x", rgb);
     buffer[19] = 0;
@@ -548,14 +548,14 @@ void UserPalette::addColor(const UserColorIdT type,
     const Color &trueCol = Color(rgbValue);
     grad = static_cast<GradientTypeT>(config.getValue(
         configName + "Gradient",
-        static_cast<int>(grad)));
+        CAST_S32(grad)));
     delay = config.getValueInt(configName + "Delay", delay);
-    mColors[static_cast<size_t>(type)].set(static_cast<int>(type),
+    mColors[CAST_SIZE(type)].set(CAST_S32(type),
         trueCol, grad, delay);
-    mColors[static_cast<size_t>(type)].text = text;
+    mColors[CAST_SIZE(type)].text = text;
 
     if (grad != GradientType::STATIC)
-        mGradVector.push_back(&mColors[static_cast<size_t>(type)]);
+        mGradVector.push_back(&mColors[CAST_SIZE(type)]);
 }
 
 void UserPalette::addLabel(const UserColorIdT type,
@@ -564,15 +564,15 @@ void UserPalette::addLabel(const UserColorIdT type,
     const unsigned maxType = sizeof(ColorTypeNames)
         / sizeof(ColorTypeNames[0]);
 
-    if (static_cast<unsigned>(type) >= maxType)
+    if (CAST_U32(type) >= maxType)
         return;
 
 
-    mColors[static_cast<size_t>(type)] = ColorElem();
+    mColors[CAST_SIZE(type)] = ColorElem();
     const std::string str(" \342\200\225\342\200\225\342\200\225"
         "\342\200\225\342\200\225 ");
-    mColors[static_cast<size_t>(type)].grad = GradientType::LABEL;
-    mColors[static_cast<size_t>(type)].text =
+    mColors[CAST_SIZE(type)].grad = GradientType::LABEL;
+    mColors[CAST_SIZE(type)].text =
         std::string(str).append(text).append(str);
 }
 

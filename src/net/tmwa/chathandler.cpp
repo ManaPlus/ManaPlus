@@ -59,24 +59,24 @@ void ChatHandler::talk(const std::string &restrict text,
 
     createOutPacket(CMSG_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly
-    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
-    outMsg.writeString(mes, static_cast<int>(mes.length() + 1), "message");
+    outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
+    outMsg.writeString(mes, CAST_S32(mes.length() + 1), "message");
 }
 
 void ChatHandler::talkRaw(const std::string &mes) const
 {
     createOutPacket(CMSG_CHAT_MESSAGE);
-    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4), "len");
-    outMsg.writeString(mes, static_cast<int>(mes.length()), "message");
+    outMsg.writeInt16(CAST_S16(mes.length() + 4), "len");
+    outMsg.writeString(mes, CAST_S32(mes.length()), "message");
 }
 
 void ChatHandler::privateMessage(const std::string &restrict recipient,
                                  const std::string &restrict text)
 {
     createOutPacket(CMSG_CHAT_WHISPER);
-    outMsg.writeInt16(static_cast<int16_t>(text.length() + 28), "len");
+    outMsg.writeInt16(CAST_S16(text.length() + 28), "len");
     outMsg.writeString(recipient, 24, "recipient nick");
-    outMsg.writeString(text, static_cast<int>(text.length()), "message");
+    outMsg.writeString(text, CAST_S32(text.length()), "message");
     Ea::ChatRecv::mSentWhispers.push(recipient);
 }
 
@@ -107,7 +107,7 @@ void ChatHandler::sendRaw(const std::string &args) const
     if (pos != std::string::npos)
     {
         str = line.substr(0, pos);
-        const int16_t id = static_cast<int16_t>(parseNumber(str));
+        const int16_t id = CAST_S16(parseNumber(str));
         outMsg = new MessageOut(id);
         outMsg->writeInt16(id, "packet id");
         line = line.substr(pos + 1);
@@ -115,7 +115,7 @@ void ChatHandler::sendRaw(const std::string &args) const
     }
     else
     {
-        const int16_t id = static_cast<int16_t>(parseNumber(line));
+        const int16_t id = CAST_S16(parseNumber(line));
         outMsg = new MessageOut(id);
         outMsg->writeInt16(id, "packet id");
         delete outMsg;
@@ -145,17 +145,17 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
     {
         case 'b':
         {
-            outMsg.writeInt8(static_cast<unsigned char>(i), "raw");
+            outMsg.writeInt8(CAST_U8(i), "raw");
             break;
         }
         case 'w':
         {
-            outMsg.writeInt16(static_cast<int16_t>(i), "raw");
+            outMsg.writeInt16(CAST_S16(i), "raw");
             break;
         }
         case 'l':
         {
-            outMsg.writeInt32(static_cast<int32_t>(i), "raw");
+            outMsg.writeInt32(CAST_S32(i), "raw");
             break;
         }
         default:

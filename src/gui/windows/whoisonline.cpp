@@ -459,7 +459,7 @@ void WhoIsOnline::loadWebList()
                     level = 0;
 
                 OnlinePlayer *const player = new OnlinePlayer(nick,
-                    static_cast<unsigned char>(255), level,
+                    CAST_U8(255), level,
                     Gender::UNSPECIFIED, -1);
                 mOnlinePlayers.insert(player);
                 mOnlineNicks.insert(nick);
@@ -502,11 +502,11 @@ size_t WhoIsOnline::memoryWrite(void *restrict ptr,
         reinterpret_cast<WhoIsOnline *restrict>(stream);
     const size_t totalMem = size * nmemb;
     wio->mMemoryBuffer = static_cast<char*>(realloc(wio->mMemoryBuffer,
-        static_cast<size_t>(wio->mDownloadedBytes) + totalMem));
+        CAST_SIZE(wio->mDownloadedBytes) + totalMem));
     if (wio->mMemoryBuffer)
     {
         memcpy(&(wio->mMemoryBuffer[wio->mDownloadedBytes]), ptr, totalMem);
-        wio->mDownloadedBytes += static_cast<int>(totalMem);
+        wio->mDownloadedBytes += CAST_S32(totalMem);
     }
 
     return totalMem;
@@ -570,7 +570,7 @@ int WhoIsOnline::downloadThread(void *ptr)
                     case CURLE_COULDNT_CONNECT:
                     default:
                         std::cerr << "curl error "
-                                  << static_cast<unsigned>(res) << ": "
+                                  << CAST_U32(res) << ": "
                                   << wio->mCurlError << " host: "
                                   << url.c_str() << std::endl;
                     break;

@@ -75,9 +75,9 @@ void ImageParticle::draw(Graphics *restrict const graphics,
     if (mAlive != AliveStatus::ALIVE || !mImage)
         return;
 
-    const int screenX = static_cast<int>(mPos.x)
+    const int screenX = CAST_S32(mPos.x)
         + offsetX - mImage->mBounds.w / 2;
-    const int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
+    const int screenY = CAST_S32(mPos.y) - CAST_S32(mPos.z)
         + offsetY - mImage->mBounds.h / 2;
 
     // Check if on screen

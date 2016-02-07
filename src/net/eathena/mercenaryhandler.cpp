@@ -61,8 +61,8 @@ void MercenaryHandler::move(const int x, const int y) const
         return;
     createOutPacket(CMSG_HOMMERC_MOVE_TO);
     outMsg.writeBeingId(id, "mercenary id");
-    outMsg.writeCoordinates(static_cast<uint16_t>(x),
-        static_cast<uint16_t>(y),
+    outMsg.writeCoordinates(CAST_U16(x),
+        CAST_U16(y),
         0U, "position");
 }
 
@@ -75,7 +75,7 @@ void MercenaryHandler::attack(const BeingId targetId,
     createOutPacket(CMSG_HOMMERC_ATTACK);
     outMsg.writeBeingId(id, "mercenary id");
     outMsg.writeBeingId(targetId, "target id");
-    outMsg.writeInt8(static_cast<int8_t>(keep == Keep_true ? 1 : 0), "keep");
+    outMsg.writeInt8(CAST_S8(keep == Keep_true ? 1 : 0), "keep");
 }
 
 void MercenaryHandler::talk(const std::string &restrict text) const
@@ -90,8 +90,8 @@ void MercenaryHandler::talk(const std::string &restrict text) const
     const size_t sz = msg.size();
 
     createOutPacket(CMSG_HOMMERC_TALK);
-    outMsg.writeInt16(static_cast<int16_t>(sz + 4 + 1), "len");
-    outMsg.writeString(msg, static_cast<int>(sz), "message");
+    outMsg.writeInt16(CAST_S16(sz + 4 + 1), "len");
+    outMsg.writeString(msg, CAST_S32(sz), "message");
     outMsg.writeInt8(0, "zero byte");
 }
 

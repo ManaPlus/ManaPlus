@@ -85,7 +85,7 @@ InputManager::InputManager() :
 void InputManager::init() restrict2
 {
     for (unsigned int i = 0;
-         i < static_cast<unsigned int>(InputAction::TOTAL);
+         i < CAST_U32(InputAction::TOTAL);
          i ++)
     {
         InputFunction &kf = mKey[i];
@@ -113,7 +113,7 @@ void InputManager::update()
 
 void InputManager::retrieve() restrict2
 {
-    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i ++)
+    for (int i = 0; i < CAST_S32(InputAction::TOTAL); i ++)
     {
         const std::string &restrict cmd = inputActionData[i].chatCommand;
         if (!cmd.empty())
@@ -177,7 +177,7 @@ void InputManager::retrieve() restrict2
 
 void InputManager::store() const restrict2
 {
-    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i ++)
+    for (int i = 0; i < CAST_S32(InputAction::TOTAL); i ++)
     {
 #ifdef USE_SDL2
         const std::string cf = std::string("sdl2")
@@ -233,7 +233,7 @@ void InputManager::store() const restrict2
 
 void InputManager::resetKey(const InputActionT i) restrict2
 {
-    InputFunction &restrict key = mKey[static_cast<size_t>(i)];
+    InputFunction &restrict key = mKey[CAST_SIZE(i)];
     for (size_t i2 = 1; i2 < inputFunctionSize; i2 ++)
     {
         InputItem &restrict ki2 = key.values[i2];
@@ -241,7 +241,7 @@ void InputManager::resetKey(const InputActionT i) restrict2
         ki2.value = -1;
     }
     const InputActionData &restrict kd =
-        inputActionData[static_cast<size_t>(i)];
+        inputActionData[CAST_SIZE(i)];
     InputItem &restrict val0 = key.values[0];
     val0.type = kd.defaultType1;
     InputItem &restrict val1 = key.values[1];
@@ -263,7 +263,7 @@ void InputManager::resetKey(const InputActionT i) restrict2
 
 void InputManager::resetKeys() restrict2
 {
-    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i++)
+    for (int i = 0; i < CAST_S32(InputAction::TOTAL); i++)
         resetKey(static_cast<InputActionT>(i));
 }
 
@@ -283,7 +283,7 @@ bool InputManager::hasConflicts(InputActionT &restrict key1,
      * No need to parse the square matrix: only check one triangle
      * that's enough to detect conflicts
      */
-    for (int i = 0; i < static_cast<int>(InputAction::TOTAL); i++)
+    for (int i = 0; i < CAST_S32(InputAction::TOTAL); i++)
     {
         const InputActionData &restrict kdi = inputActionData[i];
         if (!*kdi.configField)
@@ -297,7 +297,7 @@ bool InputManager::hasConflicts(InputActionT &restrict key1,
                 continue;
 
             size_t j;
-            for (j = i, j++; j < static_cast<int>(InputAction::TOTAL); j++)
+            for (j = i, j++; j < CAST_S32(InputAction::TOTAL); j++)
             {
                 if ((kdi.grp & inputActionData[j].grp) == 0
                     || !*kdi.configField)
@@ -338,7 +338,7 @@ bool InputManager::isActionActive(const InputActionT index) const restrict2
         return false;
 
     const InputActionData &restrict key =
-        inputActionData[static_cast<size_t>(index)];
+        inputActionData[CAST_SIZE(index)];
 //    logger->log("isActionActive mask=%d, condition=%d, index=%d",
 //        mMask, key.condition, index);
     if ((key.condition & mMask) != key.condition)
@@ -357,16 +357,16 @@ bool InputManager::isActionActive0(const InputActionT index)
 
 InputFunction &InputManager::getKey(InputActionT index) restrict2
 {
-    if (static_cast<int>(index) < 0 || index >= InputAction::TOTAL)
+    if (CAST_S32(index) < 0 || index >= InputAction::TOTAL)
         index = InputAction::MOVE_UP;
-    return mKey[static_cast<size_t>(index)];
+    return mKey[CAST_SIZE(index)];
 }
 
 std::string InputManager::getKeyStringLong(const InputActionT index) const
                                            restrict2
 {
     std::string keyStr;
-    const InputFunction &restrict ki = mKey[static_cast<size_t>(index)];
+    const InputFunction &restrict ki = mKey[CAST_SIZE(index)];
 
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
@@ -410,7 +410,7 @@ std::string InputManager::getKeyValueString(const InputActionT index) const
                                             restrict2
 {
     std::string keyStr;
-    const InputFunction &restrict ki = mKey[static_cast<size_t>(index)];
+    const InputFunction &restrict ki = mKey[CAST_SIZE(index)];
 
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
@@ -475,18 +475,18 @@ void InputManager::addActionKey(const InputActionT action,
                                 const InputTypeT type,
                                 const int val) restrict2
 {
-    if (static_cast<int>(action) < 0 || action >= InputAction::TOTAL)
+    if (CAST_S32(action) < 0 || action >= InputAction::TOTAL)
         return;
 
     int idx = -1;
-    InputFunction &restrict key = mKey[static_cast<size_t>(action)];
+    InputFunction &restrict key = mKey[CAST_SIZE(action)];
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         const InputItem &restrict val2 = key.values[i];
         if (val2.type == InputType::UNKNOWN ||
             (val2.type == type && val2.value == val))
         {
-            idx = static_cast<int>(i);
+            idx = CAST_S32(i);
             break;
         }
     }
@@ -523,7 +523,7 @@ void InputManager::setNewKey(const SDL_Event &event,
 
 void InputManager::unassignKey() restrict2
 {
-    InputFunction &restrict key = mKey[static_cast<size_t>(mNewKeyIndex)];
+    InputFunction &restrict key = mKey[CAST_SIZE(mNewKeyIndex)];
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         InputItem &restrict val = key.values[i];
@@ -796,7 +796,7 @@ bool InputManager::invokeKey(const InputActionData *restrict const key,
     {
         InputEvent evt(keyNum, mMask);
         ActionFuncPtr func = *(inputActionData[
-            static_cast<size_t>(keyNum)].action);
+            CAST_SIZE(keyNum)].action);
         if (func && func(evt))
             return true;
     }
@@ -809,7 +809,7 @@ void InputManager::executeAction(const InputActionT keyNum) restrict2
         return;
 
     InputEvent evt(keyNum, mMask);
-    ActionFuncPtr func = *(inputActionData[static_cast<size_t>(
+    ActionFuncPtr func = *(inputActionData[CAST_SIZE(
         keyNum)].action);
     if (func)
         func(evt);
@@ -859,9 +859,9 @@ bool InputManager::executeChatCommand(const InputActionT keyNum,
                                       const std::string &restrict args,
                                       ChatTab *restrict const tab) restrict2
 {
-    if (static_cast<int>(keyNum) < 0 || keyNum >= InputAction::TOTAL)
+    if (CAST_S32(keyNum) < 0 || keyNum >= InputAction::TOTAL)
         return false;
-    ActionFuncPtr func = *(inputActionData[static_cast<size_t>(
+    ActionFuncPtr func = *(inputActionData[CAST_SIZE(
         keyNum)].action);
     if (func)
     {
@@ -880,7 +880,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
     actionMap.clear();
     keyTimeMap.clear();
 
-    for (size_t i = 0; i < static_cast<size_t>(InputAction::TOTAL); i ++)
+    for (size_t i = 0; i < CAST_SIZE(InputAction::TOTAL); i ++)
     {
         const InputFunction &restrict key = mKey[i];
         const InputActionData &restrict kd = inputActionData[i];
@@ -936,10 +936,10 @@ bool InputManager::triggerAction(const KeysVector *restrict const ptrs)
     FOR_EACHP (KeysVectorCIter, it, ptrs)
     {
         const InputActionT keyNum = *it;
-        if (static_cast<int>(keyNum) < 0 || keyNum >= InputAction::TOTAL)
+        if (CAST_S32(keyNum) < 0 || keyNum >= InputAction::TOTAL)
             continue;
 
-        if (invokeKey(&inputActionData[static_cast<size_t>(keyNum)], keyNum))
+        if (invokeKey(&inputActionData[CAST_SIZE(keyNum)], keyNum))
             return true;
     }
     return false;
@@ -949,7 +949,7 @@ InputActionT InputManager::getKeyIndex(const int value,
                                        const int grp,
                                        const InputTypeT type) const restrict2
 {
-    for (size_t i = 0; i < static_cast<size_t>(InputAction::TOTAL); i++)
+    for (size_t i = 0; i < CAST_SIZE(InputAction::TOTAL); i++)
     {
         const InputFunction &restrict key = mKey[i];
         const InputActionData &restrict kd = inputActionData[i];
@@ -973,8 +973,8 @@ InputActionT InputManager::getActionByKey(const SDL_Event &restrict event)
     if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
     {
         const InputActionT idx = keyboard.getActionId(event);
-        if (static_cast<int>(idx) >= 0 &&
-            checkKey(&inputActionData[static_cast<size_t>(idx)]))
+        if (CAST_S32(idx) >= 0 &&
+            checkKey(&inputActionData[CAST_SIZE(idx)]))
         {
             return idx;
         }
@@ -985,7 +985,7 @@ InputActionT InputManager::getActionByKey(const SDL_Event &restrict event)
 void InputManager::addChatCommands(std::list<std::string> &restrict arr)
                                    restrict
 {
-    const int sz = static_cast<int>(InputAction::TOTAL);
+    const int sz = CAST_S32(InputAction::TOTAL);
     for (int i = 0; i < sz; i++)
     {
         const InputActionData &restrict ad = inputActionData[i];

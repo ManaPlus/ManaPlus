@@ -317,7 +317,7 @@ void Font::doClean()
     for (unsigned int f = 0; f < CACHES_NUMBER; f ++)
     {
         TextChunkList *const cache = &mCache[f];
-        const size_t size = static_cast<size_t>(cache->size);
+        const size_t size = CAST_SIZE(cache->size);
 #ifdef DEBUG_FONT_COUNTERS
         logger->log("ptr: %u, size: %ld", f, size);
 #endif
@@ -360,10 +360,10 @@ int Font::getStringIndexAt(const std::string& text, const int x) const
     for (size_t i = 0; i < sz; ++i)
     {
         if (getWidth(text.substr(0, i)) > x)
-            return static_cast<int>(i);
+            return CAST_S32(i);
     }
 
-    return static_cast<int>(sz);
+    return CAST_S32(sz);
 }
 
 const TextChunkList *Font::getCache() const noexcept

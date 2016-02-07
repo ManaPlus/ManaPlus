@@ -137,7 +137,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
             const uint8_t a = static_cast<const uint8_t>((v << fmt->Aloss)
                 + (v >> (8 - (fmt->Aloss << 1))));
 
-            const uint8_t a2 = static_cast<uint8_t>(
+            const uint8_t a2 = CAST_U8(
                 static_cast<float>(a) * alpha);
 
             c &= ~fmt->Amask;
@@ -297,8 +297,8 @@ void SDLImageHelper::copySurfaceToImage(const Image *const image,
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
     SDL_Rect rect =
     {
-        static_cast<int16_t>(x), static_cast<int16_t>(y),
-        static_cast<uint16_t>(surface->w), static_cast<uint16_t>(surface->h)
+        CAST_S16(x), CAST_S16(y),
+        CAST_U16(surface->w), static_cast<uint16_t>(surface->h)
     };
 
     SDL_BlitSurface(surface, nullptr, image->mSDLSurface, &rect);

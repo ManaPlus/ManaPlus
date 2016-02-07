@@ -97,9 +97,9 @@ void TextChunk::generate(TTF_Font *restrict const font,
 {
     BLOCK_START("TextChunk::generate")
     SDL_Color sdlCol;
-    sdlCol.b = static_cast<uint8_t>(color.b);
-    sdlCol.r = static_cast<uint8_t>(color.r);
-    sdlCol.g = static_cast<uint8_t>(color.g);
+    sdlCol.b = CAST_U8(color.b);
+    sdlCol.r = CAST_U8(color.r);
+    sdlCol.g = CAST_U8(color.g);
 #ifdef USE_SDL2
     sdlCol.a = 255;
 #else
@@ -134,9 +134,9 @@ void TextChunk::generate(TTF_Font *restrict const font,
             BLOCK_END("TextChunk::generate")
             return;
         }
-        sdlCol2.b = static_cast<uint8_t>(color2.b);
-        sdlCol2.r = static_cast<uint8_t>(color2.r);
-        sdlCol2.g = static_cast<uint8_t>(color2.g);
+        sdlCol2.b = CAST_U8(color2.b);
+        sdlCol2.r = CAST_U8(color2.r);
+        sdlCol2.g = CAST_U8(color2.g);
 #ifdef USE_SDL2
         sdlCol2.a = 255;
 #else

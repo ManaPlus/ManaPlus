@@ -309,13 +309,13 @@ class ActorManager final: public ConfigListener
         { mAttackMobs = mobs; }
 
         int getPriorityAttackMobsSize() const A_WARN_UNUSED
-        { return static_cast<int>(mPriorityAttackMobs.size()); }
+        { return CAST_S32(mPriorityAttackMobs.size()); }
 
         int getAttackMobsSize() const A_WARN_UNUSED
-        { return static_cast<int>(mAttackMobs.size()); }
+        { return CAST_S32(mAttackMobs.size()); }
 
         int getPickupItemsSize() const A_WARN_UNUSED
-        { return static_cast<int>(mPickupItems.size()); }
+        { return CAST_S32(mPickupItems.size()); }
 
 #define defList(list1, mob) \
         bool isIn##list1##List(const std::string &name) const A_WARN_UNUSED\

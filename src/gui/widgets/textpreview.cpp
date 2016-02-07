@@ -88,15 +88,15 @@ void TextPreview::draw(Graphics* graphics)
     if (settings.guiAlpha != mAlpha)
         mAlpha = settings.guiAlpha;
 
-    const int intAlpha = static_cast<int>(mAlpha * 255.0F);
+    const int intAlpha = CAST_S32(mAlpha * 255.0F);
     const int alpha = mTextAlpha ? intAlpha : 255;
 
     if (mOpaque)
     {
-        graphics->setColor(Color(static_cast<int>(mBGColor->r),
-                    static_cast<int>(mBGColor->g),
-                    static_cast<int>(mBGColor->b),
-                    static_cast<int>(mAlpha * 255.0F)));
+        graphics->setColor(Color(CAST_S32(mBGColor->r),
+                    CAST_S32(mBGColor->g),
+                    CAST_S32(mBGColor->b),
+                    CAST_S32(mAlpha * 255.0F)));
         graphics->fillRectangle(Rect(0, 0,
             mDimension.width, mDimension.height));
     }
@@ -107,9 +107,9 @@ void TextPreview::draw(Graphics* graphics)
             + 2 * ((mOutline || mShadow) ? 1 :0);
         const int y = mFont->getHeight() + 1
             + 2 * ((mOutline || mShadow) ? 1 : 0);
-        graphics->setColor(Color(static_cast<int>(mTextBGColor->r),
-            static_cast<int>(mTextBGColor->g),
-            static_cast<int>(mTextBGColor->b),
+        graphics->setColor(Color(CAST_S32(mTextBGColor->r),
+            CAST_S32(mTextBGColor->g),
+            CAST_S32(mTextBGColor->b),
             intAlpha));
         graphics->fillRectangle(Rect(mPadding, mPadding, x, y));
     }

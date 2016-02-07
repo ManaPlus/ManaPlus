@@ -40,13 +40,13 @@ MessageOut::MessageOut(const int16_t id) :
     mNetwork(EAthena::Network::instance())
 {
     mNetwork->fixSendBuffer();
-    mData = mNetwork->mOutBuffer + static_cast<size_t>(mNetwork->mOutSize);
+    mData = mNetwork->mOutBuffer + CAST_SIZE(mNetwork->mOutSize);
 }
 
 void MessageOut::expand(const size_t bytes)
 {
-    mNetwork->mOutSize += static_cast<unsigned>(bytes);
-    PacketCounters::incOutBytes(static_cast<int>(bytes));
+    mNetwork->mOutSize += CAST_U32(bytes);
+    PacketCounters::incOutBytes(CAST_S32(bytes));
 }
 
 void MessageOut::writeInt16(const int16_t value, const char *const str)
@@ -54,12 +54,12 @@ void MessageOut::writeInt16(const int16_t value, const char *const str)
     expand(2);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int16_t swap = SDL_Swap16(value);
-    memcpy(mData + static_cast<size_t>(mPos), &swap, sizeof(int16_t));
+    memcpy(mData + CAST_SIZE(mPos), &swap, sizeof(int16_t));
 #else
-    memcpy(mData + static_cast<size_t>(mPos), &value, sizeof(int16_t));
+    memcpy(mData + CAST_SIZE(mPos), &value, sizeof(int16_t));
 #endif
-    DEBUGLOG2("writeInt16: " + toStringPrint(static_cast<unsigned int>(
-        static_cast<uint16_t>(value))),
+    DEBUGLOG2("writeInt16: " + toStringPrint(CAST_U32(
+        CAST_U16(value))),
         mPos, str);
     mPos += 2;
     PacketCounters::incOutBytes(2);
@@ -67,14 +67,14 @@ void MessageOut::writeInt16(const int16_t value, const char *const str)
 
 void MessageOut::writeInt32(const int32_t value, const char *const str)
 {
-    DEBUGLOG2("writeInt32: " + toStringPrint(static_cast<unsigned int>(value)),
+    DEBUGLOG2("writeInt32: " + toStringPrint(CAST_U32(value)),
         mPos, str);
     expand(4);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int32_t swap = SDL_Swap32(value);
-    memcpy(mData + static_cast<size_t>(mPos), &swap, sizeof(int32_t));
+    memcpy(mData + CAST_SIZE(mPos), &swap, sizeof(int32_t));
 #else
-    memcpy(mData + static_cast<size_t>(mPos), &value, sizeof(int32_t));
+    memcpy(mData + CAST_SIZE(mPos), &value, sizeof(int32_t));
 #endif
     mPos += 4;
     PacketCounters::incOutBytes(4);
@@ -85,9 +85,9 @@ void MessageOut::writeBeingId(const BeingId value, const char *const str)
     writeInt32(toInt(value, int32_t), str);
 }
 
-#define LOBYTE(w)  (static_cast<unsigned char>(w))
-#define HIBYTE(w)  (static_cast<unsigned char>(( \
-static_cast<uint16_t>(w)) >> 8))
+#define LOBYTE(w)  (CAST_U8(w))
+#define HIBYTE(w)  (CAST_U8(( \
+CAST_U16(w)) >> 8))
 
 void MessageOut::writeCoordinates(const uint16_t x,
                                   const uint16_t y,
@@ -95,11 +95,11 @@ void MessageOut::writeCoordinates(const uint16_t x,
                                   const char *const str)
 {
     DEBUGLOG2(strprintf("writeCoordinates: %u,%u %u",
-        static_cast<unsigned>(x),
-        static_cast<unsigned>(y),
-        static_cast<unsigned>(direction)), mPos, str);
+        CAST_U32(x),
+        CAST_U32(y),
+        CAST_U32(direction)), mPos, str);
     unsigned char *const data = reinterpret_cast<unsigned char*>(mData)
-        + static_cast<size_t>(mPos);
+        + CAST_SIZE(mPos);
     mNetwork->mOutSize += 3;
     mPos += 3;
 
@@ -109,7 +109,7 @@ void MessageOut::writeCoordinates(const uint16_t x,
     data[1] = 1;
     data[2] = 2;
     data[0] = HIBYTE(temp);
-    data[1] = static_cast<unsigned char>(temp);
+    data[1] = CAST_U8(temp);
     temp = y;
     temp <<= 4;
     data[1] |= HIBYTE(temp);

@@ -145,7 +145,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
 
     character->slot = msg.readUInt8("slot");
-    const uint8_t sex = static_cast<uint8_t>(msg.readUInt8("gender"));
+    const uint8_t sex = CAST_U8(msg.readUInt8("gender"));
     if (serverFeatures->haveCreateCharGender())
         tempPlayer->setGender(Being::intToGender(sex));
     else
@@ -159,7 +159,7 @@ void CharServerRecv::processCharLogin(Net::MessageIn &msg)
     msg.readInt16("len");
     const int slots = msg.readInt16("slots");
     if (slots > 0 && slots < 30)
-        loginData.characterSlots = static_cast<uint16_t>(slots);
+        loginData.characterSlots = CAST_U16(slots);
 
     msg.skip(18, "unused");
 

@@ -136,7 +136,7 @@ void TextSelectDialog::action(const ActionEvent &event)
     else if (eventId == "select")
     {
         const int index = mItemList->getSelected();
-        if (index < 0 || index >= static_cast<int>(mModel->size()))
+        if (index < 0 || index >= CAST_S32(mModel->size()))
             return;
         mText = mModel->getElementAt(index);
         distributeActionEvent();

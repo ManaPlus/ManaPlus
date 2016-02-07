@@ -51,12 +51,12 @@ void SurfaceGraphics::drawImage(const Image *restrict const image,
     const SDL_Rect &imageRect = image->mBounds;
     SDL_Rect dstRect;
     SDL_Rect srcRect;
-    dstRect.x = static_cast<int16_t>(dstX);
-    dstRect.y = static_cast<int16_t>(dstY);
-    srcRect.x = static_cast<int16_t>(imageRect.x);
-    srcRect.y = static_cast<int16_t>(imageRect.y);
-    srcRect.w = static_cast<uint16_t>(imageRect.w);
-    srcRect.h = static_cast<uint16_t>(imageRect.h);
+    dstRect.x = CAST_S16(dstX);
+    dstRect.y = CAST_S16(dstY);
+    srcRect.x = CAST_S16(imageRect.x);
+    srcRect.y = CAST_S16(imageRect.y);
+    srcRect.w = CAST_U16(imageRect.w);
+    srcRect.h = CAST_U16(imageRect.h);
 
 #ifdef USE_SDL2
     SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
@@ -84,12 +84,12 @@ void SurfaceGraphics::copyImage(const Image *restrict const image,
     const SDL_Rect &imageRect = image->mBounds;
     SDL_Rect dstRect;
     SDL_Rect srcRect;
-    dstRect.x = static_cast<int16_t>(dstX);
-    dstRect.y = static_cast<int16_t>(dstY);
-    srcRect.x = static_cast<int16_t>(imageRect.x);
-    srcRect.y = static_cast<int16_t>(imageRect.y);
-    srcRect.w = static_cast<uint16_t>(imageRect.w);
-    srcRect.h = static_cast<uint16_t>(imageRect.h);
+    dstRect.x = CAST_S16(dstX);
+    dstRect.y = CAST_S16(dstY);
+    srcRect.x = CAST_S16(imageRect.x);
+    srcRect.y = CAST_S16(imageRect.y);
+    srcRect.w = CAST_U16(imageRect.w);
+    srcRect.h = CAST_U16(imageRect.h);
 
 #ifdef USE_SDL2
     // probably need change some flags
@@ -111,12 +111,12 @@ void SurfaceGraphics::drawImageCached(const Image *restrict const image,
 
     SDL_Rect dstRect;
     SDL_Rect srcRect;
-    dstRect.x = static_cast<int16_t>(x);
-    dstRect.y = static_cast<int16_t>(y);
-    srcRect.x = static_cast<int16_t>(rect.x);
-    srcRect.y = static_cast<int16_t>(rect.y);
-    srcRect.w = static_cast<uint16_t>(rect.w);
-    srcRect.h = static_cast<uint16_t>(rect.h);
+    dstRect.x = CAST_S16(x);
+    dstRect.y = CAST_S16(y);
+    srcRect.x = CAST_S16(rect.x);
+    srcRect.y = CAST_S16(rect.y);
+    srcRect.w = CAST_U16(rect.w);
+    srcRect.h = CAST_U16(rect.h);
 
 #ifdef USE_SDL2
     SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);

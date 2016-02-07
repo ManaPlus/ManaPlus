@@ -156,7 +156,7 @@ bool Network::messageReady()
     if (mInSize >= 2)
     {
         const int msgId = readWord(0);
-        if (msgId >= 0 && static_cast<unsigned int>(msgId)
+        if (msgId >= 0 && CAST_U32(msgId)
             < packet_lengths_size)
         {
             len = mPackets[msgId].len;
@@ -166,7 +166,7 @@ bool Network::messageReady()
             len = readWord(2);
     }
 
-    const bool ret = (mInSize >= static_cast<unsigned int>(len));
+    const bool ret = (mInSize >= CAST_U32(len));
     SDL_mutexV(mMutexIn);
 
     return ret;

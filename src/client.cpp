@@ -439,8 +439,8 @@ void Client::gameInit()
 
     if (mCurrentServer.port == 0)
     {
-        mCurrentServer.port = static_cast<uint16_t>(branding.getValue(
-            "defaultPort", static_cast<int>(DEFAULT_PORT)));
+        mCurrentServer.port = CAST_U16(branding.getValue(
+            "defaultPort", CAST_S32(DEFAULT_PORT)));
         mCurrentServer.type = ServerInfo::parseType(
             branding.getValue("defaultServerType", "tmwathena"));
     }
@@ -465,7 +465,7 @@ void Client::gameInit()
     settings.guiAlpha = config.getFloatValue("guialpha");
     optionChanged("fpslimit");
 
-    start_time = static_cast<int>(time(nullptr));
+    start_time = CAST_S32(time(nullptr));
 
     PlayerInfo::init();
 
@@ -880,7 +880,7 @@ int Client::gameExec()
         BLOCK_START("Client::gameExec 4")
         if (gui)
             gui->logic();
-        cur_time = static_cast<int>(time(nullptr));
+        cur_time = CAST_S32(time(nullptr));
         int k = 0;
         while (lastTickTime != tick_time &&
                k < 40)
@@ -1094,7 +1094,7 @@ int Client::gameExec()
 
                     mSearchHash = Net::Download::adlerBuffer(
                         const_cast<char*>(mCurrentServer.hostname.c_str()),
-                        static_cast<int>(mCurrentServer.hostname.size()));
+                        CAST_S32(mCurrentServer.hostname.size()));
                     if (settings.options.username.empty() ||
                         settings.options.password.empty())
                     {
@@ -1929,8 +1929,8 @@ void Client::extractAssets()
     for (int f = 0; f < 100; f ++)
     {
         std::string part = strprintf("manaplus-data.zip%u%u",
-            static_cast<unsigned int>(f / 10),
-            static_cast<unsigned int>(f % 10));
+            CAST_U32(f / 10),
+            CAST_U32(f % 10));
         logger->log("testing asset: " + part);
         SDL_RWops *const rw = SDL_RWFromFile(part.c_str(), "r");
         if (rw)

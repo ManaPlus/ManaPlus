@@ -713,7 +713,7 @@ void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
     const int imageIndex = XML::getProperty(slotNode, "image", -1);
     Image *image = nullptr;
 
-    if (imageIndex >= 0 && imageIndex < static_cast<signed>(imageset->size()))
+    if (imageIndex >= 0 && imageIndex < CAST_S32(imageset->size()))
         image = imageset->get(imageIndex);
 
     std::vector<EquipmentBox*> &boxes = mPages[page]->boxes;
@@ -786,7 +786,7 @@ void EquipmentWindow::addBox(const int idx, int x, int y, const int imageIndex)
     Image *image = nullptr;
 
     if (mImageSet && imageIndex >= 0 && imageIndex
-        < static_cast<signed>(mImageSet->size()))
+        < CAST_S32(mImageSet->size()))
     {
         image = mImageSet->get(imageIndex);
     }
@@ -826,5 +826,5 @@ int EquipmentWindow::addPage(const std::string &name)
         boxes.push_back(nullptr);
 
     mTabs->addButton(name, name, false);
-    return static_cast<int>(mPages.size()) - 1;
+    return CAST_S32(mPages.size()) - 1;
 }

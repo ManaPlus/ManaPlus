@@ -61,7 +61,7 @@ void TradeHandler::respond(const bool accept) const
         PlayerInfo::setTrading(Trading_false);
 
     createOutPacket(CMSG_TRADE_RESPONSE);
-    outMsg.writeInt8(static_cast<int8_t>(accept ? 3 : 4), "accept");
+    outMsg.writeInt8(CAST_S8(accept ? 3 : 4), "accept");
 }
 
 void TradeHandler::addItem(const Item *const item, const int amount) const
@@ -70,7 +70,7 @@ void TradeHandler::addItem(const Item *const item, const int amount) const
         return;
 
     createOutPacket(CMSG_TRADE_ITEM_ADD_REQUEST);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     outMsg.writeInt32(amount, "amount");
 }

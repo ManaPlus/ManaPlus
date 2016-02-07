@@ -39,7 +39,7 @@ class IgnoreChoicesListModel final : public ListModel
 
         int getNumberOfElements() override final
         {
-            return static_cast<int>(player_relations.
+            return CAST_S32(player_relations.
                 getPlayerIgnoreStrategies()->size());
         }
 

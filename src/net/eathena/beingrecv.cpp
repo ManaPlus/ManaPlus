@@ -189,7 +189,7 @@ void BeingRecv::processBeingChangeLookContinue(Net::MessageIn &msg,
                 fromInt(id, ItemColor)));
             break;
         case 7:  // Clothes color. Now used as look
-            dstBeing->setLook(static_cast<uint8_t>(id));
+            dstBeing->setLook(CAST_U8(id));
             break;
         case 8:  // eAthena LOOK_SHIELD
             dstBeing->setSprite(SPRITE_FLOOR, id, color, itemColor);
@@ -271,7 +271,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     const uint16_t stunMode = msg.readInt16("opt1");
     // probably wrong effect usage
     uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (static_cast<uint32_t>(msg.readInt32("option"))) << 16;
+    statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -324,7 +324,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         localPlayer->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16("hair style");
-    const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
+    const uint32_t weapon = CAST_U32(msg.readInt32("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
 
     const uint16_t headTop = msg.readInt16("head top");
@@ -339,10 +339,10 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(32, CAST_U16(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = static_cast<uint8_t>(msg.readUInt8("gender") & 3);
+    uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
     if (dstBeing->getType() == ActorType::Player)
     {
@@ -390,7 +390,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 
     dstBeing->setDirection(dir);
 
-    const int level = static_cast<int>(msg.readInt16("level"));
+    const int level = CAST_S32(msg.readInt16("level"));
     if (level)
         dstBeing->setLevel(level);
     msg.readInt16("font");
@@ -405,9 +405,9 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         msg.readInt16("body2");
 
     dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(0, CAST_U16(
         (statusEffects >> 16) & 0xffffU));
-    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(16, CAST_U16(
         statusEffects & 0xffffU));
 }
 
@@ -443,7 +443,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 //        msg.readInt16("body state");
 //        msg.readInt16("health state");
 //    }
-    statusEffects |= (static_cast<uint32_t>(msg.readInt32("option"))) << 16;
+    statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -488,7 +488,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         localPlayer->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16("hair style");
-    const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
+    const uint32_t weapon = CAST_U32(msg.readInt32("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
 
     msg.readInt32("tick");
@@ -505,10 +505,10 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(32, CAST_U16(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = static_cast<uint8_t>(msg.readUInt8("gender") & 3);
+    uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
     if (dstBeing->getType() == ActorType::Player)
     {
@@ -568,7 +568,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     if (d && dstBeing->getDirection() != d)
         dstBeing->setDirection(d);
 
-    const int level = static_cast<int>(msg.readInt16("level"));
+    const int level = CAST_S32(msg.readInt16("level"));
     if (level)
         dstBeing->setLevel(level);
     msg.readInt16("font");
@@ -583,9 +583,9 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         msg.readInt16("body2");
 
     dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(0, CAST_U16(
         (statusEffects >> 16) & 0xffffU));
-    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(16, CAST_U16(
         statusEffects & 0xffffU));
 }
 
@@ -617,7 +617,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 //        msg.readInt16("body state");
 //        msg.readInt16("health state");
 //    }
-    statusEffects |= (static_cast<uint32_t>(msg.readInt32("option"))) << 16;
+    statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -662,7 +662,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         localPlayer->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16("hair style");
-    const uint32_t weapon = static_cast<uint32_t>(msg.readInt32("weapon"));
+    const uint32_t weapon = CAST_U32(msg.readInt32("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
 
     const uint16_t headTop = msg.readInt16("head top");
@@ -676,10 +676,10 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(32, CAST_U16(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = static_cast<uint8_t>(msg.readUInt8("gender") & 3);
+    uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
     if (dstBeing->getType() == ActorType::Player)
     {
@@ -726,7 +726,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 
     dstBeing->setDirection(dir);
 
-    const int level = static_cast<int>(msg.readInt16("level"));
+    const int level = CAST_S32(msg.readInt16("level"));
     if (level)
         dstBeing->setLevel(level);
     msg.readInt16("font");
@@ -741,9 +741,9 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         msg.readInt16("body2");
 
     dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(0, CAST_U16(
         (statusEffects >> 16) & 0xffffU));
-    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(16, CAST_U16(
         statusEffects & 0xffffU));
 }
 
@@ -755,7 +755,7 @@ void BeingRecv::processMapTypeProperty(Net::MessageIn &msg)
     {
         // +++ need get other flags from here
         MapTypeProperty2 props;
-        props.data = static_cast<uint32_t>(flags);
+        props.data = CAST_U32(flags);
         Game *const game = Game::instance();
         if (!game)
             return;
@@ -1103,7 +1103,7 @@ void BeingRecv::processBeingChangeDirection(Net::MessageIn &msg)
     msg.readInt16("head direction");
 
     const uint8_t dir = Net::MessageIn::fromServerDirection(
-        static_cast<uint8_t>(msg.readUInt8("player direction") & 0x0FU));
+        CAST_U8(msg.readUInt8("player direction") & 0x0FU));
 
     if (!dstBeing)
     {
@@ -1207,13 +1207,13 @@ void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
 
     const uint16_t stunMode = msg.readInt16("stun mode");
     uint32_t statusEffects = msg.readInt16("status effect");
-    statusEffects |= (static_cast<uint32_t>(msg.readInt32("option"))) << 16;
+    statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
     dstBeing->setKarma(msg.readUInt8("karma"));
 
     dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(0, CAST_U16(
         (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(16, CAST_U16(
         statusEffects & 0xffff));
     BLOCK_END("BeingRecv::processPlayerStop")
 }
@@ -1234,9 +1234,9 @@ void BeingRecv::processPlaterStatusChange2(Net::MessageIn &msg)
     dstBeing->setLevel(msg.readInt32("level"));
     msg.readInt32("showEFST");
 
-    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(0, CAST_U16(
         (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+    dstBeing->setStatusEffectBlock(16, CAST_U16(
         statusEffects & 0xffff));
 }
 
@@ -1698,14 +1698,14 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
         case BeingType::ITEM:
         case BeingType::ELEMENTAL:
             logger->log("not supported object type: %d, job: %d",
-                static_cast<int>(beingType), static_cast<int>(job));
+                CAST_S32(beingType), CAST_S32(job));
             break;
         case BeingType::CHAT:
         default:
             UNIMPLIMENTEDPACKET;
             type = ActorType::Monster;
             logger->log("not supported object type: %d, job: %d",
-                static_cast<int>(beingType), static_cast<int>(job));
+                CAST_S32(beingType), CAST_S32(job));
             break;
     }
     if (job == 45 && beingType == BeingType::NPC_EVENT)

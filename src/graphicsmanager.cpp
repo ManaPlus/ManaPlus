@@ -250,12 +250,12 @@ int GraphicsManager::detectGraphics()
         compressTextures = 0;
     }
 
-    config.setValue("opengl", static_cast<int>(mode));
+    config.setValue("opengl", CAST_S32(mode));
     config.setValue("videoconfigured", true);
     config.write();
 
     logger->log("detection complete");
-    return static_cast<unsigned int>(mode)
+    return CAST_U32(mode)
         | (1024 * textureSampler) | (2048 * compressTextures);
 }
 
@@ -336,7 +336,7 @@ void GraphicsManager::createRenderers()
         if (settings.options.renderer < 0)
         {
             useOpenGL = intToRenderType(config.getIntValue("opengl"));
-            settings.options.renderer = static_cast<int>(useOpenGL);
+            settings.options.renderer = CAST_S32(useOpenGL);
         }
         else
         {
@@ -570,7 +570,7 @@ void GraphicsManager::initGraphics()
     if (openGLMode != oldOpenGLMode)
     {
         deleteRenderers();
-        settings.options.renderer = static_cast<int>(openGLMode);
+        settings.options.renderer = CAST_S32(openGLMode);
         config.setValue("opengl", settings.options.renderer);
         createRenderers();
         detectPixelSize();
@@ -580,7 +580,7 @@ void GraphicsManager::initGraphics()
     const std::string str = config.getStringValue("textureSize");
     std::vector<int> sizes;
     splitToIntVector(sizes, str, ',');
-    const size_t pos = static_cast<size_t>(openGLMode);
+    const size_t pos = CAST_SIZE(openGLMode);
     if (sizes.size() <= pos)
         settings.textureSize = 1024;
     else
@@ -743,10 +743,10 @@ void GraphicsManager::updateTextureCompressionFormat() const
         mglGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
         logger->log("support %d compressed formats", num);
         GLint *const formats = new GLint[num > 10
-            ? static_cast<size_t>(num) : 10];
+            ? CAST_SIZE(num) : 10];
         mglGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
         for (int f = 0; f < num; f ++)
-            logger->log(" 0x%x", static_cast<unsigned int>(formats[f]));
+            logger->log(" 0x%x", CAST_U32(formats[f]));
 
         if (compressionFormat)
         {
@@ -1487,7 +1487,7 @@ void GraphicsManager::detectVideoSettings()
     {
         const Configuration &conf = test->getConfig();
         int val = conf.getValueInt("opengl", -1);
-        if (val >= 0 && val < static_cast<int>(RENDER_LAST))
+        if (val >= 0 && val < CAST_S32(RENDER_LAST))
         {
             config.setValue("opengl", val);
             val = conf.getValue("useTextureSampler", -1);
@@ -1585,7 +1585,7 @@ static CALLBACK void debugCallback(GLenum source, GLenum type, GLuint id,
             message.append(" ?").append(toString(type));
             break;
     }
-    char *const buf = new char[static_cast<size_t>(length + 1)];
+    char *const buf = new char[CAST_SIZE(length + 1)];
     memcpy(buf, text, length);
     buf[length] = 0;
     message.append(" ").append(buf);

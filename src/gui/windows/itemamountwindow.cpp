@@ -413,7 +413,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
     else if (eventId == "all")
         amount = mMax;
     else if (eventId == "slide")
-        amount = static_cast<int>(mItemAmountSlide->getValue());
+        amount = CAST_S32(mItemAmountSlide->getValue());
     mItemAmountTextField->setValue(amount);
     mItemAmountSlide->setValue(amount);
 
@@ -429,22 +429,22 @@ void ItemAmountWindow::action(const ActionEvent &event)
         if (eventId == "incPrice")
         {
             mPrice++;
-            price = static_cast<int>(pow(10.0, mPrice));
+            price = CAST_S32(pow(10.0, mPrice));
             mItemPriceTextField->setValue(price);
             mItemPriceSlide->setValue(price);
         }
         else if (eventId == "decPrice")
         {
             mPrice--;
-            price = static_cast<int>(pow(10.0, mPrice));
+            price = CAST_S32(pow(10.0, mPrice));
             mItemPriceTextField->setValue(price);
             mItemPriceSlide->setValue(price);
         }
         else if (eventId == "slidePrice")
         {
-            price = static_cast<int>(mItemPriceSlide->getValue());
+            price = CAST_S32(mItemPriceSlide->getValue());
             if (price)
-                mPrice = static_cast<int>(log(static_cast<float>(price)));
+                mPrice = CAST_S32(log(static_cast<float>(price)));
             else
                 mPrice = 0;
             mItemPriceTextField->setValue(price);

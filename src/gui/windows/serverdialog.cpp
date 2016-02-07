@@ -521,7 +521,7 @@ void ServerDialog::loadServers(const bool addNew)
                 server.hostname = XML::getProperty(subNode, "hostname", "");
                 server.althostname = XML::getProperty(
                     subNode, "althostname", "");
-                server.port = static_cast<uint16_t>(
+                server.port = CAST_U16(
                     XML::getProperty(subNode, "port", 0));
 
                 if (server.port == 0)
@@ -570,7 +570,7 @@ void ServerDialog::loadServers(const bool addNew)
         MutexLocker tempLock(&mMutex);
         // Add the server to the local list if it's not already present
         bool found = false;
-        for (unsigned int i = 0, sz = static_cast<unsigned int>(
+        for (unsigned int i = 0, sz = CAST_U32(
              mServers.size()); i < sz; i++)
         {
             if (mServers[i] == server)
@@ -622,7 +622,7 @@ void ServerDialog::loadCustomServers()
             persistentIpKey, 0) ? true : false;
 
         const int defaultPort = defaultPortForServerType(server.type);
-        server.port = static_cast<uint16_t>(
+        server.port = CAST_U16(
             config.getValue(portKey, defaultPort));
 
         // skip invalid server
@@ -640,7 +640,7 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
     // Make sure the current server is mentioned first
     if (currentServer.isValid())
     {
-        if (index >= 0 && static_cast<size_t>(index) < mServers.size())
+        if (index >= 0 && CAST_SIZE(index) < mServers.size())
         {
             mServers[index] = currentServer;
         }
@@ -660,7 +660,7 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
 
     int savedServerCount = 0;
 
-    for (unsigned i = 0, sz = static_cast<unsigned>(mServers.size());
+    for (unsigned i = 0, sz = CAST_U32(mServers.size());
          i < sz && savedServerCount < MAX_SERVERLIST; ++ i)
     {
         const ServerInfo &server = mServers.at(i);
@@ -712,7 +712,7 @@ int ServerDialog::downloadUpdate(void *ptr,
     {
         finished = true;
     }
-    else if (static_cast<int>(status) < 0)
+    else if (CAST_S32(status) < 0)
     {
         logger->log("Error retreiving server list: %s\n",
                     sd->mDownload->getError());

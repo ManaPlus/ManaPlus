@@ -190,7 +190,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
         mNameColor = nullptr;
 
     PlayerInfo::setStatBase(Attributes::WALK_SPEED,
-        static_cast<int>(getWalkSpeed().x));
+        CAST_S32(getWalkSpeed().x));
     PlayerInfo::setStatMod(Attributes::WALK_SPEED, 0);
 
     loadHomes();
@@ -300,9 +300,9 @@ void LocalPlayer::logic()
         else
         {
             // Find whether target is in range
-            const int rangeX = static_cast<int>(
+            const int rangeX = CAST_S32(
                 abs(mTarget->getTileX() - getTileX()));
-            const int rangeY = static_cast<int>(
+            const int rangeY = CAST_S32(
                 abs(mTarget->getTileY() - getTileY()));
             const int attackRange = getAttackRange();
             const TargetCursorTypeT targetType
@@ -391,7 +391,7 @@ void LocalPlayer::setAction(const BeingActionT &action,
     Being::setAction(action, attackType);
 #ifdef USE_MUMBLE
     if (mumbleManager)
-        mumbleManager->setAction(static_cast<int>(action));
+        mumbleManager->setAction(CAST_S32(action));
 #endif
 }
 
@@ -498,8 +498,8 @@ bool LocalPlayer::pickUp(FloorItem *const item)
     {
         const Vector &playerPos = getPosition();
         const Path debugPath = mMap->findPath(
-            static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
-            static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
+            CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
+            CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
             item->getTileX(), item->getTileY(), getBlockWalkMask(), 0);
         if (!debugPath.empty())
             navigateTo(item->getTileX(), item->getTileY());
@@ -684,13 +684,13 @@ void LocalPlayer::stopWalking(const bool sendToServer)
         mWalkingDir = 0;
         mPickUpTarget = nullptr;
 
-        setDestination(static_cast<int>(getPosition().x),
-                       static_cast<int>(getPosition().y));
+        setDestination(CAST_S32(getPosition().x),
+                       CAST_S32(getPosition().y));
         if (sendToServer)
         {
             playerHandler->setDestination(
-                    static_cast<int>(getPosition().x),
-                    static_cast<int>(getPosition().y), -1);
+                    CAST_S32(getPosition().x),
+                    CAST_S32(getPosition().y), -1);
         }
         setAction(BeingAction::STAND);
     }
@@ -968,8 +968,8 @@ bool LocalPlayer::withinAttackRange(const Being *const target,
     if (fixDistance && range == 1)
         range = 2;
 
-    dx = static_cast<int>(abs(target->getTileX() - mX));
-    dy = static_cast<int>(abs(target->getTileY() - mY));
+    dx = CAST_S32(abs(target->getTileX() - mX));
+    dy = CAST_S32(abs(target->getTileY() - mY));
     return !(dx > range || dy > range);
 }
 
@@ -1005,7 +1005,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
                 {
                     mStatusEffectIcons.erase(mStatusEffectIcons.begin() + i);
                     if (miniStatusWindow)
-                        miniStatusWindow->eraseIcon(static_cast<int>(i));
+                        miniStatusWindow->eraseIcon(CAST_S32(i));
                 }
                 else
                 {
@@ -1023,7 +1023,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
                 if (mStatusEffectIcons[i] == effectId)
                 {
                     if (miniStatusWindow)
-                        miniStatusWindow->setIcon(static_cast<int>(i), sprite);
+                        miniStatusWindow->setIcon(CAST_S32(i), sprite);
                     found = true;
                     break;
                 }
@@ -1031,7 +1031,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
 
             if (!found)
             { // add new
-                const int offset = static_cast<int>(mStatusEffectIcons.size());
+                const int offset = CAST_S32(mStatusEffectIcons.size());
                 if (miniStatusWindow)
                     miniStatusWindow->setIcon(offset, sprite);
                 mStatusEffectIcons.push_back(effectId);
@@ -1228,9 +1228,9 @@ void LocalPlayer::moveToTarget(int dist)
     {
         if (mMap)
         {
-            debugPath = mMap->findPath(static_cast<int>(
+            debugPath = mMap->findPath(CAST_S32(
                 playerPos.x - mapTileSize / 2) / mapTileSize,
-                static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
+                CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
                 mTarget->getTileX(),
                 mTarget->getTileY(),
                 getBlockWalkMask(),
@@ -1238,9 +1238,9 @@ void LocalPlayer::moveToTarget(int dist)
         }
 
         const size_t sz = debugPath.size();
-        if (sz < static_cast<size_t>(dist))
+        if (sz < CAST_SIZE(dist))
             return;
-        limit = static_cast<int>(sz) - dist;
+        limit = CAST_S32(sz) - dist;
         gotPos = true;
     }
     else if (mNavigateX || mNavigateY)
@@ -1295,13 +1295,13 @@ void LocalPlayer::moveToHome()
             if (mX == pos.x && mY == pos.y)
             {
                 playerHandler->setDestination(
-                        static_cast<int>(pos.x),
-                        static_cast<int>(pos.y),
-                        static_cast<int>(mDirection));
+                        CAST_S32(pos.x),
+                        CAST_S32(pos.y),
+                        CAST_S32(mDirection));
             }
             else
             {
-                navigateTo(static_cast<int>(pos.x), static_cast<int>(pos.y));
+                navigateTo(CAST_S32(pos.x), CAST_S32(pos.y));
             }
         }
     }
@@ -1416,11 +1416,11 @@ bool LocalPlayer::isReachable(Being *const being,
     const Vector &playerPos = getPosition();
 
     const Path debugPath = mMap->findPath(
-        static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
-        static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
+        CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
+        CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
         being->getTileX(), being->getTileY(), getBlockWalkMask(), maxCost);
 
-    being->setDistance(static_cast<int>(debugPath.size()));
+    being->setDistance(CAST_S32(debugPath.size()));
     if (!debugPath.empty())
     {
         being->setReachable(Reachable::REACH_YES);
@@ -1704,26 +1704,26 @@ void LocalPlayer::setHome()
 
         if (iter != mHomes.end())
         {
-            socialWindow->removePortal(static_cast<int>(pos.x),
-                static_cast<int>(pos.y));
+            socialWindow->removePortal(CAST_S32(pos.x),
+                CAST_S32(pos.y));
         }
 
-        if (iter != mHomes.end() && mX == static_cast<int>(pos.x)
-            && mY == static_cast<int>(pos.y))
+        if (iter != mHomes.end() && mX == CAST_S32(pos.x)
+            && mY == CAST_S32(pos.y))
         {
             mMap->updatePortalTile("", MapItemType::EMPTY,
-                static_cast<int>(pos.x), static_cast<int>(pos.y));
+                CAST_S32(pos.x), CAST_S32(pos.y));
 
             mHomes.erase(key);
-            socialWindow->removePortal(static_cast<int>(pos.x),
-                static_cast<int>(pos.y));
+            socialWindow->removePortal(CAST_S32(pos.x),
+                CAST_S32(pos.y));
         }
         else
         {
             if (iter != mHomes.end())
             {
-                specialLayer->setTile(static_cast<int>(pos.x),
-                    static_cast<int>(pos.y), MapItemType::EMPTY);
+                specialLayer->setTile(CAST_S32(pos.x),
+                    CAST_S32(pos.y), MapItemType::EMPTY);
             }
 
             pos.x = static_cast<float>(mX);
@@ -1958,8 +1958,8 @@ bool LocalPlayer::navigateTo(const int x, const int y)
 
     const Vector &playerPos = getPosition();
     mShowNavigePath = true;
-    mOldX = static_cast<int>(playerPos.x);
-    mOldY = static_cast<int>(playerPos.y);
+    mOldX = CAST_S32(playerPos.x);
+    mOldY = CAST_S32(playerPos.y);
     mOldTileX = mX;
     mOldTileY = mY;
     mNavigateX = x;
@@ -1967,8 +1967,8 @@ bool LocalPlayer::navigateTo(const int x, const int y)
     mNavigateId = BeingId_zero;
 
     mNavigatePath = mMap->findPath(
-        static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
-        static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
+        CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
+        CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
         x, y, getBlockWalkMask(), 0);
 
     if (mDrawPath)
@@ -2042,9 +2042,9 @@ void LocalPlayer::updateCoords()
             if (!tmpLayer)
                 return;
 
-            const int x = static_cast<int>(playerPos.x - mapTileSize / 2)
+            const int x = CAST_S32(playerPos.x - mapTileSize / 2)
                 / mapTileSize;
-            const int y = static_cast<int>(playerPos.y - mapTileSize)
+            const int y = CAST_S32(playerPos.y - mapTileSize)
                 / mapTileSize;
             if (mNavigateId != BeingId_zero)
             {
@@ -2090,8 +2090,8 @@ void LocalPlayer::updateCoords()
             }
         }
     }
-    mOldX = static_cast<int>(playerPos.x);
-    mOldY = static_cast<int>(playerPos.y);
+    mOldX = CAST_S32(playerPos.x);
+    mOldY = CAST_S32(playerPos.y);
     mOldTileX = mX;
     mOldTileY = mY;
 }
@@ -2132,16 +2132,16 @@ int LocalPlayer::getPathLength(const Being *const being) const
     if (mTargetOnlyReachable)
     {
         const Path debugPath = mMap->findPath(
-            static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
-            static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
+            CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
+            CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
             being->getTileX(), being->getTileY(),
             getBlockWalkMask(), 0);
-        return static_cast<int>(debugPath.size());
+        return CAST_S32(debugPath.size());
     }
     else
     {
-        const int dx = static_cast<int>(abs(being->mX - mX));
-        const int dy = static_cast<int>(abs(being->mY - mY));
+        const int dx = CAST_S32(abs(being->mX - mX));
+        const int dy = CAST_S32(abs(being->mY - mY));
         if (dx > dy)
             return dx;
         return dy;
@@ -2513,8 +2513,8 @@ void LocalPlayer::fixAttackTarget()
 
     const Vector &playerPos = getPosition();
     const Path debugPath = mMap->findPath(
-        static_cast<int>(playerPos.x - mapTileSize / 2) / mapTileSize,
-        static_cast<int>(playerPos.y - mapTileSize) / mapTileSize,
+        CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
+        CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
         mTarget->getTileX(), mTarget->getTileY(),
         getBlockWalkMask(), 0);
 
@@ -2548,7 +2548,7 @@ void LocalPlayer::updateNavigateList()
             if (pos.x && pos.y)
             {
                 mMap->addPortalTile("home", MapItemType::HOME,
-                    static_cast<int>(pos.x), static_cast<int>(pos.y));
+                    CAST_S32(pos.x), CAST_S32(pos.y));
             }
         }
     }

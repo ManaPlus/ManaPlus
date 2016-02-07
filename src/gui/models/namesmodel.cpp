@@ -35,14 +35,14 @@ NamesModel::~NamesModel()
 
 int NamesModel::getNumberOfElements()
 {
-    return static_cast<int>(mNames.size());
+    return CAST_S32(mNames.size());
 }
 
 std::string NamesModel::getElementAt(int i)
 {
     if (i >= getNumberOfElements() || i < 0)
         return "???";
-    return mNames[static_cast<size_t>(i)];
+    return mNames[CAST_SIZE(i)];
 }
 
 void NamesModel::fillFromArray(const char *const *const arr, std::size_t sz)

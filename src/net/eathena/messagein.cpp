@@ -56,10 +56,10 @@ uint16_t MessageIn::readId()
     {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         int16_t swap;
-        memcpy(&swap, mData + static_cast<size_t>(mPos), sizeof(int16_t));
+        memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(int16_t));
         value = SDL_Swap16(swap);
 #else
-        memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int16_t));
+        memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int16_t));
 #endif
     }
     return value;
@@ -72,14 +72,14 @@ int16_t MessageIn::readInt16(const char *const str)
     {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         int16_t swap;
-        memcpy(&swap, mData + static_cast<size_t>(mPos), sizeof(int16_t));
+        memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(int16_t));
         value = SDL_Swap16(swap);
 #else
-        memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int16_t));
+        memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int16_t));
 #endif
     }
-    DEBUGLOG2("readInt16:  " + toStringPrint(static_cast<unsigned int>(
-        static_cast<uint16_t>(value))),
+    DEBUGLOG2("readInt16:  " + toStringPrint(CAST_U32(
+        CAST_U16(value))),
         mPos, str);
     mPos += 2;
     PacketCounters::incInBytes(2);
@@ -93,13 +93,13 @@ int32_t MessageIn::readInt32(const char *const str)
     {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         int32_t swap;
-        memcpy(&swap, mData + static_cast<size_t>(mPos), sizeof(int32_t));
+        memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(int32_t));
         value = SDL_Swap32(swap);
 #else
-        memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int32_t));
+        memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int32_t));
 #endif
     }
-    DEBUGLOG2("readInt32:  " + toStringPrint(static_cast<unsigned int>(value)),
+    DEBUGLOG2("readInt32:  " + toStringPrint(CAST_U32(value)),
         mPos, str);
     mPos += 4;
     PacketCounters::incInBytes(4);
@@ -118,13 +118,13 @@ int64_t MessageIn::readInt64(const char *const str)
     {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         int64_t swap;
-        memcpy(&swap, mData + static_cast<size_t>(mPos), sizeof(int64_t));
+        memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(int64_t));
         value = SDL_Swap64(swap);
 #else
-        memcpy(&value, mData + static_cast<size_t>(mPos), sizeof(int64_t));
+        memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int64_t));
 #endif
     }
-    DEBUGLOG2("readInt64:  " + toStringPrint(static_cast<unsigned int>(value)),
+    DEBUGLOG2("readInt64:  " + toStringPrint(CAST_U32(value)),
         mPos, str);
     mPos += 8;
     PacketCounters::incInBytes(8);

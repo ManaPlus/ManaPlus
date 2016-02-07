@@ -232,7 +232,7 @@ int InventoryRecv::getSlot(const int eAthenaSlot)
         mask <<= 1;
         position++;
     }
-    return static_cast<int>(EQUIP_POINTS[position]);
+    return CAST_S32(EQUIP_POINTS[position]);
 }
 
 }  // namespace Ea

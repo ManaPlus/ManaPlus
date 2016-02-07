@@ -67,7 +67,7 @@ PlayerTableModel::~PlayerTableModel()
 int PlayerTableModel::getRows() const
 {
     if (mPlayers)
-        return static_cast<int>(mPlayers->size());
+        return CAST_S32(mPlayers->size());
     else
         return 0;
 }
@@ -100,7 +100,7 @@ void PlayerTableModel::playerRelationsUpdated()
     mPlayers = player_names;
 
     // set up widgets
-    for (unsigned int r = 0, sz = static_cast<unsigned int>(
+    for (unsigned int r = 0, sz = CAST_U32(
          player_names->size()); r < sz; ++r)
     {
         const std::string name = (*player_names)[r];
@@ -108,7 +108,7 @@ void PlayerTableModel::playerRelationsUpdated()
         mWidgets.push_back(widget);
 
         DropDown *const choicebox = new DropDown(this, mListModel);
-        choicebox->setSelected(static_cast<int>(
+        choicebox->setSelected(CAST_S32(
             player_relations.getRelation(name)));
         mWidgets.push_back(choicebox);
     }
@@ -140,7 +140,7 @@ void PlayerTableModel::freeWidgets()
 std::string PlayerTableModel::getPlayerAt(const int index) const
 {
     if (!mPlayers || index < 0
-        || index >= static_cast<signed>(mPlayers->size()))
+        || index >= CAST_S32(mPlayers->size()))
     {
         return std::string();
     }

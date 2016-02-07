@@ -82,7 +82,7 @@ static const Being *getPet()
 impHandler(commandEmotePet)
 {
     // need use actual pet id
-    petHandler->emote(static_cast<uint8_t>(
+    petHandler->emote(CAST_U8(
         atoi(event.args.c_str())), 0);
     return true;
 }

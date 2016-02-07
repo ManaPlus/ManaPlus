@@ -39,7 +39,7 @@ void BattleGroundHandler::registerBg(const BattleGroundTypeT &type,
                                      const std::string &name) const
 {
     createOutPacket(CMSG_BATTLE_REGISTER);
-    outMsg.writeInt16(static_cast<int16_t>(type), "type");
+    outMsg.writeInt16(CAST_S16(type), "type");
     outMsg.writeString(name, 24, "bg name");
 }
 
@@ -54,7 +54,7 @@ void BattleGroundHandler::beginAck(const bool result,
                                    const std::string &gameName) const
 {
     createOutPacket(CMSG_BATTLE_BEGIN_ACK);
-    outMsg.writeInt8(static_cast<int8_t>(result ? 1 : 0), "result");
+    outMsg.writeInt8(CAST_S8(result ? 1 : 0), "result");
     outMsg.writeString(bgName, 24, "bg name");
     outMsg.writeString(gameName, 24, "game name");
 }

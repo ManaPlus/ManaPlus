@@ -42,12 +42,12 @@ void SearchStoreHandler::search(const StoreSearchTypeT type,
 {
     createOutPacket(CMSG_SEARCHSTORE_SEARCH);
     outMsg.writeInt16(23, "len");
-    outMsg.writeInt8(static_cast<uint8_t>(type), "search type");
+    outMsg.writeInt8(CAST_U8(type), "search type");
     outMsg.writeInt32(maxPrice, "max price");
     outMsg.writeInt32(minPrice, "min price");
     outMsg.writeInt32(1, "items count");
     outMsg.writeInt32(0, "cards count");
-    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+    outMsg.writeInt16(CAST_S16(itemId), "item id");
 }
 
 void SearchStoreHandler::nextPage() const
@@ -67,7 +67,7 @@ void SearchStoreHandler::select(const int accountId,
     createOutPacket(CMSG_SEARCHSTORE_CLICK);
     outMsg.writeInt32(accountId, "account id");
     outMsg.writeInt32(storeId, "store id");
-    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+    outMsg.writeInt16(CAST_S16(itemId), "item id");
 }
 
 }  // namespace EAthena

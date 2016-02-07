@@ -69,7 +69,7 @@ void BeingHandler::undress(Being *const being) const
 void BeingHandler::requestRanks(const RankT rank) const
 {
     createOutPacket(CMSG_REQUEST_RANKS);
-    outMsg.writeInt16(static_cast<int16_t>(rank), "type");
+    outMsg.writeInt16(CAST_S16(rank), "type");
 }
 
 void BeingHandler::viewPlayerEquipment(const Being *const being)

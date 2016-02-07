@@ -264,9 +264,9 @@ void ChatTab::chatLog(std::string line,
         // Format the time string properly
         std::stringstream timeStr;
         timeStr << "[" << ((((t / 60) / 60) % 24 < 10) ? "0" : "")
-            << static_cast<int>(((t / 60) / 60) % 24)
+            << CAST_S32(((t / 60) / 60) % 24)
             << ":" << (((t / 60) % 60 < 10) ? "0" : "")
-            << static_cast<int>((t / 60) % 60)
+            << CAST_S32((t / 60) % 60)
             << "] ";
         line = std::string(lineColor).append(timeStr.str()).append(
             tmp.nick).append(tmp.text);

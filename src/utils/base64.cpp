@@ -50,7 +50,7 @@ unsigned char *php3_base64_encode(const unsigned char *restrict const string,
     const unsigned char *current = string;
     int i = 0;
     unsigned char *const result = static_cast<unsigned char *>(
-        calloc(static_cast<size_t>((length + 3 - length % 3) * 4 / 3 + 1)
+        calloc(CAST_SIZE((length + 3 - length % 3) * 4 / 3 + 1)
         * sizeof(unsigned char), 1));
     if (!result)
         return nullptr;
@@ -126,23 +126,23 @@ unsigned char *php3_base64_decode(const unsigned char *restrict const string,
         const char *const chp = strchr(base64_table, ch);
         if (!chp)
             continue;
-        ch = static_cast<int>(chp - base64_table);
+        ch = CAST_S32(chp - base64_table);
 
         switch (i % 4)
         {
             case 0:
-                result[j] = static_cast<unsigned char>(ch << 2U);
+                result[j] = CAST_U8(ch << 2U);
                 break;
             case 1:
-                result[j++] |= static_cast<unsigned char>(ch >> 4U);
-                result[j] = static_cast<unsigned char>((ch & 0x0f) << 4U);
+                result[j++] |= CAST_U8(ch >> 4U);
+                result[j] = CAST_U8((ch & 0x0f) << 4U);
                 break;
             case 2:
-                result[j++] |= static_cast<unsigned char>(ch >>2U);
-                result[j] = static_cast<unsigned char>((ch & 0x03) << 6U);
+                result[j++] |= CAST_U8(ch >>2U);
+                result[j] = CAST_U8((ch & 0x03) << 6U);
                 break;
             case 3:
-                result[j++] |= static_cast<unsigned char>(ch);
+                result[j++] |= CAST_U8(ch);
                 break;
             default:
                 break;
@@ -183,7 +183,7 @@ std::string encodeBase64String(std::string value)
     const unsigned char *const str = reinterpret_cast<unsigned char*>(
         const_cast<char*>(value.c_str()));
     unsigned char *const buf = php3_base64_encode(
-        str, static_cast<int>(value.size()), &sz);
+        str, CAST_S32(value.size()), &sz);
     if (!buf)
         return std::string();
 
@@ -198,7 +198,7 @@ std::string decodeBase64String(std::string value)
     const unsigned char *const str = reinterpret_cast<unsigned char*>(
         const_cast<char*>(value.c_str()));
     unsigned char *const buf = php3_base64_decode(
-        str, static_cast<int>(value.size()), &sz);
+        str, CAST_S32(value.size()), &sz);
 
     if (buf)
         value = std::string(reinterpret_cast<char*>(buf), sz);

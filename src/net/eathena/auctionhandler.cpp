@@ -51,7 +51,7 @@ void AuctionHandler::setItem(const Item *const item,
     if (!item)
         return;
     createOutPacket(CMSG_AUCTION_SET_ITEM);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     outMsg.writeInt32(amount, "amount");  // always 1
 }
@@ -92,10 +92,10 @@ void AuctionHandler::search(const AuctionSearchTypeT type,
                             const int page) const
 {
     createOutPacket(CMSG_AUCTION_SEARCH);
-    outMsg.writeInt16(static_cast<int16_t>(type), "search type");
+    outMsg.writeInt16(CAST_S16(type), "search type");
     outMsg.writeInt32(auctionId, "auction id");
     outMsg.writeString(text, 24, "search text");
-    outMsg.writeInt16(static_cast<int16_t>(page), "page");
+    outMsg.writeInt16(CAST_S16(page), "page");
 }
 
 void AuctionHandler::buy() const

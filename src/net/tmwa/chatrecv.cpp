@@ -314,7 +314,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
         if (being)
             sender_name = being->getName();
         if (sender_name.empty())
-            sender_name = "?" + toString(static_cast<int>(beingId));
+            sender_name = "?" + toString(CAST_S32(beingId));
     }
     else if (being &&
              sender_name != being->getName() &&

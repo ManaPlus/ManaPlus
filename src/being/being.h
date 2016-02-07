@@ -286,7 +286,7 @@ class Being notfinal : public ActorSprite,
          * Get number of guilds the being belongs to.
          */
         int16_t getNumberOfGuilds() const restrict2 A_WARN_UNUSED
-        { return static_cast<int16_t>(mGuilds.size()); }
+        { return CAST_S16(mGuilds.size()); }
 
         bool isInParty() const restrict2 noexcept A_WARN_UNUSED
         { return mParty; }
@@ -301,7 +301,7 @@ class Being notfinal : public ActorSprite,
         { return mParty; }
 
         int getSpritesCount() const restrict2 A_WARN_UNUSED
-        { return static_cast<int>(size()); }
+        { return CAST_S32(size()); }
 
         /**
          * Sets visible equipments for this being.
@@ -891,8 +891,8 @@ class Being notfinal : public ActorSprite,
         void setPath(const Path &restrict path) restrict2;
 
         int getSortPixelY() const restrict2 override A_WARN_UNUSED
-        { return static_cast<int>(mPos.y) - mYDiff - mSortOffsetY; }
-//        { return static_cast<int>(mPos.y) - mYDiff - mSortOffsetY + 16; }
+        { return CAST_S32(mPos.y) - mYDiff - mSortOffsetY; }
+//        { return CAST_S32(mPos.y) - mYDiff - mSortOffsetY + 16; }
 
         void setMap(Map *restrict const map) restrict2 override;
 

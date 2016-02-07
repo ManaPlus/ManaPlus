@@ -63,7 +63,7 @@ void ColorDB::load()
 
     it = mColorLists.find("hair");
     if (it != mColorLists.end())
-        mHairColorsSize = static_cast<int>((*it).second.size());
+        mHairColorsSize = CAST_S32((*it).second.size());
     else
         mHairColorsSize = 0;
     mLoaded = true;

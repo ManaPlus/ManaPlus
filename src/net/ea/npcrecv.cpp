@@ -173,7 +173,7 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
             {
                 mDialog->setAvatarDirection(
                     Net::MessageIn::fromServerDirection(
-                    static_cast<uint8_t>(id)));
+                    CAST_U8(id)));
             }
             break;
         case 8:  // set avatar action

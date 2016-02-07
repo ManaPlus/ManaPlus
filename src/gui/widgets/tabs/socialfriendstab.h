@@ -112,8 +112,8 @@ class SocialFriendsTab final : public SocialTab
 
             // TRANSLATORS: social window label
             mCounterString = strprintf(_("Friends: %u/%u"),
-                static_cast<uint32_t>(online),
-                static_cast<uint32_t>(total));
+                CAST_U32(online),
+                CAST_U32(total));
             updateCounter();
         }
 

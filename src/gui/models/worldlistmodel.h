@@ -47,7 +47,7 @@ class WorldListModel final : public ListModel
 
         int getNumberOfElements() override final
         {
-            return static_cast<int>(mWorlds.size());
+            return CAST_S32(mWorlds.size());
         }
 
         std::string getElementAt(int i) override final

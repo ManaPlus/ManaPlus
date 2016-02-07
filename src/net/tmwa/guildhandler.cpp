@@ -124,8 +124,8 @@ void GuildHandler::chat(const std::string &text) const
     const std::string str = std::string(localPlayer->getName()).append(
         " : ").append(text);
     createOutPacket(CMSG_GUILD_MESSAGE);
-    outMsg.writeInt16(static_cast<uint16_t>(str.size() + 4), "len");
-    outMsg.writeString(str, static_cast<int>(str.length()), "message");
+    outMsg.writeInt16(CAST_U16(str.size() + 4), "len");
+    outMsg.writeString(str, CAST_S32(str.length()), "message");
 }
 
 void GuildHandler::memberList() const

@@ -304,7 +304,7 @@ void Client::gameInit()
     SDL_initFramerate(&fpsManager);
     WindowManager::setFramerate(fpsLimit);
 
-    start_time = static_cast<int>(time(nullptr));
+    start_time = CAST_S32(time(nullptr));
 
 //    PlayerInfo::init();
 
@@ -513,7 +513,7 @@ int Client::gameExec()
         BLOCK_START("Client::gameExec 4")
         if (gui)
             gui->logic();
-        cur_time = static_cast<int>(time(nullptr));
+        cur_time = CAST_S32(time(nullptr));
         int k = 0;
         while (lastTickTime != tick_time && k < 40)
         {

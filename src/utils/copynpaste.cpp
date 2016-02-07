@@ -128,7 +128,7 @@ bool sendBuffer(std::string& text)
         return false;
 
     HANDLE h = GlobalAlloc(GMEM_MOVEABLE | GMEM_DDESHARE,
-        static_cast<size_t>(wCharsLen) * sizeof(WCHAR));
+        CAST_SIZE(wCharsLen) * sizeof(WCHAR));
     WCHAR *const out = static_cast<WCHAR*>(GlobalLock(h));
 
     MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, out, wCharsLen);
@@ -460,7 +460,7 @@ static bool runxsel(std::string& text, const char *p1, const char *p2)
 
     // parent
     close(fd[0]);
-    const int len = static_cast<int>(strlen(text.c_str()));
+    const int len = CAST_S32(strlen(text.c_str()));
     if (write(fd[1], text.c_str(), len) != len)
     {
         close(fd[1]);

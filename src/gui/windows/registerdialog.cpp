@@ -149,7 +149,7 @@ void RegisterDialog::postInit()
     Window::postInit();
     setVisible(Visible_true);
     mUserField->requestFocus();
-    mUserField->setCaretPosition(static_cast<unsigned>(
+    mUserField->setCaretPosition(CAST_U32(
                                  mUserField->getText().length()));
 
     mRegisterButton->setEnabled(canSubmit());

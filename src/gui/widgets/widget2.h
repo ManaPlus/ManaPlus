@@ -62,7 +62,7 @@ class Widget2 notfinal
 
         void setPalette(int palette)
         {
-            mPaletteOffset = palette * static_cast<int>(
+            mPaletteOffset = palette * CAST_S32(
                 ThemeColorId::THEME_COLORS_END);
             checkPalette();
             setWidget2(this);
@@ -71,7 +71,7 @@ class Widget2 notfinal
         void checkPalette()
         {
             if (mPaletteOffset < 0 ||
-                mPaletteOffset >= THEME_PALETTES * static_cast<int>(
+                mPaletteOffset >= THEME_PALETTES * CAST_S32(
                 ThemeColorId::THEME_COLORS_END))
             {
                 mPaletteOffset = 0;

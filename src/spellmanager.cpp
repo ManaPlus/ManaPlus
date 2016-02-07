@@ -59,7 +59,7 @@ SpellManager::~SpellManager()
 
 TextCommand* SpellManager::getSpell(const int spellId) const
 {
-    if (spellId < 0 || static_cast<size_t>(spellId) >= mSpells.size())
+    if (spellId < 0 || CAST_SIZE(spellId) >= mSpells.size())
         return nullptr;
 
     const std::map<unsigned int, TextCommand*>::const_iterator
@@ -97,7 +97,7 @@ bool SpellManager::addSpell(TextCommand *const spell)
         return false;
 
     const int id = spell->getId();
-    if (id < 0 || id >= static_cast<int>(SPELL_SHORTCUT_ITEMS
+    if (id < 0 || id >= CAST_S32(SPELL_SHORTCUT_ITEMS
         * SPELL_SHORTCUT_TABS))
     {
         delete spell;
@@ -139,12 +139,12 @@ void SpellManager::invoke(const int spellId) const
 #ifdef TMWA_SUPPORT
     if (spell->getCommandType() == TextCommandType::Text ||
         (playerHandler->canUseMagic() &&
-        PlayerInfo::getSkillLevel(static_cast<int>(MagicSchool::SkillMagic))
-        >= static_cast<signed>(spell->getBaseLvl()) &&
-        PlayerInfo::getSkillLevel(static_cast<int>(
-        spell->getSchool())) >= static_cast<signed>(spell->getSchoolLvl())
+        PlayerInfo::getSkillLevel(CAST_S32(MagicSchool::SkillMagic))
+        >= CAST_S32(spell->getBaseLvl()) &&
+        PlayerInfo::getSkillLevel(CAST_S32(
+        spell->getSchool())) >= CAST_S32(spell->getSchoolLvl())
         && PlayerInfo::getAttribute(Attributes::MP)
-        >= static_cast<int>(spell->getMana()))
+        >= CAST_S32(spell->getMana()))
         )
 #endif
     {
@@ -246,7 +246,7 @@ std::string SpellManager::parseCommand(std::string command,
 
 TextCommand *SpellManager::createNewSpell() const
 {
-    return new TextCommand(static_cast<unsigned>(mSpellsVector.size()));
+    return new TextCommand(CAST_U32(mSpellsVector.size()));
 }
 
 void SpellManager::load(const bool oldConfig)
@@ -336,16 +336,16 @@ void SpellManager::save() const
 #ifdef TMWA_SUPPORT
                 serverConfig.setValue("commandShortcutFlags" + toString(i),
                     strprintf("%u %u %u %u %u %u",
-                    static_cast<unsigned>(spell->getCommandType()),
-                    static_cast<unsigned>(spell->getTargetType()),
+                    CAST_U32(spell->getCommandType()),
+                    CAST_U32(spell->getTargetType()),
                     spell->getBaseLvl(),
-                    static_cast<unsigned>(spell->getSchool()),
+                    CAST_U32(spell->getSchool()),
                     spell->getSchoolLvl(),
-                    static_cast<unsigned>(spell->getMana())));
+                    CAST_U32(spell->getMana())));
 #else
                 serverConfig.setValue("commandShortcutFlags" + toString(i),
                     strprintf("%u %u %u %u %u %u", 1U,
-                    static_cast<unsigned>(spell->getTargetType()),
+                    CAST_U32(spell->getTargetType()),
                     0U,
                     0U,
                     0U,

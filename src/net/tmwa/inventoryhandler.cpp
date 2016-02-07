@@ -73,7 +73,7 @@ void InventoryHandler::equipItem(const Item *const item) const
         return;
 
     createOutPacket(CMSG_PLAYER_EQUIP);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     outMsg.writeInt16(0, "unused");
 }
@@ -84,7 +84,7 @@ void InventoryHandler::unequipItem(const Item *const item) const
         return;
 
     createOutPacket(CMSG_PLAYER_UNEQUIP);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
 }
 
@@ -94,7 +94,7 @@ void InventoryHandler::useItem(const Item *const item) const
         return;
 
     createOutPacket(CMSG_PLAYER_INVENTORY_USE);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     outMsg.writeInt32(item->getId(), "item id");
 }
@@ -105,9 +105,9 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
         return;
 
     createOutPacket(CMSG_PLAYER_INVENTORY_DROP);
-    outMsg.writeInt16(static_cast<int16_t>(
+    outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
 void InventoryHandler::closeStorage() const
@@ -124,7 +124,7 @@ void InventoryHandler::moveItem2(const InventoryTypeT source,
         destination == InventoryType::Storage)
     {
         createOutPacket(CMSG_MOVE_TO_STORAGE);
-        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET),
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET),
             "index");
         outMsg.writeInt32(amount, "amount");
     }
@@ -132,7 +132,7 @@ void InventoryHandler::moveItem2(const InventoryTypeT source,
              destination == InventoryType::Inventory)
     {
         createOutPacket(CMSG_MOVE_FROM_STORAGE);
-        outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET),
+        outMsg.writeInt16(CAST_S16(slot + STORAGE_OFFSET),
             "index");
         outMsg.writeInt32(amount, "amount");
     }
@@ -161,7 +161,7 @@ int InventoryHandler::convertFromServerSlot(const int serverSlot) const
     if (serverSlot < 0 || serverSlot > 13)
         return 0;
 
-    return static_cast<int>(EQUIP_CONVERT[serverSlot]);
+    return CAST_S32(EQUIP_CONVERT[serverSlot]);
 }
 
 void InventoryHandler::selectCart(const BeingId accountId A_UNUSED,

@@ -87,9 +87,9 @@ class FindBeingFunctor final
             const unsigned other_y = y
                 + ((b->getType() == ActorType::Npc) ? 1 : 0);
             const Vector &pos = b->getPosition();
-            return (static_cast<unsigned>(pos.x) / mapTileSize == x &&
-                (static_cast<unsigned>(pos.y) / mapTileSize == y
-                || static_cast<unsigned>(pos.y) / mapTileSize == other_y) &&
+            return (CAST_U32(pos.x) / mapTileSize == x &&
+                (CAST_U32(pos.y) / mapTileSize == y
+                || CAST_U32(pos.y) / mapTileSize == other_y) &&
                 b->isAlive() && (type == ActorType::Unknown
                 || b->getType() == type));
         }
@@ -397,8 +397,8 @@ Being *ActorManager::findBeing(const BeingId id) const
 Being *ActorManager::findBeing(const int x, const int y,
                                const ActorTypeT type) const
 {
-    beingActorFinder.x = static_cast<uint16_t>(x);
-    beingActorFinder.y = static_cast<uint16_t>(y);
+    beingActorFinder.x = CAST_U16(x);
+    beingActorFinder.y = CAST_U16(y);
     beingActorFinder.type = type;
 
     const ActorSpritesConstIterator it = std::find_if(
@@ -1697,7 +1697,7 @@ void ActorManager::parseLevels(std::string levels) const
                 being->addToCache();
             }
         }
-        f = static_cast<size_t>(pos + brkEnd.length());
+        f = CAST_SIZE(pos + brkEnd.length());
         pos = levels.find(brkEnd, f);
     }
     updatePlayerNames();
@@ -1977,7 +1977,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
         srcBeing->getTileY() + dy);
     dstBeing->setName(srcBeing->getName());
     dstBeing->setDirection(srcBeing->getDirection());
-    const int sz = static_cast<int>(srcBeing->getSpritesCount());
+    const int sz = CAST_S32(srcBeing->getSpritesCount());
     for (int slot = 0; slot < sz; slot ++)
     {
         const int spriteId = srcBeing->getSpriteID(slot);
@@ -1995,7 +1995,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
 
 void ActorManager::updateBadges()
 {
-    const uint8_t showBadges = static_cast<uint8_t>(
+    const uint8_t showBadges = CAST_U8(
         config.getIntValue("showBadges"));
     Being::mShowBadges = showBadges;
     for_actors
@@ -2014,7 +2014,7 @@ void ActorManager::updateNameId(const std::string &name,
 {
     if (!mEnableIdCollecting)
         return;
-    const int id = static_cast<int>(beingId);
+    const int id = CAST_S32(beingId);
     if (id &&
         (id < 2000000 ||
         id >= 110000000))

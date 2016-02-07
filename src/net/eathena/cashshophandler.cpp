@@ -46,8 +46,8 @@ void CashShopHandler::buyItem(const int points,
     outMsg.writeInt16(10 + 4, "len");
     outMsg.writeInt32(points, "points");
     outMsg.writeInt16(1, "count");
-    outMsg.writeInt16(static_cast<int16_t>(amount), "amount");
-    outMsg.writeInt16(static_cast<int16_t>(itemId), "item id");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
+    outMsg.writeInt16(CAST_S16(itemId), "item id");
 }
 
 void CashShopHandler::buyItems(std::vector<ShopItem*> &items A_UNUSED) const
@@ -68,7 +68,7 @@ void CashShopHandler::requestPoints() const
 void CashShopHandler::requestTab(const int tab) const
 {
     createOutPacket(CMSG_NPC_CASH_SHOP_REQUEST_TAB);
-    outMsg.writeInt16(static_cast<int16_t>(tab), "tab");
+    outMsg.writeInt16(CAST_S16(tab), "tab");
 }
 
 void CashShopHandler::schedule() const

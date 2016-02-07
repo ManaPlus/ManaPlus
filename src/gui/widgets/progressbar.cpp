@@ -161,7 +161,7 @@ void ProgressBar::draw(Graphics *graphics)
     }
 
     updateAlpha();
-    mBackgroundColor.a = static_cast<unsigned int>(mAlpha * 255);
+    mBackgroundColor.a = CAST_U32(mAlpha * 255);
 
     if (mRedraw || graphics->getRedraw())
     {
@@ -173,7 +173,7 @@ void ProgressBar::draw(Graphics *graphics)
         {
             const unsigned int pad = 2 * mFillPadding;
             const int maxWidth = mDimension.width - pad;
-            int width = static_cast<int>(mProgress
+            int width = CAST_S32(mProgress
                 * static_cast<float>(maxWidth));
             if (width > 0)
             {
@@ -194,7 +194,7 @@ void ProgressBar::draw(Graphics *graphics)
         graphics->setColor(mBackgroundColor);
         const unsigned int pad = 2 * mFillPadding;
         const int maxWidth = mDimension.width - pad;
-        int width = static_cast<int>(mProgress * static_cast<float>(maxWidth));
+        int width = CAST_S32(mProgress * static_cast<float>(maxWidth));
         if (width > 0)
         {
             if (width > maxWidth)
@@ -240,7 +240,7 @@ void ProgressBar::safeDraw(Graphics *graphics)
     }
 
     updateAlpha();
-    mBackgroundColor.a = static_cast<unsigned int>(mAlpha * 255);
+    mBackgroundColor.a = CAST_U32(mAlpha * 255);
 
     graphics->drawImageRect(0, 0, mDimension.width, mDimension.height,
         mSkin->getBorder());
@@ -248,7 +248,7 @@ void ProgressBar::safeDraw(Graphics *graphics)
     {
         const unsigned int pad = 2 * mFillPadding;
         const int maxWidth = mDimension.width - pad;
-        int width = static_cast<int>(mProgress
+        int width = CAST_S32(mProgress
             * static_cast<float>(maxWidth));
         if (width > 0)
         {
@@ -265,7 +265,7 @@ void ProgressBar::safeDraw(Graphics *graphics)
         graphics->setColor(mBackgroundColor);
         const unsigned int pad = 2 * mFillPadding;
         const int maxWidth = mDimension.width - pad;
-        int width = static_cast<int>(mProgress * static_cast<float>(maxWidth));
+        int width = CAST_S32(mProgress * static_cast<float>(maxWidth));
         if (width > 0)
         {
             if (width > maxWidth)

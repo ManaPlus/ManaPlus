@@ -203,17 +203,17 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
     const int bskill  = msg.readInt32("btype");
     const signed char success = msg.readUInt8("success");
     const signed char reason  = msg.readUInt8("reason");
-    if (success != static_cast<int>(SKILL_FAILED)
-        && bskill == static_cast<int>(BSKILL_EMOTE))
+    if (success != CAST_S32(SKILL_FAILED)
+        && bskill == CAST_S32(BSKILL_EMOTE))
     {
         logger->log("Action: %d/%d", bskill, success);
     }
 
     std::string txt;
-    if (success == static_cast<int>(SKILL_FAILED) && bskill != 0)
+    if (success == CAST_S32(SKILL_FAILED) && bskill != 0)
     {
-        if (localPlayer && bskill == static_cast<int>(BSKILL_EMOTE)
-            && reason == static_cast<int>(RFAIL_SKILLDEP))
+        if (localPlayer && bskill == CAST_S32(BSKILL_EMOTE)
+            && reason == CAST_S32(RFAIL_SKILLDEP))
         {
             localPlayer->stopAdvert();
         }

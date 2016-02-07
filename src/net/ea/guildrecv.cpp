@@ -141,7 +141,7 @@ void GuildRecv::processGuildBasicInfo(Net::MessageIn &msg)
             castle.c_str()), ChatMsgType::BY_SERVER);
     }
 
-    Guild *const g = Guild::getGuild(static_cast<int16_t>(guildId));
+    Guild *const g = Guild::getGuild(CAST_S16(guildId));
     if (!g)
         return;
     g->setName(name);
@@ -200,7 +200,7 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
             m->setOnline(online);
             m->setID(id);
             m->setCharId(charId);
-            m->setGender(Being::intToGender(static_cast<uint8_t>(gender)));
+            m->setGender(Being::intToGender(CAST_U8(gender)));
             m->setLevel(level);
             m->setExp(exp);
             m->setPos(pos);

@@ -136,14 +136,14 @@ class Theme final : public Palette,
                                      const unsigned int alpha = 255U)
                                      A_WARN_UNUSED
         {
-            if (static_cast<size_t>(type) >= mColors.size())
+            if (CAST_SIZE(type) >= mColors.size())
             {
                 logger->log("incorrect color request type: %d from %u",
-                    static_cast<int>(type),
-                    static_cast<unsigned int>(mColors.size()));
+                    CAST_S32(type),
+                    CAST_U32(mColors.size()));
                 type = ThemeColorId::BROWSERBOX;
             }
-            Color* col = &mColors[static_cast<size_t>(type)].color;
+            Color* col = &mColors[CAST_SIZE(type)].color;
             col->a = alpha;
             return *col;
         }

@@ -256,7 +256,7 @@ void WindowMenu::addButton(const char *const text,
     Button *const btn = new Button(this, gettext(text), text, this);
     btn->setPosition(x, mPadding);
     btn->setDescription(description);
-    btn->setTag(static_cast<int>(key));
+    btn->setTag(CAST_S32(key));
     add(btn);
     btn->setFocusable(false);
     x += btn->getWidth() + mSpacing;

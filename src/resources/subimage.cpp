@@ -60,10 +60,10 @@ SubImage::SubImage(Image *const parent,
     }
 
     // Set up the rectangle.
-    mBounds.x = static_cast<int16_t>(x);
-    mBounds.y = static_cast<int16_t>(y);
-    mBounds.w = static_cast<uint16_t>(width);
-    mBounds.h = static_cast<uint16_t>(height);
+    mBounds.x = CAST_S16(x);
+    mBounds.y = CAST_S16(y);
+    mBounds.w = CAST_U16(width);
+    mBounds.h = CAST_U16(height);
     if (mParent)
     {
         mInternalBounds.x = mParent->mBounds.x;
@@ -114,10 +114,10 @@ SubImage::SubImage(Image *const parent,
     }
 
     // Set up the rectangle.
-    mBounds.x = static_cast<int16_t>(x);
-    mBounds.y = static_cast<int16_t>(y);
-    mBounds.w = static_cast<uint16_t>(width);
-    mBounds.h = static_cast<uint16_t>(height);
+    mBounds.x = CAST_S16(x);
+    mBounds.y = CAST_S16(y);
+    mBounds.w = CAST_U16(width);
+    mBounds.h = CAST_U16(height);
     if (mParent)
     {
         mInternalBounds.x = mParent->mBounds.x;
@@ -149,10 +149,10 @@ SubImage::SubImage(Image *const parent,
         mParent->incRef();
 
     // Set up the rectangle.
-    mBounds.x = static_cast<int16_t>(x);
-    mBounds.y = static_cast<int16_t>(y);
-    mBounds.w = static_cast<uint16_t>(width);
-    mBounds.h = static_cast<uint16_t>(height);
+    mBounds.x = CAST_S16(x);
+    mBounds.y = CAST_S16(y);
+    mBounds.w = CAST_U16(width);
+    mBounds.h = CAST_U16(height);
     if (mParent)
     {
         mInternalBounds.x = mParent->mBounds.x;

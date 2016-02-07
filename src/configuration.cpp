@@ -300,7 +300,7 @@ unsigned ConfigurationObject::getValue(const std::string &key,
 {
     GETLOG();
     const Options::const_iterator iter = mOptions.find(key);
-    return (iter != mOptions.end()) ? static_cast<unsigned>(
+    return (iter != mOptions.end()) ? CAST_U32(
             atol(iter->second.c_str())) : deflt;
 }
 
@@ -441,7 +441,7 @@ int Configuration::getIntValue(const std::string &key) const
                 }
                 else if (type == VariableData::DATA_FLOAT)
                 {
-                    defaultValue = static_cast<int>(
+                    defaultValue = CAST_S32(
                         (static_cast<const FloatData*>(data))->getData());
                 }
             }
@@ -635,7 +635,7 @@ bool Configuration::getBoolValue(const std::string &key) const
                 }
                 if (type == VariableData::DATA_FLOAT)
                 {
-                    if (static_cast<int>((static_cast<const FloatData*>(
+                    if (CAST_S32((static_cast<const FloatData*>(
                         data))->getData()) != 0)
                     {
                         defaultValue = true;

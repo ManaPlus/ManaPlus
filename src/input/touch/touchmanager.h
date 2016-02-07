@@ -38,7 +38,7 @@ class MouseInput;
 
 typedef void (*TouchFuncPtr) (const MouseInput &restrict mouseInput);
 
-const int actionsSize = static_cast<int>(InputAction::TOTAL);
+const int actionsSize = CAST_S32(InputAction::TOTAL);
 const int buttonsCount = 12;
 
 struct TouchItem final
@@ -145,10 +145,10 @@ class TouchManager final : public ConfigListener
         void setActionActive(const InputActionT index,
                              const bool value) restrict2
         {
-            if (static_cast<int>(index) >= 0 &&
-                static_cast<int>(index) < actionsSize)
+            if (CAST_S32(index) >= 0 &&
+                CAST_S32(index) < actionsSize)
             {
-                mActions[static_cast<size_t>(index)] = value;
+                mActions[CAST_SIZE(index)] = value;
             }
         }
 

@@ -60,7 +60,7 @@ class UserPalette final : public Palette, public ListModel
         inline const Color &getCommittedColor(const UserColorIdT type)
                                               const A_WARN_UNUSED
         {
-            return mColors[static_cast<size_t>(type)].committedColor;
+            return mColors[CAST_SIZE(type)].committedColor;
         }
 
         /**
@@ -72,7 +72,7 @@ class UserPalette final : public Palette, public ListModel
          */
         inline const Color &getTestColor(const UserColorIdT type)
                                          const A_WARN_UNUSED
-        { return mColors[static_cast<size_t>(type)].testColor; }
+        { return mColors[CAST_SIZE(type)].testColor; }
 
         /**
          * Sets the test color associated with the specified type.
@@ -82,7 +82,7 @@ class UserPalette final : public Palette, public ListModel
          */
         inline void setTestColor(const UserColorIdT type,
                                  const Color &color)
-        { mColors[static_cast<size_t>(type)].testColor = color; }
+        { mColors[CAST_SIZE(type)].testColor = color; }
 
         /**
          * Sets the color for the specified type.
@@ -112,7 +112,7 @@ class UserPalette final : public Palette, public ListModel
          */
         void setGradientDelay(const UserColorIdT type,
                               const int delay)
-        { mColors[static_cast<size_t>(type)].delay = delay; }
+        { mColors[CAST_SIZE(type)].delay = delay; }
 
         /**
          * Returns the number of colors known.
@@ -120,7 +120,7 @@ class UserPalette final : public Palette, public ListModel
          * @return the number of colors known
          */
         inline int getNumberOfElements() override final A_WARN_UNUSED
-        { return static_cast<int>(mColors.size()); }
+        { return CAST_S32(mColors.size()); }
 
         /**
          * Returns the name of the ith color.
@@ -165,14 +165,14 @@ class UserPalette final : public Palette, public ListModel
                                      const unsigned int alpha = 255U)
                                      A_WARN_UNUSED
         {
-            if (static_cast<size_t>(type) >= mColors.size())
+            if (CAST_SIZE(type) >= mColors.size())
             {
                 logger->log("incorrect color request type: %d from %u",
-                    static_cast<int>(type),
-                    static_cast<unsigned int>(mColors.size()));
+                    CAST_S32(type),
+                    CAST_U32(mColors.size()));
                 type = UserColorId::BEING;
             }
-            Color* col = &mColors[static_cast<size_t>(type)].color;
+            Color* col = &mColors[CAST_SIZE(type)].color;
             col->a = alpha;
             return *col;
         }
@@ -188,7 +188,7 @@ class UserPalette final : public Palette, public ListModel
          */
         inline GradientTypeT getGradientType(const UserColorIdT type)
                                              const A_WARN_UNUSED
-        { return mColors[static_cast<size_t>(type)].grad; }
+        { return mColors[CAST_SIZE(type)].grad; }
 
         /**
          * Gets the gradient delay for the specified type.
@@ -199,14 +199,14 @@ class UserPalette final : public Palette, public ListModel
          */
         inline int getGradientDelay(const UserColorIdT type)
                                     const A_WARN_UNUSED
-        { return mColors[static_cast<size_t>(type)].delay; }
+        { return mColors[CAST_SIZE(type)].delay; }
 
         inline const Color &getColorWithAlpha(const UserColorIdT type)
                                               A_WARN_UNUSED
         {
-            Color *const col = &mColors[static_cast<size_t>(type)].color;
-            col->a = static_cast<unsigned int>(
-                mColors[static_cast<size_t>(type)].delay);
+            Color *const col = &mColors[CAST_SIZE(type)].color;
+            col->a = CAST_U32(
+                mColors[CAST_SIZE(type)].delay);
             return *col;
         }
 

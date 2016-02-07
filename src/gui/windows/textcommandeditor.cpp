@@ -151,11 +151,11 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
         mSymbolTextField->setText(command->getSymbol());
         mCommandTextField->setText(command->getCommand());
         mCommentTextField->setText(command->getComment());
-        mTypeDropDown->setSelected(static_cast<int>(command->getTargetType()));
+        mTypeDropDown->setSelected(CAST_S32(command->getTargetType()));
 #ifdef TMWA_SUPPORT
         mManaField->setValue(command->getMana());
         mMagicLvlField->setValue(command->getBaseLvl());
-        mSchoolDropDown->setSelected(static_cast<int>(command->getSchool())
+        mSchoolDropDown->setSelected(CAST_S32(command->getSchool())
             - MAGIC_START_ID);
         mSchoolLvlField->setValue(command->getSchoolLvl());
 #endif

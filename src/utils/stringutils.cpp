@@ -85,10 +85,10 @@ const char *ipToString(const uint32_t address)
     static char asciiIP[18];
 
     snprintf(asciiIP, sizeof(asciiIP), "%i.%i.%i.%i",
-            static_cast<unsigned char>(address),
-            static_cast<unsigned char>(address >> 8),
-            static_cast<unsigned char>(address >> 16),
-            static_cast<unsigned char>(address >> 24));
+            CAST_U8(address),
+            CAST_U8(address >> 8),
+            CAST_U8(address >> 16),
+            CAST_U8(address >> 24));
     asciiIP[17] = 0;
 
     return asciiIP;
@@ -162,7 +162,7 @@ const std::string findSameSubstring(const std::string &restrict str1,
                                     const std::string &restrict str2)
 {
     const int minLength = str1.length() > str2.length()
-        ? static_cast<int>(str2.length()) : static_cast<int>(str1.length());
+        ? CAST_S32(str2.length()) : CAST_S32(str1.length());
     for (int f = 0; f < minLength; f ++)
     {
         if (str1.at(f) != str2.at(f))
@@ -222,13 +222,13 @@ const std::string encodeStr(unsigned int value, const unsigned int size)
 
     do
     {
-        buf += static_cast<signed char>(value % base + start);
+        buf += CAST_S8(value % base + start);
         value /= base;
     }
     while (value);
 
     while (buf.length() < size)
-        buf += static_cast<signed char>(start);
+        buf += CAST_S8(start);
     return buf;
 }
 
@@ -261,9 +261,9 @@ std::string extractNameFromSprite(std::string str)
                 pos2 = pos3;
         }
         if (pos2 == std::string::npos)
-            pos2 = static_cast<size_t>(-1);
+            pos2 = CAST_SIZE(-1);
 
-        const int size = static_cast<int>(pos1) - static_cast<int>(pos2) - 1;
+        const int size = CAST_S32(pos1) - CAST_S32(pos2) - 1;
         if (size > 0)
             str = str.substr(pos2 + 1, size);
     }
@@ -284,9 +284,9 @@ std::string removeSpriteIndex(std::string str)
                 pos2 = pos3;
         }
         if (pos2 == std::string::npos)
-            pos2 = static_cast<size_t>(-1);
+            pos2 = CAST_SIZE(-1);
 
-        const int size = static_cast<int>(pos1) - static_cast<int>(pos2) - 1;
+        const int size = CAST_S32(pos1) - CAST_S32(pos2) - 1;
         if (size > 0)
             str = str.substr(pos2 + 1, size);
     }
@@ -400,7 +400,7 @@ void replaceSpecialChars(std::string &text)
         if (idx + 1 < f && text[f] == ';')
         {
             std::string str(" ");
-            str[0] = static_cast<signed char>(atoi(text.substr(
+            str[0] = CAST_S8(atoi(text.substr(
                 idx, f - idx).c_str()));
             text = text.substr(0, pos1) + str + text.substr(f + 1);
             pos1 += 1;
@@ -585,11 +585,11 @@ std::string stringToHexPath(const std::string &str)
     if (str.empty())
         return "";
 
-    std::string hex = strprintf("%%%2x/", static_cast<unsigned int>(str[0]));
-    for (unsigned f = 1, sz = static_cast<unsigned int>(str.size());
+    std::string hex = strprintf("%%%2x/", CAST_U32(str[0]));
+    for (unsigned f = 1, sz = CAST_U32(str.size());
          f < sz; f ++)
     {
-        hex.append(strprintf("%%%2x", static_cast<unsigned int>(str[f])));
+        hex.append(strprintf("%%%2x", CAST_U32(str[f])));
     }
     return hex;
 }
@@ -760,7 +760,7 @@ std::string toString(unsigned int num)
     buf[29] = '\0';
     size_t idx = 28;
     do
-        buf[idx--] = static_cast<char>((num % 10) + '0');
+        buf[idx--] = CAST_8((num % 10) + '0');
     while (num /= 10);
     return buf + idx + 1;
 }
@@ -771,7 +771,7 @@ std::string toString(unsigned long num)
     buf[99] = '\0';
     size_t idx = 98;
     do
-        buf[idx--] = static_cast<char>((num % 10) + '0');
+        buf[idx--] = CAST_8((num % 10) + '0');
     while (num /= 10);
     return buf + idx + 1;
 }
@@ -782,7 +782,7 @@ std::string toString(uint16_t num)
     buf[9] = '\0';
     size_t idx = 8;
     do
-        buf[idx--] = static_cast<char>((num % 10) + '0');
+        buf[idx--] = CAST_8((num % 10) + '0');
     while (num /= 10);
     return buf + idx + 1;
 }
@@ -793,7 +793,7 @@ std::string toString(unsigned char num)
     buf[4] = '\0';
     size_t idx = 3;
     do
-        buf[idx--] = static_cast<char>((num % 10) + '0');
+        buf[idx--] = CAST_8((num % 10) + '0');
     while (num /= 10);
     return buf + idx + 1;
 }
@@ -811,7 +811,7 @@ std::string toString(int num)
         num = -num;
     }
     do
-        buf[idx--] = static_cast<char>((num % 10) + '0');
+        buf[idx--] = CAST_8((num % 10) + '0');
     while (num /= 10);
     if (useSign)
         buf[idx--] = '-';

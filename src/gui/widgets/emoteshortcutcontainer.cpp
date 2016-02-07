@@ -97,7 +97,7 @@ void EmoteShortcutContainer::draw(Graphics *restrict graphics) restrict2
     Font *const font = getFont();
     drawBackground(graphics);
 
-    unsigned sz = static_cast<unsigned>(mEmoteImg.size());
+    unsigned sz = CAST_U32(mEmoteImg.size());
     if (sz > mMaxItems)
         sz = mMaxItems;
     for (unsigned i = 0; i < sz; i++)
@@ -149,7 +149,7 @@ void EmoteShortcutContainer::safeDraw(Graphics *restrict graphics) restrict2
     Font *const font = getFont();
     safeDrawBackground(graphics);
 
-    unsigned sz = static_cast<unsigned>(mEmoteImg.size());
+    unsigned sz = CAST_U32(mEmoteImg.size());
     if (sz > mMaxItems)
         sz = mMaxItems;
     for (unsigned i = 0; i < sz; i++)
@@ -258,7 +258,7 @@ void EmoteShortcutContainer::mouseMoved(MouseEvent &restrict event) restrict2
 
     textPopup->setVisible(Visible_false);
 
-    if (static_cast<size_t>(index) < mEmoteImg.size() && mEmoteImg[index])
+    if (CAST_SIZE(index) < mEmoteImg.size() && mEmoteImg[index])
     {
         const EmoteSprite *restrict const sprite = mEmoteImg[index];
         textPopup->show(viewport->mMouseX, viewport->mMouseY,

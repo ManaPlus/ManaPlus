@@ -290,7 +290,7 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
                 if (spell && !spell->isEmpty())
                 {
                     const int num = itemShortcutWindow->getTabIndex();
-                    if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
+                    if (num >= 0 && num < CAST_S32(SHORTCUT_TABS)
                         && itemShortcut[num])
                     {
                         itemShortcut[num]->setItemSelected(
@@ -302,7 +302,7 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
             else
             {
                 const int num = itemShortcutWindow->getTabIndex();
-                if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
+                if (num >= 0 && num < CAST_S32(SHORTCUT_TABS)
                     && itemShortcut[num])
                 {
                     itemShortcut[num]->setItemSelected(-1);

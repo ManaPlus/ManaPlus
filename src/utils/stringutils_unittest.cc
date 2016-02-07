@@ -127,8 +127,8 @@ TEST_CASE("stringuntils toString 1")
     REQUIRE(strprintf("%d", -10000000) == toString(-10000000));
     REQUIRE(strprintf("%d", 30000000) == toString(
         static_cast<signed int>(30000000)));
-    REQUIRE(strprintf("%d", 3000) == toString(static_cast<uint16_t>(3000)));
-    REQUIRE(strprintf("%d", 123) == toString(static_cast<unsigned char>(123)));
+    REQUIRE(strprintf("%d", 3000) == toString(CAST_U16(3000)));
+    REQUIRE(strprintf("%d", 123) == toString(CAST_U8(123)));
 }
 
 TEST_CASE("stringuntils toString 2")

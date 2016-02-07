@@ -159,7 +159,7 @@ int inflateMemory(unsigned char *restrict const in,
                 return Z_MEM_ERROR;
             }
 
-            strm.next_out = out + static_cast<size_t>(bufferSize);
+            strm.next_out = out + CAST_SIZE(bufferSize);
             strm.avail_out = bufferSize;
             bufferSize *= 2;
         }
@@ -564,7 +564,7 @@ inline static void setTile(Map *const map,
                 break;
             if (heights && map->getVersion() >= 2)
             {
-                heights->setHeight(x, y, static_cast<uint8_t>(
+                heights->setHeight(x, y, CAST_U8(
                     gid - set->getFirstGid() + 1));
             }
             else
@@ -644,7 +644,7 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
 
     int binLen;
     unsigned char *binData = php3_base64_decode(charData,
-        static_cast<int>(strlen(reinterpret_cast<char*>(
+        CAST_S32(strlen(reinterpret_cast<char*>(
         charData))), &binLen);
 
     delete [] charData;

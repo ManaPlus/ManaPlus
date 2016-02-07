@@ -70,72 +70,72 @@ static void initDefaultThemePath()
 }
 
 Theme::Theme() :
-    Palette(static_cast<int>(ThemeColorId::THEME_COLORS_END) * THEME_PALETTES),
+    Palette(CAST_S32(ThemeColorId::THEME_COLORS_END) * THEME_PALETTES),
     mSkins(),
     mMinimumOpacity(-1.0F),
-    mProgressColors(ProgressColors(static_cast<size_t>(
+    mProgressColors(ProgressColors(CAST_SIZE(
                     ProgressColorId::THEME_PROG_END)))
 {
     initDefaultThemePath();
 
     config.addListener("guialpha", this);
 
-    mColors[static_cast<size_t>(ThemeColorId::HIGHLIGHT)].ch = 'H';
-    mColors[static_cast<size_t>(ThemeColorId::CHAT)].ch = 'C';
-    mColors[static_cast<size_t>(ThemeColorId::GM)].ch = 'G';
-    mColors[static_cast<size_t>(ThemeColorId::GLOBAL)].ch = 'g';
-    mColors[static_cast<size_t>(ThemeColorId::PLAYER)].ch = 'Y';
-    mColors[static_cast<size_t>(ThemeColorId::WHISPER_TAB)].ch = 'W';
-    mColors[static_cast<size_t>(ThemeColorId::WHISPER_TAB_OFFLINE)].ch = 'w';
-    mColors[static_cast<size_t>(ThemeColorId::IS)].ch = 'I';
-    mColors[static_cast<size_t>(ThemeColorId::PARTY_CHAT_TAB)].ch = 'P';
-    mColors[static_cast<size_t>(ThemeColorId::GUILD_CHAT_TAB)].ch = 'U';
-    mColors[static_cast<size_t>(ThemeColorId::SERVER)].ch = 'S';
-    mColors[static_cast<size_t>(ThemeColorId::LOGGER)].ch = 'L';
-    mColors[static_cast<size_t>(ThemeColorId::HYPERLINK)].ch = '<';
-    mColors[static_cast<size_t>(ThemeColorId::SELFNICK)].ch = 's';
-    mColors[static_cast<size_t>(ThemeColorId::OLDCHAT)].ch = 'o';
-    mColors[static_cast<size_t>(ThemeColorId::AWAYCHAT)].ch = 'a';
-    mCharColors['H'] = static_cast<int>(ThemeColorId::HIGHLIGHT);
-    mCharColors['C'] = static_cast<int>(ThemeColorId::CHAT);
-    mCharColors['G'] = static_cast<int>(ThemeColorId::GM);
-    mCharColors['g'] = static_cast<int>(ThemeColorId::GLOBAL);
-    mCharColors['Y'] = static_cast<int>(ThemeColorId::PLAYER);
-    mCharColors['W'] = static_cast<int>(ThemeColorId::WHISPER_TAB);
-    mCharColors['w'] = static_cast<int>(ThemeColorId::WHISPER_TAB_OFFLINE);
-    mCharColors['I'] = static_cast<int>(ThemeColorId::IS);
-    mCharColors['P'] = static_cast<int>(ThemeColorId::PARTY_CHAT_TAB);
-    mCharColors['U'] = static_cast<int>(ThemeColorId::GUILD_CHAT_TAB);
-    mCharColors['S'] = static_cast<int>(ThemeColorId::SERVER);
-    mCharColors['L'] = static_cast<int>(ThemeColorId::LOGGER);
-    mCharColors['<'] = static_cast<int>(ThemeColorId::HYPERLINK);
-    mCharColors['s'] = static_cast<int>(ThemeColorId::SELFNICK);
-    mCharColors['o'] = static_cast<int>(ThemeColorId::OLDCHAT);
-    mCharColors['a'] = static_cast<int>(ThemeColorId::AWAYCHAT);
+    mColors[CAST_SIZE(ThemeColorId::HIGHLIGHT)].ch = 'H';
+    mColors[CAST_SIZE(ThemeColorId::CHAT)].ch = 'C';
+    mColors[CAST_SIZE(ThemeColorId::GM)].ch = 'G';
+    mColors[CAST_SIZE(ThemeColorId::GLOBAL)].ch = 'g';
+    mColors[CAST_SIZE(ThemeColorId::PLAYER)].ch = 'Y';
+    mColors[CAST_SIZE(ThemeColorId::WHISPER_TAB)].ch = 'W';
+    mColors[CAST_SIZE(ThemeColorId::WHISPER_TAB_OFFLINE)].ch = 'w';
+    mColors[CAST_SIZE(ThemeColorId::IS)].ch = 'I';
+    mColors[CAST_SIZE(ThemeColorId::PARTY_CHAT_TAB)].ch = 'P';
+    mColors[CAST_SIZE(ThemeColorId::GUILD_CHAT_TAB)].ch = 'U';
+    mColors[CAST_SIZE(ThemeColorId::SERVER)].ch = 'S';
+    mColors[CAST_SIZE(ThemeColorId::LOGGER)].ch = 'L';
+    mColors[CAST_SIZE(ThemeColorId::HYPERLINK)].ch = '<';
+    mColors[CAST_SIZE(ThemeColorId::SELFNICK)].ch = 's';
+    mColors[CAST_SIZE(ThemeColorId::OLDCHAT)].ch = 'o';
+    mColors[CAST_SIZE(ThemeColorId::AWAYCHAT)].ch = 'a';
+    mCharColors['H'] = CAST_S32(ThemeColorId::HIGHLIGHT);
+    mCharColors['C'] = CAST_S32(ThemeColorId::CHAT);
+    mCharColors['G'] = CAST_S32(ThemeColorId::GM);
+    mCharColors['g'] = CAST_S32(ThemeColorId::GLOBAL);
+    mCharColors['Y'] = CAST_S32(ThemeColorId::PLAYER);
+    mCharColors['W'] = CAST_S32(ThemeColorId::WHISPER_TAB);
+    mCharColors['w'] = CAST_S32(ThemeColorId::WHISPER_TAB_OFFLINE);
+    mCharColors['I'] = CAST_S32(ThemeColorId::IS);
+    mCharColors['P'] = CAST_S32(ThemeColorId::PARTY_CHAT_TAB);
+    mCharColors['U'] = CAST_S32(ThemeColorId::GUILD_CHAT_TAB);
+    mCharColors['S'] = CAST_S32(ThemeColorId::SERVER);
+    mCharColors['L'] = CAST_S32(ThemeColorId::LOGGER);
+    mCharColors['<'] = CAST_S32(ThemeColorId::HYPERLINK);
+    mCharColors['s'] = CAST_S32(ThemeColorId::SELFNICK);
+    mCharColors['o'] = CAST_S32(ThemeColorId::OLDCHAT);
+    mCharColors['a'] = CAST_S32(ThemeColorId::AWAYCHAT);
 
     // here need use outlined colors
     mCharColors['H' | 0x80]
-        = static_cast<int>(ThemeColorId::HIGHLIGHT_OUTLINE);
-    mCharColors['C' | 0x80] = static_cast<int>(ThemeColorId::CHAT_OUTLINE);
-    mCharColors['G' | 0x80] = static_cast<int>(ThemeColorId::GM_OUTLINE);
-    mCharColors['g' | 0x80] = static_cast<int>(ThemeColorId::GLOBAL_OUTLINE);
-    mCharColors['Y' | 0x80] = static_cast<int>(ThemeColorId::PLAYER_OUTLINE);
+        = CAST_S32(ThemeColorId::HIGHLIGHT_OUTLINE);
+    mCharColors['C' | 0x80] = CAST_S32(ThemeColorId::CHAT_OUTLINE);
+    mCharColors['G' | 0x80] = CAST_S32(ThemeColorId::GM_OUTLINE);
+    mCharColors['g' | 0x80] = CAST_S32(ThemeColorId::GLOBAL_OUTLINE);
+    mCharColors['Y' | 0x80] = CAST_S32(ThemeColorId::PLAYER_OUTLINE);
     mCharColors['W' | 0x80]
-        = static_cast<int>(ThemeColorId::WHISPER_TAB_OUTLINE);
+        = CAST_S32(ThemeColorId::WHISPER_TAB_OUTLINE);
     mCharColors['w' | 0x80]
-        = static_cast<int>(ThemeColorId::WHISPER_TAB_OFFLINE_OUTLINE);
-    mCharColors['I' | 0x80] = static_cast<int>(ThemeColorId::IS_OUTLINE);
+        = CAST_S32(ThemeColorId::WHISPER_TAB_OFFLINE_OUTLINE);
+    mCharColors['I' | 0x80] = CAST_S32(ThemeColorId::IS_OUTLINE);
     mCharColors['P' | 0x80]
-        = static_cast<int>(ThemeColorId::PARTY_CHAT_TAB_OUTLINE);
+        = CAST_S32(ThemeColorId::PARTY_CHAT_TAB_OUTLINE);
     mCharColors['U' | 0x80]
-        = static_cast<int>(ThemeColorId::GUILD_CHAT_TAB_OUTLINE);
-    mCharColors['S' | 0x80] = static_cast<int>(ThemeColorId::SERVER_OUTLINE);
-    mCharColors['L' | 0x80] = static_cast<int>(ThemeColorId::LOGGER_OUTLINE);
+        = CAST_S32(ThemeColorId::GUILD_CHAT_TAB_OUTLINE);
+    mCharColors['S' | 0x80] = CAST_S32(ThemeColorId::SERVER_OUTLINE);
+    mCharColors['L' | 0x80] = CAST_S32(ThemeColorId::LOGGER_OUTLINE);
     mCharColors['<' | 0x80]
-        = static_cast<int>(ThemeColorId::HYPERLINK_OUTLINE);
-    mCharColors['s' | 0x80] = static_cast<int>(ThemeColorId::SELFNICK_OUTLINE);
-    mCharColors['o' | 0x80] = static_cast<int>(ThemeColorId::OLDCHAT_OUTLINE);
-    mCharColors['a' | 0x80] = static_cast<int>(ThemeColorId::AWAYCHAT_OUTLINE);
+        = CAST_S32(ThemeColorId::HYPERLINK_OUTLINE);
+    mCharColors['s' | 0x80] = CAST_S32(ThemeColorId::SELFNICK_OUTLINE);
+    mCharColors['o' | 0x80] = CAST_S32(ThemeColorId::OLDCHAT_OUTLINE);
+    mCharColors['a' | 0x80] = CAST_S32(ThemeColorId::AWAYCHAT_OUTLINE);
 }
 
 Theme::~Theme()
@@ -154,7 +154,7 @@ Color Theme::getProgressColor(const ProgressColorIdT type,
     if (theme)
     {
         const DyePalette *const dye
-            = theme->mProgressColors[static_cast<size_t>(type)];
+            = theme->mProgressColors[CAST_SIZE(type)];
 
         if (dye)
         {
@@ -163,7 +163,7 @@ Color Theme::getProgressColor(const ProgressColorIdT type,
         else
         {
             logger->log("color not found: "
-                + toString(static_cast<int>(type)));
+                + toString(CAST_S32(type)));
         }
     }
 
@@ -610,7 +610,7 @@ void Theme::prepareThemePath()
 std::string Theme::resolveThemePath(const std::string &path)
 {
     // Need to strip off any dye info for the existence tests
-    const int pos = static_cast<int>(path.find('|'));
+    const int pos = CAST_S32(path.find('|'));
     std::string file;
     if (pos > 0)
         file = path.substr(0, pos);
@@ -648,7 +648,7 @@ ImageSet *Theme::getImageSetFromTheme(const std::string &path,
 
 static int readColorType(const std::string &type)
 {
-    static const std::string colors[static_cast<size_t>(
+    static const std::string colors[CAST_SIZE(
         ThemeColorId::THEME_COLORS_END)] =
     {
         "BROWSERBOX",
@@ -878,7 +878,7 @@ static int readColorType(const std::string &type)
     if (type.empty())
         return -1;
 
-    for (int i = 0; i < static_cast<int>(ThemeColorId::THEME_COLORS_END); i++)
+    for (int i = 0; i < CAST_S32(ThemeColorId::THEME_COLORS_END); i++)
     {
         if (compareStrI(type, colors[i]) == 0)
             return i;
@@ -952,7 +952,7 @@ static GradientTypeT readColorGradient(const std::string &grad)
 
 static int readProgressType(const std::string &type)
 {
-    static const std::string colors[static_cast<size_t>(
+    static const std::string colors[CAST_SIZE(
         ProgressColorId::THEME_PROG_END)] =
     {
         "HP",
@@ -972,7 +972,7 @@ static int readProgressType(const std::string &type)
     if (type.empty())
         return -1;
 
-    for (int i = 0; i < static_cast<int>(ProgressColorId::THEME_PROG_END); i++)
+    for (int i = 0; i < CAST_S32(ProgressColorId::THEME_PROG_END); i++)
     {
         if (compareStrI(type, colors[i]) == 0)
             return i;
@@ -1036,7 +1036,7 @@ void Theme::loadColors(std::string file)
                 const Color color = readColor(temp);
                 const GradientTypeT grad = readColorGradient(
                     XML::getProperty(node, "effect", ""));
-                mColors[paletteId * static_cast<size_t>(
+                mColors[paletteId * CAST_SIZE(
                     ThemeColorId::THEME_COLORS_END) + type].set(
                     type, color, grad, 10);
 
@@ -1046,7 +1046,7 @@ void Theme::loadColors(std::string file)
                     if (type2 < 0)
                         continue;
                     const int idx = paletteId
-                        * static_cast<int>(ThemeColorId::THEME_COLORS_END);
+                        * CAST_S32(ThemeColorId::THEME_COLORS_END);
                     mColors[idx + type2] = mColors[idx + type];
                 }
             }

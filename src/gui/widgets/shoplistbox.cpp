@@ -91,7 +91,7 @@ void ShopListBox::draw(Graphics *graphics)
     if (settings.guiAlpha != mAlpha)
         mAlpha = settings.guiAlpha;
 
-    const unsigned int alpha = static_cast<unsigned int>(mAlpha * 255.0F);
+    const unsigned int alpha = CAST_U32(mAlpha * 255.0F);
     Font *const font = getFont();
 
     const int sz = mListModel->getNumberOfElements();

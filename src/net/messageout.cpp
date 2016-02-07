@@ -48,8 +48,8 @@ void MessageOut::writeInt8(const int8_t value, const char *const str)
 {
     expand(1);
     mData[mPos] = value;
-    DEBUGLOG2("writeInt8:  " + toStringPrint(static_cast<unsigned int>(
-        static_cast<uint8_t>(value))),
+    DEBUGLOG2("writeInt8:  " + toStringPrint(CAST_U32(
+        CAST_U8(value))),
         mPos, str);
     mPos += 1;
     PacketCounters::incOutBytes(1);
@@ -59,11 +59,11 @@ void MessageOut::writeString(const std::string &string,
                              int length,
                              const char *const str)
 {
-    int stringLength = static_cast<int>(string.length());
+    int stringLength = CAST_S32(string.length());
     if (length < 0)
     {
         // Write the length at the start if not fixed
-        writeInt16(static_cast<int16_t>(stringLength), "len");
+        writeInt16(CAST_S16(stringLength), "len");
         length = stringLength;
     }
     else if (length < stringLength)
@@ -74,12 +74,12 @@ void MessageOut::writeString(const std::string &string,
     expand(length);
 
     // Write the actual string
-    memcpy(mData + static_cast<size_t>(mPos), string.c_str(), stringLength);
+    memcpy(mData + CAST_SIZE(mPos), string.c_str(), stringLength);
 
     // Pad remaining space with zeros
     if (length > stringLength)
     {
-        memset(mData + static_cast<size_t>(mPos + stringLength),
+        memset(mData + CAST_SIZE(mPos + stringLength),
             '\0',
             length - stringLength);
     }
@@ -93,11 +93,11 @@ void MessageOut::writeStringNoLog(const std::string &string,
                                   int length,
                                   const char *const str)
 {
-    int stringLength = static_cast<int>(string.length());
+    int stringLength = CAST_S32(string.length());
     if (length < 0)
     {
         // Write the length at the start if not fixed
-        writeInt16(static_cast<int16_t>(stringLength), "len");
+        writeInt16(CAST_S16(stringLength), "len");
         length = stringLength;
     }
     else if (length < stringLength)
@@ -108,12 +108,12 @@ void MessageOut::writeStringNoLog(const std::string &string,
     expand(length);
 
     // Write the actual string
-    memcpy(mData + static_cast<size_t>(mPos), string.c_str(), stringLength);
+    memcpy(mData + CAST_SIZE(mPos), string.c_str(), stringLength);
 
     // Pad remaining space with zeros
     if (length > stringLength)
     {
-        memset(mData + static_cast<size_t>(mPos + stringLength),
+        memset(mData + CAST_SIZE(mPos + stringLength),
             '\0',
             length - stringLength);
     }
@@ -164,7 +164,7 @@ unsigned char MessageOut::toServerDirection(unsigned char direction)
             break;
         default:
             // OOPSIE! Impossible or unknown
-            direction = static_cast<unsigned char>(-1);
+            direction = CAST_U8(-1);
             break;
     }
     return direction;

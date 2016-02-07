@@ -46,14 +46,14 @@ EmoteShortcut::~EmoteShortcut()
 void EmoteShortcut::load()
 {
     for (unsigned char i = 0, j = 0,
-         sz = static_cast<unsigned char>(EmoteDB::getLast());
+         sz = CAST_U8(EmoteDB::getLast());
          i <= sz && j < SHORTCUT_EMOTES;
          i++)
     {
         const EmoteSprite *const sprite = EmoteDB::getSprite(i, true);
         if (sprite)
         {
-            mEmotes[j] = static_cast<unsigned char>(i + 1);
+            mEmotes[j] = CAST_U8(i + 1);
             j ++;
         }
     }
@@ -64,9 +64,9 @@ void EmoteShortcut::save() const
     for (int i = 0; i < SHORTCUT_EMOTES; i++)
     {
         const unsigned char emoteId = mEmotes[i] ? mEmotes[i]
-            : static_cast<unsigned char>(0);
+            : CAST_U8(0);
         serverConfig.setValue("emoteshortcut" + toString(i),
-            static_cast<unsigned int>(emoteId));
+            CAST_U32(emoteId));
     }
 }
 

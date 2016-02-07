@@ -56,7 +56,7 @@ class ServersListModel final : public ListModel
         int getNumberOfElements() override final A_WARN_UNUSED
         {
             MutexLocker lock = mParent->lock();
-            return static_cast<int>(mServers->size());
+            return CAST_S32(mServers->size());
         }
 
         /**
@@ -80,7 +80,7 @@ class ServersListModel final : public ListModel
 
         void setVersionString(const int index, const std::string &version)
         {
-            if (index < 0 || index >= static_cast<int>(mVersionStrings.size()))
+            if (index < 0 || index >= CAST_S32(mVersionStrings.size()))
             return;
 
             if (version.empty() || !gui)

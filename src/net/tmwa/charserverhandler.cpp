@@ -65,7 +65,7 @@ void CharServerHandler::chooseCharacter(Net::Character *const character)
     mCharSelectDialog = nullptr;
 
     createOutPacket(CMSG_CHAR_SELECT);
-    outMsg.writeInt8(static_cast<unsigned char>(mSelectedCharacter->slot),
+    outMsg.writeInt8(CAST_U8(mSelectedCharacter->slot),
         "slot");
 }
 
@@ -80,12 +80,12 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
     createOutPacket(CMSG_CHAR_CREATE);
     outMsg.writeString(name, 24, "name");
     for (int i = 0; i < 6; i++)
-        outMsg.writeInt8(static_cast<unsigned char>(stats[i]), "stat");
+        outMsg.writeInt8(CAST_U8(stats[i]), "stat");
 
-    outMsg.writeInt8(static_cast<unsigned char>(slot), "slot");
-    outMsg.writeInt8(static_cast<int8_t>(hairColor), "hair color");
+    outMsg.writeInt8(CAST_U8(slot), "slot");
+    outMsg.writeInt8(CAST_S8(hairColor), "hair color");
     outMsg.writeInt8(0, "unused");
-    outMsg.writeInt8(static_cast<int8_t>(hairstyle), "hair style");
+    outMsg.writeInt8(CAST_S8(hairstyle), "hair style");
     outMsg.writeInt8(0, "unused");
 }
 

@@ -83,7 +83,7 @@ void PartyHandler::inviteResponse(const int partyId,
     {
         createOutPacket(CMSG_PARTY_INVITED2);
         outMsg.writeInt32(partyId, "party id");
-        outMsg.writeInt8(static_cast<int8_t>(accept ? 1 : 0), "accept");
+        outMsg.writeInt8(CAST_S8(accept ? 1 : 0), "accept");
     }
 }
 
@@ -125,8 +125,8 @@ void PartyHandler::chat(const std::string &text) const
     const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
 
-    outMsg.writeInt16(static_cast<int16_t>(mes.length() + 4 + 1), "len");
-    outMsg.writeString(mes, static_cast<int>(mes.length()), "nick : message");
+    outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
+    outMsg.writeString(mes, CAST_S32(mes.length()), "nick : message");
     outMsg.writeInt8(0, "null char");
 }
 
@@ -137,8 +137,8 @@ void PartyHandler::setShareExperience(const PartyShareT share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(static_cast<int16_t>(share), "share exp");
-    outMsg.writeInt16(static_cast<int16_t>(Ea::PartyRecv::mShareItems),
+    outMsg.writeInt16(CAST_S16(share), "share exp");
+    outMsg.writeInt16(CAST_S16(Ea::PartyRecv::mShareItems),
         "share items");
 }
 
@@ -149,9 +149,9 @@ void PartyHandler::setShareItems(const PartyShareT share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(static_cast<int16_t>(Ea::PartyRecv::mShareExp),
+    outMsg.writeInt16(CAST_S16(Ea::PartyRecv::mShareExp),
         "share exp");
-    outMsg.writeInt16(static_cast<int16_t>(share), "share items");
+    outMsg.writeInt16(CAST_S16(share), "share items");
 }
 
 void PartyHandler::changeLeader(const std::string &name) const
@@ -167,7 +167,7 @@ void PartyHandler::changeLeader(const std::string &name) const
 void PartyHandler::allowInvite(const bool allow) const
 {
     createOutPacket(CMSG_PARTY_ALLOW_INVITES);
-    outMsg.writeInt8(static_cast<int8_t>(allow ? 1 : 0), "allow");
+    outMsg.writeInt8(CAST_S8(allow ? 1 : 0), "allow");
 }
 
 }  // namespace EAthena

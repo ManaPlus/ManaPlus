@@ -186,7 +186,7 @@ class SocialPlayersTab final : public SocialTab
             }
             // TRANSLATORS: social window label
             mCounterString = strprintf(_("Visible players: %d"),
-                static_cast<int>(avatars->size()));
+                CAST_S32(avatars->size()));
             updateCounter();
         }
 

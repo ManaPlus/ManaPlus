@@ -125,8 +125,8 @@ void GuildHandler::chat(const std::string &text) const
     const std::string str = std::string(localPlayer->getName()).append(
         " : ").append(text);
     createOutPacket(CMSG_GUILD_MESSAGE);
-    outMsg.writeInt16(static_cast<uint16_t>(str.size() + 4 + 1), "len");
-    outMsg.writeString(str, static_cast<int>(str.length()), "message");
+    outMsg.writeInt16(CAST_U16(str.size() + 4 + 1), "len");
+    outMsg.writeString(str, CAST_S32(str.length()), "message");
     outMsg.writeInt8(0, "zero byte");
 }
 
@@ -245,8 +245,8 @@ void GuildHandler::changeEmblem(std::string emblem) const
     createOutPacket(CMSG_GUILD_CHANGE_EMBLEM);
     if (emblem.size() > 200)
         emblem = emblem.substr(0, 200);
-    const int sz = static_cast<int>(emblem.size());
-    outMsg.writeInt16(static_cast<int16_t>(sz + 4), "len");
+    const int sz = CAST_S32(emblem.size());
+    outMsg.writeInt16(CAST_S16(sz + 4), "len");
     outMsg.writeString(emblem, sz, "emblem");
 }
 

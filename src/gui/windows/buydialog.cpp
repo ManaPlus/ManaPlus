@@ -482,7 +482,7 @@ void BuyDialog::action(const ActionEvent &event)
 
     if (eventId == "slider")
     {
-        mAmountItems = static_cast<int>(mSlider->getValue());
+        mAmountItems = CAST_S32(mSlider->getValue());
         mAmountField->setValue(mAmountItems);
         updateButtonsAndLabels();
     }

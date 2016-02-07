@@ -225,8 +225,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         /** Animated target cursors. */
         static AnimatedSprite *targetCursor
-            [static_cast<size_t>(TargetCursorType::NUM_TCT)]
-            [static_cast<size_t>(TargetCursorSize::NUM_TC)];
+            [CAST_SIZE(TargetCursorType::NUM_TCT)]
+            [CAST_SIZE(TargetCursorSize::NUM_TC)];
 
         static bool loaded;
 

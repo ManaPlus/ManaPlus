@@ -241,9 +241,9 @@ void TextBox::setText(const std::string& text)
         pos = text.find("\n", lastPos);
 
         if (pos != std::string::npos)
-            length = static_cast<int>(pos - lastPos);
+            length = CAST_S32(pos - lastPos);
         else
-            length = static_cast<int>(text.size() - lastPos);
+            length = CAST_S32(text.size() - lastPos);
         std::string sub = text.substr(lastPos, length);
         mTextRows.push_back(sub);
         lastPos = pos + 1;
@@ -273,7 +273,7 @@ void TextBox::keyPressed(KeyEvent& event)
                 }
                 else
                 {
-                    mCaretColumn = static_cast<int>(
+                    mCaretColumn = CAST_S32(
                         mTextRows[mCaretRow].size());
                 }
             }
@@ -283,18 +283,18 @@ void TextBox::keyPressed(KeyEvent& event)
         case InputAction::GUI_RIGHT:
         {
             ++mCaretColumn;
-            if (mCaretColumn > static_cast<int>(mTextRows[mCaretRow].size()))
+            if (mCaretColumn > CAST_S32(mTextRows[mCaretRow].size()))
             {
                 ++ mCaretRow;
 
-                const int sz = static_cast<int>(mTextRows.size());
+                const int sz = CAST_S32(mTextRows.size());
                 if (mCaretRow >= sz)
                 {
                     mCaretRow = sz - 1;
                     if (mCaretRow < 0)
                         mCaretRow = 0;
 
-                    mCaretColumn = static_cast<int>(
+                    mCaretColumn = CAST_S32(
                         mTextRows[mCaretRow].size());
                 }
                 else
@@ -322,7 +322,7 @@ void TextBox::keyPressed(KeyEvent& event)
         }
         case InputAction::GUI_END:
         {
-            mCaretColumn = static_cast<int>(mTextRows[mCaretRow].size());
+            mCaretColumn = CAST_S32(mTextRows[mCaretRow].size());
             break;
         }
 
@@ -349,7 +349,7 @@ void TextBox::keyPressed(KeyEvent& event)
             }
             else if (mCaretColumn == 0 && mCaretRow != 0 && mEditable)
             {
-                mCaretColumn = static_cast<int>(
+                mCaretColumn = CAST_S32(
                     mTextRows[mCaretRow - 1].size());
                 mTextRows[mCaretRow - 1] += mTextRows[mCaretRow];
                 mTextRows.erase(mTextRows.begin() + mCaretRow);
@@ -360,14 +360,14 @@ void TextBox::keyPressed(KeyEvent& event)
 
         case InputAction::GUI_DELETE:
         {
-            if (mCaretColumn < static_cast<int>(
+            if (mCaretColumn < CAST_S32(
                 mTextRows[mCaretRow].size()) && mEditable)
             {
                 mTextRows[mCaretRow].erase(mCaretColumn, 1);
             }
-            else if (mCaretColumn == static_cast<int>(
+            else if (mCaretColumn == CAST_S32(
                      mTextRows[mCaretRow].size()) &&
-                     mCaretRow < (static_cast<int>(mTextRows.size()) - 1) &&
+                     mCaretRow < (CAST_S32(mTextRows.size()) - 1) &&
                      mEditable)
             {
                 mTextRows[mCaretRow] += mTextRows[mCaretRow + 1];
@@ -402,7 +402,7 @@ void TextBox::keyPressed(KeyEvent& event)
                     / getFont()->getHeight();
                 mCaretRow += rowsPerPage;
 
-                const int sz = static_cast<int>(mTextRows.size());
+                const int sz = CAST_S32(mTextRows.size());
                 if (mCaretRow >= sz)
                     mCaretRow = sz - 1;
             }
@@ -424,7 +424,7 @@ void TextBox::keyPressed(KeyEvent& event)
             if (key.isCharacter() && mEditable)
             {
                 mTextRows[mCaretRow].insert(mCaretColumn,
-                    std::string(1, static_cast<signed char>(key.getValue())));
+                    std::string(1, CAST_S8(key.getValue())));
                 ++ mCaretColumn;
             }
             break;
@@ -463,7 +463,7 @@ void TextBox::draw(Graphics* graphics)
             mForegroundColor,
             mForegroundColor2,
             mTextRows[i], 1,
-            static_cast<int>(i * static_cast<size_t>(fontHeight)));
+            CAST_S32(i * CAST_SIZE(fontHeight)));
     }
     BLOCK_END("TextBox::draw")
 }
@@ -494,7 +494,7 @@ std::string TextBox::getText() const
     int i;
     std::string text;
 
-    const int sz = static_cast<int>(mTextRows.size());
+    const int sz = CAST_S32(mTextRows.size());
     for (i = 0; i < sz - 1; ++ i)
         text.append(mTextRows[i]).append("\n");
     text.append(mTextRows[i]);
@@ -514,7 +514,7 @@ void TextBox::setTextRow(const int row, const std::string& text)
 
 void TextBox::setCaretPosition(unsigned int position)
 {
-    for (int row = 0, sz = static_cast<int>(mTextRows.size());
+    for (int row = 0, sz = CAST_S32(mTextRows.size());
          row < sz; row ++)
     {
         if (position <= mTextRows[row].size())
@@ -530,15 +530,15 @@ void TextBox::setCaretPosition(unsigned int position)
     }
 
     // position beyond end of text
-    mCaretRow = static_cast<int>(mTextRows.size() - 1);
-    mCaretColumn = static_cast<int>(mTextRows[mCaretRow].size());
+    mCaretRow = CAST_S32(mTextRows.size() - 1);
+    mCaretColumn = CAST_S32(mTextRows[mCaretRow].size());
 }
 
 void TextBox::setCaretRow(const int row)
 {
     mCaretRow = row;
 
-    const int sz = static_cast<int>(mTextRows.size());
+    const int sz = CAST_S32(mTextRows.size());
     if (mCaretRow >= sz)
         mCaretRow = sz - 1;
 
@@ -553,7 +553,7 @@ unsigned int TextBox::getCaretPosition() const
     int pos = 0, row;
 
     for (row = 0; row < mCaretRow; row++)
-        pos += static_cast<int>(mTextRows[row].size());
+        pos += CAST_S32(mTextRows[row].size());
 
     return pos + mCaretColumn;
 }
@@ -562,7 +562,7 @@ void TextBox::setCaretColumn(const int column)
 {
     mCaretColumn = column;
 
-    const int sz = static_cast<int>(mTextRows[mCaretRow].size());
+    const int sz = CAST_S32(mTextRows[mCaretRow].size());
     if (mCaretColumn > sz)
         mCaretColumn = sz;
 
@@ -605,7 +605,7 @@ void TextBox::mousePressed(MouseEvent& event)
         event.consume();
         mCaretRow = event.getY() / height;
 
-        const int sz = static_cast<int>(mTextRows.size());
+        const int sz = CAST_S32(mTextRows.size());
         if (mCaretRow >= sz)
             mCaretRow = sz - 1;
 
@@ -637,5 +637,5 @@ void TextBox::adjustSize()
     }
 
     setWidth(width + 1);
-    setHeight(font->getHeight() * static_cast<int>(mTextRows.size()));
+    setHeight(font->getHeight() * CAST_S32(mTextRows.size()));
 }

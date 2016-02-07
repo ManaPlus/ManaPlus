@@ -135,7 +135,7 @@ void SkillDialog::action(const ActionEvent &event)
         if (tab)
         {
             if (const SkillInfo *const info = tab->getSelectedInfo())
-                playerHandler->increaseSkill(static_cast<uint16_t>(info->id));
+                playerHandler->increaseSkill(CAST_U16(info->id));
         }
     }
     else if (eventId == "sel")
@@ -150,7 +150,7 @@ void SkillDialog::action(const ActionEvent &event)
                 mUseButton->setCaption(info->useButton);
                 mIncreaseButton->setEnabled(info->id < SKILL_VAR_MIN_ID);
                 const int num = itemShortcutWindow->getTabIndex();
-                if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS)
+                if (num >= 0 && num < CAST_S32(SHORTCUT_TABS)
                     && itemShortcut[num])
                 {
                     itemShortcut[num]->setItemSelected(
@@ -329,7 +329,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
                     if (!skill)
                     {
                         skill = new SkillInfo;
-                        skill->id = static_cast<unsigned int>(id);
+                        skill->id = CAST_U32(id);
                         skill->modifiable = Modifiable_false;
                         skill->model = model;
                         skill->update();
@@ -482,7 +482,7 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
     if (mDefaultModel)
     {
         SkillInfo *const skill = new SkillInfo;
-        skill->id = static_cast<unsigned int>(id);
+        skill->id = CAST_U32(id);
         skill->type = type;
         skill->owner = owner;
         SkillData *const data = skill->data;

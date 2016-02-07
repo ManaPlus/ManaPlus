@@ -496,10 +496,10 @@ Image *ScrollArea::getImageByState(Rect &dim, const BUTTON_DIR dir)
         case BUTTONS_DIR:
         default:
             logger->log("ScrollArea::drawButton unknown dir: "
-                        + toString(static_cast<unsigned>(dir)));
+                        + toString(CAST_U32(dir)));
             return nullptr;
     }
-    return buttons[static_cast<size_t>(dir)][state];
+    return buttons[CAST_SIZE(dir)][state];
 }
 
 void ScrollArea::drawButton(Graphics *const graphics,
@@ -790,12 +790,12 @@ void ScrollArea::mousePressed(MouseEvent& event)
         if (y < getVerticalMarkerDimension().y)
         {
             setVerticalScrollAmount(mVScroll
-                - static_cast<int>(getChildrenArea().height * 0.95));
+                - CAST_S32(getChildrenArea().height * 0.95));
         }
         else
         {
             setVerticalScrollAmount(mVScroll
-                + static_cast<int>(getChildrenArea().height * 0.95));
+                + CAST_S32(getChildrenArea().height * 0.95));
         }
         event.consume();
     }
@@ -811,12 +811,12 @@ void ScrollArea::mousePressed(MouseEvent& event)
         if (x < getHorizontalMarkerDimension().x)
         {
             setHorizontalScrollAmount(mHScroll
-                - static_cast<int>(getChildrenArea().width * 0.95));
+                - CAST_S32(getChildrenArea().width * 0.95));
         }
         else
         {
             setHorizontalScrollAmount(mHScroll
-                + static_cast<int>(getChildrenArea().width * 0.95));
+                + CAST_S32(getChildrenArea().width * 0.95));
         }
         event.consume();
     }

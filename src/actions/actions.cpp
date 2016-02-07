@@ -398,7 +398,7 @@ impHandler(shortcut)
     if (itemShortcutWindow)
     {
         const int num = itemShortcutWindow->getTabIndex();
-        if (num >= 0 && num < static_cast<int>(SHORTCUT_TABS))
+        if (num >= 0 && num < CAST_S32(SHORTCUT_TABS))
         {
             if (itemShortcut[num])
             {
@@ -1120,7 +1120,7 @@ impHandler0(cacheInfo)
     {
         if (!cache[f].size)
         {
-            const unsigned int sz = static_cast<int>(cache[f].size);
+            const unsigned int sz = CAST_S32(cache[f].size);
             all += sz;
             str.append(strprintf("%d: %u, ", f, sz));
         }
@@ -1683,7 +1683,7 @@ impHandler0(testInfo)
 {
     if (actorManager)
     {
-        logger->log("actors count: %d", static_cast<int>(
+        logger->log("actors count: %d", CAST_S32(
             actorManager->size()));
         return true;
     }

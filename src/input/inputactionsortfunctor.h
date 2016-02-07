@@ -31,8 +31,8 @@ class InputActionSortFunctor final
         bool operator() (const InputActionT key1,
                          const InputActionT key2) const
         {
-            return keys[static_cast<size_t>(key1)].priority
-                >= keys[static_cast<size_t>(key2)].priority;
+            return keys[CAST_SIZE(key1)].priority
+                >= keys[CAST_SIZE(key2)].priority;
         }
 
         const InputActionData *keys A_NONNULLPOINTER;

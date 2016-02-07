@@ -47,12 +47,12 @@
 #include "debug.h"
 
 #define for_each_cursors() \
-    for (int size = static_cast<int>(TargetCursorSize::SMALL); \
-         size < static_cast<int>(TargetCursorSize::NUM_TC); \
+    for (int size = CAST_S32(TargetCursorSize::SMALL); \
+         size < CAST_S32(TargetCursorSize::NUM_TC); \
          size ++) \
     { \
-        for (int type = static_cast<int>(TargetCursorType::NORMAL); \
-             type < static_cast<int>(TargetCursorType::NUM_TCT); \
+        for (int type = CAST_S32(TargetCursorType::NORMAL); \
+             type < CAST_S32(TargetCursorType::NUM_TCT); \
              type ++) \
 
 #define end_foreach }
@@ -60,8 +60,8 @@
 static const unsigned int STATUS_EFFECTS = 32;
 
 AnimatedSprite *ActorSprite::targetCursor
-    [static_cast<size_t>(TargetCursorType::NUM_TCT)]
-    [static_cast<size_t>(TargetCursorSize::NUM_TC)];
+    [CAST_SIZE(TargetCursorType::NUM_TCT)]
+    [CAST_SIZE(TargetCursorSize::NUM_TC)];
 bool ActorSprite::loaded = false;
 
 ActorSprite::ActorSprite(const BeingId id) :
@@ -163,19 +163,19 @@ void ActorSprite::setTargetType(const TargetCursorTypeT type)
     }
     else
     {
-        const size_t sz = static_cast<size_t>(getTargetCursorSize());
-        mUsedTargetCursor = targetCursor[static_cast<int>(type)][sz];
+        const size_t sz = CAST_SIZE(getTargetCursorSize());
+        mUsedTargetCursor = targetCursor[CAST_S32(type)][sz];
         if (mUsedTargetCursor)
         {
-            static const int targetWidths[static_cast<size_t>(
+            static const int targetWidths[CAST_SIZE(
                 TargetCursorSize::NUM_TC)]
                 = {0, 0, 0};
-            static const int targetHeights[static_cast<size_t>(
+            static const int targetHeights[CAST_SIZE(
                 TargetCursorSize::NUM_TC)]
                 = {-mapTileSize / 2, -mapTileSize / 2, -mapTileSize};
 
-            mCursorPaddingX = static_cast<int>(targetWidths[sz]);
-            mCursorPaddingY = static_cast<int>(targetHeights[sz]);
+            mCursorPaddingX = CAST_S32(targetWidths[sz]);
+            mCursorPaddingY = CAST_S32(targetHeights[sz]);
         }
     }
 }
@@ -219,7 +219,7 @@ void ActorSprite::setStatusEffectBlock(const int offset,
             const std::string str = strprintf(
                 "Error: unknown effect by block-index. "
                 "Offset: %d, effect int: %d, i: %u",
-                offset, static_cast<int>(newEffects), i);
+                offset, CAST_S32(newEffects), i);
             logger->log(str);
             DebugMessageListener::distributeEvent(str);
         }

@@ -83,7 +83,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("speechBubbleAlpha", 1.0F);
     AddDEF("MostUsedServerName0", "server.themanaworld.org");
     AddDEF("visiblenames", true);
-    AddDEF("speech", static_cast<int>(BeingSpeech::NO_NAME_IN_BUBBLE));
+    AddDEF("speech", CAST_S32(BeingSpeech::NO_NAME_IN_BUBBLE));
     AddDEF("showgender", true);
     AddDEF("showlevel", false);
     AddDEF("showMonstersTakedDamage", true);
@@ -325,25 +325,25 @@ DefaultsData* getConfigDefaults()
     AddDEF("selfMouseHeal", true);
     AddDEF("serverslistupdate", "");
     AddDEF("fadeoutmusic", true);
-    AddDEF("screenActionKeyboard", static_cast<int>(
+    AddDEF("screenActionKeyboard", CAST_S32(
         InputAction::SHOW_KEYBOARD));
-    AddDEF("screenActionButton0", static_cast<int>(InputAction::TALK));
-    AddDEF("screenActionButton1", static_cast<int>(
+    AddDEF("screenActionButton0", CAST_S32(InputAction::TALK));
+    AddDEF("screenActionButton1", CAST_S32(
         InputAction::TARGET_ATTACK));
-    AddDEF("screenActionButton2", static_cast<int>(InputAction::PICKUP));
-    AddDEF("screenActionButton3", static_cast<int>(InputAction::STOP_SIT));
-    AddDEF("screenActionButton4", static_cast<int>(InputAction::TARGET_NPC));
-    AddDEF("screenActionButton5", static_cast<int>(
+    AddDEF("screenActionButton2", CAST_S32(InputAction::PICKUP));
+    AddDEF("screenActionButton3", CAST_S32(InputAction::STOP_SIT));
+    AddDEF("screenActionButton4", CAST_S32(InputAction::TARGET_NPC));
+    AddDEF("screenActionButton5", CAST_S32(
         InputAction::WINDOW_STATUS));
-    AddDEF("screenActionButton6", static_cast<int>(
+    AddDEF("screenActionButton6", CAST_S32(
         InputAction::WINDOW_INVENTORY));
-    AddDEF("screenActionButton7", static_cast<int>(InputAction::WINDOW_SKILL));
-    AddDEF("screenActionButton8", static_cast<int>(
+    AddDEF("screenActionButton7", CAST_S32(InputAction::WINDOW_SKILL));
+    AddDEF("screenActionButton8", CAST_S32(
         InputAction::WINDOW_SOCIAL));
-    AddDEF("screenActionButton9", static_cast<int>(InputAction::WINDOW_DEBUG));
-    AddDEF("screenActionButton10", static_cast<int>(
+    AddDEF("screenActionButton9", CAST_S32(InputAction::WINDOW_DEBUG));
+    AddDEF("screenActionButton10", CAST_S32(
         InputAction::CHANGE_TRADE));
-    AddDEF("screenActionButton11", static_cast<int>(InputAction::DIRECT_DOWN));
+    AddDEF("screenActionButton11", CAST_S32(InputAction::DIRECT_DOWN));
     AddDEF("screenButtonsFormat", 0);
     AddDEF("autoresizeminimaps", false);
     AddDEF("showGuildOnline", false);

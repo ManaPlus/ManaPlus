@@ -24,15 +24,15 @@
 
 int operator&(const UpdateTypeT &a, const UpdateTypeT &b)
 {
-    return static_cast<int>(a) & static_cast<int>(b);
+    return CAST_S32(a) & CAST_S32(b);
 }
 
 int operator|(const UpdateTypeT &a, const UpdateTypeT &b)
 {
-    return static_cast<int>(a) | static_cast<int>(b);
+    return CAST_S32(a) | CAST_S32(b);
 }
 
 int operator|(const int &a, const UpdateTypeT &b)
 {
-    return a | static_cast<int>(b);
+    return a | CAST_S32(b);
 }

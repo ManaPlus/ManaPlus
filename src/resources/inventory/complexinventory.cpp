@@ -47,7 +47,7 @@ bool ComplexInventory::addVirtualItem(const Item *const item,
     if (!item || PlayerInfo::isItemProtected(item->getId()))
         return false;
 
-    if (index >= 0 && index < static_cast<int>(mSize))
+    if (index >= 0 && index < CAST_S32(mSize))
     {
         ComplexItem *citem = nullptr;
         if (mItems[index] != nullptr)
@@ -126,7 +126,7 @@ void ComplexInventory::setItem(const int index,
                                const Equipm equipment,
                                const Equipped equipped)
 {
-    if (index < 0 || index >= static_cast<int>(mSize))
+    if (index < 0 || index >= CAST_S32(mSize))
     {
         logger->log("Warning: invalid inventory index: %d", index);
         return;
