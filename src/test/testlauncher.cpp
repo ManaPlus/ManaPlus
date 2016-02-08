@@ -469,6 +469,7 @@ int TestLauncher::testDye()
 
 int TestLauncher::testDyeSpeed()
 {
+#if defined __linux__ || defined __linux
     const int sz = 100000;
     uint32_t buf[sz];
     timespec time1;
@@ -479,7 +480,6 @@ int TestLauncher::testDyeSpeed()
     for (int f = 0; f < sz; f ++)
         buf[f] = f;
 
-#if defined __linux__ || defined __linux
     clock_gettime(CLOCK_MONOTONIC, &time1);
 
     for (int f = 0; f < 1000; f ++)
