@@ -245,7 +245,8 @@ class ChatWindow final : public Window,
 
         void saveState() const;
 
-        bool saveTab(const int num, ChatTab *const tab) const;
+        bool saveTab(const int num,
+                     const ChatTab *const tab) const;
 
         void loadCustomList();
 

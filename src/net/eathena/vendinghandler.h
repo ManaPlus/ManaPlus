@@ -47,7 +47,8 @@ class VendingHandler final : public Net::VendingHandler
 
         void createShop(const std::string &name,
                         const bool flag,
-                        std::vector<ShopItem*> &items) const override final;
+                        const std::vector<ShopItem*> &items) const
+                        override final;
 };
 
 }  // namespace EAthena

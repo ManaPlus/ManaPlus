@@ -142,7 +142,7 @@ class ChatTab notfinal : public Tab
         ChatTabType::Type getType() const A_WARN_UNUSED
         { return mType; }
 
-        void saveToLogFile(std::string msg) const;
+        void saveToLogFile(const std::string &msg) const;
 
         const std::list<std::string> &getRows() const A_WARN_UNUSED
         { return mTextOutput->getRows(); }

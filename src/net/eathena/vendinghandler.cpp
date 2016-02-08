@@ -91,7 +91,7 @@ void VendingHandler::buy2(const Being *const being,
 
 void VendingHandler::createShop(const std::string &name,
                                 const bool flag,
-                                std::vector<ShopItem*> &items) const
+                                const std::vector<ShopItem*> &items) const
 {
     createOutPacket(CMSG_VENDING_CREATE_SHOP);
     outMsg.writeInt16(CAST_S16(85 + items.size() * 8), "len");

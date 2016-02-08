@@ -348,7 +348,7 @@ class Map final : public Properties, public ConfigListener
         void setWalkLayer(WalkLayer *restrict const layer) restrict2 noexcept
         { mWalkLayer = layer; }
 
-        void addHeights(MapHeights *restrict const heights) restrict2;
+        void addHeights(const MapHeights *restrict const heights) restrict2;
 
         uint8_t getHeightOffset(const int x, const int y) const restrict2;
 

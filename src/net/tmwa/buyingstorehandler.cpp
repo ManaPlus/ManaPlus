@@ -35,7 +35,7 @@ BuyingStoreHandler::BuyingStoreHandler()
 void BuyingStoreHandler::create(const std::string &name A_UNUSED,
                                 const int maxMoney A_UNUSED,
                                 const bool flag A_UNUSED,
-                                std::vector<ShopItem*> &items A_UNUSED) const
+                                const std::vector<ShopItem*> &items A_UNUSED) const
 {
 }
 

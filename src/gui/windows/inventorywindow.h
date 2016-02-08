@@ -125,7 +125,7 @@ class InventoryWindow final : public Window,
          */
         void close() override final;
 
-        void slotsChanged(Inventory *const inventory) override final;
+        void slotsChanged(const Inventory *const inventory) override final;
 
         bool isMainInventory() const A_WARN_UNUSED
         { return mInventory ? mInventory->isMainInventory() : false; }

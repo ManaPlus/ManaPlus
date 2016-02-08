@@ -55,7 +55,7 @@ class VendingHandler notfinal
 
         virtual void createShop(const std::string &name,
                                 const bool flag,
-                                std::vector<ShopItem*> &items) const = 0;
+                                const std::vector<ShopItem*> &items) const = 0;
 };
 
 }  // namespace Net

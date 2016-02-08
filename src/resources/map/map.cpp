@@ -1566,7 +1566,7 @@ void Map::reduce() restrict2
 #endif
 }
 
-void Map::addHeights(MapHeights *restrict const heights) restrict2
+void Map::addHeights(const MapHeights *restrict const heights) restrict2
 {
     delete mHeights;
     mHeights = heights;

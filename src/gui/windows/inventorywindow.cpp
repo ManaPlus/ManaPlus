@@ -868,7 +868,7 @@ void InventoryWindow::updateWeight()
         Units::formatWeight(max).c_str()));
 }
 
-void InventoryWindow::slotsChanged(Inventory *const inventory)
+void InventoryWindow::slotsChanged(const Inventory *const inventory)
 {
     if (inventory == mInventory)
     {

@@ -64,14 +64,14 @@ void MarketHandler::buyItem(const int itemId,
     }
 }
 
-void MarketHandler::buyItems(std::vector<ShopItem*> &items) const
+void MarketHandler::buyItems(const std::vector<ShopItem*> &items) const
 {
     int cnt = 0;
     const int pairSize = 6;
 
-    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
-        ShopItem *const item = *it;
+        const ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
         const int type = item->getType();
         if (!usedQuantity)
@@ -87,7 +87,7 @@ void MarketHandler::buyItems(std::vector<ShopItem*> &items) const
 
     createOutPacket(CMSG_NPC_MARKET_BUY);
     outMsg.writeInt16(CAST_S16(4 + pairSize * cnt), "len");
-    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();

@@ -48,7 +48,7 @@ class MarketHandler notfinal
                              const ItemColor color,
                              const int amount) const = 0;
 
-        virtual void buyItems(std::vector<ShopItem*> &items) const = 0;
+        virtual void buyItems(const std::vector<ShopItem*> &items) const = 0;
 };
 
 }  // namespace Net

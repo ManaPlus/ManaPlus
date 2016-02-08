@@ -1937,7 +1937,8 @@ void ChatWindow::saveState() const
     }
 }
 
-bool ChatWindow::saveTab(const int num, ChatTab *const tab) const
+bool ChatWindow::saveTab(const int num,
+                         const ChatTab *const tab) const
 {
     if (!tab)
         return false;

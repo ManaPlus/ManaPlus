@@ -83,7 +83,7 @@ class MiniStatusWindow final : public Window,
 
         void updateBars();
 
-        void slotsChanged(Inventory *const inventory) override final;
+        void slotsChanged(const Inventory *const inventory) override final;
 
         std::vector <ProgressBar*> &getBars() A_WARN_UNUSED
         { return mBars; }

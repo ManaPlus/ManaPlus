@@ -108,13 +108,17 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showPopup(const int x, const int y, MapItem *const mapItem);
 
-        void showItemPopup(const int x, const int y, Item *const item);
+        void showItemPopup(const int x,
+                           const int y,
+                           const Item *const item);
 
         void showItemPopup(const int x, const int y,
                            const int itemId,
                            const ItemColor color);
 
-        void showDropPopup(const int x, const int y, Item *const item);
+        void showDropPopup(const int x,
+                           const int y,
+                           const Item *const item);
 
         void showOutfitsWindowPopup(const int x, const int y);
 
@@ -204,7 +208,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addNormalRelations();
 
-        void addWindowMenu(Window *const window);
+        void addWindowMenu(const Window *const window);
 
 #ifdef EATHENA_SUPPORT
         void addChat(const Being *const being);

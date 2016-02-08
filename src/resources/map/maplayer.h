@@ -141,10 +141,10 @@ class MapLayer final: public ConfigListener
         bool isFringeLayer() const restrict noexcept A_WARN_UNUSED
         { return mIsFringeLayer; }
 
-        void setSpecialLayer(SpecialLayer *restrict const val) restrict
+        void setSpecialLayer(const SpecialLayer *restrict const val) restrict
         { mSpecialLayer = val; }
 
-        void setTempLayer(SpecialLayer *restrict const val) restrict
+        void setTempLayer(const SpecialLayer *restrict const val) restrict
         { mTempLayer = val; }
 
         int getWidth() const restrict noexcept A_WARN_UNUSED

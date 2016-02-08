@@ -37,6 +37,6 @@
  */
 bool retrieveBuffer(std::string& text, size_t& pos) A_WARN_UNUSED;
 
-bool sendBuffer(std::string& text);
+bool sendBuffer(const std::string &restrict text);
 
 #endif  // UTILS_COPYNPASTE_H

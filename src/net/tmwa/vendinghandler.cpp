@@ -55,7 +55,8 @@ void VendingHandler::buy2(const Being *const being A_UNUSED,
 
 void VendingHandler::createShop(const std::string &name A_UNUSED,
                                 const bool flag A_UNUSED,
-                                std::vector<ShopItem*> &items A_UNUSED) const
+                                const std::vector<ShopItem*> &items A_UNUSED)
+                                const
 {
 }
 

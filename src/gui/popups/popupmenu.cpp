@@ -989,7 +989,7 @@ void PopupMenu::showWindowPopup(Window *const window)
     showPopup(mX, mY);
 }
 
-void PopupMenu::addWindowMenu(Window *const window)
+void PopupMenu::addWindowMenu(const Window *const window)
 {
     if (!window)
         return;
@@ -1756,7 +1756,7 @@ void PopupMenu::showItemPopup(const int x, const int y,
 }
 
 void PopupMenu::showItemPopup(const int x, const int y,
-                              Item *const item)
+                              const Item *const item)
 {
     mX = x;
     mY = y;
@@ -1810,7 +1810,9 @@ void PopupMenu::showItemPopup(const int x, const int y,
     showPopup(x, y);
 }
 
-void PopupMenu::showDropPopup(const int x, const int y, Item *const item)
+void PopupMenu::showDropPopup(const int x,
+                              const int y,
+                              const Item *const item)
 {
     mX = x;
     mY = y;

@@ -33,7 +33,7 @@ class InventoryListener notfinal
         virtual ~InventoryListener()
         { }
 
-        virtual void slotsChanged(Inventory *const inventory) = 0;
+        virtual void slotsChanged(const Inventory *const inventory) = 0;
 
     protected:
         InventoryListener()

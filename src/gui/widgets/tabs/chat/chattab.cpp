@@ -442,7 +442,7 @@ bool ChatTab::handleCommands(const std::string &type, const std::string &args)
     return handleCommand(type, args);
 }
 
-void ChatTab::saveToLogFile(std::string msg) const
+void ChatTab::saveToLogFile(const std::string &msg) const
 {
     if (chatLogger)
     {

@@ -45,7 +45,7 @@ BuyingStoreHandler::BuyingStoreHandler()
 void BuyingStoreHandler::create(const std::string &name,
                                 const int maxMoney,
                                 const bool flag,
-                                std::vector<ShopItem*> &items) const
+                                const std::vector<ShopItem*> &items) const
 {
     createOutPacket(CMSG_BUYINGSTORE_CREATE);
     outMsg.writeInt16(CAST_S16(89 + items.size() * 8), "len");

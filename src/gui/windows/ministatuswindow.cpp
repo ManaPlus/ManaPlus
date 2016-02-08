@@ -535,7 +535,7 @@ void MiniStatusWindow::saveBars() const
     config.setValue("ministatussaved", true);
 }
 
-void MiniStatusWindow::slotsChanged(Inventory *const inventory)
+void MiniStatusWindow::slotsChanged(const Inventory *const inventory)
 {
     if (!inventory)
         return;

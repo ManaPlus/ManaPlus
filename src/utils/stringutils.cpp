@@ -876,8 +876,8 @@ bool parse2Str(const std::string &args, std::string &str1, std::string &str2)
     {
         if (pos + 1 < args.length())
         {
-            str1 = args.substr(0, pos).c_str();
-            str2 = args.substr(pos + 1, args.length()).c_str();
+            str1 = args.substr(0, pos);
+            str2 = args.substr(pos + 1, args.length());
             isValid = true;
         }
     }

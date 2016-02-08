@@ -59,7 +59,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     return false;
 }
 
-bool sendBuffer(std::string& text)
+bool sendBuffer(const std::string &restrict text)
 {
     return !SDL_SetClipboardText(text.c_str());
 }
@@ -120,7 +120,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     return ret;
 }
 
-bool sendBuffer(std::string& text)
+bool sendBuffer(const std::string &restrict text)
 {
     const int wCharsLen = MultiByteToWideChar(CP_UTF8,
         0, text.c_str(), -1, nullptr, 0);
@@ -293,7 +293,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     }
 }
 
-bool sendBuffer(std::string& text)
+bool sendBuffer(const std::string &restrict text)
 {
     return false;
 }
@@ -402,17 +402,17 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     return false;
 }
 
-static bool runxsel(std::string& text, const char *p1,
+static bool runxsel(const std::string &text, const char *p1,
                     const char *p2 = nullptr);
 
-bool sendBuffer(std::string& text)
+bool sendBuffer(const std::string &restrict text)
 {
     runxsel(text, "-i");
     runxsel(text, "-b", "-i");
     return true;
 }
 
-static bool runxsel(std::string& text, const char *p1, const char *p2)
+static bool runxsel(const std::string &text, const char *p1, const char *p2)
 {
     pid_t pid;
     int fd[2];
@@ -484,7 +484,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
     return true;
 }
 
-bool sendBuffer(std::string& text)
+bool sendBuffer(const std::string &restrict text)
 {
     naclPostMessage("clipboard-copy", text);
     return true;
@@ -495,7 +495,7 @@ bool retrieveBuffer(std::string&, size_t&)
     return false;
 }
 
-bool sendBuffer(std::string& text A_UNUSED)
+bool sendBuffer(const std::string &restrict text A_UNUSED)
 {
     return false;
 }

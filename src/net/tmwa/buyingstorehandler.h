@@ -38,7 +38,7 @@ class BuyingStoreHandler final : public Net::BuyingStoreHandler
         void create(const std::string &name,
                     const int maxMoney,
                     const bool flag,
-                    std::vector<ShopItem*> &items) const override final
+                    const std::vector<ShopItem*> &items) const override final
                     A_CONST;
 
         void close() const override final A_CONST;

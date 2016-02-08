@@ -46,7 +46,7 @@ class BuyingStoreHandler notfinal
         virtual void create(const std::string &name,
                             const int maxMoney,
                             const bool flag,
-                            std::vector<ShopItem*> &items) const = 0;
+                            const std::vector<ShopItem*> &items) const = 0;
 
         virtual void close() const = 0;
 

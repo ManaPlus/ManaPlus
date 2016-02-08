@@ -40,7 +40,8 @@ class MarketHandler final : public Net::MarketHandler
                      const ItemColor color,
                      const int amount) const override final;
 
-        void buyItems(std::vector<ShopItem*> &items) const override final;
+        void buyItems(const std::vector<ShopItem*> &items) const
+                      override final;
 };
 
 }  // namespace EAthena
