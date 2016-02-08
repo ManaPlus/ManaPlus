@@ -38,7 +38,7 @@ class TextChunkSmall final
 
         bool operator==(const TextChunkSmall &restrict chunk) const restrict2;
         bool operator<(const TextChunkSmall &restrict chunk) const restrict2;
-
+        void operator=(const TextChunkSmall &restrict chunk) restrict2;
         std::string text;
         Color color;
         Color color2;

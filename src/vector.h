@@ -72,6 +72,13 @@ class Vector final
             return x == 0.0F && y == 0.0F && z == 0.0F;
         }
 
+        void operator=(const Vector &v)
+        {
+            x = v.x;
+            y = v.y;
+            z = v.z;
+        }
+
         /**
          * Scale vector operator.
          */

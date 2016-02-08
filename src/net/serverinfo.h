@@ -89,6 +89,24 @@ class ServerInfo final
             version.second = info.version.second;
         }
 
+        void operator=(const ServerInfo &info)
+        {
+            type = info.type;
+            name = info.name;
+            hostname = info.hostname;
+            althostname = info.althostname;
+            description = info.description;
+            registerUrl = info.registerUrl;
+            onlineListUrl = info.onlineListUrl;
+            supportUrl = info.supportUrl;
+            updateMirrors = info.updateMirrors;
+            port = info.port;
+            save = info.save;
+            persistentIp = info.persistentIp;
+            version.first = info.version.first;
+            version.second = info.version.second;
+        }
+
         bool isValid() const A_WARN_UNUSED
         {
             return !(hostname.empty()

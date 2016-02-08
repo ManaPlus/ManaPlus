@@ -40,6 +40,13 @@ TextChunkSmall::TextChunkSmall(const TextChunkSmall &old) :
 {
 }
 
+void TextChunkSmall::operator=(const TextChunkSmall &chunk)
+{
+    text = chunk.text;
+    color = chunk.color;
+    color2 = chunk.color2;
+}
+
 bool TextChunkSmall::operator==(const TextChunkSmall &chunk) const
 {
     return (chunk.text == text && chunk.color == color
