@@ -155,7 +155,10 @@ void Minimap::setMap(const Map *const map)
                 | BlockMask::WATER);
 
             for (int ptr = 0; ptr < size; ptr ++)
-                *(data ++) = -!(map->mMetaTiles[ptr].blockmask & mask);
+            {
+                *(data ++) = (map->mMetaTiles[ptr].blockmask & mask) ?
+                    0x0 : 0x00ffffff;
+            }
 
             SDL_UnlockSurface(surface);
 
