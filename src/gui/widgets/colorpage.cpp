@@ -34,7 +34,6 @@ ColorPage::ColorPage(const Widget2 *const widget,
     ListBox(widget, listModel, skin)
 {
     mItemPadding = mSkin ? mSkin->getOption("itemPadding") : 1;
-    mRowHeight = 13;
     const Font *const font = getFont();
     mRowHeight = CAST_U32(font->getHeight() +
         2 * mItemPadding);

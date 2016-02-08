@@ -1026,8 +1026,8 @@ bool ShopWindow::checkFloodCounter(int &counterTime)
         counterTime = cur_time;
     else if (counterTime + 10 > cur_time)
         return false;
-
-    counterTime = cur_time;
+    else
+        counterTime = cur_time;
     return true;
 }
 
