@@ -78,7 +78,8 @@ InputManager::InputManager() :
     mNewKeyIndex(InputAction::NO_VALUE),
     mMask(1),
     mNameMap(),
-    mChatMap()
+    mChatMap(),
+    mKey()
 {
 }
 

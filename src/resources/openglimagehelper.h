@@ -59,7 +59,8 @@ class OpenGLImageHelper final : public ImageHelper
 
     public:
         OpenGLImageHelper() :
-            mFreeTextureIndex(0)
+            mFreeTextureIndex(0U),
+            mTextures()
         {
         }
 

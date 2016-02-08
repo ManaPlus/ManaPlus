@@ -59,7 +59,8 @@ class SafeOpenGLImageHelper final : public ImageHelper
 
     public:
         SafeOpenGLImageHelper() :
-            mFreeTextureIndex(0)
+            mFreeTextureIndex(0U),
+            mTextures()
         {
         }
 
