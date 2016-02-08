@@ -511,8 +511,7 @@ bool isItemProtected(const int id)
 #ifdef EATHENA_SUPPORT
 void setMercenary(MercenaryInfo *const info)
 {
-    if (mMercenary)
-        delete mMercenary;
+    delete mMercenary;
     mMercenary = info;
 }
 
@@ -533,8 +532,7 @@ MercenaryInfo *getMercenary()
 
 void setPet(PetInfo *const info)
 {
-    if (mPet)
-        delete mPet;
+    delete mPet;
     mPet = info;
 }
 
@@ -563,8 +561,7 @@ BeingId getPetBeingId()
 
 void setHomunculus(HomunculusInfo *const info)
 {
-    if (mHomunculus)
-        delete mHomunculus;
+    delete mHomunculus;
     mHomunculus = info;
 }
 
