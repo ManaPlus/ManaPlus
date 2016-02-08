@@ -315,7 +315,7 @@ class Being notfinal : public ActorSprite,
 
         void updateSprite(const unsigned int slot,
                           const int id,
-                          std::string color = "",
+                          const std::string &restrict color = "",
                           const ItemColor colorId = ItemColor_one,
                           const bool isWeapon = false,
                           const bool isTempSprite = false) restrict2;
@@ -939,7 +939,7 @@ class Being notfinal : public ActorSprite,
         unsigned int getSpiritBalls() const restrict2 noexcept A_WARN_UNUSED
         { return mSpiritBalls; }
 
-        void setPostDelay(const bool b) override final;
+        void stopCast(const bool b) override final;
 #endif
 
         void setKarma(const int karma) restrict2 noexcept

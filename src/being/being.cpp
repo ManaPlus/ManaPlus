@@ -2432,7 +2432,7 @@ void Being::updateColors()
 
 void Being::updateSprite(const unsigned int slot,
                          const int id,
-                         std::string color,
+                         const std::string &restrict color,
                          const ItemColor colorId,
                          const bool isWeapon,
                          const bool isTempSprite) restrict2
@@ -4349,7 +4349,7 @@ void Being::removeSpiritBalls(const unsigned int balls) restrict2
     }
 }
 
-void Being::setPostDelay(const bool b)
+void Being::stopCast(const bool b)
 {
     if (b && mAction == BeingAction::CAST)
         setAction(BeingAction::STAND, 0);

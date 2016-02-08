@@ -209,6 +209,8 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
         logger->log("Action: %d/%d", bskill, success);
     }
 
+    if (localPlayer)
+        localPlayer->stopCast(true);
     std::string txt;
     if (success == CAST_S32(SKILL_FAILED) && bskill != 0)
     {

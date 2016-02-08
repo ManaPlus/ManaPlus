@@ -250,7 +250,7 @@ void ActorSprite::updateStatusEffect(const int index, const Enable newStatus)
     else if (effect->isTrickDead())
         setTrickDead(newStatus == Enable_true);
     else if (effect->isPostDelay())
-        setPostDelay(newStatus == Enable_true);
+        stopCast(newStatus == Enable_true);
 #endif
     handleStatusEffect(effect, index);
 }

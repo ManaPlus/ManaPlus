@@ -188,7 +188,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         const std::set<int> &getStatusEffects() const A_WARN_UNUSED
         { return mStatusEffects; }
 
-        virtual void setPostDelay(const bool b A_UNUSED)
+        virtual void stopCast(const bool b A_UNUSED)
         { }
 
     protected:
