@@ -745,95 +745,92 @@ void SkillDialog::useSkill(const SkillInfo *const info,
         if (!cmd.empty())
             SpellManager::invokeCommand(cmd, localPlayer->getTarget());
     }
-    if (localPlayer)
+    switch (info->type)
     {
-        switch (info->type)
+        case SkillType::Attack:
         {
-            case SkillType::Attack:
+            const Being *being = localPlayer->getTarget();
+            if (!being && autoTarget == AutoTarget_true)
             {
-                const Being *being = localPlayer->getTarget();
-                if (!being && autoTarget == AutoTarget_true)
-                {
-                    being = localPlayer->setNewTarget(ActorType::Monster,
-                        AllowSort_true);
-                }
-                if (being)
-                {
-                    skillHandler->useBeing(info->id,
-                        level,
-                        being->getId());
-                }
-                break;
+                being = localPlayer->setNewTarget(ActorType::Monster,
+                    AllowSort_true);
             }
-            case SkillType::Support:
+            if (being)
             {
-                const Being *being = localPlayer->getTarget();
-                if (!being)
-                    being = localPlayer;
-                if (being)
-                {
-                    skillHandler->useBeing(info->id,
-                        level,
-                        being->getId());
-                }
-                break;
-            }
-            case SkillType::Self:
                 skillHandler->useBeing(info->id,
                     level,
-                    localPlayer->getId());
-                break;
-
-            case SkillType::Ground:
+                    being->getId());
+            }
+            break;
+        }
+        case SkillType::Support:
+        {
+            const Being *being = localPlayer->getTarget();
+            if (!being)
+                being = localPlayer;
+            if (being)
             {
-                int x = 0;
-                int y = 0;
-                viewport->getMouseTile(x, y);
-                if (info->useTextParameter)
-                {
-                    if (withText)
-                    {
-                        skillHandler->usePos(info->id,
-                            level,
-                            x, y,
-                            text);
-                    }
-                    else
-                    {
-                        textSkillListener.setSkill(info->id,
-                            x,
-                            y,
-                            level);
-                        TextDialog *const dialog = CREATEWIDGETR(TextDialog,
-                            // TRANSLATORS: text skill dialog header
-                            strprintf(_("Add text to skill %s"),
-                            data->name.c_str()),
-                            // TRANSLATORS: text skill dialog field
-                            _("Text: "));
-                        dialog->setModal(Modal_true);
-                        textSkillListener.setDialog(dialog);
-                        dialog->setActionEventId("ok");
-                        dialog->addActionListener(&textSkillListener);
-                    }
-                }
-                else
+                skillHandler->useBeing(info->id,
+                    level,
+                    being->getId());
+            }
+            break;
+        }
+        case SkillType::Self:
+            skillHandler->useBeing(info->id,
+                level,
+                localPlayer->getId());
+            break;
+
+        case SkillType::Ground:
+        {
+            int x = 0;
+            int y = 0;
+            viewport->getMouseTile(x, y);
+            if (info->useTextParameter)
+            {
+                if (withText)
                 {
                     skillHandler->usePos(info->id,
                         level,
-                        x, y);
+                        x, y,
+                        text);
                 }
-                break;
+                else
+                {
+                    textSkillListener.setSkill(info->id,
+                        x,
+                        y,
+                        level);
+                    TextDialog *const dialog = CREATEWIDGETR(TextDialog,
+                        // TRANSLATORS: text skill dialog header
+                        strprintf(_("Add text to skill %s"),
+                        data->name.c_str()),
+                        // TRANSLATORS: text skill dialog field
+                        _("Text: "));
+                    dialog->setModal(Modal_true);
+                    textSkillListener.setDialog(dialog);
+                    dialog->setActionEventId("ok");
+                    dialog->addActionListener(&textSkillListener);
+                }
             }
-
-            case SkillType::TargetTrap:
-                // for now unused
-                break;
-
-            case SkillType::Unknown:
-            case SkillType::Unused:
-            default:
-                break;
+            else
+            {
+                skillHandler->usePos(info->id,
+                    level,
+                    x, y);
+            }
+            break;
         }
+
+        case SkillType::TargetTrap:
+            // for now unused
+            break;
+
+        case SkillType::Unknown:
+        case SkillType::Unused:
+        default:
+            break;
     }
 }
 

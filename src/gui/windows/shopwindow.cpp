@@ -270,10 +270,10 @@ void ShopWindow::action(const ActionEvent &event)
     {
         if (isBuySelected)
         {
-            if (mBuyShopItems && mBuyShopItems->getNumberOfElements() > 0)
+            if (mBuyShopItems->getNumberOfElements() > 0)
                 announce(mBuyShopItems, BUY);
         }
-        else if (mSellShopItems && mSellShopItems->getNumberOfElements() > 0)
+        else if (mSellShopItems->getNumberOfElements() > 0)
         {
             announce(mSellShopItems, SELL);
         }
@@ -493,7 +493,7 @@ void ShopWindow::setVisible(Visible visible)
 void ShopWindow::addBuyItem(const Item *const item, const int amount,
                             const int price)
 {
-    if (!mBuyShopItems || !item)
+    if (!item)
         return;
     const bool emp = isShopEmpty();
     mBuyShopItems->addItemNoDup(item->getId(),
@@ -510,7 +510,7 @@ void ShopWindow::addBuyItem(const Item *const item, const int amount,
 void ShopWindow::addSellItem(const Item *const item, const int amount,
                              const int price)
 {
-    if (!mBuyShopItems || !item)
+    if (!item)
         return;
     const bool emp = isShopEmpty();
     mSellShopItems->addItemNoDup(item->getId(),
@@ -526,9 +526,6 @@ void ShopWindow::addSellItem(const Item *const item, const int amount,
 
 void ShopWindow::loadList()
 {
-    if (!mBuyShopItems || !mSellShopItems)
-        return;
-
     std::ifstream shopFile;
     struct stat statbuf;
 
@@ -562,12 +559,12 @@ void ShopWindow::loadList()
                 if (tokens.size() == 5 && tokens[0])
                 {
                     // +++ need impliment colors?
-                    if (tokens[1] && tokens[2] && mBuyShopItems)
+                    if (tokens[1] && tokens[2])
                     {
                         mBuyShopItems->addItem(
                             tokens[0], 0, ItemColor_one, tokens[1], tokens[2]);
                     }
-                    if (tokens[3] && tokens[4] && mSellShopItems)
+                    if (tokens[3] && tokens[4])
                     {
                         mSellShopItems->addItem(
                             tokens[0], 0, ItemColor_one, tokens[3], tokens[4]);
@@ -581,9 +578,6 @@ void ShopWindow::loadList()
 
 void ShopWindow::saveList() const
 {
-    if (!mBuyShopItems || !mSellShopItems)
-        return;
-
     std::ofstream shopFile;
     const std::string shopListName = settings.serverConfigDir
         + "/shoplist.txt";
@@ -1045,17 +1039,9 @@ bool ShopWindow::findShopItem(const ShopItem *const shopItem,
 
     std::vector<ShopItem*> items;
     if (mode == SELL)
-    {
-        if (!mSellShopItems)
-            return false;
         items = mSellShopItems->items();
-    }
     else
-    {
-        if (!mBuyShopItems)
-            return false;
         items = mBuyShopItems->items();
-    }
 
     FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
@@ -1095,8 +1081,6 @@ int ShopWindow::sumAmount(const Item *const shopItem)
 
 bool ShopWindow::isShopEmpty() const
 {
-    if (!mBuyShopItems || !mSellShopItems)
-        return true;
     if (mBuyShopItems->empty() && mSellShopItems->empty())
         return true;
     return false;

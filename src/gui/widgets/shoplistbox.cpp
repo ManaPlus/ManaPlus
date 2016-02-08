@@ -109,7 +109,7 @@ void ShopListBox::draw(Graphics *graphics)
         ShopItem *const item = mShopItems->at(i);
         if (item &&
             (item->getDisabled() ||
-            (mShopItems && mPlayerMoney < item->getPrice() && mPriceCheck) ||
+            (mPlayerMoney < item->getPrice() && mPriceCheck) ||
             (mProtectItems && PlayerInfo::isItemProtected(item->getId()))))
         {
             if (i != mSelected)

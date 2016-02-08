@@ -572,28 +572,32 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
         tradeWindow->isWindowVisible() &&
         inputManager.isActionActive(InputAction::STOP_ATTACK));
 
-    if (!mod && !mod2 && event.getButton() == MouseButton::RIGHT)
+    if (mInventory)
     {
-        Item *const item = mItems->getSelectedItem();
+        if (!mod && !mod2 && event.getButton() == MouseButton::RIGHT)
+        {
+            Item *const item = mItems->getSelectedItem();
 
-        if (!item)
-            return;
+            if (!item)
+                return;
 
-        /* Convert relative to the window coordinates to absolute screen
-         * coordinates.
-         */
-        const int mx = event.getX() + getX();
-        const int my = event.getY() + getY();
+            /* Convert relative to the window coordinates to absolute screen
+             * coordinates.
+             */
+            const int mx = event.getX() + getX();
+            const int my = event.getY() + getY();
 
-        if (popupMenu)
-            popupMenu->showPopup(this, mx, my, item, mInventory->getType());
+            if (popupMenu)
+                popupMenu->showPopup(this, mx, my, item, mInventory->getType());
+        }
+    }
+    else
+    {
+        return;
     }
 
-    if (!mInventory)
-        return;
-
-    if (event.getButton() == MouseButton::LEFT
-        || event.getButton() == MouseButton::RIGHT)
+    if (event.getButton() == MouseButton::LEFT ||
+        event.getButton() == MouseButton::RIGHT)
     {
         Item *const item = mItems->getSelectedItem();
 

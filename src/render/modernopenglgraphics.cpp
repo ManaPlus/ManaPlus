@@ -175,7 +175,7 @@ void ModernOpenGLGraphics::postInit() restrict2
         logger->safeError("Shader creation error. See manaplus.log.");
     }
     mProgramId = mProgram->getProgramId();
-    if (!mProgram)
+    if (!mProgramId)
         logger->error("Shaders compilation error.");
 
     logger->log("Shaders compilation done.");
