@@ -91,6 +91,9 @@ class StatusEffect final
         bool isTrickDead() const A_WARN_UNUSED
         { return mIsTrickDead; }
 
+        bool isPostDelay() const A_WARN_UNUSED
+        { return mIsPostDelay; }
+
         /**
          * Retrieves a status effect.
          *
@@ -143,6 +146,7 @@ class StatusEffect final
         bool mIsCart;
         bool mIsRiding;
         bool mIsTrickDead;
+        bool mIsPostDelay;
 };
 
 #endif  // STATUSEFFECT_H

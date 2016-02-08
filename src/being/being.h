@@ -938,6 +938,8 @@ class Being notfinal : public ActorSprite,
 
         unsigned int getSpiritBalls() const restrict2 noexcept A_WARN_UNUSED
         { return mSpiritBalls; }
+
+        void setPostDelay(const bool b) override final;
 #endif
 
         void setKarma(const int karma) restrict2 noexcept

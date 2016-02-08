@@ -620,6 +620,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("cartEffectName", "cart");
     AddDEF("ridingEffectName", "riding");
     AddDEF("trickDeadEffectName", "trick dead");
+    AddDEF("postDelayName", "post delay");
     AddDEF("gmTabMinimalLevel", "2");
     AddDEF("team1badge", "team1.xml");
     AddDEF("team2badge", "team2.xml");

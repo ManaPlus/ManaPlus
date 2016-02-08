@@ -4349,4 +4349,9 @@ void Being::removeSpiritBalls(const unsigned int balls) restrict2
     }
 }
 
+void Being::setPostDelay(const bool b)
+{
+    if (b && mAction == BeingAction::CAST)
+        setAction(BeingAction::STAND, 0);
+}
 #endif

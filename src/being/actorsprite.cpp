@@ -242,12 +242,16 @@ void ActorSprite::updateStatusEffect(const int index, const Enable newStatus)
         return;
     if (effect->isPoison() && getType() == ActorType::Player)
         setPoison(newStatus == Enable_true);
+#ifdef EATHENA_SUPPORT
     else if (effect->isCart() && localPlayer == this)
         setHaveCart(newStatus == Enable_true);
     else if (effect->isRiding())
         setRiding(newStatus == Enable_true);
     else if (effect->isTrickDead())
         setTrickDead(newStatus == Enable_true);
+    else if (effect->isPostDelay())
+        setPostDelay(newStatus == Enable_true);
+#endif
     handleStatusEffect(effect, index);
 }
 
