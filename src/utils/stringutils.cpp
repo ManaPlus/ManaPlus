@@ -909,10 +909,10 @@ std::string removeToken(std::string &str, const std::string &token)
     return str;
 }
 
-std::string timeToStr(const int time)
+std::string timeToStr(const uint32_t time)
 {
     char buf[101];
-    const long tempTime = static_cast<long>(time);
+    const uint64_t tempTime = static_cast<uint64_t>(time);
     tm *const timeInfo = localtime(reinterpret_cast<const time_t*>(&tempTime));
     if (strftime(&buf[0], 100, "%Y-%m-%d_%H-%M-%S", timeInfo))
         return std::string(buf);
