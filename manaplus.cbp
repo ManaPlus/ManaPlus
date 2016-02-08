@@ -20,6 +20,7 @@
 					<Add option="-DUSE_MUMBLE" />
 					<Add option="-DTMWA_SUPPORT" />
 					<Add option="-DEATHENA_SUPPORT" />
+					<Add option="-DENABLE_LIBXML" />
 					<Add directory="src/" />
 					<Add directory="include" />
 					<Add directory="../winlibs/include/libxml2" />
@@ -253,6 +254,7 @@
 		<Unit filename="src/gui/windows/killstats.cpp" />
 		<Unit filename="src/gui/windows/editdialog.cpp" />
 		<Unit filename="src/gui/windows/chatwindow.cpp" />
+		<Unit filename="src/gui/windows/cutinwindow.cpp" />
 		<Unit filename="src/gui/windows/charcreatedialog.cpp" />
 		<Unit filename="src/gui/windows/insertcarddialog.cpp" />
 		<Unit filename="src/gui/windows/equipmentwindow.cpp" />
@@ -893,6 +895,7 @@
 		<Unit filename="src/gui/windows/changepassworddialog.h" />
 		<Unit filename="src/gui/windows/debugwindow.h" />
 		<Unit filename="src/gui/windows/editdialog.h" />
+		<Unit filename="src/gui/windows/cutinwindow.h" />
 		<Unit filename="src/gui/windows/maileditwindow.h" />
 		<Unit filename="src/gui/windows/bankwindow.h" />
 		<Unit filename="src/gui/windows/charcreatedialog.h" />
@@ -1240,6 +1243,7 @@
 		<Unit filename="src/enums/being/reachable.h" />
 		<Unit filename="src/enums/being/badgeindex.h" />
 		<Unit filename="src/enums/being/relation.h" />
+		<Unit filename="src/enums/cutin.h" />
 		<Unit filename="src/enums/input/inputgroup.h" />
 		<Unit filename="src/enums/input/inputaction.h" />
 		<Unit filename="src/enums/input/inputcondition.h" />
