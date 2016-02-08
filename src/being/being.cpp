@@ -792,7 +792,9 @@ void Being::takeDamage(Being *restrict const attacker,
             updatePercentHP();
             updateName();
         }
-        else if (mType == ActorType::Player && socialWindow && getName() != "")
+        else if (mType == ActorType::Player &&
+                 socialWindow &&
+                 !getName().empty())
         {
             socialWindow->updateAvatar(getName());
         }

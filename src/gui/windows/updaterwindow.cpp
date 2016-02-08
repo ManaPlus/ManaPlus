@@ -145,7 +145,7 @@ static std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
             thisFile.name = name;
             thisFile.hash = hash;
             thisFile.type = "data";
-            thisFile.group = "";
+            thisFile.group.clear();
             thisFile.required = true;
             thisFile.desc.clear();
 

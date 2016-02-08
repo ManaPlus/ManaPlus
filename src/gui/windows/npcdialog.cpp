@@ -489,7 +489,7 @@ void NpcDialog::action(const ActionEvent &event)
                     const int sz = mComplexInventory->getSize();
                     if (sz == 0)
                     {
-                        str = "";
+                        str.clear();
                     }
                     else
                     {
@@ -1385,7 +1385,7 @@ std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
     }
     else
     {
-        str = "";
+        str.clear();
     }
     return str;
 }

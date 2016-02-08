@@ -1587,7 +1587,7 @@ void ActorManager::getPlayerNames(StringVect &names,
         if ((being->getType() == ActorType::Player ||
             (being->getType() == ActorType::Npc &&
             npcNames == NpcNames_true)) &&
-            being->getName() != "")
+            !being->getName().empty())
         {
             names.push_back(being->getName());
         }
@@ -1610,7 +1610,7 @@ void ActorManager::getMobNames(StringVect &names) const
         }
 
         const Being *const being = static_cast<const Being*>(*it);
-        if (being->getType() == ActorType::Monster && being->getName() != "")
+        if (being->getType() == ActorType::Monster && !being->getName().empty())
             names.push_back(being->getName());
     }
 }
@@ -1630,7 +1630,7 @@ void ActorManager::updatePlayerNames() const
 
         Being *const being = static_cast<Being*>(*it);
         being->setGoodStatus(-1);
-        if (being->getType() == ActorType::Player && being->getName() != "")
+        if (being->getType() == ActorType::Player && !being->getName().empty())
             being->updateName();
     }
 }
@@ -1649,7 +1649,7 @@ void ActorManager::updatePlayerColors() const
         }
 
         Being *const being = static_cast<Being*>(*it);
-        if (being->getType() == ActorType::Player && being->getName() != "")
+        if (being->getType() == ActorType::Player && !being->getName().empty())
             being->updateColors();
     }
 }
@@ -1668,7 +1668,7 @@ void ActorManager::updatePlayerGuild() const
         }
 
         Being *const being = static_cast<Being*>(*it);
-        if (being->getType() == ActorType::Player && being->getName() != "")
+        if (being->getType() == ActorType::Player && !being->getName().empty())
             being->updateGuild();
     }
 }

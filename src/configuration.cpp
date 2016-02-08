@@ -925,7 +925,7 @@ void Configuration::removeOldKeys()
         mOptions.find(unusedKeys[2]) != mOptions.end())
     {
         int f = 0;
-        while (unusedKeys[f] != "")
+        while (!unusedKeys[f].empty())
         {
             deleteKey(unusedKeys[f]);
             logger->log("remove unused key: " + unusedKeys[f]);

@@ -55,7 +55,7 @@ Popup::Popup(const std::string &name,
 
     addWidgetListener(this);
 
-    if (skin == "")
+    if (skin.empty())
         skin = "popup.xml";
 
     if (theme)

@@ -507,7 +507,7 @@ void MiniStatusWindow::loadBars()
     {
         const std::string str = config.getValue(
             "ministatus" + toString(f), "");
-        if (str == "")
+        if (str.empty())
             continue;
         ProgressBar *const bar = mBarNames[str];
         if (!bar)

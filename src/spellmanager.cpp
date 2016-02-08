@@ -261,7 +261,7 @@ void SpellManager::load(const bool oldConfig)
     mSpells.clear();
     mSpellsVector.clear();
 
-    if (cfg->getValue("commandShortcutFlags0", "") == "")
+    if (cfg->getValue("commandShortcutFlags0", "").empty())
     {
         fillSpells();
         save();
@@ -315,7 +315,7 @@ void SpellManager::load(const bool oldConfig)
 
 #define setOrDel(str, method) \
     const std::string var##method = spell->method(); \
-    if (var##method != "") \
+    if (!var##method.empty()) \
         serverConfig.setValue(str + toString(i), var##method); \
     else \
         serverConfig.deleteKey(str + toString(i));
@@ -331,7 +331,8 @@ void SpellManager::save() const
             setOrDel("commandShortcutComment", getComment);
             setOrDel("commandShortcutSymbol", getSymbol);
             setOrDel("commandShortcutIcon", getIcon);
-            if (spell->getCommand() != "" && spell->getSymbol() != "")
+            if (!spell->getCommand().empty() &&
+                !spell->getSymbol().empty())
             {
 #ifdef TMWA_SUPPORT
                 serverConfig.setValue("commandShortcutFlags" + toString(i),

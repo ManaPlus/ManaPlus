@@ -195,7 +195,7 @@ void ScrollArea::init(std::string skinName)
         }
 
         // +++ here probably need move background from static
-        if (skinName == "")
+        if (skinName.empty())
             skinName = "scroll_background.xml";
         if (theme)
         {

@@ -357,7 +357,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
 
         SpriteDisplay display;
         display.image = image;
-        if (floor != "")
+        if (!floor.empty())
             display.floor = floor;
         else
             display.floor = image;
@@ -447,7 +447,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         }
         for (int f = 0; f < 3; f++)
         {
-            if (tags[f] != "")
+            if (!tags[f].empty())
             {
                 if (mTags.find(tags[f]) == mTags.end())
                 {
@@ -624,16 +624,18 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
             }
         }
 
-#define CHECK_PARAM(param, error_value) \
-        if (param == error_value) \
+#define CHECK_PARAM(param) \
+        if (param.empty()) \
+        { \
             logger->log("ItemDB: Missing " #param " attribute for item %i!", \
-                        id)
+                id); \
+        }
 
         if (id >= 0 && typeStr != "other")
         {
-            CHECK_PARAM(name, "");
-            CHECK_PARAM(description, "");
-            CHECK_PARAM(image, "");
+            CHECK_PARAM(name)
+            CHECK_PARAM(description)
+            CHECK_PARAM(image)
         }
 #undef CHECK_PARAM
     }

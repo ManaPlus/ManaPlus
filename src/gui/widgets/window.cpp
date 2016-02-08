@@ -174,7 +174,7 @@ Window::Window(const std::string &caption,
     setPadding(3);
     setTitleBarHeight(20);
 
-    if (skin == "")
+    if (skin.empty())
         skin = "window.xml";
 
     int childPalette = 1;

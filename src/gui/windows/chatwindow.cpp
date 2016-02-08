@@ -801,7 +801,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
                 mChatInput->getText().length()));
     }
     else if (actionId == InputAction::GUI_INSERT &&
-             mChatInput->getText() != "")
+             !mChatInput->getText().empty())
     {
         // Add the current message to the history and clear the text
         if (mHistory.empty() || mChatInput->getText() != mHistory.back())
@@ -1505,7 +1505,7 @@ std::string ChatWindow::autoCompleteHistory(const std::string &partName) const
             f++;
 
         line = line.substr(0, f);
-        if (line != "")
+        if (!line.empty())
             nameList.push_back(line);
 
         ++i;

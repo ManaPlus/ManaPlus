@@ -378,7 +378,7 @@ void WindowMenu::loadButtons()
 {
     if (!mSmallWindow)
     {
-        if (config.getValue("windowmenu0", "") == "")
+        if (config.getValue("windowmenu0", "").empty())
         {
             for (std::map <std::string, ButtonInfo*>::iterator
                  it = mButtonNames.begin(),

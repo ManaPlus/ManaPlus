@@ -174,14 +174,14 @@ void ChatLogger::writeTo(std::ofstream &file,
 void ChatLogger::setServerName(const std::string &serverName)
 {
     mServerName = serverName;
-    if (mServerName == "")
+    if (mServerName.empty())
         mServerName = config.getStringValue("MostUsedServerName0");
 
     if (mLogFile.is_open())
         mLogFile.close();
 
     secureName(mServerName);
-    if (mLogDir != "")
+    if (!mLogDir.empty())
     {
         const char *const name = (std::string(mLogDir).append(dirSeparator)
             .append(mServerName)).c_str();

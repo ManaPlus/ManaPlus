@@ -125,8 +125,11 @@ LoginDialog::LoginDialog(LoginData &data,
     }
     mUpdateHostText->adjustSize();
 
-    if (mPassField->getText().empty() && LoginDialog::savedPassword != "")
+    if (mPassField->getText().empty() &&
+        !LoginDialog::savedPassword.empty())
+    {
         mPassField->setText(LoginDialog::savedPassword);
+    }
 
     mUpdateTypeDropDown->setActionEventId("updatetype");
     mUpdateTypeDropDown->setSelected((mLoginData->updateType

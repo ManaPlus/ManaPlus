@@ -272,7 +272,7 @@ int Download::downloadThread(void *ptr)
         if (!d->mOptions.memoryWrite)
             outFilename = d->mFileName + ".part";
         else
-            outFilename = "";
+            outFilename.clear();
     }
 
     while (!d->mUrlQueue.empty())

@@ -315,7 +315,7 @@ void RadioButton::mouseDragged(MouseEvent& event)
 
 void RadioButton::setGroup(const std::string &group)
 {
-    if (mGroup != "")
+    if (!mGroup.empty())
     {
         for (GroupIterator iter = mGroupMap.lower_bound(mGroup),
              iterEnd = mGroupMap.upper_bound(mGroup);

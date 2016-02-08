@@ -99,7 +99,7 @@ void ChatHandler::sendRaw(const std::string &args) const
     std::string str;
     MessageOut *outMsg = nullptr;
 
-    if (line == "")
+    if (line.empty())
         return;
 
     size_t pos = line.find(" ");
@@ -129,7 +129,7 @@ void ChatHandler::sendRaw(const std::string &args) const
         line = line.substr(pos + 1);
         pos = line.find(" ");
     }
-    if (line != "")
+    if (!line.empty())
         processRaw(*outMsg, line);
     delete outMsg;
 }

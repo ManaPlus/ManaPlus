@@ -983,7 +983,7 @@ static int readProgressType(const std::string &type)
 
 void Theme::loadColors(std::string file)
 {
-    if (file == "")
+    if (file.empty())
         file = "colors.xml";
     else
         file.append("/colors.xml");
