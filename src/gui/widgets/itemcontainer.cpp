@@ -208,8 +208,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mSelectionStatus(SEL_NONE),
     mForceQuantity(forceQuantity),
     mShowEmptyRows(showEmptyRows),
-    mDescItems(false),
-    mRedraw(true)
+    mDescItems(false)
 {
     setFocusable(true);
     addKeyListener(this);

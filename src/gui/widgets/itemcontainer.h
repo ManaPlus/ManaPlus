@@ -224,7 +224,6 @@ class ItemContainer final : public Widget,
         ForceQuantity mForceQuantity;
         ShowEmptyRows mShowEmptyRows;
         bool mDescItems;
-        bool mRedraw;
 };
 
 #endif  // GUI_WIDGETS_ITEMCONTAINER_H
