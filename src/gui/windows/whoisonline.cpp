@@ -373,7 +373,7 @@ void WhoIsOnline::loadWebList()
     mBrowserBox->clearRows();
     bool listStarted(false);
     std::string lineStr;
-    int numOnline(0);
+    size_t numOnline(0U);
 
     // Tokenize and add each line separately
     char *line = strtok(mMemoryBuffer, "\n");

@@ -54,7 +54,7 @@ int mkdir_r(const char *const pathname)
 
     const int len = CAST_S32(strlen(tmp));
 
-    if (len < 1)
+    if (len < 1 || len >= INT_MAX)
         return -1;
 
     // terminate the pathname with '/'
