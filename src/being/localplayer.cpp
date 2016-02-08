@@ -763,9 +763,13 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     const int dist_x = target->getTileX() - mX;
     const int dist_y = target->getTileY() - mY;
 
-    // Must be standing or sitting to attack
-    if (mAction != BeingAction::STAND && mAction != BeingAction::SIT)
+    // Must be standing or sitting or casting to attack
+    if (mAction != BeingAction::STAND &&
+        mAction != BeingAction::SIT &&
+        mAction != BeingAction::CAST)
+    {
         return;
+    }
 
     if (!serverFeatures->haveAttackDirections())
     {
