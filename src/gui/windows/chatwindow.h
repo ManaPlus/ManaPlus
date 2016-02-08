@@ -368,7 +368,7 @@ class ChatWindow final : public Window,
 
         void initTradeFilter();
 
-        int mRainbowColor;
+        unsigned int mRainbowColor;
 
         void debugMessage(const std::string &msg) override final;
 

@@ -92,7 +92,7 @@ ChatWindow::ChatWindow() :
     mItemLinkHandler(new ItemLinkHandler),
     mChatTabs(CREATEWIDGETR(TabbedArea, this)),
     mChatInput(new ChatInput(this)),
-    mRainbowColor(0),
+    mRainbowColor(0U),
     mWhispers(),
     mChannels(),
     mHistory(),
@@ -1307,8 +1307,8 @@ void ChatWindow::postConnection()
             else if (ch > 0xc0 || ch < 0x80) \
             { \
                 newMsg += "##" + toString(fun) + msg.at(f); \
-                if (mRainbowColor > 9) \
-                    mRainbowColor = 0; \
+                if (mRainbowColor > 9U) \
+                    mRainbowColor = 0U; \
             } \
             else \
             { \
