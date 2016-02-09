@@ -441,6 +441,8 @@ SRC += events/actionevent.h \
 	      utils/mathutils.h \
 	      utils/mkdir.cpp \
 	      utils/mkdir.h \
+	      utils/paramerers.cpp \
+	      utils/paramerers.h \
 	      utils/paths.cpp \
 	      utils/paths.h \
 	      utils/perfomance.cpp \
@@ -1725,6 +1727,7 @@ manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      enums/enums_unittest.cc \
+	      utils/paramerers_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/xmlutils_unittest.cc \
 	      utils/mathutils_unittest.cc \
