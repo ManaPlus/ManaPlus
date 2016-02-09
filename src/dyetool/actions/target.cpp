@@ -33,6 +33,7 @@ impHandlerVoid(targetClosestMonster)
 impHandlerVoid(targetNPC)
 impHandlerVoid(targetMercenary)
 impHandlerVoid(targetPet)
+impHandlerVoid(targetSkillUnit)
 impHandlerVoid(contextMenu)
 
 }  // namespace Actions

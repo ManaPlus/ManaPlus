@@ -625,6 +625,7 @@ enumStart(InputAction)
     RESET_MODIFIERS,
     BAR_TO_CHAT,
     SEEN,
+    TARGET_SKILL_UNIT,
     TOTAL
 }
 enumEnd(InputAction);

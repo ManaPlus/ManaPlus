@@ -452,7 +452,8 @@ bool Viewport::leftMouseAction()
             }
             else if (!stopAttack &&
                      (type == ActorType::Monster ||
-                     type == ActorType::Npc))
+                     type == ActorType::Npc ||
+                     type == ActorType::SkillUnit))
             {
                 if ((localPlayer->withinAttackRange(mHoverBeing) ||
                     inputManager.isActionActive(InputAction::ATTACK)))

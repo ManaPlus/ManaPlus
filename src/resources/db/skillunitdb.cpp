@@ -101,9 +101,9 @@ void SkillUnitDb::loadXmlFile(const std::string &fileName)
             "name", _("skill")));
 
         currentInfo->setTargetSelection(XML::getBoolProperty(skillUnitNode,
-            "targetSelection", false));
+            "targetSelection", true));
 
-        BeingCommon::readBasicAttributes(currentInfo, skillUnitNode, "talk");
+        BeingCommon::readBasicAttributes(currentInfo, skillUnitNode, "attack");
 
         currentInfo->setDeadSortOffsetY(XML::getProperty(skillUnitNode,
             "deadSortOffsetY", 31));

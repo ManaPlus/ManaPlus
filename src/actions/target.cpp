@@ -67,6 +67,15 @@ impHandler0(targetMercenary)
 #endif
 }
 
+impHandler0(targetSkillUnit)
+{
+#ifdef EATHENA_SUPPORT
+    return setTarget(ActorType::SkillUnit, AllowSort_true);
+#else
+    return false;
+#endif
+}
+
 impHandler0(targetPet)
 {
 #ifdef EATHENA_SUPPORT

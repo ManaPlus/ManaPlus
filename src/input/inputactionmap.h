@@ -5239,6 +5239,12 @@ static const InputActionData inputActionData
         "seen|lastseen",
         UseArgs_true,
         Protected_true},
+    {"keyTargetSkillUnit",
+        defaultAction(&Actions::targetSkillUnit),
+        InputCondition::INGAME | InputCondition::NOTARGET,
+        "targetskillunit|targetskill",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction

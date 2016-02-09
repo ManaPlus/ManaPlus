@@ -133,6 +133,12 @@ SetupActionData setupActionDataBasic[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Target skill unit"),
+        InputAction::TARGET_SKILL_UNIT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Change targeting type"),
         InputAction::CHANGE_TARGETING_TYPE,
         "",

@@ -699,9 +699,11 @@ void Being::takeDamage(Being *restrict const attacker,
     }
     else if (mType == ActorType::Monster
 #ifdef EATHENA_SUPPORT
-             || mType == ActorType::Mercenary
-             || mType == ActorType::Pet
-             || mType == ActorType::Homunculus
+             ||
+             mType == ActorType::Mercenary ||
+             mType == ActorType::Pet ||
+             mType == ActorType::Homunculus ||
+             mType == ActorType::SkillUnit
 #endif
     )
     {
