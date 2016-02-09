@@ -15,6 +15,7 @@ SET (FILES
     colors.xml
     complete_icon.xml
     connection.xml
+    cutin.xml
     dbutton.xml
     dbutton_image.xml
     desktop.xml

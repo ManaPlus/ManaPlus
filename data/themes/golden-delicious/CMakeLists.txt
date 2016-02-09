@@ -15,6 +15,7 @@ SET (FILES
     circle-on.xml
     colors.xml
     complete_icon.xml
+    cutin.xml
     dbutton.xml
     desktop.xml
     didyouknow.xml

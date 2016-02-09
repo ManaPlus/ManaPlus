@@ -5,6 +5,7 @@ gui_DATA =				\
 	bubble.png			\
 	buy.xml			\
 	colors.xml		\
+	cutin.xml		\
 	equipment.xml		\
 	info.xml		\
 	inventory.xml		\

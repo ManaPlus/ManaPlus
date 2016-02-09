@@ -2,6 +2,7 @@ SET (FILES
     bubble.png
     buy.xml
     colors.xml
+    cutin.xml
     equipment.xml
     info.xml
     inventory.xml

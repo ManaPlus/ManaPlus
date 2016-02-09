@@ -4,6 +4,7 @@ guidir = $(pkgdatadir)/data/themes/wood
 gui_DATA =				\
 	buy.xml		\
 	colors.xml		\
+	cutin.xml		\
 	equipment.xml		\
 	info.xml		\
 	inventory.xml		\
