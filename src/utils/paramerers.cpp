@@ -103,7 +103,6 @@ bool splitParameters(StringVect &tokens,
                      const char quote)
 {
     size_t idx = findNextSplit(text, separator, quote);
-    std::string item;
 
     while (idx != std::string::npos)
     {
