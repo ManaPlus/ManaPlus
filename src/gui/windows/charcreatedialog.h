@@ -69,7 +69,7 @@ class CharCreateDialog final : public Window,
         void unlock();
 
         void setAttributes(const StringVect &labels,
-                           const int available,
+                           int available,
                            const int min, const int max);
 
         void setDefaultGender(const GenderT gender = Gender::FEMALE);

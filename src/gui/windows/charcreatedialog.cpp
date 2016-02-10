@@ -615,9 +615,21 @@ int CharCreateDialog::getDistributedPoints() const
 }
 
 void CharCreateDialog::setAttributes(const StringVect &labels,
-                                     const int available,
+                                     int available,
                                      const int min, const int max)
 {
+    size_t sz;
+
+    if (min == max || available == 0)
+    {
+        sz = 0U;
+        available = 0;
+    }
+    else
+    {
+        sz = labels.size();
+    }
+
     mMaxPoints = available;
 
     for (size_t i = 0; i < mAttributeLabel.size(); i++)
@@ -630,20 +642,19 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
         delete2(mAttributeValue[i])
     }
 
-    mAttributeLabel.resize(labels.size());
-    mAttributeSlider.resize(labels.size());
-    mAttributeValue.resize(labels.size());
+    mAttributeLabel.resize(sz);
+    mAttributeSlider.resize(sz);
+    mAttributeValue.resize(sz);
 
-    const int w = 480;
-    int h = 350;
-    int y = 89;
+    const uint32_t w = 480;
+    uint32_t h = 350;
+    uint32_t y = 89;
     if (serverFeatures->haveLookSelection() && mMinLook < mMaxLook)
         y += 29;
     if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
         y += 29;
 
-    for (unsigned i = 0, sz = CAST_U32(labels.size());
-         i < sz; i++)
+    for (size_t i = 0; i < sz; i++)
     {
         mAttributeLabel[i] = new Label(this, labels[i]);
         mAttributeLabel[i]->setWidth(70);
@@ -671,8 +682,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     }
     else
     {
-        h = y + labels.size() * 24 +
-            mAttributesLeft->getHeight() + getPadding();
+        h = y + sz * 24 + mAttributesLeft->getHeight() + getPadding();
     }
     if (serverFeatures->haveCreateCharGender() &&
         features.getIntValue("forceCharGender") == -1 &&
@@ -683,6 +693,14 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     }
     if (h < mMaxY)
         h = mMaxY;
+    if (serverFeatures->haveCreateCharGender())
+    {
+        const int forceGender = features.getIntValue("forceCharGender");
+        if (forceGender == -1 && h < 180)
+            h = 180;
+        else if (h < 120)
+            h = 120;
+    }
     h += mCreateButton->getHeight();
 
     setContentSize(w, h);
