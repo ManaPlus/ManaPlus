@@ -152,7 +152,7 @@ class CharCreateDialog final : public Window,
 
         int mHairStyle;
         int mHairColor;
-        int mMaxY;
+        uint32_t mMaxY;
 
         int mSlot;
 

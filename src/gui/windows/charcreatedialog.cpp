@@ -127,7 +127,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mMaxRace(CharDB::getMaxRace()),
     mHairStyle(0),
     mHairColor(0),
-    mMaxY(0),
+    mMaxY(0U),
     mSlot(slot),
     mDefaultGender(Gender::FEMALE),
     mGender(Gender::UNSPECIFIED),
@@ -299,12 +299,12 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mNameField->setDimension(Rect(60, 2,
         300, mNameField->getHeight()));
 
-    const int labelPadding = getOption("labelPadding", 2);
-    const int leftX = 120 + mPadding;
-    const int rightX = 300 + mPadding;
-    const int labelX = mPadding;
-    int nameX = leftX + labelPadding;
-    int y = 30;
+    const uint32_t labelPadding = getOption("labelPadding", 2);
+    const uint32_t leftX = 120 + mPadding;
+    const uint32_t rightX = 300 + mPadding;
+    const uint32_t labelX = mPadding;
+    uint32_t nameX = leftX + labelPadding;
+    uint32_t y = 30;
     if (mPrevHairColorButton)
         nameX += mPrevHairColorButton->getWidth();
     else if (mPrevHairStyleButton)
