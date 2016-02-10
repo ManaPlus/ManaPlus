@@ -10092,6 +10092,7 @@ msgstr "Защита +25%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:694
+#, fuzzy
 msgid "Atk +100%."
 msgstr "Атака +100%."
 

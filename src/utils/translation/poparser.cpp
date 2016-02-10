@@ -37,7 +37,8 @@ PoParser::PoParser() :
     mMsgStr(),
     mDict(nullptr),
     mReadingId(false),
-    mReadingStr(false)
+    mReadingStr(false),
+    mSkipId(false)
 {
 }
 
@@ -163,11 +164,24 @@ bool PoParser::readMsgId()
         // check line start from msgid "
         if (strStartWith(mLine, msgId1))
         {
-            mReadingId = true;
-            const size_t msgId1Size = msgId1.size();
-            // reading text from: msgid "text"
-            mMsgId.append(mLine.substr(msgId1Size,
-                mLine.size() - 1 - msgId1Size));
+            if (!mSkipId)
+            {   // translation not fuzzed and can be processed
+                mReadingId = true;
+                const size_t msgId1Size = msgId1.size();
+                // reading text from: msgid "text"
+                mMsgId.append(mLine.substr(msgId1Size,
+                    mLine.size() - 1 - msgId1Size));
+            }
+            else
+            {   // skipped fuzzed translation. reset skip flag
+                mSkipId = false;
+            }
+            mLine.clear();
+            return true;
+        }
+        else if (mLine == "#, fuzzy")
+        {   // check for fuzzy translation
+            mSkipId = true;
             mLine.clear();
             return true;
         }

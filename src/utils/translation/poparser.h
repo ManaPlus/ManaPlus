@@ -80,6 +80,8 @@ class PoParser final
         bool mReadingId;
 
         bool mReadingStr;
+
+        bool mSkipId;
 };
 
 #endif  // UTILS_TRANSLATION_POPARSER_H

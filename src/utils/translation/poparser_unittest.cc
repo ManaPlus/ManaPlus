@@ -65,13 +65,29 @@ TEST_CASE("PoParser tests", "PoParser")
 
         REQUIRE(dict != nullptr);
         REQUIRE(dict->getMap() != nullptr);
-        REQUIRE(dict->getMap()->size() == 1787);
+        REQUIRE(dict->getMap()->size() == 1786);
         REQUIRE(dict->getStr("Unknown skill message.") ==
             "Неизвестная ошибка скилов.");
         REQUIRE(dict->getStr("Full strip failed because of coating.") ==
             "Full strip failed because of coating.");
         REQUIRE(dict->getStr("You picked up %d [@@%d|%s@@].") ==
             "Вы подняли %d [@@%d|%s@@].");
+
+        delete parser;
+        delete dict;
+    }
+
+    SECTION("PoParser fuzzy")
+    {
+        PoParser *parser = new PoParser;
+        PoDict *dict = parser->load("ru",
+            "test/test1",
+            nullptr);
+
+        REQUIRE(dict != nullptr);
+        REQUIRE(dict->getMap() != nullptr);
+        REQUIRE(dict->getMap()->size() == 1786);
+        REQUIRE(dict->getStr("Atk +100%.") == "Atk +100%.");
 
         delete parser;
         delete dict;
