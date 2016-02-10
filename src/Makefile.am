@@ -1727,12 +1727,12 @@ manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      enums/enums_unittest.cc \
-	      utils/paramerers_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/xmlutils_unittest.cc \
 	      utils/mathutils_unittest.cc \
-	      utils/stringutils_unittest.cc \
 	      utils/files_unittest.cc \
+	      utils/stringutils_unittest.cc \
+	      utils/paramerers_unittest.cc \
 	      resources/mstack_unittest.cc \
 	      utils/translation/poparser_unittest.cc \
 	      resources/sprite/animatedsprite_unittest.cc \

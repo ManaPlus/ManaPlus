@@ -27,7 +27,7 @@
 
 bool splitParameters(StringVect &tokens,
                      std::string text,
-                     const char separator,
+                     const std::string &separator,
                      const char quote);
 
 #endif  // UTILS_PARAMETERS_H

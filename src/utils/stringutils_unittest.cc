@@ -593,6 +593,19 @@ TEST_CASE("stringuntils isDigit")
     REQUIRE_FALSE(isDigit("12-34"));
 }
 
+TEST_CASE("stringuntils findAny")
+{
+    std::string str;
+
+    REQUIRE(findAny("test line", ",", 0) == std::string::npos);
+    REQUIRE(findAny("test line", " ", 0) == 4U);
+    REQUIRE(findAny("test, line", ", ", 0) == 4U);
+    REQUIRE(findAny("test ,line", ", ", 0) == 4U);
+    REQUIRE(findAny("test, line", " ,", 2) == 4U);
+    REQUIRE(findAny("test ,line", " ,", 3) == 4U);
+    REQUIRE(findAny("\"one\",,two, tree", ",", 5) == 5U);
+}
+
 TEST_CASE("stringuntils replaceItemLinks")
 {
     ItemDB::NamedItemInfos &infos = ItemDB::getNamedItemInfosTest();

@@ -31,22 +31,20 @@
 static inline void addToken(StringVect &tokens,
                             std::string str)
 {
-    const size_t sz = str.size();
-    std::string item;
+    std::string item = trim(str);
+    const size_t sz = item.size();
     if (sz > 1)
     {
         if (str[0] == '\"' &&
             str[sz - 1] == '\"' &&
             str[sz - 2] != '\\')
         {
-            str = str.substr(1, sz - 2);
-            item = trim(str);
+            item = item.substr(1, sz - 2);
             replaceAll(item, "\\\"", "\"");
             tokens.push_back(item);
             return;
         }
     }
-    item = trim(str);
     replaceAll(item, "\\\"", "\"");
     if (!item.empty())
         tokens.push_back(item);
@@ -57,15 +55,17 @@ static inline size_t findNextQuote(const std::string &str,
                                    const size_t pos)
 {
     size_t idx = str.find(quote, pos);
-    if (idx == std::string::npos)
-        return idx;
-    while (idx > 0 && str[idx - 1] == '\\')
+    while (idx > 0 &&
+           idx != std::string::npos &&
+           str[idx - 1] == '\\')
+    {
         idx = str.find(quote, idx + 1);
+    }
     return idx;
 }
 
-static inline size_t findNextSplit(std::string &str,
-                                   const char separator,
+static inline size_t findNextSplit(const std::string &str,
+                                   const std::string &separator,
                                    const char quote)
 {
     size_t pos = 0;
@@ -73,7 +73,7 @@ static inline size_t findNextSplit(std::string &str,
     while (true)
     {
         // search for next separator
-        idx1 = str.find(separator, pos);
+        idx1 = findAny(str, separator, pos);
         // search for next open quote, skipping escaped quotes
         size_t idx2 = findNextQuote(str, quote, pos);
         if (idx2 == std::string::npos)  // not quotes, return next separator
@@ -99,7 +99,7 @@ static inline size_t findNextSplit(std::string &str,
 
 bool splitParameters(StringVect &tokens,
                      std::string text,
-                     const char separator,
+                     const std::string &separator,
                      const char quote)
 {
     size_t idx = findNextSplit(text, separator, quote);

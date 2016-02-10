@@ -27,14 +27,14 @@
 TEST_CASE("parameters basic 1")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "", ',', '\"') == true);
+    REQUIRE(splitParameters(pars, "", ",", '\"') == true);
     REQUIRE(pars.size() == 0);
 }
 
 TEST_CASE("parameters basic 2")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "one,two, tree", ',', '\"') == true);
+    REQUIRE(splitParameters(pars, "one,two, tree", ",", '\"') == true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "one");
     REQUIRE(pars[1] == "two");
@@ -44,14 +44,14 @@ TEST_CASE("parameters basic 2")
 TEST_CASE("parameters basic 3")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, ", ,,,", ',', '\"') == true);
+    REQUIRE(splitParameters(pars, ", ,,,", ",", '\"') == true);
     REQUIRE(pars.size() == 0);
 }
 
 TEST_CASE("parameters basic 4")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "one,,two, tree", ',', '\"') == true);
+    REQUIRE(splitParameters(pars, "one,,two, tree", ",", '\"') == true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "one");
     REQUIRE(pars[1] == "two");
@@ -61,7 +61,7 @@ TEST_CASE("parameters basic 4")
 TEST_CASE("parameters escape 1")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\\\"", ',', '\"') == true);
+    REQUIRE(splitParameters(pars, "\\\"", ",", '\"') == true);
     REQUIRE(pars.size() == 1);
     REQUIRE(pars[0] == "\"");
 }
@@ -69,7 +69,7 @@ TEST_CASE("parameters escape 1")
 TEST_CASE("parameters escape 2")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\\\", test", ',', '\"') == true);
+    REQUIRE(splitParameters(pars, "\\\", test", ",", '\"') == true);
     REQUIRE(pars.size() == 2);
     REQUIRE(pars[0] == "\"");
     REQUIRE(pars[1] == "test");
@@ -78,7 +78,7 @@ TEST_CASE("parameters escape 2")
 TEST_CASE("parameters escape 3")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "test,\\\"", ',', '\"') == true);
+    REQUIRE(splitParameters(pars, "test,\\\"", ",", '\"') == true);
     REQUIRE(pars.size() == 2);
     REQUIRE(pars[0] == "test");
     REQUIRE(pars[1] == "\"");
@@ -87,7 +87,7 @@ TEST_CASE("parameters escape 3")
 TEST_CASE("parameters quote 1")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"one\",,two, tree", ',', '\"') == true);
+    REQUIRE(splitParameters(pars, "\"one\",,two, tree", ",", '\"') == true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "one");
     REQUIRE(pars[1] == "two");
@@ -97,7 +97,7 @@ TEST_CASE("parameters quote 1")
 TEST_CASE("parameters quote 2")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"\",,two, tree", ',', '\"') == true);
+    REQUIRE(splitParameters(pars, "\"\",,two, tree", ",", '\"') == true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "");
     REQUIRE(pars[1] == "two");
@@ -107,7 +107,7 @@ TEST_CASE("parameters quote 2")
 TEST_CASE("parameters quote 3")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"one test\",,two, tree", ',', '\"') ==
+    REQUIRE(splitParameters(pars, "\"one test\",,two, tree", ",", '\"') ==
         true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "one test");
@@ -118,7 +118,7 @@ TEST_CASE("parameters quote 3")
 TEST_CASE("parameters quote 4")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"\\\"one test\\\"\",,two, tree", ',', '\"')
+    REQUIRE(splitParameters(pars, "\"\\\"one test\\\"\",,two, tree", ",", '\"')
         == true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "\"one test\"");
@@ -129,8 +129,8 @@ TEST_CASE("parameters quote 4")
 TEST_CASE("parameters quote 5")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"\\\"one \\\"test\\\"\",,two, tree", ',', '\"')
-        == true);
+    REQUIRE(splitParameters(pars, "\"\\\"one \\\"test\\\"\",,two, tree",
+        ",", '\"') == true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "\"one \"test\"");
     REQUIRE(pars[1] == "two");
@@ -140,7 +140,7 @@ TEST_CASE("parameters quote 5")
 TEST_CASE("parameters quote 6")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"one, test\",,two, tree", ',', '\"')
+    REQUIRE(splitParameters(pars, "\"one, test\",,two, tree", ",", '\"')
         == true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "one, test");
@@ -151,8 +151,8 @@ TEST_CASE("parameters quote 6")
 TEST_CASE("parameters quote 7")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"\\\"one, test\\\"\",,two, tree", ',', '\"')
-        == true);
+    REQUIRE(splitParameters(pars, "\"\\\"one, test\\\"\",,two, tree",
+        ",", '\"') == true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "\"one, test\"");
     REQUIRE(pars[1] == "two");
@@ -162,7 +162,7 @@ TEST_CASE("parameters quote 7")
 TEST_CASE("parameters quote 8")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"\\\"\",,two, tree", ',', '\"')
+    REQUIRE(splitParameters(pars, "\"\\\"\",,two, tree", ",", '\"')
         == true);
     REQUIRE(pars.size() == 3);
     REQUIRE(pars[0] == "\"");
@@ -173,7 +173,7 @@ TEST_CASE("parameters quote 8")
 TEST_CASE("parameters quote 9")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"\\\",,two, tree", ',', '\"')
+    REQUIRE(splitParameters(pars, "\"\\\",,two, tree", ",", '\"')
         == true);
     REQUIRE(pars.size() == 1);
     REQUIRE(pars[0] == "\"\",,two, tree");
@@ -182,7 +182,7 @@ TEST_CASE("parameters quote 9")
 TEST_CASE("parameters quote 10")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\"", ',', '\"')
+    REQUIRE(splitParameters(pars, "\"", ",", '\"')
         == true);
     REQUIRE(pars.size() == 1);
     REQUIRE(pars[0] == "\"");
@@ -191,7 +191,7 @@ TEST_CASE("parameters quote 10")
 TEST_CASE("parameters quote 11")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\\\"", ',', '\"')
+    REQUIRE(splitParameters(pars, "\\\"", ",", '\"')
         == true);
     REQUIRE(pars.size() == 1);
     REQUIRE(pars[0] == "\"");
@@ -200,7 +200,7 @@ TEST_CASE("parameters quote 11")
 TEST_CASE("parameters quote 12")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, ",\"", ',', '\"')
+    REQUIRE(splitParameters(pars, ",\"", ",", '\"')
         == true);
     REQUIRE(pars.size() == 1);
     REQUIRE(pars[0] == "\"");
@@ -209,7 +209,7 @@ TEST_CASE("parameters quote 12")
 TEST_CASE("parameters quote 13")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\",", ',', '\"')
+    REQUIRE(splitParameters(pars, "\",", ",", '\"')
         == true);
     REQUIRE(pars.size() == 1);
     REQUIRE(pars[0] == "\",");
@@ -218,7 +218,7 @@ TEST_CASE("parameters quote 13")
 TEST_CASE("parameters quote 14")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, "\\\",", ',', '\"')
+    REQUIRE(splitParameters(pars, "\\\",", ",", '\"')
         == true);
     REQUIRE(pars.size() == 1);
     REQUIRE(pars[0] == "\"");
@@ -227,8 +227,101 @@ TEST_CASE("parameters quote 14")
 TEST_CASE("parameters quote 15")
 {
     StringVect pars;
-    REQUIRE(splitParameters(pars, ",\\\"", ',', '\"')
+    REQUIRE(splitParameters(pars, ",\\\"", ",", '\"')
         == true);
     REQUIRE(pars.size() == 1);
     REQUIRE(pars[0] == "\"");
+}
+
+TEST_CASE("parameters quote 16")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, "\"one test\"", ",", '\"') ==
+        true);
+    REQUIRE(pars.size() == 1);
+    REQUIRE(pars[0] == "one test");
+}
+
+TEST_CASE("parameters quote 17")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, "\"one, test\"", ",", '\"') ==
+        true);
+    REQUIRE(pars.size() == 1);
+    REQUIRE(pars[0] == "one, test");
+}
+
+TEST_CASE("parameters quote 18")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, "\"one\\\" test\"", ",", '\"') ==
+        true);
+    REQUIRE(pars.size() == 1);
+    REQUIRE(pars[0] == "one\" test");
+}
+
+TEST_CASE("parameters quote 19")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, "\"one\\\" ,test\"", ",", '\"') ==
+        true);
+    REQUIRE(pars.size() == 1);
+    REQUIRE(pars[0] == "one\" ,test");
+}
+
+TEST_CASE("parameters quote 20")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, "\"one\\\" test,\"", ",", '\"') ==
+        true);
+    REQUIRE(pars.size() == 1);
+    REQUIRE(pars[0] == "one\" test,");
+}
+
+TEST_CASE("parameters complex 1")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, "\"test\" \"line\"", ",", '\"') == true);
+    REQUIRE(pars.size() == 1);
+    REQUIRE(pars[0] == "test\" \"line");
+}
+
+TEST_CASE("parameters complex 2")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, "\"test\", \"line\"", ",", '\"') == true);
+    REQUIRE(pars.size() == 2);
+    REQUIRE(pars[0] == "test");
+    REQUIRE(pars[1] == "line");
+}
+
+TEST_CASE("parameters complex 3")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, "\"test,\" \"line\"", ",", '\"') == true);
+    REQUIRE(pars.size() == 1);
+    REQUIRE(pars[0] == "test,\" \"line");
+}
+
+TEST_CASE("parameters broken 1")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, "\"", ",", '\"') == true);
+    REQUIRE(pars.size() == 1);
+    REQUIRE(pars[0] == "\"");
+}
+
+TEST_CASE("parameters broken 2")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars, ",", ",", '\"') == true);
+    REQUIRE(pars.size() == 0);
+}
+
+TEST_CASE("parameters broken 3")
+{
+    StringVect pars;
+    REQUIRE(splitParameters(pars,
+        ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,", ",", '\"') == true);
+    REQUIRE(pars.size() == 0);
 }

@@ -210,6 +210,21 @@ size_t findI(std::string text, const StringVect &list)
     return std::string::npos;
 }
 
+size_t findAny(const std::string &restrict text,
+               const std::string &restrict chars,
+               const size_t pos)
+{
+    size_t idx = std::string::npos;
+    const size_t sz = chars.size();
+    for (size_t f = 0; f < sz; f ++)
+    {
+        const size_t idx2 = text.find(chars[f], pos);
+        if (idx2 != std::string::npos && idx2 < idx)
+            idx = idx2;
+    }
+    return idx;
+}
+
 namespace
 {
     unsigned int base = 94;
