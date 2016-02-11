@@ -52,7 +52,7 @@ public:
 
     void inline drawPatternInline(const Image *restrict const image,
                                   const int x, const int y,
-                                  const int w, const int h) restrict2;
+                                  const int w, const int h) restrict2 A_INLINE;
 
     void drawRescaledPattern(const Image *restrict const image,
                              const int x, const int y,
@@ -128,16 +128,21 @@ private:
     void inline calcImageRect(ImageVertexes *restrict const vert,
                               int x, int y,
                               int w, int h,
-                              const ImageRect &restrict imgRect) restrict2;
+                              const ImageRect &restrict imgRect)
+                              restrict2 A_INLINE;
 
     void inline calcPatternInline(ImageVertexes *restrict const vert,
                                   const Image *restrict const image,
-                                  const int x, const int y,
-                                  const int w, const int h) const restrict2;
+                                  const int x,
+                                  const int y,
+                                  const int w,
+                                  const int h) const restrict2 A_INLINE;
 
     void inline calcTileVertexesInline(ImageVertexes *restrict const vert,
                                        const Image *restrict const image,
-                                       int x, int y) const restrict2;
+                                       int x,
+                                       int y) const restrict2 A_INLINE;
 
     void inline drawImageInline(const Image *restrict const image,
-                                int dstX, int dstY) restrict2;
+                                int dstX,
+                                int dstY) restrict2 A_INLINE;

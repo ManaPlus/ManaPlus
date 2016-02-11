@@ -49,6 +49,6 @@ protected:
     void setTexturingAndBlending(const bool enable) restrict2;
 
 private:
-    void inline setColorAlpha(const float alpha) restrict2;
+    void inline setColorAlpha(const float alpha) restrict2 A_INLINE;
 
-    void inline restoreColor() restrict2;
+    void inline restoreColor() restrict2 A_INLINE;

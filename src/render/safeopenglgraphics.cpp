@@ -74,7 +74,7 @@ static inline void drawQuad(const Image *restrict image,
                             const int dstX,
                             const int dstY,
                             const int width,
-                            const int height) A_NONNULL(1);
+                            const int height) A_NONNULL(1) A_INLINE;
 
 static inline void drawQuad(const Image *restrict image,
                             const int srcX,
@@ -121,7 +121,8 @@ static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int dstX, const int dstY,
                                     const int width, const int height,
                                     const int desiredWidth,
-                                    const int desiredHeight) A_NONNULL(1);
+                                    const int desiredHeight)
+                                    A_NONNULL(1) A_INLINE;
 
 static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int srcX, const int srcY,

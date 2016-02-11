@@ -181,6 +181,10 @@ bool NormalOpenGLGraphics::setVideoMode(const int w, const int h,
 
 static inline void bindPointerIntFloat(const GLint *restrict const vert,
                                        const GLfloat *restrict const tex)
+                                       A_INLINE;
+
+static inline void bindPointerIntFloat(const GLint *restrict const vert,
+                                       const GLfloat *restrict const tex)
 {
     if (vertPtr != vert)
     {
@@ -189,6 +193,9 @@ static inline void bindPointerIntFloat(const GLint *restrict const vert,
         glTexCoordPointer(2, GL_FLOAT, 0, tex);
     }
 }
+
+static inline void bindPointerInt(const GLint *restrict const vert,
+                                  const GLint *restrict const tex) A_INLINE;
 
 static inline void bindPointerInt(const GLint *restrict const vert,
                                   const GLint *restrict const tex)
@@ -204,7 +211,8 @@ static inline void bindPointerInt(const GLint *restrict const vert,
 static inline void drawQuad(const Image *restrict const image,
                             const int srcX, const int srcY,
                             const int dstX, const int dstY,
-                            const int width, const int height) A_NONNULL(1);
+                            const int width, const int height)
+                            A_NONNULL(1) A_INLINE;
 
 static inline void drawQuad(const Image *restrict const image,
                             const int srcX, const int srcY,
@@ -273,7 +281,8 @@ static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int dstX, const int dstY,
                                     const int width, const int height,
                                     const int desiredWidth,
-                                    const int desiredHeight) A_NONNULL(1);
+                                    const int desiredHeight)
+                                    A_NONNULL(1) A_INLINE;
 
 static inline void drawRescaledQuad(const Image *restrict const image,
                                     const int srcX, const int srcY,

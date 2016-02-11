@@ -100,13 +100,13 @@ class Image notfinal : public Resource
         /**
          * Returns the width of the image.
          */
-        inline int getWidth() const A_WARN_UNUSED
+        inline int getWidth() const A_WARN_UNUSED A_INLINE
         { return mBounds.w; }
 
         /**
          * Returns the height of the image.
          */
-        inline int getHeight() const A_WARN_UNUSED
+        inline int getHeight() const A_WARN_UNUSED A_INLINE
         { return mBounds.h; }
 
         /**

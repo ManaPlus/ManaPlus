@@ -85,30 +85,35 @@ class ModernOpenGLGraphics final : public Graphics
     private:
         void deleteGLObjects() restrict2;
 
-        inline void drawQuad(const int srcX, const int srcY,
-                             const int dstX, const int dstY,
-                             const int width, const int height) restrict2;
+        inline void drawQuad(const int srcX,
+                             const int srcY,
+                             const int dstX,
+                             const int dstY,
+                             const int width,
+                             const int height) restrict2 A_INLINE;
 
         inline void drawRescaledQuad(const int srcX, const int srcY,
                                      const int dstX, const int dstY,
                                      const int width, const int height,
                                      const int desiredWidth,
-                                     const int desiredHeight) restrict2;
+                                     const int desiredHeight)
+                                     restrict2 A_INLINE;
 
-        inline void drawTriangleArray(const int size) restrict2;
+        inline void drawTriangleArray(const int size) restrict2 A_INLINE;
 
         inline void drawTriangleArray(const GLint *restrict const array,
-                                      const int size) restrict2;
+                                      const int size) restrict2 A_INLINE;
 
-        inline void drawLineArrays(const int size) restrict2;
+        inline void drawLineArrays(const int size) restrict2 A_INLINE;
 
-        inline void bindArrayBuffer(const GLuint vbo) restrict2;
+        inline void bindArrayBuffer(const GLuint vbo) restrict2 A_INLINE;
 
-        inline void bindArrayBufferAndAttributes(const GLuint vbo) restrict2;
+        inline void bindArrayBufferAndAttributes(const GLuint vbo)
+                                                 restrict2 A_INLINE;
 
-        inline void bindAttributes() restrict2;
+        inline void bindAttributes() restrict2 A_INLINE;
 
-        inline void bindElementBuffer(const GLuint ebo) restrict2;
+        inline void bindElementBuffer(const GLuint ebo) restrict2 A_INLINE;
 
         GLint *mIntArray A_NONNULLPOINTER;
         GLint *mIntArrayCached A_NONNULLPOINTER;

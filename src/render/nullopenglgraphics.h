@@ -55,22 +55,22 @@ class NullOpenGLGraphics final : public Graphics
 
         ~NullOpenGLGraphics();
 
-        inline void drawQuadArrayfi(const int size) restrict2;
+        inline void drawQuadArrayfi(const int size) restrict2 A_INLINE;
 
         inline void drawQuadArrayfi(const GLint *restrict const intVertArray,
                                     const GLfloat *restrict const
                                     floatTexArray,
-                                    const int size) restrict2;
+                                    const int size) restrict2 A_INLINE;
 
-        inline void drawQuadArrayii(const int size) restrict2;
+        inline void drawQuadArrayii(const int size) restrict2 A_INLINE;
 
         inline void drawQuadArrayii(const GLint *restrict const intVertArray,
                                     const GLint *restrict const intTexArray,
-                                    const int size) restrict2;
+                                    const int size) restrict2 A_INLINE;
 
-        inline void drawLineArrayi(const int size) restrict2;
+        inline void drawLineArrayi(const int size) restrict2 A_INLINE;
 
-        inline void drawLineArrayf(const int size) restrict2;
+        inline void drawLineArrayf(const int size) restrict2 A_INLINE;
 
         #include "render/graphicsdef.hpp"
 

@@ -85,31 +85,36 @@ class MobileOpenGL2Graphics final : public Graphics
     private:
         void deleteGLObjects() restrict2;
 
-        inline void drawQuad(const int srcX, const int srcY,
-                             const int dstX, const int dstY,
-                             const int width, const int height) restrict2;
+        inline void drawQuad(const int srcX,
+                             const int srcY,
+                             const int dstX,
+                             const int dstY,
+                             const int width,
+                             const int height) restrict2 A_INLINE;
 
         inline void drawRescaledQuad(const int srcX, const int srcY,
                                      const int dstX, const int dstY,
                                      const int width, const int height,
                                      const int desiredWidth,
-                                     const int desiredHeight) restrict2;
+                                     const int desiredHeight)
+                                     restrict2 A_INLINE;
 
-        inline void drawTriangleArray(const int size) restrict2;
+        inline void drawTriangleArray(const int size) restrict2 A_INLINE;
 
         inline void drawTriangleArray(const GLfloat *restrict const array,
-                                      const int size) restrict2;
+                                      const int size) restrict2 A_INLINE;
 
-        inline void drawLineArrays(const int size) restrict2;
+        inline void drawLineArrays(const int size) restrict2 A_INLINE;
 
-        inline void bindArrayBuffer(const GLuint vbo) restrict2;
+        inline void bindArrayBuffer(const GLuint vbo) restrict2 A_INLINE;
 
-        inline void bindArrayBufferAndAttributes(const GLuint vbo) restrict2;
+        inline void bindArrayBufferAndAttributes(const GLuint vbo)
+                                                 restrict2 A_INLINE;
 
-        inline void bindAttributes() restrict2;
+        inline void bindAttributes() restrict2 A_INLINE;
 
         static void bindTexture2(const GLenum target,
-                                 const Image *restrict const image);
+                                 const Image *restrict const image) A_INLINE;
 
         static GLuint mTextureSizeUniform;
         static int mTextureWidth;

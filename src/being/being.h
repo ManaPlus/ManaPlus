@@ -490,7 +490,7 @@ class Being notfinal : public ActorSprite,
          */
         inline void setPosition(const float x,
                                 const float y,
-                                const float z = 0.0F) restrict2
+                                const float z = 0.0F) restrict2 A_INLINE
         { setPosition(Vector(x, y, z)); }
 
         /**

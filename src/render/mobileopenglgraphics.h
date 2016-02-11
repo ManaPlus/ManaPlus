@@ -61,13 +61,14 @@ class MobileOpenGLGraphics final : public Graphics
                                         shortVertArray,
                                         const GLfloat *restrict const
                                         floatTexArray,
-                                        const int size) restrict2;
+                                        const int size) restrict2 A_INLINE;
 
-        inline void drawTriangleArrayfs(const int size) restrict2;
+        inline void drawTriangleArrayfs(const int size) restrict2 A_INLINE;
 
-        inline void drawTriangleArrayfsCached(const int size) restrict2;
+        inline void drawTriangleArrayfsCached(const int size)
+                                              restrict2 A_INLINE;
 
-        inline void drawLineArrays(const int size) restrict2;
+        inline void drawLineArrays(const int size) restrict2 A_INLINE;
 
         #include "render/graphicsdef.hpp"
 

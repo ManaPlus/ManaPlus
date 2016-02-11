@@ -22,7 +22,7 @@
 
 public:
     inline void drawVertexes(const OpenGLGraphicsVertexes &restrict ogl)
-                             restrict2;
+                             restrict2 A_INLINE;
 
     void initArrays(const int vertCount) restrict2 override final;
 
