@@ -104,9 +104,11 @@
 #ifndef ENABLE_CILKPLUS
 #define A_CONST __attribute__ ((const))
 #define A_PURE __attribute__ ((pure))
+#define A_INLINE __attribute__ ((always_inline))
 #else
 #define A_CONST
 #define A_PURE
+#define A_INLINE
 #endif
 
 #ifdef __INTEL_COMPILER
