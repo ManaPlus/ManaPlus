@@ -74,7 +74,6 @@ TouchManager::TouchManager() :
 TouchManager::~TouchManager()
 {
     clear();
-    delete2(mVertexes);
     CHECKLISTENERS
 }
 
@@ -191,6 +190,7 @@ void TouchManager::clear() restrict2
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
         unload(*it);
     mObjects.clear();
+    delete2(mVertexes);
     mRedraw = true;
 }
 

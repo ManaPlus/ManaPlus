@@ -628,6 +628,8 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting3");
 
+    touchManager.clear();
+
     graphicsManager.deleteRenderers();
 
     if (logger)
@@ -648,7 +650,6 @@ void Client::gameClear()
 
     ActorSprite::unload();
 
-    touchManager.clear();
     ResourceManager::deleteInstance();
 
     if (logger)
