@@ -27,7 +27,7 @@
 
 #include "debug.h"
 
-const int touchActionDataSize = 4;
+const int touchActionDataSize = 5;
 
 static class SortTouchActionFunctor final
 {

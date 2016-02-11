@@ -23,6 +23,7 @@
 #include "input/pages/basic.h"
 #include "input/pages/chat.h"
 #include "input/pages/other.h"
+#include "input/pages/shortcuts.h"
 #include "input/pages/windows.h"
 
 #include "debug.h"
@@ -32,5 +33,6 @@ SetupActionData *const touchActionData[] =
     setupActionDataBasic,
     setupActionDataWindows,
     setupActionDataChat,
-    setupActionDataOther
+    setupActionDataOther,
+    setupActionDataShortcuts
 };
