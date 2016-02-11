@@ -22,6 +22,8 @@
 
 #include "gui/widgets/itemlinkhandler.h"
 
+#include "logger.h"
+
 #include "itemcolormanager.h"
 
 #include "gui/viewport.h"
@@ -33,6 +35,8 @@
 
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/helpwindow.h"
+
+#include "input/inputmanager.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -57,84 +61,123 @@ ItemLinkHandler::~ItemLinkHandler()
 {
 }
 
+void ItemLinkHandler::handleCommandLink(const std::string &link)
+{
+    std::string cmd;
+    std::string args;
+
+    if (!parse2Str(link.substr(1), cmd, args))
+    {
+        cmd = link.substr(1);
+        args.clear();
+    }
+    inputManager.executeRemoteChatCommand(cmd, args, nullptr);
+}
+
+void ItemLinkHandler::handleHelpLink(const std::string &link)
+{
+    if (helpWindow)
+    {
+        helpWindow->loadHelp(link.substr(7));
+        helpWindow->requestMoveToTop();
+    }
+}
+
+void ItemLinkHandler::handleHttpLink(const std::string &link,
+                                     const MouseEvent *const event)
+{
+    if (!event)
+        return;
+    std::string url = link;
+    replaceAll(url, " ", "");
+    listener.url = url;
+    const MouseButtonT button = event->getButton();
+    if (button == MouseButton::LEFT)
+    {
+        ConfirmDialog *const confirmDlg = CREATEWIDGETR(ConfirmDialog,
+            // TRANSLATORS: dialog message
+            _("Open url"),
+            url,
+            SOUND_REQUEST,
+            false,
+            Modal_true);
+        confirmDlg->addActionListener(&listener);
+    }
+    else if (button == MouseButton::RIGHT)
+    {
+        if (popupMenu)
+            popupMenu->showLinkPopup(url);
+    }
+}
+
+void ItemLinkHandler::handleItemLink(const std::string &link)
+{
+    if (!itemPopup || link.empty())
+        return;
+
+    const char ch = link[0];
+    if (ch < '0' || ch > '9')
+        return;
+
+    std::vector<int> str;
+    splitToIntVector(str, link, ',');
+    if (str.empty())
+        return;
+
+    const int id = str[0];
+
+    if (id > 0)
+    {
+        str.erase(str.begin());
+        while (str.size() < maxCards)
+            str.push_back(0);
+        const ItemColor color =
+            ItemColorManager::getColorFromCards(&str[0]);
+
+        const ItemInfo &itemInfo = ItemDB::get(id);
+        itemPopup->setItem(itemInfo, color, true, -1, &str[0]);
+        if (itemPopup->isPopupVisible())
+        {
+            itemPopup->setVisible(Visible_false);
+        }
+        else if (viewport)
+        {
+            itemPopup->position(viewport->mMouseX,
+                viewport->mMouseY);
+        }
+    }
+}
+
+void ItemLinkHandler::handleSearchLink(const std::string &link)
+{
+    if (helpWindow)
+    {
+        helpWindow->search(link.substr(1));
+        helpWindow->requestMoveToTop();
+    }
+}
+
 void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
 {
+    logger->log("link: " + link);
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))
     {
-        if (!event)
-            return;
-        std::string url = link;
-        replaceAll(url, " ", "");
-        listener.url = url;
-        const MouseButtonT button = event->getButton();
-        if (button == MouseButton::LEFT)
-        {
-            ConfirmDialog *const confirmDlg = CREATEWIDGETR(ConfirmDialog,
-                // TRANSLATORS: dialog message
-                _("Open url"),
-                url,
-                SOUND_REQUEST,
-                false,
-                Modal_true);
-            confirmDlg->addActionListener(&listener);
-        }
-        else if (button == MouseButton::RIGHT)
-        {
-            if (popupMenu)
-                popupMenu->showLinkPopup(url);
-        }
+        handleHttpLink(link, event);
     }
     else if (!link.empty() && link[0] == '?')
     {
-        if (helpWindow)
-        {
-            helpWindow->search(link.substr(1));
-            helpWindow->requestMoveToTop();
-        }
+        handleSearchLink(link);
     }
     else if (strStartWith(link, "help://"))
     {
-        if (helpWindow)
-        {
-            helpWindow->loadHelp(link.substr(7));
-            helpWindow->requestMoveToTop();
-        }
+        handleHelpLink(link);
+    }
+    else if (strStartWith(link, "="))
+    {
+        handleCommandLink(link);
     }
     else
     {
-        if (!itemPopup || link.empty())
-            return;
-
-        const char ch = link[0];
-        if (ch < '0' || ch > '9')
-            return;
-
-        std::vector<int> str;
-        splitToIntVector(str, link, ',');
-        if (str.empty())
-            return;
-
-        const int id = str[0];
-
-        if (id > 0)
-        {
-            str.erase(str.begin());
-            while (str.size() < maxCards)
-                str.push_back(0);
-            const ItemColor color =
-                ItemColorManager::getColorFromCards(&str[0]);
-
-            const ItemInfo &itemInfo = ItemDB::get(id);
-            itemPopup->setItem(itemInfo, color, true, -1, &str[0]);
-            if (itemPopup->isPopupVisible())
-            {
-                itemPopup->setVisible(Visible_false);
-            }
-            else if (viewport)
-            {
-                itemPopup->position(viewport->mMouseX,
-                    viewport->mMouseY);
-            }
-        }
+        handleItemLink(link);
     }
 }

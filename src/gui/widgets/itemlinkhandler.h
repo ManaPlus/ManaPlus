@@ -38,6 +38,18 @@ class ItemLinkHandler final : public LinkHandler
 
         void handleLink(const std::string &link,
                         MouseEvent *event) override final;
+
+    private:
+        static void handleCommandLink(const std::string &link);
+
+        static void handleHelpLink(const std::string &link);
+
+        static void handleHttpLink(const std::string &link,
+                                   const MouseEvent *const event);
+
+        static void handleItemLink(const std::string &link);
+
+        static void handleSearchLink(const std::string &link);
 };
 
 #endif  // GUI_WIDGETS_ITEMLINKHANDLER_H
