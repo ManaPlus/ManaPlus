@@ -29,6 +29,8 @@
 #include "debug.h"
 
 static inline void addToken(StringVect &tokens,
+                            std::string str) A_INLINE;
+static inline void addToken(StringVect &tokens,
                             std::string str)
 {
     std::string item = trim(str);
@@ -52,6 +54,9 @@ static inline void addToken(StringVect &tokens,
 
 static inline size_t findNextQuote(const std::string &str,
                                    const char quote,
+                                   const size_t pos) A_INLINE;
+static inline size_t findNextQuote(const std::string &str,
+                                   const char quote,
                                    const size_t pos)
 {
     size_t idx = str.find(quote, pos);
@@ -64,6 +69,9 @@ static inline size_t findNextQuote(const std::string &str,
     return idx;
 }
 
+static inline size_t findNextSplit(const std::string &str,
+                                   const std::string &separator,
+                                   const char quote) A_INLINE;
 static inline size_t findNextSplit(const std::string &str,
                                    const std::string &separator,
                                    const char quote)
