@@ -114,7 +114,7 @@ class MobileOpenGL2Graphics final : public Graphics
         inline void bindAttributes() restrict2 A_INLINE;
 
         static void bindTexture2(const GLenum target,
-                                 const Image *restrict const image) A_INLINE;
+                                 const Image *restrict const image);
 
         static GLuint mTextureSizeUniform;
         static int mTextureWidth;
