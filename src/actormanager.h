@@ -363,6 +363,8 @@ class ActorManager final: public ConfigListener
 
         void updateSeenPlayers(const std::set<std::string> &onlinePlayers);
 
+        std::string getSeenPlayerById(const BeingId id);
+
         size_t size() const
         { return mActors.size(); }
 

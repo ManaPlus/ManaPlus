@@ -314,7 +314,12 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
         if (being)
             sender_name = being->getName();
         if (sender_name.empty())
+        {
             sender_name = "?" + toString(CAST_S32(beingId));
+            const std::string name = actorManager->getSeenPlayerById(beingId);
+            if (!name.empty())
+                sender_name.append(" ").append(name);
+        }
     }
     else if (being &&
              sender_name != being->getName() &&

@@ -2062,6 +2062,16 @@ void ActorManager::updateSeenPlayers(const std::set<std::string>
     }
 }
 
+std::string ActorManager::getSeenPlayerById(const BeingId id)
+{
+    if (!mEnableIdCollecting)
+        return std::string();
+
+    if (mIdName.find(id) != mIdName.end() && !mIdName[id].empty())
+        return *(mIdName[id].begin());
+    return std::string();
+}
+
 #ifdef EATHENA_SUPPORT
 void ActorManager::removeRoom(const int chatId)
 {
