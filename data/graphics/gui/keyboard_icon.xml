@@ -13,7 +13,7 @@
 
         <!-- Middle Row -->
         <part type="left-edge" xpos="0" ypos="0" width="0" height="0" />
-        <part type="bg-quad" xpos="0" ypos="0" width="0" height="0" />
+        <part type="bg-quad" xpos="0" ypos="0" width="1" height="1" />
         <part type="right-edge" xpos="0" ypos="0" width="0" height="0" />
 
         <!-- Bottom Row -->
