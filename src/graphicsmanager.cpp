@@ -1031,6 +1031,7 @@ void GraphicsManager::initOpenGLFunctions()
 
     if (findI(mGlVendor, "NVIDIA") != std::string::npos ||
         mGlVersionString.find("Mesa 10.6.") != std::string::npos ||
+        mGlVersionString.find("Mesa 11.1.1") != std::string::npos ||
         (findI(mGlRenderer, "AMD Radeon HD") != std::string::npos &&
         (mGlVersionString.find(
         "Compatibility Profile Context 14.") != std::string::npos ||
