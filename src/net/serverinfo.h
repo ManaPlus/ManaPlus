@@ -89,7 +89,7 @@ class ServerInfo final
             version.second = info.version.second;
         }
 
-        void operator=(const ServerInfo &info)
+        ServerInfo &operator=(const ServerInfo &info)
         {
             type = info.type;
             name = info.name;
@@ -105,6 +105,7 @@ class ServerInfo final
             persistentIp = info.persistentIp;
             version.first = info.version.first;
             version.second = info.version.second;
+            return *this;
         }
 
         bool isValid() const A_WARN_UNUSED

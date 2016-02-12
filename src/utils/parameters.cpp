@@ -18,13 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/paramerers.h"
-
-#include "logger.h"
+#include "utils/parameters.h"
 
 #include "utils/stringutils.h"
-
-#include <sstream>
 
 #include "debug.h"
 
@@ -94,7 +90,7 @@ static inline size_t findNextSplit(const std::string &str,
             idx2 = findNextQuote(str, quote, idx2 + 1);
             if (idx2 == std::string::npos)
                 return std::string::npos;  // no close quote, here error
-            // searching next 
+            // set position for next separator or quote
             pos = idx2 + 1;
         }
         else
@@ -102,7 +98,6 @@ static inline size_t findNextSplit(const std::string &str,
             return idx1;
         }
     }
-    return idx1;
 }
 
 bool splitParameters(StringVect &tokens,

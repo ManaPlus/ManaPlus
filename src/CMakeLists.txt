@@ -790,8 +790,8 @@ SET(SRCS
     utils/langs.cpp
     utils/langs.h
     utils/mathutils.h
-    utils/paramerers.cpp
-    utils/paramerers.h
+    utils/parameters.cpp
+    utils/parameters.h
     utils/paths.cpp
     utils/paths.h
     utils/perfomance.cpp

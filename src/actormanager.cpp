@@ -1610,8 +1610,11 @@ void ActorManager::getMobNames(StringVect &names) const
         }
 
         const Being *const being = static_cast<const Being*>(*it);
-        if (being->getType() == ActorType::Monster && !being->getName().empty())
+        if (being->getType() == ActorType::Monster &&
+            !being->getName().empty())
+        {
             names.push_back(being->getName());
+        }
     }
 }
 

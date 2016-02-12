@@ -20,7 +20,7 @@
 
 #include "catch.hpp"
 
-#include "utils/paramerers.h"
+#include "utils/parameters.h"
 
 #include "debug.h"
 

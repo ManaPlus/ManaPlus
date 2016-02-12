@@ -40,11 +40,12 @@ TextChunkSmall::TextChunkSmall(const TextChunkSmall &old) :
 {
 }
 
-void TextChunkSmall::operator=(const TextChunkSmall &chunk)
+TextChunkSmall &TextChunkSmall::operator=(const TextChunkSmall &chunk)
 {
     text = chunk.text;
     color = chunk.color;
     color2 = chunk.color2;
+    return *this;
 }
 
 bool TextChunkSmall::operator==(const TextChunkSmall &chunk) const

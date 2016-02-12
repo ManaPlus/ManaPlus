@@ -441,8 +441,8 @@ SRC += events/actionevent.h \
 	      utils/mathutils.h \
 	      utils/mkdir.cpp \
 	      utils/mkdir.h \
-	      utils/paramerers.cpp \
-	      utils/paramerers.h \
+	      utils/parameters.cpp \
+	      utils/parameters.h \
 	      utils/paths.cpp \
 	      utils/paths.h \
 	      utils/perfomance.cpp \
@@ -1732,7 +1732,7 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      utils/mathutils_unittest.cc \
 	      utils/files_unittest.cc \
 	      utils/stringutils_unittest.cc \
-	      utils/paramerers_unittest.cc \
+	      utils/parameters_unittest.cc \
 	      resources/mstack_unittest.cc \
 	      utils/translation/poparser_unittest.cc \
 	      resources/sprite/animatedsprite_unittest.cc \
