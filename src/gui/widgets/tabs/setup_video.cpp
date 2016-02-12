@@ -22,6 +22,8 @@
 
 #include "gui/widgets/tabs/setup_video.h"
 
+#include "configuration.h"
+
 #include "gui/windowmanager.h"
 
 #include "gui/windows/okdialog.h"
