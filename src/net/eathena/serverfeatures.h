@@ -123,6 +123,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveAdvancedBuySell() const override final A_CONST;
 
         bool haveSlide() const override final;
+
+        bool haveExtendedDropsPosition() const override final;
 };
 
 }  // namespace EAthena

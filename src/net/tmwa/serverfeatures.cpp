@@ -259,4 +259,9 @@ bool ServerFeatures::haveSlide() const
     return false;
 }
 
+bool ServerFeatures::haveExtendedDropsPosition() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

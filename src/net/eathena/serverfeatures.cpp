@@ -260,4 +260,9 @@ bool ServerFeatures::haveSlide() const
     return serverVersion >= 10;
 }
 
+bool ServerFeatures::haveExtendedDropsPosition() const
+{
+    return serverVersion >= 12;
+}
+
 }  // namespace EAthena
