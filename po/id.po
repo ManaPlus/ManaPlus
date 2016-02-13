@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-02-10 19:21+0300\n"
-"PO-Revision-Date: 2016-01-30 09:31+0000\n"
+"POT-Creation-Date: 2016-02-13 14:18+0300\n"
+"PO-Revision-Date: 2016-02-11 09:31+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.com/akaras/manaplus/language/"
 "id/)\n"
@@ -38,15 +38,15 @@ msgstr "Data telah terunggah"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:168 src/client.cpp:1506 src/client.cpp:1541
+#: src/actions/actions.cpp:168 src/client.cpp:1507 src/client.cpp:1542
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
 #: src/gui/widgets/tabs/setup_theme.cpp:350
-#: src/gui/widgets/tabs/setup_video.cpp:251
-#: src/gui/widgets/tabs/setup_video.cpp:279
-#: src/gui/widgets/tabs/setup_video.cpp:398
-#: src/gui/widgets/tabs/setup_video.cpp:414
+#: src/gui/widgets/tabs/setup_video.cpp:253
+#: src/gui/widgets/tabs/setup_video.cpp:281
+#: src/gui/widgets/tabs/setup_video.cpp:400
+#: src/gui/widgets/tabs/setup_video.cpp:416
 #: src/gui/windows/changeemaildialog.cpp:169
 #: src/gui/windows/changepassworddialog.cpp:159
 #: src/gui/windows/charcreatedialog.cpp:466
@@ -113,9 +113,9 @@ msgstr ""
 
 #. TRANSLATORS: last seen message
 #: src/actions/actions.cpp:1753
-#, fuzzy, c-format
+#, c-format
 msgid "Last seen for %s: %s"
-msgstr "Berbisik ke %s: %s"
+msgstr ""
 
 #. TRANSLATORS: whisper send
 #: src/actions/chat.cpp:258
@@ -459,41 +459,41 @@ msgstr "Gelembung mengambang"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
-#: src/client.cpp:831 src/dyetool/client.cpp:478 src/gui/windowmenu.cpp:189
+#: src/client.cpp:832 src/dyetool/client.cpp:478 src/gui/windowmenu.cpp:189
 #: src/gui/windows/setupwindow.cpp:65
 msgid "Setup"
 msgstr "Pengaturan"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:834 src/dyetool/client.cpp:481
+#: src/client.cpp:835 src/dyetool/client.cpp:481
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Performa"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:837 src/dyetool/client.cpp:484
-#: src/gui/widgets/tabs/setup_video.cpp:104
+#: src/client.cpp:838 src/dyetool/client.cpp:484
+#: src/gui/widgets/tabs/setup_video.cpp:106
 msgid "Video"
 msgstr "Vidio"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:840 src/dyetool/client.cpp:487
+#: src/client.cpp:841 src/dyetool/client.cpp:487
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:843 src/dyetool/client.cpp:490
+#: src/client.cpp:844 src/dyetool/client.cpp:490
 msgid "About"
 msgstr "Tentang"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
-#: src/client.cpp:846 src/dyetool/client.cpp:493 src/gui/windowmenu.cpp:74
+#: src/client.cpp:847 src/dyetool/client.cpp:493 src/gui/windowmenu.cpp:74
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Bantuan"
@@ -514,7 +514,7 @@ msgstr "Bantuan"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:850 src/client.cpp:1420 src/client.cpp:1439
+#: src/client.cpp:851 src/client.cpp:1421 src/client.cpp:1440
 #: src/dyetool/client.cpp:497 src/gui/dialogsmanager.cpp:116
 #: src/gui/popups/popupmenu.cpp:680 src/gui/popups/popupmenu.cpp:757
 #: src/gui/popups/popupmenu.cpp:1001 src/gui/windows/didyouknowwindow.cpp:81
@@ -527,32 +527,32 @@ msgid "Close"
 msgstr "Tutup"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1075 src/gui/windowmanager_unittest.cc:145
+#: src/client.cpp:1076 src/gui/windowmanager_unittest.cc:145
 msgid "Connecting to server"
 msgstr "Terhubung ke server"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1121 src/gui/windowmanager_unittest.cc:162
+#: src/client.cpp:1122 src/gui/windowmanager_unittest.cc:162
 msgid "Logging in"
 msgstr "Masuk"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1170
+#: src/client.cpp:1171
 msgid "Entering game world"
 msgstr "Memasuki arena permainan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1309
+#: src/client.cpp:1310
 msgid "Requesting characters"
 msgstr "Mengambil karakter"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1349
+#: src/client.cpp:1350
 msgid "Connecting to the game server"
 msgstr "Terhubung ke server permainan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1361
+#: src/client.cpp:1362
 msgid "Changing game servers"
 msgstr "Mengganti server"
 
@@ -569,7 +569,7 @@ msgstr "Mengganti server"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1417 src/client.cpp:1436 src/client.cpp:1669
+#: src/client.cpp:1418 src/client.cpp:1437 src/client.cpp:1670
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:462
@@ -584,37 +584,37 @@ msgid "Error"
 msgstr "Kesalahan"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1455
+#: src/client.cpp:1456
 msgid "Requesting registration details"
 msgstr "Meminta detail registrasi"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1502
+#: src/client.cpp:1503
 msgid "Password Change"
 msgstr "Perubahan Sandi"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1504
+#: src/client.cpp:1505
 msgid "Password changed successfully!"
 msgstr "Perubahan sandi berhasil!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1537
+#: src/client.cpp:1538
 msgid "Email Change"
 msgstr "Perubahan email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1539
+#: src/client.cpp:1540
 msgid "Email changed successfully!"
 msgstr "Perubahan email berhasil!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1575
+#: src/client.cpp:1576
 msgid "Unregister Successful"
 msgstr "Telah tidak terdaftar"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1577
+#: src/client.cpp:1578
 msgid "Farewell, come back any time..."
 msgstr "Selamat tinggal, datang kembali setiap saat..."
 
@@ -773,9 +773,9 @@ msgstr "Kesalahan %s tidak ada dan tidak dapat dibuat! Keluar."
 
 #. TRANSLATORS: directory creation error
 #: src/dirs.cpp:584 src/dirs.cpp:592 src/dirs.cpp:600
-#, fuzzy, c-format
+#, c-format
 msgid "%s doesn't exist and can't be created!"
-msgstr "%s tidak ada dan tidak dapat dibuat!keluar."
+msgstr ""
 
 #. TRANSLATORS: command line help
 #: src/dyetool/dyemain.cpp:48
@@ -2259,7 +2259,7 @@ msgstr "Tambah semua ke dagangan"
 #: src/gui/popups/popupmenu.cpp:1616 src/gui/popups/popupmenu.cpp:1790
 #: src/gui/popups/popupmenu.cpp:1835 src/gui/windows/inventorywindow.cpp:268
 #: src/gui/windows/inventorywindow.cpp:292
-#: src/gui/windows/inventorywindow.cpp:905 src/gui/windows/setupwindow.cpp:102
+#: src/gui/windows/inventorywindow.cpp:910 src/gui/windows/setupwindow.cpp:102
 msgid "Store"
 msgstr "Simpan"
 
@@ -2334,7 +2334,7 @@ msgstr "Ambil semua"
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:1746 src/gui/popups/popupmenu.cpp:2594
 #: src/gui/windows/inventorywindow.cpp:206
-#: src/gui/windows/inventorywindow.cpp:792 src/gui/windows/skilldialog.cpp:90
+#: src/gui/windows/inventorywindow.cpp:797 src/gui/windows/skilldialog.cpp:90
 #: src/gui/windows/skilldialog.cpp:165 src/gui/windows/skilldialog.cpp:338
 #: src/gui/windows/skilldialog.cpp:513 src/gui/windows/skilldialog.cpp:600
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
@@ -2551,7 +2551,7 @@ msgstr "Proteksi item"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2609 src/gui/windows/inventorywindow.cpp:221
-#: src/gui/windows/inventorywindow.cpp:913
+#: src/gui/windows/inventorywindow.cpp:918
 msgid "Drop..."
 msgstr "Buang..."
 
@@ -2566,7 +2566,7 @@ msgstr "Buang semua"
 #. TRANSLATORS: long button name for drops window.
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2618 src/gui/windowmenu.cpp:140
-#: src/gui/windows/inventorywindow.cpp:918
+#: src/gui/windows/inventorywindow.cpp:923
 msgid "Drop"
 msgstr "Buang"
 
@@ -2979,7 +2979,7 @@ msgstr "Level: %u"
 #. TRANSLATORS: money label
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:140
-#: src/gui/windows/inventorywindow.cpp:707 src/gui/windows/statuswindow.cpp:69
+#: src/gui/windows/inventorywindow.cpp:712 src/gui/windows/statuswindow.cpp:69
 #: src/gui/windows/statuswindow.cpp:219 src/gui/windows/statuswindow.cpp:331
 #, c-format
 msgid "Money: %s"
@@ -2991,7 +2991,7 @@ msgid "Eq."
 msgstr "Eq."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:74
+#: src/gui/widgets/itemlinkhandler.cpp:99
 msgid "Open url"
 msgstr "Buka url"
 
@@ -4016,9 +4016,8 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:279
-#, fuzzy
 msgid "Enable trade spam filter"
-msgstr "Perbolehkan Penyaring Serangan"
+msgstr ""
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_chat.cpp:284
@@ -5091,8 +5090,8 @@ msgstr "Tema diganti"
 #. TRANSLATORS: ok dialog message
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_theme.cpp:348
-#: src/gui/widgets/tabs/setup_video.cpp:393
-#: src/gui/widgets/tabs/setup_video.cpp:411
+#: src/gui/widgets/tabs/setup_video.cpp:395
+#: src/gui/widgets/tabs/setup_video.cpp:413
 msgid "Restart your client for the change to take effect."
 msgstr "Restart client anda untuk memberikan efek."
 
@@ -5173,109 +5172,109 @@ msgid "Button %u action"
 msgstr ""
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:71
+#: src/gui/widgets/tabs/setup_video.cpp:73
 msgid "Full screen"
 msgstr "Layar penuh"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:74
+#: src/gui/widgets/tabs/setup_video.cpp:76
 msgid "FPS limit:"
 msgstr "Batas FPS:"
 
 #. TRANSLATORS: video settings label
-#: src/gui/widgets/tabs/setup_video.cpp:79
-#: src/gui/widgets/tabs/setup_video.cpp:119
-#: src/gui/widgets/tabs/setup_video.cpp:323
-#: src/gui/widgets/tabs/setup_video.cpp:467
+#: src/gui/widgets/tabs/setup_video.cpp:81
+#: src/gui/widgets/tabs/setup_video.cpp:121
+#: src/gui/widgets/tabs/setup_video.cpp:325
+#: src/gui/widgets/tabs/setup_video.cpp:469
 msgid "Alt FPS limit: "
 msgstr "batas Alt FPS: "
 
 #. TRANSLATORS: video settings button
-#: src/gui/widgets/tabs/setup_video.cpp:82
+#: src/gui/widgets/tabs/setup_video.cpp:84
 msgid "Detect best mode"
 msgstr ""
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:91
+#: src/gui/widgets/tabs/setup_video.cpp:93
 msgid "Show cursor"
 msgstr ""
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:94
+#: src/gui/widgets/tabs/setup_video.cpp:96
 msgid "Custom cursor"
 msgstr "Modifikasi kursor"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:98
+#: src/gui/widgets/tabs/setup_video.cpp:100
 msgid "Enable resize"
 msgstr ""
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:101
+#: src/gui/widgets/tabs/setup_video.cpp:103
 msgid "No frame"
 msgstr ""
 
 #. TRANSLATORS: video settings label
 #. TRANSLATORS: video settings label value
 #. TRANSLATORS: video settings label
-#: src/gui/widgets/tabs/setup_video.cpp:116
-#: src/gui/widgets/tabs/setup_video.cpp:121
-#: src/gui/widgets/tabs/setup_video.cpp:321
-#: src/gui/widgets/tabs/setup_video.cpp:451
-#: src/gui/widgets/tabs/setup_video.cpp:464
+#: src/gui/widgets/tabs/setup_video.cpp:118
+#: src/gui/widgets/tabs/setup_video.cpp:123
+#: src/gui/widgets/tabs/setup_video.cpp:323
+#: src/gui/widgets/tabs/setup_video.cpp:453
+#: src/gui/widgets/tabs/setup_video.cpp:466
 msgid "None"
 msgstr "Tidak ada"
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:227
+#: src/gui/widgets/tabs/setup_video.cpp:229
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:234
+#: src/gui/widgets/tabs/setup_video.cpp:236
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:247
+#: src/gui/widgets/tabs/setup_video.cpp:249
 msgid "Switching to Full Screen"
 msgstr "Mengubah ke mode Layar penuh"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:249
+#: src/gui/widgets/tabs/setup_video.cpp:251
 msgid "Restart needed for changes to take effect."
 msgstr "Memulai dari awal di butuhkan untuk melihat efek."
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:275
+#: src/gui/widgets/tabs/setup_video.cpp:277
 msgid "Changing to OpenGL"
 msgstr "Mengubah ke OpenGL"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:277
+#: src/gui/widgets/tabs/setup_video.cpp:279
 msgid "Applying change to OpenGL requires restart."
 msgstr "Mendaftar perubahan ke OpenGL membutuhkan memulai dari awal."
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:362
+#: src/gui/widgets/tabs/setup_video.cpp:364
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Modifikasi resolusi (contoh: 1024x768)"
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:364
+#: src/gui/widgets/tabs/setup_video.cpp:366
 msgid "Enter new resolution:                "
 msgstr "Masukkan resolusi baru:              "
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:391
-#: src/gui/widgets/tabs/setup_video.cpp:409
+#: src/gui/widgets/tabs/setup_video.cpp:393
+#: src/gui/widgets/tabs/setup_video.cpp:411
 msgid "Screen Resolution Changed"
 msgstr "Resolusi layar diubah"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:395
+#: src/gui/widgets/tabs/setup_video.cpp:397
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 
@@ -6141,9 +6140,8 @@ msgstr "Berbisik ke %s: %s"
 
 #. TRANSLATORS: prefix for moved message to trade tab.
 #: src/gui/windows/chatwindow.cpp:1550
-#, fuzzy
 msgid "Moved: "
-msgstr "Jalan"
+msgstr ""
 
 #. TRANSLATORS: moved message to trade tab warning.
 #: src/gui/windows/chatwindow.cpp:1558
@@ -6320,12 +6318,12 @@ msgid "E"
 msgstr ""
 
 #. TRANSLATORS: question dialog title
-#: src/gui/windows/inventorywindow.cpp:1054
+#: src/gui/windows/inventorywindow.cpp:1059
 msgid "Insert card request"
 msgstr ""
 
 #. TRANSLATORS: question dialog message
-#: src/gui/windows/inventorywindow.cpp:1056
+#: src/gui/windows/inventorywindow.cpp:1061
 #, c-format
 msgid "Insert %s into %s?"
 msgstr ""
@@ -7448,9 +7446,8 @@ msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:136
-#, fuzzy
 msgid "Target skill unit"
-msgstr "Level target:"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:142

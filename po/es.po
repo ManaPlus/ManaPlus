@@ -22,9 +22,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-02-10 19:21+0300\n"
-"PO-Revision-Date: 2016-02-06 09:20+0000\n"
-"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
+"POT-Creation-Date: 2016-02-13 14:18+0300\n"
+"PO-Revision-Date: 2016-02-11 09:31+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Spanish (http://www.transifex.com/akaras/manaplus/language/"
 "es/)\n"
 "Language: es\n"
@@ -47,15 +47,15 @@ msgstr "Archivo subido"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:168 src/client.cpp:1506 src/client.cpp:1541
+#: src/actions/actions.cpp:168 src/client.cpp:1507 src/client.cpp:1542
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
 #: src/gui/widgets/tabs/setup_theme.cpp:350
-#: src/gui/widgets/tabs/setup_video.cpp:251
-#: src/gui/widgets/tabs/setup_video.cpp:279
-#: src/gui/widgets/tabs/setup_video.cpp:398
-#: src/gui/widgets/tabs/setup_video.cpp:414
+#: src/gui/widgets/tabs/setup_video.cpp:253
+#: src/gui/widgets/tabs/setup_video.cpp:281
+#: src/gui/widgets/tabs/setup_video.cpp:400
+#: src/gui/widgets/tabs/setup_video.cpp:416
 #: src/gui/windows/changeemaildialog.cpp:169
 #: src/gui/windows/changepassworddialog.cpp:159
 #: src/gui/windows/charcreatedialog.cpp:466
@@ -117,15 +117,14 @@ msgstr "Registro subido a:"
 
 #. TRANSLATORS: last seen error
 #: src/actions/actions.cpp:1747 src/actions/actions.cpp:1761
-#, fuzzy
 msgid "You not saw this nick."
-msgstr "No puedes robar nada..."
+msgstr ""
 
 #. TRANSLATORS: last seen message
 #: src/actions/actions.cpp:1753
-#, fuzzy, c-format
+#, c-format
 msgid "Last seen for %s: %s"
-msgstr "Susurrando a %s: %s"
+msgstr ""
 
 #. TRANSLATORS: whisper send
 #: src/actions/chat.cpp:258
@@ -470,41 +469,41 @@ msgstr "Burbuja flotante"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
-#: src/client.cpp:831 src/dyetool/client.cpp:478 src/gui/windowmenu.cpp:189
+#: src/client.cpp:832 src/dyetool/client.cpp:478 src/gui/windowmenu.cpp:189
 #: src/gui/windows/setupwindow.cpp:65
 msgid "Setup"
 msgstr "Configuración"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:834 src/dyetool/client.cpp:481
+#: src/client.cpp:835 src/dyetool/client.cpp:481
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Rendimiento"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:837 src/dyetool/client.cpp:484
-#: src/gui/widgets/tabs/setup_video.cpp:104
+#: src/client.cpp:838 src/dyetool/client.cpp:484
+#: src/gui/widgets/tabs/setup_video.cpp:106
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:840 src/dyetool/client.cpp:487
+#: src/client.cpp:841 src/dyetool/client.cpp:487
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:843 src/dyetool/client.cpp:490
+#: src/client.cpp:844 src/dyetool/client.cpp:490
 msgid "About"
 msgstr "Acerca de..."
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
-#: src/client.cpp:846 src/dyetool/client.cpp:493 src/gui/windowmenu.cpp:74
+#: src/client.cpp:847 src/dyetool/client.cpp:493 src/gui/windowmenu.cpp:74
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Ayuda"
@@ -525,7 +524,7 @@ msgstr "Ayuda"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:850 src/client.cpp:1420 src/client.cpp:1439
+#: src/client.cpp:851 src/client.cpp:1421 src/client.cpp:1440
 #: src/dyetool/client.cpp:497 src/gui/dialogsmanager.cpp:116
 #: src/gui/popups/popupmenu.cpp:680 src/gui/popups/popupmenu.cpp:757
 #: src/gui/popups/popupmenu.cpp:1001 src/gui/windows/didyouknowwindow.cpp:81
@@ -538,32 +537,32 @@ msgid "Close"
 msgstr "Cerrar"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1075 src/gui/windowmanager_unittest.cc:145
+#: src/client.cpp:1076 src/gui/windowmanager_unittest.cc:145
 msgid "Connecting to server"
 msgstr "Conectando al servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1121 src/gui/windowmanager_unittest.cc:162
+#: src/client.cpp:1122 src/gui/windowmanager_unittest.cc:162
 msgid "Logging in"
 msgstr "Accediendo a la cuenta"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1170
+#: src/client.cpp:1171
 msgid "Entering game world"
 msgstr "Entrando al mundo del juego"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1309
+#: src/client.cpp:1310
 msgid "Requesting characters"
 msgstr "Cargando personajes"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1349
+#: src/client.cpp:1350
 msgid "Connecting to the game server"
 msgstr "Conectando al servidor del juego"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1361
+#: src/client.cpp:1362
 msgid "Changing game servers"
 msgstr "Cambiando servidores del juego"
 
@@ -580,7 +579,7 @@ msgstr "Cambiando servidores del juego"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1417 src/client.cpp:1436 src/client.cpp:1669
+#: src/client.cpp:1418 src/client.cpp:1437 src/client.cpp:1670
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:462
@@ -595,37 +594,37 @@ msgid "Error"
 msgstr "Error"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1455
+#: src/client.cpp:1456
 msgid "Requesting registration details"
 msgstr "Solicitando detalles de registro"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1502
+#: src/client.cpp:1503
 msgid "Password Change"
 msgstr "Cambio de contraseña"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1504
+#: src/client.cpp:1505
 msgid "Password changed successfully!"
 msgstr "¡Contraseña cambiada exitosamente!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1537
+#: src/client.cpp:1538
 msgid "Email Change"
 msgstr "Cambio de Email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1539
+#: src/client.cpp:1540
 msgid "Email changed successfully!"
 msgstr "¡Email modificado exitosamente!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1575
+#: src/client.cpp:1576
 msgid "Unregister Successful"
 msgstr "Registro cancelado"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1577
+#: src/client.cpp:1578
 msgid "Farewell, come back any time..."
 msgstr "Adiós, vuelve cuando quieras..."
 
@@ -787,9 +786,9 @@ msgstr "Error: ¡%s no existe y no puede ser creado! Saliendo."
 
 #. TRANSLATORS: directory creation error
 #: src/dirs.cpp:584 src/dirs.cpp:592 src/dirs.cpp:600
-#, fuzzy, c-format
+#, c-format
 msgid "%s doesn't exist and can't be created!"
-msgstr "¡%s no existe y no puede ser creado! Saliendo."
+msgstr ""
 
 #. TRANSLATORS: command line help
 #: src/dyetool/dyemain.cpp:48
@@ -2275,7 +2274,7 @@ msgstr "Agregar todo al intercambio"
 #: src/gui/popups/popupmenu.cpp:1616 src/gui/popups/popupmenu.cpp:1790
 #: src/gui/popups/popupmenu.cpp:1835 src/gui/windows/inventorywindow.cpp:268
 #: src/gui/windows/inventorywindow.cpp:292
-#: src/gui/windows/inventorywindow.cpp:905 src/gui/windows/setupwindow.cpp:102
+#: src/gui/windows/inventorywindow.cpp:910 src/gui/windows/setupwindow.cpp:102
 msgid "Store"
 msgstr "Almacenar"
 
@@ -2350,7 +2349,7 @@ msgstr "Recuperar todo"
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:1746 src/gui/popups/popupmenu.cpp:2594
 #: src/gui/windows/inventorywindow.cpp:206
-#: src/gui/windows/inventorywindow.cpp:792 src/gui/windows/skilldialog.cpp:90
+#: src/gui/windows/inventorywindow.cpp:797 src/gui/windows/skilldialog.cpp:90
 #: src/gui/windows/skilldialog.cpp:165 src/gui/windows/skilldialog.cpp:338
 #: src/gui/windows/skilldialog.cpp:513 src/gui/windows/skilldialog.cpp:600
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
@@ -2567,7 +2566,7 @@ msgstr "Proteger artículo"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2609 src/gui/windows/inventorywindow.cpp:221
-#: src/gui/windows/inventorywindow.cpp:913
+#: src/gui/windows/inventorywindow.cpp:918
 msgid "Drop..."
 msgstr "Tirar..."
 
@@ -2582,7 +2581,7 @@ msgstr "Tirar todo"
 #. TRANSLATORS: long button name for drops window.
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:2618 src/gui/windowmenu.cpp:140
-#: src/gui/windows/inventorywindow.cpp:918
+#: src/gui/windows/inventorywindow.cpp:923
 msgid "Drop"
 msgstr "Tirar"
 
@@ -2995,7 +2994,7 @@ msgstr "Nivel: %u"
 #. TRANSLATORS: money label
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:140
-#: src/gui/windows/inventorywindow.cpp:707 src/gui/windows/statuswindow.cpp:69
+#: src/gui/windows/inventorywindow.cpp:712 src/gui/windows/statuswindow.cpp:69
 #: src/gui/windows/statuswindow.cpp:219 src/gui/windows/statuswindow.cpp:331
 #, c-format
 msgid "Money: %s"
@@ -3007,7 +3006,7 @@ msgid "Eq."
 msgstr "Eq."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:74
+#: src/gui/widgets/itemlinkhandler.cpp:99
 msgid "Open url"
 msgstr "Abrir url"
 
@@ -4059,9 +4058,8 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:279
-#, fuzzy
 msgid "Enable trade spam filter"
-msgstr "Habilitar filtro de ataque"
+msgstr ""
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_chat.cpp:284
@@ -5149,8 +5147,8 @@ msgstr "Tema cambiado"
 #. TRANSLATORS: ok dialog message
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_theme.cpp:348
-#: src/gui/widgets/tabs/setup_video.cpp:393
-#: src/gui/widgets/tabs/setup_video.cpp:411
+#: src/gui/widgets/tabs/setup_video.cpp:395
+#: src/gui/widgets/tabs/setup_video.cpp:413
 msgid "Restart your client for the change to take effect."
 msgstr "Reinicia el cliente para que los cambios surtan efecto."
 
@@ -5231,61 +5229,61 @@ msgid "Button %u action"
 msgstr "Acción del botón %u"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:71
+#: src/gui/widgets/tabs/setup_video.cpp:73
 msgid "Full screen"
 msgstr "Pantalla completa"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:74
+#: src/gui/widgets/tabs/setup_video.cpp:76
 msgid "FPS limit:"
 msgstr "Límite de FPS:"
 
 #. TRANSLATORS: video settings label
-#: src/gui/widgets/tabs/setup_video.cpp:79
-#: src/gui/widgets/tabs/setup_video.cpp:119
-#: src/gui/widgets/tabs/setup_video.cpp:323
-#: src/gui/widgets/tabs/setup_video.cpp:467
+#: src/gui/widgets/tabs/setup_video.cpp:81
+#: src/gui/widgets/tabs/setup_video.cpp:121
+#: src/gui/widgets/tabs/setup_video.cpp:325
+#: src/gui/widgets/tabs/setup_video.cpp:469
 msgid "Alt FPS limit: "
 msgstr "Límite alternativo de FPS: "
 
 #. TRANSLATORS: video settings button
-#: src/gui/widgets/tabs/setup_video.cpp:82
+#: src/gui/widgets/tabs/setup_video.cpp:84
 msgid "Detect best mode"
 msgstr "Detectar el mejor modo"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:91
+#: src/gui/widgets/tabs/setup_video.cpp:93
 msgid "Show cursor"
 msgstr "Mostrar cursor"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:94
+#: src/gui/widgets/tabs/setup_video.cpp:96
 msgid "Custom cursor"
 msgstr "Cursor personalizado"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:98
+#: src/gui/widgets/tabs/setup_video.cpp:100
 msgid "Enable resize"
 msgstr "Permitir cambio de tamaño"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:101
+#: src/gui/widgets/tabs/setup_video.cpp:103
 msgid "No frame"
 msgstr "Sin marco"
 
 #. TRANSLATORS: video settings label
 #. TRANSLATORS: video settings label value
 #. TRANSLATORS: video settings label
-#: src/gui/widgets/tabs/setup_video.cpp:116
-#: src/gui/widgets/tabs/setup_video.cpp:121
-#: src/gui/widgets/tabs/setup_video.cpp:321
-#: src/gui/widgets/tabs/setup_video.cpp:451
-#: src/gui/widgets/tabs/setup_video.cpp:464
+#: src/gui/widgets/tabs/setup_video.cpp:118
+#: src/gui/widgets/tabs/setup_video.cpp:123
+#: src/gui/widgets/tabs/setup_video.cpp:323
+#: src/gui/widgets/tabs/setup_video.cpp:453
+#: src/gui/widgets/tabs/setup_video.cpp:466
 msgid "None"
 msgstr "Nada"
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:227
+#: src/gui/widgets/tabs/setup_video.cpp:229
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
@@ -5293,7 +5291,7 @@ msgstr ""
 "también falló!"
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:234
+#: src/gui/widgets/tabs/setup_video.cpp:236
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
@@ -5301,43 +5299,43 @@ msgstr ""
 "modo anterior también falló!"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:247
+#: src/gui/widgets/tabs/setup_video.cpp:249
 msgid "Switching to Full Screen"
 msgstr "Cambiando a pantalla completa"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:249
+#: src/gui/widgets/tabs/setup_video.cpp:251
 msgid "Restart needed for changes to take effect."
 msgstr "Reinicio necesario para que los cambios surtan efecto."
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:275
+#: src/gui/widgets/tabs/setup_video.cpp:277
 msgid "Changing to OpenGL"
 msgstr "Cambiando a OpenGL"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:277
+#: src/gui/widgets/tabs/setup_video.cpp:279
 msgid "Applying change to OpenGL requires restart."
 msgstr "Se necesita reiniciar para aplicar el cambio a OpenGL."
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:362
+#: src/gui/widgets/tabs/setup_video.cpp:364
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Resolución personalizada (ejemplo: 1024x768)"
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:364
+#: src/gui/widgets/tabs/setup_video.cpp:366
 msgid "Enter new resolution:                "
 msgstr "Ingrese la nueva resolución:        "
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:391
-#: src/gui/widgets/tabs/setup_video.cpp:409
+#: src/gui/widgets/tabs/setup_video.cpp:393
+#: src/gui/widgets/tabs/setup_video.cpp:411
 msgid "Screen Resolution Changed"
 msgstr "Resolución de pantalla cambiada"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:395
+#: src/gui/widgets/tabs/setup_video.cpp:397
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Algunas ventanas pueden ser movidas para adaptarlas a la resolución más baja."
@@ -6213,9 +6211,8 @@ msgstr "Susurrando a %s: %s"
 
 #. TRANSLATORS: prefix for moved message to trade tab.
 #: src/gui/windows/chatwindow.cpp:1550
-#, fuzzy
 msgid "Moved: "
-msgstr "Mover"
+msgstr ""
 
 #. TRANSLATORS: moved message to trade tab warning.
 #: src/gui/windows/chatwindow.cpp:1558
@@ -6393,12 +6390,12 @@ msgid "E"
 msgstr "E"
 
 #. TRANSLATORS: question dialog title
-#: src/gui/windows/inventorywindow.cpp:1054
+#: src/gui/windows/inventorywindow.cpp:1059
 msgid "Insert card request"
 msgstr "Inserta la tarjeta requerida"
 
 #. TRANSLATORS: question dialog message
-#: src/gui/windows/inventorywindow.cpp:1056
+#: src/gui/windows/inventorywindow.cpp:1061
 #, c-format
 msgid "Insert %s into %s?"
 msgstr "¿Insertar %s en %s?"
@@ -7527,9 +7524,8 @@ msgstr "Apuntar a mercenario"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:136
-#, fuzzy
 msgid "Target skill unit"
-msgstr "Unidad de Habilidad"
+msgstr ""
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:142
