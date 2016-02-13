@@ -1733,6 +1733,7 @@ impHandler(seen)
 
     if (config.getBoolValue("enableIdCollecting") == false)
     {
+        // TRANSLATORS: last seen disabled warning
         tab->chatLog(_("Last seen disabled. "
             "Enable in players / collect players id and seen log."),
             ChatMsgType::BY_SERVER);
