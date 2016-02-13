@@ -320,6 +320,10 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         int pet = XML::getProperty(node, "pet", 0);
         const int maxFloorOffset = XML::getIntProperty(
             node, "maxFloorOffset", mapTileSize, 0, mapTileSize);
+        const int maxFloorOffsetX = XML::getIntProperty(
+            node, "maxFloorOffsetX", maxFloorOffset, 0, mapTileSize);
+        const int maxFloorOffsetY = XML::getIntProperty(
+            node, "maxFloorOffsetY", maxFloorOffset, 0, mapTileSize);
         std::string useButton = XML::langProperty(node, "useButton", "");
         std::string useButton2 = XML::langProperty(node, "useButton2", "");
         std::string colors = XML::getProperty(node, "colors", "");
@@ -500,7 +504,8 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         if (iconColors.empty() && inheritItemInfo)
             iconColors = inheritItemInfo->getIconColorsListName();
         itemInfo->setIconColorsList(iconColors);
-        itemInfo->setMaxFloorOffset(maxFloorOffset);
+        itemInfo->setMaxFloorOffsetX(maxFloorOffsetX);
+        itemInfo->setMaxFloorOffsetY(maxFloorOffsetY);
         itemInfo->setPickupCursor(XML::getProperty(
             node, "pickupCursor", "pickup"));
 

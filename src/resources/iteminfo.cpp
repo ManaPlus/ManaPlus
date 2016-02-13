@@ -68,7 +68,8 @@ ItemInfo::ItemInfo() :
     mHitEffectId(-1),
     mCriticalHitEffectId(-1),
     mMissEffectId(-1),
-    maxFloorOffset(mapTileSize),
+    maxFloorOffsetX(mapTileSize),
+    maxFloorOffsetY(mapTileSize),
     mPickupCursor(Cursor::CURSOR_POINTER),
     mPet(0),
     mProtected(false)

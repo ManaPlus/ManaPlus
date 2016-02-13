@@ -219,11 +219,17 @@ class ItemInfo final
         bool isRemoveSprites() const A_WARN_UNUSED
         { return mIsRemoveSprites; }
 
-        void setMaxFloorOffset(const int i)
-        { maxFloorOffset = i; }
+        void setMaxFloorOffsetX(const int i)
+        { maxFloorOffsetX = i; }
 
-        int getMaxFloorOffset() const A_WARN_UNUSED
-        { return maxFloorOffset; }
+        void setMaxFloorOffsetY(const int i)
+        { maxFloorOffsetY = i; }
+
+        int getMaxFloorOffsetX() const A_WARN_UNUSED
+        { return maxFloorOffsetX; }
+
+        int getMaxFloorOffsetY() const A_WARN_UNUSED
+        { return maxFloorOffsetY; }
 
         bool isRemoveItemId(int id) const A_WARN_UNUSED;
 
@@ -360,7 +366,8 @@ class ItemInfo final
         int mHitEffectId;
         int mCriticalHitEffectId;
         int mMissEffectId;
-        int maxFloorOffset;
+        int maxFloorOffsetX;
+        int maxFloorOffsetY;
         Cursor::Cursor mPickupCursor;
         int mPet;
         bool mProtected;

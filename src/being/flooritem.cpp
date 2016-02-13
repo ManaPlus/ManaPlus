@@ -80,20 +80,29 @@ void FloorItem::postInit(Map *const map, int subX, int subY)
     const ItemInfo &info = ItemDB::get(mItemId);
     if (map)
     {
-        const int max = info.getMaxFloorOffset();
-        if (subX > max)
-            subX = max;
-        else if (subX < -max)
-            subX = -max;
-        if (subY > max)
-            subY = max;
-        else if (subY < -max)
-            subY = -max;
+        const int maxX = info.getMaxFloorOffsetX();
+        const int maxY = info.getMaxFloorOffsetY();
+
+        if (!serverFeatures->haveExtendedDropsPosition())
+        {
+            if (subX > maxX)
+                subX = maxX;
+            else if (subX < -maxX)
+                subX = -maxX;
+            if (subY > maxY)
+                subY = maxY;
+            else if (subY < -maxY)
+                subY = -maxY;
+
+            subX -= 8;
+            subY -= 8;
+        }
+
         mHeightPosDiff = map->getHeightOffset(mX, mY) * 16;
         mPos.x = static_cast<float>(mX * map->getTileWidth()
-            + subX + mapTileSize / 2 - 8);
+            + subX + mapTileSize / 2);
         mPos.y = static_cast<float>(mY * map->getTileHeight()
-            + subY + mapTileSize - 8 - mHeightPosDiff);
+            + subY + mapTileSize - mHeightPosDiff);
         mYDiff = 31 - mHeightPosDiff;
     }
     else
