@@ -1,3 +1,23 @@
+2016-02-13 New release 1.6.2.13
+fix: working with updated hercules without evol plugin.
+fix: possible crash with broken map.
+fix: stop cast animation after post delay effect.
+fix: attacking after skill casting.
+fix: ignore fuzzy translations in custom translation parser.
+fix: crash on exit with onscreen buttons.
+fix: drawing keyboard icon.
+add: show chat messages from hidden gms (tmwa)
+add: improve trade spam filter. Now it add message about moved text.
+add: option for enable/disable trade spam filter.
+add: logging mapping between account id and nicsk.
+add: logging last seen players time.
+add: chat command for last seen players.
+Command: /lastseen NICK
+add: cutins animations support (hercules)
+add: allow images in npc dialogs.
+add: allow skill units selection and attack.
+add: allow assign shortcut key actions to onscreen buttons.
+
 2016-01-30 New release 1.6.1.30
 fix: not allow add equipped items into craft.
 fix: /who command (hercules)
