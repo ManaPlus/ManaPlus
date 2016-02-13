@@ -1725,14 +1725,22 @@ impHandler(seen)
     if (!actorManager)
         return false;
 
-    const std::string name = event.args;
-    if (name.empty())
-        return false;
-
     ChatTab *tab = event.tab;
     if (!tab)
         tab = localChatTab;
     if (!tab)
+        return false;
+
+    if (config.getBoolValue("enableIdCollecting") == false)
+    {
+        tab->chatLog(_("Last seen disabled. "
+            "Enable in players / collect players id and seen log."),
+            ChatMsgType::BY_SERVER);
+        return true;
+    }
+
+    const std::string name = event.args;
+    if (name.empty())
         return false;
 
     std::string dir = settings.usersDir;
