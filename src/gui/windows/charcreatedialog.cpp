@@ -438,11 +438,14 @@ void CharCreateDialog::action(const ActionEvent &event)
             mCreateButton->setEnabled(false);
 
             std::vector<int> atts;
-            for (size_t i = 0, sz = mAttributeSlider.size(); i < sz; i++)
+            const size_t sz = mAttributeSlider.size();
+            for (size_t i = 0; i < sz; i++)
             {
                 atts.push_back(CAST_S32(
                     mAttributeSlider[i]->getValue()));
             }
+            for (size_t i = sz; i < 6; i ++)
+                atts.push_back(1);
 
             const int characterSlot = mSlot;
 
