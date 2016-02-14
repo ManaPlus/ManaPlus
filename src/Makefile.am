@@ -100,6 +100,7 @@ SRC += events/actionevent.h \
 	      gui/buttoninfo.h \
 	      gui/buttontext.h \
 	      const/gui/chat.h \
+	      const/gui/pages.h \
 	      gui/chatlog.h \
 	      enums/gui/chatmsgtype.h \
 	      gui/cliprect.h \

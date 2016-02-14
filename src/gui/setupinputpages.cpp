@@ -21,6 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "const/gui/pages.h"
+
 #include "gui/setupinputpages.h"
 
 #include "utils/gettext.h"
@@ -38,7 +40,7 @@
 
 #include "debug.h"
 
-const char *const pages[] =
+const char *const pages[SETUP_PAGES + 1] =
 {
     // TRANSLATORS: input tab sub tab name
     N_("Basic"),
@@ -63,7 +65,7 @@ const char *const pages[] =
     nullptr
 };
 
-SetupActionData *const setupActionData[] =
+SetupActionData *const setupActionData[SETUP_PAGES] =
 {
     setupActionDataBasic,
     setupActionDataMove,

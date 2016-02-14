@@ -25,6 +25,8 @@
 
 #include "configuration.h"
 
+#include "const/gui/pages.h"
+
 #include "input/inputactionoperators.h"
 #include "input/inputmanager.h"
 #include "input/keyboardconfig.h"
@@ -55,8 +57,6 @@
 
 #include "debug.h"
 
-static const int setupGroups = 9;
-
 Setup_Input::Setup_Input(const Widget2 *const widget) :
     SetupTab(widget),
     mKeyListModel(new KeyListModel),
@@ -73,7 +73,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     mScrollArea(new ScrollArea(this, mKeyList,
         true, "setup_input_background.xml")),
     mKeySetting(false),
-    mActionDataSize(new int [9])
+    mActionDataSize(new int [SETUP_PAGES])
 {
     inputManager.setSetupInput(this);
     // TRANSLATORS: setting tab name
@@ -81,7 +81,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
 
     mKeyListModel->setSelectedData(0);
 
-    for (int f = 0; f < setupGroups; f ++)
+    for (int f = 0; f < SETUP_PAGES; f ++)
     {
         int cnt = 0;
         while (!setupActionData[f][cnt].name.empty())
@@ -320,7 +320,7 @@ int Setup_Input::keyToSetupData(const InputActionT index) const
 
 std::string Setup_Input::keyToString(const InputActionT index) const
 {
-    for (int f = 0; f < setupGroups; f ++)
+    for (int f = 0; f < SETUP_PAGES; f ++)
     {
         for (int i = 0; i < mActionDataSize[f]; i++)
         {
