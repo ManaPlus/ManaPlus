@@ -23,6 +23,9 @@
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
+#ifdef USE_SDL2
+#include "graphicsmanager.h"
+#endif
 
 #include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
@@ -52,7 +55,13 @@ TEST_CASE("DyePalette tests")
     resourceManager->addToSearchPath("../data/test", Append_false);
 
     imageHelper = new SDLImageHelper();
-    SDL_SetVideoMode(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif
 
     paths.setDefaultValues(getPathsDefaults());
     PaletteDB::load();

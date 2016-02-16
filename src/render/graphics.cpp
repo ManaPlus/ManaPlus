@@ -320,7 +320,9 @@ bool Graphics::setOpenGLMode() restrict2
 
     GLint texSize;
     bool rectTex = graphicsManager.supportExtension(
-        "GL_ARB_texture_rectangle");
+        "GL_ARB_texture_rectangle") ||
+        graphicsManager.supportExtension("GL_EXT_texture_rectangle");
+
     if (rectTex
         && OpenGLImageHelper::getInternalTextureType() == 4
         && getOpenGL() != RENDER_GLES_OPENGL

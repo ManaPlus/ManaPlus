@@ -23,6 +23,9 @@
 #include "catch.hpp"
 #include "client.h"
 #include "logger.h"
+#ifdef USE_SDL2
+#include "graphicsmanager.h"
+#endif
 
 #include "input/inputactionmap.h"
 #include "input/inputmanager.h"
@@ -73,7 +76,13 @@ TEST_CASE("integrity tests", "integrity")
     resourceManager->addToSearchPath("../data", Append_false);
 
     imageHelper = new SDLImageHelper();
-    SDL_SetVideoMode(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif
 
     SECTION("integrity test 1")
     {

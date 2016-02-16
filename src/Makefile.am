@@ -1726,6 +1726,10 @@ TESTS = manaplustests
 check_PROGRAMS = manaplustests
 manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
+if USE_SDL2
+manaplustests_CXXFLAGS += -DUSE_SDL2
+endif
+
 manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      enums/enums_unittest.cc \
 	      utils/xml_unittest.cc \
