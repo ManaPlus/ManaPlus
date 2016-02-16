@@ -347,8 +347,9 @@ void Client::gameInit()
     ConfigManager::checkConfigVersion();
     logVars();
     Cpu::detect();
-#if defined(USE_OPENGL) 
-#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
+#if defined(USE_OPENGL)
+#if !defined(ANDROID) && !defined(__APPLE__) && \
+!defined(__native_client__) && !defined(UNITTESTS)
     if (!settings.options.safeMode &&
         settings.options.test.empty() &&
         !config.getBoolValue("videodetected"))
