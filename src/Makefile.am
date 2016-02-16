@@ -1741,6 +1741,7 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      gui/widgets/browserbox_unittest.cc \
 	      resources/dye/dye_unittest.cc \
 	      resources/dye/dyepalette_unittest.cc \
+	      integrity_unittest.cc \
 	      gui/windowmanager_unittest.cc
 endif
 
