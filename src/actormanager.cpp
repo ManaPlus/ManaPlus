@@ -255,8 +255,7 @@ void ActorManager::setPlayer(LocalPlayer *const player)
 {
     localPlayer = player;
     mActors.insert(player);
-    if (player)
-        mActorsIdMap[player->getId()] = player;
+    mActorsIdMap[player->getId()] = player;
     if (socialWindow)
         socialWindow->updateAttackFilter();
     if (socialWindow)
