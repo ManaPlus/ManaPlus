@@ -20,9 +20,7 @@
 
 #include "catch.hpp"
 #include "client.h"
-#ifdef USE_SDL2
 #include "graphicsmanager.h"
-#endif
 #include "settings.h"
 
 #include "gui/gui.h"

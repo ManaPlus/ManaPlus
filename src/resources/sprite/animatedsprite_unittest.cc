@@ -22,9 +22,7 @@
 
 #include "catch.hpp"
 #include "client.h"
-#ifdef USE_SDL2
 #include "graphicsmanager.h"
-#endif
 
 #include "const/resources/spriteaction.h"
 

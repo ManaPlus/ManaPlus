@@ -23,9 +23,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
-#ifdef USE_SDL2
 #include "graphicsmanager.h"
-#endif
 
 #include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"

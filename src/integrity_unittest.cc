@@ -23,9 +23,7 @@
 #include "catch.hpp"
 #include "client.h"
 #include "logger.h"
-#ifdef USE_SDL2
 #include "graphicsmanager.h"
-#endif
 
 #include "input/inputactionmap.h"
 #include "input/inputmanager.h"
