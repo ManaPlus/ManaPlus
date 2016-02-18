@@ -45,7 +45,7 @@ class InputActionSortFunctor final
                 logger->log("broken key2: %ld", static_cast<long>(k2));
                 return false;
             }
-            return keys[k1].priority >= keys[k2].priority;
+            return keys[k1].priority > keys[k2].priority;
         }
 
         const InputActionData *keys A_NONNULLPOINTER;
