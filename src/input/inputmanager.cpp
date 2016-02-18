@@ -921,8 +921,27 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
     FOR_EACH (KeyToActionMapIter, it, actionMap)
     {
         KeysVector *const keys = &it->second;
-        if (keys && keys->size() > 1)
+        if (!keys)
+            continue;
+        const size_t sz = keys->size();
+        if (sz > 1)
+        {
+            logger->log("keys size: %d", CAST_S32(sz));
+            int sum = 0;
+            FOR_EACHP (KeysVectorIter, itk, keys)
+            {
+                const size_t val = CAST_SIZE(*itk);
+                if (val >= CAST_SIZE(InputAction::TOTAL))
+                {
+                    logger->log("wrong action index: %ld",
+                        static_cast<long>(val));
+                    break;
+                }
+                sum += inputActionData[val].priority;
+            }
+            logger->log("sum: %d", sum);
             std::sort(keys->begin(), keys->end(), inputActionDataSorter);
+        }
     }
 }
 

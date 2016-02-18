@@ -21,6 +21,8 @@
 #ifndef INPUT_INPUTACTIONSORTFUNCTOR_H
 #define INPUT_INPUTACTIONSORTFUNCTOR_H
 
+#include "logger.h"
+
 #include "input/inputactiondata.h"
 
 #include "localconsts.h"
@@ -31,8 +33,19 @@ class InputActionSortFunctor final
         bool operator() (const InputActionT key1,
                          const InputActionT key2) const
         {
-            return keys[CAST_SIZE(key1)].priority
-                >= keys[CAST_SIZE(key2)].priority;
+            const size_t k1 = CAST_SIZE(key1);
+            const size_t k2 = CAST_SIZE(key2);
+            if (k1 >= CAST_SIZE(InputAction::TOTAL))
+            {
+                logger->log("broken key1: %ld", static_cast<long>(k1));
+                return false;
+            }
+            if (k2 >= CAST_SIZE(InputAction::TOTAL))
+            {
+                logger->log("broken key2: %ld", static_cast<long>(k2));
+                return false;
+            }
+            return keys[k1].priority >= keys[k2].priority;
         }
 
         const InputActionData *keys A_NONNULLPOINTER;
