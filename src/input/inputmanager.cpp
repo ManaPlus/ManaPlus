@@ -894,6 +894,10 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
                 {
                     actionMap[ki.value].push_back(
                         static_cast<InputActionT>(i));
+                    logger->log("add key: %d, action: %d, size: %ld",
+                        ki.value,
+                        CAST_S32(i),
+                        static_cast<long>(actionMap[ki.value].size()));
                 }
             }
         }
@@ -926,7 +930,9 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
         const size_t sz = keys->size();
         if (sz > 1)
         {
-            logger->log("keys size: %d", CAST_S32(sz));
+            logger->log("actions size: key: %d, size: %d",
+                it->first,
+                CAST_S32(sz));
             int sum = 0;
             FOR_EACHP (KeysVectorIter, itk, keys)
             {
@@ -936,6 +942,11 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
                     logger->log("wrong action index: %ld",
                         static_cast<long>(val));
                     break;
+                }
+                else
+                {
+                    logger->log("action index: %ld",
+                        static_cast<long>(val));
                 }
                 sum += inputActionData[val].priority;
             }
