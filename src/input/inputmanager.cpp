@@ -256,6 +256,10 @@ void InputManager::resetKey(const InputActionT i) restrict2
         val1.value = SDL_GetScancodeFromKey(kd.defaultValue2);
     else
         val1.value = kd.defaultValue2;
+    if (val0.value == SDL_SCANCODE_UNKNOWN)
+        val0.value = -1;
+    if (val1.value == SDL_SCANCODE_UNKNOWN)
+        val1.value = -1;
 #else
     val0.value = kd.defaultValue1;
     val1.value = kd.defaultValue2;
