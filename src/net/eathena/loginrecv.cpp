@@ -132,7 +132,7 @@ void LoginRecv::processUpdateHost2(Net::MessageIn &msg)
         {
             logger->log1("Warning: incorrect update server name");
             loginData.updateHosts.clear();
-        break;
+            break;
         }
     }
 

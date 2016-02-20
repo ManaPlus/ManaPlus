@@ -338,7 +338,7 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
         else if ((node = XML::findFirstChildByName(effectChildNode, "image")))
         {
             std::string imageSrc;
-            if (node && XmlHaveChildContent(node))
+            if (XmlHaveChildContent(node))
                 imageSrc = XmlChildContent(node);
             if (!imageSrc.empty() && !dyePalettes.empty())
                 Dye::instantiate(imageSrc, dyePalettes);

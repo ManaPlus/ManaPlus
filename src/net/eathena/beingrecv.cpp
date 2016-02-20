@@ -1424,8 +1424,7 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
         {
             if (dstBeing == localPlayer)
                 localPlayer->setGMLevel(0);
-            if (dstBeing)
-                dstBeing->setGM(false);
+            dstBeing->setGM(false);
         }
         if (haveMount)
         {

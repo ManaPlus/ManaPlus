@@ -159,8 +159,7 @@ void replaceVars(std::string &str)
         std::string newStr;
         const Party *party = nullptr;
         if (localPlayer->isInParty() &&
-            (party = localPlayer->getParty()) &&
-            party)
+            (party = localPlayer->getParty()))
         {
             party->getNames(names);
             FOR_EACH (StringVectCIter, it, names)
