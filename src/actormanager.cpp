@@ -357,7 +357,7 @@ void ActorManager::erase(ActorSprite *const actor)
         return;
 
     mActors.erase(actor);
-    ActorSpritesMapIterator it = mActorsIdMap.find(actor->getId());
+    const ActorSpritesMapIterator it = mActorsIdMap.find(actor->getId());
     if (it != mActorsIdMap.end() && (*it).second == actor)
         mActorsIdMap.erase(it);
 }
@@ -379,7 +379,7 @@ void ActorManager::undelete(const ActorSprite *const actor)
 
 Being *ActorManager::findBeing(const BeingId id) const
 {
-    ActorSpritesMapConstIterator it = mActorsIdMap.find(id);
+    const ActorSpritesMapConstIterator it = mActorsIdMap.find(id);
     if (it != mActorsIdMap.end())
     {
         ActorSprite *const actor = (*it).second;
@@ -595,7 +595,7 @@ Being *ActorManager::findPortalByTile(const int x, const int y) const
 
 FloorItem *ActorManager::findItem(const BeingId id) const
 {
-    ActorSpritesMapConstIterator it = mActorsIdMap.find(id);
+    const ActorSpritesMapConstIterator it = mActorsIdMap.find(id);
     if (it != mActorsIdMap.end())
     {
         ActorSprite *const actor = (*it).second;
@@ -628,7 +628,7 @@ FloorItem *ActorManager::findItem(const int x, const int y) const
 
 bool ActorManager::pickUpAll(const int x1, const int y1,
                              const int x2, const int y2,
-                             const bool serverBuggy)
+                             const bool serverBuggy) const
 {
     if (!localPlayer)
         return false;
@@ -901,7 +901,8 @@ void ActorManager::logic()
 
         if (actor)
         {
-            ActorSpritesMapIterator itr = mActorsIdMap.find(actor->getId());
+            const ActorSpritesMapIterator itr = mActorsIdMap.find(
+                actor->getId());
             if (itr != mActorsIdMap.end() && (*itr).second == actor)
                 mActorsIdMap.erase(itr);
 
@@ -1486,7 +1487,7 @@ void ActorManager::printAllToChat()
     printBeingsToChat(_("Visible on map"));
 }
 
-void ActorManager::printBeingsToChat(const std::string &header)
+void ActorManager::printBeingsToChat(const std::string &header) const
 {
     if (!debugChatTab)
         return;
@@ -1517,7 +1518,7 @@ void ActorManager::printBeingsToChat(const std::string &header)
         ChatMsgType::BY_SERVER);
     FOR_EACH (ActorSpritesMapConstIterator, itr, mActorsIdMap)
     {
-        ActorSprite *actor = (*itr).second;
+        const ActorSprite *const actor = (*itr).second;
         if (!actor)
             continue;
         if (actor->getId() != (*itr).first)
@@ -1995,7 +1996,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
     return dstBeing;
 }
 
-void ActorManager::updateBadges()
+void ActorManager::updateBadges() const
 {
     const uint8_t showBadges = CAST_U8(
         config.getIntValue("showBadges"));
@@ -2064,13 +2065,17 @@ void ActorManager::updateSeenPlayers(const std::set<std::string>
     }
 }
 
-std::string ActorManager::getSeenPlayerById(const BeingId id)
+std::string ActorManager::getSeenPlayerById(const BeingId id) const
 {
     if (!mEnableIdCollecting)
         return std::string();
 
-    if (mIdName.find(id) != mIdName.end() && !mIdName[id].empty())
-        return *(mIdName[id].begin());
+    const IdNameMappingCIter it = mIdName.find(id);
+    if (it != mIdName.end())
+    {
+        if (!it->second.empty())
+            return *(it->second.begin());
+    }
     return std::string();
 }
 
@@ -2102,7 +2107,7 @@ void ActorManager::updateRoom(const ChatObject *const newChat)
         ActorSprite *const actor = *it;
         if (actor->getType() == ActorType::Npc)
         {
-            Being *const being = static_cast<Being*>(actor);
+            const Being *const being = static_cast<Being*>(actor);
             ChatObject *const chat = being->getChat();
             if (chat && chat->chatId == newChat->chatId)
             {
@@ -2117,7 +2122,7 @@ void ActorManager::updateRoom(const ChatObject *const newChat)
 
 std::string ActorManager::findCharById(const int32_t id)
 {
-    std::map<int32_t, std::string>::const_iterator it = mChars.find(id);
+    const std::map<int32_t, std::string>::const_iterator it = mChars.find(id);
     if (it == mChars.end())
         return std::string();
     return (*it).second;

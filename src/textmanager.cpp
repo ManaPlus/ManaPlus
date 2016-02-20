@@ -97,7 +97,9 @@ void TextManager::place(const Text *const textObj,
     int cnt = 0;
 
     for (TextList::const_iterator ptr = mTextList.begin(),
-         pEnd = mTextList.end(); ptr != pEnd && cnt < nBeings; ++ptr, cnt ++)
+         pfEnd = mTextList.end();
+         ptr != pfEnd && cnt < nBeings;
+         ++ptr, cnt ++)
     {
         const Text *const text = *ptr;
 

@@ -804,8 +804,8 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
     }
 
     for (std::map<std::string, ConfigurationList>::const_iterator
-         it = mContainerOptions.begin(), it_end = mContainerOptions.end();
-         it != it_end; ++ it)
+         it = mContainerOptions.begin(), it_fend = mContainerOptions.end();
+         it != it_fend; ++ it)
     {
         const char *const name = it->first.c_str();
 

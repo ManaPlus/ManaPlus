@@ -57,11 +57,11 @@ void RenameListener::action(const ActionEvent &event)
 {
     if (event.getId() == "ok" && viewport && mDialog)
     {
-        Map *const map = viewport->getMap();
+        const Map *const map = viewport->getMap();
         if (!map)
             return;
 
-        SpecialLayer *const sl = map->getSpecialLayer();
+        const SpecialLayer *const sl = map->getSpecialLayer();
         MapItem *item = nullptr;
         if (sl)
         {

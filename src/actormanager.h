@@ -60,6 +60,7 @@ typedef ActorSpritesMap::iterator ActorSpritesMapIterator;
 typedef ActorSpritesMap::const_iterator ActorSpritesMapConstIterator;
 
 typedef std::map<BeingId, std::set<std::string> > IdNameMapping;
+typedef IdNameMapping::const_iterator IdNameMappingCIter;
 
 class ActorManager final: public ConfigListener
 {
@@ -261,7 +262,7 @@ class ActorManager final: public ConfigListener
 
         void printAllToChat();
 
-        void printBeingsToChat(const std::string &header);
+        void printBeingsToChat(const std::string &header) const;
 
         static void printBeingsToChat(const std::vector<Being*> &beings,
                                       const std::string &header);
@@ -281,8 +282,11 @@ class ActorManager final: public ConfigListener
         void parseLevels(std::string levels) const;
 #endif
 
-        bool pickUpAll(const int x1, const int y1, const int x2, const int y2,
-                       const bool serverBuggy = false);
+        bool pickUpAll(const int x1,
+                       const int y1,
+                       const int x2,
+                       const int y2,
+                       const bool serverBuggy = false) const;
 
         bool pickUpNearest(const int x, const int y, int maxdist) const;
 
@@ -356,14 +360,14 @@ class ActorManager final: public ConfigListener
         void updateEffects(const std::map<BeingTypeId, int> &addEffects,
                            const std::set<BeingTypeId> &removeEffects) const;
 
-        void updateBadges();
+        void updateBadges() const;
 
         void updateNameId(const std::string &name,
                           const BeingId beingId);
 
         void updateSeenPlayers(const std::set<std::string> &onlinePlayers);
 
-        std::string getSeenPlayerById(const BeingId id);
+        std::string getSeenPlayerById(const BeingId id) const;
 
         size_t size() const
         { return mActors.size(); }

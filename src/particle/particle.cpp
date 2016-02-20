@@ -239,7 +239,7 @@ bool Particle::update() restrict2
     // Update child particles
 
     for (ParticleIterator p = mChildParticles.begin(),
-         p2 = mChildParticles.end(); p != p2; )
+         fp2 = mChildParticles.end(); p != fp2; )
     {
         Particle *restrict const particle = *p;
         // move particle with its parent if desired
