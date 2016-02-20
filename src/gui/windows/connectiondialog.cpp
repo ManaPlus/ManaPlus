@@ -73,7 +73,7 @@ void ConnectionDialog::action(const ActionEvent &)
     client->setState(mCancelState);
 }
 
-void ConnectionDialog::draw(Graphics *graphics)
+void ConnectionDialog::draw(Graphics *const graphics)
 {
     BLOCK_START("ConnectionDialog::draw")
     // Don't draw the window background, only draw the children
@@ -81,7 +81,7 @@ void ConnectionDialog::draw(Graphics *graphics)
     BLOCK_END("ConnectionDialog::draw")
 }
 
-void ConnectionDialog::safeDraw(Graphics *graphics)
+void ConnectionDialog::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("ConnectionDialog::draw")
     // Don't draw the window background, only draw the children

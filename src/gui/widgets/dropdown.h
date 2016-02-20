@@ -79,13 +79,13 @@ class DropDown final : public ActionListener,
          */
         void updateAlpha();
 
-        void draw(Graphics *graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void drawFrame(Graphics *graphics) override final A_NONNULL(2);
+        void drawFrame(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *graphics) override final A_NONNULL(2);
+        void safeDrawFrame(Graphics *const graphics) override final A_NONNULL(2);
 
         // Inherited from KeyListener
 
@@ -143,7 +143,7 @@ class DropDown final : public ActionListener,
          *
          * @param graphics a Graphics object to draw with.
          */
-        void drawButton(Graphics *graphics) A_NONNULL(2);
+        void drawButton(Graphics *const graphics) A_NONNULL(2);
 
         PopupList *mPopup A_NONNULLPOINTER;
         Color mShadowColor;

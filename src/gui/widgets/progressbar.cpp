@@ -151,7 +151,7 @@ void ProgressBar::updateAlpha()
     mAlpha = alpha;
 }
 
-void ProgressBar::draw(Graphics *graphics)
+void ProgressBar::draw(Graphics *const graphics)
 {
     BLOCK_START("ProgressBar::draw")
     if (!mSkin)
@@ -230,7 +230,7 @@ void ProgressBar::draw(Graphics *graphics)
     BLOCK_END("ProgressBar::draw")
 }
 
-void ProgressBar::safeDraw(Graphics *graphics)
+void ProgressBar::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("ProgressBar::safeDraw")
     if (!mSkin)

@@ -103,9 +103,9 @@ ShopItem *ShopItems::addItem2(const int inventoryIndex,
     return item;
 }
 
-ShopItem *ShopItems::at(unsigned int i) const
+ShopItem *ShopItems::at(const size_t i) const
 {
-    if (i >= CAST_U32(mShopItems.size()))
+    if (i >= mShopItems.size())
         return nullptr;
 
     return mShopItems.at(i);

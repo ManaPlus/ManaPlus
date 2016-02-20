@@ -151,9 +151,9 @@ class Button final : public Widget,
         /**
          * Draws the button.
          */
-        void draw(Graphics *graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         /**
          * Update the alpha value to the button components.

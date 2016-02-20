@@ -220,7 +220,7 @@ void GuiTable::installActionListeners()
 }
 
 // -- widget ops
-void GuiTable::draw(Graphics* graphics)
+void GuiTable::draw(Graphics *const graphics)
 {
     if (!getRowHeight())
         return;
@@ -338,7 +338,7 @@ void GuiTable::draw(Graphics* graphics)
     BLOCK_END("GuiTable::draw")
 }
 
-void GuiTable::safeDraw(Graphics* graphics)
+void GuiTable::safeDraw(Graphics *const graphics)
 {
     if (!getRowHeight())
         return;
@@ -456,13 +456,13 @@ void GuiTable::safeDraw(Graphics* graphics)
     BLOCK_END("GuiTable::draw")
 }
 
-void GuiTable::moveToTop(Widget *widget)
+void GuiTable::moveToTop(Widget *const widget)
 {
     Widget::moveToTop(widget);
     mTopWidget = widget;
 }
 
-void GuiTable::moveToBottom(Widget *widget)
+void GuiTable::moveToBottom(Widget *const widget)
 {
     Widget::moveToBottom(widget);
     if (widget == mTopWidget)
@@ -608,7 +608,7 @@ Widget *GuiTable::getWidgetAt(int x, int y)
         return nullptr;
 }
 
-int GuiTable::getRowForY(int y) const
+int GuiTable::getRowForY(const int y) const
 {
     int row = -1;
 
@@ -622,7 +622,7 @@ int GuiTable::getRowForY(int y) const
         return row;
 }
 
-int GuiTable::getColumnForX(int x) const
+int GuiTable::getColumnForX(const int x) const
 {
     int column;
     int delta = 0;

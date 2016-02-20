@@ -106,7 +106,7 @@ void SetupWindow::postInit()
     };
     int x = width;
     mButtonPadding = getOption("buttonPadding", 5);
-    for (const char ** curBtn = buttonNames; *curBtn; ++ curBtn)
+    for (const char *const * curBtn = buttonNames; *curBtn; ++ curBtn)
     {
         Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
         mButtons.push_back(btn);
@@ -226,7 +226,7 @@ void SetupWindow::externalUpdate()
     }
 }
 
-void SetupWindow::unloadTab(SetupTab *page)
+void SetupWindow::unloadTab(SetupTab *const page)
 {
     if (page)
     {

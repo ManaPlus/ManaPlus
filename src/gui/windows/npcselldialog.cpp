@@ -56,7 +56,7 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
     const int selectedItem = mShopItemList->getSelected();
-    ShopItem *const item = mShopItems->at(selectedItem);
+    const ShopItem *const item = mShopItems->at(selectedItem);
     if (!item || PlayerInfo::isItemProtected(item->getId()))
         return;
 

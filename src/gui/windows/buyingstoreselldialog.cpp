@@ -52,13 +52,13 @@ void BuyingStoreSellDialog::sellAction(const ActionEvent &event A_UNUSED)
         return;
 
     const int selectedItem = mShopItemList->getSelected();
-    ShopItem *const item1 = mShopItems->at(selectedItem);
+    const ShopItem *const item1 = mShopItems->at(selectedItem);
     if (!item1 || PlayerInfo::isItemProtected(item1->getId()))
         return;
-    Being *const being = actorManager->findBeing(mAccountId);
+    const Being *const being = actorManager->findBeing(mAccountId);
     if (!being)
         return;
-    Item *const item2 = PlayerInfo::getInventory()->findItem(
+    const Item *const item2 = PlayerInfo::getInventory()->findItem(
         item1->getId(),
         item1->getColor());
     if (!item2)

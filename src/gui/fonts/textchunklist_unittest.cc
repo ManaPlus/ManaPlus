@@ -43,7 +43,7 @@ TEST_CASE("TextChunkList add 1", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk = new TextChunk("test",
+    TextChunk *const chunk = new TextChunk("test",
         Color(1, 2, 3), Color(2, 3, 4), nullptr);
 
     list.insertFirst(chunk);
@@ -66,9 +66,9 @@ TEST_CASE("TextChunkList add 2", "TextChunkList")
 {
     TextChunkList list;
 
-    TextChunk *chunk1 = new TextChunk("test",
+    TextChunk *const chunk1 = new TextChunk("test",
         Color(1, 2, 3), Color(3, 4, 5), nullptr);
-    TextChunk *chunk2 = new TextChunk("test",
+    TextChunk *const chunk2 = new TextChunk("test",
         Color(2, 3, 4), Color(4, 5, 6), nullptr);
 
     list.insertFirst(chunk2);

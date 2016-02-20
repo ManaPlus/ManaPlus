@@ -487,9 +487,9 @@ void UpdaterWindow::loadPatch()
 }
 
 int UpdaterWindow::updateProgress(void *ptr,
-                                  DownloadStatusT status,
+                                  const DownloadStatusT status,
                                   size_t dt,
-                                  size_t dn)
+                                  const size_t dn)
 {
     UpdaterWindow *const uw = reinterpret_cast<UpdaterWindow *>(ptr);
     if (!uw)
@@ -685,8 +685,10 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
     }
 
     const std::string fixPath = dir + "/fix";
-    for (unsigned int updateIndex = 0, sz = CAST_U32(
-         updateFiles.size()); updateIndex < sz; updateIndex ++)
+    for (unsigned int updateIndex = 0,
+         fsz = CAST_U32(updateFiles.size());
+         updateIndex < fsz;
+         updateIndex++)
     {
         const UpdateFile &file = updateFiles[updateIndex];
         if (!file.group.empty())
@@ -712,8 +714,10 @@ void UpdaterWindow::unloadUpdates(const std::string &dir)
     }
 
     const std::string fixPath = dir + "/fix";
-    for (unsigned int updateIndex = 0, sz = CAST_U32(
-         updateFiles.size()); updateIndex < sz; updateIndex ++)
+    for (unsigned int updateIndex = 0,
+         fsz = CAST_U32(updateFiles.size());
+         updateIndex < fsz;
+         updateIndex++)
     {
         UpdaterWindow::removeUpdateFile(dir,
             fixPath,
@@ -728,8 +732,10 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
     std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), false);
 
-    for (unsigned int updateIndex = 0, sz = CAST_U32(
-         updateFiles.size()); updateIndex < sz; updateIndex ++)
+    for (unsigned int updateIndex = 0,
+         fsz = CAST_U32(updateFiles.size());
+         updateIndex < fsz;
+         updateIndex++)
     {
         const UpdateFile &file = updateFiles[updateIndex];
         if (!file.group.empty())
@@ -752,8 +758,10 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir)
     const std::vector<UpdateFile> updateFiles = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), true);
 
-    for (unsigned int updateIndex = 0, sz = CAST_U32(
-         updateFiles.size()); updateIndex < sz; updateIndex ++)
+    for (unsigned int updateIndex = 0,
+         fsz = CAST_U32(updateFiles.size());
+         updateIndex < fsz;
+         updateIndex++)
     {
         std::string name = updateFiles[updateIndex].name;
         if (strStartWith(name, "manaplus_"))
@@ -1056,7 +1064,7 @@ unsigned long UpdaterWindow::getFileHash(const std::string &filePath)
 }
 
 void UpdaterWindow::handleLink(const std::string &link,
-                               MouseEvent *event A_UNUSED)
+                               MouseEvent *const event A_UNUSED)
 {
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))
         openBrowser(link);
@@ -1085,8 +1093,10 @@ void UpdaterWindow::loadMods(const std::string &dir,
     splitToStringSet(modsList, modsString, '|');
 
     const std::string fixPath = dir + "/fix";
-    for (unsigned int updateIndex = 0, sz = CAST_U32(
-         updateFiles.size()); updateIndex < sz; updateIndex ++)
+    for (unsigned int updateIndex = 0,
+         fsz = CAST_U32(updateFiles.size());
+         updateIndex < fsz;
+         updateIndex ++)
     {
         const UpdateFile &file = updateFiles[updateIndex];
         if (file.group.empty())
@@ -1105,8 +1115,10 @@ void UpdaterWindow::loadMods(const std::string &dir,
     std::vector<UpdateFile> updateFiles2 = loadXMLFile(
         std::string(fixPath).append("/").append(xmlUpdateFile), true);
 
-    for (unsigned int updateIndex = 0, sz = CAST_U32(
-         updateFiles2.size()); updateIndex < sz; updateIndex ++)
+    for (unsigned int updateIndex = 0,
+         fsz = CAST_U32(updateFiles2.size());
+         updateIndex < fsz;
+         updateIndex++)
     {
         const UpdateFile &file = updateFiles2[updateIndex];
         if (file.group.empty())

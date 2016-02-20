@@ -102,7 +102,7 @@ void HelpWindow::action(const ActionEvent &event)
 }
 
 void HelpWindow::handleLink(const std::string &link,
-                            MouseEvent *event A_UNUSED)
+                            MouseEvent *const event A_UNUSED)
 {
     if (!strStartWith(link, "http://") && !strStartWith(link, "https://"))
     {

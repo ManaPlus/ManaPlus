@@ -317,14 +317,14 @@ void MiniStatusWindow::logic()
     BLOCK_END("MiniStatusWindow::logic")
 }
 
-void MiniStatusWindow::draw(Graphics *graphics)
+void MiniStatusWindow::draw(Graphics *const graphics)
 {
     BLOCK_START("MiniStatusWindow::draw")
     drawChildren(graphics);
     BLOCK_END("MiniStatusWindow::draw")
 }
 
-void MiniStatusWindow::safeDraw(Graphics *graphics)
+void MiniStatusWindow::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("MiniStatusWindow::draw")
     safeDrawChildren(graphics);

@@ -128,9 +128,9 @@ class Window notfinal : public BasicContainer2,
         /**
          * Draws the window.
          */
-        void draw(Graphics *graphics) override A_NONNULL(2);
+        void draw(Graphics *const graphics) override A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override A_NONNULL(2);
 
         /**
          * Sets the size of this window.

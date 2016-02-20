@@ -337,7 +337,7 @@ void FocusHandler::distributeFocusGainedEvent(const Event &focusEvent)
     if (gui)
         gui->distributeGlobalFocusGainedEvent(focusEvent);
 
-    Widget *const sourceWidget = focusEvent.getSource();
+    const Widget *const sourceWidget = focusEvent.getSource();
 
     if (!sourceWidget)
         return;
@@ -360,8 +360,8 @@ void FocusHandler::requestFocus(const Widget *const widget)
         return;
 
     int toBeFocusedIndex = -1;
-    for (unsigned int i = 0, sz = CAST_U32(
-         mWidgets.size()); i < sz; ++i)
+    for (unsigned int i = 0, fsz = CAST_U32(
+         mWidgets.size()); i < fsz; ++i)
     {
         if (mWidgets[i] == widget)
         {
@@ -551,7 +551,7 @@ void FocusHandler::focusNone()
 
 void FocusHandler::distributeFocusLostEvent(const Event& focusEvent)
 {
-    Widget *const sourceWidget = focusEvent.getSource();
+    const Widget *const sourceWidget = focusEvent.getSource();
     if (!sourceWidget)
         return;
 

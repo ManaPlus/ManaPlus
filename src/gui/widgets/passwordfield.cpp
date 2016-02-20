@@ -35,7 +35,7 @@ PasswordField::PasswordField(const Widget2 *const widget,
 {
 }
 
-void PasswordField::draw(Graphics *graphics)
+void PasswordField::draw(Graphics *const graphics)
 {
     BLOCK_START("PasswordField::draw")
     // std::string uses cow, thus cheap copy
@@ -49,7 +49,7 @@ void PasswordField::draw(Graphics *graphics)
     BLOCK_END("PasswordField::draw")
 }
 
-void PasswordField::safeDraw(Graphics *graphics)
+void PasswordField::safeDraw(Graphics *const graphics)
 {
     PasswordField::draw(graphics);
 }

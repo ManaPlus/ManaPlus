@@ -100,8 +100,8 @@ void PlayerTableModel::playerRelationsUpdated()
     mPlayers = player_names;
 
     // set up widgets
-    for (unsigned int r = 0, sz = CAST_U32(
-         player_names->size()); r < sz; ++r)
+    for (unsigned int r = 0, fsz = CAST_U32(
+         player_names->size()); r < fsz; ++r)
     {
         const std::string name = (*player_names)[r];
         Widget *const widget = new Label(this, name);

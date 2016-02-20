@@ -119,9 +119,9 @@ class ServerDialog final : public Window,
         bool needUpdateServers() const;
 
         static int downloadUpdate(void *ptr,
-                                  DownloadStatusT status,
+                                  const DownloadStatusT status,
                                   size_t total,
-                                  size_t remaining);
+                                  const size_t remaining);
 
         Mutex mMutex;
         ServerInfos mServers;

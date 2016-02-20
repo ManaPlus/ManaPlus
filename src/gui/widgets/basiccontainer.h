@@ -110,9 +110,9 @@ class BasicContainer notfinal : public Widget,
 
         // Inherited from Widget
 
-        void moveToTop(Widget *widget) restrict2 override;
+        void moveToTop(Widget *const widget) restrict2 override;
 
-        void moveToBottom(Widget *widget) restrict2 override;
+        void moveToBottom(Widget *const widget) restrict2 override;
 
         Rect getChildrenArea() restrict2 override A_WARN_UNUSED;
 
@@ -125,7 +125,7 @@ class BasicContainer notfinal : public Widget,
         void setFocusHandler(FocusHandler *restrict const focusHandler)
                              restrict2 override;
 
-        void setInternalFocusHandler(FocusHandler *restrict focusHandler)
+        void setInternalFocusHandler(FocusHandler *const restrict focusHandler)
                                      restrict2;
 
         Widget *getWidgetAt(int x, int y) restrict2 override A_WARN_UNUSED;
@@ -151,7 +151,7 @@ class BasicContainer notfinal : public Widget,
           * @param widget The widget to remove.
           * @see add, clear
           */
-        virtual void remove(Widget *restrict widget) restrict2;
+        virtual void remove(Widget *const restrict widget) restrict2;
 
         /**
           * Clears the basic container from all widgets.
@@ -166,10 +166,10 @@ class BasicContainer notfinal : public Widget,
           *
           * @param graphics A graphics object to draw with.
           */
-        virtual void drawChildren(Graphics *restrict graphics)
+        virtual void drawChildren(Graphics *const restrict graphics)
                                   restrict2 A_NONNULL(2);
 
-        virtual void safeDrawChildren(Graphics *restrict graphics)
+        virtual void safeDrawChildren(Graphics *const restrict graphics)
                                       restrict2 A_NONNULL(2);
 
         /**

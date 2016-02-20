@@ -76,9 +76,9 @@ class Viewport final : public WindowContainer,
         /**
          * Draws the viewport.
          */
-        void draw(Graphics *graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         /**
          * Implements player to keep following mouse.
@@ -206,7 +206,7 @@ class Viewport final : public WindowContainer,
         void getMouseTile(const int x,
                           const int y,
                           int &destX,
-                          int &destY);
+                          int &destY) const;
 
         /**
          * Make the player go to the mouse position.

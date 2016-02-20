@@ -137,16 +137,17 @@ class ScrollArea final : public BasicContainer,
         /**
          * Draws the scroll area.
          */
-        void draw(Graphics *graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(Graphics *graphics) override final A_NONNULL(2);
+        void drawFrame(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *graphics) override final A_NONNULL(2);
+        void safeDrawFrame(Graphics *const graphics) override final
+                           A_NONNULL(2);
 
         /**
          * Sets whether the widget should draw its background or not.

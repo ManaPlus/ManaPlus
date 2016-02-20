@@ -86,9 +86,9 @@ class ShortcutContainer notfinal : public Widget,
         int getBoxHeight() const A_WARN_UNUSED
         { return mBoxHeight; }
 
-        void drawBackground(Graphics *g) A_NONNULL(2);
+        void drawBackground(Graphics *const g) A_NONNULL(2);
 
-        void safeDrawBackground(Graphics *g) A_NONNULL(2);
+        void safeDrawBackground(Graphics *const g) A_NONNULL(2);
 
     protected:
         /**

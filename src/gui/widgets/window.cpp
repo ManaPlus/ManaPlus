@@ -287,7 +287,7 @@ void Window::setWindowContainer(WindowContainer *const wc)
     windowContainer = wc;
 }
 
-void Window::draw(Graphics *graphics)
+void Window::draw(Graphics *const graphics)
 {
     if (!mSkin)
         return;
@@ -399,7 +399,7 @@ void Window::draw(Graphics *graphics)
     BLOCK_END("Window::draw")
 }
 
-void Window::safeDraw(Graphics *graphics)
+void Window::safeDraw(Graphics *const graphics)
 {
     if (!mSkin)
         return;

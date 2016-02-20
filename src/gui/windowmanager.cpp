@@ -180,8 +180,8 @@ int WindowManager::getFramerate()
     return SDL_getFramerate(&fpsManager);
 }
 
-void WindowManager::doResizeVideo(int actualWidth,
-                                  int actualHeight,
+void WindowManager::doResizeVideo(const int actualWidth,
+                                  const int actualHeight,
                                   const bool always)
 {
     if (!always

@@ -121,9 +121,9 @@ class Widget notfinal : public Widget2
           * @param graphics aA graphics object to draw with.
           * @since 0.1.0
           */
-        virtual void draw(Graphics* graphics) A_NONNULL(2) = 0;
+        virtual void draw(Graphics *const graphics) A_NONNULL(2) = 0;
 
-        virtual void safeDraw(Graphics* graphics) A_NONNULL(2) = 0;
+        virtual void safeDraw(Graphics *const graphics) A_NONNULL(2) = 0;
 
         /**
           * Called when a widget is given a chance to draw a frame around itself.
@@ -721,7 +721,7 @@ class Widget notfinal : public Widget2
           * @return True if an instance of the widget exists, false otherwise.
           * @since 0.1.0
           */
-        static bool widgetExists(const Widget* widget) A_WARN_UNUSED;
+        static bool widgetExists(const Widget *const widget) A_WARN_UNUSED;
 
         /**
           * Checks if tab in is enabled. Tab in means that you can set focus

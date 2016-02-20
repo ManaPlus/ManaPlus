@@ -197,7 +197,7 @@ void TextField::updateAlpha()
     }
 }
 
-void TextField::draw(Graphics *graphics)
+void TextField::draw(Graphics *const graphics)
 {
     BLOCK_START("TextField::draw")
     updateAlpha();
@@ -227,12 +227,12 @@ void TextField::draw(Graphics *graphics)
     BLOCK_END("TextField::draw")
 }
 
-void TextField::safeDraw(Graphics *graphics)
+void TextField::safeDraw(Graphics *const graphics)
 {
     TextField::draw(graphics);
 }
 
-void TextField::drawFrame(Graphics *graphics)
+void TextField::drawFrame(Graphics *const graphics)
 {
     BLOCK_START("TextField::drawFrame")
     const int bs = 2 * mFrameSize;
@@ -244,7 +244,7 @@ void TextField::drawFrame(Graphics *graphics)
     BLOCK_END("TextField::drawFrame")
 }
 
-void TextField::safeDrawFrame(Graphics *graphics)
+void TextField::safeDrawFrame(Graphics *const graphics)
 {
     BLOCK_START("TextField::drawFrame")
     const int bs = 2 * mFrameSize;

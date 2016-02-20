@@ -46,8 +46,8 @@ EmoteShortcut::~EmoteShortcut()
 void EmoteShortcut::load()
 {
     for (unsigned char i = 0, j = 0,
-         sz = CAST_U8(EmoteDB::getLast());
-         i <= sz && j < SHORTCUT_EMOTES;
+         fsz = CAST_U8(EmoteDB::getLast());
+         i <= fsz && j < SHORTCUT_EMOTES;
          i++)
     {
         const EmoteSprite *const sprite = EmoteDB::getSprite(i, true);

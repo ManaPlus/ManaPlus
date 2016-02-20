@@ -141,7 +141,7 @@ void Label::init()
         mPadding = 0;
 }
 
-void Label::draw(Graphics* graphics)
+void Label::draw(Graphics *const graphics)
 {
     BLOCK_START("Label::draw")
     int textX;
@@ -183,7 +183,7 @@ void Label::draw(Graphics* graphics)
     BLOCK_END("Label::draw")
 }
 
-void Label::safeDraw(Graphics* graphics)
+void Label::safeDraw(Graphics *const graphics)
 {
     Label::draw(graphics);
 }
@@ -259,7 +259,7 @@ void Label::setCaption(const std::string& caption)
     mCaption = caption;
 }
 
-void Label::setParent(Widget *widget)
+void Label::setParent(Widget *const widget)
 {
     if (mWindow)
         mWindow->addWidgetListener(this);

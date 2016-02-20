@@ -341,7 +341,7 @@ void ShopWindow::action(const ActionEvent &event)
             {
                 std::vector<ShopItem*> &oldItems = mSellShopItems->items();
                 std::vector<ShopItem*> items;
-                Inventory *const inv = PlayerInfo::getCartInventory();
+                const Inventory *const inv = PlayerInfo::getCartInventory();
                 if (!inv)
                     return;
                 FOR_EACH (std::vector<ShopItem*>::iterator, it, oldItems)
@@ -349,7 +349,7 @@ void ShopWindow::action(const ActionEvent &event)
                     ShopItem *const item = *it;
                     if (!item)
                         continue;
-                    Item *const cartItem = inv->findItem(item->getId(),
+                    const Item *const cartItem = inv->findItem(item->getId(),
                         item->getColor());
                     if (!cartItem)
                         continue;
@@ -623,7 +623,9 @@ void ShopWindow::saveList() const
     }
 
     for (std::map<int, ShopItem*>::const_iterator mapIt = mapItems.begin(),
-         mapIt_end = mapItems.end(); mapIt != mapIt_end; ++mapIt)
+         mapIt_fend = mapItems.end();
+         mapIt != mapIt_fend;
+         ++mapIt)
     {
         const ShopItem *const buyItem = (*mapIt).second;
         if (buyItem)

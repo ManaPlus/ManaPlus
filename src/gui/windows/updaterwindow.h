@@ -113,7 +113,7 @@ class UpdaterWindow final : public Window,
         void logic() override final;
 
         void handleLink(const std::string &link,
-                        MouseEvent *event A_UNUSED) override final;
+                        MouseEvent *const event A_UNUSED) override final;
 
         void loadFile(std::string file);
 
@@ -157,9 +157,9 @@ class UpdaterWindow final : public Window,
          * A download callback for progress updates.
          */
         static int updateProgress(void *ptr,
-                                  DownloadStatusT status,
+                                  const DownloadStatusT status,
                                   size_t dt,
-                                  size_t dn);
+                                  const size_t dn);
 
         /**
          * A libcurl callback for writing to memory.

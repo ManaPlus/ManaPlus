@@ -204,7 +204,7 @@ void Tab::updateAlpha()
     }
 }
 
-void Tab::draw(Graphics *graphics)
+void Tab::draw(Graphics *const graphics)
 {
     BLOCK_START("Tab::draw")
     int mode = TAB_STANDARD;
@@ -307,7 +307,7 @@ void Tab::draw(Graphics *graphics)
     BLOCK_END("Tab::draw")
 }
 
-void Tab::safeDraw(Graphics *graphics)
+void Tab::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("Tab::draw")
     int mode = TAB_STANDARD;

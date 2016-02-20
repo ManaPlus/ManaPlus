@@ -486,7 +486,7 @@ void BrowserBox::mouseExited(MouseEvent &event A_UNUSED)
     mSelectedLink = -1;
 }
 
-void BrowserBox::draw(Graphics *graphics)
+void BrowserBox::draw(Graphics *const graphics)
 {
     BLOCK_START("BrowserBox::draw")
     const ClipRect &cr = graphics->getTopClip();
@@ -568,7 +568,7 @@ void BrowserBox::draw(Graphics *graphics)
     BLOCK_END("BrowserBox::draw")
 }
 
-void BrowserBox::safeDraw(Graphics *graphics)
+void BrowserBox::safeDraw(Graphics *const graphics)
 {
     BrowserBox::draw(graphics);
 }

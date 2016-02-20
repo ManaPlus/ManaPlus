@@ -120,7 +120,7 @@ class BasicContainer2: public BasicContainer
           * @param widget The widget to add.
           * @see remove, clear
           */
-        virtual void add(Widget* widget);
+        virtual void add(Widget *const widget);
 
         /**
           * Adds a widget to the container and also specifies the widget's
@@ -132,14 +132,14 @@ class BasicContainer2: public BasicContainer
           * @param y The y coordinate for the widget.
           * @see remove, clear
           */
-        void addXY(Widget* widget,
+        void addXY(Widget *const widget,
                    const int x, const int y);
 
         // Inherited from Widget
 
-        void draw(Graphics* graphics) override A_NONNULL(2);
+        void draw(Graphics *const graphics) override A_NONNULL(2);
 
-        void safeDraw(Graphics* graphics) override A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override A_NONNULL(2);
 
     protected:
         /**

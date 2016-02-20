@@ -63,7 +63,7 @@ void SpellShortcutContainer::setWidget2(const Widget2 *const widget)
     mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE);
 }
 
-void SpellShortcutContainer::draw(Graphics *graphics)
+void SpellShortcutContainer::draw(Graphics *const graphics)
 {
     if (!spellShortcut)
         return;
@@ -123,7 +123,7 @@ void SpellShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("SpellShortcutContainer::draw")
 }
 
-void SpellShortcutContainer::safeDraw(Graphics *graphics)
+void SpellShortcutContainer::safeDraw(Graphics *const graphics)
 {
     if (!spellShortcut)
         return;

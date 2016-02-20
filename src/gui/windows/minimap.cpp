@@ -237,7 +237,7 @@ void Minimap::toggle()
     mShow = isWindowVisible();
 }
 
-void Minimap::draw(Graphics *graphics)
+void Minimap::draw(Graphics *const graphics)
 {
     BLOCK_START("Minimap::draw")
 
@@ -245,7 +245,7 @@ void Minimap::draw(Graphics *graphics)
     draw2(graphics);
 }
 
-void Minimap::safeDraw(Graphics *graphics)
+void Minimap::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("Minimap::draw")
 

@@ -143,7 +143,7 @@ class Theme final : public Palette,
                     CAST_U32(mColors.size()));
                 type = ThemeColorId::BROWSERBOX;
             }
-            Color* col = &mColors[CAST_SIZE(type)].color;
+            Color *const col = &mColors[CAST_SIZE(type)].color;
             col->a = alpha;
             return *col;
         }

@@ -101,7 +101,7 @@ void PopupList::widgetResized(const Event &event)
     adjustSize();
 }
 
-void PopupList::setSelected(int selected)
+void PopupList::setSelected(const int selected)
 {
     if (!mListBox)
         return;

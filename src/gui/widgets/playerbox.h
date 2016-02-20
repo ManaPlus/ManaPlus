@@ -76,16 +76,17 @@ class PlayerBox final : public Widget,
         /**
          * Draws the scroll area.
          */
-        void draw(Graphics *graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(Graphics *graphics) override final A_NONNULL(2);
+        void drawFrame(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *graphics) override final A_NONNULL(2);
+        void safeDrawFrame(Graphics *const graphics) override final
+                           A_NONNULL(2);
 
         Being *getBeing() A_WARN_UNUSED
         { return mBeing; }

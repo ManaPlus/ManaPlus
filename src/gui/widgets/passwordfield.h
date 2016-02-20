@@ -44,9 +44,9 @@ class PasswordField final : public TextField
         /**
          * Draws the password field.
          */
-        void draw(Graphics *graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
     protected:
         char mPasswordChar;

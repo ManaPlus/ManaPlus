@@ -78,7 +78,7 @@ class SetupWindow final : public Window,
     private:
         void unloadAdditionalTabs();
 
-        void unloadTab(SetupTab *page);
+        void unloadTab(SetupTab *const page);
 
         std::list<SetupTab*> mTabs;
         std::list<Window*> mWindowsToReset;

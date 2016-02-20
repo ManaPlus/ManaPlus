@@ -43,7 +43,7 @@ class ServersListBox final : public ListBox
             mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT);
         }
 
-        void draw(Graphics *graphics) override final A_NONNULL(2)
+        void draw(Graphics *const graphics) override final A_NONNULL(2)
         {
             if (!mListModel)
                 return;
@@ -140,7 +140,7 @@ class ServersListBox final : public ListBox
             }
         }
 
-        void safeDraw(Graphics *graphics) override final A_NONNULL(2)
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2)
         {
             ServersListBox::draw(graphics);
         }

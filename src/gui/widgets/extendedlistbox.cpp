@@ -47,7 +47,7 @@ ExtendedListBox::~ExtendedListBox()
 {
 }
 
-void ExtendedListBox::draw(Graphics *graphics)
+void ExtendedListBox::draw(Graphics *const graphics)
 {
     if (!mListModel)
         return;
@@ -215,7 +215,7 @@ void ExtendedListBox::draw(Graphics *graphics)
     BLOCK_END("ExtendedListBox::draw")
 }
 
-void ExtendedListBox::safeDraw(Graphics *graphics)
+void ExtendedListBox::safeDraw(Graphics *const graphics)
 {
     ExtendedListBox::draw(graphics);
 }

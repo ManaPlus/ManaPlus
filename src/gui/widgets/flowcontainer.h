@@ -64,7 +64,7 @@ class FlowContainer final : public Container,
         int getBoxHeight() const A_WARN_UNUSED
         { return mBoxHeight; }
 
-        void add(Widget *widget) override final;
+        void add(Widget *const widget) override final;
 
     private:
         int mBoxWidth;

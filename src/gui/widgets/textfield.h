@@ -107,9 +107,9 @@ class TextField notfinal : public Widget,
         /**
          * Draws the text field.
          */
-        void draw(Graphics *graphics) override A_NONNULL(2);
+        void draw(Graphics *const graphics) override A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override A_NONNULL(2);
 
         /**
          * Update the alpha value to the graphic components.
@@ -119,9 +119,10 @@ class TextField notfinal : public Widget,
         /**
          * Draws the background and border.
          */
-        void drawFrame(Graphics *graphics) override final A_NONNULL(2);
+        void drawFrame(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *graphics) override final A_NONNULL(2);
+        void safeDrawFrame(Graphics *const graphics) override final
+                           A_NONNULL(2);
 
         /**
          * Determine whether the field should be numeric or not

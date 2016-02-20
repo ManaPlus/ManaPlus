@@ -55,7 +55,7 @@ class SkillPopup final : public Popup
          * Sets the info to be displayed given a particular item.
          */
         void show(const SkillInfo *const skill,
-                  int level);
+                  const int level);
 
         void mouseMoved(MouseEvent &event) override final;
 

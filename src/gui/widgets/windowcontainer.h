@@ -55,7 +55,7 @@ class WindowContainer notfinal : public Container
                              Widget *const widget);
 
 #ifdef USE_PROFILER
-        void draw(Graphics* graphics) override A_NONNULL(2);
+        void draw(Graphics *const graphics) override A_NONNULL(2);
 #endif
 
     private:

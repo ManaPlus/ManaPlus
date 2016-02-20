@@ -62,7 +62,7 @@ class HelpWindow final : public Window,
          * Handles link action.
          */
         void handleLink(const std::string &link,
-                        MouseEvent *event A_UNUSED) override final;
+                        MouseEvent *const event A_UNUSED) override final;
 
         /**
          * Loads help in the dialog.

@@ -169,7 +169,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     const ActorTypeT type = b->getType();
     if (type == ActorType::Pet)
     {
-        PetInfo *const info = PlayerInfo::getPet();
+        const PetInfo *const info = PlayerInfo::getPet();
         if (info)
         {
             // TRANSLATORS: being popup label
@@ -190,7 +190,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     else if (type == ActorType::Homunculus)
     {
-        HomunculusInfo *const info = PlayerInfo::getHomunculus();
+        const HomunculusInfo *const info = PlayerInfo::getHomunculus();
         if (info)
         {
             // TRANSLATORS: being popup label
@@ -321,8 +321,10 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             std::string effectsStr;
             FOR_EACH (std::set<int>::const_iterator, it, effects)
             {
-                StatusEffect *const effect = StatusEffect::getStatusEffect(
-                    *it, Enable_true);
+                const StatusEffect *const effect =
+                    StatusEffect::getStatusEffect(
+                    *it,
+                    Enable_true);
                 if (!effect)
                     continue;
                 if (!effectsStr.empty())

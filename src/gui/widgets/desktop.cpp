@@ -114,7 +114,7 @@ void Desktop::widgetResized(const Event &event A_UNUSED)
     setBestFittingWallpaper();
 }
 
-void Desktop::draw(Graphics *graphics)
+void Desktop::draw(Graphics *const graphics)
 {
     BLOCK_START("Desktop::draw")
     GLDEBUG_START("Desktop::draw")
@@ -155,7 +155,7 @@ void Desktop::draw(Graphics *graphics)
     BLOCK_END("Desktop::draw")
 }
 
-void Desktop::safeDraw(Graphics *graphics)
+void Desktop::safeDraw(Graphics *const graphics)
 {
     Desktop::draw(graphics);
 }

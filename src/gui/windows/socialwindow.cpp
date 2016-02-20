@@ -660,7 +660,7 @@ void SocialWindow::updateParty()
     Party *const party = localPlayer->getParty();
     if (party)
     {
-        PartyMap::iterator it = mParties.find(party);
+        const PartyMap::iterator it = mParties.find(party);
         if (it != mParties.end())
         {
             SocialTab *const tab = (*it).second;
@@ -694,7 +694,7 @@ void SocialWindow::updateGuildCounter(const int online, const int total)
     Guild *const guild = localPlayer->getGuild();
     if (guild)
     {
-        GuildMap::iterator it = mGuilds.find(guild);
+        const GuildMap::iterator it = mGuilds.find(guild);
         if (it != mGuilds.end())
         {
             SocialTab *const tab = (*it).second;

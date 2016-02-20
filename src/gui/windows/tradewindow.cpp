@@ -203,7 +203,7 @@ void TradeWindow::addItem(const int id,
                           const Damaged damaged,
                           const Favorite favorite) const
 {
-    Inventory *inv = own ? mMyInventory : mPartnerInventory;
+    Inventory *const inv = own ? mMyInventory : mPartnerInventory;
     inv->addItem(id,
         type,
         quantity,
@@ -229,7 +229,7 @@ void TradeWindow::addItem2(const int id,
                            const Favorite favorite,
                            const Equipm equipment) const
 {
-    Inventory *inv = own ? mMyInventory : mPartnerInventory;
+    Inventory *const inv = own ? mMyInventory : mPartnerInventory;
     const int slot = inv->addItem(id,
         type,
         quantity,

@@ -208,7 +208,7 @@ WindowMenu::~WindowMenu()
 
     for (std::map <std::string, ButtonInfo*>::iterator
          it = mButtonNames.begin(),
-         it_end = mButtonNames.end(); it != it_end; ++it)
+         it_fend = mButtonNames.end(); it != it_fend; ++it)
     {
         delete (*it).second;
     }
@@ -382,7 +382,7 @@ void WindowMenu::loadButtons()
         {
             for (std::map <std::string, ButtonInfo*>::iterator
                  it = mButtonNames.begin(),
-                 it_end = mButtonNames.end(); it != it_end; ++it)
+                 it_fend = mButtonNames.end(); it != it_fend; ++it)
             {
                 const ButtonInfo *const info = (*it).second;
                 if (!info || !info->button || info->visible == Visible_true)
@@ -409,7 +409,7 @@ void WindowMenu::loadButtons()
     {
         for (std::map <std::string, ButtonInfo*>::iterator
              it = mButtonNames.begin(),
-             it_end = mButtonNames.end(); it != it_end; ++it)
+             it_fend = mButtonNames.end(); it != it_fend; ++it)
         {
             const ButtonInfo *const info = (*it).second;
             if (!info || !info->button)
@@ -440,7 +440,7 @@ void WindowMenu::saveButtons() const
         config.deleteKey("windowmenu" + toString(f));
 }
 
-void WindowMenu::drawChildren(Graphics* graphics)
+void WindowMenu::drawChildren(Graphics *const graphics)
 {
     if (mHaveMouse || !mAutoHide || (mAutoHide == 1
         && mainGraphics && (mSmallWindow || mainGraphics->mWidth > 800)))
@@ -449,7 +449,7 @@ void WindowMenu::drawChildren(Graphics* graphics)
     }
 }
 
-void WindowMenu::safeDrawChildren(Graphics* graphics)
+void WindowMenu::safeDrawChildren(Graphics *const graphics)
 {
     if (mHaveMouse || !mAutoHide || (mAutoHide == 1
         && mainGraphics && (mSmallWindow || mainGraphics->mWidth > 800)))

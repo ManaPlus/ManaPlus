@@ -79,7 +79,7 @@ void ShopListBox::setPlayersMoney(const int money)
     mPlayerMoney = money;
 }
 
-void ShopListBox::draw(Graphics *graphics)
+void ShopListBox::draw(Graphics *const graphics)
 {
     BLOCK_START("ShopListBox::draw")
     if (!mListModel || !mShopItems)
@@ -177,7 +177,7 @@ void ShopListBox::draw(Graphics *graphics)
     BLOCK_END("ShopListBox::draw")
 }
 
-void ShopListBox::safeDraw(Graphics *graphics)
+void ShopListBox::safeDraw(Graphics *const graphics)
 {
     ShopListBox::draw(graphics);
 }

@@ -174,7 +174,7 @@ EquipmentWindow::~EquipmentWindow()
     delete2(mVertexes);
 }
 
-void EquipmentWindow::draw(Graphics *graphics)
+void EquipmentWindow::draw(Graphics *const graphics)
 {
     BLOCK_START("EquipmentWindow::draw")
     // Draw window graphics
@@ -261,7 +261,7 @@ void EquipmentWindow::draw(Graphics *graphics)
     BLOCK_END("EquipmentWindow::draw")
 }
 
-void EquipmentWindow::safeDraw(Graphics *graphics)
+void EquipmentWindow::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("EquipmentWindow::draw")
     // Draw window graphics

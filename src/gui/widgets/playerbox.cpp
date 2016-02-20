@@ -115,7 +115,7 @@ void PlayerBox::init(std::string name, std::string selectedName)
     }
 }
 
-void PlayerBox::draw(Graphics *graphics)
+void PlayerBox::draw(Graphics *const graphics)
 {
     BLOCK_START("PlayerBox::draw")
     if (mBeing)
@@ -138,12 +138,12 @@ void PlayerBox::draw(Graphics *graphics)
     BLOCK_END("PlayerBox::draw")
 }
 
-void PlayerBox::safeDraw(Graphics *graphics)
+void PlayerBox::safeDraw(Graphics *const graphics)
 {
     PlayerBox::draw(graphics);
 }
 
-void PlayerBox::drawFrame(Graphics *graphics)
+void PlayerBox::drawFrame(Graphics *const graphics)
 {
     BLOCK_START("PlayerBox::drawFrame")
     if (mDrawBackground)
@@ -160,7 +160,7 @@ void PlayerBox::drawFrame(Graphics *graphics)
     BLOCK_END("PlayerBox::drawFrame")
 }
 
-void PlayerBox::safeDrawFrame(Graphics *graphics)
+void PlayerBox::safeDrawFrame(Graphics *const graphics)
 {
     BLOCK_START("PlayerBox::drawFrame")
     if (mDrawBackground)

@@ -149,7 +149,7 @@ void ListBox::updateAlpha()
         mAlpha = alpha;
 }
 
-void ListBox::draw(Graphics *graphics)
+void ListBox::draw(Graphics *const graphics)
 {
     if (!mListModel)
         return;
@@ -269,7 +269,7 @@ void ListBox::keyPressed(KeyEvent &event)
     }
 }
 
-void ListBox::safeDraw(Graphics *graphics)
+void ListBox::safeDraw(Graphics *const graphics)
 {
     ListBox::draw(graphics);
 }

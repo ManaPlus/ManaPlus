@@ -207,7 +207,7 @@ void DropDown::updateAlpha()
     }
 }
 
-void DropDown::draw(Graphics* graphics)
+void DropDown::draw(Graphics *const graphics)
 {
     BLOCK_START("DropDown::draw")
     int h;
@@ -286,12 +286,12 @@ void DropDown::draw(Graphics* graphics)
     BLOCK_END("DropDown::draw")
 }
 
-void DropDown::safeDraw(Graphics* graphics)
+void DropDown::safeDraw(Graphics *const graphics)
 {
     DropDown::draw(graphics);
 }
 
-void DropDown::drawFrame(Graphics *graphics)
+void DropDown::drawFrame(Graphics *const graphics)
 {
     BLOCK_START("DropDown::drawFrame")
     const int bs2 = CAST_S32(getFrameSize());
@@ -302,7 +302,7 @@ void DropDown::drawFrame(Graphics *graphics)
     BLOCK_END("DropDown::drawFrame")
 }
 
-void DropDown::safeDrawFrame(Graphics *graphics)
+void DropDown::safeDrawFrame(Graphics *const graphics)
 {
     BLOCK_START("DropDown::drawFrame")
     const int bs2 = CAST_S32(getFrameSize());
@@ -313,7 +313,7 @@ void DropDown::safeDrawFrame(Graphics *graphics)
     BLOCK_END("DropDown::drawFrame")
 }
 
-void DropDown::drawButton(Graphics *graphics)
+void DropDown::drawButton(Graphics *const graphics)
 {
     const int height = mDroppedDown ? mFoldedUpHeight : mDimension.height;
 

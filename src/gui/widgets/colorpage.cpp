@@ -49,7 +49,7 @@ ColorPage::~ColorPage()
 {
 }
 
-void ColorPage::draw(Graphics *graphics)
+void ColorPage::draw(Graphics *const graphics)
 {
     BLOCK_START("ColorPage::draw")
 
@@ -99,7 +99,7 @@ void ColorPage::draw(Graphics *graphics)
     BLOCK_END("ColorPage::draw")
 }
 
-void ColorPage::safeDraw(Graphics *graphics)
+void ColorPage::safeDraw(Graphics *const graphics)
 {
     ColorPage::draw(graphics);
 }

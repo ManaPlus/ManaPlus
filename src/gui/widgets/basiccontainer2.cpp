@@ -79,7 +79,7 @@ BasicContainer2::~BasicContainer2()
 {
 }
 
-void BasicContainer2::draw(Graphics* graphics)
+void BasicContainer2::draw(Graphics *const graphics)
 {
     BLOCK_START("BasicContainer2::draw")
     if (mOpaque)
@@ -93,7 +93,7 @@ void BasicContainer2::draw(Graphics* graphics)
     BLOCK_END("BasicContainer2::draw")
 }
 
-void BasicContainer2::safeDraw(Graphics* graphics)
+void BasicContainer2::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("BasicContainer2::draw")
     if (isOpaque())
@@ -107,7 +107,7 @@ void BasicContainer2::safeDraw(Graphics* graphics)
     BLOCK_END("BasicContainer2::draw")
 }
 
-void BasicContainer2::add(Widget* widget)
+void BasicContainer2::add(Widget *const widget)
 {
     // +++ need move all add() calls from constructors
     // and after this method can be deleted
@@ -115,7 +115,7 @@ void BasicContainer2::add(Widget* widget)
     BasicContainer::add(widget);
 }
 
-void BasicContainer2::addXY(Widget* widget,
+void BasicContainer2::addXY(Widget *const widget,
                             const int x,
                             const int y)
 {

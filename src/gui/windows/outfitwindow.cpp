@@ -324,7 +324,7 @@ void OutfitWindow::copyOutfit(const int src, const int dst)
     save();
 }
 
-void OutfitWindow::draw(Graphics *graphics)
+void OutfitWindow::draw(Graphics *const graphics)
 {
     BLOCK_START("OutfitWindow::draw")
     Window::draw(graphics);
@@ -380,7 +380,7 @@ void OutfitWindow::draw(Graphics *graphics)
     BLOCK_END("OutfitWindow::draw")
 }
 
-void OutfitWindow::safeDraw(Graphics *graphics)
+void OutfitWindow::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("OutfitWindow::draw")
     Window::safeDraw(graphics);

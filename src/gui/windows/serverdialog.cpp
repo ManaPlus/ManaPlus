@@ -570,8 +570,8 @@ void ServerDialog::loadServers(const bool addNew)
         MutexLocker tempLock(&mMutex);
         // Add the server to the local list if it's not already present
         bool found = false;
-        for (unsigned int i = 0, sz = CAST_U32(
-             mServers.size()); i < sz; i++)
+        for (unsigned int i = 0, fsz = CAST_U32(
+             mServers.size()); i < fsz; i++)
         {
             if (mServers[i] == server)
             {
@@ -660,8 +660,8 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
 
     int savedServerCount = 0;
 
-    for (unsigned i = 0, sz = CAST_U32(mServers.size());
-         i < sz && savedServerCount < MAX_SERVERLIST; ++ i)
+    for (unsigned i = 0, fsz = CAST_U32(mServers.size());
+         i < fsz && savedServerCount < MAX_SERVERLIST; ++ i)
     {
         const ServerInfo &server = mServers.at(i);
 
@@ -695,9 +695,9 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
 }
 
 int ServerDialog::downloadUpdate(void *ptr,
-                                 DownloadStatusT status,
+                                 const DownloadStatusT status,
                                  size_t total,
-                                 size_t remaining)
+                                 const size_t remaining)
 {
     if (!ptr || status == DownloadStatus::Cancelled)
         return -1;

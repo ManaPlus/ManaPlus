@@ -79,7 +79,7 @@ TextPreview::~TextPreview()
     }
 }
 
-void TextPreview::draw(Graphics* graphics)
+void TextPreview::draw(Graphics *const graphics)
 {
     if (!mFont)
         return;
@@ -138,7 +138,7 @@ void TextPreview::draw(Graphics* graphics)
     BLOCK_END("TextPreview::draw")
 }
 
-void TextPreview::safeDraw(Graphics* graphics)
+void TextPreview::safeDraw(Graphics *const graphics)
 {
     TextPreview::draw(graphics);
 }

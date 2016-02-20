@@ -460,7 +460,7 @@ void Button::updateAlpha()
     }
 }
 
-void Button::draw(Graphics *graphics)
+void Button::draw(Graphics *const graphics)
 {
     BLOCK_START("Button::draw")
     int mode;
@@ -639,7 +639,7 @@ void Button::draw(Graphics *graphics)
     BLOCK_END("Button::draw")
 }
 
-void Button::safeDraw(Graphics *graphics)
+void Button::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("Button::safeDraw")
     int mode;

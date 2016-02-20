@@ -437,7 +437,7 @@ void TextBox::keyPressed(KeyEvent& event)
     event.consume();
 }
 
-void TextBox::draw(Graphics* graphics)
+void TextBox::draw(Graphics *const graphics)
 {
     BLOCK_START("TextBox::draw")
     if (mOpaque)
@@ -468,7 +468,7 @@ void TextBox::draw(Graphics* graphics)
     BLOCK_END("TextBox::draw")
 }
 
-void TextBox::safeDraw(Graphics* graphics)
+void TextBox::safeDraw(Graphics *const graphics)
 {
     TextBox::draw(graphics);
 }
@@ -514,8 +514,9 @@ void TextBox::setTextRow(const int row, const std::string& text)
 
 void TextBox::setCaretPosition(unsigned int position)
 {
-    for (int row = 0, sz = CAST_S32(mTextRows.size());
-         row < sz; row ++)
+    for (int row = 0, fsz = CAST_S32(mTextRows.size());
+         row < fsz;
+         row ++)
     {
         if (position <= mTextRows[row].size())
         {
@@ -619,7 +620,9 @@ void TextBox::mouseDragged(MouseEvent& event)
     event.consume();
 }
 
-void TextBox::drawCaret(Graphics *const graphics, const int x, const int y)
+void TextBox::drawCaret(Graphics *const graphics,
+                        const int x,
+                        const int y) const
 {
     graphics->setColor(mForegroundColor);
     graphics->drawLine(x, getFont()->getHeight() + y, x, y);

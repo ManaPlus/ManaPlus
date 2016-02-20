@@ -106,15 +106,15 @@ class RadioButton final : public Widget,
         /**
          * Draws the radiobutton, not the caption.
          */
-        void drawBox(Graphics* graphics) A_NONNULL(2);
+        void drawBox(Graphics *const graphics) A_NONNULL(2);
 
         /**
          * Implementation of the draw methods.
          * Thus, avoiding the rhomb around the radio button.
          */
-        void draw(Graphics* graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics* graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         /**
          * Called when the mouse enteres the widget area.

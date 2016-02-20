@@ -71,7 +71,7 @@ void VirtShortcutContainer::setWidget2(const Widget2 *const widget)
     mUnEquipedColor2 = getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE);
 }
 
-void VirtShortcutContainer::draw(Graphics *graphics)
+void VirtShortcutContainer::draw(Graphics *const graphics)
 {
     if (!mShortcut)
         return;
@@ -145,7 +145,7 @@ void VirtShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("VirtShortcutContainer::draw")
 }
 
-void VirtShortcutContainer::safeDraw(Graphics *graphics)
+void VirtShortcutContainer::safeDraw(Graphics *const graphics)
 {
     if (!mShortcut)
         return;

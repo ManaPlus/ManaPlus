@@ -2087,7 +2087,7 @@ void ChatWindow::mouseExited(MouseEvent& event)
     Window::mouseExited(event);
 }
 
-void ChatWindow::draw(Graphics* graphics)
+void ChatWindow::draw(Graphics *const graphics)
 {
     BLOCK_START("ChatWindow::draw")
     if (!mAutoHide || mHaveMouse)
@@ -2099,7 +2099,7 @@ void ChatWindow::draw(Graphics* graphics)
     BLOCK_END("ChatWindow::draw")
 }
 
-void ChatWindow::safeDraw(Graphics* graphics)
+void ChatWindow::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("ChatWindow::draw")
     if (!mAutoHide || mHaveMouse)

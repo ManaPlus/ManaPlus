@@ -107,7 +107,7 @@ void SliderList::resize()
     updateLabel();
 }
 
-void SliderList::draw(Graphics *graphics)
+void SliderList::draw(Graphics *const graphics)
 {
     BLOCK_START("SliderList::draw")
     const int width = mDimension.width;
@@ -120,7 +120,7 @@ void SliderList::draw(Graphics *graphics)
     BLOCK_END("SliderList::draw")
 }
 
-void SliderList::safeDraw(Graphics *graphics)
+void SliderList::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("SliderList::draw")
     const int width = mDimension.width;

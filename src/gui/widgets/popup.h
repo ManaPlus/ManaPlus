@@ -76,9 +76,9 @@ class Popup notfinal : public Container,
         /**
          * Draws the popup.
          */
-        void draw(Graphics *graphics) override A_NONNULL(2);
+        void draw(Graphics *const graphics) override A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override A_NONNULL(2);
 
         /**
          * Sets the size of this popup.

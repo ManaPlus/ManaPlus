@@ -157,7 +157,8 @@ void ItemLinkHandler::handleSearchLink(const std::string &link)
     }
 }
 
-void ItemLinkHandler::handleLink(const std::string &link, MouseEvent *event)
+void ItemLinkHandler::handleLink(const std::string &link,
+                                 MouseEvent *const event)
 {
     logger->log("link: " + link);
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))

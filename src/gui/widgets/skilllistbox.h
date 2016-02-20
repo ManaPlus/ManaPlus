@@ -85,7 +85,7 @@ class SkillListBox final : public ListBox
             return static_cast<SkillModel*>(mListModel)->getSkillAt(selected);
         }
 
-        void draw(Graphics *graphics) override final A_NONNULL(2)
+        void draw(Graphics *const graphics) override final A_NONNULL(2)
         {
             if (!mListModel)
                 return;
@@ -169,7 +169,7 @@ class SkillListBox final : public ListBox
             }
         }
 
-        void safeDraw(Graphics *graphics) override final A_NONNULL(2)
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2)
         {
             SkillListBox::draw(graphics);
         }

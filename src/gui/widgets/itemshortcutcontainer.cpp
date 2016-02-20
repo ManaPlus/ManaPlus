@@ -84,7 +84,7 @@ void ItemShortcutContainer::setWidget2(const Widget2 *const widget)
     mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE);
 }
 
-void ItemShortcutContainer::draw(Graphics *graphics)
+void ItemShortcutContainer::draw(Graphics *const graphics)
 {
     BLOCK_START("ItemShortcutContainer::draw")
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];
@@ -221,7 +221,7 @@ void ItemShortcutContainer::draw(Graphics *graphics)
     BLOCK_END("ItemShortcutContainer::draw")
 }
 
-void ItemShortcutContainer::safeDraw(Graphics *graphics)
+void ItemShortcutContainer::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("ItemShortcutContainer::draw")
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];

@@ -175,7 +175,7 @@ Tab *TabbedArea::getTab(const std::string &name) const
     return nullptr;
 }
 
-void TabbedArea::draw(Graphics *graphics)
+void TabbedArea::draw(Graphics *const graphics)
 {
     BLOCK_START("TabbedArea::draw")
     if (mTabs.empty())
@@ -188,7 +188,7 @@ void TabbedArea::draw(Graphics *graphics)
     BLOCK_END("TabbedArea::draw")
 }
 
-void TabbedArea::safeDraw(Graphics *graphics)
+void TabbedArea::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("TabbedArea::draw")
     if (mTabs.empty())
@@ -421,8 +421,9 @@ void TabbedArea::setSelectedTab(Tab *const tab)
 
 int TabbedArea::getSelectedTabIndex() const
 {
-    for (unsigned int i = 0, sz = CAST_U32(mTabs.size());
-         i < sz; i++)
+    for (unsigned int i = 0, fsz = CAST_U32(mTabs.size());
+         i < fsz;
+         i++)
     {
         if (mTabs[i].first == mSelectedTab)
             return i;
@@ -709,24 +710,28 @@ void TabbedArea::removeAll(const bool del)
 
 void TabbedArea::setWidth(int width)
 {
+    // +++ need use virtual
     Widget::setWidth(width);
     adjustSize();
 }
 
 void TabbedArea::setHeight(int height)
 {
+    // +++ need use virtual
     Widget::setHeight(height);
     adjustSize();
 }
 
 void TabbedArea::setSize(int width, int height)
 {
+    // +++ need use virtual
     Widget::setSize(width, height);
     adjustSize();
 }
 
 void TabbedArea::setDimension(const Rect &dimension)
 {
+    // +++ need use virtual
     Widget::setDimension(dimension);
     adjustSize();
 }

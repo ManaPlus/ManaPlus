@@ -107,7 +107,7 @@ class ShopItems final : public ListModel
         /**
          * Returns the item number i in the shop.
          */
-        ShopItem *at(unsigned int i) const A_WARN_UNUSED;
+        ShopItem *at(const size_t i) const A_WARN_UNUSED;
 
         /**
          * Removes an element from the shop.

@@ -43,7 +43,10 @@ TEST_CASE("BrowserBox tests", "browserbox")
     theme = new Theme;
     Widget::setGlobalFont(new Font("/usr/share/fonts/truetype/"
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
-    BrowserBox *box = new BrowserBox(nullptr, BrowserBox::AUTO_WRAP, true, "");
+    BrowserBox *const box = new BrowserBox(nullptr,
+        BrowserBox::AUTO_WRAP,
+        true,
+        "");
     box->setWidth(100);
     std::string row = "test";
     box->addRow(row);

@@ -59,7 +59,7 @@ EmotePage::~EmotePage()
     delete2(mVertexes);
 }
 
-void EmotePage::draw(Graphics *graphics)
+void EmotePage::draw(Graphics *const graphics)
 {
     BLOCK_START("EmotePage::draw")
 
@@ -97,7 +97,7 @@ void EmotePage::draw(Graphics *graphics)
     BLOCK_END("EmotePage::draw")
 }
 
-void EmotePage::safeDraw(Graphics *graphics)
+void EmotePage::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("EmotePage::safeDraw")
 

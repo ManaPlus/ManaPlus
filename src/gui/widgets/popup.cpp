@@ -100,7 +100,7 @@ void Popup::setWindowContainer(WindowContainer *const wc)
     windowContainer = wc;
 }
 
-void Popup::draw(Graphics *graphics)
+void Popup::draw(Graphics *const graphics)
 {
     BLOCK_START("Popup::draw")
 
@@ -124,7 +124,7 @@ void Popup::draw(Graphics *graphics)
     BLOCK_END("Popup::draw")
 }
 
-void Popup::safeDraw(Graphics *graphics)
+void Popup::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("Popup::safeDraw")
 

@@ -108,9 +108,9 @@ class ListBox notfinal : public Widget,
         /**
          * Draws the list box.
          */
-        void draw(Graphics *graphics) override A_NONNULL(2);
+        void draw(Graphics *const graphics) override A_NONNULL(2);
 
-        void safeDraw(Graphics *graphics) override A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override A_NONNULL(2);
 
         /**
          * Update the alpha value to the graphic components.

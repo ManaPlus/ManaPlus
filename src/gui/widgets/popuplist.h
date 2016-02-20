@@ -53,7 +53,7 @@ class PopupList final : public Popup,
 
         void widgetResized(const Event &event) override final;
 
-        void setSelected(int selected);
+        void setSelected(const int selected);
 
         int getSelected() const;
 

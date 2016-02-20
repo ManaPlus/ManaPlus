@@ -52,7 +52,8 @@ class NamesModel notfinal : public ListModel
         void add(const std::string &str)
         { mNames.push_back(str); }
 
-        void fillFromArray(const char *const *const arr, std::size_t size);
+        void fillFromArray(const char *const *const arr,
+                           const std::size_t size);
 
     protected:
         StringVect mNames;

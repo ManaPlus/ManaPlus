@@ -134,7 +134,7 @@ void DidYouKnowWindow::action(const ActionEvent &event)
 }
 
 void DidYouKnowWindow::handleLink(const std::string &link,
-                                  MouseEvent *event A_UNUSED)
+                                  MouseEvent *const event A_UNUSED)
 {
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))
         openBrowser(link);

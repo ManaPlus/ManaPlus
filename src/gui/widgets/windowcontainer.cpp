@@ -95,7 +95,7 @@ void WindowContainer::moveWidgetAfter(Widget *const after,
 }
 
 #ifdef USE_PROFILER
-void WindowContainer::draw(Graphics* graphics)
+void WindowContainer::draw(Graphics *const graphics)
 {
     BLOCK_START("WindowContainer::draw")
     Container::draw(graphics);

@@ -115,7 +115,7 @@ void Viewport::setMap(Map *const map)
     mMap = map;
 }
 
-void Viewport::draw(Graphics *graphics)
+void Viewport::draw(Graphics *const graphics)
 {
     BLOCK_START("Viewport::draw 1")
     static int lastTick = tick_time;
@@ -268,7 +268,7 @@ void Viewport::draw(Graphics *graphics)
     BLOCK_END("Viewport::draw 1")
 }
 
-void Viewport::safeDraw(Graphics *graphics)
+void Viewport::safeDraw(Graphics *const graphics)
 {
     Viewport::draw(graphics);
 }
@@ -584,8 +584,8 @@ void Viewport::getMouseTile(int &destX, int &destY)
     getMouseTile(mMouseX, mMouseY, destX, destY);
 }
 
-void Viewport::getMouseTile(const int x, int y,
-                            int &destX, int &destY)
+void Viewport::getMouseTile(const int x, const int y,
+                            int &destX, int &destY) const
 {
     const int tw = mMap->getTileWidth();
     const int th = mMap->getTileHeight();

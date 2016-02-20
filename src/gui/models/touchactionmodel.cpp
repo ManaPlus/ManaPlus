@@ -48,7 +48,7 @@ TouchActionsModel::TouchActionsModel() :
 {
     std::vector<SetupActionData*> data;
 
-    for (int f = 0, sz = touchActionDataSize; f < sz; f ++)
+    for (int f = 0, fsz = touchActionDataSize; f < fsz; f ++)
     {
         int k = 0;
         while (!touchActionData[f][k].name.empty())

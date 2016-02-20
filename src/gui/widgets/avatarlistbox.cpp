@@ -98,7 +98,7 @@ AvatarListBox::~AvatarListBox()
     }
 }
 
-void AvatarListBox::draw(Graphics *graphics)
+void AvatarListBox::draw(Graphics *const graphics)
 {
     BLOCK_START("AvatarListBox::draw")
     if (!mListModel || !localPlayer)
@@ -343,7 +343,7 @@ void AvatarListBox::draw(Graphics *graphics)
     BLOCK_END("AvatarListBox::draw")
 }
 
-void AvatarListBox::safeDraw(Graphics *graphics)
+void AvatarListBox::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("AvatarListBox::draw")
     if (!mListModel || !localPlayer)

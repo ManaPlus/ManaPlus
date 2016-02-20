@@ -311,7 +311,7 @@ void ScrollArea::updateAlpha()
     }
 }
 
-void ScrollArea::draw(Graphics *graphics)
+void ScrollArea::draw(Graphics *const graphics)
 {
     BLOCK_START("ScrollArea::draw")
     if (mVBarVisible || mHBarVisible)
@@ -365,7 +365,7 @@ void ScrollArea::draw(Graphics *graphics)
     BLOCK_END("ScrollArea::draw")
 }
 
-void ScrollArea::safeDraw(Graphics *graphics)
+void ScrollArea::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("ScrollArea::draw")
     if (mVBarVisible)
@@ -423,7 +423,7 @@ void ScrollArea::updateCalcFlag(Graphics *const graphics)
     }
 }
 
-void ScrollArea::drawFrame(Graphics *graphics)
+void ScrollArea::drawFrame(Graphics *const graphics)
 {
     BLOCK_START("ScrollArea::drawFrame")
     if (mOpaque)
@@ -448,7 +448,7 @@ void ScrollArea::drawFrame(Graphics *graphics)
     BLOCK_END("ScrollArea::drawFrame")
 }
 
-void ScrollArea::safeDrawFrame(Graphics *graphics)
+void ScrollArea::safeDrawFrame(Graphics *const graphics)
 {
     BLOCK_START("ScrollArea::drawFrame")
     if (mOpaque)

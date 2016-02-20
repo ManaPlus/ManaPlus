@@ -110,15 +110,15 @@ class GuiTable final : public Widget,
         { mLinewiseMode = linewise; }
 
         // Inherited from Widget
-        void draw(Graphics* graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics* graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         Widget *getWidgetAt(int x, int y) override final A_WARN_UNUSED;
 
-        void moveToTop(Widget *child) override final;
+        void moveToTop(Widget *const widget) override final;
 
-        void moveToBottom(Widget *child) override final;
+        void moveToBottom(Widget *const widget) override final;
 
         void setFocusHandler(FocusHandler *const focusHandler) override final;
 
@@ -172,9 +172,9 @@ class GuiTable final : public Widget,
         int getColumnWidth(const int i) const A_WARN_UNUSED;
 
     private:
-        int getRowForY(int y) const A_WARN_UNUSED;     // -1 on error
+        int getRowForY(const int y) const A_WARN_UNUSED;     // -1 on error
 
-        int getColumnForX(int x) const A_WARN_UNUSED;  // -1 on error
+        int getColumnForX(const int x) const A_WARN_UNUSED;  // -1 on error
 
         void recomputeDimensions();
 

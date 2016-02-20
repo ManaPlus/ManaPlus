@@ -150,8 +150,9 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     const std::vector<int> &items = CharDB::getDefaultItems();
     int i = 1;
     for (std::vector<int>::const_iterator it = items.begin(),
-         it_end = items.end();
-         it != it_end; ++ it, i ++)
+         it_fend = items.end();
+         it != it_fend;
+         ++ it, i ++)
     {
         mPlayer->setSprite(i, *it);
     }

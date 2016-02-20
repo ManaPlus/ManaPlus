@@ -261,7 +261,7 @@ void ItemContainer::logic()
     BLOCK_END("ItemContainer::logic")
 }
 
-void ItemContainer::draw(Graphics *graphics)
+void ItemContainer::draw(Graphics *const graphics)
 {
     if (!mInventory || !mShowMatrix)
         return;
@@ -392,7 +392,7 @@ void ItemContainer::draw(Graphics *graphics)
     BLOCK_END("ItemContainer::draw")
 }
 
-void ItemContainer::safeDraw(Graphics *graphics)
+void ItemContainer::safeDraw(Graphics *const graphics)
 {
     if (!mInventory || !mShowMatrix)
         return;

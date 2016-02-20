@@ -183,8 +183,10 @@ void CharSelectDialog::action(const ActionEvent &event)
     // Check if a button of a character was pressed
     const Widget *const sourceParent = event.getSource()->getParent();
     int selected = -1;
-    for (unsigned int i = 0, sz = CAST_U32(
-         mCharacterEntries.size()); i < sz; ++i)
+    for (unsigned int i = 0, fsz = CAST_U32(
+         mCharacterEntries.size());
+         i < fsz;
+         ++i)
     {
         if (mCharacterEntries[i] == sourceParent)
         {
@@ -616,8 +618,10 @@ void CharSelectDialog::updateState()
 
 void CharSelectDialog::setName(const BeingId id, const std::string &newName)
 {
-    for (unsigned int i = 0, sz = CAST_U32(
-         mCharacterEntries.size()); i < sz; ++i)
+    for (unsigned int i = 0, fsz = CAST_U32(
+         mCharacterEntries.size());
+         i < fsz;
+         ++i)
     {
         if (!mCharacterEntries[i])
             continue;

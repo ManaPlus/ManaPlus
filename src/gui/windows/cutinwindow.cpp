@@ -55,13 +55,13 @@ CutInWindow::~CutInWindow()
     delete2(mImage);
 }
 
-void CutInWindow::draw(Graphics *graphics)
+void CutInWindow::draw(Graphics *const graphics)
 {
     Window::draw(graphics);
     draw2(graphics);
 }
 
-void CutInWindow::safeDraw(Graphics *graphics)
+void CutInWindow::safeDraw(Graphics *const graphics)
 {
     Window::safeDraw(graphics);
     draw2(graphics);

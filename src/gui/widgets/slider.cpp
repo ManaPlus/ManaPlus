@@ -185,7 +185,7 @@ void Slider::updateAlpha()
     }
 }
 
-void Slider::draw(Graphics *graphics)
+void Slider::draw(Graphics *const graphics)
 {
     BLOCK_START("Slider::draw")
     if (!buttons[0].grid[HSTART] || !buttons[1].grid[HSTART]
@@ -283,7 +283,7 @@ void Slider::draw(Graphics *graphics)
     BLOCK_END("Slider::draw")
 }
 
-void Slider::safeDraw(Graphics *graphics)
+void Slider::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("Slider::draw")
     if (!buttons[0].grid[HSTART] || !buttons[1].grid[HSTART]

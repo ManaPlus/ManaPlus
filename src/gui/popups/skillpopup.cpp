@@ -85,7 +85,7 @@ SkillPopup::~SkillPopup()
 }
 
 void SkillPopup::show(const SkillInfo *const skill,
-                      int level)
+                      const int level)
 {
     if (!skill ||
         !skill->data ||

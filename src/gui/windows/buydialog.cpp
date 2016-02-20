@@ -566,7 +566,8 @@ void BuyDialog::action(const ActionEvent &event)
 #ifdef EATHENA_SUPPORT
             if (serverFeatures->haveVending())
             {
-                Being *const being = actorManager->findBeingByName(mNick);
+                const Being *const being = actorManager->findBeingByName(
+                    mNick);
                 if (being)
                 {
                     vendingHandler->buy(being,

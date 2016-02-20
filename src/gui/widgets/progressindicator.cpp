@@ -32,7 +32,7 @@
 
 #include "debug.h"
 
-ProgressIndicator::ProgressIndicator(Widget2 *const widget) :
+ProgressIndicator::ProgressIndicator(const Widget2 *const widget) :
     Widget(widget),
     mIndicator(nullptr)
 {
@@ -42,8 +42,12 @@ ProgressIndicator::ProgressIndicator(Widget2 *const widget) :
     if (images)
     {
         Animation *const anim = new Animation;
-        for (ImageSet::size_type i = 0, sz = images->size(); i < sz; ++i)
-             anim->addFrame(images->get(i), 100, 0, 0, 100);
+        for (ImageSet::size_type i = 0, fsz = images->size();
+             i < fsz;
+             ++i)
+        {
+            anim->addFrame(images->get(i), 100, 0, 0, 100);
+        }
         mIndicator = new SimpleAnimation(anim);
         images->decRef();
     }
@@ -67,7 +71,7 @@ void ProgressIndicator::logic()
     BLOCK_END("ProgressIndicator::logic")
 }
 
-void ProgressIndicator::draw(Graphics *graphics)
+void ProgressIndicator::draw(Graphics *const graphics)
 {
     BLOCK_START("ProgressIndicator::draw")
     if (mIndicator)
@@ -80,7 +84,7 @@ void ProgressIndicator::draw(Graphics *graphics)
     BLOCK_END("ProgressIndicator::draw")
 }
 
-void ProgressIndicator::safeDraw(Graphics *graphics)
+void ProgressIndicator::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("ProgressIndicator::draw")
     if (mIndicator)

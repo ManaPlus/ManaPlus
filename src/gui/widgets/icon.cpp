@@ -77,7 +77,7 @@ void Icon::setImage(Image *const image)
     }
 }
 
-void Icon::draw(Graphics *graphics)
+void Icon::draw(Graphics *const graphics)
 {
     BLOCK_START("Icon::draw")
     if (mImage)
@@ -89,7 +89,7 @@ void Icon::draw(Graphics *graphics)
     BLOCK_END("Icon::draw")
 }
 
-void Icon::safeDraw(Graphics *graphics)
+void Icon::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("Icon::draw")
     if (mImage)

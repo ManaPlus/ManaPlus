@@ -353,7 +353,7 @@ void Widget::distributeWindowResizeEvent()
         (*iter)->windowResized();
 }
 
-bool Widget::widgetExists(const Widget* widget)
+bool Widget::widgetExists(const Widget *const widget)
 {
     return mWidgetsSet.find(const_cast<Widget*>(widget))
         != mWidgetsSet.end();

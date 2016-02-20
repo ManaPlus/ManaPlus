@@ -38,7 +38,7 @@ HorizontContainer::HorizontContainer(const Widget2 *const widget,
     addMouseListener(this);
 }
 
-void HorizontContainer::add(Widget *widget)
+void HorizontContainer::add(Widget *const widget)
 {
     add(widget, mSpacing);
 }

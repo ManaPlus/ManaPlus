@@ -116,7 +116,7 @@ void DebugWindow::slowLogic()
     BLOCK_END("DebugWindow::slowLogic")
 }
 
-void DebugWindow::draw(Graphics *g)
+void DebugWindow::draw(Graphics *const g)
 {
     BLOCK_START("DebugWindow::draw")
     Window::draw(g);
@@ -134,7 +134,7 @@ void DebugWindow::draw(Graphics *g)
     BLOCK_END("DebugWindow::draw")
 }
 
-void DebugWindow::safeDraw(Graphics *g)
+void DebugWindow::safeDraw(Graphics *const g)
 {
     BLOCK_START("DebugWindow::draw")
     Window::safeDraw(g);

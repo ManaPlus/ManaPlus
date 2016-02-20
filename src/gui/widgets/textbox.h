@@ -107,9 +107,9 @@ class TextBox final : public Widget,
 
         void keyPressed(KeyEvent& event) override final;
 
-        void draw(Graphics* graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics* graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         void setForegroundColor(const Color &color);
 
@@ -289,7 +289,7 @@ class TextBox final : public Widget,
          */
         void drawCaret(Graphics *const graphics,
                        const int x,
-                       const int y) A_NONNULL(2);
+                       const int y) const A_NONNULL(2);
 
         /**
          * Adjusts the text box's size to fit the text.

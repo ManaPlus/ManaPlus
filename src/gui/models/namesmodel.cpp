@@ -45,7 +45,8 @@ std::string NamesModel::getElementAt(int i)
     return mNames[CAST_SIZE(i)];
 }
 
-void NamesModel::fillFromArray(const char *const *const arr, std::size_t sz)
+void NamesModel::fillFromArray(const char *const *const arr,
+                               const std::size_t sz)
 {
     if (!arr)
         return;

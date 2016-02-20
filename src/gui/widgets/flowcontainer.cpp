@@ -86,7 +86,7 @@ void FlowContainer::widgetResized(const Event &event A_UNUSED)
     }
 }
 
-void FlowContainer::add(Widget *widget)
+void FlowContainer::add(Widget *const widget)
 {
     if (!widget)
         return;

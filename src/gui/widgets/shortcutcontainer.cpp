@@ -118,7 +118,7 @@ int ShortcutContainer::getIndexFromGrid(const int pointX,
     return index;
 }
 
-void ShortcutContainer::drawBackground(Graphics *g)
+void ShortcutContainer::drawBackground(Graphics *const g)
 {
     if (mBackgroundImg)
     {
@@ -138,7 +138,7 @@ void ShortcutContainer::drawBackground(Graphics *g)
     }
 }
 
-void ShortcutContainer::safeDrawBackground(Graphics *g)
+void ShortcutContainer::safeDrawBackground(Graphics *const g)
 {
     if (mBackgroundImg)
     {
