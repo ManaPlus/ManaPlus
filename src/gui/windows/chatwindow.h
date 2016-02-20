@@ -324,6 +324,8 @@ class ChatWindow final : public Window,
 
         void showGMTab();
 
+        void debugMessage(const std::string &msg) override final;
+
 #ifdef USE_PROFILER
         void logicChildren();
 #endif
@@ -370,8 +372,6 @@ class ChatWindow final : public Window,
         void initTradeFilter();
 
         unsigned int mRainbowColor;
-
-        void debugMessage(const std::string &msg) override final;
 
     private:
         void fillCommands();
