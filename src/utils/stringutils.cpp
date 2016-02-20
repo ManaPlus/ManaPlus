@@ -601,8 +601,8 @@ std::string stringToHexPath(const std::string &str)
         return "";
 
     std::string hex = strprintf("%%%2x/", CAST_U32(str[0]));
-    for (unsigned f = 1, sz = CAST_U32(str.size());
-         f < sz; f ++)
+    for (unsigned f = 1, fsz = CAST_U32(str.size());
+         f < fsz; f ++)
     {
         hex.append(strprintf("%%%2x", CAST_U32(str[f])));
     }

@@ -58,7 +58,7 @@ TEST_CASE("xml doc")
 
     SECTION("load2")
     {
-        const char *xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+        const char *const xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
             "<root><data option1=\"false\" option2=\"true\"/>"
             "<cont>this is test</cont></root>";
         XML::Document doc(xml, strlen(xml));
@@ -92,7 +92,7 @@ TEST_CASE("xml doc")
 
     SECTION("load4")
     {
-        const char *xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+        const char *const xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
             "<root>this is test</root>";
         XML::Document doc(xml, strlen(xml));
         REQUIRE(doc.isLoaded() == true);
@@ -191,7 +191,7 @@ TEST_CASE("xml doc")
 
     SECTION("child2")
     {
-        const char *xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+        const char *const xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
             "<root><data option1=\"false\" option2=\"true\" "
             "option3=\"10.5\"/></root>";
         XML::Document doc(xml, strlen(xml));

@@ -210,7 +210,7 @@ int Files::copyFile(const std::string &restrict srcName,
 
 void Files::getFiles(const std::string &path, StringVect &list)
 {
-    char **fonts = PhysFs::enumerateFiles(path.c_str());
+    char **const fonts = PhysFs::enumerateFiles(path.c_str());
     for (char *const *i = fonts; *i; i++)
     {
         if (!PhysFs::isDirectory((path + *i).c_str()))
@@ -221,7 +221,7 @@ void Files::getFiles(const std::string &path, StringVect &list)
 
 void Files::getDirs(const std::string &path, StringVect &list)
 {
-    char **fonts = PhysFs::enumerateFiles(path.c_str());
+    char **const fonts = PhysFs::enumerateFiles(path.c_str());
     for (char *const *i = fonts; *i; i++)
     {
         if (PhysFs::isDirectory((path + *i).c_str()))
@@ -232,7 +232,7 @@ void Files::getDirs(const std::string &path, StringVect &list)
 
 void Files::getFilesWithDir(const std::string &path, StringVect &list)
 {
-    char **fonts = PhysFs::enumerateFiles(path.c_str());
+    char **const fonts = PhysFs::enumerateFiles(path.c_str());
     for (char *const *i = fonts; *i; i++)
     {
         if (!PhysFs::isDirectory((path + *i).c_str()))
@@ -353,7 +353,7 @@ void Files::saveTextFile(std::string path,
 void Files::deleteFilesInDirectory(std::string path)
 {
     path += "/";
-    struct dirent *next_file = nullptr;
+    const struct dirent *next_file = nullptr;
     DIR *const dir = opendir(path.c_str());
 
     while ((next_file = readdir(dir)))
