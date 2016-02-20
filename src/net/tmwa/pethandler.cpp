@@ -53,7 +53,8 @@ void PetHandler::spawn(const Being *const being A_UNUSED,
 {
 }
 
-void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED)
+void PetHandler::emote(const uint8_t emoteId,
+                       const int petId A_UNUSED)
 {
     mRandCounter ++;
     if (mRandCounter > 10000)

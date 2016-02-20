@@ -140,7 +140,7 @@ GeneralHandler::~GeneralHandler()
     delete2(Network::mInstance);
 }
 
-void GeneralHandler::load()
+void GeneralHandler::load() const
 {
     new Network;
     Network::mInstance->registerHandlers();
@@ -169,7 +169,7 @@ void GeneralHandler::unload()
     clearHandlers();
 }
 
-void GeneralHandler::flushSend()
+void GeneralHandler::flushSend() const
 {
     if (!Network::mInstance)
         return;
@@ -177,7 +177,7 @@ void GeneralHandler::flushSend()
     Network::mInstance->flush();
 }
 
-void GeneralHandler::flushNetwork()
+void GeneralHandler::flushNetwork() const
 {
     if (!Network::mInstance)
         return;
@@ -201,7 +201,7 @@ void GeneralHandler::flushNetwork()
     }
 }
 
-void GeneralHandler::clearHandlers()
+void GeneralHandler::clearHandlers() const
 {
     if (Network::mInstance)
         Network::mInstance->clearHandlers();

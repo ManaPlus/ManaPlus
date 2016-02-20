@@ -37,11 +37,11 @@ class LoginHandler final : public Ea::LoginHandler
 
         ~LoginHandler();
 
-        void connect() override final;
+        void connect() const override final;
 
         bool isConnected() const override final A_WARN_UNUSED;
 
-        void disconnect() override final;
+        void disconnect() const override final;
 
         unsigned int getMaxPasswordLength() const override final A_WARN_UNUSED
         { return 24; }

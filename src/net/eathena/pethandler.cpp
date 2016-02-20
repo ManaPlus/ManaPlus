@@ -56,7 +56,8 @@ void PetHandler::spawn(const Being *const being A_UNUSED,
 {
 }
 
-void PetHandler::emote(const uint8_t emoteId, const int petId A_UNUSED)
+void PetHandler::emote(const uint8_t emoteId,
+                       const int petId A_UNUSED)
 {
     createOutPacket(CMSG_PET_EMOTE);
     outMsg.writeInt8(emoteId, "emote id");

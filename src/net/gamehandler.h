@@ -34,11 +34,11 @@ class GameHandler notfinal
         virtual ~GameHandler()
         {}
 
-        virtual void connect() = 0;
+        virtual void connect() const = 0;
 
         virtual bool isConnected() const = 0;
 
-        virtual void disconnect() = 0;
+        virtual void disconnect() const = 0;
 
         virtual void who() const = 0;
 
@@ -56,7 +56,7 @@ class GameHandler notfinal
 
         virtual void initEngines() const = 0;
 
-        virtual void clear() = 0;
+        virtual void clear() const = 0;
 };
 
 }  // namespace Net

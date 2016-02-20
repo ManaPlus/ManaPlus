@@ -147,7 +147,7 @@ void Network::dispatchMessages()
 
         if (msgId < messagesSize)
         {
-            PacketFuncPtr func = mPackets[msgId].func;
+            const PacketFuncPtr func = mPackets[msgId].func;
             if (func)
                 func(msg);
             else

@@ -43,8 +43,8 @@ class BeingHandler final : public Ea::BeingHandler
 
         void requestNameByCharId(const int id) const override final;
 
-    protected:
-        void viewPlayerEquipment(const Being *const being);
+        void viewPlayerEquipment(const Being *const being) const
+                                 override final;
 };
 
 }  // namespace EAthena

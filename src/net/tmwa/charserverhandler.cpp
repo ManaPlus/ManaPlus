@@ -56,7 +56,7 @@ CharServerHandler::CharServerHandler() :
     charServerHandler = this;
 }
 
-void CharServerHandler::chooseCharacter(Net::Character *const character)
+void CharServerHandler::chooseCharacter(Net::Character *const character) const
 {
     if (!character)
         return;
@@ -91,6 +91,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
 
 void CharServerHandler::deleteCharacter(Net::Character *const character,
                                         const std::string &email A_UNUSED)
+                                        const
 {
     if (!character)
         return;
@@ -109,7 +110,7 @@ void CharServerHandler::switchCharacter() const
     outMsg.writeInt8(1, "flag");
 }
 
-void CharServerHandler::connect()
+void CharServerHandler::connect() const
 {
     const Token &token =
         static_cast<LoginHandler*>(loginHandler)->getToken();
@@ -141,6 +142,7 @@ void CharServerHandler::connect()
 }
 
 void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
+                                            const
 {
     mCharCreateDialog = window;
 
@@ -179,11 +181,12 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
 
 void CharServerHandler::renameCharacter(const BeingId id A_UNUSED,
                                         const std::string &newName A_UNUSED)
+                                        const
 {
 }
 
 void CharServerHandler::changeSlot(const int oldSlot A_UNUSED,
-                                   const int newSlot A_UNUSED)
+                                   const int newSlot A_UNUSED) const
 {
 }
 

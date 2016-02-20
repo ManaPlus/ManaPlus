@@ -108,7 +108,7 @@ void ChatRecv::processIgnoreNickAck(Net::MessageIn &msg)
 void ChatRecv::processChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatRecv::processChat")
-    int chatMsgLength = msg.readInt16("len") - 4;
+    const int chatMsgLength = msg.readInt16("len") - 4;
     if (chatMsgLength <= 0)
     {
         BLOCK_END("ChatRecv::processChat")
@@ -160,8 +160,8 @@ void ChatRecv::processFormatMessage(Net::MessageIn &msg)
 
 void ChatRecv::processFormatMessageNumber(Net::MessageIn &msg)
 {
-    int msgId = msg.readInt16("msg id");
-    int value = msg.readInt32("value");
+    const int msgId = msg.readInt16("msg id");
+    const int value = msg.readInt32("value");
     if (msgId == 1862)
     {
         NotifyManager::notify(NotifyTypes::USE_ITEM_WAIT, value);
@@ -240,7 +240,7 @@ std::string ChatRecv::extractChannelFromMessage(std::string &chatMsg)
 }
 
 void ChatRecv::processChatContinue(std::string chatMsg,
-                                   ChatMsgTypeT own)
+                                   const ChatMsgTypeT own)
 {
     const std::string channel = extractChannelFromMessage(chatMsg);
     bool allow(true);
@@ -270,7 +270,7 @@ void ChatRecv::processChatContinue(std::string chatMsg,
 void ChatRecv::processGmChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatRecv::processChat")
-    int chatMsgLength = msg.readInt16("len") - 4;
+    const int chatMsgLength = msg.readInt16("len") - 4;
     if (chatMsgLength <= 0)
     {
         BLOCK_END("ChatRecv::processChat")
@@ -380,7 +380,7 @@ void ChatRecv::processChatRoomJoinAck(Net::MessageIn &msg)
         msg.readString(24, "name");
     }
 
-    ChatObject *oldChat = ChatObject::findById(id);
+    const ChatObject *const oldChat = ChatObject::findById(id);
 
     if (oldChat)
         PlayerInfo::setRoomName(oldChat->title);
@@ -441,7 +441,7 @@ void ChatRecv::processJoinChannel(Net::MessageIn &msg)
         return;
 
     const std::string channel = msg.readString(24, "channel name");
-    int flag = msg.readUInt8("flag");
+    const int flag = msg.readUInt8("flag");
 
     if (channel.size() < 2)
         return;
@@ -497,7 +497,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
         return;
 
     BLOCK_START("ChatRecv::processBeingChat")
-    int chatMsgLength = msg.readInt16("len") - 8;
+    const int chatMsgLength = msg.readInt16("len") - 8;
     Being *const being = actorManager->findBeing(msg.readBeingId("being id"));
 
     if (chatMsgLength <= 0)

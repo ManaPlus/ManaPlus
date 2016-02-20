@@ -70,7 +70,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void unequipAll(const Being *const being) const override final A_CONST;
 
-        void requestStats(const std::string &name) override final A_CONST;
+        void requestStats(const std::string &name) const override final
+                          A_CONST;
 };
 
 }  // namespace TmwAthena

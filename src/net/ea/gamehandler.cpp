@@ -47,7 +47,7 @@ void GameHandler::setMap(const std::string &map)
     GameRecv::mMap = map.substr(0, map.rfind("."));
 }
 
-void GameHandler::clear()
+void GameHandler::clear() const
 {
     GameRecv::mMap.clear();
     GameRecv::mCharID = BeingId_zero;

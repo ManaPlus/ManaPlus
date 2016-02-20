@@ -151,7 +151,7 @@ void AdminHandler::unequipAll(const Being *const being) const
     outMsg.writeBeingId(being->getId(), "account id");
 }
 
-void AdminHandler::requestStats(const std::string &name)
+void AdminHandler::requestStats(const std::string &name) const
 {
     mStatsName = name;
     createOutPacket(CMSG_ADMIN_REQUEST_STATS);

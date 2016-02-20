@@ -39,7 +39,7 @@ class MercenaryHandler notfinal
         virtual ~MercenaryHandler()
         { }
 
-        virtual void fire() = 0;
+        virtual void fire() const = 0;
 
         virtual void moveToMaster() const = 0;
 

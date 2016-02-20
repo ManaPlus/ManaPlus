@@ -120,7 +120,7 @@ void BeingRecv::processBeingChangeLook2(Net::MessageIn &msg)
     BLOCK_END("BeingRecv::processBeingChangeLook")
 }
 
-void BeingRecv::processBeingChangeLookContinue(Net::MessageIn &msg,
+void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                                                Being *const dstBeing,
                                                const uint8_t type,
                                                const int id,

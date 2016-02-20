@@ -32,11 +32,11 @@ FamilyHandler::FamilyHandler()
     familyHandler = this;
 }
 
-void FamilyHandler::askForChild(const Being *const being A_UNUSED)
+void FamilyHandler::askForChild(const Being *const being A_UNUSED) const
 {
 }
 
-void FamilyHandler::askForChildReply(const bool accept A_UNUSED)
+void FamilyHandler::askForChildReply(const bool accept A_UNUSED) const
 {
 }
 

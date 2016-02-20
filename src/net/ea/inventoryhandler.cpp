@@ -54,7 +54,7 @@ InventoryHandler::~InventoryHandler()
     delete2(InventoryRecv::mStorage);
 }
 
-void InventoryHandler::clear()
+void InventoryHandler::clear() const
 {
     delete2(InventoryRecv::mStorage);
 }
@@ -98,7 +98,7 @@ size_t InventoryHandler::getSize(const InventoryTypeT type) const
             return 0;
     }
 }
-void InventoryHandler::destroyStorage()
+void InventoryHandler::destroyStorage() const
 {
     BLOCK_START("InventoryHandler::closeStorage")
     if (storageWindow)
@@ -110,7 +110,7 @@ void InventoryHandler::destroyStorage()
     BLOCK_END("InventoryHandler::closeStorage")
 }
 
-void InventoryHandler::forgotStorage()
+void InventoryHandler::forgotStorage() const
 {
     storageWindow = nullptr;
 }

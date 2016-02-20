@@ -62,11 +62,11 @@ void BeingHandler::undress(Being *const being) const
 void BeingHandler::requestRanks(const RankT rank A_UNUSED) const
 {
 }
-#endif
 
-void BeingHandler::viewPlayerEquipment(const Being *const being A_UNUSED)
+void BeingHandler::viewPlayerEquipment(const Being *const being A_UNUSED) const
 {
 }
+#endif
 
 void BeingHandler::requestNameByCharId(const int id A_UNUSED) const
 {

@@ -43,13 +43,16 @@ class CharServerHandler notfinal
         virtual ~CharServerHandler()
         { }
 
-        virtual void setCharSelectDialog(CharSelectDialog *const window) = 0;
+        virtual void setCharSelectDialog(CharSelectDialog *const window)
+                                         const = 0;
 
-        virtual void setCharCreateDialog(CharCreateDialog *const window) = 0;
+        virtual void setCharCreateDialog(CharCreateDialog *const window)
+                                         const = 0;
 
         virtual void requestCharacters() = 0;
 
-        virtual void chooseCharacter(Net::Character *const character) = 0;
+        virtual void chooseCharacter(Net::Character *const character)
+                                     const = 0;
 
         virtual void newCharacter(const std::string &name,
                                   const int slot,
@@ -61,10 +64,10 @@ class CharServerHandler notfinal
                                   const std::vector<int> &stats) const = 0;
 
         virtual void deleteCharacter(Net::Character *const character,
-                                     const std::string &email) = 0;
+                                     const std::string &email) const = 0;
 
         virtual void renameCharacter(const BeingId id,
-                                     const std::string &newName) = 0;
+                                     const std::string &newName) const = 0;
 
         virtual void switchCharacter() const = 0;
 
@@ -76,13 +79,14 @@ class CharServerHandler notfinal
 
         virtual unsigned int maxSprite() const A_WARN_UNUSED = 0;
 
-        virtual void clear() = 0;
+        virtual void clear() const = 0;
 
         virtual bool isNeedCreatePin() const = 0;
 
-        virtual void setNewPincode(const std::string &pin) = 0;
+        virtual void setNewPincode(const std::string &pin) const = 0;
 
-        virtual void changeSlot(const int oldSlot, const int newSlot) = 0;
+        virtual void changeSlot(const int oldSlot,
+                                const int newSlot) const = 0;
 
         virtual void ping() const = 0;
 

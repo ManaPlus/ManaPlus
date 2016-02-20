@@ -40,7 +40,7 @@ namespace EAthena
         void processChat(Net::MessageIn &msg);
         void processColorChat(Net::MessageIn &msg);
         void processChatContinue(std::string chatMsg,
-                                 ChatMsgTypeT own);
+                                 const ChatMsgTypeT own);
         void processWhisper(Net::MessageIn &msg);
         void processWhisperResponse(Net::MessageIn &msg);
         void processGmChat(Net::MessageIn &msg);

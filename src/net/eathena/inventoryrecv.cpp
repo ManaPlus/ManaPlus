@@ -156,7 +156,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     int amount = msg.readInt16("count");
     const int itemId = msg.readInt16("item id");
-    uint8_t identified = msg.readUInt8("identified");
+    const uint8_t identified = msg.readUInt8("identified");
     const uint8_t damaged = msg.readUInt8("is damaged");
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
@@ -733,7 +733,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     int amount = msg.readInt32("count");
     const int itemId = msg.readInt16("item id");
     const int itemType = msg.readUInt8("item type");
-    uint8_t identified = msg.readUInt8("identified");
+    const uint8_t identified = msg.readUInt8("identified");
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
@@ -1058,7 +1058,7 @@ void InventoryRecv::processBindItem(Net::MessageIn &msg)
     if (inv)
     {
         std::string itemName;
-        const Item *item = inv->getItem(index);
+        const Item *const item = inv->getItem(index);
         if (item)
         {
             itemName = item->getName();

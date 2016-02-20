@@ -57,7 +57,7 @@ void GameHandler::mapLoadedEvent() const
     createOutPacket(CMSG_MAP_LOADED);
 }
 
-void GameHandler::connect()
+void GameHandler::connect() const
 {
     if (!Network::mInstance)
         return;
@@ -108,7 +108,7 @@ bool GameHandler::isConnected() const
     return Network::mInstance->isConnected();
 }
 
-void GameHandler::disconnect()
+void GameHandler::disconnect() const
 {
     if (Network::mInstance)
         Network::mInstance->disconnect();

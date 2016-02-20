@@ -38,7 +38,8 @@ class CharServerHandler final : public Ea::CharServerHandler
 
         A_DELETE_COPY(CharServerHandler)
 
-        void chooseCharacter(Net::Character *const character) override final;
+        void chooseCharacter(Net::Character *const character) const
+                             override final;
 
         void newCharacter(const std::string &name,
                           const int slot,
@@ -50,20 +51,21 @@ class CharServerHandler final : public Ea::CharServerHandler
                           const std::vector<int> &stats) const override final;
 
         void deleteCharacter(Net::Character *const character,
-                             const std::string &email) override final;
+                             const std::string &email) const override final;
 
         void renameCharacter(const BeingId id,
-                             const std::string &newName) override final
+                             const std::string &newName) const override final
                              A_CONST;
 
         void switchCharacter() const override final;
 
-        void connect() override final;
+        void connect() const override final;
 
         bool isNeedCreatePin() const override final
         { return false; }
 
-        void setNewPincode(const std::string &pin A_UNUSED) override final
+        void setNewPincode(const std::string &pin A_UNUSED) const
+                           override final
         { }
 
         /**
@@ -71,11 +73,11 @@ class CharServerHandler final : public Ea::CharServerHandler
          * dialog when a new character is successfully created, and will unlock
          * the dialog when a new character failed to be created.
          */
-        void setCharCreateDialog(CharCreateDialog *const window)
+        void setCharCreateDialog(CharCreateDialog *const window) const
                                  override final;
 
         void changeSlot(const int oldSlot,
-                        const int newSlot) override final A_CONST;
+                        const int newSlot) const override final A_CONST;
 
         void ping() const override final A_CONST;
 

@@ -35,11 +35,11 @@ class GameHandler final : public Ea::GameHandler
 
         A_DELETE_COPY(GameHandler)
 
-        void connect() override final;
+        void connect() const override final;
 
         bool isConnected() const override final A_WARN_UNUSED;
 
-        void disconnect() override final;
+        void disconnect() const override final;
 
         void quit() const override final;
 

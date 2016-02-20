@@ -220,7 +220,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
             localPlayer->stopAdvert();
         }
 
-        SkillInfo *const info = skillDialog->getSkill(bskill);
+        const SkillInfo *const info = skillDialog->getSkill(bskill);
         if (info)
         {
             txt = info->errorText;
@@ -233,7 +233,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
     }
     else
     {
-        SkillInfo *const info = skillDialog->getSkill(skillId);
+        const SkillInfo *const info = skillDialog->getSkill(skillId);
         if (info)
         {
             txt = info->errorText + ".";

@@ -39,7 +39,7 @@ MarketHandler::MarketHandler()
     MarketRecv::mBuyDialog = nullptr;
 }
 
-void MarketHandler::close()
+void MarketHandler::close() const
 {
     createOutPacket(CMSG_NPC_MARKET_CLOSE);
 }

@@ -54,7 +54,7 @@ class GuildHandler final : public Ea::GuildHandler
 
         void memberList() const override final;
 
-        void info() override final;
+        void info() const override final;
 
         void changeMemberPostion(const GuildMember *const member,
                                  const int level) const override final;

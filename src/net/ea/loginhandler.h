@@ -56,7 +56,7 @@ class LoginHandler notfinal : public Net::LoginHandler
 
         const Worlds &getWorlds() const override final A_CONST A_WARN_UNUSED;
 
-        void clearWorlds() override final;
+        void clearWorlds() const override final;
 
         virtual ServerInfo *getCharServer() const A_WARN_UNUSED = 0;
 

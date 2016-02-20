@@ -32,7 +32,7 @@ MarketHandler::MarketHandler()
     marketHandler = this;
 }
 
-void MarketHandler::close()
+void MarketHandler::close() const
 {
 }
 

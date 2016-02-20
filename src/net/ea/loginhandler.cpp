@@ -130,7 +130,7 @@ const Worlds &LoginHandler::getWorlds() const
     return LoginRecv::mWorlds;
 }
 
-void LoginHandler::clearWorlds()
+void LoginHandler::clearWorlds() const
 {
     delete_all(LoginRecv::mWorlds);
     LoginRecv::mWorlds.clear();

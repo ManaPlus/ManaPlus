@@ -35,7 +35,7 @@ class MercenaryHandler final : public Net::MercenaryHandler
 
         A_DELETE_COPY(MercenaryHandler)
 
-        void fire() override final A_CONST;
+        void fire() const override final A_CONST;
 
         void moveToMaster() const override final A_CONST;
 

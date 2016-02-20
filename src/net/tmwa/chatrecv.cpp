@@ -122,7 +122,7 @@ void ChatRecv::processChatContinue(std::string chatMsg,
 void ChatRecv::processGmChat(Net::MessageIn &msg)
 {
     BLOCK_START("ChatRecv::processChat")
-    int chatMsgLength = msg.readInt16("len") - 4;
+    const int chatMsgLength = msg.readInt16("len") - 4;
     if (chatMsgLength <= 0)
     {
         BLOCK_END("ChatRecv::processChat")
@@ -289,7 +289,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
         return;
 
     BLOCK_START("ChatRecv::processBeingChat")
-    int chatMsgLength = msg.readInt16("len") - 8;
+    const int chatMsgLength = msg.readInt16("len") - 8;
     const BeingId beingId = msg.readBeingId("being id");
     Being *const being = actorManager->findBeing(beingId);
 

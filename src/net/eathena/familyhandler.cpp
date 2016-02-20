@@ -41,7 +41,7 @@ FamilyHandler::FamilyHandler()
     familyHandler = this;
 }
 
-void FamilyHandler::askForChild(const Being *const being)
+void FamilyHandler::askForChild(const Being *const being) const
 {
     if (!being)
         return;
@@ -50,7 +50,7 @@ void FamilyHandler::askForChild(const Being *const being)
     outMsg.writeBeingId(being->getId(), "account id");
 }
 
-void FamilyHandler::askForChildReply(const bool accept)
+void FamilyHandler::askForChildReply(const bool accept) const
 {
     createOutPacket(CMSG_FAMILY_ASK_FOR_CHILD_REPLY);
     outMsg.writeInt32(FamilyRecv::mParent1, "parent1");

@@ -36,7 +36,7 @@ class InventoryHandler notfinal
         virtual ~InventoryHandler()
         { }
 
-        virtual void clear() = 0;
+        virtual void clear() const = 0;
 
         virtual void equipItem(const Item *const item) const = 0;
 
@@ -67,9 +67,9 @@ class InventoryHandler notfinal
 
         virtual Inventory *getStorage() const = 0;
 
-        virtual void destroyStorage() = 0;
+        virtual void destroyStorage() const = 0;
 
-        virtual void forgotStorage() = 0;
+        virtual void forgotStorage() const = 0;
 
         virtual int convertFromServerSlot(const int eAthenaSlot) const = 0;
 

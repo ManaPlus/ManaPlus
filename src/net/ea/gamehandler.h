@@ -40,9 +40,9 @@ class GameHandler notfinal : public Net::GameHandler
         bool removeDeadBeings() const override final A_WARN_UNUSED
         { return true; }
 
-        virtual void setMap(const std::string &map);
+        static void setMap(const std::string &map);
 
-        void clear() override final;
+        void clear() const override final;
 
         void initEngines() const override final;
 };

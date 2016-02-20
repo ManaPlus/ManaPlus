@@ -66,12 +66,13 @@ namespace EAthena
         void processSkillAutoCast(Net::MessageIn &msg);
         void processRanksList(Net::MessageIn &msg);
         void processBeingChangeDirection(Net::MessageIn &msg);
-        void processBeingChangeLookContinue(Net::MessageIn &msg,
+        void processBeingChangeLookContinue(const Net::MessageIn &msg,
                                             Being *const dstBeing,
                                             const uint8_t type,
                                             const int id,
                                             const int id2,
-                                            const int *cards) A_NONNULL(2);
+                                            const int *const cards)
+                                            A_NONNULL(2);
         void processBeingSpecialEffect(Net::MessageIn &msg);
         void processBeingSpecialEffectNum(Net::MessageIn &msg);
         void processBeingSoundEffect(Net::MessageIn &msg);

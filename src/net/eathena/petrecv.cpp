@@ -54,7 +54,7 @@ void PetRecv::processPetMessage(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("pet id");
     const int data = msg.readInt32("param");
-    Being *const dstBeing = actorManager->findBeing(id);
+    const Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
         return;
 
@@ -98,7 +98,7 @@ void PetRecv::processPetRoulette(Net::MessageIn &msg)
 void PetRecv::processEggsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 4) / 2;
-    Inventory *const inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     if (!inv)
         return;
     menu = MenuType::Eggs;

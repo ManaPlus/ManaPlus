@@ -41,7 +41,7 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         virtual ~InventoryHandler();
 
-        void clear() override final;
+        void clear() const override final;
 
         bool canSplit(const Item *const item) const
                       override final A_CONST A_WARN_UNUSED;
@@ -55,11 +55,11 @@ class InventoryHandler notfinal : public Net::InventoryHandler
         size_t getSize(const InventoryTypeT type) const override final
                        A_CONST A_WARN_UNUSED;
 
-        void pushPickup(const BeingId floorId);
+        static void pushPickup(const BeingId floorId);
 
-        void destroyStorage() override final;
+        void destroyStorage() const override final;
 
-        void forgotStorage() override final;
+        void forgotStorage() const override final;
 
         Inventory *getStorage() const override final;
 

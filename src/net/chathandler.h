@@ -50,14 +50,16 @@ class ChatHandler notfinal
                         const std::string &restrict channel) const = 0;
 
         virtual void privateMessage(const std::string &restrict recipient,
-                                    const std::string &restrict text) = 0;
+                                    const std::string &restrict text)
+                                    const = 0;
 
         virtual void channelMessage(const std::string &restrict channel,
-                                    const std::string &restrict text) = 0;
+                                    const std::string &restrict text)
+                                    const = 0;
 
         virtual void joinChannel(const std::string &channel) = 0;
 
-        virtual void partChannel(const std::string &channel) = 0;
+        virtual void partChannel(const std::string &channel) const = 0;
 
         virtual void who() const = 0;
 
@@ -73,12 +75,12 @@ class ChatHandler notfinal
 
         virtual void requestIgnoreList() const = 0;
 
-        virtual void clear() = 0;
+        virtual void clear() const = 0;
 
         virtual void createChatRoom(const std::string &title,
                                     const std::string &password,
                                     const int limit,
-                                    const bool isPublic) = 0;
+                                    const bool isPublic) const = 0;
 
         virtual void leaveChatRoom() const = 0;
 

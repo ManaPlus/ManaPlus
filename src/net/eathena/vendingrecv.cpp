@@ -81,7 +81,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 12) / 22;
     const BeingId id = msg.readBeingId("id");
-    Being *const being = actorManager->findBeing(id);
+    const Being *const being = actorManager->findBeing(id);
     if (!being)
         return;
     int cards[maxCards];

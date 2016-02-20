@@ -41,7 +41,7 @@ class MarketHandler notfinal
         virtual ~MarketHandler()
         { }
 
-        virtual void close() = 0;
+        virtual void close() const = 0;
 
         virtual void buyItem(const int itemId,
                              const int type,

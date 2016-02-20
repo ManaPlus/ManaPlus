@@ -50,7 +50,7 @@ LoginHandler::~LoginHandler()
 {
 }
 
-void LoginHandler::connect()
+void LoginHandler::connect() const
 {
     if (!Network::mInstance)
         return;
@@ -75,7 +75,7 @@ bool LoginHandler::isConnected() const
     return Network::mInstance->isConnected();
 }
 
-void LoginHandler::disconnect()
+void LoginHandler::disconnect() const
 {
     if (Network::mInstance && Network::mInstance->getServer() == mServer)
         Network::mInstance->disconnect();

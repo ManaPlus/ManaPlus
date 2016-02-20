@@ -140,7 +140,7 @@ void GuildHandler::memberList() const
     outMsg.writeInt32(1, "action");  // Request member list
 }
 
-void GuildHandler::info()
+void GuildHandler::info() const
 {
     // 0 = basic info + alliance info
     // 1 = position name list + member list

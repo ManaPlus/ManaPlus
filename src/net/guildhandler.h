@@ -56,7 +56,7 @@ class GuildHandler notfinal
 
         virtual void memberList() const = 0;
 
-        virtual void info() = 0;
+        virtual void info() const = 0;
 
         virtual void changeMemberPostion(const GuildMember *const member,
                                          const int level) const = 0;

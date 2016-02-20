@@ -39,7 +39,7 @@ MercenaryHandler::MercenaryHandler()
     mercenaryHandler = this;
 }
 
-void MercenaryHandler::fire()
+void MercenaryHandler::fire() const
 {
     createOutPacket(CMSG_MERCENARY_ACTION);
     outMsg.writeInt8(2, "action");  // delete

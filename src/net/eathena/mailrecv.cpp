@@ -90,7 +90,7 @@ void MailRecv::processMailList(Net::MessageIn &msg)
 void MailRecv::processReadMail(Net::MessageIn &msg)
 {
     const int sz = msg.readInt16("len") - 101;
-    MailMessage *mail = new MailMessage;
+    MailMessage *const mail = new MailMessage;
     mail->id = msg.readInt32("message id");
     mail->title = msg.readString(40, "title");
     mail->sender = msg.readString(24, "sender name");

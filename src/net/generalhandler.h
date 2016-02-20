@@ -34,17 +34,17 @@ class GeneralHandler notfinal
         virtual ~GeneralHandler()
         { }
 
-        virtual void load() = 0;
+        virtual void load() const = 0;
 
         virtual void reload() = 0;
 
         virtual void unload() = 0;
 
-        virtual void flushNetwork() = 0;
+        virtual void flushNetwork() const = 0;
 
-        virtual void flushSend() = 0;
+        virtual void flushSend() const = 0;
 
-        virtual void clearHandlers() = 0;
+        virtual void clearHandlers() const = 0;
 
         virtual void reloadPartially() const = 0;
 

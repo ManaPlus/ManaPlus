@@ -44,6 +44,7 @@ CharServerHandler::CharServerHandler() :
 }
 
 void CharServerHandler::setCharSelectDialog(CharSelectDialog *const window)
+                                            const
 {
     mCharSelectDialog = window;
     updateCharSelectDialog();
@@ -69,7 +70,7 @@ unsigned int CharServerHandler::maxSprite() const
     return EA_SPRITE_VECTOREND;
 }
 
-void CharServerHandler::clear()
+void CharServerHandler::clear() const
 {
     delete_all(mCharacters);
     mCharacters.clear();

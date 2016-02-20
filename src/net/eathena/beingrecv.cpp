@@ -107,7 +107,7 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
 
         FOR_EACH (Net::Characters::iterator, it, chars)
         {
-            Net::Character *character = *it;
+            const Net::Character *const character = *it;
             if (character->dummy && character->dummy->getId() == id)
             {
                 dstBeing = character->dummy;
@@ -137,12 +137,12 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
     processBeingChangeLookContinue(msg, dstBeing, type, id, id2, &cards[0]);
 }
 
-void BeingRecv::processBeingChangeLookContinue(Net::MessageIn &msg,
+void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                                                Being *const dstBeing,
                                                const uint8_t type,
                                                const int id,
                                                const int id2,
-                                               const int *cards)
+                                               const int *const cards)
 {
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
@@ -342,7 +342,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(32, CAST_U16(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
+    const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
     if (dstBeing->getType() == ActorType::Player)
     {
@@ -508,7 +508,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(32, CAST_U16(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
+    const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
     if (dstBeing->getType() == ActorType::Player)
     {
@@ -679,7 +679,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     dstBeing->setStatusEffectBlock(32, CAST_U16(
         msg.readInt32("opt3")));
     dstBeing->setKarma(msg.readUInt8("karma"));
-    uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
+    const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
     if (dstBeing->getType() == ActorType::Player)
     {
@@ -756,7 +756,7 @@ void BeingRecv::processMapTypeProperty(Net::MessageIn &msg)
         // +++ need get other flags from here
         MapTypeProperty2 props;
         props.data = CAST_U32(flags);
-        Game *const game = Game::instance();
+        const Game *const game = Game::instance();
         if (!game)
             return;
         Map *const map = game->getCurrentMap();
@@ -1230,7 +1230,7 @@ void BeingRecv::processPlaterStatusChange2(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    uint32_t statusEffects = msg.readInt32("status effect");
+    const uint32_t statusEffects = msg.readInt32("status effect");
     dstBeing->setLevel(msg.readInt32("level"));
     msg.readInt32("showEFST");
 
@@ -1715,7 +1715,7 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
         id, type, fromInt(job, BeingTypeId));
     if (beingType == BeingType::MERSOL)
     {
-        MercenaryInfo *const info = PlayerInfo::getMercenary();
+        const MercenaryInfo *const info = PlayerInfo::getMercenary();
         if (info && info->id == id)
             PlayerInfo::setMercenaryBeing(being);
     }

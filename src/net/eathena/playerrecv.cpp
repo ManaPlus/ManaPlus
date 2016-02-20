@@ -391,11 +391,11 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
     while (buf - start + 1 < size
            && *(buf + CAST_SIZE(addVal)))
     {
-        unsigned char status = *buf;
+        const unsigned char status = *buf;
         buf ++;
-        unsigned char level = *buf;
+        const unsigned char level = *buf;
         buf ++;
-        unsigned char ver = *buf;
+        const unsigned char ver = *buf;
         buf ++;
 
         GenderT gender = Gender::UNSPECIFIED;

@@ -69,7 +69,7 @@ class AdminHandler final : public Ea::AdminHandler
 
         void unequipAll(const Being *const being) const override final;
 
-        void requestStats(const std::string &name) override final;
+        void requestStats(const std::string &name) const override final;
 
     protected:
         static std::string mStatsName;

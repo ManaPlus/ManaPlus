@@ -32,7 +32,7 @@ MercenaryHandler::MercenaryHandler()
     mercenaryHandler = this;
 }
 
-void MercenaryHandler::fire()
+void MercenaryHandler::fire() const
 {
 }
 

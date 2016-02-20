@@ -121,7 +121,7 @@ void BuyingStoreRecv::processBuyingStoreItemsList(Net::MessageIn &msg)
     // +++ in future need use it too
     msg.readInt32("money limit");
 
-    Being *const dstBeing = actorManager->findBeing(id);
+    const Being *const dstBeing = actorManager->findBeing(id);
     if (!dstBeing)
         return;
 
@@ -129,7 +129,7 @@ void BuyingStoreRecv::processBuyingStoreItemsList(Net::MessageIn &msg)
         dstBeing->getId(),
         storeId);
     dialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
-    Inventory *const inv = PlayerInfo::getInventory();
+    const Inventory *const inv = PlayerInfo::getInventory();
     for (int f = 0; f < count; f ++)
     {
         const int price = msg.readInt32("price");

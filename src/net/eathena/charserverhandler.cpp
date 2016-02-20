@@ -57,7 +57,7 @@ CharServerHandler::CharServerHandler() :
     charServerHandler = this;
 }
 
-void CharServerHandler::chooseCharacter(Net::Character *const character)
+void CharServerHandler::chooseCharacter(Net::Character *const character) const
 {
     if (!character)
         return;
@@ -100,7 +100,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *const character,
-                                        const std::string &email)
+                                        const std::string &email) const
 {
     if (!character)
         return;
@@ -122,7 +122,7 @@ void CharServerHandler::switchCharacter() const
     outMsg.writeInt8(1, "flag");
 }
 
-void CharServerHandler::connect()
+void CharServerHandler::connect() const
 {
     const Token &token =
         static_cast<LoginHandler*>(loginHandler)->getToken();
@@ -144,6 +144,7 @@ void CharServerHandler::connect()
 }
 
 void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
+                                            const
 {
     mCharCreateDialog = window;
 
@@ -158,7 +159,7 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
     mCharCreateDialog->setDefaultGender(token.sex);
 }
 
-void CharServerHandler::setNewPincode(const std::string &pin A_UNUSED)
+void CharServerHandler::setNewPincode(const std::string &pin A_UNUSED) const
 {
 //  here need ecript pin with mPinSeed and pin values.
 
@@ -168,7 +169,7 @@ void CharServerHandler::setNewPincode(const std::string &pin A_UNUSED)
 }
 
 void CharServerHandler::renameCharacter(const BeingId id,
-                                        const std::string &newName)
+                                        const std::string &newName) const
 {
     createOutPacket(CMSG_CHAR_CHECK_RENAME);
     CharServerRecv::mRenameId = id;
@@ -177,7 +178,8 @@ void CharServerHandler::renameCharacter(const BeingId id,
     outMsg.writeString(newName, 24, "name");
 }
 
-void CharServerHandler::changeSlot(const int oldSlot, const int newSlot)
+void CharServerHandler::changeSlot(const int oldSlot,
+                                   const int newSlot) const
 {
     createOutPacket(CMSG_CHAR_CHANGE_SLOT);
     outMsg.writeInt16(CAST_S16(oldSlot), "old slot");

@@ -43,6 +43,8 @@ class BeingHandler notfinal
 
 #ifdef EATHENA_SUPPORT
         virtual void requestRanks(const RankT rank) const = 0;
+
+        virtual void viewPlayerEquipment(const Being *const being) const = 0;
 #endif
 };
 

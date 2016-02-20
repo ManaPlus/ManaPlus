@@ -72,7 +72,7 @@ void ChatHandler::talkRaw(const std::string &mes) const
 }
 
 void ChatHandler::privateMessage(const std::string &restrict recipient,
-                                 const std::string &restrict text)
+                                 const std::string &restrict text) const
 {
     createOutPacket(CMSG_CHAT_WHISPER);
     outMsg.writeInt16(CAST_S16(text.length() + 28 + 1), "len");
@@ -83,7 +83,7 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
 }
 
 void ChatHandler::channelMessage(const std::string &restrict channel,
-                                 const std::string &restrict text)
+                                 const std::string &restrict text) const
 {
     privateMessage(channel, text);
 }
@@ -198,7 +198,7 @@ void ChatHandler::requestIgnoreList() const
 void ChatHandler::createChatRoom(const std::string &title,
                                  const std::string &password,
                                  const int limit,
-                                 const bool isPublic)
+                                 const bool isPublic) const
 {
     createOutPacket(CMSG_CREAYE_CHAT_ROOM);
     outMsg.writeInt16(CAST_S16(
@@ -248,7 +248,7 @@ void ChatHandler::joinChannel(const std::string &channel)
     }
 }
 
-void ChatHandler::partChannel(const std::string &channel)
+void ChatHandler::partChannel(const std::string &channel) const
 {
     if (serverFeatures->haveJoinChannel())
     {

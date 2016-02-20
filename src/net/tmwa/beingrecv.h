@@ -58,7 +58,7 @@ namespace TmwAthena
         void processBeingStatusChange(Net::MessageIn &msg);
         void processBeingMove2(Net::MessageIn &msg);
         void processBeingChangeDirection(Net::MessageIn &msg);
-        void processBeingChangeLookContinue(Net::MessageIn &msg,
+        void processBeingChangeLookContinue(const Net::MessageIn &msg,
                                             Being *const dstBeing,
                                             const uint8_t type,
                                             const int id,

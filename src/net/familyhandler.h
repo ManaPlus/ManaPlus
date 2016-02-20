@@ -38,9 +38,9 @@ class FamilyHandler notfinal
         virtual ~FamilyHandler()
         { }
 
-        virtual void askForChild(const Being *const being) = 0;
+        virtual void askForChild(const Being *const being) const = 0;
 
-        virtual void askForChildReply(const bool accept) = 0;
+        virtual void askForChildReply(const bool accept) const = 0;
 };
 
 }  // namespace Net

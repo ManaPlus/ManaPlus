@@ -40,11 +40,11 @@ class LoginHandler notfinal
         const ServerInfo &getServer() const A_WARN_UNUSED
         { return mServer; }
 
-        virtual void connect() = 0;
+        virtual void connect() const = 0;
 
         virtual bool isConnected() const A_WARN_UNUSED = 0;
 
-        virtual void disconnect() = 0;
+        virtual void disconnect() const = 0;
 
         virtual bool isRegistrationEnabled() const A_WARN_UNUSED = 0;
 
@@ -83,7 +83,7 @@ class LoginHandler notfinal
 
         virtual const Worlds &getWorlds() const A_WARN_UNUSED = 0;
 
-        virtual void clearWorlds() = 0;
+        virtual void clearWorlds() const = 0;
 
         virtual void loginOrRegister(LoginData *const data) const = 0;
 
