@@ -36,6 +36,11 @@
 
 int TextDialog::instances = 0;
 
+namespace
+{
+    const std::string emptyStr;
+}  // namespace
+
 TextDialog::TextDialog(const std::string &restrict title,
                        const std::string &restrict msg,
                        Window *const parent,
@@ -110,15 +115,16 @@ const std::string &TextDialog::getText() const
 {
     if (mTextField)
         return mTextField->getText();
-    else
+    else if (mPasswordField)
         return mPasswordField->getText();
+    return emptyStr;
 }
 
 void TextDialog::setText(const std::string &text)
 {
     if (mTextField)
         mTextField->setText(text);
-    else
+    else if (mPasswordField)
         mPasswordField->setText(text);
 }
 

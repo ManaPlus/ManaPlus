@@ -312,7 +312,8 @@ void UpdaterWindow::action(const ActionEvent &event)
         // Skip the updating process
         if (mDownloadStatus != UPDATE_COMPLETE)
         {
-            mDownload->cancel();
+            if (mDownload)
+                mDownload->cancel();
             mDownloadStatus = UPDATE_ERROR;
         }
     }
@@ -846,8 +847,8 @@ void UpdaterWindow::logic()
             mBrowserBox->addRow(_("##1  It is strongly recommended that"));
             // TRANSLATORS: Begins "It is strongly recommended that".
             mBrowserBox->addRow(_("##1  you try again later."));
-
-            mBrowserBox->addRow(mDownload->getError());
+            if (mDownload)
+                mBrowserBox->addRow(mDownload->getError());
             mScrollArea->setVerticalScrollAmount(
                     mScrollArea->getVerticalMaxScroll());
             mDownloadStatus = UPDATE_COMPLETE;

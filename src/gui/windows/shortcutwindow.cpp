@@ -167,7 +167,7 @@ void ShortcutWindow::addButton(const std::string &text,
 void ShortcutWindow::addTab(const std::string &name,
                             ShortcutContainer *const content)
 {
-    if (!content)
+    if (!content || !mTabs)
         return;
     ScrollArea *const scroll = new ScrollArea(this, content, false);
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);

@@ -352,6 +352,9 @@ void SocialWindow::action(const ActionEvent &event)
         if (!serverFeatures->haveNativeGuilds())
             return;
 
+        if (!mGuildCreateDialog)
+            return;
+
         std::string name = mGuildCreateDialog->getText();
 
         if (name.size() > 16)
@@ -374,6 +377,9 @@ void SocialWindow::action(const ActionEvent &event)
     }
     else if (eventId == "create party")
     {
+        if (!mPartyCreateDialog)
+            return;
+
         std::string name = mPartyCreateDialog->getText();
 
         if (name.size() > 24)

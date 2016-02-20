@@ -491,13 +491,16 @@ bool Viewport::leftMouseAction()
     }
     else if (stopAttack)
     {
-        const int mouseTileX = (mMouseX + mPixelViewX)
-            / mMap->getTileWidth();
-        const int mouseTileY = (mMouseY + mPixelViewY)
-            / mMap->getTileHeight();
-        inputManager.executeChatCommand(InputAction::PET_MOVE,
-            strprintf("%d %d", mouseTileX, mouseTileY),
-            nullptr);
+        if (mMap)
+        {
+            const int mouseTileX = (mMouseX + mPixelViewX)
+                / mMap->getTileWidth();
+            const int mouseTileY = (mMouseY + mPixelViewY)
+                / mMap->getTileHeight();
+            inputManager.executeChatCommand(InputAction::PET_MOVE,
+                strprintf("%d %d", mouseTileX, mouseTileY),
+                nullptr);
+        }
         return true;
     }
     // Just walk around
@@ -587,6 +590,8 @@ void Viewport::getMouseTile(int &destX, int &destY)
 void Viewport::getMouseTile(const int x, const int y,
                             int &destX, int &destY) const
 {
+    if (!mMap)
+        return;
     const int tw = mMap->getTileWidth();
     const int th = mMap->getTileHeight();
     destX = CAST_S32(x + mPixelViewX)

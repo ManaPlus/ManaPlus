@@ -133,7 +133,8 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
     mIconDropDown->setActionEventId("icon");
     mIconDropDown->addActionListener(this);
-    mIconDropDown->setSelectedString(mCommand->getIcon());
+    if (mCommand)
+        mIconDropDown->setSelectedString(mCommand->getIcon());
 
     mSaveButton->adjustSize();
     mCancelButton->adjustSize();
@@ -291,6 +292,8 @@ void TextCommandEditor::scheduleDelete()
 
 void TextCommandEditor::save()
 {
+    if (!mCommand)
+        return;
 #ifdef TMWA_SUPPORT
     if (mIsMagicCommand)
         mCommand->setCommandType(TextCommandType::Magic);
@@ -318,6 +321,8 @@ void TextCommandEditor::save()
 
 void TextCommandEditor::deleteCommand()
 {
+    if (!mCommand)
+        return;
     mCommand->setSymbol("");
     mCommand->setCommand("");
     mCommand->setComment("");

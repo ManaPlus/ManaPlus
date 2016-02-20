@@ -199,7 +199,8 @@ SellDialog::~SellDialog()
 void SellDialog::reset()
 {
     mShopItems->clear();
-    mSlider->setValue(0);
+    if (mSlider)
+        mSlider->setValue(0);
     mShopItemList->setSelected(-1);
     updateButtonsAndLabels();
 }
@@ -256,8 +257,11 @@ void SellDialog::action(const ActionEvent &event)
 
     if (eventId == "slider")
     {
-        mAmountItems = CAST_S32(mSlider->getValue());
-        updateButtonsAndLabels();
+        if (mSlider)
+        {
+            mAmountItems = CAST_S32(mSlider->getValue());
+            updateButtonsAndLabels();
+        }
     }
     else if (eventId == "inc" && mSlider && mAmountItems < mMaxItems)
     {

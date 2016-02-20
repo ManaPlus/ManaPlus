@@ -121,7 +121,7 @@ void CharacterDisplay::mouseExited(MouseEvent &event A_UNUSED)
 
 void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
 {
-    if (!gui || !textPopup)
+    if (!gui || !textPopup || !mCharacter)
         return;
 
     int mouseX = 0;

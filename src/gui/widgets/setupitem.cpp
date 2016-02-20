@@ -406,7 +406,7 @@ void SetupItemTextField::action(const ActionEvent &event)
         return;
 
     const std::string &eventId = event.getId();
-    if (eventId == mWidget->getActionEventId())
+    if (mWidget && eventId == mWidget->getActionEventId())
     {
         fromWidget();
     }
@@ -544,7 +544,7 @@ void SetupItemIntTextField::action(const ActionEvent &event)
         return;
 
     const std::string &eventId = event.getId();
-    if (eventId == mWidget->getActionEventId())
+    if (mWidget && eventId == mWidget->getActionEventId())
     {
         fromWidget();
     }
@@ -1153,14 +1153,15 @@ void SetupItemSound::addMoreControls()
 {
     mButton = new Button(this, BUTTON_PLAY, 16, 16,
         mEventName + "_PLAY", this);
-    mHorizont->add(mButton);
+    if (mHorizont)
+        mHorizont->add(mButton);
 }
 
 void SetupItemSound::action(const ActionEvent &event)
 {
     if (event.getId() == mEventName + "_PLAY")
     {
-        if (mSlider->getSelected())
+        if (mSlider && mSlider->getSelected())
         {
             soundManager.playGuiSfx(branding.getStringValue("systemsounds")
                 .append(mSlider->getSelectedString()).append(".ogg"));

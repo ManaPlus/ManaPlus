@@ -184,7 +184,7 @@ InputActionT KeyboardConfig::getActionId(const SDL_Event &event)
 
 bool KeyboardConfig::isActionActive(const InputActionT index) const
 {
-    if (!mActiveKeys)
+    if (!mActiveKeys || !mActiveKeys2)
         return false;
 
     const InputFunction &key = inputManager.getKey(index);
@@ -217,6 +217,8 @@ void KeyboardConfig::update()
 
 void KeyboardConfig::handleActicateKey(const SDL_Event &event)
 {
+    if (!mActiveKeys2)
+        return;
     const int key = getKeyValueFromEvent(event);
     if (key < -1 && key > -500)
         mActiveKeys2[-key] = 1;
@@ -225,6 +227,8 @@ void KeyboardConfig::handleActicateKey(const SDL_Event &event)
 
 void KeyboardConfig::handleActicateKey(const int key)
 {
+    if (!mActiveKeys2)
+        return;
     if (key < -1 && key > -500)
         mActiveKeys2[-key] = 1;
     resetRepeat(key);
@@ -232,6 +236,8 @@ void KeyboardConfig::handleActicateKey(const int key)
 
 void KeyboardConfig::handleDeActicateKey(const SDL_Event &event)
 {
+    if (!mActiveKeys2)
+        return;
     const int key = getKeyValueFromEvent(event);
     if (key < -1 && key > -500)
         mActiveKeys2[-key] = 0;
@@ -240,6 +246,8 @@ void KeyboardConfig::handleDeActicateKey(const SDL_Event &event)
 
 void KeyboardConfig::handleDeActicateKey(const int key)
 {
+    if (!mActiveKeys2)
+        return;
     if (key < -1 && key > -500)
         mActiveKeys2[-key] = 0;
     resetRepeat(key);

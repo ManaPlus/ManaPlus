@@ -207,7 +207,8 @@ void SetupWindow::action(const ActionEvent &event)
 
 void SetupWindow::setInGame(const bool inGame)
 {
-    mResetWindows->setEnabled(inGame);
+    if (mResetWindows)
+        mResetWindows->setEnabled(inGame);
 }
 
 void SetupWindow::externalUpdate()

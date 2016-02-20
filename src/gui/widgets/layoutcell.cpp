@@ -43,7 +43,11 @@ LayoutArray &LayoutCell::getArray()
     if (mType == WIDGET)
         return tempArray;
     if (mType == ARRAY)
+    {
+        if (!mArray)
+            return tempArray;
         return *mArray;
+    }
 
     mArray = new LayoutArray;
     mType = ARRAY;
