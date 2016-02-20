@@ -49,7 +49,7 @@ class ChatHandler final : public Ea::ChatHandler
                             const std::string &restrict text) const
                             override final;
 
-        void joinChannel(const std::string &channel) override final;
+        void joinChannel(const std::string &channel) const override final;
 
         void who() const override final;
 

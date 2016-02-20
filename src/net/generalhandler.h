@@ -36,9 +36,9 @@ class GeneralHandler notfinal
 
         virtual void load() const = 0;
 
-        virtual void reload() = 0;
+        virtual void reload() const = 0;
 
-        virtual void unload() = 0;
+        virtual void unload() const = 0;
 
         virtual void flushNetwork() const = 0;
 

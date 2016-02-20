@@ -39,7 +39,7 @@ class CharServerHandler notfinal : public Net::CharServerHandler
         void setCharSelectDialog(CharSelectDialog *const window) const
                                  override final;
 
-        void requestCharacters() override final;
+        void requestCharacters() const override final;
 
         unsigned int baseSprite() const override final A_CONST A_WARN_UNUSED;
 

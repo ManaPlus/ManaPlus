@@ -153,14 +153,14 @@ void GeneralHandler::load() const
     Network::mInstance->registerHandlers();
 }
 
-void GeneralHandler::reload()
+void GeneralHandler::reload() const
 {
     if (Network::mInstance)
         Network::mInstance->disconnect();
 
     static_cast<LoginHandler*>(mLoginHandler)->clearWorlds();
-    CharServerHandler *const charHandler = static_cast<CharServerHandler*>(
-        mCharServerHandler);
+    const CharServerHandler *const charHandler =
+        static_cast<CharServerHandler*>(mCharServerHandler);
     charHandler->setCharCreateDialog(nullptr);
     charHandler->setCharSelectDialog(nullptr);
     static_cast<PartyHandler*>(mPartyHandler)->reload();
@@ -171,7 +171,7 @@ void GeneralHandler::reloadPartially() const
     static_cast<PartyHandler*>(mPartyHandler)->reload();
 }
 
-void GeneralHandler::unload()
+void GeneralHandler::unload() const
 {
     clearHandlers();
 }

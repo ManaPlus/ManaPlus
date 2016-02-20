@@ -89,11 +89,13 @@ impHandler0(contextMenu)
 {
     if (!localPlayer)
         return false;
-    Being *const target = localPlayer->getTarget();
+    const Being *const target = localPlayer->getTarget();
     if (!target)
         return true;
 
-    popupMenu->showPopup(target->getPixelX(), target->getPixelY(), target);
+    popupMenu->showPopup(target->getPixelX(),
+        target->getPixelY(),
+        target);
     return true;
 }
 

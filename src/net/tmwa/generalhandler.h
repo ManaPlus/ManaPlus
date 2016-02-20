@@ -75,9 +75,9 @@ class GeneralHandler final : public Net::GeneralHandler
 
         void load() const override final;
 
-        void reload() override final;
+        void reload() const override final;
 
-        void unload() override final;
+        void unload() const override final;
 
         void flushNetwork() const override final;
 

@@ -2104,10 +2104,10 @@ void ActorManager::updateRoom(const ChatObject *const newChat)
 
     for_actors
     {
-        ActorSprite *const actor = *it;
+        const ActorSprite *const actor = *it;
         if (actor->getType() == ActorType::Npc)
         {
-            const Being *const being = static_cast<Being*>(actor);
+            const Being *const being = static_cast<const Being*>(actor);
             ChatObject *const chat = being->getChat();
             if (chat && chat->chatId == newChat->chatId)
             {

@@ -235,7 +235,7 @@ void ChatHandler::joinChat(const ChatObject *const chat,
     outMsg.writeString(password, 8, "password");
 }
 
-void ChatHandler::joinChannel(const std::string &channel)
+void ChatHandler::joinChannel(const std::string &channel) const
 {
     if (serverFeatures->haveJoinChannel())
     {

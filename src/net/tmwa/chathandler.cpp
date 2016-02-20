@@ -213,7 +213,7 @@ void ChatHandler::joinChat(const ChatObject *const chat A_UNUSED,
 {
 }
 
-void ChatHandler::joinChannel(const std::string &channel A_UNUSED)
+void ChatHandler::joinChannel(const std::string &channel A_UNUSED) const
 {
 }
 

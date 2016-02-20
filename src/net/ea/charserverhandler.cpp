@@ -50,7 +50,7 @@ void CharServerHandler::setCharSelectDialog(CharSelectDialog *const window)
     updateCharSelectDialog();
 }
 
-void CharServerHandler::requestCharacters()
+void CharServerHandler::requestCharacters() const
 {
     connect();
 }

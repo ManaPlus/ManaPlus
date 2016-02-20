@@ -49,7 +49,7 @@ class CharServerHandler notfinal
         virtual void setCharCreateDialog(CharCreateDialog *const window)
                                          const = 0;
 
-        virtual void requestCharacters() = 0;
+        virtual void requestCharacters() const = 0;
 
         virtual void chooseCharacter(Net::Character *const character)
                                      const = 0;

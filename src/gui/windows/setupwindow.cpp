@@ -92,7 +92,7 @@ void SetupWindow::postInit()
     setMinWidth(310);
     setMinHeight(210);
 
-    static const char *buttonNames[] =
+    static const char *const buttonNames[] =
     {
         // TRANSLATORS: setup button
         N_("Apply"),

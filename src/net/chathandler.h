@@ -57,7 +57,7 @@ class ChatHandler notfinal
                                     const std::string &restrict text)
                                     const = 0;
 
-        virtual void joinChannel(const std::string &channel) = 0;
+        virtual void joinChannel(const std::string &channel) const = 0;
 
         virtual void partChannel(const std::string &channel) const = 0;
 
