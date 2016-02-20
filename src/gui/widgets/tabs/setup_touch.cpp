@@ -47,7 +47,7 @@ static const char *const sizeList[] =
     N_("Large")
 };
 
-static const int formatListSize = 5;
+static const int formatListSize = 6;
 
 static const char *const formatList[] =
 {
@@ -55,7 +55,8 @@ static const char *const formatList[] =
     "2x2",
     "3x3",
     "4x2",
-    "4x3"
+    "4x3",
+    "3x2"
 };
 
 Setup_Touch::Setup_Touch(const Widget2 *const widget) :

@@ -566,6 +566,30 @@ void TouchManager::loadButtons() restrict2
                     "screenActionButton0", "");
                 break;
             }
+            // 3x2
+            case 5:
+            {
+                const int pad4 = pad2 * 2;
+                const int skipWidth2 = pad4 + x;
+                loadTouchItem(&mButtons[5], "dbutton.xml", "dbutton_image.xml",
+                    "6", x, y, sz, sz, RIGHT, "screenActionButton5", "");
+                loadTouchItem(&mButtons[4], "dbutton.xml", "dbutton_image.xml",
+                    "5", skipWidth, y, sz, sz, RIGHT,
+                    "screenActionButton4", "");
+                loadTouchItem(&mButtons[3], "dbutton.xml", "dbutton_image.xml",
+                    "4", skipWidth2, y, sz, sz, RIGHT,
+                    "screenActionButton3", "");
+                loadTouchItem(&mButtons[2], "dbutton.xml", "dbutton_image.xml",
+                    "3", x, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton2", "");
+                loadTouchItem(&mButtons[1], "dbutton.xml", "dbutton_image.xml",
+                    "2", skipWidth, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton1", "");
+                loadTouchItem(&mButtons[0], "dbutton.xml", "dbutton_image.xml",
+                    "1", skipWidth2, skipHeight, sz, sz, RIGHT,
+                    "screenActionButton0", "");
+                break;
+            }
         };
         theme->unload(skin);
     }
