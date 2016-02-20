@@ -35,6 +35,7 @@ SetupQuickItem::SetupQuickItem(const std::string &restrict description,
                                const ModifierGetFuncPtr getFunc,
                                const ModifierChangeFuncPtr changeFunc) :
     SetupItem("", description, "", parent, eventName, MainConfig_false),
+    GameModifierListener(),
     mHorizont(nullptr),
     mButton(nullptr),
     mLabel(nullptr),
