@@ -179,13 +179,13 @@
 #define notfinal
 
 #define FOR_EACH(type, iter, array) for (type iter = array.begin(), \
-    iter##_end = array.end(); iter != iter##_end; ++ iter)
+    iter##_fend = array.end(); iter != iter##_fend; ++ iter)
 
 #define FOR_EACHR(type, iter, array) for (type iter = array.rbegin(), \
-    iter##_end = array.rend(); iter != iter##_end; ++ iter)
+    iter##_fend = array.rend(); iter != iter##_fend; ++ iter)
 
 #define FOR_EACHP(type, iter, array) for (type iter = array->begin(), \
-    iter##_end = array->end(); iter != iter##_end; ++ iter)
+    iter##_fend = array->end(); iter != iter##_fend; ++ iter)
 
 #ifdef ENABLE_CHECKPLUGIN
 #define A_NONNULLPOINTER __attribute__((nonnullpointer))

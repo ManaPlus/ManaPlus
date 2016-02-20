@@ -64,10 +64,10 @@
 #include "debug.h"
 
 #define for_actors for (ActorSpritesConstIterator it = mActors.begin(), \
-    it_end = mActors.end() ; it != it_end; ++it)
+    it_fend = mActors.end() ; it != it_fend; ++it)
 
 #define for_actorsm for (ActorSpritesIterator it = mActors.begin(), \
-    it_end = mActors.end() ; it != it_end; ++it)
+    it_fend = mActors.end() ; it != it_fend; ++it)
 
 ActorManager *actorManager = nullptr;
 
