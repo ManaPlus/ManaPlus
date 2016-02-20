@@ -34,10 +34,11 @@ extern OkDialog *weightNotice;
   */
 struct WeightListener final : public ActionListener
 {
-    void action(const ActionEvent &event A_UNUSED) override final
-    {
-        weightNotice = nullptr;
-    }
+    public:
+        void action(const ActionEvent &event A_UNUSED) override final
+        {
+            weightNotice = nullptr;
+        }
 };
 
 #endif  // LISTENERS_WEIGHTLISTENER_H

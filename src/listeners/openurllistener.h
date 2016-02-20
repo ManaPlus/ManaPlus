@@ -39,13 +39,14 @@ struct OpenUrlListener final : public ActionListener
 
     A_DELETE_COPY(OpenUrlListener)
 
-    void action(const ActionEvent &event) override final
-    {
-        if (event.getId() == "yes")
-            openBrowser(url);
-    }
+    public:
+        void action(const ActionEvent &event) override final
+        {
+            if (event.getId() == "yes")
+                openBrowser(url);
+        }
 
-    std::string url;
+        std::string url;
 };
 
 #endif  // LISTENERS_OPENURLLISTENER_H

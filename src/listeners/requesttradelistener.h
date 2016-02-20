@@ -39,14 +39,15 @@ extern ConfirmDialog *confirmDlg;
  */
 struct RequestTradeListener final : public ActionListener
 {
-    void action(const ActionEvent &event) override final
-    {
-        confirmDlg = nullptr;
-        const std::string &eventId = event.getId();
-        if (eventId == "ignore")
-            player_relations.ignoreTrade(tradePartnerName);
-        tradeHandler->respond(eventId == "yes");
-    }
+    public:
+        void action(const ActionEvent &event) override final
+        {
+            confirmDlg = nullptr;
+            const std::string &eventId = event.getId();
+            if (eventId == "ignore")
+                player_relations.ignoreTrade(tradePartnerName);
+            tradeHandler->respond(eventId == "yes");
+        }
 };
 
 #endif  // LISTENERS_REQUESTTRADELISTENER_H

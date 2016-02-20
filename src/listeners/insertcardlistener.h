@@ -40,14 +40,15 @@ struct InsertCardListener final : public ActionListener
 
     A_DELETE_COPY(InsertCardListener)
 
-    void action(const ActionEvent &event) override final
-    {
-        if (event.getId() == "yes" && inventoryHandler)
-            inventoryHandler->insertCard(cardIndex, itemIndex);
-    }
+    public:
+        void action(const ActionEvent &event) override final
+        {
+            if (event.getId() == "yes" && inventoryHandler)
+                inventoryHandler->insertCard(cardIndex, itemIndex);
+        }
 
-    int cardIndex;
-    int itemIndex;
+        int cardIndex;
+        int itemIndex;
 };
 
 #endif  // LISTENERS_INSERTCARDLISTENER_H
