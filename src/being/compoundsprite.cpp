@@ -162,7 +162,8 @@ void CompoundSprite::draw(Graphics *const graphics,
 }
 
 void CompoundSprite::drawSprites(Graphics *const graphics,
-                                 int posX, int posY) const
+                                 const int posX,
+                                 const int posY) const
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
@@ -175,7 +176,8 @@ void CompoundSprite::drawSprites(Graphics *const graphics,
 }
 
 void CompoundSprite::drawSpritesSDL(Graphics *const graphics,
-                                    int posX, int posY) const
+                                    const int posX,
+                                    const int posY) const
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {

@@ -95,10 +95,12 @@ class CompoundSprite notfinal : public Sprite
         void ensureSize(size_t layerCount);
 
         virtual void drawSprites(Graphics *const graphics,
-                                 int posX, int posY) const;
+                                 const int posX,
+                                 const int posY) const;
 
         virtual void drawSpritesSDL(Graphics *const graphics,
-                                    int posX, int posY) const;
+                                    const int posX,
+                                    const int posY) const;
 
         /**
          * Returns the curent frame in the current animation of the given

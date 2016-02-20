@@ -491,7 +491,7 @@ void CrazyMoves::crazyMove9()
     }
 }
 
-void CrazyMoves::crazyMoveAm()
+void CrazyMoves::crazyMoveAm() const
 {
     if (!localPlayer)
         return;
@@ -569,7 +569,7 @@ void CrazyMoves::crazyMoveAm()
     }
 }
 
-void CrazyMoves::crazyMoveAd()
+void CrazyMoves::crazyMoveAd() const
 {
     settings.crazyMoveState ++;
 
@@ -710,7 +710,7 @@ void CrazyMoves::crazyMoveAs()
         settings.crazyMoveState ++;
 }
 
-void CrazyMoves::crazyMoveAo()
+void CrazyMoves::crazyMoveAo() const
 {
     settings.crazyMoveState ++;
     if (settings.crazyMoveState < mMoveProgram.length())
@@ -730,7 +730,7 @@ void CrazyMoves::crazyMoveAo()
     }
 }
 
-void CrazyMoves::crazyMoveAe()
+void CrazyMoves::crazyMoveAe() const
 {
     settings.crazyMoveState ++;
     const signed char emo = mMoveProgram[settings.crazyMoveState];

@@ -566,7 +566,7 @@ Being *LocalPlayer::setNewTarget(const ActorTypeT type,
             localPlayer, 20, type, allowSort);
 
         if (target && target != mTarget)
-            localPlayer->setTarget(target);
+            setTarget(target);
 
         return target;
     }
@@ -1267,8 +1267,8 @@ void LocalPlayer::moveToTarget(int dist)
             unsigned int f = 0;
 
             for (Path::const_iterator i = debugPath.begin(),
-                 i_end = debugPath.end();
-                 i != i_end && f < limit; ++i, f++)
+                 i_fend = debugPath.end();
+                 i != i_fend && f < limit; ++i, f++)
             {
                 pos = (*i);
             }
@@ -1799,7 +1799,9 @@ void LocalPlayer::saveHomes()
     std::stringstream ss;
 
     for (std::map<std::string, Vector>::const_iterator iter = mHomes.begin(),
-         iter_end = mHomes.end(); iter != iter_end; ++iter )
+         iter_fend = mHomes.end();
+         iter != iter_fend;
+         ++iter)
     {
         const Vector &pos = (*iter).second;
 
@@ -2077,7 +2079,9 @@ void LocalPlayer::updateCoords()
             else
             {
                 for (Path::const_iterator i = mNavigatePath.begin(),
-                     i_end = mNavigatePath.end(); i != i_end; ++ i)
+                     i_fend = mNavigatePath.end();
+                     i != i_fend;
+                     ++i)
                 {
                     if ((*i).x == mX && (*i).y == mY)
                     {

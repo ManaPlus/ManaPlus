@@ -534,14 +534,14 @@ class Being notfinal : public ActorSprite,
         void setState(const uint8_t state) restrict2;
 
         virtual void drawSprites(Graphics *restrict const  graphics,
-                                 int posX,
-                                 int posY) const
+                                 const int posX,
+                                 const int posY) const
                                  restrict2 override final A_NONNULL(2);
 
         virtual void drawSpritesSDL(Graphics *restrict const graphics,
-                                    int posX,
-                                    int posY) const restrict2 override final
-                                    A_NONNULL(2);
+                                    const int posX,
+                                    const int posY) const
+                                    restrict2 override final A_NONNULL(2);
 
         void drawHpBar(Graphics *restrict const graphics,
                        const int maxHP,

@@ -76,7 +76,7 @@ class Actor notfinal
         /**
          * Sets the pixel position of this actor.
          */
-        virtual void setPosition(const Vector &pos)
+        virtual void setPosition(const Vector &restrict pos) restrict2
         { mPos = pos; }
 
         /**

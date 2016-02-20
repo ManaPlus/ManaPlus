@@ -851,7 +851,7 @@ int Being::getHitEffect(const Being *restrict const attacker,
     int hitEffectId = 0;
     if (type == AttackType::SKILL || type == AttackType::SKILLMISS)
     {
-        SkillData *restrict const data = skillDialog->getSkillDataByLevel(
+        const SkillData *restrict const data = skillDialog->getSkillDataByLevel(
             attackId, level);
         if (!data)
             return -1;
@@ -2070,7 +2070,7 @@ void Being::drawEmotion(Graphics *restrict const graphics,
         int y;
         if (mShowBadges == 2 && mDispName && gui)
         {
-            Font *restrict const font = gui->getFont();
+            const Font *restrict const font = gui->getFont();
             x = mDispName->getX() - offsetX + mDispName->getWidth();
             y = mDispName->getY() - offsetY - font->getHeight();
         }
@@ -2086,7 +2086,7 @@ void Being::drawEmotion(Graphics *restrict const graphics,
         }
         for_each_badges()
         {
-            AnimatedSprite *restrict const sprite = mBadges[f];
+            const AnimatedSprite *restrict const sprite = mBadges[f];
             if (sprite)
             {
                 sprite->draw(graphics, x, y);
@@ -2884,7 +2884,8 @@ void Being::draw(Graphics *restrict const graphics,
 }
 
 void Being::drawSprites(Graphics *restrict const graphics,
-                        int posX, int posY) const restrict2
+                        const int posX,
+                        const int posY) const restrict2
 {
     const int sz = getNumberOfLayers();
     for (int f = 0; f < sz; f ++)
@@ -2903,7 +2904,8 @@ void Being::drawSprites(Graphics *restrict const graphics,
 }
 
 void Being::drawSpritesSDL(Graphics *restrict const graphics,
-                           int posX, int posY) const restrict2
+                           const int posX,
+                           const int posY) const restrict2
 {
     const unsigned int sz = CAST_U32(size());
     for (unsigned int f = 0; f < sz; f ++)
@@ -3992,7 +3994,7 @@ void Being::removeAllItemsParticles() restrict2
 void Being::addItemParticles(const int id,
                              const SpriteDisplay &restrict display) restrict2
 {
-    SpriteParticleInfoIter it = mSpriteParticles.find(id);
+    const SpriteParticleInfoIter it = mSpriteParticles.find(id);
     ParticleInfo *restrict pi = nullptr;
     if (it == mSpriteParticles.end())
     {
@@ -4027,7 +4029,7 @@ void Being::addItemParticles(const int id,
 
 void Being::removeItemParticles(const int id) restrict2
 {
-    SpriteParticleInfoIter it = mSpriteParticles.find(id);
+    const SpriteParticleInfoIter it = mSpriteParticles.find(id);
     if (it == mSpriteParticles.end())
         return;
     ParticleInfo *restrict const pi = (*it).second;
@@ -4271,7 +4273,7 @@ void Being::setHorse(const int horseId) restrict2
         {
             FOR_EACH (SpriteRefs, it, mHorseInfo->downSprites)
             {
-                SpriteReference *restrict const ref = *it;
+                const SpriteReference *restrict const ref = *it;
                 AnimatedSprite *const sprite = AnimatedSprite::load(
                     ref->sprite,
                     ref->variant);
@@ -4281,8 +4283,8 @@ void Being::setHorse(const int horseId) restrict2
             }
             FOR_EACH (SpriteRefs, it, mHorseInfo->upSprites)
             {
-                SpriteReference *restrict const ref = *it;
-                AnimatedSprite *sprite = AnimatedSprite::load(
+                const SpriteReference *restrict const ref = *it;
+                AnimatedSprite *const sprite = AnimatedSprite::load(
                     ref->sprite,
                     ref->variant);
                 mUpHorseSprites.push_back(sprite);
@@ -4334,7 +4336,7 @@ void Being::addSpiritBalls(const unsigned int balls,
         return;
     for (unsigned int f = 0; f < balls; f ++)
     {
-        Particle *particle = effectManager->triggerReturn(
+        Particle *const particle = effectManager->triggerReturn(
             effectId,
             this);
         mSpiritParticles.push_back(particle);
@@ -4347,7 +4349,7 @@ void Being::removeSpiritBalls(const unsigned int balls) restrict2
         return;
     for (unsigned int f = 0; f < balls && !mSpiritParticles.empty(); f ++)
     {
-        Particle *restrict const particle = mSpiritParticles.back();
+        const Particle *restrict const particle = mSpiritParticles.back();
         mChildParticleEffects.removeLocally(particle);
         mSpiritParticles.pop_back();
     }

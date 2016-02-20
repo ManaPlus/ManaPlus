@@ -35,21 +35,21 @@ class CrazyMoves final
         void crazyMove();
 
     protected:
-        void crazyMove1();
-        void crazyMove2();
-        void crazyMove3();
-        void crazyMove4();
-        void crazyMove5();
-        void crazyMove6();
-        void crazyMove7();
-        void crazyMove8();
-        void crazyMove9();
+        static void crazyMove1();
+        static void crazyMove2();
+        static void crazyMove3();
+        static void crazyMove4();
+        static void crazyMove5();
+        static void crazyMove6();
+        static void crazyMove7();
+        static void crazyMove8();
+        static void crazyMove9();
         void crazyMoveA();
-        void crazyMoveAd();
-        void crazyMoveAe();
-        void crazyMoveAm();
-        void crazyMoveAo();
-        void crazyMoveAs();
+        void crazyMoveAd() const;
+        void crazyMoveAe() const;
+        void crazyMoveAm() const;
+        void crazyMoveAo() const;
+        static void crazyMoveAs();
 
         std::string mMoveProgram;
 
