@@ -299,7 +299,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
             break;
         case RFAIL_NEED_EQUIPMENT:
         {
-            const int itemId = bskill >> 16;
+            const int itemId = bskill >> 16U;
             const int amount = bskill & 0xFFFFU;
             const ItemInfo &info = ItemDB::get(itemId);
             if (amount == 1)
@@ -319,7 +319,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
         }
         case RFAIL_NEED_ITEM:
         {
-            const int itemId = bskill >> 16;
+            const int itemId = bskill >> 16U;
             const int amount = bskill & 0xFFFFU;
             const ItemInfo &info = ItemDB::get(itemId);
             if (amount == 1)
