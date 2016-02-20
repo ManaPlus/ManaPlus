@@ -287,7 +287,7 @@ const SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(const int direction)
     if (direction < 0 || direction >= 10)
         return nullptr;
 
-    SpriteToItemMap *const spMap = mSpriteToItemReplaceMap[direction];
+    const SpriteToItemMap *const spMap = mSpriteToItemReplaceMap[direction];
     if (spMap)
         return spMap;
     if (direction == SpriteDirection::UPLEFT

@@ -301,7 +301,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         const std::string typeStr = XML::getProperty(node, "type", "");
         int weight = XML::getProperty(node, "weight", 0);
         int view = XML::getProperty(node, "view", 0);
-        int cardColor = XML::getProperty(node, "cardColor", -1);
+        const int cardColor = XML::getProperty(node, "cardColor", -1);
         const int inherit = XML::getProperty(node, "inherit", -1);
 
         std::string name = XML::langProperty(node, "name", "");

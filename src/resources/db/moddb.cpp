@@ -103,7 +103,7 @@ void ModDB::unload()
 
 ModInfo *ModDB::get(const std::string &name)
 {
-    ModInfoIterator i = mModInfos.find(name);
+    const ModInfoIterator i = mModInfos.find(name);
     if (i == mModInfos.end())
         return nullptr;
     else

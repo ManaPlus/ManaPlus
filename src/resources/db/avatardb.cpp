@@ -133,7 +133,7 @@ void AvatarDB::unload()
 
 BeingInfo *AvatarDB::get(const BeingTypeId id)
 {
-    BeingInfoIterator i = mAvatarInfos.find(id);
+    const BeingInfoIterator i = mAvatarInfos.find(id);
     if (i == mAvatarInfos.end())
         return BeingInfo::unknown;
     else

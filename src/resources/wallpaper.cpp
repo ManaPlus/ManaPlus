@@ -83,7 +83,7 @@ void Wallpaper::loadWallpapers()
     initDefaultWallpaperPaths();
     char **const imgs = PhysFs::enumerateFiles(wallpaperPath.c_str());
 
-    for (char **i = imgs; *i; i++)
+    for (char *const *i = imgs; *i; i++)
     {
         // If the backup file is found, we tell it.
         if (strncmp (*i, wallpaperFile.c_str(), strlen(*i)) == 0)

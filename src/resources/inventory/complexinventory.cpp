@@ -52,7 +52,7 @@ bool ComplexInventory::addVirtualItem(const Item *const item,
         ComplexItem *citem = nullptr;
         if (mItems[index] != nullptr)
         {
-            Item *const item2 = mItems[index];
+            const Item *const item2 = mItems[index];
             if (item->getId() != item2->getId() ||
                 item->getColor() != item2->getColor())
             {   // not same id or color
@@ -132,7 +132,7 @@ void ComplexInventory::setItem(const int index,
         return;
     }
 
-    Item *const item1 = mItems[index];
+    const Item *const item1 = mItems[index];
     if (!item1 && id > 0)
     {
         ComplexItem *const item = new ComplexItem(id,

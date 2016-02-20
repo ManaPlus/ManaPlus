@@ -82,7 +82,7 @@ void BadgesDB::unload()
 
 const std::string BadgesDB::getPartyBadge(const std::string &name)
 {
-    BadgesInfosIter it = mParties.find(name);
+    const BadgesInfosIter it = mParties.find(name);
     if (it == mParties.end())
         return std::string();
     return (*it).second;
@@ -90,7 +90,7 @@ const std::string BadgesDB::getPartyBadge(const std::string &name)
 
 const std::string BadgesDB::getNameBadge(const std::string &name)
 {
-    BadgesInfosIter it = mNames.find(name);
+    const BadgesInfosIter it = mNames.find(name);
     if (it == mNames.end())
         return std::string();
     return (*it).second;
@@ -98,7 +98,7 @@ const std::string BadgesDB::getNameBadge(const std::string &name)
 
 const std::string BadgesDB::getGuildBadge(const std::string &name)
 {
-    BadgesInfosIter it = mGuilds.find(name);
+    const BadgesInfosIter it = mGuilds.find(name);
     if (it == mGuilds.end())
         return std::string();
     return (*it).second;

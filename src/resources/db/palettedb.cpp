@@ -115,7 +115,8 @@ void PaletteDB::unload()
 
 const DyeColor *PaletteDB::getColor(const std::string &name)
 {
-    std::map<std::string, DyeColor>::const_iterator it = mColors.find(name);
+    const std::map<std::string, DyeColor>::const_iterator it =
+        mColors.find(name);
     if (it != mColors.end())
         return &(*it).second;
     else

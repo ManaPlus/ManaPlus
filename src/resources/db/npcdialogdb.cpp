@@ -187,7 +187,7 @@ void NpcDialogDB::loadXmlFile(const std::string &fileName)
 
 void NpcDialogDB::deleteDialog(const std::string &name)
 {
-    DialogsIter it = mDialogs.find(name);
+    const DialogsIter it = mDialogs.find(name);
     if (it == mDialogs.end())
         return;
 
@@ -218,7 +218,7 @@ void NpcDialogDB::unload()
 
 NpcDialogInfo *NpcDialogDB::getDialog(const std::string &name)
 {
-    DialogsIter it = mDialogs.find(name);
+    const DialogsIter it = mDialogs.find(name);
     if (it == mDialogs.end())
         return nullptr;
     return (*it).second;

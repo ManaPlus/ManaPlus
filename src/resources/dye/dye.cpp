@@ -211,7 +211,7 @@ endlabel:{}
 
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
+    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++ pixels)
     {
@@ -330,7 +330,7 @@ endlabel:{}
 
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
+    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++ pixels)
     {

@@ -85,7 +85,7 @@ void CommandsDB::loadXmlFile(const std::string &fileName)
         if (id == -1)
             continue;
 
-        CommandsMapIter it = mCommands.find(id);
+        const CommandsMapIter it = mCommands.find(id);
         if (it != mCommands.end())
         {
             logger->log("Commands database: duplicate id: %d", id);

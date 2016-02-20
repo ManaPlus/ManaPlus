@@ -49,10 +49,10 @@ namespace
     }
 
 static void loadDownSprites(XmlNodePtrConst parentNode,
-                            HorseInfo *currentInfo);
+                            HorseInfo *const currentInfo);
 
 static void loadUpSprites(XmlNodePtrConst parentNode,
-                          HorseInfo *currentInfo);
+                          HorseInfo *const currentInfo);
 
 void HorseDB::load()
 {
@@ -157,7 +157,7 @@ void HorseDB::loadXmlFile(const std::string &fileName)
 }
 
 static void loadDownSprites(XmlNodePtrConst parentNode,
-                            HorseInfo *currentInfo)
+                            HorseInfo *const currentInfo)
 {
     for_each_xml_child_node(spriteNode, parentNode)
     {
@@ -170,7 +170,7 @@ static void loadDownSprites(XmlNodePtrConst parentNode,
 }
 
 static void loadUpSprites(XmlNodePtrConst parentNode,
-                          HorseInfo *currentInfo)
+                          HorseInfo *const currentInfo)
 {
     for_each_xml_child_node(spriteNode, parentNode)
     {

@@ -229,7 +229,8 @@ bool Inventory::contains(const Item *const item) const
 
 int Inventory::getFreeSlot() const
 {
-    Item **const i = std::find_if(mItems, mItems + mSize,
+    Item *const *const i = std::find_if(mItems,
+        mItems + mSize,
         std::not1(SlotUsed()));
     return (i == mItems + mSize) ? -1
         : CAST_S32(i - mItems);

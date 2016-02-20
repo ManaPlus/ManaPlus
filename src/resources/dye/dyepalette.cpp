@@ -277,7 +277,7 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
     }
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
+    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++ pixels)
     {
@@ -377,7 +377,7 @@ void DyePalette::replaceAColor(uint32_t *restrict pixels,
 
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
+    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++pixels)
     {
@@ -470,7 +470,7 @@ void DyePalette::replaceSOGLColor(uint32_t *restrict pixels,
 
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
+    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++pixels)
     {
@@ -562,7 +562,7 @@ void DyePalette::replaceAOGLColor(uint32_t *restrict pixels,
 
 #else  // ENABLE_CILKPLUS
 
-    for (uint32_t *p_end = pixels + CAST_SIZE(bufSize);
+    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++pixels)
     {
