@@ -85,7 +85,8 @@ class DropDown final : public ActionListener,
 
         void drawFrame(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDrawFrame(Graphics *const graphics) override final
+                           A_NONNULL(2);
 
         // Inherited from KeyListener
 

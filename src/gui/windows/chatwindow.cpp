@@ -803,11 +803,12 @@ void ChatWindow::keyPressed(KeyEvent &event)
     else if (actionId == InputAction::GUI_INSERT &&
              !mChatInput->getText().empty())
     {
+        const std::string str = mChatInput->getText();
         // Add the current message to the history and clear the text
-        if (mHistory.empty() || mChatInput->getText() != mHistory.back())
-            mHistory.push_back(mChatInput->getText());
+        if (mHistory.empty() || str != mHistory.back())
+            mHistory.push_back(str);
         mCurHist = mHistory.end();
-        mChatInput->setText("");
+        mChatInput->setText(std::string());
     }
     else if (actionId == InputAction::GUI_TAB &&
              !mChatInput->getText().empty())

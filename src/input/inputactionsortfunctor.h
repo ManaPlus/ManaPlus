@@ -21,8 +21,6 @@
 #ifndef INPUT_INPUTACTIONSORTFUNCTOR_H
 #define INPUT_INPUTACTIONSORTFUNCTOR_H
 
-#include "logger.h"
-
 #include "input/inputactiondata.h"
 
 #include "localconsts.h"

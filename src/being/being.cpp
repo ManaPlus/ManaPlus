@@ -851,8 +851,8 @@ int Being::getHitEffect(const Being *restrict const attacker,
     int hitEffectId = 0;
     if (type == AttackType::SKILL || type == AttackType::SKILLMISS)
     {
-        const SkillData *restrict const data = skillDialog->getSkillDataByLevel(
-            attackId, level);
+        const SkillData *restrict const data =
+            skillDialog->getSkillDataByLevel(attackId, level);
         if (!data)
             return -1;
         if (type == AttackType::SKILL)

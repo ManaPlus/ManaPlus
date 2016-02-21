@@ -167,7 +167,7 @@ void connectToServer(const ServerInfo &server)
 
 void unload()
 {
-    GeneralHandler *const handler = generalHandler;
+    const GeneralHandler *const handler = generalHandler;
     if (handler)
         handler->unload();
     ignorePackets.clear();

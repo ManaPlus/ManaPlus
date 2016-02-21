@@ -73,11 +73,10 @@ static inline size_t findNextSplit(const std::string &str,
                                    const char quote)
 {
     size_t pos = 0;
-    size_t idx1 = 0;
     while (true)
     {
         // search for next separator
-        idx1 = findAny(str, separator, pos);
+        size_t idx1 = findAny(str, separator, pos);
         // search for next open quote, skipping escaped quotes
         size_t idx2 = findNextQuote(str, quote, pos);
         if (idx2 == std::string::npos)  // not quotes, return next separator

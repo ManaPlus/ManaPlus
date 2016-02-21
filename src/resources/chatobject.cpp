@@ -53,7 +53,8 @@ void ChatObject::update()
 
 ChatObject *ChatObject::findByName(const std::string &name)
 {
-    const std::map<std::string, ChatObject*>::iterator it = chatNameMap.find(name);
+    const std::map<std::string, ChatObject*>::iterator it =
+        chatNameMap.find(name);
     if (it == chatNameMap.end())
         return nullptr;
     else
