@@ -515,6 +515,7 @@
 		<Unit filename="src/utils/translation/translationmanager.cpp" />
 		<Unit filename="src/utils/translation/poparser.cpp" />
 		<Unit filename="src/utils/fuzzer.cpp" />
+		<Unit filename="src/utils/parameters.cpp" />
 		<Unit filename="src/utils/checkutils.cpp" />
 		<Unit filename="src/utils/stringutils.cpp" />
 		<Unit filename="src/utils/sdlhelper.cpp" />
@@ -1199,6 +1200,7 @@
 		<Unit filename="src/debug/debug_new.h" />
 		<Unit filename="src/const/gui/theme.h" />
 		<Unit filename="src/const/gui/chat.h" />
+		<Unit filename="src/const/gui/pages.h" />
 		<Unit filename="src/const/net/net.h" />
 		<Unit filename="src/const/net/skill.h" />
 		<Unit filename="src/const/net/inventory.h" />
@@ -1358,6 +1360,7 @@
 		<Unit filename="src/utils/langs.h" />
 		<Unit filename="src/utils/mathutils.h" />
 		<Unit filename="src/utils/booleanoptions.h" />
+		<Unit filename="src/utils/parameters.h" />
 		<Unit filename="src/utils/physfsrwops.h" />
 		<Unit filename="src/utils/sdlcheckutils.h" />
 		<Unit filename="src/utils/glxhelper.h" />
