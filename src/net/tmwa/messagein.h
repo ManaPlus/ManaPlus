@@ -57,7 +57,7 @@ class MessageIn final : public Net::MessageIn
 
         BeingId readBeingId(const char *const str) override final;
 
-        uint16_t readId();
+        uint16_t readId() const;
 };
 
 }  // namespace TmwAthena

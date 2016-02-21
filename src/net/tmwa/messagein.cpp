@@ -49,7 +49,7 @@ void MessageIn::postInit(const char *const str)
     readInt16(str);
 }
 
-uint16_t MessageIn::readId()
+uint16_t MessageIn::readId() const
 {
     int16_t value = -1;
     if (mPos + 2 <= mLength)

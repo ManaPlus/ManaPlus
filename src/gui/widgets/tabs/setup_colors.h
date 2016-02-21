@@ -84,7 +84,7 @@ class Setup_Colors final : public SetupTab,
 
         static void setEntry(Slider *const s, TextField *const t,
                              const int value);
-        void updateColor();
+        void updateColor() const;
         void updateGradType();
 };
 

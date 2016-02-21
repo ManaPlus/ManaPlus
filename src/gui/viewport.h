@@ -169,7 +169,7 @@ class Viewport final : public WindowContainer,
 
         void returnCamera();
 
-        void getMouseTile(int &destX, int &destY);
+        void getMouseTile(int &destX, int &destY) const;
 
         int mMouseX;                /**< Current mouse position in pixels. */
         int mMouseY;                /**< Current mouse position in pixels. */

@@ -105,7 +105,7 @@ class MessageOut notfinal
          * memory in advance instead of expanding size every time more data is
          * added.
          */
-        virtual void expand(size_t size) = 0;
+        virtual void expand(size_t size) const = 0;
 
         char *mData;                         /**< Data building up. */
         unsigned int mDataSize;              /**< Size of data. */

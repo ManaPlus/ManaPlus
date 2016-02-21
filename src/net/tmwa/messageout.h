@@ -70,7 +70,7 @@ class MessageOut final : public Net::MessageOut
         { mPos = 0; }
 
     private:
-        void expand(const size_t size) override final;
+        void expand(const size_t size) const override final;
 
         Network *mNetwork;
 };

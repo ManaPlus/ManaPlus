@@ -43,7 +43,7 @@ MessageOut::MessageOut(const int16_t id) :
     mData = mNetwork->mOutBuffer + CAST_SIZE(mNetwork->mOutSize);
 }
 
-void MessageOut::expand(const size_t bytes)
+void MessageOut::expand(const size_t bytes) const
 {
     mNetwork->mOutSize += CAST_U32(bytes);
     PacketCounters::incOutBytes(CAST_S32(bytes));

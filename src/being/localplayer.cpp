@@ -2005,7 +2005,7 @@ void LocalPlayer::navigateClean()
     tmpLayer->clean();
 }
 
-void LocalPlayer::updateMusic()
+void LocalPlayer::updateMusic() const
 {
     if (mMap)
     {

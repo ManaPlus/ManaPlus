@@ -448,7 +448,7 @@ void Setup_Colors::updateGradType()
     mBlueSlider->setEnabled(enable);
 }
 
-void Setup_Colors::updateColor()
+void Setup_Colors::updateColor() const
 {
     if (mSelected == -1 || !userPalette)
         return;

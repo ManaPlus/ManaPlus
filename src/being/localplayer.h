@@ -404,7 +404,7 @@ class LocalPlayer final : public Being,
                          const int oldVal1,
                          const int oldVal2) override final;
 
-        void updateMusic();
+        void updateMusic() const;
 
         void setAfkTime(const int v)
         { mAfkTime = v; }
