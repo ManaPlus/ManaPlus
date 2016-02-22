@@ -892,7 +892,6 @@ class Being notfinal : public ActorSprite,
 
         int getSortPixelY() const restrict2 override A_WARN_UNUSED
         { return CAST_S32(mPos.y) - mYDiff - mSortOffsetY; }
-//        { return CAST_S32(mPos.y) - mYDiff - mSortOffsetY + 16; }
 
         void setMap(Map *restrict const map) restrict2 override;
 

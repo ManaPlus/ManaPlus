@@ -1818,16 +1818,11 @@ void Being::logic() restrict2
         if (!xOffset && !yOffset)
             mNeedPosUpdate = false;
 
-/*
-        mSortOffsetY = (mOldHeight * mapTileSize / 2)
-            + (mOffsetY * mapTileSize / 2)
-            * (mapTileSize - abs(offset)) / mapTileSize - mFixedOffsetY * mapTileSize / 2;
-        const int yOffset2 = yOffset - mSortOffsetY - mFixedOffsetY * mapTileSize / 2;
-*/
         const int halfTile = mapTileSize / 2;
         const float offset2 = static_cast<float>(mOffsetY * abs(offset)) / 2;
-        mSortOffsetY = (mOldHeight - mFixedOffsetY + mOffsetY)
-            * halfTile - offset2;
+//        mSortOffsetY = (mOldHeight - mFixedOffsetY + mOffsetY)
+//            * halfTile - offset2;
+        mSortOffsetY = 0;
         const float yOffset3 = (mY + 1) * mapTileSize + yOffset
             - (mOldHeight + mOffsetY) * halfTile + offset2;
 
