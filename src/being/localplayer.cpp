@@ -1162,8 +1162,8 @@ void LocalPlayer::attributeChanged(const AttributesT id,
                                    const int oldVal,
                                    const int newVal)
 {
-    PRAGMA("GCC diagnostic push")
-    PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
+    PRAGMA45("GCC diagnostic push")
+    PRAGMA45("GCC diagnostic ignored \"-Wswitch-enum\"")
     switch (id)
     {
         case Attributes::EXP:
@@ -1187,7 +1187,7 @@ void LocalPlayer::attributeChanged(const AttributesT id,
         default:
             break;
     }
-    PRAGMA("GCC diagnostic pop")
+    PRAGMA45("GCC diagnostic pop")
 }
 
 void LocalPlayer::move(const int dX, const int dY)

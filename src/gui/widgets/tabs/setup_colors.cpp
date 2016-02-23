@@ -288,8 +288,8 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
 
 // probably need combite both switches and add all mssing color ids.
 
-    PRAGMA("GCC diagnostic push")
-    PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
+    PRAGMA45("GCC diagnostic push")
+    PRAGMA45("GCC diagnostic ignored \"-Wswitch-enum\"")
     switch (type)
     {
         case UserColorId::AIR_COLLISION_HIGHLIGHT:
@@ -364,7 +364,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
             mGradDelaySlider->setScale(20, 100);
             break;
     }
-    PRAGMA("GCC diagnostic pop")
+    PRAGMA45("GCC diagnostic pop")
     if (grad != GradientType::STATIC && grad != GradientType::PULSE)
     { // If nonstatic color, don't display the current, but the committed
       // color at the sliders

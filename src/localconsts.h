@@ -156,7 +156,14 @@
 #define const2
 #define PRAGMA6(str)
 #endif  // ADVGCC
-#define PRAGMA(str) _Pragma(str)
+
+#ifdef __GNUC__
+#if GCC_VERSION > 40500
+#define PRAGMA45(str) _Pragma(str)
+#else  // GCC_VERSION > 40400
+#define PRAGMA45(str)
+#endif  // GCC_VERSION > 40400
+#endif  // __GNUC__
 
 #ifdef __GNUC__
 #ifdef ENABLE_CILKPLUS
