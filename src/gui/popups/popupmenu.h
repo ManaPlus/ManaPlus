@@ -30,6 +30,7 @@
 #include "enums/inventorytype.h"
 
 #include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/itemcolor.h"
 
 #include "gui/widgets/linkhandler.h"
@@ -244,6 +245,7 @@ class PopupMenu final : public Popup, public LinkHandler
         std::string mNick;
         TextField *mTextField;
         ActorTypeT mType;
+        BeingTypeId mSubType;
         int mX;
         int mY;
 

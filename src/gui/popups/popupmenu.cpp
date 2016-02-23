@@ -121,6 +121,7 @@ PopupMenu::PopupMenu() :
     mNick(),
     mTextField(nullptr),
     mType(ActorType::Unknown),
+    mSubType(BeingTypeId_zero),
     mX(0),
     mY(0)
 {
@@ -149,6 +150,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     mBeingId = being->getId();
     mNick = being->getName();
     mType = being->getType();
+    mSubType = being->getSubType();
     mBrowserBox->clearRows();
     mX = x;
     mY = y;
@@ -475,6 +477,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
     mNick = nick;
     mBeingId = BeingId_zero;
     mType = ActorType::Player;
+    mSubType = BeingTypeId_zero;
     mBrowserBox->clearRows();
 
     const std::string &name = mNick;
@@ -578,6 +581,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mY = y;
     mFloorItemId = floorItem->getId();
     mType = ActorType::FloorItem;
+    mSubType = BeingTypeId_zero;
     for (int f = 0; f < maxCards; f ++)
         mItemCards[f] = floorItem->getCard(f);
     mBrowserBox->clearRows();
@@ -831,6 +835,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mBeingId = being->getId();
             mNick = being->getName();
             mType = being->getType();
+            mSubType = being->getSubType();
 
             // TRANSLATORS: popup menu item
             // TRANSLATORS: trade with player
@@ -900,6 +905,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mBeingId = BeingId_zero;
             mNick = name;
             mType = ActorType::Player;
+            mSubType = BeingTypeId_zero;
             addPlayerRelation(name);
             mBrowserBox->addRow("##3---");
             addFollow();
@@ -971,6 +977,7 @@ void PopupMenu::showChangePos(const int x, const int y)
         mMapItem = nullptr;
         mNick.clear();
         mType = ActorType::Unknown;
+        mSubType = BeingTypeId_zero;
         mX = 0;
         mY = 0;
         setVisible(Visible_false);
@@ -1502,6 +1509,7 @@ void PopupMenu::handleLink(const std::string &link,
         replaceAll(cmd, "'ITEMID'", toString(mItemId));
         replaceAll(cmd, "'ITEMCOLOR'", toString(toInt(mItemColor, int)));
         replaceAll(cmd, "'BEINGTYPEID'", toString(CAST_S32(mType)));
+        replaceAll(cmd, "'BEINGSUBTYPEID'", toString(CAST_S32(mSubType)));
         replaceAll(cmd, "'PLAYER'", localPlayer->getName());
         if (mItemIndex >= 0)
             replaceAll(cmd, "'INVINDEX'", toString(mItemIndex));
@@ -1559,6 +1567,7 @@ void PopupMenu::handleLink(const std::string &link,
     mNick.clear();
     mTextField = nullptr;
     mType = ActorType::Unknown;
+    mSubType = BeingTypeId_zero;
     mX = 0;
     mY = 0;
 }
@@ -1983,6 +1992,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
 
     mNick = name;
     mType = ActorType::Monster;
+    mSubType = BeingTypeId_zero;
     mX = x;
     mY = y;
 
@@ -2061,6 +2071,7 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
 
     mNick = name;
     mType = ActorType::FloorItem;
+    mSubType = BeingTypeId_zero;
     mX = x;
     mY = y;
 
@@ -2720,9 +2731,13 @@ void PopupMenu::showMonsterGMCommands()
     if (mBeingId != BeingId_zero)
     {
         // TRANSLATORS: popup menu item
-        // TRANSLATORS: kick player
+        // TRANSLATORS: kick monster
         mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
         mBrowserBox->addRow("##3---");
+
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show monster information
+        mBrowserBox->addRow("/monsterinfo 'BEINGSUBTYPEID'", _("Info"));
     }
 }
 
