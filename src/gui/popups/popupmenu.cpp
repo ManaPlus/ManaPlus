@@ -614,6 +614,8 @@ void PopupMenu::showPopup(const int x, const int y,
     // TRANSLATORS: add item name to chat
     mBrowserBox->addRow("/addchat 'FLOORID''CARDS'", _("Add to chat"));
     mBrowserBox->addRow("##3---");
+    addGmCommands();
+
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -1763,6 +1765,7 @@ void PopupMenu::showItemPopup(const int x, const int y,
             mBrowserBox->addRow("/use 'ITEMID'", _("Use"));
         }
         addProtection();
+        addGmCommands();
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: close menu
@@ -1819,6 +1822,7 @@ void PopupMenu::showItemPopup(const int x, const int y,
         }
     }
     addProtection();
+    addGmCommands();
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -1862,6 +1866,7 @@ void PopupMenu::showDropPopup(const int x,
             addPickupFilter(mNick);
         }
     }
+    addGmCommands();
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("/cleardrops", _("Clear drop window"));
@@ -2119,6 +2124,7 @@ void PopupMenu::showUndressPopup(const int x, const int y,
     // TRANSLATORS: popup menu item
     // TRANSLATORS: undress item from player
     mBrowserBox->addRow("undress item", _("Undress"));
+    addGmCommands();
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -2741,6 +2747,14 @@ void PopupMenu::showMonsterGMCommands()
     }
 }
 
+void PopupMenu::showFloorItemGMCommands()
+{
+}
+
+void PopupMenu::showItemGMCommands()
+{
+}
+
 void PopupMenu::showGMPopup()
 {
     mBrowserBox->clearRows();
@@ -2757,11 +2771,16 @@ void PopupMenu::showGMPopup()
                 showNpcGMCommands();
                 break;
             case ActorType::Monster:
-                showMonsterGMCommands();
+            showMonsterGMCommands();
+                break;
+            case ActorType::FloorItem:
+                showFloorItemGMCommands();
                 break;
             default:
+                if (mItemId != 0)
+                    showItemGMCommands();
+                break;
             case ActorType::Unknown:
-            case ActorType::FloorItem:
             case ActorType::Portal:
             case ActorType::LocalPet:
             case ActorType::Avatar:

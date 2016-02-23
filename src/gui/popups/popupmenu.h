@@ -207,6 +207,10 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addGmCommands();
 
+        void showFloorItemGMCommands();
+
+        void showItemGMCommands();
+
         void addNormalRelations();
 
         void addWindowMenu(const Window *const window);
