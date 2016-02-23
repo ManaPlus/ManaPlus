@@ -2755,6 +2755,7 @@ void PopupMenu::showFloorItemGMCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: show item information
     mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
+    mBrowserBox->addRow("/whodrops 'ITEMID'", _("Who drops"));
 }
 
 void PopupMenu::showItemGMCommands()
@@ -2762,6 +2763,7 @@ void PopupMenu::showItemGMCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: show item information
     mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
+    mBrowserBox->addRow("/whodrops 'ITEMID'", _("Who drops"));
 }
 
 void PopupMenu::showGMPopup()
