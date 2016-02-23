@@ -270,6 +270,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addRow("/sell 'NAME'", _("Sell"));
             }
 
+            addGmCommands();
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: move to npc location
@@ -288,6 +289,8 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: attack monster
             mBrowserBox->addRow("/attack :'BEINGID'", _("Attack"));
+            addGmCommands();
+            mBrowserBox->addRow("##3---");
 
             if (config.getBoolValue("enableAttackFilter"))
             {
@@ -325,6 +328,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: Mercenary move to master
             mBrowserBox->addRow("mercenary to master", _("Move to master"));
+            addGmCommands();
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: fire mercenary
@@ -339,6 +343,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: feed homunculus
             mBrowserBox->addRow("homunculus feed", _("Feed"));
+            addGmCommands();
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: delete homunculus
@@ -358,6 +363,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: pet unequip item
                 mBrowserBox->addRow("pet unequip", _("Unequip"));
+                addGmCommands();
                 mBrowserBox->addRow("##3---");
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: pet rename item
@@ -2632,6 +2638,94 @@ void PopupMenu::addGmCommands()
     }
 }
 
+void PopupMenu::showPlayerGMCommands()
+{
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: check player ip
+    mBrowserBox->addRow("ipcheck", _("Check ip"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: go to player position
+    mBrowserBox->addRow("goto", _("Goto"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: recall player to current position
+    mBrowserBox->addRow("recall", _("Recall"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: revive player
+    mBrowserBox->addRow("revive", _("Revive"));
+    if (mBeingId != BeingId_zero)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: kick player
+        mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
+        if (serverFeatures->haveMute())
+        {
+            mBrowserBox->addRow("##3---");
+            mBrowserBox->addRow("mute_+1",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Mute %d"), 1).c_str());
+            mBrowserBox->addRow("mute_+5",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Mute %d"), 5).c_str());
+            mBrowserBox->addRow("mute_+10",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Mute %d"), 10).c_str());
+            mBrowserBox->addRow("mute_+15",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Mute %d"), 15).c_str());
+            mBrowserBox->addRow("mute_+30",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Mute %d"), 30).c_str());
+
+            mBrowserBox->addRow("mute_-1",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Unmute %d"), 1).c_str());
+            mBrowserBox->addRow("mute_-5",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Unmute %d"), 5).c_str());
+            mBrowserBox->addRow("mute_-10",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Unmute %d"), 10).c_str());
+            mBrowserBox->addRow("mute_-15",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Unmute %d"), 15).c_str());
+            mBrowserBox->addRow("mute_-30",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: mute player
+                strprintf(_("Unmute %d"), 30).c_str());
+        }
+    }
+}
+
+void PopupMenu::showNpcGMCommands()
+{
+    if (mBeingId != BeingId_zero)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: kick player
+        mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
+    }
+}
+
+void PopupMenu::showMonsterGMCommands()
+{
+    if (mBeingId != BeingId_zero)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: kick player
+        mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
+        mBrowserBox->addRow("##3---");
+    }
+}
+
 void PopupMenu::showGMPopup()
 {
     mBrowserBox->clearRows();
@@ -2639,68 +2733,30 @@ void PopupMenu::showGMPopup()
     mBrowserBox->addRow(_("GM commands"));
     if (localPlayer->isGM())
     {
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: check player ip
-        mBrowserBox->addRow("ipcheck", _("Check ip"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: go to player position
-        mBrowserBox->addRow("goto", _("Goto"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: recall player to current position
-        mBrowserBox->addRow("recall", _("Recall"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: revive player
-        mBrowserBox->addRow("revive", _("Revive"));
-        if (mBeingId != BeingId_zero)
+        switch (mType)
         {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: kick player
-            mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
-            if (serverFeatures->haveMute())
-            {
-                mBrowserBox->addRow("##3---");
-                mBrowserBox->addRow("mute_+1",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Mute %d"), 1).c_str());
-                mBrowserBox->addRow("mute_+5",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Mute %d"), 5).c_str());
-                mBrowserBox->addRow("mute_+10",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Mute %d"), 10).c_str());
-                mBrowserBox->addRow("mute_+15",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Mute %d"), 15).c_str());
-                mBrowserBox->addRow("mute_+30",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Mute %d"), 30).c_str());
-
-                mBrowserBox->addRow("mute_-1",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Unmute %d"), 1).c_str());
-                mBrowserBox->addRow("mute_-5",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Unmute %d"), 5).c_str());
-                mBrowserBox->addRow("mute_-10",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Unmute %d"), 10).c_str());
-                mBrowserBox->addRow("mute_-15",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Unmute %d"), 15).c_str());
-                mBrowserBox->addRow("mute_-30",
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: mute player
-                    strprintf(_("Unmute %d"), 30).c_str());
-            }
+            case ActorType::Player:
+                showPlayerGMCommands();
+                break;
+            case ActorType::Npc:
+                showNpcGMCommands();
+                break;
+            case ActorType::Monster:
+                showMonsterGMCommands();
+                break;
+            default:
+            case ActorType::Unknown:
+            case ActorType::FloorItem:
+            case ActorType::Portal:
+            case ActorType::LocalPet:
+            case ActorType::Avatar:
+#ifdef EATHENA_SUPPORT
+            case ActorType::Pet:
+            case ActorType::Mercenary:
+            case ActorType::Homunculus:
+            case ActorType::SkillUnit:
+#endif
+                break;
         }
     }
 
