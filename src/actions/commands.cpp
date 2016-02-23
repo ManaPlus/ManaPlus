@@ -1218,4 +1218,13 @@ impHandler(ignorePickup)
     return false;
 }
 
+impHandler(monsterInfo)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->monsterInfo(args);
+    return true;
+}
+
 }  // namespace Actions

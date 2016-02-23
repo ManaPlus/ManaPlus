@@ -97,5 +97,6 @@ impHandlerVoid(npcClipboard)
 impHandlerVoid(addPickup)
 impHandlerVoid(removePickup)
 impHandlerVoid(ignorePickup)
+impHandlerVoid(monsterInfo)
 
 }  // namespace Actions

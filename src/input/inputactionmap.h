@@ -5245,6 +5245,12 @@ static const InputActionData inputActionData
         "targetskillunit|targetskill",
         UseArgs_false,
         Protected_false},
+    {"keyMonsterInfo",
+        defaultAction(&Actions::monsterInfo),
+        InputCondition::INGAME,
+        "monsterinfo|mobinfo|mi",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -626,6 +626,7 @@ enumStart(InputAction)
     BAR_TO_CHAT,
     SEEN,
     TARGET_SKILL_UNIT,
+    MONSTER_INFO,
     TOTAL
 }
 enumEnd(InputAction);

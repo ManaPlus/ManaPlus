@@ -24,6 +24,10 @@
 
 #include "being/being.h"
 
+#include "const/gui/chat.h"
+
+#include "net/chathandler.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
@@ -156,6 +160,11 @@ void AdminHandler::requestStats(const std::string &name) const
     mStatsName = name;
     createOutPacket(CMSG_ADMIN_REQUEST_STATS);
     outMsg.writeString(name, 24, "name");
+}
+
+void AdminHandler::monsterInfo(const std::string &name) const
+{
+    chatHandler->talk("@monsterinfo " + name, GENERAL_CHANNEL);
 }
 
 }  // namespace EAthena

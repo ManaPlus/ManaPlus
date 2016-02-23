@@ -126,4 +126,8 @@ void AdminHandler::requestStats(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::monsterInfo(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
