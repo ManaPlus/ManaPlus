@@ -4,8 +4,8 @@ cd ..
 
 dir=`pwd`
 
-export CC=gcc-5
-export CXX=g++-5
+export CC=gcc
+export CXX=g++
 
 export LANG=C
 
@@ -45,12 +45,14 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wsuggest-attribute=format -Wtype-limits -Wuninitialized \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable -ftrapv \
--fsched-pressure \
--Wconditionally-supported -Wdate-time \
--fno-var-tracking \
--Wopenmp-simd -Wformat-signedness \
--Wswitch-bool -Wmemset-transposed-args -Wchkp -Wc++14-compat -Wsized-deallocation \
--Wlogical-not-parentheses -Woverloaded-virtual"
+-fsched-pressure -Wconditionally-supported -Wdate-time -fno-var-tracking \
+-Wopenmp-simd -Wformat-signedness -Wformat-contains-nul \
+-Wformat-extra-args -Wformat-security -Wswitch-bool -Wswitch-enum \
+-Wformat-y2k -Wformat-zero-length -Wmemset-transposed-args -Wchkp \
+-Wc++14-compat -Wsized-deallocation -Wlogical-not-parentheses \
+-Woverloaded-virtual -Warray-bounds -Wbool-compare -Wchar-subscripts \
+-Wcomment -Wmissing-braces -Wnonnull -Wopenmp-simd -Wparentheses \
+-Wreturn-type -Wsequence-point -Wswitch"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
