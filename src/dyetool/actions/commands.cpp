@@ -98,5 +98,6 @@ impHandlerVoid(addPickup)
 impHandlerVoid(removePickup)
 impHandlerVoid(ignorePickup)
 impHandlerVoid(monsterInfo)
+impHandlerVoid(itemInfo)
 
 }  // namespace Actions

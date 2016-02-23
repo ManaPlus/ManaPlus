@@ -167,4 +167,9 @@ void AdminHandler::monsterInfo(const std::string &name) const
     chatHandler->talk("@monsterinfo " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::itemInfo(const std::string &name) const
+{
+    chatHandler->talk("@iteminfo " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

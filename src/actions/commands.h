@@ -98,6 +98,7 @@ namespace Actions
     decHandler(removePickup);
     decHandler(ignorePickup);
     decHandler(monsterInfo);
+    decHandler(itemInfo);
 }  // namespace Actions
 
 #undef decHandler

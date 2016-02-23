@@ -73,6 +73,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void monsterInfo(const std::string &name) const override final;
 
+        void itemInfo(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

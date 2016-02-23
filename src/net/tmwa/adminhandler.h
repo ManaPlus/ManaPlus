@@ -74,6 +74,8 @@ class AdminHandler final : public Ea::AdminHandler
                           A_CONST;
 
         void monsterInfo(const std::string &name) const override final A_CONST;
+
+        void itemInfo(const std::string &name) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

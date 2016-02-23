@@ -1227,4 +1227,13 @@ impHandler(monsterInfo)
     return true;
 }
 
+impHandler(itemInfo)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->itemInfo(args);
+    return true;
+}
+
 }  // namespace Actions

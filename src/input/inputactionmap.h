@@ -5251,6 +5251,12 @@ static const InputActionData inputActionData
         "monsterinfo|mobinfo|mi",
         UseArgs_true,
         Protected_true},
+    {"keyItemInfo",
+        defaultAction(&Actions::itemInfo),
+        InputCondition::INGAME,
+        "iteminfo|ii",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction
