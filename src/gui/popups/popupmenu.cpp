@@ -580,6 +580,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mX = x;
     mY = y;
     mFloorItemId = floorItem->getId();
+    mItemId = floorItem->getItemId();
     mType = ActorType::FloorItem;
     mSubType = BeingTypeId_zero;
     for (int f = 0; f < maxCards; f ++)
@@ -1450,6 +1451,7 @@ void PopupMenu::handleLink(const std::string &link,
                 if (item)
                 {
                     mFloorItemId = item->getId();
+                    mItemId = item->getItemId();
                     for (int f = 0; f < maxCards; f ++)
                         mItemCards[f] = item->getCard(f);
                     showPopup(getX(), getY(), item);
@@ -1723,6 +1725,7 @@ void PopupMenu::showPopup(Window *const parent,
         mBrowserBox->addRow("##3---");
         addPickupFilter(mNick);
     }
+    addGmCommands();
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add item name to chat
     mBrowserBox->addRow("/addchat 'ITEMID''CARDS'", _("Add to chat"));
@@ -2749,10 +2752,16 @@ void PopupMenu::showMonsterGMCommands()
 
 void PopupMenu::showFloorItemGMCommands()
 {
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show item information
+    mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
 }
 
 void PopupMenu::showItemGMCommands()
 {
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show item information
+    mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
 }
 
 void PopupMenu::showGMPopup()
@@ -2771,16 +2780,16 @@ void PopupMenu::showGMPopup()
                 showNpcGMCommands();
                 break;
             case ActorType::Monster:
-            showMonsterGMCommands();
+                showMonsterGMCommands();
                 break;
             case ActorType::FloorItem:
                 showFloorItemGMCommands();
                 break;
             default:
+            case ActorType::Unknown:
                 if (mItemId != 0)
                     showItemGMCommands();
                 break;
-            case ActorType::Unknown:
             case ActorType::Portal:
             case ActorType::LocalPet:
             case ActorType::Avatar:
