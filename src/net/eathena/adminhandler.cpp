@@ -172,4 +172,9 @@ void AdminHandler::itemInfo(const std::string &name) const
     chatHandler->talk("@iteminfo " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::whoDrops(const std::string &name) const
+{
+    chatHandler->talk("@whodrops " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

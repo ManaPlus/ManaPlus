@@ -134,4 +134,8 @@ void AdminHandler::itemInfo(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::whoDrops(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

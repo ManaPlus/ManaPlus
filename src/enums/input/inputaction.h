@@ -628,6 +628,7 @@ enumStart(InputAction)
     TARGET_SKILL_UNIT,
     MONSTER_INFO,
     ITEM_INFO,
+    WHO_DROPS,
     TOTAL
 }
 enumEnd(InputAction);

@@ -1236,4 +1236,13 @@ impHandler(itemInfo)
     return true;
 }
 
+impHandler(whoDrops)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->whoDrops(args);
+    return true;
+}
+
 }  // namespace Actions

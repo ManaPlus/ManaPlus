@@ -99,6 +99,7 @@ namespace Actions
     decHandler(ignorePickup);
     decHandler(monsterInfo);
     decHandler(itemInfo);
+    decHandler(whoDrops);
 }  // namespace Actions
 
 #undef decHandler

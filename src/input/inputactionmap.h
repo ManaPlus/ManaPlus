@@ -5257,6 +5257,12 @@ static const InputActionData inputActionData
         "iteminfo|ii",
         UseArgs_true,
         Protected_true},
+    {"keyWhoDrops",
+        defaultAction(&Actions::whoDrops),
+        InputCondition::INGAME,
+        "whodrops|whodrop",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction
