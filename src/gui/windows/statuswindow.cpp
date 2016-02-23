@@ -309,6 +309,8 @@ void StatusWindow::attributeChanged(const AttributesT id,
                                     const int oldVal A_UNUSED,
                                     const int newVal)
 {
+    PRAGMA("GCC diagnostic push")
+    PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
     switch (id)
     {
         case Attributes::HP:
@@ -368,6 +370,7 @@ void StatusWindow::attributeChanged(const AttributesT id,
         default:
             break;
     }
+    PRAGMA("GCC diagnostic pop")
 }
 
 void StatusWindow::setPointsNeeded(const AttributesT id,

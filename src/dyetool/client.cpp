@@ -583,6 +583,8 @@ int Client::gameExec()
             BLOCK_END("Client::gameExec 7")
 
             BLOCK_START("Client::gameExec 8")
+            PRAGMA("GCC diagnostic push")
+            PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
             switch (mState)
             {
                 case State::GAME:
@@ -634,6 +636,7 @@ int Client::gameExec()
                     mState = State::FORCE_QUIT;
                     break;
             }
+            PRAGMA("GCC diagnostic pop")
             BLOCK_END("Client::gameExec 8")
         }
         PROFILER_END();

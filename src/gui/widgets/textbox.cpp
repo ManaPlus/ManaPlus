@@ -257,6 +257,8 @@ void TextBox::keyPressed(KeyEvent& event)
     const Key &key = event.getKey();
     const InputActionT action = event.getActionId();
 
+    PRAGMA("GCC diagnostic push")
+    PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
     switch (action)
     {
         case InputAction::GUI_LEFT:
@@ -430,6 +432,7 @@ void TextBox::keyPressed(KeyEvent& event)
             break;
         }
     }
+    PRAGMA("GCC diagnostic pop")
 
     adjustSize();
     scrollToCaret();

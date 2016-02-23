@@ -333,6 +333,8 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
     int value = keysym.unicode;
 #endif
 
+    PRAGMA("GCC diagnostic push")
+    PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
     switch (keysym.sym)
     {
       case SDLK_TAB:
@@ -494,9 +496,12 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
       default:
           break;
     }
+    PRAGMA("GCC diagnostic pop")
 
     if (!(CAST_U32(keysym.mod) & KMOD_NUM))
     {
+        PRAGMA("GCC diagnostic push")
+        PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
         switch (keysym.sym)
         {
           case SDLK_KP0:
@@ -532,6 +537,7 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
           default:
               break;
         }
+        PRAGMA("GCC diagnostic pop")
     }
     return value;
 }

@@ -270,6 +270,8 @@ void MiniStatusWindow::attributeChanged(const AttributesT id,
                                         const int oldVal A_UNUSED,
                                         const int newVal A_UNUSED)
 {
+    PRAGMA("GCC diagnostic push")
+    PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
     switch (id)
     {
         case Attributes::HP:
@@ -294,6 +296,7 @@ void MiniStatusWindow::attributeChanged(const AttributesT id,
         default:
             break;
     }
+    PRAGMA("GCC diagnostic pop")
 }
 
 void MiniStatusWindow::updateStatus()

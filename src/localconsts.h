@@ -156,6 +156,7 @@
 #define const2
 #define PRAGMA6(str)
 #endif  // ADVGCC
+#define PRAGMA(str) _Pragma(str)
 
 #ifdef __GNUC__
 #ifdef ENABLE_CILKPLUS

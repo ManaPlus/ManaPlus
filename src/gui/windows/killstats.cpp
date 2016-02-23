@@ -405,6 +405,8 @@ void KillStats::attributeChanged(const AttributesT id,
                                  const int oldVal,
                                  const int newVal)
 {
+    PRAGMA("GCC diagnostic push")
+    PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
     switch (id)
     {
         case Attributes::EXP:
@@ -436,4 +438,5 @@ void KillStats::attributeChanged(const AttributesT id,
         default:
             break;
     }
+    PRAGMA("GCC diagnostic pop")
 }

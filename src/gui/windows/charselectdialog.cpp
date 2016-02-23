@@ -337,6 +337,8 @@ void CharSelectDialog::use(const int selected)
 void CharSelectDialog::keyPressed(KeyEvent &event)
 {
     const InputActionT actionId = event.getActionId();
+    PRAGMA("GCC diagnostic push")
+    PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
     switch (actionId)
     {
         case InputAction::GUI_CANCEL:
@@ -426,6 +428,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
         default:
             break;
     }
+    PRAGMA("GCC diagnostic pop")
 }
 
 /**

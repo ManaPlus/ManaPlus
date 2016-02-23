@@ -351,6 +351,8 @@ int Download::downloadThread(void *ptr)
                 if ((res = curl_easy_perform(d->mCurl)) != 0
                     && !d->mOptions.cancel)
                 {
+                    PRAGMA("GCC diagnostic push")
+                    PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
                     switch (res)
                     {
                         case CURLE_ABORTED_BY_CALLBACK:
@@ -360,6 +362,7 @@ int Download::downloadThread(void *ptr)
                         default:
                             break;
                     }
+                    PRAGMA("GCC diagnostic pop")
 
                     if (res)
                     {

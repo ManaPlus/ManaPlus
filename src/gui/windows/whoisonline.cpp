@@ -565,6 +565,8 @@ int WhoIsOnline::downloadThread(void *ptr)
             if ((res = curl_easy_perform(curl)) != 0)
             {
                 wio->mDownloadStatus = UPDATE_ERROR;
+                PRAGMA("GCC diagnostic push")
+                PRAGMA("GCC diagnostic ignored \"-Wswitch-enum\"")
                 switch (res)
                 {
                     case CURLE_COULDNT_CONNECT:
@@ -575,6 +577,7 @@ int WhoIsOnline::downloadThread(void *ptr)
                                   << url.c_str() << std::endl;
                     break;
                 }
+                PRAGMA("GCC diagnostic pop")
                 attempts++;
                 curl_easy_cleanup(curl);
                 curl_slist_free_all(pHeaders);
