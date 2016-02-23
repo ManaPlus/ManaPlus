@@ -1245,4 +1245,13 @@ impHandler(whoDrops)
     return true;
 }
 
+impHandler(mobSearch)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->mobSearch(args);
+    return true;
+}
+
 }  // namespace Actions

@@ -5263,6 +5263,12 @@ static const InputActionData inputActionData
         "whodrops|whodrop",
         UseArgs_true,
         Protected_true},
+    {"keyMobSearch",
+        defaultAction(&Actions::mobSearch),
+        InputCondition::INGAME,
+        "mobsearch|monstersearch",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -102,6 +102,8 @@ class AdminHandler notfinal
         virtual void itemInfo(const std::string &name) const = 0;
 
         virtual void whoDrops(const std::string &name) const = 0;
+
+        virtual void mobSearch(const std::string &name) const = 0;
 };
 
 }  // namespace Net

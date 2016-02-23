@@ -100,6 +100,7 @@ namespace Actions
     decHandler(monsterInfo);
     decHandler(itemInfo);
     decHandler(whoDrops);
+    decHandler(mobSearch);
 }  // namespace Actions
 
 #undef decHandler

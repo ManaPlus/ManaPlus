@@ -77,6 +77,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void whoDrops(const std::string &name) const override final;
 
+        void mobSearch(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

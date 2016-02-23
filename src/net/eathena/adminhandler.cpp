@@ -177,4 +177,9 @@ void AdminHandler::whoDrops(const std::string &name) const
     chatHandler->talk("@whodrops " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::mobSearch(const std::string &name) const
+{
+    chatHandler->talk("@mobsearch " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

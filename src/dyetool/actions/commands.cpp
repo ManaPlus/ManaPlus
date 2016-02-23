@@ -100,5 +100,6 @@ impHandlerVoid(ignorePickup)
 impHandlerVoid(monsterInfo)
 impHandlerVoid(itemInfo)
 impHandlerVoid(whoDrops)
+impHandlerVoid(mobSearch)
 
 }  // namespace Actions
