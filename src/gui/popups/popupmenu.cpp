@@ -1349,6 +1349,11 @@ void PopupMenu::handleLink(const std::string &link,
         showGMPopup();
         return;
     }
+    else if (link == "mute" && !mNick.empty())
+    {
+        showMuteCommands();
+        return;
+    }
     else if (link == "window close" && mWindow)
     {
         if (Widget::widgetExists(mWindow))
@@ -2715,52 +2720,71 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: popup menu item
         // TRANSLATORS: kick player
         mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
-        if (serverFeatures->haveMute())
-        {
-            mBrowserBox->addRow("##3---");
-            mBrowserBox->addRow("mute_+1",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Mute %d"), 1).c_str());
-            mBrowserBox->addRow("mute_+5",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Mute %d"), 5).c_str());
-            mBrowserBox->addRow("mute_+10",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Mute %d"), 10).c_str());
-            mBrowserBox->addRow("mute_+15",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Mute %d"), 15).c_str());
-            mBrowserBox->addRow("mute_+30",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Mute %d"), 30).c_str());
-
-            mBrowserBox->addRow("mute_-1",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Unmute %d"), 1).c_str());
-            mBrowserBox->addRow("mute_-5",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Unmute %d"), 5).c_str());
-            mBrowserBox->addRow("mute_-10",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Unmute %d"), 10).c_str());
-            mBrowserBox->addRow("mute_-15",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Unmute %d"), 15).c_str());
-            mBrowserBox->addRow("mute_-30",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: mute player
-                strprintf(_("Unmute %d"), 30).c_str());
-        }
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: mute menu
+        mBrowserBox->addRow("mute", _("Mute..."));
     }
+}
+
+void PopupMenu::showMuteCommands()
+{
+    mBrowserBox->clearRows();
+    // TRANSLATORS: popup menu header
+    mBrowserBox->addRow(strprintf(_("Mute %s"),
+        mNick.c_str()));
+    if (mBeingId != BeingId_zero &&
+        serverFeatures->haveMute())
+    {
+        mBrowserBox->addRow("mute_+1",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Mute %d"), 1).c_str());
+        mBrowserBox->addRow("mute_+5",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Mute %d"), 5).c_str());
+        mBrowserBox->addRow("mute_+10",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Mute %d"), 10).c_str());
+        mBrowserBox->addRow("mute_+15",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Mute %d"), 15).c_str());
+        mBrowserBox->addRow("mute_+30",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Mute %d"), 30).c_str());
+
+        mBrowserBox->addRow("mute_-1",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Unmute %d"), 1).c_str());
+        mBrowserBox->addRow("mute_-5",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Unmute %d"), 5).c_str());
+        mBrowserBox->addRow("mute_-10",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Unmute %d"), 10).c_str());
+        mBrowserBox->addRow("mute_-15",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Unmute %d"), 15).c_str());
+        mBrowserBox->addRow("mute_-30",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute player
+            strprintf(_("Unmute %d"), 30).c_str());
+        mBrowserBox->addRow("##3---");
+    }
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: back to gm menu
+    mBrowserBox->addRow("gm", _("Back"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(getX(), getY());
 }
 
 void PopupMenu::showNpcGMCommands()

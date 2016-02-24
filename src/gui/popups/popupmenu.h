@@ -207,6 +207,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addGmCommands();
 
+        void showMuteCommands();
+
         void showFloorItemGMCommands();
 
         void showItemGMCommands();
