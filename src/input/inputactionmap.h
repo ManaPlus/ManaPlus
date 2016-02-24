@@ -5275,6 +5275,12 @@ static const InputActionData inputActionData
         "mobspawnsearch|monsterspawnsearch|whereis",
         UseArgs_true,
         Protected_true},
+    {"keyPlayerGmCommands",
+        defaultAction(&Actions::playerGmCommands),
+        InputCondition::INGAME,
+        "gmcommands|playergmcommands|playercommands",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

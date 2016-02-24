@@ -631,6 +631,7 @@ enumStart(InputAction)
     WHO_DROPS,
     MOB_SEARCH,
     MOB_SPAWN_SEARCH,
+    PLAYER_GM_COMMANDS,
     TOTAL
 }
 enumEnd(InputAction);

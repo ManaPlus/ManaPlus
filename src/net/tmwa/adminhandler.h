@@ -83,6 +83,9 @@ class AdminHandler final : public Ea::AdminHandler
 
         void mobSpawnSearch(const std::string &name) const override final
                             A_CONST;
+
+        void playerGmCommands(const std::string &name) const override final
+                              A_CONST;
 };
 
 }  // namespace TmwAthena

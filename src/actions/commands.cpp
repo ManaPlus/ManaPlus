@@ -1263,4 +1263,10 @@ impHandler(mobSpawnSearch)
     return true;
 }
 
+impHandler(playerGmCommands)
+{
+    adminHandler->playerGmCommands(event.args);
+    return true;
+}
+
 }  // namespace Actions

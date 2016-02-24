@@ -102,6 +102,7 @@ namespace Actions
     decHandler(whoDrops);
     decHandler(mobSearch);
     decHandler(mobSpawnSearch);
+    decHandler(playerGmCommands);
 }  // namespace Actions
 
 #undef decHandler

@@ -22,7 +22,7 @@
 
 #include "net/eathena/adminhandler.h"
 
-#include "being/being.h"
+#include "being/localplayer.h"
 
 #include "const/gui/chat.h"
 
@@ -185,6 +185,14 @@ void AdminHandler::mobSearch(const std::string &name) const
 void AdminHandler::mobSpawnSearch(const std::string &name) const
 {
     chatHandler->talk("@whereis " + name, GENERAL_CHANNEL);
+}
+
+void AdminHandler::playerGmCommands(const std::string &name) const
+{
+    if (name.empty() || (localPlayer && name == localPlayer->getName()))
+        chatHandler->talk("@commands", GENERAL_CHANNEL);
+    else
+        chatHandler->talk("#commands " + name, GENERAL_CHANNEL);
 }
 
 }  // namespace EAthena

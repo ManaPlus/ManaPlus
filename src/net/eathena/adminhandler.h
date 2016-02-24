@@ -81,6 +81,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void mobSpawnSearch(const std::string &name) const override final;
 
+        void playerGmCommands(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

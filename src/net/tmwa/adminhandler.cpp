@@ -146,4 +146,8 @@ void AdminHandler::mobSpawnSearch(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::playerGmCommands(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

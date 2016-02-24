@@ -106,6 +106,8 @@ class AdminHandler notfinal
         virtual void mobSearch(const std::string &name) const = 0;
 
         virtual void mobSpawnSearch(const std::string &name) const = 0;
+
+        virtual void playerGmCommands(const std::string &name) const = 0;
 };
 
 }  // namespace Net
