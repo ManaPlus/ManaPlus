@@ -118,6 +118,8 @@ class AdminHandler notfinal
         virtual void showStorageList(const std::string &name) const = 0;
 
         virtual void showCartList(const std::string &name) const = 0;
+
+        virtual void showInventoryList(const std::string &name) const = 0;
 };
 
 }  // namespace Net

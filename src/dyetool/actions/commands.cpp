@@ -108,5 +108,6 @@ impHandlerVoid(commandShowLevel)
 impHandlerVoid(commandShowStats)
 impHandlerVoid(commandShowStorage)
 impHandlerVoid(commandShowCart)
+impHandlerVoid(commandShowInventory)
 
 }  // namespace Actions

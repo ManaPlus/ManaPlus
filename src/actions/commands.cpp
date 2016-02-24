@@ -1299,4 +1299,10 @@ impHandler(commandShowCart)
     return true;
 }
 
+impHandler(commandShowInventory)
+{
+    adminHandler->showInventoryList(event.args);
+    return true;
+}
+
 }  // namespace Actions

@@ -5311,6 +5311,12 @@ static const InputActionData inputActionData
         "showcart|cartlist",
         UseArgs_true,
         Protected_true},
+    {"keyCommandShowInventoryList",
+        defaultAction(&Actions::commandShowInventory),
+        InputCondition::INGAME,
+        "showinventory|inventorylist|itemlist",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -94,6 +94,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void showCartList(const std::string &name) const override final;
 
+        void showInventoryList(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

@@ -235,4 +235,12 @@ void AdminHandler::showCartList(const std::string &name) const
         chatHandler->talk("#cartlist " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::showInventoryList(const std::string &name) const
+{
+    if (name.empty() || (localPlayer && name == localPlayer->getName()))
+        chatHandler->talk("@itemlist", GENERAL_CHANNEL);
+    else
+        chatHandler->talk("#itemlist " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

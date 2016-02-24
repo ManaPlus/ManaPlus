@@ -108,6 +108,7 @@ namespace Actions
     decHandler(commandShowStats);
     decHandler(commandShowStorage);
     decHandler(commandShowCart);
+    decHandler(commandShowInventory);
 }  // namespace Actions
 
 #undef decHandler
