@@ -106,6 +106,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void spawnSlaveClone(const std::string &name) const override final;
 
+        void spawnEvilClone(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

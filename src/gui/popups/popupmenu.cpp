@@ -2706,6 +2706,9 @@ void PopupMenu::showPlayerGMCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: spawn slave player clone
     mBrowserBox->addRow("/spawnslaveclone 'NAME'", _("Spawn slave clone"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: spawn evil player clone
+    mBrowserBox->addRow("/spawnevilclone 'NAME'", _("Spawn evil clone"));
     if (mBeingId != BeingId_zero)
     {
         mBrowserBox->addRow("##3---");
