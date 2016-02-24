@@ -83,6 +83,9 @@ class AdminHandler final : public Ea::AdminHandler
 
         void playerGmCommands(const std::string &name) const override final;
 
+        void playerCharGmCommands(const std::string &name) const
+                                  override final;
+
     protected:
         static std::string mStatsName;
 };

@@ -195,4 +195,12 @@ void AdminHandler::playerGmCommands(const std::string &name) const
         chatHandler->talk("#commands " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::playerCharGmCommands(const std::string &name) const
+{
+    if (name.empty() || (localPlayer && name == localPlayer->getName()))
+        chatHandler->talk("@charcommands", GENERAL_CHANNEL);
+    else
+        chatHandler->talk("#charcommands " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

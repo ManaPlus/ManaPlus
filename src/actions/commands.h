@@ -103,6 +103,7 @@ namespace Actions
     decHandler(mobSearch);
     decHandler(mobSpawnSearch);
     decHandler(playerGmCommands);
+    decHandler(playerCharGmCommands);
 }  // namespace Actions
 
 #undef decHandler

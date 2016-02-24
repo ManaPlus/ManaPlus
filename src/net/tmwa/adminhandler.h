@@ -86,6 +86,9 @@ class AdminHandler final : public Ea::AdminHandler
 
         void playerGmCommands(const std::string &name) const override final
                               A_CONST;
+
+        void playerCharGmCommands(const std::string &name) const override final
+                                  A_CONST;
 };
 
 }  // namespace TmwAthena

@@ -150,4 +150,8 @@ void AdminHandler::playerGmCommands(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::playerCharGmCommands(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

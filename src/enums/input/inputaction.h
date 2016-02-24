@@ -632,6 +632,7 @@ enumStart(InputAction)
     MOB_SEARCH,
     MOB_SPAWN_SEARCH,
     PLAYER_GM_COMMANDS,
+    PLAYER_CHAR_GM_COMMANDS,
     TOTAL
 }
 enumEnd(InputAction);

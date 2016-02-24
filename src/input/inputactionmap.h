@@ -5281,6 +5281,12 @@ static const InputActionData inputActionData
         "gmcommands|playergmcommands|playercommands",
         UseArgs_true,
         Protected_true},
+    {"keyPlayerCharGmCommands",
+        defaultAction(&Actions::playerCharGmCommands),
+        InputCondition::INGAME,
+        "gmcharcommands|playerchargmcommands|playercharcommands",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -1269,4 +1269,10 @@ impHandler(playerGmCommands)
     return true;
 }
 
+impHandler(playerCharGmCommands)
+{
+    adminHandler->playerCharGmCommands(event.args);
+    return true;
+}
+
 }  // namespace Actions
