@@ -639,6 +639,7 @@ enumStart(InputAction)
     COMMAND_SHOW_CART,
     COMMAND_SHOW_INVENTORY,
     LOCATE_PLAYER,
+    COMMAND_SHOW_ACCOUNT_INFO,
     TOTAL
 }
 enumEnd(InputAction);

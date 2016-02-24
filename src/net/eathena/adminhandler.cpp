@@ -248,4 +248,9 @@ void AdminHandler::locatePlayer(const std::string &name) const
     chatHandler->talk("@where " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::showAccountInfo(const std::string &name) const
+{
+    chatHandler->talk("@accinfo " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

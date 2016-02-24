@@ -110,5 +110,6 @@ impHandlerVoid(commandShowStorage)
 impHandlerVoid(commandShowCart)
 impHandlerVoid(commandShowInventory)
 impHandlerVoid(locatePlayer)
+impHandlerVoid(commandShowAccountInfo)
 
 }  // namespace Actions

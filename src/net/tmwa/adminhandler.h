@@ -105,6 +105,9 @@ class AdminHandler final : public Ea::AdminHandler
 
         void locatePlayer(const std::string &name) const override final
                           A_CONST;
+
+        void showAccountInfo(const std::string &name) const override final
+                             A_CONST;
 };
 
 }  // namespace TmwAthena

@@ -5323,6 +5323,12 @@ static const InputActionData inputActionData
         "locate|locateplayer|whereplayer",
         UseArgs_true,
         Protected_true},
+    {"keyCommandShowAccountInfo",
+        defaultAction(&Actions::commandShowAccountInfo),
+        InputCondition::INGAME,
+        "showaccountinfo|showaccinfo|accinfo",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

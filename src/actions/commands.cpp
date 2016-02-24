@@ -1314,4 +1314,13 @@ impHandler(locatePlayer)
     return true;
 }
 
+impHandler(commandShowAccountInfo)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->showAccountInfo(args);
+    return true;
+}
+
 }  // namespace Actions
