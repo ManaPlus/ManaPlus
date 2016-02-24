@@ -93,6 +93,9 @@ class AdminHandler final : public Ea::AdminHandler
         void showLevel(const std::string &name) const override final A_CONST;
 
         void showStats(const std::string &name) const override final A_CONST;
+
+        void showStorageList(const std::string &name) const override final
+                             A_CONST;
 };
 
 }  // namespace TmwAthena

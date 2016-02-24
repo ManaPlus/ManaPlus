@@ -90,6 +90,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void showStats(const std::string &name) const override final;
 
+        void showStorageList(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

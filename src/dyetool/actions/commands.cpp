@@ -106,5 +106,6 @@ impHandlerVoid(playerGmCommands)
 impHandlerVoid(playerCharGmCommands)
 impHandlerVoid(commandShowLevel)
 impHandlerVoid(commandShowStats)
+impHandlerVoid(commandShowStorage)
 
 }  // namespace Actions

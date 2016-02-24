@@ -2670,6 +2670,9 @@ void PopupMenu::showPlayerGMCommands()
     // TRANSLATORS: show player stats
     mBrowserBox->addRow("/showstats 'NAME'", _("Show stats"));
     // TRANSLATORS: popup menu item
+    // TRANSLATORS: show player storage
+    mBrowserBox->addRow("/showstorage 'NAME'", _("Show storage"));
+    // TRANSLATORS: popup menu item
     // TRANSLATORS: gm commands
     mBrowserBox->addRow("/gmcommands 'NAME'", _("Show commands"));
     // TRANSLATORS: popup menu item

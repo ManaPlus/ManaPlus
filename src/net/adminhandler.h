@@ -114,6 +114,8 @@ class AdminHandler notfinal
         virtual void showLevel(const std::string &name) const = 0;
 
         virtual void showStats(const std::string &name) const = 0;
+
+        virtual void showStorageList(const std::string &name) const = 0;
 };
 
 }  // namespace Net

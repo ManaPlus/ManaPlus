@@ -5299,6 +5299,12 @@ static const InputActionData inputActionData
         "showstats|stats",
         UseArgs_true,
         Protected_true},
+    {"keyCommandShowStorage",
+        defaultAction(&Actions::commandShowStorage),
+        InputCondition::INGAME,
+        "showstorage|storagelist",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

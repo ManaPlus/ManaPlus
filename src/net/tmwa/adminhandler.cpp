@@ -162,4 +162,8 @@ void AdminHandler::showStats(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::showStorageList(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

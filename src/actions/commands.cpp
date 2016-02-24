@@ -1287,4 +1287,10 @@ impHandler(commandShowStats)
     return true;
 }
 
+impHandler(commandShowStorage)
+{
+    adminHandler->showStorageList(event.args);
+    return true;
+}
+
 }  // namespace Actions

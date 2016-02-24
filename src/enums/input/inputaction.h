@@ -635,6 +635,7 @@ enumStart(InputAction)
     PLAYER_CHAR_GM_COMMANDS,
     COMMAND_SHOW_LEVEL,
     COMMAND_SHOW_STATS,
+    COMMAND_SHOW_STORAGE,
     TOTAL
 }
 enumEnd(InputAction);
