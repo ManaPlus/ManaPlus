@@ -2699,8 +2699,13 @@ void PopupMenu::showPlayerGMCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: revive player
     mBrowserBox->addRow("revive", _("Revive"));
+    mBrowserBox->addRow("##3---");
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: spawn player clone
+    mBrowserBox->addRow("/spawnclone 'NAME'", _("Spawn clone"));
     if (mBeingId != BeingId_zero)
     {
+        mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: kick player
         mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));

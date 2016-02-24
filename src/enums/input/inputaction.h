@@ -642,6 +642,7 @@ enumStart(InputAction)
     COMMAND_SHOW_ACCOUNT_INFO,
     COMMAND_SPAWN,
     COMMAND_SPAWN_SLAVE,
+    COMMAND_SPAWN_CLONE,
     TOTAL
 }
 enumEnd(InputAction);

@@ -1341,4 +1341,13 @@ impHandler(commandSpawnSlave)
     return true;
 }
 
+impHandler(commandSpawnClone)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->spawnClone(args);
+    return true;
+}
+
 }  // namespace Actions

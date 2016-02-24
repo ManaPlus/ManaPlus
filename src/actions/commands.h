@@ -113,6 +113,7 @@ namespace Actions
     decHandler(commandShowAccountInfo);
     decHandler(commandSpawn);
     decHandler(commandSpawnSlave);
+    decHandler(commandSpawnClone);
 }  // namespace Actions
 
 #undef decHandler

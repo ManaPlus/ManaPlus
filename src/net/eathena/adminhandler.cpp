@@ -258,4 +258,9 @@ void AdminHandler::spawnSlave(const std::string &name) const
     chatHandler->talk("@summon " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::spawnClone(const std::string &name) const
+{
+    chatHandler->talk("@clone " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena
