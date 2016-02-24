@@ -100,6 +100,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void showAccountInfo(const std::string &name) const override final;
 
+        void spawnSlave(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

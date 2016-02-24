@@ -112,6 +112,7 @@ namespace Actions
     decHandler(locatePlayer);
     decHandler(commandShowAccountInfo);
     decHandler(commandSpawn);
+    decHandler(commandSpawnSlave);
 }  // namespace Actions
 
 #undef decHandler

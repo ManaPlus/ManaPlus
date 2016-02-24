@@ -253,4 +253,9 @@ void AdminHandler::showAccountInfo(const std::string &name) const
     chatHandler->talk("@accinfo " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::spawnSlave(const std::string &name) const
+{
+    chatHandler->talk("@summon " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

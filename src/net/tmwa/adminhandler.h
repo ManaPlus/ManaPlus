@@ -108,6 +108,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void showAccountInfo(const std::string &name) const override final
                              A_CONST;
+
+        void spawnSlave(const std::string &name) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

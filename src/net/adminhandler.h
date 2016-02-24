@@ -126,6 +126,8 @@ class AdminHandler notfinal
         virtual void showAccountInfo(const std::string &name) const = 0;
 
         virtual void spawn(const std::string &name) const = 0;
+
+        virtual void spawnSlave(const std::string &name) const = 0;
 };
 
 }  // namespace Net

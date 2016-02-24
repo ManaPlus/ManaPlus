@@ -5335,6 +5335,12 @@ static const InputActionData inputActionData
         "spawn|monster",
         UseArgs_true,
         Protected_true},
+    {"keyCommandSpawnSlave",
+        defaultAction(&Actions::commandSpawnSlave),
+        InputCondition::INGAME,
+        "spawnslave|monsterslave|summon",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

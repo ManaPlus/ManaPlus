@@ -641,6 +641,7 @@ enumStart(InputAction)
     LOCATE_PLAYER,
     COMMAND_SHOW_ACCOUNT_INFO,
     COMMAND_SPAWN,
+    COMMAND_SPAWN_SLAVE,
     TOTAL
 }
 enumEnd(InputAction);

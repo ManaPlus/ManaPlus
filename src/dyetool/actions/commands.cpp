@@ -112,5 +112,6 @@ impHandlerVoid(commandShowInventory)
 impHandlerVoid(locatePlayer)
 impHandlerVoid(commandShowAccountInfo)
 impHandlerVoid(commandSpawn)
+impHandlerVoid(commandSpawnSlave)
 
 }  // namespace Actions

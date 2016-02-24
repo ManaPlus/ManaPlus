@@ -182,4 +182,8 @@ void AdminHandler::showAccountInfo(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::spawnSlave(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
