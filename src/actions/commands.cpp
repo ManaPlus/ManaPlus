@@ -1323,4 +1323,13 @@ impHandler(commandShowAccountInfo)
     return true;
 }
 
+impHandler(commandSpawn)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->spawn(args);
+    return true;
+}
+
 }  // namespace Actions

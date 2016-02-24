@@ -5329,6 +5329,12 @@ static const InputActionData inputActionData
         "showaccountinfo|showaccinfo|accinfo",
         UseArgs_true,
         Protected_true},
+    {"keyCommandSpawn",
+        defaultAction(&Actions::commandSpawn),
+        InputCondition::INGAME,
+        "spawn|monster",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

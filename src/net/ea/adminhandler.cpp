@@ -92,4 +92,9 @@ void AdminHandler::slide(const int x, const int y) const
     }
 }
 
+void AdminHandler::spawn(const std::string &name) const
+{
+    chatHandler->talk("@spawn " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace Ea

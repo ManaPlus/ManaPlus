@@ -2769,6 +2769,7 @@ void PopupMenu::showMonsterGMCommands()
         // TRANSLATORS: popup menu item
         // TRANSLATORS: kick monster
         mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
+        mBrowserBox->addRow("/spawn 'BEINGSUBTYPEID'", _("Spawn same"));
         mBrowserBox->addRow("##3---");
 
         // TRANSLATORS: popup menu item

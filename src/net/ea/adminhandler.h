@@ -60,6 +60,8 @@ class AdminHandler notfinal : public Net::AdminHandler
         void createItems(const int id,
                          const ItemColor color,
                          const int amount) const override final;
+
+        void spawn(const std::string &name) const override final;
 };
 
 }  // namespace Ea
