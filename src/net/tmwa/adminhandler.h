@@ -96,6 +96,9 @@ class AdminHandler final : public Ea::AdminHandler
 
         void showStorageList(const std::string &name) const override final
                              A_CONST;
+
+        void showCartList(const std::string &name) const override final
+                          A_CONST;
 };
 
 }  // namespace TmwAthena

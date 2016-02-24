@@ -636,6 +636,7 @@ enumStart(InputAction)
     COMMAND_SHOW_LEVEL,
     COMMAND_SHOW_STATS,
     COMMAND_SHOW_STORAGE,
+    COMMAND_SHOW_CART,
     TOTAL
 }
 enumEnd(InputAction);

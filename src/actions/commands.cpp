@@ -1293,4 +1293,10 @@ impHandler(commandShowStorage)
     return true;
 }
 
+impHandler(commandShowCart)
+{
+    adminHandler->showCartList(event.args);
+    return true;
+}
+
 }  // namespace Actions
