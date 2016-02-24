@@ -80,6 +80,9 @@ class AdminHandler final : public Ea::AdminHandler
         void whoDrops(const std::string &name) const override final A_CONST;
 
         void mobSearch(const std::string &name) const override final A_CONST;
+
+        void mobSpawnSearch(const std::string &name) const override final
+                            A_CONST;
 };
 
 }  // namespace TmwAthena

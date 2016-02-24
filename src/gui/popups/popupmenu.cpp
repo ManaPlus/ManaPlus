@@ -2747,10 +2747,13 @@ void PopupMenu::showMonsterGMCommands()
         // TRANSLATORS: popup menu item
         // TRANSLATORS: show monster information
         mBrowserBox->addRow("/monsterinfo 'BEINGSUBTYPEID'", _("Info"));
-
         // TRANSLATORS: popup menu item
         // TRANSLATORS: show selected monster in current map
         mBrowserBox->addRow("/mobsearch 'BEINGSUBTYPEID'", _("Search"));
+        mBrowserBox->addRow("/mobspawnsearch 'BEINGSUBTYPEID'",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: show selected monster spawns in all maps
+            _("Search spawns"));
     }
 }
 

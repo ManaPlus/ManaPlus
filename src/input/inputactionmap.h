@@ -5269,6 +5269,12 @@ static const InputActionData inputActionData
         "mobsearch|monstersearch",
         UseArgs_true,
         Protected_true},
+    {"keyMobSpawnSearch",
+        defaultAction(&Actions::mobSpawnSearch),
+        InputCondition::INGAME,
+        "mobspawnsearch|monsterspawnsearch|whereis",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

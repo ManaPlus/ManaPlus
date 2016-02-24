@@ -182,4 +182,9 @@ void AdminHandler::mobSearch(const std::string &name) const
     chatHandler->talk("@mobsearch " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::mobSpawnSearch(const std::string &name) const
+{
+    chatHandler->talk("@whereis " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

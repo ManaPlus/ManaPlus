@@ -1254,4 +1254,13 @@ impHandler(mobSearch)
     return true;
 }
 
+impHandler(mobSpawnSearch)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->mobSpawnSearch(args);
+    return true;
+}
+
 }  // namespace Actions

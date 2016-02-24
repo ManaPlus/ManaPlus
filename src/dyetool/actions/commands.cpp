@@ -101,5 +101,6 @@ impHandlerVoid(monsterInfo)
 impHandlerVoid(itemInfo)
 impHandlerVoid(whoDrops)
 impHandlerVoid(mobSearch)
+impHandlerVoid(mobSpawnSearch)
 
 }  // namespace Actions

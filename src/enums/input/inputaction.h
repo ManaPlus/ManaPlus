@@ -630,6 +630,7 @@ enumStart(InputAction)
     ITEM_INFO,
     WHO_DROPS,
     MOB_SEARCH,
+    MOB_SPAWN_SEARCH,
     TOTAL
 }
 enumEnd(InputAction);
