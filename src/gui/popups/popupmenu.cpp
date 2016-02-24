@@ -1354,6 +1354,11 @@ void PopupMenu::handleLink(const std::string &link,
         showMuteCommands();
         return;
     }
+    else if (link == "show" && !mNick.empty())
+    {
+        showPlayerMenu();
+        return;
+    }
     else if (link == "window close" && mWindow)
     {
         if (Widget::widgetExists(mWindow))
@@ -2663,6 +2668,45 @@ void PopupMenu::addGmCommands()
     }
 }
 
+void PopupMenu::showPlayerMenu()
+{
+    mBrowserBox->clearRows();
+    // TRANSLATORS: popup menu header
+    mBrowserBox->addRow(strprintf(_("Show %s"),
+        mNick.c_str()));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show player account info
+    mBrowserBox->addRow("/showaccountinfo 'NAME'", _("Account info"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show player level
+    mBrowserBox->addRow("/showlevel 'NAME'", _("Level"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show player stats
+    mBrowserBox->addRow("/showstats 'NAME'", _("Stats"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show player inventory list
+    mBrowserBox->addRow("/showinventory 'NAME'", _("Inventory"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show player storage list
+    mBrowserBox->addRow("/showstorage 'NAME'", _("Storage"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show player cart list
+    mBrowserBox->addRow("/showcart 'NAME'", _("Cart"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: gm commands
+    mBrowserBox->addRow("/gmcommands 'NAME'", _("Commands"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: gm char commands
+    mBrowserBox->addRow("/gmcharcommands 'NAME'", _("Char commands"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: back to gm menu
+    mBrowserBox->addRow("gm", _("Back"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(getX(), getY());
+}
+
 void PopupMenu::showPlayerGMCommands()
 {
     // TRANSLATORS: popup menu item
@@ -2672,30 +2716,6 @@ void PopupMenu::showPlayerGMCommands()
     // TRANSLATORS: check player ip
     mBrowserBox->addRow("ipcheck", _("Check ip"));
     // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player account info
-    mBrowserBox->addRow("/showaccountinfo 'NAME'", _("Show account info"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player level
-    mBrowserBox->addRow("/showlevel 'NAME'", _("Show level"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player stats
-    mBrowserBox->addRow("/showstats 'NAME'", _("Show stats"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player inventory list
-    mBrowserBox->addRow("/showinventory 'NAME'", _("Show inventory"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player storage list
-    mBrowserBox->addRow("/showstorage 'NAME'", _("Show storage"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player cart list
-    mBrowserBox->addRow("/showcart 'NAME'", _("Show cart"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm commands
-    mBrowserBox->addRow("/gmcommands 'NAME'", _("Show commands"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm char commands
-    mBrowserBox->addRow("/gmcharcommands 'NAME'", _("Show char commands"));
-    // TRANSLATORS: popup menu item
     // TRANSLATORS: go to player position
     mBrowserBox->addRow("goto", _("Goto"));
     // TRANSLATORS: popup menu item
@@ -2704,6 +2724,16 @@ void PopupMenu::showPlayerGMCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: revive player
     mBrowserBox->addRow("revive", _("Revive"));
+    if (mBeingId != BeingId_zero)
+    {
+        mBrowserBox->addRow("##3---");
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show menu
+        mBrowserBox->addRow("show", _("Show..."));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: mute menu
+        mBrowserBox->addRow("mute", _("Mute..."));
+    }
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: spawn player clone
@@ -2720,9 +2750,6 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: popup menu item
         // TRANSLATORS: kick player
         mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: mute menu
-        mBrowserBox->addRow("mute", _("Mute..."));
     }
 }
 
