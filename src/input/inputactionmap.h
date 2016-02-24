@@ -5293,6 +5293,12 @@ static const InputActionData inputActionData
         "showlevel|exp",
         UseArgs_true,
         Protected_true},
+    {"keyCommandShowStats",
+        defaultAction(&Actions::commandShowStats),
+        InputCondition::INGAME,
+        "showstats|stats",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

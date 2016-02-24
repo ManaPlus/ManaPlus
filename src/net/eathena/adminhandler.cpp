@@ -211,4 +211,12 @@ void AdminHandler::showLevel(const std::string &name) const
         chatHandler->talk("#exp " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::showStats(const std::string &name) const
+{
+    if (name.empty() || (localPlayer && name == localPlayer->getName()))
+        chatHandler->talk("@stats", GENERAL_CHANNEL);
+    else
+        chatHandler->talk("#stats " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

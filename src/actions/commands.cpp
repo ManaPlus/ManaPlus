@@ -1281,4 +1281,10 @@ impHandler(commandShowLevel)
     return true;
 }
 
+impHandler(commandShowStats)
+{
+    adminHandler->showStats(event.args);
+    return true;
+}
+
 }  // namespace Actions

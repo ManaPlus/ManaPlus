@@ -105,6 +105,7 @@ namespace Actions
     decHandler(playerGmCommands);
     decHandler(playerCharGmCommands);
     decHandler(commandShowLevel);
+    decHandler(commandShowStats);
 }  // namespace Actions
 
 #undef decHandler
