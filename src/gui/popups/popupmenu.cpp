@@ -2734,6 +2734,9 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: mute menu
         mBrowserBox->addRow("mute", _("Mute..."));
     }
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: set player save position
+    mBrowserBox->addRow("/savepos", _("Set save position"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: spawn player clone

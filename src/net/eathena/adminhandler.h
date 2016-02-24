@@ -108,6 +108,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void spawnEvilClone(const std::string &name) const override final;
 
+        void savePosition(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

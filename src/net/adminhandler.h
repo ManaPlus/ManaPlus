@@ -134,6 +134,8 @@ class AdminHandler notfinal
         virtual void spawnSlaveClone(const std::string &name) const = 0;
 
         virtual void spawnEvilClone(const std::string &name) const = 0;
+
+        virtual void savePosition(const std::string &name) const = 0;
 };
 
 }  // namespace Net

@@ -1368,4 +1368,10 @@ impHandler(commandSpawnEvilClone)
     return true;
 }
 
+impHandler(commandSavePosition)
+{
+    adminHandler->savePosition(event.args);
+    return true;
+}
+
 }  // namespace Actions

@@ -5359,6 +5359,12 @@ static const InputActionData inputActionData
         "spawnevilclone|playerevilclone|evilclone",
         UseArgs_true,
         Protected_true},
+    {"keyCommandSavePosition",
+        defaultAction(&Actions::commandSavePosition),
+        InputCondition::INGAME,
+        "savepos|saveposition",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

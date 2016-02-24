@@ -273,4 +273,12 @@ void AdminHandler::spawnEvilClone(const std::string &name) const
     chatHandler->talk("@evilclone " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::savePosition(const std::string &name) const
+{
+    if (name.empty() || (localPlayer && name == localPlayer->getName()))
+        chatHandler->talk("@save", GENERAL_CHANNEL);
+    else
+        chatHandler->talk("#save " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

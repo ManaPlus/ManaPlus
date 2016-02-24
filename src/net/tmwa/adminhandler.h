@@ -118,6 +118,9 @@ class AdminHandler final : public Ea::AdminHandler
 
         void spawnEvilClone(const std::string &name) const override final
                             A_CONST;
+
+        void savePosition(const std::string &name) const override final
+                          A_CONST;
 };
 
 }  // namespace TmwAthena

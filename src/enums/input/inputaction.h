@@ -645,6 +645,7 @@ enumStart(InputAction)
     COMMAND_SPAWN_CLONE,
     COMMAND_SPAWN_SLAVE_CLONE,
     COMMAND_SPAWN_EVIL_CLONE,
+    COMMAND_SAVE_POSITION,
     TOTAL
 }
 enumEnd(InputAction);

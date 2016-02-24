@@ -116,5 +116,6 @@ impHandlerVoid(commandSpawnSlave)
 impHandlerVoid(commandSpawnClone)
 impHandlerVoid(commandSpawnSlaveClone)
 impHandlerVoid(commandSpawnEvilClone)
+impHandlerVoid(commandSavePosition)
 
 }  // namespace Actions
