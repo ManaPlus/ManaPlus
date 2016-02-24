@@ -104,6 +104,7 @@ namespace Actions
     decHandler(mobSpawnSearch);
     decHandler(playerGmCommands);
     decHandler(playerCharGmCommands);
+    decHandler(commandShowLevel);
 }  // namespace Actions
 
 #undef decHandler

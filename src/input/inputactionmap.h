@@ -5287,6 +5287,12 @@ static const InputActionData inputActionData
         "gmcharcommands|playerchargmcommands|playercharcommands",
         UseArgs_true,
         Protected_true},
+    {"keyCommandShowLevel",
+        defaultAction(&Actions::commandShowLevel),
+        InputCondition::INGAME,
+        "showlevel|exp",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -1275,4 +1275,10 @@ impHandler(playerCharGmCommands)
     return true;
 }
 
+impHandler(commandShowLevel)
+{
+    adminHandler->showLevel(event.args);
+    return true;
+}
+
 }  // namespace Actions

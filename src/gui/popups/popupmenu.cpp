@@ -2664,6 +2664,9 @@ void PopupMenu::showPlayerGMCommands()
     // TRANSLATORS: check player ip
     mBrowserBox->addRow("ipcheck", _("Check ip"));
     // TRANSLATORS: popup menu item
+    // TRANSLATORS: show player level
+    mBrowserBox->addRow("/showlevel 'NAME'", _("Show level"));
+    // TRANSLATORS: popup menu item
     // TRANSLATORS: gm commands
     mBrowserBox->addRow("/gmcommands 'NAME'", _("Show commands"));
     // TRANSLATORS: popup menu item

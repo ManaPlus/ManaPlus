@@ -104,5 +104,6 @@ impHandlerVoid(mobSearch)
 impHandlerVoid(mobSpawnSearch)
 impHandlerVoid(playerGmCommands)
 impHandlerVoid(playerCharGmCommands)
+impHandlerVoid(commandShowLevel)
 
 }  // namespace Actions
