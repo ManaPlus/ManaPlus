@@ -5317,6 +5317,12 @@ static const InputActionData inputActionData
         "showinventory|inventorylist|itemlist",
         UseArgs_true,
         Protected_true},
+    {"keyLocatePlayer",
+        defaultAction(&Actions::locatePlayer),
+        InputCondition::INGAME,
+        "locate|locateplayer|whereplayer",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

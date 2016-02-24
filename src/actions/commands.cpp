@@ -1305,4 +1305,13 @@ impHandler(commandShowInventory)
     return true;
 }
 
+impHandler(locatePlayer)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->locatePlayer(args);
+    return true;
+}
+
 }  // namespace Actions

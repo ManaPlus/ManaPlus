@@ -2661,6 +2661,9 @@ void PopupMenu::addGmCommands()
 void PopupMenu::showPlayerGMCommands()
 {
     // TRANSLATORS: popup menu item
+    // TRANSLATORS: find player position
+    mBrowserBox->addRow("/locateplayer 'NAME'", _("Locate"));
+    // TRANSLATORS: popup menu item
     // TRANSLATORS: check player ip
     mBrowserBox->addRow("ipcheck", _("Check ip"));
     // TRANSLATORS: popup menu item

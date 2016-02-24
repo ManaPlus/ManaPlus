@@ -109,6 +109,7 @@ namespace Actions
     decHandler(commandShowStorage);
     decHandler(commandShowCart);
     decHandler(commandShowInventory);
+    decHandler(locatePlayer);
 }  // namespace Actions
 
 #undef decHandler

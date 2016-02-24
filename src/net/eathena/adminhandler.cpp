@@ -243,4 +243,9 @@ void AdminHandler::showInventoryList(const std::string &name) const
         chatHandler->talk("#itemlist " + name, GENERAL_CHANNEL);
 }
 
+void AdminHandler::locatePlayer(const std::string &name) const
+{
+    chatHandler->talk("@where " + name, GENERAL_CHANNEL);
+}
+
 }  // namespace EAthena

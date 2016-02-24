@@ -638,6 +638,7 @@ enumStart(InputAction)
     COMMAND_SHOW_STORAGE,
     COMMAND_SHOW_CART,
     COMMAND_SHOW_INVENTORY,
+    LOCATE_PLAYER,
     TOTAL
 }
 enumEnd(InputAction);

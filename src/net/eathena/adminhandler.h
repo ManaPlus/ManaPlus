@@ -96,6 +96,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void showInventoryList(const std::string &name) const override final;
 
+        void locatePlayer(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

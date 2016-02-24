@@ -174,4 +174,8 @@ void AdminHandler::showInventoryList(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::locatePlayer(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
