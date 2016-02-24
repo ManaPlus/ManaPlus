@@ -643,6 +643,7 @@ enumStart(InputAction)
     COMMAND_SPAWN,
     COMMAND_SPAWN_SLAVE,
     COMMAND_SPAWN_CLONE,
+    COMMAND_SPAWN_SLAVE_CLONE,
     TOTAL
 }
 enumEnd(InputAction);

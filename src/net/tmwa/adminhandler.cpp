@@ -190,4 +190,8 @@ void AdminHandler::spawnClone(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::spawnSlaveClone(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

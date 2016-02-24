@@ -114,5 +114,6 @@ impHandlerVoid(commandShowAccountInfo)
 impHandlerVoid(commandSpawn)
 impHandlerVoid(commandSpawnSlave)
 impHandlerVoid(commandSpawnClone)
+impHandlerVoid(commandSpawnSlaveClone)
 
 }  // namespace Actions

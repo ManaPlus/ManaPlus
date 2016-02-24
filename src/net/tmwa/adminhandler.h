@@ -112,6 +112,9 @@ class AdminHandler final : public Ea::AdminHandler
         void spawnSlave(const std::string &name) const override final A_CONST;
 
         void spawnClone(const std::string &name) const override final A_CONST;
+
+        void spawnSlaveClone(const std::string &name) const override final
+                             A_CONST;
 };
 
 }  // namespace TmwAthena

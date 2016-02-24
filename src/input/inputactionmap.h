@@ -5347,6 +5347,12 @@ static const InputActionData inputActionData
         "spawnclone|playerclone|clone",
         UseArgs_true,
         Protected_true},
+    {"keyCommandSpawnSlaveClone",
+        defaultAction(&Actions::commandSpawnSlaveClone),
+        InputCondition::INGAME,
+        "spawnslaveclone|playerslaveclone|slaveclone",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction
