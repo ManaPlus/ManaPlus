@@ -1139,6 +1139,8 @@ manaplus_SOURCES += main.cpp \
 	      party.h \
 	      utils/chatutils.cpp \
 	      utils/chatutils.h \
+	      utils/gmfunctions.cpp \
+	      utils/gmfunctions.h \
 	      resources/db/avatardb.cpp \
 	      resources/db/avatardb.h \
 	      resources/db/badgesdb.cpp \
