@@ -123,5 +123,6 @@ impHandlerVoid(commandGotoNpc)
 impHandlerVoid(commandKiller)
 impHandlerVoid(commandKillable)
 impHandlerVoid(commandHeal)
+impHandlerVoid(commandAlive)
 
 }  // namespace Actions

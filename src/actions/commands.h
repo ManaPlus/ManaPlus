@@ -123,6 +123,7 @@ namespace Actions
     decHandler(commandKiller);
     decHandler(commandKillable);
     decHandler(commandHeal);
+    decHandler(commandAlive);
 }  // namespace Actions
 
 #undef decHandler

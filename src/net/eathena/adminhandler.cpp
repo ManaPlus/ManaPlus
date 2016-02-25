@@ -285,4 +285,9 @@ void AdminHandler::heal(const std::string &name) const
     Gm::runCharCommand("heal", name);
 }
 
+void AdminHandler::alive(const std::string &name) const
+{
+    Gm::runCharCommand("alive", name);
+}
+
 }  // namespace EAthena

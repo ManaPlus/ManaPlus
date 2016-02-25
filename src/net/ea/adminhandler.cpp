@@ -59,11 +59,6 @@ void AdminHandler::unbanName(const std::string &name) const
     Gm::runCommand("unban", name);
 }
 
-void AdminHandler::reviveName(const std::string &name) const
-{
-    Gm::runCommand("revive", name);
-}
-
 void AdminHandler::ipcheckName(const std::string &name) const
 {
     Gm::runCommand("ipcheck", name);

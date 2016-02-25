@@ -1338,10 +1338,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         adminHandler->recallName(mNick);
     }
-    else if (link == "revive" && !mNick.empty())
-    {
-        adminHandler->reviveName(mNick);
-    }
     else if (link == "ipcheck" && !mNick.empty())
     {
         adminHandler->ipcheckName(mNick);
@@ -2732,7 +2728,7 @@ void PopupMenu::showPlayerGMCommands()
     mBrowserBox->addRow("recall", _("Recall"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: revive player
-    mBrowserBox->addRow("revive", _("Revive"));
+    mBrowserBox->addRow("/alive 'NAME'", _("Revive"));
     if (!legacy && mBeingId != BeingId_zero)
     {
         mBrowserBox->addRow("##3---");

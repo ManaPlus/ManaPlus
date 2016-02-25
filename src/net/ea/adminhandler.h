@@ -51,8 +51,6 @@ class AdminHandler notfinal : public Net::AdminHandler
 
         void unbanName(const std::string &name) const override final;
 
-        void reviveName(const std::string &name) const override final;
-
         void ipcheckName(const std::string &name) const override final;
 
         void slide(const int x, const int y) const override final;

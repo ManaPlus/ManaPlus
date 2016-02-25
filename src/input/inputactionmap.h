@@ -5401,6 +5401,12 @@ static const InputActionData inputActionData
         "gmheal",
         UseArgs_true,
         Protected_true},
+    {"keyCommandAlive",
+        defaultAction(&Actions::commandAlive),
+        InputCondition::INGAME,
+        "alive|revive",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -80,7 +80,7 @@ class AdminHandler notfinal
 
         virtual void recallName(const std::string &name) const = 0;
 
-        virtual void reviveName(const std::string &name) const = 0;
+        virtual void alive(const std::string &name) const = 0;
 
         virtual void ipcheckName(const std::string &name) const = 0;
 

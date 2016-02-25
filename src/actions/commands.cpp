@@ -1414,4 +1414,10 @@ impHandler(commandHeal)
     return true;
 }
 
+impHandler(commandAlive)
+{
+    adminHandler->alive(event.args);
+    return true;
+}
+
 }  // namespace Actions

@@ -223,4 +223,10 @@ void AdminHandler::heal(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::alive(const std::string &name) const
+{
+    Gm::runCommand("revive", name);
+}
+
+
 }  // namespace TmwAthena
