@@ -5419,6 +5419,12 @@ static const InputActionData inputActionData
         "immortal",
         UseArgs_true,
         Protected_true},
+    {"keyCommandHide",
+        defaultAction(&Actions::commandHide),
+        InputCondition::INGAME,
+        "hide",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

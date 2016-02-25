@@ -128,6 +128,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void immortal(const std::string &name) const override final;
 
+        void hide(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

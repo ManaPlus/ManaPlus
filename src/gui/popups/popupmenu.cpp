@@ -2739,7 +2739,17 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: mute menu
         mBrowserBox->addRow("mute", _("Mute..."));
     }
-    if (!legacy)
+    if (legacy)
+    {
+        if (localPlayer->getName() == mNick)
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: hide player
+            mBrowserBox->addRow("/hide", _("Hide"));
+            mBrowserBox->addRow("##3---");
+        }
+    }
+    else
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: heal player
@@ -2747,6 +2757,9 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: popup menu item
         // TRANSLATORS: enable immortal mode for player
         mBrowserBox->addRow("/immortal 'NAME'", _("Immortal"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: hide player
+        mBrowserBox->addRow("/hide 'NAME'", _("Hide"));
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: set player as killer

@@ -126,6 +126,7 @@ namespace Actions
     decHandler(commandAlive);
     decHandler(commandDisguise);
     decHandler(commandImmortal);
+    decHandler(commandHide);
 }  // namespace Actions
 
 #undef decHandler

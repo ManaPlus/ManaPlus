@@ -236,4 +236,9 @@ void AdminHandler::immortal(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::hide(const std::string &name A_UNUSED) const
+{
+    Gm::runCommand("hide");
+}
+
 }  // namespace TmwAthena

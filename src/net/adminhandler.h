@@ -152,6 +152,8 @@ class AdminHandler notfinal
         virtual void disguise(const std::string &name) const = 0;
 
         virtual void immortal(const std::string &name) const = 0;
+
+        virtual void hide(const std::string &name) const = 0;
 };
 
 }  // namespace Net

@@ -1435,4 +1435,10 @@ impHandler(commandImmortal)
     return true;
 }
 
+impHandler(commandHide)
+{
+    adminHandler->hide(event.args);
+    return true;
+}
+
 }  // namespace Actions
