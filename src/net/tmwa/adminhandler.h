@@ -130,6 +130,8 @@ class AdminHandler final : public Ea::AdminHandler
         void gotoNpc(const std::string &name) const override final A_CONST;
 
         void killer(const std::string &name) const override final A_CONST;
+
+        void killable(const std::string &name) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

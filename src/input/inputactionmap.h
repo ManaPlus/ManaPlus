@@ -5389,6 +5389,12 @@ static const InputActionData inputActionData
         "setkiller|killer",
         UseArgs_true,
         Protected_true},
+    {"keyCommandKillable",
+        defaultAction(&Actions::commandKillable),
+        InputCondition::INGAME,
+        "setkillable|killable",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

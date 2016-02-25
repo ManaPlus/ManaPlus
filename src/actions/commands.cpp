@@ -1402,4 +1402,10 @@ impHandler(commandKiller)
     return true;
 }
 
+impHandler(commandKillable)
+{
+    adminHandler->killable(event.args);
+    return true;
+}
+
 }  // namespace Actions

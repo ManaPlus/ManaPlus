@@ -650,6 +650,7 @@ enumStart(InputAction)
     COMMAND_RANDOM_WARP,
     COMMAND_GOTO_NPC,
     COMMAND_KILLER,
+    COMMAND_KILLABLE,
     TOTAL
 }
 enumEnd(InputAction);

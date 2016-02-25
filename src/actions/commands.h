@@ -121,6 +121,7 @@ namespace Actions
     decHandler(commandRandomWarp);
     decHandler(commandGotoNpc);
     decHandler(commandKiller);
+    decHandler(commandKillable);
 }  // namespace Actions
 
 #undef decHandler

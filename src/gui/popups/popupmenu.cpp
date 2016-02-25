@@ -2749,6 +2749,9 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: set player as killer
         mBrowserBox->addRow("/killer 'NAME'", _("Killer"));
         // TRANSLATORS: popup menu item
+        // TRANSLATORS: set player as killable
+        mBrowserBox->addRow("/killable 'NAME'", _("Killable"));
+        // TRANSLATORS: popup menu item
         // TRANSLATORS: set player save position
         mBrowserBox->addRow("/savepos 'NAME'", _("Set save"));
         // TRANSLATORS: popup menu item

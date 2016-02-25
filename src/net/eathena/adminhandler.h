@@ -118,6 +118,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void killer(const std::string &name) const override final;
 
+        void killable(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

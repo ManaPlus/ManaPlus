@@ -144,6 +144,8 @@ class AdminHandler notfinal
         virtual void gotoNpc(const std::string &name) const = 0;
 
         virtual void killer(const std::string &name) const = 0;
+
+        virtual void killable(const std::string &name) const = 0;
 };
 
 }  // namespace Net
