@@ -2729,15 +2729,21 @@ void PopupMenu::showPlayerGMCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: revive player
     mBrowserBox->addRow("/alive 'NAME'", _("Revive"));
-    if (!legacy && mBeingId != BeingId_zero)
+    if (!legacy)
     {
-        mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
-        // TRANSLATORS: show menu
-        mBrowserBox->addRow("show", _("Show..."));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: mute menu
-        mBrowserBox->addRow("mute", _("Mute..."));
+        // TRANSLATORS: nuke player
+        mBrowserBox->addRow("/nuke 'NAME'", _("Nuke"));
+        if (mBeingId != BeingId_zero)
+        {
+            mBrowserBox->addRow("##3---");
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: show menu
+            mBrowserBox->addRow("show", _("Show..."));
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: mute menu
+            mBrowserBox->addRow("mute", _("Mute..."));
+        }
     }
     if (legacy)
     {

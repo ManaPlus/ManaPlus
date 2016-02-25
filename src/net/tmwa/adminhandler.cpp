@@ -241,4 +241,8 @@ void AdminHandler::hide(const std::string &name A_UNUSED) const
     Gm::runCommand("hide");
 }
 
+void AdminHandler::nuke(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

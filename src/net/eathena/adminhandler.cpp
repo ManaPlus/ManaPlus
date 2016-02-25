@@ -305,4 +305,9 @@ void AdminHandler::hide(const std::string &name) const
     Gm::runCharCommand("hide", name);
 }
 
+void AdminHandler::nuke(const std::string &name) const
+{
+    Gm::runCommand("nuke", name);
+}
+
 }  // namespace EAthena

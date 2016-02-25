@@ -1441,4 +1441,13 @@ impHandler(commandHide)
     return true;
 }
 
+impHandler(commandNuke)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->nuke(args);
+    return true;
+}
+
 }  // namespace Actions

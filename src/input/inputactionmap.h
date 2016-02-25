@@ -5425,6 +5425,12 @@ static const InputActionData inputActionData
         "hide",
         UseArgs_true,
         Protected_true},
+    {"keyCommandNuke",
+        defaultAction(&Actions::commandNuke),
+        InputCondition::INGAME,
+        "nuke",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction
