@@ -203,4 +203,8 @@ void AdminHandler::loadPosition(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::randomWarp(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

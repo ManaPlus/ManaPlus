@@ -5371,6 +5371,12 @@ static const InputActionData inputActionData
         "loadpos|loadposition",
         UseArgs_true,
         Protected_true},
+    {"keyCommandRandomWarp",
+        defaultAction(&Actions::commandRandomWarp),
+        InputCondition::INGAME,
+        "randomwarp|jump",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

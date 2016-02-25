@@ -647,6 +647,7 @@ enumStart(InputAction)
     COMMAND_SPAWN_EVIL_CLONE,
     COMMAND_SAVE_POSITION,
     COMMAND_LOAD_POSITION,
+    COMMAND_RANDOM_WARP,
     TOTAL
 }
 enumEnd(InputAction);

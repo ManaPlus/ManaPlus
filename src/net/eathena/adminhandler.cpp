@@ -260,4 +260,9 @@ void AdminHandler::loadPosition(const std::string &name) const
     Gm::runCharCommand("load", name);
 }
 
+void AdminHandler::randomWarp(const std::string &name) const
+{
+    Gm::runCharCommand("jump", name);
+}
+
 }  // namespace EAthena

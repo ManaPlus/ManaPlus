@@ -118,6 +118,7 @@ namespace Actions
     decHandler(commandSpawnEvilClone);
     decHandler(commandSavePosition);
     decHandler(commandLoadPosition);
+    decHandler(commandRandomWarp);
 }  // namespace Actions
 
 #undef decHandler

@@ -138,6 +138,8 @@ class AdminHandler notfinal
         virtual void savePosition(const std::string &name) const = 0;
 
         virtual void loadPosition(const std::string &name) const = 0;
+
+        virtual void randomWarp(const std::string &name) const = 0;
 };
 
 }  // namespace Net

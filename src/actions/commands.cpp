@@ -1381,4 +1381,10 @@ impHandler(commandLoadPosition)
     return true;
 }
 
+impHandler(commandRandomWarp)
+{
+    adminHandler->randomWarp(event.args);
+    return true;
+}
+
 }  // namespace Actions
