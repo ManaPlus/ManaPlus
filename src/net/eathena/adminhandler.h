@@ -116,6 +116,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void gotoNpc(const std::string &name) const override final;
 
+        void killer(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

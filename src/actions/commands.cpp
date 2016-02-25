@@ -1396,4 +1396,10 @@ impHandler(commandGotoNpc)
     return true;
 }
 
+impHandler(commandKiller)
+{
+    adminHandler->killer(event.args);
+    return true;
+}
+
 }  // namespace Actions

@@ -211,4 +211,8 @@ void AdminHandler::gotoNpc(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::killer(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -649,6 +649,7 @@ enumStart(InputAction)
     COMMAND_LOAD_POSITION,
     COMMAND_RANDOM_WARP,
     COMMAND_GOTO_NPC,
+    COMMAND_KILLER,
     TOTAL
 }
 enumEnd(InputAction);

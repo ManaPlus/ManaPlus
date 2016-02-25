@@ -5383,6 +5383,12 @@ static const InputActionData inputActionData
         "gotonpc|warptonpc",
         UseArgs_true,
         Protected_true},
+    {"keyCommandKiller",
+        defaultAction(&Actions::commandKiller),
+        InputCondition::INGAME,
+        "setkiller|killer",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

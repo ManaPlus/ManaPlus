@@ -142,6 +142,8 @@ class AdminHandler notfinal
         virtual void randomWarp(const std::string &name) const = 0;
 
         virtual void gotoNpc(const std::string &name) const = 0;
+
+        virtual void killer(const std::string &name) const = 0;
 };
 
 }  // namespace Net

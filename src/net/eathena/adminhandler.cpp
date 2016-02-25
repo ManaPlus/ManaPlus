@@ -270,4 +270,9 @@ void AdminHandler::gotoNpc(const std::string &name) const
     Gm::runCommand("tonpc", name);
 }
 
+void AdminHandler::killer(const std::string &name) const
+{
+    Gm::runCharCommand("killer", name);
+}
+
 }  // namespace EAthena
