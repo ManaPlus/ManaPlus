@@ -160,6 +160,8 @@ class AdminHandler notfinal
         virtual void kill(const std::string &name) const = 0;
 
         virtual void jail(const std::string &name) const = 0;
+
+        virtual void unjail(const std::string &name) const = 0;
 };
 
 }  // namespace Net

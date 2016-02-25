@@ -130,6 +130,7 @@ namespace Actions
     decHandler(commandNuke);
     decHandler(commandKill);
     decHandler(commandJail);
+    decHandler(commandUnjail);
 }  // namespace Actions
 
 #undef decHandler

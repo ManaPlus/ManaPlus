@@ -253,4 +253,8 @@ void AdminHandler::jail(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::unjail(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

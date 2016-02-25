@@ -136,6 +136,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void jail(const std::string &name) const override final;
 
+        void unjail(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

@@ -2770,6 +2770,9 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: send player to jail
         mBrowserBox->addRow("/jail 'NAME'", _("Jail"));
         // TRANSLATORS: popup menu item
+        // TRANSLATORS: restore player from jail
+        mBrowserBox->addRow("/unjail 'NAME'", _("Unjail"));
+        // TRANSLATORS: popup menu item
         // TRANSLATORS: hide player
         mBrowserBox->addRow("/hide 'NAME'", _("Hide"));
         mBrowserBox->addRow("##3---");

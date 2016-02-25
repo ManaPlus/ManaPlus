@@ -659,6 +659,7 @@ enumStart(InputAction)
     COMMAND_NUKE,
     COMMAND_KILL,
     COMMAND_JAIL,
+    COMMAND_UNJAIL,
     TOTAL
 }
 enumEnd(InputAction);

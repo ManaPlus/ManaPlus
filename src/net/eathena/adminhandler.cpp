@@ -320,4 +320,9 @@ void AdminHandler::jail(const std::string &name) const
     Gm::runCommand("jail", name);
 }
 
+void AdminHandler::unjail(const std::string &name) const
+{
+    Gm::runCommand("unjail", name);
+}
+
 }  // namespace EAthena

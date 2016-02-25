@@ -1465,4 +1465,13 @@ impHandler(commandJail)
     return true;
 }
 
+impHandler(commandUnjail)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->unjail(args);
+    return true;
+}
+
 }  // namespace Actions
