@@ -146,6 +146,8 @@ class AdminHandler notfinal
         virtual void killer(const std::string &name) const = 0;
 
         virtual void killable(const std::string &name) const = 0;
+
+        virtual void heal(const std::string &name) const = 0;
 };
 
 }  // namespace Net

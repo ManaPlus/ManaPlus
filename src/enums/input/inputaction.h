@@ -651,6 +651,7 @@ enumStart(InputAction)
     COMMAND_GOTO_NPC,
     COMMAND_KILLER,
     COMMAND_KILLABLE,
+    COMMAND_HEAL,
     TOTAL
 }
 enumEnd(InputAction);

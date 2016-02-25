@@ -1408,4 +1408,10 @@ impHandler(commandKillable)
     return true;
 }
 
+impHandler(commandHeal)
+{
+    adminHandler->heal(event.args);
+    return true;
+}
+
 }  // namespace Actions

@@ -5395,6 +5395,12 @@ static const InputActionData inputActionData
         "setkillable|killable",
         UseArgs_true,
         Protected_true},
+    {"keyCommandHeal",
+        defaultAction(&Actions::commandHeal),
+        InputCondition::INGAME,
+        "gmheal",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

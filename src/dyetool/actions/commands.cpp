@@ -122,5 +122,6 @@ impHandlerVoid(commandRandomWarp)
 impHandlerVoid(commandGotoNpc)
 impHandlerVoid(commandKiller)
 impHandlerVoid(commandKillable)
+impHandlerVoid(commandHeal)
 
 }  // namespace Actions

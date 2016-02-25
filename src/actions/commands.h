@@ -122,6 +122,7 @@ namespace Actions
     decHandler(commandGotoNpc);
     decHandler(commandKiller);
     decHandler(commandKillable);
+    decHandler(commandHeal);
 }  // namespace Actions
 
 #undef decHandler

@@ -219,4 +219,8 @@ void AdminHandler::killable(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::heal(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

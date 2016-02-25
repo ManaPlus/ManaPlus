@@ -2746,6 +2746,9 @@ void PopupMenu::showPlayerGMCommands()
     if (!legacy)
     {
         // TRANSLATORS: popup menu item
+        // TRANSLATORS: heal player
+        mBrowserBox->addRow("/gmheal 'NAME'", _("Heal"));
+        // TRANSLATORS: popup menu item
         // TRANSLATORS: set player as killer
         mBrowserBox->addRow("/killer 'NAME'", _("Killer"));
         // TRANSLATORS: popup menu item

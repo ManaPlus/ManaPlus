@@ -132,6 +132,8 @@ class AdminHandler final : public Ea::AdminHandler
         void killer(const std::string &name) const override final A_CONST;
 
         void killable(const std::string &name) const override final A_CONST;
+
+        void heal(const std::string &name) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

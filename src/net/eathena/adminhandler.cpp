@@ -280,4 +280,9 @@ void AdminHandler::killable(const std::string &name) const
     Gm::runCharCommand("killable", name);
 }
 
+void AdminHandler::heal(const std::string &name) const
+{
+    Gm::runCharCommand("heal", name);
+}
+
 }  // namespace EAthena
