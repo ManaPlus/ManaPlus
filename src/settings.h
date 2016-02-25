@@ -50,6 +50,8 @@ class Settings final
             logFileName(),
             rootDir(),
             windowCaption(),
+            gmCommandSymbol("@"),
+            gmCharCommandSymbol("#"),
             updateMirrors(),
             options(),
             guiAlpha(1.0F),
@@ -97,6 +99,8 @@ class Settings final
         std::string logFileName;
         std::string rootDir;
         std::string windowCaption;
+        std::string gmCommandSymbol;
+        std::string gmCharCommandSymbol;
         std::vector<std::string> updateMirrors;
         Options options;
         float guiAlpha;

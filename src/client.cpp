@@ -277,6 +277,7 @@ void Client::gameInit()
     Net::loadIgnorePackets();
     paths.setDefaultValues(getPathsDefaults());
     initFeatures();
+    initPaths();
     logger->log("init 4");
     logger->setDebugLog(config.getBoolValue("debugLog"));
     logger->setReportUnimplimented(config.getBoolValue("unimplimentedLog"));
@@ -1249,6 +1250,7 @@ int Client::gameExec()
                     logger->log("Init paths");
                     paths.init("paths.xml", UseResman_true);
                     paths.setDefaultValues(getPathsDefaults());
+                    initPaths();
                     if (!SpriteReference::Empty)
                     {
                         SpriteReference::Empty = new SpriteReference(
@@ -1790,6 +1792,12 @@ void Client::initFeatures()
         UseResman_true);
     features.setDefaultValues(getFeaturesDefaults());
     settings.fixDeadAnimation = features.getBoolValue("fixDeadAnimation");
+}
+
+void Client::initPaths()
+{
+    settings.gmCommandSymbol = paths.getStringValue("gmCommandSymbol");
+    settings.gmCharCommandSymbol = paths.getStringValue("gmCharCommandSymbol");
 }
 
 void Client::initTradeFilter()

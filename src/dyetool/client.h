@@ -91,6 +91,8 @@ class Client final : public ActionListener
 
         static void initGraphics();
 
+        static void initPaths();
+
         void gameClear();
 
         void testsClear();

@@ -157,6 +157,7 @@ void Client::gameInit()
     ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();
     paths.setDefaultValues(getPathsDefaults());
+    initPaths();
     logger->log("init 4");
     logger->setDebugLog(config.getBoolValue("debugLog"));
     logger->setReportUnimplimented(config.getBoolValue("unimplimentedLog"));
@@ -622,6 +623,7 @@ int Client::gameExec()
                     logger->log("Init paths");
                     paths.init("paths.xml", UseResman_true);
                     paths.setDefaultValues(getPathsDefaults());
+                    initPaths();
                     TranslationManager::loadCurrentLang();
 
                     if (desktop)
@@ -749,4 +751,8 @@ bool Client::isTmw()
         return true;
     }
     return false;
+}
+
+void Client::initPaths()
+{
 }

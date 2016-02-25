@@ -630,6 +630,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("inactivebadge", "inactive.xml");
     AddDEF("awaybadge", "away.xml");
     AddDEF("cutInsDir", "graphics/cutins");
+    AddDEF("gmCommandSymbol", "@");
+    AddDEF("gmCharCommandSymbol", "#");
 
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");

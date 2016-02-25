@@ -111,6 +111,8 @@ class Client final : public ConfigListener,
 
         static void initFeatures();
 
+        static void initPaths();
+
         void gameClear();
 
         void testsClear();
