@@ -2854,6 +2854,9 @@ void PopupMenu::showNpcGMCommands()
             // TRANSLATORS: popup menu item
             // TRANSLATORS: warp to npc
             mBrowserBox->addRow("/gotonpc 'NAME'", _("Goto"));
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: disguise to npc
+            mBrowserBox->addRow("/disguise 'BEINGSUBTYPEID'", _("Disguise"));
         }
     }
 }
@@ -2875,6 +2878,9 @@ void PopupMenu::showMonsterGMCommands()
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: spawn slave monster
                 _("Spawn slave"));
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: disguise to monster
+            mBrowserBox->addRow("/disguise 'BEINGSUBTYPEID'", _("Disguise"));
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: show monster information

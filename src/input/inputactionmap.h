@@ -5407,6 +5407,12 @@ static const InputActionData inputActionData
         "alive|revive",
         UseArgs_true,
         Protected_true},
+    {"keyCommandDisguise",
+        defaultAction(&Actions::commandDisguise),
+        InputCondition::INGAME,
+        "disguise",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

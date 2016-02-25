@@ -290,4 +290,9 @@ void AdminHandler::alive(const std::string &name) const
     Gm::runCharCommand("alive", name);
 }
 
+void AdminHandler::disguise(const std::string &name) const
+{
+    Gm::runCommand("disguise", name);
+}
+
 }  // namespace EAthena

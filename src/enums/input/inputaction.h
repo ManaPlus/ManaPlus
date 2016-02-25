@@ -653,6 +653,7 @@ enumStart(InputAction)
     COMMAND_KILLABLE,
     COMMAND_HEAL,
     COMMAND_ALIVE,
+    COMMAND_DISGUISE,
     TOTAL
 }
 enumEnd(InputAction);

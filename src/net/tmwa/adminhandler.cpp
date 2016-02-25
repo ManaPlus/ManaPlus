@@ -228,5 +228,8 @@ void AdminHandler::alive(const std::string &name) const
     Gm::runCommand("revive", name);
 }
 
+void AdminHandler::disguise(const std::string &name A_UNUSED) const
+{
+}
 
 }  // namespace TmwAthena

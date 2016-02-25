@@ -124,6 +124,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void alive(const std::string &name) const override final;
 
+        void disguise(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

@@ -124,6 +124,7 @@ namespace Actions
     decHandler(commandKillable);
     decHandler(commandHeal);
     decHandler(commandAlive);
+    decHandler(commandDisguise);
 }  // namespace Actions
 
 #undef decHandler

@@ -1420,4 +1420,13 @@ impHandler(commandAlive)
     return true;
 }
 
+impHandler(commandDisguise)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->disguise(args);
+    return true;
+}
+
 }  // namespace Actions
