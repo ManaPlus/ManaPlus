@@ -2745,6 +2745,10 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: heal player
         mBrowserBox->addRow("/gmheal 'NAME'", _("Heal"));
         // TRANSLATORS: popup menu item
+        // TRANSLATORS: enable immortal mode for player
+        mBrowserBox->addRow("/immortal 'NAME'", _("Immortal"));
+        mBrowserBox->addRow("##3---");
+        // TRANSLATORS: popup menu item
         // TRANSLATORS: set player as killer
         mBrowserBox->addRow("/killer 'NAME'", _("Killer"));
         // TRANSLATORS: popup menu item

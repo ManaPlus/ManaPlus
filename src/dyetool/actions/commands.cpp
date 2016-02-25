@@ -125,5 +125,6 @@ impHandlerVoid(commandKillable)
 impHandlerVoid(commandHeal)
 impHandlerVoid(commandAlive)
 impHandlerVoid(commandDisguise)
+impHandlerVoid(commandImmortal)
 
 }  // namespace Actions

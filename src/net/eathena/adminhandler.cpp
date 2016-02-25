@@ -295,4 +295,9 @@ void AdminHandler::disguise(const std::string &name) const
     Gm::runCommand("disguise", name);
 }
 
+void AdminHandler::immortal(const std::string &name) const
+{
+    Gm::runCharCommand("monsterignore", name);
+}
+
 }  // namespace EAthena

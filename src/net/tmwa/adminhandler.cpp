@@ -232,4 +232,8 @@ void AdminHandler::disguise(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::immortal(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

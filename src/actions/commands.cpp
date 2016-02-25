@@ -1429,4 +1429,10 @@ impHandler(commandDisguise)
     return true;
 }
 
+impHandler(commandImmortal)
+{
+    adminHandler->immortal(event.args);
+    return true;
+}
+
 }  // namespace Actions
