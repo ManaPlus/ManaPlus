@@ -119,6 +119,7 @@ namespace Actions
     decHandler(commandSavePosition);
     decHandler(commandLoadPosition);
     decHandler(commandRandomWarp);
+    decHandler(commandGotoNpc);
 }  // namespace Actions
 
 #undef decHandler

@@ -5377,6 +5377,12 @@ static const InputActionData inputActionData
         "randomwarp|jump",
         UseArgs_true,
         Protected_true},
+    {"keyCommandGotoNpc",
+        defaultAction(&Actions::commandGotoNpc),
+        InputCondition::INGAME,
+        "gotonpc|warptonpc",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

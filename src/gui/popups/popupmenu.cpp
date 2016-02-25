@@ -2842,6 +2842,14 @@ void PopupMenu::showNpcGMCommands()
         // TRANSLATORS: popup menu item
         // TRANSLATORS: kick player
         mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
+        const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
+        if (!legacy)
+        {
+            mBrowserBox->addRow("##3---");
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: warp to npc
+            mBrowserBox->addRow("/gotonpc 'NAME'", _("Goto"));
+        }
     }
 }
 

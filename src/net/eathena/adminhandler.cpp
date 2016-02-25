@@ -265,4 +265,9 @@ void AdminHandler::randomWarp(const std::string &name) const
     Gm::runCharCommand("jump", name);
 }
 
+void AdminHandler::gotoNpc(const std::string &name) const
+{
+    Gm::runCommand("tonpc", name);
+}
+
 }  // namespace EAthena

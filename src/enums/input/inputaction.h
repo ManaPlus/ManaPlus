@@ -648,6 +648,7 @@ enumStart(InputAction)
     COMMAND_SAVE_POSITION,
     COMMAND_LOAD_POSITION,
     COMMAND_RANDOM_WARP,
+    COMMAND_GOTO_NPC,
     TOTAL
 }
 enumEnd(InputAction);

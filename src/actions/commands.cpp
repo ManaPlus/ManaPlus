@@ -1387,4 +1387,13 @@ impHandler(commandRandomWarp)
     return true;
 }
 
+impHandler(commandGotoNpc)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->gotoNpc(args);
+    return true;
+}
+
 }  // namespace Actions

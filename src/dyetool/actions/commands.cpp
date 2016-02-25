@@ -119,5 +119,6 @@ impHandlerVoid(commandSpawnEvilClone)
 impHandlerVoid(commandSavePosition)
 impHandlerVoid(commandLoadPosition)
 impHandlerVoid(commandRandomWarp)
+impHandlerVoid(commandGotoNpc)
 
 }  // namespace Actions

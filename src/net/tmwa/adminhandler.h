@@ -126,6 +126,8 @@ class AdminHandler final : public Ea::AdminHandler
                           A_CONST;
 
         void randomWarp(const std::string &name) const override final A_CONST;
+
+        void gotoNpc(const std::string &name) const override final A_CONST;
 };
 
 }  // namespace TmwAthena
