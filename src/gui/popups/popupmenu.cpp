@@ -134,6 +134,7 @@ PopupMenu::PopupMenu() :
     mPlayerListener.setType(ActorType::Unknown);
     mScrollArea = new ScrollArea(this, mBrowserBox, false);
     mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
+    addMouseListener(this);
 }
 
 void PopupMenu::postInit()
