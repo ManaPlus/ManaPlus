@@ -24,11 +24,9 @@
 
 #include "game.h"
 
-#include "const/gui/chat.h"
-
-#include "net/chathandler.h"
 #include "net/serverfeatures.h"
 
+#include "utils/gmfunctions.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -38,7 +36,7 @@ namespace Ea
 
 void AdminHandler::kickName(const std::string &name) const
 {
-    chatHandler->talk("@kick " + name, GENERAL_CHANNEL);
+    Gm::runCommand("kick", name);
 }
 
 void AdminHandler::ban(const int playerId A_UNUSED) const
@@ -48,7 +46,7 @@ void AdminHandler::ban(const int playerId A_UNUSED) const
 
 void AdminHandler::banName(const std::string &name) const
 {
-    chatHandler->talk("@ban " + name, GENERAL_CHANNEL);
+    Gm::runCommand("ban", name);
 }
 
 void AdminHandler::unban(const int playerId A_UNUSED) const
@@ -58,33 +56,33 @@ void AdminHandler::unban(const int playerId A_UNUSED) const
 
 void AdminHandler::unbanName(const std::string &name) const
 {
-    chatHandler->talk("@unban " + name, GENERAL_CHANNEL);
+    Gm::runCommand("unban", name);
 }
 
 void AdminHandler::reviveName(const std::string &name) const
 {
-    chatHandler->talk("@revive " + name, GENERAL_CHANNEL);
+    Gm::runCommand("revive", name);
 }
 
 void AdminHandler::ipcheckName(const std::string &name) const
 {
-    chatHandler->talk("@ipcheck " + name, GENERAL_CHANNEL);
+    Gm::runCommand("ipcheck", name);
 }
 
 void AdminHandler::createItems(const int id,
                                const ItemColor color A_UNUSED,
                                const int amount) const
 {
-    chatHandler->talk(strprintf("@item %d %d", id, amount),
-        GENERAL_CHANNEL);
+    Gm::runCommand("item",
+        strprintf("%d %d", id, amount));
 }
 
 void AdminHandler::slide(const int x, const int y) const
 {
     if (serverFeatures->haveSlide())
     {
-        chatHandler->talk(strprintf("@slide %d %d", x, y),
-            GENERAL_CHANNEL);
+        Gm::runCommand("slide",
+            strprintf("%d %d", x, y));
     }
     else
     {
@@ -94,7 +92,7 @@ void AdminHandler::slide(const int x, const int y) const
 
 void AdminHandler::spawn(const std::string &name) const
 {
-    chatHandler->talk("@spawn " + name, GENERAL_CHANNEL);
+    Gm::runCommand("spawn", name);
 }
 
 }  // namespace Ea

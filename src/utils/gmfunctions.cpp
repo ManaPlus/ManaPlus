@@ -54,6 +54,14 @@ void runCommand(const std::string &command,
     }
 }
 
+void runCommand(const std::string &command)
+{
+    chatHandler->talk(std::string(
+        settings.gmCommandSymbol).append(
+        command),
+        GENERAL_CHANNEL);
+}
+
 void runCharCommand(const std::string &command,
                     const std::string &name,
                     const std::string &params)
@@ -86,6 +94,27 @@ void runCharCommand(const std::string &command,
             name).append(
             " ").append(
             params),
+            GENERAL_CHANNEL);
+    }
+}
+
+void runCharCommand(const std::string &command,
+                    const std::string &name)
+{
+    if (localPlayer && name == localPlayer->getName())
+    {
+        chatHandler->talk(std::string(
+            settings.gmCommandSymbol).append(
+            command),
+            GENERAL_CHANNEL);
+    }
+    else
+    {
+        chatHandler->talk(std::string(
+            settings.gmCharCommandSymbol).append(
+            command).append(
+            " ").append(
+            name),
             GENERAL_CHANNEL);
     }
 }

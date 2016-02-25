@@ -22,13 +22,10 @@
 
 #include "net/tmwa/adminhandler.h"
 
-#include "const/gui/chat.h"
-
-#include "net/chathandler.h"
-
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocolout.h"
 
+#include "utils/gmfunctions.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -76,8 +73,8 @@ void AdminHandler::kickAll() const
 
 void AdminHandler::warp(const std::string &map, const int x, const int y) const
 {
-    chatHandler->talk(strprintf(
-        "@warp %s %d %d", map.c_str(), x, y), GENERAL_CHANNEL);
+    Gm::runCommand("warp",
+        strprintf("%s %d %d", map.c_str(), x, y));
 }
 
 void AdminHandler::resetStats() const
@@ -90,12 +87,12 @@ void AdminHandler::resetSkills() const
 
 void AdminHandler::gotoName(const std::string &name) const
 {
-    chatHandler->talk("@goto " + name, GENERAL_CHANNEL);
+    Gm::runCommand("goto", name);
 }
 
 void AdminHandler::recallName(const std::string &name) const
 {
-    chatHandler->talk("@recall " + name, GENERAL_CHANNEL);
+    Gm::runCommand("recall", name);
 }
 
 void AdminHandler::mute(const Being *const being A_UNUSED,

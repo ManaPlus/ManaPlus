@@ -33,6 +33,7 @@
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocolout.h"
 
+#include "utils/gmfunctions.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -86,7 +87,7 @@ void ChatHandler::channelMessage(const std::string &restrict channel,
     if (channel == TRADE_CHANNEL)
         talk("\302\202" + text, GENERAL_CHANNEL);
     else if (channel == GM_CHANNEL)
-        talk("@wgm " + text, GENERAL_CHANNEL);
+        Gm::runCommand("wgm", text);
 }
 
 void ChatHandler::who() const

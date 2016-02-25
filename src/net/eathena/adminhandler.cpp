@@ -22,14 +22,12 @@
 
 #include "net/eathena/adminhandler.h"
 
-#include "being/localplayer.h"
-
-#include "const/gui/chat.h"
-
-#include "net/chathandler.h"
+#include "being/being.h"
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
+
+#include "utils/gmfunctions.h"
 
 #include "debug.h"
 
@@ -164,121 +162,97 @@ void AdminHandler::requestStats(const std::string &name) const
 
 void AdminHandler::monsterInfo(const std::string &name) const
 {
-    chatHandler->talk("@monsterinfo " + name, GENERAL_CHANNEL);
+    Gm::runCommand("monsterinfo", name);
 }
 
 void AdminHandler::itemInfo(const std::string &name) const
 {
-    chatHandler->talk("@iteminfo " + name, GENERAL_CHANNEL);
+    Gm::runCommand("iteminfo", name);
 }
 
 void AdminHandler::whoDrops(const std::string &name) const
 {
-    chatHandler->talk("@whodrops " + name, GENERAL_CHANNEL);
+    Gm::runCommand("whodrops", name);
 }
 
 void AdminHandler::mobSearch(const std::string &name) const
 {
-    chatHandler->talk("@mobsearch " + name, GENERAL_CHANNEL);
+    Gm::runCommand("mobsearch", name);
 }
 
 void AdminHandler::mobSpawnSearch(const std::string &name) const
 {
-    chatHandler->talk("@whereis " + name, GENERAL_CHANNEL);
+    Gm::runCommand("whereis", name);
 }
 
 void AdminHandler::playerGmCommands(const std::string &name) const
 {
-    if (name.empty() || (localPlayer && name == localPlayer->getName()))
-        chatHandler->talk("@commands", GENERAL_CHANNEL);
-    else
-        chatHandler->talk("#commands " + name, GENERAL_CHANNEL);
+    Gm::runCharCommand("commands", name);
 }
 
 void AdminHandler::playerCharGmCommands(const std::string &name) const
 {
-    if (name.empty() || (localPlayer && name == localPlayer->getName()))
-        chatHandler->talk("@charcommands", GENERAL_CHANNEL);
-    else
-        chatHandler->talk("#charcommands " + name, GENERAL_CHANNEL);
+    Gm::runCharCommand("charcommands", name);
 }
 
 void AdminHandler::showLevel(const std::string &name) const
 {
-    if (name.empty() || (localPlayer && name == localPlayer->getName()))
-        chatHandler->talk("@exp", GENERAL_CHANNEL);
-    else
-        chatHandler->talk("#exp " + name, GENERAL_CHANNEL);
+    Gm::runCharCommand("exp", name);
 }
 
 void AdminHandler::showStats(const std::string &name) const
 {
-    if (name.empty() || (localPlayer && name == localPlayer->getName()))
-        chatHandler->talk("@stats", GENERAL_CHANNEL);
-    else
-        chatHandler->talk("#stats " + name, GENERAL_CHANNEL);
+    Gm::runCharCommand("stats", name);
 }
 
 void AdminHandler::showStorageList(const std::string &name) const
 {
-    if (name.empty() || (localPlayer && name == localPlayer->getName()))
-        chatHandler->talk("@storagelist", GENERAL_CHANNEL);
-    else
-        chatHandler->talk("#storagelist " + name, GENERAL_CHANNEL);
+    Gm::runCharCommand("storagelist", name);
 }
 
 void AdminHandler::showCartList(const std::string &name) const
 {
-    if (name.empty() || (localPlayer && name == localPlayer->getName()))
-        chatHandler->talk("@cartlist", GENERAL_CHANNEL);
-    else
-        chatHandler->talk("#cartlist " + name, GENERAL_CHANNEL);
+    Gm::runCharCommand("cartlist", name);
 }
 
 void AdminHandler::showInventoryList(const std::string &name) const
 {
-    if (name.empty() || (localPlayer && name == localPlayer->getName()))
-        chatHandler->talk("@itemlist", GENERAL_CHANNEL);
-    else
-        chatHandler->talk("#itemlist " + name, GENERAL_CHANNEL);
+    Gm::runCharCommand("itemlist", name);
 }
 
 void AdminHandler::locatePlayer(const std::string &name) const
 {
-    chatHandler->talk("@where " + name, GENERAL_CHANNEL);
+    Gm::runCommand("where", name);
 }
 
 void AdminHandler::showAccountInfo(const std::string &name) const
 {
-    chatHandler->talk("@accinfo " + name, GENERAL_CHANNEL);
+    Gm::runCommand("accinfo", name);
 }
 
 void AdminHandler::spawnSlave(const std::string &name) const
 {
-    chatHandler->talk("@summon " + name, GENERAL_CHANNEL);
+    Gm::runCommand("summon", name);
 }
 
 void AdminHandler::spawnClone(const std::string &name) const
 {
-    chatHandler->talk("@clone " + name, GENERAL_CHANNEL);
+    Gm::runCommand("clone", name);
 }
 
 void AdminHandler::spawnSlaveClone(const std::string &name) const
 {
-    chatHandler->talk("@slaveclone " + name, GENERAL_CHANNEL);
+    Gm::runCommand("slaveclone", name);
 }
 
 void AdminHandler::spawnEvilClone(const std::string &name) const
 {
-    chatHandler->talk("@evilclone " + name, GENERAL_CHANNEL);
+    Gm::runCommand("evilclone", name);
 }
 
 void AdminHandler::savePosition(const std::string &name) const
 {
-    if (name.empty() || (localPlayer && name == localPlayer->getName()))
-        chatHandler->talk("@save", GENERAL_CHANNEL);
-    else
-        chatHandler->talk("#save " + name, GENERAL_CHANNEL);
+    Gm::runCharCommand("save", name);
 }
 
 }  // namespace EAthena

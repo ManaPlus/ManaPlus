@@ -69,6 +69,7 @@
 
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
+#include "utils/gmfunctions.h"
 #include "utils/process.h"
 
 #include "debug.h"
@@ -805,7 +806,7 @@ impHandler(gm)
 {
     if (chatHandler)
     {
-        chatHandler->talk("@wgm " + event.args, GENERAL_CHANNEL);
+        Gm::runCommand("wgm", event.args);
         return true;
     }
     return false;

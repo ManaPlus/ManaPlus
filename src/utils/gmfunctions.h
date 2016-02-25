@@ -30,9 +30,14 @@ namespace Gm
     void runCommand(const std::string &command,
                     const std::string &params);
 
+    void runCommand(const std::string &command);
+
     void runCharCommand(const std::string &command,
                         const std::string &name,
                         const std::string &params);
+
+    void runCharCommand(const std::string &command,
+                        const std::string &name);
 }  // namespace Gm
 
 #endif  // UTILS_GMFUNCTIONS_H
