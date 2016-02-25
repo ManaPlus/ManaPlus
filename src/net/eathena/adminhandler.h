@@ -110,6 +110,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void savePosition(const std::string &name) const override final;
 
+        void loadPosition(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

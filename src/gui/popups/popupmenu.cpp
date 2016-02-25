@@ -2737,7 +2737,10 @@ void PopupMenu::showPlayerGMCommands()
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: set player save position
-    mBrowserBox->addRow("/savepos", _("Set save position"));
+    mBrowserBox->addRow("/savepos 'NAME'", _("Set save position"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: warp player to save position
+    mBrowserBox->addRow("/loadpos 'NAME'", _("Warp to save position"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: spawn player clone

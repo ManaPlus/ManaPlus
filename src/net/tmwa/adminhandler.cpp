@@ -199,4 +199,8 @@ void AdminHandler::savePosition(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::loadPosition(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

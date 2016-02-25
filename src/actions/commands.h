@@ -117,6 +117,7 @@ namespace Actions
     decHandler(commandSpawnSlaveClone);
     decHandler(commandSpawnEvilClone);
     decHandler(commandSavePosition);
+    decHandler(commandLoadPosition);
 }  // namespace Actions
 
 #undef decHandler

@@ -5365,6 +5365,12 @@ static const InputActionData inputActionData
         "savepos|saveposition",
         UseArgs_true,
         Protected_true},
+    {"keyCommandLoadPosition",
+        defaultAction(&Actions::commandLoadPosition),
+        InputCondition::INGAME,
+        "loadpos|loadposition",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -255,4 +255,9 @@ void AdminHandler::savePosition(const std::string &name) const
     Gm::runCharCommand("save", name);
 }
 
+void AdminHandler::loadPosition(const std::string &name) const
+{
+    Gm::runCharCommand("load", name);
+}
+
 }  // namespace EAthena

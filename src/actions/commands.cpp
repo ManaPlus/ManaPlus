@@ -1375,4 +1375,10 @@ impHandler(commandSavePosition)
     return true;
 }
 
+impHandler(commandLoadPosition)
+{
+    adminHandler->loadPosition(event.args);
+    return true;
+}
+
 }  // namespace Actions

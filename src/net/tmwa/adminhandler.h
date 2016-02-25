@@ -121,6 +121,9 @@ class AdminHandler final : public Ea::AdminHandler
 
         void savePosition(const std::string &name) const override final
                           A_CONST;
+
+        void loadPosition(const std::string &name) const override final
+                          A_CONST;
 };
 
 }  // namespace TmwAthena
