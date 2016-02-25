@@ -2767,6 +2767,9 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: enable immortal mode for player
         mBrowserBox->addRow("/immortal 'NAME'", _("Immortal"));
         // TRANSLATORS: popup menu item
+        // TRANSLATORS: send player to jail
+        mBrowserBox->addRow("/jail 'NAME'", _("Jail"));
+        // TRANSLATORS: popup menu item
         // TRANSLATORS: hide player
         mBrowserBox->addRow("/hide 'NAME'", _("Hide"));
         mBrowserBox->addRow("##3---");

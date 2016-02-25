@@ -5437,6 +5437,12 @@ static const InputActionData inputActionData
         "kill",
         UseArgs_true,
         Protected_true},
+    {"keyCommandJail",
+        defaultAction(&Actions::commandJail),
+        InputCondition::INGAME,
+        "jail",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

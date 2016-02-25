@@ -315,4 +315,9 @@ void AdminHandler::kill(const std::string &name) const
     Gm::runCharCommand("kill", name);
 }
 
+void AdminHandler::jail(const std::string &name) const
+{
+    Gm::runCommand("jail", name);
+}
+
 }  // namespace EAthena
