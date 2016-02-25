@@ -72,6 +72,7 @@
 #include "net/mercenaryhandler.h"
 #include "net/npchandler.h"
 #endif
+#include "net/net.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 
@@ -2710,12 +2711,19 @@ void PopupMenu::showPlayerMenu()
 
 void PopupMenu::showPlayerGMCommands()
 {
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: find player position
-    mBrowserBox->addRow("/locateplayer 'NAME'", _("Locate"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: check player ip
-    mBrowserBox->addRow("ipcheck", _("Check ip"));
+    const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
+    if (!legacy)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: find player position
+        mBrowserBox->addRow("/locateplayer 'NAME'", _("Locate"));
+    }
+    if (legacy)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: check player ip
+        mBrowserBox->addRow("ipcheck", _("Check ip"));
+    }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: go to player position
     mBrowserBox->addRow("goto", _("Goto"));
@@ -2725,7 +2733,7 @@ void PopupMenu::showPlayerGMCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: revive player
     mBrowserBox->addRow("revive", _("Revive"));
-    if (mBeingId != BeingId_zero)
+    if (!legacy && mBeingId != BeingId_zero)
     {
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
@@ -2735,22 +2743,25 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: mute menu
         mBrowserBox->addRow("mute", _("Mute..."));
     }
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: set player save position
-    mBrowserBox->addRow("/savepos 'NAME'", _("Set save position"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: warp player to save position
-    mBrowserBox->addRow("/loadpos 'NAME'", _("Warp to save position"));
-    mBrowserBox->addRow("##3---");
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: spawn player clone
-    mBrowserBox->addRow("/spawnclone 'NAME'", _("Spawn clone"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: spawn slave player clone
-    mBrowserBox->addRow("/spawnslaveclone 'NAME'", _("Spawn slave clone"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: spawn evil player clone
-    mBrowserBox->addRow("/spawnevilclone 'NAME'", _("Spawn evil clone"));
+    if (!legacy)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: set player save position
+        mBrowserBox->addRow("/savepos 'NAME'", _("Set save position"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: warp player to save position
+        mBrowserBox->addRow("/loadpos 'NAME'", _("Warp to save position"));
+        mBrowserBox->addRow("##3---");
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: spawn player clone
+        mBrowserBox->addRow("/spawnclone 'NAME'", _("Spawn clone"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: spawn slave player clone
+        mBrowserBox->addRow("/spawnslaveclone 'NAME'", _("Spawn slave clone"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: spawn evil player clone
+        mBrowserBox->addRow("/spawnevilclone 'NAME'", _("Spawn evil clone"));
+    }
     if (mBeingId != BeingId_zero)
     {
         mBrowserBox->addRow("##3---");
@@ -2835,32 +2846,39 @@ void PopupMenu::showMonsterGMCommands()
 {
     if (mBeingId != BeingId_zero)
     {
+        const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
         // TRANSLATORS: popup menu item
         // TRANSLATORS: kick monster
         mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
         // TRANSLATORS: popup menu item
         // TRANSLATORS: spawn monster
         mBrowserBox->addRow("/spawn 'BEINGSUBTYPEID'", _("Spawn same"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: spawn slave monster
-        mBrowserBox->addRow("/spawnslave 'BEINGSUBTYPEID'", _("Spawn slave"));
-        mBrowserBox->addRow("##3---");
-
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: show monster information
-        mBrowserBox->addRow("/monsterinfo 'BEINGSUBTYPEID'", _("Info"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: show selected monster in current map
-        mBrowserBox->addRow("/mobsearch 'BEINGSUBTYPEID'", _("Search"));
-        mBrowserBox->addRow("/mobspawnsearch 'BEINGSUBTYPEID'",
+        if (!legacy)
+        {
+            mBrowserBox->addRow("/spawnslave 'BEINGSUBTYPEID'",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: spawn slave monster
+                _("Spawn slave"));
+            mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
-            // TRANSLATORS: show selected monster spawns in all maps
-            _("Search spawns"));
+            // TRANSLATORS: show monster information
+            mBrowserBox->addRow("/monsterinfo 'BEINGSUBTYPEID'", _("Info"));
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: show selected monster in current map
+            mBrowserBox->addRow("/mobsearch 'BEINGSUBTYPEID'", _("Search"));
+            mBrowserBox->addRow("/mobspawnsearch 'BEINGSUBTYPEID'",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: show selected monster spawns in all maps
+                _("Search spawns"));
+        }
     }
 }
 
 void PopupMenu::showFloorItemGMCommands()
 {
+    const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
+    if (legacy)
+        return;
     // TRANSLATORS: popup menu item
     // TRANSLATORS: show item information
     mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
@@ -2871,6 +2889,9 @@ void PopupMenu::showFloorItemGMCommands()
 
 void PopupMenu::showItemGMCommands()
 {
+    const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
+    if (legacy)
+        return;
     // TRANSLATORS: popup menu item
     // TRANSLATORS: show item information
     mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
