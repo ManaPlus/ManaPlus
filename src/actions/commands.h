@@ -128,6 +128,7 @@ namespace Actions
     decHandler(commandImmortal);
     decHandler(commandHide);
     decHandler(commandNuke);
+    decHandler(commandKill);
 }  // namespace Actions
 
 #undef decHandler

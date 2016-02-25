@@ -144,6 +144,8 @@ class AdminHandler final : public Ea::AdminHandler
         void hide(const std::string &name) const override final;
 
         void nuke(const std::string &name) const override final;
+
+        void kill(const std::string &name) const override final;
 };
 
 }  // namespace TmwAthena

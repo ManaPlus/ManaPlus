@@ -657,6 +657,7 @@ enumStart(InputAction)
     COMMAND_IMMORTAL,
     COMMAND_HIDE,
     COMMAND_NUKE,
+    COMMAND_KILL,
     TOTAL
 }
 enumEnd(InputAction);

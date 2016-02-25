@@ -128,5 +128,6 @@ impHandlerVoid(commandDisguise)
 impHandlerVoid(commandImmortal)
 impHandlerVoid(commandHide)
 impHandlerVoid(commandNuke)
+impHandlerVoid(commandKill)
 
 }  // namespace Actions

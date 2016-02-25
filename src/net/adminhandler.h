@@ -156,6 +156,8 @@ class AdminHandler notfinal
         virtual void hide(const std::string &name) const = 0;
 
         virtual void nuke(const std::string &name) const = 0;
+
+        virtual void kill(const std::string &name) const = 0;
 };
 
 }  // namespace Net

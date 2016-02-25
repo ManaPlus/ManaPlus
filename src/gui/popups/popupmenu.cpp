@@ -2734,6 +2734,9 @@ void PopupMenu::showPlayerGMCommands()
         // TRANSLATORS: popup menu item
         // TRANSLATORS: nuke player
         mBrowserBox->addRow("/nuke 'NAME'", _("Nuke"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: kill player
+        mBrowserBox->addRow("/kill 'NAME'", _("Kill"));
         if (mBeingId != BeingId_zero)
         {
             mBrowserBox->addRow("##3---");

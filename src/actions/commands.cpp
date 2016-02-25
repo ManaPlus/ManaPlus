@@ -1450,4 +1450,10 @@ impHandler(commandNuke)
     return true;
 }
 
+impHandler(commandKill)
+{
+    adminHandler->kill(event.args);
+    return true;
+}
+
 }  // namespace Actions

@@ -5431,6 +5431,12 @@ static const InputActionData inputActionData
         "nuke",
         UseArgs_true,
         Protected_true},
+    {"keyCommandKill",
+        defaultAction(&Actions::commandKill),
+        InputCondition::INGAME,
+        "kill",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -245,4 +245,8 @@ void AdminHandler::nuke(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::kill(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
