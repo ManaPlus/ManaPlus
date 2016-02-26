@@ -31,8 +31,6 @@
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
 
-#include "const/gui/chat.h"
-
 #include "gui/viewport.h"
 
 #ifdef EATHENA_SUPPORT
