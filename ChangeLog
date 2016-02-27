@@ -1,3 +1,14 @@
+2016-02-27 New release 1.6.2.27
+fix: crash in setup gui tab.
+fix: char creation if stats was hidden (tmwa).
+fix: crash on startup on some systems.
+fix: beings sort offset in tiles with height more than zero.
+fix: hide popups if mouse enter context menu.
+add: extended drop position in pixels (hercules)
+add: onscreen buttons in format 3x2.
+add: extend gm menus for players, monsters, npcs.
+add: per server gm and char gm commands symbol.
+
 2016-02-13 New release 1.6.2.13
 fix: working with updated hercules without evol plugin.
 fix: possible crash with broken map.
