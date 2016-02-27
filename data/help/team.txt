@@ -57,7 +57,7 @@
 
 ##3German
 ##9Anna <clos3rlook gmail com>
-#99DerLoisl <der.loisl gmx de>
+##9DerLoisl <der.loisl gmx de>
 ##9Fortunato <fortunato108 googlemail com>
 ##9Marco Jäger (LinuxCobra/Cobraxas) <linuxcobra gmx de>
 ##9matheus23
