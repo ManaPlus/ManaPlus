@@ -50,7 +50,8 @@ class MapLayer final: public ConfigListener
         {
             TILES = 0,
             COLLISION,
-            HEIGHTS
+            HEIGHTS,
+            ACTIONS
         };
 
         friend class Map;

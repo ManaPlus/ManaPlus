@@ -577,6 +577,7 @@ inline static void setTile(Map *const map,
         }
 
         default:
+        case MapLayer::ACTIONS:
             break;
     }
 }
@@ -764,6 +765,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
     const bool isFringeLayer = (name.substr(0, 6) == "fringe");
     const bool isCollisionLayer = (name.substr(0, 9) == "collision");
     const bool isHeightLayer = (name.substr(0, 7) == "heights");
+    const bool isActionsLayer = (name.substr(0, 7) == "actions");
     int mask = 1;
     int tileCondition = -1;
     int conditionLayer = 0;
@@ -773,6 +775,8 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         layerType = MapLayer::COLLISION;
     else if (isHeightLayer)
         layerType = MapLayer::HEIGHTS;
+    else if (isActionsLayer)
+        layerType = MapLayer::ACTIONS;
 
     map->indexTilesets();
 
@@ -833,19 +837,27 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         if (conditionLayer != 0)
             tileCondition = -1;
 
-        if (layerType == MapLayer::TILES)
+        switch (layerType)
         {
-            layer = new MapLayer(offsetX, offsetY,
-                w, h,
-                isFringeLayer,
-                mask,
-                tileCondition);
-            map->addLayer(layer);
-        }
-        else if (layerType == MapLayer::HEIGHTS)
-        {
-            heights = new MapHeights(w, h);
-            map->addHeights(heights);
+            case MapLayer::TILES:
+            {
+                layer = new MapLayer(offsetX, offsetY,
+                    w, h,
+                    isFringeLayer,
+                    mask,
+                    tileCondition);
+                map->addLayer(layer);
+                break;
+            }
+            case MapLayer::HEIGHTS:
+            {
+                heights = new MapHeights(w, h);
+                map->addHeights(heights);
+                break;
+            }
+            default:
+            case MapLayer::ACTIONS:
+                break;
         }
 
         const std::string encoding =
