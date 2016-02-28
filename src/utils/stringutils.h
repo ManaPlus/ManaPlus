@@ -266,4 +266,6 @@ std::string timeDiffToString(int timeDiff);
 
 void replaceItemLinks(std::string &msg);
 
+std::string escapeString(std::string str);
+
 #endif  // UTILS_STRINGUTILS_H

@@ -996,6 +996,12 @@ std::string timeDiffToString(int timeDiff)
     return str;
 }
 
+std::string escapeString(std::string str)
+{
+    replaceAll(str, "\"", "\\\"");
+    return "\"" + str + "\"";
+}
+
 #ifndef DYECMD
 void replaceItemLinks(std::string &msg)
 {
