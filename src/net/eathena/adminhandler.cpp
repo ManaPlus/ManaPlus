@@ -342,4 +342,9 @@ void AdminHandler::hideNpc(const std::string &name) const
     Gm::runCommand("hidenpc", name);
 }
 
+void AdminHandler::showNpc(const std::string &name) const
+{
+    Gm::runCommand("shownpc", name);
+}
+
 }  // namespace EAthena

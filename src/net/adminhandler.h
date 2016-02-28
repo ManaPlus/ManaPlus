@@ -168,6 +168,8 @@ class AdminHandler notfinal
                              const int y) const = 0;
 
         virtual void hideNpc(const std::string &name) const = 0;
+
+        virtual void showNpc(const std::string &name) const = 0;
 };
 
 }  // namespace Net

@@ -5461,6 +5461,12 @@ static const InputActionData inputActionData
         "npchide|hidenpc",
         UseArgs_true,
         Protected_true},
+    {"keyCommandNpcShow",
+        defaultAction(&Actions::commandNpcShow),
+        InputCondition::INGAME,
+        "npcshow|shownpc",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

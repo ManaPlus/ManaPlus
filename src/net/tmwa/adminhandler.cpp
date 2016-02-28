@@ -267,4 +267,8 @@ void AdminHandler::hideNpc(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::showNpc(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -133,6 +133,7 @@ namespace Actions
     decHandler(commandUnjail);
     decHandler(commandNpcMove);
     decHandler(commandNpcHide);
+    decHandler(commandNpcShow);
 }  // namespace Actions
 
 #undef decHandler

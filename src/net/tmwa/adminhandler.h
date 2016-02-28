@@ -156,6 +156,8 @@ class AdminHandler final : public Ea::AdminHandler
                      const int y) const override final A_CONST;
 
         void hideNpc(const std::string &name) const override final A_CONST;
+
+        void showNpc(const std::string &name) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

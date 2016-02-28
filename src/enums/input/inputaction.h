@@ -662,6 +662,7 @@ enumStart(InputAction)
     COMMAND_UNJAIL,
     COMMAND_NPC_MOVE,
     COMMAND_NPC_HIDE,
+    COMMAND_NPC_SHOW,
     TOTAL
 }
 enumEnd(InputAction);
