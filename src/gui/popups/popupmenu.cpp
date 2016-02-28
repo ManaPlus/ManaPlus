@@ -120,6 +120,7 @@ PopupMenu::PopupMenu() :
     mDialog(nullptr),
     mButton(nullptr),
     mName(),
+    mExtName(),
     mTextField(nullptr),
     mType(ActorType::Unknown),
     mSubType(BeingTypeId_zero),
@@ -151,6 +152,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 
     mBeingId = being->getId();
     mName = being->getName();
+    mExtName = being->getExtName();
     mType = being->getType();
     mSubType = being->getSubType();
     mBrowserBox->clearRows();
@@ -477,6 +479,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
 
     setMousePos();
     mName = nick;
+    mExtName = nick;
     mBeingId = BeingId_zero;
     mType = ActorType::Player;
     mSubType = BeingTypeId_zero;
@@ -590,6 +593,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mBrowserBox->clearRows();
     const std::string name = floorItem->getName();
     mName = name;
+    mExtName = name;
 
     mBrowserBox->addRow(name);
 
@@ -839,6 +843,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         {
             mBeingId = being->getId();
             mName = being->getName();
+            mExtName = being->getExtName();
             mType = being->getType();
             mSubType = being->getSubType();
 
@@ -909,6 +914,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         {
             mBeingId = BeingId_zero;
             mName = name;
+            mExtName = name;
             mType = ActorType::Player;
             mSubType = BeingTypeId_zero;
             addPlayerRelation(name);
@@ -981,6 +987,7 @@ void PopupMenu::showChangePos(const int x, const int y)
             mItemCards[f] = 0;
         mMapItem = nullptr;
         mName.clear();
+        mExtName.clear();
         mType = ActorType::Unknown;
         mSubType = BeingTypeId_zero;
         mX = 0;
@@ -1515,6 +1522,8 @@ void PopupMenu::handleLink(const std::string &link,
         std::string cmd = link.substr(1);
         replaceAll(cmd, "'NAME'", mName);
         replaceAll(cmd, "'ENAME'", escapeString(mName));
+        replaceAll(cmd, "'EXTNAME'", mExtName);
+        replaceAll(cmd, "'EEXTNAME'", escapeString(mExtName));
         replaceAll(cmd, "'X'", toString(mX));
         replaceAll(cmd, "'Y'", toString(mY));
         replaceAll(cmd, "'BEINGID'", toString(toInt(mBeingId, int)));
@@ -1582,6 +1591,7 @@ void PopupMenu::handleLink(const std::string &link,
     mDialog = nullptr;
     mButton = nullptr;
     mName.clear();
+    mExtName.clear();
     mTextField = nullptr;
     mType = ActorType::Unknown;
     mSubType = BeingTypeId_zero;
@@ -1606,6 +1616,7 @@ void PopupMenu::showPopup(Window *const parent,
     mX = x;
     mY = y;
     mName.clear();
+    mExtName.clear();
     mBrowserBox->clearRows();
 
     const int cnt = item->getQuantity();
@@ -1735,6 +1746,7 @@ void PopupMenu::showPopup(Window *const parent,
     if (config.getBoolValue("enablePickupFilter"))
     {
         mName = item->getName();
+        mExtName = mName;
         mBrowserBox->addRow("##3---");
         addPickupFilter(mName);
     }
@@ -1813,6 +1825,7 @@ void PopupMenu::showItemPopup(const int x, const int y,
             mItemCards[f] = 0;
     }
     mName.clear();
+    mExtName.clear();
     mBrowserBox->clearRows();
 
     if (item)
@@ -1832,7 +1845,7 @@ void PopupMenu::showItemPopup(const int x, const int y,
         if (config.getBoolValue("enablePickupFilter"))
         {
             mName = item->getName();
-
+            mExtName = mName;
             mBrowserBox->addRow("##3---");
             addPickupFilter(mName);
         }
@@ -1854,6 +1867,7 @@ void PopupMenu::showDropPopup(const int x,
     mX = x;
     mY = y;
     mName.clear();
+    mExtName.clear();
     mBrowserBox->clearRows();
 
     if (item)
@@ -1878,6 +1892,7 @@ void PopupMenu::showDropPopup(const int x,
         if (config.getBoolValue("enablePickupFilter"))
         {
             mName = item->getName();
+            mExtName = mName;
             mBrowserBox->addRow("##3---");
             addPickupFilter(mName);
         }
@@ -1941,6 +1956,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
         return;
 
     mName = b->text();
+    mExtName = mName;
     mX = x;
     mY = y;
 
@@ -2006,12 +2022,14 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
 }
 
 void PopupMenu::showAttackMonsterPopup(const int x, const int y,
-                                       const std::string &name, const int type)
+                                       const std::string &name,
+                                       const int type)
 {
     if (!localPlayer || !actorManager)
         return;
 
     mName = name;
+    mExtName = name;
     mType = ActorType::Monster;
     mSubType = BeingTypeId_zero;
     mX = x;
@@ -2091,6 +2109,7 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
         return;
 
     mName = name;
+    mExtName = name;
     mType = ActorType::FloorItem;
     mSubType = BeingTypeId_zero;
     mX = x;
@@ -2174,6 +2193,7 @@ void PopupMenu::showLinkPopup(const std::string &link)
 {
     setMousePos();
     mName = link;
+    mExtName = link;
 
     mBrowserBox->clearRows();
 
@@ -2887,14 +2907,14 @@ void PopupMenu::showNpcGMCommands()
         const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
         if (!legacy)
         {
-            mBrowserBox->addRow("/npcmove 'NAME' 'PLAYERX' 'PLAYERY'",
+            mBrowserBox->addRow("/npcmove 'EEXTNAME' 'PLAYERX' 'PLAYERY'",
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: warp npc to player location
                 _("Recall"));
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: warp to npc
-            mBrowserBox->addRow("/gotonpc 'NAME'", _("Goto"));
+            mBrowserBox->addRow("/gotonpc 'EXTNAME'", _("Goto"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: disguise to npc
             mBrowserBox->addRow("/disguise 'BEINGSUBTYPEID'", _("Disguise"));
