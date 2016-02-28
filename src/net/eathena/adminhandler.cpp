@@ -347,4 +347,9 @@ void AdminHandler::showNpc(const std::string &name) const
     Gm::runCommand("shownpc", name);
 }
 
+void AdminHandler::changePartyLeader(const std::string &name) const
+{
+    Gm::runCommand("changeleader", name);
+}
+
 }  // namespace EAthena

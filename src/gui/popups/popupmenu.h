@@ -223,9 +223,9 @@ class PopupMenu final : public Popup, public LinkHandler
         void addChat(const Being *const being);
 #endif
 
-        void showGMPopup();
+        void showGMPopup(const std::string &name);
 
-        void showPlayerGMCommands();
+        void showPlayerGMCommands(const std::string &name);
 
         void showNpcGMCommands();
 

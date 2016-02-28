@@ -1509,4 +1509,13 @@ impHandler(commandNpcShow)
     return true;
 }
 
+impHandler(commandChangePartyLeader)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->changePartyLeader(args);
+    return true;
+}
+
 }  // namespace Actions

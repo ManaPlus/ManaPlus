@@ -5467,6 +5467,12 @@ static const InputActionData inputActionData
         "npcshow|shownpc",
         UseArgs_true,
         Protected_true},
+    {"keyCommandChangePartyLeader",
+        defaultAction(&Actions::commandChangePartyLeader),
+        InputCondition::INGAME,
+        "gmpartyleader|changepartyleader",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

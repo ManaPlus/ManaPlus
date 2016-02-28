@@ -1351,7 +1351,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "gm" && !mName.empty())
     {
-        showGMPopup();
+        showGMPopup(mName);
         return;
     }
     else if (link == "mute" && !mName.empty())
@@ -2730,7 +2730,7 @@ void PopupMenu::showPlayerMenu()
     showPopup(getX(), getY());
 }
 
-void PopupMenu::showPlayerGMCommands()
+void PopupMenu::showPlayerGMCommands(const std::string &name)
 {
     const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
     if (!legacy)
@@ -2756,6 +2756,18 @@ void PopupMenu::showPlayerGMCommands()
     mBrowserBox->addRow("/alive 'NAME'", _("Revive"));
     if (!legacy)
     {
+        if (localPlayer && localPlayer->isInParty())
+        {
+            const Party *const party = localPlayer->getParty();
+            if (party && party->isMember(name))
+            {
+                mBrowserBox->addRow("/gmpartyleader 'NAME'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: give party leader status
+                    _("Give party leader"));
+            }
+        }
+
         // TRANSLATORS: popup menu item
         // TRANSLATORS: nuke player
         mBrowserBox->addRow("/nuke 'NAME'", _("Nuke"));
@@ -2986,7 +2998,7 @@ void PopupMenu::showItemGMCommands()
     mBrowserBox->addRow("/whodrops 'ITEMID'", _("Who drops"));
 }
 
-void PopupMenu::showGMPopup()
+void PopupMenu::showGMPopup(const std::string &name)
 {
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
@@ -2996,7 +3008,7 @@ void PopupMenu::showGMPopup()
         switch (mType)
         {
             case ActorType::Player:
-                showPlayerGMCommands();
+                showPlayerGMCommands(name);
                 break;
             case ActorType::Npc:
                 showNpcGMCommands();

@@ -134,6 +134,7 @@ namespace Actions
     decHandler(commandNpcMove);
     decHandler(commandNpcHide);
     decHandler(commandNpcShow);
+    decHandler(commandChangePartyLeader);
 }  // namespace Actions
 
 #undef decHandler

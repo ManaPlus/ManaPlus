@@ -146,6 +146,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void showNpc(const std::string &name) const override final;
 
+        void changePartyLeader(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

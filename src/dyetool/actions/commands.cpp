@@ -134,5 +134,6 @@ impHandlerVoid(commandUnjail)
 impHandlerVoid(commandNpcMove)
 impHandlerVoid(commandNpcHide)
 impHandlerVoid(commandNpcShow)
+impHandlerVoid(commandChangePartyLeader)
 
 }  // namespace Actions

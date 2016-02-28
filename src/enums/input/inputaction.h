@@ -663,6 +663,7 @@ enumStart(InputAction)
     COMMAND_NPC_MOVE,
     COMMAND_NPC_HIDE,
     COMMAND_NPC_SHOW,
+    COMMAND_CHANGE_PARTY_LEADER,
     TOTAL
 }
 enumEnd(InputAction);

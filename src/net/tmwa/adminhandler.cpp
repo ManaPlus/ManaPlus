@@ -271,4 +271,8 @@ void AdminHandler::showNpc(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::changePartyLeader(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
