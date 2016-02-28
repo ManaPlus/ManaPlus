@@ -1491,4 +1491,13 @@ impHandler(commandNpcMove)
     return true;
 }
 
+impHandler(commandNpcHide)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->hideNpc(args);
+    return true;
+}
+
 }  // namespace Actions

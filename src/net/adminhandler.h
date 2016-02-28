@@ -166,6 +166,8 @@ class AdminHandler notfinal
         virtual void npcMove(const std::string &name,
                              const int x,
                              const int y) const = 0;
+
+        virtual void hideNpc(const std::string &name) const = 0;
 };
 
 }  // namespace Net

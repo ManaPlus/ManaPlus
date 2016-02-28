@@ -5455,6 +5455,12 @@ static const InputActionData inputActionData
         "npcmove|movenpc|warpnpc|npcwarp",
         UseArgs_true,
         Protected_true},
+    {"keyCommandNpcHide",
+        defaultAction(&Actions::commandNpcHide),
+        InputCondition::INGAME,
+        "npchide|hidenpc",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -337,4 +337,9 @@ void AdminHandler::npcMove(const std::string &name,
         name.c_str()));
 }
 
+void AdminHandler::hideNpc(const std::string &name) const
+{
+    Gm::runCommand("hidenpc", name);
+}
+
 }  // namespace EAthena

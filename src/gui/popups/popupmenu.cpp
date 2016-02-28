@@ -2907,17 +2907,20 @@ void PopupMenu::showNpcGMCommands()
         const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
         if (!legacy)
         {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: hide npc
+            mBrowserBox->addRow("/hidenpc 'EXTNAME'", _("Hide"));
+            mBrowserBox->addRow("##3---");
             mBrowserBox->addRow("/npcmove 'EEXTNAME' 'PLAYERX' 'PLAYERY'",
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: warp npc to player location
                 _("Recall"));
-            mBrowserBox->addRow("##3---");
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: warp to npc
-            mBrowserBox->addRow("/gotonpc 'EXTNAME'", _("Goto"));
             // TRANSLATORS: popup menu item
             // TRANSLATORS: disguise to npc
             mBrowserBox->addRow("/disguise 'BEINGSUBTYPEID'", _("Disguise"));
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: warp to npc
+            mBrowserBox->addRow("/gotonpc 'EXTNAME'", _("Goto"));
         }
     }
 }

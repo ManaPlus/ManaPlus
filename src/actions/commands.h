@@ -132,6 +132,7 @@ namespace Actions
     decHandler(commandJail);
     decHandler(commandUnjail);
     decHandler(commandNpcMove);
+    decHandler(commandNpcHide);
 }  // namespace Actions
 
 #undef decHandler

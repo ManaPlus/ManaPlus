@@ -263,4 +263,8 @@ void AdminHandler::npcMove(const std::string &name A_UNUSED,
 {
 }
 
+void AdminHandler::hideNpc(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

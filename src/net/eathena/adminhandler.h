@@ -142,6 +142,8 @@ class AdminHandler final : public Ea::AdminHandler
                      const int x,
                      const int y) const override final;
 
+        void hideNpc(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };
