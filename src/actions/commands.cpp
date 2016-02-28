@@ -1518,4 +1518,13 @@ impHandler(commandChangePartyLeader)
     return true;
 }
 
+impHandler(commandPartyRecall)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->partyRecall(args);
+    return true;
+}
+
 }  // namespace Actions

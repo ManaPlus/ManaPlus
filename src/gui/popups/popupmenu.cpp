@@ -1563,6 +1563,19 @@ void PopupMenu::handleLink(const std::string &link,
         }
         replaceAll(cmd, "'CARDS'", cards);
         replaceAll(cmd, "'ECARDS'", escapeString(cards));
+        if (actorManager)
+        {
+            if (!being)
+            {
+                being = actorManager->findBeingByName(mName,
+                    ActorType::Player);
+            }
+        }
+        if (being)
+            replaceAll(cmd, "'PARTY'", being->getPartyName());
+        else
+            replaceAll(cmd, "'PARTY'", "");
+
         const size_t pos = cmd.find(' ');
         const std::string type(cmd, 0, pos);
         std::string args(cmd, pos == std::string::npos ? cmd.size() : pos + 1);
@@ -2756,6 +2769,15 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
     mBrowserBox->addRow("/alive 'NAME'", _("Revive"));
     if (!legacy)
     {
+        Being *const being = actorManager->findBeingByName(name,
+            ActorType::Player);
+        if (being && !being->getPartyName().empty())
+        {
+            mBrowserBox->addRow("/partyrecall 'PARTY'",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: recall all party to player location
+                _("Recall party"));
+        }
         if (localPlayer && localPlayer->isInParty())
         {
             const Party *const party = localPlayer->getParty();

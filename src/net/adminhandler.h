@@ -172,6 +172,8 @@ class AdminHandler notfinal
         virtual void showNpc(const std::string &name) const = 0;
 
         virtual void changePartyLeader(const std::string &name) const = 0;
+
+        virtual void partyRecall(const std::string &name) const = 0;
 };
 
 }  // namespace Net

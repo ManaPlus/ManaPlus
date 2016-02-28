@@ -664,6 +664,7 @@ enumStart(InputAction)
     COMMAND_NPC_HIDE,
     COMMAND_NPC_SHOW,
     COMMAND_CHANGE_PARTY_LEADER,
+    COMMAND_PARTY_RECALL,
     TOTAL
 }
 enumEnd(InputAction);

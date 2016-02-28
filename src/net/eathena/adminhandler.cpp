@@ -352,4 +352,9 @@ void AdminHandler::changePartyLeader(const std::string &name) const
     Gm::runCommand("changeleader", name);
 }
 
+void AdminHandler::partyRecall(const std::string &name) const
+{
+    Gm::runCommand("partyrecall", name);
+}
+
 }  // namespace EAthena

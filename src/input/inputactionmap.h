@@ -5473,6 +5473,12 @@ static const InputActionData inputActionData
         "gmpartyleader|changepartyleader",
         UseArgs_true,
         Protected_true},
+    {"keyCommandPartyRecall",
+        defaultAction(&Actions::commandPartyRecall),
+        InputCondition::INGAME,
+        "partyrecall|recallparty",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

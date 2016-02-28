@@ -275,4 +275,8 @@ void AdminHandler::changePartyLeader(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::partyRecall(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
