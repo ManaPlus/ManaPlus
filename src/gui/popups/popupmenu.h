@@ -250,7 +250,7 @@ class PopupMenu final : public Popup, public LinkHandler
         PlayerListener mPlayerListener;
         TextDialog *mDialog;
         Button *mButton;
-        std::string mNick;
+        std::string mName;
         TextField *mTextField;
         ActorTypeT mType;
         BeingTypeId mSubType;
