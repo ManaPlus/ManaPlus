@@ -28,6 +28,7 @@
 #include "net/eathena/protocolout.h"
 
 #include "utils/gmfunctions.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -323,6 +324,17 @@ void AdminHandler::jail(const std::string &name) const
 void AdminHandler::unjail(const std::string &name) const
 {
     Gm::runCommand("unjail", name);
+}
+
+void AdminHandler::npcMove(const std::string &name,
+                           const int x,
+                           const int y) const
+{
+    Gm::runCommand("npcmove",
+        strprintf("%d %d %s",
+        x,
+        y,
+        name.c_str()));
 }
 
 }  // namespace EAthena

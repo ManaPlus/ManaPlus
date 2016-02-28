@@ -131,5 +131,6 @@ impHandlerVoid(commandNuke)
 impHandlerVoid(commandKill)
 impHandlerVoid(commandJail)
 impHandlerVoid(commandUnjail)
+impHandlerVoid(commandNpcMove)
 
 }  // namespace Actions

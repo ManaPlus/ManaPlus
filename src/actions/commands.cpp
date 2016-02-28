@@ -68,6 +68,7 @@
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
 #include "utils/gmfunctions.h"
+#include "utils/parameters.h"
 #include "utils/process.h"
 
 #include "debug.h"
@@ -1469,6 +1470,24 @@ impHandler(commandUnjail)
     if (args.empty())
         return false;
     adminHandler->unjail(args);
+    return true;
+}
+
+impHandler(commandNpcMove)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    StringVect pars;
+    if (!splitParameters(pars, args, " ,", '\"'))
+        return false;
+
+    if (pars.size() != 3)
+        return false;
+
+    adminHandler->npcMove(pars[0],
+        atoi(pars[1].c_str()),
+        atoi(pars[2].c_str()));
     return true;
 }
 

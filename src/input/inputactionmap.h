@@ -5449,6 +5449,12 @@ static const InputActionData inputActionData
         "unjail",
         UseArgs_true,
         Protected_true},
+    {"keyCommandNpcMove",
+        defaultAction(&Actions::commandNpcMove),
+        InputCondition::INGAME,
+        "npcmove|movenpc|warpnpc|npcwarp",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

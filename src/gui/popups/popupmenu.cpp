@@ -1514,6 +1514,7 @@ void PopupMenu::handleLink(const std::string &link,
     {
         std::string cmd = link.substr(1);
         replaceAll(cmd, "'NAME'", mNick);
+        replaceAll(cmd, "'ENAME'", escapeString(mNick));
         replaceAll(cmd, "'X'", toString(mX));
         replaceAll(cmd, "'Y'", toString(mY));
         replaceAll(cmd, "'BEINGID'", toString(toInt(mBeingId, int)));
@@ -1523,6 +1524,9 @@ void PopupMenu::handleLink(const std::string &link,
         replaceAll(cmd, "'BEINGTYPEID'", toString(CAST_S32(mType)));
         replaceAll(cmd, "'BEINGSUBTYPEID'", toString(CAST_S32(mSubType)));
         replaceAll(cmd, "'PLAYER'", localPlayer->getName());
+        replaceAll(cmd, "'EPLAYER'", escapeString(localPlayer->getName()));
+        replaceAll(cmd, "'PLAYERX'", toString(localPlayer->getTileX()));
+        replaceAll(cmd, "'PLAYERY'", toString(localPlayer->getTileY()));
         if (mItemIndex >= 0)
             replaceAll(cmd, "'INVINDEX'", toString(mItemIndex));
         else
@@ -1549,6 +1553,7 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
         replaceAll(cmd, "'CARDS'", cards);
+        replaceAll(cmd, "'ECARDS'", escapeString(cards));
         const size_t pos = cmd.find(' ');
         const std::string type(cmd, 0, pos);
         std::string args(cmd, pos == std::string::npos ? cmd.size() : pos + 1);
@@ -2882,6 +2887,10 @@ void PopupMenu::showNpcGMCommands()
         const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
         if (!legacy)
         {
+            mBrowserBox->addRow("/npcmove 'NAME' 'PLAYERX' 'PLAYERY'",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: warp npc to player location
+                _("Recall"));
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: warp to npc

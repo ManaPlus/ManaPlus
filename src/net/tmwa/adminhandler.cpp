@@ -257,4 +257,10 @@ void AdminHandler::unjail(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::npcMove(const std::string &name A_UNUSED,
+                           const int x A_UNUSED,
+                           const int y A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

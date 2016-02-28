@@ -660,6 +660,7 @@ enumStart(InputAction)
     COMMAND_KILL,
     COMMAND_JAIL,
     COMMAND_UNJAIL,
+    COMMAND_NPC_MOVE,
     TOTAL
 }
 enumEnd(InputAction);

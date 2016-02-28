@@ -162,6 +162,10 @@ class AdminHandler notfinal
         virtual void jail(const std::string &name) const = 0;
 
         virtual void unjail(const std::string &name) const = 0;
+
+        virtual void npcMove(const std::string &name,
+                             const int x,
+                             const int y) const = 0;
 };
 
 }  // namespace Net

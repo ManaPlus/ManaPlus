@@ -137,19 +137,23 @@ class AdminHandler final : public Ea::AdminHandler
 
         void alive(const std::string &name) const override final;
 
-        void disguise(const std::string &name) const override final;
+        void disguise(const std::string &name) const override final A_CONST;
 
-        void immortal(const std::string &name) const override final;
+        void immortal(const std::string &name) const override final A_CONST;
 
         void hide(const std::string &name) const override final;
 
-        void nuke(const std::string &name) const override final;
+        void nuke(const std::string &name) const override final A_CONST;
 
-        void kill(const std::string &name) const override final;
+        void kill(const std::string &name) const override final A_CONST;
 
-        void jail(const std::string &name) const override final;
+        void jail(const std::string &name) const override final A_CONST;
 
-        void unjail(const std::string &name) const override final;
+        void unjail(const std::string &name) const override final A_CONST;
+
+        void npcMove(const std::string &name,
+                     const int x,
+                     const int y) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

@@ -138,6 +138,10 @@ class AdminHandler final : public Ea::AdminHandler
 
         void unjail(const std::string &name) const override final;
 
+        void npcMove(const std::string &name,
+                     const int x,
+                     const int y) const override final;
+
     protected:
         static std::string mStatsName;
 };
