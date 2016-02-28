@@ -211,6 +211,9 @@ class Being notfinal : public ActorSprite,
         const std::string &getName() const restrict2 noexcept A_WARN_UNUSED
         { return mName; }
 
+        const std::string &getExtName() const restrict2 noexcept A_WARN_UNUSED
+        { return mExtName; }
+
         /**
          * Sets the name for the being.
          *
@@ -1019,7 +1022,8 @@ class Being notfinal : public ActorSprite,
         AnimatedSprite *restrict mBadges[BadgeIndex::BadgeIndexSize];
 
         std::string mSpriteAction;
-        std::string mName;              /**< Name of character */
+        std::string mName;              /**< Name of being */
+        std::string mExtName;           /**< Full name of being */
         std::string mRaceName;
         std::string mPartyName;
         std::string mGuildName;

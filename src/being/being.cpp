@@ -152,6 +152,7 @@ Being::Being(const BeingId id,
     mBadges(),
     mSpriteAction(SpriteAction::STAND),
     mName(),
+    mExtName(),
     mRaceName(),
     mPartyName(),
     mGuildName(),
@@ -1063,6 +1064,7 @@ void Being::showNameBadge(const bool show) restrict2
 
 void Being::setName(const std::string &restrict name) restrict2
 {
+    mExtName = name;
     if (mType == ActorType::Npc)
     {
         mName = name.substr(0, name.find('#', 0));
