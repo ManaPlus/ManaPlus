@@ -857,6 +857,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
             }
             default:
             case MapLayer::ACTIONS:
+            case MapLayer::COLLISION:
                 break;
         }
 
