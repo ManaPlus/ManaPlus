@@ -170,7 +170,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     if (type == ActorType::Pet)
     {
         const PetInfo *const info = PlayerInfo::getPet();
-        if (info)
+        if (info && info->id == b->getId())
         {
             // TRANSLATORS: being popup label
             label1->setCaption(strprintf(_("Hungry: %d"),
@@ -180,6 +180,17 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label2->setCaption(strprintf(_("Intimacy: %d"),
                 info->intimacy));
             label2->adjustSize();
+            label3 = nullptr;
+            label4 = nullptr;
+            label5 = nullptr;
+            label6 = nullptr;
+            label7 = nullptr;
+            label8 = nullptr;
+        }
+        else
+        {
+            label1 = nullptr;
+            label2 = nullptr;
             label3 = nullptr;
             label4 = nullptr;
             label5 = nullptr;
