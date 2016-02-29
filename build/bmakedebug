@@ -62,8 +62,7 @@ autoreconf -i
 --enable-memdebug=no \
 --enable-tcmalloc=no \
 --enable-googleprofiler=no \
---enable-checks=yes \
---enable-libxml=pugixml
+--enable-checks=yes
 
 cd po
 make -j8 update-gmo 2>../build/make1.log
