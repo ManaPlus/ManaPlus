@@ -283,4 +283,8 @@ void AdminHandler::breakGuild(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::guildRecall(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

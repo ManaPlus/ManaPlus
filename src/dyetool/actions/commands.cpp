@@ -137,5 +137,6 @@ impHandlerVoid(commandNpcShow)
 impHandlerVoid(commandChangePartyLeader)
 impHandlerVoid(commandPartyRecall)
 impHandlerVoid(commandBreakGuild)
+impHandlerVoid(commandGuildRecall)
 
 }  // namespace Actions

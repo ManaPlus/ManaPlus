@@ -2771,12 +2771,22 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
     {
         Being *const being = actorManager->findBeingByName(name,
             ActorType::Player);
-        if (being && !being->getPartyName().empty())
+        if (being)
         {
-            mBrowserBox->addRow("/partyrecall 'PARTY'",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: recall all party to player location
-                _("Recall party"));
+            if (!being->getPartyName().empty())
+            {
+                mBrowserBox->addRow("/partyrecall 'PARTY'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: recall all party members to player location
+                    _("Recall party"));
+            }
+            if (!being->getGuildName().empty())
+            {
+                mBrowserBox->addRow("/guildrecall 'PARTY'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: recall all guild members to player location
+                    _("Recall guild"));
+            }
         }
         if (localPlayer && localPlayer->isInParty())
         {

@@ -152,6 +152,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void breakGuild(const std::string &name) const override final;
 
+        void guildRecall(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

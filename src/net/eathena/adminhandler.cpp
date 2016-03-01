@@ -362,4 +362,9 @@ void AdminHandler::breakGuild(const std::string &name) const
     Gm::runCharCommand("breakguild", name);
 }
 
+void AdminHandler::guildRecall(const std::string &name) const
+{
+    Gm::runCommand("guildrecall", name);
+}
+
 }  // namespace EAthena

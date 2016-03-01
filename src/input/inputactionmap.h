@@ -5485,6 +5485,12 @@ static const InputActionData inputActionData
         "breakguild|gmbreakguild",
         UseArgs_true,
         Protected_true},
+    {"keyCommandGuildRecall",
+        defaultAction(&Actions::commandGuildRecall),
+        InputCondition::INGAME,
+        "guildrecall|recallguild",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

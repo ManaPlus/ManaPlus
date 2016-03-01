@@ -666,6 +666,7 @@ enumStart(InputAction)
     COMMAND_CHANGE_PARTY_LEADER,
     COMMAND_PARTY_RECALL,
     COMMAND_BREAK_GUILD,
+    COMMAND_GUILD_RECALL,
     TOTAL
 }
 enumEnd(InputAction);

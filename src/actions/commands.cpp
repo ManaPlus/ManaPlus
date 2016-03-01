@@ -1533,4 +1533,13 @@ impHandler(commandBreakGuild)
     return true;
 }
 
+impHandler(commandGuildRecall)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->guildRecall(args);
+    return true;
+}
+
 }  // namespace Actions
