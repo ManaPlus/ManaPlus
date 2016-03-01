@@ -2185,6 +2185,9 @@ void PopupMenu::showUndressPopup(const int x, const int y,
     // TRANSLATORS: popup menu item
     // TRANSLATORS: undress item from player
     mBrowserBox->addRow("undress item", _("Undress"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: add item name to chat
+    mBrowserBox->addRow("/addchat 'ITEMID''CARDS'", _("Add to chat"));
     addGmCommands();
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
