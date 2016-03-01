@@ -2860,6 +2860,10 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
         // TRANSLATORS: popup menu item
         // TRANSLATORS: spawn evil player clone
         mBrowserBox->addRow("/spawnevilclone 'NAME'", _("Spawn evil clone"));
+        mBrowserBox->addRow("##3---");
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: break guild
+        mBrowserBox->addRow("/gmbreakguild 'NAME'", _("Break guild"));
     }
     if (mBeingId != BeingId_zero)
     {

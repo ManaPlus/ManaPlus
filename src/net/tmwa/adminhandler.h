@@ -163,6 +163,8 @@ class AdminHandler final : public Ea::AdminHandler
                                A_CONST;
 
         void partyRecall(const std::string &name) const override final A_CONST;
+
+        void breakGuild(const std::string &name) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

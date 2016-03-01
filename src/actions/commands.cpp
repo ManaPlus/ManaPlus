@@ -1527,4 +1527,10 @@ impHandler(commandPartyRecall)
     return true;
 }
 
+impHandler(commandBreakGuild)
+{
+    adminHandler->breakGuild(event.args);
+    return true;
+}
+
 }  // namespace Actions

@@ -136,6 +136,7 @@ namespace Actions
     decHandler(commandNpcShow);
     decHandler(commandChangePartyLeader);
     decHandler(commandPartyRecall);
+    decHandler(commandBreakGuild);
 }  // namespace Actions
 
 #undef decHandler

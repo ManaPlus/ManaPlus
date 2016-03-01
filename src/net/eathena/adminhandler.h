@@ -150,6 +150,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void partyRecall(const std::string &name) const override final;
 
+        void breakGuild(const std::string &name) const override final;
+
     protected:
         static std::string mStatsName;
 };

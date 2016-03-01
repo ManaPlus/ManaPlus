@@ -5479,6 +5479,12 @@ static const InputActionData inputActionData
         "partyrecall|recallparty",
         UseArgs_true,
         Protected_true},
+    {"keyCommandBreakGuild",
+        defaultAction(&Actions::commandBreakGuild),
+        InputCondition::INGAME,
+        "breakguild|gmbreakguild",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

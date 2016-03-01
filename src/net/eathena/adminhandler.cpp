@@ -357,4 +357,9 @@ void AdminHandler::partyRecall(const std::string &name) const
     Gm::runCommand("partyrecall", name);
 }
 
+void AdminHandler::breakGuild(const std::string &name) const
+{
+    Gm::runCharCommand("breakguild", name);
+}
+
 }  // namespace EAthena

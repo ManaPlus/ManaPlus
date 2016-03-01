@@ -279,4 +279,8 @@ void AdminHandler::partyRecall(const std::string &name A_UNUSED) const
 {
 }
 
+void AdminHandler::breakGuild(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
