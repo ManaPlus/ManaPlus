@@ -31,6 +31,9 @@
 #include "being/playerinfo.h"
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
+#ifdef EATHENA_SUPPORT
+#include "being/homunculusinfo.h"
+#endif
 
 #include "const/spells.h"
 
@@ -343,20 +346,30 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             break;
 
         case ActorType::Homunculus:
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: Mercenary move to master
-            mBrowserBox->addRow("homunculus to master", _("Move to master"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: feed homunculus
-            mBrowserBox->addRow("homunculus feed", _("Feed"));
+        {
+            const HomunculusInfo *const info = PlayerInfo::getHomunculus();
+            if (info)
+            {
+                mBrowserBox->addRow("homunculus to master",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: Mercenary move to master
+                    _("Move to master"));
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: feed homunculus
+                mBrowserBox->addRow("homunculus feed", _("Feed"));
+                mBrowserBox->addRow("##3---");
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: pet rename item
+                mBrowserBox->addRow("/sethomunname", _("Rename"));
+                mBrowserBox->addRow("##3---");
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: delete homunculus
+                mBrowserBox->addRow("homunculus delete", _("Kill"));
+                mBrowserBox->addRow("##3---");
+            }
             addGmCommands();
-            mBrowserBox->addRow("##3---");
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: delete homunculus
-            mBrowserBox->addRow("homunculus delete", _("Kill"));
-            mBrowserBox->addRow("##3---");
             break;
-
+        }
         case ActorType::Pet:
             if (being->getOwner() == localPlayer)
             {

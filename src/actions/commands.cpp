@@ -30,12 +30,15 @@
 #include "being/flooritem.h"
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
+#ifdef EATHENA_SUPPORT
+#include "being/homunculusinfo.h"
+#include "being/playerinfo.h"
+#endif
 
 #include "gui/viewport.h"
 
 #ifdef EATHENA_SUPPORT
 #include "gui/shortcut/emoteshortcut.h"
-
 #endif
 
 #include "gui/windows/chatwindow.h"
@@ -48,6 +51,10 @@
 #include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "input/inputactionoperators.h"
+
+#ifdef EATHENA_SUPPORT
+#include "listeners/inputactionreplaylistener.h"
+#endif
 
 #include "net/adminhandler.h"
 #include "net/chathandler.h"
@@ -868,7 +875,17 @@ impHandler(setHomunculusName)
 #ifdef EATHENA_SUPPORT
     const std::string args = event.args;
     if (args.empty())
+    {
+        const HomunculusInfo *const info = PlayerInfo::getHomunculus();
+        if (info)
+        {
+            // TRANSLATORS: dialog header
+            inputActionReplayListener.openDialog(_("Rename your homun"),
+                info->name,
+                InputAction::HOMUNCULUS_SET_NAME);
+        }
         return false;
+    }
 
     if (homunculusHandler)
     {
