@@ -276,6 +276,7 @@ Being *ActorManager::createBeing(const BeingId id,
 #ifdef EATHENA_SUPPORT
         || type == ActorType::Mercenary
         || type == ActorType::Pet
+        || type == ActorType::Homunculus
 #endif
         || type == ActorType::Npc)
     {
@@ -299,6 +300,7 @@ Being *ActorManager::createBeing(const BeingId id,
             beingHandler->requestNameById(id);
         }
     }
+
     if (type == ActorType::Player)
     {
         if (socialWindow)
