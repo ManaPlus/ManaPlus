@@ -1331,7 +1331,7 @@ void BeingRecv::processBeingFakeName(Net::MessageIn &msg)
     msg.readCoordinates(x, y, dir, "position");
     msg.readUInt8("sx");
     msg.readUInt8("sy");
-    msg.skip(4, "unused");
+    msg.skip(3, "unused");
 
     Being *const dstBeing = createBeing2(msg, id, job, type);
     if (!dstBeing)
