@@ -3055,6 +3055,19 @@ void PopupMenu::showGMPopup(const std::string &name)
             case ActorType::FloorItem:
                 showFloorItemGMCommands();
                 break;
+#ifdef EATHENA_SUPPORT
+            case ActorType::Homunculus:
+                showHomunGMCommands();
+                break;
+            case ActorType::Pet:
+                showPetGMCommands();
+                break;
+            case ActorType::Mercenary:
+                showMercenaryGMCommands();
+                break;
+            case ActorType::SkillUnit:
+                break;
+#endif
             default:
             case ActorType::Unknown:
                 if (mItemId != 0)
@@ -3063,12 +3076,6 @@ void PopupMenu::showGMPopup(const std::string &name)
             case ActorType::Portal:
             case ActorType::LocalPet:
             case ActorType::Avatar:
-#ifdef EATHENA_SUPPORT
-            case ActorType::Pet:
-            case ActorType::Mercenary:
-            case ActorType::Homunculus:
-            case ActorType::SkillUnit:
-#endif
                 break;
         }
     }
@@ -3082,6 +3089,18 @@ void PopupMenu::showGMPopup(const std::string &name)
 }
 
 #ifdef EATHENA_SUPPORT
+void PopupMenu::showHomunGMCommands()
+{
+}
+
+void PopupMenu::showPetGMCommands()
+{
+}
+
+void PopupMenu::showMercenaryGMCommands()
+{
+}
+
 void PopupMenu::showCraftPopup()
 {
     mBrowserBox->clearRows();
