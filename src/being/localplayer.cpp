@@ -2043,61 +2043,59 @@ void LocalPlayer::updateCoords()
         updateMusic();
     }
 
-    if (mShowNavigePath)
+    if (mMap && (mX != mOldTileX || mY != mOldTileY))
     {
-        if (mMap && (mX != mOldTileX || mY != mOldTileY))
+        SpecialLayer *const tmpLayer = mMap->getTempLayer();
+        if (!tmpLayer)
+            return;
+
+        const int x = CAST_S32(playerPos.x - mapTileSize / 2)
+            / mapTileSize;
+        const int y = CAST_S32(playerPos.y - mapTileSize)
+            / mapTileSize;
+        if (mNavigateId != BeingId_zero)
         {
-            SpecialLayer *const tmpLayer = mMap->getTempLayer();
-            if (!tmpLayer)
-                return;
-
-            const int x = CAST_S32(playerPos.x - mapTileSize / 2)
-                / mapTileSize;
-            const int y = CAST_S32(playerPos.y - mapTileSize)
-                / mapTileSize;
-            if (mNavigateId != BeingId_zero)
-            {
-                if (!actorManager)
-                {
-                    navigateClean();
-                    return;
-                }
-
-                const Being *const being = actorManager
-                    ->findBeing(mNavigateId);
-                if (!being)
-                {
-                    navigateClean();
-                    return;
-                }
-                mNavigateX = being->getTileX();
-                mNavigateY = being->getTileY();
-            }
-
-            if (mNavigateX == x && mNavigateY == y)
+            if (!actorManager)
             {
                 navigateClean();
                 return;
             }
-            else
-            {
-                for (Path::const_iterator i = mNavigatePath.begin(),
-                     i_fend = mNavigatePath.end();
-                     i != i_fend;
-                     ++i)
-                {
-                    if ((*i).x == mX && (*i).y == mY)
-                    {
-                        mNavigatePath.pop_front();
-                        break;
-                    }
-                }
 
-                if (mDrawPath)
+            const Being *const being = actorManager
+                ->findBeing(mNavigateId);
+            if (!being)
+            {
+                navigateClean();
+                return;
+            }
+            mNavigateX = being->getTileX();
+            mNavigateY = being->getTileY();
+        }
+
+        if (mNavigateX == x && mNavigateY == y)
+        {
+            navigateClean();
+            return;
+        }
+        else
+        {
+            for (Path::const_iterator i = mNavigatePath.begin(),
+                 i_fend = mNavigatePath.end();
+                 i != i_fend;
+                 ++i)
+            {
+                if ((*i).x == mX && (*i).y == mY)
                 {
-                    tmpLayer->clean();
-                    tmpLayer->addRoad(mNavigatePath);
+                    mNavigatePath.pop_front();
+                    fixPos(6);
+                    break;
                 }
+            }
+
+            if (mDrawPath && mShowNavigePath)
+            {
+                tmpLayer->clean();
+                tmpLayer->addRoad(mNavigatePath);
             }
         }
     }
@@ -2468,11 +2466,13 @@ void LocalPlayer::fixPos(const int maxDist)
     const int dest = (dx * dx) + (dy * dy);
     const int time = cur_time;
 
-    if (dest > maxDist && mActivityTime
-        && (time < mActivityTime || time - mActivityTime > 2))
+    if (dest > maxDist)
+//    if (dest > maxDist && mActivityTime
+//        && (time < mActivityTime || time - mActivityTime > 2))
     {
         mActivityTime = time;
-        setDestination(mCrossX, mCrossY);
+        setTileCoords(mCrossX, mCrossY);
+//        setDestination(mCrossX, mCrossY);
     }
 }
 
@@ -2484,8 +2484,6 @@ void LocalPlayer::setRealPos(const int x, const int y)
     SpecialLayer *const layer = mMap->getTempLayer();
     if (layer)
     {
-        fixPos(1);
-
         if ((mCrossX || mCrossY)
             && layer->getTile(mCrossX, mCrossY)
             && layer->getTile(mCrossX, mCrossY)->getType()
@@ -2505,8 +2503,12 @@ void LocalPlayer::setRealPos(const int x, const int y)
             }
         }
 
-        mCrossX = x;
-        mCrossY = y;
+        if (mCrossX != x || mCrossY != y)
+        {
+            mCrossX = x;
+            mCrossY = y;
+            fixPos(6);
+        }
     }
     if (mMap->isCustom())
         mMap->setWalk(x, y);
