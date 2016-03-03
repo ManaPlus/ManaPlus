@@ -234,11 +234,30 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
         replaceItemLinks(str);
 
         if (xmlNameEqual(dataNode, "text"))
+        {
             quest->texts.push_back(QuestItemText(str, QuestType::TEXT));
+        }
         else if (xmlNameEqual(dataNode, "name"))
+        {
             quest->texts.push_back(QuestItemText(str, QuestType::NAME));
+        }
         else if (xmlNameEqual(dataNode, "reward"))
+        {
             quest->texts.push_back(QuestItemText(str, QuestType::REWARD));
+        }
+        else if (xmlNameEqual(dataNode, "questgiver") ||
+                 xmlNameEqual(dataNode, "giver"))
+        {
+            quest->texts.push_back(QuestItemText(str, QuestType::GIVER));
+        }
+        else if (xmlNameEqual(dataNode, "coordinates"))
+        {
+            quest->texts.push_back(QuestItemText(str, QuestType::COORDINATES));
+        }
+        else if (xmlNameEqual(dataNode, "npc"))
+        {
+            quest->texts.push_back(QuestItemText(str, QuestType::NPC));
+        }
     }
     mQuests[var].push_back(quest);
 }
@@ -409,13 +428,34 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
         const QuestItemText &data = *it;
         switch (data.type)
         {
+            case QuestType::COORDINATES:
             case QuestType::TEXT:
-            case QuestType::REWARD:
             default:
                 mText->addRow(data.text);
                 break;
             case QuestType::NAME:
                 mText->addRow(std::string("[").append(data.text).append("]"));
+                break;
+            case QuestType::REWARD:
+                mText->addRow(std::string(
+                    // TRANSLATORS: quest reward
+                    _("Reward:")).append(
+                    " ").append(
+                    data.text));
+                break;
+            case QuestType::GIVER:
+                mText->addRow(std::string(
+                    // TRANSLATORS: quest giver name
+                    _("Quest Giver:")).append(
+                    " ").append(
+                    data.text));
+                break;
+            case QuestType::NPC:
+                mText->addRow(std::string(
+                    // TRANSLATORS: npc name
+                    _("Npc:")).append(
+                    " ").append(
+                    data.text));
                 break;
         }
     }

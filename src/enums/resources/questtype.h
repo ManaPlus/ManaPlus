@@ -25,9 +25,12 @@
 
 enumStart(QuestType)
 {
-    TEXT   = 0,
-    NAME   = 1,
-    REWARD = 2
+    TEXT        = 0,
+    NAME        = 1,
+    REWARD      = 2,
+    GIVER       = 3,
+    COORDINATES = 4,
+    NPC         = 5
 }
 enumEnd(QuestType);
 
