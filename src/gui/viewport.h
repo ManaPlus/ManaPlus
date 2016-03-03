@@ -184,6 +184,8 @@ class Viewport final : public WindowContainer,
 
         void updateMidVars();
 
+        void updateMaxVars();
+
         static void validateSpeed();
 
     private:
@@ -233,6 +235,8 @@ class Viewport final : public WindowContainer,
         int mPixelViewY;            /**< Current viewpoint in pixels. */
         int mMidTileX;
         int mMidTileY;
+        int mViewXmax;
+        int mViewYmax;
 
         int mLocalWalkTime; /**< Timestamp before the next walk can be sent. */
 

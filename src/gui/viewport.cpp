@@ -79,6 +79,8 @@ Viewport::Viewport() :
     mPixelViewY(0),
     mMidTileX(0),
     mMidTileY(0),
+    mViewXmax(0),
+    mViewYmax(0),
     mLocalWalkTime(-1),
     mCameraRelativeX(0),
     mCameraRelativeY(0),
@@ -116,6 +118,7 @@ void Viewport::setMap(Map *const map)
     if (mMap && map)
         map->setDrawLayersFlags(mMap->getDrawLayersFlags());
     mMap = map;
+    updateMaxVars();
 }
 
 void Viewport::draw(Graphics *const graphics)
@@ -208,20 +211,14 @@ void Viewport::draw(Graphics *const graphics)
         mPixelViewY = player_y;
     }
 
-    // Don't move camera so that the end of the map is on screen
-    const int viewXmax =
-        mMap->getWidth() * mMap->getTileWidth() - graphics->mWidth;
-    const int viewYmax =
-        mMap->getHeight() * mMap->getTileHeight() - graphics->mHeight;
-
     if (mPixelViewX < 0)
         mPixelViewX = 0;
     if (mPixelViewY < 0)
         mPixelViewY = 0;
-    if (mPixelViewX > viewXmax)
-        mPixelViewX = viewXmax;
-    if (mPixelViewY > viewYmax)
-        mPixelViewY = viewYmax;
+    if (mPixelViewX > mViewXmax)
+        mPixelViewX = mViewXmax;
+    if (mPixelViewY > mViewYmax)
+        mPixelViewY = mViewYmax;
 
     // Draw tiles and sprites
     mMap->draw(graphics, mPixelViewX, mPixelViewY);
@@ -1041,7 +1038,18 @@ void Viewport::updateMidVars()
         - mCameraRelativeY;
 }
 
+void Viewport::updateMaxVars()
+{
+    if (!mMap)
+        return;
+    mViewXmax = mMap->getWidth() * mMap->getTileWidth()
+        - mainGraphics->mWidth;
+    mViewYmax = mMap->getHeight() * mMap->getTileHeight()
+        - mainGraphics->mHeight;
+}
+
 void Viewport::videoResized()
 {
     updateMidVars();
+    updateMaxVars();
 }
