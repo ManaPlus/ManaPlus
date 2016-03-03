@@ -232,6 +232,7 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
         if (!data)
             continue;
         std::string str = translator->getStr(data);
+        replaceItemLinks(str);
 
         if (xmlNameEqual(dataNode, "text"))
             quest->texts.push_back(QuestItemText(str, QuestType::TEXT));
