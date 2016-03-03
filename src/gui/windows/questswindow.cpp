@@ -26,8 +26,6 @@
 
 #include "being/localplayer.h"
 
-#include "enums/resources/questtype.h"
-
 #include "gui/gui.h"
 
 #include "gui/fonts/font.h"

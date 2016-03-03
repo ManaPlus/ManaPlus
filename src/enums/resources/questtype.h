@@ -21,14 +21,14 @@
 #ifndef RESOURCES_QUESTTYPE_H
 #define RESOURCES_QUESTTYPE_H
 
-namespace QuestType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(QuestType)
 {
-    enum Type
-    {
-        TEXT = 0,
-        NAME = 1,
-        REWARD = 2
-    };
+    TEXT   = 0,
+    NAME   = 1,
+    REWARD = 2
 }
+enumEnd(QuestType);
 
 #endif  // RESOURCES_QUESTTYPE_H

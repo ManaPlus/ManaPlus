@@ -21,19 +21,21 @@
 #ifndef RESOURCES_QUESTITEMTEXT_H
 #define RESOURCES_QUESTITEMTEXT_H
 
+#include "enums/resources/questtype.h"
+
 #include <string>
 
 #include "localconsts.h"
 
 struct QuestItemText final
 {
-    QuestItemText(const std::string &text0, const int type0) :
+    QuestItemText(const std::string &text0, const QuestTypeT type0) :
         text(text0), type(type0)
     {
     }
 
     std::string text;
-    int type;
+    QuestTypeT type;
 };
 
 #endif  // RESOURCES_QUESTITEMTEXT_H
