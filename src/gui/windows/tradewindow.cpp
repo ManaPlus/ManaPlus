@@ -51,6 +51,7 @@
 
 #include "resources/item/item.h"
 
+#include "net/serverfeatures.h"
 #include "net/tradehandler.h"
 
 #include "utils/delete2.h"
@@ -523,6 +524,18 @@ bool TradeWindow::checkItem(const Item *const item) const
             // TRANSLATORS: trade error
             localChatTab->chatLog(_("Failed adding item. You can not "
                 "overlap one kind of item on the window."),
+                ChatMsgType::BY_SERVER);
+        }
+        return false;
+    }
+    if (serverFeatures->haveSecureTrades() &&
+        item->isEquipped() == Equipped_true)
+    {
+        if (localChatTab)
+        {
+            localChatTab->chatLog(
+                // TRANSLATORS: trade error
+                _("Failed adding item. You can not trade equipped items."),
                 ChatMsgType::BY_SERVER);
         }
         return false;
