@@ -281,6 +281,8 @@ class Particle notfinal : public Actor
         { mDeathEffect = effectFile; mDeathEffectConditions = conditions; }
 
     protected:
+        void updateSelf() restrict2;
+
         // Opacity of the graphical representation of the particle
         float mAlpha;
 

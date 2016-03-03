@@ -106,15 +106,10 @@ void Particle::draw(Graphics *restrict const,
 {
 }
 
-bool Particle::update() restrict2
+void Particle::updateSelf() restrict2
 {
-    if (!mMap)
-        return false;
-
     if (mLifetimeLeft == 0 && mAlive == AliveStatus::ALIVE)
         mAlive = AliveStatus::DEAD_TIMEOUT;
-
-    const Vector oldPos = mPos;
 
     if (mAlive == AliveStatus::ALIVE)
     {
@@ -235,8 +230,28 @@ bool Particle::update() restrict2
         }
         mAlive = AliveStatus::DEAD_LONG_AGO;
     }
+}
+
+bool Particle::update() restrict2
+{
+    if (!mMap)
+        return false;
+
+    const Vector oldPos = mPos;
+
+    updateSelf();
 
     const Vector change = mPos - oldPos;
+
+    if (mChildParticles.empty())
+    {
+        if (mAlive != AliveStatus::ALIVE &&
+            mAutoDelete)
+        {
+            return false;
+        }
+        return true;
+    }
 
     // Update child particles
 
