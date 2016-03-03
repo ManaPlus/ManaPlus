@@ -122,6 +122,8 @@ class ServerFeatures notfinal
         virtual bool haveSlide() const = 0;
 
         virtual bool haveExtendedDropsPosition() const = 0;
+
+        virtual bool haveSecureTrades() const = 0;
 };
 
 }  // namespace Net

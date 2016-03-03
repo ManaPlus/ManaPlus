@@ -264,4 +264,9 @@ bool ServerFeatures::haveExtendedDropsPosition() const
     return false;
 }
 
+bool ServerFeatures::haveSecureTrades() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

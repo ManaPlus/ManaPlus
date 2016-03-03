@@ -265,4 +265,9 @@ bool ServerFeatures::haveExtendedDropsPosition() const
     return serverVersion >= 12;
 }
 
+bool ServerFeatures::haveSecureTrades() const
+{
+    return true;
+}
+
 }  // namespace EAthena
