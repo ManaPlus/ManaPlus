@@ -55,6 +55,8 @@ MapLayer::MapLayer(const int x,
                    const int tileCondition) :
     mX(x),
     mY(y),
+    mPixelX(mX * mapTileSize),
+    mPixelY(mY * mapTileSize + mapTileSize),
     mWidth(width),
     mHeight(height),
     mTiles(new TileInfo[mWidth * mHeight]),
@@ -125,8 +127,8 @@ void MapLayer::draw(Graphics *const graphics,
     if (endY > mHeight)
         endY = mHeight;
 
-    const int dx = (mX * mapTileSize) - scrollX;
-    const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
+    const int dx = mPixelX - scrollX;
+    const int dy = mPixelY - scrollY;
 
     for (int y = startY; y < endY; y++)
     {
@@ -222,8 +224,8 @@ void MapLayer::updateSDL(const Graphics *const graphics,
     if (endY > mHeight)
         endY = mHeight;
 
-    const int dx = (mX * mapTileSize) - scrollX;
-    const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
+    const int dx = mPixelX - scrollX;
+    const int dy = mPixelY - scrollY;
 
     for (int y = startY; y < endY; y++)
     {
@@ -290,8 +292,8 @@ void MapLayer::updateOGL(Graphics *const graphics,
     if (endY > mHeight)
         endY = mHeight;
 
-    const int dx = (mX * mapTileSize) - scrollX;
-    const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
+    const int dx = mPixelX - scrollX;
+    const int dy = mPixelY - scrollY;
 
     MapRowVertexes *const row = new MapRowVertexes();
     mTempRows.push_back(row);
@@ -412,8 +414,8 @@ void MapLayer::drawFringe(Graphics *const graphics,
     ActorsCIter ai = actors.begin();
     const ActorsCIter ai_end = actors.end();
 
-    const int dx = (mX * mapTileSize) - scrollX;
-    const int dy = (mY * mapTileSize) - scrollY + mapTileSize;
+    const int dx = mPixelX - scrollX;
+    const int dy = mPixelY - scrollY;
 
     const int specialWidth = mSpecialLayer->mWidth;
     const int specialHeight = mSpecialLayer->mHeight;

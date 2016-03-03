@@ -174,6 +174,8 @@ class MapLayer final: public ConfigListener
     private:
         const int mX;
         const int mY;
+        const int mPixelX;
+        const int mPixelY;
         const int mWidth;
         const int mHeight;
         TileInfo *restrict const mTiles;
