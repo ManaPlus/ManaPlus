@@ -235,28 +235,50 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
 
         if (xmlNameEqual(dataNode, "text"))
         {
-            quest->texts.push_back(QuestItemText(str, QuestType::TEXT));
+            quest->texts.push_back(QuestItemText(str,
+                QuestType::TEXT,
+                std::string(),
+                std::string()));
         }
         else if (xmlNameEqual(dataNode, "name"))
         {
-            quest->texts.push_back(QuestItemText(str, QuestType::NAME));
+            quest->texts.push_back(QuestItemText(str,
+                QuestType::NAME,
+                std::string(),
+                std::string()));
         }
         else if (xmlNameEqual(dataNode, "reward"))
         {
-            quest->texts.push_back(QuestItemText(str, QuestType::REWARD));
+            quest->texts.push_back(QuestItemText(str,
+                QuestType::REWARD,
+                std::string(),
+                std::string()));
         }
         else if (xmlNameEqual(dataNode, "questgiver") ||
                  xmlNameEqual(dataNode, "giver"))
         {
-            quest->texts.push_back(QuestItemText(str, QuestType::GIVER));
+            quest->texts.push_back(QuestItemText(str,
+                QuestType::GIVER,
+                std::string(),
+                std::string()));
         }
         else if (xmlNameEqual(dataNode, "coordinates"))
         {
-            quest->texts.push_back(QuestItemText(str, QuestType::COORDINATES));
+            const std::string str1 = toString(XML::getIntProperty(
+                dataNode, "x", 0, 1, 1000));
+            const std::string str2 = toString(XML::getIntProperty(
+                dataNode, "y", 0, 1, 1000));
+            quest->texts.push_back(QuestItemText(str,
+                QuestType::COORDINATES,
+                str1,
+                str2));
         }
         else if (xmlNameEqual(dataNode, "npc"))
         {
-            quest->texts.push_back(QuestItemText(str, QuestType::NPC));
+            quest->texts.push_back(QuestItemText(str,
+                QuestType::NPC,
+                std::string(),
+                std::string()));
         }
     }
     mQuests[var].push_back(quest);
@@ -428,7 +450,6 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
         const QuestItemText &data = *it;
         switch (data.type)
         {
-            case QuestType::COORDINATES:
             case QuestType::TEXT:
             default:
                 mText->addRow(data.text);
@@ -452,10 +473,19 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
                 break;
             case QuestType::NPC:
                 mText->addRow(std::string(
-                    // TRANSLATORS: npc name
+                    // TRANSLATORS: quest npc name
                     _("Npc:")).append(
                     " ").append(
                     data.text));
+                break;
+            case QuestType::COORDINATES:
+                mText->addRow(std::string(
+                    strprintf("%s [@@=navigate %s %s|%s@@]",
+                    // TRANSLATORS: quest coordinates
+                    _("Coordinates:"),
+                    data.data1.c_str(),
+                    data.data2.c_str(),
+                    data.text.c_str())));
                 break;
         }
     }

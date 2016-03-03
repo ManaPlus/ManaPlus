@@ -29,13 +29,21 @@
 
 struct QuestItemText final
 {
-    QuestItemText(const std::string &text0, const QuestTypeT type0) :
-        text(text0), type(type0)
+    QuestItemText(const std::string &text0,
+                  const QuestTypeT type0,
+                  const std::string &str1,
+                  const std::string &str2) :
+        text(text0),
+        type(type0),
+        data1(str1),
+        data2(str2)
     {
     }
 
     std::string text;
     QuestTypeT type;
+    std::string data1;
+    std::string data2;
 };
 
 #endif  // RESOURCES_QUESTITEMTEXT_H
