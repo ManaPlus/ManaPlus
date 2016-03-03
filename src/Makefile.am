@@ -370,7 +370,7 @@ SRC += events/actionevent.h \
 	      resources/questeffect.h \
 	      resources/questitem.h \
 	      resources/questitemtext.h \
-	      resources/questtype.h \
+	      enums/resources/questtype.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
 	      resources/resourcemanager.cpp \

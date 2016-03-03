@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "enums/resources/questtype.h"
+
 #include "gui/gui.h"
 
 #include "gui/fonts/font.h"
@@ -53,7 +55,6 @@
 #include "resources/beingcommon.h"
 #include "resources/questeffect.h"
 #include "resources/questitem.h"
-#include "resources/questtype.h"
 
 #include "resources/map/map.h"
 
