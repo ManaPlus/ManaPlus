@@ -77,6 +77,8 @@ Viewport::Viewport() :
     mMousePressY(0),
     mPixelViewX(0),
     mPixelViewY(0),
+    mMidTileX(0),
+    mMidTileY(0),
     mLocalWalkTime(-1),
     mCameraRelativeX(0),
     mCameraRelativeY(0),
@@ -100,6 +102,7 @@ Viewport::Viewport() :
     config.addListener("longmouseclick", this);
 
     setFocusable(true);
+    updateMidVars();
 }
 
 Viewport::~Viewport()
@@ -134,14 +137,10 @@ void Viewport::draw(Graphics *const graphics)
         lastTick = tick_time;
 
     // Calculate viewpoint
-    const int midTileX = (graphics->mWidth + mScrollCenterOffsetX) / 2;
-    const int midTileY = (graphics->mHeight + mScrollCenterOffsetY) / 2;
 
     const Vector &playerPos = localPlayer->getPosition();
-    const int player_x = CAST_S32(playerPos.x)
-                         - midTileX + mCameraRelativeX;
-    const int player_y = CAST_S32(playerPos.y)
-                         - midTileY + mCameraRelativeY;
+    const int player_x = CAST_S32(playerPos.x) - mMidTileX;
+    const int player_y = CAST_S32(playerPos.y) - mMidTileY;
 
     if (mScrollLaziness < 1)
         mScrollLaziness = 1;  // Avoids division by zero
@@ -950,6 +949,7 @@ void Viewport::toggleCameraMode()
     {
         mCameraRelativeX = 0;
         mCameraRelativeY = 0;
+        updateMidVars();
     }
     UpdateStatusListener::distributeEvent();
 }
@@ -974,6 +974,7 @@ void Viewport::moveCamera(const int dx, const int dy)
 {
     mCameraRelativeX += dx;
     mCameraRelativeY += dy;
+    updateMidVars();
 }
 
 void Viewport::moveCameraToActor(const BeingId actorId,
@@ -990,6 +991,7 @@ void Viewport::moveCameraToActor(const BeingId actorId,
     settings.cameraMode = 1;
     mCameraRelativeX = CAST_S32(actorPos.x - playerPos.x) + x;
     mCameraRelativeY = CAST_S32(actorPos.y - playerPos.y) + y;
+    updateMidVars();
 }
 
 void Viewport::moveCameraToPosition(const int x, const int y)
@@ -1002,6 +1004,7 @@ void Viewport::moveCameraToPosition(const int x, const int y)
 
     mCameraRelativeX = x - CAST_S32(playerPos.x);
     mCameraRelativeY = y - CAST_S32(playerPos.y);
+    updateMidVars();
 }
 
 void Viewport::moveCameraRelative(const int x, const int y)
@@ -1009,6 +1012,7 @@ void Viewport::moveCameraRelative(const int x, const int y)
     settings.cameraMode = 1;
     mCameraRelativeX += x;
     mCameraRelativeY += y;
+    updateMidVars();
 }
 
 void Viewport::returnCamera()
@@ -1016,6 +1020,7 @@ void Viewport::returnCamera()
     settings.cameraMode = 0;
     mCameraRelativeX = 0;
     mCameraRelativeY = 0;
+    updateMidVars();
 }
 
 void Viewport::validateSpeed()
@@ -1026,4 +1031,17 @@ void Viewport::validateSpeed()
         if (Game::instance())
             Game::instance()->setValidSpeed();
     }
+}
+
+void Viewport::updateMidVars()
+{
+    mMidTileX = (mainGraphics->mWidth + mScrollCenterOffsetX) / 2
+        - mCameraRelativeX;
+    mMidTileY = (mainGraphics->mHeight + mScrollCenterOffsetY) / 2
+        - mCameraRelativeY;
+}
+
+void Viewport::videoResized()
+{
+    updateMidVars();
 }

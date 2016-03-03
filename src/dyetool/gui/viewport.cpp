@@ -263,3 +263,7 @@ bool Viewport::leftMouseAction()
 {
     return false;
 }
+
+void Viewport::videoResized()
+{
+}

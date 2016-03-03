@@ -152,6 +152,8 @@ class Viewport final : public WindowContainer,
         void setCameraRelativeY(const int n)
         { mCameraRelativeY = n; }
 
+        void videoResized();
+
         int mMouseX;                /**< Current mouse position in pixels. */
         int mMouseY;                /**< Current mouse position in pixels. */
 

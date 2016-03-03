@@ -526,6 +526,8 @@ void Gui::videoResized() const
         top->adjustAfterResize(oldWidth, oldHeight);
     }
 
+    if (viewport)
+        viewport->videoResized();
     Widget::distributeWindowResizeEvent();
 }
 

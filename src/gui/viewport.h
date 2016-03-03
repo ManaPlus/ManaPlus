@@ -154,10 +154,10 @@ class Viewport final : public WindowContainer,
         { return mCameraRelativeY; }
 
         void setCameraRelativeX(const int n)
-        { mCameraRelativeX = n; }
+        { mCameraRelativeX = n; updateMidVars(); }
 
         void setCameraRelativeY(const int n)
-        { mCameraRelativeY = n; }
+        { mCameraRelativeY = n; updateMidVars(); }
 
         void moveCameraToActor(const BeingId actorId,
                                const int x = 0,
@@ -171,6 +171,8 @@ class Viewport final : public WindowContainer,
 
         void getMouseTile(int &destX, int &destY) const;
 
+        void videoResized();
+
         int mMouseX;                /**< Current mouse position in pixels. */
         int mMouseY;                /**< Current mouse position in pixels. */
 
@@ -179,6 +181,8 @@ class Viewport final : public WindowContainer,
 
         /// Clears any matching hovers
         void clearHover(const ActorSprite *const actor);
+
+        void updateMidVars();
 
         static void validateSpeed();
 
@@ -227,6 +231,8 @@ class Viewport final : public WindowContainer,
         int mMousePressY;
         int mPixelViewX;            /**< Current viewpoint in pixels. */
         int mPixelViewY;            /**< Current viewpoint in pixels. */
+        int mMidTileX;
+        int mMidTileY;
 
         int mLocalWalkTime; /**< Timestamp before the next walk can be sent. */
 
