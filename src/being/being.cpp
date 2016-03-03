@@ -1714,7 +1714,15 @@ void Being::nextTile() restrict2
     }
 
     if (mX != pos.x || mY != pos.y)
+    {
         mOldHeight = mMap->getHeightOffset(mX, mY);
+        if (mMap &&
+            mReachable == Reachable::REACH_NO &&
+            mMap->getBlockMask(mX, mY) != mMap->getBlockMask(pos.x, pos.y))
+        {
+            mReachable = Reachable::REACH_UNKNOWN;
+        }
+    }
     mX = pos.x;
     mY = pos.y;
     const uint8_t height = mMap->getHeightOffset(mX, mY);
