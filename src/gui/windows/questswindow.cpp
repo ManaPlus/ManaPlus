@@ -412,11 +412,10 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
             case QuestType::TEXT:
             case QuestType::REWARD:
             default:
-                mText->addRow(translator->getStr(data.text));
+                mText->addRow(data.text);
                 break;
             case QuestType::NAME:
-                mText->addRow(std::string("[").append(translator->getStr(
-                    data.text)).append("]"));
+                mText->addRow(std::string("[").append(data.text).append("]"));
                 break;
         }
     }
