@@ -278,10 +278,11 @@ void LocalPlayer::logic()
             {
                 particleEngine->addTextRiseFadeOutEffect(
                     info.first,
-                    getPixelX(),
-                    getPixelY() - 48,
+                    CAST_S32(mPos.x),
+                    CAST_S32(mPos.y) - 48,
                     &userPalette->getColor(info.second),
-                    gui->getInfoParticleFont(), true);
+                    gui->getInfoParticleFont(),
+                    true);
             }
 
             mMessages.pop_front();

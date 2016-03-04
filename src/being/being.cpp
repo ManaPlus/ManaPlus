@@ -630,8 +630,8 @@ void Being::setSpeech(const std::string &restrict text,
     {
         delete mText;
         mText = new Text(mSpeech,
-            getPixelX(),
-            getPixelY() - getHeight(),
+            CAST_S32(mPos.x),
+            CAST_S32(mPos.y) - getHeight(),
             Graphics::CENTER,
             &userPalette->getColor(UserColorId::PARTICLE),
             Speech_true);
@@ -755,7 +755,11 @@ void Being::takeDamage(Being *restrict const attacker,
     {
         // Show damage number
         particleEngine->addTextSplashEffect(damage,
-            getPixelX(), getPixelY() - 16, color, font, true);
+            CAST_S32(mPos.x),
+            CAST_S32(mPos.y) - 16,
+            color,
+            font,
+            true);
     }
     BLOCK_END("Being::takeDamage1")
     BLOCK_START("Being::takeDamage2")
@@ -1291,7 +1295,9 @@ void Being::fireMissile(Being *restrict const victim,
     }
 
     Particle *restrict const missile = target->addEffect(
-        particle, getPixelX(), getPixelY());
+        particle,
+        CAST_S32(mPos.x),
+        CAST_S32(mPos.y));
 
     if (missile)
     {
@@ -2065,8 +2071,8 @@ void Being::drawEmotion(Graphics *restrict const graphics,
                         const int offsetX,
                         const int offsetY) const restrict2
 {
-    const int px = getPixelX() - offsetX - mapTileSize / 2;
-    const int py = getPixelY() - offsetY - mapTileSize * 2 - mapTileSize;
+    const int px = CAST_S32(mPos.x) - offsetX - mapTileSize / 2;
+    const int py = CAST_S32(mPos.y) - offsetY - mapTileSize * 2 - mapTileSize;
     if (mAnimationEffect)
         mAnimationEffect->draw(graphics, px, py);
     if (mShowBadges && mBadgesCount)
@@ -2109,8 +2115,8 @@ void Being::drawSpeech(const int offsetX,
     if (mSpeech.empty())
         return;
 
-    const int px = getPixelX() - offsetX;
-    const int py = getPixelY() - offsetY;
+    const int px = CAST_S32(mPos.x) - offsetX;
+    const int py = CAST_S32(mPos.y) - offsetY;
     const int speech = mSpeechType;
 
     // Draw speech above this being
@@ -2141,8 +2147,8 @@ void Being::drawSpeech(const int offsetX,
         if (!mText && userPalette)
         {
             mText = new Text(mSpeech,
-                getPixelX(),
-                getPixelY() - getHeight(),
+                CAST_S32(mPos.x),
+                CAST_S32(mPos.y) - getHeight(),
                 Graphics::CENTER,
                 &theme->getColor(ThemeColorId::BUBBLE_TEXT, 255),
                 Speech_true);
@@ -2198,8 +2204,8 @@ void Being::updateCoords() restrict2
     if (!mDispName)
         return;
 
-    int offsetX = getPixelX();
-    int offsetY = getPixelY();
+    int offsetX = CAST_S32(mPos.x);
+    int offsetY = CAST_S32(mPos.y);
     if (mInfo)
     {
         offsetX += mInfo->getNameOffsetX();
@@ -2303,14 +2309,20 @@ void Being::showName() restrict2
     if (mInfo)
     {
         mDispName = new FlashText(displayName,
-            getPixelX() + mInfo->getNameOffsetX(),
-            getPixelY() + mInfo->getNameOffsetY(),
-            Graphics::CENTER, mNameColor, font);
+            CAST_S32(mPos.x) + mInfo->getNameOffsetX(),
+            CAST_S32(mPos.y) + mInfo->getNameOffsetY(),
+            Graphics::CENTER,
+            mNameColor,
+            font);
     }
     else
     {
-        mDispName = new FlashText(displayName, getPixelX(), getPixelY(),
-            Graphics::CENTER, mNameColor, font);
+        mDispName = new FlashText(displayName,
+            CAST_S32(mPos.x),
+            CAST_S32(mPos.y),
+            Graphics::CENTER,
+            mNameColor,
+            font);
     }
 
     updateCoords();
@@ -2854,8 +2866,10 @@ void Being::draw(Graphics *restrict const graphics,
 {
     if (!mErased)
     {
-        const int px = getActorX() + offsetX;
-        const int py = getActorY() + offsetY;
+        // getActorX() + offsetX;
+        const int px = CAST_S32(mPos.x) - mapTileSize / 2 + offsetX;
+        // getActorY() + offsetY;
+        const int py = CAST_S32(mPos.y) - mapTileSize + offsetY;
 #ifdef EATHENA_SUPPORT
         if (mHorseInfo)
         {
