@@ -1149,7 +1149,7 @@ void NpcDialog::showAvatar(const BeingTypeId avatarId)
             avatarId,
             nullptr);
         mPlayerBox->setPlayer(mAvatarBeing);
-        if (!mAvatarBeing->empty())
+        if (!mAvatarBeing->mSprites.empty())
         {
             mAvatarBeing->logic();
             const BeingInfo *const info = AvatarDB::get(avatarId);

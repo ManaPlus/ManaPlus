@@ -75,9 +75,6 @@ class CompoundSprite notfinal : public Sprite
 
         unsigned int getFrameCount() const override final A_WARN_UNUSED;
 
-        bool empty() const A_WARN_UNUSED
-        { return mSprites.empty(); }
-
         void addSprite(Sprite *const sprite);
 
         void setSprite(const size_t layer, Sprite *const sprite);
