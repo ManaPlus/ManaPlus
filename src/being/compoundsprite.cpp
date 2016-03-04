@@ -60,6 +60,8 @@ static const unsigned cache_clean_part = 3;
 bool CompoundSprite::mEnableDelay = true;
 
 CompoundSprite::CompoundSprite() :
+    Sprite(),
+    mSprites(),
     imagesCache(),
     mCacheItem(nullptr),
     mImage(nullptr),
@@ -68,7 +70,6 @@ CompoundSprite::CompoundSprite() :
     mOffsetY(0),
     mStartTime(0),
     mLastTime(0),
-    mSprites(),
 #ifndef USE_SDL2
     mNextRedrawTime(0),
 #endif
@@ -317,7 +318,7 @@ unsigned int CompoundSprite::getCurrentFrame(unsigned int layer) const
     if (layer >= CAST_U32(mSprites.size()))
         return 0;
 
-    const Sprite *const s = getSprite(layer);
+    const Sprite *const s = mSprites[layer];
     if (s)
         return s->getCurrentFrame();
 
@@ -332,7 +333,7 @@ unsigned int CompoundSprite::getFrameCount(unsigned int layer)
     if (layer >= CAST_U32(mSprites.size()))
         return 0;
 
-    const Sprite *const s = getSprite(layer);
+    const Sprite *const s = mSprites[layer];
     if (s)
         return s->getFrameCount();
 

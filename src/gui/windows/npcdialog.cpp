@@ -1161,7 +1161,7 @@ void NpcDialog::showAvatar(const BeingTypeId avatarId)
                 mPlayerBox->setWidth(width + pad2);
                 mPlayerBox->setHeight(info->getHeight() + pad2);
             }
-            const Sprite *const sprite = mAvatarBeing->getSprite(0);
+            const Sprite *const sprite = mAvatarBeing->mSprites[0];
             if (sprite && !width)
             {
                 mPlayerBox->setWidth(sprite->getWidth() + pad2);
@@ -1208,7 +1208,7 @@ void NpcDialog::logic()
         mAvatarBeing->logic();
         if (mPlayerBox->getWidth() < CAST_S32(3 * getPadding()))
         {
-            const Sprite *const sprite = mAvatarBeing->getSprite(0);
+            const Sprite *const sprite = mAvatarBeing->mSprites[0];
             if (sprite)
             {
                 mPlayerBox->setWidth(sprite->getWidth() + 2 * getPadding());

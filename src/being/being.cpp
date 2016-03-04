@@ -2899,7 +2899,7 @@ void Being::drawSprites(Graphics *restrict const graphics,
         if (rSprite == 1)
             continue;
 
-        Sprite *restrict const sprite = getSprite(mSpriteRemap[f]);
+        Sprite *restrict const sprite = mSprites[mSpriteRemap[f]];
         if (sprite)
         {
             sprite->setAlpha(mAlpha);
@@ -2919,7 +2919,7 @@ void Being::drawSpritesSDL(Graphics *restrict const graphics,
         if (rSprite == 1)
             continue;
 
-        const Sprite *restrict const sprite = getSprite(mSpriteRemap[f]);
+        const Sprite *restrict const sprite = mSprites[mSpriteRemap[f]];
         if (sprite)
             sprite->draw(graphics, posX, posY);
     }

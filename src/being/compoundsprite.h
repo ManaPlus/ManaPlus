@@ -85,9 +85,6 @@ class CompoundSprite notfinal : public Sprite
 
         void setSprite(const size_t layer, Sprite *const sprite);
 
-        Sprite *getSprite(const size_t layer) const A_WARN_UNUSED
-        { return mSprites.at(layer); }
-
         void removeSprite(const int layer);
 
         void clear();
@@ -127,6 +124,8 @@ class CompoundSprite notfinal : public Sprite
         int getStartTime() const A_WARN_UNUSED
         { return mStartTime; }
 
+        std::vector<Sprite*> mSprites;
+
     private:
         void redraw() const;
 
@@ -147,7 +146,6 @@ class CompoundSprite notfinal : public Sprite
         mutable int mOffsetY;
         int mStartTime;
         int mLastTime;
-        std::vector<Sprite*> mSprites;
 #ifndef USE_SDL2
         mutable int mNextRedrawTime;
 #endif

@@ -2329,7 +2329,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
 
         const AnimatedSprite *const equipmentSprite
             = dynamic_cast<const AnimatedSprite *const>(
-            player->getSprite(sprite));
+            player->mSprites[sprite]);
 
         if (equipmentSprite)
         {
