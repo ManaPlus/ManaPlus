@@ -76,8 +76,7 @@ class Actor notfinal
         /**
          * Sets the pixel position of this actor.
          */
-        virtual void setPixelPositionF(const Vector &restrict pos) restrict2
-        { mPos = pos; }
+        virtual void setPixelPositionF(const Vector &restrict pos) restrict2;
 
         /**
          * Returns the pixels X coordinate of the actor.
@@ -127,6 +126,9 @@ class Actor notfinal
 
         const Map* getMap() const A_WARN_UNUSED
         { return mMap; }
+
+        int mPixelX;
+        int mPixelY;
 
     protected:
         Actor();

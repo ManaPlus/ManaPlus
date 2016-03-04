@@ -26,6 +26,8 @@
 #include "debug.h"
 
 Actor::Actor() :
+    mPixelX(0),
+    mPixelY(0),
     mMap(nullptr),
     mPos(),
     mYDiff(0),
@@ -69,4 +71,11 @@ int Actor::getTileY() const
         return 0;
 
     return getPixelY() / mMap->getTileHeight();
+}
+
+void Actor::setPixelPositionF(const Vector &restrict pos) restrict2
+{
+    mPos = pos;
+    mPixelX = CAST_S32(mPos.x);
+    mPixelY = CAST_S32(mPos.y);
 }
