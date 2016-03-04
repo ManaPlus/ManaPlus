@@ -141,7 +141,7 @@ void Viewport::draw(Graphics *const graphics)
 
     // Calculate viewpoint
 
-    const Vector &playerPos = localPlayer->getPosition();
+    const Vector &playerPos = localPlayer->getPixelPositionF();
     const int player_x = CAST_S32(playerPos.x) - mMidTileX;
     const int player_y = CAST_S32(playerPos.y) - mMidTileY;
 
@@ -314,7 +314,7 @@ void Viewport::drawDebugPath(Graphics *const graphics)
     if (mouseDestination.x != lastMouseDestination.x
         || mouseDestination.y != lastMouseDestination.y)
     {
-        const Vector &playerPos = localPlayer->getPosition();
+        const Vector &playerPos = localPlayer->getPixelPositionF();
 
         debugPath = mMap->findPath(
             CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
@@ -983,8 +983,8 @@ void Viewport::moveCameraToActor(const BeingId actorId,
     const Actor *const actor = actorManager->findBeing(actorId);
     if (!actor)
         return;
-    const Vector &actorPos = actor->getPosition();
-    const Vector &playerPos = localPlayer->getPosition();
+    const Vector &actorPos = actor->getPixelPositionF();
+    const Vector &playerPos = localPlayer->getPixelPositionF();
     settings.cameraMode = 1;
     mCameraRelativeX = CAST_S32(actorPos.x - playerPos.x) + x;
     mCameraRelativeY = CAST_S32(actorPos.y - playerPos.y) + y;
@@ -996,7 +996,7 @@ void Viewport::moveCameraToPosition(const int x, const int y)
     if (!localPlayer)
         return;
 
-    const Vector &playerPos = localPlayer->getPosition();
+    const Vector &playerPos = localPlayer->getPixelPositionF();
     settings.cameraMode = 1;
 
     mCameraRelativeX = x - CAST_S32(playerPos.x);

@@ -86,7 +86,7 @@ class FindBeingFunctor final
 
             const unsigned other_y = y
                 + ((b->getType() == ActorType::Npc) ? 1 : 0);
-            const Vector &pos = b->getPosition();
+            const Vector &pos = b->getPixelPositionF();
             return (CAST_U32(pos.x) / mapTileSize == x &&
                 (CAST_U32(pos.y) / mapTileSize == y
                 || CAST_U32(pos.y) / mapTileSize == other_y) &&

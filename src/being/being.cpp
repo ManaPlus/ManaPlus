@@ -510,9 +510,9 @@ TargetCursorSizeT Being::getTargetCursorSize() const restrict2
     return mInfo->getTargetCursorSize();
 }
 
-void Being::setPosition(const Vector &restrict pos) restrict2
+void Being::setPixelPositionF(const Vector &restrict pos) restrict2
 {
-    Actor::setPosition(pos);
+    Actor::setPixelPositionF(pos);
 
     updateCoords();
 
@@ -1843,7 +1843,7 @@ void Being::logic() restrict2
             - (mOldHeight + mOffsetY) * halfTile + offset2;
 
         // Update pixel coordinates
-        setPosition(static_cast<float>(mX * mapTileSize
+        setPixelPositionF(static_cast<float>(mX * mapTileSize
             + mapTileSize / 2 + xOffset), yOffset3);
     }
 

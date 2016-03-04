@@ -70,13 +70,13 @@ class Actor notfinal
         /**
          * Returns the pixel position of this actor.
          */
-        const Vector &getPosition() const A_WARN_UNUSED
+        const Vector &getPixelPositionF() const A_WARN_UNUSED
         { return mPos; }
 
         /**
          * Sets the pixel position of this actor.
          */
-        virtual void setPosition(const Vector &restrict pos) restrict2
+        virtual void setPixelPositionF(const Vector &restrict pos) restrict2
         { mPos = pos; }
 
         /**

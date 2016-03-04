@@ -481,17 +481,17 @@ class Being notfinal : public ActorSprite,
                                                  A_WARN_UNUSED
         { return mSpriteDirection; }
 
-        void setPosition(const Vector &restrict pos) restrict2 override;
+        void setPixelPositionF(const Vector &restrict pos) restrict2 override;
 
         /**
          * Overloaded method provided for convenience.
          *
          * @see setPosition(const Vector &pos)
          */
-        inline void setPosition(const float x,
-                                const float y,
-                                const float z = 0.0F) restrict2 A_INLINE
-        { setPosition(Vector(x, y, z)); }
+        inline void setPixelPositionF(const float x,
+                                      const float y,
+                                      const float z = 0.0F) restrict2 A_INLINE
+        { setPixelPositionF(Vector(x, y, z)); }
 
         /**
          * Returns the horizontal size of the current base sprite of the being.

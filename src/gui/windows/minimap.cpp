@@ -281,7 +281,7 @@ void Minimap::draw2(Graphics *const graphics)
         const int h = rect.h;
         if (w > a.width || h > a.height)
         {
-            const Vector &p = localPlayer->getPosition();
+            const Vector &p = localPlayer->getPixelPositionF();
             mMapOriginX = (a.width / 2) - (p.x + static_cast<float>(
                 viewport->getCameraRelativeX()) * mWidthProportion) / 32;
 
@@ -382,7 +382,7 @@ void Minimap::draw2(Graphics *const graphics)
                 dotSize - 1) * mHeightProportion);
         const int offsetWidth = CAST_S32(static_cast<float>(
                 dotSize - 1) * mWidthProportion);
-        const Vector &pos = being->getPosition();
+        const Vector &pos = being->getPixelPositionF();
 
         graphics->fillRectangle(Rect(
             static_cast<float>(pos.x * mWidthProportion) / 32
@@ -435,7 +435,7 @@ void Minimap::draw2(Graphics *const graphics)
         }
     }
 
-    const Vector &pos = localPlayer->getPosition();
+    const Vector &pos = localPlayer->getPixelPositionF();
 
     const int gw = graphics->getWidth();
     const int gh = graphics->getHeight();

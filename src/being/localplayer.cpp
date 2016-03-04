@@ -497,7 +497,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
     }
     else if (pickUpType >= 4 && pickUpType <= 6)
     {
-        const Vector &playerPos = getPosition();
+        const Vector &playerPos = getPixelPositionF();
         const Path debugPath = mMap->findPath(
             CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
             CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
@@ -685,13 +685,14 @@ void LocalPlayer::stopWalking(const bool sendToServer)
         mWalkingDir = 0;
         mPickUpTarget = nullptr;
 
-        setDestination(CAST_S32(getPosition().x),
-                       CAST_S32(getPosition().y));
+        const Vector &pos = getPixelPositionF();
+        setDestination(CAST_S32(pos.x),
+            CAST_S32(pos.y));
         if (sendToServer)
         {
             playerHandler->setDestination(
-                    CAST_S32(getPosition().x),
-                    CAST_S32(getPosition().y), -1);
+                CAST_S32(pos.x),
+                CAST_S32(pos.y), -1);
         }
         setAction(BeingAction::STAND);
     }
@@ -1202,7 +1203,7 @@ void LocalPlayer::moveToTarget(int dist)
     bool gotPos(false);
     Path debugPath;
 
-    const Vector &playerPos = getPosition();
+    const Vector &playerPos = getPixelPositionF();
     unsigned int limit(0);
 
     if (dist == -1)
@@ -1421,7 +1422,7 @@ bool LocalPlayer::isReachable(Being *const being,
         return true;
     }
 
-    const Vector &playerPos = getPosition();
+    const Vector &playerPos = getPixelPositionF();
 
     const Path debugPath = mMap->findPath(
         CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
@@ -1966,7 +1967,7 @@ bool LocalPlayer::navigateTo(const int x, const int y)
     if (!tmpLayer)
         return false;
 
-    const Vector &playerPos = getPosition();
+    const Vector &playerPos = getPixelPositionF();
     mShowNavigePath = true;
     mOldX = CAST_S32(playerPos.x);
     mOldY = CAST_S32(playerPos.y);
@@ -2030,7 +2031,7 @@ void LocalPlayer::updateCoords()
 {
     Being::updateCoords();
 
-    const Vector &playerPos = getPosition();
+    const Vector &playerPos = getPixelPositionF();
     // probably map not loaded.
     if (!playerPos.x || !playerPos.y)
         return;
@@ -2128,7 +2129,7 @@ int LocalPlayer::getPathLength(const Being *const being) const
     if (!mMap || !being)
         return 0;
 
-    const Vector &playerPos = getPosition();
+    const Vector &playerPos = getPixelPositionF();
 
     if (being->mX == mX && being->mY == mY)
         return 0;
@@ -2525,7 +2526,7 @@ void LocalPlayer::fixAttackTarget()
         return;
     }
 
-    const Vector &playerPos = getPosition();
+    const Vector &playerPos = getPixelPositionF();
     const Path debugPath = mMap->findPath(
         CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
         CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
