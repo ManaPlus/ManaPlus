@@ -121,12 +121,6 @@ class Image notfinal : public Resource
         virtual void setAlpha(const float alpha);
 
         /**
-         * Returns the alpha value of this image.
-         */
-        float getAlpha() const A_WARN_UNUSED
-        { return mAlpha; }
-
-        /**
          * Creates a new image with the desired clipping rectangle.
          *
          * @return <code>NULL</code> if creation failed and a valid
@@ -197,13 +191,9 @@ class Image notfinal : public Resource
 
         SDL_Rect mBounds;
 
-    protected:
-        // -----------------------
-        // Generic protected members
-        // -----------------------
-
         float mAlpha;
 
+    protected:
         // -----------------------
         // SDL protected members
         // -----------------------

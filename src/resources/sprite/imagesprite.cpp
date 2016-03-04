@@ -30,7 +30,7 @@ ImageSprite::ImageSprite(Image *const image) :
 {
     if (mImage)
     {
-        mAlpha = mImage->getAlpha();
+        mAlpha = mImage->mAlpha;
         mImage->incRef();
     }
     else

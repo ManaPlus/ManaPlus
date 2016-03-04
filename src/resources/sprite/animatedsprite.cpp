@@ -323,9 +323,7 @@ void AnimatedSprite::draw(Graphics *restrict const graphics,
         return;
 
     Image *restrict const image = mFrame->image;
-    if (image->getAlpha() != mAlpha)
-        image->setAlpha(mAlpha);
-
+    image->setAlpha(mAlpha);
     graphics->drawImage(image,
         posX + mFrame->offsetX, posY + mFrame->offsetY);
 }
@@ -338,9 +336,7 @@ void AnimatedSprite::drawRaw(Graphics *restrict const graphics,
         return;
 
     Image *restrict const image = mFrame->image;
-    if (image->getAlpha() != mAlpha)
-        image->setAlpha(mAlpha);
-
+    image->setAlpha(mAlpha);
     graphics->drawImage(image,
         posX,
         posY);
@@ -416,7 +412,7 @@ void AnimatedSprite::setAlpha(float alpha) restrict2
     if (mFrame)
     {
         Image *restrict const image = mFrame->image;
-        if (image && image->getAlpha() != mAlpha)
+        if (image)
             image->setAlpha(mAlpha);
     }
 }
