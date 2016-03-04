@@ -1982,7 +1982,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
         srcBeing->getTileY() + dy);
     dstBeing->setName(srcBeing->getName());
     dstBeing->setDirection(srcBeing->getDirection());
-    const int sz = CAST_S32(srcBeing->getSpritesCount());
+    const int sz = CAST_S32(srcBeing->mSprites.size());
     for (int slot = 0; slot < sz; slot ++)
     {
         const int spriteId = srcBeing->getSpriteID(slot);
