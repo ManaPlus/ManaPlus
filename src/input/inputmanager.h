@@ -160,6 +160,8 @@ class InputManager final
 
         static bool isActionActive0(const InputActionT index) A_WARN_UNUSED;
 
+        void updateKeyString(InputFunction &ki) const restrict2;
+
         /** Reference to setup window */
         Setup_Input *mSetupInput A_NONNULLPOINTER;
         /** Index of new key to be assigned */

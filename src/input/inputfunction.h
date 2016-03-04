@@ -23,12 +23,15 @@
 
 #include "input/inputitem.h"
 
+#include <string>
+
 #include "localconsts.h"
 
-const unsigned int inputFunctionSize = 3;
+const size_t inputFunctionSize = 3U;
 
 struct InputFunction final
 {
+    std::string keyStr;
     InputItem values[inputFunctionSize];
 };
 

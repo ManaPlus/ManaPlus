@@ -90,6 +90,7 @@ void InputManager::init() restrict2
          i ++)
     {
         InputFunction &kf = mKey[i];
+        kf.keyStr.clear();
         for (unsigned int f = 0; f < inputFunctionSize; f ++)
         {
             InputItem &ki = kf.values[f];
@@ -130,14 +131,17 @@ void InputManager::retrieve() restrict2
 #else
         const std::string cf = inputActionData[i].configField;
 #endif
+        InputFunction &restrict kf = mKey[i];
         if (!cf.empty())
         {
             mNameMap[cf] = static_cast<InputActionT>(i);
-            InputFunction &restrict kf = mKey[i];
             const std::string keyStr = config.getValue(cf, "");
             const size_t keyStrSize = keyStr.size();
             if (keyStr.empty())
+            {
+                updateKeyString(kf);
                 continue;
+            }
 
             StringVect keys;
             splitToStringVector(keys, keyStr, ',');
@@ -173,6 +177,7 @@ void InputManager::retrieve() restrict2
                 }
             }
         }
+        updateKeyString(kf);
     }
 }
 
@@ -264,6 +269,7 @@ void InputManager::resetKey(const InputActionT i) restrict2
     val0.value = kd.defaultValue1;
     val1.value = kd.defaultValue2;
 #endif
+    updateKeyString(key);
 }
 
 void InputManager::resetKeys() restrict2
@@ -411,12 +417,9 @@ std::string InputManager::getKeyStringLong(const InputActionT index) const
     return keyStr;
 }
 
-std::string InputManager::getKeyValueString(const InputActionT index) const
-                                            restrict2
+void InputManager::updateKeyString(InputFunction &ki) const restrict2
 {
     std::string keyStr;
-    const InputFunction &restrict ki = mKey[CAST_SIZE(index)];
-
     for (size_t i = 0; i < inputFunctionSize; i ++)
     {
         const InputItem &restrict key = ki.values[i];
@@ -451,9 +454,18 @@ std::string InputManager::getKeyValueString(const InputActionT index) const
     if (keyStr.empty())
     {
         // TRANSLATORS: unknown short key type. must be short
-        return _("u key");
+        ki.keyStr = _("u key");
     }
-    return keyStr;
+    else
+    {
+        ki.keyStr = keyStr;
+    }
+}
+
+std::string InputManager::getKeyValueString(const InputActionT index) const
+                                            restrict2
+{
+    return mKey[CAST_SIZE(index)].keyStr;
 }
 
 std::string InputManager::getKeyValueByName(const std::string &restrict
@@ -508,6 +520,7 @@ void InputManager::addActionKey(const InputActionT action,
     }
 
     key.values[idx] = InputItem(type, val);
+    updateKeyString(key);
 }
 
 void InputManager::setNewKey(const SDL_Event &event,
@@ -535,6 +548,7 @@ void InputManager::unassignKey() restrict2
         val.type = InputType::UNKNOWN;
         val.value = -1;
     }
+    updateKeyString(key);
     update();
 }
 
