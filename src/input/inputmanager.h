@@ -160,7 +160,8 @@ class InputManager final
 
         static bool isActionActive0(const InputActionT index) A_WARN_UNUSED;
 
-        void updateKeyString(InputFunction &ki) const restrict2;
+        void updateKeyString(const InputFunction &ki,
+                             const size_t actionIdx) restrict2;
 
         /** Reference to setup window */
         Setup_Input *mSetupInput A_NONNULLPOINTER;
@@ -173,6 +174,7 @@ class InputManager final
         StringIntMap mChatMap;
 
         InputFunction mKey[CAST_SIZE(InputAction::TOTAL)];
+        std::string mKeyStr[CAST_SIZE(InputAction::TOTAL)];
 };
 
 extern InputManager inputManager;

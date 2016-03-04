@@ -31,7 +31,6 @@ const size_t inputFunctionSize = 3U;
 
 struct InputFunction final
 {
-    std::string keyStr;
     InputItem values[inputFunctionSize];
 };
 
