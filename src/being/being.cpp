@@ -2467,7 +2467,7 @@ void Being::setSprite(const unsigned int slot,
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
 
-    if (slot >= CAST_U32(size()))
+    if (slot >= CAST_U32(mSprites.size()))
         ensureSize(slot + 1);
 
     if (slot >= CAST_U32(mSpriteIDs.size()))
@@ -2912,8 +2912,8 @@ void Being::drawSpritesSDL(Graphics *restrict const graphics,
                            const int posX,
                            const int posY) const restrict2
 {
-    const unsigned int sz = CAST_U32(size());
-    for (unsigned int f = 0; f < sz; f ++)
+    const size_t sz = mSprites.size();
+    for (size_t f = 0; f < sz; f ++)
     {
         const int rSprite = mSpriteHide[mSpriteRemap[f]];
         if (rSprite == 1)
@@ -3115,7 +3115,7 @@ void Being::recalcSpritesOrder() restrict2
         return;
 
 //    logger->log("recalcSpritesOrder");
-    const size_t sz = size();
+    const size_t sz = mSprites.size();
     if (sz < 1)
         return;
 
@@ -3411,7 +3411,7 @@ void Being::recalcSpritesOrder() restrict2
 int Being::searchSlotValue(const std::vector<int> &restrict slotRemap,
                            const int val) const restrict2
 {
-    const size_t sz = size();
+    const size_t sz = mSprites.size();
     for (size_t slot = 0; slot < sz; slot ++)
     {
         if (slotRemap[slot] == val)

@@ -235,7 +235,7 @@ int CompoundSprite::getNumberOfLayers() const
     if (mImage || mAlphaImage)
         return 1;
     else
-        return CAST_S32(size());
+        return CAST_S32(mSprites.size());
 }
 
 unsigned int CompoundSprite::getCurrentFrame() const
@@ -423,12 +423,11 @@ void CompoundSprite::setAlpha(float alpha)
 {
     if (alpha != mAlpha)
     {
+        if (mEnableAlphaFix &&
 #ifdef USE_OPENGL
-        if (mEnableAlphaFix && imageHelper->useOpenGL() == RENDER_SOFTWARE
-            && size() > 3)
-#else
-        if (mEnableAlphaFix && size() > 3)
+            imageHelper->useOpenGL() == RENDER_SOFTWARE &&
 #endif
+            mSprites.size() > 3U)
         {
             FOR_EACH (SpriteConstIterator, it, mSprites)
             {
@@ -458,7 +457,7 @@ void CompoundSprite::updateImages() const
 
     if (!mDisableBeingCaching)
     {
-        if (size() <= 3)
+        if (mSprites.size() <= 3U)
             return;
 
         if (!mDisableAdvBeingCaching)
@@ -503,7 +502,7 @@ bool CompoundSprite::updateFromCache() const
 //    logger->log("cache size: %d, hit %d, miss %d",
 //        (int)imagesCache.size(), hits, miss);
 
-    const size_t sz = size();
+    const size_t sz = mSprites.size();
     FOR_EACH (ImagesCache::iterator, it, imagesCache)
     {
         CompoundItem *const ic = *it;

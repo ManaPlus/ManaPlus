@@ -303,8 +303,8 @@ class Being notfinal : public ActorSprite,
         Party *getParty() const restrict2 noexcept A_WARN_UNUSED
         { return mParty; }
 
-        int getSpritesCount() const restrict2 A_WARN_UNUSED
-        { return CAST_S32(size()); }
+        size_t getSpritesCount() const restrict2 A_WARN_UNUSED
+        { return mSprites.size(); }
 
         /**
          * Sets visible equipments for this being.

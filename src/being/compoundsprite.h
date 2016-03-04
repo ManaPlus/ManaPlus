@@ -75,9 +75,6 @@ class CompoundSprite notfinal : public Sprite
 
         unsigned int getFrameCount() const override final A_WARN_UNUSED;
 
-        size_t size() const A_WARN_UNUSED
-        { return mSprites.size(); }
-
         bool empty() const A_WARN_UNUSED
         { return mSprites.empty(); }
 
