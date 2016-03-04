@@ -267,10 +267,10 @@ void CompoundSprite::addSprite(Sprite *const sprite)
 void CompoundSprite::setSprite(const size_t layer, Sprite *const sprite)
 {
     // Skip if it won't change anything
-    if (mSprites.at(layer) == sprite)
+    if (mSprites[layer] == sprite)
         return;
 
-    delete mSprites.at(layer);
+    delete mSprites[layer];
     mSprites[layer] = sprite;
     mNeedsRedraw = true;
 }
@@ -278,10 +278,10 @@ void CompoundSprite::setSprite(const size_t layer, Sprite *const sprite)
 void CompoundSprite::removeSprite(const int layer)
 {
     // Skip if it won't change anything
-    if (!mSprites.at(layer))
+    if (!mSprites[layer])
         return;
 
-    delete2(mSprites.at(layer));
+    delete2(mSprites[layer]);
     mNeedsRedraw = true;
 }
 
