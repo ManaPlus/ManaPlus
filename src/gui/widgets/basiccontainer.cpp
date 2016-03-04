@@ -305,7 +305,7 @@ void BasicContainer::drawChildren(Graphics *const restrict graphics) restrict2
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
         Widget *restrict const widget = *iter;
-        if (widget->isVisibleLocal())
+        if (widget->mVisible == Visible_true)
         {
             // If the widget has a frame,
             // draw it before drawing the widget
@@ -346,7 +346,7 @@ void BasicContainer::safeDrawChildren(Graphics *const restrict graphics)
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {
         Widget *restrict const widget = *iter;
-        if (widget->isVisibleLocal())
+        if (widget->mVisible == Visible_true)
         {
             // If the widget has a frame,
             // draw it before drawing the widget

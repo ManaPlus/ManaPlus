@@ -1953,7 +1953,7 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
         if (!btn || btn->getActionEventId() == "SET")
             continue;
 
-        if (btn->isVisibleLocal())
+        if (btn->mVisible == Visible_true)
         {
             mBrowserBox->addRow(strprintf("@@hide button_%s|%s %s (%s)@@",
                 // TRANSLATORS: popup menu item
@@ -1999,7 +1999,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
         if (!bar)
             continue;
 
-        if (bar->isVisibleLocal())
+        if (bar->mVisible == Visible_true)
         {
             cnt ++;
             onlyBar = bar;
@@ -2015,7 +2015,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
         if (!bar || bar == onlyBar)
             continue;
 
-        if (bar->isVisibleLocal())
+        if (bar->mVisible == Visible_true)
         {
             mBrowserBox->addRow(strprintf("@@hide bar_%s|%s %s@@",
                 // TRANSLATORS: popup menu item

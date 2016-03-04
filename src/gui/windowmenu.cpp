@@ -218,7 +218,7 @@ WindowMenu::~WindowMenu()
         Button *const btn = *it;
         if (!btn)
             continue;
-        if (!btn->isVisibleLocal())
+        if (btn->mVisible == Visible_false)
             delete btn;
     }
     delete_all(mButtonTexts);
@@ -361,7 +361,7 @@ void WindowMenu::updateButtons()
         Button *const btn = *it;
         if (!btn)
             continue;
-        if (btn->isVisibleLocal())
+        if (btn->mVisible == Visible_true)
         {
             btn->setPosition(x, mPadding);
             add(btn);
@@ -429,7 +429,7 @@ void WindowMenu::saveButtons() const
     FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
     {
         const Button *const btn = *it;
-        if (btn && !btn->isVisibleLocal())
+        if (btn && btn->mVisible == Visible_false)
         {
             config.setValue("windowmenu" + toString(i),
                 btn->getActionEventId());

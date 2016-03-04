@@ -253,7 +253,7 @@ void ChatWindow::loadGMCommands()
 
 void ChatWindow::updateTabsMargin()
 {
-    if (mColorPicker->isVisibleLocal())
+    if (mColorPicker->mVisible == Visible_true)
         mChatTabs->setRightMargin(mColorPicker->getWidth() + 16 + 8);
     else
         mChatTabs->setRightMargin(8);
@@ -274,10 +274,15 @@ void ChatWindow::adjustTabSize()
     mChatInput->setPosition(frame, y);
     mChatTabs->setWidth(awFrame2);
     const int height = ah - frame2 - (inputHeight + frame2);
-    if (mChatInput->isVisibleLocal() || !config.getBoolValue("hideChatInput"))
+    if (mChatInput->mVisible == Visible_true ||
+        !config.getBoolValue("hideChatInput"))
+    {
         mChatTabs->setHeight(height);
+    }
     else
+    {
         mChatTabs->setHeight(height + inputHeight);
+    }
     updateTabsMargin();
 
     if (showEmotes)
@@ -288,8 +293,7 @@ void ChatWindow::adjustTabSize()
         w -= mEmoteButtonSpacing;
         y += mEmoteButtonY;
         mChatInput->setWidth(w);
-        mChatButton->setVisible(fromBool(mChatInput->isVisibleLocal(),
-            Visible));
+        mChatButton->setVisible(mChatInput->mVisible);
         mChatButton->setPosition(x, y);
     }
     else
@@ -458,7 +462,7 @@ void ChatWindow::action(const ActionEvent &event)
     {
         if (emoteWindow)
         {
-            if (emoteWindow->isVisibleLocal())
+            if (emoteWindow->mVisible == Visible_true)
                 emoteWindow->hide();
             else
                 emoteWindow->show();
@@ -497,11 +501,12 @@ void ChatWindow::action(const ActionEvent &event)
         }
     }
 
-    if (mColorPicker && mColorPicker->isVisibleLocal()
-        != config.getBoolValue("showChatColorsList"))
+    if (mColorPicker)
     {
-        mColorPicker->setVisible(fromBool(config.getBoolValue(
-            "showChatColorsList"), Visible));
+        const Visible vis = fromBool(config.getBoolValue(
+            "showChatColorsList"), Visible);
+        if (mColorPicker->mVisible != vis)
+            mColorPicker->setVisible(vis);
     }
 }
 
@@ -817,12 +822,12 @@ void ChatWindow::keyPressed(KeyEvent &event)
         return;
     }
     else if (actionId == InputAction::GUI_CANCEL &&
-             mChatInput->isVisibleLocal())
+             mChatInput->mVisible == Visible_true)
     {
         mChatInput->processVisible(Visible_false);
     }
     else if (actionId == InputAction::CHAT_PREV_HISTORY &&
-             mChatInput->isVisibleLocal())
+             mChatInput->mVisible == Visible_true)
     {
         const ChatTab *const tab = getFocused();
         if (tab && tab->hasRows())
@@ -854,7 +859,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
         }
     }
     else if (actionId == InputAction::CHAT_NEXT_HISTORY &&
-             mChatInput->isVisibleLocal())
+             mChatInput->mVisible == Visible_true)
     {
         const ChatTab *const tab = getFocused();
         if (tab && tab->hasRows())
@@ -893,7 +898,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
     {
         if (emoteWindow)
         {
-            if (emoteWindow->isVisibleLocal())
+            if (emoteWindow->mVisible == Visible_true)
                 emoteWindow->hide();
             else
                 emoteWindow->show();

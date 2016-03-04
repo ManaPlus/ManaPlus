@@ -81,6 +81,7 @@ std::set<Widget*> Widget::mWidgetsSet;
 
 Widget::Widget(const Widget2 *const widget) :
     Widget2(widget),
+    mVisible(Visible_true),
     mMouseListeners(),
     mKeyListeners(),
     mActionListeners(),
@@ -99,7 +100,6 @@ Widget::Widget(const Widget2 *const widget) :
     mCurrentFont(nullptr),
     mFrameSize(0),
     mFocusable(false),
-    mVisible(Visible_true),
     mTabIn(true),
     mTabOut(true),
     mEnabled(true),

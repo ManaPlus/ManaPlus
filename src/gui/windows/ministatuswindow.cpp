@@ -168,7 +168,7 @@ MiniStatusWindow::~MiniStatusWindow()
         ProgressBar *bar = *it;
         if (!bar)
             continue;
-        if (!bar->isVisibleLocal())
+        if (bar->mVisible == Visible_false)
             delete bar;
     }
     mBars.clear();
@@ -207,7 +207,7 @@ void MiniStatusWindow::updateBars()
         ProgressBar *const bar = *it;
         if (!bar)
             continue;
-        if (bar->isVisibleLocal())
+        if (bar->mVisible == Visible_true)
         {
             bar->setPosition(x, 0);
             add(bar);
@@ -525,7 +525,7 @@ void MiniStatusWindow::saveBars() const
     FOR_EACH (ProgressBarVectorCIter, it, mBars)
     {
         const ProgressBar *const bar = *it;
-        if (!bar->isVisibleLocal())
+        if (bar->mVisible == Visible_false)
         {
             config.setValue("ministatus" + toString(i),
                 bar->getActionEventId());

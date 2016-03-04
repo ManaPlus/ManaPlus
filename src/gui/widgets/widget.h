@@ -401,9 +401,6 @@ class Widget notfinal : public Widget2
         { return mVisible == Visible_true &&
             (!mParent || mParent->isVisible()); }
 
-        bool isVisibleLocal() const noexcept A_WARN_UNUSED
-        { return mVisible == Visible_true; }
-
         /**
           * Sets the base color of the widget.
           *
@@ -1032,6 +1029,11 @@ class Widget notfinal : public Widget2
         virtual void postInit()
         { }
 
+        /**
+          * True if the widget visible, false otherwise.
+          */
+        Visible mVisible;
+
     protected:
         /**
           * Distributes an action event to all action listeners
@@ -1219,11 +1221,6 @@ class Widget notfinal : public Widget2
           * True if the widget focusable, false otherwise.
           */
         bool mFocusable;
-
-        /**
-          * True if the widget visible, false otherwise.
-          */
-        Visible mVisible;
 
         /**
           * True if the widget has tab in enabled, false otherwise.
