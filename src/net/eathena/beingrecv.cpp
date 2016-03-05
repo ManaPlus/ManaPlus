@@ -151,6 +151,9 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
     const std::string color;
     switch (type)
     {
+        // here should be used SPRITE_* constants
+        // but for now they conflicting with sprites
+        // SPRITE_* is same with server LOOK_*
         case 0:  // change race
             dstBeing->setSubtype(fromInt(id, BeingTypeId),
                 dstBeing->getLook());
