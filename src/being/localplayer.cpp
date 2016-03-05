@@ -278,8 +278,8 @@ void LocalPlayer::logic()
             {
                 particleEngine->addTextRiseFadeOutEffect(
                     info.first,
-                    CAST_S32(mPos.x),
-                    CAST_S32(mPos.y) - 48,
+                    mPixelX,
+                    mPixelY - 48,
                     &userPalette->getColor(info.second),
                     gui->getInfoParticleFont(),
                     true);
@@ -497,11 +497,13 @@ bool LocalPlayer::pickUp(FloorItem *const item)
     }
     else if (pickUpType >= 4 && pickUpType <= 6)
     {
-        const Vector &playerPos = getPixelPositionF();
         const Path debugPath = mMap->findPath(
-            CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
-            CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
-            item->getTileX(), item->getTileY(), getBlockWalkMask(), 0);
+            (mPixelX - mapTileSize / 2) / mapTileSize,
+            (mPixelY - mapTileSize) / mapTileSize,
+            item->getTileX(),
+            item->getTileY(),
+            getBlockWalkMask(),
+            0);
         if (!debugPath.empty())
             navigateTo(item->getTileX(), item->getTileY());
         else
@@ -684,15 +686,14 @@ void LocalPlayer::stopWalking(const bool sendToServer)
     {
         mWalkingDir = 0;
         mPickUpTarget = nullptr;
-
-        const Vector &pos = getPixelPositionF();
-        setDestination(CAST_S32(pos.x),
-            CAST_S32(pos.y));
+        setDestination(mPixelX,
+            mPixelY);
         if (sendToServer)
         {
             playerHandler->setDestination(
-                CAST_S32(pos.x),
-                CAST_S32(pos.y), -1);
+                mPixelX,
+                mPixelY,
+                -1);
         }
         setAction(BeingAction::STAND);
     }
@@ -1203,7 +1204,6 @@ void LocalPlayer::moveToTarget(int dist)
     bool gotPos(false);
     Path debugPath;
 
-    const Vector &playerPos = getPixelPositionF();
     unsigned int limit(0);
 
     if (dist == -1)
@@ -1237,9 +1237,9 @@ void LocalPlayer::moveToTarget(int dist)
     {
         if (mMap)
         {
-            debugPath = mMap->findPath(CAST_S32(
-                playerPos.x - mapTileSize / 2) / mapTileSize,
-                CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
+            debugPath = mMap->findPath(
+                (mPixelX - mapTileSize / 2) / mapTileSize,
+                (mPixelY - mapTileSize) / mapTileSize,
                 mTarget->getTileX(),
                 mTarget->getTileY(),
                 getBlockWalkMask(),
@@ -1422,12 +1422,13 @@ bool LocalPlayer::isReachable(Being *const being,
         return true;
     }
 
-    const Vector &playerPos = getPixelPositionF();
-
     const Path debugPath = mMap->findPath(
-        CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
-        CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
-        being->getTileX(), being->getTileY(), getBlockWalkMask(), maxCost);
+        (mPixelX - mapTileSize / 2) / mapTileSize,
+        (mPixelY - mapTileSize) / mapTileSize,
+        being->getTileX(),
+        being->getTileY(),
+        getBlockWalkMask(),
+        maxCost);
 
     being->setDistance(CAST_S32(debugPath.size()));
     if (!debugPath.empty())
@@ -1967,10 +1968,9 @@ bool LocalPlayer::navigateTo(const int x, const int y)
     if (!tmpLayer)
         return false;
 
-    const Vector &playerPos = getPixelPositionF();
     mShowNavigePath = true;
-    mOldX = CAST_S32(playerPos.x);
-    mOldY = CAST_S32(playerPos.y);
+    mOldX = mPixelX;
+    mOldY = mPixelY;
     mOldTileX = mX;
     mOldTileY = mY;
     mNavigateX = x;
@@ -1978,9 +1978,12 @@ bool LocalPlayer::navigateTo(const int x, const int y)
     mNavigateId = BeingId_zero;
 
     mNavigatePath = mMap->findPath(
-        CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
-        CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
-        x, y, getBlockWalkMask(), 0);
+        (mPixelX - mapTileSize / 2) / mapTileSize,
+        (mPixelY - mapTileSize) / mapTileSize,
+        x,
+        y,
+        getBlockWalkMask(),
+        0);
 
     if (mDrawPath)
         tmpLayer->addRoad(mNavigatePath);
@@ -2031,9 +2034,8 @@ void LocalPlayer::updateCoords()
 {
     Being::updateCoords();
 
-    const Vector &playerPos = getPixelPositionF();
     // probably map not loaded.
-    if (!playerPos.x || !playerPos.y)
+    if (!mPixelX || !mPixelY)
         return;
 
     if (mX != mOldTileX || mY != mOldTileY)
@@ -2051,10 +2053,8 @@ void LocalPlayer::updateCoords()
         if (!tmpLayer)
             return;
 
-        const int x = CAST_S32(playerPos.x - mapTileSize / 2)
-            / mapTileSize;
-        const int y = CAST_S32(playerPos.y - mapTileSize)
-            / mapTileSize;
+        const int x = (mPixelX - mapTileSize / 2) / mapTileSize;
+        const int y = (mPixelY - mapTileSize) / mapTileSize;
         if (mNavigateId != BeingId_zero)
         {
             if (!actorManager)
@@ -2101,8 +2101,8 @@ void LocalPlayer::updateCoords()
             }
         }
     }
-    mOldX = CAST_S32(playerPos.x);
-    mOldY = CAST_S32(playerPos.y);
+    mOldX = mPixelX;
+    mOldY = mPixelY;
     mOldTileX = mX;
     mOldTileY = mY;
 }
@@ -2129,13 +2129,13 @@ int LocalPlayer::getPathLength(const Being *const being) const
     if (!mMap || !being)
         return 0;
 
-    const Vector &playerPos = getPixelPositionF();
-
     if (being->mX == mX && being->mY == mY)
         return 0;
 
-    if (being->mX - 1 <= mX && being->mX + 1 >= mX
-        && being->mY - 1 <= mY && being->mY + 1 >= mY)
+    if (being->mX - 1 <= mX &&
+        being->mX + 1 >= mX &&
+        being->mY - 1 <= mY &&
+        being->mY + 1 >= mY)
     {
         return 1;
     }
@@ -2143,10 +2143,12 @@ int LocalPlayer::getPathLength(const Being *const being) const
     if (mTargetOnlyReachable)
     {
         const Path debugPath = mMap->findPath(
-            CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
-            CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
-            being->getTileX(), being->getTileY(),
-            getBlockWalkMask(), 0);
+            (mPixelX - mapTileSize / 2) / mapTileSize,
+            (mPixelY - mapTileSize) / mapTileSize,
+            being->getTileX(),
+            being->getTileY(),
+            getBlockWalkMask(),
+            0);
         return CAST_S32(debugPath.size());
     }
     else
@@ -2526,12 +2528,13 @@ void LocalPlayer::fixAttackTarget()
         return;
     }
 
-    const Vector &playerPos = getPixelPositionF();
     const Path debugPath = mMap->findPath(
-        CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
-        CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
-        mTarget->getTileX(), mTarget->getTileY(),
-        getBlockWalkMask(), 0);
+        (mPixelX - mapTileSize / 2) / mapTileSize,
+        (mPixelY - mapTileSize) / mapTileSize,
+        mTarget->getTileX(),
+        mTarget->getTileY(),
+        getBlockWalkMask(),
+        0);
 
     if (!debugPath.empty())
     {

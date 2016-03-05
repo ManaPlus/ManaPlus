@@ -281,12 +281,11 @@ void Minimap::draw2(Graphics *const graphics)
         const int h = rect.h;
         if (w > a.width || h > a.height)
         {
-            const Vector &p = localPlayer->getPixelPositionF();
-            mMapOriginX = (a.width / 2) - (p.x + static_cast<float>(
-                viewport->getCameraRelativeX()) * mWidthProportion) / 32;
+            mMapOriginX = (a.width / 2) - (localPlayer->mPixelX +
+                viewport->getCameraRelativeX() * mWidthProportion) / 32;
 
-            mMapOriginY = (a.height / 2) - (p.y + static_cast<float>(
-                viewport->getCameraRelativeY()) * mHeightProportion) / 32;
+            mMapOriginY = (a.height / 2) - (localPlayer->mPixelY +
+                viewport->getCameraRelativeY() * mHeightProportion) / 32;
 
             const int minOriginX = a.width - w;
             const int minOriginY = a.height - h;
@@ -382,12 +381,10 @@ void Minimap::draw2(Graphics *const graphics)
                 dotSize - 1) * mHeightProportion);
         const int offsetWidth = CAST_S32(static_cast<float>(
                 dotSize - 1) * mWidthProportion);
-        const Vector &pos = being->getPixelPositionF();
-
         graphics->fillRectangle(Rect(
-            static_cast<float>(pos.x * mWidthProportion) / 32
+            (being->mPixelX * mWidthProportion) / 32
             + mMapOriginX - offsetWidth,
-            static_cast<float>(pos.y * mHeightProportion) / 32
+            (being->mPixelY * mHeightProportion) / 32
             + mMapOriginY - offsetHeight, dotSize, dotSize));
     }
 
@@ -435,16 +432,14 @@ void Minimap::draw2(Graphics *const graphics)
         }
     }
 
-    const Vector &pos = localPlayer->getPixelPositionF();
-
     const int gw = graphics->getWidth();
     const int gh = graphics->getHeight();
-    int x = static_cast<float>((pos.x - (gw / 2)
+    int x = (localPlayer->mPixelX - (gw / 2)
         + viewport->getCameraRelativeX())
-        * mWidthProportion) / 32 + mMapOriginX;
-    int y = static_cast<float>((pos.y - (gh / 2)
+        * mWidthProportion / 32 + mMapOriginX;
+    int y = (localPlayer->mPixelY - (gh / 2)
         + viewport->getCameraRelativeY())
-        * mHeightProportion) / 32 + mMapOriginY;
+        * mHeightProportion / 32 + mMapOriginY;
 
     const int w = CAST_S32(static_cast<float>(
         gw) * mWidthProportion / 32);

@@ -141,9 +141,8 @@ void Viewport::draw(Graphics *const graphics)
 
     // Calculate viewpoint
 
-    const Vector &playerPos = localPlayer->getPixelPositionF();
-    const int player_x = CAST_S32(playerPos.x) - mMidTileX;
-    const int player_y = CAST_S32(playerPos.y) - mMidTileY;
+    const int player_x = localPlayer->mPixelX - mMidTileX;
+    const int player_y = localPlayer->mPixelY - mMidTileY;
 
     if (mScrollLaziness < 1)
         mScrollLaziness = 1;  // Avoids division by zero
@@ -314,12 +313,11 @@ void Viewport::drawDebugPath(Graphics *const graphics)
     if (mouseDestination.x != lastMouseDestination.x
         || mouseDestination.y != lastMouseDestination.y)
     {
-        const Vector &playerPos = localPlayer->getPixelPositionF();
-
         debugPath = mMap->findPath(
-            CAST_S32(playerPos.x - mapTileSize / 2) / mapTileSize,
-            CAST_S32(playerPos.y - mapTileSize) / mapTileSize,
-            mousePosX / mapTileSize, mousePosY / mapTileSize,
+            CAST_S32(localPlayer->mPixelX - mapTileSize / 2) / mapTileSize,
+            CAST_S32(localPlayer->mPixelY - mapTileSize) / mapTileSize,
+            mousePosX / mapTileSize,
+            mousePosY / mapTileSize,
             localPlayer->getBlockWalkMask(),
             500);
         lastMouseDestination = mouseDestination;
@@ -983,11 +981,9 @@ void Viewport::moveCameraToActor(const BeingId actorId,
     const Actor *const actor = actorManager->findBeing(actorId);
     if (!actor)
         return;
-    const Vector &actorPos = actor->getPixelPositionF();
-    const Vector &playerPos = localPlayer->getPixelPositionF();
     settings.cameraMode = 1;
-    mCameraRelativeX = CAST_S32(actorPos.x - playerPos.x) + x;
-    mCameraRelativeY = CAST_S32(actorPos.y - playerPos.y) + y;
+    mCameraRelativeX = actor->mPixelX - localPlayer->mPixelX + x;
+    mCameraRelativeY = actor->mPixelY - localPlayer->mPixelY + y;
     updateMidVars();
 }
 
@@ -996,11 +992,9 @@ void Viewport::moveCameraToPosition(const int x, const int y)
     if (!localPlayer)
         return;
 
-    const Vector &playerPos = localPlayer->getPixelPositionF();
     settings.cameraMode = 1;
-
-    mCameraRelativeX = x - CAST_S32(playerPos.x);
-    mCameraRelativeY = y - CAST_S32(playerPos.y);
+    mCameraRelativeX = x - localPlayer->mPixelX;
+    mCameraRelativeY = y - localPlayer->mPixelY;
     updateMidVars();
 }
 

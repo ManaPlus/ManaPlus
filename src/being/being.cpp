@@ -630,8 +630,8 @@ void Being::setSpeech(const std::string &restrict text,
     {
         delete mText;
         mText = new Text(mSpeech,
-            CAST_S32(mPos.x),
-            CAST_S32(mPos.y) - getHeight(),
+            mPixelX,
+            mPixelY - getHeight(),
             Graphics::CENTER,
             &userPalette->getColor(UserColorId::PARTICLE),
             Speech_true);
@@ -755,8 +755,8 @@ void Being::takeDamage(Being *restrict const attacker,
     {
         // Show damage number
         particleEngine->addTextSplashEffect(damage,
-            CAST_S32(mPos.x),
-            CAST_S32(mPos.y) - 16,
+            mPixelX,
+            mPixelY - 16,
             color,
             font,
             true);
@@ -1296,8 +1296,8 @@ void Being::fireMissile(Being *restrict const victim,
 
     Particle *restrict const missile = target->addEffect(
         particle,
-        CAST_S32(mPos.x),
-        CAST_S32(mPos.y));
+        mPixelX,
+        mPixelY);
 
     if (missile)
     {
@@ -2071,8 +2071,8 @@ void Being::drawEmotion(Graphics *restrict const graphics,
                         const int offsetX,
                         const int offsetY) const restrict2
 {
-    const int px = CAST_S32(mPos.x) - offsetX - mapTileSize / 2;
-    const int py = CAST_S32(mPos.y) - offsetY - mapTileSize * 2 - mapTileSize;
+    const int px = mPixelX - offsetX - mapTileSize / 2;
+    const int py = mPixelY - offsetY - mapTileSize * 2 - mapTileSize;
     if (mAnimationEffect)
         mAnimationEffect->draw(graphics, px, py);
     if (mShowBadges && mBadgesCount)
@@ -2115,8 +2115,8 @@ void Being::drawSpeech(const int offsetX,
     if (mSpeech.empty())
         return;
 
-    const int px = CAST_S32(mPos.x) - offsetX;
-    const int py = CAST_S32(mPos.y) - offsetY;
+    const int px = mPixelX - offsetX;
+    const int py = mPixelY - offsetY;
     const int speech = mSpeechType;
 
     // Draw speech above this being
@@ -2147,8 +2147,8 @@ void Being::drawSpeech(const int offsetX,
         if (!mText && userPalette)
         {
             mText = new Text(mSpeech,
-                CAST_S32(mPos.x),
-                CAST_S32(mPos.y) - getHeight(),
+                mPixelX,
+                mPixelY - getHeight(),
                 Graphics::CENTER,
                 &theme->getColor(ThemeColorId::BUBBLE_TEXT, 255),
                 Speech_true);
@@ -2204,8 +2204,8 @@ void Being::updateCoords() restrict2
     if (!mDispName)
         return;
 
-    int offsetX = CAST_S32(mPos.x);
-    int offsetY = CAST_S32(mPos.y);
+    int offsetX = mPixelX;
+    int offsetY = mPixelY;
     if (mInfo)
     {
         offsetX += mInfo->getNameOffsetX();
@@ -2309,8 +2309,8 @@ void Being::showName() restrict2
     if (mInfo)
     {
         mDispName = new FlashText(displayName,
-            CAST_S32(mPos.x) + mInfo->getNameOffsetX(),
-            CAST_S32(mPos.y) + mInfo->getNameOffsetY(),
+            mPixelX + mInfo->getNameOffsetX(),
+            mPixelY + mInfo->getNameOffsetY(),
             Graphics::CENTER,
             mNameColor,
             font);
@@ -2318,8 +2318,8 @@ void Being::showName() restrict2
     else
     {
         mDispName = new FlashText(displayName,
-            CAST_S32(mPos.x),
-            CAST_S32(mPos.y),
+            mPixelX,
+            mPixelY,
             Graphics::CENTER,
             mNameColor,
             font);
@@ -2867,9 +2867,9 @@ void Being::draw(Graphics *restrict const graphics,
     if (!mErased)
     {
         // getActorX() + offsetX;
-        const int px = CAST_S32(mPos.x) - mapTileSize / 2 + offsetX;
+        const int px = mPixelX - mapTileSize / 2 + offsetX;
         // getActorY() + offsetY;
-        const int py = CAST_S32(mPos.y) - mapTileSize + offsetY;
+        const int py = mPixelY - mapTileSize + offsetY;
 #ifdef EATHENA_SUPPORT
         if (mHorseInfo)
         {

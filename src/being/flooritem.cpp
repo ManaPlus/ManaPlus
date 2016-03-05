@@ -99,14 +99,18 @@ void FloorItem::postInit(Map *const map, int subX, int subY)
         }
 
         mHeightPosDiff = map->getHeightOffset(mX, mY) * 16;
-        mPos.x = static_cast<float>(mX * map->getTileWidth()
-            + subX + mapTileSize / 2);
-        mPos.y = static_cast<float>(mY * map->getTileHeight()
-            + subY + mapTileSize - mHeightPosDiff);
+        mPixelX = mX * map->getTileWidth()
+            + subX + mapTileSize / 2;
+        mPixelY = mY * map->getTileHeight()
+            + subY + mapTileSize - mHeightPosDiff;
+        mPos.x = static_cast<float>(mPixelX);
+        mPos.y = static_cast<float>(mPixelY);
         mYDiff = 31 - mHeightPosDiff;
     }
     else
     {
+        mPixelX = 0;
+        mPixelY = 0;
         mPos.x = 0;
         mPos.y = 0;
         mYDiff = 31;
