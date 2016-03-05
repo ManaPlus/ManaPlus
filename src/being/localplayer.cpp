@@ -302,9 +302,9 @@ void LocalPlayer::logic()
         {
             // Find whether target is in range
             const int rangeX = CAST_S32(
-                abs(mTarget->getTileX() - getTileX()));
+                abs(mTarget->mX - mX));
             const int rangeY = CAST_S32(
-                abs(mTarget->getTileY() - getTileY()));
+                abs(mTarget->mY - mY));
             const int attackRange = getAttackRange();
             const TargetCursorTypeT targetType
                 = rangeX > attackRange || rangeY > attackRange
@@ -551,8 +551,8 @@ void LocalPlayer::setTarget(Being *const target)
 
     if (mTarget)
     {
-        mLastTargetX = mTarget->getTileX();
-        mLastTargetY = mTarget->getTileY();
+        mLastTargetX = mTarget->mX;
+        mLastTargetY = mTarget->mY;
         mTarget->updateName();
     }
 
@@ -763,8 +763,8 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     if (mTarget != target)
         setTarget(target);
 
-    const int dist_x = target->getTileX() - mX;
-    const int dist_y = target->getTileY() - mY;
+    const int dist_x = target->mX - mX;
+    const int dist_y = target->mY - mY;
 
     // Must be standing or sitting or casting to attack
     if (mAction != BeingAction::STAND &&
@@ -975,8 +975,8 @@ bool LocalPlayer::withinAttackRange(const Being *const target,
     if (fixDistance && range == 1)
         range = 2;
 
-    dx = CAST_S32(abs(target->getTileX() - mX));
-    dy = CAST_S32(abs(target->getTileY() - mY));
+    dx = CAST_S32(abs(target->mX - mX));
+    dy = CAST_S32(abs(target->mY - mY));
     return !(dx > range || dy > range);
 }
 
@@ -988,7 +988,8 @@ void LocalPlayer::setGotoTarget(Being *const target)
     mPickUpTarget = nullptr;
     setTarget(target);
     mGoingToTarget = true;
-    setDestination(target->getTileX(), target->getTileY());
+    setDestination(target->mX,
+        target->mY);
 }
 
 void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
@@ -1240,8 +1241,8 @@ void LocalPlayer::moveToTarget(int dist)
             debugPath = mMap->findPath(
                 (mPixelX - mapTileSize / 2) / mapTileSize,
                 (mPixelY - mapTileSize) / mapTileSize,
-                mTarget->getTileX(),
-                mTarget->getTileY(),
+                mTarget->mX,
+                mTarget->mY,
                 getBlockWalkMask(),
                 0);
         }
@@ -1264,7 +1265,7 @@ void LocalPlayer::moveToTarget(int dist)
         if (dist == 0)
         {
             if (mTarget)
-                navigateTo(mTarget->getTileX(), mTarget->getTileY());
+                navigateTo(mTarget->mX, mTarget->mY);
         }
         else
         {
@@ -1326,8 +1327,8 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
     }
 
     bool allowSword = false;
-    const int dx = target->getTileX() - mX;
-    const int dy = target->getTileY() - mY;
+    const int dx = target->mX - mX;
+    const int dy = target->mY - mY;
     const Item *item = nullptr;
 
     if (dx * dx + dy * dy > 80)
@@ -1405,17 +1406,17 @@ bool LocalPlayer::isReachable(Being *const being,
     if (being->getReachable() == Reachable::REACH_NO)
         return false;
 
-    if (being->getTileX() == mX
-        && being->getTileY() == mY)
+    if (being->mX == mX &&
+        being->mY == mY)
     {
         being->setDistance(0);
         being->setReachable(Reachable::REACH_YES);
         return true;
     }
-    else if (being->getTileX() - 1 <= mX
-             && being->getTileX() + 1 >= mX
-             && being->getTileY() - 1 <= mY
-             && being->getTileY() + 1 >= mY)
+    else if (being->mX - 1 <= mX &&
+             being->mX + 1 >= mX &&
+             being->mY - 1 <= mY &&
+             being->mY + 1 >= mY)
     {
         being->setDistance(1);
         being->setReachable(Reachable::REACH_YES);
@@ -1425,8 +1426,8 @@ bool LocalPlayer::isReachable(Being *const being,
     const Path debugPath = mMap->findPath(
         (mPixelX - mapTileSize / 2) / mapTileSize,
         (mPixelY - mapTileSize) / mapTileSize,
-        being->getTileX(),
-        being->getTileY(),
+        being->mX,
+        being->mY,
         getBlockWalkMask(),
         maxCost);
 
@@ -2070,8 +2071,8 @@ void LocalPlayer::updateCoords()
                 navigateClean();
                 return;
             }
-            mNavigateX = being->getTileX();
-            mNavigateY = being->getTileY();
+            mNavigateX = being->mX;
+            mNavigateY = being->mY;
         }
 
         if (mNavigateX == x && mNavigateY == y)
@@ -2145,8 +2146,8 @@ int LocalPlayer::getPathLength(const Being *const being) const
         const Path debugPath = mMap->findPath(
             (mPixelX - mapTileSize / 2) / mapTileSize,
             (mPixelY - mapTileSize) / mapTileSize,
-            being->getTileX(),
-            being->getTileY(),
+            being->mX,
+            being->mY,
             getBlockWalkMask(),
             0);
         return CAST_S32(debugPath.size());
@@ -2488,10 +2489,9 @@ void LocalPlayer::setRealPos(const int x, const int y)
     SpecialLayer *const layer = mMap->getTempLayer();
     if (layer)
     {
-        if ((mCrossX || mCrossY)
-            && layer->getTile(mCrossX, mCrossY)
-            && layer->getTile(mCrossX, mCrossY)->getType()
-            == MapItemType::CROSS)
+        if ((mCrossX || mCrossY) &&
+            layer->getTile(mCrossX, mCrossY) &&
+            layer->getTile(mCrossX, mCrossY)->getType() == MapItemType::CROSS)
         {
             layer->setTile(mCrossX, mCrossY, MapItemType::EMPTY);
         }
@@ -2502,7 +2502,7 @@ void LocalPlayer::setRealPos(const int x, const int y)
 
             if (!mapItem || mapItem->getType() == MapItemType::EMPTY)
             {
-                if (getTileX() != x && getTileY() != y)
+                if (mX != x && mY != y)
                     layer->setTile(x, y, MapItemType::CROSS);
             }
         }
@@ -2531,8 +2531,8 @@ void LocalPlayer::fixAttackTarget()
     const Path debugPath = mMap->findPath(
         (mPixelX - mapTileSize / 2) / mapTileSize,
         (mPixelY - mapTileSize) / mapTileSize,
-        mTarget->getTileX(),
-        mTarget->getTileY(),
+        mTarget->mX,
+        mTarget->mY,
         getBlockWalkMask(),
         0);
 

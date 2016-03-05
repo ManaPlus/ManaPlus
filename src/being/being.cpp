@@ -942,8 +942,8 @@ void Being::handleAttack(Being *restrict const victim,
     if (this != localPlayer)
         setAction(BeingAction::ATTACK, attackId);
 
-    mLastAttackX = victim->getTileX();
-    mLastAttackY = victim->getTileY();
+    mLastAttackX = victim->mX;
+    mLastAttackY = victim->mY;
 
     if (mType == ActorType::Player && mEquippedWeapon)
         fireMissile(victim, mEquippedWeapon->getMissileParticleFile());
@@ -957,8 +957,8 @@ void Being::handleAttack(Being *restrict const victim,
         !serverFeatures->haveAttackDirections() &&
         this != localPlayer)
     {
-        const uint8_t dir = calcDirection(victim->getTileX(),
-            victim->getTileY());
+        const uint8_t dir = calcDirection(victim->mX,
+            victim->mY);
         if (dir)
             setDirection(dir);
     }
@@ -1021,8 +1021,8 @@ void Being::handleSkill(Being *restrict const victim,
 
     if (!serverFeatures->haveAttackDirections() && this != localPlayer)
     {
-        const uint8_t dir = calcDirection(victim->getTileX(),
-            victim->getTileY());
+        const uint8_t dir = calcDirection(victim->mX,
+            victim->mY);
         if (dir)
             setDirection(dir);
     }
@@ -1896,8 +1896,8 @@ void Being::petLogic() restrict2
 
     mMoveTime = time;
 
-    const int dstX0 = mOwner->getTileX();
-    const int dstY0 = mOwner->getTileY();
+    const int dstX0 = mOwner->mX;
+    const int dstY0 = mOwner->mY;
     int dstX = dstX0;
     int dstY = dstY0;
     const int followDist = mInfo->getStartFollowDist();
@@ -3900,8 +3900,8 @@ void Being::fixPetSpawnPos(int &restrict dstX,
     {
         if (!mMap->getWalk(dstX, dstY, getBlockWalkMask()))
         {
-            dstX = mOwner->getTileX();
-            dstY = mOwner->getTileY();
+            dstX = mOwner->mX;
+            dstY = mOwner->mY;
         }
     }
 }

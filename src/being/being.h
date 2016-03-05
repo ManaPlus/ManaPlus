@@ -1062,7 +1062,7 @@ class Being notfinal : public ActorSprite,
         bool mShowName;
         bool mIsGM;
 
-    private:
+    protected:
         /**
          * Calculates the offset in the given directions.
          * If walking in direction 'neg' the value is negated.
