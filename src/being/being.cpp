@@ -2906,7 +2906,7 @@ void Being::drawSprites(Graphics *restrict const graphics,
                         const int posX,
                         const int posY) const restrict2
 {
-    const int sz = getNumberOfLayers();
+    const int sz = CompoundSprite::getNumberOfLayers();
     for (int f = 0; f < sz; f ++)
     {
         const int rSprite = mSpriteHide[mSpriteRemap[f]];
@@ -3431,7 +3431,7 @@ int Being::searchSlotValue(const std::vector<int> &restrict slotRemap,
         if (slotRemap[slot] == val)
             return CAST_S32(slot);
     }
-    return getNumberOfLayers() - 1;
+    return CompoundSprite::getNumberOfLayers() - 1;
 }
 
 void Being::searchSlotValueItr(std::vector<int>::iterator &restrict it,
