@@ -1704,15 +1704,15 @@ void Being::nextTile() restrict2
         return;
     }
 
-    mActionTime += CAST_S32(mSpeed / 10);
+    mActionTime += mSpeed / 10;
     if ((mType != ActorType::Player || mUseDiagonal)
         && mX != pos.x && mY != pos.y)
     {
-        mSpeed = static_cast<float>(mWalkSpeed) * 1.4F;
+        mSpeed = mWalkSpeed * 14 / 10;
     }
     else
     {
-        mSpeed = static_cast<float>(mWalkSpeed);
+        mSpeed = mWalkSpeed;
     }
 
     if (mX != pos.x || mY != pos.y)
@@ -1783,11 +1783,8 @@ void Being::logic() restrict2
 
         case BeingAction::MOVE:
         {
-            if (static_cast<float>(get_elapsed_time(
-                mActionTime)) >= mSpeed)
-            {
+            if (get_elapsed_time(mActionTime) >= mSpeed)
                 nextTile();
-            }
             break;
         }
 
@@ -1855,9 +1852,10 @@ void Being::logic() restrict2
     if (frameCount < 10)
         frameCount = 10;
 
-    if (!isAlive() && mSpeed && gameHandler->removeDeadBeings()
-        && CAST_S32 ((static_cast<float>(get_elapsed_time(mActionTime))
-        / mSpeed)) >= frameCount)
+    if (!isAlive() &&
+        mSpeed &&
+        gameHandler->removeDeadBeings() &&
+        get_elapsed_time(mActionTime) / mSpeed >= frameCount)
     {
         if (mType != ActorType::Player && actorManager)
             actorManager->destroy(this);
@@ -2172,10 +2170,8 @@ int Being::getOffset(const signed char pos,
         const int time = get_elapsed_time(mActionTime);
         offset = (pos == BeingDirection::LEFT
             && neg == BeingDirection::RIGHT) ?
-            CAST_S32((static_cast<float>(time)
-            * static_cast<float>(mMap->getTileWidth())) / mSpeed) :
-            CAST_S32((static_cast<float>(time)
-            * static_cast<float>(mMap->getTileHeight())) / mSpeed);
+            (time * mMap->getTileWidth() / mSpeed) :
+            (time * mMap->getTileHeight() / mSpeed);
     }
 
     // We calculate the offset _from_ the _target_ location
