@@ -55,8 +55,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
-
 namespace TmwAthena
 {
 
@@ -261,8 +259,7 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
     else if (disguiseId)
     {
         actorManager->undelete(dstBeing);
-        if (serverVersion < 1)
-            beingHandler->requestNameById(id);
+        beingHandler->requestNameById(id);
     }
 
     uint8_t dir = dstBeing->getDirectionDelayed();
@@ -397,8 +394,7 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
     else if (disguiseId)
     {
         actorManager->undelete(dstBeing);
-        if (serverVersion < 1)
-            beingHandler->requestNameById(id);
+        beingHandler->requestNameById(id);
     }
 
     uint8_t dir = dstBeing->getDirectionDelayed();
@@ -529,8 +525,7 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
     else if (disguiseId)
     {
         actorManager->undelete(dstBeing);
-        if (serverVersion < 1)
-            beingHandler->requestNameById(id);
+        beingHandler->requestNameById(id);
     }
 
     const uint8_t dir = dstBeing->getDirectionDelayed();
@@ -716,8 +711,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         if (dstBeing->getType() == ActorType::Npc)
         {
             actorManager->undelete(dstBeing);
-            if (serverVersion < 1)
-                beingHandler->requestNameById(id);
+            beingHandler->requestNameById(id);
         }
     }
 
@@ -925,8 +919,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         if (dstBeing->getType() == ActorType::Npc)
         {
             actorManager->undelete(dstBeing);
-            if (serverVersion < 1)
-                beingHandler->requestNameById(id);
+            beingHandler->requestNameById(id);
         }
     }
 

@@ -22,7 +22,6 @@
 
 #include "debug.h"
 
-extern int serverVersion;
 extern unsigned int tmwServerVersion;
 extern Net::ServerFeatures *serverFeatures;
 

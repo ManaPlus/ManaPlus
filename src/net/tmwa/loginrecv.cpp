@@ -75,20 +75,15 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
         serverVersion = 0;
         tmwServerVersion = 0;
     }
-    if (serverVersion > 0)
-        logger->log("Evol server version: %d", serverVersion);
-    else if (tmwServerVersion > 0)
+    if (tmwServerVersion > 0)
         logger->log("Tmw server version: x%06x", tmwServerVersion);
     else
         logger->log("Server without version");
 
     updateProtocol();
 
-    if (serverVersion < 5)
-    {
-        if (client->getState() != State::LOGIN)
-            client->setState(State::LOGIN);
-    }
+    if (client->getState() != State::LOGIN)
+        client->setState(State::LOGIN);
 
     // Leave this last
     Ea::LoginRecv::mVersionResponse = true;

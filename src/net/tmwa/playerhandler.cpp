@@ -32,7 +32,6 @@
 #include "debug.h"
 
 extern Net::PlayerHandler *playerHandler;
-extern int serverVersion;
 
 namespace TmwAthena
 {
