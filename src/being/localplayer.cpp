@@ -418,7 +418,7 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
     const Party *const party = Party::getParty(1);
     if (party)
     {
-        PartyMember *const pm = party->getMember(getName());
+        PartyMember *const pm = party->getMember(mName);
         if (pm)
         {
             pm->setX(mX);
@@ -1942,7 +1942,7 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
                 chatHandler->privateMessage(nick, msg);
                 if (localChatTab)
                 {
-                    localChatTab->chatLog(std::string(getName()).append(
+                    localChatTab->chatLog(std::string(mName).append(
                         " : ").append(msg),
                         ChatMsgType::ACT_WHISPER,
                         IgnoreRecord_false);
@@ -1953,7 +1953,7 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
                 if (tab->getNoAway())
                     return;
                 chatHandler->privateMessage(nick, msg);
-                tab->chatLog(getName(), msg);
+                tab->chatLog(mName, msg);
             }
             mAfkTime = time;
         }
@@ -2269,7 +2269,7 @@ void LocalPlayer::imitateEmote(const Being *const being,
         return;
 
     std::string player_imitated = getImitate();
-    if (!player_imitated.empty() && being->getName() == player_imitated)
+    if (!player_imitated.empty() && being->mName == player_imitated)
         emote(action);
 }
 
@@ -2279,7 +2279,7 @@ void LocalPlayer::imitateAction(const Being *const being,
     if (!being)
         return;
 
-    if (!mPlayerImitated.empty() && being->getName() == mPlayerImitated)
+    if (!mPlayerImitated.empty() && being->mName == mPlayerImitated)
     {
         setAction(action);
         playerHandler->changeAction(action);
@@ -2292,7 +2292,7 @@ void LocalPlayer::imitateDirection(const Being *const being,
     if (!being)
         return;
 
-    if (!mPlayerImitated.empty() && being->getName() == mPlayerImitated)
+    if (!mPlayerImitated.empty() && being->mName == mPlayerImitated)
     {
         if (!PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             return;
@@ -2326,8 +2326,9 @@ void LocalPlayer::imitateOutfit(const Being *const player,
     if (!player)
         return;
 
-    if (settings.imitationMode == 1 && !mPlayerImitated.empty()
-        && player->getName() == mPlayerImitated)
+    if (settings.imitationMode == 1 &&
+        !mPlayerImitated.empty() &&
+        player->mName == mPlayerImitated)
     {
         if (sprite < 0 || sprite >= player->getNumberOfLayers())
             return;
@@ -2375,8 +2376,9 @@ void LocalPlayer::imitateOutfit(const Being *const player,
 void LocalPlayer::followMoveTo(const Being *const being,
                                const int x, const int y)
 {
-    if (being && !mPlayerFollowed.empty()
-        && being->getName() == mPlayerFollowed)
+    if (being &&
+        !mPlayerFollowed.empty() &&
+         being->mName == mPlayerFollowed)
     {
         mPickUpTarget = nullptr;
         setDestination(x, y);
@@ -2391,7 +2393,8 @@ void LocalPlayer::followMoveTo(const Being *const being,
         return;
 
     mPickUpTarget = nullptr;
-    if (!mPlayerFollowed.empty() && being->getName() == mPlayerFollowed)
+    if (!mPlayerFollowed.empty() &&
+        being->mName == mPlayerFollowed)
     {
         switch (settings.followMode)
         {
@@ -2414,7 +2417,7 @@ void LocalPlayer::followMoveTo(const Being *const being,
                 }
                 break;
             case 3:
-                if (!mTarget || mTarget->getName() != mPlayerFollowed)
+                if (!mTarget || mTarget->mName != mPlayerFollowed)
                 {
                     if (actorManager)
                     {
@@ -2582,7 +2585,7 @@ void LocalPlayer::checkNewName(Being *const being)
     if (!being)
         return;
 
-    const std::string &nick = being->getName();
+    const std::string &nick = being->mName;
     if (being->getType() == ActorType::Player)
     {
         const Guild *const guild = getGuild();
@@ -2649,10 +2652,10 @@ bool LocalPlayer::checAttackPermissions(const Being *const target)
         case 0:
             return true;
         case 1:
-            return !(player_relations.getRelation(target->getName())
+            return !(player_relations.getRelation(target->mName)
                  == Relation::FRIEND);
         case 2:
-            return player_relations.checkBadRelation(target->getName());
+            return player_relations.checkBadRelation(target->mName);
         default:
         case 3:
             return false;

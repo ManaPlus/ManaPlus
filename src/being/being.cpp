@@ -743,7 +743,9 @@ void Being::takeDamage(Being *restrict const attacker,
         else if (attacker == localPlayer && amount)
         {
             chatWindow->battleChatLog(strprintf("%s : You hit %s -%d",
-                attacker->getName().c_str(), getName().c_str(), amount),
+                attacker->mName.c_str(),
+                mName.c_str(),
+                amount),
                 ChatMsgType::BY_PLAYER);
         }
     }
@@ -766,7 +768,7 @@ void Being::takeDamage(Being *restrict const attacker,
     if (amount > 0)
     {
         if (localPlayer && localPlayer == this)
-            localPlayer->setLastHitFrom(attacker->getName());
+            localPlayer->setLastHitFrom(attacker->mName);
 
         mDamageTaken += amount;
         if (mInfo)
@@ -797,9 +799,9 @@ void Being::takeDamage(Being *restrict const attacker,
         }
         else if (mType == ActorType::Player &&
                  socialWindow &&
-                 !getName().empty())
+                 !mName.empty())
         {
-            socialWindow->updateAvatar(getName());
+            socialWindow->updateAvatar(mName);
         }
 
         if (effectManager)
@@ -1150,7 +1152,7 @@ void Being::removeGuild(const int id) restrict2
         socialWindow->removeTab(mGuilds[id]);
 
     if (mGuilds[id])
-        mGuilds[id]->removeMember(getName());
+        mGuilds[id]->removeMember(mName);
     mGuilds.erase(id);
 }
 
@@ -1241,7 +1243,7 @@ void Being::updateGuild() restrict2
         updateColors();
         return;
     }
-    if (guild->getMember(getName()))
+    if (guild->getMember(mName))
     {
         setGuild(guild);
         if (!guild->getName().empty())
@@ -2719,7 +2721,7 @@ void Being::addToCache() const restrict2
     if (!mLowTraffic)
         return;
 
-    entry->setName(getName());
+    entry->setName(mName);
     entry->setLevel(getLevel());
     entry->setPartyName(getPartyName());
     entry->setGuildName(getGuildName());
