@@ -2018,7 +2018,7 @@ void Being::petLogic() restrict2
                 return;
 
             case 1:
-                newDir = mOwner->getDirection();
+                newDir = mOwner->mDirection;
                 break;
 
             case 2:
@@ -2058,7 +2058,7 @@ void Being::petLogic() restrict2
                 break;
             }
         }
-        if (newDir && newDir != getDirection())
+        if (newDir && newDir != mDirection)
             setDirection(newDir);
     }
 }
@@ -3878,7 +3878,7 @@ void Being::fixPetSpawnPos(int &restrict dstX,
 
     int offsetX = offsetX1;
     int offsetY = offsetY1;
-    switch (mOwner->getDirection())
+    switch (mOwner->mDirection)
     {
         case BeingDirection::LEFT:
             offsetX = -offsetY1;
