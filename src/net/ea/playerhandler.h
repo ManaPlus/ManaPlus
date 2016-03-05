@@ -52,7 +52,7 @@ class PlayerHandler notfinal : public Net::PlayerHandler
 
         bool canUseMagic() const override final;
 
-        Vector getDefaultWalkSpeed() const override final A_WARN_UNUSED;
+        int getDefaultWalkSpeed() const override final A_WARN_UNUSED;
 
         void setStat(Net::MessageIn &msg,
                      const int type,

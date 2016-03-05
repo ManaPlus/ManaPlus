@@ -59,11 +59,9 @@ void PlayerHandler::ignoreAll(const bool ignore A_UNUSED) const
 {
 }
 
-Vector PlayerHandler::getDefaultWalkSpeed() const
+int PlayerHandler::getDefaultWalkSpeed() const
 {
-    // Return an normalized speed for any side
-    // as the offset is calculated elsewhere.
-    return Vector(150, 150, 0);
+    return 150;
 }
 
 bool PlayerHandler::canUseMagic() const
@@ -85,8 +83,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
     switch (type)
     {
         case Ea::WALK_SPEED:
-            localPlayer->setWalkSpeed(Vector(static_cast<float>(
-                base), static_cast<float>(base), 0));
+            localPlayer->setWalkSpeed(base);
             PlayerInfo::setStatBase(Attributes::WALK_SPEED, base);
             PlayerInfo::setStatMod(Attributes::WALK_SPEED, 0);
             break;

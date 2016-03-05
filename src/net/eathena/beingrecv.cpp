@@ -318,7 +318,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     if (speed == 0)
         speed = 150;
 
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setWalkSpeed(speed);
     dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
@@ -482,7 +482,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     if (speed == 0)
         speed = 150;
 
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setWalkSpeed(speed);
     dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
@@ -656,7 +656,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     if (speed == 0)
         speed = 150;
 
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setWalkSpeed(speed);
     dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);

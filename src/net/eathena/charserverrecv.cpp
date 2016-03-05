@@ -238,7 +238,7 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
     localPlayer = charServerHandler->mSelectedCharacter->dummy;
     PlayerInfo::setBackend(charServerHandler->mSelectedCharacter->data);
     PlayerInfo::setStatBase(Attributes::WALK_SPEED,
-        playerHandler->getDefaultWalkSpeed().x);
+        playerHandler->getDefaultWalkSpeed());
 
     charServerHandler->mSelectedCharacter->dummy = nullptr;
 

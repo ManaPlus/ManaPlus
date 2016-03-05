@@ -186,9 +186,8 @@ Being::Being(const BeingId id,
     mIsGM(false),
     mType(type),
     mSpeechBubble(nullptr),
-    mWalkSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed()
-        : Vector(1, 1, 1)),
-    mSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed().x : 0),
+    mWalkSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed() : 1),
+    mSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed() : 0),
     mIp(),
     mSpriteRemap(new int[20]),
     mSpriteHide(new int[20]),
@@ -465,11 +464,11 @@ void Being::setSubtype(const BeingTypeId subtype,
                 if (playerHandler)
                     setWalkSpeed(playerHandler->getDefaultWalkSpeed());
                 else
-                    setWalkSpeed(Vector(1, 1, 0));
+                    setWalkSpeed(1);
             }
             else
             {
-                setWalkSpeed(Vector(speed, speed, 0));
+                setWalkSpeed(speed);
             }
         }
     }
@@ -1709,11 +1708,11 @@ void Being::nextTile() restrict2
     if ((mType != ActorType::Player || mUseDiagonal)
         && mX != pos.x && mY != pos.y)
     {
-        mSpeed = static_cast<float>(mWalkSpeed.x * 1.4F);
+        mSpeed = static_cast<float>(mWalkSpeed) * 1.4F;
     }
     else
     {
-        mSpeed = mWalkSpeed.x;
+        mSpeed = static_cast<float>(mWalkSpeed);
     }
 
     if (mX != pos.x || mY != pos.y)

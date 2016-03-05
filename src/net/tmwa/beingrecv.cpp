@@ -278,7 +278,7 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
             dstBeing->setParty(party);
     }
 
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setWalkSpeed(speed);
 
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint16_t look = msg.readUInt8("look");
@@ -414,7 +414,7 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
             dstBeing->setParty(party);
     }
 
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setWalkSpeed(speed);
 
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint16_t look = msg.readUInt8("look");
@@ -546,7 +546,7 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
             dstBeing->setParty(party);
     }
 
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setWalkSpeed(speed);
 
     const uint8_t hairStyle = msg.readUInt8("hair style");
     const uint16_t look = msg.readUInt8("look");
@@ -744,7 +744,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setSubtype(fromInt(job, BeingTypeId), look);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setWalkSpeed(speed);
     const uint16_t weapon = msg.readInt16("weapon");
     const uint16_t headBottom = msg.readInt16("head bottom");
 
@@ -945,7 +945,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     dstBeing->setSubtype(fromInt(job, BeingTypeId), look);
     if (dstBeing->getType() == ActorType::Monster && localPlayer)
         localPlayer->checkNewName(dstBeing);
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setWalkSpeed(speed);
     const uint16_t weapon = msg.readInt16("weapon");
     const uint16_t headBottom = msg.readInt16("head bottom");
 

@@ -458,7 +458,7 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
         return;
     }
     const int16_t speed = msg.readInt16("speed");
-    dstBeing->setWalkSpeed(Vector(speed, speed, 0));
+    dstBeing->setWalkSpeed(speed);
     int16_t x = msg.readInt16("x");
     int16_t y = msg.readInt16("y");
 

@@ -404,13 +404,13 @@ class Being notfinal : public ActorSprite,
         /**
          * Sets the walk speed in pixels per second.
          */
-        void setWalkSpeed(const Vector &restrict speed) restrict2
-        { mWalkSpeed = speed; mSpeed = speed.x; }
+        void setWalkSpeed(const int speed) restrict2
+        { mWalkSpeed = speed; mSpeed = static_cast<float>(speed); }
 
         /**
          * Gets the walk speed in pixels per second.
          */
-        Vector getWalkSpeed() const restrict2 noexcept A_WARN_UNUSED
+        int getWalkSpeed() const restrict2 noexcept A_WARN_UNUSED
         { return mWalkSpeed; }
 
         /**
@@ -1096,7 +1096,7 @@ class Being notfinal : public ActorSprite,
          * In pixels per second.
          * @see MILLISECONDS_IN_A_TICK
          */
-        Vector mWalkSpeed;
+        int mWalkSpeed;
         float mSpeed;
         std::string mIp;
         int *restrict mSpriteRemap A_NONNULLPOINTER;
