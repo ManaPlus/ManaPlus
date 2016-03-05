@@ -76,7 +76,7 @@ bool ServerFeatures::haveNativeGuilds() const
 
 bool ServerFeatures::haveIncompleteChatMessages() const
 {
-    return tmwServerVersion > 0;
+    return tmwServerVersion > 0 && tmwServerVersion <= 0x100209;
 }
 
 bool ServerFeatures::haveRaceSelection() const
