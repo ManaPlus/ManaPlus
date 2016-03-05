@@ -61,6 +61,8 @@ void BeingHandler::undress(Being *const being) const
     being->setSprite(SPRITE_EVOL2, 0);
     being->setSprite(SPRITE_EVOL3, 0);
     being->setSprite(SPRITE_EVOL4, 0);
+    being->setSprite(SPRITE_EVOL5, 0);
+    being->setSprite(SPRITE_EVOL6, 0);
     being->setSprite(SPRITE_HAIR, 0);
     being->setSprite(SPRITE_SHOES, 0);
 //    being->setSprite(SPRITE_BODY, 0, "", true);

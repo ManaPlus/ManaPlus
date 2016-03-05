@@ -41,6 +41,8 @@ enum
     SPRITE_EVOL2         = 13,  // in new versions also BODY2
     SPRITE_EVOL3         = 14,
     SPRITE_EVOL4         = 15,
+    SPRITE_EVOL5         = 16,
+    SPRITE_EVOL6         = 17,
     SPRITE_VECTOREND
 };
 

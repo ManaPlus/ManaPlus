@@ -56,6 +56,8 @@ const EquipSlot::Type EQUIP_CONVERT[] =
     EquipSlot::PROJECTILE_SLOT,    // 13   SPRITE_EVOL2
     EquipSlot::COSTUME_ROBE_SLOT,  // 14   SPRITE_EVOL3
     EquipSlot::RING1_SLOT,         // 15   SPRITE_EVOL4
+    EquipSlot::EVOL_SLOT3,         // 16   SPRITE_EVOL5
+    EquipSlot::EVOL_SLOT4,         // 17   SPRITE_EVOL6
 };
 
 namespace EAthena
@@ -207,7 +209,7 @@ void InventoryHandler::selectEgg(const Item *const item) const
 
 int InventoryHandler::convertFromServerSlot(const int serverSlot) const
 {
-    if (serverSlot < 0 || serverSlot > 15)
+    if (serverSlot < 0 || serverSlot > 17)
         return 0;
 
     return CAST_S32(EQUIP_CONVERT[serverSlot]);

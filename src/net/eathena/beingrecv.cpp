@@ -244,6 +244,16 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
             break;
+        case 18:
+            dstBeing->setSprite(SPRITE_EVOL5, id, color, itemColor);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL5);
+            break;
+        case 19:
+            dstBeing->setSprite(SPRITE_EVOL6, id, color, itemColor);
+            if (localPlayer)
+                localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL6);
+            break;
         default:
             UNIMPLIMENTEDPACKET;
             break;

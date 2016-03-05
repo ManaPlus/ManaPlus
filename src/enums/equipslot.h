@@ -51,6 +51,8 @@ namespace EquipSlot
         SHADOW_SHOES_SLOT      = 19,
         SHADOW_ACCESSORY1_SLOT = 20,
         SHADOW_ACCESSORY2_SLOT = 21,
+        EVOL_SLOT3             = 22,
+        EVOL_SLOT4             = 23,
         VECTOREND
     };
 }  // namespace EquipSlot
