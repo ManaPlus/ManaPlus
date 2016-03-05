@@ -25,22 +25,22 @@
 
 enum
 {
-    SPRITE_BASE = 0,
-    SPRITE_HAIR,
-    SPRITE_WEAPON,
-    SPRITE_HEAD_BOTTOM,
-    SPRITE_HEAD_TOP,
-    SPRITE_HEAD_MID,
-    SPRITE_HAIR_COLOR,
-    SPRITE_CLOTHES_COLOR,
-    SPRITE_SHIELD,
-    SPRITE_SHOES,
-    SPRITE_BODY,
-    SPRITE_FLOOR,
-    SPRITE_ROBE,
-    SPRITE_EVOL2,
-    SPRITE_EVOL3,
-    SPRITE_EVOL4,
+    SPRITE_BASE          = 0,
+    SPRITE_HAIR          = 1,
+    SPRITE_WEAPON        = 2,
+    SPRITE_HEAD_BOTTOM   = 3,
+    SPRITE_HEAD_TOP      = 4,
+    SPRITE_HEAD_MID      = 5,
+    SPRITE_HAIR_COLOR    = 6,
+    SPRITE_CLOTHES_COLOR = 7,
+    SPRITE_SHIELD        = 8,
+    SPRITE_SHOES         = 9,
+    SPRITE_BODY          = 10,
+    SPRITE_FLOOR         = 11,
+    SPRITE_ROBE          = 12,
+    SPRITE_EVOL2         = 13,  // in new versions also BODY2
+    SPRITE_EVOL3         = 14,
+    SPRITE_EVOL4         = 15,
     SPRITE_VECTOREND
 };
 
