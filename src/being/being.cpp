@@ -2170,10 +2170,10 @@ int Being::getOffset(const signed char pos,
     if (mMap)
     {
         const int time = get_elapsed_time(mActionTime);
-        offset = (pos == BeingDirection::LEFT
-            && neg == BeingDirection::RIGHT) ?
-            (time * mMap->getTileWidth() / mSpeed) :
-            (time * mMap->getTileHeight() / mSpeed);
+        offset = (pos == BeingDirection::LEFT &&
+            neg == BeingDirection::RIGHT) ?
+            (time * mMap->getTileWidth() / mSpeed)
+            : (time * mMap->getTileHeight() / mSpeed);
     }
 
     // We calculate the offset _from_ the _target_ location
