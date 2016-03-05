@@ -26,11 +26,10 @@
 #include "net/ea/network.h"
 
 /**
- * Protocol version, reported to the eAthena char and mapserver who can adjust
+ * Protocol version, reported to the tmwa char and mapserver who can adjust
  * the protocol accordingly.
  */
-#define CLIENT_PROTOCOL_VERSION      12
-#define CLIENT_TMW_PROTOCOL_VERSION  5
+#define CLIENT_PROTOCOL_VERSION  5
 
 namespace TmwAthena
 {

@@ -126,15 +126,8 @@ void CharServerHandler::connect() const
     outMsg.writeInt32(token.session_ID2, "session id2");
     // [Fate] The next word is unused by the old char server, so we squeeze in
     //        mana client version information
-    if (serverVersion > 0)
-    {
-        outMsg.writeInt16(CLIENT_PROTOCOL_VERSION, "client protocol version");
-    }
-    else
-    {
-        outMsg.writeInt16(CLIENT_TMW_PROTOCOL_VERSION,
-            "client protocol version");
-    }
+    outMsg.writeInt16(CLIENT_PROTOCOL_VERSION,
+        "client protocol version");
     outMsg.writeInt8(Being::genderToInt(token.sex), "gender");
 
     // We get 4 useless bytes before the real answer comes in (what are these?)
