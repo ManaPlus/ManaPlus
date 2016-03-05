@@ -160,7 +160,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     if (!maxHairColor)
         maxHairColor = ColorDB::getHairSize();
     if (!maxHairStyle)
-        maxHairStyle = mPlayer->getNumOfHairstyles();
+        maxHairStyle = ItemDB::getNumOfHairstyles();
 
     if (maxHairStyle)
     {
@@ -723,9 +723,9 @@ void CharCreateDialog::setDefaultGender(const GenderT gender)
 void CharCreateDialog::updateHair()
 {
     if (mHairStyle <= 0)
-        mHairStyle = Being::getNumOfHairstyles() - 1;
+        mHairStyle = ItemDB::getNumOfHairstyles() - 1;
     else
-        mHairStyle %= Being::getNumOfHairstyles();
+        mHairStyle %= ItemDB::getNumOfHairstyles();
     if (mHairStyle < CAST_S32(minHairStyle)
         || mHairStyle > CAST_S32(maxHairStyle))
     {

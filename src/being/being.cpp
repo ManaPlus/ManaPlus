@@ -103,9 +103,6 @@
 
 const unsigned int CACHE_SIZE = 50;
 
-int Being::mNumberOfHairstyles = 1;
-int Being::mNumberOfRaces = 1;
-
 int Being::mUpdateConfigTime = 0;
 unsigned int Being::mConfLineLim = 0;
 int Being::mSpeechType = 0;
@@ -2623,27 +2620,6 @@ void Being::dumpSprites() const restrict2
     {
         logger->log("%d,%s,%d", *it1, (*it2).c_str(), toInt(*it3, int));
     }
-}
-
-void Being::load()
-{
-    // Hairstyles are encoded as negative numbers. Count how far negative
-    // we can go.
-    int hairstyles = 1;
-    while (ItemDB::get(-hairstyles).getSprite(Gender::MALE,
-           BeingTypeId_zero) != paths.getStringValue("spriteErrorFile"))
-    {
-        hairstyles ++;
-    }
-    mNumberOfHairstyles = hairstyles;
-
-    int races = 100;
-    while (ItemDB::get(-races).getSprite(Gender::MALE, BeingTypeId_zero) !=
-           paths.getStringValue("spriteErrorFile"))
-    {
-        races ++;
-    }
-    mNumberOfRaces = races - 100;
 }
 
 void Being::updateName() restrict2

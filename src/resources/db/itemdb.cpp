@@ -55,6 +55,8 @@ namespace
     StringVect mTagNames;
     StringIntMap mTags;
     std::map<std::string, ItemSoundEvent::Type> mSoundNames;
+    int mNumberOfHairstyles = 1;
+    int mNumberOfRaces = 1;
 }  // namespace
 
 // Forward declarations
@@ -255,6 +257,24 @@ void ItemDB::load()
         ".xml");
     FOR_EACH (StringVectCIter, it, list)
         loadXmlFile(*it, tagNum);
+
+    // Hairstyles are encoded as negative numbers. Count how far negative
+    // we can go.
+    int hairstyles = 1;
+    while (ItemDB::get(-hairstyles).getSprite(Gender::MALE,
+           BeingTypeId_zero) != paths.getStringValue("spriteErrorFile"))
+    {
+        hairstyles ++;
+    }
+    mNumberOfHairstyles = hairstyles;
+
+    int races = 100;
+    while (ItemDB::get(-races).getSprite(Gender::MALE, BeingTypeId_zero) !=
+           paths.getStringValue("spriteErrorFile"))
+    {
+        races ++;
+    }
+    mNumberOfRaces = races - 100;
 }
 
 void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
@@ -1070,6 +1090,11 @@ std::string ItemDB::getNamesStr(const std::vector<int> &parts)
         }
     }
     return str;
+}
+
+int ItemDB::getNumOfHairstyles()
+{
+    return mNumberOfHairstyles;
 }
 
 #ifdef UNITTESTS

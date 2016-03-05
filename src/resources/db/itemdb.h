@@ -54,6 +54,8 @@ namespace ItemDB
     const ItemInfo &get(const int id) A_WARN_UNUSED;
     const ItemInfo &get(const std::string &name) A_WARN_UNUSED;
 
+    int getNumOfHairstyles() A_WARN_UNUSED;
+
     // Items database
     typedef std::map<int, ItemInfo*> ItemInfos;
     typedef std::map<std::string, ItemInfo*> NamedItemInfos;

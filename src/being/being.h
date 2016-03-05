@@ -327,12 +327,6 @@ class Being notfinal : public ActorSprite,
                             const std::string &restrict color = "") restrict2;
 
         /**
-         * Get the number of hairstyles implemented
-         */
-        static int getNumOfHairstyles() noexcept A_WARN_UNUSED
-        { return mNumberOfHairstyles; }
-
-        /**
          * Get the number of layers used to draw the being
          */
         int getNumberOfLayers() const restrict2 override A_WARN_UNUSED
@@ -547,8 +541,6 @@ class Being notfinal : public ActorSprite,
                        const int y,
                        const int width,
                        const int height) const restrict2 A_NONNULL(2);
-
-        static void load();
 
         void optionChanged(const std::string &restrict value)
                            restrict2 override;
@@ -1028,9 +1020,6 @@ class Being notfinal : public ActorSprite,
 
         /** Engine-related infos about weapon. */
         const ItemInfo *restrict mEquippedWeapon;
-
-        static int mNumberOfHairstyles; /** Number of hair styles in use */
-        static int mNumberOfRaces; /** Number of races in use */
 
         Path mPath;
         Text *restrict mText;
