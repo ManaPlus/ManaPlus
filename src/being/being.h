@@ -333,12 +333,6 @@ class Being notfinal : public ActorSprite,
         { return mNumberOfHairstyles; }
 
         /**
-         * Get the number of races implemented
-         */
-        static int getNumOfRaces() noexcept A_WARN_UNUSED
-        { return mNumberOfRaces; }
-
-        /**
          * Get the number of layers used to draw the being
          */
         int getNumberOfLayers() const restrict2 override A_WARN_UNUSED
