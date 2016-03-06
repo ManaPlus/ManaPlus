@@ -127,6 +127,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveExtendedDropsPosition() const override final;
 
         bool haveSecureTrades() const override final;
+
+        bool haveMultyStatusUp() const override final;
 };
 
 }  // namespace EAthena

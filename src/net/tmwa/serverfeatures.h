@@ -127,6 +127,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveExtendedDropsPosition() const override final A_CONST;
 
         bool haveSecureTrades() const override final A_CONST;
+
+        bool haveMultyStatusUp() const override final A_CONST;
 };
 
 }  // namespace TmwAthena

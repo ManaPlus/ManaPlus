@@ -270,4 +270,9 @@ bool ServerFeatures::haveSecureTrades() const
     return true;
 }
 
+bool ServerFeatures::haveMultyStatusUp() const
+{
+    return true;
+}
+
 }  // namespace EAthena

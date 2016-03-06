@@ -268,4 +268,9 @@ bool ServerFeatures::haveSecureTrades() const
     return false;
 }
 
+bool ServerFeatures::haveMultyStatusUp() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena
