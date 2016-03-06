@@ -46,10 +46,6 @@ PlayerHandler::PlayerHandler()
 {
 }
 
-void PlayerHandler::decreaseAttribute(const AttributesT attr A_UNUSED) const
-{
-}
-
 void PlayerHandler::ignorePlayer(const std::string &player A_UNUSED,
                                  const bool ignore A_UNUSED) const
 {

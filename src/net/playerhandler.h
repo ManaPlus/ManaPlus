@@ -52,8 +52,6 @@ class PlayerHandler notfinal
         virtual void increaseAttribute(const AttributesT attr,
                                        const int amount) const = 0;
 
-        virtual void decreaseAttribute(const AttributesT attr) const = 0;
-
         virtual void increaseSkill(const uint16_t skillId) const = 0;
 
         virtual void pickUp(const FloorItem *const floorItem) const = 0;

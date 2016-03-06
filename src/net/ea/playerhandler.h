@@ -42,9 +42,6 @@ class PlayerHandler notfinal : public Net::PlayerHandler
 
         A_DELETE_COPY(PlayerHandler)
 
-        void decreaseAttribute(const AttributesT attr) const
-                               override final A_CONST;
-
         void ignorePlayer(const std::string &player,
                           const bool ignore) const override final A_CONST;
 
