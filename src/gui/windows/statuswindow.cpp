@@ -47,6 +47,7 @@
 
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
+#include "net/serverfeatures.h"
 
 #include "resources/item/item.h"
 
@@ -796,11 +797,18 @@ void ChangeDisplay::action(const ActionEvent &event)
         const int newbase = PlayerInfo::getStatBase(mId) + cnt;
         PlayerInfo::setStatBase(mId, newbase);
 
-        for (int f = 0; f < mInc->getClickCount(); f ++)
+        if (serverFeatures->haveMultyStatusUp())
         {
-            playerHandler->increaseAttribute(mId, 1);
-            if (cnt != 1)
-                SDL_Delay(100);
+            playerHandler->increaseAttribute(mId, cnt);
+        }
+        else
+        {
+            for (int f = 0; f < cnt; f ++)
+            {
+                playerHandler->increaseAttribute(mId, 1);
+                if (cnt != 1)
+                    SDL_Delay(100);
+            }
         }
     }
 }
