@@ -50,32 +50,6 @@ namespace Ea
 
 namespace InventoryRecv
 {
-    const EquipSlot::Type EQUIP_POINTS[EquipSlot::VECTOREND] =
-    {
-        EquipSlot::LEGS_SLOT,               // Lower Headgear
-        EquipSlot::FIGHT1_SLOT,             // Weapon
-        EquipSlot::GLOVES_SLOT,             // Garment
-        EquipSlot::RING2_SLOT,              // Accessory 1
-        EquipSlot::RING1_SLOT,              // Armor
-        EquipSlot::FIGHT2_SLOT,             // Shield
-        EquipSlot::FEET_SLOT,               // Footgear
-        EquipSlot::NECK_SLOT,               // Accessory 2
-        EquipSlot::HEAD_SLOT,               // Upper Headgear
-        EquipSlot::TORSO_SLOT,              // Middle Headgear
-        EquipSlot::EVOL_RING1_SLOT,         // Costume Top Headgear
-        EquipSlot::EVOL_RING2_SLOT,         // Costume Mid Headgear
-        EquipSlot::PROJECTILE_SLOT,         // Costume Low Headgear
-        EquipSlot::COSTUME_ROBE_SLOT,       // Costume Garment/Robe
-        EquipSlot::MISSING1_SLOT,           // Missing slot 1
-        EquipSlot::MISSING2_SLOT,           // Missing slot 2
-        EquipSlot::SHADOW_ARMOR_SLOT,       // Shadow Armor
-        EquipSlot::SHADOW_WEAPON_SLOT,      // Shadow Weapon
-        EquipSlot::SHADOW_SHIELD_SLOT,      // Shadow Shield
-        EquipSlot::SHADOW_SHOES_SLOT,       // Shadow Shoes
-        EquipSlot::SHADOW_ACCESSORY2_SLOT,  // Shadow Accessory 2
-        EquipSlot::SHADOW_ACCESSORY1_SLOT,  // Shadow Accessory 1
-    };
-
     EquipBackend mEquips;
     InventoryItems mInventoryItems;
     Inventory *mStorage = nullptr;
@@ -215,24 +189,6 @@ void InventoryRecv::processPlayerArrowEquip(Net::MessageIn &msg)
     mEquips.setEquipment(inventoryHandler->getProjectileSlot(), index);
     ArrowsListener::distributeEvent();
     BLOCK_END("InventoryRecv::processPlayerArrowEquip")
-}
-
-int InventoryRecv::getSlot(const int eAthenaSlot)
-{
-    if (eAthenaSlot == 0)
-        return EquipSlot::VECTOREND;
-
-    if (eAthenaSlot & 0x8000)
-        return inventoryHandler->getProjectileSlot();
-
-    unsigned int mask = 1;
-    int position = 0;
-    while (!(eAthenaSlot & mask))
-    {
-        mask <<= 1;
-        position++;
-    }
-    return CAST_S32(EQUIP_POINTS[position]);
 }
 
 }  // namespace Ea

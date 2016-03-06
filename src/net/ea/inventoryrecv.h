@@ -58,8 +58,6 @@ namespace Ea
         void processPlayerStorageClose(Net::MessageIn &msg);
         void processPlayerAttackRange(Net::MessageIn &msg);
         void processPlayerArrowEquip(Net::MessageIn &msg);
-
-        int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
     }  // namespace InventoryRecv
 }  // namespace Ea
 

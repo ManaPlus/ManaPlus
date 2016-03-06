@@ -23,6 +23,8 @@
 #ifndef NET_TMWA_INVENTORYRECV_H
 #define NET_TMWA_INVENTORYRECV_H
 
+#include "localconsts.h"
+
 namespace Net
 {
     class MessageIn;
@@ -42,6 +44,8 @@ namespace TmwAthena
         void processPlayerStorageAdd(Net::MessageIn &msg);
         void processPlayerStorageRemove(Net::MessageIn &msg);
         void processPlayerInventoryRemove(Net::MessageIn &msg);
+
+        int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
     }  // namespace InventoryRecv
 }  // namespace TmwAthena
 

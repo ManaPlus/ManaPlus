@@ -29,6 +29,8 @@
 
 #include "const/net/inventory.h"
 
+#include "enums/equipslot.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "enums/net/deleteitemreason.h"
@@ -43,6 +45,7 @@
 
 #include "net/inventoryhandler.h"
 
+#include "net/inventoryhandler.h"
 #include "net/messagein.h"
 
 #include "net/eathena/itemflags.h"
@@ -66,6 +69,32 @@ namespace EAthena
 
 namespace InventoryRecv
 {
+    const EquipSlot::Type EQUIP_POINTS[EquipSlot::VECTOREND] =
+    {
+        EquipSlot::LEGS_SLOT,               // Lower Headgear
+        EquipSlot::FIGHT1_SLOT,             // Weapon
+        EquipSlot::GLOVES_SLOT,             // Garment
+        EquipSlot::RING2_SLOT,              // Accessory 1
+        EquipSlot::RING1_SLOT,              // Armor
+        EquipSlot::FIGHT2_SLOT,             // Shield
+        EquipSlot::FEET_SLOT,               // Footgear
+        EquipSlot::NECK_SLOT,               // Accessory 2
+        EquipSlot::HEAD_SLOT,               // Upper Headgear
+        EquipSlot::TORSO_SLOT,              // Middle Headgear
+        EquipSlot::EVOL_RING1_SLOT,         // Costume Top Headgear
+        EquipSlot::EVOL_RING2_SLOT,         // Costume Mid Headgear
+        EquipSlot::PROJECTILE_SLOT,         // Costume Low Headgear
+        EquipSlot::COSTUME_ROBE_SLOT,       // Costume Garment/Robe
+        EquipSlot::MISSING1_SLOT,           // Missing slot 1
+        EquipSlot::MISSING2_SLOT,           // Missing slot 2
+        EquipSlot::SHADOW_ARMOR_SLOT,       // Shadow Armor
+        EquipSlot::SHADOW_WEAPON_SLOT,      // Shadow Weapon
+        EquipSlot::SHADOW_SHIELD_SLOT,      // Shadow Shield
+        EquipSlot::SHADOW_SHOES_SLOT,       // Shadow Shoes
+        EquipSlot::SHADOW_ACCESSORY2_SLOT,  // Shadow Accessory 2
+        EquipSlot::SHADOW_ACCESSORY1_SLOT,  // Shadow Accessory 1
+    };
+
     Ea::InventoryItems mCartItems;
 }
 
@@ -135,7 +164,8 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         if (equipType)
         {
             Ea::InventoryRecv::mEquips.setEquipment(
-                Ea::InventoryRecv::getSlot(equipType), index);
+                InventoryRecv::getSlot(equipType),
+                index);
         }
     }
     BLOCK_END("InventoryRecv::processPlayerEquipment")
@@ -367,7 +397,8 @@ void InventoryRecv::processPlayerEquip(Net::MessageIn &msg)
     {
         case 0:
             Ea::InventoryRecv::mEquips.setEquipment(
-                Ea::InventoryRecv::getSlot(equipType), index);
+                InventoryRecv::getSlot(equipType),
+                index);
             break;
         case 1:
             NotifyManager::notify(NotifyTypes::EQUIP_FAILED_LEVEL);
@@ -395,7 +426,8 @@ void InventoryRecv::processPlayerUnEquip(Net::MessageIn &msg)
     else
     {
         Ea::InventoryRecv::mEquips.setEquipment(
-            Ea::InventoryRecv::getSlot(equipType), -1);
+            InventoryRecv::getSlot(equipType),
+            -1);
     }
     if (equipType & 0x8000)
         ArrowsListener::distributeEvent();
@@ -1106,6 +1138,24 @@ void InventoryRecv::processSelectCart(Net::MessageIn &msg)
     msg.readBeingId("account id");
     for (int f = 0; f < count; f ++)
         msg.readUInt8("cart type");
+}
+
+int InventoryRecv::getSlot(const int eAthenaSlot)
+{
+    if (eAthenaSlot == 0)
+        return EquipSlot::VECTOREND;
+
+    if (eAthenaSlot & 0x8000)
+        return inventoryHandler->getProjectileSlot();
+
+    unsigned int mask = 1;
+    int position = 0;
+    while (!(eAthenaSlot & mask))
+    {
+        mask <<= 1;
+        position++;
+    }
+    return CAST_S32(EQUIP_POINTS[position]);
 }
 
 }  // namespace EAthena
