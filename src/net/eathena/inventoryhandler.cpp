@@ -37,27 +37,28 @@
 
 extern Net::InventoryHandler *inventoryHandler;
 
-// missing EQUIP_RING1_SLOT
+// this conversion from bit corrupted LOOK_* to EquipSlot
+// for how it corrupted, see BeingRecv::processBeingChangeLookContinue
 const EquipSlot::Type EQUIP_CONVERT[] =
 {
-    EquipSlot::PROJECTILE_SLOT,    // 0    0
+    EquipSlot::PROJECTILE_SLOT,    // 0    SPRITE_BASE
     EquipSlot::FEET_SLOT,          // 1    SPRITE_HAIR
     EquipSlot::LEGS_SLOT,          // 2    SPRITE_WEAPON
     EquipSlot::TORSO_SLOT,         // 3    SPRITE_HEAD_BOTTOM
-    EquipSlot::GLOVES_SLOT,        // 4    0
-    EquipSlot::EVOL_RING1_SLOT,    // 5
-    EquipSlot::PROJECTILE_SLOT,    // 6    0
+    EquipSlot::GLOVES_SLOT,        // 4    SPRITE_HEAD_TOP
+    EquipSlot::EVOL_RING1_SLOT,    // 5    SPRITE_HEAD_MID
+    EquipSlot::PROJECTILE_SLOT,    // 6    SPRITE_HAIR_COLOR
     EquipSlot::HEAD_SLOT,          // 7    SPRITE_CLOTHES_COLOR
-    EquipSlot::RING2_SLOT,         // 8    0
+    EquipSlot::RING2_SLOT,         // 8    SPRITE_SHIELD
     EquipSlot::PROJECTILE_SLOT,    // 9    SPRITE_SHOES
     EquipSlot::FIGHT1_SLOT,        // 10   SPRITE_BODY
     EquipSlot::FIGHT2_SLOT,        // 11   SPRITE_FLOOR
-    EquipSlot::EVOL_RING2_SLOT,    // 12
+    EquipSlot::EVOL_RING2_SLOT,    // 12   SPRITE_ROBE
     EquipSlot::PROJECTILE_SLOT,    // 13   SPRITE_EVOL2
     EquipSlot::COSTUME_ROBE_SLOT,  // 14   SPRITE_EVOL3
     EquipSlot::RING1_SLOT,         // 15   SPRITE_EVOL4
-    EquipSlot::EVOL_SLOT3,         // 16   SPRITE_EVOL5
-    EquipSlot::EVOL_SLOT4,         // 17   SPRITE_EVOL6
+    EquipSlot::NECK_SLOT,          // 16   SPRITE_EVOL5
+    EquipSlot::RING2_SLOT,         // 17   SPRITE_EVOL6
 };
 
 namespace EAthena
@@ -209,7 +210,7 @@ void InventoryHandler::selectEgg(const Item *const item) const
 
 int InventoryHandler::convertFromServerSlot(const int serverSlot) const
 {
-    if (serverSlot < 0 || serverSlot > 17)
+    if (serverSlot < 0 || serverSlot >= 17)
         return 0;
 
     return CAST_S32(EQUIP_CONVERT[serverSlot]);

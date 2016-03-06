@@ -69,30 +69,31 @@ namespace EAthena
 
 namespace InventoryRecv
 {
+    // EQP_* to EquipSlot
     const EquipSlot::Type EQUIP_POINTS[EquipSlot::VECTOREND] =
     {
-        EquipSlot::LEGS_SLOT,               // Lower Headgear
-        EquipSlot::FIGHT1_SLOT,             // Weapon
-        EquipSlot::GLOVES_SLOT,             // Garment
-        EquipSlot::RING2_SLOT,              // Accessory 1
-        EquipSlot::RING1_SLOT,              // Armor
-        EquipSlot::FIGHT2_SLOT,             // Shield
-        EquipSlot::FEET_SLOT,               // Footgear
-        EquipSlot::NECK_SLOT,               // Accessory 2
-        EquipSlot::HEAD_SLOT,               // Upper Headgear
-        EquipSlot::TORSO_SLOT,              // Middle Headgear
-        EquipSlot::EVOL_RING1_SLOT,         // Costume Top Headgear
-        EquipSlot::EVOL_RING2_SLOT,         // Costume Mid Headgear
-        EquipSlot::PROJECTILE_SLOT,         // Costume Low Headgear
-        EquipSlot::COSTUME_ROBE_SLOT,       // Costume Garment/Robe
-        EquipSlot::MISSING1_SLOT,           // Missing slot 1
-        EquipSlot::MISSING2_SLOT,           // Missing slot 2
-        EquipSlot::SHADOW_ARMOR_SLOT,       // Shadow Armor
-        EquipSlot::SHADOW_WEAPON_SLOT,      // Shadow Weapon
-        EquipSlot::SHADOW_SHIELD_SLOT,      // Shadow Shield
-        EquipSlot::SHADOW_SHOES_SLOT,       // Shadow Shoes
-        EquipSlot::SHADOW_ACCESSORY2_SLOT,  // Shadow Accessory 2
-        EquipSlot::SHADOW_ACCESSORY1_SLOT,  // Shadow Accessory 1
+        EquipSlot::LEGS_SLOT,               // 0  1       EQP_HEAD_LOW
+        EquipSlot::FIGHT1_SLOT,             // 1  2       EQP_HAND_R
+        EquipSlot::GLOVES_SLOT,             // 2  4       EQP_GARMENT
+        EquipSlot::RING2_SLOT,              // 3  8       EQP_ACC_L
+        EquipSlot::RING1_SLOT,              // 4  16      EQP_ARMOR
+        EquipSlot::FIGHT2_SLOT,             // 5  32      EQP_HAND_L
+        EquipSlot::FEET_SLOT,               // 6  64      EQP_SHOES
+        EquipSlot::NECK_SLOT,               // 7  128     EQP_ACC_R
+        EquipSlot::HEAD_SLOT,               // 8  256     EQP_HEAD_TOP
+        EquipSlot::TORSO_SLOT,              // 9  512     EQP_HEAD_MID
+        EquipSlot::EVOL_RING1_SLOT,         // 10 1024    EQP_COSTUME_HEAD_TOP
+        EquipSlot::EVOL_RING2_SLOT,         // 11 2048    EQP_COSTUME_HEAD_MID
+        EquipSlot::PROJECTILE_SLOT,         // 12 4096    EQP_COSTUME_HEAD_LOW
+        EquipSlot::COSTUME_ROBE_SLOT,       // 13 8192    EQP_COSTUME_GARMENT
+        EquipSlot::PROJECTILE_SLOT,         // 14 16384   UNUSED_COSTUME_FLOOR
+        EquipSlot::PROJECTILE_SLOT,         // 15 32768   EQP_AMMO
+        EquipSlot::SHADOW_ARMOR_SLOT,       // 16 65536   EQP_SHADOW_ARMOR
+        EquipSlot::SHADOW_WEAPON_SLOT,      // 17 131072  EQP_SHADOW_WEAPON
+        EquipSlot::SHADOW_SHIELD_SLOT,      // 18 262144  EQP_SHADOW_SHIELD
+        EquipSlot::SHADOW_SHOES_SLOT,       // 19 524288  EQP_SHADOW_SHOES
+        EquipSlot::SHADOW_ACCESSORY2_SLOT,  // 20 1048576 EQP_SHADOW_ACC_R
+        EquipSlot::SHADOW_ACCESSORY1_SLOT,  // 21 2097152 EQP_SHADOW_ACC_L
     };
 
     Ea::InventoryItems mCartItems;
