@@ -64,13 +64,14 @@ void PlayerHandler::emote(const uint8_t emoteId) const
     outMsg.writeInt8(emoteId, "emote id");
 }
 
-void PlayerHandler::increaseAttribute(const AttributesT attr) const
+void PlayerHandler::increaseAttribute(const AttributesT attr,
+                                      const int amount) const
 {
     if (attr >= Attributes::STR && attr <= Attributes::LUK)
     {
         createOutPacket(CMSG_STAT_UPDATE_REQUEST);
         outMsg.writeInt16(CAST_S16(attr), "attribute id");
-        outMsg.writeInt8(1, "increase");
+        outMsg.writeInt8(amount, "increase");
     }
 }
 

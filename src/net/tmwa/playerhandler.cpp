@@ -64,7 +64,8 @@ void PlayerHandler::emote(const uint8_t emoteId) const
     outMsg.writeInt8(emoteId, "emote id");
 }
 
-void PlayerHandler::increaseAttribute(const AttributesT attr) const
+void PlayerHandler::increaseAttribute(const AttributesT attr,
+                                      const int amount A_UNUSED) const
 {
     if (attr >= Attributes::STR && attr <= Attributes::LUK)
     {

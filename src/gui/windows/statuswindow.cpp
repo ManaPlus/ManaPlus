@@ -798,7 +798,7 @@ void ChangeDisplay::action(const ActionEvent &event)
 
         for (int f = 0; f < mInc->getClickCount(); f ++)
         {
-            playerHandler->increaseAttribute(mId);
+            playerHandler->increaseAttribute(mId, 1);
             if (cnt != 1)
                 SDL_Delay(100);
         }

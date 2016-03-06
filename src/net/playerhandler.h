@@ -49,7 +49,8 @@ class PlayerHandler notfinal
 
         virtual void emote(const uint8_t emoteId) const = 0;
 
-        virtual void increaseAttribute(const AttributesT attr) const = 0;
+        virtual void increaseAttribute(const AttributesT attr,
+                                       const int amount) const = 0;
 
         virtual void decreaseAttribute(const AttributesT attr) const = 0;
 
