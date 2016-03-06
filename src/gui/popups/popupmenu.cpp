@@ -178,6 +178,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: send whisper to player
             mBrowserBox->addRow("/whispertext 'NAME'", _("Whisper"));
+            addMailCommands();
             addGmCommands();
             mBrowserBox->addRow("##3---");
 
@@ -505,6 +506,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
     // TRANSLATORS: popup menu item
     // TRANSLATORS: send whisper to player
     mBrowserBox->addRow("/whispertext 'NAME'", _("Whisper"));
+    addMailCommands();
     addGmCommands();
     mBrowserBox->addRow("##3---");
 
@@ -866,6 +868,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: attack player
             mBrowserBox->addRow("/attack 'NAME'", _("Attack"));
+            addMailCommands();
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: heal player
@@ -932,6 +935,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mSubType = BeingTypeId_zero;
             addPlayerRelation(name);
             mBrowserBox->addRow("##3---");
+            addMailCommands();
             addFollow();
 
             if (localPlayer->isInParty())
@@ -3137,6 +3141,18 @@ void PopupMenu::showCraftPopup()
     showPopup(mX, mY);
 }
 #endif
+
+void PopupMenu::addMailCommands()
+{
+#ifdef EATHENA_SUPPORT
+    if (!serverFeatures->haveMail())
+        return;
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: open mail dialog
+    mBrowserBox->addRow("/mailto 'NAME'", _("Mail to..."));
+#endif
+}
 
 void PopupMenu::moveUp()
 {
