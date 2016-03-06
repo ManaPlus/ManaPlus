@@ -283,3 +283,12 @@ void MailWindow::postConnection()
 {
     mailHandler->refresh();
 }
+
+void MailWindow::createMail(const std::string &to)
+{
+    if (mailEditWindow)
+        return;
+
+    CREATEWIDGETV0(mailEditWindow, MailEditWindow);
+    mailEditWindow->setTo(to);
+}

@@ -5491,6 +5491,12 @@ static const InputActionData inputActionData
         "guildrecall|recallguild",
         UseArgs_true,
         Protected_true},
+    {"keyMailTo",
+        defaultAction(&Actions::mailTo),
+        InputCondition::INGAME,
+        "mailto",
+        UseArgs_true,
+        Protected_false},
 };
 
 #undef defaultAction

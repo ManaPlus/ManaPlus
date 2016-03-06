@@ -667,6 +667,7 @@ enumStart(InputAction)
     COMMAND_PARTY_RECALL,
     COMMAND_BREAK_GUILD,
     COMMAND_GUILD_RECALL,
+    MAIL_TO,
     TOTAL
 }
 enumEnd(InputAction);

@@ -39,6 +39,8 @@
 
 #ifdef EATHENA_SUPPORT
 #include "gui/shortcut/emoteshortcut.h"
+
+#include "gui/windows/mailwindow.h"
 #endif
 
 #include "gui/windows/chatwindow.h"
@@ -1557,6 +1559,18 @@ impHandler(commandGuildRecall)
         return false;
     adminHandler->guildRecall(args);
     return true;
+}
+
+impHandler(mailTo)
+{
+#ifdef EATHENA_SUPPORT
+    if (!mailWindow)
+        return false;
+    mailWindow->createMail(event.args);
+    return true;
+#else
+    return false;
+#endif
 }
 
 }  // namespace Actions

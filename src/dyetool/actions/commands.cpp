@@ -138,5 +138,6 @@ impHandlerVoid(commandChangePartyLeader)
 impHandlerVoid(commandPartyRecall)
 impHandlerVoid(commandBreakGuild)
 impHandlerVoid(commandGuildRecall)
+impHandlerVoid(mailTo)
 
 }  // namespace Actions

@@ -138,6 +138,7 @@ namespace Actions
     decHandler(commandPartyRecall);
     decHandler(commandBreakGuild);
     decHandler(commandGuildRecall);
+    decHandler(mailTo);
 }  // namespace Actions
 
 #undef decHandler

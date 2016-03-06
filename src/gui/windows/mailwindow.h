@@ -67,6 +67,8 @@ class MailWindow final : public Window,
 
         void postConnection();
 
+        void createMail(const std::string &to);
+
     private:
         std::vector<MailMessage*> mMessages;
         std::map<int, MailMessage*> mMessagesMap;
