@@ -278,4 +278,9 @@ bool ServerFeatures::haveMail() const
     return false;
 }
 
+bool ServerFeatures::haveServerPets() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

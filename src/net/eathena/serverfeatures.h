@@ -131,6 +131,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveMultyStatusUp() const override final;
 
         bool haveMail() const override final;
+
+        bool haveServerPets() const override final;
 };
 
 }  // namespace EAthena

@@ -280,4 +280,9 @@ bool ServerFeatures::haveMail() const
     return true;
 }
 
+bool ServerFeatures::haveServerPets() const
+{
+    return true;
+}
+
 }  // namespace EAthena

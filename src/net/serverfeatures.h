@@ -128,6 +128,8 @@ class ServerFeatures notfinal
         virtual bool haveMultyStatusUp() const = 0;
 
         virtual bool haveMail() const = 0;
+
+        virtual bool haveServerPets() const = 0;
 };
 
 }  // namespace Net
