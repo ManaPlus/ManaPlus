@@ -126,6 +126,8 @@ class ServerFeatures notfinal
         virtual bool haveSecureTrades() const = 0;
 
         virtual bool haveMultyStatusUp() const = 0;
+
+        virtual bool haveMail() const = 0;
 };
 
 }  // namespace Net

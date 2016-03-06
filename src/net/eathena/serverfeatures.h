@@ -129,6 +129,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveSecureTrades() const override final;
 
         bool haveMultyStatusUp() const override final;
+
+        bool haveMail() const override final;
 };
 
 }  // namespace EAthena

@@ -275,4 +275,9 @@ bool ServerFeatures::haveMultyStatusUp() const
     return true;
 }
 
+bool ServerFeatures::haveMail() const
+{
+    return true;
+}
+
 }  // namespace EAthena

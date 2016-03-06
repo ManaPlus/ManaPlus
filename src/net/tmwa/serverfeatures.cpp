@@ -273,4 +273,9 @@ bool ServerFeatures::haveMultyStatusUp() const
     return false;
 }
 
+bool ServerFeatures::haveMail() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

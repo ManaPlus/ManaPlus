@@ -129,6 +129,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveSecureTrades() const override final A_CONST;
 
         bool haveMultyStatusUp() const override final A_CONST;
+
+        bool haveMail() const override final A_CONST;
 };
 
 }  // namespace TmwAthena
