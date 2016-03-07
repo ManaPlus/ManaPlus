@@ -90,9 +90,9 @@ void runCharCommand(const std::string &command,
         chatHandler->talk(std::string(
             settings.gmCharCommandSymbol).append(
             command).append(
-            " ").append(
+            " \"").append(
             name).append(
-            " ").append(
+            "\" ").append(
             params),
             GENERAL_CHANNEL);
     }
