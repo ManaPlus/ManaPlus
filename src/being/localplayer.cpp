@@ -84,6 +84,8 @@
 
 #include "resources/sprite/animatedsprite.h"
 
+#include "net/net.h"
+
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
@@ -1612,6 +1614,10 @@ void LocalPlayer::specialMove(const unsigned char direction)
 
 void LocalPlayer::magicAttack() const
 {
+#ifdef EATHENA_SUPPORT
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
+        return;
+#endif
     if (!chatWindow || !isAlive()
         || !playerHandler->canUseMagic())
     {

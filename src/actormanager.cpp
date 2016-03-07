@@ -48,6 +48,7 @@
 
 #include "net/beinghandler.h"
 #include "net/charserverhandler.h"
+#include "net/net.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
@@ -1328,8 +1329,15 @@ void ActorManager::healTarget() const
 
 void ActorManager::heal(const Being *const target) const
 {
-    if (!localPlayer || !chatWindow || !localPlayer->isAlive()
-        || !playerHandler->canUseMagic())
+#ifdef EATHENA_SUPPORT
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
+        return;
+#endif
+
+    if (!localPlayer ||
+        !chatWindow ||
+        !localPlayer->isAlive() ||
+        !playerHandler->canUseMagic())
     {
         return;
     }
@@ -1447,8 +1455,14 @@ Being* ActorManager::findMostDamagedPlayer(const int maxTileDist) const
 
 void ActorManager::itenplz() const
 {
-    if (!localPlayer || !chatWindow || !localPlayer->isAlive()
-        || !playerHandler->canUseMagic())
+#ifdef EATHENA_SUPPORT
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
+        return;
+#endif
+    if (!localPlayer ||
+        !chatWindow ||
+        !localPlayer->isAlive() ||
+        !playerHandler->canUseMagic())
     {
         return;
     }
