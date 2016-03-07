@@ -1192,8 +1192,6 @@ void NormalOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol,
                                       const ImageRect &restrict imgRect)
                                       restrict2
 {
-    if (!vertCol)
-        return;
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
     if (!image)

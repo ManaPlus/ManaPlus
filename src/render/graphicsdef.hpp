@@ -92,7 +92,7 @@ public:
                     const int x, const int y,
                     const int w, const int h,
                     const ImageRect &restrict imgRect)
-                    restrict2 override final;
+                    restrict2 override final A_NONNULL(2);
 
     void drawRectangle(const Rect &restrict rect) restrict2 override final;
 

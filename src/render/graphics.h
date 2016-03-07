@@ -236,7 +236,7 @@ class Graphics notfinal
                                 const int x, const int y,
                                 const int w, const int h,
                                 const ImageRect &restrict imgRect)
-                                restrict2 = 0;
+                                restrict2 A_NONNULL(2) = 0;
 
         virtual void fillRectangle(const Rect &restrict rectangle)
                                    restrict2 = 0;

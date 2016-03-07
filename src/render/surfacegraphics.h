@@ -149,7 +149,7 @@ class SurfaceGraphics final : public Graphics
                         const int x A_UNUSED, const int y A_UNUSED,
                         const int w A_UNUSED, const int h A_UNUSED,
                         const ImageRect &restrict imgRect A_UNUSED)
-                        restrict2 override final
+                        restrict2 override final A_NONNULL(2)
         { }
 
         void setBlitMode(const BlitModeT mode) restrict2 noexcept
