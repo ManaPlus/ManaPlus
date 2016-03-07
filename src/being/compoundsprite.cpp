@@ -300,7 +300,7 @@ void CompoundSprite::clear()
     mLastTime = 0;
 }
 
-void CompoundSprite::ensureSize(size_t layerCount)
+void CompoundSprite::ensureSize(const size_t layerCount)
 {
     // Skip if it won't change anything
     if (mSprites.size() >= layerCount)
@@ -308,36 +308,6 @@ void CompoundSprite::ensureSize(size_t layerCount)
 
 //    resize(layerCount, nullptr);
     mSprites.resize(layerCount);
-}
-
-/**
- * Returns the curent frame in the current animation of the given layer.
- */
-unsigned int CompoundSprite::getCurrentFrame(unsigned int layer) const
-{
-    if (layer >= CAST_U32(mSprites.size()))
-        return 0;
-
-    const Sprite *const s = mSprites[layer];
-    if (s)
-        return s->getCurrentFrame();
-
-    return 0;
-}
-
-/**
- * Returns the frame count in the current animation of the given layer.
- */
-unsigned int CompoundSprite::getFrameCount(unsigned int layer)
-{
-    if (layer >= CAST_U32(mSprites.size()))
-        return 0;
-
-    const Sprite *const s = mSprites[layer];
-    if (s)
-        return s->getFrameCount();
-
-    return 0;
 }
 
 void CompoundSprite::redraw() const

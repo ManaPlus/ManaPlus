@@ -83,7 +83,7 @@ class CompoundSprite notfinal : public Sprite
 
         void clear();
 
-        void ensureSize(size_t layerCount);
+        void ensureSize(const size_t layerCount);
 
         virtual void drawSprites(Graphics *const graphics,
                                  const int posX,
@@ -92,18 +92,6 @@ class CompoundSprite notfinal : public Sprite
         virtual void drawSpritesSDL(Graphics *const graphics,
                                     const int posX,
                                     const int posY) const;
-
-        /**
-         * Returns the curent frame in the current animation of the given
-         * layer.
-         */
-        virtual unsigned int getCurrentFrame(unsigned int layer)
-                                             const A_WARN_UNUSED;
-
-        /**
-         * Returns the frame count in the current animation of the given layer.
-         */
-        virtual unsigned int getFrameCount(unsigned int layer) A_WARN_UNUSED;
 
         void setAlpha(float alpha) override;
 
