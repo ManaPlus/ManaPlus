@@ -299,6 +299,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: attack monster
             mBrowserBox->addRow("/attack :'BEINGID'", _("Attack"));
+            addCatchPetCommands();
             addGmCommands();
             mBrowserBox->addRow("##3---");
 
@@ -393,6 +394,10 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 // TRANSLATORS: pet return to egg
                 mBrowserBox->addRow("pet to egg", _("Return to egg"));
                 mBrowserBox->addRow("##3---");
+            }
+            else
+            {
+                addCatchPetCommands();
             }
             break;
         case ActorType::SkillUnit:
@@ -3151,6 +3156,17 @@ void PopupMenu::addMailCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: open mail dialog
     mBrowserBox->addRow("/mailto 'NAME'", _("Mail to..."));
+#endif
+}
+
+void PopupMenu::addCatchPetCommands()
+{
+#ifdef EATHENA_SUPPORT
+    if (!serverFeatures->haveServerPets())
+        return;
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: catch pet command
+    mBrowserBox->addRow("/catchpet :'BEINGID'", _("Taming pet"));
 #endif
 }
 

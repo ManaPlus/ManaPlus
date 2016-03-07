@@ -143,8 +143,20 @@ impHandler(catchPet)
         return false;
 
     Being *target = nullptr;
-    if (!event.args.empty())
-        target = actorManager->findNearestByName(event.args);
+    const std::string args = event.args;
+    if (!args.empty())
+    {
+        if (args[0] == ':')
+        {
+            target = actorManager->findBeing(fromInt(atoi(
+                args.substr(1).c_str()), BeingId));
+        }
+        else
+        {
+            target = actorManager->findNearestByName(args);
+        }
+    }
+
     if (!target)
         target = localPlayer->getTarget();
     else

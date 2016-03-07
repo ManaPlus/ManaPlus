@@ -4099,7 +4099,7 @@ static const InputActionData inputActionData
     {"keyCatchPet",
         defaultAction(&Actions::catchPet),
         InputCondition::INGAME,
-        "catchpet|catch",
+        "catchpet|catch|taming",
         UseArgs_true,
         Protected_false},
     {"keyChatServerIgnoreWhisper",

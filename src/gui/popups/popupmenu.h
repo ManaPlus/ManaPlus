@@ -231,6 +231,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addMailCommands();
 
+        void addCatchPetCommands();
+
         void showGMPopup(const std::string &name);
 
         void showPlayerGMCommands(const std::string &name);
