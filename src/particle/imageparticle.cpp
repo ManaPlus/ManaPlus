@@ -75,15 +75,17 @@ void ImageParticle::draw(Graphics *restrict const graphics,
     if (mAlive != AliveStatus::ALIVE || !mImage)
         return;
 
+    const int w = mImage->mBounds.w;
+    const int h = mImage->mBounds.h;
     const int screenX = CAST_S32(mPos.x)
-        + offsetX - mImage->mBounds.w / 2;
+        + offsetX - w / 2;
     const int screenY = CAST_S32(mPos.y) - CAST_S32(mPos.z)
-        + offsetY - mImage->mBounds.h / 2;
+        + offsetY - h / 2;
 
     // Check if on screen
-    if (screenX + mImage->mBounds.w < 0 ||
+    if (screenX + w < 0 ||
         screenX > graphics->mWidth ||
-        screenY + mImage->mBounds.h < 0 ||
+        screenY + h < 0 ||
         screenY > graphics->mHeight)
     {
         return;
