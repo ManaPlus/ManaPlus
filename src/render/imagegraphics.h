@@ -128,7 +128,7 @@ class ImegeGraphics final : public Graphics
         { }
 
         void drawTileCollection(const ImageCollection *const vertCol A_UNUSED)
-                                override final
+                                override final A_NONNULL(2)
         { }
 
         void updateScreen() override final

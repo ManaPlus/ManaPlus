@@ -223,7 +223,8 @@ class Graphics notfinal
                                       restrict2 = 0;
 
         virtual void drawTileCollection(const ImageCollection
-                                        *restrict const vertCol) restrict2 = 0;
+                                        *restrict const vertCol) restrict2
+                                        A_NONNULL(2) = 0;
 
         virtual void calcTileCollection(ImageCollection *restrict const
                                         vertCol,

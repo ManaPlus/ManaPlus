@@ -765,8 +765,6 @@ void SDL2SoftwareGraphics::drawTileCollection(const ImageCollection
                                               *restrict const vertCol)
                                               restrict2
 {
-    if (!vertCol)
-        return;
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
     for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)

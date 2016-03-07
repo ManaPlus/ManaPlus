@@ -131,7 +131,7 @@ class SurfaceGraphics final : public Graphics
 
         void drawTileCollection(const ImageCollection *restrict const
                                 vertCol A_UNUSED)
-                                restrict2 override final
+                                restrict2 override final A_NONNULL(2)
         { }
 
         void updateScreen() override final

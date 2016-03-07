@@ -704,8 +704,6 @@ void MobileOpenGL2Graphics::drawTileCollection(const ImageCollection
                                                *restrict const vertCol)
                                                restrict2
 {
-    if (!vertCol)
-        return;
     setTexturingAndBlending(true);
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();

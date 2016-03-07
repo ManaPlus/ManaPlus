@@ -83,7 +83,8 @@ public:
                           restrict2 override final;
 
     void drawTileCollection(const ImageCollection
-                            *restrict const vertCol) restrict2 override final;
+                            *restrict const vertCol) restrict2 override final
+                            A_NONNULL(2);
 
     void updateScreen() restrict2 override final;
 

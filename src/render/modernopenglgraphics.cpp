@@ -690,8 +690,6 @@ void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
                                               *restrict const vertCol)
                                               restrict2
 {
-    if (!vertCol)
-        return;
     setTexturingAndBlending(true);
 /*
     if (!vertCol)
