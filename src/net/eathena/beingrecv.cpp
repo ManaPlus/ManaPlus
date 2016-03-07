@@ -1311,6 +1311,10 @@ void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(beingId);
     if (dstBeing)
     {
+        if (beingId == localPlayer->getId())
+        {
+            localPlayer->pingResponse();
+        }
         dstBeing->setName(name);
         dstBeing->setPartyName(msg.readString(24, "party name"));
         dstBeing->setGuildName(msg.readString(24, "guild name"));
