@@ -110,6 +110,7 @@ class SurfaceGraphics final : public Graphics
                               const Image *restrict const image A_UNUSED,
                               int x A_UNUSED,
                               int y A_UNUSED) const restrict2 override final
+                              A_NONNULL(2, 3)
         { }
 
         void calcTileSDL(ImageVertexes *restrict const vert A_UNUSED,

@@ -756,9 +756,6 @@ void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
                                                   int dstX,
                                                   int dstY) const restrict2
 {
-    if (!vert || !image)
-        return;
-
     const SDL_Rect &imageRect = image->mBounds;
     const int srcX = imageRect.x;
     const int srcY = imageRect.y;

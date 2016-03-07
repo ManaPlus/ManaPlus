@@ -72,7 +72,8 @@ public:
 
     void calcTileVertexes(ImageVertexes *restrict const vert,
                           const Image *restrict const image,
-                          int x, int y) const restrict2 override final;
+                          int x, int y) const restrict2 override final
+                          A_NONNULL(2, 3);
 
     void calcTileCollection(ImageCollection *restrict const vertCol,
                             const Image *restrict const image,
@@ -141,7 +142,8 @@ private:
     void inline calcTileVertexesInline(ImageVertexes *restrict const vert,
                                        const Image *restrict const image,
                                        int x,
-                                       int y) const restrict2 A_INLINE;
+                                       int y) const restrict2
+                                       A_INLINE A_NONNULL(2, 3);
 
     void inline drawImageInline(const Image *restrict const image,
                                 int dstX,

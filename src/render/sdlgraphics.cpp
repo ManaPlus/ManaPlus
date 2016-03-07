@@ -670,8 +670,6 @@ void SDLGraphics::calcTileVertexes(ImageVertexes *restrict const vert,
                                    const Image *restrict const image,
                                    int x, int y) const restrict2
 {
-    if (!vert || !image)
-        return;
     vert->image = image;
     calcTileSDL(vert, x, y);
 }
@@ -680,8 +678,6 @@ void SDLGraphics::calcTileVertexesInline(ImageVertexes *restrict const vert,
                                          const Image *restrict const image,
                                          int x, int y) const restrict2
 {
-    if (!vert || !image)
-        return;
     vert->image = image;
     calcTileSDL(vert, x, y);
 }
