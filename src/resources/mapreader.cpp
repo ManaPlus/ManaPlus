@@ -295,7 +295,10 @@ void MapReader::unloadTempLayers()
     mKnownDocs.clear();
 }
 
-static void loadReplaceLayer(const LayerInfoIterator &it, Map *const map)
+static void loadReplaceLayer(const LayerInfoIterator &it,
+                             Map *const map) A_NONNULL(2);
+static void loadReplaceLayer(const LayerInfoIterator &it,
+                             Map *const map)
 {
     MapReader::readLayer((*it).second, map);
 }
@@ -604,7 +607,7 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
                                 int &restrict x, int &restrict y,
                                 const int w, const int h)
 {
-    if (!map || !childNode)
+    if (!childNode)
         return false;
 
     if (!compression.empty() && compression != "gzip"
@@ -707,7 +710,7 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
                              int &restrict x, int &restrict y,
                              const int w, const int h)
 {
-    if (!map || !childNode)
+    if (!childNode)
         return false;
 
     if (!XmlHaveChildContent(childNode))
@@ -751,7 +754,7 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
 
 void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 {
-    if (!map || !node)
+    if (!node)
         return;
 
     // Layers are not necessarily the same size as the map

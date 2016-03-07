@@ -60,7 +60,8 @@ class MapReader final
         /**
          * Reads a map layer and adds it to the given map.
          */
-        static void readLayer(const XmlNodePtr node, Map *const map);
+        static void readLayer(const XmlNodePtr node,
+                              Map *const map) A_NONNULL(2);
 
     private:
         /**
@@ -71,7 +72,7 @@ class MapReader final
          *              be assigned.
          */
         static void readProperties(const XmlNodePtrConst node,
-                                   Properties *const props);
+                                   Properties *const props) A_NONNULL(2);
 
         static bool readBase64Layer(const XmlNodePtrConst childNode,
                                     Map *const map,
@@ -80,7 +81,7 @@ class MapReader final
                                     MapHeights *const heights,
                                     const std::string &compression,
                                     int &restrict x, int &restrict y,
-                                    const int w, const int h);
+                                    const int w, const int h) A_NONNULL(2);
 
         static bool readCsvLayer(const XmlNodePtrConst childNode,
                                  Map *const map,
@@ -88,16 +89,16 @@ class MapReader final
                                  const MapLayer::Type &layerType,
                                  MapHeights *const heights,
                                  int &restrict x, int &restrict y,
-                                 const int w, const int h);
+                                 const int w, const int h) A_NONNULL(2);
 
         /**
          * Reads a tile set.
          */
         static Tileset *readTileset(XmlNodePtr node,
                                     const std::string &path,
-                                    Map *const map) A_WARN_UNUSED;
+                                    Map *const map) A_WARN_UNUSED A_NONNULL(3);
 
-        static void updateMusic(Map *const map);
+        static void updateMusic(Map *const map) A_NONNULL(1);
 
         static void addLayerToList(const std::string &fileName);
 

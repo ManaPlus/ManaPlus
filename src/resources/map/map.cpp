@@ -163,8 +163,6 @@ Map::~Map()
     config.removeListeners(this);
     CHECKLISTENERS
 
-    delete [] mMetaTiles;
-
     if (mWalkLayer)
     {
         mWalkLayer->decRef();
@@ -186,6 +184,7 @@ Map::~Map()
         mAtlas = nullptr;
     }
     delete2(mHeights);
+    delete [] mMetaTiles;
 }
 
 void Map::optionChanged(const std::string &restrict value) restrict2
@@ -298,9 +297,6 @@ void Map::addLayer(MapLayer *const layer) restrict2
 
 void Map::addTileset(Tileset *const tileset) restrict2
 {
-    if (!tileset)
-        return;
-
     mTilesets.push_back(tileset);
     const int height = tileset->getHeight();
     if (height > mMaxTileHeight)

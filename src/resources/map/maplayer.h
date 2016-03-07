@@ -165,11 +165,11 @@ class MapLayer final: public ConfigListener
     protected:
         static int getTileDrawWidth(const TileInfo *restrict img,
                                     const int endX,
-                                    int &width) A_WARN_UNUSED;
+                                    int &width) A_WARN_UNUSED A_NONNULL(1);
 
         void updateConditionTiles(MetaTile *restrict const metaTiles,
                                   const int width,
-                                  const int height) restrict;
+                                  const int height) restrict A_NONNULL(2);
 
     private:
         const int mX;

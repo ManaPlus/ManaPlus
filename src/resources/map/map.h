@@ -125,12 +125,12 @@ class Map final : public Properties, public ConfigListener
         /**
          * Adds a layer to this map. The map takes ownership of the layer.
          */
-        void addLayer(MapLayer *const layer) restrict2;
+        void addLayer(MapLayer *const layer) restrict2 A_NONNULL(2);
 
         /**
          * Adds a tileset to this map. The map takes ownership of the tileset.
          */
-        void addTileset(Tileset *const tileset) restrict2;
+        void addTileset(Tileset *const tileset) restrict2 A_NONNULL(2);
 
         /**
          * Finds the tile set that a tile with the given global id is part of.
@@ -229,7 +229,8 @@ class Map final : public Properties, public ConfigListener
          * Adds a tile animation to the map
          */
         void addAnimation(const int gid,
-                          TileAnimation *restrict const animation) restrict2;
+                          TileAnimation *restrict const animation) restrict2
+                          A_NONNULL(3);
 
         void setDrawLayersFlags(const MapTypeT &restrict n) restrict2;
 
@@ -348,7 +349,8 @@ class Map final : public Properties, public ConfigListener
         void setWalkLayer(WalkLayer *restrict const layer) restrict2 noexcept
         { mWalkLayer = layer; }
 
-        void addHeights(const MapHeights *restrict const heights) restrict2;
+        void addHeights(const MapHeights *restrict const heights) restrict2
+                        A_NONNULL(2);
 
         uint8_t getHeightOffset(const int x, const int y) const restrict2;
 
@@ -368,7 +370,7 @@ class Map final : public Properties, public ConfigListener
         /**
          * Adds an actor to the map.
          */
-        Actors::iterator addActor(Actor *const actor) restrict2;
+        Actors::iterator addActor(Actor *const actor) restrict2 A_NONNULL(2);
 
         /**
          * Removes an actor from the map.
