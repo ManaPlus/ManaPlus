@@ -272,7 +272,7 @@ class LocalPlayer final : public Being,
         bool isServerBuggy() const A_WARN_UNUSED
         { return mIsServerBuggy; }
 
-        void fixPos(const int maxDist = 1);
+        void fixPos();
 
         /**
          * Sets the map the being is on

@@ -2090,7 +2090,7 @@ void LocalPlayer::updateCoords()
                 if ((*i).x == mX && (*i).y == mY)
                 {
                     mNavigatePath.pop_front();
-                    fixPos(6);
+                    fixPos();
                     break;
                 }
             }
@@ -2452,34 +2452,22 @@ bool LocalPlayer::allowAction()
     return true;
 }
 
-/*
-bool LocalPlayer::allowMove() const
-{
-    if (mIsServerBuggy)
-    {
-        if (mAction == MOVE)
-            return false;
-    }
-    return true;
-}
-*/
-
-void LocalPlayer::fixPos(const int maxDist)
+void LocalPlayer::fixPos()
 {
     if (!mCrossX && !mCrossY)
         return;
 
     const int dx = abs(mX - mCrossX);
     const int dy = abs(mY - mCrossY);
-    const int dest = (dx * dx) + (dy * dy);
+    const int dist = dx > dy ? dx : dy;
     const int time = cur_time;
+    const int maxDist = mSyncPlayerMove ? 2 : 5;
 
-    if (dest > maxDist)
-//    if (dest > maxDist && mActivityTime
-//        && (time < mActivityTime || time - mActivityTime > 2))
+    if (dist > maxDist)
     {
         mActivityTime = time;
         setTileCoords(mCrossX, mCrossY);
+// alternative way to fix, move to real position
 //        setDestination(mCrossX, mCrossY);
     }
 }
@@ -2514,7 +2502,7 @@ void LocalPlayer::setRealPos(const int x, const int y)
         {
             mCrossX = x;
             mCrossY = y;
-            fixPos(6);
+            fixPos();
         }
     }
     if (mMap->isCustom())
