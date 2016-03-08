@@ -565,6 +565,7 @@ SET(SRCS
     net/net.h
     const/net/inventory.h
     const/net/net.h
+    const/net/nostat.h
     net/partyhandler.h
     enums/net/partyshare.h
     enums/net/servertype.h

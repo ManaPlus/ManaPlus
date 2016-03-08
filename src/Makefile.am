@@ -1272,6 +1272,7 @@ manaplus_SOURCES += main.cpp \
 	      net/net.h \
 	      const/net/inventory.h \
 	      const/net/net.h \
+	      const/net/nostat.h \
 	      net/npchandler.h \
 	      net/partyhandler.h \
 	      net/pethandler.h \

@@ -45,7 +45,6 @@ namespace Ea
         void processMapMask(Net::MessageIn &msg);
     }  // namespace PlayerRecv
 
-    static const int NoStat = INT_MAX;
 }  // namespace Ea
 
 #endif  // NET_EA_PLAYERRECV_H

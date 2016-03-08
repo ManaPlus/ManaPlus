@@ -29,6 +29,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "const/net/nostat.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/viewport.h"
