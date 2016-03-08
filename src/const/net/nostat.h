@@ -21,15 +21,7 @@
 #ifndef CONST_NET_NOSTAT_H
 #define CONST_NET_NOSTAT_H
 
-#if defined(__GXX_EXPERIMENTAL_CXX0X__)
-#if defined(__APPLE__)
-#include <tr1/cstdint>
-#else
-#include <cstdint>
-#endif
-#else
-#include <stdint.h>
-#endif
+#include <limits.h>
 
 static const int NoStat = INT_MAX;
 
