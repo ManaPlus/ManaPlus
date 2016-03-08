@@ -41,7 +41,7 @@
 
 #include "net/messagein.h"
 
-#include "net/ea/eaprotocol.h"
+#include "net/eathena/sp.h"
 
 #include "debug.h"
 
@@ -234,7 +234,7 @@ void PlayerRecv::processPlayerHeal(Net::MessageIn &msg)
 
     const int type = msg.readInt16("var id");
     const int amount = msg.readInt16("value");
-    if (type == Ea::HP)
+    if (type == Sp::HP)
     {
         const int base = PlayerInfo::getAttribute(Attributes::HP) + amount;
         PlayerInfo::setAttribute(Attributes::HP, base);
@@ -250,7 +250,7 @@ void PlayerRecv::processPlayerHeal(Net::MessageIn &msg)
         }
         localPlayer->addHpMessage(amount);
     }
-    else if (type == Ea::MP)
+    else if (type == Sp::MP)
     {
         localPlayer->addSpMessage(amount);
     }

@@ -41,6 +41,7 @@
 #include "net/tmwa/inventoryhandler.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocolout.h"
+#include "net/tmwa/sp.h"
 
 #include "debug.h"
 
@@ -223,27 +224,27 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
 {
     switch (type)
     {
-        case Ea::WALK_SPEED:
+        case Sp::WALK_SPEED:
             localPlayer->setWalkSpeed(base);
             PlayerInfo::setStatBase(Attributes::WALK_SPEED, base);
             PlayerInfo::setStatMod(Attributes::WALK_SPEED, 0);
             break;
-        case Ea::EXP:
+        case Sp::EXP:
             PlayerInfo::setAttribute(Attributes::EXP, base);
             break;
-        case Ea::JOB_EXP:
+        case Sp::JOB_EXP:
             PlayerInfo::setStatExperience(Attributes::JOB, base,
                 PlayerInfo::getStatExperience(Attributes::JOB).second);
             break;
-        case Ea::KARMA:
+        case Sp::KARMA:
             PlayerInfo::setStatBase(Attributes::KARMA, base);
             PlayerInfo::setStatMod(Attributes::KARMA, 0);
             break;
-        case Ea::MANNER:
+        case Sp::MANNER:
             PlayerInfo::setStatBase(Attributes::MANNER, base);
             PlayerInfo::setStatMod(Attributes::MANNER, 0);
             break;
-        case Ea::HP:
+        case Sp::HP:
             PlayerInfo::setAttribute(Attributes::HP, base);
             if (localPlayer->isInParty() && Party::getParty(1))
             {
@@ -256,7 +257,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                 }
             }
             break;
-        case Ea::MAX_HP:
+        case Sp::MAX_HP:
             PlayerInfo::setAttribute(Attributes::MAX_HP, base);
 
             if (localPlayer->isInParty() && Party::getParty(1))
@@ -270,16 +271,16 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                 }
             }
             break;
-        case Ea::MP:
+        case Sp::MP:
             PlayerInfo::setAttribute(Attributes::MP, base);
             break;
-        case Ea::MAX_MP:
+        case Sp::MAX_MP:
             PlayerInfo::setAttribute(Attributes::MAX_MP, base);
             break;
-        case Ea::CHAR_POINTS:
+        case Sp::CHAR_POINTS:
             PlayerInfo::setAttribute(Attributes::CHAR_POINTS, base);
             break;
-        case Ea::LEVEL:
+        case Sp::LEVEL:
             PlayerInfo::setAttribute(Attributes::LEVEL, base);
             if (localPlayer)
             {
@@ -287,30 +288,30 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                 localPlayer->updateName();
             }
             break;
-        case Ea::SKILL_POINTS:
+        case Sp::SKILL_POINTS:
             PlayerInfo::setAttribute(Attributes::SKILL_POINTS, base);
             if (skillDialog)
                 skillDialog->update();
             break;
-        case Ea::STR:
+        case Sp::STR:
             setStatComplex(Attributes::STR);
             break;
-        case Ea::AGI:
+        case Sp::AGI:
             setStatComplex(Attributes::AGI);
             break;
-        case Ea::VIT:
+        case Sp::VIT:
             setStatComplex(Attributes::VIT);
             break;
-        case Ea::INT:
+        case Sp::INT:
             setStatComplex(Attributes::INT);
             break;
-        case Ea::DEX:
+        case Sp::DEX:
             setStatComplex(Attributes::DEX);
             break;
-        case Ea::LUK:
+        case Sp::LUK:
             setStatComplex(Attributes::LUK);
             break;
-        case Ea::MONEY:
+        case Sp::MONEY:
         {
             const int oldMoney = PlayerInfo::getAttribute(Attributes::MONEY);
             const int newMoney = base;
@@ -328,83 +329,83 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::setAttribute(Attributes::MONEY, newMoney);
             break;
         }
-        case Ea::EXP_NEEDED:
+        case Sp::EXP_NEEDED:
             PlayerInfo::setAttribute(Attributes::EXP_NEEDED, base);
             break;
-        case Ea::JOB_MOD:
+        case Sp::JOB_MOD:
             PlayerInfo::setStatExperience(Attributes::JOB,
                 PlayerInfo::getStatExperience(Attributes::JOB).first, base);
             break;
-        case Ea::TOTAL_WEIGHT:
+        case Sp::TOTAL_WEIGHT:
             PlayerInfo::setAttribute(Attributes::TOTAL_WEIGHT, base);
             break;
-        case Ea::MAX_WEIGHT:
+        case Sp::MAX_WEIGHT:
             PlayerInfo::setAttribute(Attributes::MAX_WEIGHT, base);
             break;
-        case Ea::STR_NEEDED:
+        case Sp::STR_NEEDED:
             statusWindow->setPointsNeeded(Attributes::STR, base);
             break;
-        case Ea::AGI_NEEDED:
+        case Sp::AGI_NEEDED:
             statusWindow->setPointsNeeded(Attributes::AGI, base);
             break;
-        case Ea::VIT_NEEDED:
+        case Sp::VIT_NEEDED:
             statusWindow->setPointsNeeded(Attributes::VIT, base);
             break;
-        case Ea::INT_NEEDED:
+        case Sp::INT_NEEDED:
             statusWindow->setPointsNeeded(Attributes::INT, base);
             break;
-        case Ea::DEX_NEEDED:
+        case Sp::DEX_NEEDED:
             statusWindow->setPointsNeeded(Attributes::DEX, base);
             break;
-        case Ea::LUK_NEEDED:
+        case Sp::LUK_NEEDED:
             statusWindow->setPointsNeeded(Attributes::LUK, base);
             break;
 
-        case Ea::ATK:
+        case Sp::ATK:
             PlayerInfo::setStatBase(Attributes::ATK, base);
             PlayerInfo::updateAttrs();
             break;
-        case Ea::ATK_MOD:
+        case Sp::ATK_MOD:
             PlayerInfo::setStatMod(Attributes::ATK, base);
             PlayerInfo::updateAttrs();
             break;
-        case Ea::MATK:
+        case Sp::MATK:
             PlayerInfo::setStatBase(Attributes::MATK, base);
             break;
-        case Ea::MATK_MOD:
+        case Sp::MATK_MOD:
             PlayerInfo::setStatMod(Attributes::MATK, base);
             break;
-        case Ea::DEF:
+        case Sp::DEF:
             PlayerInfo::setStatBase(Attributes::DEF, base);
             break;
-        case Ea::DEF_MOD:
+        case Sp::DEF_MOD:
             PlayerInfo::setStatMod(Attributes::DEF, base);
             break;
-        case Ea::MDEF:
+        case Sp::MDEF:
             PlayerInfo::setStatBase(Attributes::MDEF, base);
             break;
-        case Ea::MDEF_MOD:
+        case Sp::MDEF_MOD:
             PlayerInfo::setStatMod(Attributes::MDEF, base);
             break;
-        case Ea::HIT:
+        case Sp::HIT:
             PlayerInfo::setStatBase(Attributes::HIT, base);
             break;
-        case Ea::FLEE:
+        case Sp::FLEE:
             PlayerInfo::setStatBase(Attributes::FLEE, base);
             break;
-        case Ea::FLEE_MOD:
+        case Sp::FLEE_MOD:
             PlayerInfo::setStatMod(Attributes::FLEE, base);
             break;
-        case Ea::CRIT:
+        case Sp::CRIT:
             PlayerInfo::setStatBase(Attributes::CRIT, base);
             break;
-        case Ea::ATTACK_DELAY:
+        case Sp::ATTACK_DELAY:
             localPlayer->setAttackSpeed(base);
             PlayerInfo::setStatBase(Attributes::ATTACK_DELAY, base);
             PlayerInfo::setStatMod(Attributes::ATTACK_DELAY, 0);
             PlayerInfo::updateAttrs();
             break;
-        case Ea::JOB:
+        case Sp::JOB:
             PlayerInfo::setStatBase(Attributes::JOB, base);
             break;
         case 500:

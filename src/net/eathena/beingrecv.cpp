@@ -45,17 +45,15 @@
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/outfitwindow.h"
 
+#include "net/character.h"
+#include "net/charserverhandler.h"
+#include "net/messagein.h"
 #include "net/serverfeatures.h"
 
 #include "net/ea/beingrecv.h"
-#include "net/ea/eaprotocol.h"
-
-#include "net/charserverhandler.h"
-
-#include "net/character.h"
-#include "net/messagein.h"
 
 #include "net/eathena/maptypeproperty2.h"
+#include "net/eathena/sp.h"
 #include "net/eathena/sprite.h"
 
 #include "resources/iteminfo.h"
@@ -1368,7 +1366,7 @@ void BeingRecv::processBeingStatUpdate1(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    if (type != Ea::MANNER)
+    if (type != Sp::MANNER)
     {
         UNIMPLIMENTEDPACKET;
         return;
