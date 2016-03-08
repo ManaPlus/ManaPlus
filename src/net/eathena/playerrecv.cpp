@@ -250,7 +250,7 @@ void PlayerRecv::processPlayerHeal(Net::MessageIn &msg)
         }
         localPlayer->addHpMessage(amount);
     }
-    else if (type == Sp::MP)
+    else if (type == Sp::SP)
     {
         localPlayer->addSpMessage(amount);
     }
