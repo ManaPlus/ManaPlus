@@ -69,7 +69,9 @@ namespace Sp
         FLEE_MOD     = 51,
         CRIT         = 52,
         ATTACK_DELAY = 53,
-        JOB          = 55
+        JOB          = 55,
+
+        GM_LEVEL     = 500
     };
 }  // namespace Sp
 

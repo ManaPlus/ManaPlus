@@ -408,7 +408,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
         case Sp::JOB:
             PlayerInfo::setStatBase(Attributes::JOB, base);
             break;
-        case 500:
+        case Sp::GM_LEVEL:
             localPlayer->setGMLevel(base);
             break;
 
