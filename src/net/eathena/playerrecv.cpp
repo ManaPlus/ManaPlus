@@ -24,6 +24,7 @@
 
 #include "configuration.h"
 #include "notifymanager.h"
+#include "party.h"
 
 #include "being/beingflag.h"
 #include "being/localplayer.h"
@@ -39,6 +40,8 @@
 #include "input/inputmanager.h"
 
 #include "net/messagein.h"
+
+#include "net/ea/eaprotocol.h"
 
 #include "debug.h"
 
@@ -231,10 +234,26 @@ void PlayerRecv::processPlayerHeal(Net::MessageIn &msg)
 
     const int type = msg.readInt16("var id");
     const int amount = msg.readInt16("value");
-    if (type == 5)
+    if (type == Ea::HP)
+    {
+        const int base = PlayerInfo::getAttribute(Attributes::HP) + amount;
+        PlayerInfo::setAttribute(Attributes::HP, base);
+        if (localPlayer->isInParty() && Party::getParty(1))
+        {
+            PartyMember *const m = Party::getParty(1)
+                ->getMember(localPlayer->getId());
+            if (m)
+            {
+                m->setHp(base);
+                m->setMaxHp(PlayerInfo::getAttribute(Attributes::MAX_HP));
+            }
+        }
         localPlayer->addHpMessage(amount);
-    else if (type == 7)
+    }
+    else if (type == Ea::MP)
+    {
         localPlayer->addSpMessage(amount);
+    }
 }
 
 void PlayerRecv::processPlayerSkillMessage(Net::MessageIn &msg)
