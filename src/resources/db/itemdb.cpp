@@ -133,6 +133,8 @@ namespace
         { "level",       N_("Level %s"),       false },
         // TRANSLATORS: item info label (moving speed)
         { "speed",       N_("Speed %s"),       true },
+        // TRANSLATORS: item info label (moving speed)
+        { "atkspeed",    N_("Attack speed %s"), true },
         // TRANSLATORS: item info label (attack range)
         { "range",       N_("Range %s"),       true },
         // TRANSLATORS: item info label (flee)
@@ -141,8 +143,28 @@ namespace
         { "minflee",     N_("Min flee %s"),    true },
         // TRANSLATORS: item info label (max flee)
         { "maxflee",     N_("Max flee %s"),    true },
+        // TRANSLATORS: item info label (accuracy)
+        { "hit",         N_("% Accuracy %s"),  true },
+        // TRANSLATORS: item info label (min flee)
+        { "minflee",     N_("Min flee %s"),    true },
+        // TRANSLATORS: item info label (max flee)
+        { "maxflee",     N_("Max flee %s"),    true },
         // TRANSLATORS: item info label (card slots number)
-        { "cardslots",   N_("Card slots %s"),  false }
+        { "cardslots",   N_("Card slots %s"),  false },
+        // TRANSLATORS: item info label (experience)
+        { "exp",         N_("Experience %s"),  true },
+        // TRANSLATORS: item info label (karma)
+        { "karma",       N_("Karma %s"),       true },
+        // TRANSLATORS: item info label (manner)
+        { "manner",      N_("Manner %s"),      true },
+        // TRANSLATORS: item info label (money)
+        { "money",       N_("Money %s"),       true },
+        // TRANSLATORS: item info label (weight)
+        { "weight",      N_("Weight %s"),      false },
+        // TRANSLATORS: item info label (max weight)
+        { "maxweight",   N_("Max weight %s"),  true },
+        // TRANSLATORS: item info label (job experience)
+        { "jobexp",      N_("Job exp. %s"),    true }
     };
 }  // namespace
 
