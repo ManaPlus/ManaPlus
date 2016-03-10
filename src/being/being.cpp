@@ -2941,9 +2941,9 @@ void Being::drawSpriteAt(Graphics *restrict const graphics,
             gui->getFont()->drawString(graphics, color, color, mName, x, y);
         }
     }
-
-    if (mHighlightMonsterAttackRange && mType == ActorType::Monster
-        && isAlive())
+    else if (mHighlightMonsterAttackRange &&
+             mType == ActorType::Monster &&
+             isAlive())
     {
         int attackRange;
         if (mAttackRange)
@@ -2961,8 +2961,11 @@ void Being::drawSpriteAt(Graphics *restrict const graphics,
 
     CompoundSprite::draw(graphics, x, y);
 
-    if (mShowMobHP && mInfo && localPlayer && localPlayer->getTarget() == this
-        && mType == ActorType::Monster)
+    if (mShowMobHP &&
+        mInfo &&
+        localPlayer &&
+        localPlayer->getTarget() == this &&
+        mType == ActorType::Monster)
     {
         // show hp bar here
         int maxHP = mMaxHP;
@@ -2980,17 +2983,21 @@ void Being::drawSpriteAt(Graphics *restrict const graphics,
                   2 * 50,
                   4);
     }
-    if (mShowOwnHP
-        && mInfo
-        && localPlayer == this
-        && mAction != BeingAction::DEAD)
+    if (mShowOwnHP &&
+        mInfo &&
+        localPlayer == this &&
+        mAction != BeingAction::DEAD)
     {
-        drawHpBar(graphics, PlayerInfo::getAttribute(Attributes::MAX_HP),
-                  PlayerInfo::getAttribute(Attributes::HP), 0,
-                  UserColorId::PLAYER_HP, UserColorId::PLAYER_HP2,
-                  x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
-                  y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
-                  2 * 50, 4);
+        drawHpBar(graphics,
+            PlayerInfo::getAttribute(Attributes::MAX_HP),
+            PlayerInfo::getAttribute(Attributes::HP),
+            0,
+            UserColorId::PLAYER_HP,
+            UserColorId::PLAYER_HP2,
+            x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
+            y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
+            2 * 50,
+            4);
     }
 }
 
