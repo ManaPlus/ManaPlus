@@ -6587,7 +6587,7 @@ msgstr "Flüstern zu %s: %s"
 #. TRANSLATORS: prefix for moved message to trade tab.
 #: src/gui/windows/chatwindow.cpp:1559
 msgid "Moved: "
-msgstr "Bewegt:"
+msgstr "Bewegt: "
 
 #. TRANSLATORS: moved message to trade tab warning.
 #: src/gui/windows/chatwindow.cpp:1567

@@ -128,7 +128,7 @@ msgstr ""
 #. TRANSLATORS: last seen error
 #: src/actions/actions.cpp:1756 src/actions/actions.cpp:1770
 msgid "You not saw this nick."
-msgstr "Vous n'avez pas vu ce pseudo"
+msgstr "Vous n'avez pas vu ce pseudo."
 
 #. TRANSLATORS: last seen message
 #: src/actions/actions.cpp:1762
@@ -1826,7 +1826,7 @@ msgstr "Nom d'objet: %s"
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:316
 msgid "Cards: "
-msgstr "Cartes"
+msgstr "Cartes: "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
@@ -6485,7 +6485,7 @@ msgstr "Votre message a été déplacé sur l'onglet marchand"
 #. TRANSLATORS: error message
 #: src/gui/windows/chatwindow.cpp:1592
 msgid "Broken nick detected: "
-msgstr "Nom invalide détecté :"
+msgstr "Nom invalide détecté: "
 
 #. TRANSLATORS: owners pet name. For example: 4144's pet
 #. TRANSLATORS: user's pet
@@ -7334,7 +7334,7 @@ msgstr "Ajouter du texte à la compétence %s"
 #. TRANSLATORS: text skill dialog field
 #: src/gui/windows/skilldialog.cpp:810
 msgid "Text: "
-msgstr "Texte:"
+msgstr "Texte: "
 
 #. TRANSLATORS: here P is title for visible players tab in social window
 #: src/gui/windows/socialwindow.cpp:68
@@ -9547,18 +9547,18 @@ msgstr "Vous portez trop de choses pour pouvoir faire ça !"
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:294
 msgid "Fail summon."
-msgstr "Invocation ratée"
+msgstr "Invocation ratée."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:298
 msgid "Need spirits."
-msgstr "Besoin d'esprits"
+msgstr "Besoin d'esprits."
 
 #. TRANSLATORS: skill error message
 #: src/net/eathena/skillrecv.cpp:308
 #, c-format
 msgid "Need equipment %s."
-msgstr "Besoin de l'équipement %s"
+msgstr "Besoin de l'équipement %s."
 
 #. TRANSLATORS: skill error message
 #: src/net/eathena/skillrecv.cpp:314
@@ -9570,7 +9570,7 @@ msgstr "Besoin de l'équipement %s en quantité %d"
 #: src/net/eathena/skillrecv.cpp:328
 #, c-format
 msgid "Need item %s."
-msgstr "Besoin de l'objet %s"
+msgstr "Besoin de l'objet %s."
 
 #. TRANSLATORS: skill error message
 #: src/net/eathena/skillrecv.cpp:334
@@ -10076,7 +10076,7 @@ msgstr "Tu n'as pas le niveau pour l'équiper."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:146
 msgid "Unable to unequip."
-msgstr "Impossible de déséquiper"
+msgstr "Impossible de déséquiper."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:150
