@@ -1719,12 +1719,14 @@ void Being::nextTile() restrict2
 
     if (mX != pos.x || mY != pos.y)
     {
-        mOldHeight = mMap->getHeightOffset(mX, mY);
-        if (mMap &&
-            mReachable == Reachable::REACH_NO &&
-            mMap->getBlockMask(mX, mY) != mMap->getBlockMask(pos.x, pos.y))
+        if (mMap)
         {
-            mReachable = Reachable::REACH_UNKNOWN;
+            mOldHeight = mMap->getHeightOffset(mX, mY);
+            if (mReachable == Reachable::REACH_NO &&
+                mMap->getBlockMask(mX, mY) != mMap->getBlockMask(pos.x, pos.y))
+            {
+                mReachable = Reachable::REACH_UNKNOWN;
+            }
         }
     }
     mX = pos.x;
