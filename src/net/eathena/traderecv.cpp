@@ -157,7 +157,7 @@ void TradeRecv::processTradeItemAddResponse(Net::MessageIn &msg)
             break;
         default:
             NotifyManager::notify(NotifyTypes::TRADE_ADD_ERROR);
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(res);
             break;
     }
 }

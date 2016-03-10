@@ -261,7 +261,7 @@ void BeingRecv::processBeingAction(Net::MessageIn &msg)
         case AttackType::TOUCH_SKILL:
         case AttackType::MISS:
         case AttackType::SKILLMISS:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(CAST_S32(type));
             break;
     }
     BLOCK_END("BeingRecv::processBeingAction")

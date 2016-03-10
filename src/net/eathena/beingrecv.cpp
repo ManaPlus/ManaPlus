@@ -253,7 +253,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL6);
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(type);
             break;
     }
 }
@@ -783,7 +783,7 @@ void BeingRecv::processMapType(Net::MessageIn &msg)
     if (type == 19)
         NotifyManager::notify(NotifyTypes::MAP_TYPE_BATTLEFIELD);
     else
-        UNIMPLIMENTEDPACKET;
+        UNIMPLIMENTEDPACKETFIELD(type);
 }
 
 void BeingRecv::processSkillCasting(Net::MessageIn &msg)
@@ -802,7 +802,7 @@ void BeingRecv::processSkillCasting(Net::MessageIn &msg)
 
     if (srcId == BeingId_zero)
     {
-        UNIMPLIMENTEDPACKET;
+        UNIMPLIMENTEDPACKETFIELD(0);
         return;
     }
     else if (dstId != BeingId_zero)
@@ -1010,7 +1010,7 @@ void BeingRecv::processBeingAction2(Net::MessageIn &msg)
         default:
         case AttackType::MISS:
         case AttackType::SKILLMISS:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(CAST_S32(type));
             break;
     }
     BLOCK_END("BeingRecv::processBeingAction2")
@@ -1368,7 +1368,7 @@ void BeingRecv::processBeingStatUpdate1(Net::MessageIn &msg)
 
     if (type != Sp::MANNER)
     {
-        UNIMPLIMENTEDPACKET;
+        UNIMPLIMENTEDPACKETFIELD(type);
         return;
     }
     dstBeing->setManner(value);
@@ -1716,7 +1716,7 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
             break;
         case BeingType::CHAT:
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(beingType);
             type = ActorType::Monster;
             logger->log("not supported object type: %d, job: %d",
                 CAST_S32(beingType), CAST_S32(job));
@@ -1802,7 +1802,7 @@ void BeingRecv::applyPlayerAction(Net::MessageIn &msg,
             break;
 
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(type);
             break;
     }
 }

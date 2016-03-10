@@ -195,7 +195,7 @@ void PlayerRecv::processPlayerGetExp(Net::MessageIn &msg)
         else if (stat == 2)
             localPlayer->addJobMessage(exp);
         else
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(stat);
     }
     // need show particle depend on isQuest flag, for now ignored
 }

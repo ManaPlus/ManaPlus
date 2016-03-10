@@ -339,7 +339,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
         }
 
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(reason);
             break;
     }
 

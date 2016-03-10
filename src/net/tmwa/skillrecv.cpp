@@ -133,7 +133,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
                 txt = _("Cannot shout!");
                 break;
             default:
-                UNIMPLIMENTEDPACKET;
+                UNIMPLIMENTEDPACKETFIELD(bskill);
                 break;
         }
 
@@ -185,7 +185,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
             default:
                 // TRANSLATORS: error message
                 txt.append(_("Huh? What's that?"));
-                UNIMPLIMENTEDPACKET;
+                UNIMPLIMENTEDPACKETFIELD(reason);
                 break;
         }
     }
@@ -206,7 +206,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
                 txt = _("Poison had no effect...");
                 break;
             default:
-                UNIMPLIMENTEDPACKET;
+                UNIMPLIMENTEDPACKETFIELD(skillId);
                 break;
         }
     }

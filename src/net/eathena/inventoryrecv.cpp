@@ -246,7 +246,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
                 break;
             default:
                 pickup = Pickup::UNKNOWN;
-                UNIMPLIMENTEDPACKET;
+                UNIMPLIMENTEDPACKETFIELD(err);
                 break;
         }
         if (localPlayer)
@@ -980,7 +980,7 @@ void InventoryRecv::processPlayerRefine(Net::MessageIn &msg)
             notifyType = NotifyTypes::REFINE_DOWNGRADE;
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(flag);
             notifyType = NotifyTypes::REFINE_UNKNOWN;
             break;
     }

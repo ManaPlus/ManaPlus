@@ -117,7 +117,7 @@ void ChatRecv::processWhisperResponseContinue(Net::MessageIn &msg,
             }
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(type);
             break;
     }
     BLOCK_END("ChatRecv::processWhisperResponse")

@@ -212,7 +212,7 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
             break;
         }
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(cmd);
             break;
     }
 }

@@ -62,7 +62,7 @@ void MailRecv::processMailOpen(Net::MessageIn &msg)
             break;
 
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(flag);
             break;
     }
 }
@@ -115,7 +115,8 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
 
 void MailRecv::processGetAttachment(Net::MessageIn &msg)
 {
-    switch (msg.readUInt8("flag"))
+    const uint8_t flag = msg.readUInt8("flag");
+    switch (flag)
     {
         case 0:
             NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_OK);
@@ -127,14 +128,15 @@ void MailRecv::processGetAttachment(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_TOO_MANY_ITEMS);
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(flag);
             break;
     }
 }
 
 void MailRecv::processSendMailAck(Net::MessageIn &msg)
 {
-    switch (msg.readUInt8("fail flag"))
+    const uint8_t flag = msg.readUInt8("fail flag");
+    switch (flag)
     {
         case 0:
             NotifyManager::notify(NotifyTypes::MAIL_SEND_OK);
@@ -143,7 +145,7 @@ void MailRecv::processSendMailAck(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::MAIL_SEND_ERROR);
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(flag);
             break;
     }
 }

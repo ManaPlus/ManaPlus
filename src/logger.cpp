@@ -384,7 +384,23 @@ void Logger::unimplimented(const int id)
         return;
 
     const std::string str = strprintf("Unimplimented packet: %d (0x%x)",
-        id, CAST_U32(id));
+        id,
+        CAST_U32(id));
+    DebugMessageListener::distributeEvent(str);
+    log(str);
+}
+
+void Logger::unimplimented(const int id,
+                           const int id2)
+{
+    if (!mReportUnimplimented)
+        return;
+
+    const std::string str = strprintf(
+        "Unimplimented field value %d for packet %d (0x%x)",
+        id2,
+        id,
+        CAST_U32(id));
     DebugMessageListener::distributeEvent(str);
     log(str);
 }

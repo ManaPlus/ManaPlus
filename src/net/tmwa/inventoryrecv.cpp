@@ -198,7 +198,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
                 break;
             default:
                 pickup = Pickup::UNKNOWN;
-                UNIMPLIMENTEDPACKET;
+                UNIMPLIMENTEDPACKETFIELD(err);
                 break;
         }
         if (localPlayer)

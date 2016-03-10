@@ -114,7 +114,7 @@ void LoginRecv::processLoginError2(Net::MessageIn &msg)
         default:
             // TRANSLATORS: error message
             errorMessage = _("Unknown error.");
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(code);
             break;
     }
     client->setState(State::ERROR);

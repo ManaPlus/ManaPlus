@@ -415,7 +415,7 @@ void ChatRecv::processChatRoomLeave(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::ROOM_KICKED, name);
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(status);
             break;
     }
     if (localPlayer && name == localPlayer->getName())
@@ -578,7 +578,7 @@ void ChatRecv::processChatRoomCreateAck(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::ROOM_ALREADY_EXISTS);
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(result);
             break;
     }
     mChatRoom.clear();
@@ -619,7 +619,7 @@ void ChatRecv::processChatRoomJoinFailed(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::ROOM_ERROR_RACE);
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(result);
     }
 }
 
@@ -669,7 +669,7 @@ void ChatRecv::processChatRoomRoleChange(Net::MessageIn &msg)
             // dont show normal role
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(role);
             break;
     }
 }
@@ -702,7 +702,7 @@ void ChatRecv::processMannerMessage(Net::MessageIn &msg)
         case 5:
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(result);
             break;
     }
 }
@@ -721,7 +721,7 @@ void ChatRecv::processChatSilence(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::MANNER_NEGATIVE_POINTS, name);
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLIMENTEDPACKETFIELD(result);
             break;
     }
 }

@@ -53,6 +53,9 @@
 #define UNIMPLIMENTEDPACKET \
     logger->unimplimented(msg.getId())
 
+#define UNIMPLIMENTEDPACKETFIELD(field) \
+    logger->unimplimented(msg.getId(), field)
+
 /**
  * The Log Class : Useful to write debug or info messages
  */
@@ -173,6 +176,9 @@ class Logger final
         ;
 
         void unimplimented(const int id);
+
+        void unimplimented(const int id,
+                           const int id2);
 
     private:
         std::ofstream mLogFile;
