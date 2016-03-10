@@ -327,6 +327,12 @@ class BeingInfo final
 
         const std::vector<BeingMenuItem> &getMenu() const A_CONST;
 
+        void setString(const int idx,
+                       const std::string &value)
+        { mStrings[idx] = value; }
+
+        std::string getString(const int idx) const A_WARN_UNUSED;
+
         static void init();
 
         static void clear();
@@ -339,6 +345,7 @@ class BeingInfo final
         ItemSoundEvents mSounds;
         Attacks mAttacks;
         std::vector<BeingMenuItem> mMenu;
+        std::map<int, std::string> mStrings;
         unsigned char mBlockWalkMask;
         BlockTypeT mBlockType;
         const std::map <ItemColor, ColorDB::ItemColorData> *mColors;

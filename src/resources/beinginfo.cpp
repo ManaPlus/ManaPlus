@@ -58,6 +58,7 @@ BeingInfo::BeingInfo() :
     mSounds(),
     mAttacks(),
     mMenu(),
+    mStrings(),
     mBlockWalkMask(BlockMask::WALL
                  | BlockMask::AIR
                  | BlockMask::WATER),
@@ -238,4 +239,12 @@ void BeingInfo::addMenu(const std::string &name, const std::string &command)
 const std::vector<BeingMenuItem> &BeingInfo::getMenu() const
 {
     return mMenu;
+}
+
+std::string BeingInfo::getString(const int idx) const
+{
+    const std::map<int, std::string>::const_iterator it = mStrings.find(idx);
+    if (it == mStrings.end())
+        return "";
+    return (*it).second;
 }

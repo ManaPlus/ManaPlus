@@ -390,9 +390,20 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 // TRANSLATORS: pet rename item
                 mBrowserBox->addRow("/setpetname", _("Rename"));
                 mBrowserBox->addRow("##3---");
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: pet return to egg
-                mBrowserBox->addRow("pet to egg", _("Return to egg"));
+                const BeingInfo *const info = being->getInfo();
+                std::string msg;
+                if (info)
+                    msg = info->getString(0);
+                if (!msg.empty())
+                {
+                    mBrowserBox->addRow("pet to egg", msg.c_str());
+                }
+                else
+                {
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: pet return to egg
+                    mBrowserBox->addRow("pet to egg", _("Return to egg"));
+                }
                 mBrowserBox->addRow("##3---");
             }
             else

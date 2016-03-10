@@ -150,6 +150,12 @@ void PETDB::loadXmlFile(const std::string &fileName)
         currentInfo->setAttackDirectionType(XML::getProperty(petNode,
             "attackDirectionType", 4));
 
+        const std::string returnMessage = XML::langProperty(petNode,
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: pet return to egg
+            "removeMessage", _("Return to egg"));
+        currentInfo->setString(0, returnMessage);
+
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, petNode)
         {
