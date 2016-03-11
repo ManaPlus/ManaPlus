@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_SKILLLISTBOX_H
 #define GUI_WIDGETS_SKILLLISTBOX_H
 
+#include "const/resources/skill.h"
+
 #include "dragdrop.h"
 
 #include "gui/skin.h"
@@ -39,7 +41,7 @@
 
 #include "utils/delete2.h"
 
-#include "const/resources/skill.h"
+#include "render/graphics.h"
 
 #include "localconsts.h"
 
