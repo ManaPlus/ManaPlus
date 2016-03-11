@@ -35,6 +35,8 @@
 
 #include "gui/models/shopitems.h"
 
+#include "render/graphics.h"
+
 #include "resources/image.h"
 
 #include "resources/item/shopitem.h"

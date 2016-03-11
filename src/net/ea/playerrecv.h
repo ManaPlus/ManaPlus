@@ -28,7 +28,7 @@
 namespace Net
 {
     class MessageIn;
-}
+}  // namespace Net
 
 namespace Ea
 {
@@ -44,7 +44,6 @@ namespace Ea
         void processMapMusic(Net::MessageIn &msg);
         void processMapMask(Net::MessageIn &msg);
     }  // namespace PlayerRecv
-
 }  // namespace Ea
 
 #endif  // NET_EA_PLAYERRECV_H

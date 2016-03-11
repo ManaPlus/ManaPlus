@@ -203,7 +203,7 @@ void NpcDialogDB::unload()
 {
     logger->log1("Unloading npcdialog database...");
 
-    FOR_EACH(DialogsIter, it, mDialogs)
+    FOR_EACH (DialogsIter, it, mDialogs)
     {
         NpcDialogInfo *dialog = (*it).second;
         delete_all(dialog->menu.buttons);

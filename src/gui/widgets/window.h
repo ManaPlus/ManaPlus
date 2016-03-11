@@ -70,12 +70,14 @@
 
 #include "enums/resources/imageposition.h"
 
-#include "listeners/mouselistener.h"
-#include "listeners/widgetlistener.h"
-
 #include "gui/fonts/textchunk.h"
 
 #include "gui/widgets/basiccontainer2.h"
+
+#include "listeners/mouselistener.h"
+#include "listeners/widgetlistener.h"
+
+#include "render/graphics.h"
 
 #include "localconsts.h"
 

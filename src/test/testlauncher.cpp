@@ -37,6 +37,8 @@
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 
+#include "render/graphics.h"
+
 #include "resources/image.h"
 #include "resources/imagewriter.h"
 #include "resources/mstack.h"

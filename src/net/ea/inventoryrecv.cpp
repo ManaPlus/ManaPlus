@@ -28,8 +28,6 @@
 
 #include "const/net/inventory.h"
 
-#include "enums/equipslot.h"
-
 #include "enums/resources/notifytypes.h"
 
 #include "gui/widgets/createwidget.h"

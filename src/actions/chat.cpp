@@ -26,6 +26,8 @@
 
 #include "const/gui/chat.h"
 
+#include "being/localplayer.h"
+
 #include "gui/windows/chatwindow.h"
 
 #include "net/charserverhandler.h"

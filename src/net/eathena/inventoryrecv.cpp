@@ -44,8 +44,6 @@
 #include "listeners/arrowslistener.h"
 
 #include "net/inventoryhandler.h"
-
-#include "net/inventoryhandler.h"
 #include "net/messagein.h"
 
 #include "net/eathena/itemflags.h"
@@ -97,7 +95,7 @@ namespace InventoryRecv
     };
 
     Ea::InventoryItems mCartItems;
-}
+}  // namespace InventoryRecv
 
 void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
 {

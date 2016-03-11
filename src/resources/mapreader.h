@@ -29,7 +29,6 @@
 
 class Map;
 class MapHeights;
-class MapLayer;
 class Properties;
 class Tileset;
 

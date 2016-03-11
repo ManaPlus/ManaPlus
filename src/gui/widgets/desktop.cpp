@@ -36,6 +36,8 @@
 #include "resources/resourcemanager.h"
 #include "resources/wallpaper.h"
 
+#include "render/graphics.h"
+
 #include "debug.h"
 
 Desktop *desktop = nullptr;

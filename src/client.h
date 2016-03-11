@@ -44,7 +44,6 @@
 #include "localconsts.h"
 
 class Button;
-class Desktop;
 class Game;
 class LoginData;
 class Skin;

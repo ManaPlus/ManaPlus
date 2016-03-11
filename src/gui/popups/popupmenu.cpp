@@ -31,9 +31,6 @@
 #include "being/playerinfo.h"
 #include "being/playerrelation.h"
 #include "being/playerrelations.h"
-#ifdef EATHENA_SUPPORT
-#include "being/homunculusinfo.h"
-#endif
 
 #include "const/spells.h"
 

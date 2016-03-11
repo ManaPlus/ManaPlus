@@ -23,23 +23,23 @@
 #include "configuration.h"
 #include "graphicsvertexes.h"
 
-#include "input/mouseinput.h"
-
-#include "input/touch/touchactions.h"
-
 #include "gui/gui.h"
 #include "gui/skin.h"
+#include "gui/theme.h"
 
 #include "gui/fonts/font.h"
 
 #include "input/inputmanager.h"
+#include "input/mouseinput.h"
 
-#include "gui/theme.h"
+#include "input/touch/touchactions.h"
+
+#include "utils/delete2.h"
+
+#include "render/graphics.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"
-
-#include "utils/delete2.h"
 
 #include "debug.h"
 

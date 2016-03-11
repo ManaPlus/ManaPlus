@@ -23,6 +23,7 @@
 
 #ifdef USE_OPENGL
 
+#include "logger.h"
 #include "settings.h"
 
 #include "utils/delete2.h"

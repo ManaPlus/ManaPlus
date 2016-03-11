@@ -72,7 +72,7 @@ namespace InventoryRecv
         EquipSlot::SHADOW_ACCESSORY2_SLOT,  // Shadow Accessory 2
         EquipSlot::SHADOW_ACCESSORY1_SLOT,  // Shadow Accessory 1
     };
-}
+}  // namespace InventoryRecv
 
 void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
 {

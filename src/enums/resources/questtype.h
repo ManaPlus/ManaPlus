@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_QUESTTYPE_H
-#define RESOURCES_QUESTTYPE_H
+#ifndef ENUMS_RESOURCES_QUESTTYPE_H
+#define ENUMS_RESOURCES_QUESTTYPE_H
 
 #include "enums/simpletypes/enumdefines.h"
 
@@ -34,4 +34,4 @@ enumStart(QuestType)
 }
 enumEnd(QuestType);
 
-#endif  // RESOURCES_QUESTTYPE_H
+#endif  // ENUMS_RESOURCES_QUESTTYPE_H

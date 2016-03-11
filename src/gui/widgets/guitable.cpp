@@ -30,6 +30,8 @@
 
 #include "listeners/guitableactionlistener.h"
 
+#include "render/graphics.h"
+
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 

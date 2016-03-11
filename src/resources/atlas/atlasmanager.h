@@ -30,7 +30,6 @@
 #include <SDL.h>
 
 class AtlasResource;
-class Resource;
 
 struct AtlasItem;
 struct TextureAtlas;

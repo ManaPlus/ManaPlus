@@ -20,13 +20,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/viewport.h"
+#include "dyetool/gui/viewport.h"
 
 #include "configuration.h"
 #include "sdlshared.h"
 
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
+
+#include "render/graphics.h"
 
 #include "debug.h"
 

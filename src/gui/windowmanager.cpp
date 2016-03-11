@@ -61,6 +61,8 @@
 #include "utils/naclmessages.h"
 #endif  // __native_client__
 
+#include "render/graphics.h"
+
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>

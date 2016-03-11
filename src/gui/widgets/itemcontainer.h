@@ -35,6 +35,7 @@
 #include "localconsts.h"
 
 class Image;
+class ImageCollection;
 class Inventory;
 class Item;
 class SelectionListener;

@@ -67,13 +67,15 @@
 
 #include "settings.h"
 
-#include "resources/image.h"
-#include "resources/imagerect.h"
-
 #include "gui/gui.h"
 #include "gui/skin.h"
 
 #include "gui/fonts/font.h"
+
+#include "render/graphics.h"
+
+#include "resources/image.h"
+#include "resources/imagerect.h"
 
 #include "debug.h"
 

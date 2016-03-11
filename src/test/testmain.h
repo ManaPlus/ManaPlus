@@ -21,14 +21,15 @@
 #ifndef TEST_TESTMAIN_H
 #define TEST_TESTMAIN_H
 
+#ifdef USE_OPENGL
+
 #include "configuration.h"
-#include "logger.h"
 
 #include "render/renderers.h"
 
-#ifdef USE_OPENGL
-
 #include <string>
+
+class Logger;
 
 class TestMain final
 {

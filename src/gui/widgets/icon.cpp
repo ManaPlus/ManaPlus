@@ -24,6 +24,8 @@
 
 #include "gui/gui.h"
 
+#include "render/graphics.h"
+
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 

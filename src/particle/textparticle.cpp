@@ -26,6 +26,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "render/graphics.h"
+
 #include "debug.h"
 
 TextParticle::TextParticle(const std::string &restrict text,

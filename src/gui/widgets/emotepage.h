@@ -28,6 +28,8 @@
 
 #include "localconsts.h"
 
+class ImageCollection;
+
 class EmotePage final : public Widget,
                         public MouseListener,
                         public WidgetListener

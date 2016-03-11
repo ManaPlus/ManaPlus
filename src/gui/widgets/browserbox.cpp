@@ -37,6 +37,8 @@
 
 #include "gui/widgets/linkhandler.h"
 
+#include "render/graphics.h"
+
 #include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/iteminfo.h"

@@ -29,6 +29,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "render/graphics.h"
+
 #include "debug.h"
 
 int TextPreview::instances = 0;

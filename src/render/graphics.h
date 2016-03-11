@@ -211,7 +211,8 @@ class Graphics notfinal
         virtual void calcTileVertexes(ImageVertexes *restrict const vert,
                                       const Image *restrict const image,
                                       int x,
-                                      int y) const restrict2 A_NONNULL(2, 3) = 0;
+                                      int y) const restrict2 A_NONNULL(2, 3)
+                                      = 0;
 
         virtual void calcTileSDL(ImageVertexes *restrict const vert A_UNUSED,
                                  int x A_UNUSED,

@@ -20,11 +20,13 @@
 
 #include "gui/widgets/colorpage.h"
 
-#include "gui/models/colormodel.h"
-
 #include "gui/skin.h"
 
 #include "gui/fonts/font.h"
+
+#include "gui/models/colormodel.h"
+
+#include "render/graphics.h"
 
 #include "debug.h"
 

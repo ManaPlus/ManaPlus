@@ -70,10 +70,12 @@
 
 #include "gui/gui.h"
 
+#include "utils/delete2.h"
+
 #include "resources/image.h"
 #include "resources/imagerect.h"
 
-#include "utils/delete2.h"
+#include "render/graphics.h"
 
 #include "debug.h"
 

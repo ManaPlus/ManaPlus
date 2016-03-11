@@ -26,6 +26,8 @@
 
 #include "enums/being/beingdirection.h"
 
+#include "being/being.h"
+
 #include "gui/windows/okdialog.h"
 
 #include "gui/widgets/button.h"

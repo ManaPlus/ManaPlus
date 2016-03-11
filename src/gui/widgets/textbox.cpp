@@ -69,6 +69,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "render/graphics.h"
+
 #include <sstream>
 
 #include "debug.h"

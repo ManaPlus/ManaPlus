@@ -35,6 +35,7 @@
 #include "being/beingcacheentry.h"
 #include "being/beingflag.h"
 #include "being/beingspeech.h"
+#include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
@@ -187,7 +188,7 @@ Being::Being(const BeingId id,
     mType(type),
     mSpeechBubble(nullptr),
     mWalkSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed() : 1),
-    mSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed() : 0),
+    mSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed() : 1),
     mIp(),
     mSpriteRemap(new int[20]),
     mSpriteHide(new int[20]),
@@ -2164,12 +2165,12 @@ int Being::getOffset(const signed char pos,
                      const signed char neg) const restrict2
 {
     // Check whether we're walking in the requested direction
-    if (mAction != BeingAction::MOVE ||  !(mDirection & (pos | neg)))
+    if (mAction != BeingAction::MOVE || !(mDirection & (pos | neg)))
         return 0;
 
     int offset = 0;
 
-    if (mMap)
+    if (mMap && mSpeed)
     {
         const int time = get_elapsed_time(mActionTime);
         offset = (pos == BeingDirection::LEFT &&

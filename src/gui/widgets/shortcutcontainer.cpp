@@ -27,9 +27,11 @@
 
 #include "gui/gui.h"
 
+#include "utils/delete2.h"
+
 #include "resources/image.h"
 
-#include "utils/delete2.h"
+#include "render/graphics.h"
 
 #include "debug.h"
 

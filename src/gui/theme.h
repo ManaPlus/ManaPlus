@@ -25,14 +25,17 @@
 #ifndef GUI_THEME_H
 #define GUI_THEME_H
 
+#include "logger.h"
+
 #include "enums/gui/progresscolorid.h"
 #include "enums/gui/themecolorid.h"
 
+#include "enums/render/rendertype.h"
+
 #include "listeners/configlistener.h"
 
-#include "render/graphics.h"
-
 #include "gui/palette.h"
+#include "gui/rect.h"
 
 #include "utils/stringvector.h"
 
@@ -40,6 +43,7 @@
 
 class DyePalette;
 class Image;
+class ImageRect;
 class ImageSet;
 class Skin;
 class Theme;

@@ -26,6 +26,7 @@
 #include "configuration.h"
 #include "settings.h"
 
+#include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 

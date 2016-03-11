@@ -27,11 +27,6 @@
 
 #include <climits>
 
-namespace Net
-{
-    class MessageIn;
-}
-
 namespace Ea
 {
 

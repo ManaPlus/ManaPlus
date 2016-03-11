@@ -72,6 +72,8 @@
 #include "listeners/tooltiplistener.h"
 #include "listeners/widgetlistener.h"
 
+#include "render/graphics.h"
+
 #include "localconsts.h"
 
 class Skin;

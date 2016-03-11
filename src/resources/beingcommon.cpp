@@ -60,7 +60,7 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
         BlockMask::AIR;
     StringVect tokens;
     splitToStringVector(tokens, walkStr, ',');
-    FOR_EACH(StringVectCIter, it, tokens)
+    FOR_EACH (StringVectCIter, it, tokens)
     {
         if (walkStr == "walk" || walkStr == "ground")
             block |= BlockMask::GROUND;

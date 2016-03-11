@@ -42,7 +42,7 @@
 namespace Net
 {
     class MessageIn;
-}
+}  // namespace Net
 
 class Being;
 

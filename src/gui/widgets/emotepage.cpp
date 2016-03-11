@@ -22,6 +22,8 @@
 
 #include "graphicsvertexes.h"
 
+#include "render/graphics.h"
+
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 

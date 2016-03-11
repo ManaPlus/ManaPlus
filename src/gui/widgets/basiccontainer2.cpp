@@ -67,6 +67,8 @@
 
 #include "gui/widgets/basiccontainer2.h"
 
+#include "render/graphics.h"
+
 #include "debug.h"
 
 BasicContainer2::BasicContainer2(const Widget2 *const widget) :

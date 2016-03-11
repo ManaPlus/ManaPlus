@@ -22,8 +22,6 @@
 
 #include "net/tmwa/loginhandler.h"
 
-#include "client.h"
-
 #include "net/serverfeatures.h"
 
 #include "net/ea/loginrecv.h"

@@ -67,7 +67,9 @@
 
 #include "settings.h"
 
-#include "input/inputmanager.h"
+#ifdef USE_SDL2
+#include "enums/input/keyvalue.h"
+#endif
 
 #include "gui/gui.h"
 #include "gui/skin.h"
@@ -79,16 +81,16 @@
 
 #include "gui/popups/popupmenu.h"
 
-#ifdef USE_SDL2
-#include "enums/input/keyvalue.h"
-#endif
-
-#include "resources/image.h"
-#include "resources/imagerect.h"
+#include "input/inputmanager.h"
 
 #include "utils/copynpaste.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"
+
+#include "render/graphics.h"
+
+#include "resources/image.h"
+#include "resources/imagerect.h"
 
 #undef DELETE  // Win32 compatibility hack
 

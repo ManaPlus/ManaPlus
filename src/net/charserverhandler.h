@@ -23,9 +23,14 @@
 #ifndef NET_CHARSERVERHANDLER_H
 #define NET_CHARSERVERHANDLER_H
 
-#include "being/localplayer.h"
+#include "enums/being/gender.h"
+
+#include "enums/simpletypes/beingid.h"
 
 #include "net/characters.h"
+
+#include <string>
+#include <vector>
 
 class CharCreateDialog;
 class CharSelectDialog;

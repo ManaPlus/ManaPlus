@@ -49,6 +49,8 @@
 
 #include "input/inputmanager.h"
 
+#include "render/graphics.h"
+
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"
 #include "resources/map/speciallayer.h"

@@ -32,6 +32,8 @@
 
 #include "utils/delete2.h"
 
+#include "render/graphics.h"
+
 #include "debug.h"
 
 Popup::Popup(const std::string &name,

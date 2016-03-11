@@ -22,8 +22,6 @@
 
 #include "net/tmwa/charserverhandler.h"
 
-#include "client.h"
-
 #include "gui/windows/charcreatedialog.h"
 
 #include "net/character.h"

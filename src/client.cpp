@@ -35,6 +35,7 @@
 #include "statuseffect.h"
 #include "units.h"
 
+#include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
 

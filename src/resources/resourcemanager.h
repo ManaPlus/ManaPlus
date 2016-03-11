@@ -52,8 +52,8 @@ class ResourceManager final
     friend class Resource;
 
     public:
-        typedef Resource *(*loader)(SDL_RWops *);
-        typedef Resource *(&generator)(const void *const);
+        typedef Resource *(*loader)(SDL_RWops *rw);
+        typedef Resource *(&generator)(const void *const data);
 
         ResourceManager();
 

@@ -22,20 +22,7 @@
 
 #include "net/ea/playerhandler.h"
 
-#include "party.h"
-#include "notifymanager.h"
-#include "units.h"
-
-#include "being/localplayer.h"
 #include "being/playerinfo.h"
-
-#include "enums/resources/notifytypes.h"
-
-#include "gui/windows/skilldialog.h"
-#include "gui/windows/statuswindow.h"
-
-#include "net/ea/eaprotocol.h"
-#include "net/ea/playerrecv.h"
 
 #include "debug.h"
 

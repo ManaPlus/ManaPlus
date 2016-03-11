@@ -27,6 +27,8 @@
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "render/graphics.h"
+
 #include "debug.h"
 
 PopupList::PopupList(DropDown *const widget,

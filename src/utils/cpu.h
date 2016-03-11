@@ -39,6 +39,6 @@ namespace Cpu
     void detect();
 
     void printFlags();
-}  // namespace CPU
+}  // namespace Cpu
 
 #endif  // UTILS_CPU_H

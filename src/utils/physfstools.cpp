@@ -36,7 +36,7 @@ const char *dirSeparator = nullptr;
 namespace PhysFs
 {
 #if defined(__native_client__)
-    void init(const char *const name)
+    void init(const char *const name A_UNUSED)
     {
         if (!PHYSFS_init("/fakebinary"))
 #elif defined(ANDROID)

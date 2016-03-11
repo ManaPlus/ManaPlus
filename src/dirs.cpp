@@ -195,7 +195,9 @@ void Dirs::mountDataDir()
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
     char path[PATH_MAX];
-    if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (uint8_t*)path,
+    if (!CFURLGetFileSystemRepresentation(resourcesURL,
+        TRUE,
+        reinterpret_cast<uint8_t*>(path),
         PATH_MAX))
     {
         fprintf(stderr, "Can't find Resources directory\n");

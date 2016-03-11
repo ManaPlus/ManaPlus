@@ -71,11 +71,13 @@
 #include "gui/gui.h"
 #include "gui/skin.h"
 
-#include "resources/image.h"
-#include "resources/imagerect.h"
-
 #include "utils/delete2.h"
 #include "utils/stringutils.h"
+
+#include "render/graphics.h"
+
+#include "resources/image.h"
+#include "resources/imagerect.h"
 
 #include "debug.h"
 

@@ -29,6 +29,8 @@
 #include "gui/gui.h"
 #include "gui/skin.h"
 
+#include "render/graphics.h"
+
 #include "resources/image.h"
 
 #include "debug.h"

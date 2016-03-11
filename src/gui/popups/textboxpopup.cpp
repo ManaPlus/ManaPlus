@@ -27,6 +27,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "render/graphics.h"
+
 #include "debug.h"
 
 TextBoxPopup *textBoxPopup = nullptr;

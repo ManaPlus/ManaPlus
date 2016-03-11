@@ -18,11 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_THEMECOLORIDOPERATORS_H
-#define GUI_THEMECOLORIDOPERATORS_H
+#ifndef GUI_THEMECOLORSIDOPERATORS_H
+#define GUI_THEMECOLORSIDOPERATORS_H
 
 #include "enums/gui/themecolorid.h"
 
 ThemeColorIdT operator+(const ThemeColorIdT &id, const int& i);
 
-#endif  // GUI_THEMECOLORIDOPERATORS_H
+#endif  // GUI_THEMECOLORSIDOPERATORS_H

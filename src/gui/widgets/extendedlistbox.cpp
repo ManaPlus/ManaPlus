@@ -26,6 +26,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "render/graphics.h"
+
 #include "debug.h"
 
 ExtendedListBox::ExtendedListBox(const Widget2 *const widget,

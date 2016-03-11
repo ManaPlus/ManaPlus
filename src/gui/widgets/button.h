@@ -75,6 +75,8 @@
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
+#include "render/graphics.h"
+
 #include "localconsts.h"
 
 class Image;

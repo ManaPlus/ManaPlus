@@ -34,6 +34,8 @@
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/popuplist.h"
 
+#include "render/graphics.h"
+
 #include "resources/imagerect.h"
 
 #include "debug.h"
