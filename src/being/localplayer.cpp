@@ -990,7 +990,7 @@ void LocalPlayer::setGotoTarget(Being *const target)
     mPickUpTarget = nullptr;
     setTarget(target);
     mGoingToTarget = true;
-    setDestination(target->mX,
+    navigateTo(target->mX,
         target->mY);
 }
 
