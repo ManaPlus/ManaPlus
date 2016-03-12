@@ -298,8 +298,10 @@ void ChatTab::chatLog(std::string line,
     mScrollArea->logic();
     if (own != ChatMsgType::BY_PLAYER)
     {
-        if (own == ChatMsgType::BY_SERVER && (getType() == ChatTabType::PARTY
-            || getType() == ChatTabType::GUILD))
+        if (own == ChatMsgType::BY_SERVER &&
+            (getType() == ChatTabType::PARTY ||
+            getType() == ChatTabType::CHANNEL ||
+            getType() == ChatTabType::GUILD))
         {
             return;
         }
