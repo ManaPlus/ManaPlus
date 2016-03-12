@@ -1,3 +1,29 @@
+2016-03-12 New release 1.6.3.12
+fix: search command triggering for text like "??" or "?!"
+fix: pet popup. now it show info only for own pet (hercules).
+fix: custom homunculus names (hercules)
+fix: moving in diagonal near air or water collision (hercules).
+fix: not allow add equipped items to trade (hercules).
+fix: targeting monsters who moved from collision to walkable tiles.
+fix: ping if player in party/guild (hercules).
+fix: heal packet from server (hercules).
+add: different new chat commands for gms (hercules).
+add: gm menu for pets, homunculuses, mercenaries (hercules).
+add: "add to chat" in show items menu.
+add: auto fix for desync between client and server while moving.
+add: reduce partciles update for very far particles.
+add: support for readable links in quests.xml.
+add: new tags in quests.xml (questgiver, npc, cooridinates).
+add: parameters support in quests.xml.
+add: for future tmwa servers parse chat messages with nick in each message.
+add: two new equipment slots support (hercules).
+add: allow fast up stats without lag (hercules).
+add: into players menu command "mail to" (hercules).
+add: disable legacy "magic" commands (hercules).
+add: more item visible attributes into items.xml.
+add: support for custom text in pet menu item "return to egg".
+add: improved performance.
+
 2016-02-27 New release 1.6.2.27
 fix: crash in setup gui tab.
 fix: char creation if stats was hidden (tmwa).
