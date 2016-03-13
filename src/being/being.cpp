@@ -3050,7 +3050,7 @@ void Being::drawOtherSpriteAt(Graphics *restrict const graphics,
                               const int x,
                               const int y) const restrict2
 {
-    CompoundSprite::draw(graphics, x, y);
+    CompoundSprite::drawSimple(graphics, x, y);
 }
 
 void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
@@ -3063,7 +3063,7 @@ void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
     {
         if (!userPalette)
         {
-            CompoundSprite::draw(graphics, x, y);
+            CompoundSprite::drawSimple(graphics, x, y);
             return;
         }
 
@@ -3081,7 +3081,7 @@ void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
             2 * attackRange + mapTileSize, 2 * attackRange + mapTileSize));
     }
 
-    CompoundSprite::draw(graphics, x, y);
+    CompoundSprite::drawSimple(graphics, x, y);
 
     if (mShowMobHP &&
         mInfo &&
@@ -3118,7 +3118,7 @@ void Being::drawPortalSpriteAt(Graphics *restrict const graphics,
     {
         if (!userPalette)
         {
-            CompoundSprite::draw(graphics, x, y);
+            CompoundSprite::drawSimple(graphics, x, y);
             return;
         }
 
@@ -3135,7 +3135,7 @@ void Being::drawPortalSpriteAt(Graphics *restrict const graphics,
         }
     }
 
-    CompoundSprite::draw(graphics, x, y);
+    CompoundSprite::drawSimple(graphics, x, y);
 }
 
 void Being::drawHpBar(Graphics *restrict const graphics,
