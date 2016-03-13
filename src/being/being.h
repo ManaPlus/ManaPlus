@@ -645,10 +645,6 @@ class Being notfinal : public ActorSprite,
                        const int x,
                        const int y) const restrict2 A_NONNULL(2);
 
-        void drawSpriteAt(Graphics *restrict const graphics,
-                          const int x,
-                          const int y) const restrict2 A_NONNULL(2);
-
         void setMoveTime() restrict2 noexcept
         { mMoveTime = cur_time; }
 
@@ -997,6 +993,14 @@ class Being notfinal : public ActorSprite,
         void serverRemove() restrict2 noexcept;
 
     protected:
+        void drawPlayerSpriteAt(Graphics *restrict const graphics,
+                                const int x,
+                                const int y) const restrict2 A_NONNULL(2);
+
+        void drawOtherSpriteAt(Graphics *restrict const graphics,
+                               const int x,
+                               const int y) const restrict2 A_NONNULL(2);
+
         /**
          * Updates name's location.
          */

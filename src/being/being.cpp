@@ -2860,7 +2860,7 @@ void Being::drawPlayer(Graphics *restrict const graphics,
             }
 
             drawBeingCursor(graphics, px, py);
-            drawSpriteAt(graphics, px, py);
+            drawPlayerSpriteAt(graphics, px, py);
 
             for_each_horses(mUpHorseSprites)
             {
@@ -2872,11 +2872,11 @@ void Being::drawPlayer(Graphics *restrict const graphics,
         else
         {
             drawBeingCursor(graphics, px, py);
-            drawSpriteAt(graphics, px, py);
+            drawPlayerSpriteAt(graphics, px, py);
         }
 #else
         drawBeingCursor(graphics, px, py);
-        drawSpriteAt(graphics, px, py);
+        drawPlayerSpriteAt(graphics, px, py);
 #endif
     }
 }
@@ -2912,7 +2912,7 @@ void Being::drawOther(Graphics *restrict const graphics,
     // getActorY() + offsetY;
     const int py = mPixelY - mapTileSize + offsetY;
     drawBeingCursor(graphics, px, py);
-    drawSpriteAt(graphics, px, py);
+    drawOtherSpriteAt(graphics, px, py);
 }
 
 void Being::draw(Graphics *restrict const graphics,
@@ -2991,9 +2991,33 @@ void Being::drawBasic(Graphics *restrict const graphics,
     CompoundSprite::draw(graphics, x, y);
 }
 
-void Being::drawSpriteAt(Graphics *restrict const graphics,
-                         const int x,
-                         const int y) const restrict2
+void Being::drawPlayerSpriteAt(Graphics *restrict const graphics,
+                               const int x,
+                               const int y) const restrict2
+{
+    CompoundSprite::draw(graphics, x, y);
+
+    if (mShowOwnHP &&
+        mInfo &&
+        localPlayer == this &&
+        mAction != BeingAction::DEAD)
+    {
+        drawHpBar(graphics,
+            PlayerInfo::getAttribute(Attributes::MAX_HP),
+            PlayerInfo::getAttribute(Attributes::HP),
+            0,
+            UserColorId::PLAYER_HP,
+            UserColorId::PLAYER_HP2,
+            x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
+            y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
+            2 * 50,
+            4);
+    }
+}
+
+void Being::drawOtherSpriteAt(Graphics *restrict const graphics,
+                              const int x,
+                              const int y) const restrict2
 {
     if (mHighlightMapPortals &&
         mMap &&
@@ -3065,22 +3089,6 @@ void Being::drawSpriteAt(Graphics *restrict const graphics,
                   y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
                   2 * 50,
                   4);
-    }
-    if (mShowOwnHP &&
-        mInfo &&
-        localPlayer == this &&
-        mAction != BeingAction::DEAD)
-    {
-        drawHpBar(graphics,
-            PlayerInfo::getAttribute(Attributes::MAX_HP),
-            PlayerInfo::getAttribute(Attributes::HP),
-            0,
-            UserColorId::PLAYER_HP,
-            UserColorId::PLAYER_HP2,
-            x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
-            y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
-            2 * 50,
-            4);
     }
 }
 
