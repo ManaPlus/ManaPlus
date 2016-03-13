@@ -521,10 +521,10 @@ class Being notfinal : public ActorSprite,
 
         void setState(const uint8_t state) restrict2;
 
-        virtual void drawSprites(Graphics *restrict const  graphics,
-                                 const int posX,
-                                 const int posY) const
-                                 restrict2 override final A_NONNULL(2);
+        void drawPlayerSprites(Graphics *restrict const  graphics,
+                               const int posX,
+                               const int posY) const
+                               restrict2 A_NONNULL(2);
 
         virtual void drawSpritesSDL(Graphics *restrict const graphics,
                                     const int posX,
@@ -1019,6 +1019,10 @@ class Being notfinal : public ActorSprite,
                                  const int x,
                                  const int y) const restrict2 A_NONNULL(2);
 
+        void drawCompound(Graphics *const graphics,
+                          const int posX,
+                          const int posY) const A_NONNULL(2);
+
         /**
          * Updates name's location.
          */
@@ -1166,9 +1170,8 @@ class Being notfinal : public ActorSprite,
 
         int mX;             // position in tiles
         int mY;             // position in tiles
-        int mSortOffsetY;   // caculated offset in pixels based on mOffsetY
-        // +++ need change name for fix conflict with CompoundSprite::mOffsetY
-        int mOffsetY;       // tile height offset in pixels
+        int mSortOffsetY;   // caculated offset in pixels based on mPixelOffsetY
+        int mPixelOffsetY;  // tile height offset in pixels
                             // calculated between tiles
         int mFixedOffsetY;  // fixed tile height offset in pixels for tile
         uint8_t mOldHeight;

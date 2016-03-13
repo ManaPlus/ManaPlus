@@ -50,10 +50,6 @@ class CompoundSprite notfinal : public Sprite
 
         bool update(const int time) override final;
 
-        void draw(Graphics *const graphics,
-                  const int posX,
-                  const int posY) const override A_NONNULL(2);
-
         void drawSimple(Graphics *const graphics,
                         const int posX,
                         const int posY) const A_NONNULL(2);
@@ -89,9 +85,9 @@ class CompoundSprite notfinal : public Sprite
 
         void ensureSize(const size_t layerCount);
 
-        virtual void drawSprites(Graphics *const graphics,
-                                 const int posX,
-                                 const int posY) const;
+        void drawSprites(Graphics *const graphics,
+                         const int posX,
+                         const int posY) const;
 
         virtual void drawSpritesSDL(Graphics *const graphics,
                                     const int posX,
@@ -112,7 +108,7 @@ class CompoundSprite notfinal : public Sprite
 
         std::vector<Sprite*> mSprites;
 
-    private:
+    protected:
         void redraw() const;
 
         void updateImages() const;

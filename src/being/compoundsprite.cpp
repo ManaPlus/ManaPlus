@@ -136,33 +136,6 @@ bool CompoundSprite::update(const int time)
     return ret;
 }
 
-void CompoundSprite::draw(Graphics *const graphics,
-                          const int posX,
-                          const int posY) const
-{
-    FUNC_BLOCK("CompoundSprite::draw", 1)
-    if (mNeedsRedraw)
-        updateImages();
-
-    if (mSprites.empty())  // Nothing to draw
-        return;
-
-    if (mAlpha == 1.0F && mImage)
-    {
-        graphics->drawImage(mImage, posX + mOffsetX, posY + mOffsetY);
-    }
-    else if (mAlpha && mAlphaImage)
-    {
-        mAlphaImage->setAlpha(mAlpha);
-        graphics->drawImage(mAlphaImage,
-            posX + mOffsetX, posY + mOffsetY);
-    }
-    else
-    {
-        drawSprites(graphics, posX, posY);
-    }
-}
-
 void CompoundSprite::drawSimple(Graphics *const graphics,
                                 const int posX,
                                 const int posY) const

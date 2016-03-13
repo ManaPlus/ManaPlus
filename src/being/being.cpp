@@ -71,6 +71,7 @@
 #include "resources/emoteinfo.h"
 #include "resources/emotesprite.h"
 #include "resources/horseinfo.h"
+#include "resources/image.h"
 #include "resources/iteminfo.h"
 
 #include "resources/db/avatardb.h"
@@ -211,7 +212,7 @@ Being::Being(const BeingId id,
     mX(0),
     mY(0),
     mSortOffsetY(0),
-    mOffsetY(0),
+    mPixelOffsetY(0),
     mFixedOffsetY(0),
     mOldHeight(0),
     mDamageTaken(0),
@@ -1736,7 +1737,7 @@ void Being::nextTile() restrict2
     mX = pos.x;
     mY = pos.y;
     const uint8_t height = mMap->getHeightOffset(mX, mY);
-    mOffsetY = height - mOldHeight;
+    mPixelOffsetY = height - mOldHeight;
     mFixedOffsetY = height;
     mNeedPosUpdate = true;
     setAction(BeingAction::MOVE, 0);
@@ -1836,12 +1837,12 @@ void Being::logic() restrict2
             mNeedPosUpdate = false;
 
         const int halfTile = mapTileSize / 2;
-        const float offset2 = static_cast<float>(mOffsetY * abs(offset)) / 2;
-//        mSortOffsetY = (mOldHeight - mFixedOffsetY + mOffsetY)
+        const float offset2 = static_cast<float>(mPixelOffsetY * abs(offset)) / 2;
+//        mSortOffsetY = (mOldHeight - mFixedOffsetY + mPixelOffsetY)
 //            * halfTile - offset2;
         mSortOffsetY = 0;
         const float yOffset3 = (mY + 1) * mapTileSize + yOffset
-            - (mOldHeight + mOffsetY) * halfTile + offset2;
+            - (mOldHeight + mPixelOffsetY) * halfTile + offset2;
 
         // Update pixel coordinates
         setPixelPositionF(static_cast<float>(mX * mapTileSize
@@ -2978,9 +2979,9 @@ void Being::draw(Graphics *restrict const graphics,
     }
 }
 
-void Being::drawSprites(Graphics *restrict const graphics,
-                        const int posX,
-                        const int posY) const restrict2
+void Being::drawPlayerSprites(Graphics *restrict const graphics,
+                              const int posX,
+                              const int posY) const restrict2
 {
     const int sz = CompoundSprite::getNumberOfLayers();
     for (int f = 0; f < sz; f ++)
@@ -3019,14 +3020,44 @@ void Being::drawBasic(Graphics *restrict const graphics,
                       const int x,
                       const int y) const restrict2
 {
-    CompoundSprite::draw(graphics, x, y);
+    drawCompound(graphics, x, y);
+}
+
+void Being::drawCompound(Graphics *const graphics,
+                         const int posX,
+                         const int posY) const
+{
+    FUNC_BLOCK("CompoundSprite::draw", 1)
+    if (mNeedsRedraw)
+        updateImages();
+
+    if (mSprites.empty())  // Nothing to draw
+        return;
+
+    if (mAlpha == 1.0F && mImage)
+    {
+        graphics->drawImage(mImage,
+            posX + mOffsetX,
+            posY + mOffsetY);
+    }
+    else if (mAlpha && mAlphaImage)
+    {
+        mAlphaImage->setAlpha(mAlpha);
+        graphics->drawImage(mAlphaImage,
+            posX + mOffsetX,
+            posY + mOffsetY);
+    }
+    else
+    {
+        Being::drawPlayerSprites(graphics, posX, posY);
+    }
 }
 
 void Being::drawPlayerSpriteAt(Graphics *restrict const graphics,
                                const int x,
                                const int y) const restrict2
 {
-    CompoundSprite::draw(graphics, x, y);
+    drawCompound(graphics, x, y);
 
     if (mShowOwnHP &&
         mInfo &&
@@ -4103,8 +4134,8 @@ void Being::setTileCoords(const int x, const int y) restrict2
     mY = y;
     if (mMap)
     {
-        mOffsetY = 0;
-        mFixedOffsetY = mOffsetY;
+        mPixelOffsetY = 0;
+        mFixedOffsetY = mPixelOffsetY;
         mOldHeight = mMap->getHeightOffset(mX, mY);
         mNeedPosUpdate = true;
     }
@@ -4115,8 +4146,8 @@ void Being::setMap(Map *restrict const map) restrict2
     ActorSprite::setMap(map);
     if (mMap)
     {
-        mOffsetY = mMap->getHeightOffset(mX, mY);
-        mFixedOffsetY = mOffsetY;
+        mPixelOffsetY = mMap->getHeightOffset(mX, mY);
+        mFixedOffsetY = mPixelOffsetY;
         mOldHeight = 0;
         mNeedPosUpdate = true;
     }
