@@ -641,6 +641,11 @@ class Being notfinal : public ActorSprite,
                        const int offsetY) const
                        restrict2 A_NONNULL(2);
 
+        void drawMonster(Graphics *restrict const graphics,
+                         const int offsetX,
+                         const int offsetY) const
+                         restrict2 A_NONNULL(2);
+
         void drawPortal(Graphics *restrict const graphics,
                         const int offsetX,
                         const int offsetY) const
@@ -1009,6 +1014,10 @@ class Being notfinal : public ActorSprite,
         void drawPortalSpriteAt(Graphics *restrict const graphics,
                                 const int x,
                                 const int y) const restrict2 A_NONNULL(2);
+
+        void drawMonsterSpriteAt(Graphics *restrict const graphics,
+                                 const int x,
+                                 const int y) const restrict2 A_NONNULL(2);
 
         /**
          * Updates name's location.

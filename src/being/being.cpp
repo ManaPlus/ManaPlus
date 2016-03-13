@@ -2915,6 +2915,18 @@ void Being::drawOther(Graphics *restrict const graphics,
     drawOtherSpriteAt(graphics, px, py);
 }
 
+void Being::drawMonster(Graphics *restrict const graphics,
+                        const int offsetX,
+                        const int offsetY) const restrict2
+{
+    // getActorX() + offsetX;
+    const int px = mPixelX - mapTileSize / 2 + offsetX;
+    // getActorY() + offsetY;
+    const int py = mPixelY - mapTileSize + offsetY;
+    drawBeingCursor(graphics, px, py);
+    drawMonsterSpriteAt(graphics, px, py);
+}
+
 void Being::drawPortal(Graphics *restrict const graphics,
                        const int offsetX,
                        const int offsetY) const restrict2
@@ -2942,8 +2954,12 @@ void Being::draw(Graphics *restrict const graphics,
                 offsetX,
                 offsetY);
             break;
-        case ActorType::Npc:
         case ActorType::Monster:
+            drawMonster(graphics,
+                offsetX,
+                offsetY);
+            break;
+        case ActorType::Npc:
         case ActorType::FloorItem:
         case ActorType::LocalPet:
         case ActorType::Avatar:
@@ -3034,9 +3050,16 @@ void Being::drawOtherSpriteAt(Graphics *restrict const graphics,
                               const int x,
                               const int y) const restrict2
 {
+    CompoundSprite::draw(graphics, x, y);
+}
+
+void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
+                                const int x,
+                                const int y) const restrict2
+{
     if (mHighlightMonsterAttackRange &&
         mType == ActorType::Monster &&
-        isAlive())
+        mAction != BeingAction::DEAD)
     {
         if (!userPalette)
         {
@@ -3082,6 +3105,7 @@ void Being::drawOtherSpriteAt(Graphics *restrict const graphics,
                   2 * 50,
                   4);
     }
+
 }
 
 void Being::drawPortalSpriteAt(Graphics *restrict const graphics,
