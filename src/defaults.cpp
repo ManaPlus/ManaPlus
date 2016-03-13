@@ -96,7 +96,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("crazyMoveType", 1);
     AddDEF("attackWeaponType", 1);
     AddDEF("quickDropCounter", 1);
-    AddDEF("pickUpType", 3);
+    AddDEF("pickUpType", 5);
     AddDEF("magicAttackType", 0);
     AddDEF("attackType", 2);
     AddDEF("targetingType", 0);
