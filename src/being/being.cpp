@@ -2915,6 +2915,17 @@ void Being::drawOther(Graphics *restrict const graphics,
     drawOtherSpriteAt(graphics, px, py);
 }
 
+void Being::drawPortal(Graphics *restrict const graphics,
+                       const int offsetX,
+                       const int offsetY) const restrict2
+{
+    // getActorX() + offsetX;
+    const int px = mPixelX - mapTileSize / 2 + offsetX;
+    // getActorY() + offsetY;
+    const int py = mPixelY - mapTileSize + offsetY;
+    drawPortalSpriteAt(graphics, px, py);
+}
+
 void Being::draw(Graphics *restrict const graphics,
                  const int offsetX,
                  const int offsetY) const restrict2
@@ -2926,10 +2937,14 @@ void Being::draw(Graphics *restrict const graphics,
                 offsetX,
                 offsetY);
             break;
+        case ActorType::Portal:
+            drawPortal(graphics,
+                offsetX,
+                offsetY);
+            break;
         case ActorType::Npc:
         case ActorType::Monster:
         case ActorType::FloorItem:
-        case ActorType::Portal:
         case ActorType::LocalPet:
         case ActorType::Avatar:
 #ifdef EATHENA_SUPPORT
@@ -3019,32 +3034,9 @@ void Being::drawOtherSpriteAt(Graphics *restrict const graphics,
                               const int x,
                               const int y) const restrict2
 {
-    if (mHighlightMapPortals &&
-        mMap &&
-        mSubType == fromInt(45, BeingTypeId) &&
-        !mMap->getHasWarps())
-    {
-        if (!userPalette)
-        {
-            CompoundSprite::draw(graphics, x, y);
-            return;
-        }
-
-        graphics->setColor(userPalette->
-                getColorWithAlpha(UserColorId::PORTAL_HIGHLIGHT));
-
-        graphics->fillRectangle(Rect(x, y,
-            mapTileSize, mapTileSize));
-
-        if (mDrawHotKeys && !mName.empty())
-        {
-            const Color &color = userPalette->getColor(UserColorId::BEING);
-            gui->getFont()->drawString(graphics, color, color, mName, x, y);
-        }
-    }
-    else if (mHighlightMonsterAttackRange &&
-             mType == ActorType::Monster &&
-             isAlive())
+    if (mHighlightMonsterAttackRange &&
+        mType == ActorType::Monster &&
+        isAlive())
     {
         if (!userPalette)
         {
@@ -3090,6 +3082,36 @@ void Being::drawOtherSpriteAt(Graphics *restrict const graphics,
                   2 * 50,
                   4);
     }
+}
+
+void Being::drawPortalSpriteAt(Graphics *restrict const graphics,
+                               const int x,
+                               const int y) const restrict2
+{
+    if (mHighlightMapPortals &&
+        mMap &&
+        !mMap->getHasWarps())
+    {
+        if (!userPalette)
+        {
+            CompoundSprite::draw(graphics, x, y);
+            return;
+        }
+
+        graphics->setColor(userPalette->
+            getColorWithAlpha(UserColorId::PORTAL_HIGHLIGHT));
+
+        graphics->fillRectangle(Rect(x, y,
+            mapTileSize, mapTileSize));
+
+        if (mDrawHotKeys && !mName.empty())
+        {
+            const Color &color = userPalette->getColor(UserColorId::BEING);
+            gui->getFont()->drawString(graphics, color, color, mName, x, y);
+        }
+    }
+
+    CompoundSprite::draw(graphics, x, y);
 }
 
 void Being::drawHpBar(Graphics *restrict const graphics,
