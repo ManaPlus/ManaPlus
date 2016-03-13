@@ -631,6 +631,16 @@ class Being notfinal : public ActorSprite,
                   const int offsetY) const
                   restrict2 override final A_NONNULL(2);
 
+        void drawPlayer(Graphics *restrict const graphics,
+                        const int offsetX,
+                        const int offsetY) const
+                        restrict2 A_NONNULL(2);
+
+        void drawOther(Graphics *restrict const graphics,
+                       const int offsetX,
+                       const int offsetY) const
+                       restrict2 A_NONNULL(2);
+
         void drawBasic(Graphics *restrict const graphics,
                        const int x,
                        const int y) const restrict2 A_NONNULL(2);

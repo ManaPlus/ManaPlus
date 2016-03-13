@@ -2839,9 +2839,9 @@ void Being::talkTo() const restrict2
     npcHandler->talk(mId);
 }
 
-void Being::draw(Graphics *restrict const graphics,
-                 const int offsetX,
-                 const int offsetY) const restrict2
+void Being::drawPlayer(Graphics *restrict const graphics,
+                       const int offsetX,
+                       const int offsetY) const restrict2
 {
     if (!mErased)
     {
@@ -2878,6 +2878,50 @@ void Being::draw(Graphics *restrict const graphics,
         ActorSprite::draw1(graphics, px, py);
         drawSpriteAt(graphics, px, py);
 #endif
+    }
+}
+
+void Being::drawOther(Graphics *restrict const graphics,
+                      const int offsetX,
+                      const int offsetY) const restrict2
+{
+    // getActorX() + offsetX;
+    const int px = mPixelX - mapTileSize / 2 + offsetX;
+    // getActorY() + offsetY;
+    const int py = mPixelY - mapTileSize + offsetY;
+    ActorSprite::draw1(graphics, px, py);
+    drawSpriteAt(graphics, px, py);
+}
+
+void Being::draw(Graphics *restrict const graphics,
+                 const int offsetX,
+                 const int offsetY) const restrict2
+{
+    switch (mType)
+    {
+        case ActorType::Player:
+            drawPlayer(graphics,
+                offsetX,
+                offsetY);
+            break;
+        case ActorType::Npc:
+        case ActorType::Monster:
+        case ActorType::FloorItem:
+        case ActorType::Portal:
+        case ActorType::LocalPet:
+        case ActorType::Avatar:
+#ifdef EATHENA_SUPPORT
+        case ActorType::Pet:
+        case ActorType::Mercenary:
+        case ActorType::Homunculus:
+        case ActorType::SkillUnit:
+        case ActorType::Unknown:
+#endif
+        default:
+            drawOther(graphics,
+                offsetX,
+                offsetY);
+            break;
     }
 }
 
