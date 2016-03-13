@@ -160,7 +160,12 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     mY = y;
 
     const std::string &name = mName;
-    mBrowserBox->addRow(name + being->getGenderSignWithSpace());
+#ifdef EATHENA_SUPPORT
+    if (being->getType() != ActorType::SkillUnit)
+#endif
+    {
+        mBrowserBox->addRow(name + being->getGenderSignWithSpace());
+    }
 
     switch (being->getType())
     {
@@ -409,8 +414,23 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             }
             break;
         case ActorType::SkillUnit:
-            // +++ need impliment menu
+        {
+            const BeingId id = being->getCreatorId();
+            std::string creatorName;
+            Being *const creator = actorManager->findBeing(id);
+            if (creator)
+                creatorName = creator->getName();
+            else
+                creatorName = actorManager->getSeenPlayerById(id);
+
+            if (creatorName.empty())
+                creatorName = strprintf("?%d", CAST_S32(id));
+
+            mBrowserBox->addRow(strprintf("%s (%s)",
+                name.c_str(),
+                creatorName.c_str()));
             break;
+        }
 #endif
         case ActorType::Avatar:
         case ActorType::Unknown:

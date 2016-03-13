@@ -1186,7 +1186,7 @@ void BeingRecv::processSkillEntry(Net::MessageIn &msg)
 {
     msg.readInt16("len");
     const BeingId id = msg.readBeingId("skill unit id");
-    msg.readBeingId("creator accound id");
+    const BeingId creatorId = msg.readBeingId("creator accound id");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int job = msg.readInt32("job");
@@ -1199,6 +1199,7 @@ void BeingRecv::processSkillEntry(Net::MessageIn &msg)
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(x, y);
     dstBeing->setLevel(level);
+    dstBeing->setCreatorId(creatorId);
 }
 
 void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
@@ -1757,7 +1758,7 @@ void BeingRecv::processSolveCharName(Net::MessageIn &msg)
 void BeingRecv::processGraffiti(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("graffiti id");
-    msg.readBeingId("creator id");
+    const BeingId creatorId = msg.readBeingId("creator id");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int job = msg.readUInt8("job");
@@ -1773,6 +1774,7 @@ void BeingRecv::processGraffiti(Net::MessageIn &msg)
     dstBeing->setTileCoords(x, y);
     dstBeing->setShowName(true);
     dstBeing->setName(text);
+    dstBeing->setCreatorId(creatorId);
 }
 
 void BeingRecv::applyPlayerAction(Net::MessageIn &msg,

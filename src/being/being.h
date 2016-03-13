@@ -925,6 +925,12 @@ class Being notfinal : public ActorSprite,
         { return mSpiritBalls; }
 
         void stopCast(const bool b) override final;
+
+        void setCreatorId(const BeingId id)
+        { mCreatorId = id; }
+
+        BeingId getCreatorId() const noexcept A_WARN_UNUSED
+        { return mCreatorId; }
 #endif
 
         void setKarma(const int karma) restrict2 noexcept
@@ -1170,6 +1176,9 @@ class Being notfinal : public ActorSprite,
         int mKarma;
         int mManner;
         int mAreaSize;
+#ifdef EATHENA_SUPPORT
+        BeingId mCreatorId;
+#endif
         uint16_t mTeamId;
         uint16_t mLook;
         uint16_t mBadgesCount;

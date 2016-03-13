@@ -236,6 +236,9 @@ Being::Being(const BeingId id,
     mKarma(0),
     mManner(0),
     mAreaSize(11),
+#ifdef EATHENA_SUPPORT
+    mCreatorId(BeingId_zero),
+#endif
     mTeamId(0U),
     mLook(0U),
     mBadgesCount(0U),
