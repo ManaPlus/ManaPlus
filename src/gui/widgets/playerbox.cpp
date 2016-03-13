@@ -125,7 +125,7 @@ void PlayerBox::draw(Graphics *const graphics)
         const int bs = mFrameSize;
         const int x = mDimension.width / 2 + bs + mOffsetX;
         const int y = mDimension.height - bs + mOffsetY;
-        mBeing->drawSpriteAt(graphics, x, y);
+        mBeing->drawBasic(graphics, x, y);
     }
 
     if (settings.guiAlpha != mAlpha)

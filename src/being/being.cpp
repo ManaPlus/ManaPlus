@@ -2918,6 +2918,13 @@ void Being::drawSpritesSDL(Graphics *restrict const graphics,
     }
 }
 
+void Being::drawBasic(Graphics *restrict const graphics,
+                      const int x,
+                      const int y) const restrict2
+{
+    CompoundSprite::draw(graphics, x, y);
+}
+
 void Being::drawSpriteAt(Graphics *restrict const graphics,
                          const int x,
                          const int y) const restrict2
