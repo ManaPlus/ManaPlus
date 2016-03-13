@@ -2929,17 +2929,17 @@ void Being::drawSpriteAt(Graphics *restrict const graphics,
                          const int x,
                          const int y) const restrict2
 {
-    if (!userPalette)
-    {
-        CompoundSprite::draw(graphics, x, y);
-        return;
-    }
-
     if (mHighlightMapPortals &&
         mMap &&
         mSubType == fromInt(45, BeingTypeId) &&
         !mMap->getHasWarps())
     {
+        if (!userPalette)
+        {
+            CompoundSprite::draw(graphics, x, y);
+            return;
+        }
+
         graphics->setColor(userPalette->
                 getColorWithAlpha(UserColorId::PORTAL_HIGHLIGHT));
 
@@ -2956,6 +2956,12 @@ void Being::drawSpriteAt(Graphics *restrict const graphics,
              mType == ActorType::Monster &&
              isAlive())
     {
+        if (!userPalette)
+        {
+            CompoundSprite::draw(graphics, x, y);
+            return;
+        }
+
         int attackRange;
         if (mAttackRange)
             attackRange = mapTileSize * mAttackRange;
