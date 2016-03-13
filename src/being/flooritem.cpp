@@ -193,7 +193,6 @@ void FloorItem::draw(Graphics *const graphics,
 
     const int px = getActorX() + offsetX;
     const int py = getActorY() + offsetY;
-    ActorSprite::draw1(graphics, px, py);
     CompoundSprite::draw(graphics, px, py);
 
     if (mHighlight)

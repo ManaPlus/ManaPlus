@@ -103,20 +103,6 @@ ActorSprite::~ActorSprite()
     }
 }
 
-void ActorSprite::draw1(Graphics *const graphics,
-                        const int offsetX,
-                        const int offsetY) const
-{
-    FUNC_BLOCK("ActorSprite::draw1", 1)
-    if (mUsedTargetCursor)
-    {
-        mUsedTargetCursor->update(tick_time * MILLISECONDS_IN_A_TICK);
-        mUsedTargetCursor->draw(graphics,
-            offsetX + getTargetOffsetX() - mCursorPaddingX,
-            offsetY + getTargetOffsetY() - mCursorPaddingY);
-    }
-}
-
 void ActorSprite::logic()
 {
     BLOCK_START("ActorSprite::logic")

@@ -1106,6 +1106,10 @@ class Being notfinal : public ActorSprite,
 
         void dumpSprites() const restrict2;
 
+        void drawBeingCursor(Graphics *const graphics,
+                             const int offsetX,
+                             const int offsetY) const A_NONNULL(2);
+
         const ActorTypeT mType;
 
         /** Speech Bubble components */

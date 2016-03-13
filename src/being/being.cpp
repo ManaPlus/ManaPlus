@@ -2859,7 +2859,7 @@ void Being::drawPlayer(Graphics *restrict const graphics,
                     py + mHorseInfo->downOffsetY);
             }
 
-            ActorSprite::draw1(graphics, px, py);
+            drawBeingCursor(graphics, px, py);
             drawSpriteAt(graphics, px, py);
 
             for_each_horses(mUpHorseSprites)
@@ -2871,13 +2871,35 @@ void Being::drawPlayer(Graphics *restrict const graphics,
         }
         else
         {
-            ActorSprite::draw1(graphics, px, py);
+            drawBeingCursor(graphics, px, py);
             drawSpriteAt(graphics, px, py);
         }
 #else
-        ActorSprite::draw1(graphics, px, py);
+        drawBeingCursor(graphics, px, py);
         drawSpriteAt(graphics, px, py);
 #endif
+    }
+}
+
+void Being::drawBeingCursor(Graphics *const graphics,
+                            const int offsetX,
+                            const int offsetY) const
+{
+    if (mUsedTargetCursor)
+    {
+        mUsedTargetCursor->update(tick_time * MILLISECONDS_IN_A_TICK);
+        if (!mInfo)
+        {
+            mUsedTargetCursor->draw(graphics,
+                offsetX - mCursorPaddingX,
+                offsetY - mCursorPaddingY);
+        }
+        else
+        {
+            mUsedTargetCursor->draw(graphics,
+                offsetX + mInfo->getTargetOffsetX() - mCursorPaddingX,
+                offsetY + mInfo->getTargetOffsetY() - mCursorPaddingY);
+        }
     }
 }
 
@@ -2889,7 +2911,7 @@ void Being::drawOther(Graphics *restrict const graphics,
     const int px = mPixelX - mapTileSize / 2 + offsetX;
     // getActorY() + offsetY;
     const int py = mPixelY - mapTileSize + offsetY;
-    ActorSprite::draw1(graphics, px, py);
+    drawBeingCursor(graphics, px, py);
     drawSpriteAt(graphics, px, py);
 }
 

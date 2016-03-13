@@ -69,10 +69,6 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         virtual ActorTypeT getType() const noexcept A_WARN_UNUSED
         { return ActorType::Unknown; }
 
-        void draw1(Graphics *const graphics,
-                   const int offsetX,
-                   const int offsetY) const A_NONNULL(2);
-
         virtual void logic();
 
         void setMap(Map *const map) override;
