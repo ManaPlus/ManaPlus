@@ -371,6 +371,8 @@ class ChatWindow final : public Window,
 
         void initTradeFilter();
 
+        void toggleChatFocus();
+
         unsigned int mRainbowColor;
 
     private:

@@ -731,9 +731,19 @@ void ChatWindow::mousePressed(MouseEvent &event)
 
     if (event.getButton() == MouseButton::LEFT)
     {
-        const ChatTab *const tab = getFocused();
-        if (tab)
-            mMoved = !isResizeAllowed(event);
+        const int clicks = event.getClickCount();
+        if (clicks == 2)
+        {
+            toggleChatFocus();
+            if (gui)
+                gui->resetClickCount();
+        }
+        else if (clicks == 1)
+        {
+            const ChatTab *const tab = getFocused();
+            if (tab)
+                mMoved = !isResizeAllowed(event);
+        }
     }
 
     mDragOffsetX = event.getX();
@@ -2183,6 +2193,14 @@ void ChatWindow::showGMTab()
     {
         addSpecialChannelTab(GM_CHANNEL, false);
     }
+}
+
+void ChatWindow::toggleChatFocus()
+{
+    if (mChatInput->isVisible() && mChatInput->isFocused())
+        mChatInput->processVisible(Visible_false);
+    else
+        requestChatFocus();
 }
 
 #ifdef EATHENA_SUPPORT
