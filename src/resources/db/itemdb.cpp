@@ -159,8 +159,6 @@ namespace
         { "manner",      N_("Manner %s"),      true },
         // TRANSLATORS: item info label (money)
         { "money",       N_("Money %s"),       true },
-        // TRANSLATORS: item info label (weight)
-        { "weight",      N_("Weight %s"),      false },
         // TRANSLATORS: item info label (max weight)
         { "maxweight",   N_("Max weight %s"),  true },
         // TRANSLATORS: item info label (job experience)
