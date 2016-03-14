@@ -82,12 +82,12 @@ bool ServerFeatures::haveIncompleteChatMessages() const
 
 bool ServerFeatures::haveRaceSelection() const
 {
-    return serverVersion >= 4;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveLookSelection() const
 {
-    return serverVersion >= 4;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveChatChannels() const
@@ -102,7 +102,7 @@ bool ServerFeatures::haveServerIgnore() const
 
 bool ServerFeatures::haveMove3() const
 {
-    return serverVersion >= 3;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveItemColors() const
@@ -127,12 +127,12 @@ bool ServerFeatures::haveMonsterAttackRange() const
 
 bool ServerFeatures::haveEmailOnRegister() const
 {
-    return serverVersion >= 2;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveEmailOnDelete() const
 {
-    return serverVersion >= 2;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveEightDirections() const
@@ -167,12 +167,12 @@ bool ServerFeatures::haveMapServerVersion() const
 
 bool ServerFeatures::haveNpcGender() const
 {
-    return serverVersion >= 3;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveJoinChannel() const
 {
-    return serverVersion >= 3;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveNpcWhispers() const
@@ -182,7 +182,7 @@ bool ServerFeatures::haveNpcWhispers() const
 
 bool ServerFeatures::haveCreateCharGender() const
 {
-    return serverVersion >= 4;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveAttackDirections() const
