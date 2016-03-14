@@ -52,6 +52,7 @@
 
 #include "debug.h"
 
+static const unsigned int RFAIL                = 10;
 static const unsigned int RFAIL_SUMMON         = 19;
 static const unsigned int RFAIL_NEED_ITEM      = 71;
 static const unsigned int RFAIL_NEED_EQUIPMENT = 72;
@@ -335,6 +336,12 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
                     info.getLink().c_str(),
                     amount));
             }
+            break;
+        }
+        case RFAIL:
+        {
+            // TRANSLATORS: error message
+            txt.append(_("Skill failed!"));
             break;
         }
 
