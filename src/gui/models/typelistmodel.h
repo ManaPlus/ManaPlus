@@ -38,7 +38,7 @@ class TypeListModel final : public ListModel
          */
         int getNumberOfElements() override final A_WARN_UNUSED
 #if defined(EATHENA_SUPPORT) && defined(TMWA_SUPPORT)
-        { return 4; }
+        { return 3; }
 #elif defined(EATHENA_SUPPORT)
         { return 2; }
 #else
@@ -54,12 +54,10 @@ class TypeListModel final : public ListModel
 #ifdef TMWA_SUPPORT
             if (elementIndex == 0)
                 return "TmwAthena";
-            else if (elementIndex == 1)
-                return "Evol";
 #ifdef EATHENA_SUPPORT
-            else if (elementIndex == 2)
+            else if (elementIndex == 1)
                 return "eAthena";
-            else if (elementIndex == 3)
+            else if (elementIndex == 2)
                 return "Evol2";
 #endif  // EATHENA_SUPPORT
             else

@@ -29,7 +29,6 @@ enumStart(ServerType)
 {
     UNKNOWN = 0,
     TMWATHENA,
-    EVOL,
     EATHENA,
     EVOL2
 }

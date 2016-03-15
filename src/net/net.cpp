@@ -141,7 +141,6 @@ void connectToServer(const ServerInfo &server)
 #endif
                 break;
             case ServerType::TMWATHENA:
-            case ServerType::EVOL:
             case ServerType::UNKNOWN:
             default:
 #ifdef TMWA_SUPPORT

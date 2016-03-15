@@ -151,11 +151,8 @@ class ServerInfo final
 #ifdef TMWA_SUPPORT
             if (compareStrI(serverType, "tmwathena") == 0)
                 return ServerType::TMWATHENA;
-            if (compareStrI(serverType, "evol") == 0)
-                return ServerType::EVOL;
 #else
-            if (compareStrI(serverType, "tmwathena") == 0
-                || compareStrI(serverType, "evol") == 0)
+            if (compareStrI(serverType, "tmwathena") == 0)
                 return ServerType::EATHENA;
 #endif
 #ifdef EATHENA_SUPPORT

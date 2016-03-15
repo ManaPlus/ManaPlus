@@ -53,14 +53,10 @@ static std::string serverTypeToString(const ServerTypeT type)
 {
     switch (type)
     {
+        case ServerType::TMWATHENA:
 #ifdef TMWA_SUPPORT
-        case ServerType::TMWATHENA:
             return "TmwAthena";
-        case ServerType::EVOL:
-            return "Evol";
 #else
-        case ServerType::TMWATHENA:
-        case ServerType::EVOL:
             return "";
 #endif
 #ifdef EATHENA_SUPPORT
@@ -92,7 +88,6 @@ static uint16_t defaultPortForServerType(const ServerTypeT type)
         case ServerType::UNKNOWN:
 #ifdef TMWA_SUPPORT
         case ServerType::TMWATHENA:
-        case ServerType::EVOL:
 #endif
             return 6901;
     }
