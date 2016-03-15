@@ -56,7 +56,7 @@ class TypeListModel final : public ListModel
                 return "TmwAthena";
 #ifdef EATHENA_SUPPORT
             else if (elementIndex == 1)
-                return "eAthena";
+                return "Hercules";
             else if (elementIndex == 2)
                 return "Evol2";
 #endif  // EATHENA_SUPPORT
@@ -64,7 +64,7 @@ class TypeListModel final : public ListModel
 #else   // TMWA_SUPPORT
 #ifdef EATHENA_SUPPORT
             if (elementIndex == 0)
-                return "eAthena";
+                return "Hercules";
             else if (elementIndex == 1)
                 return "Evol2";
             else
