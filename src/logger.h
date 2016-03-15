@@ -56,6 +56,9 @@
 #define UNIMPLIMENTEDPACKETFIELD(field) \
     logger->unimplimented(msg.getId(), field)
 
+#define WRONGPACKETSIZE \
+    logger->unimplimented(CAST_U32(mId), mLength, mPos)
+
 /**
  * The Log Class : Useful to write debug or info messages
  */
@@ -179,6 +182,10 @@ class Logger final
 
         void unimplimented(const int id,
                            const int id2);
+
+        void unimplimented(const uint32_t id,
+                           const uint32_t id2,
+                           const uint32_t id3);
 
     private:
         std::ofstream mLogFile;

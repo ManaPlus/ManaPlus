@@ -404,3 +404,19 @@ void Logger::unimplimented(const int id,
     DebugMessageListener::distributeEvent(str);
     log(str);
 }
+
+void Logger::unimplimented(const uint32_t id,
+                           const uint32_t id2,
+                           const uint32_t id3)
+{
+    if (!mReportUnimplimented)
+        return;
+
+    const std::string str = strprintf(
+        "Wrong actual or planned inbound packet size!. "
+        "Packet id: %u, Planned size: %u, Actual size: %u",
+        id,
+        id2,
+        id3);
+    DebugMessageListener::distributeEvent(str);
+}

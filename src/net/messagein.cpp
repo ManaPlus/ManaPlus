@@ -60,6 +60,7 @@ MessageIn::~MessageIn()
                 CAST_U32(mId));
             logger->log(" planned size: %u", mLength);
             logger->log(" read size: %u", mPos);
+            WRONGPACKETSIZE;
         }
     }
     else
