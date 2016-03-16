@@ -40,8 +40,3 @@ AnimationParticle::AnimationParticle(XmlNodePtrConst animationNode,
     mType = ParticleType::Animation;
     mAnimation = new SimpleAnimation(animationNode, dyePalettes);
 }
-
-AnimationParticle::~AnimationParticle()
-{
-    mImage = nullptr;
-}

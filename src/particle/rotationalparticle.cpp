@@ -41,8 +41,3 @@ RotationalParticle::RotationalParticle(const XmlNodePtr animationNode,
     mType = ParticleType::Rotational;
     mAnimation = new SimpleAnimation(animationNode, dyePalettes);
 }
-
-RotationalParticle::~RotationalParticle()
-{
-    mImage = nullptr;
-}

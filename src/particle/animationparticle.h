@@ -40,8 +40,6 @@ class AnimationParticle final : public ImageParticle
                                    = std::string());
 
         A_DELETE_COPY(AnimationParticle)
-
-        ~AnimationParticle();
 };
 
 #endif  // PARTICLE_ANIMATIONPARTICLE_H

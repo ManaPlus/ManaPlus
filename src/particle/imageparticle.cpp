@@ -49,10 +49,6 @@ ImageParticle::ImageParticle(Image *restrict const image) :
     }
 }
 
-ImageParticle::~ImageParticle()
-{
-}
-
 void ImageParticle::draw(Graphics *restrict const graphics,
                          const int offsetX,
                          const int offsetY) const restrict2

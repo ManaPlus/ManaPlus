@@ -89,17 +89,19 @@ Particle::~Particle()
     delete2(mAnimation);
     if (mImage)
     {
-        const std::string &restrict name = mImage->getIdPath();
-        StringIntMapIter it
-            = ImageParticle::imageParticleCountByName.find(name);
-        if (it != ImageParticle::imageParticleCountByName.end())
+        if (mType == ParticleType::Image)
         {
-            int &cnt = (*it).second;
-            if (cnt > 0)
-                cnt --;
+            const std::string &restrict name = mImage->getIdPath();
+            StringIntMapIter it
+                = ImageParticle::imageParticleCountByName.find(name);
+            if (it != ImageParticle::imageParticleCountByName.end())
+            {
+                int &cnt = (*it).second;
+                if (cnt > 0)
+                    cnt --;
+            }
+            mImage->decRef();
         }
-
-        mImage->decRef();
         mImage = nullptr;
     }
 

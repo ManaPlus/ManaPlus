@@ -46,11 +46,6 @@ class ImageParticle notfinal : public Particle
         A_DELETE_COPY(ImageParticle)
 
         /**
-         * Destructor.
-         */
-        virtual ~ImageParticle();
-
-        /**
          * Draws the particle image
          */
         virtual void draw(Graphics *restrict const graphics,
