@@ -65,7 +65,7 @@ class Particle notfinal : public Actor
          * Updates particle position, returns false when the particle should
          * be deleted.
          */
-        virtual bool update() restrict2;
+        bool update() restrict2;
 
         /**
          * Draws the particle image.
