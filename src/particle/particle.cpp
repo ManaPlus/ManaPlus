@@ -213,9 +213,6 @@ void Particle::updateSelf() restrict2
 
 bool Particle::update() restrict2
 {
-    if (!mMap)
-        return false;
-
     const Vector oldPos = mPos;
 
     updateSelf();
@@ -233,25 +230,10 @@ bool Particle::update() restrict2
     }
 
     // Update child particles
-
-    const int cameraX = viewport->getCameraX();
-    const int cameraY = viewport->getCameraY();
-    const float x1 = static_cast<float>(cameraX - 3000);
-    const float y1 = static_cast<float>(cameraY - 2000);
-    const float x2 = static_cast<float>(cameraX + 3000);
-    const float y2 = static_cast<float>(cameraY + 2000);
-
     for (ParticleIterator p = mChildParticles.begin(),
          fp2 = mChildParticles.end(); p != fp2; )
     {
         Particle *restrict const particle = *p;
-        const float posX = particle->mPos.x;
-        const float posY = particle->mPos.y;
-        if (posX < x1 || posX > x2 || posY < y1 || posY > y2)
-        {
-            ++p;
-            continue;
-        }
         // move particle with its parent if desired
         if (particle->mFollow)
             particle->moveBy(change);
