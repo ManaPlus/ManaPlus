@@ -28,7 +28,6 @@
 #include "utils/xml.h"
 
 class Animation;
-class SimpleAnimation;
 
 class RotationalParticle final : public ImageParticle
 {
@@ -44,10 +43,6 @@ class RotationalParticle final : public ImageParticle
         ~RotationalParticle();
 
         bool update() restrict2 override final;
-
-    private:
-        /**< Used animation for this particle */
-        SimpleAnimation *restrict mAnimation A_NONNULLPOINTER;
 };
 
 #endif  // PARTICLE_ROTATIONALPARTICLE_H

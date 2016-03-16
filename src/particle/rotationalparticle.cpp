@@ -24,32 +24,29 @@
 
 #include "resources/animation/simpleanimation.h"
 
-#include "utils/delete2.h"
-
 #include "debug.h"
 
 static const double PI = M_PI;
 static const float PI2 = 2 * M_PI;
 
 RotationalParticle::RotationalParticle(Animation *restrict const animation) :
-    ImageParticle(nullptr),
-    mAnimation(new SimpleAnimation(animation))
+    ImageParticle(nullptr)
 {
     mType = ParticleType::Rotational;
+    mAnimation = new SimpleAnimation(animation);
 }
 
 RotationalParticle::RotationalParticle(const XmlNodePtr animationNode,
                                        const std::string &restrict
                                        dyePalettes) :
-    ImageParticle(nullptr),
-    mAnimation(new SimpleAnimation(animationNode, dyePalettes))
+    ImageParticle(nullptr)
 {
     mType = ParticleType::Rotational;
+    mAnimation = new SimpleAnimation(animationNode, dyePalettes);
 }
 
 RotationalParticle::~RotationalParticle()
 {
-    delete2(mAnimation);
     mImage = nullptr;
 }
 

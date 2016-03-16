@@ -36,6 +36,7 @@ class Color;
 class Font;
 class Particle;
 class ParticleEmitter;
+class SimpleAnimation;
 
 /**
  * A particle spawned by a ParticleEmitter.
@@ -263,6 +264,9 @@ class Particle notfinal : public Actor
         AliveStatusT mAlive;
 
         ParticleType mType;
+
+        /**< Used animation for this particle */
+        SimpleAnimation *restrict mAnimation;
 
     private:
         // List of child emitters.

@@ -34,8 +34,11 @@
 
 #include "resources/resourcemanager.h"
 
+#include "resources/animation/simpleanimation.h"
+
 #include "resources/dye/dye.h"
 
+#include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/mathutils.h"
 
@@ -56,6 +59,7 @@ Particle::Particle() :
     mVelocity(),
     mAlive(AliveStatus::ALIVE),
     mType(ParticleType::Normal),
+    mAnimation(nullptr),
     mChildEmitters(),
     mChildParticles(),
     mDeathEffect(),
@@ -78,6 +82,7 @@ Particle::~Particle()
 {
     // Delete child emitters and child particles
     clear();
+    delete2(mAnimation);
     ParticleEngine::particleCount--;
 }
 

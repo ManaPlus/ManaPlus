@@ -28,7 +28,6 @@
 #include "utils/xml.h"
 
 class Animation;
-class SimpleAnimation;
 
 class AnimationParticle final : public ImageParticle
 {
@@ -45,10 +44,6 @@ class AnimationParticle final : public ImageParticle
         ~AnimationParticle();
 
         bool update() restrict2 override final;
-
-    private:
-        /**< Used animation for this particle */
-        SimpleAnimation *restrict mAnimation;
 };
 
 #endif  // PARTICLE_ANIMATIONPARTICLE_H

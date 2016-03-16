@@ -24,28 +24,25 @@
 
 #include "resources/animation/simpleanimation.h"
 
-#include "utils/delete2.h"
-
 #include "debug.h"
 
 AnimationParticle::AnimationParticle(Animation *restrict const animation) :
-    ImageParticle(nullptr),
-    mAnimation(new SimpleAnimation(animation))
+    ImageParticle(nullptr)
 {
     mType = ParticleType::Animation;
+    mAnimation = new SimpleAnimation(animation);
 }
 
 AnimationParticle::AnimationParticle(XmlNodePtrConst animationNode,
                                      const std::string &restrict dyePalettes) :
-    ImageParticle(nullptr),
-    mAnimation(new SimpleAnimation(animationNode, dyePalettes))
+    ImageParticle(nullptr)
 {
     mType = ParticleType::Animation;
+    mAnimation = new SimpleAnimation(animationNode, dyePalettes);
 }
 
 AnimationParticle::~AnimationParticle()
 {
-    delete2(mAnimation);
     mImage = nullptr;
 }
 
