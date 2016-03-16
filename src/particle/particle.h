@@ -85,38 +85,12 @@ class Particle notfinal : public Actor
         { return CAST_S32(mPos.y) - 16; }
 
         /**
-         * Creates a blank particle as a child of the current particle
-         * Useful for creating target particles
-         */
-        Particle *createChild() restrict2;
-
-        /**
          * Creates a child particle that hosts some emitters described in the
          * particleEffectFile.
          */
         Particle *addEffect(const std::string &restrict particleEffectFile,
                             const int pixelX, const int pixelY,
                             const int rotation = 0) restrict2;
-
-        /**
-         * Creates a standalone text particle.
-         */
-        Particle *addTextSplashEffect(const std::string &restrict text,
-                                      const int x, const int y,
-                                      const Color *restrict const color,
-                                      Font *restrict const font,
-                                      const bool outline = false)
-                                      restrict2 A_NONNULL(5, 6);
-
-        /**
-         * Creates a standalone text particle.
-         */
-        Particle *addTextRiseFadeOutEffect(const std::string &restrict text,
-                                           const int x, const int y,
-                                           const Color *restrict const color,
-                                           Font *restrict const font,
-                                           const bool outline = false)
-                                           restrict2 A_NONNULL(5, 6);
 
         /**
          * Adds an emitter to the particle.

@@ -293,14 +293,6 @@ void Particle::moveTo(const float x, const float y) restrict2
     moveTo(Vector(x, y, mPos.z));
 }
 
-Particle *Particle::createChild() restrict2
-{
-    Particle *const newParticle = new Particle();
-    newParticle->setMap(mMap);
-    mChildParticles.push_back(newParticle);
-    return newParticle;
-}
-
 Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
                               const int pixelX, const int pixelY,
                               const int rotation) restrict2
@@ -436,60 +428,6 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
 
         mChildParticles.push_back(newParticle);
     }
-
-    return newParticle;
-}
-
-Particle *Particle::addTextSplashEffect(const std::string &restrict text,
-                                        const int x, const int y,
-                                        const Color *restrict const color,
-                                        Font *restrict const font,
-                                        const bool outline) restrict2
-{
-    Particle *const newParticle = new TextParticle(
-        text,
-        color,
-        font,
-        outline);
-    newParticle->setMap(mMap);
-    newParticle->moveTo(static_cast<float>(x),
-        static_cast<float>(y));
-    newParticle->setVelocity(
-        static_cast<float>((rand() % 100) - 50) / 200.0F,       // X
-        static_cast<float>((rand() % 100) - 50) / 200.0F,       // Y
-        (static_cast<float>((rand() % 100)) / 200.0F) + 4.0F);  // Z
-
-    newParticle->setGravity(0.1F);
-    newParticle->setBounce(0.5F);
-    newParticle->setLifetime(200);
-    newParticle->setFadeOut(100);
-
-    mChildParticles.push_back(newParticle);
-
-    return newParticle;
-}
-
-Particle *Particle::addTextRiseFadeOutEffect(const std::string &restrict text,
-                                             const int x, const int y,
-                                             const Color *restrict const color,
-                                             Font *restrict const font,
-                                             const bool outline) restrict2
-{
-    Particle *const newParticle = new TextParticle(
-        text,
-        color,
-        font,
-        outline);
-    newParticle->setMap(mMap);
-    newParticle->moveTo(static_cast<float>(x),
-        static_cast<float>(y));
-    newParticle->setVelocity(0.0F, 0.0F, 0.5F);
-    newParticle->setGravity(0.0015F);
-    newParticle->setLifetime(300);
-    newParticle->setFadeOut(100);
-    newParticle->setFadeIn(0);
-
-    mChildParticles.push_back(newParticle);
 
     return newParticle;
 }
