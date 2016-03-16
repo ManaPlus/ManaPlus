@@ -20,14 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PARTICLE_PARTICLE_H
-#define PARTICLE_PARTICLE_H
+#ifndef PARTICLE_PARTICLEENGINE_H
+#define PARTICLE_PARTICLEENGINE_H
 
 #include "being/actor.h"
 
 #include "enums/particle/alivestatus.h"
-
-#include "particle/particleengine.h"
 
 #include "localconsts.h"
 
@@ -36,22 +34,33 @@ class Font;
 class Particle;
 class ParticleEmitter;
 
-/**
- * A particle spawned by a ParticleEmitter.
- */
-class Particle notfinal : public Actor
+typedef std::list<Particle *> Particles;
+typedef Particles::iterator ParticleIterator;
+typedef Particles::const_iterator ParticleConstIterator;
+typedef std::list<ParticleEmitter *> Emitters;
+typedef Emitters::iterator EmitterIterator;
+typedef Emitters::const_iterator EmitterConstIterator;
+
+class ParticleEngine final : public Actor
 {
     public:
-        friend class ParticleEngine;
+        static const float PARTICLE_SKY;  // Maximum Z position of particles
+        static int fastPhysics;           // Mode of squareroot calculation
+        static int particleCount;         // Current number of particles
+        static int maxCount;              // Maximum number of particles
+        static int emitterSkip;           // Duration of pause between two
+                                          // emitter updates in ticks
+        static bool enabled;  // true when non-crucial particle effects
+                              // are disabled
 
-        Particle();
+        ParticleEngine();
 
-        A_DELETE_COPY(Particle)
+        A_DELETE_COPY(ParticleEngine)
 
         /**
          * Destructor.
          */
-        virtual ~Particle();
+        ~ParticleEngine();
 
         /**
          * Deletes all child particles and emitters.
@@ -59,18 +68,24 @@ class Particle notfinal : public Actor
         void clear() restrict2;
 
         /**
+         * Gives a particle the properties of an engine root particle and loads
+         * the particle-related config settings.
+         */
+        void setupEngine() restrict2;
+
+        /**
          * Updates particle position, returns false when the particle should
          * be deleted.
          */
-        virtual bool update() restrict2;
+        bool update() restrict2;
 
         /**
          * Draws the particle image.
          */
-        virtual void draw(Graphics *restrict const graphics,
-                          const int offsetX,
-                          const int offsetY) const restrict2 override
-                          A_CONST A_NONNULL(2);
+        void draw(Graphics *restrict const graphics,
+                  const int offsetX,
+                  const int offsetY) const restrict2 override
+                  A_CONST A_NONNULL(2);
 
         /**
          * Necessary for sorting with the other sprites.
@@ -259,8 +274,8 @@ class Particle notfinal : public Actor
         void setAlpha(const float alpha A_UNUSED) restrict2 override
         { }
 
-        virtual void setDeathEffect(const std::string &restrict effectFile,
-                                    const signed char conditions) restrict2
+        void setDeathEffect(const std::string &restrict effectFile,
+                            const signed char conditions) restrict2
         { mDeathEffect = effectFile; mDeathEffectConditions = conditions; }
 
     protected:
@@ -333,4 +348,6 @@ class Particle notfinal : public Actor
         bool mFollow;
 };
 
-#endif  // PARTICLE_PARTICLE_H
+extern ParticleEngine *particleEngine;
+
+#endif  // PARTICLE_PARTICLEENGINE_H

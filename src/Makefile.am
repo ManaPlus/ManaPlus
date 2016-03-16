@@ -1129,6 +1129,8 @@ manaplus_SOURCES += main.cpp \
 	      particle/particleemitter.cpp \
 	      particle/particleemitter.h \
 	      particle/particleemitterprop.h \
+	      particle/particleengine.cpp \
+	      particle/particleengine.h \
 	      particle/particleinfo.h \
 	      particle/particlelist.cpp \
 	      particle/particlelist.h \

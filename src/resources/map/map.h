@@ -222,8 +222,7 @@ class Map final : public Properties, public ConfigListener
         /**
          * Initializes all added particle effects
          */
-        void initializeParticleEffects(Particle *restrict const particleEngine)
-                                       const restrict2;
+        void initializeParticleEffects() const restrict2;
 
         /**
          * Adds a tile animation to the map

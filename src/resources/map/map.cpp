@@ -1067,11 +1067,10 @@ void Map::addParticleEffect(const std::string &effectFile,
     mParticleEffects.push_back(newEffect);
 }
 
-void Map::initializeParticleEffects(Particle *restrict const engine)
-                                    const restrict2
+void Map::initializeParticleEffects() const restrict2
 {
     BLOCK_START("Map::initializeParticleEffects")
-    if (!engine)
+    if (!particleEngine)
     {
         BLOCK_END("Map::initializeParticleEffects")
         return;
@@ -1081,11 +1080,19 @@ void Map::initializeParticleEffects(Particle *restrict const engine)
     {
         for (std::vector<ParticleEffectData>::const_iterator
              i = mParticleEffects.begin();
-             i != mParticleEffects.end(); ++i)
+             i != mParticleEffects.end();
+             ++i)
         {
-            Particle *const p = engine->addEffect(i->file, i->x, i->y);
-            if (p && i->w > 0 && i->h > 0)
+            Particle *const p = particleEngine->addEffect(
+                i->file,
+                i->x,
+                i->y);
+            if (p &&
+                i->w > 0 &&
+                i->h > 0)
+            {
                 p->adjustEmitterSize(i->w, i->h);
+            }
         }
     }
      BLOCK_END("Map::initializeParticleEffects")

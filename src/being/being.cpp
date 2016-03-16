@@ -1498,7 +1498,7 @@ void Being::setAction(const BeingActionT &restrict action,
                 reset();
 
                 // attack particle effect
-                if (Particle::enabled && effectManager)
+                if (ParticleEngine::enabled && effectManager)
                 {
                     const int effectId = mInfo->getAttack(attackId)->mEffectId;
                     if (effectId >= 0)
@@ -3879,7 +3879,7 @@ void Being::removeAfkEffect() restrict2
 void Being::addSpecialEffect(const int effect) restrict2
 {
     if (effectManager &&
-        Particle::enabled &&
+        ParticleEngine::enabled &&
         !mSpecialParticle &&
         effect != -1)
     {
@@ -4179,7 +4179,8 @@ void Being::addItemParticles(const int id,
         return;
 
     // setup particle effects
-    if (Particle::enabled && particleEngine)
+    if (ParticleEngine::enabled &&
+        particleEngine)
     {
         FOR_EACH (StringVectCIter, itr, display.particles)
         {
@@ -4479,7 +4480,7 @@ void Being::setTrickDead(const bool b) restrict2
 
 void Being::setSpiritBalls(const unsigned int balls) restrict2
 {
-    if (!Particle::enabled)
+    if (!ParticleEngine::enabled)
     {
         mSpiritBalls = balls;
         return;

@@ -205,7 +205,7 @@ void MapDebugTab::logic()
             mUpdateTime = cur_time;
             // TRANSLATORS: debug window label
             mParticleCountLabel->setCaption(strprintf(_("Particle count: %d"),
-                Particle::particleCount));
+                ParticleEngine::particleCount));
 
             mMapActorCountLabel->setCaption(
                 // TRANSLATORS: debug window label

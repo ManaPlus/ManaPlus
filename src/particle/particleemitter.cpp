@@ -508,7 +508,7 @@ void ParticleEmitter::createParticles(const int tick,
     for (int i = mOutput.value(tick); i > 0; i--)
     {
         // Limit maximum particles
-        if (Particle::particleCount > Particle::maxCount)
+        if (ParticleEngine::particleCount > ParticleEngine::maxCount)
             break;
 
         Particle *newParticle = nullptr;

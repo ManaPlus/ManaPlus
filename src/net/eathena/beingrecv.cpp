@@ -1140,7 +1140,7 @@ void BeingRecv::processBeingSpecialEffect(Net::MessageIn &msg)
 
     const int effectType = msg.readInt32("effect type");
 
-    if (Particle::enabled)
+    if (ParticleEngine::enabled)
         effectManager->trigger(effectType, being);
 
     // +++ need dehard code effectType == 3
@@ -1395,7 +1395,7 @@ void BeingRecv::processBeingSelfEffect(Net::MessageIn &msg)
     }
 
     const int effectType = msg.readInt32("effect type");
-    if (Particle::enabled)
+    if (ParticleEngine::enabled)
         effectManager->trigger(effectType, being);
 
     BLOCK_END("BeingRecv::processBeingSelfEffect")

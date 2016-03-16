@@ -318,7 +318,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     mChildParticleEffects.clear();
 
     // setup particle effects
-    if (Particle::enabled && particleEngine)
+    if (ParticleEngine::enabled && particleEngine)
     {
         FOR_EACH (StringVectCIter, itr, display.particles)
         {

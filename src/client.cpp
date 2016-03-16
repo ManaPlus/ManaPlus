@@ -1720,7 +1720,8 @@ void Client::optionChanged(const std::string &name)
     }
     else if (name == "particleEmitterSkip")
     {
-        Particle::emitterSkip = config.getIntValue("particleEmitterSkip") + 1;
+        ParticleEngine::emitterSkip =
+            config.getIntValue("particleEmitterSkip") + 1;
     }
     else if (name == "vsync")
     {

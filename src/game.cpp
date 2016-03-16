@@ -41,7 +41,7 @@
 
 #include "enums/being/beingdirection.h"
 
-#include "particle/particle.h"
+#include "particle/particleengine.h"
 
 #include "input/inputmanager.h"
 #include "input/joystick.h"
@@ -165,7 +165,7 @@ static void initEngines()
 #endif
     crazyMoves = new CrazyMoves;
 
-    particleEngine = new Particle;
+    particleEngine = new ParticleEngine;
     particleEngine->setMap(nullptr);
     particleEngine->setupEngine();
     BeingInfo::init();
@@ -777,9 +777,9 @@ void Game::adjustPerfomance()
                     break;
                 }
                 case 2:
-                    if (Particle::emitterSkip < 4)
+                    if (ParticleEngine::emitterSkip < 4)
                     {
-                        Particle::emitterSkip = 4;
+                        ParticleEngine::emitterSkip = 4;
                         if (localChatTab)
                         {
                             localChatTab->chatLog("Auto lower Particle "
@@ -826,14 +826,14 @@ void Game::resetAdjustLevel()
         case 2:
             config.setValue("beingopacity",
                 config.getBoolValue("beingopacity"));
-            Particle::emitterSkip = config.getIntValue(
+            ParticleEngine::emitterSkip = config.getIntValue(
                 "particleEmitterSkip") + 1;
             break;
         default:
         case 3:
             config.setValue("beingopacity",
                 config.getBoolValue("beingopacity"));
-            Particle::emitterSkip = config.getIntValue(
+            ParticleEngine::emitterSkip = config.getIntValue(
                 "particleEmitterSkip") + 1;
             config.setValue("alphaCache",
                 config.getBoolValue("alphaCache"));
@@ -1074,8 +1074,7 @@ void Game::changeMap(const std::string &mapPath)
 
     // Initialize map-based particle effects
     if (newMap)
-        newMap->initializeParticleEffects(particleEngine);
-
+        newMap->initializeParticleEffects();
 
     // Start playing new music file when necessary
     const std::string oldMusic = mCurrentMap
