@@ -45,13 +45,3 @@ AnimationParticle::~AnimationParticle()
 {
     mImage = nullptr;
 }
-
-bool AnimationParticle::update() restrict2
-{
-    if (mAnimation)
-    {
-        mAnimation->update(10);  // particle engine is updated every 10ms
-        mImage = mAnimation->getCurrentImage();
-    }
-    return Particle::update();
-}

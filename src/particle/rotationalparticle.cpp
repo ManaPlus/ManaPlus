@@ -26,9 +26,6 @@
 
 #include "debug.h"
 
-static const double PI = M_PI;
-static const float PI2 = 2 * M_PI;
-
 RotationalParticle::RotationalParticle(Animation *restrict const animation) :
     ImageParticle(nullptr)
 {
@@ -48,41 +45,4 @@ RotationalParticle::RotationalParticle(const XmlNodePtr animationNode,
 RotationalParticle::~RotationalParticle()
 {
     mImage = nullptr;
-}
-
-bool RotationalParticle::update() restrict2
-{
-    // TODO: cache velocities to avoid spamming atan2()
-
-    const int size = mAnimation->getLength();
-    if (!size)
-        return false;
-
-    float rad = static_cast<float>(atan2(mVelocity.x, mVelocity.y));
-    if (rad < 0)
-        rad = PI2 + rad;
-
-    const float range = static_cast<const float>(PI / size);
-
-    // Determines which frame the particle should play
-    if (rad < range || rad > PI2 - range)
-    {
-        mAnimation->setFrame(0);
-    }
-    else
-    {
-        for (int c = 1; c < size; c++)
-        {
-            if (((static_cast<float>(c) * (2 * range)) - range) < rad
-                && rad < ((static_cast<float>(c) * (2 * range)) + range))
-            {
-                mAnimation->setFrame(c);
-                break;
-            }
-        }
-    }
-
-    mImage = mAnimation->getCurrentImage();
-
-    return Particle::update();
 }

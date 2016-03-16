@@ -42,8 +42,6 @@ class AnimationParticle final : public ImageParticle
         A_DELETE_COPY(AnimationParticle)
 
         ~AnimationParticle();
-
-        bool update() restrict2 override final;
 };
 
 #endif  // PARTICLE_ANIMATIONPARTICLE_H

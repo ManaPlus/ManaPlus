@@ -46,6 +46,8 @@
 #include "debug.h"
 
 static const float SIN45 = 0.707106781F;
+static const double PI = M_PI;
+static const float PI2 = 2 * M_PI;
 
 class Graphics;
 class Image;
@@ -238,6 +240,49 @@ void Particle::updateSelf() restrict2
 bool Particle::update() restrict2
 {
     const Vector oldPos = mPos;
+
+    if (mAnimation)
+    {
+        if (mType == ParticleType::Animation)
+        {
+            // particle engine is updated every 10ms
+            mAnimation->update(10);
+        }
+        else  // ParticleType::Rotational
+        {
+            // TODO: cache velocities to avoid spamming atan2()
+            const int size = mAnimation->getLength();
+            if (!size)
+                return false;
+
+            float rad = static_cast<float>(atan2(mVelocity.x, mVelocity.y));
+            if (rad < 0)
+                rad = PI2 + rad;
+
+            const float range = static_cast<const float>(PI / size);
+
+            // Determines which frame the particle should play
+            if (rad < range || rad > PI2 - range)
+            {
+                mAnimation->setFrame(0);
+            }
+            else
+            {
+                const float range2 = 2 * range;
+                for (int c = 1; c < size; c++)
+                {
+                    const float cRange = static_cast<float>(c) * range2;
+                    if (cRange - range < rad &&
+                        rad < cRange + range)
+                    {
+                        mAnimation->setFrame(c);
+                        break;
+                    }
+                }
+            }
+        }
+        mImage = mAnimation->getCurrentImage();
+    }
 
     updateSelf();
 

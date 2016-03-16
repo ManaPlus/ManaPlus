@@ -41,8 +41,6 @@ class RotationalParticle final : public ImageParticle
         A_DELETE_COPY(RotationalParticle)
 
         ~RotationalParticle();
-
-        bool update() restrict2 override final;
 };
 
 #endif  // PARTICLE_ROTATIONALPARTICLE_H
