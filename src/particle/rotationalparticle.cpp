@@ -35,6 +35,7 @@ RotationalParticle::RotationalParticle(Animation *restrict const animation) :
     ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
+    mType = ParticleType::Rotational;
 }
 
 RotationalParticle::RotationalParticle(const XmlNodePtr animationNode,
@@ -43,6 +44,7 @@ RotationalParticle::RotationalParticle(const XmlNodePtr animationNode,
     ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))
 {
+    mType = ParticleType::Rotational;
 }
 
 RotationalParticle::~RotationalParticle()

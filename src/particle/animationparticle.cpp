@@ -32,6 +32,7 @@ AnimationParticle::AnimationParticle(Animation *restrict const animation) :
     ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
+    mType = ParticleType::Animation;
 }
 
 AnimationParticle::AnimationParticle(XmlNodePtrConst animationNode,
@@ -39,6 +40,7 @@ AnimationParticle::AnimationParticle(XmlNodePtrConst animationNode,
     ImageParticle(nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))
 {
+    mType = ParticleType::Animation;
 }
 
 AnimationParticle::~AnimationParticle()

@@ -26,6 +26,7 @@
 #include "being/actor.h"
 
 #include "enums/particle/alivestatus.h"
+#include "enums/particle/particletype.h"
 
 #include "particle/particleengine.h"
 
@@ -260,6 +261,9 @@ class Particle notfinal : public Actor
 
         // Is the particle supposed to be drawn and updated?
         AliveStatusT mAlive;
+
+        ParticleType mType;
+
     private:
         // List of child emitters.
         Emitters mChildEmitters;

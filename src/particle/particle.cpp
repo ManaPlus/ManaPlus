@@ -55,6 +55,7 @@ Particle::Particle() :
     mFadeIn(0),
     mVelocity(),
     mAlive(AliveStatus::ALIVE),
+    mType(ParticleType::Normal),
     mChildEmitters(),
     mChildParticles(),
     mDeathEffect(),

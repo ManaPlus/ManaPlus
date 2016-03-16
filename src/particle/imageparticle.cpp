@@ -34,6 +34,8 @@ ImageParticle::ImageParticle(Image *restrict const image) :
     Particle(),
     mImage(image)
 {
+    mType = ParticleType::Image;
+
     if (mImage)
     {
         mImage->incRef();

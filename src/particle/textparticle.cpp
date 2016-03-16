@@ -41,6 +41,7 @@ TextParticle::TextParticle(const std::string &restrict text,
     mTextWidth(mTextFont ? mTextFont->getWidth(mText) / 2 : 1),
     mOutline(outline)
 {
+    mType = ParticleType::Text;
 }
 
 void TextParticle::draw(Graphics *restrict const graphics,
