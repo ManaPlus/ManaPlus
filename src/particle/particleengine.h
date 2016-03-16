@@ -25,6 +25,9 @@
 
 #include "enums/particle/alivestatus.h"
 
+#include <list>
+#include <string>
+
 #include "localconsts.h"
 
 class Color;
