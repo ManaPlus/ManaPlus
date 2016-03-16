@@ -32,6 +32,7 @@
 #include "particle/rotationalparticle.h"
 #include "particle/textparticle.h"
 
+#include "resources/image.h"
 #include "resources/resourcemanager.h"
 
 #include "resources/animation/simpleanimation.h"
@@ -60,6 +61,7 @@ Particle::Particle() :
     mAlive(AliveStatus::ALIVE),
     mType(ParticleType::Normal),
     mAnimation(nullptr),
+    mImage(nullptr),
     mChildEmitters(),
     mChildParticles(),
     mDeathEffect(),
@@ -83,6 +85,22 @@ Particle::~Particle()
     // Delete child emitters and child particles
     clear();
     delete2(mAnimation);
+    if (mImage)
+    {
+        const std::string &restrict name = mImage->getIdPath();
+        StringIntMapIter it
+            = ImageParticle::imageParticleCountByName.find(name);
+        if (it != ImageParticle::imageParticleCountByName.end())
+        {
+            int &cnt = (*it).second;
+            if (cnt > 0)
+                cnt --;
+        }
+
+        mImage->decRef();
+        mImage = nullptr;
+    }
+
     ParticleEngine::particleCount--;
 }
 

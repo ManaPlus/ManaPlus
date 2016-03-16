@@ -31,11 +31,10 @@
 StringIntMap ImageParticle::imageParticleCountByName;
 
 ImageParticle::ImageParticle(Image *restrict const image) :
-    Particle(),
-    mImage(image)
+    Particle()
 {
     mType = ParticleType::Image;
-
+    mImage = image;
     if (mImage)
     {
         mImage->incRef();
@@ -52,21 +51,6 @@ ImageParticle::ImageParticle(Image *restrict const image) :
 
 ImageParticle::~ImageParticle()
 {
-    if (mImage)
-    {
-        const std::string &restrict name = mImage->getIdPath();
-        StringIntMapIter it
-            = ImageParticle::imageParticleCountByName.find(name);
-        if (it != ImageParticle::imageParticleCountByName.end())
-        {
-            int &cnt = (*it).second;
-            if (cnt > 0)
-                cnt --;
-        }
-
-        mImage->decRef();
-        mImage = nullptr;
-    }
 }
 
 void ImageParticle::draw(Graphics *restrict const graphics,

@@ -62,9 +62,6 @@ class ImageParticle notfinal : public Particle
         { mAlpha = alpha; }
 
         static StringIntMap imageParticleCountByName;
-    protected:
-        /**< The image used for this particle. */
-        Image *restrict mImage;
 };
 
 #endif  // PARTICLE_IMAGEPARTICLE_H

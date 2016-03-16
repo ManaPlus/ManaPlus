@@ -34,6 +34,7 @@
 
 class Color;
 class Font;
+class Image;
 class Particle;
 class ParticleEmitter;
 class SimpleAnimation;
@@ -267,6 +268,9 @@ class Particle notfinal : public Actor
 
         /**< Used animation for this particle */
         SimpleAnimation *restrict mAnimation;
+
+        /**< The image used for this particle. */
+        Image *restrict mImage;
 
     private:
         // List of child emitters.
