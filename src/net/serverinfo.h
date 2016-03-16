@@ -155,6 +155,8 @@ class ServerInfo final
 #ifdef EATHENA_SUPPORT
             else if (compareStrI(serverType, "eathena") == 0)
                 return ServerType::EATHENA;
+            else if (compareStrI(serverType, "hercules") == 0)
+                return ServerType::EATHENA;
             else if (compareStrI(serverType, "evol2") == 0)
                 return ServerType::EVOL2;
 #endif
