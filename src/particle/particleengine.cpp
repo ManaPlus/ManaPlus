@@ -57,6 +57,7 @@ const float ParticleEngine::PARTICLE_SKY = 800.0F;
 
 ParticleEngine::ParticleEngine() :
     mChildParticles(),
+    mChildMoveParticles(),
     mMap(nullptr)
 {
     ParticleEngine::particleCount++;
@@ -112,6 +113,7 @@ bool ParticleEngine::update() restrict2
         }
         else
         {
+            mChildMoveParticles.remove(*p);
             delete particle;
             p = mChildParticles.erase(p);
         }
@@ -331,4 +333,5 @@ void ParticleEngine::clear() restrict2
 {
     delete_all(mChildParticles);
     mChildParticles.clear();
+    mChildMoveParticles.clear();
 }

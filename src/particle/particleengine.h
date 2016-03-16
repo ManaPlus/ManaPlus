@@ -118,7 +118,7 @@ class ParticleEngine final
     private:
         // List of particles controlled by this particle
         Particles mChildParticles;
-
+        Particles mChildMoveParticles;
         Map *mMap;
 };
 

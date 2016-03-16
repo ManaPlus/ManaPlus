@@ -66,6 +66,7 @@ Particle::Particle() :
     mImage(nullptr),
     mChildEmitters(),
     mChildParticles(),
+    mChildMoveParticles(),
     mDeathEffect(),
     mGravity(0.0F),
     mBounce(0.0F),
@@ -213,6 +214,8 @@ void Particle::updateSelf() restrict2
                 Particle *const p = *it;
                 p->moveBy(mPos);
                 mChildParticles.push_back(p);
+                if (p->mFollow)
+                    mChildMoveParticles.push_back(p);
             }
         }
     }
@@ -305,15 +308,20 @@ bool Particle::update() restrict2
         return true;
     }
 
-    // Update child particles
-    for (ParticleIterator p = mChildParticles.begin(),
-         fp2 = mChildParticles.end(); p != fp2; )
+    for (ParticleIterator p = mChildMoveParticles.begin(),
+         fp2 = mChildMoveParticles.end(); p != fp2; )
     {
         Particle *restrict const particle = *p;
         // move particle with its parent if desired
         if (particle->mFollow)
             particle->moveBy(change);
+    }
 
+    // Update child particles
+    for (ParticleIterator p = mChildParticles.begin(),
+         fp2 = mChildParticles.end(); p != fp2; )
+    {
+        Particle *restrict const particle = *p;
         // update particle
         if (particle->update())
         {
@@ -321,6 +329,7 @@ bool Particle::update() restrict2
         }
         else
         {
+            mChildMoveParticles.remove(*p);
             delete particle;
             p = mChildParticles.erase(p);
         }
@@ -338,7 +347,7 @@ bool Particle::update() restrict2
 void Particle::moveBy(const Vector &restrict change) restrict2
 {
     mPos += change;
-    FOR_EACH (ParticleConstIterator, p, mChildParticles)
+    FOR_EACH (ParticleConstIterator, p, mChildMoveParticles)
     {
         Particle *restrict const particle = *p;
         if (particle->mFollow)
@@ -523,4 +532,6 @@ void Particle::clear() restrict2
 
     delete_all(mChildParticles);
     mChildParticles.clear();
+
+    mChildMoveParticles.clear();
 }

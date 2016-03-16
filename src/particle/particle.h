@@ -279,6 +279,8 @@ class Particle notfinal : public Actor
         // List of particles controlled by this particle
         Particles mChildParticles;
 
+        Particles mChildMoveParticles;
+
         // Particle effect file to be spawned when the particle dies
         std::string mDeathEffect;
 
