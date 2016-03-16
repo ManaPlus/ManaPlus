@@ -264,7 +264,7 @@ class Particle notfinal : public Actor
         // Is the particle supposed to be drawn and updated?
         AliveStatusT mAlive;
 
-        ParticleType mType;
+        ParticleTypeT mType;
 
         /**< Used animation for this particle */
         SimpleAnimation *restrict mAnimation;
