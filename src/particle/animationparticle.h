@@ -33,7 +33,8 @@ class SimpleAnimation;
 class AnimationParticle final : public ImageParticle
 {
     public:
-        explicit AnimationParticle(Animation *restrict const animation);
+        explicit AnimationParticle(Animation *restrict const animation)
+                                   A_NONNULL(2);
 
         explicit AnimationParticle(XmlNodePtrConst animationNode,
                                    const std::string &restrict dyePalettes

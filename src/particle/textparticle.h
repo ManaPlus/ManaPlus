@@ -34,7 +34,7 @@ class TextParticle final : public Particle
         TextParticle(const std::string &text,
                      const Color *restrict const color,
                      Font *restrict const font,
-                     const bool outline = false);
+                     const bool outline = false) A_NONNULL(3, 4);
 
         A_DELETE_COPY(TextParticle)
 
@@ -55,11 +55,15 @@ class TextParticle final : public Particle
         { return CAST_S32(mPos.y + mPos.z); }
 
     private:
-        std::string mText;             /**< Text of the particle. */
-        Font *restrict mTextFont;      /**< Font used for drawing the text. */
-        const Color *restrict mColor;  /**< Color used for drawing the text. */
+        /**< Text of the particle. */
+        std::string mText;
+        /**< Font used for drawing the text. */
+        Font *restrict mTextFont A_NONNULLPOINTER;
+        /**< Color used for drawing the text. */
+        const Color *restrict mColor A_NONNULLPOINTER;
         int mTextWidth;
-        bool mOutline;                 /**< Make the text better readable */
+        /**< Make the text better readable */
+        bool mOutline;
 };
 
 #endif  // PARTICLE_TEXTPARTICLE_H

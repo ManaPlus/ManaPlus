@@ -754,7 +754,7 @@ void Being::takeDamage(Being *restrict const attacker,
                 ChatMsgType::BY_PLAYER);
         }
     }
-    if (font && particleEngine)
+    if (font && particleEngine && color)
     {
         // Show damage number
         particleEngine->addTextSplashEffect(damage,

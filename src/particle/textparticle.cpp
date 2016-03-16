@@ -47,9 +47,6 @@ void TextParticle::draw(Graphics *restrict const graphics,
                         const int offsetX,
                         const int offsetY) const restrict2
 {
-    if (!mColor || !mTextFont)
-        return;
-
     BLOCK_START("TextParticle::draw")
     if (!isAlive())
     {

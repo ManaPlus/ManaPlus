@@ -47,7 +47,8 @@ class ParticleEmitter final
                         Particle *const target,
                         Map *const map,
                         const int rotation = 0,
-                        const std::string& dyePalettes = std::string());
+                        const std::string& dyePalettes = std::string())
+                        A_NONNULL(3);
 
         /**
          * Copy Constructor (necessary for reference counting of particle images)

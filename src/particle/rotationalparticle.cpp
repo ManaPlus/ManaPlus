@@ -53,9 +53,6 @@ RotationalParticle::~RotationalParticle()
 
 bool RotationalParticle::update() restrict2
 {
-    if (!mAnimation)
-        return false;
-
     // TODO: cache velocities to avoid spamming atan2()
 
     const int size = mAnimation->getLength();

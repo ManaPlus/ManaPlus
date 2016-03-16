@@ -47,7 +47,7 @@ class RotationalParticle final : public ImageParticle
 
     private:
         /**< Used animation for this particle */
-        SimpleAnimation *restrict mAnimation;
+        SimpleAnimation *restrict mAnimation A_NONNULLPOINTER;
 };
 
 #endif  // PARTICLE_ROTATIONALPARTICLE_H

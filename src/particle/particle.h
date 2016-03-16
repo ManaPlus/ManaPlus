@@ -123,7 +123,8 @@ class Particle notfinal : public Actor
                                       const int x, const int y,
                                       const Color *restrict const color,
                                       Font *restrict const font,
-                                      const bool outline = false) restrict2;
+                                      const bool outline = false)
+                                      restrict2 A_NONNULL(5, 6);
 
         /**
          * Creates a standalone text particle.
@@ -133,12 +134,12 @@ class Particle notfinal : public Actor
                                            const Color *restrict const color,
                                            Font *restrict const font,
                                            const bool outline = false)
-                                           restrict2;
+                                           restrict2 A_NONNULL(5, 6);
 
         /**
          * Adds an emitter to the particle.
          */
-        void addEmitter(ParticleEmitter *const emitter) restrict2
+        void addEmitter(ParticleEmitter *const emitter) restrict2 A_NONNULL(2)
         { mChildEmitters.push_back(emitter); }
 
         /**
@@ -222,7 +223,7 @@ class Particle notfinal : public Actor
          */
         void setDestination(Particle *restrict const target,
                             const float accel,
-                            const float moment) restrict2 noexcept
+                            const float moment) restrict2 noexcept A_NONNULL(2)
         { mTarget = target; mAcceleration = accel; mMomentum = moment; }
 
         /**
