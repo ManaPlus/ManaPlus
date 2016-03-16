@@ -115,110 +115,104 @@ void Particle::draw(Graphics *restrict const,
 
 void Particle::updateSelf() restrict2
 {
-    if (mLifetimeLeft == 0 && mAlive == AliveStatus::ALIVE)
-        mAlive = AliveStatus::DEAD_TIMEOUT;
+    // calculate particle movement
+    if (mMomentum != 1.0F)
+        mVelocity *= mMomentum;
 
-    if (mAlive == AliveStatus::ALIVE)
+    if (mTarget && mAcceleration != 0.0F)
     {
-        // calculate particle movement
-        if (mMomentum != 1.0F)
-            mVelocity *= mMomentum;
+        Vector dist = mPos - mTarget->mPos;
+        dist.x *= SIN45;
+        float invHypotenuse;
 
-        if (mTarget && mAcceleration != 0.0F)
+        switch (ParticleEngine::fastPhysics)
         {
-            Vector dist = mPos - mTarget->mPos;
-            dist.x *= SIN45;
-            float invHypotenuse;
-
-            switch (ParticleEngine::fastPhysics)
-            {
-                case 1:
-                    invHypotenuse = fastInvSqrt(
-                        dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
-                    break;
-                case 2:
-                    if (!dist.x)
-                    {
-                        invHypotenuse = 0;
-                        break;
-                    }
-
-                    invHypotenuse = 2.0F / (static_cast<float>(fabs(dist.x))
-                                    + static_cast<float>(fabs(dist.y))
-                                    + static_cast<float>(fabs(dist.z)));
-                    break;
-                default:
-                    invHypotenuse = 1.0F / static_cast<float>(sqrt(
-                        dist.x * dist.x + dist.y * dist.y + dist.z * dist.z));
-                    break;
-            }
-
-            if (invHypotenuse)
-            {
-                if (mInvDieDistance > 0.0F && invHypotenuse > mInvDieDistance)
-                    mAlive = AliveStatus::DEAD_IMPACT;
-                const float accFactor = invHypotenuse * mAcceleration;
-                mVelocity -= dist * accFactor;
-            }
-        }
-
-        if (mRandomness > 0)
-        {
-            mVelocity.x += static_cast<float>((rand() % mRandomness - rand()
-                           % mRandomness)) / 1000.0F;
-            mVelocity.y += static_cast<float>((rand() % mRandomness - rand()
-                           % mRandomness)) / 1000.0F;
-            mVelocity.z += static_cast<float>((rand() % mRandomness - rand()
-                           % mRandomness)) / 1000.0F;
-        }
-
-        mVelocity.z -= mGravity;
-
-        // Update position
-        mPos.x += mVelocity.x;
-        mPos.y += mVelocity.y * SIN45;
-        mPos.z += mVelocity.z * SIN45;
-
-        // Update other stuff
-        if (mLifetimeLeft > 0)
-            mLifetimeLeft--;
-
-        mLifetimePast++;
-
-        if (mPos.z < 0.0F)
-        {
-            if (mBounce > 0.0F)
-            {
-                mPos.z *= -mBounce;
-                mVelocity *= mBounce;
-                mVelocity.z = -mVelocity.z;
-            }
-            else
-            {
-                mAlive = AliveStatus::DEAD_FLOOR;
-            }
-        }
-        else if (mPos.z > ParticleEngine::PARTICLE_SKY)
-        {
-            mAlive = AliveStatus::DEAD_SKY;
-        }
-
-        // Update child emitters
-        if (ParticleEngine::emitterSkip &&
-            (mLifetimePast - 1) % ParticleEngine::emitterSkip == 0)
-        {
-            FOR_EACH (EmitterConstIterator, e, mChildEmitters)
-            {
-                std::vector<Particle*> newParticles;
-                (*e)->createParticles(mLifetimePast, newParticles);
-                FOR_EACH (std::vector<Particle*>::const_iterator,
-                          it,
-                          newParticles)
+            case 1:
+                invHypotenuse = fastInvSqrt(
+                    dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
+                break;
+            case 2:
+                if (!dist.x)
                 {
-                    Particle *const p = *it;
-                    p->moveBy(mPos);
-                    mChildParticles.push_back(p);
+                    invHypotenuse = 0;
+                    break;
                 }
+
+                invHypotenuse = 2.0F / (static_cast<float>(fabs(dist.x))
+                                + static_cast<float>(fabs(dist.y))
+                                + static_cast<float>(fabs(dist.z)));
+                break;
+            default:
+                invHypotenuse = 1.0F / static_cast<float>(sqrt(
+                    dist.x * dist.x + dist.y * dist.y + dist.z * dist.z));
+                break;
+        }
+
+        if (invHypotenuse)
+        {
+            if (mInvDieDistance > 0.0F && invHypotenuse > mInvDieDistance)
+                mAlive = AliveStatus::DEAD_IMPACT;
+            const float accFactor = invHypotenuse * mAcceleration;
+            mVelocity -= dist * accFactor;
+        }
+    }
+
+    if (mRandomness > 0)
+    {
+        mVelocity.x += static_cast<float>((rand() % mRandomness - rand()
+                       % mRandomness)) / 1000.0F;
+        mVelocity.y += static_cast<float>((rand() % mRandomness - rand()
+                       % mRandomness)) / 1000.0F;
+        mVelocity.z += static_cast<float>((rand() % mRandomness - rand()
+                       % mRandomness)) / 1000.0F;
+    }
+
+    mVelocity.z -= mGravity;
+
+    // Update position
+    mPos.x += mVelocity.x;
+    mPos.y += mVelocity.y * SIN45;
+    mPos.z += mVelocity.z * SIN45;
+
+    // Update other stuff
+    if (mLifetimeLeft > 0)
+        mLifetimeLeft--;
+
+    mLifetimePast++;
+
+    if (mPos.z < 0.0F)
+    {
+        if (mBounce > 0.0F)
+        {
+            mPos.z *= -mBounce;
+            mVelocity *= mBounce;
+            mVelocity.z = -mVelocity.z;
+        }
+        else
+        {
+            mAlive = AliveStatus::DEAD_FLOOR;
+        }
+    }
+    else if (mPos.z > ParticleEngine::PARTICLE_SKY)
+    {
+        mAlive = AliveStatus::DEAD_SKY;
+    }
+
+    // Update child emitters
+    if (ParticleEngine::emitterSkip &&
+        (mLifetimePast - 1) % ParticleEngine::emitterSkip == 0)
+    {
+        FOR_EACH (EmitterConstIterator, e, mChildEmitters)
+        {
+            std::vector<Particle*> newParticles;
+            (*e)->createParticles(mLifetimePast, newParticles);
+            FOR_EACH (std::vector<Particle*>::const_iterator,
+                      it,
+                      newParticles)
+            {
+                Particle *const p = *it;
+                p->moveBy(mPos);
+                mChildParticles.push_back(p);
             }
         }
     }
@@ -243,50 +237,61 @@ bool Particle::update() restrict2
 {
     const Vector oldPos = mPos;
 
-    if (mAnimation)
+    if (mAlive == AliveStatus::ALIVE)
     {
-        if (mType == ParticleType::Animation)
+        if (mLifetimeLeft == 0)
         {
-            // particle engine is updated every 10ms
-            mAnimation->update(10);
+            mAlive = AliveStatus::DEAD_TIMEOUT;
         }
-        else  // ParticleType::Rotational
+        else
         {
-            // TODO: cache velocities to avoid spamming atan2()
-            const int size = mAnimation->getLength();
-            if (!size)
-                return false;
-
-            float rad = static_cast<float>(atan2(mVelocity.x, mVelocity.y));
-            if (rad < 0)
-                rad = PI2 + rad;
-
-            const float range = static_cast<const float>(PI / size);
-
-            // Determines which frame the particle should play
-            if (rad < range || rad > PI2 - range)
+            if (mAnimation)
             {
-                mAnimation->setFrame(0);
-            }
-            else
-            {
-                const float range2 = 2 * range;
-                for (int c = 1; c < size; c++)
+                if (mType == ParticleType::Animation)
                 {
-                    const float cRange = static_cast<float>(c) * range2;
-                    if (cRange - range < rad &&
-                        rad < cRange + range)
+                    // particle engine is updated every 10ms
+                    mAnimation->update(10);
+                }
+                else  // ParticleType::Rotational
+                {
+                    // TODO: cache velocities to avoid spamming atan2()
+                    const int size = mAnimation->getLength();
+                    if (!size)
+                        return false;
+
+                    float rad = static_cast<float>(atan2(mVelocity.x,
+                        mVelocity.y));
+                    if (rad < 0)
+                        rad = PI2 + rad;
+
+                    const float range = static_cast<const float>(PI / size);
+
+                    // Determines which frame the particle should play
+                    if (rad < range || rad > PI2 - range)
                     {
-                        mAnimation->setFrame(c);
-                        break;
+                        mAnimation->setFrame(0);
+                    }
+                    else
+                    {
+                        const float range2 = 2 * range;
+                        for (int c = 1; c < size; c++)
+                        {
+                            const float cRange = static_cast<float>(c) *
+                                range2;
+                            if (cRange - range < rad &&
+                                rad < cRange + range)
+                            {
+                                mAnimation->setFrame(c);
+                                break;
+                            }
+                        }
                     }
                 }
+                mImage = mAnimation->getCurrentImage();
             }
+            updateSelf();
         }
-        mImage = mAnimation->getCurrentImage();
     }
-
-    updateSelf();
 
     const Vector change = mPos - oldPos;
 
