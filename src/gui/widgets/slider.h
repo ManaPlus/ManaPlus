@@ -345,7 +345,7 @@ class Slider final : public Widget,
          */
         Orientation mOrientation;
 
-        ImageCollection *mVertexes;
+        ImageCollection *mVertexes A_NONNULLPOINTER;
 
         /**
          * Holds the length of the marker.
