@@ -368,7 +368,7 @@ void Logger::error(const std::string &error_text)
 //                  (ConstStr255Param) msg, nullptr, nullptr);
 #elif defined(__linux__) || defined(_linux)
     std::cerr << "Error: " << error_text << std::endl;
-    const std::string msg("xmessage \"Error happend. "
+    const std::string msg("xmessage \"Error happened. "
         "Please see log file for more information.\"");
     if (system(msg.c_str()) == -1)
         std::cerr << "Error: " << error_text << std::endl;

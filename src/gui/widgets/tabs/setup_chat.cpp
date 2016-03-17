@@ -269,7 +269,7 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         _("If this feature enabled, text in chat will be automatically "
         "adjusted to adapt to appearance of chat input field when you "
         "typing message and when input field of chat disappears. If disabled, "
-        "chat input area will allways occupy its place, which could be "
+        "chat input area will always occupy its place, which could be "
         "otherwise usable for text.\n\n"
         "Note: its mostly about jumpy attitude vs "
         "less usable space for text."),

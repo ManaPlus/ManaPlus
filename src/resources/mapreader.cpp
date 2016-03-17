@@ -324,7 +324,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     if (tilew < 0 || tileh < 0)
     {
         logger->log("MapReader: Warning: "
-                    "Unitialized tile width or height value for map: %s",
+                    "Uninitialized tile width or height value for map: %s",
                     path.c_str());
         BLOCK_END("MapReader::readMap xml")
         return nullptr;
