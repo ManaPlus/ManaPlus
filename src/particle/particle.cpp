@@ -311,10 +311,8 @@ bool Particle::update() restrict2
     for (ParticleIterator p = mChildMoveParticles.begin(),
          fp2 = mChildMoveParticles.end(); p != fp2; )
     {
-        Particle *restrict const particle = *p;
         // move particle with its parent if desired
-        if (particle->mFollow)
-            particle->moveBy(change);
+        (*p)->moveBy(change);
     }
 
     // Update child particles
@@ -349,9 +347,7 @@ void Particle::moveBy(const Vector &restrict change) restrict2
     mPos += change;
     FOR_EACH (ParticleConstIterator, p, mChildMoveParticles)
     {
-        Particle *restrict const particle = *p;
-        if (particle->mFollow)
-            particle->moveBy(change);
+        (*p)->moveBy(change);
     }
 }
 
