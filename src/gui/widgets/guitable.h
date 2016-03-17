@@ -54,7 +54,7 @@ class GuiTable final : public Widget,
     public:
         GuiTable(const Widget2 *const widget,
                  TableModel *const initial_model,
-                 const bool opacity = true) A_NONNULL(3);
+                 const bool opacity = true);
 
         A_DELETE_COPY(GuiTable)
 
@@ -68,7 +68,7 @@ class GuiTable final : public Widget,
          * installed within the widget have been triggered. To be notified
          * after such an update, add an action listener to the table instead.
          */
-        void setModel(TableModel *const m) A_NONNULL(2);
+        void setModel(TableModel *const m);
 
         /**
          * Retrieves the active table model
