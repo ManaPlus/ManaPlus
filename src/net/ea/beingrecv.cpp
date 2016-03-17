@@ -454,6 +454,10 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
         msg.readBeingId("being id"));
     if (!dstBeing)
     {
+        DEBUGLOGSTR("invisible player?");
+        msg.readInt16("x");
+        msg.readInt16("y");
+        msg.readBytes(len, "moving path");
         BLOCK_END("BeingRecv::processBeingMove3")
         return;
     }
