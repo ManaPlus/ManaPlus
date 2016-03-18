@@ -542,36 +542,62 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
 
     for_actors
     {
-        if (!*it)
-            continue;
-
-        if ((*it)->getType() == ActorType::Portal)
-            continue;
-
-        const Being *const being = dynamic_cast<const Being*>(*it);
-
-        if (being && being->getInfo()
-            && !(being->getInfo()->isTargetSelection() || modActive))
-        {
-            continue;
-        }
-
         ActorSprite *const actor = *it;
 
-        if ((being &&
-            (being->isAlive() ||
-            (mTargetDeadPlayers &&
-            being->getType() == ActorType::Player)) &&
-            (allPlayers == AllPlayers_true ||
-            being != localPlayer)) ||
-            actor->getType() == ActorType::FloorItem)
+        if (!actor)
+            continue;
+
+        const ActorTypeT actorType = actor->getType();
+        switch (actorType)
         {
-            if ((actor->getPixelX() - xtol <= x) &&
-                (actor->getPixelX() + xtol > x) &&
-                (actor->getPixelY() - uptol <= y) &&
-                (actor->getPixelY() > y))
+            default:
+            case ActorType::Unknown:
+            case ActorType::Avatar:
+            case ActorType::Portal:
+                break;
+            case ActorType::FloorItem:
+                if ((actor->getPixelX() - xtol <= x) &&
+                    (actor->getPixelX() + xtol > x) &&
+                    (actor->getPixelY() - uptol <= y) &&
+                    (actor->getPixelY() > y))
+                {
+                    beings.push_back(actor);
+                }
+                break;
+            case ActorType::Player:
+            case ActorType::Npc:
+            case ActorType::Monster:
+            case ActorType::LocalPet:
+#ifdef EATHENA_SUPPORT
+            case ActorType::Pet:
+            case ActorType::Mercenary:
+            case ActorType::Homunculus:
+            case ActorType::SkillUnit:
+#endif
             {
-                beings.push_back(actor);
+                const Being *const being = static_cast<const Being*>(*it);
+                if (!being)
+                    continue;
+                if (being->getInfo() &&
+                    !(being->getInfo()->isTargetSelection() || modActive))
+                {
+                    continue;
+                }
+                if ((being->isAlive() ||
+                    (mTargetDeadPlayers &&
+                    actorType == ActorType::Player)) &&
+                    (allPlayers == AllPlayers_true ||
+                    being != localPlayer))
+                {
+                    if ((actor->getPixelX() - xtol <= x) &&
+                        (actor->getPixelX() + xtol > x) &&
+                        (actor->getPixelY() - uptol <= y) &&
+                        (actor->getPixelY() > y))
+                    {
+                        beings.push_back(actor);
+                    }
+                }
+                break;
             }
         }
     }
