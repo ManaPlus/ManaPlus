@@ -90,8 +90,11 @@ static std::string getNick(const InputEvent &event)
     std::string args = event.args;
     if (args.empty())
     {
-        WhisperTab *const whisper = dynamic_cast<WhisperTab* const>(event.tab);
-        if (!whisper || whisper->getNick().empty())
+        if (!event.tab || event.tab->getType() != ChatTabType::WHISPER)
+            return std::string();
+
+        WhisperTab *const whisper = static_cast<WhisperTab* const>(event.tab);
+        if (whisper->getNick().empty())
         {
             if (event.tab)
             {
