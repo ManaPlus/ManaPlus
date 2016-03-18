@@ -240,8 +240,9 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
         else if (mFrame->type == Frame::GOTO &&
                  !mFrame->nextAction.empty())
         {
-            if (mFrame->rand == 100 ||
-                mFrame->rand >= mrand() % 100)
+            const int rand = mFrame->rand;
+            if (rand == 100 ||
+                (rand && rand >= mrand() % 100))
             {
                 for (size_t i = 0; i < mAnimation->getLength(); i ++)
                 {
@@ -272,8 +273,9 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
         else if (mFrame->type == Frame::JUMP &&
                  !mFrame->nextAction.empty())
         {
-            if (mFrame->rand == 100 ||
-                mFrame->rand >= mrand() % 100)
+            const int rand = mFrame->rand;
+            if (rand == 100 ||
+                (rand && rand >= mrand() % 100))
             {
                 play(mFrame->nextAction);
                 return true;
@@ -283,8 +285,9 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
         else if (!mFrame->image &&
                  mFrame->type == Frame::ANIMATION)
         {
-            if (mFrame->rand == 100 ||
-                mFrame->rand >= mrand() % 100)
+            const int rand = mFrame->rand;
+            if (rand == 100 ||
+                (rand && rand >= mrand() % 100))
             {
                 mAnimation = nullptr;
                 mFrame = nullptr;
@@ -293,14 +296,15 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
         }
         else
         {
-            if (mFrame->rand == 100 || mFrameIndex
-                >= CAST_U32(mAnimation->getLength()))
+            const int rand = mFrame->rand;
+            if (rand == 100 ||
+                mFrameIndex >= CAST_U32(mAnimation->getLength()))
             {
                 fail = false;
             }
             else
             {
-                if (mrand() % 100 <= mFrame->rand)
+                if (rand && mrand() % 100 <= rand)
                     fail = false;
             }
         }

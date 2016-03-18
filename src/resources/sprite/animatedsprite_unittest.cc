@@ -34,6 +34,7 @@
 #include "resources/animation/animation.h"
 
 #include "utils/env.h"
+#include "utils/mrand.h"
 #include "utils/physfstools.h"
 
 #include "debug.h"
@@ -42,6 +43,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
 
+    initRand();
     client = new Client;
     PHYSFS_init("manaplus");
     dirSeparator = "/";
