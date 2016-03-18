@@ -523,7 +523,10 @@ void Client::initSoundManager()
     try
     {
         if (config.getBoolValue("sound"))
+        {
+            //soundManager.testAudio();
             soundManager.init();
+        }
 
         soundManager.setSfxVolume(config.getIntValue("sfxVolume"));
         soundManager.setMusicVolume(config.getIntValue("musicVolume"));

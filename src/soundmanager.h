@@ -51,6 +51,8 @@ class SoundManager final : public ConfigListener
          */
         void init();
 
+        void testAudio();
+
         /**
          * Removes all sound functionalities.
          */

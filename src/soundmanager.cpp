@@ -175,6 +175,69 @@ void SoundManager::init()
         playMusic(mCurrentMusicFile);
 }
 
+void SoundManager::testAudio()
+{
+    mPlayBattle = config.getBoolValue("playBattleSound");
+    mPlayGui = config.getBoolValue("playGuiSound");
+    mPlayMusic = config.getBoolValue("playMusic");
+    mFadeoutMusic = config.getBoolValue("fadeoutmusic");
+    mMusicVolume = config.getIntValue("musicVolume");
+    mSfxVolume = config.getIntValue("sfxVolume");
+    mCacheSounds = config.getIntValue("uselonglivesounds");
+
+    const size_t audioBuffer = 4096;
+    int channels = config.getIntValue("audioChannels");
+    switch (channels)
+    {
+        case 3:
+            channels = 4;
+            break;
+        case 4:
+            channels = 6;
+            break;
+        default:
+            break;
+    }
+
+    SDL_AudioSpec desired;
+    SDL_AudioSpec actual;
+
+    desired.freq = config.getIntValue("audioFrequency");
+    desired.format = MIX_DEFAULT_FORMAT;
+    desired.channels = channels;
+    desired.samples = audioBuffer;
+    desired.callback = nullptr;
+    desired.userdata = nullptr;
+
+    if (SDL_OpenAudio(&desired, &actual) < 0)
+    {
+        logger->log("SoundManager::testAudio error: %s",
+            Mix_GetError());
+        return;
+    }
+    if (desired.freq != actual.freq)
+    {
+        logger->log("SoundManager::testAudio frequence: %d -> %d",
+            actual.freq, desired.freq);
+    }
+    if (desired.format != actual.format)
+    {
+        logger->log("SoundManager::testAudio format: %d -> %d",
+            actual.format, desired.format);
+    }
+    if (desired.channels != actual.channels)
+    {
+        logger->log("SoundManager::testAudio channels: %d -> %d",
+            actual.channels, desired.channels);
+    }
+    if (desired.samples != actual.samples)
+    {
+        logger->log("SoundManager::testAudio samples: %d -> %d",
+            actual.samples, desired.samples);
+    }
+    SDL_CloseAudio();
+}
+
 void SoundManager::info()
 {
     SDL_version compiledVersion;
