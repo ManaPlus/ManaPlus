@@ -455,6 +455,7 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     if (!dstBeing)
     {
         DEBUGLOGSTR("invisible player?");
+        msg.readInt16("speed");
         msg.readInt16("x");
         msg.readInt16("y");
         msg.readBytes(len, "moving path");
