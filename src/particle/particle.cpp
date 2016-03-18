@@ -160,12 +160,13 @@ void Particle::updateSelf() restrict2
 
     if (mRandomness > 0)
     {
-        mVelocity.x += static_cast<float>((rand() % mRandomness - rand()
-                       % mRandomness)) / 1000.0F;
-        mVelocity.y += static_cast<float>((rand() % mRandomness - rand()
-                       % mRandomness)) / 1000.0F;
-        mVelocity.z += static_cast<float>((rand() % mRandomness - rand()
-                       % mRandomness)) / 1000.0F;
+        const int rand2 = mRandomness * 2;
+        mVelocity.x += static_cast<float>(rand() % rand2 - mRandomness)
+            / 1000.0F;
+        mVelocity.y += static_cast<float>(rand() % rand2 - mRandomness)
+            / 1000.0F;
+        mVelocity.z += static_cast<float>(rand() % rand2 - mRandomness)
+            / 1000.0F;
     }
 
     mVelocity.z -= mGravity;
