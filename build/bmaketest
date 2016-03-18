@@ -29,7 +29,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wdelete-non-virtual-dtor -Wmaybe-uninitialized -Wunused-local-typedefs \
 -Wvector-operation-performance -Wfree-nonheap-object -Winvalid-memory-model \
 -Wnarrowing -Wzero-as-null-pointer-constant -funsafe-loop-optimizations \
--Wabi-tag -Waggressive-loop-optimizations -Wclobbered -Wempty-body \
+-Waggressive-loop-optimizations -Wclobbered -Wempty-body \
 -Wignored-qualifiers -Wliteral-suffix -Wmissing-field-initializers \
 -Woverlength-strings -Wpedantic -Wsign-compare -Wsizeof-pointer-memaccess \
 -Wsuggest-attribute=format -Wtype-limits -Wuninitialized \
