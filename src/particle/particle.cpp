@@ -158,14 +158,14 @@ void Particle::updateSelf() restrict2
         }
     }
 
-    if (mRandomness > 0)
+    if (mRandomness >= 10)  // reduce useless calculations
     {
         const int rand2 = mRandomness * 2;
-        mVelocity.x += static_cast<float>(rand() % rand2 - mRandomness)
+        mVelocity.x += static_cast<float>(std::rand() % rand2 - mRandomness)
             / 1000.0F;
-        mVelocity.y += static_cast<float>(rand() % rand2 - mRandomness)
+        mVelocity.y += static_cast<float>(std::rand() % rand2 - mRandomness)
             / 1000.0F;
-        mVelocity.z += static_cast<float>(rand() % rand2 - mRandomness)
+        mVelocity.z += static_cast<float>(std::rand() % rand2 - mRandomness)
             / 1000.0F;
     }
 
