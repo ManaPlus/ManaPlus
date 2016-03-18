@@ -69,11 +69,11 @@
 #if GCC_VERSION < 40900
 #define constexpr2
 #else  // GCC_VERSION < 40900
-#if __cpp_constexpr > 201309
+#if __cpp_constexpr >= 201304
 #define constexpr2 constexpr
-#else  // __cpp_constexpr > 201309
+#else  // __cpp_constexpr >= 201304
 #define constexpr2
-#endif  // __cpp_constexpr > 201309
+#endif  // __cpp_constexpr >= 201304
 #endif  // GCC_VERSION < 40900
 #endif  // GCC_VERSION < 40700
 #undef Z_NULL
