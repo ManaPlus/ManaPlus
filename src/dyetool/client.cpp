@@ -56,6 +56,7 @@
 #include "utils/fuzzer.h"
 #include "utils/gettext.h"
 #include "utils/gettexthelper.h"
+#include "utils/mrand.h"
 #ifdef ANDROID
 #include "utils/paths.h"
 #endif
@@ -135,6 +136,8 @@ void Client::testsClear()
 void Client::gameInit()
 {
     logger = new Logger;
+
+    initRand();
 
     // Load branding information
     if (!settings.options.brandingPath.empty())

@@ -826,6 +826,8 @@ SET(SRCS
     utils/naclmessages.h
     utils/mkdir.cpp
     utils/mkdir.h
+    utils/mrand.cpp
+    utils/mrand.h
     utils/xml.h
     utils/xml.inc
     utils/xmlutils.cpp
@@ -1410,6 +1412,8 @@ SET(DYE_CMD_SRCS
     utils/files.h
     utils/mkdir.cpp
     utils/mkdir.h
+    utils/mrand.cpp
+    utils/mrand.h
     utils/paths.cpp
     utils/paths.h
     utils/perfomance.cpp

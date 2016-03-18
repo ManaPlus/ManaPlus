@@ -36,6 +36,7 @@
 #include "resources/sprite/animationdelayload.h"
 
 #include "utils/delete2.h"
+#include "utils/mrand.h"
 
 #include "debug.h"
 
@@ -240,7 +241,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
                  !mFrame->nextAction.empty())
         {
             if (mFrame->rand == 100 ||
-                mFrame->rand >= rand() % 100)
+                mFrame->rand >= mrand() % 100)
             {
                 for (size_t i = 0; i < mAnimation->getLength(); i ++)
                 {
@@ -272,7 +273,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
                  !mFrame->nextAction.empty())
         {
             if (mFrame->rand == 100 ||
-                mFrame->rand >= rand() % 100)
+                mFrame->rand >= mrand() % 100)
             {
                 play(mFrame->nextAction);
                 return true;
@@ -283,7 +284,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
                  mFrame->type == Frame::ANIMATION)
         {
             if (mFrame->rand == 100 ||
-                mFrame->rand >= rand() % 100)
+                mFrame->rand >= mrand() % 100)
             {
                 mAnimation = nullptr;
                 mFrame = nullptr;
@@ -299,7 +300,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
             }
             else
             {
-                if (rand() % 100 <= mFrame->rand)
+                if (mrand() % 100 <= mFrame->rand)
                     fail = false;
             }
         }
