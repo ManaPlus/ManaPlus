@@ -41,5 +41,5 @@ int mrand()
 {
     if (mPos >= randNumbers)
         mPos = 0;
-    return mRand[++mPos];
+    return mRand[mPos++];
 }
