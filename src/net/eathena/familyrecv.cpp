@@ -21,6 +21,9 @@
 #include "net/eathena/familyrecv.h"
 
 #include "logger.h"
+#include "notifymanager.h"
+
+#include "enums/resources/notifytypes.h"
 
 #include "net/messagein.h"
 
@@ -51,8 +54,8 @@ void FamilyRecv::processCallPartner(Net::MessageIn &msg)
 
 void FamilyRecv::processDivorced(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readString(24, "name");
+    const std::string name = msg.readString(24, "name");
+    NotifyManager::notify(NotifyTypes::DIVORCED, name.c_str());
 }
 
 void FamilyRecv::processAskForChildReply(Net::MessageIn &msg)

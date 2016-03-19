@@ -791,6 +791,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Player %s unknown remove."),
             NotifyFlags::STRING},
+        {"player divorced",
+            // TRANSLATORS: notification message
+            N_("You and %s was divorced."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

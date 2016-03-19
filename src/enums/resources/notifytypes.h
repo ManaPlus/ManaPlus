@@ -219,6 +219,7 @@ namespace NotifyTypes
         BEING_REMOVE_WARPED,
         BEING_REMOVE_TRICK_DEAD,
         BEING_REMOVE_UNKNOWN,
+        DIVORCED,
 
         TYPE_END
     };
