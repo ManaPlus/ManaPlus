@@ -241,6 +241,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showMonsterGMCommands();
 
+        void showAdoptCommands();
+
         bool addBeingMenu();
 
         BrowserBox *mBrowserBox A_NONNULLPOINTER;

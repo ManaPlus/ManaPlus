@@ -565,6 +565,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
                 mBrowserBox->addRow("##3---");
                 const PartyMember *const o = party->getMember(
                     localPlayer->getName());
+                showAdoptCommands();
                 if (o && member->getMap() == o->getMap())
                 {
                     // TRANSLATORS: popup menu item
@@ -2568,6 +2569,7 @@ void PopupMenu::addPartyName(const std::string &partyName)
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: kick player from party
                 mBrowserBox->addRow("/kickparty 'NAME'", _("Kick from party"));
+                showAdoptCommands();
             }
             mBrowserBox->addRow("##3---");
         }
@@ -2592,6 +2594,7 @@ void PopupMenu::addParty(const std::string &nick)
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: kick player from party
                 mBrowserBox->addRow("/kickparty 'NAME'", _("Kick from party"));
+                showAdoptCommands();
             }
             mBrowserBox->addRow("##3---");
         }
@@ -3195,6 +3198,17 @@ void PopupMenu::addCatchPetCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: catch pet command
     mBrowserBox->addRow("/catchpet :'BEINGID'", _("Taming pet"));
+#endif
+}
+
+void PopupMenu::showAdoptCommands()
+{
+#ifdef EATHENA_SUPPORT
+    if (!serverFeatures->haveFamily())
+        return;
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: adopt child command
+    mBrowserBox->addRow("/adoptchild 'NAME'", _("Adopt child"));
 #endif
 }
 
