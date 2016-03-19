@@ -220,6 +220,8 @@ namespace NotifyTypes
         BEING_REMOVE_TRICK_DEAD,
         BEING_REMOVE_UNKNOWN,
         DIVORCED,
+        CALLED_PARTNER,
+        CALLING_PARTNER,
 
         TYPE_END
     };

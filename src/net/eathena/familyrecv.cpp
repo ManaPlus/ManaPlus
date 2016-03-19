@@ -23,6 +23,8 @@
 #include "logger.h"
 #include "notifymanager.h"
 
+#include "being/localplayer.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "net/messagein.h"
@@ -48,8 +50,15 @@ void FamilyRecv::processAskForChild(Net::MessageIn &msg)
 
 void FamilyRecv::processCallPartner(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readString(24, "name");
+    const std::string name = msg.readString(24, "name");
+    if (localPlayer && name == localPlayer->getName())
+    {
+        NotifyManager::notify(NotifyTypes::CALLED_PARTNER);
+    }
+    else
+    {
+        NotifyManager::notify(NotifyTypes::CALLING_PARTNER, name.c_str());
+    }
 }
 
 void FamilyRecv::processDivorced(Net::MessageIn &msg)

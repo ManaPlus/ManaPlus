@@ -795,6 +795,14 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("You and %s was divorced."),
             NotifyFlags::STRING},
+        {"partner called",
+            // TRANSLATORS: notification message
+            N_("You was called by partner."),
+            NotifyFlags::EMPTY},
+        {"partner calling",
+            // TRANSLATORS: notification message
+            N_("You calling partner %s."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
