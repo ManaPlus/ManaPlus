@@ -5497,6 +5497,12 @@ static const InputActionData inputActionData
         "mailto",
         UseArgs_true,
         Protected_false},
+    {"keyAdoptChild",
+        defaultAction(&Actions::adoptChild),
+        InputCondition::INGAME,
+        "adoptchild|childadopt|askforchild",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

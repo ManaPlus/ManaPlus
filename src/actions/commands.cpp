@@ -62,6 +62,7 @@
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
 #ifdef EATHENA_SUPPORT
+#include "net/familyhandler.h"
 #include "net/homunculushandler.h"
 #include "net/mailhandler.h"
 #include "net/net.h"
@@ -1570,6 +1571,21 @@ impHandler(mailTo)
     if (!mailWindow)
         return false;
     mailWindow->createMail(event.args);
+    return true;
+#else
+    return false;
+#endif
+}
+
+impHandler(adoptChild)
+{
+#ifdef EATHENA_SUPPORT
+    const std::string nick = getNick(event);
+    Being *const being = actorManager->findBeingByName(
+        nick, ActorType::Player);
+    if (!being)
+        return true;
+    familyHandler->askForChild(being);
     return true;
 #else
     return false;

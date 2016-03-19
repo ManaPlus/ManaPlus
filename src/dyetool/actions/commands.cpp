@@ -139,5 +139,6 @@ impHandlerVoid(commandPartyRecall)
 impHandlerVoid(commandBreakGuild)
 impHandlerVoid(commandGuildRecall)
 impHandlerVoid(mailTo)
+impHandlerVoid(adoptChild)
 
 }  // namespace Actions

@@ -668,6 +668,7 @@ enumStart(InputAction)
     COMMAND_BREAK_GUILD,
     COMMAND_GUILD_RECALL,
     MAIL_TO,
+    ADOPT_CHILD,
     TOTAL
 }
 enumEnd(InputAction);

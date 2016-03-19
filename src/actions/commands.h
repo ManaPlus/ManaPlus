@@ -139,6 +139,7 @@ namespace Actions
     decHandler(commandBreakGuild);
     decHandler(commandGuildRecall);
     decHandler(mailTo);
+    decHandler(adoptChild);
 }  // namespace Actions
 
 #undef decHandler
