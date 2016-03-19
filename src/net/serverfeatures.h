@@ -130,6 +130,8 @@ class ServerFeatures notfinal
         virtual bool haveMail() const = 0;
 
         virtual bool haveServerPets() const = 0;
+
+        virtual bool haveFamily() const = 0;
 };
 
 }  // namespace Net

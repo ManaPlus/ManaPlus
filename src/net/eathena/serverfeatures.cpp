@@ -285,4 +285,9 @@ bool ServerFeatures::haveServerPets() const
     return true;
 }
 
+bool ServerFeatures::haveFamily() const
+{
+    return true;
+}
+
 }  // namespace EAthena

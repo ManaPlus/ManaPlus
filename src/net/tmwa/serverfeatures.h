@@ -133,6 +133,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveMail() const override final A_CONST;
 
         bool haveServerPets() const override final A_CONST;
+
+        bool haveFamily() const override final A_CONST;
 };
 
 }  // namespace TmwAthena

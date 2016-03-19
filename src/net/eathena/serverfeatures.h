@@ -133,6 +133,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveMail() const override final;
 
         bool haveServerPets() const override final;
+
+        bool haveFamily() const override final;
 };
 
 }  // namespace EAthena

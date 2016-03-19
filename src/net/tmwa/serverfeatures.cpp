@@ -283,4 +283,9 @@ bool ServerFeatures::haveServerPets() const
     return false;
 }
 
+bool ServerFeatures::haveFamily() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena
