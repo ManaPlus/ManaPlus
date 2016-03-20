@@ -195,6 +195,9 @@
 #define FOR_EACHP(type, iter, array) for (type iter = array->begin(), \
     iter##_fend = array->end(); iter != iter##_fend; ++ iter)
 
+#define FOR_EACH_SAFE(type, iter, array) for (type iter = array.begin(); \
+    iter != array.end(); ++ iter)
+
 #ifdef ENABLE_CHECKPLUGIN
 #define A_NONNULLPOINTER __attribute__((nonnullpointer))
 #else
