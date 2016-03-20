@@ -445,18 +445,9 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         spawnId = BeingId_zero;
     Ea::BeingRecv::mSpawnId = BeingId_zero;
     int16_t speed = msg.readInt16("speed");
-//    if (visible)
-//    {
-        const uint16_t stunMode = msg.readInt16("opt1");
-        // probably wrong effect usage
-        uint32_t statusEffects = msg.readInt16("opt2");
-//    }
-//    else
-//    {
-// commented for now, probably it can be removed after testing
-//        msg.readInt16("body state");
-//        msg.readInt16("health state");
-//    }
+    const uint16_t stunMode = msg.readInt16("opt1");
+    // probably wrong effect usage
+    uint32_t statusEffects = msg.readInt16("opt2");
     statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
     const int16_t job = msg.readInt16("class");
 
@@ -622,18 +613,9 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     Ea::BeingRecv::mSpawnId = id;
     const BeingId spawnId = id;
     int16_t speed = msg.readInt16("speed");
-//    if (visible)
-//    {
-        const uint16_t stunMode = msg.readInt16("opt1");
-        // probably wrong effect usage
-        uint32_t statusEffects = msg.readInt16("opt2");
-//    }
-//    else
-//    {
-// commented for now, probably it can be removed after testing
-//        msg.readInt16("body state");
-//        msg.readInt16("health state");
-//    }
+    const uint16_t stunMode = msg.readInt16("opt1");
+    // probably wrong effect usage
+    uint32_t statusEffects = msg.readInt16("opt2");
     statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
     const int16_t job = msg.readInt16("class");
 
