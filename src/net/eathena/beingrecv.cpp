@@ -413,7 +413,10 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 
     msg.readInt8("is boss");
     if (packetVersion >= 20150513)
+    {
         msg.readInt16("body2");
+        msg.readString(24, "name");
+    }
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, CAST_U16(
@@ -591,7 +594,10 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 
     msg.readInt8("is boss");
     if (packetVersion >= 20150513)
+    {
         msg.readInt16("body2");
+        msg.readString(24, "name");
+    }
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, CAST_U16(
@@ -749,7 +755,10 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 
     msg.readInt8("is boss");
     if (packetVersion >= 20150513)
+    {
         msg.readInt16("body2");
+        msg.readString(24, "name");
+    }
 
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, CAST_U16(
