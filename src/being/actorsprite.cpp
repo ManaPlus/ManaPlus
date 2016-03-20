@@ -194,7 +194,7 @@ void ActorSprite::setStatusEffectBlock(const int offset,
     {
         const bool val = (newEffects & (1 << i)) > 0;
         const int index = StatusEffect::blockEffectIndexToEffectIndex(
-            offset + i);
+            offset + i);  // block-id (offset + i) to id (index)
 
         if (index != -1)
         {
