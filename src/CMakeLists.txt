@@ -1163,6 +1163,7 @@ SET(SRCS
     enums/state.h
     enums/textcommandtype.h
     enums/simpletypes/advanced.h
+    enums/simpletypes/allowquit.h
     enums/simpletypes/allowsort.h
     enums/simpletypes/allplayers.h
     enums/simpletypes/append.h

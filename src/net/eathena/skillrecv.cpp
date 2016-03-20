@@ -361,7 +361,8 @@ void SkillRecv::processSkillWarpPoint(Net::MessageIn &msg)
         // TRANSLATORS: warp select window name
         _("Select warp target"),
         // TRANSLATORS: warp select button
-        _("Warp"));
+        _("Warp"),
+        AllowQuit_false);
     skillWarpListener.setDialog(dialog);
     skillWarpListener.setSkill(skillId);
     dialog->addActionListener(&skillWarpListener);

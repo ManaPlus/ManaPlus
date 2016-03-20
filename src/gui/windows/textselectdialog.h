@@ -25,6 +25,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "enums/simpletypes/allowquit.h"
+
 #include "listeners/actionlistener.h"
 #include "listeners/selectionlistener.h"
 
@@ -42,7 +44,8 @@ class TextSelectDialog notfinal : public Window,
          * Constructor.
          */
         TextSelectDialog(const std::string &name,
-                         const std::string &selectButton);
+                         const std::string &selectButton,
+                         const AllowQuit allowQuit);
 
         A_DELETE_COPY(TextSelectDialog)
 
@@ -94,6 +97,7 @@ class TextSelectDialog notfinal : public Window,
         ListBox *mItemList A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
         NamesModel *mModel A_NONNULLPOINTER;
+        AllowQuit mAllowQuit;
         int mTag;
 };
 

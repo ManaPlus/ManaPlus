@@ -40,7 +40,8 @@
 #include "debug.h"
 
 TextSelectDialog::TextSelectDialog(const std::string &name,
-                                   const std::string &selectButton) :
+                                   const std::string &selectButton,
+                                   const AllowQuit allowQuit) :
     // TRANSLATORS: sell dialog name
     Window(name, Modal_false, nullptr, "sell.xml"),
     ActionListener(),
@@ -52,6 +53,7 @@ TextSelectDialog::TextSelectDialog(const std::string &name,
     mItemList(nullptr),
     mScrollArea(nullptr),
     mModel(nullptr),
+    mAllowQuit(allowQuit),
     mTag(0)
 {
 }
@@ -60,7 +62,7 @@ void TextSelectDialog::postInit()
 {
     setWindowName("TextSelectDialog");
     setResizable(true);
-    setCloseButton(true);
+    setCloseButton(mAllowQuit == AllowQuit_true);
     setStickyButtonLock(true);
     setMinWidth(260);
     setMinHeight(220);
@@ -83,8 +85,11 @@ void TextSelectDialog::postInit()
         mSelectButtonName,
         "select",
         this);
-    // TRANSLATORS: sell dialog button
-    mQuitButton = new Button(this, _("Quit"), "quit", this);
+    if (mAllowQuit == AllowQuit_true)
+    {
+        // TRANSLATORS: sell dialog button
+        mQuitButton = new Button(this, _("Quit"), "quit", this);
+    }
 
     mSelectButton->setEnabled(false);
 
@@ -97,8 +102,15 @@ void TextSelectDialog::postInit()
     placer = getPlacer(0, 0);
 
     placer(0, 0, mScrollArea, 8, 5).setPadding(3);
-    placer(6, 5, mSelectButton);
-    placer(7, 5, mQuitButton);
+    if (mQuitButton)
+    {
+        placer(6, 5, mSelectButton);
+        placer(7, 5, mQuitButton);
+    }
+    else
+    {
+        placer(7, 5, mSelectButton);
+    }
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);
