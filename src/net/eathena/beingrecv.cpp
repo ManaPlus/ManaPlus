@@ -1193,7 +1193,7 @@ void BeingRecv::processSkillEntry(Net::MessageIn &msg)
     dstBeing->setCreatorId(creatorId);
 }
 
-void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
+void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processPlayerStop")
     if (!actorManager)
@@ -1221,7 +1221,7 @@ void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
     BLOCK_END("BeingRecv::processPlayerStop")
 }
 
-void BeingRecv::processPlaterStatusChange2(Net::MessageIn &msg)
+void BeingRecv::processPlayerStatusChange2(Net::MessageIn &msg)
 {
     if (!actorManager)
         return;
@@ -1243,7 +1243,7 @@ void BeingRecv::processPlaterStatusChange2(Net::MessageIn &msg)
         statusEffects & 0xffff));
 }
 
-void BeingRecv::processPlaterStatusChangeNoTick(Net::MessageIn &msg)
+void BeingRecv::processPlayerStatusChangeNoTick(Net::MessageIn &msg)
 {
     const uint16_t status = msg.readInt16("index");
     const BeingId id = msg.readBeingId("account id");

@@ -1162,7 +1162,7 @@ void BeingRecv::processBeingChangeDirection(Net::MessageIn &msg)
     BLOCK_END("BeingRecv::processBeingChangeDirection")
 }
 
-void BeingRecv::processPlaterStatusChange(Net::MessageIn &msg)
+void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processPlayerStop")
     if (!actorManager)

@@ -63,7 +63,7 @@ namespace TmwAthena
                                             const uint8_t type,
                                             const int id,
                                             const int id2) A_NONNULL(2);
-        void processPlaterStatusChange(Net::MessageIn &msg);
+        void processPlayerStatusChange(Net::MessageIn &msg);
         void processBeingResurrect(Net::MessageIn &msg);
         void processPlayerGuilPartyInfo(Net::MessageIn &msg);
         void processBeingSelfEffect(Net::MessageIn &msg);

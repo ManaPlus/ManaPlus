@@ -78,14 +78,14 @@ namespace EAthena
         void processBeingSoundEffect(Net::MessageIn &msg);
         void processSkillGroundNoDamage(Net::MessageIn &msg);
         void processSkillEntry(Net::MessageIn &msg);
-        void processPlaterStatusChange(Net::MessageIn &msg);
-        void processPlaterStatusChangeNoTick(Net::MessageIn &msg);
+        void processPlayerStatusChange(Net::MessageIn &msg);
+        void processPlayerStatusChangeNoTick(Net::MessageIn &msg);
         void processBeingResurrect(Net::MessageIn &msg);
         void processPlayerGuilPartyInfo(Net::MessageIn &msg);
         void processBeingRemoveSkill(Net::MessageIn &msg);
         void processBeingFakeName(Net::MessageIn &msg);
         void processBeingStatUpdate1(Net::MessageIn &msg);
-        void processPlaterStatusChange2(Net::MessageIn &msg);
+        void processPlayerStatusChange2(Net::MessageIn &msg);
         void processBeingSelfEffect(Net::MessageIn &msg);
         void processMobInfo(Net::MessageIn &msg);
         void processBeingAttrs(Net::MessageIn &msg);
