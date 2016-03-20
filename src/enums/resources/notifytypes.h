@@ -225,6 +225,9 @@ namespace NotifyTypes
         ADOPT_CHILD_ERROR_HAVE_BABY,
         ADOPT_CHILD_ERROR_LEVEL,
         ADOPT_CHILD_ERROR_BABY_MARRIED,
+        SKILL_MEMO_SAVED,
+        SKILL_MEMO_ERROR_LEVEL,
+        SKILL_MEMO_ERROR_SKILL,
 
         TYPE_END
     };

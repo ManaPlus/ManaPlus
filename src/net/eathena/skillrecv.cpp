@@ -371,8 +371,22 @@ void SkillRecv::processSkillWarpPoint(Net::MessageIn &msg)
 
 void SkillRecv::processSkillMemoMessage(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readUInt8("type");
+    const int type = msg.readUInt8("type");
+    switch (type)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::SKILL_MEMO_SAVED);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::SKILL_MEMO_ERROR_LEVEL);
+            break;
+        case 2:
+            NotifyManager::notify(NotifyTypes::SKILL_MEMO_ERROR_SKILL);
+            break;
+        default:
+            UNIMPLIMENTEDPACKETFIELD(type);
+            break;
+    }
 }
 
 void SkillRecv::processSkillProduceMixList(Net::MessageIn &msg)

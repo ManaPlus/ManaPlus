@@ -816,6 +816,18 @@ namespace NotifyManager
             N_("Adoption child error. This player already "
             "married and can't be baby."),
             NotifyFlags::EMPTY},
+        {"skill memo saved",
+            // TRANSLATORS: notification message
+            N_("Saved location for warp skill."),
+            NotifyFlags::EMPTY},
+        {"skill memo error level",
+            // TRANSLATORS: notification message
+            N_("Error saving location. Not enought skill level."),
+            NotifyFlags::EMPTY},
+        {"skill memo error skill",
+            // TRANSLATORS: notification message
+            N_("Error saving location. You not have warp skill."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
