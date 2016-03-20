@@ -343,9 +343,9 @@ packet(SMSG_PLAYER_SKILL_MESSAGE,          0x0215,   6, &PlayerRecv::processPlay
 packet(SMSG_PLAYER_SKILL_PRODUCE_EFFECT,   0x018f,   6, &SkillRecv::processSkillProduceEffect);
 packet(SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST, 0x018d,  -1, &SkillRecv::processSkillProduceMixList);
 packet(SMSG_PLAYER_SKILL_UP,               0x010e,  11, &Ea::SkillRecv::processPlayerSkillUp);
-packet(SMSG_PLAYER_STATUS_CHANGE,          0x0229,  15, &BeingRecv::processPlaterStatusChange);
-packet(SMSG_PLAYER_STATUS_CHANGE2,         0x028a,  18, &BeingRecv::processPlaterStatusChange2);
-packet(SMSG_PLAYER_STATUS_CHANGE_NO_TICK,  0x0196,   9, &BeingRecv::processPlaterStatusChangeNoTick);
+packet(SMSG_PLAYER_STATUS_CHANGE,          0x0229,  15, &BeingRecv::processPlayerStatusChange);
+packet(SMSG_PLAYER_STATUS_CHANGE2,         0x028a,  18, &BeingRecv::processPlayerStatusChange2);
+packet(SMSG_PLAYER_STATUS_CHANGE_NO_TICK,  0x0196,   9, &BeingRecv::processPlayerStatusChangeNoTick);
 packet(SMSG_PLAYER_STATUS_CHANGE_OUTDATED, 0x0119,  13, nullptr);
 packet(SMSG_PLAYER_STAT_UPDATE_1,          0x00b0,   8, &Ea::PlayerRecv::processPlayerStatUpdate1);
 packet(SMSG_PLAYER_STAT_UPDATE_2,          0x00b1,   8, &Ea::PlayerRecv::processPlayerStatUpdate2);
