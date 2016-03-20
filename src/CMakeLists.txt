@@ -1126,6 +1126,7 @@ SET(SRCS
     listeners/playerrelationslistener.h
     listeners/renamelistener.cpp
     listeners/renamelistener.h
+    listeners/requestadoptchildlistener.h
     listeners/requesttradelistener.h
     position.cpp
     position.h

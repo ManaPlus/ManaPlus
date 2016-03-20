@@ -165,7 +165,7 @@ void TradeRecv::processTradeRequestContinue(const std::string &partner)
                     strprintf(_("%s wants to trade with you, do"
                     " you accept?"), tradePartnerName.c_str()),
                     SOUND_REQUEST,
-                true);
+                    true);
                 confirmDlg->addActionListener(&listener);
             }
             else

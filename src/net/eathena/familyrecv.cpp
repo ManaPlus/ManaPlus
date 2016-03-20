@@ -22,10 +22,20 @@
 
 #include "logger.h"
 #include "notifymanager.h"
+#include "party.h"
 
 #include "being/localplayer.h"
 
 #include "enums/resources/notifytypes.h"
+
+#include "gui/widgets/createwidget.h"
+
+#include "gui/windows/confirmdialog.h"
+
+#include "utils/gettext.h"
+#include "utils/stringutils.h"
+
+#include "listeners/requestadoptchildlistener.h"
 
 #include "net/messagein.h"
 
@@ -36,16 +46,42 @@ namespace EAthena
 
 namespace FamilyRecv
 {
-    int mParent1 = 0;
-    int mParent2 = 0;
+    ConfirmDialog *confirmDlg = nullptr;
+    RequestAdoptChildListener listener;
+    BeingId mParent1 = BeingId_zero;
+    BeingId mParent2 = BeingId_zero;
 }  // namespace FamilyRecv
 
 void FamilyRecv::processAskForChild(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("account id who ask");
-    msg.readInt32("acoount id for other parent");
-    msg.readString(24, "name who ask");
+    if (!localPlayer)
+    {
+        mParent1 = msg.readBeingId("account id who ask");
+        mParent2 = msg.readBeingId("acoount id for other parent");
+        msg.readString(24, "name who ask");
+        return;
+    }
+    mParent1 = msg.readBeingId("account id who ask");
+    mParent2 = msg.readBeingId("acoount id for other parent");
+    const std::string name1 = msg.readString(24, "name who ask");
+    const Party *const party = localPlayer->getParty();
+    if (party)
+    {
+        const PartyMember *const member = party->getMember(mParent2);
+        if (member)
+        {
+            const std::string name2 = member->getName();
+            CREATEWIDGETV(confirmDlg, ConfirmDialog,
+                // TRANSLATORS: adopt child message
+                _("Request parents"),
+                // TRANSLATORS: adopt child message
+                strprintf(_("Do you accept %s and %s as parents?"),
+                name1.c_str(), name2.c_str()),
+                SOUND_REQUEST,
+                false);
+            confirmDlg->addActionListener(&listener);
+        }
+    }
 }
 
 void FamilyRecv::processCallPartner(Net::MessageIn &msg)

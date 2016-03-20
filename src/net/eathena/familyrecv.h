@@ -23,6 +23,8 @@
 
 #ifdef EATHENA_SUPPORT
 
+#include "enums/simpletypes/beingid.h"
+
 namespace Net
 {
     class MessageIn;
@@ -32,8 +34,8 @@ namespace EAthena
 {
     namespace FamilyRecv
     {
-        extern int mParent1;
-        extern int mParent2;
+        extern BeingId mParent1;
+        extern BeingId mParent2;
 
         void processAskForChild(Net::MessageIn &msg);
         void processCallPartner(Net::MessageIn &msg);

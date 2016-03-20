@@ -35,8 +35,8 @@ namespace EAthena
 
 FamilyHandler::FamilyHandler()
 {
-    FamilyRecv::mParent1 = 0;
-    FamilyRecv::mParent2 = 0;
+    FamilyRecv::mParent1 = BeingId_zero;
+    FamilyRecv::mParent2 = BeingId_zero;
 
     familyHandler = this;
 }
@@ -53,9 +53,11 @@ void FamilyHandler::askForChild(const Being *const being) const
 void FamilyHandler::askForChildReply(const bool accept) const
 {
     createOutPacket(CMSG_FAMILY_ASK_FOR_CHILD_REPLY);
-    outMsg.writeInt32(FamilyRecv::mParent1, "parent1");
-    outMsg.writeInt32(FamilyRecv::mParent2, "parent2");
-    outMsg.writeInt32(accept ? 0: 1, "result");
+    outMsg.writeBeingId(FamilyRecv::mParent1, "parent1");
+    outMsg.writeBeingId(FamilyRecv::mParent2, "parent2");
+    outMsg.writeInt32(accept ? 1 : 0, "result");
+    FamilyRecv::mParent1 = BeingId_zero;
+    FamilyRecv::mParent2 = BeingId_zero;
 }
 
 }  // namespace EAthena

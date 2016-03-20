@@ -1526,6 +1526,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      listeners/buyingstoreslotslistener.h \
 	      listeners/pincodelistener.cpp \
 	      listeners/pincodelistener.h \
+	      listeners/requestadoptchildlistener.h \
 	      listeners/shoprenamelistener.cpp \
 	      listeners/shoprenamelistener.h \
 	      listeners/skillwarplistener.cpp \
