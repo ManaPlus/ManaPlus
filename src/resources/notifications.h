@@ -803,6 +803,19 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("You calling partner %s."),
             NotifyFlags::STRING},
+        {"adopt child error have baby",
+            // TRANSLATORS: notification message
+            N_("Adoption child error. You already have baby."),
+            NotifyFlags::EMPTY},
+        {"adopt child error level",
+            // TRANSLATORS: notification message
+            N_("Adoption child error. You level too small for have baby."),
+            NotifyFlags::EMPTY},
+        {"adopt child error baby married",
+            // TRANSLATORS: notification message
+            N_("Adoption child error. This player already "
+            "married and can't be baby."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

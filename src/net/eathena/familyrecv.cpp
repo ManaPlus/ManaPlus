@@ -105,8 +105,22 @@ void FamilyRecv::processDivorced(Net::MessageIn &msg)
 
 void FamilyRecv::processAskForChildReply(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt32("type");
+    const int type = msg.readInt32("type");
+    switch (type)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::ADOPT_CHILD_ERROR_HAVE_BABY);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::ADOPT_CHILD_ERROR_LEVEL);
+            break;
+        case 2:
+            NotifyManager::notify(NotifyTypes::ADOPT_CHILD_ERROR_BABY_MARRIED);
+            break;
+        default:
+            UNIMPLIMENTEDPACKETFIELD(type);
+            break;
+    }
 }
 
 }  // namespace EAthena

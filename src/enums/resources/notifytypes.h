@@ -222,6 +222,9 @@ namespace NotifyTypes
         DIVORCED,
         CALLED_PARTNER,
         CALLING_PARTNER,
+        ADOPT_CHILD_ERROR_HAVE_BABY,
+        ADOPT_CHILD_ERROR_LEVEL,
+        ADOPT_CHILD_ERROR_BABY_MARRIED,
 
         TYPE_END
     };
