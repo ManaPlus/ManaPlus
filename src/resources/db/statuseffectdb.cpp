@@ -104,68 +104,62 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName)
                 loadXmlFile(incName);
             continue;
         }
-
-        IdToEffectMap *the_map = nullptr;
+        else if (!xmlNameEqual(node, "status-effect"))
+        {
+            continue;
+        }
 
         const int index = XML::getProperty(node, "id", -1);
+        const int block_index = atoi(XML::getProperty(
+            node, "block-id", "-1").c_str());
 
-        if (xmlNameEqual(node, "status-effect"))
-        {
-            the_map = &statusEffects;
-            const int block_index = atoi(XML::getProperty(
-                node, "block-id", "-1").c_str());
+        if (index >= 0 && block_index >= 0)
+            blockIdToIdMap[block_index] = index;
 
-            if (index >= 0 && block_index >= 0)
-                blockIdToIdMap[block_index] = index;
-        }
+        StatusEffect *startEffect = statusEffects[1][index];
+        StatusEffect *endEffect = statusEffects[0][index];
+        const std::string name = XML::getProperty(node, "name", "");
+        if (!startEffect)
+            startEffect = new StatusEffect;
+        if (!endEffect)
+            endEffect = new StatusEffect;
 
-        if (the_map)
-        {
-            StatusEffect *startEffect = (*the_map)[1][index];
-            StatusEffect *endEffect = (*the_map)[0][index];
-            const std::string name = XML::getProperty(node, "name", "");
-            if (!startEffect)
-                startEffect = new StatusEffect;
-            if (!endEffect)
-                endEffect = new StatusEffect;
+        startEffect->mName = name;
+        startEffect->mIsPoison =
+            (name == paths.getStringValue("poisonEffectName"));
+        startEffect->mIsCart =
+            (name == paths.getStringValue("cartEffectName"));
+        startEffect->mIsRiding =
+            (name == paths.getStringValue("ridingEffectName"));
+        startEffect->mIsTrickDead =
+            (name == paths.getStringValue("trickDeadEffectName"));
+        startEffect->mIsPostDelay =
+            (name == paths.getStringValue("postDelayName"));
+        startEffect->mMessage = XML::getProperty(
+            node, "start-message", "");
+        startEffect->mSFXEffect = XML::getProperty(
+            node, "start-audio", "");
+        startEffect->mParticleEffect = XML::getProperty(
+            node, "start-particle", "");
 
-            startEffect->mName = name;
-            startEffect->mIsPoison = 
-                (name == paths.getStringValue("poisonEffectName"));
-            startEffect->mIsCart = 
-                (name == paths.getStringValue("cartEffectName"));
-            startEffect->mIsRiding = 
-                (name == paths.getStringValue("ridingEffectName"));
-            startEffect->mIsTrickDead = 
-                (name == paths.getStringValue("trickDeadEffectName"));
-            startEffect->mIsPostDelay = 
-                (name == paths.getStringValue("postDelayName"));
-            startEffect->mMessage = XML::getProperty(
-                node, "start-message", "");
-            startEffect->mSFXEffect = XML::getProperty(
-                node, "start-audio", "");
-            startEffect->mParticleEffect = XML::getProperty(
-                node, "start-particle", "");
+        startEffect->mIcon = XML::getProperty(node, "icon", "");
+        startEffect->mAction = XML::getProperty(node, "action", "");
+        startEffect->mIsPersistent = (XML::getProperty(
+            node, "persistent-particle-effect", "no")) != "no";
 
-            startEffect->mIcon = XML::getProperty(node, "icon", "");
-            startEffect->mAction = XML::getProperty(node, "action", "");
-            startEffect->mIsPersistent = (XML::getProperty(
-                node, "persistent-particle-effect", "no")) != "no";
+        endEffect->mName = startEffect->mName;
+        endEffect->mIsPoison = startEffect->mIsPoison;
+        endEffect->mIsCart = startEffect->mIsCart;
+        endEffect->mIsRiding = startEffect->mIsRiding;
+        endEffect->mIsTrickDead = startEffect->mIsTrickDead;
+        endEffect->mIsPostDelay = startEffect->mIsPostDelay;
+        endEffect->mMessage = XML::getProperty(node, "end-message", "");
+        endEffect->mSFXEffect = XML::getProperty(node, "end-audio", "");
+        endEffect->mParticleEffect = XML::getProperty(
+            node, "end-particle", "");
 
-            endEffect->mName = startEffect->mName;
-            endEffect->mIsPoison = startEffect->mIsPoison;
-            endEffect->mIsCart = startEffect->mIsCart;
-            endEffect->mIsRiding = startEffect->mIsRiding;
-            endEffect->mIsTrickDead = startEffect->mIsTrickDead;
-            endEffect->mIsPostDelay = startEffect->mIsPostDelay;
-            endEffect->mMessage = XML::getProperty(node, "end-message", "");
-            endEffect->mSFXEffect = XML::getProperty(node, "end-audio", "");
-            endEffect->mParticleEffect = XML::getProperty(
-                node, "end-particle", "");
-
-            (*the_map)[1][index] = startEffect;
-            (*the_map)[0][index] = endEffect;
-        }
+        statusEffects[1][index] = startEffect;
+        statusEffects[0][index] = endEffect;
     }
 }
 
