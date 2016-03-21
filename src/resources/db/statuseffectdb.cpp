@@ -45,6 +45,11 @@ namespace
     typedef std::map<int, StatusEffect *> IdToEffectMap[2];
     bool mLoaded = false;
     IdToEffectMap statusEffects;
+    std::map<int, int> optionToIdMap;
+    std::map<int, int> opt1ToIdMap;
+    std::map<int, int> opt2ToIdMap;
+    std::map<int, int> opt3ToIdMap;
+
     std::map<int, int> blockIdToIdMap;
 }  // namespace
 
@@ -109,15 +114,28 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName)
             continue;
         }
 
-        const int index = XML::getProperty(node, "id", -1);
-        const int block_index = atoi(XML::getProperty(
-            node, "block-id", "-1").c_str());
+        const int id = XML::getProperty(node, "id", -1);
 
-        if (index >= 0 && block_index >= 0)
-            blockIdToIdMap[block_index] = index;
+        // legacy field. Only for clients 1.6.3.12 and older
+        const int blockId = XML::getProperty(node, "block-id", -1);
+        if (id >= 0 && blockId >= 0)
+            blockIdToIdMap[blockId] = id;
 
-        StatusEffect *startEffect = statusEffects[1][index];
-        StatusEffect *endEffect = statusEffects[0][index];
+        const int option = XML::getProperty(node, "option", 0);
+        const int opt1 = XML::getProperty(node, "opt1", 0);
+        const int opt2 = XML::getProperty(node, "opt2", 0);
+        const int opt3 = XML::getProperty(node, "opt3", 0);
+        if (option != 0)
+            optionToIdMap[option] = id;
+        if (opt1 != 0)
+            opt1ToIdMap[opt1] = id;
+        if (opt2 != 0)
+            opt2ToIdMap[opt2] = id;
+        if (opt3 != 0)
+            opt3ToIdMap[opt3] = id;
+
+        StatusEffect *startEffect = statusEffects[1][id];
+        StatusEffect *endEffect = statusEffects[0][id];
         const std::string name = XML::getProperty(node, "name", "");
         if (!startEffect)
             startEffect = new StatusEffect;
@@ -158,8 +176,8 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName)
         endEffect->mParticleEffect = XML::getProperty(
             node, "end-particle", "");
 
-        statusEffects[1][index] = startEffect;
-        statusEffects[0][index] = endEffect;
+        statusEffects[1][id] = startEffect;
+        statusEffects[0][id] = endEffect;
     }
 }
 
@@ -181,6 +199,12 @@ void StatusEffectDB::unload()
 
     unloadMap(statusEffects[0]);
     unloadMap(statusEffects[1]);
+
+    optionToIdMap.clear();
+    opt1ToIdMap.clear();
+    opt2ToIdMap.clear();
+    opt3ToIdMap.clear();
+    blockIdToIdMap.clear();
 
     mLoaded = false;
 }
