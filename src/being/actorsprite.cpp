@@ -216,7 +216,8 @@ void ActorSprite::setStatusEffectBlock(const int offset,
 }
 
 static void applyEffectByOption(ActorSprite *const actor,
-                                const uint32_t option,
+                                uint32_t option,
+                                const char *const name,
                                 const OptionsMap& options)
 {
     FOR_EACH (OptionsMapCIter, it, options)
@@ -224,7 +225,19 @@ static void applyEffectByOption(ActorSprite *const actor,
         const int opt = (*it).first;
         const int id = (*it).second;
         const Enable enable = (opt & option) != 0 ? Enable_true : Enable_false;
+        option |= opt;
+        option ^= opt;
         actor->setStatusEffect(id, enable);
+    }
+    if (option && config.getBoolValue("unimplimentedLog"))
+    {
+        const std::string str = strprintf(
+            "Error: unknown effect by %s. "
+            "Left value: %u",
+            name,
+            option);
+            logger->log(str);
+            DebugMessageListener::distributeEvent(str);
     }
 }
 
@@ -235,10 +248,14 @@ void ActorSprite::setStatusEffectOpitons(const uint32_t option,
 {
     if (settings.legacyEffects == false)
     {
-        applyEffectByOption(this, option, StatusEffectDB::getOptionMap());
-        applyEffectByOption(this, opt1, StatusEffectDB::getOpt1Map());
-        applyEffectByOption(this, opt2, StatusEffectDB::getOpt2Map());
-        applyEffectByOption(this, opt3, StatusEffectDB::getOpt3Map());
+        applyEffectByOption(this, option, "option",
+            StatusEffectDB::getOptionMap());
+        applyEffectByOption(this, opt1, "opt1",
+            StatusEffectDB::getOpt1Map());
+        applyEffectByOption(this, opt2, "opt2",
+            StatusEffectDB::getOpt2Map());
+        applyEffectByOption(this, opt3, "opt3",
+            StatusEffectDB::getOpt3Map());
     }
     else
     {
@@ -260,9 +277,12 @@ void ActorSprite::setStatusEffectOpitons(const uint32_t option,
 {
     if (settings.legacyEffects == false)
     {
-        applyEffectByOption(this, option, StatusEffectDB::getOptionMap());
-        applyEffectByOption(this, opt1, StatusEffectDB::getOpt1Map());
-        applyEffectByOption(this, opt2, StatusEffectDB::getOpt2Map());
+        applyEffectByOption(this, option, "option",
+            StatusEffectDB::getOptionMap());
+        applyEffectByOption(this, opt1, "opt1",
+            StatusEffectDB::getOpt1Map());
+        applyEffectByOption(this, opt2, "opt2",
+            StatusEffectDB::getOpt2Map());
     }
     else
     {
@@ -280,7 +300,8 @@ void ActorSprite::setStatusEffectOpiton0(const uint32_t option)
 {
     if (settings.legacyEffects == false)
     {
-        applyEffectByOption(this, option, StatusEffectDB::getOptionMap());
+        applyEffectByOption(this, option, "option",
+            StatusEffectDB::getOptionMap());
     }
     else
     {
