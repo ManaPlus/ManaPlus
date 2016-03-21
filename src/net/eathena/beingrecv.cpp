@@ -279,10 +279,10 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     Ea::BeingRecv::mSpawnId = BeingId_zero;
 
     int16_t speed = msg.readInt16("speed");
-    const uint16_t stunMode = msg.readInt16("opt1");
+    const uint32_t opt1 = msg.readInt16("opt1");
     // probably wrong effect usage
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt32("option");
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -350,8 +350,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, CAST_U16(
-        msg.readInt32("opt3")));
+    const uint32_t opt3 = msg.readInt32("opt3");
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
@@ -418,11 +417,10 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         msg.readString(24, "name");
     }
 
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffffU));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffffU));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2,
+        opt3);
 }
 
 void BeingRecv::processBeingMove(Net::MessageIn &msg)
@@ -445,10 +443,10 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         spawnId = BeingId_zero;
     Ea::BeingRecv::mSpawnId = BeingId_zero;
     int16_t speed = msg.readInt16("speed");
-    const uint16_t stunMode = msg.readInt16("opt1");
+    const uint32_t opt1 = msg.readInt16("opt1");
     // probably wrong effect usage
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt32("option");
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -510,8 +508,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, CAST_U16(
-        msg.readInt32("opt3")));
+    const uint32_t opt3 = msg.readInt32("opt3");
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
@@ -590,11 +587,10 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         msg.readString(24, "name");
     }
 
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffffU));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffffU));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2,
+        opt3);
 }
 
 void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
@@ -613,10 +609,10 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     Ea::BeingRecv::mSpawnId = id;
     const BeingId spawnId = id;
     int16_t speed = msg.readInt16("speed");
-    const uint16_t stunMode = msg.readInt16("opt1");
+    const uint32_t opt1 = msg.readInt16("opt1");
     // probably wrong effect usage
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt32("option");
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -675,8 +671,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, CAST_U16(
-        msg.readInt32("opt3")));
+    const uint32_t opt3 = msg.readInt32("opt3");
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
@@ -742,11 +737,10 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         msg.readString(24, "name");
     }
 
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffffU));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffffU));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2,
+        opt3);
 }
 
 void BeingRecv::processMapTypeProperty(Net::MessageIn &msg)
@@ -1208,16 +1202,14 @@ void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    const uint16_t stunMode = msg.readInt16("opt1");
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
+    const uint32_t opt1 = msg.readInt16("opt1");
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt32("option");
     dstBeing->setKarma(msg.readUInt8("karma"));
 
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffff));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2);
     BLOCK_END("BeingRecv::processPlayerStop")
 }
 
@@ -1233,14 +1225,10 @@ void BeingRecv::processPlayerStatusChange2(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    const uint32_t statusEffects = msg.readInt32("option");
+    const uint32_t option = msg.readInt32("option");
     dstBeing->setLevel(msg.readInt32("level"));
     msg.readInt32("showEFST");
-
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffff));
+    dstBeing->setStatusEffectOpiton0(option);
 }
 
 void BeingRecv::processPlayerStatusChangeNoTick(Net::MessageIn &msg)

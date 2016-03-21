@@ -212,6 +212,44 @@ void ActorSprite::setStatusEffectBlock(const int offset,
     }
 }
 
+void ActorSprite::setStatusEffectOpitons(const uint32_t option,
+                                         const uint32_t opt1,
+                                         const uint32_t opt2,
+                                         const uint32_t opt3)
+{
+    uint32_t statusEffects = opt2;
+    statusEffects |= option << 16;
+
+    setStunMode(opt1);
+    setStatusEffectBlock(0,
+        CAST_U16((statusEffects >> 16) & 0xffffU));
+    setStatusEffectBlock(16,
+        CAST_U16(statusEffects & 0xffffU));
+    setStatusEffectBlock(32,
+        opt3);
+}
+
+void ActorSprite::setStatusEffectOpitons(const uint32_t option,
+                                         const uint32_t opt1,
+                                         const uint32_t opt2)
+{
+    uint32_t statusEffects = opt2;
+    statusEffects |= option << 16;
+
+    setStunMode(opt1);
+    setStatusEffectBlock(0,
+        CAST_U16((statusEffects >> 16) & 0xffffU));
+    setStatusEffectBlock(16,
+        CAST_U16(statusEffects & 0xffffU));
+}
+
+void ActorSprite::setStatusEffectOpiton0(const uint32_t option)
+{
+    const uint32_t statusEffects = option << 16;
+    setStatusEffectBlock(0,
+        CAST_U16((statusEffects >> 16) & 0xffff));
+}
+
 void ActorSprite::updateStunMode(const int oldMode, const int newMode)
 {
     handleStatusEffect(StatusEffect::getStatusEffect(

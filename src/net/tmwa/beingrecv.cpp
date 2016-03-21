@@ -230,10 +230,9 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
     // An update about a player, potentially including movement.
     const BeingId id = msg.readBeingId("account id");
     const int16_t speed = msg.readInt16("speed");
-    const uint16_t stunMode = msg.readInt16("opt1");
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt16("option")))
-        << 16;
+    const uint32_t opt1 = msg.readInt16("opt1");
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt16("option");
     const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
     if (toInt(id, int) < 110000000 && job >= 1000)
@@ -303,7 +302,7 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
 
     msg.readInt16("emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    const uint32_t opt3 = msg.readInt16("opt3");
     dstBeing->setKarma(msg.readUInt8("karma"));
     // reserving bit for future usage
     dstBeing->setGender(Being::intToGender(
@@ -344,11 +343,10 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
 
     dstBeing->setActionTime(tick_time);
 
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffff));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2,
+        opt3);
 
     BLOCK_END("BeingRecv::processPlayerMoveUpdate")
 }
@@ -365,10 +363,9 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
     // An update about a player, potentially including movement.
     const BeingId id = msg.readBeingId("account id");
     const int16_t speed = msg.readInt16("speed");
-    const uint16_t stunMode = msg.readInt16("opt1");
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt16("option")))
-        << 16;
+    const uint32_t opt1 = msg.readInt16("opt1");
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt16("option");
     const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
     if (toInt(id, int) < 110000000 && job >= 1000)
@@ -437,7 +434,7 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
 
     msg.readInt16("emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    const uint32_t opt3 = msg.readInt16("opt3");
     dstBeing->setKarma(msg.readUInt8("karma"));
     // reserving bit for future usage
     dstBeing->setGender(Being::intToGender(
@@ -475,11 +472,10 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
         dstBeing->setLevel(level);
 
     dstBeing->setActionTime(tick_time);
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffff));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2,
+        opt3);
 
     BLOCK_END("BeingRecv::processPlayerMoveUpdate")
 }
@@ -496,10 +492,9 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
     // An update about a player, potentially including movement.
     const BeingId id = msg.readBeingId("account id");
     const int16_t speed = msg.readInt16("speed");
-    const uint16_t stunMode = msg.readInt16("opt1");
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt16("option")))
-        << 16;
+    const uint32_t opt1 = msg.readInt16("opt1");
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt16("option");
     const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
     if (toInt(id, int) < 110000000 && job >= 1000)
@@ -571,7 +566,7 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
 
     msg.readInt16("emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    const uint32_t opt3 = msg.readInt16("opt3");
     dstBeing->setKarma(msg.readUInt8("karma"));
     // reserving bit for future usage
     dstBeing->setGender(Being::intToGender(
@@ -634,11 +629,10 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
     if (dstBeing->getType() != ActorType::Player)
         dstBeing->setActionTime(tick_time);
 
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffff));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2,
+        opt3);
 
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();
@@ -664,9 +658,9 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         spawnId = BeingId_zero;
     Ea::BeingRecv::mSpawnId = BeingId_zero;
     int16_t speed = msg.readInt16("speed");
-    const uint16_t stunMode = msg.readInt16("opt1");
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt16("option"))) << 16;
+    const uint32_t opt1 = msg.readInt16("opt1");
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt16("option");
     const int16_t job = msg.readInt16("class");
     int disguiseId = 0;
     if (id == localPlayer->getId() && job >= 1000)
@@ -780,7 +774,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     }
 
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    const uint32_t opt3 = msg.readInt16("opt3");
     if (serverFeatures->haveMonsterAttackRange()
         && dstBeing->getType() == ActorType::Monster)
     {
@@ -845,11 +839,10 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     msg.readUInt8("unknown");
     msg.readUInt8("unknown");
 
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffff));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2,
+        opt3);
     BLOCK_END("BeingRecv::processBeingVisibleOrMove")
 }
 
@@ -872,9 +865,9 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         spawnId = BeingId_zero;
     Ea::BeingRecv::mSpawnId = BeingId_zero;
     int16_t speed = msg.readInt16("speed");
-    const uint16_t stunMode = msg.readInt16("opt1");
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt16("option"))) << 16;
+    const uint32_t opt1 = msg.readInt16("opt1");
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt16("option");
     const int16_t job = msg.readInt16("class");
     int disguiseId = 0;
     if (id == localPlayer->getId() && job >= 1000)
@@ -982,7 +975,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     }
 
     dstBeing->setManner(msg.readInt16("manner"));
-    dstBeing->setStatusEffectBlock(32, msg.readInt16("opt3"));
+    const uint32_t opt3 = msg.readInt16("opt3");
     if (serverFeatures->haveMonsterAttackRange()
         && dstBeing->getType() == ActorType::Monster)
     {
@@ -1036,11 +1029,10 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     msg.readUInt8("unknown");
     msg.readUInt8("unknown");
 
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffff));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2,
+        opt3);
     BLOCK_END("BeingRecv::processBeingVisibleOrMove")
 }
 
@@ -1184,16 +1176,14 @@ void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
         return;
     }
 
-    const uint16_t stunMode = msg.readInt16("opt1");
-    uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt16("option"))) << 16;
+    const uint32_t opt1 = msg.readInt16("opt1");
+    const uint32_t opt2 = msg.readInt16("opt2");
+    const uint32_t option = msg.readInt16("option");
     msg.readUInt8("Unused?");
 
-    dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, CAST_U16(
-        (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, CAST_U16(
-        statusEffects & 0xffff));
+    dstBeing->setStatusEffectOpitons(option,
+        opt1,
+        opt2);
     BLOCK_END("BeingRecv::processPlayerStop")
 }
 

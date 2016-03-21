@@ -120,6 +120,17 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         void setStatusEffect(const int index, const Enable active);
 
+        void setStatusEffectOpitons(const uint32_t option,
+                                    const uint32_t opt1,
+                                    const uint32_t opt2,
+                                    const uint32_t opt3);
+
+        void setStatusEffectOpitons(const uint32_t option,
+                                    const uint32_t opt1,
+                                    const uint32_t opt2);
+
+        void setStatusEffectOpiton0(const uint32_t option);
+
         /**
          * A status effect block is a 16 bit mask of status effects. We assign
          * each such flag a block ID of offset + bitnr.
