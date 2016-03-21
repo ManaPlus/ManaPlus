@@ -45,6 +45,7 @@ namespace
 {
     typedef std::map<int, StatusEffect *> IdToEffectMap[2];
     bool mLoaded = false;
+    int fakeId = 10000;
     IdToEffectMap statusEffects;
     OptionsMap optionToIdMap;
     OptionsMap opt1ToIdMap;
@@ -115,13 +116,18 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName)
             continue;
         }
 
-        const int id = XML::getProperty(node, "id", -1);
+        int id = XML::getProperty(node, "id", -1);
 
         // legacy field. Only for clients 1.6.3.12 and older
         const int blockId = XML::getProperty(node, "block-id", -1);
         if (id >= 0 && blockId >= 0)
             blockIdToIdMap[blockId] = id;
 
+        if (id == -1)
+        {
+            id = fakeId;
+            fakeId ++;
+        }
         const int option = XML::getProperty(node, "option", 0);
         const int opt1 = XML::getProperty(node, "opt1", 0);
         const int opt2 = XML::getProperty(node, "opt2", 0);
@@ -210,6 +216,7 @@ void StatusEffectDB::unload()
     if (!mLoaded)
         return;
 
+    fakeId = 10000;
     unloadMap(statusEffects[0]);
     unloadMap(statusEffects[1]);
 
