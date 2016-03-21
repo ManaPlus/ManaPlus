@@ -248,8 +248,8 @@ static void applyEffectByOption1(ActorSprite *const actor,
 {
     FOR_EACH (OptionsMapCIter, it, options)
     {
-        const int opt = (*it).first;
-        const int id = (*it).second;
+        const uint32_t opt = (*it).first;
+        const uint32_t id = (*it).second;
         if (opt == option)
         {
             actor->setStatusEffect(id, Enable_true);
@@ -543,4 +543,25 @@ void ActorSprite::cleanupTargetCursors()
             delete2(targetCursor[type][size])
     }
     end_foreach
+}
+
+std::string ActorSprite::getStatusEffectsString() const
+{
+    std::string effectsStr;
+    if (!mStatusEffects.empty())
+    {
+        FOR_EACH (std::set<int>::const_iterator, it, mStatusEffects)
+        {
+            const StatusEffect *const effect =
+                StatusEffectDB::getStatusEffect(
+                *it,
+                Enable_true);
+            if (!effect)
+                continue;
+            if (!effectsStr.empty())
+                effectsStr.append(", ");
+            effectsStr.append(effect->mName);
+        }
+    }
+    return effectsStr;
 }

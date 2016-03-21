@@ -104,6 +104,7 @@ class TargetDebugTab final : public DebugTab
         Label *mCriticalHitLabel A_NONNULLPOINTER;
         Label *mKarmaLabel A_NONNULLPOINTER;
         Label *mMannerLabel A_NONNULLPOINTER;
+        Label *mEffectsLabel A_NONNULLPOINTER;
 };
 
 class NetDebugTab final : public DebugTab

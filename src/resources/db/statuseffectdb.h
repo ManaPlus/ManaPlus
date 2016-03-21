@@ -32,7 +32,7 @@
 
 class StatusEffect;
 
-typedef std::map<int, int> OptionsMap;
+typedef std::map<uint32_t, uint32_t> OptionsMap;
 typedef OptionsMap::const_iterator OptionsMapCIter;
 
 namespace StatusEffectDB

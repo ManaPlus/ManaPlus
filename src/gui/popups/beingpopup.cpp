@@ -339,25 +339,12 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             label6 = nullptr;
         }
 
-        const std::set<int> &effects = b->getStatusEffects();
+        const std::string effects = b->getStatusEffectsString();
         if (!effects.empty())
         {
-            std::string effectsStr;
-            FOR_EACH (std::set<int>::const_iterator, it, effects)
-            {
-                const StatusEffect *const effect =
-                    StatusEffectDB::getStatusEffect(
-                    *it,
-                    Enable_true);
-                if (!effect)
-                    continue;
-                if (!effectsStr.empty())
-                    effectsStr.append(", ");
-                effectsStr.append(effect->mName);
-            }
             // TRANSLATORS: being popup label
             label7->setCaption(strprintf(_("Effects: %s"),
-                effectsStr.c_str()));
+                effects.c_str()));
             label7->adjustSize();
         }
         else

@@ -289,7 +289,9 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     // TRANSLATORS: debug window label
     mKarmaLabel(new Label(this, strprintf("%s ?", _("Karma:")))),
     // TRANSLATORS: debug window label
-    mMannerLabel(new Label(this, strprintf("%s ?", _("Manner:"))))
+    mMannerLabel(new Label(this, strprintf("%s ?", _("Manner:")))),
+    // TRANSLATORS: debug window label
+    mEffectsLabel(new Label(this, strprintf("%s ?", _("Effects:"))))
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -307,6 +309,7 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     place(0, 10, mCriticalHitLabel, 2);
     place(0, 11, mKarmaLabel, 2);
     place(0, 12, mMannerLabel, 2);
+    place(0, 13, mEffectsLabel, 2);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -371,6 +374,9 @@ void TargetDebugTab::logic()
         mMannerLabel->setCaption(strprintf("%s %d",
             // TRANSLATORS: debug window label
             _("Manner:"), target->getManner()));
+        mEffectsLabel->setCaption(strprintf("%s %s",
+            // TRANSLATORS: debug window label
+            _("Effects:"), target->getStatusEffectsString().c_str()));
 
         const int delay = target->getAttackDelay();
         if (delay)
@@ -412,6 +418,8 @@ void TargetDebugTab::logic()
         mKarmaLabel->setCaption(strprintf("%s ?", _("Karma:")));
         // TRANSLATORS: debug window label
         mMannerLabel->setCaption(strprintf("%s ?", _("Manner:")));
+        // TRANSLATORS: debug window label
+        mEffectsLabel->setCaption(strprintf("%s ?", _("Effects:")));
     }
 
     mTargetLabel->adjustSize();
@@ -426,6 +434,7 @@ void TargetDebugTab::logic()
     mCriticalHitLabel->adjustSize();
     mKarmaLabel->adjustSize();
     mMannerLabel->adjustSize();
+    mEffectsLabel->adjustSize();
     BLOCK_END("TargetDebugTab::logic")
 }
 
