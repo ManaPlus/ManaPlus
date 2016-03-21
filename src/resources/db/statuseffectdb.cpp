@@ -42,17 +42,17 @@
 
 namespace
 {
-    typedef std::map<int, StatusEffect *> status_effect_map[2];
+    typedef std::map<int, StatusEffect *> IdToEffectMap[2];
     bool mLoaded = false;
-    status_effect_map statusEffects;
-    std::map<int, int> blockEffectIndexMap;
+    IdToEffectMap statusEffects;
+    std::map<int, int> blockIdToIdMap;
 }  // namespace
 
-int StatusEffectDB::blockEffectIndexToEffectIndex(const int blockIndex)
+int StatusEffectDB::blockIdToId(const int blockIndex)
 {
-    if (blockEffectIndexMap.find(blockIndex) == blockEffectIndexMap.end())
+    if (blockIdToIdMap.find(blockIndex) == blockIdToIdMap.end())
         return -1;
-    return blockEffectIndexMap[blockIndex];
+    return blockIdToIdMap[blockIndex];
 }
 
 StatusEffect *StatusEffectDB::getStatusEffect(const int index,
@@ -105,9 +105,9 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName)
             continue;
         }
 
-        status_effect_map *the_map = nullptr;
+        IdToEffectMap *the_map = nullptr;
 
-        const int index = atoi(XML::getProperty(node, "id", "-1").c_str());
+        const int index = XML::getProperty(node, "id", -1);
 
         if (xmlNameEqual(node, "status-effect"))
         {
@@ -116,7 +116,7 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName)
                 node, "block-id", "-1").c_str());
 
             if (index >= 0 && block_index >= 0)
-                blockEffectIndexMap[block_index] = index;
+                blockIdToIdMap[block_index] = index;
         }
 
         if (the_map)

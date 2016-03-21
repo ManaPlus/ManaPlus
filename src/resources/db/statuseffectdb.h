@@ -50,7 +50,7 @@ namespace StatusEffectDB
      *
      * Returns -1 on failure.
      */
-    int blockEffectIndexToEffectIndex(const int blocKIndex) A_WARN_UNUSED;
+    int blockIdToId(const int blocKIndex) A_WARN_UNUSED;
 
     void load();
 
