@@ -37,6 +37,8 @@
 
 #include "resources/chatobject.h"
 
+#include "resources/db/statuseffectdb.h"
+
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -344,7 +346,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             FOR_EACH (std::set<int>::const_iterator, it, effects)
             {
                 const StatusEffect *const effect =
-                    StatusEffect::getStatusEffect(
+                    StatusEffectDB::getStatusEffect(
                     *it,
                     Enable_true);
                 if (!effect)

@@ -40,6 +40,8 @@
 #include "resources/sprite/imagesprite.h"
 #include "resources/sprite/spritereference.h"
 
+#include "resources/db/statuseffectdb.h"
+
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/timer.h"
@@ -116,7 +118,7 @@ void ActorSprite::logic()
         FOR_EACH (std::set<int>::const_iterator, it, mStatusEffects)
         {
             const StatusEffect *const effect
-                = StatusEffect::getStatusEffect(*it, Enable_true);
+                = StatusEffectDB::getStatusEffect(*it, Enable_true);
             if (effect && effect->particleEffectIsPersistent())
                 updateStatusEffect(*it, Enable_true);
         }
@@ -193,7 +195,7 @@ void ActorSprite::setStatusEffectBlock(const int offset,
     for (unsigned i = 0; i < STATUS_EFFECTS; i++)
     {
         const bool val = (newEffects & (1 << i)) > 0;
-        const int index = StatusEffect::blockEffectIndexToEffectIndex(
+        const int index = StatusEffectDB::blockEffectIndexToEffectIndex(
             offset + i);  // block-id (offset + i) to id (index)
 
         if (index != -1)
@@ -252,15 +254,15 @@ void ActorSprite::setStatusEffectOpiton0(const uint32_t option)
 
 void ActorSprite::updateStunMode(const int oldMode, const int newMode)
 {
-    handleStatusEffect(StatusEffect::getStatusEffect(
+    handleStatusEffect(StatusEffectDB::getStatusEffect(
         oldMode, Enable_false), -1);
-    handleStatusEffect(StatusEffect::getStatusEffect(
+    handleStatusEffect(StatusEffectDB::getStatusEffect(
         newMode, Enable_true), -1);
 }
 
 void ActorSprite::updateStatusEffect(const int index, const Enable newStatus)
 {
-    StatusEffect *const effect = StatusEffect::getStatusEffect(
+    StatusEffect *const effect = StatusEffectDB::getStatusEffect(
         index, newStatus);
     if (!effect)
         return;

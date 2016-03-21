@@ -32,7 +32,6 @@
 #include "settings.h"
 #include "soundmanager.h"
 #include "spellmanager.h"
-#include "statuseffect.h"
 #include "units.h"
 
 #include "being/localplayer.h"
@@ -123,6 +122,7 @@
 #include "resources/db/palettedb.h"
 #include "resources/db/petdb.h"
 #include "resources/db/skillunitdb.h"
+#include "resources/db/statuseffectdb.h"
 #include "resources/db/weaponsdb.h"
 
 #include "utils/cpu.h"
@@ -596,7 +596,7 @@ void Client::gameClear()
     WeaponsDB::unload();
     PaletteDB::unload();
     PETDB::unload();
-    StatusEffect::unload();
+    StatusEffectDB::unload();
     ModDB::unload();
 
     if (loginHandler)
@@ -1300,7 +1300,7 @@ int Client::gameExec()
                     HorseDB::load();
                     EmoteDB::load();
 //                    ModDB::load();
-                    StatusEffect::load();
+                    StatusEffectDB::load();
                     Units::loadUnits();
                     EquipmentWindow::prepareSlotNames();
 

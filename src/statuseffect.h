@@ -94,36 +94,6 @@ class StatusEffect final
         bool isPostDelay() const A_WARN_UNUSED
         { return mIsPostDelay; }
 
-        /**
-         * Retrieves a status effect.
-         *
-         * \param index Index of the status effect.
-         * \param enabling Whether to retrieve the activating effect (true) or
-         *    the deactivating effect (false).
-         */
-        static StatusEffect *getStatusEffect(const int index,
-                                             const Enable enabling)
-                                             A_WARN_UNUSED;
-
-        /**
-         * Maps a block effect index to its corresponding effect index.  Block
-         * effect indices are used for opt2/opt3/status.option blocks; their
-         * mapping to regular effect indices is handled in the config file.
-         *
-         * Returns -1 on failure.
-         */
-        static int blockEffectIndexToEffectIndex(const int blocKIndex)
-                                                 A_WARN_UNUSED;
-
-        static void load();
-
-        static void loadXmlFile(const std::string &fileName);
-
-        static void unload();
-
-    private:
-        static bool mLoaded;
-
         std::string mMessage;
         std::string mSFXEffect;
         std::string mParticleEffect;
