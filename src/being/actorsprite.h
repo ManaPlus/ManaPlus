@@ -107,17 +107,6 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         void untarget()
         { mUsedTargetCursor = nullptr; }
 
-        /**
-         * Sets the actor's stun mode. If zero, the being is `normal',
-         * otherwise it is `stunned' in some fashion.
-         */
-        void setStunMode(const uint16_t stunMode)
-        {
-            if (mStunMode != stunMode)
-                updateStunMode(mStunMode, stunMode);
-            mStunMode = stunMode;
-        }
-
         void setStatusEffect(const int index, const Enable active);
 
         void setStatusEffectOpitons(const uint32_t option,
@@ -202,12 +191,6 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         void setStatusEffectBlock(const int offset, const uint16_t flags);
 
         /**
-         * Notify self that the stun mode has been updated. Invoked by
-         * setStunMode if something changed.
-         */
-        virtual void updateStunMode(const int oldMode, const int newMode);
-
-        /**
          * Notify self that a status effect has flipped.
          * The new flag is passed.
          */
@@ -244,12 +227,10 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         std::set<int> mStatusEffects;   /**< set of active status effects */
 
-        ParticleList mStunParticleEffects;
         ParticleVector mStatusParticleEffects;
         ParticleList mChildParticleEffects;
         int mHorseId;
         BeingId mId;
-        uint16_t mStunMode;             /**< Stun mode; zero if not stunned */
 
         /** Target cursor being used */
         AnimatedSprite *mUsedTargetCursor;

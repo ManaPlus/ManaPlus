@@ -71,12 +71,10 @@ ActorSprite::ActorSprite(const BeingId id) :
     CompoundSprite(),
     Actor(),
     mStatusEffects(),
-    mStunParticleEffects(),
-    mStatusParticleEffects(&mStunParticleEffects, false),
+    mStatusParticleEffects(),
     mChildParticleEffects(&mStatusParticleEffects, false),
     mHorseId(0),
     mId(id),
-    mStunMode(0),
     mUsedTargetCursor(nullptr),
     mActorSpriteListeners(),
     mCursorPaddingX(0),
@@ -292,7 +290,6 @@ void ActorSprite::setStatusEffectOpitons(const uint32_t option,
     {
         uint32_t statusEffects = opt2;
         statusEffects |= option << 16;
-        setStunMode(opt1);
         setStatusEffectBlock(0,
             CAST_U16((statusEffects >> 16) & 0xffffU));
         setStatusEffectBlock(16,
@@ -319,7 +316,6 @@ void ActorSprite::setStatusEffectOpitons(const uint32_t option,
     {
         uint32_t statusEffects = opt2;
         statusEffects |= option << 16;
-        setStunMode(opt1);
         setStatusEffectBlock(0,
             CAST_U16((statusEffects >> 16) & 0xffffU));
         setStatusEffectBlock(16,
@@ -340,14 +336,6 @@ void ActorSprite::setStatusEffectOpiton0(const uint32_t option)
         setStatusEffectBlock(0,
             CAST_U16((statusEffects >> 16) & 0xffff));
     }
-}
-
-void ActorSprite::updateStunMode(const int oldMode, const int newMode)
-{
-    handleStatusEffect(StatusEffectDB::getStatusEffect(
-        oldMode, Enable_false), -1);
-    handleStatusEffect(StatusEffectDB::getStatusEffect(
-        newMode, Enable_true), -1);
 }
 
 void ActorSprite::updateStatusEffect(const int index, const Enable newStatus)
@@ -380,15 +368,7 @@ void ActorSprite::handleStatusEffect(const StatusEffect *const effect,
     Particle *const particle = effect->getParticle();
 
     if (effectId >= 0)
-    {
         mStatusParticleEffects.setLocally(effectId, particle);
-    }
-    else
-    {
-        mStunParticleEffects.clearLocally();
-        if (particle)
-            mStunParticleEffects.addLocally(particle);
-    }
 }
 
 void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
