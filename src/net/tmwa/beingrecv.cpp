@@ -232,7 +232,7 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
     const int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt16("options")))
+    statusEffects |= (CAST_U32(msg.readInt16("option")))
         << 16;
     const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
@@ -367,7 +367,7 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
     const int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt16("options")))
+    statusEffects |= (CAST_U32(msg.readInt16("option")))
         << 16;
     const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
@@ -498,7 +498,7 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
     const int16_t speed = msg.readInt16("speed");
     const uint16_t stunMode = msg.readInt16("opt1");
     uint32_t statusEffects = msg.readInt16("opt2");
-    statusEffects |= (CAST_U32(msg.readInt16("options")))
+    statusEffects |= (CAST_U32(msg.readInt16("option")))
         << 16;
     const int16_t job = msg.readInt16("job");
     int disguiseId = 0;
@@ -1184,9 +1184,9 @@ void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
         return;
     }
 
-    const uint16_t stunMode = msg.readInt16("stun mode");
-    uint32_t statusEffects = msg.readInt16("status effect");
-    statusEffects |= (CAST_U32(msg.readInt16("opt?"))) << 16;
+    const uint16_t stunMode = msg.readInt16("opt1");
+    uint32_t statusEffects = msg.readInt16("opt2");
+    statusEffects |= (CAST_U32(msg.readInt16("option"))) << 16;
     msg.readUInt8("Unused?");
 
     dstBeing->setStunMode(stunMode);

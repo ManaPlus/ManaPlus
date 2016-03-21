@@ -1208,8 +1208,8 @@ void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    const uint16_t stunMode = msg.readInt16("stun mode");
-    uint32_t statusEffects = msg.readInt16("status effect");
+    const uint16_t stunMode = msg.readInt16("opt1");
+    uint32_t statusEffects = msg.readInt16("opt2");
     statusEffects |= (CAST_U32(msg.readInt32("option"))) << 16;
     dstBeing->setKarma(msg.readUInt8("karma"));
 
@@ -1233,7 +1233,7 @@ void BeingRecv::processPlayerStatusChange2(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    const uint32_t statusEffects = msg.readInt32("status effect");
+    const uint32_t statusEffects = msg.readInt32("option");
     dstBeing->setLevel(msg.readInt32("level"));
     msg.readInt32("showEFST");
 
