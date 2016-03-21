@@ -23,6 +23,7 @@
 #include "resources/db/statuseffectdb.h"
 
 #include "configuration.h"
+#include "settings.h"
 #include "soundmanager.h"
 #include "statuseffect.h"
 
@@ -45,12 +46,12 @@ namespace
     typedef std::map<int, StatusEffect *> IdToEffectMap[2];
     bool mLoaded = false;
     IdToEffectMap statusEffects;
-    std::map<int, int> optionToIdMap;
-    std::map<int, int> opt1ToIdMap;
-    std::map<int, int> opt2ToIdMap;
-    std::map<int, int> opt3ToIdMap;
+    OptionsMap optionToIdMap;
+    OptionsMap opt1ToIdMap;
+    OptionsMap opt2ToIdMap;
+    OptionsMap opt3ToIdMap;
 
-    std::map<int, int> blockIdToIdMap;
+    OptionsMap blockIdToIdMap;
 }  // namespace
 
 int StatusEffectDB::blockIdToId(const int blockIndex)
@@ -126,13 +127,25 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName)
         const int opt2 = XML::getProperty(node, "opt2", 0);
         const int opt3 = XML::getProperty(node, "opt3", 0);
         if (option != 0)
+        {
             optionToIdMap[option] = id;
+            settings.legacyEffects = false;
+        }
         if (opt1 != 0)
+        {
             opt1ToIdMap[opt1] = id;
+            settings.legacyEffects = false;
+        }
         if (opt2 != 0)
+        {
             opt2ToIdMap[opt2] = id;
+            settings.legacyEffects = false;
+        }
         if (opt3 != 0)
+        {
             opt3ToIdMap[opt3] = id;
+            settings.legacyEffects = false;
+        }
 
         StatusEffect *startEffect = statusEffects[1][id];
         StatusEffect *endEffect = statusEffects[0][id];
@@ -207,4 +220,24 @@ void StatusEffectDB::unload()
     blockIdToIdMap.clear();
 
     mLoaded = false;
+}
+
+const OptionsMap& StatusEffectDB::getOptionMap()
+{
+    return optionToIdMap;
+}
+
+const OptionsMap& StatusEffectDB::getOpt1Map()
+{
+    return opt1ToIdMap;
+}
+
+const OptionsMap& StatusEffectDB::getOpt2Map()
+{
+    return opt2ToIdMap;
+}
+
+const OptionsMap& StatusEffectDB::getOpt3Map()
+{
+    return opt3ToIdMap;
 }

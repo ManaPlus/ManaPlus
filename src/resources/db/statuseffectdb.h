@@ -25,11 +25,15 @@
 
 #include "enums/simpletypes/enable.h"
 
+#include <map>
 #include <string>
 
 #include "localconsts.h"
 
 class StatusEffect;
+
+typedef std::map<int, int> OptionsMap;
+typedef OptionsMap::const_iterator OptionsMapCIter;
 
 namespace StatusEffectDB
 {
@@ -57,6 +61,14 @@ namespace StatusEffectDB
     void loadXmlFile(const std::string &fileName);
 
     void unload();
+
+    const OptionsMap& getOptionMap();
+
+    const OptionsMap& getOpt1Map();
+
+    const OptionsMap& getOpt2Map();
+
+    const OptionsMap& getOpt3Map();
 }  // namespace StatusEffectDB
 
 #endif  // RESOURCES_DB_STATUSEFFECTDB_H

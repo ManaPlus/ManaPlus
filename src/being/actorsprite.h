@@ -131,14 +131,6 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         void setStatusEffectOpiton0(const uint32_t option);
 
-        /**
-         * A status effect block is a 16 bit mask of status effects. We assign
-         * each such flag a block ID of offset + bitnr.
-         *
-         * These are NOT the same as the status effect indices.
-         */
-        void setStatusEffectBlock(const int offset, const uint16_t flags);
-
         void setAlpha(const float alpha) override final
         { CompoundSprite::setAlpha(alpha); }
 
@@ -199,6 +191,14 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         { }
 
     protected:
+        /**
+         * A status effect block is a 16 bit mask of status effects. We assign
+         * each such flag a block ID of offset + bitnr.
+         *
+         * These are NOT the same as the status effect indices.
+         */
+        void setStatusEffectBlock(const int offset, const uint16_t flags);
+
         /**
          * Notify self that the stun mode has been updated. Invoked by
          * setStunMode if something changed.
