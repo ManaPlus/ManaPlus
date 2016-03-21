@@ -46,7 +46,7 @@ StatusEffect::StatusEffect() :
     mIcon(),
     mAction(),
     mName(),
-    mPersistentParticleEffect(false),
+    mIsPersistent(false),
     mIsPoison(false),
     mIsCart(false),
     mIsRiding(false),

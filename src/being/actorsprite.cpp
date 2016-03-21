@@ -119,7 +119,7 @@ void ActorSprite::logic()
         {
             const StatusEffect *const effect
                 = StatusEffectDB::getStatusEffect(*it, Enable_true);
-            if (effect && effect->particleEffectIsPersistent())
+            if (effect && effect->mIsPersistent)
                 updateStatusEffect(*it, Enable_true);
         }
     }
@@ -266,16 +266,16 @@ void ActorSprite::updateStatusEffect(const int index, const Enable newStatus)
         index, newStatus);
     if (!effect)
         return;
-    if (effect->isPoison() && getType() == ActorType::Player)
+    if (effect->mIsPoison && getType() == ActorType::Player)
         setPoison(newStatus == Enable_true);
 #ifdef EATHENA_SUPPORT
-    else if (effect->isCart() && localPlayer == this)
+    else if (effect->mIsCart && localPlayer == this)
         setHaveCart(newStatus == Enable_true);
-    else if (effect->isRiding())
+    else if (effect->mIsRiding)
         setRiding(newStatus == Enable_true);
-    else if (effect->isTrickDead())
+    else if (effect->mIsTrickDead)
         setTrickDead(newStatus == Enable_true);
-    else if (effect->isPostDelay())
+    else if (effect->mIsPostDelay)
         stopCast(newStatus == Enable_true);
 #endif
     handleStatusEffect(effect, index);

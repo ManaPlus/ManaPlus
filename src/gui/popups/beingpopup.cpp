@@ -353,7 +353,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
                     continue;
                 if (!effectsStr.empty())
                     effectsStr.append(", ");
-                effectsStr.append(effect->getName());
+                effectsStr.append(effect->mName);
             }
             // TRANSLATORS: being popup label
             label7->setCaption(strprintf(_("Effects: %s"),

@@ -149,7 +149,7 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName)
 
             startEffect->mIcon = XML::getProperty(node, "icon", "");
             startEffect->mAction = XML::getProperty(node, "action", "");
-            startEffect->mPersistentParticleEffect = (XML::getProperty(
+            startEffect->mIsPersistent = (XML::getProperty(
                 node, "persistent-particle-effect", "no")) != "no";
 
             endEffect->mName = startEffect->mName;

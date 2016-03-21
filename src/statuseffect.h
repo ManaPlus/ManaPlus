@@ -69,38 +69,13 @@ class StatusEffect final
          */
         std::string getAction() const A_WARN_UNUSED;
 
-        std::string getName() const A_WARN_UNUSED
-        { return mName; }
-
-        /**
-         * Determines whether the particle effect should be restarted when the
-         * being changes maps
-         */
-        bool particleEffectIsPersistent() const A_WARN_UNUSED
-        { return mPersistentParticleEffect; }
-
-        bool isPoison() const A_WARN_UNUSED
-        { return mIsPoison; }
-
-        bool isCart() const A_WARN_UNUSED
-        { return mIsCart; }
-
-        bool isRiding() const A_WARN_UNUSED
-        { return mIsRiding; }
-
-        bool isTrickDead() const A_WARN_UNUSED
-        { return mIsTrickDead; }
-
-        bool isPostDelay() const A_WARN_UNUSED
-        { return mIsPostDelay; }
-
         std::string mMessage;
         std::string mSFXEffect;
         std::string mParticleEffect;
         std::string mIcon;
         std::string mAction;
         std::string mName;
-        bool mPersistentParticleEffect;
+        bool mIsPersistent;
         bool mIsPoison;
         bool mIsCart;
         bool mIsRiding;
