@@ -241,6 +241,37 @@ static void applyEffectByOption(ActorSprite *const actor,
     }
 }
 
+static void applyEffectByOption1(ActorSprite *const actor,
+                                 uint32_t option,
+                                 const char *const name,
+                                 const OptionsMap& options)
+{
+    FOR_EACH (OptionsMapCIter, it, options)
+    {
+        const int opt = (*it).first;
+        const int id = (*it).second;
+        if (opt == option)
+        {
+            actor->setStatusEffect(id, Enable_true);
+            option = 0U;
+        }
+        else
+        {
+            actor->setStatusEffect(id, Enable_false);
+        }
+    }
+    if (option && config.getBoolValue("unimplimentedLog"))
+    {
+        const std::string str = strprintf(
+            "Error: unknown effect by %s. "
+            "Left value: %u",
+            name,
+            option);
+            logger->log(str);
+            DebugMessageListener::distributeEvent(str);
+    }
+}
+
 void ActorSprite::setStatusEffectOpitons(const uint32_t option,
                                          const uint32_t opt1,
                                          const uint32_t opt2,
@@ -250,7 +281,7 @@ void ActorSprite::setStatusEffectOpitons(const uint32_t option,
     {
         applyEffectByOption(this, option, "option",
             StatusEffectDB::getOptionMap());
-        applyEffectByOption(this, opt1, "opt1",
+        applyEffectByOption1(this, opt1, "opt1",
             StatusEffectDB::getOpt1Map());
         applyEffectByOption(this, opt2, "opt2",
             StatusEffectDB::getOpt2Map());
@@ -279,7 +310,7 @@ void ActorSprite::setStatusEffectOpitons(const uint32_t option,
     {
         applyEffectByOption(this, option, "option",
             StatusEffectDB::getOptionMap());
-        applyEffectByOption(this, opt1, "opt1",
+        applyEffectByOption1(this, opt1, "opt1",
             StatusEffectDB::getOpt1Map());
         applyEffectByOption(this, opt2, "opt2",
             StatusEffectDB::getOpt2Map());
