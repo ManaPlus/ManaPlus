@@ -111,7 +111,6 @@ std::string StatusEffect::getAction() const
 typedef std::map<int, StatusEffect *> status_effect_map[2];
 
 static status_effect_map statusEffects;
-static status_effect_map stunEffects;
 static std::map<int, int> blockEffectIndexMap;
 
 int StatusEffect::blockEffectIndexToEffectIndex(const int blockIndex)
@@ -135,17 +134,6 @@ StatusEffect *StatusEffect::getStatusEffect(const int index,
         logger->log(str);
         DebugMessageListener::distributeEvent(str);
     }
-    return nullptr;
-}
-
-StatusEffect *StatusEffect::getStunEffect(const int index,
-                                          const Enable enabling)
-{
-    std::map<int, StatusEffect *> &effects
-        = stunEffects[enabling == Enable_true];
-    const std::map<int, StatusEffect *>::iterator it = effects.find(index);
-    if (it != effects.end())
-        return (*it).second;
     return nullptr;
 }
 
@@ -194,10 +182,6 @@ void StatusEffect::loadXmlFile(const std::string &fileName)
 
             if (index >= 0 && block_index >= 0)
                 blockEffectIndexMap[block_index] = index;
-        }
-        else if (xmlNameEqual(node, "stun-effect"))
-        {
-            the_map = &stunEffects;
         }
 
         if (the_map)
@@ -268,8 +252,6 @@ void StatusEffect::unload()
 
     unloadMap(statusEffects[0]);
     unloadMap(statusEffects[1]);
-    unloadMap(stunEffects[0]);
-    unloadMap(stunEffects[1]);
 
     mLoaded = false;
 }

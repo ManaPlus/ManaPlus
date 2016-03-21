@@ -106,17 +106,6 @@ class StatusEffect final
                                              A_WARN_UNUSED;
 
         /**
-         * Retrieves a stun effect.
-         *
-         * \param index Index of the stun effect.
-         * \param enabling Whether to retrieve the activating effect (true) or
-         *    the deactivating effect (false).
-         */
-        static StatusEffect *getStunEffect(const int index,
-                                           const Enable enabling)
-                                           A_WARN_UNUSED;
-
-        /**
          * Maps a block effect index to its corresponding effect index.  Block
          * effect indices are used for opt2/opt3/status.option blocks; their
          * mapping to regular effect indices is handled in the config file.
