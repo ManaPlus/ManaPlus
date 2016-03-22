@@ -474,9 +474,31 @@ if (packetVersion >= 20150513)
 // introduced in 20150805
 if (packetVersion >= 20150805)
 {
-    packet(SMSG_SELECT_CART,                   0x00c2,  -1, &InventoryRecv::processSelectCart);
+    packet(SMSG_SELECT_CART,                   0x097f,  -1, &InventoryRecv::processSelectCart);
 }
 else
 {
     packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr);
 }
+
+packet(SMSG_MERGE_ITEM,                    0x096d,  -1, nullptr);
+packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, nullptr);
+
+// unused or not implimented packets
+packet(SMSG_BOOKING_REGISTER_ACK,          0x0803,   4, nullptr);
+packet(SMSG_BOOKING_SEARCH_ACK,            0x0805,  -1, nullptr);
+packet(SMSG_BOOKING_DELETE_ACK,            0x0807,   4, nullptr);
+packet(SMSG_BOOKING_INSERT_NOTIFY,         0x0809,  50, nullptr);
+packet(SMSG_BOOKING_UPDATE_NOTIFY,         0x080a,  18, nullptr);
+packet(SMSG_BOOKING_DELETE_NOTIFY,         0x080b,   6, nullptr);
+packet(SMSG_RECRUIT_REGISTER_ACK,          0x08e6,   4, nullptr);
+packet(SMSG_RECRUIT_SEARCH_ACK,            0x08e8,  -1, nullptr);
+packet(SMSG_RECRUIT_DELETE_ACK,            0x08ea,   4, nullptr);
+packet(SMSG_RECRUIT_INSERT_NOTIFY,         0x08ec,  73, nullptr);
+packet(SMSG_RECRUIT_UPDATE_NOTIFY,         0x08ed,  43, nullptr);
+packet(SMSG_RECRUIT_DELETE_NOTIFY,         0x08ee,   6, nullptr);
+packet(SMSG_BOOKING_VOLUNTEER_INFO,        0x08f2,  36, nullptr);
+packet(SMSG_BOOKING_REFUSE_VOLUNTEER,      0x08fa,   6, nullptr);
+packet(SMSG_BOOKING_CANCEL_VOLUNTEER,      0x0909,   6, nullptr);
+packet(SMSG_BOOKING_ADD_FILTERING_LIST,    0x090b,  30, nullptr);
+packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr);
