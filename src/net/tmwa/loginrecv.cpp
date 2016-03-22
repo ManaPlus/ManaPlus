@@ -79,7 +79,6 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
         logger->log("Tmw server version: x%06x", tmwServerVersion);
     else
         logger->log("Server without version");
-
     updateProtocol();
 
     if (client->getState() != State::LOGIN)

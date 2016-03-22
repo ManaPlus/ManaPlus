@@ -29,6 +29,7 @@
 
 #include "net/eathena/messageout.h"
 #include "net/eathena/network.h"
+#include "net/eathena/updateprotocol.h"
 #include "net/eathena/protocolout.h"
 
 #include "debug.h"
@@ -139,6 +140,11 @@ void LoginHandler::ping() const
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
     outMsg.writeInt32(0, "unused");
+}
+
+void LoginHandler::updatePacketVersion() const
+{
+    updateProtocol();
 }
 
 }  // namespace EAthena

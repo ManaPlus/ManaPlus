@@ -236,6 +236,7 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->save = true;
     mServerInfo->persistentIp = server.persistentIp;
     mServerInfo->updateMirrors = server.updateMirrors;
+    mServerInfo->packetVersion = server.packetVersion;
 
     settings.persistentIp = mServerInfo->persistentIp;
     settings.supportUrl = mServerInfo->supportUrl;
@@ -521,6 +522,8 @@ void ServerDialog::loadServers(const bool addNew)
                     subNode, "althostname", "");
                 server.port = CAST_U16(
                     XML::getProperty(subNode, "port", 0));
+                server.packetVersion = XML::getProperty(subNode,
+                    "packetVersion", 0);
 
                 if (server.port == 0)
                 {
@@ -584,6 +587,7 @@ void ServerDialog::loadServers(const bool addNew)
                 mServers[i].althostname = server.althostname;
                 mServers[i].persistentIp = server.persistentIp;
                 mServers[i].updateMirrors = server.updateMirrors;
+                mServers[i].packetVersion = server.packetVersion;
                 mServersListModel->setVersionString(i, version);
                 found = true;
                 break;
@@ -609,6 +613,8 @@ void ServerDialog::loadCustomServers()
         const std::string onlineListUrlKey
             ("MostUsedServerOnlineList" + index);
         const std::string persistentIpKey("persistentIp" + index);
+        const std::string packetVersionKey
+            ("MostUsedServerPacketVersion" + index);
 
         ServerInfo server;
         server.name = config.getValue(nameKey, "");
@@ -618,6 +624,7 @@ void ServerDialog::loadCustomServers()
         server.type = ServerInfo::parseType(config.getValue(typeKey, ""));
         server.persistentIp = config.getValue(
             persistentIpKey, 0) ? true : false;
+        server.packetVersion = config.getValue(packetVersionKey, 0);
 
         const int defaultPort = defaultPortForServerType(server.type);
         server.port = CAST_U16(
@@ -676,6 +683,8 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
         const std::string onlineListUrlKey
             ("MostUsedServerOnlineList" + num);
         const std::string persistentIpKey("persistentIp" + num);
+        const std::string packetVersionKey
+            ("MostUsedServerPacketVersion" + num);
 
         config.setValue(nameKey, server.name);
         config.setValue(descKey, server.description);
@@ -684,6 +693,7 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
         config.setValue(typeKey, serverTypeToString(server.type));
         config.setValue(portKey, toString(server.port));
         config.setValue(persistentIpKey, server.persistentIp);
+        config.setValue(packetVersionKey, server.packetVersion);
         ++ savedServerCount;
     }
 

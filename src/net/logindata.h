@@ -46,6 +46,7 @@ class LoginData final
             captchaResponse(),
             registerUrl(),
             gender(Gender::UNSPECIFIED),
+            packetVersion(0),
             remember(false),
             registerLogin(false),
             characterSlots(9)
@@ -68,6 +69,7 @@ class LoginData final
 
         GenderT gender;
 
+        int packetVersion;
         bool remember;       // Whether to store the username.
         bool registerLogin;  // Whether an account is being registered.
 
@@ -85,6 +87,7 @@ class LoginData final
             captchaResponse.clear();
             registerUrl.clear();
             gender = Gender::UNSPECIFIED;
+            packetVersion = 0;
             lastLogin.clear();
             resetCharacterSlots();
         }

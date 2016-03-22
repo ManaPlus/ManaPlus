@@ -447,7 +447,7 @@ if (serverVersion >= 11 || serverVersion == 0)
     packet(SMSG_BEING_MOVE,                    0x09db,  -1, &BeingRecv::processBeingMove);
 }
 
-if (serverVersion >= 8 && packetVersion >= 20150226)
+if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
 {
     packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpen);
     packet(SMSG_VENDING_ITEMS_LIST,            0x0800,  -1, &VendingRecv::processItemsList);

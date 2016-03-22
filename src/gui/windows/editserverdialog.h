@@ -24,9 +24,10 @@
 
 class Button;
 class CheckBox;
-class TextField;
 class DropDown;
+class IntTextField;
 class ServerDialog;
+class TextField;
 class TypeListModel;
 
 #include "gui/widgets/window.h"
@@ -68,6 +69,7 @@ class EditServerDialog final : public Window,
         TextField *mNameField A_NONNULLPOINTER;
         TextField *mDescriptionField A_NONNULLPOINTER;
         TextField *mOnlineListUrlField A_NONNULLPOINTER;
+        IntTextField *mPacketVersionField A_NONNULLPOINTER;
         Button *mConnectButton A_NONNULLPOINTER;
         Button *mOkButton A_NONNULLPOINTER;
         Button *mCancelButton A_NONNULLPOINTER;

@@ -286,14 +286,12 @@ void BeingRecv::processBeingEmotion(Net::MessageIn &msg)
         return;
     }
 
-    if (player_relations.hasPermission(dstBeing, PlayerRelation::EMOTE))
+    const uint8_t emote = msg.readUInt8("emote");
+    if (emote &&
+        player_relations.hasPermission(dstBeing, PlayerRelation::EMOTE))
     {
-        const uint8_t emote = msg.readUInt8("emote");
-        if (emote)
-        {
-            dstBeing->setEmote(emote, 0);
-            localPlayer->imitateEmote(dstBeing, emote);
-        }
+        dstBeing->setEmote(emote, 0);
+        localPlayer->imitateEmote(dstBeing, emote);
     }
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();

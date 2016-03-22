@@ -56,6 +56,8 @@ class LoginHandler final : public Ea::LoginHandler
 
         void ping() const override final A_CONST;
 
+        void updatePacketVersion() const override final A_CONST;
+
         static void requestUpdateHosts() A_CONST;
 
     private:

@@ -767,6 +767,7 @@ void Client::stateConnectServer1()
         initFeatures();
         PlayerInfo::loadData();
         loginData.registerUrl = mCurrentServer.registerUrl;
+        loginData.packetVersion = mCurrentServer.packetVersion;
         if (!mCurrentServer.onlineListUrl.empty())
             settings.onlineListUrl = mCurrentServer.onlineListUrl;
         else
@@ -1099,6 +1100,17 @@ int Client::gameExec()
                     // Don't allow an alpha opacity
                     // lower than the default value
                     theme->setMinimumOpacity(0.8F);
+
+                    if (packetVersion == 0)
+                    {
+                        packetVersion = loginData.packetVersion;
+                        if (packetVersion != 0)
+                        {
+                            loginHandler->updatePacketVersion();
+                            logger->log("Preconfigured packet version: %d",
+                                packetVersion);
+                        }
+                    }
 
                     loginData.updateType = static_cast<UpdateTypeT>(
                         serverConfig.getValue("updateType", 0));

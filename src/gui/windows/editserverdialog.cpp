@@ -30,9 +30,9 @@
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/dropdown.h"
+#include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/textfield.h"
 
 #include "utils/gettext.h"
 
@@ -50,6 +50,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mNameField(new TextField(this, std::string())),
     mDescriptionField(new TextField(this, std::string())),
     mOnlineListUrlField(new TextField(this, std::string())),
+    mPacketVersionField(new IntTextField(this, 0, 0, 20150805)),
     // TRANSLATORS: edit server dialog button
     mConnectButton(new Button(this, _("Connect"), "connect", this)),
     // TRANSLATORS: edit server dialog button
@@ -79,6 +80,8 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     Label *const descriptionLabel = new Label(this, _("Description:"));
     // TRANSLATORS: edit server dialog label
     Label *const onlineListUrlLabel = new Label(this, _("Online list url:"));
+    // TRANSLATORS: edit server dialog label
+    Label *const packetVersionLabel = new Label(this, _("Packet version:"));
     mPortField->setNumeric(true);
     mPortField->setRange(1, 65535);
 
@@ -99,10 +102,12 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     place(1, 4, mDescriptionField, 4).setPadding(3);
     place(0, 5, onlineListUrlLabel);
     place(1, 5, mOnlineListUrlField, 4).setPadding(3);
-    place(0, 6, mPersistentIp, 4).setPadding(3);
-    place(0, 7, mConnectButton);
-    place(4, 7, mOkButton);
-    place(3, 7, mCancelButton);
+    place(0, 6, packetVersionLabel);
+    place(1, 6, mPacketVersionField, 4).setPadding(3);
+    place(0, 7, mPersistentIp, 4).setPadding(3);
+    place(0, 8, mConnectButton);
+    place(4, 8, mOkButton);
+    place(3, 8, mCancelButton);
 
     // Do this manually instead of calling reflowLayout so we can enforce a
     // minimum width.
@@ -135,6 +140,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mDescriptionField->setText(mServer.description);
     mOnlineListUrlField->setText(mServer.onlineListUrl);
     mServerAddressField->setText(mServer.hostname);
+    mPacketVersionField->setValue(mServer.packetVersion);
     mPortField->setText(toString(mServer.port));
     mPersistentIp->setSelected(mServer.persistentIp);
 
@@ -223,6 +229,7 @@ void EditServerDialog::action(const ActionEvent &event)
             mServer.description = mDescriptionField->getText();
             mServer.onlineListUrl = mOnlineListUrlField->getText();
             mServer.hostname = mServerAddressField->getText();
+            mServer.packetVersion = mPacketVersionField->getValue();
             mServer.port = CAST_S16(atoi(
                 mPortField->getText().c_str()));
             mServer.persistentIp = mPersistentIp->isSelected();

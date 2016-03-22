@@ -122,4 +122,8 @@ void LoginHandler::ping() const
 {
 }
 
+void LoginHandler::updatePacketVersion() const
+{
+}
+
 }  // namespace TmwAthena

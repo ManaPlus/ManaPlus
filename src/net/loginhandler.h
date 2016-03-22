@@ -91,6 +91,8 @@ class LoginHandler notfinal
 
         virtual void ping() const = 0;
 
+        virtual void updatePacketVersion() const = 0;
+
         virtual ~LoginHandler()
         { }
 

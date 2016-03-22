@@ -56,6 +56,8 @@ class LoginHandler final : public Ea::LoginHandler
 
         void ping() const override final;
 
+        void updatePacketVersion() const override final;
+
     private:
         void sendLoginRegister(const std::string &restrict username,
                                const std::string &restrict password,

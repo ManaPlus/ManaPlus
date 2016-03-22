@@ -45,6 +45,7 @@ class ServerInfo final
         std::vector<std::string> updateMirrors;
         uint16_t port;
         VersionString version;
+        int packetVersion;
         bool save;
         bool persistentIp;
 
@@ -64,6 +65,7 @@ class ServerInfo final
             port(6900),
 #endif
             version(),
+            packetVersion(),
             save(false),
             persistentIp(true)
         {
@@ -82,6 +84,7 @@ class ServerInfo final
             updateMirrors(info.updateMirrors),
             port(info.port),
             version(),
+            packetVersion(info.packetVersion),
             save(info.save),
             persistentIp(info.persistentIp)
         {
@@ -105,6 +108,7 @@ class ServerInfo final
             persistentIp = info.persistentIp;
             version.first = info.version.first;
             version.second = info.version.second;
+            packetVersion = info.packetVersion;
             return *this;
         }
 
@@ -129,6 +133,7 @@ class ServerInfo final
             updateMirrors.clear();
             version.first = 0;
             version.second.clear();
+            packetVersion = 0;
             save = false;
             persistentIp = true;
         }
