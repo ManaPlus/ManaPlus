@@ -481,7 +481,7 @@ else
     packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr);
 }
 
-packet(SMSG_MERGE_ITEM,                    0x096d,  -1, nullptr);
+packet(SMSG_MERGE_ITEM,                    0x096d,  -1, &InventoryRecv::processMergeItem);
 packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, nullptr);
 
 // unused or not implimented packets

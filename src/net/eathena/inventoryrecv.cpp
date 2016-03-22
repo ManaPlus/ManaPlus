@@ -1180,4 +1180,13 @@ int InventoryRecv::getSlot(const int eAthenaSlot)
     return CAST_S32(EQUIP_POINTS[position]);
 }
 
+void InventoryRecv::processMergeItem(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    const int count = (msg.readInt16("len") - 4) / 2;
+    for (int f = 0; f < count; f ++)
+        msg.readInt16("inv index");
+}
+
 }  // namespace EAthena
