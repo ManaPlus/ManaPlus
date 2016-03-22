@@ -426,8 +426,9 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             if (creatorName.empty())
                 creatorName = strprintf("?%d", CAST_S32(id));
 
-            mBrowserBox->addRow(strprintf("%s (%s)",
+            mBrowserBox->addRow(strprintf("%s, %d (%s)",
                 name.c_str(),
+                CAST_S32(being->getSubType()),
                 creatorName.c_str()));
             break;
         }
