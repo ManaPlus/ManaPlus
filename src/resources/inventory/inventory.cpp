@@ -180,7 +180,8 @@ void Inventory::setCards(const int index,
     }
 
     Item *const item1 = mItems[index];
-    item1->setCards(cards, size);
+    if (item1)
+        item1->setCards(cards, size);
 }
 
 void Inventory::clear()
