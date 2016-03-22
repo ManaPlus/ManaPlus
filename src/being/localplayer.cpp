@@ -2703,3 +2703,10 @@ void LocalPlayer::playerDeath()
         recalcSpritesOrder();
     }
 }
+
+bool LocalPlayer::canMove() const
+{
+    return mAction != BeingAction::DEAD &&
+        (serverFeatures->haveMoveWhileSit() ||
+        mAction != BeingAction::SIT);
+}

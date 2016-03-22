@@ -852,12 +852,12 @@ void Game::handleMove()
     }
 
     // Moving player around
-    if (localPlayer->isAlive()
-        && chatWindow
-        && !chatWindow->isInputFocused()
-        && !InventoryWindow::isAnyInputFocused()
-        && !quitDialog
-        && !popupMenu->isPopupVisible())
+    if (chatWindow &&
+        !quitDialog &&
+        localPlayer->canMove() &&
+        !chatWindow->isInputFocused() &&
+        !InventoryWindow::isAnyInputFocused() &&
+        !popupMenu->isPopupVisible())
     {
         NpcDialog *const dialog = NpcDialog::getActive();
         if (dialog)

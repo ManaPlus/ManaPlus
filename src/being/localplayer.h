@@ -421,6 +421,8 @@ class LocalPlayer final : public Being,
         bool getRename() const
         { return mAllowRename; }
 
+        bool canMove() const;
+
     protected:
         void updateCoords() override final;
 

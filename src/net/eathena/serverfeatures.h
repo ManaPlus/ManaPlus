@@ -135,6 +135,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveServerPets() const override final;
 
         bool haveFamily() const override final;
+
+        bool haveMoveWhileSit() const override final;
 };
 
 }  // namespace EAthena

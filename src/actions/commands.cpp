@@ -459,8 +459,11 @@ impHandler(follow)
 
 impHandler(navigate)
 {
-    if (!localPlayer)
+    if (!localPlayer ||
+        !localPlayer->canMove())
+    {
         return false;
+    }
 
     int x = 0;
     int y = 0;
@@ -474,8 +477,11 @@ impHandler(navigate)
 
 impHandler(navigateTo)
 {
-    if (!localPlayer)
+    if (!localPlayer ||
+        !localPlayer->canMove())
+    {
         return false;
+    }
 
     const std::string args = event.args;
     if (args.empty())

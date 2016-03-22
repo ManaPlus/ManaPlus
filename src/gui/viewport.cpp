@@ -500,7 +500,8 @@ bool Viewport::leftMouseAction()
         return true;
     }
     // Just walk around
-    else if (!inputManager.isActionActive(InputAction::ATTACK))
+    else if (!inputManager.isActionActive(InputAction::ATTACK) &&
+             localPlayer->canMove())
     {
         validateSpeed();
         localPlayer->stopAttack();
@@ -756,7 +757,9 @@ void Viewport::mouseDragged(MouseEvent &event)
         mPlayerFollowMouse = false;
         return;
     }
-    if (mMouseClicked)
+    if (mMouseClicked &&
+        localPlayer &&
+        localPlayer->canMove())
     {
         if (abs(event.getX() - mMousePressX) > 32
             || abs(event.getY() - mMousePressY) > 32)

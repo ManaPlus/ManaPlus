@@ -288,4 +288,9 @@ bool ServerFeatures::haveFamily() const
     return false;
 }
 
+bool ServerFeatures::haveMoveWhileSit() const
+{
+    return true;
+}
+
 }  // namespace TmwAthena

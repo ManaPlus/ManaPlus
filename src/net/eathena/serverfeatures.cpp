@@ -290,4 +290,9 @@ bool ServerFeatures::haveFamily() const
     return true;
 }
 
+bool ServerFeatures::haveMoveWhileSit() const
+{
+    return serverVersion > 0;
+}
+
 }  // namespace EAthena

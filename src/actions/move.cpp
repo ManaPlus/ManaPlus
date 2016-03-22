@@ -71,6 +71,8 @@ impHandler(moveUp)
         return petDirectUp(event);
     else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
         return petMoveUp(event);
+    else if (!localPlayer->canMove())
+        return directUp(event);
     if (popupMenu->isPopupVisible())
     {
         popupMenu->moveUp();
@@ -87,6 +89,8 @@ impHandler(moveDown)
         return petDirectDown(event);
     else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
         return petMoveDown(event);
+    else if (!localPlayer->canMove())
+        return directDown(event);
     if (popupMenu->isPopupVisible())
     {
         popupMenu->moveDown();
@@ -110,6 +114,8 @@ impHandler(moveLeft)
         return petDirectLeft(event);
     else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
         return petMoveLeft(event);
+    else if (!localPlayer->canMove())
+        return directLeft(event);
     return closeMoveNpcDialog(false);
 }
 
@@ -128,6 +134,8 @@ impHandler(moveRight)
         return petDirectRight(event);
     else if (inputManager.isActionActive(InputAction::STOP_ATTACK))
         return petMoveRight(event);
+    else if (!localPlayer->canMove())
+        return directRight(event);
     return closeMoveNpcDialog(false);
 }
 

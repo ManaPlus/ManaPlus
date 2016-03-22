@@ -135,6 +135,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveServerPets() const override final A_CONST;
 
         bool haveFamily() const override final A_CONST;
+
+        bool haveMoveWhileSit() const override final A_CONST;
 };
 
 }  // namespace TmwAthena
