@@ -1299,6 +1299,12 @@ void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
         dstBeing->setGuildPos(msg.readString(24, "guild pos"));
         dstBeing->addToCache();
     }
+    else
+    {
+        msg.readString(24, "party name");
+        msg.readString(24, "guild name");
+        msg.readString(24, "guild pos");
+    }
     BLOCK_END("BeingRecv::processPlayerGuilPartyInfo")
 }
 

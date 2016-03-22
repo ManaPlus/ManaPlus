@@ -453,6 +453,11 @@ void GuildRecv::processGuildMessage(Net::MessageIn &msg)
             guildTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
         }
     }
+    else
+    {
+        DEBUGLOGSTR("invisible guild?");
+        msg.readString(msgLength, "message");
+    }
 }
 
 void GuildRecv::processGuildSkillUp(Net::MessageIn &msg)
