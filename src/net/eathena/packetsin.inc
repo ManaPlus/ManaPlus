@@ -482,7 +482,7 @@ else
 }
 
 packet(SMSG_MERGE_ITEM,                    0x096d,  -1, &InventoryRecv::processMergeItem);
-packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, nullptr);
+packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, &InventoryRecv::processMergeItemResponse);
 
 // unused or not implimented packets
 packet(SMSG_BOOKING_REGISTER_ACK,          0x0803,   4, nullptr);

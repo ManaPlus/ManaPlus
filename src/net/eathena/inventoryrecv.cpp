@@ -1189,4 +1189,13 @@ void InventoryRecv::processMergeItem(Net::MessageIn &msg)
         msg.readInt16("inv index");
 }
 
+void InventoryRecv::processMergeItemResponse(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+
+    msg.readInt16("inv index");
+    msg.readInt16("amount");
+    msg.readUInt8("result");
+}
+
 }  // namespace EAthena
