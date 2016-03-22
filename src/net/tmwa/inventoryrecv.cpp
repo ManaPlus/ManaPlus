@@ -530,6 +530,8 @@ int InventoryRecv::getSlot(const int eAthenaSlot)
         mask <<= 1;
         position++;
     }
+    if (position >= EquipSlot::VECTOREND)
+        return EquipSlot::VECTOREND;
     return CAST_S32(EQUIP_POINTS[position]);
 }
 
