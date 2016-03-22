@@ -414,7 +414,8 @@ void Logger::unimplimented(const uint32_t id,
 
     const std::string str = strprintf(
         "Wrong actual or planned inbound packet size!. "
-        "Packet id: %u, Planned size: %u, Actual size: %u",
+        "Packet id: %u(0x%x), Planned size: %u, Actual size: %u",
+        id,
         id,
         id2,
         id3);
