@@ -478,7 +478,7 @@ void MapReader::readProperties(const XmlNodePtrConst node,
                                Properties *const props)
 {
     BLOCK_START("MapReader::readProperties")
-    if (!node || !props)
+    if (!node)
     {
         BLOCK_END("MapReader::readProperties")
         return;
@@ -933,7 +933,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                                 Map *const map)
 {
     BLOCK_START("MapReader::readTileset")
-    if (!map || !node)
+    if (!node)
     {
         BLOCK_END("MapReader::readTileset")
         return nullptr;
@@ -1126,8 +1126,6 @@ Map *MapReader::createEmptyMap(const std::string &restrict filename,
 
 void MapReader::updateMusic(Map *const map)
 {
-    if (!map)
-        return;
     std::string name = map->getProperty("shortName");
     const size_t p = name.rfind(".");
     if (p != std::string::npos)
