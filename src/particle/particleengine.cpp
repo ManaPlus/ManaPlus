@@ -43,8 +43,6 @@
 
 ParticleEngine *particleEngine = nullptr;
 
-static const float SIN45 = 0.707106781F;
-
 class Graphics;
 class Image;
 
