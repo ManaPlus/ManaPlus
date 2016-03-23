@@ -995,7 +995,7 @@ void LocalPlayer::setGotoTarget(Being *const target)
 }
 
 void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
-                                     const int effectId)
+                                     const int32_t effectId)
 {
     Being::handleStatusEffect(effect, effectId);
 

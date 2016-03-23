@@ -114,7 +114,7 @@ void ActorSprite::logic()
     if (mMustResetParticles)
     {
         mMustResetParticles = false;
-        FOR_EACH (std::set<int>::const_iterator, it, mStatusEffects)
+        FOR_EACH (std::set<int32_t>::const_iterator, it, mStatusEffects)
         {
             const StatusEffect *const effect
                 = StatusEffectDB::getStatusEffect(*it, Enable_true);
@@ -173,7 +173,8 @@ struct EffectDescription final
     std::string mSFXEffect;
 };
 
-void ActorSprite::setStatusEffect(const int index, const Enable active)
+void ActorSprite::setStatusEffect(const int32_t index,
+                                  const Enable active)
 {
     const Enable wasActive = fromBool(
         mStatusEffects.find(index) != mStatusEffects.end(), Enable);
@@ -194,7 +195,7 @@ void ActorSprite::setStatusEffectBlock(const int offset,
     for (unsigned i = 0; i < STATUS_EFFECTS; i++)
     {
         const bool val = (newEffects & (1 << i)) > 0;
-        const int index = StatusEffectDB::blockIdToId(
+        const int32_t index = StatusEffectDB::blockIdToId(
             offset + i);  // block-id (offset + i) to id (index)
 
         if (index != -1)
@@ -220,8 +221,8 @@ static void applyEffectByOption(ActorSprite *const actor,
 {
     FOR_EACH (OptionsMapCIter, it, options)
     {
-        const int opt = (*it).first;
-        const int id = (*it).second;
+        const uint32_t opt = (*it).first;
+        const int32_t id = (*it).second;
         const Enable enable = (opt & option) != 0 ? Enable_true : Enable_false;
         option |= opt;
         option ^= opt;
@@ -247,7 +248,7 @@ static void applyEffectByOption1(ActorSprite *const actor,
     FOR_EACH (OptionsMapCIter, it, options)
     {
         const uint32_t opt = (*it).first;
-        const uint32_t id = (*it).second;
+        const int32_t id = (*it).second;
         if (opt == option)
         {
             actor->setStatusEffect(id, Enable_true);
@@ -338,7 +339,8 @@ void ActorSprite::setStatusEffectOpiton0(const uint32_t option)
     }
 }
 
-void ActorSprite::updateStatusEffect(const int index, const Enable newStatus)
+void ActorSprite::updateStatusEffect(const int32_t index,
+                                     const Enable newStatus)
 {
     StatusEffect *const effect = StatusEffectDB::getStatusEffect(
         index, newStatus);
@@ -360,7 +362,7 @@ void ActorSprite::updateStatusEffect(const int index, const Enable newStatus)
 }
 
 void ActorSprite::handleStatusEffect(const StatusEffect *const effect,
-                                     const int effectId)
+                                     const int32_t effectId)
 {
     if (!effect)
         return;
@@ -530,7 +532,7 @@ std::string ActorSprite::getStatusEffectsString() const
     std::string effectsStr;
     if (!mStatusEffects.empty())
     {
-        FOR_EACH (std::set<int>::const_iterator, it, mStatusEffects)
+        FOR_EACH (std::set<int32_t>::const_iterator, it, mStatusEffects)
         {
             const StatusEffect *const effect =
                 StatusEffectDB::getStatusEffect(

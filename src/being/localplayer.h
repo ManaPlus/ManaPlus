@@ -427,7 +427,7 @@ class LocalPlayer final : public Being,
         void updateCoords() override final;
 
         void handleStatusEffect(const StatusEffect *const effect,
-                                const int effectId) override final;
+                                const int32_t effectId) override final;
 
         void startWalking(const unsigned char dir);
 
@@ -460,7 +460,7 @@ class LocalPlayer final : public Being,
 
         int mLastAction;      // Time stamp of the last action, -1 if none.
 
-        std::vector<int> mStatusEffectIcons;
+        std::vector<int32_t> mStatusEffectIcons;
 
         typedef std::pair<std::string, UserColorIdT> MessagePair;
         /** Queued messages*/

@@ -107,7 +107,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         void untarget()
         { mUsedTargetCursor = nullptr; }
 
-        void setStatusEffect(const int index, const Enable active);
+        void setStatusEffect(const int32_t index,
+                             const Enable active);
 
         void setStatusEffectOpitons(const uint32_t option,
                                     const uint32_t opt1,
@@ -173,7 +174,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         bool isTrickDead() const A_WARN_UNUSED
         { return mTrickDead; }
 
-        const std::set<int> &getStatusEffects() const A_WARN_UNUSED
+        const std::set<int32_t> &getStatusEffects() const A_WARN_UNUSED
         { return mStatusEffects; }
 
         std::string getStatusEffectsString() const;
@@ -188,13 +189,14 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
          *
          * These are NOT the same as the status effect indices.
          */
-        void setStatusEffectBlock(const int offset, const uint16_t flags);
+        void setStatusEffectBlock(const int offset,
+                                  const uint16_t flags);
 
         /**
          * Notify self that a status effect has flipped.
          * The new flag is passed.
          */
-        virtual void updateStatusEffect(const int index,
+        virtual void updateStatusEffect(const int32_t index,
                                         const Enable newStatus);
 
         /**
@@ -204,7 +206,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
          * \param effectId -1 for stun, otherwise the effect index
          */
         virtual void handleStatusEffect(const StatusEffect *const effect,
-                                        const int effectId);
+                                        const int32_t effectId);
 
         void setupSpriteDisplay(const SpriteDisplay &display,
                                 const ForceDisplay forceDisplay
@@ -225,7 +227,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         static bool loaded;
 
-        std::set<int> mStatusEffects;   /**< set of active status effects */
+        /**< set of active status effects */
+        std::set<int32_t> mStatusEffects;
 
         ParticleVector mStatusParticleEffects;
         ParticleList mChildParticleEffects;
