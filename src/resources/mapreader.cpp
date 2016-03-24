@@ -585,19 +585,6 @@ inline static void setTile(Map *const map,
     }
 }
 
-#define addTile() \
-    setTile(map, layer, layerType, heights, x, y, gid); \
-    if (hasAnimations) \
-    { \
-        TileAnimationMapCIter it = tileAnimations.find(gid); \
-        if (it != tileAnimations.end()) \
-        { \
-            TileAnimation *const ani = it->second; \
-            if (ani) \
-                ani->addAffectedTile(layer, x + y * w); \
-        } \
-    } \
-
 bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
                                 Map *const map,
                                 MapLayer *const layer,
@@ -636,7 +623,8 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
 
     while (*charStart)
     {
-        if (*charStart != ' ' && *charStart != '\t' &&
+        if (*charStart != ' ' &&
+            *charStart != '\t' &&
             *charStart != '\n')
         {
             *charIndex = *charStart;
@@ -678,23 +666,55 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
             = map->getTileAnimations();
 
         const bool hasAnimations = !tileAnimations.empty();
-        for (int i = 0; i < binLen - 3; i += 4)
+        if (hasAnimations)
         {
-            const int gid = binData[i] |
-                binData[i + 1] << 8 |
-                binData[i + 2] << 16 |
-                binData[i + 3] << 24;
-
-            addTile();
-
-            x++;
-            if (x == w)
+            for (int i = 0; i < binLen - 3; i += 4)
             {
-                x = 0; y++;
+                const int gid = binData[i] |
+                    binData[i + 1] << 8 |
+                    binData[i + 2] << 16 |
+                    binData[i + 3] << 24;
 
-                // When we're done, don't crash on too much data
-                if (y == h)
-                    break;
+                setTile(map, layer, layerType, heights, x, y, gid);
+                TileAnimationMapCIter it = tileAnimations.find(gid);
+                if (it != tileAnimations.end())
+                {
+                    TileAnimation *const ani = it->second;
+                    if (ani)
+                        ani->addAffectedTile(layer, x + y * w);
+                }
+
+                x++;
+                if (x == w)
+                {
+                    x = 0; y++;
+
+                    // When we're done, don't crash on too much data
+                    if (y == h)
+                        break;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < binLen - 3; i += 4)
+            {
+                const int gid = binData[i] |
+                    binData[i + 1] << 8 |
+                    binData[i + 2] << 16 |
+                    binData[i + 3] << 24;
+
+                setTile(map, layer, layerType, heights, x, y, gid);
+
+                x++;
+                if (x == w)
+                {
+                    x = 0; y++;
+
+                    // When we're done, don't crash on too much data
+                    if (y == h)
+                        break;
+                }
             }
         }
         free(binData);
@@ -728,26 +748,58 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
         = map->getTileAnimations();
     const bool hasAnimations = !tileAnimations.empty();
 
-    while (oldPos != csv.npos)
+    if (hasAnimations)
     {
-        const size_t pos = csv.find_first_of(",", oldPos);
-        if (pos == csv.npos)
-            return false;
-
-        const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());
-        addTile();
-
-        x++;
-        if (x == w)
+        while (oldPos != csv.npos)
         {
-            x = 0; y++;
-
-            // When we're done, don't crash on too much data
-            if (y == h)
+            const size_t pos = csv.find_first_of(",", oldPos);
+            if (pos == csv.npos)
                 return false;
-        }
 
-        oldPos = pos + 1;
+            const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());
+            setTile(map, layer, layerType, heights, x, y, gid);
+            TileAnimationMapCIter it = tileAnimations.find(gid);
+            if (it != tileAnimations.end())
+            {
+                TileAnimation *const ani = it->second;
+                if (ani)
+                    ani->addAffectedTile(layer, x + y * w);
+            }
+
+            x++;
+            if (x == w)
+            {
+                x = 0; y++;
+
+                // When we're done, don't crash on too much data
+                if (y == h)
+                    return false;
+            }
+            oldPos = pos + 1;
+        }
+    }
+    else
+    {
+        while (oldPos != csv.npos)
+        {
+            const size_t pos = csv.find_first_of(",", oldPos);
+            if (pos == csv.npos)
+                return false;
+
+            const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());
+            setTile(map, layer, layerType, heights, x, y, gid);
+
+            x++;
+            if (x == w)
+            {
+                x = 0; y++;
+
+                // When we're done, don't crash on too much data
+                if (y == h)
+                    return false;
+            }
+            oldPos = pos + 1;
+        }
     }
     return true;
 }
@@ -906,7 +958,17 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
                     continue;
 
                 const int gid = XML::getProperty(childNode2, "gid", -1);
-                addTile();
+                setTile(map, layer, layerType, heights, x, y, gid);
+                if (hasAnimations)
+                {
+                    TileAnimationMapCIter it = tileAnimations.find(gid);
+                    if (it != tileAnimations.end())
+                    {
+                        TileAnimation *const ani = it->second;
+                        if (ani)
+                            ani->addAffectedTile(layer, x + y * w);
+                    }
+                }
 
                 x++;
                 if (x == w)
