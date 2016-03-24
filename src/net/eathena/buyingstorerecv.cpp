@@ -134,7 +134,9 @@ void BuyingStoreRecv::processBuyingStoreItemsList(Net::MessageIn &msg)
     {
         const int price = msg.readInt32("price");
         const int amount = msg.readInt16("amount");
-        const int itemType = msg.readUInt8("item type");
+        const ItemTypeT itemType = fromInt(
+            msg.readUInt8("item type"),
+            ItemTypeT);
         const int itemId = msg.readInt16("item id");
 
         if (!inv)

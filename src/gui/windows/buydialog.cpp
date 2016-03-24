@@ -390,12 +390,16 @@ void BuyDialog::reset()
 }
 
 ShopItem *BuyDialog::addItem(const int id,
-                             const int type,
+                             const ItemTypeT type,
                              const ItemColor color,
                              const int amount,
                              const int price)
 {
-    ShopItem *const item = mShopItems->addItem(id, type, color, amount, price);
+    ShopItem *const item = mShopItems->addItem(id,
+        type,
+        color,
+        amount,
+        price);
     mShopItemList->adjustSize();
     return item;
 }

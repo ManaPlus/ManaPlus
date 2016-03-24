@@ -93,9 +93,10 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
+        const ItemTypeT itemType = fromInt(
+            msg.readUInt8("item type"),
+            ItemTypeT);
         const uint8_t identified = msg.readUInt8("identify");
-
         msg.readInt16("equip type?");
         const int equipType = msg.readInt16("equip type");
         msg.readUInt8("attribute");
@@ -107,7 +108,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         if (Ea::InventoryRecv::mDebugInventory)
         {
             logger->log("Index: %d, ID: %d, Type: %d, Identified: %d",
-                        index, itemId, itemType, identified);
+                        index, itemId, CAST_S32(itemType), identified);
         }
 
         if (inventory)
@@ -158,8 +159,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     const int equipType = msg.readInt16("equip type");
-    const int type = msg.readUInt8("item type");
-
+    const ItemTypeT type = fromInt(msg.readUInt8("item type"), ItemTypeT);
     const ItemInfo &itemInfo = ItemDB::get(itemId);
     const unsigned char err = msg.readUInt8("status");
     BeingId floorId;
@@ -270,7 +270,9 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
         int cards[maxCards];
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
+        const ItemTypeT itemType = fromInt(
+            msg.readUInt8("item type"),
+            ItemTypeT);
         const uint8_t identified = msg.readUInt8("identified");
         const int amount = msg.readInt16("amount");
         const int arrow = msg.readInt16("arrow");
@@ -281,7 +283,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
         {
             logger->log("Index: %d, ID: %d, Type: %d, Identified: %d, "
                         "Qty: %d, Cards: %d, %d, %d, %d",
-                        index, itemId, itemType, identified, amount,
+                        index, itemId, CAST_S32(itemType), identified, amount,
                         cards[0], cards[1], cards[2], cards[3]);
         }
 
@@ -320,7 +322,9 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
         int cards[maxCards];
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
+        const ItemTypeT itemType = fromInt(
+            msg.readUInt8("item type"),
+            ItemTypeT);
         const uint8_t identified = msg.readUInt8("identified");
         const int amount = msg.readInt16("amount");
         msg.readInt16("arrow");
@@ -331,7 +335,7 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
         {
             logger->log("Index: %d, ID: %d, Type: %d, Identified: %d, "
                         "Qty: %d, Cards: %d, %d, %d, %d",
-                        index, itemId, itemType, identified, amount,
+                        index, itemId, CAST_S32(itemType), identified, amount,
                         cards[0], cards[1], cards[2], cards[3]);
         }
 
@@ -400,7 +404,9 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         int cards[maxCards];
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const uint8_t itemType = msg.readUInt8("item type");
+        const ItemTypeT itemType = fromInt(
+            msg.readUInt8("item type"),
+            ItemTypeT);
         const uint8_t identified = msg.readUInt8("identified");
         const int amount = 1;
         msg.readInt16("equip point?");
@@ -414,7 +420,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         {
             logger->log("Index: %d, ID: %d, Type: %d, Identified: %u, "
                 "Qty: %d, Cards: %d, %d, %d, %d, Refine: %u",
-                index, itemId, itemType,
+                index, itemId, CAST_S32(itemType),
                 CAST_U32(identified), amount,
                 cards[0], cards[1], cards[2], cards[3],
                 CAST_U32(refine));
@@ -461,7 +467,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
         {
             Ea::InventoryRecv::mStorage->setItem(index,
                 itemId,
-                0,
+                ItemType::Unknown,
                 amount,
                 refine,
                 ItemColor_one,

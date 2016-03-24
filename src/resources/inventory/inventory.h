@@ -25,6 +25,8 @@
 
 #include "enums/inventorytype.h"
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/equipm.h"
@@ -90,7 +92,7 @@ class Inventory notfinal
          * Adds a new item in a free slot.
          */
         int addItem(const int id,
-                    const int type,
+                    const ItemTypeT type,
                     const int quantity,
                     const uint8_t refine,
                     const ItemColor color,
@@ -105,7 +107,7 @@ class Inventory notfinal
          */
         virtual void setItem(const int index,
                              const int id,
-                             const int type,
+                             const ItemTypeT type,
                              const int quantity,
                              const uint8_t refine,
                              const ItemColor color,

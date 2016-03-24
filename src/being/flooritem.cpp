@@ -46,7 +46,7 @@ extern volatile int cur_time;
 FloorItem::FloorItem(const BeingId id,
                      const int itemId,
                      const int x, const int y,
-                     const int itemType,
+                     const ItemTypeT itemType,
                      const int amount,
                      const int refine,
                      const ItemColor color,

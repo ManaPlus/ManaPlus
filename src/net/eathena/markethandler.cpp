@@ -45,11 +45,14 @@ void MarketHandler::close() const
 }
 
 void MarketHandler::buyItem(const int itemId,
-                            const int type,
+                            const ItemTypeT type,
                             const ItemColor color A_UNUSED,
                             const int amount) const
 {
-    const bool nonStack = type == 4 || type == 5 || type == 7 || type == 8;
+    const bool nonStack = type == ItemType::Weapon ||
+        type == ItemType::Armor ||
+        type == ItemType::PetEgg ||
+        type == ItemType::PetArmor;
     int cnt = nonStack ? amount : 1;
     const int amount2 = nonStack ? 1 : amount;
     if (cnt > 100)
@@ -73,13 +76,20 @@ void MarketHandler::buyItems(const std::vector<ShopItem*> &items) const
     {
         const ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
-        const int type = item->getType();
+        const ItemTypeT type = item->getType();
         if (!usedQuantity)
             continue;
-        if (type == 4 || type == 5 || type == 7 || type == 8)
+        if (type == ItemType::Weapon ||
+            type == ItemType::Armor ||
+            type == ItemType::PetEgg ||
+            type == ItemType::PetArmor)
+        {
             cnt += item->getUsedQuantity();
+        }
         else
+        {
             cnt ++;
+        }
     }
 
     if (cnt > 100)
@@ -96,8 +106,11 @@ void MarketHandler::buyItems(const std::vector<ShopItem*> &items) const
         item->increaseQuantity(usedQuantity);
         item->increaseUsedQuantity(-usedQuantity);
         item->update();
-        const int type = item->getType();
-        if (type == 4 || type == 5 || type == 7 || type == 8)
+        const ItemTypeT type = fromInt(item->getType(), ItemTypeT);
+        if (type == ItemType::Weapon ||
+            type == ItemType::Armor ||
+            type == ItemType::PetEgg ||
+            type == ItemType::PetArmor)
         {
             for (int f = 0; f < usedQuantity; f ++)
             {

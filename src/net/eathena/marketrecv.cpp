@@ -53,7 +53,7 @@ void MarketRecv::processMarketOpen(Net::MessageIn &msg)
     for (int f = 0; f < len; f ++)
     {
         const int itemId = msg.readInt16("item id");
-        const int type = msg.readUInt8("type");
+        const ItemTypeT type = fromInt(msg.readUInt8("type"), ItemTypeT);
         const int value = msg.readInt32("price");
         const int amount = msg.readInt32("amount");
         msg.readInt16("view");

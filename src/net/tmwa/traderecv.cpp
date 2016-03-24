@@ -77,7 +77,7 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
         else
         {
             tradeWindow->addItem2(type,
-                0,
+                ItemType::Unknown,
                 cards,
                 4,
                 false,

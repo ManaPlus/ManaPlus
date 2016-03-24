@@ -276,8 +276,7 @@ void useEquipItem(const Item *const item, const Sfx sfx)
     if (item)
     {
 #ifdef EATHENA_SUPPORT
-        // IT_CARD
-        if (item->getType() == 6)
+        if (item->getType() == ItemType::Card)
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {

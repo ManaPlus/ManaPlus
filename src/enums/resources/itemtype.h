@@ -18,34 +18,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/tmwa/markethandler.h"
+#ifndef RESOURCES_ITEMTYPE_H
+#define RESOURCES_ITEMTYPE_H
 
-#include "debug.h"
+#include "enums/simpletypes/enumdefines.h"
 
-extern Net::MarketHandler *marketHandler;
-
-namespace TmwAthena
+enumStart(ItemType)
 {
-
-MarketHandler::MarketHandler()
-{
-    marketHandler = this;
+    Healing  = 0,
+    Unknown  = 1,
+    Usable   = 2,
+    Etc      = 3,
+    Weapon   = 4,
+    Armor    = 5,
+    Card     = 6,
+    PetEgg   = 7,
+    PetArmor = 8,
+    Unknown2 = 9,
+    Ammon    = 10,
+    DelayConsume = 11,
+    Cash     = 18
 }
+enumEnd(ItemType);
 
-void MarketHandler::close() const
-{
-}
-
-void MarketHandler::buyItem(const int itemId A_UNUSED,
-                            const ItemTypeT type A_UNUSED,
-                            const ItemColor color A_UNUSED,
-                            const int amount A_UNUSED) const
-{
-}
-
-void MarketHandler::buyItems(const std::vector<ShopItem*> &items A_UNUSED)
-                             const
-{
-}
-
-}  // namespace TmwAthena
+#endif  // RESOURCES_ITEMTYPE_H

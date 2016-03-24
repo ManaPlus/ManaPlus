@@ -25,6 +25,8 @@
 
 #include "const/resources/item/cards.h"
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/equipm.h"
 #include "enums/simpletypes/favorite.h"
@@ -52,7 +54,7 @@ class InventoryItem final
     public:
         int slot;
         int id;
-        int type;
+        ItemTypeT type;
         int cards[maxCards];
         int quantity;
         uint8_t refine;
@@ -64,7 +66,7 @@ class InventoryItem final
 
         InventoryItem(const int slot0,
                       const int id0,
-                      const int type0,
+                      const ItemTypeT type0,
                       const int *const cards0,
                       const int quantity0,
                       const uint8_t refine0,

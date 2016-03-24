@@ -25,6 +25,8 @@
 
 #include "enums/being/actortype.h"
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"
 #include "enums/simpletypes/beingid.h"
@@ -98,7 +100,7 @@ class ActorManager final: public ConfigListener
         FloorItem *createItem(const BeingId id,
                               const int itemId,
                               const int x, const int y,
-                              const int itemType,
+                              const ItemTypeT itemType,
                               const int amount,
                               const int refine,
                               const ItemColor color,

@@ -28,6 +28,8 @@
 
 #include "const/resources/item/cards.h"
 
+#include "enums/resources/itemtype.h"
+
 #include "net/messagein.h"
 
 #include "debug.h"
@@ -39,7 +41,7 @@ void ItemRecv::processItemDropped(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("id");
     const int itemId = msg.readInt16("item id");
-    const int itemType = msg.readInt16("type");
+    const ItemTypeT itemType = fromInt(msg.readInt16("type"), ItemTypeT);
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
     const int x = msg.readInt16("x");
@@ -68,7 +70,7 @@ void ItemRecv::processItemDropped2(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("id");
     const int itemId = msg.readInt16("item id");
-    const int itemType = msg.readUInt8("type");
+    const ItemTypeT itemType = fromInt(msg.readUInt8("type"), ItemTypeT);
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
@@ -127,7 +129,7 @@ void ItemRecv::processItemVisible(Net::MessageIn &msg)
         actorManager->createItem(id,
             itemId,
             x, y,
-            0,
+            ItemType::Unknown,
             amount,
             0,
             ItemColor_one,
@@ -142,7 +144,7 @@ void ItemRecv::processItemVisible2(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("item object id");
     const int itemId = msg.readInt16("item id");
-    const int itemType = msg.readUInt8("type");
+    const ItemTypeT itemType = fromInt(msg.readUInt8("type"), ItemTypeT);
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);

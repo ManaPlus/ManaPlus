@@ -38,7 +38,7 @@
 DragDrop dragDrop(nullptr, DragDropSource::Empty);
 
 Item::Item(const int id,
-           const int type,
+           const ItemTypeT type,
            const int quantity,
            const uint8_t refine,
            const ItemColor color,

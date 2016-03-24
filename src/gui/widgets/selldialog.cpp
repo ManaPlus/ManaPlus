@@ -221,7 +221,7 @@ void SellDialog::addItem(const Item *const item, const int price)
 }
 
 ShopItem *SellDialog::addItem(const int id,
-                              const int type,
+                              const ItemTypeT type,
                               const ItemColor color,
                               const int amount,
                               const int price)

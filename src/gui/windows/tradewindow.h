@@ -25,6 +25,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/equipm.h"
 #include "enums/simpletypes/favorite.h"
@@ -72,7 +74,7 @@ class TradeWindow final : public Window,
          * Add an item to the trade window.
          */
         void addItem(const int id,
-                     const int type,
+                     const ItemTypeT type,
                      const bool own,
                      const int quantity,
                      const uint8_t refine,
@@ -90,7 +92,7 @@ class TradeWindow final : public Window,
          * Add an item to the trade window.
          */
         void addItem2(const int id,
-                      const int type,
+                      const ItemTypeT type,
                       const int *const cards,
                       const int sz,
                       const bool own,
@@ -122,7 +124,8 @@ class TradeWindow final : public Window,
         /**
          * Send trade packet.
          */
-        void tradeItem(const Item *const item, const int quantity,
+        void tradeItem(const Item *const item,
+                       const int quantity,
                        const bool check = false) const;
 
         /**

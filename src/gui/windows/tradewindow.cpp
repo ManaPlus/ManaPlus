@@ -195,7 +195,7 @@ void TradeWindow::setMoney(const int amount)
 }
 
 void TradeWindow::addItem(const int id,
-                          const int type,
+                          const ItemTypeT type,
                           const bool own,
                           const int quantity,
                           const uint8_t refine,
@@ -218,7 +218,7 @@ void TradeWindow::addItem(const int id,
 }
 
 void TradeWindow::addItem2(const int id,
-                           const int type,
+                           const ItemTypeT type,
                            const int *const cards,
                            const int sz,
                            const bool own,

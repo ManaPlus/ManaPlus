@@ -54,7 +54,8 @@ namespace
     };
 }  // namespace
 
-Inventory::Inventory(const InventoryTypeT type, const int size1) :
+Inventory::Inventory(const InventoryTypeT type,
+                     const int size1) :
     mInventoryListeners(),
     mVirtualRemove(),
     mType(type),
@@ -109,7 +110,7 @@ Item *Inventory::findItem(const int itemId,
 }
 
 int Inventory::addItem(const int id,
-                       const int type,
+                       const ItemTypeT type,
                        const int quantity,
                        const uint8_t refine,
                        const ItemColor color,
@@ -120,14 +121,23 @@ int Inventory::addItem(const int id,
                        const Equipped equipped)
 {
     const int slot = getFreeSlot();
-    setItem(slot, id, type, quantity, refine, color,
-        identified, damaged, favorite, equipment, equipped);
+    setItem(slot,
+        id,
+        type,
+        quantity,
+        refine,
+        color,
+        identified,
+        damaged,
+        favorite,
+        equipment,
+        equipped);
     return slot;
 }
 
 void Inventory::setItem(const int index,
                         const int id,
-                        const int type,
+                        const ItemTypeT type,
                         const int quantity,
                         const uint8_t refine,
                         const ItemColor color,
@@ -146,8 +156,16 @@ void Inventory::setItem(const int index,
     Item *const item1 = mItems[index];
     if (!item1 && id > 0)
     {
-        Item *const item = new Item(id, type, quantity, refine, color,
-            identified, damaged, favorite, equipment, equipped);
+        Item *const item = new Item(id,
+            type,
+            quantity,
+            refine,
+            color,
+            identified,
+            damaged,
+            favorite,
+            equipment,
+            equipped);
         item->setInvIndex(index);
         mItems[index] = item;
         mUsed++;

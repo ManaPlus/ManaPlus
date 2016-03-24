@@ -54,7 +54,7 @@ void BuySellRecv::processNpcBuy(Net::MessageIn &msg)
     {
         const int value = msg.readInt32("price");
         msg.readInt32("dc value?");
-        const int type = msg.readUInt8("type");
+        const ItemTypeT type = fromInt(msg.readUInt8("type"), ItemTypeT);
         const int itemId = msg.readInt16("item id");
         const ItemColor color = ItemColor_one;
         Ea::BuySellRecv::mBuyDialog->addItem(itemId, type, color, 0, value);

@@ -665,6 +665,7 @@ SET(SRCS
     enums/resources/imageposition.h
     enums/resources/itemdbtype.h
     enums/resources/itemsoundevent.h
+    enums/resources/itemtype.h
     resources/itemtypemap.h
     resources/itemtypemapdata.h
     resources/db/mapdb.cpp

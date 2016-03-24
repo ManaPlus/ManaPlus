@@ -51,7 +51,7 @@ class ComplexInventory final : public Inventory
 
         void setItem(const int index,
                      const int id,
-                     const int type,
+                     const ItemTypeT type,
                      const int quantity,
                      const uint8_t refine,
                      const ItemColor color,

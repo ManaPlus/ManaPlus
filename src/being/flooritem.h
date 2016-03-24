@@ -25,6 +25,8 @@
 
 #include "const/resources/item/cards.h"
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/identified.h"
 #include "enums/simpletypes/itemcolor.h"
@@ -54,7 +56,7 @@ class FloorItem final : public ActorSprite
         FloorItem(const BeingId id,
                   const int itemId,
                   const int x, const int y,
-                  const int itemType,
+                  const ItemTypeT itemType,
                   const int amount,
                   const int refine,
                   const ItemColor color,
@@ -121,7 +123,7 @@ class FloorItem final : public ActorSprite
         int getRefine() const A_WARN_UNUSED
         { return mRefine; }
 
-        int getItemType() const A_WARN_UNUSED
+        ItemTypeT getItemType() const A_WARN_UNUSED
         { return mItemType; }
 
         Identified getIdentified() const A_WARN_UNUSED
@@ -138,7 +140,7 @@ class FloorItem final : public ActorSprite
         int mAmount;
         int mRefine;
         int mHeightPosDiff;
-        int mItemType;
+        ItemTypeT mItemType;
         unsigned int mPickupCount;
         Cursor::Cursor mCursor;
         ItemColor mColor;

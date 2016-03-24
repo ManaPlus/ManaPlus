@@ -35,7 +35,7 @@ class ComplexItem final : public Item
          * Constructor.
          */
         ComplexItem(const int id,
-                    const int type,
+                    const ItemTypeT type,
                     const int quantity,
                     const uint8_t refine,
                     const ItemColor color,

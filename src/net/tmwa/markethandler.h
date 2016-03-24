@@ -37,7 +37,7 @@ class MarketHandler final : public Net::MarketHandler
         void close() const override final A_CONST;
 
         void buyItem(const int itemId,
-                     const int type,
+                     const ItemTypeT type,
                      const ItemColor color,
                      const int amount) const override final A_CONST;
 

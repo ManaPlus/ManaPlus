@@ -52,7 +52,7 @@ std::string ShopItems::getElementAt(int i)
 }
 
 ShopItem *ShopItems::addItem(const int id,
-                             const int type,
+                             const ItemTypeT type,
                              const ItemColor color,
                              const int amount,
                              const int price)
@@ -64,7 +64,7 @@ ShopItem *ShopItems::addItem(const int id,
 }
 
 ShopItem *ShopItems::addItemNoDup(const int id,
-                                  const int type,
+                                  const ItemTypeT type,
                                   const ItemColor color,
                                   const int amount,
                                   const int price)
@@ -81,7 +81,7 @@ ShopItem *ShopItems::addItemNoDup(const int id,
 
 ShopItem *ShopItems::addItem2(const int inventoryIndex,
                               const int id,
-                              const int type,
+                              const ItemTypeT type,
                               const ItemColor color,
                               const int quantity,
                               const int price)

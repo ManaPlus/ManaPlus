@@ -142,13 +142,20 @@ void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
-        const int type = item->getType();
+        const ItemTypeT type = item->getType();
         if (!usedQuantity)
             continue;
-        if (type == 4 || type == 5 || type == 7 || type == 8)
+        if (type == ItemType::Weapon ||
+            type == ItemType::Armor ||
+            type == ItemType::PetEgg ||
+            type == ItemType::PetArmor)
+        {
             cnt += item->getUsedQuantity();
+        }
         else
+        {
             cnt ++;
+        }
     }
 
     if (cnt > 100)
@@ -164,8 +171,11 @@ void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
             continue;
         item->increaseUsedQuantity(-usedQuantity);
         item->update();
-        const int type = item->getType();
-        if (type == 4 || type == 5 || type == 7 || type == 8)
+        const ItemTypeT type = item->getType();
+        if (type == ItemType::Weapon ||
+            type == ItemType::Armor ||
+            type == ItemType::PetEgg ||
+            type == ItemType::PetArmor)
         {
             for (int f = 0; f < usedQuantity; f ++)
             {

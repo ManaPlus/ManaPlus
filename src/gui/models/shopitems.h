@@ -23,6 +23,8 @@
 #ifndef GUI_MODELS_SHOPITEMS_H
 #define GUI_MODELS_SHOPITEMS_H
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/itemcolor.h"
 
 #include "gui/models/listmodel.h"
@@ -61,7 +63,7 @@ class ShopItems final : public ListModel
          * Adds an item to the list.
          */
         ShopItem *addItem(const int id,
-                          const int type,
+                          const ItemTypeT type,
                           const ItemColor color,
                           const int amount,
                           const int price);
@@ -77,13 +79,13 @@ class ShopItems final : public ListModel
          */
         ShopItem *addItem2(const int inventoryIndex,
                            const int id,
-                           const int type,
+                           const ItemTypeT type,
                            const ItemColor color,
                            const int amount,
                            const int price);
 
         ShopItem *addItemNoDup(const int id,
-                               const int type,
+                               const ItemTypeT type,
                                const ItemColor color,
                                const int amount,
                                const int price);

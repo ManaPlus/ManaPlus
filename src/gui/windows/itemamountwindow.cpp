@@ -388,7 +388,10 @@ void ItemAmountWindow::action(const ActionEvent &event)
         const int id = ItemDB::get(mItemsModal->getElementAt(
             mItemDropDown->getSelected())).getId();
 
-        mItem = new Item(id, 0, 10000, 0,
+        mItem = new Item(id,
+            ItemType::Unknown,
+            10000,
+            0,
             ItemColor_one,
             Identified_true,
             Damaged_true,

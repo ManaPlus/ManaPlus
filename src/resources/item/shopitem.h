@@ -46,7 +46,7 @@ class ShopItem final : public Item
          */
         ShopItem(const int inventoryIndex,
                  const int id,
-                 const int type,
+                 const ItemTypeT type,
                  const ItemColor color,
                  const int quantity,
                  const int price);
@@ -59,7 +59,7 @@ class ShopItem final : public Item
          * @param price price of the item
          */
         ShopItem(const int id,
-                 const int type,
+                 const ItemTypeT type,
                  const ItemColor color,
                  const int price);
 

@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_BUYDIALOG_H
 #define GUI_WINDOWS_BUYDIALOG_H
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/itemcolor.h"
 
@@ -105,7 +107,7 @@ class BuyDialog final : public Window,
          * Adds an item to the shop inventory.
          */
         ShopItem *addItem(const int id,
-                          const int type,
+                          const ItemTypeT type,
                           const ItemColor color,
                           const int amount,
                           const int price);

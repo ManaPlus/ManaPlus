@@ -1480,7 +1480,11 @@ impHandler0(createItems)
         if (id <= 500)
             continue;
 
-        dialog->addItem(id, 0, ItemColor_one, 100, 0);
+        dialog->addItem(id,
+            ItemType::Unknown,
+            ItemColor_one,
+            100,
+            0);
     }
     dialog->sort();
     return true;

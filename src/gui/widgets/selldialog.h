@@ -23,6 +23,8 @@
 #ifndef GUI_WIDGETS_SELLDIALOG_H
 #define GUI_WIDGETS_SELLDIALOG_H
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/advanced.h"
 #include "enums/simpletypes/issell.h"
 #include "enums/simpletypes/itemcolor.h"
@@ -72,7 +74,8 @@ class SellDialog notfinal : public Window,
         /**
          * Adds an item to the inventory.
          */
-        void addItem(const Item *const item, const int price);
+        void addItem(const Item *const item,
+                     const int price);
 
         /**
          * Called when receiving actions from the widgets.
@@ -97,7 +100,7 @@ class SellDialog notfinal : public Window,
         void setVisible(Visible visible) override final;
 
         ShopItem *addItem(const int id,
-                          const int type,
+                          const ItemTypeT type,
                           const ItemColor color,
                           const int amount,
                           const int price);

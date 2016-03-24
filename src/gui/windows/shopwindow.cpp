@@ -562,12 +562,20 @@ void ShopWindow::loadList()
                     if (tokens[1] && tokens[2])
                     {
                         mBuyShopItems->addItem(
-                            tokens[0], 0, ItemColor_one, tokens[1], tokens[2]);
+                            tokens[0],
+                            ItemType::Unknown,
+                            ItemColor_one,
+                            tokens[1],
+                            tokens[2]);
                     }
                     if (tokens[3] && tokens[4])
                     {
                         mSellShopItems->addItem(
-                            tokens[0], 0, ItemColor_one, tokens[3], tokens[4]);
+                            tokens[0],
+                            ItemType::Unknown,
+                            ItemColor_one,
+                            tokens[3],
+                            tokens[4]);
                     }
                 }
             }
@@ -855,7 +863,13 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         int amount = decodeStr(data.substr(f + 6, 3));
         // +++ need impliment colors?
         if (buyDialog && amount > 0)
-            buyDialog->addItem(id, 0, ItemColor_one, amount, price);
+        {
+            buyDialog->addItem(id,
+                ItemType::Unknown,
+                ItemColor_one,
+                amount,
+                price);
+        }
         if (sellDialog)
         {
             // +++ need support for colors
@@ -870,7 +884,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
                 amount = 0;
             }
             ShopItem *const shopItem = sellDialog->addItem(id,
-                0,
+                ItemType::Unknown,
                 ItemColor_one,
                 amount,
                 price);
@@ -940,7 +954,12 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
 
     delete mTradeItem;
     // +++ need impliment colors?
-    mTradeItem = new ShopItem(-1, id, 0, ItemColor_one, amount, price);
+    mTradeItem = new ShopItem(-1,
+        id,
+        ItemType::Unknown,
+        ItemColor_one,
+        amount,
+        price);
 
     if (mode == BUY)
     {

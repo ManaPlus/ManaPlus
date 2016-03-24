@@ -23,6 +23,8 @@
 
 #ifdef EATHENA_SUPPORT
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/itemcolor.h"
 
 #include <string>
@@ -44,7 +46,7 @@ class MarketHandler notfinal
         virtual void close() const = 0;
 
         virtual void buyItem(const int itemId,
-                             const int type,
+                             const ItemTypeT type,
                              const ItemColor color,
                              const int amount) const = 0;
 

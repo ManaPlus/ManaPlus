@@ -25,6 +25,8 @@
 
 #include "const/resources/item/cards.h"
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/equipm.h"
 #include "enums/simpletypes/equipped.h"
@@ -48,7 +50,7 @@ class Item notfinal
          * Constructor.
          */
         Item(const int id,
-             const int type,
+             const ItemTypeT type,
              const int quantity,
              const uint8_t refine,
              const ItemColor color,
@@ -209,10 +211,10 @@ class Item notfinal
         const int *getCards() const
         { return mCards; }
 
-        void setType(const int type)
+        void setType(const ItemTypeT type)
         { mType = type; }
 
-        int getType() const A_WARN_UNUSED
+        ItemTypeT getType() const A_WARN_UNUSED
         { return mType; }
 
         void setTag(const int tag)
@@ -225,7 +227,7 @@ class Item notfinal
 
         void updateColor();
 
-        int mId;              /**< Item type id. */
+        int mId;              /**< Item id. */
         ItemColor mColor;
         int mQuantity;        /**< Number of items. */
         int mTag;
@@ -237,7 +239,7 @@ class Item notfinal
         int mCards[maxCards];
         uint8_t mRefine;      /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
-        int mType;            /**< Item type. */
+        ItemTypeT mType;      /**< Item type. */
         Equipm mEquipment;    /**< Item is equipment. */
         Equipped mEquipped;   /**< Item is equipped. */
         bool mInEquipment;    /**< Item is in equipment */
