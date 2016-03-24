@@ -160,8 +160,8 @@ namespace
                 if (!item1 || !item2)
                     return false;
 
-                const ItemType::Type type1 = item1->getInfo().getType();
-                const ItemType::Type type2 = item2->getInfo().getType();
+                const ItemTypeT type1 = item1->getInfo().getType();
+                const ItemTypeT type2 = item2->getInfo().getType();
                 if (type1 == type2)
                     return item1->getPrice() < item2->getPrice();
                 return type1 < type2;

@@ -23,31 +23,28 @@
 #ifndef RESOURCES_ITEMTYPE_H
 #define RESOURCES_ITEMTYPE_H
 
-namespace ItemType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(ItemType)
 {
-    /**
-     * Enumeration of available Item types.
-     */
-    enum Type
-    {
-        UNUSABLE = 0,
-        USABLE,
-        EQUIPMENT_ONE_HAND_WEAPON,
-        EQUIPMENT_TWO_HANDS_WEAPON,
-        EQUIPMENT_TORSO,
-        EQUIPMENT_ARMS,  // 5
-        CARD,
-        EQUIPMENT_HEAD,
-        EQUIPMENT_LEGS,
-        EQUIPMENT_SHIELD,
-        EQUIPMENT_RING,
-        EQUIPMENT_NECKLACE,  // 10
-        EQUIPMENT_FEET,
-        EQUIPMENT_AMMO,
-        EQUIPMENT_CHARM,
-        SPRITE_RACE,
-        SPRITE_HAIR  // 15
-    };
-}  // namespace ItemType
+    UNUSABLE = 0,
+    USABLE,
+    EQUIPMENT_ONE_HAND_WEAPON,
+    EQUIPMENT_TWO_HANDS_WEAPON,
+    EQUIPMENT_TORSO,
+    EQUIPMENT_ARMS,  // 5
+    CARD,
+    EQUIPMENT_HEAD,
+    EQUIPMENT_LEGS,
+    EQUIPMENT_SHIELD,
+    EQUIPMENT_RING,
+    EQUIPMENT_NECKLACE,  // 10
+    EQUIPMENT_FEET,
+    EQUIPMENT_AMMO,
+    EQUIPMENT_CHARM,
+    SPRITE_RACE,
+    SPRITE_HAIR  // 15
+}
+enumEnd(ItemType);
 
 #endif  // RESOURCES_ITEMTYPE_H

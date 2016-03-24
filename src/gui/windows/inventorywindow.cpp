@@ -1047,7 +1047,8 @@ void InventoryWindow::combineItems(const int index1,
     if (!item2)
         return;
 
-    if (item1->getType() != ItemType::CARD)
+    // IT_CARD
+    if (item1->getType() != 6)
     {
         const Item *tmpItem = item1;
         item1 = item2;

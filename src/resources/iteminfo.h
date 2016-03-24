@@ -100,7 +100,7 @@ class ItemInfo final
         const std::string &getEffect() const A_WARN_UNUSED
         { return mEffect; }
 
-        void setType(const ItemType::Type type)
+        void setType(const ItemTypeT type)
         { mType = type; }
 
         void setUseButton(const std::string &str)
@@ -115,7 +115,7 @@ class ItemInfo final
         const std::string &getUseButton2() const A_WARN_UNUSED
         { return mUseButton2; }
 
-        ItemType::Type getType() const A_WARN_UNUSED
+        ItemTypeT getType() const A_WARN_UNUSED
         { return mType; }
 
         void setWeight(const int weight)
@@ -329,7 +329,7 @@ class ItemInfo final
         std::string mEffect;        /**< Description of effects. */
         std::string mUseButton;
         std::string mUseButton2;
-        ItemType::Type mType;       /**< Item type. */
+        ItemTypeT mType;            /**< Item type. */
         int mWeight;                /**< Weight in grams. */
         int mView;                  /**< Item ID of how this item looks. */
         int mId;                    /**< Item ID */

@@ -30,7 +30,7 @@
 struct ItemTypeMap final
 {
     std::string name;
-    ItemType::Type type;
+    ItemTypeT type;
     std::string useButton;
     std::string useButton2;
 };

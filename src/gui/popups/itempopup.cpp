@@ -325,7 +325,7 @@ std::string ItemPopup::getCardsString(const int *const cards)
         return label->setForegroundColorAll(getThemeColor(name2), \
         getThemeColor(name2##_OUTLINE)); \
     }
-void ItemPopup::setLabelColor(Label *label, const ItemType::Type type) const
+void ItemPopup::setLabelColor(Label *label, const ItemTypeT type) const
 {
     switch (type)
     {

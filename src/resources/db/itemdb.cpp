@@ -173,7 +173,7 @@ void ItemDB::setStatsList(const std::vector<ItemDB::Stat> &stats)
     extraStats = stats;
 }
 
-static ItemType::Type itemTypeFromString(const std::string &name)
+static ItemTypeT itemTypeFromString(const std::string &name)
 {
     const size_t sz = sizeof(itemTypeMap) / sizeof(itemTypeMap[0]);
     for (size_t f = 0; f < sz; f ++)
@@ -186,7 +186,7 @@ static ItemType::Type itemTypeFromString(const std::string &name)
     return ItemType::UNUSABLE;
 }
 
-static std::string useButtonFromItemType(const ItemType::Type &type)
+static std::string useButtonFromItemType(const ItemTypeT &type)
 {
     const size_t sz = sizeof(itemTypeMap) / sizeof(itemTypeMap[0]);
     for (size_t f = 0; f < sz; f ++)
@@ -203,7 +203,7 @@ static std::string useButtonFromItemType(const ItemType::Type &type)
     return std::string();
 }
 
-static std::string useButton2FromItemType(const ItemType::Type &type)
+static std::string useButton2FromItemType(const ItemTypeT &type)
 {
     const size_t sz = sizeof(itemTypeMap) / sizeof(itemTypeMap[0]);
     for (size_t f = 0; f < sz; f ++)
