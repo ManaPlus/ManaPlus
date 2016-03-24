@@ -21,7 +21,7 @@
 #ifndef RESOURCES_ITEMTYPEMAP_H
 #define RESOURCES_ITEMTYPEMAP_H
 
-#include "resources/itemtype.h"
+#include "enums/resources/itemtype.h"
 
 #include <string>
 

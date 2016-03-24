@@ -24,11 +24,11 @@
 #ifndef GUI_POPUPS_ITEMPOPUP_H
 #define GUI_POPUPS_ITEMPOPUP_H
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/itemcolor.h"
 
 #include "gui/widgets/popup.h"
-
-#include "resources/itemtype.h"
 
 class Icon;
 class Item;

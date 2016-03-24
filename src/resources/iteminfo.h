@@ -25,11 +25,12 @@
 
 #include "enums/being/gender.h"
 
+#include "enums/resources/itemtype.h"
+
 #include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/itemcolor.h"
 
 #include "resources/cursor.h"
-#include "resources/itemtype.h"
 #include "resources/soundinfo.h"
 
 #include "resources/sprite/spritedisplay.h"

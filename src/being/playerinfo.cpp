@@ -30,6 +30,8 @@
 #include "being/homunculusinfo.h"
 #include "being/mercenaryinfo.h"
 #include "being/petinfo.h"
+
+#include "enums/resources/itemtype.h"
 #endif
 
 #include "gui/windows/inventorywindow.h"
@@ -39,10 +41,6 @@
 #include "net/inventoryhandler.h"
 #include "net/mercenaryhandler.h"
 #include "net/playerhandler.h"
-
-#ifdef EATHENA_SUPPORT
-#include "resources/itemtype.h"
-#endif
 
 #include "resources/item/item.h"
 
