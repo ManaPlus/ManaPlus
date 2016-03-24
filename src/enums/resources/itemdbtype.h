@@ -20,12 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_ITEMTYPE_H
-#define RESOURCES_ITEMTYPE_H
+#ifndef RESOURCES_ITEMDBTYPE_H
+#define RESOURCES_ITEMDBTYPE_H
 
 #include "enums/simpletypes/enumdefines.h"
 
-enumStart(ItemType)
+enumStart(ItemDbType)
 {
     UNUSABLE = 0,
     USABLE,
@@ -45,6 +45,6 @@ enumStart(ItemType)
     SPRITE_RACE,
     SPRITE_HAIR  // 15
 }
-enumEnd(ItemType);
+enumEnd(ItemDbType);
 
-#endif  // RESOURCES_ITEMTYPE_H
+#endif  // RESOURCES_ITEMDBTYPE_H

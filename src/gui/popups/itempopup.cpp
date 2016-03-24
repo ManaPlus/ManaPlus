@@ -57,7 +57,7 @@ ItemPopup::ItemPopup() :
     mItemEffect(new TextBox(this)),
     mItemWeight(new TextBox(this)),
     mItemCards(new TextBox(this)),
-    mItemType(ItemType::UNUSABLE),
+    mItemType(ItemDbType::UNUSABLE),
     mIcon(new Icon(this, nullptr)),
     mLastName(),
     mLastId(0),
@@ -325,29 +325,30 @@ std::string ItemPopup::getCardsString(const int *const cards)
         return label->setForegroundColorAll(getThemeColor(name2), \
         getThemeColor(name2##_OUTLINE)); \
     }
-void ItemPopup::setLabelColor(Label *label, const ItemTypeT type) const
+void ItemPopup::setLabelColor(Label *label,
+                              const ItemDbTypeT type) const
 {
     switch (type)
     {
-        caseSetColor(ItemType::UNUSABLE, ThemeColorId::GENERIC)
-        caseSetColor(ItemType::USABLE, ThemeColorId::USABLE)
-        caseSetColor(ItemType::EQUIPMENT_ONE_HAND_WEAPON,
+        caseSetColor(ItemDbType::UNUSABLE, ThemeColorId::GENERIC)
+        caseSetColor(ItemDbType::USABLE, ThemeColorId::USABLE)
+        caseSetColor(ItemDbType::EQUIPMENT_ONE_HAND_WEAPON,
             ThemeColorId::ONEHAND)
-        caseSetColor(ItemType::EQUIPMENT_TWO_HANDS_WEAPON,
+        caseSetColor(ItemDbType::EQUIPMENT_TWO_HANDS_WEAPON,
             ThemeColorId::TWOHAND)
-        caseSetColor(ItemType::EQUIPMENT_TORSO, ThemeColorId::TORSO)
-        caseSetColor(ItemType::EQUIPMENT_ARMS, ThemeColorId::ARMS)
-        caseSetColor(ItemType::EQUIPMENT_HEAD, ThemeColorId::HEAD)
-        caseSetColor(ItemType::EQUIPMENT_LEGS, ThemeColorId::LEGS)
-        caseSetColor(ItemType::EQUIPMENT_SHIELD, ThemeColorId::SHIELD)
-        caseSetColor(ItemType::EQUIPMENT_RING, ThemeColorId::RING)
-        caseSetColor(ItemType::EQUIPMENT_NECKLACE, ThemeColorId::NECKLACE)
-        caseSetColor(ItemType::EQUIPMENT_FEET, ThemeColorId::FEET)
-        caseSetColor(ItemType::EQUIPMENT_AMMO, ThemeColorId::AMMO)
-        caseSetColor(ItemType::EQUIPMENT_CHARM, ThemeColorId::CHARM)
-        caseSetColor(ItemType::SPRITE_RACE, ThemeColorId::UNKNOWN_ITEM)
-        caseSetColor(ItemType::SPRITE_HAIR, ThemeColorId::UNKNOWN_ITEM)
-        caseSetColor(ItemType::CARD, ThemeColorId::CARD)
+        caseSetColor(ItemDbType::EQUIPMENT_TORSO, ThemeColorId::TORSO)
+        caseSetColor(ItemDbType::EQUIPMENT_ARMS, ThemeColorId::ARMS)
+        caseSetColor(ItemDbType::EQUIPMENT_HEAD, ThemeColorId::HEAD)
+        caseSetColor(ItemDbType::EQUIPMENT_LEGS, ThemeColorId::LEGS)
+        caseSetColor(ItemDbType::EQUIPMENT_SHIELD, ThemeColorId::SHIELD)
+        caseSetColor(ItemDbType::EQUIPMENT_RING, ThemeColorId::RING)
+        caseSetColor(ItemDbType::EQUIPMENT_NECKLACE, ThemeColorId::NECKLACE)
+        caseSetColor(ItemDbType::EQUIPMENT_FEET, ThemeColorId::FEET)
+        caseSetColor(ItemDbType::EQUIPMENT_AMMO, ThemeColorId::AMMO)
+        caseSetColor(ItemDbType::EQUIPMENT_CHARM, ThemeColorId::CHARM)
+        caseSetColor(ItemDbType::SPRITE_RACE, ThemeColorId::UNKNOWN_ITEM)
+        caseSetColor(ItemDbType::SPRITE_HAIR, ThemeColorId::UNKNOWN_ITEM)
+        caseSetColor(ItemDbType::CARD, ThemeColorId::CARD)
         default:
         {
             return label->setForegroundColorAll(getThemeColor(

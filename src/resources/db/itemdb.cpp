@@ -173,7 +173,7 @@ void ItemDB::setStatsList(const std::vector<ItemDB::Stat> &stats)
     extraStats = stats;
 }
 
-static ItemTypeT itemTypeFromString(const std::string &name)
+static ItemDbTypeT itemTypeFromString(const std::string &name)
 {
     const size_t sz = sizeof(itemTypeMap) / sizeof(itemTypeMap[0]);
     for (size_t f = 0; f < sz; f ++)
@@ -183,10 +183,10 @@ static ItemTypeT itemTypeFromString(const std::string &name)
             return type.type;
     }
     logger->log("Unknown item type: " + name);
-    return ItemType::UNUSABLE;
+    return ItemDbType::UNUSABLE;
 }
 
-static std::string useButtonFromItemType(const ItemTypeT &type)
+static std::string useButtonFromItemType(const ItemDbTypeT &type)
 {
     const size_t sz = sizeof(itemTypeMap) / sizeof(itemTypeMap[0]);
     for (size_t f = 0; f < sz; f ++)
@@ -203,7 +203,7 @@ static std::string useButtonFromItemType(const ItemTypeT &type)
     return std::string();
 }
 
-static std::string useButton2FromItemType(const ItemTypeT &type)
+static std::string useButton2FromItemType(const ItemDbTypeT &type)
 {
     const size_t sz = sizeof(itemTypeMap) / sizeof(itemTypeMap[0]);
     for (size_t f = 0; f < sz; f ++)
@@ -464,28 +464,28 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
 
         switch (itemInfo->getType())
         {
-            case ItemType::USABLE:
+            case ItemDbType::USABLE:
                 itemInfo->addTag(mTags["Usable"]);
                 break;
-            case ItemType::CARD:
-            case ItemType::UNUSABLE:
+            case ItemDbType::CARD:
+            case ItemDbType::UNUSABLE:
                 itemInfo->addTag(mTags["Unusable"]);
                 break;
             default:
-            case ItemType::EQUIPMENT_ONE_HAND_WEAPON:
-            case ItemType::EQUIPMENT_TWO_HANDS_WEAPON:
-            case ItemType::EQUIPMENT_TORSO:
-            case ItemType::EQUIPMENT_ARMS:
-            case ItemType::EQUIPMENT_HEAD:
-            case ItemType::EQUIPMENT_LEGS:
-            case ItemType::EQUIPMENT_SHIELD:
-            case ItemType::EQUIPMENT_RING:
-            case ItemType::EQUIPMENT_NECKLACE:
-            case ItemType::EQUIPMENT_FEET:
-            case ItemType::EQUIPMENT_AMMO:
-            case ItemType::EQUIPMENT_CHARM:
-            case ItemType::SPRITE_RACE:
-            case ItemType::SPRITE_HAIR:
+            case ItemDbType::EQUIPMENT_ONE_HAND_WEAPON:
+            case ItemDbType::EQUIPMENT_TWO_HANDS_WEAPON:
+            case ItemDbType::EQUIPMENT_TORSO:
+            case ItemDbType::EQUIPMENT_ARMS:
+            case ItemDbType::EQUIPMENT_HEAD:
+            case ItemDbType::EQUIPMENT_LEGS:
+            case ItemDbType::EQUIPMENT_SHIELD:
+            case ItemDbType::EQUIPMENT_RING:
+            case ItemDbType::EQUIPMENT_NECKLACE:
+            case ItemDbType::EQUIPMENT_FEET:
+            case ItemDbType::EQUIPMENT_AMMO:
+            case ItemDbType::EQUIPMENT_CHARM:
+            case ItemDbType::SPRITE_RACE:
+            case ItemDbType::SPRITE_HAIR:
                 itemInfo->addTag(mTags["Equipment"]);
                 break;
         }

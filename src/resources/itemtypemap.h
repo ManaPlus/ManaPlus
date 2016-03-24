@@ -21,7 +21,7 @@
 #ifndef RESOURCES_ITEMTYPEMAP_H
 #define RESOURCES_ITEMTYPEMAP_H
 
-#include "enums/resources/itemtype.h"
+#include "enums/resources/itemdbtype.h"
 
 #include <string>
 
@@ -30,7 +30,7 @@
 struct ItemTypeMap final
 {
     std::string name;
-    ItemTypeT type;
+    ItemDbTypeT type;
     std::string useButton;
     std::string useButton2;
 };

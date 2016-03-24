@@ -24,7 +24,7 @@
 #ifndef GUI_POPUPS_ITEMPOPUP_H
 #define GUI_POPUPS_ITEMPOPUP_H
 
-#include "enums/resources/itemtype.h"
+#include "enums/resources/itemdbtype.h"
 
 #include "enums/simpletypes/itemcolor.h"
 
@@ -82,14 +82,14 @@ class ItemPopup final : public Popup
         TextBox *mItemEffect A_NONNULLPOINTER;
         TextBox *mItemWeight A_NONNULLPOINTER;
         TextBox *mItemCards A_NONNULLPOINTER;
-        ItemTypeT mItemType;
+        ItemDbTypeT mItemType;
         Icon *mIcon A_NONNULLPOINTER;
         std::string mLastName;
         int mLastId;
         ItemColor mLastColor;
 
         void setLabelColor(Label *label,
-                           const ItemTypeT type) const A_NONNULL(2);
+                           const ItemDbTypeT type) const A_NONNULL(2);
 };
 
 extern ItemPopup *itemPopup;

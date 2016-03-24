@@ -158,8 +158,8 @@ namespace
 
                 const ItemInfo &info1 = pair1->mItem->getInfo();
                 const ItemInfo &info2 = pair2->mItem->getInfo();
-                const ItemTypeT t1 = info1.getType();
-                const ItemTypeT t2 = info2.getType();
+                const ItemDbTypeT t1 = info1.getType();
+                const ItemDbTypeT t2 = info2.getType();
                 if (t1 == t2)
                 {
                     return (info1.getName() < info2.getName());

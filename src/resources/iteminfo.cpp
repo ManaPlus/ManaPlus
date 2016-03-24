@@ -45,7 +45,7 @@ ItemInfo::ItemInfo() :
     mEffect(),
     mUseButton(),
     mUseButton2(),
-    mType(ItemType::UNUSABLE),
+    mType(ItemDbType::UNUSABLE),
     mWeight(0),
     mView(0),
     mId(0),

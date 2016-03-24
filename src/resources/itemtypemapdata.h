@@ -29,77 +29,77 @@
 
 ItemTypeMap itemTypeMap[] =
 {
-    {"generic", ItemType::UNUSABLE,
+    {"generic", ItemDbType::UNUSABLE,
         std::string(), std::string()
     },
-    {"other", ItemType::UNUSABLE,
+    {"other", ItemDbType::UNUSABLE,
         // TRANSLATORS: inventory button
         N_("Use"), N_("Use")
     },
-    {"usable", ItemType::USABLE,
+    {"usable", ItemDbType::USABLE,
         // TRANSLATORS: inventory button
         N_("Use"), N_("Use")
     },
-    {"equip-1hand", ItemType::EQUIPMENT_ONE_HAND_WEAPON,
+    {"equip-1hand", ItemDbType::EQUIPMENT_ONE_HAND_WEAPON,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-2hand", ItemType::EQUIPMENT_TWO_HANDS_WEAPON,
+    {"equip-2hand", ItemDbType::EQUIPMENT_TWO_HANDS_WEAPON,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-torso", ItemType::EQUIPMENT_TORSO,
+    {"equip-torso", ItemDbType::EQUIPMENT_TORSO,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-arms", ItemType::EQUIPMENT_ARMS,
+    {"equip-arms", ItemDbType::EQUIPMENT_ARMS,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-head", ItemType::EQUIPMENT_HEAD,
+    {"equip-head", ItemDbType::EQUIPMENT_HEAD,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-legs", ItemType::EQUIPMENT_LEGS,
+    {"equip-legs", ItemDbType::EQUIPMENT_LEGS,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-shield", ItemType::EQUIPMENT_SHIELD,
+    {"equip-shield", ItemDbType::EQUIPMENT_SHIELD,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-ring", ItemType::EQUIPMENT_RING,
+    {"equip-ring", ItemDbType::EQUIPMENT_RING,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-charm", ItemType::EQUIPMENT_CHARM,
+    {"equip-charm", ItemDbType::EQUIPMENT_CHARM,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-necklace", ItemType::EQUIPMENT_NECKLACE,
+    {"equip-necklace", ItemDbType::EQUIPMENT_NECKLACE,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-neck", ItemType::EQUIPMENT_NECKLACE,
+    {"equip-neck", ItemDbType::EQUIPMENT_NECKLACE,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-feet", ItemType::EQUIPMENT_FEET,
+    {"equip-feet", ItemDbType::EQUIPMENT_FEET,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"equip-ammo", ItemType::EQUIPMENT_AMMO,
+    {"equip-ammo", ItemDbType::EQUIPMENT_AMMO,
         // TRANSLATORS: inventory button
         N_("Equip"), N_("Unequip")
     },
-    {"card", ItemType::CARD,
+    {"card", ItemDbType::CARD,
         // TRANSLATORS: inventory button
         N_("Insert"), std::string()
     },
-    {"racesprite", ItemType::SPRITE_RACE,
+    {"racesprite", ItemDbType::SPRITE_RACE,
         std::string(), std::string()
     },
-    {"hairsprite", ItemType::SPRITE_HAIR,
+    {"hairsprite", ItemDbType::SPRITE_HAIR,
         std::string(), std::string()
     }
 };
