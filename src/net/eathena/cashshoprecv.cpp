@@ -51,7 +51,8 @@ void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
     {
         msg.readInt32("price");
         const int value = msg.readInt32("discount price");
-        const ItemTypeT type = fromInt(msg.readUInt8("item type"), ItemTypeT);
+        const ItemTypeT type = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         const int itemId = msg.readInt16("item id");
         const ItemColor color = ItemColor_one;
         mBuyDialog->addItem(itemId, type, color, 0, value);

@@ -127,9 +127,8 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const ItemTypeT itemType = fromInt(
-            msg.readUInt8("item type"),
-            ItemTypeT);
+        const ItemTypeT itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         msg.readInt32("location");
         const int equipType = msg.readInt32("wear state");
         const uint8_t refine = CAST_U8(msg.readInt8("refine"));
@@ -200,7 +199,8 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     const int equipType = msg.readInt32("location");
-    const ItemTypeT itemType = fromInt(msg.readUInt8("item type"), ItemTypeT);
+    const ItemTypeT itemType = static_cast<ItemTypeT>(
+        msg.readUInt8("item type"));
     const unsigned char err = msg.readUInt8("result");
     msg.readInt32("hire expire date");
     msg.readInt16("bind on equip");
@@ -324,9 +324,8 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const ItemTypeT itemType = fromInt(
-            msg.readUInt8("item type"),
-            ItemType);
+        const ItemTypeT itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
         int cards[maxCards];
@@ -369,9 +368,8 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("item index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const ItemTypeT itemType = fromInt(
-            msg.readUInt8("item type"),
-            ItemTypeT);
+        const ItemTypeT itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
         int cards[maxCards];
@@ -532,9 +530,8 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const ItemTypeT itemType = fromInt(
-            msg.readUInt8("item type"),
-            ItemTypeT);
+        const ItemTypeT itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         const int amount = 1;
         msg.readInt32("location");
         msg.readInt32("wear state");
@@ -583,7 +580,8 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     const int index = msg.readInt16("index") - STORAGE_OFFSET;
     const int amount = msg.readInt32("amount");
     const int itemId = msg.readInt16("item id");
-    const ItemTypeT itemType = fromInt(msg.readUInt8("type"), ItemTypeT);
+    const ItemTypeT itemType = static_cast<ItemTypeT>(
+        msg.readUInt8("type"));
     const unsigned char identified = msg.readUInt8("identify");
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
@@ -785,7 +783,8 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     int amount = msg.readInt32("count");
     const int itemId = msg.readInt16("item id");
-    const ItemTypeT itemType = fromInt(msg.readUInt8("item type"), ItemTypeT);
+    const ItemTypeT itemType = static_cast<ItemTypeT>(
+        msg.readUInt8("item type"));
     const uint8_t identified = msg.readUInt8("identified");
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
@@ -861,9 +860,8 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const ItemTypeT itemType = fromInt(
-            msg.readUInt8("item type"),
-            ItemTypeT);
+        const ItemTypeT itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         const int amount = 1;
         msg.readInt32("location");
         msg.readInt32("wear state");
@@ -915,9 +913,8 @@ void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
     {
         const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
-        const ItemTypeT itemType = fromInt(
-            msg.readUInt8("item type"),
-            ItemTypeT);
+        const ItemTypeT itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         const int amount = msg.readInt16("count");
         msg.readInt32("wear state / equip");
         int cards[maxCards];

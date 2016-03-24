@@ -41,7 +41,7 @@ void ItemRecv::processItemDropped(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("id");
     const int itemId = msg.readInt16("item id");
-    const ItemTypeT itemType = fromInt(msg.readInt16("type"), ItemTypeT);
+    const ItemTypeT itemType = static_cast<ItemTypeT>(msg.readInt16("type"));
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
     const int x = msg.readInt16("x");
@@ -70,7 +70,7 @@ void ItemRecv::processItemDropped2(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("id");
     const int itemId = msg.readInt16("item id");
-    const ItemTypeT itemType = fromInt(msg.readUInt8("type"), ItemTypeT);
+    const ItemTypeT itemType = static_cast<ItemTypeT>(msg.readUInt8("type"));
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
@@ -144,7 +144,8 @@ void ItemRecv::processItemVisible2(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("item object id");
     const int itemId = msg.readInt16("item id");
-    const ItemTypeT itemType = fromInt(msg.readUInt8("type"), ItemTypeT);
+    const ItemTypeT itemType = static_cast<ItemTypeT>(
+        msg.readUInt8("type"));
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);

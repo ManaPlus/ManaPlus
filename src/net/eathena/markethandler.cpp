@@ -106,7 +106,7 @@ void MarketHandler::buyItems(const std::vector<ShopItem*> &items) const
         item->increaseQuantity(usedQuantity);
         item->increaseUsedQuantity(-usedQuantity);
         item->update();
-        const ItemTypeT type = fromInt(item->getType(), ItemTypeT);
+        const ItemTypeT type = item->getType();
         if (type == ItemType::Weapon ||
             type == ItemType::Armor ||
             type == ItemType::PetEgg ||

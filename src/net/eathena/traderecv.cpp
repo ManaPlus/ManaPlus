@@ -72,7 +72,8 @@ void TradeRecv::processTradeResponse(Net::MessageIn &msg)
 void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
 {
     const int type = msg.readInt16("type");
-    const ItemTypeT itemType = fromInt(msg.readUInt8("item type"), ItemTypeT);
+    const ItemTypeT itemType = static_cast<ItemTypeT>(
+        msg.readUInt8("item type"));
     const int amount = msg.readInt32("amount");
     const uint8_t identify = msg.readUInt8("identify");
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);

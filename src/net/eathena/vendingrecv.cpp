@@ -93,7 +93,8 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         const int value = msg.readInt32("price");
         const int amount = msg.readInt16("amount");
         const int index = msg.readInt16("inv index");
-        const ItemTypeT type = fromInt(msg.readUInt8("item type"), ItemTypeT);
+        const ItemTypeT type = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         const int itemId = msg.readInt16("item id");
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
