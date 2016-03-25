@@ -1837,7 +1837,8 @@ void Being::logic() restrict2
             mNeedPosUpdate = false;
 
         const int halfTile = mapTileSize / 2;
-        const float offset2 = static_cast<float>(mPixelOffsetY * abs(offset)) / 2;
+        const float offset2 = static_cast<float>(
+            mPixelOffsetY * abs(offset)) / 2;
 //        mSortOffsetY = (mOldHeight - mFixedOffsetY + mPixelOffsetY)
 //            * halfTile - offset2;
         mSortOffsetY = 0;
@@ -3136,7 +3137,6 @@ void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
                   2 * 50,
                   4);
     }
-
 }
 
 void Being::drawPortalSpriteAt(Graphics *restrict const graphics,

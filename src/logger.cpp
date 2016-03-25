@@ -407,7 +407,7 @@ void Logger::unimplimented(const int id,
 
 void Logger::unimplimented(const uint32_t id,
                            const uint32_t id2,
-                           const uint32_t id3)
+                           const uint32_t id3) const
 {
     if (!mReportUnimplimented)
         return;

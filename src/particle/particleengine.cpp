@@ -20,10 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "particle/particle.h"
-
 #include "configuration.h"
-#include "logger.h"
 
 #include "gui/viewport.h"
 
@@ -37,13 +34,11 @@
 #include "resources/dye/dye.h"
 
 #include "utils/dtor.h"
-#include "utils/mathutils.h"
 
 #include "debug.h"
 
 ParticleEngine *particleEngine = nullptr;
 
-class Graphics;
 class Image;
 
 int ParticleEngine::particleCount = 0;
@@ -72,7 +67,8 @@ void ParticleEngine::setupEngine() restrict2
 {
     ParticleEngine::maxCount = config.getIntValue("particleMaxCount");
     ParticleEngine::fastPhysics = config.getIntValue("particleFastPhysics");
-    ParticleEngine::emitterSkip = config.getIntValue("particleEmitterSkip") + 1;
+    ParticleEngine::emitterSkip =
+        config.getIntValue("particleEmitterSkip") + 1;
     if (!ParticleEngine::emitterSkip)
         ParticleEngine::emitterSkip = 1;
     ParticleEngine::enabled = config.getBoolValue("particleeffects");
@@ -306,7 +302,8 @@ Particle *ParticleEngine::addTextRiseFadeOutEffect(const std::string &restrict
                                                    const Color *restrict const
                                                    color,
                                                    Font *restrict const font,
-                                                   const bool outline) restrict2
+                                                   const bool outline)
+                                                   restrict2
 {
     Particle *const newParticle = new TextParticle(
         text,

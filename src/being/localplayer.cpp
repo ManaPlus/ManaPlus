@@ -42,7 +42,7 @@
 
 #include "enums/resources/map/mapitemtype.h"
 
-#include "particle/particle.h"
+#include "particle/particleengine.h"
 
 #include "input/keyboardconfig.h"
 

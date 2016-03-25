@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_ITEMDBTYPE_H
-#define RESOURCES_ITEMDBTYPE_H
+#ifndef ENUMS_RESOURCES_ITEMDBTYPE_H
+#define ENUMS_RESOURCES_ITEMDBTYPE_H
 
 #include "enums/simpletypes/enumdefines.h"
 
@@ -47,4 +47,4 @@ enumStart(ItemDbType)
 }
 enumEnd(ItemDbType);
 
-#endif  // RESOURCES_ITEMDBTYPE_H
+#endif  // ENUMS_RESOURCES_ITEMDBTYPE_H

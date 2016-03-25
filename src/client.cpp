@@ -96,7 +96,7 @@
 #include "net/tmwa/guildmanager.h"
 #endif
 
-#include "particle/particle.h"
+#include "particle/particleengine.h"
 
 #include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"

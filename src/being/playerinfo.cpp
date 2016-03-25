@@ -30,8 +30,6 @@
 #include "being/homunculusinfo.h"
 #include "being/mercenaryinfo.h"
 #include "being/petinfo.h"
-
-#include "enums/resources/itemdbtype.h"
 #endif
 
 #include "gui/windows/inventorywindow.h"

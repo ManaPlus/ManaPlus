@@ -20,7 +20,6 @@
 
 #include "net/eathena/familyrecv.h"
 
-#include "logger.h"
 #include "notifymanager.h"
 #include "party.h"
 
@@ -29,8 +28,6 @@
 #include "enums/resources/notifytypes.h"
 
 #include "gui/widgets/createwidget.h"
-
-#include "gui/windows/confirmdialog.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

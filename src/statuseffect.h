@@ -23,8 +23,6 @@
 #ifndef STATUSEFFECT_H
 #define STATUSEFFECT_H
 
-#include "enums/simpletypes/enable.h"
-
 #include <string>
 
 #include "localconsts.h"

@@ -23,21 +23,13 @@
 #include "resources/db/statuseffectdb.h"
 
 #include "configuration.h"
+#include "logger.h"
 #include "settings.h"
-#include "soundmanager.h"
 #include "statuseffect.h"
-
-#include "const/resources/spriteaction.h"
-
-#include "gui/widgets/tabs/chat/chattab.h"
-
-#include "particle/particle.h"
 
 #include "listeners/debugmessagelistener.h"
 
 #include "resources/beingcommon.h"
-
-#include "resources/sprite/animatedsprite.h"
 
 #include "debug.h"
 

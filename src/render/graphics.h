@@ -271,7 +271,7 @@ class Graphics notfinal
                              const int x2, const int y2,
                              const int width, const int height) restrict2;
 
-        ClipRect &getTopClip() restrict2 A_WARN_UNUSED
+        ClipRect &getTopClip() const restrict2 A_WARN_UNUSED
         { return mClipStack.top(); }
 
         void setRedraw(const bool n) restrict2 noexcept

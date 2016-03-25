@@ -22,15 +22,11 @@
 
 #include "particle/particle.h"
 
-#include "configuration.h"
 #include "logger.h"
-
-#include "gui/viewport.h"
 
 #include "particle/animationparticle.h"
 #include "particle/particleemitter.h"
 #include "particle/rotationalparticle.h"
-#include "particle/textparticle.h"
 
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
@@ -51,7 +47,6 @@ static const double PI = M_PI;
 static const float PI2 = 2 * M_PI;
 
 class Graphics;
-class Image;
 
 Particle::Particle() :
     Actor(),

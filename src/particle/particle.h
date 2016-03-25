@@ -32,10 +32,7 @@
 
 #include "localconsts.h"
 
-class Color;
-class Font;
 class Image;
-class Particle;
 class ParticleEmitter;
 class SimpleAnimation;
 

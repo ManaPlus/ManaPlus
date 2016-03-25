@@ -30,12 +30,9 @@
 #include "enums/gui/progresscolorid.h"
 #include "enums/gui/themecolorid.h"
 
-#include "enums/render/rendertype.h"
-
 #include "listeners/configlistener.h"
 
 #include "gui/palette.h"
-#include "gui/rect.h"
 
 #include "utils/stringvector.h"
 

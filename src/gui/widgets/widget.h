@@ -66,6 +66,8 @@
 
 #include "enums/simpletypes/visible.h"
 
+#include "gui/rect.h"
+
 #include "gui/widgets/widget2.h"
 
 #include <list>

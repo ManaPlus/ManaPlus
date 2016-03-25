@@ -1170,7 +1170,7 @@ class Being notfinal : public ActorSprite,
 
         int mX;             // position in tiles
         int mY;             // position in tiles
-        int mSortOffsetY;   // caculated offset in pixels based on mPixelOffsetY
+        int mSortOffsetY;  // caculated offset in pixels based on mPixelOffsetY
         int mPixelOffsetY;  // tile height offset in pixels
                             // calculated between tiles
         int mFixedOffsetY;  // fixed tile height offset in pixels for tile

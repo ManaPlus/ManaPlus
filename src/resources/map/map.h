@@ -44,7 +44,6 @@ class MapHeights;
 class MapItem;
 class MapLayer;
 class ObjectsLayer;
-class Particle;
 class Resource;
 class SpecialLayer;
 class Tileset;

@@ -30,7 +30,7 @@ class NpcDialog;
 namespace Net
 {
     class MessageIn;
-} // namespace Net
+}  // namespace Net
 
 namespace Ea
 {

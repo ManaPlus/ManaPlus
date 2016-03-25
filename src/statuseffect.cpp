@@ -29,11 +29,7 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include "particle/particle.h"
-
-#include "listeners/debugmessagelistener.h"
-
-#include "resources/beingcommon.h"
+#include "particle/particleengine.h"
 
 #include "resources/sprite/animatedsprite.h"
 

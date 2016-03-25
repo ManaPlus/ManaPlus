@@ -28,8 +28,6 @@
 
 #include "const/resources/item/cards.h"
 
-#include "enums/resources/itemtype.h"
-
 #include "net/messagein.h"
 
 #include "debug.h"

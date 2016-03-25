@@ -35,7 +35,7 @@
 
 #include "enums/resources/notifytypes.h"
 
-#include "particle/particle.h"
+#include "particle/particleengine.h"
 
 #include "input/keyboardconfig.h"
 

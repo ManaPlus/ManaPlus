@@ -22,8 +22,6 @@
 
 #include "gui/widgets/itemlinkhandler.h"
 
-#include "logger.h"
-
 #include "itemcolormanager.h"
 
 #include "gui/viewport.h"

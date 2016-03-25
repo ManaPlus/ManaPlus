@@ -23,8 +23,6 @@
 #ifndef PARTICLE_PARTICLEENGINE_H
 #define PARTICLE_PARTICLEENGINE_H
 
-#include "enums/particle/alivestatus.h"
-
 #include <list>
 #include <string>
 

@@ -26,7 +26,7 @@
 
 #include "being/localplayer.h"
 
-#include "particle/particle.h"
+#include "particle/particleengine.h"
 
 #include "gui/viewport.h"
 

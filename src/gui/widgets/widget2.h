@@ -23,6 +23,8 @@
 
 #include "const/gui/theme.h"
 
+#include "enums/render/rendertype.h"
+
 #include "gui/themecolorsidoperators.h"
 #include "gui/theme.h"
 

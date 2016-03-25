@@ -185,7 +185,7 @@ class Logger final
 
         void unimplimented(const uint32_t id,
                            const uint32_t id2,
-                           const uint32_t id3);
+                           const uint32_t id3) const;
 
     private:
         std::ofstream mLogFile;

@@ -21,8 +21,6 @@
 
 #include "gui/popups/beingpopup.h"
 
-#include "statuseffect.h"
-
 #include "being/being.h"
 #include "being/homunculusinfo.h"
 #include "being/petinfo.h"
@@ -36,8 +34,6 @@
 #include "gui/widgets/label.h"
 
 #include "resources/chatobject.h"
-
-#include "resources/db/statuseffectdb.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
