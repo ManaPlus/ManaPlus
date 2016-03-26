@@ -1,3 +1,23 @@
+2016-03-26 New release 1.6.3.26
+fix: wrong moving to target by mouse attack.
+fix: not allow close warp dialog until target selected (hercule).
+fix: crash in skill cooldowns.
+fix: compilation with recent clang versions (clang bug).
+fix: remove duplicated weight fields from items popups.
+add: extend debug logging about wrong packet sizes.
+add: rename server type EAthena into Hercules.
+add: improve particles update performance.
+add: improve performance in getting random numbers.
+add: add family packets support (hercules).
+add: raw status effects attributes in status-effects.xml.
+add: deprecate block-id attribute in status-effects.xml.
+add: status effect names in debug window.
+add: show skill unit created and id in context menu.
+add: packet version selection in servers list (hercules).
+add: not allow moving from sit state (hercules without evol plugin).
+add: drop support for evol plugin versions 1 - 3.
+add: open chat window by double click.
+
 2016-03-12 New release 1.6.3.12
 fix: search command triggering for text like "??" or "?!"
 fix: pet popup. now it show info only for own pet (hercules).
