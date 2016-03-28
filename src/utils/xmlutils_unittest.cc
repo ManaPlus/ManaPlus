@@ -58,3 +58,30 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     REQUIRE(1 == arr[3]);
     REQUIRE(1 == arr[4]);
 }
+
+TEST_CASE("xmlutils readXmlStringMap 1")
+{
+    client = new Client;
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    XML::initXML();
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+
+    std::map<std::string, std::string> arr;
+
+    readXmlStringMap("graphics/sprites/manaplus_emotes.xml",
+        "emotes",
+        "emote",
+        "sprite",
+        "name",
+        "variant",
+        arr);
+
+    REQUIRE(arr.size() == 27);
+    REQUIRE(arr["Kitty"] == "0");
+    REQUIRE(arr["xD"] == "1");
+    REQUIRE(arr["Metal"] == "26");
+}
