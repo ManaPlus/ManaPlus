@@ -76,8 +76,8 @@
 #include "debug.h"
 
 Font* Widget::mGlobalFont = nullptr;
-std::list<Widget*> Widget::mWidgets;
-std::set<Widget*> Widget::mWidgetsSet;
+std::list<Widget*> Widget::mAllWidgets;
+std::set<Widget*> Widget::mAllWidgetsSet;
 
 Widget::Widget(const Widget2 *const widget) :
     Widget2(widget),
@@ -107,8 +107,8 @@ Widget::Widget(const Widget2 *const widget) :
     mMouseConsume(true),
     mRedraw(true)
 {
-    mWidgets.push_back(this);
-    mWidgetsSet.insert(this);
+    mAllWidgets.push_back(this);
+    mAllWidgetsSet.insert(this);
 }
 
 Widget::~Widget()
@@ -121,8 +121,8 @@ Widget::~Widget()
 
     setFocusHandler(nullptr);
 
-    mWidgets.remove(this);
-    mWidgetsSet.erase(this);
+    mAllWidgets.remove(this);
+    mAllWidgetsSet.erase(this);
 }
 
 void Widget::setWidth(const int width)
@@ -334,7 +334,7 @@ void Widget::setGlobalFont(Font *const font)
 {
     mGlobalFont = font;
 
-    FOR_EACH (std::list<Widget*>::const_iterator, iter, mWidgets)
+    FOR_EACH (std::list<Widget*>::const_iterator, iter, mAllWidgets)
     {
         if (!(*iter)->mCurrentFont)
             (*iter)->fontChanged();
@@ -349,14 +349,14 @@ void Widget::setFont(Font *const font)
 
 void Widget::distributeWindowResizeEvent()
 {
-    FOR_EACH (std::list<Widget*>::const_iterator, iter, mWidgets)
+    FOR_EACH (std::list<Widget*>::const_iterator, iter, mAllWidgets)
         (*iter)->windowResized();
 }
 
 bool Widget::widgetExists(const Widget *const widget)
 {
-    return mWidgetsSet.find(const_cast<Widget*>(widget))
-        != mWidgetsSet.end();
+    return mAllWidgetsSet.find(const_cast<Widget*>(widget))
+        != mAllWidgetsSet.end();
 }
 
 void Widget::setSize(const int width, const int height)

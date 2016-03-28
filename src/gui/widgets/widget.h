@@ -1250,12 +1250,13 @@ class Widget notfinal : public Widget2
           */
         static Font* mGlobalFont;
 
+    private:
         /**
           * Holds a list of all instances of widgets.
           */
-        static std::list<Widget*> mWidgets;
+        static std::list<Widget*> mAllWidgets;
 
-        static std::set<Widget*> mWidgetsSet;
+        static std::set<Widget*> mAllWidgetsSet;
 };
 
 #endif  // GUI_WIDGETS_WIDGET_H
