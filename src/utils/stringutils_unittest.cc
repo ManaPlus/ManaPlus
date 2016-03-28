@@ -606,6 +606,20 @@ TEST_CASE("stringuntils findAny")
     REQUIRE(findAny("\"one\",,two, tree", ",", 5) == 5U);
 }
 
+TEST_CASE("stringuntils escapeString")
+{
+    REQUIRE(escapeString("") == "\"\"");
+    REQUIRE(escapeString("1") == "\"1\"");
+    REQUIRE(escapeString(" ") == "\" \"");
+    REQUIRE(escapeString("\"") == "\"\\\"\"");
+    REQUIRE(escapeString("123") == "\"123\"");
+    REQUIRE(escapeString("12\"3") == "\"12\\\"3\"");
+    REQUIRE(escapeString("12\"\"3") == "\"12\\\"\\\"3\"");
+    REQUIRE(escapeString("\"123\"") == "\"\\\"123\\\"\"");
+    REQUIRE(escapeString("\\") == "\"\\\"");
+    REQUIRE(escapeString("12\\3") == "\"12\\3\"");
+}
+
 TEST_CASE("stringuntils replaceItemLinks")
 {
     ItemDB::NamedItemInfos &infos = ItemDB::getNamedItemInfosTest();
