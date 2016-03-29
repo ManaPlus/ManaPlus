@@ -1756,6 +1756,7 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      utils/parameters_unittest.cc \
 	      resources/mstack_unittest.cc \
 	      utils/translation/poparser_unittest.cc \
+	      utils/langs_unittest.cc \
 	      resources/sprite/animatedsprite_unittest.cc \
 	      gui/fonts/textchunklist_unittest.cc \
 	      gui/widgets/browserbox_unittest.cc \
