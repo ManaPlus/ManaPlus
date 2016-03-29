@@ -1762,6 +1762,7 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      resources/dye/dye_unittest.cc \
 	      resources/dye/dyepalette_unittest.cc \
 	      integrity_unittest.cc \
+	      utils/chatutils_unittest.cc \
 	      gui/windowmanager_unittest.cc
 endif
 

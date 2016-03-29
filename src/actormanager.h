@@ -385,7 +385,9 @@ class ActorManager final: public ConfigListener
                      const std::string &name);
 #endif
 
+#ifndef UNITTESTS
     protected:
+#endif
         bool validateBeing(const Being *const aroundBeing,
                            Being *const being,
                            const ActorTypeT &type,
