@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-TEST_CASE("Files renameFile", "files")
+TEST_CASE("Files renameFile")
 {
     PHYSFS_init("manaplus");
     dirSeparator = "/";
@@ -63,4 +63,90 @@ TEST_CASE("Files renameFile", "files")
 
     delete [] buf;
     delete [] buf2;
+}
+
+TEST_CASE("Files existsLocal")
+{
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+    REQUIRE(Files::existsLocal(Files::getPath("help/about.txt")) == true);
+    REQUIRE_FALSE(Files::existsLocal(Files::getPath("help/about1.txt")));
+    REQUIRE_FALSE(Files::existsLocal(Files::getPath("help1/about.txt")));
+}
+
+TEST_CASE("Files loadTextFileString")
+{
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+    REQUIRE(Files::loadTextFileString("test/simplefile.txt") ==
+        "this is test \nfile.");
+}
+
+TEST_CASE("Files loadTextFile")
+{
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+
+    StringVect lines;
+    Files::loadTextFile("test/simplefile.txt", lines);
+    REQUIRE(lines.size() == 2);
+    REQUIRE(lines[0] == "this is test ");
+    REQUIRE(lines[1] == "file.");
+}
+
+TEST_CASE("Files saveTextFile")
+{
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+
+    const std::string dir = Files::getPath("test");
+    REQUIRE(dir.size() > 0);
+    Files::saveTextFile(dir, "tempfile.txt", "test line\ntext line2");
+    std::string data = Files::loadTextFileString("test/tempfile.txt");
+    ::remove((dir + "/tempfile.txt").c_str());
+    REQUIRE(data == "test line\ntext line2\n");
+}
+
+TEST_CASE("Files getFilesInDir")
+{
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+
+    StringVect list;
+    Files::getFilesInDir("test",
+        list,
+        ".gpl");
+    REQUIRE(list.size() == 1);
+    REQUIRE(list[0] == "test/palette.gpl");
+
+    list.clear();
+    Files::getFilesInDir("perserver/default",
+        list,
+        ".xml");
+    REQUIRE(list.size() == 5);
+    REQUIRE(list[0] == "perserver/default/charcreation.xml");
+    REQUIRE(list[1] == "perserver/default/deadmessages.xml");
+    REQUIRE(list[2] == "perserver/default/defaultcommands.xml");
+    REQUIRE(list[3] == "perserver/default/features.xml");
+    REQUIRE(list[4] == "perserver/default/weapons.xml");
 }
