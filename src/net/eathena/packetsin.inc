@@ -24,6 +24,9 @@
 packet(SMSG_PLAYER_STORAGE_ADD,            0x01c4,  22, &InventoryRecv::processPlayerStorageAdd,        5);
 packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processPlayerCartAdd,           5);
 
+// 20080102
+packet(SMSG_MAP_LOGIN_SUCCESS,             0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
+
 // 20100223
 packet(SMSG_TRADE_ITEM_ADD,                0x080f,  20, &TradeRecv::processTradeItemAdd,                20100223);
 
@@ -48,6 +51,10 @@ packet(SMSG_PLAYER_CART_EQUIP,             0x0994,  -1, &InventoryRecv::processP
 packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
 packet(SMSG_BEING_MOVE,                    0x09db,  -1, &BeingRecv::processBeingMove,                   20131223);
 packet(SMSG_BEING_SPAWN,                   0x09dc,  -1, &BeingRecv::processBeingSpawn,                  20131223);
+
+// 20141022
+// or 20141016?
+packet(SMSG_MAP_LOGIN_SUCCESS,             0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
 
 // 20150000 or near
 packet(SMSG_ADMIN_ACCOUNT_STATS,           0x0214,  42, &AdminRecv::processAccountStats,                0);
@@ -239,7 +246,6 @@ packet(SMSG_MAIL_SET_ATTACHMENT_ACK,       0x0255,   5, &MailRecv::processSetAtt
 packet(SMSG_MANNER_MESSAGE,                0x014a,   6, &ChatRecv::processMannerMessage,                0);
 packet(SMSG_MAP_ACCOUNT_ID,                0x0283,   6, &GameRecv::processMapAccountId,                 0);
 packet(SMSG_MAP_AUTH_REFUSE,               0x0074,   3, &GameRecv::processMapAuthRefuse,                0);
-packet(SMSG_MAP_LOGIN_SUCCESS,             0x0a18,  14, &GameRecv::processMapLogin,                     0);
 packet(SMSG_MAP_MASK,                      0x0b02,  10, &Ea::PlayerRecv::processMapMask,                0);
 packet(SMSG_MAP_MUSIC,                     0x0b05,  -1, &Ea::PlayerRecv::processMapMusic,               0);
 packet(SMSG_MAP_NOT_FOUND,                 0x0840,  -1, &GeneralRecv::processMapNotFound,               0);

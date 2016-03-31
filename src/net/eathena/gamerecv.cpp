@@ -55,8 +55,10 @@ void GameRecv::processMapLogin(Net::MessageIn &msg)
     logger->log("Protocol: Player start position: "
         "(%d, %d), Direction: %d",
         x, y, direction);
-    msg.readInt16("font");
-    msg.readUInt8("sex");
+    if (msg.getVersion() >= 20080102)
+        msg.readInt16("font");
+    if (msg.getVersion() >= 20141022)
+        msg.readUInt8("sex");
 
     mLastHost &= 0xffffff;
 
