@@ -134,7 +134,10 @@ void Network::dispatchMessages()
             len = readWord(2);
 
         MessageIn msg(mInBuffer, len);
-        msg.postInit(mPackets[msgId].name);
+        unsigned int ver = mPackets[msgId].version;
+        if (ver == 0)
+            ver = packetVersion;
+        msg.postInit(mPackets[msgId].name, ver);
         SDL_mutexV(mMutexIn);
 
         if (len == 0)

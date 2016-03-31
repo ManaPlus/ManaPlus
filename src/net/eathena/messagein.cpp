@@ -40,12 +40,21 @@ MessageIn::MessageIn(const char *const data,
 {
 }
 
-void MessageIn::postInit(const char *const str)
+void MessageIn::postInit(const char *const str,
+                         const unsigned int version)
 {
     // Read the message ID
     mId = readId();
+    mVersion = version;
     IGNOREDEBUGLOG;
     DEBUGLOG2("Receive packet", 0, "MessageIn");
+#ifdef ENABLEDEBUGLOG
+    if (mVersion > 0)
+    {
+        const std::string verStr = toString(mVersion);
+        DEBUGLOG2("Version", 0, verStr.c_str());
+    }
+#endif
     readInt16(str);
 }
 

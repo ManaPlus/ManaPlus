@@ -42,6 +42,7 @@ MessageIn::MessageIn(const char *const data,
     mData(data),
     mLength(length),
     mPos(0),
+    mVersion(0),
     mId(0),
     mIgnore(false)
 {
