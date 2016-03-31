@@ -59,7 +59,6 @@
 
 #include "debug.h"
 
-extern int packetVersion;
 extern int serverVersion;
 
 namespace EAthena
@@ -112,7 +111,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
     }
     int sz;
     if ((serverVersion >= 8 || serverVersion == 0) &&
-        packetVersion >= 20150226)
+        msg.getVersion() >= 20150226)
     {
         sz = 57;
     }
@@ -139,7 +138,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         msg.readInt16("equip type");
         msg.readInt16("item sprite number");
         if ((serverVersion >= 8 || serverVersion == 0) &&
-            packetVersion >= 20150226)
+            msg.getVersion() >= 20150226)
         {
             msg.readUInt8("rnd count");
             for (int f = 0; f < 5; f ++)
@@ -205,7 +204,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     msg.readInt32("hire expire date");
     msg.readInt16("bind on equip");
     if ((serverVersion >= 8 || serverVersion == 0) &&
-        packetVersion >= 20150226)
+        msg.getVersion() >= 20150226)
     {
         for (int f = 0; f < 5; f ++)
         {
@@ -515,7 +514,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
     msg.readInt16("len");
     int sz;
     if ((serverVersion >= 8 || serverVersion == 0) &&
-        packetVersion >= 20150226)
+        msg.getVersion() >= 20150226)
     {
         sz = 57;
     }
@@ -543,7 +542,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         msg.readInt16("bind on equip");
         msg.readInt16("sprite");
         if ((serverVersion >= 8 || serverVersion == 0) &&
-            packetVersion >= 20150226)
+            msg.getVersion() >= 20150226)
         {
             msg.readUInt8("rnd count");
             for (int f = 0; f < 5; f ++)
@@ -589,7 +588,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     if ((serverVersion >= 8 || serverVersion == 0) &&
-        packetVersion >= 20150226)
+        msg.getVersion() >= 20150226)
     {
         for (int f = 0; f < 5; f ++)
         {
@@ -792,7 +791,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
     if ((serverVersion >= 8 || serverVersion == 0) &&
-        packetVersion >= 20150226)
+        msg.getVersion() >= 20150226)
     {
         for (int f = 0; f < 5; f ++)
         {
@@ -846,7 +845,7 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
     msg.readInt16("len");
     int sz;
     if ((serverVersion >= 8 || serverVersion == 0) &&
-        packetVersion >= 20150226)
+        msg.getVersion() >= 20150226)
     {
         sz = 57;
     }
@@ -873,7 +872,7 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
         msg.readInt16("bind on equip");
         msg.readInt16("sprite");
         if ((serverVersion >= 8 || serverVersion == 0) &&
-            packetVersion >= 20150226)
+            msg.getVersion() >= 20150226)
         {
             msg.readUInt8("rnd count");
             for (int f = 0; f < 5; f ++)

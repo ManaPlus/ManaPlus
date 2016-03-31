@@ -101,6 +101,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
             cards[d] = msg.readInt16("card");
+        // ++ need change to msg.getVersion()
         if ((serverVersion >= 8 || serverVersion == 0) &&
             packetVersion >= 20150226)
         {
@@ -145,6 +146,7 @@ void VendingRecv::processOpen(Net::MessageIn &msg)
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
             msg.readInt16("card");
+        // ++ need change to msg.getVersion()
         if ((serverVersion >= 8 || serverVersion == 0) &&
             packetVersion >= 20150226)
         {

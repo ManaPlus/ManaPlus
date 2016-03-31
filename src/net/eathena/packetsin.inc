@@ -20,14 +20,34 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// 5
+packet(SMSG_PLAYER_STORAGE_ADD,            0x01c4,  22, &InventoryRecv::processPlayerStorageAdd,        5);
+packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processPlayerCartAdd,           5);
+
+// 20100223
+packet(SMSG_TRADE_ITEM_ADD,                0x080f,  20, &TradeRecv::processTradeItemAdd,                20100223);
+
 // < 20131223
 if (serverVersion > 0 && serverVersion <= 10)
 {
-    packet(SMSG_BEING_VISIBLE,             0x0915,  -1, &BeingRecv::processBeingVisible,                0);
     packet(SMSG_BEING_ACTION2,             0x02e1,  33, &BeingRecv::processBeingAction2,                0);
-    packet(SMSG_BEING_SPAWN,               0x090f,  -1, &BeingRecv::processBeingSpawn,                  0);
-    packet(SMSG_BEING_MOVE,                0x0914,  -1, &BeingRecv::processBeingMove,                   0);
 }
+
+// 20120221
+packet(SMSG_BEING_VISIBLE,                 0x0915,  -1, &BeingRecv::processBeingVisible,                20120221);
+packet(SMSG_BEING_MOVE,                    0x0914,  -1, &BeingRecv::processBeingMove,                   20120221);
+packet(SMSG_BEING_SPAWN,                   0x090f,  -1, &BeingRecv::processBeingSpawn,                  20120221);
+
+// 20120925
+packet(SMSG_PLAYER_EQUIPMENT,              0x0992,  -1, &InventoryRecv::processPlayerEquipment,         20120925);
+packet(SMSG_PLAYER_INVENTORY_ADD,          0x0990,  31, &InventoryRecv::processPlayerInventoryAdd,      20120925);
+packet(SMSG_PLAYER_STORAGE_EQUIP,          0x0996,  -1, &InventoryRecv::processPlayerStorageEquip,      20120925);
+packet(SMSG_PLAYER_CART_EQUIP,             0x0994,  -1, &InventoryRecv::processPlayerCartEquip,         20120925);
+
+// 20131223
+packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
+packet(SMSG_BEING_MOVE,                    0x09db,  -1, &BeingRecv::processBeingMove,                   20131223);
+packet(SMSG_BEING_SPAWN,                   0x09dc,  -1, &BeingRecv::processBeingSpawn,                  20131223);
 
 // 20150000 or near
 packet(SMSG_ADMIN_ACCOUNT_STATS,           0x0214,  42, &AdminRecv::processAccountStats,                0);
@@ -293,10 +313,8 @@ packet(SMSG_PLAYER_ADD_SKILL,              0x0111,  39, &SkillRecv::processSkill
 packet(SMSG_PLAYER_ARROW_EQUIP,            0x013c,   4, &Ea::InventoryRecv::processPlayerArrowEquip,    0);
 packet(SMSG_PLAYER_ARROW_MESSAGE,          0x013b,   4, &Ea::PlayerRecv::processPlayerArrowMessage,     0);
 packet(SMSG_PLAYER_ATTACK_RANGE,           0x013a,   4, &Ea::InventoryRecv::processPlayerAttackRange,   0);
-packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processPlayerCartAdd,           0);
 packet(SMSG_PLAYER_CART_ADD_ERROR,         0x012c,   3, &InventoryRecv::processCartAddError,            0);
 packet(SMSG_PLAYER_CART_ADD_OUTDATED,      0x0124,  21, nullptr,                                        0);
-packet(SMSG_PLAYER_CART_EQUIP,             0x0994,  -1, &InventoryRecv::processPlayerCartEquip,         0);
 packet(SMSG_PLAYER_CART_ITEMS,             0x0993,  -1, &InventoryRecv::processPlayerCartItems,         0);
 packet(SMSG_PLAYER_CART_REMOVE,            0x0125,   8, &InventoryRecv::processPlayerCartRemove,        0);
 packet(SMSG_PLAYER_CHAT,                   0x008e,  -1, &ChatRecv::processChat,                         0);
@@ -304,7 +322,6 @@ packet(SMSG_PLAYER_CLIENT_COMMAND,         0x0b16,  -1, &PlayerRecv::processPlay
 packet(SMSG_PLAYER_COOKING_LIST,           0x025a,  -1, &InventoryRecv::processPlayerCookingList,       0);
 packet(SMSG_PLAYER_DELETE_SKILL,           0x0441,   4, &SkillRecv::processSkillDelete,                 0);
 packet(SMSG_PLAYER_EQUIP,                  0x0999,  11, &InventoryRecv::processPlayerEquip,             0);
-packet(SMSG_PLAYER_EQUIPMENT,              0x0992,  -1, &InventoryRecv::processPlayerEquipment,         0);
 packet(SMSG_PLAYER_EQUIP_TICK_ACK,         0x02d9,  10, &PlayerRecv::processPlayerEquipTickAck,         0);
 packet(SMSG_PLAYER_FAME_ALCHEMIST,         0x021c,  10, &PlayerRecv::processPlayerFameAlchemist,        0);
 packet(SMSG_PLAYER_FAME_BLACKSMITH,        0x021b,  10, &PlayerRecv::processPlayerFameBlacksmith,       0);
@@ -318,7 +335,6 @@ packet(SMSG_PLAYER_IDENTIFIED,             0x0179,   5, &InventoryRecv::processP
 packet(SMSG_PLAYER_IDENTIFY_LIST,          0x0177,  -1, &InventoryRecv::processPlayerIdentifyList,      0);
 packet(SMSG_PLAYER_INSERT_CARD,            0x017d,   7, &InventoryRecv::processPlayerInsertCard,        0);
 packet(SMSG_PLAYER_INVENTORY,              0x0991,  -1, &InventoryRecv::processPlayerInventory,         0);
-packet(SMSG_PLAYER_INVENTORY_ADD,          0x0990,  31, &InventoryRecv::processPlayerInventoryAdd,      0);
 packet(SMSG_PLAYER_INVENTORY_REMOVE,       0x00af,   6, &InventoryRecv::processPlayerInventoryRemove,   0);
 packet(SMSG_PLAYER_INVENTORY_REMOVE2,      0x07fa,   8, &InventoryRecv::processPlayerInventoryRemove2,  0);
 packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  0);
@@ -354,10 +370,8 @@ packet(SMSG_PLAYER_STAT_UPDATE_4,          0x00bc,   6, &Ea::PlayerRecv::process
 packet(SMSG_PLAYER_STAT_UPDATE_5,          0x00bd,  44, &PlayerRecv::processPlayerStatUpdate5,          0);
 packet(SMSG_PLAYER_STAT_UPDATE_6,          0x00be,   5, &Ea::PlayerRecv::processPlayerStatUpdate6,      0);
 packet(SMSG_PLAYER_STOP,                   0x0088,  10, &Ea::BeingRecv::processPlayerStop,              0);
-packet(SMSG_PLAYER_STORAGE_ADD,            0x01c4,  22, &InventoryRecv::processPlayerStorageAdd,        0);
 packet(SMSG_PLAYER_STORAGE_ADD_OUTDATED,   0x00f4,  21, nullptr,                                        0);
 packet(SMSG_PLAYER_STORAGE_CLOSE,          0x00f8,   2, &Ea::InventoryRecv::processPlayerStorageClose,  0);
-packet(SMSG_PLAYER_STORAGE_EQUIP,          0x0996,  -1, &InventoryRecv::processPlayerStorageEquip,      0);
 packet(SMSG_PLAYER_STORAGE_ITEMS,          0x0995,  -1, &InventoryRecv::processPlayerStorage,           0);
 packet(SMSG_PLAYER_STORAGE_PASSWORD,       0x023a,   4, &InventoryRecv::processPlayerStoragePassword,   0);
 packet(SMSG_PLAYER_STORAGE_PASSWORD_RESULT, 0x023c,  6, &InventoryRecv::processPlayerStoragePasswordResult, 0);
@@ -415,7 +429,6 @@ packet(SMSG_STARS_KILL,                    0x020e,  32, &BeingRecv::processStars
 packet(SMSG_TAEKWON_RANKS_LIST,            0x0226, 282, &BeingRecv::processTaekwonRanksList,            0);
 packet(SMSG_TRADE_CANCEL,                  0x00ee,   2, &Ea::TradeRecv::processTradeCancel,             0);
 packet(SMSG_TRADE_COMPLETE,                0x00f0,   3, &Ea::TradeRecv::processTradeComplete,           0);
-packet(SMSG_TRADE_ITEM_ADD,                0x080f,  20, &TradeRecv::processTradeItemAdd,                0);
 packet(SMSG_TRADE_ITEM_ADD_RESPONSE,       0x00ea,   5, &TradeRecv::processTradeItemAddResponse,        0);
 packet(SMSG_TRADE_OK,                      0x00ec,   3, &Ea::TradeRecv::processTradeOk,                 0);
 packet(SMSG_TRADE_REQUEST,                 0x01f4,  32, &TradeRecv::processTradeRequest,                0);
@@ -441,10 +454,7 @@ packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWh
 // 20150000 fix
 if (serverVersion >= 11 || serverVersion == 0)
 {
-    packet(SMSG_BEING_VISIBLE,             0x09dd,  -1, &BeingRecv::processBeingVisible,                0);
     packet(SMSG_BEING_ACTION2,             0x08c8,  34, &BeingRecv::processBeingAction2,                0);
-    packet(SMSG_BEING_SPAWN,               0x09dc,  -1, &BeingRecv::processBeingSpawn,                  0);
-    packet(SMSG_BEING_MOVE,                0x09db,  -1, &BeingRecv::processBeingMove,                   0);
 }
 
 if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
@@ -452,23 +462,23 @@ if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
     packet(SMSG_VENDING_OPEN,              0x0136,  -1, &VendingRecv::processOpen,                      0);
     packet(SMSG_VENDING_ITEMS_LIST,        0x0800,  -1, &VendingRecv::processItemsList,                 0);
 
-    packet(SMSG_TRADE_ITEM_ADD,            0x0a09,  45, &TradeRecv::processTradeItemAdd,                0);
-    packet(SMSG_PLAYER_STORAGE_ADD,        0x0a0a,  47, &InventoryRecv::processPlayerStorageAdd,        0);
-    packet(SMSG_PLAYER_CART_ADD,           0x0a0b,  47, &InventoryRecv::processPlayerCartAdd,           0);
-    packet(SMSG_PLAYER_INVENTORY_ADD,      0x0a0c,  56, &InventoryRecv::processPlayerInventoryAdd,      0);
-    packet(SMSG_PLAYER_EQUIPMENT,          0x0a0d,  -1, &InventoryRecv::processPlayerEquipment,         0);
-    packet(SMSG_PLAYER_CART_EQUIP,         0x0a0f,  -1, &InventoryRecv::processPlayerCartEquip,         0);
-    packet(SMSG_PLAYER_STORAGE_EQUIP,      0x0a10,  -1, &InventoryRecv::processPlayerStorageEquip,      0);
+    packet(SMSG_TRADE_ITEM_ADD,            0x0a09,  45, &TradeRecv::processTradeItemAdd,                20150226);
+    packet(SMSG_PLAYER_STORAGE_ADD,        0x0a0a,  47, &InventoryRecv::processPlayerStorageAdd,        20150226);
+    packet(SMSG_PLAYER_CART_ADD,           0x0a0b,  47, &InventoryRecv::processPlayerCartAdd,           20150226);
+    packet(SMSG_PLAYER_INVENTORY_ADD,      0x0a0c,  56, &InventoryRecv::processPlayerInventoryAdd,      20150226);
+    packet(SMSG_PLAYER_EQUIPMENT,          0x0a0d,  -1, &InventoryRecv::processPlayerEquipment,         20150226);
+    packet(SMSG_PLAYER_CART_EQUIP,         0x0a0f,  -1, &InventoryRecv::processPlayerCartEquip,         20150226);
+    packet(SMSG_PLAYER_STORAGE_EQUIP,      0x0a10,  -1, &InventoryRecv::processPlayerStorageEquip,      20150226);
     packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0a2d,  -1, &BeingRecv::processBeingViewEquipment,          0);
 }
 
 // partial implimentation for future use
 if (packetVersion >= 20150513)
 {
-    packet(SMSG_DRESS_ROOM_OPEN,           0x0a02,   4, &PlayerRecv::processDressRoomOpen,              0);
-    packet(SMSG_BEING_VISIBLE,             0x09ff,  -1, &BeingRecv::processBeingVisible,                0);
-    packet(SMSG_BEING_SPAWN,               0x09fe,  -1, &BeingRecv::processBeingSpawn,                  0);
-    packet(SMSG_BEING_MOVE,                0x09fd,  -1, &BeingRecv::processBeingMove,                   0);
+    packet(SMSG_DRESS_ROOM_OPEN,           0x0a02,   4, &PlayerRecv::processDressRoomOpen,              20150513);
+    packet(SMSG_BEING_VISIBLE,             0x09ff,  -1, &BeingRecv::processBeingVisible,                20150513);
+    packet(SMSG_BEING_SPAWN,               0x09fe,  -1, &BeingRecv::processBeingSpawn,                  20150513);
+    packet(SMSG_BEING_MOVE,                0x09fd,  -1, &BeingRecv::processBeingMove,                   20150513);
 }
 
 // introduced in 20150805

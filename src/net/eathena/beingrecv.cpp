@@ -65,7 +65,6 @@
 
 #include "debug.h"
 
-extern int packetVersion;
 extern int serverVersion;
 
 namespace EAthena
@@ -411,7 +410,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setHP(hp);
 
     msg.readInt8("is boss");
-    if (packetVersion >= 20150513)
+    if (msg.getVersion() >= 20150513)
     {
         msg.readInt16("body2");
         msg.readString(24, "name");
@@ -581,7 +580,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     dstBeing->setHP(hp);
 
     msg.readInt8("is boss");
-    if (packetVersion >= 20150513)
+    if (msg.getVersion() >= 20150513)
     {
         msg.readInt16("body2");
         msg.readString(24, "name");
@@ -731,7 +730,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     dstBeing->setHP(hp);
 
     msg.readInt8("is boss");
-    if (packetVersion >= 20150513)
+    if (msg.getVersion() >= 20150513)
     {
         msg.readInt16("body2");
         msg.readString(24, "name");
