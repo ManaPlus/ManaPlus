@@ -116,6 +116,7 @@ void Network::clearHandlers()
         mPackets[f].name = "";
         mPackets[f].len = 0;
         mPackets[f].func = nullptr;
+        mPackets[f].version = 0;
     }
 }
 

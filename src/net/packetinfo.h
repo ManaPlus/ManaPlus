@@ -30,13 +30,15 @@ struct PacketInfo final
     PacketInfo() :
         name(nullptr),
         func(nullptr),
-        len(0)
+        len(0),
+        version(0)
     {
     }
 
     const char *name;
     PacketFuncPtr func;
     int len;
+    int version;
 };
 
 #endif  // NET_PACKETINFO_H

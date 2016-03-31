@@ -21,9 +21,10 @@
 #ifndef NET_RECVPACKETDEFINE_H
 #define NET_RECVPACKETDEFINE_H
 
-#define packet(pname, pid, sz, pfunc) \
+#define packet(pname, pid, sz, pfunc, ver) \
     mPackets[pid].name = #pname; \
     mPackets[pid].len = sz; \
-    mPackets[pid].func = pfunc
+    mPackets[pid].func = pfunc; \
+    mPackets[pid].version = ver
 
 #endif  // NET_RECVPACKETDEFINE_H

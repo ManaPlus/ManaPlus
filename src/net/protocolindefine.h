@@ -21,6 +21,6 @@
 #ifndef NET_PROTOCOLINDEFINE_H
 #define NET_PROTOCOLINDEFINE_H
 
-#define packet(name, id, sz, func) static const int name = id
+#define packet(name, id, sz, func, ver) static const int name = id
 
 #endif  // NET_PROTOCOLINDEFINE_H
