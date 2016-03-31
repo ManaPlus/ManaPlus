@@ -117,6 +117,9 @@ class CompoundSprite notfinal : public Sprite
 
         void initCurrentCacheItem() const;
 
+        virtual void updateDrawSprites()
+        { }
+
         typedef std::list<CompoundItem*> ImagesCache;
         mutable ImagesCache imagesCache;
         mutable CompoundItem *mCacheItem;
