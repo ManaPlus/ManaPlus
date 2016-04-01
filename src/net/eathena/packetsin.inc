@@ -39,12 +39,36 @@ packet(SMSG_FAMILY_ASK_FOR_CHILD_REPLY,    0x0216,   6, &FamilyRecv::processAskF
 packet(SMSG_BLACKSMITH_RANKS_LIST,         0x0219, 282, &BeingRecv::processBlacksmithRanksList,         20041108);
 packet(SMSG_ALCHEMIST_RANKS_LIST,          0x021a, 282, &BeingRecv::processAlchemistRanksList,          20041108);
 
+// 20050523
+packet(SMSG_HOMUNCULUS_DATA,               0x0230,  12, &HomunculusRecv::processHomunculusData,         20050523);
+
+// 20050530
+packet(SMSG_HOMUNCULUS_INFO,               0x022e,  71, &HomunculusRecv::processHomunculusInfo,         20050530);
+packet(SMSG_HOMUNCULUS_SKILLS,             0x0235,  -1, &HomunculusRecv::processHomunculusSkills,       20050530);
+
+// 20050531
+packet(SMSG_HOMUNCULUS_SKILL_UP,           0x0239,   0, &HomunculusRecv::processHomunculusSkillUp,      20050531);
+
+// 20050608
+packet(SMSG_HOMUNCULUS_FOOD,               0x022f,   5, &HomunculusRecv::processHomunculusFood,         20050608);
+
 // 20050718
+packet(SMSG_MAIL_READ_MAIL,                0x0242,  -1, &MailRecv::processReadMail,                     20050718);
+packet(SMSG_MAIL_SEND_MAIL_ACK,            0x0249,   3, &MailRecv::processSendMailAck,                  20050718);
+packet(SMSG_MAIL_NEW_MAIL,                 0x024a,  70, &MailRecv::processNewMail,                      20050718);
 packet(SMSG_AUCTION_MESSAGE,               0x0250,   3, &AuctionRecv::processAuctionMessage,            20050718);
 packet(SMSG_AUCTION_RESULTS,               0x0252,  -1, &AuctionRecv::processAuctionResults,            20050718);
 
+// 20050801
+packet(SMSG_MAIL_GET_ATTACHMENT,           0x0245,   3, &MailRecv::processGetAttachment,                20050801);
+
 // 20050817
 packet(SMSG_GLADIATOR_FEEL_REQUEST,        0x0253,   3, &BeingRecv::processGladiatorFeelRequest,        20050817);
+
+// 20050829
+packet(SMSG_MAIL_MAILS_LIST,               0x0240,  -1, &MailRecv::processMailList,                     20050829);
+packet(SMSG_MAIL_SET_ATTACHMENT_ACK,       0x0255,   5, &MailRecv::processSetAttachmentAck,             20050829);
+packet(SMSG_MAIL_DELETE_MAIL_ACK,          0x0257,   8, &MailRecv::processDeleteAck,                    20050829);
 
 // 20050912
 packet(SMSG_AUCTION_SET_ITEM,              0x0256,   5, &AuctionRecv::processAuctionSetItem,            20050912);
@@ -54,22 +78,45 @@ packet(SMSG_AUCTION_CLOSE,                 0x025d,   4, &AuctionRecv::processAuc
 
 // 20051024
 packet(SMSG_AUCTION_OPEN_WINDOW,           0x025f,   6, &AuctionRecv::processOpenWindow,                20051024);
+packet(SMSG_MAIL_OPEN_WINDOW,              0x0260,   6, &MailRecv::processMailOpen,                     20051024);
+
+// 20060306
+packet(SMSG_MAIL_RETURN,                   0x0274,   8, &MailRecv::processMailReturn,                   20060306);
 
 // 20060424
-packet(SMSG_BEING_SPECIAL_EFFECT_NUM,      0x0284,  14, &BeingRecv::processBeingSpecialEffectNum,       20060424);
-packet(SMSG_FORMAT_MESSAGE,                0x0291,   4, &ChatRecv::processFormatMessage,                20060424);
-packet(SMSG_BOSS_MAP_INFO,                 0x0293,  70, &BeingRecv::processBossMapInfo,                 20060424);
+if (packetVersion >= 20060424)
+{
+    packet(SMSG_MAP_ACCOUNT_ID,            0x0283,   6, &GameRecv::processMapAccountId,                 20060424);
+    packet(SMSG_BEING_SPECIAL_EFFECT_NUM,  0x0284,  14, &BeingRecv::processBeingSpecialEffectNum,       20060424);
+    packet(SMSG_NPC_CASH_BUY_ACK,          0x0289,   8, &CashShopRecv::processCashShopBuyAck,           20060424);
+    packet(SMSG_FORMAT_MESSAGE,            0x0291,   4, &ChatRecv::processFormatMessage,                20060424);
+    packet(SMSG_BOSS_MAP_INFO,             0x0293,  70, &BeingRecv::processBossMapInfo,                 20060424);
+    packet(SMSG_MERCENARY_SKILLS,          0x029d,  -1, &MercenaryRecv::processMercenarySkills,         20060424);
+    packet(SMSG_MERCENARY_UPDATE,          0x02a2,   8, &MercenaryRecv::processMercenaryUpdate,         20060424);
+}
 
 // 20070227
-packet(SMSG_COLOR_MESSAGE,                 0x02c1,  -1, &ChatRecv::processColorChat,                    20070227);
-packet(SMSG_BATTLE_CHAT_MESSAGE,           0x02dc,  -1, &ChatRecv::processBattleChatMessage,            20070227);
-packet(SMSG_BATTLE_EMBLEM,                 0x02dd,  32, &BattleGroundRecv::processBattleEmblem,         20070227);
-packet(SMSG_BATTLE_UPDATE_SCORE,           0x02de,   6, &BattleGroundRecv::processBattleUpdateScore,    20070227);
-packet(SMSG_BATTLE_UPDATE_COORDS,          0x02df,  36, &BattleGroundRecv::processBattleUpdateCoords,   20070227);
+if (packetVersion >= 20070227)
+{
+    packet(SMSG_NPC_CASH_BUY_ACK,          0x0289,  12, &CashShopRecv::processCashShopBuyAck,           20070227);
+    packet(SMSG_ITEM_DAMAGED,              0x02bb,   8, &InventoryRecv::processItemDamaged,             20070227);
+    packet(SMSG_COLOR_MESSAGE,             0x02c1,  -1, &ChatRecv::processColorChat,                    20070227);
+    packet(SMSG_INSTANCE_CREATE,           0x02cc,   4, &MapRecv::processInstanceCreate,                20070227);
+    packet(SMSG_INSTANCE_DELETE,           0x02ce,  10, &MapRecv::processInstanceDelete,                20070227);
+    packet(SMSG_BATTLE_CHAT_MESSAGE,       0x02dc,  -1, &ChatRecv::processBattleChatMessage,            20070227);
+    packet(SMSG_BATTLE_EMBLEM,             0x02dd,  32, &BattleGroundRecv::processBattleEmblem,         20070227);
+    packet(SMSG_BATTLE_UPDATE_SCORE,       0x02de,   6, &BattleGroundRecv::processBattleUpdateScore,    20070227);
+    packet(SMSG_BATTLE_UPDATE_COORDS,      0x02df,  36, &BattleGroundRecv::processBattleUpdateCoords,   20070227);
+}
+
+// 20071023
+packet(SMSG_INSTANCE_START,                0x02cb,  65, &MapRecv::processInstanceStart,                 20071023);
+packet(SMSG_INSTANCE_INFO,                 0x02cd,  71, &MapRecv::processInstanceInfo,                  20071023);
 
 if (packetVersion >= 20071106)
 {
     packet(SMSG_BEING_FAKE_NAME,           0x0078,  55, &BeingRecv::processBeingFakeName,               20071106);
+    packet(SMSG_MERCENARY_INFO,            0x029b,  80, &MercenaryRecv::processMercenaryInfo,           20071106);
 }
 
 // 20071113
@@ -130,6 +177,9 @@ packet(SMSG_GUILD_EXPULSION,               0x0839,  66, &GuildRecv::processGuild
 // 20101124
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x0859,  -1, &BeingRecv::processBeingViewEquipment,          20101124);
 
+// 20120000
+packet(SMSG_LOGIN_ERROR2,                  0x083e,  26, &LoginRecv::processLoginError2,                 20120000);
+
 // 20120221
 packet(SMSG_BEING_VISIBLE,                 0x0915,  -1, &BeingRecv::processBeingVisible,                20120221);
 packet(SMSG_BEING_MOVE,                    0x0914,  -1, &BeingRecv::processBeingMove,                   20120221);
@@ -137,6 +187,7 @@ packet(SMSG_BEING_SPAWN,                   0x090f,  -1, &BeingRecv::processBeing
 
 // 20120410
 packet(SMSG_BEING_CHARM,                   0x08cf,  10, &BeingRecv::processBeingCharm,                  20120410);
+packet(SMSG_MONSTER_HP,                    0x0977,  14, &BeingRecv::processMonsterHp,                   20120410);
 
 // 20120618
 if (packetVersion >= 20120618)
@@ -150,6 +201,12 @@ packet(SMSG_PLAYER_EQUIPMENT,              0x0992,  -1, &InventoryRecv::processP
 packet(SMSG_PLAYER_CART_EQUIP,             0x0994,  -1, &InventoryRecv::processPlayerCartEquip,         20120925);
 packet(SMSG_PLAYER_STORAGE_EQUIP,          0x0996,  -1, &InventoryRecv::processPlayerStorageEquip,      20120925);
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x0997,  -1, &BeingRecv::processBeingViewEquipment,          20120925);
+
+// 20121010
+packet(SMSG_MAP_TYPE_PROPERTY2,            0x099b,   8, &BeingRecv::processMapTypeProperty,             20121010);
+
+// 20130000
+packet(SMSG_ITEM_DROPPED,                  0x084b,  19, &ItemRecv::processItemDropped,                  20130000);
 
 // 20130724
 packet(SMSG_BANK_STATUS,                   0x09a6,  12, &BankRecv::processBankStatus,                   20130724);
@@ -165,6 +222,11 @@ packet(SMSG_BEING_ACTION2,                 0x08c8,  34, &BeingRecv::processBeing
 // 20141022
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
 packet(SMSG_PLAYER_SHORTCUTS,              0x0a00, 269, &PlayerRecv::processPlayerShortcuts,            20141022);
+
+// login server, unknown version
+packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
+packet(SMSG_LOGIN_CODING_KEY,              0x01dc,  -1, &LoginRecv::processCondingKey,                  0);
+packet(SMSG_LOGIN_ERROR,                   0x006a,  23, &Ea::LoginRecv::processLoginError,              0);
 
 // char server, unknown version
 packet(SMSG_CHAR_CHANGE_SLOT,              0x08d5,  -1, &CharServerRecv::processCharChangeSlot,         0);
@@ -183,6 +245,7 @@ packet(SMSG_CHAR_LOGIN_ERROR,              0x006c,   3, &Ea::CharServerRecv::pro
 packet(SMSG_CHAR_MAP_INFO,                 0x0071,  28, &CharServerRecv::processCharMapInfo,            0);
 packet(SMSG_CHAR_PINCODE_STATUS,           0x08b9,  12, &CharServerRecv::processPincodeStatus,          0);
 packet(SMSG_CHAR_RENAME,                   0x0290,   4, &CharServerRecv::processCharRename,             0);
+packet(SMSG_MAP_NOT_FOUND,                 0x0840,  -1, &GeneralRecv::processMapNotFound,               0);
 
 // unknown versions
 packet(SMSG_ADMIN_GET_LOGIN_ACK,           0x01e0,  30, &AdminRecv::processAdminGetLoginAck,            0);
@@ -248,8 +311,6 @@ packet(SMSG_GUILD_DEL_ALLIANCE,            0x0184,  10, &Ea::GuildRecv::processG
 packet(SMSG_GUILD_EMBLEM,                  0x01b4,  12, &GuildRecv::processGuildEmblem,                 0);
 packet(SMSG_GUILD_EMBLEM_DATA,             0x0152,  -1, &Ea::GuildRecv::processGuildEmblemData,         0);
 packet(SMSG_GUILD_EXPULSION_LIST,          0x0163,  -1, &GuildRecv::processGuildExpulsionList,          0);
-
-// 20150000 or near
 packet(SMSG_GUILD_INVITE,                  0x016a,  30, &Ea::GuildRecv::processGuildInvite,             0);
 packet(SMSG_GUILD_INVITE_ACK,              0x0169,   3, &Ea::GuildRecv::processGuildInviteAck,          0);
 packet(SMSG_GUILD_LEAVE,                   0x015a,  66, &Ea::GuildRecv::processGuildLeave,              0);
@@ -269,59 +330,29 @@ packet(SMSG_GUILD_REQ_ALLIANCE_ACK,        0x0173,   3, &Ea::GuildRecv::processG
 packet(SMSG_GUILD_SKILL_INFO,              0x0162,  -1, &Ea::GuildRecv::processGuildSkillInfo,          0);
 packet(SMSG_GUILD_SKILL_UP,                0x010e,  11, &Ea::GuildRecv::processGuildSkillUp,            0);
 packet(SMSG_GUILD_UPDATE_COORDS,           0x01eb,  10, &GuildRecv::processGuildUpdateCoords,           0);
-packet(SMSG_HOMUNCULUS_DATA,               0x0230,  12, &HomunculusRecv::processHomunculusData,         0);
-packet(SMSG_HOMUNCULUS_FOOD,               0x022f,   5, &HomunculusRecv::processHomunculusFood,         0);
-packet(SMSG_HOMUNCULUS_INFO,               0x022e,  71, &HomunculusRecv::processHomunculusInfo,         0);
-packet(SMSG_HOMUNCULUS_SKILLS,             0x0235,  -1, &HomunculusRecv::processHomunculusSkills,       0);
-packet(SMSG_HOMUNCULUS_SKILL_UP,           0x0239,   0, &HomunculusRecv::processHomunculusSkillUp,      0);
 packet(SMSG_IGNORE_ALL_RESPONSE,           0x00d2,   4, &Ea::ChatRecv::processIgnoreAllResponse,        0);
 packet(SMSG_IGNORE_NICK_ACK,               0x00d1,   4, &ChatRecv::processIgnoreNickAck,                0);
-packet(SMSG_INSTANCE_CREATE,               0x02cc,   4, &MapRecv::processInstanceCreate,                0);
-packet(SMSG_INSTANCE_DELETE,               0x02ce,  10, &MapRecv::processInstanceDelete,                0);
-packet(SMSG_INSTANCE_INFO,                 0x02cd,  71, &MapRecv::processInstanceInfo,                  0);
-packet(SMSG_INSTANCE_START,                0x02cb,  65, &MapRecv::processInstanceStart,                 0);
-packet(SMSG_ITEM_DAMAGED,                  0x02bb,   8, &InventoryRecv::processItemDamaged,             0);
-packet(SMSG_ITEM_DROPPED,                  0x084b,  19, &ItemRecv::processItemDropped,                  0);
 packet(SMSG_ITEM_MVP_DROPPED,              0x07fd,  59, &ItemRecv::processItemMvpDropped,               0);
 packet(SMSG_ITEM_REMOVE,                   0x00a1,   6, &Ea::ItemRecv::processItemRemove,               0);
 packet(SMSG_ITEM_USE_RESPONSE,             0x00a8,   7, &Ea::InventoryRecv::processItemUseResponse,     0);
 packet(SMSG_ITEM_VISIBLE,                  0x009d,  17, &ItemRecv::processItemVisible,                  0);
-packet(SMSG_LOGIN_CODING_KEY,              0x01dc,  -1, &LoginRecv::processCondingKey,                  0);
-packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
-packet(SMSG_LOGIN_ERROR,                   0x006a,  23, &Ea::LoginRecv::processLoginError,              0);
-packet(SMSG_LOGIN_ERROR2,                  0x083e,  26, &LoginRecv::processLoginError2,                 0);
-packet(SMSG_MAIL_DELETE_MAIL_ACK,          0x0257,   8, &MailRecv::processDeleteAck,                    0);
-packet(SMSG_MAIL_GET_ATTACHMENT,           0x0245,   3, &MailRecv::processGetAttachment,                0);
-packet(SMSG_MAIL_MAILS_LIST,               0x0240,  -1, &MailRecv::processMailList,                     0);
-packet(SMSG_MAIL_NEW_MAIL,                 0x024a,  70, &MailRecv::processNewMail,                      0);
-packet(SMSG_MAIL_OPEN_WINDOW,              0x0260,   6, &MailRecv::processMailOpen,                     0);
-packet(SMSG_MAIL_READ_MAIL,                0x0242,  -1, &MailRecv::processReadMail,                     0);
-packet(SMSG_MAIL_RETURN,                   0x0274,   8, &MailRecv::processMailReturn,                   0);
-packet(SMSG_MAIL_SEND_MAIL_ACK,            0x0249,   3, &MailRecv::processSendMailAck,                  0);
-packet(SMSG_MAIL_SET_ATTACHMENT_ACK,       0x0255,   5, &MailRecv::processSetAttachmentAck,             0);
 packet(SMSG_MANNER_MESSAGE,                0x014a,   6, &ChatRecv::processMannerMessage,                0);
-packet(SMSG_MAP_ACCOUNT_ID,                0x0283,   6, &GameRecv::processMapAccountId,                 0);
 packet(SMSG_MAP_AUTH_REFUSE,               0x0074,   3, &GameRecv::processMapAuthRefuse,                0);
-packet(SMSG_MAP_NOT_FOUND,                 0x0840,  -1, &GeneralRecv::processMapNotFound,               0);
 packet(SMSG_MAP_QUIT_RESPONSE,             0x018b,   4, &Ea::GameRecv::processMapQuitResponse,          0);
 packet(SMSG_MAP_TYPE,                      0x01d6,   4, &BeingRecv::processMapType,                     0);
-packet(SMSG_MAP_TYPE_PROPERTY2,            0x099b,   8, &BeingRecv::processMapTypeProperty,             0);
 packet(SMSG_MARRIAGE_PROCESS_OUTDATED,     0x01e4,   2, nullptr,                                        0);
 packet(SMSG_MARRIAGE_PROPOSAL_OUTDATED,    0x01e2,  34, nullptr,                                        0);
-packet(SMSG_MERCENARY_INFO,                0x029b,  80, &MercenaryRecv::processMercenaryInfo,           0);
-packet(SMSG_MERCENARY_SKILLS,              0x029d,  -1, &MercenaryRecv::processMercenarySkills,         0);
-packet(SMSG_MERCENARY_UPDATE,              0x02a2,   8, &MercenaryRecv::processMercenaryUpdate,         0);
-packet(SMSG_MONSTER_HP,                    0x0977,  14, &BeingRecv::processMonsterHp,                   0);
 packet(SMSG_MONSTER_INFO,                  0x018c,  29, &BeingRecv::processMonsterInfo,                 0);
-packet(SMSG_MVP_EFFECT,                    0x010c,   6, &Ea::ChatRecv::processMVPEffect,                0);
-packet(SMSG_MVP_EXP,                       0x010b,   6, &ChatRecv::processMVPExp,                       0);
 packet(SMSG_MVP_ITEM,                      0x010a,   4, &ChatRecv::processMVPItem,                      0);
+packet(SMSG_MVP_EXP,                       0x010b,   6, &ChatRecv::processMVPExp,                       0);
+packet(SMSG_MVP_EFFECT,                    0x010c,   6, &Ea::ChatRecv::processMVPEffect,                0);
 packet(SMSG_MVP_NO_ITEM,                   0x010d,   2, &ChatRecv::processMVPNoItem,                    0);
 packet(SMSG_NPC_BUY,                       0x00c6,  -1, &BuySellRecv::processNpcBuy,                    0);
 packet(SMSG_NPC_BUY_RESPONSE,              0x00ca,   3, &Ea::BuySellRecv::processNpcBuyResponse,        0);
 packet(SMSG_NPC_BUY_SELL_CHOICE,           0x00c4,   6, &Ea::BuySellRecv::processNpcBuySellChoice,      0);
 packet(SMSG_NPC_CASH_BUY,                  0x0849,  16, &CashShopRecv::processCashShopBuy,              0);
-packet(SMSG_NPC_CASH_BUY_ACK,              0x0289,  12, &CashShopRecv::processCashShopBuyAck,           0);
+
+// 20150000 or near
 packet(SMSG_NPC_CASH_POINTS,               0x0845,  10, &CashShopRecv::processCashShopPoints,           0);
 packet(SMSG_NPC_CASH_SCHEDULE,             0x08ca,  -1, &CashShopRecv::processCashShopSchedule,         0);
 packet(SMSG_NPC_CASH_SHOP_OPEN,            0x0287,  -1, &CashShopRecv::processCashShopOpen,             0);

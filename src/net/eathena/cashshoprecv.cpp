@@ -64,7 +64,8 @@ void CashShopRecv::processCashShopBuyAck(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt32("cash points");
-    msg.readInt32("kafra points");
+    if (packetVersion >= 20070711)
+        msg.readInt32("kafra points");
     msg.readInt16("error");
 }
 
