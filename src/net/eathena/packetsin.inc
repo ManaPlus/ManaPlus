@@ -24,6 +24,9 @@
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        0);
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               0);
 
+// 3
+packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  3);
+
 // 4
 packet(SMSG_BEING_CHANGE_LOOKS2,           0x01d7,  11, &BeingRecv::processBeingChangeLook2,            4);
 
@@ -40,6 +43,9 @@ packet(SMSG_BLACKSMITH_RANKS_LIST,         0x0219, 282, &BeingRecv::processBlack
 packet(SMSG_ALCHEMIST_RANKS_LIST,          0x021a, 282, &BeingRecv::processAlchemistRanksList,          20041108);
 packet(SMSG_PLAYER_FAME_BLACKSMITH,        0x021b,  10, &PlayerRecv::processPlayerFameBlacksmith,       20041108);
 packet(SMSG_PLAYER_FAME_ALCHEMIST,         0x021c,  10, &PlayerRecv::processPlayerFameAlchemist,        20041108);
+
+// 20041129
+packet(SMSG_PLAYER_REFINE_LIST,            0x0221,  -1, &InventoryRecv::processPlayerRefineList,        20041129);
 
 // 20050328
 packet(SMSG_PLAYER_FAME_TAEKWON,           0x0224,  10, &PlayerRecv::processPlayerFameTaekwon,          20050328);
@@ -101,6 +107,9 @@ if (packetVersion >= 20060424)
     packet(SMSG_NPC_CASH_BUY_ACK,          0x0289,   8, &CashShopRecv::processCashShopBuyAck,           20060424);
     packet(SMSG_FORMAT_MESSAGE,            0x0291,   4, &ChatRecv::processFormatMessage,                20060424);
     packet(SMSG_BOSS_MAP_INFO,             0x0293,  70, &BeingRecv::processBossMapInfo,                 20060424);
+    packet(SMSG_PLAYER_READ_BOOK,          0x0294,  10, &PlayerRecv::processPlayerReadBook,             20060424);
+    packet(SMSG_PLAYER_ITEM_RENTAL_TIME,   0x0298,   8, &InventoryRecv::processPlayerItemRentalTime,    20060424);
+    packet(SMSG_PLAYER_ITEM_RENTAL_EXPIRED, 0x0299,  6, &InventoryRecv::processPlayerItemRentalExpired, 20060424);
     packet(SMSG_MERCENARY_SKILLS,          0x029d,  -1, &MercenaryRecv::processMercenarySkills,         20060424);
     packet(SMSG_MERCENARY_UPDATE,          0x02a2,   8, &MercenaryRecv::processMercenaryUpdate,         20060424);
 }
@@ -115,6 +124,7 @@ if (packetVersion >= 20070227)
     packet(SMSG_INSTANCE_CREATE,           0x02cc,   4, &MapRecv::processInstanceCreate,                20070227);
     packet(SMSG_INSTANCE_DELETE,           0x02ce,  10, &MapRecv::processInstanceDelete,                20070227);
     packet(SMSG_PLAYER_EQUIP_TICK_ACK,     0x02d9,  10, &PlayerRecv::processPlayerEquipTickAck,         20070227);
+    packet(SMSG_PLAYER_SHOW_EQUIP,         0x02da,   3, &PlayerRecv::processPlayerShowEquip,            20070227);
     packet(SMSG_BATTLE_CHAT_MESSAGE,       0x02dc,  -1, &ChatRecv::processBattleChatMessage,            20070227);
     packet(SMSG_BATTLE_EMBLEM,             0x02dd,  32, &BattleGroundRecv::processBattleEmblem,         20070227);
     packet(SMSG_BATTLE_UPDATE_SCORE,       0x02de,   6, &BattleGroundRecv::processBattleUpdateScore,    20070227);
@@ -159,6 +169,9 @@ if (packetVersion >= 20080102)
 packet(SMSG_NPC_SHOW_PROGRESS_BAR,         0x02f0,  10, &NpcRecv::processNpcShowProgressBar,            20080318);
 packet(SMSG_NPC_PROGRESS_BAR_ABORT,        0x02f2,   2, &NpcRecv::processProgressBarAbort,              20080318);
 
+// 20081112
+packet(SMSG_PLAYER_SKILL_COOLDOWN,         0x043d,   8, &SkillRecv::processSkillCoolDown,               20081112);
+
 // 20081126
 packet(SMSG_PET_STATUS,                    0x01a2,  37, &PetRecv::processPetStatus,                     20081126);
 
@@ -187,6 +200,9 @@ packet(SMSG_CHAR_CAPTCHA_NOT_SUPPORTED,    0x07e9,   5, &CharServerRecv::process
 
 // 20091027
 packet(SMSG_PLAYER_GET_EXP,                0x07f6,  14, &PlayerRecv::processPlayerGetExp,               20091027);
+
+// 20091117
+packet(SMSG_PLAYER_INVENTORY_REMOVE2,      0x07fa,   8, &InventoryRecv::processPlayerInventoryRemove2,  20091117);
 
 // 20091201
 packet(SMSG_BATTLE_PLAY,                   0x07fe,  26, &BattleGroundRecv::processBattlePlay,           20091201);
@@ -240,6 +256,8 @@ if (packetVersion >= 20120618)
     packet(SMSG_BEING_STATUS_CHANGE,       0x0983,  29, &BeingRecv::processBeingStatusChange,           20120618);
 }
 
+// 20120604
+packet(SMSG_PLAYER_SKILL_COOLDOWN_LIST,    0x0985,  -1, &SkillRecv::processSkillCoolDownList,           20120604);
 
 // 20120925
 if (packetVersion >= 20120925)
@@ -259,6 +277,9 @@ packet(SMSG_MAP_TYPE_PROPERTY2,            0x099b,   8, &BeingRecv::processMapTy
 
 // 20130000
 packet(SMSG_ITEM_DROPPED,                  0x084b,  19, &ItemRecv::processItemDropped,                  20130000);
+
+// 20130710
+packet(SMSG_PLAYER_RANK_POINTS,            0x097e,  12, &PlayerRecv::processPlayerRankPoints,           20130710);
 
 // 20130724
 packet(SMSG_BANK_STATUS,                   0x09a6,  12, &BankRecv::processBankStatus,                   20130724);
@@ -447,26 +468,16 @@ packet(SMSG_PLAYER_HEAL,                   0x013d,   6, &PlayerRecv::processPlay
 packet(SMSG_PLAYER_IDENTIFIED,             0x0179,   5, &InventoryRecv::processPlayerIdentified,        0);
 packet(SMSG_PLAYER_IDENTIFY_LIST,          0x0177,  -1, &InventoryRecv::processPlayerIdentifyList,      0);
 packet(SMSG_PLAYER_INSERT_CARD,            0x017d,   7, &InventoryRecv::processPlayerInsertCard,        0);
-
-// 20150000 or near
 packet(SMSG_PLAYER_INVENTORY_REMOVE,       0x00af,   6, &InventoryRecv::processPlayerInventoryRemove,   0);
-packet(SMSG_PLAYER_INVENTORY_REMOVE2,      0x07fa,   8, &InventoryRecv::processPlayerInventoryRemove2,  0);
-packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  0);
-packet(SMSG_PLAYER_ITEM_RENTAL_EXPIRED,    0x0299,   6, &InventoryRecv::processPlayerItemRentalExpired,  0);
-packet(SMSG_PLAYER_ITEM_RENTAL_TIME,       0x0298,   8, &InventoryRecv::processPlayerItemRentalTime,    0);
 packet(SMSG_PLAYER_MOVE_TO_ATTACK,         0x0139,  16, &Ea::BeingRecv::processPlayerMoveToAttack,      0);
 packet(SMSG_PLAYER_NOTIFY_MAPINFO,         0x0189,   4, &PlayerRecv::processNotifyMapInfo,              0);
-packet(SMSG_PLAYER_RANK_POINTS,            0x097e,  12, &PlayerRecv::processPlayerRankPoints,           0);
-packet(SMSG_PLAYER_READ_BOOK,              0x0294,  10, &PlayerRecv::processPlayerReadBook,             0);
 packet(SMSG_PLAYER_REFINE,                 0x0188,   8, &InventoryRecv::processPlayerRefine,            0);
-packet(SMSG_PLAYER_REFINE_LIST,            0x0221,  -1, &InventoryRecv::processPlayerRefineList,        0);
 packet(SMSG_PLAYER_REPAIR_EFFECT,          0x01fe,   5, &InventoryRecv::processPlayerRepairEffect,      0);
 packet(SMSG_PLAYER_REPAIR_LIST,            0x01fc,  -1, &InventoryRecv::processPlayerRepairList,        0);
-packet(SMSG_PLAYER_SHOW_EQUIP,             0x02da,   3, &PlayerRecv::processPlayerShowEquip,            0);
 packet(SMSG_PLAYER_SKILLS,                 0x010f,  -1, &SkillRecv::processPlayerSkills,                0);
 packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,      0x01cd,  29, &SkillRecv::processSkillAutoSpells,             0);
-packet(SMSG_PLAYER_SKILL_COOLDOWN,         0x043d,   8, &SkillRecv::processSkillCoolDown,               0);
-packet(SMSG_PLAYER_SKILL_COOLDOWN_LIST,    0x0985,  -1, &SkillRecv::processSkillCoolDownList,           0);
+
+// 20150000 or near
 packet(SMSG_PLAYER_SKILL_COOLDOWN_LIST_OUTDATED, 0x043e, 0, nullptr,                                    0);
 packet(SMSG_PLAYER_SKILL_MESSAGE,          0x0215,   6, &PlayerRecv::processPlayerSkillMessage,         0);
 packet(SMSG_PLAYER_SKILL_PRODUCE_EFFECT,   0x018f,   6, &SkillRecv::processSkillProduceEffect,          0);

@@ -182,11 +182,17 @@ void SkillRecv::processSkillCoolDown(Net::MessageIn &msg)
 
 void SkillRecv::processSkillCoolDownList(Net::MessageIn &msg)
 {
-    const int count = (msg.readInt16("len") - 4) / 10;
+    int packetLen;
+    if (msg.getVersion() >= 20120604)
+        packetLen = 10;
+    else
+        packetLen = 6;
+    const int count = (msg.readInt16("len") - 4) / packetLen;
     for (int f = 0; f < count; f ++)
     {
         const int skillId = msg.readInt16("skill id");
-        msg.readInt32("total");
+        if (msg.getVersion() >= 20120604)
+            msg.readInt32("total");
         const int duration = msg.readInt32("duration");
         if (skillDialog)
         {
