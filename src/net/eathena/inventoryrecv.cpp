@@ -398,7 +398,11 @@ void InventoryRecv::processPlayerEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerEquip")
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-    const int equipType = msg.readInt32("wear location");
+    int equipType;
+    if (msg.getVersion() >= 20120925)
+        equipType = msg.readInt32("wear location");
+    else
+        equipType = msg.readInt16("wear location");
     msg.readInt16("sprite");
     const uint8_t flag = msg.readUInt8("result");
 
