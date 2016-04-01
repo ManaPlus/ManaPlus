@@ -128,6 +128,7 @@ packet(SMSG_PARTY_INVITED,                 0x02c6,  30, &PartyRecv::processParty
 // 20071002
 if (packetVersion >= 20071002)
 {
+    packet(SMSG_PLAYER_INVENTORY,          0x01ee,  -1, &InventoryRecv::processPlayerInventory,         20071002);
     packet(SMSG_PLAYER_CART_ITEMS,         0x01ef,  -1, &InventoryRecv::processPlayerCartItems,         20071002);
     packet(SMSG_PARTY_ITEM_PICKUP,         0x02b8,  22, &PartyRecv::processPartyItemPickup,             20071002);
 }
@@ -148,6 +149,7 @@ packet(SMSG_BEING_ACTION2,                 0x02e1,  33, &BeingRecv::processBeing
 // 20080102
 if (packetVersion >= 20080102)
 {
+    packet(SMSG_PLAYER_INVENTORY,          0x02e8,  -1, &InventoryRecv::processPlayerInventory,         20080102);
     packet(SMSG_PLAYER_CART_ITEMS,         0x02e9,  -1, &InventoryRecv::processPlayerCartItems,         20080102);
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
     packet(SMSG_BEING_FONT,                0x02ef,   8, &BeingRecv::processBeingFont,                   20080102);
@@ -238,10 +240,12 @@ if (packetVersion >= 20120618)
     packet(SMSG_BEING_STATUS_CHANGE,       0x0983,  29, &BeingRecv::processBeingStatusChange,           20120618);
 }
 
+
 // 20120925
 if (packetVersion >= 20120925)
 {
     packet(SMSG_PLAYER_INVENTORY_ADD,      0x0990,  31, &InventoryRecv::processPlayerInventoryAdd,      20120925);
+    packet(SMSG_PLAYER_INVENTORY,          0x0991,  -1, &InventoryRecv::processPlayerInventory,         20120925);
     packet(SMSG_PLAYER_EQUIPMENT,          0x0992,  -1, &InventoryRecv::processPlayerEquipment,         20120925);
     packet(SMSG_PLAYER_CART_ITEMS,         0x0993,  -1, &InventoryRecv::processPlayerCartItems,         20120925);
     packet(SMSG_PLAYER_CART_EQUIP,         0x0994,  -1, &InventoryRecv::processPlayerCartEquip,         20120925);
@@ -440,12 +444,11 @@ packet(SMSG_PLAYER_CART_REMOVE,            0x0125,   8, &InventoryRecv::processP
 packet(SMSG_PLAYER_CHAT,                   0x008e,  -1, &ChatRecv::processChat,                         0);
 packet(SMSG_PLAYER_GUILD_PARTY_INFO,       0x0195, 102, &BeingRecv::processPlayerGuilPartyInfo,         0);
 packet(SMSG_PLAYER_HEAL,                   0x013d,   6, &PlayerRecv::processPlayerHeal,                 0);
-
-// 20150000 or near
 packet(SMSG_PLAYER_IDENTIFIED,             0x0179,   5, &InventoryRecv::processPlayerIdentified,        0);
 packet(SMSG_PLAYER_IDENTIFY_LIST,          0x0177,  -1, &InventoryRecv::processPlayerIdentifyList,      0);
 packet(SMSG_PLAYER_INSERT_CARD,            0x017d,   7, &InventoryRecv::processPlayerInsertCard,        0);
-packet(SMSG_PLAYER_INVENTORY,              0x0991,  -1, &InventoryRecv::processPlayerInventory,         0);
+
+// 20150000 or near
 packet(SMSG_PLAYER_INVENTORY_REMOVE,       0x00af,   6, &InventoryRecv::processPlayerInventoryRemove,   0);
 packet(SMSG_PLAYER_INVENTORY_REMOVE2,      0x07fa,   8, &InventoryRecv::processPlayerInventoryRemove2,  0);
 packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  0);
