@@ -484,7 +484,7 @@ if (packetVersion >= 20150513)
 // introduced in 20150805
 if (packetVersion >= 20150805)
 {
-    packet(SMSG_SELECT_CART,               0x097f,  -1, &InventoryRecv::processSelectCart,              0);
+    packet(SMSG_SELECT_CART,               0x097f,  -1, &InventoryRecv::processSelectCart,              20150805);
 }
 else
 {
