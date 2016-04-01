@@ -1199,7 +1199,11 @@ void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
 
     const uint32_t opt1 = msg.readInt16("opt1");
     const uint32_t opt2 = msg.readInt16("opt2");
-    const uint32_t option = msg.readInt32("option");
+    uint32_t option;
+    if (msg.getVersion() >= 7)
+        option = msg.readInt32("option");
+    else
+        option = msg.readInt16("option");
     dstBeing->setKarma(msg.readUInt8("karma"));
 
     dstBeing->setStatusEffectOpitons(option,
@@ -1224,20 +1228,6 @@ void BeingRecv::processPlayerStatusChange2(Net::MessageIn &msg)
     dstBeing->setLevel(msg.readInt32("level"));
     msg.readInt32("showEFST");
     dstBeing->setStatusEffectOpiton0(option);
-}
-
-void BeingRecv::processPlayerStatusChangeNoTick(Net::MessageIn &msg)
-{
-    const uint16_t status = msg.readInt16("index");
-    const BeingId id = msg.readBeingId("account id");
-    const Enable flag = fromBool(msg.readUInt8("state")
-        ? true : false, Enable);
-
-    Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
-        return;
-
-    dstBeing->setStatusEffect(status, flag);
 }
 
 void BeingRecv::processBeingResurrect(Net::MessageIn &msg)

@@ -23,6 +23,8 @@
 // very outdated packets
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        0);
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               0);
+packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
+packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
 
 // 3
 packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  3);
@@ -37,6 +39,9 @@ packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processP
 // 20040816
 packet(SMSG_ADMIN_ACCOUNT_STATS,           0x0214,  42, &AdminRecv::processAccountStats,                20040816);
 
+// 20041101
+packet(SMSG_PLAYER_SKILL_MESSAGE,          0x0215,   6, &PlayerRecv::processPlayerSkillMessage,         20041101);
+
 // 20041108
 packet(SMSG_FAMILY_ASK_FOR_CHILD_REPLY,    0x0216,   6, &FamilyRecv::processAskForChildReply,           20041108);
 packet(SMSG_BLACKSMITH_RANKS_LIST,         0x0219, 282, &BeingRecv::processBlacksmithRanksList,         20041108);
@@ -49,6 +54,12 @@ packet(SMSG_PLAYER_REFINE_LIST,            0x0221,  -1, &InventoryRecv::processP
 
 // 20050328
 packet(SMSG_PLAYER_FAME_TAEKWON,           0x0224,  10, &PlayerRecv::processPlayerFameTaekwon,          20050328);
+
+// 20050411
+if (packetVersion >= 20050411)
+{
+    packet(SMSG_PLAYER_STATUS_CHANGE,      0x0229,  15, &BeingRecv::processPlayerStatusChange,          20050411);
+}
 
 // 20050523
 packet(SMSG_HOMUNCULUS_DATA,               0x0230,  12, &HomunculusRecv::processHomunculusData,         20050523);
@@ -105,6 +116,7 @@ if (packetVersion >= 20060424)
     packet(SMSG_BEING_SPECIAL_EFFECT_NUM,  0x0284,  14, &BeingRecv::processBeingSpecialEffectNum,       20060424);
     packet(SMSG_NPC_CASH_SHOP_OPEN,        0x0287,  -1, &CashShopRecv::processCashShopOpen,             20060424);
     packet(SMSG_NPC_CASH_BUY_ACK,          0x0289,   8, &CashShopRecv::processCashShopBuyAck,           20060424);
+    packet(SMSG_PLAYER_STATUS_CHANGE2,     0x028a,  18, &BeingRecv::processPlayerStatusChange2,         20060424);
     packet(SMSG_FORMAT_MESSAGE,            0x0291,   4, &ChatRecv::processFormatMessage,                20060424);
     packet(SMSG_BOSS_MAP_INFO,             0x0293,  70, &BeingRecv::processBossMapInfo,                 20060424);
     packet(SMSG_PLAYER_READ_BOOK,          0x0294,  10, &PlayerRecv::processPlayerReadBook,             20060424);
@@ -171,6 +183,12 @@ packet(SMSG_NPC_PROGRESS_BAR_ABORT,        0x02f2,   2, &NpcRecv::processProgres
 
 // 20081112
 packet(SMSG_PLAYER_SKILL_COOLDOWN,         0x043d,   8, &SkillRecv::processSkillCoolDown,               20081112);
+
+// 20081113
+if (packetVersion >= 20081113)
+{
+    packet(SMSG_PLAYER_SKILL_COOLDOWN_LIST, 0x043e,  -1, &SkillRecv::processSkillCoolDownList,          20081113);
+}
 
 // 20081126
 packet(SMSG_PET_STATUS,                    0x01a2,  37, &PetRecv::processPetStatus,                     20081126);
@@ -257,7 +275,10 @@ if (packetVersion >= 20120618)
 }
 
 // 20120604
-packet(SMSG_PLAYER_SKILL_COOLDOWN_LIST,    0x0985,  -1, &SkillRecv::processSkillCoolDownList,           20120604);
+if (packetVersion >= 20120604)
+{
+    packet(SMSG_PLAYER_SKILL_COOLDOWN_LIST, 0x0985,  -1, &SkillRecv::processSkillCoolDownList,           20120604);
+}
 
 // 20120925
 if (packetVersion >= 20120925)
@@ -476,17 +497,11 @@ packet(SMSG_PLAYER_REPAIR_EFFECT,          0x01fe,   5, &InventoryRecv::processP
 packet(SMSG_PLAYER_REPAIR_LIST,            0x01fc,  -1, &InventoryRecv::processPlayerRepairList,        0);
 packet(SMSG_PLAYER_SKILLS,                 0x010f,  -1, &SkillRecv::processPlayerSkills,                0);
 packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,      0x01cd,  29, &SkillRecv::processSkillAutoSpells,             0);
-
-// 20150000 or near
-packet(SMSG_PLAYER_SKILL_COOLDOWN_LIST_OUTDATED, 0x043e, 0, nullptr,                                    0);
-packet(SMSG_PLAYER_SKILL_MESSAGE,          0x0215,   6, &PlayerRecv::processPlayerSkillMessage,         0);
 packet(SMSG_PLAYER_SKILL_PRODUCE_EFFECT,   0x018f,   6, &SkillRecv::processSkillProduceEffect,          0);
 packet(SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST, 0x018d,  -1, &SkillRecv::processSkillProduceMixList,         0);
 packet(SMSG_PLAYER_SKILL_UP,               0x010e,  11, &Ea::SkillRecv::processPlayerSkillUp,           0);
-packet(SMSG_PLAYER_STATUS_CHANGE,          0x0229,  15, &BeingRecv::processPlayerStatusChange,          0);
-packet(SMSG_PLAYER_STATUS_CHANGE2,         0x028a,  18, &BeingRecv::processPlayerStatusChange2,         0);
-packet(SMSG_PLAYER_STATUS_CHANGE_NO_TICK,  0x0196,   9, &BeingRecv::processPlayerStatusChangeNoTick,    0);
-packet(SMSG_PLAYER_STATUS_CHANGE_OUTDATED, 0x0119,  13, nullptr,                                        0);
+
+// 20150000 or near
 packet(SMSG_PLAYER_STAT_UPDATE_1,          0x00b0,   8, &Ea::PlayerRecv::processPlayerStatUpdate1,      0);
 packet(SMSG_PLAYER_STAT_UPDATE_2,          0x00b1,   8, &Ea::PlayerRecv::processPlayerStatUpdate2,      0);
 packet(SMSG_PLAYER_STAT_UPDATE_3,          0x0141,  14, &Ea::PlayerRecv::processPlayerStatUpdate3,      0);
