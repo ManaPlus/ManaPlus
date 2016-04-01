@@ -56,6 +56,7 @@
 #include "debug.h"
 
 extern Net::CharServerHandler *charServerHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -72,6 +73,7 @@ namespace CharServerRecv
     bool mNeedCreatePin = false;
 }
 
+// callers must count each packet size by self
 void CharServerRecv::readPlayerData(Net::MessageIn &msg,
                                     Net::Character *const character)
 {
@@ -105,15 +107,25 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setManner(msg.readInt32("manner"));
     msg.readInt16("left points");
 
-    data.mAttributes[Attributes::HP] = msg.readInt32("hp");
-    data.mAttributes[Attributes::MAX_HP] = msg.readInt32("max hp");
+    if (packetVersion >= 20081217)
+    {
+        data.mAttributes[Attributes::HP] = msg.readInt32("hp");
+        data.mAttributes[Attributes::MAX_HP] = msg.readInt32("max hp");
+    }
+    else
+    {
+        data.mAttributes[Attributes::HP] = msg.readInt16("hp");
+        data.mAttributes[Attributes::MAX_HP] = msg.readInt16("max hp");
+    }
     data.mAttributes[Attributes::MP] = msg.readInt16("mp/sp");
     data.mAttributes[Attributes::MAX_MP] = msg.readInt16("max mp/sp");
 
     msg.readInt16("speed");
     const uint16_t race = msg.readInt16("class");
 //    tempPlayer->setSubtype(race, 0);
-    const int hairStyle = msg.readInt32("hair style");
+    const int hairStyle = msg.readInt16("hair style");
+    if (packetVersion >= 20141022)
+        msg.readInt16("body");
     const int option A_UNUSED = (msg.readInt16("weapon") | 1) ^ 1;
     const int weapon = 0;
 
@@ -147,10 +159,16 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     character->data.mStats[Attributes::LUK].base = msg.readUInt8("luk");
 
     character->slot = msg.readInt16("character slot id");
-    msg.readInt16("rename");
-    msg.readString(16, "map name");
-    msg.readInt32("delete date");
-    const int shoes = msg.readInt32("robe");
+    if (packetVersion >= 20061023)
+        msg.readInt16("rename");
+    if (packetVersion >= 20100803)
+    {
+        msg.readString(16, "map name");
+        msg.readInt32("delete date");
+    }
+    int shoes = 0;
+    if (packetVersion >= 20110111)
+        shoes = msg.readInt32("robe");
     if (!serverFeatures->haveAdvancedSprites())
     {
         tempPlayer->setSprite(SPRITE_HAIR, shoes);
@@ -163,10 +181,13 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
 //        tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
     }
-    msg.readInt32("slot change");
-    tempPlayer->setRename(msg.readInt32("rename (inverse)"));
-
-    const uint8_t gender = CAST_U8(msg.readUInt8("gender"));
+    if (packetVersion >= 20110928)
+        msg.readInt32("slot change");
+    if (packetVersion >= 20111025)
+        tempPlayer->setRename(msg.readInt32("rename (inverse)"));
+    uint8_t gender = 99U;
+    if (packetVersion >= 20141016)
+        gender = CAST_U8(msg.readUInt8("gender"));
     if (gender != 99)
         tempPlayer->setGender(Being::intToGender(gender));
 }
@@ -174,9 +195,15 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
 void CharServerRecv::processCharLogin(Net::MessageIn &msg)
 {
     msg.skip(2, "packet len");
-    const int slots = msg.readInt8("MAX_CHARS");
-    msg.readInt8("sd->char_slots");
-    msg.readInt8("MAX_CHARS");
+    int slots = 9;
+    int offset = 0;
+    if (packetVersion >= 20100413)
+    {
+        slots = msg.readInt8("MAX_CHARS");
+        msg.readInt8("sd->char_slots");
+        msg.readInt8("MAX_CHARS");
+        offset = 3;
+    }
     loginData.characterSlots = CAST_U16(slots);
 
     msg.skip(20, "unused 0");
@@ -185,7 +212,7 @@ void CharServerRecv::processCharLogin(Net::MessageIn &msg)
     charServerHandler->mCharacters.clear();
 
     // Derive number of characters from message length
-    const int count = (msg.getLength() - 27)
+    const int count = (msg.getLength() - 24 - offset)
         / (106 + 4 + 2 + 16 + 4 + 4 + 4 + 4);
 
     for (int i = 0; i < count; ++i)
@@ -459,6 +486,8 @@ void CharServerRecv::processCharDelete2Ack(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt32("char id");
     msg.readInt32("result");
+    // for packets before 20130000, this is raw time
+    // in other case raw time - time(NULL)
     msg.readInt32("time");
 }
 

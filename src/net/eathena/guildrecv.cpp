@@ -132,12 +132,21 @@ void GuildRecv::processGuildExpulsionList(Net::MessageIn &msg)
     if (length < 4)
         return;
 
-    const int count = (length - 4) / 64;
-
-    for (int i = 0; i < count; i++)
+    int count;
+    if (msg.getVersion() < 20100803)
     {
-        msg.readString(24, "name");
-        msg.readString(40, "message");
+        count = (length - 4) / 64;
+        for (int i = 0; i < count; i++)
+        {
+            msg.readString(24, "name");
+            msg.readString(40, "message");
+        }
+    }
+    else
+    {
+        count = (length - 4) / 40;
+        for (int i = 0; i < count; i++)
+            msg.readString(40, "message");
     }
 }
 
