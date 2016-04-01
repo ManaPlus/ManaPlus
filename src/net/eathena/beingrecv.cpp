@@ -823,36 +823,15 @@ void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("being id");
     const Enable flag = fromBool(
         msg.readUInt8("flag: 0: stop, 1: start"), Enable);
-    msg.readInt32("total");
-    msg.readInt32("left");
-    msg.readInt32("val1");
-    msg.readInt32("val2");
-    msg.readInt32("val3");
-
-    Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
-        dstBeing->setStatusEffect(status, flag);
-    BLOCK_END("BeingRecv::processBeingStatusChange")
-}
-
-void BeingRecv::processBeingStatusChange2(Net::MessageIn &msg)
-{
-    BLOCK_START("BeingRecv::processBeingStatusChange")
-    if (!actorManager)
+    if (msg.getVersion() >= 20120618)
+        msg.readInt32("total");
+    if (msg.getVersion() >= 20090121)
     {
-        BLOCK_END("BeingRecv::processBeingStatusChange")
-        return;
+        msg.readInt32("left");
+        msg.readInt32("val1");
+        msg.readInt32("val2");
+        msg.readInt32("val3");
     }
-
-    // Status change
-    const uint16_t status = msg.readInt16("status");
-    const BeingId id = msg.readBeingId("being id");
-    const Enable flag = fromBool(
-        msg.readUInt8("flag: 0: stop, 1: start"), Enable);
-    msg.readInt32("left");
-    msg.readInt32("val1");
-    msg.readInt32("val2");
-    msg.readInt32("val3");
 
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
@@ -1327,14 +1306,26 @@ void BeingRecv::processBeingRemoveSkill(Net::MessageIn &msg)
 
 void BeingRecv::processBeingFakeName(Net::MessageIn &msg)
 {
+    uint16_t x, y;
+    uint8_t dir;
+    if (msg.getVersion() < 20071106)
+    {
+        msg.readBeingId("npc id");
+        msg.skip(8, "unused");
+        msg.readInt16("class?");  // 111
+        msg.skip(30, "unused");
+        msg.readCoordinates(x, y, dir, "position");
+        msg.readUInt8("sx");
+        msg.readUInt8("sy");
+        msg.skip(3, "unused");
+        return;
+    }
     const BeingType::BeingType type = static_cast<BeingType::BeingType>(
         msg.readUInt8("object type"));
     const BeingId id = msg.readBeingId("npc id");
     msg.skip(8, "unused");
     const uint16_t job = msg.readInt16("class?");  // 111
     msg.skip(30, "unused");
-    uint16_t x, y;
-    uint8_t dir;
     msg.readCoordinates(x, y, dir, "position");
     msg.readUInt8("sx");
     msg.readUInt8("sy");
@@ -1585,7 +1576,8 @@ void BeingRecv::processBeingViewEquipment(Net::MessageIn &msg)
     msg.readInt16("accessory");
     msg.readInt16("accessory2");
     msg.readInt16("accessory3");
-    msg.readInt16("robe");
+    if (msg.getVersion() >= 20101124)
+        msg.readInt16("robe");
     msg.readInt16("hair color");
     msg.readInt16("body color");
     msg.readUInt8("gender");

@@ -59,7 +59,6 @@ namespace EAthena
         void processMapType(Net::MessageIn &msg);
         void processSkillCasting(Net::MessageIn &msg);
         void processBeingStatusChange(Net::MessageIn &msg);
-        void processBeingStatusChange2(Net::MessageIn &msg);
         void processBeingMove2(Net::MessageIn &msg);
         void processBeingAction2(Net::MessageIn &msg);
         void processMonsterHp(Net::MessageIn &msg);

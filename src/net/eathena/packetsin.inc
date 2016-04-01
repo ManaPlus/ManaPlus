@@ -20,6 +20,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// very outdated packets
+packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        0);
+packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               0);
+
+// 4
+packet(SMSG_BEING_CHANGE_LOOKS2,           0x01d7,  11, &BeingRecv::processBeingChangeLook2,            4);
+
 // 5
 packet(SMSG_PLAYER_STORAGE_ADD,            0x01c4,  22, &InventoryRecv::processPlayerStorageAdd,        5);
 packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processPlayerCartAdd,           5);
@@ -43,31 +50,68 @@ packet(SMSG_AUCTION_CLOSE,                 0x025d,   4, &AuctionRecv::processAuc
 // 20051024
 packet(SMSG_AUCTION_OPEN_WINDOW,           0x025f,   6, &AuctionRecv::processOpenWindow,                20051024);
 
+// 20060424
+packet(SMSG_BEING_SPECIAL_EFFECT_NUM,      0x0284,  14, &BeingRecv::processBeingSpecialEffectNum,       20060424);
+
+// 20070227
+packet(SMSG_BATTLE_CHAT_MESSAGE,           0x02dc,  -1, &ChatRecv::processBattleChatMessage,            20070227);
+packet(SMSG_BATTLE_EMBLEM,                 0x02dd,  32, &BattleGroundRecv::processBattleEmblem,         20070227);
+packet(SMSG_BATTLE_UPDATE_SCORE,           0x02de,   6, &BattleGroundRecv::processBattleUpdateScore,    20070227);
+packet(SMSG_BATTLE_UPDATE_COORDS,          0x02df,  36, &BattleGroundRecv::processBattleUpdateCoords,   20070227);
+
+if (packetVersion >= 20071106)
+{
+    packet(SMSG_BEING_FAKE_NAME,           0x0078,  55, &BeingRecv::processBeingFakeName,               20071106);
+}
+
 // 20071113
 packet(SMSG_BEING_ACTION2,                 0x02e1,  33, &BeingRecv::processBeingAction2,                20071113);
 
 // 20080102
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
+packet(SMSG_BEING_FONT,                    0x02ef,   8, &BeingRecv::processBeingFont,                   20080102);
 
 // 20081210
 packet(SMSG_AUTOSHADOW_SPELL_LIST,         0x0442,  -1, &PlayerRecv::processPlayerAutoShadowSpellList,  20081210);
 
+// 20081217
+packet(SMSG_BEING_MILLENIUM_SHIELD,        0x0440,  10, &BeingRecv::processBeingMilleniumShield,        20081217);
+
+// 20090121
+packet(SMSG_BEING_STATUS_CHANGE,           0x043f,  25, &BeingRecv::processBeingStatusChange,           20090121);
+
 // 20090603
 packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 269, &PlayerRecv::processPlayerShortcuts,            20090603);
 
+// 20091201
+packet(SMSG_BATTLE_PLAY,                   0x07fe,  26, &BattleGroundRecv::processBattlePlay,           20091201);
+
 // 20100223
 packet(SMSG_TRADE_ITEM_ADD,                0x080f,  20, &TradeRecv::processTradeItemAdd,                20100223);
+
+// 20101124
+packet(SMSG_BEING_VIEW_EQUIPMENT,          0x0859,  -1, &BeingRecv::processBeingViewEquipment,          20101124);
 
 // 20120221
 packet(SMSG_BEING_VISIBLE,                 0x0915,  -1, &BeingRecv::processBeingVisible,                20120221);
 packet(SMSG_BEING_MOVE,                    0x0914,  -1, &BeingRecv::processBeingMove,                   20120221);
 packet(SMSG_BEING_SPAWN,                   0x090f,  -1, &BeingRecv::processBeingSpawn,                  20120221);
 
+// 20120410
+packet(SMSG_BEING_CHARM,                   0x08cf,  10, &BeingRecv::processBeingCharm,                  20120410);
+
+// 20120618
+if (packetVersion >= 20120618)
+{
+    packet(SMSG_BEING_STATUS_CHANGE,       0x0983,  29, &BeingRecv::processBeingStatusChange,           20120618);
+}
+
 // 20120925
-packet(SMSG_PLAYER_EQUIPMENT,              0x0992,  -1, &InventoryRecv::processPlayerEquipment,         20120925);
 packet(SMSG_PLAYER_INVENTORY_ADD,          0x0990,  31, &InventoryRecv::processPlayerInventoryAdd,      20120925);
-packet(SMSG_PLAYER_STORAGE_EQUIP,          0x0996,  -1, &InventoryRecv::processPlayerStorageEquip,      20120925);
+packet(SMSG_PLAYER_EQUIPMENT,              0x0992,  -1, &InventoryRecv::processPlayerEquipment,         20120925);
 packet(SMSG_PLAYER_CART_EQUIP,             0x0994,  -1, &InventoryRecv::processPlayerCartEquip,         20120925);
+packet(SMSG_PLAYER_STORAGE_EQUIP,          0x0996,  -1, &InventoryRecv::processPlayerStorageEquip,      20120925);
+packet(SMSG_BEING_VIEW_EQUIPMENT,          0x0997,  -1, &BeingRecv::processBeingViewEquipment,          20120925);
 
 // 20130724
 packet(SMSG_BANK_STATUS,                   0x09a6,  12, &BankRecv::processBankStatus,                   20130724);
@@ -88,27 +132,14 @@ packet(SMSG_PLAYER_SHORTCUTS,              0x0a00, 269, &PlayerRecv::processPlay
 packet(SMSG_ADMIN_GET_LOGIN_ACK,           0x01e0,  30, &AdminRecv::processAdminGetLoginAck,            0);
 packet(SMSG_ADMIN_KICK_ACK,                0x00cd,   6, &Ea::AdminRecv::processKickAck,                 0);
 packet(SMSG_ADMIN_SET_TILE_TYPE,           0x0192,  24, &AdminRecv::processSetTileType,                 0);
-
-// 20150000 or near
 packet(SMSG_BATTLE_BEGINS,                 0x08df,  50, &BattleGroundRecv::processBattleBegins,         0);
-packet(SMSG_BATTLE_CHAT_MESSAGE,           0x02dc,  -1, &ChatRecv::processBattleChatMessage,            0);
-packet(SMSG_BATTLE_EMBLEM,                 0x02dd,  32, &BattleGroundRecv::processBattleEmblem,         0);
 packet(SMSG_BATTLE_JOINED,                 0x08d9,  30, &BattleGroundRecv::processBattleJoined,         0);
 packet(SMSG_BATTLE_NOTICE_DELETE,          0x08db,  27, &BattleGroundRecv::processBattleNoticeDelete,   0);
-packet(SMSG_BATTLE_PLAY,                   0x07fe,  26, &BattleGroundRecv::processBattlePlay,           0);
 packet(SMSG_BATTLE_QUEUE_ACK,              0x08d8,  27, &BattleGroundRecv::processBattleQueueAck,       0);
-packet(SMSG_BATTLE_UPDATE_COORDS,          0x02df,  36, &BattleGroundRecv::processBattleUpdateCoords,   0);
-packet(SMSG_BATTLE_UPDATE_SCORE,           0x02de,   6, &BattleGroundRecv::processBattleUpdateScore,    0);
 packet(SMSG_BEING_ACTION,                  0x008a,  29, &Ea::BeingRecv::processBeingAction,             0);
 packet(SMSG_BEING_CHANGE_DIRECTION,        0x009c,   9, &BeingRecv::processBeingChangeDirection,        0);
-packet(SMSG_BEING_CHANGE_LOOKS2,           0x01d7,  11, &BeingRecv::processBeingChangeLook2,            0);
-packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        0);
-packet(SMSG_BEING_CHARM,                   0x08cf,  10, &BeingRecv::processBeingCharm,                  0);
 packet(SMSG_BEING_CHAT,                    0x008d,  -1, &ChatRecv::processBeingChat,                    0);
 packet(SMSG_BEING_EMOTION,                 0x00c0,   7, &Ea::BeingRecv::processBeingEmotion,            0);
-packet(SMSG_BEING_FAKE_NAME,               0x0078,  55, &BeingRecv::processBeingFakeName,               0);
-packet(SMSG_BEING_FONT,                    0x02ef,   8, &BeingRecv::processBeingFont,                   0);
-packet(SMSG_BEING_MILLENIUM_SHIELD,        0x0440,  10, &BeingRecv::processBeingMilleniumShield,        0);
 packet(SMSG_BEING_MOVE2,                   0x0086,  16, &BeingRecv::processBeingMove2,                  0);
 packet(SMSG_BEING_NAME_RESPONSE,           0x0095,  30, &Ea::BeingRecv::processNameResponse,            0);
 packet(SMSG_BEING_REMOVE,                  0x0080,   7, &Ea::BeingRecv::processBeingRemove,             0);
@@ -118,11 +149,9 @@ packet(SMSG_BEING_SELFEFFECT,              0x019b,  10, &BeingRecv::processBeing
 packet(SMSG_BEING_SLIDE,                   0x01ff,  10, &BeingRecv::processBeingSlide,                  0);
 packet(SMSG_BEING_SOUND_EFFECT,            0x01d3,  35, &BeingRecv::processBeingSoundEffect,            0);
 packet(SMSG_BEING_SPECIAL_EFFECT,          0x01f3,  10, &BeingRecv::processBeingSpecialEffect,          0);
-packet(SMSG_BEING_SPECIAL_EFFECT_NUM,      0x0284,  14, &BeingRecv::processBeingSpecialEffectNum,       0);
-packet(SMSG_BEING_STATUS_CHANGE,           0x0983,  29, &BeingRecv::processBeingStatusChange,           0);
-packet(SMSG_BEING_STATUS_CHANGE2,          0x043f,  25, &BeingRecv::processBeingStatusChange2,          0);
 packet(SMSG_BEING_STAT_UPDATE_1,           0x01ab,  12, &BeingRecv::processBeingStatUpdate1,            0);
-packet(SMSG_BEING_VIEW_EQUIPMENT,          0x0997,  -1, &BeingRecv::processBeingViewEquipment,          0);
+
+// 20150000 or near
 packet(SMSG_BIND_ITEM,                     0x02d3,   4, &InventoryRecv::processBindItem,                0);
 packet(SMSG_BLACKSMITH_RANKS_LIST,         0x0219, 282, &BeingRecv::processBlacksmithRanksList,         0);
 packet(SMSG_BLADE_STOP,                    0x01d1,  14, &BeingRecv::processBladeStop,                   0);
@@ -492,7 +521,7 @@ if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
     packet(SMSG_PLAYER_EQUIPMENT,          0x0a0d,  -1, &InventoryRecv::processPlayerEquipment,         20150226);
     packet(SMSG_PLAYER_CART_EQUIP,         0x0a0f,  -1, &InventoryRecv::processPlayerCartEquip,         20150226);
     packet(SMSG_PLAYER_STORAGE_EQUIP,      0x0a10,  -1, &InventoryRecv::processPlayerStorageEquip,      20150226);
-    packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0a2d,  -1, &BeingRecv::processBeingViewEquipment,          0);
+    packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0a2d,  -1, &BeingRecv::processBeingViewEquipment,          20150226);
 }
 
 // partial implimentation for future use
