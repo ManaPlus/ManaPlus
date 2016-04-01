@@ -183,7 +183,10 @@ void PetRecv::processPetStatus(Net::MessageIn &msg)
     info->hungry = hungry;
     info->intimacy = intimacy;
     info->equip = equip;
-    info->race = race;
+    if (msg.getVersion() >= 20081126)
+        info->race = race;
+    else
+        info->race = 0;
 }
 
 void PetRecv::processPetFood(Net::MessageIn &msg)

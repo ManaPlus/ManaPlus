@@ -139,6 +139,9 @@ packet(SMSG_BEING_FONT,                    0x02ef,   8, &BeingRecv::processBeing
 packet(SMSG_NPC_SHOW_PROGRESS_BAR,         0x02f0,  10, &NpcRecv::processNpcShowProgressBar,            20080318);
 packet(SMSG_NPC_PROGRESS_BAR_ABORT,        0x02f2,   2, &NpcRecv::processProgressBarAbort,              20080318);
 
+// 20081126
+packet(SMSG_PET_STATUS,                    0x01a2,  37, &PetRecv::processPetStatus,                     20081126);
+
 // 20081210
 packet(SMSG_AUTOSHADOW_SPELL_LIST,         0x0442,  -1, &PlayerRecv::processPlayerAutoShadowSpellList,  20081210);
 
@@ -389,8 +392,6 @@ packet(SMSG_PARTY_LEADER,                  0x07fc,  10, &PartyRecv::processParty
 packet(SMSG_PARTY_LEAVE,                   0x0105,  31, &Ea::PartyRecv::processPartyLeave,              0);
 packet(SMSG_PARTY_MEMBER_INFO,             0x01e9,  81, &PartyRecv::processPartyMemberInfo,             0);
 packet(SMSG_PARTY_MESSAGE,                 0x0109,  -1, &PartyRecv::processPartyMessage,                0);
-
-// 20150000 or near
 packet(SMSG_PARTY_UPDATE_COORDS,           0x0107,  10, &Ea::PartyRecv::processPartyUpdateCoords,       0);
 packet(SMSG_PET_CATCH_PROCESS,             0x019e,   2, &PetRecv::processPetCatchProcess,               0);
 packet(SMSG_PET_DATA,                      0x01a4,  11, &PetRecv::processPetData,                       0);
@@ -398,7 +399,8 @@ packet(SMSG_PET_EGGS_LIST,                 0x01a6,  -1, &PetRecv::processEggsLis
 packet(SMSG_PET_FOOD,                      0x01a3,   5, &PetRecv::processPetFood,                       0);
 packet(SMSG_PET_MESSAGE,                   0x01aa,  10, &PetRecv::processPetMessage,                    0);
 packet(SMSG_PET_ROULETTE,                  0x01a0,   3, &PetRecv::processPetRoulette,                   0);
-packet(SMSG_PET_STATUS,                    0x01a2,  37, &PetRecv::processPetStatus,                     0);
+
+// 20150000 or near
 packet(SMSG_PK_RANKS_LIST,                 0x0238, 282, &BeingRecv::processPkRanksList,                 0);
 packet(SMSG_PLAYER_ADD_SKILL,              0x0111,  39, &SkillRecv::processSkillAdd,                    0);
 packet(SMSG_PLAYER_ARROW_EQUIP,            0x013c,   4, &Ea::InventoryRecv::processPlayerArrowEquip,    0);
