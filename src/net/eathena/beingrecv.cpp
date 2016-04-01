@@ -921,13 +921,20 @@ void BeingRecv::processBeingAction2(Net::MessageIn &msg)
     msg.readInt32("tick");
     const int srcSpeed = msg.readInt32("src speed");
     msg.readInt32("dst speed");
-    const int param1 = msg.readInt32("damage");
-    if (serverVersion == 0 || serverVersion >= 11)
+    int param1;
+    if (msg.getVersion() >= 20071113)
+        param1 = msg.readInt32("damage");
+    else
+        param1 = msg.readInt16("damage");
+    if (msg.getVersion() >= 20131223)
         msg.readUInt8("is sp damaged");
     msg.readInt16("count");
     const AttackTypeT type = static_cast<AttackTypeT>(
         msg.readUInt8("action"));
-    msg.readInt32("left damage");
+    if (msg.getVersion() >= 20071113)
+        msg.readInt32("left damage");
+    else
+        msg.readInt16("left damage");
 
     switch (type)
     {

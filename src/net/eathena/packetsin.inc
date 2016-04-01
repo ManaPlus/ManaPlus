@@ -24,6 +24,9 @@
 packet(SMSG_PLAYER_STORAGE_ADD,            0x01c4,  22, &InventoryRecv::processPlayerStorageAdd,        5);
 packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processPlayerCartAdd,           5);
 
+// 20071113
+packet(SMSG_BEING_ACTION2,                 0x02e1,  33, &BeingRecv::processBeingAction2,                20071113);
+
 // 20080102
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
 
@@ -32,12 +35,6 @@ packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 269, &PlayerRecv::processPlay
 
 // 20100223
 packet(SMSG_TRADE_ITEM_ADD,                0x080f,  20, &TradeRecv::processTradeItemAdd,                20100223);
-
-// < 20131223
-if (serverVersion > 0 && serverVersion <= 10)
-{
-    packet(SMSG_BEING_ACTION2,             0x02e1,  33, &BeingRecv::processBeingAction2,                0);
-}
 
 // 20120221
 packet(SMSG_BEING_VISIBLE,                 0x0915,  -1, &BeingRecv::processBeingVisible,                20120221);
@@ -54,6 +51,7 @@ packet(SMSG_PLAYER_CART_EQUIP,             0x0994,  -1, &InventoryRecv::processP
 packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
 packet(SMSG_BEING_MOVE,                    0x09db,  -1, &BeingRecv::processBeingMove,                   20131223);
 packet(SMSG_BEING_SPAWN,                   0x09dc,  -1, &BeingRecv::processBeingSpawn,                  20131223);
+packet(SMSG_BEING_ACTION2,                 0x08c8,  34, &BeingRecv::processBeingAction2,                20131223);
 
 // 20141022
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
@@ -458,12 +456,6 @@ packet(SMSG_WEDDING_EFFECT,                0x01ea,   6, &BeingRecv::processWddin
 packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper,                      0);
 packet(SMSG_WHISPER_RESPONSE,              0x09df,   7, &ChatRecv::processWhisperResponse,              0);
 packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWhoAnswer,                0);
-
-// 20150000 fix
-if (serverVersion >= 11 || serverVersion == 0)
-{
-    packet(SMSG_BEING_ACTION2,             0x08c8,  34, &BeingRecv::processBeingAction2,                0);
-}
 
 if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
 {
