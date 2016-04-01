@@ -88,6 +88,7 @@ if (packetVersion >= 20060424)
 {
     packet(SMSG_MAP_ACCOUNT_ID,            0x0283,   6, &GameRecv::processMapAccountId,                 20060424);
     packet(SMSG_BEING_SPECIAL_EFFECT_NUM,  0x0284,  14, &BeingRecv::processBeingSpecialEffectNum,       20060424);
+    packet(SMSG_NPC_CASH_SHOP_OPEN,        0x0287,  -1, &CashShopRecv::processCashShopOpen,             20060424);
     packet(SMSG_NPC_CASH_BUY_ACK,          0x0289,   8, &CashShopRecv::processCashShopBuyAck,           20060424);
     packet(SMSG_FORMAT_MESSAGE,            0x0291,   4, &ChatRecv::processFormatMessage,                20060424);
     packet(SMSG_BOSS_MAP_INFO,             0x0293,  70, &BeingRecv::processBossMapInfo,                 20060424);
@@ -351,11 +352,10 @@ packet(SMSG_NPC_BUY,                       0x00c6,  -1, &BuySellRecv::processNpc
 packet(SMSG_NPC_BUY_RESPONSE,              0x00ca,   3, &Ea::BuySellRecv::processNpcBuyResponse,        0);
 packet(SMSG_NPC_BUY_SELL_CHOICE,           0x00c4,   6, &Ea::BuySellRecv::processNpcBuySellChoice,      0);
 packet(SMSG_NPC_CASH_BUY,                  0x0849,  16, &CashShopRecv::processCashShopBuy,              0);
-
-// 20150000 or near
 packet(SMSG_NPC_CASH_POINTS,               0x0845,  10, &CashShopRecv::processCashShopPoints,           0);
 packet(SMSG_NPC_CASH_SCHEDULE,             0x08ca,  -1, &CashShopRecv::processCashShopSchedule,         0);
-packet(SMSG_NPC_CASH_SHOP_OPEN,            0x0287,  -1, &CashShopRecv::processCashShopOpen,             0);
+
+// 20150000 or near
 packet(SMSG_NPC_CASH_TAB_PRICE_LIST,       0x08c0,  -1, &CashShopRecv::processCashShopTabPriceList,     0);
 packet(SMSG_NPC_CHOICE,                    0x00b7,  -1, &Ea::NpcRecv::processNpcChoice,                 0);
 packet(SMSG_NPC_CLOSE,                     0x00b6,   6, &Ea::NpcRecv::processNpcClose,                  0);

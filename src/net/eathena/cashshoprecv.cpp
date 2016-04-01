@@ -30,6 +30,8 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+
 namespace EAthena
 {
 
@@ -40,13 +42,18 @@ namespace CashShopRecv
 
 void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
 {
-    const int count = (msg.readInt16("len") - 12) / 11;
+    int count;
+    if (packetVersion >= 20070711)
+        count = (msg.readInt16("len") - 12) / 11;
+    else
+        count = (msg.readInt16("len") - 8) / 11;
 
     CREATEWIDGETV(mBuyDialog, BuyDialog, fromInt(BuyDialog::Cash, BeingId));
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     msg.readInt32("cash points");
-    msg.readInt32("kafra points");
+    if (packetVersion >= 20070711)
+        msg.readInt32("kafra points");
     for (int f = 0; f < count; f ++)
     {
         msg.readInt32("price");
