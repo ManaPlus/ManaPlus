@@ -27,6 +27,9 @@ packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processP
 // 20080102
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
 
+// 20090603
+packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 269, &PlayerRecv::processPlayerShortcuts,            20090603);
+
 // 20100223
 packet(SMSG_TRADE_ITEM_ADD,                0x080f,  20, &TradeRecv::processTradeItemAdd,                20100223);
 
@@ -53,8 +56,8 @@ packet(SMSG_BEING_MOVE,                    0x09db,  -1, &BeingRecv::processBeing
 packet(SMSG_BEING_SPAWN,                   0x09dc,  -1, &BeingRecv::processBeingSpawn,                  20131223);
 
 // 20141022
-// or 20141016?
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
+packet(SMSG_PLAYER_SHORTCUTS,              0x0a00, 269, &PlayerRecv::processPlayerShortcuts,            20141022);
 
 // 20150000 or near
 packet(SMSG_ADMIN_ACCOUNT_STATS,           0x0214,  42, &AdminRecv::processAccountStats,                0);
@@ -354,7 +357,6 @@ packet(SMSG_PLAYER_REFINE,                 0x0188,   8, &InventoryRecv::processP
 packet(SMSG_PLAYER_REFINE_LIST,            0x0221,  -1, &InventoryRecv::processPlayerRefineList,        0);
 packet(SMSG_PLAYER_REPAIR_EFFECT,          0x01fe,   5, &InventoryRecv::processPlayerRepairEffect,      0);
 packet(SMSG_PLAYER_REPAIR_LIST,            0x01fc,  -1, &InventoryRecv::processPlayerRepairList,        0);
-packet(SMSG_PLAYER_SHORTCUTS,              0x0a00, 269, &PlayerRecv::processPlayerShortcuts,            0);
 packet(SMSG_PLAYER_SHOW_EQUIP,             0x02da,   3, &PlayerRecv::processPlayerShowEquip,            0);
 packet(SMSG_PLAYER_SKILLS,                 0x010f,  -1, &SkillRecv::processPlayerSkills,                0);
 packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,      0x01cd,  29, &SkillRecv::processSkillAutoSpells,             0);

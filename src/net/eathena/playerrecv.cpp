@@ -52,7 +52,8 @@ void PlayerRecv::processPlayerShortcuts(Net::MessageIn &msg)
 {
     // +++ player shortcuts ignored. It also disabled on server side.
     // may be in future better use it?
-    msg.readUInt8("unused?");
+    if (msg.getVersion() >= 20141022)
+        msg.readUInt8("rotate");
     for (int f = 0; f < 27; f ++)
     {
         msg.readUInt8("type 0: item, 1: skill");
