@@ -38,6 +38,11 @@ packet(SMSG_ADMIN_ACCOUNT_STATS,           0x0214,  42, &AdminRecv::processAccou
 packet(SMSG_FAMILY_ASK_FOR_CHILD_REPLY,    0x0216,   6, &FamilyRecv::processAskForChildReply,           20041108);
 packet(SMSG_BLACKSMITH_RANKS_LIST,         0x0219, 282, &BeingRecv::processBlacksmithRanksList,         20041108);
 packet(SMSG_ALCHEMIST_RANKS_LIST,          0x021a, 282, &BeingRecv::processAlchemistRanksList,          20041108);
+packet(SMSG_PLAYER_FAME_BLACKSMITH,        0x021b,  10, &PlayerRecv::processPlayerFameBlacksmith,       20041108);
+packet(SMSG_PLAYER_FAME_ALCHEMIST,         0x021c,  10, &PlayerRecv::processPlayerFameAlchemist,        20041108);
+
+// 20050328
+packet(SMSG_PLAYER_FAME_TAEKWON,           0x0224,  10, &PlayerRecv::processPlayerFameTaekwon,          20050328);
 
 // 20050523
 packet(SMSG_HOMUNCULUS_DATA,               0x0230,  12, &HomunculusRecv::processHomunculusData,         20050523);
@@ -109,6 +114,7 @@ if (packetVersion >= 20070227)
     packet(SMSG_PARTY_INVITATION_STATS,    0x02c9,   3, &PartyRecv::processPartyInvitationStats,        20070227);
     packet(SMSG_INSTANCE_CREATE,           0x02cc,   4, &MapRecv::processInstanceCreate,                20070227);
     packet(SMSG_INSTANCE_DELETE,           0x02ce,  10, &MapRecv::processInstanceDelete,                20070227);
+    packet(SMSG_PLAYER_EQUIP_TICK_ACK,     0x02d9,  10, &PlayerRecv::processPlayerEquipTickAck,         20070227);
     packet(SMSG_BATTLE_CHAT_MESSAGE,       0x02dc,  -1, &ChatRecv::processBattleChatMessage,            20070227);
     packet(SMSG_BATTLE_EMBLEM,             0x02dd,  32, &BattleGroundRecv::processBattleEmblem,         20070227);
     packet(SMSG_BATTLE_UPDATE_SCORE,       0x02de,   6, &BattleGroundRecv::processBattleUpdateScore,    20070227);
@@ -177,8 +183,14 @@ packet(SMSG_FORMAT_MESSAGE_SKILL,          0x07e6,   8, &ChatRecv::processFormat
 // 20090922
 packet(SMSG_CHAR_CAPTCHA_NOT_SUPPORTED,    0x07e9,   5, &CharServerRecv::processCharCaptchaNotSupported, 20090922);
 
+// 20091027
+packet(SMSG_PLAYER_GET_EXP,                0x07f6,  14, &PlayerRecv::processPlayerGetExp,               20091027);
+
 // 20091201
 packet(SMSG_BATTLE_PLAY,                   0x07fe,  26, &BattleGroundRecv::processBattlePlay,           20091201);
+
+// 20100126
+packet(SMSG_PLAYER_HP,                     0x080e,  14, &BeingRecv::processMonsterHp,                   20100126);
 
 // 20100223
 packet(SMSG_TRADE_ITEM_ADD,                0x080f,  20, &TradeRecv::processTradeItemAdd,                20100223);
@@ -217,6 +229,7 @@ packet(SMSG_BEING_SPAWN,                   0x090f,  -1, &BeingRecv::processBeing
 
 // 20120410
 packet(SMSG_BEING_CHARM,                   0x08cf,  10, &BeingRecv::processBeingCharm,                  20120410);
+packet(SMSG_PLAYER_FAVORITE_ITEM,          0x0908,   5, &InventoryRecv::processFavoriteItem,            20120410);
 packet(SMSG_MONSTER_HP,                    0x0977,  14, &BeingRecv::processMonsterHp,                   20120410);
 
 // 20120618
@@ -425,17 +438,10 @@ packet(SMSG_PLAYER_CART_ADD_ERROR,         0x012c,   3, &InventoryRecv::processC
 packet(SMSG_PLAYER_CART_ADD_OUTDATED,      0x0124,  21, nullptr,                                        0);
 packet(SMSG_PLAYER_CART_REMOVE,            0x0125,   8, &InventoryRecv::processPlayerCartRemove,        0);
 packet(SMSG_PLAYER_CHAT,                   0x008e,  -1, &ChatRecv::processChat,                         0);
-
-// 20150000 or near
-packet(SMSG_PLAYER_EQUIP_TICK_ACK,         0x02d9,  10, &PlayerRecv::processPlayerEquipTickAck,         0);
-packet(SMSG_PLAYER_FAME_ALCHEMIST,         0x021c,  10, &PlayerRecv::processPlayerFameAlchemist,        0);
-packet(SMSG_PLAYER_FAME_BLACKSMITH,        0x021b,  10, &PlayerRecv::processPlayerFameBlacksmith,       0);
-packet(SMSG_PLAYER_FAME_TAEKWON,           0x0224,  10, &PlayerRecv::processPlayerFameTaekwon,          0);
-packet(SMSG_PLAYER_FAVORITE_ITEM,          0x0908,   5, &InventoryRecv::processFavoriteItem,            0);
-packet(SMSG_PLAYER_GET_EXP,                0x07f6,  14, &PlayerRecv::processPlayerGetExp,               0);
 packet(SMSG_PLAYER_GUILD_PARTY_INFO,       0x0195, 102, &BeingRecv::processPlayerGuilPartyInfo,         0);
 packet(SMSG_PLAYER_HEAL,                   0x013d,   6, &PlayerRecv::processPlayerHeal,                 0);
-packet(SMSG_PLAYER_HP,                     0x080e,  14, &BeingRecv::processMonsterHp,                   0);
+
+// 20150000 or near
 packet(SMSG_PLAYER_IDENTIFIED,             0x0179,   5, &InventoryRecv::processPlayerIdentified,        0);
 packet(SMSG_PLAYER_IDENTIFY_LIST,          0x0177,  -1, &InventoryRecv::processPlayerIdentifyList,      0);
 packet(SMSG_PLAYER_INSERT_CARD,            0x017d,   7, &InventoryRecv::processPlayerInsertCard,        0);

@@ -990,8 +990,18 @@ void BeingRecv::processMonsterHp(Net::MessageIn &msg)
 {
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("monster id"));
-    const int hp = msg.readInt32("hp");
-    const int maxHP = msg.readInt32("max hp");
+    int hp;
+    int maxHP;
+    if (msg.getVersion() >= 20100126)
+    {
+        hp = msg.readInt32("hp");
+        maxHP = msg.readInt32("max hp");
+    }
+    else
+    {
+        hp = msg.readInt16("hp");
+        maxHP = msg.readInt16("max hp");
+    }
     if (dstBeing)
     {
         dstBeing->setHP(hp);
