@@ -90,11 +90,14 @@ void PartyRecv::processPartySettings(Net::MessageIn &msg)
     }
 
     msg.readInt32("party exp");
-    const PartyShareT exp = static_cast<PartyShareT>(
-        msg.readInt8("share exp"));
-    const PartyShareT item = static_cast<PartyShareT>(
-        msg.readInt8("share item"));
-    Ea::PartyRecv::processPartySettingsContinue(msg, exp, item);
+    if (msg.getVersion() >= 20090603)
+    {
+        const PartyShareT exp = static_cast<PartyShareT>(
+            msg.readInt8("share exp"));
+        const PartyShareT item = static_cast<PartyShareT>(
+            msg.readInt8("share item"));
+        Ea::PartyRecv::processPartySettingsContinue(msg, exp, item);
+    }
 }
 
 void PartyRecv::processPartyInfo(Net::MessageIn &msg)

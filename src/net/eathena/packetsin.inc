@@ -102,6 +102,7 @@ if (packetVersion >= 20070227)
     packet(SMSG_NPC_CASH_BUY_ACK,          0x0289,  12, &CashShopRecv::processCashShopBuyAck,           20070227);
     packet(SMSG_ITEM_DAMAGED,              0x02bb,   8, &InventoryRecv::processItemDamaged,             20070227);
     packet(SMSG_COLOR_MESSAGE,             0x02c1,  -1, &ChatRecv::processColorChat,                    20070227);
+    packet(SMSG_PARTY_INVITATION_STATS,    0x02c9,   3, &PartyRecv::processPartyInvitationStats,        20070227);
     packet(SMSG_INSTANCE_CREATE,           0x02cc,   4, &MapRecv::processInstanceCreate,                20070227);
     packet(SMSG_INSTANCE_DELETE,           0x02ce,  10, &MapRecv::processInstanceDelete,                20070227);
     packet(SMSG_BATTLE_CHAT_MESSAGE,       0x02dc,  -1, &ChatRecv::processBattleChatMessage,            20070227);
@@ -109,6 +110,13 @@ if (packetVersion >= 20070227)
     packet(SMSG_BATTLE_UPDATE_SCORE,       0x02de,   6, &BattleGroundRecv::processBattleUpdateScore,    20070227);
     packet(SMSG_BATTLE_UPDATE_COORDS,      0x02df,  36, &BattleGroundRecv::processBattleUpdateCoords,   20070227);
 }
+
+// 20070821
+packet(SMSG_PARTY_INVITE_RESPONSE,         0x02c5,  30, &PartyRecv::processPartyInviteResponse,         20070821);
+packet(SMSG_PARTY_INVITED,                 0x02c6,  30, &PartyRecv::processPartyInvited,                20070821);
+
+// 20071002
+packet(SMSG_PARTY_ITEM_PICKUP,             0x02b8,  22, &PartyRecv::processPartyItemPickup,             20071002);
 
 // 20071023
 packet(SMSG_INSTANCE_START,                0x02cb,  65, &MapRecv::processInstanceStart,                 20071023);
@@ -127,6 +135,10 @@ packet(SMSG_BEING_ACTION2,                 0x02e1,  33, &BeingRecv::processBeing
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
 packet(SMSG_BEING_FONT,                    0x02ef,   8, &BeingRecv::processBeingFont,                   20080102);
 
+// 20080318
+packet(SMSG_NPC_SHOW_PROGRESS_BAR,         0x02f0,  10, &NpcRecv::processNpcShowProgressBar,            20080318);
+packet(SMSG_NPC_PROGRESS_BAR_ABORT,        0x02f2,   2, &NpcRecv::processProgressBarAbort,              20080318);
+
 // 20081210
 packet(SMSG_AUTOSHADOW_SPELL_LIST,         0x0442,  -1, &PlayerRecv::processPlayerAutoShadowSpellList,  20081210);
 
@@ -137,6 +149,7 @@ packet(SMSG_BEING_MILLENIUM_SHIELD,        0x0440,  10, &BeingRecv::processBeing
 packet(SMSG_BEING_STATUS_CHANGE,           0x043f,  25, &BeingRecv::processBeingStatusChange,           20090121);
 
 // 20090603
+packet(SMSG_PARTY_SETTINGS,                0x07d8,   8, &PartyRecv::processPartySettings,               20090603);
 packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 269, &PlayerRecv::processPlayerShortcuts,            20090603);
 
 // 20090805
@@ -215,10 +228,12 @@ packet(SMSG_BANK_DEPOSIT,                  0x09a8,  16, &BankRecv::processBankDe
 packet(SMSG_BANK_WITHDRAW,                 0x09aa,  16, &BankRecv::processBankWithdraw,                 20130724);
 
 // 20131223
-packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
+packet(SMSG_BEING_ACTION2,                 0x08c8,  34, &BeingRecv::processBeingAction2,                20131223);
+packet(SMSG_NPC_MARKET_OPEN,               0x09d5,  -1, &MarketRecv::processMarketOpen,                 20131223);
+packet(SMSG_NPC_MARKET_BUY_ACK,            0x09d7,  -1, &MarketRecv::processMarketBuyAck,               20131223);
 packet(SMSG_BEING_MOVE,                    0x09db,  -1, &BeingRecv::processBeingMove,                   20131223);
 packet(SMSG_BEING_SPAWN,                   0x09dc,  -1, &BeingRecv::processBeingSpawn,                  20131223);
-packet(SMSG_BEING_ACTION2,                 0x08c8,  34, &BeingRecv::processBeingAction2,                20131223);
+packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
 
 // 20141022
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
@@ -354,37 +369,28 @@ packet(SMSG_NPC_BUY_SELL_CHOICE,           0x00c4,   6, &Ea::BuySellRecv::proces
 packet(SMSG_NPC_CASH_BUY,                  0x0849,  16, &CashShopRecv::processCashShopBuy,              0);
 packet(SMSG_NPC_CASH_POINTS,               0x0845,  10, &CashShopRecv::processCashShopPoints,           0);
 packet(SMSG_NPC_CASH_SCHEDULE,             0x08ca,  -1, &CashShopRecv::processCashShopSchedule,         0);
-
-// 20150000 or near
 packet(SMSG_NPC_CASH_TAB_PRICE_LIST,       0x08c0,  -1, &CashShopRecv::processCashShopTabPriceList,     0);
 packet(SMSG_NPC_CHOICE,                    0x00b7,  -1, &Ea::NpcRecv::processNpcChoice,                 0);
 packet(SMSG_NPC_CLOSE,                     0x00b6,   6, &Ea::NpcRecv::processNpcClose,                  0);
 packet(SMSG_NPC_CLOSE_TIMEOUT,             0x08d6,   6, &NpcRecv::processNpcCloseTimeout,               0);
 packet(SMSG_NPC_CUTIN,                     0x01b3,  67, &NpcRecv::processNpcCutin,                      0);
 packet(SMSG_NPC_INT_INPUT,                 0x0142,   6, &Ea::NpcRecv::processNpcIntInput,               0);
-packet(SMSG_NPC_MARKET_BUY_ACK,            0x09d7,  -1, &MarketRecv::processMarketBuyAck,               0);
-packet(SMSG_NPC_MARKET_OPEN,               0x09d5,  -1, &MarketRecv::processMarketOpen,                 0);
 packet(SMSG_NPC_MESSAGE,                   0x00b4,  -1, &Ea::NpcRecv::processNpcMessage,                0);
 packet(SMSG_NPC_NEXT,                      0x00b5,   6, &Ea::NpcRecv::processNpcNext,                   0);
-packet(SMSG_NPC_PROGRESS_BAR_ABORT,        0x02f2,   2, &NpcRecv::processProgressBarAbort,              0);
 packet(SMSG_NPC_SELL,                      0x00c7,  -1, &Ea::BuySellRecv::processNpcSell,               0);
 packet(SMSG_NPC_SELL_RESPONSE,             0x00cb,   3, &BuySellRecv::processNpcSellResponse,           0);
 packet(SMSG_NPC_SHOW_DIGIT,                0x01b1,   7, &NpcRecv::processShowDigit,                     0);
-packet(SMSG_NPC_SHOW_PROGRESS_BAR,         0x02f0,  10, &NpcRecv::processNpcShowProgressBar,            0);
 packet(SMSG_NPC_STR_INPUT,                 0x01d4,   6, &Ea::NpcRecv::processNpcStrInput,               0);
 packet(SMSG_NPC_VIEWPOINT,                 0x0144,  23, &NpcRecv::processNpcViewPoint,                  0);
 packet(SMSG_PARTY_CREATE,                  0x00fa,   3, &Ea::PartyRecv::processPartyCreate,             0);
 packet(SMSG_PARTY_INFO,                    0x00fb,  -1, &PartyRecv::processPartyInfo,                   0);
-packet(SMSG_PARTY_INVITATION_STATS,        0x02c9,   3, &PartyRecv::processPartyInvitationStats,        0);
-packet(SMSG_PARTY_INVITED,                 0x02c6,  30, &PartyRecv::processPartyInvited,                0);
-packet(SMSG_PARTY_INVITE_RESPONSE,         0x02c5,  30, &PartyRecv::processPartyInviteResponse,         0);
 packet(SMSG_PARTY_INVITE_RESPONSE_OUTDATED, 0x00fd, 27, nullptr,                                        0);
-packet(SMSG_PARTY_ITEM_PICKUP,             0x02b8,  22, &PartyRecv::processPartyItemPickup,             0);
 packet(SMSG_PARTY_LEADER,                  0x07fc,  10, &PartyRecv::processPartyLeader,                 0);
 packet(SMSG_PARTY_LEAVE,                   0x0105,  31, &Ea::PartyRecv::processPartyLeave,              0);
 packet(SMSG_PARTY_MEMBER_INFO,             0x01e9,  81, &PartyRecv::processPartyMemberInfo,             0);
 packet(SMSG_PARTY_MESSAGE,                 0x0109,  -1, &PartyRecv::processPartyMessage,                0);
-packet(SMSG_PARTY_SETTINGS,                0x07d8,   8, &PartyRecv::processPartySettings,               0);
+
+// 20150000 or near
 packet(SMSG_PARTY_UPDATE_COORDS,           0x0107,  10, &Ea::PartyRecv::processPartyUpdateCoords,       0);
 packet(SMSG_PET_CATCH_PROCESS,             0x019e,   2, &PetRecv::processPetCatchProcess,               0);
 packet(SMSG_PET_DATA,                      0x01a4,  11, &PetRecv::processPetData,                       0);
