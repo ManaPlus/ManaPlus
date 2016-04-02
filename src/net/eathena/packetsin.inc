@@ -41,6 +41,7 @@ packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpe
 packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                1);
 packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
 packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
+packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeingViewEquipment,          1);
 
 // login server, unknown version
 packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
@@ -275,7 +276,11 @@ if (packetVersion >= 3)
 }
 
 // 4
-packet(SMSG_BEING_CHANGE_LOOKS2,           0x01d7,  11, &BeingRecv::processBeingChangeLook2,            4);
+if (packetVersion >= 4)
+{
+    packet(SMSG_BEING_CHANGE_LOOKS2,       0x01d7,  11, &BeingRecv::processBeingChangeLook2,            4);
+    packet(SMSG_BEING_VISIBLE,             0x01d8,  54, &BeingRecv::processBeingVisible,                4);
+}
 
 // 5
 packet(SMSG_PLAYER_STORAGE_ADD,            0x01c4,  22, &InventoryRecv::processPlayerStorageAdd,        5);
@@ -286,6 +291,11 @@ if (packetVersion >= 6)
 {
     packet(SMSG_TRADE_REQUEST,             0x01f4,  32, &TradeRecv::processTradeRequest,                6);
     packet(SMSG_TRADE_RESPONSE,            0x01f5,   9, &TradeRecv::processTradeResponse,               6);
+}
+
+if (packetVersion >= 7)
+{
+    packet(SMSG_BEING_VISIBLE,             0x022a,  58, &BeingRecv::processBeingVisible,                7);
 }
 
 // 20040816
@@ -453,6 +463,7 @@ if (packetVersion >= 20080102)
     packet(SMSG_PLAYER_CART_ITEMS,         0x02e9,  -1, &InventoryRecv::processPlayerCartItems,         20080102);
     packet(SMSG_PLAYER_STORAGE_ITEMS,      0x02ea,  -1, &InventoryRecv::processPlayerStorage,           20080102);
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
+    packet(SMSG_BEING_VISIBLE,             0x02ee,  60, &BeingRecv::processBeingVisible,                20080102);
     packet(SMSG_BEING_FONT,                0x02ef,   8, &BeingRecv::processBeingFont,                   20080102);
 }
 
@@ -504,6 +515,11 @@ packet(SMSG_CHAR_CAPTCHA_NOT_SUPPORTED,    0x07e9,   5, &CharServerRecv::process
 
 // 20091027
 packet(SMSG_PLAYER_GET_EXP,                0x07f6,  14, &PlayerRecv::processPlayerGetExp,               20091027);
+
+if (packetVersion >= 20091103)
+{
+    packet(SMSG_BEING_VISIBLE,             0x07f9,  -1, &BeingRecv::processBeingVisible,                20091103);
+}
 
 // 20091104
 if (packetVersion >= 20091104)
@@ -581,7 +597,11 @@ if (packetVersion >= 20100701)
 packet(SMSG_GUILD_EXPULSION,               0x0839,  66, &GuildRecv::processGuildExpulsion,              20100803);
 
 // 20101124
-packet(SMSG_BEING_VIEW_EQUIPMENT,          0x0859,  -1, &BeingRecv::processBeingViewEquipment,          20101124);
+if (packetVersion >= 20101124)
+{
+    packet(SMSG_BEING_VISIBLE,             0x0857,  -1, &BeingRecv::processBeingVisible,                20101124);
+    packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0859,  -1, &BeingRecv::processBeingViewEquipment,          20101124);
+}
 
 // 20110718
 if (packetVersion >= 20110718)
@@ -596,9 +616,12 @@ packet(SMSG_SKILL_SNAP,                    0x08d2,  10, &BeingRecv::processBeing
 packet(SMSG_LOGIN_ERROR2,                  0x083e,  26, &LoginRecv::processLoginError2,                 20120000);
 
 // 20120221
-packet(SMSG_BEING_VISIBLE,                 0x0915,  -1, &BeingRecv::processBeingVisible,                20120221);
-packet(SMSG_BEING_MOVE,                    0x0914,  -1, &BeingRecv::processBeingMove,                   20120221);
-packet(SMSG_BEING_SPAWN,                   0x090f,  -1, &BeingRecv::processBeingSpawn,                  20120221);
+if (packetVersion >= 20120221)
+{
+    packet(SMSG_BEING_VISIBLE,             0x0915,  -1, &BeingRecv::processBeingVisible,                20120221);
+    packet(SMSG_BEING_MOVE,                0x0914,  -1, &BeingRecv::processBeingMove,                   20120221);
+    packet(SMSG_BEING_SPAWN,               0x090f,  -1, &BeingRecv::processBeingSpawn,                  20120221);
+}
 
 // 20120410
 packet(SMSG_BEING_CHARM,                   0x08cf,  10, &BeingRecv::processBeingCharm,                  20120410);
@@ -727,7 +750,7 @@ if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
     packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0a2d,  -1, &BeingRecv::processBeingViewEquipment,          20150226);
 }
 
-// partial implimentation for future use
+// 20150513
 if (packetVersion >= 20150513)
 {
     packet(SMSG_DRESS_ROOM_OPEN,           0x0a02,   4, &PlayerRecv::processDressRoomOpen,              20150513);
