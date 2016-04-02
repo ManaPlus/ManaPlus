@@ -70,6 +70,7 @@ namespace TmwAthena
         void processSkillCastCancel(Net::MessageIn &msg);
         void processIpResponse(Net::MessageIn &msg);
         void processPvpSet(Net::MessageIn &msg);
+        void processSkillDamage(Net::MessageIn &msg);
         void applyPlayerAction(Net::MessageIn &msg,
                                Being *const being,
                                const uint8_t type);

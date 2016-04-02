@@ -28,9 +28,14 @@ packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlaye
 packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processPlayerStorageAdd,        1);
 packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
 packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                1);
+packet(SMSG_SKILL_DAMAGE,                  0x0114,  31, &BeingRecv::processSkillDamage,                 1);
 
 // 3
-packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  3);
+if (packetVersion >= 3)
+{
+    packet(SMSG_PLAYER_INVENTORY_USE,      0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  3);
+    packet(SMSG_SKILL_DAMAGE,              0x01de,  33, &BeingRecv::processSkillDamage,                 3);
+}
 
 // 4
 packet(SMSG_BEING_CHANGE_LOOKS2,           0x01d7,  11, &BeingRecv::processBeingChangeLook2,            4);
@@ -578,11 +583,9 @@ packet(SMSG_SCRIPT_MESSAGE,                0x08b3,  -1, &ChatRecv::processScript
 packet(SMSG_SERVER_PING,                   0x007f,   6, &GameRecv::processServerTick,                   0);
 packet(SMSG_SKILL_ARROW_CREATE_LIST,       0x01ad,  -1, &SkillRecv::processSkillArrowCreateList,        0);
 packet(SMSG_SKILL_AUTO_CAST,               0x0147,  39, &BeingRecv::processSkillAutoCast,               0);
+packet(SMSG_SKILL_CAST_CANCEL,             0x01b9,   6, &BeingRecv::processSkillCancel,                 0);
 
 // 20150000 or near
-packet(SMSG_SKILL_CAST_CANCEL,             0x01b9,   6, &BeingRecv::processSkillCancel,                 0);
-packet(SMSG_SKILL_DAMAGE,                  0x01de,  33, &Ea::BeingRecv::processSkillDamage,             0);
-packet(SMSG_SKILL_DAMAGE_OUTDATED,         0x0114,  31, nullptr,                                        0);
 packet(SMSG_SKILL_DEVOTION_EFFECT,         0x01cf,  28, &SkillRecv::processSkillDevotionEffect,         0);
 packet(SMSG_SKILL_ENTRY,                   0x09ca,  -1, &BeingRecv::processSkillEntry,                  0);
 packet(SMSG_SKILL_FAILED,                  0x0110,  10, &SkillRecv::processSkillFailed,                 0);

@@ -43,7 +43,6 @@ namespace Ea
         extern BeingId mSpawnId;
 
         void processBeingRemove(Net::MessageIn &msg);
-        void processSkillDamage(Net::MessageIn &msg);
         void processBeingAction(Net::MessageIn &msg);
         void processBeingEmotion(Net::MessageIn &msg);
         void processNameResponse(Net::MessageIn &msg);

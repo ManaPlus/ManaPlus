@@ -1761,6 +1761,38 @@ void BeingRecv::processGraffiti(Net::MessageIn &msg)
     dstBeing->setCreatorId(creatorId);
 }
 
+void BeingRecv::processSkillDamage(Net::MessageIn &msg)
+{
+    BLOCK_START("BeingRecv::processSkillDamage")
+    if (!actorManager)
+    {
+        BLOCK_END("BeingRecv::processSkillDamage")
+        return;
+    }
+
+    const int id = msg.readInt16("skill id");
+    Being *const srcBeing = actorManager->findBeing(
+        msg.readBeingId("src being id"));
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("dst being id"));
+    msg.readInt32("tick");
+    msg.readInt32("src speed");
+    msg.readInt32("dst speed");
+    int param1;
+    if (msg.getVersion() >= 3)
+        param1 = msg.readInt32("damage");
+    else
+        param1 = msg.readInt16("damage");
+    const int level = msg.readInt16("skill level");
+    msg.readInt16("div");
+    msg.readUInt8("skill hit/type?");
+    if (srcBeing)
+        srcBeing->handleSkill(dstBeing, param1, id, level);
+    if (dstBeing)
+        dstBeing->takeDamage(srcBeing, param1, AttackType::SKILL, id, level);
+    BLOCK_END("BeingRecv::processSkillDamage")
+}
+
 void BeingRecv::applyPlayerAction(Net::MessageIn &msg,
                                   Being *const being,
                                   const uint8_t type)

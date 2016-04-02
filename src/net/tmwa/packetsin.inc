@@ -152,7 +152,7 @@ packet(SMSG_SERVER_PING,                   0x007f,   6, nullptr,                
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  10, &LoginRecv::processServerVersion,               0);
 packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                0);
 packet(SMSG_SKILL_CAST_CANCEL,             0x01b9,   6, &BeingRecv::processSkillCastCancel,             0);
-packet(SMSG_SKILL_DAMAGE,                  0x01de,  33, &Ea::BeingRecv::processSkillDamage,             0);
+packet(SMSG_SKILL_DAMAGE,                  0x01de,  33, &BeingRecv::processSkillDamage,                 0);
 packet(SMSG_SKILL_FAILED,                  0x0110,  10, &SkillRecv::processSkillFailed,                 0);
 packet(SMSG_SKILL_NO_DAMAGE,               0x011a,  15, &Ea::BeingRecv::processSkillNoDamage,           0);
 packet(SMSG_SOLVE_CHAR_NAME,               0x0194,  30, nullptr,                                        0);
