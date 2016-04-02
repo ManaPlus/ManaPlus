@@ -1165,15 +1165,21 @@ void BeingRecv::processSkillGroundNoDamage(Net::MessageIn &msg)
 
 void BeingRecv::processSkillEntry(Net::MessageIn &msg)
 {
-    msg.readInt16("len");
+    if (msg.getVersion() >= 20110718)
+        msg.readInt16("len");
     const BeingId id = msg.readBeingId("skill unit id");
     const BeingId creatorId = msg.readBeingId("creator accound id");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
-    const int job = msg.readInt32("job");
-    msg.readUInt8("radius");
+    int job = 0;
+    if (msg.getVersion() >= 20121212)
+        job = msg.readInt32("job");
+    if (msg.getVersion() >= 20110718)
+        msg.readUInt8("radius");
     msg.readUInt8("visible");
-    const int level = msg.readUInt8("level");
+    int level = 0;
+    if (msg.getVersion() >= 20130731)
+        level = msg.readUInt8("level");
     Being *const dstBeing = createBeing2(msg, id, job, BeingType::SKILL);
     if (!dstBeing)
         return;

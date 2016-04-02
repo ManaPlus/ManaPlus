@@ -21,14 +21,15 @@
  */
 
 // very outdated packets
-packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               1);
-packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
-packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
+packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
 packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processPlayerStorageAdd,        1);
-packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
-packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                1);
+packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
 packet(SMSG_SKILL_DAMAGE,                  0x0114,  31, &BeingRecv::processSkillDamage,                 1);
+packet(SMSG_SKILL_ENTRY,                   0x011f,  16, &BeingRecv::processSkillEntry,                  1);
+packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                1);
+packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
+packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
 
 // 3
 if (packetVersion >= 3)
@@ -306,6 +307,12 @@ packet(SMSG_GUILD_EXPULSION,               0x0839,  66, &GuildRecv::processGuild
 // 20101124
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x0859,  -1, &BeingRecv::processBeingViewEquipment,          20101124);
 
+// 20110718
+if (packetVersion >= 20110718)
+{
+    packet(SMSG_SKILL_ENTRY,               0x08c7,  -1, &BeingRecv::processSkillEntry,                  20110718);
+}
+
 // 20120000
 packet(SMSG_LOGIN_ERROR2,                  0x083e,  26, &LoginRecv::processLoginError2,                 20120000);
 
@@ -350,6 +357,12 @@ if (packetVersion >= 20120925)
 // 20121010
 packet(SMSG_MAP_TYPE_PROPERTY2,            0x099b,   8, &BeingRecv::processMapTypeProperty,             20121010);
 
+// 20121212
+if (packetVersion >= 20121212)
+{
+    packet(SMSG_SKILL_ENTRY,               0x099f,  -1, &BeingRecv::processSkillEntry,                  20121212);
+}
+
 // 20130000
 packet(SMSG_ITEM_DROPPED,                  0x084b,  19, &ItemRecv::processItemDropped,                  20130000);
 
@@ -360,6 +373,12 @@ packet(SMSG_PLAYER_RANK_POINTS,            0x097e,  12, &PlayerRecv::processPlay
 packet(SMSG_BANK_STATUS,                   0x09a6,  12, &BankRecv::processBankStatus,                   20130724);
 packet(SMSG_BANK_DEPOSIT,                  0x09a8,  16, &BankRecv::processBankDeposit,                  20130724);
 packet(SMSG_BANK_WITHDRAW,                 0x09aa,  16, &BankRecv::processBankWithdraw,                 20130724);
+
+// 20130731
+if (packetVersion >= 20130731)
+{
+    packet(SMSG_SKILL_ENTRY,               0x09ca,  -1, &BeingRecv::processSkillEntry,                  20130731);
+}
 
 // 20131223
 packet(SMSG_BEING_ACTION2,                 0x08c8,  34, &BeingRecv::processBeingAction2,                20131223);
@@ -584,10 +603,9 @@ packet(SMSG_SERVER_PING,                   0x007f,   6, &GameRecv::processServer
 packet(SMSG_SKILL_ARROW_CREATE_LIST,       0x01ad,  -1, &SkillRecv::processSkillArrowCreateList,        0);
 packet(SMSG_SKILL_AUTO_CAST,               0x0147,  39, &BeingRecv::processSkillAutoCast,               0);
 packet(SMSG_SKILL_CAST_CANCEL,             0x01b9,   6, &BeingRecv::processSkillCancel,                 0);
+packet(SMSG_SKILL_DEVOTION_EFFECT,         0x01cf,  28, &SkillRecv::processSkillDevotionEffect,         0);
 
 // 20150000 or near
-packet(SMSG_SKILL_DEVOTION_EFFECT,         0x01cf,  28, &SkillRecv::processSkillDevotionEffect,         0);
-packet(SMSG_SKILL_ENTRY,                   0x09ca,  -1, &BeingRecv::processSkillEntry,                  0);
 packet(SMSG_SKILL_FAILED,                  0x0110,  10, &SkillRecv::processSkillFailed,                 0);
 packet(SMSG_SKILL_GROUND_DAMAGE_UNUSED,    0x0115,  35, nullptr,                                        0);
 packet(SMSG_SKILL_GROUND_NO_DAMAGE,        0x0117,  18, &BeingRecv::processSkillGroundNoDamage,         0);
@@ -629,8 +647,6 @@ packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWh
 // evol packets
 if (serverVersion > 0)
 {
-    packet(SMSG_SERVER_VERSION_RESPONSE,   0x7531,  -1, &LoginRecv::processServerVersion,               0);
-
     packet(SMSG_NPC_COMMAND,               0x0b00,  16, &Ea::NpcRecv::processNpcCommand,                0);
     packet(SMSG_BEING_NAME_RESPONSE2,      0x0b01,  -1, &BeingRecv::processNameResponse2,               0);
     packet(SMSG_MAP_MASK,                  0x0b02,  10, &Ea::PlayerRecv::processMapMask,                0);
@@ -709,3 +725,6 @@ packet(SMSG_BOOKING_REFUSE_VOLUNTEER,      0x08fa,   6, nullptr,                
 packet(SMSG_BOOKING_CANCEL_VOLUNTEER,      0x0909,   6, nullptr,                                        0);
 packet(SMSG_BOOKING_ADD_FILTERING_LIST,    0x090b,  30, nullptr,                                        0);
 packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr,                                        0);
+
+// evol version packet
+packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
