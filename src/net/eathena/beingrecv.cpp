@@ -779,7 +779,8 @@ void BeingRecv::processSkillCasting(Net::MessageIn &msg)
     const int skillId = msg.readInt16("skill id");
     msg.readInt32("property");  // can be used to trigger effect
     const int castTime = msg.readInt32("cast time");
-    msg.readInt8("dispossable");
+    if (msg.getVersion() >= 20091124)
+        msg.readInt8("dispossable");
 
     if (!effectManager)
         return;

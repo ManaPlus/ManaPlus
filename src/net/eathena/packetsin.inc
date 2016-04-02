@@ -27,6 +27,7 @@ packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeing
 packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
 packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processPlayerStorageAdd,        1);
 packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
+packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                1);
 
 // 3
 packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  3);
@@ -244,6 +245,12 @@ packet(SMSG_PLAYER_GET_EXP,                0x07f6,  14, &PlayerRecv::processPlay
 // 20091117
 packet(SMSG_PLAYER_INVENTORY_REMOVE2,      0x07fa,   8, &InventoryRecv::processPlayerInventoryRemove2,  20091117);
 
+// 20091124
+if (packetVersion >= 20091124)
+{
+    packet(SMSG_SKILL_CASTING,             0x07fb,  25, &BeingRecv::processSkillCasting,                20091124);
+}
+
 // 20091201
 packet(SMSG_BATTLE_PLAY,                   0x07fe,  26, &BattleGroundRecv::processBattlePlay,           20091201);
 
@@ -270,6 +277,10 @@ packet(SMSG_BUYINGSTORE_SELL_FAILED,       0x081a,   4, &BuyingStoreRecv::proces
 packet(SMSG_BUYINGSTORE_REPORT,            0x081b,  10, &BuyingStoreRecv::processBuyingStoreReport,     20100420);
 packet(SMSG_BUYINGSTORE_DELETE_ITEM,       0x081c,  10, &BuyingStoreRecv::processBuyingStoreDeleteItem, 20100420);
 packet(SMSG_BUYINGSTORE_SELLER_SELL_FAILED, 0x0824,   6, &BuyingStoreRecv::processBuyingStoreSellerSellFailed, 20100420);
+
+// 20100601
+packet(SMSG_SEARCHSTORE_SEARCH_ACK,        0x0836,   0, &SearchStoreRecv::processSearchAck,             20100601);
+packet(SMSG_SEARCHSTORE_SEARCH_FAILED,     0x0837,   0, &SearchStoreRecv::processSearchFailed,          20100601);
 
 // 20100608
 if (packetVersion >= 20100608)
@@ -564,16 +575,11 @@ packet(SMSG_PVP_MAP_MODE,                  0x0199,   4, &Ea::BeingRecv::processP
 packet(SMSG_PVP_SET,                       0x019a,  14, &BeingRecv::processPvpSet,                      0);
 packet(SMSG_RANKS_LIST,                    0x097d, 288, &BeingRecv::processRanksList,                   0);
 packet(SMSG_SCRIPT_MESSAGE,                0x08b3,  -1, &ChatRecv::processScriptMessage,                0);
-
-// 20150000 or near
-
-packet(SMSG_SEARCHSTORE_SEARCH_ACK,        0x0836,   0, &SearchStoreRecv::processSearchAck,             0);
-packet(SMSG_SEARCHSTORE_SEARCH_FAILED,     0x0837,   0, &SearchStoreRecv::processSearchFailed,          0);
 packet(SMSG_SERVER_PING,                   0x007f,   6, &GameRecv::processServerTick,                   0);
-packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
 packet(SMSG_SKILL_ARROW_CREATE_LIST,       0x01ad,  -1, &SkillRecv::processSkillArrowCreateList,        0);
 packet(SMSG_SKILL_AUTO_CAST,               0x0147,  39, &BeingRecv::processSkillAutoCast,               0);
-packet(SMSG_SKILL_CASTING,                 0x07fb,  25, &BeingRecv::processSkillCasting,                0);
+
+// 20150000 or near
 packet(SMSG_SKILL_CAST_CANCEL,             0x01b9,   6, &BeingRecv::processSkillCancel,                 0);
 packet(SMSG_SKILL_DAMAGE,                  0x01de,  33, &Ea::BeingRecv::processSkillDamage,             0);
 packet(SMSG_SKILL_DAMAGE_OUTDATED,         0x0114,  31, nullptr,                                        0);
@@ -620,6 +626,8 @@ packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWh
 // evol packets
 if (serverVersion > 0)
 {
+    packet(SMSG_SERVER_VERSION_RESPONSE,   0x7531,  -1, &LoginRecv::processServerVersion,               0);
+
     packet(SMSG_NPC_COMMAND,               0x0b00,  16, &Ea::NpcRecv::processNpcCommand,                0);
     packet(SMSG_BEING_NAME_RESPONSE2,      0x0b01,  -1, &BeingRecv::processNameResponse2,               0);
     packet(SMSG_MAP_MASK,                  0x0b02,  10, &Ea::PlayerRecv::processMapMask,                0);
