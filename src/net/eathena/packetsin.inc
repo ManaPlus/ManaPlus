@@ -21,11 +21,12 @@
  */
 
 // very outdated packets
-packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        0);
-packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               0);
+packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
+packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               1);
 packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
 packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
-packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processPlayerStorageAdd,        0);
+packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processPlayerStorageAdd,        1);
+packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
 
 // 3
 packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  3);
@@ -40,6 +41,9 @@ packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processP
 // 20040816
 packet(SMSG_ADMIN_ACCOUNT_STATS,           0x0214,  42, &AdminRecv::processAccountStats,                20040816);
 
+// 20040817
+packet(SMSG_PVP_INFO,                      0x0210,  22, &PlayerRecv::processPvpInfo,                    20040817);
+
 // 20041101
 packet(SMSG_PLAYER_SKILL_MESSAGE,          0x0215,   6, &PlayerRecv::processPlayerSkillMessage,         20041101);
 
@@ -52,6 +56,7 @@ packet(SMSG_PLAYER_FAME_ALCHEMIST,         0x021c,  10, &PlayerRecv::processPlay
 
 // 20041129
 packet(SMSG_PLAYER_REFINE_LIST,            0x0221,  -1, &InventoryRecv::processPlayerRefineList,        20041129);
+packet(SMSG_PLAYER_UPGRADE_MESSAGE,        0x0223,   8, &PlayerRecv::processPlayerUpgradeMessage,       20041129);
 
 // 20050328
 packet(SMSG_PLAYER_FAME_TAEKWON,           0x0224,  10, &PlayerRecv::processPlayerFameTaekwon,          20050328);
@@ -75,6 +80,8 @@ packet(SMSG_HOMUNCULUS_SKILL_UP,           0x0239,   0, &HomunculusRecv::process
 
 // 20050608
 packet(SMSG_HOMUNCULUS_FOOD,               0x022f,   5, &HomunculusRecv::processHomunculusFood,         20050608);
+packet(SMSG_PLAYER_STORAGE_PASSWORD,       0x023a,   4, &InventoryRecv::processPlayerStoragePassword,   20050608);
+packet(SMSG_PLAYER_STORAGE_PASSWORD_RESULT, 0x023c,  6, &InventoryRecv::processPlayerStoragePasswordResult, 20050608);
 
 // 20050718
 packet(SMSG_MAIL_READ_MAIL,                0x0242,  -1, &MailRecv::processReadMail,                     20050718);
@@ -131,6 +138,8 @@ if (packetVersion >= 20060424)
 if (packetVersion >= 20070227)
 {
     packet(SMSG_NPC_CASH_BUY_ACK,          0x0289,  12, &CashShopRecv::processCashShopBuyAck,           20070227);
+    packet(SMSG_QUEST_ADD,                 0x02b3, 107, &QuestRecv::processAddQuest,                    20070227);
+    packet(SMSG_QUEST_ACTIVATE,            0x02b7,   7, &QuestRecv::processActivateQuest,               20070227);
     packet(SMSG_ITEM_DAMAGED,              0x02bb,   8, &InventoryRecv::processItemDamaged,             20070227);
     packet(SMSG_COLOR_MESSAGE,             0x02c1,  -1, &ChatRecv::processColorChat,                    20070227);
     packet(SMSG_PARTY_INVITATION_STATS,    0x02c9,   3, &PartyRecv::processPartyInvitationStats,        20070227);
@@ -210,6 +219,9 @@ packet(SMSG_BEING_STATUS_CHANGE,           0x043f,  25, &BeingRecv::processBeing
 // 20090603
 packet(SMSG_PARTY_SETTINGS,                0x07d8,   8, &PartyRecv::processPartySettings,               20090603);
 packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 269, &PlayerRecv::processPlayerShortcuts,            20090603);
+
+// 20090715
+packet(SMSG_PLAYER_UPDATE_SKILL,           0x07e1,  15, &SkillRecv::processSkillUpdate,                 20090715);
 
 // 20090805
 packet(SMSG_FORMAT_MESSAGE_NUMBER,         0x07e2,   8, &ChatRecv::processFormatMessageNumber,          20090805);
@@ -296,6 +308,7 @@ if (packetVersion >= 20120925)
     packet(SMSG_PLAYER_STORAGE_EQUIP,      0x0996,  -1, &InventoryRecv::processPlayerStorageEquip,      20120925);
     packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0997,  -1, &BeingRecv::processBeingViewEquipment,          20120925);
     packet(SMSG_PLAYER_EQUIP,              0x0999,  11, &InventoryRecv::processPlayerEquip,             20120925);
+    packet(SMSG_PLAYER_UNEQUIP,            0x099a,   9, &InventoryRecv::processPlayerUnEquip,           20120925);
 }
 
 
@@ -322,8 +335,12 @@ packet(SMSG_BEING_SPAWN,                   0x09dc,  -1, &BeingRecv::processBeing
 packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
 
 // 20141022
-packet(SMSG_MAP_LOGIN_SUCCESS,             0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
-packet(SMSG_PLAYER_SHORTCUTS,              0x0a00, 269, &PlayerRecv::processPlayerShortcuts,            20141022);
+if (packetVersion >= 20141022)
+{
+    packet(SMSG_MAP_LOGIN_SUCCESS,         0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
+    packet(SMSG_PLAYER_SHORTCUTS,          0x0a00, 269, &PlayerRecv::processPlayerShortcuts,            20141022);
+    packet(SMSG_QUEST_LIST,                0x097a,  -1, &QuestRecv::processAddQuests,                   20141022);
+}
 
 // login server, unknown version
 packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
@@ -514,25 +531,15 @@ packet(SMSG_PLAYER_STAT_UPDATE_5,          0x00bd,  44, &PlayerRecv::processPlay
 packet(SMSG_PLAYER_STAT_UPDATE_6,          0x00be,   5, &Ea::PlayerRecv::processPlayerStatUpdate6,      0);
 packet(SMSG_PLAYER_STOP,                   0x0088,  10, &Ea::BeingRecv::processPlayerStop,              0);
 packet(SMSG_PLAYER_STORAGE_CLOSE,          0x00f8,   2, &Ea::InventoryRecv::processPlayerStorageClose,  0);
-
-// 20150000 or near
-packet(SMSG_PLAYER_STORAGE_PASSWORD,       0x023a,   4, &InventoryRecv::processPlayerStoragePassword,   0);
-packet(SMSG_PLAYER_STORAGE_PASSWORD_RESULT, 0x023c,  6, &InventoryRecv::processPlayerStoragePasswordResult, 0);
 packet(SMSG_PLAYER_STORAGE_REMOVE,         0x00f6,   8, &InventoryRecv::processPlayerStorageRemove,     0);
 packet(SMSG_PLAYER_STORAGE_STATUS,         0x00f2,   6, &Ea::InventoryRecv::processPlayerStorageStatus, 0);
-packet(SMSG_PLAYER_UNEQUIP,                0x099a,   9, &InventoryRecv::processPlayerUnEquip,           0);
-packet(SMSG_PLAYER_UPDATE_SKILL,           0x07e1,  15, &SkillRecv::processSkillUpdate,                 0);
-packet(SMSG_PLAYER_UPGRADE_MESSAGE,        0x0223,   8, &PlayerRecv::processPlayerUpgradeMessage,       0);
 packet(SMSG_PLAYER_USE_CARD,               0x017b,  -1, &InventoryRecv::processPlayerUseCard,           0);
 packet(SMSG_PLAYER_WARP,                   0x0091,  22, &Ea::PlayerRecv::processPlayerWarp,             0);
-packet(SMSG_PVP_INFO,                      0x0210,  22, &PlayerRecv::processPvpInfo,                    0);
 packet(SMSG_PVP_MAP_MODE,                  0x0199,   4, &Ea::BeingRecv::processPvpMapMode,              0);
 packet(SMSG_PVP_SET,                       0x019a,  14, &BeingRecv::processPvpSet,                      0);
-packet(SMSG_QUEST_ACTIVATE,                0x02b7,   7, &QuestRecv::processActivateQuest,               0);
-packet(SMSG_QUEST_ADD,                     0x02b3, 107, &QuestRecv::processAddQuest,                    0);
-packet(SMSG_QUEST_LIST,                    0x097a,  -1, &QuestRecv::processAddQuests,                   0);
+
+// 20150000 or near
 packet(SMSG_QUEST_LIST_OBJECTIVES,         0x02b2,  -1, &QuestRecv::processAddQuestsObjectives,         0);
-packet(SMSG_QUEST_LIST_OUTDATED,           0x02b1,  -1, nullptr,                                        0);
 packet(SMSG_QUEST_NPC_EFFECT,              0x0446,  14, &QuestRecv::processNpcQuestEffect,              0);
 packet(SMSG_QUEST_REMOVE,                  0x02b4,   6, &QuestRecv::processRemoveQuest,                 0);
 packet(SMSG_QUEST_UPDATE_OBJECTIVES,       0x02b5,  -1, &QuestRecv::processUpdateQuestsObjectives,      0);
