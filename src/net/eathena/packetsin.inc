@@ -32,6 +32,7 @@ packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processP
 packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
 packet(SMSG_SKILL_DAMAGE,                  0x0114,  31, &BeingRecv::processSkillDamage,                 1);
 packet(SMSG_SKILL_ENTRY,                   0x011f,  16, &BeingRecv::processSkillEntry,                  1);
+packet(SMSG_PLAYER_CART_ADD,               0x0124,  21, &InventoryRecv::processPlayerCartAdd,           1);
 packet(SMSG_VENDING_ITEMS_LIST,            0x0133,  -1, &VendingRecv::processItemsList,                 1);
 packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpen,                      1);
 packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                1);
@@ -200,7 +201,6 @@ packet(SMSG_PLAYER_ARROW_EQUIP,            0x013c,   4, &Ea::InventoryRecv::proc
 packet(SMSG_PLAYER_ARROW_MESSAGE,          0x013b,   4, &Ea::PlayerRecv::processPlayerArrowMessage,     0);
 packet(SMSG_PLAYER_ATTACK_RANGE,           0x013a,   4, &Ea::InventoryRecv::processPlayerAttackRange,   0);
 packet(SMSG_PLAYER_CART_ADD_ERROR,         0x012c,   3, &InventoryRecv::processCartAddError,            0);
-packet(SMSG_PLAYER_CART_ADD_OUTDATED,      0x0124,  21, nullptr,                                        0);
 packet(SMSG_PLAYER_CART_REMOVE,            0x0125,   8, &InventoryRecv::processPlayerCartRemove,        0);
 packet(SMSG_PLAYER_CHAT,                   0x008e,  -1, &ChatRecv::processChat,                         0);
 packet(SMSG_PLAYER_GUILD_PARTY_INFO,       0x0195, 102, &BeingRecv::processPlayerGuilPartyInfo,         0);

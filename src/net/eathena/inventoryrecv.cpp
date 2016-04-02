@@ -852,8 +852,12 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     int amount = msg.readInt32("count");
     const int itemId = msg.readInt16("item id");
-    const ItemTypeT itemType = static_cast<ItemTypeT>(
-        msg.readUInt8("item type"));
+    ItemTypeT itemType = ItemType::Unknown;
+    if (msg.getVersion() >= 5)
+    {
+        itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
+    }
     const uint8_t identified = msg.readUInt8("identified");
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");
