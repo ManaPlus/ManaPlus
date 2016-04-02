@@ -23,6 +23,7 @@
 // very outdated packets
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               1);
 packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper,                      1);
+packet(SMSG_WHISPER_RESPONSE,              0x0098,   3, &ChatRecv::processWhisperResponse,              1);
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
 packet(SMSG_TRADE_REQUEST,                 0x00e5,  26, &TradeRecv::processTradeRequest,                1);
 packet(SMSG_TRADE_RESPONSE_OUTDATED,       0x00e7,   3, nullptr,                                        0);
@@ -411,12 +412,16 @@ if (packetVersion >= 20130731)
 }
 
 // 20131223
-packet(SMSG_BEING_ACTION2,                 0x08c8,  34, &BeingRecv::processBeingAction2,                20131223);
-packet(SMSG_NPC_MARKET_OPEN,               0x09d5,  -1, &MarketRecv::processMarketOpen,                 20131223);
-packet(SMSG_NPC_MARKET_BUY_ACK,            0x09d7,  -1, &MarketRecv::processMarketBuyAck,               20131223);
-packet(SMSG_BEING_MOVE,                    0x09db,  -1, &BeingRecv::processBeingMove,                   20131223);
-packet(SMSG_BEING_SPAWN,                   0x09dc,  -1, &BeingRecv::processBeingSpawn,                  20131223);
-packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
+if (packetVersion >= 20131223)
+{
+    packet(SMSG_BEING_ACTION2,             0x08c8,  34, &BeingRecv::processBeingAction2,                20131223);
+    packet(SMSG_NPC_MARKET_OPEN,           0x09d5,  -1, &MarketRecv::processMarketOpen,                 20131223);
+    packet(SMSG_NPC_MARKET_BUY_ACK,        0x09d7,  -1, &MarketRecv::processMarketBuyAck,               20131223);
+    packet(SMSG_BEING_MOVE,                0x09db,  -1, &BeingRecv::processBeingMove,                   20131223);
+    packet(SMSG_BEING_SPAWN,               0x09dc,  -1, &BeingRecv::processBeingSpawn,                  20131223);
+    packet(SMSG_BEING_VISIBLE,             0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
+    packet(SMSG_WHISPER_RESPONSE,          0x09df,   7, &ChatRecv::processWhisperResponse,              20131223);
+}
 
 // 20141016
 packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRouletteOpenAck,          20141016);
@@ -659,7 +664,6 @@ packet(SMSG_WALK_RESPONSE,                 0x0087,  12, &PlayerRecv::processWalk
 packet(SMSG_WEDDING_EFFECT,                0x01ea,   6, &BeingRecv::processWddingEffect,                0);
 
 // 20150000 or near
-packet(SMSG_WHISPER_RESPONSE,              0x09df,   7, &ChatRecv::processWhisperResponse,              0);
 packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWhoAnswer,                0);
 
 // evol packets

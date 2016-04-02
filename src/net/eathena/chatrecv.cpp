@@ -325,7 +325,8 @@ void ChatRecv::processWhisperResponse(Net::MessageIn &msg)
     BLOCK_START("ChatRecv::processWhisperResponse")
 
     const uint8_t type = msg.readUInt8("response");
-    msg.readInt32("unknown");
+    if (msg.getVersion() >= 20131223)
+        msg.readInt32("unknown");
     if (type == 1 && chatWindow)
     {
         const std::string nick = Ea::ChatRecv::getLastWhisperNick();
