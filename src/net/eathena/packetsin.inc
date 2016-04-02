@@ -383,6 +383,12 @@ if (packetVersion >= 20060424)
     packet(SMSG_MERCENARY_UPDATE,          0x02a2,   8, &MercenaryRecv::processMercenaryUpdate,         20060424);
 }
 
+// 20061218
+if (packetVersion >= 20061218)
+{
+    packet(SMSG_PLAYER_INVENTORY_ADD,      0x029a,  27, &InventoryRecv::processPlayerInventoryAdd,      20061218);
+}
+
 // 20070227
 if (packetVersion >= 20070227)
 {
@@ -416,6 +422,7 @@ if (packetVersion >= 20071002)
     packet(SMSG_PLAYER_CART_ITEMS,         0x01ef,  -1, &InventoryRecv::processPlayerCartItems,         20071002);
     packet(SMSG_PLAYER_STORAGE_ITEMS,      0x0295,  -1, &InventoryRecv::processPlayerStorage,           20071002);
     packet(SMSG_PARTY_ITEM_PICKUP,         0x02b8,  22, &PartyRecv::processPartyItemPickup,             20071002);
+    packet(SMSG_PLAYER_INVENTORY_ADD,      0x02d4,  29, &InventoryRecv::processPlayerInventoryAdd,      20071002);
 }
 
 // 20071023

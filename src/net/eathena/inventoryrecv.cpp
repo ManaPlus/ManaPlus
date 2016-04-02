@@ -198,12 +198,18 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readInt16("card");
-    const int equipType = msg.readInt32("location");
+    int equipType;
+    if (msg.getVersion() >= 20120925)
+        equipType = msg.readInt32("location");
+    else
+        equipType = msg.readInt16("location");
     const ItemTypeT itemType = static_cast<ItemTypeT>(
         msg.readUInt8("item type"));
     const unsigned char err = msg.readUInt8("result");
-    msg.readInt32("hire expire date");
-    msg.readInt16("bind on equip");
+    if (msg.getVersion() >= 20061218)
+        msg.readInt32("hire expire date");
+    if (msg.getVersion() >= 20071002)
+        msg.readInt16("bind on equip");
     if ((serverVersion >= 8 || serverVersion == 0) &&
         msg.getVersion() >= 20150226)
     {
