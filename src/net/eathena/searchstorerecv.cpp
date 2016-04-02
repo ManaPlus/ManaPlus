@@ -95,7 +95,8 @@ void SearchStoreRecv::processSearchOpen(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("effect");
-    msg.readUInt8("uses");
+    if (msg.getVersion() >= 20100701)
+        msg.readUInt8("uses");
 }
 
 void SearchStoreRecv::processSearchClickAck(Net::MessageIn &msg)

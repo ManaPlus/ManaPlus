@@ -138,7 +138,10 @@ if (packetVersion >= 20060424)
 if (packetVersion >= 20070227)
 {
     packet(SMSG_NPC_CASH_BUY_ACK,          0x0289,  12, &CashShopRecv::processCashShopBuyAck,           20070227);
+    packet(SMSG_QUEST_LIST_OBJECTIVES,     0x02b2,  -1, &QuestRecv::processAddQuestsObjectives,         20070227);
     packet(SMSG_QUEST_ADD,                 0x02b3, 107, &QuestRecv::processAddQuest,                    20070227);
+    packet(SMSG_QUEST_REMOVE,              0x02b4,   6, &QuestRecv::processRemoveQuest,                 20070227);
+    packet(SMSG_QUEST_UPDATE_OBJECTIVES,   0x02b5,  -1, &QuestRecv::processUpdateQuestsObjectives,      20070227);
     packet(SMSG_QUEST_ACTIVATE,            0x02b7,   7, &QuestRecv::processActivateQuest,               20070227);
     packet(SMSG_ITEM_DAMAGED,              0x02bb,   8, &InventoryRecv::processItemDamaged,             20070227);
     packet(SMSG_COLOR_MESSAGE,             0x02c1,  -1, &ChatRecv::processColorChat,                    20070227);
@@ -216,6 +219,9 @@ packet(SMSG_PLAYER_DELETE_SKILL,           0x0441,   4, &SkillRecv::processSkill
 // 20090121
 packet(SMSG_BEING_STATUS_CHANGE,           0x043f,  25, &BeingRecv::processBeingStatusChange,           20090121);
 
+// 20090218
+packet(SMSG_QUEST_NPC_EFFECT,              0x0446,  14, &QuestRecv::processNpcQuestEffect,              20090218);
+
 // 20090603
 packet(SMSG_PARTY_SETTINGS,                0x07d8,   8, &PartyRecv::processPartySettings,               20090603);
 packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 269, &PlayerRecv::processPlayerShortcuts,            20090603);
@@ -264,6 +270,19 @@ packet(SMSG_BUYINGSTORE_SELL_FAILED,       0x081a,   4, &BuyingStoreRecv::proces
 packet(SMSG_BUYINGSTORE_REPORT,            0x081b,  10, &BuyingStoreRecv::processBuyingStoreReport,     20100420);
 packet(SMSG_BUYINGSTORE_DELETE_ITEM,       0x081c,  10, &BuyingStoreRecv::processBuyingStoreDeleteItem, 20100420);
 packet(SMSG_BUYINGSTORE_SELLER_SELL_FAILED, 0x0824,   6, &BuyingStoreRecv::processBuyingStoreSellerSellFailed, 20100420);
+
+// 20100608
+if (packetVersion >= 20100608)
+{
+    packet(SMSG_SEARCHSTORE_OPEN,          0x083a,   4, &SearchStoreRecv::processSearchOpen,            20100608);
+    packet(SMSG_SEARCHSTORE_CLICK_ACK,     0x083d,   6, &SearchStoreRecv::processSearchClickAck,        20100608);
+}
+
+// 20100701
+if (packetVersion >= 20100701)
+{
+    packet(SMSG_SEARCHSTORE_OPEN,          0x083a,   5, &SearchStoreRecv::processSearchOpen,            20100701);
+}
 
 // 20100803
 packet(SMSG_GUILD_EXPULSION,               0x0839,  66, &GuildRecv::processGuildExpulsion,              20100803);
@@ -333,6 +352,12 @@ packet(SMSG_NPC_MARKET_BUY_ACK,            0x09d7,  -1, &MarketRecv::processMark
 packet(SMSG_BEING_MOVE,                    0x09db,  -1, &BeingRecv::processBeingMove,                   20131223);
 packet(SMSG_BEING_SPAWN,                   0x09dc,  -1, &BeingRecv::processBeingSpawn,                  20131223);
 packet(SMSG_BEING_VISIBLE,                 0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
+
+// 20141016
+packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRouletteOpenAck,          20141016);
+packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c, 344, &RouletteRecv::processRouletteInfoAckType,      20141016);
+packet(SMSG_ROULETTE_GENERATE_ACK_TYPE,    0x0a20,  21, &RouletteRecv::processRouletteGenerateAckType,  20141016);
+packet(SMSG_ROULETTE_RECV_ITEM_ACK,        0x0a22,   5, &RouletteRecv::processRouletteItemAck,          20141016);
 
 // 20141022
 if (packetVersion >= 20141022)
@@ -537,20 +562,11 @@ packet(SMSG_PLAYER_USE_CARD,               0x017b,  -1, &InventoryRecv::processP
 packet(SMSG_PLAYER_WARP,                   0x0091,  22, &Ea::PlayerRecv::processPlayerWarp,             0);
 packet(SMSG_PVP_MAP_MODE,                  0x0199,   4, &Ea::BeingRecv::processPvpMapMode,              0);
 packet(SMSG_PVP_SET,                       0x019a,  14, &BeingRecv::processPvpSet,                      0);
+packet(SMSG_RANKS_LIST,                    0x097d, 288, &BeingRecv::processRanksList,                   0);
+packet(SMSG_SCRIPT_MESSAGE,                0x08b3,  -1, &ChatRecv::processScriptMessage,                0);
 
 // 20150000 or near
-packet(SMSG_QUEST_LIST_OBJECTIVES,         0x02b2,  -1, &QuestRecv::processAddQuestsObjectives,         0);
-packet(SMSG_QUEST_NPC_EFFECT,              0x0446,  14, &QuestRecv::processNpcQuestEffect,              0);
-packet(SMSG_QUEST_REMOVE,                  0x02b4,   6, &QuestRecv::processRemoveQuest,                 0);
-packet(SMSG_QUEST_UPDATE_OBJECTIVES,       0x02b5,  -1, &QuestRecv::processUpdateQuestsObjectives,      0);
-packet(SMSG_RANKS_LIST,                    0x097d, 288, &BeingRecv::processRanksList,                   0);
-packet(SMSG_ROULETTE_GENERATE_ACK_TYPE,    0x0a20,  21, &RouletteRecv::processRouletteGenerateAckType,  0);
-packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c, 344, &RouletteRecv::processRouletteInfoAckType,      0);
-packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRouletteOpenAck,          0);
-packet(SMSG_ROULETTE_RECV_ITEM_ACK,        0x0a22,   5, &RouletteRecv::processRouletteItemAck,          0);
-packet(SMSG_SCRIPT_MESSAGE,                0x08b3,  -1, &ChatRecv::processScriptMessage,                0);
-packet(SMSG_SEARCHSTORE_CLICK_ACK,         0x083d,   6, &SearchStoreRecv::processSearchClickAck,        0);
-packet(SMSG_SEARCHSTORE_OPEN,              0x083a,   5, &SearchStoreRecv::processSearchOpen,            0);
+
 packet(SMSG_SEARCHSTORE_SEARCH_ACK,        0x0836,   0, &SearchStoreRecv::processSearchAck,             0);
 packet(SMSG_SEARCHSTORE_SEARCH_FAILED,     0x0837,   0, &SearchStoreRecv::processSearchFailed,          0);
 packet(SMSG_SERVER_PING,                   0x007f,   6, &GameRecv::processServerTick,                   0);
