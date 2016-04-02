@@ -606,19 +606,32 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerStorageEquip")
     msg.readInt16("len");
-    int sz;
-    if ((serverVersion >= 8 || serverVersion == 0) &&
-        msg.getVersion() >= 20150226)
+
+    int packetLen = 2 + 2 + 1 + 1 + 8;
+    if (msg.getVersion() >= 20120925)
+        packetLen += 4 + 4 + 1;
+    else
+        packetLen += 1 + 2 + 2 + 1;
+    if (msg.getVersion() >= 20071002)
+        packetLen += 4;
+    if (msg.getVersion() >= 20080102)
+        packetLen += 2;
+    if (msg.getVersion() >= 20100629)
+        packetLen += 2;
+    if (msg.getVersion() >= 20150226)
+        packetLen += 26;
+
+    int number;
+    if (msg.getVersion() >= 20120925)
     {
-        sz = 57;
+        msg.readString(24, "storage name");
+        number = (msg.getLength() - 4 - 24) / packetLen;
     }
     else
     {
-        sz = 31;
+        number = (msg.getLength() - 4) / packetLen;
     }
-    const int number = (msg.getLength() - 4 - 24) / sz;
 
-    msg.readString(24, "storage name");
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
@@ -626,15 +639,28 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
         const int amount = 1;
-        msg.readInt32("location");
-        msg.readInt32("wear state");
+        if (msg.getVersion() >= 20120925)
+        {
+            msg.readInt32("location");
+            msg.readInt32("wear state");
+        }
+        else
+        {
+            msg.readUInt8("identified");
+            msg.readInt16("location");
+            msg.readInt16("wear state");
+            msg.readUInt8("is damaged");
+        }
         const uint8_t refine = msg.readUInt8("refine level");
         int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
             cards[f] = msg.readInt16("card");
-        msg.readInt32("hire expire date");
-        msg.readInt16("bind on equip");
-        msg.readInt16("sprite");
+        if (msg.getVersion() >= 20071002)
+            msg.readInt32("hire expire date");
+        if (msg.getVersion() >= 20080102)
+            msg.readInt16("bind on equip");
+        if (msg.getVersion() >= 20100629)
+            msg.readInt16("sprite");
         if ((serverVersion >= 8 || serverVersion == 0) &&
             msg.getVersion() >= 20150226)
         {
@@ -648,7 +674,10 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         }
 
         ItemFlags flags;
-        flags.byte = msg.readUInt8("flags");
+        if (msg.getVersion() >= 20120925)
+            flags.byte = msg.readUInt8("flags");
+        else
+            flags.byte = 0;
 
         Ea::InventoryRecv::mInventoryItems.push_back(Ea::InventoryItem(
             index,
