@@ -23,6 +23,7 @@
 // very outdated packets
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               1);
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
+packet(SMSG_TRADE_REQUEST,                 0x00e5,  26, &TradeRecv::processTradeRequest,                1);
 packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processPlayerStorageAdd,        1);
 packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
 packet(SMSG_SKILL_DAMAGE,                  0x0114,  31, &BeingRecv::processSkillDamage,                 1);
@@ -44,6 +45,12 @@ packet(SMSG_BEING_CHANGE_LOOKS2,           0x01d7,  11, &BeingRecv::processBeing
 // 5
 packet(SMSG_PLAYER_STORAGE_ADD,            0x01c4,  22, &InventoryRecv::processPlayerStorageAdd,        5);
 packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processPlayerCartAdd,           5);
+
+// 6
+if (packetVersion >= 6)
+{
+    packet(SMSG_TRADE_REQUEST,             0x01f4,  32, &TradeRecv::processTradeRequest,                6);
+}
 
 // 20040816
 packet(SMSG_ADMIN_ACCOUNT_STATS,           0x0214,  42, &AdminRecv::processAccountStats,                20040816);
@@ -67,6 +74,7 @@ packet(SMSG_PLAYER_UPGRADE_MESSAGE,        0x0223,   8, &PlayerRecv::processPlay
 
 // 20050328
 packet(SMSG_PLAYER_FAME_TAEKWON,           0x0224,  10, &PlayerRecv::processPlayerFameTaekwon,          20050328);
+packet(SMSG_TAEKWON_RANKS_LIST,            0x0226, 282, &BeingRecv::processTaekwonRanksList,            20050328);
 
 // 20050411
 if (packetVersion >= 20050411)
@@ -112,6 +120,7 @@ packet(SMSG_MAIL_DELETE_MAIL_ACK,          0x0257,   8, &MailRecv::processDelete
 packet(SMSG_AUCTION_SET_ITEM,              0x0256,   5, &AuctionRecv::processAuctionSetItem,            20050912);
 
 // 20051010
+packet(SMSG_STARS_KILL,                    0x020e,  32, &BeingRecv::processStarsKill,                   20051010);
 packet(SMSG_PLAYER_COOKING_LIST,           0x025a,  -1, &InventoryRecv::processPlayerCookingList,       20051010);
 
 // 20051017
@@ -243,6 +252,7 @@ packet(SMSG_FORMAT_MESSAGE_NUMBER,         0x07e2,   8, &ChatRecv::processFormat
 packet(SMSG_FORMAT_MESSAGE_SKILL,          0x07e6,   8, &ChatRecv::processFormatMessageSkill,           20090818);
 
 // 20090922
+packet(SMSG_SKILL_ITEM_LIST_WINDOW,        0x07e3,   6, &SkillRecv::processSkillItemListWindow,         20090922);
 packet(SMSG_CHAR_CAPTCHA_NOT_SUPPORTED,    0x07e9,   5, &CharServerRecv::processCharCaptchaNotSupported, 20090922);
 
 // 20091027
@@ -312,6 +322,9 @@ if (packetVersion >= 20110718)
 {
     packet(SMSG_SKILL_ENTRY,               0x08c7,  -1, &BeingRecv::processSkillEntry,                  20110718);
 }
+
+// 20111005
+packet(SMSG_SKILL_SNAP,                    0x08d2,  10, &BeingRecv::processBeingSlide,                  20111005);
 
 // 20120000
 packet(SMSG_LOGIN_ERROR2,                  0x083e,  26, &LoginRecv::processLoginError2,                 20120000);
@@ -604,28 +617,22 @@ packet(SMSG_SKILL_ARROW_CREATE_LIST,       0x01ad,  -1, &SkillRecv::processSkill
 packet(SMSG_SKILL_AUTO_CAST,               0x0147,  39, &BeingRecv::processSkillAutoCast,               0);
 packet(SMSG_SKILL_CAST_CANCEL,             0x01b9,   6, &BeingRecv::processSkillCancel,                 0);
 packet(SMSG_SKILL_DEVOTION_EFFECT,         0x01cf,  28, &SkillRecv::processSkillDevotionEffect,         0);
-
-// 20150000 or near
 packet(SMSG_SKILL_FAILED,                  0x0110,  10, &SkillRecv::processSkillFailed,                 0);
 packet(SMSG_SKILL_GROUND_DAMAGE_UNUSED,    0x0115,  35, nullptr,                                        0);
 packet(SMSG_SKILL_GROUND_NO_DAMAGE,        0x0117,  18, &BeingRecv::processSkillGroundNoDamage,         0);
-packet(SMSG_SKILL_ITEM_LIST_WINDOW,        0x07e3,   6, &SkillRecv::processSkillItemListWindow,         0);
 packet(SMSG_SKILL_MEMO_MESSAGE,            0x011e,   3, &SkillRecv::processSkillMemoMessage,            0);
 packet(SMSG_SKILL_NO_DAMAGE,               0x011a,  15, &Ea::BeingRecv::processSkillNoDamage,           0);
-packet(SMSG_SKILL_SNAP,                    0x08d2,  10, &BeingRecv::processBeingSlide,                  0);
 packet(SMSG_SKILL_UNIT_UPDATE,             0x01ac,   6, &SkillRecv::processSkillUnitUpdate,             0);
 packet(SMSG_SKILL_WARP_POINT,              0x011c,  68, &SkillRecv::processSkillWarpPoint,              0);
 packet(SMSG_SOLVE_CHAR_NAME,               0x0194,  30, &BeingRecv::processSolveCharName,               0);
 packet(SMSG_SPIRIT_BALLS,                  0x01d0,   8, &BeingRecv::processSpiritBalls,                 0);
 packet(SMSG_SPIRIT_BALL_SINGLE,            0x01e1,   8, &BeingRecv::processSpiritBalls,                 0);
-packet(SMSG_STARS_KILL,                    0x020e,  32, &BeingRecv::processStarsKill,                   0);
-packet(SMSG_TAEKWON_RANKS_LIST,            0x0226, 282, &BeingRecv::processTaekwonRanksList,            0);
 packet(SMSG_TRADE_CANCEL,                  0x00ee,   2, &Ea::TradeRecv::processTradeCancel,             0);
 packet(SMSG_TRADE_COMPLETE,                0x00f0,   3, &Ea::TradeRecv::processTradeComplete,           0);
 packet(SMSG_TRADE_ITEM_ADD_RESPONSE,       0x00ea,   5, &TradeRecv::processTradeItemAddResponse,        0);
 packet(SMSG_TRADE_OK,                      0x00ec,   3, &Ea::TradeRecv::processTradeOk,                 0);
-packet(SMSG_TRADE_REQUEST,                 0x01f4,  32, &TradeRecv::processTradeRequest,                0);
-packet(SMSG_TRADE_REQUEST_OUTDATED,        0x00e5,  26, nullptr,                                        0);
+
+// 20150000 or near
 packet(SMSG_TRADE_RESPONSE,                0x01f5,   9, &TradeRecv::processTradeResponse,               0);
 packet(SMSG_TRADE_RESPONSE_OUTDATED,       0x00e7,   3, nullptr,                                        0);
 packet(SMSG_TRADE_UNDO,                    0x00f1,   2, &TradeRecv::processTradeUndo,                   0);
