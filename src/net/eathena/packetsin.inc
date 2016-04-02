@@ -33,6 +33,7 @@ packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processP
 packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
 packet(SMSG_SKILL_DAMAGE,                  0x0114,  31, &BeingRecv::processSkillDamage,                 1);
 packet(SMSG_SKILL_ENTRY,                   0x011f,  16, &BeingRecv::processSkillEntry,                  1);
+packet(SMSG_PLAYER_CART_EQUIP,             0x0122,  -1, &InventoryRecv::processPlayerCartEquip,         1);
 packet(SMSG_PLAYER_CART_ADD,               0x0124,  21, &InventoryRecv::processPlayerCartAdd,           1);
 packet(SMSG_VENDING_ITEMS_LIST,            0x0133,  -1, &VendingRecv::processItemsList,                 1);
 packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpen,                      1);
@@ -422,6 +423,7 @@ if (packetVersion >= 20071002)
     packet(SMSG_PLAYER_INVENTORY,          0x01ee,  -1, &InventoryRecv::processPlayerInventory,         20071002);
     packet(SMSG_PLAYER_CART_ITEMS,         0x01ef,  -1, &InventoryRecv::processPlayerCartItems,         20071002);
     packet(SMSG_PLAYER_STORAGE_ITEMS,      0x0295,  -1, &InventoryRecv::processPlayerStorage,           20071002);
+    packet(SMSG_PLAYER_CART_EQUIP,         0x0297,  -1, &InventoryRecv::processPlayerCartEquip,         20071002);
     packet(SMSG_PARTY_ITEM_PICKUP,         0x02b8,  22, &PartyRecv::processPartyItemPickup,             20071002);
     packet(SMSG_PLAYER_INVENTORY_ADD,      0x02d4,  29, &InventoryRecv::processPlayerInventoryAdd,      20071002);
 }
@@ -443,6 +445,7 @@ packet(SMSG_BEING_ACTION2,                 0x02e1,  33, &BeingRecv::processBeing
 if (packetVersion >= 20080102)
 {
     packet(SMSG_PLAYER_EQUIPMENT,          0x02d0,  -1, &InventoryRecv::processPlayerEquipment,         20080102);
+    packet(SMSG_PLAYER_CART_EQUIP,         0x02d2,  -1, &InventoryRecv::processPlayerCartEquip,         20080102);
     packet(SMSG_PLAYER_INVENTORY,          0x02e8,  -1, &InventoryRecv::processPlayerInventory,         20080102);
     packet(SMSG_PLAYER_CART_ITEMS,         0x02e9,  -1, &InventoryRecv::processPlayerCartItems,         20080102);
     packet(SMSG_PLAYER_STORAGE_ITEMS,      0x02ea,  -1, &InventoryRecv::processPlayerStorage,           20080102);
@@ -561,6 +564,7 @@ if (packetVersion >= 20100608)
 if (packetVersion >= 20100629)
 {
     packet(SMSG_PLAYER_EQUIPMENT,          0x02d0,  -1, &InventoryRecv::processPlayerEquipment,         20100629);
+    packet(SMSG_PLAYER_CART_EQUIP,         0x02d2,  -1, &InventoryRecv::processPlayerCartEquip,         20100629);
 }
 
 // 20100701
