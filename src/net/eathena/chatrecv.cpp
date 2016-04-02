@@ -303,9 +303,13 @@ void ChatRecv::processGmChat2(Net::MessageIn &msg)
 void ChatRecv::processWhisper(Net::MessageIn &msg)
 {
     BLOCK_START("ChatRecv::processWhisper")
-    const int chatMsgLength = msg.readInt16("len") - 32;
+    int packetLen = 28;
+    if (msg.getVersion() >= 20091104)
+        packetLen += 4;
+    const int chatMsgLength = msg.readInt16("len") - packetLen;
     std::string nick = msg.readString(24, "nick");
-    msg.readInt32("admin flag");
+    if (msg.getVersion() >= 20091104)
+        msg.readInt32("admin flag");
 
     if (chatMsgLength <= 0)
     {

@@ -22,6 +22,7 @@
 
 // very outdated packets
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               1);
+packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper,                      1);
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
 packet(SMSG_TRADE_REQUEST,                 0x00e5,  26, &TradeRecv::processTradeRequest,                1);
 packet(SMSG_TRADE_RESPONSE_OUTDATED,       0x00e7,   3, nullptr,                                        0);
@@ -262,6 +263,12 @@ packet(SMSG_CHAR_CAPTCHA_NOT_SUPPORTED,    0x07e9,   5, &CharServerRecv::process
 // 20091027
 packet(SMSG_PLAYER_GET_EXP,                0x07f6,  14, &PlayerRecv::processPlayerGetExp,               20091027);
 
+// 20091104
+if (packetVersion >= 20091104)
+{
+    packet(SMSG_WHISPER,                   0x0097,  -1, &ChatRecv::processWhisper,                      20091104);
+}
+
 // 20091117
 packet(SMSG_PLAYER_INVENTORY_REMOVE2,      0x07fa,   8, &InventoryRecv::processPlayerInventoryRemove2,  20091117);
 
@@ -420,9 +427,10 @@ packet(SMSG_ROULETTE_RECV_ITEM_ACK,        0x0a22,   5, &RouletteRecv::processRo
 // 20141022
 if (packetVersion >= 20141022)
 {
-    packet(SMSG_MAP_LOGIN_SUCCESS,         0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
-    packet(SMSG_PLAYER_SHORTCUTS,          0x0a00, 269, &PlayerRecv::processPlayerShortcuts,            20141022);
     packet(SMSG_QUEST_LIST,                0x097a,  -1, &QuestRecv::processAddQuests,                   20141022);
+    packet(SMSG_PLAYER_SHORTCUTS,          0x0a00, 269, &PlayerRecv::processPlayerShortcuts,            20141022);
+    packet(SMSG_MAP_LOGIN_SUCCESS,         0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
+    packet(SMSG_VENDING_OPEN_STATUS,       0x0a28,   3, &VendingRecv::processOpenStatus,                20141022);
 }
 
 // login server, unknown version
@@ -644,15 +652,13 @@ packet(SMSG_TRADE_OK,                      0x00ec,   3, &Ea::TradeRecv::processT
 packet(SMSG_TRADE_UNDO,                    0x00f1,   2, &TradeRecv::processTradeUndo,                   0);
 packet(SMSG_VENDING_BUY_ACK,               0x0135,   7, &VendingRecv::processBuyAck,                    0);
 packet(SMSG_VENDING_HIDE_BOARD,            0x0132,   6, &VendingRecv::processHideBoard,                 0);
-
-// 20150000 or near
 packet(SMSG_VENDING_OPEN_REQ,              0x012d,   4, &VendingRecv::processOpenReq,                   0);
-packet(SMSG_VENDING_OPEN_STATUS,           0x0a28,   3, &VendingRecv::processOpenStatus,                0);
 packet(SMSG_VENDING_REPORT,                0x0137,   6, &VendingRecv::processReport,                    0);
 packet(SMSG_VENDING_SHOW_BOARD,            0x0131,  86, &VendingRecv::processShowBoard,                 0);
 packet(SMSG_WALK_RESPONSE,                 0x0087,  12, &PlayerRecv::processWalkResponse,               0);
 packet(SMSG_WEDDING_EFFECT,                0x01ea,   6, &BeingRecv::processWddingEffect,                0);
-packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper,                      0);
+
+// 20150000 or near
 packet(SMSG_WHISPER_RESPONSE,              0x09df,   7, &ChatRecv::processWhisperResponse,              0);
 packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWhoAnswer,                0);
 
