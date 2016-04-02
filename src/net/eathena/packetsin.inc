@@ -153,6 +153,7 @@ if (packetVersion >= 20071002)
 {
     packet(SMSG_PLAYER_INVENTORY,          0x01ee,  -1, &InventoryRecv::processPlayerInventory,         20071002);
     packet(SMSG_PLAYER_CART_ITEMS,         0x01ef,  -1, &InventoryRecv::processPlayerCartItems,         20071002);
+    packet(SMSG_PLAYER_STORAGE_ITEMS,      0x0295,  -1, &InventoryRecv::processPlayerStorage,           20071002);
     packet(SMSG_PARTY_ITEM_PICKUP,         0x02b8,  22, &PartyRecv::processPartyItemPickup,             20071002);
 }
 
@@ -174,9 +175,11 @@ if (packetVersion >= 20080102)
 {
     packet(SMSG_PLAYER_INVENTORY,          0x02e8,  -1, &InventoryRecv::processPlayerInventory,         20080102);
     packet(SMSG_PLAYER_CART_ITEMS,         0x02e9,  -1, &InventoryRecv::processPlayerCartItems,         20080102);
+    packet(SMSG_PLAYER_STORAGE_ITEMS,      0x02ea,  -1, &InventoryRecv::processPlayerStorage,           20080102);
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
     packet(SMSG_BEING_FONT,                0x02ef,   8, &BeingRecv::processBeingFont,                   20080102);
 }
+
 
 // 20080318
 packet(SMSG_NPC_SHOW_PROGRESS_BAR,         0x02f0,  10, &NpcRecv::processNpcShowProgressBar,            20080318);
@@ -289,10 +292,12 @@ if (packetVersion >= 20120925)
     packet(SMSG_PLAYER_EQUIPMENT,          0x0992,  -1, &InventoryRecv::processPlayerEquipment,         20120925);
     packet(SMSG_PLAYER_CART_ITEMS,         0x0993,  -1, &InventoryRecv::processPlayerCartItems,         20120925);
     packet(SMSG_PLAYER_CART_EQUIP,         0x0994,  -1, &InventoryRecv::processPlayerCartEquip,         20120925);
+    packet(SMSG_PLAYER_STORAGE_ITEMS,      0x0995,  -1, &InventoryRecv::processPlayerStorage,           20120925);
     packet(SMSG_PLAYER_STORAGE_EQUIP,      0x0996,  -1, &InventoryRecv::processPlayerStorageEquip,      20120925);
     packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0997,  -1, &BeingRecv::processBeingViewEquipment,          20120925);
     packet(SMSG_PLAYER_EQUIP,              0x0999,  11, &InventoryRecv::processPlayerEquip,             20120925);
 }
+
 
 // 20121010
 packet(SMSG_MAP_TYPE_PROPERTY2,            0x099b,   8, &BeingRecv::processMapTypeProperty,             20121010);
@@ -508,10 +513,9 @@ packet(SMSG_PLAYER_STAT_UPDATE_4,          0x00bc,   6, &Ea::PlayerRecv::process
 packet(SMSG_PLAYER_STAT_UPDATE_5,          0x00bd,  44, &PlayerRecv::processPlayerStatUpdate5,          0);
 packet(SMSG_PLAYER_STAT_UPDATE_6,          0x00be,   5, &Ea::PlayerRecv::processPlayerStatUpdate6,      0);
 packet(SMSG_PLAYER_STOP,                   0x0088,  10, &Ea::BeingRecv::processPlayerStop,              0);
+packet(SMSG_PLAYER_STORAGE_CLOSE,          0x00f8,   2, &Ea::InventoryRecv::processPlayerStorageClose,  0);
 
 // 20150000 or near
-packet(SMSG_PLAYER_STORAGE_CLOSE,          0x00f8,   2, &Ea::InventoryRecv::processPlayerStorageClose,  0);
-packet(SMSG_PLAYER_STORAGE_ITEMS,          0x0995,  -1, &InventoryRecv::processPlayerStorage,           0);
 packet(SMSG_PLAYER_STORAGE_PASSWORD,       0x023a,   4, &InventoryRecv::processPlayerStoragePassword,   0);
 packet(SMSG_PLAYER_STORAGE_PASSWORD_RESULT, 0x023c,  6, &InventoryRecv::processPlayerStoragePasswordResult, 0);
 packet(SMSG_PLAYER_STORAGE_REMOVE,         0x00f6,   8, &InventoryRecv::processPlayerStorageRemove,     0);

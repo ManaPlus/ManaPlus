@@ -387,9 +387,27 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
     Ea::InventoryRecv::mInventoryItems.clear();
 
     msg.readInt16("len");
-    msg.readString(24, "storage name");
 
-    const int number = (msg.getLength() - 4 - 24) / 24;
+    int packetLen = 7;
+    if (msg.getVersion() >= 20120925)
+        packetLen += 4 + 1;
+    else
+        packetLen += 1 + 2;
+    if (packetVersion >= 5)
+        packetLen += 8;
+    if (msg.getVersion() >= 20080102)
+        packetLen += 4;
+
+    int number;
+    if (msg.getVersion() >= 20120925)
+    {
+        msg.readString(24, "storage name");
+        number = (msg.getLength() - 4 - 24) / packetLen;
+    }
+    else
+    {
+        number = (msg.getLength() - 4) / packetLen;
+    }
 
     for (int loop = 0; loop < number; loop++)
     {
@@ -397,14 +415,31 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
         const int itemId = msg.readInt16("item id");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
+        if (msg.getVersion() < 20120925)
+            msg.readUInt8("identified");
         const int amount = msg.readInt16("count");
-        msg.readInt32("wear state / equip");
+        if (msg.getVersion() >= 20120925)
+            msg.readInt32("wear state / equip");
+        else
+            msg.readInt16("wear state / equip");
         int cards[maxCards];
-        for (int f = 0; f < maxCards; f++)
-            cards[f] = msg.readInt16("card");
-        msg.readInt32("hire expire date (?)");
+        if (msg.getVersion() >= 5)
+        {
+            for (int f = 0; f < maxCards; f++)
+                cards[f] = msg.readInt16("card");
+        }
+        else
+        {
+            for (int f = 0; f < maxCards; f++)
+                cards[f] = 0;
+        }
+        if (msg.getVersion() >= 20080102)
+            msg.readInt32("hire expire date (?)");
         ItemFlags flags;
-        flags.byte = msg.readUInt8("flags");
+        if (msg.getVersion() >= 20120925)
+            flags.byte = msg.readUInt8("flags");
+        else
+            flags.byte = 0;
 
         Ea::InventoryRecv::mInventoryItems.push_back(Ea::InventoryItem(
             index,
