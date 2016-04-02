@@ -24,10 +24,12 @@
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               1);
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
 packet(SMSG_TRADE_REQUEST,                 0x00e5,  26, &TradeRecv::processTradeRequest,                1);
+packet(SMSG_TRADE_RESPONSE_OUTDATED,       0x00e7,   3, nullptr,                                        0);
 packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processPlayerStorageAdd,        1);
 packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
 packet(SMSG_SKILL_DAMAGE,                  0x0114,  31, &BeingRecv::processSkillDamage,                 1);
 packet(SMSG_SKILL_ENTRY,                   0x011f,  16, &BeingRecv::processSkillEntry,                  1);
+packet(SMSG_VENDING_ITEMS_LIST,            0x0133,  -1, &VendingRecv::processItemsList,                 1);
 packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                1);
 packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
 packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
@@ -50,6 +52,7 @@ packet(SMSG_PLAYER_CART_ADD,               0x01c5,  22, &InventoryRecv::processP
 if (packetVersion >= 6)
 {
     packet(SMSG_TRADE_REQUEST,             0x01f4,  32, &TradeRecv::processTradeRequest,                6);
+    packet(SMSG_TRADE_RESPONSE,            0x01f5,   9, &TradeRecv::processTradeResponse,               6);
 }
 
 // 20040816
@@ -269,6 +272,12 @@ if (packetVersion >= 20091124)
 
 // 20091201
 packet(SMSG_BATTLE_PLAY,                   0x07fe,  26, &BattleGroundRecv::processBattlePlay,           20091201);
+
+// 20100105
+if (packetVersion >= 20100105)
+{
+    packet(SMSG_VENDING_ITEMS_LIST,        0x0800,  -1, &VendingRecv::processItemsList,                 20100105);
+}
 
 // 20100126
 packet(SMSG_PLAYER_HP,                     0x080e,  14, &BeingRecv::processMonsterHp,                   20100126);
@@ -631,15 +640,11 @@ packet(SMSG_TRADE_CANCEL,                  0x00ee,   2, &Ea::TradeRecv::processT
 packet(SMSG_TRADE_COMPLETE,                0x00f0,   3, &Ea::TradeRecv::processTradeComplete,           0);
 packet(SMSG_TRADE_ITEM_ADD_RESPONSE,       0x00ea,   5, &TradeRecv::processTradeItemAddResponse,        0);
 packet(SMSG_TRADE_OK,                      0x00ec,   3, &Ea::TradeRecv::processTradeOk,                 0);
-
-// 20150000 or near
-packet(SMSG_TRADE_RESPONSE,                0x01f5,   9, &TradeRecv::processTradeResponse,               0);
-packet(SMSG_TRADE_RESPONSE_OUTDATED,       0x00e7,   3, nullptr,                                        0);
 packet(SMSG_TRADE_UNDO,                    0x00f1,   2, &TradeRecv::processTradeUndo,                   0);
-packet(SMSG_UPDATE_HOST,                   0x0063,  -1, &Ea::LoginRecv::processUpdateHost,              0);
 packet(SMSG_VENDING_BUY_ACK,               0x0135,   7, &VendingRecv::processBuyAck,                    0);
 packet(SMSG_VENDING_HIDE_BOARD,            0x0132,   6, &VendingRecv::processHideBoard,                 0);
-packet(SMSG_VENDING_ITEMS_LIST,            0x0800,  -1, &VendingRecv::processItemsList,                 0);
+
+// 20150000 or near
 packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpen,                      0);
 packet(SMSG_VENDING_OPEN_REQ,              0x012d,   4, &VendingRecv::processOpenReq,                   0);
 packet(SMSG_VENDING_OPEN_STATUS,           0x0a28,   3, &VendingRecv::processOpenStatus,                0);
@@ -677,10 +682,11 @@ if (serverVersion > 0)
     packet(SMSG_CHAR_PASSWORD_RESPONSE,    0x0062,   3, &LoginRecv::processCharPasswordResponse,        0);
 }
 
+// 20150226
 if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
 {
     packet(SMSG_VENDING_OPEN,              0x0136,  -1, &VendingRecv::processOpen,                      0);
-    packet(SMSG_VENDING_ITEMS_LIST,        0x0800,  -1, &VendingRecv::processItemsList,                 0);
+    packet(SMSG_VENDING_ITEMS_LIST,        0x0800,  -1, &VendingRecv::processItemsList,                 20150226);
 
     packet(SMSG_TRADE_ITEM_ADD,            0x0a09,  45, &TradeRecv::processTradeItemAdd,                20150226);
     packet(SMSG_PLAYER_STORAGE_ADD,        0x0a0a,  47, &InventoryRecv::processPlayerStorageAdd,        20150226);
@@ -733,5 +739,6 @@ packet(SMSG_BOOKING_CANCEL_VOLUNTEER,      0x0909,   6, nullptr,                
 packet(SMSG_BOOKING_ADD_FILTERING_LIST,    0x090b,  30, nullptr,                                        0);
 packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr,                                        0);
 
-// evol version packet
+// evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
+packet(SMSG_UPDATE_HOST,                   0x0063,  -1, &Ea::LoginRecv::processUpdateHost,              0);

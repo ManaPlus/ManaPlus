@@ -79,7 +79,17 @@ void VendingRecv::processHideBoard(Net::MessageIn &msg)
 
 void VendingRecv::processItemsList(Net::MessageIn &msg)
 {
-    const int count = (msg.readInt16("len") - 12) / 22;
+    int packetLen = 22;
+    if ((serverVersion >= 8 || serverVersion == 0) &&
+        msg.getVersion() >= 20150226)
+    {
+        packetLen += 25;
+    }
+    int offset = 8;
+    if (msg.getVersion() >= 20100105)
+        offset += 4;
+
+    const int count = (msg.readInt16("len") - offset) / 22;
     const BeingId id = msg.readBeingId("id");
     const Being *const being = actorManager->findBeing(id);
     if (!being)
@@ -87,7 +97,8 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
     int cards[maxCards];
     CREATEWIDGETV(mBuyDialog, BuyDialog, being->getName());
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
-    msg.readInt32("vender id");
+    if (msg.getVersion() >= 20100105)
+        msg.readInt32("vender id");
     for (int f = 0; f < count; f ++)
     {
         const int value = msg.readInt32("price");
@@ -103,7 +114,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
             cards[d] = msg.readInt16("card");
         // ++ need change to msg.getVersion()
         if ((serverVersion >= 8 || serverVersion == 0) &&
-            packetVersion >= 20150226)
+            msg.getVersion() >= 20150226)
         {
             for (int d = 0; d < 5; d ++)
             {
