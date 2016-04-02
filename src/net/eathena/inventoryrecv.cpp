@@ -611,8 +611,11 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     const int index = msg.readInt16("index") - STORAGE_OFFSET;
     const int amount = msg.readInt32("amount");
     const int itemId = msg.readInt16("item id");
-    const ItemTypeT itemType = static_cast<ItemTypeT>(
-        msg.readUInt8("type"));
+    ItemTypeT itemType;
+    if (msg.getVersion() >= 5)
+        itemType = static_cast<ItemTypeT>(msg.readUInt8("type"));
+    else
+        itemType = ItemType::Unknown;
     const unsigned char identified = msg.readUInt8("identify");
     const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
     const uint8_t refine = msg.readUInt8("refine");

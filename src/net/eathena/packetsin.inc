@@ -25,6 +25,7 @@ packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               0);
 packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
 packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
+packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processPlayerStorageAdd,        0);
 
 // 3
 packet(SMSG_PLAYER_INVENTORY_USE,          0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  3);
@@ -500,8 +501,6 @@ packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,      0x01cd,  29, &SkillRecv::processSkill
 packet(SMSG_PLAYER_SKILL_PRODUCE_EFFECT,   0x018f,   6, &SkillRecv::processSkillProduceEffect,          0);
 packet(SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST, 0x018d,  -1, &SkillRecv::processSkillProduceMixList,         0);
 packet(SMSG_PLAYER_SKILL_UP,               0x010e,  11, &Ea::SkillRecv::processPlayerSkillUp,           0);
-
-// 20150000 or near
 packet(SMSG_PLAYER_STAT_UPDATE_1,          0x00b0,   8, &Ea::PlayerRecv::processPlayerStatUpdate1,      0);
 packet(SMSG_PLAYER_STAT_UPDATE_2,          0x00b1,   8, &Ea::PlayerRecv::processPlayerStatUpdate2,      0);
 packet(SMSG_PLAYER_STAT_UPDATE_3,          0x0141,  14, &Ea::PlayerRecv::processPlayerStatUpdate3,      0);
@@ -509,7 +508,8 @@ packet(SMSG_PLAYER_STAT_UPDATE_4,          0x00bc,   6, &Ea::PlayerRecv::process
 packet(SMSG_PLAYER_STAT_UPDATE_5,          0x00bd,  44, &PlayerRecv::processPlayerStatUpdate5,          0);
 packet(SMSG_PLAYER_STAT_UPDATE_6,          0x00be,   5, &Ea::PlayerRecv::processPlayerStatUpdate6,      0);
 packet(SMSG_PLAYER_STOP,                   0x0088,  10, &Ea::BeingRecv::processPlayerStop,              0);
-packet(SMSG_PLAYER_STORAGE_ADD_OUTDATED,   0x00f4,  21, nullptr,                                        0);
+
+// 20150000 or near
 packet(SMSG_PLAYER_STORAGE_CLOSE,          0x00f8,   2, &Ea::InventoryRecv::processPlayerStorageClose,  0);
 packet(SMSG_PLAYER_STORAGE_ITEMS,          0x0995,  -1, &InventoryRecv::processPlayerStorage,           0);
 packet(SMSG_PLAYER_STORAGE_PASSWORD,       0x023a,   4, &InventoryRecv::processPlayerStoragePassword,   0);
