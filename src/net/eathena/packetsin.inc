@@ -24,6 +24,7 @@
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               1);
 packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper,                      1);
 packet(SMSG_WHISPER_RESPONSE,              0x0098,   3, &ChatRecv::processWhisperResponse,              1);
+packet(SMSG_PLAYER_EQUIPMENT,              0x00a4,  -1, &InventoryRecv::processPlayerEquipment,         1);
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
 packet(SMSG_TRADE_REQUEST,                 0x00e5,  26, &TradeRecv::processTradeRequest,                1);
 packet(SMSG_TRADE_ITEM_ADD,                0x00e9,  19, &TradeRecv::processTradeItemAdd,                1);
@@ -441,13 +442,13 @@ packet(SMSG_BEING_ACTION2,                 0x02e1,  33, &BeingRecv::processBeing
 // 20080102
 if (packetVersion >= 20080102)
 {
+    packet(SMSG_PLAYER_EQUIPMENT,          0x02d0,  -1, &InventoryRecv::processPlayerEquipment,         20080102);
     packet(SMSG_PLAYER_INVENTORY,          0x02e8,  -1, &InventoryRecv::processPlayerInventory,         20080102);
     packet(SMSG_PLAYER_CART_ITEMS,         0x02e9,  -1, &InventoryRecv::processPlayerCartItems,         20080102);
     packet(SMSG_PLAYER_STORAGE_ITEMS,      0x02ea,  -1, &InventoryRecv::processPlayerStorage,           20080102);
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
     packet(SMSG_BEING_FONT,                0x02ef,   8, &BeingRecv::processBeingFont,                   20080102);
 }
-
 
 // 20080318
 packet(SMSG_NPC_SHOW_PROGRESS_BAR,         0x02f0,  10, &NpcRecv::processNpcShowProgressBar,            20080318);
@@ -557,6 +558,11 @@ if (packetVersion >= 20100608)
     packet(SMSG_SEARCHSTORE_CLICK_ACK,     0x083d,   6, &SearchStoreRecv::processSearchClickAck,        20100608);
 }
 
+if (packetVersion >= 20100629)
+{
+    packet(SMSG_PLAYER_EQUIPMENT,          0x02d0,  -1, &InventoryRecv::processPlayerEquipment,         20100629);
+}
+
 // 20100701
 if (packetVersion >= 20100701)
 {
@@ -617,7 +623,6 @@ if (packetVersion >= 20120925)
     packet(SMSG_PLAYER_EQUIP,              0x0999,  11, &InventoryRecv::processPlayerEquip,             20120925);
     packet(SMSG_PLAYER_UNEQUIP,            0x099a,   9, &InventoryRecv::processPlayerUnEquip,           20120925);
 }
-
 
 // 20121010
 packet(SMSG_MAP_TYPE_PROPERTY2,            0x099b,   8, &BeingRecv::processMapTypeProperty,             20121010);
@@ -704,7 +709,6 @@ if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
 {
     packet(SMSG_VENDING_OPEN,              0x0136,  -1, &VendingRecv::processOpen,                      20150226);
     packet(SMSG_VENDING_ITEMS_LIST,        0x0800,  -1, &VendingRecv::processItemsList,                 20150226);
-
     packet(SMSG_TRADE_ITEM_ADD,            0x0a09,  45, &TradeRecv::processTradeItemAdd,                20150226);
     packet(SMSG_PLAYER_STORAGE_ADD,        0x0a0a,  47, &InventoryRecv::processPlayerStorageAdd,        20150226);
     packet(SMSG_PLAYER_CART_ADD,           0x0a0b,  47, &InventoryRecv::processPlayerCartAdd,           20150226);
