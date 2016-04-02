@@ -143,7 +143,14 @@ void VendingRecv::processBuyAck(Net::MessageIn &msg)
 
 void VendingRecv::processOpen(Net::MessageIn &msg)
 {
-    const int count = (msg.readInt16("len") - 8) / 22;
+    int packetLen = 22;
+    if ((serverVersion >= 8 || serverVersion == 0) &&
+        msg.getVersion() >= 20150226)
+    {
+        packetLen += 25;
+    }
+
+    const int count = (msg.readInt16("len") - 8) / packetLen;
     msg.readInt32("id");
     for (int f = 0; f < count; f ++)
     {
@@ -159,7 +166,7 @@ void VendingRecv::processOpen(Net::MessageIn &msg)
             msg.readInt16("card");
         // ++ need change to msg.getVersion()
         if ((serverVersion >= 8 || serverVersion == 0) &&
-            packetVersion >= 20150226)
+            msg.getVersion() >= 20150226)
         {
             for (int d = 0; d < 5; d ++)
             {

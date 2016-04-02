@@ -30,6 +30,7 @@ packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlaye
 packet(SMSG_SKILL_DAMAGE,                  0x0114,  31, &BeingRecv::processSkillDamage,                 1);
 packet(SMSG_SKILL_ENTRY,                   0x011f,  16, &BeingRecv::processSkillEntry,                  1);
 packet(SMSG_VENDING_ITEMS_LIST,            0x0133,  -1, &VendingRecv::processItemsList,                 1);
+packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpen,                      1);
 packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                1);
 packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
 packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
@@ -645,7 +646,6 @@ packet(SMSG_VENDING_BUY_ACK,               0x0135,   7, &VendingRecv::processBuy
 packet(SMSG_VENDING_HIDE_BOARD,            0x0132,   6, &VendingRecv::processHideBoard,                 0);
 
 // 20150000 or near
-packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpen,                      0);
 packet(SMSG_VENDING_OPEN_REQ,              0x012d,   4, &VendingRecv::processOpenReq,                   0);
 packet(SMSG_VENDING_OPEN_STATUS,           0x0a28,   3, &VendingRecv::processOpenStatus,                0);
 packet(SMSG_VENDING_REPORT,                0x0137,   6, &VendingRecv::processReport,                    0);
@@ -685,7 +685,7 @@ if (serverVersion > 0)
 // 20150226
 if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
 {
-    packet(SMSG_VENDING_OPEN,              0x0136,  -1, &VendingRecv::processOpen,                      0);
+    packet(SMSG_VENDING_OPEN,              0x0136,  -1, &VendingRecv::processOpen,                      20150226);
     packet(SMSG_VENDING_ITEMS_LIST,        0x0800,  -1, &VendingRecv::processItemsList,                 20150226);
 
     packet(SMSG_TRADE_ITEM_ADD,            0x0a09,  45, &TradeRecv::processTradeItemAdd,                20150226);
