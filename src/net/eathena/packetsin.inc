@@ -47,6 +47,7 @@ packet(SMSG_BEING_MOVE,                    0x007b,  60, &BeingRecv::processBeing
 packet(SMSG_PARTY_INVITED,                 0x00fe,  30, &PartyRecv::processPartyInvited,                1);
 packet(SMSG_PARTY_SETTINGS,                0x0101,   6, &PartyRecv::processPartySettings,               1);
 packet(SMSG_PLAYER_HP,                     0x0106,  10, &BeingRecv::processBeingHp,                     1);
+packet(SMSG_MAP_LOGIN_SUCCESS,             0x0073,  11, &GameRecv::processMapLogin,                     1);
 
 // fake packets for add packet name
 packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr,                                         0);
