@@ -1066,10 +1066,10 @@ void BeingRecv::processBeingAction2(Net::MessageIn &msg)
     BLOCK_END("BeingRecv::processBeingAction2")
 }
 
-void BeingRecv::processMonsterHp(Net::MessageIn &msg)
+void BeingRecv::processBeingHp(Net::MessageIn &msg)
 {
     Being *const dstBeing = actorManager->findBeing(
-        msg.readBeingId("monster id"));
+        msg.readBeingId("being id"));
     int hp;
     int maxHP;
     if (msg.getVersion() >= 20100126)
@@ -1082,6 +1082,19 @@ void BeingRecv::processMonsterHp(Net::MessageIn &msg)
         hp = msg.readInt16("hp");
         maxHP = msg.readInt16("max hp");
     }
+    if (dstBeing)
+    {
+        dstBeing->setHP(hp);
+        dstBeing->setMaxHP(maxHP);
+    }
+}
+
+void BeingRecv::processMonsterHp(Net::MessageIn &msg)
+{
+    Being *const dstBeing = actorManager->findBeing(
+        msg.readBeingId("monster id"));
+    const int hp = msg.readInt32("hp");
+    const int maxHP = msg.readInt32("max hp");
     if (dstBeing)
     {
         dstBeing->setHP(hp);

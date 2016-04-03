@@ -46,7 +46,7 @@ packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeing
 packet(SMSG_BEING_MOVE,                    0x007b,  60, &BeingRecv::processBeingMove,                   1);
 packet(SMSG_PARTY_INVITED,                 0x00fe,  30, &PartyRecv::processPartyInvited,                1);
 packet(SMSG_PARTY_SETTINGS,                0x0101,   6, &PartyRecv::processPartySettings,               1);
-packet(SMSG_PLAYER_HP,                     0x0106,  10, &BeingRecv::processMonsterHp,                   1);
+packet(SMSG_PLAYER_HP,                     0x0106,  10, &BeingRecv::processBeingHp,                     1);
 
 // fake packets for add packet name
 packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr,                                         0);
@@ -580,7 +580,7 @@ if (packetVersion >= 20100105)
 }
 
 // 20100126
-packet(SMSG_PLAYER_HP,                     0x080e,  14, &BeingRecv::processMonsterHp,                   20100126);
+packet(SMSG_PLAYER_HP,                     0x080e,  14, &BeingRecv::processBeingHp,                     20100126);
 
 // 20100223
 packet(SMSG_TRADE_ITEM_ADD,                0x080f,  20, &TradeRecv::processTradeItemAdd,                20100223);
