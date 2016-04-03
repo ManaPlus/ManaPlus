@@ -1057,26 +1057,52 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
 {
+//+++
     BLOCK_START("InventoryRecv::processPlayerCartItems")
     Ea::InventoryRecv::mInventoryItems.clear();
 
     msg.readInt16("len");
-    const int number = (msg.getLength() - 4) / 23;
 
+    int packetLen = 7;
+    if (msg.getVersion() >= 20120925)
+        packetLen += 4 + 1;
+    else
+        packetLen += 1 + 2;
+    if (packetVersion >= 5)
+        packetLen += 8;
+    if (msg.getVersion() >= 20080102)
+        packetLen += 4;
+
+    const int number = (msg.getLength() - 4) / packetLen;
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
         const int itemId = msg.readInt16("item id");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
+        if (msg.getVersion() < 20120925)
+            msg.readUInt8("identified");
         const int amount = msg.readInt16("count");
-        msg.readInt32("wear state / equip");
+        if (msg.getVersion() >= 20120925)
+            msg.readInt32("wear state / equip");
         int cards[maxCards];
-        for (int f = 0; f < maxCards; f++)
-            cards[f] = msg.readInt16("card");
-        msg.readInt32("hire expire date (?)");
+        if (msg.getVersion() >= 5)
+        {
+            for (int f = 0; f < maxCards; f++)
+                cards[f] = msg.readInt16("card");
+        }
+        else
+        {
+            for (int f = 0; f < maxCards; f++)
+                cards[f] = 0;
+        }
+        if (msg.getVersion() >= 20080102)
+            msg.readInt32("hire expire date (?)");
         ItemFlags flags;
-        flags.byte = msg.readUInt8("flags");
+        if (msg.getVersion() >= 20120925)
+            flags.byte = msg.readUInt8("flags");
+        else
+            flags.byte = 0;
 
         mCartItems.push_back(Ea::InventoryItem(index,
             itemId,

@@ -46,6 +46,7 @@ packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlaye
 packet(SMSG_SKILL_DAMAGE,                  0x0114,  31, &BeingRecv::processSkillDamage,                 1);
 packet(SMSG_SKILL_ENTRY,                   0x011f,  16, &BeingRecv::processSkillEntry,                  1);
 packet(SMSG_PLAYER_CART_EQUIP,             0x0122,  -1, &InventoryRecv::processPlayerCartEquip,         1);
+packet(SMSG_PLAYER_CART_ITEMS,             0x0123,  -1, &InventoryRecv::processPlayerCartItems,         1);
 packet(SMSG_PLAYER_CART_ADD,               0x0124,  21, &InventoryRecv::processPlayerCartAdd,           1);
 packet(SMSG_VENDING_ITEMS_LIST,            0x0133,  -1, &VendingRecv::processItemsList,                 1);
 packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpen,                      1);
