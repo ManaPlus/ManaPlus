@@ -56,6 +56,7 @@ packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQu
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeingViewEquipment,          1);
 packet(SMSG_PARTY_SETTINGS,                0x0101,   6, &PartyRecv::processPartySettings,               1);
 packet(SMSG_PLAYER_HP,                     0x0106,  10, &BeingRecv::processBeingHp,                     1);
+packet(SMSG_PET_STATUS,                    0x01a2,  35, &PetRecv::processPetStatus,                     1);
 
 // fake packets for add packet name
 packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr,                                         0);
@@ -519,7 +520,10 @@ if (packetVersion >= 20081113)
 }
 
 // 20081126
-packet(SMSG_PET_STATUS,                    0x01a2,  37, &PetRecv::processPetStatus,                     20081126);
+if (packetVersion >= 20081126)
+{
+    packet(SMSG_PET_STATUS,                0x01a2,  37, &PetRecv::processPetStatus,                     20081126);
+}
 
 // 20081210
 packet(SMSG_AUTOSHADOW_SPELL_LIST,         0x0442,  -1, &PlayerRecv::processPlayerAutoShadowSpellList,  20081210);

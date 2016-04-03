@@ -169,7 +169,6 @@ void PetRecv::processPetStatus(Net::MessageIn &msg)
     const int hungry = msg.readInt16("hungry");
     const int intimacy = msg.readInt16("intimacy");
     const int equip = msg.readInt16("equip");
-    const int race = msg.readInt16("class");
 
 //    Being *const being = PlayerInfo::getPetBeing();
 //    if (being)
@@ -184,7 +183,7 @@ void PetRecv::processPetStatus(Net::MessageIn &msg)
     info->intimacy = intimacy;
     info->equip = equip;
     if (msg.getVersion() >= 20081126)
-        info->race = race;
+        info->race = msg.readInt16("class");
     else
         info->race = 0;
 }
