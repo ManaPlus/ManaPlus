@@ -21,11 +21,14 @@
  */
 
 // very outdated packets
+packet(SMSG_MAP_LOGIN_SUCCESS,             0x0073,  11, &GameRecv::processMapLogin,                     1);
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               1);
 packet(SMSG_BEING_SPAWN,                   0x0079,  53, &BeingRecv::processBeingSpawn,                  1);
+packet(SMSG_BEING_MOVE,                    0x007b,  60, &BeingRecv::processBeingMove,                   1);
 packet(SMSG_BEING_SPAWN_OUTDATED,          0x007c,  41, nullptr,                                        1);
 packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper,                      1);
 packet(SMSG_WHISPER_RESPONSE,              0x0098,   3, &ChatRecv::processWhisperResponse,              1);
+packet(SMSG_ITEM_DROPPED,                  0x009e,  17, &ItemRecv::processItemDropped,                  1);
 packet(SMSG_PLAYER_EQUIPMENT,              0x00a4,  -1, &InventoryRecv::processPlayerEquipment,         1);
 packet(SMSG_PLAYER_STORAGE_EQUIP,          0x00a6,  -1, &InventoryRecv::processPlayerStorageEquip,      1);
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
@@ -33,6 +36,7 @@ packet(SMSG_TRADE_REQUEST,                 0x00e5,  26, &TradeRecv::processTrade
 packet(SMSG_TRADE_ITEM_ADD,                0x00e9,  19, &TradeRecv::processTradeItemAdd,                1);
 packet(SMSG_TRADE_RESPONSE_OUTDATED,       0x00e7,   3, nullptr,                                        0);
 packet(SMSG_PLAYER_STORAGE_ADD,            0x00f4,  21, &InventoryRecv::processPlayerStorageAdd,        1);
+packet(SMSG_PARTY_INVITED,                 0x00fe,  30, &PartyRecv::processPartyInvited,                1);
 packet(SMSG_PLAYER_STATUS_CHANGE,          0x0119,  13, &BeingRecv::processPlayerStatusChange,          1);
 packet(SMSG_SKILL_DAMAGE,                  0x0114,  31, &BeingRecv::processSkillDamage,                 1);
 packet(SMSG_SKILL_ENTRY,                   0x011f,  16, &BeingRecv::processSkillEntry,                  1);
@@ -44,11 +48,8 @@ packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkill
 packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
 packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeingViewEquipment,          1);
-packet(SMSG_BEING_MOVE,                    0x007b,  60, &BeingRecv::processBeingMove,                   1);
-packet(SMSG_PARTY_INVITED,                 0x00fe,  30, &PartyRecv::processPartyInvited,                1);
 packet(SMSG_PARTY_SETTINGS,                0x0101,   6, &PartyRecv::processPartySettings,               1);
 packet(SMSG_PLAYER_HP,                     0x0106,  10, &BeingRecv::processBeingHp,                     1);
-packet(SMSG_MAP_LOGIN_SUCCESS,             0x0073,  11, &GameRecv::processMapLogin,                     1);
 
 // fake packets for add packet name
 packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr,                                         0);
@@ -719,7 +720,10 @@ if (packetVersion >= 20121212)
 }
 
 // 20130000
-packet(SMSG_ITEM_DROPPED,                  0x084b,  19, &ItemRecv::processItemDropped,                  20130000);
+if (packetVersion >= 20130000)
+{
+    packet(SMSG_ITEM_DROPPED,              0x084b,  19, &ItemRecv::processItemDropped,                  20130000);
+}
 
 // 20130710
 packet(SMSG_PLAYER_RANK_POINTS,            0x097e,  12, &PlayerRecv::processPlayerRankPoints,           20130710);

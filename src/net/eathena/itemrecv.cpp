@@ -39,7 +39,9 @@ void ItemRecv::processItemDropped(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("id");
     const int itemId = msg.readInt16("item id");
-    const ItemTypeT itemType = static_cast<ItemTypeT>(msg.readInt16("type"));
+    ItemTypeT itemType = ItemType::Unknown;
+    if (msg.getVersion() >= 20130000)
+        itemType = static_cast<ItemTypeT>(msg.readInt16("type"));
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
     const int x = msg.readInt16("x");
