@@ -34,6 +34,8 @@ packet(SMSG_PLAYER_INVENTORY,              0x00a3,  -1, &InventoryRecv::processP
 packet(SMSG_PLAYER_EQUIPMENT,              0x00a4,  -1, &InventoryRecv::processPlayerEquipment,         1);
 packet(SMSG_PLAYER_STORAGE_ITEMS,          0x00a5,  -1, &InventoryRecv::processPlayerStorage,           1);
 packet(SMSG_PLAYER_STORAGE_EQUIP,          0x00a6,  -1, &InventoryRecv::processPlayerStorageEquip,      1);
+packet(SMSG_PLAYER_EQUIP,                  0x00aa,   7, &InventoryRecv::processPlayerEquip,             1);
+packet(SMSG_PLAYER_UNEQUIP,                0x00ac,   7, &InventoryRecv::processPlayerUnEquip,           1);
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
 packet(SMSG_TRADE_REQUEST,                 0x00e5,  26, &TradeRecv::processTradeRequest,                1);
 packet(SMSG_TRADE_ITEM_ADD,                0x00e9,  19, &TradeRecv::processTradeItemAdd,                1);
@@ -53,7 +55,6 @@ packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQu
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeingViewEquipment,          1);
 packet(SMSG_PARTY_SETTINGS,                0x0101,   6, &PartyRecv::processPartySettings,               1);
 packet(SMSG_PLAYER_HP,                     0x0106,  10, &BeingRecv::processBeingHp,                     1);
-packet(SMSG_PLAYER_EQUIP,                  0x00aa,   7, &InventoryRecv::processPlayerEquip,             1);
 
 // fake packets for add packet name
 packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr,                                         0);

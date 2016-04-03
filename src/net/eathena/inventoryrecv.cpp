@@ -520,7 +520,11 @@ void InventoryRecv::processPlayerUnEquip(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerUnEquip")
     msg.readInt16("index");
-    const int equipType = msg.readInt32("wear location");
+    int equipType;
+    if (msg.getVersion() >= 20120925)
+        equipType = msg.readInt32("wear location");
+    else
+        equipType = msg.readInt16("wear location");
     const uint8_t flag = msg.readUInt8("result");
 
     if (flag)
