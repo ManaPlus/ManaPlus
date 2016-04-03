@@ -103,4 +103,13 @@ void BattleGroundRecv::processBattleJoined(Net::MessageIn &msg)
     msg.readInt32("position");
 }
 
+void BattleGroundRecv::processBattleUpdateHp(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readBeingId("account id");
+    msg.readString(24, "name");
+    msg.readInt16("hp");
+    msg.readInt16("max hp");
+}
+
 }  // namespace EAthena

@@ -41,6 +41,7 @@ namespace EAthena
         void processBattleBegins(Net::MessageIn &msg);
         void processBattleNoticeDelete(Net::MessageIn &msg);
         void processBattleJoined(Net::MessageIn &msg);
+        void processBattleUpdateHp(Net::MessageIn &msg);
     }  // namespace BattleGroundRecv
 }  // namespace EAthena
 

@@ -44,6 +44,9 @@ packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeing
 packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeingViewEquipment,          1);
 packet(SMSG_BEING_MOVE,                    0x007b,  60, &BeingRecv::processBeingMove,                   1);
+packet(SMSG_PARTY_INVITED,                 0x00fe,  30, &PartyRecv::processPartyInvited,                1);
+packet(SMSG_PARTY_SETTINGS,                0x0101,   6, &PartyRecv::processPartySettings,               1);
+packet(SMSG_PLAYER_HP,                     0x0106,  10, &BeingRecv::processMonsterHp,                   1);
 
 // fake packets for add packet name
 packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr,                                         0);
@@ -436,6 +439,7 @@ if (packetVersion >= 20070227)
     packet(SMSG_BATTLE_EMBLEM,             0x02dd,  32, &BattleGroundRecv::processBattleEmblem,         20070227);
     packet(SMSG_BATTLE_UPDATE_SCORE,       0x02de,   6, &BattleGroundRecv::processBattleUpdateScore,    20070227);
     packet(SMSG_BATTLE_UPDATE_COORDS,      0x02df,  36, &BattleGroundRecv::processBattleUpdateCoords,   20070227);
+    packet(SMSG_BATTLE_UPDATE_HP,          0x02e0,  34, &BattleGroundRecv::processBattleUpdateHp,       20070227);
 }
 
 // 20070821
@@ -749,6 +753,7 @@ if (packetVersion >= 20141022)
     packet(SMSG_VENDING_OPEN_STATUS,       0x0a28,   3, &VendingRecv::processOpenStatus,                20141022);
 }
 
+// 0
 // evol packets
 if (serverVersion > 0)
 {
@@ -805,6 +810,7 @@ if (packetVersion >= 20150805)
     packet(SMSG_SELECT_CART,               0x097f,  -1, &InventoryRecv::processSelectCart,              20150805);
 }
 
+// 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
 packet(SMSG_UPDATE_HOST,                   0x0063,  -1, &Ea::LoginRecv::processUpdateHost,              0);
