@@ -53,6 +53,7 @@ packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQu
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeingViewEquipment,          1);
 packet(SMSG_PARTY_SETTINGS,                0x0101,   6, &PartyRecv::processPartySettings,               1);
 packet(SMSG_PLAYER_HP,                     0x0106,  10, &BeingRecv::processBeingHp,                     1);
+packet(SMSG_PLAYER_EQUIP,                  0x00aa,   7, &InventoryRecv::processPlayerEquip,             1);
 
 // fake packets for add packet name
 packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr,                                         0);
@@ -633,6 +634,7 @@ if (packetVersion >= 20100629)
     packet(SMSG_PLAYER_EQUIPMENT,          0x02d0,  -1, &InventoryRecv::processPlayerEquipment,         20100629);
     packet(SMSG_PLAYER_STORAGE_EQUIP,      0x02d1,  -1, &InventoryRecv::processPlayerStorageEquip,      20100629);
     packet(SMSG_PLAYER_CART_EQUIP,         0x02d2,  -1, &InventoryRecv::processPlayerCartEquip,         20100629);
+    packet(SMSG_PLAYER_EQUIP,              0x00aa,   9, &InventoryRecv::processPlayerEquip,             20100629);
 }
 
 // 20100701
