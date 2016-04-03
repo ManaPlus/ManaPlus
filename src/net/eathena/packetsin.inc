@@ -45,6 +45,9 @@ packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQu
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeingViewEquipment,          1);
 packet(SMSG_BEING_MOVE,                    0x007b,  60, &BeingRecv::processBeingMove,                   1);
 
+// fake packets for add packet name
+packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr,                                         0);
+
 // login server, unknown version
 packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
 packet(SMSG_LOGIN_CODING_KEY,              0x01dc,  -1, &LoginRecv::processCondingKey,                  0);
@@ -272,6 +275,8 @@ packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWh
 packet(SMSG_BOOKING_CANCEL_VOLUNTEER,      0x0909,   6, nullptr,                                        0);
 packet(SMSG_BOOKING_ADD_FILTERING_LIST,    0x090b,  30, nullptr,                                        0);
 packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr,                                        0);
+packet(SMSG_MERGE_ITEM,                    0x096d,  -1, &InventoryRecv::processMergeItem,               0);
+packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, &InventoryRecv::processMergeItemResponse,       0);
 
 // 3
 if (packetVersion >= 3)
@@ -453,6 +458,7 @@ if (packetVersion >= 20071002)
 packet(SMSG_INSTANCE_START,                0x02cb,  65, &MapRecv::processInstanceStart,                 20071023);
 packet(SMSG_INSTANCE_INFO,                 0x02cd,  71, &MapRecv::processInstanceInfo,                  20071023);
 
+// 20071106
 if (packetVersion >= 20071106)
 {
     packet(SMSG_BEING_FAKE_NAME,           0x0078,  55, &BeingRecv::processBeingFakeName,               20071106);
@@ -604,6 +610,7 @@ if (packetVersion >= 20100608)
     packet(SMSG_SEARCHSTORE_CLICK_ACK,     0x083d,   6, &SearchStoreRecv::processSearchClickAck,        20100608);
 }
 
+// 20100629
 if (packetVersion >= 20100629)
 {
     packet(SMSG_PLAYER_EQUIPMENT,          0x02d0,  -1, &InventoryRecv::processPlayerEquipment,         20100629);
@@ -792,18 +799,11 @@ if (packetVersion >= 20150513)
     packet(SMSG_BEING_MOVE,                0x09fd,  -1, &BeingRecv::processBeingMove,                   20150513);
 }
 
-// introduced in 20150805
+// 20150805
 if (packetVersion >= 20150805)
 {
     packet(SMSG_SELECT_CART,               0x097f,  -1, &InventoryRecv::processSelectCart,              20150805);
 }
-else
-{
-    packet(SMSG_SELECT_CART,               0x0000,  0, nullptr,                                         0);
-}
-
-packet(SMSG_MERGE_ITEM,                    0x096d,  -1, &InventoryRecv::processMergeItem,               0);
-packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, &InventoryRecv::processMergeItemResponse,       0);
 
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
