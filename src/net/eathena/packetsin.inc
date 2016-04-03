@@ -43,6 +43,7 @@ packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkill
 packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
 packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeingViewEquipment,          1);
+packet(SMSG_BEING_MOVE,                    0x007b,  60, &BeingRecv::processBeingMove,                   1);
 
 // login server, unknown version
 packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
@@ -282,6 +283,7 @@ if (packetVersion >= 4)
     packet(SMSG_BEING_CHANGE_LOOKS2,       0x01d7,  11, &BeingRecv::processBeingChangeLook2,            4);
     packet(SMSG_BEING_VISIBLE,             0x01d8,  54, &BeingRecv::processBeingVisible,                4);
     packet(SMSG_BEING_SPAWN,               0x01d9,  53, &BeingRecv::processBeingSpawn,                  4);
+    packet(SMSG_BEING_MOVE,                0x01da,  60, &BeingRecv::processBeingMove,                   4);
 }
 
 // 5
@@ -299,6 +301,7 @@ if (packetVersion >= 7)
 {
     packet(SMSG_BEING_VISIBLE,             0x022a,  58, &BeingRecv::processBeingVisible,                7);
     packet(SMSG_BEING_SPAWN,               0x022b,  57, &BeingRecv::processBeingSpawn,                  7);
+    packet(SMSG_BEING_MOVE,                0x022c,  65, &BeingRecv::processBeingMove,                   7);
 }
 
 // 20040816
@@ -450,6 +453,7 @@ packet(SMSG_INSTANCE_INFO,                 0x02cd,  71, &MapRecv::processInstanc
 if (packetVersion >= 20071106)
 {
     packet(SMSG_BEING_FAKE_NAME,           0x0078,  55, &BeingRecv::processBeingFakeName,               20071106);
+    packet(SMSG_BEING_MOVE,                0x022c,  65, &BeingRecv::processBeingMove,                   20071106);
     packet(SMSG_MERCENARY_INFO,            0x029b,  80, &MercenaryRecv::processMercenaryInfo,           20071106);
 }
 
@@ -466,6 +470,7 @@ if (packetVersion >= 20080102)
     packet(SMSG_PLAYER_CART_ITEMS,         0x02e9,  -1, &InventoryRecv::processPlayerCartItems,         20080102);
     packet(SMSG_PLAYER_STORAGE_ITEMS,      0x02ea,  -1, &InventoryRecv::processPlayerStorage,           20080102);
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
+    packet(SMSG_BEING_MOVE,                0x02ec,  67, &BeingRecv::processBeingMove,                   20080102);
     packet(SMSG_BEING_SPAWN,               0x02ed,  59, &BeingRecv::processBeingSpawn,                  20080102);
     packet(SMSG_BEING_VISIBLE,             0x02ee,  60, &BeingRecv::processBeingVisible,                20080102);
     packet(SMSG_BEING_FONT,                0x02ef,   8, &BeingRecv::processBeingFont,                   20080102);
@@ -522,6 +527,7 @@ packet(SMSG_PLAYER_GET_EXP,                0x07f6,  14, &PlayerRecv::processPlay
 
 if (packetVersion >= 20091103)
 {
+    packet(SMSG_BEING_MOVE,                0x07f7,  -1, &BeingRecv::processBeingMove,                   20091103);
     packet(SMSG_BEING_SPAWN,               0x07f8,  -1, &BeingRecv::processBeingSpawn,                  20091103);
     packet(SMSG_BEING_VISIBLE,             0x07f9,  -1, &BeingRecv::processBeingVisible,                20091103);
 }
@@ -604,6 +610,7 @@ packet(SMSG_GUILD_EXPULSION,               0x0839,  66, &GuildRecv::processGuild
 // 20101124
 if (packetVersion >= 20101124)
 {
+    packet(SMSG_BEING_MOVE,                0x0856,  -1, &BeingRecv::processBeingMove,                   20101124);
     packet(SMSG_BEING_VISIBLE,             0x0857,  -1, &BeingRecv::processBeingVisible,                20101124);
     packet(SMSG_BEING_SPAWN,               0x0858,  -1, &BeingRecv::processBeingSpawn,                  20101124);
     packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0859,  -1, &BeingRecv::processBeingViewEquipment,          20101124);

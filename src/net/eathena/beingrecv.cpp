@@ -453,14 +453,27 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     if (!actorManager)
         return;
 
-    msg.readInt16("len");
-    const BeingType::BeingType type = static_cast<BeingType::BeingType>(
-        msg.readUInt8("object type"));
+    if (msg.getVersion() >= 20091103)
+        msg.readInt16("len");
+    BeingType::BeingType type;
+    if (msg.getVersion() >= 20071106)
+    {
+        type = static_cast<BeingType::BeingType>(
+            msg.readUInt8("object type"));
+    }
+    else
+    {
+        // need detect type based on id
+        type = BeingType::MONSTER;
+    }
 
     // Information about a being in range
     const BeingId id = msg.readBeingId("being id");
-    if (serverVersion == 0 || serverVersion >= 11)
+    if (msg.getVersion() >= 20131223 &&
+        (serverVersion == 0 || serverVersion >= 11))
+    {
         msg.readBeingId("char id");
+    }
     BeingId spawnId;
     if (id == Ea::BeingRecv::mSpawnId)
         spawnId = Ea::BeingRecv::mSpawnId;
@@ -471,7 +484,11 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     const uint32_t opt1 = msg.readInt16("opt1");
     // probably wrong effect usage
     const uint32_t opt2 = msg.readInt16("opt2");
-    const uint32_t option = msg.readInt32("option");
+    uint32_t option;
+    if (msg.getVersion() >= 7)
+        option = msg.readInt32("option");
+    else
+        option = msg.readInt16("option");
     const int16_t job = msg.readInt16("class");
 
     Being *dstBeing = actorManager->findBeing(id);
@@ -516,11 +533,15 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         localPlayer->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16("hair style");
-    const uint32_t weapon = CAST_U32(msg.readInt32("weapon"));
+    uint32_t weapon;
+    if (msg.getVersion() >= 7)
+        weapon = CAST_U32(msg.readInt32("weapon"));
+    else
+        weapon = CAST_U32(msg.readInt16("weapon"));
     const uint16_t headBottom = msg.readInt16("head bottom");
-
     msg.readInt32("tick");
-
+    if (msg.getVersion() < 7)
+        msg.readInt16("shield");
     const uint16_t headTop = msg.readInt16("head top");
     const uint16_t headMid = msg.readInt16("head mid");
     const ItemColor hairColor = fromInt(
@@ -529,11 +550,16 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 
     const uint16_t gloves = msg.readInt16("head dir / gloves");
     // may be use robe as gloves?
-    msg.readInt16("robe");
+    if (msg.getVersion() >= 20101124)
+        msg.readInt16("robe");
     msg.readInt32("guild id");
     msg.readInt16("guild emblem");
     dstBeing->setManner(msg.readInt16("manner"));
-    const uint32_t opt3 = msg.readInt32("opt3");
+    uint32_t opt3;
+    if (msg.getVersion() >= 7)
+        opt3 = msg.readInt32("opt3");
+    else
+        opt3 = msg.readInt16("opt3");
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
@@ -598,14 +624,16 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     const int level = CAST_S32(msg.readInt16("level"));
     if (level)
         dstBeing->setLevel(level);
-    msg.readInt16("font");
-
-    const int maxHP = msg.readInt32("max hp");
-    const int hp = msg.readInt32("hp");
-    dstBeing->setMaxHP(maxHP);
-    dstBeing->setHP(hp);
-
-    msg.readInt8("is boss");
+    if (msg.getVersion() >= 20080102)
+        msg.readInt16("font");
+    if (msg.getVersion() >= 20120221)
+    {
+        const int maxHP = msg.readInt32("max hp");
+        const int hp = msg.readInt32("hp");
+        dstBeing->setMaxHP(maxHP);
+        dstBeing->setHP(hp);
+        msg.readInt8("is boss");
+    }
     if (msg.getVersion() >= 20150513)
     {
         msg.readInt16("body2");
