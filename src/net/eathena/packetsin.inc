@@ -32,6 +32,7 @@ packet(SMSG_ITEM_DROPPED,                  0x009e,  17, &ItemRecv::processItemDr
 packet(SMSG_PLAYER_INVENTORY_ADD,          0x00a0,  23, &InventoryRecv::processPlayerInventoryAdd,      1);
 packet(SMSG_PLAYER_INVENTORY,              0x00a3,  -1, &InventoryRecv::processPlayerInventory,         1);
 packet(SMSG_PLAYER_EQUIPMENT,              0x00a4,  -1, &InventoryRecv::processPlayerEquipment,         1);
+packet(SMSG_PLAYER_STORAGE_ITEMS,          0x00a5,  -1, &InventoryRecv::processPlayerStorage,           1);
 packet(SMSG_PLAYER_STORAGE_EQUIP,          0x00a6,  -1, &InventoryRecv::processPlayerStorageEquip,      1);
 packet(SMSG_BEING_CHANGE_LOOKS_OUTDATED,   0x00c3,   8, nullptr,                                        1);
 packet(SMSG_TRADE_REQUEST,                 0x00e5,  26, &TradeRecv::processTradeRequest,                1);
