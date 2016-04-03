@@ -23,6 +23,7 @@
 // very outdated packets
 packet(SMSG_BEING_FAKE_NAME,               0x0078,  54, &BeingRecv::processBeingFakeName,               1);
 packet(SMSG_BEING_SPAWN,                   0x0079,  53, &BeingRecv::processBeingSpawn,                  1);
+packet(SMSG_BEING_SPAWN_OUTDATED,          0x007c,  41, nullptr,                                        1);
 packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhisper,                      1);
 packet(SMSG_WHISPER_RESPONSE,              0x0098,   3, &ChatRecv::processWhisperResponse,              1);
 packet(SMSG_PLAYER_EQUIPMENT,              0x00a4,  -1, &InventoryRecv::processPlayerEquipment,         1);
@@ -467,6 +468,7 @@ packet(SMSG_INSTANCE_INFO,                 0x02cd,  71, &MapRecv::processInstanc
 if (packetVersion >= 20071106)
 {
     packet(SMSG_BEING_FAKE_NAME,           0x0078,  55, &BeingRecv::processBeingFakeName,               20071106);
+    packet(SMSG_BEING_SPAWN_OUTDATED,      0x007c,  42, nullptr,                                        20071106);
     packet(SMSG_BEING_MOVE,                0x022c,  65, &BeingRecv::processBeingMove,                   20071106);
     packet(SMSG_MERCENARY_INFO,            0x029b,  80, &MercenaryRecv::processMercenaryInfo,           20071106);
 }
@@ -493,6 +495,12 @@ if (packetVersion >= 20080102)
 // 20080318
 packet(SMSG_NPC_SHOW_PROGRESS_BAR,         0x02f0,  10, &NpcRecv::processNpcShowProgressBar,            20080318);
 packet(SMSG_NPC_PROGRESS_BAR_ABORT,        0x02f2,   2, &NpcRecv::processProgressBarAbort,              20080318);
+
+// 20080827
+if (packetVersion >= 20080827)
+{
+    packet(SMSG_BEING_SPAWN_OUTDATED,      0x007c,  44, nullptr,                                        20080827);
+}
 
 // 20081112
 packet(SMSG_PLAYER_SKILL_COOLDOWN,         0x043d,   8, &SkillRecv::processSkillCoolDown,               20081112);
