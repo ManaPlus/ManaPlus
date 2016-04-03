@@ -269,6 +269,9 @@ packet(SMSG_VENDING_SHOW_BOARD,            0x0131,  86, &VendingRecv::processSho
 packet(SMSG_WALK_RESPONSE,                 0x0087,  12, &PlayerRecv::processWalkResponse,               0);
 packet(SMSG_WEDDING_EFFECT,                0x01ea,   6, &BeingRecv::processWddingEffect,                0);
 packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWhoAnswer,                0);
+packet(SMSG_BOOKING_CANCEL_VOLUNTEER,      0x0909,   6, nullptr,                                        0);
+packet(SMSG_BOOKING_ADD_FILTERING_LIST,    0x090b,  30, nullptr,                                        0);
+packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr,                                        0);
 
 // 3
 if (packetVersion >= 3)
@@ -550,6 +553,16 @@ if (packetVersion >= 20091124)
 // 20091201
 packet(SMSG_BATTLE_PLAY,                   0x07fe,  26, &BattleGroundRecv::processBattlePlay,           20091201);
 
+// 20091222
+packet(SMSG_BOOKING_REGISTER_ACK,          0x0803,   4, nullptr,                                        20091222);
+packet(SMSG_BOOKING_SEARCH_ACK,            0x0805,  -1, nullptr,                                        20091222);
+
+// 20091229
+packet(SMSG_BOOKING_DELETE_ACK,            0x0807,   4, nullptr,                                        20091229);
+packet(SMSG_BOOKING_INSERT_NOTIFY,         0x0809,  50, nullptr,                                        20091229);
+packet(SMSG_BOOKING_UPDATE_NOTIFY,         0x080a,  18, nullptr,                                        20091229);
+packet(SMSG_BOOKING_DELETE_NOTIFY,         0x080b,   6, nullptr,                                        20091229);
+
 // 20100105
 if (packetVersion >= 20100105)
 {
@@ -638,6 +651,14 @@ if (packetVersion >= 20120221)
 
 // 20120410
 packet(SMSG_BEING_CHARM,                   0x08cf,  10, &BeingRecv::processBeingCharm,                  20120410);
+packet(SMSG_RECRUIT_REGISTER_ACK,          0x08e6,   4, nullptr,                                        20120410);
+packet(SMSG_RECRUIT_SEARCH_ACK,            0x08e8,  -1, nullptr,                                        20120410);
+packet(SMSG_RECRUIT_DELETE_ACK,            0x08ea,   4, nullptr,                                        20120410);
+packet(SMSG_RECRUIT_INSERT_NOTIFY,         0x08ec,  73, nullptr,                                        20120410);
+packet(SMSG_RECRUIT_UPDATE_NOTIFY,         0x08ed,  43, nullptr,                                        20120410);
+packet(SMSG_RECRUIT_DELETE_NOTIFY,         0x08ee,   6, nullptr,                                        20120410);
+packet(SMSG_BOOKING_VOLUNTEER_INFO,        0x08f2,  36, nullptr,                                        20120410);
+packet(SMSG_BOOKING_REFUSE_VOLUNTEER,      0x08fa,   6, nullptr,                                        20120410);
 packet(SMSG_PLAYER_FAVORITE_ITEM,          0x0908,   5, &InventoryRecv::processFavoriteItem,            20120410);
 packet(SMSG_MONSTER_HP,                    0x0977,  14, &BeingRecv::processMonsterHp,                   20120410);
 
@@ -721,7 +742,6 @@ if (packetVersion >= 20141022)
     packet(SMSG_VENDING_OPEN_STATUS,       0x0a28,   3, &VendingRecv::processOpenStatus,                20141022);
 }
 
-
 // evol packets
 if (serverVersion > 0)
 {
@@ -784,25 +804,6 @@ else
 
 packet(SMSG_MERGE_ITEM,                    0x096d,  -1, &InventoryRecv::processMergeItem,               0);
 packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, &InventoryRecv::processMergeItemResponse,       0);
-
-// unused or not implimented packets
-packet(SMSG_BOOKING_REGISTER_ACK,          0x0803,   4, nullptr,                                        0);
-packet(SMSG_BOOKING_SEARCH_ACK,            0x0805,  -1, nullptr,                                        0);
-packet(SMSG_BOOKING_DELETE_ACK,            0x0807,   4, nullptr,                                        0);
-packet(SMSG_BOOKING_INSERT_NOTIFY,         0x0809,  50, nullptr,                                        0);
-packet(SMSG_BOOKING_UPDATE_NOTIFY,         0x080a,  18, nullptr,                                        0);
-packet(SMSG_BOOKING_DELETE_NOTIFY,         0x080b,   6, nullptr,                                        0);
-packet(SMSG_RECRUIT_REGISTER_ACK,          0x08e6,   4, nullptr,                                        0);
-packet(SMSG_RECRUIT_SEARCH_ACK,            0x08e8,  -1, nullptr,                                        0);
-packet(SMSG_RECRUIT_DELETE_ACK,            0x08ea,   4, nullptr,                                        0);
-packet(SMSG_RECRUIT_INSERT_NOTIFY,         0x08ec,  73, nullptr,                                        0);
-packet(SMSG_RECRUIT_UPDATE_NOTIFY,         0x08ed,  43, nullptr,                                        0);
-packet(SMSG_RECRUIT_DELETE_NOTIFY,         0x08ee,   6, nullptr,                                        0);
-packet(SMSG_BOOKING_VOLUNTEER_INFO,        0x08f2,  36, nullptr,                                        0);
-packet(SMSG_BOOKING_REFUSE_VOLUNTEER,      0x08fa,   6, nullptr,                                        0);
-packet(SMSG_BOOKING_CANCEL_VOLUNTEER,      0x0909,   6, nullptr,                                        0);
-packet(SMSG_BOOKING_ADD_FILTERING_LIST,    0x090b,  30, nullptr,                                        0);
-packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr,                                        0);
 
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
