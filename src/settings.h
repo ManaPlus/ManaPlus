@@ -52,6 +52,7 @@ class Settings final
             windowCaption(),
             gmCommandSymbol("@"),
             gmCharCommandSymbol("#"),
+            linkCommandSymbol("="),
             updateMirrors(),
             options(),
             guiAlpha(1.0F),
@@ -102,6 +103,7 @@ class Settings final
         std::string windowCaption;
         std::string gmCommandSymbol;
         std::string gmCharCommandSymbol;
+        std::string linkCommandSymbol;
         std::vector<std::string> updateMirrors;
         Options options;
         float guiAlpha;

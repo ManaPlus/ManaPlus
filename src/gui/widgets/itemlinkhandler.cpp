@@ -23,6 +23,7 @@
 #include "gui/widgets/itemlinkhandler.h"
 
 #include "itemcolormanager.h"
+#include "settings.h"
 
 #include "gui/viewport.h"
 
@@ -59,14 +60,16 @@ ItemLinkHandler::~ItemLinkHandler()
 {
 }
 
-void ItemLinkHandler::handleCommandLink(const std::string &link)
+void ItemLinkHandler::handleCommandLink(const std::string &link,
+                                        const std::string &prefix)
 {
     std::string cmd;
     std::string args;
 
-    if (!parse2Str(link.substr(1), cmd, args))
+    const std::string cmdStr = link.substr(prefix.size());
+    if (!parse2Str(cmdStr, cmd, args))
     {
-        cmd = link.substr(1);
+        cmd = cmdStr;
         args.clear();
     }
     inputManager.executeRemoteChatCommand(cmd, args, nullptr);
@@ -158,7 +161,6 @@ void ItemLinkHandler::handleSearchLink(const std::string &link)
 void ItemLinkHandler::handleLink(const std::string &link,
                                  MouseEvent *const event)
 {
-    logger->log("link: " + link);
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))
     {
         handleHttpLink(link, event);
@@ -171,9 +173,13 @@ void ItemLinkHandler::handleLink(const std::string &link,
     {
         handleHelpLink(link);
     }
+    else if (strStartWith(link, settings.linkCommandSymbol))
+    {
+        handleCommandLink(link, settings.linkCommandSymbol);
+    }
     else if (strStartWith(link, "="))
     {
-        handleCommandLink(link);
+        handleCommandLink(link, "=");
     }
     else
     {

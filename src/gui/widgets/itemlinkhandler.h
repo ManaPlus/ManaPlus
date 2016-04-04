@@ -40,7 +40,8 @@ class ItemLinkHandler final : public LinkHandler
                         MouseEvent *event) override final;
 
     private:
-        static void handleCommandLink(const std::string &link);
+        static void handleCommandLink(const std::string &link,
+                                      const std::string &prefix);
 
         static void handleHelpLink(const std::string &link);
 

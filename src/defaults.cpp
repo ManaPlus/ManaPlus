@@ -632,6 +632,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("cutInsDir", "graphics/cutins");
     AddDEF("gmCommandSymbol", "@");
     AddDEF("gmCharCommandSymbol", "#");
+    AddDEF("linkCommandSymbol", "=");
 
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");

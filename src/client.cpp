@@ -1819,6 +1819,9 @@ void Client::initPaths()
 {
     settings.gmCommandSymbol = paths.getStringValue("gmCommandSymbol");
     settings.gmCharCommandSymbol = paths.getStringValue("gmCharCommandSymbol");
+    settings.linkCommandSymbol = paths.getStringValue("linkCommandSymbol");
+    if (settings.linkCommandSymbol.empty())
+        settings.linkCommandSymbol = "=";
 }
 
 void Client::initTradeFilter()
