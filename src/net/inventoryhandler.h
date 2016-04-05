@@ -27,6 +27,8 @@
 
 #include "resources/inventory/inventory.h"
 
+#include <vector>
+
 namespace Net
 {
 
@@ -91,6 +93,8 @@ class InventoryHandler notfinal
                                 const int type) const = 0;
 
         virtual void identifyItem(const Item *const item) const = 0;
+
+        virtual void mergeItemsAck(const std::vector<Item*> &items) const = 0;
 };
 
 }  // namespace Net

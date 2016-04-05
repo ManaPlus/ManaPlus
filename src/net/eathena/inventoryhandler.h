@@ -71,6 +71,8 @@ class InventoryHandler final : public Ea::InventoryHandler
 
         void identifyItem(const Item *const item) const override final;
 
+        void mergeItemsAck(const std::vector<Item*> &items) const override final;
+
         int getProjectileSlot() const override final
         { return 23; }
 

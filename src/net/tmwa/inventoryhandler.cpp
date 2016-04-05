@@ -173,4 +173,9 @@ void InventoryHandler::identifyItem(const Item *const item A_UNUSED) const
 {
 }
 
+void InventoryHandler::mergeItemsAck(const std::vector<Item*> &items A_UNUSED)
+                                     const
+{
+}
+
 }  // namespace TmwAthena
