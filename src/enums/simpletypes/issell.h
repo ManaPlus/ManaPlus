@@ -23,11 +23,11 @@
 
 #include "enums/simpletypes/booldefines.h"
 
-PRAGMA6("GCC diagnostic push")
-PRAGMA6("GCC diagnostic ignored \"-Wunused-const-variable\"")
+PRAGMA6(GCC diagnostic push)
+PRAGMA6(GCC diagnostic ignored "-Wunused-const-variable")
 
 defBoolEnum(IsSell);
 
-PRAGMA6("GCC diagnostic pop")
+PRAGMA6(GCC diagnostic pop)
 
 #endif  // ENUMS_SIMPLETYPES_ISSELL_H

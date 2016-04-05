@@ -334,8 +334,8 @@ void DropDown::keyPressed(KeyEvent& event)
         return;
 
     const InputActionT actionId = event.getActionId();
-    PRAGMA45("GCC diagnostic push")
-    PRAGMA45("GCC diagnostic ignored \"-Wswitch-enum\"")
+    PRAGMA45(GCC diagnostic push)
+    PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (actionId)
     {
         case InputAction::GUI_SELECT:
@@ -366,7 +366,7 @@ void DropDown::keyPressed(KeyEvent& event)
         default:
             return;
     }
-    PRAGMA45("GCC diagnostic pop")
+    PRAGMA45(GCC diagnostic pop)
 
     event.consume();
 }

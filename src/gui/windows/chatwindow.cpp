@@ -994,8 +994,8 @@ void ChatWindow::attributeChanged(const AttributesT id,
 {
     if (!mShowBattleEvents)
         return;
-    PRAGMA45("GCC diagnostic push")
-    PRAGMA45("GCC diagnostic ignored \"-Wswitch-enum\"")
+    PRAGMA45(GCC diagnostic push)
+    PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (id)
     {
         case Attributes::EXP:
@@ -1018,7 +1018,7 @@ void ChatWindow::attributeChanged(const AttributesT id,
         default:
             break;
     };
-    PRAGMA45("GCC diagnostic pop")
+    PRAGMA45(GCC diagnostic pop)
 }
 
 void ChatWindow::addInputText(const std::string &text, const bool space)

@@ -306,8 +306,8 @@ void ServerDialog::action(const ActionEvent &event)
 
 void ServerDialog::keyPressed(KeyEvent &event)
 {
-    PRAGMA45("GCC diagnostic push")
-    PRAGMA45("GCC diagnostic ignored \"-Wswitch-enum\"")
+    PRAGMA45(GCC diagnostic push)
+    PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (event.getActionId())
     {
         case InputAction::GUI_CANCEL:
@@ -352,7 +352,7 @@ void ServerDialog::keyPressed(KeyEvent &event)
         default:
             break;
     }
-    PRAGMA45("GCC diagnostic pop")
+    PRAGMA45(GCC diagnostic pop)
     if (!event.isConsumed())
         mServersList->keyPressed(event);
 }

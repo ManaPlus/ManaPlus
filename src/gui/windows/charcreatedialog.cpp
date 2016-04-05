@@ -825,8 +825,8 @@ void CharCreateDialog::updatePlayer()
 void CharCreateDialog::keyPressed(KeyEvent &event)
 {
     const InputActionT actionId = event.getActionId();
-    PRAGMA45("GCC diagnostic push")
-    PRAGMA45("GCC diagnostic ignored \"-Wswitch-enum\"")
+    PRAGMA45(GCC diagnostic push)
+    PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (actionId)
     {
         case InputAction::GUI_CANCEL:
@@ -838,7 +838,7 @@ void CharCreateDialog::keyPressed(KeyEvent &event)
         default:
             break;
     }
-    PRAGMA45("GCC diagnostic pop")
+    PRAGMA45(GCC diagnostic pop)
 }
 
 void CharCreateDialog::setButtonsPosition(const int w, const int h)

@@ -398,8 +398,8 @@ void TextField::keyPressed(KeyEvent &event)
 
 bool TextField::handleNormalKeys(const InputActionT action, bool &consumed)
 {
-    PRAGMA45("GCC diagnostic push")
-    PRAGMA45("GCC diagnostic ignored \"-Wswitch-enum\"")
+    PRAGMA45(GCC diagnostic push)
+    PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (action)
     {
         case InputAction::GUI_LEFT:
@@ -479,14 +479,14 @@ bool TextField::handleNormalKeys(const InputActionT action, bool &consumed)
         default:
             break;
     }
-    PRAGMA45("GCC diagnostic pop")
+    PRAGMA45(GCC diagnostic pop)
     return true;
 }
 
 void TextField::handleCtrlKeys(const InputActionT action, bool &consumed)
 {
-    PRAGMA45("GCC diagnostic push")
-    PRAGMA45("GCC diagnostic ignored \"-Wswitch-enum\"")
+    PRAGMA45(GCC diagnostic push)
+    PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (action)
     {
         case InputAction::GUI_LEFT:
@@ -577,7 +577,7 @@ void TextField::handleCtrlKeys(const InputActionT action, bool &consumed)
         default:
             break;
     }
-    PRAGMA45("GCC diagnostic pop")
+    PRAGMA45(GCC diagnostic pop)
 }
 
 void TextField::moveCaretBack()
