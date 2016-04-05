@@ -51,6 +51,8 @@ class SkillHandler notfinal
                             const std::string &text) const = 0;
 
         virtual void useMap(const int id, const std::string &map) const = 0;
+
+        virtual void getAlchemistRanks() const = 0;
 };
 
 }  // namespace Net

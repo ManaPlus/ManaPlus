@@ -76,4 +76,9 @@ void SkillHandler::useMap(const int id, const std::string &map) const
     outMsg.writeString(map, 16, "map name");
 }
 
+void SkillHandler::getAlchemistRanks() const
+{
+    createOutPacket(CMSG_ALCHEMIST_RANKS);
+}
+
 }  // namespace EAthena

@@ -49,6 +49,8 @@ class SkillHandler final : public Ea::SkillHandler
                     const std::string &text) const override final;
 
         void useMap(const int id, const std::string &map) const override final;
+
+        void getAlchemistRanks() const override final;
 };
 
 }  // namespace EAthena
