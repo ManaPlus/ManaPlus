@@ -20,6 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// 0
 packet(CMSG_SERVER_VERSION_REQUEST,  0x7530);
 
 packet(CMSG_LOGIN_REGISTER,          0x0064);
@@ -267,7 +268,11 @@ packet(CMSG_SET_STATUS,              0x0b0e);
 
 packet(CMSG_ONLINE_LIST,             0x0b0f);
 
+// 20150805
+packet(CMSG_SELECT_CART,             0x0980);
+
 #ifdef PACKETS_UPDATE
+// 20150513
 if (packetVersion >= 20150513)
 {
     packet(CMSG_SEARCHSTORE_CLICK,       0x0838);
@@ -275,8 +280,5 @@ if (packetVersion >= 20150513)
 }
 #endif
 
-// introduced in 20150513
+// 20150513
 packet(CMSG_QUICK_IDENTIFY_ITEM,     0x0a35);
-
-// introduced in 20150805
-packet(CMSG_SELECT_CART,             0x0980);
