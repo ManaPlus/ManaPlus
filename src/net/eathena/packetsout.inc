@@ -265,6 +265,7 @@ packet(CMSG_SEARCHSTORE_CLOSE,       0x083b);
 packet(CMSG_SEARCHSTORE_CLICK,       0x0835);
 
 packet(CMSG_MERGE_ITEM_ACK,          0x096e);
+packet(CMSG_MERGE_ITEM_CANCEL,       0x0974);
 
 packet(CMSG_SET_STATUS,              0x0b0e);
 

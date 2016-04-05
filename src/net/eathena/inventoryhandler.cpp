@@ -244,4 +244,9 @@ void InventoryHandler::mergeItemsAck(const std::vector<Item*> &items) const
     }
 }
 
+void InventoryHandler::mergetItemsCancel() const
+{
+    createOutPacket(CMSG_MERGE_ITEM_CANCEL);
+}
+
 }  // namespace EAthena

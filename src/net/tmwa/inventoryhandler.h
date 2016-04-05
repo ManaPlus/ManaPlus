@@ -73,6 +73,8 @@ class InventoryHandler final : public Ea::InventoryHandler
 
         void mergeItemsAck(const std::vector<Item*> &items) const override final;
 
+        void mergetItemsCancel() const override final;
+
         int getProjectileSlot() const override final
         { return 10; }
 
