@@ -301,8 +301,9 @@ if (packetVersion >= 20090603)
 // 20150513
 if (packetVersion >= 20150513)
 {
-    packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x022d,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_PLAYER_CHANGE_DIR,        0x0924,   5, clif->pChangeDir);
 }
 #endif
 
