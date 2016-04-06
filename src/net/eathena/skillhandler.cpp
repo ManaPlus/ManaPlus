@@ -93,4 +93,12 @@ void SkillHandler::getBlacksmithRanks() const
     }
 }
 
+void SkillHandler::getPkRanks() const
+{
+    if (packetVersion >= 20050530)
+    {
+        createOutPacket(CMSG_PK_RANKS);
+    }
+}
+
 }  // namespace EAthena

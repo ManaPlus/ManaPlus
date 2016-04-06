@@ -53,6 +53,8 @@ class SkillHandler final : public Ea::SkillHandler
         void getAlchemistRanks() const override final;
 
         void getBlacksmithRanks() const override final;
+
+        void getPkRanks() const override final;
 };
 
 }  // namespace TmwAthena

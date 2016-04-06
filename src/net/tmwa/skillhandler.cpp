@@ -84,4 +84,8 @@ void SkillHandler::getBlacksmithRanks() const
 {
 }
 
+void SkillHandler::getPkRanks() const
+{
+}
+
 }  // namespace TmwAthena
