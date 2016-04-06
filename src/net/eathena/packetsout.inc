@@ -65,7 +65,7 @@ packet(CMSG_KICK_FROM_CHAT_ROOM,          0x00e2,  26, clif->pKickFromChat);
 packet(CMSG_SKILL_LEVELUP_REQUEST,        0x0112,   4, clif->pSkillUp);
 packet(CMSG_STAT_UPDATE_REQUEST,          0x00bb,   5, clif->pStatusUp);
 packet(CMSG_SKILL_USE_BEING,              0x0113,  10, clif->pUseSkillToId);
-packet(CMSG_SKILL_USE_POSITION,           0x0436,  10, clif->pUseSkillToPos);
+packet(CMSG_SKILL_USE_POSITION,           0x0116,  10, clif->pUseSkillToPos);
 packet(CMSG_SKILL_USE_POSITION_MORE,      0x0366,  90, clif->pUseSkillToPosMoreInfo);
 packet(CMSG_SKILL_USE_MAP,                0x011b,  20, clif->pUseSkillMap);
 
@@ -369,6 +369,7 @@ if (packetVersion >= 20131230)
     packet(CMSG_NAME_REQUEST,             0x0926,   6, clif->pGetCharNameRequest);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x094A,   5, clif->pChangeDir);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0860,   6, clif->pDropItem);
+    packet(CMSG_SKILL_USE_POSITION,       0x091E,  10, clif->pUseSkillToPos);
 }
 
 // 20140115
@@ -386,6 +387,7 @@ if (packetVersion >= 20140115)
     packet(CMSG_NAME_REQUEST,             0x0802,   6, clif->pGetCharNameRequest);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x08A7,   5, clif->pChangeDir);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0361,   6, clif->pDropItem);
+    packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
 }
 
 // 20140205
@@ -408,6 +410,7 @@ if (packetVersion >= 20140305)
     packet(CMSG_BUYINGSTORE_CREATE,       0x0361,  -1, clif->pReqOpenBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0934,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0815,   5, clif->pChangeDir);
+    packet(CMSG_SKILL_USE_POSITION,       0x0436,  10, clif->pUseSkillToPos);
 }
 
 // 20140402
@@ -423,6 +426,7 @@ if (packetVersion >= 20140402)
     packet(CMSG_NAME_REQUEST,             0x088A,   6, clif->pGetCharNameRequest);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0360,   5, clif->pChangeDir);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0882,   6, clif->pDropItem);
+    packet(CMSG_SKILL_USE_POSITION,       0x0364,  10, clif->pUseSkillToPos);
 }
 
 // 20140416
@@ -438,6 +442,7 @@ if (packetVersion >= 20140416)
     packet(CMSG_NAME_REQUEST,             0x096A,   6, clif->pGetCharNameRequest);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
+    packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
 }
 
 // 20141016
@@ -454,6 +459,7 @@ if (packetVersion >= 20141022)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0835,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x08AD,   5, clif->pChangeDir);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x087D,   6, clif->pDropItem);
+    packet(CMSG_SKILL_USE_POSITION,       0x023B,  10, clif->pUseSkillToPos);
 }
 
 // 20150513
@@ -467,6 +473,7 @@ if (packetVersion >= 20150513)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0924,   5, clif->pChangeDir);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0885,   6, clif->pDropItem);
+    packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
 }
 #endif
 
