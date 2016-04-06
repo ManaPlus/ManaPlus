@@ -305,6 +305,7 @@ if (packetVersion >= 20150513)
     packet(CMSG_HOMUNCULUS_MENU,          0x0817,   5, clif->pHomMenu);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0924,   5, clif->pChangeDir);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x0885,   6, clif->pDropItem);
 }
 #endif
 
