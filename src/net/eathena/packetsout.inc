@@ -25,7 +25,7 @@ packet(CMSG_SERVER_VERSION_REQUEST,       0x7530,   0, nullptr);
 
 packet(CMSG_LOGIN_REGISTER,               0x0064,   0, nullptr);
 packet(CMSG_LOGIN_REGISTER2,              0x027c,   0, nullptr);
-packet(CMSG_NAME_REQUEST,                 0x088a,   6, clif->pGetCharNameRequest);
+packet(CMSG_NAME_REQUEST,                 0x0094,   6, clif->pGetCharNameRequest);
 
 packet(CMSG_CHAR_PASSWORD_CHANGE,         0x0061,   0, nullptr);
 packet(CMSG_CHAR_SERVER_CONNECT,          0x0065,   0, nullptr);
@@ -64,7 +64,7 @@ packet(CMSG_KICK_FROM_CHAT_ROOM,          0x00e2,  26, clif->pKickFromChat);
 
 packet(CMSG_SKILL_LEVELUP_REQUEST,        0x0112,   4, clif->pSkillUp);
 packet(CMSG_STAT_UPDATE_REQUEST,          0x00bb,   5, clif->pStatusUp);
-packet(CMSG_SKILL_USE_BEING,              0x083c,  10, clif->pUseSkillToId);
+packet(CMSG_SKILL_USE_BEING,              0x0113,  10, clif->pUseSkillToId);
 packet(CMSG_SKILL_USE_POSITION,           0x0436,  10, clif->pUseSkillToPos);
 packet(CMSG_SKILL_USE_POSITION_MORE,      0x0366,  90, clif->pUseSkillToPosMoreInfo);
 packet(CMSG_SKILL_USE_MAP,                0x011b,  20, clif->pUseSkillMap);
@@ -202,7 +202,6 @@ packet(CMSG_PET_DIRECTION,                0x0b12,   0, nullptr);
 
 packet(CMSG_MERCENARY_ACTION,             0x029f,   3, clif->pmercenary_action);
 packet(CMSG_HOMUNCULUS_SET_NAME,          0x0231,  26, clif->pChangeHomunculusName);
-packet(CMSG_HOMUNCULUS_MENU,              0x0361,   5, clif->pHomMenu);
 packet(CMSG_HOMMERC_MOVE_TO_MASTER,       0x0234,   6, clif->pHomMoveToMaster);
 packet(CMSG_HOMMERC_MOVE_TO,              0x0232,   9, clif->pHomMoveTo);
 packet(CMSG_HOMMERC_ATTACK,               0x0233,  11, clif->pHomAttack);
@@ -253,15 +252,8 @@ packet(CMSG_VENDING_BUY,                  0x0134,  -1, clif->pPurchaseReq);
 packet(CMSG_VENDING_BUY2,                 0x0801,  -1, clif->pPurchaseReq2);
 packet(CMSG_VENDING_CREATE_SHOP,          0x01b2,  -1, clif->pOpenVending);
 
-packet(CMSG_BUYINGSTORE_CREATE,           0x0815,  -1, clif->pReqOpenBuyingStore);
-packet(CMSG_BUYINGSTORE_CLOSE,            0x022d,   2, clif->pReqCloseBuyingStore);
-packet(CMSG_BUYINGSTORE_OPEN,             0x0360,   6, clif->pReqClickBuyingStore);
-packet(CMSG_BUYINGSTORE_SELL,             0x0811,  -1, clif->pReqTradeBuyingStore);
-
-packet(CMSG_SEARCHSTORE_SEARCH,           0x0819,  -1, clif->pSearchStoreInfo);
 packet(CMSG_SEARCHSTORE_NEXT_PAGE,        0x0940,   2, clif->pSearchStoreInfoNextPage);
 packet(CMSG_SEARCHSTORE_CLOSE,            0x083b,   2, clif->pCloseSearchStoreInfo);
-packet(CMSG_SEARCHSTORE_CLICK,            0x0835,   2, clif->pSearchStoreInfoNextPage);
 
 packet(CMSG_MERGE_ITEM_ACK,               0x096e,  -1, clif->ackmergeitems);
 packet(CMSG_MERGE_ITEM_CANCEL,            0x0974,   2, clif->cancelmergeitem);
@@ -278,6 +270,13 @@ packet(CMSG_SELECT_CART,                  0x0980,   7, clif->pSelectCart);
 packet(CMSG_ALCHEMIST_RANKS,              0x0000,   0, nullptr);
 packet(CMSG_BLACKSMITH_RANKS,             0x0000,   0, nullptr);
 packet(CMSG_PK_RANKS,                     0x0000,   0, nullptr);
+packet(CMSG_BUYINGSTORE_CLOSE,            0x0000,   0, nullptr);
+packet(CMSG_BUYINGSTORE_CREATE,           0x0000,   0, nullptr);
+packet(CMSG_BUYINGSTORE_SELL,             0x0000,   0, nullptr);
+packet(CMSG_SEARCHSTORE_SEARCH,           0x0000,   0, nullptr);
+packet(CMSG_HOMUNCULUS_MENU,              0x0000,   0, nullptr);
+packet(CMSG_SEARCHSTORE_CLICK,            0x0000,   0, nullptr);
+packet(CMSG_BUYINGSTORE_OPEN,             0x0000,   0, nullptr);
 #else
 // 20041108
 if (packetVersion >= 20041108)
@@ -296,6 +295,144 @@ if (packetVersion >= 20050530)
 if (packetVersion >= 20090603)
 {
     packet(CMSG_PARTY_SETTINGS,           0x07d7,   8, clif->pPartyChangeOption);
+}
+
+// 20100303
+if (packetVersion >= 20100303)
+{
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0811,  -1, clif->pReqOpenBuyingStore);
+}
+
+// 20100420
+if (packetVersion >= 20100420)
+{
+    packet(CMSG_BUYINGSTORE_CLOSE,        0x0815,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_BUYINGSTORE_SELL,         0x0819,  -1, clif->pReqTradeBuyingStore);
+}
+
+// 20100601
+if (packetVersion >= 20100601)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0835,  -1, clif->pSearchStoreInfo);
+}
+
+// 20100608
+if (packetVersion >= 20100608)
+{
+    packet(CMSG_SEARCHSTORE_CLICK,        0x083c,  12, clif->pSearchStoreInfoListItemClick);
+}
+
+// 20111005
+if (packetVersion >= 20111005)
+{
+    packet(CMSG_NAME_REQUEST,             0x088a,   6, clif->pGetCharNameRequest);
+}
+
+// 20120307
+if (packetVersion >= 20120307)
+{
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
+    packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+}
+
+// 20120410
+if (packetVersion >= 20120410)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
+}
+
+// 20120418
+if (packetVersion >= 20120418)
+{
+    packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
+}
+
+// 20131230
+if (packetVersion >= 20131230)
+{
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0365,  -1, clif->pReqOpenBuyingStore);
+    packet(CMSG_BUYINGSTORE_SELL,         0x087f,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x093d,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_BUYINGSTORE_CLOSE,        0x094c,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0949,   5, clif->pHomMenu);
+    packet(CMSG_SEARCHSTORE_CLICK,        0x087b,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_BUYINGSTORE_OPEN,         0x0969,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_SKILL_USE_BEING,          0x02C4,  10, clif->pUseSkillToId);
+    packet(CMSG_NAME_REQUEST,             0x0926,   6, clif->pGetCharNameRequest);
+}
+
+// 20140115
+if (packetVersion >= 20140115)
+{
+// look like server packet bug
+//    packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
+    packet(CMSG_BUYINGSTORE_CLOSE,        0x0965,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_BUYINGSTORE_SELL,         0x096A,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0815,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_HOMUNCULUS_MENU,          0x092d,   5, clif->pHomMenu);
+    packet(CMSG_SEARCHSTORE_CLICK,        0x0360,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_BUYINGSTORE_OPEN,         0x088A,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_SKILL_USE_BEING,          0x083C,  10, clif->pUseSkillToId);
+    packet(CMSG_NAME_REQUEST,             0x0802,   6, clif->pGetCharNameRequest);
+}
+
+// 20140205
+if (packetVersion >= 20140205)
+{
+    packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
+    packet(CMSG_BUYINGSTORE_CLOSE,        0x0817,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
+    packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x096A,   6, clif->pGetCharNameRequest);
+}
+
+// 20140305
+if (packetVersion >= 20140305)
+{
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0361,  -1, clif->pReqOpenBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0934,   5, clif->pHomMenu);
+}
+
+// 20140402
+if (packetVersion >= 20140402)
+{
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0944,  -1, clif->pReqOpenBuyingStore);
+    packet(CMSG_BUYINGSTORE_CLOSE,        0x0867,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_BUYINGSTORE_SELL,         0x091f,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0896,   5, clif->pHomMenu);
+    packet(CMSG_SEARCHSTORE_CLICK,        0x0965,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_BUYINGSTORE_OPEN,         0x023B,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_SKILL_USE_BEING,          0x0868,  10, clif->pUseSkillToId);
+    packet(CMSG_NAME_REQUEST,             0x088A,   6, clif->pGetCharNameRequest);
+}
+
+// 20140416
+if (packetVersion >= 20140416)
+{
+    packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
+    packet(CMSG_BUYINGSTORE_CLOSE,        0x0817,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
+    packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_SKILL_USE_BEING,          0x083C,  10, clif->pUseSkillToId);
+    packet(CMSG_NAME_REQUEST,             0x096A,   6, clif->pGetCharNameRequest);
+}
+
+// 20141016
+if (packetVersion >= 20141016)
+{
+    packet(CMSG_HOMUNCULUS_MENU,          0x0364,   5, clif->pHomMenu);
+}
+
+// 20141022
+if (packetVersion >= 20141022)
+{
+    packet(CMSG_HOMUNCULUS_MENU,          0x0899,   5, clif->pHomMenu);
+    packet(CMSG_SEARCHSTORE_CLICK,        0x0835,  12, clif->pSearchStoreInfoListItemClick);
 }
 
 // 20150513

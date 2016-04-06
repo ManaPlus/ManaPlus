@@ -33,6 +33,7 @@
 #include "debug.h"
 
 extern Net::BuyingStoreHandler *buyingStoreHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -63,6 +64,8 @@ void BuyingStoreHandler::create(const std::string &name,
 
 void BuyingStoreHandler::close() const
 {
+    if (packetVersion < 20100420)
+        return;
     createOutPacket(CMSG_BUYINGSTORE_CLOSE);
     PlayerInfo::enableVending(false);
 }
@@ -80,7 +83,7 @@ void BuyingStoreHandler::sell(const Being *const being,
                               const Item *const item,
                               const int amount) const
 {
-    if (!being || !item)
+    if (!being || !item || packetVersion < 20100420)
         return;
 
     createOutPacket(CMSG_BUYINGSTORE_SELL);
