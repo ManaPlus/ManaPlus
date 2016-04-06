@@ -306,6 +306,7 @@ if (packetVersion >= 20150513)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0924,   5, clif->pChangeDir);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0885,   6, clif->pDropItem);
+    packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
 }
 #endif
 
