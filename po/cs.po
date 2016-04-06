@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-03-26 13:56+0300\n"
-"PO-Revision-Date: 2016-03-10 15:47+0000\n"
+"POT-Creation-Date: 2016-04-06 02:15+0300\n"
+"PO-Revision-Date: 2016-03-27 08:56+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/akaras/manaplus/language/"
 "cs/)\n"
@@ -59,9 +59,9 @@ msgstr "Soubor byl uploadován"
 #: src/gui/windows/registerdialog.cpp:256 src/gui/windows/socialwindow.cpp:531
 #: src/gui/windows/textdialog.cpp:53 src/gui/windows/unregisterdialog.cpp:149
 #: src/net/ea/charserverrecv.cpp:108 src/net/ea/charserverrecv.cpp:134
-#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:378
-#: src/net/eathena/charserverrecv.cpp:413
-#: src/net/eathena/charserverrecv.cpp:441 src/net/tmwa/charserverrecv.cpp:286
+#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:405
+#: src/net/eathena/charserverrecv.cpp:440
+#: src/net/eathena/charserverrecv.cpp:468 src/net/tmwa/charserverrecv.cpp:286
 msgid "OK"
 msgstr "OK"
 
@@ -302,26 +302,26 @@ msgid "Visible on map"
 msgstr "Viditelný na mapě"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:489
+#: src/being/being.cpp:491
 msgid "Human"
 msgstr "Člověk"
 
 #. TRANSLATORS: dodge or miss message in attacks
-#: src/being/being.cpp:667
+#: src/being/being.cpp:669
 msgid "dodge"
 msgstr "uskočení"
 
-#: src/being/being.cpp:667
+#: src/being/being.cpp:669
 msgid "miss"
 msgstr "minutí"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2261 src/gui/windows/whoisonline.cpp:881
+#: src/being/being.cpp:2263 src/gui/windows/whoisonline.cpp:881
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2266 src/gui/windows/whoisonline.cpp:886
+#: src/being/being.cpp:2268 src/gui/windows/whoisonline.cpp:886
 msgid "I"
 msgstr "I"
 
@@ -590,9 +590,9 @@ msgstr "Vyměňuji herní servery"
 #: src/gui/windows/editserverdialog.cpp:210
 #: src/gui/windows/registerdialog.cpp:256
 #: src/gui/windows/unregisterdialog.cpp:146 src/net/ea/charserverrecv.cpp:105
-#: src/net/eathena/charserverrecv.cpp:351
-#: src/net/eathena/charserverrecv.cpp:355
-#: src/net/eathena/charserverrecv.cpp:437 src/net/tmwa/charserverrecv.cpp:282
+#: src/net/eathena/charserverrecv.cpp:378
+#: src/net/eathena/charserverrecv.cpp:382
+#: src/net/eathena/charserverrecv.cpp:464 src/net/tmwa/charserverrecv.cpp:282
 msgid "Error"
 msgstr "Chyba"
 
@@ -2097,7 +2097,7 @@ msgstr "Odebrat"
 #. TRANSLATORS: warp to map item
 #. TRANSLATORS: warp select button
 #: src/gui/popups/popupmenu.cpp:708 src/gui/popups/popupmenu.cpp:737
-#: src/net/eathena/skillrecv.cpp:364
+#: src/net/eathena/skillrecv.cpp:370
 msgid "Warp"
 msgstr "Přesun"
 
@@ -2869,8 +2869,8 @@ msgstr ""
 #. TRANSLATORS: info message
 #: src/gui/popups/popupmenu.cpp:3056 src/gui/popups/popupmenu.cpp:3075
 #: src/gui/popups/popupmenu.cpp:3088 src/gui/windows/charselectdialog.cpp:76
-#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:374
-#: src/net/eathena/charserverrecv.cpp:410
+#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:401
+#: src/net/eathena/charserverrecv.cpp:437
 msgid "Info"
 msgstr "Informace"
 
@@ -3283,7 +3283,7 @@ msgid "Eq."
 msgstr "Ob."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:97
+#: src/gui/widgets/itemlinkhandler.cpp:100
 msgid "Open url"
 msgstr "Otevři web adresu"
 
@@ -3753,9 +3753,8 @@ msgstr "Vychování:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:294
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:379
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:422
-#, fuzzy
 msgid "Effects:"
-msgstr "Efekty"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:341
@@ -9045,33 +9044,33 @@ msgstr "Spojení se serverem ukončeno. "
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:353
-#: src/net/eathena/charserverrecv.cpp:401
+#: src/net/eathena/charserverrecv.cpp:380
+#: src/net/eathena/charserverrecv.cpp:428
 msgid "Character rename error."
 msgstr "Chyba přejmenování postavy."
 
 #. TRANSLATORS: info message
-#: src/net/eathena/charserverrecv.cpp:376
+#: src/net/eathena/charserverrecv.cpp:403
 msgid "Character renamed."
 msgstr "Postava přejmenována."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:392
+#: src/net/eathena/charserverrecv.cpp:419
 msgid "Rename not allowed."
 msgstr "Přejmenování není povoleno."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:396
+#: src/net/eathena/charserverrecv.cpp:423
 msgid "New name is not set."
 msgstr "Nové jméno nebylo nastaveno."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:405
+#: src/net/eathena/charserverrecv.cpp:432
 msgid "Character not found."
 msgstr "Postava nenalezena."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/charserverrecv.cpp:439 src/net/tmwa/charserverrecv.cpp:284
+#: src/net/eathena/charserverrecv.cpp:466 src/net/tmwa/charserverrecv.cpp:284
 msgid "Failed to delete character."
 msgstr "Nepodařilo se odstranit postavu."
 
@@ -9101,22 +9100,21 @@ msgid "Work in progress."
 msgstr "Na tomhle se pracuje."
 
 #. TRANSLATORS: chat message
-#: src/net/eathena/chatrecv.cpp:332
+#: src/net/eathena/chatrecv.cpp:337
 #, c-format
 msgid "Message could not be sent, channel %s is not exists."
 msgstr "Zpráva nemohla být poslána. Kanál %s neexistuje."
 
 #. TRANSLATORS: chat message
-#: src/net/eathena/chatrecv.cpp:454
+#: src/net/eathena/chatrecv.cpp:459
 #, c-format
 msgid "Can't open channel. Channel %s is not exists."
 msgstr "Není možné otevřít kanál %s. Kanál neexistuje."
 
 #. TRANSLATORS: adopt child message
 #: src/net/eathena/familyrecv.cpp:73
-#, fuzzy
 msgid "Request parents"
-msgstr "Vyžaduji postavy"
+msgstr ""
 
 #. TRANSLATORS: adopt child message
 #: src/net/eathena/familyrecv.cpp:75
@@ -9404,7 +9402,7 @@ msgid "Map not found"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/net/eathena/inventoryrecv.cpp:693
+#: src/net/eathena/inventoryrecv.cpp:823
 #, c-format
 msgid "Left %s rental time for item %s."
 msgstr ""
@@ -9412,8 +9410,8 @@ msgstr ""
 #. TRANSLATORS: unknown item
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: item name
-#: src/net/eathena/inventoryrecv.cpp:997 src/net/eathena/inventoryrecv.cpp:1130
-#: src/resources/db/itemdb.cpp:264
+#: src/net/eathena/inventoryrecv.cpp:1177
+#: src/net/eathena/inventoryrecv.cpp:1310 src/resources/db/itemdb.cpp:264
 msgid "Unknown item"
 msgstr "Neznámý předmět"
 
@@ -9445,109 +9443,108 @@ msgid "hungry level %d"
 msgstr ""
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:232
+#: src/net/eathena/skillrecv.cpp:238
 #, c-format
 msgid "Unknown skill error: %d"
 msgstr ""
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:245
+#: src/net/eathena/skillrecv.cpp:251
 #, c-format
 msgid "Unknown skill error: %d."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:254 src/net/tmwa/skillrecv.cpp:146
+#: src/net/eathena/skillrecv.cpp:260 src/net/tmwa/skillrecv.cpp:146
 msgid "You have not yet reached a high enough lvl!"
 msgstr "Nedosáhl jste ještě dostatečně vysoké úrovně!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:258 src/net/tmwa/skillrecv.cpp:150
+#: src/net/eathena/skillrecv.cpp:264 src/net/tmwa/skillrecv.cpp:150
 msgid "Insufficient HP!"
 msgstr "Nedostatek životů (HP)!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:262 src/net/tmwa/skillrecv.cpp:154
+#: src/net/eathena/skillrecv.cpp:268 src/net/tmwa/skillrecv.cpp:154
 msgid "Insufficient SP!"
 msgstr "Nedostatek bodů dovednosti (SP)!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:266 src/net/tmwa/skillrecv.cpp:158
+#: src/net/eathena/skillrecv.cpp:272 src/net/tmwa/skillrecv.cpp:158
 msgid "You have no memos!"
 msgstr "Nemáte žádné zprávy!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:270 src/net/tmwa/skillrecv.cpp:162
+#: src/net/eathena/skillrecv.cpp:276 src/net/tmwa/skillrecv.cpp:162
 msgid "You cannot do that right now!"
 msgstr "Toto momentálně nemůžete udělat!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:274 src/net/tmwa/skillrecv.cpp:166
+#: src/net/eathena/skillrecv.cpp:280 src/net/tmwa/skillrecv.cpp:166
 msgid "Seems you need more money... ;-)"
 msgstr "Vypadá to že potřebujete více peněz... ;-)"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:278 src/net/tmwa/skillrecv.cpp:170
+#: src/net/eathena/skillrecv.cpp:284 src/net/tmwa/skillrecv.cpp:170
 msgid "You cannot use this skill with that kind of weapon!"
 msgstr "Nemůžete použít tuto dovednost s touto zbraní!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:283 src/net/tmwa/skillrecv.cpp:175
+#: src/net/eathena/skillrecv.cpp:289 src/net/tmwa/skillrecv.cpp:175
 msgid "You need another red gem!"
 msgstr "Potřebujete další rubín!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:287 src/net/tmwa/skillrecv.cpp:179
+#: src/net/eathena/skillrecv.cpp:293 src/net/tmwa/skillrecv.cpp:179
 msgid "You need another blue gem!"
 msgstr "Potřebujete další safír!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:291 src/net/tmwa/skillrecv.cpp:183
+#: src/net/eathena/skillrecv.cpp:297 src/net/tmwa/skillrecv.cpp:183
 msgid "You're carrying to much to do this!"
 msgstr "Neseš příliš mnoho na to abys mohl udělat toto!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:295
+#: src/net/eathena/skillrecv.cpp:301
 msgid "Fail summon."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:299
+#: src/net/eathena/skillrecv.cpp:305
 msgid "Need spirits."
-msgstr ""
-
-#. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:309
-#, c-format
-msgid "Need equipment %s."
 msgstr ""
 
 #. TRANSLATORS: skill error message
 #: src/net/eathena/skillrecv.cpp:315
 #, c-format
-msgid "Need equipment %s and amount %d"
+msgid "Need equipment %s."
 msgstr ""
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:329
+#: src/net/eathena/skillrecv.cpp:321
 #, c-format
-msgid "Need item %s."
+msgid "Need equipment %s and amount %d"
 msgstr ""
 
 #. TRANSLATORS: skill error message
 #: src/net/eathena/skillrecv.cpp:335
 #, c-format
+msgid "Need item %s."
+msgstr ""
+
+#. TRANSLATORS: skill error message
+#: src/net/eathena/skillrecv.cpp:341
+#, c-format
 msgid "Need item %s and amount %d"
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:344
-#, fuzzy
+#: src/net/eathena/skillrecv.cpp:350
 msgid "Skill failed!"
-msgstr "Sednutí selhalo!"
+msgstr ""
 
 #. TRANSLATORS: warp select window name
-#: src/net/eathena/skillrecv.cpp:362
+#: src/net/eathena/skillrecv.cpp:368
 msgid "Select warp target"
 msgstr ""
 
@@ -10804,15 +10801,14 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:796
-#, fuzzy, c-format
+#, c-format
 msgid "You and %s was divorced."
-msgstr "Tvůj žoldák byl propuštěn."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:800
-#, fuzzy
 msgid "You was called by partner."
-msgstr "Byl jsi zabit %s."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:804
