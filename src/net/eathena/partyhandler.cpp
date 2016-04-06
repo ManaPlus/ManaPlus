@@ -37,6 +37,7 @@
 #include "debug.h"
 
 extern Net::PartyHandler *partyHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -137,9 +138,16 @@ void PartyHandler::setShareExperience(const PartyShareT share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(CAST_S16(share), "share exp");
-    outMsg.writeInt16(CAST_S16(Ea::PartyRecv::mShareItems),
-        "share items");
+    if (packetVersion >= 20090603)
+    {
+        outMsg.writeInt32(CAST_S32(share), "share exp");
+        outMsg.writeInt16(CAST_S16(Ea::PartyRecv::mShareItems),
+            "share items");
+    }
+    else
+    {
+        outMsg.writeInt32(CAST_S32(share), "share exp");
+    }
 }
 
 // +++ must be 3 types item, exp, pickup
@@ -149,9 +157,17 @@ void PartyHandler::setShareItems(const PartyShareT share) const
         return;
 
     createOutPacket(CMSG_PARTY_SETTINGS);
-    outMsg.writeInt16(CAST_S16(Ea::PartyRecv::mShareExp),
-        "share exp");
-    outMsg.writeInt16(CAST_S16(share), "share items");
+    if (packetVersion >= 20090603)
+    {
+        outMsg.writeInt32(CAST_S32(Ea::PartyRecv::mShareExp),
+            "share exp");
+        outMsg.writeInt16(CAST_S16(share), "share items");
+    }
+    else
+    {
+//        outMsg.writeInt32(CAST_S16(Ea::PartyRecv::mShareExp),
+//            "share exp");
+    }
 }
 
 void PartyHandler::changeLeader(const std::string &name) const

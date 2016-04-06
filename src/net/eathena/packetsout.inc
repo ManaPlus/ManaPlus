@@ -285,11 +285,19 @@ if (packetVersion >= 20041108)
     packet(CMSG_ALCHEMIST_RANKS,          0x0218,   2, clif->pAlchemist);
     packet(CMSG_BLACKSMITH_RANKS,         0x0217,   2, clif->pBlacksmith);
 }
+
 // 20050530
 if (packetVersion >= 20050530)
 {
     packet(CMSG_PK_RANKS,                 0x0237,   2, clif->pRankingPk);
 }
+
+// 20090603
+if (packetVersion >= 20090603)
+{
+    packet(CMSG_PARTY_SETTINGS,           0x07d7,   8, clif->pPartyChangeOption);
+}
+
 // 20150513
 if (packetVersion >= 20150513)
 {
