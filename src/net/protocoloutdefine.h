@@ -21,6 +21,6 @@
 #ifndef NET_PROTOCOLOUTDEFINE_H
 #define NET_PROTOCOLOUTDEFINE_H
 
-#define packet(name, id) int name = id
+#define packet(name, id, sz, comment) int name = id
 
 #endif  // NET_PROTOCOLOUTDEFINE_H

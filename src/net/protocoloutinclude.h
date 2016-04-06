@@ -21,6 +21,6 @@
 #ifndef NET_PROTOCOLOUTINCLUDE_H
 #define NET_PROTOCOLOUTINCLUDE_H
 
-#define packet(name, id) extern int name
+#define packet(name, id, sz, comment) extern int name
 
 #endif  // NET_PROTOCOLOUTINCLUDE_H

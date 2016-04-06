@@ -20,107 +20,107 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-packet(CMSG_SERVER_VERSION_REQUEST,  0x7530);
+packet(CMSG_SERVER_VERSION_REQUEST,  0x7530,   0, nullptr);
 
-packet(CMSG_LOGIN_REGISTER,          0x0064);
+packet(CMSG_LOGIN_REGISTER,          0x0064,   0, nullptr);
 
-packet(CMSG_NAME_REQUEST,            0x0094);
+packet(CMSG_NAME_REQUEST,            0x0094,   0, nullptr);
 
-packet(CMSG_CHAR_PASSWORD_CHANGE,    0x0061);
-packet(CMSG_CHAR_SERVER_CONNECT,     0x0065);
-packet(CMSG_CHAR_SELECT,             0x0066);
-packet(CMSG_CHAR_CREATE,             0x0067);
-packet(CMSG_CHAR_DELETE,             0x0068);
+packet(CMSG_CHAR_PASSWORD_CHANGE,    0x0061,   0, nullptr);
+packet(CMSG_CHAR_SERVER_CONNECT,     0x0065,   0, nullptr);
+packet(CMSG_CHAR_SELECT,             0x0066,   0, nullptr);
+packet(CMSG_CHAR_CREATE,             0x0067,   0, nullptr);
+packet(CMSG_CHAR_DELETE,             0x0068,   0, nullptr);
 
-packet(CMSG_MAP_SERVER_CONNECT,      0x0072);
-packet(CMSG_MAP_PING,                0x007e);
-packet(CMSG_MAP_LOADED,              0x007d);
-packet(CMSG_CLIENT_QUIT,             0x018A);
+packet(CMSG_MAP_SERVER_CONNECT,      0x0072,   0, nullptr);
+packet(CMSG_MAP_PING,                0x007e,   0, nullptr);
+packet(CMSG_MAP_LOADED,              0x007d,   0, nullptr);
+packet(CMSG_CLIENT_QUIT,             0x018A,   0, nullptr);
 
-packet(CMSG_CHAT_MESSAGE,            0x008c);
-packet(CMSG_CHAT_WHISPER,            0x0096);
-packet(CMSG_CHAT_WHO,                0x00c1);
+packet(CMSG_CHAT_MESSAGE,            0x008c,   0, nullptr);
+packet(CMSG_CHAT_WHISPER,            0x0096,   0, nullptr);
+packet(CMSG_CHAT_WHO,                0x00c1,   0, nullptr);
 
-packet(CMSG_SKILL_LEVELUP_REQUEST,   0x0112);
-packet(CMSG_STAT_UPDATE_REQUEST,     0x00bb);
-packet(CMSG_SKILL_USE_BEING,         0x0113);
-packet(CMSG_SKILL_USE_POSITION,      0x0116);
-packet(CMSG_SKILL_USE_POSITION_MORE, 0x0190);
-packet(CMSG_SKILL_USE_MAP,           0x011b);
+packet(CMSG_SKILL_LEVELUP_REQUEST,   0x0112,   0, nullptr);
+packet(CMSG_STAT_UPDATE_REQUEST,     0x00bb,   0, nullptr);
+packet(CMSG_SKILL_USE_BEING,         0x0113,   0, nullptr);
+packet(CMSG_SKILL_USE_POSITION,      0x0116,   0, nullptr);
+packet(CMSG_SKILL_USE_POSITION_MORE, 0x0190,   0, nullptr);
+packet(CMSG_SKILL_USE_MAP,           0x011b,   0, nullptr);
 
-packet(CMSG_PLAYER_INVENTORY_USE,    0x00a7);
-packet(CMSG_PLAYER_INVENTORY_DROP,   0x00a2);
-packet(CMSG_PLAYER_EQUIP,            0x00a9);
-packet(CMSG_PLAYER_UNEQUIP,          0x00ab);
+packet(CMSG_PLAYER_INVENTORY_USE,    0x00a7,   0, nullptr);
+packet(CMSG_PLAYER_INVENTORY_DROP,   0x00a2,   0, nullptr);
+packet(CMSG_PLAYER_EQUIP,            0x00a9,   0, nullptr);
+packet(CMSG_PLAYER_UNEQUIP,          0x00ab,   0, nullptr);
 
-packet(CMSG_ITEM_PICKUP,             0x009f);
-packet(CMSG_PLAYER_CHANGE_DIR,       0x009b);
-packet(CMSG_PLAYER_CHANGE_DEST,      0x0085);
-packet(CMSG_PLAYER_CHANGE_ACT,       0x0089);
-packet(CMSG_PLAYER_RESTART,          0x00b2);
-packet(CMSG_PLAYER_EMOTE,            0x00bf);
-packet(CMSG_PLAYER_STOP_ATTACK,      0x0118);
-packet(CMSG_WHO_REQUEST,             0x00c1);
+packet(CMSG_ITEM_PICKUP,             0x009f,   0, nullptr);
+packet(CMSG_PLAYER_CHANGE_DIR,       0x009b,   0, nullptr);
+packet(CMSG_PLAYER_CHANGE_DEST,      0x0085,   0, nullptr);
+packet(CMSG_PLAYER_CHANGE_ACT,       0x0089,   0, nullptr);
+packet(CMSG_PLAYER_RESTART,          0x00b2,   0, nullptr);
+packet(CMSG_PLAYER_EMOTE,            0x00bf,   0, nullptr);
+packet(CMSG_PLAYER_STOP_ATTACK,      0x0118,   0, nullptr);
+packet(CMSG_WHO_REQUEST,             0x00c1,   0, nullptr);
 
-packet(CMSG_NPC_TALK,                0x0090);
-packet(CMSG_NPC_NEXT_REQUEST,        0x00b9);
-packet(CMSG_NPC_CLOSE,               0x0146);
-packet(CMSG_NPC_LIST_CHOICE,         0x00b8);
-packet(CMSG_NPC_INT_RESPONSE,        0x0143);
-packet(CMSG_NPC_STR_RESPONSE,        0x01d5);
-packet(CMSG_NPC_BUY_SELL_REQUEST,    0x00c5);
-packet(CMSG_NPC_BUY_REQUEST,         0x00c8);
-packet(CMSG_NPC_SELL_REQUEST,        0x00c9);
+packet(CMSG_NPC_TALK,                0x0090,   0, nullptr);
+packet(CMSG_NPC_NEXT_REQUEST,        0x00b9,   0, nullptr);
+packet(CMSG_NPC_CLOSE,               0x0146,   0, nullptr);
+packet(CMSG_NPC_LIST_CHOICE,         0x00b8,   0, nullptr);
+packet(CMSG_NPC_INT_RESPONSE,        0x0143,   0, nullptr);
+packet(CMSG_NPC_STR_RESPONSE,        0x01d5,   0, nullptr);
+packet(CMSG_NPC_BUY_SELL_REQUEST,    0x00c5,   0, nullptr);
+packet(CMSG_NPC_BUY_REQUEST,         0x00c8,   0, nullptr);
+packet(CMSG_NPC_SELL_REQUEST,        0x00c9,   0, nullptr);
 
-packet(CMSG_TRADE_REQUEST,           0x00e4);
-packet(CMSG_TRADE_RESPONSE,          0x00e6);
-packet(CMSG_TRADE_ITEM_ADD_REQUEST,  0x00e8);
-packet(CMSG_TRADE_CANCEL_REQUEST,    0x00ed);
-packet(CMSG_TRADE_ADD_COMPLETE,      0x00eb);
-packet(CMSG_TRADE_OK,                0x00ef);
+packet(CMSG_TRADE_REQUEST,           0x00e4,   0, nullptr);
+packet(CMSG_TRADE_RESPONSE,          0x00e6,   0, nullptr);
+packet(CMSG_TRADE_ITEM_ADD_REQUEST,  0x00e8,   0, nullptr);
+packet(CMSG_TRADE_CANCEL_REQUEST,    0x00ed,   0, nullptr);
+packet(CMSG_TRADE_ADD_COMPLETE,      0x00eb,   0, nullptr);
+packet(CMSG_TRADE_OK,                0x00ef,   0, nullptr);
 
-packet(CMSG_PARTY_CREATE,            0x00f9);
-packet(CMSG_PARTY_INVITE,            0x00fc);
-packet(CMSG_PARTY_INVITED,           0x00ff);
-packet(CMSG_PARTY_LEAVE,             0x0100);
-packet(CMSG_PARTY_SETTINGS,          0x0102);
-packet(CMSG_PARTY_KICK,              0x0103);
-packet(CMSG_PARTY_MESSAGE,           0x0108);
+packet(CMSG_PARTY_CREATE,            0x00f9,   0, nullptr);
+packet(CMSG_PARTY_INVITE,            0x00fc,   0, nullptr);
+packet(CMSG_PARTY_INVITED,           0x00ff,   0, nullptr);
+packet(CMSG_PARTY_LEAVE,             0x0100,   0, nullptr);
+packet(CMSG_PARTY_SETTINGS,          0x0102,   0, nullptr);
+packet(CMSG_PARTY_KICK,              0x0103,   0, nullptr);
+packet(CMSG_PARTY_MESSAGE,           0x0108,   0, nullptr);
 
-packet(CMSG_MOVE_TO_STORAGE,         0x00f3);
-packet(CMSG_MOVE_FROM_STORAGE,       0x00f5);
-packet(CMSG_CLOSE_STORAGE,           0x00f7);
+packet(CMSG_MOVE_TO_STORAGE,         0x00f3,   0, nullptr);
+packet(CMSG_MOVE_FROM_STORAGE,       0x00f5,   0, nullptr);
+packet(CMSG_CLOSE_STORAGE,           0x00f7,   0, nullptr);
 
-packet(CMSG_ADMIN_ANNOUNCE,          0x0099);
-packet(CMSG_ADMIN_LOCAL_ANNOUNCE,    0x019C);
-packet(CMSG_ADMIN_HIDE,              0x019D);
-packet(CMSG_ADMIN_KICK,              0x00CC);
-packet(CMSG_ADMIN_MUTE,              0x0149);
+packet(CMSG_ADMIN_ANNOUNCE,          0x0099,   0, nullptr);
+packet(CMSG_ADMIN_LOCAL_ANNOUNCE,    0x019C,   0, nullptr);
+packet(CMSG_ADMIN_HIDE,              0x019D,   0, nullptr);
+packet(CMSG_ADMIN_KICK,              0x00CC,   0, nullptr);
+packet(CMSG_ADMIN_MUTE,              0x0149,   0, nullptr);
 
-packet(CMSG_GUILD_CHECK_MASTER,      0x014d);
-packet(CMSG_GUILD_REQUEST_INFO,      0x014f);
-packet(CMSG_GUILD_REQUEST_EMBLEM,    0x0151);
-packet(CMSG_GUILD_CHANGE_EMBLEM,     0x0153);
-packet(CMSG_GUILD_CHANGE_MEMBER_POS, 0x0155);
-packet(CMSG_GUILD_LEAVE,             0x0159);
-packet(CMSG_GUILD_EXPULSION,         0x015b);
-packet(CMSG_GUILD_BREAK,             0x015d);
-packet(CMSG_GUILD_CHANGE_POS_INFO,   0x0161);
-packet(CMSG_GUILD_CREATE,            0x0165);
-packet(CMSG_GUILD_INVITE,            0x0168);
-packet(CMSG_GUILD_INVITE_REPLY,      0x016b);
-packet(CMSG_GUILD_CHANGE_NOTICE,     0x016e);
-packet(CMSG_GUILD_ALLIANCE_REQUEST,  0x0170);
-packet(CMSG_GUILD_ALLIANCE_REPLY,    0x0172);
-packet(CMSG_GUILD_MESSAGE,           0x017e);
-packet(CMSG_GUILD_OPPOSITION,        0x0180);
-packet(CMSG_GUILD_ALLIANCE_DELETE,   0x0183);
+packet(CMSG_GUILD_CHECK_MASTER,      0x014d,   0, nullptr);
+packet(CMSG_GUILD_REQUEST_INFO,      0x014f,   0, nullptr);
+packet(CMSG_GUILD_REQUEST_EMBLEM,    0x0151,   0, nullptr);
+packet(CMSG_GUILD_CHANGE_EMBLEM,     0x0153,   0, nullptr);
+packet(CMSG_GUILD_CHANGE_MEMBER_POS, 0x0155,   0, nullptr);
+packet(CMSG_GUILD_LEAVE,             0x0159,   0, nullptr);
+packet(CMSG_GUILD_EXPULSION,         0x015b,   0, nullptr);
+packet(CMSG_GUILD_BREAK,             0x015d,   0, nullptr);
+packet(CMSG_GUILD_CHANGE_POS_INFO,   0x0161,   0, nullptr);
+packet(CMSG_GUILD_CREATE,            0x0165,   0, nullptr);
+packet(CMSG_GUILD_INVITE,            0x0168,   0, nullptr);
+packet(CMSG_GUILD_INVITE_REPLY,      0x016b,   0, nullptr);
+packet(CMSG_GUILD_CHANGE_NOTICE,     0x016e,   0, nullptr);
+packet(CMSG_GUILD_ALLIANCE_REQUEST,  0x0170,   0, nullptr);
+packet(CMSG_GUILD_ALLIANCE_REPLY,    0x0172,   0, nullptr);
+packet(CMSG_GUILD_MESSAGE,           0x017e,   0, nullptr);
+packet(CMSG_GUILD_OPPOSITION,        0x0180,   0, nullptr);
+packet(CMSG_GUILD_ALLIANCE_DELETE,   0x0183,   0, nullptr);
 
-packet(CMSG_SOLVE_CHAR_NAME,         0x0193);
-packet(CMSG_IGNORE_NICK,             0x00cf);
+packet(CMSG_SOLVE_CHAR_NAME,         0x0193,   0, nullptr);
+packet(CMSG_IGNORE_NICK,             0x00cf,   0, nullptr);
 
-packet(CMSG_CLIENT_DISCONNECT,       0x7532);
-packet(CMSG_IGNORE_ALL,              0x00d0);
+packet(CMSG_CLIENT_DISCONNECT,       0x7532,   0, nullptr);
+packet(CMSG_IGNORE_ALL,              0x00d0,   0, nullptr);
 
 #ifdef PACKETS_UPDATE
 // condition code here

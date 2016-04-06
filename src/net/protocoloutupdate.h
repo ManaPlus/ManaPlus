@@ -21,6 +21,6 @@
 #ifndef NET_PROTOCOLOUTUPDATE_H
 #define NET_PROTOCOLOUTUPDATE_H
 
-#define packet(name, id) name = id
+#define packet(name, id, sz, comment) name = id
 
 #endif  // NET_PROTOCOLOUTUPDATE_H
