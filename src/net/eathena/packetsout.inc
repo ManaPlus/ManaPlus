@@ -277,6 +277,7 @@ packet(CMSG_HOMUNCULUS_MENU,              0x0000,   0, nullptr);
 packet(CMSG_SEARCHSTORE_CLICK,            0x0000,   0, nullptr);
 packet(CMSG_BUYINGSTORE_OPEN,             0x0000,   0, nullptr);
 packet(CMSG_SEARCHSTORE_NEXT_PAGE,        0x0000,   0, nullptr);
+packet(CMSG_QUICK_IDENTIFY_ITEM,          0x0000,   0, nullptr);
 #else
 // 20041108
 if (packetVersion >= 20041108)
@@ -480,6 +481,7 @@ if (packetVersion >= 20141022)
 // 20150513
 if (packetVersion >= 20150513)
 {
+    packet(CMSG_QUICK_IDENTIFY_ITEM,      0x0a35,   4, clif->pOneClick_ItemIdentify);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x022d,   2, clif->pReqCloseBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0817,   5, clif->pHomMenu);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
@@ -493,6 +495,3 @@ if (packetVersion >= 20150513)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
 }
 #endif
-
-// 20150513
-packet(CMSG_QUICK_IDENTIFY_ITEM,          0x0a35,   4, clif->pOneClick_ItemIdentify);
