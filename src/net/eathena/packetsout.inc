@@ -279,6 +279,7 @@ packet(CMSG_SELECT_CART,                  0x0980);
 if (packetVersion >= 20041108)
 {
     packet(CMSG_ALCHEMIST_RANKS,          0x0218);
+    packet(CMSG_BLACKSMITH_RANKS,         0x0217);
 }
 // 20150513
 if (packetVersion >= 20150513)
@@ -289,6 +290,7 @@ if (packetVersion >= 20150513)
 #else
 // 0
 packet(CMSG_ALCHEMIST_RANKS,              0x0000);
+packet(CMSG_BLACKSMITH_RANKS,             0x0000);
 #endif
 
 // 20150513

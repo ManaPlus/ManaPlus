@@ -28,6 +28,7 @@
 #include "debug.h"
 
 extern Net::SkillHandler *skillHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -78,7 +79,18 @@ void SkillHandler::useMap(const int id, const std::string &map) const
 
 void SkillHandler::getAlchemistRanks() const
 {
-    createOutPacket(CMSG_ALCHEMIST_RANKS);
+    if (packetVersion >= 20041108)
+    {
+        createOutPacket(CMSG_ALCHEMIST_RANKS);
+    }
+}
+
+void SkillHandler::getBlacksmithRanks() const
+{
+    if (packetVersion >= 20041108)
+    {
+        createOutPacket(CMSG_BLACKSMITH_RANKS);
+    }
 }
 
 }  // namespace EAthena
