@@ -643,6 +643,8 @@ class Window notfinal : public BasicContainer2,
         int mDefaultY;                /**< Default window Y position */
         int mDefaultWidth;            /**< Default window width */
         int mDefaultHeight;           /**< Default window height */
+        int mCaptionOffsetX;
+        int mCaptionOffsetY;
         bool mShowTitle;              /**< Window has a title bar */
         bool mLastRedraw;
 
@@ -698,8 +700,6 @@ class Window notfinal : public BasicContainer2,
          */
         static const unsigned resizeBorderWidth = 10;
         ImageCollection *mVertexes A_NONNULLPOINTER;
-        int mCaptionOffsetX;
-        int mCaptionOffsetY;
         Graphics::Alignment mCaptionAlign;
         int mTitlePadding;
         int mGripPadding;

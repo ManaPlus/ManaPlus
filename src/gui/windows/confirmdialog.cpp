@@ -70,7 +70,7 @@ void ConfirmDialog::postInit()
 
     const int fontHeight = getFont()->getHeight();
     const int height = numRows * fontHeight;
-    int width = getFont()->getWidth(getCaption());
+    int width = getFont()->getWidth(getCaption()) + mCaptionOffsetX;
 
     if (width < mTextBox->getMinWidth())
         width = mTextBox->getMinWidth();
