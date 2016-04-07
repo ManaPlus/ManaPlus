@@ -1102,6 +1102,8 @@ manaplus_SOURCES += main.cpp \
 	      input/pages/windows.cpp \
 	      input/pages/windows.h \
 	      listeners/playerpostdeathlistener.h \
+	      listeners/inputactionremotelistener.cpp \
+	      listeners/inputactionremotelistener.h \
 	      listeners/inputactionreplaylistener.cpp \
 	      listeners/inputactionreplaylistener.h \
 	      listeners/insertcardlistener.h \

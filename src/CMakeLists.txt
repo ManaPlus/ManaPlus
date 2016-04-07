@@ -1266,6 +1266,8 @@ SET(SRCS
     listeners/guiconfiglistener.h
     listeners/guitableactionlistener.cpp
     listeners/guitableactionlistener.h
+    listeners/inputactionremotelistener.cpp
+    listeners/inputactionremotelistener.h
     listeners/inputactionreplaylistener.cpp
     listeners/inputactionreplaylistener.h
     listeners/insertcardlistener.h

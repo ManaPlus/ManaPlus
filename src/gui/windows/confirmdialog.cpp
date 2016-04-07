@@ -77,12 +77,15 @@ void ConfirmDialog::postInit()
     if (width < inWidth)
         width = inWidth;
 
-    setContentSize(mTextBox->getMinWidth() + fontHeight, height + fontHeight +
-                   noButton->getHeight());
+    int windowWidth = width;
+    if (windowWidth < mTextBox->getMinWidth() + fontHeight)
+    {
+        windowWidth = mTextBox->getMinWidth() + fontHeight;
+    }
+    setContentSize(windowWidth,
+        height + fontHeight + noButton->getHeight());
     mTextBox->setPosition(mPadding, mPadding);
 
-    // 8 is the padding that GUIChan adds to button widgets
-    // (top and bottom combined)
     const int buttonPadding = getOption("buttonPadding", 8);
     yesButton->setPosition((width - inWidth) / 2, height + buttonPadding);
     noButton->setPosition(yesButton->getX() + yesButton->getWidth()

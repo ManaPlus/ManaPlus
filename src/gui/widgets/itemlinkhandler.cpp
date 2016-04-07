@@ -42,6 +42,7 @@
 
 #include "resources/db/itemdb.h"
 
+#include "listeners/inputactionremotelistener.h"
 #include "listeners/openurllistener.h"
 
 #include "debug.h"
@@ -52,7 +53,8 @@ namespace
 }  // namespace
 
 ItemLinkHandler::ItemLinkHandler() :
-    LinkHandler()
+    LinkHandler(),
+    mAllowCommands(true)
 {
 }
 
@@ -72,7 +74,22 @@ void ItemLinkHandler::handleCommandLink(const std::string &link,
         cmd = cmdStr;
         args.clear();
     }
-    inputManager.executeRemoteChatCommand(cmd, args, nullptr);
+    if (mAllowCommands)
+    {
+        inputManager.executeRemoteChatCommand(cmd, args, nullptr);
+    }
+    else
+    {
+        inputActionRemoteListener.setCommand(cmd, args);
+        ConfirmDialog *const confirmDlg = CREATEWIDGETR(ConfirmDialog,
+            // TRANSLATORS: dialog message
+            _("Run command"),
+            strprintf("/%s %s", cmd.c_str(), args.c_str()),
+            SOUND_REQUEST,
+            false,
+            Modal_true);
+        confirmDlg->addActionListener(&inputActionRemoteListener);
+    }
 }
 
 void ItemLinkHandler::handleHelpLink(const std::string &link)

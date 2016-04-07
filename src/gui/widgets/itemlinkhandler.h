@@ -39,9 +39,12 @@ class ItemLinkHandler final : public LinkHandler
         void handleLink(const std::string &link,
                         MouseEvent *event) override final;
 
+        void setAllowCommands(const bool b)
+        { mAllowCommands = b; }
+
     private:
-        static void handleCommandLink(const std::string &link,
-                                      const std::string &prefix);
+        void handleCommandLink(const std::string &link,
+                               const std::string &prefix);
 
         static void handleHelpLink(const std::string &link);
 
@@ -51,6 +54,8 @@ class ItemLinkHandler final : public LinkHandler
         static void handleItemLink(const std::string &link);
 
         static void handleSearchLink(const std::string &link);
+
+        bool mAllowCommands;
 };
 
 #endif  // GUI_WIDGETS_ITEMLINKHANDLER_H

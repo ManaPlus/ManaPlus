@@ -169,6 +169,8 @@ ChatWindow::ChatWindow() :
     mColorPicker->addActionListener(this);
     mColorPicker->setSelected(mChatColor);
 
+    mItemLinkHandler->setAllowCommands(false);
+
     loadWindowState();
 
     mColorPicker->setPosition(this->getWidth() - mColorPicker->getWidth()
