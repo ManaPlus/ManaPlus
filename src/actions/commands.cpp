@@ -75,6 +75,8 @@
 
 #include "resources/db/itemdb.h"
 
+#include "resources/map/map.h"
+
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
 #include "utils/gmfunctions.h"
@@ -842,13 +844,25 @@ impHandler(hack)
 
 impHandler(debugSpawn)
 {
+    if (!localPlayer)
+        return false;
     int cnt = atoi(event.args.c_str());
     if (cnt < 1)
         cnt = 1;
     const int half = cnt / 2;
-    for (int x = -half; x < cnt - half; x ++)
+    const Map *const map = localPlayer->getMap();
+    int x1 = -half;
+    if (x1 < 0)
+        x1 = 0;
+    int y1 = x1;
+    int x2 = cnt - half;
+    if (x2 > map->getWidth())
+        x2 = map->getWidth();
+    int y2 = x2;
+
+    for (int x = x1; x < x2; x ++)
     {
-        for (int y =  -half; y < cnt - half; y ++)
+        for (int y = y1; y < y2; y ++)
             ActorManager::cloneBeing(localPlayer, x, y, cnt);
     }
     return true;
