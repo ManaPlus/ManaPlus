@@ -89,7 +89,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
     if (msg.getVersion() >= 20100105)
         offset += 4;
 
-    const int count = (msg.readInt16("len") - offset) / 22;
+    const int count = (msg.readInt16("len") - offset) / packetLen;
     const BeingId id = msg.readBeingId("id");
     const Being *const being = actorManager->findBeing(id);
     if (!being)

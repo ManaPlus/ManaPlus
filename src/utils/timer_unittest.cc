@@ -51,13 +51,15 @@ TEST_CASE("timer get_elapsed_time")
     tick_time = 10;
     REQUIRE(get_elapsed_time(0) == 10 * MILLISECONDS_IN_A_TICK);
     REQUIRE(get_elapsed_time(10) == 0 * MILLISECONDS_IN_A_TICK);
-    REQUIRE(get_elapsed_time(MAX_TICK_VALUE - 1) == 11 * MILLISECONDS_IN_A_TICK);
+    REQUIRE(get_elapsed_time(MAX_TICK_VALUE - 1) ==
+        11 * MILLISECONDS_IN_A_TICK);
 
     tick_time = 10000;
     REQUIRE(get_elapsed_time(0) == 10000 * MILLISECONDS_IN_A_TICK);
     REQUIRE(get_elapsed_time(10) == 9990 * MILLISECONDS_IN_A_TICK);
     REQUIRE(get_elapsed_time(10000) == 0 * MILLISECONDS_IN_A_TICK);
-    REQUIRE(get_elapsed_time(MAX_TICK_VALUE - 1) == 10001 * MILLISECONDS_IN_A_TICK);
+    REQUIRE(get_elapsed_time(MAX_TICK_VALUE - 1) ==
+        10001 * MILLISECONDS_IN_A_TICK);
 }
 
 TEST_CASE("timer get_elapsed_time1")

@@ -88,7 +88,7 @@ TEST_CASE("chatutils replaceVars")
 
     SECTION("monster")
     {
-        Being *monster = new Being(static_cast<BeingId>(3),
+        Being *const monster = new Being(static_cast<BeingId>(3),
             ActorType::Monster,
             BeingTypeId_zero,
             nullptr);
@@ -110,7 +110,7 @@ TEST_CASE("chatutils replaceVars")
         replaceVars(str);
         REQUIRE(str == "test ");
 
-        Being *player1 = new Being(static_cast<BeingId>(2),
+        Being *const player1 = new Being(static_cast<BeingId>(2),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);
@@ -121,7 +121,7 @@ TEST_CASE("chatutils replaceVars")
         replaceVars(str);
         REQUIRE(str == "test player1");
 
-        Being *player2 = new Being(static_cast<BeingId>(4),
+        Being *const player2 = new Being(static_cast<BeingId>(4),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);
@@ -139,14 +139,14 @@ TEST_CASE("chatutils replaceVars")
     {
         actorManager->mActors.insert(localPlayer);
 
-        Party *party1 = Party::getParty(1);
+        Party *const party1 = Party::getParty(1);
         localPlayer->setParty(party1);
 
         str = "test <PARTY>";
         replaceVars(str);
         REQUIRE(str == "test ");
 
-        Being *player1 = new Being(static_cast<BeingId>(2),
+        Being *const player1 = new Being(static_cast<BeingId>(2),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);
@@ -158,7 +158,7 @@ TEST_CASE("chatutils replaceVars")
         replaceVars(str);
         REQUIRE(str == "test player1");
 
-        Being *player2 = new Being(static_cast<BeingId>(4),
+        Being *const player2 = new Being(static_cast<BeingId>(4),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);
@@ -170,9 +170,9 @@ TEST_CASE("chatutils replaceVars")
         replaceVars(str);
         REQUIRE(str == "test player1,player2");
 
-        Party *party2 = Party::getParty(2);
+        Party *const party2 = Party::getParty(2);
 
-        Being *player3 = new Being(static_cast<BeingId>(5),
+        Being *const player3 = new Being(static_cast<BeingId>(5),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);

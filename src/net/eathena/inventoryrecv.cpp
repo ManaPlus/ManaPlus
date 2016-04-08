@@ -1057,7 +1057,6 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
 {
-//+++
     BLOCK_START("InventoryRecv::processPlayerCartItems")
     Ea::InventoryRecv::mInventoryItems.clear();
 
