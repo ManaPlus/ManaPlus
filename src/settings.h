@@ -34,9 +34,9 @@ class Settings final
     public:
         Settings() :
             updateHost(),
+            login(),
             oldUpdates(),
             updatesDir(),
-            login(),
             configDir(),
             localDataDir(),
             tempDir(),
