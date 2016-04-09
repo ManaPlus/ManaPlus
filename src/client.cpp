@@ -775,7 +775,6 @@ void Client::stateConnectServer1()
         settings.persistentIp = mCurrentServer.persistentIp;
         settings.supportUrl = mCurrentServer.supportUrl;
         settings.updateMirrors = mCurrentServer.updateMirrors;
-        WindowManager::updateTitle();
 
         if (settings.options.username.empty())
         {
@@ -788,6 +787,8 @@ void Client::stateConnectServer1()
         {
             loginData.username = settings.options.username;
         }
+        settings.login = loginData.username;
+        WindowManager::updateTitle();
 
         loginData.remember = serverConfig.getValue("remember", 1);
         Net::connectToServer(mCurrentServer);
@@ -1086,7 +1087,7 @@ int Client::gameExec()
                     CREATEWIDGETV(mCurrentDialog, ConnectionDialog,
                         // TRANSLATORS: connection dialog header
                         _("Connecting to server"),
-                    State::SWITCH_SERVER);
+                        State::SWITCH_SERVER);
                     TranslationManager::loadCurrentLang();
                     BLOCK_END("Client::gameExec State::CONNECT_SERVER")
                     break;
@@ -1619,6 +1620,7 @@ int Client::gameExec()
                         gameHandler->clear();
                     }
                     settings.serverName.clear();
+                    settings.login.clear();
                     WindowManager::updateTitle();
                     serverConfig.write();
                     serverConfig.unload();
@@ -1643,6 +1645,8 @@ int Client::gameExec()
                     if (loginHandler)
                         loginHandler->connect();
 
+                    settings.login.clear();
+                    WindowManager::updateTitle();
                     mState = State::LOGIN;
                     BLOCK_END("Client::gameExec State::SWITCH_LOGIN")
                     break;
@@ -1655,6 +1659,8 @@ int Client::gameExec()
                     if (gameHandler)
                         gameHandler->disconnect();
 
+                    settings.login.clear();
+                    WindowManager::updateTitle();
                     mState = State::GET_CHARACTERS;
                     BLOCK_END("Client::gameExec State::SWITCH_CHARACTER")
                     break;

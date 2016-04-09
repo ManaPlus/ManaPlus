@@ -36,6 +36,7 @@ class Settings final
             updateHost(),
             oldUpdates(),
             updatesDir(),
+            login(),
             configDir(),
             localDataDir(),
             tempDir(),
@@ -85,6 +86,7 @@ class Settings final
         { }
 
         std::string updateHost;
+        std::string login;
         std::string oldUpdates;
         std::string updatesDir;
         std::string configDir;

@@ -165,7 +165,11 @@ void WindowManager::initTitle()
 
 void WindowManager::updateTitle()
 {
-    const std::string str = settings.serverName;
+    std::string str;
+    if (settings.login.empty())
+        str = settings.serverName;
+    else
+        str.append(settings.login).append(" ").append(settings.serverName);
     if (str.empty())
     {
         settings.windowCaption = strprintf("%s %s",
