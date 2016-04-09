@@ -144,7 +144,7 @@ namespace
         // TRANSLATORS: item info label (max flee)
         { "maxflee",     N_("Max flee %s"),    true },
         // TRANSLATORS: item info label (accuracy)
-        { "hit",         N_("% Accuracy %s"),  true },
+        { "hit",         N_("Perc. accuracy %s"),  true },
         // TRANSLATORS: item info label (min flee)
         { "minflee",     N_("Min flee %s"),    true },
         // TRANSLATORS: item info label (max flee)
