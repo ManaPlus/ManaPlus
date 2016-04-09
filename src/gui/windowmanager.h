@@ -76,6 +76,8 @@ namespace WindowManager
     void setIcon();
 
     void deleteIcon();
+
+    void updateTitle();
 }  // namespace WindowManager
 
 #endif  // GUI_WINDOWMANAGER_H

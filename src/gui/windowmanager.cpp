@@ -163,6 +163,26 @@ void WindowManager::initTitle()
 #endif
 }
 
+void WindowManager::updateTitle()
+{
+    const std::string str = settings.serverName;
+    if (str.empty())
+    {
+        settings.windowCaption = strprintf("%s %s",
+            branding.getStringValue("appName").c_str(),
+            SMALL_VERSION);
+    }
+    else
+    {
+        settings.windowCaption = strprintf("%s %s - %s",
+            branding.getStringValue("appName").c_str(),
+            SMALL_VERSION,
+            str.c_str());
+    }
+    SDL::SetWindowTitle(mainGraphics->getWindow(),
+        settings.windowCaption.c_str());
+}
+
 void WindowManager::setFramerate(const unsigned int fpsLimit)
 {
     if (!fpsLimit)

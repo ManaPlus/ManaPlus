@@ -775,6 +775,7 @@ void Client::stateConnectServer1()
         settings.persistentIp = mCurrentServer.persistentIp;
         settings.supportUrl = mCurrentServer.supportUrl;
         settings.updateMirrors = mCurrentServer.updateMirrors;
+        WindowManager::updateTitle();
 
         if (settings.options.username.empty())
         {
@@ -1618,6 +1619,7 @@ int Client::gameExec()
                         gameHandler->clear();
                     }
                     settings.serverName.clear();
+                    WindowManager::updateTitle();
                     serverConfig.write();
                     serverConfig.unload();
                     if (setupWindow)
