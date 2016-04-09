@@ -202,7 +202,6 @@ Being::Being(const BeingId id,
     mPets(),
     mOwner(nullptr),
     mSpecialParticle(nullptr),
-    mDrawSprites(),
 #ifdef EATHENA_SUPPORT
     mChat(nullptr),
     mHorseInfo(nullptr),
@@ -350,7 +349,6 @@ Being::~Being()
         }
     }
     mPets.clear();
-    mDrawSprites.clear();
 
     removeAllItemsParticles();
 #ifdef EATHENA_SUPPORT
@@ -2581,7 +2579,6 @@ void Being::setSprite(const unsigned int slot,
         if (beingEquipmentWindow)
             beingEquipmentWindow->updateBeing(this);
     }
-    updateDrawSprites();
 }
 
 void Being::setSpriteID(const unsigned int slot,
@@ -2987,10 +2984,14 @@ void Being::drawPlayerSprites(Graphics *restrict const graphics,
                               const int posX,
                               const int posY) const restrict2
 {
-    const size_t sz = mDrawSprites.size();
-    for (size_t f = 0; f < sz; f ++)
+    const int sz = CompoundSprite::getNumberOfLayers();
+    for (int f = 0; f < sz; f ++)
     {
-        Sprite *restrict const sprite = mDrawSprites[f];
+        const int rSprite = mSpriteHide[mSpriteRemap[f]];
+        if (rSprite == 1)
+            continue;
+
+        Sprite *restrict const sprite = mSprites[mSpriteRemap[f]];
         if (sprite)
         {
             sprite->setAlpha(mAlpha);
@@ -3003,10 +3004,14 @@ void Being::drawSpritesSDL(Graphics *restrict const graphics,
                            const int posX,
                            const int posY) const restrict2
 {
-    const size_t sz = mDrawSprites.size();
+    const size_t sz = mSprites.size();
     for (size_t f = 0; f < sz; f ++)
     {
-        const Sprite *restrict const sprite = mDrawSprites[f];
+        const int rSprite = mSpriteHide[mSpriteRemap[f]];
+        if (rSprite == 1)
+            continue;
+
+        const Sprite *restrict const sprite = mSprites[mSpriteRemap[f]];
         if (sprite)
             sprite->draw(graphics, posX, posY);
     }
@@ -3565,7 +3570,6 @@ void Being::recalcSpritesOrder() restrict2
             }
         }
     }
-    updateDrawSprites();
 }
 
 int Being::searchSlotValue(const std::vector<int> &restrict slotRemap,
@@ -4401,26 +4405,6 @@ void Being::serverRemove() restrict2 noexcept
 {
     // remove some flags what can survive player remove and next visible
     mTrickDead = false;
-}
-
-void Being::updateDrawSprites()
-{
-    if (mType != ActorType::Player)
-        return;
-    mDrawSprites.clear();
-    const size_t sz = CompoundSprite::getNumberOfLayers();
-    for (size_t f = 0; f < sz; f ++)
-    {
-        const int rSprite = mSpriteHide[mSpriteRemap[f]];
-        if (rSprite == 1)
-            continue;
-
-        Sprite *const sprite = mSprites[mSpriteRemap[f]];
-        if (sprite)
-        {
-            mDrawSprites.push_back(sprite);
-        }
-    }
 }
 
 #ifdef EATHENA_SUPPORT

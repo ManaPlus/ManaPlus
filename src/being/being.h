@@ -1136,8 +1136,6 @@ class Being notfinal : public ActorSprite,
                              const int offsetX,
                              const int offsetY) const A_NONNULL(2);
 
-        void updateDrawSprites() override final;
-
         const ActorTypeT mType;
 
         /** Speech Bubble components */
@@ -1162,7 +1160,6 @@ class Being notfinal : public ActorSprite,
         std::vector<Being*> mPets;
         Being *restrict mOwner;
         Particle *restrict mSpecialParticle;
-        std::vector<Sprite*> mDrawSprites;
 #ifdef EATHENA_SUPPORT
         ChatObject *restrict mChat;
         HorseInfo *restrict mHorseInfo;

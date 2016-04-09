@@ -263,7 +263,6 @@ void CompoundSprite::addSprite(Sprite *const sprite)
 {
     mSprites.push_back(sprite);
     mNeedsRedraw = true;
-    updateDrawSprites();
 }
 
 void CompoundSprite::setSprite(const size_t layer, Sprite *const sprite)
@@ -275,7 +274,6 @@ void CompoundSprite::setSprite(const size_t layer, Sprite *const sprite)
     delete mSprites[layer];
     mSprites[layer] = sprite;
     mNeedsRedraw = true;
-    updateDrawSprites();
 }
 
 void CompoundSprite::removeSprite(const int layer)
@@ -286,7 +284,6 @@ void CompoundSprite::removeSprite(const int layer)
 
     delete2(mSprites[layer]);
     mNeedsRedraw = true;
-    updateDrawSprites();
 }
 
 void CompoundSprite::clear()
@@ -302,7 +299,6 @@ void CompoundSprite::clear()
     imagesCache.clear();
     delete2(mCacheItem);
     mLastTime = 0;
-    updateDrawSprites();
 }
 
 void CompoundSprite::ensureSize(const size_t layerCount)
