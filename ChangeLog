@@ -1,3 +1,11 @@
+2016-04-09 New release 1.6.4.9
+fix: not allow some chat commands exuting by npc scripts.
+fix: crash in /debugspawn chat command if create beings outside of map.
+add: improve players draw performance.
+add: support for multiply packet versions at same time.
+add: ask before executing remote commands in chat.
+add: some new and old packets (hercules)
+
 2016-03-26 New release 1.6.3.26
 fix: wrong moving to target by mouse attack.
 fix: not allow close warp dialog until target selected (hercule).
