@@ -244,7 +244,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("beingopacity", false);
     AddDEF("adjustPerfomance", true);
     AddDEF("enableAlphaFix", false);
-    AddDEF("disableAdvBeingCaching", false);
+    AddDEF("disableAdvBeingCaching", true);
     AddDEF("disableBeingCaching", false);
     AddDEF("enableReorderSprites", true);
     AddDEF("showip", false);
