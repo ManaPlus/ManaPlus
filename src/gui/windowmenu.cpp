@@ -168,7 +168,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     addButton(N_("MA"),
         // TRANSLATORS: long button name for mail window.
         _("Mail"), x, h, InputAction::WINDOW_MAIL,
-        Visible_true),
+        Visible_true);
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
         // TRANSLATORS: long button name for debug window.
