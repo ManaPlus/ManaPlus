@@ -27,6 +27,13 @@
 #include "input/inputmanager.h"
 
 #define impHandler(name) bool name(InputEvent &event)
+
+#ifdef EATHENA_SUPPORT
+#define impHandlerE(name) bool name(InputEvent &event)
+#else  // EATHENA_SUPPORT
+#define impHandlerE(name) bool name(InputEvent &event A_UNUSED)
+#endif  // EATHENA_SUPPORT
+
 #define impHandler0(name) bool name(InputEvent &event A_UNUSED)
 #define impHandlerVoid(name) bool name(InputEvent &event A_UNUSED) \
     { \

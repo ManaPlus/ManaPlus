@@ -1699,7 +1699,7 @@ impHandler0(testInfo)
     return false;
 }
 
-impHandler(craftKey)
+impHandlerE(craftKey)
 {
 #ifdef EATHENA_SUPPORT
     const int slot = (event.action - InputAction::CRAFT_1);

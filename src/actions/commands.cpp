@@ -896,7 +896,7 @@ impHandler(serverUnIgnoreWhisper)
     return false;
 }
 
-impHandler(setHomunculusName)
+impHandlerE(setHomunculusName)
 {
 #ifdef EATHENA_SUPPORT
     const std::string args = event.args;
@@ -960,7 +960,7 @@ impHandler(warp)
     return false;
 }
 
-impHandler(homunTalk)
+impHandlerE(homunTalk)
 {
 #ifdef EATHENA_SUPPORT
     if (!serverFeatures || !serverFeatures->haveTalkPet())
@@ -978,7 +978,7 @@ impHandler(homunTalk)
     return false;
 }
 
-impHandler(homunEmote)
+impHandlerE(homunEmote)
 {
 #ifdef EATHENA_SUPPORT
     if (!serverFeatures || !serverFeatures->haveTalkPet())
@@ -1000,7 +1000,7 @@ impHandler(homunEmote)
     return false;
 }
 
-impHandler(commandHomunEmote)
+impHandlerE(commandHomunEmote)
 {
 #ifdef EATHENA_SUPPORT
     if (!serverFeatures || !serverFeatures->haveTalkPet())
@@ -1016,7 +1016,7 @@ impHandler(commandHomunEmote)
     return false;
 }
 
-impHandler(createPublicChatRoom)
+impHandlerE(createPublicChatRoom)
 {
 #ifdef EATHENA_SUPPORT
     if (!chatHandler || event.args.empty())
@@ -1028,7 +1028,7 @@ impHandler(createPublicChatRoom)
 #endif
 }
 
-impHandler(joinChatRoom)
+impHandlerE(joinChatRoom)
 {
 #ifdef EATHENA_SUPPORT
     if (!chatHandler)
@@ -1175,7 +1175,7 @@ impHandler(skill)
     return true;
 }
 
-impHandler(craft)
+impHandlerE(craft)
 {
 #ifdef EATHENA_SUPPORT
     const std::string args = event.args;
@@ -1585,7 +1585,7 @@ impHandler(commandGuildRecall)
     return true;
 }
 
-impHandler(mailTo)
+impHandlerE(mailTo)
 {
 #ifdef EATHENA_SUPPORT
     if (!mailWindow)
@@ -1597,7 +1597,7 @@ impHandler(mailTo)
 #endif
 }
 
-impHandler(adoptChild)
+impHandlerE(adoptChild)
 {
 #ifdef EATHENA_SUPPORT
     const std::string nick = getNick(event);

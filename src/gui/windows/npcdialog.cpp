@@ -811,7 +811,7 @@ void NpcDialog::itemIndexRequest(const int size)
     buildLayout();
 }
 
-void NpcDialog::itemCraftRequest(const int size)
+void NpcDialog::itemCraftRequest(const int size A_TMWA_UNUSED)
 {
 #ifdef EATHENA_SUPPORT
     mActionState = NPC_ACTION_INPUT;
@@ -1390,9 +1390,9 @@ std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
     return str;
 }
 
-void NpcDialog::addCraftItem(Item *const item,
-                             const int amount,
-                             const int slot)
+void NpcDialog::addCraftItem(Item *const item A_TMWA_UNUSED,
+                             const int amount A_TMWA_UNUSED,
+                             const int slot A_TMWA_UNUSED)
 {
     if (mInputState != NPC_INPUT_ITEM_CRAFT)
         return;
