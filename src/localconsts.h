@@ -160,8 +160,16 @@
 #define PRAGMA6(str)
 #endif  // ADVGCC
 
+#ifdef __clang__
+#define PRAGMACLANG(str) _Pragma(#str)
+#else  // __clang__
+#define PRAGMACLANG(str)
+#endif  // __clang__
+
 #ifdef __GNUC__
 #if GCC_VERSION > 40500
+#define PRAGMA45(str) _Pragma(#str)
+#elif defined(__clang__)
 #define PRAGMA45(str) _Pragma(#str)
 #else  // GCC_VERSION > 40400
 #define PRAGMA45(str)
