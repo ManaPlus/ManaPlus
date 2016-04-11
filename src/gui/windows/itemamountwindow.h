@@ -56,10 +56,12 @@ class ItemAmountWindow final : public Window,
             CartRemove,
             ItemSplit,
             ShopBuyAdd,
-            ShopSellAdd,
 #ifdef EATHENA_SUPPORT
+            ShopSellAdd,
             CraftAdd,
             MailAdd
+#else
+            ShopSellAdd
 #endif
         };
 
