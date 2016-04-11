@@ -136,8 +136,10 @@ static const unsigned int SPEECH_MAX_TIME = 800;
 #define for_each_badges() \
     for (int f = 0; f < BadgeIndex::BadgeIndexSize; f++)
 
+#ifdef EATHENA_SUPPORT
 #define for_each_horses(name) \
     FOR_EACH (std::vector<AnimatedSprite*>::const_iterator, it, name)
+#endif
 
 Being::Being(const BeingId id,
              const ActorTypeT type,
