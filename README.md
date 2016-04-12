@@ -1,8 +1,12 @@
 # The Mana Plus Client
 
-![The Mana World logo](data/icons/manaplus.png)
+![ManaPlus logo](data/icons/manaplus.png)
 
 Version: 1.6.4.9        Date: 2016-04-09
+
+### Build status
+
+[![build status](https://gitlab.com/manaplus/manaplus/badges/master/build.svg)](https://gitlab.com/manaplus/manaplus/commits/master)
 
 ### Development team:
  - See [AUTHORS](AUTHORS) file for a list

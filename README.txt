@@ -6,6 +6,9 @@ THE MANA PLUS CLIENT
  Development team:
   - See AUTHORS file for a list
 
+ Build status:
+  https://gitlab.com/manaplus/manaplus/badges/master/build.svg
+
  Powered by:
 
   - SDL, SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
