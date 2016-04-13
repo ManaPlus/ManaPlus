@@ -1551,6 +1551,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/familyhandler.h \
 	      net/friendshandler.h \
 	      net/homunculushandler.h \
+	      net/hostsgroup.h \
 	      net/mailhandler.h \
 	      net/maphandler.h \
 	      net/markethandler.h \

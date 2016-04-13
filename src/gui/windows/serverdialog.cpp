@@ -44,6 +44,7 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/langs.h"
+#include "utils/paths.h"
 
 #include "debug.h"
 
@@ -237,6 +238,7 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->persistentIp = server.persistentIp;
     mServerInfo->updateMirrors = server.updateMirrors;
     mServerInfo->packetVersion = server.packetVersion;
+    mServerInfo->updateHosts = server.updateHosts;
 
     settings.persistentIp = mServerInfo->persistentIp;
     settings.supportUrl = mServerInfo->supportUrl;
@@ -447,6 +449,33 @@ void ServerDialog::downloadServerList()
     config.setValue("serverslistupdate", getDateString());
 }
 
+static void loadHostsGroup(const XmlNodePtr node,
+                           ServerInfo &server)
+{
+    HostsGroup group;
+    group.name = XML::getProperty(node,
+        "name",
+        // TRANSLATORS: unknown hosts group name
+        _("Unknown"));
+    for_each_xml_child_node(hostNode, node)
+    {
+        if (!xmlNameEqual(hostNode, "host"))
+            continue;
+        const std::string host = XmlChildContent(hostNode);
+        if (host.empty())
+            continue;
+        if (!checkPath(host))
+        {
+            logger->log1("Warning: incorrect update server name");
+            continue;
+        }
+
+        group.hosts.push_back(host);
+    }
+    if (!group.hosts.empty())
+        server.updateHosts.push_back(group);
+}
+
 void ServerDialog::loadServers(const bool addNew)
 {
     XML::Document doc(std::string(mDir).append("/").append(
@@ -563,6 +592,10 @@ void ServerDialog::loadServers(const bool addNew)
             {
                 server.updateMirrors.push_back(XmlChildContent(subNode));
             }
+            else if (xmlNameEqual(subNode, "updates"))
+            {
+                loadHostsGroup(subNode, server);
+            }
         }
 
         server.version.first = font->getWidth(version);
@@ -587,6 +620,7 @@ void ServerDialog::loadServers(const bool addNew)
                 mServers[i].althostname = server.althostname;
                 mServers[i].persistentIp = server.persistentIp;
                 mServers[i].updateMirrors = server.updateMirrors;
+                mServers[i].updateHosts = server.updateHosts;
                 mServers[i].packetVersion = server.packetVersion;
                 mServersListModel->setVersionString(i, version);
                 found = true;

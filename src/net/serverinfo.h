@@ -25,6 +25,8 @@
 
 #include "enums/net/servertype.h"
 
+#include "net/hostsgroup.h"
+
 #include "utils/stringutils.h"
 
 #include "localconsts.h"
@@ -43,6 +45,7 @@ class ServerInfo final
         std::string onlineListUrl;
         std::string supportUrl;
         std::vector<std::string> updateMirrors;
+        std::vector<HostsGroup> updateHosts;
         uint16_t port;
         VersionString version;
         int packetVersion;
@@ -59,6 +62,7 @@ class ServerInfo final
             onlineListUrl(),
             supportUrl(),
             updateMirrors(),
+            updateHosts(),
 #ifdef TMWA_SUPPORT
             port(6901),
 #else
@@ -82,6 +86,7 @@ class ServerInfo final
             onlineListUrl(info.onlineListUrl),
             supportUrl(info.supportUrl),
             updateMirrors(info.updateMirrors),
+            updateHosts(info.updateHosts),
             port(info.port),
             version(),
             packetVersion(info.packetVersion),
@@ -103,6 +108,7 @@ class ServerInfo final
             onlineListUrl = info.onlineListUrl;
             supportUrl = info.supportUrl;
             updateMirrors = info.updateMirrors;
+            updateHosts = info.updateHosts;
             port = info.port;
             save = info.save;
             persistentIp = info.persistentIp;
@@ -131,6 +137,7 @@ class ServerInfo final
             onlineListUrl.clear();
             supportUrl.clear();
             updateMirrors.clear();
+            updateHosts.clear();
             version.first = 0;
             version.second.clear();
             packetVersion = 0;

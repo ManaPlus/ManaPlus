@@ -41,7 +41,9 @@
 #include "gui/widgets/layoutcell.h"
 
 #include "net/charserverhandler.h"
+#include "net/logindata.h"
 #include "net/loginhandler.h"
+#include "net/serverinfo.h"
 #include "net/updatetypeoperators.h"
 
 #include "utils/delete2.h"
@@ -58,13 +60,14 @@ namespace
 }  // namespace
 
 LoginDialog::LoginDialog(LoginData &data,
-                         std::string serverName,
+                         ServerInfo *const server,
                          std::string *const updateHost) :
     // TRANSLATORS: login dialog name
     Window(_("Login"), Modal_false, nullptr, "login.xml"),
     ActionListener(),
     KeyListener(),
     mLoginData(&data),
+    mServer(server),
     mUserField(new TextField(this, mLoginData->username)),
     mPassField(new PasswordField(this, mLoginData->password)),
     // TRANSLATORS: login dialog label
@@ -89,7 +92,7 @@ LoginDialog::LoginDialog(LoginData &data,
     mUpdateListModel(nullptr),
     mUpdateHostDropDown(nullptr),
     mUpdateHost(updateHost),
-    mServerName(serverName)
+    mServerName(server->hostname)
 {
     setCloseButton(true);
     setWindowName("Login");
@@ -97,20 +100,22 @@ LoginDialog::LoginDialog(LoginData &data,
     if (charServerHandler)
         charServerHandler->clear();
 
+    mergeUpdateHosts();
+
     // TRANSLATORS: login dialog label
     Label *const serverLabel1 = new Label(this, _("Server:"));
-    Label *const serverLabel2 = new Label(this, serverName);
+    Label *const serverLabel2 = new Label(this, mServerName);
     serverLabel2->adjustSize();
     // TRANSLATORS: login dialog label
     Label *const userLabel = new Label(this, _("Name:"));
     // TRANSLATORS: login dialog label
     Label *const passLabel = new Label(this, _("Password:"));
-    if (mLoginData->updateHosts.size() > 1)
+    if (mServer->updateHosts.size() > 1)
     {
         // TRANSLATORS: login dialog label
         mUpdateHostLabel = new Label(this, strprintf(_("Update host: %s"),
             mLoginData->updateHost.c_str()));
-        mUpdateListModel = new UpdateListModel(mLoginData);
+        mUpdateListModel = new UpdateListModel(mServer);
         mUpdateHostDropDown = new DropDown(this, mUpdateListModel,
             false, Modal_false, this, "updateselect");
         const std::string str = serverConfig.getValue("updateHost2", "");
@@ -321,14 +326,28 @@ void LoginDialog::prepareUpdate()
         std::string str;
         if (mUpdateHostDropDown)
         {
-            str = mUpdateHostDropDown->getSelectedString();
+            const int sel = mUpdateHostDropDown->getSelected();
+            if (sel >= 0)
+            {
+                const HostsGroup &group = mServer->updateHosts[sel];
+                if (!group.hosts.empty())
+                {
+                    str = group.hosts[0];
+                    mLoginData->updateHosts = group.hosts;
+                    serverConfig.setValue("updateHost2", group.name);
+                }
+                else
+                {
+                    serverConfig.setValue("updateHost2", "");
+                }
+            }
         }
         else if (mLoginData->updateHost.empty()
                  && !mLoginData->updateHosts.empty())
         {
             str = mLoginData->updateHosts[0];
+            serverConfig.setValue("updateHost2", str);
         }
-        serverConfig.setValue("updateHost2", str);
         if (!str.empty() && checkPath(str))
         {
             mLoginData->updateHost = str;
@@ -359,4 +378,14 @@ void LoginDialog::close()
 {
     client->setState(State::SWITCH_SERVER);
     Window::close();
+}
+
+void LoginDialog::mergeUpdateHosts()
+{
+    HostsGroup group;
+
+    // TRANSLATORS: update hosts group default name
+    group.name = _("default");
+    group.hosts = mLoginData->updateHosts;
+    mServer->updateHosts.insert(mServer->updateHosts.begin(), group);
 }

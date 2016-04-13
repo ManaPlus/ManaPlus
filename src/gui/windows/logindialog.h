@@ -33,6 +33,7 @@ class CheckBox;
 class DropDown;
 class Label;
 class LoginData;
+class ServerInfo;
 class TextField;
 class UpdateListModel;
 class UpdateTypeModel;
@@ -53,8 +54,8 @@ class LoginDialog final : public Window,
          * @see Window::Window
          */
         LoginDialog(LoginData &data,
-                    std::string serverName,
-                    std::string *const updateHost);
+                    ServerInfo *const server,
+                    std::string *const updateHost) A_NONNULL(3, 4);
 
         A_DELETE_COPY(LoginDialog)
 
@@ -86,7 +87,10 @@ class LoginDialog final : public Window,
 
         void prepareUpdate();
 
+        void mergeUpdateHosts();
+
         LoginData *mLoginData A_NONNULLPOINTER;
+        ServerInfo *mServer A_NONNULLPOINTER;
 
         TextField *mUserField A_NONNULLPOINTER;
         TextField *mPassField A_NONNULLPOINTER;

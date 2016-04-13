@@ -1125,7 +1125,7 @@ int Client::gameExec()
                     {
                         CREATEWIDGETV(mCurrentDialog, LoginDialog,
                             loginData,
-                            mCurrentServer.hostname,
+                            &mCurrentServer,
                             &settings.options.updateHost);
                     }
                     else

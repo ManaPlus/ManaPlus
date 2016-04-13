@@ -25,17 +25,25 @@
 
 #include "gui/models/listmodel.h"
 
-#include "net/logindata.h"
+#include "net/hostsgroup.h"
+
+#include "utils/stringvector.h"
 
 #include "localconsts.h"
 
 class UpdateListModel final : public ListModel
 {
     public:
-        explicit UpdateListModel(LoginData *const data) :
+        explicit UpdateListModel(ServerInfo *const server) :
             ListModel(),
-            mLoginData(data)
+            mNames(),
+            mServer(server)
         {
+            FOR_EACH(std::vector<HostsGroup>::const_iterator, it, server->updateHosts)
+            {
+                const HostsGroup &group = *it;
+                mNames.push_back(group.name);
+            }
         }
 
         A_DELETE_COPY(UpdateListModel)
@@ -45,20 +53,31 @@ class UpdateListModel final : public ListModel
 
         int getNumberOfElements() override final
         {
-            if (!mLoginData)
-                return 0;
-            return CAST_S32(mLoginData->updateHosts.size());
+            return CAST_S32(mNames.size());
         }
 
         std::string getElementAt(int i) override final
         {
-            if (!mLoginData || i >= getNumberOfElements() || i < 0)
+            if (i >= getNumberOfElements() || i < 0)
                 return "???";
-            return mLoginData->updateHosts[i];
+            return mNames[i];
+        }
+
+        HostsGroup &getSelectedGroup(const unsigned int sel)
+        {
+            if (sel >= mServer->updateHosts.size())
+                return mServer->updateHosts[0];
+            mServer->updateHosts[sel];
+        }
+
+        bool empty() const
+        {
+            return mNames.empty();
         }
 
     protected:
-        LoginData *mLoginData;
+        StringVect mNames;
+        ServerInfo *mServer;
 };
 
 #endif  // GUI_MODELS_UPDATELISTMODEL_H
