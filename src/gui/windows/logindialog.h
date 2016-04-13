@@ -96,7 +96,6 @@ class LoginDialog final : public Window,
         TextField *mPassField A_NONNULLPOINTER;
         CheckBox *mKeepCheck A_NONNULLPOINTER;
         Label *mUpdateTypeLabel A_NONNULLPOINTER;
-        Label *mUpdateHostLabel;
         UpdateTypeModel *mUpdateTypeModel A_NONNULLPOINTER;
         DropDown *mUpdateTypeDropDown A_NONNULLPOINTER;
         Button *mServerButton A_NONNULLPOINTER;

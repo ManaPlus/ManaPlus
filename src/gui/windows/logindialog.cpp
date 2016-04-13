@@ -75,7 +75,6 @@ LoginDialog::LoginDialog(LoginData &data,
         mLoginData->remember)),
     // TRANSLATORS: login dialog label
     mUpdateTypeLabel(new Label(this, _("Update:"))),
-    mUpdateHostLabel(nullptr),
     mUpdateTypeModel(new UpdateTypeModel),
     mUpdateTypeDropDown(new DropDown(this, mUpdateTypeModel)),
     // TRANSLATORS: login dialog button
@@ -112,9 +111,6 @@ LoginDialog::LoginDialog(LoginData &data,
     Label *const passLabel = new Label(this, _("Password:"));
     if (mServer->updateHosts.size() > 1)
     {
-        // TRANSLATORS: login dialog label
-        mUpdateHostLabel = new Label(this, strprintf(_("Update host: %s"),
-            mLoginData->updateHost.c_str()));
         mUpdateListModel = new UpdateListModel(mServer);
         mUpdateHostDropDown = new DropDown(this, mUpdateListModel,
             false, Modal_false, this, "updateselect");
@@ -124,7 +120,6 @@ LoginDialog::LoginDialog(LoginData &data,
     }
     else
     {
-        mUpdateHostLabel = nullptr;
         mUpdateListModel = nullptr;
         mUpdateHostDropDown = nullptr;
     }
@@ -160,11 +155,10 @@ LoginDialog::LoginDialog(LoginData &data,
     place(0, 6, mUpdateTypeLabel, 1);
     place(1, 6, mUpdateTypeDropDown, 8);
     int n = 7;
-    if (mUpdateHostLabel)
+    if (mUpdateHostDropDown)
     {
-        place(0, 7, mUpdateHostLabel, 9);
-        place(0, 8, mUpdateHostDropDown, 9);
-        n += 2;
+        place(0, 7, mUpdateHostDropDown, 9);
+        n += 1;
     }
     place(0, n, mCustomUpdateHost, 9);
     place(0, n + 1, mUpdateHostText, 9);
@@ -182,7 +176,7 @@ void LoginDialog::postInit()
     setVisible(Visible_true);
 
     const int h = 200;
-    if (mUpdateHostLabel)
+    if (mUpdateHostDropDown)
         setContentSize(310, 250);
     setContentSize(310, h);
 #ifdef ANDROID
