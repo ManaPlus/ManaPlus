@@ -63,13 +63,6 @@ class UpdateListModel final : public ListModel
             return mNames[i];
         }
 
-        HostsGroup &getSelectedGroup(const unsigned int sel)
-        {
-            if (sel >= mServer->updateHosts.size())
-                return mServer->updateHosts[0];
-            mServer->updateHosts[sel];
-        }
-
         bool empty() const
         {
             return mNames.empty();
