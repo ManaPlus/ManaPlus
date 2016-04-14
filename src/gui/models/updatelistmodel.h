@@ -25,7 +25,7 @@
 
 #include "gui/models/listmodel.h"
 
-#include "net/hostsgroup.h"
+#include "net/serverinfo.h"
 
 #include "utils/stringvector.h"
 
