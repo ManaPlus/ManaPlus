@@ -39,6 +39,7 @@
 #include "debug.h"
 
 extern Net::ChatHandler *chatHandler;
+extern unsigned int tmwServerVersion;
 
 namespace TmwAthena
 {
@@ -55,13 +56,23 @@ void ChatHandler::talk(const std::string &restrict text,
     if (!localPlayer)
         return;
 
-    const std::string mes = std::string(localPlayer->getName()).append(
-        " : ").append(text);
+    if (tmwServerVersion >= 0x100408)
+    {
+        createOutPacket(CMSG_CHAT_MESSAGE);
+        // Added + 1 in order to let eAthena parse admin commands correctly
+        outMsg.writeInt16(CAST_S16(text.length() + 4 + 1), "len");
+        outMsg.writeString(text, CAST_S32(text.length() + 1), "message");
+    }
+    else
+    {
+        const std::string mes = std::string(localPlayer->getName()).append(
+            " : ").append(text);
 
-    createOutPacket(CMSG_CHAT_MESSAGE);
-    // Added + 1 in order to let eAthena parse admin commands correctly
-    outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
-    outMsg.writeString(mes, CAST_S32(mes.length() + 1), "message");
+        createOutPacket(CMSG_CHAT_MESSAGE);
+        // Added + 1 in order to let eAthena parse admin commands correctly
+        outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
+        outMsg.writeString(mes, CAST_S32(mes.length() + 1), "message");
+    }
 }
 
 void ChatHandler::talkRaw(const std::string &mes) const
