@@ -355,13 +355,13 @@ mplint_data:
 success:
   stage: success
   script:
-  - ./tools/ci/jobs/success.sh
+  - echo "do nothing"
   image: debian:unstable
   when: on_success
 
 failure:
   stage: failure
   script:
-  - ./tools/ci/jobs/failure.sh
+  - echo "do nothing"
   image: debian:unstable
   when: on_failure
