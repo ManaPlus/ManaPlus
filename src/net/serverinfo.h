@@ -44,6 +44,7 @@ class ServerInfo final
         std::string registerUrl;
         std::string onlineListUrl;
         std::string supportUrl;
+        std::string defaultHostName;
         std::vector<std::string> updateMirrors;
         std::vector<HostsGroup> updateHosts;
         uint16_t port;
@@ -61,6 +62,7 @@ class ServerInfo final
             registerUrl(),
             onlineListUrl(),
             supportUrl(),
+            defaultHostName(),
             updateMirrors(),
             updateHosts(),
 #ifdef TMWA_SUPPORT
@@ -85,6 +87,7 @@ class ServerInfo final
             registerUrl(info.registerUrl),
             onlineListUrl(info.onlineListUrl),
             supportUrl(info.supportUrl),
+            defaultHostName(info.defaultHostName),
             updateMirrors(info.updateMirrors),
             updateHosts(info.updateHosts),
             port(info.port),
@@ -107,6 +110,7 @@ class ServerInfo final
             registerUrl = info.registerUrl;
             onlineListUrl = info.onlineListUrl;
             supportUrl = info.supportUrl;
+            defaultHostName = info.defaultHostName;
             updateMirrors = info.updateMirrors;
             updateHosts = info.updateHosts;
             port = info.port;
@@ -136,6 +140,7 @@ class ServerInfo final
             registerUrl.clear();
             onlineListUrl.clear();
             supportUrl.clear();
+            defaultHostName.clear();
             updateMirrors.clear();
             updateHosts.clear();
             version.first = 0;

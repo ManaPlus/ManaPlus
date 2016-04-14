@@ -234,6 +234,7 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->registerUrl = server.registerUrl;
     mServerInfo->onlineListUrl = server.onlineListUrl;
     mServerInfo->supportUrl = server.supportUrl;
+    mServerInfo->defaultHostName = server.defaultHostName;
     mServerInfo->save = true;
     mServerInfo->persistentIp = server.persistentIp;
     mServerInfo->updateMirrors = server.updateMirrors;
@@ -453,7 +454,7 @@ static void loadHostsGroup(const XmlNodePtr node,
                            ServerInfo &server)
 {
     HostsGroup group;
-    group.name = XML::getProperty(node,
+    group.name = XML::langProperty(node,
         "name",
         // TRANSLATORS: unknown hosts group name
         _("Unknown"));
@@ -560,41 +561,45 @@ void ServerDialog::loadServers(const bool addNew)
                     server.port = defaultPortForServerType(server.type);
                 }
             }
-            else if (!XmlHaveChildContent(subNode))
+            else if (XmlHaveChildContent(subNode))
             {
-                continue;
+                if ((xmlNameEqual(subNode, "description")
+                    && server.description.empty()) || (!lang.empty()
+                    && xmlNameEqual(subNode, description2.c_str())))
+                {
+                    server.description = XmlChildContent(subNode);
+                }
+                else if (xmlNameEqual(subNode, "registerurl"))
+                {
+                    server.registerUrl = XmlChildContent(subNode);
+                }
+                else if (xmlNameEqual(subNode, "onlineListUrl"))
+                {
+                    server.onlineListUrl = XmlChildContent(subNode);
+                }
+                else if (xmlNameEqual(subNode, "support"))
+                {
+                    server.supportUrl = XmlChildContent(subNode);
+                }
+                else if (xmlNameEqual(subNode, "persistentIp"))
+                {
+                    std::string text = XmlChildContent(subNode);
+                    server.persistentIp = (text == "1" || text == "true");
+                }
+                else if (xmlNameEqual(subNode, "updateMirror"))
+                {
+                    server.updateMirrors.push_back(XmlChildContent(subNode));
+                }
             }
-
-            if ((xmlNameEqual(subNode, "description")
-                && server.description.empty()) || (!lang.empty()
-                && xmlNameEqual(subNode, description2.c_str())))
-            {
-                server.description = XmlChildContent(subNode);
-            }
-            else if (xmlNameEqual(subNode, "registerurl"))
-            {
-                server.registerUrl = XmlChildContent(subNode);
-            }
-            else if (xmlNameEqual(subNode, "onlineListUrl"))
-            {
-                server.onlineListUrl = XmlChildContent(subNode);
-            }
-            else if (xmlNameEqual(subNode, "support"))
-            {
-                server.supportUrl = XmlChildContent(subNode);
-            }
-            else if (xmlNameEqual(subNode, "persistentIp"))
-            {
-                std::string text = XmlChildContent(subNode);
-                server.persistentIp = (text == "1" || text == "true");
-            }
-            else if (xmlNameEqual(subNode, "updateMirror"))
-            {
-                server.updateMirrors.push_back(XmlChildContent(subNode));
-            }
-            else if (xmlNameEqual(subNode, "updates"))
+            if (xmlNameEqual(subNode, "updates"))
             {
                 loadHostsGroup(subNode, server);
+            }
+            else if (xmlNameEqual(subNode, "defaultUpdateHost"))
+            {
+                server.defaultHostName = XML::langProperty(
+                    // TRANSLATORS: default hosts group name
+                    subNode, "name", _("default"));
             }
         }
 
@@ -620,6 +625,7 @@ void ServerDialog::loadServers(const bool addNew)
                 mServers[i].althostname = server.althostname;
                 mServers[i].persistentIp = server.persistentIp;
                 mServers[i].updateMirrors = server.updateMirrors;
+                mServers[i].defaultHostName = server.defaultHostName;
                 mServers[i].updateHosts = server.updateHosts;
                 mServers[i].packetVersion = server.packetVersion;
                 mServersListModel->setVersionString(i, version);

@@ -378,8 +378,12 @@ void LoginDialog::mergeUpdateHosts()
 {
     HostsGroup group;
 
-    // TRANSLATORS: update hosts group default name
-    group.name = _("default");
+    group.name = mServer->defaultHostName;
+    if (group.name.empty())
+    {
+        // TRANSLATORS: update hosts group default name
+        group.name = _("default updates");
+    }
     group.hosts = mLoginData->updateHosts;
     mServer->updateHosts.insert(mServer->updateHosts.begin(), group);
 }
