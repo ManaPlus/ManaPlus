@@ -157,8 +157,7 @@ TEST_CASE("Windows tests", "windowmanager")
     {
         ServerInfo mCurrentServer;
         LoginDialog *loginDialog = CREATEWIDGETR(LoginDialog,
-            loginData,
-            mCurrentServer.hostname,
+            mCurrentServer,
             &settings.options.updateHost);
         delete2(loginDialog);
     }
