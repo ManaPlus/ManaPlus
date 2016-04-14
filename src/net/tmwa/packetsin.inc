@@ -169,3 +169,4 @@ packet(SMSG_WHISPER,                       0x0097,  -1, &ChatRecv::processWhispe
 packet(SMSG_WHISPER_RESPONSE,              0x0098,   3, &ChatRecv::processWhisperResponse,              0);
 packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWhoAnswer,                0);
 packet(SMSG_MAP_MASK,                      0x0226,  10, &Ea::PlayerRecv::processMapMask,                0);
+packet(SMSG_PLAYER_CLIENT_COMMAND,         0x0230,  -1, &Ea::PlayerRecv::processPlayerClientCommand,    0);
