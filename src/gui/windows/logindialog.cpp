@@ -207,6 +207,11 @@ void LoginDialog::postInit()
 
 LoginDialog::~LoginDialog()
 {
+    if (mUpdateTypeDropDown)
+        mUpdateTypeDropDown->hideDrop(false);
+    if (mUpdateHostDropDown)
+        mUpdateHostDropDown->hideDrop(false);
+
     delete2(mUpdateTypeModel);
     delete2(mUpdateListModel);
 }
