@@ -41,6 +41,7 @@ namespace Ea
         void processPlayerStatUpdate4(Net::MessageIn &msg);
         void processPlayerStatUpdate6(Net::MessageIn &msg);
         void processPlayerArrowMessage(Net::MessageIn &msg);
+        void processPlayerClientCommand(Net::MessageIn &msg);
         void processMapMusic(Net::MessageIn &msg);
         void processMapMask(Net::MessageIn &msg);
     }  // namespace PlayerRecv

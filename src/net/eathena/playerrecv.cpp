@@ -365,21 +365,6 @@ void PlayerRecv::processPlayerRankPoints(Net::MessageIn &msg)
     msg.readInt32("fame");
 }
 
-void PlayerRecv::processPlayerClientCommand(Net::MessageIn &msg)
-{
-    const int sz = msg.readInt16("len") - 4;
-    std::string command = msg.readString(sz, "command");
-    std::string cmd;
-    std::string args;
-
-    if (!parse2Str(command, cmd, args))
-    {
-        cmd = command;
-        args.clear();
-    }
-    inputManager.executeRemoteChatCommand(cmd, args, nullptr);
-}
-
 void PlayerRecv::processOnlineList(Net::MessageIn &msg)
 {
     if (!whoIsOnline)

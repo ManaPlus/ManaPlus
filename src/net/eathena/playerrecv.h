@@ -49,7 +49,6 @@ namespace EAthena
         void processPlayerEquipTickAck(Net::MessageIn &msg);
         void processPlayerAutoShadowSpellList(Net::MessageIn &msg);
         void processPlayerRankPoints(Net::MessageIn &msg);
-        void processPlayerClientCommand(Net::MessageIn &msg);
         void processOnlineList(Net::MessageIn &msg);
         void processDressRoomOpen(Net::MessageIn &msg);
     }  // namespace PlayerRecv

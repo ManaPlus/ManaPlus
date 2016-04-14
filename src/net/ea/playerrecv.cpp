@@ -37,9 +37,13 @@
 
 #include "gui/windows/statuswindow.h"
 
+#include "input/inputmanager.h"
+
 #include "resources/map/map.h"
 
 #include "net/playerhandler.h"
+
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -233,6 +237,21 @@ void PlayerRecv::processMapMask(Net::MessageIn &msg)
     Map *const map = Game::instance()->getCurrentMap();
     if (map)
         map->setMask(mask);
+}
+
+void PlayerRecv::processPlayerClientCommand(Net::MessageIn &msg)
+{
+    const int sz = msg.readInt16("len") - 4;
+    std::string command = msg.readString(sz, "command");
+    std::string cmd;
+    std::string args;
+
+    if (!parse2Str(command, cmd, args))
+    {
+        cmd = command;
+        args.clear();
+    }
+    inputManager.executeRemoteChatCommand(cmd, args, nullptr);
 }
 
 }  // namespace Ea

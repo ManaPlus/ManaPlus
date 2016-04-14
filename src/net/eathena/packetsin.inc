@@ -792,7 +792,7 @@ if (serverVersion > 0)
     packet(SMSG_BEING_ATTRS,               0x0b0a,  -1, &BeingRecv::processBeingAttrs,                  0);
     packet(SMSG_NPC_AREA,                  0x0b0b,  -1, &NpcRecv::processArea,                          0);
     packet(SMSG_ONLINE_LIST,               0x0b10,  -1, &PlayerRecv::processOnlineList,                 0);
-    packet(SMSG_PLAYER_CLIENT_COMMAND,     0x0b16,  -1, &PlayerRecv::processPlayerClientCommand,        0);
+    packet(SMSG_PLAYER_CLIENT_COMMAND,     0x0b16,  -1, &Ea::PlayerRecv::processPlayerClientCommand,    0);
     packet(SMSG_BEING_CHANGE_LOOKS_CARDS,  0x0b17,  19, &BeingRecv::processBeingChangeLookCards,        0);
     packet(SMSG_ITEM_VISIBLE2,             0x0b18,  28, &ItemRecv::processItemVisible2,                 0);
     packet(SMSG_ITEM_DROPPED2,             0x0b19,  28, &ItemRecv::processItemDropped2,                 0);
