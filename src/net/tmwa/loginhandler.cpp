@@ -33,6 +33,7 @@
 #include "debug.h"
 
 extern Net::LoginHandler *loginHandler;
+extern unsigned int tmwServerVersion;
 
 namespace TmwAthena
 {
@@ -91,8 +92,17 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
                                      A_UNUSED) const
 {
     createOutPacket(CMSG_LOGIN_REGISTER);
-    outMsg.writeInt32(CLIENT_PROTOCOL_VERSION,
-        "client protocol version");
+    if (tmwServerVersion < 0x100408)
+    {
+        // hack to avoid bug in tmwa...
+        outMsg.writeInt32(5,
+            "client protocol version");
+    }
+    else
+    {
+        outMsg.writeInt32(CLIENT_PROTOCOL_VERSION,
+            "client protocol version");
+    }
     outMsg.writeString(username, 24, "login");
     outMsg.writeStringNoLog(password, 24, "password");
 
