@@ -39,6 +39,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable \
 -fno-var-tracking -Woverloaded-virtual"
 
+do_init
 run_configure
 run_make
 run_check_warnings

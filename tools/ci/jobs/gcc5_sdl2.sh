@@ -46,6 +46,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wlogical-not-parentheses \
 -Wno-variadic-macros -Wno-zero-as-null-pointer-constant"
 
+do_init
 run_configure --with-sdl2 $*
 run_make
 run_check_warnings

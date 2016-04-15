@@ -11,6 +11,8 @@ aptget_install gcc-5 g++-5 \
     libpugixml-dev libcurl4-gnutls-dev libpng-dev \
     libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
+do_init
+
 cd src
 export dir=$(pwd)
 export includes="-I$dir -I/usr/include -I/usr/include/SDL -I/usr/include/libxml2"

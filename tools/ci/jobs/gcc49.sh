@@ -13,6 +13,7 @@ aptget_install gcc-4.9 g++-4.9 \
 
 export CXXFLAGS="-fno-var-tracking"
 
+do_init
 run_configure $*
 run_make
 run_check_warnings

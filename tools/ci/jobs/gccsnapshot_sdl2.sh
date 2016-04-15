@@ -325,6 +325,7 @@ export CXXFLAGS="${CXXFLAGS} -Wzero-as-null-pointer-constant"
 #export CXXFLAGS="${CXXFLAGS} -Wzerotrip"
 #export CXXFLAGS="${CXXFLAGS} -frequire-return-statement"
 
+do_init
 run_configure --with-sdl2
 run_make
 run_check_warnings

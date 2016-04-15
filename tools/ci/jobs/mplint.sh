@@ -11,6 +11,8 @@ aptget_install gcc g++ git \
 
 export CXXFLAGS="-std=gnu++11"
 
+do_init
+
 git clone https://gitlab.com/manaplus/mplint.git
 cd mplint
 run_configure_simple

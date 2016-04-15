@@ -44,6 +44,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wswitch-bool -Wmemset-transposed-args -Wchkp -Wc++14-compat -Wsized-deallocation \
 -Wlogical-not-parentheses -Woverloaded-virtual"
 
+do_init
 run_configure $*
 run_make
 run_check_warnings

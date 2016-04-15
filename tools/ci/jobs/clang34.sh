@@ -13,6 +13,7 @@ aptget_install clang-3.4 libc++-dev \
 
 export CXXFLAGS="-stdlib=libc++"
 
+do_init
 run_configure
 run_make
 run_check_warnings

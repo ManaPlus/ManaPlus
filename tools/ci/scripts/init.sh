@@ -7,10 +7,13 @@ export dir=$(pwd)
 export ERRFILE=${dir}/logs/${LOGFILE}
 
 cat /etc/os-release
-$CC --version
-$CXX --version
 
 rm ${ERRFILE}
+
+function do_init {
+    $CC --version
+    $CXX --version
+}
 
 function aptget_update {
     apt-get update

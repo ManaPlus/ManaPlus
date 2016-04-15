@@ -53,6 +53,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wcomment -Wmissing-braces -Wnonnull -Wopenmp-simd -Wparentheses \
 -Wreturn-type -Wsequence-point -Wswitch"
 
+do_init
 run_configure
 run_make
 run_check_warnings

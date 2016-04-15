@@ -53,6 +53,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wcomment -Wmissing-braces -Wnonnull -Wopenmp-simd -Wparentheses \
 -Wreturn-type -Wsequence-point -Wswitch"
 
+do_init
 run_configure --enable-unittests=yes
 export SDL_VIDEODRIVER=dummy
 export ASAN_OPTIONS=detect_leaks=0

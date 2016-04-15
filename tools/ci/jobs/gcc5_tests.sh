@@ -44,6 +44,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wswitch-bool -Wmemset-transposed-args -Wchkp -Wc++14-compat -Wsized-deallocation \
 -Wlogical-not-parentheses -Woverloaded-virtual"
 
+do_init
 run_configure --enable-unittests=yes
 export SDL_VIDEODRIVER=dummy
 run_make check

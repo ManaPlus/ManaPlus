@@ -45,6 +45,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wswitch-bool -Wmemset-transposed-args -Wchkp -Wc++14-compat -Wsized-deallocation \
 -Wlogical-not-parentheses"
 
+do_init
 run_configure --with-sdl2 $*
 run_make
 run_check_warnings

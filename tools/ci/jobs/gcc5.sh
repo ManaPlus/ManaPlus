@@ -45,6 +45,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wlogical-not-parentheses -Woverloaded-virtual \
 -Wno-variadic-macros -Wno-zero-as-null-pointer-constant"
 
+do_init
 run_configure $*
 run_make
 run_check_warnings

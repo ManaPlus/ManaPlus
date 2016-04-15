@@ -20,6 +20,7 @@ export CXXFLAGS="-Weverything -Wno-documentation -Wno-padded -Wno-sign-conversio
 -Wno-variadic-macros -Wno-unreachable-code-return -Wno-double-promotion \
 -Wno-old-style-cast"
 
+do_init
 run_configure $*
 run_make
 run_check_warnings
