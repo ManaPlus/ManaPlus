@@ -166,7 +166,7 @@ void MailEditWindow::action(const ActionEvent &event)
         if (!item)
             return;
 
-        ItemAmountWindow::showWindow(ItemAmountWindow::MailAdd,
+        ItemAmountWindow::showWindow(ItemAmountWindowUsage::MailAdd,
             this, item);
     }
 }

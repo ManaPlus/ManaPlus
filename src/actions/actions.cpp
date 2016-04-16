@@ -462,7 +462,7 @@ impHandler(dropItemId)
 
     if (item && !PlayerInfo::isItemProtected(item->getId()))
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
+        ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemDrop,
             inventoryWindow, item);
     }
     return true;
@@ -473,7 +473,7 @@ impHandler(dropItemInv)
     Item *const item = getItemByInvIndex(event, InventoryType::Inventory);
     if (item && !PlayerInfo::isItemProtected(item->getId()))
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
+        ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemDrop,
             inventoryWindow, item);
     }
     return true;
@@ -1590,7 +1590,7 @@ impHandler(invToStorage)
     }
     else
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+        ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreAdd,
             inventoryWindow, item);
     }
     return true;
@@ -1611,7 +1611,7 @@ impHandler(tradeAdd)
     }
     else
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
+        ItemAmountWindow::showWindow(ItemAmountWindowUsage::TradeAdd,
             tradeWindow, item);
     }
     return true;
@@ -1633,7 +1633,7 @@ impHandler(storageToInv)
     }
     else
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+        ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreRemove,
             storageWindow, item);
     }
     return true;

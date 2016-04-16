@@ -64,52 +64,52 @@
 void ItemAmountWindow::finish(Item *const item,
                               const int amount,
                               const int price,
-                              const Usage usage)
+                              const ItemAmountWindowUsageT usage)
 {
     if (!item)
         return;
     switch (usage)
     {
-        case TradeAdd:
+        case ItemAmountWindowUsage::TradeAdd:
             if (tradeWindow)
                 tradeWindow->tradeItem(item, amount);
             break;
-        case ItemDrop:
+        case ItemAmountWindowUsage::ItemDrop:
             PlayerInfo::dropItem(item, amount, Sfx_true);
             break;
-        case ItemSplit:
+        case ItemAmountWindowUsage::ItemSplit:
             inventoryHandler->splitItem(item, amount);
             break;
-        case StoreAdd:
+        case ItemAmountWindowUsage::StoreAdd:
             inventoryHandler->moveItem2(InventoryType::Inventory,
                 item->getInvIndex(), amount, InventoryType::Storage);
             break;
-        case StoreRemove:
+        case ItemAmountWindowUsage::StoreRemove:
             inventoryHandler->moveItem2(InventoryType::Storage,
                 item->getInvIndex(), amount, InventoryType::Inventory);
             break;
-        case ShopBuyAdd:
+        case ItemAmountWindowUsage::ShopBuyAdd:
             if (shopWindow)
                 shopWindow->addBuyItem(item, amount, price);
             break;
-        case ShopSellAdd:
+        case ItemAmountWindowUsage::ShopSellAdd:
             if (shopWindow)
                 shopWindow->addSellItem(item, amount, price);
             break;
 #ifdef EATHENA_SUPPORT
-        case CartAdd:
+        case ItemAmountWindowUsage::CartAdd:
             inventoryHandler->moveItem2(InventoryType::Inventory,
                 item->getInvIndex(), amount, InventoryType::Cart);
             break;
-        case CartRemove:
+        case ItemAmountWindowUsage::CartRemove:
             inventoryHandler->moveItem2(InventoryType::Cart,
                 item->getInvIndex(), amount, InventoryType::Inventory);
             break;
-        case MailAdd:
+        case ItemAmountWindowUsage::MailAdd:
             if (mailEditWindow)
                 mailEditWindow->addItem(item, amount);
             break;
-        case CraftAdd:
+        case ItemAmountWindowUsage::CraftAdd:
         {
             NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
             if (dialog)
@@ -121,7 +121,7 @@ void ItemAmountWindow::finish(Item *const item,
     }
 }
 
-ItemAmountWindow::ItemAmountWindow(const Usage usage,
+ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
                                    Window *const parent,
                                    Item *const item,
                                    const int maxRange) :
@@ -145,7 +145,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage,
     if (!mItem)
         return;
 
-    if (usage == ShopBuyAdd)
+    if (usage == ItemAmountWindowUsage::ShopBuyAdd)
         mMax = 10000;
     else if (!mMax)
         mMax = mItem->getQuantity();
@@ -160,7 +160,8 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage,
     mItemAmountSlide->setActionEventId("slide");
     mItemAmountSlide->addActionListener(this);
 
-    if (mUsage == ShopBuyAdd || mUsage == ShopSellAdd)
+    if (mUsage == ItemAmountWindowUsage::ShopBuyAdd ||
+        mUsage == ItemAmountWindowUsage::ShopSellAdd)
     {
         mItemPriceTextField = new IntTextField(this, 1);
         mItemPriceTextField->setRange(1, 10000000);
@@ -175,7 +176,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage,
         mGPLabel = new Label(this, " GP");
     }
 
-    if (mUsage == ShopBuyAdd)
+    if (mUsage == ItemAmountWindowUsage::ShopBuyAdd)
     {
         mItemsModal = new ItemsModal;
         mItemDropDown = new DropDown(this, mItemsModal);
@@ -202,7 +203,7 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage,
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
     int n = 0;
-    if (mUsage == ShopBuyAdd)
+    if (mUsage == ItemAmountWindowUsage::ShopBuyAdd)
     {
         placer(0, n, mItemDropDown, 8);
         n++;
@@ -215,7 +216,8 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage,
     placer(0, n, mItemIcon, 1, 3);
     placer(1, n + 1, mItemAmountSlide, 7);
 
-    if (mUsage == ShopBuyAdd || mUsage == ShopSellAdd)
+    if (mUsage == ItemAmountWindowUsage::ShopBuyAdd ||
+        mUsage == ItemAmountWindowUsage::ShopSellAdd)
     {
         Button *const minusPriceButton = new Button(
             // TRANSLATORS: item amount window button
@@ -247,49 +249,49 @@ ItemAmountWindow::ItemAmountWindow(const Usage usage,
 
     switch (usage)
     {
-        case TradeAdd:
+        case ItemAmountWindowUsage::TradeAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to trade."));
             break;
-        case ItemDrop:
+        case ItemAmountWindowUsage::ItemDrop:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to drop."));
             break;
-        case StoreAdd:
+        case ItemAmountWindowUsage::StoreAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to store."));
             break;
 #ifdef EATHENA_SUPPORT
-        case MailAdd:
+        case ItemAmountWindowUsage::MailAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to send."));
             break;
-        case CraftAdd:
+        case ItemAmountWindowUsage::CraftAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to craft."));
             break;
 #endif
-        case CartAdd:
+        case ItemAmountWindowUsage::CartAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to store to cart."));
             break;
-        case StoreRemove:
+        case ItemAmountWindowUsage::StoreRemove:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to retrieve."));
             break;
-        case CartRemove:
+        case ItemAmountWindowUsage::CartRemove:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to retrieve from cart."));
             break;
-        case ItemSplit:
+        case ItemAmountWindowUsage::ItemSplit:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to split."));
             break;
-        case ShopBuyAdd:
+        case ItemAmountWindowUsage::ShopBuyAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Add to buy shop."));
             break;
-        case ShopSellAdd:
+        case ItemAmountWindowUsage::ShopSellAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Add to sell shop."));
             break;
@@ -361,7 +363,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
         else
         {
 #ifdef EATHENA_SUPPORT
-            if (mUsage == CraftAdd)
+            if (mUsage == ItemAmountWindowUsage::CraftAdd)
             {
                 finish(mItem,
                     mItemAmountTextField->getValue(),
@@ -399,7 +401,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
             Equipm_false,
             Equipped_false);
 
-        if (mUsage == ShopBuyAdd)
+        if (mUsage == ItemAmountWindowUsage::ShopBuyAdd)
             mMax = 10000;
         else if (!mMax)
             mMax = mItem->getQuantity();
@@ -467,7 +469,7 @@ void ItemAmountWindow::keyReleased(KeyEvent &event A_UNUSED)
     mItemAmountSlide->setValue(mItemAmountTextField->getValue());
 }
 
-void ItemAmountWindow::showWindow(const Usage usage,
+void ItemAmountWindow::showWindow(const ItemAmountWindowUsageT usage,
                                   Window *const parent,
                                   Item *const item,
                                   int maxRange,
@@ -479,10 +481,12 @@ void ItemAmountWindow::showWindow(const Usage usage,
     if (!maxRange)
         maxRange = item->getQuantity();
 
-    if (usage != ShopBuyAdd && usage != ShopSellAdd && maxRange <= 1)
+    if (usage != ItemAmountWindowUsage::ShopBuyAdd &&
+        usage != ItemAmountWindowUsage::ShopSellAdd &&
+        maxRange <= 1)
     {
 #ifdef EATHENA_SUPPORT
-        if (usage == CraftAdd)
+        if (usage == ItemAmountWindowUsage::CraftAdd)
             finish(item, maxRange, tag, usage);
         else
 #endif
@@ -493,7 +497,7 @@ void ItemAmountWindow::showWindow(const Usage usage,
 #ifdef EATHENA_SUPPORT
         ItemAmountWindow *const window = CREATEWIDGETR(ItemAmountWindow,
             usage, parent, item, maxRange);
-        if (usage == CraftAdd)
+        if (usage == ItemAmountWindowUsage::CraftAdd)
             window->mPrice = tag;
 #else
         CREATEWIDGET(ItemAmountWindow,

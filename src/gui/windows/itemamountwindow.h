@@ -25,6 +25,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "enums/gui/itemamountwindowusage.h"
+
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
 
@@ -46,25 +48,6 @@ class ItemAmountWindow final : public Window,
                                public KeyListener
 {
     public:
-        enum Usage
-        {
-            TradeAdd = 0,
-            ItemDrop,
-            StoreAdd,
-            StoreRemove,
-            CartAdd,
-            CartRemove,
-            ItemSplit,
-            ShopBuyAdd,
-#ifdef EATHENA_SUPPORT
-            ShopSellAdd,
-            CraftAdd,
-            MailAdd
-#else
-            ShopSellAdd
-#endif
-        };
-
         A_DELETE_COPY(ItemAmountWindow)
 
         void postInit() override final;
@@ -94,7 +77,7 @@ class ItemAmountWindow final : public Window,
         /**
          * Creates the dialog, or bypass it if there aren't enough items.
          */
-        static void showWindow(const Usage usage,
+        static void showWindow(const ItemAmountWindowUsageT usage,
                                Window *const parent,
                                Item *const item,
                                int maxRange = 0,
@@ -106,9 +89,9 @@ class ItemAmountWindow final : public Window,
         static void finish(Item *const item,
                            const int amount,
                            const int price,
-                           const Usage usage);
+                           const ItemAmountWindowUsageT usage);
 
-        ItemAmountWindow(const Usage usage,
+        ItemAmountWindow(const ItemAmountWindowUsageT usage,
                          Window *const parent,
                          Item *const item,
                          const int maxRange = 0);
@@ -131,7 +114,7 @@ class ItemAmountWindow final : public Window,
 
         int mPrice;
         int mMax;
-        Usage mUsage;
+        ItemAmountWindowUsageT mUsage;
         bool mEnabledKeyboard;
 };
 

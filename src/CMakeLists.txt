@@ -1253,6 +1253,7 @@ SET(SRCS
     gui/colorpair.h
     enums/gui/dialogtype.h
     enums/gui/gradienttype.h
+    enums/gui/itemamountwindowusage.h
     enums/gui/progresscolorid.h
     enums/gui/serverdialogdonwloadstatus.h
     enums/gui/themecolorid.h

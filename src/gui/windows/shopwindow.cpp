@@ -400,13 +400,18 @@ void ShopWindow::action(const ActionEvent &event)
         {
             if (isBuySelected)
             {
-                ItemAmountWindow::showWindow(ItemAmountWindow::ShopBuyAdd,
-                    this, item, sumAmount(item));
+                ItemAmountWindow::showWindow(ItemAmountWindowUsage::ShopBuyAdd,
+                    this,
+                    item,
+                    sumAmount(item));
             }
             else
             {
-                ItemAmountWindow::showWindow(ItemAmountWindow::ShopSellAdd,
-                    this, item, sumAmount(item));
+                ItemAmountWindow::showWindow(
+                    ItemAmountWindowUsage::ShopSellAdd,
+                    this,
+                    item,
+                    sumAmount(item));
             }
         }
     }

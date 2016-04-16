@@ -878,7 +878,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 if (item->getQuantity() > 1
                     && !inputManager.isActionActive(InputAction::STOP_ATTACK))
                 {
-                    ItemAmountWindow::showWindow(ItemAmountWindow::CraftAdd,
+                    ItemAmountWindow::showWindow(
+                        ItemAmountWindowUsage::CraftAdd,
                         npcHandler->getCurrentNpcDialog(),
                         item,
                         0,

@@ -441,13 +441,13 @@ void InventoryWindow::action(const ActionEvent &event)
 
         if (storageWindow)
         {
-            ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+            ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreAdd,
                 this, item);
         }
 #ifdef EATHENA_SUPPORT
         else if (cartWindow && cartWindow->isWindowVisible())
         {
-            ItemAmountWindow::showWindow(ItemAmountWindow::CartAdd,
+            ItemAmountWindow::showWindow(ItemAmountWindowUsage::CartAdd,
                 this, item);
         }
 #endif
@@ -512,27 +512,28 @@ void InventoryWindow::action(const ActionEvent &event)
             }
             else
             {
-                ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
+                ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemDrop,
                     this, item);
             }
         }
     }
     else if (eventId == "split")
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit, this, item,
+        ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemSplit,
+            this, item,
             (item->getQuantity() - 1));
     }
     else if (eventId == "retrieve")
     {
         if (storageWindow)
         {
-            ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+            ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreRemove,
                 this, item);
         }
 #ifdef EATHENA_SUPPORT
         else if (cartWindow && cartWindow->isWindowVisible())
         {
-            ItemAmountWindow::showWindow(ItemAmountWindow::CartRemove,
+            ItemAmountWindow::showWindow(ItemAmountWindowUsage::CartRemove,
                 this, item);
         }
 #endif
@@ -615,7 +616,8 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
             {
                 if (event.getButton() == MouseButton::RIGHT)
                 {
-                    ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+                    ItemAmountWindow::showWindow(
+                        ItemAmountWindowUsage::StoreAdd,
                         inventoryWindow,
                         item);
                 }
@@ -631,8 +633,10 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
             {
                 if (event.getButton() == MouseButton::RIGHT)
                 {
-                    ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
-                        inventoryWindow, item);
+                    ItemAmountWindow::showWindow(
+                        ItemAmountWindowUsage::StoreRemove,
+                        inventoryWindow,
+                        item);
                 }
                 else
                 {
@@ -649,7 +653,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                 return;
             if (event.getButton() == MouseButton::RIGHT)
             {
-                ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
+                ItemAmountWindow::showWindow(ItemAmountWindowUsage::TradeAdd,
                     tradeWindow, item);
             }
             else
@@ -664,14 +668,16 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
             {
                 if (isStorageActive())
                 {
-                    ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+                    ItemAmountWindow::showWindow(
+                        ItemAmountWindowUsage::StoreAdd,
                         inventoryWindow, item);
                 }
                 else if (tradeWindow && tradeWindow->isWindowVisible())
                 {
                     if (PlayerInfo::isItemProtected(item->getId()))
                         return;
-                    ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
+                    ItemAmountWindow::showWindow(
+                        ItemAmountWindowUsage::TradeAdd,
                         tradeWindow, item);
                 }
                 else
@@ -683,7 +689,8 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
             {
                 if (isStorageActive())
                 {
-                    ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+                    ItemAmountWindow::showWindow(
+                        ItemAmountWindowUsage::StoreRemove,
                         inventoryWindow, item);
                 }
             }
@@ -754,7 +761,7 @@ void InventoryWindow::valueChanged(const SelectionEvent &event A_UNUSED)
     if (mSplit && item && inventoryHandler->
         canSplit(mItems->getSelectedItem()))
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit,
+        ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemSplit,
             this, item, item->getQuantity() - 1);
     }
     updateButtons(item);
@@ -1085,7 +1092,7 @@ void InventoryWindow::moveItemToCraft(const int craftSlot)
         if (item->getQuantity() > 1
             && !inputManager.isActionActive(InputAction::STOP_ATTACK))
         {
-            ItemAmountWindow::showWindow(ItemAmountWindow::CraftAdd,
+            ItemAmountWindow::showWindow(ItemAmountWindowUsage::CraftAdd,
                 npcHandler->getCurrentNpcDialog(),
                 item,
                 0,
