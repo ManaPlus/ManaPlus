@@ -25,6 +25,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "enums/gui/serverdialogdonwloadstatus.h"
+
 #include "enums/net/downloadstatus.h"
 
 #include "net/serverinfo.h"
@@ -136,23 +138,12 @@ class ServerDialog final : public Window,
         ServersListModel *mServersListModel A_NONNULLPOINTER;
         ListBox *mServersList A_NONNULLPOINTER;
 
-        enum ServerDialogDownloadStatus
-        {
-            DOWNLOADING_UNKNOWN = 0,
-            DOWNLOADING_ERROR,
-            DOWNLOADING_PREPARING,
-            DOWNLOADING_IDLE,
-            DOWNLOADING_IN_PROGRESS,
-            DOWNLOADING_COMPLETE,
-            DOWNLOADING_OVER
-        };
-
         /** Status of the current download. */
         Net::Download *mDownload;
         ServerInfo *mServerInfo;
         CheckBox *mPersistentIPCheckBox;
         float mDownloadProgress;
-        ServerDialogDownloadStatus mDownloadStatus;
+        ServerDialogDownloadStatusT mDownloadStatus;
 };
 
 #endif  // GUI_WINDOWS_SERVERDIALOG_H

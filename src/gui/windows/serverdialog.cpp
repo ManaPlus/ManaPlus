@@ -123,7 +123,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mServerInfo(serverInfo),
     mPersistentIPCheckBox(nullptr),
     mDownloadProgress(-1.0F),
-    mDownloadStatus(DOWNLOADING_UNKNOWN)
+    mDownloadStatus(ServerDialogDownloadStatus::UNKNOWN)
 {
     if (isSafeMode)
     {
@@ -390,28 +390,28 @@ void ServerDialog::logic()
     BLOCK_START("ServerDialog::logic")
     {
         MutexLocker tempLock(&mMutex);
-        if (mDownloadStatus == DOWNLOADING_COMPLETE)
+        if (mDownloadStatus == ServerDialogDownloadStatus::COMPLETE)
         {
-            mDownloadStatus = DOWNLOADING_OVER;
+            mDownloadStatus = ServerDialogDownloadStatus::OVER;
             mDescription->setCaption(std::string());
         }
-        else if (mDownloadStatus == DOWNLOADING_IN_PROGRESS)
+        else if (mDownloadStatus == ServerDialogDownloadStatus::IN_PROGRESS)
         {
             // TRANSLATORS: servers dialog label
             mDescription->setCaption(strprintf(_("Downloading server list..."
                 "%2.2f%%"), static_cast<double>(mDownloadProgress * 100)));
         }
-        else if (mDownloadStatus == DOWNLOADING_IDLE)
+        else if (mDownloadStatus == ServerDialogDownloadStatus::IDLE)
         {
             // TRANSLATORS: servers dialog label
             mDescription->setCaption(_("Waiting for server..."));
         }
-        else if (mDownloadStatus == DOWNLOADING_PREPARING)
+        else if (mDownloadStatus == ServerDialogDownloadStatus::PREPARING)
         {
             // TRANSLATORS: servers dialog label
             mDescription->setCaption(_("Preparing download"));
         }
-        else if (mDownloadStatus == DOWNLOADING_ERROR)
+        else if (mDownloadStatus == ServerDialogDownloadStatus::ERROR)
         {
             // TRANSLATORS: servers dialog label
             mDescription->setCaption(_("Error retreiving server list!"));
@@ -764,7 +764,7 @@ int ServerDialog::downloadUpdate(void *ptr,
     {
         logger->log("Error retreiving server list: %s\n",
                     sd->mDownload->getError());
-        sd->mDownloadStatus = DOWNLOADING_ERROR;
+        sd->mDownloadStatus = ServerDialogDownloadStatus::ERROR;
     }
     else
     {
@@ -778,7 +778,7 @@ int ServerDialog::downloadUpdate(void *ptr,
             progress = 1.0F;
 
         MutexLocker lock1(&sd->mMutex);
-        sd->mDownloadStatus = DOWNLOADING_IN_PROGRESS;
+        sd->mDownloadStatus = ServerDialogDownloadStatus::IN_PROGRESS;
         sd->mDownloadProgress = progress;
     }
 
@@ -786,7 +786,7 @@ int ServerDialog::downloadUpdate(void *ptr,
     {
         sd->loadServers();
         MutexLocker lock1(&sd->mMutex);
-        sd->mDownloadStatus = DOWNLOADING_COMPLETE;
+        sd->mDownloadStatus = ServerDialogDownloadStatus::COMPLETE;
     }
 
     return 0;
