@@ -20,6 +20,8 @@
 
 #include "net/eathena/updateprotocol.h"
 
+#include "logger.h"
+
 #include "net/eathena/network.h"
 #include "net/eathena/protocolout.h"
 
@@ -33,6 +35,7 @@ namespace EAthena
 
 void updateProtocol()
 {
+    logger->log("packet version: %d", packetVersion);
 #define PACKETS_UPDATE
 #include "net/protocoloutupdate.h"
 #include "net/eathena/packetsout.inc"
