@@ -23,6 +23,8 @@
 #ifndef GUI_WINDOWS_UPDATERWINDOW_H
 #define GUI_WINDOWS_UPDATERWINDOW_H
 
+#include "enums/gui/updatedownloadstatus.h"
+
 #include "enums/net/downloadstatus.h"
 #include "enums/net/updatetype.h"
 
@@ -170,19 +172,6 @@ class UpdaterWindow final : public Window,
         static bool validateFile(const std::string &filePath,
                                  const unsigned long hash) A_WARN_UNUSED;
 
-        enum UpdateDownloadStatus
-        {
-            UPDATE_ERROR = 0,
-            UPDATE_IDLE,
-            UPDATE_LIST,
-            UPDATE_COMPLETE,
-            UPDATE_NEWS,
-            UPDATE_RESOURCES,
-            UPDATE_PATCH,
-            UPDATE_LIST2,
-            UPDATE_RESOURCES2
-        };
-
         /** The new progress value to be set in the logic method. */
         float mDownloadProgress;
 
@@ -229,7 +218,7 @@ class UpdaterWindow final : public Window,
         ScrollArea *mScrollArea A_NONNULLPOINTER;
 
         /** Status of the current download. */
-        UpdateDownloadStatus mDownloadStatus;
+        UpdateDownloadStatusT mDownloadStatus;
 
         /** Byte count currently downloaded in mMemoryBuffer. */
         int mDownloadedBytes;

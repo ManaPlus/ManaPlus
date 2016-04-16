@@ -110,6 +110,7 @@ SRC += events/actionevent.h \
 	      enums/gui/progresscolorid.h \
 	      enums/gui/serverdialogdonwloadstatus.h \
 	      enums/gui/themecolorid.h \
+	      enums/gui/updatedownloadstatus.h \
 	      enums/gui/usercolorid.h \
 	      listeners/errorlistener.cpp \
 	      listeners/errorlistener.h \

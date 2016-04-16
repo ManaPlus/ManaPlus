@@ -196,7 +196,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
         true, "update_background.xml")),
-    mDownloadStatus(UPDATE_NEWS),
+    mDownloadStatus(UpdateDownloadStatus::UPDATE_NEWS),
     mDownloadedBytes(0),
     mUpdateIndex(0),
     mUpdateIndexOffset(0),
@@ -310,11 +310,11 @@ void UpdaterWindow::action(const ActionEvent &event)
         // Register the user cancel
         mUserCancel = true;
         // Skip the updating process
-        if (mDownloadStatus != UPDATE_COMPLETE)
+        if (mDownloadStatus != UpdateDownloadStatus::UPDATE_COMPLETE)
         {
             if (mDownload)
                 mDownload->cancel();
-            mDownloadStatus = UPDATE_ERROR;
+            mDownloadStatus = UpdateDownloadStatus::UPDATE_ERROR;
         }
     }
     else if (eventId == "play")
@@ -340,8 +340,8 @@ void UpdaterWindow::keyPressed(KeyEvent &event)
     else if (actionId == InputAction::GUI_SELECT ||
              actionId == InputAction::GUI_SELECT2)
     {
-        if (mDownloadStatus == UPDATE_COMPLETE ||
-            mDownloadStatus == UPDATE_ERROR)
+        if (mDownloadStatus == UpdateDownloadStatus::UPDATE_COMPLETE ||
+            mDownloadStatus == UpdateDownloadStatus::UPDATE_ERROR)
         {
             action(ActionEvent(nullptr, mPlayButton->getActionEventId()));
         }
@@ -503,17 +503,17 @@ int UpdaterWindow::updateProgress(void *ptr,
     else if (status == DownloadStatus::Error ||
              status == DownloadStatus::Cancelled)
     {
-        if (uw->mDownloadStatus == UPDATE_COMPLETE
-            || uw->mDownloadStatus == UPDATE_NEWS)
+        if (uw->mDownloadStatus == UpdateDownloadStatus::UPDATE_COMPLETE ||
+            uw->mDownloadStatus == UpdateDownloadStatus::UPDATE_NEWS)
         {   // ignoring error in last state (was UPDATE_PATCH)
-            uw->mDownloadStatus = UPDATE_COMPLETE;
+            uw->mDownloadStatus = UpdateDownloadStatus::UPDATE_COMPLETE;
             uw->mDownloadComplete = true;
             free(uw->mMemoryBuffer);
             uw->mMemoryBuffer = nullptr;
         }
         else
         {
-            uw->mDownloadStatus = UPDATE_ERROR;
+            uw->mDownloadStatus = UpdateDownloadStatus::UPDATE_ERROR;
         }
     }
 
@@ -536,9 +536,9 @@ int UpdaterWindow::updateProgress(void *ptr,
 
     uw->setProgress(progress);
 
-    if ((client->getState() != State::UPDATE
-        && client->getState() != State::GAME)
-        || uw->mDownloadStatus == UPDATE_ERROR)
+    if ((client->getState() != State::UPDATE &&
+        client->getState() != State::GAME) ||
+        uw->mDownloadStatus == UpdateDownloadStatus::UPDATE_ERROR)
     {
         // If the action was canceled return an error code to stop the mThread
         return -1;
@@ -572,7 +572,7 @@ void UpdaterWindow::download()
         mDownload->cancel();
         delete mDownload;
     }
-    if (mDownloadStatus == UPDATE_PATCH)
+    if (mDownloadStatus == UpdateDownloadStatus::UPDATE_PATCH)
     {
         mDownload = new Net::Download(this,
             branding.getStringValue("updateMirror1") + mCurrentFile,
@@ -593,8 +593,8 @@ void UpdaterWindow::download()
             &updateProgress,
             false, false, mValidateXml);
 
-        if (mDownloadStatus == UPDATE_LIST2
-            || mDownloadStatus == UPDATE_RESOURCES2)
+        if (mDownloadStatus == UpdateDownloadStatus::UPDATE_LIST2 ||
+            mDownloadStatus == UpdateDownloadStatus::UPDATE_RESOURCES2)
         {
             const std::string str = mUpdateServerPath + "/" + mCurrentFile;
             mDownload->addMirror(updateServer3 + str);
@@ -618,7 +618,7 @@ void UpdaterWindow::download()
     }
     else
     {
-        if (mDownloadStatus == UPDATE_RESOURCES)
+        if (mDownloadStatus == UpdateDownloadStatus::UPDATE_RESOURCES)
         {
             mDownload->setFile(std::string(mUpdatesDir).append("/").append(
                 mCurrentFile), mCurrentChecksum);
@@ -630,7 +630,7 @@ void UpdaterWindow::download()
         }
     }
 
-    if (mDownloadStatus != UPDATE_RESOURCES)
+    if (mDownloadStatus != UpdateDownloadStatus::UPDATE_RESOURCES)
         mDownload->noCache();
 
     setLabel(mCurrentFile + " (0%)");
@@ -839,7 +839,7 @@ void UpdaterWindow::logic()
 
     switch (mDownloadStatus)
     {
-        case UPDATE_ERROR:
+        case UpdateDownloadStatus::UPDATE_ERROR:
             mBrowserBox->addRow("");
             // TRANSLATORS: update message
             mBrowserBox->addRow(_("##1  The update process is incomplete."));
@@ -851,9 +851,9 @@ void UpdaterWindow::logic()
                 mBrowserBox->addRow(mDownload->getError());
             mScrollArea->setVerticalScrollAmount(
                     mScrollArea->getVerticalMaxScroll());
-            mDownloadStatus = UPDATE_COMPLETE;
+            mDownloadStatus = UpdateDownloadStatus::UPDATE_COMPLETE;
             break;
-        case UPDATE_NEWS:
+        case UpdateDownloadStatus::UPDATE_NEWS:
             if (mDownloadComplete)
             {
                 // Parse current memory buffer as news and dispose of the data
@@ -862,11 +862,11 @@ void UpdaterWindow::logic()
                 mValidateXml = true;
                 mCurrentFile = xmlUpdateFile;
                 mStoreInMemory = false;
-                mDownloadStatus = UPDATE_LIST;
+                mDownloadStatus = UpdateDownloadStatus::UPDATE_LIST;
                 download();  // download() changes mDownloadComplete to false
             }
             break;
-        case UPDATE_PATCH:
+        case UpdateDownloadStatus::UPDATE_PATCH:
             if (mDownloadComplete)
             {
                 // Parse current memory buffer as news and dispose of the data
@@ -877,12 +877,12 @@ void UpdaterWindow::logic()
                 mCurrentFile = xmlUpdateFile;
                 mValidateXml = true;
                 mStoreInMemory = false;
-                mDownloadStatus = UPDATE_LIST2;
+                mDownloadStatus = UpdateDownloadStatus::UPDATE_LIST2;
                 download();
             }
             break;
 
-        case UPDATE_LIST:
+        case UpdateDownloadStatus::UPDATE_LIST:
             if (mDownloadComplete)
             {
                 if (mCurrentFile == xmlUpdateFile)
@@ -902,7 +902,7 @@ void UpdaterWindow::logic()
                         mCurrentFile = txtUpdateFile;
                         mValidateXml = false;
                         mStoreInMemory = false;
-                        mDownloadStatus = UPDATE_LIST;
+                        mDownloadStatus = UpdateDownloadStatus::UPDATE_LIST;
                         download();
                         break;
                     }
@@ -914,10 +914,10 @@ void UpdaterWindow::logic()
                         "/").append(txtUpdateFile));
                 }
                 mStoreInMemory = false;
-                mDownloadStatus = UPDATE_RESOURCES;
+                mDownloadStatus = UpdateDownloadStatus::UPDATE_RESOURCES;
             }
             break;
-        case UPDATE_RESOURCES:
+        case UpdateDownloadStatus::UPDATE_RESOURCES:
             if (mDownloadComplete)
             {
                 if (CAST_SIZE(mUpdateIndex) < mUpdateFiles.size())
@@ -960,19 +960,19 @@ void UpdaterWindow::logic()
                         // Download of updates completed
                         mCurrentFile = "latest.txt";
                         mStoreInMemory = true;
-                        mDownloadStatus = UPDATE_PATCH;
+                        mDownloadStatus = UpdateDownloadStatus::UPDATE_PATCH;
                         mValidateXml = false;
                         download();  // download() changes
                                      // mDownloadComplete to false
                     }
                     else
                     {
-                        mDownloadStatus = UPDATE_COMPLETE;
+                        mDownloadStatus = UpdateDownloadStatus::UPDATE_COMPLETE;
                     }
                 }
             }
             break;
-        case UPDATE_LIST2:
+        case UpdateDownloadStatus::UPDATE_LIST2:
             if (mDownloadComplete)
             {
                 if (mCurrentFile == xmlUpdateFile)
@@ -984,11 +984,11 @@ void UpdaterWindow::logic()
                 mUpdateIndex = 0;
                 mValidateXml = true;
                 mStoreInMemory = false;
-                mDownloadStatus = UPDATE_RESOURCES2;
+                mDownloadStatus = UpdateDownloadStatus::UPDATE_RESOURCES2;
                 download();
             }
             break;
-        case UPDATE_RESOURCES2:
+        case UpdateDownloadStatus::UPDATE_RESOURCES2:
             if (mDownloadComplete)
             {
                 mValidateXml = false;
@@ -1022,17 +1022,17 @@ void UpdaterWindow::logic()
                 else
                 {
                     mUpdatesDir = mUpdatesDirReal;
-                    mDownloadStatus = UPDATE_COMPLETE;
+                    mDownloadStatus = UpdateDownloadStatus::UPDATE_COMPLETE;
                 }
             }
             break;
-        case UPDATE_COMPLETE:
+        case UpdateDownloadStatus::UPDATE_COMPLETE:
             mUpdatesDir = mUpdatesDirReal;
             enable();
             // TRANSLATORS: updater window label
             setLabel(_("Completed"));
             break;
-        case UPDATE_IDLE:
+        case UpdateDownloadStatus::UPDATE_IDLE:
             break;
         default:
             logger->log("UpdaterWindow::logic unknown status: "
