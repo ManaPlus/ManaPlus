@@ -174,9 +174,9 @@ class SetupItemCheckBox final : public SetupItem
 
         void createControls();
 
-        void fromWidget() final;
+        void fromWidget() override final;
 
-        void toWidget() final;
+        void toWidget() override final;
 
     protected:
         CheckBox *mCheckBox;
@@ -208,22 +208,22 @@ class SetupItemTextField final : public SetupItem
 
         void createControls();
 
-        void fromWidget() final;
+        void fromWidget() override final;
 
-        void toWidget() final;
+        void toWidget() override final;
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) final;
+        void apply(const std::string &eventName) override final;
 
-        void cancel(const std::string &eventName A_UNUSED) final;
+        void cancel(const std::string &eventName A_UNUSED) override final;
 
         void externalUpdated(const std::string &eventName A_UNUSED)
-                             final;
+                             override final;
 
-        void rereadValue() final;
+        void rereadValue() override final;
 
-        void save() final;
+        void save() override final;
 
         void setUseBase64(const UseBase64 b)
         { mUseBase64 = b; }
@@ -263,13 +263,13 @@ class SetupItemIntTextField final : public SetupItem
 
         void createControls();
 
-        void fromWidget() final;
+        void fromWidget() override final;
 
-        void toWidget() final;
+        void toWidget() override final;
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) final;
+        void apply(const std::string &eventName) override final;
 
     protected:
         HorizontContainer *mHorizont;
@@ -295,13 +295,13 @@ class SetupItemLabel final : public SetupItem
 
         void createControls();
 
-        void fromWidget() final A_CONST;
+        void fromWidget() override final A_CONST;
 
-        void toWidget() final A_CONST;
+        void toWidget() override final A_CONST;
 
-        void action(const ActionEvent &event) final A_CONST;
+        void action(const ActionEvent &event) override final A_CONST;
 
-        void apply(const std::string &eventName) final A_CONST;
+        void apply(const std::string &eventName) override final A_CONST;
 
     protected:
         Label *mLabel;
@@ -336,9 +336,9 @@ class SetupItemDropDown final : public SetupItem
 
         void createControls();
 
-        void fromWidget() final;
+        void fromWidget() override final;
 
-        void toWidget() final;
+        void toWidget() override final;
 
     protected:
         HorizontContainer *mHorizont;
@@ -382,13 +382,13 @@ class SetupItemSlider final : public SetupItem
 
         void createControls();
 
-        void fromWidget() final;
+        void fromWidget() override final;
 
-        void toWidget() final;
+        void toWidget() override final;
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) final;
+        void apply(const std::string &eventName) override final;
 
         void updateLabel();
 
@@ -439,13 +439,13 @@ class SetupItemSlider2 final : public SetupItem
 
         void createControls();
 
-        void fromWidget() final;
+        void fromWidget() override final;
 
-        void toWidget() final;
+        void toWidget() override final;
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) final;
+        void apply(const std::string &eventName) override final;
 
         void setInvertValue(const int v);
 
@@ -483,7 +483,7 @@ class SetupItemSliderList notfinal : public SetupItem
 
         void action(const ActionEvent &event) override;
 
-        void apply(const std::string &eventName) final;
+        void apply(const std::string &eventName) override final;
 
         virtual void addMoreControls() = 0;
 
@@ -532,9 +532,9 @@ class SetupItemSound final : public SetupItemSliderList
 
         A_DELETE_COPY(SetupItemSound)
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
-        void addMoreControls() final;
+        void addMoreControls() override final;
 
     protected:
         Button *mButton;
@@ -556,11 +556,11 @@ class SetupItemSliderInt final : public SetupItemSliderList
 
         A_DELETE_COPY(SetupItemSliderInt)
 
-        void addMoreControls() final;
+        void addMoreControls() override final;
 
-        void fromWidget() final;
+        void fromWidget() override final;
 
-        void toWidget() final;
+        void toWidget() override final;
 
     protected:
         int mMin;

@@ -35,16 +35,16 @@ class GameHandler notfinal : public Net::GameHandler
 
         A_DELETE_COPY(GameHandler)
 
-        void who() const final A_CONST;
+        void who() const override final A_CONST;
 
-        bool removeDeadBeings() const final A_WARN_UNUSED
+        bool removeDeadBeings() const override final A_WARN_UNUSED
         { return true; }
 
         static void setMap(const std::string &map);
 
-        void clear() const final;
+        void clear() const override final;
 
-        void initEngines() const final;
+        void initEngines() const override final;
 };
 
 }  // namespace Ea

@@ -41,7 +41,7 @@ class WrongDataNoticeListener final : public ActionListener
 
         void setTarget(TextField *const textField);
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
     private:
         TextField *mTarget;
 };

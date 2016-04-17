@@ -37,49 +37,49 @@ class InventoryHandler final : public Ea::InventoryHandler
 
         ~InventoryHandler();
 
-        void equipItem(const Item *const item) const final;
+        void equipItem(const Item *const item) const override final;
 
-        void unequipItem(const Item *const item) const final;
+        void unequipItem(const Item *const item) const override final;
 
-        void useItem(const Item *const item) const final;
+        void useItem(const Item *const item) const override final;
 
         void dropItem(const Item *const item,
-                      const int amount) const final;
+                      const int amount) const override final;
 
-        void closeStorage() const final;
+        void closeStorage() const override final;
 
         void moveItem2(const InventoryTypeT source,
                        const int slot,
                        const int amount,
-                       const InventoryTypeT destination) const final;
+                       const InventoryTypeT destination) const override final;
 
-        void useCard(const Item *const item) final;
+        void useCard(const Item *const item) override final;
 
         void insertCard(const int cardIndex,
-                        const int itemIndex) const final;
+                        const int itemIndex) const override final;
 
         void favoriteItem(const Item *const item,
-                          const bool favorite) const final;
+                          const bool favorite) const override final;
 
-        void selectEgg(const Item *const item) const final;
+        void selectEgg(const Item *const item) const override final;
 
         int convertFromServerSlot(const int serverSlot)
-                                  const final A_WARN_UNUSED;
+                                  const override final A_WARN_UNUSED;
 
         void selectCart(const BeingId accountId,
-                        const int type) const final;
+                        const int type) const override final;
 
-        void identifyItem(const Item *const item) const final;
+        void identifyItem(const Item *const item) const override final;
 
         void mergeItemsAck(const std::vector<Item*> &items) const
-                           final;
+                           override final;
 
-        void mergetItemsCancel() const final;
+        void mergetItemsCancel() const override final;
 
-        int getProjectileSlot() const final
+        int getProjectileSlot() const override final
         { return 23; }
 
-        int getItemIndex() const final A_WARN_UNUSED
+        int getItemIndex() const override final A_WARN_UNUSED
         { return mItemIndex; }
 
     private:

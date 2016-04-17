@@ -55,7 +55,7 @@ class CharacterDisplay final : public Container,
         Net::Character *getCharacter() const
         { return mCharacter; }
 
-        void requestFocus() final A_CONST;
+        void requestFocus() override final A_CONST;
 
         void setActive(const bool active) A_CONST;
 
@@ -74,13 +74,13 @@ class CharacterDisplay final : public Container,
         void setSelect(bool b)
         { mPlayerBox->setSelected(b); }
 
-        void widgetHidden(const Event &event) final;
+        void widgetHidden(const Event &event) override final;
 
-        void mouseExited(MouseEvent &event) final;
+        void mouseExited(MouseEvent &event) override final;
 
-        void mouseMoved(MouseEvent &event) final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mousePressed(MouseEvent &event) final;
+        void mousePressed(MouseEvent &event) override final;
 
         void update();
 

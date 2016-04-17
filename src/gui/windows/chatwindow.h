@@ -112,7 +112,7 @@ class ChatWindow final : public Window,
         /**
          * Performs action.
          */
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Request focus for typing chat message.
@@ -142,7 +142,7 @@ class ChatWindow final : public Window,
         void localChatInput(const std::string &msg) const;
 
         /** Called when key is pressed */
-        void keyPressed(KeyEvent &event) final;
+        void keyPressed(KeyEvent &event) override final;
 
         /** Set the chat input as the given text. */
         void setInputText(const std::string &text);
@@ -154,17 +154,17 @@ class ChatWindow final : public Window,
         void addItemText(const std::string &item);
 
         /** Override to reset mTmpVisible */
-        void setVisible(Visible visible) final;
+        void setVisible(Visible visible) override final;
 
         /**
          * Handles mouse when dragged.
          */
-        void mouseDragged(MouseEvent &event) final;
+        void mouseDragged(MouseEvent &event) override final;
 
         /**
          * Handles mouse when pressed.
          */
-        void mousePressed(MouseEvent &event) final;
+        void mousePressed(MouseEvent &event) override final;
 
         /**
          * Scrolls the chat window
@@ -271,27 +271,27 @@ class ChatWindow final : public Window,
 
         void copyToClipboard(const int x, const int y) const;
 
-        void optionChanged(const std::string &name) final;
+        void optionChanged(const std::string &name) override final;
 
-        void mouseEntered(MouseEvent& event) final;
+        void mouseEntered(MouseEvent& event) override final;
 
-        void mouseMoved(MouseEvent &event) final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mouseExited(MouseEvent& event A_UNUSED) final;
+        void mouseExited(MouseEvent& event A_UNUSED) override final;
 
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         void updateVisibility();
 
         void unHideWindow();
 
-        void widgetResized(const Event &event) final;
+        void widgetResized(const Event &event) override final;
 
         void addGlobalMessage(const std::string &line);
 
-        void postInit() final;
+        void postInit() override final;
 
         bool isTabPresent(const ChatTab *const tab) const A_WARN_UNUSED;
 
@@ -299,11 +299,11 @@ class ChatWindow final : public Window,
 
         void attributeChanged(const AttributesT id,
                               const int oldVal,
-                              const int newVal) final;
+                              const int newVal) override final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,
-                         const int oldVal2) final;
+                         const int oldVal2) override final;
 
         static void localPetSay(const std::string &nick,
                                 const std::string &text);
@@ -324,7 +324,7 @@ class ChatWindow final : public Window,
 
         void showGMTab();
 
-        void debugMessage(const std::string &msg) final;
+        void debugMessage(const std::string &msg) override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

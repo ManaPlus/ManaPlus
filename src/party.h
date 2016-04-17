@@ -126,10 +126,10 @@ class Party final : public AvatarListModel
          * Get size of members list.
          * @return Returns the number of members in the party.
          */
-        int getNumberOfElements() final A_WARN_UNUSED
+        int getNumberOfElements() override final A_WARN_UNUSED
         { return CAST_S32(mMembers.size()); }
 
-        Avatar *getAvatarAt(const int i) final;
+        Avatar *getAvatarAt(const int i) override final;
 
         /**
          * Get whether user can invite users to this party.

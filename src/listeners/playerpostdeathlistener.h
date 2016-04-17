@@ -41,7 +41,7 @@ extern OkDialog *deathNotice;
   */
 struct PlayerPostDeathListener final : public ActionListener
 {
-    void action(const ActionEvent &event A_UNUSED) final
+    void action(const ActionEvent &event A_UNUSED) override final
     {
         if (playerHandler)
             playerHandler->respawn();

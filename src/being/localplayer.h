@@ -66,12 +66,12 @@ class LocalPlayer final : public Being,
          */
         ~LocalPlayer();
 
-        void logic() final;
+        void logic() override final;
 
         void slowLogic();
 
         void setAction(const BeingActionT &action,
-                       const int attackType = 0) final;
+                       const int attackType = 0) override final;
 
         /**
          * Compute the next pathnode location when walking using keyboard.
@@ -86,7 +86,7 @@ class LocalPlayer final : public Being,
          * Also, when specified, it picks up an item at the end of a path
          * or attack target.
          */
-        void nextTile() final
+        void nextTile() override final
         { nextTile(0); }
 
         void nextTile(unsigned char dir);
@@ -98,7 +98,7 @@ class LocalPlayer final : public Being,
          * @param actorSprite the ActorSprite being destroyed.
          */
         void actorSpriteDestroyed(const ActorSprite &actorSprite)
-                                  final;
+                                  override final;
 
         /**
          * Gets the attack range.
@@ -184,7 +184,7 @@ class LocalPlayer final : public Being,
                       const BeingId floorItemId,
                       const PickupT fail);
 
-        int getLevel() const final A_WARN_UNUSED;
+        int getLevel() const override final A_WARN_UNUSED;
 
         /** Tells that the path has been set by mouse. */
         void pathSetByMouse()
@@ -277,7 +277,7 @@ class LocalPlayer final : public Being,
         /**
          * Sets the map the being is on
          */
-        void setMap(Map *const map) final;
+        void setMap(Map *const map) override final;
 
         void addMessageToQueue(const std::string &message,
                                const UserColorIdT color
@@ -286,9 +286,9 @@ class LocalPlayer final : public Being,
         /**
          * Called when a option (set with config.addListener()) is changed
          */
-        void optionChanged(const std::string &value) final;
+        void optionChanged(const std::string &value) override final;
 
-        void playerDeath() final;
+        void playerDeath() override final;
 
         /**
          * set a following player.
@@ -365,7 +365,7 @@ class LocalPlayer final : public Being,
 
         void checkNewName(Being *const being);
 
-        unsigned char getBlockWalkMask() const final
+        unsigned char getBlockWalkMask() const override final
                                        A_CONST A_WARN_UNUSED;
 
         void saveHomes();
@@ -390,19 +390,19 @@ class LocalPlayer final : public Being,
         void setTestParticle(const std::string &fileName,
                              const bool updateHash = true);
 
-        int getLastAttackX() const final
+        int getLastAttackX() const override final
         { return mTarget ? mTarget->mX : mLastAttackX; }
 
-        int getLastAttackY() const final
+        int getLastAttackY() const override final
         { return mTarget ? mTarget->mY : mLastAttackY; }
 
         void attributeChanged(const AttributesT id,
                               const int oldVal,
-                              const int newVal) final;
+                              const int newVal) override final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,
-                         const int oldVal2) final;
+                         const int oldVal2) override final;
 
         void updateMusic() const;
 
@@ -424,10 +424,10 @@ class LocalPlayer final : public Being,
         bool canMove() const;
 
     protected:
-        void updateCoords() final;
+        void updateCoords() override final;
 
         void handleStatusEffect(const StatusEffect *const effect,
-                                const int32_t effectId) final;
+                                const int32_t effectId) override final;
 
         void startWalking(const unsigned char dir);
 

@@ -36,7 +36,7 @@ class Setup_Audio final : public SetupTabScroll
 
         ~Setup_Audio();
 
-        void apply() final;
+        void apply() override final;
 
     private:
         ListModel *mSoundModel;

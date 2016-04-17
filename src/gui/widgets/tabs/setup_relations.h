@@ -46,19 +46,19 @@ class Setup_Relations final : public SetupTab,
 
         ~Setup_Relations();
 
-        void apply() final;
+        void apply() override final;
 
-        void cancel() final A_CONST;
+        void cancel() override final A_CONST;
 
         void reset();
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
-        void updatedPlayer(const std::string &name) final;
+        void updatedPlayer(const std::string &name) override final;
 
-        void updateAll() final;
+        void updateAll() override final;
 
-        void externalUpdated() final;
+        void externalUpdated() override final;
 
     private:
         StaticTableModel *mPlayerTableTitleModel;

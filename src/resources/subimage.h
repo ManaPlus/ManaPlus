@@ -76,10 +76,10 @@ class SubImage final : public Image
          */
         Image *getSubImage(const int x, const int y,
                            const int width,
-                           const int height) final A_WARN_UNUSED;
+                           const int height) override final A_WARN_UNUSED;
 
 #ifdef USE_OPENGL
-        void decRef() final;
+        void decRef() override final;
 #endif
 
         SDL_Rect mInternalBounds;

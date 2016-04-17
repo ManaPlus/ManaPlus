@@ -69,7 +69,7 @@ class SocialNavigationTab final : public SocialTab
             delete2(mBeings)
         }
 
-        void updateList() final
+        void updateList() override final
         {
             if (!socialWindow || !localPlayer)
                 return;
@@ -164,7 +164,7 @@ class SocialNavigationTab final : public SocialTab
             updateCounter();
         }
 
-        void selectIndex(const unsigned num) final
+        void selectIndex(const unsigned num) override final
         {
             if (!localPlayer)
                 return;

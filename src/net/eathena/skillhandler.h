@@ -37,24 +37,24 @@ class SkillHandler final : public Ea::SkillHandler
 
         void useBeing(const int id,
                       const int level,
-                      const BeingId beingId) const final;
+                      const BeingId beingId) const override final;
 
         void usePos(const int id,
                     const int level,
-                    const int x, const int y) const final;
+                    const int x, const int y) const override final;
 
         void usePos(const int id,
                     const int level,
                     const int x, const int y,
-                    const std::string &text) const final;
+                    const std::string &text) const override final;
 
-        void useMap(const int id, const std::string &map) const final;
+        void useMap(const int id, const std::string &map) const override final;
 
-        void getAlchemistRanks() const final;
+        void getAlchemistRanks() const override final;
 
-        void getBlacksmithRanks() const final;
+        void getBlacksmithRanks() const override final;
 
-        void getPkRanks() const final;
+        void getPkRanks() const override final;
 };
 
 }  // namespace EAthena

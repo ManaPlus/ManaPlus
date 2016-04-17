@@ -36,9 +36,9 @@ class SdlScreenshotHelper final : public ScreenshotHelper
 
         ~SdlScreenshotHelper();
 
-        void prepare() final A_CONST;
+        void prepare() override final A_CONST;
 
-        SDL_Surface *getScreenshot() final;
+        SDL_Surface *getScreenshot() override final;
 };
 
 #endif  // RESOURCES_SDLSCREENSHOTHELPER_H

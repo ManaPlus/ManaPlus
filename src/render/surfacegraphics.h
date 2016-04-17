@@ -53,31 +53,31 @@ class SurfaceGraphics final : public Graphics
         SDL_Surface *getTarget() const restrict2 noexcept
         { return mTarget; }
 
-        void beginDraw() restrict2 final
+        void beginDraw() restrict2 override final
         { }
 
-        void endDraw() restrict2 final
+        void endDraw() restrict2 override final
         { }
 
         void pushClipArea(const Rect &restrict rect A_UNUSED)
-                          restrict2 final
+                          restrict2 override final
         { }
 
-        void popClipArea() restrict2 final
+        void popClipArea() restrict2 override final
         { }
 
         void drawRescaledImage(const Image *restrict const image A_UNUSED,
                                int dstX A_UNUSED, int dstY A_UNUSED,
                                const int desiredWidth A_UNUSED,
                                const int desiredHeight A_UNUSED)
-                               restrict2 final
+                               restrict2 override final
         { }
 
         void drawPattern(const Image *restrict const image A_UNUSED,
                          const int x A_UNUSED,
                          const int y A_UNUSED,
                          const int w A_UNUSED,
-                         const int h A_UNUSED) restrict2 final
+                         const int h A_UNUSED) restrict2 override final
         { }
 
         void drawRescaledPattern(const Image *const image A_UNUSED,
@@ -87,7 +87,7 @@ class SurfaceGraphics final : public Graphics
                                  const int h A_UNUSED,
                                  const int scaledWidth A_UNUSED,
                                  const int scaledHeight A_UNUSED)
-                                 final
+                                 override final
         { }
 
         void calcPattern(ImageVertexes *restrict const vert A_UNUSED,
@@ -95,7 +95,7 @@ class SurfaceGraphics final : public Graphics
                          const int x A_UNUSED,
                          const int y A_UNUSED,
                          const int w A_UNUSED,
-                         const int h A_UNUSED) const restrict2 final
+                         const int h A_UNUSED) const restrict2 override final
         { }
 
         void calcPattern(ImageCollection *restrict const vert A_UNUSED,
@@ -103,38 +103,38 @@ class SurfaceGraphics final : public Graphics
                          const int x A_UNUSED,
                          const int y A_UNUSED,
                          const int w A_UNUSED,
-                         const int h A_UNUSED) const restrict2 final
+                         const int h A_UNUSED) const restrict2 override final
         { }
 
         void calcTileVertexes(ImageVertexes *restrict const vert A_UNUSED,
                               const Image *restrict const image A_UNUSED,
                               int x A_UNUSED,
-                              int y A_UNUSED) const restrict2 final
+                              int y A_UNUSED) const restrict2 override final
                               A_NONNULL(2, 3)
         { }
 
         void calcTileSDL(ImageVertexes *restrict const vert A_UNUSED,
                          int x A_UNUSED,
-                         int y A_UNUSED) const restrict2 final
+                         int y A_UNUSED) const restrict2 override final
         { }
 
         void calcTileCollection(ImageCollection *restrict const
                                 vertCol A_UNUSED,
                                 const Image *restrict const image A_UNUSED,
                                 int x A_UNUSED,
-                                int y A_UNUSED) restrict2 final
+                                int y A_UNUSED) restrict2 override final
         { }
 
         void drawTileVertexes(const ImageVertexes *restrict const
-                              vert A_UNUSED) restrict2 final
+                              vert A_UNUSED) restrict2 override final
         { }
 
         void drawTileCollection(const ImageCollection *restrict const
                                 vertCol A_UNUSED)
-                                restrict2 final A_NONNULL(2)
+                                restrict2 override final A_NONNULL(2)
         { }
 
-        void updateScreen() final
+        void updateScreen() override final
         { }
 
         void drawNet(const int x1 A_UNUSED,
@@ -142,14 +142,14 @@ class SurfaceGraphics final : public Graphics
                      const int x2 A_UNUSED,
                      const int y2 A_UNUSED,
                      const int width A_UNUSED,
-                     const int height A_UNUSED) restrict2 final
+                     const int height A_UNUSED) restrict2 override final
         { }
 
         void calcWindow(ImageCollection *restrict const vertCol A_UNUSED,
                         const int x A_UNUSED, const int y A_UNUSED,
                         const int w A_UNUSED, const int h A_UNUSED,
                         const ImageRect &restrict imgRect A_UNUSED)
-                        restrict2 final A_NONNULL(2)
+                        restrict2 override final A_NONNULL(2)
         { }
 
         void setBlitMode(const BlitModeT mode) restrict2 noexcept
@@ -159,19 +159,19 @@ class SurfaceGraphics final : public Graphics
         { return mBlitMode; }
 
         void fillRectangle(const Rect &restrict rect A_UNUSED)
-                           restrict2 final
+                           restrict2 override final
         { }
 
         void drawRectangle(const Rect &restrict rect A_UNUSED)
-                           restrict2 final
+                           restrict2 override final
         { }
 
-        void drawPoint(int x A_UNUSED, int y A_UNUSED) restrict2 final
+        void drawPoint(int x A_UNUSED, int y A_UNUSED) restrict2 override final
         { }
 
         void drawLine(int x1 A_UNUSED, int y1 A_UNUSED,
                       int x2 A_UNUSED, int y2 A_UNUSED)
-                      restrict2 final
+                      restrict2 override final
         { }
 
         bool setVideoMode(const int w A_UNUSED, const int h A_UNUSED,
@@ -179,26 +179,26 @@ class SurfaceGraphics final : public Graphics
                           const int bpp A_UNUSED,
                           const bool fs A_UNUSED, const bool hwaccel A_UNUSED,
                           const bool resize A_UNUSED,
-                          const bool noFrame A_UNUSED) restrict2 final
+                          const bool noFrame A_UNUSED) restrict2 override final
         { return false; }
 
         void drawImage(const Image *restrict const image,
-                       int dstX, int dstY) restrict2 final;
+                       int dstX, int dstY) restrict2 override final;
 
         void copyImage(const Image *restrict const image,
-                       int dstX, int dstY) restrict2 final;
+                       int dstX, int dstY) restrict2 override final;
 
         void drawImageCached(const Image *restrict const image,
-                             int x, int y) restrict2 final;
+                             int x, int y) restrict2 override final;
 
         void drawPatternCached(const Image *restrict const image A_UNUSED,
                                const int x A_UNUSED,
                                const int y A_UNUSED,
                                const int w A_UNUSED,
-                               const int h A_UNUSED) restrict2 final
+                               const int h A_UNUSED) restrict2 override final
         { }
 
-        void completeCache() restrict2 final;
+        void completeCache() restrict2 override final;
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1
@@ -207,7 +207,7 @@ class SurfaceGraphics final : public Graphics
         void drawImageRect(const int x A_UNUSED, const int y A_UNUSED,
                            const int w A_UNUSED, const int h A_UNUSED,
                            const ImageRect &restrict imgRect A_UNUSED)
-                           restrict2 final
+                           restrict2 override final
         { }
 
     protected:

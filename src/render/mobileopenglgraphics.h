@@ -55,7 +55,7 @@ class MobileOpenGLGraphics final : public Graphics
 
         ~MobileOpenGLGraphics();
 
-        void postInit() restrict2 final;
+        void postInit() restrict2 override final;
 
         inline void drawTriangleArrayfs(const GLshort *restrict const
                                         shortVertArray,

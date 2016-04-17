@@ -48,7 +48,7 @@ class GuildMember final : public Avatar
         void setPos(const int pos)
         { mPos = pos; }
 
-        std::string getAdditionString() const final A_WARN_UNUSED;
+        std::string getAdditionString() const override final A_WARN_UNUSED;
 
     protected:
         friend class Guild;
@@ -150,10 +150,10 @@ class Guild final : public AvatarListModel
          * Get size of members list.
          * @return Returns the number of members in the guild.
          */
-        int getNumberOfElements() final A_WARN_UNUSED
+        int getNumberOfElements() override final A_WARN_UNUSED
         { return CAST_S32(mMembers.size()); }
 
-        Avatar *getAvatarAt(const int i) final A_WARN_UNUSED;
+        Avatar *getAvatarAt(const int i) override final A_WARN_UNUSED;
 
         /**
          * Get whether user can invite users to this guild.

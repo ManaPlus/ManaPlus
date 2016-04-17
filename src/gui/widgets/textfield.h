@@ -119,9 +119,9 @@ class TextField notfinal : public Widget,
         /**
          * Draws the background and border.
          */
-        void drawFrame(Graphics *const graphics) final A_NONNULL(2);
+        void drawFrame(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *const graphics) final
+        void safeDrawFrame(Graphics *const graphics) override final
                            A_NONNULL(2);
 
         /**
@@ -170,16 +170,16 @@ class TextField notfinal : public Widget,
 
         void setCaretPosition(unsigned int position);
 
-        void mousePressed(MouseEvent &event) final;
+        void mousePressed(MouseEvent &event) override final;
 
         void handlePaste();
 
         void handleCopy() const;
 
 #ifdef ANDROID
-        void focusGained(const Event &event) final;
+        void focusGained(const Event &event) override final;
 #else
-        void focusGained(const Event &event) final A_CONST;
+        void focusGained(const Event &event) override final A_CONST;
 #endif
 
         void focusLost(const Event &event) override A_CONST;
@@ -231,13 +231,13 @@ class TextField notfinal : public Widget,
         unsigned int getCaretPosition() const
         { return mCaretPosition; }
 
-        void mouseDragged(MouseEvent& event) final;
+        void mouseDragged(MouseEvent& event) override final;
 
-        void widgetHidden(const Event &event) final;
+        void widgetHidden(const Event &event) override final;
 
-        void setParent(Widget *widget) final;
+        void setParent(Widget *widget) override final;
 
-        void setWindow(Widget *const widget) final;
+        void setWindow(Widget *const widget) override final;
 
     protected:
         void drawCaret(Graphics* graphics, int x) A_NONNULL(2);

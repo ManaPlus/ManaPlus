@@ -49,7 +49,7 @@ class CharDeleteConfirm final : public ConfirmDialog
 
         A_DELETE_COPY(CharDeleteConfirm)
 
-        void action(const ActionEvent &event) final
+        void action(const ActionEvent &event) override final
         {
             if (event.getId() == "yes" && mMaster)
                 mMaster->askPasswordForDeletion(mIndex);

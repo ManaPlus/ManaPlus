@@ -37,7 +37,7 @@ class Setup_Visual final : public SetupTabScroll
 
         ~Setup_Visual();
 
-        void apply() final;
+        void apply() override final;
 
     private:
         NamesModel *mSpeachList;

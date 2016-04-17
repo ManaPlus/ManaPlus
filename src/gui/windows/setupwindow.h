@@ -48,9 +48,9 @@ class SetupWindow final : public Window,
 
         ~SetupWindow();
 
-        void postInit() final;
+        void postInit() override final;
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void setInGame(const bool inGame);
 
@@ -71,9 +71,9 @@ class SetupWindow final : public Window,
 
         void activateTab(const std::string &name);
 
-        void setVisible(Visible visible) final;
+        void setVisible(Visible visible) override final;
 
-        void widgetResized(const Event &event) final;
+        void widgetResized(const Event &event) override final;
 
     private:
         void unloadAdditionalTabs();

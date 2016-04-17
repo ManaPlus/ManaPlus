@@ -41,7 +41,7 @@ class GuiTableActionListener final : public ActionListener
 
         ~GuiTableActionListener();
 
-        void action(const ActionEvent& actionEvent) final;
+        void action(const ActionEvent& actionEvent) override final;
 
     protected:
         GuiTable *mTable;

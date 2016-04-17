@@ -41,11 +41,11 @@ class ProgressIndicator final : public Widget
 
         ~ProgressIndicator();
 
-        void logic() final;
+        void logic() override final;
 
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
     private:
         SimpleAnimation *mIndicator;

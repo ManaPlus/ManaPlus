@@ -41,25 +41,25 @@ class AdminHandler notfinal : public Net::AdminHandler
         virtual ~AdminHandler()
         { }
 
-        void kickName(const std::string &name) const final;
+        void kickName(const std::string &name) const override final;
 
-        void ban(const int playerId) const final A_CONST;
+        void ban(const int playerId) const override final A_CONST;
 
-        void banName(const std::string &name) const final;
+        void banName(const std::string &name) const override final;
 
-        void unban(const int playerId) const final A_CONST;
+        void unban(const int playerId) const override final A_CONST;
 
-        void unbanName(const std::string &name) const final;
+        void unbanName(const std::string &name) const override final;
 
-        void ipcheckName(const std::string &name) const final;
+        void ipcheckName(const std::string &name) const override final;
 
-        void slide(const int x, const int y) const final;
+        void slide(const int x, const int y) const override final;
 
         void createItems(const int id,
                          const ItemColor color,
-                         const int amount) const final;
+                         const int amount) const override final;
 
-        void spawn(const std::string &name) const final;
+        void spawn(const std::string &name) const override final;
 };
 
 }  // namespace Ea

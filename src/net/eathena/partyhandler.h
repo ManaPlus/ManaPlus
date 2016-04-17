@@ -36,28 +36,28 @@ class PartyHandler final : public Ea::PartyHandler
 
         ~PartyHandler();
 
-        void create(const std::string &name) const final;
+        void create(const std::string &name) const override final;
 
-        void invite(const std::string &name) const final;
+        void invite(const std::string &name) const override final;
 
         void inviteResponse(const int partyId,
-                            const bool accept) const final;
+                            const bool accept) const override final;
 
-        void leave() const final;
+        void leave() const override final;
 
-        void kick(const Being *const being) const final;
+        void kick(const Being *const being) const override final;
 
-        void kick(const std::string &name) const final;
+        void kick(const std::string &name) const override final;
 
-        void chat(const std::string &text) const final;
+        void chat(const std::string &text) const override final;
 
-        void setShareExperience(const PartyShareT share) const final;
+        void setShareExperience(const PartyShareT share) const override final;
 
-        void setShareItems(const PartyShareT share) const final;
+        void setShareItems(const PartyShareT share) const override final;
 
-        void changeLeader(const std::string &name) const final;
+        void changeLeader(const std::string &name) const override final;
 
-        void allowInvite(const bool allow) const final;
+        void allowInvite(const bool allow) const override final;
 };
 
 }  // namespace EAthena

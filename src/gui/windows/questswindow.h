@@ -57,7 +57,7 @@ class QuestsWindow final : public Window,
 
         ~QuestsWindow();
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void updateQuest(const int var, const int val);
 

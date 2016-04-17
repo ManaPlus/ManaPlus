@@ -30,7 +30,7 @@
 class UploadListener final : public ActionListener
 {
     public:
-        void action(const ActionEvent &event A_UNUSED) final;
+        void action(const ActionEvent &event A_UNUSED) override final;
 };
 
 extern UploadListener uploadListener;

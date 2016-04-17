@@ -69,12 +69,12 @@ class SocialGuildTab2 final : public SocialTab,
             delete2(mScroll)
         }
 
-        void action(const ActionEvent &event A_UNUSED) final
+        void action(const ActionEvent &event A_UNUSED) override final
         {
         }
 
         void buildCounter(const int online0 A_UNUSED,
-                          const int total0 A_UNUSED) final
+                          const int total0 A_UNUSED) override final
         {
             if (!localPlayer)
                 return;

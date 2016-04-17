@@ -109,9 +109,9 @@ class CheckBox final : public Widget,
         /**
          * Draws the caption, then calls drawBox to draw the check box.
          */
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         /**
          * Update the alpha value to the checkbox components.
@@ -126,14 +126,14 @@ class CheckBox final : public Widget,
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(MouseEvent& event) final;
+        void mouseEntered(MouseEvent& event) override final;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(MouseEvent& event) final;
+        void mouseExited(MouseEvent& event) override final;
 
-        void keyPressed(KeyEvent& event) final;
+        void keyPressed(KeyEvent& event) override final;
 
         void adjustSize();
 
@@ -174,15 +174,15 @@ class CheckBox final : public Widget,
          */
         void setCaption(const std::string& caption);
 
-        void mouseClicked(MouseEvent& event) final;
+        void mouseClicked(MouseEvent& event) override final;
 
-        void mouseDragged(MouseEvent& event) final;
+        void mouseDragged(MouseEvent& event) override final;
 
-        void setParent(Widget *widget) final;
+        void setParent(Widget *widget) override final;
 
-        void widgetHidden(const Event &event) final;
+        void widgetHidden(const Event &event) override final;
 
-        void setWindow(Widget *const widget) final;
+        void setWindow(Widget *const widget) override final;
 
     private:
         void toggleSelected();

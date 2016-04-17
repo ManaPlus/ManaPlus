@@ -54,12 +54,12 @@ class TextDialog final : public Window,
 
         ~TextDialog();
 
-        void postInit() final;
+        void postInit() override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Get the text in the textfield
@@ -71,7 +71,7 @@ class TextDialog final : public Window,
         static bool isActive() A_WARN_UNUSED
         { return instances; }
 
-        void close() final;
+        void close() override final;
 
     private:
         static int instances;

@@ -34,11 +34,11 @@ class Setup_Mods final : public SetupTabScroll
 
         ~Setup_Mods();
 
-        void apply() final;
+        void apply() override final;
 
-        void externalUpdated() final;
+        void externalUpdated() override final;
 
-        void externalUnloaded() final;
+        void externalUnloaded() override final;
 
         void loadMods();
 

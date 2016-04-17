@@ -72,23 +72,23 @@ class GeneralHandler final : public Net::GeneralHandler
 
         ~GeneralHandler();
 
-        void load() const final;
+        void load() const override final;
 
-        void reload() const final;
+        void reload() const override final;
 
-        void unload() const final;
+        void unload() const override final;
 
-        void flushNetwork() const final;
+        void flushNetwork() const override final;
 
-        void flushSend() const final;
+        void flushSend() const override final;
 
-        void clearHandlers() const final;
+        void clearHandlers() const override final;
 
-        void reloadPartially() const final;
+        void reloadPartially() const override final;
 
-        void gameStarted() const final;
+        void gameStarted() const override final;
 
-        void gameEnded() const final;
+        void gameEnded() const override final;
 
     protected:
         AdminHandler *mAdminHandler;

@@ -132,23 +132,23 @@ class TradeWindow final : public Window,
          * Updates the labels and makes sure only one item is selected in
          * either my inventory or partner inventory.
          */
-        void valueChanged(const SelectionEvent &event) final;
+        void valueChanged(const SelectionEvent &event) override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Closes the Trade Window, as well as telling the server that the
          * window has been closed.
          */
-        void close() final;
+        void close() override final;
 
         /**
          * Clear auto trade items.
          */
-        void clear() final;
+        void clear() override final;
 
         /**
          * Add item what will be added to trade.

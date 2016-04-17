@@ -41,18 +41,18 @@ class EmulateGuildTab final : public ChatTab,
         ~EmulateGuildTab();
 
         bool handleCommand(const std::string &restrict type,
-                           const std::string &restrict args) final;
+                           const std::string &restrict args) override final;
 
-        void playNewMessageSound() const final;
+        void playNewMessageSound() const override final;
 
-        void optionChanged(const std::string &value) final;
+        void optionChanged(const std::string &value) override final;
 
     protected:
-        void handleInput(const std::string &msg) final;
+        void handleInput(const std::string &msg) override final;
 
-        void getAutoCompleteList(StringVect &names) const final;
+        void getAutoCompleteList(StringVect &names) const override final;
 
-        void getAutoCompleteCommands(StringVect &names) const final;
+        void getAutoCompleteCommands(StringVect &names) const override final;
 };
 
 #endif  // TMWA_SUPPORT

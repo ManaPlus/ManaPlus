@@ -52,9 +52,9 @@ class SetupActionDropDown final : public SetupItem
 
         void createControls();
 
-        void fromWidget() final;
+        void fromWidget() override final;
 
-        void toWidget() final;
+        void toWidget() override final;
 
     protected:
         HorizontContainer *mHorizont;

@@ -34,7 +34,7 @@ class TextSkillListener final : public ActionListener
 
         A_DELETE_COPY(TextSkillListener)
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void setSkill(const int skillId,
                       const int x,

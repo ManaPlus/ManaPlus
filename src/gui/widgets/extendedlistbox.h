@@ -42,13 +42,13 @@ class ExtendedListBox final : public ListBox
         /**
          * Draws the list box.
          */
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         void adjustSize() override;
 
-        int getSelectionByMouse(const int y) const final;
+        int getSelectionByMouse(const int y) const override final;
 
     protected:
         int mImagePadding;

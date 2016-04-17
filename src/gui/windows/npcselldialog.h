@@ -44,10 +44,10 @@ class NpcSellDialog final : public SellDialog
 
         A_DELETE_COPY(NpcSellDialog)
 
-        void close() final;
+        void close() override final;
 
     protected:
-        void sellAction(const ActionEvent &event) final;
+        void sellAction(const ActionEvent &event) override final;
 
         void sellOneItem();
 

@@ -36,53 +36,53 @@ class PlayerHandler final : public Ea::PlayerHandler
         A_DELETE_COPY(PlayerHandler)
 
         void attack(const BeingId id,
-                    const Keep keep) const final;
-        void stopAttack() const final;
-        void emote(const uint8_t emoteId) const final;
+                    const Keep keep) const override final;
+        void stopAttack() const override final;
+        void emote(const uint8_t emoteId) const override final;
 
         void increaseAttribute(const AttributesT attr,
-                               const int amount) const final;
-        void increaseSkill(const uint16_t skillId) const final;
+                               const int amount) const override final;
+        void increaseSkill(const uint16_t skillId) const override final;
 
-        void pickUp(const FloorItem *const floorItem) const final;
-        void setDirection(const unsigned char direction) const final;
+        void pickUp(const FloorItem *const floorItem) const override final;
+        void setDirection(const unsigned char direction) const override final;
         void setDestination(const int x, const int y,
-                            const int direction) const final;
+                            const int direction) const override final;
         void changeAction(const BeingActionT &action)
-                          const final;
-        void requestOnlineList() const final A_CONST;
-        void updateStatus(const uint8_t status) const final A_CONST;
+                          const override final;
+        void requestOnlineList() const override final A_CONST;
+        void updateStatus(const uint8_t status) const override final A_CONST;
 
-        void respawn() const final;
+        void respawn() const override final;
 
         void setShortcut(const int idx,
                          const uint8_t type,
                          const int id,
-                         const int level) const final A_CONST;
+                         const int level) const override final A_CONST;
 
-        void shortcutShiftRow(const int row) const final;
+        void shortcutShiftRow(const int row) const override final;
 
-        void removeOption() const final A_CONST;
+        void removeOption() const override final A_CONST;
 
-        void changeCart(const int type) const final A_CONST;
+        void changeCart(const int type) const override final A_CONST;
 
-        void setMemo() const final A_CONST;
+        void setMemo() const override final A_CONST;
 
-        void doriDori() const final A_CONST;
+        void doriDori() const override final A_CONST;
 
-        void explosionSpirits() const final A_CONST;
+        void explosionSpirits() const override final A_CONST;
 
-        void requestPvpInfo() const final A_CONST;
+        void requestPvpInfo() const override final A_CONST;
 
-        void revive() const final A_CONST;
+        void revive() const override final A_CONST;
 
-        void setViewEquipment(const bool allow) const final A_CONST;
+        void setViewEquipment(const bool allow) const override final A_CONST;
 
         void setStat(Net::MessageIn &msg,
                      const int type,
                      const int base,
                      const int mod,
-                     const Notify notify) const final;
+                     const Notify notify) const override final;
 };
 
 }  // namespace TmwAthena

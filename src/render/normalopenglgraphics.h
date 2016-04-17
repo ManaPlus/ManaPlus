@@ -76,7 +76,7 @@ class NormalOpenGLGraphics final : public Graphics
 
         inline void drawLineArrayf(const int size) restrict2 A_INLINE;
 
-        void testDraw() restrict2 final;
+        void testDraw() restrict2 override final;
 
         #include "render/graphicsdef.hpp"
 

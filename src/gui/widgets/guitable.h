@@ -91,7 +91,7 @@ class GuiTable final : public Widget,
         void setWrappingEnabled(bool wrappingEnabled)
         { mWrappingEnabled = wrappingEnabled; }
 
-        Rect getChildrenArea() final A_WARN_UNUSED;
+        Rect getChildrenArea() override final A_WARN_UNUSED;
 
         /**
          * Toggle whether to use linewise selection mode, in which the table
@@ -110,20 +110,20 @@ class GuiTable final : public Widget,
         { mLinewiseMode = linewise; }
 
         // Inherited from Widget
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
-        Widget *getWidgetAt(int x, int y) final A_WARN_UNUSED;
+        Widget *getWidgetAt(int x, int y) override final A_WARN_UNUSED;
 
-        void moveToTop(Widget *const widget) final;
+        void moveToTop(Widget *const widget) override final;
 
-        void moveToBottom(Widget *const widget) final;
+        void moveToBottom(Widget *const widget) override final;
 
-        void setFocusHandler(FocusHandler *const focusHandler) final;
+        void setFocusHandler(FocusHandler *const focusHandler) override final;
 
         // Inherited from KeyListener
-        void keyPressed(KeyEvent& event) final;
+        void keyPressed(KeyEvent& event) override final;
 
         /**
          * Sets the table to be opaque, that is sets the table
@@ -144,16 +144,16 @@ class GuiTable final : public Widget,
         { return mOpaque; }
 
         // Inherited from MouseListener
-        void mousePressed(MouseEvent& event) final;
+        void mousePressed(MouseEvent& event) override final;
 
-        void mouseWheelMovedUp(MouseEvent& event) final;
+        void mouseWheelMovedUp(MouseEvent& event) override final;
 
-        void mouseWheelMovedDown(MouseEvent& event) final;
+        void mouseWheelMovedDown(MouseEvent& event) override final;
 
-        void mouseDragged(MouseEvent& event) final;
+        void mouseDragged(MouseEvent& event) override final;
 
         // Constraints inherited from TableModelListener
-        void modelUpdated(const bool completed) final;
+        void modelUpdated(const bool completed) override final;
 
         void requestFocus() override;
 

@@ -51,11 +51,11 @@ class Setup_Input final : public SetupTab
          */
         ~Setup_Input();
 
-        void apply() final;
+        void apply() override final;
 
-        void cancel() final;
+        void cancel() override final;
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Get an update on the assigned key.

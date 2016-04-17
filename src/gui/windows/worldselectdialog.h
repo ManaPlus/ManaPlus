@@ -53,7 +53,7 @@ class WorldSelectDialog final : public Window,
 
         A_DELETE_COPY(WorldSelectDialog)
 
-        void postInit() final;
+        void postInit() override final;
 
         /**
          * Destructor.
@@ -63,9 +63,9 @@ class WorldSelectDialog final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
-        void keyPressed(KeyEvent &event) final;
+        void keyPressed(KeyEvent &event) override final;
 
     private:
         WorldListModel *mWorldListModel A_NONNULLPOINTER;

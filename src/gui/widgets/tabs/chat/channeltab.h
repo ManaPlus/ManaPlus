@@ -39,13 +39,13 @@ class ChannelTab final : public ChatTab
         ~ChannelTab();
 
     protected:
-        void handleInput(const std::string &msg) final;
+        void handleInput(const std::string &msg) override final;
 
         bool handleCommand(const std::string &restrict type,
-                           const std::string &restrict args) final;
+                           const std::string &restrict args) override final;
 
         void getAutoCompleteCommands(StringVect& commands)
-                                     const final;
+                                     const override final;
 };
 
 #endif  // GUI_WIDGETS_TABS_CHAT_CHANNELTAB_H

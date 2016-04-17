@@ -37,7 +37,7 @@ class ItemLinkHandler final : public LinkHandler
         ~ItemLinkHandler();
 
         void handleLink(const std::string &link,
-                        MouseEvent *event) final;
+                        MouseEvent *event) override final;
 
         void setAllowCommands(const bool b)
         { mAllowCommands = b; }

@@ -40,7 +40,7 @@ extern ConfirmDialog *confirmDlg;
 struct RequestTradeListener final : public ActionListener
 {
     public:
-        void action(const ActionEvent &event) final
+        void action(const ActionEvent &event) override final
         {
             confirmDlg = nullptr;
             const std::string &eventId = event.getId();

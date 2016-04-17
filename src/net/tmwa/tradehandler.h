@@ -35,20 +35,20 @@ class TradeHandler final : public Ea::TradeHandler
 
         A_DELETE_COPY(TradeHandler)
 
-        void request(const Being *const being) const final;
+        void request(const Being *const being) const override final;
 
-        void respond(const bool accept) const final;
+        void respond(const bool accept) const override final;
 
         void addItem(const Item *const item,
-                     const int amount) const final;
+                     const int amount) const override final;
 
-        void setMoney(const int amount) const final;
+        void setMoney(const int amount) const override final;
 
-        void confirm() const final;
+        void confirm() const override final;
 
-        void finish() const final;
+        void finish() const override final;
 
-        void cancel() const final;
+        void cancel() const override final;
 };
 
 }  // namespace TmwAthena

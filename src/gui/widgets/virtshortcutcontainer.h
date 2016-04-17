@@ -51,32 +51,32 @@ class VirtShortcutContainer final : public ShortcutContainer
         /**
          * Draws the items.
          */
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         /**
          * Handles mouse when dragged.
          */
-        void mouseDragged(MouseEvent &event) final;
+        void mouseDragged(MouseEvent &event) override final;
 
         /**
          * Handles mouse when pressed.
          */
-        void mousePressed(MouseEvent &event) final;
+        void mousePressed(MouseEvent &event) override final;
 
         /**
          * Handles mouse release.
          */
-        void mouseReleased(MouseEvent &event) final;
+        void mouseReleased(MouseEvent &event) override final;
 
-        void widgetHidden(const Event &event) final;
+        void widgetHidden(const Event &event) override final;
 
-        void mouseExited(MouseEvent &event) final;
+        void mouseExited(MouseEvent &event) override final;
 
-        void mouseMoved(MouseEvent &event) final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void setWidget2(const Widget2 *const widget) final;
+        void setWidget2(const Widget2 *const widget) override final;
 
     private:
         bool mItemClicked;

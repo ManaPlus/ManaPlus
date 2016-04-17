@@ -58,7 +58,7 @@ class ChangeEmailDialog final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * This is used to pass the pointer to where the new email should be

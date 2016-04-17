@@ -49,17 +49,17 @@ class SliderList final : public Container,
 
         void updateAlpha();
 
-        void mouseWheelMovedUp(MouseEvent& event) final;
+        void mouseWheelMovedUp(MouseEvent& event) override final;
 
-        void mouseWheelMovedDown(MouseEvent& event) final;
+        void mouseWheelMovedDown(MouseEvent& event) override final;
 
         void resize();
 
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void setSelectedString(const std::string &str);
 

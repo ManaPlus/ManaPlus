@@ -55,14 +55,14 @@ class QuitDialog final : public Window,
          */
         ~QuitDialog();
 
-        void postInit() final;
+        void postInit() override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
-        void keyPressed(KeyEvent &event) final;
+        void keyPressed(KeyEvent &event) override final;
 
     private:
         void placeOption(ContainerPlacer &placer,

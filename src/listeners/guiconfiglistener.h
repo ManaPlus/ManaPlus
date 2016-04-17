@@ -45,7 +45,7 @@ class GuiConfigListener final : public ConfigListener
             CHECKLISTENERS
         }
 
-        void optionChanged(const std::string &name) final
+        void optionChanged(const std::string &name) override final
         {
             if (!mGui)
                 return;

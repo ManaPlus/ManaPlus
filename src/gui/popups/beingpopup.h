@@ -50,7 +50,7 @@ class BeingPopup final : public Popup
          */
         void show(const int x, const int y, Being *const b);
 
-        void postInit() final;
+        void postInit() override final;
 
 #ifdef USE_PROFILER
         void logic();

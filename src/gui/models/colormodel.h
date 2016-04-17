@@ -41,9 +41,9 @@ class ColorModel final : public ListModel
 
         virtual ~ColorModel();
 
-        int getNumberOfElements() final A_WARN_UNUSED;
+        int getNumberOfElements() override final A_WARN_UNUSED;
 
-        std::string getElementAt(int i) final A_WARN_UNUSED;
+        std::string getElementAt(int i) override final A_WARN_UNUSED;
 
         const ColorPair *getColorAt(const int i)
                                     const RETURNS_NONNULL A_WARN_UNUSED;

@@ -121,10 +121,10 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         void setStatusEffectOpiton0(const uint32_t option);
 
-        void setAlpha(const float alpha) final
+        void setAlpha(const float alpha) override final
         { CompoundSprite::setAlpha(alpha); }
 
-        float getAlpha() const final A_WARN_UNUSED
+        float getAlpha() const override final A_WARN_UNUSED
         { return CompoundSprite::getAlpha(); }
 
         int getWidth() const override A_WARN_UNUSED

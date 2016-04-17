@@ -54,7 +54,7 @@ class ItemPopup final : public Popup
          */
         ~ItemPopup();
 
-        void postInit() final;
+        void postInit() override final;
 
         /**
          * Sets the info to be displayed given a particular item.
@@ -68,7 +68,7 @@ class ItemPopup final : public Popup
         void setItem(const Item *const item,
                      const bool showImage);
 
-        void mouseMoved(MouseEvent &event) final;
+        void mouseMoved(MouseEvent &event) override final;
 
         void resetPopup();
 

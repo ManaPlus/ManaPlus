@@ -38,13 +38,13 @@ class PlayerHandler notfinal : public Net::PlayerHandler
         A_DELETE_COPY(PlayerHandler)
 
         void ignorePlayer(const std::string &player,
-                          const bool ignore) const final A_CONST;
+                          const bool ignore) const override final A_CONST;
 
-        void ignoreAll(const bool ignore) const final A_CONST;
+        void ignoreAll(const bool ignore) const override final A_CONST;
 
-        bool canUseMagic() const final;
+        bool canUseMagic() const override final;
 
-        int getDefaultWalkSpeed() const final A_WARN_UNUSED;
+        int getDefaultWalkSpeed() const override final A_WARN_UNUSED;
 };
 
 }  // namespace Ea

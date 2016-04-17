@@ -76,16 +76,16 @@ class PlayerBox final : public Widget,
         /**
          * Draws the scroll area.
          */
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(Graphics *const graphics) final A_NONNULL(2);
+        void drawFrame(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *const graphics) final
+        void safeDrawFrame(Graphics *const graphics) override final
                            A_NONNULL(2);
 
         Being *getBeing() A_WARN_UNUSED
@@ -94,7 +94,7 @@ class PlayerBox final : public Widget,
         void setSelected(bool b)
         { mSelected = b; }
 
-        void mouseReleased(MouseEvent& event) final;
+        void mouseReleased(MouseEvent& event) override final;
 
     private:
         Being *mBeing;

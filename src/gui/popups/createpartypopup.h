@@ -53,7 +53,7 @@ class CreatePartyPopup final : public Popup,
             mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
         }
 
-        void postInit() final
+        void postInit() override final
         {
             Popup::postInit();
             add(mBrowserBox);
@@ -64,7 +64,7 @@ class CreatePartyPopup final : public Popup,
         A_DELETE_COPY(CreatePartyPopup)
 
         void handleLink(const std::string &link,
-                        MouseEvent *event A_UNUSED) final
+                        MouseEvent *event A_UNUSED) override final
         {
             if (link == "guild" && socialWindow)
             {

@@ -42,11 +42,11 @@ class Setup_Theme final : public SetupTab
 
         ~Setup_Theme();
 
-        void apply() final;
+        void apply() override final;
 
-        void cancel() final;
+        void cancel() override final;
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void updateInfo();
 

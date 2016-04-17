@@ -36,61 +36,61 @@ class GuildHandler final : public Ea::GuildHandler
 
         ~GuildHandler();
 
-        void create(const std::string &name) const final;
+        void create(const std::string &name) const override final;
 
-        void invite(const std::string &name) const final;
+        void invite(const std::string &name) const override final;
 
-        void invite(const Being *const being) const final;
+        void invite(const Being *const being) const override final;
 
         void inviteResponse(const int guildId,
-                            const bool response) const final;
+                            const bool response) const override final;
 
-        void leave(const int guildId) const final;
+        void leave(const int guildId) const override final;
 
         void kick(const GuildMember *restrict const member,
-                  const std::string &restrict reason) const final;
+                  const std::string &restrict reason) const override final;
 
-        void chat(const std::string &text) const final;
+        void chat(const std::string &text) const override final;
 
-        void memberList() const final;
+        void memberList() const override final;
 
-        void info() const final;
+        void info() const override final;
 
         void changeMemberPostion(const GuildMember *const member,
-                                 const int level) const final;
+                                 const int level) const override final;
 
         void changeNotice(const int guildId,
                           const std::string &restrict msg1,
                           const std::string &restrict msg2)
-                          const final;
+                          const override final;
 
-        void checkMaster() const final;
+        void checkMaster() const override final;
 
-        void requestAlliance(const Being *const being) const final
+        void requestAlliance(const Being *const being) const override final
                              A_CONST;
 
         void requestAllianceResponse(const int beingId,
-                                     const bool accept) const final
+                                     const bool accept) const override final
                                      A_CONST;
 
         void endAlliance(const int guildId,
-                         const int flag) const final A_CONST;
+                         const int flag) const override final A_CONST;
 
         void changePostionInfo(const int posId,
                                const int mode,
                                const int ranking,
                                const int payRate,
-                               const std::string &name) const final
+                               const std::string &name) const override final
                                A_CONST;
 
-        void requestOpposition(const Being *const being) const final
+        void requestOpposition(const Being *const being) const override final
                                A_CONST;
 
-        void breakGuild(const std::string &name) const final A_CONST;
+        void breakGuild(const std::string &name) const override final A_CONST;
 
-        void changeEmblem(std::string emblem) const final A_CONST;
+        void changeEmblem(std::string emblem) const override final A_CONST;
 
-        void requestEmblem(const int guildId) const final A_CONST;
+        void requestEmblem(const int guildId) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

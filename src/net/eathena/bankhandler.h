@@ -34,15 +34,15 @@ class BankHandler final : public Net::BankHandler
 
         A_DELETE_COPY(BankHandler)
 
-        void deposit(const int money) const final;
+        void deposit(const int money) const override final;
 
-        void withdraw(const int money) const final;
+        void withdraw(const int money) const override final;
 
-        void check() const final;
+        void check() const override final;
 
-        void open() const final;
+        void open() const override final;
 
-        void close() const final;
+        void close() const override final;
 };
 
 }  // namespace EAthena

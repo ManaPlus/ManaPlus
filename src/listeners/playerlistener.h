@@ -36,7 +36,7 @@ class PlayerListener final : public ActionListener
 
         A_DELETE_COPY(PlayerListener)
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void setNick(const std::string &name)
         { mNick = name; }

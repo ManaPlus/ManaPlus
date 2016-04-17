@@ -50,7 +50,7 @@ class BuyingStoreSellDialog final : public SellDialog
         A_DELETE_COPY(BuyingStoreSellDialog)
 
     protected:
-        void sellAction(const ActionEvent &event) final;
+        void sellAction(const ActionEvent &event) override final;
 
         BeingId mAccountId;
         int mStoreId;

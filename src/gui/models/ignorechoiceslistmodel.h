@@ -37,13 +37,13 @@ class IgnoreChoicesListModel final : public ListModel
         ~IgnoreChoicesListModel()
         { }
 
-        int getNumberOfElements() final
+        int getNumberOfElements() override final
         {
             return CAST_S32(player_relations.
                 getPlayerIgnoreStrategies()->size());
         }
 
-        std::string getElementAt(int i) final
+        std::string getElementAt(int i) override final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";

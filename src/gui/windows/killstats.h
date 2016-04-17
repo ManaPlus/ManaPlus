@@ -52,7 +52,7 @@ class KillStats final : public Window,
         /**
          * Stuff.
          */
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void gainXp(int Xp);
 
@@ -70,7 +70,7 @@ class KillStats final : public Window,
 
         void attributeChanged(const AttributesT id,
                               const int oldVal,
-                              const int newVal) final;
+                              const int newVal) override final;
 
     private:
         int mKillTimer;  /**< Timer for kill stats. */

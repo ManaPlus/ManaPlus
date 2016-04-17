@@ -72,7 +72,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         A_DELETE_COPY(PopupMenu)
 
-        void postInit() final;
+        void postInit() override final;
 
         /**
          * Shows the being related popup menu at the specified mouse coords.
@@ -171,9 +171,9 @@ class PopupMenu final : public Popup, public LinkHandler
          * Handles link action.
          */
         void handleLink(const std::string &link,
-                        MouseEvent *event A_UNUSED) final;
+                        MouseEvent *event A_UNUSED) override final;
 
-        void clear() final;
+        void clear() override final;
 
         void moveUp();
 

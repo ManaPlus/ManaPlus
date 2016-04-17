@@ -73,7 +73,7 @@ class IntTextField final : public TextField
         /**
          * Responds to key presses.
          */
-        void keyPressed(KeyEvent &event) final;
+        void keyPressed(KeyEvent &event) override final;
 
     private:
         int mMin;            /**< Minimum value */

@@ -37,17 +37,17 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         virtual ~PartyHandler();
 
-        void join(const int partyId) const final A_CONST;
+        void join(const int partyId) const override final A_CONST;
 
-        PartyShareT getShareExperience() const final A_WARN_UNUSED;
+        PartyShareT getShareExperience() const override final A_WARN_UNUSED;
 
-        PartyShareT getShareItems() const final A_WARN_UNUSED;
+        PartyShareT getShareItems() const override final A_WARN_UNUSED;
 
         static void reload();
 
-        void clear() const final;
+        void clear() const override final;
 
-        ChatTab *getTab() const final;
+        ChatTab *getTab() const override final;
 };
 
 extern Party *taParty;

@@ -36,7 +36,7 @@ class CharRenameListener final : public ActionListener
 
         A_DELETE_COPY(CharRenameListener)
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void setId(const BeingId id)
         { mId = id; }

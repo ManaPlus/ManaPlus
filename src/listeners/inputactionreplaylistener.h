@@ -36,7 +36,7 @@ class InputActionReplayListener final : public ActionListener
 
         A_DELETE_COPY(InputActionReplayListener)
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void setDialog(EditDialog *const dialog)
         { mDialog = dialog; }

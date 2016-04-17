@@ -54,9 +54,9 @@ class ParticleList final : public ParticleContainer
          */
         void removeLocally(const Particle *const particle);
 
-        void clearLocally() final;
+        void clearLocally() override final;
 
-        void moveTo(const float x, const float y) final;
+        void moveTo(const float x, const float y) override final;
 
     protected:
         std::list<Particle *> mElements;    /**< Contained particle effects */

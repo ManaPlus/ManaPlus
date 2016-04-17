@@ -50,37 +50,37 @@ class EmoteShortcutContainer final : public ShortcutContainer
          * Draws the items.
          */
         void draw(Graphics *restrict graphics)
-                  restrict2 final A_NONNULL(2);
+                  restrict2 override final A_NONNULL(2);
 
         void safeDraw(Graphics *restrict graphics)
-                      restrict2 final A_NONNULL(2);
+                      restrict2 override final A_NONNULL(2);
 
         /**
          * Handles mouse when dragged.
          */
         void mouseDragged(MouseEvent &restrict event)
-                          restrict2 final A_CONST;
+                          restrict2 override final A_CONST;
 
         /**
          * Handles mouse when pressed.
          */
-        void mousePressed(MouseEvent &restrict event) restrict2 final;
+        void mousePressed(MouseEvent &restrict event) restrict2 override final;
 
         /**
          * Handles mouse release.
          */
         void mouseReleased(MouseEvent &restrict event)
-                           restrict2 final;
+                           restrict2 override final;
 
-        void mouseMoved(MouseEvent &restrict event) restrict2 final;
+        void mouseMoved(MouseEvent &restrict event) restrict2 override final;
 
-        void mouseExited(MouseEvent &restrict event) restrict2 final;
+        void mouseExited(MouseEvent &restrict event) restrict2 override final;
 
         void widgetHidden(const Event &restrict event)
-                          restrict2 final;
+                          restrict2 override final;
 
         void setWidget2(const Widget2 *restrict const widget)
-                        restrict2 final;
+                        restrict2 override final;
 
     private:
         std::vector<const EmoteSprite*> mEmoteImg;

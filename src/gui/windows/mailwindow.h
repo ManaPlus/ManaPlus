@@ -49,11 +49,11 @@ class MailWindow final : public Window,
 
         ~MailWindow();
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         void addMail(MailMessage *const message);
 
-        void clear() final;
+        void clear() override final;
 
         void showMessage(MailMessage *const mail);
 
@@ -63,7 +63,7 @@ class MailWindow final : public Window,
 
         void viewPrev(const int id);
 
-        void mouseClicked(MouseEvent &event) final;
+        void mouseClicked(MouseEvent &event) override final;
 
         void postConnection();
 

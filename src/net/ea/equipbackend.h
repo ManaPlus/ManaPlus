@@ -44,7 +44,7 @@ class EquipBackend final : public Equipment::Backend
 
         A_DELETE_COPY(EquipBackend)
 
-        Item *getEquipment(const int index) const final A_WARN_UNUSED
+        Item *getEquipment(const int index) const override final A_WARN_UNUSED
         {
             int invyIndex = mEquipment[index];
             if (invyIndex == -1)
@@ -57,7 +57,7 @@ class EquipBackend final : public Equipment::Backend
                 return nullptr;
         }
 
-        void clear() final
+        void clear() override final
         {
             Inventory *const inv = PlayerInfo::getInventory();
             if (!inv)

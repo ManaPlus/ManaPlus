@@ -158,7 +158,7 @@ class TouchManager final : public ConfigListener
 
         void unloadTouchItem(TouchItem *restrict *unloadItem) restrict2;
 
-        void optionChanged(const std::string &value) restrict2 final;
+        void optionChanged(const std::string &value) restrict2 override final;
 
         void loadPad() restrict2;
 

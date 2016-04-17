@@ -77,17 +77,17 @@ class ShopWindow final : public Window,
          */
         ~ShopWindow();
 
-        void postInit() final;
+        void postInit() override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         /**
          * Updates the labels according to the selected item.
          */
-        void valueChanged(const SelectionEvent &event) final;
+        void valueChanged(const SelectionEvent &event) override final;
 
         /**
          * Updates the state of buttons and labels.
@@ -97,7 +97,7 @@ class ShopWindow final : public Window,
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(Visible visible) final;
+        void setVisible(Visible visible) override final;
 
         /**
          * Returns true if any instances exist.
@@ -149,13 +149,13 @@ class ShopWindow final : public Window,
         bool isShopEmpty() const A_WARN_UNUSED;
 
 #ifdef EATHENA_SUPPORT
-        void vendingEnabled(const bool b) final;
+        void vendingEnabled(const bool b) override final;
 
-        void vendingSlotsChanged(const int slots) final;
+        void vendingSlotsChanged(const int slots) override final;
 
-        void buyingStoreEnabled(const bool b) final;
+        void buyingStoreEnabled(const bool b) override final;
 
-        void buyingStoreSlotsChanged(const int slots) final;
+        void buyingStoreSlotsChanged(const int slots) override final;
 
         void setShopName(const std::string &name);
 #endif

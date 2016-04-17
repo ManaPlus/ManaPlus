@@ -39,18 +39,18 @@ class PartyTab notfinal : public ChatTab,
         virtual ~PartyTab();
 
         bool handleCommand(const std::string &restrict type,
-                           const std::string &restrict args) final;
+                           const std::string &restrict args) override final;
 
-        void playNewMessageSound() const final;
+        void playNewMessageSound() const override final;
 
-        void optionChanged(const std::string &value) final;
+        void optionChanged(const std::string &value) override final;
 
     protected:
-        void handleInput(const std::string &msg) final;
+        void handleInput(const std::string &msg) override final;
 
-        void getAutoCompleteList(StringVect&) const final;
+        void getAutoCompleteList(StringVect&) const override final;
 
-        void getAutoCompleteCommands(StringVect &names) const final;
+        void getAutoCompleteCommands(StringVect &names) const override final;
 };
 
 extern PartyTab *partyTab;

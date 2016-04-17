@@ -50,9 +50,10 @@ class ImageParticle notfinal : public Particle
          */
         void draw(Graphics *restrict const graphics,
                   const int offsetX,
-                  const int offsetY) const restrict2 final A_NONNULL(2);
+                  const int offsetY) const
+                  restrict2 override final A_NONNULL(2);
 
-        void setAlpha(const float alpha) restrict2 final
+        void setAlpha(const float alpha) restrict2 override final
         { mAlpha = alpha; }
 
         static StringIntMap imageParticleCountByName;

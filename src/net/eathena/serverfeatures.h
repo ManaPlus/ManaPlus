@@ -34,109 +34,109 @@ class ServerFeatures final : public Net::ServerFeatures
 
         A_DELETE_COPY(ServerFeatures)
 
-        bool haveServerOnlineList() const final;
+        bool haveServerOnlineList() const override final;
 
-        bool haveOnlineList() const final A_CONST;
+        bool haveOnlineList() const override final A_CONST;
 
-        bool havePartyNickInvite() const final A_CONST;
+        bool havePartyNickInvite() const override final A_CONST;
 
-        bool haveChangePartyLeader() const final A_CONST;
+        bool haveChangePartyLeader() const override final A_CONST;
 
-        bool haveServerHp() const final A_CONST;
+        bool haveServerHp() const override final A_CONST;
 
-        bool havePlayerStatusUpdate() const final;
+        bool havePlayerStatusUpdate() const override final;
 
-        bool haveBrokenPlayerAttackDistance() const final A_CONST;
+        bool haveBrokenPlayerAttackDistance() const override final A_CONST;
 
-        bool haveNativeGuilds() const final A_CONST;
+        bool haveNativeGuilds() const override final A_CONST;
 
-        bool haveIncompleteChatMessages() const final A_CONST;
+        bool haveIncompleteChatMessages() const override final A_CONST;
 
-        bool haveRaceSelection() const final;
+        bool haveRaceSelection() const override final;
 
-        bool haveLookSelection() const final;
+        bool haveLookSelection() const override final;
 
-        bool haveChatChannels() const final A_CONST;
+        bool haveChatChannels() const override final A_CONST;
 
-        bool haveServerIgnore() const final A_CONST;
+        bool haveServerIgnore() const override final A_CONST;
 
-        bool haveMove3() const final;
+        bool haveMove3() const override final;
 
-        bool haveItemColors() const final A_CONST;
+        bool haveItemColors() const override final A_CONST;
 
-        bool haveAccountOtherGender() const final A_CONST;
+        bool haveAccountOtherGender() const override final A_CONST;
 
-        bool haveCharOtherGender() const final;
+        bool haveCharOtherGender() const override final;
 
-        bool haveMonsterAttackRange() const final A_CONST;
+        bool haveMonsterAttackRange() const override final A_CONST;
 
-        bool haveMonsterName() const final A_CONST;
+        bool haveMonsterName() const override final A_CONST;
 
-        bool haveEmailOnRegister() const final;
+        bool haveEmailOnRegister() const override final;
 
-        bool haveEmailOnDelete() const final;
+        bool haveEmailOnDelete() const override final;
 
-        bool haveEightDirections() const final A_CONST;
+        bool haveEightDirections() const override final A_CONST;
 
-        bool haveCharRename() const final A_CONST;
+        bool haveCharRename() const override final A_CONST;
 
-        bool haveBankApi() const final A_CONST;
+        bool haveBankApi() const override final A_CONST;
 
-        bool haveServerVersion() const final;
+        bool haveServerVersion() const override final;
 
-        bool haveMapServerVersion() const final;
+        bool haveMapServerVersion() const override final;
 
-        bool haveNpcGender() const final;
+        bool haveNpcGender() const override final;
 
-        bool haveJoinChannel() const final;
+        bool haveJoinChannel() const override final;
 
-        bool haveNpcWhispers() const final A_CONST;
+        bool haveNpcWhispers() const override final A_CONST;
 
-        bool haveCreateCharGender() const final;
+        bool haveCreateCharGender() const override final;
 
-        bool haveAttackDirections() const final A_CONST;
+        bool haveAttackDirections() const override final A_CONST;
 
-        bool haveVending() const final A_CONST;
+        bool haveVending() const override final A_CONST;
 
-        bool haveCart() const final A_CONST;
+        bool haveCart() const override final A_CONST;
 
-        bool haveTalkPet() const final;
+        bool haveTalkPet() const override final;
 
-        bool haveMovePet() const final;
+        bool haveMovePet() const override final;
 
-        bool haveServerWarpNames() const final;
+        bool haveServerWarpNames() const override final;
 
-        bool haveExpPacket() const final A_CONST;
+        bool haveExpPacket() const override final A_CONST;
 
-        bool haveMute() const final A_CONST;
+        bool haveMute() const override final A_CONST;
 
-        bool haveChangePassword() const final;
+        bool haveChangePassword() const override final;
 
-        bool haveTeamId() const final A_CONST;
+        bool haveTeamId() const override final A_CONST;
 
-        bool haveNewGuild() const final A_CONST;
+        bool haveNewGuild() const override final A_CONST;
 
-        bool haveAdvancedSprites() const final;
+        bool haveAdvancedSprites() const override final;
 
-        bool haveExtendedRiding() const final;
+        bool haveExtendedRiding() const override final;
 
-        bool haveAdvancedBuySell() const final A_CONST;
+        bool haveAdvancedBuySell() const override final A_CONST;
 
-        bool haveSlide() const final;
+        bool haveSlide() const override final;
 
-        bool haveExtendedDropsPosition() const final;
+        bool haveExtendedDropsPosition() const override final;
 
-        bool haveSecureTrades() const final;
+        bool haveSecureTrades() const override final;
 
-        bool haveMultyStatusUp() const final;
+        bool haveMultyStatusUp() const override final;
 
-        bool haveMail() const final;
+        bool haveMail() const override final;
 
-        bool haveServerPets() const final;
+        bool haveServerPets() const override final;
 
-        bool haveFamily() const final;
+        bool haveFamily() const override final;
 
-        bool haveMoveWhileSit() const final;
+        bool haveMoveWhileSit() const override final;
 };
 
 }  // namespace EAthena

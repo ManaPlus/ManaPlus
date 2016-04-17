@@ -49,9 +49,9 @@ class VertContainer final : public Container,
 
         void add1(Widget *const widget, const int spacing = -1);
 
-        void clear() final;
+        void clear() override final;
 
-        void widgetResized(const Event &event) final;
+        void widgetResized(const Event &event) override final;
 
     private:
         std::vector<Widget*> mResizableWidgets;

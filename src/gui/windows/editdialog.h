@@ -54,12 +54,12 @@ class EditDialog final : public Window,
 
         A_DELETE_COPY(EditDialog)
 
-        void postInit() final;
+        void postInit() override final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
         std::string getMsg() const A_WARN_UNUSED
         { return mTextField->getText(); }

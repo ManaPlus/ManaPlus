@@ -53,12 +53,12 @@ class UpdateListModel final : public ListModel
         ~UpdateListModel()
         { }
 
-        int getNumberOfElements() final
+        int getNumberOfElements() override final
         {
             return CAST_S32(mNames.size());
         }
 
-        std::string getElementAt(int i) final
+        std::string getElementAt(int i) override final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";

@@ -46,14 +46,14 @@ class TextBoxPopup final : public Popup
          */
         ~TextBoxPopup();
 
-        void postInit() final;
+        void postInit() override final;
 
         /**
          * Sets the text to be displayed.
          */
         void show(const int x, const int y, const std::string &str);
 
-        void mouseMoved(MouseEvent &event) final;
+        void mouseMoved(MouseEvent &event) override final;
 
     private:
         TextBox *mTextBox A_NONNULLPOINTER;

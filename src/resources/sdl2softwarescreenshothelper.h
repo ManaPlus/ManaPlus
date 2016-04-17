@@ -38,9 +38,9 @@ class Sdl2SoftwareScreenshotHelper final : public ScreenshotHelper
 
         ~Sdl2SoftwareScreenshotHelper();
 
-        void prepare() final;
+        void prepare() override final;
 
-        SDL_Surface *getScreenshot() final;
+        SDL_Surface *getScreenshot() override final;
 };
 
 #endif  // USE_SDL2

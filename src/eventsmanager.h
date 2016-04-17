@@ -52,7 +52,7 @@ class EventsManager final : public ConfigListener
         static void handleActive(const SDL_Event &event);
 #endif
 
-        void optionChanged(const std::string &name) final;
+        void optionChanged(const std::string &name) override final;
 
         static void logEvent(const SDL_Event &event);
 

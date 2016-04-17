@@ -79,36 +79,36 @@ class DropDown final : public ActionListener,
          */
         void updateAlpha();
 
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void drawFrame(Graphics *const graphics) final A_NONNULL(2);
+        void drawFrame(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *const graphics) final
+        void safeDrawFrame(Graphics *const graphics) override final
                            A_NONNULL(2);
 
         // Inherited from KeyListener
 
-        void keyPressed(KeyEvent& event) final;
+        void keyPressed(KeyEvent& event) override final;
 
         // Inherited from MouseListener
 
-        void mousePressed(MouseEvent& event) final;
+        void mousePressed(MouseEvent& event) override final;
 
-        void mouseReleased(MouseEvent& event) final;
+        void mouseReleased(MouseEvent& event) override final;
 
-        void mouseDragged(MouseEvent& event) final;
+        void mouseDragged(MouseEvent& event) override final;
 
-        void mouseWheelMovedUp(MouseEvent& event) final;
+        void mouseWheelMovedUp(MouseEvent& event) override final;
 
-        void mouseWheelMovedDown(MouseEvent& event) final;
+        void mouseWheelMovedDown(MouseEvent& event) override final;
 
         void setSelectedString(const std::string &str);
 
         std::string getSelectedString() const A_WARN_UNUSED;
 
-        void valueChanged(const SelectionEvent& event) final A_CONST;
+        void valueChanged(const SelectionEvent& event) override final A_CONST;
 
         void updateSelection();
 

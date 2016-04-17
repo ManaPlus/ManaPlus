@@ -47,12 +47,12 @@ class UpdateTypeModel final : public ListModel
         ~UpdateTypeModel()
         { }
 
-        int getNumberOfElements() final
+        int getNumberOfElements() override final
         {
             return 3;
         }
 
-        std::string getElementAt(int i) final
+        std::string getElementAt(int i) override final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";

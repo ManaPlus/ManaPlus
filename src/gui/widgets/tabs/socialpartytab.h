@@ -71,7 +71,7 @@ class SocialPartyTab final : public SocialTab,
             delete2(mScroll)
         }
 
-        void action(const ActionEvent &event) final
+        void action(const ActionEvent &event) override final
         {
             const std::string &eventId = event.getId();
             if (eventId == "do invite")
@@ -112,7 +112,7 @@ class SocialPartyTab final : public SocialTab,
             }
         }
 
-        void invite() final
+        void invite() override final
         {
             CREATEWIDGETV(mInviteDialog, TextDialog,
                 // TRANSLATORS: party invite message
@@ -124,7 +124,7 @@ class SocialPartyTab final : public SocialTab,
             mInviteDialog->addActionListener(this);
         }
 
-        void leave() final
+        void leave() override final
         {
             CREATEWIDGETV(mConfirmDialog, ConfirmDialog,
                 // TRANSLATORS: party leave message
@@ -136,7 +136,7 @@ class SocialPartyTab final : public SocialTab,
         }
 
         void buildCounter(const int online0 A_UNUSED,
-                          const int total0 A_UNUSED) final
+                          const int total0 A_UNUSED) override final
         {
             if (!localPlayer)
                 return;

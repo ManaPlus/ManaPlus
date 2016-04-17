@@ -65,40 +65,40 @@ class MiniStatusWindow final : public Window,
 
         void drawIcons(Graphics *const graphics) A_NONNULL(2);
 
-        void updateStatus() final;
+        void updateStatus() override final;
 
-        void logic() final;
+        void logic() override final;
 
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void mouseMoved(MouseEvent &event) final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mousePressed(MouseEvent &event) final;
+        void mousePressed(MouseEvent &event) override final;
 
-        void mouseExited(MouseEvent &event) final;
+        void mouseExited(MouseEvent &event) override final;
 
         void showBar(const std::string &name, const Visible visible);
 
         void updateBars();
 
-        void slotsChanged(const Inventory *const inventory) final;
+        void slotsChanged(const Inventory *const inventory) override final;
 
         std::vector <ProgressBar*> &getBars() A_WARN_UNUSED
         { return mBars; }
 
-        Rect getChildrenArea() final A_WARN_UNUSED;
+        Rect getChildrenArea() override final A_WARN_UNUSED;
 
         void attributeChanged(const AttributesT id,
                               const int oldVal,
-                              const int newVal) final;
+                              const int newVal) override final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,
-                         const int oldVal2) final;
+                         const int oldVal2) override final;
 
-        void arrowsChanged() final;
+        void arrowsChanged() override final;
 
 #ifdef USE_PROFILER
         void logicChildren();

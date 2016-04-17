@@ -71,10 +71,10 @@ class FontSizeChoiceListModel final : public ListModel
         ~FontSizeChoiceListModel()
         { }
 
-        int getNumberOfElements() final A_WARN_UNUSED
+        int getNumberOfElements() override final A_WARN_UNUSED
         { return maxFontSizes; }
 
-        std::string getElementAt(int i) final A_WARN_UNUSED
+        std::string getElementAt(int i) override final A_WARN_UNUSED
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";

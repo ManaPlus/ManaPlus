@@ -52,9 +52,9 @@ class ShortcutContainer notfinal : public Widget,
          * Invoked when a widget changes its size. This is used to determine
          * the new height of the container.
          */
-        void widgetResized(const Event &event) final;
+        void widgetResized(const Event &event) override final;
 
-        void widgetMoved(const Event& event) final;
+        void widgetMoved(const Event& event) override final;
 
         /**
          * Handles mouse when dragged.

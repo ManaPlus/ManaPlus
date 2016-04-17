@@ -59,23 +59,23 @@ class Minimap final : public Window, public ConfigListener
         /**
          * Draws the minimap.
          */
-        void draw(Graphics *const graphics) final A_NONNULL(2);
+        void draw(Graphics *const graphics) override final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         void draw2(Graphics *const graphics) A_NONNULL(2);
 
-        void mouseMoved(MouseEvent &event) final;
+        void mouseMoved(MouseEvent &event) override final;
 
-        void mouseReleased(MouseEvent &event) final;
+        void mouseReleased(MouseEvent &event) override final;
 
-        void mousePressed(MouseEvent &event) final;
+        void mousePressed(MouseEvent &event) override final;
 
-        void mouseExited(MouseEvent &event) final;
+        void mouseExited(MouseEvent &event) override final;
 
         void screenToMap(int &x, int &y);
 
-        void optionChanged(const std::string &name) final;
+        void optionChanged(const std::string &name) override final;
 
     private:
         void deleteMapImage();

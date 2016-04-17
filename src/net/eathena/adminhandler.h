@@ -35,124 +35,124 @@ class AdminHandler final : public Ea::AdminHandler
 
         A_DELETE_COPY(AdminHandler)
 
-        void announce(const std::string &text) const final;
+        void announce(const std::string &text) const override final;
 
-        void localAnnounce(const std::string &text) const final;
+        void localAnnounce(const std::string &text) const override final;
 
-        void hide(const bool h) const final;
+        void hide(const bool h) const override final;
 
-        void kick(const BeingId playerId) const final;
+        void kick(const BeingId playerId) const override final;
 
-        void kickAll() const final;
+        void kickAll() const override final;
 
         void warp(const std::string &map,
-                  const int x, const int y) const final;
+                  const int x, const int y) const override final;
 
-        void resetStats() const final;
+        void resetStats() const override final;
 
-        void resetSkills() const final;
+        void resetSkills() const override final;
 
-        void gotoName(const std::string &name) const final;
+        void gotoName(const std::string &name) const override final;
 
-        void recallName(const std::string &name) const final;
+        void recallName(const std::string &name) const override final;
 
         void mute(const Being *const being,
                   const int type,
-                  const int limit) const final;
+                  const int limit) const override final;
 
-        void muteName(const std::string &name) const final;
+        void muteName(const std::string &name) const override final;
 
-        void requestLogin(const Being *const being) const final;
+        void requestLogin(const Being *const being) const override final;
 
         void setTileType(const int x, const int y,
-                         const int type) const final;
+                         const int type) const override final;
 
-        void unequipAll(const Being *const being) const final;
+        void unequipAll(const Being *const being) const override final;
 
-        void requestStats(const std::string &name) const final;
+        void requestStats(const std::string &name) const override final;
 
-        void monsterInfo(const std::string &name) const final;
+        void monsterInfo(const std::string &name) const override final;
 
-        void itemInfo(const std::string &name) const final;
+        void itemInfo(const std::string &name) const override final;
 
-        void whoDrops(const std::string &name) const final;
+        void whoDrops(const std::string &name) const override final;
 
-        void mobSearch(const std::string &name) const final;
+        void mobSearch(const std::string &name) const override final;
 
-        void mobSpawnSearch(const std::string &name) const final;
+        void mobSpawnSearch(const std::string &name) const override final;
 
-        void playerGmCommands(const std::string &name) const final;
+        void playerGmCommands(const std::string &name) const override final;
 
         void playerCharGmCommands(const std::string &name) const
-                                  final;
+                                  override final;
 
-        void showLevel(const std::string &name) const final;
+        void showLevel(const std::string &name) const override final;
 
-        void showStats(const std::string &name) const final;
+        void showStats(const std::string &name) const override final;
 
-        void showStorageList(const std::string &name) const final;
+        void showStorageList(const std::string &name) const override final;
 
-        void showCartList(const std::string &name) const final;
+        void showCartList(const std::string &name) const override final;
 
-        void showInventoryList(const std::string &name) const final;
+        void showInventoryList(const std::string &name) const override final;
 
-        void locatePlayer(const std::string &name) const final;
+        void locatePlayer(const std::string &name) const override final;
 
-        void showAccountInfo(const std::string &name) const final;
+        void showAccountInfo(const std::string &name) const override final;
 
-        void spawnSlave(const std::string &name) const final;
+        void spawnSlave(const std::string &name) const override final;
 
-        void spawnClone(const std::string &name) const final;
+        void spawnClone(const std::string &name) const override final;
 
-        void spawnSlaveClone(const std::string &name) const final;
+        void spawnSlaveClone(const std::string &name) const override final;
 
-        void spawnEvilClone(const std::string &name) const final;
+        void spawnEvilClone(const std::string &name) const override final;
 
-        void savePosition(const std::string &name) const final;
+        void savePosition(const std::string &name) const override final;
 
-        void loadPosition(const std::string &name) const final;
+        void loadPosition(const std::string &name) const override final;
 
-        void randomWarp(const std::string &name) const final;
+        void randomWarp(const std::string &name) const override final;
 
-        void gotoNpc(const std::string &name) const final;
+        void gotoNpc(const std::string &name) const override final;
 
-        void killer(const std::string &name) const final;
+        void killer(const std::string &name) const override final;
 
-        void killable(const std::string &name) const final;
+        void killable(const std::string &name) const override final;
 
-        void heal(const std::string &name) const final;
+        void heal(const std::string &name) const override final;
 
-        void alive(const std::string &name) const final;
+        void alive(const std::string &name) const override final;
 
-        void disguise(const std::string &name) const final;
+        void disguise(const std::string &name) const override final;
 
-        void immortal(const std::string &name) const final;
+        void immortal(const std::string &name) const override final;
 
-        void hide(const std::string &name) const final;
+        void hide(const std::string &name) const override final;
 
-        void nuke(const std::string &name) const final;
+        void nuke(const std::string &name) const override final;
 
-        void kill(const std::string &name) const final;
+        void kill(const std::string &name) const override final;
 
-        void jail(const std::string &name) const final;
+        void jail(const std::string &name) const override final;
 
-        void unjail(const std::string &name) const final;
+        void unjail(const std::string &name) const override final;
 
         void npcMove(const std::string &name,
                      const int x,
-                     const int y) const final;
+                     const int y) const override final;
 
-        void hideNpc(const std::string &name) const final;
+        void hideNpc(const std::string &name) const override final;
 
-        void showNpc(const std::string &name) const final;
+        void showNpc(const std::string &name) const override final;
 
-        void changePartyLeader(const std::string &name) const final;
+        void changePartyLeader(const std::string &name) const override final;
 
-        void partyRecall(const std::string &name) const final;
+        void partyRecall(const std::string &name) const override final;
 
-        void breakGuild(const std::string &name) const final;
+        void breakGuild(const std::string &name) const override final;
 
-        void guildRecall(const std::string &name) const final;
+        void guildRecall(const std::string &name) const override final;
 
     protected:
         static std::string mStatsName;

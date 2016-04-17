@@ -57,7 +57,7 @@ class SDL2SoftwareGraphics final : public Graphics
         ~SDL2SoftwareGraphics();
 
         void setRendererFlags(const uint32_t flags)
-                              restrict2 noexcept final
+                              restrict2 noexcept override final
         { mRendererFlags = flags; }
 
         #include "render/graphicsdef.hpp"
@@ -65,7 +65,7 @@ class SDL2SoftwareGraphics final : public Graphics
         #include "render/softwaregraphicsdef.hpp"
 
         bool resizeScreen(const int width,
-                          const int height) restrict2 final;
+                          const int height) restrict2 override final;
 
     protected:
         int SDL_FakeUpperBlit(const SDL_Surface *restrict const src,

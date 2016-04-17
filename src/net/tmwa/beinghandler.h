@@ -35,19 +35,19 @@ class BeingHandler final : public Ea::BeingHandler
 
         A_DELETE_COPY(BeingHandler)
 
-        void requestNameById(const BeingId id) const final;
+        void requestNameById(const BeingId id) const override final;
 
-        void undress(Being *const being) const final;
+        void undress(Being *const being) const override final;
 
 #ifdef EATHENA_SUPPORT
-        void requestRanks(const RankT rank A_UNUSED) const final
+        void requestRanks(const RankT rank A_UNUSED) const override final
                           A_CONST;
 
-        void viewPlayerEquipment(const Being *const being) const final
+        void viewPlayerEquipment(const Being *const being) const override final
                                  A_CONST;
 #endif
 
-        void requestNameByCharId(const int id) const final A_CONST;
+        void requestNameByCharId(const int id) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

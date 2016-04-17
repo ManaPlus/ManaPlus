@@ -52,13 +52,13 @@ class KeyListModel final : public ListModel
         /**
          * Returns the number of elements in container.
          */
-        int getNumberOfElements() final
+        int getNumberOfElements() override final
         { return mSize; }
 
         /**
          * Returns element from container.
          */
-        std::string getElementAt(int i) final
+        std::string getElementAt(int i) override final
         { return setupActionData[mSelectedData][i].text; }
 
         /**

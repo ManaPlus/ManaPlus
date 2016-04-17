@@ -36,17 +36,17 @@ class BattleGroundHandler final : public Net::BattleGroundHandler
         A_DELETE_COPY(BattleGroundHandler)
 
         void registerBg(const BattleGroundTypeT &type,
-                        const std::string &name) const final A_CONST;
+                        const std::string &name) const override final A_CONST;
 
-        void rekoveRequest(const std::string &name) const final
+        void rekoveRequest(const std::string &name) const override final
                            A_CONST;
 
         void beginAck(const bool result,
                       const std::string &bgName,
-                      const std::string &gameName) const final
+                      const std::string &gameName) const override final
                       A_CONST;
 
-        void checkState(const std::string &name) const final A_CONST;
+        void checkState(const std::string &name) const override final A_CONST;
 };
 
 }  // namespace TmwAthena

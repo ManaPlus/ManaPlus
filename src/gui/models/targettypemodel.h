@@ -42,12 +42,12 @@ class TargetTypeModel final : public ListModel
         ~TargetTypeModel()
         { }
 
-        int getNumberOfElements() final
+        int getNumberOfElements() override final
         {
             return 3;
         }
 
-        std::string getElementAt(int i) final
+        std::string getElementAt(int i) override final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";

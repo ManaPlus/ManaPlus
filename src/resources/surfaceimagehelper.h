@@ -57,12 +57,12 @@ class SurfaceImageHelper final : public ImageHelper
          * Loads an image from an SDL surface.
          */
         Image *load(SDL_Surface *const tmpImage)
-                    final A_WARN_UNUSED;
+                    override final A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
                                  const int width, const int height,
                                  const float alpha)
-                                 final A_WARN_UNUSED;
+                                 override final A_WARN_UNUSED;
 
         static void SDLSetEnableAlphaCache(const bool n)
         { mEnableAlphaCache = n; }
@@ -74,7 +74,7 @@ class SurfaceImageHelper final : public ImageHelper
          * Tells if the image was loaded using OpenGL or SDL
          * @return true if OpenGL, false if SDL.
          */
-        RenderType useOpenGL() const final A_WARN_UNUSED;
+        RenderType useOpenGL() const override final A_WARN_UNUSED;
 
         static SDL_Surface* SDLDuplicateSurface(SDL_Surface *const tmpImage)
                                                 A_WARN_UNUSED;

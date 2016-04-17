@@ -40,7 +40,7 @@ struct OpenUrlListener final : public ActionListener
     A_DELETE_COPY(OpenUrlListener)
 
     public:
-        void action(const ActionEvent &event) final
+        void action(const ActionEvent &event) override final
         {
             if (event.getId() == "yes")
                 openBrowser(url);

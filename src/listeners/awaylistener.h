@@ -28,7 +28,7 @@
 class AwayListener final : public ActionListener
 {
     public:
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 };
 
 #endif  // LISTENERS_AWAYLISTENER_H

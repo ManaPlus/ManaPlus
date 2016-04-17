@@ -49,25 +49,25 @@ class SetupQuickItem final : public SetupItem,
 
         void createControls();
 
-        void fromWidget() final A_CONST;
+        void fromWidget() override final A_CONST;
 
-        void toWidget() final;
+        void toWidget() override final;
 
-        void action(const ActionEvent &event) final;
+        void action(const ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) final A_CONST;
+        void apply(const std::string &eventName) override final A_CONST;
 
-        void cancel(const std::string &eventName A_UNUSED) final
+        void cancel(const std::string &eventName A_UNUSED) override final
                     A_CONST;
 
         void externalUpdated(const std::string &eventName A_UNUSED)
-                             final A_CONST;
+                             override final A_CONST;
 
-        void rereadValue() final A_CONST;
+        void rereadValue() override final A_CONST;
 
-        void save() final A_CONST;
+        void save() override final A_CONST;
 
-        void gameModifiersChanged() final;
+        void gameModifiersChanged() override final;
 
     protected:
         HorizontContainer *mHorizont;

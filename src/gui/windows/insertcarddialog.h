@@ -41,8 +41,8 @@ class InsertCardDialog final : public SellDialog
         A_DELETE_COPY(InsertCardDialog)
 
     protected:
-        void initButtons() final;
-        void sellAction(const ActionEvent &event) final;
+        void initButtons() override final;
+        void sellAction(const ActionEvent &event) override final;
 
     private:
         int mItemIndex;

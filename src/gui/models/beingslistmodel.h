@@ -48,12 +48,12 @@ class BeingsListModel final : public AvatarListModel
             return &mMembers;
         }
 
-        Avatar *getAvatarAt(int index) final
+        Avatar *getAvatarAt(int index) override final
         {
             return mMembers[index];
         }
 
-        int getNumberOfElements() final
+        int getNumberOfElements() override final
         {
             return CAST_S32(mMembers.size());
         }

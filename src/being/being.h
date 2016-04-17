@@ -106,7 +106,7 @@ class Being notfinal : public ActorSprite,
 
         virtual ~Being();
 
-        ActorTypeT getType() const restrict2 noexcept final
+        ActorTypeT getType() const restrict2 noexcept override final
                            A_WARN_UNUSED
         { return mType; }
 
@@ -364,7 +364,7 @@ class Being notfinal : public ActorSprite,
         const BeingInfo *getInfo() const restrict2 noexcept A_WARN_UNUSED
         { return mInfo; }
 
-        TargetCursorSizeT getTargetCursorSize() const restrict2 final
+        TargetCursorSizeT getTargetCursorSize() const restrict2 override final
                                               A_WARN_UNUSED;
 
         int getTargetOffsetX() const restrict2 override A_WARN_UNUSED
@@ -484,13 +484,13 @@ class Being notfinal : public ActorSprite,
         /**
          * Returns the horizontal size of the current base sprite of the being.
          */
-        int getWidth() const restrict2 final A_WARN_UNUSED
+        int getWidth() const restrict2 override final A_WARN_UNUSED
         { return std::max(CompoundSprite::getWidth(), DEFAULT_BEING_WIDTH); }
 
         /**
          * Returns the vertical size of the current base sprite of the being.
          */
-        int getHeight() const restrict2 final A_WARN_UNUSED
+        int getHeight() const restrict2 override final A_WARN_UNUSED
         { return std::max(CompoundSprite::getHeight(), DEFAULT_BEING_HEIGHT); }
 
         /**
@@ -529,7 +529,7 @@ class Being notfinal : public ActorSprite,
         void drawSpritesSDL(Graphics *restrict const graphics,
                             const int posX,
                             const int posY) const
-                            restrict2 final A_NONNULL(2);
+                            restrict2 override final A_NONNULL(2);
 
         void drawHpBar(Graphics *restrict const graphics,
                        const int maxHP,
@@ -629,7 +629,7 @@ class Being notfinal : public ActorSprite,
         void draw(Graphics *restrict const graphics,
                   const int offsetX,
                   const int offsetY) const
-                  restrict2 final A_NONNULL(2);
+                  restrict2 override final A_NONNULL(2);
 
         void drawPlayer(Graphics *restrict const graphics,
                         const int offsetX,
@@ -916,14 +916,14 @@ class Being notfinal : public ActorSprite,
         { return mLastAttackY; }
 
 #ifdef EATHENA_SUPPORT
-        void setTrickDead(const bool b) restrict2 final;
+        void setTrickDead(const bool b) restrict2 override final;
 
         void setChat(ChatObject *restrict const obj) restrict2;
 
         ChatObject *getChat() const restrict2 noexcept
         { return mChat; }
 
-        void setRiding(const bool b) restrict2 final;
+        void setRiding(const bool b) restrict2 override final;
 
         void setHorse(const int horseId) restrict2;
 
@@ -944,7 +944,7 @@ class Being notfinal : public ActorSprite,
         unsigned int getSpiritBalls() const restrict2 noexcept A_WARN_UNUSED
         { return mSpiritBalls; }
 
-        void stopCast(const bool b) final;
+        void stopCast(const bool b) override final;
 
         void setCreatorId(const BeingId id)
         { mCreatorId = id; }

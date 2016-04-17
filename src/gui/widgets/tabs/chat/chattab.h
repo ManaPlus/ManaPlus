@@ -184,7 +184,7 @@ class ChatTab notfinal : public Tab
         friend class ChatWindow;
         friend class WhisperWindow;
 
-        void setCurrent() final
+        void setCurrent() override final
         { setFlash(0); }
 
         virtual void handleInput(const std::string &msg);

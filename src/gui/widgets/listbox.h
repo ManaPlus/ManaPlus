@@ -119,13 +119,13 @@ class ListBox notfinal : public Widget,
 
         // Inherited from KeyListener
 
-        void keyPressed(KeyEvent& event) final;
+        void keyPressed(KeyEvent& event) override final;
 
         // Inherited from MouseListener
 
-        void mouseWheelMovedUp(MouseEvent& event) final A_CONST;
+        void mouseWheelMovedUp(MouseEvent& event) override final A_CONST;
 
-        void mouseWheelMovedDown(MouseEvent& event) final A_CONST;
+        void mouseWheelMovedDown(MouseEvent& event) override final A_CONST;
 
         void mousePressed(MouseEvent &event) override;
 
@@ -142,7 +142,7 @@ class ListBox notfinal : public Widget,
 
         virtual void adjustSize();
 
-        void logic() final;
+        void logic() override final;
 
         virtual int getSelectionByMouse(const int y) const;
 

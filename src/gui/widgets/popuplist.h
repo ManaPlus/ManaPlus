@@ -47,11 +47,11 @@ class PopupList final : public Popup,
 
         A_DELETE_COPY(PopupList)
 
-        void postInit() final;
+        void postInit() override final;
 
         void show(int x, int y);
 
-        void widgetResized(const Event &event) final;
+        void widgetResized(const Event &event) override final;
 
         void setSelected(const int selected);
 
@@ -64,13 +64,13 @@ class PopupList final : public Popup,
 
         void adjustSize();
 
-        void focusGained(const Event& event A_UNUSED) final;
+        void focusGained(const Event& event A_UNUSED) override final;
 
-        void focusLost(const Event& event A_UNUSED) final;
+        void focusLost(const Event& event A_UNUSED) override final;
 
-        void mousePressed(MouseEvent& event) final;
+        void mousePressed(MouseEvent& event) override final;
 
-        void mouseReleased(MouseEvent& event) final;
+        void mouseReleased(MouseEvent& event) override final;
 
     private:
         ListModel *mListModel;

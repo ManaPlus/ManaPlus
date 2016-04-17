@@ -34,34 +34,34 @@ class PetHandler final :  public Net::PetHandler
         A_DELETE_COPY(PetHandler)
 
         void move(const int petId,
-                  const int x, const int y) const final;
+                  const int x, const int y) const override final;
 
         void spawn(const Being *const being,
                    const int petId,
-                   const int x, const int y) const final A_CONST;
+                   const int x, const int y) const override final A_CONST;
 
         void emote(const uint8_t emoteId,
-                   const int petId) final;
+                   const int petId) override final;
 
-        void catchPet(const Being *const being) const final;
+        void catchPet(const Being *const being) const override final;
 
-        void sendPetMessage(const int data) const final;
+        void sendPetMessage(const int data) const override final;
 
-        void setName(const std::string &name) const final;
+        void setName(const std::string &name) const override final;
 
-        void requestStatus() const final;
+        void requestStatus() const override final;
 
-        void feed() const final;
+        void feed() const override final;
 
-        void dropLoot() const final;
+        void dropLoot() const override final;
 
-        void returnToEgg() const final;
+        void returnToEgg() const override final;
 
-        void unequip() const final;
+        void unequip() const override final;
 
-        void setDirection(const unsigned char type) const final;
+        void setDirection(const unsigned char type) const override final;
 
-        void startAi(const bool start) const final A_CONST;
+        void startAi(const bool start) const override final A_CONST;
 };
 
 }  // namespace EAthena

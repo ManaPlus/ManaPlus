@@ -24,7 +24,7 @@ public:
     inline void drawVertexes(const OpenGLGraphicsVertexes &restrict ogl)
                              restrict2 A_INLINE;
 
-    void initArrays(const int vertCount) restrict2 final;
+    void initArrays(const int vertCount) restrict2 override final;
 
 #ifdef DEBUG_DRAW_CALLS
     unsigned int getDrawCalls() restrict2 const noexcept

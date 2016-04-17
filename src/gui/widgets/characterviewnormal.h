@@ -36,11 +36,11 @@ class CharacterViewNormal final : public CharacterViewBase
 
         ~CharacterViewNormal();
 
-        void show(const int i) final;
+        void show(const int i) override final;
 
         void resize() override;
 
-        void action(const ActionEvent &event A_UNUSED) final A_CONST;
+        void action(const ActionEvent &event A_UNUSED) override final A_CONST;
 
     private:
         std::vector<CharacterDisplay*> *mCharacterEntries;

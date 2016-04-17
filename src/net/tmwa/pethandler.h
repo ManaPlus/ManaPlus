@@ -34,34 +34,34 @@ class PetHandler final : public Net::PetHandler
         A_DELETE_COPY(PetHandler)
 
         void move(const int petId,
-                  const int x, const int y) const final;
+                  const int x, const int y) const override final;
 
         void spawn(const Being *const being,
                    const int petId,
-                   const int x, const int y) const final A_CONST;
+                   const int x, const int y) const override final A_CONST;
 
         void emote(const uint8_t emoteId,
-                   const int petId) final;
+                   const int petId) override final;
 
-        void catchPet(const Being *const being) const final A_CONST;
+        void catchPet(const Being *const being) const override final A_CONST;
 
-        void sendPetMessage(const int data) const final A_CONST;
+        void sendPetMessage(const int data) const override final A_CONST;
 
-        void setName(const std::string &name) const final A_CONST;
+        void setName(const std::string &name) const override final A_CONST;
 
-        void requestStatus() const final A_CONST;
+        void requestStatus() const override final A_CONST;
 
-        void feed() const final A_CONST;
+        void feed() const override final A_CONST;
 
-        void dropLoot() const final A_CONST;
+        void dropLoot() const override final A_CONST;
 
-        void returnToEgg() const final A_CONST;
+        void returnToEgg() const override final A_CONST;
 
-        void unequip() const final A_CONST;
+        void unequip() const override final A_CONST;
 
-        void setDirection(const unsigned char type) const final;
+        void setDirection(const unsigned char type) const override final;
 
-        void startAi(const bool start) const final;
+        void startAi(const bool start) const override final;
 
     protected:
         int mRandCounter;

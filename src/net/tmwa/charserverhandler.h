@@ -39,7 +39,7 @@ class CharServerHandler final : public Ea::CharServerHandler
         A_DELETE_COPY(CharServerHandler)
 
         void chooseCharacter(Net::Character *const character) const
-                             final;
+                             override final;
 
         void newCharacter(const std::string &name,
                           const int slot,
@@ -48,24 +48,24 @@ class CharServerHandler final : public Ea::CharServerHandler
                           const int hairColor,
                           const unsigned char race,
                           const uint16_t look,
-                          const std::vector<int> &stats) const final;
+                          const std::vector<int> &stats) const override final;
 
         void deleteCharacter(Net::Character *const character,
-                             const std::string &email) const final;
+                             const std::string &email) const override final;
 
         void renameCharacter(const BeingId id,
-                             const std::string &newName) const final
+                             const std::string &newName) const override final
                              A_CONST;
 
-        void switchCharacter() const final;
+        void switchCharacter() const override final;
 
-        void connect() const final;
+        void connect() const override final;
 
-        bool isNeedCreatePin() const final
+        bool isNeedCreatePin() const override final
         { return false; }
 
         void setNewPincode(const std::string &pin A_UNUSED) const
-                           final
+                           override final
         { }
 
         /**
@@ -74,14 +74,14 @@ class CharServerHandler final : public Ea::CharServerHandler
          * the dialog when a new character failed to be created.
          */
         void setCharCreateDialog(CharCreateDialog *const window) const
-                                 final;
+                                 override final;
 
         void changeSlot(const int oldSlot,
-                        const int newSlot) const final A_CONST;
+                        const int newSlot) const override final A_CONST;
 
-        void ping() const final A_CONST;
+        void ping() const override final A_CONST;
 
-        unsigned int hatSprite() const final A_CONST A_WARN_UNUSED;
+        unsigned int hatSprite() const override final A_CONST A_WARN_UNUSED;
 };
 
 }  // namespace TmwAthena

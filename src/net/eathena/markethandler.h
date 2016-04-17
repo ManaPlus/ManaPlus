@@ -33,15 +33,15 @@ class MarketHandler final : public Net::MarketHandler
 
         A_DELETE_COPY(MarketHandler)
 
-        void close() const final;
+        void close() const override final;
 
         void buyItem(const int itemId,
                      const ItemTypeT type,
                      const ItemColor color,
-                     const int amount) const final;
+                     const int amount) const override final;
 
         void buyItems(const std::vector<ShopItem*> &items) const
-                      final;
+                      override final;
 };
 
 }  // namespace EAthena

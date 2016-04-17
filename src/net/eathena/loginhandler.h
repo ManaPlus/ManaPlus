@@ -37,32 +37,32 @@ class LoginHandler final : public Ea::LoginHandler
 
         ~LoginHandler();
 
-        void connect() const final;
+        void connect() const override final;
 
-        bool isConnected() const final A_WARN_UNUSED;
+        bool isConnected() const override final A_WARN_UNUSED;
 
-        void disconnect() const final;
+        void disconnect() const override final;
 
-        unsigned int getMaxPasswordLength() const final A_WARN_UNUSED
+        unsigned int getMaxPasswordLength() const override final A_WARN_UNUSED
         { return 24; }
 
         void changePassword(const std::string &restrict oldPassword,
                             const std::string &restrict newPassword)
-                            const final;
+                            const override final;
 
-        void sendVersion() const final;
+        void sendVersion() const override final;
 
-        ServerInfo *getCharServer() const final A_WARN_UNUSED;
+        ServerInfo *getCharServer() const override final A_WARN_UNUSED;
 
-        void ping() const final;
+        void ping() const override final;
 
-        void updatePacketVersion() const final;
+        void updatePacketVersion() const override final;
 
     private:
         void sendLoginRegister(const std::string &restrict username,
                                const std::string &restrict password,
                                const std::string &restrict email)
-                               const final;
+                               const override final;
 };
 
 }  // namespace EAthena
