@@ -350,6 +350,12 @@ mplint_data:
   - ./tools/ci/jobs/mplint.sh data
   image: debian:unstable
 
+cpplint:
+  stage: test
+  script:
+  - ./tools/ci/jobs/cpplint.sh
+  image: debian:unstable
+
 # reports
 
 success:
