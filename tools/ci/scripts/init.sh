@@ -39,22 +39,20 @@ function aptget_install {
     fi
 }
 
+function check_error {
+    if [ "$1" != 0 ]; then
+        cat $ERRFILE
+        exit $result
+    fi
+}
+
 function run_configure_simple {
     rm $ERRFILE
     autoreconf -i 2>$ERRFILE
-    result=$?
-    if [ "$result" != 0 ]; then
-        cat $ERRFILE
-        exit $result
-    fi
-
+    check_error $?
     rm $ERRFILE
     ./configure $* 2>$ERRFILE
-    result=$?
-    if [ "$result" != 0 ]; then
-        cat $ERRFILE
-        exit $result
-    fi
+    check_error $?
 }
 
 function run_configure {
@@ -63,42 +61,26 @@ function run_configure {
     rm $ERRFILE
     cd po
     make update-gmo 2>$ERRFILE
-    result=$?
-    if [ "$result" != 0 ]; then
-        cat $ERRFILE
-        exit $result
-    fi
+    check_error $?
     cd ..
 
     rm $ERRFILE
     cd po
     make update-po 2>$ERRFILE
-    result=$?
-    if [ "$result" != 0 ]; then
-        cat $ERRFILE
-        exit $result
-    fi
+    check_error $?
     cd ..
 }
 
 function run_cmake {
     rm $ERRFILE
     cmake . 2>$ERRFILE
-    result=$?
-    if [ "$result" != 0 ]; then
-        cat $ERRFILE
-        exit $result
-    fi
+    check_error $?
 }
 
 function run_make {
     rm $ERRFILE
     make -j2 V=0 $* 2>$ERRFILE
-    result=$?
-    if [ "$result" != 0 ]; then
-        cat $ERRFILE
-        exit $result
-    fi
+    check_error $?
 }
 
 function run_check_warnings {
@@ -124,11 +106,7 @@ function run_h {
 function run_tarball {
     rm $ERRFILE
     make dist-xz 2>$ERRFILE
-    result=$?
-    if [ "$result" != 0 ]; then
-        cat $ERRFILE
-        exit $result
-    fi
+    check_error $?
 
     mkdir $1
     cd $1
@@ -139,11 +117,7 @@ function run_tarball {
 function run_mplint {
     rm $ERRFILE
     mplint/src/mplint $* >$ERRFILE
-    result=$?
-    if [ "$result" != 0 ]; then
-        cat $ERRFILE
-        exit $result
-    fi
+    check_error $?
 }
 
 aptget_update
