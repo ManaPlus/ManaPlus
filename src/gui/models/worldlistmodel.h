@@ -45,12 +45,12 @@ class WorldListModel final : public ListModel
         ~WorldListModel()
         { }
 
-        int getNumberOfElements() override final
+        int getNumberOfElements() final
         {
             return CAST_S32(mWorlds.size());
         }
 
-        std::string getElementAt(int i) override final
+        std::string getElementAt(int i) final
         {
             const WorldInfo *const si = mWorlds[i];
             if (si)

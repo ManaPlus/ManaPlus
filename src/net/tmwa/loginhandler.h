@@ -37,26 +37,26 @@ class LoginHandler final : public Ea::LoginHandler
 
         ~LoginHandler();
 
-        void connect() const override final;
+        void connect() const final;
 
-        bool isConnected() const override final A_WARN_UNUSED;
+        bool isConnected() const final A_WARN_UNUSED;
 
-        void disconnect() const override final;
+        void disconnect() const final;
 
-        unsigned int getMaxPasswordLength() const override final A_WARN_UNUSED
+        unsigned int getMaxPasswordLength() const final A_WARN_UNUSED
         { return 24; }
 
         void changePassword(const std::string &restrict oldPassword,
                             const std::string &restrict newPassword)
-                            const override final;
+                            const final;
 
-        ServerInfo *getCharServer() const override final A_CONST A_WARN_UNUSED;
+        ServerInfo *getCharServer() const final A_CONST A_WARN_UNUSED;
 
-        void sendVersion() const override final A_CONST;
+        void sendVersion() const final A_CONST;
 
-        void ping() const override final A_CONST;
+        void ping() const final A_CONST;
 
-        void updatePacketVersion() const override final A_CONST;
+        void updatePacketVersion() const final A_CONST;
 
         static void requestUpdateHosts() A_CONST;
 
@@ -64,7 +64,7 @@ class LoginHandler final : public Ea::LoginHandler
         void sendLoginRegister(const std::string &restrict username,
                                const std::string &restrict password,
                                const std::string &restrict email)
-                               const override final;
+                               const final;
 };
 
 }  // namespace TmwAthena

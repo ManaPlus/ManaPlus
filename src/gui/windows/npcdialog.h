@@ -75,7 +75,7 @@ class NpcDialog final : public Window,
 
         ~NpcDialog();
 
-        void postInit() override final;
+        void postInit() final;
 
         enum NpcInputState
         {
@@ -99,7 +99,7 @@ class NpcDialog final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
         * Sets the text shows in the dialog.
@@ -140,17 +140,17 @@ class NpcDialog final : public Window,
         /**
          * Returns the number of items in the choices list.
          */
-        int getNumberOfElements() override final A_WARN_UNUSED;
+        int getNumberOfElements() final A_WARN_UNUSED;
 
         /**
          * Returns the name of item number i of the choices list.
          */
-        std::string getElementAt(int i) override final A_WARN_UNUSED;
+        std::string getElementAt(int i) final A_WARN_UNUSED;
 
         /**
          * Returns the image of item number i of the choices list.
          */
-        const Image *getImageAt(int i) override final A_WARN_UNUSED;
+        const Image *getImageAt(int i) final A_WARN_UNUSED;
 
         /**
          * Makes this dialog request a choice selection from the user.
@@ -194,9 +194,9 @@ class NpcDialog final : public Window,
 
         void move(const int amount);
 
-        void setVisible(Visible visible) override final;
+        void setVisible(Visible visible) final;
 
-        void optionChanged(const std::string &name) override final;
+        void optionChanged(const std::string &name) final;
 
         /**
          * Returns true if any instances exist.
@@ -232,11 +232,11 @@ class NpcDialog final : public Window,
 
         void setAvatarAction(const int actionId);
 
-        void logic() override final;
+        void logic() final;
 
         void clearRows();
 
-        void mousePressed(MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) final;
 
         int isCloseState() const
         { return mActionState == NPC_ACTION_CLOSE; }

@@ -35,9 +35,9 @@ class SkillModel final : public ListModel
 
         SkillInfo *getSkillAt(const int i) const;
 
-        std::string getElementAt(int i) override final;
+        std::string getElementAt(int i) final;
 
-        int getNumberOfElements() override final
+        int getNumberOfElements() final
         { return CAST_S32(mVisibleSkills.size()); }
 
         void addSkill(SkillInfo *const info)

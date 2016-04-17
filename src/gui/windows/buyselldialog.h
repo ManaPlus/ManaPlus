@@ -56,12 +56,12 @@ class BuySellDialog final : public Window,
 
         void init();
 
-        void setVisible(Visible visible) override final;
+        void setVisible(Visible visible) final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Returns true if any instances exist.

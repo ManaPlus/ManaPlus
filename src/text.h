@@ -129,7 +129,7 @@ class FlashText final : public Text
          * Draws the text.
          */
         void draw(Graphics *const graphics,
-                  const int xOff, const int yOff) override final A_NONNULL(2);
+                  const int xOff, const int yOff) final A_NONNULL(2);
 
     private:
         int mTime;             /**< Time left for flashing */

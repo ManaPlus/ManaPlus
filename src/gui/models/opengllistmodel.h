@@ -33,10 +33,10 @@ class OpenGLListModel final : public ListModel
         ~OpenGLListModel()
         { }
 
-        int getNumberOfElements() override final
+        int getNumberOfElements() final
         { return renderModesListSize; }
 
-        std::string getElementAt(int i) override final
+        std::string getElementAt(int i) final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";

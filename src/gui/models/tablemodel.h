@@ -129,14 +129,14 @@ class StaticTableModel final : public TableModel
          */
         void resize();
 
-        int getRows() const override final A_WARN_UNUSED;
-        int getColumns() const override final A_WARN_UNUSED;
-        int getRowHeight() const override final A_WARN_UNUSED;
+        int getRows() const final A_WARN_UNUSED;
+        int getColumns() const final A_WARN_UNUSED;
+        int getRowHeight() const final A_WARN_UNUSED;
         int getWidth() const A_WARN_UNUSED;
         int getHeight() const A_WARN_UNUSED;
-        int getColumnWidth(const int index) const override final A_WARN_UNUSED;
+        int getColumnWidth(const int index) const final A_WARN_UNUSED;
         Widget *getElementAt(const int row,
-                             const int column) const override final
+                             const int column) const final
                              A_WARN_UNUSED;
 
     protected:

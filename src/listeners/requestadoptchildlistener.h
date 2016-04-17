@@ -32,7 +32,7 @@
 struct RequestAdoptChildListener final : public ActionListener
 {
     public:
-        void action(const ActionEvent &event) override final
+        void action(const ActionEvent &event) final
         {
             const std::string &eventId = event.getId();
             familyHandler->askForChildReply(eventId == "yes");

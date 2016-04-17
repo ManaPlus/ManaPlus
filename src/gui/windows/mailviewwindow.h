@@ -43,7 +43,7 @@ class MailViewWindow final : public Window,
 
         ~MailViewWindow();
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
     private:
         const MailMessage *mMessage;

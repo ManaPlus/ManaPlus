@@ -31,7 +31,7 @@ class AvatarListModel notfinal : public ListModel
     public:
         virtual Avatar *getAvatarAt(const int i) A_WARN_UNUSED = 0;
 
-        std::string getElementAt(int i) override final A_WARN_UNUSED
+        std::string getElementAt(int i) final A_WARN_UNUSED
         { return getAvatarAt(i)->getName(); }
 };
 

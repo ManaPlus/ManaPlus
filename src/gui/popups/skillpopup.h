@@ -49,7 +49,7 @@ class SkillPopup final : public Popup
          */
         ~SkillPopup();
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Sets the info to be displayed given a particular item.
@@ -57,7 +57,7 @@ class SkillPopup final : public Popup
         void show(const SkillInfo *const skill,
                   const int level);
 
-        void mouseMoved(MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) final;
 
     private:
         Label *mSkillName A_NONNULLPOINTER;

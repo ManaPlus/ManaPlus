@@ -34,14 +34,14 @@ class MarketHandler final : public Net::MarketHandler
 
         A_DELETE_COPY(MarketHandler)
 
-        void close() const override final A_CONST;
+        void close() const final A_CONST;
 
         void buyItem(const int itemId,
                      const ItemTypeT type,
                      const ItemColor color,
-                     const int amount) const override final A_CONST;
+                     const int amount) const final A_CONST;
 
-        void buyItems(const std::vector<ShopItem*> &items) const override final
+        void buyItems(const std::vector<ShopItem*> &items) const final
                       A_CONST;
 };
 

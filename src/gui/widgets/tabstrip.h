@@ -39,9 +39,9 @@ class TabStrip final : public WidgetGroup
 
         Widget *createWidget(const std::string &name,
                              const bool pressed = false)
-                             const override final A_WARN_UNUSED;
+                             const final A_WARN_UNUSED;
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         void nextTab();
 

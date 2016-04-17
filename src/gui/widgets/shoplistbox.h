@@ -55,9 +55,9 @@ class ShopListBox final : public ListBox
         /**
          * Draws the list box.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         /**
          * gives information about the current player's money
@@ -67,7 +67,7 @@ class ShopListBox final : public ListBox
         /**
          * Adjust List draw size
          */
-        void adjustSize() override final;
+        void adjustSize() final;
 
         /**
          * Set on/off the disabling of too expensive items.
@@ -75,11 +75,11 @@ class ShopListBox final : public ListBox
          */
         void setPriceCheck(const bool check);
 
-        void mouseMoved(MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) final;
 
-        void mouseReleased(MouseEvent& event) override final;
+        void mouseReleased(MouseEvent& event) final;
 
-        void mouseExited(MouseEvent& event) override final;
+        void mouseExited(MouseEvent& event) final;
 
         void setProtectItems(bool p)
         { mProtectItems = p; }

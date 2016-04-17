@@ -55,9 +55,9 @@ class ParticleVector final : public ParticleContainer
          */
         void delLocally(const int index);
 
-        void clearLocally() override final;
+        void clearLocally() final;
 
-        void moveTo(const float x, const float y) override final;
+        void moveTo(const float x, const float y) final;
 
     protected:
         std::vector<Particle *> mIndexedElements;

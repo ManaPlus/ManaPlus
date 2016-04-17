@@ -34,30 +34,30 @@ class AuctionHandler final : public Net::AuctionHandler
 
         A_DELETE_COPY(AuctionHandler)
 
-        void cancelReg() const override final;
+        void cancelReg() const final;
 
         void setItem(const Item *const item,
-                     const int amount) const override final;
+                     const int amount) const final;
 
         void reg(const int currentPrice,
                  const int maxPrice,
-                 const int hours) const override final;
+                 const int hours) const final;
 
-        void cancel(const int auctionId) const override final;
+        void cancel(const int auctionId) const final;
 
-        void close(const int auctionId) const override final;
+        void close(const int auctionId) const final;
 
         void bid(const int auctionId,
-                 const int money) const override final;
+                 const int money) const final;
 
         void search(const AuctionSearchTypeT type,
                     const int auctionId,
                     const std::string &text,
-                    const int page) const override final;
+                    const int page) const final;
 
-        void buy() const override final;
+        void buy() const final;
 
-        void sell() const override final;
+        void sell() const final;
 };
 
 }  // namespace EAthena

@@ -109,10 +109,10 @@ class LangListModel final : public ExtendedListModel
             }
         }
 
-        int getNumberOfElements() override final A_WARN_UNUSED
+        int getNumberOfElements() final A_WARN_UNUSED
         { return langs_count; }
 
-        std::string getElementAt(int i) override final A_WARN_UNUSED
+        std::string getElementAt(int i) final A_WARN_UNUSED
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";
@@ -120,7 +120,7 @@ class LangListModel final : public ExtendedListModel
             return gettext(LANG_NAME[i].name.c_str());
         }
 
-        const Image *getImageAt(int i) override final A_WARN_UNUSED
+        const Image *getImageAt(int i) final A_WARN_UNUSED
         {
             if (i >= getNumberOfElements() || i < 0)
                 return nullptr;

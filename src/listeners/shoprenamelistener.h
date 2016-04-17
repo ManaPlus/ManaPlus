@@ -36,7 +36,7 @@ class ShopRenameListener final : public ActionListener
 
         A_DELETE_COPY(ShopRenameListener)
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         void setDialog(EditDialog *const dialog)
         { mDialog = dialog; }

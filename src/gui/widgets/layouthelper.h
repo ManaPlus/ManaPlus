@@ -81,7 +81,7 @@ class LayoutHelper final : public WidgetListener
         /**
          * Called whenever the managed container changes size.
          */
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
     private:
         Layout mLayout;              /**< Layout handler */

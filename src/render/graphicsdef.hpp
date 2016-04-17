@@ -28,15 +28,15 @@ public:
     void drawImageRect(int x, int y,
                        int w, int h,
                        const ImageRect &restrict imgRect)
-                       restrict2 override final;
+                       restrict2 final;
 
-    void beginDraw() restrict2 override final;
+    void beginDraw() restrict2 final;
 
-    void endDraw() restrict2 override final;
+    void endDraw() restrict2 final;
 
-    void pushClipArea(const Rect &restrict area) restrict2 override final;
+    void pushClipArea(const Rect &restrict area) restrict2 final;
 
-    void popClipArea() restrict2 override final;
+    void popClipArea() restrict2 final;
 
     /**
     * Draws a resclaled version of the image
@@ -44,11 +44,11 @@ public:
     void drawRescaledImage(const Image *restrict const image,
                            int dstX, int dstY,
                            const int desiredWidth,
-                           const int desiredHeight) restrict2 override final;
+                           const int desiredHeight) restrict2 final;
 
     void drawPattern(const Image *restrict const image,
                      const int x, const int y,
-                     const int w, const int h) restrict2 override final;
+                     const int w, const int h) restrict2 final;
 
     void inline drawPatternInline(const Image *restrict const image,
                                   const int x, const int y,
@@ -58,50 +58,50 @@ public:
                              const int x, const int y,
                              const int w, const int h,
                              const int scaledWidth,
-                             const int scaledHeight) restrict2 override final;
+                             const int scaledHeight) restrict2 final;
 
     void calcPattern(ImageVertexes *restrict const vert,
                      const Image *restrict const image,
                      const int x, const int y,
-                     const int w, const int h) const restrict2 override final;
+                     const int w, const int h) const restrict2 final;
 
     void calcPattern(ImageCollection *restrict const vert,
                      const Image *restrict const image,
                      const int x, const int y,
-                     const int w, const int h) const restrict2 override final;
+                     const int w, const int h) const restrict2 final;
 
     void calcTileVertexes(ImageVertexes *restrict const vert,
                           const Image *restrict const image,
-                          int x, int y) const restrict2 override final
+                          int x, int y) const restrict2 final
                           A_NONNULL(2, 3);
 
     void calcTileCollection(ImageCollection *restrict const vertCol,
                             const Image *restrict const image,
-                            int x, int y) restrict2 override final;
+                            int x, int y) restrict2 final;
 
     void drawTileVertexes(const ImageVertexes *restrict const vert)
-                          restrict2 override final;
+                          restrict2 final;
 
     void drawTileCollection(const ImageCollection
-                            *restrict const vertCol) restrict2 override final
+                            *restrict const vertCol) restrict2 final
                             A_NONNULL(2);
 
-    void updateScreen() restrict2 override final;
+    void updateScreen() restrict2 final;
 
     void calcWindow(ImageCollection *restrict const vertCol,
                     const int x, const int y,
                     const int w, const int h,
                     const ImageRect &restrict imgRect)
-                    restrict2 override final A_NONNULL(2);
+                    restrict2 final A_NONNULL(2);
 
-    void drawRectangle(const Rect &restrict rect) restrict2 override final;
+    void drawRectangle(const Rect &restrict rect) restrict2 final;
 
-    void fillRectangle(const Rect &restrict rect) restrict2 override final;
+    void fillRectangle(const Rect &restrict rect) restrict2 final;
 
-    void drawPoint(int x, int y) restrict2 override final;
+    void drawPoint(int x, int y) restrict2 final;
 
     void drawLine(int x1, int y1,
-                  int x2, int y2) restrict2 override final;
+                  int x2, int y2) restrict2 final;
 
     bool setVideoMode(const int w, const int h,
                       const int scalle,
@@ -109,22 +109,22 @@ public:
                       const bool fs,
                       const bool hwaccel,
                       const bool resize,
-                      const bool noFrame) restrict2 override final;
+                      const bool noFrame) restrict2 final;
 
     void drawImage(const Image *restrict const image,
-                   int dstX, int dstY) restrict2 override final;
+                   int dstX, int dstY) restrict2 final;
 
     void copyImage(const Image *restrict const image,
-                   int dstX, int dstY) restrict2 override final;
+                   int dstX, int dstY) restrict2 final;
 
     void drawImageCached(const Image *restrict const image,
-                         int x, int y) restrict2 override final;
+                         int x, int y) restrict2 final;
 
     void drawPatternCached(const Image *restrict const image,
                            const int x, const int y,
-                           const int w, const int h) restrict2 override final;
+                           const int w, const int h) restrict2 final;
 
-    void completeCache() restrict2 override final;
+    void completeCache() restrict2 final;
 
 private:
     void inline calcImageRect(ImageVertexes *restrict const vert,

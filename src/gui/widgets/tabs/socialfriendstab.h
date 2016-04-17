@@ -63,7 +63,7 @@ class SocialFriendsTab final : public SocialTab
             delete2(mBeings)
         }
 
-        void updateList() override final
+        void updateList() final
         {
             getPlayersAvatars();
         }

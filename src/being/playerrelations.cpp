@@ -80,7 +80,7 @@ namespace
         public:
             ConfigurationObject *writeConfigItem(
                 const std::pair<std::string, PlayerRelation *> &value,
-                ConfigurationObject *const cobj) const override final
+                ConfigurationObject *const cobj) const final
             {
                 if (!cobj || !value.second)
                     return nullptr;
@@ -94,7 +94,7 @@ namespace
             std::map<std::string, PlayerRelation *> *
             readConfigItem(const ConfigurationObject *const cobj,
                            std::map<std::string, PlayerRelation *>
-                           *const container) const override final
+                           *const container) const final
             {
                 if (!cobj || !container)
                     return container;
@@ -473,7 +473,7 @@ class PIS_nothing final : public PlayerIgnoreStrategy
         }
 
         void ignore(Being *const being A_UNUSED,
-                    const unsigned int flags A_UNUSED) const override final
+                    const unsigned int flags A_UNUSED) const final
         {
         }
 };
@@ -490,7 +490,7 @@ class PIS_dotdotdot final : public PlayerIgnoreStrategy
         }
 
         void ignore(Being *const being,
-                    const unsigned int flags A_UNUSED) const override final
+                    const unsigned int flags A_UNUSED) const final
         {
             if (!being)
                 return;
@@ -513,7 +513,7 @@ class PIS_blinkname final : public PlayerIgnoreStrategy
         }
 
         void ignore(Being *const being,
-                    const unsigned int flags A_UNUSED) const override final
+                    const unsigned int flags A_UNUSED) const final
         {
             if (!being)
                 return;
@@ -536,7 +536,7 @@ class PIS_emote final : public PlayerIgnoreStrategy
         }
 
         void ignore(Being *const being,
-                    const unsigned int flags A_UNUSED) const override final
+                    const unsigned int flags A_UNUSED) const final
         {
             if (!being)
                 return;

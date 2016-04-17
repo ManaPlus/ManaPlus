@@ -51,7 +51,7 @@ class SafeOpenGLGraphics final : public Graphics
 
         ~SafeOpenGLGraphics();
 
-        void testDraw() restrict2 override final;
+        void testDraw() restrict2 final;
 
         #include "render/graphicsdef.hpp"
 

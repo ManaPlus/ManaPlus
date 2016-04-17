@@ -48,22 +48,22 @@ class DidYouKnowWindow final : public Window,
 
         A_DELETE_COPY(DidYouKnowWindow)
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Handles link action.
          */
         void handleLink(const std::string &link,
-                        MouseEvent *const event) override final;
+                        MouseEvent *const event) final;
 
         void loadData(int num = 0);
 
-        void setVisible(Visible visible) override final;
+        void setVisible(Visible visible) final;
 
     private:
         void loadFile(const int num);

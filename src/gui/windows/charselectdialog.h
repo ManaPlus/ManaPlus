@@ -65,9 +65,9 @@ class CharSelectDialog final : public Window,
 
         ~CharSelectDialog();
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
-        void keyPressed(KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) final;
 
         enum SelectAction
         {
@@ -88,13 +88,13 @@ class CharSelectDialog final : public Window,
 
         void askPasswordForDeletion(const int index);
 
-        void close() override final;
+        void close() final;
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
         void updateState();
 
-        void postInit() override final;
+        void postInit() final;
 
         void setName(const BeingId id, const std::string &newName);
 

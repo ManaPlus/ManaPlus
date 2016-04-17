@@ -100,9 +100,9 @@ class TextPreview final : public Widget
          *
          * @param graphics graphics to draw into
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         /**
          * Set opacity for this widget (whether or not to show the background

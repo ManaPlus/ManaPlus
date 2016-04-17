@@ -125,29 +125,29 @@ class Slider final : public Widget,
         /**
          * Draws the slider.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(MouseEvent& event) override final;
+        void mouseEntered(MouseEvent& event) final;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(MouseEvent& event) override final;
+        void mouseExited(MouseEvent& event) final;
 
-        void mousePressed(MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) final;
 
-        void mouseDragged(MouseEvent &event) override final;
+        void mouseDragged(MouseEvent &event) final;
 
-        void mouseWheelMovedUp(MouseEvent &event) override final;
+        void mouseWheelMovedUp(MouseEvent &event) final;
 
-        void mouseWheelMovedDown(MouseEvent &event) override final;
+        void mouseWheelMovedDown(MouseEvent &event) final;
 
-        void keyPressed(KeyEvent& event) override final;
+        void keyPressed(KeyEvent& event) final;
 
         /**
          * Sets the scale of the slider.

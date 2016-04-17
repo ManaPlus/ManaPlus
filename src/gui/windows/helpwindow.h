@@ -56,13 +56,13 @@ class HelpWindow final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Handles link action.
          */
         void handleLink(const std::string &link,
-                        MouseEvent *const event A_UNUSED) override final;
+                        MouseEvent *const event A_UNUSED) final;
 
         /**
          * Loads help in the dialog.

@@ -37,59 +37,59 @@ class ChatHandler final : public Ea::ChatHandler
         A_DELETE_COPY(ChatHandler)
 
         void talk(const std::string &restrict text,
-                  const std::string &restrict channel) const override final;
+                  const std::string &restrict channel) const final;
 
-        void talkRaw(const std::string &text) const override final;
+        void talkRaw(const std::string &text) const final;
 
         void privateMessage(const std::string &restrict recipient,
                             const std::string &restrict text) const
-                            override final;
+                            final;
 
         void channelMessage(const std::string &restrict channel,
                             const std::string &restrict text) const
-                            override final;
+                            final;
 
-        void joinChannel(const std::string &channel) const override final;
+        void joinChannel(const std::string &channel) const final;
 
-        void who() const override final;
+        void who() const final;
 
-        void sendRaw(const std::string &args) const override final;
+        void sendRaw(const std::string &args) const final;
 
-        void ignoreAll() const override final;
+        void ignoreAll() const final;
 
-        void unIgnoreAll() const override final;
+        void unIgnoreAll() const final;
 
         void createChatRoom(const std::string &title,
                             const std::string &password,
                             const int limit,
-                            const bool isPublic) const override final;
+                            const bool isPublic) const final;
 
-        void ignore(const std::string &nick) const override final;
+        void ignore(const std::string &nick) const final;
 
-        void unIgnore(const std::string &nick) const override final;
+        void unIgnore(const std::string &nick) const final;
 
-        void requestIgnoreList() const override final;
+        void requestIgnoreList() const final;
 
-        void battleTalk(const std::string &text) const override final;
+        void battleTalk(const std::string &text) const final;
 
         void joinChat(const ChatObject *const chat,
-                      const std::string &password) const override final;
+                      const std::string &password) const final;
 
-        void partChannel(const std::string &channel) const override final;
+        void partChannel(const std::string &channel) const final;
 
         void talkPet(const std::string &restrict text,
-                     const std::string &restrict channel) const override final;
+                     const std::string &restrict channel) const final;
 
-        void leaveChatRoom() const override final;
+        void leaveChatRoom() const final;
 
         void setChatRoomOptions(const int limit,
                                 const bool isPublic,
                                 const std::string &password,
-                                const std::string &title) const override final;
+                                const std::string &title) const final;
 
-        void setChatRoomOwner(const std::string &nick) const override final;
+        void setChatRoomOwner(const std::string &nick) const final;
 
-        void kickFromChatRoom(const std::string &nick) const override final;
+        void kickFromChatRoom(const std::string &nick) const final;
 
     protected:
         static void processRaw(MessageOut &restrict outMsg,

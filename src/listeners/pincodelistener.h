@@ -30,7 +30,7 @@
 class PincodeListener final : public ActionListener
 {
     public:
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 };
 
 extern PincodeListener pincodeListener;

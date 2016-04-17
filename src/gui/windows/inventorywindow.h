@@ -75,14 +75,14 @@ class InventoryWindow final : public Window,
          */
         ~InventoryWindow();
 
-        void postInit() override final;
+        void postInit() final;
 
         void storeSortOrder() const;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Returns the selected item.
@@ -97,35 +97,35 @@ class InventoryWindow final : public Window,
         /**
          * Handles closing of the window
          */
-        void widgetHidden(const Event &event) override final;
+        void widgetHidden(const Event &event) final;
 
         /**
          * Handles the mouse clicks.
          */
-        void mouseClicked(MouseEvent &event) override final;
+        void mouseClicked(MouseEvent &event) final;
 
         /**
          * Handles the key presses.
          */
-        void keyPressed(KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) final;
 
         /**
          * Handles the key releases.
          */
-        void keyReleased(KeyEvent &event) override final;
+        void keyReleased(KeyEvent &event) final;
 
         /**
          * Updates labels to currently selected item.
          */
-        void valueChanged(const SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) final;
 
         /**
          * Closes the Storage Window, as well as telling the server that the
          * window has been closed.
          */
-        void close() override final;
+        void close() final;
 
-        void slotsChanged(const Inventory *const inventory) override final;
+        void slotsChanged(const Inventory *const inventory) final;
 
         bool isMainInventory() const A_WARN_UNUSED
         { return mInventory ? mInventory->isMainInventory() : false; }
@@ -142,19 +142,19 @@ class InventoryWindow final : public Window,
 
         bool isInputFocused() const A_WARN_UNUSED;
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
-        void mouseMoved(MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) final;
 
-        void mouseExited(MouseEvent &event) override final;
+        void mouseExited(MouseEvent &event) final;
 
-        void setVisible(Visible visible) override final;
+        void setVisible(Visible visible) final;
 
         void unsetInventory();
 
         void attributeChanged(const AttributesT id,
                               const int oldVal,
-                              const int newVal) override final;
+                              const int newVal) final;
 
 #ifdef EATHENA_SUPPORT
         void combineItems(const int index1,

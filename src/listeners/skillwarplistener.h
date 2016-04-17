@@ -36,7 +36,7 @@ class SkillWarpListener final : public ActionListener
 
         A_DELETE_COPY(SkillWarpListener)
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         void setDialog(TextSelectDialog *const dialog)
         { mDialog = dialog; }

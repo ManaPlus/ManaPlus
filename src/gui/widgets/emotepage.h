@@ -41,17 +41,17 @@ class EmotePage final : public Widget,
 
         ~EmotePage();
 
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
-        void mousePressed(MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) final;
 
         int getIndexFromGrid(const int x, const int y) const;
 
-        void widgetResized(const Event &event A_UNUSED) override final;
+        void widgetResized(const Event &event A_UNUSED) final;
 
-        void widgetMoved(const Event &event A_UNUSED) override final;
+        void widgetMoved(const Event &event A_UNUSED) final;
 
         void resetAction();
 

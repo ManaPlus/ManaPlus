@@ -34,14 +34,14 @@ class FriendsHandler final : public Net::FriendsHandler
 
         A_DELETE_COPY(FriendsHandler)
 
-        void invite(const std::string &name) const override final A_CONST;
+        void invite(const std::string &name) const final A_CONST;
 
         void inviteResponse(const int accountId,
                             const int charId,
-                            const bool accept) const override final A_CONST;
+                            const bool accept) const final A_CONST;
 
         void remove(const int accountId,
-                    const int charId) const override final A_CONST;
+                    const int charId) const final A_CONST;
 };
 
 }  // namespace TmwAthena

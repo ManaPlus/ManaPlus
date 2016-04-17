@@ -56,7 +56,7 @@ class MapDebugTab final : public DebugTab
 
         A_DELETE_COPY(MapDebugTab)
 
-        void logic() override final;
+        void logic() final;
 
     private:
         Label *mMusicFileLabel A_NONNULLPOINTER;
@@ -88,7 +88,7 @@ class TargetDebugTab final : public DebugTab
 
         A_DELETE_COPY(TargetDebugTab)
 
-        void logic() override final;
+        void logic() final;
 
     private:
         Label *mTargetLabel A_NONNULLPOINTER;
@@ -116,7 +116,7 @@ class NetDebugTab final : public DebugTab
 
         A_DELETE_COPY(NetDebugTab)
 
-        void logic() override final;
+        void logic() final;
 
     private:
         Label *mPingLabel A_NONNULLPOINTER;

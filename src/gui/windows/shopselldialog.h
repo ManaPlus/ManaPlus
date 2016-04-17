@@ -45,7 +45,7 @@ class ShopSellDialog final : public SellDialog
         A_DELETE_COPY(ShopSellDialog)
 
     protected:
-        void sellAction(const ActionEvent &event) override final;
+        void sellAction(const ActionEvent &event) final;
 
         std::string mNick;
 };

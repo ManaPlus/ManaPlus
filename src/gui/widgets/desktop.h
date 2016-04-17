@@ -63,16 +63,16 @@ class Desktop final : public Container,
          */
         void reloadWallpaper();
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
-        void postInit() override final;
+        void postInit() final;
 
         void handleLink(const std::string &link,
-                        MouseEvent *event) override final;
+                        MouseEvent *event) final;
     private:
         void setBestFittingWallpaper();
 

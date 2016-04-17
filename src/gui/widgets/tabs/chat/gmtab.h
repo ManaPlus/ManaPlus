@@ -37,11 +37,11 @@ class GmTab final : public ChatTab
 
     protected:
         void getAutoCompleteList(StringVect &names) const
-                                 override final A_CONST;
+                                 final A_CONST;
 
-        void handleInput(const std::string &msg) override final;
+        void handleInput(const std::string &msg) final;
 
-        void handleCommandStr(const std::string &msg) override final A_CONST;
+        void handleCommandStr(const std::string &msg) final A_CONST;
 };
 
 extern GmTab *gmChatTab;

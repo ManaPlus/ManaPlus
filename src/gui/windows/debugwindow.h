@@ -47,20 +47,20 @@ class DebugWindow final : public Window
 
         ~DebugWindow();
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Logic (updates components' size and infos)
          */
         void slowLogic();
 
-        void draw(Graphics *const g) override final A_NONNULL(2);
+        void draw(Graphics *const g) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const g) override final A_NONNULL(2);
+        void safeDraw(Graphics *const g) final A_NONNULL(2);
 
         void setPing(int pingTime);
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
 #ifdef USE_PROFILER
         void logicChildren();

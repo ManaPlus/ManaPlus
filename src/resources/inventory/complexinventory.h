@@ -47,7 +47,7 @@ class ComplexInventory final : public Inventory
 
         bool addVirtualItem(const Item *const item,
                             int index,
-                            const int amount) override final;
+                            const int amount) final;
 
         void setItem(const int index,
                      const int id,
@@ -59,7 +59,7 @@ class ComplexInventory final : public Inventory
                      const Damaged damaged,
                      const Favorite favorite,
                      const Equipm equipment,
-                     const Equipped equipped) override final;
+                     const Equipped equipped) final;
 };
 
 #endif  // RESOURCES_INVENTORY_COMPLEXINVENTORY_H

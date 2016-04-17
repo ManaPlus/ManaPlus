@@ -87,7 +87,7 @@ class SkillListBox final : public ListBox
             return static_cast<SkillModel*>(mListModel)->getSkillAt(selected);
         }
 
-        void draw(Graphics *const graphics) override final A_NONNULL(2)
+        void draw(Graphics *const graphics) final A_NONNULL(2)
         {
             if (!mListModel)
                 return;
@@ -171,12 +171,12 @@ class SkillListBox final : public ListBox
             }
         }
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2)
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2)
         {
             SkillListBox::draw(graphics);
         }
 
-        unsigned int getRowHeight() const override final
+        unsigned int getRowHeight() const final
         { return mRowHeight; }
 
         const SkillInfo *getSkillByEvent(const MouseEvent &event) const
@@ -190,7 +190,7 @@ class SkillListBox final : public ListBox
             return skill;
         }
 
-        void mouseMoved(MouseEvent &event) override final
+        void mouseMoved(MouseEvent &event) final
         {
             ListBox::mouseMoved(event);
             if (!viewport || !dragDrop.isEmpty())
@@ -205,7 +205,7 @@ class SkillListBox final : public ListBox
                 viewport->mMouseY);
         }
 
-        void mouseDragged(MouseEvent &event) override final
+        void mouseDragged(MouseEvent &event) final
         {
             if (event.getButton() == MouseButton::LEFT)
             {
@@ -229,7 +229,7 @@ class SkillListBox final : public ListBox
             }
         }
 
-        void mousePressed(MouseEvent &event) override final
+        void mousePressed(MouseEvent &event) final
         {
             ListBox::mousePressed(event);
             if (event.getButton() == MouseButton::LEFT)
@@ -254,12 +254,12 @@ class SkillListBox final : public ListBox
             }
         }
 
-        void mouseReleased(MouseEvent &event) override final
+        void mouseReleased(MouseEvent &event) final
         {
             ListBox::mouseReleased(event);
         }
 
-        void mouseExited(MouseEvent &event A_UNUSED) override final
+        void mouseExited(MouseEvent &event A_UNUSED) final
         {
             skillPopup->hide();
         }

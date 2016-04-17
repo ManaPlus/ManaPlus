@@ -32,20 +32,20 @@ class MercenaryHandler final : public Net::MercenaryHandler
 
         A_DELETE_COPY(MercenaryHandler)
 
-        void fire() const override final;
+        void fire() const final;
 
-        void moveToMaster() const override final;
+        void moveToMaster() const final;
 
-        void move(const int x, const int y) const override final;
+        void move(const int x, const int y) const final;
 
         void attack(const BeingId targetId,
-                    const Keep keep) const override final;
+                    const Keep keep) const final;
 
-        void talk(const std::string &restrict text) const override final;
+        void talk(const std::string &restrict text) const final;
 
-        void emote(const uint8_t emoteId) const override final;
+        void emote(const uint8_t emoteId) const final;
 
-        void setDirection(const unsigned char type) const override final;
+        void setDirection(const unsigned char type) const final;
 };
 
 }  // namespace EAthena

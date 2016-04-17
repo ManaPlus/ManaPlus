@@ -32,7 +32,7 @@ class InputActionRemoteListener final : public ActionListener
 
         A_DELETE_COPY(InputActionRemoteListener)
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         void setCommand(const std::string &command,
                         const std::string &args)

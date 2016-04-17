@@ -48,11 +48,11 @@ class BankWindow final : public Window,
 
         ~BankWindow();
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
-        void widgetShown(const Event &event) override final;
+        void widgetShown(const Event &event) final;
 
-        void bankMoneyChanged(const int money) override final;
+        void bankMoneyChanged(const int money) final;
 
     private:
         Label *mBankMoneyLabel;

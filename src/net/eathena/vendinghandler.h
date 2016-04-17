@@ -32,23 +32,23 @@ class VendingHandler final : public Net::VendingHandler
 
         A_DELETE_COPY(VendingHandler)
 
-        void close() const override final;
+        void close() const final;
 
-        void open(const Being *const being) const override final;
+        void open(const Being *const being) const final;
 
         void buy(const Being *const being,
                  const int index,
-                 const int amount) const override final;
+                 const int amount) const final;
 
         void buy2(const Being *const being,
                   const int vendId,
                   const int index,
-                  const int amount) const override final;
+                  const int amount) const final;
 
         void createShop(const std::string &name,
                         const bool flag,
                         const std::vector<ShopItem*> &items) const
-                        override final;
+                        final;
 };
 
 }  // namespace EAthena

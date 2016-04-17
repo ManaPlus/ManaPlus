@@ -56,11 +56,11 @@ class TextCommandEditor final : public Window,
          */
         ~TextCommandEditor();
 
-        void postInit() override final;
+        void postInit() final;
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
-        void scheduleDelete() override final;
+        void scheduleDelete() final;
 
     private:
 #ifdef TMWA_SUPPORT

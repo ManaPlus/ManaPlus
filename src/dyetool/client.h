@@ -74,7 +74,7 @@ class Client final : public ActionListener
         StateT getState() const A_WARN_UNUSED
         { return mState; }
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         void moveButtons(const int width);
 

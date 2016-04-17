@@ -50,17 +50,17 @@ class ConnectionDialog final : public Window,
 
         A_DELETE_COPY(ConnectionDialog)
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Called when the user presses Cancel. Restores the global state to
          * the previous one.
          */
-        void action(const ActionEvent &) override final;
+        void action(const ActionEvent &) final;
 
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
     private:
         StateT mCancelState;

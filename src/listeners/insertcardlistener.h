@@ -41,7 +41,7 @@ struct InsertCardListener final : public ActionListener
     A_DELETE_COPY(InsertCardListener)
 
     public:
-        void action(const ActionEvent &event) override final
+        void action(const ActionEvent &event) final
         {
             if (event.getId() == "yes" && inventoryHandler)
                 inventoryHandler->insertCard(cardIndex, itemIndex);

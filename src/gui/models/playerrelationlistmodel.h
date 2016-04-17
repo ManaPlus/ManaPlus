@@ -53,12 +53,12 @@ class PlayerRelationListModel final : public ListModel
         ~PlayerRelationListModel()
         { }
 
-        int getNumberOfElements() override final
+        int getNumberOfElements() final
         {
             return PlayerRelation::RELATIONS_NR;
         }
 
-        std::string getElementAt(int i) override final
+        std::string getElementAt(int i) final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "";

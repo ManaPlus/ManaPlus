@@ -65,18 +65,18 @@ class EquipmentWindow final : public Window,
          */
         ~EquipmentWindow();
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Draws the equipment window.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
-        void mousePressed(MouseEvent& event) override final;
+        void mousePressed(MouseEvent& event) final;
 
         const Item* getEquipment(const int i) const A_WARN_UNUSED
         { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }
@@ -87,11 +87,11 @@ class EquipmentWindow final : public Window,
 
         void resetBeing(const Being *const being);
 
-        void mouseExited(MouseEvent &event) override final;
+        void mouseExited(MouseEvent &event) final;
 
-        void mouseMoved(MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) final;
 
-        void mouseReleased(MouseEvent &event) override final;
+        void mouseReleased(MouseEvent &event) final;
 
         void recalcSize();
 

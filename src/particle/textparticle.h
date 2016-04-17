@@ -44,14 +44,14 @@ class TextParticle final : public Particle
         void draw(Graphics *restrict const graphics,
                   const int offsetX,
                   const int offsetY) const
-                  restrict2 override final A_NONNULL(2);
+                  restrict2 final A_NONNULL(2);
 
         // hack to improve text visibility
-        int getPixelY() const restrict2 override final A_WARN_UNUSED
+        int getPixelY() const restrict2 final A_WARN_UNUSED
         { return CAST_S32(mPos.y + mPos.z); }
 
         // hack to improve text visibility (for sorting only)
-        int getSortPixelY() const restrict2 override final A_WARN_UNUSED
+        int getSortPixelY() const restrict2 final A_WARN_UNUSED
         { return CAST_S32(mPos.y + mPos.z); }
 
     private:

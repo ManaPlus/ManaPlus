@@ -35,26 +35,26 @@ class MailHandler final : public Net::MailHandler
 
         A_DELETE_COPY(MailHandler)
 
-        void refresh() const override final A_CONST;
+        void refresh() const final A_CONST;
 
-        void readMessage(const int msgId) const override final A_CONST;
+        void readMessage(const int msgId) const final A_CONST;
 
-        void getAttach(const int msgId) const override final A_CONST;
+        void getAttach(const int msgId) const final A_CONST;
 
-        void deleteMessage(const int msgId) const override final A_CONST;
+        void deleteMessage(const int msgId) const final A_CONST;
 
-        void returnMessage(const int msgId) const override final A_CONST;
+        void returnMessage(const int msgId) const final A_CONST;
 
         void setAttach(const int index,
-                       const int amount) const override final A_CONST;
+                       const int amount) const final A_CONST;
 
-        void setAttachMoney(const int money) const override final A_CONST;
+        void setAttachMoney(const int money) const final A_CONST;
 
-        void resetAttach(const int flag) const override final A_CONST;
+        void resetAttach(const int flag) const final A_CONST;
 
         void send(const std::string &name,
                   const std::string &title,
-                  std::string message) const override final A_CONST;
+                  std::string message) const final A_CONST;
 };
 
 }  // namespace TmwAthena

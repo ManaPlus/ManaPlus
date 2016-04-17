@@ -283,7 +283,7 @@ class Map final : public Properties, public ConfigListener
                                                 const restrict2 A_WARN_UNUSED;
 
         void optionChanged(const std::string &restrict value)
-                           restrict2 override final;
+                           restrict2 final;
 
         MapItem *findPortalXY(const int x,
                               const int y) const restrict2 A_WARN_UNUSED;

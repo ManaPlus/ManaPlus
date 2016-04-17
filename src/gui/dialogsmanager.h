@@ -51,11 +51,11 @@ class DialogsManager final : public AttributeListener,
                                        const std::string &message,
                                        const Modal modal) RETURNS_NONNULL;
 
-        void playerDeath() override final;
+        void playerDeath() final;
 
         void attributeChanged(const AttributesT id,
                               const int oldVal,
-                              const int newVal) override final;
+                              const int newVal) final;
 };
 
 extern DialogsManager *dialogsManager;

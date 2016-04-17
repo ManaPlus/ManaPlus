@@ -109,9 +109,9 @@ class Tab notfinal : public BasicContainer,
         /**
          * Draw the tabbed area.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         /**
          * Set the normal color for the tab's text.
@@ -177,9 +177,9 @@ class Tab notfinal : public BasicContainer,
         int getFlash() const A_WARN_UNUSED
         { return mFlash; }
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
-        void widgetMoved(const Event &event) override final;
+        void widgetMoved(const Event &event) final;
 
         void setLabelFont(Font *const font);
 
@@ -196,9 +196,9 @@ class Tab notfinal : public BasicContainer,
 
         const std::string &getCaption() const A_WARN_UNUSED;
 
-        void mouseEntered(MouseEvent &event) override final;
+        void mouseEntered(MouseEvent &event) final;
 
-        void mouseExited(MouseEvent &event) override final;
+        void mouseExited(MouseEvent &event) final;
 
         void setImage(Image *const image);
 

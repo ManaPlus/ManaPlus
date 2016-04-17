@@ -61,7 +61,7 @@ class CharCreateDialog final : public Window,
          */
         ~CharCreateDialog();
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Unlocks the dialog, enabling the create character button again.
@@ -74,11 +74,11 @@ class CharCreateDialog final : public Window,
 
         void setDefaultGender(const GenderT gender = Gender::FEMALE);
 
-        void logic() override final;
+        void logic() final;
 
         void updatePlayer();
 
-        void keyPressed(KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) final;
 
     private:
         int getDistributedPoints() const A_WARN_UNUSED;

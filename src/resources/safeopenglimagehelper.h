@@ -78,18 +78,18 @@ class SafeOpenGLImageHelper final : public ImageHelper
          *         otherwise.
          */
         Image *load(SDL_RWops *const rw,
-                    Dye const &dye) override final A_WARN_UNUSED;
+                    Dye const &dye) final A_WARN_UNUSED;
 
         /**
          * Loads an image from an SDL surface.
          */
         Image *load(SDL_Surface *const tmpImage)
-                    override final A_WARN_UNUSED;
+                    final A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
                                  const int width, const int height,
                                  const float alpha)
-                                 override final A_WARN_UNUSED;
+                                 final A_WARN_UNUSED;
 
         // OpenGL only public functions
 
@@ -122,13 +122,13 @@ class SafeOpenGLImageHelper final : public ImageHelper
         static void bindTexture(const GLuint texture);
 
         SDL_Surface *create32BitSurface(int width,
-                                        int height) const override final;
+                                        int height) const final;
 
-        void postInit() override final;
+        void postInit() final;
 
         void copySurfaceToImage(const Image *const image,
                                 const int x, const int y,
-                                SDL_Surface *surface) const override final;
+                                SDL_Surface *surface) const final;
 
     protected:
         /**

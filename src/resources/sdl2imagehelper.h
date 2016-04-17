@@ -55,17 +55,17 @@ class SDLImageHelper final : public ImageHelper
          * Loads an image from an SDL surface.
          */
         Image *load(SDL_Surface *const tmpImage)
-                    override final A_WARN_UNUSED;
+                    final A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
                                  const int width, const int height,
                                  const float alpha)
-                                 override final A_WARN_UNUSED;
+                                 final A_WARN_UNUSED;
 
         void copySurfaceToImage(const Image *const image,
                                 const int x, const int y,
                                 SDL_Surface *const surface)
-                                const override final;
+                                const final;
 
         static void SDLSetEnableAlphaCache(const bool n)
         { mEnableAlphaCache = n; }

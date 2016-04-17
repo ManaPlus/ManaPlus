@@ -41,15 +41,15 @@ class AvatarListBox final : public ListBox,
         /**
          * Draws the list box.
          */
-        void draw(Graphics *gcnGraphics) override final A_NONNULL(2);
+        void draw(Graphics *gcnGraphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *gcnGraphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *gcnGraphics) final A_NONNULL(2);
 
-        void mousePressed(MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) final;
 
-        void mouseReleased(MouseEvent &event A_UNUSED) override final A_CONST;
+        void mouseReleased(MouseEvent &event A_UNUSED) final A_CONST;
 
-        void optionChanged(const std::string &value) override final;
+        void optionChanged(const std::string &value) final;
 
     private:
         int mImagePadding;

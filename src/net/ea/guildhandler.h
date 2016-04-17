@@ -37,9 +37,9 @@ class GuildHandler notfinal : public Net::GuildHandler
 
         virtual ~GuildHandler();
 
-        void clear() const override final;
+        void clear() const final;
 
-        ChatTab *getTab() const override final;
+        ChatTab *getTab() const final;
 };
 
 extern Guild *taGuild;

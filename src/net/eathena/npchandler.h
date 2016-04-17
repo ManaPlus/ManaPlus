@@ -35,61 +35,61 @@ class NpcHandler final : public Ea::NpcHandler
 
         A_DELETE_COPY(NpcHandler)
 
-        void talk(const BeingId npcId) const override final;
+        void talk(const BeingId npcId) const final;
 
-        void nextDialog(const BeingId npcId) const override final;
+        void nextDialog(const BeingId npcId) const final;
 
-        void closeDialog(const BeingId npcId) override final;
+        void closeDialog(const BeingId npcId) final;
 
         void listInput(const BeingId npcId,
-                       const unsigned char value) const override final;
+                       const unsigned char value) const final;
 
         void integerInput(const BeingId npcId,
-                          const int value) const override final;
+                          const int value) const final;
 
         void stringInput(const BeingId npcId,
-                         const std::string &value) const override final;
+                         const std::string &value) const final;
 
-        void buy(const BeingId beingId) const override final;
+        void buy(const BeingId beingId) const final;
 
-        void sell(const BeingId beingId) const override final;
+        void sell(const BeingId beingId) const final;
 
         void buyItem(const BeingId beingId,
                      const int itemId,
                      const ItemColor color,
-                     const int amount) const override final;
+                     const int amount) const final;
 
         void buyItems(std::vector<ShopItem*> &items) const
-                      override final;
+                      final;
 
         void sellItem(const BeingId beingId,
                       const int itemId,
-                      const int amount) const override final;
+                      const int amount) const final;
 
-        void sellItems(std::vector<ShopItem*> &items) const override final;
+        void sellItems(std::vector<ShopItem*> &items) const final;
 
-        void completeProgressBar() const override final;
+        void completeProgressBar() const final;
 
         void produceMix(const int nameId,
                         const int materialId1,
                         const int materialId2,
-                        const int materialId3) const override final;
+                        const int materialId3) const final;
 
         void cooking(const CookingTypeT type,
-                     const int nameId) const override final;
+                     const int nameId) const final;
 
-        void repair(const int index) const override final;
+        void repair(const int index) const final;
 
-        void refine(const int index) const override final;
+        void refine(const int index) const final;
 
         BeingId getNpc(Net::MessageIn &msg,
-                       const NpcActionT action) override final;
+                       const NpcActionT action) final;
 
-        void identify(const int index) const override final;
+        void identify(const int index) const final;
 
-        void selectArrow(const int nameId) const override final;
+        void selectArrow(const int nameId) const final;
 
-        void selectAutoSpell(const int skillId) const override final;
+        void selectAutoSpell(const int skillId) const final;
 };
 
 }  // namespace EAthena

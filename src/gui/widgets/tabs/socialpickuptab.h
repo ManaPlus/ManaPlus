@@ -58,7 +58,7 @@ class SocialPickupTab final : public SocialTab
             delete2(mBeings)
         }
 
-        void updateList() override final
+        void updateList() final
         {
             updateAtkListStart();
             // TRANSLATORS: items group name in social window

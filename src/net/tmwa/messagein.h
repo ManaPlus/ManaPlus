@@ -49,13 +49,13 @@ class MessageIn final : public Net::MessageIn
         void postInit(const char *const str);
 
         /**< Reads a short. */
-        int16_t readInt16(const char *const str) override final;
+        int16_t readInt16(const char *const str) final;
         /**< Reads a long. */
-        int32_t readInt32(const char *const str) override final;
+        int32_t readInt32(const char *const str) final;
 
-        int64_t readInt64(const char *const str) override final;
+        int64_t readInt64(const char *const str) final;
 
-        BeingId readBeingId(const char *const str) override final;
+        BeingId readBeingId(const char *const str) final;
 
         uint16_t readId() const;
 };

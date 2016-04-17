@@ -44,13 +44,13 @@ class Setup_Colors final : public SetupTab,
 
         ~Setup_Colors();
 
-        void apply() override final;
+        void apply() final;
 
-        void cancel() override final;
+        void cancel() final;
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
-        void valueChanged(const SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) final;
 
     private:
         static const char *const rawmsg;

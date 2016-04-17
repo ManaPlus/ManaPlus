@@ -91,11 +91,11 @@ class StatusWindow final : public Window,
 
         void attributeChanged(const AttributesT id,
                               const int oldVal,
-                              const int newVal) override final;
+                              const int newVal) final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,
-                         const int oldVal2) override final;
+                         const int oldVal2) final;
 
         void updateLevelLabel();
 

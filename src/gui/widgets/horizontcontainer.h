@@ -45,13 +45,13 @@ class HorizontContainer final : public Container,
 
         A_DELETE_COPY(HorizontContainer)
 
-        void add(Widget *const widget) override final;
+        void add(Widget *const widget) final;
 
         void add(Widget *const widget, const int spacing);
 
         void clear() override;
 
-        void widgetResized(const Event &event) override final A_CONST;
+        void widgetResized(const Event &event) final A_CONST;
 
     protected:
         int mSpacing;

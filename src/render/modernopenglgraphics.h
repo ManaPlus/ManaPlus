@@ -56,25 +56,25 @@ class ModernOpenGLGraphics final : public Graphics
 
         ~ModernOpenGLGraphics();
 
-        void postInit() restrict2 override final;
+        void postInit() restrict2 final;
 
-        void setColor(const Color &restrict color) restrict2 override final;
+        void setColor(const Color &restrict color) restrict2 final;
 
-        void screenResized() restrict2 override final;
+        void screenResized() restrict2 final;
 
         void finalize(ImageCollection *restrict const col)
-                      restrict2 override final;
+                      restrict2 final;
 
         void finalize(ImageVertexes *restrict const vert)
-                      restrict2 override final;
+                      restrict2 final;
 
-        void testDraw() restrict2 override final;
+        void testDraw() restrict2 final;
 
         void removeArray(const uint32_t id,
                          uint32_t *restrict const arr)
-                         restrict2 override final A_NONNULL(3);
+                         restrict2 final A_NONNULL(3);
 
-        void createGLContext() restrict2 override final;
+        void createGLContext() restrict2 final;
 
         #include "render/graphicsdef.hpp"
 

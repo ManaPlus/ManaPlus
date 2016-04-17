@@ -37,18 +37,18 @@ class CashShopHandler final : public Net::CashShopHandler
         void buyItem(const int points,
                      const int itemId,
                      const ItemColor color,
-                     const int amount) const override final;
+                     const int amount) const final;
 
-        void buyItems(const std::vector<ShopItem*> &items) const override final
+        void buyItems(const std::vector<ShopItem*> &items) const final
                       A_CONST;
 
-        void close() const override final;
+        void close() const final;
 
-        void requestPoints() const override final;
+        void requestPoints() const final;
 
-        void requestTab(const int tab) const override final;
+        void requestTab(const int tab) const final;
 
-        void schedule() const override final;
+        void schedule() const final;
 };
 
 }  // namespace EAthena

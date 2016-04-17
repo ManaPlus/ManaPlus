@@ -224,10 +224,10 @@ class Particle notfinal : public Actor
         { mAutoDelete = false; }
 
         /** We consider particles (at least for now) to be one layer-sprites */
-        int getNumberOfLayers() const restrict2 override final
+        int getNumberOfLayers() const restrict2 final
         { return 1; }
 
-        float getAlpha() const restrict2 override final
+        float getAlpha() const restrict2 final
         { return 1.0F; }
 
         void setAlpha(const float alpha A_UNUSED) restrict2 override

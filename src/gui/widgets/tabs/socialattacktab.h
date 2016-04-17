@@ -58,7 +58,7 @@ class SocialAttackTab final : public SocialTab
             delete2(mBeings)
         }
 
-        void updateList() override final
+        void updateList() final
         {
             updateAtkListStart();
             // TRANSLATORS: mobs group name in social window

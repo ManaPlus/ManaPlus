@@ -35,21 +35,21 @@ class MercenaryHandler final : public Net::MercenaryHandler
 
         A_DELETE_COPY(MercenaryHandler)
 
-        void fire() const override final A_CONST;
+        void fire() const final A_CONST;
 
-        void moveToMaster() const override final A_CONST;
+        void moveToMaster() const final A_CONST;
 
-        void move(const int x, const int y) const override final A_CONST;
+        void move(const int x, const int y) const final A_CONST;
 
         void attack(const BeingId targetId,
-                    const Keep keep) const override final A_CONST;
+                    const Keep keep) const final A_CONST;
 
-        void talk(const std::string &restrict text) const override final
+        void talk(const std::string &restrict text) const final
                   A_CONST;
 
-        void emote(const uint8_t emoteId) const override final A_CONST;
+        void emote(const uint8_t emoteId) const final A_CONST;
 
-        void setDirection(const unsigned char type) const override final
+        void setDirection(const unsigned char type) const final
                           A_CONST;
 };
 

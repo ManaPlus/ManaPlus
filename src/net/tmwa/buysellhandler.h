@@ -36,20 +36,20 @@ class BuySellHandler final : public Ea::BuySellHandler
         A_DELETE_COPY(BuySellHandler)
 
         void requestSellList(const std::string &nick)
-                             const override final;
+                             const final;
 
         void requestBuyList(const std::string &nick)
-                            const override final;
+                            const final;
 
         void sendBuyRequest(const std::string &nick,
                             const ShopItem *const item,
-                            const int amount) const override final;
+                            const int amount) const final;
 
         void sendSellRequest(const std::string &nick,
                              const ShopItem *const item,
-                             const int amount) const override final;
+                             const int amount) const final;
 
-        void close() const override final A_CONST;
+        void close() const final A_CONST;
 };
 
 }  // namespace TmwAthena

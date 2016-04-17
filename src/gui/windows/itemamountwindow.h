@@ -50,12 +50,12 @@ class ItemAmountWindow final : public Window,
     public:
         A_DELETE_COPY(ItemAmountWindow)
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Called when receiving actions from widget.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Sets default amount value.
@@ -63,16 +63,16 @@ class ItemAmountWindow final : public Window,
         void resetAmount();
 
         // MouseListener
-        void mouseMoved(MouseEvent &event) override final;
+        void mouseMoved(MouseEvent &event) final;
 
-        void mouseExited(MouseEvent &event) override final;
+        void mouseExited(MouseEvent &event) final;
 
         /**
          * Schedules the Item Amount window for deletion.
          */
-        void close() override final;
+        void close() final;
 
-        void keyReleased(KeyEvent &event) override final;
+        void keyReleased(KeyEvent &event) final;
 
         /**
          * Creates the dialog, or bypass it if there aren't enough items.

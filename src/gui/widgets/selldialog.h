@@ -80,14 +80,14 @@ class SellDialog notfinal : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Updates labels according to selected item.
          *
          * @see SelectionListener::selectionChanged
          */
-        void valueChanged(const SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) final;
 
         /**
          * Gives Player's Money amount
@@ -97,7 +97,7 @@ class SellDialog notfinal : public Window,
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(Visible visible) override final;
+        void setVisible(Visible visible) final;
 
         ShopItem *addItem(const int id,
                           const ItemTypeT type,

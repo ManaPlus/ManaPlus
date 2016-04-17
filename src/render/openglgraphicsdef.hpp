@@ -26,7 +26,7 @@ public:
 
     void drawNet(const int x1, const int y1,
                  const int x2, const int y2,
-                 const int width, const int height) restrict2 override final;
+                 const int width, const int height) restrict2 final;
 
     static void dumpSettings();
 
@@ -34,12 +34,12 @@ public:
 
     void updateTextureFormat() restrict2;
 
-    bool isAllowScale() const restrict2 noexcept override final
+    bool isAllowScale() const restrict2 noexcept final
     { return true; }
 
-    void clearScreen() const restrict2 override final;
+    void clearScreen() const restrict2 final;
 
-    void deleteArrays() restrict2 override final;
+    void deleteArrays() restrict2 final;
 
     static void bindTexture(const GLenum target, const GLuint texture);
 

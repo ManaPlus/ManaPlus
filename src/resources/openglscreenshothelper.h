@@ -40,9 +40,9 @@ class OpenGLScreenshotHelper final : public ScreenshotHelper
 
         ~OpenGLScreenshotHelper();
 
-        void prepare() override final;
+        void prepare() final;
 
-        SDL_Surface *getScreenshot() override final;
+        SDL_Surface *getScreenshot() final;
 
     private:
         FBOInfo mFbo;

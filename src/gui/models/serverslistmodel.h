@@ -53,7 +53,7 @@ class ServersListModel final : public ListModel
         /**
          * Used to get number of line in the list
          */
-        int getNumberOfElements() override final A_WARN_UNUSED
+        int getNumberOfElements() final A_WARN_UNUSED
         {
             MutexLocker lock = mParent->lock();
             return CAST_S32(mServers->size());
@@ -63,7 +63,7 @@ class ServersListModel final : public ListModel
          * Used to get an element from the list
          */
         std::string getElementAt(int elementIndex)
-                                 override final A_WARN_UNUSED
+                                 final A_WARN_UNUSED
         {
             MutexLocker lock = mParent->lock();
             const ServerInfo &server = mServers->at(elementIndex);

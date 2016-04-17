@@ -68,12 +68,12 @@ class IconsModel final : public ListModel
         ~IconsModel()
         { }
 
-        int getNumberOfElements() override final
+        int getNumberOfElements() final
         {
             return CAST_S32(mStrings.size());
         }
 
-        std::string getElementAt(int i) override final
+        std::string getElementAt(int i) final
         {
             if (i < 0 || i >= getNumberOfElements())
                 return "???";

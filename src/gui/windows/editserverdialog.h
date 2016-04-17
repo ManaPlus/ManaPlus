@@ -54,14 +54,14 @@ class EditServerDialog final : public Window,
 
         ~EditServerDialog();
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
-        void keyPressed(KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) final;
 
     private:
         TextField *mServerAddressField A_NONNULLPOINTER;

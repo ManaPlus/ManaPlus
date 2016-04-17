@@ -42,13 +42,13 @@ class ModeListModel final : public ListModel
         /**
          * Returns the number of elements in container.
          */
-        int getNumberOfElements() override final
+        int getNumberOfElements() final
         { return CAST_S32(mVideoModes.size()); }
 
         /**
          * Returns element from container.
          */
-        std::string getElementAt(int i) override final
+        std::string getElementAt(int i) final
         { return mVideoModes[CAST_SIZE(i)]; }
 
         /**

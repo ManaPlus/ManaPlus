@@ -61,7 +61,7 @@ class ConfirmDialog notfinal : public Window,
          */
         void action(const ActionEvent &event) override;
 
-        void postInit() override final;
+        void postInit() final;
 
     private:
         TextBox *mTextBox A_NONNULLPOINTER;

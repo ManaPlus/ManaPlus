@@ -127,7 +127,7 @@ class ScrollArea final : public BasicContainer,
          * Logic function optionally adapts width or height of contents. This
          * depends on the scrollbar settings.
          */
-        void logic() override final;
+        void logic() final;
 
         /**
          * Update the alpha value to the graphic components.
@@ -137,16 +137,16 @@ class ScrollArea final : public BasicContainer,
         /**
          * Draws the scroll area.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         /**
          * Draws the background and border of the scroll area.
          */
-        void drawFrame(Graphics *const graphics) override final A_NONNULL(2);
+        void drawFrame(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDrawFrame(Graphics *const graphics) override final
+        void safeDrawFrame(Graphics *const graphics) final
                            A_NONNULL(2);
 
         /**
@@ -163,27 +163,27 @@ class ScrollArea final : public BasicContainer,
         /**
          * Called when the mouse moves in the widget area.
          */
-        void mouseMoved(MouseEvent& event) override final;
+        void mouseMoved(MouseEvent& event) final;
 
         /**
          * Called when the mouse enteres the widget area.
          */
-        void mouseEntered(MouseEvent& event) override final;
+        void mouseEntered(MouseEvent& event) final;
 
         /**
          * Called when the mouse leaves the widget area.
          */
-        void mouseExited(MouseEvent& event) override final;
+        void mouseExited(MouseEvent& event) final;
 
-        void mousePressed(MouseEvent& event) override final;
+        void mousePressed(MouseEvent& event) final;
 
-        void mouseReleased(MouseEvent& event) override final;
+        void mouseReleased(MouseEvent& event) final;
 
-        void mouseDragged(MouseEvent &event) override final;
+        void mouseDragged(MouseEvent &event) final;
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
-        void widgetMoved(const Event &event) override final;
+        void widgetMoved(const Event &event) final;
 
         Rect getVerticalBarDimension() const;
 
@@ -414,11 +414,11 @@ class ScrollArea final : public BasicContainer,
         { return mDownButtonScrollAmount; }
 
         void showWidgetPart(Widget *const widget,
-                            const Rect &area) override final;
+                            const Rect &area) final;
 
-        Rect getChildrenArea() override final;
+        Rect getChildrenArea() final;
 
-        Widget *getWidgetAt(int x, int y) override final;
+        Widget *getWidgetAt(int x, int y) final;
 
         void setWidth(int width);
 
@@ -426,9 +426,9 @@ class ScrollArea final : public BasicContainer,
 
         void setDimension(const Rect& dimension);
 
-        void mouseWheelMovedUp(MouseEvent& event) override final;
+        void mouseWheelMovedUp(MouseEvent& event) final;
 
-        void mouseWheelMovedDown(MouseEvent& event) override final;
+        void mouseWheelMovedDown(MouseEvent& event) final;
 
     protected:
         enum BUTTON_DIR

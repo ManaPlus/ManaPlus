@@ -34,11 +34,11 @@ class ExtendedNamesModel notfinal : public ExtendedListModel
 
         virtual ~ExtendedNamesModel();
 
-        int getNumberOfElements() override final A_WARN_UNUSED;
+        int getNumberOfElements() final A_WARN_UNUSED;
 
-        std::string getElementAt(int i) override final A_WARN_UNUSED;
+        std::string getElementAt(int i) final A_WARN_UNUSED;
 
-        const Image *getImageAt(int i) override final A_WARN_UNUSED;
+        const Image *getImageAt(int i) final A_WARN_UNUSED;
 
         StringVect &getNames() A_WARN_UNUSED
         { return mNames; }

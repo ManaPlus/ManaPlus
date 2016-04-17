@@ -52,12 +52,12 @@ class UnRegisterDialog final : public Window,
 
         ~UnRegisterDialog();
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
     private:
         LoginData *mLoginData A_NONNULLPOINTER;

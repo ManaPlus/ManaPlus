@@ -54,7 +54,7 @@ class SocialWindow final : public Window,
 
         ~SocialWindow();
 
-        void postInit() override final;
+        void postInit() final;
 
         bool addTab(Guild *const guild);
 
@@ -64,7 +64,7 @@ class SocialWindow final : public Window,
 
         bool removeTab(Party *const party);
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         void showGuildInvite(const std::string &restrict guildName,
                              const int guildId,
@@ -120,15 +120,15 @@ class SocialWindow final : public Window,
 
         void updatePickupFilter();
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
         void setCounter(const SocialTab *const tab, const std::string &str);
 
         void updateGuildCounter(const int online = 0, const int total = 0);
 
-        void updatedPlayer(const std::string &name) override final;
+        void updatedPlayer(const std::string &name) final;
 
-        void updateAll() override final;
+        void updateAll() final;
 
 #ifdef USE_PROFILER
         void logicChildren();

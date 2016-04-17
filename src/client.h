@@ -89,9 +89,9 @@ class Client final : public ConfigListener,
 
         static bool isTmw() A_WARN_UNUSED;
 
-        void optionChanged(const std::string &name) override final;
+        void optionChanged(const std::string &name) final;
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         static void initTradeFilter();
 

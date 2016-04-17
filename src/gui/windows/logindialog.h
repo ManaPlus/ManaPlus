@@ -61,19 +61,19 @@ class LoginDialog final : public Window,
 
         ~LoginDialog();
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Called when a key is pressed in one of the text fields.
          */
-        void keyPressed(KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) final;
 
-        void close() override final;
+        void close() final;
 
         static std::string savedPasswordKey;
         static std::string savedPassword;

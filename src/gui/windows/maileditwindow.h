@@ -46,7 +46,7 @@ class MailEditWindow final : public Window,
 
         ~MailEditWindow();
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         void addItem(const Item *const item, const int amount);
 
@@ -56,7 +56,7 @@ class MailEditWindow final : public Window,
 
         void setMessage(const std::string &str);
 
-        void close() override final;
+        void close() final;
 
     private:
         Button *mSendButton;

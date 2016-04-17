@@ -47,23 +47,23 @@ class SetupTabScroll notfinal : public SetupTab
 
         void apply() override;
 
-        void cancel() override final;
+        void cancel() final;
 
         void externalUpdated() override;
 
         void externalUnloaded() override;
 
-        void action(const ActionEvent &event A_UNUSED) override final
+        void action(const ActionEvent &event A_UNUSED) final
         { }
 
         int getPreferredFirstItemSize() const A_WARN_UNUSED
         { return mPreferredFirstItemSize; }
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
         void reread(const std::string &name);
 
-        void clear() override final;
+        void clear() final;
 
         const std::set<SetupItem*> &getAllItems() const
         { return mAllItems; }

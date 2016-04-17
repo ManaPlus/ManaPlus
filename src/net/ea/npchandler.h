@@ -35,7 +35,7 @@ class NpcHandler notfinal : public Net::NpcHandler
     public:
         A_DELETE_COPY(NpcHandler)
 
-        NpcDialog *getCurrentNpcDialog() const override final;
+        NpcDialog *getCurrentNpcDialog() const final;
 
     protected:
         NpcHandler();

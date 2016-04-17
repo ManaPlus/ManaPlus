@@ -83,7 +83,7 @@ class UpdaterWindow final : public Window,
          */
         ~UpdaterWindow();
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Set's progress bar status
@@ -108,14 +108,14 @@ class UpdaterWindow final : public Window,
 
         void loadPatch();
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
-        void keyPressed(KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) final;
 
-        void logic() override final;
+        void logic() final;
 
         void handleLink(const std::string &link,
-                        MouseEvent *const event A_UNUSED) override final;
+                        MouseEvent *const event A_UNUSED) final;
 
         void loadFile(std::string file);
 

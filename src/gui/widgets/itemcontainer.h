@@ -75,30 +75,30 @@ class ItemContainer final : public Widget,
         /**
          * Necessary for checking how full the inventory is.
          */
-        void logic() override final;
+        void logic() final;
 
         /**
          * Draws the items.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         // KeyListener
-        void keyPressed(KeyEvent &event) override final A_CONST;
-        void keyReleased(KeyEvent &event) override final A_CONST;
+        void keyPressed(KeyEvent &event) final A_CONST;
+        void keyReleased(KeyEvent &event) final A_CONST;
 
         // MouseListener
-        void mousePressed(MouseEvent &event) override final;
-        void mouseDragged(MouseEvent &event) override final;
-        void mouseReleased(MouseEvent &event) override final;
-        void mouseMoved(MouseEvent &event) override final;
-        void mouseExited(MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) final;
+        void mouseDragged(MouseEvent &event) final;
+        void mouseReleased(MouseEvent &event) final;
+        void mouseMoved(MouseEvent &event) final;
+        void mouseExited(MouseEvent &event) final;
 
         // WidgetListener
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
-        void widgetMoved(const Event &event) override final;
+        void widgetMoved(const Event &event) final;
 
         /**
          * Returns the selected item.

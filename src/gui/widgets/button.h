@@ -153,16 +153,16 @@ class Button final : public Widget,
         /**
          * Draws the button.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         /**
          * Update the alpha value to the button components.
          */
         static void updateAlpha();
 
-        void mouseReleased(MouseEvent& event) override final;
+        void mouseReleased(MouseEvent& event) final;
 
         void setDescription(const std::string &text)
         { mDescription = text; }
@@ -185,11 +185,11 @@ class Button final : public Widget,
         void setPressed(bool b)
         { mPressed = b; }
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
-        void widgetMoved(const Event &event) override final;
+        void widgetMoved(const Event &event) final;
 
-        void widgetHidden(const Event &event) override final;
+        void widgetHidden(const Event &event) final;
 
         void loadImage(const std::string &imageName);
 
@@ -197,9 +197,9 @@ class Button final : public Widget,
 
         void adjustSize();
 
-        void keyPressed(KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) final;
 
-        void keyReleased(KeyEvent &event) override final;
+        void keyReleased(KeyEvent &event) final;
 
         bool isPressed2() const A_WARN_UNUSED;
 
@@ -241,19 +241,19 @@ class Button final : public Widget,
         Graphics::Alignment getAlignment() const
         { return mAlignment; }
 
-        void focusLost(const Event& event) override final;
+        void focusLost(const Event& event) final;
 
-        void mousePressed(MouseEvent& event) override final;
+        void mousePressed(MouseEvent& event) final;
 
-        void mouseEntered(MouseEvent& event) override final;
+        void mouseEntered(MouseEvent& event) final;
 
-        void mouseExited(MouseEvent& event) override final;
+        void mouseExited(MouseEvent& event) final;
 
-        void mouseDragged(MouseEvent& event) override final;
+        void mouseDragged(MouseEvent& event) final;
 
-        void setParent(Widget *widget) override final;
+        void setParent(Widget *widget) final;
 
-        void setWindow(Widget *const widget) override final;
+        void setWindow(Widget *const widget) final;
 
         void setImageWidth(const int width)
         { mImageWidth = width; }

@@ -44,11 +44,11 @@ class CompoundSprite notfinal : public Sprite
 
         virtual ~CompoundSprite();
 
-        bool reset() override final;
+        bool reset() final;
 
-        bool play(const std::string &action) override final;
+        bool play(const std::string &action) final;
 
-        bool update(const int time) override final;
+        bool update(const int time) final;
 
         void drawSimple(Graphics *const graphics,
                         const int posX,
@@ -64,16 +64,16 @@ class CompoundSprite notfinal : public Sprite
          */
         int getHeight() const override A_WARN_UNUSED;
 
-        const Image *getImage() const override final A_WARN_UNUSED;
+        const Image *getImage() const final A_WARN_UNUSED;
 
         bool setSpriteDirection(const SpriteDirection::Type direction)
-                                override final;
+                                final;
 
         int getNumberOfLayers() const A_WARN_UNUSED;
 
-        unsigned int getCurrentFrame() const override final A_WARN_UNUSED;
+        unsigned int getCurrentFrame() const final A_WARN_UNUSED;
 
-        unsigned int getFrameCount() const override final A_WARN_UNUSED;
+        unsigned int getFrameCount() const final A_WARN_UNUSED;
 
         void addSprite(Sprite *const sprite);
 
@@ -95,7 +95,7 @@ class CompoundSprite notfinal : public Sprite
 
         void setAlpha(float alpha) override;
 
-        bool updateNumber(const unsigned num) override final;
+        bool updateNumber(const unsigned num) final;
 
         static void setEnableDelay(bool b)
         { mEnableDelay = b; }

@@ -97,14 +97,14 @@ class TabbedArea final : public ActionListener,
 
         ~TabbedArea();
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Draw the tabbed area.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         /**
          * Return how many tabs have been created.
@@ -160,7 +160,7 @@ class TabbedArea final : public ActionListener,
         /**
          * Overload the logic function since it's broken in guichan 0.8.
          */
-        void logic() override final;
+        void logic() final;
 
         int getContainerHeight() const A_WARN_UNUSED
         { return mWidgetContainer->getHeight(); }
@@ -184,7 +184,7 @@ class TabbedArea final : public ActionListener,
 
         void setSelectedTabByName(const std::string &name);
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
 /*
         void moveLeft(Tab *tab);
@@ -193,11 +193,11 @@ class TabbedArea final : public ActionListener,
 */
         void adjustTabPositions();
 
-        void action(const ActionEvent& actionEvent) override final;
+        void action(const ActionEvent& actionEvent) final;
 
         // Inherited from MouseListener
 
-        void mousePressed(MouseEvent &event) override final;
+        void mousePressed(MouseEvent &event) final;
 
         void enableScrollButtons(const bool enable);
 
@@ -213,7 +213,7 @@ class TabbedArea final : public ActionListener,
         bool getFollowDownScroll() const A_WARN_UNUSED
         { return mFollowDownScroll; }
 
-        void keyPressed(KeyEvent& event) override final;
+        void keyPressed(KeyEvent& event) final;
 
         void setBlockSwitching(const bool b)
         { mBlockSwitching = b; }
@@ -226,7 +226,7 @@ class TabbedArea final : public ActionListener,
 
         void setDimension(const Rect &dimension);
 
-        void death(const Event &event) override final;
+        void death(const Event &event) final;
 
         void setResizeHeight(bool b)
         { mResizeHeight = b; }

@@ -105,11 +105,11 @@ class TextBox final : public Widget,
         int getMinWidth() const A_WARN_UNUSED
         { return mMinWidth; }
 
-        void keyPressed(KeyEvent& event) override final;
+        void keyPressed(KeyEvent& event) final;
 
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         void setForegroundColor(const Color &color);
 
@@ -271,12 +271,12 @@ class TextBox final : public Widget,
         void setOpaque(const bool opaque)
         { mOpaque = opaque; }
 
-        void fontChanged() override final
+        void fontChanged() final
         { adjustSize(); }
 
-        void mousePressed(MouseEvent& event) override final;
+        void mousePressed(MouseEvent& event) final;
 
-        void mouseDragged(MouseEvent& event) override final;
+        void mouseDragged(MouseEvent& event) final;
 
     private:
         /**

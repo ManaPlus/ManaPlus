@@ -35,7 +35,7 @@ class RadioGroup final : public WidgetGroup
 
         Widget *createWidget(const std::string &name,
                              const bool pressed = false)
-                             const override final A_WARN_UNUSED;
+                             const final A_WARN_UNUSED;
 };
 
 #endif  // GUI_WIDGETS_RADIOGROUP_H

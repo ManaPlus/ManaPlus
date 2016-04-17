@@ -39,39 +39,39 @@ class LoginHandler notfinal : public Net::LoginHandler
 
         virtual ~LoginHandler();
 
-        bool isRegistrationEnabled() const override final A_WARN_UNUSED;
+        bool isRegistrationEnabled() const final A_WARN_UNUSED;
 
-        void getRegistrationDetails() const override final;
+        void getRegistrationDetails() const final;
 
         unsigned int getMaxPasswordLength() const override A_WARN_UNUSED
         { return 24; }
 
-        void loginAccount(LoginData *const loginData) const override final;
+        void loginAccount(LoginData *const loginData) const final;
 
         void chooseServer(const unsigned int server,
                           const bool persistentIp) const override;
 
         void registerAccount(const LoginData *const loginData)
-                             const override final;
+                             const final;
 
-        const Worlds &getWorlds() const override final A_CONST A_WARN_UNUSED;
+        const Worlds &getWorlds() const final A_CONST A_WARN_UNUSED;
 
-        void clearWorlds() const override final;
+        void clearWorlds() const final;
 
         virtual ServerInfo *getCharServer() const A_WARN_UNUSED = 0;
 
         const Token &getToken() const A_CONST A_WARN_UNUSED;
 
-        void logout() const override final A_CONST;
+        void logout() const final A_CONST;
 
         void changeEmail(const std::string &email) const
-                         override final A_CONST;
+                         final A_CONST;
 
         void unregisterAccount(const std::string &username,
                                const std::string &password)
-                               const override final A_CONST;
+                               const final A_CONST;
 
-        void loginOrRegister(LoginData *const data) const override final;
+        void loginOrRegister(LoginData *const data) const final;
 
     protected:
         LoginHandler();

@@ -37,11 +37,11 @@ class CharacterViewSmall final : public CharacterViewBase
 
         ~CharacterViewSmall();
 
-        void show(const int i) override final;
+        void show(const int i) final;
 
-        void resize() override final;
+        void resize() final;
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
     private:
         CharacterDisplay *mSelectedEntry;

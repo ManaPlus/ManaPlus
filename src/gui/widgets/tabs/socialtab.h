@@ -113,7 +113,7 @@ class SocialTab notfinal : public Tab
             mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
         }
 
-        void setCurrent() override final
+        void setCurrent() final
         {
             updateCounter();
         }

@@ -51,12 +51,12 @@ class MagicSchoolModel final : public ListModel
         ~MagicSchoolModel()
         { }
 
-        int getNumberOfElements() override final
+        int getNumberOfElements() final
         {
             return 6;
         }
 
-        std::string getElementAt(int i) override final
+        std::string getElementAt(int i) final
         {
             if (i >= getNumberOfElements() || i < 0)
                 return "???";

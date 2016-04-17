@@ -155,7 +155,7 @@ class MapLayer final: public ConfigListener
         { return mHeight; }
 
         void optionChanged(const std::string &restrict value)
-                           restrict override final;
+                           restrict final;
 
         void setDrawLayerFlags(const MapTypeT &restrict n) restrict;
 

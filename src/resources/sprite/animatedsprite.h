@@ -63,47 +63,47 @@ class AnimatedSprite final : public Sprite
 
         ~AnimatedSprite();
 
-        bool reset() restrict2 override final;
+        bool reset() restrict2 final;
 
-        bool play(const std::string &restrict action) restrict2 override final;
+        bool play(const std::string &restrict action) restrict2 final;
 
-        bool update(const int time) restrict2 override final;
+        bool update(const int time) restrict2 final;
 
         void draw(Graphics *restrict const graphics,
                   const int posX,
-                  const int posY) const restrict2 override final A_NONNULL(2);
+                  const int posY) const restrict2 final A_NONNULL(2);
 
         void drawRaw(Graphics *restrict const graphics,
                      const int posX,
                      const int posY) const restrict2 A_NONNULL(2);
 
-        int getWidth() const restrict2 override final A_WARN_UNUSED;
+        int getWidth() const restrict2 final A_WARN_UNUSED;
 
-        int getHeight() const restrict2 override final A_WARN_UNUSED;
+        int getHeight() const restrict2 final A_WARN_UNUSED;
 
-        const Image* getImage() const restrict2 noexcept override final
+        const Image* getImage() const restrict2 noexcept final
                               A_WARN_UNUSED;
 
         bool setSpriteDirection(const SpriteDirection::Type direction)
-                                restrict2 override final;
+                                restrict2 final;
 
         int getNumberOfLayers() const restrict2 noexcept A_WARN_UNUSED
         { return 1; }
 
         std::string getIdPath() const restrict2 A_WARN_UNUSED;
 
-        unsigned int getCurrentFrame() const restrict2 noexcept override final
+        unsigned int getCurrentFrame() const restrict2 noexcept final
                                      A_WARN_UNUSED
         { return mFrameIndex; }
 
         unsigned int getFrameCount() const
-                                   restrict2 override final A_WARN_UNUSED;
+                                   restrict2 final A_WARN_UNUSED;
 
-        void setAlpha(float alpha) restrict2 override final;
+        void setAlpha(float alpha) restrict2 final;
 
-        const void *getHash() const restrict2 override final A_WARN_UNUSED;
+        const void *getHash() const restrict2 final A_WARN_UNUSED;
 
-        bool updateNumber(const unsigned num) restrict2 override final;
+        bool updateNumber(const unsigned num) restrict2 final;
 
         void clearDelayLoad() restrict2 noexcept
         { mDelayLoad = nullptr; }

@@ -63,12 +63,12 @@ class SocialPlayersTab final : public SocialTab
             delete2(mBeings)
         }
 
-        void updateList() override final
+        void updateList() final
         {
             getPlayersAvatars();
         }
 
-        void updateAvatar(const std::string &name) override final
+        void updateAvatar(const std::string &name) final
         {
             if (!actorManager)
                 return;
@@ -100,7 +100,7 @@ class SocialPlayersTab final : public SocialTab
             BLOCK_END("SocialPlayersTab::updateAvatar")
         }
 
-        void resetDamage(const std::string &name) override final
+        void resetDamage(const std::string &name) final
         {
             if (!actorManager)
                 return;

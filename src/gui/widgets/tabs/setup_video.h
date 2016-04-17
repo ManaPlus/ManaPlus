@@ -47,11 +47,11 @@ class Setup_Video final : public SetupTab,
 
         ~Setup_Video();
 
-        void apply() override final;
+        void apply() final;
 
-        void cancel() override final;
+        void cancel() final;
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
     private:
         bool mFullScreenEnabled;

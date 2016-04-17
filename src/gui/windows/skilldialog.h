@@ -58,12 +58,12 @@ class SkillDialog final : public Window,
 
         ~SkillDialog();
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Called when receiving actions from widget.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Update the given skill's display
@@ -111,7 +111,7 @@ class SkillDialog final : public Window,
         bool hasSkills() const A_WARN_UNUSED
         { return !mSkills.empty(); }
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
         void useItem(const int itemId,
                      const AutoTarget autoTarget,

@@ -33,25 +33,25 @@ class MailHandler final : public Net::MailHandler
 
         A_DELETE_COPY(MailHandler)
 
-        void refresh() const override final;
+        void refresh() const final;
 
-        void readMessage(const int msgId) const override final;
+        void readMessage(const int msgId) const final;
 
-        void getAttach(const int msgId) const override final;
+        void getAttach(const int msgId) const final;
 
-        void deleteMessage(const int msgId) const override final;
+        void deleteMessage(const int msgId) const final;
 
-        void returnMessage(const int msgId) const override final;
+        void returnMessage(const int msgId) const final;
 
-        void setAttach(const int index, const int amount) const override final;
+        void setAttach(const int index, const int amount) const final;
 
-        void setAttachMoney(const int money) const override final;
+        void setAttachMoney(const int money) const final;
 
-        void resetAttach(const int flag) const override final;
+        void resetAttach(const int flag) const final;
 
         void send(const std::string &name,
                   const std::string &title,
-                  std::string message) const override final;
+                  std::string message) const final;
 };
 
 }  // namespace EAthena

@@ -68,7 +68,7 @@ class ServerDialog final : public Window,
 
         A_DELETE_COPY(ServerDialog)
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Destructor
@@ -78,24 +78,24 @@ class ServerDialog final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
-        void keyPressed(KeyEvent &event) override final;
+        void keyPressed(KeyEvent &event) final;
 
         /**
          * Called when the selected value changed in the servers list box.
          */
-        void valueChanged(const SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) final;
 
-        void mouseClicked(MouseEvent &event) override final;
+        void mouseClicked(MouseEvent &event) final;
 
-        void logic() override final;
+        void logic() final;
 
         void updateServer(const ServerInfo &server, const int index);
 
         void connectToSelectedServer();
 
-        void close() override final;
+        void close() final;
 
     protected:
         friend class ServersListModel;

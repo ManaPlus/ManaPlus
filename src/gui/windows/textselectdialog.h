@@ -57,19 +57,19 @@ class TextSelectDialog notfinal : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Updates labels according to selected item.
          *
          * @see SelectionListener::selectionChanged
          */
-        void valueChanged(const SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) final;
 
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(Visible visible) override final;
+        void setVisible(Visible visible) final;
 
         void postInit() override;
 

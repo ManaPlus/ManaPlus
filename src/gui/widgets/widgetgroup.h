@@ -44,9 +44,9 @@ class WidgetGroup notfinal : public Container,
         virtual void addWidget(Widget *const widget,
                                const int spacing);
 
-        void clear() override final;
+        void clear() final;
 
-        void widgetResized(const Event &event) override final A_CONST;
+        void widgetResized(const Event &event) final A_CONST;
 
         virtual Widget *createWidget(const std::string &name,
                                      const bool pressed = false)

@@ -45,7 +45,7 @@ class StatusPopup final : public Popup
 
         A_DELETE_COPY(StatusPopup)
 
-        void postInit() override final;
+        void postInit() final;
 
         /**
          * Destructor. Cleans up the item popup on deletion.

@@ -38,7 +38,7 @@ class TradeTab final : public ChatTab
         ~TradeTab();
 
     protected:
-        void handleInput(const std::string &msg) override final;
+        void handleInput(const std::string &msg) final;
 };
 
 extern TradeTab *tradeChatTab;

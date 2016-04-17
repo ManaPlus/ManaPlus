@@ -115,7 +115,7 @@ class BuyDialog final : public Window,
         /**
          * Called when receiving actions from the widgets.
          */
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
         /**
          * Returns the number of items in the shop inventory.
@@ -125,7 +125,7 @@ class BuyDialog final : public Window,
         /**
          * Updates the labels according to the selected item.
          */
-        void valueChanged(const SelectionEvent &event) override final;
+        void valueChanged(const SelectionEvent &event) final;
 
         /**
          * Updates the state of buttons and labels.
@@ -135,11 +135,11 @@ class BuyDialog final : public Window,
         /**
          * Sets the visibility of this window.
          */
-        void setVisible(Visible visible) override final;
+        void setVisible(Visible visible) final;
 
         void sort();
 
-        void close() override final;
+        void close() final;
 
         /**
          * Returns true if any instances exist.

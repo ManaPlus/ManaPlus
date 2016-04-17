@@ -63,7 +63,7 @@ class ProgressBar final : public Widget,
         /**
          * Performs progress bar logic (fading colors)
          */
-        void logic() override final;
+        void logic() final;
 
         /**
          * Update the alpha value to the graphic components.
@@ -73,9 +73,9 @@ class ProgressBar final : public Widget,
         /**
          * Draws the progress bar.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         /**
          * Sets the current progress.
@@ -130,11 +130,11 @@ class ProgressBar final : public Widget,
         void setSmoothColorChange(bool smoothColorChange)
         { mSmoothColorChange = smoothColorChange; }
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
-        void widgetMoved(const Event &event) override final;
+        void widgetMoved(const Event &event) final;
 
-        void widgetHidden(const Event &event) override final;
+        void widgetHidden(const Event &event) final;
 
         void setPadding(unsigned int padding)
         { mPadding = padding; }

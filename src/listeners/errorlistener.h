@@ -30,7 +30,7 @@
 class ErrorListener final : public ActionListener
 {
     public:
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 };
 
 extern ErrorListener errorListener;

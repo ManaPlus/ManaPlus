@@ -110,9 +110,9 @@ class Label final : public Widget,
         /**
          * Draws the label.
          */
-        void draw(Graphics *const graphics) override final A_NONNULL(2);
+        void draw(Graphics *const graphics) final A_NONNULL(2);
 
-        void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
+        void safeDraw(Graphics *const graphics) final A_NONNULL(2);
 
         void adjustSize();
 
@@ -162,11 +162,11 @@ class Label final : public Widget,
         Graphics::Alignment getAlignment() const
         { return mAlignment; }
 
-        void setParent(Widget *const widget) override final;
+        void setParent(Widget *const widget) final;
 
-        void setWindow(Widget *const widget) override final;
+        void setWindow(Widget *const widget) final;
 
-        void widgetHidden(const Event &event) override final;
+        void widgetHidden(const Event &event) final;
 
         static Skin *mSkin;
 

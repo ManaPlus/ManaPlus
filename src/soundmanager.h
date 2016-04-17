@@ -44,7 +44,7 @@ class SoundManager final : public ConfigListener
 
         ~SoundManager();
 
-        void optionChanged(const std::string &value) override final;
+        void optionChanged(const std::string &value) final;
 
         /**
          * Installs the sound engine.

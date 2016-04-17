@@ -58,7 +58,7 @@ class WhoIsOnline final : public Window,
          */
         ~WhoIsOnline();
 
-        void postInit() override final;
+        void postInit() final;
 
 #ifdef TMWA_SUPPORT
         /**
@@ -70,15 +70,15 @@ class WhoIsOnline final : public Window,
         void loadList(const std::vector<OnlinePlayer*> &list);
 
         void handleLink(const std::string& link,
-                        MouseEvent *event) override final;
+                        MouseEvent *event) final;
 
-        void logic() override final;
+        void logic() final;
 
         void slowLogic();
 
-        void action(const ActionEvent &event) override final;
+        void action(const ActionEvent &event) final;
 
-        void widgetResized(const Event &event) override final;
+        void widgetResized(const Event &event) final;
 
         const std::set<OnlinePlayer*> &getOnlinePlayers() const A_WARN_UNUSED
         { return mOnlinePlayers; }
@@ -89,7 +89,7 @@ class WhoIsOnline final : public Window,
         void setAllowUpdate(const bool n)
         { mAllowUpdate = n; }
 
-        void optionChanged(const std::string &name) override final;
+        void optionChanged(const std::string &name) final;
 
         void updateList(StringVect &list);
 
