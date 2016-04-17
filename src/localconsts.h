@@ -100,7 +100,7 @@
 #else  // __native_client__
 #ifdef __clang__
 // because restrict broken in clang, now it removed from all places.
-//#define restrict __restrict__
+// #define restrict __restrict__
 #define restrict
 #define restrict2
 #else  // __clang__

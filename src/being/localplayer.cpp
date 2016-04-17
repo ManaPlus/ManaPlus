@@ -1040,7 +1040,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
             }
 
             if (!found)
-            { // add new
+            {   // add new
                 const int offset = CAST_S32(mStatusEffectIcons.size());
                 if (miniStatusWindow)
                     miniStatusWindow->setIcon(offset, sprite);

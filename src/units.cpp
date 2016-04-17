@@ -61,7 +61,7 @@ struct UnitDescription units[UNIT_END];
 
 void Units::loadUnits()
 {
-    { // Setup default weight
+    {   // Setup default weight
         UnitDescription ud;
 
         ud.conversion = 1.0;
@@ -88,7 +88,7 @@ void Units::loadUnits()
         units[UNIT_WEIGHT] = ud;
     }
 
-    { // Setup default currency
+    {   // Setup default currency
         UnitDescription ud;
 
         ud.conversion = 1.0;

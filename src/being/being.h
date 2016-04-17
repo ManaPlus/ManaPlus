@@ -526,10 +526,10 @@ class Being notfinal : public ActorSprite,
                                const int posY) const
                                restrict2 A_NONNULL(2);
 
-        virtual void drawSpritesSDL(Graphics *restrict const graphics,
-                                    const int posX,
-                                    const int posY) const
-                                    restrict2 final A_NONNULL(2);
+        void drawSpritesSDL(Graphics *restrict const graphics,
+                            const int posX,
+                            const int posY) const
+                            restrict2 final A_NONNULL(2);
 
         void drawHpBar(Graphics *restrict const graphics,
                        const int maxHP,

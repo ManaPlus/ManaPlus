@@ -41,6 +41,7 @@ namespace EAthena
         void processTradeItemAdd(Net::MessageIn &msg);
         void processTradeItemAddResponse(Net::MessageIn &msg);
     }  // namespace TradeRecv
+
 }  // namespace EAthena
 
 #endif  // NET_EATHENA_TRADERECV_H

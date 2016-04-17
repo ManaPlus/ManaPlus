@@ -563,7 +563,7 @@ void QuestsWindow::updateEffects()
         {   // in new list exists effect for this npc
             const QuestEffect *const newEffect = (*itNew).second;
             if (effect != newEffect)
-            { // new effects is not equal to old effect
+            {   // new effects is not equal to old effect
                 addEffects[id] = newEffect->effectId;
                 removeEffects.insert(id);
             }

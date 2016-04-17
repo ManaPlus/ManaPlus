@@ -96,7 +96,7 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
     int cards[maxCards];
 
     if (!actorManager)
-    { // here can be look from char server
+    {   // here can be look from char server
         if (!serverFeatures->haveAdvancedSprites())
             return;
         Net::Characters &chars = Net::CharServerHandler::mCharacters;

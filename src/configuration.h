@@ -150,8 +150,7 @@ class ConfigurationObject notfinal
                 ConfigurationObject *const wrobj
                     = manager->writeConfigItem(*it, nextobj);
                 if (wrobj)
-                { // wrote something
-//                    assert (wrobj == nextobj);
+                {   // wrote something
                     nextobj = new ConfigurationObject;
                     list->push_back(wrobj);
                 }

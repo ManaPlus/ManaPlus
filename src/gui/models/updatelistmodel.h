@@ -39,7 +39,9 @@ class UpdateListModel final : public ListModel
             mNames(),
             mServer(server)
         {
-            FOR_EACH(std::vector<HostsGroup>::const_iterator, it, server->updateHosts)
+            FOR_EACH(std::vector<HostsGroup>::const_iterator,
+                     it,
+                     server->updateHosts)
             {
                 const HostsGroup &group = *it;
                 mNames.push_back(group.name);

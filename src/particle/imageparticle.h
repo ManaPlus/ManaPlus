@@ -48,10 +48,9 @@ class ImageParticle notfinal : public Particle
         /**
          * Draws the particle image
          */
-        virtual void draw(Graphics *restrict const graphics,
-                          const int offsetX,
-                          const int offsetY) const
-                          restrict2 final A_NONNULL(2);
+        void draw(Graphics *restrict const graphics,
+                  const int offsetX,
+                  const int offsetY) const restrict2 final A_NONNULL(2);
 
         void setAlpha(const float alpha) restrict2 final
         { mAlpha = alpha; }

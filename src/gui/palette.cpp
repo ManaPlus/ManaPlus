@@ -132,7 +132,7 @@ void Palette::advanceGradient()
             else if (grad == GradientType::SPECTRUM)
             {
                 if (colIndex % 2)
-                { // falling curve
+                {   // falling curve
                     if (delay)
                     {
                         colVal = CAST_S32(255.0 *
@@ -145,7 +145,7 @@ void Palette::advanceGradient()
                     }
                 }
                 else
-                { // ascending curve
+                {   // ascending curve
                     if (delay)
                     {
                         colVal = CAST_S32(255.0 * (cos(M_PI *

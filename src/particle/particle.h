@@ -67,10 +67,10 @@ class Particle notfinal : public Actor
         /**
          * Draws the particle image.
          */
-        virtual void draw(Graphics *restrict const graphics,
-                          const int offsetX,
-                          const int offsetY) const restrict2 override
-                          A_CONST A_NONNULL(2);
+        void draw(Graphics *restrict const graphics,
+                  const int offsetX,
+                  const int offsetY) const restrict2 override
+                  A_CONST A_NONNULL(2);
 
         /**
          * Necessary for sorting with the other sprites.
