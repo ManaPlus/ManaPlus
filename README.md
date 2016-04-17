@@ -75,61 +75,61 @@ context menu. Holding [Left Shift] prevents from walking when attacking.
 ### /Commands:
 
 Whispers:
-- /closeall          close all whispers.
-- /ignoreall         add all whispers to ignore list.
+- /closeall:          close all whispers.
+- /ignoreall:         add all whispers to ignore list.
 - /msg NICK text
 - /whisper NICK text
-- /w NICK text       send whisper message to nick.
+- /w NICK text:       send whisper message to nick.
 - /query NICK
-- /q NICK            open new whisper tab for nick.
+- /q NICK:            open new whisper tab for nick.
 
 ### Actions:
-- /help              show small help about chat commands. /target NICK - select nick as target. Can be monster or player nick.
-- /outfit N          wear outfit number N.
-- /outfit next       wear next outfit.
-- /outfit prev       wear previous outfit.
-- /emote N           use emotion number N.
-- /away
-- /away MSG          set away mode.
-- /follow NICK       start follow mode.
-- /imitation NICK    start imitation mode.
-- /heal NICK         heal nick.
-- /move X Y          move to X,Y position in short distance.
-- /navigate x y      move to position x,y in current map in any distance.
-- /mail NICK MSG     send offline message to NICK. Working only in tmw server.
-- /disconnect        quick disconnect from server.
-- /attack            attack target.
-- /undress NICK      remove all clothes from nick. Local effect only.
+- /help:              show small help about chat commands. /target NICK - select nick as target. Can be monster or player nick.
+- /outfit N:          wear outfit number N.
+- /outfit next:       wear next outfit.
+- /outfit prev:       wear previous outfit.
+- /emote N:           use emotion number N.
+- /away:
+- /away MSG:          set away mode.
+- /follow NICK:       start follow mode.
+- /imitation NICK:    start imitation mode.
+- /heal NICK:         heal nick.
+- /move X Y:          move to X,Y position in short distance.
+- /navigate x y:      move to position x,y in current map in any distance.
+- /mail NICK MSG:     send offline message to NICK. Working only in tmw server.
+- /disconnect:        quick disconnect from server.
+- /attack:            attack target.
+- /undress NICK:      remove all clothes from nick. Local effect only.
 
 ### Trade:
-- /trade NICK        start trade with nick.
-- /priceload         load shop price from disc.
-- /pricesave         save shop price to disc.
+- /trade NICK:        start trade with nick.
+- /priceload:         load shop price from disc.
+- /pricesave:         save shop price to disc.
 
 ### Player relations:
-- /ignore NICK       add nick to ignore list.
-- /unignore NICK     Remove nick from ignore list.
+- /ignore NICK:       add nick to ignore list.
+- /unignore NICK:     Remove nick from ignore list.
 - /friend NICK
-- /befriend NICK     add nick to friends list.
-- /disregard NICK    add nick to disregarded list.
-- /neutral NICK      add nick to neutral relation list.
-- /erase NICK        add nick to erased list.
-- /clear             clear current chat tab.
-- /createparty NAME  create party with selected name.
-- /me text           send text to chat as /me command in irc.
+- /befriend NICK:     add nick to friends list.
+- /disregard NICK:    add nick to disregarded list.
+- /neutral NICK:      add nick to neutral relation list.
+- /erase NICK:        add nick to erased list.
+- /clear:             clear current chat tab.
+- /createparty NAME:  create party with selected name.
+- /me text:           send text to chat as /me command in irc.
 
 ### Debug:
-- /who               print online players number to chat.
-- /all               show visible beings list in debug tab.
-- /where             print current player position to chat.
-- /cacheinfo         show text cache info.
-- /dirs              show client directories in debug window.
+- /who:               print online players number to chat.
+- /all:               show visible beings list in debug tab.
+- /where:             print current player position to chat.
+- /cacheinfo:         show text cache info.
+- /dirs:              show client directories in debug window.
 
 ### Other:
-- /help              Displays the list of commands
-- /announce          broadcasts a global msg(Gm Cammand only)
-- /who               shows how many players are online
-- /where             displays the map name your currently on
+- /help:              Displays the list of commands
+- /announce:          broadcasts a global msg(Gm Command only)
+- /who:               shows how many players are online
+- /where:             displays the map name your currently on
 
 ## 4. Support
 
