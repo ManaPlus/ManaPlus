@@ -319,6 +319,12 @@ class BeingInfo final
         int getAllowDelete() const A_WARN_UNUSED
         { return mAllowDelete; }
 
+        void setQuickActionEffectId(const int n)
+        { mQuickActionEffectId = n; }
+
+        int getQuickActionEffectId() const A_WARN_UNUSED
+        { return mQuickActionEffectId; }
+
         void setColorsList(const std::string &name);
 
         std::string getColor(const ItemColor idx) const A_WARN_UNUSED;
@@ -378,6 +384,7 @@ class BeingInfo final
         int mSitDirectionType;
         int mDeadDirectionType;
         int mAttackDirectionType;
+        int mQuickActionEffectId;
         bool mStaticMaxHP;
         bool mTargetSelection;
         bool mAllowDelete;

@@ -93,6 +93,7 @@ BeingInfo::BeingInfo() :
     mSitDirectionType(1),
     mDeadDirectionType(1),
     mAttackDirectionType(1),
+    mQuickActionEffectId(-1),
     mStaticMaxHP(false),
     mTargetSelection(true),
     mAllowDelete(true)
