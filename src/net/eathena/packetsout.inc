@@ -287,6 +287,7 @@ packet(CMSG_BUYINGSTORE_OPEN,             0x0000,   0, nullptr);
 packet(CMSG_SEARCHSTORE_NEXT_PAGE,        0x0000,   0, nullptr);
 packet(CMSG_QUICK_IDENTIFY_ITEM,          0x0000,   0, nullptr);
 packet(CMSG_PARTY_INVITE2,                0x0000,   0, nullptr);
+packet(CMSG_SKILL_FEEL_SAVE_OK,           0x0000,   0, nullptr);
 #else
 // 20040726
 if (packetVersion >= 20040726)
@@ -324,6 +325,12 @@ if (packetVersion >= 20050110)
 if (packetVersion >= 20050530)
 {
     packet(CMSG_PK_RANKS,                 0x0237,   2, clif->pRankingPk);
+}
+
+// 20050817
+if (packetVersion >= 20050817)
+{
+    packet(CMSG_SKILL_FEEL_SAVE_OK,       0x0254,   3, clif->pFeelSaveOk);
 }
 
 // 20090603

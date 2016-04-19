@@ -57,6 +57,8 @@ class SkillHandler notfinal
         virtual void getBlacksmithRanks() const = 0;
 
         virtual void getPkRanks() const = 0;
+
+        virtual void feelSaveOk(const int which) const = 0;
 };
 
 }  // namespace Net

@@ -55,6 +55,8 @@ class SkillHandler final : public Ea::SkillHandler
         void getBlacksmithRanks() const override final;
 
         void getPkRanks() const override final;
+
+        void feelSaveOk(const int which) const override final;
 };
 
 }  // namespace EAthena

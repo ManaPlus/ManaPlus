@@ -22,6 +22,7 @@
 
 #include "net/eathena/skillhandler.h"
 
+#include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
@@ -98,6 +99,16 @@ void SkillHandler::getPkRanks() const
     if (packetVersion >= 20050530)
     {
         createOutPacket(CMSG_PK_RANKS);
+    }
+}
+
+void SkillHandler::feelSaveOk(const int which) const
+{
+    if (packetVersion >= 20050817)
+    {
+        createOutPacket(CMSG_SKILL_FEEL_SAVE_OK);
+        outMsg.writeInt8(CAST_S8(which), "which");
+        menu = MenuType::Unknown;
     }
 }
 
