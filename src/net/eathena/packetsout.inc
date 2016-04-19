@@ -288,6 +288,7 @@ packet(CMSG_SEARCHSTORE_NEXT_PAGE,        0x0000,   0, nullptr);
 packet(CMSG_QUICK_IDENTIFY_ITEM,          0x0000,   0, nullptr);
 packet(CMSG_PARTY_INVITE2,                0x0000,   0, nullptr);
 packet(CMSG_SKILL_FEEL_SAVE_OK,           0x0000,   0, nullptr);
+packet(CMSG_PLAYER_LESS_EFFECTS,          0x0000,   0, nullptr);
 #else
 // 20040726
 if (packetVersion >= 20040726)
@@ -306,6 +307,12 @@ if (packetVersion >= 20041108)
 {
     packet(CMSG_ALCHEMIST_RANKS,          0x0218,   2, clif->pAlchemist);
     packet(CMSG_BLACKSMITH_RANKS,         0x0217,   2, clif->pBlacksmith);
+}
+
+// 20041115
+if (packetVersion >= 20041115)
+{
+    packet(CMSG_PLAYER_LESS_EFFECTS,      0x021d,   6, clif->pLessEffect);
 }
 
 // 20041129

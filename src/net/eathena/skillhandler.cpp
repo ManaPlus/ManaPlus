@@ -112,4 +112,13 @@ void SkillHandler::feelSaveOk(const int which) const
     }
 }
 
+void SkillHandler::lessEffects(const bool isLess) const
+{
+    if (packetVersion >= 20041115)
+    {
+        createOutPacket(CMSG_PLAYER_LESS_EFFECTS);
+        outMsg.writeInt32(isLess ? 1 : 0, "state");
+    }
+}
+
 }  // namespace EAthena

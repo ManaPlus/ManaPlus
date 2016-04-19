@@ -92,4 +92,8 @@ void SkillHandler::feelSaveOk(const int which A_UNUSED) const
 {
 }
 
+void SkillHandler::lessEffects(const bool isLess A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

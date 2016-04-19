@@ -57,6 +57,8 @@ class SkillHandler final : public Ea::SkillHandler
         void getPkRanks() const override final;
 
         void feelSaveOk(const int which) const override final;
+
+        void lessEffects(const bool isLess) const override final;
 };
 
 }  // namespace TmwAthena
