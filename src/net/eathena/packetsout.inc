@@ -23,8 +23,15 @@
 // 0
 packet(CMSG_SERVER_VERSION_REQUEST,       0x7530,   0, nullptr);
 
-packet(CMSG_LOGIN_REGISTER,               0x0064,   0, nullptr);
-packet(CMSG_LOGIN_REGISTER2,              0x027c,   0, nullptr);
+packet(CMSG_LOGIN_REGISTER,               0x0064,   0, lclif->p->parse_CA_LOGIN);
+packet(CMSG_LOGIN_REGISTER2,              0x01dd,   0, lclif->p->parse_CA_LOGIN2);
+packet(CMSG_LOGIN_REGISTER3,              0x01fa,   0, lclif->p->parse_CA_LOGIN3);
+packet(CMSG_LOGIN_REGISTER4,              0x027c,   0, lclif->p->parse_CA_LOGIN4);
+packet(CMSG_LOGIN_REGISTER_PCBANG,        0x0277,   0, lclif->p->parse_CA_LOGIN_PCBANG);
+packet(CMSG_LOGIN_REGISTER_HAN,           0x02b0,   0, lclif->p->parse_CA_LOGIN_HAN);
+packet(CMSG_LOGIN_REGISTER_SSO,           0x0825,  -1, lclif->p->parse_CA_SSO_LOGIN_REQ);
+packet(CMSG_LOGIN_REGISTER_KEY,           0x01db,   0, lclif->p->parse_CA_REQ_HASH);
+
 packet(CMSG_NAME_REQUEST,                 0x0094,   6, clif->pGetCharNameRequest);
 
 packet(CMSG_CHAR_PASSWORD_CHANGE,         0x0061,   0, nullptr);
@@ -39,7 +46,9 @@ packet(CMSG_CHAR_CHANGE_SLOT,             0x08d4,   0, nullptr);
 
 packet(CMSG_MAP_SERVER_CONNECT,           0x089c,  19, clif->pWantToConnection);
 packet(CMSG_MAP_PING,                     0x007e,   6, clif->pTickSend);
-packet(CMSG_LOGIN_PING,                   0x0200,   0, nullptr);
+packet(CMSG_LOGIN_PING,                   0x0200,   0, lclif->p->parse_CA_CONNECT_INFO_CHANGED);
+packet(CMSG_LOGIN_HASH_CHECK,             0x0204,   0, lclif->p->parse_CA_EXE_HASHCHECK);
+
 packet(CMSG_CHAR_PING,                    0x0187,   0, nullptr);
 packet(CMSG_MAP_LOADED,                   0x007d,   2, clif->pLoadEndAck);
 packet(CMSG_CLIENT_QUIT,                  0x018A,   4, clif->pQuitGame);

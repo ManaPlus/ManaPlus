@@ -107,7 +107,7 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
     }
     else
     {
-        createOutPacket(CMSG_LOGIN_REGISTER2);
+        createOutPacket(CMSG_LOGIN_REGISTER4);
         outMsg.writeString(username, 24, "login");
         outMsg.writeStringNoLog(password, 24, "password");
         outMsg.writeInt8(0x03, "client type");
