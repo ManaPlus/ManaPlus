@@ -487,6 +487,7 @@ if (packetVersion >= 20131230)
     packet(CMSG_PARTY_INVITE2,            0x08a9,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0943,  26, clif->pFriendsListAdd);
     packet(CMSG_SKILL_USE_POSITION_MORE,  0x096a,  90, clif->pUseSkillToPosMoreInfo);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0898,   6, clif->pSolveCharName);
 }
 
 // 20140115
