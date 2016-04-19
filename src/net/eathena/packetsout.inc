@@ -364,11 +364,18 @@ if (packetVersion >= 20111005)
     packet(CMSG_NAME_REQUEST,             0x088a,   6, clif->pGetCharNameRequest);
 }
 
+// 20111102
+if (packetVersion >= 20111102)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x08ab,  -1, clif->pSearchStoreInfo);
+}
+
 // 20120307
 if (packetVersion >= 20120307)
 {
     packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0884,  -1, clif->pSearchStoreInfo);
 }
 
 // 20120410
@@ -376,6 +383,7 @@ if (packetVersion >= 20120410)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
 }
 
 // 20120418
@@ -385,6 +393,66 @@ if (packetVersion >= 20120418)
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
     packet(CMSG_ITEM_PICKUP,              0x07e4,   6, clif->pTakeItem);
     packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
+}
+
+// 20120716
+if (packetVersion >= 20120716)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0811,  -1, clif->pSearchStoreInfo);
+}
+
+// 20130320
+if (packetVersion >= 20130320)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x094e,  -1, clif->pSearchStoreInfo);
+}
+
+// 20130515
+if (packetVersion >= 20130515)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
+}
+
+// 20130522
+if (packetVersion >= 20130522)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x095b,  -1, clif->pSearchStoreInfo);
+}
+
+// 20130529
+if (packetVersion >= 20130529)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0918,  -1, clif->pSearchStoreInfo);
+}
+
+// 20130605
+if (packetVersion >= 20130605)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
+}
+
+// 20130618
+if (packetVersion >= 20130618)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0281,  -1, clif->pSearchStoreInfo);
+}
+
+// 20130626
+if (packetVersion >= 20130626)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
+}
+
+// 20130814
+if (packetVersion >= 20130814)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0889,  -1, clif->pSearchStoreInfo);
+}
+
+// 20131218
+if (packetVersion >= 20131218)
+{
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
 }
 
 // 20131223
@@ -470,6 +538,7 @@ if (packetVersion >= 20140205)
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x0802,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
 }
 
 // 20140305
@@ -510,6 +579,7 @@ if (packetVersion >= 20140402)
     packet(CMSG_PARTY_INVITE2,            0x0890,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x089a,  26, clif->pFriendsListAdd);
     packet(CMSG_SKILL_USE_POSITION_MORE,  0x092d,  90, clif->pUseSkillToPosMoreInfo);
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0933,  -1, clif->pSearchStoreInfo);
 }
 
 // 20140416
@@ -538,6 +608,7 @@ if (packetVersion >= 20140416)
     packet(CMSG_PARTY_INVITE2,            0x0802,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
     packet(CMSG_SKILL_USE_POSITION_MORE,  0x0366,  90, clif->pUseSkillToPosMoreInfo);
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
 }
 
 // 20141016
