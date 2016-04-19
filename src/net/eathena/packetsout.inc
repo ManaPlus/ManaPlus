@@ -44,7 +44,7 @@ packet(CMSG_CHAR_CHECK_RENAME,            0x08fc,   0, nullptr);
 packet(CMSG_CHAR_RENAME,                  0x028f,   0, nullptr);
 packet(CMSG_CHAR_CHANGE_SLOT,             0x08d4,   0, nullptr);
 
-packet(CMSG_MAP_SERVER_CONNECT,           0x089c,  19, clif->pWantToConnection);
+packet(CMSG_MAP_SERVER_CONNECT,           0x0072,  19, clif->pWantToConnection);
 packet(CMSG_MAP_PING,                     0x007e,   6, clif->pTickSend);
 packet(CMSG_LOGIN_PING,                   0x0200,   0, lclif->p->parse_CA_CONNECT_INFO_CHANGED);
 packet(CMSG_LOGIN_HASH_CHECK,             0x0204,   0, lclif->p->parse_CA_EXE_HASHCHECK);
@@ -415,6 +415,7 @@ if (packetVersion >= 20131230)
     packet(CMSG_MAP_PING,                 0x0438,   6, clif->pTickSend);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0895,   8, clif->pMoveFromKafra);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0871,   7, clif->pActionRequest);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x089c,  19, clif->pWantToConnection);
 }
 
 // 20140115
@@ -441,6 +442,7 @@ if (packetVersion >= 20140115)
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0367,   8, clif->pMoveFromKafra);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0966,  19, clif->pWantToConnection);
 }
 
 // 20140205
@@ -459,6 +461,7 @@ if (packetVersion >= 20140205)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
 }
 
 // 20140305
@@ -469,6 +472,7 @@ if (packetVersion >= 20140305)
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0815,   5, clif->pChangeDir);
     packet(CMSG_SKILL_USE_POSITION,       0x0436,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x0202,   6, clif->pTakeItem);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0438,  19, clif->pWantToConnection);
 }
 
 // 20140402
@@ -493,6 +497,7 @@ if (packetVersion >= 20140402)
     packet(CMSG_MAP_PING,                 0x0950,   6, clif->pTickSend);
     packet(CMSG_MOVE_FROM_STORAGE,        0x085b,   8, clif->pMoveFromKafra);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0946,   7, clif->pActionRequest);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0920,  19, clif->pWantToConnection);
 }
 
 // 20140416
@@ -517,6 +522,7 @@ if (packetVersion >= 20140416)
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
 }
 
 // 20141016
@@ -525,6 +531,7 @@ if (packetVersion >= 20141016)
     packet(CMSG_HOMUNCULUS_MENU,          0x0364,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0967,   5, clif->pChangeDir);
     packet(CMSG_MOVE_FROM_STORAGE,        0x022d,   8, clif->pMoveFromKafra);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x086e,  19, clif->pWantToConnection);
 }
 
 // 20141022
@@ -539,6 +546,7 @@ if (packetVersion >= 20141022)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0940,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_MOVE_TO_STORAGE,          0x0878,   8, clif->pMoveToKafra);
     packet(CMSG_MOVE_FROM_STORAGE,        0x08aa,   8, clif->pMoveFromKafra);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x093b,  19, clif->pWantToConnection);
 }
 
 // 20150513
@@ -558,5 +566,6 @@ if (packetVersion >= 20150513)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_MOVE_TO_STORAGE,          0x0879,   8, clif->pMoveToKafra);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0864,   8, clif->pMoveFromKafra);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0363,  19, clif->pWantToConnection);
 }
 #endif
