@@ -75,7 +75,7 @@ packet(CMSG_SKILL_LEVELUP_REQUEST,        0x0112,   4, clif->pSkillUp);
 packet(CMSG_STAT_UPDATE_REQUEST,          0x00bb,   5, clif->pStatusUp);
 packet(CMSG_SKILL_USE_BEING,              0x0113,  10, clif->pUseSkillToId);
 packet(CMSG_SKILL_USE_POSITION,           0x0116,  10, clif->pUseSkillToPos);
-packet(CMSG_SKILL_USE_POSITION_MORE,      0x0366,  90, clif->pUseSkillToPosMoreInfo);
+packet(CMSG_SKILL_USE_POSITION_MORE,      0x0190,  90, clif->pUseSkillToPosMoreInfo);
 packet(CMSG_SKILL_USE_MAP,                0x011b,  20, clif->pUseSkillMap);
 
 packet(CMSG_PLAYER_INVENTORY_USE,         0x0439,   8, clif->pUseItem);
@@ -418,6 +418,7 @@ if (packetVersion >= 20131230)
     packet(CMSG_MAP_SERVER_CONNECT,       0x089c,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x08a9,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0943,  26, clif->pFriendsListAdd);
+    packet(CMSG_SKILL_USE_POSITION_MORE,  0x096a,  90, clif->pUseSkillToPosMoreInfo);
 }
 
 // 20140115
@@ -447,6 +448,7 @@ if (packetVersion >= 20140115)
     packet(CMSG_MAP_SERVER_CONNECT,       0x0966,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x095d,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x089b,  26, clif->pFriendsListAdd);
+    packet(CMSG_SKILL_USE_POSITION_MORE,  0x0366,  90, clif->pUseSkillToPosMoreInfo);
 }
 
 // 20140205
@@ -507,6 +509,7 @@ if (packetVersion >= 20140402)
     packet(CMSG_MAP_SERVER_CONNECT,       0x0920,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x0890,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x089a,  26, clif->pFriendsListAdd);
+    packet(CMSG_SKILL_USE_POSITION_MORE,  0x092d,  90, clif->pUseSkillToPosMoreInfo);
 }
 
 // 20140416
@@ -534,6 +537,7 @@ if (packetVersion >= 20140416)
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x0802,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
+    packet(CMSG_SKILL_USE_POSITION_MORE,  0x0366,  90, clif->pUseSkillToPosMoreInfo);
 }
 
 // 20141016
