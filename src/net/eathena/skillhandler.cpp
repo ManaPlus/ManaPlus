@@ -102,6 +102,14 @@ void SkillHandler::getPkRanks() const
     }
 }
 
+void SkillHandler::getTaekwonRanks() const
+{
+    if (packetVersion >= 20050328)
+    {
+        createOutPacket(CMSG_TAEKWON_RANKS);
+    }
+}
+
 void SkillHandler::feelSaveOk(const int which) const
 {
     if (packetVersion >= 20050817)

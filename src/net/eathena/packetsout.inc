@@ -277,6 +277,7 @@ packet(CMSG_SELECT_CART,                  0x0980,   7, clif->pSelectCart);
 packet(CMSG_ALCHEMIST_RANKS,              0x0000,   0, nullptr);
 packet(CMSG_BLACKSMITH_RANKS,             0x0000,   0, nullptr);
 packet(CMSG_PK_RANKS,                     0x0000,   0, nullptr);
+packet(CMSG_TAEKWON_RANKS,                0x0000,   0, nullptr);
 packet(CMSG_BUYINGSTORE_CLOSE,            0x0000,   0, nullptr);
 packet(CMSG_BUYINGSTORE_CREATE,           0x0000,   0, nullptr);
 packet(CMSG_BUYINGSTORE_SELL,             0x0000,   0, nullptr);
@@ -326,6 +327,12 @@ if (packetVersion >= 20050110)
 {
     packet(CMSG_CHAT_MESSAGE,             0x00f3,  -1, clif->pGlobalMessage);
     packet(CMSG_CLOSE_STORAGE,            0x0193,   2, clif->pCloseKafra);
+}
+
+// 20050328
+if (packetVersion >= 20050328)
+{
+    packet(CMSG_TAEKWON_RANKS,            0x0225,   2, clif->pTaekwon);
 }
 
 // 20050530

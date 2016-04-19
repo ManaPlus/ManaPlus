@@ -88,6 +88,10 @@ void SkillHandler::getPkRanks() const
 {
 }
 
+void SkillHandler::getTaekwonRanks() const
+{
+}
+
 void SkillHandler::feelSaveOk(const int which A_UNUSED) const
 {
 }

@@ -58,6 +58,8 @@ class SkillHandler notfinal
 
         virtual void getPkRanks() const = 0;
 
+        virtual void getTaekwonRanks() const = 0;
+
         virtual void feelSaveOk(const int which) const = 0;
 
         virtual void lessEffects(const bool isLess) const = 0;
