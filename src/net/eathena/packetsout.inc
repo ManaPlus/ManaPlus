@@ -135,7 +135,7 @@ packet(CMSG_PARTY_CHANGE_LEADER,          0x07da,   6, clif->pPartyChangeLeader)
 packet(CMSG_PARTY_ALLOW_INVITES,          0x02c8,   3, clif->pPartyTick);
 
 packet(CMSG_MOVE_TO_STORAGE,              0x00f3,   8, clif->pMoveToKafra);
-packet(CMSG_MOVE_FROM_STORAGE,            0x085b,   8, clif->pMoveFromKafra);
+packet(CMSG_MOVE_FROM_STORAGE,            0x00f5,   8, clif->pMoveFromKafra);
 packet(CMSG_CLOSE_STORAGE,                0x00f7,   2, clif->pCloseKafra);
 
 packet(CMSG_MOVE_TO_CART,                 0x0126,   8, clif->pPutItemToCart);
@@ -413,6 +413,7 @@ if (packetVersion >= 20131230)
     packet(CMSG_MOVE_TO_STORAGE,          0x0968,   8, clif->pMoveToKafra);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x035f,   5, clif->pWalkToXY);
     packet(CMSG_MAP_PING,                 0x0438,   6, clif->pTickSend);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0895,   8, clif->pMoveFromKafra);
 }
 
 // 20140115
@@ -437,6 +438,7 @@ if (packetVersion >= 20140115)
     packet(CMSG_MOVE_TO_STORAGE,          0x088E,   8, clif->pMoveToKafra);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0367,   8, clif->pMoveFromKafra);
 }
 
 // 20140205
@@ -454,6 +456,7 @@ if (packetVersion >= 20140205)
     packet(CMSG_ITEM_PICKUP,              0x07E4,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
 }
 
 // 20140305
@@ -486,6 +489,7 @@ if (packetVersion >= 20140402)
     packet(CMSG_MOVE_TO_STORAGE,          0x095c,   8, clif->pMoveToKafra);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x093f,   5, clif->pWalkToXY);
     packet(CMSG_MAP_PING,                 0x0950,   6, clif->pTickSend);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x085b,   8, clif->pMoveFromKafra);
 }
 
 // 20140416
@@ -508,6 +512,7 @@ if (packetVersion >= 20140416)
     packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
 }
 
 // 20141016
@@ -515,6 +520,7 @@ if (packetVersion >= 20141016)
 {
     packet(CMSG_HOMUNCULUS_MENU,          0x0364,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0967,   5, clif->pChangeDir);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x022d,   8, clif->pMoveFromKafra);
 }
 
 // 20141022
@@ -528,6 +534,7 @@ if (packetVersion >= 20141022)
     packet(CMSG_ITEM_PICKUP,              0x094E,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0940,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_MOVE_TO_STORAGE,          0x0878,   8, clif->pMoveToKafra);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x08aa,   8, clif->pMoveFromKafra);
 }
 
 // 20150513
@@ -546,5 +553,6 @@ if (packetVersion >= 20150513)
     packet(CMSG_ITEM_PICKUP,              0x0958,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_MOVE_TO_STORAGE,          0x0879,   8, clif->pMoveToKafra);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0864,   8, clif->pMoveFromKafra);
 }
 #endif
