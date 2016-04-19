@@ -38,13 +38,13 @@ packet(CMSG_CHAR_RENAME,                  0x028f,   0, nullptr);
 packet(CMSG_CHAR_CHANGE_SLOT,             0x08d4,   0, nullptr);
 
 packet(CMSG_MAP_SERVER_CONNECT,           0x089c,  19, clif->pWantToConnection);
-packet(CMSG_MAP_PING,                     0x035f,   6, clif->pTickSend);
+packet(CMSG_MAP_PING,                     0x007e,   6, clif->pTickSend);
 packet(CMSG_LOGIN_PING,                   0x0200,   0, nullptr);
 packet(CMSG_CHAR_PING,                    0x0187,   0, nullptr);
 packet(CMSG_MAP_LOADED,                   0x007d,   2, clif->pLoadEndAck);
 packet(CMSG_CLIENT_QUIT,                  0x018A,   4, clif->pQuitGame);
 
-packet(CMSG_CHAT_MESSAGE,                 0x00f3,  -1, clif->pGlobalMessage);
+packet(CMSG_CHAT_MESSAGE,                 0x008c,  -1, clif->pGlobalMessage);
 packet(CMSG_CHAT_WHISPER,                 0x0096,  -1, clif->pWisMessage);
 packet(CMSG_CHAT_ROOM_JOIN,               0x00d9,  14, clif->pChatAddMember);
 packet(CMSG_CHAT_JOIN_CHANNEL,            0x0b07,   0, nullptr);
@@ -81,7 +81,7 @@ packet(CMSG_PLAYER_FAVORITE_ITEM,         0x0907,   5, clif->pMoveItem);
 
 packet(CMSG_ITEM_PICKUP,                  0x009f,   6, clif->pTakeItem);
 packet(CMSG_PLAYER_CHANGE_DIR,            0x009b,   5, clif->pChangeDir);
-packet(CMSG_PLAYER_CHANGE_DEST,           0x0437,   5, clif->pWalkToXY);
+packet(CMSG_PLAYER_CHANGE_DEST,           0x0085,   5, clif->pWalkToXY);
 packet(CMSG_PLAYER_CHANGE_ACT,            0x0871,   7, clif->pActionRequest);
 packet(CMSG_PLAYER_RESTART,               0x00b2,   3, clif->pRestart);
 packet(CMSG_PLAYER_EMOTE,                 0x00bf,   3, clif->pEmotion);
@@ -125,9 +125,9 @@ packet(CMSG_PARTY_MESSAGE,                0x0108,  -1, clif->pPartyMessage);
 packet(CMSG_PARTY_CHANGE_LEADER,          0x07da,   6, clif->pPartyChangeLeader);
 packet(CMSG_PARTY_ALLOW_INVITES,          0x02c8,   3, clif->pPartyTick);
 
-packet(CMSG_MOVE_TO_STORAGE,              0x07ec,   8, clif->pMoveToKafra);
+packet(CMSG_MOVE_TO_STORAGE,              0x00f3,   8, clif->pMoveToKafra);
 packet(CMSG_MOVE_FROM_STORAGE,            0x085b,   8, clif->pMoveFromKafra);
-packet(CMSG_CLOSE_STORAGE,                0x0193,   2, clif->pCloseKafra);
+packet(CMSG_CLOSE_STORAGE,                0x00f7,   2, clif->pCloseKafra);
 
 packet(CMSG_MOVE_TO_CART,                 0x0126,   8, clif->pPutItemToCart);
 packet(CMSG_MOVE_FROM_CART,               0x0127,   8, clif->pGetItemFromCart);
@@ -169,7 +169,7 @@ packet(CMSG_GUILD_MESSAGE,                0x017e,  -1, clif->pGuildMessage);
 packet(CMSG_GUILD_OPPOSITION,             0x0180,   6, clif->pGuildOpposition);
 packet(CMSG_GUILD_ALLIANCE_DELETE,        0x0183,  10, clif->pGuildDelAlliance);
 
-packet(CMSG_SOLVE_CHAR_NAME,              0x0368,   6, clif->pSolveCharName);
+packet(CMSG_SOLVE_CHAR_NAME,              0x0193,   6, clif->pSolveCharName);
 packet(CMSG_IGNORE_ALL,                   0x00d0,   3, clif->pPMIgnoreAll);
 packet(CMSG_IGNORE_NICK,                  0x00cf,  27, clif->pPMIgnore);
 packet(CMSG_REQUEST_IGNORE_LIST,          0x00d3,   2, clif->pPMIgnoreList);
@@ -279,11 +279,36 @@ packet(CMSG_BUYINGSTORE_OPEN,             0x0000,   0, nullptr);
 packet(CMSG_SEARCHSTORE_NEXT_PAGE,        0x0000,   0, nullptr);
 packet(CMSG_QUICK_IDENTIFY_ITEM,          0x0000,   0, nullptr);
 #else
+// 20040726
+if (packetVersion >= 20040726)
+{
+    packet(CMSG_CHAT_MESSAGE,             0x00f3,  -1, clif->pGlobalMessage);
+}
+
+// 20040906
+if (packetVersion >= 20040906)
+{
+    packet(CMSG_CHAT_MESSAGE,             0x009f,  -1, clif->pGlobalMessage);
+}
+
 // 20041108
 if (packetVersion >= 20041108)
 {
     packet(CMSG_ALCHEMIST_RANKS,          0x0218,   2, clif->pAlchemist);
     packet(CMSG_BLACKSMITH_RANKS,         0x0217,   2, clif->pBlacksmith);
+}
+
+// 20041129
+if (packetVersion >= 20041129)
+{
+    packet(CMSG_CHAT_MESSAGE,             0x0085,  -1, clif->pGlobalMessage);
+}
+
+// 20050110
+if (packetVersion >= 20050110)
+{
+    packet(CMSG_CHAT_MESSAGE,             0x00f3,  -1, clif->pGlobalMessage);
+    packet(CMSG_CLOSE_STORAGE,            0x0193,   2, clif->pCloseKafra);
 }
 
 // 20050530
@@ -350,6 +375,7 @@ if (packetVersion >= 20120418)
     packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
     packet(CMSG_ITEM_PICKUP,              0x07e4,   6, clif->pTakeItem);
+    packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
 }
 
 // 20131223
@@ -375,6 +401,9 @@ if (packetVersion >= 20131230)
     packet(CMSG_SKILL_USE_POSITION,       0x091E,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x092A,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0369,   2, clif->pSearchStoreInfoNextPage);
+    packet(CMSG_MOVE_TO_STORAGE,          0x0968,   8, clif->pMoveToKafra);
+    packet(CMSG_PLAYER_CHANGE_DEST,       0x035f,   5, clif->pWalkToXY);
+    packet(CMSG_MAP_PING,                 0x0438,   6, clif->pTickSend);
 }
 
 // 20140115
@@ -395,6 +424,10 @@ if (packetVersion >= 20140115)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x0940,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0817,   2, clif->pSearchStoreInfoNextPage);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
+    packet(CMSG_MOVE_TO_STORAGE,          0x088E,   8, clif->pMoveToKafra);
+    packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
+    packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
 }
 
 // 20140205
@@ -411,6 +444,7 @@ if (packetVersion >= 20140205)
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
     packet(CMSG_ITEM_PICKUP,              0x07E4,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
+    packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
 }
 
 // 20140305
@@ -439,6 +473,10 @@ if (packetVersion >= 20140402)
     packet(CMSG_SKILL_USE_POSITION,       0x0364,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x0958,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x085D,   2, clif->pSearchStoreInfoNextPage);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x07ec,   6, clif->pSolveCharName);
+    packet(CMSG_MOVE_TO_STORAGE,          0x095c,   8, clif->pMoveToKafra);
+    packet(CMSG_PLAYER_CHANGE_DEST,       0x093f,   5, clif->pWalkToXY);
+    packet(CMSG_MAP_PING,                 0x0950,   6, clif->pTickSend);
 }
 
 // 20140416
@@ -457,6 +495,10 @@ if (packetVersion >= 20140416)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x07E4,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
+    packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
+    packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
+    packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
 }
 
 // 20141016
@@ -476,6 +518,7 @@ if (packetVersion >= 20141022)
     packet(CMSG_SKILL_USE_POSITION,       0x023B,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x094E,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0940,   2, clif->pSearchStoreInfoNextPage);
+    packet(CMSG_MOVE_TO_STORAGE,          0x0878,   8, clif->pMoveToKafra);
 }
 
 // 20150513
@@ -493,5 +536,6 @@ if (packetVersion >= 20150513)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x0958,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
+    packet(CMSG_MOVE_TO_STORAGE,          0x0879,   8, clif->pMoveToKafra);
 }
 #endif
