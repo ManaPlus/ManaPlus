@@ -241,7 +241,7 @@ packet(CMSG_BANK_CHECK,                   0x09ab,   6, clif->pBankCheck);
 packet(CMSG_BANK_OPEN,                    0x09b6,   6, clif->pBankOpen);
 packet(CMSG_BANK_CLOSE,                   0x09b8,   6, clif->pBankClose);
 
-packet(CMSG_FRIENDS_ADD_PLAYER,           0x091a,  26, clif->pFriendsListAdd);
+packet(CMSG_FRIENDS_ADD_PLAYER,           0x0202,  26, clif->pFriendsListAdd);
 packet(CMSG_FRIENDS_REQUEST_ACK,          0x0208,  14, clif->pFriendsListReply);
 packet(CMSG_FRIENDS_DELETE_PLAYER,        0x0203,  10, clif->pFriendsListRemove);
 
@@ -417,6 +417,7 @@ if (packetVersion >= 20131230)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0871,   7, clif->pActionRequest);
     packet(CMSG_MAP_SERVER_CONNECT,       0x089c,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x08a9,  26, clif->pPartyInvite2);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0943,  26, clif->pFriendsListAdd);
 }
 
 // 20140115
@@ -445,6 +446,7 @@ if (packetVersion >= 20140115)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_MAP_SERVER_CONNECT,       0x0966,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x095d,  26, clif->pPartyInvite2);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x089b,  26, clif->pFriendsListAdd);
 }
 
 // 20140205
@@ -465,6 +467,7 @@ if (packetVersion >= 20140205)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x0802,  26, clif->pPartyInvite2);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
 }
 
 // 20140305
@@ -476,6 +479,7 @@ if (packetVersion >= 20140305)
     packet(CMSG_SKILL_USE_POSITION,       0x0436,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x0202,   6, clif->pTakeItem);
     packet(CMSG_MAP_SERVER_CONNECT,       0x0438,  19, clif->pWantToConnection);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x07e4,  26, clif->pFriendsListAdd);
 }
 
 // 20140402
@@ -502,6 +506,7 @@ if (packetVersion >= 20140402)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0946,   7, clif->pActionRequest);
     packet(CMSG_MAP_SERVER_CONNECT,       0x0920,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x0890,  26, clif->pPartyInvite2);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x089a,  26, clif->pFriendsListAdd);
 }
 
 // 20140416
@@ -528,6 +533,7 @@ if (packetVersion >= 20140416)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x0802,  26, clif->pPartyInvite2);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
 }
 
 // 20141016
@@ -537,6 +543,7 @@ if (packetVersion >= 20141016)
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0967,   5, clif->pChangeDir);
     packet(CMSG_MOVE_FROM_STORAGE,        0x022d,   8, clif->pMoveFromKafra);
     packet(CMSG_MAP_SERVER_CONNECT,       0x086e,  19, clif->pWantToConnection);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x094b,  26, clif->pFriendsListAdd);
 }
 
 // 20141022
@@ -553,6 +560,7 @@ if (packetVersion >= 20141022)
     packet(CMSG_MOVE_FROM_STORAGE,        0x08aa,   8, clif->pMoveFromKafra);
     packet(CMSG_MAP_SERVER_CONNECT,       0x093b,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x0896,  26, clif->pPartyInvite2);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x091a,  26, clif->pFriendsListAdd);
 }
 
 // 20150513
@@ -574,5 +582,6 @@ if (packetVersion >= 20150513)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0864,   8, clif->pMoveFromKafra);
     packet(CMSG_MAP_SERVER_CONNECT,       0x0363,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x094A,  26, clif->pPartyInvite2);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x08a8,  26, clif->pFriendsListAdd);
 }
 #endif
