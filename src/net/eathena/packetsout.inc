@@ -91,7 +91,7 @@ packet(CMSG_PLAYER_FAVORITE_ITEM,         0x0907,   5, clif->pMoveItem);
 packet(CMSG_ITEM_PICKUP,                  0x009f,   6, clif->pTakeItem);
 packet(CMSG_PLAYER_CHANGE_DIR,            0x009b,   5, clif->pChangeDir);
 packet(CMSG_PLAYER_CHANGE_DEST,           0x0085,   5, clif->pWalkToXY);
-packet(CMSG_PLAYER_CHANGE_ACT,            0x0871,   7, clif->pActionRequest);
+packet(CMSG_PLAYER_CHANGE_ACT,            0x0089,   7, clif->pActionRequest);
 packet(CMSG_PLAYER_RESTART,               0x00b2,   3, clif->pRestart);
 packet(CMSG_PLAYER_EMOTE,                 0x00bf,   3, clif->pEmotion);
 packet(CMSG_PLAYER_STOP_ATTACK,           0x0118,   2, clif->pStopAttack);
@@ -414,6 +414,7 @@ if (packetVersion >= 20131230)
     packet(CMSG_PLAYER_CHANGE_DEST,       0x035f,   5, clif->pWalkToXY);
     packet(CMSG_MAP_PING,                 0x0438,   6, clif->pTickSend);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0895,   8, clif->pMoveFromKafra);
+    packet(CMSG_PLAYER_CHANGE_ACT,        0x0871,   7, clif->pActionRequest);
 }
 
 // 20140115
@@ -439,6 +440,7 @@ if (packetVersion >= 20140115)
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0367,   8, clif->pMoveFromKafra);
+    packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
 }
 
 // 20140205
@@ -490,6 +492,7 @@ if (packetVersion >= 20140402)
     packet(CMSG_PLAYER_CHANGE_DEST,       0x093f,   5, clif->pWalkToXY);
     packet(CMSG_MAP_PING,                 0x0950,   6, clif->pTickSend);
     packet(CMSG_MOVE_FROM_STORAGE,        0x085b,   8, clif->pMoveFromKafra);
+    packet(CMSG_PLAYER_CHANGE_ACT,        0x0946,   7, clif->pActionRequest);
 }
 
 // 20140416
@@ -513,6 +516,7 @@ if (packetVersion >= 20140416)
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
+    packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
 }
 
 // 20141016
