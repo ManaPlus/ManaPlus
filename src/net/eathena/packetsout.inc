@@ -124,7 +124,6 @@ packet(CMSG_TRADE_OK,                     0x00ef,   2, clif->pTradeCommit);
 packet(CMSG_PARTY_CREATE,                 0x00f9,  26, clif->pCreateParty);
 packet(CMSG_PARTY_CREATE2,                0x01e8,  28, clif->pCreateParty2);
 packet(CMSG_PARTY_INVITE,                 0x00fc,   6, clif->pPartyInvite);
-packet(CMSG_PARTY_INVITE2,                0x095d,  26, clif->pPartyInvite2);
 packet(CMSG_PARTY_INVITED,                0x00ff,  10, clif->pReplyPartyInvite);
 packet(CMSG_PARTY_INVITED2,               0x02c7,   7, clif->pReplyPartyInvite2);
 packet(CMSG_PARTY_LEAVE,                  0x0100,   2, clif->pLeaveParty);
@@ -287,6 +286,7 @@ packet(CMSG_SEARCHSTORE_CLICK,            0x0000,   0, nullptr);
 packet(CMSG_BUYINGSTORE_OPEN,             0x0000,   0, nullptr);
 packet(CMSG_SEARCHSTORE_NEXT_PAGE,        0x0000,   0, nullptr);
 packet(CMSG_QUICK_IDENTIFY_ITEM,          0x0000,   0, nullptr);
+packet(CMSG_PARTY_INVITE2,                0x0000,   0, nullptr);
 #else
 // 20040726
 if (packetVersion >= 20040726)
@@ -416,6 +416,7 @@ if (packetVersion >= 20131230)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0895,   8, clif->pMoveFromKafra);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0871,   7, clif->pActionRequest);
     packet(CMSG_MAP_SERVER_CONNECT,       0x089c,  19, clif->pWantToConnection);
+    packet(CMSG_PARTY_INVITE2,            0x08a9,  26, clif->pPartyInvite2);
 }
 
 // 20140115
@@ -443,6 +444,7 @@ if (packetVersion >= 20140115)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0367,   8, clif->pMoveFromKafra);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_MAP_SERVER_CONNECT,       0x0966,  19, clif->pWantToConnection);
+    packet(CMSG_PARTY_INVITE2,            0x095d,  26, clif->pPartyInvite2);
 }
 
 // 20140205
@@ -462,6 +464,7 @@ if (packetVersion >= 20140205)
     packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
+    packet(CMSG_PARTY_INVITE2,            0x0802,  26, clif->pPartyInvite2);
 }
 
 // 20140305
@@ -498,6 +501,7 @@ if (packetVersion >= 20140402)
     packet(CMSG_MOVE_FROM_STORAGE,        0x085b,   8, clif->pMoveFromKafra);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0946,   7, clif->pActionRequest);
     packet(CMSG_MAP_SERVER_CONNECT,       0x0920,  19, clif->pWantToConnection);
+    packet(CMSG_PARTY_INVITE2,            0x0890,  26, clif->pPartyInvite2);
 }
 
 // 20140416
@@ -523,6 +527,7 @@ if (packetVersion >= 20140416)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
+    packet(CMSG_PARTY_INVITE2,            0x0802,  26, clif->pPartyInvite2);
 }
 
 // 20141016
@@ -547,6 +552,7 @@ if (packetVersion >= 20141022)
     packet(CMSG_MOVE_TO_STORAGE,          0x0878,   8, clif->pMoveToKafra);
     packet(CMSG_MOVE_FROM_STORAGE,        0x08aa,   8, clif->pMoveFromKafra);
     packet(CMSG_MAP_SERVER_CONNECT,       0x093b,  19, clif->pWantToConnection);
+    packet(CMSG_PARTY_INVITE2,            0x0896,  26, clif->pPartyInvite2);
 }
 
 // 20150513
@@ -567,5 +573,6 @@ if (packetVersion >= 20150513)
     packet(CMSG_MOVE_TO_STORAGE,          0x0879,   8, clif->pMoveToKafra);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0864,   8, clif->pMoveFromKafra);
     packet(CMSG_MAP_SERVER_CONNECT,       0x0363,  19, clif->pWantToConnection);
+    packet(CMSG_PARTY_INVITE2,            0x094A,  26, clif->pPartyInvite2);
 }
 #endif
