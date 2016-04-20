@@ -374,6 +374,11 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         MainConfig_false);
 
     // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable OpenGL version check "
+        "(do not disable)"), "", "checkOpenGLVersion", this,
+        "checkOpenGLVersionEvent");
+
+    // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable debug log"), "",
         "debugLog", this, "debugLogEvent");
 

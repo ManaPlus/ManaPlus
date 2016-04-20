@@ -385,6 +385,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableGuiOpacity", true);
     AddDEF("enableTradeFilter", true);
     AddDEF("enableIdCollecting", false);
+    AddDEF("checkOpenGLVersion", true);
     return configData;
 }
 

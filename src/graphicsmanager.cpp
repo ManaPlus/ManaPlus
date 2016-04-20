@@ -532,49 +532,52 @@ void GraphicsManager::initGraphics()
     detectPixelSize();
     setVideoMode();
 #ifdef USE_OPENGL
-    const RenderType oldOpenGLMode = openGLMode;
-    if (openGLMode == RENDER_MODERN_OPENGL)
+    if (config.getBoolValue("checkOpenGLVersion") == true)
     {
-        if (!mSupportModernOpengl || !checkGLVersion(3, 0))
+        const RenderType oldOpenGLMode = openGLMode;
+        if (openGLMode == RENDER_MODERN_OPENGL)
         {
-            logger->log("Fallback to normal OpenGL mode");
-            openGLMode = RENDER_NORMAL_OPENGL;
+            if (!mSupportModernOpengl || !checkGLVersion(3, 0))
+            {
+                logger->log("Fallback to normal OpenGL mode");
+                openGLMode = RENDER_NORMAL_OPENGL;
+            }
         }
-    }
-    if (openGLMode == RENDER_NORMAL_OPENGL)
-    {
-        if (!checkGLVersion(2, 0))
+        if (openGLMode == RENDER_NORMAL_OPENGL)
         {
-            logger->log("Fallback to safe OpenGL mode");
-            openGLMode = RENDER_SAFE_OPENGL;
+            if (!checkGLVersion(2, 0))
+            {
+                logger->log("Fallback to safe OpenGL mode");
+                openGLMode = RENDER_SAFE_OPENGL;
+            }
         }
-    }
-    if (openGLMode == RENDER_GLES_OPENGL)
-    {
-        if (!checkGLVersion(2, 0) && !checkGLesVersion(1, 0))
+        if (openGLMode == RENDER_GLES_OPENGL)
         {
-            logger->log("Fallback to safe OpenGL mode");
-            openGLMode = RENDER_SAFE_OPENGL;
+            if (!checkGLVersion(2, 0) && !checkGLesVersion(1, 0))
+            {
+                logger->log("Fallback to safe OpenGL mode");
+                openGLMode = RENDER_SAFE_OPENGL;
+            }
         }
-    }
-    if (openGLMode == RENDER_GLES2_OPENGL)
-    {
-        // +++ here need check also not implimented gles flag
-        if (!checkGLVersion(2, 0))
+        if (openGLMode == RENDER_GLES2_OPENGL)
         {
-            logger->log("Fallback to software mode");
-            openGLMode = RENDER_SOFTWARE;
+            // +++ here need check also not implimented gles flag
+            if (!checkGLVersion(2, 0))
+            {
+                logger->log("Fallback to software mode");
+                openGLMode = RENDER_SOFTWARE;
+            }
         }
-    }
 
-    if (openGLMode != oldOpenGLMode)
-    {
-        deleteRenderers();
-        settings.options.renderer = CAST_S32(openGLMode);
-        config.setValue("opengl", settings.options.renderer);
-        createRenderers();
-        detectPixelSize();
-        setVideoMode();
+        if (openGLMode != oldOpenGLMode)
+        {
+            deleteRenderers();
+            settings.options.renderer = CAST_S32(openGLMode);
+            config.setValue("opengl", settings.options.renderer);
+            createRenderers();
+            detectPixelSize();
+            setVideoMode();
+        }
     }
 #if !defined(ANDROID) && !defined(__APPLE__)
     const std::string str = config.getStringValue("textureSize");
