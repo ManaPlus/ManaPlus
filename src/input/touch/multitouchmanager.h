@@ -68,4 +68,3 @@ class MultiTouchManager final
 extern MultiTouchManager multiTouchManager;
 
 #endif  // INPUT_TOUCH_MULTITOUCHMANAGER_H
-

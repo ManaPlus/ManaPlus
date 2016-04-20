@@ -85,7 +85,7 @@ class FocusListener notfinal
         { }
 
         /**
-          * Called when a widget gains focus. 
+          * Called when a widget gains focus.
           *
           * @param event Discribes the event.
           */
@@ -93,7 +93,7 @@ class FocusListener notfinal
         { }
 
         /**
-          * Called when a widget loses focus. 
+          * Called when a widget loses focus.
           *
           * @param event Discribes the event.
           */

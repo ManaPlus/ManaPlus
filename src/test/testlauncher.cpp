@@ -553,8 +553,6 @@ int TestLauncher::testStackSpeed()
     printf("debug: %d\n", stack1.top().xOffset);
     printf("stl time: %ld\n", diff);
 
-
-
     for (int d = 0; d < 100; d ++)
     {
         for (int f = 0; f < sz; f ++)

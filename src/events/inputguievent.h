@@ -89,9 +89,9 @@ class InputGuiEvent: public Event
         /**
           * Marks the event as consumed. Input event listeners may discard
           * consumed input or act on consumed input. An example of a widget
-          * that discards consumed input is the ScrollArea widget that 
-          * discards consumed mouse wheel events so the ScrollArea will not 
-          * scroll if for instance a Slider's value inside the ScrollArea was 
+          * that discards consumed input is the ScrollArea widget that
+          * discards consumed mouse wheel events so the ScrollArea will not
+          * scroll if for instance a Slider's value inside the ScrollArea was
           * changed with the mouse wheel.
           *
           * @see isConsumed
@@ -102,7 +102,7 @@ class InputGuiEvent: public Event
         /**
           * Checks if the input event is consumed.
           *
-          * @return True if the input event is consumed, 
+          * @return True if the input event is consumed,
           *         false otherwise.
           * @see consume
           */
@@ -111,7 +111,7 @@ class InputGuiEvent: public Event
 
     protected:
         /**
-          * True if the input event is consumed, 
+          * True if the input event is consumed,
           * false otherwise.
           */
         bool mIsConsumed;

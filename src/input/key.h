@@ -111,7 +111,7 @@ class Key final
         bool isLetter() const A_WARN_UNUSED;
 
         /**
-          * Gets the value of the key. If an ascii value exists it 
+          * Gets the value of the key. If an ascii value exists it
           * will be returned. Otherwise an enum value will be returned.
           *
           * @return the value of the key.

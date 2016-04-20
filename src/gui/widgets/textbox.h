@@ -220,7 +220,7 @@ class TextBox final : public Widget,
 
         /**
          * Scrolls the text to the caret if the text box is in a scroll area.
-         * 
+         *
          * @see ScrollArea
          */
         void scrollToCaret();

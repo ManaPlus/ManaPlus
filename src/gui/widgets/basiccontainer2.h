@@ -67,8 +67,8 @@
 #include "gui/widgets/basiccontainer.h"
 
 /**
-  * An implementation of a container able to contain other widgets. A widget's 
-  * position in the container is relative to the container itself and not the screen. 
+  * An implementation of a container able to contain other widgets. A widget's
+  * position in the container is relative to the container itself and not the screen.
   * A container is the most common widget to use as the Gui's top widget as makes the Gui
   * able to contain more than one widget.
   *

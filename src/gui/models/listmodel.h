@@ -69,10 +69,10 @@
 #include "localconsts.h"
 
 /**
-  * An interface for a model that represents a list. It is 
-  * used in certain widgets, like the ListBox, to handle a 
-  * lists with string elements. If you want to use widgets 
-  * like ListBox, make a derived class from this class that 
+  * An interface for a model that represents a list. It is
+  * used in certain widgets, like the ListBox, to handle a
+  * lists with string elements. If you want to use widgets
+  * like ListBox, make a derived class from this class that
   * represents your list.
   */
 class ListModel notfinal

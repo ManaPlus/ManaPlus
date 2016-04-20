@@ -84,7 +84,7 @@ class MouseListener;
 class WidgetListener;
 
 /**
-  * Abstract class for widgets of Guichan. It contains basic functions 
+  * Abstract class for widgets of Guichan. It contains basic functions
   * every widget should have.
   *
   * NOTE: Functions begining with underscore "_" should not
@@ -132,12 +132,12 @@ class Widget notfinal : public Widget2
           * The frame is not considered a part of the widget, it only allows a frame
           * to be drawn around the widget, thus a frame will never be included when
           * calculating if a widget should receive events from user input. Also
-          * a widget's frame will never be included when calculating a widget's 
+          * a widget's frame will never be included when calculating a widget's
           * position.
-          * 
-          * The size of the frame is calculated using the widget's frame size. 
-          * If a widget has a frame size of 10 pixels than the area the drawFrame 
-          * function can draw to will be the size of the widget with an additional 
+          *
+          * The size of the frame is calculated using the widget's frame size.
+          * If a widget has a frame size of 10 pixels than the area the drawFrame
+          * function can draw to will be the size of the widget with an additional
           * extension of 10 pixels in each direction.
           *
           * An example when drawFrame is a useful function is if a widget needs
@@ -154,9 +154,9 @@ class Widget notfinal : public Widget2
         { }
 
         /**
-          * Sets the size of the widget's frame. The frame is not considered a part of 
-          * the widget, it only allows a frame to be drawn around the widget, thus a frame 
-          * will never be included when calculating if a widget should receive events 
+          * Sets the size of the widget's frame. The frame is not considered a part of
+          * the widget, it only allows a frame to be drawn around the widget, thus a frame
+          * will never be included when calculating if a widget should receive events
           * from user input. Also a widget's frame will never be included when calculating
           * a widget's position.
           *
@@ -171,9 +171,9 @@ class Widget notfinal : public Widget2
         { mFrameSize = frameSize; }
 
         /**
-          * Gets the size of the widget's frame. The frame is not considered a part of 
-          * the widget, it only allows a frame to be drawn around the widget, thus a frame 
-          * will never be included when calculating if a widget should receive events 
+          * Gets the size of the widget's frame. The frame is not considered a part of
+          * the widget, it only allows a frame to be drawn around the widget, thus a frame
+          * will never be included when calculating if a widget should receive events
           * from user input. Also a widget's frame will never be included when calculating
           * a widget's position.
           *
@@ -505,8 +505,8 @@ class Widget notfinal : public Widget2
         { return mFocusHandler; }
 
         /**
-          * Adds an action listener to the widget. When an action event 
-          * is fired by the widget the action listeners of the widget 
+          * Adds an action listener to the widget. When an action event
+          * is fired by the widget the action listeners of the widget
           * will get notified.
           *
           * @param actionListener The action listener to add.
@@ -525,8 +525,8 @@ class Widget notfinal : public Widget2
         void removeActionListener(ActionListener *const actionListener);
 
         /**
-          * Adds a death listener to the widget. When a death event is 
-          * fired by the widget the death listeners of the widget will 
+          * Adds a death listener to the widget. When a death event is
+          * fired by the widget the death listeners of the widget will
           * get notified.
           *
           * @param deathListener The death listener to add.
@@ -545,8 +545,8 @@ class Widget notfinal : public Widget2
         void removeDeathListener(WidgetDeathListener *const deathListener);
 
         /**
-          * Adds a mouse listener to the widget. When a mouse event is 
-          * fired by the widget the mouse listeners of the widget will 
+          * Adds a mouse listener to the widget. When a mouse event is
+          * fired by the widget the mouse listeners of the widget will
           * get notified.
           *
           * @param mouseListener The mouse listener to add.
@@ -565,8 +565,8 @@ class Widget notfinal : public Widget2
         void removeMouseListener(MouseListener *const mouseListener);
 
         /**
-          * Adds a key listener to the widget. When a key event is 
-          * fired by the widget the key listeners of the widget will 
+          * Adds a key listener to the widget. When a key event is
+          * fired by the widget the key listeners of the widget will
           * get notified.
           *
           * @param keyListener The key listener to add.
@@ -585,8 +585,8 @@ class Widget notfinal : public Widget2
         void removeKeyListener(KeyListener *const keyListener);
 
         /**
-          * Adds a focus listener to the widget. When a focus event is 
-          * fired by the widget the key listeners of the widget will 
+          * Adds a focus listener to the widget. When a focus event is
+          * fired by the widget the key listeners of the widget will
           * get notified.
           *
           * @param focusListener The focus listener to add.
@@ -605,8 +605,8 @@ class Widget notfinal : public Widget2
         void removeFocusListener(FocusListener *const focusListener);
 
         /**
-          * Adds a widget listener to the widget. When a widget event is 
-          * fired by the widget the key listeners of the widget will 
+          * Adds a widget listener to the widget. When a widget event is
+          * fired by the widget the key listeners of the widget will
           * get notified.
           *
           * @param widgetListener The widget listener to add.
@@ -673,8 +673,8 @@ class Widget notfinal : public Widget2
         { mParent = parent; }
 
         /**
-          * Gets the font set for the widget. If no font has been set, 
-          * the global font will be returned. If no global font has been set, 
+          * Gets the font set for the widget. If no font has been set,
+          * the global font will be returned. If no global font has been set,
           * the default font will be returend.
           *
           * @return The font set for the widget.
@@ -693,7 +693,7 @@ class Widget notfinal : public Widget2
         static void setGlobalFont(Font *const font);
 
         /**
-          * Sets the font for the widget. If NULL is passed, the global font 
+          * Sets the font for the widget. If NULL is passed, the global font
           * will be used.
           *
           * @param font The font to set for the widget.
@@ -944,7 +944,7 @@ class Widget notfinal : public Widget2
 
         /**
           * Focuses the next widget in the widget.
-          * 
+          *
           * @see moveToBottom
           * @since 0.1.0
           */
@@ -1110,7 +1110,7 @@ class Widget notfinal : public Widget2
           */
         typedef std::list<ActionListener*> ActionListenerList;
 
-        /** 
+        /**
           * Holds the action listeners of the widget.
           */
         ActionListenerList mActionListeners;
@@ -1127,7 +1127,7 @@ class Widget notfinal : public Widget2
 
         /**
           * Holds the death listeners of the widget.
-          */ 
+          */
         WidgetDeathListenerList mDeathListeners;
 
         /**
@@ -1214,7 +1214,7 @@ class Widget notfinal : public Widget2
           */
         Font* mCurrentFont;
 
-        /** 
+        /**
           * Holds the frame size of the widget.
           */
         unsigned int mFrameSize;

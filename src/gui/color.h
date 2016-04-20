@@ -78,7 +78,7 @@ class Color final
         Color();
 
         /**
-          * Constructor. Constructs a color from the bytes in an integer. 
+          * Constructor. Constructs a color from the bytes in an integer.
           * Call it with a hexadecimal constant for HTML-style color
           * representation.
           * The alpha component is 255 by default.
@@ -108,7 +108,7 @@ class Color final
 
         /**
           * Adds the RGB values of two colors together. The values will be
-          * clamped if they go out of range. 
+          * clamped if they go out of range.
           *
           * WARNING: This function will reset the alpha value of the
           *          returned color to 255.

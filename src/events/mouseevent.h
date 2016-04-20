@@ -115,7 +115,7 @@ class MouseEvent: public InputGuiEvent
         { return mButton; }
 
         /**
-          * Gets the x coordinate of the mouse event. 
+          * Gets the x coordinate of the mouse event.
           * The coordinate relative to widget the mouse listener
           * receiving the events have registered to.
           *
@@ -126,7 +126,7 @@ class MouseEvent: public InputGuiEvent
         { return mX; }
 
         /**
-          * Gets the y coordinate of the mouse event. 
+          * Gets the y coordinate of the mouse event.
           * The coordinate relative to widget the mouse listener
           * receiving the events have registered to.
           *
@@ -191,8 +191,8 @@ class MouseEvent: public InputGuiEvent
           * the protected member variables of this class and at the same time
           * keep the MouseEvent class as const as possible. Gui needs to
           * update the x och y coordinates for the coordinates to be relative
-          * to widget the mouse listener receiving the events have registered 
-          * to. 
+          * to widget the mouse listener receiving the events have registered
+          * to.
           */
         friend class Gui;
 };

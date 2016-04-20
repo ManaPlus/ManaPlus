@@ -70,7 +70,7 @@
 
 /**
   * A rectangle used when dealing with clipping. A clip rectangle is
-  * a regular rectangle extended with variables for x offsets and y 
+  * a regular rectangle extended with variables for x offsets and y
   * offsets. The offsets are used for calculations from relative
   * screen coordinates to actual screen coordinates.
   */

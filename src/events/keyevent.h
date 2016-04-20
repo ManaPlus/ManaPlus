@@ -139,7 +139,7 @@ class KeyEvent: public InputGuiEvent
 #endif
 
     protected:
-        /** 
+        /**
           * Holds the key of the key event.
           */
         Key mKey;

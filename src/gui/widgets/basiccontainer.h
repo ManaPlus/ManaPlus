@@ -70,7 +70,7 @@
 
 /**
   * A base class for containers. The class implements the most
-  * common things for a container. If you are implementing a 
+  * common things for a container. If you are implementing a
   * container, consider inheriting from this class.
   *
   * @see Container

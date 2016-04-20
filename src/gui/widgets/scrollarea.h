@@ -337,7 +337,7 @@ class ScrollArea final : public BasicContainer,
          * Sets the amount to scroll in pixels when the left scroll button is
          * pushed.
          *
-         * @param amount The amount to scroll in pixels. 
+         * @param amount The amount to scroll in pixels.
          * @see getLeftButtonScrollAmount
          */
         void setLeftButtonScrollAmount(const int amount)

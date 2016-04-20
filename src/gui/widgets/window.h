@@ -606,7 +606,7 @@ class Window notfinal : public BasicContainer2,
 
         /**
          * Holds the padding of the window.
-         */ 
+         */
         int mPadding;
 
         /**
@@ -621,14 +621,14 @@ class Window notfinal : public BasicContainer2,
 
         /**
          * Holds a drag offset as an x coordinate where the drag of the window
-         * started if the window is being dragged. It's used to move the window 
+         * started if the window is being dragged. It's used to move the window
          * correctly when dragged.
          */
         int mDragOffsetX;
 
         /**
          * Holds a drag offset as an y coordinate where the drag of the window
-         * started if the window is being dragged. It's used to move the window 
+         * started if the window is being dragged. It's used to move the window
          * correctly when dragged.
          */
         int mDragOffsetY;

@@ -57,7 +57,7 @@ class Icon final : public Widget
 
         ~Icon();
 
-        /** 
+        /**
          * Gets the current Image.
          */
         Image *getImage() const A_WARN_UNUSED

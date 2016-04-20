@@ -253,7 +253,7 @@ class Gui final
          * Sets the graphics object to use for drawing.
          *
          * @param graphics The graphics object to use for drawing.
-         * @see getGraphics, AllegroGraphics, HGEGraphics, 
+         * @see getGraphics, AllegroGraphics, HGEGraphics,
          *      OpenLayerGraphics, OpenGLGraphics, SDLGraphics
          * @since 0.1.0
          */
@@ -264,7 +264,7 @@ class Gui final
          *
          *  @return The graphics object used for drawing. NULL if no
          *          graphics object has been set.
-         * @see setGraphics, AllegroGraphics, HGEGraphics, 
+         * @see setGraphics, AllegroGraphics, HGEGraphics,
          *      OpenLayerGraphics, OpenGLGraphics, SDLGraphics
          * @since 0.1.0
          */
@@ -395,8 +395,8 @@ class Gui final
         void distributeKeyEventToGlobalKeyListeners(KeyEvent& event);
 
         /**
-         * Handles modal mouse input focus. Modal mouse input focus needs 
-         * to be checked at each logic iteration as it might be necessary to 
+         * Handles modal mouse input focus. Modal mouse input focus needs
+         * to be checked at each logic iteration as it might be necessary to
          * distribute mouse entered or mouse exited events.
          *
          * @since 0.8.0
@@ -404,7 +404,7 @@ class Gui final
         void handleModalMouseInputFocus();
 
         /**
-         * Handles modal focus. Modal focus needs to be checked at 
+         * Handles modal focus. Modal focus needs to be checked at
          * each logic iteration as it might be necessary to distribute
          * mouse entered or mouse exited events.
          *

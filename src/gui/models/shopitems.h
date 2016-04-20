@@ -145,7 +145,7 @@ class ShopItems final : public ListModel
         /**
          * Searches the current items in the shop for the specified
          * id and returns the item if found, or 0 else.
-         * 
+         *
          * @return the item found or 0
          */
         ShopItem *findItem(const int id,

@@ -169,18 +169,18 @@ class MouseInput final
          */
         MouseButtonT mButton;
 
-        /** 
-         * Holds the timestamp of the mouse input. Used to 
+        /**
+         * Holds the timestamp of the mouse input. Used to
          * check for double clicks.
          */
         int mTimeStamp;
 
-        /** 
+        /**
          * Holds the x coordinate of the mouse input.
          */
         int mX;
 
-        /** 
+        /**
          * Holds the y coordinate of the mouse input.
          */
         int mY;
