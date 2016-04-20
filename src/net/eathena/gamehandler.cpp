@@ -90,13 +90,7 @@ void GameHandler::connect() const
     outMsg.writeInt8(Being::genderToInt(token.sex), "sex");
     if (serverFeatures->haveMapServerVersion())
         loginHandler->sendVersion();
-/*
-    if (localPlayer)
-    {
-        // Change the player's ID to the account ID to match what eAthena uses
-        localPlayer->setId(token.account_ID);
-    }
-*/
+
     // We get 4 useless bytes before the real answer comes in (what are these?)
 //    Network::mInstance->skip(4);
 }

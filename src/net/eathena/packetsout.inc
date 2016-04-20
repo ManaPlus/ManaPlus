@@ -347,6 +347,12 @@ if (packetVersion >= 20050817)
     packet(CMSG_SKILL_FEEL_SAVE_OK,       0x0254,   3, clif->pFeelSaveOk);
 }
 
+// 20080910
+if (packetVersion >= 20080910)
+{
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0436,  19, clif->pWantToConnection);
+}
+
 // 20090603
 if (packetVersion >= 20090603)
 {
@@ -389,6 +395,8 @@ if (packetVersion >= 20111005)
 if (packetVersion >= 20111102)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x08ab,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0835,  19, clif->pWantToConnection);  // non PACKETVER_RE
+    packet(CMSG_MAP_SERVER_CONNECT,       0x083c,  19, clif->pWantToConnection);
 }
 
 // 20120307
@@ -397,6 +405,7 @@ if (packetVersion >= 20120307)
     packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0884,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x086A,  19, clif->pWantToConnection);
 }
 
 // 20120410
@@ -405,6 +414,7 @@ if (packetVersion >= 20120410)
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x094b,  19, clif->pWantToConnection);
 }
 
 // 20120418
@@ -414,72 +424,102 @@ if (packetVersion >= 20120418)
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
     packet(CMSG_ITEM_PICKUP,              0x07e4,   6, clif->pTakeItem);
     packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
+}
+
+// 20120702
+if (packetVersion >= 20120702)
+{
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0363,  19, clif->pWantToConnection);
 }
 
 // 20120716
 if (packetVersion >= 20120716)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0811,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
 }
 
 // 20130320
 if (packetVersion >= 20130320)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x094e,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0888,  19, clif->pWantToConnection);
 }
 
 // 20130515
 if (packetVersion >= 20130515)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0943,  19, clif->pWantToConnection);
 }
 
 // 20130522
 if (packetVersion >= 20130522)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x095b,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x08a9,  19, clif->pWantToConnection);
 }
 
 // 20130529
 if (packetVersion >= 20130529)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0918,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0919,  19, clif->pWantToConnection);
 }
 
 // 20130605
 if (packetVersion >= 20130605)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
+}
+
+// 20130612
+if (packetVersion >= 20130612)
+{
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0919,  19, clif->pWantToConnection);
 }
 
 // 20130618
 if (packetVersion >= 20130618)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0281,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x095b,  19, clif->pWantToConnection);
 }
 
 // 20130626
 if (packetVersion >= 20130626)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x088c,  19, clif->pWantToConnection);
+}
+
+// 20130703
+if (packetVersion >= 20130703)
+{
+    packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
 }
 
 // 20130814
 if (packetVersion >= 20130814)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0889,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0368,  19, clif->pWantToConnection);
 }
 
 // 20131218
 if (packetVersion >= 20131218)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x092f,  19, clif->pWantToConnection);
 }
 
 // 20131223
 if (packetVersion >= 20131223)
 {
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
 }
 
 // 20131230
