@@ -4,6 +4,9 @@ stages:
   - success
   - failure
 
+before_script:
+  - uname -a
+
 # simple builds
 
 gcc-4.4:
