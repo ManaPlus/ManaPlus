@@ -22,6 +22,9 @@
 
 #include "gui/widgets/tabs/setup_players.h"
 
+#include "configuration.h"
+#include "settings.h"
+
 #include "gui/models/namesmodel.h"
 
 #include "gui/widgets/containerplacer.h"
@@ -141,10 +144,27 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
         " (useful for touch interfaces)"),
         "", "longmouseclick", this, "longmouseclickEvent");
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable remote commands"),
+        "", "enableRemoteCommands", this, "enableRemoteCommandsEvent",
+        MainConfig_false);
+
     setDimension(Rect(0, 0, 550, 350));
 }
 
 Setup_Players::~Setup_Players()
 {
     delete2(mBadgesList);
+}
+
+void Setup_Players::externalUpdated()
+{
+    reread("enableRemoteCommands");
+}
+
+void Setup_Players::apply()
+{
+    SetupTabScroll::apply();
+    settings.enableRemoteCommands = serverConfig.getValue(
+        "enableRemoteCommands", true);
 }

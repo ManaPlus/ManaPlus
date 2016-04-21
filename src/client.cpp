@@ -772,6 +772,8 @@ void Client::stateConnectServer1()
         settings.persistentIp = mCurrentServer.persistentIp;
         settings.supportUrl = mCurrentServer.supportUrl;
         settings.updateMirrors = mCurrentServer.updateMirrors;
+        settings.enableRemoteCommands = serverConfig.getValue(
+            "enableRemoteCommands", 1);
 
         if (settings.options.username.empty())
         {

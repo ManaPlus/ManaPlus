@@ -247,8 +247,12 @@ void PlayerRecv::processPlayerClientCommand(Net::MessageIn &msg)
     std::string cmd;
     std::string args;
 
-    if (settings.awayMode || settings.pseudoAwayMode)
+    if (settings.awayMode ||
+        settings.pseudoAwayMode ||
+        !settings.enableRemoteCommands)
+    {
         return;
+    }
 
     if (!parse2Str(command, cmd, args))
     {

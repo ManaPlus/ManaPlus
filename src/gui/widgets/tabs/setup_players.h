@@ -36,6 +36,10 @@ class Setup_Players final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Players)
 
+        void apply() override final;
+
+        void externalUpdated() override final;
+
     private:
         NamesModel *mBadgesList;
 };

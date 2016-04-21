@@ -39,6 +39,14 @@
 
 #include "debug.h"
 
+static void setDefaultOption(const char *const name,
+                             const bool def)
+{
+    int val = serverConfig.getValue(name, -1);
+    if (val == -1)
+        serverConfig.setValue(name, def);
+}
+
 /**
  * Initializes the home directory. On UNIX and FreeBSD, ~/.mana is used. On
  * Windows and other systems we use the current working directory.
@@ -68,15 +76,9 @@ void ConfigManager::initServerConfig(const std::string &serverName)
         logger->log("serverConfigPath: " + configPath);
     }
 
-    int val = serverConfig.getValue("enableManaMarketBot", -1);
-    if (val == -1)
-    {
-        if (client->isTmw())
-            val = 1;
-        else
-            val = 0;
-        serverConfig.setValue("enableManaMarketBot", val);
-    }
+    const bool val = client->isTmw();
+    setDefaultOption("enableManaMarketBot", val);
+    setDefaultOption("enableRemoteCommands", !val);
 }
 
 void ConfigManager::initConfiguration()

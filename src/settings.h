@@ -82,7 +82,8 @@ class Settings final
             pseudoAwayMode(false),
             fixDeadAnimation(true),
             disableLoggingInGame(false),
-            legacyEffects(true)
+            legacyEffects(true),
+            enableRemoteCommands(true)
         { }
 
         std::string updateHost;
@@ -135,6 +136,7 @@ class Settings final
         bool fixDeadAnimation;
         bool disableLoggingInGame;
         bool legacyEffects;
+        bool enableRemoteCommands;
 };
 
 extern Settings settings;
