@@ -23,6 +23,8 @@
 #ifndef RESOURCES_RESOURCE_H
 #define RESOURCES_RESOURCE_H
 
+#include "resources/memorycounter.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -30,7 +32,7 @@
 /**
  * A generic reference counted resource object.
  */
-class Resource notfinal
+class Resource notfinal : public MemoryCounter
 {
     friend class ResourceManager;
 
@@ -39,6 +41,7 @@ class Resource notfinal
          * Constructor
          */
         Resource() :
+            MemoryCounter(),
             mIdPath(),
             mSource(),
             mTimeStamp(0),
@@ -95,6 +98,8 @@ class Resource notfinal
 
         void setNotCount(const bool b)
         { mNotCount = b; }
+
+        int calcMemoryLocal() override;
 
 #ifdef DEBUG_DUMP_LEAKS
         bool getDumped() const A_WARN_UNUSED

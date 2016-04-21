@@ -29,6 +29,7 @@
 #ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
 #endif  // USE_OPENGL
+#include "resources/memorymanager.h"
 #include "resources/sdlimagehelper.h"
 #include "resources/subimage.h"
 
@@ -471,6 +472,19 @@ void Image::SDLTerminateAlphaCache()
 {
     SDLCleanCache();
     mUseAlphaCache = false;
+}
+
+int Image::calcMemoryLocal()
+{
+    // +++ this calculation can be wrong for SDL2
+    int sz = sizeof(Image) +
+        sizeof(std::map<float, SDL_Surface*>);
+    if (mSDLSurface)
+    {
+        sz += CAST_S32(mAlphaCache.size()) *
+            memoryManager.getSurfaceSize(mSDLSurface);
+    }
+    return sz;
 }
 
 #ifdef USE_OPENGL

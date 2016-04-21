@@ -701,6 +701,10 @@ SRC += events/actionevent.h \
 	      enums/input/inputaction.h \
 	      enums/input/inputgroup.h \
 	      input/inputactionmap.h \
+	      resources/memorycounter.cpp \
+	      resources/memorycounter.h \
+	      resources/memorymanager.cpp \
+	      resources/memorymanager.h \
 	      winver.h
 
 if ENABLE_PUGIXML

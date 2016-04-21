@@ -24,6 +24,8 @@
 
 #include "logger.h"
 
+#include "resources/memorycounter.h"
+#include "resources/memorymanager.h"
 #include "resources/resourcemanager.h"
 
 #include "debug.h"
@@ -67,4 +69,11 @@ void Resource::decRef()
         // Warn the manager that this resource is no longer used.
         resourceManager->release(this);
     }
+}
+
+int Resource::calcMemoryLocal()
+{
+    return sizeof(Resource) +
+        CAST_S32(mIdPath.size()) +
+        CAST_S32(mSource.size());
 }

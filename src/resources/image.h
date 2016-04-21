@@ -189,6 +189,8 @@ class Image notfinal : public Resource
         SDL_Surface* getSDLSurface()
         { return mSDLSurface; }
 
+        int calcMemoryLocal() override;
+
         SDL_Rect mBounds;
 
         float mAlpha;
