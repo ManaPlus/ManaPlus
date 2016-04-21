@@ -103,6 +103,7 @@ SRC += events/actionevent.h \
 	      const/gui/pages.h \
 	      gui/chatlog.h \
 	      enums/gui/chatmsgtype.h \
+	      enums/gui/chattabtype.h \
 	      gui/cliprect.h \
 	      gui/color.h \
 	      enums/gui/dialogtype.h \
@@ -878,7 +879,6 @@ manaplus_SOURCES += main.cpp \
 	      gui/widgets/tabs/chat/battletab.h \
 	      gui/widgets/tabs/chat/channeltab.cpp \
 	      gui/widgets/tabs/chat/channeltab.h \
-	      gui/widgets/tabs/chat/chattabtype.h \
 	      gui/widgets/tabs/debugwindowtabs.cpp \
 	      gui/widgets/tabs/debugwindowtabs.h \
 	      gui/widgets/tabs/chat/chattab.cpp \

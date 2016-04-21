@@ -135,7 +135,6 @@ SET(SRCS
     gui/widgets/characterviewnormal.h
     gui/widgets/characterviewsmall.cpp
     gui/widgets/characterviewsmall.h
-    gui/widgets/tabs/chat/chattabtype.h
     gui/widgets/tabs/debugwindowtabs.cpp
     gui/widgets/tabs/debugwindowtabs.h
     gui/widgets/tabs/chat/chattab.cpp
@@ -1247,6 +1246,7 @@ SET(SRCS
     const/gui/chat.h
     gui/chatlog.h
     enums/gui/chatmsgtype.h
+    enums/gui/chattabtype.h
     gui/cliprect.h
     gui/color.cpp
     gui/color.h

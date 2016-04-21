@@ -24,13 +24,12 @@
 #define GUI_WINDOWS_CHATWINDOW_H
 
 #include "enums/gui/chatmsgtype.h"
+#include "enums/gui/chattabtype.h"
 
 #include "enums/simpletypes/ignorerecord.h"
 #include "enums/simpletypes/tryremovecolors.h"
 
 #include "gui/widgets/window.h"
-
-#include "gui/widgets/tabs/chat/chattabtype.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/attributelistener.h"
