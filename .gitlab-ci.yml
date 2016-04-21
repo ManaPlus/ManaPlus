@@ -299,6 +299,13 @@ gcc-5_h_eathena_opengl:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DUSE_OPENGL -DENABLE_LIBXML
   image: debian:unstable
 
+fake_build:
+  stage: test
+  script:
+  - echo "fake build for workaround gitlab ci issue"
+  image: debian:unstable
+  allow_failure: true
+
 gcc-5_h_eathena_opengl_pugi:
   stage: test
   script:
