@@ -67,7 +67,7 @@ ChatTab::ChatTab(const Widget2 *const widget,
                  const std::string &name,
                  const std::string &channel,
                  const std::string &logName,
-                 const ChatTabType::Type &type) :
+                 const ChatTabTypeT &type) :
     Tab(widget),
     mTextOutput(new BrowserBox(this, BrowserBox::AUTO_WRAP, true,
        "browserbox.xml")),

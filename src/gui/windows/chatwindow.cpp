@@ -374,7 +374,7 @@ void ChatWindow::nextTab()
     mChatTabs->setSelectedTabByIndex(tab);
 }
 
-void ChatWindow::selectTabByType(const ChatTabType::Type &type)
+void ChatWindow::selectTabByType(const ChatTabTypeT &type)
 {
     if (!mChatTabs)
         return;
@@ -401,7 +401,7 @@ void ChatWindow::closeTab() const
         mChatTabs->getSelectedTabIndex()));
     if (!tab)
         return;
-    const ChatTabType::Type &type = tab->getType();
+    const ChatTabTypeT &type = tab->getType();
     if (type == ChatTabType::WHISPER || type == ChatTabType::CHANNEL)
         tab->handleCommand("close", "");
 }

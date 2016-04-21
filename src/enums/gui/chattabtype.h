@@ -21,22 +21,22 @@
 #ifndef ENUMS_GUI_CHATTABTYPE_H
 #define ENUMS_GUI_CHATTABTYPE_H
 
-namespace ChatTabType
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(ChatTabType)
 {
-    enum Type
-    {
-        UNKNOWN = 0,
-        INPUT,
-        WHISPER,
-        PARTY,
-        GUILD,
-        DEBUG,
-        TRADE,
-        BATTLE,
-        LANG,
-        GM,
-        CHANNEL
-    };
-}  // namespace ChatTabType
+    UNKNOWN = 0,
+    INPUT,
+    WHISPER,
+    PARTY,
+    GUILD,
+    DEBUG,
+    TRADE,
+    BATTLE,
+    LANG,
+    GM,
+    CHANNEL
+}
+enumEnd(ChatTabType);
 
 #endif  // ENUMS_GUI_CHATTABTYPE_H

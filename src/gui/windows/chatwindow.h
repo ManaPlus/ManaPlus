@@ -294,7 +294,7 @@ class ChatWindow final : public Window,
 
         bool isTabPresent(const ChatTab *const tab) const A_WARN_UNUSED;
 
-        void selectTabByType(const ChatTabType::Type &type);
+        void selectTabByType(const ChatTabTypeT &type);
 
         void attributeChanged(const AttributesT id,
                               const int oldVal,

@@ -818,7 +818,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 
     mBrowserBox->clearRows();
 
-    const ChatTabType::Type &type = tab->getType();
+    const ChatTabTypeT &type = tab->getType();
     if (type == ChatTabType::WHISPER || type == ChatTabType::CHANNEL)
     {
         // TRANSLATORS: popup menu item
@@ -868,7 +868,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         mBrowserBox->addRow("disable away", _("Disable away"));
     }
     mBrowserBox->addRow("##3---");
-    if (tab->getType() == CAST_S32(ChatTabType::PARTY))
+    if (type == ChatTabType::PARTY)
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: enable away messages in chat tab

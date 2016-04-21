@@ -63,7 +63,7 @@ class ChatTab notfinal : public Tab
                 const std::string &name,
                 const std::string &channel,
                 const std::string &logName,
-                const ChatTabType::Type &type);
+                const ChatTabTypeT &type);
 
         A_DELETE_COPY(ChatTab)
 
@@ -138,7 +138,7 @@ class ChatTab notfinal : public Tab
         /**
          * Returns type of the being.
          */
-        ChatTabType::Type getType() const A_WARN_UNUSED
+        ChatTabTypeT getType() const A_WARN_UNUSED
         { return mType; }
 
         void saveToLogFile(const std::string &msg) const;
@@ -204,7 +204,7 @@ class ChatTab notfinal : public Tab
         ScrollArea *mScrollArea;
         std::string mChannelName;
         std::string mLogName;
-        ChatTabType::Type mType;
+        ChatTabTypeT mType;
         bool mAllowHightlight;
         bool mRemoveNames;
         bool mNoAway;
