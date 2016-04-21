@@ -24,6 +24,7 @@
 
 #include "game.h"
 #include "notifymanager.h"
+#include "settings.h"
 #include "soundmanager.h"
 
 #include "being/localplayer.h"
@@ -245,6 +246,9 @@ void PlayerRecv::processPlayerClientCommand(Net::MessageIn &msg)
     std::string command = msg.readString(sz, "command");
     std::string cmd;
     std::string args;
+
+    if (settings.awayMode || settings.pseudoAwayMode)
+        return;
 
     if (!parse2Str(command, cmd, args))
     {
