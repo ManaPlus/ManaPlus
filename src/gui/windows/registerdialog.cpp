@@ -279,7 +279,7 @@ void RegisterDialog::action(const ActionEvent &event)
             else
             {
                 mLoginData->gender = Being::intToGender(
-                    features.getIntValue("forceAccountGender"));
+                    CAST_U8(features.getIntValue("forceAccountGender")));
             }
 
             if (mEmailField)

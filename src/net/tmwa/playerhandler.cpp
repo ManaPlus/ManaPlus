@@ -36,8 +36,6 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
 
-#include "net/ea/eaprotocol.h"
-
 #include "net/tmwa/inventoryhandler.h"
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocolout.h"

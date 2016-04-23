@@ -647,7 +647,7 @@ void NpcDialog::action(const ActionEvent &event)
         {
             if (cmd == *it)
             {
-                npcHandler->listInput(mNpcId, cnt + 1);
+                npcHandler->listInput(mNpcId, CAST_U8(cnt + 1));
                 printText = mItems[cnt];
 
                 if (mInputState != NPC_INPUT_ITEM &&

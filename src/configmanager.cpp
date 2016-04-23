@@ -42,7 +42,7 @@
 static void setDefaultOption(const char *const name,
                              const bool def)
 {
-    int val = serverConfig.getValue(name, -1);
+    const int val = serverConfig.getValue(name, -1);
     if (val == -1)
         serverConfig.setValue(name, def);
 }

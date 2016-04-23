@@ -204,7 +204,7 @@ void SoundManager::testAudio()
 
     desired.freq = config.getIntValue("audioFrequency");
     desired.format = MIX_DEFAULT_FORMAT;
-    desired.channels = channels;
+    desired.channels = CAST_U8(channels);
     desired.samples = audioBuffer;
     desired.callback = nullptr;
     desired.userdata = nullptr;

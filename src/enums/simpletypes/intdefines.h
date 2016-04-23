@@ -42,7 +42,7 @@
     typedef type name; \
     const name name##_zero = 0; \
     const name name##_one = 1
-#define fromInt(val, name) (val)
+#define fromInt(val, name) static_cast<name>(val)
 #define toInt(val, name) (val)
 #define defIntEnumNeg(name) const name name##_negOne = -1
 

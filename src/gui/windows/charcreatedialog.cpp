@@ -284,7 +284,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         }
         else
         {
-            mGender = Being::intToGender(forceGender);
+            mGender = Being::intToGender(CAST_U8(forceGender));
             mPlayer->setGender(mGender);
         }
     }

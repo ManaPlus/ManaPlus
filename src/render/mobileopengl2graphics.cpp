@@ -267,10 +267,10 @@ void MobileOpenGL2Graphics::drawQuad(const int srcX,
                                      const int width,
                                      const int height) restrict2
 {
-    const GLfloat texX2 = srcX + width;
-    const GLfloat texY2 = srcY + height;
-    const GLfloat x2 = dstX + width;
-    const GLfloat y2 = dstY + height;
+    const GLfloat texX2 = static_cast<GLfloat>(srcX + width);
+    const GLfloat texY2 = static_cast<GLfloat>(srcY + height);
+    const GLfloat x2 = static_cast<GLfloat>(dstX + width);
+    const GLfloat y2 = static_cast<GLfloat>(dstY + height);
     const GLfloat srcX2 = toGL(srcX);
     const GLfloat srcY2 = toGL(srcY);
     const GLfloat dstX2 = toGL(dstX);
@@ -298,10 +298,10 @@ void MobileOpenGL2Graphics::drawRescaledQuad(const int srcX, const int srcY,
                                              const int desiredWidth,
                                              const int desiredHeight) restrict2
 {
-    const GLfloat texX2 = srcX + width;
-    const GLfloat texY2 = srcY + height;
-    const GLfloat x2 = dstX + desiredWidth;
-    const GLfloat y2 = dstY + desiredHeight;
+    const GLfloat texX2 = static_cast<GLfloat>(srcX + width);
+    const GLfloat texY2 = static_cast<GLfloat>(srcY + height);
+    const GLfloat x2 = static_cast<GLfloat>(dstX + desiredWidth);
+    const GLfloat y2 = static_cast<GLfloat>(dstY + desiredHeight);
     const GLfloat srcX2 = toGL(srcX);
     const GLfloat srcY2 = toGL(srcY);
     const GLfloat dstX2 = toGL(dstX);
@@ -486,13 +486,13 @@ void MobileOpenGL2Graphics::drawPatternInline(const Image *
     for (int py = 0; py < h; py += ih)
     {
         const int height = (py + ih >= h) ? h - py : ih;
-        const GLfloat texY2 = srcY + height;
-        const GLfloat dstY = y2 + py;
+        const GLfloat texY2 = static_cast<GLfloat>(srcY + height);
+        const GLfloat dstY = static_cast<GLfloat>(y2 + py);
         for (int px = 0; px < w; px += iw)
         {
             const int width = (px + iw >= w) ? w - px : iw;
-            const GLfloat dstX = x2 + px;
-            const GLfloat texX2 = srcX + width;
+            const GLfloat dstX = static_cast<GLfloat>(x2 + px);
+            const GLfloat texX2 = static_cast<GLfloat>(srcX + width);
 
             vertFill2D(mFloatArray,
                 srcX2, srcY2, texX2, texY2,
@@ -558,18 +558,20 @@ void MobileOpenGL2Graphics::drawRescaledPattern(const Image *
     {
         const int height = (py + scaledHeight >= h)
             ? h - py : scaledHeight;
-        const GLfloat dstY = y2 + py;
+        const GLfloat dstY = static_cast<GLfloat>(y2 + py);
         const GLfloat scaledY = srcY + height / scaleFactorH;
         for (int px = 0; px < w; px += scaledWidth)
         {
             const int width = (px + scaledWidth >= w)
                 ? w - px : scaledWidth;
-            const int dstX = x2 + px;
+            const GLfloat dstX = static_cast<GLfloat>(x2 + px);
             const GLfloat scaledX = srcX + width / scaleFactorW;
 
             vertFill2D(mFloatArray,
-                srcX2, srcY2, scaledX, scaledY,
-                dstX,  dstY,  width,   height);
+                srcX2, srcY2,
+                scaledX, scaledY,
+                dstX, dstY,
+                static_cast<GLfloat>(width), static_cast<GLfloat>(height));
 
             vp += 24;
             if (vp >= vLimit)
@@ -652,13 +654,15 @@ void MobileOpenGL2Graphics::calcPatternInline(ImageVertexes *
 
     for (int py = 0; py < h; py += ih)
     {
-        const GLfloat height = (py + ih >= h) ? h - py : ih;
-        const GLfloat dstY = y2 + py;
+        const GLfloat height = static_cast<GLfloat>(
+            (py + ih >= h) ? h - py : ih);
+        const GLfloat dstY = static_cast<GLfloat>(y2 + py);
         const GLfloat texY2 = srcY + height;
         for (int px = 0; px < w; px += iw)
         {
-            const GLfloat width = (px + iw >= w) ? w - px : iw;
-            const GLfloat dstX = x2 + px;
+            const GLfloat width = static_cast<GLfloat>(
+                (px + iw >= w) ? w - px : iw);
+            const GLfloat dstX = static_cast<GLfloat>(x2 + px);
             const GLfloat texX2 = srcX2 + width;
 
             vertFill2D(floatArray,
@@ -777,8 +781,8 @@ void MobileOpenGL2Graphics::calcTileVertexesInline(ImageVertexes *
     const GLfloat srcY2 = toGL(srcY);
 
     const ClipRect &clipArea = mClipStack.top();
-    const GLfloat x2 = dstX + clipArea.xOffset;
-    const GLfloat y2 = dstY + clipArea.yOffset;
+    const GLfloat x2 = static_cast<GLfloat>(dstX + clipArea.xOffset);
+    const GLfloat y2 = static_cast<GLfloat>(dstY + clipArea.yOffset);
 
     const unsigned int vLimit = mMaxVertices * 4;
 
@@ -786,8 +790,8 @@ void MobileOpenGL2Graphics::calcTileVertexesInline(ImageVertexes *
 
     unsigned int vp = ogl.continueVp();
 
-    GLfloat texX2 = srcX + w;
-    GLfloat texY2 = srcY + h;
+    GLfloat texX2 = static_cast<GLfloat>(srcX + w);
+    GLfloat texY2 = static_cast<GLfloat>(srcY + h);
 
     GLfloat *const floatArray = ogl.continueFloatTexArray();
 
@@ -950,10 +954,10 @@ void MobileOpenGL2Graphics::drawRectangle(const Rect &restrict rect) restrict2
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    const GLfloat x1 = rect.x + clipArea.xOffset;
-    const GLfloat y1 = rect.y + clipArea.yOffset;
-    const GLfloat x2 = x1 + rect.width;
-    const GLfloat y2 = y1 + rect.height;
+    const GLfloat x1 = static_cast<GLfloat>(rect.x + clipArea.xOffset);
+    const GLfloat y1 = static_cast<GLfloat>(rect.y + clipArea.yOffset);
+    const GLfloat x2 = x1 + static_cast<GLfloat>(rect.width);
+    const GLfloat y2 = y1 + static_cast<GLfloat>(rect.height);
     GLfloat vertices[] =
     {
         x1, y1, 0.0f, 0.0f,
@@ -975,10 +979,10 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect &restrict rect) restrict2
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    const GLfloat x1 = rect.x + clipArea.xOffset;
-    const GLfloat y1 = rect.y + clipArea.yOffset;
-    const GLfloat x2 = x1 + rect.width;
-    const GLfloat y2 = y1 + rect.height;
+    const GLfloat x1 = static_cast<GLfloat>(rect.x + clipArea.xOffset);
+    const GLfloat y1 = static_cast<GLfloat>(rect.y + clipArea.yOffset);
+    const GLfloat x2 = x1 + static_cast<GLfloat>(rect.width);
+    const GLfloat y2 = y1 + static_cast<GLfloat>(rect.height);
     GLfloat vertices[] =
     {
         x1, y1, 0.0f, 0.0f,
@@ -1049,8 +1053,8 @@ void MobileOpenGL2Graphics::drawNet(const int x1,
     setTexturingAndBlending(false);
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
-    const GLfloat dx = clipArea.xOffset;
-    const GLfloat dy = clipArea.yOffset;
+    const GLfloat dx = static_cast<GLfloat>(clipArea.xOffset);
+    const GLfloat dy = static_cast<GLfloat>(clipArea.yOffset);
 
     const GLfloat xs1 = x1 + dx;
     const GLfloat xs2 = x2 + dx;
@@ -1115,8 +1119,8 @@ void MobileOpenGL2Graphics::bindTexture2(const GLenum target,
             mTextureWidth = image->mTexWidth;
             mTextureHeight = image->mTexHeight;
             mglUniform2f(mTextureSizeUniform,
-                image->mTexWidth,
-                image->mTexHeight);
+                static_cast<GLfloat>(image->mTexWidth),
+                static_cast<GLfloat>(image->mTexHeight));
         }
     }
 }

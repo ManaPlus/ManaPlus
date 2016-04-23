@@ -1272,7 +1272,10 @@ void BeingRecv::processSkillEntry(Net::MessageIn &msg)
     int level = 0;
     if (msg.getVersion() >= 20130731)
         level = msg.readUInt8("level");
-    Being *const dstBeing = createBeing2(msg, id, job, BeingType::SKILL);
+    Being *const dstBeing = createBeing2(msg,
+        id,
+        job,
+        BeingType::SKILL);
     if (!dstBeing)
         return;
     dstBeing->setAction(BeingAction::STAND, 0);
@@ -1761,7 +1764,7 @@ void BeingRecv::processNameResponse2(Net::MessageIn &msg)
 
 Being *BeingRecv::createBeing2(Net::MessageIn &msg,
                                const BeingId id,
-                               const int16_t job,
+                               const int32_t job,
                                const BeingType::BeingType beingType)
 {
     if (!actorManager)

@@ -35,7 +35,7 @@ class MemoryManager final
         ~MemoryManager()
         { }
 
-        int getSurfaceSize(SDL_Surface *const surface);
+        int getSurfaceSize(const SDL_Surface *const surface);
 
         void printMemory(const int level,
                          const int localSum,

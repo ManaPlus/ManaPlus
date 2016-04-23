@@ -221,7 +221,7 @@ void InventoryHandler::selectCart(const BeingId accountId,
 {
     createOutPacket(CMSG_SELECT_CART);
     outMsg.writeBeingId(accountId, "account id");
-    outMsg.writeInt8(type, "type");
+    outMsg.writeInt8(CAST_S8(type), "type");
 }
 
 void InventoryHandler::identifyItem(const Item *const item) const
@@ -239,7 +239,7 @@ void InventoryHandler::mergeItemsAck(const std::vector<Item*> &items) const
         "len");
     FOR_EACH (std::vector<Item*>::const_iterator, it, items)
     {
-        outMsg.writeInt16((*it)->getInvIndex() + 2,
+        outMsg.writeInt16(CAST_S16((*it)->getInvIndex() + 2),
             "item index");
     }
 }

@@ -114,7 +114,7 @@ namespace EAthena
         void processSkillDamage(Net::MessageIn &msg);
         Being *createBeing2(Net::MessageIn &msg,
                             const BeingId id,
-                            const int16_t job,
+                            const int32_t job,
                             const BeingType::BeingType beingType);
         void applyPlayerAction(Net::MessageIn &msg,
                                Being *const being,

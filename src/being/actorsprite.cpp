@@ -296,7 +296,7 @@ void ActorSprite::setStatusEffectOpitons(const uint32_t option,
         setStatusEffectBlock(16,
             CAST_U16(statusEffects & 0xffffU));
         setStatusEffectBlock(32,
-            opt3);
+            CAST_U16(opt3));
     }
 }
 

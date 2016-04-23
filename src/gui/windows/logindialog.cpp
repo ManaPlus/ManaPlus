@@ -43,7 +43,6 @@
 #include "net/charserverhandler.h"
 #include "net/logindata.h"
 #include "net/loginhandler.h"
-#include "net/serverinfo.h"
 #include "net/updatetypeoperators.h"
 
 #include "utils/delete2.h"

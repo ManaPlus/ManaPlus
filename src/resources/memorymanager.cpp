@@ -31,12 +31,12 @@ MemoryManager::MemoryManager()
 }
 
 
-int MemoryManager::getSurfaceSize(SDL_Surface *const surface)
+int MemoryManager::getSurfaceSize(const SDL_Surface *const surface)
 {
     if (!surface)
         return 0;
-    return sizeof(SDL_Surface) +
-        sizeof(SDL_PixelFormat) +
+    return CAST_S32(sizeof(SDL_Surface)) +
+        CAST_S32(sizeof(SDL_PixelFormat)) +
         // aproximation for sizeof(SDL_BlitMap)
         28 +
         // pixels

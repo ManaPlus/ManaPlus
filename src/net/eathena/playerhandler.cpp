@@ -84,7 +84,7 @@ void PlayerHandler::increaseAttribute(const AttributesT attr,
     {
         createOutPacket(CMSG_STAT_UPDATE_REQUEST);
         outMsg.writeInt16(CAST_S16(attr), "attribute id");
-        outMsg.writeInt8(amount, "increase");
+        outMsg.writeInt8(CAST_S8(amount), "increase");
     }
 }
 

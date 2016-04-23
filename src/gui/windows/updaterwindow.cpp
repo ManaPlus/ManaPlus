@@ -967,7 +967,8 @@ void UpdaterWindow::logic()
                     }
                     else
                     {
-                        mDownloadStatus = UpdateDownloadStatus::UPDATE_COMPLETE;
+                        mDownloadStatus =
+                            UpdateDownloadStatus::UPDATE_COMPLETE;
                     }
                 }
             }

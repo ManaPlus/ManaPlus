@@ -27,7 +27,9 @@
 
 struct HostsGroup final
 {
-    HostsGroup()
+    HostsGroup() :
+        name(),
+        hosts()
     {
     }
 

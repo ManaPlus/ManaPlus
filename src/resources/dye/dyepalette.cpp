@@ -69,7 +69,7 @@ DyePalette::DyePalette(const std::string &restrict description,
             {
                 if (str.size() != 3)
                     continue;
-                alpha = (hexDecode(str[1]) << 4) + hexDecode(str[2]);
+                alpha = CAST_U8((hexDecode(str[1]) << 4) + hexDecode(str[2]));
                 continue;
             }
             const DyeColor *const color = PaletteDB::getColor(str);

@@ -37,8 +37,6 @@
 #include "gui/windows/statuswindow.h"
 #include "gui/windows/whoisonline.h"
 
-#include "input/inputmanager.h"
-
 #include "net/messagein.h"
 
 #include "net/eathena/sp.h"

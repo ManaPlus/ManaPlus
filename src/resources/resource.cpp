@@ -24,8 +24,6 @@
 
 #include "logger.h"
 
-#include "resources/memorycounter.h"
-#include "resources/memorymanager.h"
 #include "resources/resourcemanager.h"
 
 #include "debug.h"
@@ -73,7 +71,7 @@ void Resource::decRef()
 
 int Resource::calcMemoryLocal()
 {
-    return sizeof(Resource) +
+    return CAST_S32(sizeof(Resource)) +
         CAST_S32(mIdPath.size()) +
         CAST_S32(mSource.size());
 }
