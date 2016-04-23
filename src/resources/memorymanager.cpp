@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "memorymanager.h"
+#include "resources/memorymanager.h"
 
 #include <SDL_video.h>
 
