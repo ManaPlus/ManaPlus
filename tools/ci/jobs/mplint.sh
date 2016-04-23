@@ -18,6 +18,7 @@ cd mplint
 run_configure_simple
 run_make
 cd ..
+echo " " >config.h
 run_mplint $*
 
 source ./tools/ci/scripts/exit.sh
