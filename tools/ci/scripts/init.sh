@@ -118,6 +118,7 @@ function run_mplint {
     rm $ERRFILE
     mplint/src/mplint $* >$ERRFILE
     check_error $?
+    run_check_warnings
 }
 
 aptget_update
