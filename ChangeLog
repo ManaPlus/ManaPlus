@@ -1,3 +1,12 @@
+2016-04-23 New release 1.6.4.23
+fix: invite to guild from context menu.
+fix: possible crash in login dialog with opened drop down list.
+add: by default disable being advanced caching.
+add: show server and nick in game window title.
+add: support for different groups of update servers.
+add: option for disable OpenGL check.
+add: option for enable/disable chat commands from server.
+
 2016-04-09 New release 1.6.4.9
 fix: not allow some chat commands exuting by npc scripts.
 fix: crash in /debugspawn chat command if create beings outside of map.
