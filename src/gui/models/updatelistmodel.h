@@ -25,6 +25,8 @@
 
 #include "gui/models/listmodel.h"
 
+#include "net/serverinfo.h"
+
 #include "utils/stringvector.h"
 
 #include "localconsts.h"
