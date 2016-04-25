@@ -29,6 +29,7 @@
 #include "debug.h"
 
 Action::Action() noexcept :
+    MemoryCounter(),
     mAnimations(),
     mNumber(100)
 {
@@ -82,4 +83,21 @@ void Action::setLastFrameDelay(const int delay) noexcept
             continue;
         animation->setLastFrameDelay(delay);
     }
+}
+
+int Action::calcMemoryLocal()
+{
+    return sizeof(Action);
+}
+
+int Action::calcMemoryChilds(const int level)
+{
+    int sz = 0;
+    FOR_EACH (AnimationIter, it, mAnimations)
+    {
+        sz += sizeof(SpriteDirection::Type);
+        Animation *const animation = (*it).second;
+        sz += animation->calcMemory(level + 1);
+    }
+    return sz;
 }

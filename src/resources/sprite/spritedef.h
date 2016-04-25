@@ -68,6 +68,10 @@ class SpriteDef final : public Resource
         void addAction(const unsigned hp, const std::string &name,
                        Action *const action);
 
+        int calcMemoryLocal() override final;
+
+        int calcMemoryChilds(const int level) override final;
+
         static bool addSequence(const int start,
                                 const int end,
                                 const int delay,

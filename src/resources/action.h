@@ -25,6 +25,8 @@
 
 #include "enums/resources/spritedirection.h"
 
+#include "resources/memorycounter.h"
+
 #include <map>
 
 #include "localconsts.h"
@@ -34,7 +36,7 @@ class Animation;
 /**
  * An action consists of several animations, one for each direction.
  */
-class Action final
+class Action final : public MemoryCounter
 {
     public:
         Action() noexcept;
@@ -56,6 +58,10 @@ class Action final
         { mNumber = n; }
 
         void setLastFrameDelay(const int delay) noexcept;
+
+        int calcMemoryLocal() override final;
+
+        int calcMemoryChilds(const int level) override final;
 
     protected:
         typedef std::map<SpriteDirection::Type, Animation*> Animations;

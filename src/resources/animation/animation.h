@@ -24,6 +24,7 @@
 #define RESOURCES_ANIMATION_ANIMATION_H
 
 #include "resources/frame.h"
+#include "resources/memorycounter.h"
 
 #include <vector>
 
@@ -35,7 +36,7 @@ class Image;
  * An animation consists of several frames, each with their own delay and
  * offset.
  */
-class Animation final
+class Animation final : public MemoryCounter
 {
     friend class AnimatedSprite;
     friend class ParticleEmitter;
@@ -81,6 +82,8 @@ class Animation final
         Frames &getFrames() noexcept
         { return mFrames; }
 #endif
+
+        int calcMemoryLocal() override final;
 
         /**
          * Determines whether the given animation frame is a terminator.

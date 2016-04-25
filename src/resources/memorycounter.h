@@ -28,8 +28,6 @@ class MemoryCounter notfinal
     public:
         MemoryCounter();
 
-        A_DELETE_COPY(MemoryCounter)
-
         virtual ~MemoryCounter()
         { }
 
