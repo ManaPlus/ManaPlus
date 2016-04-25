@@ -48,7 +48,8 @@ autoreconf -i
 --mandir=$dir/run/share/man \
 --enable-memdebug=no \
 --enable-tcmalloc=no \
---enable-googleprofiler=no
+--enable-googleprofiler=no \
+--enable-werror
 
 cd po
 make -j8 update-gmo 2>../build/make1.log

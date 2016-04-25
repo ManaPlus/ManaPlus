@@ -4,6 +4,19 @@ AM_INIT_AUTOMAKE([1.9])
 AC_CONFIG_HEADERS([config.h:config.h.in])
 AC_LANG_CPLUSPLUS
 
+# Enable -Werror
+AC_ARG_ENABLE(werror,
+[  --enable-werror    Fail build if warning present],
+[case "${enableval}" in
+  yes) werror_enabled=true
+ ;;
+  no)  werror_enabled=false
+ ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-werror) ;;
+esac],[werror_enabled=false])
+
+AM_CONDITIONAL(ENABLE_WERROR, test x$werror_enabled = xtrue)
+
 # Checks for android.
 AC_ARG_ENABLE(androidbuild,
 [  --enable-androidbuild    Turn on android building],

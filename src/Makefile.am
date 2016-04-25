@@ -13,6 +13,11 @@ manaplus_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
 		-Wall
 
+if ENABLE_WERROR
+manaplus_CXXFLAGS += -Werror
+dyecmd_CXXFLAGS += -Werror
+endif
+
 if ENABLE_PUGIXML
 manaplus_CXXFLAGS += -DENABLE_PUGIXML
 dyecmd_CXXFLAGS += -DENABLE_PUGIXML
@@ -1752,6 +1757,9 @@ manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 if USE_SDL2
 manaplustests_CXXFLAGS += -DUSE_SDL2
+endif
+if ENABLE_WERROR
+manaplustests_CXXFLAGS += -Werror
 endif
 
 manaplustests_SOURCES = ${manaplus_SOURCES} \
