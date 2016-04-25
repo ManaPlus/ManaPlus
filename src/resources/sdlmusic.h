@@ -70,6 +70,8 @@ class SDLMusic final : public Resource
          */
         bool play(const int loops = -1, const int fadeIn = 0);
 
+        int calcMemoryLocal() override final;
+
     protected:
         /**
          * Constructor.
