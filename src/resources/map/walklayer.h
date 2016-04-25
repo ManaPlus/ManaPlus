@@ -39,6 +39,8 @@ class WalkLayer final : public Resource
 
         int getDataAt(const int x, const int y) const;
 
+        int calcMemoryLocal() override final;
+
     private:
         int mWidth;
         int mHeight;
