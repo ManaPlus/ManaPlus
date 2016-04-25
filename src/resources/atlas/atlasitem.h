@@ -24,12 +24,14 @@
 #ifdef USE_OPENGL
 
 #include "resources/image.h"
+#include "resources/memorycounter.h"
 
 #include <string>
 
-struct AtlasItem final
+struct AtlasItem final : public MemoryCounter
 {
     explicit AtlasItem(Image *const image0) :
+        MemoryCounter(),
         image(image0),
         name(),
         x(0),
@@ -40,6 +42,13 @@ struct AtlasItem final
     }
 
     A_DELETE_COPY(AtlasItem)
+
+    int calcMemoryLocal() override final
+    {
+        return sizeof(AtlasItem) +
+            name.capacity();
+        // +++ here need print, but not add to sum size of image
+    }
 
     Image *image;
     std::string name;

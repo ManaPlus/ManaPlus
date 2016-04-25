@@ -25,8 +25,9 @@
 
 #include "utils/stringvector.h"
 
-#include <vector>
+#include "resources/memorycounter.h"
 
+#include <vector>
 #include <SDL.h>
 
 #include "localconsts.h"
@@ -37,9 +38,10 @@ class Resource;
 
 struct AtlasItem;
 
-struct TextureAtlas final
+struct TextureAtlas final : public MemoryCounter
 {
     TextureAtlas() :
+        MemoryCounter(),
         name(),
         atlasImage(nullptr),
         width(0),
@@ -49,6 +51,23 @@ struct TextureAtlas final
     }
 
     A_DELETE_COPY(TextureAtlas)
+
+    int calcMemoryLocal() override final
+    {
+        return sizeof(TextureAtlas) +
+            items.capacity() * sizeof(AtlasItem*);
+    }
+
+    int calcMemoryChilds(const int level) override final
+    {
+        int sz = 0;
+        FOR_EACH (std::vector<AtlasItem*>::iterator, it, items)
+        {
+            AtlasItem *const item = *it;
+            sz += item->calcMemory(level + 1);
+        }
+        return sz;
+    }
 
     std::string name;
     Image *atlasImage;

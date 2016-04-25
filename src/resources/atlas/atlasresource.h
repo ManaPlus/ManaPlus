@@ -44,6 +44,10 @@ class AtlasResource final : public Resource
 
         void decRef() override final;
 
+        int calcMemoryLocal() override final;
+
+        int calcMemoryChilds(const int level) override final;
+
         std::vector<TextureAtlas*> atlases;
 };
 
