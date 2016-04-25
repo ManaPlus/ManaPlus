@@ -478,7 +478,8 @@ int Image::calcMemoryLocal()
 {
     // +++ this calculation can be wrong for SDL2
     int sz = sizeof(Image) +
-        sizeof(std::map<float, SDL_Surface*>);
+        sizeof(std::map<float, SDL_Surface*>) +
+        Resource::calcMemoryLocal();
     if (mSDLSurface)
     {
         sz += CAST_S32(mAlphaCache.size()) *
