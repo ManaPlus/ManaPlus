@@ -74,6 +74,23 @@ class Tileset final : public ImageSet
             return mProperties[name];
         }
 
+        int calcMemoryLocal() override final
+        {
+            int sz = ImageSet::calcMemoryLocal() +
+                sizeof(Tileset);
+            const std::map<std::string, std::string>::const_iterator it_end =
+                mProperties.end();
+            std::map<std::string, std::string>::const_iterator it =
+                mProperties.begin();
+            while (it != it_end)
+            {
+                sz += (*it).first.capacity() +
+                    (*it).second.capacity();
+                ++ it;
+            }
+            return sz;
+        }
+
     private:
         int mFirstGid;
 
