@@ -84,6 +84,8 @@ class ImageSet notfinal : public Resource
         const std::vector<Image*> &getImages() const
         { return mImages; }
 
+        int calcMemoryLocal() override;
+
     private:
         std::vector<Image*> mImages;
 
