@@ -78,6 +78,8 @@ class SubImage final : public Image
                            const int width,
                            const int height) override final A_WARN_UNUSED;
 
+        int calcMemoryLocal() override;
+
 #ifdef USE_OPENGL
         void decRef() override final;
 #endif
