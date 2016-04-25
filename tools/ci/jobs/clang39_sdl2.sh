@@ -21,9 +21,8 @@ export CXXFLAGS="-Weverything -Wno-documentation -Wno-padded -Wno-sign-conversio
 -Wno-old-style-cast"
 
 do_init
-run_configure --with-sdl2 $*
+run_configure --enable-werror --with-sdl2 $*
 run_make
-run_check_warnings
 
 source ./tools/ci/scripts/exit.sh
 

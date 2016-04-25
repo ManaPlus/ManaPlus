@@ -48,7 +48,6 @@ do_init
 run_configure --with-sdl2 --enable-unittests=yes
 export SDL_VIDEODRIVER=dummy
 run_make check
-#run_check_warnings
 
 source ./tools/ci/scripts/exit.sh
 

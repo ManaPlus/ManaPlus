@@ -45,11 +45,10 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wlogical-not-parentheses -Woverloaded-virtual"
 
 do_init
-run_configure
+run_configure --enable-werror
 run_tarball test
-run_configure
+run_configure --enable-werror
 run_make
-run_check_warnings
 
 source ./tools/ci/scripts/exit.sh
 

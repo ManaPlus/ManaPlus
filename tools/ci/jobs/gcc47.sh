@@ -12,9 +12,8 @@ aptget_install gcc-4.7 g++-4.7 \
     libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 do_init
-run_configure
+run_configure --enable-werror
 run_make
-run_check_warnings
 
 source ./tools/ci/scripts/exit.sh
 

@@ -40,9 +40,8 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -fno-var-tracking -Woverloaded-virtual"
 
 do_init
-run_configure
+run_configure --enable-werror
 run_make
-run_check_warnings
 
 source ./tools/ci/scripts/exit.sh
 

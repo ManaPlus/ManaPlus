@@ -326,9 +326,8 @@ export CXXFLAGS="${CXXFLAGS} -Wzero-as-null-pointer-constant"
 #export CXXFLAGS="${CXXFLAGS} -frequire-return-statement"
 
 do_init
-run_configure --with-sdl2
+run_configure --enable-werror --with-sdl2
 run_make
-run_check_warnings
 
 source ./tools/ci/scripts/exit.sh
 
