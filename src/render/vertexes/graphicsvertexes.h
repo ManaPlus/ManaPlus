@@ -44,18 +44,6 @@
 
 class Image;
 
-class SDLGraphicsVertexes final
-{
-    public:
-        SDLGraphicsVertexes();
-
-        A_DELETE_COPY(SDLGraphicsVertexes)
-
-        ~SDLGraphicsVertexes();
-
-        std::vector<DoubleRect*> mList;
-};
-
 #ifdef USE_OPENGL
 class OpenGLGraphicsVertexes final
 {

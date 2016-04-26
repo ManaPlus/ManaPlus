@@ -30,20 +30,7 @@
 
 #ifdef USE_OPENGL
 unsigned int vertexBufSize = 500;
-#endif
 
-SDLGraphicsVertexes::SDLGraphicsVertexes() :
-    mList()
-{
-    mList.reserve(30);
-}
-
-SDLGraphicsVertexes::~SDLGraphicsVertexes()
-{
-    delete_all(mList);
-}
-
-#ifdef USE_OPENGL
 OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
     ptr(0),
     mFloatTexArray(nullptr),
