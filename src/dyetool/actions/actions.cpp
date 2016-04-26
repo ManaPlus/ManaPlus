@@ -110,5 +110,6 @@ impHandlerVoid(craftKey)
 impHandlerVoid(resetGameModifiers)
 impHandlerVoid(barToChat)
 impHandlerVoid(seen)
+impHandlerVoid(dumpMemoryUsage)
 
 }  // namespace Actions

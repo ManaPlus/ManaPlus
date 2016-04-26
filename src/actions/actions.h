@@ -113,6 +113,7 @@ namespace Actions
     decHandler(resetGameModifiers);
     decHandler(barToChat);
     decHandler(seen);
+    decHandler(dumpMemoryUsage);
 }  // namespace Actions
 
 #undef decHandler

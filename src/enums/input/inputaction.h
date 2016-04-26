@@ -669,6 +669,7 @@ enumStart(InputAction)
     COMMAND_GUILD_RECALL,
     MAIL_TO,
     ADOPT_CHILD,
+    DUMP_MEMORY_USAGE,
     TOTAL
 }
 enumEnd(InputAction);

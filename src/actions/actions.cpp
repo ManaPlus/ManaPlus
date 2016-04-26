@@ -96,6 +96,7 @@
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"
+#include "resources/memorymanager.h"
 #include "resources/resourcemanager.h"
 
 #include "const/resources/skill.h"
@@ -1780,6 +1781,12 @@ impHandler(seen)
             ChatMsgType::BY_SERVER);
     }
 
+    return true;
+}
+
+impHandler0(dumpMemoryUsage)
+{
+    memoryManager.printAllMemory();
     return true;
 }
 

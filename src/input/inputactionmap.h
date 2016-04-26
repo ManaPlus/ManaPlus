@@ -5503,6 +5503,12 @@ static const InputActionData inputActionData
         "adoptchild|childadopt|askforchild",
         UseArgs_true,
         Protected_true},
+    {"keyDumpMemmoryUsage",
+        defaultAction(&Actions::dumpMemoryUsage),
+        InputCondition::INGAME,
+        "dumpmemoryusage|memoryusage",
+        UseArgs_false,
+        Protected_true},
 };
 
 #undef defaultAction

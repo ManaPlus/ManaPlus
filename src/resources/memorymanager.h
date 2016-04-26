@@ -40,6 +40,8 @@ class MemoryManager final
         void printMemory(const int level,
                          const int localSum,
                          const int childsSum);
+
+        void printAllMemory();
 };
 
 extern MemoryManager memoryManager;

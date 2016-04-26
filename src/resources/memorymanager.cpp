@@ -20,7 +20,12 @@
 
 #include "resources/memorymanager.h"
 
+#include "logger.h"
+
+#include "resources/resourcemanager.h"
+
 #include <SDL_video.h>
+#include <string>
 
 #include "debug.h"
 
@@ -49,4 +54,18 @@ void MemoryManager::printMemory(const int level A_UNUSED,
                                 const int localSum A_UNUSED,
                                 const int childsSum A_UNUSED)
 {
+    std::string str(level, ' ');
+    logger->log("%s%d = %d + %d",
+        str.c_str(),
+        localSum + childsSum,
+        localSum,
+        childsSum);
+}
+
+void MemoryManager::printAllMemory()
+{
+    if (!logger)
+        return;
+    if (resourceManager)
+        resourceManager->calcMemory(0);
 }
