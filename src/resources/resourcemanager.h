@@ -23,6 +23,8 @@
 #ifndef RESOURCES_RESOURCEMANAGER_H
 #define RESOURCES_RESOURCEMANAGER_H
 
+#include "resources/memorycounter.h"
+
 #include "enums/simpletypes/append.h"
 
 #include "utils/stringvector.h"
@@ -47,7 +49,7 @@ struct SDL_RWops;
 /**
  * A class for loading and managing resources.
  */
-class ResourceManager final
+class ResourceManager final : public MemoryCounter
 {
     friend class Resource;
 
@@ -252,6 +254,10 @@ class ResourceManager final
         Resource *getTempResource(const std::string &idPath) A_WARN_UNUSED;
 
         void clearCache();
+
+        int calcMemoryLocal() override final;
+
+        int calcMemoryChilds(const int level) override final;
 
         static void init();
 

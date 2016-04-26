@@ -36,6 +36,7 @@
 #endif  // USE_OPENGL
 #include "resources/imagehelper.h"
 #include "resources/imageset.h"
+#include "resources/memorymanager.h"
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"
 
@@ -1064,4 +1065,34 @@ void ResourceManager::clearCache()
     cleanProtected();
     while (cleanOrphans(true))
         continue;
+}
+
+int ResourceManager::calcMemoryLocal()
+{
+    int sz = sizeof(ResourceManager);
+    FOR_EACH (std::set<SDL_Surface*>::iterator, it, deletedSurfaces)
+    {
+        sz += memoryManager.getSurfaceSize(*it);
+    }
+    return sz;
+}
+
+int ResourceManager::calcMemoryChilds(const int level)
+{
+    int sz = 0;
+    FOR_EACH (ResourceIterator, it, mResources)
+    {
+        sz += (*it).first.capacity();
+        sz += (*it).second->calcMemory(level + 1);
+    }
+    FOR_EACH (ResourceIterator, it, mOrphanedResources)
+    {
+        sz += (*it).first.capacity();
+        sz += (*it).second->calcMemory(level + 1);
+    }
+    FOR_EACH (std::set<Resource*>::iterator, it, mDeletedResources)
+    {
+        sz += (*it)->calcMemory(level + 1);
+    }
+    return sz;
 }
