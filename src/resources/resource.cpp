@@ -69,7 +69,7 @@ void Resource::decRef()
     }
 }
 
-int Resource::calcMemoryLocal()
+int Resource::calcMemoryLocal() const
 {
     return CAST_S32(sizeof(Resource)) +
         CAST_S32(mIdPath.size()) +

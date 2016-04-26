@@ -74,7 +74,7 @@ class Tileset final : public ImageSet
             return mProperties[name];
         }
 
-        int calcMemoryLocal() override final
+        int calcMemoryLocal() const override final
         {
             int sz = ImageSet::calcMemoryLocal() +
                 sizeof(Tileset);

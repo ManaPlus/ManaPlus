@@ -68,9 +68,9 @@ class SpriteDef final : public Resource
         void addAction(const unsigned hp, const std::string &name,
                        Action *const action);
 
-        int calcMemoryLocal() override final;
+        int calcMemoryLocal() const override final;
 
-        int calcMemoryChilds(const int level) override final;
+        int calcMemoryChilds(const int level) const override final;
 
         static bool addSequence(const int start,
                                 const int end,
@@ -154,6 +154,7 @@ class SpriteDef final : public Resource
         typedef std::map<unsigned, ActionMap*> Actions;
         typedef Actions::const_iterator ActionsConstIter;
         typedef Actions::iterator ActionsIter;
+        typedef Actions::const_iterator ActionsCIter;
 
         ImageSets mImageSets;
         Actions mActions;

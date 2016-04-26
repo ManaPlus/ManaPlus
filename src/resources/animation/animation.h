@@ -76,6 +76,7 @@ class Animation final : public MemoryCounter
 
         typedef std::vector<Frame> Frames;
         typedef Frames::iterator FramesIter;
+        typedef Frames::const_iterator FramesCIter;
         typedef Frames::reverse_iterator FramesRevIter;
 
 #ifdef UNITTESTS
@@ -83,7 +84,7 @@ class Animation final : public MemoryCounter
         { return mFrames; }
 #endif
 
-        int calcMemoryLocal() override final;
+        int calcMemoryLocal() const override final;
 
         /**
          * Determines whether the given animation frame is a terminator.

@@ -223,7 +223,7 @@ void SubImage::decRef()
 }
 #endif
 
-int SubImage::calcMemoryLocal()
+int SubImage::calcMemoryLocal() const
 {
     int sz = sizeof(SubImage) +
         sizeof(std::map<float, SDL_Surface*>) +

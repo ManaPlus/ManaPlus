@@ -85,15 +85,15 @@ void Action::setLastFrameDelay(const int delay) noexcept
     }
 }
 
-int Action::calcMemoryLocal()
+int Action::calcMemoryLocal() const
 {
     return sizeof(Action);
 }
 
-int Action::calcMemoryChilds(const int level)
+int Action::calcMemoryChilds(const int level) const
 {
     int sz = 0;
-    FOR_EACH (AnimationIter, it, mAnimations)
+    FOR_EACH (AnimationCIter, it, mAnimations)
     {
         sz += sizeof(SpriteDirection::Type);
         Animation *const animation = (*it).second;

@@ -255,9 +255,9 @@ class ResourceManager final : public MemoryCounter
 
         void clearCache();
 
-        int calcMemoryLocal() override final;
+        int calcMemoryLocal() const override final;
 
-        int calcMemoryChilds(const int level) override final;
+        int calcMemoryChilds(const int level) const override final;
 
         static void init();
 

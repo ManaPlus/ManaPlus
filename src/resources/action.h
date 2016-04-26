@@ -59,13 +59,14 @@ class Action final : public MemoryCounter
 
         void setLastFrameDelay(const int delay) noexcept;
 
-        int calcMemoryLocal() override final;
+        int calcMemoryLocal() const override final;
 
-        int calcMemoryChilds(const int level) override final;
+        int calcMemoryChilds(const int level) const override final;
 
     protected:
         typedef std::map<SpriteDirection::Type, Animation*> Animations;
         typedef Animations::iterator AnimationIter;
+        typedef Animations::const_iterator AnimationCIter;
 
         Animations mAnimations;
         unsigned mNumber;

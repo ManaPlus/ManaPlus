@@ -28,12 +28,12 @@ MemoryCounter::MemoryCounter()
 {
 }
 
-int MemoryCounter::calcMemoryLocal()
+int MemoryCounter::calcMemoryLocal() const
 {
     return 0;
 }
 
-int MemoryCounter::calcMemory(const int level)
+int MemoryCounter::calcMemory(const int level) const
 {
     const int sumLocal = calcMemoryLocal();
     const int sumChilds = calcMemoryChilds(level);
@@ -41,7 +41,7 @@ int MemoryCounter::calcMemory(const int level)
     return sumLocal + sumChilds;
 }
 
-int MemoryCounter::calcMemoryChilds(const int level A_UNUSED)
+int MemoryCounter::calcMemoryChilds(const int level A_UNUSED) const
 {
     return 0;
 }

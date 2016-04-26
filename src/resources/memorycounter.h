@@ -31,11 +31,11 @@ class MemoryCounter notfinal
         virtual ~MemoryCounter()
         { }
 
-        int calcMemory(const int level);
+        int calcMemory(const int level) const;
 
-        virtual int calcMemoryLocal();
+        virtual int calcMemoryLocal() const;
 
-        virtual int calcMemoryChilds(const int level);
+        virtual int calcMemoryChilds(const int level) const;
 };
 
 #endif  // RESOURCES_MEMORYCOUNTER_H

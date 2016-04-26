@@ -74,7 +74,7 @@ bool SDLMusic::play(const int loops, const int fadeIn)
         return Mix_FadeInMusicPos(mMusic, loops, 0, 0.0);
 }
 
-int SDLMusic::calcMemoryLocal()
+int SDLMusic::calcMemoryLocal() const
 {
     // +++ not used size of SDL_RWops
     return sizeof(SDLMusic) +

@@ -25,6 +25,8 @@
 
 #include "listeners/configlistener.h"
 
+#include "resources/memorycounter.h"
+
 #include "being/actor.h"
 
 #include "enums/resources/map/maptype.h"
@@ -43,7 +45,7 @@ struct MetaTile;
  * A map layer. Stores a grid of tiles and their offset, and implements layer
  * rendering.
  */
-class MapLayer final: public ConfigListener
+class MapLayer final: public MemoryCounter, public ConfigListener
 {
     public:
         enum Type
@@ -161,6 +163,10 @@ class MapLayer final: public ConfigListener
 
         void setActorsFix(const int y) restrict
         { mActorsFix = y; }
+
+        int calcMemoryLocal() const override final;
+
+        int calcMemoryChilds(const int level) const override final;
 
     protected:
         static int getTileDrawWidth(const TileInfo *restrict img,

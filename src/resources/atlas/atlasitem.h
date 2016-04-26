@@ -43,7 +43,7 @@ struct AtlasItem final : public MemoryCounter
 
     A_DELETE_COPY(AtlasItem)
 
-    int calcMemoryLocal() override final
+    int calcMemoryLocal() const override final
     {
         return sizeof(AtlasItem) +
             name.capacity();

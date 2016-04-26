@@ -54,16 +54,16 @@ struct TextureAtlas final : public MemoryCounter
 
     A_DELETE_COPY(TextureAtlas)
 
-    int calcMemoryLocal() override final
+    int calcMemoryLocal() const override final
     {
         return sizeof(TextureAtlas) +
             items.capacity() * sizeof(AtlasItem*);
     }
 
-    int calcMemoryChilds(const int level) override final
+    int calcMemoryChilds(const int level) const override final
     {
         int sz = 0;
-        FOR_EACH (std::vector<AtlasItem*>::iterator, it, items)
+        FOR_EACH (std::vector<AtlasItem*>::const_iterator, it, items)
         {
             AtlasItem *const item = *it;
             sz += item->calcMemory(level + 1);

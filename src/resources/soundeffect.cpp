@@ -57,7 +57,7 @@ bool SoundEffect::play(const int loops, const int volume,
     return Mix_PlayChannel(channel, mChunk, loops) != -1;
 }
 
-int SoundEffect::calcMemoryLocal()
+int SoundEffect::calcMemoryLocal() const
 {
     return sizeof(SoundEffect) +
         sizeof(SDL_AudioSpec) +

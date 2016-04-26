@@ -43,7 +43,7 @@ int WalkLayer::getDataAt(const int x, const int y) const
     return mTiles[x + y * mWidth];
 }
 
-int WalkLayer::calcMemoryLocal()
+int WalkLayer::calcMemoryLocal() const
 {
     return Resource::calcMemoryLocal() +
         sizeof(WalkLayer) +

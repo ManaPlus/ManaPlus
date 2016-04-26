@@ -76,7 +76,7 @@ Image* ImageSet::get(const size_type i) const
     }
 }
 
-int ImageSet::calcMemoryLocal()
+int ImageSet::calcMemoryLocal() const
 {
     return sizeof(ImageSet) +
         Resource::calcMemoryLocal() +

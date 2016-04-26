@@ -744,3 +744,20 @@ void MapLayer::updateConditionTiles(MetaTile *const metaTiles,
         }
     }
 }
+
+int MapLayer::calcMemoryLocal() const
+{
+    return sizeof(MapLayer) +
+        sizeof(TileInfo) * mWidth * mHeight +
+        sizeof(MapRowVertexes) * mTempRows.capacity();
+}
+
+int MapLayer::calcMemoryChilds(const int level) const
+{
+    int sz = 0;
+    if (mSpecialLayer)
+        sz += mSpecialLayer->calcMemory(level + 1);
+    if (mTempLayer)
+        sz += mTempLayer->calcMemory(level + 1);
+    return sz;
+}

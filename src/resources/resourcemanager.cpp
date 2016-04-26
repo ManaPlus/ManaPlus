@@ -1067,7 +1067,7 @@ void ResourceManager::clearCache()
         continue;
 }
 
-int ResourceManager::calcMemoryLocal()
+int ResourceManager::calcMemoryLocal() const
 {
     int sz = sizeof(ResourceManager);
     FOR_EACH (std::set<SDL_Surface*>::iterator, it, deletedSurfaces)
@@ -1077,20 +1077,20 @@ int ResourceManager::calcMemoryLocal()
     return sz;
 }
 
-int ResourceManager::calcMemoryChilds(const int level)
+int ResourceManager::calcMemoryChilds(const int level) const
 {
     int sz = 0;
-    FOR_EACH (ResourceIterator, it, mResources)
+    FOR_EACH (ResourceCIterator, it, mResources)
     {
         sz += (*it).first.capacity();
         sz += (*it).second->calcMemory(level + 1);
     }
-    FOR_EACH (ResourceIterator, it, mOrphanedResources)
+    FOR_EACH (ResourceCIterator, it, mOrphanedResources)
     {
         sz += (*it).first.capacity();
         sz += (*it).second->calcMemory(level + 1);
     }
-    FOR_EACH (std::set<Resource*>::iterator, it, mDeletedResources)
+    FOR_EACH (std::set<Resource*>::const_iterator, it, mDeletedResources)
     {
         sz += (*it)->calcMemory(level + 1);
     }

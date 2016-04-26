@@ -21,6 +21,8 @@
 #ifndef RESOURCES_MAP_SPECIALLAYER_H
 #define RESOURCES_MAP_SPECIALLAYER_H
 
+#include "resources/memorycounter.h"
+
 #include "position.h"
 
 #include "localconsts.h"
@@ -28,7 +30,7 @@
 class Graphics;
 class MapItem;
 
-class SpecialLayer final
+class SpecialLayer final : public MemoryCounter
 {
     public:
         friend class Map;
@@ -54,6 +56,8 @@ class SpecialLayer final
         void addRoad(const Path &road);
 
         void clean() const;
+
+        int calcMemoryLocal() const override final;
 
     private:
         int mWidth;

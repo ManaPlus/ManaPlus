@@ -71,17 +71,17 @@ void AtlasResource::decRef()
         AtlasManager::moveToDeleted(this);
 }
 
-int AtlasResource::calcMemoryLocal()
+int AtlasResource::calcMemoryLocal() const
 {
     return sizeof(AtlasResource) +
         Resource::calcMemoryLocal() +
         atlases.capacity() * sizeof(TextureAtlas*);
 }
 
-int AtlasResource::calcMemoryChilds(const int level)
+int AtlasResource::calcMemoryChilds(const int level) const
 {
     int sz = 0;
-    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
+    FOR_EACH (std::vector<TextureAtlas*>::const_iterator, it, atlases)
     {
         TextureAtlas *const atlas = *it;
         sz += atlas->calcMemory(level + 1);

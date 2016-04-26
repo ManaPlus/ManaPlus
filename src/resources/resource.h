@@ -99,7 +99,7 @@ class Resource notfinal : public MemoryCounter
         void setNotCount(const bool b)
         { mNotCount = b; }
 
-        int calcMemoryLocal() override;
+        int calcMemoryLocal() const override;
 
 #ifdef DEBUG_DUMP_LEAKS
         bool getDumped() const A_WARN_UNUSED

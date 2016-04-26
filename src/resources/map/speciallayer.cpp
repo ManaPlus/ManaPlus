@@ -148,3 +148,9 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
     }
     BLOCK_END("SpecialLayer::draw")
 }
+
+int SpecialLayer::calcMemoryLocal() const
+{
+    return sizeof(SpecialLayer) +
+        sizeof(MapItem) * mWidth * mHeight;
+}

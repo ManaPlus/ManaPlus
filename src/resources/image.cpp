@@ -474,7 +474,7 @@ void Image::SDLTerminateAlphaCache()
     mUseAlphaCache = false;
 }
 
-int Image::calcMemoryLocal()
+int Image::calcMemoryLocal() const
 {
     // +++ this calculation can be wrong for SDL2
     int sz = sizeof(Image) +

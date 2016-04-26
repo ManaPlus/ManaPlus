@@ -87,12 +87,12 @@ void Animation::setLastFrameDelay(const int delay) noexcept
     }
 }
 
-int Animation::calcMemoryLocal()
+int Animation::calcMemoryLocal() const
 {
     int sz = sizeof(Animation);
-    FOR_EACH (FramesIter, it, mFrames)
+    FOR_EACH (FramesCIter, it, mFrames)
     {
-        Frame &frame = *it;
+        const Frame &frame = *it;
         sz += sizeof(Frame) +
             frame.nextAction.capacity();
     }

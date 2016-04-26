@@ -594,7 +594,7 @@ bool SpriteDef::addSequence(const int start,
     return false;
 }
 
-int SpriteDef::calcMemoryLocal()
+int SpriteDef::calcMemoryLocal() const
 {
     int sz = sizeof(SpriteDef) +
         sizeof(ImageSets) +
@@ -608,20 +608,20 @@ int SpriteDef::calcMemoryLocal()
     return sz;
 }
 
-int SpriteDef::calcMemoryChilds(const int level)
+int SpriteDef::calcMemoryChilds(const int level) const
 {
     int sz = 0;
-    FOR_EACH (ImageSets::iterator, it, mImageSets)
+    FOR_EACH (ImageSets::const_iterator, it, mImageSets)
     {
         sz += (*it).first.capacity();
-        ImageSet *const imageSet = (*it).second;
+        const ImageSet *const imageSet = (*it).second;
         sz += imageSet->calcMemory(level + 1);
     }
-    FOR_EACH (ActionsIter, it, mActions)
+    FOR_EACH (ActionsCIter, it, mActions)
     {
         sz += sizeof(unsigned);
-        ActionMap *const actionMap = (*it).second;
-        FOR_EACHP (ActionMap::iterator, it2, actionMap)
+        const ActionMap *const actionMap = (*it).second;
+        FOR_EACHP (ActionMap::const_iterator, it2, actionMap)
         {
             sz += (*it2).first.capacity();
             Action *const action = (*it2).second;

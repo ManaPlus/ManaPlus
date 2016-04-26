@@ -65,7 +65,7 @@ class SoundEffect final : public Resource
         bool play(const int loops, const int volume,
                   const int channel = -1) const;
 
-        int calcMemoryLocal() override final;
+        int calcMemoryLocal() const override final;
 
     protected:
         /**
