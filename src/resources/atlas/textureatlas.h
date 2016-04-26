@@ -27,6 +27,8 @@
 
 #include "resources/memorycounter.h"
 
+#include "resources/atlas/atlasitem.h"
+
 #include <vector>
 #include <SDL.h>
 
