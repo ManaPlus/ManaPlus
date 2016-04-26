@@ -603,6 +603,7 @@ SET(SRCS
     resources/atlas/atlasmanager.h
     resources/atlas/atlasresource.cpp
     resources/atlas/atlasresource.h
+    resources/rect/doublerect.h
     resources/attack.h
     resources/db/avatardb.cpp
     resources/db/avatardb.h

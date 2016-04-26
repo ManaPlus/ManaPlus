@@ -23,7 +23,7 @@
 
 #include "main.h"
 
-#include "localconsts.h"
+#include "resources/rect/doublerect.h"
 
 #ifdef USE_OPENGL
 
@@ -38,17 +38,11 @@
 
 #endif
 
-#include <SDL_video.h>
-
 #include <vector>
 
-class Image;
+#include "localconsts.h"
 
-struct DoubleRect final
-{
-    SDL_Rect src;
-    SDL_Rect dst;
-};
+class Image;
 
 class SDLGraphicsVertexes final
 {

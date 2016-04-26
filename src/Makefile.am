@@ -340,6 +340,7 @@ SRC += events/actionevent.h \
 	      resources/atlas/atlasmanager.h \
 	      resources/atlas/atlasresource.cpp \
 	      resources/atlas/atlasresource.h \
+	      resources/rect/doublerect.h \
 	      resources/attack.h \
 	      resources/cursor.cpp \
 	      resources/cursor.h \
