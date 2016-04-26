@@ -72,236 +72,6 @@ License: zlib
  3. This notice may not be removed or altered from any source
     distribution.
 
-Files: data/graphics/shaders/simple_frag.glsl
- data/graphics/shaders/simple_vertex.glsl
- data/perserver/default/weapons.xml
- src/listeners/arrowslistener.cpp
- src/listeners/arrowslistener.h
- src/listeners/attributelistener.cpp
- src/listeners/attributelistener.h
- src/listeners/baselistener.hpp
- src/listeners/statlistener.cpp
- src/listeners/statlistener.h
- src/listeners/updatestatuslistener.cpp
- src/listeners/updatestatuslistener.h
- src/net/eathena/beingtype.h
- src/net/eathena/menu.cpp
- src/net/eathena/menu.h
- src/net/eathena/menutype.h
- src/net/ipc.cpp
- src/net/ipc.h
- src/net/uploadcharinfo.h
- src/render/mglemu.cpp
- src/render/mglemu.h
- src/render/opengldebug.h
- src/render/shaders/shader.cpp
- src/render/shaders/shader.h
- src/render/shaders/shaderprogram.cpp
- src/render/shaders/shaderprogram.h
- src/render/shaders/shadersmanager.cpp
- src/render/shaders/shadersmanager.h
- src/resources/db/weaponsdb.cpp
- src/resources/db/weaponsdb.h
- src/resources/itemtypemap.h
- src/resources/itemtypemapdata.h
- src/settings.cpp
- src/settings.h
- src/utils/delete2.h
- src/utils/glxhelper.cpp
- src/utils/glxhelper.h
- src/utils/xmlutils.cpp
- src/utils/xmlutils.h
- src/utils/xmlutils_unittest.cc
-Copyright: 2014  The ManaPlus Developers
-License: GPL-2
-
-Files: Android.mk
- src/animatedsprite_unittest.cc
- src/dragdrop.h
- src/utils/files.cpp
- src/itemsoundmanager.cpp
- src/itemsoundmanager.h
- src/resources/map/mapheights.cpp
- src/resources/map/mapheights.h
- src/navigationmanager.cpp
- src/navigationmanager.h
- src/resources/notifications.h
- src/notifymanager.cpp
- src/notifymanager.h
- src/resources/map/walklayer.cpp
- src/resources/map/walklayer.h
- src/gui/models/touchactionmodel.cpp
- src/gui/models/touchactionmodel.h
- src/gui/windows/emotewindow.cpp
- src/gui/windows/emotewindow.h
- src/gui/widgets/colorpage.cpp
- src/gui/widgets/colorpage.h
- src/gui/widgets/characterviewbase.h
- src/gui/widgets/characterviewnormal.cpp
- src/gui/widgets/characterviewnormal.h
- src/gui/widgets/characterviewsmall.cpp
- src/gui/widgets/characterviewsmall.h
- src/gui/widgets/emotepage.cpp
- src/gui/widgets/emotepage.h
- src/gui/widgets/tabs/chat/gmtab.cpp
- src/gui/widgets/tabs/chat/gmtab.h
- src/input/multitouchmanager.cpp
- src/input/multitouchmanager.h
- src/utils/cpu.cpp
- src/utils/cpu.h
- src/utils/files.cpp
- src/utils/files.h
- src/utils/files_unittest.cc
- src/utils/fuzzer.cpp
- src/utils/fuzzer.h
- src/utils/physfscheckutils.cpp
- src/utils/physfscheckutils.h
- src/utils/physfstools.cpp
- src/utils/physfstools.h
- src/utils/sdl2helper.cpp
- src/utils/sdl2helper.h
- src/utils/sdlcheckutils.cpp
- src/utils/sdlcheckutils.h
- src/utils/sdlhelper.cpp
- src/utils/sdlhelper.h
- src/net/netconsts.h
- src/net/sdltcpnet.cpp
- src/net/sdltcpnet.h
- src/particle/particleinfo.h
- src/render/renderers.cpp
- src/render/renderers.h
- src/render/rendererslistsdl.h
- src/render/rendererslistsdl2.h
- src/resources/beingcommon.cpp
- src/resources/beingcommon.h
- src/resources/db/deaddb.cpp
- src/resources/db/deaddb.h
- src/resources/dye_unittest.cc
- src/resources/dyecolor.h
- src/resources/db/palettedb.cpp
- src/resources/db/palettedb.h
- src/resources/db/sounddb.cpp
- src/resources/db/sounddb.h
- src/resources/soundinfo.h
- src/sdlshared.h
- src/dyetool/dyemain.cpp
- data/graphics/sprites/test.xml
- data/perserver/default/deadmessages.xml
- src/net/eathena/pethandler.cpp
- src/net/eathena/pethandler.h
- src/net/pethandler.h
- src/net/tmwa/pethandler.cpp
- src/net/tmwa/pethandler.h
- src/resources/map/mapheights.cpp
- src/resources/map/mapheights.h
- src/resources/map/walklayer.cpp
- src/resources/map/walklayer.h
- src/resources/notificationinfo.h
- src/resources/notifications.h
- src/utils/physfsmemoryobject.h
-Copyright: 2013-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: data/evol/*
- data/translations/*
- src/animationdelayload.cpp
- src/animationdelayload.h
- src/eventsmanager.cpp
- src/eventsmanager.h
- src/graphicsmanager.cpp
- src/graphicsmanager.h
- src/input/inputmanager.cpp
- src/input/inputmanager.h
- src/input/keyinput.h
- src/render/mgl.cpp
- src/render/mgl.h
- src/touchactions.cpp
- src/touchactions.h
- src/touchmanager.cpp
- src/touchmanager.h
- src/actions/actiondef.h
- src/actions/actionfuncptr.h
- src/actions/actions.cpp
- src/actions/actions.h
- src/actions/chat.cpp
- src/actions/chat.h
- src/actions/commands.cpp
- src/actions/commands.h
- src/actions/move.cpp
- src/actions/move.h
- src/actions/statusbar.cpp
- src/actions/statusbar.h
- src/actions/tabs.cpp
- src/actions/tabs.h
- src/actions/target.cpp
- src/actions/target.h
- src/actions/windows.cpp
- src/actions/windows.h
- src/gui/windows/questswindow.cpp
- src/gui/windows/questswindow.h
- src/gui/widgets/tabs/setup_touch.cpp
- src/gui/widgets/tabs/setup_touch.h
- src/gui/widgets/browserbox_unittest.cc
- src/gui/models/colormodel.cpp
- src/gui/models/colormodel.h
- src/gui/widgets/extendedlistbox.cpp
- src/gui/widgets/extendedlistbox.h
- src/gui/models/extendedlistmodel.h
- src/gui/models/extendednamesmodel.cpp
- src/gui/models/extendednamesmodel.h
- src/gui/models/namesmodel.cpp
- src/gui/models/namesmodel.h
- src/gui/widgets/popuplist.cpp
- src/gui/widgets/popuplist.h
- src/gui/widgets/radiogroup.cpp
- src/gui/widgets/radiogroup.h
- src/gui/widgets/setuptouchitem.cpp
- src/gui/widgets/setuptouchitem.h
- src/gui/widgets/tabstrip.cpp
- src/gui/widgets/tabstrip.h
- src/gui/widgets/widget2.h
- src/gui/widgets/widgetgroup.cpp
- src/gui/widgets/widgetgroup.h
- src/net/tmwa/questhandler.cpp
- src/net/tmwa/questhandler.h
- src/resources/atlasmanager.cpp
- src/resources/atlasmanager.h
- src/resources/cursor.cpp
- src/resources/cursor.h
- src/resources/fboinfo.h
- src/utils/checkutils.cpp
- src/utils/checkutils.h
- src/utils/perfomance.cpp
- src/utils/perfomance.h
- src/utils/stringutils_unittest.cc
- src/utils/stringvector.h
- src/utils/translation/*
- src/winver.h
- src/net/eathena/questhandler.cpp
- src/net/eathena/questhandler.h
- src/render/mgl.hpp
- src/render/mglcheck.h
- src/render/mgldefines.h
- src/render/mglfunctions.h
- src/render/mgltypes.h
- src/render/mglx.cpp
- src/render/mglx.h
- src/render/mglx.hpp
- src/render/mglxinit.cpp
- src/render/mglxinit.h
- src/render/mglxtypes.h
- src/resources/atlasitem.h
- src/resources/atlasresource.cpp
- src/resources/atlasresource.h
- src/resources/chatobject.h
- src/resources/questeffect.h
- src/resources/questitem.h
- src/resources/questitemtext.h
- src/resources/questtype.h
- src/resources/textureatlas.h
-Copyright: 2012-2014  The ManaPlus Developers
-License: GPL-2
-
 Files: src/particle/animationparticle.cpp
  src/particle/animationparticle.h
  src/gui/widgets/dropdown.cpp
@@ -329,7 +99,6 @@ Files: src/being/beingflag.h
  src/being/homunculusinfo.h
  src/being/mercenaryinfo.h
  src/being/petinfo.h
- src/emoteshortcutconsts.h
  src/gamemodifiers.cpp
  src/gamemodifiers.h
  src/gui/buttoninfo.h
@@ -358,7 +127,6 @@ Files: src/being/beingflag.h
  src/gui/widgets/extendedlistboxitem.h
  src/gui/widgets/setupbuttonitem.cpp
  src/gui/widgets/setupbuttonitem.h
- src/gui/widgets/tabs/chat/chattabtype.h
  src/gui/widgets/tabs/chat/gmtab.cpp
  src/gui/widgets/tabs/chat/gmtab.h
  src/gui/widgets/tabs/chat/langtab.cpp
@@ -372,10 +140,8 @@ Files: src/being/beingflag.h
  src/gui/widgets/tabs/socialplayerstab.h
  src/gui/widgets/tabs/socialtabbase.h
  src/input/inputactionsortfunctor.h
- src/input/inputcondition.h
  src/input/inputfunction.h
  src/input/inputitem.h
- src/input/inputtype.h
  src/input/pages/chat.cpp
  src/input/pages/chat.h
  src/input/pages/gui.cpp
@@ -460,7 +226,6 @@ Files: src/being/beingflag.h
  src/resources/map/speciallayer.h
  src/resources/modinfo.cpp
  src/resources/modinfo.h
- src/resources/skillconsts.h
  src/resources/skillowner.h
  src/resources/skilltype.h
  src/utils/booleanoptions.h
@@ -630,11 +395,7 @@ Files: src/gui/windows/outfitwindow.cpp
  src/gui/widgets/layout.h
  src/gui/widgets/shortcutcontainer.cpp
  src/gui/widgets/shortcutcontainer.h
- src/itemshortcut.cpp
- src/itemshortcut.h
  src/position.cpp
- src/resources/dye.cpp
- src/resources/dye.h
  src/utils/gettext.h
  src/utils/stringutils.cpp
  src/utils/stringutils.h
@@ -645,9 +406,7 @@ Copyright: 2007-2009 The Mana World Development Team
            2011-2014 The ManaPlus Developers
 License: GPL-2
 
-Files: src/dropshortcut.cpp
- src/dropshortcut.h
- src/gui/models/iconsmodel.h
+Files: src/gui/models/iconsmodel.h
  src/gui/models/magicschoolmodel.h
  src/gui/windows/editdialog.cpp
  src/gui/windows/editdialog.h
@@ -663,8 +422,6 @@ Files: src/dropshortcut.cpp
  src/gui/widgets/spellshortcutcontainer.h
  src/spellmanager.cpp
  src/spellmanager.h
- src/spellshortcut.cpp
- src/spellshortcut.h
  src/textcommand.cpp
  src/textcommand.h
 Copyright: 2009 The Mana World Development Team
@@ -690,7 +447,6 @@ Files: data/perserver/*
  src/localconsts.h
  src/resources/db/deaddb.cpp
  src/resources/db/deaddb.h
- src/soundconsts.h
  src/test/testlauncher.cpp
  src/test/testlauncher.h
  src/test/testmain.cpp
@@ -742,365 +498,6 @@ License: BSD-3-clause
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
-Files: src/input/keyboardconfig.cpp
- src/input/keyboardconfig.h
- src/input/inputactiondata.h
- src/input/inputactionmap.h
-Copyright: 2007  Joshua Langley <joshlangley@optusnet.com.au>
-           2009-2010  The Mana Developers
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/widgets/tabs/setup_input.cpp
- src/gui/widgets/tabs/setup_input.h
- src/gui/setupactiondata.h
- src/gui/models/keylistmodel.h
- src/gui/setupinputpages.cpp
- src/gui/setupinputpages.h
- src/input/pages/basic.cpp
- src/input/pages/basic.h
- src/input/pages/emotes.cpp
- src/input/pages/emotes.h
- src/input/pages/move.cpp
- src/input/pages/move.h
- src/input/pages/other.cpp
- src/input/pages/other.h
- src/input/pages/outfits.cpp
- src/input/pages/outfits.h
- src/input/pages/shortcuts.cpp
- src/input/pages/shortcuts.h
- src/input/pages/windows.cpp
- src/input/pages/windows.h
-Copyright: 2007  Joshua Langley <joshlangley@optusnet.com.au>
-           2009  The Mana World Development Team
-           2009-2010  The Mana Developers
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/text.cpp
- src/text.h
-Copyright: 2008  Douglas Boffey <DougABoffey@netscape.net>
-           2008-2009  The Mana World Development Team
-           2009-2010  The Mana Developers
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/widgets/tabs/setup_colors.h
- src/gui/widgets/tabs/setup_colors.cpp
- src/textmanager.cpp
- src/textmanager.h
-Copyright: 2008  Douglas Boffey <DougABoffey@netscape.net>
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/effectmanager.cpp
- src/effectmanager.h
- src/resources/effectdescription.h
-Copyright: 2008  Fate <fate.tmw@googlemail.com>
-           2008  Chuck Miller <shadowmil@gmail.com>
-           2011-2014  The ManaPlus developers
-License: GPL-2
-
-Files: src/gui/theme.cpp
- src/gui/theme.h
- src/gui/skin.cpp
- src/gui/skin.h
-Copyright: 2008  The Legend of Mazzeroth Development Team
-           2009  Aethyra Development Team
-           2009  The Mana World Development Team
-           2009-2010  The Mana Developers
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/chatlogger.cpp
- src/chatlogger.h
-Copyright: 2009-2010  The Mana Developers
-           2009-2010  Andrei Karas
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/widgets/tabs/setup_visual.cpp
- src/gui/widgets/tabs/setup_visual.h
- src/gui/models/fontsmodel.h
- src/gui/models/langlistmodel.h
- src/gui/models/targettypemodel.h
- src/gui/models/themesmodel.h
- src/gui/onlineplayer.h
-Copyright: 2009-2010  Andrei Karas
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/widgets/desktop.cpp
- src/gui/widgets/desktop.h
-Copyright: 2009-2010 The Mana World Development Team
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/windows/editserverdialog.cpp
- src/gui/windows/editserverdialog.h
- src/gui/models/typelistmodel.h
-Copyright: 2011-2012 The Mana Developers
-           2012-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/being/actor.cpp
- src/being/actor.h
- src/being/actorsprite.cpp
- src/being/actorsprite.h
- src/listeners/actorspritelistener.h
- src/being/compoundsprite.cpp
- src/being/compoundsprite.h
- src/defaults.cpp
- src/defaults.h
- src/gui/models/avatarlistmodel.h
- src/gui/models/beingslistmodel.h
- src/gui/popups/beingpopup.cpp
- src/gui/popups/beingpopup.h
- src/gui/popups/createpartypopup.h
- src/gui/windows/socialwindow.cpp
- src/gui/windows/socialwindow.h
- src/gui/widgets/avatarlistbox.cpp
- src/gui/widgets/avatarlistbox.h
- src/gui/widgets/progressindicator.cpp
- src/gui/widgets/progressindicator.h
- src/gui/widgets/tabs/socialguildtab.h
- src/gui/widgets/tabs/socialguildtab2.h
- src/gui/widgets/tabs/socialpartytab.h
- src/gui/widgets/tabs/socialtab.h
- src/imagesprite.cpp
- src/imagesprite.h
- src/net/charserverhandler.cpp
- src/party.cpp
- src/party.h
- src/being/playerinfo.cpp
- src/being/playerinfo.h
- src/sprite.h
- src/utils/mkdir.cpp
- src/utils/mkdir.h
- src/utils/specialfolder.cpp
- src/utils/specialfolder.h
- src/variabledata.h
- src/listeners/actorspritelistener.h
-Copyright: 2010 The Mana Developers
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/avatar.cpp
- src/avatar.h
- src/gui/windows/changeemaildialog.cpp
- src/gui/windows/changeemaildialog.h
- src/gui/widgets/tabs/setup_relations.cpp
- src/gui/widgets/tabs/setup_relations.h
- src/gui/widgets/tabs/chat/battletab.cpp
- src/gui/widgets/tabs/chat/chattab.cpp
- src/gui/widgets/tabs/chat/emulateguildtab.cpp
- src/gui/widgets/guitable.cpp
- src/gui/widgets/guitable.h
- src/gui/widgets/icon.cpp
- src/gui/widgets/icon.h
- src/gui/widgets/tabbedarea.cpp
- src/gui/widgets/tabbedarea.h
- src/gui/widgets/tabs/tab.cpp
- src/gui/widgets/tabs/tab.h
- src/gui/models/tablemodel.cpp
- src/gui/models/tablemodel.h
- src/gui/widgets/tabs/chat/tradetab.cpp
- src/gui/widgets/tabs/chat/guildtab.cpp
- src/gui/widgets/tabs/chat/partytab.cpp
- src/net/ea/network.cpp
- src/net/ea/network.h
- src/particle/particlecontainer.cpp
- src/particle/particlecontainer.h
- src/being/playerrelations.cpp
- src/being/playerrelations.h
- src/position.h
- src/resources/db/npcdb.cpp
- src/resources/db/npcdb.h
- src/resources/db/petdb.cpp
- src/resources/db/petdb.h
- src/statuseffect.cpp
- src/statuseffect.h
- src/utils/mutex.h
-Copyright: 2008-2009 The Mana World Development Team
-           2009-2010 The Mana Developers
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/windows/charcreatedialog.h
- src/gui/chatconsts.h
- src/gui/widgets/tabs/chat/battletab.h
- src/gui/widgets/tabs/chat/chattab.h
- src/gui/widgets/tabs/chat/emulateguildtab.h
- src/gui/widgets/itemlinkhandler.cpp
- src/gui/widgets/itemlinkhandler.h
- src/gui/widgets/layouthelper.cpp
- src/gui/widgets/layouthelper.h
- src/gui/widgets/setupbuttonitem.cpp
- src/gui/widgets/tabs/setuptab.cpp
- src/gui/widgets/tabs/chat/channeltab.h
- src/gui/widgets/tabs/chat/chattab.h
- src/gui/widgets/tabs/chat/emulateguildtab.h
- src/gui/widgets/tabs/chat/guildtab.h
- src/gui/widgets/tabs/chat/partytab.h
- src/gui/widgets/tabs/chat/tradetab.h
- src/gui/widgets/tabs/chat/whispertab.cpp
- src/gui/widgets/tabs/chat/whispertab.h
- src/net/adminhandler.h
- src/net/charserverhandler.h
- src/net/chathandler.h
- src/net/ea/gamehandler.cpp
- src/net/ea/gamehandler.h
- src/net/ea/token.h
- src/net/gamehandler.h
- src/net/generalhandler.h
- src/net/guildhandler.h
- src/net/inventoryhandler.h
- src/net/loginhandler.h
- src/net/net.cpp
- src/net/net.h
- src/net/npchandler.h
- src/net/partyhandler.h
- src/net/playerhandler.h
- src/net/serverinfo.h
- src/net/skillhandler.h
- src/net/eathena/gamehandler.cpp
- src/net/eathena/gamehandler.h
- src/net/eathena/generalhandler.cpp
- src/net/eathena/generalhandler.h
- src/net/tmwa/gamehandler.cpp
- src/net/tmwa/gamehandler.h
- src/net/tmwa/generalhandler.cpp
- src/net/tmwa/generalhandler.h
- src/net/tradehandler.h
- src/net/worldinfo.h
- src/resources/wallpaper.cpp
- src/resources/wallpaper.h
- src/units.cpp
- src/units.h
- src/utils/mathutils.h
- src/net/character.h
- src/net/registrationoptions.h
- src/resources/wallpaperdata.h
- src/shortcutbase.cpp
- src/shortcutbase.h
-Copyright: 2009 The Mana World Development Team
-           2009-2010 The Mana Developers
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/userpalette.cpp
- src/gui/userpalette.h
- src/gui/palette.h
- src/gui/palette.cpp
-Copyright: 2008 Douglas Boffey <dougaboffey@netscape.net>
-           2009-2010 The Mana Developers
-           2009 The Mana World Development Team
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/popups/spellpopup.cpp
- src/gui/popups/spellpopup.h
- src/gui/popups/statuspopup.cpp
- src/gui/popups/statuspopup.h
-Copyright: 2008  The Legend of Mazzeroth Development Team
-           2009  The Mana World Development Team
-           2009-2010  Andrei Karas
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/net/ea/partyhandler.h
- src/net/ea/partyhandler.cpp
- src/net/eathena/partyhandler.h
- src/net/eathena/partyhandler.cpp
- src/net/tmwa/partyhandler.h
- src/net/tmwa/partyhandler.cpp
-Copyright: 2008  Lloyd Bryant <lloyd_bryant@netzero.net>
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/emoteshortcut.cpp
- src/emoteshortcut.h
- src/gui/widgets/emoteshortcutcontainer.cpp
- src/gui/widgets/emoteshortcutcontainer.h
- src/gui/widgets/label.cpp
- src/gui/widgets/label.h
- src/resources/db/emotedb.cpp
- src/resources/db/emotedb.h
- src/resources/emoteinfo.h
- src/resources/emotesprite.h
-Copyright: 2009 Aethyra Development Team
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/resources/db/chardb.cpp
- src/resources/db/chardb.h
- src/resources/db/colordb.cpp
- src/resources/db/colordb.h
- src/resources/db/mapdb.cpp
- src/resources/db/mapdb.h
- src/resources/mapinfo.h
-Copyright: 2008 Aethyra Development Team
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/popups/speechbubble.cpp
- src/gui/popups/speechbubble.h
- src/gui/popups/itempopup.cpp
- src/gui/popups/itempopup.h
- src/gui/popups/skillpopup.cpp
- src/gui/popups/skillpopup.h
- src/gui/popups/textpopup.cpp
- src/gui/popups/textpopup.h
-Copyright: 2008  The Legend of Mazzeroth Development Team
-           2008-2009  The Mana World Development Team
-           2009-2010  The Mana Developers
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/widgets/popup.cpp
- src/gui/widgets/popup.h
- src/gui/widgets/browserbox.cpp
- src/gui/widgets/browserbox.h
- src/gui/fonts/font.cpp
- src/gui/fonts/font.h
- src/gui/fonts/textchunk.cpp
- src/gui/fonts/textchunk.h
-Copyright: 2004-2009  The Mana World Development Team
-           2009  Aethyra Development Team
-           2009-2010  The Mana Developers
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/widgets/linepart.cpp
- src/gui/widgets/linepart.h
-Copyright: 2009  Aethyra Development Team
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
-Files: src/gui/fonts/font.cpp
- src/gui/fonts/font.h
-Copyright: 2004-2009  The Mana World Development Team
-           2009  Aethyra Development Team
-           2009-2010  The Mana Developers
-           2011-2014  The ManaPlus Developers
-           2004-2008  Olof Naessén and Per Larsson
-License: GPL-2
-
-Files: src/gui/widgets/tabs/setup_chat.cpp
- src/gui/widgets/tabs/setup_chat.h
- src/gui/widgets/tabs/setup_other.cpp
- src/gui/widgets/tabs/setup_other.h
- src/gui/widgets/tabs/setup_perfomance.cpp
- src/gui/widgets/tabs/setup_perfomance.h
- src/gui/widgets/tabs/setup_players.cpp
- src/gui/widgets/tabs/setup_players.h
- src/gui/widgets/virtshortcutcontainer.cpp
- src/gui/widgets/virtshortcutcontainer.h
-Copyright: 2009  The Mana World Development Team
-           2009-2010 Andrei Karas
-           2011-2014  The ManaPlus Developers
-License: GPL-2
-
 Files: src/mumblemanager.h src/mumblemanager.cpp
 Copyright: Mumble Wiki editors
            The ManaPlus Developers
@@ -1117,18 +514,6 @@ Files: src/utils/physfsrwops.cpp
 Copyright: Ryan C. Gordon
            2012-2014 The ManaPlus Developers
 License: public-domain
-
-Files: data/sfx/system/newmessage.ogg
-Copyright: 2004-2007 The Mana World Development Team
-           2011 ManaPlus developers
-Comment: Based on The Mana World log head ogg sound
- https://github.com/themanaworld/tmwa-client-data/tree/master/sfx/monsters/loghead
-License: GPL-2
-
-Files: data/themes/blacknblack/*
-Copyright: 2012 kook
-           2012-2014 ManaPlus developers
-License: GPL-2
 
 Files: data/themes/golden-delicious/*
 Copyright: 2012-2013 Francesco Miglietta

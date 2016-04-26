@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
 DEB_CONFIGURE_EXTRA_FLAGS := \
 	--bindir=/usr/games
 

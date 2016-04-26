@@ -4,7 +4,7 @@ Priority: optional
 Homepage: http://manaplus.org/
 Maintainer: Andrei Karas <akaras@inbox.ru>
 Uploaders: Patrick Matthäi <pmatthaei@debian.org>
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Build-Depends: debhelper (>= 9),
  libcurl4-gnutls-dev,
  libgl1-mesa-dev,
@@ -13,7 +13,7 @@ Build-Depends: debhelper (>= 9),
  libsdl-net1.2-dev,
  libsdl-mixer1.2-dev,
  libphysfs-dev,
- libpng12-dev,
+ libpng-dev,
  libxml2-dev,
  zlib1g-dev,
  libsdl-ttf2.0-dev,

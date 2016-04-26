@@ -1,8 +1,105 @@
-manaplus (1.5.9.12-2) UNRELEASED; urgency=medium
+manaplus (1.6.4.23-2) UNRELEASED; urgency=medium
 
   * Adjust debian/copyright.
 
- -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 21 Sep 2015 14:43:15 +0200
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 24 Apr 2016 12:16:34 +0200
+
+manaplus (1.6.4.23-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 24 Apr 2016 11:49:16 +0200
+
+manaplus (1.6.4.9-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Override false positive spelling-error-in-binary lintian warning.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 17 Apr 2016 12:22:55 +0200
+
+manaplus (1.6.3.26-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 30 Mar 2016 10:17:53 +0200
+
+manaplus (1.6.3.12-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Enable full hardening.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 17 Mar 2016 19:25:51 +0100
+
+manaplus (1.6.2.13-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.7 (no changes required).
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 16 Feb 2016 13:24:18 +0100
+
+manaplus (1.6.1.30-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 01 Feb 2016 14:16:42 +0100
+
+manaplus (1.6.1.16-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Adjust debian/copyright.
+  * Update build depdency to libpng-dev.
+    Closes: #810192
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 18 Jan 2016 10:09:13 +0100
+
+manaplus (1.6.1.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Adjust debian/copyright.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 04 Jan 2016 11:48:33 +0100
+
+manaplus (1.5.12.19-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 21 Dec 2015 13:36:58 +0100
+
+manaplus (1.5.12.5-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Adjust file list in debian/copyright.
+  * Overwrite false positive missing-license-paragraph-in-dep5-copyright
+    lintian warning.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 16 Dec 2015 10:42:32 +0100
+
+manaplus (1.5.11.7-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Adjust debian/copyright.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 11 Nov 2015 13:33:42 +0100
+
+manaplus (1.5.10.24-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Adjust debian/copyright.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 26 Oct 2015 17:56:26 +0100
+
+manaplus (1.5.10.10-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 12 Oct 2015 16:01:14 +0200
+
+manaplus (1.5.9.26-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Adjust debian/copyright.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 06 Oct 2015 10:15:05 +0200
 
 manaplus (1.5.9.12-1) unstable; urgency=medium
 
