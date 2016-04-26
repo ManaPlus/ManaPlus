@@ -23,8 +23,6 @@
 
 #include "gui/widgets/popup.h"
 
-#include "graphicsvertexes.h"
-
 #include "gui/popupmanager.h"
 #include "gui/skin.h"
 
@@ -33,6 +31,8 @@
 #include "utils/delete2.h"
 
 #include "render/graphics.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "debug.h"
 

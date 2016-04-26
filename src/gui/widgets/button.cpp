@@ -65,7 +65,6 @@
 
 #include "gui/widgets/button.h"
 
-#include "graphicsvertexes.h"
 #include "settings.h"
 
 #include "resources/image.h"
@@ -78,6 +77,8 @@
 #include "gui/fonts/font.h"
 
 #include "render/renderers.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "utils/delete2.h"
 

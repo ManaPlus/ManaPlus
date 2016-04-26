@@ -25,11 +25,12 @@
 #include "render/nullopenglgraphics.h"
 
 #include "graphicsmanager.h"
-#include "graphicsvertexes.h"
 
 #ifdef DEBUG_BIND_TEXTURE
 #include "logger.h"
 #endif
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "graphicsvertexes.h"
+#include "render/vertexes/graphicsvertexes.h"
 
 #ifdef USE_OPENGL
 #include "render/graphics.h"

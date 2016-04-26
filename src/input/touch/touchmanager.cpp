@@ -21,7 +21,6 @@
 #include "input/touch/touchmanager.h"
 
 #include "configuration.h"
-#include "graphicsvertexes.h"
 
 #include "gui/gui.h"
 #include "gui/skin.h"
@@ -37,6 +36,8 @@
 #include "utils/delete2.h"
 
 #include "render/graphics.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

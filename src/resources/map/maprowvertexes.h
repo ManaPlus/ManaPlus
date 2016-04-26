@@ -23,7 +23,7 @@
 
 #include "utils/dtor.h"
 
-#include "graphicsvertexes.h"
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "localconsts.h"
 

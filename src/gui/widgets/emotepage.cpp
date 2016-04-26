@@ -20,9 +20,9 @@
 
 #include "gui/widgets/emotepage.h"
 
-#include "graphicsvertexes.h"
-
 #include "render/graphics.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"

@@ -22,7 +22,6 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-#include "graphicsvertexes.h"
 #include "settings.h"
 
 #include "gui/gui.h"
@@ -32,6 +31,8 @@
 #include "resources/image.h"
 
 #include "render/graphics.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "debug.h"
 

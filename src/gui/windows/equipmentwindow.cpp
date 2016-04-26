@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "dragdrop.h"
-#include "graphicsvertexes.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -41,6 +40,8 @@
 #include "gui/widgets/equipmentpage.h"
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/tabstrip.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/equipmentslots.h"
 #include "resources/imageset.h"

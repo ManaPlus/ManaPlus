@@ -28,8 +28,9 @@
 
 #include "configuration.h"
 #include "graphicsmanager.h"
-#include "graphicsvertexes.h"
 #include "logger.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"

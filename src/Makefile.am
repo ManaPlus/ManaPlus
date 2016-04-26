@@ -522,8 +522,8 @@ SRC += events/actionevent.h \
 	      render/graphics.h \
 	      graphicsmanager.cpp \
 	      graphicsmanager.h \
-	      graphicsvertexes.cpp \
-	      graphicsvertexes.h \
+	      render/vertexes/graphicsvertexes.cpp \
+	      render/vertexes/graphicsvertexes.h \
 	      events/inputevent.h \
 	      input/inputactiondata.h \
 	      input/inputactionoperators.cpp \

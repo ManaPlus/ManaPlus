@@ -27,11 +27,12 @@
 #include "main.h"
 
 #include "graphicsmanager.h"
-#include "graphicsvertexes.h"
 
 #include "utils/sdlcheckutils.h"
 
 #include "utils/sdlpixel.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

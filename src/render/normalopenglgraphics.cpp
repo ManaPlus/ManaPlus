@@ -24,10 +24,11 @@
 
 #include "render/normalopenglgraphics.h"
 
-#include "graphicsvertexes.h"
 #include "logger.h"
 
 #include "render/opengl/mgl.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

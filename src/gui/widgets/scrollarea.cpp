@@ -65,7 +65,6 @@
 
 #include "gui/widgets/scrollarea.h"
 
-#include "graphicsvertexes.h"
 #include "settings.h"
 
 #include "gui/gui.h"
@@ -75,6 +74,8 @@
 #include "utils/stringutils.h"
 
 #include "render/graphics.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

@@ -956,8 +956,8 @@ SET(SRCS
     render/graphics.h
     graphicsmanager.cpp
     graphicsmanager.h
-    graphicsvertexes.cpp
-    graphicsvertexes.h
+    render/vertexes/graphicsvertexes.cpp
+    render/vertexes/graphicsvertexes.h
     guild.cpp
     guild.h
     enums/commandtarget.h
@@ -1348,8 +1348,8 @@ SET(DYE_CMD_SRCS
     configuration.h
     graphicsmanager.cpp
     graphicsmanager.h
-    graphicsvertexes.cpp
-    graphicsvertexes.h
+    render/vertexes/graphicsvertexes.cpp
+    render/vertexes/graphicsvertexes.h
     logger.cpp
     logger.h
     navigationmanager.cpp

@@ -65,7 +65,6 @@
 
 #include "gui/widgets/tabs/tab.h"
 
-#include "graphicsvertexes.h"
 #include "settings.h"
 
 #include "gui/gui.h"
@@ -73,6 +72,8 @@
 
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

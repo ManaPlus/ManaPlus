@@ -23,7 +23,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "graphicsvertexes.h"
 
 #include "being/localplayer.h"
 
@@ -41,6 +40,8 @@
 #include "gui/models/avatarlistmodel.h"
 
 #include "gui/windows/chatwindow.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 

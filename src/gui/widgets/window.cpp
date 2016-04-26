@@ -72,7 +72,6 @@
 #else
 #include "resources/image.h"
 #endif
-#include "graphicsvertexes.h"
 #include "soundmanager.h"
 
 #include "const/sound.h"
@@ -93,6 +92,8 @@
 #include "gui/widgets/layout.h"
 
 #include "render/renderers.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "utils/delete2.h"
 

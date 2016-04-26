@@ -65,7 +65,6 @@
 
 #include "gui/widgets/slider.h"
 
-#include "graphicsvertexes.h"
 #include "settings.h"
 
 #include "gui/gui.h"
@@ -76,6 +75,8 @@
 #include "resources/imagerect.h"
 
 #include "render/graphics.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "debug.h"
 

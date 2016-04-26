@@ -24,13 +24,14 @@
 
 #include "render/mobileopenglgraphics.h"
 
-#include "graphicsvertexes.h"
 #include "logger.h"
 
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"
 #endif
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

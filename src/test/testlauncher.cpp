@@ -23,7 +23,6 @@
 #ifdef USE_OPENGL
 
 #include "graphicsmanager.h"
-#include "graphicsvertexes.h"
 #include "settings.h"
 #include "soundmanager.h"
 
@@ -38,6 +37,8 @@
 #include "utils/physfsrwops.h"
 
 #include "render/graphics.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/image.h"
 #include "resources/imagewriter.h"

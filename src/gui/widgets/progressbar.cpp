@@ -22,7 +22,6 @@
 
 #include "gui/widgets/progressbar.h"
 
-#include "graphicsvertexes.h"
 #include "settings.h"
 
 #include "gui/gui.h"
@@ -33,6 +32,8 @@
 #include "utils/delete2.h"
 
 #include "render/graphics.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "debug.h"
 

@@ -23,7 +23,6 @@
 #include "gui/widgets/itemcontainer.h"
 
 #include "dragdrop.h"
-#include "graphicsvertexes.h"
 
 #include "being/playerinfo.h"
 
@@ -59,6 +58,8 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include "render/vertexes/graphicsvertexes.h"
 
 #include "resources/iteminfo.h"
 
