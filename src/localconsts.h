@@ -93,6 +93,11 @@
 #else  // EATHENA_SUPPORT
 #define A_TMWA_UNUSED
 #endif  // EATHENA_SUPPORT
+#ifdef DYECMD
+#define A_DYECMD_UNUSED __attribute__ ((unused))
+#else  // DYECMD
+#define A_DYECMD_UNUSED
+#endif  // DYECMD
 
 #ifdef __native_client__
 #define restrict

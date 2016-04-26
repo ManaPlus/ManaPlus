@@ -23,6 +23,8 @@
 
 #include "localconsts.h"
 
+class ChatTab;
+
 struct SDL_Surface;
 
 class MemoryManager final
@@ -41,7 +43,7 @@ class MemoryManager final
                          const int localSum,
                          const int childsSum);
 
-        void printAllMemory();
+        void printAllMemory(ChatTab *const tab);
 };
 
 extern MemoryManager memoryManager;

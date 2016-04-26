@@ -22,7 +22,12 @@
 
 #include "logger.h"
 
+#include "gui/widgets/tabs/chat/chattab.h"
+
 #include "resources/resourcemanager.h"
+
+#include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include <SDL_video.h>
 #include <string>
@@ -62,10 +67,19 @@ void MemoryManager::printMemory(const int level A_UNUSED,
         childsSum);
 }
 
-void MemoryManager::printAllMemory()
+void MemoryManager::printAllMemory(ChatTab *const tab A_DYECMD_UNUSED)
 {
     if (!logger)
         return;
+    int sz = 0;
     if (resourceManager)
-        resourceManager->calcMemory(0);
+        sz += resourceManager->calcMemory(0);
+#ifndef DYECMD
+    if (tab)
+    {
+        // TRANSLATORS: memory usage chat message
+        tab->chatLog(strprintf(_("Calculated memory usage: %d"), sz),
+            ChatMsgType::BY_SERVER);
+    }
+#endif
 }

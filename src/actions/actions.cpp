@@ -1786,7 +1786,10 @@ impHandler(seen)
 
 impHandler0(dumpMemoryUsage)
 {
-    memoryManager.printAllMemory();
+    if (event.tab)
+        memoryManager.printAllMemory(event.tab);
+    else
+        memoryManager.printAllMemory(localChatTab);
     return true;
 }
 
