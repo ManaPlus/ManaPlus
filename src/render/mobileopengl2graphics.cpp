@@ -35,7 +35,7 @@
 #include "render/shaders/shaderprogram.h"
 #include "render/shaders/shadersmanager.h"
 
-#include "render/vertexes/graphicsvertexes.h"
+#include "render/vertexes/imagecollection.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

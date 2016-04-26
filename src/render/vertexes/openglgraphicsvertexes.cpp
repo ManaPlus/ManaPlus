@@ -18,17 +18,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "render/vertexes/graphicsvertexes.h"
-
 #ifdef USE_OPENGL
+
+#include "render/vertexes/imagecollection.h"
+
 #include "render/graphics.h"
-#endif
 
 #include "utils/dtor.h"
 
 #include "debug.h"
 
-#ifdef USE_OPENGL
 unsigned int vertexBufSize = 500;
 
 OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
@@ -226,46 +225,3 @@ GLint *OpenGLGraphicsVertexes::continueIntTexArray() restrict2
     return mIntTexArray;
 }
 #endif
-
-ImageVertexes::ImageVertexes() :
-    image(nullptr),
-#ifdef USE_OPENGL
-    ogl(),
-#endif
-    sdl()
-{
-    sdl.reserve(30);
-}
-
-ImageVertexes::~ImageVertexes()
-{
-    delete_all(sdl);
-    sdl.clear();
-}
-
-ImageCollection::ImageCollection() :
-#ifdef USE_OPENGL
-    currentGLImage(0),
-#endif
-    currentImage(nullptr),
-    currentVert(nullptr),
-    draws()
-{
-}
-
-ImageCollection::~ImageCollection()
-{
-    clear();
-}
-
-void ImageCollection::clear() restrict2
-{
-#ifdef USE_OPENGL
-    currentGLImage = 0;
-#endif
-    currentImage = nullptr;
-    currentVert = nullptr;
-
-    delete_all(draws);
-    draws.clear();
-}

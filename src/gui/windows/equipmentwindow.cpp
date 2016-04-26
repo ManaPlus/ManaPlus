@@ -41,7 +41,7 @@
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/tabstrip.h"
 
-#include "render/vertexes/graphicsvertexes.h"
+#include "render/vertexes/imagecollection.h"
 
 #include "resources/equipmentslots.h"
 #include "resources/imageset.h"

@@ -18,35 +18,39 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MAP_MAPROWVERTEXES_H
-#define RESOURCES_MAP_MAPROWVERTEXES_H
+#include "render/vertexes/imagecollection.h"
+
+#ifdef USE_OPENGL
+#include "render/graphics.h"
+#endif
 
 #include "utils/dtor.h"
 
-#include "render/vertexes/imagevertexes.h"
+#include "debug.h"
 
-#include "localconsts.h"
-
-typedef std::vector<ImageVertexes*> MapRowImages;
-
-class MapRowVertexes final
+ImageCollection::ImageCollection() :
+#ifdef USE_OPENGL
+    currentGLImage(0),
+#endif
+    currentImage(nullptr),
+    currentVert(nullptr),
+    draws()
 {
-    public:
-        MapRowVertexes() :
-            images()
-        {
-            images.reserve(30);
-        }
+}
 
-        A_DELETE_COPY(MapRowVertexes)
+ImageCollection::~ImageCollection()
+{
+    clear();
+}
 
-        ~MapRowVertexes()
-        {
-            delete_all(images);
-            images.clear();
-        }
+void ImageCollection::clear() restrict2
+{
+#ifdef USE_OPENGL
+    currentGLImage = 0;
+#endif
+    currentImage = nullptr;
+    currentVert = nullptr;
 
-        MapRowImages images;
-};
-
-#endif  // RESOURCES_MAP_MAPROWVERTEXES_H
+    delete_all(draws);
+    draws.clear();
+}

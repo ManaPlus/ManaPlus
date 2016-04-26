@@ -41,7 +41,7 @@
 
 #include "gui/windows/chatwindow.h"
 
-#include "render/vertexes/graphicsvertexes.h"
+#include "render/vertexes/imagecollection.h"
 
 #include "resources/image.h"
 

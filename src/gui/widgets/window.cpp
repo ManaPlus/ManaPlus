@@ -93,7 +93,7 @@
 
 #include "render/renderers.h"
 
-#include "render/vertexes/graphicsvertexes.h"
+#include "render/vertexes/imagecollection.h"
 
 #include "utils/delete2.h"
 

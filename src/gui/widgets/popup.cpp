@@ -32,7 +32,7 @@
 
 #include "render/graphics.h"
 
-#include "render/vertexes/graphicsvertexes.h"
+#include "render/vertexes/imagecollection.h"
 
 #include "debug.h"
 

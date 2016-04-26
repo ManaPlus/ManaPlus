@@ -32,7 +32,7 @@
 
 #include "utils/sdlpixel.h"
 
-#include "render/vertexes/graphicsvertexes.h"
+#include "render/vertexes/imagecollection.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

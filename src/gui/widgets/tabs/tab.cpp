@@ -73,7 +73,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/tabbedarea.h"
 
-#include "render/vertexes/graphicsvertexes.h"
+#include "render/vertexes/imagecollection.h"
 
 #include "resources/image.h"
 #include "resources/imagerect.h"

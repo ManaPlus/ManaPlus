@@ -59,7 +59,7 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "render/vertexes/graphicsvertexes.h"
+#include "render/vertexes/imagecollection.h"
 
 #include "resources/iteminfo.h"
 

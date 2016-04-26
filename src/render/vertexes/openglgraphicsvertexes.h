@@ -18,14 +18,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GRAPHICSVERTEXES_H
-#define GRAPHICSVERTEXES_H
-
-#include "main.h"
-
-#include "resources/rect/doublerect.h"
+#ifndef RENDER_VERTEXES_OPENGLGRAPHICSVERTEXES_H
+#define RENDER_VERTEXES_OPENGLGRAPHICSVERTEXES_H
 
 #ifdef USE_OPENGL
+
+#include "main.h"
 
 #ifdef ANDROID
 #include <GLES/gl.h>
@@ -108,53 +106,8 @@ class OpenGLGraphicsVertexes final
         std::vector<GLint*> mIntTexPool;
         std::vector<GLuint> mVbo;
 };
-#endif
 
-typedef std::vector<DoubleRect*> DoubleRects;
-
-class ImageVertexes final
-{
-    public:
-        ImageVertexes();
-
-        A_DELETE_COPY(ImageVertexes)
-
-        ~ImageVertexes();
-
-        const Image *restrict image;
-#ifdef USE_OPENGL
-        OpenGLGraphicsVertexes ogl;
-#endif
-        DoubleRects sdl;
-};
-
-typedef std::vector<ImageVertexes*> ImageVertexesVector;
-typedef ImageVertexesVector::iterator ImageCollectionIter;
-typedef ImageVertexesVector::const_iterator ImageCollectionCIter;
-
-class ImageCollection final
-{
-    public:
-        ImageCollection();
-
-        A_DELETE_COPY(ImageCollection)
-
-        ~ImageCollection();
-
-        void clear() restrict2;
-
-#ifdef USE_OPENGL
-        GLuint currentGLImage;
-#endif
-        const Image *restrict currentImage;
-
-        ImageVertexes *restrict currentVert;
-
-        ImageVertexesVector draws;
-};
-
-#ifdef USE_OPENGL
 extern unsigned int vertexBufSize;
-#endif
+#endif  // USE_OPENGL
 
-#endif  // GRAPHICSVERTEXES_H
+#endif  // RENDER_VERTEXES_OPENGLGRAPHICSVERTEXES_H
