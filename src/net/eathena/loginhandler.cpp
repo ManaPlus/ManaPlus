@@ -25,6 +25,7 @@
 #include "client.h"
 
 #include "net/generalhandler.h"
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "net/eathena/messageout.h"
@@ -99,11 +100,25 @@ void LoginHandler::sendLoginRegister(const std::string &restrict username,
 {
     if (email.empty())
     {
-        createOutPacket(CMSG_LOGIN_REGISTER);
-        outMsg.writeInt32(20, "client version");
-        outMsg.writeString(username, 24, "login");
-        outMsg.writeStringNoLog(password, 24, "password");
-        outMsg.writeInt8(0x03, "client type");
+        if (Net::getNetworkType() == ServerType::EATHENA)
+        {
+            createOutPacket(CMSG_LOGIN_REGISTER_HAN);
+            outMsg.writeInt32(20, "client version");
+            outMsg.writeString(username, 24, "login");
+            outMsg.writeStringNoLog(password, 24, "password");
+            outMsg.writeInt8(0x03, "client type");
+            outMsg.writeString("127.0.0.1", 16, "ip address");
+            outMsg.writeString("001122334455", 13, "mac address");
+            outMsg.writeInt8(0, "is gravity id");
+        }
+        else
+        {
+            createOutPacket(CMSG_LOGIN_REGISTER);
+            outMsg.writeInt32(20, "client version");
+            outMsg.writeString(username, 24, "login");
+            outMsg.writeStringNoLog(password, 24, "password");
+            outMsg.writeInt8(0x03, "client type");
+        }
     }
     else
     {
