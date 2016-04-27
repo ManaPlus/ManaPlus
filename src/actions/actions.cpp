@@ -1784,7 +1784,7 @@ impHandler(seen)
     return true;
 }
 
-impHandler0(dumpMemoryUsage)
+impHandler(dumpMemoryUsage)
 {
     if (event.tab)
         memoryManager.printAllMemory(event.tab);
