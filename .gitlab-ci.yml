@@ -111,10 +111,22 @@ gcc-snapshot_sdl2:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
   image: debian:unstable
 
+gcc-6:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh
+  image: debian:unstable
+
 gcc-5_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize.sh
+  image: debian:unstable
+
+gcc-6_sanitize:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sanitize.sh
   image: debian:unstable
 
 gcc_tmwa:
@@ -261,6 +273,12 @@ gcc-5_tests:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_tests.sh
+  image: debian:unstable
+
+gcc-6_tests:
+  stage: test
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh
   image: debian:unstable
 
 gcc-5_lto:
