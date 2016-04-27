@@ -1203,7 +1203,7 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
     if (!dstBeing)
     {
         DEBUGLOGSTR("insible player?");
-        msg.readUInt8("flag?");
+        msg.readInt16("flag?");
         BLOCK_END("BeingRecv::processBeingResurrect")
         return;
     }
@@ -1212,7 +1212,7 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
     if (dstBeing == localPlayer->getTarget())
         localPlayer->stopAttack();
 
-    if (msg.readUInt8("flag?") == 1U)
+    if (msg.readInt16("flag?") == 1)
         dstBeing->setAction(BeingAction::STAND, 0);
     BLOCK_END("BeingRecv::processBeingResurrect")
 }
