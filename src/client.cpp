@@ -1345,6 +1345,9 @@ int Client::gameExec()
                     // lower than the default value
                     theme->setMinimumOpacity(0.8F);
 
+                    settings.login = loginData.username;
+                    WindowManager::updateTitle();
+
                     CREATEWIDGETV(mCurrentDialog, CharSelectDialog,
                         loginData);
 
