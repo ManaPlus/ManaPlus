@@ -117,8 +117,7 @@ export CXXFLAGS="${CXXFLAGS} -Wfree-nonheap-object"
 #export CXXFLAGS="${CXXFLAGS} -Wfunction-elimination"
 export CXXFLAGS="${CXXFLAGS} -Whsa"
 export CXXFLAGS="${CXXFLAGS} -Wignored-qualifiers"
-# +++ failing now. Need enable after package updated
-#export CXXFLAGS="${CXXFLAGS} -Wignored-attributes"
+export CXXFLAGS="${CXXFLAGS} -Wignored-attributes"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit"
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-function-declaration"
