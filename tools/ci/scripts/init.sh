@@ -52,7 +52,7 @@ function aptget_install {
 function check_error {
     if [ "$1" != 0 ]; then
         cat $ERRFILE
-        exit $result
+        exit $1
     fi
 }
 
