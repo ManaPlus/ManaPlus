@@ -381,7 +381,8 @@ void LocalPlayer::setAction(const BeingActionT &action,
 {
     if (action == BeingAction::DEAD)
     {
-        if (!mLastHitFrom.empty())
+        if (!mLastHitFrom.empty() &&
+            !serverFeatures->haveKillerId())
         {
             // TRANSLATORS: chat message after death
             debugMsg(strprintf(_("You were killed by %s."),

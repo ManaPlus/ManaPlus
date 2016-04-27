@@ -293,4 +293,9 @@ bool ServerFeatures::haveMoveWhileSit() const
     return true;
 }
 
+bool ServerFeatures::haveKillerId() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

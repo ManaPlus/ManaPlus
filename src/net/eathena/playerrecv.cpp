@@ -22,6 +22,7 @@
 
 #include "net/eathena/playerrecv.h"
 
+#include "actormanager.h"
 #include "configuration.h"
 #include "notifymanager.h"
 #include "party.h"
@@ -37,9 +38,12 @@
 #include "gui/windows/statuswindow.h"
 #include "gui/windows/whoisonline.h"
 
-#include "net/messagein.h"
+#include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/eathena/sp.h"
+#include "net/messagein.h"
+
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -426,6 +430,30 @@ void PlayerRecv::processDressRoomOpen(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readInt16("view");
+}
+
+void PlayerRecv::processKilledBy(Net::MessageIn &msg)
+{
+    const BeingId id = msg.readBeingId("killer id");
+    Being *const dstBeing = actorManager->findBeing(id);
+    if (id == BeingId_zero)
+    {
+        debugMsg(strprintf(
+            // TRANSLATORS: player killed message
+            _("You were killed by unknown source.")));
+    }
+    else
+    {
+        std::string name;
+        if (dstBeing)
+            name = dstBeing->getName();
+        else
+            name = strprintf("?%u", CAST_U32(id));
+        debugMsg(strprintf(
+            // TRANSLATORS: player killed message
+            _("You were killed by %s."),
+            name.c_str()));
+    }
 }
 
 }  // namespace EAthena

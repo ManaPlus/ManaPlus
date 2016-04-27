@@ -295,4 +295,9 @@ bool ServerFeatures::haveMoveWhileSit() const
     return serverVersion > 0;
 }
 
+bool ServerFeatures::haveKillerId() const
+{
+    return serverVersion >= 14;
+}
+
 }  // namespace EAthena
