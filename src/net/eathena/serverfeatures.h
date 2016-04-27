@@ -137,6 +137,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveFamily() const override final;
 
         bool haveMoveWhileSit() const override final;
+
+        bool haveKillerId() const override final;
 };
 
 }  // namespace EAthena

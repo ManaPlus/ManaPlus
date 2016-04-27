@@ -134,6 +134,8 @@ class ServerFeatures notfinal
         virtual bool haveFamily() const = 0;
 
         virtual bool haveMoveWhileSit() const = 0;
+
+        virtual bool haveKillerId() const = 0;
 };
 
 }  // namespace Net
