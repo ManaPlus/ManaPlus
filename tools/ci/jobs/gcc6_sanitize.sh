@@ -19,7 +19,7 @@ export CXXFLAGS="-pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment \
 -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow \
 -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool \
--fsanitize=enum -fsanitize=vptr \
+-fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict \
 -std=gnu++1z -Wformat=1"
 
 source ./tools/ci/flags/gcc6.sh
