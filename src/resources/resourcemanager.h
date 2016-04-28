@@ -124,17 +124,6 @@ class ResourceManager final : public MemoryCounter
                                const int variant) A_WARN_UNUSED;
 
         /**
-         * Loads a resource from a file and adds it to the resource map.
-         *
-         * @param path The file name.
-         * @param fun  A function for parsing the file.
-         * @return A valid resource or <code>NULL</code> if the resource could
-         *         not be loaded.
-         */
-        Resource *load(const std::string &path,
-                       const loader fun) A_WARN_UNUSED;
-
-        /**
          * Adds a preformatted resource to the resource map.
          *
          * @param path The file name.

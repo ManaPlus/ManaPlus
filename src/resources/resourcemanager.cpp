@@ -542,20 +542,16 @@ struct ResourceLoader final
     }
 };
 
-Resource *ResourceManager::load(const std::string &path, const loader fun)
-{
-    ResourceLoader rl = { this, path, fun };
-    return get(path, ResourceLoader::load, &rl);
-}
-
 SDLMusic *ResourceManager::getMusic(const std::string &idPath)
 {
-    return static_cast<SDLMusic*>(load(idPath, &SDLMusic::load));
+    ResourceLoader rl = { this, idPath, &SDLMusic::load };
+    return static_cast<SDLMusic*>(get(idPath, ResourceLoader::load, &rl));
 }
 
 SoundEffect *ResourceManager::getSoundEffect(const std::string &idPath)
 {
-    return static_cast<SoundEffect*>(load(idPath, &SoundEffect::load));
+    ResourceLoader rl = { this, idPath, &SoundEffect::load };
+    return static_cast<SoundEffect*>(get(idPath, ResourceLoader::load, &rl));
 }
 
 struct DyedImageLoader final
