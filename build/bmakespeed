@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cd ..
 
@@ -9,11 +9,15 @@ export CXX=g++
 
 export LANG=C
 
-export CXXFLAGS="-ggdb3 -O5 -pipe -ffast-math \
--funswitch-loops -pedantic -Wall \
--D_FORTIFY_SOURCE=2 -Wc++11-compat -std=c++0x \
+export CXXFLAGS="-pedantic -ggdb3 -O5 -pipe -ffast-math \
+-funswitch-loops \
+-D_FORTIFY_SOURCE=2 \
 -funsafe-loop-optimizations -flto -fwhole-program \
--march=native -fsched-pressure"
+-march=native -fsched-pressure
+-std=gnu++1z \
+-fno-var-tracking"
+
+source ./build/gcc6flags.sh
 
 autoreconf -i
 ./configure --prefix=$dir/run \
