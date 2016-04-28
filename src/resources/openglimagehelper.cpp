@@ -103,12 +103,12 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         }
     }
 
-    Image *const image = load(surf);
+    Image *const image = loadSurface(surf);
     MSDL_FreeSurface(surf);
     return image;
 }
 
-Image *OpenGLImageHelper::load(SDL_Surface *const tmpImage)
+Image *OpenGLImageHelper::loadSurface(SDL_Surface *const tmpImage)
 {
     return glLoad(tmpImage);
 }

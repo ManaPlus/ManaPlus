@@ -257,7 +257,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     }
     BLOCK_END("AtlasManager::createSDLAtlas create surface")
 
-    Image *image = imageHelper->load(surface);
+    Image *image = imageHelper->loadSurface(surface);
 
     // drawing SDL images to surface
     FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
@@ -282,7 +282,8 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 
     if (oldImage->mSDLSurface)
     {
-        atlas->atlasImage = imageHelper->load(atlas->atlasImage->mSDLSurface);
+        atlas->atlasImage = imageHelper->loadSurface(
+            atlas->atlasImage->mSDLSurface);
         oldImage->decRef();
     }
 

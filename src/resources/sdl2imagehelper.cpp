@@ -45,7 +45,7 @@ bool SDLImageHelper::mEnableAlphaCache = false;
 SDL_Renderer *SDLImageHelper::mRenderer = nullptr;
 #endif
 
-Image *SDLImageHelper::load(SDL_Surface *const tmpImage)
+Image *SDLImageHelper::loadSurface(SDL_Surface *const tmpImage)
 {
     return _SDLload(tmpImage);
 }

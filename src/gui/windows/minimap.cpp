@@ -162,7 +162,7 @@ void Minimap::setMap(const Map *const map)
 
             SDL_UnlockSurface(surface);
 
-            mMapImage = imageHelper->load(surface);
+            mMapImage = imageHelper->loadSurface(surface);
             mMapImage->setAlpha(settings.guiAlpha);
             mCustomMapImage = true;
             MSDL_FreeSurface(surface);

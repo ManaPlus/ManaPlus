@@ -428,7 +428,7 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
         // and about freeing the given SDL_surface*.
         if (scaledSurface)
         {
-            scaledImage = imageHelper->load(scaledSurface);
+            scaledImage = imageHelper->loadSurface(scaledSurface);
             MSDL_FreeSurface(scaledSurface);
         }
     }

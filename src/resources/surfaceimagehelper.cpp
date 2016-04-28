@@ -41,7 +41,7 @@
 
 bool SurfaceImageHelper::mEnableAlphaCache = false;
 
-Image *SurfaceImageHelper::load(SDL_Surface *const tmpImage)
+Image *SurfaceImageHelper::loadSurface(SDL_Surface *const tmpImage)
 {
     return _SDLload(tmpImage);
 }

@@ -83,8 +83,8 @@ class OpenGLImageHelper final : public ImageHelper
         /**
          * Loads an image from an SDL surface.
          */
-        Image *load(SDL_Surface *const tmpImage)
-                    override final A_WARN_UNUSED;
+        Image *loadSurface(SDL_Surface *const tmpImage) override final
+                           A_WARN_UNUSED;
 
         Image *createTextSurface(SDL_Surface *const tmpImage,
                                  const int width, const int height,

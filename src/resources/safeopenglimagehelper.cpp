@@ -101,12 +101,12 @@ Image *SafeOpenGLImageHelper::load(SDL_RWops *const rw,
         }
     }
 
-    Image *const image = load(surf);
+    Image *const image = loadSurface(surf);
     MSDL_FreeSurface(surf);
     return image;
 }
 
-Image *SafeOpenGLImageHelper::load(SDL_Surface *const tmpImage)
+Image *SafeOpenGLImageHelper::loadSurface(SDL_Surface *const tmpImage)
 {
     return glLoad(tmpImage);
 }

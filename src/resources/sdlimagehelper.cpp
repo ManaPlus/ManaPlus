@@ -102,12 +102,12 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         }
     }
 
-    Image *const image = load(surf);
+    Image *const image = loadSurface(surf);
     MSDL_FreeSurface(surf);
     return image;
 }
 
-Image *SDLImageHelper::load(SDL_Surface *const tmpImage)
+Image *SDLImageHelper::loadSurface(SDL_Surface *const tmpImage)
 {
     return _SDLload(tmpImage);
 }

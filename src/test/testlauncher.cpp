@@ -326,7 +326,7 @@ int TestLauncher::testTextures()
             pixels[f] = bytes1[f];
         graphicsManager.getLastError();
         graphicsManager.resetCachedError();
-        Image *const image = imageHelper->load(surface);
+        Image *const image = imageHelper->loadSurface(surface);
         SDL_FreeSurface(surface);
         if (!image)
             break;

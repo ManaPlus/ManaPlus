@@ -42,7 +42,7 @@
 bool SDL2SoftwareImageHelper::mEnableAlphaCache = false;
 SDL_PixelFormat *SDL2SoftwareImageHelper::mFormat = nullptr;
 
-Image *SDL2SoftwareImageHelper::load(SDL_Surface *const tmpImage)
+Image *SDL2SoftwareImageHelper::loadSurface(SDL_Surface *const tmpImage)
 {
     return _SDLload(tmpImage);
 }

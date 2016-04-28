@@ -375,12 +375,12 @@ void CompoundSprite::redraw() const
     delete mImage;
     delete mAlphaImage;
 
-    mImage = imageHelper->load(surface);
+    mImage = imageHelper->loadSurface(surface);
     MSDL_FreeSurface(surface);
 
     if (ImageHelper::mEnableAlpha)
     {
-        mAlphaImage = imageHelper->load(surfaceA);
+        mAlphaImage = imageHelper->loadSurface(surfaceA);
         MSDL_FreeSurface(surfaceA);
     }
     else

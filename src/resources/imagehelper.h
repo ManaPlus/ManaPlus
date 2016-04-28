@@ -59,16 +59,17 @@ class ImageHelper notfinal
         virtual Image *load(SDL_RWops *const rw, Dye const &dye) A_WARN_UNUSED;
 
 #ifdef __GNUC__
-        virtual Image *load(SDL_Surface *const) A_WARN_UNUSED = 0;
+        virtual Image *loadSurface(SDL_Surface *const) A_WARN_UNUSED = 0;
 
         virtual Image *createTextSurface(SDL_Surface *const tmpImage,
                                          const int width, const int height,
                                          float alpha) A_WARN_UNUSED = 0;
 #else
-        virtual Image *load(SDL_Surface *) A_WARN_UNUSED
+        virtual Image *loadSurface(SDL_Surface *const) A_WARN_UNUSED
         { return nullptr; }
 
         virtual Image *createTextSurface(SDL_Surface *const tmpImage,
+                                         const int width, const int height,
                                          const float alpha) const A_WARN_UNUSED
         { return nullptr; }
 #endif

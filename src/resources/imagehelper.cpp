@@ -48,7 +48,7 @@ Image *ImageHelper::load(SDL_RWops *const rw)
         return nullptr;
     }
 
-    Image *const image = load(tmpImage);
+    Image *const image = loadSurface(tmpImage);
 
     MSDL_FreeSurface(tmpImage);
     return image;
@@ -116,7 +116,7 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         }
     }
 
-    Image *const image = load(surf);
+    Image *const image = loadSurface(surf);
     MSDL_FreeSurface(surf);
     BLOCK_END("ImageHelper::load")
     return image;
