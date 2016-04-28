@@ -17,7 +17,7 @@ export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \
 -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment \
 -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow \
 -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool \
--fsanitize=enum -fsanitize=vptr \
+-fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict \
 -std=gnu++1z \
 -fno-var-tracking"
 
