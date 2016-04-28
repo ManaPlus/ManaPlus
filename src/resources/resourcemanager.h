@@ -259,6 +259,9 @@ class ResourceManager final : public MemoryCounter
 
         int calcMemoryChilds(const int level) const override final;
 
+        std::string getCounterName() const override final
+        { return "ResourceManager"; }
+
         static void init();
 
     private:

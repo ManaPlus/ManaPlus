@@ -21,6 +21,8 @@
 #ifndef MEMORYMANAGER_H
 #define MEMORYMANAGER_H
 
+#include <string>
+
 #include "localconsts.h"
 
 class ChatTab;
@@ -39,7 +41,8 @@ class MemoryManager final
 
         int getSurfaceSize(const SDL_Surface *const surface);
 
-        void printMemory(const int level,
+        void printMemory(const std::string &name,
+                         const int level,
                          const int localSum,
                          const int childsSum);
 

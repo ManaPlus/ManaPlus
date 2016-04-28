@@ -55,13 +55,15 @@ int MemoryManager::getSurfaceSize(const SDL_Surface *const surface)
         10;
 }
 
-void MemoryManager::printMemory(const int level,
+void MemoryManager::printMemory(const std::string &name,
+                                const int level,
                                 const int localSum,
                                 const int childsSum)
 {
     std::string str(level, ' ');
-    logger->log("%s%d = %d + %d",
+    logger->log("%s%s: %d = %d + %d",
         str.c_str(),
+        name.c_str(),
         localSum + childsSum,
         localSum,
         childsSum);

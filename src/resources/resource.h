@@ -101,6 +101,9 @@ class Resource notfinal : public MemoryCounter
 
         int calcMemoryLocal() const override;
 
+        std::string getCounterName() const override
+        { return mIdPath + "-" + mSource; }
+
 #ifdef DEBUG_DUMP_LEAKS
         bool getDumped() const A_WARN_UNUSED
         { return mDumped; }

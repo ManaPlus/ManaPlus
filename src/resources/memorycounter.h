@@ -21,6 +21,8 @@
 #ifndef RESOURCES_MEMORYCOUNTER_H
 #define RESOURCES_MEMORYCOUNTER_H
 
+#include <string>
+
 #include "localconsts.h"
 
 class MemoryCounter notfinal
@@ -36,6 +38,9 @@ class MemoryCounter notfinal
         virtual int calcMemoryLocal() const;
 
         virtual int calcMemoryChilds(const int level) const;
+
+        virtual std::string getCounterName() const
+        { return "unknown"; }
 };
 
 #endif  // RESOURCES_MEMORYCOUNTER_H
