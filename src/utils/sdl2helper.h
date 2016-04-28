@@ -24,6 +24,10 @@
 #ifdef USE_SDL2
 #include "utils/stringvector.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wswitch-default"
+#include <SDL_stdinc.h>
+#pragma GCC diagnostic pop
 #include <SDL_thread.h>
 
 #include "localconsts.h"

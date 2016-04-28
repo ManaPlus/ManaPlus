@@ -25,6 +25,14 @@
 
 #include "main.h"
 
+#ifdef USE_SDL2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wswitch-default"
+#endif
+#include <SDL_stdinc.h>
+#ifdef USE_SDL2
+#pragma GCC diagnostic pop
+#endif
 #include <SDL_mutex.h>
 
 #include <fstream>

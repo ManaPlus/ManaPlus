@@ -18,21 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <SDL_version.h>
-
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-#ifndef USE_SDL2
-#warning using SDL2 headers but configure set to use SDL1.2
-#warning please add configure flag --with-sdl2
-#define USE_SDL2
-#endif
-#else
-#ifdef USE_SDL2
-#error using SDL1.2 headers but configure set to use SDL2
-#error please remove configure flag --with-sdl2
-#endif
-#endif
-
 #define CAST_8 static_cast<char>
 #define CAST_S8 static_cast<int8_t>
 #define CAST_U8 static_cast<uint8_t>
@@ -236,6 +221,28 @@
 #define CHECKLISTENERS
 
 #endif  // ENABLE_CHECKS
+
+#ifdef USE_SDL2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wswitch-default"
+#endif
+#include <SDL_version.h>
+#ifdef USE_SDL2
+#pragma GCC diagnostic pop
+#endif
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+#ifndef USE_SDL2
+#warning using SDL2 headers but configure set to use SDL1.2
+#warning please add configure flag --with-sdl2
+#define USE_SDL2
+#endif
+#else
+#ifdef USE_SDL2
+#error using SDL1.2 headers but configure set to use SDL2
+#error please remove configure flag --with-sdl2
+#endif
+#endif
 
 // #define DEBUG_CONFIG 1
 // #define DEBUG_BIND_TEXTURE 1

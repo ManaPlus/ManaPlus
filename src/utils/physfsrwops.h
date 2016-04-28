@@ -25,6 +25,14 @@
 #ifndef UTILS_PHYSFSRWOPS_H
 #define UTILS_PHYSFSRWOPS_H
 
+#ifdef USE_SDL2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wswitch-default"
+#endif
+#include <SDL_stdinc.h>
+#ifdef USE_SDL2
+#pragma GCC diagnostic pop
+#endif
 #include <SDL_rwops.h>
 
 #include "utils/physfstools.h"
