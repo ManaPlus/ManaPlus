@@ -1745,6 +1745,7 @@ int Map::calcMemoryChilds(const int level) const
         mTempLayer->calcMemory(level + 1);
     if (mObjects)
         mObjects->calcMemory(level + 1);
-    // +++ need calc mHeights
+    if (mHeights)
+        mHeights->calcMemory(level + 1);
     return sz;
 }

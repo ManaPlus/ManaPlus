@@ -21,9 +21,11 @@
 #ifndef RESOURCES_MAP_MAPHEIGHTS_H
 #define RESOURCES_MAP_MAPHEIGHTS_H
 
+#include "resources/memorycounter.h"
+
 #include "localconsts.h"
 
-class MapHeights final
+class MapHeights final : public MemoryCounter
 {
     public:
         friend class Map;
@@ -39,6 +41,11 @@ class MapHeights final
         uint8_t getHeight(const int x, const int y) const
         { return x < mWidth && y < mHeight ? mTiles[x + y * mWidth]
             : CAST_U8(0U); }
+
+        int calcMemoryLocal() const override final;
+
+        std::string getCounterName() const override final
+        { return "heights leyer"; }
 
     private:
         int mWidth;

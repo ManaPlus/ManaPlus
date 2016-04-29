@@ -39,3 +39,9 @@ void MapHeights::setHeight(const int x, const int y, const uint8_t height)
 {
     mTiles[x + y * mWidth] = height;
 }
+
+int MapHeights::calcMemoryLocal() const
+{
+    return sizeof(MapHeights) +
+        mWidth * mHeight;
+}
