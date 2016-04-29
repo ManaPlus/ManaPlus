@@ -63,7 +63,8 @@ class MapLayer final: public MemoryCounter, public ConfigListener
          * fringe layer. The fringe layer is the layer that draws the actors.
          * There can be only one fringe layer per map.
          */
-        MapLayer(const int x,
+        MapLayer(const std::string &name,
+                 const int x,
                  const int y,
                  const int width,
                  const int height,
@@ -168,6 +169,9 @@ class MapLayer final: public MemoryCounter, public ConfigListener
 
         int calcMemoryChilds(const int level) const override final;
 
+        std::string getCounterName() const override final
+        { return mName; }
+
     protected:
         static int getTileDrawWidth(const TileInfo *restrict img,
                                     const int endX,
@@ -188,6 +192,7 @@ class MapLayer final: public MemoryCounter, public ConfigListener
         MapTypeT mDrawLayerFlags;
         const SpecialLayer *restrict mSpecialLayer;
         const SpecialLayer *restrict mTempLayer;
+        const std::string mName;
         typedef std::vector<MapRowVertexes*> MapRows;
         MapRows mTempRows;
         int mMask;

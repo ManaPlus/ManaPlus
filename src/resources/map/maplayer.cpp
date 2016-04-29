@@ -46,7 +46,8 @@
 
 #include "debug.h"
 
-MapLayer::MapLayer(const int x,
+MapLayer::MapLayer(const std::string &name,
+                   const int x,
                    const int y,
                    const int width,
                    const int height,
@@ -63,6 +64,7 @@ MapLayer::MapLayer(const int x,
     mDrawLayerFlags(MapType::NORMAL),
     mSpecialLayer(nullptr),
     mTempLayer(nullptr),
+    mName(name),
     mTempRows(),
     mMask(mask),
     mTileCondition(tileCondition),

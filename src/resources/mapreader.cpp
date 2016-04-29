@@ -896,7 +896,8 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
         {
             case MapLayer::TILES:
             {
-                layer = new MapLayer(offsetX, offsetY,
+                layer = new MapLayer(name,
+                    offsetX, offsetY,
                     w, h,
                     isFringeLayer,
                     mask,
@@ -1177,9 +1178,19 @@ Map *MapReader::createEmptyMap(const std::string &restrict filename,
     map->setProperty("_realfilename", filename);
     updateMusic(map);
     map->setCustom(true);
-    MapLayer *layer = new MapLayer(0, 0, 300, 300, false, 1, -1);
+    MapLayer *layer = new MapLayer("nolayer",
+        0, 0,
+        300, 300,
+        false,
+        1,
+        -1);
     map->addLayer(layer);
-    layer = new MapLayer(0, 0, 300, 300, true, 1, -1);
+    layer = new MapLayer("nolayer",
+        0, 0,
+        300, 300,
+        true,
+        1,
+        -1);
     map->addLayer(layer);
     map->updateDrawLayersList();
 
