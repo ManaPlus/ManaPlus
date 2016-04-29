@@ -79,7 +79,6 @@ void reportStack(const char *const file,
         logger->log1(strings[i]);
     free(strings);
 #endif  // defined __linux__ || defined __linux
-
 }
 
 #endif  // ENABLE_ASSERTS
