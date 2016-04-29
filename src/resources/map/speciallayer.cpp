@@ -30,10 +30,13 @@
 
 #include "debug.h"
 
-SpecialLayer::SpecialLayer(const int width, const int height) :
+SpecialLayer::SpecialLayer(const std::string &name,
+                           const int width,
+                           const int height) :
+    mName(name),
+    mTiles(new MapItem*[width * height]),
     mWidth(width),
-    mHeight(height),
-    mTiles(new MapItem*[mWidth * mHeight])
+    mHeight(height)
 {
     std::fill_n(mTiles, mWidth * mHeight, static_cast<MapItem*>(nullptr));
 }

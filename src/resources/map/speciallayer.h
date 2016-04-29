@@ -36,7 +36,9 @@ class SpecialLayer final : public MemoryCounter
         friend class Map;
         friend class MapLayer;
 
-        SpecialLayer(const int width, const int height);
+        SpecialLayer(const std::string &name,
+                     const int width,
+                     const int height);
 
         A_DELETE_COPY(SpecialLayer)
 
@@ -59,10 +61,14 @@ class SpecialLayer final : public MemoryCounter
 
         int calcMemoryLocal() const override final;
 
+        std::string getCounterName() const override final
+        { return mName; }
+
     private:
+        const std::string mName;
+        MapItem **mTiles;
         int mWidth;
         int mHeight;
-        MapItem **mTiles;
 };
 
 #endif  // RESOURCES_MAP_SPECIALLAYER_H
