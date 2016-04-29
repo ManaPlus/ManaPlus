@@ -82,8 +82,11 @@ class ActorFunctuator final
         }
 } actorCompare;
 
-Map::Map(const int width, const int height,
-         const int tileWidth, const int tileHeight) :
+Map::Map(const std::string &name,
+         const int width,
+         const int height,
+         const int tileWidth,
+         const int tileHeight) :
     Properties(),
     mWidth(width), mHeight(height),
     mTileWidth(tileWidth), mTileHeight(tileHeight),
@@ -106,6 +109,7 @@ Map::Map(const int width, const int height,
     mParticleEffects(),
     mMapPortals(),
     mTileAnimations(),
+    mName(name),
     mOverlayDetail(config.getIntValue("OverlayDetail")),
     mOpacity(config.getFloatValue("guialpha")),
 #ifdef USE_OPENGL
@@ -1689,4 +1693,47 @@ void Map::updateConditionLayers() restrict2
         layer->updateConditionTiles(mMetaTiles,
             mWidth, mHeight);
     }
+}
+
+int Map::calcMemoryLocal() const
+{
+    return sizeof(Map) +
+        mName.capacity() +
+        sizeof(MetaTile) * mWidth * mHeight +
+        sizeof(MapLayer*) * (mLayers.capacity() +
+        mDrawUnderLayers.capacity() +
+        mDrawOverLayers.capacity()) +
+        sizeof(Tileset*) * mTilesets.capacity() +
+        sizeof(Actor*) * mActors.size() +
+        sizeof(AmbientLayer*) * (mBackgrounds.capacity()
+        + mForegrounds.capacity()) +
+        sizeof(ParticleEffectData) * mParticleEffects.capacity() +
+        sizeof(MapItem) * mMapPortals.capacity() +
+        (sizeof(TileAnimation) + sizeof(int)) * mTileAnimations.size() +
+        sizeof(Tileset*) * mIndexedTilesetsSize;
+}
+
+int Map::calcMemoryChilds(const int level) const
+{
+    int sz = 0;
+
+    if (mWalkLayer)
+        sz += mWalkLayer->calcMemory(level + 1);
+    FOR_EACH (LayersCIter, it, mLayers)
+    {
+        sz += (*it)->calcMemory(level + 1);
+    }
+    FOR_EACH (Tilesets::const_iterator, it, mTilesets)
+    {
+        sz += (*it)->calcMemory(level + 1);
+    }
+    // +++ need calc mBackgrounds
+    // +++ need calc mForegrounds
+    if (mSpecialLayer)
+        mSpecialLayer->calcMemory(level + 1);
+    if (mTempLayer)
+        mTempLayer->calcMemory(level + 1);
+    // +++ need calc mObjects
+    // +++ need calc mHeights
+    return sz;
 }

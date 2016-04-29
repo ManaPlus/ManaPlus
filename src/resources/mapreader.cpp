@@ -333,7 +333,9 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     logger->log("loading replace layer list");
     loadLayers(path + "_replace.d");
 
-    Map *const map = new Map(w, h, tilew, tileh);
+    Map *const map = new Map(path,
+        w, h,
+        tilew, tileh);
 
     const std::string fileName = path.substr(path.rfind("/") + 1);
     map->setProperty("shortName", fileName);
@@ -1173,7 +1175,9 @@ Map *MapReader::createEmptyMap(const std::string &restrict filename,
                                const std::string &restrict realFilename)
 {
     logger->log1("Creating empty map");
-    Map *const map = new Map(300, 300, mapTileSize, mapTileSize);
+    Map *const map = new Map("empty map",
+        300, 300,
+        mapTileSize, mapTileSize);
     map->setProperty("_filename", realFilename);
     map->setProperty("_realfilename", filename);
     updateMusic(map);

@@ -33,6 +33,8 @@
 #include "enums/resources/map/blocktype.h"
 #include "enums/resources/map/maptype.h"
 
+#include "resources/memorycounter.h"
+
 #include "resources/map/properties.h"
 
 #include "listeners/configlistener.h"
@@ -63,7 +65,9 @@ typedef AmbientLayerVector::iterator AmbientLayerVectorIter;
 /**
  * A tile map.
  */
-class Map final : public Properties, public ConfigListener
+class Map final : public Properties,
+                  public ConfigListener,
+                  public MemoryCounter
 {
     public:
         enum CollisionTypes
@@ -79,8 +83,11 @@ class Map final : public Properties, public ConfigListener
         /**
          * Constructor, taking map and tile size as parameters.
          */
-        Map(const int width, const int height,
-            const int tileWidth, const int tileHeight);
+        Map(const std::string &name,
+            const int width,
+            const int height,
+            const int tileWidth,
+            const int tileHeight);
 
         A_DELETE_COPY(Map)
 
@@ -361,6 +368,13 @@ class Map final : public Properties, public ConfigListener
 
         void updateConditionLayers() restrict2;
 
+        int calcMemoryLocal() const override final;
+
+        int calcMemoryChilds(const int level) const override final;
+
+        std::string getCounterName() const override final
+        { return mName; }
+
     protected:
         friend class Actor;
         friend class Minimap;
@@ -456,6 +470,7 @@ class Map final : public Properties, public ConfigListener
 
         std::map<int, TileAnimation*> mTileAnimations;
 
+        std::string mName;
         int mOverlayDetail;
         float mOpacity;
         const RenderType mOpenGL;
