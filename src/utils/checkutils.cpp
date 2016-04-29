@@ -24,6 +24,10 @@
 
 #include "logger.h"
 
+#if defined __linux__ || defined __linux
+#include <execinfo.h>
+#endif  // defined __linux__ || defined __linux
+
 #include "debug.h"
 
 bool reportFalseReal(const bool val, const char *const file,
@@ -40,6 +44,36 @@ bool reportTrueReal(const bool val, const char *const file,
     if (val)
         logger->log("Debug: true value at %s:%u", file, line);
     return val;
+}
+
+void reportStack(const char *const file,
+                 const unsigned int line,
+                 const char *const func,
+                 const char *const name,
+                 const char *const text)
+{
+#if defined __linux__ || defined __linux
+    void *array[15];
+    int size;
+    char **strings;
+    int i;
+#endif  // defined __linux__ || defined __linux
+
+    logger->log("--- %s --------------------------------------------",
+        name);
+    logger->log("%s:%u: '%s' in function `%s'",
+        file,
+        line,
+        text,
+        func);
+#if defined __linux__ || defined __linux
+    size = (int)backtrace(array, 15);
+    strings = backtrace_symbols(array, size);
+    for (i = 0; i < size; i++)
+        logger->log1(strings[i]);
+    free(strings);
+#endif  // defined __linux__ || defined __linux
+
 }
 
 #endif  // ENABLE_ASSERTS

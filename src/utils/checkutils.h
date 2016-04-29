@@ -35,6 +35,12 @@ bool reportFalseReal(const bool val, const char *const file,
 bool reportTrueReal(const bool val, const char *const file,
                     const unsigned line);
 
+void reportStack(const char *const file,
+                 const unsigned int line,
+                 const char *const func,
+                 const char *const name,
+                 const char *const text);
+
 #else  // ENABLE_ASSERTS
 
 #define reportFalse(val) (val)
