@@ -281,10 +281,10 @@ gcc-6_tests:
   - ./tools/ci/jobs/gcc6_tests.sh
   image: debian:unstable
 
-gcc-5_lto:
+gcc-6_lto:
   stage: test
   script:
-  - ./tools/ci/jobs/gcc5_lto.sh
+  - ./tools/ci/jobs/gcc6_lto.sh
   image: debian:unstable
 
 gcc-5_sanitize_tests:
