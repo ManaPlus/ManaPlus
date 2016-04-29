@@ -17,6 +17,19 @@ esac],[werror_enabled=false])
 
 AM_CONDITIONAL(ENABLE_WERROR, test x$werror_enabled = xtrue)
 
+# Enable asserts
+AC_ARG_ENABLE(asserts,
+[  --enable-asserts    Enable asserts in log],
+[case "${enableval}" in
+  yes) asserts_enabled=true
+ ;;
+  no)  asserts_enabled=false
+ ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-asserts) ;;
+esac],[asserts_enabled=true])
+
+AM_CONDITIONAL(ENABLE_ASSERTS, test x$asserts_enabled = xtrue)
+
 # Checks for android.
 AC_ARG_ENABLE(androidbuild,
 [  --enable-androidbuild    Turn on android building],

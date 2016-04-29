@@ -18,6 +18,11 @@ manaplus_CXXFLAGS += -Werror
 dyecmd_CXXFLAGS += -Werror
 endif
 
+if ENABLE_ASSERTS
+manaplus_CXXFLAGS += -DENABLE_ASSERTS
+dyecmd_CXXFLAGS += -DENABLE_ASSERTS
+endif
+
 if ENABLE_PUGIXML
 manaplus_CXXFLAGS += -DENABLE_PUGIXML
 dyecmd_CXXFLAGS += -DENABLE_PUGIXML
@@ -1765,6 +1770,9 @@ manaplustests_CXXFLAGS += -DUSE_SDL2
 endif
 if ENABLE_WERROR
 manaplustests_CXXFLAGS += -Werror
+endif
+if ENABLE_ASSERTS
+manaplustests_CXXFLAGS += -DENABLE_ASSERTS
 endif
 
 manaplustests_SOURCES = ${manaplus_SOURCES} \
