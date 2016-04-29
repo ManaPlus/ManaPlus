@@ -50,6 +50,9 @@ struct AtlasItem final : public MemoryCounter
         // +++ here need print, but not add to sum size of image
     }
 
+    std::string getCounterName() const override
+    { return name; }
+
     Image *image;
     std::string name;
     int x;
