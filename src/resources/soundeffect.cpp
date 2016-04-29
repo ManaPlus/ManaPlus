@@ -31,7 +31,8 @@ SoundEffect::~SoundEffect()
     Mix_FreeChunk(mChunk);
 }
 
-Resource *SoundEffect::load(SDL_RWops *const rw)
+Resource *SoundEffect::load(SDL_RWops *const rw,
+                            const std::string &name)
 {
     if (!rw)
         return nullptr;
@@ -40,7 +41,7 @@ Resource *SoundEffect::load(SDL_RWops *const rw)
 
     if (tmpSoundEffect)
     {
-        return new SoundEffect(tmpSoundEffect);
+        return new SoundEffect(tmpSoundEffect, name);
     }
     else
     {

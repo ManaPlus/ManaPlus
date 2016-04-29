@@ -26,8 +26,11 @@
 
 #include "debug.h"
 
-SDLMusic::SDLMusic(Mix_Music *const music, SDL_RWops *const rw) :
+SDLMusic::SDLMusic(Mix_Music *const music,
+                   SDL_RWops *const rw,
+                   const std::string &name) :
     Resource(),
+    mName(name),
     mMusic(music),
     mRw(rw)
 {
@@ -45,18 +48,19 @@ SDLMusic::~SDLMusic()
 #endif
 }
 
-Resource *SDLMusic::load(SDL_RWops *const rw)
+Resource *SDLMusic::load(SDL_RWops *const rw,
+                         const std::string &name)
 {
 #ifdef USE_SDL2
     if (Mix_Music *const music = Mix_LoadMUSType_RW(rw, MUS_OGG, 1))
     {
-        return new SDLMusic(music, nullptr);
+        return new SDLMusic(music, nullptr, name);
     }
 #else
     // Mix_LoadMUSType_RW was added without version changed in SDL1.2 :(
     if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
     {
-        return new SDLMusic(music, rw);
+        return new SDLMusic(music, rw, name);
     }
 #endif
     else

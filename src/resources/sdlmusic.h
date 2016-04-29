@@ -37,6 +37,7 @@ class SDLMusic final : public Resource
     public:
         SDLMusic() :
             Resource(),
+            mName(),
             mMusic(nullptr),
             mRw(nullptr)
         { }
@@ -56,7 +57,8 @@ class SDLMusic final : public Resource
          * @return <code>NULL</code> if the an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(SDL_RWops *const rw) A_WARN_UNUSED;
+        static Resource *load(SDL_RWops *const rw,
+                              const std::string &name) A_WARN_UNUSED;
 
         /**
          * Plays the music.
@@ -72,12 +74,18 @@ class SDLMusic final : public Resource
 
         int calcMemoryLocal() const override final;
 
+        std::string getCounterName() const override final
+        { return mName; }
+
     protected:
         /**
          * Constructor.
          */
-        SDLMusic(Mix_Music *const music, SDL_RWops *const rw);
+        SDLMusic(Mix_Music *const music,
+                 SDL_RWops *const rw,
+                 const std::string &name);
 
+        std::string mName;
         Mix_Music *mMusic;
         SDL_RWops *mRw;
 };

@@ -50,7 +50,8 @@ class SoundEffect final : public Resource
          * @return <code>NULL</code> if the an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(SDL_RWops *const rw);
+        static Resource *load(SDL_RWops *const rw,
+                              const std::string &name);
 
         /**
          * Plays the sample.
@@ -67,15 +68,21 @@ class SoundEffect final : public Resource
 
         int calcMemoryLocal() const override final;
 
+        std::string getCounterName() const override final
+        { return mName; }
+
     protected:
         /**
          * Constructor.
          */
-        explicit SoundEffect(Mix_Chunk *const soundEffect) :
+        SoundEffect(Mix_Chunk *const soundEffect,
+                    const std::string &name) :
             Resource(),
+            mName(name),
             mChunk(soundEffect)
         { }
 
+        std::string mName;
         Mix_Chunk *mChunk;
 };
 

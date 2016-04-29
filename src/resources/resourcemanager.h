@@ -54,7 +54,8 @@ class ResourceManager final : public MemoryCounter
     friend class Resource;
 
     public:
-        typedef Resource *(*loader)(SDL_RWops *rw);
+        typedef Resource *(*loader)(SDL_RWops *rw,
+                                    const std::string &name);
         typedef Resource *(&generator)(const void *const data);
 
         ResourceManager();

@@ -501,7 +501,7 @@ Resource *ResourceManager::get(const std::string &idPath,
         logger->log("Error loading image: " + idPath);
     }
 #else
-    Resource *resource = fun(data);
+    Resource *resource = fun(data, idPath);
 
     if (resource)
     {
@@ -537,7 +537,7 @@ struct ResourceLoader final
         SDL_RWops *const rw = MPHYSFSRWOPS_openRead(rl->path.c_str());
         if (!rw)
             return nullptr;
-        Resource *const res = rl->fun(rw);
+        Resource *const res = rl->fun(rw, rl->path);
         return res;
     }
 };
