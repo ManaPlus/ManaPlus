@@ -61,12 +61,22 @@ void MemoryManager::printMemory(const std::string &name,
                                 const int childsSum)
 {
     std::string str(level, ' ');
-    logger->log("%s%s: %d = %d + %d",
-        str.c_str(),
-        name.c_str(),
-        localSum + childsSum,
-        localSum,
-        childsSum);
+    if (childsSum > 0)
+    {
+        logger->log("%s%s: %d = %d + %d",
+            str.c_str(),
+            name.c_str(),
+            localSum + childsSum,
+            localSum,
+            childsSum);
+    }
+    else
+    {
+        logger->log("%s%s: %d",
+            str.c_str(),
+            name.c_str(),
+            localSum);
+    }
 }
 
 void MemoryManager::printAllMemory(ChatTab *const tab A_DYECMD_UNUSED)
