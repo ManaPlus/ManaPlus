@@ -275,7 +275,7 @@ void SpriteDef::loadAction(const XmlNodePtr node,
             actionName.c_str(), getIdPath().c_str());
         return;
     }
-    Action *const action = new Action;
+    Action *const action = new Action(actionName);
     action->setNumber(hp);
     addAction(hp, actionName, action);
 

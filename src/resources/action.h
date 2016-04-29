@@ -39,7 +39,7 @@ class Animation;
 class Action final : public MemoryCounter
 {
     public:
-        Action() noexcept;
+        Action(const std::string &name) noexcept;
 
         A_DELETE_COPY(Action)
 
@@ -63,12 +63,16 @@ class Action final : public MemoryCounter
 
         int calcMemoryChilds(const int level) const override final;
 
+        std::string getCounterName() const override
+        { return mCounterName; }
+
     protected:
         typedef std::map<SpriteDirection::Type, Animation*> Animations;
         typedef Animations::iterator AnimationIter;
         typedef Animations::const_iterator AnimationCIter;
 
         Animations mAnimations;
+        std::string mCounterName;
         unsigned mNumber;
 };
 

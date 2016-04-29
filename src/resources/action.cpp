@@ -28,9 +28,10 @@
 
 #include "debug.h"
 
-Action::Action() noexcept :
+Action::Action(const std::string &name) noexcept :
     MemoryCounter(),
     mAnimations(),
+    mCounterName(name),
     mNumber(100)
 {
 }
