@@ -71,6 +71,9 @@ struct TextureAtlas final : public MemoryCounter
         return sz;
     }
 
+    std::string getCounterName() const override
+    { return name; }
+
     std::string name;
     Image *atlasImage;
     int width;
