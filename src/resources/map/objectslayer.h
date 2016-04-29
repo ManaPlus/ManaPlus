@@ -21,13 +21,15 @@
 #ifndef RESOURCES_MAP_OBJECTSLAYER_H
 #define RESOURCES_MAP_OBJECTSLAYER_H
 
+#include "resources/memorycounter.h"
+
 #include <string>
 
 #include "localconsts.h"
 
 class MapObjectList;
 
-class ObjectsLayer final
+class ObjectsLayer final : public MemoryCounter
 {
     public:
         ObjectsLayer(const unsigned width, const unsigned height);
@@ -42,6 +44,12 @@ class ObjectsLayer final
 
         MapObjectList *getAt(const unsigned x,
                              const unsigned y) const A_WARN_UNUSED;
+
+        int calcMemoryLocal() const override final;
+
+        std::string getCounterName() const override final
+        { return "objects leyer"; }
+
     private:
         MapObjectList **mTiles;
         unsigned mWidth;

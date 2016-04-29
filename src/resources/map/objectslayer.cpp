@@ -74,3 +74,9 @@ MapObjectList *ObjectsLayer::getAt(const unsigned x, const unsigned y) const
         return nullptr;
     return mTiles[x + y * mWidth];
 }
+
+int ObjectsLayer::calcMemoryLocal() const
+{
+    return sizeof(ObjectsLayer) +
+        (sizeof(MapObjectList) + sizeof(MapObjectList*)) * mWidth * mHeight;
+}

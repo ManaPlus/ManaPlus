@@ -1743,7 +1743,8 @@ int Map::calcMemoryChilds(const int level) const
         mSpecialLayer->calcMemory(level + 1);
     if (mTempLayer)
         mTempLayer->calcMemory(level + 1);
-    // +++ need calc mObjects
+    if (mObjects)
+        mObjects->calcMemory(level + 1);
     // +++ need calc mHeights
     return sz;
 }
