@@ -39,7 +39,7 @@ class Animation;
 class Action final : public MemoryCounter
 {
     public:
-        Action(const std::string &name) noexcept;
+        explicit Action(const std::string &name) noexcept;
 
         A_DELETE_COPY(Action)
 
