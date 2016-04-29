@@ -41,7 +41,7 @@ ProgressIndicator::ProgressIndicator(const Widget2 *const widget) :
 
     if (images)
     {
-        Animation *const anim = new Animation;
+        Animation *const anim = new Animation("progress indicator");
         for (ImageSet::size_type i = 0, fsz = images->size();
              i < fsz;
              ++i)

@@ -49,7 +49,7 @@ SimpleAnimation::SimpleAnimation(Animation *const animation) :
 
 SimpleAnimation::SimpleAnimation(const XmlNodePtr animationNode,
                                  const std::string& dyePalettes) :
-    mAnimation(new Animation),
+    mAnimation(new Animation("simple animation")),
     mAnimationTime(0),
     mAnimationPhase(0),
     mCurrentFrame(nullptr),

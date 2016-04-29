@@ -26,6 +26,14 @@
 
 Animation::Animation() noexcept :
     mFrames(),
+    mName("animation"),
+    mDuration(0)
+{
+}
+
+Animation::Animation(const std::string &name) noexcept :
+    mFrames(),
+    mName(name),
     mDuration(0)
 {
 }

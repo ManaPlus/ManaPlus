@@ -316,7 +316,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
         return;
     }
 
-    Animation *const animation = new Animation;
+    Animation *const animation = new Animation(directionName);
     action->setAnimation(directionType, animation);
 
     // Get animation frames

@@ -1085,7 +1085,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                 const int tileGID = firstGid + XML::getProperty(
                     childNode, "id", 0);
 
-                Animation *ani = new Animation;
+                Animation *ani = new Animation("from map");
 
                 if (isProps)
                 {

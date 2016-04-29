@@ -45,6 +45,8 @@ class Animation final : public MemoryCounter
     public:
         Animation() noexcept;
 
+        explicit Animation(const std::string &name) noexcept;
+
         /**
          * Appends a new animation at the end of the sequence.
          */
@@ -86,6 +88,9 @@ class Animation final : public MemoryCounter
 
         int calcMemoryLocal() const override final;
 
+        std::string getCounterName() const override
+        { return mName; }
+
         /**
          * Determines whether the given animation frame is a terminator.
          */
@@ -93,6 +98,7 @@ class Animation final : public MemoryCounter
 
     protected:
         Frames mFrames;
+        std::string mName;
         int mDuration;
 };
 
