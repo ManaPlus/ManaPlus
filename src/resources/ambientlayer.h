@@ -22,13 +22,15 @@
 #ifndef RESOURCES_AMBIENTLAYER_H
 #define RESOURCES_AMBIENTLAYER_H
 
+#include "resources/memorycounter.h"
+
 #include "localconsts.h"
 
 class Graphics;
 class Image;
 class Map;
 
-class AmbientLayer final
+class AmbientLayer final : public MemoryCounter
 {
     public:
         friend class Map;
@@ -43,7 +45,8 @@ class AmbientLayer final
          * @param keepRatio  rescale the image to keep
          * the same ratio than in 800x600 resolution mode.
          */
-        AmbientLayer(Image *const img,
+        AmbientLayer(const std::string &name,
+                     Image *const img,
                      const float parallax,
                      const float parallaxY,
                      const float posX,
@@ -65,7 +68,13 @@ class AmbientLayer final
                   const int x,
                   const int y) const A_NONNULL(2);
 
+        int calcMemoryLocal() const override;
+
+        std::string getCounterName() const override final
+        { return mName; }
+
     private:
+        const std::string mName;
         Image *mImage;
         float mParallaxX;
         float mParallaxY;

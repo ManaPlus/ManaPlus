@@ -243,7 +243,9 @@ void Map::initializeAmbientLayers() restrict2
             if (!mask)
                 mask = 1;
             const float parallax = getFloatProperty(name + "parallax");
-            mForegrounds.push_back(new AmbientLayer(img,
+            mForegrounds.push_back(new AmbientLayer(
+                name,
+                img,
                 getFloatProperty(name + "parallaxX", parallax),
                 getFloatProperty(name + "parallaxY", parallax),
                 getFloatProperty(name + "posX"),
@@ -273,7 +275,9 @@ void Map::initializeAmbientLayers() restrict2
                 mask = 1;
 
             const float parallax = getFloatProperty(name + "parallax");
-            mBackgrounds.push_back(new AmbientLayer(img,
+            mBackgrounds.push_back(new AmbientLayer(
+                name,
+                img,
                 getFloatProperty(name + "parallaxX", parallax),
                 getFloatProperty(name + "parallaxY", parallax),
                 getFloatProperty(name + "posX"),
@@ -1727,8 +1731,14 @@ int Map::calcMemoryChilds(const int level) const
     {
         sz += (*it)->calcMemory(level + 1);
     }
-    // +++ need calc mBackgrounds
-    // +++ need calc mForegrounds
+    FOR_EACH (AmbientLayerVectorCIter, it, mBackgrounds)
+    {
+        sz += (*it)->calcMemory(level + 1);
+    }
+    FOR_EACH (AmbientLayerVectorCIter, it, mForegrounds)
+    {
+        sz += (*it)->calcMemory(level + 1);
+    }
     if (mSpecialLayer)
         mSpecialLayer->calcMemory(level + 1);
     if (mTempLayer)

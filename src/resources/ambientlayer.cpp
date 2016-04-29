@@ -31,7 +31,8 @@
 
 #include "debug.h"
 
-AmbientLayer::AmbientLayer(Image *const img,
+AmbientLayer::AmbientLayer(const std::string &name,
+                           Image *const img,
                            const float parallaxX,
                            const float parallaxY,
                            const float posX,
@@ -40,6 +41,8 @@ AmbientLayer::AmbientLayer(Image *const img,
                            const float speedY,
                            const bool keepRatio,
                            const int mask) :
+    MemoryCounter(),
+    mName(name),
     mImage(img),
     mParallaxX(parallaxX),
     mParallaxY(parallaxY),
@@ -141,4 +144,10 @@ void AmbientLayer::draw(Graphics *const graphics, const int x,
                 CAST_S32(mImage->mBounds.h) / defaultScreenHeight
                 * graphics->mHeight);
     }
+}
+
+int AmbientLayer::calcMemoryLocal() const
+{
+    return sizeof(AmbientLayer) +
+        mName.capacity();
 }
