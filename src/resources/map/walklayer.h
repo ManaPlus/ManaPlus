@@ -41,6 +41,9 @@ class WalkLayer final : public Resource
 
         int calcMemoryLocal() const override final;
 
+        std::string getCounterName() const override final
+        { return "walk layer"; }
+
     private:
         int mWidth;
         int mHeight;
