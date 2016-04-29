@@ -264,6 +264,45 @@ void Logger::log(const char *const log_text, ...)
     delete [] buf;
 }
 
+void Logger::assert(const char *const log_text, ...)
+{
+    if (settings.disableLoggingInGame)
+        return;
+
+    unsigned size = 1024;
+    if (strlen(log_text) * 3 > size)
+        size = CAST_U32(strlen(log_text) * 3);
+
+    char* buf = new char[CAST_SIZE(size + 1)];
+    va_list ap;
+
+    // Use a temporary buffer to fill in the variables
+    va_start(ap, log_text);
+    vsnprintf(buf, size, log_text, ap);
+    buf[size] = 0;
+    va_end(ap);
+
+    // Get the current system time
+    timeval tv;
+    gettimeofday(&tv, nullptr);
+
+    // Print the log entry
+    std::stringstream timeStr;
+    DATESTREAM
+    SPECIALLOG(buf)
+
+    if (mLogFile.is_open())
+        mLogFile << timeStr.str() << buf << std::endl;
+
+    if (mLogToStandardOut)
+        std::cout << timeStr.str() << buf << std::endl;
+
+    DebugMessageListener::distributeEvent(buf);
+
+    // Delete temporary buffer
+    delete [] buf;
+}
+
 void Logger::log_r(const char *const log_text, ...)
 {
     if (settings.disableLoggingInGame)

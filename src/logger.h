@@ -118,6 +118,27 @@ class Logger final
             ;
 
         /**
+         * Enters a message in the log. The message will be timestamped.
+         */
+        void assert(const char *const log_text, ...) A_NONNULL(2)
+#ifdef __GNUC__
+#ifdef __OpenBSD__
+
+            __attribute__((__format__(printf, 2, 3)))
+#else  // __OpenBSD__
+
+#ifdef ENABLE_CILKPLUS
+            __attribute__((__format__(gnu_printf, 1, 2)))
+#else  // ENABLE_CILKPLUS
+
+            __attribute__((__format__(gnu_printf, 2, 3)))
+#endif  // ENABLE_CILKPLUS
+
+#endif  // __OpenBSD__
+#endif  // __GNUC__
+            ;
+
+        /**
          * Enters a message in the log (thread safe).
          */
         void log_r(const char *const log_text, ...) A_NONNULL(2)

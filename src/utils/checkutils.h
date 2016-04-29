@@ -23,17 +23,23 @@
 
 #ifdef ENABLE_ASSERTS
 
-#define reportFalse(val) reportFalse1(val, __FILE__, __LINE__)
-#define reportFalse1(val, file, line) reportFalseReal(val, file, line)
+#define reportFalse(val) \
+    reportFalseReal(val, #val, __FILE__, __LINE__, __func__)
 
-#define reportTrue(val) reportTrue1(val, __FILE__, __LINE__)
-#define reportTrue1(val, file, line) reportTrueReal(val, file, line)
+#define reportTrue(val) \
+    reportTrueReal(val, #val, __FILE__, __LINE__, __func__)
 
-bool reportFalseReal(const bool val, const char *const file,
-                     const unsigned line);
+bool reportFalseReal(const bool val,
+                     const char *const text,
+                     const char *const file,
+                     const unsigned line,
+                     const char *const func);
 
-bool reportTrueReal(const bool val, const char *const file,
-                    const unsigned line);
+bool reportTrueReal(const bool val,
+                    const char *const text,
+                    const char *const file,
+                    const unsigned line,
+                    const char *const func);
 
 void reportStack(const char *const file,
                  const unsigned int line,

@@ -30,19 +30,25 @@
 
 #include "debug.h"
 
-bool reportFalseReal(const bool val, const char *const file,
-                     const unsigned line)
+bool reportFalseReal(const bool val,
+                     const char *const text,
+                     const char *const file,
+                     const unsigned line,
+                     const char *const func)
 {
     if (!val)
-        logger->log("Debug: false value at %s:%u", file, line);
+        reportStack(file, line, func, "Detected false value", text);
     return val;
 }
 
-bool reportTrueReal(const bool val, const char *const file,
-                    const unsigned line)
+bool reportTrueReal(const bool val,
+                    const char *const text,
+                    const char *const file,
+                    const unsigned line,
+                    const char *const func)
 {
     if (val)
-        logger->log("Debug: true value at %s:%u", file, line);
+        reportStack(file, line, func, "Detected true value", text);
     return val;
 }
 
@@ -61,7 +67,7 @@ void reportStack(const char *const file,
 
     logger->log("--- %s --------------------------------------------",
         name);
-    logger->log("%s:%u: '%s' in function `%s'",
+    logger->assert("%s:%u: '%s' in function `%s'",
         file,
         line,
         text,
