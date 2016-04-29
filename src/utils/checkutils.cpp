@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef ENABLE_ASSERTS
+
 #include "utils/checkutils.h"
 
 #include "logger.h"
@@ -39,3 +41,5 @@ bool reportTrueReal(const bool val, const char *const file,
         logger->log("Debug: true value at %s:%u", file, line);
     return val;
 }
+
+#endif  // ENABLE_ASSERTS

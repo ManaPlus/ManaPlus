@@ -27,19 +27,7 @@
 // #define _DEBUG_NEW_EMULATE_MALLOC 1
 #include "debug/debug_new.h"
 
-#define reportFalse(val) reportFalse1(val, __FILE__, __LINE__)
-#define reportFalse1(val, file, line) reportFalseReal(val, file, line)
-
-#define reportTrue(val) reportTrue1(val, __FILE__, __LINE__)
-#define reportTrue1(val, file, line) reportTrueReal(val, file, line)
-
-#else  // ENABLE_MEM_DEBUG
-
-#define reportFalse(val) (val)
-#define reportTrue(val) (val)
-
 #endif  // ENABLE_MEM_DEBUG
-
 
 #ifdef DEBUG_SDL_SURFACES
 
