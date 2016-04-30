@@ -27,7 +27,7 @@ public:
     void initArrays(const int vertCount) restrict2 override final;
 
 #ifdef DEBUG_DRAW_CALLS
-    unsigned int getDrawCalls() restrict2 const noexcept
+    unsigned int getDrawCalls() restrict2 const noexcept2
     { return mLastDrawCalls; }
 
     static unsigned int mDrawCalls;

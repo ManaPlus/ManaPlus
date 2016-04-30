@@ -34,7 +34,7 @@ class Shader final : public Resource
 
         A_DELETE_COPY(Shader)
 
-        unsigned int getShaderId() const noexcept
+        unsigned int getShaderId() const noexcept2
         { return mShaderId; }
 
     protected:

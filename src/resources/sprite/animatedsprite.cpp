@@ -405,7 +405,7 @@ std::string AnimatedSprite::getIdPath() const restrict2
     return mSprite->getIdPath();
 }
 
-const Image* AnimatedSprite::getImage() const restrict2 noexcept
+const Image* AnimatedSprite::getImage() const restrict2 noexcept2
 {
     return mFrame ? mFrame->image : nullptr;
 }

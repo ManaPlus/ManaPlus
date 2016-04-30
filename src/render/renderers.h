@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-RenderType intToRenderType(const int mode) noexcept A_CONST;
+RenderType intToRenderType(const int mode) noexcept2 A_CONST;
 
 #define isBatchDrawRenders(val) ((val) != RENDER_SAFE_OPENGL)
 

@@ -4403,7 +4403,7 @@ bool Being::isSellShopEnabled() const restrict2
 #endif
 }
 
-void Being::serverRemove() restrict2 noexcept
+void Being::serverRemove() restrict2 noexcept2
 {
     // remove some flags what can survive player remove and next visible
     mTrickDead = false;

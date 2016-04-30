@@ -96,20 +96,20 @@ class InputManager final
         /**
          * Set the index of the new key to be assigned.
          */
-        void setNewKeyIndex(const InputActionT value) restrict2 noexcept
+        void setNewKeyIndex(const InputActionT value) restrict2 noexcept2
         { mNewKeyIndex = value; }
 
         /**
          * Set a reference to the key setup window.
          */
         void setSetupInput(Setup_Input *restrict const setupInput)
-                           restrict2 noexcept A_NONNULL(2)
+                           restrict2 noexcept2 A_NONNULL(2)
         { mSetupInput = setupInput; }
 
         /**
          * Get the index of the new key to be assigned.
          */
-        InputActionT getNewKeyIndex() const restrict2 noexcept A_WARN_UNUSED
+        InputActionT getNewKeyIndex() const restrict2 noexcept2 A_WARN_UNUSED
         { return mNewKeyIndex; }
 
         void updateKeyActionMap(KeyToActionMap &restrict actionMap,

@@ -81,18 +81,18 @@ class AnimatedSprite final : public Sprite
 
         int getHeight() const restrict2 override final A_WARN_UNUSED;
 
-        const Image* getImage() const restrict2 noexcept override final
+        const Image* getImage() const restrict2 noexcept2 override final
                               A_WARN_UNUSED;
 
         bool setSpriteDirection(const SpriteDirection::Type direction)
                                 restrict2 override final;
 
-        int getNumberOfLayers() const restrict2 noexcept A_WARN_UNUSED
+        int getNumberOfLayers() const restrict2 noexcept2 A_WARN_UNUSED
         { return 1; }
 
         std::string getIdPath() const restrict2 A_WARN_UNUSED;
 
-        unsigned int getCurrentFrame() const restrict2 noexcept override final
+        unsigned int getCurrentFrame() const restrict2 noexcept2 override final
                                      A_WARN_UNUSED
         { return mFrameIndex; }
 
@@ -105,19 +105,19 @@ class AnimatedSprite final : public Sprite
 
         bool updateNumber(const unsigned num) restrict2 override final;
 
-        void clearDelayLoad() restrict2 noexcept
+        void clearDelayLoad() restrict2 noexcept2
         { mDelayLoad = nullptr; }
 
-        void setSprite(SpriteDef *restrict const sprite) restrict2 noexcept
+        void setSprite(SpriteDef *restrict const sprite) restrict2 noexcept2
         { mSprite = sprite; }
 
-        bool isTerminated() const restrict2 noexcept
+        bool isTerminated() const restrict2 noexcept2
         { return mTerminated; }
 
-        static void setEnableCache(const bool b) noexcept
+        static void setEnableCache(const bool b) noexcept2
         { mEnableCache = b; }
 
-        void setLastTime(const int time) noexcept
+        void setLastTime(const int time) noexcept2
         { mLastTime = time; }
 
 #ifdef UNITTESTS

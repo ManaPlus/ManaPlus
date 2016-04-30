@@ -27,6 +27,8 @@
 #define CAST_U32 static_cast<uint32_t>
 #define CAST_SIZE static_cast<size_t>
 
+//#define noexcept2
+
 #define GCC_VERSION (__GNUC__ * 10000 \
     + __GNUC_MINOR__ * 100 \
     + __GNUC_PATCHLEVEL__)
@@ -38,27 +40,42 @@
 #define override
 #define constexpr
 #define constexpr2
+#define noexcept2
 #define noexcept
 #define A_DELETE(func)
 #define A_DELETE_COPY(func)
 #else  // !defined(__GXX_EXPERIMENTAL_CXX0X__)
 #if GCC_VERSION < 40700
+
+#if defined(__clang__) && __cplusplus > 201100L
+#else  // __clang__
 #define final
 #define override
 #define constexpr
 #define noexcept
+#endif  // __clang__
+#define noexcept2
+
 // #define A_DELETE
 // #define A_DELETE_COPY
 #else  // GCC_VERSION < 40700
 #define ADVGCC
 #if GCC_VERSION < 40900
 #define constexpr2
+#define noexcept2
 #else  // GCC_VERSION < 40900
 #if __cpp_constexpr >= 201304
 #define constexpr2 constexpr
 #else  // __cpp_constexpr >= 201304
 #define constexpr2
 #endif  // __cpp_constexpr >= 201304
+
+#ifdef __clang__
+#define noexcept2
+#else  // __clang__
+#define noexcept2 noexcept
+#endif  // __clang__
+
 #endif  // GCC_VERSION < 40900
 #endif  // GCC_VERSION < 40700
 #undef Z_NULL

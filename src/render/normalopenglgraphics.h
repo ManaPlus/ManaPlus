@@ -89,7 +89,7 @@ class NormalOpenGLGraphics final : public Graphics
         #include "render/openglgraphicsdefadvanced.hpp"
 
 #ifdef DEBUG_BIND_TEXTURE
-        unsigned int getBinds() const restrict2 noexcept
+        unsigned int getBinds() const restrict2 noexcept2
         { return mLastBinds; }
 #endif
 

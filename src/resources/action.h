@@ -39,25 +39,25 @@ class Animation;
 class Action final : public MemoryCounter
 {
     public:
-        explicit Action(const std::string &name) noexcept;
+        explicit Action(const std::string &name) noexcept2;
 
         A_DELETE_COPY(Action)
 
         ~Action();
 
         void setAnimation(const SpriteDirection::Type direction,
-                          Animation *const animation) noexcept;
+                          Animation *const animation) noexcept2;
 
         const Animation *getAnimation(SpriteDirection::Type direction) const
-                                      noexcept A_WARN_UNUSED;
+                                      noexcept2 A_WARN_UNUSED;
 
-        unsigned getNumber() const noexcept A_WARN_UNUSED
+        unsigned getNumber() const noexcept2 A_WARN_UNUSED
         { return mNumber; }
 
-        void setNumber(const unsigned n) noexcept
+        void setNumber(const unsigned n) noexcept2
         { mNumber = n; }
 
-        void setLastFrameDelay(const int delay) noexcept;
+        void setLastFrameDelay(const int delay) noexcept2;
 
         int calcMemoryLocal() const override final;
 

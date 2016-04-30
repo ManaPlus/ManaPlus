@@ -28,7 +28,7 @@
 
 #include "debug.h"
 
-Action::Action(const std::string &name) noexcept :
+Action::Action(const std::string &name) noexcept2 :
     MemoryCounter(),
     mAnimations(),
     mCounterName(name),
@@ -42,7 +42,7 @@ Action::~Action()
 }
 
 const Animation *Action::getAnimation(SpriteDirection::Type direction)
-                                      const noexcept
+                                      const noexcept2
 {
     Animations::const_iterator i = mAnimations.find(direction);
 
@@ -70,12 +70,12 @@ const Animation *Action::getAnimation(SpriteDirection::Type direction)
 }
 
 void Action::setAnimation(const SpriteDirection::Type direction,
-                          Animation *const animation) noexcept
+                          Animation *const animation) noexcept2
 {
     mAnimations[direction] = animation;
 }
 
-void Action::setLastFrameDelay(const int delay) noexcept
+void Action::setLastFrameDelay(const int delay) noexcept2
 {
     FOR_EACH (AnimationIter, it, mAnimations)
     {

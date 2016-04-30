@@ -68,7 +68,7 @@ extern volatile int cur_time;
 
 struct NextSoundInfo final
 {
-    NextSoundInfo() noexcept :
+    NextSoundInfo() noexcept2 :
         sound(nullptr),
         x(0),
         y(0),
@@ -106,7 +106,7 @@ class Being notfinal : public ActorSprite,
 
         virtual ~Being();
 
-        ActorTypeT getType() const restrict2 noexcept override final
+        ActorTypeT getType() const restrict2 noexcept2 override final
                            A_WARN_UNUSED
         { return mType; }
 
@@ -118,14 +118,14 @@ class Being notfinal : public ActorSprite,
         /**
          * Returns the time spent in the current action.
          */
-        int getActionTime() const restrict2 noexcept A_WARN_UNUSED
+        int getActionTime() const restrict2 noexcept2 A_WARN_UNUSED
         { return mActionTime; }
 
         /**
          * Set the current action time.
          * @see Ea::BeingHandler that set it to tick time.
          */
-        void setActionTime(const int actionTime) restrict2 noexcept
+        void setActionTime(const int actionTime) restrict2 noexcept2
         { mActionTime = actionTime; }
 
         /**
@@ -141,19 +141,19 @@ class Being notfinal : public ActorSprite,
         /**
          * Returns the destination for this being.
          */
-        const Vector &getDestination() const restrict2 noexcept A_WARN_UNUSED
+        const Vector &getDestination() const restrict2 noexcept2 A_WARN_UNUSED
         { return mDest; }
 
         /**
          * Returns the tile x coord
          */
-        int getTileX() const restrict2 noexcept override A_WARN_UNUSED
+        int getTileX() const restrict2 noexcept2 override A_WARN_UNUSED
         { return mX; }
 
         /**
          * Returns the tile y coord
          */
-        int getTileY() const restrict2 noexcept override A_WARN_UNUSED
+        int getTileY() const restrict2 noexcept2 override A_WARN_UNUSED
         { return mY; }
 
         /**
@@ -208,10 +208,10 @@ class Being notfinal : public ActorSprite,
         /**
          * Returns the name of the being.
          */
-        const std::string &getName() const restrict2 noexcept A_WARN_UNUSED
+        const std::string &getName() const restrict2 noexcept2 A_WARN_UNUSED
         { return mName; }
 
-        const std::string &getExtName() const restrict2 noexcept A_WARN_UNUSED
+        const std::string &getExtName() const restrict2 noexcept2 A_WARN_UNUSED
         { return mExtName; }
 
         /**
@@ -221,7 +221,7 @@ class Being notfinal : public ActorSprite,
          */
         void setName(const std::string &restrict name) restrict2;
 
-        bool getShowName() const noexcept A_WARN_UNUSED
+        bool getShowName() const noexcept2 A_WARN_UNUSED
         { return mShowName; }
 
         void setShowName(const bool doShowName) restrict2;
@@ -231,11 +231,11 @@ class Being notfinal : public ActorSprite,
          */
         void setPartyName(const std::string &restrict name) restrict2;
 
-        const std::string &getPartyName() const restrict2 noexcept
+        const std::string &getPartyName() const restrict2 noexcept2
                                         A_WARN_UNUSED
         { return mPartyName; }
 
-        const std::string &getGuildName() const restrict2 noexcept
+        const std::string &getGuildName() const restrict2 noexcept2
                                         A_WARN_UNUSED
         { return mGuildName; }
 
@@ -276,7 +276,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Returns all guilds the being is in.
          */
-        const std::map<int, Guild*> &getGuilds() const restrict2 noexcept
+        const std::map<int, Guild*> &getGuilds() const restrict2 noexcept2
                                                A_WARN_UNUSED
         { return mGuilds; }
 
@@ -291,7 +291,7 @@ class Being notfinal : public ActorSprite,
         int16_t getNumberOfGuilds() const restrict2 A_WARN_UNUSED
         { return CAST_S16(mGuilds.size()); }
 
-        bool isInParty() const restrict2 noexcept A_WARN_UNUSED
+        bool isInParty() const restrict2 noexcept2 A_WARN_UNUSED
         { return mParty; }
 
         void setParty(Party *restrict const party) restrict2;
@@ -300,7 +300,7 @@ class Being notfinal : public ActorSprite,
 
         void updateGuild() restrict2;
 
-        Party *getParty() const restrict2 noexcept A_WARN_UNUSED
+        Party *getParty() const restrict2 noexcept2 A_WARN_UNUSED
         { return mParty; }
 
         /**
@@ -352,7 +352,7 @@ class Being notfinal : public ActorSprite,
                          const int offsetX,
                          const int offsetY) const restrict2 A_NONNULL(2);
 
-        BeingTypeId getSubType() const restrict2 noexcept A_WARN_UNUSED
+        BeingTypeId getSubType() const restrict2 noexcept2 A_WARN_UNUSED
         { return mSubType; }
 
          /**
@@ -361,7 +361,7 @@ class Being notfinal : public ActorSprite,
         void setSubtype(const BeingTypeId subtype,
                         const uint16_t look) restrict2;
 
-        const BeingInfo *getInfo() const restrict2 noexcept A_WARN_UNUSED
+        const BeingInfo *getInfo() const restrict2 noexcept2 A_WARN_UNUSED
         { return mInfo; }
 
         TargetCursorSizeT getTargetCursorSize() const restrict2 override final
@@ -410,21 +410,21 @@ class Being notfinal : public ActorSprite,
         /**
          * Gets the walk speed in pixels per second.
          */
-        int getWalkSpeed() const restrict2 noexcept A_WARN_UNUSED
+        int getWalkSpeed() const restrict2 noexcept2 A_WARN_UNUSED
         { return mWalkSpeed; }
 
         /**
          * Sets the attack speed.
          * @todo In what unit?
          */
-        void setAttackSpeed(const int speed) restrict2 noexcept
+        void setAttackSpeed(const int speed) restrict2 noexcept2
         { mAttackSpeed = speed; }
 
         /**
          * Gets the attack speed.
          * @todo In what unit?
          */
-        int getAttackSpeed() const restrict2 noexcept A_WARN_UNUSED
+        int getAttackSpeed() const restrict2 noexcept2 A_WARN_UNUSED
         { return mAttackSpeed; }
 
         /**
@@ -436,19 +436,19 @@ class Being notfinal : public ActorSprite,
         /**
          * Get the being's action currently performed.
          */
-        BeingActionT getCurrentAction() const restrict2 noexcept A_WARN_UNUSED
+        BeingActionT getCurrentAction() const restrict2 noexcept2 A_WARN_UNUSED
         { return mAction; }
 
         /**
          * Returns whether this being is still alive.
          */
-        bool isAlive() const restrict2 noexcept A_WARN_UNUSED
+        bool isAlive() const restrict2 noexcept2 A_WARN_UNUSED
         { return mAction != BeingAction::DEAD; }
 
         /**
          * Returns the current direction.
          */
-        uint8_t getDirection() const restrict2 noexcept A_WARN_UNUSED
+        uint8_t getDirection() const restrict2 noexcept2 A_WARN_UNUSED
         { return mDirection; }
 
         /**
@@ -456,16 +456,16 @@ class Being notfinal : public ActorSprite,
          */
         virtual void setDirection(const uint8_t direction) restrict2;
 
-        void setDirectionDelayed(const uint8_t direction) restrict2 noexcept
+        void setDirectionDelayed(const uint8_t direction) restrict2 noexcept2
         { mDirectionDelayed = direction; }
 
-        uint8_t getDirectionDelayed() const restrict2 noexcept A_WARN_UNUSED
+        uint8_t getDirectionDelayed() const restrict2 noexcept2 A_WARN_UNUSED
         { return mDirectionDelayed; }
 
         /**
          * Returns the direction the being is facing.
          */
-        SpriteDirection::Type getSpriteDirection() const restrict2 noexcept
+        SpriteDirection::Type getSpriteDirection() const restrict2 noexcept2
                                                  A_WARN_UNUSED
         { return mSpriteDirection; }
 
@@ -503,13 +503,13 @@ class Being notfinal : public ActorSprite,
          * Returns the path this being is following. An empty path is returned
          * when this being isn't following any path currently.
          */
-        const Path &getPath() const restrict2 noexcept A_WARN_UNUSED
+        const Path &getPath() const restrict2 noexcept2 A_WARN_UNUSED
         { return mPath; }
 
-        int getDistance() const restrict2 noexcept A_WARN_UNUSED
+        int getDistance() const restrict2 noexcept2 A_WARN_UNUSED
         { return mDistance; }
 
-        void setDistance(const int n) restrict2 noexcept
+        void setDistance(const int n) restrict2 noexcept2
         { mDistance = n; }
 
         /**
@@ -547,24 +547,24 @@ class Being notfinal : public ActorSprite,
 
         void flashName(const int time) restrict2;
 
-        int getDamageTaken() const restrict2 noexcept A_WARN_UNUSED
+        int getDamageTaken() const restrict2 noexcept2 A_WARN_UNUSED
         { return mDamageTaken; }
 
-        void setDamageTaken(const int damage) restrict2 noexcept
+        void setDamageTaken(const int damage) restrict2 noexcept2
         { mDamageTaken = damage; }
 
         void updateName() restrict2;
 
-        void setLevel(const int n) restrict2 noexcept
+        void setLevel(const int n) restrict2 noexcept2
         { mLevel = n; }
 
         virtual int getLevel() const restrict2 A_WARN_UNUSED
         { return mLevel; }
 
-        void setReachable(const ReachableT n) restrict2 noexcept
+        void setReachable(const ReachableT n) restrict2 noexcept2
         { mReachable = n; }
 
-        ReachableT getReachable() const restrict2 noexcept A_WARN_UNUSED
+        ReachableT getReachable() const restrict2 noexcept2 A_WARN_UNUSED
         { return mReachable; }
 
         static void reReadConfig();
@@ -580,7 +580,7 @@ class Being notfinal : public ActorSprite,
          */
         virtual void setGender(const GenderT gender) restrict2;
 
-        GenderT getGender() const restrict2 noexcept A_WARN_UNUSED
+        GenderT getGender() const restrict2 noexcept2 A_WARN_UNUSED
         { return mGender; }
 
         /**
@@ -613,7 +613,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Whether or not this player is a GM.
          */
-        bool isGM() const restrict2 noexcept A_WARN_UNUSED
+        bool isGM() const restrict2 noexcept2 A_WARN_UNUSED
         { return mIsGM; }
 
         /**
@@ -621,7 +621,7 @@ class Being notfinal : public ActorSprite,
          */
         void setGM(const bool gm) restrict2;
 
-        bool canTalk() const restrict2 noexcept A_WARN_UNUSED
+        bool canTalk() const restrict2 noexcept2 A_WARN_UNUSED
         { return mType == ActorType::Npc; }
 
         void talkTo() const restrict2;
@@ -655,60 +655,60 @@ class Being notfinal : public ActorSprite,
                        const int x,
                        const int y) const restrict2 A_NONNULL(2);
 
-        void setMoveTime() restrict2 noexcept
+        void setMoveTime() restrict2 noexcept2
         { mMoveTime = cur_time; }
 
-        void setAttackTime() restrict2 noexcept
+        void setAttackTime() restrict2 noexcept2
         { mAttackTime = cur_time; }
 
-        void setTalkTime() restrict2 noexcept
+        void setTalkTime() restrict2 noexcept2
         { mTalkTime = cur_time; }
 
-        void setTestTime() restrict2 noexcept
+        void setTestTime() restrict2 noexcept2
         { mTestTime = cur_time; }
 
-        void setOtherTime() restrict2 noexcept
+        void setOtherTime() restrict2 noexcept2
         { mOtherTime = cur_time; }
 
-        int getMoveTime() const restrict2 noexcept
+        int getMoveTime() const restrict2 noexcept2
         { return mMoveTime; }
 
-        int getAttackTime() const restrict2 noexcept
+        int getAttackTime() const restrict2 noexcept2
         { return mAttackTime; }
 
-        int getTalkTime() const restrict2 noexcept
+        int getTalkTime() const restrict2 noexcept2
         { return mTalkTime; }
 
-        int getTestTime() const restrict2 noexcept
+        int getTestTime() const restrict2 noexcept2
         { return mTestTime; }
 
-        int getOtherTime() const restrict2 noexcept
+        int getOtherTime() const restrict2 noexcept2
         { return mOtherTime; }
 
         void resetCounters() restrict2;
 
         void updateColors() restrict2;
 
-        void setEnemy(const bool n) restrict2 noexcept
+        void setEnemy(const bool n) restrict2 noexcept2
         { mEnemy = n; }
 
-        const std::string &getIp() const restrict2 noexcept A_WARN_UNUSED
+        const std::string &getIp() const restrict2 noexcept2 A_WARN_UNUSED
         { return mIp; }
 
-        void setIp(const std::string &restrict ip) restrict2 noexcept
+        void setIp(const std::string &restrict ip) restrict2 noexcept2
         { mIp = ip; }
 
-        unsigned int getPvpRank() const restrict2 noexcept A_WARN_UNUSED
+        unsigned int getPvpRank() const restrict2 noexcept2 A_WARN_UNUSED
         { return mPvpRank; }
 
-        void setPvpRank(const unsigned int rank) restrict2 noexcept
+        void setPvpRank(const unsigned int rank) restrict2 noexcept2
         { mPvpRank = rank; }
 
         void setHP(const int n) restrict2;
 
         void setMaxHP(const int hp) restrict2;
 
-        int getHP() const restrict2 noexcept A_WARN_UNUSED
+        int getHP() const restrict2 noexcept2 A_WARN_UNUSED
         { return mHP; }
 
         uint8_t calcDirection(const int dstX,
@@ -716,28 +716,28 @@ class Being notfinal : public ActorSprite,
 
         uint8_t calcDirection() const restrict2 A_WARN_UNUSED;
 
-        void setAttackDelay(const int n) restrict2 noexcept
+        void setAttackDelay(const int n) restrict2 noexcept2
         { mAttackDelay = n; }
 
-        int getAttackDelay() const restrict2 noexcept A_WARN_UNUSED
+        int getAttackDelay() const restrict2 noexcept2 A_WARN_UNUSED
         { return mAttackDelay; }
 
-        int getMinHit() const restrict2 noexcept A_WARN_UNUSED
+        int getMinHit() const restrict2 noexcept2 A_WARN_UNUSED
         { return mMinHit; }
 
-        void setMinHit(const int n) restrict2 noexcept
+        void setMinHit(const int n) restrict2 noexcept2
         { mMinHit = n; }
 
-        int getMaxHit() const restrict2 noexcept A_WARN_UNUSED
+        int getMaxHit() const restrict2 noexcept2 A_WARN_UNUSED
         { return mMaxHit; }
 
-        void setMaxHit(const int n) restrict2 noexcept
+        void setMaxHit(const int n) restrict2 noexcept2
         { mMaxHit = n; }
 
         int getCriticalHit() const restrict2 A_WARN_UNUSED
         { return mCriticalHit; }
 
-        void setCriticalHit(const int n) restrict2 noexcept
+        void setCriticalHit(const int n) restrict2 noexcept2
         { mCriticalHit = n; }
 
         void updateHit(const int amount) restrict2;
@@ -746,10 +746,10 @@ class Being notfinal : public ActorSprite,
 
         void undressItemById(const int id) restrict2;
 
-        int getGoodStatus() const restrict2 noexcept A_WARN_UNUSED
+        int getGoodStatus() const restrict2 noexcept2 A_WARN_UNUSED
         { return mGoodStatus; }
 
-        void setGoodStatus(const int n) restrict2 noexcept
+        void setGoodStatus(const int n) restrict2 noexcept2
         { mGoodStatus = n; }
 
         std::string getGenderSign() const restrict2 A_WARN_UNUSED;
@@ -758,10 +758,10 @@ class Being notfinal : public ActorSprite,
 
         void updateComment() restrict2;
 
-        const std::string getComment() const restrict2 noexcept A_WARN_UNUSED
+        const std::string getComment() const restrict2 noexcept2 A_WARN_UNUSED
         { return mComment; }
 
-        void setComment(const std::string &restrict n) restrict2 noexcept
+        void setComment(const std::string &restrict n) restrict2 noexcept2
         { mComment = n; }
 
         static void clearCache();
@@ -774,7 +774,7 @@ class Being notfinal : public ActorSprite,
                                 const std::string &restrict comment,
                                 const ActorTypeT &restrict type);
 
-        bool isAdvanced() const restrict2 noexcept A_WARN_UNUSED
+        bool isAdvanced() const restrict2 noexcept2 A_WARN_UNUSED
         { return mAdvanced; }
 
         void setAdvanced(const bool n) restrict2
@@ -789,7 +789,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Sets the attack range.
          */
-        void setAttackRange(const int range) restrict2 noexcept
+        void setAttackRange(const int range) restrict2 noexcept2
         { mAttackRange = range; }
 
 /*
@@ -804,10 +804,10 @@ class Being notfinal : public ActorSprite,
 
         void updatePercentHP() restrict2;
 
-        void setRaceName(const std::string &restrict name) restrict2 noexcept
+        void setRaceName(const std::string &restrict name) restrict2 noexcept2
         { mRaceName = name; }
 
-        std::string getRaceName() const restrict2 noexcept A_WARN_UNUSED
+        std::string getRaceName() const restrict2 noexcept2 A_WARN_UNUSED
         { return mRaceName; }
 
         int getSpriteID(const int slot) const restrict2 A_WARN_UNUSED;
@@ -820,10 +820,10 @@ class Being notfinal : public ActorSprite,
         void setHairColor(const unsigned int slot,
                           const ItemColor color) restrict2;
 
-        void setHairColor(const ItemColor color) restrict2 noexcept
+        void setHairColor(const ItemColor color) restrict2 noexcept2
         { mHairColor = color; }
 
-        ItemColor getHairColor() const noexcept A_WARN_UNUSED
+        ItemColor getHairColor() const noexcept2 A_WARN_UNUSED
         { return mHairColor; }
 
         void recalcSpritesOrder() restrict2;
@@ -857,16 +857,16 @@ class Being notfinal : public ActorSprite,
         void fixPetSpawnPos(int &restrict dstX,
                             int &restrict dstY) const restrict2;
 
-        const std::vector<Being*> &getPets() const restrict2 noexcept
+        const std::vector<Being*> &getPets() const restrict2 noexcept2
         { return mPets; }
 
         Being *getFirstPet() restrict2
         { return mPets.empty() ? nullptr : mPets[0]; }
 
-        void setOwner(Being *restrict const owner) restrict2 noexcept
+        void setOwner(Being *restrict const owner) restrict2 noexcept2
         { mOwner = owner; }
 
-        Being *getOwner() const restrict2 noexcept
+        Being *getOwner() const restrict2 noexcept2
         { return mOwner; }
 
         void unassignPet(const Being *restrict const pet) restrict2;
@@ -880,7 +880,7 @@ class Being notfinal : public ActorSprite,
                      const bool main,
                      const int x, const int y) const restrict2;
 
-        uint16_t getLook() const restrict2 noexcept
+        uint16_t getLook() const restrict2 noexcept2
         { return mLook; }
 
         void setLook(const uint16_t look) restrict2;
@@ -903,10 +903,10 @@ class Being notfinal : public ActorSprite,
 
         void recreateItemParticles() restrict2;
 
-        void incUsage() restrict2 noexcept
+        void incUsage() restrict2 noexcept2
         { mUsageCounter ++; }
 
-        int decUsage() restrict2 noexcept
+        int decUsage() restrict2 noexcept2
         { return --mUsageCounter; }
 
         virtual int getLastAttackX() const restrict2
@@ -920,7 +920,7 @@ class Being notfinal : public ActorSprite,
 
         void setChat(ChatObject *restrict const obj) restrict2;
 
-        ChatObject *getChat() const restrict2 noexcept
+        ChatObject *getChat() const restrict2 noexcept2
         { return mChat; }
 
         void setRiding(const bool b) restrict2 override final;
@@ -931,17 +931,17 @@ class Being notfinal : public ActorSprite,
 
         void setSellBoard(const std::string &restrict text) restrict2;
 
-        std::string getSellBoard() const restrict2 noexcept A_WARN_UNUSED
+        std::string getSellBoard() const restrict2 noexcept2 A_WARN_UNUSED
         { return mSellBoard; }
 
         void setBuyBoard(const std::string &restrict text) restrict2;
 
-        std::string getBuyBoard() const restrict2 noexcept A_WARN_UNUSED
+        std::string getBuyBoard() const restrict2 noexcept2 A_WARN_UNUSED
         { return mBuyBoard; }
 
         void setSpiritBalls(const unsigned int balls) restrict2;
 
-        unsigned int getSpiritBalls() const restrict2 noexcept A_WARN_UNUSED
+        unsigned int getSpiritBalls() const restrict2 noexcept2 A_WARN_UNUSED
         { return mSpiritBalls; }
 
         void stopCast(const bool b) override final;
@@ -949,32 +949,32 @@ class Being notfinal : public ActorSprite,
         void setCreatorId(const BeingId id)
         { mCreatorId = id; }
 
-        BeingId getCreatorId() const noexcept A_WARN_UNUSED
+        BeingId getCreatorId() const noexcept2 A_WARN_UNUSED
         { return mCreatorId; }
 #endif
 
-        void setKarma(const int karma) restrict2 noexcept
+        void setKarma(const int karma) restrict2 noexcept2
         { mKarma = karma; }
 
-        int getKarma() const restrict2 noexcept A_WARN_UNUSED
+        int getKarma() const restrict2 noexcept2 A_WARN_UNUSED
         { return mKarma; }
 
-        void setManner(const int manner) restrict2 noexcept
+        void setManner(const int manner) restrict2 noexcept2
         { mManner = manner; }
 
-        int getManner() const restrict2 noexcept A_WARN_UNUSED
+        int getManner() const restrict2 noexcept2 A_WARN_UNUSED
         { return mManner; }
 
-        void disablePetAi() restrict2 noexcept
+        void disablePetAi() restrict2 noexcept2
         { mPetAi = false; }
 
-        void enablePetAi() restrict2 noexcept
+        void enablePetAi() restrict2 noexcept2
         { mPetAi = true; }
 
-        int getAreaSize() const restrict2 noexcept A_WARN_UNUSED
+        int getAreaSize() const restrict2 noexcept2 A_WARN_UNUSED
         { return mAreaSize; }
 
-        void setAreaSize(const int areaSize) restrict2 noexcept
+        void setAreaSize(const int areaSize) restrict2 noexcept2
         { mAreaSize = areaSize; }
 
         void setTeamId(const uint16_t teamId) restrict2;
@@ -997,10 +997,10 @@ class Being notfinal : public ActorSprite,
 
         void showBadges(const bool show) restrict2;
 
-        uint16_t getTeamId() const restrict2 noexcept A_WARN_UNUSED
+        uint16_t getTeamId() const restrict2 noexcept2 A_WARN_UNUSED
         { return mTeamId; }
 
-        void serverRemove() restrict2 noexcept;
+        void serverRemove() restrict2 noexcept2;
 
     protected:
         void drawPlayerSpriteAt(Graphics *restrict const graphics,

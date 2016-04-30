@@ -43,38 +43,38 @@ class Animation final : public MemoryCounter
     friend class SimpleAnimation;
 
     public:
-        Animation() noexcept;
+        Animation() noexcept2;
 
-        explicit Animation(const std::string &name) noexcept;
+        explicit Animation(const std::string &name) noexcept2;
 
         /**
          * Appends a new animation at the end of the sequence.
          */
         void addFrame(Image *const image, const int delay,
                       const int offsetX, const int offsetY,
-                      const int rand) noexcept;
+                      const int rand) noexcept2;
 
         /**
          * Appends an animation terminator that states that the animation
          * should not loop.
          */
-        void addTerminator(const int rand) noexcept;
+        void addTerminator(const int rand) noexcept2;
 
         /**
          * Returns the length of this animation in frames.
          */
-        size_t getLength() const noexcept A_WARN_UNUSED
+        size_t getLength() const noexcept2 A_WARN_UNUSED
         { return mFrames.size(); }
 
-        void addJump(const std::string &name, const int rand) noexcept;
+        void addJump(const std::string &name, const int rand) noexcept2;
 
-        void addLabel(const std::string &name) noexcept;
+        void addLabel(const std::string &name) noexcept2;
 
-        void addGoto(const std::string &name, const int rand) noexcept;
+        void addGoto(const std::string &name, const int rand) noexcept2;
 
-        void addPause(const int delay, const int rand) noexcept;
+        void addPause(const int delay, const int rand) noexcept2;
 
-        void setLastFrameDelay(const int delay) noexcept;
+        void setLastFrameDelay(const int delay) noexcept2;
 
         typedef std::vector<Frame> Frames;
         typedef Frames::iterator FramesIter;
@@ -82,7 +82,7 @@ class Animation final : public MemoryCounter
         typedef Frames::reverse_iterator FramesRevIter;
 
 #ifdef UNITTESTS
-        Frames &getFrames() noexcept
+        Frames &getFrames() noexcept2
         { return mFrames; }
 #endif
 
@@ -94,7 +94,7 @@ class Animation final : public MemoryCounter
         /**
          * Determines whether the given animation frame is a terminator.
          */
-        static bool isTerminator(const Frame &phase) noexcept A_WARN_UNUSED;
+        static bool isTerminator(const Frame &phase) noexcept2 A_WARN_UNUSED;
 
     protected:
         Frames mFrames;

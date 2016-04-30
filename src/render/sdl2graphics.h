@@ -97,7 +97,7 @@ class SDLGraphics final : public Graphics
          */
         ~SDLGraphics();
 
-        void setRendererFlags(const uint32_t flags) restrict noexcept override
+        void setRendererFlags(const uint32_t flags) restrict noexcept2 override
         { mRendererFlags = flags; }
 
         #include "render/graphicsdef.hpp"

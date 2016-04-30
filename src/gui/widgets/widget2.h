@@ -28,6 +28,8 @@
 #include "gui/themecolorsidoperators.h"
 #include "gui/theme.h"
 
+#include "localconsts.h"
+
 class Widget;
 
 class Widget2 notfinal

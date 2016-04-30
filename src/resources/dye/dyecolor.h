@@ -25,14 +25,14 @@
 
 struct DyeColor final
 {
-    DyeColor() noexcept
+    DyeColor() noexcept2
     {
         value[3] = 255;
     }
 
     DyeColor(const uint8_t r,
              const uint8_t g,
-             const uint8_t b) noexcept
+             const uint8_t b) noexcept2
     {
         value[0] = r;
         value[1] = g;
@@ -43,7 +43,7 @@ struct DyeColor final
     DyeColor(const uint8_t r,
              const uint8_t g,
              const uint8_t b,
-             const uint8_t a) noexcept
+             const uint8_t a) noexcept2
     {
         value[0] = r;
         value[1] = g;

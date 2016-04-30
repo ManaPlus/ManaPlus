@@ -45,10 +45,10 @@ class ImegeGraphics final : public Graphics
 
         ~ImegeGraphics();
 
-        void setTarget(Image *const target) restrict2 noexcept
+        void setTarget(Image *const target) restrict2 noexcept2
         { mTarget = target; }
 
-        Image *getTarget() const restrict2 noexcept
+        Image *getTarget() const restrict2 noexcept2
         { return mTarget; }
 
         void beginDraw() restrict2 override final

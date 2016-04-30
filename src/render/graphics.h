@@ -135,7 +135,7 @@ class Graphics notfinal
             mRect.h = static_cast<RectSize>(height);
         }
 
-        SDL_Window *getWindow() const restrict2 noexcept
+        SDL_Window *getWindow() const restrict2 noexcept2
         { return mWindow; }
 
         /**
@@ -144,7 +144,7 @@ class Graphics notfinal
          */
         void setSync(const bool sync) restrict2;
 
-        bool getSync() const restrict2 noexcept A_WARN_UNUSED
+        bool getSync() const restrict2 noexcept2 A_WARN_UNUSED
         { return mSync; }
 
         /**
@@ -274,37 +274,37 @@ class Graphics notfinal
         ClipRect &getTopClip() const restrict2 A_WARN_UNUSED
         { return mClipStack.top(); }
 
-        void setRedraw(const bool n) restrict2 noexcept
+        void setRedraw(const bool n) restrict2 noexcept2
         { mRedraw = n; }
 
-        bool getRedraw() const restrict2 noexcept A_WARN_UNUSED
+        bool getRedraw() const restrict2 noexcept2 A_WARN_UNUSED
         { return mRedraw; }
 
-        void setSecure(const bool n) restrict2 noexcept
+        void setSecure(const bool n) restrict2 noexcept2
         { mSecure = n; }
 
-        bool getSecure() const restrict2 noexcept A_WARN_UNUSED
+        bool getSecure() const restrict2 noexcept2 A_WARN_UNUSED
         { return mSecure; }
 
-        int getBpp() const restrict2 noexcept A_WARN_UNUSED
+        int getBpp() const restrict2 noexcept2 A_WARN_UNUSED
         { return mBpp; }
 
-        bool getFullScreen() const restrict2 noexcept A_WARN_UNUSED
+        bool getFullScreen() const restrict2 noexcept2 A_WARN_UNUSED
         { return mFullscreen; }
 
-        bool getHWAccel() const restrict2 noexcept A_WARN_UNUSED
+        bool getHWAccel() const restrict2 noexcept2 A_WARN_UNUSED
         { return mHWAccel; }
 
-        bool getDoubleBuffer() const restrict2 noexcept A_WARN_UNUSED
+        bool getDoubleBuffer() const restrict2 noexcept2 A_WARN_UNUSED
         { return mDoubleBuffer; }
 
-        RenderType getOpenGL() const restrict2 noexcept A_WARN_UNUSED
+        RenderType getOpenGL() const restrict2 noexcept2 A_WARN_UNUSED
         { return mOpenGL; }
 
-        void setNoFrame(const bool n) restrict2 noexcept
+        void setNoFrame(const bool n) restrict2 noexcept2
         { mNoFrame = n; }
 
-        const std::string &getName() const restrict2 noexcept A_WARN_UNUSED
+        const std::string &getName() const restrict2 noexcept2 A_WARN_UNUSED
         { return mName; }
 
         virtual void initArrays(const int vertCount A_UNUSED) restrict2
@@ -316,7 +316,7 @@ class Graphics notfinal
             mAlpha = (color.a != 255);
         }
 
-        const Color &getColor() const restrict2 noexcept
+        const Color &getColor() const restrict2 noexcept2
         { return mColor; }
 
 #ifdef DEBUG_DRAW_CALLS
@@ -356,10 +356,10 @@ class Graphics notfinal
 
         virtual void completeCache() restrict2 = 0;
 
-        int getScale() const restrict2 noexcept
+        int getScale() const restrict2 noexcept2
         { return mScale; }
 
-        virtual bool isAllowScale() const restrict2 noexcept
+        virtual bool isAllowScale() const restrict2 noexcept2
         { return false; }
 
         void setScale(int scale) restrict2;

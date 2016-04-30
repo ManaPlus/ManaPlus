@@ -142,7 +142,7 @@ class MapLayer final: public MemoryCounter, public ConfigListener
                         const int scrollY,
                         const Actors &actors) const restrict A_NONNULL(2);
 
-        bool isFringeLayer() const restrict noexcept A_WARN_UNUSED
+        bool isFringeLayer() const restrict noexcept2 A_WARN_UNUSED
         { return mIsFringeLayer; }
 
         void setSpecialLayer(const SpecialLayer *restrict const val) restrict
@@ -151,10 +151,10 @@ class MapLayer final: public MemoryCounter, public ConfigListener
         void setTempLayer(const SpecialLayer *restrict const val) restrict
         { mTempLayer = val; }
 
-        int getWidth() const restrict noexcept A_WARN_UNUSED
+        int getWidth() const restrict noexcept2 A_WARN_UNUSED
         { return mWidth; }
 
-        int getHeight() const restrict noexcept A_WARN_UNUSED
+        int getHeight() const restrict noexcept2 A_WARN_UNUSED
         { return mHeight; }
 
         void optionChanged(const std::string &restrict value)

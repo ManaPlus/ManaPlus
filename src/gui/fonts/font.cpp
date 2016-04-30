@@ -366,7 +366,7 @@ int Font::getStringIndexAt(const std::string& text, const int x) const
     return CAST_S32(sz);
 }
 
-const TextChunkList *Font::getCache() const noexcept
+const TextChunkList *Font::getCache() const noexcept2
 {
     return mCache;
 }

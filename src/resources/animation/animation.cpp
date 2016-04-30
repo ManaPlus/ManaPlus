@@ -24,14 +24,14 @@
 
 #include "debug.h"
 
-Animation::Animation() noexcept :
+Animation::Animation() noexcept2 :
     mFrames(),
     mName("animation"),
     mDuration(0)
 {
 }
 
-Animation::Animation(const std::string &name) noexcept :
+Animation::Animation(const std::string &name) noexcept2 :
     mFrames(),
     mName(name),
     mDuration(0)
@@ -40,7 +40,7 @@ Animation::Animation(const std::string &name) noexcept :
 
 void Animation::addFrame(Image *const image, const int delay,
                          const int offsetX, const int offsetY,
-                         const int rand) noexcept
+                         const int rand) noexcept2
 {
     Frame frame
         = { image, delay, offsetX, offsetY, rand, Frame::ANIMATION, "" };
@@ -48,41 +48,41 @@ void Animation::addFrame(Image *const image, const int delay,
     mDuration += delay;
 }
 
-void Animation::addTerminator(const int rand) noexcept
+void Animation::addTerminator(const int rand) noexcept2
 {
     addFrame(nullptr, 0, 0, 0, rand);
 }
 
-bool Animation::isTerminator(const Frame &candidate) noexcept
+bool Animation::isTerminator(const Frame &candidate) noexcept2
 {
     return (!candidate.image && candidate.type == Frame::ANIMATION);
 }
 
-void Animation::addJump(const std::string &name, const int rand) noexcept
+void Animation::addJump(const std::string &name, const int rand) noexcept2
 {
     Frame frame = { nullptr, 0, 0, 0, rand, Frame::JUMP, name };
     mFrames.push_back(frame);
 }
 
-void Animation::addLabel(const std::string &name) noexcept
+void Animation::addLabel(const std::string &name) noexcept2
 {
     Frame frame = { nullptr, 0, 0, 0, 100, Frame::LABEL, name };
     mFrames.push_back(frame);
 }
 
-void Animation::addGoto(const std::string &name, const int rand) noexcept
+void Animation::addGoto(const std::string &name, const int rand) noexcept2
 {
     Frame frame = { nullptr, 0, 0, 0, rand, Frame::GOTO, name };
     mFrames.push_back(frame);
 }
 
-void Animation::addPause(const int delay, const int rand) noexcept
+void Animation::addPause(const int delay, const int rand) noexcept2
 {
     Frame frame = { nullptr, delay, 0, 0, rand, Frame::PAUSE, "" };
     mFrames.push_back(frame);
 }
 
-void Animation::setLastFrameDelay(const int delay) noexcept
+void Animation::setLastFrameDelay(const int delay) noexcept2
 {
     for (FramesRevIter it = mFrames.rbegin(), it_end = mFrames.rend();
          it != it_end; ++ it)
