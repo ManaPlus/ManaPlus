@@ -114,6 +114,7 @@ void ItemAmountWindow::finish(Item *const item,
             NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
             if (dialog)
                 dialog->addCraftItem(item, amount, price);  // price as slot
+            break;
         }
 #endif
         default:
