@@ -30,10 +30,10 @@
 #pragma GCC diagnostic pop
 #endif
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wold-style-cast"
+PRAGMACLANG6(GCC diagnostic push)
+PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
-#pragma GCC diagnostic pop
+PRAGMACLANG6(GCC diagnostic pop)
 
 #include "localconsts.h"
 
