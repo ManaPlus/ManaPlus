@@ -60,9 +60,35 @@ class LinePart final
         {
         }
 
+        LinePart(const LinePart &l) :
+            mX(l.mX),
+            mY(l.mY),
+            mColor(l.mColor),
+            mColor2(l.mColor2),
+            mText(l.mText),
+            mType(l.mType),
+            mImage(l.mImage),
+            mBold(l.mBold)
+        {
+        }
+
+        LinePart &operator=(const LinePart &l)
+        {
+            mX = l.mX;
+            mY = l.mY;
+            mColor = l.mColor;
+            mColor2 = l.mColor2;
+            mText = l.mText;
+            mType = l.mType;
+            mImage = l.mImage;
+            mBold = l.mBold;
+            return *this;
+        }
+
         ~LinePart();
 
-        int mX, mY;
+        int mX;
+        int mY;
         Color mColor;
         Color mColor2;
         std::string mText;
