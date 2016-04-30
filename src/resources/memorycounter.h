@@ -30,8 +30,11 @@ class MemoryCounter notfinal
     public:
         MemoryCounter();
 
+PRAGMACLANG(GCC diagnostic push)
+PRAGMACLANG(GCC diagnostic ignored "-Wdeprecated")
         virtual ~MemoryCounter()
         { }
+PRAGMACLANG(GCC diagnostic pop)
 
         int calcMemory(const int level) const;
 
