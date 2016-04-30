@@ -27,12 +27,12 @@
 
 enumStart(MapType)
 {
-    NORMAL  = 0,
-    DEBUG   = 1,
-    SPECIAL = 2,
-    SPECIAL2 = 3,
-    SPECIAL3 = 4,
-    SPECIAL4 = 5,
+    NORMAL     = 0,
+    DEBUGTYPE  = 1,
+    SPECIAL    = 2,
+    SPECIAL2   = 3,
+    SPECIAL3   = 4,
+    SPECIAL4   = 5,
     BLACKWHITE = 6
 }
 enumEnd(MapType);

@@ -230,7 +230,7 @@ void Viewport::draw(Graphics *const graphics)
             mMap->drawCollision(graphics, mPixelViewX,
                 mPixelViewY, drawType);
         }
-        if (drawType == MapType::DEBUG)
+        if (drawType == MapType::DEBUGTYPE)
             drawDebugPath(graphics);
     }
 
