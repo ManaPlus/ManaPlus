@@ -54,7 +54,7 @@ namespace PhysFs
             _exit(1);
         }
         updateDirSeparator();
-        atexit((void(*)()) PHYSFS_deinit);
+        atexit(reinterpret_cast<void(*)()>(PHYSFS_deinit));
     }
 
     void updateDirSeparator()
