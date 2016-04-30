@@ -35,7 +35,9 @@
 #include <GL/Regal.h>
 #include "render/opengl/naclglfunctions.h"
 #else  // ANDROID
+#ifdef USE_X11
 #include <GL/glx.h>
+#endif  // USE_X11
 #endif  // ANDROID
 #endif  // WIN32
 #endif  // USE_OPENGL
