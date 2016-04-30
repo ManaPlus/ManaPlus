@@ -183,12 +183,15 @@
 #define PRAGMACLANG(str) _Pragma(#str)
 #if CLANG_VERSION >= 30800
 #define PRAGMACLANG6(str) _Pragma(#str)
+#define CLANG_FALLTHROUGH [[clang::fallthrough]];
 #else  // __clang_major__ >= 6
 #define PRAGMACLANG6(str)
+#define CLANG_FALLTHROUGH
 #endif  // __clang_major__ >= 6
 #else  // __clang__
 #define PRAGMACLANG(str)
 #define PRAGMACLANG6(str)
+#define CLANG_FALLTHROUGH
 #endif  // __clang__
 
 #ifdef __GNUC__

@@ -141,9 +141,7 @@ int inflateMemory(unsigned char *restrict const in,
         {
             case Z_NEED_DICT:
                 ret = Z_DATA_ERROR;
-#ifdef __clang__
-            [[clang::fallthrough]];
-#endif
+            CLANG_FALLTHROUGH
             case Z_DATA_ERROR:
             case Z_MEM_ERROR:
                 (void) inflateEnd(&strm);
