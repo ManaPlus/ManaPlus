@@ -24,7 +24,11 @@
 #define NET_EA_NETWORK_H
 
 #include "net/serverinfo.h"
+
+PRAGMACLANG6(GCC diagnostic push)
+PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
 #include "net/sdltcpnet.h"
+PRAGMACLANG6(GCC diagnostic pop)
 
 struct PacketInfo;
 

@@ -21,7 +21,12 @@
 #ifndef NET_IPC_H
 #define NET_IPC_H
 
+#include "localconsts.h"
+
+PRAGMACLANG6(GCC diagnostic push)
+PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
 #include "net/sdltcpnet.h"
+PRAGMACLANG6(GCC diagnostic pop)
 
 #include <string>
 #include <vector>
