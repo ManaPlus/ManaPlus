@@ -12,7 +12,9 @@ rm ${ERRFILE}
 
 function do_init {
     $CC --version
+    check_error $?
     $CXX --version
+    check_error $?
 }
 
 function aptget_update {
