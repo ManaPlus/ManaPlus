@@ -162,13 +162,13 @@
 #endif  // __clang__
 
 #ifdef __GNUC__
-#if GCC_VERSION > 40500
+#if GCC_VERSION >= 40600
 #define PRAGMA45(str) _Pragma(#str)
 #elif defined(__clang__)
 #define PRAGMA45(str) _Pragma(#str)
-#else  // GCC_VERSION > 40400
+#else  // GCC_VERSION > 40600
 #define PRAGMA45(str)
-#endif  // GCC_VERSION > 40400
+#endif  // GCC_VERSION > 40600
 #endif  // __GNUC__
 
 #ifdef __GNUC__
