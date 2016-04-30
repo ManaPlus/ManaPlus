@@ -29,7 +29,11 @@
 #ifdef USE_SDL2
 #pragma GCC diagnostic pop
 #endif
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wold-style-cast"
 #include <SDL_net.h>
+#pragma GCC diagnostic pop
 
 #include "localconsts.h"
 
