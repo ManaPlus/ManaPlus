@@ -26,6 +26,7 @@
 #include "game.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/statuswindow.h"
 
 #include "gui/widgets/createwidget.h"
 
@@ -57,7 +58,6 @@
 
 #include "debug.h"
 
-extern Window *statusWindow;
 SetupWindow *setupWindow = nullptr;
 
 SetupWindow::SetupWindow() :

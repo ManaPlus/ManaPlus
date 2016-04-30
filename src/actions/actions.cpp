@@ -1322,14 +1322,13 @@ impHandler0(serverUnIgnoreAll)
 
 PRAGMA6(GCC diagnostic push)
 PRAGMA6(GCC diagnostic ignored "-Wnull-dereference")
-
 impHandler0(error)
 {
-    const int *const ptr = nullptr;
-    logger->log("test %d", *ptr);
+    int *const ptr = nullptr;
+    *(ptr + 1) = 20;
+//    logger->log("test %d", *ptr);
     exit(1);
 }
-
 PRAGMA6(GCC diagnostic pop)
 
 impHandler(dumpGraphics)

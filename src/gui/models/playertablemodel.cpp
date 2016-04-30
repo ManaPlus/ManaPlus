@@ -120,6 +120,8 @@ void PlayerTableModel::updateModelInRow(const int row) const
 {
     const DropDown *const choicebox = static_cast<DropDown *>(
         getElementAt(row, RELATION_CHOICE_COLUMN));
+    if (!choicebox)
+        return;
     player_relations.setRelation(getPlayerAt(row),
         static_cast<RelationT>(
         choicebox->getSelected()));

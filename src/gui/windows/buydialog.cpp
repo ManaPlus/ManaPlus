@@ -617,7 +617,11 @@ void BuyDialog::updateSlider(const int selectedItem)
     // Update money and adjust the max number of items
     // that can be bought
     mMaxItems -= mAmountItems;
-    setMoney(mMoney - mAmountItems * mShopItems->at(selectedItem)->getPrice());
+    const ShopItem *const item = mShopItems->at(selectedItem);
+    if (item)
+        setMoney(mMoney - mAmountItems * item->getPrice());
+    else
+        setMoney(mMoney);
 
     // Reset selection
     mAmountItems = 1;
