@@ -33,6 +33,12 @@
     + __GNUC_MINOR__ * 100 \
     + __GNUC_PATCHLEVEL__)
 
+#ifdef __clang__
+#define CLANG_VERSION (__clang_major__ * 10000 \
+    + __clang_minor__ * 100 \
+    + __clang_patchlevel__)
+#endif  // __clang__
+
 #if !defined(__GXX_EXPERIMENTAL_CXX0X__)
 #undef nullptr
 #define nullptr 0
@@ -55,6 +61,7 @@
 #define noexcept
 #endif  // __clang__
 #define noexcept2
+#define constexpr2
 
 // #define A_DELETE
 // #define A_DELETE_COPY
@@ -174,7 +181,7 @@
 
 #ifdef __clang__
 #define PRAGMACLANG(str) _Pragma(#str)
-#if __clang_major__ >= 6
+#if CLANG_VERSION >= 30800
 #define PRAGMACLANG6(str) _Pragma(#str)
 #else  // __clang_major__ >= 6
 #define PRAGMACLANG6(str)

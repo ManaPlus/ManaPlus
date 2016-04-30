@@ -162,6 +162,9 @@ unsigned char *php3_base64_decode(const unsigned char *restrict const string,
                 return nullptr;
             case 2:
                 k++;
+                // copy from 3. is it should be here?
+                result[k++] = 0;
+                break;
             case 3:
                 result[k++] = 0;
                 break;
