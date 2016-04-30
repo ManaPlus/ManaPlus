@@ -38,7 +38,11 @@
 #ifdef __native_client__
 #include <GL/Regal.h>
 #else
+#if defined(__APPLE__)
+#include <OpenGL/glext.h>
+#else  // defined(__APPLE__)
 #include <GL/glext.h>
+#endif  // defined(__APPLE__)
 #endif
 #endif
 

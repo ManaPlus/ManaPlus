@@ -30,9 +30,11 @@
 #include <GLES/glext.h>
 #else
 #include <SDL_opengl.h>
-#ifndef __native_client__
+#if defined(__APPLE__)
+#include <OpenGL/glext.h>
+#elif !defined(__native_client__)
 #include <GL/glext.h>
-#endif
+#endif  // defined(__APPLE__)
 #endif
 
 struct FBOInfo final

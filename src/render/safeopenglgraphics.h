@@ -37,9 +37,11 @@
 #define GL_GLEXT_PROTOTYPES 1
 #endif
 #include <SDL_opengl.h>
-#ifndef __native_client__
+#if defined(__APPLE__)
+#include <OpenGL/glext.h>
+#elif !defined(__native_client__)
 #include <GL/glext.h>
-#endif
+#endif  // defined(__APPLE__)
 #endif
 
 class SafeOpenGLGraphics final : public Graphics
