@@ -57,6 +57,11 @@ class MutexLocker final
     public:
         explicit MutexLocker(Mutex *const mutex);
 
+        MutexLocker(const MutexLocker &m) :
+            mMutex(m.mMutex)
+        {
+        }
+
         ~MutexLocker();
 
     private:
