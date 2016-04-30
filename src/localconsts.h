@@ -27,8 +27,6 @@
 #define CAST_U32 static_cast<uint32_t>
 #define CAST_SIZE static_cast<size_t>
 
-//#define noexcept2
-
 #define GCC_VERSION (__GNUC__ * 10000 \
     + __GNUC_MINOR__ * 100 \
     + __GNUC_PATCHLEVEL__)
