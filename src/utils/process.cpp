@@ -212,10 +212,10 @@ bool execFile(const std::string &pathName, const std::string &name,
                 arg2.c_str(), static_cast<char *>(nullptr));
         }
         _exit(-1);
-        PRAGMA45(GCC diagnostic push)
-        PRAGMA45(GCC diagnostic ignored "-Wunreachable-code-return")
+        PRAGMACLANG6(GCC diagnostic push)
+        PRAGMACLANG6(GCC diagnostic ignored "-Wunreachable-code-return")
         return false;
-        PRAGMA45(GCC diagnostic pop)
+        PRAGMACLANG6(GCC diagnostic pop)
     }
     return true;
 }

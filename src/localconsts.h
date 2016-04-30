@@ -157,8 +157,14 @@
 
 #ifdef __clang__
 #define PRAGMACLANG(str) _Pragma(#str)
+#if __clang_major__ >= 6
+#define PRAGMACLANG6(str) _Pragma(#str)
+#else  // __clang_major__ >= 6
+#define PRAGMACLANG6(str)
+#endif  // __clang_major__ >= 6
 #else  // __clang__
 #define PRAGMACLANG(str)
+#define PRAGMACLANG6(str)
 #endif  // __clang__
 
 #ifdef __GNUC__
