@@ -84,6 +84,27 @@ class KeyInput final
             mActionId(InputAction::UNDEFINED_VALUE)
         { }
 
+        KeyInput(const KeyInput &k) :
+            mKey(k.mKey),
+            mType(k.mType),
+#ifdef USE_SDL2
+            mText(k.mText),
+#endif
+            mActionId(k.mActionId)
+        {
+        }
+
+        KeyInput &operator=(const KeyInput &k)
+        {
+            mKey = k.mKey;
+            mType = k.mType;
+#ifdef USE_SDL2
+            mText = k.mText;
+#endif
+            mActionId = k.mActionId;
+            return *this;
+        }
+
         ~KeyInput()
         { }
 
