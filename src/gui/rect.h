@@ -91,6 +91,23 @@ class Rect notfinal
           */
         Rect(const int x, const int y, const int width, const int height);
 
+        Rect(const Rect &r) :
+            x(r.x),
+            y(r.y),
+            width(r.width),
+            height(r.height)
+        {
+        }
+
+        Rect &operator=(const Rect &r)
+        {
+            x = r.x;
+            y = r.y;
+            width = r.width;
+            height = r.height;
+            return *this;
+        }
+
         virtual ~Rect()
         { }
 
