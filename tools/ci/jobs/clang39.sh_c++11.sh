@@ -9,7 +9,7 @@ source ./tools/ci/scripts/init.sh
 aptget_install clang-3.9 libc++-dev \
     make autoconf automake autopoint gettext libphysfs-dev \
     libxml2-dev libcurl4-gnutls-dev libpng-dev \
-    libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+    libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 export CXXFLAGS="-Weverything -Wno-documentation -Wno-padded -Wno-sign-conversion \
 -Wno-global-constructors -Wno-exit-time-destructors -Wno-weak-vtables \
@@ -17,10 +17,11 @@ export CXXFLAGS="-Weverything -Wno-documentation -Wno-padded -Wno-sign-conversio
 -Wno-shorten-64-to-32 -Wno-missing-variable-declarations \
 -Wno-disabled-macro-expansion -Wno-format-nonliteral -stdlib=libc++ \
 -Wno-reserved-id-macro -Wno-packed -Wno-documentation-unknown-command \
--Wno-variadic-macros -Wno-double-promotion"
+-Wno-variadic-macros -Wno-double-promotion \
+-O3 -std=c++11 -Wno-c++98-compat-pedantic"
 
 do_init
-run_configure --enable-werror --with-sdl2 $*
+run_configure --enable-werror $*
 run_make
 
 source ./tools/ci/scripts/exit.sh

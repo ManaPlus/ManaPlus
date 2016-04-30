@@ -17,8 +17,7 @@ export CXXFLAGS="-Weverything -Wno-documentation -Wno-padded -Wno-sign-conversio
 -Wno-shorten-64-to-32 -Wno-missing-variable-declarations \
 -Wno-disabled-macro-expansion -Wno-format-nonliteral -stdlib=libc++ \
 -Wno-reserved-id-macro -Wno-packed -Wno-documentation-unknown-command \
--Wno-variadic-macros -Wno-double-promotion \
--Wno-old-style-cast"
+-Wno-variadic-macros -Wno-double-promotion"
 
 do_init
 run_configure --enable-werror $*

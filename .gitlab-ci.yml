@@ -63,6 +63,12 @@ clang-3.9:
   - ./tools/ci/jobs/clang39.sh
   image: debian:unstable
 
+clang-3.9_c++11:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang39.sh_c++11.sh
+  image: debian:unstable
+
 gcc-4.8_c++11:
   stage: build
   script:
