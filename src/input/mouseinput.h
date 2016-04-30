@@ -82,6 +82,29 @@ class MouseInput final
             mRealY(0)
         { }
 
+        MouseInput(const MouseInput &m) :
+            mType(m.mType),
+            mButton(m.mButton),
+            mTimeStamp(m.mTimeStamp),
+            mX(m.mX),
+            mY(m.mY),
+            mRealX(m.mRealX),
+            mRealY(m.mRealY)
+        {
+        }
+
+        MouseInput &operator=(const MouseInput &m)
+        {
+            mType = m.mType;
+            mButton = m.mButton;
+            mTimeStamp = m.mTimeStamp;
+            mX = m.mX;
+            mY = m.mY;
+            mRealX = m.mRealX;
+            mRealY = m.mRealY;
+            return *this;
+        }
+
         ~MouseInput()
         { }
 
