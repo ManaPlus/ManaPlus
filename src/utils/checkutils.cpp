@@ -67,7 +67,7 @@ void reportStack(const char *const file,
 
     logger->log("--- %s --------------------------------------------",
         name);
-    logger->assert("%s:%u: '%s' in function `%s'",
+    logger->assertLog("%s:%u: '%s' in function `%s'",
         file,
         line,
         text,

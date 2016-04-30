@@ -120,7 +120,7 @@ class Logger final
         /**
          * Enters a message in the log. The message will be timestamped.
          */
-        void assert(const char *const log_text, ...) A_NONNULL(2)
+        void assertLog(const char *const log_text, ...) A_NONNULL(2)
 #ifdef __GNUC__
 #ifdef __OpenBSD__
 

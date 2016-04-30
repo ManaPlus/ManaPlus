@@ -264,7 +264,7 @@ void Logger::log(const char *const log_text, ...)
     delete [] buf;
 }
 
-void Logger::assert(const char *const log_text, ...)
+void Logger::assertLog(const char *const log_text, ...)
 {
     if (settings.disableLoggingInGame)
         return;
