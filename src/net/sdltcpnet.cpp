@@ -18,10 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/sdltcpnet.h"
+#include "logger.h"
 
 #if defined __linux__ || defined __linux
-#include "logger.h"
 
 #include <sys/socket.h>
 
@@ -41,6 +40,11 @@
 #endif
 
 #endif
+
+PRAGMACLANG6(GCC diagnostic push)
+PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
+#include "net/sdltcpnet.h"
+PRAGMACLANG6(GCC diagnostic pop)
 
 #include "debug.h"
 
