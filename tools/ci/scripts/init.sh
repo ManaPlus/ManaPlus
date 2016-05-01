@@ -67,6 +67,35 @@ function aptget_install {
     fi
 }
 
+function gitclone {
+    git clone $*
+    if [ "$?" != 0 ]; then
+        sleep 1s
+        git clone $*
+        if [ "$?" != 0 ]; then
+            sleep 3s
+            git clone $*
+            if [ "$?" != 0 ]; then
+                sleep 5s
+                git clone $*
+                if [ "$?" != 0 ]; then
+                    sleep 10s
+                    git clone $*
+                    if [ "$?" != 0 ]; then
+                        sleep 15s
+                        git clone $*
+                        if [ "$?" != 0 ]; then
+                            sleep 20s
+                            git clone $*
+                        fi
+                    fi
+                fi
+            fi
+        fi
+    fi
+    check_error $?
+}
+
 function check_error {
     if [ "$1" != 0 ]; then
         cat $ERRFILE
