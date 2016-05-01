@@ -22,6 +22,36 @@ gcc-6:
   - ./tools/ci/jobs/gcc6.sh
   image: debian:unstable
 
+mplint_po:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/mplint.sh po
+  image: debian:unstable
+
+mplint_src:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/mplint.sh src
+  image: debian:unstable
+
+mplint_data:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/mplint.sh data
+  image: debian:unstable
+
+cpplint:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/cpplint.sh
+  image: debian:unstable
+
+gcc-5_h_all:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
+  image: debian:unstable
+
 # simple builds
 
 gcc-4.4:
@@ -363,12 +393,6 @@ gcc-5_h_eathena_tmwa:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_LIBXML
   image: debian:unstable
 
-gcc-5_h_all:
-  stage: test
-  script:
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
-  image: debian:unstable
-
 gcc-5_h_pugi_all:
   stage: test
   script:
@@ -379,30 +403,6 @@ gcc-5_tarball:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_tarball.sh
-  image: debian:unstable
-
-mplint_po:
-  stage: test
-  script:
-  - ./tools/ci/jobs/mplint.sh po
-  image: debian:unstable
-
-mplint_src:
-  stage: test
-  script:
-  - ./tools/ci/jobs/mplint.sh src
-  image: debian:unstable
-
-mplint_data:
-  stage: test
-  script:
-  - ./tools/ci/jobs/mplint.sh data
-  image: debian:unstable
-
-cpplint:
-  stage: test
-  script:
-  - ./tools/ci/jobs/cpplint.sh
   image: debian:unstable
 
 # reports
