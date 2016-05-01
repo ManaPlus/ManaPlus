@@ -29,6 +29,14 @@ function aptget_update {
             if [ "$?" != 0 ]; then
                 sleep 5s
                 apt-get update
+                if [ "$?" != 0 ]; then
+                    sleep 10s
+                    apt-get update
+                    if [ "$?" != 0 ]; then
+                        sleep 15s
+                        apt-get update
+                    fi
+                fi
             fi
         fi
     fi
@@ -42,11 +50,19 @@ function aptget_install {
         apt-get -y -qq install $*
         if [ "$?" != 0 ]; then
             sleep 2s
+            apt-get -y -qq install $*
             if [ "$?" != 0 ]; then
                 sleep 5s
                 apt-get -y -qq install $*
+                if [ "$?" != 0 ]; then
+                    sleep 10s
+                    apt-get -y -qq install $*
+                    if [ "$?" != 0 ]; then
+                        sleep 15s
+                        apt-get -y -qq install $*
+                    fi
+                fi
             fi
-            apt-get -y -qq install $*
         fi
     fi
 }
