@@ -1,4 +1,5 @@
 stages:
+  - prebuild
   - build
   - test
   - success
@@ -6,6 +7,20 @@ stages:
 
 before_script:
   - uname -a
+
+# pre build
+
+clang-3.9:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/clang39.sh
+  image: debian:unstable
+
+gcc-6:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc6.sh
+  image: debian:unstable
 
 # simple builds
 
@@ -56,12 +71,6 @@ clang-3.5:
   script:
   - ./tools/ci/jobs/clang35.sh
   image: debian:stable
-
-clang-3.9:
-  stage: build
-  script:
-  - ./tools/ci/jobs/clang39.sh
-  image: debian:unstable
 
 .clang-3.9_c++11:
   stage: build
@@ -127,12 +136,6 @@ gcc-snapshot_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
-  image: debian:unstable
-
-gcc-6:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc6.sh
   image: debian:unstable
 
 gcc-5_sanitize:
