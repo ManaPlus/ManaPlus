@@ -1777,6 +1777,7 @@ endif
 
 manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      enums/enums_unittest.cc \
+	      utils/checkutils_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/timer_unittest.cc \
 	      utils/xmlutils_unittest.cc \
