@@ -29,6 +29,12 @@
 #define reportTrue(val) \
     reportTrueReal(val, #val, __FILE__, __LINE__, __func__)
 
+#define failFalse(val) \
+    failFalseReal(val, #val, __FILE__, __LINE__, __func__)
+
+#define failTrue(val) \
+    failTrueReal(val, #val, __FILE__, __LINE__, __func__)
+
 bool reportFalseReal(const bool val,
                      const char *const text,
                      const char *const file,
@@ -41,6 +47,18 @@ bool reportTrueReal(const bool val,
                     const unsigned line,
                     const char *const func);
 
+bool failFalseReal(const bool val,
+                   const char *const text,
+                   const char *const file,
+                   const unsigned line,
+                   const char *const func);
+
+bool failTrueReal(const bool val,
+                  const char *const text,
+                  const char *const file,
+                  const unsigned line,
+                  const char *const func);
+
 void reportStack(const char *const file,
                  const unsigned int line,
                  const char *const func,
@@ -51,6 +69,8 @@ void reportStack(const char *const file,
 
 #define reportFalse(val) (val)
 #define reportTrue(val) (val)
+#define failFalse(val) (val)
+#define failTrue(val) (val)
 
 #endif  // ENABLE_ASSERTS
 #endif  // UTILS_CHECKUTILS_H

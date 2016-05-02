@@ -52,6 +52,34 @@ bool reportTrueReal(const bool val,
     return val;
 }
 
+bool failFalseReal(const bool val,
+                   const char *const text,
+                   const char *const file,
+                   const unsigned line,
+                   const char *const func)
+{
+    if (!val)
+    {
+        reportStack(file, line, func, "Detected false value", text);
+        throw new std::exception;
+    }
+    return val;
+}
+
+bool failTrueReal(const bool val,
+                  const char *const text,
+                  const char *const file,
+                  const unsigned line,
+                  const char *const func)
+{
+    if (val)
+    {
+        reportStack(file, line, func, "Detected true value", text);
+        throw new std::exception;
+    }
+    return val;
+}
+
 void reportStack(const char *const file,
                  const unsigned int line,
                  const char *const func,

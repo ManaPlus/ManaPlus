@@ -43,5 +43,17 @@ TEST_CASE("CheckUtils")
         REQUIRE(reportTrue(true) == true);
     }
 
+    SECTION("failFalse")
+    {
+        REQUIRE_THROWS(failFalse(false) == false);
+        REQUIRE(failFalse(true) == true);
+    }
+
+    SECTION("failTrue")
+    {
+        REQUIRE(failTrue(false) == false);
+        REQUIRE_THROWS(failTrue(true) == true);
+    }
+
     delete2(logger);
 }
