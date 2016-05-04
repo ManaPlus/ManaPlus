@@ -85,10 +85,22 @@ void reportStack(const char *const file,
 #define reportTrue(val) (val)
 #define failFalse(val) (val)
 #define failTrue(val) (val)
-#define returnTrueV(val)
-#define returnFalseV(val)
-#define returnTrue(val)
-#define returnFalse(val)
+
+#define returnFalseV(val) \
+    if (!val) \
+        return;
+
+#define returnTrueV(val) \
+    if (val) \
+        return;
+
+#define returnFalse(ret, val) \
+    if (!val) \
+        return ret;
+
+#define returnTrue(ret, val) \
+    if (val) \
+        return ret;
 
 #endif  // ENABLE_ASSERTS
 #endif  // UTILS_CHECKUTILS_H
