@@ -73,6 +73,22 @@
         return ret; \
     }
 
+#define returnNullptrV(val) \
+    if ((val) == nullptr) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected null value", #val); \
+        return; \
+    }
+
+#define returnNullptr(ret, val) \
+    if ((val) == nullptr) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected null value", #val); \
+        return ret; \
+    }
+
 void reportStack(const char *const file,
                  const unsigned int line,
                  const char *const func,
@@ -101,6 +117,14 @@ void reportStack(const char *const file,
 #define returnTrue(ret, val) \
     if (val) \
         return ret;
+
+#define returnNullptrV(val) \
+    if ((val) == nullptr) \
+        return; \
+
+#define returnNullptr(ret, val) \
+    if ((val) == nullptr) \
+        return ret; \
 
 #endif  // ENABLE_ASSERTS
 #endif  // UTILS_CHECKUTILS_H

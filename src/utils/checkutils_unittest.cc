@@ -58,6 +58,19 @@ static int testReturnTrue(const bool val)
     return 1;
 }
 
+static int testReturnNullptr(void *val)
+{
+    returnNullptr(0, val);
+    return 1;
+}
+
+static void testReturnNullptrV(void *val)
+{
+    flag = false;
+    returnNullptrV(val);
+    flag = true;
+}
+
 TEST_CASE("CheckUtils")
 {
     logger = new Logger;
@@ -112,6 +125,20 @@ TEST_CASE("CheckUtils")
     {
         REQUIRE(testReturnTrue(false) == 1);
         REQUIRE(testReturnTrue(true) == 0);
+    }
+
+    SECTION("returnNullptr")
+    {
+        REQUIRE(testReturnNullptr(nullptr) == 0);
+        REQUIRE(testReturnNullptr((void*)1) == 1);
+    }
+
+    SECTION("returnNullptrV")
+    {
+        testReturnNullptrV(nullptr);
+        REQUIRE(flag == false);
+        testReturnNullptrV((void*)1);
+        REQUIRE(flag == true);
     }
 
     delete2(logger);
