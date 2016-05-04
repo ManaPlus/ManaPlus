@@ -43,7 +43,7 @@ void reportStack(const char *const file,
     int i;
 #endif  // defined __linux__ || defined __linux
 
-    logger->log("--- %s --------------------------------------------",
+    logger->log("--- Assert: %s --------------------------------------------",
         name);
     logger->assertLog("%s:%u: '%s' in function `%s'",
         file,
