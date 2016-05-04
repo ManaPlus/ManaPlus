@@ -2388,7 +2388,7 @@ void LocalPlayer::followMoveTo(const Being *const being,
          being->mName == mPlayerFollowed)
     {
         mPickUpTarget = nullptr;
-        setDestination(x, y);
+        navigateTo(x, y);
     }
 }
 
@@ -2406,20 +2406,20 @@ void LocalPlayer::followMoveTo(const Being *const being,
         switch (settings.followMode)
         {
             case 0:
-                setDestination(x1, y1);
+                navigateTo(x1, y1);
                 setNextDest(x2, y2);
                 break;
             case 1:
                 if (x1 != x2 || y1 != y2)
                 {
-                    setDestination(mX + x2 - x1, mY + y2 - y1);
+                    navigateTo(mX + x2 - x1, mY + y2 - y1);
                     setNextDest(mX + x2 - x1, mY + y2 - y1);
                 }
                 break;
             case 2:
                 if (x1 != x2 || y1 != y2)
                 {
-                    setDestination(mX + x1 - x2, mY + y1 - y2);
+                    navigateTo(mX + x1 - x2, mY + y1 - y2);
                     setNextDest(mX + x1 - x2, mY + y1 - y2);
                 }
                 break;
