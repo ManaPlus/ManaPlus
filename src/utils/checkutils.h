@@ -35,6 +35,38 @@
 #define failTrue(val) \
     failTrueReal(val, #val, __FILE__, __LINE__, __func__)
 
+#define returnFalseV(val) \
+    if (!val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected false value", #val); \
+        return; \
+    }
+
+#define returnTrueV(val) \
+    if (val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected true value", #val); \
+        return; \
+    }
+
+#define returnFalse(ret, val) \
+    if (!val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected false value", #val); \
+        return ret; \
+    }
+
+#define returnTrue(ret, val) \
+    if (val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected true value", #val); \
+        return ret; \
+    }
+
 bool reportFalseReal(const bool val,
                      const char *const text,
                      const char *const file,
@@ -71,6 +103,10 @@ void reportStack(const char *const file,
 #define reportTrue(val) (val)
 #define failFalse(val) (val)
 #define failTrue(val) (val)
+#define returnTrueV(val)
+#define returnFalseV(val)
+#define returnTrue(val)
+#define returnFalse(val)
 
 #endif  // ENABLE_ASSERTS
 #endif  // UTILS_CHECKUTILS_H

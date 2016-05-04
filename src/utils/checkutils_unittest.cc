@@ -27,6 +27,37 @@
 
 #include "debug.h"
 
+namespace
+{
+    bool flag = false;
+}  // namespace
+
+static void testReturnFalseV(const bool val)
+{
+    flag = false;
+    returnFalseV(val);
+    flag = true;
+}
+
+static void testReturnTrueV(const bool val)
+{
+    flag = false;
+    returnTrueV(val);
+    flag = true;
+}
+
+static int testReturnFalse(const bool val)
+{
+    returnFalse(0, val);
+    return 1;
+}
+
+static int testReturnTrue(const bool val)
+{
+    returnTrue(0, val);
+    return 1;
+}
+
 TEST_CASE("CheckUtils")
 {
     logger = new Logger;
@@ -53,6 +84,34 @@ TEST_CASE("CheckUtils")
     {
         REQUIRE(failTrue(false) == false);
         REQUIRE_THROWS(failTrue(true) == true);
+    }
+
+    SECTION("returnFalseV")
+    {
+        testReturnFalseV(false);
+        REQUIRE(flag == false);
+        testReturnFalseV(true);
+        REQUIRE(flag == true);
+    }
+
+    SECTION("returnTrueV")
+    {
+        testReturnTrueV(false);
+        REQUIRE(flag == true);
+        testReturnTrueV(true);
+        REQUIRE(flag == false);
+    }
+
+    SECTION("returnFalse")
+    {
+        REQUIRE(testReturnFalse(false) == 0);
+        REQUIRE(testReturnFalse(true) == 1);
+    }
+
+    SECTION("returnTrue")
+    {
+        REQUIRE(testReturnTrue(false) == 1);
+        REQUIRE(testReturnTrue(true) == 0);
     }
 
     delete2(logger);
