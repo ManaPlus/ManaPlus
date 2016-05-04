@@ -539,6 +539,8 @@ gcc-5_tarball:
 
 success:
   stage: success
+  script:
+  - echo "nothing"
   image: debian:unstable
   when: on_success
   tags:
@@ -546,6 +548,8 @@ success:
 
 failure:
   stage: failure
+  script:
+  - echo "nothing"
   image: debian:unstable
   when: on_failure
   tags:
