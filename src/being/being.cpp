@@ -96,6 +96,7 @@
 
 #include "gui/widgets/tabs/chat/langtab.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/files.h"
 #include "utils/gettext.h"
@@ -3307,7 +3308,9 @@ void Being::recalcSpritesOrder() restrict2
         updatedSprite[slot] = false;
     }
 
-    const size_t spriteIdSize = mSpriteIDs.size();
+    size_t spriteIdSize = mSpriteIDs.size();
+    if (reportTrue(spriteIdSize > 20))
+        spriteIdSize = 20;
 
     for (size_t slot = 0; slot < sz; slot ++)
     {
@@ -3555,7 +3558,7 @@ void Being::recalcSpritesOrder() restrict2
             }
         }
     }
-    for (unsigned slot = 0; slot < spriteIdSize; slot ++)
+    for (size_t slot = 0; slot < spriteIdSize; slot ++)
     {
         if (mSpriteHide[slot] == 0)
         {
