@@ -351,7 +351,9 @@ FloorItem *ActorManager::createItem(const BeingId id,
 
 void ActorManager::destroy(ActorSprite *const actor)
 {
-    if (!actor || actor == localPlayer)
+    returnNullptrV(actor);
+
+    if (actor == localPlayer)
         return;
 
     mDeleteActors.insert(actor);
@@ -359,7 +361,9 @@ void ActorManager::destroy(ActorSprite *const actor)
 
 void ActorManager::erase(ActorSprite *const actor)
 {
-    if (!actor || actor == localPlayer)
+    returnNullptrV(actor);
+
+    if (actor == localPlayer)
         return;
 
     mActors.erase(actor);
@@ -370,7 +374,9 @@ void ActorManager::erase(ActorSprite *const actor)
 
 void ActorManager::undelete(const ActorSprite *const actor)
 {
-    if (!actor || actor == localPlayer)
+    returnNullptrV(actor);
+
+    if (actor == localPlayer)
         return;
 
     FOR_EACH (ActorSpritesConstIterator, it, mDeleteActors)
@@ -429,7 +435,7 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
 
         for_actorsm
         {
-            if (!*it)
+            if (reportTrue(*it == nullptr))
                 continue;
 
             if ((*it)->getType() == ActorType::Portal)
@@ -497,7 +503,7 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
     {
         for_actorsm
         {
-            if (!*it)
+            if (reportTrue(*it == nullptr))
                 continue;
 
             if ((*it)->getType() == ActorType::Portal ||
@@ -544,7 +550,7 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
     {
         ActorSprite *const actor = *it;
 
-        if (!actor)
+        if (reportTrue(actor == nullptr))
             continue;
 
         const ActorTypeT actorType = actor->getType();
@@ -610,7 +616,7 @@ Being *ActorManager::findPortalByTile(const int x, const int y) const
 
     for_actorsm
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getType() != ActorType::Portal)
@@ -631,8 +637,8 @@ FloorItem *ActorManager::findItem(const BeingId id) const
     if (it != mActorsIdMap.end())
     {
         ActorSprite *const actor = (*it).second;
-        if (actor &&
-            actor->getId() == id &&
+        returnNullptr(nullptr, actor);
+        if (actor->getId() == id &&
             actor->getType() == ActorType::FloorItem)
         {
             return static_cast<FloorItem*>(actor);
@@ -645,7 +651,7 @@ FloorItem *ActorManager::findItem(const int x, const int y) const
 {
     for_actorsm
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getTileX() == x && (*it)->getTileY() == y &&
@@ -671,7 +677,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
     {
         for_actorsm
         {
-            if (!*it)
+            if (reportTrue(*it == nullptr))
                 continue;
 
             if ((*it)->getType() == ActorType::FloorItem
@@ -706,7 +712,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
         unsigned cnt = 65535;
         for_actorsm
         {
-            if (!*it)
+            if (reportTrue(*it == nullptr))
                 continue;
 
             if ((*it)->getType() == ActorType::FloorItem
@@ -768,7 +774,7 @@ bool ActorManager::pickUpNearest(const int x, const int y,
 
     for_actorsm
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getType() == ActorType::FloorItem)
@@ -814,7 +820,7 @@ Being *ActorManager::findBeingByName(const std::string &name,
 {
     for_actorsm
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getType() == ActorType::FloorItem
@@ -848,7 +854,7 @@ Being *ActorManager::findNearestByName(const std::string &name,
 
     for_actorsm
     {
-        if (reportTrue(!*it))
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getType() == ActorType::FloorItem
@@ -893,7 +899,7 @@ void ActorManager::logic()
     BLOCK_START("ActorManager::logic")
     for_actors
     {
-        if (*it)
+        if (reportFalse(*it))
             (*it)->logic();
     }
 
@@ -1004,7 +1010,8 @@ Being *ActorManager::findNearestPvpPlayer() const
 
         Being *const being = static_cast<Being*>(*it);
 
-        if (!being || !being->isAlive() ||
+        if (reportTrue(being == nullptr) ||
+            !being->isAlive() ||
             localPlayer == being)
         {
             continue;
@@ -1130,7 +1137,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 
         FOR_EACH (ActorSprites::iterator, i, mActors)
         {
-            if (!*i)
+            if (reportTrue(*i == nullptr))
                 continue;
 
             if ((*i)->getType() == ActorType::FloorItem
@@ -1228,11 +1235,11 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 
         FOR_EACH (ActorSprites::iterator, i, mActors)
         {
-            if (!*i)
+            if (reportTrue(*i == nullptr))
                 continue;
 
-            if ((*i)->getType() == ActorType::FloorItem
-                || (*i)->getType() == ActorType::Portal)
+            if ((*i)->getType() == ActorType::FloorItem ||
+                (*i)->getType() == ActorType::Portal)
             {
                 continue;
             }
@@ -1542,7 +1549,7 @@ void ActorManager::printBeingsToChat(const std::string &header) const
     debugChatTab->chatLog(header, ChatMsgType::BY_SERVER);
     for_actors
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getType() == ActorType::FloorItem)
@@ -1619,11 +1626,11 @@ void ActorManager::getPlayerNames(StringVect &names,
 
     for_actors
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
-        if ((*it)->getType() == ActorType::FloorItem
-            || (*it)->getType() == ActorType::Portal)
+        if ((*it)->getType() == ActorType::FloorItem ||
+            (*it)->getType() == ActorType::Portal)
         {
             continue;
         }
@@ -1645,7 +1652,7 @@ void ActorManager::getMobNames(StringVect &names) const
 
     for_actors
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getType() == ActorType::FloorItem
@@ -1667,7 +1674,7 @@ void ActorManager::updatePlayerNames() const
 {
     for_actorsm
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getType() == ActorType::FloorItem
@@ -1687,7 +1694,7 @@ void ActorManager::updatePlayerColors() const
 {
     for_actorsm
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getType() == ActorType::FloorItem
@@ -1706,7 +1713,7 @@ void ActorManager::updatePlayerGuild() const
 {
     for_actorsm
     {
-        if (!*it)
+        if (reportTrue(*it == nullptr))
             continue;
 
         if ((*it)->getType() == ActorType::FloorItem
@@ -1994,7 +2001,9 @@ void ActorManager::updateEffects(const std::map<BeingTypeId, int> &addEffects,
 {
     for_actorsm
     {
-        if (!*it || (*it)->getType() != ActorType::Npc)
+        if (reportTrue(*it == nullptr))
+            continue;
+        if ((*it)->getType() != ActorType::Npc)
             continue;
         Being *const being = static_cast<Being*>(*it);
         const BeingTypeId type = being->getSubType();
@@ -2011,8 +2020,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
                                 const int dx, const int dy,
                                 const int id)
 {
-    if (!srcBeing)
-        return nullptr;
+    returnNullptr(nullptr, srcBeing);
     Being *const dstBeing = actorManager->createBeing(fromInt(
         toInt(srcBeing->getId(), int) + id, BeingId),
         ActorType::Player,
