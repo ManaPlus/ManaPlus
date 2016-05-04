@@ -24,16 +24,22 @@
 #ifdef ENABLE_ASSERTS
 
 #define reportFalse(val) \
-    reportFalseReal(val, #val, __FILE__, __LINE__, __func__)
+    (val ? true : (reportStack(__FILE__, __LINE__, __func__, \
+        "Detected false value", #val), false))
 
 #define reportTrue(val) \
-    reportTrueReal(val, #val, __FILE__, __LINE__, __func__)
+    (val ? (reportStack(__FILE__, __LINE__, __func__, \
+        "Detected false value", #val), true) : false)
 
 #define failFalse(val) \
-    failFalseReal(val, #val, __FILE__, __LINE__, __func__)
+    (val ? true : (reportStack(__FILE__, __LINE__, __func__, \
+        "Detected false value", #val), \
+        throw new std::exception(), false))
 
 #define failTrue(val) \
-    failTrueReal(val, #val, __FILE__, __LINE__, __func__)
+    (val ? (reportStack(__FILE__, __LINE__, __func__, \
+        "Detected false value", #val), \
+        throw new std::exception(), true) : false)
 
 #define returnFalseV(val) \
     if (!val) \
@@ -66,30 +72,6 @@
             "Detected true value", #val); \
         return ret; \
     }
-
-bool reportFalseReal(const bool val,
-                     const char *const text,
-                     const char *const file,
-                     const unsigned line,
-                     const char *const func);
-
-bool reportTrueReal(const bool val,
-                    const char *const text,
-                    const char *const file,
-                    const unsigned line,
-                    const char *const func);
-
-bool failFalseReal(const bool val,
-                   const char *const text,
-                   const char *const file,
-                   const unsigned line,
-                   const char *const func);
-
-bool failTrueReal(const bool val,
-                  const char *const text,
-                  const char *const file,
-                  const unsigned line,
-                  const char *const func);
 
 void reportStack(const char *const file,
                  const unsigned int line,
