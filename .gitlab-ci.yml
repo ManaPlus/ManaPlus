@@ -15,42 +15,56 @@ clang-3.9:
   script:
   - ./tools/ci/jobs/clang39.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-6:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6.sh
   image: debian:unstable
+  tags:
+    - docker
 
 mplint_po:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh po
   image: debian:unstable
+  tags:
+    - docker
 
 mplint_src:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh src
   image: debian:unstable
+  tags:
+    - docker
 
 mplint_data:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh data
   image: debian:unstable
+  tags:
+    - docker
 
 cpplint:
   stage: prebuild
   script:
   - ./tools/ci/jobs/cpplint.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_h_all:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
   image: debian:unstable
+  tags:
+    - docker
 
 # simple builds
 
@@ -59,264 +73,352 @@ gcc-4.4:
   script:
   - ./tools/ci/jobs/gcc44.sh
   image: debian:oldstable
+  tags:
+    - docker
 
 gcc-4.5:
   stage: build
   script:
   - ./tools/ci/jobs/gcc45.sh
   image: ubuntu:12.04
+  tags:
+    - docker
 
 gcc-4.6:
   stage: build
   script:
   - ./tools/ci/jobs/gcc46.sh
   image: debian:oldstable
+  tags:
+    - docker
 
 gcc-4.7:
   stage: build
   script:
   - ./tools/ci/jobs/gcc47.sh
   image: debian:oldstable
+  tags:
+    - docker
 
 gcc-4.8:
   stage: build
   script:
   - ./tools/ci/jobs/gcc48.sh
   image: debian:stable
+  tags:
+    - docker
 
 clang-3.0:
   stage: build
   script:
   - ./tools/ci/jobs/clang3.sh
   image: debian:oldstable
+  tags:
+    - docker
 
 clang-3.4:
   stage: build
   script:
   - ./tools/ci/jobs/clang34.sh
   image: debian:stable
+  tags:
+    - docker
 
 clang-3.5:
   stage: build
   script:
   - ./tools/ci/jobs/clang35.sh
   image: debian:stable
+  tags:
+    - docker
 
 .clang-3.9_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/clang39.sh_c++11.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-4.8_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc48_c++11.sh
   image: debian:stable
+  tags:
+    - docker
 
 gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-4.9_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49_c++11.sh
   image: debian:unstable
+  tags:
+    - docker
 
 cmake_gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/cmake_gcc49.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_sdl2_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-snapshot:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-snapshot_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-6_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --without-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_eathena:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --without-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_opengl_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_opengl_debug:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh --with-opengl --enable-tmwa --disable-eathena --enable-memdebug=yes
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_without_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --without-opengl
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_cilkplus:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh --enable-cilkplus
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_eathena_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_eathena_opengl_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_eathena:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --without-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_eathena_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_opengl_portable:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --enable-tmwa --disable-eathena --enable-portable=yes
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_opengl_portable_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --enable-tmwa --disable-eathena --enable-portable=yes
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_portable:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --enable-tmwa --enable-eathena --enable-portable=yes
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_opengl_nonls:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --enable-tmwa --disable-eathena --disable-nls
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_opengl_nonls_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --enable-tmwa --disable-eathena --disable-nls
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_eathena_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh --without-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_sdl2_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh --without-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_tmwa_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh --without-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 gcc_eathena_sdl2_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh --without-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
+  tags:
+    - docker
 
 clang-3.9_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/clang39_sdl2.sh
   image: debian:unstable
+  tags:
+    - docker
 
 # tests
 
@@ -325,48 +427,64 @@ gcc-5_tests:
   script:
   - ./tools/ci/jobs/gcc5_tests.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-6_tests:
   stage: test
   script:
   - ./tools/ci/jobs/gcc6_tests.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-6_lto:
   stage: test
   script:
   - ./tools/ci/jobs/gcc6_lto.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_sanitize_tests:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_sdl2_tests:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_h_eathena:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DENABLE_LIBXML
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_h_eathena_pugi:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DENABLE_PUGIXML
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_h_eathena_opengl:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DUSE_OPENGL -DENABLE_LIBXML
   image: debian:unstable
+  tags:
+    - docker
 
 fake_build:
   stage: test
@@ -374,49 +492,61 @@ fake_build:
   - echo "fake build for workaround gitlab ci issue"
   image: debian:unstable
   allow_failure: true
+  tags:
+    - docker
 
 gcc-5_h_eathena_opengl_pugi:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DUSE_OPENGL -DENABLE_PUGIXML
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_h_eathena_nsl:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_h_eathena_tmwa:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_LIBXML
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_h_pugi_all:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_tarball:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_tarball.sh
   image: debian:unstable
+  tags:
+    - docker
 
 # reports
 
 success:
   stage: success
-  script:
-  - echo "do nothing"
   image: debian:unstable
   when: on_success
+  tags:
+    - docker
 
 failure:
   stage: failure
-  script:
-  - echo "do nothing"
   image: debian:unstable
   when: on_failure
+  tags:
+    - docker
