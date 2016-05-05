@@ -2078,6 +2078,9 @@ void Being::drawEmotion(Graphics *restrict const graphics,
                         const int offsetX,
                         const int offsetY) const restrict2
 {
+    if (mErased)
+        return;
+
     const int px = mPixelX - offsetX - mapTileSize / 2;
     const int py = mPixelY - offsetY - mapTileSize * 2 - mapTileSize;
     if (mAnimationEffect)
@@ -2119,6 +2122,8 @@ void Being::drawEmotion(Graphics *restrict const graphics,
 void Being::drawSpeech(const int offsetX,
                        const int offsetY) restrict2
 {
+    if (mErased)
+        return;
     if (mSpeech.empty())
         return;
 
