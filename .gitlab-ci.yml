@@ -66,6 +66,14 @@ gcc-5_h_all:
   tags:
     - docker
 
+pngcheck:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/pngcheck.sh
+  image: debian:unstable
+  tags:
+    - docker
+
 # simple builds
 
 gcc-4.4:
