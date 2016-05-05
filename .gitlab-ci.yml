@@ -420,7 +420,7 @@ clang-3.9_sdl2:
   tags:
     - docker
 
-gcc-6_all:
+gcc-6_no_asserts:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --disable-asserts
