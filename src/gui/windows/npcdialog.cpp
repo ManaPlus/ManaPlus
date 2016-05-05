@@ -626,13 +626,13 @@ void NpcDialog::action(const ActionEvent &event)
 #ifdef EATHENA_SUPPORT
                 if (mInputState == NPC_INPUT_ITEM_CRAFT)
                 {
-                    if (mComplexInventory->addVirtualItem(item, 0, 1))
+                    if (mComplexInventory->addVirtualItem(item, -1, 1))
                         inventory->virtualRemove(item, 1);
                 }
                 else
 #endif
                 {
-                    if (mInventory->addVirtualItem(item, 0, 1))
+                    if (mInventory->addVirtualItem(item, -1, 1))
                         inventory->virtualRemove(item, 1);
                 }
             }
