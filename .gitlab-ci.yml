@@ -420,6 +420,14 @@ clang-3.9_sdl2:
   tags:
     - docker
 
+gcc-6_all:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --disable-asserts
+  image: debian:unstable
+  tags:
+    - docker
+
 # tests
 
 gcc-5_tests:
