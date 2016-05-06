@@ -179,7 +179,8 @@ class Particle notfinal : public Actor
          */
         void setDestination(Particle *restrict const target,
                             const float accel,
-                            const float moment) restrict2 noexcept2 A_NONNULL(2)
+                            const float moment) restrict2 noexcept2
+                            A_NONNULL(2)
         { mTarget = target; mAcceleration = accel; mMomentum = moment; }
 
         /**
