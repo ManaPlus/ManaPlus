@@ -26,6 +26,8 @@
 
 #include "utils/dtor.h"
 
+#include <vector>
+
 class BeingsListModel final : public AvatarListModel
 {
     public:
