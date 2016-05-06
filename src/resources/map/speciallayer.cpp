@@ -33,6 +33,7 @@
 SpecialLayer::SpecialLayer(const std::string &name,
                            const int width,
                            const int height) :
+    MemoryCounter(),
     mName(name),
     mTiles(new MapItem*[width * height]),
     mWidth(width),

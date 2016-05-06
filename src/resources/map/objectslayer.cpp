@@ -24,7 +24,9 @@
 
 #include "debug.h"
 
-ObjectsLayer::ObjectsLayer(const unsigned width, const unsigned height) :
+ObjectsLayer::ObjectsLayer(const unsigned width,
+                           const unsigned height) :
+    MemoryCounter(),
     mTiles(new MapObjectList*[width * height]),
     mWidth(width),
     mHeight(height)

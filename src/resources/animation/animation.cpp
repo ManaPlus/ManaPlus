@@ -25,6 +25,7 @@
 #include "debug.h"
 
 Animation::Animation() noexcept2 :
+    MemoryCounter(),
     mFrames(),
     mName("animation"),
     mDuration(0)
@@ -32,6 +33,7 @@ Animation::Animation() noexcept2 :
 }
 
 Animation::Animation(const std::string &name) noexcept2 :
+    MemoryCounter(),
     mFrames(),
     mName(name),
     mDuration(0)

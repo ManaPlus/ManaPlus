@@ -22,7 +22,9 @@
 
 #include "debug.h"
 
-MapHeights::MapHeights(const int width, const int height) :
+MapHeights::MapHeights(const int width,
+                       const int height) :
+    MemoryCounter(),
     mWidth(width),
     mHeight(height),
     mTiles(new uint8_t[mWidth * mHeight])
