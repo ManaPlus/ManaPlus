@@ -97,7 +97,7 @@ int Action::calcMemoryChilds(const int level) const
     FOR_EACH (AnimationCIter, it, mAnimations)
     {
         sz += sizeof(SpriteDirection::Type);
-        Animation *const animation = (*it).second;
+        const Animation *const animation = (*it).second;
         sz += animation->calcMemory(level + 1);
     }
     return sz;

@@ -624,7 +624,7 @@ int SpriteDef::calcMemoryChilds(const int level) const
         FOR_EACHP (ActionMap::const_iterator, it2, actionMap)
         {
             sz += static_cast<int>((*it2).first.capacity());
-            Action *const action = (*it2).second;
+            const Action *const action = (*it2).second;
             sz += action->calcMemory(level + 1);
         }
     }
