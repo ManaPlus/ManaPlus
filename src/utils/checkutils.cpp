@@ -24,9 +24,11 @@
 
 #include "logger.h"
 
+#ifndef ANDROID
 #if defined __linux__ || defined __linux
 #include <execinfo.h>
 #endif  // defined __linux__ || defined __linux
+#endif  // ANDROID
 
 #include "debug.h"
 
@@ -36,12 +38,14 @@ void reportStack(const char *const file,
                  const char *const name,
                  const char *const text)
 {
+#ifndef ANDROID
 #if defined __linux__ || defined __linux
     void *array[15];
     int size;
     char **strings;
     int i;
 #endif  // defined __linux__ || defined __linux
+#endif  // ANDROID
 
     logger->log("--- Assert: %s --------------------------------------------",
         name);
@@ -50,6 +54,7 @@ void reportStack(const char *const file,
         line,
         text,
         func);
+#ifndef ANDROID
 #if defined __linux__ || defined __linux
     size = static_cast<int>(backtrace(array, 15));
     strings = backtrace_symbols(array, size);
@@ -57,6 +62,7 @@ void reportStack(const char *const file,
         logger->log1(strings[i]);
     free(strings);
 #endif  // defined __linux__ || defined __linux
+#endif  // ANDROID
 }
 
 #endif  // ENABLE_ASSERTS
