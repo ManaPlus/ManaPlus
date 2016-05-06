@@ -145,10 +145,10 @@ int TcpNet::addSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock)
 
 int TcpNet::socketReady(const TcpNet::Socket sock)
 {
-PRAGMACLANG6(GCC diagnostic push)
-PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
+    PRAGMACLANG6(GCC diagnostic push)
+    PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
     return SDLNet_SocketReady(sock);
-PRAGMACLANG6(GCC diagnostic pop)
+    PRAGMACLANG6(GCC diagnostic pop)
 }
 
 int TcpNet::checkSockets(const TcpNet::SocketSet set, const Uint32 timeout)
