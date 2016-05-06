@@ -45,8 +45,8 @@ struct AtlasItem final : public MemoryCounter
 
     int calcMemoryLocal() const override final
     {
-        return sizeof(AtlasItem) +
-            name.capacity();
+        return static_cast<int>(sizeof(AtlasItem) +
+            name.capacity());
         // +++ here need print, but not add to sum size of image
     }
 

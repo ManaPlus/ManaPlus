@@ -1701,7 +1701,7 @@ void Map::updateConditionLayers() restrict2
 
 int Map::calcMemoryLocal() const
 {
-    return sizeof(Map) +
+    return static_cast<int>(sizeof(Map) +
         mName.capacity() +
         sizeof(MetaTile) * mWidth * mHeight +
         sizeof(MapLayer*) * (mLayers.capacity() +
@@ -1714,7 +1714,7 @@ int Map::calcMemoryLocal() const
         sizeof(ParticleEffectData) * mParticleEffects.capacity() +
         sizeof(MapItem) * mMapPortals.capacity() +
         (sizeof(TileAnimation) + sizeof(int)) * mTileAnimations.size() +
-        sizeof(Tileset*) * mIndexedTilesetsSize;
+        sizeof(Tileset*) * mIndexedTilesetsSize);
 }
 
 int Map::calcMemoryChilds(const int level) const

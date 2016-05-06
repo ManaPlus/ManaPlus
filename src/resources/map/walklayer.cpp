@@ -46,6 +46,6 @@ int WalkLayer::getDataAt(const int x, const int y) const
 int WalkLayer::calcMemoryLocal() const
 {
     return Resource::calcMemoryLocal() +
-        sizeof(WalkLayer) +
-        sizeof(int) * mWidth * mHeight;
+        static_cast<int>(sizeof(WalkLayer) +
+        sizeof(int) * mWidth * mHeight);
 }

@@ -477,8 +477,8 @@ void Image::SDLTerminateAlphaCache()
 int Image::calcMemoryLocal() const
 {
     // +++ this calculation can be wrong for SDL2
-    int sz = sizeof(Image) +
-        sizeof(std::map<float, SDL_Surface*>) +
+    int sz = static_cast<int>(sizeof(Image) +
+        sizeof(std::map<float, SDL_Surface*>)) +
         Resource::calcMemoryLocal();
     if (mSDLSurface)
     {

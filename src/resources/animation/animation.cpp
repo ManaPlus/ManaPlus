@@ -101,8 +101,8 @@ int Animation::calcMemoryLocal() const
     FOR_EACH (FramesCIter, it, mFrames)
     {
         const Frame &frame = *it;
-        sz += sizeof(Frame) +
-            frame.nextAction.capacity();
+        sz += static_cast<int>(sizeof(Frame) +
+            frame.nextAction.capacity());
     }
     return sz;
 }

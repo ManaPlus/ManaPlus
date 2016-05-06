@@ -25,8 +25,6 @@
 
 #include "resources/memorycounter.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 /**

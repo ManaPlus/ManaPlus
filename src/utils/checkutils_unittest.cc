@@ -130,14 +130,14 @@ TEST_CASE("CheckUtils")
     SECTION("returnNullptr")
     {
         REQUIRE(testReturnNullptr(nullptr) == 0);
-        REQUIRE(testReturnNullptr((void*)1) == 1);
+        REQUIRE(testReturnNullptr(reinterpret_cast<void*>(1)) == 1);
     }
 
     SECTION("returnNullptrV")
     {
         testReturnNullptrV(nullptr);
         REQUIRE(flag == false);
-        testReturnNullptrV((void*)1);
+        testReturnNullptrV(reinterpret_cast<void*>(1));
         REQUIRE(flag == true);
     }
 

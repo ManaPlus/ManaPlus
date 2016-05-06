@@ -596,14 +596,14 @@ bool SpriteDef::addSequence(const int start,
 
 int SpriteDef::calcMemoryLocal() const
 {
-    int sz = sizeof(SpriteDef) +
+    int sz = static_cast<int>(sizeof(SpriteDef) +
         sizeof(ImageSets) +
         sizeof(Actions) +
-        sizeof(std::set<std::string>) +
+        sizeof(std::set<std::string>)) +
         Resource::calcMemoryLocal();
     FOR_EACH (std::set<std::string>::const_iterator, it, mProcessedFiles)
     {
-        sz += (*it).capacity();
+        sz += static_cast<int>((*it).capacity());
     }
     return sz;
 }
@@ -613,7 +613,7 @@ int SpriteDef::calcMemoryChilds(const int level) const
     int sz = 0;
     FOR_EACH (ImageSets::const_iterator, it, mImageSets)
     {
-        sz += (*it).first.capacity();
+        sz += static_cast<int>((*it).first.capacity());
         const ImageSet *const imageSet = (*it).second;
         sz += imageSet->calcMemory(level + 1);
     }
@@ -623,7 +623,7 @@ int SpriteDef::calcMemoryChilds(const int level) const
         const ActionMap *const actionMap = (*it).second;
         FOR_EACHP (ActionMap::const_iterator, it2, actionMap)
         {
-            sz += (*it2).first.capacity();
+            sz += static_cast<int>((*it2).first.capacity());
             Action *const action = (*it2).second;
             sz += action->calcMemory(level + 1);
         }

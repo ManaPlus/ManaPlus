@@ -20,11 +20,9 @@
 
 #ifdef USE_OPENGL
 
-#include "render/vertexes/imagecollection.h"
+#include "render/vertexes/openglgraphicsvertexes.h"
 
 #include "render/graphics.h"
-
-#include "utils/dtor.h"
 
 #include "debug.h"
 

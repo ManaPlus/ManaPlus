@@ -23,8 +23,6 @@
 
 #include "main.h"
 
-#include "resources/rect/doublerect.h"
-
 #include "render/vertexes/imagevertexes.h"
 
 #include "localconsts.h"

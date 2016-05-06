@@ -154,6 +154,6 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
 
 int SpecialLayer::calcMemoryLocal() const
 {
-    return sizeof(SpecialLayer) +
-        sizeof(MapItem) * mWidth * mHeight;
+    return static_cast<int>(sizeof(SpecialLayer) +
+        sizeof(MapItem) * mWidth * mHeight);
 }

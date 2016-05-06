@@ -60,7 +60,7 @@ bool SoundEffect::play(const int loops, const int volume,
 
 int SoundEffect::calcMemoryLocal() const
 {
-    return sizeof(SoundEffect) +
-        sizeof(SDL_AudioSpec) +
+    return static_cast<int>(sizeof(SoundEffect) +
+        sizeof(SDL_AudioSpec)) +
         Resource::calcMemoryLocal();
 }

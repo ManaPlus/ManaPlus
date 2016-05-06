@@ -81,6 +81,6 @@ bool SDLMusic::play(const int loops, const int fadeIn)
 int SDLMusic::calcMemoryLocal() const
 {
     // +++ not used size of SDL_RWops
-    return sizeof(SDLMusic) +
+    return static_cast<int>(sizeof(SDLMusic)) +
         Resource::calcMemoryLocal();
 }

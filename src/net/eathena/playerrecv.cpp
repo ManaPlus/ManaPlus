@@ -435,7 +435,7 @@ void PlayerRecv::processDressRoomOpen(Net::MessageIn &msg)
 void PlayerRecv::processKilledBy(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("killer id");
-    Being *const dstBeing = actorManager->findBeing(id);
+    const Being *const dstBeing = actorManager->findBeing(id);
     if (id == BeingId_zero)
     {
         debugMsg(strprintf(

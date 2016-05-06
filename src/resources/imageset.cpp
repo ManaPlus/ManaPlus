@@ -78,7 +78,7 @@ Image* ImageSet::get(const size_type i) const
 
 int ImageSet::calcMemoryLocal() const
 {
-    return sizeof(ImageSet) +
+    return static_cast<int>(sizeof(ImageSet)) +
         Resource::calcMemoryLocal() +
-        mImages.capacity() * sizeof(Image);
+        static_cast<int>(mImages.capacity() * sizeof(Image));
 }

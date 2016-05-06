@@ -1078,12 +1078,12 @@ int ResourceManager::calcMemoryChilds(const int level) const
     int sz = 0;
     FOR_EACH (ResourceCIterator, it, mResources)
     {
-        sz += (*it).first.capacity();
+        sz += static_cast<int>((*it).first.capacity());
         sz += (*it).second->calcMemory(level + 1);
     }
     FOR_EACH (ResourceCIterator, it, mOrphanedResources)
     {
-        sz += (*it).first.capacity();
+        sz += static_cast<int>((*it).first.capacity());
         sz += (*it).second->calcMemory(level + 1);
     }
     FOR_EACH (std::set<Resource*>::const_iterator, it, mDeletedResources)

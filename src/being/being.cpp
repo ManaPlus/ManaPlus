@@ -3571,7 +3571,7 @@ void Being::recalcSpritesOrder() restrict2
             if (updatedSprite[slot] == false &&
                 mSpriteDraw[slot] != id)
             {
-                setSprite(slot,
+                setSprite(static_cast<unsigned int>(slot),
                     id,
                     mSpriteColors[slot],
                     ItemColor_one,

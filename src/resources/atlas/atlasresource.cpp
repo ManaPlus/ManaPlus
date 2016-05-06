@@ -73,9 +73,9 @@ void AtlasResource::decRef()
 
 int AtlasResource::calcMemoryLocal() const
 {
-    return sizeof(AtlasResource) +
+    return static_cast<int>(sizeof(AtlasResource)) +
         Resource::calcMemoryLocal() +
-        atlases.capacity() * sizeof(TextureAtlas*);
+        static_cast<int>(atlases.capacity() * sizeof(TextureAtlas*));
 }
 
 int AtlasResource::calcMemoryChilds(const int level) const

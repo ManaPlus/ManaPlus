@@ -749,9 +749,9 @@ void MapLayer::updateConditionTiles(MetaTile *const metaTiles,
 
 int MapLayer::calcMemoryLocal() const
 {
-    return sizeof(MapLayer) +
+    return static_cast<int>(sizeof(MapLayer) +
         sizeof(TileInfo) * mWidth * mHeight +
-        sizeof(MapRowVertexes) * mTempRows.capacity();
+        sizeof(MapRowVertexes) * mTempRows.capacity());
 }
 
 int MapLayer::calcMemoryChilds(const int level) const

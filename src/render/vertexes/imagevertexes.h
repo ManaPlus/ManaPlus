@@ -25,8 +25,6 @@
 
 #include "render/vertexes/openglgraphicsvertexes.h"
 
-#include <vector>
-
 #include "localconsts.h"
 
 class Image;

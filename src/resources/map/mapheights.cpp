@@ -42,6 +42,6 @@ void MapHeights::setHeight(const int x, const int y, const uint8_t height)
 
 int MapHeights::calcMemoryLocal() const
 {
-    return sizeof(MapHeights) +
+    return static_cast<int>(sizeof(MapHeights)) +
         mWidth * mHeight;
 }

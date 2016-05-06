@@ -148,6 +148,6 @@ void AmbientLayer::draw(Graphics *const graphics, const int x,
 
 int AmbientLayer::calcMemoryLocal() const
 {
-    return sizeof(AmbientLayer) +
-        mName.capacity();
+    return static_cast<int>(sizeof(AmbientLayer) +
+        mName.capacity());
 }

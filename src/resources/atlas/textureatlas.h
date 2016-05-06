@@ -56,8 +56,8 @@ struct TextureAtlas final : public MemoryCounter
 
     int calcMemoryLocal() const override final
     {
-        return sizeof(TextureAtlas) +
-            items.capacity() * sizeof(AtlasItem*);
+        return static_cast<int>(sizeof(TextureAtlas) +
+            items.capacity() * sizeof(AtlasItem*));
     }
 
     int calcMemoryChilds(const int level) const override final
