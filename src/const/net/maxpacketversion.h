@@ -27,6 +27,6 @@
 #include <stdint.h>
 #endif
 
-static const uint32_t maxPacketVersion = 20150916;
+static const uint32_t maxPacketVersion = 20151001;
 
 #endif  // CONST_NET_MAXPACKETVERSION_H
