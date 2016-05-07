@@ -711,7 +711,6 @@ if (packetVersion >= 20150513)
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0885,   6, clif->pDropItem);
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0924,   5, clif->pChangeDir);
-    packet(CMSG_PLAYER_INVENTORY_DROP,    0x0885,   6, clif->pDropItem);
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x0958,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
@@ -721,4 +720,34 @@ if (packetVersion >= 20150513)
     packet(CMSG_PARTY_INVITE2,            0x094A,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x08a8,  26, clif->pFriendsListAdd);
 }
+
+// 20150916
+if (packetVersion >= 20150916)
+{
+    packet(CMSG_BUYINGSTORE_CLOSE,        0x092e,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_SKILL_USE_POSITION,       0x022d,  10, clif->pUseSkillToPos);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0960,   5, clif->pHomMenu);
+    packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0817,   2, clif->pSearchStoreInfoNextPage);
+    packet(CMSG_BUYINGSTORE_OPEN,         0x0835,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_PLAYER_CHANGE_DIR,        0x0936,   5, clif->pChangeDir);
+    packet(CMSG_PARTY_INVITE2,            0x0924,  26, clif->pPartyInvite2);
+    packet(CMSG_MAP_PING,                 0x08ac,   6, clif->pTickSend);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0969,  19, clif->pWantToConnection);
+    packet(CMSG_SKILL_USE_POSITION_MORE,  0x0873,  90, clif->pUseSkillToPosMoreInfo);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0942,   6, clif->pSolveCharName);
+    packet(CMSG_PLAYER_CHANGE_ACT,        0x0869,   7, clif->pActionRequest);
+    packet(CMSG_PLAYER_CHANGE_DEST,       0x0877,   5, clif->pWalkToXY);
+    packet(CMSG_BUYINGSTORE_SELL,         0x0881,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0948,  -1, clif->pReqOpenBuyingStore);
+    packet(CMSG_SEARCHSTORE_SEARCH,       0x0920,  -1, clif->pSearchStoreInfo);
+    packet(CMSG_SEARCHSTORE_CLICK,        0x087f,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_SKILL_USE_BEING,          0x093e,  10, clif->pUseSkillToId);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x085e,   8, clif->pMoveFromKafra);
+    packet(CMSG_MOVE_TO_STORAGE,          0x0934,   8, clif->pMoveToKafra);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x092f,   6, clif->pDropItem);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x089e,  26, clif->pFriendsListAdd);
+    packet(CMSG_ITEM_PICKUP,              0x089c,   6, clif->pTakeItem);
+    packet(CMSG_NAME_REQUEST,             0x095a,   6, clif->pGetCharNameRequest);
+}
+
 #endif
