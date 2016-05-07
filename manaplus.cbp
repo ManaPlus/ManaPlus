@@ -101,6 +101,9 @@
 		<Unit filename="src/render/sdlgraphics.cpp" />
 		<Unit filename="src/render/imagegraphics.cpp" />
 		<Unit filename="src/render/mobileopengl2graphics.cpp" />
+		<Unit filename="src/render/vertexes/imagevertexes.cpp" />
+		<Unit filename="src/render/vertexes/openglgraphicsvertexes.cpp" />
+		<Unit filename="src/render/vertexes/imagecollection.cpp" />
 		<Unit filename="src/render/sdl2graphics.cpp" />
 		<Unit filename="src/render/modernopenglgraphics.cpp" />
 		<Unit filename="src/render/graphics.cpp" />
@@ -151,6 +154,7 @@
 		<Unit filename="src/utils/env.cpp" />
 		<Unit filename="src/utils/copynpaste.cpp" />
 		<Unit filename="src/utils/parameters.cpp" />
+		<Unit filename="src/utils/mrand.cpp" />
 		<Unit filename="src/utils/sdl2helper.cpp" />
 		<Unit filename="src/utils/gettexthelper.cpp" />
 		<Unit filename="src/utils/xmlutils.cpp" />
@@ -177,6 +181,7 @@
 		<Unit filename="src/listeners/debugmessagelistener.cpp" />
 		<Unit filename="src/listeners/skillwarplistener.cpp" />
 		<Unit filename="src/listeners/guitableactionlistener.cpp" />
+		<Unit filename="src/listeners/inputactionremotelistener.cpp" />
 		<Unit filename="src/listeners/charrenamelistener.cpp" />
 		<Unit filename="src/listeners/textskilllistener.cpp" />
 		<Unit filename="src/listeners/arrowslistener.cpp" />
@@ -214,8 +219,10 @@
 		<Unit filename="src/resources/iteminfo.cpp" />
 		<Unit filename="src/resources/chatobject.cpp" />
 		<Unit filename="src/resources/mobileopenglscreenshothelper.cpp" />
+		<Unit filename="src/resources/memorymanager.cpp" />
 		<Unit filename="src/resources/modinfo.cpp" />
 		<Unit filename="src/resources/sdl2softwarescreenshothelper.cpp" />
+		<Unit filename="src/resources/db/statuseffectdb.cpp" />
 		<Unit filename="src/resources/db/weaponsdb.cpp" />
 		<Unit filename="src/resources/db/npcdb.cpp" />
 		<Unit filename="src/resources/db/chardb.cpp" />
@@ -263,6 +270,7 @@
 		<Unit filename="src/resources/item/complexitem.cpp" />
 		<Unit filename="src/resources/item/shopitem.cpp" />
 		<Unit filename="src/resources/item/item.cpp" />
+		<Unit filename="src/resources/memorycounter.cpp" />
 		<Unit filename="src/resources/openglimagehelper.cpp" />
 		<Unit filename="src/resources/sdl2imagehelper.cpp" />
 		<Unit filename="src/resources/wallpaper.cpp" />
@@ -667,7 +675,6 @@
 		<Unit filename="src/net/ea/playerhandler.cpp" />
 		<Unit filename="src/net/ea/itemrecv.cpp" />
 		<Unit filename="src/net/updatetypeoperators.cpp" />
-		<Unit filename="src/graphicsvertexes.cpp" />
 		<Unit filename="src/gamemodifiers.cpp" />
 		<Unit filename="src/maingui.cpp" />
 		<Unit filename="src/commandline.cpp" />
@@ -680,6 +687,7 @@
 		<Unit filename="src/avatar.cpp" />
 		<Unit filename="src/particle/particlevector.cpp" />
 		<Unit filename="src/particle/rotationalparticle.cpp" />
+		<Unit filename="src/particle/particleengine.cpp" />
 		<Unit filename="src/particle/particlecontainer.cpp" />
 		<Unit filename="src/particle/particlelist.cpp" />
 		<Unit filename="src/particle/particle.cpp" />
@@ -715,6 +723,9 @@
 		<Unit filename="src/render/normalopenglgraphics.h" />
 		<Unit filename="src/render/safeopenglgraphics.h" />
 		<Unit filename="src/render/sdl2graphics.h" />
+		<Unit filename="src/render/vertexes/imagevertexes.h" />
+		<Unit filename="src/render/vertexes/imagecollection.h" />
+		<Unit filename="src/render/vertexes/openglgraphicsvertexes.h" />
 		<Unit filename="src/render/openglx/mglxtypes.h" />
 		<Unit filename="src/render/openglx/mglxinit.h" />
 		<Unit filename="src/render/openglx/mglx.h" />
@@ -740,7 +751,6 @@
 		<Unit filename="src/render/nullopenglgraphics.h" />
 		<Unit filename="src/render/renderers.h" />
 		<Unit filename="src/render/mobileopengl2graphics.h" />
-		<Unit filename="src/graphicsvertexes.h" />
 		<Unit filename="src/utils/env.h" />
 		<Unit filename="src/utils/sdl2helper.h" />
 		<Unit filename="src/utils/physfstools.h" />
@@ -787,6 +797,7 @@
 		<Unit filename="src/utils/delete2.h" />
 		<Unit filename="src/utils/sdlcheckutils.h" />
 		<Unit filename="src/utils/mutex.h" />
+		<Unit filename="src/utils/mrand.h" />
 		<Unit filename="src/utils/stringutils.h" />
 		<Unit filename="src/utils/naclmessages.h" />
 		<Unit filename="src/utils/gmfunctions.h" />
@@ -818,6 +829,7 @@
 		<Unit filename="src/listeners/updatestatuslistener.h" />
 		<Unit filename="src/listeners/buyingstoreslotslistener.h" />
 		<Unit filename="src/listeners/tablemodellistener.h" />
+		<Unit filename="src/listeners/requestadoptchildlistener.h" />
 		<Unit filename="src/listeners/weightlistener.h" />
 		<Unit filename="src/listeners/errorlistener.h" />
 		<Unit filename="src/listeners/buyingstoremodelistener.h" />
@@ -833,6 +845,7 @@
 		<Unit filename="src/listeners/keylistener.h" />
 		<Unit filename="src/listeners/playerlistener.h" />
 		<Unit filename="src/listeners/shoprenamelistener.h" />
+		<Unit filename="src/listeners/inputactionremotelistener.h" />
 		<Unit filename="src/listeners/textskilllistener.h" />
 		<Unit filename="src/listeners/widgetlistener.h" />
 		<Unit filename="src/listeners/inventorylistener.h" />
@@ -905,6 +918,7 @@
 		<Unit filename="src/resources/db/monsterdb.h" />
 		<Unit filename="src/resources/db/moddb.h" />
 		<Unit filename="src/resources/db/npcdialogdb.h" />
+		<Unit filename="src/resources/db/statuseffectdb.h" />
 		<Unit filename="src/resources/db/badgesdb.h" />
 		<Unit filename="src/resources/db/skillunitdb.h" />
 		<Unit filename="src/resources/db/mapdb.h" />
@@ -933,9 +947,9 @@
 		<Unit filename="src/resources/inventory/complexinventory.h" />
 		<Unit filename="src/resources/beingcommon.h" />
 		<Unit filename="src/resources/modinfo.h" />
-		<Unit filename="src/resources/itemtype.h" />
 		<Unit filename="src/resources/frame.h" />
 		<Unit filename="src/resources/sdl2softwareimagehelper.h" />
+		<Unit filename="src/resources/memorycounter.h" />
 		<Unit filename="src/resources/npcinventoryinfo.h" />
 		<Unit filename="src/resources/iteminfo.h" />
 		<Unit filename="src/resources/npcbuttoninfo.h" />
@@ -965,6 +979,7 @@
 		<Unit filename="src/resources/skilltype.h" />
 		<Unit filename="src/resources/soundinfo.h" />
 		<Unit filename="src/resources/npctextinfo.h" />
+		<Unit filename="src/resources/rect/doublerect.h" />
 		<Unit filename="src/resources/npcimageinfo.h" />
 		<Unit filename="src/resources/sdl2imagehelper.h" />
 		<Unit filename="src/resources/emoteinfo.h" />
@@ -974,6 +989,7 @@
 		<Unit filename="src/resources/item/item.h" />
 		<Unit filename="src/resources/item/shopitem.h" />
 		<Unit filename="src/resources/openglscreenshothelper.h" />
+		<Unit filename="src/resources/memorymanager.h" />
 		<Unit filename="src/resources/skillowner.h" />
 		<Unit filename="src/resources/fboinfo.h" />
 		<Unit filename="src/resources/itemslot.h" />
@@ -1117,7 +1133,6 @@
 		<Unit filename="src/gui/widgets/tabs/chat/channeltab.h" />
 		<Unit filename="src/gui/widgets/tabs/chat/chattab.h" />
 		<Unit filename="src/gui/widgets/tabs/chat/langtab.h" />
-		<Unit filename="src/gui/widgets/tabs/chat/chattabtype.h" />
 		<Unit filename="src/gui/widgets/tabs/chat/guildtab.h" />
 		<Unit filename="src/gui/widgets/tabs/chat/tradetab.h" />
 		<Unit filename="src/gui/widgets/tabs/chat/whispertab.h" />
@@ -1386,6 +1401,7 @@
 		<Unit filename="src/net/messageout.h" />
 		<Unit filename="src/net/protocoloutupdate.h" />
 		<Unit filename="src/net/serverfeatures.h" />
+		<Unit filename="src/net/hostsgroup.h" />
 		<Unit filename="src/net/inventoryhandler.h" />
 		<Unit filename="src/net/messagein.h" />
 		<Unit filename="src/net/searchstorehandler.h" />
@@ -1516,7 +1532,6 @@
 		<Unit filename="src/net/updatetypeoperators.h" />
 		<Unit filename="src/net/download.h" />
 		<Unit filename="src/net/mailhandler.h" />
-		<Unit filename="src/net/protocolindefine.h" />
 		<Unit filename="src/net/familyhandler.h" />
 		<Unit filename="src/net/npchandler.h" />
 		<Unit filename="src/net/buyingstorehandler.h" />
@@ -1558,21 +1573,27 @@
 		<Unit filename="src/enums/magicschool.h" />
 		<Unit filename="src/enums/equipslot.h" />
 		<Unit filename="src/enums/resources/notifytypes.h" />
+		<Unit filename="src/enums/resources/itemtype.h" />
 		<Unit filename="src/enums/resources/map/maptype.h" />
 		<Unit filename="src/enums/resources/map/mapitemtype.h" />
 		<Unit filename="src/enums/resources/map/blockmask.h" />
 		<Unit filename="src/enums/resources/map/blocktype.h" />
+		<Unit filename="src/enums/resources/itemdbtype.h" />
 		<Unit filename="src/enums/resources/spritedirection.h" />
 		<Unit filename="src/enums/resources/imageposition.h" />
 		<Unit filename="src/enums/resources/itemsoundevent.h" />
 		<Unit filename="src/enums/resources/questtype.h" />
 		<Unit filename="src/enums/resources/notifyflags.h" />
 		<Unit filename="src/enums/state.h" />
+		<Unit filename="src/enums/gui/chattabtype.h" />
+		<Unit filename="src/enums/gui/serverdialogdonwloadstatus.h" />
+		<Unit filename="src/enums/gui/updatedownloadstatus.h" />
 		<Unit filename="src/enums/gui/themecolorid.h" />
 		<Unit filename="src/enums/gui/usercolorid.h" />
 		<Unit filename="src/enums/gui/dialogtype.h" />
 		<Unit filename="src/enums/gui/chatmsgtype.h" />
 		<Unit filename="src/enums/gui/gradienttype.h" />
+		<Unit filename="src/enums/gui/itemamountwindowusage.h" />
 		<Unit filename="src/enums/gui/progresscolorid.h" />
 		<Unit filename="src/enums/screendensity.h" />
 		<Unit filename="src/enums/cutin.h" />
@@ -1618,6 +1639,7 @@
 		<Unit filename="src/enums/simpletypes/autorelease.h" />
 		<Unit filename="src/enums/simpletypes/usebase64.h" />
 		<Unit filename="src/enums/simpletypes/useresman.h" />
+		<Unit filename="src/enums/simpletypes/allowquit.h" />
 		<Unit filename="src/enums/simpletypes/onthefly.h" />
 		<Unit filename="src/enums/simpletypes/modifiable.h" />
 		<Unit filename="src/enums/simpletypes/online.h" />
@@ -1640,6 +1662,7 @@
 		<Unit filename="src/enums/simpletypes/equipped.h" />
 		<Unit filename="src/enums/particle/alivestatus.h" />
 		<Unit filename="src/enums/particle/particlechangefunc.h" />
+		<Unit filename="src/enums/particle/particletype.h" />
 		<Unit filename="src/enums/events/mousebutton.h" />
 		<Unit filename="src/enums/events/keyeventtype.h" />
 		<Unit filename="src/enums/events/mouseeventtype.h" />
@@ -1652,6 +1675,7 @@
 		<Unit filename="src/particle/particleemitterprop.h" />
 		<Unit filename="src/particle/particlelist.h" />
 		<Unit filename="src/particle/particleinfo.h" />
+		<Unit filename="src/particle/particleengine.h" />
 		<Unit filename="src/particle/imageparticle.h" />
 		<Unit filename="src/particle/particlevector.h" />
 		<Unit filename="src/particle/particle.h" />
