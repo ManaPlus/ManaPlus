@@ -30,7 +30,6 @@
 #include "utils/stringutils.h"
 
 #include <SDL_video.h>
-#include <string>
 
 #include "debug.h"
 

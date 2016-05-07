@@ -39,7 +39,6 @@
 
 #include "gui/windows/connectiondialog.h"
 #include "gui/windows/didyouknowwindow.h"
-#include "gui/windows/connectiondialog.h"
 #include "gui/windows/helpwindow.h"
 #include "gui/windows/logindialog.h"
 #include "gui/windows/setupwindow.h"
