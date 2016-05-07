@@ -158,6 +158,7 @@ src/net/eathena/loginrecv.cpp
 src/net/eathena/mailrecv.cpp
 src/net/eathena/maptypeproperty2.h
 src/net/eathena/petrecv.cpp
+src/net/eathena/playerrecv.cpp
 src/net/eathena/skillrecv.cpp
 src/net/ea/traderecv.cpp
 src/net/tmwa/charserverhandler.cpp
@@ -179,6 +180,7 @@ src/resources/db/skillunitdb.cpp
 src/resources/inventory/inventory.cpp
 src/resources/itemtypemapdata.h
 src/resources/mapreader.cpp
+src/resources/memorymanager.cpp
 src/resources/modinfo.cpp
 src/resources/notifications.h
 src/utils/booleanoptions.h
