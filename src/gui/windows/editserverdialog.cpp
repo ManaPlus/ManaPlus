@@ -21,6 +21,8 @@
 
 #include "gui/windows/editserverdialog.h"
 
+#include "const/net/maxpacketversion.h"
+
 #include "gui/models/typelistmodel.h"
 
 #include "gui/windows/okdialog.h"
@@ -50,7 +52,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mNameField(new TextField(this, std::string())),
     mDescriptionField(new TextField(this, std::string())),
     mOnlineListUrlField(new TextField(this, std::string())),
-    mPacketVersionField(new IntTextField(this, 0, 0, 20150805)),
+    mPacketVersionField(new IntTextField(this, 0, 0, maxPacketVersion)),
     // TRANSLATORS: edit server dialog button
     mConnectButton(new Button(this, _("Connect"), "connect", this)),
     // TRANSLATORS: edit server dialog button

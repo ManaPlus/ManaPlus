@@ -563,6 +563,7 @@ SET(SRCS
     net/net.cpp
     net/net.h
     const/net/inventory.h
+    const/net/maxpacketversion.h
     const/net/net.h
     const/net/nostat.h
     net/partyhandler.h

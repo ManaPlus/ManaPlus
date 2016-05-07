@@ -1304,6 +1304,7 @@ manaplus_SOURCES += main.cpp \
 	      net/net.cpp \
 	      net/net.h \
 	      const/net/inventory.h \
+	      const/net/maxpacketversion.h \
 	      const/net/net.h \
 	      const/net/nostat.h \
 	      net/npchandler.h \
