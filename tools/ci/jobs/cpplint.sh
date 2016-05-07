@@ -32,7 +32,8 @@ CHECKER="./cpplint.py --filter=\
 -whitespace/semicolon,\
 -readability/namespace,\
 -readability/casting,\
--readability/inheritance"
+-readability/inheritance,\
+-runtime/string"
 
 find src -type f -name "*.cpp" -exec $CHECKER {} \; 2>${ERRFILE}2
 find src -type f -name "*.hpp" -exec $CHECKER {} \; 2>>${ERRFILE}2
