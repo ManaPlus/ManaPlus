@@ -31,6 +31,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/being/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/render/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/render/vertexes/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/render/openglx/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/render/shaders/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/render/opengl/*.cpp) \
@@ -55,6 +56,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/resources/inventory/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/dye/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/map/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/resources/rect/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/item/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/windows/*.cpp) \
