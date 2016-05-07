@@ -1,3 +1,15 @@
+2016-05-07 New release 1.6.5.7
+fix: login in title bar.
+fix: compilation for MacOSX.
+fix: follow moves with enabled atuo sync.
+fix: adding items by add button into npc inventory.
+fix: some images format.
+add: ci scripts.
+add: basic memory counting.
+add: support for show actual killer (hercules)
+add: assert functions with reporting stack.
+add: hide emotes and over head text for erased players.
+
 2016-04-23 New release 1.6.4.23
 fix: invite to guild from context menu.
 fix: possible crash in login dialog with opened drop down list.
