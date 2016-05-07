@@ -35,6 +35,7 @@ namespace EAthena
         void processInstanceInfo(Net::MessageIn &msg);
         void processInstanceDelete(Net::MessageIn &msg);
         void processSetTilesType(Net::MessageIn &msg);
+        void processAddMapMarker(Net::MessageIn &msg);
     }  // namespace MapRecv
 }  // namespace EAthena
 

@@ -82,4 +82,12 @@ void MapRecv::processSetTilesType(Net::MessageIn &msg)
     }
 }
 
+void MapRecv::processAddMapMarker(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    msg.readBeingId("account id");
+    msg.readInt16("x");
+    msg.readInt16("y");
+}
+
 }  // namespace EAthena

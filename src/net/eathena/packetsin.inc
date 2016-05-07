@@ -290,6 +290,7 @@ packet(SMSG_BOOKING_ADD_FILTERING_LIST,    0x090b,  30, nullptr,                
 packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr,                                        0);
 packet(SMSG_MERGE_ITEM,                    0x096d,  -1, &InventoryRecv::processMergeItem,               0);
 packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, &InventoryRecv::processMergeItemResponse,       0);
+packet(SMSG_ADD_MAP_MARKER,                0x09c1,  10, &MapRecv::processAddMapMarker,                  0);
 
 // 3
 if (packetVersion >= 3)
