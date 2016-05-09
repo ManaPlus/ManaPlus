@@ -56,14 +56,12 @@ struct MStack final
 
     T &getPop()
     {
-        mPointer --;
-        return *mPointer;
+        return *(mPointer--);
     }
 
     const T &getPopConst()
     {
-        mPointer --;
-        return *mPointer;
+        return *(mPointer--);
     }
 
     void pop()
