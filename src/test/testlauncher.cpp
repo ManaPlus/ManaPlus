@@ -152,8 +152,8 @@ int TestLauncher::testRescale() const
     return 0;
 }
 
-PRAGMACLANG(GCC diagnostic push)
-PRAGMACLANG(GCC diagnostic ignored "-Wunused-result")
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wunused-result")
 
 int TestLauncher::testFps()
 {
@@ -283,7 +283,7 @@ int TestLauncher::testFps3()
     sleep(1);
     return 0;
 }
-PRAGMACLANG(GCC diagnostic pop)
+PRAGMA45(GCC diagnostic pop)
 
 int TestLauncher::testBatches()
 {
@@ -376,8 +376,8 @@ int TestLauncher::testTextures()
     return 0;
 }
 
-PRAGMACLANG(GCC diagnostic push)
-PRAGMACLANG(GCC diagnostic ignored "-Wunused-result")
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wunused-result")
 
 int TestLauncher::testInternal()
 {
@@ -429,7 +429,7 @@ int TestLauncher::testInternal()
     return 0;
 }
 
-PRAGMACLANG(GCC diagnostic pop)
+PRAGMA45(GCC diagnostic pop)
 
 int TestLauncher::testDye()
 {
