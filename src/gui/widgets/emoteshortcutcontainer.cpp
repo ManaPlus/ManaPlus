@@ -192,24 +192,27 @@ void EmoteShortcutContainer::mouseDragged(MouseEvent &restrict event A_UNUSED)
 
 void EmoteShortcutContainer::mousePressed(MouseEvent &restrict event) restrict2
 {
-    if (!emoteShortcut)
-        return;
-
-    const int index = getIndexFromGrid(event.getX(), event.getY());
-
-    if (index == -1)
-        return;
-
-    event.consume();
-    // Stores the selected emote if there is one.
-    if (emoteShortcut->isEmoteSelected())
+    if (event.getButton() == MouseButton::LEFT)
     {
-        emoteShortcut->setEmote(index);
-        emoteShortcut->setEmoteSelected(0);
-    }
-    else if (emoteShortcut->getEmote(index))
-    {
-        mEmoteClicked = true;
+        if (!emoteShortcut)
+            return;
+
+        const int index = getIndexFromGrid(event.getX(), event.getY());
+
+        if (index == -1)
+            return;
+
+        event.consume();
+        // Stores the selected emote if there is one.
+        if (emoteShortcut->isEmoteSelected())
+        {
+            emoteShortcut->setEmote(index);
+            emoteShortcut->setEmoteSelected(0);
+        }
+        else if (emoteShortcut->getEmote(index))
+        {
+            mEmoteClicked = true;
+        }
     }
 }
 
