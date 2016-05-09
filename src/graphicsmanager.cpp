@@ -984,7 +984,7 @@ void GraphicsManager::deleteFBO(FBOInfo *const fbo)
 void GraphicsManager::initOpenGLFunctions()
 {
 #ifdef __native_client__
-    emulateFunction(glTextureSubImage2D);
+    emulateFunction(glTextureSubImage2DEXT);
 #else
     const bool is10 = checkGLVersion(1, 0);
     const bool is11 = checkGLVersion(1, 1);
@@ -1029,11 +1029,11 @@ void GraphicsManager::initOpenGLFunctions()
     if (!is11)
     {
         mSupportModernOpengl = false;
-        emulateFunction(glTextureSubImage2D);
-        emulateFunction(glActiveTexture);
+        emulateFunction(glTextureSubImage2DEXT);
         return;
     }
 
+/*
     if (findI(mGlVendor, "NVIDIA") != std::string::npos ||
         mGlVersionString.find("Mesa 10.6.") != std::string::npos ||
         mGlVersionString.find("Mesa 11.1.1") != std::string::npos ||
@@ -1048,32 +1048,33 @@ void GraphicsManager::initOpenGLFunctions()
     {
         logger->log1("Not checked for DSA because on "
             "NVIDIA or AMD or in Mesa it broken");
-        emulateFunction(glTextureSubImage2D);
+        emulateFunction(glTextureSubImage2DEXT);
     }
     else
+*/
     {   // not for NVIDIA. in NVIDIA atleast in windows drivers DSA is broken
         // Mesa 10.6.3 show support for DSA, but it broken. Works in 10.7 dev
         if (is45)
         {
             logger->log1("found GL_EXT_direct_state_access");
-            assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2D");
+            assignFunction(glTextureSubImage2D);
         }
         else if (supportExtension("GL_EXT_direct_state_access"))
         {
             logger->log1("found GL_EXT_direct_state_access");
-            assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2DEXT");
+            assignFunctionEmu2(glTextureSubImage2DEXT, "glTextureSubImage2DEXT");
         }
         else if (supportExtension("GL_ARB_direct_state_access"))
         {
             logger->log1("found GL_ARB_direct_state_access");
             logger->log1("GL_EXT_direct_state_access not found");
-            assignFunctionEmu2(glTextureSubImage2D, "glTextureSubImage2DEXT");
+            assignFunction(glTextureSubImage2D);
         }
         else
         {
             logger->log1("GL_EXT_direct_state_access not found");
             logger->log1("GL_ARB_direct_state_access not found");
-            emulateFunction(glTextureSubImage2D);
+            emulateFunction(glTextureSubImage2DEXT);
         }
     }
 

@@ -187,9 +187,14 @@ typedef void (APIENTRY *glGetQueryObjectiv_t) (GLuint id,
     GLenum pname, GLint *params);
 typedef void (APIENTRY *glGetQueryObjectui64v_t) (GLuint id,
     GLenum pname, uint64_t *params);
-typedef void (APIENTRY *glTextureSubImage2D_t) (GLuint texture, GLenum target,
-    GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height,
-    GLenum format, GLenum type, const void *pixels);
+typedef void (APIENTRY *glTextureSubImage2DEXT_t) (GLuint texture,
+    GLenum target, GLint level, GLint xoffset, GLint yoffset,
+    GLsizei width, GLsizei height, GLenum format, GLenum type,
+    const void *pixels);
+typedef void (APIENTRY *glTextureSubImage2D_t) (GLuint texture,
+    GLint level, GLint xoffset, GLint yoffset,
+    GLsizei width, GLsizei height, GLenum format, GLenum type,
+    const void *pixels);
 typedef void (APIENTRY *glClearTexImage_t) (GLuint texture, GLint level,
     GLenum format, GLenum type, const void * data);
 typedef void (APIENTRY *glClearTexSubImage_t) (GLuint texture, GLint level,

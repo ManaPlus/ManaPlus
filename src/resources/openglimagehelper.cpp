@@ -474,11 +474,24 @@ void OpenGLImageHelper::copySurfaceToImage(const Image *const image,
     if (!surface)
         return;
 
-    mglTextureSubImage2D(image->mGLImage,
-        mTextureType, 0,
-        x, y,
-        surface->w, surface->h,
-        GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
+    // +++ probably need combine
+    // mglTextureSubImage2D and mglTextureSubImage2DEXT
+    if (mglTextureSubImage2D)
+    {
+        mglTextureSubImage2D(image->mGLImage,
+            0,
+            x, y,
+            surface->w, surface->h,
+            GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
+    }
+    else
+    {
+        mglTextureSubImage2DEXT(image->mGLImage,
+            mTextureType, 0,
+            x, y,
+            surface->w, surface->h,
+            GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
+    }
 
     if (surface != oldSurface)
         MSDL_FreeSurface(surface);

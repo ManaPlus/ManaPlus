@@ -134,6 +134,7 @@ defName(glDeleteQueries);
 defName(glGetQueryObjectiv);
 defName(glGetQueryObjectui64v);
 defName(glTextureSubImage2D);
+defName(glTextureSubImage2DEXT);
 defName(glClearTexImage);
 defName(glClearTexSubImage);
 #ifdef WIN32

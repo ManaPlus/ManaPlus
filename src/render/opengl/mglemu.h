@@ -24,16 +24,16 @@
 
 #include "render/opengl/mgltypes.h"
 
-void APIENTRY emuglTextureSubImage2D(GLuint texture,
-                                     GLenum target,
-                                     GLint level,
-                                     GLint xoffset,
-                                     GLint yoffset,
-                                     GLsizei width,
-                                     GLsizei height,
-                                     GLenum format,
-                                     GLenum type,
-                                     const void *pixels);
+void APIENTRY emuglTextureSubImage2DEXT(GLuint texture,
+                                        GLenum target,
+                                        GLint level,
+                                        GLint xoffset,
+                                        GLint yoffset,
+                                        GLsizei width,
+                                        GLsizei height,
+                                        GLenum format,
+                                        GLenum type,
+                                        const void *pixels);
 
 void APIENTRY emuglActiveTexture(GLenum texture);
 
