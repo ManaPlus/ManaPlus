@@ -491,6 +491,7 @@ class LocalPlayer final : public Being,
         std::string mTestParticleName;
         int mTestParticleTime;
         unsigned long mTestParticleHash;
+        int mSyncPlayerMoveDistance;
         unsigned char mWalkingDir;  // The direction the player is walking in.
         /** Whether or not the name settings have changed */
         bool mUpdateName;

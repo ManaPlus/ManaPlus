@@ -157,6 +157,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mTestParticleName(),
     mTestParticleTime(0),
     mTestParticleHash(0L),
+    mSyncPlayerMoveDistance(config.getBoolValue("syncPlayerMoveDistance")),
     mWalkingDir(0),
     mUpdateName(true),
     mBlockAdvert(false),
@@ -201,6 +202,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     config.addListener("targetDeadPlayers", this);
     serverConfig.addListener("enableBuggyServers", this);
     config.addListener("syncPlayerMove", this);
+    config.addListener("syncPlayerMoveDistance", this);
     config.addListener("drawPath", this);
     config.addListener("serverAttack", this);
     config.addListener("attackMoving", this);
@@ -1068,6 +1070,8 @@ void LocalPlayer::optionChanged(const std::string &value)
         mIsServerBuggy = serverConfig.getBoolValue("enableBuggyServers");
     else if (value == "syncPlayerMove")
         mSyncPlayerMove = config.getBoolValue("syncPlayerMove");
+    else if (value == "syncPlayerMoveDistance")
+        mSyncPlayerMoveDistance = config.getIntValue("syncPlayerMoveDistance");
     else if (value == "drawPath")
         mDrawPath = config.getBoolValue("drawPath");
     else if (value == "serverAttack")
@@ -2468,7 +2472,7 @@ void LocalPlayer::fixPos()
     const int dy = abs(mY - mCrossY);
     const int dist = dx > dy ? dx : dy;
     const int time = cur_time;
-    const int maxDist = mSyncPlayerMove ? 2 : 7;
+    const int maxDist = mSyncPlayerMove ? mSyncPlayerMoveDistance : 7;
 
     if (dist > maxDist)
     {

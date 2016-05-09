@@ -209,6 +209,11 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         this, "syncPlayerMoveEvent");
 
     // TRANSLATORS: settings option
+    new SetupItemIntTextField(_("Sync player move distance"), "",
+        "syncPlayerMoveDistance",
+        this, "syncPlayerMoveDistanceEvent", 1, 30);
+
+    // TRANSLATORS: settings option
     new SetupItemTextField(_("Crazy move A program"), "",
         "crazyMoveProgram", this, "crazyMoveProgramEvent");
 

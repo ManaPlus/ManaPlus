@@ -102,7 +102,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("targetingType", 0);
     AddDEF("followMode", 0);
     AddDEF("imitationMode", 0);
-    AddDEF("syncPlayerMove", false);
+    AddDEF("syncPlayerMove", true);
+    AddDEF("syncPlayerMoveDistance", 2);
     AddDEF("drawPath", false);
     AddDEF("moveToTargetType", 10);
     AddDEF("crazyMoveProgram", "mumrsonmdmlon");
