@@ -2468,7 +2468,7 @@ void LocalPlayer::fixPos()
     const int dy = abs(mY - mCrossY);
     const int dist = dx > dy ? dx : dy;
     const int time = cur_time;
-    const int maxDist = mSyncPlayerMove ? 2 : 5;
+    const int maxDist = mSyncPlayerMove ? 2 : 7;
 
     if (dist > maxDist)
     {
