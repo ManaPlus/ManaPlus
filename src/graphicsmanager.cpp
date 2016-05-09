@@ -1062,7 +1062,8 @@ void GraphicsManager::initOpenGLFunctions()
         else if (supportExtension("GL_EXT_direct_state_access"))
         {
             logger->log1("found GL_EXT_direct_state_access");
-            assignFunctionEmu2(glTextureSubImage2DEXT, "glTextureSubImage2DEXT");
+            assignFunctionEmu2(glTextureSubImage2DEXT,
+                "glTextureSubImage2DEXT");
         }
         else if (supportExtension("GL_ARB_direct_state_access"))
         {
