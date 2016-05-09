@@ -670,6 +670,7 @@ enumStart(InputAction)
     MAIL_TO,
     ADOPT_CHILD,
     DUMP_MEMORY_USAGE,
+    SET_EMOTE_TYPE,
     TOTAL
 }
 enumEnd(InputAction);

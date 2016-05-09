@@ -167,6 +167,8 @@ class PopupMenu final : public Popup, public LinkHandler
         void showCraftPopup();
 #endif
 
+        void showEmoteType();
+
         /**
          * Handles link action.
          */

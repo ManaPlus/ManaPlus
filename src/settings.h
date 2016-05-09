@@ -23,6 +23,8 @@
 
 #include "options.h"
 
+#include "enums/emotetype.h"
+
 #include "enums/resources/map/maptype.h"
 
 #include <vector>
@@ -73,6 +75,7 @@ class Settings final
             crazyMoveState(0U),
             targetingType(0U),
             mapDrawType(MapType::NORMAL),
+            emoteType(EmoteType::Player),
             persistentIp(true),
             limitFps(false),
             inputFocused(true),
@@ -126,6 +129,7 @@ class Settings final
         unsigned int crazyMoveState;
         unsigned int targetingType;
         MapTypeT mapDrawType;
+        EmoteTypeT emoteType;
         bool persistentIp;
         bool limitFps;
         bool inputFocused;

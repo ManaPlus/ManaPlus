@@ -111,5 +111,6 @@ impHandlerVoid(resetGameModifiers)
 impHandlerVoid(barToChat)
 impHandlerVoid(seen)
 impHandlerVoid(dumpMemoryUsage)
+impHandlerVoid(setEmoteType)
 
 }  // namespace Actions

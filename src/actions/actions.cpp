@@ -320,7 +320,7 @@ impHandler(emote)
     if (emotion > 0)
     {
         if (emoteShortcut)
-            emoteShortcut->useEmote(emotion);
+            emoteShortcut->useEmotePlayer(emotion);
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
@@ -1789,6 +1789,30 @@ impHandler(dumpMemoryUsage)
         memoryManager.printAllMemory(event.tab);
     else
         memoryManager.printAllMemory(localChatTab);
+    return true;
+}
+
+impHandler(setEmoteType)
+{
+    const std::string &args = event.args;
+    if (args == "player" || args.empty())
+    {
+        settings.emoteType = EmoteType::Player;
+    }
+    else if (args == "pet")
+    {
+        settings.emoteType = EmoteType::Pet;
+    }
+#ifdef EATHENA_SUPPORT
+    else if (args == "homun" || args == "homunculus")
+    {
+        settings.emoteType = EmoteType::Homunculus;
+    }
+    else if (args == "merc" || args == "mercenary")
+    {
+        settings.emoteType = EmoteType::Mercenary;
+    }
+#endif
     return true;
 }
 

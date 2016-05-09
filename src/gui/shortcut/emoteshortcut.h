@@ -113,6 +113,8 @@ class EmoteShortcut final
          */
         void useEmote(const int index) const;
 
+        void useEmotePlayer(const int index) const;
+
     private:
         /**
          * Save the configuration information.

@@ -5509,6 +5509,12 @@ static const InputActionData inputActionData
         "dumpmemoryusage|memoryusage",
         UseArgs_false,
         Protected_true},
+    {"keySetEmoteType",
+        defaultAction(&Actions::setEmoteType),
+        InputCondition::INGAME,
+        "setemotetype",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

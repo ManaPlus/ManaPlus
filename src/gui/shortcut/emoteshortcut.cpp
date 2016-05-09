@@ -22,8 +22,15 @@
 #include "gui/shortcut/emoteshortcut.h"
 
 #include "configuration.h"
+#include "settings.h"
 
 #include "being/localplayer.h"
+
+#ifdef EATHENA_SUPPORT
+#include "net/homunculushandler.h"
+#include "net/mercenaryhandler.h"
+#endif
+#include "net/pethandler.h"
 
 #include "resources/db/emotedb.h"
 
@@ -70,6 +77,19 @@ void EmoteShortcut::save() const
     }
 }
 
+void EmoteShortcut::useEmotePlayer(const int index) const
+{
+    if (!localPlayer)
+        return;
+
+    if (index > 0 &&
+        index <= SHORTCUT_EMOTES)
+    {
+        if (mEmotes[index - 1] > 0)
+            localPlayer->emote(mEmotes[index - 1]);
+    }
+}
+
 void EmoteShortcut::useEmote(const int index) const
 {
     if (!localPlayer)
@@ -78,7 +98,27 @@ void EmoteShortcut::useEmote(const int index) const
     if (index > 0 &&
         index <= SHORTCUT_EMOTES)
     {
-       if (mEmotes[index - 1] > 0)
-          localPlayer->emote(mEmotes[index - 1]);
+        if (mEmotes[index - 1] > 0)
+        {
+            const uint8_t emote = mEmotes[index - 1];
+            switch (settings.emoteType)
+            {
+                case EmoteType::Player:
+                default:
+                    localPlayer->emote(emote);
+                    break;
+                case EmoteType::Pet:
+                    petHandler->emote(emote, 0);
+                    break;
+#ifdef EATHENA_SUPPORT
+                case EmoteType::Homunculus:
+                    homunculusHandler->emote(emote);
+                    break;
+                case EmoteType::Mercenary:
+                    mercenaryHandler->emote(emote);
+                    break;
+#endif
+            }
+        }
     }
 }

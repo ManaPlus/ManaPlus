@@ -114,6 +114,7 @@ namespace Actions
     decHandler(barToChat);
     decHandler(seen);
     decHandler(dumpMemoryUsage);
+    decHandler(setEmoteType);
 }  // namespace Actions
 
 #undef decHandler

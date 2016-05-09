@@ -786,6 +786,7 @@ manaplus_SOURCES += main.cpp \
 	      itemsoundmanager.h \
 	      enums/commandtarget.h \
 	      enums/dragdropsource.h \
+	      enums/emotetype.h \
 	      enums/equipslot.h \
 	      enums/guildpositionflags.h \
 	      enums/inventorytype.h \

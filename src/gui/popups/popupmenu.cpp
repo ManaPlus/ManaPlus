@@ -1097,6 +1097,43 @@ void PopupMenu::addWindowMenu(const Window *const window)
     }
 }
 
+void PopupMenu::showEmoteType()
+{
+    setMousePos();
+
+    mBrowserBox->clearRows();
+    // TRANSLATORS: popup menu header
+    mBrowserBox->addRow(_("Show emotes for:"));
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show emotes for player
+    mBrowserBox->addRow("/setemotetype player", _("Player"));
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: show emotes for pet
+    mBrowserBox->addRow("/setemotetype pet", _("Pet"));
+
+#ifdef EATHENA_SUPPORT
+    if (serverFeatures->haveServerPets())
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show emotes for homuncules
+        mBrowserBox->addRow("/setemotetype homun", _("Homunculus"));
+
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show emotes for mercenary
+        mBrowserBox->addRow("/setemotetype merc", _("Mercenary"));
+    }
+#endif
+    mBrowserBox->addRow("##3---");
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(mX, mY);
+}
+
 void PopupMenu::handleLink(const std::string &link,
                            MouseEvent *event A_UNUSED)
 {

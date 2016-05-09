@@ -969,6 +969,7 @@ SET(SRCS
     enums/commandtarget.h
     enums/cutin.h
     enums/dragdropsource.h
+    enums/emotetype.h
     enums/equipslot.h
     enums/guildpositionflags.h
     enums/inventorytype.h

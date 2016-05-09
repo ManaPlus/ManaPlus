@@ -31,6 +31,7 @@
 
 #include "gui/shortcut/emoteshortcut.h"
 
+#include "gui/popups/popupmenu.h"
 #include "gui/popups/textpopup.h"
 
 #include "input/inputactionoperators.h"
@@ -192,6 +193,9 @@ void EmoteShortcutContainer::mouseDragged(MouseEvent &restrict event A_UNUSED)
 
 void EmoteShortcutContainer::mousePressed(MouseEvent &restrict event) restrict2
 {
+    if (event.isConsumed())
+        return;
+
     if (event.getButton() == MouseButton::LEFT)
     {
         if (!emoteShortcut)
@@ -212,6 +216,14 @@ void EmoteShortcutContainer::mousePressed(MouseEvent &restrict event) restrict2
         else if (emoteShortcut->getEmote(index))
         {
             mEmoteClicked = true;
+        }
+    }
+    else if (event.getButton() == MouseButton::RIGHT)
+    {
+        if (popupMenu)
+        {
+            event.consume();
+            popupMenu->showEmoteType();
         }
     }
 }
