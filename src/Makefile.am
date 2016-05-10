@@ -21,6 +21,8 @@ endif
 if ENABLE_ASSERTS
 manaplus_CXXFLAGS += -DENABLE_ASSERTS
 dyecmd_CXXFLAGS += -DENABLE_ASSERTS
+manaplus_LDFLAGS = -rdynamic
+dyecmd_LDFLAGS = -rdynamic
 endif
 
 if ENABLE_PUGIXML
@@ -1775,6 +1777,7 @@ manaplustests_CXXFLAGS += -Werror
 endif
 if ENABLE_ASSERTS
 manaplustests_CXXFLAGS += -DENABLE_ASSERTS
+manaplustests_LDFLAGS = -rdynamic
 endif
 
 manaplustests_SOURCES = ${manaplus_SOURCES} \
