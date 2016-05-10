@@ -146,6 +146,18 @@ function run_make {
     check_error $?
 }
 
+function run_make_check {
+    rm $ERRFILE
+    echo "make -j2 V=0 check $*"
+    make -j2 V=0 check $* 2>$ERRFILE
+    export ERR=$?
+    if [ "${ERR}" != 0 ]; then
+        cat $ERRFILE
+        cat src/manaplustests.log
+        exit ${ERR}
+    fi
+}
+
 function run_check_warnings {
     DATA=$(cat $ERRFILE)
     if [ "$DATA" != "" ];

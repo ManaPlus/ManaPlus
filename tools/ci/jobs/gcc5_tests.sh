@@ -47,7 +47,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 do_init
 run_configure --enable-unittests=yes
 export SDL_VIDEODRIVER=dummy
-run_make check
+run_make_check
 
 source ./tools/ci/scripts/exit.sh
 

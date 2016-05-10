@@ -57,7 +57,7 @@ do_init
 run_configure --enable-unittests=yes
 export SDL_VIDEODRIVER=dummy
 export ASAN_OPTIONS=detect_leaks=0
-run_make check
+run_make_check
 
 source ./tools/ci/scripts/exit.sh
 

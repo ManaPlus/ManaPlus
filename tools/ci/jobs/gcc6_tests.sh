@@ -20,7 +20,7 @@ source ./tools/ci/flags/gcc6.sh
 do_init
 run_configure --enable-unittests=yes
 export SDL_VIDEODRIVER=dummy
-run_make check
+run_make_check
 
 source ./tools/ci/scripts/exit.sh
 
