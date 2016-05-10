@@ -156,6 +156,16 @@ function run_make_check {
         cat src/manaplustests.log
         exit ${ERR}
     fi
+    valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>valg.log
+    export DATA=$(grep "invalid" valg.log)
+    if [ "$DATA" != "" ];
+    then
+        cat valg.log
+        echo "valgrind error"
+        exit 1
+    fi
+    cat valg.log
+    echo "valgrind check"
 }
 
 function run_check_warnings {
