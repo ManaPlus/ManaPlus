@@ -23,13 +23,61 @@
 
 #ifdef ENABLE_ASSERTS
 
-#define reportFalse(val) \
+#define reportFalseReal(val) \
     (val ? true : (reportStack(__FILE__, __LINE__, __func__, \
         "Detected false value", #val), false))
 
-#define reportTrue(val) \
+#define reportTrueReal(val) \
     (val ? (reportStack(__FILE__, __LINE__, __func__, \
         "Detected false value", #val), true) : false)
+
+#define returnFalseVReal(val) \
+    if (!val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected false value", #val); \
+        return; \
+    }
+
+#define returnTrueVReal(val) \
+    if (val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected true value", #val); \
+        return; \
+    }
+
+#define returnFalseReal(ret, val) \
+    if (!val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected false value", #val); \
+        return ret; \
+    }
+
+#define returnTrueReal(ret, val) \
+    if (val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected true value", #val); \
+        return ret; \
+    }
+
+#define returnNullptrVReal(val) \
+    if ((val) == nullptr) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected null value", #val); \
+        return; \
+    }
+
+#define returnNullptrReal(ret, val) \
+    if ((val) == nullptr) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected null value", #val); \
+        return ret; \
+    }
 
 #define failFalse(val) \
     (val ? true : (reportStack(__FILE__, __LINE__, __func__, \
@@ -41,54 +89,6 @@
         "Detected false value", #val), \
         throw new std::exception(), true) : false)
 
-#define returnFalseV(val) \
-    if (!val) \
-    { \
-        reportStack(__FILE__, __LINE__, __func__, \
-            "Detected false value", #val); \
-        return; \
-    }
-
-#define returnTrueV(val) \
-    if (val) \
-    { \
-        reportStack(__FILE__, __LINE__, __func__, \
-            "Detected true value", #val); \
-        return; \
-    }
-
-#define returnFalse(ret, val) \
-    if (!val) \
-    { \
-        reportStack(__FILE__, __LINE__, __func__, \
-            "Detected false value", #val); \
-        return ret; \
-    }
-
-#define returnTrue(ret, val) \
-    if (val) \
-    { \
-        reportStack(__FILE__, __LINE__, __func__, \
-            "Detected true value", #val); \
-        return ret; \
-    }
-
-#define returnNullptrV(val) \
-    if ((val) == nullptr) \
-    { \
-        reportStack(__FILE__, __LINE__, __func__, \
-            "Detected null value", #val); \
-        return; \
-    }
-
-#define returnNullptr(ret, val) \
-    if ((val) == nullptr) \
-    { \
-        reportStack(__FILE__, __LINE__, __func__, \
-            "Detected null value", #val); \
-        return ret; \
-    }
-
 void reportStack(const char *const file,
                  const unsigned int line,
                  const char *const func,
@@ -97,34 +97,45 @@ void reportStack(const char *const file,
 
 #else  // ENABLE_ASSERTS
 
-#define reportFalse(val) (val)
-#define reportTrue(val) (val)
-#define failFalse(val) (val)
-#define failTrue(val) (val)
+#define reportFalseReal(val) (val)
+#define reportTrueReal(val) (val)
 
-#define returnFalseV(val) \
+#define returnFalseVReal(val) \
     if (!val) \
         return;
 
-#define returnTrueV(val) \
+#define returnTrueVReal(val) \
     if (val) \
         return;
 
-#define returnFalse(ret, val) \
+#define returnFalseReal(ret, val) \
     if (!val) \
         return ret;
 
-#define returnTrue(ret, val) \
+#define returnTrueReal(ret, val) \
     if (val) \
         return ret;
 
-#define returnNullptrV(val) \
+#define returnNullptrVReal(val) \
     if ((val) == nullptr) \
         return; \
 
-#define returnNullptr(ret, val) \
+#define returnNullptrReal(ret, val) \
     if ((val) == nullptr) \
         return ret; \
 
+#define failFalse(val) (val)
+#define failTrue(val) (val)
+
 #endif  // ENABLE_ASSERTS
+
+#define reportFalse(val) reportFalseReal(val)
+#define reportTrue(val) reportTrueReal(val)
+#define returnFalseV(val) returnFalseVReal(val)
+#define returnTrueV(val) returnTrueVReal(val)
+#define returnFalse(ret, val) returnFalseReal(ret, val)
+#define returnTrue(ret, val) returnTrueReal(ret, val)
+#define returnNullptrV(val) returnNullptrVReal(val)
+#define returnNullptr(ret, val) returnNullptrReal(ret, val)
+
 #endif  // UTILS_CHECKUTILS_H
