@@ -31,9 +31,12 @@
     (val ? (reportAssertStack(__FILE__, __LINE__, __func__, \
         "Detected false value", #val), true) : false)
 
-#define reportAlwaysReal(val) \
-    reportAssertStack(__FILE__, __LINE__, __func__, \
-        "Always assert", val);
+#define reportAlwaysReal(...) \
+    { \
+        logger->assertLog( \
+            __VA_ARGS__); \
+        reportLogStack(__FILE__, __LINE__, __func__); \
+    }
 
 #define returnFalseVReal(val) \
     if (!val) \
@@ -141,10 +144,11 @@
         throw new std::exception(); \
     }
 
-#define failAlways(val) \
+#define failAlways(...) \
     { \
-        reportAssertStack(__FILE__, __LINE__, __func__, \
-            "Detected false value", val); \
+        logger->assertLog( \
+            __VA_ARGS__); \
+        reportLogStack(__FILE__, __LINE__, __func__); \
         throw new std::exception(); \
     }
 
@@ -156,9 +160,7 @@ void reportAssertStack(const char *const file,
 
 void reportLogStack(const char *const file,
                     const unsigned int line,
-                    const char *const func,
-                    const char *const name,
-                    const char *const text);
+                    const char *const func);
 
 void reportStack();
 
@@ -167,7 +169,7 @@ void reportStack();
 #define reportFalseReal(val) (val)
 #define reportTrueReal(val) (val)
 
-#define reportAlwaysReal(val) ;
+#define reportAlwaysReal(...) ;
 
 #define returnFalseVReal(val) \
     if (!val) \
@@ -220,14 +222,14 @@ void reportStack();
     if ((val) == nullptr) \
         return ret;
 
-#define failAlways(val) ;
+#define failAlways(...) ;
 
 #endif  // ENABLE_ASSERTS
 
 #ifdef UNITTESTS
 #define reportFalse(val) failFalse(val)
 #define reportTrue(val) failTrue(val)
-#define reportAlways(val) failAlways(val)
+#define reportAlways(...) failAlways(__VA_ARGS__)
 #define returnFalseV(val) returnFailFalseV(val)
 #define returnTrueV(val) returnFailTrueV(val)
 #define returnFalse(ret, val) returnFailFalse(ret, val)
@@ -237,7 +239,7 @@ void reportStack();
 #else  // UNITTESTS
 #define reportFalse(val) reportFalseReal(val)
 #define reportTrue(val) reportTrueReal(val)
-#define reportAlways(val) reportAlwaysReal(val)
+#define reportAlways(...) reportAlwaysReal(__VA_ARGS__)
 #define returnFalseV(val) returnFalseVReal(val)
 #define returnTrueV(val) returnTrueVReal(val)
 #define returnFalse(ret, val) returnFalseReal(ret, val)

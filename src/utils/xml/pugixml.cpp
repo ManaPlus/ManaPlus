@@ -26,6 +26,7 @@
 
 #include "logger.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/fuzzer.h"
 #include "utils/physfstools.h"
@@ -88,6 +89,8 @@ namespace XML
                 if (size < 0)
                 {
                     logger->log("Error loading XML file %s", filename.c_str());
+                    reportAlways("Error loading XML file %s",
+                        filename.c_str());
                 }
                 else
                 {
@@ -100,6 +103,7 @@ namespace XML
             else
             {
                 logger->log("Error loading XML file %s", filename.c_str());
+                reportAlways("Error loading XML file %s", filename.c_str());
             }
         }
 
@@ -126,6 +130,7 @@ namespace XML
         else if (skipError == SkipError_false)
         {
             logger->log("Error loading %s", filename.c_str());
+            reportAlways("Error loading %s", filename.c_str());
         }
         mIsValid = valid;
         BLOCK_END("XML::Document::Document")

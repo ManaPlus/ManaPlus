@@ -54,16 +54,11 @@ void reportAssertStack(const char *const file,
 
 void reportLogStack(const char *const file,
                     const unsigned int line,
-                    const char *const func,
-                    const char *const name,
-                    const char *const text)
+                    const char *const func)
 {
-    logger->log("--- Assert: %s --------------------------------------------",
-        name);
-    logger->log("%s:%u: '%s' in function `%s'",
+    logger->assertLog("%s:%u: in function `%s'",
         file,
         line,
-        text,
         func);
 #ifndef ANDROID
 #if defined __linux__ || defined __linux
