@@ -30,6 +30,8 @@
 
 #include "const/resources/map/map.h"
 
+#include "utils/checkutils.h"
+
 #include "resources/action.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
@@ -98,7 +100,8 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
-        logger->log("Error, failed to parse %s", animationFile.c_str());
+        logger->log("Error, failed to parse sprite %s", animationFile.c_str());
+        reportAlways("Error, failed to parse sprite %s", animationFile.c_str());
 
         const std::string errorFile = paths.getStringValue("sprites").append(
             paths.getStringValue("spriteErrorFile"));
@@ -145,7 +148,7 @@ void SpriteDef::substituteAction(const std::string &restrict complete,
     FOR_EACH (ActionsConstIter, it, mActions)
     {
         ActionMap *const d = (*it).second;
-        if (!d)
+        if (reportTrue(d == nullptr))
             continue;
         if (d->find(complete) == d->end())
         {
@@ -242,6 +245,7 @@ void SpriteDef::loadImageSet(const XmlNodePtr node,
     if (!imageSet)
     {
         logger->log1("Couldn't load imageset!");
+        reportAlways("Couldn't load imageset!");
         return;
     }
 
@@ -265,6 +269,8 @@ void SpriteDef::loadAction(const XmlNodePtr node,
     {
         logger->log("Warning: imageset \"%s\" not defined in %s",
             imageSetName.c_str(), getIdPath().c_str());
+        reportAlways("Warning: imageset \"%s\" not defined in %s",
+            imageSetName.c_str(), getIdPath().c_str());
         return;
     }
     const ImageSet *const imageSet = si->second;
@@ -272,6 +278,8 @@ void SpriteDef::loadAction(const XmlNodePtr node,
     if (actionName == SpriteAction::INVALID)
     {
         logger->log("Warning: Unknown action \"%s\" defined in %s",
+            actionName.c_str(), getIdPath().c_str());
+        reportAlways("Warning: Unknown action \"%s\" defined in %s",
             actionName.c_str(), getIdPath().c_str());
         return;
     }
@@ -312,6 +320,8 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
     if (directionType == SpriteDirection::INVALID)
     {
         logger->log("Warning: Unknown direction \"%s\" used in %s",
+                directionName.c_str(), getIdPath().c_str());
+        reportAlways("Warning: Unknown direction \"%s\" used in %s",
                 directionName.c_str(), getIdPath().c_str());
         return;
     }
@@ -445,6 +455,8 @@ void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
     {
         logger->log("Error, Tried to include %s which already is included.",
             filename.c_str());
+        reportAlways("Error, Tried to include %s which already is included.",
+            filename.c_str());
         return;
     }
     mProcessedFiles.insert(filename);
@@ -455,6 +467,7 @@ void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
         logger->log("Error, no sprite root node in %s", filename.c_str());
+        reportAlways("Error, no sprite root node in %s", filename.c_str());
         return;
     }
 
@@ -540,6 +553,7 @@ bool SpriteDef::addSequence(const int start,
     if (start < 0 || end < 0)
     {
         logger->log1("No valid value for 'start' or 'end'");
+        reportAlways("No valid value for 'start' or 'end'");
         return true;
     }
 
@@ -555,6 +569,8 @@ bool SpriteDef::addSequence(const int start,
                 if (!img)
                 {
                     logger->log("No image at index %d",
+                        pos + variant_offset);
+                    reportAlways("No image at index %d",
                         pos + variant_offset);
                     pos ++;
                     continue;
@@ -579,6 +595,8 @@ bool SpriteDef::addSequence(const int start,
                 if (!img)
                 {
                     logger->log("No image at index %d",
+                        pos + variant_offset);
+                    reportAlways("No image at index %d",
                         pos + variant_offset);
                     pos ++;
                     continue;
