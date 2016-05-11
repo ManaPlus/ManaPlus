@@ -19,19 +19,47 @@
  */
 
 #include "catch.hpp"
+#include "client.h"
 
 #include "actormanager.h"
+#include "graphicsmanager.h"
 #include "party.h"
 
 #include "being/localplayer.h"
 
+#include "gui/theme.h"
+
 #include "utils/chatutils.h"
 #include "utils/delete2.h"
+#include "utils/physfstools.h"
+
+#include "resources/resourcemanager.h"
+#include "resources/sdlimagehelper.h"
 
 #include "debug.h"
 
 TEST_CASE("chatutils replaceVars")
 {
+    client = new Client;
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    XML::initXML();
+    SDL_Init(SDL_INIT_VIDEO);
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+    theme = new Theme;
+    Theme::selectSkin();
+    imageHelper = new SDLImageHelper();
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif
+    ActorSprite::load();
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
         BeingTypeId_zero);
     actorManager = new ActorManager;
@@ -198,6 +226,7 @@ TEST_CASE("chatutils replaceVars")
     }
 
     delete2(actorManager);
+    delete2(client);
 }
 
 TEST_CASE("chatutils textToMe")

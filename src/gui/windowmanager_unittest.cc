@@ -20,6 +20,7 @@
 
 #include "catch.hpp"
 #include "client.h"
+#include "configuration.h"
 #include "graphicsmanager.h"
 #include "settings.h"
 
@@ -73,6 +74,7 @@ TEST_CASE("Windows tests", "windowmanager")
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+    branding.setValue("onlineServerFile", "test/serverlistplus.xml");
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;
     userPalette = new UserPalette;
@@ -142,6 +144,7 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("serversDialog")
     {
         ServerInfo mCurrentServer;
+        settings.configDir = PhysFs::getRealDir("test/serverlistplus.xml");;
         ServerDialog *serverDialog = CREATEWIDGETR(ServerDialog,
             &mCurrentServer,
             settings.configDir);

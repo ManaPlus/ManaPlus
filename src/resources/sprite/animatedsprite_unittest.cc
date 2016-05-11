@@ -55,8 +55,8 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
-    ActorSprite::load();
-
+    theme = new Theme;
+    Theme::selectSkin();
     imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
@@ -65,6 +65,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
 #else
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif
+    ActorSprite::load();
 
     SECTION("basic test 1")
     {

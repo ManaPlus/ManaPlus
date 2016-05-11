@@ -1,5 +1,6 @@
 SET(FILES
     palette.gpl
+    serverlistplus.xml
     simplefile.txt
     )
 

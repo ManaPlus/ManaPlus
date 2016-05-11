@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serverlist version="1">
+  <its:rules xmlns:its="http://www.w3.org/2005/11/its" version="1.0">
+    <its:translateRule selector="//server/description/node" translate="yes"/>
+    <its:translateRule selector="//server/state" translate="no"/>
+    <its:translateRule selector="//server/site" translate="no"/>
+    <its:translateRule selector="//server/support" translate="no"/>
+    <its:translateRule selector="//server/registerurl" translate="no"/>
+    <its:translateRule selector="//server/description_ru" translate="no"/>
+    <its:translateRule selector="//server/description_fr" translate="no"/>
+    <its:translateRule selector="//server/description_pt" translate="no"/>
+    <its:translateRule selector="//server/description_es" translate="no"/>
+    <its:translateRule selector="//server/description_ja" translate="no"/>
+    <its:translateRule selector="//server/description_de" translate="no"/>
+    <its:translateRule selector="//server/description_pl" translate="no"/>
+    <its:translateRule selector="//server/description_pt_BR" translate="no"/>
+    <its:translateRule selector="//server/description_it" translate="no"/>
+    <its:translateRule selector="//server/description_vls" translate="no"/>
+    <its:translateRule selector="//server/description_id" translate="no"/>
+    <its:translateRule selector="//server/description_zh_CN" translate="no"/>
+    <its:translateRule selector="//server/description_nl_BE" translate="no"/>
+    <its:translateRule selector="//server/description_nl" translate="no"/>
+  </its:rules>
+
+  <server name="The Mana World" type="tmwathena">
+    <connection hostname="server.themanaworld.org" althostname="167.114.185.71" port="6901" protocol="TCP" />
+    <state>PRODUCTION</state>
+    <site>http://themanaworld.org/</site>
+    <updateMirror>http://updates.themanaworld.org/updates</updateMirror>
+    <updateMirror>http://cdn.jsdelivr.net/themanaworld</updateMirror>
+    <support>http://forums.themanaworld.org/viewtopic.php?f=1&amp;t=17737</support>
+    <registerurl>http://www.themanaworld.org/registration.php</registerurl>
+    <description>Join adventures with people from all over the world.</description>
+    <description_fr>Rejoignez de nouvelles aventures avec des personnes du monde entier.</description_fr>
+    <description_nl>Beleef avonturen met mensen van over de hele wereld.</description_nl>
+    <description_pt_BR>Faça parte de aventuras com pessoas de todo o mundo.</description_pt_BR>
+    <description_pt>Junte-se em aventuras com pessoas de todo o mundo.</description_pt>
+    <description_zh_CN>和来自全球的玩家一同冒险。</description_zh_CN>
+    <description_de>Trete Abenteuern mit Spielern aus aller Welt bei.</description_de>
+    <description_it>Inizia l'avventura insieme a giocatori da tutto il mondo.</description_it>
+    <description_ja>世界中のみんなと冒険にでかけませんか？</description_ja>
+    <description_pl>Przeżywaj przygody z ludźmi z całego świata!</description_pl>
+    <description_cs>Přidejte se k dobrodružství s lidmi z celého světa.</description_cs>
+    <description_ru>Присоединяйся к приключениям с людьми со всего мира.</description_ru>
+    <description_vls>Doe moa mee met mins'n van d'n 'ele wereld.</description_vls>
+    <description_nl_BE>Deel avonturen met mensen van over de hele wereld.</description_nl_BE>
+    <description_id>Bergabung berpetualangan bersama seluruh pemain dari berbagai belahan dunia.</description_id>
+    <description_es>Únete a la aventura con gente de todo el mundo.</description_es>
+  </server>
+
+  <server name="Evol Online" type="evol2">
+    <connection hostname="world.evolonline.org" althostname="212.85.158.133" port="6901" protocol="TCP" />
+    <state>DEVELOPMENT</state>
+    <defaultUpdateHost name="Evol normal updates" />
+    <updates name="Evol beta updates">
+        <host>http://download2.evolonline.org</host>
+    </updates>
+    <site>http://www.evolonline.org/</site>
+    <support>http://www.evolonline.org/chat/</support>
+    <description>Evol Online Beta server.</description>
+    <description_fr>Serveur Beta d'Evol Online.</description_fr>
+    <description_nl> Evol Online Beta server.</description_nl>
+    <description_pt_BR>Servidor Beta Evol Online</description_pt_BR>
+    <description_pt>Servidor Beta Evol Online</description_pt>
+    <description_zh_CN>Evol Online Beta 服务器。</description_zh_CN>
+    <description_de>Evol Online Beta server.</description_de>
+    <description_it>Evol Online Beta server.</description_it>
+    <description_ja>Evol Onlineβサーバー</description_ja>
+    <description_pl>Evol Online- serwer beta </description_pl>
+    <description_cs>Evol Online Beta server.</description_cs>
+    <description_ru>Evol Online бета сервер.</description_ru>
+    <description_vls>Evol Online Beta server.</description_vls>
+    <description_nl_BE>Evol Online Beta Server</description_nl_BE>
+    <description_id>server Evol Online Beta.</description_id>
+    <description_es>Servidor Beta de Evol Online.</description_es>
+  </server>
+
+  <server name="The Mana World (Brazil)" type="tmwathena">
+    <connection hostname="tmw-br.scall.org" port="6901" protocol="TCP" />
+    <state>PRODUCTION</state>
+    <site>http://tmw-br.scall.org/</site>
+    <support>http://tmw-br.scall.org/webchat</support>
+    <description>Server with original content in portuguese.</description>
+    <description_fr>Serveur avec un contenu en portugais de base.</description_fr>
+    <description_nl>Server met de originele inhoud in het Portugees.</description_nl>
+    <description_pt_BR>Servidor com conteúdo original em português.</description_pt_BR>
+    <description_pt>Servidor com conteúdo original em português.</description_pt>
+    <description_zh_CN>葡萄牙语版服务器。</description_zh_CN>
+    <description_de>Server mit originalem Inhalt auf Portugisisch.</description_de>
+    <description_it>Server con contenuti originali in lingua portoghese.</description_it>
+    <description_ja>オリジナルな内容も充実したポルトガル語サーバー</description_ja>
+    <description_pl>Serwer z oryginalną zawartością w języku portugalskim</description_pl>
+    <description_ru>Сервер с оригинальным контентом на португальском.</description_ru>
+    <description_vls>Server me originel'n inhod in 't portugees.</description_vls>
+    <description_nl_BE>Server met de oorspronkelijke inhoud in het Portugees.</description_nl_BE>
+    <description_id>Server dengan Bahasa Portugis</description_id>
+    <description_es>Servidor con contenido original en portugués.</description_es>
+  </server>
+
+  <server name="The Mana World (German)" type="tmwathena">
+    <connection hostname="germantmw.de" port="6901" protocol="TCP" />
+    <state>DEVELOPMENT</state>
+    <site>http://germantmw.de/</site>
+    <description>A german The Mana World Server.</description>
+    <description_fr>Un serveur allemand du jeu The Mana World.</description_fr>
+    <description_nl>Een Duitse The Mana World server.</description_nl>
+    <description_pt_BR>Um Servidor The Mana World alemão.</description_pt_BR>
+    <description_pt>Servidor The Mana World Alemão.</description_pt>
+    <description_zh_CN>德语版 The Mana World。</description_zh_CN>
+    <description_de>Ein deutscher The Mana World Server.</description_de>
+    <description_it>Server The Mana World in tedesco.</description_it>
+    <description_ja>The Mana World ドイツ語サーバー</description_ja>
+    <description_pl>Niemiecki serwer The Mana World.</description_pl>
+    <description_cs>Německý The Mana World Server.</description_cs>
+    <description_ru>Немецкий сервер The Mana World.</description_ru>
+    <description_vls>Nen dutsn The Mana World serv'r.</description_vls>
+    <description_nl_BE>Een Duitse 'The Mana World' server.</description_nl_BE>
+    <description_id>Server The Mana World dengan Bahasa German</description_id>
+    <description_es>Un Servidor de The Mana World en alemán.</description_es>
+  </server>
+
+  <server name="Land of Fire" type="tmwathena">
+    <connection hostname="landoffire.org" port="6901" protocol="TCP" />
+    <description>Mutant clone of TMW with new quests, items, and progression speed</description>
+    <description_fr>Clone mutant de TMW avec de nouvelles quêtes, de nouveaux objets et une progression accélérée.</description_fr>
+    <description_pt_BR>Clone mutante do TMW com novas quests, itens e velocidade de progressão.</description_pt_BR>
+    <description_zh_CN>TheManaWorld游戏的克隆版本，拥有新的关卡，任务和物品等</description_zh_CN>
+    <description_pl>Zmutowany klon TMW z nowymi questami, przedmiotami i prędkością progresji.</description_pl>
+    <description_cs>Mutantní klon TMW s novými úkoly, předměty a rychlostí postupu.</description_cs>
+    <description_ru>TMW клон-мутан с новыми квестами, предметами и скоростью развития</description_ru>
+    <description_vls>Gemutièrde kloan van TMW me nieuw' kwestn, ding'n en voorutgoande snel'eid</description_vls>
+    <description_nl_BE>Aangepaste versie van TMW met nieuwe opdrachten, voorwerpen en ontwikkelingssnelheid</description_nl_BE>
+    <description_es>Clon mutante de TMW con nuevas misiones, artículos y veloz progreso.</description_es>
+    <state>DEVELOPMENT</state>
+    <site>http://landoffire.org/</site>
+  </server>
+
+  <server name="Hercules preview server" type="eathena">
+    <connection hostname="hercules.manaplus.org" althostname="212.85.158.133" port="6900" protocol="TCP" packetVersion="20150000"/>
+    <state>DEVELOPMENT</state>
+    <site>http://manaplus.org/</site>
+    <support>http://manaplus.org/</support>
+    <updateMirror>http://download.evolonline.org/manaplus/hercules/data</updateMirror>
+    <description>Server for testing ManaPlus features.</description>
+  </server>
+
+  <server name="The Mana World test server" type="tmwathena">
+    <connection hostname="testing.themanaworld.org" althostname="167.114.185.71" port="6902" protocol="TCP" />
+    <state>DEVELOPMENT</state>
+    <site>http://themanaworld.org/</site>
+    <support>http://forums.themanaworld.org/viewforum.php?f=2</support>
+    <onlineListUrl>server.themanaworld.org/testing</onlineListUrl>
+    <updateMirror>http://updates.themanaworld.org/test-updates</updateMirror>
+    <description>New content can be tested here before release.</description>
+    <description_fr>Les nouveautés peuvent être testées ici avant leur sortie officielle.</description_fr>
+    <description_nl>Nieuwe inhoud kan hier, alvorens te worden uitgebracht, worden getest.</description_nl>
+    <description_pt_BR>Novo conteúdo pode ser testado aqui antes do lançamento.</description_pt_BR>
+    <description_pt>Novos conteúdos são testados aqui antes de serem lançados. </description_pt>
+    <description_zh_CN>新内容发布前可以在这里测试。</description_zh_CN>
+    <description_de>Neuer Inhalt kann hier vor Veröffentlichung getestet werden.</description_de>
+    <description_it>Server per testare i nuovi contenuti di gioco prima della release ufficiale.</description_it>
+    <description_ja>リリース前の新しいコンテンツはこちらでテストできます</description_ja>
+    <description_pl>Nowa zawartość The Mana World jest testowana tutaj przed oficjalnym wydaniem.</description_pl>
+    <description_cs>Zde můžeš otestovat nový obsah před vydáním.</description_cs>
+    <description_ru>Здесь тестируется новый контент перед релизом.</description_ru>
+    <description_vls>Nieuw'n inhod kan ier getest weur'n voar release.</description_vls>
+    <description_nl_BE>Nieuwe inhoud kan hier worden getest alvorens publiekelijk te gaan.</description_nl_BE>
+    <description_id> </description_id>
+    <description_es>Nuevos contenidos pueden ser probados aquí antes de ser liberados.</description_es>
+  </server>
+</serverlist>

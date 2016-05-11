@@ -299,6 +299,12 @@ void ItemDB::load()
 
 void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
 {
+    if (fileName.empty())
+    {
+        mLoaded = true;
+        return;
+    }
+
     XML::Document doc(fileName, UseResman_true, SkipError_false);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
