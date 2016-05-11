@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <serverlist version="1">
   <its:rules xmlns:its="http://www.w3.org/2005/11/its" version="1.0">
     <its:translateRule selector="//server/description/node" translate="yes"/>
