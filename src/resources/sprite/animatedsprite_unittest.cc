@@ -26,6 +26,8 @@
 
 #include "const/resources/spriteaction.h"
 
+#include "being/actorsprite.h"
+
 #include "gui/theme.h"
 
 #include "resources/resourcemanager.h"
@@ -53,6 +55,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+    ActorSprite::load();
 
     imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2

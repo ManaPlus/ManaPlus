@@ -23,6 +23,8 @@
 #include "graphicsmanager.h"
 #include "settings.h"
 
+#include "being/actorsprite.h"
+
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 
@@ -75,6 +77,7 @@ TEST_CASE("Windows tests", "windowmanager")
     imageHelper = new SDLImageHelper;
     userPalette = new UserPalette;
     theme = new Theme;
+    ActorSprite::load();
     gui = new Gui();
     gui->postInit(mainGraphics);
 

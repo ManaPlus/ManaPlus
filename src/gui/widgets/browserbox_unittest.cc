@@ -21,6 +21,8 @@
 #include "catch.hpp"
 #include "client.h"
 
+#include "being/actorsprite.h"
+
 #include "gui/fonts/font.h"
 
 #include "gui/widgets/browserbox.h"
@@ -41,6 +43,7 @@ TEST_CASE("BrowserBox tests", "browserbox")
     logger = new Logger();
     imageHelper = new SDLImageHelper();
     theme = new Theme;
+    ActorSprite::load();
     Widget::setGlobalFont(new Font("/usr/share/fonts/truetype/"
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
     BrowserBox *const box = new BrowserBox(nullptr,

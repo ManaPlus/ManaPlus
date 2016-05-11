@@ -25,6 +25,8 @@
 #include "logger.h"
 #include "graphicsmanager.h"
 
+#include "being/actorsprite.h"
+
 #include "input/inputactionmap.h"
 #include "input/inputmanager.h"
 
@@ -79,6 +81,7 @@ TEST_CASE("integrity tests", "integrity")
 #else
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif
+    ActorSprite::load();
 
     SECTION("integrity test 1")
     {
