@@ -75,6 +75,14 @@
 #include <stdexcept>
 #include <algorithm>
 
+// stack
+#ifndef ANDROID
+#if defined __linux__ || defined __linux
+#include <execinfo.h>
+#endif  // defined __linux__ || defined __linux
+#endif  // ANDROID
+// stack
+
 // #included from: catch_compiler_capabilities.h
 #define TWOBLUECUBES_CATCH_COMPILER_CAPABILITIES_HPP_INCLUDED
 
@@ -6064,6 +6072,21 @@ namespace Catch {
             ResultBuilder resultBuilder = makeUnexpectedResultBuilder();
             resultBuilder.setResultType( ResultWas::FatalErrorCondition );
             resultBuilder << message;
+// stack
+#ifndef ANDROID
+#if defined __linux__ || defined __linux
+            {
+            void *array[15];
+            const int size = static_cast<int>(backtrace(array, 15));
+            char **strings = backtrace_symbols(array, size);
+            for (int i = 0; i < size; i++)
+                resultBuilder << strings[i];
+            free(strings);
+            }
+#endif  // defined __linux__ || defined __linux
+#endif  // ANDROID
+// stack
+
             resultBuilder.captureExpression();
 
             handleUnfinishedSections();
