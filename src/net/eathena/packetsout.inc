@@ -413,7 +413,6 @@ if (packetVersion >= 20120410)
 {
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
-    packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
     packet(CMSG_MAP_SERVER_CONNECT,       0x094b,  19, clif->pWantToConnection);
 }
 
@@ -709,8 +708,6 @@ if (packetVersion >= 20150513)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0924,   5, clif->pChangeDir);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0885,   6, clif->pDropItem);
-    packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
-    packet(CMSG_PLAYER_CHANGE_DIR,        0x0924,   5, clif->pChangeDir);
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_ITEM_PICKUP,              0x0958,   6, clif->pTakeItem);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
