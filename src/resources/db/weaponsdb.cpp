@@ -34,14 +34,16 @@ namespace
     bool mLoaded = false;
 }
 
-static void loadDB(const std::string &name, WeaponsInfos &arr)
+static void loadDB(const std::string &name,
+                   WeaponsInfos &arr)
 {
     readXmlIntVector(paths.getStringValue("weaponsFile"),
         "weapons",
         name,
         "item",
         "id",
-        arr);
+        arr,
+        SkipError_false);
 }
 
 void WeaponsDB::load()

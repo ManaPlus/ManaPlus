@@ -37,7 +37,8 @@ namespace
 
 static void loadXmlFile(const std::string &file,
                         const std::string &name,
-                        BadgesInfos &arr)
+                        BadgesInfos &arr,
+                        const SkipError skipError)
 {
     readXmlStringMap(file,
         "badges",
@@ -45,21 +46,22 @@ static void loadXmlFile(const std::string &file,
         "badge",
         "name",
         "image",
-        arr);
+        arr,
+        skipError);
 }
 
 static void loadDB(const std::string &name, BadgesInfos &arr)
 {
     loadXmlFile(paths.getStringValue("badgesFile"),
-        name, arr);
+        name, arr, SkipError_false);
     loadXmlFile(paths.getStringValue("badgesPatchFile"),
-        name, arr);
+        name, arr, SkipError_true);
 
     StringVect listVect;
     Files::getFilesInDir(paths.getStringValue(
         "badgesPatchDir"), listVect, ".xml");
     FOR_EACH (StringVectCIter, itVect, listVect)
-        loadXmlFile(*itVect, name, arr);
+        loadXmlFile(*itVect, name, arr, SkipError_true);
 }
 
 void BadgesDB::load()

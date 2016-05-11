@@ -31,10 +31,11 @@ void readXmlIntVector(const std::string &fileName,
                       const std::string &sectionName,
                       const std::string &itemName,
                       const std::string &attributeName,
-                      std::vector<int> &arr)
+                      std::vector<int> &arr,
+                      const SkipError skipError)
 {
     arr.clear();
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))
@@ -63,8 +64,13 @@ void readXmlIntVector(const std::string &fileName,
                     childNode, "name", "");
                 if (!name.empty())
                 {
-                    readXmlIntVector(name, rootName, sectionName, itemName,
-                        attributeName, arr);
+                    readXmlIntVector(name,
+                        rootName,
+                        sectionName,
+                        itemName,
+                        attributeName,
+                        arr,
+                        skipError);
                 }
             }
         }
@@ -77,9 +83,10 @@ void readXmlStringMap(const std::string &fileName,
                       const std::string &itemName,
                       const std::string &attributeKeyName,
                       const std::string &attributeValueName,
-                      std::map<std::string, std::string> &arr)
+                      std::map<std::string, std::string> &arr,
+                      const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))
@@ -110,9 +117,14 @@ void readXmlStringMap(const std::string &fileName,
                     childNode, "name", "");
                 if (!name.empty())
                 {
-                    readXmlStringMap(name, rootName, sectionName, itemName,
-                        attributeKeyName, attributeValueName,
-                        arr);
+                    readXmlStringMap(name,
+                        rootName,
+                        sectionName,
+                        itemName,
+                        attributeKeyName,
+                        attributeValueName,
+                        arr,
+                        skipError);
                 }
             }
         }

@@ -21,6 +21,8 @@
 #ifndef UTILS_XMLUTILS_H
 #define UTILS_XMLUTILS_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include <string>
 #include <map>
 #include <vector>
@@ -30,7 +32,8 @@ void readXmlIntVector(const std::string &fileName,
                       const std::string &sectionName,
                       const std::string &itemName,
                       const std::string &attributeName,
-                      std::vector<int> &arr);
+                      std::vector<int> &arr,
+                      const SkipError skipError);
 
 void readXmlStringMap(const std::string &fileName,
                       const std::string &rootName,
@@ -38,6 +41,7 @@ void readXmlStringMap(const std::string &fileName,
                       const std::string &itemName,
                       const std::string &attributeKeyName,
                       const std::string &attributeValueName,
-                      std::map<std::string, std::string> &arr);
+                      std::map<std::string, std::string> &arr,
+                      const SkipError skipError);
 
 #endif  // UTILS_XMLUTILS_H
