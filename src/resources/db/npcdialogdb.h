@@ -21,6 +21,8 @@
 #ifndef RESOURCES_DB_NPCDIALOGDB_H
 #define RESOURCES_DB_NPCDIALOGDB_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include <map>
 #include <string>
 
@@ -38,7 +40,8 @@ namespace NpcDialogDB
      */
     void load();
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
     /**
      * Clear the remap data

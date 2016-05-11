@@ -21,6 +21,8 @@
 #ifndef RESOURCES_DB_SOUNDDB_H
 #define RESOURCES_DB_SOUNDDB_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -29,7 +31,8 @@ namespace SoundDB
 {
     void load();
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
     void unload();
 

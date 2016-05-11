@@ -72,7 +72,8 @@ class QuestsWindow final : public Window,
         void addEffect(Being *const being);
 
     private:
-        void loadXmlFile(const std::string &fileName);
+        void loadXmlFile(const std::string &fileName,
+                         const SkipError skipError);
 
         void loadQuest(const int var, const XmlNodePtr node);
 

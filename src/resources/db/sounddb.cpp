@@ -38,16 +38,17 @@ namespace
 void SoundDB::load()
 {
     unload();
-    loadXmlFile(paths.getStringValue("soundsFile"));
-    loadXmlFile(paths.getStringValue("soundsPatchFile"));
+    loadXmlFile(paths.getStringValue("soundsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("soundsPatchFile"), SkipError_true);
     loadXmlDir("soundsPatchDir", loadXmlFile);
 }
 
-void SoundDB::loadXmlFile(const std::string &fileName)
+void SoundDB::loadXmlFile(const std::string &fileName,
+                          const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
         UseResman_true,
-        SkipError_false);
+        skipError);
     const XmlNodePtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "sounds"))
@@ -62,7 +63,7 @@ void SoundDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (xmlNameEqual(node, "sound"))

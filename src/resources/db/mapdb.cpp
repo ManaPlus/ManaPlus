@@ -47,21 +47,24 @@ void MapDB::load()
     if (mLoaded)
         unload();
 
-    loadRemapXmlFile(paths.getStringValue("mapsRemapFile"));
-    loadRemapXmlFile(paths.getStringValue("mapsRemapPatchFile"));
+    loadRemapXmlFile(paths.getStringValue("mapsRemapFile"),
+        SkipError_true);
+    loadRemapXmlFile(paths.getStringValue("mapsRemapPatchFile"),
+        SkipError_true);
     loadXmlDir("mapsRemapPatchDir", loadRemapXmlFile);
 
-    loadInfo(paths.getStringValue("mapsFile"));
-    loadInfo(paths.getStringValue("mapsPatchFile"));
+    loadInfo(paths.getStringValue("mapsFile"), SkipError_false);
+    loadInfo(paths.getStringValue("mapsPatchFile"), SkipError_true);
     loadXmlDir("mapsPatchDir", loadInfo);
     mLoaded = true;
 }
 
-void MapDB::loadRemapXmlFile(const std::string &fileName)
+void MapDB::loadRemapXmlFile(const std::string &fileName,
+                             const SkipError skipError)
 {
     XML::Document *const doc = new XML::Document(fileName,
         UseResman_true,
-        SkipError_false);
+        skipError);
 
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
@@ -88,7 +91,7 @@ void MapDB::loadRemapXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadRemapXmlFile(name);
+                loadRemapXmlFile(name, skipError);
             continue;
         }
     }
@@ -144,11 +147,12 @@ void MapDB::readAtlas(XmlNodePtrConst node)
     }
 }
 
-void MapDB::loadInfo(const std::string &fileName)
+void MapDB::loadInfo(const std::string &fileName,
+                     const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
         UseResman_true,
-        SkipError_false);
+        skipError);
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
     {
@@ -170,7 +174,7 @@ void MapDB::loadInfo(const std::string &fileName)
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadInfo(name);
+                loadInfo(name, skipError);
             continue;
         }
     }

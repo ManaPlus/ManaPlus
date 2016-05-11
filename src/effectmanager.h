@@ -25,6 +25,8 @@
 
 #include "enums/resources/spritedirection.h"
 
+#include "enums/simpletypes/skiperror.h"
+
 #include "particle/particletimer.h"
 
 #include "resources/effectdescription.h"
@@ -46,7 +48,8 @@ class EffectManager final
 
         ~EffectManager();
 
-        void loadXmlFile(const std::string &fileName);
+        void loadXmlFile(const std::string &fileName,
+                         const SkipError skipError);
 
         /**
          * Triggers a effect with the id, at

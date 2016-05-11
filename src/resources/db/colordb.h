@@ -23,6 +23,7 @@
 #define RESOURCES_DB_COLORDB_H
 
 #include "enums/simpletypes/itemcolor.h"
+#include "enums/simpletypes/skiperror.h"
 
 #include <map>
 #include <string>
@@ -66,9 +67,11 @@ namespace ColorDB
      * Loads the color data from <code>colors.xml</code>.
      */
     void loadHair(const std::string &fileName,
-                  std::map<ItemColor, ItemColorData> &colors);
+                  std::map<ItemColor, ItemColorData> &colors,
+                  const SkipError skipError);
 
-    void loadColorLists(const std::string &fileName);
+    void loadColorLists(const std::string &fileName,
+                        const SkipError skipError);
 
     /**
      * Clear the color data

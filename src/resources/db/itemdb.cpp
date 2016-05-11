@@ -268,15 +268,19 @@ void ItemDB::load()
     mUnknown->setSprite(errFile, Gender::FEMALE, 0);
     mUnknown->setSprite(errFile, Gender::OTHER, 0);
     mUnknown->addTag(mTags["All"]);
-    loadXmlFile(paths.getStringValue("itemsFile"), tagNum);
-    loadXmlFile(paths.getStringValue("itemsPatchFile"), tagNum);
+    loadXmlFile(paths.getStringValue("itemsFile"),
+        tagNum,
+        SkipError_false);
+    loadXmlFile(paths.getStringValue("itemsPatchFile"),
+        tagNum,
+        SkipError_true);
 
     StringVect list;
     Files::getFilesInDir(paths.getStringValue("itemsPatchDir"),
         list,
         ".xml");
     FOR_EACH (StringVectCIter, it, list)
-        loadXmlFile(*it, tagNum);
+        loadXmlFile(*it, tagNum, SkipError_true);
 
     // Hairstyles are encoded as negative numbers. Count how far negative
     // we can go.
@@ -297,7 +301,9 @@ void ItemDB::load()
     mNumberOfRaces = races - 100;
 }
 
-void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
+void ItemDB::loadXmlFile(const std::string &fileName,
+                         int &tagNum,
+                         const SkipError skipError)
 {
     if (fileName.empty())
     {
@@ -305,7 +311,9 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         return;
     }
 
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName,
+        UseResman_true,
+        skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "items"))
@@ -321,7 +329,7 @@ void ItemDB::loadXmlFile(const std::string &fileName, int &tagNum)
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadXmlFile(name, tagNum);
+                loadXmlFile(name, tagNum, skipError);
             continue;
         }
         if (!xmlNameEqual(node, "item"))

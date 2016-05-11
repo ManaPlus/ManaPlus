@@ -24,6 +24,7 @@
 #define RESOURCES_DB_AVATARDB_H
 
 #include "enums/simpletypes/beingtypeid.h"
+#include "enums/simpletypes/skiperror.h"
 
 #include <string>
 
@@ -39,7 +40,8 @@ namespace AvatarDB
 
     BeingInfo *get(const BeingTypeId id) A_WARN_UNUSED;
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 }  // namespace AvatarDB
 
 #endif  // RESOURCES_DB_AVATARDB_H

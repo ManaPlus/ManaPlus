@@ -23,6 +23,8 @@
 #ifndef RESOURCES_DB_MODDB_H
 #define RESOURCES_DB_MODDB_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include "resources/modinfo.h"
 
 #include "localconsts.h"
@@ -37,7 +39,8 @@ namespace ModDB
 
     ModInfo *get(const std::string &name) A_WARN_UNUSED;
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
     const ModInfos &getAll();
 }  // namespace ModDB

@@ -23,6 +23,8 @@
 #ifndef RESOURCES_DB_ITEMDB_H
 #define RESOURCES_DB_ITEMDB_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include "utils/stringvector.h"
 
 #include <map>
@@ -45,7 +47,9 @@ namespace ItemDB
 
     void unload();
 
-    void loadXmlFile(const std::string &fileName, int &tagNum);
+    void loadXmlFile(const std::string &fileName,
+                     int &tagNum,
+                     const SkipError skipError);
 
     const StringVect &getTags();
 

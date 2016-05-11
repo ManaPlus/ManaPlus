@@ -26,6 +26,7 @@
 #include "gui/widgets/window.h"
 
 #include "enums/simpletypes/autotarget.h"
+#include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/modifiable.h"
 
 #include "listeners/actionlistener.h"
@@ -77,7 +78,8 @@ class SkillDialog final : public Window,
 
         void updateModels();
 
-        void loadXmlFile(const std::string &fileName);
+        void loadXmlFile(const std::string &fileName,
+                         const SkipError skipError);
 
         void clearSkills();
 

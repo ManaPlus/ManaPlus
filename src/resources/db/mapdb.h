@@ -22,6 +22,8 @@
 #ifndef RESOURCES_DB_MAPDB_H
 #define RESOURCES_DB_MAPDB_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include "resources/mapinfo.h"
 
 #include <map>
@@ -38,9 +40,11 @@ namespace MapDB
      */
     void load();
 
-    void loadRemapXmlFile(const std::string &fileName);
+    void loadRemapXmlFile(const std::string &fileName,
+                          const SkipError skipError);
 
-    void loadInfo(const std::string &fileName);
+    void loadInfo(const std::string &fileName,
+                  const SkipError skipError);
 
     /**
      * Clear the remap data

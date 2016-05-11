@@ -47,15 +47,18 @@ void PETDB::load()
         unload();
 
     logger->log1("Initializing PET database...");
-    loadXmlFile(paths.getStringValue("petsFile"));
-    loadXmlFile(paths.getStringValue("petsPatchFile"));
+    loadXmlFile(paths.getStringValue("petsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("petsPatchFile"), SkipError_true);
     loadXmlDir("petsPatchDir", loadXmlFile);
     mLoaded = true;
 }
 
-void PETDB::loadXmlFile(const std::string &fileName)
+void PETDB::loadXmlFile(const std::string &fileName,
+                        const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName,
+        UseResman_true,
+        skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "pets"))
@@ -72,7 +75,7 @@ void PETDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(petNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (!xmlNameEqual(petNode, "pet"))

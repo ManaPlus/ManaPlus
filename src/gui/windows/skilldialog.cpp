@@ -266,18 +266,21 @@ void SkillDialog::hideSkills(const SkillOwner::Type owner)
 void SkillDialog::loadSkills()
 {
     clearSkills();
-    loadXmlFile(paths.getStringValue("skillsFile"));
+    loadXmlFile(paths.getStringValue("skillsFile"), SkipError_false);
     if (mSkills.empty())
-        loadXmlFile(paths.getStringValue("skillsFile2"));
-    loadXmlFile(paths.getStringValue("skillsPatchFile"));
+        loadXmlFile(paths.getStringValue("skillsFile2"), SkipError_false);
+    loadXmlFile(paths.getStringValue("skillsPatchFile"), SkipError_true);
     loadXmlDir("skillsPatchDir", loadXmlFile);
 
     update();
 }
 
-void SkillDialog::loadXmlFile(const std::string &fileName)
+void SkillDialog::loadXmlFile(const std::string &fileName,
+                              const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName,
+        UseResman_true,
+        skipError);
     XmlNodePtrConst root = doc.rootNode();
 
     int setCount = 0;
@@ -294,7 +297,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(set, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (xmlNameEqual(set, "set"))

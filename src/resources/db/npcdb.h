@@ -24,6 +24,7 @@
 #define RESOURCES_DB_NPCDB_H
 
 #include "enums/simpletypes/beingtypeid.h"
+#include "enums/simpletypes/skiperror.h"
 
 #include <string>
 
@@ -44,7 +45,8 @@ namespace NPCDB
 
     BeingTypeId getAvatarFor(const BeingTypeId id);
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 }  // namespace NPCDB
 
 #endif  // RESOURCES_DB_NPCDB_H

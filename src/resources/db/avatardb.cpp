@@ -46,14 +46,17 @@ void AvatarDB::load()
 {
     if (mLoaded)
         unload();
-    loadXmlFile(paths.getStringValue("avatarsFile"));
-    loadXmlFile(paths.getStringValue("avatarsPatchFile"));
+    loadXmlFile(paths.getStringValue("avatarsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("avatarsPatchFile"), SkipError_true);
     loadXmlDir("avatarsPatchDir", loadXmlFile);
 }
 
-void AvatarDB::loadXmlFile(const std::string &fileName)
+void AvatarDB::loadXmlFile(const std::string &fileName,
+                           const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName,
+        UseResman_true,
+        skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "avatars"))
@@ -70,7 +73,7 @@ void AvatarDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(avatarNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
 

@@ -38,15 +38,15 @@ struct SpriteDisplay;
         Files::getFilesInDir(paths.getStringValue( \
             name), listVect, ".xml"); \
         FOR_EACH (StringVectCIter, itVect, listVect) \
-            function(*itVect); \
+            function(*itVect, SkipError_true); \
     }
 
-#define loadXmlDir2(name, function, ext) \
+#define loadXmlDir2(name, function, ext, skipError) \
     { \
         StringVect listVect; \
         Files::getFilesInDir(name, listVect, ext); \
         FOR_EACH (StringVectCIter, itVect, listVect) \
-            function(*itVect); \
+            function(*itVect, skipError); \
     }
 
 namespace BeingCommon

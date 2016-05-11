@@ -100,14 +100,15 @@ void Units::loadUnits()
         units[UNIT_CURRENCY] = ud;
     }
 
-    loadXmlFile(paths.getStringValue("unitsFile"));
-    loadXmlFile(paths.getStringValue("unitsPatchFile"));
+    loadXmlFile(paths.getStringValue("unitsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("unitsPatchFile"), SkipError_true);
     loadXmlDir("unitsPatchDir", loadXmlFile);
 }
 
-void Units::loadXmlFile(const std::string &fileName)
+void Units::loadXmlFile(const std::string &fileName,
+                        const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "units"))
@@ -123,7 +124,7 @@ void Units::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (xmlNameEqual(node, "unit"))

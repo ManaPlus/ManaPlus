@@ -45,16 +45,17 @@ void HomunculusDB::load()
         unload();
 
     logger->log1("Initializing homunculus database...");
-    loadXmlFile(paths.getStringValue("homunculusesFile"));
-    loadXmlFile(paths.getStringValue("homunculusesPatchFile"));
+    loadXmlFile(paths.getStringValue("homunculusesFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("homunculusesPatchFile"), SkipError_true);
     loadXmlDir("homunculusesPatchDir", loadXmlFile);
 
     mLoaded = true;
 }
 
-void HomunculusDB::loadXmlFile(const std::string &fileName)
+void HomunculusDB::loadXmlFile(const std::string &fileName,
+                               const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "homunculuses"))
@@ -75,7 +76,7 @@ void HomunculusDB::loadXmlFile(const std::string &fileName)
             const std::string name = XML::getProperty(
                 homunculusNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         if (!xmlNameEqual(homunculusNode, "homunculus"))

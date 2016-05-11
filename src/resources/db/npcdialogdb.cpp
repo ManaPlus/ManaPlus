@@ -42,8 +42,8 @@ void NpcDialogDB::load()
         unload();
 
     logger->log1("Loading npcdialog database...");
-    loadXmlFile(paths.getStringValue("npcDialogsFile"));
-    loadXmlFile(paths.getStringValue("npcDialogsPatchFile"));
+    loadXmlFile(paths.getStringValue("npcDialogsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("npcDialogsPatchFile"), SkipError_true);
     loadXmlDir("npcDialogsPatchDir", loadXmlFile);
 
     mLoaded = true;
@@ -144,11 +144,12 @@ static void loadNpcDialog(NpcDialogInfo *const dialog,
     }
 }
 
-void NpcDialogDB::loadXmlFile(const std::string &fileName)
+void NpcDialogDB::loadXmlFile(const std::string &fileName,
+                              const SkipError skipError)
 {
     XML::Document *const doc = new XML::Document(fileName,
         UseResman_true,
-        SkipError_false);
+        skipError);
 
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
@@ -177,7 +178,7 @@ void NpcDialogDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
     }

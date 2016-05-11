@@ -125,8 +125,8 @@ QuestsWindow::QuestsWindow() :
 
     loadWindowState();
     enableVisibleSound(true);
-    loadXmlFile(paths.getStringValue("questsFile"));
-    loadXmlFile(paths.getStringValue("questsPatchFile"));
+    loadXmlFile(paths.getStringValue("questsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("questsPatchFile"), SkipError_true);
     loadXmlDir("questsPatchDir", loadXmlFile);
 }
 
@@ -162,9 +162,12 @@ QuestsWindow::~QuestsWindow()
     }
 }
 
-void QuestsWindow::loadXmlFile(const std::string &fileName)
+void QuestsWindow::loadXmlFile(const std::string &fileName,
+                               const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName,
+        UseResman_true,
+        skipError);
     const XmlNodePtrConst root = doc.rootNode();
     if (!root)
         return;
@@ -175,7 +178,7 @@ void QuestsWindow::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(varNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (xmlNameEqual(varNode, "var"))

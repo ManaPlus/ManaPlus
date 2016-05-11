@@ -42,15 +42,16 @@ void ModDB::load()
 {
     if (mLoaded)
         unload();
-    loadXmlFile(paths.getStringValue("modsFile"));
-    loadXmlFile(paths.getStringValue("modsPatchFile"));
+    loadXmlFile(paths.getStringValue("modsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("modsPatchFile"), SkipError_true);
     loadXmlDir("modsPatchDir", loadXmlFile);
     mLoaded = true;
 }
 
-void ModDB::loadXmlFile(const std::string &fileName)
+void ModDB::loadXmlFile(const std::string &fileName,
+                        const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "mods"))
@@ -66,7 +67,7 @@ void ModDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(modNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
 

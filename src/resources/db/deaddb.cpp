@@ -40,17 +40,18 @@ void DeadDB::load()
     if (mLoaded)
         unload();
 
-    loadXmlFile(paths.getStringValue("deadMessagesFile"));
-    loadXmlFile(paths.getStringValue("deadMessagesPatchFile"));
+    loadXmlFile(paths.getStringValue("deadMessagesFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("deadMessagesPatchFile"), SkipError_true);
     loadXmlDir("deadMessagesPatchDir", loadXmlFile);
     mLoaded = true;
 }
 
-void DeadDB::loadXmlFile(const std::string &fileName)
+void DeadDB::loadXmlFile(const std::string &fileName,
+                         const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
         UseResman_true,
-        SkipError_false);
+        skipError);
     const XmlNodePtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "messages"))
@@ -67,7 +68,7 @@ void DeadDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (xmlNameEqual(node, "message"))

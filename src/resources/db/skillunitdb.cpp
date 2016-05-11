@@ -47,15 +47,16 @@ void SkillUnitDb::load()
         unload();
 
     logger->log1("Initializing skill unit database...");
-    loadXmlFile(paths.getStringValue("skillUnitsFile"));
-    loadXmlFile(paths.getStringValue("skillUnitsPatchFile"));
+    loadXmlFile(paths.getStringValue("skillUnitsFile"), SkipError_true);
+    loadXmlFile(paths.getStringValue("skillUnitsPatchFile"), SkipError_false);
     loadXmlDir("skillUnitsPatchDir", loadXmlFile);
     mLoaded = true;
 }
 
-void SkillUnitDb::loadXmlFile(const std::string &fileName)
+void SkillUnitDb::loadXmlFile(const std::string &fileName,
+                              const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "skillunits"))
@@ -73,7 +74,7 @@ void SkillUnitDb::loadXmlFile(const std::string &fileName)
             const std::string name = XML::getProperty(skillUnitNode,
                 "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (!xmlNameEqual(skillUnitNode, "skillunit"))

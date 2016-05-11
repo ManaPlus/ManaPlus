@@ -99,7 +99,8 @@ class MapReader final
 
         static void updateMusic(Map *const map) A_NONNULL(1);
 
-        static void addLayerToList(const std::string &fileName);
+        static void addLayerToList(const std::string &fileName,
+                                   const SkipError skipError);
 
         static void loadLayers(const std::string &path);
 

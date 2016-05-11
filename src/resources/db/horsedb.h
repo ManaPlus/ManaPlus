@@ -22,6 +22,8 @@
 #ifndef RESOURCES_DB_HORSEDB_H
 #define RESOURCES_DB_HORSEDB_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include <map>
 #include <string>
 
@@ -38,9 +40,11 @@ namespace HorseDB
 {
     void load();
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
-    void loadSpecialXmlFile(const std::string &fileName);
+    void loadSpecialXmlFile(const std::string &fileName,
+                            const SkipError skipError);
 
     void unload();
 

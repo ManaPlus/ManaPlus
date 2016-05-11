@@ -58,17 +58,19 @@ void EmoteDB::load()
     logger->log1("Initializing emote database...");
 
     mLastEmote = 0;
-    loadXmlFile(paths.getStringValue("emotesFile"));
-    loadXmlFile(paths.getStringValue("emotesPatchFile"));
+    loadXmlFile(paths.getStringValue("emotesFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("emotesPatchFile"), SkipError_true);
     loadXmlDir("emotesPatchDir", loadXmlFile);
-    loadSpecialXmlFile("graphics/sprites/manaplus_emotes.xml");
+    loadSpecialXmlFile("graphics/sprites/manaplus_emotes.xml",
+        SkipError_false);
 
     mLoaded = true;
 }
 
-void EmoteDB::loadXmlFile(const std::string &fileName)
+void EmoteDB::loadXmlFile(const std::string &fileName,
+                          const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "emotes"))
@@ -85,7 +87,7 @@ void EmoteDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(emoteNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (!xmlNameEqual(emoteNode, "emote"))
@@ -142,9 +144,10 @@ void EmoteDB::loadXmlFile(const std::string &fileName)
     }
 }
 
-void EmoteDB::loadSpecialXmlFile(const std::string &fileName)
+void EmoteDB::loadSpecialXmlFile(const std::string &fileName,
+                                 const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "emotes"))
@@ -161,7 +164,7 @@ void EmoteDB::loadSpecialXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(emoteNode, "name", "");
             if (!name.empty())
-                loadSpecialXmlFile(name);
+                loadSpecialXmlFile(name, skipError);
             continue;
         }
         else if (!xmlNameEqual(emoteNode, "emote"))

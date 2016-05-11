@@ -205,11 +205,12 @@ int inflateMemory(unsigned char *restrict const in,
     return outLength;
 }
 
-void MapReader::addLayerToList(const std::string &fileName)
+void MapReader::addLayerToList(const std::string &fileName,
+                               const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
         UseResman_true,
-        SkipError_false);
+        skipError);
     XmlNodePtrConst node = doc->rootNode();
     if (!node)
     {
@@ -283,7 +284,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
 void MapReader::loadLayers(const std::string &path)
 {
     BLOCK_START("MapReader::loadLayers")
-    loadXmlDir2(path, addLayerToList, ".tmx");
+    loadXmlDir2(path, addLayerToList, ".tmx", SkipError_false);
     BLOCK_END("MapReader::loadLayers")
 }
 

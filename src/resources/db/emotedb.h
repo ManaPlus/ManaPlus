@@ -22,6 +22,8 @@
 #ifndef RESOURCES_DB_EMOTEDB_H
 #define RESOURCES_DB_EMOTEDB_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include <map>
 #include <string>
 
@@ -40,9 +42,11 @@ namespace EmoteDB
 {
     void load();
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
-    void loadSpecialXmlFile(const std::string &fileName);
+    void loadSpecialXmlFile(const std::string &fileName,
+                            const SkipError skipError);
 
     void unload();
 

@@ -48,16 +48,17 @@ void MonsterDB::load()
         unload();
 
     logger->log1("Initializing monster database...");
-    loadXmlFile(paths.getStringValue("monstersFile"));
-    loadXmlFile(paths.getStringValue("monstersPatchFile"));
+    loadXmlFile(paths.getStringValue("monstersFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("monstersPatchFile"), SkipError_true);
     loadXmlDir("monstersPatchDir", loadXmlFile);
 
     mLoaded = true;
 }
 
-void MonsterDB::loadXmlFile(const std::string &fileName)
+void MonsterDB::loadXmlFile(const std::string &fileName,
+                            const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "monsters"))
@@ -78,7 +79,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(monsterNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         if (!xmlNameEqual(monsterNode, "monster"))

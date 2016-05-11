@@ -78,16 +78,19 @@ void HorseDB::load()
 
     logger->log1("Initializing horse database...");
 
-    loadXmlFile(paths.getStringValue("horsesFile"));
-    loadXmlFile(paths.getStringValue("horsesPatchFile"));
+    loadXmlFile(paths.getStringValue("horsesFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("horsesPatchFile"), SkipError_true);
     loadXmlDir("horsesPatchDir", loadXmlFile);
 
     mLoaded = true;
 }
 
-void HorseDB::loadXmlFile(const std::string &fileName)
+void HorseDB::loadXmlFile(const std::string &fileName,
+                          const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName,
+        UseResman_true,
+        skipError);
     XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "horses"))
@@ -104,7 +107,7 @@ void HorseDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(horseNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (!xmlNameEqual(horseNode, "horse"))

@@ -24,6 +24,7 @@
 #define RESOURCES_DB_HOMUNCULUSDB_H
 
 #include "enums/simpletypes/beingtypeid.h"
+#include "enums/simpletypes/skiperror.h"
 
 #include "localconsts.h"
 
@@ -40,7 +41,8 @@ namespace HomunculusDB
 
     void unload();
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
     BeingInfo *get(const BeingTypeId id) A_WARN_UNUSED;
 }  // namespace HomunculusDB

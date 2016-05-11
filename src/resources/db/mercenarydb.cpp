@@ -45,16 +45,19 @@ void MercenaryDB::load()
         unload();
 
     logger->log1("Initializing mercenary database...");
-    loadXmlFile(paths.getStringValue("mercenariesFile"));
-    loadXmlFile(paths.getStringValue("mercenariesPatchFile"));
+    loadXmlFile(paths.getStringValue("mercenariesFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("mercenariesPatchFile"), SkipError_true);
     loadXmlDir("mercenariesPatchDir", loadXmlFile);
 
     mLoaded = true;
 }
 
-void MercenaryDB::loadXmlFile(const std::string &fileName)
+void MercenaryDB::loadXmlFile(const std::string &fileName,
+                              const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName,
+        UseResman_true,
+        skipError);
     const XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "mercenaries"))
@@ -75,7 +78,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName)
             const std::string name = XML::getProperty(
                 mercenaryNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         if (!xmlNameEqual(mercenaryNode, "mercenary"))

@@ -24,6 +24,7 @@
 #define RESOURCES_DB_STATUSEFFECTDB_H
 
 #include "enums/simpletypes/enable.h"
+#include "enums/simpletypes/skiperror.h"
 
 #include <map>
 #include <string>
@@ -58,7 +59,8 @@ namespace StatusEffectDB
 
     void load();
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
     void unload();
 

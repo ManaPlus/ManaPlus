@@ -76,16 +76,18 @@ void StatusEffectDB::load()
     if (mLoaded)
         unload();
 
-    loadXmlFile(paths.getStringValue("statusEffectsFile"));
-    loadXmlFile(paths.getStringValue("statusEffectsPatchFile"));
+    loadXmlFile(paths.getStringValue("statusEffectsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("statusEffectsPatchFile"),
+        SkipError_true);
     loadXmlDir("statusEffectsPatchDir", loadXmlFile);
 
     mLoaded = true;
 }
 
-void StatusEffectDB::loadXmlFile(const std::string &fileName)
+void StatusEffectDB::loadXmlFile(const std::string &fileName,
+                                 const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "status-effects"))
@@ -100,7 +102,7 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName)
         {
             const std::string incName = XML::getProperty(node, "name", "");
             if (!incName.empty())
-                loadXmlFile(incName);
+                loadXmlFile(incName, skipError);
             continue;
         }
         else if (!xmlNameEqual(node, "status-effect"))

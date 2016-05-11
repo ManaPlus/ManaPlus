@@ -45,18 +45,24 @@ void ColorDB::load()
     ColorListsIterator it = mColorLists.find("hair");
     if (it != mColorLists.end())
         colors = it->second;
-    loadHair(paths.getStringValue("hairColorFile"), colors);
-    loadHair(paths.getStringValue("hairColorPatchFile"), colors);
+    loadHair(paths.getStringValue("hairColorFile"),
+        colors,
+        SkipError_true);
+    loadHair(paths.getStringValue("hairColorPatchFile"),
+        colors,
+        SkipError_true);
     StringVect list;
     Files::getFilesInDir(paths.getStringValue(
         "hairColorPatchDir"), list, ".xml");
     FOR_EACH (StringVectCIter, it2, list)
-        loadHair(*it2, colors);
+        loadHair(*it2, colors, SkipError_true);
 
     mColorLists["hair"] = colors;
 
-    loadColorLists(paths.getStringValue("itemColorsFile"));
-    loadColorLists(paths.getStringValue("itemColorsPatchFile"));
+    loadColorLists(paths.getStringValue("itemColorsFile"),
+        SkipError_false);
+    loadColorLists(paths.getStringValue("itemColorsPatchFile"),
+        SkipError_true);
     loadXmlDir("itemColorsPatchDir", loadColorLists);
 
     it = mColorLists.find("hair");
@@ -68,11 +74,12 @@ void ColorDB::load()
 }
 
 void ColorDB::loadHair(const std::string &fileName,
-                       std::map<ItemColor, ItemColorData> &colors)
+                       std::map<ItemColor, ItemColorData> &colors,
+                       const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
         UseResman_true,
-        SkipError_false);
+        skipError);
     const XmlNodePtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "colors"))
@@ -90,7 +97,7 @@ void ColorDB::loadHair(const std::string &fileName,
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadHair(name, colors);
+                loadHair(name, colors, skipError);
             continue;
         }
         else if (xmlNameEqual(node, "color"))
@@ -112,11 +119,12 @@ void ColorDB::loadHair(const std::string &fileName,
     delete doc;
 }
 
-void ColorDB::loadColorLists(const std::string &fileName)
+void ColorDB::loadColorLists(const std::string &fileName,
+                             const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
         UseResman_true,
-        SkipError_false);
+        skipError);
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)
     {
@@ -130,7 +138,7 @@ void ColorDB::loadColorLists(const std::string &fileName)
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadColorLists(name);
+                loadColorLists(name, skipError);
             continue;
         }
         else if (xmlNameEqual(node, "list"))

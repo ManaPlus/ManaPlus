@@ -40,8 +40,10 @@ void CommandsDB::load()
 {
     if (mLoaded)
         unload();
-    loadXmlFile(paths.getStringValue("defaultCommandsFile"));
-    loadXmlFile(paths.getStringValue("defaultCommandsPatchFile"));
+    loadXmlFile(paths.getStringValue("defaultCommandsFile"),
+        SkipError_false);
+    loadXmlFile(paths.getStringValue("defaultCommandsPatchFile"),
+        SkipError_true);
     loadXmlDir("defaultCommandsPatchDir", loadXmlFile);
     mLoaded = true;
 }
@@ -56,9 +58,10 @@ static CommandTargetT parseTarget(const std::string &text)
         return CommandTarget::NoTarget;
 }
 
-void CommandsDB::loadXmlFile(const std::string &fileName)
+void CommandsDB::loadXmlFile(const std::string &fileName,
+                             const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "commands"))
@@ -74,7 +77,7 @@ void CommandsDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(commandNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
 

@@ -48,16 +48,17 @@ void NPCDB::load()
 
     logger->log1("Initializing NPC database...");
 
-    loadXmlFile(paths.getStringValue("npcsFile"));
-    loadXmlFile(paths.getStringValue("npcsPatchFile"));
+    loadXmlFile(paths.getStringValue("npcsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("npcsPatchFile"), SkipError_true);
     loadXmlDir("npcsPatchDir", loadXmlFile);
 
     mLoaded = true;
 }
 
-void NPCDB::loadXmlFile(const std::string &fileName)
+void NPCDB::loadXmlFile(const std::string &fileName,
+                        const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "npcs"))
@@ -75,7 +76,7 @@ void NPCDB::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(npcNode, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
 

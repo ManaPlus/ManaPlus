@@ -23,6 +23,8 @@
 #ifndef UNITS_H
 #define UNITS_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -37,7 +39,8 @@ class Units final
         */
         static void loadUnits();
 
-        static void loadXmlFile(const std::string &fileName);
+        static void loadXmlFile(const std::string &fileName,
+                                const SkipError skipError);
 
         /**
         * Formats the given number in the correct currency format.

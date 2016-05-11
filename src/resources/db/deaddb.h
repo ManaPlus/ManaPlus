@@ -21,6 +21,8 @@
 #ifndef RESOURCES_DB_DEADDB_H
 #define RESOURCES_DB_DEADDB_H
 
+#include "enums/simpletypes/skiperror.h"
+
 #include <string>
 
 /**
@@ -33,7 +35,8 @@ namespace DeadDB
      */
     void load();
 
-    void loadXmlFile(const std::string &fileName);
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
     /**
      * Clear the chars data

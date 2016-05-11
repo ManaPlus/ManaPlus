@@ -41,14 +41,15 @@ EffectManager::EffectManager() :
     mTimers()
 {
     logger->log1("Effects are now loading");
-    loadXmlFile(paths.getStringValue("effectsFile"));
-    loadXmlFile(paths.getStringValue("effectsPatchFile"));
+    loadXmlFile(paths.getStringValue("effectsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("effectsPatchFile"), SkipError_true);
     loadXmlDir("effectsPatchDir", loadXmlFile);
 }
 
-void EffectManager::loadXmlFile(const std::string &fileName)
+void EffectManager::loadXmlFile(const std::string &fileName,
+                                const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, SkipError_false);
+    XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst root = doc.rootNode();
 
     if (!root ||
@@ -64,7 +65,7 @@ void EffectManager::loadXmlFile(const std::string &fileName)
         {
             const std::string name = XML::getProperty(node, "name", "");
             if (!name.empty())
-                loadXmlFile(name);
+                loadXmlFile(name, skipError);
             continue;
         }
         else if (xmlNameEqual(node, "effect"))
