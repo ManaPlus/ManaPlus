@@ -89,6 +89,54 @@
         "Detected false value", #val), \
         throw new std::exception(), true) : false)
 
+#define returnFailFalseV(val) \
+    if (!val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected false value", #val); \
+        throw new std::exception(); \
+    }
+
+#define returnFailTrueV(val) \
+    if (val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected true value", #val); \
+        throw new std::exception(); \
+    }
+
+#define returnFailFalse(ret, val) \
+    if (!val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected false value", #val); \
+        throw new std::exception(); \
+    }
+
+#define returnFailTrue(ret, val) \
+    if (val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected true value", #val); \
+        throw new std::exception(); \
+    }
+
+#define returnFailNullptrV(val) \
+    if ((val) == nullptr) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected null value", #val); \
+        throw new std::exception(); \
+    }
+
+#define returnFailNullptr(ret, val) \
+    if ((val) == nullptr) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected null value", #val); \
+        throw new std::exception(); \
+    }
+
 void reportStack(const char *const file,
                  const unsigned int line,
                  const char *const func,
@@ -118,17 +166,51 @@ void reportStack(const char *const file,
 
 #define returnNullptrVReal(val) \
     if ((val) == nullptr) \
-        return; \
+        return;
 
 #define returnNullptrReal(ret, val) \
     if ((val) == nullptr) \
-        return ret; \
+        return ret;
 
 #define failFalse(val) (val)
 #define failTrue(val) (val)
 
+#define returnFailFalseV(val) \
+    if (!val) \
+        return;
+
+#define returnFailTrueV(val) \
+    if (val) \
+        return;
+
+#define returnFailFalse(ret, val) \
+    if (!val) \
+        return ret;
+
+#define returnFailTrue(ret, val) \
+    if (val) \
+        return ret;
+
+#define returnFailNullptrV(val) \
+    if ((val) == nullptr) \
+        return;
+
+#define returnFailNullptr(ret, val) \
+    if ((val) == nullptr) \
+        return ret;
+
 #endif  // ENABLE_ASSERTS
 
+#ifdef UNITTESTS
+#define reportFalse(val) failFalse(val)
+#define reportTrue(val) failTrue(val)
+#define returnFalseV(val) returnFailFalseV(val)
+#define returnTrueV(val) returnFailTrueV(val)
+#define returnFalse(ret, val) returnFailFalse(ret, val)
+#define returnTrue(ret, val) returnFailTrue(ret, val)
+#define returnNullptrV(val) returnFailNullptrV(val)
+#define returnNullptr(ret, val) returnFailNullptr(ret, val)
+#else  // UNITTESTS
 #define reportFalse(val) reportFalseReal(val)
 #define reportTrue(val) reportTrueReal(val)
 #define returnFalseV(val) returnFalseVReal(val)
@@ -137,5 +219,6 @@ void reportStack(const char *const file,
 #define returnTrue(ret, val) returnTrueReal(ret, val)
 #define returnNullptrV(val) returnNullptrVReal(val)
 #define returnNullptr(ret, val) returnNullptrReal(ret, val)
+#endif  // UNITTESTS
 
 #endif  // UTILS_CHECKUTILS_H

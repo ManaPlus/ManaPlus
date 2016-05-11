@@ -35,39 +35,39 @@ namespace
 static void testReturnFalseV(const bool val)
 {
     flag = false;
-    returnFalseV(val);
+    returnFalseVReal(val);
     flag = true;
 }
 
 static void testReturnTrueV(const bool val)
 {
     flag = false;
-    returnTrueV(val);
+    returnTrueVReal(val);
     flag = true;
 }
 
 static int testReturnFalse(const bool val)
 {
-    returnFalse(0, val);
+    returnFalseReal(0, val);
     return 1;
 }
 
 static int testReturnTrue(const bool val)
 {
-    returnTrue(0, val);
+    returnTrueReal(0, val);
     return 1;
 }
 
 static int testReturnNullptr(void *val)
 {
-    returnNullptr(0, val);
+    returnNullptrReal(0, val);
     return 1;
 }
 
 static void testReturnNullptrV(void *val)
 {
     flag = false;
-    returnNullptrV(val);
+    returnNullptrVReal(val);
     flag = true;
 }
 
@@ -77,14 +77,14 @@ TEST_CASE("CheckUtils")
 
     SECTION("reportFalse")
     {
-        REQUIRE(reportFalse(false) == false);
-        REQUIRE(reportFalse(true) == true);
+        REQUIRE(reportFalseReal(false) == false);
+        REQUIRE(reportFalseReal(true) == true);
     }
 
     SECTION("reportTrue")
     {
-        REQUIRE(reportTrue(false) == false);
-        REQUIRE(reportTrue(true) == true);
+        REQUIRE(reportTrueReal(false) == false);
+        REQUIRE(reportTrueReal(true) == true);
     }
 
     SECTION("failFalse")
