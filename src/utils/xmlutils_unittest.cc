@@ -49,7 +49,8 @@ TEST_CASE("xmlutils readXmlIntVector 1")
         "widget",
         "option",
         "value",
-        arr);
+        arr,
+        SkipError_false);
 
     REQUIRE(5 == arr.size());
     REQUIRE(1 == arr[0]);
@@ -78,7 +79,8 @@ TEST_CASE("xmlutils readXmlStringMap 1")
         "sprite",
         "name",
         "variant",
-        arr);
+        arr,
+        SkipError_false);
 
     REQUIRE(arr.size() == 27);
     REQUIRE(arr["Kitty"] == "0");
