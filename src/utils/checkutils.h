@@ -24,21 +24,21 @@
 #ifdef ENABLE_ASSERTS
 
 #define reportFalseReal(val) \
-    (val ? true : (reportStack(__FILE__, __LINE__, __func__, \
+    (val ? true : (reportAssertStack(__FILE__, __LINE__, __func__, \
         "Detected false value", #val), false))
 
 #define reportTrueReal(val) \
-    (val ? (reportStack(__FILE__, __LINE__, __func__, \
+    (val ? (reportAssertStack(__FILE__, __LINE__, __func__, \
         "Detected false value", #val), true) : false)
 
 #define reportAlwaysReal(val) \
-    reportStack(__FILE__, __LINE__, __func__, \
+    reportAssertStack(__FILE__, __LINE__, __func__, \
         "Detected false value", val);
 
 #define returnFalseVReal(val) \
     if (!val) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected false value", #val); \
         return; \
     }
@@ -46,7 +46,7 @@
 #define returnTrueVReal(val) \
     if (val) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected true value", #val); \
         return; \
     }
@@ -54,7 +54,7 @@
 #define returnFalseReal(ret, val) \
     if (!val) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected false value", #val); \
         return ret; \
     }
@@ -62,7 +62,7 @@
 #define returnTrueReal(ret, val) \
     if (val) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected true value", #val); \
         return ret; \
     }
@@ -70,7 +70,7 @@
 #define returnNullptrVReal(val) \
     if ((val) == nullptr) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected null value", #val); \
         return; \
     }
@@ -78,25 +78,25 @@
 #define returnNullptrReal(ret, val) \
     if ((val) == nullptr) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected null value", #val); \
         return ret; \
     }
 
 #define failFalse(val) \
-    (val ? true : (reportStack(__FILE__, __LINE__, __func__, \
+    (val ? true : (reportAssertStack(__FILE__, __LINE__, __func__, \
         "Detected false value", #val), \
         throw new std::exception(), false))
 
 #define failTrue(val) \
-    (val ? (reportStack(__FILE__, __LINE__, __func__, \
+    (val ? (reportAssertStack(__FILE__, __LINE__, __func__, \
         "Detected false value", #val), \
         throw new std::exception(), true) : false)
 
 #define returnFailFalseV(val) \
     if (!val) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected false value", #val); \
         throw new std::exception(); \
     }
@@ -104,7 +104,7 @@
 #define returnFailTrueV(val) \
     if (val) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected true value", #val); \
         throw new std::exception(); \
     }
@@ -112,7 +112,7 @@
 #define returnFailFalse(ret, val) \
     if (!val) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected false value", #val); \
         throw new std::exception(); \
     }
@@ -120,7 +120,7 @@
 #define returnFailTrue(ret, val) \
     if (val) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected true value", #val); \
         throw new std::exception(); \
     }
@@ -128,7 +128,7 @@
 #define returnFailNullptrV(val) \
     if ((val) == nullptr) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected null value", #val); \
         throw new std::exception(); \
     }
@@ -136,23 +136,31 @@
 #define returnFailNullptr(ret, val) \
     if ((val) == nullptr) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected null value", #val); \
         throw new std::exception(); \
     }
 
 #define failAlways(val) \
     { \
-        reportStack(__FILE__, __LINE__, __func__, \
+        reportAssertStack(__FILE__, __LINE__, __func__, \
             "Detected false value", val); \
         throw new std::exception(); \
     }
 
-void reportStack(const char *const file,
-                 const unsigned int line,
-                 const char *const func,
-                 const char *const name,
-                 const char *const text);
+void reportAssertStack(const char *const file,
+                       const unsigned int line,
+                       const char *const func,
+                       const char *const name,
+                       const char *const text);
+
+void reportLogStack(const char *const file,
+                    const unsigned int line,
+                    const char *const func,
+                    const char *const name,
+                    const char *const text);
+
+void reportStack();
 
 #else  // ENABLE_ASSERTS
 

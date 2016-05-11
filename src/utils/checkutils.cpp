@@ -32,21 +32,12 @@
 
 #include "debug.h"
 
-void reportStack(const char *const file,
-                 const unsigned int line,
-                 const char *const func,
-                 const char *const name,
-                 const char *const text)
+void reportAssertStack(const char *const file,
+                       const unsigned int line,
+                       const char *const func,
+                       const char *const name,
+                       const char *const text)
 {
-#ifndef ANDROID
-#if defined __linux__ || defined __linux
-    void *array[15];
-    int size;
-    char **strings;
-    int i;
-#endif  // defined __linux__ || defined __linux
-#endif  // ANDROID
-
     logger->log("--- Assert: %s --------------------------------------------",
         name);
     logger->assertLog("%s:%u: '%s' in function `%s'",
@@ -56,9 +47,39 @@ void reportStack(const char *const file,
         func);
 #ifndef ANDROID
 #if defined __linux__ || defined __linux
-    size = static_cast<int>(backtrace(array, 15));
-    strings = backtrace_symbols(array, size);
-    for (i = 0; i < size; i++)
+    reportStack();
+#endif  // defined __linux__ || defined __linux
+#endif  // ANDROID
+}
+
+void reportLogStack(const char *const file,
+                    const unsigned int line,
+                    const char *const func,
+                    const char *const name,
+                    const char *const text)
+{
+    logger->log("--- Assert: %s --------------------------------------------",
+        name);
+    logger->log("%s:%u: '%s' in function `%s'",
+        file,
+        line,
+        text,
+        func);
+#ifndef ANDROID
+#if defined __linux__ || defined __linux
+    reportStack();
+#endif  // defined __linux__ || defined __linux
+#endif  // ANDROID
+}
+
+void reportStack()
+{
+#ifndef ANDROID
+#if defined __linux__ || defined __linux
+    void *array[15];
+    const int size = static_cast<int>(backtrace(array, 15));
+    char **strings = backtrace_symbols(array, size);
+    for (int i = 0; i < size; i++)
         logger->log1(strings[i]);
     free(strings);
 #endif  // defined __linux__ || defined __linux
