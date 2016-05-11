@@ -447,8 +447,10 @@ int Configuration::getIntValue(const std::string &key) const
             }
             else
             {
-                logger->log("%s: No integer value in registry for key %s",
-                            mConfigPath.c_str(), key.c_str());
+                logger->assertLog(
+                    "%s: No integer value in registry for key %s",
+                    mConfigPath.c_str(),
+                    key.c_str());
             }
         }
     }
@@ -475,8 +477,9 @@ int Configuration::resetIntValue(const std::string &key)
         }
         else
         {
-            logger->log("%s: No integer value in registry for key %s",
-                        mConfigPath.c_str(), key.c_str());
+            logger->assertLog("%s: No integer value in registry for key %s",
+                mConfigPath.c_str(),
+                key.c_str());
         }
     }
     setValue(key, defaultValue);
@@ -521,8 +524,9 @@ std::string Configuration::getStringValue(const std::string &key) const
             }
             else
             {
-                logger->log("%s: No string value in registry for key %s",
-                            mConfigPath.c_str(), key.c_str());
+                logger->assertLog("%s: No string value in registry for key %s",
+                    mConfigPath.c_str(),
+                    key.c_str());
             }
         }
     }
@@ -579,8 +583,9 @@ float Configuration::getFloatValue(const std::string &key) const
             }
             else
             {
-                logger->log("%s: No float value in registry for key %s",
-                            mConfigPath.c_str(), key.c_str());
+                logger->assertLog("%s: No float value in registry for key %s",
+                    mConfigPath.c_str(),
+                    key.c_str());
             }
         }
     }
@@ -648,8 +653,10 @@ bool Configuration::getBoolValue(const std::string &key) const
             }
             else
             {
-                logger->log("%s: No boolean value in registry for key %s",
-                            mConfigPath.c_str(), key.c_str());
+                logger->assertLog(
+                    "%s: No boolean value in registry for key %s",
+                    mConfigPath.c_str(),
+                    key.c_str());
             }
         }
     }
@@ -678,8 +685,9 @@ bool Configuration::resetBoolValue(const std::string &key)
         }
         else
         {
-            logger->log("%s: No boolean value in registry for key %s",
-                        mConfigPath.c_str(), key.c_str());
+            logger->assertLog("%s: No boolean value in registry for key %s",
+                mConfigPath.c_str(),
+                key.c_str());
         }
     }
 
