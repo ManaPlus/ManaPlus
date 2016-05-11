@@ -33,6 +33,7 @@
 
 #define reportAlwaysReal(...) \
     { \
+        logger->log("Assert:"); \
         logger->assertLog( \
             __VA_ARGS__); \
         reportLogStack(__FILE__, __LINE__, __func__); \
@@ -146,6 +147,7 @@
 
 #define failAlways(...) \
     { \
+        logger->log("Assert:"); \
         logger->assertLog( \
             __VA_ARGS__); \
         reportLogStack(__FILE__, __LINE__, __func__); \
