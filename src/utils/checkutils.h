@@ -31,6 +31,10 @@
     (val ? (reportStack(__FILE__, __LINE__, __func__, \
         "Detected false value", #val), true) : false)
 
+#define reportAlwaysReal(val) \
+    reportStack(__FILE__, __LINE__, __func__, \
+        "Detected false value", val);
+
 #define returnFalseVReal(val) \
     if (!val) \
     { \
@@ -137,6 +141,13 @@
         throw new std::exception(); \
     }
 
+#define failAlways(val) \
+    { \
+        reportStack(__FILE__, __LINE__, __func__, \
+            "Detected false value", val); \
+        throw new std::exception(); \
+    }
+
 void reportStack(const char *const file,
                  const unsigned int line,
                  const char *const func,
@@ -147,6 +158,8 @@ void reportStack(const char *const file,
 
 #define reportFalseReal(val) (val)
 #define reportTrueReal(val) (val)
+
+#define reportAlwaysReal(val) ;
 
 #define returnFalseVReal(val) \
     if (!val) \
@@ -199,11 +212,14 @@ void reportStack(const char *const file,
     if ((val) == nullptr) \
         return ret;
 
+#define failAlways(val) ;
+
 #endif  // ENABLE_ASSERTS
 
 #ifdef UNITTESTS
 #define reportFalse(val) failFalse(val)
 #define reportTrue(val) failTrue(val)
+#define reportAlways(val) failAlways(val)
 #define returnFalseV(val) returnFailFalseV(val)
 #define returnTrueV(val) returnFailTrueV(val)
 #define returnFalse(ret, val) returnFailFalse(ret, val)
@@ -213,6 +229,7 @@ void reportStack(const char *const file,
 #else  // UNITTESTS
 #define reportFalse(val) reportFalseReal(val)
 #define reportTrue(val) reportTrueReal(val)
+#define reportAlways(val) reportAlwaysReal(val)
 #define returnFalseV(val) returnFalseVReal(val)
 #define returnTrueV(val) returnTrueVReal(val)
 #define returnFalse(ret, val) returnFalseReal(ret, val)

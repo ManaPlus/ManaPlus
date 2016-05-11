@@ -71,6 +71,18 @@ static void testReturnNullptrV(void *val)
     flag = true;
 }
 
+static bool testFailAlways1()
+{
+    failAlways("test fail");
+    return false;
+}
+
+static bool testFailAlways2()
+{
+    reportAlways("test fail");
+    return false;
+}
+
 TEST_CASE("CheckUtils")
 {
     logger = new Logger;
@@ -87,16 +99,31 @@ TEST_CASE("CheckUtils")
         REQUIRE(reportTrueReal(true) == true);
     }
 
+    SECTION("reportAlways")
+    {
+        reportAlwaysReal("test report");
+    }
+
     SECTION("failFalse")
     {
         REQUIRE_THROWS(failFalse(false) == false);
         REQUIRE(failFalse(true) == true);
+        REQUIRE_THROWS(reportFalse(false) == false);
+        REQUIRE(reportFalse(true) == true);
     }
 
     SECTION("failTrue")
     {
         REQUIRE(failTrue(false) == false);
         REQUIRE_THROWS(failTrue(true) == true);
+        REQUIRE(reportTrue(false) == false);
+        REQUIRE_THROWS(reportTrue(true) == true);
+    }
+
+    SECTION("failAlways")
+    {
+        REQUIRE_THROWS(testFailAlways1() == true);
+        REQUIRE_THROWS(testFailAlways2() == true);
     }
 
     SECTION("returnFalseV")
