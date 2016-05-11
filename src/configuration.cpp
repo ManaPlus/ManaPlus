@@ -737,10 +737,13 @@ void ConfigurationObject::initFromXML(const XmlNodePtrConst parentNode)
 }
 
 void Configuration::init(const std::string &filename,
-                         const UseResman useResManager)
+                         const UseResman useResManager,
+                         const SkipError skipError)
 {
     cleanDefaults();
-    XML::Document doc(filename, useResManager, SkipError_false);
+    XML::Document doc(filename,
+        useResManager,
+        skipError);
     mFilename = filename;
     mUseResManager = useResManager;
 

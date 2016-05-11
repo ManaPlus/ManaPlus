@@ -1820,7 +1820,8 @@ void Client::action(const ActionEvent &event)
 void Client::initFeatures()
 {
     features.init(paths.getStringValue("featuresFile"),
-        UseResman_true);
+        UseResman_true,
+        SkipError_true);
     features.setDefaultValues(getFeaturesDefaults());
     settings.fixDeadAnimation = features.getBoolValue("fixDeadAnimation");
 }

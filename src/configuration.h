@@ -245,7 +245,8 @@ class Configuration final : public ConfigurationObject
          * @param useResManager Make use of the resource manager.
          */
         void init(const std::string &filename,
-                  const UseResman useResManager = UseResman_false);
+                  const UseResman useResManager = UseResman_false,
+                  const SkipError skipError = SkipError_false);
 
         void reInit();
 
