@@ -47,8 +47,8 @@ void SkillUnitDb::load()
         unload();
 
     logger->log1("Initializing skill unit database...");
-    loadXmlFile(paths.getStringValue("skillUnitsFile"), SkipError_true);
-    loadXmlFile(paths.getStringValue("skillUnitsPatchFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("skillUnitsFile"), SkipError_false);
+    loadXmlFile(paths.getStringValue("skillUnitsPatchFile"), SkipError_true);
     loadXmlDir("skillUnitsPatchDir", loadXmlFile);
     mLoaded = true;
 }
