@@ -33,7 +33,7 @@
 
 #define reportAlwaysReal(val) \
     reportAssertStack(__FILE__, __LINE__, __func__, \
-        "Detected false value", val);
+        "Always assert", val);
 
 #define returnFalseVReal(val) \
     if (!val) \
