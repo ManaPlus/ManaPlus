@@ -580,13 +580,20 @@ void Client::gameClear()
     ColorDB::unload();
     SoundDB::unload();
     EmoteDB::unload();
-    HorseDB::unload();
     ItemDB::unload();
-    MercenaryDB::unload();
-    HomunculusDB::unload();
+#ifdef EATHENA_SUPPORT
+    const ServerTypeT type = Net::getNetworkType();
+    if (type == ServerType::EATHENA ||
+        type == ServerType::EVOL2)
+    {
+        MercenaryDB::unload();
+        HomunculusDB::unload();
+        SkillUnitDb::unload();
+        HorseDB::unload();
+    }
+#endif
     MonsterDB::unload();
     NPCDB::unload();
-    SkillUnitDb::unload();
     NpcDialogDB::unload();
     AvatarDB::unload();
     BadgesDB::unload();
@@ -1300,17 +1307,24 @@ int Client::gameExec()
                     MapDB::load();
                     ItemDB::load();
                     Being::load();
-                    MercenaryDB::load();
-                    HomunculusDB::load();
+#ifdef EATHENA_SUPPORT
+                    const ServerTypeT type = Net::getNetworkType();
+                    if (type == ServerType::EATHENA ||
+                        type == ServerType::EVOL2)
+                    {
+                        MercenaryDB::load();
+                        HomunculusDB::load();
+                        SkillUnitDb::load();
+                        HorseDB::load();
+                    }
+#endif
                     MonsterDB::load();
                     AvatarDB::load();
                     BadgesDB::load();
                     WeaponsDB::load();
                     NPCDB::load();
-                    SkillUnitDb::load();
                     NpcDialogDB::load();
                     PETDB::load();
-                    HorseDB::load();
                     EmoteDB::load();
 //                    ModDB::load();
                     StatusEffectDB::load();
