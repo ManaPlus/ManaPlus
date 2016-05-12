@@ -92,8 +92,16 @@ class LangListModel final : public ExtendedListModel
         {
             for (int f = 0; f < langs_count; f ++)
             {
-                mIcons[f] = resourceManager->getImage("graphics/flags/"
-                    + LANG_NAME[f].icon);
+                const std::string icon = LANG_NAME[f].icon;
+                if (!icon.empty())
+                {
+                    mIcons[f] = resourceManager->getImage("graphics/flags/"
+                        + icon);
+                }
+                else
+                {
+                    mIcons[f] = nullptr;
+                }
             }
         }
 
