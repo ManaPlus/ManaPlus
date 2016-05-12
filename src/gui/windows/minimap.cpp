@@ -185,7 +185,10 @@ void Minimap::setMap(const Map *const map)
                     minimapName = tempname;
             }
 
-            mMapImage = resourceManager->getImage(minimapName);
+            if (!minimapName.empty())
+                mMapImage = resourceManager->getImage(minimapName);
+            else
+                mMapImage = nullptr;
             mCustomMapImage = false;
         }
     }
