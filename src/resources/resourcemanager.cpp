@@ -44,6 +44,7 @@
 
 #include "resources/sprite/spritedef.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
@@ -344,7 +345,9 @@ bool ResourceManager::addToSearchPath(const std::string &path,
     if (!PhysFs::addToSearchPath(path.c_str(),
         append == Append_true ? 1 : 0))
     {
-        logger->log("Error: %s", PHYSFS_getLastError());
+        logger->log("Error: %s: addToSearchPath failed: %s",
+            path.c_str(),
+            PHYSFS_getLastError());
         return false;
     }
     return true;
@@ -355,7 +358,9 @@ bool ResourceManager::removeFromSearchPath(const std::string &path) const
     logger->log("Removing from PhysicsFS: %s", path.c_str());
     if (!PhysFs::removeFromSearchPath(path.c_str()))
     {
-        logger->log("Error: %s", PHYSFS_getLastError());
+        logger->log("Error: %s: removeFromSearchPath failed: %s",
+            path.c_str(),
+            PHYSFS_getLastError());
         return false;
     }
     return true;
@@ -498,7 +503,7 @@ Resource *ResourceManager::get(const std::string &idPath,
     }
     else
     {
-        logger->log("Error loading image: " + idPath);
+        reportAlways("Error loading image: %s", idPath.c_str());
     }
 #else
     Resource *resource = fun(data, idPath);
@@ -514,7 +519,7 @@ Resource *ResourceManager::get(const std::string &idPath,
     }
     else
     {
-        logger->log("Error loading image: " + idPath);
+        reportAlways("Error loading image: " + idPath);
     }
 #endif
 
@@ -536,7 +541,11 @@ struct ResourceLoader final
             rl = static_cast<const ResourceLoader *const>(v);
         SDL_RWops *const rw = MPHYSFSRWOPS_openRead(rl->path.c_str());
         if (!rw)
+        {
+            reportAlways("Error loading resource: %s",
+                rl->path.c_str());
             return nullptr;
+        }
         Resource *const res = rl->fun(rw, rl->path);
         return res;
     }
@@ -587,12 +596,15 @@ struct DyedImageLoader final
         if (!rw)
         {
             delete d;
+            reportAlways("Image loading error: %s", path1.c_str());
             BLOCK_END("DyedImageLoader::load")
             return nullptr;
         }
         Resource *const res = d ? imageHelper->load(rw, *d)
             : imageHelper->load(rw);
         delete d;
+        if (!res)
+            reportAlways("Image loading error: %s", path1.c_str());
         BLOCK_END("DyedImageLoader::load")
         return res;
     }
@@ -621,7 +633,10 @@ struct ImageSetLoader final
 
         Image *const img = rl->manager->getImage(rl->path);
         if (!img)
+        {
+            reportAlways("Image loading error: %s", rl->path.c_str());
             return nullptr;
+        }
         ImageSet *const res = new ImageSet(img, rl->w, rl->h);
         img->decRef();
         return res;
@@ -691,6 +706,11 @@ struct SubImageLoader final
 
         Image *const res = rl->parent->getSubImage(rl->x, rl->y,
             rl->width, rl->height);
+        if (!res)
+        {
+            reportAlways("SubImage loading error: %s",
+                rl->parent->getSource().c_str());
+        }
         return res;
     }
 };
@@ -724,6 +744,8 @@ struct AtlasLoader final
         const AtlasLoader *const rl = static_cast<const AtlasLoader *const>(v);
         AtlasResource *const resource = AtlasManager::loadTextureAtlas(
             rl->name, *rl->files);
+        if (!resource)
+            reportAlways("Atlas creation error: %s", rl->name.c_str());
         return resource;
     }
 };
@@ -748,6 +770,8 @@ struct ShaderLoader final
         const ShaderLoader *const rl
             = static_cast<const ShaderLoader *const>(v);
         Shader *const resource = shaders.createShader(rl->type, rl->name);
+        if (!resource)
+            reportAlways("Shader creation error: %s", rl->name.c_str());
         return resource;
     }
 };
@@ -776,6 +800,8 @@ struct ShaderProgramLoader final
             rl->vertex,
             rl->fragment,
             rl->isNewShader);
+        if (!resource)
+            reportAlways("Shader program creation error");
         return resource;
     }
 };
@@ -804,6 +830,8 @@ struct WalkLayerLoader final
         const WalkLayerLoader *const rl = static_cast<const
             WalkLayerLoader *const>(v);
         Resource *const resource = NavigationManager::loadWalkLayer(rl->map);
+        if (!resource)
+            reportAlways("WalkLayer creation error");
         return resource;
     }
 };
@@ -869,13 +897,15 @@ void ResourceManager::release(Resource *const res)
 
     if (resIter == mResources.end())
     {
-        logger->log("no resource in cache: " + res->mIdPath);
+        reportAlways("no resource in cache: %s",
+            res->mIdPath.c_str());
         delete res;
         return;
     }
     if (resIter->second != res)
     {
-        logger->log("in cache other image: " + res->mIdPath);
+        reportAlways("in cache other image: %s",
+            res->mIdPath.c_str());
         delete res;
         return;
     }
@@ -996,7 +1026,7 @@ SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
     {
         if (!IMG_isPNG(rw))
         {
-            logger->log("Error, image is not png: " + filename);
+            reportAlways("Error, image is not png: %s", filename.c_str());
             return nullptr;
         }
         SDL_Surface *const surface = MIMG_LoadPNG_RW(rw);
@@ -1037,7 +1067,11 @@ struct RescaledLoader final
         Image *const rescaled = rl->image->SDLgetScaledImage(
             rl->width, rl->height);
         if (!rescaled)
+        {
+            reportAlways("Rescale image failed: %s",
+                rl->image->getIdPath().c_str());
             return nullptr;
+        }
         return rescaled;
     }
 };
