@@ -113,6 +113,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     }
 
     SpriteDef *const def = new SpriteDef;
+    def->mSource = animationFile;
     def->mProcessedFiles.insert(animationFile);
     def->loadSprite(rootNode, variant, palettes);
     def->substituteActions();
@@ -545,7 +546,7 @@ bool SpriteDef::addSequence(const int start,
                             int repeat,
                             const int rand,
                             const ImageSet *const imageSet,
-                            Animation *const animation)
+                            Animation *const animation) const
 {
     if (!imageSet || !animation)
         return true;
@@ -568,9 +569,11 @@ bool SpriteDef::addSequence(const int start,
 
                 if (!img)
                 {
-                    logger->log("No image at index %d",
+                    logger->log("%s: No image at index %d",
+                        mSource.c_str(),
                         pos + variant_offset);
-                    reportAlways("No image at index %d",
+                    reportAlways("%s: No image at index %d",
+                        mSource.c_str(),
                         pos + variant_offset);
                     pos ++;
                     continue;

@@ -72,16 +72,16 @@ class SpriteDef final : public Resource
 
         int calcMemoryChilds(const int level) const override final;
 
-        static bool addSequence(const int start,
-                                const int end,
-                                const int delay,
-                                const int offsetX,
-                                const int offsetY,
-                                const int variant_offset,
-                                int repeat,
-                                const int rand,
-                                const ImageSet *const imageSet,
-                                Animation *const animation);
+        bool addSequence(const int start,
+                         const int end,
+                         const int delay,
+                         const int offsetX,
+                         const int offsetY,
+                         const int variant_offset,
+                         int repeat,
+                         const int rand,
+                         const ImageSet *const imageSet,
+                         Animation *const animation) const;
 
     private:
         /**
