@@ -112,8 +112,8 @@ namespace XML
                 size = CAST_S32(file.tellg());
                 if (size < 0)
                 {
-                    logger->log("Error loading XML file %s", filename.c_str());
-                    reportAlways("Error loading XML file %s", filename.c_str());
+                    reportAlways("Error loading XML file %s",
+                        filename.c_str());
                 }
                 else
                 {
@@ -125,7 +125,6 @@ namespace XML
             }
             else
             {
-                logger->log("Error loading XML file %s", filename.c_str());
                 reportAlways("Error loading XML file %s", filename.c_str());
             }
         }
@@ -137,13 +136,11 @@ namespace XML
 
             if (!mDoc)
             {
-                logger->log("Error parsing XML file %s", filename.c_str());
                 reportAlways("Error parsing XML file %s", filename.c_str());
             }
         }
         else if (skipError == SkipError_false)
         {
-            logger->log("Error loading %s", filename.c_str());
             reportAlways("Error loading XML file %s", filename.c_str());
         }
         mIsValid = valid;

@@ -171,7 +171,12 @@ void reportStack();
 #define reportFalseReal(val) (val)
 #define reportTrueReal(val) (val)
 
-#define reportAlwaysReal(...) ;
+#define reportAlwaysReal(...) \
+    { \
+        logger->log("Error:"); \
+        logger->log( \
+            __VA_ARGS__); \
+    }
 
 #define returnFalseVReal(val) \
     if (!val) \
