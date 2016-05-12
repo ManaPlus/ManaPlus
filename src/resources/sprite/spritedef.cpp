@@ -101,7 +101,6 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
         reportAlways("Error, failed to parse sprite %s", animationFile.c_str());
-
         const std::string errorFile = paths.getStringValue("sprites").append(
             paths.getStringValue("spriteErrorFile"));
         BLOCK_END("SpriteDef::load")
@@ -208,8 +207,9 @@ void SpriteDef::loadSprite(const XmlNodePtr spriteNode,
 
     if (variantCount > 0 && variant < variantCount)
     {
-        variant_offset =
-            variant * XML::getProperty(spriteNode, "variant_offset", 0);
+        variant_offset = variant * XML::getProperty(spriteNode,
+            "variant_offset",
+            0);
     }
 
     for_each_xml_child_node(node, spriteNode)
@@ -244,7 +244,9 @@ void SpriteDef::loadImageSet(const XmlNodePtr node,
 
     if (!imageSet)
     {
-        reportAlways("Couldn't load imageset!");
+        reportAlways("%s: Couldn't load imageset: %s",
+            mSource.c_str(),
+            imageSrc.c_str());
         return;
     }
 
@@ -266,16 +268,20 @@ void SpriteDef::loadAction(const XmlNodePtr node,
     const ImageSetIterator si = mImageSets.find(imageSetName);
     if (si == mImageSets.end())
     {
-        reportAlways("Warning: imageset \"%s\" not defined in %s",
-            imageSetName.c_str(), getIdPath().c_str());
+        reportAlways("%s: Imageset \"%s\" not defined in %s",
+            mSource.c_str(),
+            imageSetName.c_str(),
+            getIdPath().c_str());
         return;
     }
     const ImageSet *const imageSet = si->second;
 
     if (actionName == SpriteAction::INVALID)
     {
-        reportAlways("Warning: Unknown action \"%s\" defined in %s",
-            actionName.c_str(), getIdPath().c_str());
+        reportAlways("%s: Unknown action \"%s\" defined in %s",
+            mSource.c_str(),
+            actionName.c_str(),
+            getIdPath().c_str());
         return;
     }
     Action *const action = new Action(actionName);
@@ -314,7 +320,8 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
 
     if (directionType == SpriteDirection::INVALID)
     {
-        reportAlways("Warning: Unknown direction \"%s\" used in %s",
+        reportAlways("%s: Unknown direction \"%s\" used in %s",
+            mSource.c_str(),
             directionName.c_str(),
             getIdPath().c_str());
         return;
@@ -341,7 +348,10 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
 
             if (index < 0)
             {
-                logger->log1("No valid value for 'index'");
+                reportAlways(
+                    "%s: No valid value for 'index' at direction '%s'",
+                    mSource.c_str(),
+                    directionName.c_str());
                 continue;
             }
 
@@ -349,7 +359,10 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
 
             if (!img)
             {
-                logger->log("No image at index %d", index + variant_offset);
+                reportAlways("%s: No image at index %d at direction '%s'",
+                    mSource.c_str(),
+                    index + variant_offset,
+                    directionName.c_str());
                 continue;
             }
 
@@ -365,7 +378,9 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
 
             if (repeat < 1)
             {
-                logger->log1("No valid value for 'repeat'");
+                reportAlways("%s: No valid value for 'repeat' at direction %s",
+                    mSource.c_str(),
+                    directionName.c_str());
                 continue;
             }
 
@@ -447,7 +462,8 @@ void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
 
     if (mProcessedFiles.find(filename) != mProcessedFiles.end())
     {
-        reportAlways("Error, Tried to include %s which already is included.",
+        reportAlways("%s: Tried to include %s which already is included.",
+            mSource.c_str(),
             filename.c_str());
         return;
     }
@@ -458,7 +474,9 @@ void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
-        reportAlways("Error, no sprite root node in %s", filename.c_str());
+        reportAlways("%s: No sprite root node in %s",
+            mSource.c_str(),
+            filename.c_str());
         return;
     }
 
@@ -543,7 +561,8 @@ bool SpriteDef::addSequence(const int start,
 
     if (start < 0 || end < 0)
     {
-        reportAlways("No valid value for 'start' or 'end'");
+        reportAlways("%s: No valid value for 'start' or 'end'",
+            mSource.c_str());
         return true;
     }
 
@@ -583,7 +602,8 @@ bool SpriteDef::addSequence(const int start,
 
                 if (!img)
                 {
-                    reportAlways("No image at index %d",
+                    reportAlways("%s: No image at index %d",
+                        mSource.c_str(),
                         pos + variant_offset);
                     pos ++;
                     continue;
