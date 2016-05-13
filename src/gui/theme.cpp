@@ -387,9 +387,10 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     if (filename.empty())
         return nullptr;
 
-//    logger->log("Loading skin '%s'.", filename.c_str());
-
-    XML::Document doc(resolveThemePath(filename),
+    const std::string path = resolveThemePath(filename);
+    if (!PhysFs::exists(path.c_str()))
+        return nullptr;
+    XML::Document doc(path,
         UseResman_true,
         SkipError_true);
     const XmlNodePtr rootNode = doc.rootNode();
