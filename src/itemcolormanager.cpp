@@ -32,9 +32,18 @@ ItemColor ItemColorManager::getColorFromCards(const int *const cards)
 {
     if (!cards)
         return ItemColor_one;
+    if (cards[0] == CARD0_FORGE ||
+        cards[0] == CARD0_CREATE ||
+        cards[0] == CARD0_PET)
+    {
+        return ItemColor_one;
+    }
     for (int f = 0; f < maxCards; f ++)
     {
-        const ItemInfo &info = ItemDB::get(cards[f]);
+        const int id = cards[f];
+        if (id == 0)
+            continue;
+        const ItemInfo &info = ItemDB::get(id);
         const ItemColor &color = info.getCardColor();
         if (color != ItemColor_zero)
             return color;

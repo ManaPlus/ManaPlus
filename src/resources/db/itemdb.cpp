@@ -38,6 +38,7 @@
 
 #include "net/serverfeatures.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/files.h"
@@ -285,7 +286,8 @@ void ItemDB::load()
     // Hairstyles are encoded as negative numbers. Count how far negative
     // we can go.
     int hairstyles = 1;
-    while (ItemDB::get(-hairstyles).getSprite(Gender::MALE,
+    while (ItemDB::exists(-hairstyles) &&
+           ItemDB::get(-hairstyles).getSprite(Gender::MALE,
            BeingTypeId_zero) != paths.getStringValue("spriteErrorFile"))
     {
         hairstyles ++;
@@ -293,7 +295,8 @@ void ItemDB::load()
     mNumberOfHairstyles = hairstyles;
 
     int races = 100;
-    while (ItemDB::get(-races).getSprite(Gender::MALE, BeingTypeId_zero) !=
+    while (ItemDB::exists(-races) &&
+           ItemDB::get(-races).getSprite(Gender::MALE, BeingTypeId_zero) !=
            paths.getStringValue("spriteErrorFile"))
     {
         races ++;
@@ -744,7 +747,7 @@ const ItemInfo &ItemDB::get(const int id)
 
     if (i == mItemInfos.end())
     {
-        logger->log("ItemDB: Warning, unknown item ID# %d", id);
+        reportAlways("ItemDB: Warning, unknown item ID# %d", id);
         return *mUnknown;
     }
 
