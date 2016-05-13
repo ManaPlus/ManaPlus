@@ -394,6 +394,7 @@ void Client::gameInit()
 
     theme = new Theme;
     Theme::selectSkin();
+    ActorSprite::load();
     touchManager.init();
 
     // Initialize the item and emote shortcuts.
