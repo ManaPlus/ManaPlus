@@ -77,7 +77,7 @@ void ItemRecv::processItemDropped2(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readInt16("card");
+        cards[f] = msg.readUInt16("card");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int amount = msg.readInt16("amount");
@@ -152,7 +152,7 @@ void ItemRecv::processItemVisible2(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readInt16("card");
+        cards[f] = msg.readUInt16("card");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int amount = msg.readInt16("amount");

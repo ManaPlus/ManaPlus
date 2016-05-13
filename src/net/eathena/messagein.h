@@ -51,6 +51,9 @@ class MessageIn final : public Net::MessageIn
 
         /**< Reads a short. */
         int16_t readInt16(const char *const str) override final;
+
+        uint16_t readUInt16(const char *const str) override final;
+
         /**< Reads a long. */
         int32_t readInt32(const char *const str) override final;
 

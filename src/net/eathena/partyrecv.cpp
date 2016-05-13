@@ -288,7 +288,7 @@ void PartyRecv::processPartyItemPickup(Net::MessageIn &msg)
     msg.readUInt8("attribute");
     msg.readUInt8("refine");
     for (int f = 0; f < maxCards; f++)
-        msg.readInt16("card");
+        msg.readUInt16("card");
     msg.readInt16("equip location");
     msg.readUInt8("item type");
     // for color can be used ItemColorManager

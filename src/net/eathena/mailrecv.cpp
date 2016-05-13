@@ -103,7 +103,7 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
     mail->itemAttribute = msg.readUInt8("attribute");
     mail->itemRefine = msg.readUInt8("refine");
     for (int f = 0; f < maxCards; f ++)
-        mail->card[f] = msg.readInt16("card");
+        mail->card[f] = msg.readUInt16("card");
     const int msgLen = msg.readUInt8("msg len");
     if (msgLen != sz)
         logger->log("error: wrong message size");

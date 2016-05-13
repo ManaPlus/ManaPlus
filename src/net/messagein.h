@@ -71,6 +71,8 @@ class MessageIn notfinal
         /**< Reads a short. */
         virtual int16_t readInt16(const char *const str) = 0;
 
+        virtual uint16_t readUInt16(const char *const str) = 0;
+
         /**< Reads a long. */
         virtual int32_t readInt32(const char *const str) = 0;
 

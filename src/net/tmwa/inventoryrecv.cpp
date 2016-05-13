@@ -102,7 +102,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         const uint8_t refine = msg.readUInt8("refine");
         int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
-            cards[f] = msg.readInt16("card");
+            cards[f] = msg.readUInt16("card");
 
         if (Ea::InventoryRecv::mDebugInventory)
         {
@@ -156,7 +156,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readInt16("card");
+        cards[f] = msg.readUInt16("card");
     const int equipType = msg.readInt16("equip type");
     const ItemTypeT type = static_cast<ItemTypeT>(msg.readUInt8("item type"));
     const ItemInfo &itemInfo = ItemDB::get(itemId);
@@ -275,7 +275,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
         const int amount = msg.readInt16("amount");
         const int arrow = msg.readInt16("arrow");
         for (int i = 0; i < maxCards; i++)
-            cards[i] = msg.readInt16("card");
+            cards[i] = msg.readUInt16("card");
 
         if (Ea::InventoryRecv::mDebugInventory)
         {
@@ -326,7 +326,7 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
         const int amount = msg.readInt16("amount");
         msg.readInt16("arrow");
         for (int i = 0; i < maxCards; i++)
-            cards[i] = msg.readInt16("card");
+            cards[i] = msg.readUInt16("card");
 
         if (Ea::InventoryRecv::mDebugInventory)
         {
@@ -410,7 +410,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         msg.readUInt8("attribute (broken)");
         const uint8_t refine = msg.readUInt8("refine");
         for (int i = 0; i < maxCards; i++)
-            cards[i] = msg.readInt16("card");
+            cards[i] = msg.readUInt16("card");
 
         if (Ea::InventoryRecv::mDebugInventory)
         {
@@ -450,7 +450,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readInt16("card");
+        cards[f] = msg.readUInt16("card");
 
     if (Item *const item = Ea::InventoryRecv::mStorage->getItem(index))
     {

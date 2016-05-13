@@ -54,7 +54,7 @@ void AuctionRecv::processAuctionResults(Net::MessageIn &msg)
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            msg.readInt16("card");
+            msg.readUInt16("card");
         msg.readInt32("price");
         msg.readInt32("buy now");
         msg.readString(24, "buyer name");

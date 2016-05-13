@@ -149,7 +149,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         const uint8_t refine = CAST_U8(msg.readInt8("refine"));
         int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
-            cards[f] = msg.readInt16("card");
+            cards[f] = msg.readUInt16("card");
         if (msg.getVersion() >= 20071002)
             msg.readInt32("hire expire date (?)");
         if (msg.getVersion() >= 20080102)
@@ -218,7 +218,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readInt16("card");
+        cards[f] = msg.readUInt16("card");
     int equipType;
     if (msg.getVersion() >= 20120925)
         equipType = msg.readInt32("location");
@@ -374,7 +374,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
         if (packetVersion >= 5)
         {
             for (int f = 0; f < maxCards; f++)
-                cards[f] = msg.readInt16("card");
+                cards[f] = msg.readUInt16("card");
         }
         else
         {
@@ -453,7 +453,7 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
         if (msg.getVersion() >= 5)
         {
             for (int f = 0; f < maxCards; f++)
-                cards[f] = msg.readInt16("card");
+                cards[f] = msg.readUInt16("card");
         }
         else
         {
@@ -659,7 +659,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         const uint8_t refine = msg.readUInt8("refine level");
         int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
-            cards[f] = msg.readInt16("card");
+            cards[f] = msg.readUInt16("card");
         if (msg.getVersion() >= 20071002)
             msg.readInt32("hire expire date");
         if (msg.getVersion() >= 20080102)
@@ -717,7 +717,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readInt16("card");
+        cards[f] = msg.readUInt16("card");
     if ((serverVersion >= 8 || serverVersion == 0) &&
         msg.getVersion() >= 20150226)
     {
@@ -924,7 +924,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readInt16("card");
+        cards[f] = msg.readUInt16("card");
     if ((serverVersion >= 8 || serverVersion == 0) &&
         msg.getVersion() >= 20150226)
     {
@@ -1016,7 +1016,7 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
         const uint8_t refine = msg.readUInt8("refine level");
         int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
-            cards[f] = msg.readInt16("card");
+            cards[f] = msg.readUInt16("card");
         if (msg.getVersion() >= 20071002)
             msg.readInt32("hire expire date");
         if (msg.getVersion() >= 20080102)
@@ -1088,7 +1088,7 @@ void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
         if (msg.getVersion() >= 5)
         {
             for (int f = 0; f < maxCards; f++)
-                cards[f] = msg.readInt16("card");
+                cards[f] = msg.readUInt16("card");
         }
         else
         {
@@ -1205,7 +1205,7 @@ void InventoryRecv::processPlayerRepairList(Net::MessageIn &msg)
         msg.readInt16("item id");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            msg.readInt16("card");
+            msg.readUInt16("card");
     }
     menu = MenuType::RepairWespon;
 }
@@ -1230,7 +1230,7 @@ void InventoryRecv::processPlayerRefineList(Net::MessageIn &msg)
         msg.readInt16("item id");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            msg.readInt16("card");
+            msg.readUInt16("card");
     }
     menu = MenuType::WeaponeRefine;
 }

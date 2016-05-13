@@ -86,6 +86,27 @@ int16_t MessageIn::readInt16(const char *const str)
     return value;
 }
 
+uint16_t MessageIn::readUInt16(const char *const str)
+{
+    uint16_t value = 0xffU;
+    if (mPos + 2 <= mLength)
+    {
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        uint16_t swap;
+        memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(uint16_t));
+        value = SDL_Swap16(swap);
+#else
+        memcpy(&value, mData + CAST_SIZE(mPos), sizeof(uint16_t));
+#endif
+    }
+    DEBUGLOG2("readUInt16:  " + toStringPrint(CAST_U32(
+        CAST_U16(value))),
+        mPos, str);
+    mPos += 2;
+    PacketCounters::incInBytes(2);
+    return value;
+}
+
 int32_t MessageIn::readInt32(const char *const str)
 {
     int32_t value = -1;

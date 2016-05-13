@@ -126,7 +126,7 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
         id2 = 1;
 
     for (int f = 0; f < maxCards; f ++)
-        cards[f] = msg.readInt16("card");
+        cards[f] = msg.readUInt16("card");
 
     if (!dstBeing)
         return;
@@ -1692,7 +1692,7 @@ void BeingRecv::processBeingViewEquipment(Net::MessageIn &msg)
         msg.readInt32("wear state");
         msg.readInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            msg.readInt16("card");
+            msg.readUInt16("card");
         msg.readInt32("hire expire date (?)");
         msg.readInt16("equip type");
         msg.readInt16("item sprite number");

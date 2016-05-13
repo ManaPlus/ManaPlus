@@ -52,7 +52,7 @@ void SearchStoreRecv::processSearchAck(Net::MessageIn &msg)
         msg.readInt16("amount");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d++)
-            msg.readInt16("card");
+            msg.readUInt16("card");
 
         // +++ need use ItemColorManager for colors
     }
