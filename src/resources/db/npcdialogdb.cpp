@@ -54,6 +54,9 @@ static void loadNpcDialogMenu(NpcDialogInfo *const dialog,
 {
     for_each_xml_child_node(childNode, node)
     {
+        if (!xmlTypeEqual(childNode, XML_ELEMENT_NODE))
+            continue;
+
         if (xmlNameEqual(childNode, "button"))
         {
             const std::string name = XML::getProperty(childNode, "name", "");
