@@ -1,0 +1,84 @@
+language: c++
+sudo: false
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-5
+    - g++-5
+    - gcc-4.6
+    - g++-4.6
+    - libc++-dev
+    - make
+    - autoconf
+    - automake
+    - autopoint
+    - gettext
+    - libphysfs-dev
+    - libxml2-dev
+    - libcurl4-gnutls-dev
+    - libpng-dev
+    - libsdl-gfx1.2-dev
+    - libsdl-image1.2-dev
+    - libsdl-mixer1.2-dev
+    - libsdl-net1.2-dev
+    - libsdl-ttf2.0-dev
+    - valgrind
+
+#os:
+#  - linux
+#  - osx
+
+#sudo: required
+#dist: trusty
+
+git:
+  depth: 5
+
+install:
+  - echo "install"
+
+before_script:
+  - uname -a
+  - id
+
+script:
+#  - echo ${MCC}
+#  - echo ${MCXX}
+  - $MCC --version
+  - $MCXX --version
+  - ./tools/ci/scripts/travis.sh
+
+#compiler:
+#  - clang
+#  - gcc
+
+matrix:
+  exclude:
+  - env: ignore=this
+  include:
+#  - compiler: clang
+#    env:
+#    - MCC=clang-3.9
+#    - MCXX=clang++-3.9
+#    - MTOOL=./tools/ci/jobs/clang39.sh
+  - compiler: gcc
+    env:
+    - MCC=gcc
+    - MCXX=g++
+    - MTOOL=./tools/ci/jobs/gcc46.sh
+  - compiler: gcc
+    env:
+    - MCC=gcc-5
+    - MCXX=g++-5
+    - MTOOL=./tools/ci/jobs/gcc5.sh
+  - compiler: gcc
+    env:
+    - MCC=gcc-5
+    - MCXX=g++-5
+    - MTOOL=./tools/ci/jobs/gcc5_tests.sh
+  
+notifications:
+  email: false

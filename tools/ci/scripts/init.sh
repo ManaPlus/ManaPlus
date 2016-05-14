@@ -18,6 +18,9 @@ function do_init {
 }
 
 function aptget_update {
+    if [[ -n "${TRAVIS_COMMIT}" ]]; then
+        return
+    fi
     echo "apt-get update"
     apt-get update
     if [ "$?" != 0 ]; then
@@ -43,6 +46,9 @@ function aptget_update {
 }
 
 function aptget_install {
+    if [[ -n "${TRAVIS_COMMIT}" ]]; then
+        return
+    fi
     echo "apt-get -y -qq install $*"
     apt-get -y -qq install $*
     if [ "$?" != 0 ]; then

@@ -43,7 +43,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wopenmp-simd -Wformat-signedness \
 -Wswitch-bool -Wmemset-transposed-args -Wchkp -Wsized-deallocation \
 -Wlogical-not-parentheses -Woverloaded-virtual \
--Wno-variadic-macros -Wno-zero-as-null-pointer-constant"
+-Wno-variadic-macros -Wno-zero-as-null-pointer-constant -Wno-stack-protector"
 
 do_init
 run_configure --enable-werror $*
