@@ -82,6 +82,14 @@ gcc-5_h_all_i386:
   tags:
     - docker
 
+gcc-5:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc5.sh
+  image: debian:unstable
+  tags:
+    - docker
+
 pngcheck:
   stage: prebuild
   script:
@@ -264,14 +272,6 @@ cmake_gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/cmake_gcc49.sh
-  image: debian:unstable
-  tags:
-    - docker
-
-gcc-5:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5.sh
   image: debian:unstable
   tags:
     - docker
