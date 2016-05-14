@@ -26,6 +26,14 @@ gcc-6:
   tags:
     - docker
 
+gcc-6-i386:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc6.sh
+  image: vicamo/debian:sid-i386
+  tags:
+    - docker
+
 mplint_po:
   stage: prebuild
   script:
@@ -66,6 +74,14 @@ gcc-5_h_all:
   tags:
     - docker
 
+gcc-5_h_all_i386:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
+  image: vicamo/debian:sid-i386
+  tags:
+    - docker
+
 pngcheck:
   stage: prebuild
   script:
@@ -81,6 +97,14 @@ gcc-4.4:
   script:
   - ./tools/ci/jobs/gcc44.sh
   image: debian:oldstable
+  tags:
+    - docker
+
+gcc-4.4_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc44.sh
+  image: vicamo/debian:oldstable-i386
   tags:
     - docker
 
@@ -100,11 +124,27 @@ gcc-4.6:
   tags:
     - docker
 
+gcc-4.6_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc46.sh
+  image: vicamo/debian:oldstable-i386
+  tags:
+    - docker
+
 gcc-4.7:
   stage: build
   script:
   - ./tools/ci/jobs/gcc47.sh
   image: debian:oldstable
+  tags:
+    - docker
+
+gcc-4.7_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc47.sh
+  image: vicamo/debian:oldstable-i386
   tags:
     - docker
 
@@ -116,11 +156,27 @@ gcc-4.8:
   tags:
     - docker
 
+gcc-4.8_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc48.sh
+  image: vicamo/debian:stable-i386
+  tags:
+    - docker
+
 clang-3.0:
   stage: build
   script:
   - ./tools/ci/jobs/clang3.sh
   image: debian:oldstable
+  tags:
+    - docker
+
+clang-3.0_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang3.sh
+  image: vicamo/debian:oldstable-i386
   tags:
     - docker
 
@@ -132,6 +188,14 @@ clang-3.4:
   tags:
     - docker
 
+clang-3.4_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang34.sh
+  image: vicamo/debian:stable-i386
+  tags:
+    - docker
+
 clang-3.5:
   stage: build
   script:
@@ -140,11 +204,27 @@ clang-3.5:
   tags:
     - docker
 
+clang-3.5_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang35.sh
+  image: vicamo/debian:stable-i386
+  tags:
+    - docker
+
 .clang-3.9_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/clang39.sh_c++11.sh
   image: debian:unstable
+  tags:
+    - docker
+
+.clang-3.9_c++11_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang39.sh_c++11.sh
+  image: vicamo/debian:sid-i386
   tags:
     - docker
 
@@ -161,6 +241,14 @@ gcc-4.9:
   script:
   - ./tools/ci/jobs/gcc49.sh
   image: debian:unstable
+  tags:
+    - docker
+
+gcc-4.9_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49.sh
+  image: vicamo/debian:sid-i386
   tags:
     - docker
 
@@ -196,6 +284,14 @@ gcc-5_c++11:
   tags:
     - docker
 
+gcc-5_c++11_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_c++11.sh
+  image: vicamo/debian:sid-i386
+  tags:
+    - docker
+
 gcc-5_sdl2:
   stage: build
   script:
@@ -212,6 +308,14 @@ gcc-5_sdl2_c++11:
   tags:
     - docker
 
+gcc-5_sdl2_c++11_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
+  image: vicamo/debian:sid-i386
+  tags:
+    - docker
+
 gcc-snapshot:
   stage: build
   script:
@@ -220,11 +324,27 @@ gcc-snapshot:
   tags:
     - docker
 
+gcc-snapshot_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gccsnapshot.sh
+  image: vicamo/debian:sid-i386
+  tags:
+    - docker
+
 gcc-snapshot_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
   image: debian:unstable
+  tags:
+    - docker
+
+gcc-snapshot_sdl2_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gccsnapshot_sdl2.sh
+  image: vicamo/debian:sid-i386
   tags:
     - docker
 
@@ -241,6 +361,14 @@ gcc-6_sanitize:
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh
   image: debian:unstable
+  tags:
+    - docker
+
+gcc-6_sanitize_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sanitize.sh
+  image: vicamo/debian:sid-i386
   tags:
     - docker
 
@@ -446,11 +574,27 @@ gcc-5_tests:
   tags:
     - docker
 
+gcc-5_tests_i386:
+  stage: test
+  script:
+  - ./tools/ci/jobs/gcc5_tests.sh
+  image: vicamo/debian:sid-i386
+  tags:
+    - docker
+
 gcc-6_tests:
   stage: test
   script:
   - ./tools/ci/jobs/gcc6_tests.sh
   image: debian:unstable
+  tags:
+    - docker
+
+gcc-6_tests_i386:
+  stage: test
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh
+  image: vicamo/debian:sid-i386
   tags:
     - docker
 
@@ -462,6 +606,14 @@ gcc-6_lto:
   tags:
     - docker
 
+gcc-6_lto_i386:
+  stage: test
+  script:
+  - ./tools/ci/jobs/gcc6_lto.sh
+  image: vicamo/debian:sid-i386
+  tags:
+    - docker
+
 gcc-5_sanitize_tests:
   stage: test
   script:
@@ -470,11 +622,27 @@ gcc-5_sanitize_tests:
   tags:
     - docker
 
+gcc-5_sanitize_tests_i386:
+  stage: test
+  script:
+  - ./tools/ci/jobs/gcc5_sanitize_tests.sh
+  image: vicamo/debian:sid-i386
+  tags:
+    - docker
+
 gcc-5_sdl2_tests:
   stage: test
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
   image: debian:unstable
+  tags:
+    - docker
+
+gcc-5_sdl2_tests_i386:
+  stage: test
+  script:
+  - ./tools/ci/jobs/gcc5_sdl2_tests.sh
+  image: vicamo/debian:sid-i386
   tags:
     - docker
 
