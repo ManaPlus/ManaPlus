@@ -1511,6 +1511,8 @@ SET(SRCS_EVOL
     net/ea/loginrecv.h
     net/ea/network.cpp
     net/ea/network.h
+    net/ea/maprecv.cpp
+    net/ea/maprecv.h
     net/ea/npchandler.cpp
     net/ea/npchandler.h
     net/ea/npcrecv.cpp

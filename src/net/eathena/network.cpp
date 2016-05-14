@@ -36,6 +36,7 @@
 #include "net/ea/inventoryrecv.h"
 #include "net/ea/itemrecv.h"
 #include "net/ea/loginrecv.h"
+#include "net/ea/maprecv.h"
 #include "net/ea/npcrecv.h"
 #include "net/ea/partyrecv.h"
 #include "net/ea/playerrecv.h"

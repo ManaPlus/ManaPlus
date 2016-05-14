@@ -20,11 +20,9 @@
 
 #include "net/eathena/maprecv.h"
 
-#include "gui/viewport.h"
+#include "logger.h"
 
 #include "net/messagein.h"
-
-#include "resources/map/map.h"
 
 #include "debug.h"
 
@@ -57,29 +55,6 @@ void MapRecv::processInstanceDelete(Net::MessageIn &msg)
     UNIMPLIMENTEDPACKET;
     msg.readInt32("flag");
     msg.readInt32("unused");
-}
-
-void MapRecv::processSetTilesType(Net::MessageIn &msg)
-{
-    const int x1 = msg.readInt16("x1");
-    const int y1 = msg.readInt16("y1");
-    const int x2 = msg.readInt16("x2");
-    const int y2 = msg.readInt16("y2");
-    const BlockTypeT mask = static_cast<BlockTypeT>(msg.readInt32("mask"));
-    const int layer = msg.readInt32("layer");
-    const std::string name = msg.readString(16, "map name");
-    if (layer)
-        return;
-    Map *const map = viewport->getMap();
-    if (map && map->getGatName() == name)
-    {
-        for (int y = y1; y <= y2; y ++)
-        {
-            for (int x = x1; x <= x2; x ++)
-                map->setBlockMask(x, y, mask);
-        }
-        map->updateConditionLayers();
-    }
 }
 
 void MapRecv::processAddMapMarker(Net::MessageIn &msg)

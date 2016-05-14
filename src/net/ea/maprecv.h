@@ -1,5 +1,6 @@
 /*
  *  The ManaPlus Client
+ *  Copyright (C) 2008  Lloyd Bryant <lloyd_bryant@netzero.net>
  *  Copyright (C) 2011-2016  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -18,24 +19,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_MAPRECV_H
-#define NET_EATHENA_MAPRECV_H
+#ifndef NET_EA_MAPRECV_H
+#define NET_EA_MAPRECV_H
+
+#include "localconsts.h"
 
 namespace Net
 {
     class MessageIn;
-}
+}  // namespace Net
 
-namespace EAthena
+namespace Ea
 {
     namespace MapRecv
     {
-        void processInstanceStart(Net::MessageIn &msg);
-        void processInstanceCreate(Net::MessageIn &msg);
-        void processInstanceInfo(Net::MessageIn &msg);
-        void processInstanceDelete(Net::MessageIn &msg);
-        void processAddMapMarker(Net::MessageIn &msg);
-    }  // namespace MapRecv
-}  // namespace EAthena
+        void processSetTilesType(Net::MessageIn &msg);
+    }  // namespace PartyRecv
+}  // namespace Ea
 
-#endif  // NET_EATHENA_MAPRECV_H
+#endif  // NET_EA_MAPRECV_H

@@ -798,7 +798,7 @@ if (serverVersion > 0)
     packet(SMSG_ITEM_VISIBLE2,             0x0b18,  28, &ItemRecv::processItemVisible2,                 0);
     packet(SMSG_ITEM_DROPPED2,             0x0b19,  28, &ItemRecv::processItemDropped2,                 0);
     packet(SMSG_BATTLE_EMBLEM2,            0x0b1a,  34, &BattleGroundRecv::processBattleEmblem2,        0);
-    packet(SMSG_MAP_SET_TILES_TYPE,        0x0b1b,  34, &MapRecv::processSetTilesType,                  0);
+    packet(SMSG_MAP_SET_TILES_TYPE,        0x0b1b,  34, &Ea::MapRecv::processSetTilesType,              0);
     packet(SMSG_NPC_SKIN,                  0x0b1c,  -1, &NpcRecv::processNpcSkin,                       0);
     packet(SMSG_PLAYER_KILLED_BY,          0x0b1d,   6, &PlayerRecv::processKilledBy,                   0);
 
