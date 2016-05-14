@@ -18,6 +18,14 @@ clang-3.9:
   tags:
     - docker
 
+gcc-5_c++11_i386:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc5_c++11.sh
+  image: vicamo/debian:sid-i386
+  tags:
+    - docker
+
 gcc-6:
   stage: prebuild
   script:
@@ -79,14 +87,6 @@ gcc-5_h_all_i386:
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
   image: vicamo/debian:sid-i386
-  tags:
-    - docker
-
-gcc-5:
-  stage: prebuild
-  script:
-  - ./tools/ci/jobs/gcc5.sh
-  image: debian:unstable
   tags:
     - docker
 
@@ -276,19 +276,19 @@ cmake_gcc-4.9:
   tags:
     - docker
 
+gcc-5:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5.sh
+  image: debian:unstable
+  tags:
+    - docker
+
 gcc-5_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
   image: debian:unstable
-  tags:
-    - docker
-
-gcc-5_c++11_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5_c++11.sh
-  image: vicamo/debian:sid-i386
   tags:
     - docker
 
