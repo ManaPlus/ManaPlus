@@ -607,10 +607,18 @@ impHandler(hat)
 
     const int sprite = localPlayer->getSpriteID(
         charServerHandler->hatSprite());
-    const ItemInfo &info = ItemDB::get(sprite);
-    // TRANSLATORS: equipped hat chat message
-    const std::string str = strprintf(_("equipped hat %s."),
-        info.getName().c_str());
+    std::string str;
+    if (sprite == 0)
+    {
+        str = strprintf(_("no hat equipped."));
+    }
+    else
+    {
+        const ItemInfo &info = ItemDB::get(sprite);
+        // TRANSLATORS: equipped hat chat message
+        str = strprintf(_("equipped hat %s."),
+            info.getName().c_str());
+    }
     outString(event.tab, str, str);
     return true;
 }
