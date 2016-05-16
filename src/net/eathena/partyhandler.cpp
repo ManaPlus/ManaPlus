@@ -125,10 +125,17 @@ void PartyHandler::chat(const std::string &text) const
     createOutPacket(CMSG_PARTY_MESSAGE);
     const std::string mes = std::string(localPlayer->getName()).append(
         " : ").append(text);
-
-    outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
-    outMsg.writeString(mes, CAST_S32(mes.length()), "nick : message");
-    outMsg.writeInt8(0, "null char");
+    if (packetVersion >= 20151001)
+    {
+        outMsg.writeInt16(CAST_S16(mes.length() + 4), "len");
+        outMsg.writeString(mes, CAST_S32(mes.length()), "nick : message");
+    }
+    else
+    {
+        outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
+        outMsg.writeString(mes, CAST_S32(mes.length()), "nick : message");
+        outMsg.writeInt8(0, "null char");
+    }
 }
 
 // +++ must be 3 types item, exp, pickup

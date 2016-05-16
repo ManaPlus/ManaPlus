@@ -37,7 +37,7 @@ packet(CMSG_NAME_REQUEST,                 0x0094,   6, clif->pGetCharNameRequest
 packet(CMSG_CHAR_PASSWORD_CHANGE,         0x0061,   0, nullptr);
 packet(CMSG_CHAR_SERVER_CONNECT,          0x0065,   0, nullptr);
 packet(CMSG_CHAR_SELECT,                  0x0066,   0, nullptr);
-packet(CMSG_CHAR_CREATE,                  0x0970,   0, nullptr);
+packet(CMSG_CHAR_CREATE,                  0x0067,   0, nullptr);
 packet(CMSG_CHAR_DELETE,                  0x0068,   0, nullptr);
 packet(CMSG_CHAR_CREATE_PIN,              0x08ba,   0, nullptr);
 packet(CMSG_CHAR_CHECK_RENAME,            0x08fc,   0, nullptr);
@@ -406,6 +406,7 @@ if (packetVersion >= 20120307)
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0884,  -1, clif->pSearchStoreInfo);
     packet(CMSG_MAP_SERVER_CONNECT,       0x086A,  19, clif->pWantToConnection);
+    packet(CMSG_CHAR_CREATE,              0x0970,   0, nullptr);
 }
 
 // 20120410
@@ -774,6 +775,7 @@ if (packetVersion >= 20151001)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
     packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
+    packet(CMSG_CHAR_CREATE,              0x0a39,   0, nullptr);
 }
 
 // 20151104

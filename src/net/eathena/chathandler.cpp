@@ -39,6 +39,7 @@
 #include "debug.h"
 
 extern Net::ChatHandler *chatHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -59,9 +60,17 @@ void ChatHandler::talk(const std::string &restrict text,
         " : ").append(text);
 
     createOutPacket(CMSG_CHAT_MESSAGE);
-    // Added + 1 in order to let eAthena parse admin commands correctly
-    outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
-    outMsg.writeString(mes, CAST_S32(mes.length() + 1), "message");
+    if (packetVersion >= 20151001)
+    {
+        outMsg.writeInt16(CAST_S16(mes.length() + 4), "len");
+        outMsg.writeString(mes, CAST_S32(mes.length()), "message");
+    }
+    else
+    {
+        // Added + 1 in order to let eAthena parse admin commands correctly
+        outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
+        outMsg.writeString(mes, CAST_S32(mes.length() + 1), "message");
+    }
 }
 
 void ChatHandler::talkRaw(const std::string &mes) const
@@ -75,10 +84,19 @@ void ChatHandler::privateMessage(const std::string &restrict recipient,
                                  const std::string &restrict text) const
 {
     createOutPacket(CMSG_CHAT_WHISPER);
-    outMsg.writeInt16(CAST_S16(text.length() + 28 + 1), "len");
-    outMsg.writeString(recipient, 24, "recipient nick");
-    outMsg.writeString(text, CAST_S32(text.length()), "message");
-    outMsg.writeInt8(0, "null char");
+    if (packetVersion >= 20151001)
+    {
+        outMsg.writeInt16(CAST_S16(text.length() + 28), "len");
+        outMsg.writeString(recipient, 24, "recipient nick");
+        outMsg.writeString(text, CAST_S32(text.length()), "message");
+    }
+    else
+    {
+        outMsg.writeInt16(CAST_S16(text.length() + 28 + 1), "len");
+        outMsg.writeString(recipient, 24, "recipient nick");
+        outMsg.writeString(text, CAST_S32(text.length()), "message");
+        outMsg.writeInt8(0, "null char");
+    }
     Ea::ChatRecv::mSentWhispers.push(recipient);
 }
 
@@ -219,9 +237,17 @@ void ChatHandler::battleTalk(const std::string &text) const
         " : ").append(text);
 
     createOutPacket(CMSG_BATTLE_CHAT_MESSAGE);
-    // Added + 1 in order to let eAthena parse admin commands correctly
-    outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
-    outMsg.writeString(mes, CAST_S32(mes.length() + 1), "message");
+    if (packetVersion >= 20151001)
+    {
+        outMsg.writeInt16(CAST_S16(mes.length() + 4), "len");
+        outMsg.writeString(mes, CAST_S32(mes.length()), "message");
+    }
+    else
+    {
+        // Added + 1 in order to let eAthena parse admin commands correctly
+        outMsg.writeInt16(CAST_S16(mes.length() + 4 + 1), "len");
+        outMsg.writeString(mes, CAST_S32(mes.length() + 1), "message");
+    }
 }
 
 void ChatHandler::joinChat(const ChatObject *const chat,

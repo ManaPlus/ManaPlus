@@ -34,6 +34,7 @@
 #include "debug.h"
 
 extern Net::GuildHandler *guildHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -125,9 +126,17 @@ void GuildHandler::chat(const std::string &text) const
     const std::string str = std::string(localPlayer->getName()).append(
         " : ").append(text);
     createOutPacket(CMSG_GUILD_MESSAGE);
-    outMsg.writeInt16(CAST_U16(str.size() + 4 + 1), "len");
-    outMsg.writeString(str, CAST_S32(str.length()), "message");
-    outMsg.writeInt8(0, "zero byte");
+    if (packetVersion >= 20151001)
+    {
+        outMsg.writeInt16(CAST_U16(str.size() + 4), "len");
+        outMsg.writeString(str, CAST_S32(str.length()), "message");
+    }
+    else
+    {
+        outMsg.writeInt16(CAST_U16(str.size() + 4 + 1), "len");
+        outMsg.writeString(str, CAST_S32(str.length()), "message");
+        outMsg.writeInt8(0, "zero byte");
+    }
 }
 
 void GuildHandler::memberList() const

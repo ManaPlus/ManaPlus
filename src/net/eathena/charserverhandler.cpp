@@ -38,6 +38,8 @@
 #include "debug.h"
 
 extern Net::CharServerHandler *charServerHandler;
+extern int packetVersion;
+extern int serverVersion;
 
 namespace EAthena
 {
@@ -80,23 +82,58 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
 {
     createOutPacket(CMSG_CHAR_CREATE);
     outMsg.writeString(name, 24, "login");
-
-    outMsg.writeInt8(CAST_U8(slot), "slot");
-    outMsg.writeInt16(CAST_S16(hairColor), "hair color");
-    outMsg.writeInt16(CAST_S16(hairstyle), "hair style");
-    if (serverFeatures->haveRaceSelection())
-        outMsg.writeInt16(CAST_S16(race), "race");
-    if (serverFeatures->haveCreateCharGender())
+    if (serverVersion > 0)
     {
-        uint8_t sex = 0;
-        if (gender == Gender::UNSPECIFIED)
-            sex = 99;
-        else
-            sex = Being::genderToInt(gender);
-        outMsg.writeInt8(sex, "gender");
+        outMsg.writeInt8(CAST_U8(slot), "slot");
+        outMsg.writeInt16(CAST_S16(hairColor), "hair color");
+        outMsg.writeInt16(CAST_S16(hairstyle), "hair style");
+        if (serverFeatures->haveRaceSelection())
+            outMsg.writeInt16(CAST_S16(race), "race");
+        if (serverFeatures->haveCreateCharGender())
+        {
+            uint8_t sex = 0;
+            if (gender == Gender::UNSPECIFIED)
+                sex = 99;
+            else
+                sex = Being::genderToInt(gender);
+            outMsg.writeInt8(sex, "gender");
+        }
+        if (serverFeatures->haveLookSelection())
+            outMsg.writeInt16(CAST_S16(look), "look");
     }
-    if (serverFeatures->haveLookSelection())
-        outMsg.writeInt16(CAST_S16(look), "look");
+    else
+    {
+        if (packetVersion >= 20151001)
+        {
+            outMsg.writeInt8(CAST_U8(slot), "slot");
+            outMsg.writeInt16(CAST_S16(hairstyle), "hair style");
+            outMsg.writeInt16(CAST_S16(0), "starting job id");
+            outMsg.writeInt16(0, "unknown");
+            outMsg.writeInt16(0, "unknown");
+            uint8_t sex = 0;
+            if (gender == Gender::UNSPECIFIED)
+                sex = 99;
+            else
+                sex = Being::genderToInt(gender);
+            outMsg.writeInt8(sex, "gender");
+        }
+        else if (packetVersion >= 20120307)
+        {
+            outMsg.writeInt8(CAST_U8(slot), "slot");
+            outMsg.writeInt16(CAST_S16(hairstyle), "hair style");
+        }
+        else
+        {   // < 20120307
+            // +++ here need send stat points
+            // sending 5 for each stat for now
+            for (int i = 0; i < 6; i++)
+                outMsg.writeInt8(CAST_U8(5), "stat");
+
+            outMsg.writeInt8(CAST_U8(slot), "slot");
+            outMsg.writeInt16(CAST_S16(hairColor), "hair color");
+            outMsg.writeInt16(CAST_S16(hairstyle), "hair style");
+        }
+    }
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *const character,
