@@ -40,6 +40,7 @@
 #include "debug.h"
 
 extern Net::GameHandler *gameHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -116,6 +117,100 @@ void GameHandler::quit() const
 void GameHandler::ping(const int tick) const
 {
     createOutPacket(CMSG_MAP_PING);
+    if (packetVersion >= 20101124)
+    {
+        // nothing here
+    }
+    else if (packetVersion >= 20080827)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20070212)
+    {
+        outMsg.writeInt16(0, "unknown");
+    }
+    else if (packetVersion >= 20070108)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20050719)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20050718)
+    {
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20050628)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20050509)
+    {
+        outMsg.writeInt16(0, "unknown");
+    }
+    else if (packetVersion >= 20050110)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20041129)
+    {
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20041025)
+    {
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20041005)
+    {
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20040920)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20040906)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20040809)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+    }
+    else if (packetVersion >= 20040726)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+    }
     outMsg.writeInt32(tick, "tick");
 }
 

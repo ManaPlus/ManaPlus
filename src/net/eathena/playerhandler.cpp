@@ -44,6 +44,7 @@
 #include "debug.h"
 
 extern Net::PlayerHandler *playerHandler;
+extern int packetVersion;
 extern int serverVersion;
 
 namespace EAthena
@@ -113,10 +114,181 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
 void PlayerHandler::setDirection(const unsigned char direction) const
 {
     createOutPacket(CMSG_PLAYER_CHANGE_DIR);
-    outMsg.writeInt8(0, "head direction");
-    outMsg.writeInt8(0, "unused");
-    outMsg.writeInt8(MessageOut::toServerDirection(direction),
-        "player direction");
+    if (packetVersion >= 20101124)
+    {
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20080827)
+    {
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20070212)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20070108)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20060327)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20050719)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20050718)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20050628)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20050509)
+    {
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20050110)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20041129)
+    {
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20041025)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20041005)
+    {
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20040920)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20040906)
+    {
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20040809)
+    {
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else if (packetVersion >= 20040713)
+    {
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
+    else
+    {
+        outMsg.writeInt8(0, "head direction");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt8(MessageOut::toServerDirection(direction),
+            "player direction");
+    }
 }
 
 void PlayerHandler::setDestination(const int x, const int y,
