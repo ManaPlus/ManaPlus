@@ -36,6 +36,7 @@
 #include "debug.h"
 
 extern Net::InventoryHandler *inventoryHandler;
+extern int packetVersion;
 
 // this conversion from bit corrupted LOOK_* to EquipSlot
 // for how it corrupted, see BeingRecv::processBeingChangeLookContinue
@@ -117,9 +118,153 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
         return;
 
     createOutPacket(CMSG_PLAYER_INVENTORY_DROP);
-    outMsg.writeInt16(CAST_S16(
-        item->getInvIndex() + INVENTORY_OFFSET), "index");
-    outMsg.writeInt16(CAST_S16(amount), "amount");
+    const int16_t index = CAST_S16(item->getInvIndex() + INVENTORY_OFFSET);
+    if (packetVersion >= 20101124)
+    {
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    if (packetVersion >= 20080827)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20070212)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20070108)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20060327)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20050719)
+    {
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20050718)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20050628)
+    {
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20050509)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20050110)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    if (packetVersion >= 20041129)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20041025)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20041005)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    if (packetVersion >= 20040920)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20040906)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20040809)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else if (packetVersion >= 20040726)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
+    else
+    {
+        outMsg.writeInt16(index, "index");
+        outMsg.writeInt16(CAST_S16(amount), "amount");
+    }
 }
 
 void InventoryHandler::closeStorage() const
