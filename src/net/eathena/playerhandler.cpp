@@ -104,7 +104,102 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
         return;
 
     createOutPacket(CMSG_ITEM_PICKUP);
-    outMsg.writeBeingId(floorItem->getId(), "object id");
+    const BeingId id = floorItem->getId();
+    if (packetVersion >= 20101124)
+    {
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20080827)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20070212)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20070108)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20050719)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20050718)
+    {
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    if (packetVersion >= 20050628)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20050509)
+    {
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20050110)
+    {
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20041129)
+    {
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20041025)
+    {
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20041005)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20040920)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20040906)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20040809)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else if (packetVersion >= 20040713)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeBeingId(id, "object id");
+    }
+    else
+    {
+        outMsg.writeBeingId(id, "object id");
+    }
+
     EAthena::InventoryHandler *const handler =
         static_cast<EAthena::InventoryHandler*>(inventoryHandler);
     if (handler)
