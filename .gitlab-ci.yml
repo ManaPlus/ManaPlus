@@ -1,7 +1,6 @@
 stages:
   - prebuild
   - build
-  - test
   - success
   - failure
 
@@ -567,7 +566,7 @@ gcc-6_no_asserts:
 # tests
 
 gcc-5_tests:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_tests.sh
   image: debian:unstable
@@ -575,7 +574,7 @@ gcc-5_tests:
     - docker
 
 gcc-5_tests_i386:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_tests.sh
   image: vicamo/debian:sid-i386
@@ -583,7 +582,7 @@ gcc-5_tests_i386:
     - docker
 
 gcc-6_tests:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc6_tests.sh
   image: debian:unstable
@@ -591,7 +590,7 @@ gcc-6_tests:
     - docker
 
 gcc-6_tests_i386:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc6_tests.sh
   image: vicamo/debian:sid-i386
@@ -599,7 +598,7 @@ gcc-6_tests_i386:
     - docker
 
 gcc-6_lto:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc6_lto.sh
   image: debian:unstable
@@ -607,7 +606,7 @@ gcc-6_lto:
     - docker
 
 gcc-6_lto_i386:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc6_lto.sh
   image: vicamo/debian:sid-i386
@@ -615,7 +614,7 @@ gcc-6_lto_i386:
     - docker
 
 gcc-5_sanitize_tests:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh
   image: debian:unstable
@@ -623,7 +622,7 @@ gcc-5_sanitize_tests:
     - docker
 
 gcc-5_sanitize_tests_i386:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh
   image: vicamo/debian:sid-i386
@@ -631,7 +630,7 @@ gcc-5_sanitize_tests_i386:
     - docker
 
 gcc-5_sdl2_tests:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
   image: debian:unstable
@@ -639,7 +638,7 @@ gcc-5_sdl2_tests:
     - docker
 
 gcc-5_sdl2_tests_i386:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
   image: vicamo/debian:sid-i386
@@ -647,7 +646,7 @@ gcc-5_sdl2_tests_i386:
     - docker
 
 gcc-5_h_eathena:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DENABLE_LIBXML
   image: debian:unstable
@@ -655,7 +654,7 @@ gcc-5_h_eathena:
     - docker
 
 gcc-5_h_eathena_pugi:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DENABLE_PUGIXML
   image: debian:unstable
@@ -663,7 +662,7 @@ gcc-5_h_eathena_pugi:
     - docker
 
 gcc-5_h_eathena_opengl:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DUSE_OPENGL -DENABLE_LIBXML
   image: debian:unstable
@@ -671,7 +670,7 @@ gcc-5_h_eathena_opengl:
     - docker
 
 fake_build:
-  stage: test
+  stage: build
   script:
   - echo "fake build for workaround gitlab ci issue"
   image: debian:unstable
@@ -680,7 +679,7 @@ fake_build:
     - docker
 
 gcc-5_h_eathena_opengl_pugi:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DUSE_OPENGL -DENABLE_PUGIXML
   image: debian:unstable
@@ -688,7 +687,7 @@ gcc-5_h_eathena_opengl_pugi:
     - docker
 
 gcc-5_h_eathena_nsl:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML
   image: debian:unstable
@@ -696,7 +695,7 @@ gcc-5_h_eathena_nsl:
     - docker
 
 gcc-5_h_eathena_tmwa:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_LIBXML
   image: debian:unstable
@@ -704,7 +703,7 @@ gcc-5_h_eathena_tmwa:
     - docker
 
 gcc-5_h_pugi_all:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML
   image: debian:unstable
@@ -712,7 +711,7 @@ gcc-5_h_pugi_all:
     - docker
 
 gcc-5_tarball:
-  stage: test
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_tarball.sh
   image: debian:unstable
