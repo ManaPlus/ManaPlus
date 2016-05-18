@@ -588,6 +588,7 @@ if (packetVersion >= 20130320)
     packet(CMSG_MAP_PING,                 0x0363,   6, clif->pTickSend);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0897,   5, clif->pChangeDir);
     packet(CMSG_ITEM_PICKUP,              0x0933,   6, clif->pTakeItem);
+    packet(CMSG_MAP_PING,                 0x0363,   6, clif->pTickSend);
 }
 
 // 20130515
@@ -598,6 +599,7 @@ if (packetVersion >= 20130515)
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0362,   5, clif->pChangeDir);
     packet(CMSG_ITEM_PICKUP,              0x08a1,   6, clif->pTakeItem);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x0944,   6, clif->pDropItem);
 }
 
 // 20130522
@@ -608,6 +610,7 @@ if (packetVersion >= 20130522)
     packet(CMSG_MAP_PING,                 0x07ec,   6, clif->pTickSend);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0925,   5, clif->pChangeDir);
     packet(CMSG_ITEM_PICKUP,              0x095e,   6, clif->pTakeItem);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x089c,   6, clif->pDropItem);
 }
 
 // 20130529
@@ -628,6 +631,7 @@ if (packetVersion >= 20130605)
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
     packet(CMSG_ITEM_PICKUP,              0x07e4,   6, clif->pTakeItem);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
 }
 
 // 20130612
