@@ -45,6 +45,8 @@
 #include "net/messagein.h"
 #include "net/serverfeatures.h"
 
+#include "utils/checkutils.h"
+
 #include "debug.h"
 
 namespace Ea
@@ -440,6 +442,9 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(x, y);
 
+    if (dstBeing == localPlayer)
+        return;
+
     const unsigned char *moves = msg.readBytes(len, "moving path");
     Path path;
     if (moves)
@@ -458,8 +463,60 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
                 logger->log("bad move packet: %d", dir);
             }
         }
+        const int x1 = dstBeing->getCachedX();
+        const int y1 = dstBeing->getCachedY();
+        if (x1 != x || y1 != y)
+        {
+//            reportAlways("Found desync being move. "
+//                "Calculated target (%d,%d). "
+//                "Actual target (%d,%d).",
+//                static_cast<int>(x),
+//                static_cast<int>(y),
+//                static_cast<int>(x1),
+//                static_cast<int>(y1));
+            if (len > 0)
+            {
+                const unsigned char dir = moves[0];
+                uint16_t x0 = x;
+                uint16_t y0 = y;
+
+                if (dir <= 7)
+                {
+                    x0 -= dirx[0];
+                    y0 -= diry[0];
+                    if (x1 == x0 && y1 == y0)
+                    {
+                        path.erase(path.begin());
+                        logger->log("Fixed being moving desync by "
+                            "removing one tile");
+                    }
+                    else
+                    {
+                        x0 = x;
+                        y0 = y;
+                        if (abs(x0 - x1) < 2 && abs(y0 - y1) < 2)
+                        {
+                            path.push_back(Position(x1, y1));
+                            logger->log("Fixed being moving desync by "
+                                "adding one tile");
+                        }
+                        else
+                        {
+                            reportAlways("Error: being moving desync. "
+                                "Calculated target (%d,%d). "
+                                "Actual target (%d,%d).",
+                                static_cast<int>(x),
+                                static_cast<int>(y),
+                                static_cast<int>(x1),
+                                static_cast<int>(y1));
+                        }
+                    }
+                }
+            }
+        }
         delete [] moves;
     }
+
     dstBeing->setPath(path);
     BLOCK_END("BeingRecv::processBeingMove3")
 }

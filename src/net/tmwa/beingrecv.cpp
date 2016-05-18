@@ -1019,7 +1019,9 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     {
         dstBeing->setAction(BeingAction::STAND, 0);
         dstBeing->setTileCoords(srcX, srcY);
-        if (!serverFeatures->haveMove3())
+        if (serverFeatures->haveMove3())
+            dstBeing->setCachedDestination(dstX, dstY);
+        else
             dstBeing->setDestination(dstX, dstY);
     }
 

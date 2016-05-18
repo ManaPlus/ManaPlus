@@ -214,6 +214,8 @@ Being::Being(const BeingId id,
 #endif
     mX(0),
     mY(0),
+    mCachedX(0),
+    mCachedY(0),
     mSortOffsetY(0),
     mPixelOffsetY(0),
     mFixedOffsetY(0),
@@ -528,9 +530,9 @@ void Being::setPixelPositionF(const Vector &restrict pos) restrict2
     }
 }
 
-void Being::setDestination(const int dstX, const int dstY) restrict2
+void Being::setDestination(const int dstX,
+                           const int dstY) restrict2
 {
-    // We can't calculate anything without a map anyway.
     if (!mMap)
         return;
 

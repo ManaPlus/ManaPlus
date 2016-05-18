@@ -597,7 +597,9 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     dstBeing->setTileCoords(srcX, srcY);
     if (localPlayer)
         localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
-    if (!serverFeatures->haveMove3())
+    if (serverFeatures->haveMove3())
+        dstBeing->setCachedDestination(dstX, dstY);
+    else
         dstBeing->setDestination(dstX, dstY);
 
     // because server don't send direction in move packet, we fixing it
@@ -956,7 +958,9 @@ void BeingRecv::processBeingMove2(Net::MessageIn &msg)
     dstBeing->setTileCoords(srcX, srcY);
     if (localPlayer)
         localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
-    if (!serverFeatures->haveMove3())
+    if (serverFeatures->haveMove3())
+        dstBeing->setCachedDestination(dstX, dstY);
+    else
         dstBeing->setDestination(dstX, dstY);
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setMoveTime();

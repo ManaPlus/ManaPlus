@@ -136,7 +136,18 @@ class Being notfinal : public ActorSprite,
         /**
          * Creates a path for the being from current position to ex and ey
          */
-        void setDestination(const int dstX, const int dstY) restrict2;
+        void setDestination(const int dstX,
+                            const int dstY) restrict2;
+
+        void setCachedDestination(const int dstX,
+                                  const int dstY) restrict2
+        { mCachedX = dstX; mCachedY = dstY; }
+
+        int getCachedX() const A_WARN_UNUSED
+        { return mCachedX; }
+
+        int getCachedY() const A_WARN_UNUSED
+        { return mCachedY; }
 
         /**
          * Returns the destination for this being.
@@ -1170,6 +1181,8 @@ class Being notfinal : public ActorSprite,
 
         int mX;             // position in tiles
         int mY;             // position in tiles
+        int mCachedX;
+        int mCachedY;
         int mSortOffsetY;  // caculated offset in pixels based on mPixelOffsetY
         int mPixelOffsetY;  // tile height offset in pixels
                             // calculated between tiles
