@@ -237,11 +237,19 @@ bool Particle::update() restrict2
 {
     if (mAlive == AliveStatus::ALIVE)
     {
-        const Vector oldPos = mPos;
-
         if (mLifetimeLeft == 0)
         {
             mAlive = AliveStatus::DEAD_TIMEOUT;
+
+            if (mChildParticles.empty())
+            {
+                if (mAlive != AliveStatus::ALIVE &&
+                    mAutoDelete)
+                {
+                    return false;
+                }
+                return true;
+            }
         }
         else
         {
@@ -289,24 +297,26 @@ bool Particle::update() restrict2
                 }
                 mImage = mAnimation->getCurrentImage();
             }
-            updateSelf();
-        }
+            const Vector oldPos = mPos;
 
-        const Vector change = mPos - oldPos;
-        if (mChildParticles.empty())
-        {
-            if (mAlive != AliveStatus::ALIVE &&
-                mAutoDelete)
+            updateSelf();
+
+            const Vector change = mPos - oldPos;
+            if (mChildParticles.empty())
             {
-                return false;
+                if (mAlive != AliveStatus::ALIVE &&
+                    mAutoDelete)
+                {
+                    return false;
+                }
+                return true;
             }
-            return true;
-        }
-        for (ParticleIterator p = mChildMoveParticles.begin(),
-             fp2 = mChildMoveParticles.end(); p != fp2; )
-        {
-            // move particle with its parent if desired
-            (*p)->moveBy(change);
+            for (ParticleIterator p = mChildMoveParticles.begin(),
+                 fp2 = mChildMoveParticles.end(); p != fp2; )
+            {
+                // move particle with its parent if desired
+                (*p)->moveBy(change);
+            }
         }
 
         // Update child particles
