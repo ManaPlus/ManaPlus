@@ -291,25 +291,32 @@ bool Particle::update() restrict2
             }
             updateSelf();
         }
-    }
 
-    const Vector change = mPos - oldPos;
-
-    if (mChildParticles.empty())
-    {
-        if (mAlive != AliveStatus::ALIVE &&
-            mAutoDelete)
+        const Vector change = mPos - oldPos;
+        if (mChildParticles.empty())
         {
-            return false;
+            if (mAlive != AliveStatus::ALIVE &&
+                mAutoDelete)
+            {
+                return false;
+            }
+            return true;
         }
-        return true;
+        for (ParticleIterator p = mChildMoveParticles.begin(),
+             fp2 = mChildMoveParticles.end(); p != fp2; )
+        {
+            // move particle with its parent if desired
+            (*p)->moveBy(change);
+        }
     }
-
-    for (ParticleIterator p = mChildMoveParticles.begin(),
-         fp2 = mChildMoveParticles.end(); p != fp2; )
+    else
     {
-        // move particle with its parent if desired
-        (*p)->moveBy(change);
+        if (mChildParticles.empty())
+        {
+            if (mAutoDelete)
+                return false;
+            return true;
+        }
     }
 
     // Update child particles
