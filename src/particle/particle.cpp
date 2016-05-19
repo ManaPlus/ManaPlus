@@ -235,10 +235,10 @@ void Particle::updateSelf() restrict2
 
 bool Particle::update() restrict2
 {
-    const Vector oldPos = mPos;
-
     if (mAlive == AliveStatus::ALIVE)
     {
+        const Vector oldPos = mPos;
+
         if (mLifetimeLeft == 0)
         {
             mAlive = AliveStatus::DEAD_TIMEOUT;
@@ -308,6 +308,30 @@ bool Particle::update() restrict2
             // move particle with its parent if desired
             (*p)->moveBy(change);
         }
+
+        // Update child particles
+        for (ParticleIterator p = mChildParticles.begin(),
+             fp2 = mChildParticles.end(); p != fp2; )
+        {
+            Particle *restrict const particle = *p;
+            // update particle
+            if (particle->update())
+            {
+                ++p;
+            }
+            else
+            {
+                mChildMoveParticles.remove(*p);
+                delete particle;
+                p = mChildParticles.erase(p);
+            }
+        }
+        if (mAlive != AliveStatus::ALIVE &&
+            mChildParticles.empty() &&
+            mAutoDelete)
+        {
+            return false;
+        }
     }
     else
     {
@@ -317,30 +341,28 @@ bool Particle::update() restrict2
                 return false;
             return true;
         }
-    }
-
-    // Update child particles
-    for (ParticleIterator p = mChildParticles.begin(),
-         fp2 = mChildParticles.end(); p != fp2; )
-    {
-        Particle *restrict const particle = *p;
-        // update particle
-        if (particle->update())
+        // Update child particles
+        for (ParticleIterator p = mChildParticles.begin(),
+             fp2 = mChildParticles.end(); p != fp2; )
         {
-            ++p;
+            Particle *restrict const particle = *p;
+            // update particle
+            if (particle->update())
+            {
+                ++p;
+            }
+            else
+            {
+                mChildMoveParticles.remove(*p);
+                delete particle;
+                p = mChildParticles.erase(p);
+            }
         }
-        else
+        if (mChildParticles.empty() &&
+            mAutoDelete)
         {
-            mChildMoveParticles.remove(*p);
-            delete particle;
-            p = mChildParticles.erase(p);
+            return false;
         }
-    }
-    if (mAlive != AliveStatus::ALIVE &&
-        mChildParticles.empty() &&
-        mAutoDelete)
-    {
-        return false;
     }
 
     return true;
