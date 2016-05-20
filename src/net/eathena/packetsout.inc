@@ -576,8 +576,6 @@ if (packetVersion >= 20120418)
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
-    packet(CMSG_ITEM_PICKUP,              0x07e4,   6, clif->pTakeItem);
-    packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
 }
 
 // 20120702
@@ -609,7 +607,6 @@ if (packetVersion >= 20130320)
     packet(CMSG_MAP_PING,                 0x0363,   6, clif->pTickSend);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0897,   5, clif->pChangeDir);
     packet(CMSG_ITEM_PICKUP,              0x0933,   6, clif->pTakeItem);
-    packet(CMSG_MAP_PING,                 0x0363,   6, clif->pTickSend);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0438,   6, clif->pDropItem);
 }
 
@@ -1052,7 +1049,6 @@ if (packetVersion >= 20160316)
     packet(CMSG_ITEM_PICKUP,              0x07e4,   6, clif->pTakeItem);
     packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
-    packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_SEARCHSTORE_SEARCH,       0x0819,  -1, clif->pSearchStoreInfo);
