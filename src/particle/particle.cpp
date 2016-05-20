@@ -240,14 +240,10 @@ bool Particle::update() restrict2
         if (mLifetimeLeft == 0)
         {
             mAlive = AliveStatus::DEAD_TIMEOUT;
-
             if (mChildParticles.empty())
             {
-                if (mAlive != AliveStatus::ALIVE &&
-                    mAutoDelete)
-                {
+                if (mAutoDelete)
                     return false;
-                }
                 return true;
             }
         }
