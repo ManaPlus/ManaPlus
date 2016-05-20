@@ -100,7 +100,8 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
-        reportAlways("Error, failed to parse sprite %s", animationFile.c_str());
+        reportAlways("Error, failed to parse sprite %s",
+            animationFile.c_str());
         const std::string errorFile = paths.getStringValue("sprites").append(
             paths.getStringValue("spriteErrorFile"));
         BLOCK_END("SpriteDef::load")

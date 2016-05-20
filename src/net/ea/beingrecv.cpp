@@ -477,8 +477,8 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
             if (len > 0)
             {
                 const unsigned char dir = moves[0];
-                uint16_t x0 = x;
-                uint16_t y0 = y;
+                int16_t x0 = x;
+                int16_t y0 = y;
 
                 if (dir <= 7)
                 {

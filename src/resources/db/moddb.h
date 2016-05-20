@@ -29,8 +29,6 @@
 
 #include "localconsts.h"
 
-class ModInfo;
-
 namespace ModDB
 {
     void load();

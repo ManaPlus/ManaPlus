@@ -20,8 +20,6 @@
 
 #include "resources/memorymanager.h"
 
-#include "logger.h"
-
 #include "gui/widgets/tabs/chat/chattab.h"
 
 #include "resources/resourcemanager.h"
@@ -82,10 +80,13 @@ void MemoryManager::printAllMemory(ChatTab *const tab A_DYECMD_UNUSED)
 {
     if (!logger)
         return;
+#ifdef DYECMD
+    if (resourceManager)
+        resourceManager->calcMemory(0);
+#else
     int sz = 0;
     if (resourceManager)
         sz += resourceManager->calcMemory(0);
-#ifndef DYECMD
     if (tab)
     {
         // TRANSLATORS: memory usage chat message

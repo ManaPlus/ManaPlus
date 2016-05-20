@@ -2389,7 +2389,7 @@ void LocalPlayer::followMoveTo(const Being *const being,
 {
     if (being &&
         !mPlayerFollowed.empty() &&
-         being->mName == mPlayerFollowed)
+        being->mName == mPlayerFollowed)
     {
         mPickUpTarget = nullptr;
         navigateTo(x, y);

@@ -40,8 +40,6 @@
 
 #include "localconsts.h"
 
-class Image;
-
 #ifdef USE_OPENGL
 class OpenGLGraphicsVertexes final
 {
