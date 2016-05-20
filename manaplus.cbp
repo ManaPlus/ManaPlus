@@ -667,6 +667,7 @@
 		<Unit filename="src/net/ea/partyhandler.cpp" />
 		<Unit filename="src/net/ea/adminhandler.cpp" />
 		<Unit filename="src/net/ea/loginrecv.cpp" />
+		<Unit filename="src/net/ea/maprecv.cpp" />
 		<Unit filename="src/net/ea/buysellrecv.cpp" />
 		<Unit filename="src/net/ea/beingrecv.cpp" />
 		<Unit filename="src/net/ea/guildrecv.cpp" />
@@ -875,6 +876,7 @@
 		<Unit filename="src/const/gui/pages.h" />
 		<Unit filename="src/const/emoteshortcut.h" />
 		<Unit filename="src/const/spells.h" />
+		<Unit filename="src/const/net/maxpacketversion.h" />
 		<Unit filename="src/const/net/inventory.h" />
 		<Unit filename="src/const/net/net.h" />
 		<Unit filename="src/const/net/skill.h" />
@@ -1523,6 +1525,7 @@
 		<Unit filename="src/net/ea/chathandler.h" />
 		<Unit filename="src/net/ea/network.h" />
 		<Unit filename="src/net/ea/inventoryrecv.h" />
+		<Unit filename="src/net/ea/maprecv.h" />
 		<Unit filename="src/net/ea/npchandler.h" />
 		<Unit filename="src/net/ea/eaprotocol.h" />
 		<Unit filename="src/net/adminhandler.h" />
@@ -1566,6 +1569,7 @@
 		<Unit filename="src/enums/being/attributes.h" />
 		<Unit filename="src/enums/being/beingdirection.h" />
 		<Unit filename="src/enums/being/beingaction.h" />
+		<Unit filename="src/enums/emotetype.h" />
 		<Unit filename="src/enums/render/rendertype.h" />
 		<Unit filename="src/enums/render/blitmode.h" />
 		<Unit filename="src/enums/inventorytype.h" />
