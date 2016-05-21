@@ -1,3 +1,13 @@
+2016-05-21 New release 1.6.5.21
+fix: DSO in Mesa and disable DSO blacklist. Can be issue in NVIDIA.
+fix: /hat command output if no hat equipped.
+fix: fix random one tile desync in hercules.
+add: max distance for start auto fix client side position.
+add: switch emote bar mode for player/pet/mercenary/homunculus.
+add: different asserts. Also show them in debug tab if enabled.
+add: allow set change collisions on the fly (tmwa).
+add: improve performance in particles.
+
 2016-05-07 New release 1.6.5.7
 fix: login in title bar.
 fix: compilation for MacOSX.
