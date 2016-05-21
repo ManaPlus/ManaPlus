@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-05-20 19:25+0300\n"
-"PO-Revision-Date: 2016-05-08 09:45+0000\n"
+"PO-Revision-Date: 2016-05-21 09:33+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Catalan (http://www.transifex.com/akaras/manaplus/language/"
 "ca/)\n"
@@ -2223,9 +2223,8 @@ msgstr ""
 
 #. TRANSLATORS: popup menu header
 #: src/gui/popups/popupmenu.cpp:1106
-#, fuzzy
 msgid "Show emotes for:"
-msgstr "Mostra barra de vida de monstres"
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for player
@@ -4787,9 +4786,8 @@ msgstr "Sincronitzar moviment del jugador"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:212
-#, fuzzy
 msgid "Sync player move distance"
-msgstr "Sincronitzar moviment del jugador"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:217

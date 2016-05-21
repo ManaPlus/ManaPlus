@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-05-20 19:25+0300\n"
-"PO-Revision-Date: 2016-05-09 00:35+0000\n"
+"PO-Revision-Date: 2016-05-21 11:56+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/akaras/manaplus/language/"
 "ru/)\n"
@@ -187,9 +187,8 @@ msgstr "Теперь сообщение закрывает чат."
 
 #. TRANSLATORS: equipped hat chat message
 #: src/actions/chat.cpp:614
-#, fuzzy
 msgid "no hat equipped."
-msgstr "Нельзя экипировать."
+msgstr "нет одетой шапки."
 
 #. TRANSLATORS: equipped hat chat message
 #: src/actions/chat.cpp:620
@@ -2246,9 +2245,8 @@ msgstr "Заблокировать"
 
 #. TRANSLATORS: popup menu header
 #: src/gui/popups/popupmenu.cpp:1106
-#, fuzzy
 msgid "Show emotes for:"
-msgstr "Показывать жизнь мобов"
+msgstr "Показывать эмоции для:"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for player
@@ -2260,9 +2258,8 @@ msgstr "Игрок"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for pet
 #: src/gui/popups/popupmenu.cpp:1114
-#, fuzzy
 msgid "Pet"
-msgstr "Питомцы"
+msgstr "Животное"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for homuncules
@@ -4818,9 +4815,8 @@ msgstr "Синх. движение"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:212
-#, fuzzy
 msgid "Sync player move distance"
-msgstr "Синх. движение"
+msgstr "Синхронизировать перемещение игрока с расстояния"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:217

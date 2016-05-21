@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-05-20 19:25+0300\n"
-"PO-Revision-Date: 2016-05-08 09:45+0000\n"
+"PO-Revision-Date: 2016-05-21 09:33+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/akaras/manaplus/"
 "language/sv_SE/)\n"
@@ -171,9 +171,8 @@ msgstr "Meddelande nu, stänger chat."
 
 #. TRANSLATORS: equipped hat chat message
 #: src/actions/chat.cpp:614
-#, fuzzy
 msgid "no hat equipped."
-msgstr "Går inte att equipa."
+msgstr ""
 
 #. TRANSLATORS: equipped hat chat message
 #: src/actions/chat.cpp:620
@@ -2225,9 +2224,8 @@ msgstr ""
 
 #. TRANSLATORS: popup menu header
 #: src/gui/popups/popupmenu.cpp:1106
-#, fuzzy
 msgid "Show emotes for:"
-msgstr "Visa monster hp-bar"
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for player
@@ -2239,9 +2237,8 @@ msgstr "Spelare"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for pet
 #: src/gui/popups/popupmenu.cpp:1114
-#, fuzzy
 msgid "Pet"
-msgstr "Nät"
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for homuncules
@@ -4790,9 +4787,8 @@ msgstr "Synkronicera spelarrörelse"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:212
-#, fuzzy
 msgid "Sync player move distance"
-msgstr "Synkronicera spelarrörelse"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:217
