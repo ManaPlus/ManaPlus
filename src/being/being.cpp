@@ -2615,8 +2615,13 @@ void Being::setHairColor(const unsigned int slot,
                          const ItemColor color) restrict2
 {
     mHairColor = color;
-    setSprite(slot, mSpriteIDs[slot], ItemDB::get(
-        getSpriteID(slot)).getDyeColorsString(color));
+    const int id = getSpriteID(slot);
+    if (id != 0)
+    {
+        setSprite(slot,
+            mSpriteIDs[slot],
+            ItemDB::get(id).getDyeColorsString(color));
+    }
 }
 
 void Being::dumpSprites() const restrict2
