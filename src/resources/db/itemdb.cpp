@@ -780,6 +780,11 @@ const ItemDB::ItemInfos &ItemDB::getItemInfos()
     return mItemInfos;
 }
 
+const ItemInfo &ItemDB::getEmpty()
+{
+    return *mUnknown;
+}
+
 static int parseSpriteName(const std::string &name)
 {
     int id = -1;

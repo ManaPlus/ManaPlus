@@ -159,7 +159,6 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
         cards[f] = msg.readUInt16("card");
     const int equipType = msg.readInt16("equip type");
     const ItemTypeT type = static_cast<ItemTypeT>(msg.readUInt8("item type"));
-    const ItemInfo &itemInfo = ItemDB::get(itemId);
     const unsigned char err = msg.readUInt8("status");
     BeingId floorId;
     if (Ea::InventoryRecv::mSentPickups.empty())
@@ -202,22 +201,44 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
         }
         if (localPlayer)
         {
-            localPlayer->pickedUp(itemInfo,
-                0,
-                ItemColor_one,
-                floorId,
-                pickup);
+            if (itemId == 0)
+            {
+                localPlayer->pickedUp(ItemDB::getEmpty(),
+                    0,
+                    ItemColor_one,
+                    floorId,
+                    pickup);
+            }
+            else
+            {
+                localPlayer->pickedUp(ItemDB::get(itemId),
+                    0,
+                    ItemColor_one,
+                    floorId,
+                    pickup);
+            }
         }
     }
     else
     {
         if (localPlayer)
         {
-            localPlayer->pickedUp(itemInfo,
-                amount,
-                ItemColor_one,
-                floorId,
-                Pickup::OKAY);
+            if (itemId == 0)
+            {
+                localPlayer->pickedUp(ItemDB::getEmpty(),
+                    amount,
+                    ItemColor_one,
+                    floorId,
+                    Pickup::OKAY);
+            }
+            else
+            {
+                localPlayer->pickedUp(ItemDB::get(itemId),
+                    amount,
+                    ItemColor_one,
+                    floorId,
+                    Pickup::OKAY);
+            }
         }
 
         if (inventory)

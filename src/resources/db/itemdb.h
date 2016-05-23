@@ -58,6 +58,8 @@ namespace ItemDB
     const ItemInfo &get(const int id) A_WARN_UNUSED;
     const ItemInfo &get(const std::string &name) A_WARN_UNUSED;
 
+    const ItemInfo &getEmpty() A_WARN_UNUSED;
+
     int getNumOfHairstyles() A_WARN_UNUSED;
 
     // Items database

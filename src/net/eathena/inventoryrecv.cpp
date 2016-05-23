@@ -243,7 +243,6 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     }
 
     const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
-    const ItemInfo &itemInfo = ItemDB::get(itemId);
     BeingId floorId;
     if (Ea::InventoryRecv::mSentPickups.empty())
     {
@@ -285,22 +284,44 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
         }
         if (localPlayer)
         {
-            localPlayer->pickedUp(itemInfo,
-                0,
-                color,
-                floorId,
-                pickup);
+            if (itemId == 0)
+            {
+                localPlayer->pickedUp(ItemDB::getEmpty(),
+                    0,
+                    color,
+                    floorId,
+                    pickup);
+            }
+            else
+            {
+                localPlayer->pickedUp(ItemDB::get(itemId),
+                    0,
+                    color,
+                    floorId,
+                    pickup);
+            }
         }
     }
     else
     {
         if (localPlayer)
         {
-            localPlayer->pickedUp(itemInfo,
-                amount,
-                color,
-                floorId,
-                Pickup::OKAY);
+            if (itemId == 0)
+            {
+                localPlayer->pickedUp(ItemDB::getEmpty(),
+                    amount,
+                    color,
+                    floorId,
+                    Pickup::OKAY);
+            }
+            else
+            {
+                localPlayer->pickedUp(ItemDB::get(itemId),
+                    amount,
+                    color,
+                    floorId,
+                    Pickup::OKAY);
+            }
         }
 
         if (inventory)
