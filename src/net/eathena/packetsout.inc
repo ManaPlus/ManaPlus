@@ -541,6 +541,7 @@ if (packetVersion >= 20101124)
     packet(CMSG_NAME_REQUEST,             0x0368,   6, clif->pGetCharNameRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0366,  10, clif->pUseSkillToPos);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0369,   6, clif->pSolveCharName);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0365,   8, clif->pMoveFromKafra);
 }
 
 // 20111005
@@ -556,6 +557,7 @@ if (packetVersion >= 20111005)
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0364,   5, clif->pWalkToXY);
     packet(CMSG_SKILL_USE_POSITION,       0x0369,  10, clif->pUseSkillToPos);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0838,   6, clif->pSolveCharName);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0897,   8, clif->pMoveFromKafra);
 }
 
 // 20111102
@@ -598,6 +600,7 @@ if (packetVersion >= 20120307)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0369,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0963,   8, clif->pMoveFromKafra);
 }
 
 // 20120410
@@ -615,6 +618,7 @@ if (packetVersion >= 20120410)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0884,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x089c,  26, clif->pFriendsListAdd);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x08a6,   8, clif->pMoveFromKafra);
 }
 
 // 20120418
@@ -630,6 +634,7 @@ if (packetVersion >= 20120418)
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
 }
 
 // 20120702
@@ -647,6 +652,7 @@ if (packetVersion >= 20120702)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x085a,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0863,  10, clif->pUseSkillToPos);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0886,   6, clif->pSolveCharName);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0861,   8, clif->pMoveFromKafra);
 }
 
 // 20120710
@@ -673,6 +679,7 @@ if (packetVersion >= 20120716)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0940,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
 }
 
 // 20130320
@@ -696,6 +703,7 @@ if (packetVersion >= 20130320)
     packet(CMSG_SOLVE_CHAR_NAME,          0x094c,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x086f,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0365,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0874,   8, clif->pMoveFromKafra);
 }
 
 // 20130515
@@ -719,6 +727,7 @@ if (packetVersion >= 20130515)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0962,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x08ac,   8, clif->pMoveFromKafra);
 }
 
 // 20130522
@@ -742,6 +751,7 @@ if (packetVersion >= 20130522)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0369,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0362,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x083e,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x087e,   8, clif->pMoveFromKafra);
 }
 
 // 20130529
@@ -764,6 +774,7 @@ if (packetVersion >= 20130529)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0937,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0877,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x085a,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0957,   8, clif->pMoveFromKafra);
 }
 
 // 20130605
@@ -787,6 +798,7 @@ if (packetVersion >= 20130605)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
 }
 
 // 20130612
@@ -817,6 +829,7 @@ if (packetVersion >= 20130618)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0945,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0953,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0890,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0936,   8, clif->pMoveFromKafra);
 }
 
 // 20130626
@@ -839,6 +852,7 @@ if (packetVersion >= 20130626)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x08ab,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0817,   8, clif->pMoveFromKafra);
 }
 
 // 20130703
@@ -850,6 +864,7 @@ if (packetVersion >= 20130703)
     packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0817,   2, clif->pReqCloseBuyingStore);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0360,  26, clif->pFriendsListAdd);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
 }
 
 // 20130807
@@ -879,6 +894,7 @@ if (packetVersion >= 20130814)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0923,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0281,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0868,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0873,   8, clif->pMoveFromKafra);
 }
 
 // 20131218
@@ -901,6 +917,7 @@ if (packetVersion >= 20131218)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x08ab,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
 }
 
 // 20131223
