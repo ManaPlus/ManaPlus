@@ -538,6 +538,7 @@ if (packetVersion >= 20101124)
     packet(CMSG_MOVE_TO_STORAGE,          0x0364,   8, clif->pMoveToKafra);
     packet(CMSG_SKILL_USE_POSITION_MORE,  0x0367,  90, clif->pUseSkillToPosMoreInfo);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x035f,   5, clif->pWalkToXY);
+    packet(CMSG_NAME_REQUEST,             0x0368,   6, clif->pGetCharNameRequest);
 }
 
 // 20111005
@@ -582,6 +583,7 @@ if (packetVersion >= 20120307)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0817,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
 }
 
 // 20120410
@@ -595,6 +597,7 @@ if (packetVersion >= 20120410)
     packet(CMSG_ITEM_PICKUP,              0x0938,   6, clif->pTakeItem);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0891,   6, clif->pDropItem);
     packet(CMSG_MOVE_TO_STORAGE,          0x086c,   8, clif->pMoveToKafra);
+    packet(CMSG_NAME_REQUEST,             0x0889,   6, clif->pGetCharNameRequest);
 }
 
 // 20120418
@@ -607,6 +610,7 @@ if (packetVersion >= 20120418)
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
+    packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
 }
 
 // 20120702
@@ -620,6 +624,7 @@ if (packetVersion >= 20120702)
     packet(CMSG_MOVE_TO_STORAGE,          0x08a0,   8, clif->pMoveToKafra);
     packet(CMSG_SKILL_USE_POSITION_MORE,  0x0889,  90, clif->pUseSkillToPosMoreInfo);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0953,   5, clif->pWalkToXY);
+    packet(CMSG_NAME_REQUEST,             0x094a,   6, clif->pGetCharNameRequest);
 }
 
 // 20120710
@@ -641,6 +646,7 @@ if (packetVersion >= 20120716)
     packet(CMSG_SKILL_USE_POSITION_MORE,  0x0366,  90, clif->pUseSkillToPosMoreInfo);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0817,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
 }
 
 // 20130320
@@ -657,6 +663,7 @@ if (packetVersion >= 20130320)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x092e,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0881,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0886,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x0898,   6, clif->pGetCharNameRequest);
 }
 
 // 20130515
@@ -673,6 +680,7 @@ if (packetVersion >= 20130515)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0817,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
 }
 
 // 20130522
@@ -689,6 +697,7 @@ if (packetVersion >= 20130522)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x08aa,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0360,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x086e,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x08a6,   6, clif->pGetCharNameRequest);
 }
 
 // 20130529
@@ -704,6 +713,7 @@ if (packetVersion >= 20130529)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0941,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0876,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0964,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x0863,   6, clif->pGetCharNameRequest);
 }
 
 // 20130605
@@ -720,6 +730,7 @@ if (packetVersion >= 20130605)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0817,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
 }
 
 // 20130612
@@ -742,6 +753,7 @@ if (packetVersion >= 20130618)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0363,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x088e,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x085a,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x0944,   6, clif->pGetCharNameRequest);
 }
 
 // 20130626
@@ -757,6 +769,7 @@ if (packetVersion >= 20130626)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0365,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
 }
 
 // 20130703
@@ -788,6 +801,7 @@ if (packetVersion >= 20130814)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0941,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x083a,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x094e,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x0937,   6, clif->pGetCharNameRequest);
 }
 
 // 20131218
@@ -803,6 +817,7 @@ if (packetVersion >= 20131218)
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0835,   2, clif->pSearchStoreInfoNextPage);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0437,   5, clif->pWalkToXY);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0817,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
 }
 
 // 20131223
