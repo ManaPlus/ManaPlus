@@ -402,6 +402,12 @@ if (packetVersion >= 20050328)
     packet(CMSG_TAEKWON_RANKS,            0x0225,   2, clif->pTaekwon);
 }
 
+// 20050425
+if (packetVersion >= 20050425)
+{
+    packet(CMSG_HOMUNCULUS_MENU,          0x022d,   5, clif->pHomMenu);
+}
+
 // 20050509
 if (packetVersion >= 20050509)
 {
@@ -576,6 +582,7 @@ if (packetVersion >= 20111102)
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0436,  26, clif->pFriendsListAdd);
     packet(CMSG_SEARCHSTORE_CLICK,        0x08a2,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_BUYINGSTORE_OPEN,         0x08a1,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0898,   5, clif->pHomMenu);
 }
 
 // 20120307
@@ -604,6 +611,7 @@ if (packetVersion >= 20120307)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0963,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0863,   5, clif->pHomMenu);
 }
 
 // 20120410
@@ -622,6 +630,7 @@ if (packetVersion >= 20120410)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0884,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x089c,  26, clif->pFriendsListAdd);
     packet(CMSG_MOVE_FROM_STORAGE,        0x08a6,   8, clif->pMoveFromKafra);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0885,   5, clif->pHomMenu);
 }
 
 // 20120418
@@ -638,6 +647,7 @@ if (packetVersion >= 20120418)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
 }
 
 // 20120702
@@ -708,6 +718,7 @@ if (packetVersion >= 20130320)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0365,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0874,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x035f,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x093f,   5, clif->pHomMenu);
 }
 
 // 20130515
@@ -733,6 +744,7 @@ if (packetVersion >= 20130515)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x08ac,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0931,   5, clif->pHomMenu);
 }
 
 // 20130522
@@ -758,6 +770,7 @@ if (packetVersion >= 20130522)
     packet(CMSG_SEARCHSTORE_CLICK,        0x083e,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x087e,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0368,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0926,   5, clif->pHomMenu);
 }
 
 // 20130529
@@ -782,6 +795,7 @@ if (packetVersion >= 20130529)
     packet(CMSG_SEARCHSTORE_CLICK,        0x085a,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0957,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0892,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x023b,   5, clif->pHomMenu);
 }
 
 // 20130605
@@ -807,6 +821,7 @@ if (packetVersion >= 20130605)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
 }
 
 // 20130612
@@ -815,6 +830,7 @@ if (packetVersion >= 20130612)
     packet(CMSG_MAP_SERVER_CONNECT,       0x0919,  19, clif->pWantToConnection);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x087e,   5, clif->pChangeDir);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0940,  26, clif->pFriendsListAdd);
+    packet(CMSG_HOMUNCULUS_MENU,          0x093a,   5, clif->pHomMenu);
 }
 
 // 20130618
@@ -839,6 +855,7 @@ if (packetVersion >= 20130618)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0890,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0936,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0862,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x02c4,   5, clif->pHomMenu);
 }
 
 // 20130626
@@ -863,6 +880,7 @@ if (packetVersion >= 20130626)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0817,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0960,   5, clif->pHomMenu);
 }
 
 // 20130703
@@ -876,6 +894,7 @@ if (packetVersion >= 20130703)
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0360,  26, clif->pFriendsListAdd);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0202,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x094a,   5, clif->pHomMenu);
 }
 
 // 20130807
@@ -884,6 +903,7 @@ if (packetVersion >= 20130807)
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
 }
 
 // 20130814
@@ -908,6 +928,7 @@ if (packetVersion >= 20130814)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0868,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0873,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0895,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0958,   5, clif->pHomMenu);
 }
 
 // 20131218
@@ -932,6 +953,7 @@ if (packetVersion >= 20131218)
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0811,   5, clif->pHomMenu);
 }
 
 // 20131223
@@ -941,6 +963,7 @@ if (packetVersion >= 20131223)
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x0238,  26, clif->pFriendsListAdd);
+    packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
 }
 
 // 20131230
