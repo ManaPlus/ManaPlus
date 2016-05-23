@@ -796,6 +796,7 @@ if (packetVersion >= 20130529)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0957,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0892,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x023b,   5, clif->pHomMenu);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x08a7,   6, clif->pDropItem);
 }
 
 // 20130605
@@ -856,6 +857,7 @@ if (packetVersion >= 20130618)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0936,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0862,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x02c4,   5, clif->pHomMenu);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x0917,   6, clif->pDropItem);
 }
 
 // 20130626
@@ -881,6 +883,7 @@ if (packetVersion >= 20130626)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0817,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0960,   5, clif->pHomMenu);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x0952,   6, clif->pDropItem);
 }
 
 // 20130703
@@ -895,6 +898,7 @@ if (packetVersion >= 20130703)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0202,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x094a,   5, clif->pHomMenu);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
 }
 
 // 20130807
@@ -929,6 +933,7 @@ if (packetVersion >= 20130814)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0873,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0895,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0958,   5, clif->pHomMenu);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x095f,   6, clif->pDropItem);
 }
 
 // 20131218
@@ -954,6 +959,7 @@ if (packetVersion >= 20131218)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0811,   5, clif->pHomMenu);
+    packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
 }
 
 // 20131223
