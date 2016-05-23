@@ -540,6 +540,7 @@ if (packetVersion >= 20101124)
     packet(CMSG_PLAYER_CHANGE_DEST,       0x035f,   5, clif->pWalkToXY);
     packet(CMSG_NAME_REQUEST,             0x0368,   6, clif->pGetCharNameRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0366,  10, clif->pUseSkillToPos);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0369,   6, clif->pSolveCharName);
 }
 
 // 20111005
@@ -554,6 +555,7 @@ if (packetVersion >= 20111005)
     packet(CMSG_SKILL_USE_POSITION_MORE,  0x08ad,  90, clif->pUseSkillToPosMoreInfo);
     packet(CMSG_PLAYER_CHANGE_DEST,       0x0364,   5, clif->pWalkToXY);
     packet(CMSG_SKILL_USE_POSITION,       0x0369,  10, clif->pUseSkillToPos);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0838,   6, clif->pSolveCharName);
 }
 
 // 20111102
@@ -591,6 +593,7 @@ if (packetVersion >= 20120307)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0885,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
 }
 
 // 20120410
@@ -606,6 +609,7 @@ if (packetVersion >= 20120410)
     packet(CMSG_MOVE_TO_STORAGE,          0x086c,   8, clif->pMoveToKafra);
     packet(CMSG_NAME_REQUEST,             0x0889,   6, clif->pGetCharNameRequest);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0884,   6, clif->pSolveCharName);
 }
 
 // 20120418
@@ -619,6 +623,7 @@ if (packetVersion >= 20120418)
     packet(CMSG_MAP_PING,                 0x035f,   6, clif->pTickSend);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
 }
 
 // 20120702
@@ -635,6 +640,7 @@ if (packetVersion >= 20120702)
     packet(CMSG_NAME_REQUEST,             0x094a,   6, clif->pGetCharNameRequest);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x085a,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0863,  10, clif->pUseSkillToPos);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0886,   6, clif->pSolveCharName);
 }
 
 // 20120710
@@ -660,6 +666,7 @@ if (packetVersion >= 20120716)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0940,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
 }
 
 // 20130320
@@ -680,6 +687,7 @@ if (packetVersion >= 20130320)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x088e,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0959,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0922,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x094c,   6, clif->pSolveCharName);
 }
 
 // 20130515
@@ -700,6 +708,7 @@ if (packetVersion >= 20130515)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
 }
 
 // 20130522
@@ -720,6 +729,7 @@ if (packetVersion >= 20130522)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x08a2,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0811,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0952,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0369,   6, clif->pSolveCharName);
 }
 
 // 20130529
@@ -739,6 +749,7 @@ if (packetVersion >= 20130529)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0890,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0917,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0936,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0937,   6, clif->pSolveCharName);
 }
 
 // 20130605
@@ -759,6 +770,7 @@ if (packetVersion >= 20130605)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
 }
 
 // 20130612
@@ -785,6 +797,7 @@ if (packetVersion >= 20130618)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0889,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x096a,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0891,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0945,   6, clif->pSolveCharName);
 }
 
 // 20130626
@@ -804,6 +817,7 @@ if (packetVersion >= 20130626)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
 }
 
 // 20130703
@@ -839,6 +853,7 @@ if (packetVersion >= 20130814)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0874,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0887,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0835,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0923,   6, clif->pSolveCharName);
 }
 
 // 20131218
@@ -858,6 +873,7 @@ if (packetVersion >= 20131218)
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x022d,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
 }
 
 // 20131223
