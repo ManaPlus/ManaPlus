@@ -570,6 +570,7 @@ if (packetVersion >= 20111102)
     packet(CMSG_BUYINGSTORE_CLOSE,        0x089b,   2, clif->pReqCloseBuyingStore);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x08aa,   7, clif->pActionRequest);
     packet(CMSG_BUYINGSTORE_SELL,         0x089e,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0436,  26, clif->pFriendsListAdd);
 }
 
 // 20120307
@@ -594,6 +595,7 @@ if (packetVersion >= 20120307)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0369,  26, clif->pFriendsListAdd);
 }
 
 // 20120410
@@ -610,6 +612,7 @@ if (packetVersion >= 20120410)
     packet(CMSG_NAME_REQUEST,             0x0889,   6, clif->pGetCharNameRequest);
     packet(CMSG_PLAYER_CHANGE_ACT,        0x0369,   7, clif->pActionRequest);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0884,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x089c,  26, clif->pFriendsListAdd);
 }
 
 // 20120418
@@ -624,6 +627,7 @@ if (packetVersion >= 20120418)
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
 }
 
 // 20120702
@@ -688,6 +692,7 @@ if (packetVersion >= 20130320)
     packet(CMSG_SKILL_USE_POSITION,       0x0959,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0922,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x094c,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x086f,  26, clif->pFriendsListAdd);
 }
 
 // 20130515
@@ -709,6 +714,7 @@ if (packetVersion >= 20130515)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0962,  26, clif->pFriendsListAdd);
 }
 
 // 20130522
@@ -730,6 +736,7 @@ if (packetVersion >= 20130522)
     packet(CMSG_SKILL_USE_POSITION,       0x0811,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0952,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0369,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0362,  26, clif->pFriendsListAdd);
 }
 
 // 20130529
@@ -750,6 +757,7 @@ if (packetVersion >= 20130529)
     packet(CMSG_SKILL_USE_POSITION,       0x0917,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0936,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0937,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0877,  26, clif->pFriendsListAdd);
 }
 
 // 20130605
@@ -771,6 +779,7 @@ if (packetVersion >= 20130605)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
 }
 
 // 20130612
@@ -778,6 +787,7 @@ if (packetVersion >= 20130612)
 {
     packet(CMSG_MAP_SERVER_CONNECT,       0x0919,  19, clif->pWantToConnection);
     packet(CMSG_PLAYER_CHANGE_DIR,        0x087e,   5, clif->pChangeDir);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0940,  26, clif->pFriendsListAdd);
 }
 
 // 20130618
@@ -798,6 +808,7 @@ if (packetVersion >= 20130618)
     packet(CMSG_SKILL_USE_POSITION,       0x096a,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0891,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0945,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0953,  26, clif->pFriendsListAdd);
 }
 
 // 20130626
@@ -818,6 +829,7 @@ if (packetVersion >= 20130626)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x08ab,  26, clif->pFriendsListAdd);
 }
 
 // 20130703
@@ -828,12 +840,14 @@ if (packetVersion >= 20130703)
     packet(CMSG_ITEM_PICKUP,              0x07e4,   6, clif->pTakeItem);
     packet(CMSG_MOVE_TO_STORAGE,          0x07ec,   8, clif->pMoveToKafra);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0817,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0360,  26, clif->pFriendsListAdd);
 }
 
 // 20130807
 if (packetVersion >= 20130807)
 {
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
 }
 
 // 20130814
@@ -854,6 +868,7 @@ if (packetVersion >= 20130814)
     packet(CMSG_SKILL_USE_POSITION,       0x0887,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x0835,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0923,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0281,  26, clif->pFriendsListAdd);
 }
 
 // 20131218
@@ -874,6 +889,7 @@ if (packetVersion >= 20131218)
     packet(CMSG_SKILL_USE_POSITION,       0x0438,  10, clif->pUseSkillToPos);
     packet(CMSG_BUYINGSTORE_SELL,         0x022d,  -1, clif->pReqTradeBuyingStore);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x08ab,  26, clif->pFriendsListAdd);
 }
 
 // 20131223
@@ -882,6 +898,7 @@ if (packetVersion >= 20131223)
     packet(CMSG_PLAYER_CHANGE_DIR,        0x0202,   5, clif->pChangeDir);
     packet(CMSG_MAP_SERVER_CONNECT,       0x022d,  19, clif->pWantToConnection);
     packet(CMSG_BUYINGSTORE_SELL,         0x0811,  -1, clif->pReqTradeBuyingStore);
+    packet(CMSG_FRIENDS_ADD_PLAYER,       0x0238,  26, clif->pFriendsListAdd);
 }
 
 // 20131230
