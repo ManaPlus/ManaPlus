@@ -272,6 +272,172 @@ void InventoryHandler::closeStorage() const
     createOutPacket(CMSG_CLOSE_STORAGE);
 }
 
+void InventoryHandler::moveItemInventoryToStorage(const int slot,
+                                                  const int amount) const
+{
+    createOutPacket(CMSG_MOVE_TO_STORAGE);
+    if (packetVersion >= 20101124)
+    {
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20080827)
+    {
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20070212)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20070108)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20060327)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20050719)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20050718)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20050628)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20050509)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20050110)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20041129)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20041025)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20041005)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20040920)
+    {
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20040906)
+    {
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20040809)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else if (packetVersion >= 20040726)
+    {
+        outMsg.writeInt16(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(0, "unknown");
+        outMsg.writeInt8(0, "unknown");
+        outMsg.writeInt32(amount, "amount");
+    }
+    else
+    {
+        outMsg.writeInt16(CAST_S16(slot + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(amount, "amount");
+    }
+}
+
 void InventoryHandler::moveItem2(const InventoryTypeT source,
                                  const int slot,
                                  const int amount,
@@ -282,9 +448,14 @@ void InventoryHandler::moveItem2(const InventoryTypeT source,
     if (source == InventoryType::Inventory)
     {
         if (destination == InventoryType::Storage)
-            packet = CMSG_MOVE_TO_STORAGE;
+        {
+            moveItemInventoryToStorage(slot, amount);
+            return;
+        }
         else if (destination == InventoryType::Cart)
+        {
             packet = CMSG_MOVE_TO_CART;
+        }
     }
     else if (source == InventoryType::Storage)
     {

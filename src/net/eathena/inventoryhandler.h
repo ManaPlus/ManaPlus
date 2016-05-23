@@ -53,6 +53,9 @@ class InventoryHandler final : public Ea::InventoryHandler
                        const int amount,
                        const InventoryTypeT destination) const override final;
 
+        void moveItemInventoryToStorage(const int slot,
+                                        const int amount) const;
+
         void useCard(const Item *const item) override final;
 
         void insertCard(const int cardIndex,
