@@ -138,7 +138,7 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
         outMsg.writeInt8(0, "unused");
         outMsg.writeBeingId(id, "object id");
     }
-    if (packetVersion >= 20050628)
+    else if (packetVersion >= 20050628)
     {
         outMsg.writeInt32(0, "unused");
         outMsg.writeInt8(0, "unused");

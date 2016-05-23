@@ -124,7 +124,7 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
         outMsg.writeInt16(index, "index");
         outMsg.writeInt16(CAST_S16(amount), "amount");
     }
-    if (packetVersion >= 20080827)
+    else if (packetVersion >= 20080827)
     {
         outMsg.writeInt16(0, "unknown");
         outMsg.writeInt16(index, "index");
@@ -200,7 +200,7 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
         outMsg.writeInt8(0, "unknown");
         outMsg.writeInt16(CAST_S16(amount), "amount");
     }
-    if (packetVersion >= 20041129)
+    else if (packetVersion >= 20041129)
     {
         outMsg.writeInt16(0, "unknown");
         outMsg.writeInt16(index, "index");
@@ -223,7 +223,7 @@ void InventoryHandler::dropItem(const Item *const item, const int amount) const
         outMsg.writeInt8(0, "unknown");
         outMsg.writeInt16(CAST_S16(amount), "amount");
     }
-    if (packetVersion >= 20040920)
+    else if (packetVersion >= 20040920)
     {
         outMsg.writeInt32(0, "unknown");
         outMsg.writeInt32(0, "unknown");
