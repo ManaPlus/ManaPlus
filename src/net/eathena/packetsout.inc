@@ -549,6 +549,7 @@ if (packetVersion >= 20101124)
     packet(CMSG_SKILL_USE_POSITION,       0x0366,  10, clif->pUseSkillToPos);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0369,   6, clif->pSolveCharName);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0365,   8, clif->pMoveFromKafra);
+    packet(CMSG_MAP_SERVER_CONNECT,       0x0436,  19, clif->pWantToConnection);
 }
 
 // 20111005
