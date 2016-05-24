@@ -32,7 +32,7 @@
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/musicloader.h"
 
 #include "utils/checkutils.h"
 #include "utils/physfstools.h"
@@ -330,7 +330,7 @@ static SDLMusic *loadMusic(const std::string &fileName,
             reportAlways("Music file not found: %s", fileName.c_str());
         return nullptr;
     }
-    return resourceManager->getMusic(path);
+    return MusicLoader::getMusic(path);
 }
 
 void SoundManager::playMusic(const std::string &fileName,
@@ -455,7 +455,7 @@ void SoundManager::playSfx(const std::string &path,
         tmpPath = path;
     else
         tmpPath = paths.getValue("sfx", "sfx/").append(path);
-    SoundEffect *const sample = resourceManager->getSoundEffect(tmpPath);
+    SoundEffect *const sample = MusicLoader::getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("SoundManager::playSfx() Playing: %s", path.c_str());
@@ -497,7 +497,7 @@ void SoundManager::playGuiSfx(const std::string &path)
         tmpPath = path;
     else
         tmpPath = paths.getValue("sfx", "sfx/").append(path);
-    SoundEffect *const sample = resourceManager->getSoundEffect(tmpPath);
+    SoundEffect *const sample = MusicLoader::getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("SoundManager::playGuiSfx() Playing: %s", path.c_str());

@@ -527,42 +527,6 @@ Resource *ResourceManager::get(const std::string &idPath,
     return resource;
 }
 
-struct ResourceLoader final
-{
-    ResourceManager *manager;
-    std::string path;
-    ResourceManager::loader fun;
-
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-        const ResourceLoader *const
-            rl = static_cast<const ResourceLoader *const>(v);
-        SDL_RWops *const rw = MPHYSFSRWOPS_openRead(rl->path.c_str());
-        if (!rw)
-        {
-            reportAlways("Error loading resource: %s",
-                rl->path.c_str());
-            return nullptr;
-        }
-        Resource *const res = rl->fun(rw, rl->path);
-        return res;
-    }
-};
-
-SDLMusic *ResourceManager::getMusic(const std::string &idPath)
-{
-    ResourceLoader rl = { this, idPath, &SDLMusic::load };
-    return static_cast<SDLMusic*>(get(idPath, ResourceLoader::load, &rl));
-}
-
-SoundEffect *ResourceManager::getSoundEffect(const std::string &idPath)
-{
-    ResourceLoader rl = { this, idPath, &SoundEffect::load };
-    return static_cast<SoundEffect*>(get(idPath, ResourceLoader::load, &rl));
-}
-
 struct DyedImageLoader final
 {
     ResourceManager *manager;

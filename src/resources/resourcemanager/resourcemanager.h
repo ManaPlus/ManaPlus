@@ -140,18 +140,6 @@ class ResourceManager final : public MemoryCounter
         Image *getImage(const std::string &idPath) A_WARN_UNUSED;
 
         /**
-         * Convenience wrapper around ResourceManager::get for loading
-         * songs.
-         */
-        SDLMusic *getMusic(const std::string &idPath) A_WARN_UNUSED;
-
-        /**
-         * Convenience wrapper around ResourceManager::get for loading
-         * samples.
-         */
-        SoundEffect *getSoundEffect(const std::string &idPath) A_WARN_UNUSED;
-
-        /**
          * Creates a image set based on the image referenced by the given
          * path and the supplied sprite sizes
          */

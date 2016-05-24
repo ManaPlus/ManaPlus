@@ -719,6 +719,8 @@ SET(SRCS
     resources/db/skillunitdb.h
     resources/resource.cpp
     resources/resource.h
+    resources/loaders/musicloader.cpp
+    resources/loaders/musicloader.h
     resources/resourcemanager/resourcemanager.cpp
     resources/resourcemanager/resourcemanager.h
     resources/safeopenglimagehelper.cpp
@@ -1409,6 +1411,8 @@ SET(DYE_CMD_SRCS
     resources/imagewriter.h
     resources/resource.cpp
     resources/resource.h
+    resources/loaders/musicloader.cpp
+    resources/loaders/musicloader.h
     resources/resourcemanager/resourcemanager.cpp
     resources/resourcemanager/resourcemanager.h
     resources/sdl2softwareimagehelper.cpp
