@@ -30,8 +30,9 @@
 #include "input/inputactionmap.h"
 #include "input/inputmanager.h"
 
-#include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
 #include "utils/physfstools.h"

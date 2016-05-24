@@ -48,7 +48,8 @@
 #include "gui/widgets/window.h"
 
 #include "resources/imagehelper.h"
-#include "resources/resourcemanager.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/cpu.h"
 #include "utils/delete2.h"

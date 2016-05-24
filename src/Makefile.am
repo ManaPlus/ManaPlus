@@ -390,8 +390,8 @@ SRC += events/actionevent.h \
 	      enums/resources/questtype.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
-	      resources/resourcemanager.cpp \
-	      resources/resourcemanager.h \
+	      resources/resourcemanager/resourcemanager.cpp \
+	      resources/resourcemanager/resourcemanager.h \
 	      resources/safeopenglimagehelper.cpp \
 	      resources/safeopenglimagehelper.h \
 	      resources/screenshothelper.h \

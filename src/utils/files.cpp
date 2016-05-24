@@ -23,7 +23,7 @@
 #include "logger.h"
 
 #if defined(ANDROID) || defined(__native_client__)
-#include "resources/resourcemanager.h"
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/mkdir.h"
 #endif

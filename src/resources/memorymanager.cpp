@@ -22,7 +22,7 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include "resources/resourcemanager.h"
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

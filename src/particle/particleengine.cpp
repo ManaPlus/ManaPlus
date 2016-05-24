@@ -29,9 +29,9 @@
 #include "particle/rotationalparticle.h"
 #include "particle/textparticle.h"
 
-#include "resources/resourcemanager.h"
-
 #include "resources/dye/dye.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/dtor.h"
 

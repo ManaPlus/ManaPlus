@@ -24,7 +24,7 @@
 
 #include "logger.h"
 
-#include "resources/resourcemanager.h"
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
 

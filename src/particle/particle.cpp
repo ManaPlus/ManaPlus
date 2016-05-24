@@ -29,11 +29,12 @@
 #include "particle/rotationalparticle.h"
 
 #include "resources/image.h"
-#include "resources/resourcemanager.h"
 
 #include "resources/animation/simpleanimation.h"
 
 #include "resources/dye/dye.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"

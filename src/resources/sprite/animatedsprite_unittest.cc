@@ -30,10 +30,11 @@
 
 #include "gui/theme.h"
 
-#include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
 
 #include "resources/animation/animation.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
 #include "utils/mrand.h"

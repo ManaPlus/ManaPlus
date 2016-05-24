@@ -33,8 +33,9 @@
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
-#include "resources/resourcemanager.h"
 #include "resources/wallpaper.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "render/graphics.h"
 

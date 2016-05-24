@@ -33,8 +33,9 @@
 #include "utils/delete2.h"
 #include "utils/physfstools.h"
 
-#include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
 

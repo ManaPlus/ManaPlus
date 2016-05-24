@@ -38,8 +38,6 @@
 
 #include "resources/beingcommon.h"
 #include "resources/image.h"
-#include "resources/resourcemanager.h"
-
 #include "resources/animation/animation.h"
 
 #ifdef USE_OPENGL
@@ -47,6 +45,8 @@
 #endif
 
 #include "resources/map/tileanimation.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/base64.h"
 #include "utils/delete2.h"

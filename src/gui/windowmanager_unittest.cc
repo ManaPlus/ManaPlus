@@ -49,8 +49,9 @@
 
 #include "render/sdlgraphics.h"
 
-#include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "resources/sprite/animatedsprite.h"
 

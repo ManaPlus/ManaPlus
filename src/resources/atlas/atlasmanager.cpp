@@ -35,7 +35,6 @@
 
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
-#include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
 
 #include "resources/atlas/atlasitem.h"
@@ -43,6 +42,8 @@
 #include "resources/atlas/textureatlas.h"
 
 #include "resources/dye/dye.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
 

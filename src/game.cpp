@@ -110,12 +110,13 @@
 #include "resources/delayedmanager.h"
 #include "resources/imagewriter.h"
 #include "resources/mapreader.h"
-#include "resources/resourcemanager.h"
 #include "resources/screenshothelper.h"
 
 #include "resources/db/mapdb.h"
 
 #include "resources/map/map.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "resources/sprite/animatedsprite.h"
 

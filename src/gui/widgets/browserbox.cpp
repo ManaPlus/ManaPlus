@@ -42,9 +42,10 @@
 #include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/iteminfo.h"
-#include "resources/resourcemanager.h"
 
 #include "resources/db/itemdb.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/stringutils.h"
 #include "utils/timer.h"

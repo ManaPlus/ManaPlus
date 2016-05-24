@@ -35,13 +35,13 @@
 
 #include "particle/particleengine.h"
 
-#include "resources/resourcemanager.h"
+#include "resources/db/statuseffectdb.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "resources/sprite/animatedsprite.h"
 #include "resources/sprite/imagesprite.h"
 #include "resources/sprite/spritereference.h"
-
-#include "resources/db/statuseffectdb.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"

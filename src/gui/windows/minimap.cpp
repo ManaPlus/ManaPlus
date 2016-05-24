@@ -40,10 +40,11 @@
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
-#include "resources/resourcemanager.h"
 
 #include "resources/map/map.h"
 #include "resources/map/metatile.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/gettext.h"
 #include "utils/physfstools.h"

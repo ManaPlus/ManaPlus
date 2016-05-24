@@ -25,7 +25,7 @@
 #include "utils/translation/podict.h"
 #include "utils/translation/poparser.h"
 
-#include "resources/resourcemanager.h"
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/physfstools.h"
 

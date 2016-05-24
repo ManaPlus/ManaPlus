@@ -22,7 +22,7 @@
 
 #include "const/resources/spriteaction.h"
 
-#include "resources/resourcemanager.h"
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "resources/sprite/animatedsprite.h"
 

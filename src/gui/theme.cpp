@@ -34,9 +34,10 @@
 
 #include "resources/image.h"
 #include "resources/imagerect.h"
-#include "resources/resourcemanager.h"
 
 #include "resources/dye/dyepalette.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/dtor.h"
 #include "utils/files.h"

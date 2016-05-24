@@ -46,12 +46,13 @@
 #include "particle/particle.h"
 
 #include "resources/ambientlayer.h"
-#include "resources/resourcemanager.h"
 #include "resources/subimage.h"
 
 #include "resources/map/location.h"
 #include "resources/map/mapobjectlist.h"
 #include "resources/map/tileanimation.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #ifdef USE_OPENGL
 #include "render/renderers.h"

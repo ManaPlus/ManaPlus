@@ -31,7 +31,7 @@
 #include "utils/stringutils.h"
 
 #ifdef USE_X11
-#include "resources/resourcemanager.h"
+#include "resources/resourcemanager/resourcemanager.h"
 #endif
 
 #ifdef __native_client__

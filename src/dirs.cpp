@@ -36,7 +36,7 @@
 #include "utils/paths.h"
 #include "utils/physfstools.h"
 
-#include "resources/resourcemanager.h"
+#include "resources/resourcemanager/resourcemanager.h"
 
 #ifdef ANDROID
 #ifdef USE_SDL2

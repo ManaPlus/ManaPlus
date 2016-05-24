@@ -31,9 +31,10 @@
 
 #include "resources/image.h"
 #include "resources/imageset.h"
-#include "resources/resourcemanager.h"
 
 #include "resources/dye/dye.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
 

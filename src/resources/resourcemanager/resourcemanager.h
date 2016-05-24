@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_RESOURCEMANAGER_H
-#define RESOURCES_RESOURCEMANAGER_H
+#ifndef RESOURCES_RESOURCEMANAGER_RESOURCEMANAGER_H
+#define RESOURCES_RESOURCEMANAGER_RESOURCEMANAGER_H
 
 #include "resources/memorycounter.h"
 
@@ -274,4 +274,4 @@ class ResourceManager final : public MemoryCounter
 
 extern ResourceManager *resourceManager;
 
-#endif  // RESOURCES_RESOURCEMANAGER_H
+#endif  // RESOURCES_RESOURCEMANAGER_RESOURCEMANAGER_H

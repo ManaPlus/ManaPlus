@@ -22,11 +22,11 @@
 
 #include "resources/atlas/atlasresource.h"
 
-#include "resources/resourcemanager.h"
-
 #include "resources/atlas/atlasitem.h"
 #include "resources/atlas/atlasmanager.h"
 #include "resources/atlas/textureatlas.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
 

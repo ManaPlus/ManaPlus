@@ -58,7 +58,6 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "resources/npcdialoginfo.h"
-#include "resources/resourcemanager.h"
 
 #include "resources/db/avatardb.h"
 #include "resources/db/npcdb.h"
@@ -67,6 +66,8 @@
 #include "resources/inventory/complexinventory.h"
 
 #include "resources/item/complexitem.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"

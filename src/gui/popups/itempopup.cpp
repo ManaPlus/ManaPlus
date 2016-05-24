@@ -39,9 +39,10 @@
 
 #include "resources/image.h"
 #include "resources/iteminfo.h"
-#include "resources/resourcemanager.h"
 
 #include "resources/item/item.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "net/beinghandler.h"
 #include "net/serverfeatures.h"

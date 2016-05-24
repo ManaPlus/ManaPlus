@@ -99,9 +99,6 @@
 #include "particle/particleengine.h"
 
 #include "resources/imagehelper.h"
-#include "resources/resourcemanager.h"
-
-#include "resources/sprite/spritereference.h"
 
 #include "resources/db/avatardb.h"
 #include "resources/db/badgesdb.h"
@@ -124,6 +121,10 @@
 #include "resources/db/skillunitdb.h"
 #include "resources/db/statuseffectdb.h"
 #include "resources/db/weaponsdb.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
+
+#include "resources/sprite/spritereference.h"
 
 #include "utils/cpu.h"
 #include "utils/delete2.h"

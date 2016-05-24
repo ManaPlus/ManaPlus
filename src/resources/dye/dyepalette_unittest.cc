@@ -25,12 +25,13 @@
 #include "logger.h"
 #include "graphicsmanager.h"
 
-#include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
 
 #include "resources/db/palettedb.h"
 
 #include "resources/dye/dyepalette.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
 #include "utils/physfstools.h"

@@ -26,12 +26,13 @@
 
 #include "resources/image.h"
 #include "resources/imagewriter.h"
-#include "resources/resourcemanager.h"
 #include "resources/sdlimagehelper.h"
 
 #ifdef USE_SDL2
 #include "resources/surfaceimagehelper.h"
 #endif
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/gettext.h"
 #include "utils/physfstools.h"

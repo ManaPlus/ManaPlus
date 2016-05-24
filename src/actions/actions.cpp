@@ -35,6 +35,8 @@
 
 #include "const/spells.h"
 
+#include "const/resources/skill.h"
+
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 #include "gui/sdlinput.h"
@@ -97,9 +99,8 @@
 
 #include "resources/iteminfo.h"
 #include "resources/memorymanager.h"
-#include "resources/resourcemanager.h"
 
-#include "const/resources/skill.h"
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/chatutils.h"
 #include "utils/delete2.h"

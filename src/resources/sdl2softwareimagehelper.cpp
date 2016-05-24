@@ -24,14 +24,14 @@
 
 #include "resources/sdl2softwareimagehelper.h"
 
-#include "resources/resourcemanager.h"
-
-#include "resources/dye/dye.h"
-
 #include "logger.h"
 #include "main.h"
 
+#include "resources/dye/dye.h"
+
 #include "resources/image.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/sdlcheckutils.h"
 

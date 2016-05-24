@@ -22,16 +22,17 @@
 
 #include "resources/image.h"
 
-#include "resources/resourcemanager.h"
-
 #include "logger.h"
 
 #ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
 #endif  // USE_OPENGL
+
 #include "resources/memorymanager.h"
 #include "resources/sdlimagehelper.h"
 #include "resources/subimage.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/sdlcheckutils.h"
 

@@ -28,9 +28,10 @@
 
 #include "resources/image.h"
 #include "resources/iteminfo.h"
-#include "resources/resourcemanager.h"
 
 #include "resources/db/itemdb.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
 
