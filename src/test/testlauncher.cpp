@@ -134,7 +134,7 @@ int TestLauncher::testSound() const
     soundManager.playGuiSfx("system/newmessage.ogg");
     sleep(1);
     soundManager.playSfx("system/newmessage.ogg", 0, 0);
-    soundManager.playMusic("sfx/system/newmessage.ogg");
+    soundManager.playMusic("sfx/system/newmessage.ogg", SkipError_false);
     sleep(3);
     soundManager.stopMusic();
     return 0;

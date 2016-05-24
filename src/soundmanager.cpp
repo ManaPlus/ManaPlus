@@ -33,6 +33,9 @@
 #include "resources/resourcemanager.h"
 #include "resources/soundeffect.h"
 
+#include "utils/checkutils.h"
+#include "utils/physfstools.h"
+
 #include <SDL.h>
 
 #include "debug.h"
@@ -172,7 +175,7 @@ void SoundManager::init()
     mInstalled = true;
 
     if (!mCurrentMusicFile.empty() && mPlayMusic)
-        playMusic(mCurrentMusicFile);
+        playMusic(mCurrentMusicFile, SkipError_true);
 }
 
 void SoundManager::testAudio()
@@ -316,13 +319,21 @@ void SoundManager::setSfxVolume(const int volume)
         Mix_Volume(-1, mSfxVolume);
 }
 
-static SDLMusic *loadMusic(const std::string &fileName)
+static SDLMusic *loadMusic(const std::string &fileName,
+                           const SkipError skipError)
 {
-    return resourceManager->getMusic(
-        paths.getStringValue("music").append(fileName));
+    const std::string path = paths.getStringValue("music").append(fileName);
+    if (!PhysFs::exists(path.c_str()))
+    {
+        if (skipError == SkipError_false)
+            reportAlways("Music file not found: %s", fileName.c_str());
+        return nullptr;
+    }
+    return resourceManager->getMusic(path);
 }
 
-void SoundManager::playMusic(const std::string &fileName)
+void SoundManager::playMusic(const std::string &fileName,
+                             const SkipError skipError)
 {
     if (!mInstalled || !mPlayMusic)
         return;
@@ -336,7 +347,8 @@ void SoundManager::playMusic(const std::string &fileName)
 
     if (!fileName.empty())
     {
-        mMusic = loadMusic(fileName);
+        mMusic = loadMusic(fileName,
+            skipError);
         if (mMusic)
             mMusic->play();
     }
@@ -416,7 +428,8 @@ void SoundManager::logic()
 
         if (!mNextMusicFile.empty())
         {
-            playMusic(mNextMusicFile);
+            playMusic(mNextMusicFile,
+                SkipError_false);
             mNextMusicFile.clear();
         }
     }

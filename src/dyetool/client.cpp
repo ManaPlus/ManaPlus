@@ -352,7 +352,9 @@ void Client::initSoundManager()
         logger->log("Warning: %s", err);
     }
     soundManager.playMusic(branding.getValue(
-        "loginMusic", "Magick - Real.ogg"));
+        "loginMusic",
+        "Magick - Real.ogg"),
+        SkipError_true);
 }
 
 void Client::initGraphics()

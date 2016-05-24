@@ -33,6 +33,8 @@
 #endif
 #include <SDL_mixer.h>
 
+#include "enums/simpletypes/skiperror.h"
+
 #include "listeners/configlistener.h"
 
 #include "localconsts.h"
@@ -71,7 +73,8 @@ class SoundManager final : public ConfigListener
          *
          * @param fileName The name of the music file.
          */
-        void playMusic(const std::string &fileName);
+        void playMusic(const std::string &fileName,
+                       const SkipError skipError);
 
         /**
          * Stops currently running background music track.

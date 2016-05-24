@@ -224,7 +224,8 @@ void PlayerRecv::processMapMusic(Net::MessageIn &msg)
 {
     const int size = msg.readInt16("len") - 5;
     const std::string music = msg.readString(size, "name");
-    soundManager.playMusic(music);
+    soundManager.playMusic(music,
+        SkipError_false);
 
     Map *const map = viewport->getMap();
     if (map)

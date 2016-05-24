@@ -183,7 +183,10 @@ void Setup_Audio::apply()
         {
             const Map *const map = viewport->getMap();
             if (map)
-                soundManager.playMusic(map->getMusicFile());
+            {
+                soundManager.playMusic(map->getMusicFile(),
+                    SkipError_false);
+            }
         }
         else
         {
