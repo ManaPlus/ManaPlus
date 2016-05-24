@@ -583,6 +583,7 @@ if (packetVersion >= 20111102)
     packet(CMSG_SEARCHSTORE_CLICK,        0x08a2,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_BUYINGSTORE_OPEN,         0x08a1,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0898,   5, clif->pHomMenu);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0835,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20120307
@@ -719,6 +720,7 @@ if (packetVersion >= 20130320)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0874,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x035f,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x093f,   5, clif->pHomMenu);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0938,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20130515
@@ -745,6 +747,7 @@ if (packetVersion >= 20130515)
     packet(CMSG_MOVE_FROM_STORAGE,        0x08ac,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0931,   5, clif->pHomMenu);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20130522
@@ -771,6 +774,7 @@ if (packetVersion >= 20130522)
     packet(CMSG_MOVE_FROM_STORAGE,        0x087e,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0368,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0926,   5, clif->pHomMenu);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0874,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20130529
@@ -797,6 +801,7 @@ if (packetVersion >= 20130529)
     packet(CMSG_BUYINGSTORE_OPEN,         0x0892,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x023b,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x08a7,   6, clif->pDropItem);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0869,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20130605
@@ -823,6 +828,7 @@ if (packetVersion >= 20130605)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20130612
@@ -858,6 +864,7 @@ if (packetVersion >= 20130618)
     packet(CMSG_BUYINGSTORE_OPEN,         0x0862,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x02c4,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0917,   6, clif->pDropItem);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0932,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20130626
@@ -884,6 +891,7 @@ if (packetVersion >= 20130626)
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0960,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0952,   6, clif->pDropItem);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20130703
@@ -934,6 +942,7 @@ if (packetVersion >= 20130814)
     packet(CMSG_BUYINGSTORE_OPEN,         0x0895,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0958,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x095f,   6, clif->pDropItem);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0936,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20131218
@@ -960,6 +969,7 @@ if (packetVersion >= 20131218)
     packet(CMSG_BUYINGSTORE_OPEN,         0x0360,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0811,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
+    packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
 }
 
 // 20131223
