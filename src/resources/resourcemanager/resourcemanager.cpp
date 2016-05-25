@@ -37,10 +37,10 @@
 #include "resources/imagehelper.h"
 #include "resources/imageset.h"
 #include "resources/memorymanager.h"
-#include "resources/sdlmusic.h"
-#include "resources/soundeffect.h"
 
 #include "resources/dye/dye.h"
+
+#include "resources/loaders/imageloader.h"
 
 #include "resources/sprite/spritedef.h"
 
@@ -527,62 +527,8 @@ Resource *ResourceManager::get(const std::string &idPath,
     return resource;
 }
 
-struct DyedImageLoader final
-{
-    ResourceManager *manager;
-    std::string path;
-    static Resource *load(const void *const v)
-    {
-        BLOCK_START("DyedImageLoader::load")
-        if (!v)
-        {
-            BLOCK_END("DyedImageLoader::load")
-            return nullptr;
-        }
-
-        const DyedImageLoader *const rl
-            = static_cast<const DyedImageLoader *const>(v);
-        if (!rl->manager)
-        {
-            BLOCK_END("DyedImageLoader::load")
-            return nullptr;
-        }
-
-        std::string path1 = rl->path;
-        const size_t p = path1.find('|');
-        Dye *d = nullptr;
-        if (p != std::string::npos)
-        {
-            d = new Dye(path1.substr(p + 1));
-            path1 = path1.substr(0, p);
-        }
-        SDL_RWops *const rw = MPHYSFSRWOPS_openRead(path1.c_str());
-        if (!rw)
-        {
-            delete d;
-            reportAlways("Image loading error: %s", path1.c_str());
-            BLOCK_END("DyedImageLoader::load")
-            return nullptr;
-        }
-        Resource *const res = d ? imageHelper->load(rw, *d)
-            : imageHelper->load(rw);
-        delete d;
-        if (!res)
-            reportAlways("Image loading error: %s", path1.c_str());
-        BLOCK_END("DyedImageLoader::load")
-        return res;
-    }
-};
-
-Image *ResourceManager::getImage(const std::string &idPath)
-{
-    DyedImageLoader rl = { this, idPath };
-    return static_cast<Image*>(get(idPath, DyedImageLoader::load, &rl));
-}
-
 struct ImageSetLoader final
 {
-    ResourceManager *manager;
     std::string path;
     int w, h;
     static Resource *load(const void *const v)
@@ -592,10 +538,8 @@ struct ImageSetLoader final
 
         const ImageSetLoader *const
             rl = static_cast<const ImageSetLoader *const>(v);
-        if (!rl->manager)
-            return nullptr;
 
-        Image *const img = rl->manager->getImage(rl->path);
+        Image *const img = ImageLoader::getImage(rl->path);
         if (!img)
         {
             reportAlways("Image loading error: %s", rl->path.c_str());
@@ -610,7 +554,7 @@ struct ImageSetLoader final
 ImageSet *ResourceManager::getImageSet(const std::string &imagePath,
                                        const int w, const int h)
 {
-    ImageSetLoader rl = { this, imagePath, w, h };
+    ImageSetLoader rl = { imagePath, w, h };
     std::stringstream ss;
     ss << imagePath << "[" << w << "x" << h << "]";
     return static_cast<ImageSet*>(get(ss.str(), ImageSetLoader::load, &rl));

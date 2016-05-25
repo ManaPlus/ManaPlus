@@ -37,6 +37,8 @@
 
 #include "resources/dye/dyepalette.h"
 
+#include "resources/loaders/imageloader.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/dtor.h"
@@ -639,7 +641,7 @@ std::string Theme::resolveThemePath(const std::string &path)
 
 Image *Theme::getImageFromTheme(const std::string &path)
 {
-    return resourceManager->getImage(resolveThemePath(path));
+    return ImageLoader::getImage(resolveThemePath(path));
 }
 
 ImageSet *Theme::getImageSetFromTheme(const std::string &path,

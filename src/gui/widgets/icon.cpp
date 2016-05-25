@@ -28,6 +28,8 @@
 
 #include "resources/image.h"
 
+#include "resources/loaders/imageloader.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
@@ -36,7 +38,7 @@ Icon::Icon(const Widget2 *const widget,
            const std::string &file,
            const AutoRelease autoRelease) :
     Widget(widget),
-    mImage(resourceManager->getImage(file)),
+    mImage(ImageLoader::getImage(file)),
     mAutoRelease(autoRelease)
 {
     if (mImage)

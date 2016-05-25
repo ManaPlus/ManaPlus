@@ -29,7 +29,7 @@
 
 #include "resources/image.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imageloader.h"
 
 #include "render/graphics.h"
 
@@ -115,7 +115,7 @@ void MapItem::setType(const int type)
     }
 
     if (!name.empty())
-        mImage = resourceManager->getImage(name);
+        mImage = ImageLoader::getImage(name);
     else
         mImage = nullptr;
 }

@@ -20,52 +20,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/skilldata.h"
+#ifndef RESOURCES_LOADERS_IMAGELOADER_H
+#define RESOURCES_LOADERS_IMAGELOADER_H
 
-#include "configuration.h"
+#include "localconsts.h"
 
-#include "gui/theme.h"
+#include <string>
 
-#include "resources/image.h"
+class Image;
 
-#include "resources/loaders/imageloader.h"
-
-#include "debug.h"
-
-SkillData::SkillData() :
-    name(),
-    shortName(),
-    dispName(),
-    description(),
-    icon(nullptr),
-    particle(),
-    invokeCmd(),
-    soundHit(std::string(), 0),
-    soundMiss(std::string(), 0),
-    updateEffectId(-1),
-    removeEffectId(-1),
-    hitEffectId(-1),
-    missEffectId(-1)
+namespace ImageLoader
 {
-}
+    /**
+     * Convenience wrapper around ResourceManager::get for loading
+     * images.
+     */
+    Image *getImage(const std::string &idPath) A_WARN_UNUSED;
+}  // namespace ImageLoader
 
-SkillData::~SkillData()
-{
-    if (icon)
-    {
-        icon->decRef();
-        icon = nullptr;
-    }
-}
-
-void SkillData::setIcon(const std::string &iconPath)
-{
-    if (!iconPath.empty())
-        icon = ImageLoader::getImage(iconPath);
-
-    if (!icon)
-    {
-        icon = Theme::getImageFromTheme(
-            paths.getStringValue("unknownItemFile"));
-    }
-}
+#endif  // RESOURCES_LOADERS_IMAGELOADER_H

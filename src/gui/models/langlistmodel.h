@@ -24,7 +24,7 @@
 
 #include "gui/models/extendedlistmodel.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imageloader.h"
 
 #include "utils/gettext.h"
 
@@ -95,7 +95,7 @@ class LangListModel final : public ExtendedListModel
                 const std::string icon = LANG_NAME[f].icon;
                 if (!icon.empty())
                 {
-                    mIcons[f] = resourceManager->getImage("graphics/flags/"
+                    mIcons[f] = ImageLoader::getImage("graphics/flags/"
                         + icon);
                 }
                 else

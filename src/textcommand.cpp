@@ -31,7 +31,7 @@
 
 #include "resources/db/itemdb.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imageloader.h"
 
 #include "debug.h"
 
@@ -128,7 +128,7 @@ void TextCommand::loadImage()
         return;
 
     const SpriteDisplay display = ItemDB::get(getIcon()).getDisplay();
-    mImage = resourceManager->getImage(paths.getStringValue("itemIcons")
+    mImage = ImageLoader::getImage(paths.getStringValue("itemIcons")
         .append(display.image));
 
     if (!mImage)

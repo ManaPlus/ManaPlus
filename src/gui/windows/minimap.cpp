@@ -44,7 +44,7 @@
 #include "resources/map/map.h"
 #include "resources/map/metatile.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imageloader.h"
 
 #include "utils/gettext.h"
 #include "utils/physfstools.h"
@@ -187,7 +187,7 @@ void Minimap::setMap(const Map *const map)
             }
 
             if (!minimapName.empty())
-                mMapImage = resourceManager->getImage(minimapName);
+                mMapImage = ImageLoader::getImage(minimapName);
             else
                 mMapImage = nullptr;
             mCustomMapImage = false;

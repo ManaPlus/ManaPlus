@@ -134,12 +134,6 @@ class ResourceManager final : public MemoryCounter
         bool addResource(const std::string &idPath, Resource *const resource);
 
         /**
-         * Convenience wrapper around ResourceManager::get for loading
-         * images.
-         */
-        Image *getImage(const std::string &idPath) A_WARN_UNUSED;
-
-        /**
          * Creates a image set based on the image referenced by the given
          * path and the supplied sprite sizes
          */

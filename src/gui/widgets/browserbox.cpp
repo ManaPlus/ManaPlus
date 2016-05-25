@@ -45,6 +45,8 @@
 
 #include "resources/db/itemdb.h"
 
+#include "resources/loaders/imageloader.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/stringutils.h"
@@ -628,7 +630,7 @@ int BrowserBox::calcHeight()
             const size_t sz = str.size();
             if (sz > 2 && str.substr(sz - 1) == "~")
                 str = str.substr(0, sz - 1);
-            Image *const img = resourceManager->getImage(str);
+            Image *const img = ImageLoader::getImage(str);
             if (img)
             {
                 img->incRef();

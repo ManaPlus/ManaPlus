@@ -37,7 +37,7 @@
 
 #include "resources/db/statuseffectdb.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imageloader.h"
 
 #include "resources/sprite/animatedsprite.h"
 #include "resources/sprite/imagesprite.h"
@@ -416,7 +416,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
                     break;
             }
             imagePath = combineDye2(imagePath, color);
-            Image *img = resourceManager->getImage(imagePath);
+            Image *img = ImageLoader::getImage(imagePath);
 
             if (!img)
                 img = Theme::getImageFromTheme("unknown-item.png");

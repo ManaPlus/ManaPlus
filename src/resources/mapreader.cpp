@@ -46,6 +46,8 @@
 
 #include "resources/map/tileanimation.h"
 
+#include "resources/loaders/imageloader.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/base64.h"
@@ -1048,7 +1050,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
 
             if (!source.empty())
             {
-                Image *const tilebmp = resourceManager->getImage(
+                Image *const tilebmp = ImageLoader::getImage(
                     resolveRelativePath(pathDir, source));
 
                 if (tilebmp)

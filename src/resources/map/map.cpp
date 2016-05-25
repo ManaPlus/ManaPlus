@@ -52,7 +52,7 @@
 #include "resources/map/mapobjectlist.h"
 #include "resources/map/tileanimation.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imageloader.h"
 
 #ifdef USE_OPENGL
 #include "render/renderers.h"
@@ -236,7 +236,7 @@ void Map::initializeAmbientLayers() restrict2
             break;  // the FOR loop
         }
 
-        Image *restrict const img = resourceManager->getImage(
+        Image *restrict const img = ImageLoader::getImage(
             getProperty(name + "image"));
         if (img)
         {
@@ -266,7 +266,7 @@ void Map::initializeAmbientLayers() restrict2
          toString(i)).append("image")); i ++)
     {
         const std::string name("background" + toString(i));
-        Image *restrict const img = resourceManager->getImage(
+        Image *restrict const img = ImageLoader::getImage(
             getProperty(name + "image"));
 
         if (img)

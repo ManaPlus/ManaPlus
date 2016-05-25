@@ -32,6 +32,8 @@
 #include "resources/surfaceimagehelper.h"
 #endif
 
+#include "resources/loaders/imageloader.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/gettext.h"
@@ -95,7 +97,7 @@ int main(int argc, char **argv)
         dst = argv[2];
     }
 
-    Image *image = resourceManager->getImage(src);
+    Image *image = ImageLoader::getImage(src);
     if (!image)
     {
         printf("Error loading image\n");

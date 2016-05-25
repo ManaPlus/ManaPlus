@@ -31,7 +31,7 @@
 
 #include "resources/dye/dye.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imageloader.h"
 
 #include "utils/dtor.h"
 
@@ -176,7 +176,7 @@ Particle *ParticleEngine::addEffect(const std::string &restrict
                 imageSrc = XmlChildContent(node);
             if (!imageSrc.empty() && !dyePalettes.empty())
                 Dye::instantiate(imageSrc, dyePalettes);
-            Image *const img = resourceManager->getImage(imageSrc);
+            Image *const img = ImageLoader::getImage(imageSrc);
 
             newParticle = new ImageParticle(img);
             newParticle->setMap(mMap);

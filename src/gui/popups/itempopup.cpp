@@ -42,7 +42,7 @@
 
 #include "resources/item/item.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imageloader.h"
 
 #include "net/beinghandler.h"
 #include "net/serverfeatures.h"
@@ -179,7 +179,7 @@ void ItemPopup::setItem(const ItemInfo &item,
 
     if (showImage)
     {
-        Image *const image = resourceManager->getImage(combineDye2(
+        Image *const image = ImageLoader::getImage(combineDye2(
             paths.getStringValue("itemIcons").append(item.getDisplay().image),
             item.getDyeIconColorsString(color)));
 

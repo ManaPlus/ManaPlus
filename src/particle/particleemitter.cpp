@@ -34,6 +34,8 @@
 
 #include "resources/dye/dye.h"
 
+#include "resources/loaders/imageloader.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
@@ -119,7 +121,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                 {
                     if (!dyePalettes.empty())
                         Dye::instantiate(image, dyePalettes);
-                    mParticleImage = resourceManager->getImage(image);
+                    mParticleImage = ImageLoader::getImage(image);
                 }
             }
             else if (name == "subimage")
@@ -131,7 +133,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                 {
                     if (!dyePalettes.empty())
                         Dye::instantiate(image, dyePalettes);
-                    Image *img = resourceManager->getImage(image);
+                    Image *img = ImageLoader::getImage(image);
                     if (img)
                     {
                         mParticleImage = resourceManager->getSubImage(img,
@@ -370,7 +372,7 @@ ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
     const int subX = XML::getProperty(node, "subX", -1);
     if (subX != -1)
     {
-        Image *const img = resourceManager->getImage(XML::getProperty(
+        Image *const img = ImageLoader::getImage(XML::getProperty(
             node, "imageset", ""));
         if (!img)
             return nullptr;

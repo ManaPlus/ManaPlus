@@ -67,7 +67,7 @@
 
 #include "resources/item/complexitem.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imageloader.h"
 
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"
@@ -730,7 +730,7 @@ void NpcDialog::parseListItems(const std::string &itemString)
         else
         {
             mItems.push_back(tmp.substr(pos + 1));
-            Image *const img = resourceManager->getImage(std::string(
+            Image *const img = ImageLoader::getImage(std::string(
                 path).append(tmp.substr(0, pos)).append(".png"));
             mImages.push_back(img);
         }
