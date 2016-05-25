@@ -630,7 +630,7 @@ int BrowserBox::calcHeight()
             const size_t sz = str.size();
             if (sz > 2 && str.substr(sz - 1) == "~")
                 str = str.substr(0, sz - 1);
-            Image *const img = ImageLoader::getImage(str);
+            Image *const img = Loader::getImage(str);
             if (img)
             {
                 img->incRef();

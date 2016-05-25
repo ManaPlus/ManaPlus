@@ -38,7 +38,7 @@ Icon::Icon(const Widget2 *const widget,
            const std::string &file,
            const AutoRelease autoRelease) :
     Widget(widget),
-    mImage(ImageLoader::getImage(file)),
+    mImage(Loader::getImage(file)),
     mAutoRelease(autoRelease)
 {
     if (mImage)

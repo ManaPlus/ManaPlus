@@ -29,13 +29,13 @@
 
 class Image;
 
-namespace ImageLoader
+namespace Loader
 {
     /**
      * Convenience wrapper around ResourceManager::get for loading
      * images.
      */
     Image *getImage(const std::string &idPath) A_WARN_UNUSED;
-}  // namespace ImageLoader
+}  // namespace Loader
 
 #endif  // RESOURCES_LOADERS_IMAGELOADER_H

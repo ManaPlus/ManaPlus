@@ -80,7 +80,7 @@ namespace
     };
 }  // namespace
 
-Image *ImageLoader::getImage(const std::string &idPath)
+Image *Loader::getImage(const std::string &idPath)
 {
     DyedImageLoader rl = { idPath };
     return static_cast<Image*>(resourceManager->get(idPath,

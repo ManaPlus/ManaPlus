@@ -60,14 +60,14 @@ namespace
     };
 }  // namespace
 
-SDLMusic *MusicLoader::getMusic(const std::string &idPath)
+SDLMusic *Loader::getMusic(const std::string &idPath)
 {
     ResourceLoader rl = { idPath, &SDLMusic::load };
     return static_cast<SDLMusic*>(resourceManager->get(
         idPath, ResourceLoader::load, &rl));
 }
 
-SoundEffect *MusicLoader::getSoundEffect(const std::string &idPath)
+SoundEffect *Loader::getSoundEffect(const std::string &idPath)
 {
     ResourceLoader rl = { idPath, &SoundEffect::load };
     return static_cast<SoundEffect*>(resourceManager->get(

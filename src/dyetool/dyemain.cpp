@@ -97,7 +97,7 @@ int main(int argc, char **argv)
         dst = argv[2];
     }
 
-    Image *image = ImageLoader::getImage(src);
+    Image *image = Loader::getImage(src);
     if (!image)
     {
         printf("Error loading image\n");

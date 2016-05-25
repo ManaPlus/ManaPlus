@@ -1050,7 +1050,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
 
             if (!source.empty())
             {
-                Image *const tilebmp = ImageLoader::getImage(
+                Image *const tilebmp = Loader::getImage(
                     resolveRelativePath(pathDir, source));
 
                 if (tilebmp)

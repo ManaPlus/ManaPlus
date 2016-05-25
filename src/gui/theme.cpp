@@ -644,7 +644,7 @@ std::string Theme::resolveThemePath(const std::string &path)
 
 Image *Theme::getImageFromTheme(const std::string &path)
 {
-    return ImageLoader::getImage(resolveThemePath(path));
+    return Loader::getImage(resolveThemePath(path));
 }
 
 ImageSet *Theme::getImageSetFromTheme(const std::string &path,

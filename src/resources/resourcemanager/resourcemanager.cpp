@@ -539,7 +539,7 @@ struct ImageSetLoader final
         const ImageSetLoader *const
             rl = static_cast<const ImageSetLoader *const>(v);
 
-        Image *const img = ImageLoader::getImage(rl->path);
+        Image *const img = Loader::getImage(rl->path);
         if (!img)
         {
             reportAlways("Image loading error: %s", rl->path.c_str());

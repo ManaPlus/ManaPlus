@@ -61,7 +61,7 @@ SkillData::~SkillData()
 void SkillData::setIcon(const std::string &iconPath)
 {
     if (!iconPath.empty())
-        icon = ImageLoader::getImage(iconPath);
+        icon = Loader::getImage(iconPath);
 
     if (!icon)
     {

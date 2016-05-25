@@ -416,7 +416,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
                     break;
             }
             imagePath = combineDye2(imagePath, color);
-            Image *img = ImageLoader::getImage(imagePath);
+            Image *img = Loader::getImage(imagePath);
 
             if (!img)
                 img = Theme::getImageFromTheme("unknown-item.png");

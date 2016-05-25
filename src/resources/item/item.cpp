@@ -100,7 +100,7 @@ void Item::setId(const int id,
     const std::string dye = combineDye2(paths.getStringValue(
         "itemIcons").append(info.getDisplay().image),
         info.getDyeIconColorsString(color));
-    mImage = ImageLoader::getImage(dye);
+    mImage = Loader::getImage(dye);
 
     if (!mImage)
     {
@@ -121,7 +121,7 @@ Image *Item::getImage(const int id,
                       const ItemColor color)
 {
     const ItemInfo &info = ItemDB::get(id);
-    Image *image = ImageLoader::getImage(combineDye2(paths.getStringValue(
+    Image *image = Loader::getImage(combineDye2(paths.getStringValue(
         "itemIcons").append(info.getDisplay().image),
         info.getDyeIconColorsString(color)));
 

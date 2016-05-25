@@ -95,7 +95,7 @@ class LangListModel final : public ExtendedListModel
                 const std::string icon = LANG_NAME[f].icon;
                 if (!icon.empty())
                 {
-                    mIcons[f] = ImageLoader::getImage("graphics/flags/"
+                    mIcons[f] = Loader::getImage("graphics/flags/"
                         + icon);
                 }
                 else

@@ -128,8 +128,8 @@ void TextCommand::loadImage()
         return;
 
     const SpriteDisplay display = ItemDB::get(getIcon()).getDisplay();
-    mImage = ImageLoader::getImage(paths.getStringValue("itemIcons")
-        .append(display.image));
+    mImage = Loader::getImage(paths.getStringValue("itemIcons").append(
+        display.image));
 
     if (!mImage)
         mImage = Theme::getImageFromTheme("unknown-item.png");

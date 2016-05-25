@@ -440,7 +440,7 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
                 imageSrc = XmlChildContent(node);
             if (!imageSrc.empty() && !dyePalettes.empty())
                 Dye::instantiate(imageSrc, dyePalettes);
-            Image *const img = ImageLoader::getImage(imageSrc);
+            Image *const img = Loader::getImage(imageSrc);
 
             newParticle = new ImageParticle(img);
             newParticle->setMap(mMap);

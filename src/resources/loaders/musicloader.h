@@ -31,7 +31,7 @@ class SDLMusic;
 class Resource;
 class SoundEffect;
 
-namespace MusicLoader
+namespace Loader
 {
     /**
      * Convenience wrapper around ResourceManager::get for loading
@@ -44,6 +44,6 @@ namespace MusicLoader
      * samples.
      */
     SoundEffect *getSoundEffect(const std::string &idPath) A_WARN_UNUSED;
-}
+}  // namespace Loader
 
 #endif  // RESOURCES_RESOURCEMANAGER_MUSICLOADER_H

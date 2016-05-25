@@ -179,7 +179,7 @@ void ItemPopup::setItem(const ItemInfo &item,
 
     if (showImage)
     {
-        Image *const image = ImageLoader::getImage(combineDye2(
+        Image *const image = Loader::getImage(combineDye2(
             paths.getStringValue("itemIcons").append(item.getDisplay().image),
             item.getDyeIconColorsString(color)));
 

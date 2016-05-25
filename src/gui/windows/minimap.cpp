@@ -187,7 +187,7 @@ void Minimap::setMap(const Map *const map)
             }
 
             if (!minimapName.empty())
-                mMapImage = ImageLoader::getImage(minimapName);
+                mMapImage = Loader::getImage(minimapName);
             else
                 mMapImage = nullptr;
             mCustomMapImage = false;

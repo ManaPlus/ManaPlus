@@ -122,7 +122,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                 {
                     if (!dyePalettes.empty())
                         Dye::instantiate(image, dyePalettes);
-                    mParticleImage = ImageLoader::getImage(image);
+                    mParticleImage = Loader::getImage(image);
                 }
             }
             else if (name == "subimage")
@@ -134,7 +134,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                 {
                     if (!dyePalettes.empty())
                         Dye::instantiate(image, dyePalettes);
-                    Image *img = ImageLoader::getImage(image);
+                    Image *img = Loader::getImage(image);
                     if (img)
                     {
                         mParticleImage = Loader::getSubImage(img,
@@ -373,7 +373,7 @@ ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
     const int subX = XML::getProperty(node, "subX", -1);
     if (subX != -1)
     {
-        Image *const img = ImageLoader::getImage(XML::getProperty(
+        Image *const img = Loader::getImage(XML::getProperty(
             node, "imageset", ""));
         if (!img)
             return nullptr;

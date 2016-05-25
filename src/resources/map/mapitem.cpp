@@ -115,7 +115,7 @@ void MapItem::setType(const int type)
     }
 
     if (!name.empty())
-        mImage = ImageLoader::getImage(name);
+        mImage = Loader::getImage(name);
     else
         mImage = nullptr;
 }

@@ -236,7 +236,7 @@ void Map::initializeAmbientLayers() restrict2
             break;  // the FOR loop
         }
 
-        Image *restrict const img = ImageLoader::getImage(
+        Image *restrict const img = Loader::getImage(
             getProperty(name + "image"));
         if (img)
         {
@@ -266,7 +266,7 @@ void Map::initializeAmbientLayers() restrict2
          toString(i)).append("image")); i ++)
     {
         const std::string name("background" + toString(i));
-        Image *restrict const img = ImageLoader::getImage(
+        Image *restrict const img = Loader::getImage(
             getProperty(name + "image"));
 
         if (img)
