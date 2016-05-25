@@ -719,6 +719,8 @@ SET(SRCS
     resources/db/skillunitdb.h
     resources/resource.cpp
     resources/resource.h
+    resources/loaders/atlasloader.cpp
+    resources/loaders/atlasloader.h
     resources/loaders/imageloader.cpp
     resources/loaders/imageloader.h
     resources/loaders/imagesetloader.cpp
@@ -1419,6 +1421,8 @@ SET(DYE_CMD_SRCS
     resources/imagewriter.h
     resources/resource.cpp
     resources/resource.h
+    resources/loaders/atlasloader.cpp
+    resources/loaders/atlasloader.h
     resources/loaders/imageloader.cpp
     resources/loaders/imageloader.h
     resources/loaders/imagesetloader.cpp

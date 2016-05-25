@@ -528,32 +528,6 @@ Resource *ResourceManager::get(const std::string &idPath,
 }
 
 #ifdef USE_OPENGL
-struct AtlasLoader final
-{
-    const std::string name;
-    const StringVect *files;
-
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-
-        const AtlasLoader *const rl = static_cast<const AtlasLoader *const>(v);
-        AtlasResource *const resource = AtlasManager::loadTextureAtlas(
-            rl->name, *rl->files);
-        if (!resource)
-            reportAlways("Atlas creation error: %s", rl->name.c_str());
-        return resource;
-    }
-};
-
-Resource *ResourceManager::getAtlas(const std::string &name,
-                                    const StringVect &files)
-{
-    AtlasLoader rl = { name, &files };
-    return get("atlas_" + name, AtlasLoader::load, &rl);
-}
-
 struct ShaderLoader final
 {
     const std::string name;

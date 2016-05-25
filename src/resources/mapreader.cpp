@@ -42,6 +42,7 @@
 
 #ifdef USE_OPENGL
 #include "resources/db/mapdb.h"
+#include "resources/loaders/atlasloader.h"
 #endif
 
 #include "resources/map/tileanimation.h"
@@ -351,8 +352,9 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         const MapInfo *const info = MapDB::getMapAtlas(fileName);
         if (info)
         {
-            map->setAtlas(resourceManager->getAtlas(
-                info->atlas, *info->files));
+            map->setAtlas(Loader::getAtlas(
+                info->atlas,
+                *info->files));
         }
     }
     BLOCK_END("MapReader::readMap load atlas")

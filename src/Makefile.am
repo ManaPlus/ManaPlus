@@ -390,6 +390,8 @@ SRC += events/actionevent.h \
 	      enums/resources/questtype.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
+	      resources/loaders/atlasloader.cpp \
+	      resources/loaders/atlasloader.h \
 	      resources/loaders/imageloader.cpp \
 	      resources/loaders/imageloader.h \
 	      resources/loaders/imagesetloader.cpp \

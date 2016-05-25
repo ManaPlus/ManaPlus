@@ -134,9 +134,6 @@ class ResourceManager final : public MemoryCounter
         bool addResource(const std::string &idPath, Resource *const resource);
 
 #ifdef USE_OPENGL
-        Resource *getAtlas(const std::string &name,
-                           const StringVect &files) A_WARN_UNUSED;
-
         Resource *getShader(const unsigned int type,
                             const std::string &name) A_WARN_UNUSED;
 
