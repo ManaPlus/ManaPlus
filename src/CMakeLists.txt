@@ -727,6 +727,8 @@ SET(SRCS
     resources/loaders/musicloader.h
     resources/loaders/subimageloader.cpp
     resources/loaders/subimageloader.h
+    resources/loaders/subimagesetloader.cpp
+    resources/loaders/subimagesetloader.h
     resources/resourcemanager/resourcemanager.cpp
     resources/resourcemanager/resourcemanager.h
     resources/safeopenglimagehelper.cpp
@@ -1425,6 +1427,8 @@ SET(DYE_CMD_SRCS
     resources/loaders/musicloader.h
     resources/loaders/subimageloader.cpp
     resources/loaders/subimageloader.h
+    resources/loaders/subimagesetloader.cpp
+    resources/loaders/subimagesetloader.h
     resources/resourcemanager/resourcemanager.cpp
     resources/resourcemanager/resourcemanager.h
     resources/sdl2softwareimagehelper.cpp

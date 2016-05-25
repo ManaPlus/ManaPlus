@@ -37,8 +37,7 @@
 #include "resources/loaders/imageloader.h"
 #include "resources/loaders/imagesetloader.h"
 #include "resources/loaders/subimageloader.h"
-
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/subimagesetloader.h"
 
 #include "debug.h"
 
@@ -389,7 +388,7 @@ ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
             return nullptr;
         }
 
-        imageset = resourceManager->getSubImageSet(img2,
+        imageset = Loader::getSubImageSet(img2,
             XML::getProperty(node, "width", 0),
             XML::getProperty(node, "height", 0));
         img2->decRef();

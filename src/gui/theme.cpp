@@ -40,8 +40,7 @@
 #include "resources/loaders/imageloader.h"
 #include "resources/loaders/imagesetloader.h"
 #include "resources/loaders/subimageloader.h"
-
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/subimagesetloader.h"
 
 #include "utils/dtor.h"
 #include "utils/files.h"
@@ -1151,7 +1150,7 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
             const SDL_Rect &rect2 = image->mBounds;
             if (rect2.w && rect2.h)
             {
-                ImageSet *const imageSet = resourceManager->getSubImageSet(
+                ImageSet *const imageSet = Loader::getSubImageSet(
                     image, w, h);
                 theme->unload(skin);
                 return imageSet;

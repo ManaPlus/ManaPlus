@@ -527,41 +527,6 @@ Resource *ResourceManager::get(const std::string &idPath,
     return resource;
 }
 
-struct SubImageSetLoader final
-{
-    ResourceManager *manager;
-    Image *parent;
-    int width, height;
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-
-        const SubImageSetLoader *const
-            rl = static_cast<const SubImageSetLoader *const>(v);
-        if (!rl->manager)
-            return nullptr;
-
-        if (!rl->parent)
-            return nullptr;
-        ImageSet *const res = new ImageSet(rl->parent, rl->width, rl->height);
-        return res;
-    }
-};
-
-ImageSet *ResourceManager::getSubImageSet(Image *const parent,
-                                          const int width, const int height)
-{
-    if (!parent)
-        return nullptr;
-
-    const SubImageSetLoader rl = { this, parent, width, height };
-    std::stringstream ss;
-    ss << parent->getIdPath() << ", set[" << width << "x" << height << "]";
-    return static_cast<ImageSet*>(get(ss.str(),
-        SubImageSetLoader::load, &rl));
-}
-
 #ifdef USE_OPENGL
 struct AtlasLoader final
 {

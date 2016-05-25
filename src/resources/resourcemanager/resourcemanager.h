@@ -133,10 +133,6 @@ class ResourceManager final : public MemoryCounter
          */
         bool addResource(const std::string &idPath, Resource *const resource);
 
-        ImageSet *getSubImageSet(Image *const parent,
-                                 const int width,
-                                 const int height) A_WARN_UNUSED;
-
 #ifdef USE_OPENGL
         Resource *getAtlas(const std::string &name,
                            const StringVect &files) A_WARN_UNUSED;
