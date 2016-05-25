@@ -38,6 +38,7 @@
 #include "resources/dye/dyepalette.h"
 
 #include "resources/loaders/imageloader.h"
+#include "resources/loaders/subimageloader.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
@@ -376,8 +377,10 @@ struct SkinHelper final
             const SkinParameter &param = params[f];
             if (partType == param.name)
             {
-                rect->grid[param.index] = resourceManager->getSubImage(
-                    image, xPos, yPos, width, height);
+                rect->grid[param.index] = Loader::getSubImage(
+                    image,
+                    xPos, yPos,
+                    width, height);
                 return true;
             }
         }

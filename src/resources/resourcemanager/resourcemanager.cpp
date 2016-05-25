@@ -596,48 +596,6 @@ ImageSet *ResourceManager::getSubImageSet(Image *const parent,
         SubImageSetLoader::load, &rl));
 }
 
-struct SubImageLoader final
-{
-    ResourceManager *manager;
-    Image *parent;
-    int x, y;
-    int width, height;
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-
-        const SubImageLoader *const
-            rl = static_cast<const SubImageLoader *const>(v);
-        if (!rl->manager || !rl->parent)
-            return nullptr;
-
-        Image *const res = rl->parent->getSubImage(rl->x, rl->y,
-            rl->width, rl->height);
-        if (!res)
-        {
-            reportAlways("SubImage loading error: %s",
-                rl->parent->getSource().c_str());
-        }
-        return res;
-    }
-};
-
-Image *ResourceManager::getSubImage(Image *const parent,
-                                    const int x, const int y,
-                                    const int width, const int height)
-{
-    if (!parent)
-        return nullptr;
-
-    const SubImageLoader rl = { this, parent, x, y, width, height};
-
-    std::stringstream ss;
-    ss << parent->getIdPath() << ",[" << x << "," << y << ","
-        << width << "x" << height << "]";
-    return static_cast<Image*>(get(ss.str(), SubImageLoader::load, &rl));
-}
-
 #ifdef USE_OPENGL
 struct AtlasLoader final
 {

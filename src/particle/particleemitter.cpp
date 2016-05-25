@@ -35,6 +35,7 @@
 #include "resources/dye/dye.h"
 
 #include "resources/loaders/imageloader.h"
+#include "resources/loaders/subimageloader.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
@@ -136,7 +137,7 @@ ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
                     Image *img = ImageLoader::getImage(image);
                     if (img)
                     {
-                        mParticleImage = resourceManager->getSubImage(img,
+                        mParticleImage = Loader::getSubImage(img,
                             XML::getProperty(propertyNode, "x", 0),
                             XML::getProperty(propertyNode, "y", 0),
                             XML::getProperty(propertyNode, "width", 0),
@@ -377,7 +378,7 @@ ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
         if (!img)
             return nullptr;
 
-        Image *const img2 = resourceManager->getSubImage(img, subX,
+        Image *const img2 = Loader::getSubImage(img, subX,
             XML::getProperty(node, "subY", 0),
             XML::getProperty(node, "subWidth", 0),
             XML::getProperty(node, "subHeight", 0));

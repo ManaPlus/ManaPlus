@@ -144,9 +144,6 @@ class ResourceManager final : public MemoryCounter
                                  const int width,
                                  const int height) A_WARN_UNUSED;
 
-        Image *getSubImage(Image *const parent, const int x, const int y,
-                           const int width, const int height) A_WARN_UNUSED;
-
 #ifdef USE_OPENGL
         Resource *getAtlas(const std::string &name,
                            const StringVect &files) A_WARN_UNUSED;

@@ -394,6 +394,8 @@ SRC += events/actionevent.h \
 	      resources/loaders/imageloader.h \
 	      resources/loaders/musicloader.cpp \
 	      resources/loaders/musicloader.h \
+	      resources/loaders/subimageloader.cpp \
+	      resources/loaders/subimageloader.h \
 	      resources/resourcemanager/resourcemanager.cpp \
 	      resources/resourcemanager/resourcemanager.h \
 	      resources/safeopenglimagehelper.cpp \
