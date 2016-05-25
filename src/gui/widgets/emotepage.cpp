@@ -26,7 +26,7 @@
 
 #include "resources/imageset.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imagesetloader.h"
 
 #include "utils/delete2.h"
 
@@ -42,7 +42,7 @@ EmotePage::EmotePage(const Widget2 *const widget) :
     Widget(widget),
     MouseListener(),
     WidgetListener(),
-    mEmotes(resourceManager->getImageSet(
+    mEmotes(Loader::getImageSet(
         "graphics/sprites/chatemotes.png", emoteWidth, emoteHeight)),
     mVertexes(new ImageCollection),
     mSelectedIndex(-1)

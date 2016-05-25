@@ -38,6 +38,7 @@
 #include "resources/dye/dyepalette.h"
 
 #include "resources/loaders/imageloader.h"
+#include "resources/loaders/imagesetloader.h"
 #include "resources/loaders/subimageloader.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
@@ -650,7 +651,7 @@ Image *Theme::getImageFromTheme(const std::string &path)
 ImageSet *Theme::getImageSetFromTheme(const std::string &path,
                                       const int w, const int h)
 {
-    return resourceManager->getImageSet(resolveThemePath(path), w, h);
+    return Loader::getImageSet(resolveThemePath(path), w, h);
 }
 
 static int readColorType(const std::string &type)

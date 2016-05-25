@@ -47,7 +47,7 @@
 
 #include "resources/loaders/imageloader.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imagesetloader.h"
 
 #include "utils/stringutils.h"
 #include "utils/timer.h"
@@ -129,7 +129,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
         mSkin = theme->load(skin, "browserbox.xml");
     if (mInstances == 0)
     {
-        mEmotes = resourceManager->getImageSet(
+        mEmotes = Loader::getImageSet(
             "graphics/sprites/chatemotes.png", 17, 18);
     }
     mInstances ++;

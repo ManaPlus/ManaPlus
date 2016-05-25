@@ -39,7 +39,7 @@
 
 #include "resources/dye/dye.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imagesetloader.h"
 
 #include "resources/sprite/spritereference.h"
 
@@ -241,7 +241,7 @@ void SpriteDef::loadImageSet(const XmlNodePtr node,
     std::string imageSrc = XML::getProperty(node, "src", "");
     Dye::instantiate(imageSrc, palettes);
 
-    ImageSet *const imageSet = resourceManager->getImageSet(imageSrc,
+    ImageSet *const imageSet = Loader::getImageSet(imageSrc,
         width, height);
 
     if (!imageSet)

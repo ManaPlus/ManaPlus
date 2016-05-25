@@ -35,6 +35,7 @@
 #include "resources/dye/dye.h"
 
 #include "resources/loaders/imageloader.h"
+#include "resources/loaders/imagesetloader.h"
 #include "resources/loaders/subimageloader.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
@@ -396,7 +397,7 @@ ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
     }
     else
     {
-        imageset = resourceManager->getImageSet(
+        imageset = Loader::getImageSet(
             XML::getProperty(node, "imageset", ""),
             XML::getProperty(node, "width", 0),
             XML::getProperty(node, "height", 0));

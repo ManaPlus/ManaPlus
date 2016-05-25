@@ -32,7 +32,7 @@
 
 #include "resources/dye/dye.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/imagesetloader.h"
 
 #include "utils/delete2.h"
 
@@ -159,7 +159,7 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
     if (!imagePath.empty() && !dyePalettes.empty())
         Dye::instantiate(imagePath, dyePalettes);
 
-    const ImageSet *const imageset = resourceManager->getImageSet(
+    const ImageSet *const imageset = Loader::getImageSet(
         XML::getProperty(animationNode, "imageset", ""),
         XML::getProperty(animationNode, "width", 0),
         XML::getProperty(animationNode, "height", 0));

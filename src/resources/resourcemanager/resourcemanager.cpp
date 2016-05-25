@@ -527,40 +527,6 @@ Resource *ResourceManager::get(const std::string &idPath,
     return resource;
 }
 
-struct ImageSetLoader final
-{
-    std::string path;
-    int w, h;
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-
-        const ImageSetLoader *const
-            rl = static_cast<const ImageSetLoader *const>(v);
-
-        Image *const img = Loader::getImage(rl->path);
-        if (!img)
-        {
-            reportAlways("Image loading error: %s", rl->path.c_str());
-            return nullptr;
-        }
-        ImageSet *const res = new ImageSet(img, rl->w, rl->h);
-        img->decRef();
-        return res;
-    }
-};
-
-ImageSet *ResourceManager::getImageSet(const std::string &imagePath,
-                                       const int w, const int h)
-{
-    ImageSetLoader rl = { imagePath, w, h };
-    std::stringstream ss;
-    ss << imagePath << "[" << w << "x" << h << "]";
-    return static_cast<ImageSet*>(get(ss.str(), ImageSetLoader::load, &rl));
-}
-
-
 struct SubImageSetLoader final
 {
     ResourceManager *manager;

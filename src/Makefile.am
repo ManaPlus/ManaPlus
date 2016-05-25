@@ -392,6 +392,8 @@ SRC += events/actionevent.h \
 	      resources/resource.h \
 	      resources/loaders/imageloader.cpp \
 	      resources/loaders/imageloader.h \
+	      resources/loaders/imagesetloader.cpp \
+	      resources/loaders/imagesetloader.h \
 	      resources/loaders/musicloader.cpp \
 	      resources/loaders/musicloader.h \
 	      resources/loaders/subimageloader.cpp \

@@ -133,13 +133,6 @@ class ResourceManager final : public MemoryCounter
          */
         bool addResource(const std::string &idPath, Resource *const resource);
 
-        /**
-         * Creates a image set based on the image referenced by the given
-         * path and the supplied sprite sizes
-         */
-        ImageSet *getImageSet(const std::string &imagePath,
-                              const int w, const int h) A_WARN_UNUSED;
-
         ImageSet *getSubImageSet(Image *const parent,
                                  const int width,
                                  const int height) A_WARN_UNUSED;
