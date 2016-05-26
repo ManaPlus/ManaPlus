@@ -49,7 +49,7 @@
 
 #include "resources/loaders/imageloader.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/walklayerloader.h"
 
 #include "utils/base64.h"
 #include "utils/delete2.h"
@@ -475,7 +475,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     map->clearIndexedTilesets();
     map->setActorsFix(0, atoi(map->getProperty("actorsfix").c_str()));
     map->reduce();
-    map->setWalkLayer(resourceManager->getWalkLayer(fileName, map));
+    map->setWalkLayer(Loader::getWalkLayer(fileName, map));
     unloadTempLayers();
     map->updateDrawLayersList();
     BLOCK_END("MapReader::readMap xml")

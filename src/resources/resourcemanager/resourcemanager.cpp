@@ -527,43 +527,6 @@ Resource *ResourceManager::get(const std::string &idPath,
     return resource;
 }
 
-#ifndef DYECMD
-struct WalkLayerLoader final
-{
-    const std::string name;
-    Map *map;
-
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-
-        const WalkLayerLoader *const rl = static_cast<const
-            WalkLayerLoader *const>(v);
-        Resource *const resource = NavigationManager::loadWalkLayer(rl->map);
-        if (!resource)
-            reportAlways("WalkLayer creation error");
-        return resource;
-    }
-};
-#endif
-
-#ifndef DYECMD
-WalkLayer *ResourceManager::getWalkLayer(const std::string &name,
-                                         Map *const map)
-{
-    WalkLayerLoader rl = {name, map};
-    return static_cast<WalkLayer*>(get("map_" + name,
-        WalkLayerLoader::load, &rl));
-}
-#else
-WalkLayer *ResourceManager::getWalkLayer(const std::string &name A_UNUSED,
-                                         Map *const map A_UNUSED)
-{
-    return nullptr;
-}
-#endif
-
 struct SpriteDefLoader final
 {
     std::string path;

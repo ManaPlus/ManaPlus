@@ -406,6 +406,8 @@ SRC += events/actionevent.h \
 	      resources/loaders/subimageloader.h \
 	      resources/loaders/subimagesetloader.cpp \
 	      resources/loaders/subimagesetloader.h \
+	      resources/loaders/walklayerloader.cpp \
+	      resources/loaders/walklayerloader.h \
 	      resources/resourcemanager/resourcemanager.cpp \
 	      resources/resourcemanager/resourcemanager.h \
 	      resources/safeopenglimagehelper.cpp \

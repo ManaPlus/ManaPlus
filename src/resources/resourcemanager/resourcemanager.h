@@ -133,8 +133,6 @@ class ResourceManager final : public MemoryCounter
          */
         bool addResource(const std::string &idPath, Resource *const resource);
 
-        WalkLayer *getWalkLayer(const std::string &name, Map *const map);
-
         /**
          * Creates a sprite definition based on a given path and the supplied
          * variant.
