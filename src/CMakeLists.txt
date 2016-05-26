@@ -727,6 +727,8 @@ SET(SRCS
     resources/loaders/imagesetloader.h
     resources/loaders/musicloader.cpp
     resources/loaders/musicloader.h
+    resources/loaders/shaderloader.cpp
+    resources/loaders/shaderloader.h
     resources/loaders/subimageloader.cpp
     resources/loaders/subimageloader.h
     resources/loaders/subimagesetloader.cpp
@@ -1429,6 +1431,8 @@ SET(DYE_CMD_SRCS
     resources/loaders/imagesetloader.h
     resources/loaders/musicloader.cpp
     resources/loaders/musicloader.h
+    resources/loaders/shaderloader.cpp
+    resources/loaders/shaderloader.h
     resources/loaders/subimageloader.cpp
     resources/loaders/subimageloader.h
     resources/loaders/subimagesetloader.cpp

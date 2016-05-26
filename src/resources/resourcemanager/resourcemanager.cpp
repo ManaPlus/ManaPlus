@@ -528,32 +528,6 @@ Resource *ResourceManager::get(const std::string &idPath,
 }
 
 #ifdef USE_OPENGL
-struct ShaderLoader final
-{
-    const std::string name;
-    const unsigned int type;
-
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-
-        const ShaderLoader *const rl
-            = static_cast<const ShaderLoader *const>(v);
-        Shader *const resource = shaders.createShader(rl->type, rl->name);
-        if (!resource)
-            reportAlways("Shader creation error: %s", rl->name.c_str());
-        return resource;
-    }
-};
-
-Resource *ResourceManager::getShader(const unsigned int type,
-                                     const std::string &name)
-{
-    ShaderLoader rl = { name, type };
-    return get("shader_" + name, ShaderLoader::load, &rl);
-}
-
 struct ShaderProgramLoader final
 {
     const std::string vertex;

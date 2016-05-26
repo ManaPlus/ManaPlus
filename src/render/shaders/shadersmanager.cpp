@@ -33,6 +33,8 @@
 #include "render/shaders/shader.h"
 #include "render/shaders/shaderprogram.h"
 
+#include "resources/loaders/shaderloader.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/files.h"
@@ -70,12 +72,12 @@ ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
                                              const bool isNewShader)
 {
     Shader *const vertexShader = static_cast<Shader*>(
-        resourceManager->getShader(GL_VERTEX_SHADER, vertex));
+        Loader::getShader(GL_VERTEX_SHADER, vertex));
     if (!vertexShader)
         return nullptr;
 
     Shader *const fragmentShader = static_cast<Shader*>(
-        resourceManager->getShader(GL_FRAGMENT_SHADER, fragment));
+        Loader::getShader(GL_FRAGMENT_SHADER, fragment));
 
     if (!fragmentShader)
     {

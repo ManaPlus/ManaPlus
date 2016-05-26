@@ -134,9 +134,6 @@ class ResourceManager final : public MemoryCounter
         bool addResource(const std::string &idPath, Resource *const resource);
 
 #ifdef USE_OPENGL
-        Resource *getShader(const unsigned int type,
-                            const std::string &name) A_WARN_UNUSED;
-
         Resource *getShaderProgram(const std::string &vertex,
                                    const std::string &fragment,
                                    const bool isNewShader) A_WARN_UNUSED;
