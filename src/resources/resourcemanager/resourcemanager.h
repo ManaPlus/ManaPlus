@@ -133,12 +133,6 @@ class ResourceManager final : public MemoryCounter
          */
         bool addResource(const std::string &idPath, Resource *const resource);
 
-#ifdef USE_OPENGL
-        Resource *getShaderProgram(const std::string &vertex,
-                                   const std::string &fragment,
-                                   const bool isNewShader) A_WARN_UNUSED;
-#endif
-
         WalkLayer *getWalkLayer(const std::string &name, Map *const map);
 
         /**

@@ -527,40 +527,6 @@ Resource *ResourceManager::get(const std::string &idPath,
     return resource;
 }
 
-#ifdef USE_OPENGL
-struct ShaderProgramLoader final
-{
-    const std::string vertex;
-    const std::string fragment;
-    const bool isNewShader;
-
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-
-        const ShaderProgramLoader *const rl
-            = static_cast<const ShaderProgramLoader *const>(v);
-        ShaderProgram *const resource = shaders.createProgram(
-            rl->vertex,
-            rl->fragment,
-            rl->isNewShader);
-        if (!resource)
-            reportAlways("Shader program creation error");
-        return resource;
-    }
-};
-
-Resource *ResourceManager::getShaderProgram(const std::string &vertex,
-                                            const std::string &fragment,
-                                            const bool isNewShader)
-{
-    ShaderProgramLoader rl = { vertex, fragment, isNewShader };
-    return get("program_" + vertex + " + " + fragment,
-        ShaderProgramLoader::load, &rl);
-}
-#endif
-
 #ifndef DYECMD
 struct WalkLayerLoader final
 {
