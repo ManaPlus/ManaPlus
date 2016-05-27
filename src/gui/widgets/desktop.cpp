@@ -35,6 +35,8 @@
 #include "resources/imagehelper.h"
 #include "resources/wallpaper.h"
 
+#include "resources/loaders/rescaledloader.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "render/graphics.h"
@@ -190,7 +192,7 @@ void Desktop::setBestFittingWallpaper()
             nWallPaper->getHeight() != height))
         {
             // We rescale to obtain a fullscreen wallpaper...
-            Image *const newRsclWlPpr = resourceManager->getRescaled(
+            Image *const newRsclWlPpr = Loader::getRescaled(
                 nWallPaper, width, height);
 
             if (newRsclWlPpr)

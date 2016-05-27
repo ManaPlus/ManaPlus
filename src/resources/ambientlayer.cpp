@@ -28,7 +28,7 @@
 #include "resources/image.h"
 #include "resources/imagehelper.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/rescaledloader.h"
 
 #include "debug.h"
 
@@ -66,7 +66,7 @@ AmbientLayer::AmbientLayer(const std::string &name,
         {
             // Rescale the overlay to keep the ratio as if we were on
             // the default resolution...
-            Image *const rescaledOverlay = resourceManager->getRescaled(
+            Image *const rescaledOverlay = Loader::getRescaled(
                 mImage,
                 CAST_S32(mImage->mBounds.w) /
                 defaultScreenWidth * width,

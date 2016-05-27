@@ -147,10 +147,6 @@ class ResourceManager final : public MemoryCounter
          */
         void moveToDeleted(Resource *const res);
 
-        Image *getRescaled(const Image *const image,
-                           const int width,
-                           const int height) A_WARN_UNUSED;
-
         /**
          * Loads the given filename as an SDL surface. The returned surface is
          * expected to be freed by the caller using SDL_FreeSurface.

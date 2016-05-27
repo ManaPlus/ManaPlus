@@ -698,46 +698,6 @@ void ResourceManager::clearScheduled()
     BLOCK_END("ResourceManager::clearScheduled")
 }
 
-struct RescaledLoader final
-{
-    ResourceManager *manager;
-    const Image *image;
-    int width;
-    int height;
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-        const RescaledLoader *const rl
-            = static_cast<const RescaledLoader *const>(v);
-        if (!rl->manager || !rl->image)
-            return nullptr;
-        Image *const rescaled = rl->image->SDLgetScaledImage(
-            rl->width, rl->height);
-        if (!rescaled)
-        {
-            reportAlways("Rescale image failed: %s",
-                rl->image->getIdPath().c_str());
-            return nullptr;
-        }
-        return rescaled;
-    }
-};
-
-Image *ResourceManager::getRescaled(const Image *const image,
-                                    const int width, const int height)
-{
-    if (!image)
-        return nullptr;
-
-    std::string idPath = image->getIdPath() + strprintf(
-        "_rescaled%dx%d", width, height);
-    const RescaledLoader rl = { this, image, width, height };
-    Image *const img = static_cast<Image *const>(
-        get(idPath, RescaledLoader::load, &rl));
-    return img;
-}
-
 void ResourceManager::clearCache()
 {
     cleanProtected();

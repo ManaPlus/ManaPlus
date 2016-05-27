@@ -727,6 +727,8 @@ SET(SRCS
     resources/loaders/imagesetloader.h
     resources/loaders/musicloader.cpp
     resources/loaders/musicloader.h
+    resources/loaders/rescaledloader.cpp
+    resources/loaders/rescaledloader.h
     resources/loaders/shaderloader.cpp
     resources/loaders/shaderloader.h
     resources/loaders/shaderprogramloader.cpp
@@ -1437,6 +1439,8 @@ SET(DYE_CMD_SRCS
     resources/loaders/imagesetloader.h
     resources/loaders/musicloader.cpp
     resources/loaders/musicloader.h
+    resources/loaders/rescaledloader.cpp
+    resources/loaders/rescaledloader.h
     resources/loaders/shaderloader.cpp
     resources/loaders/shaderloader.h
     resources/loaders/shaderprogramloader.cpp
