@@ -22,7 +22,7 @@
 
 #include "const/resources/spriteaction.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/loaders/spritedefloader.h"
 
 #include "resources/sprite/animatedsprite.h"
 
@@ -56,7 +56,7 @@ void AnimationDelayLoad::load()
 {
     if (mSprite)
     {
-        SpriteDef *const s = resourceManager->getSprite(mFileName, mVariant);
+        SpriteDef *const s = Loader::getSprite(mFileName, mVariant);
         if (!s)
             return;
         mSprite->setSprite(s);

@@ -134,13 +134,6 @@ class ResourceManager final : public MemoryCounter
         bool addResource(const std::string &idPath, Resource *const resource);
 
         /**
-         * Creates a sprite definition based on a given path and the supplied
-         * variant.
-         */
-        SpriteDef *getSprite(const std::string &path,
-                             const int variant = 0) A_WARN_UNUSED;
-
-        /**
          * Releases a resource, placing it in the set of orphaned resources.
          */
         void release(Resource *const res);
@@ -223,7 +216,6 @@ class ResourceManager final : public MemoryCounter
         std::set<Resource*> mDeletedResources;
         time_t mOldestOrphan;
         bool mDestruction;
-        bool mUseLongLiveSprites;
 };
 
 extern ResourceManager *resourceManager;

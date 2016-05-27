@@ -72,8 +72,7 @@ ResourceManager::ResourceManager() :
     mOrphanedResources(),
     mDeletedResources(),
     mOldestOrphan(0),
-    mDestruction(0),
-    mUseLongLiveSprites(config.getBoolValue("uselonglivesprites"))
+    mDestruction(0)
 {
     logger->log1("Initializing resource manager...");
 }
@@ -525,31 +524,6 @@ Resource *ResourceManager::get(const std::string &idPath,
 
     // Returns nullptr if the object could not be created.
     return resource;
-}
-
-struct SpriteDefLoader final
-{
-    std::string path;
-    int variant;
-    bool useLongLiveSprites;
-    static Resource *load(const void *const v)
-    {
-        if (!v)
-            return nullptr;
-
-        const SpriteDefLoader *const
-            rl = static_cast<const SpriteDefLoader *const>(v);
-        return SpriteDef::load(rl->path, rl->variant, rl->useLongLiveSprites);
-    }
-};
-
-SpriteDef *ResourceManager::getSprite(const std::string &path,
-                                      const int variant)
-{
-    SpriteDefLoader rl = { path, variant, mUseLongLiveSprites };
-    std::stringstream ss;
-    ss << path << "[" << variant << "]";
-    return static_cast<SpriteDef*>(get(ss.str(), SpriteDefLoader::load, &rl));
 }
 
 void ResourceManager::release(Resource *const res)

@@ -402,6 +402,8 @@ SRC += events/actionevent.h \
 	      resources/loaders/shaderloader.h \
 	      resources/loaders/shaderprogramloader.cpp \
 	      resources/loaders/shaderprogramloader.h \
+	      resources/loaders/spritedefloader.cpp \
+	      resources/loaders/spritedefloader.h \
 	      resources/loaders/subimageloader.cpp \
 	      resources/loaders/subimageloader.h \
 	      resources/loaders/subimagesetloader.cpp \

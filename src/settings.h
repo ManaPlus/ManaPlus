@@ -86,8 +86,11 @@ class Settings final
             fixDeadAnimation(true),
             disableLoggingInGame(false),
             legacyEffects(true),
-            enableRemoteCommands(true)
+            enableRemoteCommands(true),
+            uselonglivesprites(false)
         { }
+
+        void init();
 
         std::string updateHost;
         std::string login;
@@ -141,6 +144,7 @@ class Settings final
         bool disableLoggingInGame;
         bool legacyEffects;
         bool enableRemoteCommands;
+        bool uselonglivesprites;
 };
 
 extern Settings settings;

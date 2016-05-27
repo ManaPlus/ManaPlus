@@ -280,6 +280,7 @@ void Client::gameInit()
 #endif
     ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();
+    settings.init();
     Net::loadIgnorePackets();
     paths.setDefaultValues(getPathsDefaults());
     initFeatures();

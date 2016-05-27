@@ -1,6 +1,8 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2014-2016  The ManaPlus Developers
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *  Copyright (C) 2011-2016  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,15 +20,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "settings.h"
+#ifndef RESOURCES_LOADERS_SPRITEDEFLOADER_H
+#define RESOURCES_LOADERS_SPRITEDEFLOADER_H
 
-#include "configuration.h"
+#include <string>
 
-#include "debug.h"
+#include "localconsts.h"
 
-Settings settings;
+class SpriteDef;
 
-void Settings::init()
+namespace Loader
 {
-    uselonglivesprites = config.getBoolValue("uselonglivesprites");
-}
+    /**
+     * Creates a sprite definition based on a given path and the supplied
+     * variant.
+     */
+    SpriteDef *getSprite(const std::string &path,
+                         const int variant = 0) A_WARN_UNUSED;
+
+}  // namespace Loader
+
+#endif  // RESOURCES_LOADERS_SPRITEDEFLOADER_H

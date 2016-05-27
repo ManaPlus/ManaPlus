@@ -32,6 +32,8 @@
 
 #include "resources/animation/animation.h"
 
+#include "resources/loaders/spritedefloader.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "resources/sprite/animationdelayload.h"
@@ -67,7 +69,7 @@ AnimatedSprite::AnimatedSprite(SpriteDef *restrict const sprite) :
 AnimatedSprite *AnimatedSprite::load(const std::string &restrict filename,
                                      const int variant)
 {
-    SpriteDef *restrict const s = resourceManager->getSprite(
+    SpriteDef *restrict const s = Loader::getSprite(
         filename, variant);
     if (!s)
         return nullptr;
