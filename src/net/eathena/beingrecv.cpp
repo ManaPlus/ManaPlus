@@ -380,8 +380,20 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         dstBeing->setGender(Being::intToGender(gender));
         dstBeing->setHairColor(hairColor);
         // Set these after the gender, as the sprites may be gender-specific
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        if (hairStyle == 0)
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                0,
+                std::string());
+        }
+        else
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                hairStyle * -1,
+                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        }
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
@@ -568,8 +580,20 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         dstBeing->setGender(Being::intToGender(gender));
         dstBeing->setHairColor(hairColor);
         // Set these after the gender, as the sprites may be gender-specific
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        if (hairStyle == 0)
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                0,
+                std::string());
+        }
+        else
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                hairStyle * -1,
+                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        }
         if (!serverFeatures->haveMove3())
         {
             Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
@@ -758,8 +782,20 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         dstBeing->setGender(Being::intToGender(gender));
         dstBeing->setHairColor(hairColor);
         // Set these after the gender, as the sprites may be gender-specific
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        if (hairStyle == 0)
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                0,
+                std::string());
+        }
+        else
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                hairStyle * -1,
+                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        }
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);

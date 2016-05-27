@@ -316,8 +316,18 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
         dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-        dstBeing->updateSprite(SPRITE_HAIR_COLOR, hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        if (hairStyle == 0)
+        {
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                0,
+                std::string());
+        }
+        else
+        {
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                hairStyle * -1,
+                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        }
         dstBeing->setHairColor(hairColor);
     }
     localPlayer->imitateOutfit(dstBeing);
@@ -448,8 +458,18 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
         dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-        dstBeing->updateSprite(SPRITE_HAIR_COLOR, hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        if (hairStyle == 0)
+        {
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                0,
+                std::string());
+        }
+        else
+        {
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                hairStyle * -1,
+                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        }
         dstBeing->setHairColor(hairColor);
     }
     localPlayer->imitateOutfit(dstBeing);
@@ -580,8 +600,18 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
         dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-        dstBeing->updateSprite(SPRITE_HAIR_COLOR, hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        if (hairStyle == 0)
+        {
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                0,
+                std::string());
+        }
+        else
+        {
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                hairStyle * -1,
+                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        }
         dstBeing->setHairColor(hairColor);
     }
     localPlayer->imitateOutfit(dstBeing);
@@ -794,8 +824,20 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        if (hairStyle == 0)
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                0,
+                std::string());
+        }
+        else
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                hairStyle * -1,
+                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        }
         dstBeing->setHairColor(hairColor);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
@@ -995,8 +1037,20 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         gender &= 3;
         dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR_COLOR, hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        if (hairStyle == 0)
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                0,
+                std::string());
+        }
+        else
+        {
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_HAIR_COLOR,
+                hairStyle * -1,
+                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+        }
         dstBeing->setHairColor(hairColor);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);

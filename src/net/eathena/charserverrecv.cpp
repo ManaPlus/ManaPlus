@@ -141,9 +141,16 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
 
     const ItemColor color = fromInt(msg.readInt16("hair color"), ItemColor);
     tempPlayer->setHairColor(color);
-    tempPlayer->setSprite(SPRITE_HAIR_COLOR, hairStyle * -1,
-        ItemDB::get(-hairStyle).getDyeColorsString(
-        color));
+    if (hairStyle == 0)
+    {
+        tempPlayer->setSprite(SPRITE_HAIR_COLOR, 0, std::string());
+    }
+    else
+    {
+        tempPlayer->setSprite(SPRITE_HAIR_COLOR, hairStyle * -1,
+            ItemDB::get(-hairStyle).getDyeColorsString(
+            color));
+    }
 
     const uint16_t look = msg.readInt16("clothes color");
     tempPlayer->setSubtype(fromInt(race, BeingTypeId), look);
