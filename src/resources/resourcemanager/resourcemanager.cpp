@@ -27,8 +27,10 @@
 
 #ifdef USE_OPENGL
 #include "resources/image.h"
-#include "resources/imageset.h"
 #endif  // USE_OPENGL
+
+#include "resources/imageset.h"
+
 #include "resources/memorymanager.h"
 
 #include "resources/sprite/spritedef.h"
