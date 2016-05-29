@@ -79,6 +79,6 @@ MapObjectList *ObjectsLayer::getAt(const unsigned x, const unsigned y) const
 
 int ObjectsLayer::calcMemoryLocal() const
 {
-    return sizeof(ObjectsLayer) +
-        (sizeof(MapObjectList) + sizeof(MapObjectList*)) * mWidth * mHeight;
+    return CAST_S32(sizeof(ObjectsLayer) +
+        (sizeof(MapObjectList) + sizeof(MapObjectList*)) * mWidth * mHeight);
 }

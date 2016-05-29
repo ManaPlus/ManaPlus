@@ -211,7 +211,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         BrowserLink bLink;
 
         // Check for links in format "@@link|Caption@@"
-        const unsigned int sz = mTextRows.size();
+        const uint32_t sz = CAST_U32(mTextRows.size());
 
         if (mEnableKeys)
         {
@@ -386,7 +386,9 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         FOR_EACH (TextRowCIter, i, mTextRows)
         {
             std::string tempRow = *i;
-            for (unsigned int j = 0, sz = tempRow.size(); j < sz; j++)
+            for (uint32_t j = 0, sz = CAST_U32(tempRow.size());
+                 j < sz;
+                 j++)
             {
                 const std::string character = tempRow.substr(j, 1);
                 x += CAST_U32(font->getWidth(character));

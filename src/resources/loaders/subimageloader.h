@@ -34,6 +34,6 @@ namespace Loader
                        const int y,
                        const int width,
                        const int height) A_WARN_UNUSED;
-}  // namespace SubImageLoader
+}  // namespace Loader
 
 #endif  // RESOURCES_RESOURCEMANAGER_SUBIMAGELOADER_H

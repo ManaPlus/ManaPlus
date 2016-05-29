@@ -20,8 +20,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "logger.h"
-
 #include "resources/image.h"
 #include "resources/imageset.h"
 
@@ -29,7 +27,6 @@
 
 #include "resources/loaders/subimagesetloader.h"
 
-#include "utils/checkutils.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"

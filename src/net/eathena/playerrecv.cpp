@@ -438,9 +438,9 @@ void PlayerRecv::processKilledBy(Net::MessageIn &msg)
     const Being *const dstBeing = actorManager->findBeing(id);
     if (id == BeingId_zero)
     {
-        debugMsg(strprintf(
+        debugMsg(
             // TRANSLATORS: player killed message
-            _("You were killed by unknown source.")));
+            _("You were killed by unknown source."));
     }
     else
     {

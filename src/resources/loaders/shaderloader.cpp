@@ -55,7 +55,7 @@ namespace
             return resource;
         }
     };
-}
+}  // namespace
 
 Resource *Loader::getShader(const unsigned int type,
                             const std::string &name)

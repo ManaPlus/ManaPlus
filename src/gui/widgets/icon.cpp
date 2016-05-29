@@ -30,8 +30,6 @@
 
 #include "resources/loaders/imageloader.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #include "debug.h"
 
 Icon::Icon(const Widget2 *const widget,

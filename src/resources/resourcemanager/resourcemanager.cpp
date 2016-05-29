@@ -24,31 +24,19 @@
 
 #include "configuration.h"
 #include "logger.h"
-#include "navigationmanager.h"
-
-#include "resources/map/walklayer.h"
 
 #ifdef USE_OPENGL
-#include "resources/atlas/atlasmanager.h"
-#include "resources/atlas/atlasresource.h"
-#else  // USE_OPENGL
 #include "resources/image.h"
-#endif  // USE_OPENGL
-#include "resources/imagehelper.h"
 #include "resources/imageset.h"
+#endif  // USE_OPENGL
 #include "resources/memorymanager.h"
-
-#include "resources/dye/dye.h"
-
-#include "resources/loaders/imageloader.h"
 
 #include "resources/sprite/spritedef.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
-#include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
-#include "utils/sdlcheckutils.h"
+#include "utils/physfstools.h"
 
 #ifdef USE_OPENGL
 #include "render/shaders/shader.h"

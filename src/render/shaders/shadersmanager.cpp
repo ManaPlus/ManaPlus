@@ -35,8 +35,6 @@
 
 #include "resources/loaders/shaderloader.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #include "utils/files.h"
 
 #include "debug.h"

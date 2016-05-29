@@ -1365,8 +1365,7 @@ std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
     if (item)
     {
         const std::vector<Item*> &items = item->getChilds();
-        const int sz = items.size();
-        logger->log("complexItemToStr size=%d", sz);
+        const size_t sz = items.size();
         if (!sz)
             return str;
 
@@ -1375,7 +1374,7 @@ std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
         str = strprintf("%d,%d",
             item2->getInvIndex(),
             item2->getQuantity());
-        for (int f = 1; f < sz; f ++)
+        for (size_t f = 1; f < sz; f ++)
         {
             str.append(";");
             item2 = items[f];

@@ -664,19 +664,23 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     {
         mAttributeLabel[i] = new Label(this, labels[i]);
         mAttributeLabel[i]->setWidth(70);
-        mAttributeLabel[i]->setPosition(mPadding, y + i * 24);
+        mAttributeLabel[i]->setPosition(mPadding,
+            y + CAST_S32(i * 24));
         mAttributeLabel[i]->adjustSize();
         add(mAttributeLabel[i]);
 
         mAttributeSlider[i] = new Slider(this, min, max, 1.0);
-        mAttributeSlider[i]->setDimension(Rect(140 + mPadding, y + i * 24,
-            150, 12));
+        mAttributeSlider[i]->setDimension(Rect(140 + mPadding,
+            y + CAST_S32(i * 24),
+            150,
+            12));
         mAttributeSlider[i]->setActionEventId("statslider");
         mAttributeSlider[i]->addActionListener(this);
         add(mAttributeSlider[i]);
 
         mAttributeValue[i] = new Label(this, toString(min));
-        mAttributeValue[i]->setPosition(295 + mPadding, y + i * 24);
+        mAttributeValue[i]->setPosition(295 + mPadding,
+            y + CAST_S32(i * 24));
         add(mAttributeValue[i]);
     }
 
@@ -688,7 +692,10 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     }
     else
     {
-        h = y + sz * 24 + mAttributesLeft->getHeight() + getPadding();
+        h = y +
+            CAST_S32(sz) * 24 +
+            mAttributesLeft->getHeight() +
+            getPadding();
     }
     if (serverFeatures->haveCreateCharGender() &&
         features.getIntValue("forceCharGender") == -1 &&

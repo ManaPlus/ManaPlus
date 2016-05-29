@@ -35,7 +35,6 @@
 
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
-#include "resources/sdlimagehelper.h"
 
 #include "resources/atlas/atlasitem.h"
 #include "resources/atlas/atlasresource.h"

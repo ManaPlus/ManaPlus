@@ -27,21 +27,12 @@
 
 #include "enums/simpletypes/append.h"
 
-#include "utils/stringvector.h"
-
 #include <map>
 #include <set>
 
 #include "localconsts.h"
 
-class Image;
-class ImageSet;
-class Map;
-class SDLMusic;
 class Resource;
-class SoundEffect;
-class SpriteDef;
-class WalkLayer;
 
 struct SDL_Surface;
 struct SDL_RWops;

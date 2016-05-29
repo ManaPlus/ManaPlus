@@ -20,7 +20,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "logger.h"
 #include "settings.h"
 
 #include "resources/loaders/spritedefloader.h"
@@ -29,7 +28,6 @@
 
 #include "resources/sprite/spritedef.h"
 
-#include "utils/checkutils.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
