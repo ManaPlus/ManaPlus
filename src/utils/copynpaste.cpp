@@ -40,7 +40,7 @@
 #ifdef USE_SDL2
 #include <SDL_clipboard.h>
 
-#else // USE_SDL2
+#else  // USE_SDL2
 
 #if defined(__APPLE__)
 #ifdef Status
@@ -58,7 +58,7 @@
 #include "utils/naclmessages.h"
 #endif
 
-#endif // USE_SDL2
+#endif  // USE_SDL2
 
 #ifdef USE_SDL2
 bool retrieveBuffer(std::string& text, size_t& pos)
