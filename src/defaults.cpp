@@ -90,7 +90,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("highlightAttackRange", false);
     AddDEF("highlightMapPortals", true);
     AddDEF("highlightMonsterAttackRange", false);
-    AddDEF("chatMaxCharLimit", 300);
+    AddDEF("chatMaxCharLimit", 512);
     AddDEF("lowTraffic", true);
     AddDEF("invertMoveDirection", 0);
     AddDEF("crazyMoveType", 1);
