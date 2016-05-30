@@ -86,7 +86,11 @@
 
 #ifdef USE_OPENGL
 #include "test/testmain.h"
-#endif
+#else  // USE_OPENGL
+#include "configuration.h"
+
+#include "render/renderers.h"
+#endif  // USE_OPENGL
 
 #include <SDL_syswm.h>
 
