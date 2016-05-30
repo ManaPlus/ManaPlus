@@ -18,6 +18,11 @@ manaplus_CXXFLAGS += -Werror
 dyecmd_CXXFLAGS += -Werror
 endif
 
+if USE_X11
+manaplus_CXXFLAGS += -DUSE_X11
+dyecmd_CXXFLAGS += -DUSE_X11
+endif
+
 if ENABLE_ASSERTS
 manaplus_CXXFLAGS += -DENABLE_ASSERTS
 dyecmd_CXXFLAGS += -DENABLE_ASSERTS
@@ -1802,6 +1807,10 @@ endif
 if ENABLE_ASSERTS
 manaplustests_CXXFLAGS += -DENABLE_ASSERTS
 manaplustests_LDFLAGS = -rdynamic
+endif
+
+if USE_X11
+manaplustests_CXXFLAGS += -DUSE_X11
 endif
 
 manaplustests_SOURCES = ${manaplus_SOURCES} \

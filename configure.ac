@@ -276,6 +276,7 @@ AC_CHECK_LIB(png, png_write_info, ,
 AC_MSG_ERROR([ *** Unable to find png library]))
 
 
+use_x11=no
 # === Check for X11 (check borrowed from Wormux) ========================
 # Deactivated on purpose under OSX (in case X11 SDK is installed)
 if test "x$OSX" != "xyes" ; then
@@ -289,10 +290,14 @@ if test "x$OSX" != "xyes" ; then
   if test x${check_x11} = xyes ; then
     AC_CHECK_LIB(X11, XOpenDisplay,
                  [ LIBS="$LIBS -lX11"
-                   AC_DEFINE(USE_X11, 1, [Define to use X11 copy'n'paste]) ],
+                   AC_DEFINE(USE_X11, 1, [Define to use X11 copy'n'paste])
+                   use_x11=yes
+                 ],
                  [])
   fi
 fi
+
+AM_CONDITIONAL(USE_X11, test x$use_x11 = xyes)
 
 # Checks for header files.
 AC_HEADER_STDC
