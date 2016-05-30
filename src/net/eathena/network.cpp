@@ -108,6 +108,7 @@ Network::~Network()
 void Network::registerHandlers()
 {
 #include "net/eathena/recvpackets.inc"
+RECVPACKETS_VOID
 }
 
 void Network::clearHandlers()

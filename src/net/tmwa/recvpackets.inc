@@ -21,6 +21,8 @@
 #ifndef NET_TMWA_RECVPACKETS_H
 #define NET_TMWA_RECVPACKETS_H
 
+#define RECVPACKETS_VOID
+
 #include "net/recvpacketdefine.h"
 
 #include "net/tmwa/packetsin.inc"

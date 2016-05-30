@@ -23,7 +23,8 @@ namespace EAthena
 #include "net/protocoloutdefine.h"
 #include "net/eathena/packetsout.inc"
 #undef packet
-
+PROTOCOLOUT_VOID
+PACKETSOUT_VOID
 }  // namespace EAthena
 
 #include "debug.h"

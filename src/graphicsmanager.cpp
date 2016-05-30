@@ -42,12 +42,11 @@
 #endif  // WIN32
 #endif  // USE_OPENGL
 
-#include "configuration.h"
-#include "logger.h"
-
 #include "settings.h"
 
 #ifdef USE_OPENGL
+#include "logger.h"
+
 #include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
@@ -58,7 +57,6 @@
 #include "render/opengl/mglcheck.h"
 #include "render/opengl/mglemu.h"
 #endif
-#include "render/renderers.h"
 #include "render/sdlgraphics.h"
 
 #ifdef USE_OPENGL

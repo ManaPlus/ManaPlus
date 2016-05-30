@@ -23,6 +23,8 @@
 #ifndef RESOURCES_UPDATEFILE_H
 #define RESOURCES_UPDATEFILE_H
 
+#include "localconsts.h"
+
 #include <string>
 
 struct UpdateFile final

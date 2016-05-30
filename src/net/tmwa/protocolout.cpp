@@ -23,7 +23,8 @@ namespace TmwAthena
 #include "net/protocoloutdefine.h"
 #include "net/tmwa/packetsout.inc"
 #undef packet
-
+PROTOCOLOUT_VOID
+PACKETSOUT_VOID
 }  // namesspace TmwAthena
 
 #include "debug.h"

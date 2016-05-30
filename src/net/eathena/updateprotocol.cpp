@@ -30,6 +30,8 @@
 extern int packetVersion;
 extern int serverVersion;
 
+PACKETSOUT_VOID
+#undef PACKETSOUT_VOID
 namespace EAthena
 {
 
@@ -47,5 +49,9 @@ void updateProtocol()
         network->registerHandlers();
     }
 }
+
+PACKETSOUT_VOID
+PROTOCOLOUTUPDATE_VOID
+PROTOCOLOUT_VOID
 
 }  // namespace EAthena

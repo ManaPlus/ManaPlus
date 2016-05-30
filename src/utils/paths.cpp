@@ -26,11 +26,12 @@
 
 #include "utils/paths.h"
 
-#include "utils/files.h"
 #include "utils/physfstools.h"
 #include "utils/stringutils.h"
 
 #ifdef USE_X11
+#include "utils/files.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 #endif
 

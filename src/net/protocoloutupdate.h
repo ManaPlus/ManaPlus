@@ -22,5 +22,6 @@
 #define NET_PROTOCOLOUTUPDATE_H
 
 #define packet(name, id, sz, comment) name = id
+#define PROTOCOLOUTUPDATE_VOID
 
 #endif  // NET_PROTOCOLOUTUPDATE_H

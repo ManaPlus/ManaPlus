@@ -21,6 +21,8 @@
 #ifndef NET_EATHENA_RECVPACKETS_H
 #define NET_EATHENA_RECVPACKETS_H
 
+#define RECVPACKETS_VOID
+
 #include "net/recvpacketdefine.h"
 
 #include "net/eathena/packetsin.inc"

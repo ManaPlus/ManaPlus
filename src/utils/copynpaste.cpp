@@ -35,17 +35,32 @@
 
 #include "utils/copynpaste.h"
 
-#include "render/graphics.h"
-
-#include "utils/sdlhelper.h"
-
-#include <SDL_syswm.h>
-
 #include "debug.h"
 
 #ifdef USE_SDL2
 #include <SDL_clipboard.h>
 
+#else // USE_SDL2
+
+#if defined(__APPLE__)
+#ifdef Status
+#undef Status
+#endif
+#include <Carbon/Carbon.h>
+#elif defined USE_X11
+#include "render/graphics.h"
+
+#include "utils/sdlhelper.h"
+
+#include <SDL_syswm.h>
+#include <unistd.h>
+#elif defined __native_client__
+#include "utils/naclmessages.h"
+#endif
+
+#endif // USE_SDL2
+
+#ifdef USE_SDL2
 bool retrieveBuffer(std::string& text, size_t& pos)
 {
     char *buf = SDL_GetClipboardText();
@@ -154,12 +169,6 @@ bool sendBuffer(const std::string &restrict text)
 }
 
 #elif defined(__APPLE__)
-
-#ifdef Status
-#undef Status
-#endif
-
-#include <Carbon/Carbon.h>
 
 // Sorry for the very long code, all nicer OS X APIs are coded in
 // Objective C and not C!
@@ -299,8 +308,6 @@ bool sendBuffer(const std::string &restrict text)
 }
 
 #elif defined USE_X11
-
-#include <unistd.h>
 
 static char* getSelection2(Display *const dpy, Window us, Atom selection,
                            Atom request_target)
@@ -471,8 +478,6 @@ static bool runxsel(const std::string &text, const char *p1, const char *p2)
 }
 
 #elif defined __native_client__
-
-#include "utils/naclmessages.h"
 
 bool retrieveBuffer(std::string& text, size_t& pos)
 {

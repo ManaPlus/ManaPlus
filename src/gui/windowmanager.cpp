@@ -35,7 +35,9 @@
 
 #include "gui/popups/textpopup.h"
 
-#ifndef DYECMD
+#ifdef DYECMD
+#include "render/graphics.h"
+#else  // DYECMD
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
@@ -46,7 +48,7 @@
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/helpwindow.h"
 #include "gui/windows/setupwindow.h"
-#endif
+#endif  // DYECMD
 
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
@@ -60,8 +62,6 @@
 #ifdef __native_client__
 #include "utils/naclmessages.h"
 #endif  // __native_client__
-
-#include "render/graphics.h"
 
 #ifdef ANDROID
 #ifndef USE_SDL2

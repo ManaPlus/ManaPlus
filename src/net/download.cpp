@@ -30,8 +30,6 @@
 
 #include <curl/curl.h>
 
-#include <SDL_thread.h>
-
 #include <zlib.h>
 
 #define CURLVERSION_ATLEAST(a, b, c) ((LIBCURL_VERSION_MAJOR > (a)) || \

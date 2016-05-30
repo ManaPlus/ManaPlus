@@ -38,7 +38,6 @@
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/physfsrwops.h"
-#include "utils/physfstools.h"
 
 #ifdef USE_OPENGL
 #include "render/shaders/shader.h"

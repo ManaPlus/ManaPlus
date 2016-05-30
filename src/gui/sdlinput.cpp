@@ -90,7 +90,6 @@
 #include "gui/gui.h"
 #endif
 
-#include <SDL_keyboard.h>
 #include <SDL_timer.h>
 
 #include "debug.h"

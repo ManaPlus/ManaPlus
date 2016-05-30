@@ -23,6 +23,8 @@
 
 #include "net/protocoloutinclude.h"
 
+#define PROTOCOLOUT_VOID
+
 namespace EAthena
 {
 #include "net/eathena/packetsout.inc"

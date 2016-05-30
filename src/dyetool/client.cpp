@@ -84,8 +84,6 @@
 #endif
 #endif
 
-#include <sys/stat.h>
-
 #include "debug.h"
 
 std::string errorMessage;

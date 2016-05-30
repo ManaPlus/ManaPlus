@@ -39,6 +39,10 @@
 
 #include "debug.h"
 
+#ifndef SDL_BYTEORDER
+#error missing SDL_endian.h
+#endif
+
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN
 static unsigned int *cR = nullptr;
 static unsigned int *cG = nullptr;

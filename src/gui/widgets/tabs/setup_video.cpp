@@ -22,8 +22,6 @@
 
 #include "gui/widgets/tabs/setup_video.h"
 
-#include "configuration.h"
-
 #include "gui/windowmanager.h"
 
 #include "gui/windows/okdialog.h"
@@ -50,8 +48,6 @@
 
 #include "gui/models/modelistmodel.h"
 #include "gui/models/opengllistmodel.h"
-
-#include "render/renderers.h"
 
 #include <sstream>
 

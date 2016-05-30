@@ -34,6 +34,10 @@
 
 #include "debug.h"
 
+#ifndef SDL_BYTEORDER
+#error missing SDL_endian.h
+#endif
+
 Dye::Dye(const std::string &restrict description)
 {
     for (int i = 0; i < dyePalateSize; ++i)

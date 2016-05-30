@@ -25,6 +25,8 @@
 
 #include "utils/stringvector.h"
 
+#include "localconsts.h"
+
 struct SpriteReference;
 
 struct SpriteDisplay final

@@ -23,6 +23,8 @@
 
 #include "net/protocoloutinclude.h"
 
+#define PROTOCOLOUT_VOID
+
 namespace TmwAthena
 {
 #include "net/tmwa/packetsout.inc"

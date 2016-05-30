@@ -22,8 +22,6 @@
 
 #include "maingui.h"
 
-#include "main.h"
-
 #include "client.h"
 #include "commandline.h"
 #include "settings.h"
@@ -43,11 +41,13 @@
 #endif
 
 #include <iostream>
-#include <unistd.h>
 
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-#include <SDL_version.h>
+
+#ifndef SDL_VERSIONNUM
+#error missing <SDL_version.h>
+#endif
 
 #define SDL_IMAGE_COMPILEDVERSION \
     SDL_VERSIONNUM(SDL_IMAGE_MAJOR_VERSION, \

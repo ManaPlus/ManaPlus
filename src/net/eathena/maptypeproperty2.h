@@ -21,6 +21,8 @@
 #ifndef NET_EATHENA_MAPTYPEPROPERTY2_H
 #define NET_EATHENA_MAPTYPEPROPERTY2_H
 
+#include "localconsts.h"
+
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>
 #else

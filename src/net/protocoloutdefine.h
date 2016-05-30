@@ -22,5 +22,6 @@
 #define NET_PROTOCOLOUTDEFINE_H
 
 #define packet(name, id, sz, comment) int name = id
+#define PROTOCOLOUT_VOID
 
 #endif  // NET_PROTOCOLOUTDEFINE_H

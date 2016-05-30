@@ -20,6 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define PACKETSOUT_VOID
+
 // 0
 packet(CMSG_SERVER_VERSION_REQUEST,       0x7530,   0, nullptr);
 

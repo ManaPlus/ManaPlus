@@ -30,6 +30,10 @@
 
 #include "debug.h"
 
+#ifndef SDL_BYTEORDER
+#error missing SDL_endian.h
+#endif
+
 SdlScreenshotHelper::SdlScreenshotHelper() :
     ScreenshotHelper()
 {

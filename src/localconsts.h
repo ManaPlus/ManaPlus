@@ -313,7 +313,7 @@
 #undef USE_FUZZER
 #endif
 #include "utils/perfomance.h"
-
+UTILS_PERFOMANCE_H  // guard for protect previous include
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
