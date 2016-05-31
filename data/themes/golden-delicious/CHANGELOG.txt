@@ -3,6 +3,21 @@ Legend:
 [*] Some changes or misc. stuff.
 [+] Something new.
 
+Version 0.3. Three years later I've finally spotted obvious bugs.
+Changes;
+ [!] Fixed items window theming: selected slot had odd appearance.
+
+TODO:
+ [*] Backport "glamourous" close button highlight from XFWM4 version
+     of this theme (yes, it exists). Not a low-hanging fruit: should
+     recompute button positions, could cause some visual glitches.
+ [*] Theme should use different colors for "channel" and "whisper" tabs!
+ [*] I do not like checkboxes. It coud be done better than that.
+ [*] My hourglass isn't best pixel art ever and could be improved.
+ [*] Now progressbars could use bitmaps. This apparently allows superb
+     appearance of progressbars. Should give it a try!
+ [*] Mouse cursors could match theme a bit better than that.
+
 Version 0.2. Reworked lot stuff and recolored a bit. 
 Load of "new" ManaPlus compatibility improvements.
 
@@ -16,7 +31,7 @@ Changes:
      and "new" manaplus.
  [!] Reduced artefacts caused by window bitmap texture due to tiling.
  [!] Fixed color of item protection background in shop windows.
- [!] Fixed keyboard icon cloring.
+ [!] Fixed keyboard icon coloring.
  [!] Fixed joystick frame appearance.
  [!] Fixed joystick arrows invisible on some maps (jewelry bug!).
  [!] Fixed quest log icons to match theme.

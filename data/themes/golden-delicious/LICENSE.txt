@@ -1,5 +1,5 @@
 "Golden Delicious" theme by t3st3r [aka Hello=)].
-(c) 2013. Some rights reserved.
+(c) 2016. Some rights reserved.
 
 This work is based on "Jewelry" theme by Francesco Miglietta (aka Hal9000)
 and therefore also comes under same CC-BY-SA license, version 3, or at
