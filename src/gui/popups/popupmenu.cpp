@@ -25,6 +25,7 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "party.h"
+#include "settings.h"
 
 #include "being/flooritem.h"
 #include "being/localplayer.h"
@@ -742,6 +743,12 @@ void PopupMenu::showMapPopup(const int x, const int y,
     // TRANSLATORS: popup menu item
     // TRANSLATORS: move camera to map item
     mBrowserBox->addRow("/movecamera 'X' 'Y'", _("Move camera"));
+    if (settings.cameraMode != 0)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: restore camera to default view
+        mBrowserBox->addRow("/restorecamera", _("Restore camera"));
+    }
     mBrowserBox->addRow("##3---");
     if (isMinimap)
     {
