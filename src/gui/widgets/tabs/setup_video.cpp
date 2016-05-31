@@ -50,6 +50,8 @@
 #include "configuration.h"
 
 #include "utils/stringutils.h"
+
+#include "render/renderers.h"
 #endif
 
 #include "gui/models/modelistmodel.h"
