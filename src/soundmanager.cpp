@@ -483,14 +483,21 @@ void SoundManager::playSfx(const std::string &path,
 
 void SoundManager::playGuiSound(const std::string &name)
 {
+    const std::string sound = config.getStringValue(name);
+    if (sound == "(no sound)")
+        return;
     playGuiSfx(branding.getStringValue("systemsounds").append(
-        config.getStringValue(name)).append(".ogg"));
+        sound).append(".ogg"));
 }
 
 void SoundManager::playGuiSfx(const std::string &path)
 {
-    if (!mInstalled || path.empty() || !mPlayGui)
+    if (!mInstalled ||
+        !mPlayGui ||
+        path.empty())
+    {
         return;
+    }
 
     std::string tmpPath;
     if (!path.compare(0, 4, "sfx/"))
