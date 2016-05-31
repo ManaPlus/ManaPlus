@@ -6,13 +6,13 @@ Legend:
 Version 0.3. Three years later I've finally spotted obvious bugs.
 Changes;
  [!] Fixed items window theming: selected slot had odd appearance.
+ [+] Redrawn checkboxes in hope to improve their appearance.
 
 TODO:
  [*] Backport "glamourous" close button highlight from XFWM4 version
      of this theme (yes, it exists). Not a low-hanging fruit: should
      recompute button positions, could cause some visual glitches.
  [*] Theme should use different colors for "channel" and "whisper" tabs!
- [*] I do not like checkboxes. It coud be done better than that.
  [*] My hourglass isn't best pixel art ever and could be improved.
  [*] Now progressbars could use bitmaps. This apparently allows superb
      appearance of progressbars. Should give it a try!
