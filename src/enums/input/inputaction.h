@@ -671,6 +671,7 @@ enumStart(InputAction)
     ADOPT_CHILD,
     DUMP_MEMORY_USAGE,
     SET_EMOTE_TYPE,
+    CAMERA_RESTORE,
     TOTAL
 }
 enumEnd(InputAction);

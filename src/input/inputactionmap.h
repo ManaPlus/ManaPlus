@@ -5515,6 +5515,12 @@ static const InputActionData inputActionData
         "setemotetype",
         UseArgs_true,
         Protected_true},
+    {"keyCameraRestore",
+        defaultAction(&Actions::restoreCamera),
+        InputCondition::INGAME,
+        "restorecamera|returncamera|camerarestore",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction

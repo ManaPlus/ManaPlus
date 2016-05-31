@@ -50,6 +50,7 @@ namespace Actions
     decHandler(navigate);
     decHandler(navigateTo);
     decHandler(moveCamera);
+    decHandler(restoreCamera);
     decHandler(imitation);
     decHandler(sendMail);
     decHandler(info);

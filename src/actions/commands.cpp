@@ -522,6 +522,15 @@ impHandler(moveCamera)
     return true;
 }
 
+impHandler0(restoreCamera)
+{
+    if (!viewport)
+        return false;
+
+    viewport->returnCamera();
+    return true;
+}
+
 impHandler(imitation)
 {
     if (!localPlayer)
