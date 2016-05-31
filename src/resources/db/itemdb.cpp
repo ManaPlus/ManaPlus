@@ -163,9 +163,9 @@ namespace
         // TRANSLATORS: item info label (max weight)
         { "maxweight",   N_("Max weight %s"),  true },
         // TRANSLATORS: item info label (job experience)
-        { "jobexp",      N_("Job exp. %s"),    true }
+        { "jobexp",      N_("Job exp. %s"),    true },
         // TRANSLATORS: item info label (hp recover rate)
-        { "hprecover",   N_("Hp recov. rate %s"), true }
+        { "hprecover",   N_("Hp recov. rate %s"), true },
         // TRANSLATORS: item info label (sp/mana recover rate)
         { "sprecover",   N_("Sp recov. rate %s"), true }
     };
