@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir tmp
 cd ..
 
 dir=`pwd`
@@ -20,13 +21,14 @@ export CXXFLAGS="-pedantic -ggdb3 -O5 -pipe -ffast-math \
 source ./build/gcc6flags.sh
 
 autoreconf -i
-./configure --prefix=$dir/run \
+cd build/tmp
+../../configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
 --mandir=$dir/run/share/man
 
 cd po
-make -j8 update-gmo 2>../build/make1.log
+make -j8 update-gmo 2>../../make1.log
 cd ..
-make -j8 2>build/make2.log
+make -j8 2>../make2.log
 

@@ -1,2 +1,2 @@
-cd ..
+cd tmp
 make install
