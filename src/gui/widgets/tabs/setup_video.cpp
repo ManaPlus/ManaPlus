@@ -46,6 +46,12 @@
 #include "test/testmain.h"
 #endif
 
+#ifndef USE_OPENGL
+#include "configuration.h"
+
+#include "utils/stringutils.h"
+#endif
+
 #include "gui/models/modelistmodel.h"
 #include "gui/models/opengllistmodel.h"
 
