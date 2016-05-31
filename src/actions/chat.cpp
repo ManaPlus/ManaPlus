@@ -250,14 +250,20 @@ impHandler(msg)
     {
         if (!chatWindow)
             return false;
-        chatWindow->addWhisper(recvnick, message, ChatMsgType::BY_PLAYER);
+        ChatTab *const tab = chatWindow->addChatTab(recvnick, false, true);
+        if (tab)
+        {
+            chatWindow->saveState();
+            tab->chatInput(message);
+        }
     }
     else
     {
         if (event.tab)
         {
-            // TRANSLATORS: whisper send
-            event.tab->chatLog(_("Cannot send empty whispers!"),
+            event.tab->chatLog(
+                // TRANSLATORS: whisper send
+                _("Cannot send empty whisper or channel message!"),
                 ChatMsgType::BY_SERVER);
         }
     }
