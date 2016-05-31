@@ -7,6 +7,12 @@ Version 0.3. Three years later I've finally spotted obvious bugs.
 Changes;
  [!] Fixed items window theming: selected slot had odd appearance.
  [+] Redrawn checkboxes in hope to improve their appearance.
+ [*] Misc fixes/improvements for buttons and tabs. Tabs use more
+     consistent bit patterns, highlight strengtened a bit. Buttons
+     are also using more consistent patterns, bevels are less bright
+     and pressing buttons are a bit more convincing since bit patterns
+     now also move accordingly.
+
 
 TODO:
  [*] Backport "glamourous" close button highlight from XFWM4 version
