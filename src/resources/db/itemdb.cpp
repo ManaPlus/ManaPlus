@@ -32,6 +32,8 @@
 #include "resources/iteminfo.h"
 #include "resources/itemtypemapdata.h"
 
+#include "resources/item/itemfieldtype.h"
+
 #include "resources/sprite/spritereference.h"
 
 #include "resources/db/itemdbstat.h"
@@ -77,26 +79,7 @@ static int parseDirectionName(const std::string &name);
 
 namespace
 {
-    struct FieldType final
-    {
-#ifdef ADVGCC
-        FieldType(const char *const name0,
-                  const char *const description0,
-                  const bool sign0) :
-            name(name0),
-            description(description0),
-            sign(sign0)
-        { }
-
-        A_DELETE_COPY(FieldType)
-#endif
-
-        const char *name;
-        const char *description;
-        const bool sign;
-    };
-
-    static const FieldType fields[] =
+    static const ItemFieldType fields[] =
     {
         // TRANSLATORS: item info label (attack)
         { "attack",      N_("Attack %s"),      true },
@@ -573,14 +556,16 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         std::string effect;
         for (size_t i = 0; i < sizeof(fields) / sizeof(fields[0]); ++ i)
         {
-            std::string value = XML::getProperty(node, fields[i].name, "");
+            std::string value = XML::getProperty(node,
+                fields[i].name.c_str(),
+                "");
             if (value.empty())
                 continue;
             if (!effect.empty())
                 effect.append(" / ");
             if (fields[i].sign && isDigit(value))
                 value = "+" + value;
-            effect.append(strprintf(gettext(fields[i].description),
+            effect.append(strprintf(gettext(fields[i].description.c_str()),
                 value.c_str()));
         }
         FOR_EACH (std::vector<Stat>::const_iterator, it, extraStats)

@@ -1008,6 +1008,7 @@ SET(SRCS
     resources/item/complexitem.h
     resources/item/item.cpp
     resources/item/item.h
+    resources/item/itemfieldtype.h
     itemcolormanager.cpp
     itemcolormanager.h
     gui/shortcut/itemshortcut.cpp
