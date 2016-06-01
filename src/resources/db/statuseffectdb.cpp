@@ -150,12 +150,13 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName,
         StatusEffect *startEffect = statusEffects[1][id];
         StatusEffect *endEffect = statusEffects[0][id];
         const std::string name = XML::getProperty(node, "name", "");
+        const std::string name2 = XML::langProperty(node, "name", "");
         if (!startEffect)
             startEffect = new StatusEffect;
         if (!endEffect)
             endEffect = new StatusEffect;
 
-        startEffect->mName = name;
+        startEffect->mName = name2;
         startEffect->mIsPoison =
             (name == paths.getStringValue("poisonEffectName"));
         startEffect->mIsCart =
