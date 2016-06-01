@@ -109,6 +109,7 @@
 #include "resources/db/homunculusdb.h"
 #include "resources/db/horsedb.h"
 #include "resources/db/itemdb.h"
+#include "resources/db/itemfielddb.h"
 #include "resources/db/sounddb.h"
 #include "resources/db/mapdb.h"
 #include "resources/db/mercenarydb.h"
@@ -586,6 +587,7 @@ void Client::gameClear()
     SoundDB::unload();
     EmoteDB::unload();
     ItemDB::unload();
+    ItemFieldDb::unload();
 #ifdef EATHENA_SUPPORT
     const ServerTypeT type = Net::getNetworkType();
     if (type == ServerType::EATHENA ||
@@ -1310,6 +1312,7 @@ int Client::gameExec()
                     ColorDB::load();
                     SoundDB::load();
                     MapDB::load();
+                    ItemFieldDb::load();
                     ItemDB::load();
                     Being::load();
 #ifdef EATHENA_SUPPORT

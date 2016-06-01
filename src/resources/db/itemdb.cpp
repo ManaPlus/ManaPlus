@@ -37,6 +37,7 @@
 #include "resources/sprite/spritereference.h"
 
 #include "resources/db/itemdbstat.h"
+#include "resources/db/itemfielddb.h"
 
 #include "net/serverfeatures.h"
 
@@ -76,83 +77,6 @@ static void loadOrderSprite(ItemInfo *const itemInfo,
                             const bool drawAfter) A_NONNULL(1);
 static int parseSpriteName(const std::string &name);
 static int parseDirectionName(const std::string &name);
-
-namespace
-{
-    static const ItemFieldType fields[] =
-    {
-        // TRANSLATORS: item info label (attack)
-        { "attack",      N_("Attack %s"),      true },
-        // TRANSLATORS: item info label (min attack)
-        { "minattack",   N_("Min attack %s"),  true },
-        // TRANSLATORS: item info label (max attack)
-        { "maxattack",   N_("Max attack %s"),  true },
-        // TRANSLATORS: item info label (attack)
-        { "criticalattack", N_("Critical attack %s"), true },
-        // TRANSLATORS: item info label (magic attack)
-        { "mattack",     N_("M. Attack %s"),   true },
-        // TRANSLATORS: item info label (defence)
-        { "defense",     N_("Defense %s"),     true },
-        // TRANSLATORS: item info label (min defence)
-        { "mindefense",  N_("Min defense %s"), true },
-        // TRANSLATORS: item info label (max defence)
-        { "maxdefense",  N_("Max defense %s"), true },
-        // TRANSLATORS: item info label (critical defence)
-        { "criticaldefense", N_("Critical defense %s"), true },
-        // TRANSLATORS: item info label (magic defence)
-        { "mdefense",    N_("M. Defense %s"),  true },
-        // TRANSLATORS: item info label (min magic defence)
-        { "minmdefense", N_("Min M. Defense %s"), true },
-        // TRANSLATORS: item info label (max magic defence)
-        { "maxmdefense", N_("Max M. Defense %s"), true },
-        // TRANSLATORS: item info label (health)
-        { "hp",          N_("HP %s"),          true },
-        // TRANSLATORS: item info label (max health)
-        { "maxhp",       N_("Max HP %s"),      true },
-        // TRANSLATORS: item info label (mana)
-        { "mp",          N_("MP %s"),          true },
-        // TRANSLATORS: item info label (max mana)
-        { "maxmp",       N_("Max MP %s"),      true },
-        // TRANSLATORS: item info label (level)
-        { "level",       N_("Level %s"),       false },
-        // TRANSLATORS: item info label (moving speed)
-        { "speed",       N_("Speed %s"),       true },
-        // TRANSLATORS: item info label (moving speed)
-        { "atkspeed",    N_("Attack speed %s"), true },
-        // TRANSLATORS: item info label (attack range)
-        { "range",       N_("Range %s"),       true },
-        // TRANSLATORS: item info label (flee)
-        { "flee",        N_("Flee %s"),        true },
-        // TRANSLATORS: item info label (min flee)
-        { "minflee",     N_("Min flee %s"),    true },
-        // TRANSLATORS: item info label (max flee)
-        { "maxflee",     N_("Max flee %s"),    true },
-        // TRANSLATORS: item info label (accuracy)
-        { "hit",         N_("Perc. accuracy %s"),  true },
-        // TRANSLATORS: item info label (min flee)
-        { "minflee",     N_("Min flee %s"),    true },
-        // TRANSLATORS: item info label (max flee)
-        { "maxflee",     N_("Max flee %s"),    true },
-        // TRANSLATORS: item info label (card slots number)
-        { "cardslots",   N_("Card slots %s"),  false },
-        // TRANSLATORS: item info label (experience)
-        { "exp",         N_("Experience %s"),  true },
-        // TRANSLATORS: item info label (karma)
-        { "karma",       N_("Karma %s"),       true },
-        // TRANSLATORS: item info label (manner)
-        { "manner",      N_("Manner %s"),      true },
-        // TRANSLATORS: item info label (money)
-        { "money",       N_("Money %s"),       true },
-        // TRANSLATORS: item info label (max weight)
-        { "maxweight",   N_("Max weight %s"),  true },
-        // TRANSLATORS: item info label (job experience)
-        { "jobexp",      N_("Job exp. %s"),    true },
-        // TRANSLATORS: item info label (hp recover rate)
-        { "hprecover",   N_("Hp recov. rate %s"), true },
-        // TRANSLATORS: item info label (sp/mana recover rate)
-        { "sprecover",   N_("Sp recov. rate %s"), true }
-    };
-}  // namespace
 
 static std::vector<ItemDB::Stat> extraStats;
 
@@ -206,6 +130,29 @@ static std::string useButton2FromItemType(const ItemDbTypeT &type)
     }
     logger->log("Unknown item type");
     return std::string();
+}
+
+static void readFields(std::string &effect,
+                       const XmlNodePtr node,
+                       const ItemFieldDb::FieldInfos &fields)
+{
+    FOR_EACH (ItemFieldDb::FieldInfos::const_iterator, it, fields)
+    {
+        const std::string fieldName = (*it).first;
+        const ItemFieldType *const field = (*it).second;
+
+        std::string value = XML::getProperty(node,
+            fieldName.c_str(),
+            "");
+        if (value.empty())
+            continue;
+        if (!effect.empty())
+            effect.append(" / ");
+        if (field->sign && isDigit(value))
+            value = "+" + value;
+        effect.append(strprintf(gettext(field->description.c_str()),
+            value.c_str()));
+    }
 }
 
 static void initStatic()
@@ -312,6 +259,11 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         mLoaded = true;
         return;
     }
+
+    const ItemFieldDb::FieldInfos &requiredFields =
+        ItemFieldDb::getRequiredFields();
+    const ItemFieldDb::FieldInfos &addFields =
+        ItemFieldDb::getAddFields();
 
     for_each_xml_child_node(node, rootNode)
     {
@@ -554,20 +506,8 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             node, "pickupCursor", "pickup"));
 
         std::string effect;
-        for (size_t i = 0; i < sizeof(fields) / sizeof(fields[0]); ++ i)
-        {
-            std::string value = XML::getProperty(node,
-                fields[i].name.c_str(),
-                "");
-            if (value.empty())
-                continue;
-            if (!effect.empty())
-                effect.append(" / ");
-            if (fields[i].sign && isDigit(value))
-                value = "+" + value;
-            effect.append(strprintf(gettext(fields[i].description.c_str()),
-                value.c_str()));
-        }
+        readFields(effect, node, requiredFields);
+        readFields(effect, node, addFields);
         FOR_EACH (std::vector<Stat>::const_iterator, it, extraStats)
         {
             std::string value = XML::getProperty(

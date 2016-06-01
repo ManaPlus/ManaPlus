@@ -576,6 +576,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("itemsFile", "items.xml");
     AddDEF("itemsPatchFile", "items_patch.xml");
     AddDEF("itemsPatchDir", "items.d");
+    AddDEF("itemFieldsFile", "itemfields.xml");
+    AddDEF("itemFieldsPatchFile", "itemfields_patch.xml");
+    AddDEF("itemFieldsPatchDir", "itemfields.d");
     AddDEF("avatarsFile", "avatars.xml");
     AddDEF("avatarsPatchFile", "avatars_patch.xml");
     AddDEF("avatarsPatchDir", "avatars.d");
