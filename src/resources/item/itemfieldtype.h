@@ -27,7 +27,6 @@
 
 struct ItemFieldType final
 {
-#ifdef ADVGCC
     ItemFieldType(const std::string &name0,
                   const std::string &description0,
                   const bool sign0) :
@@ -37,7 +36,6 @@ struct ItemFieldType final
     { }
 
     A_DELETE_COPY(ItemFieldType)
-#endif
 
     const std::string name;
     const std::string description;
