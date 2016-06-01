@@ -660,6 +660,7 @@ SET(SRCS
     resources/db/itemdb.h
     resources/db/itemdbstat.h
     resources/db/itemfielddb.cpp
+    resources/db/itemfielddb.h
     resources/iteminfo.h
     resources/iteminfo.cpp
     resources/itemslot.h
