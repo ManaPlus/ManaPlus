@@ -2,10 +2,10 @@
 <skinset name="Default" image="window.png">
     <widget type="Window" xpos="260" ypos="0">
         <option name="captionoffsetx" value="20" /> 
-        <option name="captionoffsety" value="7" />
+        <option name="captionoffsety" value="8" />
         <option name="padding" value="8" />
         <option name="titlebarBold" value="1" />
-        <option name="titlePadding" value="25" />
+        <option name="titlePadding" value="20" />
 
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="20" height="53" />
@@ -22,7 +22,8 @@
         <part type="bottom-edge" xpos="31" ypos="79" width="28" height="28" />
         <part type="bottom-right-corner" xpos="80" ypos="79" width="30" height="28" />
 
-        <part type="closeImage" xpos="-163" ypos="0" width="22" height="22" />
-        <part type="closeImageHighlighted" xpos="-138" ypos="0" width="22" height="22" />
+        <!-- Buttons -->
+        <part type="closeImage" xpos="-163" ypos="2" width="22" height="27" />
+        <part type="closeImageHighlighted" xpos="-138" ypos="2" width="22" height="27" />
     </widget>
 </skinset>

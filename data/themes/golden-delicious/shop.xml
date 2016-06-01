@@ -4,9 +4,9 @@
         <option name="showbuybackground" value="1" />
         <option name="showsellbackground" value="1" />
         <option name="captionoffsetx" value="20" /> 
-        <option name="captionoffsety" value="7" />
+        <option name="captionoffsety" value="8" />
         <option name="titlebarBold" value="1" />
-        <option name="titlebarHeight" value="35" />
+        <option name="titlebarHeight" value="27" />
         <option name="padding" value="10" />
 
         <!-- Top Row -->
@@ -24,7 +24,8 @@
         <part type="bottom-edge" xpos="31" ypos="79" width="48" height="28" />
         <part type="bottom-right-corner" xpos="80" ypos="79" width="30" height="28" />
 
-        <part type="closeImage" xpos="-163" ypos="0" width="22" height="22" />
-        <part type="closeImageHighlighted" xpos="-138" ypos="0" width="22" height="22" />
+        <!-- Buttons -->
+        <part type="closeImage" xpos="-163" ypos="2" width="22" height="27" />
+        <part type="closeImageHighlighted" xpos="-138" ypos="2" width="22" height="27" />
     </widget>
 </skinset>
