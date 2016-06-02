@@ -72,6 +72,8 @@ namespace ItemDB
 
 #ifdef UNITTESTS
     ItemDB::NamedItemInfos &getNamedItemInfosTest();
+
+    ItemDB::ItemInfos &getItemInfosTest();
 #endif
 
     int getTagId(const std::string &tagName) A_WARN_UNUSED;

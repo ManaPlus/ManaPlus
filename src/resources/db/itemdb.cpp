@@ -1074,4 +1074,9 @@ ItemDB::NamedItemInfos &ItemDB::getNamedItemInfosTest()
 {
     return mNamedItemInfos;
 }
+
+ItemDB::ItemInfos &ItemDB::getItemInfosTest()
+{
+    return mItemInfos;
+}
 #endif
