@@ -27,6 +27,7 @@
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -147,7 +148,7 @@ BeingInfo *MonsterDB::get(const BeingTypeId id)
             id, int) + OLD_TMWATHENA_OFFSET, BeingTypeId));
         if (i == mMonsterInfos.end())
         {
-            logger->log("MonsterDB: Warning, unknown monster ID %d requested",
+            reportAlways("MonsterDB: Warning, unknown monster ID %d requested",
                 toInt(id, int));
             return BeingInfo::unknown;
         }

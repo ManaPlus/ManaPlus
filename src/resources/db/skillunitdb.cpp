@@ -30,6 +30,7 @@
 
 #include "resources/sprite/spritereference.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -86,7 +87,7 @@ void SkillUnitDb::loadXmlFile(const std::string &fileName,
             skillUnitNode, "id", -1), BeingTypeId);
         if (id == BeingTypeId_negOne)
         {
-            logger->log("SkillUnitDb: skill unit with missing ID in %s!",
+            reportAlways("SkillUnitDb: skill unit with missing ID in %s!",
                 paths.getStringValue("skillUnitsFile").c_str());
             continue;
         }
@@ -150,7 +151,8 @@ BeingInfo *SkillUnitDb::get(const BeingTypeId id)
 
     if (i == mSkillUnitInfos.end())
     {
-        logger->log("SkillUnitDb: Warning, unknown skill unit id %d requested",
+        reportAlways("SkillUnitDb: Warning, unknown skill unit id "
+            "%d requested",
             toInt(id, int));
         return BeingInfo::unknown;
     }

@@ -23,6 +23,7 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "utils/checkutils.h"
 #include "utils/files.h"
 
 #include "resources/dye/dyecolor.h"
@@ -58,7 +59,7 @@ void PaletteDB::loadPalette()
     }
     if (*it != "GIMP Palette")
     {
-        logger->log("wrong GIMP palette file");
+        reportAlways("wrong GIMP palette file");
         return;
     }
     ++ it;

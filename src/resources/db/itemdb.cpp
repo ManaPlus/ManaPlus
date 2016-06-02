@@ -282,7 +282,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
 
         if (id == 0)
         {
-            logger->log("ItemDB: Invalid or missing item ID in %s!",
+            reportAlways("ItemDB: Invalid or missing item ID in %s!",
                 fileName.c_str());
             continue;
         }
@@ -372,8 +372,9 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             }
             else
             {
-                logger->log("Inherit item %d from not existing item %d",
-                    id, inherit);
+                reportAlways("Inherit item %d from not existing item %d",
+                    id,
+                    inherit);
             }
         }
 
@@ -610,7 +611,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         {
             if (attackRange == 0)
             {
-                logger->log("ItemDB: Missing attack range from weapon %i!",
+                reportAlways("ItemDB: Missing attack range from weapon %i!",
                     id);
             }
         }
@@ -695,8 +696,8 @@ const ItemInfo &ItemDB::get(const std::string &name)
     {
         if (!name.empty())
         {
-            logger->log("ItemDB: Warning, unknown item name \"%s\"",
-                        name.c_str());
+            reportAlways("ItemDB: Warning, unknown item name \"%s\"",
+                name.c_str());
         }
         return *mUnknown;
     }
@@ -869,7 +870,7 @@ static void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
     }
     else
     {
-        logger->log("ItemDB: Ignoring unknown sound event '%s'",
+        reportAlways("ItemDB: Ignoring unknown sound event '%s'",
             event.c_str());
     }
 }

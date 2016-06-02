@@ -29,6 +29,8 @@
 
 #include "listeners/debugmessagelistener.h"
 
+#include "utils/checkutils.h"
+
 #include "resources/beingcommon.h"
 
 #include "debug.h"
@@ -62,12 +64,8 @@ StatusEffect *StatusEffectDB::getStatusEffect(const int index,
     const std::map<int, StatusEffect *>::iterator it = effects.find(index);
     if (it != effects.end())
         return (*it).second;
-    if (config.getBoolValue("unimplimentedLog"))
-    {
-        const std::string str = strprintf("Missing status effect: %d", index);
-        logger->log(str);
-        DebugMessageListener::distributeEvent(str);
-    }
+    reportAlways("Missing status effect: %d",
+        index);
     return nullptr;
 }
 

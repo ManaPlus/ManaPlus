@@ -24,6 +24,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "utils/checkutils.h"
+
 #include "resources/beingcommon.h"
 
 #include "debug.h"
@@ -107,7 +109,7 @@ void ColorDB::loadHair(const std::string &fileName,
 
             if (colors.find(id) != colors.end())
             {
-                logger->log("ColorDB: Redefinition of dye ID %d",
+                reportAlways("ColorDB: Redefinition of dye ID %d",
                     toInt(id, int));
             }
 
@@ -189,7 +191,7 @@ std::string &ColorDB::getHairColorName(const ItemColor id)
     const ColorListsIterator it = mColorLists.find("hair");
     if (it == mColorLists.end())
     {
-        logger->log1("ColorDB: Error, hair colors list empty");
+        reportAlways("ColorDB: Error, hair colors list empty");
         return mFail;
     }
 
@@ -197,7 +199,8 @@ std::string &ColorDB::getHairColorName(const ItemColor id)
 
     if (i == (*it).second.end())
     {
-        logger->log("ColorDB: Error, unknown dye ID# %d", toInt(id, int));
+        reportAlways("ColorDB: Error, unknown dye ID# %d",
+            toInt(id, int));
         return mFail;
     }
     else

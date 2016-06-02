@@ -30,6 +30,7 @@
 
 #include "resources/sprite/spritereference.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -87,7 +88,7 @@ void PETDB::loadXmlFile(const std::string &fileName,
             petNode, "id", -1), BeingTypeId);
         if (id == BeingTypeId_negOne)
         {
-            logger->log("PET Database: PET with missing ID in %s!",
+            reportAlways("PET Database: PET with missing ID in %s!",
                 paths.getStringValue("petsFile").c_str());
             continue;
         }
@@ -200,7 +201,7 @@ BeingInfo *PETDB::get(const BeingTypeId id)
 
     if (i == mPETInfos.end())
     {
-        logger->log("PETDB: Warning, unknown PET ID %d requested",
+        reportAlways("PETDB: Warning, unknown PET ID %d requested",
             toInt(id, int));
         return BeingInfo::unknown;
     }

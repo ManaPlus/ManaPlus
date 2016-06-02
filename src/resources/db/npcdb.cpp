@@ -30,6 +30,7 @@
 
 #include "resources/sprite/spritereference.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
@@ -88,7 +89,7 @@ void NPCDB::loadXmlFile(const std::string &fileName,
         BeingInfo *currentInfo = nullptr;
         if (id == BeingTypeId_zero)
         {
-            logger->log("NPC Database: NPC with missing ID in %s!",
+            reportAlways("NPC Database: NPC with missing ID in %s!",
                 paths.getStringValue("npcsFile").c_str());
             continue;
         }
@@ -172,7 +173,7 @@ BeingInfo *NPCDB::get(const BeingTypeId id)
 
     if (i == mNPCInfos.end())
     {
-        logger->log("NPCDB: Warning, unknown NPC ID %d requested",
+        reportAlways("NPCDB: Warning, unknown NPC ID %d requested",
             toInt(id, int));
         return BeingInfo::unknown;
     }

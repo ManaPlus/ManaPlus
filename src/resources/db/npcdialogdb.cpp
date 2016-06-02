@@ -26,6 +26,7 @@
 #include "resources/beingcommon.h"
 #include "resources/npcdialoginfo.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 
 #include "debug.h"
@@ -74,7 +75,7 @@ static void loadNpcDialogMenu(NpcDialogInfo *const dialog,
             button->image = XML::getProperty(childNode, "image", "");
             if (button->name.empty() && button->image.empty())
             {
-                logger->log("Error: npc button without name or image");
+                reportAlways("Error: npc button without name or image");
                 delete button;
                 continue;
             }
@@ -89,7 +90,7 @@ static void loadNpcDialogMenu(NpcDialogInfo *const dialog,
             const std::string image = XML::getProperty(childNode, "image", "");
             if (image.empty())
             {
-                logger->log("Error: no image attribute found in image tag.");
+                reportAlways("Error: no image attribute found in image tag.");
                 continue;
             }
             NpcImageInfo *const imageInfo = new NpcImageInfo;
@@ -105,7 +106,7 @@ static void loadNpcDialogMenu(NpcDialogInfo *const dialog,
             const std::string text = XML::getProperty(childNode, "text", "");
             if (text.empty())
             {
-                logger->log("Error: no text attribute found in text tag.");
+                reportAlways("Error: no text attribute found in text tag.");
                 continue;
             }
             NpcTextInfo *const textInfo = new NpcTextInfo;

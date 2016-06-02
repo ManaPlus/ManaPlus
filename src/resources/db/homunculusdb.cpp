@@ -27,6 +27,7 @@
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 
 #include "configuration.h"
@@ -140,7 +141,7 @@ BeingInfo *HomunculusDB::get(const BeingTypeId id)
         i = mHomunculusInfos.find(id);
         if (i == mHomunculusInfos.end())
         {
-            logger->log("HomunculusDB: Warning, unknown homunculus ID "
+            reportAlways("HomunculusDB: Warning, unknown homunculus ID "
                 "%d requested",
                 toInt(id, int));
             return BeingInfo::unknown;

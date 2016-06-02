@@ -26,6 +26,8 @@
 
 #include "configuration.h"
 
+#include "utils/checkutils.h"
+
 #include "resources/beingcommon.h"
 #include "resources/emoteinfo.h"
 #include "resources/emotesprite.h"
@@ -103,7 +105,7 @@ void EmoteDB::loadXmlFile(const std::string &fileName,
 
         if (id == -1)
         {
-            logger->log("Emote Database: Emote with missing ID in %s!",
+            reportAlways("Emote Database: Emote with missing ID in %s!",
                 paths.getStringValue("emotesFile").c_str());
             continue;
         }
@@ -176,8 +178,8 @@ void EmoteDB::loadSpecialXmlFile(const std::string &fileName,
         const int id = XML::getProperty(emoteNode, "id", -1);
         if (id == -1)
         {
-            logger->log1("Emote Database: Emote with missing ID in "
-                         "manaplus_emotes.xml!");
+            reportAlways("Emote Database: Emote with missing ID in "
+                "manaplus_emotes.xml!");
             continue;
         }
         const int altId = XML::getProperty(emoteNode, "altid", -1);
@@ -259,7 +261,8 @@ const EmoteInfo *EmoteDB::get(const int id, const bool allowNull)
     {
         if (allowNull)
             return nullptr;
-        logger->log("EmoteDB: Warning, unknown emote ID %d requested", id);
+        reportAlways("EmoteDB: Warning, unknown emote ID %d requested",
+            id);
         return &mUnknown;
     }
     else
@@ -280,7 +283,8 @@ const EmoteInfo *EmoteDB::get2(int id, const bool allowNull)
     {
         if (allowNull)
             return nullptr;
-        logger->log("EmoteDB: Warning, unknown emote ID %d requested", id);
+        reportAlways("EmoteDB: Warning, unknown emote ID %d requested",
+            id);
         return &mUnknown;
     }
     else

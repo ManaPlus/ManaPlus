@@ -27,6 +27,7 @@
 #include "resources/beingcommon.h"
 #include "resources/horseinfo.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 
 #include "debug.h"
@@ -119,7 +120,7 @@ void HorseDB::loadXmlFile(const std::string &fileName,
 
         if (id == -1)
         {
-            logger->log("Horse Database: Horse with missing ID in %s!",
+            reportAlways("Horse Database: Horse with missing ID in %s!",
                 paths.getStringValue("horsesFile").c_str());
             continue;
         }
@@ -211,7 +212,8 @@ HorseInfo *HorseDB::get(const int id, const bool allowNull)
     {
         if (allowNull)
             return nullptr;
-        logger->log("HorseDB: Warning, unknown emote ID %d requested", id);
+        reportAlways("HorseDB: Warning, unknown horse ID %d requested",
+            id);
         return &mUnknown;
     }
     else

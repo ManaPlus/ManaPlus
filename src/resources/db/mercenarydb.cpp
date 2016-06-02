@@ -27,6 +27,7 @@
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 
 #include "configuration.h"
@@ -62,7 +63,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName,
 
     if (!rootNode || !xmlNameEqual(rootNode, "mercenaries"))
     {
-        logger->log("Monster Database: Error while loading %s!",
+        logger->log("MercenaryDB: Error while loading %s!",
             paths.getStringValue("mercenariesFile").c_str());
         mLoaded = true;
         return;
@@ -141,7 +142,7 @@ BeingInfo *MercenaryDB::get(const BeingTypeId id)
         i = mMercenaryInfos.find(id);
         if (i == mMercenaryInfos.end())
         {
-            logger->log("MercenaryDB: Warning, unknown mercenary ID "
+            reportAlways("MercenaryDB: Warning, unknown mercenary ID "
                 "%d requested",
                 toInt(id, int));
             return BeingInfo::unknown;
