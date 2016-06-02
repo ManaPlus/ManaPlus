@@ -902,6 +902,8 @@ manaplus_SOURCES += main.cpp \
 	      listeners/actorspritelistener.h \
 	      listeners/arrowslistener.cpp \
 	      listeners/arrowslistener.h \
+	      listeners/assertlistener.cpp \
+	      listeners/assertlistener.h \
 	      listeners/awaylistener.cpp \
 	      listeners/awaylistener.h \
 	      listeners/charrenamelistener.cpp \

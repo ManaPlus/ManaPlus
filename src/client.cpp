@@ -143,6 +143,7 @@
 
 #include "utils/translation/translationmanager.h"
 
+#include "listeners/assertlistener.h"
 #include "listeners/errorlistener.h"
 
 #ifdef USE_OPENGL
@@ -261,6 +262,7 @@ void Client::gameInit()
 
     initRand();
 
+    assertListener = new AssertListener;
     // Load branding information
     if (!settings.options.brandingPath.empty())
         branding.init(settings.options.brandingPath);
@@ -572,6 +574,8 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting1");
     config.removeListeners(this);
+
+    delete2(assertListener);
 
     eventsManager.shutdown();
     WindowManager::deleteWindows();
@@ -983,6 +987,7 @@ int Client::gameExec()
             if (mOldState == State::GAME)
             {
                 delete2(mGame);
+                assertListener = new AssertListener;
                 Game::clearInstance();
                 resourceManager->cleanOrphans();
                 Party::clearParties();

@@ -131,6 +131,7 @@
 #include "utils/naclmessages.h"
 #endif  // __native_client__
 
+#include "listeners/assertlistener.h"
 #include "listeners/errorlistener.h"
 
 #ifdef TMWA_SUPPORT
@@ -275,6 +276,13 @@ static void createGuiWindows()
         "#Debug", ChatTabType::DEBUG);
     debugChatTab->setAllowHighlight(false);
 
+    if (assertListener)
+    {
+        const StringVect &messages = assertListener->getMessages();
+        FOR_EACH (StringVectCIter, it, messages)
+            debugChatTab->chatLog(*it, ChatMsgType::BY_SERVER);
+        delete2(assertListener);
+    }
     if (config.getBoolValue("enableTradeTab"))
         chatWindow->addSpecialChannelTab(TRADE_CHANNEL, false);
     else

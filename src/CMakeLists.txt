@@ -902,6 +902,8 @@ SET(SRCS
     listeners/actorspritelistener.h
     listeners/arrowslistener.cpp
     listeners/arrowslistener.h
+    listeners/assertlistener.cpp
+    listeners/assertlistener.h
     listeners/attributelistener.cpp
     listeners/attributelistener.h
     listeners/awaylistener.cpp
