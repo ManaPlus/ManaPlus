@@ -6,6 +6,8 @@ Legend:
 Version 0.3. Three years later I've finally spotted obvious bugs.
 Changes;
  [!] Fixed items window theming: selected slot had odd appearance.
+ [+] Theme now uses different tab title color for channels, should
+     help to distinguish between whispers and channels.
  [+] Redrawn checkboxes in hope to improve their appearance.
  [+] Backported highlighted [X] button glow from XFWM4 theme. 
      Took shitload of coordinates fixups and bug hunting.
@@ -18,7 +20,6 @@ Changes;
  [*] Buttons of drop-downs repix'd to look better (they were too small).
 
 TODO:
- [*] (WIP) Theme should use different colors for "channel" and "whisper" tabs!
  [*] My hourglass isn't best pixel art ever and could be improved.
  [*] Now progressbars could use bitmaps. This apparently allows superb
      appearance of progressbars. Should give it a try!
