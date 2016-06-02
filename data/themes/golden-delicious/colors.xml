@@ -27,19 +27,19 @@
         <color id="LISTBOX_SELECTED" color="#000000" />
         <color id="RADIOBUTTON" color="#e8d8aa" />
         <color id="POPUP" color="#f9eabc" />
-        <color id="TAB" color="#efd7a7" />
+        <color id="TAB" color="#F6DEAD" />
         <color id="TAB_OUTLINE" color="#473005" />
         <color id="TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="TAB_SELECTED" color="#f8eacf" />
         <color id="TAB_SELECTED_OUTLINE" color="#63450a" />
-        <color id="BATTLE_CHAT_TAB" color="#efd7a7" />
+        <color id="BATTLE_CHAT_TAB" color="#F6DEAD" />
         <color id="BATTLE_CHAT_TAB_OUTLINE" color="#473005" />
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="BATTLE_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="BATTLE_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
-        <color id="CHANNEL_CHAT_TAB" color="#efd7a7" />
+        <color id="CHANNEL_CHAT_TAB" color="#F6DEAD" />
         <color id="CHANNEL_CHAT_TAB_OUTLINE" color="#473005" />
         <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
@@ -134,7 +134,7 @@
         <color id="OUTLINE" color="#000000" />
         <color id="BORDER" color="#000000" />
         <color id="PROGRESS_BAR" color="#ffffff" />
-        <color id="BUTTON" color="#efd7a7" />
+        <color id="BUTTON" color="#F6DEAD" />
         <color id="BUTTON_OUTLINE" color="#000000" />
         <color id="BUTTON_HIGHLIGHTED" color="#f9eabc" />
         <color id="BUTTON_HIGHLIGHTED_OUTLINE" color="#000000" />
@@ -153,58 +153,58 @@
         <color id="TEXTBOX" color="#e8d8aa" />
         <color id="TEXTFIELD" color="#e8d8aa" />
         <color id="WINDOW" color="#f1d9a9" />
-        <color id="TAB" color="#efd7a7" />
+        <color id="TAB" color="#F6DEAD" />
         <color id="TAB_OUTLINE" color="#473005" />
         <color id="TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="TAB_SELECTED" color="#f8eacf" />
         <color id="TAB_SELECTED_OUTLINE" color="#63450a" />
-        <color id="BATTLE_CHAT_TAB" color="#efd7a7" />
+        <color id="BATTLE_CHAT_TAB" color="#F6DEAD" />
         <color id="BATTLE_CHAT_TAB_OUTLINE" color="#473005" />
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="BATTLE_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="BATTLE_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
-        <color id="CHANNEL_CHAT_TAB" color="#efd7a7" />
+        <color id="CHANNEL_CHAT_TAB" color="#00FFED" />
         <color id="CHANNEL_CHAT_TAB_OUTLINE" color="#473005" />
-        <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED" color="#00FFFD" />
         <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
-        <color id="CHANNEL_CHAT_TAB_SELECTED" color="#f8eacf" />
+        <color id="CHANNEL_CHAT_TAB_SELECTED" color="#00FFED" />
         <color id="CHANNEL_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
         <color id="TAB_FLASH" color="#a7ff2a" />
         <color id="TAB_FLASH_OUTLINE" color="#142200" />
         <color id="TAB_PLAYER_FLASH" color="#ff96f6" />
-        <color id="PARTY_CHAT_TAB" color="#efd7a7" />
+        <color id="PARTY_CHAT_TAB" color="#F6DEAD" />
         <color id="PARTY_CHAT_TAB_OUTLINE" color="#473005" />
         <color id="PARTY_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="PARTY_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="PARTY_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="PARTY_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
-        <color id="PARTY_SOCIAL_TAB" color="#efd7a7" />
+        <color id="PARTY_SOCIAL_TAB" color="#F6DEAD" />
         <color id="PARTY_SOCIAL_TAB_OUTLINE" color="#473005" />
         <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="PARTY_SOCIAL_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="PARTY_SOCIAL_TAB_SELECTED" color="#f8eacf" />
         <color id="PARTY_SOCIAL_TAB_SELECTED_OUTLINE" color="#63450a" />
-        <color id="GUILD_CHAT_TAB" color="#efd7a7" />
+        <color id="GUILD_CHAT_TAB" color="#F6DEAD" />
         <color id="GUILD_CHAT_TAB_OUTLINE" color="#473005" />
         <color id="GUILD_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="GUILD_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="GUILD_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="GUILD_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
-        <color id="GUILD_SOCIAL_TAB" color="#efd7a7" />
+        <color id="GUILD_SOCIAL_TAB" color="#F6DEAD" />
         <color id="GUILD_SOCIAL_TAB_OUTLINE" color="#473005" />
         <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="GUILD_SOCIAL_TAB_SELECTED" color="#f8eacf" />
         <color id="GUILD_SOCIAL_TAB_SELECTED_OUTLINE" color="#63450a" />
-        <color id="GM_CHAT_TAB" color="#efd7a7" />
+        <color id="GM_CHAT_TAB" color="#F6DEAD" />
         <color id="GM_CHAT_TAB_OUTLINE" color="#473005" />
         <color id="GM_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="GM_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="GM_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="GM_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
-        <color id="WHISPER_TAB" color="#efd7a7" />
+        <color id="WHISPER_TAB" color="#F6DEAD" />
         <color id="WHISPER_TAB_OUTLINE" color="#473005" />
         <color id="WHISPER_TAB_OFFLINE" color="#8f8f8f" />
         <color id="WHISPER_TAB_OFFLINE_OUTLINE" color="#222222" />
@@ -312,7 +312,7 @@
         <color id="OUTLINE" color="#000000" />
         <color id="BORDER" color="#000000" />
         <color id="PROGRESS_BAR" color="#ffffff" />
-        <color id="BUTTON" color="#efd7a7" />
+        <color id="BUTTON" color="#F6DEAD" />
         <color id="BUTTON_OUTLINE" color="#000000" />
         <color id="BUTTON_HIGHLIGHTED" color="#f9eabc" />
         <color id="BUTTON_HIGHLIGHTED_OUTLINE" color="#000000" />
@@ -327,19 +327,19 @@
         <color id="LISTBOX_SELECTED" color="#808080" />
         <color id="RADIOBUTTON" color="#000000" />
         <color id="POPUP" color="#f9eabc" />
-        <color id="TAB" color="#efd7a7" />
+        <color id="TAB" color="#F6DEAD" />
         <color id="TAB_OUTLINE" color="#000000" />
         <color id="TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
         <color id="TAB_SELECTED" color="#f8eacf" />
         <color id="TAB_SELECTED_OUTLINE" color="#000000" />
-        <color id="BATTLE_CHAT_TAB" color="#efd7a7" />
+        <color id="BATTLE_CHAT_TAB" color="#F6DEAD" />
         <color id="BATTLE_CHAT_TAB_OUTLINE" color="#000000" />
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="BATTLE_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
         <color id="BATTLE_CHAT_TAB_SELECTED" color="#f8eacf" />
         <color id="BATTLE_CHAT_TAB_SELECTED_OUTLINE" color="#000000" />
-        <color id="CHANNEL_CHAT_TAB" color="#efd7a7" />
+        <color id="CHANNEL_CHAT_TAB" color="#F6DEAD" />
         <color id="CHANNEL_CHAT_TAB_OUTLINE" color="#000000" />
         <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
         <color id="CHANNEL_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#000000" />
