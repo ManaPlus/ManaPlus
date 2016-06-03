@@ -28,6 +28,8 @@
 
 #include "resources/beingcommon.h"
 
+#include "resources/item/itemfieldtype.h"
+
 #include "debug.h"
 
 namespace

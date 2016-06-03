@@ -31,7 +31,9 @@
  * implementations depending on the type of server the client is connecting to.
  */
 
-#include "net/serverinfo.h"
+#include "enums/net/servertype.h"
+
+class ServerInfo;
 
 namespace Net
 {

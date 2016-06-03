@@ -22,10 +22,12 @@
 
 #include "net/eathena/messagein.h"
 
+#include "logger.h"
+
 #include "net/net.h"
 #include "net/packetcounters.h"
 
-#include "logger.h"
+#include "utils/stringutils.h"
 
 #include <SDL_endian.h>
 

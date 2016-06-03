@@ -86,7 +86,7 @@ Network::~Network()
 void Network::registerHandlers()
 {
 #include "net/tmwa/recvpackets.inc"
-RECVPACKETS_VOID
+    RECVPACKETS_VOID
 }
 
 void Network::clearHandlers()

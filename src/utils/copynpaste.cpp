@@ -56,6 +56,8 @@
 #include <unistd.h>
 #elif defined __native_client__
 #include "utils/naclmessages.h"
+#elif defined WIN32
+#include <SDL_syswm.h>
 #endif
 
 #endif  // USE_SDL2

@@ -41,14 +41,13 @@
 #include "net/chathandler.h"
 #ifdef TMWA_SUPPORT
 #include "net/net.h"
-#else
-#include "utils/stringutils.h"
 #endif
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 
 #include "utils/chatutils.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

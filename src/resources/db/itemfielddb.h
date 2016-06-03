@@ -23,11 +23,11 @@
 
 #include "enums/simpletypes/skiperror.h"
 
-#include "resources/item/itemfieldtype.h"
-
 #include <map>
 
 #include "localconsts.h"
+
+struct ItemFieldType;
 
 namespace ItemFieldDb
 {
