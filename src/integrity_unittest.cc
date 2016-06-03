@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/sprite/animatedsprite.h"
-
 #include "catch.hpp"
 #include "client.h"
 #include "logger.h"
@@ -28,7 +26,6 @@
 #include "being/actorsprite.h"
 
 #include "input/inputactionmap.h"
-#include "input/inputmanager.h"
 
 #include "resources/sdlimagehelper.h"
 
