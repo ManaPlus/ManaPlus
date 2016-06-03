@@ -35,7 +35,6 @@
 
 #include "utils/env.h"
 #include "utils/physfstools.h"
-#include "utils/xml.h"
 
 #include "debug.h"
 

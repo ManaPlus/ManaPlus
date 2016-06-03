@@ -53,8 +53,6 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
-#include "resources/sprite/animatedsprite.h"
-
 #include "utils/delete2.h"
 #include "utils/env.h"
 #include "utils/gettext.h"

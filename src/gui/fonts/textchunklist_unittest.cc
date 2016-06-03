@@ -20,11 +20,8 @@
 
 #include "catch.hpp"
 
-#include "gui/theme.h"
-
 #include "gui/fonts/font.h"
 #include "gui/fonts/textchunk.h"
-#include "gui/fonts/textchunksmall.h"
 
 #include "debug.h"
 

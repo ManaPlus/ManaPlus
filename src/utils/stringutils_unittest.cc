@@ -26,10 +26,6 @@
 
 #include "resources/db/itemdb.h"
 
-#include <list>
-#include <string>
-#include <vector>
-
 #include "debug.h"
 
 TEST_CASE("stringuntils  trim 1")
