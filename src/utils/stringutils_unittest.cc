@@ -101,7 +101,8 @@ TEST_CASE("stringuntils atox 1")
     REQUIRE(0 == atox(str));
 
     str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-    atox(str);
+    const int k = atox(str);
+    printf("%d\n", k);  // for avoid warning
 
     str = "";
     REQUIRE(0 == atox(str));
