@@ -44,14 +44,17 @@
 #include "graphicsmanager.h"
 
 #include "test/testmain.h"
-#endif
+#endif  // defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)
+
 
 #ifndef USE_OPENGL
+#include "render/renderers.h"
+#endif
+
+#if defined(ANDROID) || !defined(USE_OPENGL)
 #include "configuration.h"
 
 #include "utils/stringutils.h"
-
-#include "render/renderers.h"
 #endif
 
 #include "gui/models/modelistmodel.h"
