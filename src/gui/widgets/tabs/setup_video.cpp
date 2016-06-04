@@ -51,7 +51,7 @@
 #include "render/renderers.h"
 #endif
 
-#if defined(ANDROID) || !defined(USE_OPENGL)
+#if defined(ANDROID) || defined(__APPLE__) || !defined(USE_OPENGL)
 #include "configuration.h"
 
 #include "utils/stringutils.h"
