@@ -2903,7 +2903,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
 
         // TRANSLATORS: popup menu item
         // TRANSLATORS: nuke player
-        mBrowserBox->addRow("/nuke 'NAME'", _("Nuke"));
+        mBrowserBox->addRow("/gmnuke 'NAME'", _("Nuke"));
         // TRANSLATORS: popup menu item
         // TRANSLATORS: kill player
         mBrowserBox->addRow("/kill 'NAME'", _("Kill"));

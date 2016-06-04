@@ -5428,7 +5428,7 @@ static const InputActionData inputActionData
     {"keyCommandNuke",
         defaultAction(&Actions::commandNuke),
         InputCondition::INGAME,
-        "nuke",
+        "gmnuke",
         UseArgs_true,
         Protected_true},
     {"keyCommandKill",
