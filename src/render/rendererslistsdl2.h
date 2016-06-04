@@ -25,6 +25,8 @@
 
 #include "utils/gettext.h"
 
+#include "render/renderers.h"
+
 #ifdef USE_OPENGL
 #ifdef ANDROID
 // defined OPENGL ANDROID

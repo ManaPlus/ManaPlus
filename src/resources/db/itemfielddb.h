@@ -24,6 +24,7 @@
 #include "enums/simpletypes/skiperror.h"
 
 #include <map>
+#include <string>
 
 #include "localconsts.h"
 

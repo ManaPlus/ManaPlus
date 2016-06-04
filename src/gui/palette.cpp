@@ -25,7 +25,9 @@
 
 #include "utils/timer.h"
 
+#ifndef USE_SDL2
 #include <cmath>
+#endif  // USE_SDL2
 
 #include "debug.h"
 

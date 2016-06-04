@@ -30,7 +30,9 @@
 
 #include "utils/stringutils.h"
 
+#ifndef USE_SDL2
 #include <cmath>
+#endif  // USE_SDL2
 
 #include <SDL_endian.h>
 

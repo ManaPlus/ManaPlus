@@ -35,7 +35,7 @@
 #include "gui/windows/maileditwindow.h"
 #ifdef EATHENA_SUPPORT
 #include "gui/windows/npcdialog.h"
-#endif
+#endif  // EATHENA_SUPPORT
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/tradewindow.h"
 
@@ -51,13 +51,15 @@
 #include "net/inventoryhandler.h"
 #ifdef EATHENA_SUPPORT
 #include "net/npchandler.h"
-#endif
+#endif  // EATHENA_SUPPORT
 
 #include "resources/item/item.h"
 
 #include "utils/gettext.h"
 
+#ifndef USE_SDL2
 #include <cmath>
+#endif  // USE_SDL2
 
 #include "debug.h"
 

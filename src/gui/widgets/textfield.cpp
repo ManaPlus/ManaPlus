@@ -69,13 +69,13 @@
 
 #ifdef USE_SDL2
 #include "enums/input/keyvalue.h"
-#endif
+#endif  // USE_SDL2
 
 #include "gui/gui.h"
 #include "gui/skin.h"
 #ifdef ANDROID
 #include "gui/windowmanager.h"
-#endif
+#endif  // ANDROID
 
 #include "gui/fonts/font.h"
 
@@ -85,7 +85,10 @@
 
 #include "utils/copynpaste.h"
 #include "utils/stringutils.h"
+
+#ifndef USE_SDL2
 #include "utils/timer.h"
+#endif  // USE_SDL2
 
 #include "render/graphics.h"
 

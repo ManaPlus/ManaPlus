@@ -25,7 +25,6 @@
 #ifndef DYECMD
 #include "game.h"
 #endif
-#include "logger.h"
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"
 #endif
@@ -40,7 +39,9 @@
 
 #ifdef USE_SDL2
 #include "render/graphics.h"
-#endif
+#else  // USE_SDL2
+#include "logger.h"
+#endif  // USE_SDL2
 
 #include "utils/process.h"
 

@@ -70,6 +70,10 @@
 
 #include "input/key.h"
 
+#ifdef USE_SDL2
+#include <string>
+#endif  // USE_SDL2
+
 #include "localconsts.h"
 
 class KeyInput final

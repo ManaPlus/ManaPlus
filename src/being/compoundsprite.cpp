@@ -22,7 +22,6 @@
 #include "being/compoundsprite.h"
 
 #include "configuration.h"
-#include "game.h"
 
 #ifdef USE_OPENGL
 #include "main.h"
@@ -32,10 +31,6 @@
 
 #include "being/compounditem.h"
 
-#include "const/resources/map/map.h"
-
-#include "resources/map/map.h"
-
 #include "render/surfacegraphics.h"
 
 #include "resources/image.h"
@@ -44,7 +39,16 @@
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/sdlcheckutils.h"
+
+#ifndef USE_SDL2
+#include "game.h"
+
+#include "const/resources/map/map.h"
+
+#include "resources/map/map.h"
+
 #include "utils/timer.h"
+#endif
 
 #include <SDL_endian.h>
 
