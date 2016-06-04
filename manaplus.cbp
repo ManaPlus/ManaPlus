@@ -187,6 +187,7 @@
 		<Unit filename="src/listeners/arrowslistener.cpp" />
 		<Unit filename="src/listeners/uploadlistener.cpp" />
 		<Unit filename="src/listeners/vendingslotslistener.cpp" />
+		<Unit filename="src/listeners/assertlistener.cpp" />
 		<Unit filename="src/listeners/pincodelistener.cpp" />
 		<Unit filename="src/listeners/inputactionreplaylistener.cpp" />
 		<Unit filename="src/listeners/statlistener.cpp" />
@@ -204,6 +205,7 @@
 		<Unit filename="src/resources/imageset.cpp" />
 		<Unit filename="src/resources/animation/simpleanimation.cpp" />
 		<Unit filename="src/resources/animation/animation.cpp" />
+		<Unit filename="src/resources/resourcemanager/resourcemanager.cpp" />
 		<Unit filename="src/resources/atlas/atlasresource.cpp" />
 		<Unit filename="src/resources/atlas/atlasmanager.cpp" />
 		<Unit filename="src/resources/image.cpp" />
@@ -239,6 +241,7 @@
 		<Unit filename="src/resources/db/npcdialogdb.cpp" />
 		<Unit filename="src/resources/db/petdb.cpp" />
 		<Unit filename="src/resources/db/mercenarydb.cpp" />
+		<Unit filename="src/resources/db/itemfielddb.cpp" />
 		<Unit filename="src/resources/db/badgesdb.cpp" />
 		<Unit filename="src/resources/db/mapdb.cpp" />
 		<Unit filename="src/resources/db/avatardb.cpp" />
@@ -251,9 +254,19 @@
 		<Unit filename="src/resources/inventory/inventory.cpp" />
 		<Unit filename="src/resources/inventory/complexinventory.cpp" />
 		<Unit filename="src/resources/beingcommon.cpp" />
+		<Unit filename="src/resources/loaders/imagesetloader.cpp" />
+		<Unit filename="src/resources/loaders/musicloader.cpp" />
+		<Unit filename="src/resources/loaders/atlasloader.cpp" />
+		<Unit filename="src/resources/loaders/shaderprogramloader.cpp" />
+		<Unit filename="src/resources/loaders/imageloader.cpp" />
+		<Unit filename="src/resources/loaders/subimagesetloader.cpp" />
+		<Unit filename="src/resources/loaders/subimageloader.cpp" />
+		<Unit filename="src/resources/loaders/walklayerloader.cpp" />
+		<Unit filename="src/resources/loaders/shaderloader.cpp" />
+		<Unit filename="src/resources/loaders/spritedefloader.cpp" />
+		<Unit filename="src/resources/loaders/rescaledloader.cpp" />
 		<Unit filename="src/resources/imagewriter.cpp" />
 		<Unit filename="src/resources/sdlscreenshothelper.cpp" />
-		<Unit filename="src/resources/resourcemanager.cpp" />
 		<Unit filename="src/resources/dye/dyepalette.cpp" />
 		<Unit filename="src/resources/dye/dye.cpp" />
 		<Unit filename="src/resources/map/objectslayer.cpp" />
@@ -840,6 +853,7 @@
 		<Unit filename="src/listeners/actorspritelistener.h" />
 		<Unit filename="src/listeners/tooltiplistener.h" />
 		<Unit filename="src/listeners/arrowslistener.h" />
+		<Unit filename="src/listeners/assertlistener.h" />
 		<Unit filename="src/listeners/focuslistener.h" />
 		<Unit filename="src/listeners/playerpostdeathlistener.h" />
 		<Unit filename="src/listeners/vendingslotslistener.h" />
@@ -888,6 +902,7 @@
 		<Unit filename="src/resources/resource.h" />
 		<Unit filename="src/resources/animation/animation.h" />
 		<Unit filename="src/resources/animation/simpleanimation.h" />
+		<Unit filename="src/resources/resourcemanager/resourcemanager.h" />
 		<Unit filename="src/resources/atlas/atlasresource.h" />
 		<Unit filename="src/resources/atlas/atlasitem.h" />
 		<Unit filename="src/resources/atlas/textureatlas.h" />
@@ -925,6 +940,7 @@
 		<Unit filename="src/resources/db/skillunitdb.h" />
 		<Unit filename="src/resources/db/mapdb.h" />
 		<Unit filename="src/resources/db/deaddb.h" />
+		<Unit filename="src/resources/db/itemfielddb.h" />
 		<Unit filename="src/resources/db/colordb.h" />
 		<Unit filename="src/resources/db/itemdbstat.h" />
 		<Unit filename="src/resources/db/emotedb.h" />
@@ -950,6 +966,17 @@
 		<Unit filename="src/resources/beingcommon.h" />
 		<Unit filename="src/resources/modinfo.h" />
 		<Unit filename="src/resources/frame.h" />
+		<Unit filename="src/resources/loaders/walklayerloader.h" />
+		<Unit filename="src/resources/loaders/musicloader.h" />
+		<Unit filename="src/resources/loaders/imagesetloader.h" />
+		<Unit filename="src/resources/loaders/rescaledloader.h" />
+		<Unit filename="src/resources/loaders/spritedefloader.h" />
+		<Unit filename="src/resources/loaders/shaderloader.h" />
+		<Unit filename="src/resources/loaders/subimageloader.h" />
+		<Unit filename="src/resources/loaders/imageloader.h" />
+		<Unit filename="src/resources/loaders/atlasloader.h" />
+		<Unit filename="src/resources/loaders/subimagesetloader.h" />
+		<Unit filename="src/resources/loaders/shaderprogramloader.h" />
 		<Unit filename="src/resources/sdl2softwareimagehelper.h" />
 		<Unit filename="src/resources/memorycounter.h" />
 		<Unit filename="src/resources/npcinventoryinfo.h" />
@@ -989,6 +1016,7 @@
 		<Unit filename="src/resources/beingmenuitem.h" />
 		<Unit filename="src/resources/item/complexitem.h" />
 		<Unit filename="src/resources/item/item.h" />
+		<Unit filename="src/resources/item/itemfieldtype.h" />
 		<Unit filename="src/resources/item/shopitem.h" />
 		<Unit filename="src/resources/openglscreenshothelper.h" />
 		<Unit filename="src/resources/memorymanager.h" />
@@ -1004,7 +1032,6 @@
 		<Unit filename="src/resources/questitemtext.h" />
 		<Unit filename="src/resources/itemtypemap.h" />
 		<Unit filename="src/resources/updatefile.h" />
-		<Unit filename="src/resources/resourcemanager.h" />
 		<Unit filename="src/resources/effectdescription.h" />
 		<Unit filename="src/resources/mstack.h" />
 		<Unit filename="src/resources/openglimagehelper.h" />
