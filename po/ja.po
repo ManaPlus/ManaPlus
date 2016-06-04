@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011
 # Candy <HarajukuCupcakes@gmail.com>, 2013
@@ -14,19 +14,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-05-29 14:56+0300\n"
+"POT-Creation-Date: 2016-05-20 19:25+0300\n"
 "PO-Revision-Date: 2016-05-21 09:33+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Japanese (http://www.transifex.com/akaras/manaplus/language/"
-"ja/)\n"
-"Language: ja\n"
+"Language-Team: Japanese (http://www.transifex.com/akaras/manaplus/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: file uploaded message
-#: src/actions/actions.cpp:167
+#: src/actions/actions.cpp:166
 msgid "File uploaded"
 msgstr ""
 
@@ -39,7 +38,7 @@ msgstr ""
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:170 src/client.cpp:1553 src/client.cpp:1588
+#: src/actions/actions.cpp:169 src/client.cpp:1549 src/client.cpp:1584
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
@@ -59,67 +58,67 @@ msgstr ""
 #: src/gui/windows/registerdialog.cpp:256 src/gui/windows/socialwindow.cpp:531
 #: src/gui/windows/textdialog.cpp:53 src/gui/windows/unregisterdialog.cpp:149
 #: src/net/ea/charserverrecv.cpp:108 src/net/ea/charserverrecv.cpp:134
-#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:412
-#: src/net/eathena/charserverrecv.cpp:447
-#: src/net/eathena/charserverrecv.cpp:475 src/net/tmwa/charserverrecv.cpp:296
+#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:405
+#: src/net/eathena/charserverrecv.cpp:440
+#: src/net/eathena/charserverrecv.cpp:468 src/net/tmwa/charserverrecv.cpp:286
 msgid "OK"
 msgstr "OK"
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/actions/actions.cpp:1044 src/actions/actions.cpp:1057
+#: src/actions/actions.cpp:1043 src/actions/actions.cpp:1056
 msgid "Cache cleaned"
 msgstr ""
 
 #. TRANSLATORS: uptime command
-#: src/actions/actions.cpp:1214 src/actions/actions.cpp:1220
+#: src/actions/actions.cpp:1213 src/actions/actions.cpp:1219
 #, c-format
 msgid "Client uptime: %s"
 msgstr "クライアントの稼働時間: %s"
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1277 src/actions/actions.cpp:1286
+#: src/actions/actions.cpp:1276 src/actions/actions.cpp:1285
 msgid "Resource images:"
 msgstr "リソースイメージ:"
 
 #. TRANSLATORS: dump command
-#: src/actions/actions.cpp:1280 src/actions/actions.cpp:1290
+#: src/actions/actions.cpp:1279 src/actions/actions.cpp:1289
 msgid "Resource orphaned images:"
 msgstr "リソース孤児イメージ:"
 
 #. TRANSLATORS: dump environment command
-#: src/actions/actions.cpp:1385
+#: src/actions/actions.cpp:1384
 msgid "Environment variables dumped"
 msgstr ""
 
 #. TRANSLATORS: upload config chat message
-#: src/actions/actions.cpp:1502
+#: src/actions/actions.cpp:1501
 msgid "Uploaded config into:"
 msgstr ""
 
 #. TRANSLATORS: upload config chat message
-#: src/actions/actions.cpp:1512
+#: src/actions/actions.cpp:1511
 msgid "Uploaded server config into:"
 msgstr ""
 
 #. TRANSLATORS: upload log chat message
-#: src/actions/actions.cpp:1522
+#: src/actions/actions.cpp:1521
 msgid "Uploaded log into:"
 msgstr ""
 
 #. TRANSLATORS: last seen disabled warning
-#: src/actions/actions.cpp:1747
+#: src/actions/actions.cpp:1746
 msgid ""
 "Last seen disabled. Enable in players / collect players id and seen log."
 msgstr ""
 
 #. TRANSLATORS: last seen error
-#: src/actions/actions.cpp:1766 src/actions/actions.cpp:1780
+#: src/actions/actions.cpp:1765 src/actions/actions.cpp:1779
 msgid "You not saw this nick."
 msgstr ""
 
 #. TRANSLATORS: last seen message
-#: src/actions/actions.cpp:1772
+#: src/actions/actions.cpp:1771
 #, c-format
 msgid "Last seen for %s: %s"
 msgstr ""
@@ -477,41 +476,41 @@ msgstr "吹出し"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
-#: src/client.cpp:856 src/dyetool/client.cpp:485 src/gui/windowmenu.cpp:189
+#: src/client.cpp:852 src/dyetool/client.cpp:482 src/gui/windowmenu.cpp:189
 #: src/gui/windows/setupwindow.cpp:65
 msgid "Setup"
 msgstr "設定"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:859 src/dyetool/client.cpp:488
+#: src/client.cpp:855 src/dyetool/client.cpp:485
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:862 src/dyetool/client.cpp:491
+#: src/client.cpp:858 src/dyetool/client.cpp:488
 #: src/gui/widgets/tabs/setup_video.cpp:106
 msgid "Video"
 msgstr "ビデオ"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:865 src/dyetool/client.cpp:494
+#: src/client.cpp:861 src/dyetool/client.cpp:491
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "テーマ"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:868 src/dyetool/client.cpp:497
+#: src/client.cpp:864 src/dyetool/client.cpp:494
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
-#: src/client.cpp:871 src/dyetool/client.cpp:500 src/gui/windowmenu.cpp:74
+#: src/client.cpp:867 src/dyetool/client.cpp:497 src/gui/windowmenu.cpp:74
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "ヘルプ"
@@ -532,45 +531,45 @@ msgstr "ヘルプ"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:875 src/client.cpp:1467 src/client.cpp:1486
-#: src/dyetool/client.cpp:504 src/gui/dialogsmanager.cpp:116
+#: src/client.cpp:871 src/client.cpp:1463 src/client.cpp:1482
+#: src/dyetool/client.cpp:501 src/gui/dialogsmanager.cpp:116
 #: src/gui/popups/popupmenu.cpp:749 src/gui/popups/popupmenu.cpp:826
 #: src/gui/popups/popupmenu.cpp:1080 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:273
 #: src/gui/windows/inventorywindow.cpp:297
-#: src/gui/windows/maileditwindow.cpp:53 src/gui/windows/mailviewwindow.cpp:60
-#: src/gui/windows/npcdialog.cpp:88 src/gui/windows/npcdialog.cpp:130
+#: src/gui/windows/maileditwindow.cpp:53 src/gui/windows/mailviewwindow.cpp:59
+#: src/gui/windows/npcdialog.cpp:87 src/gui/windows/npcdialog.cpp:129
 #: src/gui/windows/questswindow.cpp:77 src/gui/windows/shopwindow.cpp:114
 msgid "Close"
 msgstr "閉じる"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1100 src/gui/windowmanager_unittest.cc:158
+#: src/client.cpp:1096 src/gui/windowmanager_unittest.cc:157
 msgid "Connecting to server"
 msgstr "サーバーに接続しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1157 src/gui/windowmanager_unittest.cc:175
+#: src/client.cpp:1153 src/gui/windowmanager_unittest.cc:174
 msgid "Logging in"
 msgstr "ログインしています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1206
+#: src/client.cpp:1202
 msgid "Entering game world"
 msgstr "ゲームの世界に移動しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1353
+#: src/client.cpp:1349
 msgid "Requesting characters"
 msgstr "キャラクターを呼び出しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1396
+#: src/client.cpp:1392
 msgid "Connecting to the game server"
 msgstr "ゲームサーバーに接続しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1408
+#: src/client.cpp:1404
 msgid "Changing game servers"
 msgstr "ゲームサーバーを変更しています"
 
@@ -587,7 +586,7 @@ msgstr "ゲームサーバーを変更しています"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1464 src/client.cpp:1483 src/client.cpp:1722
+#: src/client.cpp:1460 src/client.cpp:1479 src/client.cpp:1718
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:468
@@ -595,44 +594,44 @@ msgstr "ゲームサーバーを変更しています"
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:256
 #: src/gui/windows/unregisterdialog.cpp:146 src/net/ea/charserverrecv.cpp:105
-#: src/net/eathena/charserverrecv.cpp:385
-#: src/net/eathena/charserverrecv.cpp:389
-#: src/net/eathena/charserverrecv.cpp:471 src/net/tmwa/charserverrecv.cpp:292
+#: src/net/eathena/charserverrecv.cpp:378
+#: src/net/eathena/charserverrecv.cpp:382
+#: src/net/eathena/charserverrecv.cpp:464 src/net/tmwa/charserverrecv.cpp:282
 msgid "Error"
 msgstr "エラー"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1502
+#: src/client.cpp:1498
 msgid "Requesting registration details"
 msgstr "登録内容を呼び出しています"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1549
+#: src/client.cpp:1545
 msgid "Password Change"
 msgstr "パスワード変更"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1551
+#: src/client.cpp:1547
 msgid "Password changed successfully!"
 msgstr "パスワードを変更しました!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1584
+#: src/client.cpp:1580
 msgid "Email Change"
 msgstr "メールアドレス変更"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1586
+#: src/client.cpp:1582
 msgid "Email changed successfully!"
 msgstr "メールアドレスを変更しました!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1622
+#: src/client.cpp:1618
 msgid "Unregister Successful"
 msgstr "登録を解除しました"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1624
+#: src/client.cpp:1620
 msgid "Farewell, come back any time..."
 msgstr "さようなら　また会いましょう..."
 
@@ -724,9 +723,7 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:89
 msgid "  -D --default        : Choose default character server and character"
-msgstr ""
-"  -D --default        : デフォルトで使用するキャラクターサーバーとキャラク"
-"ターを選択する"
+msgstr "  -D --default        : デフォルトで使用するキャラクターサーバーとキャラクターを選択する"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:93
@@ -761,8 +758,7 @@ msgstr ""
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:112
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr ""
-"  -T --tests          : ドライバーと自動コンフィグレーションのテストを始める"
+msgstr "  -T --tests          : ドライバーと自動コンフィグレーションのテストを始める"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:118
@@ -799,52 +795,52 @@ msgid "%s doesn't exist and can't be created!"
 msgstr ""
 
 #. TRANSLATORS: command line help
-#: src/dyetool/dyemain.cpp:51
+#: src/dyetool/dyemain.cpp:48
 msgid "dyecmd srcfile dyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: command line help
-#: src/dyetool/dyemain.cpp:53
+#: src/dyetool/dyemain.cpp:50
 msgid "or"
 msgstr ""
 
 #. TRANSLATORS: command line help
-#: src/dyetool/dyemain.cpp:55
+#: src/dyetool/dyemain.cpp:52
 msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: chat tab name
-#: src/game.cpp:267 src/gui/windows/chatwindow.cpp:2222
+#: src/game.cpp:266 src/gui/windows/chatwindow.cpp:2222
 msgid "General"
 msgstr "一般"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: long button name for debug window.
 #. TRANSLATORS: debug window name
-#: src/game.cpp:274 src/gui/windowmenu.cpp:175
+#: src/game.cpp:273 src/gui/windowmenu.cpp:175
 #: src/gui/windows/debugwindow.cpp:43
 msgid "Debug"
 msgstr "デバッグ"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:582
+#: src/game.cpp:581
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr ""
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:592
+#: src/game.cpp:591
 msgid "Saving screenshot failed!"
 msgstr "スクリーンショットを保存できませんでした!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:679
+#: src/game.cpp:678
 msgid "The connection to the server was lost."
 msgstr "サーバーへの接続が切断されました."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:682
+#: src/game.cpp:681
 msgid "Network Error"
 msgstr "ネットワークエラー"
 
@@ -1259,7 +1255,8 @@ msgstr ""
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:178
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr "インベントリーが体重の半分以上の為、体力は回復できません."
 
 #. TRANSLATORS: weight message
@@ -1276,7 +1273,8 @@ msgstr "インベントリーが体重の半分以下になった為、体力は
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:32
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:671 src/gui/windows/serverdialog.cpp:602
+#: src/gui/windows/equipmentwindow.cpp:671
+#: src/gui/windows/serverdialog.cpp:602
 msgid "default"
 msgstr "デフォルト"
 
@@ -1794,19 +1792,19 @@ msgid "Cancel"
 msgstr "キャンセル"
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:223
+#: src/gui/popups/itempopup.cpp:222
 #, c-format
 msgid "Weight: %s"
 msgstr "重力: %s"
 
 #. TRANSLATORS: named item description
-#: src/gui/popups/itempopup.cpp:290
+#: src/gui/popups/itempopup.cpp:289
 #, c-format
 msgid "Item named: %s"
 msgstr ""
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:317
+#: src/gui/popups/itempopup.cpp:316
 msgid "Cards: "
 msgstr ""
 
@@ -2147,7 +2145,7 @@ msgstr "呪文を編集する"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove all text from chat tab
 #. TRANSLATORS: npc dialog button
-#: src/gui/popups/popupmenu.cpp:831 src/gui/windows/npcdialog.cpp:127
+#: src/gui/popups/popupmenu.cpp:831 src/gui/windows/npcdialog.cpp:126
 msgid "Clear"
 msgstr "クリア"
 
@@ -2489,8 +2487,9 @@ msgstr ""
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #: src/gui/popups/popupmenu.cpp:2379 src/gui/popups/skillpopup.cpp:127
-#: src/gui/windows/ministatuswindow.cpp:363 src/gui/windows/statuswindow.cpp:68
-#: src/gui/windows/statuswindow.cpp:243 src/gui/windows/statuswindow.cpp:367
+#: src/gui/windows/ministatuswindow.cpp:363
+#: src/gui/windows/statuswindow.cpp:68 src/gui/windows/statuswindow.cpp:243
+#: src/gui/windows/statuswindow.cpp:367
 #, c-format
 msgid "Level: %d"
 msgstr "レベル: %d"
@@ -2909,8 +2908,8 @@ msgstr ""
 #. TRANSLATORS: info message
 #: src/gui/popups/popupmenu.cpp:3093 src/gui/popups/popupmenu.cpp:3112
 #: src/gui/popups/popupmenu.cpp:3125 src/gui/windows/charselectdialog.cpp:76
-#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:408
-#: src/net/eathena/charserverrecv.cpp:444
+#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:401
+#: src/net/eathena/charserverrecv.cpp:437
 msgid "Info"
 msgstr "情報"
 
@@ -3329,7 +3328,7 @@ msgstr "URLを開く"
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: trade window button
 #: src/gui/widgets/selldialog.cpp:107 src/gui/windows/buydialog.cpp:285
-#: src/gui/windows/maileditwindow.cpp:55 src/gui/windows/npcdialog.cpp:132
+#: src/gui/windows/maileditwindow.cpp:55 src/gui/windows/npcdialog.cpp:131
 #: src/gui/windows/serverdialog.cpp:113 src/gui/windows/shopwindow.cpp:126
 #: src/gui/windows/tradewindow.cpp:85
 msgid "Add"
@@ -3357,7 +3356,7 @@ msgstr "終了"
 #. TRANSLATORS: status window label (plus sign)
 #: src/gui/widgets/selldialog.cpp:129 src/gui/windows/buydialog.cpp:279
 #: src/gui/windows/itemamountwindow.cpp:192
-#: src/gui/windows/itemamountwindow.cpp:228 src/gui/windows/npcdialog.cpp:123
+#: src/gui/windows/itemamountwindow.cpp:228 src/gui/windows/npcdialog.cpp:122
 #: src/gui/windows/statuswindow.cpp:746
 msgid "+"
 msgstr "+"
@@ -3369,7 +3368,7 @@ msgstr "+"
 #. TRANSLATORS: npc dialog button
 #: src/gui/widgets/selldialog.cpp:131 src/gui/windows/buydialog.cpp:282
 #: src/gui/windows/itemamountwindow.cpp:190
-#: src/gui/windows/itemamountwindow.cpp:225 src/gui/windows/npcdialog.cpp:125
+#: src/gui/windows/itemamountwindow.cpp:225 src/gui/windows/npcdialog.cpp:124
 msgid "-"
 msgstr "-"
 
@@ -3536,13 +3535,15 @@ msgstr "アイテム共有モード有効."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:104 src/resources/notifications.h:214
+#: src/gui/widgets/tabs/chat/partytab.cpp:104
+#: src/resources/notifications.h:214
 msgid "Item sharing disabled."
 msgstr "アイテム共有モード無効."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:109 src/resources/notifications.h:218
+#: src/gui/widgets/tabs/chat/partytab.cpp:109
+#: src/resources/notifications.h:218
 msgid "Item sharing not possible."
 msgstr "アイテム共有モード不可能."
 
@@ -3553,19 +3554,22 @@ msgstr "アイテム共有モード不明."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:150 src/resources/notifications.h:198
+#: src/gui/widgets/tabs/chat/partytab.cpp:150
+#: src/resources/notifications.h:198
 msgid "Experience sharing enabled."
 msgstr "Expシェアモード有効."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:155 src/resources/notifications.h:202
+#: src/gui/widgets/tabs/chat/partytab.cpp:155
+#: src/resources/notifications.h:202
 msgid "Experience sharing disabled."
 msgstr "Expシェアモード無効."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:160 src/resources/notifications.h:206
+#: src/gui/widgets/tabs/chat/partytab.cpp:160
+#: src/resources/notifications.h:206
 msgid "Experience sharing not possible."
 msgstr "Expシェアモード不可能."
 
@@ -3999,15 +4003,15 @@ msgstr ""
 msgid ""
 "Enables aggressive protection of input focus in chat window.\n"
 "\n"
-"Note: no other text inputs will be allowed to receive text input when you "
-"typing in chat window."
+"Note: no other text inputs will be allowed to receive text input when you typing in chat window."
 msgstr ""
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: settings colors tab name
 #. TRANSLATORS: emotes tab name
 #: src/gui/widgets/tabs/setup_chat.cpp:67
-#: src/gui/widgets/tabs/setup_colors.cpp:86 src/gui/windows/emotewindow.cpp:116
+#: src/gui/widgets/tabs/setup_colors.cpp:86
+#: src/gui/windows/emotewindow.cpp:116
 msgid "Colors"
 msgstr "色"
 
@@ -4031,11 +4035,9 @@ msgstr "チャットの文字色リストを表示"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:79
 msgid ""
-"Enable this setting to show color selection drop-down in chat window. Chat "
-"window will display color selection drop-down.\n"
+"Enable this setting to show color selection drop-down in chat window. Chat window will display color selection drop-down.\n"
 "\n"
-"It allows one to select default color of outgoing chat messages easily, but "
-"also occupies some space in chat window."
+"It allows one to select default color of outgoing chat messages easily, but also occupies some space in chat window."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4062,11 +4064,9 @@ msgstr "チャットで一行に表示する最大文字数を制限する"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:103
 msgid ""
-"Limits how many characters will be shown in longest lines of text displayed "
-"in chat.\n"
+"Limits how many characters will be shown in longest lines of text displayed in chat.\n"
 "\n"
-"Note: long lines can make client slower. Lines longer than this limit will "
-"be truncated."
+"Note: long lines can make client slower. Lines longer than this limit will be truncated."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4077,9 +4077,7 @@ msgstr "チャットで表示する最大行数を制限する"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:112
 msgid ""
-"Limits how many lines chat will keep in scrollback buffer. Chat keeps "
-"specified number of last lines of text. Oldest lines exceeding this limit "
-"are discarded from scrollback buffer.\n"
+"Limits how many lines chat will keep in scrollback buffer. Chat keeps specified number of last lines of text. Oldest lines exceeding this limit are discarded from scrollback buffer.\n"
 "\n"
 "Note: keeping too many lines in scroll buffer can slow client down."
 msgstr ""
@@ -4120,8 +4118,8 @@ msgstr "チャット履歴を表示"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:139
 msgid ""
-"If this setting enabled, client will load old chat tabs content from logs on "
-"startup instead of starting with empty chat tabs."
+"If this setting enabled, client will load old chat tabs content from logs on"
+" startup instead of starting with empty chat tabs."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4132,11 +4130,9 @@ msgstr ""
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:146
 msgid ""
-"If this setting is enabled, online status changes of party members will be "
-"shown in party tab of chat.\n"
+"If this setting is enabled, online status changes of party members will be shown in party tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows one to see when your buddies "
-"are coming online."
+"This adds some extra noise to chat, but allows one to see when your buddies are coming online."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4147,11 +4143,9 @@ msgstr ""
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:154
 msgid ""
-"If this setting is enabled, online status changes of guild members will be "
-"shown in guild tab of chat.\n"
+"If this setting is enabled, online status changes of guild members will be shown in guild tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows one to see when your buddies "
-"are coming online."
+"This adds some extra noise to chat, but allows one to see when your buddies are coming online."
 msgstr ""
 
 #. TRANSLATORS: settings group
@@ -4167,13 +4161,9 @@ msgstr "売買メッセージを隠す"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:166
 msgid ""
-"If this setting enabled, no messages related to built-in ManaPlus shop will "
-"be displayed in chat. Disable this setting if you want to see shop-related "
-"messages.\n"
+"If this setting enabled, no messages related to built-in ManaPlus shop will be displayed in chat. Disable this setting if you want to see shop-related messages.\n"
 "\n"
-"Note: technically, ManaPlus shop implemented as usual private messages with "
-"special content. If you disable this setting, you will be able to see these "
-"messages and get idea when other players are looking at your shop."
+"Note: technically, ManaPlus shop implemented as usual private messages with special content. If you disable this setting, you will be able to see these messages and get idea when other players are looking at your shop."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4186,8 +4176,7 @@ msgstr "MVPメッセージを表示する"
 msgid ""
 "Enable this setting to see MVP messages from server.\n"
 "\n"
-"Note: MVP messages are not used on TMW/Evol/etc servers, so this feature "
-"usually makes little difference."
+"Note: MVP messages are not used on TMW/Evol/etc servers, so this feature usually makes little difference."
 msgstr ""
 
 #. TRANSLATORS: settings group
@@ -4206,12 +4195,9 @@ msgstr "ささやきををタブで表示する"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:189
 msgid ""
-"If this setting enabled, all whispers (private messages) will be placed in "
-"separate tabs, separate tab for each player. If this setting disabled, all "
-"whispers will appear in General tab.\n"
+"If this setting enabled, all whispers (private messages) will be placed in separate tabs, separate tab for each player. If this setting disabled, all whispers will appear in General tab.\n"
 "\n"
-"Note: putting all whispers to single General tab is known to be confusing. "
-"Think twice before disabling this feature."
+"Note: putting all whispers to single General tab is known to be confusing. Think twice before disabling this feature."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4222,8 +4208,7 @@ msgstr "デバッグタブに呪文をログする"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:199
 msgid ""
-"If this setting is enabled, spell invocation will be shown in Debug tab. If "
-"disabled, it will be shown in General tab instead.\n"
+"If this setting is enabled, spell invocation will be shown in Debug tab. If disabled, it will be shown in General tab instead.\n"
 "\n"
 "Note: it does not affects server replies related to spells."
 msgstr ""
@@ -4236,11 +4221,9 @@ msgstr "デバッグタブにサーバーメッセージをログする"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:207
 msgid ""
-"If this setting is enabled, server messages will be shown in Debug tab of "
-"chat. If disabled, server messages will appear in General chat instead.\n"
+"If this setting is enabled, server messages will be shown in Debug tab of chat. If disabled, server messages will appear in General chat instead.\n"
 "\n"
-"Note: according to 4144, disabling this could also make you to lose some "
-"debug messages from client in Debug tab since these are fake server messages."
+"Note: according to 4144, disabling this could also make you to lose some debug messages from client in Debug tab since these are fake server messages."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4265,11 +4248,9 @@ msgstr ""
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:226
 msgid ""
-"If enabled, GM tab will appear in chat. It displays text related GM "
-"activity.\n"
+"If enabled, GM tab will appear in chat. It displays text related GM activity.\n"
 "\n"
-"Note: this setting only makes difference for GMs (Game Masters) since this "
-"tab only appears for GMs."
+"Note: this setting only makes difference for GMs (Game Masters) since this tab only appears for GMs."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4280,8 +4261,7 @@ msgstr ""
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:234
 msgid ""
-"If this feature enabled, language tab will appear if server supports this "
-"feature.\n"
+"If this feature enabled, language tab will appear if server supports this feature.\n"
 "\n"
 "Note: only supported by Evol server yet."
 msgstr ""
@@ -4294,9 +4274,7 @@ msgstr ""
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:242
 msgid ""
-"If this setting enabled and server supports different chats for different "
-"languages, you will see messages for all languages, regardless of your "
-"language preferences.\n"
+"If this setting enabled and server supports different chats for different languages, you will see messages for all languages, regardless of your language preferences.\n"
 "\n"
 "Note: it only works on servers supporting language tabs feature, like Evol."
 msgstr ""
@@ -4309,9 +4287,7 @@ msgstr "バトルタブを有効"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:252
 msgid ""
-"If this setting enabled, Battle tab will appear in chat. This tab will "
-"contain messages related to battles, like damage and experience gain, if "
-"battle messages are enabled.\n"
+"If this setting enabled, Battle tab will appear in chat. This tab will contain messages related to battles, like damage and experience gain, if battle messages are enabled.\n"
 "\n"
 "Note: client restart required to take effect."
 msgstr ""
@@ -4337,10 +4313,7 @@ msgstr "チャットタブをリサイズする"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:269
 msgid ""
-"If this feature enabled, text in chat will be automatically adjusted to "
-"adapt to appearance of chat input field when you typing message and when "
-"input field of chat disappears. If disabled, chat input area will always "
-"occupy its place, which could be otherwise usable for text.\n"
+"If this feature enabled, text in chat will be automatically adjusted to adapt to appearance of chat input field when you typing message and when input field of chat disappears. If disabled, chat input area will always occupy its place, which could be otherwise usable for text.\n"
 "\n"
 "Note: its mostly about jumpy attitude vs less usable space for text."
 msgstr ""
@@ -4375,8 +4348,7 @@ msgstr "文字をハイライト (コンマで区切る)"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:299
 msgid ""
-"Here you can specify some extra words which will also cause highlighting. "
-"Use comma to separate words.\n"
+"Here you can specify some extra words which will also cause highlighting. Use comma to separate words.\n"
 "\n"
 "Note: frequent highlights are annoying - use it with caution."
 msgstr ""
@@ -4389,8 +4361,7 @@ msgstr ""
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:307
 msgid ""
-"This setting allows you to ignore some global messages if particular sender "
-"(NPC, GM) annoys you too much. Global will be moved to Debug instead.\n"
+"This setting allows you to ignore some global messages if particular sender (NPC, GM) annoys you too much. Global will be moved to Debug instead.\n"
 "\n"
 "Note: careless use of this feature can make you to miss important announces!"
 msgstr ""
@@ -4403,12 +4374,9 @@ msgstr ""
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:316
 msgid ""
-"If this setting enabled, button will appear near text input field. This "
-"button allows one to invoke composing window, which allows one to insert "
-"smiles and text formatting easily.\n"
+"If this setting enabled, button will appear near text input field. This button allows one to invoke composing window, which allows one to insert smiles and text formatting easily.\n"
 "\n"
-"Note: same window can also be invoked by hotkey when typing, usually F1 by "
-"default."
+"Note: same window can also be invoked by hotkey when typing, usually F1 by default."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4522,9 +4490,7 @@ msgstr "ショートカットキーが重複しています."
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
-msgstr ""
-"\"%s\"と\"%s\"キーが重複しています。 ゲームプレイに悪い影響が出るかもしれませ"
-"ん."
+msgstr "\"%s\"と\"%s\"キーが重複しています。 ゲームプレイに悪い影響が出るかもしれません."
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
@@ -4695,8 +4661,8 @@ msgstr "選択したモンスターを円で表示"
 #. TRANSLATORS: debug window tab
 #. TRANSLATORS: mini map window name
 #: src/gui/widgets/tabs/setup_other.cpp:137 src/gui/windowmenu.cpp:114
-#: src/gui/windows/debugwindow.cpp:61 src/gui/windows/minimap.cpp:60
-#: src/gui/windows/minimap.cpp:123
+#: src/gui/windows/debugwindow.cpp:61 src/gui/windows/minimap.cpp:59
+#: src/gui/windows/minimap.cpp:122
 msgid "Map"
 msgstr "マップ"
 
@@ -4887,7 +4853,7 @@ msgstr "ショップモードを有効にする"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: npc dialog name
-#: src/gui/widgets/tabs/setup_other.cpp:292 src/gui/windows/npcdialog.cpp:99
+#: src/gui/widgets/tabs/setup_other.cpp:292 src/gui/windows/npcdialog.cpp:98
 msgid "NPC"
 msgstr "NPC"
 
@@ -6154,7 +6120,8 @@ msgstr "量:"
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
 #: src/gui/windows/buydialog.cpp:285 src/gui/windows/charcreatedialog.cpp:112
-#: src/gui/windows/charselectdialog.cpp:618 src/gui/windows/socialwindow.cpp:77
+#: src/gui/windows/charselectdialog.cpp:618
+#: src/gui/windows/socialwindow.cpp:77
 msgid "Create"
 msgstr "作成"
 
@@ -6273,7 +6240,8 @@ msgstr "^"
 #: src/gui/windows/charcreatedialog.cpp:193
 #: src/gui/windows/charcreatedialog.cpp:206
 #: src/gui/windows/charcreatedialog.cpp:217
-#: src/gui/windows/charcreatedialog.cpp:227 src/gui/windows/outfitwindow.cpp:65
+#: src/gui/windows/charcreatedialog.cpp:227
+#: src/gui/windows/outfitwindow.cpp:65
 msgid ">"
 msgstr ">"
 
@@ -6291,7 +6259,8 @@ msgstr "%d ポイントを振り分けてください"
 #: src/gui/windows/charcreatedialog.cpp:197
 #: src/gui/windows/charcreatedialog.cpp:208
 #: src/gui/windows/charcreatedialog.cpp:219
-#: src/gui/windows/charcreatedialog.cpp:229 src/gui/windows/outfitwindow.cpp:63
+#: src/gui/windows/charcreatedialog.cpp:229
+#: src/gui/windows/outfitwindow.cpp:63
 msgid "<"
 msgstr "<"
 
@@ -6317,7 +6286,8 @@ msgstr ""
 
 #. TRANSLATORS: one char size female character gender
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/charcreatedialog.cpp:248 src/gui/windows/socialwindow.cpp:73
+#: src/gui/windows/charcreatedialog.cpp:248
+#: src/gui/windows/socialwindow.cpp:73
 msgid "F"
 msgstr "友達"
 
@@ -6519,7 +6489,8 @@ msgstr "サーバー編集"
 
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/editserverdialog.cpp:57 src/gui/windows/serverdialog.cpp:111
+#: src/gui/windows/editserverdialog.cpp:57
+#: src/gui/windows/serverdialog.cpp:111
 msgid "Connect"
 msgstr "接続"
 
@@ -6869,26 +6840,28 @@ msgstr "宛先:"
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:73
+#: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:72
 msgid "Subject:"
 msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:61 src/gui/windows/mailviewwindow.cpp:104
+#: src/gui/windows/maileditwindow.cpp:61
+#: src/gui/windows/mailviewwindow.cpp:103
 msgid "Money:"
 msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view item label
-#: src/gui/windows/maileditwindow.cpp:63 src/gui/windows/mailviewwindow.cpp:123
-#: src/gui/windows/mailviewwindow.cpp:132
+#: src/gui/windows/maileditwindow.cpp:63
+#: src/gui/windows/mailviewwindow.cpp:122
+#: src/gui/windows/mailviewwindow.cpp:131
 msgid "Item:"
 msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:65 src/gui/windows/mailviewwindow.cpp:76
+#: src/gui/windows/maileditwindow.cpp:65 src/gui/windows/mailviewwindow.cpp:75
 msgid "Message:"
 msgstr ""
 
@@ -6898,27 +6871,27 @@ msgid "empty subject"
 msgstr ""
 
 #. TRANSLATORS: mail view window name
-#: src/gui/windows/mailviewwindow.cpp:54
+#: src/gui/windows/mailviewwindow.cpp:53
 msgid "View mail"
 msgstr ""
 
 #. TRANSLATORS: mail view window button
-#: src/gui/windows/mailviewwindow.cpp:64
+#: src/gui/windows/mailviewwindow.cpp:63
 msgid "Reply"
 msgstr ""
 
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/mailviewwindow.cpp:66
+#: src/gui/windows/mailviewwindow.cpp:65
 msgid "Time:"
 msgstr ""
 
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/mailviewwindow.cpp:70
+#: src/gui/windows/mailviewwindow.cpp:69
 msgid "From:"
 msgstr ""
 
 #. TRANSLATORS: mail view attach button
-#: src/gui/windows/mailviewwindow.cpp:141
+#: src/gui/windows/mailviewwindow.cpp:140
 msgid "Get attach"
 msgstr ""
 
@@ -7008,22 +6981,22 @@ msgid "Job level: %d"
 msgstr ""
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:84
+#: src/gui/windows/npcdialog.cpp:83
 msgid "Stop waiting"
 msgstr "キャンセル"
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:86
+#: src/gui/windows/npcdialog.cpp:85
 msgid "Next"
 msgstr "次"
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:90
+#: src/gui/windows/npcdialog.cpp:89
 msgid "Submit"
 msgstr "決定"
 
 #. TRANSLATORS: npc dialog button
-#: src/gui/windows/npcdialog.cpp:134
+#: src/gui/windows/npcdialog.cpp:133
 msgid "Reset"
 msgstr "リセット"
 
@@ -7586,10 +7559,9 @@ msgstr "GP不足です."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:526
-msgid "Failed adding item. You can not overlap one kind of item on the window."
-msgstr ""
-"アイテムの追加に失敗しました。アイテム一種類を一つのウインドウ上で重複して追"
-"加することは出来ません."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
+msgstr "アイテムの追加に失敗しました。アイテム一種類を一つのウインドウ上で重複して追加することは出来ません."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:539
@@ -8871,9 +8843,7 @@ msgstr "不明なキャラクターサーバーエラー."
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:75
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr ""
-"キャラクター作成に失敗しました。既に使われている名前もしくは無効な文字が含ま"
-"れています."
+msgstr "キャラクター作成に失敗しました。既に使われている名前もしくは無効な文字が含まれています."
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:80 src/net/ea/loginrecv.cpp:159
@@ -9029,9 +8999,7 @@ msgstr ""
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
-msgstr ""
-"あなたは%sまでゲームから追放されました。\n"
-"GMにご連絡下さい."
+msgstr "あなたは%sまでゲームから追放されました。\nGMにご連絡下さい."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:151 src/net/eathena/loginrecv.cpp:92
@@ -9071,33 +9039,33 @@ msgstr "サーバーへの接続が切断されました. "
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:387
-#: src/net/eathena/charserverrecv.cpp:435
+#: src/net/eathena/charserverrecv.cpp:380
+#: src/net/eathena/charserverrecv.cpp:428
 msgid "Character rename error."
 msgstr ""
 
 #. TRANSLATORS: info message
-#: src/net/eathena/charserverrecv.cpp:410
+#: src/net/eathena/charserverrecv.cpp:403
 msgid "Character renamed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:426
+#: src/net/eathena/charserverrecv.cpp:419
 msgid "Rename not allowed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:430
+#: src/net/eathena/charserverrecv.cpp:423
 msgid "New name is not set."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:439
+#: src/net/eathena/charserverrecv.cpp:432
 msgid "Character not found."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/charserverrecv.cpp:473 src/net/tmwa/charserverrecv.cpp:294
+#: src/net/eathena/charserverrecv.cpp:466 src/net/tmwa/charserverrecv.cpp:284
 msgid "Failed to delete character."
 msgstr "キャラクター削除に失敗しました."
 
@@ -9429,7 +9397,7 @@ msgid "Map not found"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/net/eathena/inventoryrecv.cpp:844
+#: src/net/eathena/inventoryrecv.cpp:823
 #, c-format
 msgid "Left %s rental time for item %s."
 msgstr ""
@@ -9437,8 +9405,8 @@ msgstr ""
 #. TRANSLATORS: unknown item
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: item name
-#: src/net/eathena/inventoryrecv.cpp:1197
-#: src/net/eathena/inventoryrecv.cpp:1330 src/resources/db/itemdb.cpp:265
+#: src/net/eathena/inventoryrecv.cpp:1176
+#: src/net/eathena/inventoryrecv.cpp:1309 src/resources/db/itemdb.cpp:265
 msgid "Unknown item"
 msgstr "不明なアイテム"
 
@@ -10888,9 +10856,7 @@ msgstr ""
 #: src/utils/booleanoptions.h:27
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%sへの可能なオプションは：\"yes\", \"no\", \"true\", \"false\", \"1\", "
-"\"0\"."
+msgstr "/%sへの可能なオプションは：\"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
 #. TRANSLATORS: uptime command
 #: src/utils/stringutils.cpp:946
