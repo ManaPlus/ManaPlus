@@ -310,7 +310,10 @@ void ChatTab::chatLog(std::string line,
         if (!tabArea)
             return;
 
-        if (this != tabArea->getSelectedTab())
+        const bool notFocused = WindowManager::getIsMinimized() ||
+            (!settings.mouseFocused && !settings.inputFocused);
+
+        if (this != tabArea->getSelectedTab() || notFocused)
         {
             if (getFlash() == 0)
             {
@@ -331,11 +334,10 @@ void ChatTab::chatLog(std::string line,
             }
         }
 
-        if ((getAllowHighlight() || own == ChatMsgType::BY_GM)
-            && (this != tabArea->getSelectedTab()
-            || (WindowManager::getIsMinimized()
-            || (!settings.mouseFocused
-            && !settings.inputFocused))))
+        if ((getAllowHighlight() ||
+            own == ChatMsgType::BY_GM) &&
+            (this != tabArea->getSelectedTab() ||
+            notFocused))
         {
             if (own == ChatMsgType::BY_GM)
             {
