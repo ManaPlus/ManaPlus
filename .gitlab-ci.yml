@@ -671,15 +671,6 @@ gcc-5_h_eathena_opengl:
   tags:
     - docker
 
-fake_build:
-  stage: build
-  script:
-  - echo "fake build for workaround gitlab ci issue"
-  image: debian:unstable
-  allow_failure: true
-  tags:
-    - docker
-
 gcc-5_h_eathena_opengl_pugi:
   stage: build
   script:
