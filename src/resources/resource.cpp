@@ -37,7 +37,7 @@ void Resource::incRef()
 #ifdef DEBUG_IMAGES
     logger->log("before incRef for: %p", static_cast<void*>(this));
     mRefCount++;
-    logger->log("after incRef: %p, %d", static_cast<void*>(this), mRefCount);
+    logger->log("after incRef: %p, %u", static_cast<void*>(this), mRefCount);
 #else
     mRefCount++;
 #endif
@@ -59,7 +59,7 @@ void Resource::decRef()
     mRefCount--;
 
 #ifdef DEBUG_IMAGES
-    logger->log("after decRef: %p, %d", static_cast<void*>(this), mRefCount);
+    logger->log("after decRef: %p, %u", static_cast<void*>(this), mRefCount);
 #endif
 
     if (mRefCount == 0 && !mNotCount)
