@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+#include "enums/resources/imagetype.h"
+
 #include "resources/resource.h"
 
 #include <SDL_video.h>
@@ -190,6 +192,9 @@ class Image notfinal : public Resource
         { return mSDLSurface; }
 
         int calcMemoryLocal() const override;
+
+        virtual ImageTypeT getType() const
+        { return ImageType::Image; }
 
         SDL_Rect mBounds;
 

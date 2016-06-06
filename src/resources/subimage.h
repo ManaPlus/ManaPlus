@@ -78,6 +78,9 @@ class SubImage final : public Image
                            const int width,
                            const int height) override final A_WARN_UNUSED;
 
+        ImageTypeT getType() const override final
+        { return ImageType::SubImage; }
+
         int calcMemoryLocal() const override;
 
 #ifdef USE_OPENGL

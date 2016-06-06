@@ -665,6 +665,7 @@ SET(SRCS
     resources/iteminfo.cpp
     resources/itemslot.h
     enums/resources/imageposition.h
+    enums/resources/imagetype.h
     enums/resources/itemdbtype.h
     enums/resources/itemsoundevent.h
     enums/resources/itemtype.h
