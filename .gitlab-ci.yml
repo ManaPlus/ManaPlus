@@ -713,6 +713,174 @@ gcc-5_tarball:
 
 # deheader default
 
+deheader_gui_windows_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_sdl2_gui_windows_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader_sdl2.sh
+  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_gui_windows_withoutopengl_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_sdl2_gui_windows_withoutopengl_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader_sdl2.sh
+  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_gui_widgets_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_sdl2_gui_widgets_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader_sdl2.sh
+  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_gui_widgets_withoutopengl_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_sdl2_gui_widgets_withoutopengl_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader_sdl2.sh
+  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_gui_models_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_sdl2_gui_models_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader_sdl2.sh
+  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_gui_models_withoutopengl_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
+deheader_sdl2_gui_models_withoutopengl_cpp:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
+  - export CXX=g++-5
+  - export LOGFILE=deheader.log
+  - ./tools/ci/jobs/deheader_sdl2.sh
+  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  image: debian:unstable
+  tags:
+    - docker
+
 deheader_actions_cpp:
   stage: build
   script:
@@ -867,20 +1035,6 @@ deheader_gui_fonts_h:
   tags:
     - docker
 
-deheader_gui_models_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
-  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
 deheader_gui_models_h:
   stage: build
   script:
@@ -951,20 +1105,6 @@ deheader_gui_shortcut_h:
   tags:
     - docker
 
-deheader_gui_widgets_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
-  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
 deheader_gui_widgets_h:
   stage: build
   script:
@@ -974,20 +1114,6 @@ deheader_gui_widgets_h:
   - export LOGFILE=deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
-deheader_gui_windows_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
-  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   tags:
@@ -1597,20 +1723,6 @@ deheader_sdl2_gui_fonts_h:
   tags:
     - docker
 
-deheader_sdl2_gui_models_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
-  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
 deheader_sdl2_gui_models_h:
   stage: build
   script:
@@ -1681,20 +1793,6 @@ deheader_sdl2_gui_shortcut_h:
   tags:
     - docker
 
-deheader_sdl2_gui_widgets_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
-  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
 deheader_sdl2_gui_widgets_h:
   stage: build
   script:
@@ -1704,20 +1802,6 @@ deheader_sdl2_gui_widgets_h:
   - export LOGFILE=deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
-deheader_sdl2_gui_windows_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
-  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   tags:
@@ -2327,20 +2411,6 @@ deheader_gui_fonts_withoutopengl_h:
   tags:
     - docker
 
-deheader_gui_models_withoutopengl_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
-  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
 deheader_gui_models_withoutopengl_h:
   stage: build
   script:
@@ -2411,20 +2481,6 @@ deheader_gui_shortcut_withoutopengl_h:
   tags:
     - docker
 
-deheader_gui_widgets_withoutopengl_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
-  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
 deheader_gui_widgets_withoutopengl_h:
   stage: build
   script:
@@ -2434,20 +2490,6 @@ deheader_gui_widgets_withoutopengl_h:
   - export LOGFILE=deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
-deheader_gui_windows_withoutopengl_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
-  - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   tags:
@@ -3057,20 +3099,6 @@ deheader_sdl2_gui_fonts_withoutopengl_h:
   tags:
     - docker
 
-deheader_sdl2_gui_models_withoutopengl_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
-  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
 deheader_sdl2_gui_models_withoutopengl_h:
   stage: build
   script:
@@ -3141,20 +3169,6 @@ deheader_sdl2_gui_shortcut_withoutopengl_h:
   tags:
     - docker
 
-deheader_sdl2_gui_widgets_withoutopengl_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
-  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
 deheader_sdl2_gui_widgets_withoutopengl_h:
   stage: build
   script:
@@ -3164,20 +3178,6 @@ deheader_sdl2_gui_widgets_withoutopengl_h:
   - export LOGFILE=deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
-  - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
-  tags:
-    - docker
-
-deheader_sdl2_gui_windows_withoutopengl_cpp:
-  stage: build
-  script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
-  - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
-  - export CXX=g++-5
-  - export LOGFILE=deheader.log
-  - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   tags:
