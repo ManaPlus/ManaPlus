@@ -419,6 +419,10 @@ Game::Game() :
     if (windowContainer)
         windowContainer->add(windowMenu);
 
+#ifdef USE_OPENGL
+    MapReader::loadEmptyAtlas();
+#endif
+
     initEngines();
 
     chatWindow->postConnection();
@@ -450,6 +454,10 @@ Game::Game() :
 
 Game::~Game()
 {
+#ifdef USE_OPENGL
+    MapReader::unloadEmptyAtlas();
+#endif
+
     settings.disableLoggingInGame = false;
     touchManager.setInGame(false);
     config.write();

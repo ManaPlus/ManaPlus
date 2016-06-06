@@ -210,3 +210,15 @@ const MapInfo *MapDB::getMapAtlas(const std::string &name)
     info->files = &((*it2).second);
     return info;
 }
+
+const MapInfo *MapDB::getAtlas(const std::string &name)
+{
+    MapInfo *const info = new MapInfo;
+
+    const AtlasCIter it = mAtlases.find(name);
+    if (it == mAtlases.end())
+        return nullptr;
+    info->atlas = name;
+    info->files = &(*it).second;
+    return info;
+}

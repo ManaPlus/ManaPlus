@@ -64,6 +64,10 @@
 typedef std::map<std::string, XmlNodePtr>::iterator LayerInfoIterator;
 typedef std::set<XML::Document*>::iterator DocIterator;
 
+#ifdef USE_OPENGL
+Resource *MapReader::mEmptyAtlas = nullptr;
+#endif  // USE_OPENGL
+
 namespace
 {
     std::map<std::string, XmlNodePtr> mKnownLayers;
@@ -1235,3 +1239,26 @@ void MapReader::updateMusic(Map *const map)
     if (PhysFs::exists(paths.getStringValue("music").append(name).c_str()))
         map->setProperty("music", name);
 }
+
+#ifdef USE_OPENGL
+void MapReader::loadEmptyAtlas()
+{
+    if (!graphicsManager.getUseAtlases())
+        return;
+
+    const MapInfo *const info = MapDB::getAtlas(
+        paths.getStringValue("emptyAtlasName"));
+    if (info)
+    {
+        mEmptyAtlas = Loader::getAtlas(
+            info->atlas,
+            *info->files);
+    }
+}
+
+void MapReader::unloadEmptyAtlas()
+{
+    if (mEmptyAtlas)
+        mEmptyAtlas->decRef();
+}
+#endif  // USE_OPENGL

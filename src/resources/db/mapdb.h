@@ -55,6 +55,8 @@ namespace MapDB
 
     const MapInfo *getMapAtlas(const std::string &name) A_WARN_UNUSED;
 
+    const MapInfo *getAtlas(const std::string &name) A_WARN_UNUSED;
+
     // Maps DB
     typedef std::map<std::string, std::string> Maps;
     typedef Maps::iterator MapIterator;

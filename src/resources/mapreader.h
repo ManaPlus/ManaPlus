@@ -30,6 +30,7 @@
 class Map;
 class MapHeights;
 class Properties;
+class Resource;
 class Tileset;
 
 /**
@@ -61,6 +62,11 @@ class MapReader final
          */
         static void readLayer(const XmlNodePtr node,
                               Map *const map) A_NONNULL(2);
+
+#ifdef USE_OPENGL
+        static void loadEmptyAtlas();
+        static void unloadEmptyAtlas();
+#endif  // USE_OPENGL
 
     private:
         /**
@@ -105,6 +111,10 @@ class MapReader final
         static void loadLayers(const std::string &path);
 
         static void unloadTempLayers();
+
+#ifdef USE_OPENGL
+        static Resource *mEmptyAtlas;
+#endif  // USE_OPENGL
 };
 
 #endif  // RESOURCES_MAPREADER_H

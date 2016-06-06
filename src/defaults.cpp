@@ -639,6 +639,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("gmCommandSymbol", "@");
     AddDEF("gmCharCommandSymbol", "#");
     AddDEF("linkCommandSymbol", "=");
+    AddDEF("emptyAtlasName", "ignored");
 
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");
