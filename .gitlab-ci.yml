@@ -533,22 +533,6 @@ gcc_eathena_opengl_sdl2:
   tags:
     - docker
 
-gcc_tmwa_sdl2:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --enable-tmwa --disable-eathena
-  image: debian:unstable
-  tags:
-    - docker
-
-gcc_eathena:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5.sh --without-opengl --disable-tmwa --enable-eathena
-  image: debian:unstable
-  tags:
-    - docker
-
 gcc_eathena_sdl2:
   stage: build
   script:
@@ -2929,7 +2913,7 @@ deheader_withoutopengl_h:
   tags:
     - docker
 
-deheader_cc:
+deheader_withoutopengl_cc:
   stage: build
   script:
   - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
@@ -3617,7 +3601,7 @@ deheader_sdl2_withoutopengl_h:
   tags:
     - docker
 
-deheader_sdl2_cc:
+deheader_sdl2_withoutopengl_cc:
   stage: build
   script:
   - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
