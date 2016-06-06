@@ -103,6 +103,38 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
     return resource;
 }
 
+AtlasResource *AtlasManager::loadEmptyAtlas(const std::string &name,
+                                            const StringVect &files)
+{
+    std::vector<TextureAtlas*> atlases;
+    std::vector<Image*> images;
+    AtlasResource *resource = new AtlasResource;
+
+    loadEmptyImages(files, images);
+    int maxSize = OpenGLImageHelper::getTextureSize();
+
+    // sorting images on atlases.
+    simpleSort(name, atlases, images, maxSize);
+
+    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
+    {
+        TextureAtlas *const atlas = *it;
+        if (!atlas)
+            continue;
+
+        atlas->atlasImage = new Image(0,
+            8192, 8192,
+            8192, 8192);
+        // convert SDL images to OpenGL
+        convertAtlas(atlas);
+
+        resource->atlases.push_back(atlas);
+    }
+
+    BLOCK_END("AtlasManager::loadTextureAtlas")
+    return resource;
+}
+
 void AtlasManager::loadImages(const StringVect &files,
                               std::vector<Image*> &images)
 {
@@ -149,6 +181,33 @@ void AtlasManager::loadImages(const StringVect &files,
         delete d;
     }
     BLOCK_END("AtlasManager::loadImages")
+}
+
+void AtlasManager::loadEmptyImages(const StringVect &files,
+                                   std::vector<Image*> &images)
+{
+    BLOCK_START("AtlasManager::loadEmptyImages")
+
+    FOR_EACH (StringVectCIter, it, files)
+    {
+        const std::string str = *it;
+        // check is image with same name already in cache
+        // and if yes, move it to deleted set
+        Resource *const res = resourceManager->getTempResource(str);
+        if (res)
+        {
+            // increase counter because in moveToDeleted it will be decreased.
+            res->incRef();
+            resourceManager->moveToDeleted(res);
+        }
+
+        Image *const image = new Image(0,
+            2048, 2048,
+            2048, 2048);
+        image->mIdPath = str;
+        images.push_back(image);
+    }
+    BLOCK_END("AtlasManager::loadEmptyImages")
 }
 
 void AtlasManager::simpleSort(const std::string &restrict name,

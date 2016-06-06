@@ -397,6 +397,8 @@ SRC += events/actionevent.h \
 	      resources/resource.h \
 	      resources/loaders/atlasloader.cpp \
 	      resources/loaders/atlasloader.h \
+	      resources/loaders/emptyatlasloader.cpp \
+	      resources/loaders/emptyatlasloader.h \
 	      resources/loaders/imageloader.cpp \
 	      resources/loaders/imageloader.h \
 	      resources/loaders/imagesetloader.cpp \

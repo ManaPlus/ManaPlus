@@ -45,6 +45,10 @@ class AtlasManager final
                                                const StringVect &files)
                                                A_WARN_UNUSED;
 
+        static AtlasResource *loadEmptyAtlas(const std::string &name,
+                                             const StringVect &files)
+                                             A_WARN_UNUSED;
+
         static void injectToResources(const AtlasResource *const resource);
 
         static void moveToDeleted(AtlasResource *const resource);
@@ -52,6 +56,9 @@ class AtlasManager final
     private:
         static void loadImages(const StringVect &files,
                                std::vector<Image*> &images);
+
+        static void loadEmptyImages(const StringVect &files,
+                                    std::vector<Image*> &images);
 
         static void simpleSort(const std::string &restrict name,
                                std::vector<TextureAtlas*> &restrict atlases,

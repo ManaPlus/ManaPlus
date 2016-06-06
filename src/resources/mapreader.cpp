@@ -43,6 +43,7 @@
 #ifdef USE_OPENGL
 #include "resources/db/mapdb.h"
 #include "resources/loaders/atlasloader.h"
+#include "resources/loaders/emptyatlasloader.h"
 #endif
 
 #include "resources/map/tileanimation.h"
@@ -1250,7 +1251,7 @@ void MapReader::loadEmptyAtlas()
         paths.getStringValue("emptyAtlasName"));
     if (info)
     {
-        mEmptyAtlas = Loader::getAtlas(
+        mEmptyAtlas = Loader::getEmptyAtlas(
             info->atlas,
             *info->files);
     }
