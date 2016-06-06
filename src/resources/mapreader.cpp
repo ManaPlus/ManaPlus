@@ -1063,9 +1063,21 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
 
                 if (tilebmp)
                 {
-                    set = new Tileset(tilebmp, tw, th, firstGid, margin,
-                                      spacing);
+                    set = new Tileset(tilebmp,
+                        tw, th,
+                        firstGid,
+                        margin,
+                        spacing);
                     tilebmp->decRef();
+#ifdef USE_OPENGL
+                    if (tilebmp->getType() == ImageType::Image &&
+                        map->haveAtlas() == true &&
+                        graphicsManager.getUseAtlases())
+                    {
+                        reportAlways("Error: image '%s' not present in atlas",
+                            source.c_str());
+                    }
+#endif
                 }
                 else
                 {

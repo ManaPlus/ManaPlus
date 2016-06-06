@@ -375,6 +375,9 @@ class Map final : public Properties,
         std::string getCounterName() const override final
         { return mName; }
 
+        bool haveAtlas() const
+        { return mAtlas != nullptr; }
+
     protected:
         friend class Actor;
         friend class Minimap;
