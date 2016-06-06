@@ -52,6 +52,7 @@
 #include "resources/loaders/walklayerloader.h"
 
 #include "utils/base64.h"
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/physfstools.h"
 #include "utils/stringmap.h"
@@ -186,19 +187,19 @@ int inflateMemory(unsigned char *restrict const in,
     {
         if (ret == Z_MEM_ERROR)
         {
-            logger->log1("Error: Out of memory while decompressing map data!");
+            reportAlways("Error: Out of memory while decompressing map data!");
         }
         else if (ret == Z_VERSION_ERROR)
         {
-            logger->log1("Error: Incompatible zlib version!");
+            reportAlways("Error: Incompatible zlib version!");
         }
         else if (ret == Z_DATA_ERROR)
         {
-            logger->log1("Error: Incorrect zlib compressed data!");
+            reportAlways("Error: Incorrect zlib compressed data!");
         }
         else
         {
-            logger->log1("Error: Unknown error while decompressing map data!");
+            reportAlways("Error: Unknown error while decompressing map data!");
         }
 
         free(out);
@@ -266,8 +267,8 @@ Map *MapReader::readMap(const std::string &restrict filename,
     }
     else
     {
-        logger->log("Error while parsing map file (%s)!",
-                    realFilename.c_str());
+        reportAlways("Error while parsing map file (%s)!",
+            realFilename.c_str());
     }
 
     if (map)
@@ -328,9 +329,9 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
 
     if (tilew < 0 || tileh < 0)
     {
-        logger->log("MapReader: Warning: "
-                    "Uninitialized tile width or height value for map: %s",
-                    path.c_str());
+        reportAlways("MapReader: Warning: "
+            "Uninitialized tile width or height value for map: %s",
+            path.c_str());
         BLOCK_END("MapReader::readMap xml")
         return nullptr;
     }
@@ -355,6 +356,11 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
             map->setAtlas(Loader::getAtlas(
                 info->atlas,
                 *info->files));
+        }
+        else
+        {
+            reportAlways("Missing atlas for map: %s",
+                fileName.c_str());
         }
     }
     BLOCK_END("MapReader::readMap load atlas")
@@ -608,7 +614,7 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
     if (!compression.empty() && compression != "gzip"
         && compression != "zlib")
     {
-        logger->log1("Warning: only gzip and zlib layer"
+        reportAlways("Warning: only gzip and zlib layer"
             " compression supported!");
         return false;
     }
@@ -665,7 +671,7 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
 
             if (!inflated)
             {
-                logger->log1("Error: Could not decompress layer!");
+                reportAlways("Error: Could not decompress layer!");
                 return false;
             }
         }
@@ -1063,8 +1069,8 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                 }
                 else
                 {
-                    logger->log("Warning: Failed to load tileset (%s)",
-                            source.c_str());
+                    reportAlways("Error: Failed to load tileset (%s)",
+                        source.c_str());
                 }
             }
         }
