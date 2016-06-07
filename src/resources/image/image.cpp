@@ -30,7 +30,8 @@
 
 #include "resources/memorymanager.h"
 #include "resources/sdlimagehelper.h"
-#include "resources/subimage.h"
+
+#include "resources/image/subimage.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 

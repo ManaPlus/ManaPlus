@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/subimage.h"
+#include "resources/image/subimage.h"
 
 #ifdef DEBUG_IMAGES
 #include "logger.h"

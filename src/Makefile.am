@@ -447,8 +447,8 @@ SRC += events/actionevent.h \
 	      resources/sprite/spritedef.cpp \
 	      resources/sprite/spritedef.h \
 	      enums/resources/spritedirection.h \
-	      resources/subimage.cpp \
-	      resources/subimage.h \
+	      resources/image/subimage.cpp \
+	      resources/image/subimage.h \
 	      resources/surfaceimagehelper.cpp \
 	      resources/surfaceimagehelper.h \
 	      resources/wallpaper.cpp \

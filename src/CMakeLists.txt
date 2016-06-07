@@ -782,8 +782,8 @@ SET(SRCS
     enums/resources/spritedirection.h
     resources/sprite/spritedisplay.h
     resources/sprite/spritereference.h
-    resources/subimage.cpp
-    resources/subimage.h
+    resources/image/subimage.cpp
+    resources/image/subimage.h
     resources/surfaceimagehelper.cpp
     resources/surfaceimagehelper.h
     resources/atlas/textureatlas.h
@@ -1476,8 +1476,8 @@ SET(DYE_CMD_SRCS
     resources/skillconsts.h
     resources/soundeffect.cpp
     resources/soundeffect.h
-    resources/subimage.cpp
-    resources/subimage.h
+    resources/image/subimage.cpp
+    resources/image/subimage.h
     resources/surfaceimagehelper.cpp
     resources/surfaceimagehelper.h
     resources/atlas/textureatlas.h
