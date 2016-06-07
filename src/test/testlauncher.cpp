@@ -40,7 +40,6 @@
 
 #include "render/vertexes/imagecollection.h"
 
-#include "resources/image.h"
 #include "resources/imagewriter.h"
 #include "resources/mstack.h"
 #include "resources/openglimagehelper.h"
@@ -50,6 +49,8 @@
 
 #include "resources/dye/dye.h"
 #include "resources/dye/dyepalette.h"
+
+#include "resources/image/image.h"
 
 #include <unistd.h>
 

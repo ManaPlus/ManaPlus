@@ -28,11 +28,11 @@
 #include "particle/particleemitter.h"
 #include "particle/rotationalparticle.h"
 
-#include "resources/image.h"
-
 #include "resources/animation/simpleanimation.h"
 
 #include "resources/dye/dye.h"
+
+#include "resources/image/image.h"
 
 #include "resources/loaders/imageloader.h"
 

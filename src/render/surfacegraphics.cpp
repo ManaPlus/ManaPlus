@@ -22,11 +22,11 @@
 
 #include "render/surfacegraphics.h"
 
-#include "resources/image.h"
-
 #ifndef USE_SDL2
 #include "resources/surfaceimagehelper.h"
 #endif  // USE_SDL2
+
+#include "resources/image/image.h"
 
 #include "debug.h"
 

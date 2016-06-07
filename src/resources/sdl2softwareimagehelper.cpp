@@ -29,7 +29,7 @@
 
 #include "resources/dye/dye.h"
 
-#include "resources/image.h"
+#include "resources/image/image.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 

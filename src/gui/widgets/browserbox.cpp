@@ -39,14 +39,14 @@
 
 #include "render/graphics.h"
 
-#include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"
 
-#include "resources/loaders/imageloader.h"
+#include "resources/image/image.h"
 
+#include "resources/loaders/imageloader.h"
 #include "resources/loaders/imagesetloader.h"
 
 #include "utils/stringutils.h"

@@ -71,7 +71,6 @@
 #include "resources/emoteinfo.h"
 #include "resources/emotesprite.h"
 #include "resources/horseinfo.h"
-#include "resources/image.h"
 #include "resources/iteminfo.h"
 
 #include "resources/db/avatardb.h"
@@ -85,6 +84,8 @@
 #include "resources/db/npcdb.h"
 #include "resources/db/petdb.h"
 #include "resources/db/skillunitdb.h"
+
+#include "resources/image/image.h"
 
 #include "resources/map/map.h"
 

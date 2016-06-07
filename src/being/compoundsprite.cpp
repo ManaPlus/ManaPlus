@@ -33,10 +33,10 @@
 
 #include "render/surfacegraphics.h"
 
-#include "resources/image.h"
 #if defined(USE_OPENGL) || !defined(USE_SDL2)
 #include "resources/imagehelper.h"
 #endif  // USE_OPENGL
+#include "resources/image/image.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"

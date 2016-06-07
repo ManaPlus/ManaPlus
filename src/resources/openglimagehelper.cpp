@@ -39,10 +39,10 @@
 #include "render/opengl/mgl.h"
 #include "render/opengl/mglcheck.h"
 
-#include "resources/image.h"
-
 #include "resources/dye/dye.h"
 #include "resources/dye/dyepalette.h"
+
+#include "resources/image/image.h"
 
 #include "utils/sdlcheckutils.h"
 

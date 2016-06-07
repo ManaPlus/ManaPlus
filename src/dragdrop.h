@@ -33,7 +33,7 @@
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 
-#include "resources/image.h"
+#include "resources/image/image.h"
 
 #include "localconsts.h"
 

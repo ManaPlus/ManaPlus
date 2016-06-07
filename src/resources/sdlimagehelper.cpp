@@ -27,10 +27,10 @@
 #include "logger.h"
 #include "main.h"
 
-#include "resources/image.h"
-
 #include "resources/dye/dye.h"
 #include "resources/dye/dyepalette.h"
+
+#include "resources/image/image.h"
 
 #include "utils/sdlcheckutils.h"
 

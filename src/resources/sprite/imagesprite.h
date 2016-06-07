@@ -24,7 +24,7 @@
 
 #include "resources/sprite/sprite.h"
 
-#include "resources/image.h"
+#include "resources/image/image.h"
 
 class Graphics;
 

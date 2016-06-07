@@ -24,8 +24,9 @@
 #include "maingui.h"
 #include "sdlshared.h"
 
-#include "resources/image.h"
 #include "resources/imagewriter.h"
+
+#include "resources/image/image.h"
 
 #ifdef USE_SDL2
 #include "resources/surfaceimagehelper.h"

@@ -23,8 +23,9 @@
 
 #ifdef USE_OPENGL
 
-#include "resources/image.h"
 #include "resources/memorycounter.h"
+
+#include "resources/image/image.h"
 
 #include <string>
 

@@ -20,12 +20,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/image.h"
 #include "resources/imageset.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
+#include "resources/image/image.h"
 
 #include "resources/loaders/subimagesetloader.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/stringutils.h"
 

@@ -38,7 +38,7 @@
 
 #endif
 
-#include "resources/image.h"
+#include "resources/image/image.h"
 
 /**
  * A clipped version of a larger image.

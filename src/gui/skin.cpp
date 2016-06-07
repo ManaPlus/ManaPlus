@@ -28,8 +28,9 @@
 
 #include "enums/resources/imageposition.h"
 
-#include "resources/image.h"
 #include "resources/imagerect.h"
+
+#include "resources/image/image.h"
 
 #include "utils/delete2.h"
 

@@ -28,7 +28,7 @@
 
 #include "utils/delete2.h"
 
-#include "resources/image.h"
+#include "resources/image/image.h"
 
 #include "render/graphics.h"
 

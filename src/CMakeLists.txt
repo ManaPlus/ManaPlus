@@ -647,8 +647,8 @@ SET(SRCS
     resources/fboinfo.h
     resources/frame.h
     resources/horseinfo.h
-    resources/image.cpp
-    resources/image.h
+    resources/image/image.cpp
+    resources/image/image.h
     resources/imagehelper.cpp
     resources/imagehelper.h
     resources/imagerect.h
@@ -1428,8 +1428,8 @@ SET(DYE_CMD_SRCS
     resources/effectdescription.h
     resources/emoteinfo.h
     resources/emotesprite.h
-    resources/image.cpp
-    resources/image.h
+    resources/image/image.cpp
+    resources/image/image.h
     resources/imagehelper.cpp
     resources/imagehelper.h
     resources/imagerect.h

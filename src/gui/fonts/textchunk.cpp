@@ -27,8 +27,9 @@
 
 #include "gui/fonts/font.h"
 
-#include "resources/image.h"
 #include "resources/surfaceimagehelper.h"
+
+#include "resources/image/image.h"
 
 #include "utils/delete2.h"
 #include "utils/sdlcheckutils.h"

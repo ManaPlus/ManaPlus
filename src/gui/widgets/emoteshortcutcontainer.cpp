@@ -37,9 +37,10 @@
 #include "input/inputactionoperators.h"
 
 #include "resources/emotesprite.h"
-#include "resources/image.h"
 
 #include "resources/db/emotedb.h"
+
+#include "resources/image/image.h"
 
 #include "resources/sprite/animatedsprite.h"
 

@@ -76,7 +76,7 @@
 #ifndef DYECMD
 #include "dragdrop.h"
 #else
-#include "resources/image.h"
+#include "resources/image/image.h"
 #endif
 #include "settings.h"
 

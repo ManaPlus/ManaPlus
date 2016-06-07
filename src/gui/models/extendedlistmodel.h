@@ -21,9 +21,9 @@
 #ifndef GUI_MODELS_EXTENDEDLISTMODEL_H
 #define GUI_MODELS_EXTENDEDLISTMODEL_H
 
-#include "resources/image.h"
-
 #include "gui/models/listmodel.h"
+
+#include "resources/image/image.h"
 
 class ExtendedListModel notfinal : public ListModel
 {

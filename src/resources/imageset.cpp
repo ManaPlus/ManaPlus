@@ -24,7 +24,7 @@
 
 #include "logger.h"
 
-#include "resources/image.h"
+#include "resources/image/image.h"
 
 #include "utils/dtor.h"
 

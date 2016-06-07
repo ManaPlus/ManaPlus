@@ -26,7 +26,7 @@
 #include "logger.h"
 
 #ifdef USE_OPENGL
-#include "resources/image.h"
+#include "resources/image/image.h"
 #endif  // USE_OPENGL
 
 #include "resources/imageset.h"

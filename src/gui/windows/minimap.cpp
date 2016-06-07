@@ -38,8 +38,9 @@
 
 #include "gui/windows/setupwindow.h"
 
-#include "resources/image.h"
 #include "resources/imagehelper.h"
+
+#include "resources/image/image.h"
 
 #include "resources/map/map.h"
 #include "resources/map/metatile.h"

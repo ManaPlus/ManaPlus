@@ -75,10 +75,11 @@
 
 #include "render/vertexes/imagecollection.h"
 
-#include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/imagerect.h"
 #include "resources/sdl2imagehelper.h"
+
+#include "resources/image/image.h"
 
 #include "utils/sdlcheckutils.h"
 

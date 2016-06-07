@@ -25,9 +25,10 @@
 
 #include "render/opengl/mgl.h"
 
-#include "resources/image.h"
 #include "resources/imagerect.h"
 #include "resources/safeopenglimagehelper.h"
+
+#include "resources/image/image.h"
 
 #include "utils/sdlcheckutils.h"
 

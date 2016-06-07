@@ -37,8 +37,9 @@
 #include "resources/map/tileset.h"
 
 #include "resources/beingcommon.h"
-#include "resources/image.h"
 #include "resources/animation/animation.h"
+
+#include "resources/image/image.h"
 
 #ifdef USE_OPENGL
 #include "resources/db/mapdb.h"

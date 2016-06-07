@@ -21,7 +21,7 @@
 
 #include "gui/widgets/linepart.h"
 
-#include "resources/image.h"
+#include "resources/image/image.h"
 
 #include "debug.h"
 

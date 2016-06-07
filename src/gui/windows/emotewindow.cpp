@@ -34,8 +34,9 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
-#include "resources/image.h"
 #include "resources/imageset.h"
+
+#include "resources/image/image.h"
 
 #include "debug.h"
 

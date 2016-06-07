@@ -28,9 +28,10 @@
 
 #include "resources/action.h"
 #include "resources/delayedmanager.h"
-#include "resources/image.h"
 
 #include "resources/animation/animation.h"
+
+#include "resources/image/image.h"
 
 #include "resources/loaders/spritedefloader.h"
 

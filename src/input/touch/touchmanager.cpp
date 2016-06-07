@@ -39,8 +39,9 @@
 
 #include "render/vertexes/imagecollection.h"
 
-#include "resources/image.h"
 #include "resources/imagerect.h"
+
+#include "resources/image/image.h"
 
 #include "debug.h"
 

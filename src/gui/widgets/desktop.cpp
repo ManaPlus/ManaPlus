@@ -31,9 +31,10 @@
 
 #include "render/opengl/opengldebug.h"
 
-#include "resources/image.h"
 #include "resources/imagehelper.h"
 #include "resources/wallpaper.h"
+
+#include "resources/image/image.h"
 
 #include "resources/loaders/rescaledloader.h"
 

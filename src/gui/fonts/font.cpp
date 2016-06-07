@@ -70,8 +70,9 @@
 
 #include "render/graphics.h"
 
-#include "resources/image.h"
 #include "resources/imagehelper.h"
+
+#include "resources/image/image.h"
 
 #include "utils/delete2.h"
 #include "utils/files.h"

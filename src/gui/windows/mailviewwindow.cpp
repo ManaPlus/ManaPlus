@@ -38,8 +38,9 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
-#include "resources/image.h"
 #include "resources/iteminfo.h"
+
+#include "resources/image/image.h"
 
 #include "resources/loaders/imageloader.h"
 

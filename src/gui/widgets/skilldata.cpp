@@ -26,7 +26,7 @@
 
 #include "gui/theme.h"
 
-#include "resources/image.h"
+#include "resources/image/image.h"
 
 #include "resources/loaders/imageloader.h"
 

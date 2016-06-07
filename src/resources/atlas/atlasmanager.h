@@ -23,7 +23,7 @@
 
 #ifdef USE_OPENGL
 
-#include "resources/image.h"
+#include "resources/image/image.h"
 
 #include "utils/stringvector.h"
 

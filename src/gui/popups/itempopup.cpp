@@ -37,8 +37,9 @@
 
 #include "utils/gettext.h"
 
-#include "resources/image.h"
 #include "resources/iteminfo.h"
+
+#include "resources/image/image.h"
 
 #include "resources/item/item.h"
 

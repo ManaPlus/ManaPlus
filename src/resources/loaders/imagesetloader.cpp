@@ -22,8 +22,9 @@
 
 #include "logger.h"
 
-#include "resources/image.h"
 #include "resources/imageset.h"
+
+#include "resources/image/image.h"
 
 #include "resources/loaders/imageloader.h"
 #include "resources/loaders/imagesetloader.h"

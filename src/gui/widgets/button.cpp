@@ -67,9 +67,10 @@
 
 #include "settings.h"
 
-#include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/imagerect.h"
+
+#include "resources/image/image.h"
 
 #include "gui/gui.h"
 #include "gui/skin.h"
