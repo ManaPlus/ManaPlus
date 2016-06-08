@@ -165,14 +165,12 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 "",
                 itemColor,
                 IsWeapon_true,
-                IsTempSprite_false,
                 cards);
             dstBeing->setSprite(SPRITE_FLOOR,
                 id2,
                 std::string(),
                 ItemColor_one,
                 IsWeapon_false,
-                IsTempSprite_false,
                 nullptr);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
@@ -183,7 +181,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
@@ -194,7 +191,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
@@ -206,7 +202,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
@@ -227,7 +222,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
@@ -238,7 +232,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
@@ -249,7 +242,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
@@ -260,7 +252,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
@@ -271,7 +262,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
@@ -282,7 +272,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
@@ -293,7 +282,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
@@ -304,7 +292,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
@@ -315,7 +302,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL3);
@@ -326,7 +312,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
@@ -337,7 +322,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL5);
@@ -348,7 +332,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 color,
                 itemColor,
                 IsWeapon_false,
-                IsTempSprite_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL6);

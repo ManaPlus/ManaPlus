@@ -547,12 +547,11 @@ void BeingRecv::setSprite(Being *const being,
                           const int id,
                           const std::string &color,
                           const ItemColor colorId,
-                          const IsWeapon isWeapon,
-                          const IsTempSprite isTempSprite)
+                          const IsWeapon isWeapon)
 {
     if (!being)
         return;
-    being->updateSprite(slot, id, color, colorId, isWeapon, isTempSprite);
+    being->updateSprite(slot, id, color, colorId, isWeapon);
 }
 
 }  // namespace Ea
