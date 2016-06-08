@@ -324,7 +324,7 @@ class Being notfinal : public ActorSprite,
                        std::string color,
                        ItemColor colorId,
                        const IsWeapon isWeapon,
-                       const IsTempSprite isTempSprite = IsTempSprite_false,
+                       const IsTempSprite isTempSprite,
                        const int *const cards = nullptr)
                        restrict2;
 

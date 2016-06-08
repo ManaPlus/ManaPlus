@@ -500,7 +500,8 @@ void Being::setSubtype(const BeingTypeId subtype,
                     id,
                     std::string(),
                     ItemColor_one,
-                    IsWeapon_false);
+                    IsWeapon_false,
+                    IsTempSprite_false);
             }
         }
         else
@@ -513,7 +514,8 @@ void Being::setSubtype(const BeingTypeId subtype,
                     id,
                     info.getColor(fromInt(mLook, ItemColor)),
                     ItemColor_one,
-                    IsWeapon_false);
+                    IsWeapon_false,
+                    IsTempSprite_false);
             }
         }
     }
@@ -2616,7 +2618,8 @@ void Being::setSpriteID(const unsigned int slot,
         id,
         mSpriteColors[slot],
         ItemColor_one,
-        IsWeapon_false);
+        IsWeapon_false,
+        IsTempSprite_false);
 }
 
 void Being::setSpriteColor(const unsigned int slot,
@@ -2626,7 +2629,8 @@ void Being::setSpriteColor(const unsigned int slot,
         mSpriteIDs[slot],
         color,
         ItemColor_one,
-        IsWeapon_false);
+        IsWeapon_false,
+        IsTempSprite_false);
 }
 
 void Being::setHairStyle(const unsigned int slot,
@@ -2637,7 +2641,8 @@ void Being::setHairStyle(const unsigned int slot,
         id,
         ItemDB::get(id).getDyeColorsString(mHairColor),
         ItemColor_one,
-        IsWeapon_false);
+        IsWeapon_false,
+        IsTempSprite_false);
 //    dumpSprites();
 }
 
@@ -2652,7 +2657,8 @@ void Being::setHairColor(const unsigned int slot,
             mSpriteIDs[slot],
             ItemDB::get(id).getDyeColorsString(color),
             ItemColor_one,
-            IsWeapon_false);
+            IsWeapon_false,
+            IsTempSprite_false);
     }
 }
 
@@ -2841,7 +2847,8 @@ void Being::setGender(const GenderT gender) restrict2
                     mSpriteIDs[i],
                     mSpriteColors[i],
                     ItemColor_one,
-                    IsWeapon_false);
+                    IsWeapon_false,
+                    IsTempSprite_false);
             }
         }
 
@@ -3695,7 +3702,8 @@ void Being::undressItemById(const int id) restrict2
                 0,
                 std::string(),
                 ItemColor_one,
-                IsWeapon_false);
+                IsWeapon_false,
+                IsTempSprite_false);
             break;
         }
     }
