@@ -129,7 +129,11 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     const int option A_UNUSED = (msg.readInt16("weapon") | 1) ^ 1;
     const int weapon = 0;
 
-    tempPlayer->setSprite(SPRITE_BODY, weapon, "", ItemColor_one, true);
+    tempPlayer->setSprite(SPRITE_BODY,
+        weapon,
+        "",
+        ItemColor_one,
+        IsWeapon_true);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
 

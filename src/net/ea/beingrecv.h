@@ -24,6 +24,7 @@
 #define NET_EA_BEINGRECV_H
 
 #include "enums/simpletypes/beingid.h"
+#include "enums/simpletypes/isweapon.h"
 #include "enums/simpletypes/itemcolor.h"
 
 #include <string>
@@ -57,7 +58,7 @@ namespace Ea
                        const int id,
                        const std::string &color = "",
                        const ItemColor colorId = ItemColor_one,
-                       const bool isWeapon = false,
+                       const IsWeapon isWeapon = IsWeapon_false,
                        const bool isTempSprite = false);
     }  // namespace BeingRecv
 }  // namespace Ea

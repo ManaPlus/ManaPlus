@@ -143,7 +143,11 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             break;
         }
         case 2:     // Weapon ID in id, Shield ID in id2
-            dstBeing->setSprite(SPRITE_BODY, id, "", ItemColor_one, true);
+            dstBeing->setSprite(SPRITE_BODY,
+                id,
+                "",
+                ItemColor_one,
+                IsWeapon_true);
             dstBeing->setSprite(SPRITE_FLOOR, id2);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
@@ -311,7 +315,11 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
     if (!disguiseId)
     {
         // Set these after the gender, as the sprites may be gender-specific
-        dstBeing->updateSprite(SPRITE_BODY, weapon, "", ItemColor_one, true);
+        dstBeing->updateSprite(SPRITE_BODY,
+            weapon,
+            "",
+            ItemColor_one,
+            IsWeapon_true);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
@@ -453,7 +461,11 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
     if (!disguiseId)
     {
         // Set these after the gender, as the sprites may be gender-specific
-        dstBeing->updateSprite(SPRITE_BODY, weapon, "", ItemColor_one, true);
+        dstBeing->updateSprite(SPRITE_BODY,
+            weapon,
+            "",
+            ItemColor_one,
+            IsWeapon_true);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
@@ -595,7 +607,11 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
     if (!disguiseId)
     {
         // Set these after the gender, as the sprites may be gender-specific
-        dstBeing->updateSprite(SPRITE_BODY, weapon, "", ItemColor_one, true);
+        dstBeing->updateSprite(SPRITE_BODY,
+            weapon,
+            "",
+            ItemColor_one,
+            IsWeapon_true);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
@@ -844,8 +860,12 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_BODY, weapon, "",
-            ItemColor_one, true);
+        Ea::BeingRecv::setSprite(dstBeing,
+            SPRITE_BODY,
+            weapon,
+            "",
+            ItemColor_one,
+            IsWeapon_true);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
@@ -1057,8 +1077,12 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_BODY, weapon, "",
-            ItemColor_one, true);
+        Ea::BeingRecv::setSprite(dstBeing,
+            SPRITE_BODY,
+            weapon,
+            "",
+            ItemColor_one,
+            IsWeapon_true);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc

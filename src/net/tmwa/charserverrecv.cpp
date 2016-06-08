@@ -104,7 +104,11 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     const uint16_t look = msg.readUInt8("look");
     tempPlayer->setSubtype(fromInt(race, BeingTypeId), look);
     const uint16_t weapon = msg.readInt16("weapon");
-    tempPlayer->setSprite(SPRITE_BODY, weapon, "", ItemColor_one, true);
+    tempPlayer->setSprite(SPRITE_BODY,
+        weapon,
+        "",
+        ItemColor_one,
+        IsWeapon_true);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
 

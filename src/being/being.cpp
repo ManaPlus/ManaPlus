@@ -2468,7 +2468,7 @@ void Being::updateSprite(const unsigned int slot,
                          const int id,
                          const std::string &restrict color,
                          const ItemColor colorId,
-                         const bool isWeapon,
+                         const IsWeapon isWeapon,
                          const bool isTempSprite) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
@@ -2486,7 +2486,7 @@ void Being::setSprite(const unsigned int slot,
                       const int id,
                       std::string color,
                       const ItemColor colorId,
-                      const bool isWeapon,
+                      const IsWeapon isWeapon,
                       const bool isTempSprite) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
@@ -2514,7 +2514,7 @@ void Being::setSprite(const unsigned int slot,
         removeSprite(slot);
         mSpriteDraw[slot] = 0;
 
-        if (isWeapon)
+        if (isWeapon == IsWeapon_true)
             mEquippedWeapon = nullptr;
         const int id1 = mSpriteIDs[slot];
         if (id1)
@@ -2567,7 +2567,7 @@ void Being::setSprite(const unsigned int slot,
 
         addItemParticles(id, info.getDisplay());
 
-        if (isWeapon)
+        if (isWeapon == IsWeapon_true)
             mEquippedWeapon = &ItemDB::get(id);
 
         setAction(mAction, 0);
@@ -3376,7 +3376,7 @@ void Being::recalcSpritesOrder() restrict2
                                         setSprite(remSprite, repIt->second,
                                             mSpriteColors[remSprite],
                                             ItemColor_one,
-                                            false,
+                                            IsWeapon_false,
                                             true);
                                     }
                                     else
@@ -3385,7 +3385,7 @@ void Being::recalcSpritesOrder() restrict2
                                             ItemDB::get(repIt->second)
                                             .getDyeColorsString(mHairColor),
                                             ItemColor_one,
-                                            false,
+                                            IsWeapon_false,
                                             true);
                                     }
                                     updatedSprite[remSprite] = true;
@@ -3409,7 +3409,7 @@ void Being::recalcSpritesOrder() restrict2
                                             setSprite(slot2, repIt->second,
                                                 mSpriteColors[slot2],
                                                 ItemColor_one,
-                                                false,
+                                                IsWeapon_false,
                                                 true);
                                         }
                                         else
@@ -3419,7 +3419,7 @@ void Being::recalcSpritesOrder() restrict2
                                                 .getDyeColorsString(
                                                 mHairColor),
                                                 ItemColor_one,
-                                                false,
+                                                IsWeapon_false,
                                                 true);
                                         }
                                         updatedSprite[slot2] = true;
@@ -3566,7 +3566,7 @@ void Being::recalcSpritesOrder() restrict2
                     id,
                     mSpriteColors[slot],
                     ItemColor_one,
-                    false,
+                    IsWeapon_false,
                     true);
             }
         }
@@ -3583,7 +3583,7 @@ void Being::recalcSpritesOrder() restrict2
                     id,
                     mSpriteColors[slot],
                     ItemColor_one,
-                    false,
+                    IsWeapon_false,
                     true);
             }
         }

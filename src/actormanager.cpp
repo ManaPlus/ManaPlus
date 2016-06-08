@@ -2038,7 +2038,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
     {
         const int spriteId = srcBeing->getSpriteID(slot);
         const ItemColor color = srcBeing->getSpriteColor(slot);
-        dstBeing->setSprite(slot, spriteId, "", color, false);
+        dstBeing->setSprite(slot, spriteId, "", color, IsWeapon_false);
     }
     const int hairSlot = charServerHandler->hairSprite();
     const int hairStyle = -srcBeing->getSpriteID(hairSlot);

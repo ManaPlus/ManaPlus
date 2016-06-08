@@ -160,7 +160,11 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             dstBeing->setSpriteID(SPRITE_HAIR_COLOR, id * -1);
             break;
         case 2:  // LOOK_WEAPON Weapon ID in id, Shield ID in id2
-            dstBeing->setSprite(SPRITE_BODY, id, "", itemColor, true);
+            dstBeing->setSprite(SPRITE_BODY,
+                id,
+                "",
+                itemColor,
+                IsWeapon_true);
             dstBeing->setSprite(SPRITE_FLOOR, id2);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
@@ -399,8 +403,12 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_BODY, weapon, "",
-            ItemColor_one, true);
+        Ea::BeingRecv::setSprite(dstBeing,
+            SPRITE_BODY,
+            weapon,
+            "",
+            ItemColor_one,
+            IsWeapon_true);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
@@ -601,8 +609,12 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
             Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
             Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
             Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
-            Ea::BeingRecv::setSprite(dstBeing, SPRITE_BODY, weapon, "",
-                ItemColor_one, true);
+            Ea::BeingRecv::setSprite(dstBeing,
+                SPRITE_BODY,
+                weapon,
+                "",
+                ItemColor_one,
+                IsWeapon_true);
         }
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
@@ -801,8 +813,12 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_BODY, weapon, "",
-            ItemColor_one, true);
+        Ea::BeingRecv::setSprite(dstBeing,
+            SPRITE_BODY,
+            weapon,
+            "",
+            ItemColor_one,
+            IsWeapon_true);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
