@@ -548,7 +548,7 @@ void BeingRecv::setSprite(Being *const being,
                           const std::string &color,
                           const ItemColor colorId,
                           const IsWeapon isWeapon,
-                          const bool isTempSprite)
+                          const IsTempSprite isTempSprite)
 {
     if (!being)
         return;

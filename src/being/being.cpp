@@ -503,7 +503,8 @@ void Being::setSubtype(const BeingTypeId subtype,
             if (charServerHandler)
             {
                 setSprite(charServerHandler->baseSprite(),
-                    id, info.getColor(fromInt(mLook, ItemColor)));
+                    id,
+                    info.getColor(fromInt(mLook, ItemColor)));
             }
         }
     }
@@ -2469,7 +2470,7 @@ void Being::updateSprite(const unsigned int slot,
                          const std::string &restrict color,
                          const ItemColor colorId,
                          const IsWeapon isWeapon,
-                         const bool isTempSprite) restrict2
+                         const IsTempSprite isTempSprite) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2487,7 +2488,7 @@ void Being::setSprite(const unsigned int slot,
                       std::string color,
                       const ItemColor colorId,
                       const IsWeapon isWeapon,
-                      const bool isTempSprite) restrict2
+                      const IsTempSprite isTempSprite) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2520,7 +2521,9 @@ void Being::setSprite(const unsigned int slot,
         if (id1)
         {
             const ItemInfo &info = ItemDB::get(id1);
-            if (!isTempSprite && mMap && mType == ActorType::Player)
+            if (isTempSprite == IsTempSprite_false &&
+                mMap &&
+                mType == ActorType::Player)
             {
                 const BeingId pet = fromInt(info.getPet(), BeingId);
                 if (pet != BeingId_zero)
@@ -2538,7 +2541,8 @@ void Being::setSprite(const unsigned int slot,
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
 
-        if (!isTempSprite && mType == ActorType::Player)
+        if (isTempSprite == IsTempSprite_false &&
+            mType == ActorType::Player)
         {
             const BeingId pet = fromInt(info.getPet(), BeingId);
             if (pet != BeingId_zero)
@@ -2581,7 +2585,7 @@ void Being::setSprite(const unsigned int slot,
         }
     }
 
-    if (!isTempSprite)
+    if (isTempSprite == IsTempSprite_false)
     {
         mSpriteIDs[slot] = id;
         mSpriteColors[slot] = color;
@@ -3377,7 +3381,7 @@ void Being::recalcSpritesOrder() restrict2
                                             mSpriteColors[remSprite],
                                             ItemColor_one,
                                             IsWeapon_false,
-                                            true);
+                                            IsTempSprite_true);
                                     }
                                     else
                                     {
@@ -3386,7 +3390,7 @@ void Being::recalcSpritesOrder() restrict2
                                             .getDyeColorsString(mHairColor),
                                             ItemColor_one,
                                             IsWeapon_false,
-                                            true);
+                                            IsTempSprite_true);
                                     }
                                     updatedSprite[remSprite] = true;
                                 }
@@ -3410,7 +3414,7 @@ void Being::recalcSpritesOrder() restrict2
                                                 mSpriteColors[slot2],
                                                 ItemColor_one,
                                                 IsWeapon_false,
-                                                true);
+                                                IsTempSprite_true);
                                         }
                                         else
                                         {
@@ -3420,7 +3424,7 @@ void Being::recalcSpritesOrder() restrict2
                                                 mHairColor),
                                                 ItemColor_one,
                                                 IsWeapon_false,
-                                                true);
+                                                IsTempSprite_true);
                                         }
                                         updatedSprite[slot2] = true;
                                     }
@@ -3567,7 +3571,7 @@ void Being::recalcSpritesOrder() restrict2
                     mSpriteColors[slot],
                     ItemColor_one,
                     IsWeapon_false,
-                    true);
+                    IsTempSprite_true);
             }
         }
     }
@@ -3584,7 +3588,7 @@ void Being::recalcSpritesOrder() restrict2
                     mSpriteColors[slot],
                     ItemColor_one,
                     IsWeapon_false,
-                    true);
+                    IsTempSprite_true);
             }
         }
     }

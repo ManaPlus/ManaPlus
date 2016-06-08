@@ -28,6 +28,7 @@
 
 #include "enums/gui/usercolorid.h"
 
+#include "enums/simpletypes/istempsprite.h"
 #include "enums/simpletypes/isweapon.h"
 #include "enums/simpletypes/move.h"
 
@@ -323,14 +324,16 @@ class Being notfinal : public ActorSprite,
                        std::string color = "",
                        const ItemColor colorId = ItemColor_one,
                        const IsWeapon isWeapon = IsWeapon_false,
-                       const bool isTempSprite = false) restrict2;
+                       const IsTempSprite isTempSprite = IsTempSprite_false)
+                       restrict2;
 
         void updateSprite(const unsigned int slot,
                           const int id,
                           const std::string &restrict color = "",
                           const ItemColor colorId = ItemColor_one,
                           const IsWeapon isWeapon = IsWeapon_false,
-                          const bool isTempSprite = false) restrict2;
+                          const IsTempSprite isTempSprite = IsTempSprite_false)
+                          restrict2;
 
         void setSpriteID(const unsigned int slot,
                          const int id) restrict2;
