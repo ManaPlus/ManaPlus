@@ -108,7 +108,6 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         weapon,
         "",
         ItemColor_one,
-        IsWeapon_true,
         nullptr);
     tempPlayer->setWeaponId(weapon);
 
@@ -130,7 +129,6 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             0,
             std::string(),
             ItemColor_one,
-            IsWeapon_false,
             nullptr);
     }
     else
@@ -139,7 +137,6 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor),
             ItemColor_one,
-            IsWeapon_false,
             nullptr);
     }
     tempPlayer->setHairColor(hairColor);
@@ -160,55 +157,46 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         shoes,
         std::string(),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
     tempPlayer->setSprite(SPRITE_SHOES,
         gloves,
         std::string(),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
     tempPlayer->setSprite(SPRITE_SHIELD,
         cape,
         std::string(),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
     tempPlayer->setSprite(SPRITE_HEAD_TOP,
         misc1,
         std::string(),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
     tempPlayer->setSprite(SPRITE_WEAPON,
         bottomClothes,
         std::string(),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
     tempPlayer->setSprite(SPRITE_FLOOR,
         shield,
         std::string(),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
     tempPlayer->setSprite(SPRITE_CLOTHES_COLOR,
         hat,
         std::string(),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
     tempPlayer->setSprite(SPRITE_HEAD_BOTTOM,
         topClothes,
         std::string(),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
     tempPlayer->setSprite(SPRITE_HEAD_MID,
         misc2,
         std::string(),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
 
     character->slot = msg.readUInt8("slot");

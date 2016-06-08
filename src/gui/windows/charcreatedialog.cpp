@@ -160,7 +160,6 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             *it,
             std::string(),
             ItemColor_one,
-            IsWeapon_false,
             nullptr);
     }
 
@@ -774,7 +773,6 @@ void CharCreateDialog::updateHair()
         mHairStyle * -1,
         item.getDyeColorsString(fromInt(mHairColor, ItemColor)),
         ItemColor_one,
-        IsWeapon_false,
         nullptr);
 }
 

@@ -164,14 +164,12 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 "",
                 itemColor,
-                IsWeapon_true,
                 cards);
             dstBeing->setWeaponId(id);
             dstBeing->setSprite(SPRITE_FLOOR,
                 id2,
                 std::string(),
                 ItemColor_one,
-                IsWeapon_false,
                 nullptr);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
@@ -181,7 +179,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
@@ -191,7 +188,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
@@ -202,7 +198,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
@@ -222,7 +217,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
@@ -232,7 +226,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
@@ -242,7 +235,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
@@ -252,7 +244,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
@@ -262,7 +253,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
@@ -272,7 +262,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
@@ -282,7 +271,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
@@ -292,7 +280,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
@@ -302,7 +289,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL3);
@@ -312,7 +298,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
@@ -322,7 +307,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL5);
@@ -332,7 +316,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                IsWeapon_false,
                 cards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL6);
@@ -489,8 +472,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
             SPRITE_BODY,
             weapon,
             "",
-            ItemColor_one,
-            IsWeapon_true);
+            ItemColor_one);
         dstBeing->setWeaponId(weapon);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
@@ -696,8 +678,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
                 SPRITE_BODY,
                 weapon,
                 "",
-                ItemColor_one,
-                IsWeapon_true);
+                ItemColor_one);
             dstBeing->setWeaponId(weapon);
         }
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
@@ -901,8 +882,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
             SPRITE_BODY,
             weapon,
             "",
-            ItemColor_one,
-            IsWeapon_true);
+            ItemColor_one);
         dstBeing->setWeaponId(weapon);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }

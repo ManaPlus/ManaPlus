@@ -59,8 +59,7 @@ namespace Ea
                        const unsigned int slot,
                        const int id,
                        const std::string &color = "",
-                       const ItemColor colorId = ItemColor_one,
-                       const IsWeapon isWeapon = IsWeapon_false);
+                       const ItemColor colorId = ItemColor_one);
     }  // namespace BeingRecv
 }  // namespace Ea
 
