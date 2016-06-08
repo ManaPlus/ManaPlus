@@ -2604,6 +2604,14 @@ void Being::setSprite(const unsigned int slot,
         beingEquipmentWindow->updateBeing(this);
 }
 
+void Being::setWeaponId(const int id) restrict2
+{
+    if (id == 0)
+        mEquippedWeapon = nullptr;
+    else
+        mEquippedWeapon = &ItemDB::get(id);
+}
+
 void Being::setTempSprite(const unsigned int slot,
                           const int id,
                           std::string color,

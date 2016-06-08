@@ -326,6 +326,8 @@ class Being notfinal : public ActorSprite,
                        const IsWeapon isWeapon,
                        const int *const cards) restrict2;
 
+        void setWeaponId(const int id) restrict2;
+
         void setTempSprite(const unsigned int slot,
                            const int id,
                            std::string color,

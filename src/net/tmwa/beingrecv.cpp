@@ -149,6 +149,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 ItemColor_one,
                 IsWeapon_true,
                 nullptr);
+            dstBeing->setWeaponId(id);
             dstBeing->setSprite(SPRITE_FLOOR,
                 id2,
                 std::string(),
@@ -370,6 +371,7 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
             "",
             ItemColor_one,
             IsWeapon_true);
+        dstBeing->setWeaponId(weapon);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
@@ -516,6 +518,7 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
             "",
             ItemColor_one,
             IsWeapon_true);
+        dstBeing->setWeaponId(weapon);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
@@ -662,6 +665,7 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
             "",
             ItemColor_one,
             IsWeapon_true);
+        dstBeing->setWeaponId(weapon);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
         dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
@@ -916,6 +920,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
             "",
             ItemColor_one,
             IsWeapon_true);
+        dstBeing->setWeaponId(weapon);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
@@ -1133,6 +1138,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
             "",
             ItemColor_one,
             IsWeapon_true);
+        dstBeing->setWeaponId(weapon);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc

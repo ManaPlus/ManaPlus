@@ -110,6 +110,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         ItemColor_one,
         IsWeapon_true,
         nullptr);
+    tempPlayer->setWeaponId(weapon);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
 

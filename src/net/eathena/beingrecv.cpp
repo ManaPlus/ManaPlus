@@ -166,6 +166,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 itemColor,
                 IsWeapon_true,
                 cards);
+            dstBeing->setWeaponId(id);
             dstBeing->setSprite(SPRITE_FLOOR,
                 id2,
                 std::string(),
@@ -490,6 +491,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
             "",
             ItemColor_one,
             IsWeapon_true);
+        dstBeing->setWeaponId(weapon);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
@@ -696,6 +698,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
                 "",
                 ItemColor_one,
                 IsWeapon_true);
+            dstBeing->setWeaponId(weapon);
         }
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
@@ -900,6 +903,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
             "",
             ItemColor_one,
             IsWeapon_true);
+        dstBeing->setWeaponId(weapon);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
     else if (dstBeing->getType() == ActorType::Npc
