@@ -321,7 +321,7 @@ class Being notfinal : public ActorSprite,
          */
         void setSprite(const unsigned int slot,
                        const int id,
-                       std::string color = "",
+                       std::string color,
                        ItemColor colorId = ItemColor_one,
                        const IsWeapon isWeapon = IsWeapon_false,
                        const IsTempSprite isTempSprite = IsTempSprite_false,

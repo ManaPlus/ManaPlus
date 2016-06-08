@@ -148,15 +148,15 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     character->data.mStats[Attributes::DEX].base = msg.readUInt8("dex");
     character->data.mStats[Attributes::LUK].base = msg.readUInt8("luk");
 
-    tempPlayer->setSprite(SPRITE_HAIR, shoes);
-    tempPlayer->setSprite(SPRITE_SHOES, gloves);
-    tempPlayer->setSprite(SPRITE_SHIELD, cape);
-    tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1);
-    tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes);
-    tempPlayer->setSprite(SPRITE_FLOOR, shield);
-    tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat);  // head option top
-    tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes);
-    tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
+    tempPlayer->setSprite(SPRITE_HAIR, shoes, std::string());
+    tempPlayer->setSprite(SPRITE_SHOES, gloves, std::string());
+    tempPlayer->setSprite(SPRITE_SHIELD, cape, std::string());
+    tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1, std::string());
+    tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes, std::string());
+    tempPlayer->setSprite(SPRITE_FLOOR, shield, std::string());
+    tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat, std::string());
+    tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes, std::string());
+    tempPlayer->setSprite(SPRITE_HEAD_MID, misc2, std::string());
 
     character->slot = msg.readUInt8("slot");
     const uint8_t sex = CAST_U8(msg.readUInt8("gender"));

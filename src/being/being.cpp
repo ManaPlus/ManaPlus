@@ -495,7 +495,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             // TRANSLATORS: default race name
             setRaceName(_("Human"));
             if (charServerHandler)
-                setSprite(charServerHandler->baseSprite(), id);
+                setSprite(charServerHandler->baseSprite(), id, std::string());
         }
         else
         {
@@ -3663,7 +3663,7 @@ void Being::undressItemById(const int id) restrict2
     {
         if (id == mSpriteIDs[f])
         {
-            setSprite(CAST_U32(f), 0);
+            setSprite(CAST_U32(f), 0, std::string());
             break;
         }
     }
