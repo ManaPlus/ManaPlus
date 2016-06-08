@@ -325,7 +325,7 @@ class Being notfinal : public ActorSprite,
                        ItemColor colorId,
                        const IsWeapon isWeapon,
                        const IsTempSprite isTempSprite,
-                       const int *const cards = nullptr)
+                       const int *const cards)
                        restrict2;
 
         void updateSprite(const unsigned int slot,

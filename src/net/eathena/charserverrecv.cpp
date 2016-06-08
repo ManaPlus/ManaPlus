@@ -134,7 +134,8 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         "",
         ItemColor_one,
         IsWeapon_true,
-        IsTempSprite_false);
+        IsTempSprite_false,
+        nullptr);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
 
@@ -153,7 +154,8 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             std::string(),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
     }
     else
     {
@@ -163,7 +165,8 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             color),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
     }
 
     const uint16_t look = msg.readInt16("clothes color");
@@ -197,49 +200,57 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             std::string(),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
         tempPlayer->setSprite(SPRITE_SHOES,
             gloves,
             std::string(),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
         tempPlayer->setSprite(SPRITE_SHIELD,
             cape,
             std::string(),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
         tempPlayer->setSprite(SPRITE_HEAD_TOP,
             misc1,
             std::string(),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
         tempPlayer->setSprite(SPRITE_WEAPON,
             bottomClothes,
             std::string(),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
         tempPlayer->setSprite(SPRITE_FLOOR,
             shield,
             std::string(),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
         tempPlayer->setSprite(SPRITE_CLOTHES_COLOR,
             hat,
             std::string(),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
         tempPlayer->setSprite(SPRITE_HEAD_BOTTOM,
             topClothes,
             std::string(),
             ItemColor_one,
             IsWeapon_false,
-            IsTempSprite_false);
+            IsTempSprite_false,
+            nullptr);
 //        tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
     }
     if (packetVersion >= 20110928)
