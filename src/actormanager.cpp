@@ -2048,14 +2048,16 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
         dstBeing->setSprite(hairSlot,
             hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor),
-            ItemColor_one);
+            ItemColor_one,
+            IsWeapon_false);
     }
     else
     {
         dstBeing->setSprite(hairSlot,
             0,
             std::string(),
-            ItemColor_one);
+            ItemColor_one,
+            IsWeapon_false);
     }
     dstBeing->setHairColor(hairColor);
     return dstBeing;

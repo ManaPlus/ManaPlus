@@ -499,7 +499,8 @@ void Being::setSubtype(const BeingTypeId subtype,
                 setSprite(charServerHandler->baseSprite(),
                     id,
                     std::string(),
-                    ItemColor_one);
+                    ItemColor_one,
+                    IsWeapon_false);
             }
         }
         else
@@ -511,7 +512,8 @@ void Being::setSubtype(const BeingTypeId subtype,
                 setSprite(charServerHandler->baseSprite(),
                     id,
                     info.getColor(fromInt(mLook, ItemColor)),
-                    ItemColor_one);
+                    ItemColor_one,
+                    IsWeapon_false);
             }
         }
     }
@@ -2610,13 +2612,21 @@ void Being::setSprite(const unsigned int slot,
 void Being::setSpriteID(const unsigned int slot,
                         const int id) restrict2
 {
-    setSprite(slot, id, mSpriteColors[slot], ItemColor_one);
+    setSprite(slot,
+        id,
+        mSpriteColors[slot],
+        ItemColor_one,
+        IsWeapon_false);
 }
 
 void Being::setSpriteColor(const unsigned int slot,
                            const std::string &restrict color) restrict2
 {
-    setSprite(slot, mSpriteIDs[slot], color, ItemColor_one);
+    setSprite(slot,
+        mSpriteIDs[slot],
+        color,
+        ItemColor_one,
+        IsWeapon_false);
 }
 
 void Being::setHairStyle(const unsigned int slot,
@@ -2626,7 +2636,8 @@ void Being::setHairStyle(const unsigned int slot,
     setSprite(slot,
         id,
         ItemDB::get(id).getDyeColorsString(mHairColor),
-        ItemColor_one);
+        ItemColor_one,
+        IsWeapon_false);
 //    dumpSprites();
 }
 
@@ -2640,7 +2651,8 @@ void Being::setHairColor(const unsigned int slot,
         setSprite(slot,
             mSpriteIDs[slot],
             ItemDB::get(id).getDyeColorsString(color),
-            ItemColor_one);
+            ItemColor_one,
+            IsWeapon_false);
     }
 }
 
@@ -2828,7 +2840,8 @@ void Being::setGender(const GenderT gender) restrict2
                 setSprite(i,
                     mSpriteIDs[i],
                     mSpriteColors[i],
-                    ItemColor_one);
+                    ItemColor_one,
+                    IsWeapon_false);
             }
         }
 
@@ -3681,7 +3694,8 @@ void Being::undressItemById(const int id) restrict2
             setSprite(CAST_U32(f),
                 0,
                 std::string(),
-                ItemColor_one);
+                ItemColor_one,
+                IsWeapon_false);
             break;
         }
     }
