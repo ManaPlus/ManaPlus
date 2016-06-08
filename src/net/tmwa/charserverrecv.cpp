@@ -126,13 +126,15 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     {
         tempPlayer->setSprite(SPRITE_HAIR_COLOR,
             0,
-            std::string());
+            std::string(),
+            ItemColor_one);
     }
     else
     {
         tempPlayer->setSprite(SPRITE_HAIR_COLOR,
             hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+            ItemDB::get(-hairStyle).getDyeColorsString(hairColor),
+            ItemColor_one);
     }
     tempPlayer->setHairColor(hairColor);
 
@@ -148,15 +150,42 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     character->data.mStats[Attributes::DEX].base = msg.readUInt8("dex");
     character->data.mStats[Attributes::LUK].base = msg.readUInt8("luk");
 
-    tempPlayer->setSprite(SPRITE_HAIR, shoes, std::string());
-    tempPlayer->setSprite(SPRITE_SHOES, gloves, std::string());
-    tempPlayer->setSprite(SPRITE_SHIELD, cape, std::string());
-    tempPlayer->setSprite(SPRITE_HEAD_TOP, misc1, std::string());
-    tempPlayer->setSprite(SPRITE_WEAPON, bottomClothes, std::string());
-    tempPlayer->setSprite(SPRITE_FLOOR, shield, std::string());
-    tempPlayer->setSprite(SPRITE_CLOTHES_COLOR, hat, std::string());
-    tempPlayer->setSprite(SPRITE_HEAD_BOTTOM, topClothes, std::string());
-    tempPlayer->setSprite(SPRITE_HEAD_MID, misc2, std::string());
+    tempPlayer->setSprite(SPRITE_HAIR,
+        shoes,
+        std::string(),
+        ItemColor_one);
+    tempPlayer->setSprite(SPRITE_SHOES,
+        gloves,
+        std::string(),
+        ItemColor_one);
+    tempPlayer->setSprite(SPRITE_SHIELD,
+        cape,
+        std::string(),
+        ItemColor_one);
+    tempPlayer->setSprite(SPRITE_HEAD_TOP,
+        misc1,
+        std::string(),
+        ItemColor_one);
+    tempPlayer->setSprite(SPRITE_WEAPON,
+        bottomClothes,
+        std::string(),
+        ItemColor_one);
+    tempPlayer->setSprite(SPRITE_FLOOR,
+        shield,
+        std::string(),
+        ItemColor_one);
+    tempPlayer->setSprite(SPRITE_CLOTHES_COLOR,
+        hat,
+        std::string(),
+        ItemColor_one);
+    tempPlayer->setSprite(SPRITE_HEAD_BOTTOM,
+        topClothes,
+        std::string(),
+        ItemColor_one);
+    tempPlayer->setSprite(SPRITE_HEAD_MID,
+        misc2,
+        std::string(),
+        ItemColor_one);
 
     character->slot = msg.readUInt8("slot");
     const uint8_t sex = CAST_U8(msg.readUInt8("gender"));

@@ -50,22 +50,66 @@ void BeingHandler::undress(Being *const being) const
 {
     if (!being)
         return;
-    being->setSprite(SPRITE_WEAPON, 0, std::string());
-    being->setSprite(SPRITE_HEAD_BOTTOM, 0, std::string());
-    being->setSprite(SPRITE_HEAD_TOP, 0, std::string());
-    being->setSprite(SPRITE_HEAD_MID, 0, std::string());
-    being->setSprite(SPRITE_CLOTHES_COLOR, 0, std::string());
-    being->setSprite(SPRITE_SHIELD, 0, std::string());
-    being->setSprite(SPRITE_FLOOR, 0, std::string());
-    being->setSprite(SPRITE_ROBE, 0, std::string());
-    being->setSprite(SPRITE_EVOL2, 0, std::string());
-    being->setSprite(SPRITE_EVOL3, 0, std::string());
-    being->setSprite(SPRITE_EVOL4, 0, std::string());
-    being->setSprite(SPRITE_EVOL5, 0, std::string());
-    being->setSprite(SPRITE_EVOL6, 0, std::string());
-    being->setSprite(SPRITE_HAIR, 0, std::string());
-    being->setSprite(SPRITE_SHOES, 0, std::string());
-//    being->setSprite(SPRITE_BODY, 0, "", true);
+    being->setSprite(SPRITE_WEAPON,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_HEAD_BOTTOM,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_HEAD_TOP,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_HEAD_MID,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_CLOTHES_COLOR,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_SHIELD,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_FLOOR,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_ROBE,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_EVOL2,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_EVOL3,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_EVOL4,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_EVOL5,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_EVOL6,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_HAIR,
+        0,
+        std::string(),
+        ItemColor_one);
+    being->setSprite(SPRITE_SHOES,
+        0,
+        std::string(),
+        ItemColor_one);
 }
 
 void BeingHandler::requestRanks(const RankT rank) const

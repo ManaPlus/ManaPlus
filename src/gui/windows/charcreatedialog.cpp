@@ -156,7 +156,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
          it != it_fend;
          ++ it, i ++)
     {
-        mPlayer->setSprite(i, *it, std::string());
+        mPlayer->setSprite(i, *it, std::string(), ItemColor_one);
     }
 
     if (!maxHairColor)
@@ -767,7 +767,8 @@ void CharCreateDialog::updateHair()
 
     mPlayer->setSprite(charServerHandler->hairSprite(),
         mHairStyle * -1,
-        item.getDyeColorsString(fromInt(mHairColor, ItemColor)));
+        item.getDyeColorsString(fromInt(mHairColor, ItemColor)),
+        ItemColor_one);
 }
 
 void CharCreateDialog::updateRace()

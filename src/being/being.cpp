@@ -495,7 +495,12 @@ void Being::setSubtype(const BeingTypeId subtype,
             // TRANSLATORS: default race name
             setRaceName(_("Human"));
             if (charServerHandler)
-                setSprite(charServerHandler->baseSprite(), id, std::string());
+            {
+                setSprite(charServerHandler->baseSprite(),
+                    id,
+                    std::string(),
+                    ItemColor_one);
+            }
         }
         else
         {
@@ -505,7 +510,8 @@ void Being::setSubtype(const BeingTypeId subtype,
             {
                 setSprite(charServerHandler->baseSprite(),
                     id,
-                    info.getColor(fromInt(mLook, ItemColor)));
+                    info.getColor(fromInt(mLook, ItemColor)),
+                    ItemColor_one);
             }
         }
     }
@@ -2604,20 +2610,23 @@ void Being::setSprite(const unsigned int slot,
 void Being::setSpriteID(const unsigned int slot,
                         const int id) restrict2
 {
-    setSprite(slot, id, mSpriteColors[slot]);
+    setSprite(slot, id, mSpriteColors[slot], ItemColor_one);
 }
 
 void Being::setSpriteColor(const unsigned int slot,
                            const std::string &restrict color) restrict2
 {
-    setSprite(slot, mSpriteIDs[slot], color);
+    setSprite(slot, mSpriteIDs[slot], color, ItemColor_one);
 }
 
 void Being::setHairStyle(const unsigned int slot,
                          const int id) restrict2
 {
 //    dumpSprites();
-    setSprite(slot, id, ItemDB::get(id).getDyeColorsString(mHairColor));
+    setSprite(slot,
+        id,
+        ItemDB::get(id).getDyeColorsString(mHairColor),
+        ItemColor_one);
 //    dumpSprites();
 }
 
@@ -2630,7 +2639,8 @@ void Being::setHairColor(const unsigned int slot,
     {
         setSprite(slot,
             mSpriteIDs[slot],
-            ItemDB::get(id).getDyeColorsString(color));
+            ItemDB::get(id).getDyeColorsString(color),
+            ItemColor_one);
     }
 }
 
@@ -2813,8 +2823,13 @@ void Being::setGender(const GenderT gender) restrict2
              i < CAST_U32(mSpriteIDs.size());
              i++)
         {
-            if (mSpriteIDs.at(i) != 0)
-                setSprite(i, mSpriteIDs.at(i), mSpriteColors.at(i));
+            if (mSpriteIDs[i] != 0)
+            {
+                setSprite(i,
+                    mSpriteIDs[i],
+                    mSpriteColors[i],
+                    ItemColor_one);
+            }
         }
 
         updateName();
@@ -3663,7 +3678,10 @@ void Being::undressItemById(const int id) restrict2
     {
         if (id == mSpriteIDs[f])
         {
-            setSprite(CAST_U32(f), 0, std::string());
+            setSprite(CAST_U32(f),
+                0,
+                std::string(),
+                ItemColor_one);
             break;
         }
     }
