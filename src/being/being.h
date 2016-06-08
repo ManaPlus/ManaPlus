@@ -322,9 +322,10 @@ class Being notfinal : public ActorSprite,
         void setSprite(const unsigned int slot,
                        const int id,
                        std::string color = "",
-                       const ItemColor colorId = ItemColor_one,
+                       ItemColor colorId = ItemColor_one,
                        const IsWeapon isWeapon = IsWeapon_false,
-                       const IsTempSprite isTempSprite = IsTempSprite_false)
+                       const IsTempSprite isTempSprite = IsTempSprite_false,
+                       const int *const cards = nullptr)
                        restrict2;
 
         void updateSprite(const unsigned int slot,

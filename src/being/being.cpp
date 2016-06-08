@@ -27,6 +27,7 @@
 #include "configuration.h"
 #include "effectmanager.h"
 #include "guild.h"
+#include "itemcolormanager.h"
 #include "party.h"
 #include "settings.h"
 #include "soundmanager.h"
@@ -2486,9 +2487,10 @@ void Being::updateSprite(const unsigned int slot,
 void Being::setSprite(const unsigned int slot,
                       const int id,
                       std::string color,
-                      const ItemColor colorId,
+                      ItemColor colorId,
                       const IsWeapon isWeapon,
-                      const IsTempSprite isTempSprite) restrict2
+                      const IsTempSprite isTempSprite,
+                      const int *const cards) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2548,6 +2550,9 @@ void Being::setSprite(const unsigned int slot,
             if (pet != BeingId_zero)
                 addPet(pet);
         }
+
+        if (cards != nullptr)
+            colorId = ItemColorManager::getColorFromCards(cards);
 
         if (!filename.empty())
         {
