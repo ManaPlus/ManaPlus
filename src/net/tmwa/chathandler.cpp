@@ -103,6 +103,9 @@ void ChatHandler::channelMessage(const std::string &restrict channel,
 
 void ChatHandler::who() const
 {
+    if (tmwServerVersion >= 0x0e0b0b)
+        return;
+
     createOutPacket(CMSG_WHO_REQUEST);
 }
 
