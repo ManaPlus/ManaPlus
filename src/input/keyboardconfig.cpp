@@ -215,7 +215,7 @@ void KeyboardConfig::update()
         mKeyTimeMap, InputType::KEYBOARD);
 }
 
-void KeyboardConfig::handleActicateKey(const SDL_Event &event)
+void KeyboardConfig::handleActivateKey(const SDL_Event &event)
 {
     if (!mActiveKeys2)
         return;
@@ -225,7 +225,7 @@ void KeyboardConfig::handleActicateKey(const SDL_Event &event)
     resetRepeat(key);
 }
 
-void KeyboardConfig::handleActicateKey(const int key)
+void KeyboardConfig::handleActivateKey(const int key)
 {
     if (!mActiveKeys2)
         return;

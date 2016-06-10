@@ -93,9 +93,9 @@ class KeyboardConfig final
 
         void update();
 
-        void handleActicateKey(const SDL_Event &event);
+        void handleActivateKey(const SDL_Event &event);
 
-        void handleActicateKey(const int key);
+        void handleActivateKey(const int key);
 
         void handleDeActicateKey(const SDL_Event &event);
 

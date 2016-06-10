@@ -590,7 +590,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
                 return true;
             }
 
-            keyboard.handleActicateKey(event);
+            keyboard.handleActivateKey(event);
             // send straight to gui for certain windows
 #ifndef DYECMD
             if (quitDialog || TextDialog::isActive())
