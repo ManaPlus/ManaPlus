@@ -274,8 +274,12 @@ void LoginDialog::keyPressed(KeyEvent &event)
     {
         action(ActionEvent(nullptr, mServerButton->getActionEventId()));
     }
+#ifdef USE_SDL2
+    else if (actionId == InputAction::GUI_SELECT2)
+#else  // USE_SDL2
     else if (actionId == InputAction::GUI_SELECT ||
              actionId == InputAction::GUI_SELECT2)
+#endif  // USE_SDL2
     {
         action(ActionEvent(nullptr, mLoginButton->getActionEventId()));
     }
