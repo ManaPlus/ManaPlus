@@ -17,6 +17,16 @@ function do_init {
     check_error $?
 }
 
+function update_repos {
+    export DATA=$(cat /etc/resolv.conf|grep "nameserver 1.10.100.101")
+    echo "${DATA}"
+    if [ "$DATA" != "" ];
+    then
+        echo "Detected local runner"
+        sed -i 's!http://httpredir.debian.org/debian!http://1.10.100.103/debian!' /etc/apt/sources.list
+    fi
+}
+
 function aptget_update {
     echo "apt-get update"
     apt-get update
@@ -210,4 +220,5 @@ function run_mplint {
     run_check_warnings
 }
 
+update_repos
 aptget_update
