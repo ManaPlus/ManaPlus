@@ -25,19 +25,6 @@
 
 #include "localconsts.h"
 
-#ifdef USE_OPENGL
-
-#ifdef ANDROID
-#include <GLES/gl.h>
-#else
-#ifndef USE_SDL2
-#define GL_GLEXT_PROTOTYPES 1
-#endif
-#include <SDL_opengl.h>
-#endif
-
-#endif
-
 #include "resources/image/image.h"
 
 /**

@@ -28,8 +28,6 @@
 
 #include "enums/gui/usercolorid.h"
 
-#include "enums/simpletypes/istempsprite.h"
-#include "enums/simpletypes/isweapon.h"
 #include "enums/simpletypes/move.h"
 
 #include "resources/beinginfo.h"

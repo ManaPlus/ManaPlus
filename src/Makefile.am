@@ -684,8 +684,6 @@ SRC += events/actionevent.h \
 	      enums/simpletypes/ignorerecord.h \
 	      enums/simpletypes/intdefines.h \
 	      enums/simpletypes/issell.h \
-	      enums/simpletypes/istempsprite.h \
-	      enums/simpletypes/isweapon.h \
 	      enums/simpletypes/itemcolor.h \
 	      enums/simpletypes/keep.h \
 	      enums/simpletypes/mainconfig.h \

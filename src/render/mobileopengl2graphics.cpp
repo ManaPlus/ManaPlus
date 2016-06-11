@@ -38,7 +38,6 @@
 #include "render/vertexes/imagecollection.h"
 
 #include "resources/imagerect.h"
-#include "resources/openglimagehelper.h"
 
 #include "resources/image/image.h"
 
