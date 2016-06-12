@@ -17,5 +17,7 @@ ${dir}/deheader -q -i "\"debug.h\"" \
 -i "\"utils/fuzzer.h\"" \
 -i "\"utils/physfscheckutils.h\"" \
 -i "\"$name\"" \
--m "$CXX -c -std=gnu++1z -Werror -Wall -Wextra -Wundef -Wmissing-declarations -DLOCALEDIR=\\\"\\\" $FLAGS -I/usr/include $INCLUDES -I${dir}/src" $1 \
+-c "$CXX" \
+-d "$FLAGS" \
+-m "-c -std=gnu++1z -Werror -Wall -Wextra -Wundef -Wmissing-declarations -DLOCALEDIR=\\\"\\\" -I/usr/include $INCLUDES -I${dir}/src" $1 \
 | grep -v "portability requires" | tee -a ${LOGFILE}
