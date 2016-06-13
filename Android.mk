@@ -49,6 +49,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/const/gui/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/const/net/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/resources/image/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/animation/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/resourcemanager/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/atlas/*.cpp) \
