@@ -25,12 +25,7 @@
 
 #include "utils/stringvector.h"
 
-#include "resources/memorycounter.h"
-
 #include "resources/atlas/atlasitem.h"
-
-#include <vector>
-#include <SDL.h>
 
 #include "localconsts.h"
 

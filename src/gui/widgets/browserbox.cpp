@@ -24,6 +24,7 @@
 #include "gui/widgets/browserbox.h"
 
 #include "itemcolormanager.h"
+#include "main.h"
 #include "settings.h"
 
 #include "const/resources/item/cards.h"

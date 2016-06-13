@@ -46,14 +46,11 @@
 #include "test/testmain.h"
 #endif  // defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)
 
-
-#ifndef USE_OPENGL
-#include "render/renderers.h"
-#endif
-
 #if defined(ANDROID) || defined(__APPLE__) || !defined(USE_OPENGL)
 #include "configuration.h"
+#endif
 
+#if defined(ANDROID) || defined(__APPLE__)
 #include "utils/stringutils.h"
 #endif
 

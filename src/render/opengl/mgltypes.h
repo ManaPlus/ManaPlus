@@ -21,10 +21,7 @@
 #ifndef RENDER_OPENGL_MGLTYPES_H
 #define RENDER_OPENGL_MGLTYPES_H
 
-#include "main.h"
-
 #ifdef USE_OPENGL
-
 
 #ifdef ANDROID
 #include <GLES/gl.h>
@@ -42,11 +39,15 @@
 #include <OpenGL/glext.h>
 #else  // defined(__APPLE__)
 #include <GL/glext.h>
+#ifndef __glext_h_
+#error missing include <GL/glext.h>
+#endif //  __glext_h_
 #endif  // defined(__APPLE__)
 #endif
 #endif
 
 #include "render/opengl/mgldefines.h"
+RENDER_OPENGL_MGLDEFINES_H
 
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>

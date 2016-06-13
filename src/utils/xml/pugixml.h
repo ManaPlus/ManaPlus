@@ -25,6 +25,8 @@
 
 #ifdef ENABLE_PUGIXML
 
+#define XML_INCLUDE_DEFINE
+
 #include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/useresman.h"
 

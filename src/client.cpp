@@ -28,6 +28,7 @@
 #include "eventsmanager.h"
 #include "game.h"
 #include "graphicsmanager.h"
+#include "main.h"
 #include "party.h"
 #include "settings.h"
 #include "soundmanager.h"
@@ -170,6 +171,12 @@
 
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"
+#endif
+
+#ifdef USE_SDL2
+#include <SDL2_framerate.h>
+#else
+#include <SDL_framerate.h>
 #endif
 
 #include "debug.h"

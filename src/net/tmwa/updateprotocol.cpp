@@ -25,9 +25,6 @@
 
 #include "debug.h"
 
-PACKETSOUT_VOID
-#undef PACKETSOUT_VOID
-
 namespace TmwAthena
 {
 

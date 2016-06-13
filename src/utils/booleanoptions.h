@@ -23,6 +23,8 @@
 
 #include "utils/gettext.h"
 
+UTILS_GETTEXT_H
+
 // TRANSLATORS: chat option changed message
 #define BOOLEAN_OPTIONS _("Options to /%s are \"yes\", \"no\", \"true\", "\
 "\"false\", \"1\", \"0\".")

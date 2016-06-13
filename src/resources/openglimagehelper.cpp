@@ -25,7 +25,6 @@
 #ifdef USE_OPENGL
 
 #include "graphicsmanager.h"
-#include "logger.h"
 
 #include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"

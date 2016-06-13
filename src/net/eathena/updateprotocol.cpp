@@ -30,8 +30,6 @@
 extern int packetVersion;
 extern int serverVersion;
 
-PACKETSOUT_VOID
-#undef PACKETSOUT_VOID
 namespace EAthena
 {
 

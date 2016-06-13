@@ -25,6 +25,8 @@
 
 #include "logger.h"
 
+LOGGER_H
+
 #ifdef WIN32
 #define getFunction(name) wglGetProcAddress(name)
 #elif defined ANDROID

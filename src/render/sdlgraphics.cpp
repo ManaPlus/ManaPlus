@@ -24,8 +24,6 @@
 
 #include "render/sdlgraphics.h"
 
-#include "main.h"
-
 #include "graphicsmanager.h"
 
 #include "utils/sdlcheckutils.h"

@@ -25,7 +25,6 @@
 #include "render/mobileopengl2graphics.h"
 
 #include "graphicsmanager.h"
-#include "logger.h"
 
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
@@ -43,7 +42,6 @@
 
 #include "utils/delete2.h"
 #include "utils/sdlcheckutils.h"
-#include "utils/sdlhelper.h"
 
 #include "debug.h"
 

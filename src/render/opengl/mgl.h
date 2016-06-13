@@ -21,8 +21,6 @@
 #ifndef RENDER_OPENGL_MGL_H
 #define RENDER_OPENGL_MGL_H
 
-#include "main.h"
-
 #ifdef USE_OPENGL
 
 #include "render/opengl/mgltypes.h"
@@ -32,7 +30,10 @@
 
 #include "render/opengl/mgl.hpp"
 
+MGL_DEFINE
+
 #undef defName
+#undef MGL_DEFINE
 
 #endif  // USE_OPENGL
 #endif  // RENDER_OPENGL_MGL_H

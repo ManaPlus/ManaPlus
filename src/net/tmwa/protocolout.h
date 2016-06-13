@@ -28,11 +28,13 @@
 namespace TmwAthena
 {
 #include "net/tmwa/packetsout.inc"
+PACKETSOUT_VOID
 }  // namespace TmwAthena
 
 #undef packet
 #undef packet2
 #undef startCondition
 #undef endCondition
+#undef PACKETSOUT_VOID
 
 #endif  // NET_TMWA_PROTOCOLOUT_H

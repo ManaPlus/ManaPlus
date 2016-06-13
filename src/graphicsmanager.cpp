@@ -45,7 +45,6 @@
 #include "settings.h"
 
 #ifdef USE_OPENGL
-#include "logger.h"
 
 #include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"
@@ -60,7 +59,6 @@
 #include "render/sdlgraphics.h"
 
 #ifdef USE_OPENGL
-#include "resources/fboinfo.h"
 #include "resources/openglimagehelper.h"
 #include "resources/openglscreenshothelper.h"
 #ifndef ANDROID

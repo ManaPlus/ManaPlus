@@ -25,7 +25,6 @@
 #if defined(USE_OPENGL) && !defined(ANDROID)
 
 #include "graphicsmanager.h"
-#include "logger.h"
 
 #include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"

@@ -27,8 +27,6 @@
 
 #include "net/serverinfo.h"
 
-#include "utils/stringvector.h"
-
 #include "localconsts.h"
 
 class UpdateListModel final : public ListModel

@@ -28,11 +28,13 @@
 namespace EAthena
 {
 #include "net/eathena/packetsout.inc"
+PACKETSOUT_VOID
 }  // namespace EAthena
 
 #undef packet
 #undef packet2
 #undef startCondition
 #undef endCondition
+#undef PACKETSOUT_VOID
 
 #endif  // NET_EATHENA_PROTOCOLOUT_H

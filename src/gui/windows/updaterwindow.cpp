@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "main.h"
 #include "settings.h"
 
 #include "gui/widgets/browserbox.h"

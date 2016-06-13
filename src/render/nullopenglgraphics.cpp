@@ -24,8 +24,6 @@
 
 #include "render/nullopenglgraphics.h"
 
-#include "graphicsmanager.h"
-
 #ifdef DEBUG_BIND_TEXTURE
 #include "logger.h"
 #endif

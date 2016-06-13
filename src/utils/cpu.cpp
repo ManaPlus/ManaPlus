@@ -22,7 +22,10 @@
 
 #include "logger.h"
 
-#if defined(__linux__) || defined(__linux)
+#if (defined(__amd64__) || defined(__i386__)) && defined(__GNUC__) \
+    && (GCC_VERSION >= 40800) && !defined(ANDROID)
+// nothing
+#elif defined(__linux__) || defined(__linux)
 #include "utils/stringutils.h"
 #endif
 

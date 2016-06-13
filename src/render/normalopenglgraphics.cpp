@@ -24,9 +24,9 @@
 
 #include "render/normalopenglgraphics.h"
 
-#include "logger.h"
-
+#ifdef DEBUG_OPENGL
 #include "render/opengl/mgl.h"
+#endif  // DEBUG_OPENGL
 
 #include "render/vertexes/imagecollection.h"
 

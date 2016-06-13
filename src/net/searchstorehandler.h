@@ -23,8 +23,6 @@
 
 #ifdef EATHENA_SUPPORT
 
-#include <string>
-
 #include "enums/net/storesearchtype.h"
 
 #include "localconsts.h"

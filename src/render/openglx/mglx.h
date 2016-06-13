@@ -21,15 +21,15 @@
 #ifndef RENDER_OPENGLX_MGLX_H
 #define RENDER_OPENGLX_MGLX_H
 
-#include "main.h"
-
 #if defined(USE_OPENGL) && defined(USE_X11)
 
 #include "render/openglx/mglxtypes.h"
 
 #define defName(name) extern name##_t m##name
 #include "render/openglx/mglx.hpp"
+MGLX_DEFINE
 #undef defName
+#undef MGLX_DEFINE
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)
 #endif  // RENDER_OPENGLX_MGLX_H

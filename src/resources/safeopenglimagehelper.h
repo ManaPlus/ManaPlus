@@ -24,7 +24,6 @@
 #define RESOURCES_SAFEOPENGLIMAGEHELPER_H
 
 #include "localconsts.h"
-#include "main.h"
 
 #if defined(USE_OPENGL) && !defined(ANDROID)
 

@@ -18,9 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "render/openglx/mglx.h"
-
 #if defined(USE_OPENGL) && defined(USE_X11)
+
+#include "render/openglx/mglx.h"
 
 #include "debug.h"
 
@@ -28,5 +28,7 @@
 
 // include function defines
 #include "render/openglx/mglx.hpp"
+
+MGLX_DEFINE
 
 #endif

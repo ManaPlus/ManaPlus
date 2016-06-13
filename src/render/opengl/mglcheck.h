@@ -21,7 +21,6 @@
 #ifndef RENDER_OPENGL_MGLCHECK_H
 #define RENDER_OPENGL_MGLCHECK_H
 
-#include "main.h"
 #ifdef USE_OPENGL
 
 #define isGLNull(func) (!(func))

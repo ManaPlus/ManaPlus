@@ -25,12 +25,8 @@
 #include "logger.h"
 
 #include "render/opengl/mglcheck.h"
-#include "render/opengl/mgldefines.h"
 
 #include "render/openglx/mglx.h"
-#include "render/openglx/mglxtypes.h"
-
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

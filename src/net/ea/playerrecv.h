@@ -23,8 +23,6 @@
 #ifndef NET_EA_PLAYERRECV_H
 #define NET_EA_PLAYERRECV_H
 
-#include <climits>
-
 namespace Net
 {
     class MessageIn;

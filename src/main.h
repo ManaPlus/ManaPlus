@@ -129,8 +129,6 @@
 #define PACKAGE_OS "Other"
 #endif
 
-
-#define ENABLEDEBUGLOG 1
 // define DEBUG_LEAKS 1
 // define DEBUG_CONFIG 1
 // define DEBUG_FONT 1

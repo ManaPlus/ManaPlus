@@ -24,6 +24,7 @@
 
 #include "configuration.h"
 #include "game.h"
+#include "main.h"
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/statuswindow.h"

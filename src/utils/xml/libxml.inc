@@ -23,6 +23,10 @@
 
 #ifdef ENABLE_LIBXML
 
+#include <libxml/xmlwriter.h>
+
+__XML_XMLWRITER_H__
+
 #define XmlNodePtr xmlNodePtr
 #define XmlNodePtrConst xmlNode *const
 #define XmlStrEqual(str1, str2) xmlStrEqual(str1, \

@@ -21,8 +21,6 @@
 #ifndef GRAPHICSMANAGER_H
 #define GRAPHICSMANAGER_H
 
-#include "main.h"
-
 #ifdef USE_OPENGL
 
 #ifdef ANDROID

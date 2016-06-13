@@ -27,8 +27,6 @@
 
 #include "utils/stringvector.h"
 
-#include <SDL.h>
-
 class AtlasResource;
 
 struct AtlasItem;

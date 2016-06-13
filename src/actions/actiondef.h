@@ -23,8 +23,11 @@
 
 #include "gamemodifiers.h"
 #include "settings.h"
+GAMEMODIFIERS_H
+SETTINGS_H
 
 #include "input/inputmanager.h"
+INPUT_INPUTMANAGER_H
 
 #define impHandler(name) bool name(InputEvent &event)
 

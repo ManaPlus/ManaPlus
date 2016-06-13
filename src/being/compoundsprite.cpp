@@ -23,10 +23,6 @@
 
 #include "configuration.h"
 
-#ifdef USE_OPENGL
-#include "main.h"
-#endif  // USE_OPENGL
-
 #include "sdlshared.h"
 
 #include "being/compounditem.h"

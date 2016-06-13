@@ -21,8 +21,6 @@
 #ifndef RENDER_VERTEXES_IMAGECOLLECTION_H
 #define RENDER_VERTEXES_IMAGECOLLECTION_H
 
-#include "main.h"
-
 #include "render/vertexes/imagevertexes.h"
 
 #include "localconsts.h"

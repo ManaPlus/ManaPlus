@@ -23,8 +23,6 @@
 
 #ifdef EATHENA_SUPPORT
 
-#include <string>
-
 #include "localconsts.h"
 
 namespace Net

@@ -26,6 +26,7 @@
 #if defined USE_OPENGL
 
 #include "localconsts.h"
+
 #include "render/graphics.h"
 
 #include "resources/fboinfo.h"

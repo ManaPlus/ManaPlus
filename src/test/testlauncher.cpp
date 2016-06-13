@@ -29,8 +29,6 @@
 #include "gui/skin.h"
 #include "gui/theme.h"
 
-#include "gui/cliprect.h"
-
 #include "gui/fonts/font.h"
 
 #include "utils/physfscheckutils.h"
@@ -41,7 +39,6 @@
 #include "render/vertexes/imagecollection.h"
 
 #include "resources/imagewriter.h"
-#include "resources/mstack.h"
 #include "resources/openglimagehelper.h"
 #include "resources/screenshothelper.h"
 #include "resources/surfaceimagehelper.h"

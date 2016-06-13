@@ -31,6 +31,7 @@
 #ifdef USE_SDL2
 #pragma GCC diagnostic pop
 #endif
+_SDL_stdinc_h
 #include <SDL_video.h>
 
 #include "localconsts.h"

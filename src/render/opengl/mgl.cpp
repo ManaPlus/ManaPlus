@@ -18,9 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "render/opengl/mgl.h"
-
 #ifdef USE_OPENGL
+
+#include "render/opengl/mgl.h"
 
 #include "debug.h"
 
@@ -28,5 +28,7 @@
 
 // include function defines
 #include "render/opengl/mgl.hpp"
+
+MGL_DEFINE
 
 #endif

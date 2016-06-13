@@ -22,7 +22,6 @@
 
 #include "resources/atlas/atlasresource.h"
 
-#include "resources/atlas/atlasitem.h"
 #include "resources/atlas/atlasmanager.h"
 #include "resources/atlas/textureatlas.h"
 

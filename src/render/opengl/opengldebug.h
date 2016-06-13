@@ -23,6 +23,8 @@
 
 #include "render/opengl/mgl.h"
 
+RENDER_OPENGL_MGL_H
+
 #if defined(DEBUG_OPENGL) && defined(USE_OPENGL)
 #define GLDEBUG_START(text) if (mglPushGroupMarker) \
     mglPushGroupMarker(sizeof(text), text);

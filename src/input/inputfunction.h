@@ -23,8 +23,6 @@
 
 #include "input/inputitem.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 const size_t inputFunctionSize = 3U;

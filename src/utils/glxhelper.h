@@ -21,8 +21,6 @@
 #ifndef UTILS_GLXHELPER_H
 #define UTILS_GLXHELPER_H
 
-#include "main.h"
-
 #if defined(USE_OPENGL) && defined(USE_X11)
 
 #include "localconsts.h"

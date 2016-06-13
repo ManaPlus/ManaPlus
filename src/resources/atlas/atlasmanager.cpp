@@ -33,16 +33,16 @@
 #include "utils/physfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
-#include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 
-#include "resources/atlas/atlasitem.h"
 #include "resources/atlas/atlasresource.h"
 #include "resources/atlas/textureatlas.h"
 
 #include "resources/dye/dye.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
+
+#include <SDL_endian.h>
 
 #include "debug.h"
 

@@ -25,6 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "game.h"
+#include "main.h"
 #include "settings.h"
 #include "spellmanager.h"
 

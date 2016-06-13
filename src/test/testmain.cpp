@@ -18,7 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include "test/testmain.h"
 
 #ifdef USE_OPENGL
@@ -29,8 +28,6 @@
 #include "utils/delete2.h"
 #include "utils/paths.h"
 #include "utils/process.h"
-
-#include <iostream>
 
 #include "debug.h"
 

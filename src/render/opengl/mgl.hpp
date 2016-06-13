@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define MGL_DEFINE
+
 defName(glGenRenderbuffers);
 defName(glBindRenderbuffer);
 defName(glRenderbufferStorage);

@@ -25,7 +25,6 @@
 
 #include "enums/simpletypes/itemcolor.h"
 
-#include <string>
 #include <vector>
 
 #include "localconsts.h"

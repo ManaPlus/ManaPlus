@@ -23,8 +23,6 @@
 
 #ifdef USE_OPENGL
 
-#include "main.h"
-
 #ifdef ANDROID
 #include <GLES/gl.h>
 #else

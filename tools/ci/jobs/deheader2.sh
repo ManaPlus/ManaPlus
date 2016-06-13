@@ -19,6 +19,9 @@ grep "deheader:" ${LOGFILE} \
 | grep -v "deheader: remove <fstream> from ./src/utils/files.cpp" \
 | grep -v "deheader: remove <climits> from ./src/resources/map/map.cpp" \
 | grep -v "deheader: remove <sys/time.h> from ./src/resources/wallpaper.cpp" \
+| grep -v "deheader: remove <linux/tcp.h> from ./src/net/sdltcpnet.cpp" \
+| grep -v "deheader: remove <netdb.h> from ./src/net/sdltcpnet.cpp" \
+| grep -v "deheader: remove <netinet/in.h> from ./src/net/sdltcpnet.cpp" \
 | grep -v "deheader: remove <climits> from ./src/units.cpp" > ${LOGFILE2}
 
 export DATA=$(cat ${LOGFILE2})

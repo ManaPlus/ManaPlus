@@ -39,12 +39,6 @@
 #include "utils/delete2.h"
 #include "utils/physfsrwops.h"
 
-#ifdef USE_OPENGL
-#include "render/shaders/shader.h"
-#include "render/shaders/shaderprogram.h"
-#include "render/shaders/shadersmanager.h"
-#endif
-
 #include <SDL_image.h>
 #include <sstream>
 

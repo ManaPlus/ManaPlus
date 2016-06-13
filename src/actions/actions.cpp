@@ -26,6 +26,7 @@
 #ifdef USE_OPENGL
 #include "graphicsmanager.h"
 #endif
+#include "main.h"
 #include "spellmanager.h"
 
 #include "actions/actiondef.h"

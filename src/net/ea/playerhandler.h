@@ -25,8 +25,6 @@
 
 #include "net/playerhandler.h"
 
-#include <climits>
-
 namespace Ea
 {
 

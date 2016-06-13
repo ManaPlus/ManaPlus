@@ -25,13 +25,14 @@
 
 #ifdef ENABLE_LIBXML
 
+#define XML_INCLUDE_DEFINE
+
 #include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/useresman.h"
 
 #include "utils/xml/libxml.inc"
 
 #include <libxml/tree.h>
-#include <libxml/xmlwriter.h>
 
 #include <string>
 

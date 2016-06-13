@@ -28,12 +28,6 @@
 
 #include "gui/color.h"
 
-#if defined __native_client__
-#include <stdlib.h>
-#else
-#include <cstdlib>
-#endif
-
 #include <map>
 #include <set>
 #include <string>

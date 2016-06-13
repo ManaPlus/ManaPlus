@@ -40,6 +40,7 @@
 
 #include <sstream>
 
+#ifdef ENABLEDEBUGLOG
 #if defined(__ANDROID__)
 #include <android/log.h>
 #ifdef SPECIAL_LOGGING
@@ -62,10 +63,11 @@
 #define DSPECIALLOG(x) if (mDebugLog) \
     std::cerr << x;
 #endif  // SPECIAL_LOGGING
-#else
+#else  // defined(__ANDROID__)
 #define SPECIALLOG(x)
 #define DSPECIALLOG(x)
-#endif
+#endif  // defined(__ANDROID__)
+#endif  // ENABLEDEBUGLOG
 
 #include "debug.h"
 

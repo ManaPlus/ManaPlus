@@ -23,7 +23,9 @@
 #if defined USE_OPENGL && !defined ANDROID
 #include "render/safeopenglgraphics.h"
 
+#ifdef DEBUG_OPENGL
 #include "render/opengl/mgl.h"
+#endif  // DEBUG_OPENGL
 
 #include "resources/imagerect.h"
 #include "resources/safeopenglimagehelper.h"

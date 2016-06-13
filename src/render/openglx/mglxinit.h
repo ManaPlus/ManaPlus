@@ -21,7 +21,6 @@
 #ifndef RENDER_OPENGLX_MGLXINIT_H
 #define RENDER_OPENGLX_MGLXINIT_H
 
-#include "main.h"
 #if defined(USE_OPENGL) && defined(USE_X11)
 
 namespace Glx

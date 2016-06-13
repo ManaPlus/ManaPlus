@@ -28,8 +28,6 @@
 
 #include "enums/dragdropsource.h"
 
-#include "enums/simpletypes/itemcolor.h"
-
 #include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 

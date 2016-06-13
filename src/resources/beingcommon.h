@@ -24,8 +24,6 @@
 #include "utils/files.h"
 #include "utils/xml.h"
 
-#include "utils/stringvector.h"
-
 #include "localconsts.h"
 
 class BeingInfo;

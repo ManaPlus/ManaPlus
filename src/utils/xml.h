@@ -27,4 +27,6 @@
 #include "utils/xml/libxml.h"
 #endif  // ENABLE_PUGIXML
 
+XML_INCLUDE_DEFINE
+
 #endif  // UTILS_XML_H

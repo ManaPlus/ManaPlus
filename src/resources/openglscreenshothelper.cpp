@@ -27,6 +27,7 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 
+#include "render/graphics.h"
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"

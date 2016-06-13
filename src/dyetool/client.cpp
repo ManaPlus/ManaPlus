@@ -26,6 +26,7 @@
 #include "dirs.h"
 #include "eventsmanager.h"
 #include "graphicsmanager.h"
+#include "main.h"
 #include "settings.h"
 #include "soundmanager.h"
 
@@ -82,6 +83,12 @@
 #include <SDL_screenkeyboard.h>
 #include <fstream>
 #endif
+#endif
+
+#ifdef USE_SDL2
+#include <SDL2_framerate.h>
+#else
+#include <SDL_framerate.h>
 #endif
 
 #include "debug.h"

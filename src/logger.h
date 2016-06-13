@@ -23,13 +23,12 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
-#include "main.h"
-
 #ifdef USE_SDL2
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch-default"
 #endif
 #include <SDL_stdinc.h>
+_SDL_stdinc_h
 #ifdef USE_SDL2
 #pragma GCC diagnostic pop
 #endif

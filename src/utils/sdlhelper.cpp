@@ -23,7 +23,6 @@
 #include "utils/sdlhelper.h"
 
 #include "logger.h"
-#include "main.h"
 
 #include "utils/stringutils.h"
 

@@ -25,6 +25,7 @@
 #include "chatlogger.h"
 #include "client.h"
 #include "configuration.h"
+#include "main.h"
 #include "settings.h"
 
 #include "net/download.h"

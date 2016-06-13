@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define ENABLEDEBUGLOG 1
+
 #define CAST_8 static_cast<char>
 #define CAST_S8 static_cast<int8_t>
 #define CAST_U8 static_cast<uint8_t>

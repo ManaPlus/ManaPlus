@@ -21,19 +21,9 @@
 #ifndef RENDER_OPENGLX_MGLXTYPES_H
 #define RENDER_OPENGLX_MGLXTYPES_H
 
-#include "main.h"
-
 #if defined(USE_OPENGL) && defined(USE_X11)
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
 #include <GL/glx.h>
-
-#if defined(__GXX_EXPERIMENTAL_CXX0X__)
-#include <cstdint>
-#else
-#include <stdint.h>
-#endif
 
 typedef void *(*glXCreateContext_t) (Display *dpy, XVisualInfo *vis,
     void *shareList, bool direct);

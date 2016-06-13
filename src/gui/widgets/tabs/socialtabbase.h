@@ -23,7 +23,11 @@
 
 #include "actormanager.h"
 
+ACTORMANAGER_H
+
 #include "enums/resources/map/mapitemtype.h"
+
+ENUMS_RESOURCES_MAP_MAPITEMTYPE_H
 
 #define addAvatars(mob, str, type) \
 {\

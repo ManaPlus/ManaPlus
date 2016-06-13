@@ -24,7 +24,6 @@
 #define RESOURCES_OPENGLIMAGEHELPER_H
 
 #include "localconsts.h"
-#include "main.h"
 
 #ifdef USE_OPENGL
 
