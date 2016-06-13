@@ -26,6 +26,10 @@
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
+#ifdef ENABLE_PUGIXML
+#include "utils/xmlwriter.h"
+#endif  // ENABLE_PUGIXML
+
 #include "defaults.h"
 #include "localconsts.h"
 
