@@ -34,6 +34,8 @@
 #include "utils/env.h"
 #include "utils/physfstools.h"
 
+#include <SDL.h>
+
 #include "debug.h"
 
 namespace

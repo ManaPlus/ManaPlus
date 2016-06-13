@@ -37,6 +37,8 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
+#include <SDL.h>
+
 #include "debug.h"
 
 TEST_CASE("chatutils replaceVars")
