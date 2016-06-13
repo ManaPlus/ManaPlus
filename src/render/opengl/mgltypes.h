@@ -41,7 +41,7 @@
 #include <GL/glext.h>
 #ifndef __glext_h_
 #error missing include <GL/glext.h>
-#endif //  __glext_h_
+#endif  //  __glext_h_
 #endif  // defined(__APPLE__)
 #endif
 #endif
