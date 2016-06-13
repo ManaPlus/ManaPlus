@@ -40,6 +40,8 @@
 
 #ifdef ANDROID
 #ifdef USE_SDL2
+#include "main.h"
+
 #include "render/graphics.h"
 #endif
 #endif
