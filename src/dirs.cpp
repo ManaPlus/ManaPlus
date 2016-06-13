@@ -47,6 +47,8 @@
 #endif
 
 #ifdef __APPLE__
+#include "main.h"
+
 #include <CoreFoundation/CFBundle.h>
 #endif
 
