@@ -201,6 +201,8 @@
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/spellmanager.cpp" />
 		<Unit filename="src/itemcolormanager.cpp" />
+		<Unit filename="src/resources/image/image.cpp" />
+		<Unit filename="src/resources/image/subimage.cpp" />
 		<Unit filename="src/resources/surfaceimagehelper.cpp" />
 		<Unit filename="src/resources/imageset.cpp" />
 		<Unit filename="src/resources/animation/simpleanimation.cpp" />
@@ -208,10 +210,8 @@
 		<Unit filename="src/resources/resourcemanager/resourcemanager.cpp" />
 		<Unit filename="src/resources/atlas/atlasresource.cpp" />
 		<Unit filename="src/resources/atlas/atlasmanager.cpp" />
-		<Unit filename="src/resources/image.cpp" />
 		<Unit filename="src/resources/delayedmanager.cpp" />
 		<Unit filename="src/resources/resource.cpp" />
-		<Unit filename="src/resources/subimage.cpp" />
 		<Unit filename="src/resources/safeopenglimagehelper.cpp" />
 		<Unit filename="src/resources/beinginfo.cpp" />
 		<Unit filename="src/resources/cursor.cpp" />
@@ -260,6 +260,7 @@
 		<Unit filename="src/resources/loaders/shaderprogramloader.cpp" />
 		<Unit filename="src/resources/loaders/imageloader.cpp" />
 		<Unit filename="src/resources/loaders/subimagesetloader.cpp" />
+		<Unit filename="src/resources/loaders/emptyatlasloader.cpp" />
 		<Unit filename="src/resources/loaders/subimageloader.cpp" />
 		<Unit filename="src/resources/loaders/walklayerloader.cpp" />
 		<Unit filename="src/resources/loaders/shaderloader.cpp" />
@@ -898,6 +899,8 @@
 		<Unit filename="src/equipment.h" />
 		<Unit filename="src/guild.h" />
 		<Unit filename="src/resources/itemtypemapdata.h" />
+		<Unit filename="src/resources/image/subimage.h" />
+		<Unit filename="src/resources/image/image.h" />
 		<Unit filename="src/resources/mobileopenglscreenshothelper.h" />
 		<Unit filename="src/resources/resource.h" />
 		<Unit filename="src/resources/animation/animation.h" />
@@ -909,7 +912,6 @@
 		<Unit filename="src/resources/atlas/atlasmanager.h" />
 		<Unit filename="src/resources/horseinfo.h" />
 		<Unit filename="src/resources/chatobject.h" />
-		<Unit filename="src/resources/subimage.h" />
 		<Unit filename="src/resources/sdlscreenshothelper.h" />
 		<Unit filename="src/resources/npcdialogmenuinfo.h" />
 		<Unit filename="src/resources/soundeffect.h" />
@@ -921,7 +923,6 @@
 		<Unit filename="src/resources/imagehelper.h" />
 		<Unit filename="src/resources/cursor.h" />
 		<Unit filename="src/resources/imagewriter.h" />
-		<Unit filename="src/resources/image.h" />
 		<Unit filename="src/resources/mapinfo.h" />
 		<Unit filename="src/resources/equipmentslots.h" />
 		<Unit filename="src/resources/questitem.h" />
@@ -967,6 +968,7 @@
 		<Unit filename="src/resources/modinfo.h" />
 		<Unit filename="src/resources/frame.h" />
 		<Unit filename="src/resources/loaders/walklayerloader.h" />
+		<Unit filename="src/resources/loaders/emptyatlasloader.h" />
 		<Unit filename="src/resources/loaders/musicloader.h" />
 		<Unit filename="src/resources/loaders/imagesetloader.h" />
 		<Unit filename="src/resources/loaders/rescaledloader.h" />
@@ -1611,6 +1613,7 @@
 		<Unit filename="src/enums/resources/map/blocktype.h" />
 		<Unit filename="src/enums/resources/itemdbtype.h" />
 		<Unit filename="src/enums/resources/spritedirection.h" />
+		<Unit filename="src/enums/resources/imagetype.h" />
 		<Unit filename="src/enums/resources/imageposition.h" />
 		<Unit filename="src/enums/resources/itemsoundevent.h" />
 		<Unit filename="src/enums/resources/questtype.h" />
