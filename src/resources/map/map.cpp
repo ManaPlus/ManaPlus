@@ -511,13 +511,9 @@ void Map::draw(Graphics *restrict const graphics,
             {
                 if (Actor *const actor = *ai)
                 {
-                    // For now, just draw actors with only one layer.
-                    if (actor->getNumberOfLayers() == 1)
-                    {
-                        actor->setAlpha(0.3F);
-                        actor->draw(graphics, -scrollX, -scrollY);
-                        actor->setAlpha(1.0F);
-                    }
+                    actor->setAlpha(0.3F);
+                    actor->draw(graphics, -scrollX, -scrollY);
+                    actor->setAlpha(1.0F);
                 }
                 ++ai;
             }
