@@ -30,12 +30,8 @@
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #if defined(__APPLE__)
 #include <tr1/cstdint>
-#else
-#include <cstdint>
-#endif
-#else
-#include <stdint.h>
-#endif
+#endif  // defined(__APPLE__)
+#endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 
 #include "localconsts.h"
 

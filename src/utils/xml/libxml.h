@@ -32,8 +32,6 @@
 
 #include "utils/xml/libxml.inc"
 
-#include <libxml/tree.h>
-
 #include <string>
 
 #include "localconsts.h"

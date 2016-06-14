@@ -23,7 +23,6 @@
 #ifdef USE_SDL2
 #include "render/graphics.h"
 
-#include "gui/gui.h"
 #include "gui/sdlinput.h"
 #endif
 #include "debug.h"

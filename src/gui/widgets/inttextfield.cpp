@@ -24,9 +24,7 @@
 
 #ifdef USE_SDL2
 #include "enums/input/keyvalue.h"
-
-#include "gui/sdlinput.h"
-#endif
+#endif  // USE_SDL2
 
 #include "utils/stringutils.h"
 

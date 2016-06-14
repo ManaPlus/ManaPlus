@@ -25,8 +25,6 @@
 
 #include "resources/image/image.h"
 
-#include <string>
-
 struct AtlasItem final : public MemoryCounter
 {
     explicit AtlasItem(Image *const image0) :

@@ -35,6 +35,8 @@
 #endif  // defined(__APPLE__)
 #endif
 
+#include "localconsts.h"
+
 struct FBOInfo final
 {
     FBOInfo() :

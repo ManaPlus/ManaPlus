@@ -23,12 +23,6 @@
 #ifndef NET_EA_TRADERECV_H
 #define NET_EA_TRADERECV_H
 
-#if defined(__GXX_EXPERIMENTAL_CXX0X__)
-#include <cstdint>
-#else
-#include <stdint.h>
-#endif
-
 #include <string>
 
 namespace Net

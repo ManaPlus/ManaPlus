@@ -33,12 +33,6 @@
 #include "enums/simpletypes/identified.h"
 #include "enums/simpletypes/itemcolor.h"
 
-#if defined(__GXX_EXPERIMENTAL_CXX0X__)
-#include <cstdint>
-#else
-#include <stdint.h>
-#endif
-
 #include <vector>
 
 #include "localconsts.h"

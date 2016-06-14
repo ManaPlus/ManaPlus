@@ -25,7 +25,6 @@
 #include "render/opengl/mglfunctions.h"
 
 #include "render/openglx/mglx.h"
-#include "render/openglx/mglxtypes.h"
 
 #include "debug.h"
 

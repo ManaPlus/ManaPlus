@@ -27,7 +27,6 @@
 #include "utils/stringutils.h"
 
 #include <SDL_syswm.h>
-#include <SDL_video.h>
 
 #include "debug.h"
 

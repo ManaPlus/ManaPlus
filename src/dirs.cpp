@@ -25,6 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
+#include "main.h"
 #include "settings.h"
 
 #include "utils/base64.h"
@@ -47,8 +48,6 @@
 #endif
 
 #ifdef __APPLE__
-#include "main.h"
-
 #include <CoreFoundation/CFBundle.h>
 #endif
 

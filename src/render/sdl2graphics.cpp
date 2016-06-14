@@ -67,23 +67,16 @@
 
 #include "render/sdl2graphics.h"
 
-#include "main.h"
-
-#include "configuration.h"
 #include "graphicsmanager.h"
-#include "logger.h"
 
 #include "render/vertexes/imagecollection.h"
 
-#include "resources/imagehelper.h"
 #include "resources/imagerect.h"
 #include "resources/sdl2imagehelper.h"
 
 #include "resources/image/image.h"
 
 #include "utils/sdlcheckutils.h"
-
-#include "utils/sdlpixel.h"
 
 #include "debug.h"
 

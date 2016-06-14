@@ -24,7 +24,6 @@
 #ifdef USE_OPENGL
 
 #include "render/opengl/mgltypes.h"
-#include "render/opengl/mgldefines.h"
 
 #define defName(name) extern name##_t m##name
 

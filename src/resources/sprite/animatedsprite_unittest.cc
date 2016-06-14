@@ -40,8 +40,6 @@
 #include "utils/mrand.h"
 #include "utils/physfstools.h"
 
-#include <SDL.h>
-
 #include "debug.h"
 
 TEST_CASE("AnimatedSprite tests", "animatedsprite")

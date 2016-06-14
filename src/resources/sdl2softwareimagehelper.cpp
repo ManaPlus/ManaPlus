@@ -24,18 +24,9 @@
 
 #include "resources/sdl2softwareimagehelper.h"
 
-#include "logger.h"
-#include "main.h"
-
-#include "resources/dye/dye.h"
-
 #include "resources/image/image.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #include "utils/sdlcheckutils.h"
-
-#include <SDL_image.h>
 
 #include "debug.h"
 

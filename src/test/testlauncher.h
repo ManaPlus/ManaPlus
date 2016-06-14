@@ -24,7 +24,6 @@
 #ifdef USE_OPENGL
 
 #include <fstream>
-#include <string>
 
 #ifdef WIN32
 #include <sys/time.h>

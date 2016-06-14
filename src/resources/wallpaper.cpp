@@ -30,7 +30,6 @@
 
 #include <algorithm>
 
-#include <sys/time.h>
 #ifdef __clang__
 #include <time.h>
 #endif

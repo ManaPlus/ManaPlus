@@ -27,8 +27,6 @@
 
 #include "render/renderers.h"
 
-#include <string>
-
 class Logger;
 
 class TestMain final

@@ -24,7 +24,6 @@
 
 #include "resources/sdl2softwarescreenshothelper.h"
 
-#include "render/graphics.h"
 #include "render/sdl2softwaregraphics.h"
 
 #include "utils/sdlcheckutils.h"
