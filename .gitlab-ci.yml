@@ -700,7 +700,7 @@ gcc-5_tarball:
 deheader_gui_windows_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -714,7 +714,7 @@ deheader_gui_windows_cpp:
 deheader_sdl2_gui_windows_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -728,7 +728,7 @@ deheader_sdl2_gui_windows_cpp:
 deheader_gui_windows_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -742,7 +742,7 @@ deheader_gui_windows_withoutopengl_cpp:
 deheader_sdl2_gui_windows_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -756,7 +756,7 @@ deheader_sdl2_gui_windows_withoutopengl_cpp:
 deheader_gui_widgets_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -770,7 +770,7 @@ deheader_gui_widgets_cpp:
 deheader_sdl2_gui_widgets_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -784,7 +784,7 @@ deheader_sdl2_gui_widgets_cpp:
 deheader_gui_widgets_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -798,7 +798,7 @@ deheader_gui_widgets_withoutopengl_cpp:
 deheader_sdl2_gui_widgets_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -812,7 +812,7 @@ deheader_sdl2_gui_widgets_withoutopengl_cpp:
 deheader_gui_models_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -826,7 +826,7 @@ deheader_gui_models_cpp:
 deheader_sdl2_gui_models_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -840,7 +840,7 @@ deheader_sdl2_gui_models_cpp:
 deheader_gui_models_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -854,7 +854,7 @@ deheader_gui_models_withoutopengl_cpp:
 deheader_sdl2_gui_models_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -868,7 +868,7 @@ deheader_sdl2_gui_models_withoutopengl_cpp:
 deheader_actions_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -882,7 +882,7 @@ deheader_actions_cpp:
 deheader_actions_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -896,7 +896,7 @@ deheader_actions_h:
 deheader_being_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -910,7 +910,7 @@ deheader_being_cpp:
 deheader_being_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -924,7 +924,7 @@ deheader_being_h:
 deheader_const_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -938,7 +938,7 @@ deheader_const_h:
 deheader_dyetool_cpp:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -952,7 +952,7 @@ deheader_dyetool_cpp:
 deheader_dyetool_h:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -966,7 +966,7 @@ deheader_dyetool_h:
 deheader_enums_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -980,7 +980,7 @@ deheader_enums_h:
 deheader_events_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -994,7 +994,7 @@ deheader_events_h:
 deheader_gui_fonts_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1008,7 +1008,7 @@ deheader_gui_fonts_cpp:
 deheader_gui_fonts_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1022,7 +1022,7 @@ deheader_gui_fonts_h:
 deheader_gui_models_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1036,7 +1036,7 @@ deheader_gui_models_h:
 deheader_gui_popups_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1050,7 +1050,7 @@ deheader_gui_popups_cpp:
 deheader_gui_popups_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1064,7 +1064,7 @@ deheader_gui_popups_h:
 deheader_gui_shortcut_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1078,7 +1078,7 @@ deheader_gui_shortcut_cpp:
 deheader_gui_shortcut_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1092,7 +1092,7 @@ deheader_gui_shortcut_h:
 deheader_gui_widgets_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1106,7 +1106,7 @@ deheader_gui_widgets_h:
 deheader_gui_windows_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1120,7 +1120,7 @@ deheader_gui_windows_h:
 deheader_gui_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1134,7 +1134,7 @@ deheader_gui_cpp:
 deheader_gui_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1148,7 +1148,7 @@ deheader_gui_h:
 deheader_input_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1162,7 +1162,7 @@ deheader_input_cpp:
 deheader_input_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1176,7 +1176,7 @@ deheader_input_h:
 deheader_listeners_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1190,7 +1190,7 @@ deheader_listeners_cpp:
 deheader_listeners_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1204,7 +1204,7 @@ deheader_listeners_h:
 deheader_net_ea_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1218,7 +1218,7 @@ deheader_net_ea_cpp:
 deheader_net_ea_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1232,7 +1232,7 @@ deheader_net_ea_h:
 deheader_net_eathena_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1246,7 +1246,7 @@ deheader_net_eathena_cpp:
 deheader_net_eathena_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1260,7 +1260,7 @@ deheader_net_eathena_h:
 deheader_net_tmwa_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1274,7 +1274,7 @@ deheader_net_tmwa_cpp:
 deheader_net_tmwa_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1288,7 +1288,7 @@ deheader_net_tmwa_h:
 deheader_net_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1302,7 +1302,7 @@ deheader_net_cpp:
 deheader_net_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1316,7 +1316,7 @@ deheader_net_h:
 deheader_particle_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1330,7 +1330,7 @@ deheader_particle_cpp:
 deheader_particle_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1344,7 +1344,7 @@ deheader_particle_h:
 deheader_render_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1358,7 +1358,7 @@ deheader_render_cpp:
 deheader_render_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1372,7 +1372,7 @@ deheader_render_h:
 deheader_resources_db_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1386,7 +1386,7 @@ deheader_resources_db_cpp:
 deheader_resources_db_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1400,7 +1400,7 @@ deheader_resources_db_h:
 deheader_resources_map_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1414,7 +1414,7 @@ deheader_resources_map_cpp:
 deheader_resources_map_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1428,7 +1428,7 @@ deheader_resources_map_h:
 deheader_resources_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1442,7 +1442,7 @@ deheader_resources_cpp:
 deheader_resources_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1456,7 +1456,7 @@ deheader_resources_h:
 deheader_test_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1470,7 +1470,7 @@ deheader_test_cpp:
 deheader_test_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1484,7 +1484,7 @@ deheader_test_h:
 deheader_utils_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1498,7 +1498,7 @@ deheader_utils_cpp:
 deheader_utils_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1512,7 +1512,7 @@ deheader_utils_h:
 deheader_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1526,7 +1526,7 @@ deheader_cpp:
 deheader_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1540,7 +1540,7 @@ deheader_h:
 deheader_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1556,7 +1556,7 @@ deheader_cc:
 deheader_sdl2_actions_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1570,7 +1570,7 @@ deheader_sdl2_actions_cpp:
 deheader_sdl2_actions_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1584,7 +1584,7 @@ deheader_sdl2_actions_h:
 deheader_sdl2_being_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1598,7 +1598,7 @@ deheader_sdl2_being_cpp:
 deheader_sdl2_being_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1612,7 +1612,7 @@ deheader_sdl2_being_h:
 deheader_sdl2_const_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1626,7 +1626,7 @@ deheader_sdl2_const_h:
 deheader_sdl2_dyetool_cpp:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1640,7 +1640,7 @@ deheader_sdl2_dyetool_cpp:
 deheader_sdl2_dyetool_h:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1654,7 +1654,7 @@ deheader_sdl2_dyetool_h:
 deheader_sdl2_enums_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1668,7 +1668,7 @@ deheader_sdl2_enums_h:
 deheader_sdl2_events_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1682,7 +1682,7 @@ deheader_sdl2_events_h:
 deheader_sdl2_gui_fonts_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1696,7 +1696,7 @@ deheader_sdl2_gui_fonts_cpp:
 deheader_sdl2_gui_fonts_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1710,7 +1710,7 @@ deheader_sdl2_gui_fonts_h:
 deheader_sdl2_gui_models_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1724,7 +1724,7 @@ deheader_sdl2_gui_models_h:
 deheader_sdl2_gui_popups_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1738,7 +1738,7 @@ deheader_sdl2_gui_popups_cpp:
 deheader_sdl2_gui_popups_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1752,7 +1752,7 @@ deheader_sdl2_gui_popups_h:
 deheader_sdl2_gui_shortcut_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1766,7 +1766,7 @@ deheader_sdl2_gui_shortcut_cpp:
 deheader_sdl2_gui_shortcut_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1780,7 +1780,7 @@ deheader_sdl2_gui_shortcut_h:
 deheader_sdl2_gui_widgets_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1794,7 +1794,7 @@ deheader_sdl2_gui_widgets_h:
 deheader_sdl2_gui_windows_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1808,7 +1808,7 @@ deheader_sdl2_gui_windows_h:
 deheader_sdl2_gui_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1822,7 +1822,7 @@ deheader_sdl2_gui_cpp:
 deheader_sdl2_gui_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1836,7 +1836,7 @@ deheader_sdl2_gui_h:
 deheader_sdl2_input_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1850,7 +1850,7 @@ deheader_sdl2_input_cpp:
 deheader_sdl2_input_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1864,7 +1864,7 @@ deheader_sdl2_input_h:
 deheader_sdl2_listeners_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1878,7 +1878,7 @@ deheader_sdl2_listeners_cpp:
 deheader_sdl2_listeners_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1892,7 +1892,7 @@ deheader_sdl2_listeners_h:
 deheader_sdl2_net_ea_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1906,7 +1906,7 @@ deheader_sdl2_net_ea_cpp:
 deheader_sdl2_net_ea_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1920,7 +1920,7 @@ deheader_sdl2_net_ea_h:
 deheader_sdl2_net_eathena_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1934,7 +1934,7 @@ deheader_sdl2_net_eathena_cpp:
 deheader_sdl2_net_eathena_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1948,7 +1948,7 @@ deheader_sdl2_net_eathena_h:
 deheader_sdl2_net_tmwa_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1962,7 +1962,7 @@ deheader_sdl2_net_tmwa_cpp:
 deheader_sdl2_net_tmwa_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1976,7 +1976,7 @@ deheader_sdl2_net_tmwa_h:
 deheader_sdl2_net_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -1990,7 +1990,7 @@ deheader_sdl2_net_cpp:
 deheader_sdl2_net_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2004,7 +2004,7 @@ deheader_sdl2_net_h:
 deheader_sdl2_particle_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2018,7 +2018,7 @@ deheader_sdl2_particle_cpp:
 deheader_sdl2_particle_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2032,7 +2032,7 @@ deheader_sdl2_particle_h:
 deheader_sdl2_render_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2046,7 +2046,7 @@ deheader_sdl2_render_cpp:
 deheader_sdl2_render_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2060,7 +2060,7 @@ deheader_sdl2_render_h:
 deheader_sdl2_resources_db_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2074,7 +2074,7 @@ deheader_sdl2_resources_db_cpp:
 deheader_sdl2_resources_db_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2088,7 +2088,7 @@ deheader_sdl2_resources_db_h:
 deheader_sdl2_resources_map_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2102,7 +2102,7 @@ deheader_sdl2_resources_map_cpp:
 deheader_sdl2_resources_map_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2116,7 +2116,7 @@ deheader_sdl2_resources_map_h:
 deheader_sdl2_resources_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2130,7 +2130,7 @@ deheader_sdl2_resources_cpp:
 deheader_sdl2_resources_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2144,7 +2144,7 @@ deheader_sdl2_resources_h:
 deheader_sdl2_test_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2158,7 +2158,7 @@ deheader_sdl2_test_cpp:
 deheader_sdl2_test_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2172,7 +2172,7 @@ deheader_sdl2_test_h:
 deheader_sdl2_utils_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2186,7 +2186,7 @@ deheader_sdl2_utils_cpp:
 deheader_sdl2_utils_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2200,7 +2200,7 @@ deheader_sdl2_utils_h:
 deheader_sdl2_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2214,7 +2214,7 @@ deheader_sdl2_cpp:
 deheader_sdl2_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2228,7 +2228,7 @@ deheader_sdl2_h:
 deheader_sdl2_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2244,7 +2244,7 @@ deheader_sdl2_cc:
 deheader_actions_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2258,7 +2258,7 @@ deheader_actions_withoutopengl_cpp:
 deheader_actions_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2272,7 +2272,7 @@ deheader_actions_withoutopengl_h:
 deheader_being_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2286,7 +2286,7 @@ deheader_being_withoutopengl_cpp:
 deheader_being_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2300,7 +2300,7 @@ deheader_being_withoutopengl_h:
 deheader_const_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2314,7 +2314,7 @@ deheader_const_withoutopengl_h:
 deheader_dyetool_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2328,7 +2328,7 @@ deheader_dyetool_withoutopengl_cpp:
 deheader_dyetool_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2342,7 +2342,7 @@ deheader_dyetool_withoutopengl_h:
 deheader_enums_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2356,7 +2356,7 @@ deheader_enums_withoutopengl_h:
 deheader_events_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2370,7 +2370,7 @@ deheader_events_withoutopengl_h:
 deheader_gui_fonts_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2384,7 +2384,7 @@ deheader_gui_fonts_withoutopengl_cpp:
 deheader_gui_fonts_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2398,7 +2398,7 @@ deheader_gui_fonts_withoutopengl_h:
 deheader_gui_models_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2412,7 +2412,7 @@ deheader_gui_models_withoutopengl_h:
 deheader_gui_popups_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2426,7 +2426,7 @@ deheader_gui_popups_withoutopengl_cpp:
 deheader_gui_popups_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2440,7 +2440,7 @@ deheader_gui_popups_withoutopengl_h:
 deheader_gui_shortcut_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2454,7 +2454,7 @@ deheader_gui_shortcut_withoutopengl_cpp:
 deheader_gui_shortcut_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2468,7 +2468,7 @@ deheader_gui_shortcut_withoutopengl_h:
 deheader_gui_widgets_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2482,7 +2482,7 @@ deheader_gui_widgets_withoutopengl_h:
 deheader_gui_windows_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2496,7 +2496,7 @@ deheader_gui_windows_withoutopengl_h:
 deheader_gui_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2510,7 +2510,7 @@ deheader_gui_withoutopengl_cpp:
 deheader_gui_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2524,7 +2524,7 @@ deheader_gui_withoutopengl_h:
 deheader_input_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2538,7 +2538,7 @@ deheader_input_withoutopengl_cpp:
 deheader_input_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2552,7 +2552,7 @@ deheader_input_withoutopengl_h:
 deheader_listeners_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2566,7 +2566,7 @@ deheader_listeners_withoutopengl_cpp:
 deheader_listeners_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2580,7 +2580,7 @@ deheader_listeners_withoutopengl_h:
 deheader_net_ea_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2594,7 +2594,7 @@ deheader_net_ea_withoutopengl_cpp:
 deheader_net_ea_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2608,7 +2608,7 @@ deheader_net_ea_withoutopengl_h:
 deheader_net_eathena_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2622,7 +2622,7 @@ deheader_net_eathena_withoutopengl_cpp:
 deheader_net_eathena_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2636,7 +2636,7 @@ deheader_net_eathena_withoutopengl_h:
 deheader_net_tmwa_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2650,7 +2650,7 @@ deheader_net_tmwa_withoutopengl_cpp:
 deheader_net_tmwa_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2664,7 +2664,7 @@ deheader_net_tmwa_withoutopengl_h:
 deheader_net_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2678,7 +2678,7 @@ deheader_net_withoutopengl_cpp:
 deheader_net_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2692,7 +2692,7 @@ deheader_net_withoutopengl_h:
 deheader_particle_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2706,7 +2706,7 @@ deheader_particle_withoutopengl_cpp:
 deheader_particle_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2720,7 +2720,7 @@ deheader_particle_withoutopengl_h:
 deheader_render_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2734,7 +2734,7 @@ deheader_render_withoutopengl_cpp:
 deheader_render_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2748,7 +2748,7 @@ deheader_render_withoutopengl_h:
 deheader_resources_db_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2762,7 +2762,7 @@ deheader_resources_db_withoutopengl_cpp:
 deheader_resources_db_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2776,7 +2776,7 @@ deheader_resources_db_withoutopengl_h:
 deheader_resources_map_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2790,7 +2790,7 @@ deheader_resources_map_withoutopengl_cpp:
 deheader_resources_map_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2804,7 +2804,7 @@ deheader_resources_map_withoutopengl_h:
 deheader_resources_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2818,7 +2818,7 @@ deheader_resources_withoutopengl_cpp:
 deheader_resources_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2832,7 +2832,7 @@ deheader_resources_withoutopengl_h:
 deheader_test_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2846,7 +2846,7 @@ deheader_test_withoutopengl_cpp:
 deheader_test_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2860,7 +2860,7 @@ deheader_test_withoutopengl_h:
 deheader_utils_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2874,7 +2874,7 @@ deheader_utils_withoutopengl_cpp:
 deheader_utils_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2888,7 +2888,7 @@ deheader_utils_withoutopengl_h:
 deheader_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2902,7 +2902,7 @@ deheader_withoutopengl_cpp:
 deheader_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2916,7 +2916,7 @@ deheader_withoutopengl_h:
 deheader_withoutopengl_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
+  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2932,7 +2932,7 @@ deheader_withoutopengl_cc:
 deheader_sdl2_actions_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2946,7 +2946,7 @@ deheader_sdl2_actions_withoutopengl_cpp:
 deheader_sdl2_actions_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2960,7 +2960,7 @@ deheader_sdl2_actions_withoutopengl_h:
 deheader_sdl2_being_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2974,7 +2974,7 @@ deheader_sdl2_being_withoutopengl_cpp:
 deheader_sdl2_being_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -2988,7 +2988,7 @@ deheader_sdl2_being_withoutopengl_h:
 deheader_sdl2_const_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3002,7 +3002,7 @@ deheader_sdl2_const_withoutopengl_h:
 deheader_sdl2_dyetool_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3016,7 +3016,7 @@ deheader_sdl2_dyetool_withoutopengl_cpp:
 deheader_sdl2_dyetool_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3030,7 +3030,7 @@ deheader_sdl2_dyetool_withoutopengl_h:
 deheader_sdl2_enums_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3044,7 +3044,7 @@ deheader_sdl2_enums_withoutopengl_h:
 deheader_sdl2_events_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3058,7 +3058,7 @@ deheader_sdl2_events_withoutopengl_h:
 deheader_sdl2_gui_fonts_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3072,7 +3072,7 @@ deheader_sdl2_gui_fonts_withoutopengl_cpp:
 deheader_sdl2_gui_fonts_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3086,7 +3086,7 @@ deheader_sdl2_gui_fonts_withoutopengl_h:
 deheader_sdl2_gui_models_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3100,7 +3100,7 @@ deheader_sdl2_gui_models_withoutopengl_h:
 deheader_sdl2_gui_popups_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3114,7 +3114,7 @@ deheader_sdl2_gui_popups_withoutopengl_cpp:
 deheader_sdl2_gui_popups_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3128,7 +3128,7 @@ deheader_sdl2_gui_popups_withoutopengl_h:
 deheader_sdl2_gui_shortcut_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3142,7 +3142,7 @@ deheader_sdl2_gui_shortcut_withoutopengl_cpp:
 deheader_sdl2_gui_shortcut_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3156,7 +3156,7 @@ deheader_sdl2_gui_shortcut_withoutopengl_h:
 deheader_sdl2_gui_widgets_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3170,7 +3170,7 @@ deheader_sdl2_gui_widgets_withoutopengl_h:
 deheader_sdl2_gui_windows_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3184,7 +3184,7 @@ deheader_sdl2_gui_windows_withoutopengl_h:
 deheader_sdl2_gui_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3198,7 +3198,7 @@ deheader_sdl2_gui_withoutopengl_cpp:
 deheader_sdl2_gui_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3212,7 +3212,7 @@ deheader_sdl2_gui_withoutopengl_h:
 deheader_sdl2_input_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3226,7 +3226,7 @@ deheader_sdl2_input_withoutopengl_cpp:
 deheader_sdl2_input_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3240,7 +3240,7 @@ deheader_sdl2_input_withoutopengl_h:
 deheader_sdl2_listeners_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3254,7 +3254,7 @@ deheader_sdl2_listeners_withoutopengl_cpp:
 deheader_sdl2_listeners_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3268,7 +3268,7 @@ deheader_sdl2_listeners_withoutopengl_h:
 deheader_sdl2_net_ea_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3282,7 +3282,7 @@ deheader_sdl2_net_ea_withoutopengl_cpp:
 deheader_sdl2_net_ea_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3296,7 +3296,7 @@ deheader_sdl2_net_ea_withoutopengl_h:
 deheader_sdl2_net_eathena_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3310,7 +3310,7 @@ deheader_sdl2_net_eathena_withoutopengl_cpp:
 deheader_sdl2_net_eathena_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3324,7 +3324,7 @@ deheader_sdl2_net_eathena_withoutopengl_h:
 deheader_sdl2_net_tmwa_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3338,7 +3338,7 @@ deheader_sdl2_net_tmwa_withoutopengl_cpp:
 deheader_sdl2_net_tmwa_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3352,7 +3352,7 @@ deheader_sdl2_net_tmwa_withoutopengl_h:
 deheader_sdl2_net_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3366,7 +3366,7 @@ deheader_sdl2_net_withoutopengl_cpp:
 deheader_sdl2_net_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3380,7 +3380,7 @@ deheader_sdl2_net_withoutopengl_h:
 deheader_sdl2_particle_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3394,7 +3394,7 @@ deheader_sdl2_particle_withoutopengl_cpp:
 deheader_sdl2_particle_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3408,7 +3408,7 @@ deheader_sdl2_particle_withoutopengl_h:
 deheader_sdl2_render_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3422,7 +3422,7 @@ deheader_sdl2_render_withoutopengl_cpp:
 deheader_sdl2_render_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3436,7 +3436,7 @@ deheader_sdl2_render_withoutopengl_h:
 deheader_sdl2_resources_db_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3450,7 +3450,7 @@ deheader_sdl2_resources_db_withoutopengl_cpp:
 deheader_sdl2_resources_db_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3464,7 +3464,7 @@ deheader_sdl2_resources_db_withoutopengl_h:
 deheader_sdl2_resources_map_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3478,7 +3478,7 @@ deheader_sdl2_resources_map_withoutopengl_cpp:
 deheader_sdl2_resources_map_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3492,7 +3492,7 @@ deheader_sdl2_resources_map_withoutopengl_h:
 deheader_sdl2_resources_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3506,7 +3506,7 @@ deheader_sdl2_resources_withoutopengl_cpp:
 deheader_sdl2_resources_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3520,7 +3520,7 @@ deheader_sdl2_resources_withoutopengl_h:
 deheader_sdl2_test_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3534,7 +3534,7 @@ deheader_sdl2_test_withoutopengl_cpp:
 deheader_sdl2_test_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3548,7 +3548,7 @@ deheader_sdl2_test_withoutopengl_h:
 deheader_sdl2_utils_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3562,7 +3562,7 @@ deheader_sdl2_utils_withoutopengl_cpp:
 deheader_sdl2_utils_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3576,7 +3576,7 @@ deheader_sdl2_utils_withoutopengl_h:
 deheader_sdl2_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3590,7 +3590,7 @@ deheader_sdl2_withoutopengl_cpp:
 deheader_sdl2_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
@@ -3604,7 +3604,7 @@ deheader_sdl2_withoutopengl_h:
 deheader_sdl2_withoutopengl_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DENABLE_MEM_DEBUG -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
   - export LOGFILE=deheader.log
