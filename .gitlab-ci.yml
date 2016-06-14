@@ -41,6 +41,14 @@ gcc-6-i386:
   tags:
     - docker
 
+gcc-4.4:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc44.sh
+  image: debian:oldstable
+  tags:
+    - docker
+
 mplint_po:
   stage: prebuild
   script:
@@ -180,14 +188,6 @@ gcc-6_lto_i386:
     - docker
 
 # simple builds
-
-gcc-4.4:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc44.sh
-  image: debian:oldstable
-  tags:
-    - docker
 
 gcc-4.4_i386:
   stage: build
