@@ -39,7 +39,7 @@
 #include <OpenGL/glext.h>
 #else  // defined(__APPLE__)
 // probably this include need for some os / libs
-//#include <GL/glext.h>
+// #include <GL/glext.h>
 #ifndef __glext_h_
 #error missing include <GL/glext.h>
 #endif  //  __glext_h_
