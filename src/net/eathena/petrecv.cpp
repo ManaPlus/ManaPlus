@@ -52,30 +52,11 @@ namespace EAthena
 
 void PetRecv::processPetMessage(Net::MessageIn &msg)
 {
-    const BeingId id = msg.readBeingId("pet id");
-    const int data = msg.readInt32("param");
-    const Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
-        return;
-
-    const int hungry = data - (toInt(dstBeing->getSubType(), int)
-        - 100) * 100 - 50;
-    if (hungry >= 0 && hungry <= 4)
-    {
-        if (localChatTab && localPlayer)
-        {
-            // TRANSLATORS: user's pet
-            std::string nick = strprintf(_("%s's pet"),
-                localPlayer->getName().c_str());
-            localChatTab->chatLog(nick,
-                // TRANSLATORS: pet hungry level
-                strprintf(_("hungry level %d"), hungry));
-        }
-        PetInfo *const info = PlayerInfo::getPet();
-        if (!info || info->id != id)
-            return;
-        info->hungry = hungry;
-    }
+    // techinally this is hercules pet emote,
+    // but it may send also hungry level on connect
+    // for both exists other packets.
+    msg.readBeingId("pet id");
+    msg.readInt32("param");
 }
 
 void PetRecv::processPetRoulette(Net::MessageIn &msg)
