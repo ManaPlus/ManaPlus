@@ -27,6 +27,8 @@
 #if defined(__APPLE__)
 #include <tr1/cstdint>
 #endif  // defined(__APPLE__)
+#else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+#include <stdint.h>
 #endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 
 #include <string>
