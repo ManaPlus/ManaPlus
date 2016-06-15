@@ -23,7 +23,11 @@
 
 #include "resources/rect/doublerect.h"
 
+#ifdef USE_OPENGL
 #include "render/vertexes/openglgraphicsvertexes.h"
+#else  // USE_OPENGL
+#include <vector>
+#endif  // USE_OPENGL
 
 #include "localconsts.h"
 
