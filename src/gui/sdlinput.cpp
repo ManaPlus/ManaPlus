@@ -86,10 +86,6 @@
 
 #include "render/graphics.h"
 
-#ifdef USE_SDL2
-#include "gui/gui.h"
-#endif
-
 #include <SDL_timer.h>
 
 #include "debug.h"

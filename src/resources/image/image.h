@@ -29,8 +29,6 @@
 
 #include "resources/resource.h"
 
-#include <SDL_video.h>
-
 #ifdef USE_OPENGL
 
 #ifdef ANDROID
@@ -45,7 +43,9 @@
 
 #ifdef USE_SDL2
 #include <SDL_render.h>
-#endif
+#else  // USE_SDL2
+#include <SDL_video.h>
+#endif  // USE_SDL2
 
 #include <map>
 

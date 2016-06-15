@@ -23,7 +23,6 @@
 #include "actormanager.h"
 #include "notifymanager.h"
 
-#include "being/localplayer.h"
 #include "being/petinfo.h"
 #include "being/playerinfo.h"
 
@@ -35,15 +34,10 @@
 
 #include "gui/widgets/createwidget.h"
 
-#include "gui/widgets/tabs/chat/chattab.h"
-
 #include "net/inventoryhandler.h"
 #include "net/messagein.h"
 
 #include "net/eathena/menu.h"
-
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

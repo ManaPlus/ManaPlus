@@ -43,9 +43,9 @@
 
 #ifndef USE_SDL2
 #include "resources/sdlimagehelper.h"
+#endif  // USE_SDL2
 
 #include <SDL.h>
-#endif  // USE_SDL2
 
 #include "debug.h"
 

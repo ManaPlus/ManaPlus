@@ -24,10 +24,6 @@
 
 #include "configuration.h"
 
-#ifndef USE_OPENGL
-#include "render/graphics.h"
-#endif
-
 #include "being/localplayer.h"
 
 #include "enums/resources/map/blockmask.h"

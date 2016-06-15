@@ -50,11 +50,13 @@
 #include "render/opengl/mgldefines.h"
 RENDER_OPENGL_MGLDEFINES_H
 
+#ifndef USE_SDL2
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>
-#else
+#else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <stdint.h>
-#endif
+#endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+#endif  // USE_SDL2
 
 typedef void (APIENTRY *glGenRenderbuffers_t)(GLsizei, GLuint *);
 typedef void (APIENTRY *glBindRenderbuffer_t)(GLenum target,

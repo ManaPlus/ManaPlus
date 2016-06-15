@@ -32,13 +32,10 @@
 #include <SDL_opengl.h>
 #endif
 
-#endif
-
 #include <vector>
 
 #include "localconsts.h"
 
-#ifdef USE_OPENGL
 class OpenGLGraphicsVertexes final
 {
     public:

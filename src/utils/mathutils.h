@@ -24,7 +24,10 @@
 #define UTILS_MATHUTILS_H
 
 #include <string>
+
+#ifndef USE_SDL2
 #include <cmath>
+#endif
 
 #include "localconsts.h"
 

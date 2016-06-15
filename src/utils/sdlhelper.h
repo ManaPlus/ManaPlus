@@ -23,6 +23,7 @@
 
 #ifdef USE_SDL2
 #include "utils/sdl2helper.h"
+UTILS_SDL2HELPER_H
 
 #else
 #include "utils/stringvector.h"

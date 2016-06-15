@@ -84,15 +84,19 @@
 #include "render/nacl/naclgles.h"
 #endif  // __native_client__
 #else  // USE_OPENGL
+#ifndef USE_SDL2
 #include "resources/imagehelper.h"
+#endif  // USE_SDL2
 #endif  // USE_OPENGL
 
 #ifdef USE_OPENGL
 #ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
-#endif
+#endif  // __APPLE__
+#ifndef USE_SDL2
 #include "render/opengl/mgldefines.h"
-#endif
+#endif  // USE_SDL2
+#endif  // USE_OPENGL
 
 #include "debug.h"
 

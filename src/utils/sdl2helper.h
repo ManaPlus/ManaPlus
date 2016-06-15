@@ -27,6 +27,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch-default"
 #include <SDL_stdinc.h>
+_SDL_stdinc_h
 #pragma GCC diagnostic pop
 #include <SDL_thread.h>
 

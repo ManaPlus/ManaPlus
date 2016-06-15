@@ -23,6 +23,7 @@
 
 #ifdef USE_SDL2
 #include "render/rendererslistsdl2.h"
+RENDER_RENDERERSLISTSDL2_H
 
 #else  // USE_SDL2
 

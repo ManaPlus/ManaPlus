@@ -24,15 +24,10 @@
 
 #include "render/sdl2softwaregraphics.h"
 
-#include "main.h"
-
-#include "configuration.h"
 #include "graphicsmanager.h"
-#include "logger.h"
 
 #include "render/vertexes/imagecollection.h"
 
-#include "resources/imagehelper.h"
 #include "resources/imagerect.h"
 #include "resources/sdl2softwareimagehelper.h"
 

@@ -23,7 +23,9 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#ifndef USE_SDL2
 #include <cmath>
+#endif  // USE_SDL2
 
 #include <iostream>
 

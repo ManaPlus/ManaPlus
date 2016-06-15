@@ -25,6 +25,7 @@
 
 #ifdef USE_SDL2
 #include "resources/sdl2imagehelper.h"
+RESOURCES_SDL2IMAGEHELPER_H
 
 #else
 

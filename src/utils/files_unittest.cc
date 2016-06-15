@@ -27,10 +27,6 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
-#ifndef USE_SDL2
-#include <SDL.h>
-#endif  // USE_SDL2
-
 #include "debug.h"
 
 TEST_CASE("Files renameFile")

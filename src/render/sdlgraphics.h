@@ -25,6 +25,7 @@
 
 #ifdef USE_SDL2
 #include "render/sdl2graphics.h"
+RENDER_SDL2GRAPHICS_H
 
 #else
 
