@@ -69,9 +69,7 @@
 
 #include <sys/stat.h>
 
-#ifdef ENABLE_PUGIXML
 #include <climits>
-#endif  // ENABLE_LIBXML
 
 #include "debug.h"
 
