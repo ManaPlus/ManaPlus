@@ -53,6 +53,9 @@
 #elif defined WIN32
 #include "winver.h"
 #else
+#ifdef PACKAGE_VERSION
+#undef PACKAGE_VERSION
+#endif
 #define PACKAGE_VERSION SMALL_VERSION;
 #endif
 
