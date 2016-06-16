@@ -163,7 +163,8 @@ void Client::gameInit()
 #ifdef USE_FUZZER
     Fuzzer::init();
 #endif
-    ConfigManager::backupConfig("config.xml");
+    if (settings.options.test.empty())
+        ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();
     paths.setDefaultValues(getPathsDefaults());
     initPaths();
