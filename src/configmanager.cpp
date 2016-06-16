@@ -146,6 +146,30 @@ void ConfigManager::initConfiguration()
 
 void ConfigManager::backupConfig(const std::string &name)
 {
+    const std::string fileName3 = std::string(settings.configDir).append(
+        "/").append(name);
+    StringVect arr;
+    if (Files::loadTextFileLocal(fileName3, arr) == true)
+    {
+        if (arr.size() == 0)
+            return;
+
+        arr.clear();
+        const std::string tmpName = std::string(
+            settings.configDir).append(
+            "/").append(
+            name).append(
+            ".tmp");
+        Files::copyFile(fileName3, tmpName);
+        if (Files::loadTextFileLocal(tmpName, arr) == false ||
+            arr.size() == 0)
+        {
+            logger->safeError("Error backuping configs. "
+                "Probably no free space on disk.");
+        }
+        arr.clear();
+    }
+
     const std::string confName = std::string(
         settings.configDir).append(
         "/").append(
@@ -159,8 +183,6 @@ void ConfigManager::backupConfig(const std::string &name)
         const std::string fileName2 = confName + toString(f);
         Files::renameFile(fileName1, fileName2);
     }
-    const std::string fileName3 = std::string(settings.configDir).append(
-        "/").append(name);
     const std::string fileName4 = confName + toString(1);
     Files::copyFile(fileName3, fileName4);
 }
