@@ -26,9 +26,9 @@
 
 #include "utils/stringutils.h"
 
-#ifdef USE_X11
+#if defined(USE_X11) && defined(USE_OPENGL)
 #include "utils/glxhelper.h"
-#endif  // USE_X11
+#endif  // defined(USE_X11) && defined(USE_OPENGL)
 
 #include <SDL_syswm.h>
 #include <SDL_video.h>

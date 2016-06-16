@@ -32,7 +32,9 @@
 
 #include "utils/xml/libxml.inc"
 
+#ifndef _GLIBCXX_STRING
 #include <string>
+#endif  // _GLIBCXX_STRING
 
 #include "localconsts.h"
 
