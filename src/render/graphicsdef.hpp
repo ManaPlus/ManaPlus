@@ -20,6 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define RENDER_GRAPHICSDEF_HPP
+
 public:
     /**
     * Draws a rectangle using images. 4 corner images, 4 side images and 1

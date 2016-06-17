@@ -56,6 +56,7 @@ class SDLGraphics final : public Graphics
         ~SDLGraphics();
 
         #include "render/graphicsdef.hpp"
+        RENDER_GRAPHICSDEF_HPP
 
         #include "render/softwaregraphicsdef.hpp"
 

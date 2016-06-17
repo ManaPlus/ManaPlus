@@ -56,10 +56,13 @@ class SafeOpenGLGraphics final : public Graphics
         void testDraw() restrict2 override final;
 
         #include "render/graphicsdef.hpp"
+        RENDER_GRAPHICSDEF_HPP
 
         #include "render/openglgraphicsdef.hpp"
+        RENDER_OPENGLGRAPHICSDEF_HPP
 
         #include "render/openglgraphicsdef1.hpp"
+        RENDER_OPENGLGRAPHICSDEF1_HPP
 
     private:
         bool mTexture;

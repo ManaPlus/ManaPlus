@@ -61,6 +61,7 @@ class SDL2SoftwareGraphics final : public Graphics
         { mRendererFlags = flags; }
 
         #include "render/graphicsdef.hpp"
+        RENDER_GRAPHICSDEF_HPP
 
         #include "render/softwaregraphicsdef.hpp"
 

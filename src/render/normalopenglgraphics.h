@@ -82,12 +82,16 @@ class NormalOpenGLGraphics final : public Graphics
         void testDraw() restrict2 override final;
 
         #include "render/graphicsdef.hpp"
+        RENDER_GRAPHICSDEF_HPP
 
         #include "render/openglgraphicsdef.hpp"
+        RENDER_OPENGLGRAPHICSDEF_HPP
 
         #include "render/openglgraphicsdef1.hpp"
+        RENDER_OPENGLGRAPHICSDEF1_HPP
 
         #include "render/openglgraphicsdefadvanced.hpp"
+        RENDER_OPENGLGRAPHICSDEFADVANCED_HPP
 
 #ifdef DEBUG_BIND_TEXTURE
         unsigned int getBinds() const restrict2 noexcept2

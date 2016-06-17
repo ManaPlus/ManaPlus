@@ -20,6 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define RENDER_OPENGLGRAPHICSDEFADVANCED_HPP
+
 public:
     inline void drawVertexes(const OpenGLGraphicsVertexes &restrict ogl)
                              restrict2 A_INLINE;

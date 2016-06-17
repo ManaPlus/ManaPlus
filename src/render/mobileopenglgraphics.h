@@ -74,12 +74,16 @@ class MobileOpenGLGraphics final : public Graphics
         inline void drawLineArrays(const int size) restrict2 A_INLINE;
 
         #include "render/graphicsdef.hpp"
+        RENDER_GRAPHICSDEF_HPP
 
         #include "render/openglgraphicsdef1.hpp"
+        RENDER_OPENGLGRAPHICSDEF1_HPP
 
         #include "render/openglgraphicsdef.hpp"
+        RENDER_OPENGLGRAPHICSDEF_HPP
 
         #include "render/openglgraphicsdefadvanced.hpp"
+        RENDER_OPENGLGRAPHICSDEFADVANCED_HPP
 
     private:
         GLfloat *mFloatTexArray;

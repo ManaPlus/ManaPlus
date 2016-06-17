@@ -80,10 +80,13 @@ class MobileOpenGL2Graphics final : public Graphics
         void createGLContext() restrict2 override final;
 
         #include "render/graphicsdef.hpp"
+        RENDER_GRAPHICSDEF_HPP
 
         #include "render/openglgraphicsdef.hpp"
+        RENDER_OPENGLGRAPHICSDEF_HPP
 
         #include "render/openglgraphicsdefadvanced.hpp"
+        RENDER_OPENGLGRAPHICSDEFADVANCED_HPP
 
     private:
         void deleteGLObjects() restrict2;

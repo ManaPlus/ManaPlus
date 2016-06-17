@@ -20,6 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define RENDER_OPENGLGRAPHICSDEF1_HPP
+
 public:
     void setColor(const Color &restrict color) override final
     {

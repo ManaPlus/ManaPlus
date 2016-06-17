@@ -30,6 +30,10 @@
 
 #include <algorithm>
 
+#ifdef WIN32
+#include <sys/time.h>
+#endif
+
 #ifdef __clang__
 #include <time.h>
 #endif

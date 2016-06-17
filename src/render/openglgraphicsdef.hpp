@@ -20,6 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define RENDER_OPENGLGRAPHICSDEF_HPP
+
 public:
     void drawRectangle(const Rect &restrict rect,
                        const bool filled) restrict2;
