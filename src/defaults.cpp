@@ -616,8 +616,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("deadMessagesPatchFile", "deadmessages_patch.xml");
     AddDEF("deadMessagesPatchDir", "deadmessages.d");
     AddDEF("defaultCommandsFile", "defaultcommands.xml");
-    AddDEF("defaultcommandsPatchFile", "defaultcommands_patch.xml");
-    AddDEF("defaultcommandsPatchDir", "defaultcommands.d");
+    AddDEF("defaultCommandsPatchFile", "defaultcommands_patch.xml");
+    AddDEF("defaultCommandsPatchDir", "defaultcommands.d");
     AddDEF("badgesFile", "badges.xml");
     AddDEF("badgesPatchFile", "badges_patch.xml");
     AddDEF("badgesPatchDir", "badges.d");
