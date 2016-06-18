@@ -93,9 +93,8 @@
 #ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
 #endif  // __APPLE__
-#ifndef USE_SDL2
 #include "render/opengl/mgldefines.h"
-#endif  // USE_SDL2
+RENDER_OPENGL_MGLDEFINES_H
 #endif  // USE_OPENGL
 
 #include "debug.h"
