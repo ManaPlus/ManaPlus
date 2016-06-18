@@ -301,6 +301,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         const int inherit = XML::getProperty(node, "inherit", -1);
 
         std::string name = XML::langProperty(node, "name", "");
+        std::string nameEn = XML::getProperty(node, "name", "");
         std::string image = XML::getProperty(node, "image", "");
         std::string floor = XML::getProperty(node, "floor", "");
         std::string description = XML::langProperty(node, "description", "");
@@ -383,6 +384,11 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             name = inheritItemInfo->getName();
         // TRANSLATORS: item info name
         itemInfo->setName(name.empty() ? _("unnamed") : name);
+        if (nameEn.empty())
+            itemInfo->setNameEn(name.empty() ? _("unnamed") : name);
+        else
+            itemInfo->setNameEn(nameEn);
+
         if (description.empty() && inheritItemInfo)
             description = inheritItemInfo->getDescription();
         itemInfo->setDescription(description);
@@ -604,6 +610,11 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         if (!name.empty())
         {
             temp = normalize(name);
+            mNamedItemInfos[temp] = itemInfo;
+        }
+        if (!nameEn.empty())
+        {
+            temp = normalize(nameEn);
             mNamedItemInfos[temp] = itemInfo;
         }
 

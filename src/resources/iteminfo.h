@@ -77,6 +77,15 @@ class ItemInfo final
         const std::string getName(const ItemColor color)
                                   const A_WARN_UNUSED;
 
+        void setNameEn(const std::string &name)
+        { mNameEn = name; }
+
+        const std::string &getNameEn() const A_WARN_UNUSED
+        { return mNameEn; }
+
+        const std::string getNameEn(const ItemColor color)
+                                    const A_WARN_UNUSED;
+
         const std::string getLink() const A_WARN_UNUSED;
 
         void setDisplay(const SpriteDisplay &display)
@@ -325,6 +334,7 @@ class ItemInfo final
 
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
         std::string mName;
+        std::string mNameEn;
         std::string mDescription;   /**< Short description. */
         std::string mEffect;        /**< Description of effects. */
         std::string mUseButton;

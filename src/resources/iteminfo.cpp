@@ -41,6 +41,7 @@ ItemInfo::ItemInfo() :
     mMissileParticleFile(),
     mDisplay(),
     mName(),
+    mNameEn(),
     mDescription(),
     mEffect(),
     mUseButton(),
@@ -254,6 +255,11 @@ const std::string ItemInfo::getDescription(const ItemColor color) const
 const std::string ItemInfo::getName(const ItemColor color) const
 {
     return replaceColors(mName, color);
+}
+
+const std::string ItemInfo::getNameEn(const ItemColor color) const
+{
+    return replaceColors(mNameEn, color);
 }
 
 const std::string ItemInfo::replaceColors(std::string str,
