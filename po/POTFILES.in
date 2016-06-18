@@ -157,7 +157,6 @@ src/net/eathena/itemflags.h
 src/net/eathena/loginrecv.cpp
 src/net/eathena/mailrecv.cpp
 src/net/eathena/maptypeproperty2.h
-src/net/eathena/petrecv.cpp
 src/net/eathena/playerrecv.cpp
 src/net/eathena/skillrecv.cpp
 src/net/ea/traderecv.cpp
