@@ -1,3 +1,12 @@
+2016-06-18 New release 1.6.6.18
+fix: nuke command.
+fix: dont send CMSG_WHO_REQUEST for most new tmwa versions.
+fix: space usage in login dialog if build with SDL2.
+fix: being transparency with OpenGL renderer.
+fix: pet hungry level after login.
+add: check for tilesets in atlases.
+add: dont backup config file if found issue with disk.
+
 2016-06-04 New release 1.6.6.4
 fix: some false positive asserts.
 fix: chat command /msg for channels.
