@@ -33,6 +33,7 @@
 
 #include "configuration.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 
 #include "debug.h"
@@ -415,7 +416,12 @@ std::string ItemInfo::getColorName(const ItemColor idx) const
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mColorsList->find(idx);
     if (it == mColorsList->end())
+    {
+        reportAlways("Color %d for pallette %s not found",
+            CAST_S32(idx),
+            mColorsListName.c_str());
         return std::string();
+    }
     return it->second.name;
 }
 
@@ -427,7 +433,12 @@ std::string ItemInfo::getColor(const ItemColor idx) const
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mColorsList->find(idx);
     if (it == mColorsList->end())
+    {
+        reportAlways("Color %d for pallette %s not found",
+            CAST_S32(idx),
+            mColorsListName.c_str());
         return std::string();
+    }
     return it->second.color;
 }
 
@@ -439,7 +450,12 @@ std::string ItemInfo::getIconColorName(const ItemColor idx) const
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mIconColorsList->find(idx);
     if (it == mIconColorsList->end())
+    {
+        reportAlways("Color %d for pallette %s not found",
+            CAST_S32(idx),
+            mColorsListName.c_str());
         return std::string();
+    }
     return it->second.name;
 }
 
@@ -451,7 +467,12 @@ std::string ItemInfo::getIconColor(const ItemColor idx) const
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
         it = mIconColorsList->find(idx);
     if (it == mIconColorsList->end())
+    {
+        reportAlways("Color %d for pallette %s not found",
+            CAST_S32(idx),
+            mColorsListName.c_str());
         return std::string();
+    }
     return it->second.color;
 }
 

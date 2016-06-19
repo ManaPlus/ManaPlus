@@ -21,6 +21,8 @@
 #ifndef UTILS_CHECKUTILS_H
 #define UTILS_CHECKUTILS_H
 
+#include "logger.h"
+
 #ifdef ENABLE_ASSERTS
 
 #define reportFalseReal(val) \
