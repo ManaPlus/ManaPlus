@@ -385,9 +385,14 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         // TRANSLATORS: item info name
         itemInfo->setName(name.empty() ? _("unnamed") : name);
         if (nameEn.empty())
+        {
+            // TRANSLATORS: item info name
             itemInfo->setNameEn(name.empty() ? _("unnamed") : name);
+        }
         else
+        {
             itemInfo->setNameEn(nameEn);
+        }
 
         if (description.empty() && inheritItemInfo)
             description = inheritItemInfo->getDescription();
