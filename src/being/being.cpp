@@ -170,6 +170,7 @@ Being::Being(const BeingId id,
     mDest(),
     mSpriteColors(),
     mSpriteIDs(),
+    mSpriteCardsIds(),
     mSpriteColorsIds(),
     mSpriteParticles(),
     mGuilds(),
@@ -2485,16 +2486,19 @@ void Being::updateSprite(const unsigned int slot,
     if (slot >= CAST_U32(mSpriteIDs.size()))
         mSpriteIDs.resize(slot + 1, 0);
 
+    if (slot >= CAST_U32(mSpriteCardsIds.size()))
+        mSpriteCardsIds.resize(slot + 1, zeroCards);
+
     if (slot && mSpriteIDs[slot] == id)
         return;
-    setSprite(slot, id, color, colorId, nullptr);
+    setSprite(slot, id, color, colorId, mSpriteCardsIds[slot]);
 }
 
 void Being::setSprite(const unsigned int slot,
                       const int id,
                       std::string color,
                       ItemColor colorId,
-                      const int *const cards) restrict2
+                      CardsList cards) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2504,6 +2508,9 @@ void Being::setSprite(const unsigned int slot,
 
     if (slot >= CAST_U32(mSpriteIDs.size()))
         mSpriteIDs.resize(slot + 1, 0);
+
+    if (slot >= CAST_U32(mSpriteCardsIds.size()))
+        mSpriteCardsIds.resize(slot + 1, zeroCards);
 
     if (slot >= CAST_U32(mSpriteColors.size()))
         mSpriteColors.resize(slot + 1, "");
@@ -2551,7 +2558,7 @@ void Being::setSprite(const unsigned int slot,
                 addPet(pet);
         }
 
-        if (cards != nullptr)
+        if (!cards.isEmpty())
             colorId = ItemColorManager::getColorFromCards(cards);
 
         if (!filename.empty())
@@ -2590,6 +2597,7 @@ void Being::setSprite(const unsigned int slot,
     mSpriteIDs[slot] = id;
     mSpriteColors[slot] = color;
     mSpriteColorsIds[slot] = colorId;
+    mSpriteCardsIds[slot] = CardsList(cards);
     recalcSpritesOrder();
     if (beingEquipmentWindow)
         beingEquipmentWindow->updateBeing(this);
@@ -2606,7 +2614,7 @@ void Being::setWeaponId(const int id) restrict2
 void Being::setTempSprite(const unsigned int slot,
                           const int id,
                           std::string color,
-                          const int *const cards) restrict2
+                          CardsList cards) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2616,6 +2624,9 @@ void Being::setTempSprite(const unsigned int slot,
 
     if (slot >= CAST_U32(mSpriteIDs.size()))
         mSpriteIDs.resize(slot + 1, 0);
+
+    if (slot >= CAST_U32(mSpriteCardsIds.size()))
+        mSpriteCardsIds.resize(slot + 1, zeroCards);
 
     if (slot >= CAST_U32(mSpriteColors.size()))
         mSpriteColors.resize(slot + 1, "");
@@ -2643,7 +2654,7 @@ void Being::setTempSprite(const unsigned int slot,
         AnimatedSprite *restrict equipmentSprite = nullptr;
 
         ItemColor colorId = ItemColor_one;
-        if (cards != nullptr)
+        if (!cards.isEmpty())
             colorId = ItemColorManager::getColorFromCards(cards);
 
         if (!filename.empty())
@@ -2687,7 +2698,7 @@ void Being::setSpriteID(const unsigned int slot,
         id,
         mSpriteColors[slot],
         ItemColor_one,
-        nullptr);
+        mSpriteCardsIds[slot]);
 }
 
 void Being::setSpriteColor(const unsigned int slot,
@@ -2697,7 +2708,7 @@ void Being::setSpriteColor(const unsigned int slot,
         mSpriteIDs[slot],
         color,
         ItemColor_one,
-        nullptr);
+        mSpriteCardsIds[slot]);
 }
 
 void Being::setHairStyle(const unsigned int slot,
@@ -2708,7 +2719,7 @@ void Being::setHairStyle(const unsigned int slot,
         id,
         ItemDB::get(id).getDyeColorsString(mHairColor),
         ItemColor_one,
-        nullptr);
+        mSpriteCardsIds[slot]);
 //    dumpSprites();
 }
 
@@ -2723,7 +2734,7 @@ void Being::setHairColor(const unsigned int slot,
             mSpriteIDs[slot],
             ItemDB::get(id).getDyeColorsString(color),
             ItemColor_one,
-            nullptr);
+            mSpriteCardsIds[slot]);
     }
 }
 
@@ -2912,7 +2923,7 @@ void Being::setGender(const GenderT gender) restrict2
                     mSpriteIDs[i],
                     mSpriteColors[i],
                     ItemColor_one,
-                    nullptr);
+                    mSpriteCardsIds[i]);
             }
         }
 
@@ -3484,7 +3495,7 @@ void Being::recalcSpritesOrder() restrict2
                                         setTempSprite(remSprite,
                                             repIt->second,
                                             mSpriteColors[remSprite],
-                                            nullptr);
+                                            mSpriteCardsIds[remSprite]);
                                     }
                                     else
                                     {
@@ -3492,7 +3503,7 @@ void Being::recalcSpritesOrder() restrict2
                                             repIt->second,
                                             ItemDB::get(repIt->second)
                                             .getDyeColorsString(mHairColor),
-                                            nullptr);
+                                            mSpriteCardsIds[remSprite]);
                                     }
                                     updatedSprite[remSprite] = true;
                                 }
@@ -3515,7 +3526,7 @@ void Being::recalcSpritesOrder() restrict2
                                             setTempSprite(slot2,
                                                 repIt->second,
                                                 mSpriteColors[slot2],
-                                                nullptr);
+                                                mSpriteCardsIds[slot2]);
                                         }
                                         else
                                         {
@@ -3524,7 +3535,7 @@ void Being::recalcSpritesOrder() restrict2
                                                 ItemDB::get(repIt->second)
                                                 .getDyeColorsString(
                                                 mHairColor),
-                                                nullptr);
+                                                mSpriteCardsIds[slot2]);
                                         }
                                         updatedSprite[slot2] = true;
                                     }
@@ -3669,7 +3680,7 @@ void Being::recalcSpritesOrder() restrict2
                 setTempSprite(slot,
                     id,
                     mSpriteColors[slot],
-                    nullptr);
+                    mSpriteCardsIds[slot]);
             }
         }
     }
@@ -3684,7 +3695,7 @@ void Being::recalcSpritesOrder() restrict2
                 setTempSprite(static_cast<unsigned int>(slot),
                     id,
                     mSpriteColors[slot],
-                    nullptr);
+                    mSpriteCardsIds[slot]);
             }
         }
     }
@@ -3758,7 +3769,7 @@ void Being::undressItemById(const int id) restrict2
                 0,
                 std::string(),
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             break;
         }
     }

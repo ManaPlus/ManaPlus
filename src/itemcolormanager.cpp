@@ -50,3 +50,8 @@ ItemColor ItemColorManager::getColorFromCards(const int *const cards)
     }
     return ItemColor_one;
 }
+
+ItemColor ItemColorManager::getColorFromCards(const CardsList &cards)
+{
+    return getColorFromCards(&cards.cards[0]);
+}

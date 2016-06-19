@@ -40,6 +40,28 @@ struct CardsList final
         cards[3] = card3;
     }
 
+    CardsList(const int *const cards0)
+    {
+        if (cards0)
+        {
+            for (int f = 0; f < maxCards; f ++)
+                cards[f] = cards0[f];
+        }
+        else
+        {
+            for (int f = 0; f < maxCards; f ++)
+                cards[f] = 0;
+        }
+    }
+
+    bool isEmpty() const A_WARN_UNUSED
+    {
+        return cards[0] == 0 &&
+            cards[1] == 0 &&
+            cards[2] == 0 &&
+            cards[3] == 0;
+    }
+
     int cards[maxCards];
 };
 

@@ -23,6 +23,8 @@
 #ifndef BEING_BEING_H
 #define BEING_BEING_H
 
+#include "position.h"
+
 #include "enums/being/badgeindex.h"
 #include "enums/being/reachable.h"
 
@@ -32,7 +34,7 @@
 
 #include "resources/beinginfo.h"
 
-#include "position.h"
+#include "resources/item/cardslist.h"
 
 #include "being/actorsprite.h"
 
@@ -321,14 +323,14 @@ class Being notfinal : public ActorSprite,
                        const int id,
                        std::string color,
                        ItemColor colorId,
-                       const int *const cards) restrict2;
+                       CardsList cards) restrict2;
 
         void setWeaponId(const int id) restrict2;
 
         void setTempSprite(const unsigned int slot,
                            const int id,
                            std::string color,
-                           const int *const cards) restrict2;
+                           CardsList cards) restrict2;
 
         void updateSprite(const unsigned int slot,
                           const int id,
@@ -1094,6 +1096,7 @@ class Being notfinal : public ActorSprite,
 
         StringVect mSpriteColors;
         std::vector<int> mSpriteIDs;
+        std::vector<CardsList> mSpriteCardsIds;
         std::vector<ItemColor> mSpriteColorsIds;
         SpriteParticleInfo mSpriteParticles;
 

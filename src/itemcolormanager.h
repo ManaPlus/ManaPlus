@@ -23,6 +23,8 @@
 
 #include "enums/simpletypes/itemcolor.h"
 
+#include "resources/item/cardslist.h"
+
 #include "localconsts.h"
 
 class ItemColorManager final
@@ -31,6 +33,9 @@ class ItemColorManager final
         A_DELETE_COPY(ItemColorManager)
 
         static ItemColor getColorFromCards(const int *const cards)
+                                           A_WARN_UNUSED;
+
+        static ItemColor getColorFromCards(const CardsList &cards)
                                            A_WARN_UNUSED;
 };
 
