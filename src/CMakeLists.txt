@@ -1011,6 +1011,8 @@ SET(SRCS
     resources/inventory/complexinventory.h
     resources/inventory/inventory.cpp
     resources/inventory/inventory.h
+    resources/item/cardslist.cpp
+    resources/item/cardslist.h
     resources/item/complexitem.cpp
     resources/item/complexitem.h
     resources/item/item.cpp

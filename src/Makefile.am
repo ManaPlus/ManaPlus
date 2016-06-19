@@ -805,6 +805,8 @@ manaplus_SOURCES += main.cpp \
 	      resources/inventory/inventory.h \
 	      textcommand.cpp \
 	      textcommand.h \
+	      resources/item/cardslist.cpp \
+	      resources/item/cardslist.h \
 	      resources/item/complexitem.cpp \
 	      resources/item/complexitem.h \
 	      resources/item/item.cpp \
