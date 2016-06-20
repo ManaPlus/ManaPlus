@@ -33,6 +33,7 @@
 #include "enums/simpletypes/move.h"
 
 #include "resources/beinginfo.h"
+#include "resources/beingslot.h"
 
 #include "resources/item/cardslist.h"
 
@@ -1095,7 +1096,7 @@ class Being notfinal : public ActorSprite,
         typedef SpriteParticleInfo::iterator SpriteParticleInfoIter;
 
         StringVect mSpriteColors;
-        std::vector<int> mSpriteIDs;
+        std::vector<BeingSlot> mSlots;
         std::vector<CardsList> mSpriteCardsIds;
         std::vector<ItemColor> mSpriteColorsIds;
         SpriteParticleInfo mSpriteParticles;

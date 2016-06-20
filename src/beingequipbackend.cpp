@@ -35,13 +35,13 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
     memset(mEquipment, 0, sizeof(mEquipment));
     if (being)
     {
-        const size_t sz = being->mSpriteIDs.size();
+        const size_t sz = being->mSprites.size();
 
         for (size_t f = 0; f < sz; f ++)
         {
             const int idx = inventoryHandler->
                 convertFromServerSlot(CAST_S32(f));
-            const int id = being->mSpriteIDs[f];
+            const int id = being->mSlots[f].spriteId;
             if (id > 0 && idx >= 0 && idx < EQUIPMENT_SIZE)
             {
                 Item *const item = new Item(id,

@@ -169,7 +169,7 @@ Being::Being(const BeingId id,
     mTextColor(nullptr),
     mDest(),
     mSpriteColors(),
-    mSpriteIDs(),
+    mSlots(),
     mSpriteCardsIds(),
     mSpriteColorsIds(),
     mSpriteParticles(),
@@ -995,10 +995,10 @@ void Being::handleAttack(Being *restrict const victim,
 
     if (mType == ActorType::Player)
     {
-        if (mSpriteIDs.size() >= 10)
+        if (mSlots.size() >= 10)
         {
             // here 10 is weapon slot
-            int weaponId = mSpriteIDs[10];
+            int weaponId = mSlots[10].spriteId;
             if (!weaponId)
                 weaponId = -100 - toInt(mSubType, int);
             const ItemInfo &info = ItemDB::get(weaponId);
@@ -2483,13 +2483,13 @@ void Being::updateSprite(const unsigned int slot,
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
 
-    if (slot >= CAST_U32(mSpriteIDs.size()))
-        mSpriteIDs.resize(slot + 1, 0);
+    if (slot >= CAST_U32(mSlots.size()))
+        mSlots.resize(slot + 1, BeingSlot());
 
     if (slot >= CAST_U32(mSpriteCardsIds.size()))
         mSpriteCardsIds.resize(slot + 1, zeroCards);
 
-    if (slot && mSpriteIDs[slot] == id)
+    if (slot && mSlots[slot].spriteId == id)
         return;
     setSprite(slot, id, color, colorId, mSpriteCardsIds[slot]);
 }
@@ -2506,8 +2506,8 @@ void Being::setSprite(const unsigned int slot,
     if (slot >= CAST_U32(mSprites.size()))
         ensureSize(slot + 1);
 
-    if (slot >= CAST_U32(mSpriteIDs.size()))
-        mSpriteIDs.resize(slot + 1, 0);
+    if (slot >= CAST_U32(mSlots.size()))
+        mSlots.resize(slot + 1, BeingSlot());
 
     if (slot >= CAST_U32(mSpriteCardsIds.size()))
         mSpriteCardsIds.resize(slot + 1, zeroCards);
@@ -2519,7 +2519,7 @@ void Being::setSprite(const unsigned int slot,
         mSpriteColorsIds.resize(slot + 1, ItemColor_one);
 
     // disabled for now, because it may broke replace/reorder sprites logic
-//    if (slot && mSpriteIDs[slot] == id)
+//    if (slot && mSlots[slot].spriteId == id)
 //        return;
 
     // id = 0 means unequip
@@ -2528,7 +2528,7 @@ void Being::setSprite(const unsigned int slot,
         removeSprite(slot);
         mSpriteDraw[slot] = 0;
 
-        const int id1 = mSpriteIDs[slot];
+        const int id1 = mSlots[slot].spriteId;
         if (id1)
         {
             const ItemInfo &info = ItemDB::get(id1);
@@ -2594,7 +2594,7 @@ void Being::setSprite(const unsigned int slot,
         }
     }
 
-    mSpriteIDs[slot] = id;
+    mSlots[slot].spriteId = id;
     mSpriteColors[slot] = color;
     mSpriteColorsIds[slot] = colorId;
     mSpriteCardsIds[slot] = CardsList(cards);
@@ -2622,8 +2622,8 @@ void Being::setTempSprite(const unsigned int slot,
     if (slot >= CAST_U32(mSprites.size()))
         ensureSize(slot + 1);
 
-    if (slot >= CAST_U32(mSpriteIDs.size()))
-        mSpriteIDs.resize(slot + 1, 0);
+    if (slot >= CAST_U32(mSlots.size()))
+        mSlots.resize(slot + 1, BeingSlot());
 
     if (slot >= CAST_U32(mSpriteCardsIds.size()))
         mSpriteCardsIds.resize(slot + 1, zeroCards);
@@ -2640,7 +2640,7 @@ void Being::setTempSprite(const unsigned int slot,
         removeSprite(slot);
         mSpriteDraw[slot] = 0;
 
-        const int id1 = mSpriteIDs[slot];
+        const int id1 = mSlots[slot].spriteId;
         if (id1)
             removeItemParticles(id1);
     }
@@ -2705,7 +2705,7 @@ void Being::setSpriteColor(const unsigned int slot,
                            const std::string &restrict color) restrict2
 {
     setSprite(slot,
-        mSpriteIDs[slot],
+        mSlots[slot].spriteId,
         color,
         ItemColor_one,
         mSpriteCardsIds[slot]);
@@ -2731,7 +2731,7 @@ void Being::setHairColor(const unsigned int slot,
     if (id != 0)
     {
         setSprite(slot,
-            mSpriteIDs[slot],
+            mSlots[slot].spriteId,
             ItemDB::get(id).getDyeColorsString(color),
             ItemColor_one,
             mSpriteCardsIds[slot]);
@@ -2740,8 +2740,8 @@ void Being::setHairColor(const unsigned int slot,
 
 void Being::dumpSprites() const restrict2
 {
-    std::vector<int>::const_iterator it1 = mSpriteIDs.begin();
-    const std::vector<int>::const_iterator it1_end = mSpriteIDs.end();
+    std::vector<BeingSlot>::const_iterator it1 = mSlots.begin();
+    const std::vector<BeingSlot>::const_iterator it1_end = mSlots.end();
     StringVectCIter it2 = mSpriteColors.begin();
     const StringVectCIter it2_end = mSpriteColors.end();
     std::vector<ItemColor>::const_iterator it3 = mSpriteColorsIds.begin();
@@ -2752,7 +2752,7 @@ void Being::dumpSprites() const restrict2
     for (; it1 != it1_end && it2 != it2_end && it3 != it3_end;
          ++ it1, ++ it2, ++ it3)
     {
-        logger->log("%d,%s,%d", *it1, (*it2).c_str(), toInt(*it3, int));
+        logger->log("%d,%s,%d", (*it1).spriteId, (*it2).c_str(), toInt(*it3, int));
     }
 }
 
@@ -2914,13 +2914,13 @@ void Being::setGender(const GenderT gender) restrict2
 
         // Reload all subsprites
         for (unsigned int i = 0;
-             i < CAST_U32(mSpriteIDs.size());
+             i < CAST_U32(mSlots.size());
              i++)
         {
-            if (mSpriteIDs[i] != 0)
+            if (mSlots[i].spriteId != 0)
             {
                 setSprite(i,
-                    mSpriteIDs[i],
+                    mSlots[i].spriteId,
                     mSpriteColors[i],
                     ItemColor_one,
                     mSpriteCardsIds[i]);
@@ -3440,7 +3440,7 @@ void Being::recalcSpritesOrder() restrict2
         updatedSprite[slot] = false;
     }
 
-    size_t spriteIdSize = mSpriteIDs.size();
+    size_t spriteIdSize = mSlots.size();
     if (reportTrue(spriteIdSize > 20))
         spriteIdSize = 20;
 
@@ -3451,7 +3451,7 @@ void Being::recalcSpritesOrder() restrict2
         if (spriteIdSize <= slot)
             continue;
 
-        const int id = mSpriteIDs[slot];
+        const int id = mSlots[slot].spriteId;
         if (!id)
             continue;
 
@@ -3476,8 +3476,8 @@ void Being::recalcSpritesOrder() restrict2
                         }
                         else if (mSpriteHide[remSprite] != 1)
                         {
-                            IntMapCIter repIt
-                                = itemReplacer.find(mSpriteIDs[remSprite]);
+                            IntMapCIter repIt = itemReplacer.find(
+                                mSlots[remSprite].spriteId);
                             if (repIt == itemReplacer.end())
                             {
                                 repIt = itemReplacer.find(0);
@@ -3516,7 +3516,7 @@ void Being::recalcSpritesOrder() restrict2
                         {
                             for (unsigned int slot2 = 0; slot2 < sz; slot2 ++)
                             {
-                                if (mSpriteIDs[slot2] == repIt->first)
+                                if (mSlots[slot2].spriteId == repIt->first)
                                 {
                                     mSpriteHide[slot2] = repIt->second;
                                     if (repIt->second != 1)
@@ -3549,7 +3549,7 @@ void Being::recalcSpritesOrder() restrict2
 
         if (info.mDrawBefore[dir] > 0)
         {
-            const int id2 = mSpriteIDs[info.mDrawBefore[dir]];
+            const int id2 = mSlots[info.mDrawBefore[dir]].spriteId;
             if (itemSlotRemap.find(id2) != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (before)");
@@ -3570,7 +3570,7 @@ void Being::recalcSpritesOrder() restrict2
         }
         else if (info.mDrawAfter[dir] > 0)
         {
-            const int id2 = mSpriteIDs[info.mDrawAfter[dir]];
+            const int id2 = mSlots[info.mDrawAfter[dir]].spriteId;
             if (itemSlotRemap.find(id2) != itemSlotRemap.end())
             {
                 const ItemInfo &info2 = ItemDB::get(id2);
@@ -3608,7 +3608,7 @@ void Being::recalcSpritesOrder() restrict2
             int id = 0;
 
             if (CAST_S32(spriteIdSize) > val)
-                id = mSpriteIDs[val];
+                id = mSlots[val].spriteId;
 
             int idx = -1;
             int idx1 = -1;
@@ -3672,7 +3672,7 @@ void Being::recalcSpritesOrder() restrict2
         {
             if (oldHide[slot] != 0 && oldHide[slot] != 1)
             {
-                const int id = mSpriteIDs[slot];
+                const int id = mSlots[slot].spriteId;
                 if (!id)
                     continue;
 
@@ -3688,7 +3688,7 @@ void Being::recalcSpritesOrder() restrict2
     {
         if (mSpriteHide[slot] == 0)
         {
-            const int id = mSpriteIDs[slot];
+            const int id = mSlots[slot].spriteId;
             if (updatedSprite[slot] == false &&
                 mSpriteDraw[slot] != id)
             {
@@ -3759,11 +3759,11 @@ Equipment *Being::getEquipment() restrict2
 
 void Being::undressItemById(const int id) restrict2
 {
-    const size_t sz = mSpriteIDs.size();
+    const size_t sz = mSlots.size();
 
     for (size_t f = 0; f < sz; f ++)
     {
-        if (id == mSpriteIDs[f])
+        if (id == mSlots[f].spriteId)
         {
             setSprite(CAST_U32(f),
                 0,
@@ -3985,10 +3985,10 @@ GenderT Being::intToGender(const uint8_t sex)
 
 int Being::getSpriteID(const int slot) const restrict2
 {
-    if (slot < 0 || CAST_SIZE(slot) >= mSpriteIDs.size())
+    if (slot < 0 || CAST_SIZE(slot) >= mSlots.size())
         return -1;
 
-    return mSpriteIDs[slot];
+    return mSlots[slot].spriteId;
 }
 
 ItemColor Being::getSpriteColor(const int slot) const restrict2
@@ -4121,9 +4121,9 @@ void Being::removeAllPets() restrict2
 void Being::updatePets() restrict2
 {
     removeAllPets();
-    FOR_EACH (std::vector<int>::const_iterator, it, mSpriteIDs)
+    FOR_EACH (std::vector<BeingSlot>::const_iterator, it, mSlots)
     {
-        const int id = *it;
+        const int id = (*it).spriteId;
         if (!id)
             continue;
         const ItemInfo &restrict info = ItemDB::get(id);
