@@ -1095,7 +1095,6 @@ class Being notfinal : public ActorSprite,
         typedef std::map<int, ParticleInfo*> SpriteParticleInfo;
         typedef SpriteParticleInfo::iterator SpriteParticleInfoIter;
 
-        StringVect mSpriteColors;
         std::vector<BeingSlot> mSlots;
         SpriteParticleInfo mSpriteParticles;
 

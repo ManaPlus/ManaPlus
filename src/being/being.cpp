@@ -168,7 +168,6 @@ Being::Being(const BeingId id,
     mText(nullptr),
     mTextColor(nullptr),
     mDest(),
-    mSpriteColors(),
     mSlots(),
     mSpriteParticles(),
     mGuilds(),
@@ -2504,9 +2503,6 @@ void Being::setSprite(const unsigned int slot,
     if (slot >= CAST_U32(mSlots.size()))
         mSlots.resize(slot + 1, BeingSlot());
 
-    if (slot >= CAST_U32(mSpriteColors.size()))
-        mSpriteColors.resize(slot + 1, "");
-
     // disabled for now, because it may broke replace/reorder sprites logic
 //    if (slot && mSlots[slot].spriteId == id)
 //        return;
@@ -2584,7 +2580,7 @@ void Being::setSprite(const unsigned int slot,
     }
 
     mSlots[slot].spriteId = id;
-    mSpriteColors[slot] = color;
+    mSlots[slot].color = color;
     mSlots[slot].colorId = colorId;
     mSlots[slot].cardsId = CardsList(cards);
     recalcSpritesOrder();
@@ -2613,9 +2609,6 @@ void Being::setTempSprite(const unsigned int slot,
 
     if (slot >= CAST_U32(mSlots.size()))
         mSlots.resize(slot + 1, BeingSlot());
-
-    if (slot >= CAST_U32(mSpriteColors.size()))
-        mSpriteColors.resize(slot + 1, "");
 
     // id = 0 means unequip
     if (id == 0)
@@ -2679,7 +2672,7 @@ void Being::setSpriteID(const unsigned int slot,
 {
     setSprite(slot,
         id,
-        mSpriteColors[slot],
+        mSlots[slot].color,
         ItemColor_one,
         mSlots[slot].cardsId);
 }
@@ -2725,16 +2718,14 @@ void Being::dumpSprites() const restrict2
 {
     std::vector<BeingSlot>::const_iterator it1 = mSlots.begin();
     const std::vector<BeingSlot>::const_iterator it1_end = mSlots.end();
-    StringVectCIter it2 = mSpriteColors.begin();
-    const StringVectCIter it2_end = mSpriteColors.end();
 
     logger->log("sprites");
-    for (; it1 != it1_end && it2 != it2_end;
-         ++ it1, ++ it2)
+    for (; it1 != it1_end;
+         ++ it1)
     {
         logger->log("%d,%s,%d",
             (*it1).spriteId,
-            (*it2).c_str(),
+            (*it1).color.c_str(),
             toInt((*it1).colorId, int));
     }
 }
@@ -2904,7 +2895,7 @@ void Being::setGender(const GenderT gender) restrict2
             {
                 setSprite(i,
                     mSlots[i].spriteId,
-                    mSpriteColors[i],
+                    mSlots[i].color,
                     ItemColor_one,
                     mSlots[i].cardsId);
             }
@@ -3477,7 +3468,7 @@ void Being::recalcSpritesOrder() restrict2
                                     {
                                         setTempSprite(remSprite,
                                             repIt->second,
-                                            mSpriteColors[remSprite],
+                                            mSlots[remSprite].color,
                                             mSlots[remSprite].cardsId);
                                     }
                                     else
@@ -3508,7 +3499,7 @@ void Being::recalcSpritesOrder() restrict2
                                         {
                                             setTempSprite(slot2,
                                                 repIt->second,
-                                                mSpriteColors[slot2],
+                                                mSlots[slot2].color,
                                                 mSlots[slot2].cardsId);
                                         }
                                         else
@@ -3662,7 +3653,7 @@ void Being::recalcSpritesOrder() restrict2
                 updatedSprite[slot] = true;
                 setTempSprite(slot,
                     id,
-                    mSpriteColors[slot],
+                    mSlots[slot].color,
                     mSlots[slot].cardsId);
             }
         }
@@ -3677,7 +3668,7 @@ void Being::recalcSpritesOrder() restrict2
             {
                 setTempSprite(static_cast<unsigned int>(slot),
                     id,
-                    mSpriteColors[slot],
+                    mSlots[slot].color,
                     mSlots[slot].cardsId);
             }
         }

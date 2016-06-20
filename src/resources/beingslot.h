@@ -25,6 +25,8 @@
 
 #include "resources/item/cardslist.h"
 
+#include <string>
+
 #include "localconsts.h"
 
 struct BeingSlot final
@@ -32,13 +34,15 @@ struct BeingSlot final
     BeingSlot() :
         spriteId(0),
         cardsId(zeroCards),
-        colorId(ItemColor_one)
+        colorId(ItemColor_one),
+        color()
     {
     }
 
     int spriteId;
     CardsList cardsId;
     ItemColor colorId;
+    std::string color;
 };
 
 #endif  // RESOURCES_BEINGSLOT_H
