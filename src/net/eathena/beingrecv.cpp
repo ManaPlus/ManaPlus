@@ -164,13 +164,13 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 "",
                 itemColor,
-                cards);
+                CardsList(cards));
             dstBeing->setWeaponId(id);
             dstBeing->setSprite(SPRITE_FLOOR,
                 id2,
                 std::string(),
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
@@ -179,7 +179,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
             break;
@@ -188,7 +188,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
             break;
@@ -198,7 +198,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
@@ -217,7 +217,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
@@ -226,7 +226,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
             break;
@@ -235,7 +235,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
             break;
@@ -244,7 +244,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
@@ -253,7 +253,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
             break;
@@ -262,7 +262,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
             break;
@@ -271,7 +271,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
             break;
@@ -280,7 +280,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
             break;
@@ -289,7 +289,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL3);
             break;
@@ -298,7 +298,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
             break;
@@ -307,7 +307,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL5);
             break;
@@ -316,7 +316,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 itemColor,
-                cards);
+                CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL6);
             break;

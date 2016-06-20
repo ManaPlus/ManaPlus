@@ -133,7 +133,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         weapon,
         "",
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setWeaponId(weapon);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
@@ -152,7 +152,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             0,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
     }
     else
     {
@@ -161,7 +161,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             ItemDB::get(-hairStyle).getDyeColorsString(
             color),
             ItemColor_one,
-            nullptr);
+            zeroCards);
     }
 
     const uint16_t look = msg.readInt16("clothes color");
@@ -194,42 +194,42 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             shoes,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
         tempPlayer->setSprite(SPRITE_SHOES,
             gloves,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
         tempPlayer->setSprite(SPRITE_SHIELD,
             cape,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
         tempPlayer->setSprite(SPRITE_HEAD_TOP,
             misc1,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
         tempPlayer->setSprite(SPRITE_WEAPON,
             bottomClothes,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
         tempPlayer->setSprite(SPRITE_FLOOR,
             shield,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
         tempPlayer->setSprite(SPRITE_CLOTHES_COLOR,
             hat,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
         tempPlayer->setSprite(SPRITE_HEAD_BOTTOM,
             topClothes,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
 //        tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
     }
     if (packetVersion >= 20110928)

@@ -2042,7 +2042,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
             spriteId,
             std::string(),
             color,
-            nullptr);
+            zeroCards);
     }
     const int hairSlot = charServerHandler->hairSprite();
     const int hairStyle = -srcBeing->getSpriteID(hairSlot);
@@ -2053,7 +2053,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
             hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor),
             ItemColor_one,
-            nullptr);
+            zeroCards);
     }
     else
     {
@@ -2061,7 +2061,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
             0,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
     }
     dstBeing->setHairColor(hairColor);
     return dstBeing;

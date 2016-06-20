@@ -53,27 +53,27 @@ void BeingHandler::undress(Being *const being) const
         0,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     being->setSprite(SPRITE_HEAD_BOTTOM,
         0,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     being->setSprite(SPRITE_CLOTHES_COLOR,
         0,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     being->setSprite(SPRITE_HAIR,
         0,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     being->setSprite(SPRITE_SHOES,
         0,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
 }
 
 #ifdef EATHENA_SUPPORT

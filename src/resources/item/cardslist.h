@@ -40,7 +40,7 @@ struct CardsList final
         cards[3] = card3;
     }
 
-    CardsList(const int *const cards0)
+    explicit CardsList(const int *const cards0)
     {
         if (cards0)
         {

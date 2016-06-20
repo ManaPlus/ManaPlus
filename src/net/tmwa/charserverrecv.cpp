@@ -108,7 +108,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         weapon,
         "",
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setWeaponId(weapon);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
@@ -129,7 +129,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             0,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
     }
     else
     {
@@ -137,7 +137,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
             hairStyle * -1,
             ItemDB::get(-hairStyle).getDyeColorsString(hairColor),
             ItemColor_one,
-            nullptr);
+            zeroCards);
     }
     tempPlayer->setHairColor(hairColor);
 
@@ -157,47 +157,47 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         shoes,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setSprite(SPRITE_SHOES,
         gloves,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setSprite(SPRITE_SHIELD,
         cape,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setSprite(SPRITE_HEAD_TOP,
         misc1,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setSprite(SPRITE_WEAPON,
         bottomClothes,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setSprite(SPRITE_FLOOR,
         shield,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setSprite(SPRITE_CLOTHES_COLOR,
         hat,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setSprite(SPRITE_HEAD_BOTTOM,
         topClothes,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
     tempPlayer->setSprite(SPRITE_HEAD_MID,
         misc2,
         std::string(),
         ItemColor_one,
-        nullptr);
+        zeroCards);
 
     character->slot = msg.readUInt8("slot");
     const uint8_t sex = CAST_U8(msg.readUInt8("gender"));

@@ -501,7 +501,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                     id,
                     std::string(),
                     ItemColor_one,
-                    nullptr);
+                    zeroCards);
             }
         }
         else
@@ -514,7 +514,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                     id,
                     info.getColor(fromInt(mLook, ItemColor)),
                     ItemColor_one,
-                    nullptr);
+                    zeroCards);
             }
         }
     }

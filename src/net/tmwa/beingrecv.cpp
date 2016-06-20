@@ -147,13 +147,13 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 "",
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             dstBeing->setWeaponId(id);
             dstBeing->setSprite(SPRITE_FLOOR,
                 id2,
                 std::string(),
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 3:     // Change lower headgear for eAthena, pants for us
@@ -161,7 +161,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
             break;
         case 4:     // Change upper headgear for eAthena, hat for us
@@ -169,7 +169,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
             break;
         case 5:     // Change middle headgear for eathena, armor for us
@@ -177,7 +177,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
         case 6:     // eAthena LOOK_HAIR_COLOR
@@ -192,7 +192,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 9:     // eAthena LOOK_SHOES
@@ -200,7 +200,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
             break;
         case 10:   // LOOK_GLOVES
@@ -208,7 +208,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
             break;
         case 11:  // LOOK_CAPE
@@ -216,7 +216,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
         case 12:
@@ -224,7 +224,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
             break;
         case 13:
@@ -232,7 +232,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
             break;
         case 14:
@@ -240,7 +240,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
             break;
         case 15:
@@ -248,7 +248,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 id,
                 color,
                 ItemColor_one,
-                nullptr);
+                zeroCards);
             localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
             break;
         case 16:

@@ -160,7 +160,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             *it,
             std::string(),
             ItemColor_one,
-            nullptr);
+            zeroCards);
     }
 
     if (!maxHairColor)
@@ -773,7 +773,7 @@ void CharCreateDialog::updateHair()
         mHairStyle * -1,
         item.getDyeColorsString(fromInt(mHairColor, ItemColor)),
         ItemColor_one,
-        nullptr);
+        zeroCards);
 }
 
 void CharCreateDialog::updateRace()
