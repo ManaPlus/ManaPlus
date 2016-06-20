@@ -48,7 +48,7 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
                     ItemType::Unknown,
                     1,
                     0,
-                    being->mSpriteColorsIds[f],
+                    being->mSlots[f].colorId,
                     Identified_true,
                     Damaged_false,
                     Favorite_false,

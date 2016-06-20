@@ -170,7 +170,6 @@ Being::Being(const BeingId id,
     mDest(),
     mSpriteColors(),
     mSlots(),
-    mSpriteColorsIds(),
     mSpriteParticles(),
     mGuilds(),
     mParty(nullptr),
@@ -2508,9 +2507,6 @@ void Being::setSprite(const unsigned int slot,
     if (slot >= CAST_U32(mSpriteColors.size()))
         mSpriteColors.resize(slot + 1, "");
 
-    if (slot >= CAST_U32(mSpriteColorsIds.size()))
-        mSpriteColorsIds.resize(slot + 1, ItemColor_one);
-
     // disabled for now, because it may broke replace/reorder sprites logic
 //    if (slot && mSlots[slot].spriteId == id)
 //        return;
@@ -2589,7 +2585,7 @@ void Being::setSprite(const unsigned int slot,
 
     mSlots[slot].spriteId = id;
     mSpriteColors[slot] = color;
-    mSpriteColorsIds[slot] = colorId;
+    mSlots[slot].colorId = colorId;
     mSlots[slot].cardsId = CardsList(cards);
     recalcSpritesOrder();
     if (beingEquipmentWindow)
@@ -2620,9 +2616,6 @@ void Being::setTempSprite(const unsigned int slot,
 
     if (slot >= CAST_U32(mSpriteColors.size()))
         mSpriteColors.resize(slot + 1, "");
-
-    if (slot >= CAST_U32(mSpriteColorsIds.size()))
-        mSpriteColorsIds.resize(slot + 1, ItemColor_one);
 
     // id = 0 means unequip
     if (id == 0)
@@ -2734,15 +2727,15 @@ void Being::dumpSprites() const restrict2
     const std::vector<BeingSlot>::const_iterator it1_end = mSlots.end();
     StringVectCIter it2 = mSpriteColors.begin();
     const StringVectCIter it2_end = mSpriteColors.end();
-    std::vector<ItemColor>::const_iterator it3 = mSpriteColorsIds.begin();
-    const std::vector<ItemColor>::const_iterator
-        it3_end = mSpriteColorsIds.end();
 
     logger->log("sprites");
-    for (; it1 != it1_end && it2 != it2_end && it3 != it3_end;
-         ++ it1, ++ it2, ++ it3)
+    for (; it1 != it1_end && it2 != it2_end;
+         ++ it1, ++ it2)
     {
-        logger->log("%d,%s,%d", (*it1).spriteId, (*it2).c_str(), toInt(*it3, int));
+        logger->log("%d,%s,%d",
+            (*it1).spriteId,
+            (*it2).c_str(),
+            toInt((*it1).colorId, int));
     }
 }
 
@@ -3983,10 +3976,10 @@ int Being::getSpriteID(const int slot) const restrict2
 
 ItemColor Being::getSpriteColor(const int slot) const restrict2
 {
-    if (slot < 0 || CAST_SIZE(slot) >= mSpriteColorsIds.size())
+    if (slot < 0 || CAST_SIZE(slot) >= mSlots.size())
         return ItemColor_one;
 
-    return mSpriteColorsIds[slot];
+    return mSlots[slot].colorId;
 }
 
 void Being::addAfkEffect() restrict2

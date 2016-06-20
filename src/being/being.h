@@ -1097,7 +1097,6 @@ class Being notfinal : public ActorSprite,
 
         StringVect mSpriteColors;
         std::vector<BeingSlot> mSlots;
-        std::vector<ItemColor> mSpriteColorsIds;
         SpriteParticleInfo mSpriteParticles;
 
         // Character guild information
