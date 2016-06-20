@@ -1276,6 +1276,8 @@ manaplus_SOURCES += main.cpp \
 	      resources/beinginfo.cpp \
 	      resources/beinginfo.h \
 	      resources/beingmenuitem.h \
+	      resources/beingslot.cpp \
+	      resources/beingslot.h \
 	      resources/chatobject.cpp \
 	      resources/chatobject.h \
 	      resources/delayedmanager.cpp \
