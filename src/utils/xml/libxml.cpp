@@ -24,8 +24,6 @@
 
 #include "utils/xml/libxml.h"
 
-#include "logger.h"
-
 #include "utils/checkutils.h"
 #include "utils/fuzzer.h"
 #include "utils/physfstools.h"
