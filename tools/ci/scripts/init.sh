@@ -66,6 +66,7 @@ function aptget_install {
                 apt-get -y -qq install $*
                 if [ "$?" != 0 ]; then
                     sleep 10s
+                    aptget_update
                     apt-get -y -qq install $*
                     if [ "$?" != 0 ]; then
                         sleep 15s
