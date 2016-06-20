@@ -54,7 +54,7 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
                     Favorite_false,
                     Equipm_true,
                     Equipped_true);
-                const CardsList &cards = being->mSpriteCardsIds[f];
+                const CardsList &cards = being->mSlots[f].cardsId;
                 if (!cards.isEmpty())
                     item->setCards(&cards.cards[0], maxCards);
                 mEquipment[idx] = item;

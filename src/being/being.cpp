@@ -170,7 +170,6 @@ Being::Being(const BeingId id,
     mDest(),
     mSpriteColors(),
     mSlots(),
-    mSpriteCardsIds(),
     mSpriteColorsIds(),
     mSpriteParticles(),
     mGuilds(),
@@ -2486,12 +2485,9 @@ void Being::updateSprite(const unsigned int slot,
     if (slot >= CAST_U32(mSlots.size()))
         mSlots.resize(slot + 1, BeingSlot());
 
-    if (slot >= CAST_U32(mSpriteCardsIds.size()))
-        mSpriteCardsIds.resize(slot + 1, zeroCards);
-
     if (slot && mSlots[slot].spriteId == id)
         return;
-    setSprite(slot, id, color, colorId, mSpriteCardsIds[slot]);
+    setSprite(slot, id, color, colorId, mSlots[slot].cardsId);
 }
 
 void Being::setSprite(const unsigned int slot,
@@ -2508,9 +2504,6 @@ void Being::setSprite(const unsigned int slot,
 
     if (slot >= CAST_U32(mSlots.size()))
         mSlots.resize(slot + 1, BeingSlot());
-
-    if (slot >= CAST_U32(mSpriteCardsIds.size()))
-        mSpriteCardsIds.resize(slot + 1, zeroCards);
 
     if (slot >= CAST_U32(mSpriteColors.size()))
         mSpriteColors.resize(slot + 1, "");
@@ -2597,7 +2590,7 @@ void Being::setSprite(const unsigned int slot,
     mSlots[slot].spriteId = id;
     mSpriteColors[slot] = color;
     mSpriteColorsIds[slot] = colorId;
-    mSpriteCardsIds[slot] = CardsList(cards);
+    mSlots[slot].cardsId = CardsList(cards);
     recalcSpritesOrder();
     if (beingEquipmentWindow)
         beingEquipmentWindow->updateBeing(this);
@@ -2624,9 +2617,6 @@ void Being::setTempSprite(const unsigned int slot,
 
     if (slot >= CAST_U32(mSlots.size()))
         mSlots.resize(slot + 1, BeingSlot());
-
-    if (slot >= CAST_U32(mSpriteCardsIds.size()))
-        mSpriteCardsIds.resize(slot + 1, zeroCards);
 
     if (slot >= CAST_U32(mSpriteColors.size()))
         mSpriteColors.resize(slot + 1, "");
@@ -2698,7 +2688,7 @@ void Being::setSpriteID(const unsigned int slot,
         id,
         mSpriteColors[slot],
         ItemColor_one,
-        mSpriteCardsIds[slot]);
+        mSlots[slot].cardsId);
 }
 
 void Being::setSpriteColor(const unsigned int slot,
@@ -2708,7 +2698,7 @@ void Being::setSpriteColor(const unsigned int slot,
         mSlots[slot].spriteId,
         color,
         ItemColor_one,
-        mSpriteCardsIds[slot]);
+        mSlots[slot].cardsId);
 }
 
 void Being::setHairStyle(const unsigned int slot,
@@ -2719,7 +2709,7 @@ void Being::setHairStyle(const unsigned int slot,
         id,
         ItemDB::get(id).getDyeColorsString(mHairColor),
         ItemColor_one,
-        mSpriteCardsIds[slot]);
+        mSlots[slot].cardsId);
 //    dumpSprites();
 }
 
@@ -2734,7 +2724,7 @@ void Being::setHairColor(const unsigned int slot,
             mSlots[slot].spriteId,
             ItemDB::get(id).getDyeColorsString(color),
             ItemColor_one,
-            mSpriteCardsIds[slot]);
+            mSlots[slot].cardsId);
     }
 }
 
@@ -2923,7 +2913,7 @@ void Being::setGender(const GenderT gender) restrict2
                     mSlots[i].spriteId,
                     mSpriteColors[i],
                     ItemColor_one,
-                    mSpriteCardsIds[i]);
+                    mSlots[i].cardsId);
             }
         }
 
@@ -3495,7 +3485,7 @@ void Being::recalcSpritesOrder() restrict2
                                         setTempSprite(remSprite,
                                             repIt->second,
                                             mSpriteColors[remSprite],
-                                            mSpriteCardsIds[remSprite]);
+                                            mSlots[remSprite].cardsId);
                                     }
                                     else
                                     {
@@ -3503,7 +3493,7 @@ void Being::recalcSpritesOrder() restrict2
                                             repIt->second,
                                             ItemDB::get(repIt->second)
                                             .getDyeColorsString(mHairColor),
-                                            mSpriteCardsIds[remSprite]);
+                                            mSlots[remSprite].cardsId);
                                     }
                                     updatedSprite[remSprite] = true;
                                 }
@@ -3526,7 +3516,7 @@ void Being::recalcSpritesOrder() restrict2
                                             setTempSprite(slot2,
                                                 repIt->second,
                                                 mSpriteColors[slot2],
-                                                mSpriteCardsIds[slot2]);
+                                                mSlots[slot2].cardsId);
                                         }
                                         else
                                         {
@@ -3535,7 +3525,7 @@ void Being::recalcSpritesOrder() restrict2
                                                 ItemDB::get(repIt->second)
                                                 .getDyeColorsString(
                                                 mHairColor),
-                                                mSpriteCardsIds[slot2]);
+                                                mSlots[slot2].cardsId);
                                         }
                                         updatedSprite[slot2] = true;
                                     }
@@ -3680,7 +3670,7 @@ void Being::recalcSpritesOrder() restrict2
                 setTempSprite(slot,
                     id,
                     mSpriteColors[slot],
-                    mSpriteCardsIds[slot]);
+                    mSlots[slot].cardsId);
             }
         }
     }
@@ -3695,7 +3685,7 @@ void Being::recalcSpritesOrder() restrict2
                 setTempSprite(static_cast<unsigned int>(slot),
                     id,
                     mSpriteColors[slot],
-                    mSpriteCardsIds[slot]);
+                    mSlots[slot].cardsId);
             }
         }
     }
