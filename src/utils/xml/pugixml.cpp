@@ -24,8 +24,6 @@
 
 #include "utils/xml/pugixml.h"
 
-#include "logger.h"
-
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/fuzzer.h"

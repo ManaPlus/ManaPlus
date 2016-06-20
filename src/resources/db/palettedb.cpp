@@ -21,7 +21,6 @@
 #include "resources/db/palettedb.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "utils/checkutils.h"
 #include "utils/files.h"

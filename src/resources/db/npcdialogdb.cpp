@@ -21,7 +21,6 @@
 #include "resources/db/npcdialogdb.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "resources/beingcommon.h"
 #include "resources/npcdialoginfo.h"

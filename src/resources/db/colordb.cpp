@@ -22,7 +22,6 @@
 #include "resources/db/colordb.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "utils/checkutils.h"
 

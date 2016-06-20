@@ -31,8 +31,6 @@
 
 #include "being/mercenaryinfo.h"
 
-#include "const/resources/item/cards.h"
-
 #include "enums/resources/notifytypes.h"
 
 #include "particle/particleengine.h"

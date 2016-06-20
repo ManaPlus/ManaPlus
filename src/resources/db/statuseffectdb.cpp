@@ -23,7 +23,6 @@
 #include "resources/db/statuseffectdb.h"
 
 #include "configuration.h"
-#include "logger.h"
 #include "settings.h"
 #include "statuseffect.h"
 

@@ -22,7 +22,6 @@
 #include "resources/db/horsedb.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "resources/beingcommon.h"
 #include "resources/horseinfo.h"

@@ -21,7 +21,6 @@
 #include "resources/db/itemfielddb.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "utils/checkutils.h"
 #include "utils/dtor.h"

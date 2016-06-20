@@ -26,7 +26,6 @@
 #ifdef USE_OPENGL
 #include "graphicsmanager.h"
 #endif
-#include "logger.h"
 #include "main.h"
 
 #include "const/resources/map/map.h"

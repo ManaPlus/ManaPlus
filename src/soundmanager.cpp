@@ -23,7 +23,6 @@
 #include "soundmanager.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #ifndef DYECMD
 #include "being/localplayer.h"

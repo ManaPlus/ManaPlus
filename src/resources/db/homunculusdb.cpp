@@ -22,8 +22,6 @@
 
 #include "resources/db/homunculusdb.h"
 
-#include "logger.h"
-
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 

@@ -23,7 +23,6 @@
 #include "resources/db/petdb.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"

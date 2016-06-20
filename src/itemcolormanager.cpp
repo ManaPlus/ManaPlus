@@ -20,8 +20,6 @@
 
 #include "itemcolormanager.h"
 
-#include "const/resources/item/cards.h"
-
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"

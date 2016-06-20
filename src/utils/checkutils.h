@@ -22,6 +22,7 @@
 #define UTILS_CHECKUTILS_H
 
 #include "logger.h"
+LOGGER_H
 
 #ifdef ENABLE_ASSERTS
 

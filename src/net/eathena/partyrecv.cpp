@@ -26,8 +26,6 @@
 
 #include "being/localplayer.h"
 
-#include "const/resources/item/cards.h"
-
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/chatwindow.h"

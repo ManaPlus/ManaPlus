@@ -27,8 +27,6 @@
 #include "main.h"
 #include "settings.h"
 
-#include "const/resources/item/cards.h"
-
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"

@@ -25,7 +25,6 @@
 #include "const/resources/map/map.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "enums/resources/spritedirection.h"
 

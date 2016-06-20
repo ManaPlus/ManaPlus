@@ -23,7 +23,6 @@
 #include "resources/sprite/spritedef.h"
 
 #include "configuration.h"
-#include "logger.h"
 #include "settings.h"
 
 #include "const/resources/spriteaction.h"

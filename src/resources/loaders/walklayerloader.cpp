@@ -22,7 +22,6 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
-#include "logger.h"
 #include "navigationmanager.h"
 
 #include "resources/map/walklayer.h"

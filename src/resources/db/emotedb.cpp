@@ -22,7 +22,6 @@
 #include "resources/db/emotedb.h"
 
 #include "client.h"
-#include "logger.h"
 
 #include "configuration.h"
 

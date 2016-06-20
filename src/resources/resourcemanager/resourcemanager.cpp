@@ -23,7 +23,6 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #ifdef USE_OPENGL
 #include "resources/image/image.h"

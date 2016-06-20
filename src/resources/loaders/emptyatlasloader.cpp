@@ -20,8 +20,6 @@
 
 #ifdef USE_OPENGL
 
-#include "logger.h"
-
 #include "resources/atlas/atlasmanager.h"
 #include "resources/atlas/atlasresource.h"
 

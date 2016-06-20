@@ -20,8 +20,6 @@
 
 #include "catch.hpp"
 
-#include "logger.h"
-
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 

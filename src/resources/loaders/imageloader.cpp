@@ -20,8 +20,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "logger.h"
-
 #include "resources/imagehelper.h"
 
 #include "resources/image/image.h"

@@ -22,8 +22,6 @@
 
 #ifdef USE_OPENGL
 
-#include "logger.h"
-
 #include "utils/checkutils.h"
 
 #include "render/shaders/shader.h"
