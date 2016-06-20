@@ -44,7 +44,7 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
             const int id = being->mSpriteIDs[f];
             if (id > 0 && idx >= 0 && idx < EQUIPMENT_SIZE)
             {
-                mEquipment[idx] = new Item(id,
+                Item *const item = new Item(id,
                     ItemType::Unknown,
                     1,
                     0,
@@ -54,6 +54,10 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
                     Favorite_false,
                     Equipm_true,
                     Equipped_true);
+                const CardsList &cards = being->mSpriteCardsIds[f];
+                if (!cards.isEmpty())
+                    item->setCards(&cards.cards[0], maxCards);
+                mEquipment[idx] = item;
             }
         }
     }
