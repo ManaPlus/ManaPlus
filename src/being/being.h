@@ -35,8 +35,6 @@
 #include "resources/beinginfo.h"
 #include "resources/beingslot.h"
 
-#include "resources/item/cardslist.h"
-
 #include "being/actorsprite.h"
 
 #include "enums/being/attacktype.h"
