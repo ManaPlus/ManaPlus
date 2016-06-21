@@ -107,7 +107,6 @@
 #include "net/packetcounters.h"
 #include "net/serverfeatures.h"
 
-#include "resources/beingslot.h"
 #include "resources/delayedmanager.h"
 #include "resources/imagewriter.h"
 #include "resources/mapreader.h"
