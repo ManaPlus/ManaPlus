@@ -315,14 +315,16 @@ class Being notfinal : public ActorSprite,
         Party *getParty() const restrict2 noexcept2 A_WARN_UNUSED
         { return mParty; }
 
-        /**
-         * Sets visible equipments for this being.
-         */
         void setSprite(const unsigned int slot,
                        const int id,
                        std::string color,
-                       ItemColor colorId,
-                       CardsList cards) restrict2;
+                       ItemColor colorId) restrict2;
+
+        void setSpriteCards(const unsigned int slot,
+                            const int id,
+                            std::string color,
+                            ItemColor colorId,
+                            CardsList cards) restrict2;
 
         void setWeaponId(const int id) restrict2;
 
