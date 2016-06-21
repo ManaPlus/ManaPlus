@@ -343,8 +343,7 @@ class Being notfinal : public ActorSprite,
                            const int id) restrict2;
 
         void setHairTempSprite(const unsigned int slot,
-                               const int id,
-                               std::string color) restrict2;
+                               const int id) restrict2;
 
         void updateSprite(const unsigned int slot,
                           const int id,

@@ -2988,8 +2988,7 @@ void Being::setTempSprite(const unsigned int slot,
 }
 
 void Being::setHairTempSprite(const unsigned int slot,
-                              const int id,
-                              std::string color) restrict2
+                              const int id) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -3021,12 +3020,13 @@ void Being::setHairTempSprite(const unsigned int slot,
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
 
-        ItemColor colorId = ItemColor_one;
-        if (!cards.isEmpty())
-            colorId = ItemColorManager::getColorFromCards(cards);
-
         if (!filename.empty())
         {
+            ItemColor colorId = ItemColor_one;
+            if (!cards.isEmpty())
+                colorId = ItemColorManager::getColorFromCards(cards);
+
+            std::string color = info.getDyeColorsString(mHairColor);
             if (color.empty())
                 color = info.getDyeColorsString(colorId);
 
@@ -3954,9 +3954,7 @@ void Being::recalcSpritesOrder() restrict2
                                     else
                                     {
                                         setHairTempSprite(remSprite,
-                                            repIt->second,
-                                            ItemDB::get(repIt->second)
-                                            .getDyeColorsString(mHairColor));
+                                            repIt->second);
                                     }
                                     updatedSprite[remSprite] = true;
                                 }
@@ -3982,10 +3980,7 @@ void Being::recalcSpritesOrder() restrict2
                                         else
                                         {
                                             setHairTempSprite(slot2,
-                                                repIt->second,
-                                                ItemDB::get(repIt->second)
-                                                .getDyeColorsString(
-                                                mHairColor));
+                                                repIt->second);
                                         }
                                         updatedSprite[slot2] = true;
                                     }
