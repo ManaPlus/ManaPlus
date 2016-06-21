@@ -53,10 +53,6 @@ namespace Ea
         void processBeingMove3(Net::MessageIn &msg);
         Being *createBeing(const BeingId id,
                            const int job);
-        void setSprite(Being *const being,
-                       const unsigned int slot,
-                       const int id,
-                       const std::string &color = "");
     }  // namespace BeingRecv
 }  // namespace Ea
 

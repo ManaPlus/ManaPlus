@@ -447,27 +447,22 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         if (hairStyle == 0)
         {
-            Ea::BeingRecv::setSprite(dstBeing,
-                SPRITE_HAIR_COLOR,
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
                 0,
                 std::string());
         }
         else
         {
-            Ea::BeingRecv::setSprite(dstBeing,
-                SPRITE_HAIR_COLOR,
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
                 hairStyle * -1,
                 ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
         }
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
-        Ea::BeingRecv::setSprite(dstBeing,
-            SPRITE_BODY,
-            weapon,
-            std::string());
+        dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
+        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
+        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+        dstBeing->updateSprite(SPRITE_HAIR, shoes);
+        dstBeing->updateSprite(SPRITE_SHOES, gloves);
+        dstBeing->updateSprite(SPRITE_BODY, weapon);
         dstBeing->setWeaponId(weapon);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
@@ -650,29 +645,22 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         if (hairStyle == 0)
         {
-            Ea::BeingRecv::setSprite(dstBeing,
-                SPRITE_HAIR_COLOR,
-                0,
-                std::string());
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
         }
         else
         {
-            Ea::BeingRecv::setSprite(dstBeing,
-                SPRITE_HAIR_COLOR,
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
                 hairStyle * -1,
                 ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
         }
         if (!serverFeatures->haveMove3())
         {
-            Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
-            Ea::BeingRecv::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
-            Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
-            Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
-            Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
-            Ea::BeingRecv::setSprite(dstBeing,
-                SPRITE_BODY,
-                weapon,
-                std::string());
+            dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
+            dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
+            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+            dstBeing->updateSprite(SPRITE_HAIR, shoes);
+            dstBeing->updateSprite(SPRITE_SHOES, gloves);
+            dstBeing->updateSprite(SPRITE_BODY, weapon);
             dstBeing->setWeaponId(weapon);
         }
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
@@ -855,27 +843,20 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         if (hairStyle == 0)
         {
-            Ea::BeingRecv::setSprite(dstBeing,
-                SPRITE_HAIR_COLOR,
-                0,
-                std::string());
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
         }
         else
         {
-            Ea::BeingRecv::setSprite(dstBeing,
-                SPRITE_HAIR_COLOR,
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
                 hairStyle * -1,
                 ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
         }
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_WEAPON, headBottom);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HEAD_BOTTOM, headMid);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_CLOTHES_COLOR, headTop);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_HAIR, shoes);
-        Ea::BeingRecv::setSprite(dstBeing, SPRITE_SHOES, gloves);
-        Ea::BeingRecv::setSprite(dstBeing,
-            SPRITE_BODY,
-            weapon,
-            std::string());
+        dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
+        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
+        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+        dstBeing->updateSprite(SPRITE_HAIR, shoes);
+        dstBeing->updateSprite(SPRITE_SHOES, gloves);
+        dstBeing->updateSprite(SPRITE_BODY, weapon);
         dstBeing->setWeaponId(weapon);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }

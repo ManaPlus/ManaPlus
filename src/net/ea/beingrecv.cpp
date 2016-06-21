@@ -542,14 +542,4 @@ Being *BeingRecv::createBeing(const BeingId id,
     return being;
 }
 
-void BeingRecv::setSprite(Being *const being,
-                          const unsigned int slot,
-                          const int id,
-                          const std::string &color)
-{
-    if (!being)
-        return;
-    being->updateSprite(slot, id, color);
-}
-
 }  // namespace Ea
