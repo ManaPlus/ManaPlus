@@ -2915,8 +2915,7 @@ void Being::setWeaponId(const int id) restrict2
 
 void Being::setTempSprite(const unsigned int slot,
                           const int id,
-                          std::string color,
-                          CardsList cards) restrict2
+                          std::string color) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2926,6 +2925,8 @@ void Being::setTempSprite(const unsigned int slot,
 
     if (slot >= CAST_U32(mSlots.size()))
         mSlots.resize(slot + 1, BeingSlot());
+
+    const CardsList &cards = mSlots[slot].cardsId;
 
     // id = 0 means unequip
     if (id == 0)
@@ -3877,16 +3878,14 @@ void Being::recalcSpritesOrder() restrict2
                                     {
                                         setTempSprite(remSprite,
                                             repIt->second,
-                                            remSlot.color,
-                                            remSlot.cardsId);
+                                            remSlot.color);
                                     }
                                     else
                                     {
                                         setTempSprite(remSprite,
                                             repIt->second,
                                             ItemDB::get(repIt->second)
-                                            .getDyeColorsString(mHairColor),
-                                            remSlot.cardsId);
+                                            .getDyeColorsString(mHairColor));
                                     }
                                     updatedSprite[remSprite] = true;
                                 }
@@ -3910,8 +3909,7 @@ void Being::recalcSpritesOrder() restrict2
                                         {
                                             setTempSprite(slot2,
                                                 repIt->second,
-                                                beingSlot2.color,
-                                                beingSlot2.cardsId);
+                                                beingSlot2.color);
                                         }
                                         else
                                         {
@@ -3919,8 +3917,7 @@ void Being::recalcSpritesOrder() restrict2
                                                 repIt->second,
                                                 ItemDB::get(repIt->second)
                                                 .getDyeColorsString(
-                                                mHairColor),
-                                                beingSlot2.cardsId);
+                                                mHairColor));
                                         }
                                         updatedSprite[slot2] = true;
                                     }
@@ -4065,8 +4062,7 @@ void Being::recalcSpritesOrder() restrict2
                 updatedSprite[slot] = true;
                 setTempSprite(slot,
                     id,
-                    beingSlot.color,
-                    beingSlot.cardsId);
+                    beingSlot.color);
             }
         }
     }
@@ -4081,8 +4077,7 @@ void Being::recalcSpritesOrder() restrict2
             {
                 setTempSprite(static_cast<unsigned int>(slot),
                     id,
-                    beingSlot.color,
-                    beingSlot.cardsId);
+                    beingSlot.color);
             }
         }
     }

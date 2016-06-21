@@ -341,8 +341,7 @@ class Being notfinal : public ActorSprite,
 
         void setTempSprite(const unsigned int slot,
                            const int id,
-                           std::string color,
-                           CardsList cards) restrict2;
+                           std::string color) restrict2;
 
         void updateSprite(const unsigned int slot,
                           const int id,
