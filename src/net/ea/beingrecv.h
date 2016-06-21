@@ -56,8 +56,7 @@ namespace Ea
         void setSprite(Being *const being,
                        const unsigned int slot,
                        const int id,
-                       const std::string &color = "",
-                       const ItemColor colorId = ItemColor_one);
+                       const std::string &color = "");
     }  // namespace BeingRecv
 }  // namespace Ea
 

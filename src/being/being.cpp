@@ -2469,8 +2469,7 @@ void Being::updateColors()
 
 void Being::updateSprite(const unsigned int slot,
                          const int id,
-                         const std::string &restrict color,
-                         const ItemColor colorId) restrict2
+                         const std::string &restrict color) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2480,11 +2479,9 @@ void Being::updateSprite(const unsigned int slot,
 
     if (slot && mSlots[slot].spriteId == id)
         return;
-    setSpriteCards(slot,
+    setSpriteColor(slot,
         id,
-        color,
-        colorId,
-        mSlots[slot].cardsId);
+        color);
 }
 
 // set sprite id, reset colors, reset cards
@@ -2614,7 +2611,7 @@ void Being::unSetSprite(const unsigned int slot) restrict2
         beingEquipmentWindow->updateBeing(this);
 }
 
-// set sprite id, colors, reset cards
+// set sprite id, use color string, reset cards
 void Being::setSpriteColor(const unsigned int slot,
                            const int id,
                            std::string color) restrict2
@@ -2708,7 +2705,7 @@ void Being::setSpriteColor(const unsigned int slot,
         beingEquipmentWindow->updateBeing(this);
 }
 
-// set sprite id, colors, reset cards
+// set sprite id, use color id, reset cards
 void Being::setSpriteColorId(const unsigned int slot,
                              const int id,
                              ItemColor colorId) restrict2

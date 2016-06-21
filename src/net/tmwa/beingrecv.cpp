@@ -315,8 +315,7 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         dstBeing->updateSprite(SPRITE_BODY,
             weapon,
-            "",
-            ItemColor_one);
+            "");
         dstBeing->setWeaponId(weapon);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
@@ -461,8 +460,7 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         dstBeing->updateSprite(SPRITE_BODY,
             weapon,
-            "",
-            ItemColor_one);
+            "");
         dstBeing->setWeaponId(weapon);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
@@ -607,8 +605,7 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         dstBeing->updateSprite(SPRITE_BODY,
             weapon,
-            "",
-            ItemColor_one);
+            "");
         dstBeing->setWeaponId(weapon);
         dstBeing->updateSprite(SPRITE_FLOOR, shield);
         dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
@@ -861,8 +858,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         Ea::BeingRecv::setSprite(dstBeing,
             SPRITE_BODY,
             weapon,
-            "",
-            ItemColor_one);
+            std::string());
         dstBeing->setWeaponId(weapon);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
@@ -1078,8 +1074,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         Ea::BeingRecv::setSprite(dstBeing,
             SPRITE_BODY,
             weapon,
-            "",
-            ItemColor_one);
+            std::string());
         dstBeing->setWeaponId(weapon);
         Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }

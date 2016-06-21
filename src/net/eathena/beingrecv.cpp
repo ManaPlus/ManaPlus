@@ -467,8 +467,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         Ea::BeingRecv::setSprite(dstBeing,
             SPRITE_BODY,
             weapon,
-            "",
-            ItemColor_one);
+            std::string());
         dstBeing->setWeaponId(weapon);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
@@ -673,8 +672,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
             Ea::BeingRecv::setSprite(dstBeing,
                 SPRITE_BODY,
                 weapon,
-                "",
-                ItemColor_one);
+                std::string());
             dstBeing->setWeaponId(weapon);
         }
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
@@ -877,8 +875,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         Ea::BeingRecv::setSprite(dstBeing,
             SPRITE_BODY,
             weapon,
-            "",
-            ItemColor_one);
+            std::string());
         dstBeing->setWeaponId(weapon);
 //        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
     }
