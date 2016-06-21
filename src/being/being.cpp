@@ -2802,11 +2802,9 @@ void Being::setSpriteColorId(const unsigned int slot,
         beingEquipmentWindow->updateBeing(this);
 }
 
-// set sprite id, colors, cards
+// set sprite id, colors from cards, cards
 void Being::setSpriteCards(const unsigned int slot,
                            const int id,
-                           std::string color,
-                           ItemColor colorId,
                            CardsList cards) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
@@ -2821,6 +2819,9 @@ void Being::setSpriteCards(const unsigned int slot,
     // disabled for now, because it may broke replace/reorder sprites logic
 //    if (slot && mSlots[slot].spriteId == id)
 //        return;
+
+    ItemColor colorId = ItemColor_one;
+    std::string color;
 
     // id = 0 means unequip
     if (id == 0)
@@ -3061,11 +3062,9 @@ void Being::setHairStyle(const unsigned int slot,
                          const int id) restrict2
 {
 //    dumpSprites();
-    setSpriteCards(slot,
+    setSpriteColor(slot,
         id,
-        ItemDB::get(id).getDyeColorsString(mHairColor),
-        ItemColor_one,
-        mSlots[slot].cardsId);
+        ItemDB::get(id).getDyeColorsString(mHairColor));
 //    dumpSprites();
 }
 
@@ -3077,11 +3076,9 @@ void Being::setHairColor(const unsigned int slot,
     const int id = beingSlot.spriteId;
     if (id != 0)
     {
-        setSpriteCards(slot,
+        setSpriteColor(slot,
             id,
-            ItemDB::get(id).getDyeColorsString(color),
-            ItemColor_one,
-            beingSlot.cardsId);
+            ItemDB::get(id).getDyeColorsString(color));
     }
 }
 

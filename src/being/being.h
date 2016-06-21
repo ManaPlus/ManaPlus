@@ -330,8 +330,6 @@ class Being notfinal : public ActorSprite,
 
         void setSpriteCards(const unsigned int slot,
                             const int id,
-                            std::string color,
-                            ItemColor colorId,
                             CardsList cards) restrict2;
 
         void setSpriteId(const unsigned int slot,

@@ -142,7 +142,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
 
-    const ItemColor itemColor = ItemColorManager::getColorFromCards(cards);
     switch (type)
     {
         // here should be used SPRITE_* constants
@@ -160,8 +159,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 2:  // LOOK_WEAPON Weapon ID in id, Shield ID in id2
             dstBeing->setSpriteCards(SPRITE_BODY,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             dstBeing->setWeaponId(id);
             dstBeing->setSpriteId(SPRITE_FLOOR,
@@ -172,8 +169,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 3:  // LOOK_HEAD_BOTTOM
             dstBeing->setSpriteCards(SPRITE_WEAPON,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
@@ -181,8 +176,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 4:  // LOOK_HEAD_TOP Change upper headgear for eAthena, hat for us
             dstBeing->setSpriteCards(SPRITE_CLOTHES_COLOR,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
@@ -191,8 +184,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                  // armor for us
             dstBeing->setSpriteCards(SPRITE_HEAD_BOTTOM,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
@@ -210,8 +201,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 8:  // eAthena LOOK_SHIELD
             dstBeing->setSpriteCards(SPRITE_FLOOR,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
@@ -219,8 +208,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 9:  // eAthena LOOK_SHOES
             dstBeing->setSpriteCards(SPRITE_HAIR,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
@@ -228,8 +215,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 10:  // LOOK_GLOVES
             dstBeing->setSpriteCards(SPRITE_SHOES,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
@@ -237,8 +222,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 11:  // LOOK_FLOOR
             dstBeing->setSpriteCards(SPRITE_SHIELD,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
@@ -246,8 +229,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 12:  // LOOK_ROBE
             dstBeing->setSpriteCards(SPRITE_HEAD_TOP,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
@@ -255,8 +236,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 13:  // COSTUME_HEAD_TOP
             dstBeing->setSpriteCards(SPRITE_HEAD_MID,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
@@ -264,8 +243,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 14:  // COSTUME_HEAD_MID
             dstBeing->setSpriteCards(SPRITE_ROBE,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
@@ -273,8 +250,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 15:  // COSTUME_HEAD_LOW
             dstBeing->setSpriteCards(SPRITE_EVOL2,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
@@ -282,8 +257,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 16:  // COSTUME_GARMENT
             dstBeing->setSpriteCards(SPRITE_EVOL3,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL3);
@@ -291,8 +264,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 17:  // ARMOR
             dstBeing->setSpriteCards(SPRITE_EVOL4,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
@@ -300,8 +271,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 18:
             dstBeing->setSpriteCards(SPRITE_EVOL5,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL5);
@@ -309,8 +278,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
         case 19:
             dstBeing->setSpriteCards(SPRITE_EVOL6,
                 id,
-                std::string(),
-                itemColor,
                 CardsList(cards));
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL6);
