@@ -3253,23 +3253,61 @@ BeingCacheEntry* Being::getCacheEntry(const BeingId id)
 
 void Being::setGender(const GenderT gender) restrict2
 {
+    if (!charServerHandler)
+        return;
+
     if (gender != mGender)
     {
         mGender = gender;
 
+        const unsigned int sz = CAST_U32(mSlots.size());
+
+        if (sz > CAST_U32(mSprites.size()))
+            ensureSize(sz);
+
         // Reload all subsprites
         for (unsigned int i = 0;
-             i < CAST_U32(mSlots.size());
+             i < sz;
              i++)
         {
             BeingSlot &beingSlot = mSlots[i];
-            if (beingSlot.spriteId != 0)
+            const int id = beingSlot.spriteId;
+            if (id != 0)
             {
-                setSpriteCards(i,
-                    beingSlot.spriteId,
-                    beingSlot.color,
-                    ItemColor_one,
-                    beingSlot.cardsId);
+                const ItemInfo &info = ItemDB::get(id);
+                const std::string &restrict filename = info.getSprite(
+                    mGender, mSubType);
+                int lastTime = 0;
+                int startTime = 0;
+                AnimatedSprite *restrict equipmentSprite = nullptr;
+
+                if (!filename.empty())
+                {
+                    equipmentSprite = AnimatedSprite::delayedLoad(
+                        paths.getStringValue("sprites").append(
+                        combineDye(filename, beingSlot.color)));
+                }
+
+                if (equipmentSprite)
+                {
+                    equipmentSprite->setSpriteDirection(getSpriteDirection());
+                    startTime = getStartTime();
+                    lastTime = getLastTime();
+                }
+
+                CompoundSprite::setSprite(i, equipmentSprite);
+                setAction(mAction, 0);
+                if (equipmentSprite)
+                {
+                    if (lastTime > 0)
+                    {
+                        equipmentSprite->setLastTime(startTime);
+                        equipmentSprite->update(lastTime);
+                    }
+                }
+
+                if (beingEquipmentWindow)
+                    beingEquipmentWindow->updateBeing(this);
             }
         }
 
