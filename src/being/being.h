@@ -842,6 +842,9 @@ class Being notfinal : public ActorSprite,
 
         int getSpriteID(const int slot) const restrict2 A_WARN_UNUSED;
 
+        const BeingSlot &getSpriteSlot(const int slot) const
+                                       restrict2 A_WARN_UNUSED;
+
         ItemColor getSpriteColor(const int slot) const restrict2 A_WARN_UNUSED;
 
         void setHairStyle(const unsigned int slot,
@@ -852,6 +855,9 @@ class Being notfinal : public ActorSprite,
 
         void setHairColor(const ItemColor color) restrict2 noexcept2
         { mHairColor = color; }
+
+        void setSpriteSlot(const unsigned int slot,
+                           const BeingSlot &beingSlot);
 
         ItemColor getHairColor() const noexcept2 A_WARN_UNUSED
         { return mHairColor; }

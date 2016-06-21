@@ -22,3 +22,4 @@
 
 #include "debug.h"
 
+BeingSlot *emptyBeingSlot = nullptr;

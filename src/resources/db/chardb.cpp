@@ -22,6 +22,7 @@
 #include "resources/db/chardb.h"
 
 #include "configuration.h"
+#include "itemcolormanager.h"
 #include "logger.h"
 
 #include "debug.h"
@@ -40,7 +41,7 @@ namespace
     unsigned mMaxLook = 0;
     unsigned mMinRace = 0;
     unsigned mMaxRace = 30;
-    std::vector<int> mDefaultItems;
+    std::vector<BeingSlot> mDefaultItems;
 }  // namespace
 
 void CharDB::load()
@@ -85,7 +86,18 @@ void CharDB::load()
         {
             const int id = XML::getProperty(node, "id", 0);
             if (id > 0)
-                mDefaultItems.push_back(id);
+            {
+                BeingSlot slot;
+                slot.spriteId = id;
+                for (int f = 0; f < maxCards; f ++)
+                {
+                    const std::string cardName = strprintf("card%d", f + 1);
+                    slot.cardsId.cards[f] = XML::getProperty(node,
+                        cardName.c_str(),
+                        0);
+                }
+                mDefaultItems.push_back(slot);
+            }
         }
         else if (xmlNameEqual(node, "race"))
         {
@@ -170,7 +182,7 @@ unsigned CharDB::getMaxRace()
     return mMaxRace;
 }
 
-const std::vector<int> &CharDB::getDefaultItems()
+const std::vector<BeingSlot> &CharDB::getDefaultItems()
 {
     return mDefaultItems;
 }

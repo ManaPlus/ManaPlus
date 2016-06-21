@@ -107,6 +107,7 @@
 #include "net/packetcounters.h"
 #include "net/serverfeatures.h"
 
+#include "resources/beingslot.h"
 #include "resources/delayedmanager.h"
 #include "resources/imagewriter.h"
 #include "resources/mapreader.h"
@@ -401,6 +402,8 @@ Game::Game() :
     viewport = new Viewport;
     viewport->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
     PlayerInfo::clear();
+
+    emptyBeingSlot = new BeingSlot;
 
     BasicContainer2 *const top = static_cast<BasicContainer2*>(gui->getTop());
     if (top)

@@ -149,15 +149,17 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     setContentSize(w, h);
 
     mPlayer->setGender(Gender::MALE);
-    const std::vector<int> &items = CharDB::getDefaultItems();
+    const std::vector<BeingSlot> &items = CharDB::getDefaultItems();
     int i = 1;
-    for (std::vector<int>::const_iterator it = items.begin(),
+    for (std::vector<BeingSlot>::const_iterator it = items.begin(),
          it_fend = items.end();
          it != it_fend;
          ++ it, i ++)
     {
-        mPlayer->setSpriteId(i,
-            *it);
+        const BeingSlot &beingSlot = *it;
+        mPlayer->setSpriteCards(i,
+            beingSlot.spriteId,
+            beingSlot.cardsId);
     }
 
     if (!maxHairColor)

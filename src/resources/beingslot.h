@@ -45,4 +45,6 @@ struct BeingSlot final
     std::string color;
 };
 
+extern BeingSlot *emptyBeingSlot;
+
 #endif  // RESOURCES_BEINGSLOT_H

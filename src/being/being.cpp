@@ -3156,6 +3156,12 @@ void Being::setHairColor(const unsigned int slot,
     }
 }
 
+void Being::setSpriteSlot(const unsigned int slot,
+                          const BeingSlot &beingSlot)
+{
+    mSlots[slot] = beingSlot;
+}
+
 void Being::dumpSprites() const restrict2
 {
     std::vector<BeingSlot>::const_iterator it1 = mSlots.begin();
@@ -4427,6 +4433,14 @@ int Being::getSpriteID(const int slot) const restrict2
         return -1;
 
     return mSlots[slot].spriteId;
+}
+
+const BeingSlot &Being::getSpriteSlot(const int slot) const restrict2
+{
+    if (slot < 0 || CAST_SIZE(slot) >= mSlots.size())
+        return *emptyBeingSlot;
+
+    return mSlots[slot];
 }
 
 ItemColor Being::getSpriteColor(const int slot) const restrict2
