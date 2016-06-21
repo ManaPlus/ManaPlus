@@ -147,8 +147,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setHairColor(color);
     if (hairStyle == 0)
     {
-        tempPlayer->setSpriteId(SPRITE_HAIR_COLOR,
-            0);
+        tempPlayer->unSetSprite(SPRITE_HAIR_COLOR);
     }
     else
     {

@@ -2576,6 +2576,45 @@ void Being::setSpriteId(const unsigned int slot,
         beingEquipmentWindow->updateBeing(this);
 }
 
+// reset sprite id, reset colors, reset cards
+void Being::unSetSprite(const unsigned int slot) restrict2
+{
+    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+        return;
+
+    if (slot >= CAST_U32(mSprites.size()))
+        ensureSize(slot + 1);
+
+    if (slot >= CAST_U32(mSlots.size()))
+        mSlots.resize(slot + 1, BeingSlot());
+
+    removeSprite(slot);
+    mSpriteDraw[slot] = 0;
+
+    BeingSlot &beingSlot = mSlots[slot];
+    const int id1 = beingSlot.spriteId;
+    if (id1)
+    {
+        const ItemInfo &info = ItemDB::get(id1);
+        if (mMap &&
+            mType == ActorType::Player)
+        {
+            const BeingId pet = fromInt(info.getPet(), BeingId);
+            if (pet != BeingId_zero)
+                removePet(pet);
+        }
+        removeItemParticles(id1);
+    }
+
+    beingSlot.spriteId = 0;
+    beingSlot.color = std::string();
+    beingSlot.colorId = ItemColor_one;
+    beingSlot.cardsId = CardsList(nullptr);
+    recalcSpritesOrder();
+    if (beingEquipmentWindow)
+        beingEquipmentWindow->updateBeing(this);
+}
+
 // set sprite id, colors, reset cards
 void Being::setSprite(const unsigned int slot,
                       const int id,
@@ -3936,8 +3975,7 @@ void Being::undressItemById(const int id) restrict2
     {
         if (id == mSlots[f].spriteId)
         {
-            setSpriteId(CAST_U32(f),
-                0);
+            unSetSprite(CAST_U32(f));
             break;
         }
     }

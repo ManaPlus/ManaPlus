@@ -50,36 +50,21 @@ void BeingHandler::undress(Being *const being) const
 {
     if (!being)
         return;
-    being->setSpriteId(SPRITE_WEAPON,
-        0);
-    being->setSpriteId(SPRITE_HEAD_BOTTOM,
-        0);
-    being->setSpriteId(SPRITE_HEAD_TOP,
-        0);
-    being->setSpriteId(SPRITE_HEAD_MID,
-        0);
-    being->setSpriteId(SPRITE_CLOTHES_COLOR,
-        0);
-    being->setSpriteId(SPRITE_SHIELD,
-        0);
-    being->setSpriteId(SPRITE_FLOOR,
-        0);
-    being->setSpriteId(SPRITE_ROBE,
-        0);
-    being->setSpriteId(SPRITE_EVOL2,
-        0);
-    being->setSpriteId(SPRITE_EVOL3,
-        0);
-    being->setSpriteId(SPRITE_EVOL4,
-        0);
-    being->setSpriteId(SPRITE_EVOL5,
-        0);
-    being->setSpriteId(SPRITE_EVOL6,
-        0);
-    being->setSpriteId(SPRITE_HAIR,
-        0);
-    being->setSpriteId(SPRITE_SHOES,
-        0);
+    being->unSetSprite(SPRITE_WEAPON);
+    being->unSetSprite(SPRITE_HEAD_BOTTOM);
+    being->unSetSprite(SPRITE_HEAD_TOP);
+    being->unSetSprite(SPRITE_HEAD_MID);
+    being->unSetSprite(SPRITE_CLOTHES_COLOR);
+    being->unSetSprite(SPRITE_SHIELD);
+    being->unSetSprite(SPRITE_FLOOR);
+    being->unSetSprite(SPRITE_ROBE);
+    being->unSetSprite(SPRITE_EVOL2);
+    being->unSetSprite(SPRITE_EVOL3);
+    being->unSetSprite(SPRITE_EVOL4);
+    being->unSetSprite(SPRITE_EVOL5);
+    being->unSetSprite(SPRITE_EVOL6);
+    being->unSetSprite(SPRITE_HAIR);
+    being->unSetSprite(SPRITE_SHOES);
 }
 
 void BeingHandler::requestRanks(const RankT rank) const
