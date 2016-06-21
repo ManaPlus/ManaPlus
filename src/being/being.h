@@ -340,8 +340,11 @@ class Being notfinal : public ActorSprite,
         void setWeaponId(const int id) restrict2;
 
         void setTempSprite(const unsigned int slot,
-                           const int id,
-                           std::string color) restrict2;
+                           const int id) restrict2;
+
+        void setHairTempSprite(const unsigned int slot,
+                               const int id,
+                               std::string color) restrict2;
 
         void updateSprite(const unsigned int slot,
                           const int id,

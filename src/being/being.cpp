@@ -2914,8 +2914,82 @@ void Being::setWeaponId(const int id) restrict2
 }
 
 void Being::setTempSprite(const unsigned int slot,
-                          const int id,
-                          std::string color) restrict2
+                          const int id) restrict2
+{
+    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+        return;
+
+    if (slot >= CAST_U32(mSprites.size()))
+        ensureSize(slot + 1);
+
+    if (slot >= CAST_U32(mSlots.size()))
+        mSlots.resize(slot + 1, BeingSlot());
+
+    BeingSlot &beingSlot = mSlots[slot];
+
+    // id = 0 means unequip
+    if (id == 0)
+    {
+        removeSprite(slot);
+        mSpriteDraw[slot] = 0;
+
+        const int id1 = beingSlot.spriteId;
+        if (id1)
+            removeItemParticles(id1);
+    }
+    else
+    {
+        const ItemInfo &info = ItemDB::get(id);
+        const std::string &restrict filename = info.getSprite(
+            mGender, mSubType);
+        int lastTime = 0;
+        int startTime = 0;
+        const CardsList &cards = beingSlot.cardsId;
+        std::string color = beingSlot.color;
+
+        AnimatedSprite *restrict equipmentSprite = nullptr;
+
+        ItemColor colorId = ItemColor_one;
+        if (!cards.isEmpty())
+            colorId = ItemColorManager::getColorFromCards(cards);
+
+        if (!filename.empty())
+        {
+            if (color.empty())
+                color = info.getDyeColorsString(colorId);
+
+            equipmentSprite = AnimatedSprite::delayedLoad(
+                paths.getStringValue("sprites").append(
+                combineDye(filename, color)));
+        }
+
+        if (equipmentSprite)
+        {
+            equipmentSprite->setSpriteDirection(getSpriteDirection());
+            startTime = getStartTime();
+            lastTime = getLastTime();
+        }
+
+        CompoundSprite::setSprite(slot, equipmentSprite);
+        mSpriteDraw[slot] = id;
+
+        addItemParticles(id, info.getDisplay());
+
+        setAction(mAction, 0);
+        if (equipmentSprite)
+        {
+            if (lastTime > 0)
+            {
+                equipmentSprite->setLastTime(startTime);
+                equipmentSprite->update(lastTime);
+            }
+        }
+    }
+}
+
+void Being::setHairTempSprite(const unsigned int slot,
+                              const int id,
+                              std::string color) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -3871,18 +3945,15 @@ void Being::recalcSpritesOrder() restrict2
                                 mSpriteHide[remSprite] = repIt->second;
                                 if (repIt->second != 1)
                                 {
-                                    const BeingSlot &remSlot =
-                                        mSlots[remSprite];
                                     if (CAST_U32(remSprite)
                                         != hairSlot)
                                     {
                                         setTempSprite(remSprite,
-                                            repIt->second,
-                                            remSlot.color);
+                                            repIt->second);
                                     }
                                     else
                                     {
-                                        setTempSprite(remSprite,
+                                        setHairTempSprite(remSprite,
                                             repIt->second,
                                             ItemDB::get(repIt->second)
                                             .getDyeColorsString(mHairColor));
@@ -3903,17 +3974,14 @@ void Being::recalcSpritesOrder() restrict2
                                     mSpriteHide[slot2] = repIt->second;
                                     if (repIt->second != 1)
                                     {
-                                        const BeingSlot &beingSlot2 =
-                                            mSlots[slot2];
                                         if (slot2 != hairSlot)
                                         {
                                             setTempSprite(slot2,
-                                                repIt->second,
-                                                beingSlot2.color);
+                                                repIt->second);
                                         }
                                         else
                                         {
-                                            setTempSprite(slot2,
+                                            setHairTempSprite(slot2,
                                                 repIt->second,
                                                 ItemDB::get(repIt->second)
                                                 .getDyeColorsString(
@@ -4061,8 +4129,7 @@ void Being::recalcSpritesOrder() restrict2
 
                 updatedSprite[slot] = true;
                 setTempSprite(slot,
-                    id,
-                    beingSlot.color);
+                    id);
             }
         }
     }
@@ -4076,8 +4143,7 @@ void Being::recalcSpritesOrder() restrict2
                 mSpriteDraw[slot] != id)
             {
                 setTempSprite(static_cast<unsigned int>(slot),
-                    id,
-                    beingSlot.color);
+                    id);
             }
         }
     }
