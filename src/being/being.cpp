@@ -504,10 +504,9 @@ void Being::setSubtype(const BeingTypeId subtype,
             setRaceName(info.getName());
             if (charServerHandler)
             {
-                setSprite(charServerHandler->baseSprite(),
+                setSpriteColor(charServerHandler->baseSprite(),
                     id,
-                    info.getColor(fromInt(mLook, ItemColor)),
-                    ItemColor_one);
+                    info.getColor(fromInt(mLook, ItemColor)));
             }
         }
     }
@@ -2616,10 +2615,9 @@ void Being::unSetSprite(const unsigned int slot) restrict2
 }
 
 // set sprite id, colors, reset cards
-void Being::setSprite(const unsigned int slot,
-                      const int id,
-                      std::string color,
-                      ItemColor colorId) restrict2
+void Being::setSpriteColor(const unsigned int slot,
+                           const int id,
+                           std::string color) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2672,9 +2670,103 @@ void Being::setSprite(const unsigned int slot,
 
         if (!filename.empty())
         {
-            if (color.empty())
-                color = info.getDyeColorsString(colorId);
+            equipmentSprite = AnimatedSprite::delayedLoad(
+                paths.getStringValue("sprites").append(
+                combineDye(filename, color)));
+        }
 
+        if (equipmentSprite)
+        {
+            equipmentSprite->setSpriteDirection(getSpriteDirection());
+            startTime = getStartTime();
+            lastTime = getLastTime();
+        }
+
+        CompoundSprite::setSprite(slot, equipmentSprite);
+        mSpriteDraw[slot] = id;
+
+        addItemParticles(id, info.getDisplay());
+
+        setAction(mAction, 0);
+        if (equipmentSprite)
+        {
+            if (lastTime > 0)
+            {
+                equipmentSprite->setLastTime(startTime);
+                equipmentSprite->update(lastTime);
+            }
+        }
+    }
+
+    BeingSlot &beingSlot = mSlots[slot];
+    beingSlot.spriteId = id;
+    beingSlot.color = color;
+    beingSlot.colorId = ItemColor_one;
+    beingSlot.cardsId = CardsList(nullptr);
+    recalcSpritesOrder();
+    if (beingEquipmentWindow)
+        beingEquipmentWindow->updateBeing(this);
+}
+
+// set sprite id, colors, reset cards
+void Being::setSpriteColorId(const unsigned int slot,
+                             const int id,
+                             ItemColor colorId) restrict2
+{
+    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+        return;
+
+    if (slot >= CAST_U32(mSprites.size()))
+        ensureSize(slot + 1);
+
+    if (slot >= CAST_U32(mSlots.size()))
+        mSlots.resize(slot + 1, BeingSlot());
+
+    // disabled for now, because it may broke replace/reorder sprites logic
+//    if (slot && mSlots[slot].spriteId == id)
+//        return;
+
+    std::string color;
+
+    // id = 0 means unequip
+    if (id == 0)
+    {
+        removeSprite(slot);
+        mSpriteDraw[slot] = 0;
+
+        const int id1 = mSlots[slot].spriteId;
+        if (id1)
+        {
+            const ItemInfo &info = ItemDB::get(id1);
+            if (mMap &&
+                mType == ActorType::Player)
+            {
+                const BeingId pet = fromInt(info.getPet(), BeingId);
+                if (pet != BeingId_zero)
+                    removePet(pet);
+            }
+            removeItemParticles(id1);
+        }
+    }
+    else
+    {
+        const ItemInfo &info = ItemDB::get(id);
+        const std::string &restrict filename = info.getSprite(
+            mGender, mSubType);
+        int lastTime = 0;
+        int startTime = 0;
+        AnimatedSprite *restrict equipmentSprite = nullptr;
+
+        if (mType == ActorType::Player)
+        {
+            const BeingId pet = fromInt(info.getPet(), BeingId);
+            if (pet != BeingId_zero)
+                addPet(pet);
+        }
+
+        if (!filename.empty())
+        {
+            color = info.getDyeColorsString(colorId);
             equipmentSprite = AnimatedSprite::delayedLoad(
                 paths.getStringValue("sprites").append(
                 combineDye(filename, color)));
@@ -2898,10 +2990,9 @@ void Being::setHairColorSpriteID(const unsigned int slot,
                                  const int id) restrict2
 {
     BeingSlot &beingSlot = mSlots[slot];
-    setSprite(slot,
+    setSpriteColor(slot,
         id,
-        beingSlot.color,
-        ItemColor_one);
+        beingSlot.color);
 }
 
 void Being::setSpriteColor(const unsigned int slot,

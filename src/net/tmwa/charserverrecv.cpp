@@ -104,10 +104,8 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     const uint16_t look = msg.readUInt8("look");
     tempPlayer->setSubtype(fromInt(race, BeingTypeId), look);
     const uint16_t weapon = msg.readInt16("weapon");
-    tempPlayer->setSprite(SPRITE_BODY,
-        weapon,
-        "",
-        ItemColor_one);
+    tempPlayer->setSpriteId(SPRITE_BODY,
+        weapon);
     tempPlayer->setWeaponId(weapon);
 
     data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
@@ -128,10 +126,9 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     }
     else
     {
-        tempPlayer->setSprite(SPRITE_HAIR_COLOR,
+        tempPlayer->setSpriteColor(SPRITE_HAIR_COLOR,
             hairStyle * -1,
-            ItemDB::get(-hairStyle).getDyeColorsString(hairColor),
-            ItemColor_one);
+            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
     }
     tempPlayer->setHairColor(hairColor);
 

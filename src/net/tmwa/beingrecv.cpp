@@ -127,7 +127,6 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
     if (dstBeing->getType() == ActorType::Player)
         dstBeing->setOtherTime();
 
-    const std::string color;
     switch (type)
     {
         case 0:     // change race
@@ -143,34 +142,26 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             break;
         }
         case 2:     // Weapon ID in id, Shield ID in id2
-            dstBeing->setSprite(SPRITE_BODY,
-                id,
-                "",
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_BODY,
+                id);
             dstBeing->setWeaponId(id);
             dstBeing->setSpriteId(SPRITE_FLOOR,
                 id2);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 3:     // Change lower headgear for eAthena, pants for us
-            dstBeing->setSprite(SPRITE_WEAPON,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_WEAPON,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
             break;
         case 4:     // Change upper headgear for eAthena, hat for us
-            dstBeing->setSprite(SPRITE_CLOTHES_COLOR,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_CLOTHES_COLOR,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
             break;
         case 5:     // Change middle headgear for eathena, armor for us
-            dstBeing->setSprite(SPRITE_HEAD_BOTTOM,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_HEAD_BOTTOM,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
         case 6:     // eAthena LOOK_HAIR_COLOR
@@ -181,59 +172,43 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             // ignoring it
             break;
         case 8:     // eAthena LOOK_SHIELD
-            dstBeing->setSprite(SPRITE_FLOOR,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_FLOOR,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 9:     // eAthena LOOK_SHOES
-            dstBeing->setSprite(SPRITE_HAIR,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_HAIR,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
             break;
         case 10:   // LOOK_GLOVES
-            dstBeing->setSprite(SPRITE_SHOES,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_SHOES,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
             break;
         case 11:  // LOOK_CAPE
-            dstBeing->setSprite(SPRITE_SHIELD,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_SHIELD,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
         case 12:
-            dstBeing->setSprite(SPRITE_HEAD_TOP,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_HEAD_TOP,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
             break;
         case 13:
-            dstBeing->setSprite(SPRITE_HEAD_MID,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_HEAD_MID,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
             break;
         case 14:
-            dstBeing->setSprite(SPRITE_ROBE,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_ROBE,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
             break;
         case 15:
-            dstBeing->setSprite(SPRITE_EVOL2,
-                id,
-                color,
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_EVOL2,
+                id);
             localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
             break;
         case 16:

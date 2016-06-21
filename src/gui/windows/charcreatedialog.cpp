@@ -766,10 +766,9 @@ void CharCreateDialog::updateHair()
         mHairColorNameLabel->resizeTo(150, 150);
     }
 
-    mPlayer->setSprite(charServerHandler->hairSprite(),
+    mPlayer->setSpriteColor(charServerHandler->hairSprite(),
         mHairStyle * -1,
-        item.getDyeColorsString(fromInt(mHairColor, ItemColor)),
-        ItemColor_one);
+        item.getDyeColorsString(fromInt(mHairColor, ItemColor)));
 }
 
 void CharCreateDialog::updateRace()
