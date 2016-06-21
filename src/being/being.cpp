@@ -2579,10 +2579,11 @@ void Being::setSprite(const unsigned int slot,
         }
     }
 
-    mSlots[slot].spriteId = id;
-    mSlots[slot].color = color;
-    mSlots[slot].colorId = colorId;
-    mSlots[slot].cardsId = CardsList(cards);
+    BeingSlot &beingSlot = mSlots[slot];
+    beingSlot.spriteId = id;
+    beingSlot.color = color;
+    beingSlot.colorId = colorId;
+    beingSlot.cardsId = CardsList(cards);
     recalcSpritesOrder();
     if (beingEquipmentWindow)
         beingEquipmentWindow->updateBeing(this);
@@ -2670,21 +2671,23 @@ void Being::setTempSprite(const unsigned int slot,
 void Being::setSpriteID(const unsigned int slot,
                         const int id) restrict2
 {
+    BeingSlot &beingSlot = mSlots[slot];
     setSprite(slot,
         id,
-        mSlots[slot].color,
+        beingSlot.color,
         ItemColor_one,
-        mSlots[slot].cardsId);
+        beingSlot.cardsId);
 }
 
 void Being::setSpriteColor(const unsigned int slot,
                            const std::string &restrict color) restrict2
 {
+    BeingSlot &beingSlot = mSlots[slot];
     setSprite(slot,
-        mSlots[slot].spriteId,
+        beingSlot.spriteId,
         color,
         ItemColor_one,
-        mSlots[slot].cardsId);
+        beingSlot.cardsId);
 }
 
 void Being::setHairStyle(const unsigned int slot,
@@ -2703,14 +2706,15 @@ void Being::setHairColor(const unsigned int slot,
                          const ItemColor color) restrict2
 {
     mHairColor = color;
-    const int id = getSpriteID(slot);
+    BeingSlot &beingSlot = mSlots[slot];
+    const int id = beingSlot.spriteId;
     if (id != 0)
     {
         setSprite(slot,
-            mSlots[slot].spriteId,
+            id,
             ItemDB::get(id).getDyeColorsString(color),
             ItemColor_one,
-            mSlots[slot].cardsId);
+            beingSlot.cardsId);
     }
 }
 
@@ -2891,13 +2895,14 @@ void Being::setGender(const GenderT gender) restrict2
              i < CAST_U32(mSlots.size());
              i++)
         {
-            if (mSlots[i].spriteId != 0)
+            BeingSlot &beingSlot = mSlots[i];
+            if (beingSlot.spriteId != 0)
             {
                 setSprite(i,
-                    mSlots[i].spriteId,
-                    mSlots[i].color,
+                    beingSlot.spriteId,
+                    beingSlot.color,
                     ItemColor_one,
-                    mSlots[i].cardsId);
+                    beingSlot.cardsId);
             }
         }
 
@@ -3463,13 +3468,15 @@ void Being::recalcSpritesOrder() restrict2
                                 mSpriteHide[remSprite] = repIt->second;
                                 if (repIt->second != 1)
                                 {
+                                    const BeingSlot &remSlot =
+                                        mSlots[remSprite];
                                     if (CAST_U32(remSprite)
                                         != hairSlot)
                                     {
                                         setTempSprite(remSprite,
                                             repIt->second,
-                                            mSlots[remSprite].color,
-                                            mSlots[remSprite].cardsId);
+                                            remSlot.color,
+                                            remSlot.cardsId);
                                     }
                                     else
                                     {
@@ -3477,7 +3484,7 @@ void Being::recalcSpritesOrder() restrict2
                                             repIt->second,
                                             ItemDB::get(repIt->second)
                                             .getDyeColorsString(mHairColor),
-                                            mSlots[remSprite].cardsId);
+                                            remSlot.cardsId);
                                     }
                                     updatedSprite[remSprite] = true;
                                 }
@@ -3495,12 +3502,14 @@ void Being::recalcSpritesOrder() restrict2
                                     mSpriteHide[slot2] = repIt->second;
                                     if (repIt->second != 1)
                                     {
+                                        const BeingSlot &beingSlot2 =
+                                            mSlots[slot2];
                                         if (slot2 != hairSlot)
                                         {
                                             setTempSprite(slot2,
                                                 repIt->second,
-                                                mSlots[slot2].color,
-                                                mSlots[slot2].cardsId);
+                                                beingSlot2.color,
+                                                beingSlot2.cardsId);
                                         }
                                         else
                                         {
@@ -3509,7 +3518,7 @@ void Being::recalcSpritesOrder() restrict2
                                                 ItemDB::get(repIt->second)
                                                 .getDyeColorsString(
                                                 mHairColor),
-                                                mSlots[slot2].cardsId);
+                                                beingSlot2.cardsId);
                                         }
                                         updatedSprite[slot2] = true;
                                     }
@@ -3646,15 +3655,16 @@ void Being::recalcSpritesOrder() restrict2
         {
             if (oldHide[slot] != 0 && oldHide[slot] != 1)
             {
-                const int id = mSlots[slot].spriteId;
+                const BeingSlot &beingSlot = mSlots[slot];
+                const int id = beingSlot.spriteId;
                 if (!id)
                     continue;
 
                 updatedSprite[slot] = true;
                 setTempSprite(slot,
                     id,
-                    mSlots[slot].color,
-                    mSlots[slot].cardsId);
+                    beingSlot.color,
+                    beingSlot.cardsId);
             }
         }
     }
@@ -3662,14 +3672,15 @@ void Being::recalcSpritesOrder() restrict2
     {
         if (mSpriteHide[slot] == 0)
         {
-            const int id = mSlots[slot].spriteId;
+            const BeingSlot &beingSlot = mSlots[slot];
+            const int id = beingSlot.spriteId;
             if (updatedSprite[slot] == false &&
                 mSpriteDraw[slot] != id)
             {
                 setTempSprite(static_cast<unsigned int>(slot),
                     id,
-                    mSlots[slot].color,
-                    mSlots[slot].cardsId);
+                    beingSlot.color,
+                    beingSlot.cardsId);
             }
         }
     }
