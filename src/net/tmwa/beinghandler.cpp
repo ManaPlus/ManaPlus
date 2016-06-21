@@ -49,26 +49,16 @@ void BeingHandler::undress(Being *const being) const
 {
     if (!being)
         return;
-    being->setSprite(SPRITE_WEAPON,
-        0,
-        std::string(),
-        ItemColor_one);
-    being->setSprite(SPRITE_HEAD_BOTTOM,
-        0,
-        std::string(),
-        ItemColor_one);
-    being->setSprite(SPRITE_CLOTHES_COLOR,
-        0,
-        std::string(),
-        ItemColor_one);
-    being->setSprite(SPRITE_HAIR,
-        0,
-        std::string(),
-        ItemColor_one);
-    being->setSprite(SPRITE_SHOES,
-        0,
-        std::string(),
-        ItemColor_one);
+    being->setSpriteId(SPRITE_WEAPON,
+        0);
+    being->setSpriteId(SPRITE_HEAD_BOTTOM,
+        0);
+    being->setSpriteId(SPRITE_CLOTHES_COLOR,
+        0);
+    being->setSpriteId(SPRITE_HAIR,
+        0);
+    being->setSpriteId(SPRITE_SHOES,
+        0);
 }
 
 #ifdef EATHENA_SUPPORT

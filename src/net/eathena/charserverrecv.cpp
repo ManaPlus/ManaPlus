@@ -147,10 +147,8 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setHairColor(color);
     if (hairStyle == 0)
     {
-        tempPlayer->setSprite(SPRITE_HAIR_COLOR,
-            0,
-            std::string(),
-            ItemColor_one);
+        tempPlayer->setSpriteId(SPRITE_HAIR_COLOR,
+            0);
     }
     else
     {
@@ -187,38 +185,22 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         shoes = msg.readInt32("robe");
     if (!serverFeatures->haveAdvancedSprites())
     {
-        tempPlayer->setSprite(SPRITE_HAIR,
-            shoes,
-            std::string(),
-            ItemColor_one);
-        tempPlayer->setSprite(SPRITE_SHOES,
-            gloves,
-            std::string(),
-            ItemColor_one);
-        tempPlayer->setSprite(SPRITE_SHIELD,
-            cape,
-            std::string(),
-            ItemColor_one);
-        tempPlayer->setSprite(SPRITE_HEAD_TOP,
-            misc1,
-            std::string(),
-            ItemColor_one);
-        tempPlayer->setSprite(SPRITE_WEAPON,
-            bottomClothes,
-            std::string(),
-            ItemColor_one);
-        tempPlayer->setSprite(SPRITE_FLOOR,
-            shield,
-            std::string(),
-            ItemColor_one);
-        tempPlayer->setSprite(SPRITE_CLOTHES_COLOR,
-            hat,
-            std::string(),
-            ItemColor_one);
-        tempPlayer->setSprite(SPRITE_HEAD_BOTTOM,
-            topClothes,
-            std::string(),
-            ItemColor_one);
+        tempPlayer->setSpriteId(SPRITE_HAIR,
+            shoes);
+        tempPlayer->setSpriteId(SPRITE_SHOES,
+            gloves);
+        tempPlayer->setSpriteId(SPRITE_SHIELD,
+            cape);
+        tempPlayer->setSpriteId(SPRITE_HEAD_TOP,
+            misc1);
+        tempPlayer->setSpriteId(SPRITE_WEAPON,
+            bottomClothes);
+        tempPlayer->setSpriteId(SPRITE_FLOOR,
+            shield);
+        tempPlayer->setSpriteId(SPRITE_CLOTHES_COLOR,
+            hat);
+        tempPlayer->setSpriteId(SPRITE_HEAD_BOTTOM,
+            topClothes);
 //        tempPlayer->setSprite(SPRITE_HEAD_MID, misc2);
     }
     if (packetVersion >= 20110928)

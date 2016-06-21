@@ -156,10 +156,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
          it != it_fend;
          ++ it, i ++)
     {
-        mPlayer->setSprite(i,
-            *it,
-            std::string(),
-            ItemColor_one);
+        mPlayer->setSpriteId(i,
+            *it);
     }
 
     if (!maxHairColor)

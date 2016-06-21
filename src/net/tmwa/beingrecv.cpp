@@ -148,10 +148,8 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 "",
                 ItemColor_one);
             dstBeing->setWeaponId(id);
-            dstBeing->setSprite(SPRITE_FLOOR,
-                id2,
-                std::string(),
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_FLOOR,
+                id2);
             localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 3:     // Change lower headgear for eAthena, pants for us

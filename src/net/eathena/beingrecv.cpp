@@ -165,10 +165,8 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 itemColor,
                 CardsList(cards));
             dstBeing->setWeaponId(id);
-            dstBeing->setSprite(SPRITE_FLOOR,
-                id2,
-                std::string(),
-                ItemColor_one);
+            dstBeing->setSpriteId(SPRITE_FLOOR,
+                id2);
             if (localPlayer)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
