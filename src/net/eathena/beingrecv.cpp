@@ -25,7 +25,6 @@
 #include "actormanager.h"
 #include "effectmanager.h"
 #include "game.h"
-#include "itemcolormanager.h"
 #include "notifymanager.h"
 #include "party.h"
 

@@ -24,9 +24,6 @@
 #define NET_EA_BEINGRECV_H
 
 #include "enums/simpletypes/beingid.h"
-#include "enums/simpletypes/itemcolor.h"
-
-#include <string>
 
 namespace Net
 {
