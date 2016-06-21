@@ -22,7 +22,6 @@
 #include "resources/db/chardb.h"
 
 #include "configuration.h"
-#include "itemcolormanager.h"
 #include "logger.h"
 
 #include "debug.h"
