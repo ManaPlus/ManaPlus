@@ -2944,17 +2944,16 @@ void Being::setTempSprite(const unsigned int slot,
             mGender, mSubType);
         int lastTime = 0;
         int startTime = 0;
-        const CardsList &cards = beingSlot.cardsId;
-        std::string color = beingSlot.color;
 
         AnimatedSprite *restrict equipmentSprite = nullptr;
 
-        ItemColor colorId = ItemColor_one;
-        if (!cards.isEmpty())
-            colorId = ItemColorManager::getColorFromCards(cards);
-
         if (!filename.empty())
         {
+            ItemColor colorId = ItemColor_one;
+            const CardsList &cards = beingSlot.cardsId;
+            if (!cards.isEmpty())
+                colorId = ItemColorManager::getColorFromCards(cards);
+            std::string color = beingSlot.color;
             if (color.empty())
                 color = info.getDyeColorsString(colorId);
 
