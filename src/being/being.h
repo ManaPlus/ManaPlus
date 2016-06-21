@@ -339,8 +339,8 @@ class Being notfinal : public ActorSprite,
                           const ItemColor colorId = ItemColor_one)
                           restrict2;
 
-        void setSpriteID(const unsigned int slot,
-                         const int id) restrict2;
+        void setHairColorSpriteID(const unsigned int slot,
+                                  const int id) restrict2;
 
         void setSpriteColor(const unsigned int slot,
                             const std::string &restrict color = "") restrict2;

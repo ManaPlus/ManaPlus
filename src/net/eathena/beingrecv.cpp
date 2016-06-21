@@ -155,7 +155,8 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             break;
         case 1:  // eAthena LOOK_HAIR
             dstBeing->setHairColor(fromInt(id, ItemColor));
-            dstBeing->setSpriteID(SPRITE_HAIR_COLOR, id * -1);
+            dstBeing->setHairColorSpriteID(SPRITE_HAIR_COLOR,
+                id * -1);
             break;
         case 2:  // LOOK_WEAPON Weapon ID in id, Shield ID in id2
             dstBeing->setSpriteCards(SPRITE_BODY,

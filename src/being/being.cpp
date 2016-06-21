@@ -2767,8 +2767,8 @@ void Being::setTempSprite(const unsigned int slot,
     }
 }
 
-void Being::setSpriteID(const unsigned int slot,
-                        const int id) restrict2
+void Being::setHairColorSpriteID(const unsigned int slot,
+                                 const int id) restrict2
 {
     BeingSlot &beingSlot = mSlots[slot];
     setSprite(slot,
