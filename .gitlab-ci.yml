@@ -316,6 +316,8 @@ cmake_gcc-4.9:
   script:
   - ./tools/ci/jobs/cmake_gcc49.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5:
   stage: build
