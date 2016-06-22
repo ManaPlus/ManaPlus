@@ -1016,7 +1016,7 @@ deheader_gui_windows_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1033,7 +1033,7 @@ deheader_sdl2_gui_windows_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1050,7 +1050,7 @@ deheader_gui_windows_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1067,7 +1067,7 @@ deheader_sdl2_gui_windows_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1084,7 +1084,7 @@ deheader_gui_widgets_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1101,7 +1101,7 @@ deheader_sdl2_gui_widgets_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1118,7 +1118,7 @@ deheader_gui_widgets_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1135,7 +1135,7 @@ deheader_sdl2_gui_widgets_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1152,7 +1152,7 @@ deheader_gui_models_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1169,7 +1169,7 @@ deheader_sdl2_gui_models_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1186,7 +1186,7 @@ deheader_gui_models_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1203,7 +1203,7 @@ deheader_sdl2_gui_models_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1220,7 +1220,7 @@ deheader_actions_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1237,7 +1237,7 @@ deheader_actions_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1254,7 +1254,7 @@ deheader_being_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1271,7 +1271,7 @@ deheader_being_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1288,7 +1288,7 @@ deheader_const_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1305,7 +1305,7 @@ deheader_dyetool_cpp:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1322,7 +1322,7 @@ deheader_dyetool_h:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1339,7 +1339,7 @@ deheader_enums_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1356,7 +1356,7 @@ deheader_events_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1373,7 +1373,7 @@ deheader_gui_fonts_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1390,7 +1390,7 @@ deheader_gui_fonts_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1407,7 +1407,7 @@ deheader_gui_models_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1424,7 +1424,7 @@ deheader_gui_popups_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1441,7 +1441,7 @@ deheader_gui_popups_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1458,7 +1458,7 @@ deheader_gui_shortcut_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1475,7 +1475,7 @@ deheader_gui_shortcut_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1492,7 +1492,7 @@ deheader_gui_widgets_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1509,7 +1509,7 @@ deheader_gui_windows_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1526,7 +1526,7 @@ deheader_gui_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1543,7 +1543,7 @@ deheader_gui_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1560,7 +1560,7 @@ deheader_input_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1577,7 +1577,7 @@ deheader_input_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1594,7 +1594,7 @@ deheader_listeners_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1611,7 +1611,7 @@ deheader_listeners_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1628,7 +1628,7 @@ deheader_net_ea_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1645,7 +1645,7 @@ deheader_net_ea_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1662,7 +1662,7 @@ deheader_net_eathena_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1679,7 +1679,7 @@ deheader_net_eathena_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1696,7 +1696,7 @@ deheader_net_tmwa_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1713,7 +1713,7 @@ deheader_net_tmwa_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1730,7 +1730,7 @@ deheader_net_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1747,7 +1747,7 @@ deheader_net_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1764,7 +1764,7 @@ deheader_particle_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1781,7 +1781,7 @@ deheader_particle_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1798,7 +1798,7 @@ deheader_render_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1815,7 +1815,7 @@ deheader_render_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1832,7 +1832,7 @@ deheader_resources_db_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1849,7 +1849,7 @@ deheader_resources_db_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1866,7 +1866,7 @@ deheader_resources_map_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1883,7 +1883,7 @@ deheader_resources_map_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1900,7 +1900,7 @@ deheader_resources_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1917,7 +1917,7 @@ deheader_resources_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1934,7 +1934,7 @@ deheader_test_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1951,7 +1951,7 @@ deheader_test_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1968,7 +1968,7 @@ deheader_utils_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1985,7 +1985,7 @@ deheader_utils_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2002,7 +2002,7 @@ deheader_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2019,7 +2019,7 @@ deheader_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2036,7 +2036,7 @@ deheader_cc:
   - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2055,7 +2055,7 @@ deheader_sdl2_actions_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2072,7 +2072,7 @@ deheader_sdl2_actions_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2089,7 +2089,7 @@ deheader_sdl2_being_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2106,7 +2106,7 @@ deheader_sdl2_being_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2123,7 +2123,7 @@ deheader_sdl2_const_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2140,7 +2140,7 @@ deheader_sdl2_dyetool_cpp:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2157,7 +2157,7 @@ deheader_sdl2_dyetool_h:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2174,7 +2174,7 @@ deheader_sdl2_enums_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2191,7 +2191,7 @@ deheader_sdl2_events_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2208,7 +2208,7 @@ deheader_sdl2_gui_fonts_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2225,7 +2225,7 @@ deheader_sdl2_gui_fonts_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2242,7 +2242,7 @@ deheader_sdl2_gui_models_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2259,7 +2259,7 @@ deheader_sdl2_gui_popups_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2276,7 +2276,7 @@ deheader_sdl2_gui_popups_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2293,7 +2293,7 @@ deheader_sdl2_gui_shortcut_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2310,7 +2310,7 @@ deheader_sdl2_gui_shortcut_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2327,7 +2327,7 @@ deheader_sdl2_gui_widgets_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2344,7 +2344,7 @@ deheader_sdl2_gui_windows_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2361,7 +2361,7 @@ deheader_sdl2_gui_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2378,7 +2378,7 @@ deheader_sdl2_gui_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2395,7 +2395,7 @@ deheader_sdl2_input_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2412,7 +2412,7 @@ deheader_sdl2_input_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2429,7 +2429,7 @@ deheader_sdl2_listeners_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2446,7 +2446,7 @@ deheader_sdl2_listeners_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2463,7 +2463,7 @@ deheader_sdl2_net_ea_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2480,7 +2480,7 @@ deheader_sdl2_net_ea_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2497,7 +2497,7 @@ deheader_sdl2_net_eathena_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2514,7 +2514,7 @@ deheader_sdl2_net_eathena_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2531,7 +2531,7 @@ deheader_sdl2_net_tmwa_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2548,7 +2548,7 @@ deheader_sdl2_net_tmwa_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2565,7 +2565,7 @@ deheader_sdl2_net_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2582,7 +2582,7 @@ deheader_sdl2_net_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2599,7 +2599,7 @@ deheader_sdl2_particle_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2616,7 +2616,7 @@ deheader_sdl2_particle_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2633,7 +2633,7 @@ deheader_sdl2_render_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2650,7 +2650,7 @@ deheader_sdl2_render_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2667,7 +2667,7 @@ deheader_sdl2_resources_db_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2684,7 +2684,7 @@ deheader_sdl2_resources_db_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2701,7 +2701,7 @@ deheader_sdl2_resources_map_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2718,7 +2718,7 @@ deheader_sdl2_resources_map_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2735,7 +2735,7 @@ deheader_sdl2_resources_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2752,7 +2752,7 @@ deheader_sdl2_resources_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2769,7 +2769,7 @@ deheader_sdl2_test_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2786,7 +2786,7 @@ deheader_sdl2_test_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2803,7 +2803,7 @@ deheader_sdl2_utils_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2820,7 +2820,7 @@ deheader_sdl2_utils_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2837,7 +2837,7 @@ deheader_sdl2_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2854,7 +2854,7 @@ deheader_sdl2_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2871,7 +2871,7 @@ deheader_sdl2_cc:
   - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2890,7 +2890,7 @@ deheader_actions_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2907,7 +2907,7 @@ deheader_actions_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2924,7 +2924,7 @@ deheader_being_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2941,7 +2941,7 @@ deheader_being_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2958,7 +2958,7 @@ deheader_const_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2975,7 +2975,7 @@ deheader_dyetool_withoutopengl_cpp:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2992,7 +2992,7 @@ deheader_dyetool_withoutopengl_h:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3009,7 +3009,7 @@ deheader_enums_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3026,7 +3026,7 @@ deheader_events_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3043,7 +3043,7 @@ deheader_gui_fonts_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3060,7 +3060,7 @@ deheader_gui_fonts_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3077,7 +3077,7 @@ deheader_gui_models_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3094,7 +3094,7 @@ deheader_gui_popups_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3111,7 +3111,7 @@ deheader_gui_popups_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3128,7 +3128,7 @@ deheader_gui_shortcut_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3145,7 +3145,7 @@ deheader_gui_shortcut_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3162,7 +3162,7 @@ deheader_gui_widgets_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3179,7 +3179,7 @@ deheader_gui_windows_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3196,7 +3196,7 @@ deheader_gui_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3213,7 +3213,7 @@ deheader_gui_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3230,7 +3230,7 @@ deheader_input_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3247,7 +3247,7 @@ deheader_input_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3264,7 +3264,7 @@ deheader_listeners_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3281,7 +3281,7 @@ deheader_listeners_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3298,7 +3298,7 @@ deheader_net_ea_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3315,7 +3315,7 @@ deheader_net_ea_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3332,7 +3332,7 @@ deheader_net_eathena_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3349,7 +3349,7 @@ deheader_net_eathena_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3366,7 +3366,7 @@ deheader_net_tmwa_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3383,7 +3383,7 @@ deheader_net_tmwa_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3400,7 +3400,7 @@ deheader_net_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3417,7 +3417,7 @@ deheader_net_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3434,7 +3434,7 @@ deheader_particle_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3451,7 +3451,7 @@ deheader_particle_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3468,7 +3468,7 @@ deheader_render_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3485,7 +3485,7 @@ deheader_render_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3502,7 +3502,7 @@ deheader_resources_db_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3519,7 +3519,7 @@ deheader_resources_db_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3536,7 +3536,7 @@ deheader_resources_map_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3553,7 +3553,7 @@ deheader_resources_map_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3570,7 +3570,7 @@ deheader_resources_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3587,7 +3587,7 @@ deheader_resources_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3604,7 +3604,7 @@ deheader_test_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3621,7 +3621,7 @@ deheader_test_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3638,7 +3638,7 @@ deheader_utils_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3655,7 +3655,7 @@ deheader_utils_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3672,7 +3672,7 @@ deheader_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3689,7 +3689,7 @@ deheader_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3706,7 +3706,7 @@ deheader_withoutopengl_cc:
   - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT"
   - export INCLUDES="-I/usr/include/SDL -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3725,7 +3725,7 @@ deheader_sdl2_actions_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3742,7 +3742,7 @@ deheader_sdl2_actions_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3759,7 +3759,7 @@ deheader_sdl2_being_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3776,7 +3776,7 @@ deheader_sdl2_being_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3793,7 +3793,7 @@ deheader_sdl2_const_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3810,7 +3810,7 @@ deheader_sdl2_dyetool_withoutopengl_cpp:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3827,7 +3827,7 @@ deheader_sdl2_dyetool_withoutopengl_h:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3844,7 +3844,7 @@ deheader_sdl2_enums_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3861,7 +3861,7 @@ deheader_sdl2_events_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3878,7 +3878,7 @@ deheader_sdl2_gui_fonts_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3895,7 +3895,7 @@ deheader_sdl2_gui_fonts_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3912,7 +3912,7 @@ deheader_sdl2_gui_models_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3929,7 +3929,7 @@ deheader_sdl2_gui_popups_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3946,7 +3946,7 @@ deheader_sdl2_gui_popups_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3963,7 +3963,7 @@ deheader_sdl2_gui_shortcut_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3980,7 +3980,7 @@ deheader_sdl2_gui_shortcut_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3997,7 +3997,7 @@ deheader_sdl2_gui_widgets_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4014,7 +4014,7 @@ deheader_sdl2_gui_windows_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4031,7 +4031,7 @@ deheader_sdl2_gui_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4048,7 +4048,7 @@ deheader_sdl2_gui_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4065,7 +4065,7 @@ deheader_sdl2_input_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4082,7 +4082,7 @@ deheader_sdl2_input_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4099,7 +4099,7 @@ deheader_sdl2_listeners_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4116,7 +4116,7 @@ deheader_sdl2_listeners_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4133,7 +4133,7 @@ deheader_sdl2_net_ea_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4150,7 +4150,7 @@ deheader_sdl2_net_ea_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4167,7 +4167,7 @@ deheader_sdl2_net_eathena_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4184,7 +4184,7 @@ deheader_sdl2_net_eathena_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4201,7 +4201,7 @@ deheader_sdl2_net_tmwa_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4218,7 +4218,7 @@ deheader_sdl2_net_tmwa_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4235,7 +4235,7 @@ deheader_sdl2_net_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4252,7 +4252,7 @@ deheader_sdl2_net_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4269,7 +4269,7 @@ deheader_sdl2_particle_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4286,7 +4286,7 @@ deheader_sdl2_particle_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4303,7 +4303,7 @@ deheader_sdl2_render_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4320,7 +4320,7 @@ deheader_sdl2_render_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4337,7 +4337,7 @@ deheader_sdl2_resources_db_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4354,7 +4354,7 @@ deheader_sdl2_resources_db_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4371,7 +4371,7 @@ deheader_sdl2_resources_map_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4388,7 +4388,7 @@ deheader_sdl2_resources_map_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4405,7 +4405,7 @@ deheader_sdl2_resources_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4422,7 +4422,7 @@ deheader_sdl2_resources_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4439,7 +4439,7 @@ deheader_sdl2_test_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4456,7 +4456,7 @@ deheader_sdl2_test_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4473,7 +4473,7 @@ deheader_sdl2_utils_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4490,7 +4490,7 @@ deheader_sdl2_utils_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4507,7 +4507,7 @@ deheader_sdl2_withoutopengl_cpp:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4524,7 +4524,7 @@ deheader_sdl2_withoutopengl_h:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4541,7 +4541,7 @@ deheader_sdl2_withoutopengl_cc:
   - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DEATHENA_SUPPORT -DUSE_SDL2"
   - export INCLUDES="-I/usr/include/SDL2 -I/usr/include/libxml2"
   - export CXX=g++-5
-  - export LOGFILE=deheader.log
+  - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh

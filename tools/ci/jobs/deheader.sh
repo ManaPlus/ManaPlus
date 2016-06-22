@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export LOGFILE2=deheader2.log
+export LOGFILE2=logs/deheader2.log
 
 source ./tools/ci/scripts/init.sh
 
