@@ -110,6 +110,8 @@ gcc-5_tests:
   script:
   - ./tools/ci/jobs/gcc5_tests.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_tests_i386:
   stage: build
@@ -124,6 +126,8 @@ gcc-6_tests:
   script:
   - ./tools/ci/jobs/gcc6_tests.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-6_tests_i386:
   stage: build
@@ -138,6 +142,8 @@ gcc-5_sdl2_tests:
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
   image: debian:unstable
+  tags:
+    - docker
 
 gcc-5_sdl2_tests_i386:
   stage: build
