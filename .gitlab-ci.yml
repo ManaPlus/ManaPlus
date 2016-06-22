@@ -14,8 +14,6 @@ clang-3.9:
   script:
   - ./tools/ci/jobs/clang39.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_c++11_i386:
   stage: prebuild
@@ -30,8 +28,6 @@ gcc-6:
   script:
   - ./tools/ci/jobs/gcc6.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-6-i386:
   stage: prebuild
@@ -46,48 +42,36 @@ gcc-4.4:
   script:
   - ./tools/ci/jobs/gcc44.sh
   image: debian:oldstable
-  tags:
-    - docker
 
 mplint_po:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh po
   image: debian:unstable
-  tags:
-    - docker
 
 mplint_src:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh src
   image: debian:unstable
-  tags:
-    - docker
 
 mplint_data:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh data
   image: debian:unstable
-  tags:
-    - docker
 
 cpplint:
   stage: prebuild
   script:
   - ./tools/ci/jobs/cpplint.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_h_all:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_h_all_i386:
   stage: prebuild
@@ -102,8 +86,6 @@ pngcheck:
   script:
   - ./tools/ci/jobs/pngcheck.sh
   image: debian:unstable
-  tags:
-    - docker
 
 # tests
 
@@ -128,8 +110,6 @@ gcc-5_tests:
   script:
   - ./tools/ci/jobs/gcc5_tests.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_tests_i386:
   stage: build
@@ -144,8 +124,6 @@ gcc-6_tests:
   script:
   - ./tools/ci/jobs/gcc6_tests.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-6_tests_i386:
   stage: build
@@ -160,8 +138,6 @@ gcc-5_sdl2_tests:
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_sdl2_tests_i386:
   stage: build
@@ -176,8 +152,6 @@ gcc-6_lto:
   script:
   - ./tools/ci/jobs/gcc6_lto.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-6_lto_i386:
   stage: build
@@ -210,8 +184,6 @@ gcc-4.6:
   script:
   - ./tools/ci/jobs/gcc46.sh
   image: debian:oldstable
-  tags:
-    - docker
 
 gcc-4.6_i386:
   stage: build
@@ -226,8 +198,6 @@ gcc-4.7:
   script:
   - ./tools/ci/jobs/gcc47.sh
   image: debian:oldstable
-  tags:
-    - docker
 
 gcc-4.7_i386:
   stage: build
@@ -242,8 +212,6 @@ gcc-4.8:
   script:
   - ./tools/ci/jobs/gcc48.sh
   image: debian:stable
-  tags:
-    - docker
 
 gcc-4.8_i386:
   stage: build
@@ -274,8 +242,6 @@ clang-3.4:
   script:
   - ./tools/ci/jobs/clang34.sh
   image: debian:stable
-  tags:
-    - docker
 
 clang-3.4_i386:
   stage: build
@@ -290,8 +256,6 @@ clang-3.5:
   script:
   - ./tools/ci/jobs/clang35.sh
   image: debian:stable
-  tags:
-    - docker
 
 clang-3.5_i386:
   stage: build
@@ -306,8 +270,6 @@ clang-3.5_i386:
   script:
   - ./tools/ci/jobs/clang39.sh_c++11.sh
   image: debian:unstable
-  tags:
-    - docker
 
 .clang-3.9_c++11_i386:
   stage: build
@@ -322,16 +284,12 @@ gcc-4.8_c++11:
   script:
   - ./tools/ci/jobs/gcc48_c++11.sh
   image: debian:stable
-  tags:
-    - docker
 
 gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-4.9_i386:
   stage: build
@@ -346,48 +304,36 @@ gcc-4.9_c++11:
   script:
   - ./tools/ci/jobs/gcc49_c++11.sh
   image: debian:unstable
-  tags:
-    - docker
 
 cmake_gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/cmake_gcc49.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_sdl2_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_sdl2_c++11_i386:
   stage: build
@@ -402,8 +348,6 @@ gcc-snapshot:
   script:
   - ./tools/ci/jobs/gccsnapshot.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-snapshot_i386:
   stage: build
@@ -418,8 +362,6 @@ gcc-snapshot_sdl2:
   script:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-snapshot_sdl2_i386:
   stage: build
@@ -434,16 +376,12 @@ gcc-5_sanitize:
   script:
   - ./tools/ci/jobs/gcc5_sanitize.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-6_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-6_sanitize_i386:
   stage: build
@@ -458,176 +396,132 @@ gcc_tmwa:
   script:
   - ./tools/ci/jobs/gcc5.sh --without-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_eathena:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --without-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_opengl_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_opengl_debug:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh --with-opengl --enable-tmwa --disable-eathena --enable-memdebug=yes
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_without_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --without-opengl
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_cilkplus:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh --enable-cilkplus
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_eathena_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_eathena_opengl_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_eathena_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_opengl_portable:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --enable-tmwa --disable-eathena --enable-portable=yes
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_opengl_portable_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --enable-tmwa --disable-eathena --enable-portable=yes
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_portable:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --enable-tmwa --enable-eathena --enable-portable=yes
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_opengl_nonls:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --with-opengl --enable-tmwa --disable-eathena --disable-nls
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_opengl_nonls_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --enable-tmwa --disable-eathena --disable-nls
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_eathena_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh --without-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_sdl2_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh --without-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_tmwa_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh --without-opengl --enable-tmwa --disable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 gcc_eathena_sdl2_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh --without-opengl --disable-tmwa --enable-eathena
   image: debian:unstable
-  tags:
-    - docker
 
 clang-3.9_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/clang39_sdl2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-6_no_asserts:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --disable-asserts
   image: debian:unstable
-  tags:
-    - docker
 
 # different tools
 
@@ -636,64 +530,48 @@ gcc-5_h_eathena:
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DENABLE_LIBXML
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_h_eathena_pugi:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DENABLE_PUGIXML
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_h_eathena_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DUSE_OPENGL -DENABLE_LIBXML
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_h_eathena_opengl_pugi:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DUSE_OPENGL -DENABLE_PUGIXML
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_h_eathena_nsl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_h_eathena_tmwa:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_LIBXML
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_h_pugi_all:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DEATHENA_SUPPORT -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML
   image: debian:unstable
-  tags:
-    - docker
 
 gcc-5_tarball:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_tarball.sh
   image: debian:unstable
-  tags:
-    - docker
 
 # deheader default
 
@@ -708,8 +586,6 @@ deheader_gui_windows_cpp:
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_windows_cpp:
   stage: build
@@ -722,8 +598,6 @@ deheader_sdl2_gui_windows_cpp:
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_windows_withoutopengl_cpp:
   stage: build
@@ -736,8 +610,6 @@ deheader_gui_windows_withoutopengl_cpp:
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_windows_withoutopengl_cpp:
   stage: build
@@ -750,8 +622,6 @@ deheader_sdl2_gui_windows_withoutopengl_cpp:
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_widgets_cpp:
   stage: build
@@ -764,8 +634,6 @@ deheader_gui_widgets_cpp:
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_widgets_cpp:
   stage: build
@@ -778,8 +646,6 @@ deheader_sdl2_gui_widgets_cpp:
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_widgets_withoutopengl_cpp:
   stage: build
@@ -792,8 +658,6 @@ deheader_gui_widgets_withoutopengl_cpp:
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_widgets_withoutopengl_cpp:
   stage: build
@@ -806,8 +670,6 @@ deheader_sdl2_gui_widgets_withoutopengl_cpp:
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_models_cpp:
   stage: build
@@ -820,8 +682,6 @@ deheader_gui_models_cpp:
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_models_cpp:
   stage: build
@@ -834,8 +694,6 @@ deheader_sdl2_gui_models_cpp:
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_models_withoutopengl_cpp:
   stage: build
@@ -848,8 +706,6 @@ deheader_gui_models_withoutopengl_cpp:
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_models_withoutopengl_cpp:
   stage: build
@@ -862,8 +718,6 @@ deheader_sdl2_gui_models_withoutopengl_cpp:
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_actions_cpp:
   stage: build
@@ -876,8 +730,6 @@ deheader_actions_cpp:
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_actions_h:
   stage: build
@@ -890,8 +742,6 @@ deheader_actions_h:
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_being_cpp:
   stage: build
@@ -904,8 +754,6 @@ deheader_being_cpp:
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_being_h:
   stage: build
@@ -918,8 +766,6 @@ deheader_being_h:
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_const_h:
   stage: build
@@ -932,8 +778,6 @@ deheader_const_h:
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_dyetool_cpp:
   stage: build
@@ -946,8 +790,6 @@ deheader_dyetool_cpp:
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_dyetool_h:
   stage: build
@@ -960,8 +802,6 @@ deheader_dyetool_h:
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_enums_h:
   stage: build
@@ -974,8 +814,6 @@ deheader_enums_h:
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_events_h:
   stage: build
@@ -988,8 +826,6 @@ deheader_events_h:
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_fonts_cpp:
   stage: build
@@ -1002,8 +838,6 @@ deheader_gui_fonts_cpp:
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_fonts_h:
   stage: build
@@ -1016,8 +850,6 @@ deheader_gui_fonts_h:
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_models_h:
   stage: build
@@ -1030,8 +862,6 @@ deheader_gui_models_h:
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_popups_cpp:
   stage: build
@@ -1044,8 +874,6 @@ deheader_gui_popups_cpp:
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_popups_h:
   stage: build
@@ -1058,8 +886,6 @@ deheader_gui_popups_h:
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_shortcut_cpp:
   stage: build
@@ -1072,8 +898,6 @@ deheader_gui_shortcut_cpp:
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_shortcut_h:
   stage: build
@@ -1086,8 +910,6 @@ deheader_gui_shortcut_h:
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_widgets_h:
   stage: build
@@ -1100,8 +922,6 @@ deheader_gui_widgets_h:
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_windows_h:
   stage: build
@@ -1114,8 +934,6 @@ deheader_gui_windows_h:
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_cpp:
   stage: build
@@ -1128,8 +946,6 @@ deheader_gui_cpp:
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_h:
   stage: build
@@ -1142,8 +958,6 @@ deheader_gui_h:
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_input_cpp:
   stage: build
@@ -1156,8 +970,6 @@ deheader_input_cpp:
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_input_h:
   stage: build
@@ -1170,8 +982,6 @@ deheader_input_h:
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_listeners_cpp:
   stage: build
@@ -1184,8 +994,6 @@ deheader_listeners_cpp:
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_listeners_h:
   stage: build
@@ -1198,8 +1006,6 @@ deheader_listeners_h:
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_ea_cpp:
   stage: build
@@ -1212,8 +1018,6 @@ deheader_net_ea_cpp:
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_ea_h:
   stage: build
@@ -1226,8 +1030,6 @@ deheader_net_ea_h:
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_eathena_cpp:
   stage: build
@@ -1240,8 +1042,6 @@ deheader_net_eathena_cpp:
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_eathena_h:
   stage: build
@@ -1254,8 +1054,6 @@ deheader_net_eathena_h:
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_tmwa_cpp:
   stage: build
@@ -1268,8 +1066,6 @@ deheader_net_tmwa_cpp:
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_tmwa_h:
   stage: build
@@ -1282,8 +1078,6 @@ deheader_net_tmwa_h:
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_cpp:
   stage: build
@@ -1296,8 +1090,6 @@ deheader_net_cpp:
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_h:
   stage: build
@@ -1310,8 +1102,6 @@ deheader_net_h:
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_particle_cpp:
   stage: build
@@ -1324,8 +1114,6 @@ deheader_particle_cpp:
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_particle_h:
   stage: build
@@ -1338,8 +1126,6 @@ deheader_particle_h:
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_render_cpp:
   stage: build
@@ -1352,8 +1138,6 @@ deheader_render_cpp:
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_render_h:
   stage: build
@@ -1366,8 +1150,6 @@ deheader_render_h:
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_db_cpp:
   stage: build
@@ -1380,8 +1162,6 @@ deheader_resources_db_cpp:
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_db_h:
   stage: build
@@ -1394,8 +1174,6 @@ deheader_resources_db_h:
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_map_cpp:
   stage: build
@@ -1408,8 +1186,6 @@ deheader_resources_map_cpp:
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_map_h:
   stage: build
@@ -1422,8 +1198,6 @@ deheader_resources_map_h:
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_cpp:
   stage: build
@@ -1436,8 +1210,6 @@ deheader_resources_cpp:
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_h:
   stage: build
@@ -1450,8 +1222,6 @@ deheader_resources_h:
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_test_cpp:
   stage: build
@@ -1464,8 +1234,6 @@ deheader_test_cpp:
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_test_h:
   stage: build
@@ -1478,8 +1246,6 @@ deheader_test_h:
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_utils_cpp:
   stage: build
@@ -1492,8 +1258,6 @@ deheader_utils_cpp:
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_utils_h:
   stage: build
@@ -1506,8 +1270,6 @@ deheader_utils_h:
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_cpp:
   stage: build
@@ -1520,8 +1282,6 @@ deheader_cpp:
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_h:
   stage: build
@@ -1534,8 +1294,6 @@ deheader_h:
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_cc:
   stage: build
@@ -1548,8 +1306,6 @@ deheader_cc:
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 # deheader sdl2
 
@@ -1564,8 +1320,6 @@ deheader_sdl2_actions_cpp:
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_actions_h:
   stage: build
@@ -1578,8 +1332,6 @@ deheader_sdl2_actions_h:
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_being_cpp:
   stage: build
@@ -1592,8 +1344,6 @@ deheader_sdl2_being_cpp:
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_being_h:
   stage: build
@@ -1606,8 +1356,6 @@ deheader_sdl2_being_h:
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_const_h:
   stage: build
@@ -1620,8 +1368,6 @@ deheader_sdl2_const_h:
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_dyetool_cpp:
   stage: build
@@ -1634,8 +1380,6 @@ deheader_sdl2_dyetool_cpp:
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_dyetool_h:
   stage: build
@@ -1648,8 +1392,6 @@ deheader_sdl2_dyetool_h:
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_enums_h:
   stage: build
@@ -1662,8 +1404,6 @@ deheader_sdl2_enums_h:
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_events_h:
   stage: build
@@ -1676,8 +1416,6 @@ deheader_sdl2_events_h:
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_fonts_cpp:
   stage: build
@@ -1690,8 +1428,6 @@ deheader_sdl2_gui_fonts_cpp:
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_fonts_h:
   stage: build
@@ -1704,8 +1440,6 @@ deheader_sdl2_gui_fonts_h:
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_models_h:
   stage: build
@@ -1718,8 +1452,6 @@ deheader_sdl2_gui_models_h:
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_popups_cpp:
   stage: build
@@ -1732,8 +1464,6 @@ deheader_sdl2_gui_popups_cpp:
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_popups_h:
   stage: build
@@ -1746,8 +1476,6 @@ deheader_sdl2_gui_popups_h:
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_shortcut_cpp:
   stage: build
@@ -1760,8 +1488,6 @@ deheader_sdl2_gui_shortcut_cpp:
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_shortcut_h:
   stage: build
@@ -1774,8 +1500,6 @@ deheader_sdl2_gui_shortcut_h:
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_widgets_h:
   stage: build
@@ -1788,8 +1512,6 @@ deheader_sdl2_gui_widgets_h:
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_windows_h:
   stage: build
@@ -1802,8 +1524,6 @@ deheader_sdl2_gui_windows_h:
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_cpp:
   stage: build
@@ -1816,8 +1536,6 @@ deheader_sdl2_gui_cpp:
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_h:
   stage: build
@@ -1830,8 +1548,6 @@ deheader_sdl2_gui_h:
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_input_cpp:
   stage: build
@@ -1844,8 +1560,6 @@ deheader_sdl2_input_cpp:
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_input_h:
   stage: build
@@ -1858,8 +1572,6 @@ deheader_sdl2_input_h:
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_listeners_cpp:
   stage: build
@@ -1872,8 +1584,6 @@ deheader_sdl2_listeners_cpp:
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_listeners_h:
   stage: build
@@ -1886,8 +1596,6 @@ deheader_sdl2_listeners_h:
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_ea_cpp:
   stage: build
@@ -1900,8 +1608,6 @@ deheader_sdl2_net_ea_cpp:
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_ea_h:
   stage: build
@@ -1914,8 +1620,6 @@ deheader_sdl2_net_ea_h:
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_eathena_cpp:
   stage: build
@@ -1928,8 +1632,6 @@ deheader_sdl2_net_eathena_cpp:
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_eathena_h:
   stage: build
@@ -1942,8 +1644,6 @@ deheader_sdl2_net_eathena_h:
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_tmwa_cpp:
   stage: build
@@ -1956,8 +1656,6 @@ deheader_sdl2_net_tmwa_cpp:
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_tmwa_h:
   stage: build
@@ -1970,8 +1668,6 @@ deheader_sdl2_net_tmwa_h:
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_cpp:
   stage: build
@@ -1984,8 +1680,6 @@ deheader_sdl2_net_cpp:
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_h:
   stage: build
@@ -1998,8 +1692,6 @@ deheader_sdl2_net_h:
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_particle_cpp:
   stage: build
@@ -2012,8 +1704,6 @@ deheader_sdl2_particle_cpp:
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_particle_h:
   stage: build
@@ -2026,8 +1716,6 @@ deheader_sdl2_particle_h:
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_render_cpp:
   stage: build
@@ -2040,8 +1728,6 @@ deheader_sdl2_render_cpp:
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_render_h:
   stage: build
@@ -2054,8 +1740,6 @@ deheader_sdl2_render_h:
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_db_cpp:
   stage: build
@@ -2068,8 +1752,6 @@ deheader_sdl2_resources_db_cpp:
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_db_h:
   stage: build
@@ -2082,8 +1764,6 @@ deheader_sdl2_resources_db_h:
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_map_cpp:
   stage: build
@@ -2096,8 +1776,6 @@ deheader_sdl2_resources_map_cpp:
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_map_h:
   stage: build
@@ -2110,8 +1788,6 @@ deheader_sdl2_resources_map_h:
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_cpp:
   stage: build
@@ -2124,8 +1800,6 @@ deheader_sdl2_resources_cpp:
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_h:
   stage: build
@@ -2138,8 +1812,6 @@ deheader_sdl2_resources_h:
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_test_cpp:
   stage: build
@@ -2152,8 +1824,6 @@ deheader_sdl2_test_cpp:
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_test_h:
   stage: build
@@ -2166,8 +1836,6 @@ deheader_sdl2_test_h:
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_utils_cpp:
   stage: build
@@ -2180,8 +1848,6 @@ deheader_sdl2_utils_cpp:
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_utils_h:
   stage: build
@@ -2194,8 +1860,6 @@ deheader_sdl2_utils_h:
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_cpp:
   stage: build
@@ -2208,8 +1872,6 @@ deheader_sdl2_cpp:
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_h:
   stage: build
@@ -2222,8 +1884,6 @@ deheader_sdl2_h:
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_cc:
   stage: build
@@ -2236,8 +1896,6 @@ deheader_sdl2_cc:
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 # dehedeart without opengl
 
@@ -2252,8 +1910,6 @@ deheader_actions_withoutopengl_cpp:
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_actions_withoutopengl_h:
   stage: build
@@ -2266,8 +1922,6 @@ deheader_actions_withoutopengl_h:
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_being_withoutopengl_cpp:
   stage: build
@@ -2280,8 +1934,6 @@ deheader_being_withoutopengl_cpp:
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_being_withoutopengl_h:
   stage: build
@@ -2294,8 +1946,6 @@ deheader_being_withoutopengl_h:
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_const_withoutopengl_h:
   stage: build
@@ -2308,8 +1958,6 @@ deheader_const_withoutopengl_h:
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_dyetool_withoutopengl_cpp:
   stage: build
@@ -2322,8 +1970,6 @@ deheader_dyetool_withoutopengl_cpp:
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_dyetool_withoutopengl_h:
   stage: build
@@ -2336,8 +1982,6 @@ deheader_dyetool_withoutopengl_h:
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_enums_withoutopengl_h:
   stage: build
@@ -2350,8 +1994,6 @@ deheader_enums_withoutopengl_h:
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_events_withoutopengl_h:
   stage: build
@@ -2364,8 +2006,6 @@ deheader_events_withoutopengl_h:
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_fonts_withoutopengl_cpp:
   stage: build
@@ -2378,8 +2018,6 @@ deheader_gui_fonts_withoutopengl_cpp:
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_fonts_withoutopengl_h:
   stage: build
@@ -2392,8 +2030,6 @@ deheader_gui_fonts_withoutopengl_h:
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_models_withoutopengl_h:
   stage: build
@@ -2406,8 +2042,6 @@ deheader_gui_models_withoutopengl_h:
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_popups_withoutopengl_cpp:
   stage: build
@@ -2420,8 +2054,6 @@ deheader_gui_popups_withoutopengl_cpp:
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_popups_withoutopengl_h:
   stage: build
@@ -2434,8 +2066,6 @@ deheader_gui_popups_withoutopengl_h:
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_shortcut_withoutopengl_cpp:
   stage: build
@@ -2448,8 +2078,6 @@ deheader_gui_shortcut_withoutopengl_cpp:
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_shortcut_withoutopengl_h:
   stage: build
@@ -2462,8 +2090,6 @@ deheader_gui_shortcut_withoutopengl_h:
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_widgets_withoutopengl_h:
   stage: build
@@ -2476,8 +2102,6 @@ deheader_gui_widgets_withoutopengl_h:
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_windows_withoutopengl_h:
   stage: build
@@ -2490,8 +2114,6 @@ deheader_gui_windows_withoutopengl_h:
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_withoutopengl_cpp:
   stage: build
@@ -2504,8 +2126,6 @@ deheader_gui_withoutopengl_cpp:
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_gui_withoutopengl_h:
   stage: build
@@ -2518,8 +2138,6 @@ deheader_gui_withoutopengl_h:
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_input_withoutopengl_cpp:
   stage: build
@@ -2532,8 +2150,6 @@ deheader_input_withoutopengl_cpp:
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_input_withoutopengl_h:
   stage: build
@@ -2546,8 +2162,6 @@ deheader_input_withoutopengl_h:
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_listeners_withoutopengl_cpp:
   stage: build
@@ -2560,8 +2174,6 @@ deheader_listeners_withoutopengl_cpp:
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_listeners_withoutopengl_h:
   stage: build
@@ -2574,8 +2186,6 @@ deheader_listeners_withoutopengl_h:
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_ea_withoutopengl_cpp:
   stage: build
@@ -2588,8 +2198,6 @@ deheader_net_ea_withoutopengl_cpp:
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_ea_withoutopengl_h:
   stage: build
@@ -2602,8 +2210,6 @@ deheader_net_ea_withoutopengl_h:
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_eathena_withoutopengl_cpp:
   stage: build
@@ -2616,8 +2222,6 @@ deheader_net_eathena_withoutopengl_cpp:
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_eathena_withoutopengl_h:
   stage: build
@@ -2630,8 +2234,6 @@ deheader_net_eathena_withoutopengl_h:
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_tmwa_withoutopengl_cpp:
   stage: build
@@ -2644,8 +2246,6 @@ deheader_net_tmwa_withoutopengl_cpp:
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_tmwa_withoutopengl_h:
   stage: build
@@ -2658,8 +2258,6 @@ deheader_net_tmwa_withoutopengl_h:
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_withoutopengl_cpp:
   stage: build
@@ -2672,8 +2270,6 @@ deheader_net_withoutopengl_cpp:
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_net_withoutopengl_h:
   stage: build
@@ -2686,8 +2282,6 @@ deheader_net_withoutopengl_h:
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_particle_withoutopengl_cpp:
   stage: build
@@ -2700,8 +2294,6 @@ deheader_particle_withoutopengl_cpp:
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_particle_withoutopengl_h:
   stage: build
@@ -2714,8 +2306,6 @@ deheader_particle_withoutopengl_h:
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_render_withoutopengl_cpp:
   stage: build
@@ -2728,8 +2318,6 @@ deheader_render_withoutopengl_cpp:
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_render_withoutopengl_h:
   stage: build
@@ -2742,8 +2330,6 @@ deheader_render_withoutopengl_h:
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_db_withoutopengl_cpp:
   stage: build
@@ -2756,8 +2342,6 @@ deheader_resources_db_withoutopengl_cpp:
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_db_withoutopengl_h:
   stage: build
@@ -2770,8 +2354,6 @@ deheader_resources_db_withoutopengl_h:
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_map_withoutopengl_cpp:
   stage: build
@@ -2784,8 +2366,6 @@ deheader_resources_map_withoutopengl_cpp:
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_map_withoutopengl_h:
   stage: build
@@ -2798,8 +2378,6 @@ deheader_resources_map_withoutopengl_h:
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_withoutopengl_cpp:
   stage: build
@@ -2812,8 +2390,6 @@ deheader_resources_withoutopengl_cpp:
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_resources_withoutopengl_h:
   stage: build
@@ -2826,8 +2402,6 @@ deheader_resources_withoutopengl_h:
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_test_withoutopengl_cpp:
   stage: build
@@ -2840,8 +2414,6 @@ deheader_test_withoutopengl_cpp:
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_test_withoutopengl_h:
   stage: build
@@ -2854,8 +2426,6 @@ deheader_test_withoutopengl_h:
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_utils_withoutopengl_cpp:
   stage: build
@@ -2868,8 +2438,6 @@ deheader_utils_withoutopengl_cpp:
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_utils_withoutopengl_h:
   stage: build
@@ -2882,8 +2450,6 @@ deheader_utils_withoutopengl_h:
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_withoutopengl_cpp:
   stage: build
@@ -2896,8 +2462,6 @@ deheader_withoutopengl_cpp:
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_withoutopengl_h:
   stage: build
@@ -2910,8 +2474,6 @@ deheader_withoutopengl_h:
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_withoutopengl_cc:
   stage: build
@@ -2924,8 +2486,6 @@ deheader_withoutopengl_cc:
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 # deheader sdl2
 
@@ -2940,8 +2500,6 @@ deheader_sdl2_actions_withoutopengl_cpp:
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_actions_withoutopengl_h:
   stage: build
@@ -2954,8 +2512,6 @@ deheader_sdl2_actions_withoutopengl_h:
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_being_withoutopengl_cpp:
   stage: build
@@ -2968,8 +2524,6 @@ deheader_sdl2_being_withoutopengl_cpp:
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_being_withoutopengl_h:
   stage: build
@@ -2982,8 +2536,6 @@ deheader_sdl2_being_withoutopengl_h:
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_const_withoutopengl_h:
   stage: build
@@ -2996,8 +2548,6 @@ deheader_sdl2_const_withoutopengl_h:
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_dyetool_withoutopengl_cpp:
   stage: build
@@ -3010,8 +2560,6 @@ deheader_sdl2_dyetool_withoutopengl_cpp:
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_dyetool_withoutopengl_h:
   stage: build
@@ -3024,8 +2572,6 @@ deheader_sdl2_dyetool_withoutopengl_h:
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_enums_withoutopengl_h:
   stage: build
@@ -3038,8 +2584,6 @@ deheader_sdl2_enums_withoutopengl_h:
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_events_withoutopengl_h:
   stage: build
@@ -3052,8 +2596,6 @@ deheader_sdl2_events_withoutopengl_h:
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_fonts_withoutopengl_cpp:
   stage: build
@@ -3066,8 +2608,6 @@ deheader_sdl2_gui_fonts_withoutopengl_cpp:
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_fonts_withoutopengl_h:
   stage: build
@@ -3080,8 +2620,6 @@ deheader_sdl2_gui_fonts_withoutopengl_h:
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_models_withoutopengl_h:
   stage: build
@@ -3094,8 +2632,6 @@ deheader_sdl2_gui_models_withoutopengl_h:
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_popups_withoutopengl_cpp:
   stage: build
@@ -3108,8 +2644,6 @@ deheader_sdl2_gui_popups_withoutopengl_cpp:
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_popups_withoutopengl_h:
   stage: build
@@ -3122,8 +2656,6 @@ deheader_sdl2_gui_popups_withoutopengl_h:
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_shortcut_withoutopengl_cpp:
   stage: build
@@ -3136,8 +2668,6 @@ deheader_sdl2_gui_shortcut_withoutopengl_cpp:
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_shortcut_withoutopengl_h:
   stage: build
@@ -3150,8 +2680,6 @@ deheader_sdl2_gui_shortcut_withoutopengl_h:
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_widgets_withoutopengl_h:
   stage: build
@@ -3164,8 +2692,6 @@ deheader_sdl2_gui_widgets_withoutopengl_h:
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_windows_withoutopengl_h:
   stage: build
@@ -3178,8 +2704,6 @@ deheader_sdl2_gui_windows_withoutopengl_h:
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_withoutopengl_cpp:
   stage: build
@@ -3192,8 +2716,6 @@ deheader_sdl2_gui_withoutopengl_cpp:
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_gui_withoutopengl_h:
   stage: build
@@ -3206,8 +2728,6 @@ deheader_sdl2_gui_withoutopengl_h:
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_input_withoutopengl_cpp:
   stage: build
@@ -3220,8 +2740,6 @@ deheader_sdl2_input_withoutopengl_cpp:
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_input_withoutopengl_h:
   stage: build
@@ -3234,8 +2752,6 @@ deheader_sdl2_input_withoutopengl_h:
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_listeners_withoutopengl_cpp:
   stage: build
@@ -3248,8 +2764,6 @@ deheader_sdl2_listeners_withoutopengl_cpp:
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_listeners_withoutopengl_h:
   stage: build
@@ -3262,8 +2776,6 @@ deheader_sdl2_listeners_withoutopengl_h:
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_ea_withoutopengl_cpp:
   stage: build
@@ -3276,8 +2788,6 @@ deheader_sdl2_net_ea_withoutopengl_cpp:
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_ea_withoutopengl_h:
   stage: build
@@ -3290,8 +2800,6 @@ deheader_sdl2_net_ea_withoutopengl_h:
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_eathena_withoutopengl_cpp:
   stage: build
@@ -3304,8 +2812,6 @@ deheader_sdl2_net_eathena_withoutopengl_cpp:
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_eathena_withoutopengl_h:
   stage: build
@@ -3318,8 +2824,6 @@ deheader_sdl2_net_eathena_withoutopengl_h:
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_tmwa_withoutopengl_cpp:
   stage: build
@@ -3332,8 +2836,6 @@ deheader_sdl2_net_tmwa_withoutopengl_cpp:
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_tmwa_withoutopengl_h:
   stage: build
@@ -3346,8 +2848,6 @@ deheader_sdl2_net_tmwa_withoutopengl_h:
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_withoutopengl_cpp:
   stage: build
@@ -3360,8 +2860,6 @@ deheader_sdl2_net_withoutopengl_cpp:
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_net_withoutopengl_h:
   stage: build
@@ -3374,8 +2872,6 @@ deheader_sdl2_net_withoutopengl_h:
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_particle_withoutopengl_cpp:
   stage: build
@@ -3388,8 +2884,6 @@ deheader_sdl2_particle_withoutopengl_cpp:
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_particle_withoutopengl_h:
   stage: build
@@ -3402,8 +2896,6 @@ deheader_sdl2_particle_withoutopengl_h:
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_render_withoutopengl_cpp:
   stage: build
@@ -3416,8 +2908,6 @@ deheader_sdl2_render_withoutopengl_cpp:
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_render_withoutopengl_h:
   stage: build
@@ -3430,8 +2920,6 @@ deheader_sdl2_render_withoutopengl_h:
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_db_withoutopengl_cpp:
   stage: build
@@ -3444,8 +2932,6 @@ deheader_sdl2_resources_db_withoutopengl_cpp:
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_db_withoutopengl_h:
   stage: build
@@ -3458,8 +2944,6 @@ deheader_sdl2_resources_db_withoutopengl_h:
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_map_withoutopengl_cpp:
   stage: build
@@ -3472,8 +2956,6 @@ deheader_sdl2_resources_map_withoutopengl_cpp:
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_map_withoutopengl_h:
   stage: build
@@ -3486,8 +2968,6 @@ deheader_sdl2_resources_map_withoutopengl_h:
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_withoutopengl_cpp:
   stage: build
@@ -3500,8 +2980,6 @@ deheader_sdl2_resources_withoutopengl_cpp:
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_resources_withoutopengl_h:
   stage: build
@@ -3514,8 +2992,6 @@ deheader_sdl2_resources_withoutopengl_h:
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_test_withoutopengl_cpp:
   stage: build
@@ -3528,8 +3004,6 @@ deheader_sdl2_test_withoutopengl_cpp:
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_test_withoutopengl_h:
   stage: build
@@ -3542,8 +3016,6 @@ deheader_sdl2_test_withoutopengl_h:
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_utils_withoutopengl_cpp:
   stage: build
@@ -3556,8 +3028,6 @@ deheader_sdl2_utils_withoutopengl_cpp:
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_utils_withoutopengl_h:
   stage: build
@@ -3570,8 +3040,6 @@ deheader_sdl2_utils_withoutopengl_h:
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_withoutopengl_cpp:
   stage: build
@@ -3584,8 +3052,6 @@ deheader_sdl2_withoutopengl_cpp:
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_withoutopengl_h:
   stage: build
@@ -3598,8 +3064,6 @@ deheader_sdl2_withoutopengl_h:
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 deheader_sdl2_withoutopengl_cc:
   stage: build
@@ -3612,8 +3076,6 @@ deheader_sdl2_withoutopengl_cc:
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
-  tags:
-    - docker
 
 # reports
 
@@ -3623,8 +3085,6 @@ success:
   - echo "nothing"
   image: debian:unstable
   when: on_success
-  tags:
-    - docker
 
 failure:
   stage: failure
@@ -3632,5 +3092,3 @@ failure:
   - echo "nothing"
   image: debian:unstable
   when: on_failure
-  tags:
-    - docker
