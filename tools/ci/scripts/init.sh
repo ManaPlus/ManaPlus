@@ -93,26 +93,41 @@ function aptget_install {
     fi
 }
 
+function gitclone1 {
+    echo git clone $2
+    git clone $2
+    if [ "$?" != 0 ]; then
+        echo git clone $1
+        git clone $1
+        return $?
+    fi
+    return $?
+}
+
 function gitclone {
-    git clone $*
+    export name1=$1/$2
+    export name2=${CI_BUILD_REPO##*@}
+    export name2=https://${name2%/*}/$2
+
+    gitclone1 "$name1" "$name2"
     if [ "$?" != 0 ]; then
         sleep 1s
-        git clone $*
+        gitclone1 "$name1" "$name2"
         if [ "$?" != 0 ]; then
             sleep 3s
-            git clone $*
+            gitclone1 "$name1" "$name2"
             if [ "$?" != 0 ]; then
                 sleep 5s
-                git clone $*
+                gitclone1 "$name1" "$name2"
                 if [ "$?" != 0 ]; then
                     sleep 10s
-                    git clone $*
+                    gitclone1 "$name1" "$name2"
                     if [ "$?" != 0 ]; then
                         sleep 15s
-                        git clone $*
+                        gitclone1 "$name1" "$name2"
                         if [ "$?" != 0 ]; then
                             sleep 20s
-                            git clone $*
+                            gitclone1 "$name1" "$name2"
                         fi
                     fi
                 fi
