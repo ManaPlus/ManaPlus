@@ -18,6 +18,11 @@ function do_init {
 }
 
 function update_repos {
+    if [ "$RUNFROMSHELL" != "" ];
+    then
+        echo "Running from shell. Skipping update repos"
+        return
+    fi
     export DATA=$(cat /etc/resolv.conf|grep "nameserver 1.10.100.101")
     echo "${DATA}"
     if [ "$DATA" != "" ];
@@ -28,6 +33,11 @@ function update_repos {
 }
 
 function aptget_update {
+    if [ "$RUNFROMSHELL" != "" ];
+    then
+        echo "Running from shell. Skipping apt-get update"
+        return
+    fi
     echo "apt-get update"
     apt-get update
     if [ "$?" != 0 ]; then
@@ -53,6 +63,11 @@ function aptget_update {
 }
 
 function aptget_install {
+    if [ "$RUNFROMSHELL" != "" ];
+    then
+        echo "Running from shell. Skipping apt-get install"
+        return
+    fi
     echo "apt-get -y -qq install $*"
     apt-get -y -qq install $*
     if [ "$?" != 0 ]; then
