@@ -449,70 +449,41 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     Path path;
     if (moves)
     {
-        for (int f = 0; f < len; f ++)
+        int x2 = dstBeing->getCachedX();
+        int y2 = dstBeing->getCachedY();
+        Path path2;
+        path2.push_back(Position(x2, y2));
+        for (int f = len - 1; f >= 0; f --)
         {
             const unsigned char dir = moves[f];
             if (dir <= 7)
             {
-                x += dirx[dir];
-                y += diry[dir];
-                path.push_back(Position(x, y));
+                x2 -= dirx[dir];
+                y2 -= diry[dir];
+                path2.push_back(Position(x2, y2));
+                if (x2 == x && y2 == y)
+                    break;
             }
             else
             {
                 logger->log("bad move packet: %d", dir);
             }
         }
-        const int x1 = dstBeing->getCachedX();
-        const int y1 = dstBeing->getCachedY();
-        if (x1 != x || y1 != y)
-        {
-//            reportAlways("Found desync being move. "
-//                "Calculated target (%d,%d). "
-//                "Actual target (%d,%d).",
-//                static_cast<int>(x),
-//                static_cast<int>(y),
-//                static_cast<int>(x1),
-//                static_cast<int>(y1));
-            if (len > 0)
-            {
-                const unsigned char dir = moves[0];
-                int16_t x0 = x;
-                int16_t y0 = y;
 
-                if (dir <= 7)
-                {
-                    x0 -= dirx[0];
-                    y0 -= diry[0];
-                    if (x1 == x0 && y1 == y0)
-                    {
-                        path.erase(path.begin());
-                        logger->log("Fixed being moving desync by "
-                            "removing one tile");
-                    }
-                    else
-                    {
-                        x0 = x;
-                        y0 = y;
-                        if (abs(x0 - x1) < 2 && abs(y0 - y1) < 2)
-                        {
-                            path.push_back(Position(x1, y1));
-                            logger->log("Fixed being moving desync by "
-                                "adding one tile");
-                        }
-                        else
-                        {
-                            reportAlways("Error: being moving desync. "
-                                "Calculated target (%d,%d). "
-                                "Actual target (%d,%d).",
-                                static_cast<int>(x),
-                                static_cast<int>(y),
-                                static_cast<int>(x1),
-                                static_cast<int>(y1));
-                        }
-                    }
-                }
+        if (!path2.empty())
+        {
+            const Position &pos = path2.back();
+            if (x != pos.x ||
+                y != pos.y)
+            {
+                dstBeing->setTileCoords(pos.x, pos.y);
             }
+        }
+
+        path2.pop_back();
+        FOR_EACHR (PathRIterator, it, path2)
+        {
+            path.push_back(*it);
         }
         delete [] moves;
     }

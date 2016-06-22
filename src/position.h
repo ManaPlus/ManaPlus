@@ -43,6 +43,7 @@ struct Position final
 
 typedef std::list<Position> Path;
 typedef Path::iterator PathIterator;
+typedef Path::reverse_iterator PathRIterator;
 
 /**
  * Appends a string representation of a position to the output stream.
