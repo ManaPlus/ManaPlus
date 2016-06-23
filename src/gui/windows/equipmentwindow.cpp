@@ -43,14 +43,12 @@
 
 #include "render/vertexes/imagecollection.h"
 
-#include "resources/equipmentslots.h"
 #include "resources/imageset.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/xml.h"
 
 #include "net/inventoryhandler.h"
 
