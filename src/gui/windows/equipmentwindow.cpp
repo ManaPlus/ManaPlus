@@ -46,9 +46,11 @@
 #include "resources/equipmentslots.h"
 #include "resources/imageset.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
+#include "utils/xml.h"
 
 #include "net/inventoryhandler.h"
 
@@ -741,12 +743,34 @@ void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
 
 void EquipmentWindow::prepareSlotNames()
 {
-    const int sz = sizeof(equipmentSlots) / sizeof(EquipmentSlotMap);
     mSlotNames.clear();
-    for (int f = 0; f < sz; f ++)
+    XML::Document doc(paths.getStringValue("equipmentSlotsFile"),
+        UseResman_true,
+        SkipError_false);
+    const XmlNodePtrConst root = doc.rootNode();
+    if (!root)
+        return;
+
+    for_each_xml_child_node(slotNode, root)
     {
-        const EquipmentSlotMap &slotMap = equipmentSlots[f];
-        mSlotNames[slotMap.name] = slotMap.id;
+        if (!xmlNameEqual(slotNode, "slot"))
+            continue;
+        const std::string name = XML::getProperty(slotNode, "name", "");
+        if (name.empty())
+        {
+            reportAlways("Empty slot name detected.");
+            continue;
+        }
+
+        const int slot = XML::getProperty(slotNode, "slot", -1);
+        if (slot < 0 || slot >= BOX_COUNT)
+        {
+            reportAlways("Wrong slot id '%d' for slot with name '%s'",
+                slot,
+                name.c_str());
+            continue;
+        }
+        mSlotNames[name] = slot;
     }
 }
 
