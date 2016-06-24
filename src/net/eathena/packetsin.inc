@@ -59,7 +59,8 @@ packet(SMSG_PLAYER_HP,                     0x0106,  10, &BeingRecv::processBeing
 packet(SMSG_PET_STATUS,                    0x01a2,  35, &PetRecv::processPetStatus,                     1);
 
 // fake packets for add packet name
-packet(SMSG_SELECT_CART,                   0x0000,  0, nullptr,                                         0);
+packet(SMSG_SELECT_CART,                   0x0000,   0, nullptr,                                        0);
+packet(CMSG_NAVIGATE_TO,                   0x0000,   0, nullptr,                                        0);
 
 // login server, unknown version
 packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
@@ -670,6 +671,9 @@ if (packetVersion >= 20110718)
 
 // 20111005
 packet(SMSG_SKILL_SNAP,                    0x08d2,  10, &BeingRecv::processBeingSlide,                  20111005);
+
+// 20111010
+packet(CMSG_NAVIGATE_TO,                   0x08e2,  27, &BeingRecv::processNavigateTo,                  20111010);
 
 // 20120000
 packet(SMSG_LOGIN_ERROR2,                  0x083e,  26, &LoginRecv::processLoginError2,                 20120000);

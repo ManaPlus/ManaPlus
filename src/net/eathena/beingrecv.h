@@ -108,6 +108,7 @@ namespace EAthena
         void processSolveCharName(Net::MessageIn &msg);
         void processGraffiti(Net::MessageIn &msg);
         void processSkillDamage(Net::MessageIn &msg);
+        void processNavigateTo(Net::MessageIn &msg);
         Being *createBeing2(Net::MessageIn &msg,
                             const BeingId id,
                             const int32_t job,

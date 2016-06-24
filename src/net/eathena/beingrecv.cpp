@@ -1954,6 +1954,21 @@ void BeingRecv::processSkillDamage(Net::MessageIn &msg)
     BLOCK_END("BeingRecv::processSkillDamage")
 }
 
+void BeingRecv::processNavigateTo(Net::MessageIn &msg)
+{
+    UNIMPLIMENTEDPACKET;
+    // 0 position
+    // 1 no position
+    // 3 monster
+    msg.readUInt8("navigate type");
+    msg.readUInt8("transportation flag");
+    msg.readUInt8("hide window");
+    msg.readString(16, "map name");
+    msg.readInt16("x");
+    msg.readInt16("y");
+    msg.readInt16("mob id");
+}
+
 void BeingRecv::applyPlayerAction(Net::MessageIn &msg,
                                   Being *const being,
                                   const uint8_t type)
