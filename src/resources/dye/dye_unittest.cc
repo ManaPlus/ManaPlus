@@ -20,8 +20,30 @@
 
 #include "catch.hpp"
 
+#include "client.h"
+#include "graphicsmanager.h"
+#include "logger.h"
+
+#include "resources/sdlimagehelper.h"
+#ifdef USE_SDL2
+#include "resources/surfaceimagehelper.h"
+#endif  // USE_SDL2
+
 #include "resources/dye/dye.h"
 #include "resources/dye/dyepalette.h"
+
+#include "resources/image/image.h"
+
+#include "resources/loaders/imageloader.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
+
+#include "utils/env.h"
+#include "utils/physfstools.h"
+
+#ifndef USE_SDL2
+#include <SDL.h>
+#endif  // USE_SDL2
 
 #include "debug.h"
 
@@ -251,4 +273,75 @@ TEST_CASE("Dye normalOGLDye 1")
     REQUIRE(0x20 == data[1]);
     REQUIRE(0x2a == data[2]);
     REQUIRE(0x50 == data[3]);
+}
+
+static void dyeCheck(const std::string &dyeString,
+                     const std::string &dstName)
+{
+    const std::string srcName = "arrow_up.png";
+
+    Image *const image1 = Loader::getImage(srcName + dyeString);
+    Image *const image2 = Loader::getImage(dstName);
+    REQUIRE(image1 != nullptr);
+    REQUIRE(image2 != nullptr);
+    SDL_Surface *const surface1 = image1->getSDLSurface();
+    SDL_Surface *const surface2 = image2->getSDLSurface();
+    REQUIRE(surface1 != nullptr);
+    REQUIRE(surface2 != nullptr);
+    REQUIRE(surface1->w == surface2->w);
+    REQUIRE(surface1->h == surface2->h);
+    REQUIRE(surface1->pixels != nullptr);
+    REQUIRE(surface2->pixels != nullptr);
+    const uint32_t *const ptr1 = static_cast<const uint32_t *>(
+        surface1->pixels);
+    const uint32_t *const ptr2 = static_cast<const uint32_t *>(
+        surface2->pixels);
+    const size_t sz = surface1->w * surface1->h;
+    for (size_t idx = 0; idx < sz; idx ++)
+    {
+        REQUIRE(ptr1[idx] == ptr2[idx]);
+    }
+}
+
+TEST_CASE("Dye real dye")
+{
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
+    client = new Client;
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    SDL_Init(SDL_INIT_VIDEO);
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data/test", Append_false);
+    resourceManager->addToSearchPath("../data/test", Append_false);
+
+#ifdef USE_SDL2
+    imageHelper = new SurfaceImageHelper;
+#else
+    imageHelper = new SDLImageHelper;
+#endif
+
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif
+
+    SECTION("B dye")
+    {
+        dyeCheck("|B:#FFC88A", "arrow_up_B.png");
+    }
+
+    SECTION("S dye")
+    {
+        dyeCheck("|S:#0000FF,FF0000", "arrow_up_S.png");
+    }
+
+    SECTION("A dye")
+    {
+        dyeCheck("|A:#0000FFFF,FF000050", "arrow_up_A.png");
+    }
 }
