@@ -192,6 +192,7 @@ export CXXFLAGS="${CXXFLAGS} -Wpragmas"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wproperty-assign-default"
 #export CXXFLAGS="${CXXFLAGS} -Wprotocol"
+export CXXFLAGS="${CXXFLAGS} -Wpsabi"
 #export CXXFLAGS="${CXXFLAGS} -Wreal-q-constant"
 #export CXXFLAGS="${CXXFLAGS} -Wrealloc-lhs"
 #export CXXFLAGS="${CXXFLAGS} -Wrealloc-lhs-all"
