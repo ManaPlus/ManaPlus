@@ -23,7 +23,7 @@
 
 #include "enums/simpletypes/skiperror.h"
 
-#include "resources/itemdbstat.h"
+#include "resources/basicstat.h"
 
 #include <string>
 #include <vector>
@@ -41,7 +41,7 @@ namespace StatDb
 
     void addBasicStats();
 
-    const std::vector<ItemDB::Stat> &getExtraStats();
+    const std::vector<BasicStat> &getExtraStats();
 }  // namespace StatDb
 
 #endif  // RESOURCES_DB_STATDB_H

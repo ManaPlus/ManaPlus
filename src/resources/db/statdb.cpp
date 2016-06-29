@@ -36,26 +36,26 @@
 namespace
 {
     bool mLoaded = false;
-    static std::vector<ItemDB::Stat> mBasicStats;
+    static std::vector<BasicStat> mBasicStats;
 }  // namespace
 
 void StatDb::addBasicStats()
 {
     // TRANSLATORS: player stat
-    mBasicStats.push_back(ItemDB::Stat("str", _("Strength %s")));
+    mBasicStats.push_back(BasicStat("str", _("Strength %s")));
     // TRANSLATORS: player stat
-    mBasicStats.push_back(ItemDB::Stat("agi", _("Agility %s")));
+    mBasicStats.push_back(BasicStat("agi", _("Agility %s")));
     // TRANSLATORS: player stat
-    mBasicStats.push_back(ItemDB::Stat("vit", _("Vitality %s")));
+    mBasicStats.push_back(BasicStat("vit", _("Vitality %s")));
     // TRANSLATORS: player stat
-    mBasicStats.push_back(ItemDB::Stat("int", _("Intelligence %s")));
+    mBasicStats.push_back(BasicStat("int", _("Intelligence %s")));
     // TRANSLATORS: player stat
-    mBasicStats.push_back(ItemDB::Stat("dex", _("Dexterity %s")));
+    mBasicStats.push_back(BasicStat("dex", _("Dexterity %s")));
     // TRANSLATORS: player stat
-    mBasicStats.push_back(ItemDB::Stat("luck", _("Luck %s")));
+    mBasicStats.push_back(BasicStat("luck", _("Luck %s")));
 }
 
-const std::vector<ItemDB::Stat> &StatDb::getExtraStats()
+const std::vector<BasicStat> &StatDb::getExtraStats()
 {
     return mBasicStats;
 }

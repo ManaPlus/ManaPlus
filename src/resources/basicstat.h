@@ -20,29 +20,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DB_ITEMDBSTAT_H
-#define RESOURCES_DB_ITEMDBSTAT_H
+#ifndef RESOURCES_BASICSTAT_H
+#define RESOURCES_BASICSTAT_H
 
 #include <string>
 
 #include "localconsts.h"
 
-/**
- * Item information database.
- */
-namespace ItemDB
+struct BasicStat final
 {
-    struct Stat final
-    {
-        Stat(const std::string &tag0,
-             const std::string &format0) :
-            tag(tag0),
-            format(format0)
-        {}
+    BasicStat(const std::string &tag0,
+         const std::string &format0) :
+        tag(tag0),
+        format(format0)
+    {}
 
-        std::string tag;
-        std::string format;
-    };
-}  // namespace ItemDB
+    std::string tag;
+    std::string format;
+};
 
-#endif  // RESOURCES_DB_ITEMDBSTAT_H
+#endif  // RESOURCES_BASICSTAT_H

@@ -28,7 +28,7 @@
 
 #include "enums/resources/spritedirection.h"
 
-#include "resources/itemdbstat.h"
+#include "resources/basicstat.h"
 #include "resources/iteminfo.h"
 #include "resources/itemtypemapdata.h"
 
@@ -513,8 +513,8 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         std::string effect;
         readFields(effect, node, requiredFields);
         readFields(effect, node, addFields);
-        const std::vector<Stat> &extraStats = StatDb::getExtraStats();
-        FOR_EACH (std::vector<Stat>::const_iterator, it, extraStats)
+        const std::vector<BasicStat> &extraStats = StatDb::getExtraStats();
+        FOR_EACH (std::vector<BasicStat>::const_iterator, it, extraStats)
         {
             std::string value = XML::getProperty(
                 node, it->tag.c_str(), "");
