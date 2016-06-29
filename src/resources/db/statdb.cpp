@@ -29,22 +29,35 @@
 
 #include "resources/item/itemfieldtype.h"
 
+#include "utils/gettext.h"
+
 #include "debug.h"
 
 namespace
 {
     bool mLoaded = false;
-    static std::vector<ItemDB::Stat> extraStats;
+    static std::vector<ItemDB::Stat> mBasicStats;
 }  // namespace
 
-void StatDb::setStatsList(const std::vector<ItemDB::Stat> &stats)
+void StatDb::addBasicStats()
 {
-    extraStats = stats;
+    // TRANSLATORS: player stat
+    mBasicStats.push_back(ItemDB::Stat("str", _("Strength %s")));
+    // TRANSLATORS: player stat
+    mBasicStats.push_back(ItemDB::Stat("agi", _("Agility %s")));
+    // TRANSLATORS: player stat
+    mBasicStats.push_back(ItemDB::Stat("vit", _("Vitality %s")));
+    // TRANSLATORS: player stat
+    mBasicStats.push_back(ItemDB::Stat("int", _("Intelligence %s")));
+    // TRANSLATORS: player stat
+    mBasicStats.push_back(ItemDB::Stat("dex", _("Dexterity %s")));
+    // TRANSLATORS: player stat
+    mBasicStats.push_back(ItemDB::Stat("luck", _("Luck %s")));
 }
 
 const std::vector<ItemDB::Stat> &StatDb::getExtraStats()
 {
-    return extraStats;
+    return mBasicStats;
 }
 
 void StatDb::load()
@@ -53,6 +66,8 @@ void StatDb::load()
         unload();
 
     logger->log1("Initializing stat database...");
+
+    addBasicStats();
 
     loadXmlFile(paths.getStringValue("statFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("statPatchFile"), SkipError_true);

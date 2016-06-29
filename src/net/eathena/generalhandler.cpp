@@ -68,9 +68,6 @@
 #include "net/eathena/questhandler.h"
 #include "net/eathena/vendinghandler.h"
 
-#include "resources/db/itemdbstat.h"
-#include "resources/db/statdb.h"
-
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
@@ -118,22 +115,6 @@ GeneralHandler::GeneralHandler() :
     mSearchStoreHandler(new SearchStoreHandler)
 {
     generalHandler = this;
-
-    std::vector<ItemDB::Stat> stats;
-    // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("str", _("Strength %s")));
-    // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("agi", _("Agility %s")));
-    // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("vit", _("Vitality %s")));
-    // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("int", _("Intelligence %s")));
-    // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("dex", _("Dexterity %s")));
-    // TRANSLATORS: player stat
-    stats.push_back(ItemDB::Stat("luck", _("Luck %s")));
-
-    StatDb::setStatsList(stats);
 }
 
 GeneralHandler::~GeneralHandler()

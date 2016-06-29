@@ -39,7 +39,7 @@ namespace StatDb
     void loadXmlFile(const std::string &fileName,
                      const SkipError skipError);
 
-    void setStatsList(const std::vector<ItemDB::Stat> &stats);
+    void addBasicStats();
 
     const std::vector<ItemDB::Stat> &getExtraStats();
 }  // namespace StatDb
