@@ -44,39 +44,27 @@ void StatDb::addBasicStats()
     mBasicStats.push_back(BasicStat(Attributes::STR,
         "str",
         // TRANSLATORS: player stat
-        _("Strength"),
-        // TRANSLATORS: player stat
-        _("Strength %s")));
+        _("Strength")));
     mBasicStats.push_back(BasicStat(Attributes::AGI,
         "agi",
         // TRANSLATORS: player stat
-        _("Agility"),
-        // TRANSLATORS: player stat
-        _("Agility %s")));
+        _("Agility")));
     mBasicStats.push_back(BasicStat(Attributes::VIT,
         "vit",
         // TRANSLATORS: player stat
-        _("Vitality"),
-        // TRANSLATORS: player stat
-        _("Vitality %s")));
+        _("Vitality")));
     mBasicStats.push_back(BasicStat(Attributes::INT,
         "int",
         // TRANSLATORS: player stat
-        _("Intelligence"),
-        // TRANSLATORS: player stat
-        _("Intelligence %s")));
+        _("Intelligence")));
     mBasicStats.push_back(BasicStat(Attributes::DEX,
         "dex",
         // TRANSLATORS: player stat
-        _("Dexterity"),
-        // TRANSLATORS: player stat
-        _("Dexterity %s")));
+        _("Dexterity")));
     mBasicStats.push_back(BasicStat(Attributes::LUK,
         "luk",
         // TRANSLATORS: player stat
-        _("Luck"),
-        // TRANSLATORS: player stat
-        _("Luck %s")));
+        _("Luck")));
 }
 
 const std::vector<BasicStat> &StatDb::getExtraStats()
@@ -109,11 +97,9 @@ static void loadBasicStats(const XmlNodePtr rootNode)
                 continue;
             const std::string tag = XML::getProperty(node, "tag", "");
             const std::string name = XML::getProperty(node, "name", "");
-            const std::string format = XML::getProperty(node, "format", "");
             mBasicStats.push_back(BasicStat(static_cast<AttributesT>(id),
                 tag,
-                name,
-                format));
+                name));
         }
     }
 }

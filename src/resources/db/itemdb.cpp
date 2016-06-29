@@ -32,12 +32,11 @@
 #include "resources/iteminfo.h"
 #include "resources/itemtypemapdata.h"
 
+#include "resources/db/itemfielddb.h"
+
 #include "resources/item/itemfieldtype.h"
 
 #include "resources/sprite/spritereference.h"
-
-#include "resources/db/itemfielddb.h"
-#include "resources/db/statdb.h"
 
 #include "net/serverfeatures.h"
 
@@ -513,19 +512,6 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         std::string effect;
         readFields(effect, node, requiredFields);
         readFields(effect, node, addFields);
-        const std::vector<BasicStat> &extraStats = StatDb::getExtraStats();
-        FOR_EACH (std::vector<BasicStat>::const_iterator, it, extraStats)
-        {
-            std::string value = XML::getProperty(
-                node, it->tag.c_str(), "");
-            if (value.empty())
-                continue;
-            if (!effect.empty())
-                effect.append(" / ");
-            if (isDigit(value))
-                value = "+" + value;
-            effect.append(strprintf(it->format.c_str(), value.c_str()));
-        }
         std::string temp = XML::langProperty(node, "effect", "");
         if (!effect.empty() && !temp.empty())
             effect.append(" / ");
