@@ -60,7 +60,8 @@ enumStart(Attributes)
     DEF,
     ATK,
     CART_TOTAL_WEIGHT = 1000,
-    CART_MAX_WEIGHT
+    CART_MAX_WEIGHT,
+    MAX_ATTRIBUTE
 }
 enumEnd(Attributes);
 

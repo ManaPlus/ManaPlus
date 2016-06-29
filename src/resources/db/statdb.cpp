@@ -91,16 +91,35 @@ void StatDb::load()
 
     logger->log1("Initializing stat database...");
 
-    addBasicStats();
-
     loadXmlFile(paths.getStringValue("statFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("statPatchFile"), SkipError_true);
     loadXmlDir("statPatchDir", loadXmlFile);
     mLoaded = true;
 }
 
+static void loadBasicStats(const XmlNodePtr rootNode)
+{
+    const int maxAttr = static_cast<int>(Attributes::MAX_ATTRIBUTE);
+    for_each_xml_child_node(node, rootNode)
+    {
+        if (xmlNameEqual(node, "stat"))
+        {
+            const int id = XML::getProperty(node, "id", 0);
+            if (id <= 0 || id >= maxAttr)
+                continue;
+            const std::string tag = XML::getProperty(node, "tag", "");
+            const std::string name = XML::getProperty(node, "name", "");
+            const std::string format = XML::getProperty(node, "format", "");
+            mBasicStats.push_back(BasicStat(static_cast<AttributesT>(id),
+                tag,
+                name,
+                format));
+        }
+    }
+}
+
 void StatDb::loadXmlFile(const std::string &fileName,
-                              const SkipError skipError)
+                         const SkipError skipError)
 {
     XML::Document doc(fileName,
         UseResman_true,
@@ -111,6 +130,8 @@ void StatDb::loadXmlFile(const std::string &fileName,
     {
         logger->log("StatDb: Error while loading %s!",
             fileName.c_str());
+        if (skipError == SkipError_false)
+            addBasicStats();
         return;
     }
 
@@ -123,8 +144,10 @@ void StatDb::loadXmlFile(const std::string &fileName,
                 loadXmlFile(name, skipError);
             continue;
         }
-
-
+        else if (xmlNameEqual(node, "basic"))
+        {
+            loadBasicStats(node);
+        }
     }
 }
 
