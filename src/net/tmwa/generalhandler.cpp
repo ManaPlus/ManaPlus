@@ -72,6 +72,7 @@
 #endif
 
 #include "resources/db/itemdbstat.h"
+#include "resources/db/statdb.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -139,7 +140,7 @@ GeneralHandler::GeneralHandler() :
     // TRANSLATORS: player stat
     stats.push_back(ItemDB::Stat("luck", _("Luck %s")));
 
-    ItemDB::setStatsList(stats);
+    StatDb::setStatsList(stats);
 }
 
 GeneralHandler::~GeneralHandler()

@@ -1251,6 +1251,8 @@ manaplus_SOURCES += main.cpp \
 	      resources/db/skillunitdb.h \
 	      resources/db/sounddb.cpp \
 	      resources/db/sounddb.h \
+	      resources/db/statdb.cpp \
+	      resources/db/statdb.h \
 	      resources/db/statuseffectdb.cpp \
 	      resources/db/statuseffectdb.h \
 	      resources/db/weaponsdb.cpp \

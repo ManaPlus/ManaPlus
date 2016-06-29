@@ -621,6 +621,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("badgesFile", "badges.xml");
     AddDEF("badgesPatchFile", "badges_patch.xml");
     AddDEF("badgesPatchDir", "badges.d");
+    AddDEF("statFile", "stats.xml");
+    AddDEF("statPatchFile", "stats_patch.xml");
+    AddDEF("statPatchDir", "stats.d");
     AddDEF("equipmentSlotsFile", "equipmentslots.xml");
     AddDEF("weaponsFile", "weapons.xml");
     AddDEF("poisonEffectName", "poison");

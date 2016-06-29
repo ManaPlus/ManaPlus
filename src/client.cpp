@@ -121,6 +121,7 @@
 #include "resources/db/palettedb.h"
 #include "resources/db/petdb.h"
 #include "resources/db/skillunitdb.h"
+#include "resources/db/statdb.h"
 #include "resources/db/statuseffectdb.h"
 #include "resources/db/weaponsdb.h"
 
@@ -594,6 +595,7 @@ void Client::gameClear()
 
     // Unload XML databases
     CharDB::unload();
+    StatDb::unload();
     DeadDB::unload();
     ColorDB::unload();
     SoundDB::unload();
@@ -1320,6 +1322,7 @@ int Client::gameExec()
 
                     // Load XML databases
                     CharDB::load();
+                    StatDb::load();
                     DeadDB::load();
                     PaletteDB::load();
                     ColorDB::load();

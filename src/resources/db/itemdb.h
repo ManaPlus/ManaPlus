@@ -33,11 +33,6 @@
 
 class ItemInfo;
 
-namespace ItemDB
-{
-    struct Stat;
-}
-
 /**
  * Item information database.
  */
@@ -77,8 +72,6 @@ namespace ItemDB
 #endif
 
     int getTagId(const std::string &tagName) A_WARN_UNUSED;
-
-    void setStatsList(const std::vector<Stat> &stats);
 }  // namespace ItemDB
 
 #endif  // RESOURCES_DB_ITEMDB_H

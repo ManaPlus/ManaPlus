@@ -37,6 +37,7 @@
 
 #include "resources/db/itemdbstat.h"
 #include "resources/db/itemfielddb.h"
+#include "resources/db/statdb.h"
 
 #include "net/serverfeatures.h"
 
@@ -76,13 +77,6 @@ static void loadOrderSprite(ItemInfo *const itemInfo,
                             const bool drawAfter) A_NONNULL(1);
 static int parseSpriteName(const std::string &name);
 static int parseDirectionName(const std::string &name);
-
-static std::vector<ItemDB::Stat> extraStats;
-
-void ItemDB::setStatsList(const std::vector<ItemDB::Stat> &stats)
-{
-    extraStats = stats;
-}
 
 static ItemDbTypeT itemTypeFromString(const std::string &name)
 {
@@ -519,6 +513,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         std::string effect;
         readFields(effect, node, requiredFields);
         readFields(effect, node, addFields);
+        const std::vector<Stat> &extraStats = StatDb::getExtraStats();
         FOR_EACH (std::vector<Stat>::const_iterator, it, extraStats)
         {
             std::string value = XML::getProperty(
