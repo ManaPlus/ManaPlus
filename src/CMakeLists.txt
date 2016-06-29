@@ -660,7 +660,7 @@ SET(SRCS
     resources/imagewriter.h
     resources/db/itemdb.cpp
     resources/db/itemdb.h
-    resources/db/itemdbstat.h
+    resources/itemdbstat.h
     resources/db/itemfielddb.cpp
     resources/db/itemfielddb.h
     resources/iteminfo.h

@@ -23,7 +23,7 @@
 
 #include "enums/simpletypes/skiperror.h"
 
-#include "resources/db/itemdbstat.h"
+#include "resources/itemdbstat.h"
 
 #include <string>
 #include <vector>

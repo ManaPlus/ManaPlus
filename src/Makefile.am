@@ -1228,7 +1228,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/db/horsedb.h \
 	      resources/db/itemdb.cpp \
 	      resources/db/itemdb.h \
-	      resources/db/itemdbstat.h \
+	      resources/itemdbstat.h \
 	      resources/db/itemfielddb.cpp \
 	      resources/db/itemfielddb.h \
 	      resources/db/mapdb.cpp \
