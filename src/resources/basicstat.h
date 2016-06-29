@@ -23,20 +23,28 @@
 #ifndef RESOURCES_BASICSTAT_H
 #define RESOURCES_BASICSTAT_H
 
+#include "enums/being/attributes.h"
+
 #include <string>
 
 #include "localconsts.h"
 
 struct BasicStat final
 {
-    BasicStat(const std::string &tag0,
-         const std::string &format0) :
+    BasicStat(const AttributesT attr0,
+              const std::string &tag0,
+              const std::string &name0,
+              const std::string &format0) :
         tag(tag0),
-        format(format0)
+        name(name0),
+        format(format0),
+        attr(attr0)
     {}
 
     std::string tag;
+    std::string name;
     std::string format;
+    AttributesT attr;
 };
 
 #endif  // RESOURCES_BASICSTAT_H

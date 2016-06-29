@@ -41,18 +41,42 @@ namespace
 
 void StatDb::addBasicStats()
 {
-    // TRANSLATORS: player stat
-    mBasicStats.push_back(BasicStat("str", _("Strength %s")));
-    // TRANSLATORS: player stat
-    mBasicStats.push_back(BasicStat("agi", _("Agility %s")));
-    // TRANSLATORS: player stat
-    mBasicStats.push_back(BasicStat("vit", _("Vitality %s")));
-    // TRANSLATORS: player stat
-    mBasicStats.push_back(BasicStat("int", _("Intelligence %s")));
-    // TRANSLATORS: player stat
-    mBasicStats.push_back(BasicStat("dex", _("Dexterity %s")));
-    // TRANSLATORS: player stat
-    mBasicStats.push_back(BasicStat("luck", _("Luck %s")));
+    mBasicStats.push_back(BasicStat(Attributes::STR,
+        "str",
+        // TRANSLATORS: player stat
+        _("Strength"),
+        // TRANSLATORS: player stat
+        _("Strength %s")));
+    mBasicStats.push_back(BasicStat(Attributes::AGI,
+        "agi",
+        // TRANSLATORS: player stat
+        _("Agility"),
+        // TRANSLATORS: player stat
+        _("Agility %s")));
+    mBasicStats.push_back(BasicStat(Attributes::VIT,
+        "vit",
+        // TRANSLATORS: player stat
+        _("Vitality"),
+        // TRANSLATORS: player stat
+        _("Vitality %s")));
+    mBasicStats.push_back(BasicStat(Attributes::INT,
+        "int",
+        // TRANSLATORS: player stat
+        _("Intelligence"),
+        // TRANSLATORS: player stat
+        _("Intelligence %s")));
+    mBasicStats.push_back(BasicStat(Attributes::DEX,
+        "dex",
+        // TRANSLATORS: player stat
+        _("Dexterity"),
+        // TRANSLATORS: player stat
+        _("Dexterity %s")));
+    mBasicStats.push_back(BasicStat(Attributes::LUK,
+        "luk",
+        // TRANSLATORS: player stat
+        _("Luck"),
+        // TRANSLATORS: player stat
+        _("Luck %s")));
 }
 
 const std::vector<BasicStat> &StatDb::getExtraStats()

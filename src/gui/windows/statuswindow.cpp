@@ -49,6 +49,8 @@
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
+#include "resources/db/statdb.h"
+
 #include "resources/item/item.h"
 
 #include "utils/delete2.h"
@@ -226,6 +228,19 @@ StatusWindow::StatusWindow() :
     mCharacterPointsLabel->adjustSize();
 
     updateLevelLabel();
+}
+
+void StatusWindow::addBasicAttributes()
+{
+    const std::vector<BasicStat> &stats = StatDb::getExtraStats();
+    FOR_EACH (std::vector<BasicStat>::const_iterator, it, stats)
+    {
+        const BasicStat &stat = *it;
+        addAttribute(stat.attr,
+            stat.name,
+            stat.tag,
+            Modifiable_true);
+    }
 }
 
 void StatusWindow::updateLevelLabel()
