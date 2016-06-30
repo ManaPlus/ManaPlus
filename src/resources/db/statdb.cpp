@@ -37,9 +37,10 @@ namespace
 {
     bool mLoaded = false;
     static std::vector<BasicStat> mBasicStats;
+    static std::vector<BasicStat> mExtendedStats;
 }  // namespace
 
-void StatDb::addBasicStats()
+void StatDb::addDefaultStats()
 {
     mBasicStats.push_back(BasicStat(Attributes::STR,
         "str",
@@ -67,9 +68,14 @@ void StatDb::addBasicStats()
         _("Luck")));
 }
 
-const std::vector<BasicStat> &StatDb::getExtraStats()
+const std::vector<BasicStat> &StatDb::getBasicStats()
 {
     return mBasicStats;
+}
+
+const std::vector<BasicStat> &StatDb::getExtendedStats()
+{
+    return mExtendedStats;
 }
 
 void StatDb::load()
@@ -92,13 +98,39 @@ static void loadBasicStats(const XmlNodePtr rootNode)
     {
         if (xmlNameEqual(node, "stat"))
         {
+            const std::string name = XML::getProperty(node, "name", "");
             const int id = XML::getProperty(node, "id", 0);
             if (id <= 0 || id >= maxAttr)
+            {
+                reportAlways("Wrong id for basic stat with name %s",
+                    name.c_str());
                 continue;
+            }
             const std::string tag = XML::getProperty(node, "tag", "");
-            const std::string name = XML::getProperty(node, "name", "");
             mBasicStats.push_back(BasicStat(static_cast<AttributesT>(id),
                 tag,
+                name));
+        }
+    }
+}
+
+static void loadExtendedStats(const XmlNodePtr rootNode)
+{
+    const int maxAttr = static_cast<int>(Attributes::MAX_ATTRIBUTE);
+    for_each_xml_child_node(node, rootNode)
+    {
+        if (xmlNameEqual(node, "stat"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            const int id = XML::getProperty(node, "id", 0);
+            if (id <= 0 || id >= maxAttr)
+            {
+                reportAlways("Wrong id for extended stat with name %s",
+                    name.c_str());
+                continue;
+            }
+            mExtendedStats.push_back(BasicStat(static_cast<AttributesT>(id),
+                std::string(),
                 name));
         }
     }
@@ -117,7 +149,7 @@ void StatDb::loadXmlFile(const std::string &fileName,
         logger->log("StatDb: Error while loading %s!",
             fileName.c_str());
         if (skipError == SkipError_false)
-            addBasicStats();
+            addDefaultStats();
         return;
     }
 
@@ -133,6 +165,19 @@ void StatDb::loadXmlFile(const std::string &fileName,
         else if (xmlNameEqual(node, "basic"))
         {
             loadBasicStats(node);
+        }
+        else if (xmlNameEqual(node, "extended"))
+        {
+            loadExtendedStats(node);
+        }
+    }
+    if (skipError == SkipError_false)
+    {
+        if (mBasicStats.empty() &&
+            mExtendedStats.empty())
+        {
+            reportAlways("StatDb: no stats found");
+            addDefaultStats();
         }
     }
 }

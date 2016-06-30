@@ -197,40 +197,7 @@ void GeneralHandler::gameStarted() const
     if (!statusWindow)
         return;
 
-    // protection against double addition attributes.
-    statusWindow->clearAttributes();
-
-    statusWindow->addBasicAttributes();
-
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::ATK, _("Attack"));
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::DEF, _("Defense"));
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::MATK, _("M.Attack"));
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::MDEF, _("M.Defense"));
-    // TRANSLATORS: player stat
-    // xgettext:no-c-format
-    statusWindow->addAttribute(Attributes::HIT, _("% Accuracy"));
-    // TRANSLATORS: player stat
-    // xgettext:no-c-format
-    statusWindow->addAttribute(Attributes::FLEE, _("% Evade"));
-    // TRANSLATORS: player stat
-    // xgettext:no-c-format
-    statusWindow->addAttribute(Attributes::CRIT, _("% Critical"));
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::ATTACK_DELAY, _("Attack Delay"));
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::WALK_SPEED, _("Walk Delay"));
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::ATTACK_RANGE, _("Attack Range"));
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::ATTACK_SPEED, _("Damage per sec."));
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::KARMA, _("Karma"));
-    // TRANSLATORS: player stat
-    statusWindow->addAttribute(Attributes::MANNER, _("Manner"));
+    statusWindow->addAttributes();
 }
 
 void GeneralHandler::gameEnded() const

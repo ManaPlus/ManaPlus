@@ -39,9 +39,11 @@ namespace StatDb
     void loadXmlFile(const std::string &fileName,
                      const SkipError skipError);
 
-    void addBasicStats();
+    void addDefaultStats();
 
-    const std::vector<BasicStat> &getExtraStats();
+    const std::vector<BasicStat> &getBasicStats();
+
+    const std::vector<BasicStat> &getExtendedStats();
 }  // namespace StatDb
 
 #endif  // RESOURCES_DB_STATDB_H

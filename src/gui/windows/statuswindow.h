@@ -99,7 +99,7 @@ class StatusWindow final : public Window,
 
         void updateLevelLabel();
 
-        void addBasicAttributes();
+        void addAttributes();
 
     private:
         static std::string translateLetter(const char *const letters);

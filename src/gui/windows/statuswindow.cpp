@@ -230,16 +230,26 @@ StatusWindow::StatusWindow() :
     updateLevelLabel();
 }
 
-void StatusWindow::addBasicAttributes()
+void StatusWindow::addAttributes()
 {
-    const std::vector<BasicStat> &stats = StatDb::getExtraStats();
-    FOR_EACH (std::vector<BasicStat>::const_iterator, it, stats)
+    clearAttributes();
+
+    const std::vector<BasicStat> &basicStats = StatDb::getBasicStats();
+    FOR_EACH (std::vector<BasicStat>::const_iterator, it, basicStats)
     {
         const BasicStat &stat = *it;
         addAttribute(stat.attr,
             stat.name,
             stat.tag,
             Modifiable_true);
+    }
+
+    const std::vector<BasicStat> &extendedStats = StatDb::getExtendedStats();
+    FOR_EACH (std::vector<BasicStat>::const_iterator, it, extendedStats)
+    {
+        const BasicStat &stat = *it;
+        addAttribute(stat.attr,
+            stat.name);
     }
 }
 
