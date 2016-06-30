@@ -28,7 +28,6 @@
 
 #include "enums/resources/spritedirection.h"
 
-#include "resources/basicstat.h"
 #include "resources/iteminfo.h"
 #include "resources/itemtypemapdata.h"
 

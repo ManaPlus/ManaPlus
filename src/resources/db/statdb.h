@@ -25,7 +25,6 @@
 
 #include "resources/basicstat.h"
 
-#include <string>
 #include <vector>
 
 #include "localconsts.h"

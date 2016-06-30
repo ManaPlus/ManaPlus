@@ -23,11 +23,8 @@
 #include "configuration.h"
 
 #include "utils/checkutils.h"
-#include "utils/dtor.h"
 
 #include "resources/beingcommon.h"
-
-#include "resources/item/itemfieldtype.h"
 
 #include "utils/gettext.h"
 
