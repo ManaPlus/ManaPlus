@@ -553,7 +553,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"chat room error zeny",
             // TRANSLATORS: notification message
-            N_("Room join failed. Not enought money."),
+            N_("Room join failed. Not enough money."),
             NotifyFlags::EMPTY},
         {"chat room error low level",
             // TRANSLATORS: notification message
@@ -793,28 +793,28 @@ namespace NotifyManager
             NotifyFlags::STRING},
         {"player divorced",
             // TRANSLATORS: notification message
-            N_("You and %s was divorced."),
+            N_("You and %s are now divorced."),
             NotifyFlags::STRING},
         {"partner called",
             // TRANSLATORS: notification message
-            N_("You was called by partner."),
+            N_("You were called by your partner."),
             NotifyFlags::EMPTY},
         {"partner calling",
             // TRANSLATORS: notification message
-            N_("You calling partner %s."),
+            N_("You are calling your partner, %s."),
             NotifyFlags::STRING},
         {"adopt child error have baby",
             // TRANSLATORS: notification message
-            N_("Adoption child error. You already have baby."),
+            N_("Child adoption failed. You already have a baby."),
             NotifyFlags::EMPTY},
         {"adopt child error level",
             // TRANSLATORS: notification message
-            N_("Adoption child error. You level too small for have baby."),
+            N_("Child adoption failed. Your level is too low."),
             NotifyFlags::EMPTY},
         {"adopt child error baby married",
             // TRANSLATORS: notification message
-            N_("Adoption child error. This player already "
-            "married and can't be baby."),
+            N_("Child adoption failed. This player is already "
+            "married and can't be a baby."),
             NotifyFlags::EMPTY},
         {"skill memo saved",
             // TRANSLATORS: notification message
@@ -822,11 +822,11 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"skill memo error level",
             // TRANSLATORS: notification message
-            N_("Error saving location. Not enought skill level."),
+            N_("Error saving location. Not enough skill level."),
             NotifyFlags::EMPTY},
         {"skill memo error skill",
             // TRANSLATORS: notification message
-            N_("Error saving location. You not have warp skill."),
+            N_("Error saving location. You do not have warp skill."),
             NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
