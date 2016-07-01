@@ -45,8 +45,6 @@
 #include "net/messagein.h"
 #include "net/serverfeatures.h"
 
-#include "utils/checkutils.h"
-
 #include "debug.h"
 
 namespace Ea
@@ -436,8 +434,8 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     }
     const int16_t speed = msg.readInt16("speed");
     dstBeing->setWalkSpeed(speed);
-    int16_t x = msg.readInt16("x");
-    int16_t y = msg.readInt16("y");
+    const int16_t x = msg.readInt16("x");
+    const int16_t y = msg.readInt16("y");
 
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(x, y);

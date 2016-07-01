@@ -59,6 +59,7 @@ class SDLGraphics final : public Graphics
         RENDER_GRAPHICSDEF_HPP
 
         #include "render/softwaregraphicsdef.hpp"
+        RENDER_SOFTWAREGRAPHICSDEF_HPP
 
     protected:
         int SDL_FakeUpperBlit(const SDL_Surface *restrict const src,

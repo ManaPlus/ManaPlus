@@ -64,6 +64,7 @@ class SDL2SoftwareGraphics final : public Graphics
         RENDER_GRAPHICSDEF_HPP
 
         #include "render/softwaregraphicsdef.hpp"
+        RENDER_SOFTWAREGRAPHICSDEF_HPP
 
         bool resizeScreen(const int width,
                           const int height) restrict2 override final;

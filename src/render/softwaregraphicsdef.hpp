@@ -20,6 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define RENDER_SOFTWAREGRAPHICSDEF_HPP
+
 public:
     void calcTileSDL(ImageVertexes *restrict const vert,
                      int x, int y) const restrict2 override final;

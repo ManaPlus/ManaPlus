@@ -210,7 +210,7 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
     ServerInfo &server = mapServer;
     BLOCK_START("CharServerRecv::processCharMapInfo")
     PlayerInfo::setCharId(msg.readInt32("char id?"));
-    GameHandler *const gh = static_cast<GameHandler*>(gameHandler);
+    const GameHandler *const gh = static_cast<GameHandler*>(gameHandler);
     gh->setMap(msg.readString(16, "map name"));
     if (config.getBoolValue("usePersistentIP") || settings.persistentIp)
     {

@@ -104,6 +104,7 @@ class SDLGraphics final : public Graphics
         RENDER_GRAPHICSDEF_HPP
 
         #include "render/softwaregraphicsdef.hpp"
+        RENDER_SOFTWAREGRAPHICSDEF_HPP
 
     protected:
         uint32_t mRendererFlags;
