@@ -176,6 +176,7 @@ src/resources/db/monsterdb.cpp
 src/resources/db/npcdb.cpp
 src/resources/db/petdb.cpp
 src/resources/db/skillunitdb.cpp
+src/resources/db/statdb.cpp
 src/resources/inventory/inventory.cpp
 src/resources/itemtypemapdata.h
 src/resources/mapreader.cpp
