@@ -118,7 +118,7 @@ msgstr "Registro subido a:"
 #: src/actions/actions.cpp:1748
 msgid ""
 "Last seen disabled. Enable in players / collect players id and seen log."
-msgstr "Deshabilitada opción para mostrar última vez visto. Habilítala en Jugadores / \"Registrar ID de jugador y última vez visto\""
+msgstr "Deshabilitada opción para mostrar última vez visto. Habilítala en Jugadores / \"Registrar ID de jugador y última vez visto\"."
 
 #. TRANSLATORS: last seen error
 #: src/actions/actions.cpp:1767 src/actions/actions.cpp:1781
