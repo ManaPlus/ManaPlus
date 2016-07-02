@@ -246,6 +246,7 @@
 		<Unit filename="src/resources/db/mapdb.cpp" />
 		<Unit filename="src/resources/db/avatardb.cpp" />
 		<Unit filename="src/resources/db/colordb.cpp" />
+		<Unit filename="src/resources/db/statdb.cpp" />
 		<Unit filename="src/resources/db/horsedb.cpp" />
 		<Unit filename="src/resources/sprite/animationdelayload.cpp" />
 		<Unit filename="src/resources/sprite/imagesprite.cpp" />
@@ -283,7 +284,9 @@
 		<Unit filename="src/resources/soundeffect.cpp" />
 		<Unit filename="src/resources/item/complexitem.cpp" />
 		<Unit filename="src/resources/item/shopitem.cpp" />
+		<Unit filename="src/resources/item/cardslist.cpp" />
 		<Unit filename="src/resources/item/item.cpp" />
+		<Unit filename="src/resources/beingslot.cpp" />
 		<Unit filename="src/resources/memorycounter.cpp" />
 		<Unit filename="src/resources/openglimagehelper.cpp" />
 		<Unit filename="src/resources/sdl2imagehelper.cpp" />
@@ -943,9 +946,9 @@
 		<Unit filename="src/resources/db/deaddb.h" />
 		<Unit filename="src/resources/db/itemfielddb.h" />
 		<Unit filename="src/resources/db/colordb.h" />
-		<Unit filename="src/resources/db/itemdbstat.h" />
 		<Unit filename="src/resources/db/emotedb.h" />
 		<Unit filename="src/resources/db/palettedb.h" />
+		<Unit filename="src/resources/db/statdb.h" />
 		<Unit filename="src/resources/db/homunculusdb.h" />
 		<Unit filename="src/resources/db/chardb.h" />
 		<Unit filename="src/resources/db/npcdb.h" />
@@ -979,9 +982,11 @@
 		<Unit filename="src/resources/loaders/atlasloader.h" />
 		<Unit filename="src/resources/loaders/subimagesetloader.h" />
 		<Unit filename="src/resources/loaders/shaderprogramloader.h" />
+		<Unit filename="src/resources/beingslot.h" />
 		<Unit filename="src/resources/sdl2softwareimagehelper.h" />
 		<Unit filename="src/resources/memorycounter.h" />
 		<Unit filename="src/resources/npcinventoryinfo.h" />
+		<Unit filename="src/resources/basicstat.h" />
 		<Unit filename="src/resources/iteminfo.h" />
 		<Unit filename="src/resources/npcbuttoninfo.h" />
 		<Unit filename="src/resources/emotesprite.h" />
@@ -1020,6 +1025,7 @@
 		<Unit filename="src/resources/item/item.h" />
 		<Unit filename="src/resources/item/itemfieldtype.h" />
 		<Unit filename="src/resources/item/shopitem.h" />
+		<Unit filename="src/resources/item/cardslist.h" />
 		<Unit filename="src/resources/openglscreenshothelper.h" />
 		<Unit filename="src/resources/memorymanager.h" />
 		<Unit filename="src/resources/skillowner.h" />
