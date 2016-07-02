@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # tivasyk <tivasyk@gmail.com>, 2010
 # William Lee <v4r@trioptimum.com>, 2014
@@ -10,15 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-06-18 18:53+0300\n"
+"POT-Creation-Date: 2016-07-02 19:47+0300\n"
 "PO-Revision-Date: 2016-06-19 09:21+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/akaras/manaplus/language/uk/)\n"
+"Language-Team: Ukrainian (http://www.transifex.com/akaras/manaplus/language/"
+"uk/)\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: uk\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. TRANSLATORS: file uploaded message
 #: src/actions/actions.cpp:168
@@ -34,7 +36,7 @@ msgstr "Файл завантажено"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:171 src/client.cpp:1569 src/client.cpp:1604
+#: src/actions/actions.cpp:171 src/client.cpp:1572 src/client.cpp:1607
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
@@ -45,7 +47,7 @@ msgstr "Файл завантажено"
 #: src/gui/widgets/tabs/setup_video.cpp:420
 #: src/gui/windows/changeemaildialog.cpp:169
 #: src/gui/windows/changepassworddialog.cpp:159
-#: src/gui/windows/charcreatedialog.cpp:476
+#: src/gui/windows/charcreatedialog.cpp:475
 #: src/gui/windows/charselectdialog.cpp:262
 #: src/gui/windows/charselectdialog.cpp:310 src/gui/windows/editdialog.cpp:50
 #: src/gui/windows/editserverdialog.cpp:59
@@ -54,9 +56,9 @@ msgstr "Файл завантажено"
 #: src/gui/windows/registerdialog.cpp:256 src/gui/windows/socialwindow.cpp:531
 #: src/gui/windows/textdialog.cpp:53 src/gui/windows/unregisterdialog.cpp:149
 #: src/net/ea/charserverrecv.cpp:108 src/net/ea/charserverrecv.cpp:134
-#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:456
-#: src/net/eathena/charserverrecv.cpp:491
-#: src/net/eathena/charserverrecv.cpp:519 src/net/tmwa/charserverrecv.cpp:341
+#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:423
+#: src/net/eathena/charserverrecv.cpp:458
+#: src/net/eathena/charserverrecv.cpp:486 src/net/tmwa/charserverrecv.cpp:305
 msgid "OK"
 msgstr "ОК"
 
@@ -128,7 +130,9 @@ msgstr ""
 #: src/actions/chat.cpp:315
 #, c-format
 msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
-msgstr "Неможливо створити вкладку для спілкування з гравцем \"%s\" - або така вже існує, або ви намагаєтесь перешіптуватись сам із собою :P ."
+msgstr ""
+"Неможливо створити вкладку для спілкування з гравцем \"%s\" - або така вже "
+"існує, або ви намагаєтесь перешіптуватись сам із собою :P ."
 
 #. TRANSLATORS: create party message
 #. TRANSLATORS: chat error message
@@ -303,26 +307,26 @@ msgid "Visible on map"
 msgstr "Видимий на мапі"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:496
+#: src/being/being.cpp:494
 msgid "Human"
 msgstr "Людина"
 
 #. TRANSLATORS: dodge or miss message in attacks
-#: src/being/being.cpp:683
+#: src/being/being.cpp:676
 msgid "dodge"
 msgstr "ухилення"
 
-#: src/being/being.cpp:683
+#: src/being/being.cpp:676
 msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2282 src/gui/windows/whoisonline.cpp:882
+#: src/being/being.cpp:2275 src/gui/windows/whoisonline.cpp:882
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2287 src/gui/windows/whoisonline.cpp:887
+#: src/being/being.cpp:2280 src/gui/windows/whoisonline.cpp:887
 msgid "I"
 msgstr "I"
 
@@ -474,41 +478,41 @@ msgstr "Плаваюча бульбашка"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
-#: src/client.cpp:870 src/dyetool/client.cpp:491 src/gui/windowmenu.cpp:189
+#: src/client.cpp:872 src/dyetool/client.cpp:491 src/gui/windowmenu.cpp:189
 #: src/gui/windows/setupwindow.cpp:66
 msgid "Setup"
 msgstr "Налаштування"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:873 src/dyetool/client.cpp:494
+#: src/client.cpp:875 src/dyetool/client.cpp:494
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Продуктивність"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:876 src/dyetool/client.cpp:497
+#: src/client.cpp:878 src/dyetool/client.cpp:497
 #: src/gui/widgets/tabs/setup_video.cpp:110
 msgid "Video"
 msgstr "Відео"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:879 src/dyetool/client.cpp:500
+#: src/client.cpp:881 src/dyetool/client.cpp:500
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Теми"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:882 src/dyetool/client.cpp:503
+#: src/client.cpp:884 src/dyetool/client.cpp:503
 msgid "About"
 msgstr "Про програму"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
-#: src/client.cpp:885 src/dyetool/client.cpp:506 src/gui/windowmenu.cpp:74
+#: src/client.cpp:887 src/dyetool/client.cpp:506 src/gui/windowmenu.cpp:74
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Довідка"
@@ -529,7 +533,7 @@ msgstr "Довідка"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:889 src/client.cpp:1483 src/client.cpp:1502
+#: src/client.cpp:891 src/client.cpp:1486 src/client.cpp:1505
 #: src/dyetool/client.cpp:510 src/gui/dialogsmanager.cpp:116
 #: src/gui/popups/popupmenu.cpp:756 src/gui/popups/popupmenu.cpp:833
 #: src/gui/popups/popupmenu.cpp:1087 src/gui/windows/didyouknowwindow.cpp:81
@@ -542,32 +546,32 @@ msgid "Close"
 msgstr "Закрити"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1115 src/gui/windowmanager_unittest.cc:156
+#: src/client.cpp:1117 src/gui/windowmanager_unittest.cc:156
 msgid "Connecting to server"
 msgstr "Очікування відповіді сервера"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1172 src/gui/windowmanager_unittest.cc:173
+#: src/client.cpp:1174 src/gui/windowmanager_unittest.cc:173
 msgid "Logging in"
 msgstr "Авторизація..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1221
+#: src/client.cpp:1223
 msgid "Entering game world"
 msgstr "Поринаємо в ігровий всесвіт..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1369
+#: src/client.cpp:1372
 msgid "Requesting characters"
 msgstr "Завантаження списку персонажів..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1412
+#: src/client.cpp:1415
 msgid "Connecting to the game server"
 msgstr "Приєднання до серверу..."
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1424
+#: src/client.cpp:1427
 msgid "Changing game servers"
 msgstr "Зміна ігрового серверу..."
 
@@ -584,52 +588,52 @@ msgstr "Зміна ігрового серверу..."
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1480 src/client.cpp:1499 src/client.cpp:1738
+#: src/client.cpp:1483 src/client.cpp:1502 src/client.cpp:1741
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
-#: src/gui/windows/charcreatedialog.cpp:472
+#: src/gui/windows/charcreatedialog.cpp:471
 #: src/gui/windows/charselectdialog.cpp:306
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:256
 #: src/gui/windows/unregisterdialog.cpp:146 src/net/ea/charserverrecv.cpp:105
-#: src/net/eathena/charserverrecv.cpp:429
-#: src/net/eathena/charserverrecv.cpp:433
-#: src/net/eathena/charserverrecv.cpp:515 src/net/tmwa/charserverrecv.cpp:337
+#: src/net/eathena/charserverrecv.cpp:396
+#: src/net/eathena/charserverrecv.cpp:400
+#: src/net/eathena/charserverrecv.cpp:482 src/net/tmwa/charserverrecv.cpp:301
 msgid "Error"
 msgstr "Помилка"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1518
+#: src/client.cpp:1521
 msgid "Requesting registration details"
 msgstr "Запитуємо деталі реєстрації"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1565
+#: src/client.cpp:1568
 msgid "Password Change"
 msgstr "Змінити пароль"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1567
+#: src/client.cpp:1570
 msgid "Password changed successfully!"
 msgstr "Пароль змінено!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1600
+#: src/client.cpp:1603
 msgid "Email Change"
 msgstr "Змінити імейл"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1602
+#: src/client.cpp:1605
 msgid "Email changed successfully!"
 msgstr "Імейл змінено!"
 
 #. TRANSLATORS: unregister message header
-#: src/client.cpp:1638
+#: src/client.cpp:1641
 msgid "Unregister Successful"
 msgstr "Акаунт видалено"
 
 #. TRANSLATORS: unregister message text
-#: src/client.cpp:1640
+#: src/client.cpp:1643
 msgid "Farewell, come back any time..."
 msgstr "До побачення та вертайтесь."
 
@@ -681,7 +685,8 @@ msgstr "  -h --help           : Показати ще раз цю довідку
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:65
 msgid "  -C --config-dir     : Configuration directory to use"
-msgstr "  -C --config-file    : Файл, з якого необхідно завантажити налаштування"
+msgstr ""
+"  -C --config-file    : Файл, з якого необхідно завантажити налаштування"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:68
@@ -716,7 +721,8 @@ msgstr "  -p --port           : Порт логіну"
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:86
 msgid "  -H --update-host    : Use this update host"
-msgstr "  -H --update-host    : Сервер, з якого необхідно завантажити оновлення"
+msgstr ""
+"  -H --update-host    : Сервер, з якого необхідно завантажити оновлення"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:89
@@ -822,23 +828,23 @@ msgid "Debug"
 msgstr "Зневадження"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:598
+#: src/game.cpp:600
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr "Скріншот збережено як %s"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:608
+#: src/game.cpp:610
 msgid "Saving screenshot failed!"
 msgstr "Збереження скріншоту провалилось!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:695
+#: src/game.cpp:697
 msgid "The connection to the server was lost."
 msgstr "Втрачено з'єднання з сервером."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:698
+#: src/game.cpp:700
 msgid "Network Error"
 msgstr "Мережева помилка"
 
@@ -1253,9 +1259,10 @@ msgstr "Опритомнити"
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:178
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
-msgstr "Ви навантажені більше, ніж на половину максимально дозволенного. Тепер ви не зможете відновлюватися."
+"You are carrying more than half your weight. You are unable to regain health."
+msgstr ""
+"Ви навантажені більше, ніж на половину максимально дозволенного. Тепер ви не "
+"зможете відновлюватися."
 
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:198
@@ -1271,8 +1278,7 @@ msgstr "Ви навантажені менш, ніж на половину. Те
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:32
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:671
-#: src/gui/windows/serverdialog.cpp:603
+#: src/gui/windows/equipmentwindow.cpp:671 src/gui/windows/serverdialog.cpp:603
 msgid "default"
 msgstr "за замовчуванням"
 
@@ -1824,11 +1830,9 @@ msgstr "Торгівля"
 #. TRANSLATORS: attack player
 #. TRANSLATORS: Skill type
 #. TRANSLATORS: input action name
-#. TRANSLATORS: player stat
 #: src/gui/popups/popupmenu.cpp:180 src/gui/popups/popupmenu.cpp:304
 #: src/gui/popups/popupmenu.cpp:912 src/gui/widgets/skillinfo.cpp:125
-#: src/input/pages/basic.cpp:40 src/net/eathena/generalhandler.cpp:241
-#: src/net/tmwa/generalhandler.cpp:251
+#: src/input/pages/basic.cpp:40
 msgid "Attack"
 msgstr "Атака"
 
@@ -1904,7 +1908,7 @@ msgstr "Рух"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:270 src/input/pages/basic.cpp:88
-#: src/resources/db/npcdb.cpp:152
+#: src/resources/db/npcdb.cpp:151
 msgid "Talk"
 msgstr "Діалог"
 
@@ -1922,7 +1926,7 @@ msgstr "Діалог"
 #: src/gui/windows/buydialog.cpp:195 src/gui/windows/buydialog.cpp:214
 #: src/gui/windows/buydialog.cpp:285 src/gui/windows/buydialog.cpp:289
 #: src/gui/windows/buyselldialog.cpp:71 src/gui/windows/shopwindow.cpp:170
-#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:154
+#: src/input/pages/basic.cpp:250 src/resources/db/npcdb.cpp:153
 msgid "Buy"
 msgstr "Придбати"
 
@@ -1940,7 +1944,7 @@ msgstr "Придбати"
 #: src/gui/widgets/selldialog.cpp:54 src/gui/widgets/selldialog.cpp:107
 #: src/gui/widgets/selldialog.cpp:145 src/gui/windows/buyselldialog.cpp:73
 #: src/gui/windows/shopwindow.cpp:172 src/input/pages/basic.cpp:256
-#: src/resources/db/npcdb.cpp:156
+#: src/resources/db/npcdb.cpp:155
 msgid "Sell"
 msgstr "Продати"
 
@@ -2042,7 +2046,7 @@ msgstr "Зняти"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pet return to egg
-#: src/gui/popups/popupmenu.cpp:408 src/resources/db/petdb.cpp:160
+#: src/gui/popups/popupmenu.cpp:408 src/resources/db/petdb.cpp:159
 msgid "Return to egg"
 msgstr "Повернути до яйця"
 
@@ -2439,7 +2443,7 @@ msgstr "Скинути Жовтий рядок"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
 #. TRANSLATORS: status window button
-#: src/gui/popups/popupmenu.cpp:2125 src/gui/windows/statuswindow.cpp:88
+#: src/gui/popups/popupmenu.cpp:2125 src/gui/windows/statuswindow.cpp:90
 msgid "Copy to chat"
 msgstr "Додати до чату"
 
@@ -2491,9 +2495,8 @@ msgstr "Показати вікно"
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #: src/gui/popups/popupmenu.cpp:2386 src/gui/popups/skillpopup.cpp:127
-#: src/gui/windows/ministatuswindow.cpp:363
-#: src/gui/windows/statuswindow.cpp:68 src/gui/windows/statuswindow.cpp:243
-#: src/gui/windows/statuswindow.cpp:367
+#: src/gui/windows/ministatuswindow.cpp:363 src/gui/windows/statuswindow.cpp:70
+#: src/gui/windows/statuswindow.cpp:268 src/gui/windows/statuswindow.cpp:392
 #, c-format
 msgid "Level: %d"
 msgstr "Рівень: %d"
@@ -2912,8 +2915,8 @@ msgstr ""
 #. TRANSLATORS: info message
 #: src/gui/popups/popupmenu.cpp:3100 src/gui/popups/popupmenu.cpp:3119
 #: src/gui/popups/popupmenu.cpp:3132 src/gui/windows/charselectdialog.cpp:76
-#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:452
-#: src/net/eathena/charserverrecv.cpp:488
+#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:419
+#: src/net/eathena/charserverrecv.cpp:455
 msgid "Info"
 msgstr "Відомості"
 
@@ -3304,8 +3307,8 @@ msgstr "Рівень: %u"
 #. TRANSLATORS: money label
 #. TRANSLATORS: status window label
 #: src/gui/widgets/characterdisplay.cpp:140
-#: src/gui/windows/inventorywindow.cpp:719 src/gui/windows/statuswindow.cpp:70
-#: src/gui/windows/statuswindow.cpp:220 src/gui/windows/statuswindow.cpp:334
+#: src/gui/windows/inventorywindow.cpp:719 src/gui/windows/statuswindow.cpp:72
+#: src/gui/windows/statuswindow.cpp:222 src/gui/windows/statuswindow.cpp:359
 #, c-format
 msgid "Money: %s"
 msgstr "Кошти: %s"
@@ -3361,7 +3364,7 @@ msgstr "Вийти"
 #: src/gui/widgets/selldialog.cpp:129 src/gui/windows/buydialog.cpp:279
 #: src/gui/windows/itemamountwindow.cpp:194
 #: src/gui/windows/itemamountwindow.cpp:230 src/gui/windows/npcdialog.cpp:123
-#: src/gui/windows/statuswindow.cpp:746
+#: src/gui/windows/statuswindow.cpp:771
 msgid "+"
 msgstr "+"
 
@@ -3382,8 +3385,8 @@ msgstr "-"
 #. TRANSLATORS: status window label
 #. TRANSLATORS: status bar label
 #: src/gui/widgets/selldialog.cpp:133 src/gui/windows/buydialog.cpp:299
-#: src/gui/windows/statuswindow.cpp:483 src/gui/windows/statuswindow.cpp:539
-#: src/gui/windows/statuswindow.cpp:744 src/gui/windows/statuswindow.cpp:766
+#: src/gui/windows/statuswindow.cpp:508 src/gui/windows/statuswindow.cpp:564
+#: src/gui/windows/statuswindow.cpp:769 src/gui/windows/statuswindow.cpp:791
 msgid "Max"
 msgstr "Все"
 
@@ -3539,15 +3542,13 @@ msgstr "Розподіл предметів увімкнено."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:104
-#: src/resources/notifications.h:214
+#: src/gui/widgets/tabs/chat/partytab.cpp:104 src/resources/notifications.h:214
 msgid "Item sharing disabled."
 msgstr "Розподіл предметів вимкнено."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:109
-#: src/resources/notifications.h:218
+#: src/gui/widgets/tabs/chat/partytab.cpp:109 src/resources/notifications.h:218
 msgid "Item sharing not possible."
 msgstr "Неможливо ввімкнути розподіл предметів."
 
@@ -3558,22 +3559,19 @@ msgstr "Невідомий стан розподілу предметів."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:150
-#: src/resources/notifications.h:198
+#: src/gui/widgets/tabs/chat/partytab.cpp:150 src/resources/notifications.h:198
 msgid "Experience sharing enabled."
 msgstr "Розподіл досвіду ввімкнено."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:155
-#: src/resources/notifications.h:202
+#: src/gui/widgets/tabs/chat/partytab.cpp:155 src/resources/notifications.h:202
 msgid "Experience sharing disabled."
 msgstr "Розподіл досвіду вимкнено."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:160
-#: src/resources/notifications.h:206
+#: src/gui/widgets/tabs/chat/partytab.cpp:160 src/resources/notifications.h:206
 msgid "Experience sharing not possible."
 msgstr "Неможливо ввімкнути розподіл досвіду."
 
@@ -4007,15 +4005,15 @@ msgstr "Захищати фокус чату"
 msgid ""
 "Enables aggressive protection of input focus in chat window.\n"
 "\n"
-"Note: no other text inputs will be allowed to receive text input when you typing in chat window."
+"Note: no other text inputs will be allowed to receive text input when you "
+"typing in chat window."
 msgstr ""
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: settings colors tab name
 #. TRANSLATORS: emotes tab name
 #: src/gui/widgets/tabs/setup_chat.cpp:67
-#: src/gui/widgets/tabs/setup_colors.cpp:86
-#: src/gui/windows/emotewindow.cpp:117
+#: src/gui/widgets/tabs/setup_colors.cpp:86 src/gui/windows/emotewindow.cpp:117
 msgid "Colors"
 msgstr "Кольори"
 
@@ -4039,9 +4037,11 @@ msgstr "Показувати список кольорів чату"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:79
 msgid ""
-"Enable this setting to show color selection drop-down in chat window. Chat window will display color selection drop-down.\n"
+"Enable this setting to show color selection drop-down in chat window. Chat "
+"window will display color selection drop-down.\n"
 "\n"
-"It allows one to select default color of outgoing chat messages easily, but also occupies some space in chat window."
+"It allows one to select default color of outgoing chat messages easily, but "
+"also occupies some space in chat window."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4068,9 +4068,11 @@ msgstr "Обмежити кількість символів у повідомл
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:103
 msgid ""
-"Limits how many characters will be shown in longest lines of text displayed in chat.\n"
+"Limits how many characters will be shown in longest lines of text displayed "
+"in chat.\n"
 "\n"
-"Note: long lines can make client slower. Lines longer than this limit will be truncated."
+"Note: long lines can make client slower. Lines longer than this limit will "
+"be truncated."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4081,7 +4083,9 @@ msgstr "Обмежити кількість рядків вікна чату"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:112
 msgid ""
-"Limits how many lines chat will keep in scrollback buffer. Chat keeps specified number of last lines of text. Oldest lines exceeding this limit are discarded from scrollback buffer.\n"
+"Limits how many lines chat will keep in scrollback buffer. Chat keeps "
+"specified number of last lines of text. Oldest lines exceeding this limit "
+"are discarded from scrollback buffer.\n"
 "\n"
 "Note: keeping too many lines in scroll buffer can slow client down."
 msgstr ""
@@ -4122,8 +4126,8 @@ msgstr "Показувати історію чату"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:139
 msgid ""
-"If this setting enabled, client will load old chat tabs content from logs on"
-" startup instead of starting with empty chat tabs."
+"If this setting enabled, client will load old chat tabs content from logs on "
+"startup instead of starting with empty chat tabs."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4134,9 +4138,11 @@ msgstr "Сповіщати про появлення членів групи"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:146
 msgid ""
-"If this setting is enabled, online status changes of party members will be shown in party tab of chat.\n"
+"If this setting is enabled, online status changes of party members will be "
+"shown in party tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows one to see when your buddies are coming online."
+"This adds some extra noise to chat, but allows one to see when your buddies "
+"are coming online."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4147,9 +4153,11 @@ msgstr "Сповіщати про появлення членів гільдії
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:154
 msgid ""
-"If this setting is enabled, online status changes of guild members will be shown in guild tab of chat.\n"
+"If this setting is enabled, online status changes of guild members will be "
+"shown in guild tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows one to see when your buddies are coming online."
+"This adds some extra noise to chat, but allows one to see when your buddies "
+"are coming online."
 msgstr ""
 
 #. TRANSLATORS: settings group
@@ -4165,9 +4173,13 @@ msgstr "Не показувати робочі повідомлення крам
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:166
 msgid ""
-"If this setting enabled, no messages related to built-in ManaPlus shop will be displayed in chat. Disable this setting if you want to see shop-related messages.\n"
+"If this setting enabled, no messages related to built-in ManaPlus shop will "
+"be displayed in chat. Disable this setting if you want to see shop-related "
+"messages.\n"
 "\n"
-"Note: technically, ManaPlus shop implemented as usual private messages with special content. If you disable this setting, you will be able to see these messages and get idea when other players are looking at your shop."
+"Note: technically, ManaPlus shop implemented as usual private messages with "
+"special content. If you disable this setting, you will be able to see these "
+"messages and get idea when other players are looking at your shop."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4180,7 +4192,8 @@ msgstr "Показувати MVP повідомлення"
 msgid ""
 "Enable this setting to see MVP messages from server.\n"
 "\n"
-"Note: MVP messages are not used on TMW/Evol/etc servers, so this feature usually makes little difference."
+"Note: MVP messages are not used on TMW/Evol/etc servers, so this feature "
+"usually makes little difference."
 msgstr ""
 
 #. TRANSLATORS: settings group
@@ -4199,9 +4212,12 @@ msgstr "Шепіт (приватне спілкування) в окремих �
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:189
 msgid ""
-"If this setting enabled, all whispers (private messages) will be placed in separate tabs, separate tab for each player. If this setting disabled, all whispers will appear in General tab.\n"
+"If this setting enabled, all whispers (private messages) will be placed in "
+"separate tabs, separate tab for each player. If this setting disabled, all "
+"whispers will appear in General tab.\n"
 "\n"
-"Note: putting all whispers to single General tab is known to be confusing. Think twice before disabling this feature."
+"Note: putting all whispers to single General tab is known to be confusing. "
+"Think twice before disabling this feature."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4212,7 +4228,8 @@ msgstr "Лог магії у вкладці зневадження"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:199
 msgid ""
-"If this setting is enabled, spell invocation will be shown in Debug tab. If disabled, it will be shown in General tab instead.\n"
+"If this setting is enabled, spell invocation will be shown in Debug tab. If "
+"disabled, it will be shown in General tab instead.\n"
 "\n"
 "Note: it does not affects server replies related to spells."
 msgstr ""
@@ -4225,9 +4242,11 @@ msgstr "Показувати сповіщення сервера у вкладц
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:207
 msgid ""
-"If this setting is enabled, server messages will be shown in Debug tab of chat. If disabled, server messages will appear in General chat instead.\n"
+"If this setting is enabled, server messages will be shown in Debug tab of "
+"chat. If disabled, server messages will appear in General chat instead.\n"
 "\n"
-"Note: according to 4144, disabling this could also make you to lose some debug messages from client in Debug tab since these are fake server messages."
+"Note: according to 4144, disabling this could also make you to lose some "
+"debug messages from client in Debug tab since these are fake server messages."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4252,9 +4271,11 @@ msgstr "Ввімкнути ГМ вкладку"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:226
 msgid ""
-"If enabled, GM tab will appear in chat. It displays text related GM activity.\n"
+"If enabled, GM tab will appear in chat. It displays text related GM "
+"activity.\n"
 "\n"
-"Note: this setting only makes difference for GMs (Game Masters) since this tab only appears for GMs."
+"Note: this setting only makes difference for GMs (Game Masters) since this "
+"tab only appears for GMs."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4265,7 +4286,8 @@ msgstr "Ввімкнути вкладку для мови"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:234
 msgid ""
-"If this feature enabled, language tab will appear if server supports this feature.\n"
+"If this feature enabled, language tab will appear if server supports this "
+"feature.\n"
 "\n"
 "Note: only supported by Evol server yet."
 msgstr ""
@@ -4278,7 +4300,9 @@ msgstr "Показувати повідомлення на всіх мовах"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:242
 msgid ""
-"If this setting enabled and server supports different chats for different languages, you will see messages for all languages, regardless of your language preferences.\n"
+"If this setting enabled and server supports different chats for different "
+"languages, you will see messages for all languages, regardless of your "
+"language preferences.\n"
 "\n"
 "Note: it only works on servers supporting language tabs feature, like Evol."
 msgstr ""
@@ -4291,7 +4315,9 @@ msgstr "Ввімкнути вкладку бійки"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:252
 msgid ""
-"If this setting enabled, Battle tab will appear in chat. This tab will contain messages related to battles, like damage and experience gain, if battle messages are enabled.\n"
+"If this setting enabled, Battle tab will appear in chat. This tab will "
+"contain messages related to battles, like damage and experience gain, if "
+"battle messages are enabled.\n"
 "\n"
 "Note: client restart required to take effect."
 msgstr ""
@@ -4317,7 +4343,10 @@ msgstr "Змінювати розмір вкладок чату за потре�
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:269
 msgid ""
-"If this feature enabled, text in chat will be automatically adjusted to adapt to appearance of chat input field when you typing message and when input field of chat disappears. If disabled, chat input area will always occupy its place, which could be otherwise usable for text.\n"
+"If this feature enabled, text in chat will be automatically adjusted to "
+"adapt to appearance of chat input field when you typing message and when "
+"input field of chat disappears. If disabled, chat input area will always "
+"occupy its place, which could be otherwise usable for text.\n"
 "\n"
 "Note: its mostly about jumpy attitude vs less usable space for text."
 msgstr ""
@@ -4352,7 +4381,8 @@ msgstr "Підсвічувані слова (відокремлені комам
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:299
 msgid ""
-"Here you can specify some extra words which will also cause highlighting. Use comma to separate words.\n"
+"Here you can specify some extra words which will also cause highlighting. "
+"Use comma to separate words.\n"
 "\n"
 "Note: frequent highlights are annoying - use it with caution."
 msgstr ""
@@ -4365,7 +4395,8 @@ msgstr "Ігнорування глобальні повідомлення ві�
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:307
 msgid ""
-"This setting allows you to ignore some global messages if particular sender (NPC, GM) annoys you too much. Global will be moved to Debug instead.\n"
+"This setting allows you to ignore some global messages if particular sender "
+"(NPC, GM) annoys you too much. Global will be moved to Debug instead.\n"
 "\n"
 "Note: careless use of this feature can make you to miss important announces!"
 msgstr ""
@@ -4378,9 +4409,12 @@ msgstr "Показати кнопку смайликів у чаті"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:316
 msgid ""
-"If this setting enabled, button will appear near text input field. This button allows one to invoke composing window, which allows one to insert smiles and text formatting easily.\n"
+"If this setting enabled, button will appear near text input field. This "
+"button allows one to invoke composing window, which allows one to insert "
+"smiles and text formatting easily.\n"
 "\n"
-"Note: same window can also be invoked by hotkey when typing, usually F1 by default."
+"Note: same window can also be invoked by hotkey when typing, usually F1 by "
+"default."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4494,7 +4528,9 @@ msgstr "Деякі клавіші дублюють одна одну."
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
-msgstr "Клавіші \"%s\" та \"%s\" конфліктують. Необхідно усунути повтори,інакше керування може бути ускладненим."
+msgstr ""
+"Клавіші \"%s\" та \"%s\" конфліктують. Необхідно усунути повтори,інакше "
+"керування може бути ускладненим."
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
@@ -5102,7 +5138,9 @@ msgstr "Вимкнути кешування істот"
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_perfomance.cpp:129
 msgid "Different options (enable or disable can improve performance)"
-msgstr "Різні налаштунки (ввімкнення чи вимкнення може призвести до кращої продуктивності)"
+msgstr ""
+"Різні налаштунки (ввімкнення чи вимкнення може призвести до кращої "
+"продуктивності)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:134
@@ -5137,7 +5175,8 @@ msgstr "Занести в кеш всі звуки (може забрати до
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_perfomance.cpp:160
 msgid "Critical options (DO NOT change if you don't know what you're doing)"
-msgstr "Критичні налаштунки (НІ В ЯКОМУ РАЗУ не чіпайте, якщо не впевнені, що робите)"
+msgstr ""
+"Критичні налаштунки (НІ В ЯКОМУ РАЗУ не чіпайте, якщо не впевнені, що робите)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:164
@@ -5263,7 +5302,9 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_players.cpp:143
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
-msgstr "Емуляція правого кліку миші подовженим лівим кліком (вживане на тач інтерфейсах)"
+msgstr ""
+"Емуляція правого кліку миші подовженим лівим кліком (вживане на тач "
+"інтерфейсах)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:148
@@ -6124,8 +6165,7 @@ msgstr "Кількість:"
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: social window button
 #: src/gui/windows/buydialog.cpp:285 src/gui/windows/charcreatedialog.cpp:112
-#: src/gui/windows/charselectdialog.cpp:618
-#: src/gui/windows/socialwindow.cpp:77
+#: src/gui/windows/charselectdialog.cpp:618 src/gui/windows/socialwindow.cpp:77
 msgid "Create"
 msgstr "Створити"
 
@@ -6241,17 +6281,16 @@ msgstr "^"
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
 #: src/gui/windows/charcreatedialog.cpp:104
-#: src/gui/windows/charcreatedialog.cpp:197
-#: src/gui/windows/charcreatedialog.cpp:210
-#: src/gui/windows/charcreatedialog.cpp:221
-#: src/gui/windows/charcreatedialog.cpp:231
-#: src/gui/windows/outfitwindow.cpp:65
+#: src/gui/windows/charcreatedialog.cpp:196
+#: src/gui/windows/charcreatedialog.cpp:209
+#: src/gui/windows/charcreatedialog.cpp:220
+#: src/gui/windows/charcreatedialog.cpp:230 src/gui/windows/outfitwindow.cpp:65
 msgid ">"
 msgstr ">"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:110
-#: src/gui/windows/charcreatedialog.cpp:600
+#: src/gui/windows/charcreatedialog.cpp:599
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Будь ласка, розподіліть %d балів"
@@ -6260,73 +6299,71 @@ msgstr "Будь ласка, розподіліть %d балів"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: outfits window button
-#: src/gui/windows/charcreatedialog.cpp:201
-#: src/gui/windows/charcreatedialog.cpp:212
-#: src/gui/windows/charcreatedialog.cpp:223
-#: src/gui/windows/charcreatedialog.cpp:233
-#: src/gui/windows/outfitwindow.cpp:63
+#: src/gui/windows/charcreatedialog.cpp:200
+#: src/gui/windows/charcreatedialog.cpp:211
+#: src/gui/windows/charcreatedialog.cpp:222
+#: src/gui/windows/charcreatedialog.cpp:232 src/gui/windows/outfitwindow.cpp:63
 msgid "<"
 msgstr "<"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:203
+#: src/gui/windows/charcreatedialog.cpp:202
 msgid "Hair color:"
 msgstr "Колір волосся:"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:214
+#: src/gui/windows/charcreatedialog.cpp:213
 msgid "Hair style:"
 msgstr "Зачіска:"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:225
+#: src/gui/windows/charcreatedialog.cpp:224
 msgid "Race:"
 msgstr "Раса:"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:235
+#: src/gui/windows/charcreatedialog.cpp:234
 msgid "Look:"
 msgstr "Вигляд:"
 
 #. TRANSLATORS: one char size female character gender
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/charcreatedialog.cpp:252
-#: src/gui/windows/socialwindow.cpp:73
+#: src/gui/windows/charcreatedialog.cpp:251 src/gui/windows/socialwindow.cpp:73
 msgid "F"
 msgstr "П"
 
 #. TRANSLATORS: one char size male character gender
-#: src/gui/windows/charcreatedialog.cpp:258
-#: src/gui/windows/charcreatedialog.cpp:265
-#: src/gui/windows/charcreatedialog.cpp:273
+#: src/gui/windows/charcreatedialog.cpp:257
+#: src/gui/windows/charcreatedialog.cpp:264
+#: src/gui/windows/charcreatedialog.cpp:272
 msgid "M"
 msgstr ""
 
 #. TRANSLATORS: one char size other character gender
 #. TRANSLATORS: inventory outfits button
-#: src/gui/windows/charcreatedialog.cpp:260
-#: src/gui/windows/charcreatedialog.cpp:277
+#: src/gui/windows/charcreatedialog.cpp:259
+#: src/gui/windows/charcreatedialog.cpp:276
 #: src/gui/windows/inventorywindow.cpp:223
 msgid "O"
 msgstr ""
 
 #. TRANSLATORS: one char size unknown character gender
-#: src/gui/windows/charcreatedialog.cpp:267
+#: src/gui/windows/charcreatedialog.cpp:266
 msgid "U"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:474
+#: src/gui/windows/charcreatedialog.cpp:473
 msgid "Your name needs to be at least 4 characters."
 msgstr "Ім'я повинно містити принаймні 4 символи."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:590
+#: src/gui/windows/charcreatedialog.cpp:589
 msgid "Character stats OK"
 msgstr "Характеристики персонажа в нормі"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:606
+#: src/gui/windows/charcreatedialog.cpp:605
 #, c-format
 msgid "Please remove %d points"
 msgstr "Будь ласка, видаліть %d балів"
@@ -6390,7 +6427,12 @@ msgid ""
 "Level: %u\n"
 "Experience: %u\n"
 "Money: %s"
-msgstr "Hp: %u/%u\nMp: %u/%u\nРівень: %u\nДосвід: %u\nКошти: %s"
+msgstr ""
+"Hp: %u/%u\n"
+"Mp: %u/%u\n"
+"Рівень: %u\n"
+"Досвід: %u\n"
+"Кошти: %s"
 
 #. TRANSLATORS: error message
 #: src/gui/windows/charselectdialog.cpp:308
@@ -6492,8 +6534,7 @@ msgstr "Редагувати сервер"
 
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/editserverdialog.cpp:57
-#: src/gui/windows/serverdialog.cpp:112
+#: src/gui/windows/editserverdialog.cpp:57 src/gui/windows/serverdialog.cpp:112
 msgid "Connect"
 msgstr "З'єднання"
 
@@ -6853,15 +6894,13 @@ msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:61
-#: src/gui/windows/mailviewwindow.cpp:105
+#: src/gui/windows/maileditwindow.cpp:61 src/gui/windows/mailviewwindow.cpp:105
 msgid "Money:"
 msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view item label
-#: src/gui/windows/maileditwindow.cpp:63
-#: src/gui/windows/mailviewwindow.cpp:124
+#: src/gui/windows/maileditwindow.cpp:63 src/gui/windows/mailviewwindow.cpp:124
 #: src/gui/windows/mailviewwindow.cpp:133
 msgid "Item:"
 msgstr ""
@@ -6970,7 +7009,7 @@ msgstr "рівень роботи"
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
 #: src/gui/windows/ministatuswindow.cpp:356
-#: src/gui/windows/statuswindow.cpp:236
+#: src/gui/windows/statuswindow.cpp:261
 #, c-format
 msgid "Level: %d (GM %d)"
 msgstr "Рівень: %d (ГМ %d)"
@@ -7422,33 +7461,33 @@ msgid "Choose your party's name."
 msgstr "Оберіть назву групи."
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:72
+#: src/gui/windows/statuswindow.cpp:74
 msgid "HP:"
 msgstr "Здоров'я:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:75
+#: src/gui/windows/statuswindow.cpp:77
 msgid "Exp:"
 msgstr "Досвід:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:136
+#: src/gui/windows/statuswindow.cpp:138
 msgid "MP:"
 msgstr "Мана:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:173 src/gui/windows/statuswindow.cpp:294
+#: src/gui/windows/statuswindow.cpp:175 src/gui/windows/statuswindow.cpp:319
 #, c-format
 msgid "Job: %d"
 msgstr "Робота: %d"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:175
+#: src/gui/windows/statuswindow.cpp:177
 msgid "Job:"
 msgstr "Робота:"
 
 #. TRANSLATORS: status window label
-#: src/gui/windows/statuswindow.cpp:224 src/gui/windows/statuswindow.cpp:342
+#: src/gui/windows/statuswindow.cpp:226 src/gui/windows/statuswindow.cpp:367
 #, c-format
 msgid "Character points: %d"
 msgstr "Нерозподілених балів: %d"
@@ -7566,8 +7605,7 @@ msgstr "У тебе недостатньо коштів."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:526
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr "Не вдається додати предмет. Не можна накладати предмети одного типу."
 
 #. TRANSLATORS: trade error
@@ -9006,7 +9044,9 @@ msgstr ""
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
-msgstr "Вас було тимчасово забанено до %s.\nЗвертайтесь до команди ГМ'ів на форумі."
+msgstr ""
+"Вас було тимчасово забанено до %s.\n"
+"Звертайтесь до команди ГМ'ів на форумі."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:151 src/net/eathena/loginrecv.cpp:92
@@ -9046,33 +9086,33 @@ msgstr "З'єднання з сервером припинене. "
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:431
-#: src/net/eathena/charserverrecv.cpp:479
+#: src/net/eathena/charserverrecv.cpp:398
+#: src/net/eathena/charserverrecv.cpp:446
 msgid "Character rename error."
 msgstr "Помилка переіменування персонажу."
 
 #. TRANSLATORS: info message
-#: src/net/eathena/charserverrecv.cpp:454
+#: src/net/eathena/charserverrecv.cpp:421
 msgid "Character renamed."
 msgstr "Персонаж переіменовано."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:470
+#: src/net/eathena/charserverrecv.cpp:437
 msgid "Rename not allowed."
 msgstr "Переіменування не дозволене."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:474
+#: src/net/eathena/charserverrecv.cpp:441
 msgid "New name is not set."
 msgstr "Нове ім'я не вжито."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:483
+#: src/net/eathena/charserverrecv.cpp:450
 msgid "Character not found."
 msgstr "Персонаж не знайдено."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/charserverrecv.cpp:517 src/net/tmwa/charserverrecv.cpp:339
+#: src/net/eathena/charserverrecv.cpp:484 src/net/tmwa/charserverrecv.cpp:303
 msgid "Failed to delete character."
 msgstr "Неможливо видалити персонаж."
 
@@ -9124,139 +9164,10 @@ msgstr ""
 msgid "Do you accept %s and %s as parents?"
 msgstr ""
 
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:123 src/net/tmwa/generalhandler.cpp:130
-#, c-format
-msgid "Strength %s"
-msgstr "Сила %s"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:125 src/net/tmwa/generalhandler.cpp:132
-#, c-format
-msgid "Agility %s"
-msgstr "Спритність %s"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:127 src/net/tmwa/generalhandler.cpp:134
-#, c-format
-msgid "Vitality %s"
-msgstr "Витривалість %s"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:129 src/net/tmwa/generalhandler.cpp:136
-#, c-format
-msgid "Intelligence %s"
-msgstr "Інтелект %s"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:131 src/net/tmwa/generalhandler.cpp:138
-#, c-format
-msgid "Dexterity %s"
-msgstr "Вправність %s"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:133 src/net/tmwa/generalhandler.cpp:140
-#, c-format
-msgid "Luck %s"
-msgstr "Талан %s"
-
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:197 src/net/tmwa/generalhandler.cpp:207
+#: src/net/eathena/generalhandler.cpp:179 src/net/tmwa/generalhandler.cpp:189
 msgid "Got disconnected from server!"
 msgstr "Відключений від серверу!"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:223 src/net/tmwa/generalhandler.cpp:234
-msgid "Strength"
-msgstr "Сила"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:226 src/net/tmwa/generalhandler.cpp:237
-msgid "Agility"
-msgstr "Спритність"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:229 src/net/tmwa/generalhandler.cpp:240
-msgid "Vitality"
-msgstr "Витривалість"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:232 src/net/tmwa/generalhandler.cpp:243
-msgid "Intelligence"
-msgstr "Інтелект"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:235 src/net/tmwa/generalhandler.cpp:246
-msgid "Dexterity"
-msgstr "Вправність"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:238 src/net/tmwa/generalhandler.cpp:249
-msgid "Luck"
-msgstr "Талан"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:243 src/net/tmwa/generalhandler.cpp:253
-msgid "Defense"
-msgstr "Захист"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:245 src/net/tmwa/generalhandler.cpp:255
-msgid "M.Attack"
-msgstr "Маг. напад"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:247 src/net/tmwa/generalhandler.cpp:257
-msgid "M.Defense"
-msgstr "Маг. захист"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:250 src/net/tmwa/generalhandler.cpp:260
-#, no-c-format
-msgid "% Accuracy"
-msgstr "Точність (%)"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:253 src/net/tmwa/generalhandler.cpp:263
-#, no-c-format
-msgid "% Evade"
-msgstr "Ухиляння (%)"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:256 src/net/tmwa/generalhandler.cpp:266
-#, no-c-format
-msgid "% Critical"
-msgstr "Критичний удар (%)"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:258 src/net/tmwa/generalhandler.cpp:268
-msgid "Attack Delay"
-msgstr "Затримка атаки"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:260 src/net/tmwa/generalhandler.cpp:270
-msgid "Walk Delay"
-msgstr "Затримка руху"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:262 src/net/tmwa/generalhandler.cpp:272
-msgid "Attack Range"
-msgstr "Дальність атаки"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:264 src/net/tmwa/generalhandler.cpp:274
-msgid "Damage per sec."
-msgstr "Ушкодження за секунду."
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:266
-msgid "Karma"
-msgstr "Карма"
-
-#. TRANSLATORS: player stat
-#: src/net/eathena/generalhandler.cpp:268
-msgid "Manner"
-msgstr "Манери"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:49 src/net/tmwa/generalrecv.cpp:49
@@ -9413,7 +9324,7 @@ msgstr ""
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: item name
 #: src/net/eathena/inventoryrecv.cpp:1197
-#: src/net/eathena/inventoryrecv.cpp:1330 src/resources/db/itemdb.cpp:199
+#: src/net/eathena/inventoryrecv.cpp:1330 src/resources/db/itemdb.cpp:190
 msgid "Unknown item"
 msgstr "Невідомий предмет"
 
@@ -9689,20 +9600,51 @@ msgstr "Новітній OpenGL"
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:55 src/resources/db/avatardb.cpp:93
-#: src/resources/db/itemdb.cpp:385 src/resources/db/moddb.cpp:79
-#: src/resources/db/monsterdb.cpp:103 src/resources/modinfo.cpp:29
+#: src/resources/db/itemdb.cpp:377 src/resources/db/itemdb.cpp:381
+#: src/resources/db/moddb.cpp:79 src/resources/db/monsterdb.cpp:101
+#: src/resources/modinfo.cpp:29
 msgid "unnamed"
 msgstr "казна що"
 
 #. TRANSLATORS: unknown info name
-#: src/resources/db/petdb.cpp:104
+#: src/resources/db/petdb.cpp:103
 msgid "pet"
 msgstr "улюбленець"
 
 #. TRANSLATORS: unknown info name
-#: src/resources/db/skillunitdb.cpp:103
+#: src/resources/db/skillunitdb.cpp:102
 msgid "skill"
 msgstr ""
+
+#. TRANSLATORS: player stat
+#: src/resources/db/statdb.cpp:45
+msgid "Strength"
+msgstr "Сила"
+
+#. TRANSLATORS: player stat
+#: src/resources/db/statdb.cpp:49
+msgid "Agility"
+msgstr "Спритність"
+
+#. TRANSLATORS: player stat
+#: src/resources/db/statdb.cpp:53
+msgid "Vitality"
+msgstr "Витривалість"
+
+#. TRANSLATORS: player stat
+#: src/resources/db/statdb.cpp:57
+msgid "Intelligence"
+msgstr "Інтелект"
+
+#. TRANSLATORS: player stat
+#: src/resources/db/statdb.cpp:61
+msgid "Dexterity"
+msgstr "Вправність"
+
+#. TRANSLATORS: player stat
+#: src/resources/db/statdb.cpp:65
+msgid "Luck"
+msgstr "Талан"
 
 #. TRANSLATORS: inventory type name
 #: src/resources/inventory/inventory.cpp:340
@@ -10355,8 +10297,9 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:556
-msgid "Room join failed. Not enought money."
-msgstr ""
+#, fuzzy
+msgid "Room join failed. Not enough money."
+msgstr "У тебе недостатньо коштів."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:560
@@ -10623,33 +10566,35 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:796
 #, c-format
-msgid "You and %s was divorced."
+msgid "You and %s are now divorced."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:800
-msgid "You was called by partner."
-msgstr ""
+#, fuzzy
+msgid "You were called by your partner."
+msgstr "Вас виштовхали з групи."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:804
 #, c-format
-msgid "You calling partner %s."
+msgid "You are calling your partner, %s."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:808
-msgid "Adoption child error. You already have baby."
+msgid "Child adoption failed. You already have a baby."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:812
-msgid "Adoption child error. You level too small for have baby."
+msgid "Child adoption failed. Your level is too low."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:816
-msgid "Adoption child error. This player already married and can't be baby."
+msgid ""
+"Child adoption failed. This player is already married and can't be a baby."
 msgstr ""
 
 #. TRANSLATORS: notification message
@@ -10659,19 +10604,21 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:825
-msgid "Error saving location. Not enought skill level."
+msgid "Error saving location. Not enough skill level."
 msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:829
-msgid "Error saving location. You not have warp skill."
+msgid "Error saving location. You do not have warp skill."
 msgstr ""
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:29
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Можливими опціями для /%s є: \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+msgstr ""
+"Можливими опціями для /%s є: \"yes\", \"no\", \"true\", \"false\", \"1\", "
+"\"0\"."
 
 #. TRANSLATORS: uptime command
 #: src/utils/stringutils.cpp:946
@@ -10727,3 +10674,57 @@ msgstr "%d секунда"
 #, c-format
 msgid "%d seconds"
 msgstr "%d секунд"
+
+#~ msgid "Strength %s"
+#~ msgstr "Сила %s"
+
+#~ msgid "Agility %s"
+#~ msgstr "Спритність %s"
+
+#~ msgid "Vitality %s"
+#~ msgstr "Витривалість %s"
+
+#~ msgid "Intelligence %s"
+#~ msgstr "Інтелект %s"
+
+#~ msgid "Dexterity %s"
+#~ msgstr "Вправність %s"
+
+#~ msgid "Luck %s"
+#~ msgstr "Талан %s"
+
+#~ msgid "Defense"
+#~ msgstr "Захист"
+
+#~ msgid "M.Attack"
+#~ msgstr "Маг. напад"
+
+#~ msgid "M.Defense"
+#~ msgstr "Маг. захист"
+
+#~ msgid "% Accuracy"
+#~ msgstr "Точність (%)"
+
+#~ msgid "% Evade"
+#~ msgstr "Ухиляння (%)"
+
+#~ msgid "% Critical"
+#~ msgstr "Критичний удар (%)"
+
+#~ msgid "Attack Delay"
+#~ msgstr "Затримка атаки"
+
+#~ msgid "Walk Delay"
+#~ msgstr "Затримка руху"
+
+#~ msgid "Attack Range"
+#~ msgstr "Дальність атаки"
+
+#~ msgid "Damage per sec."
+#~ msgstr "Ушкодження за секунду."
+
+#~ msgid "Karma"
+#~ msgstr "Карма"
+
+#~ msgid "Manner"
+#~ msgstr "Манери"
