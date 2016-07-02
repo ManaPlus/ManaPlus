@@ -1,3 +1,12 @@
+2016-07-02 New release 1.6.7.2
+fix: issues with translated item names.
+fix: probably final fix for being paths (hercules).
+add: show cards in foring items window.
+add: cards into char creation window (charcreation.xml).
+add: move equipment slots name into equipmentslots.xml
+add: move player stats definition into stats.xml
+add: extend dye unit tests.
+
 2016-06-18 New release 1.6.6.18
 fix: nuke command.
 fix: dont send CMSG_WHO_REQUEST for most new tmwa versions.
