@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SKILLOWNER_H
-#define RESOURCES_SKILLOWNER_H
+#ifndef ENUMS_RESOURCES_SKILLOWNER_H
+#define ENUMS_RESOURCES_SKILLOWNER_H
 
 namespace SkillOwner
 {
@@ -32,4 +32,4 @@ namespace SkillOwner
     };
 }  // namespace SkillOwner
 
-#endif  // RESOURCES_SKILLOWNER_H
+#endif  // ENUMS_RESOURCES_SKILLOWNER_H

@@ -767,7 +767,7 @@ SET(SRCS
     resources/sdlscreenshothelper.h
     const/net/skill.h
     const/resources/skill.h
-    resources/skillowner.h
+    enums/resources/skillowner.h
     enums/resources/skilltype.h
     resources/db/sounddb.cpp
     resources/db/sounddb.h
