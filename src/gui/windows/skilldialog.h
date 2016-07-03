@@ -29,10 +29,11 @@
 #include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/modifiable.h"
 
+#include "enums/resources/skilltype.h"
+
 #include "listeners/actionlistener.h"
 
 #include "resources/skillowner.h"
-#include "resources/skilltype.h"
 
 class Being;
 class Button;

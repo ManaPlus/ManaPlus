@@ -768,7 +768,7 @@ SET(SRCS
     const/net/skill.h
     const/resources/skill.h
     resources/skillowner.h
-    resources/skilltype.h
+    enums/resources/skilltype.h
     resources/db/sounddb.cpp
     resources/db/sounddb.h
     resources/db/statdb.cpp

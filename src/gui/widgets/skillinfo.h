@@ -26,8 +26,9 @@
 #include "enums/simpletypes/modifiable.h"
 #include "enums/simpletypes/visible.h"
 
+#include "enums/resources/skilltype.h"
+
 #include "resources/skillowner.h"
-#include "resources/skilltype.h"
 
 #include <string>
 #include <vector>

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_SKILLTYPE_H
-#define RESOURCES_SKILLTYPE_H
+#ifndef ENUMS_RESOURCES_SKILLTYPE_H
+#define ENUMS_RESOURCES_SKILLTYPE_H
 
 namespace SkillType
 {
@@ -35,4 +35,4 @@ namespace SkillType
     };
 }  // namespace SkillType
 
-#endif  // RESOURCES_SKILLTYPE_H
+#endif  // ENUMS_RESOURCES_SKILLTYPE_H
