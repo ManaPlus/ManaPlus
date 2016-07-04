@@ -31,6 +31,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "resources/skilltypelist.h"
+
 #include "debug.h"
 
 SkillInfo::SkillInfo() :
@@ -113,47 +115,30 @@ void SkillInfo::update()
 
     // TRANSLATORS: skill type
     const char *const typeStr = _("Type: %s");
-    switch (type)
+
+    if (type == SkillType::Unknown)
     {
-        case SkillType::Unknown:
-            // TRANSLATORS: Skill type
-            skillEffect = strprintf(typeStr, _("Unknown"));
-            break;
-
-        case SkillType::Attack:
-            // TRANSLATORS: Skill type
-            skillEffect = strprintf(typeStr, _("Attack"));
-            break;
-
-        case SkillType::Ground:
-            // TRANSLATORS: Skill type
-            skillEffect = strprintf(typeStr, _("Ground"));
-            break;
-
-        case SkillType::Self:
-            // TRANSLATORS: Skill type
-            skillEffect = strprintf(typeStr, _("Self"));
-            break;
-
-        case SkillType::Unused:
-            // TRANSLATORS: Skill type
-            skillEffect = strprintf(typeStr, _("Unused"));
-            break;
-
-        case SkillType::Support:
-            // TRANSLATORS: Skill type
-            skillEffect = strprintf(typeStr, _("Support"));
-            break;
-
-        case SkillType::TargetTrap:
-            // TRANSLATORS: Skill type
-            skillEffect = strprintf(typeStr, _("Target trap"));
-            break;
-        default:
-            // TRANSLATORS: Skill type
-            skillEffect = strprintf(typeStr, _("Unknown:"));
-            skillEffect.append(" ").append(toString(CAST_S32(type)));
-            break;
+        // TRANSLATORS: Skill type
+        skillEffect = strprintf(typeStr, _("Unknown"));
+    }
+    else
+    {
+        for (size_t f = 0; f < skillTypeListSize; f ++)
+        {
+            const SkillTypeEntry &item = skillTypeList[f];
+            if ((item.type & type) != 0)
+            {
+                if (!skillEffect.empty())
+                    skillEffect.append(", ");
+                skillEffect.append(strprintf(typeStr, item.name));
+            }
+        }
+    }
+    if (skillEffect.empty())
+    {
+        // TRANSLATORS: Skill type
+        skillEffect = strprintf(typeStr, _("Unknown:"));
+        skillEffect.append(" ").append(toString(CAST_S32(type)));
     }
 
     if (sp)

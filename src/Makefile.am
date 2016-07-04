@@ -436,6 +436,8 @@ SRC += events/actionevent.h \
 	      resources/sdlmusic.h \
 	      resources/sdlscreenshothelper.cpp \
 	      resources/sdlscreenshothelper.h \
+	      resources/skilltypeentry.h \
+	      resources/skilltypelist.h \
 	      const/net/skill.h \
 	      const/resources/skill.h \
 	      enums/resources/skillowner.h \

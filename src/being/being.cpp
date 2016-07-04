@@ -1026,10 +1026,15 @@ void Being::handleSkill(Being *restrict const victim,
     if (this != localPlayer && skill)
     {
         const SkillType::SkillType type = skill->type;
-        if (type == SkillType::Attack || type == SkillType::Ground)
+        if ((type & SkillType::Attack) != 0 ||
+            (type & SkillType::Ground) != 0)
+        {
             setAction(BeingAction::ATTACK, 1);
+        }
         else
+        {
             setAction(BeingAction::STAND, 1);
+        }
     }
 
     reset();
