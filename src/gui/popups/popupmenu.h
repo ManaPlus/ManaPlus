@@ -163,6 +163,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showSkillPopup(const SkillInfo *const info);
 
+        void showSkillLevelPopup(const SkillInfo *const info);
+
 #ifdef EATHENA_SUPPORT
         void showCraftPopup();
 #endif
@@ -247,6 +249,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         bool addBeingMenu();
 
+        void showSkillLevelMenu();
+
         BrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
 
@@ -271,6 +275,7 @@ class PopupMenu final : public Popup, public LinkHandler
         BeingTypeId mSubType;
         int mX;
         int mY;
+        bool mAllowCleanMenu;
 
         /**
          * Shared code for the various showPopup functions.

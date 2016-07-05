@@ -37,6 +37,8 @@
 
 #include "gui/viewport.h"
 
+#include "gui/popups/popupmenu.h"
+
 #ifdef EATHENA_SUPPORT
 #include "gui/shortcut/emoteshortcut.h"
 
@@ -1174,7 +1176,6 @@ impHandler(skill)
     }
     else
     {
-        logger->log("text: " + text);
         skillDialog->useSkill(skillId,
             AutoTarget_true,
             level,
@@ -1619,6 +1620,19 @@ impHandlerE(adoptChild)
 #else
     return false;
 #endif
+}
+
+impHandler(showSkillLevels)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    const SkillInfo *restrict const skill = skillDialog->getSkill(
+        atoi(args.c_str()));
+    if (!skill)
+        return false;
+    popupMenu->showSkillLevelPopup(skill);
+    return true;
 }
 
 }  // namespace Actions

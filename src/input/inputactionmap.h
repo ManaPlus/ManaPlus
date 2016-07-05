@@ -5521,6 +5521,12 @@ static const InputActionData inputActionData
         "restorecamera|returncamera|camerarestore",
         UseArgs_false,
         Protected_false},
+    {"keyShowSkillLevels",
+        defaultAction(&Actions::showSkillLevels),
+        InputCondition::INGAME,
+        "showskilllevels",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

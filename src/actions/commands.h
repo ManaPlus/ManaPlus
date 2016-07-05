@@ -141,6 +141,7 @@ namespace Actions
     decHandler(commandGuildRecall);
     decHandler(mailTo);
     decHandler(adoptChild);
+    decHandler(showSkillLevels);
 }  // namespace Actions
 
 #undef decHandler

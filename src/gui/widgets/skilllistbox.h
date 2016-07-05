@@ -232,21 +232,29 @@ class SkillListBox final : public ListBox
         void mousePressed(MouseEvent &event) override final
         {
             ListBox::mousePressed(event);
-            if (event.getButton() == MouseButton::LEFT)
+            const MouseButtonT button = event.getButton();
+            if (button == MouseButton::LEFT ||
+                button == MouseButton::RIGHT)
             {
                 const SkillInfo *const skill = getSkillByEvent(event);
                 if (!skill)
                     return;
                 event.consume();
                 mSkillClicked = true;
-                if (event.getX() >
-                    getWidth() - mPadding - skill->skillLevelWidth)
+                SkillModel *const model = static_cast<SkillModel*>(
+                    mListModel);
+                if (model &&
+                    mSelected >= 0 &&
+                    model->getSkillAt(mSelected) == skill)
                 {
-                    SkillModel *const model = static_cast<SkillModel*>(
-                        mListModel);
-                    if (model &&
-                        mSelected >= 0 &&
-                        model->getSkillAt(mSelected) == skill)
+                    skillPopup->hide();
+                    if (button == MouseButton::LEFT &&
+                        event.getX() >
+                        getWidth() - mPadding - skill->skillLevelWidth)
+                    {
+                        popupMenu->showSkillLevelPopup(skill);
+                    }
+                    else if (button == MouseButton::RIGHT)
                     {
                         popupMenu->showSkillPopup(skill);
                     }

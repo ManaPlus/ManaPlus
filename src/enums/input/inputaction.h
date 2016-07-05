@@ -672,6 +672,7 @@ enumStart(InputAction)
     DUMP_MEMORY_USAGE,
     SET_EMOTE_TYPE,
     CAMERA_RESTORE,
+    SHOW_SKILL_LEVELS,
     TOTAL
 }
 enumEnd(InputAction);

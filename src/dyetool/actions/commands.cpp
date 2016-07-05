@@ -141,5 +141,6 @@ impHandlerVoid(commandBreakGuild)
 impHandlerVoid(commandGuildRecall)
 impHandlerVoid(mailTo)
 impHandlerVoid(adoptChild)
+impHandlerVoid(showSkillLevels)
 
 }  // namespace Actions

@@ -126,7 +126,8 @@ PopupMenu::PopupMenu() :
     mType(ActorType::Unknown),
     mSubType(BeingTypeId_zero),
     mX(0),
-    mY(0)
+    mY(0),
+    mAllowCleanMenu(true)
 {
     mBrowserBox->setOpaque(false);
     mBrowserBox->setLinkHandler(this);
@@ -1148,6 +1149,8 @@ void PopupMenu::handleLink(const std::string &link,
     if (actorManager)
         being = actorManager->findBeing(mBeingId);
 
+    mAllowCleanMenu = true;
+
     if (link == "chat close" && mTab)
     {
         inputManager.executeChatCommand(InputAction::CLOSE_CHAT_TAB,
@@ -1683,6 +1686,9 @@ void PopupMenu::handleLink(const std::string &link,
     {
         logger->log("PopupMenu: Warning, unknown action '%s'", link.c_str());
     }
+
+    if (!mAllowCleanMenu)
+        return;
 
     setVisible(Visible_false);
 
@@ -2375,10 +2381,43 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
 
     // using mItemId as skill id
     mItemId = info->id;
+    // using mItemIndex as skill level
+    mItemIndex = info->level;
+    mBrowserBox->clearRows();
+
+    // TRANSLATORS: popup menu header
+    mBrowserBox->addRow(_("Skill"));
+    mBrowserBox->addRow("/showskilllevels 'ITEMID'",
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: set skill level
+        _("Set skill level"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(mX, mY);
+}
+
+void PopupMenu::showSkillLevelPopup(const SkillInfo *const info)
+{
+    if (!info || info->level <= 1)
+        return;
+    setMousePos();
+
+    // using mItemId as skill id
+    mItemId = info->id;
+    // using mItemIndex as skill level
+    mItemIndex = info->level;
+    showSkillLevelMenu();
+}
+
+void PopupMenu::showSkillLevelMenu()
+{
     for (int f = 0; f < maxCards; f ++)
         mItemCards[f] = 0;
     mBrowserBox->clearRows();
-    for (int f = 1; f <= info->level; f ++)
+    // mItemIndex as skill level
+    for (int f = 1; f <= mItemIndex; f ++)
     {
         mBrowserBox->addRow(strprintf("/selectskilllevel %d %d", mItemId, f),
             // TRANSLATORS: popup menu item
@@ -2428,6 +2467,7 @@ void PopupMenu::showPopup(int x, int y)
     setPosition(x, y);
     setVisible(Visible_true);
     requestMoveToTop();
+    mAllowCleanMenu = false;
 }
 
 void PopupMenu::addNormalRelations()
