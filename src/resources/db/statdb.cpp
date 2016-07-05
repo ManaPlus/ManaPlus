@@ -183,5 +183,7 @@ void StatDb::unload()
 {
     logger->log1("Unloading stat database...");
 
+    mBasicStats.clear();
+    mExtendedStats.clear();
     mLoaded = false;
 }
