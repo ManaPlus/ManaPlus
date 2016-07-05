@@ -173,8 +173,6 @@ class DragDrop final
         {
             if (mItemImage)
                 mItemImage->decRef();
-            if (mItem)
-                ItemSoundManager::playSfx(mItem, ItemSoundEvent::PUT);
             mItem = 0;
             mItemColor = ItemColor_one;
             mItemImage = nullptr;
