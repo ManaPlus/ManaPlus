@@ -417,7 +417,7 @@ std::string ItemInfo::getColorName(const ItemColor idx) const
         it = mColorsList->find(idx);
     if (it == mColorsList->end())
     {
-        reportAlways("Color %d for pallette %s not found",
+        reportAlways("Color %d for palette %s not found",
             CAST_S32(idx),
             mColorsListName.c_str());
         return std::string();
@@ -434,7 +434,7 @@ std::string ItemInfo::getColor(const ItemColor idx) const
         it = mColorsList->find(idx);
     if (it == mColorsList->end())
     {
-        reportAlways("Color %d for pallette %s not found",
+        reportAlways("Color %d for palette %s not found",
             CAST_S32(idx),
             mColorsListName.c_str());
         return std::string();
@@ -451,7 +451,7 @@ std::string ItemInfo::getIconColorName(const ItemColor idx) const
         it = mIconColorsList->find(idx);
     if (it == mIconColorsList->end())
     {
-        reportAlways("Color %d for pallette %s not found",
+        reportAlways("Color %d for palette %s not found",
             CAST_S32(idx),
             mColorsListName.c_str());
         return std::string();
@@ -468,7 +468,7 @@ std::string ItemInfo::getIconColor(const ItemColor idx) const
         it = mIconColorsList->find(idx);
     if (it == mIconColorsList->end())
     {
-        reportAlways("Color %d for pallette %s not found",
+        reportAlways("Color %d for palette %s not found",
             CAST_S32(idx),
             mColorsListName.c_str());
         return std::string();
