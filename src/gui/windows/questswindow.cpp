@@ -234,7 +234,6 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
         if (!data)
             continue;
         std::string str = translator->getStr(data);
-        replaceItemLinks(str);
 
         for (int f = 1; f < 100; f ++)
         {
@@ -247,6 +246,7 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
             const std::string param = strprintf("{@@%d}", f);
             replaceAll(str, param, val);
         }
+        replaceItemLinks(str);
         if (xmlNameEqual(dataNode, "text"))
         {
             quest->texts.push_back(QuestItemText(str,
