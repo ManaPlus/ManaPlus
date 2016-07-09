@@ -59,6 +59,8 @@
 #include "utils/physfstools.h"
 #include "utils/stringmap.h"
 
+#include "utils/translation/podict.h"
+
 #include <zlib.h>
 
 #include "debug.h"
@@ -514,7 +516,12 @@ void MapReader::readProperties(const XmlNodePtrConst node,
         const std::string value = XML::getProperty(childNode, "value", "");
 
         if (!name.empty() && !value.empty())
-            props->setProperty(name, value);
+        {
+            if (name == "name")
+                props->setProperty(name, translator->getStr(value));
+            else
+                props->setProperty(name, value);
+        }
     }
     BLOCK_END("MapReader::readProperties")
 }
