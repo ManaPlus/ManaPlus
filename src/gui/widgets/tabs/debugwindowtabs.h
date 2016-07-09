@@ -61,6 +61,7 @@ class MapDebugTab final : public DebugTab
     private:
         Label *mMusicFileLabel A_NONNULLPOINTER;
         Label *mMapLabel A_NONNULLPOINTER;
+        Label *mMapNameLabel A_NONNULLPOINTER;
         Label *mMinimapLabel A_NONNULLPOINTER;
         Label *mTileMouseLabel A_NONNULLPOINTER;
         Label *mParticleCountLabel A_NONNULLPOINTER;

@@ -55,6 +55,8 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     // TRANSLATORS: debug window label
     mMapLabel(new Label(this, _("Map:"))),
     // TRANSLATORS: debug window label
+    mMapNameLabel(new Label(this, _("Map name:"))),
+    // TRANSLATORS: debug window label
     mMinimapLabel(new Label(this, _("Minimap:"))),
     mTileMouseLabel(new Label(this, strprintf("%s (%d, %d)",
         // TRANSLATORS: debug window label
@@ -132,15 +134,16 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     place(0, 1, mLPSLabel, 2);
     place(0, 2, mMusicFileLabel, 2);
     place(0, 3, mMapLabel, 2);
-    place(0, 4, mMinimapLabel, 2);
-    place(0, 5, mXYLabel, 2);
-    place(0, 6, mTileMouseLabel, 2);
-    place(0, 7, mParticleCountLabel, 2);
-    place(0, 8, mMapActorCountLabel, 2);
+    place(0, 4, mMapNameLabel, 2);
+    place(0, 5, mMinimapLabel, 2);
+    place(0, 6, mXYLabel, 2);
+    place(0, 7, mTileMouseLabel, 2);
+    place(0, 8, mParticleCountLabel, 2);
+    place(0, 9, mMapActorCountLabel, 2);
 #ifdef USE_OPENGL
 #if defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS) \
     || defined(DEBUG_BIND_TEXTURE)
-    int n = 9;
+    int n = 10;
 #endif
 #ifdef DEBUG_OPENGL_LEAKS
     mTexturesLabel = new Label(this, strprintf("%s %s",
@@ -198,7 +201,9 @@ void MapDebugTab::logic()
         // TRANSLATORS: debug window label
         mMapLabel->setCaption(strprintf("%s %s", _("Map:"),
             map->getProperty("_realfilename").c_str()));
-
+        // TRANSLATORS: debug window label
+        mMapNameLabel->setCaption(strprintf("%s %s", _("Map name:"),
+            map->getProperty("name").c_str()));
 
         if (mUpdateTime != cur_time)
         {
@@ -246,6 +251,8 @@ void MapDebugTab::logic()
         mMinimapLabel->setCaption(strprintf("%s ?", _("Minimap:")));
         // TRANSLATORS: debug window label
         mMapLabel->setCaption(strprintf("%s ?", _("Map:")));
+        // TRANSLATORS: debug window label
+        mMapNameLabel->setCaption(strprintf("%s ?", _("Map name:")));
 
         mMapActorCountLabel->setCaption(
             // TRANSLATORS: debug window label
