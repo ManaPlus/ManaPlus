@@ -28,6 +28,8 @@
 
 #include "being/being.h"
 
+#include "utils/checkutils.h"
+
 #include "particle/particle.h"
 
 #include "resources/beingcommon.h"
@@ -118,7 +120,7 @@ bool EffectManager::trigger(const int id,
                             Being *const being,
                             const int rotation)
 {
-    if (!being || !particleEngine)
+    if (!being || !particleEngine || id == -1)
         return false;
 
     BLOCK_START("EffectManager::trigger")
@@ -139,9 +141,10 @@ bool EffectManager::trigger(const int id,
                 soundManager.playSfx(effect.sfx);
             if (!effect.sprite.empty())
                 being->addEffect(effect.sprite);
-            break;
+            return rValue;
         }
     }
+    reportAlways("Missing effect %d", id);
     BLOCK_END("EffectManager::trigger")
     return rValue;
 }
@@ -150,7 +153,7 @@ Particle *EffectManager::triggerReturn(const int id,
                                        Being *const being,
                                        const int rotation)
 {
-    if (!being || !particleEngine)
+    if (!being || !particleEngine || id == -1)
         return nullptr;
 
     Particle *rValue = nullptr;
@@ -169,9 +172,10 @@ Particle *EffectManager::triggerReturn(const int id,
                 soundManager.playSfx(effect.sfx);
             if (!effect.sprite.empty())
                 being->addEffect(effect.sprite);
-            break;
+            return rValue;
         }
     }
+    reportAlways("Missing effect %d", id);
     return rValue;
 }
 
@@ -180,7 +184,7 @@ bool EffectManager::trigger(const int id,
                             const int endTime,
                             const int rotation)
 {
-    if (!particleEngine)
+    if (!particleEngine || id == -1)
         return false;
 
     bool rValue = false;
@@ -202,9 +206,10 @@ bool EffectManager::trigger(const int id,
             if (!effect.sfx.empty())
                 soundManager.playSfx(effect.sfx);
             // TODO add sprite effect to position
-            break;
+            return rValue;
         }
     }
+    reportAlways("Missing effect %d", id);
     return rValue;
 }
 
