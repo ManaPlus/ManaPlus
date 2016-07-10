@@ -1137,7 +1137,11 @@ void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)
 
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
-        dstBeing->setStatusEffect(status, flag);
+    {
+        // dont know on legacy servers is effect really started
+        // or not. Because this always sending IsStart_true
+        dstBeing->setStatusEffect(status, flag, IsStart_true);
+    }
     BLOCK_END("BeingRecv::processBeingStatusChange")
 }
 

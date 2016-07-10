@@ -119,7 +119,11 @@ void ActorSprite::logic()
             const StatusEffect *const effect
                 = StatusEffectDB::getStatusEffect(*it, Enable_true);
             if (effect && effect->mIsPersistent)
-                updateStatusEffect(*it, Enable_true);
+            {
+                updateStatusEffect(*it,
+                    Enable_true,
+                    IsStart_false);
+            }
         }
     }
 
@@ -174,14 +178,15 @@ struct EffectDescription final
 };
 
 void ActorSprite::setStatusEffect(const int32_t index,
-                                  const Enable active)
+                                  const Enable active,
+                                  const IsStart start)
 {
     const Enable wasActive = fromBool(
         mStatusEffects.find(index) != mStatusEffects.end(), Enable);
 
     if (active != wasActive)
     {
-        updateStatusEffect(index, active);
+        updateStatusEffect(index, active, start);
         if (active == Enable_true)
             mStatusEffects.insert(index);
         else
@@ -200,7 +205,9 @@ void ActorSprite::setStatusEffectBlock(const int offset,
 
         if (index != -1)
         {
-            setStatusEffect(index, fromBool(val, Enable));
+            setStatusEffect(index,
+                fromBool(val, Enable),
+                IsStart_false);
         }
         else if (val && config.getBoolValue("unimplimentedLog"))
         {
@@ -226,7 +233,9 @@ static void applyEffectByOption(ActorSprite *const actor,
         const Enable enable = (opt & option) != 0 ? Enable_true : Enable_false;
         option |= opt;
         option ^= opt;
-        actor->setStatusEffect(id, enable);
+        actor->setStatusEffect(id,
+            enable,
+            IsStart_false);
     }
     if (option && config.getBoolValue("unimplimentedLog"))
     {
@@ -251,12 +260,16 @@ static void applyEffectByOption1(ActorSprite *const actor,
         const int32_t id = (*it).second;
         if (opt == option)
         {
-            actor->setStatusEffect(id, Enable_true);
+            actor->setStatusEffect(id,
+                Enable_true,
+                IsStart_false);
             option = 0U;
         }
         else
         {
-            actor->setStatusEffect(id, Enable_false);
+            actor->setStatusEffect(id,
+                Enable_false,
+                IsStart_false);
         }
     }
     if (option && config.getBoolValue("unimplimentedLog"))
@@ -340,7 +353,8 @@ void ActorSprite::setStatusEffectOpiton0(const uint32_t option)
 }
 
 void ActorSprite::updateStatusEffect(const int32_t index,
-                                     const Enable newStatus)
+                                     const Enable newStatus,
+                                     const IsStart start)
 {
     StatusEffect *const effect = StatusEffectDB::getStatusEffect(
         index, newStatus);
@@ -358,19 +372,26 @@ void ActorSprite::updateStatusEffect(const int32_t index,
     else if (effect->mIsPostDelay)
         stopCast(newStatus == Enable_true);
 #endif
-    handleStatusEffect(effect, index);
+    handleStatusEffect(effect, index, start);
 }
 
 void ActorSprite::handleStatusEffect(const StatusEffect *const effect,
-                                     const int32_t effectId)
+                                     const int32_t effectId,
+                                     const IsStart start)
 {
     if (!effect)
         return;
 
-    Particle *const particle = effect->getParticle();
-
     if (effectId >= 0)
-        mStatusParticleEffects.setLocally(effectId, particle);
+    {
+        if (start == IsStart_true)
+        {
+            Particle *const particle = effect->getParticle();
+            mStatusParticleEffects.setLocally(effectId, particle);
+        }
+        // +++ here also need enable permanent status effects,
+        // need new field in StatusEffect
+    }
 }
 
 void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,

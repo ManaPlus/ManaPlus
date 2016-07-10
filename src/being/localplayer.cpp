@@ -998,9 +998,12 @@ void LocalPlayer::setGotoTarget(Being *const target)
 }
 
 void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
-                                     const int32_t effectId)
+                                     const int32_t effectId,
+                                     const IsStart start)
 {
-    Being::handleStatusEffect(effect, effectId);
+    Being::handleStatusEffect(effect,
+        effectId,
+        start);
 
     if (effect)
     {

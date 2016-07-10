@@ -34,6 +34,7 @@
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/enable.h"
 #include "enums/simpletypes/forcedisplay.h"
+#include "enums/simpletypes/isstart.h"
 
 #include "enums/resources/map/blocktype.h"
 
@@ -108,7 +109,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         { mUsedTargetCursor = nullptr; }
 
         void setStatusEffect(const int32_t index,
-                             const Enable active);
+                             const Enable active,
+                             const IsStart start);
 
         void setStatusEffectOpitons(const uint32_t option,
                                     const uint32_t opt1,
@@ -197,7 +199,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
          * The new flag is passed.
          */
         virtual void updateStatusEffect(const int32_t index,
-                                        const Enable newStatus);
+                                        const Enable newStatus,
+                                        const IsStart start);
 
         /**
          * Handle an update to a status or stun effect
@@ -206,7 +209,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
          * \param effectId -1 for stun, otherwise the effect index
          */
         virtual void handleStatusEffect(const StatusEffect *const effect,
-                                        const int32_t effectId);
+                                        const int32_t effectId,
+                                        const IsStart start);
 
         void setupSpriteDisplay(const SpriteDisplay &display,
                                 const ForceDisplay forceDisplay

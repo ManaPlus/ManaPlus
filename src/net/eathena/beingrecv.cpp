@@ -971,9 +971,12 @@ void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)
         msg.readInt32("val3");
     }
 
+    IsStart start = msg.getVersion() == 20090121 ?
+        IsStart_false : IsStart_true;
+
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing)
-        dstBeing->setStatusEffect(status, flag);
+        dstBeing->setStatusEffect(status, flag, start);
     BLOCK_END("BeingRecv::processBeingStatusChange")
 }
 

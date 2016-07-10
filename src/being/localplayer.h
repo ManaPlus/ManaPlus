@@ -427,7 +427,8 @@ class LocalPlayer final : public Being,
         void updateCoords() override final;
 
         void handleStatusEffect(const StatusEffect *const effect,
-                                const int32_t effectId) override final;
+                                const int32_t effectId,
+                                const IsStart start) override final;
 
         void startWalking(const unsigned char dir);
 
