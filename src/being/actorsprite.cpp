@@ -386,11 +386,9 @@ void ActorSprite::handleStatusEffect(const StatusEffect *const effect,
     {
         Particle *particle = nullptr;
         if (start == IsStart_true)
-        {
             particle = effect->getStartParticle();
-        }
-        // +++ here also need enable permanent status effects,
-        // need new field in StatusEffect
+        if (!particle)
+            particle = effect->getParticle();
         if (particle)
             mStatusParticleEffects.setLocally(effectId, particle);
     }

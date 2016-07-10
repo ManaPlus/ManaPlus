@@ -58,6 +58,12 @@ class StatusEffect final
         Particle *getStartParticle() const A_WARN_UNUSED;
 
         /**
+         * Creates the particle effect associated with this status effect, if
+         * possible.
+         */
+        Particle *getParticle() const A_WARN_UNUSED;
+
+        /**
          * Retrieves the status icon for this effect, if applicable
          */
         AnimatedSprite *getIcon() const A_WARN_UNUSED;
@@ -70,6 +76,7 @@ class StatusEffect final
         std::string mMessage;
         std::string mSFXEffect;
         std::string mStartParticleEffect;
+        std::string mParticleEffect;
         std::string mIcon;
         std::string mAction;
         std::string mName;

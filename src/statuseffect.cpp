@@ -39,6 +39,7 @@ StatusEffect::StatusEffect() :
     mMessage(),
     mSFXEffect(),
     mStartParticleEffect(),
+    mParticleEffect(),
     mIcon(),
     mAction(),
     mName(),
@@ -73,6 +74,14 @@ Particle *StatusEffect::getStartParticle() const
         return nullptr;
     else
         return particleEngine->addEffect(mStartParticleEffect, 0, 0);
+}
+
+Particle *StatusEffect::getParticle() const
+{
+    if (!particleEngine || mParticleEffect.empty())
+        return nullptr;
+    else
+        return particleEngine->addEffect(mParticleEffect, 0, 0);
 }
 
 AnimatedSprite *StatusEffect::getIcon() const

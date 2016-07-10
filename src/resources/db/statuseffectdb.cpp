@@ -168,6 +168,8 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName,
             node, "start-audio", "");
         startEffect->mStartParticleEffect = XML::getProperty(
             node, "start-particle", "");
+        startEffect->mParticleEffect = XML::getProperty(
+            node, "particle", "");
 
         startEffect->mIcon = XML::getProperty(node, "icon", "");
         startEffect->mAction = XML::getProperty(node, "action", "");
