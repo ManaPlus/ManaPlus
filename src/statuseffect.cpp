@@ -38,7 +38,7 @@
 StatusEffect::StatusEffect() :
     mMessage(),
     mSFXEffect(),
-    mParticleEffect(),
+    mStartParticleEffect(),
     mIcon(),
     mAction(),
     mName(),
@@ -67,12 +67,12 @@ void StatusEffect::deliverMessage() const
         localChatTab->chatLog(mMessage, ChatMsgType::BY_SERVER);
 }
 
-Particle *StatusEffect::getParticle() const
+Particle *StatusEffect::getStartParticle() const
 {
-    if (!particleEngine || mParticleEffect.empty())
+    if (!particleEngine || mStartParticleEffect.empty())
         return nullptr;
     else
-        return particleEngine->addEffect(mParticleEffect, 0, 0);
+        return particleEngine->addEffect(mStartParticleEffect, 0, 0);
 }
 
 AnimatedSprite *StatusEffect::getIcon() const

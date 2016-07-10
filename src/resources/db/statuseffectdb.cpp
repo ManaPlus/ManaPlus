@@ -166,7 +166,7 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName,
             node, "start-message", "");
         startEffect->mSFXEffect = XML::getProperty(
             node, "start-audio", "");
-        startEffect->mParticleEffect = XML::getProperty(
+        startEffect->mStartParticleEffect = XML::getProperty(
             node, "start-particle", "");
 
         startEffect->mIcon = XML::getProperty(node, "icon", "");
@@ -182,7 +182,7 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName,
         endEffect->mIsPostDelay = startEffect->mIsPostDelay;
         endEffect->mMessage = XML::getProperty(node, "end-message", "");
         endEffect->mSFXEffect = XML::getProperty(node, "end-audio", "");
-        endEffect->mParticleEffect = XML::getProperty(
+        endEffect->mStartParticleEffect = XML::getProperty(
             node, "end-particle", "");
 
         statusEffects[1][id] = startEffect;
