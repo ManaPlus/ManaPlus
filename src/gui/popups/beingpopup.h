@@ -24,8 +24,6 @@
 
 #include "gui/widgets/popup.h"
 
-#include <vector>
-
 class Being;
 class Label;
 
