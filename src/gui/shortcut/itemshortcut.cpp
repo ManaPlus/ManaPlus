@@ -103,13 +103,10 @@ void ItemShortcut::save() const
         color = "shortcutColor";
     }
 
-    logger->log("save %s", name.c_str());
-
     for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         const int itemId = mItems[i] ? mItems[i] : -1;
-        const int itemColor = (mItemColors[i] != ItemColor_zero) ?
-            toInt(mItemColors[i], int) : 1;
+        const int itemColor = toInt(mItemColors[i], int);
         if (itemId != -1)
         {
             serverConfig.setValue(name + toString(i), itemId);
