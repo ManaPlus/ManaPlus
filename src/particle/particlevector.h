@@ -59,6 +59,9 @@ class ParticleVector final : public ParticleContainer
 
         void moveTo(const float x, const float y) override final;
 
+        size_t size() const
+        { return mIndexedElements.size(); }
+
     protected:
         std::vector<Particle *> mIndexedElements;
 };

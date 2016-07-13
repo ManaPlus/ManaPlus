@@ -58,8 +58,12 @@ class ParticleList final : public ParticleContainer
 
         void moveTo(const float x, const float y) override final;
 
+        size_t size() const
+        { return mSize; }
+
     protected:
         std::list<Particle *> mElements;    /**< Contained particle effects */
+        size_t mSize;
 };
 
 #endif  // PARTICLE_PARTICLELIST_H

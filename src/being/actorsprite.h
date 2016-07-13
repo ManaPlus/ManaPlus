@@ -184,6 +184,12 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         virtual void stopCast(const bool b A_UNUSED)
         { }
 
+        size_t getParticlesCount() const
+        {
+            return mStatusParticleEffects.size() +
+                mChildParticleEffects.size();
+        }
+
     protected:
         /**
          * A status effect block is a 16 bit mask of status effects. We assign

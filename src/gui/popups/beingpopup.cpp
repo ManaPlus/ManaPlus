@@ -72,7 +72,7 @@ void BeingPopup::postInit()
 
 void BeingPopup::addLabels(const int fontHeight)
 {
-    for (int f = 0; f < 8; f ++)
+    for (int f = 0; f < 9; f ++)
     {
         Label *const label = new Label(this, "A");
         label->setPosition(0, fontHeight * (f + 1));
@@ -257,6 +257,12 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
 #endif
     }
+    ptr = mLabels[num];
+    // TRANSLATORS: being popup label
+    ptr->setCaption(strprintf(_("Particles: %u"),
+        CAST_U32(b->getParticlesCount())));
+    ptr->adjustSize();
+    num ++;
 
     const size_t sz = mLabels.size();
     for (size_t f = num; f < sz; f ++)

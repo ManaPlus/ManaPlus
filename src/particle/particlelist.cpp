@@ -32,7 +32,8 @@ typedef std::list<Particle *>::const_iterator ParticleListCIter;
 ParticleList::ParticleList(ParticleContainer *const parent,
                            const bool delParent) :
     ParticleContainer(parent, delParent),
-    mElements()
+    mElements(),
+    mSize(0U)
 {}
 
 ParticleList::~ParticleList()
@@ -46,6 +47,7 @@ void ParticleList::addLocally(Particle *const particle)
         // The effect may not die without the beings permission or we segfault
         particle->disableAutoDelete();
         mElements.push_back(particle);
+        mSize ++;
     }
 }
 
@@ -60,6 +62,7 @@ void ParticleList::removeLocally(const Particle *const particle)
             p->kill();
             p->prepareToDie();
             it = mElements.erase(it);
+            mSize --;
         }
         else
         {
@@ -74,6 +77,7 @@ void ParticleList::clearLocally()
         (*it)->kill();
 
     mElements.clear();
+    mSize = 0U;
 }
 
 void ParticleList::moveTo(const float x, const float y)
@@ -89,6 +93,7 @@ void ParticleList::moveTo(const float x, const float y)
         {
             p->kill();
             it = mElements.erase(it);
+            mSize --;
         }
         else
         {
