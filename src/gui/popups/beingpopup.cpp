@@ -45,14 +45,7 @@ BeingPopup *beingPopup = nullptr;
 BeingPopup::BeingPopup() :
     Popup("BeingPopup", "beingpopup.xml"),
     mBeingName(new Label(this, "A")),
-    mBeingParty(new Label(this, "A")),
-    mBeingGuild(new Label(this, "A")),
-    mBeingRank(new Label(this, "A")),
-    mBeingComment(new Label(this, "A")),
-    mBeingBuyBoard(new Label(this, "A")),
-    mBeingSellBoard(new Label(this, "A")),
-    mBeingRoom(new Label(this, "A")),
-    mBeingEffects(new Label(this, "A"))
+    mLabels()
 {
     // Being Name
     mBeingName->setFont(boldFont);
@@ -60,34 +53,7 @@ BeingPopup::BeingPopup() :
 
     const int fontHeight = mBeingName->getHeight();
     setMinHeight(fontHeight);
-
-    // Being's party
-    mBeingParty->setPosition(0, fontHeight);
-    // Being's party
-    mBeingGuild->setPosition(0, 2 * fontHeight);
-    mBeingRank->setPosition(0, 3 * fontHeight);
-    mBeingBuyBoard->setPosition(0, 4 * fontHeight);
-    mBeingSellBoard->setPosition(0, 4 * fontHeight);
-    mBeingComment->setPosition(0, 5 * fontHeight);
-    mBeingRoom->setPosition(0, 6 * fontHeight);
-    mBeingEffects->setPosition(0, 7 * fontHeight);
-
-    mBeingParty->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
-    mBeingGuild->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
-    mBeingRank->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
-    mBeingBuyBoard->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
-    mBeingSellBoard->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
-    mBeingComment->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
-    mBeingRoom->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
-    mBeingEffects->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    addLabels(fontHeight);
 }
 
 BeingPopup::~BeingPopup()
@@ -98,14 +64,22 @@ void BeingPopup::postInit()
 {
     Popup::postInit();
     add(mBeingName);
-    add(mBeingParty);
-    add(mBeingGuild);
-    add(mBeingRank);
-    add(mBeingComment);
-    add(mBeingBuyBoard);
-    add(mBeingSellBoard);
-    add(mBeingRoom);
-    add(mBeingEffects);
+    FOR_EACH (std::vector<Label*>::iterator, it, mLabels)
+    {
+        add(*it);
+    }
+}
+
+void BeingPopup::addLabels(const int fontHeight)
+{
+    for (int f = 0; f < 8; f ++)
+    {
+        Label *const label = new Label(this, "A");
+        label->setPosition(0, fontHeight * (f + 1));
+        label->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+            getThemeColor(ThemeColorId::POPUP_OUTLINE));
+        mLabels.push_back(label);
+    }
 }
 
 void BeingPopup::show(const int x, const int y, Being *const b)
@@ -116,15 +90,8 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         return;
     }
 
-    Label *label1 = mBeingParty;
-    Label *label2 = mBeingGuild;
-    Label *label3 = mBeingRank;
-    Label *label4 = mBeingBuyBoard;
-    Label *label5 = mBeingSellBoard;
-    Label *label6 = mBeingComment;
-    Label *label7 = mBeingRoom;
-    Label *label8 = mBeingEffects;
-
+    int num = 0;
+    Label *ptr = nullptr;
     b->updateComment();
 
     if (b->getType() == ActorType::Npc && b->getComment().empty())
@@ -154,14 +121,10 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
 
     mBeingName->adjustSize();
-    label1->setCaption("");
-    label2->setCaption("");
-    label3->setCaption("");
-    label4->setCaption("");
-    label5->setCaption("");
-    label6->setCaption("");
-    label7->setCaption("");
-    label8->setCaption("");
+    FOR_EACH (std::vector<Label*>::iterator, it, mLabels)
+    {
+        (*it)->setCaption(std::string());
+    }
 
 #ifdef EATHENA_SUPPORT
     const ActorTypeT type = b->getType();
@@ -170,31 +133,18 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         const PetInfo *const info = PlayerInfo::getPet();
         if (info && info->id == b->getId())
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label1->setCaption(strprintf(_("Hungry: %d"),
+            ptr->setCaption(strprintf(_("Hungry: %d"),
                 info->hungry));
-            label1->adjustSize();
+            ptr->adjustSize();
+            num ++;
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label2->setCaption(strprintf(_("Intimacy: %d"),
+            ptr->setCaption(strprintf(_("Intimacy: %d"),
                 info->intimacy));
-            label2->adjustSize();
-            label3 = nullptr;
-            label4 = nullptr;
-            label5 = nullptr;
-            label6 = nullptr;
-            label7 = nullptr;
-            label8 = nullptr;
-        }
-        else
-        {
-            label1 = nullptr;
-            label2 = nullptr;
-            label3 = nullptr;
-            label4 = nullptr;
-            label5 = nullptr;
-            label6 = nullptr;
-            label7 = nullptr;
-            label8 = nullptr;
+            ptr->adjustSize();
+            num ++;
         }
     }
     else if (type == ActorType::Homunculus)
@@ -202,31 +152,18 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         const HomunculusInfo *const info = PlayerInfo::getHomunculus();
         if (info && info->id == b->getId())
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label1->setCaption(strprintf(_("Hungry: %d"),
+            ptr->setCaption(strprintf(_("Hungry: %d"),
                 info->hungry));
-            label1->adjustSize();
+            ptr->adjustSize();
+            num ++;
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label2->setCaption(strprintf(_("Intimacy: %d"),
+            ptr->setCaption(strprintf(_("Intimacy: %d"),
                 info->intimacy));
-            label2->adjustSize();
-            label3 = nullptr;
-            label4 = nullptr;
-            label5 = nullptr;
-            label6 = nullptr;
-            label7 = nullptr;
-            label8 = nullptr;
-        }
-        else
-        {
-            label1 = nullptr;
-            label2 = nullptr;
-            label3 = nullptr;
-            label4 = nullptr;
-            label5 = nullptr;
-            label6 = nullptr;
-            label7 = nullptr;
-            label8 = nullptr;
+            ptr->adjustSize();
+            num ++;
         }
     }
     else
@@ -234,173 +171,113 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     {
         if (!(b->getPartyName().empty()))
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label1->setCaption(strprintf(_("Party: %s"),
+            ptr->setCaption(strprintf(_("Party: %s"),
                 b->getPartyName().c_str()));
-            label1->adjustSize();
-        }
-        else
-        {
-            label8 = label7;
-            label7 = label6;
-            label6 = label5;
-            label5 = label4;
-            label4 = label3;
-            label3 = label2;
-            label2 = label1;
-            label1 = nullptr;
+            ptr->adjustSize();
+            num ++;
         }
 
         if (!(b->getGuildName().empty()))
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label2->setCaption(strprintf(_("Guild: %s"),
+            ptr->setCaption(strprintf(_("Guild: %s"),
                 b->getGuildName().c_str()));
-            label2->adjustSize();
-        }
-        else
-        {
-            label8 = label7;
-            label7 = label6;
-            label6 = label5;
-            label5 = label4;
-            label4 = label3;
-            label3 = label2;
-            label2 = nullptr;
+            ptr->adjustSize();
+            num ++;
         }
 
         if (b->getPvpRank() > 0)
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label3->setCaption(strprintf(_("Pvp rank: %u"),
+            ptr->setCaption(strprintf(_("Pvp rank: %u"),
                 b->getPvpRank()));
-            label3->adjustSize();
-        }
-        else
-        {
-            label8 = label7;
-            label7 = label6;
-            label6 = label5;
-            label5 = label4;
-            label4 = label3;
-            label3 = nullptr;
+            ptr->adjustSize();
+            num ++;
         }
 
 #ifdef EATHENA_SUPPORT
         if (!b->getBuyBoard().empty())
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label4->setCaption(strprintf(_("Buy shop: %s"),
+            ptr->setCaption(strprintf(_("Buy shop: %s"),
                 b->getBuyBoard().c_str()));
-            label4->adjustSize();
+            ptr->adjustSize();
+            num ++;
         }
-        else
 #endif
-        {
-            label8 = label7;
-            label7 = label6;
-            label6 = label5;
-            label5 = label4;
-            label4 = nullptr;
-        }
 
 #ifdef EATHENA_SUPPORT
         if (!b->getSellBoard().empty())
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label5->setCaption(strprintf(_("Sell shop: %s"),
+            ptr->setCaption(strprintf(_("Sell shop: %s"),
                 b->getSellBoard().c_str()));
-            label5->adjustSize();
+            ptr->adjustSize();
+            num ++;
         }
-        else
 #endif
-        {
-            label8 = label7;
-            label7 = label6;
-            label6 = label5;
-            label5 = nullptr;
-        }
 
         if (!b->getComment().empty())
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label6->setCaption(strprintf(_("Comment: %s"),
+            ptr->setCaption(strprintf(_("Comment: %s"),
                 b->getComment().c_str()));
-            label6->adjustSize();
-        }
-        else
-        {
-            label8 = label7;
-            label7 = label6;
-            label6 = nullptr;
+            ptr->adjustSize();
+            num ++;
         }
 
         const std::string effects = b->getStatusEffectsString();
         if (!effects.empty())
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label7->setCaption(strprintf(_("Effects: %s"),
+            ptr->setCaption(strprintf(_("Effects: %s"),
                 effects.c_str()));
-            label7->adjustSize();
-        }
-        else
-        {
-            label8 = label7;
-            label7 = nullptr;
+            ptr->adjustSize();
+            num ++;
         }
 
 #ifdef EATHENA_SUPPORT
         const ChatObject *const chat = b->getChat();
         if (chat)
         {
+            ptr = mLabels[num];
             // TRANSLATORS: being popup label
-            label8->setCaption(strprintf(_("Chat room: %s"),
+            ptr->setCaption(strprintf(_("Chat room: %s"),
                 chat->title.c_str()));
-            label8->adjustSize();
-        }
-        else
-        {
-            label8 = nullptr;
+            ptr->adjustSize();
+            num ++;
         }
 #endif
     }
 
-    int minWidth = mBeingName->getWidth();
-    if (label1 && label1->getWidth() > minWidth)
-        minWidth = label1->getWidth();
-    if (label2 && label2->getWidth() > minWidth)
-        minWidth = label2->getWidth();
-    if (label3 && label3->getWidth() > minWidth)
-        minWidth = label3->getWidth();
-    if (label4 && label4->getWidth() > minWidth)
-        minWidth = label4->getWidth();
-    if (label5 && label5->getWidth() > minWidth)
-        minWidth = label5->getWidth();
-    if (label6 && label6->getWidth() > minWidth)
-        minWidth = label6->getWidth();
-    if (label7 && label7->getWidth() > minWidth)
-        minWidth = label7->getWidth();
-    if (label8 && label8->getWidth() > minWidth)
-        minWidth = label8->getWidth();
+    const size_t sz = mLabels.size();
+    for (size_t f = num; f < sz; f ++)
+    {
+        mLabels[f]->setCaption(std::string());
+    }
 
+    int minWidth = mBeingName->getWidth();
     const int height1 = getFont()->getHeight();
     int height = height1;
-    if (label1)
-        height += height1;
-    if (label2)
-        height += height1;
-    if (label3)
-        height += height1;
-    if (label4)
-        height += height1;
-    if (label5)
-        height += height1;
-    if (label6)
-        height += height1;
-    if (label7)
-        height += height1;
-    if (label8)
-        height += height1;
+    FOR_EACH (std::vector<Label*>::iterator, it, mLabels)
+    {
+        Label *const label = *it;
+        if (label)
+        {
+            if (label->getWidth() > minWidth)
+                minWidth = label->getWidth();
+            if (!label->getCaption().empty())
+                height += height1;
+        }
+    }
 
     setContentSize(minWidth, height);
     position(x, y);

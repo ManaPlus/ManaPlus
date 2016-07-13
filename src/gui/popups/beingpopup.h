@@ -24,6 +24,8 @@
 
 #include "gui/widgets/popup.h"
 
+#include <vector>
+
 class Being;
 class Label;
 
@@ -57,15 +59,10 @@ class BeingPopup final : public Popup
 #endif
 
     private:
+        void addLabels(const int fontHeight);
+
         Label *mBeingName A_NONNULLPOINTER;
-        Label *mBeingParty A_NONNULLPOINTER;
-        Label *mBeingGuild A_NONNULLPOINTER;
-        Label *mBeingRank A_NONNULLPOINTER;
-        Label *mBeingComment A_NONNULLPOINTER;
-        Label *mBeingBuyBoard A_NONNULLPOINTER;
-        Label *mBeingSellBoard A_NONNULLPOINTER;
-        Label *mBeingRoom A_NONNULLPOINTER;
-        Label *mBeingEffects A_NONNULLPOINTER;
+        std::vector<Label*> mLabels;
 };
 
 extern BeingPopup *beingPopup;
