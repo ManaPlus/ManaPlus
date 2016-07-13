@@ -179,7 +179,8 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mPathSetByMouse(false),
     mWaitPing(false),
     mShowNavigePath(false),
-    mAllowRename(false)
+    mAllowRename(false),
+    mXpToNextLevel(0)
 {
     logger->log1("LocalPlayer::LocalPlayer");
 
@@ -213,6 +214,8 @@ LocalPlayer::LocalPlayer(const BeingId id,
     config.addListener("targetOnlyReachable", this);
     config.addListener("showserverpos", this);
     setShowName(config.getBoolValue("showownname"));
+    
+    mXpToNextLevel = PlayerInfo::getAttribute(Attributes::EXP_NEEDED) - PlayerInfo::getAttribute(Attributes::EXP);
 }
 
 LocalPlayer::~LocalPlayer()
@@ -1184,11 +1187,30 @@ void LocalPlayer::attributeChanged(const AttributesT id,
         {
             if (serverFeatures->haveExpPacket())
                 break;
+                
+            int change = 0;
             if (oldVal > newVal)
-                break;
-
-            const int change = newVal - oldVal;
-            addXpMessage(change);
+            {
+                if (mXpToNextLevel > 0)
+                {
+                	change = mXpToNextLevel + newVal;
+                }
+                else
+                {
+                	break;
+                }
+            }
+            else
+            {
+            	change = newVal - oldVal;
+            }
+ 
+            if (change != 0)
+            {
+                // TRANSLATORS: get xp message
+                addXpMessage(change);
+            }
+            mXpToNextLevel = PlayerInfo::getAttribute(Attributes::EXP_NEEDED) - newVal;
             break;
         }
         case Attributes::LEVEL:
