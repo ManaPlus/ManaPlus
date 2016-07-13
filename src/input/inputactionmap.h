@@ -2760,7 +2760,7 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyShowWindows",
         defaultAction(&Actions::showWindows),
-        InputCondition::DEFAULT,
+        InputCondition::DEFAULT | InputCondition::INGAME,
         "showwindows",
         UseArgs_false,
         Protected_false},
