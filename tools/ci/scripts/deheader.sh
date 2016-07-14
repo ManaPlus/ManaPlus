@@ -20,5 +20,7 @@ ${dir}/deheader -q -i "\"debug.h\"" \
 -c "$CXX" \
 -d "$FLAGS" \
 -s "-std=gnu++1z" \
--m "-c -Werror -Wall -Wextra -Wundef -Wmissing-declarations -DLOCALEDIR=\\\"\\\" -I/usr/include $INCLUDES -I${dir}/src" $1 \
-| grep -v "portability requires" | tee -a ${LOGFILE}
+-m "-c -Werror -Wall -Wextra -Wundef -Wmissing-declarations -DLOCALEDIR=\\\"\\\" -I/usr/include $INCLUDES -I${dir}/src" $1 | \
+grep -v "deheader: ./src/net/sdltcpnet.cpp has more than one inclusion of <netinet/tcp.h>" | \
+grep -v "portability requires" | \
+tee -a ${LOGFILE}
