@@ -223,6 +223,14 @@
 #endif  // ENABLE_CILKPLUS
 #endif  // __GNUC__
 
+#ifdef __GNUC__
+#define A_LIKELY(x) __builtin_expect (!!(x), 1)
+#define A_UNLIKELY(x) __builtin_expect (!!(x), 0)
+#else  // __GNUC__
+#define A_LIKELY(x) (x)
+#define A_UNLIKELY(x) (x)
+#endif  // __GNUC__
+
 #define notfinal
 
 #define FOR_EACH(type, iter, array) for (type iter = array.begin(), \
