@@ -1760,13 +1760,18 @@ void Being::nextTile() restrict2
 void Being::logic() restrict2
 {
     BLOCK_START("Being::logic")
-    // Reduce the time that speech is still displayed
-    if (mSpeechTime > 0)
+    if (A_UNLIKELY(mSpeechTime != 0))
+    {
         mSpeechTime--;
-
-    // Remove text and speechbubbles if speech boxes aren't being used
-    if (mSpeechTime == 0 && mText)
-        delete2(mText)
+        if (mSpeechTime == 0 && mText != nullptr)
+        {
+            delete2(mText)
+        }
+        else if (mText != nullptr)
+        {
+            delete2(mText)
+        }
+    }
 
     const int time = tick_time * MILLISECONDS_IN_A_TICK;
     if (mEmotionSprite)
