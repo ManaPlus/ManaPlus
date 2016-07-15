@@ -33,10 +33,6 @@ RENDER_SDL2GRAPHICS_H
 
 #include "localconsts.h"
 
-class Image;
-class ImageCollection;
-class ImageVertexes;
-
 /**
  * A central point of control for graphics.
  */

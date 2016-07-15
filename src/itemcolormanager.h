@@ -23,9 +23,9 @@
 
 #include "enums/simpletypes/itemcolor.h"
 
-#include "resources/item/cardslist.h"
-
 #include "localconsts.h"
+
+struct CardsList;
 
 class ItemColorManager final
 {

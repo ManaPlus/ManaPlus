@@ -23,7 +23,7 @@
 #ifndef RENDER_MOBILEOPENGL2GRAPHICS_H
 #define RENDER_MOBILEOPENGL2GRAPHICS_H
 
-#if defined USE_OPENGL && !defined ANDROID
+#if defined(USE_OPENGL) && !defined(ANDROID)
 
 #include "localconsts.h"
 
@@ -35,17 +35,17 @@
 #include <GLES/gl.h>
 #include <GLES/glext.h>
 #include <GLES2/gl2.h>
-#else
+#else  // ANDROID
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
-#endif
+#endif  // USE_SDL2
 #include <SDL_opengl.h>
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #elif !defined(__native_client__)
 #include <GL/glext.h>
 #endif  // defined(__APPLE__)
-#endif
+#endif  // ANDROID
 
 class OpenGLGraphicsVertexes;
 class ShaderProgram;
@@ -154,6 +154,6 @@ class MobileOpenGL2Graphics final : public Graphics
 #endif
         FBOInfo mFbo;
 };
-#endif
+#endif // defined(USE_OPENGL) && !defined(ANDROID)
 
 #endif  // RENDER_MOBILEOPENGL2GRAPHICS_H

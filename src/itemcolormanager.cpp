@@ -24,6 +24,8 @@
 
 #include "resources/db/itemdb.h"
 
+#include "resources/item/cardslist.h"
+
 #include "debug.h"
 
 ItemColor ItemColorManager::getColorFromCards(const int *const cards)

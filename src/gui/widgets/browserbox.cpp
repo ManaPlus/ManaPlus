@@ -45,6 +45,8 @@
 
 #include "resources/image/image.h"
 
+#include "resources/item/cardslist.h"
+
 #include "resources/loaders/imageloader.h"
 #include "resources/loaders/imagesetloader.h"
 

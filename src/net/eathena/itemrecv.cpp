@@ -28,6 +28,8 @@
 
 #include "net/messagein.h"
 
+#include "resources/item/cardslist.h"
+
 #include "debug.h"
 
 namespace EAthena
