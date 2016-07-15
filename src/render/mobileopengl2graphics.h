@@ -154,6 +154,6 @@ class MobileOpenGL2Graphics final : public Graphics
 #endif
         FBOInfo mFbo;
 };
-#endif // defined(USE_OPENGL) && !defined(ANDROID)
+#endif  // defined(USE_OPENGL) && !defined(ANDROID)
 
 #endif  // RENDER_MOBILEOPENGL2GRAPHICS_H
