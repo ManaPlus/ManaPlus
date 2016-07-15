@@ -275,7 +275,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     int height = height1;
     FOR_EACH (std::vector<Label*>::iterator, it, mLabels)
     {
-        Label *const label = *it;
+        const Label *const label = *it;
         if (label)
         {
             if (label->getWidth() > minWidth)
