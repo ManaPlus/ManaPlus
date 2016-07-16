@@ -913,6 +913,7 @@
 		<Unit filename="src/resources/atlas/atlasitem.h" />
 		<Unit filename="src/resources/atlas/textureatlas.h" />
 		<Unit filename="src/resources/atlas/atlasmanager.h" />
+		<Unit filename="src/resources/skilltypelist.h" />
 		<Unit filename="src/resources/horseinfo.h" />
 		<Unit filename="src/resources/chatobject.h" />
 		<Unit filename="src/resources/sdlscreenshothelper.h" />
@@ -993,6 +994,7 @@
 		<Unit filename="src/resources/dye/dye.h" />
 		<Unit filename="src/resources/dye/dyepalette.h" />
 		<Unit filename="src/resources/dye/dyecolor.h" />
+		<Unit filename="src/resources/skilltypeentry.h" />
 		<Unit filename="src/resources/map/tileanimation.h" />
 		<Unit filename="src/resources/map/tileinfo.h" />
 		<Unit filename="src/resources/map/mapitem.h" />
@@ -1012,7 +1014,6 @@
 		<Unit filename="src/resources/delayedmanager.h" />
 		<Unit filename="src/resources/sdl2softwarescreenshothelper.h" />
 		<Unit filename="src/resources/wallpaperdata.h" />
-		<Unit filename="src/resources/skilltype.h" />
 		<Unit filename="src/resources/soundinfo.h" />
 		<Unit filename="src/resources/npctextinfo.h" />
 		<Unit filename="src/resources/rect/doublerect.h" />
@@ -1028,7 +1029,6 @@
 		<Unit filename="src/resources/item/cardslist.h" />
 		<Unit filename="src/resources/openglscreenshothelper.h" />
 		<Unit filename="src/resources/memorymanager.h" />
-		<Unit filename="src/resources/skillowner.h" />
 		<Unit filename="src/resources/fboinfo.h" />
 		<Unit filename="src/resources/itemslot.h" />
 		<Unit filename="src/resources/imageset.h" />
@@ -1620,8 +1620,10 @@
 		<Unit filename="src/enums/resources/itemdbtype.h" />
 		<Unit filename="src/enums/resources/spritedirection.h" />
 		<Unit filename="src/enums/resources/imagetype.h" />
+		<Unit filename="src/enums/resources/skilltype.h" />
 		<Unit filename="src/enums/resources/imageposition.h" />
 		<Unit filename="src/enums/resources/itemsoundevent.h" />
+		<Unit filename="src/enums/resources/skillowner.h" />
 		<Unit filename="src/enums/resources/questtype.h" />
 		<Unit filename="src/enums/resources/notifyflags.h" />
 		<Unit filename="src/enums/state.h" />
@@ -1665,6 +1667,7 @@
 		<Unit filename="src/enums/simpletypes/trading.h" />
 		<Unit filename="src/enums/simpletypes/forcedisplay.h" />
 		<Unit filename="src/enums/simpletypes/showemptyrows.h" />
+		<Unit filename="src/enums/simpletypes/isstart.h" />
 		<Unit filename="src/enums/simpletypes/equipm.h" />
 		<Unit filename="src/enums/simpletypes/append.h" />
 		<Unit filename="src/enums/simpletypes/itemcolor.h" />
