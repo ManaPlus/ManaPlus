@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-07-02 19:47+0300\n"
-"PO-Revision-Date: 2016-07-03 21:09+0000\n"
+"PO-Revision-Date: 2016-07-16 13:03+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/akaras/manaplus/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -787,7 +787,7 @@ msgstr "创建更新目录错误!"
 #: src/dirs.cpp:537 src/dirs.cpp:558
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
-msgstr "错误：%s 不存在且无法创建！正在退出."
+msgstr "错误: %s 不存在且无法创建！正在退出."
 
 #. TRANSLATORS: directory creation error
 #: src/dirs.cpp:589 src/dirs.cpp:597 src/dirs.cpp:605
@@ -1796,7 +1796,7 @@ msgstr "取消"
 #: src/gui/popups/itempopup.cpp:224
 #, c-format
 msgid "Weight: %s"
-msgstr "重量：%s"
+msgstr "重量: %s"
 
 #. TRANSLATORS: named item description
 #: src/gui/popups/itempopup.cpp:291
@@ -2272,7 +2272,7 @@ msgstr "重命名的地图标志          "
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1192
 msgid "Name:                    "
-msgstr "名称：                   "
+msgstr "名称:                    "
 
 #. TRANSLATORS: dialog caption
 #. TRANSLATORS: number of chars in string should be near original
@@ -2284,7 +2284,7 @@ msgstr "玩家评论                  "
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1210
 msgid "Comment:                      "
-msgstr "评论：                       "
+msgstr "评论:                        "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -2497,7 +2497,7 @@ msgstr ""
 #: src/gui/windows/statuswindow.cpp:392
 #, c-format
 msgid "Level: %d"
-msgstr "等级：%d"
+msgstr "等级: %d"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: skill level
@@ -3394,7 +3394,7 @@ msgstr "最大"
 #: src/gui/windows/buydialog.cpp:265 src/gui/windows/buydialog.cpp:687
 #, c-format
 msgid "Price: %s / Total: %s"
-msgstr "价格：%s / 总价：%s"
+msgstr "价格: %s / 总价: %s"
 
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
@@ -3708,7 +3708,7 @@ msgstr ""
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:207
 #, c-format
 msgid "Particle count: %d"
-msgstr "粒子数：%d个"
+msgstr "粒子数: %d个"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:267
@@ -6092,7 +6092,7 @@ msgstr "SET"
 #: src/gui/windows/outfitwindow.cpp:629
 #, c-format
 msgid "Key: %s"
-msgstr "按键：%s"
+msgstr "按键: %s"
 
 #. TRANSLATORS: bank window money label
 #: src/gui/windows/bankwindow.cpp:48 src/gui/windows/bankwindow.cpp:91
@@ -6133,7 +6133,7 @@ msgstr "建立"
 #. TRANSLATORS: buy dialog label
 #: src/gui/windows/buydialog.cpp:336
 msgid "Filter:"
-msgstr "过滤器："
+msgstr "过滤器:"
 
 #. TRANSLATORS: change email dialog header
 #. TRANSLATORS: button in change email dialog
@@ -6148,7 +6148,7 @@ msgstr "更换Email地址"
 #: src/gui/windows/changepassworddialog.cpp:64
 #, c-format
 msgid "Account: %s"
-msgstr "帐号：%s"
+msgstr "帐号: %s"
 
 #. TRANSLATORS: label in change email dialog
 #: src/gui/windows/changeemaildialog.cpp:65
@@ -6428,7 +6428,7 @@ msgstr ""
 #: src/gui/windows/chatwindow.cpp:1139
 #, c-format
 msgid "Whispering to %s: %s"
-msgstr "对%s密语到：%s"
+msgstr "对%s密语到: %s"
 
 #. TRANSLATORS: prefix for moved message to trade tab.
 #: src/gui/windows/chatwindow.cpp:1571
@@ -7019,7 +7019,7 @@ msgstr ""
 #: src/gui/windows/outfitwindow.cpp:69 src/gui/windows/outfitwindow.cpp:623
 #, c-format
 msgid "Outfit: %d"
-msgstr "套装： %d"
+msgstr "套装: %d"
 
 #. TRANSLATORS: outfits window checkbox
 #: src/gui/windows/outfitwindow.cpp:71
@@ -7267,7 +7267,7 @@ msgstr "升级"
 #: src/gui/windows/skilldialog.cpp:207
 #, c-format
 msgid "Skill points available: %d"
-msgstr "技能点：%d个"
+msgstr "技能点: %d个"
 
 #. TRANSLATORS: skills dialog default skill tab
 #: src/gui/windows/skilldialog.cpp:308
@@ -7437,7 +7437,7 @@ msgstr "MP:"
 #: src/gui/windows/statuswindow.cpp:175 src/gui/windows/statuswindow.cpp:319
 #, c-format
 msgid "Job: %d"
-msgstr "职业：%d"
+msgstr "职业: %d"
 
 #. TRANSLATORS: status window label
 #: src/gui/windows/statuswindow.cpp:177
@@ -7538,7 +7538,7 @@ msgstr "已同意。等待中..."
 #. TRANSLATORS: trade window caption
 #: src/gui/windows/tradewindow.cpp:75
 msgid "Trade: You"
-msgstr "交易：你"
+msgstr "交易: 你"
 
 #. TRANSLATORS: trade window money label
 #: src/gui/windows/tradewindow.cpp:83 src/gui/windows/tradewindow.cpp:192
@@ -7583,7 +7583,7 @@ msgstr "注销"
 #: src/gui/windows/unregisterdialog.cpp:64
 #, c-format
 msgid "Name: %s"
-msgstr "姓名：%s"
+msgstr "姓名: %s"
 
 #. TRANSLATORS: updater window name
 #: src/gui/windows/updaterwindow.cpp:171
@@ -9029,7 +9029,7 @@ msgstr "未知的错误."
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:110
 msgid "Empty address given to Network::connect()!"
-msgstr "空的地址给网络：连接（）!"
+msgstr "空的地址给网络:连接（）!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/network.cpp:218
@@ -9421,7 +9421,7 @@ msgstr ""
 #: src/net/ea/traderecv.cpp:79
 #, c-format
 msgid "Trade: You and %s"
-msgstr "交易：您和%s"
+msgstr "交易: 您和%s"
 
 #. TRANSLATORS: trade message
 #: src/net/ea/traderecv.cpp:165
@@ -9668,7 +9668,7 @@ msgstr ""
 #: src/resources/notifications.h:78
 #, c-format
 msgid "Online users: %d"
-msgstr "在线用户数：%d"
+msgstr "在线用户数: %d"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:82
@@ -9845,7 +9845,7 @@ msgstr ""
 #: src/resources/notifications.h:238
 #, c-format
 msgid "An unknown member tried to say: %s"
-msgstr "一未知成员尝试说：%s"
+msgstr "一未知成员尝试说: %s"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:242
