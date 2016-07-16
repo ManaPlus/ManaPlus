@@ -1,3 +1,13 @@
+2016-07-16 New release 1.6.7.16
+fix: invoking complex skill types.
+fix: clean statdb on unload.
+fix: remove wrong sound effect for drag & drop items.
+fix: translation in quest links.
+fix: saving shortcut to skill with max level selected.
+fix: crash if try to open windows list before connecting to server.
+add: translate and show in debug window map names.
+add: start particle effect for status effects.
+
 2016-07-02 New release 1.6.7.2
 fix: issues with translated item names.
 fix: probably final fix for being paths (hercules).
