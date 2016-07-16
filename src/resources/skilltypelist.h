@@ -32,17 +32,17 @@ const size_t skillTypeListSize = 6;
 SkillTypeEntry skillTypeList[skillTypeListSize] =
 {
     // TRANSLATORS: Skill type
-    { SkillType::Attack,     _("Attack") },
+    { SkillType::Attack,     N_("Attack") },
     // TRANSLATORS: Skill type
-    { SkillType::Ground,     _("Ground") },
+    { SkillType::Ground,     N_("Ground") },
     // TRANSLATORS: Skill type
-    { SkillType::Self,       _("Self") },
+    { SkillType::Self,       N_("Self") },
     // TRANSLATORS: Skill type
-    { SkillType::Unused,     _("Unused") },
+    { SkillType::Unused,     N_("Unused") },
     // TRANSLATORS: Skill type
-    { SkillType::Support,    _("Support") },
+    { SkillType::Support,    N_("Support") },
     // TRANSLATORS: Skill type
-    { SkillType::TargetTrap, _("TargetTrap") }
+    { SkillType::TargetTrap, N_("TargetTrap") }
 };
 
 #endif  // RESOURCES_SKILLTYPELIST_H
