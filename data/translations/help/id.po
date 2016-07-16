@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2016-01-04 17:36+0000\n"
+"PO-Revision-Date: 2016-07-03 21:08+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.com/akaras/manaplus/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgid "/away, /away MSG - set away mode."
 msgstr ""
 
 msgid "GM"
-msgstr ""
+msgstr "GM"
 
 msgid "/addattack NAME - add monster to attack list."
 msgstr ""
@@ -169,7 +169,7 @@ msgid "\"Change move type\""
 msgstr ""
 
 msgid "Tabs"
-msgstr ""
+msgstr "Tab"
 
 msgid "\"Outfit shortcut 4\""
 msgstr ""
@@ -191,7 +191,7 @@ msgid "/enableaway - enable away messages in current tab."
 msgstr ""
 
 msgid "Support"
-msgstr ""
+msgstr "Bantuan"
 
 msgid "\"Copy equiped to Outfit\""
 msgstr ""
@@ -320,7 +320,7 @@ msgid "Different patches"
 msgstr ""
 
 msgid "Sound effects"
-msgstr ""
+msgstr "Efek suara"
 
 msgid "\"Talk\""
 msgstr ""
@@ -554,7 +554,7 @@ msgid "Powered By"
 msgstr ""
 
 msgid "Other"
-msgstr ""
+msgstr "Lain"
 
 msgid "\"Outfit shortcut 14\""
 msgstr ""
@@ -866,7 +866,7 @@ msgid ""
 msgstr ""
 
 msgid "About"
-msgstr ""
+msgstr "Tentang"
 
 msgid "\"Outfit shortcut 15\""
 msgstr ""
@@ -902,7 +902,7 @@ msgid "/petmoveup - move pet one tile up."
 msgstr ""
 
 msgid "Pets"
-msgstr ""
+msgstr "Peliharaan"
 
 msgid "\"Set direction down\""
 msgstr ""
@@ -937,7 +937,7 @@ msgid "/help - show small help about chat commands. "
 msgstr ""
 
 msgid "Debug"
-msgstr ""
+msgstr "Debug"
 
 msgid "/setdrop N - set drop counter to requested value."
 msgstr ""
@@ -1013,7 +1013,7 @@ msgid "KEYBOARD:"
 msgstr "KEYBOARD:"
 
 msgid "Windows"
-msgstr ""
+msgstr "Jendela"
 
 msgid "/emotepet N - use emotion number N from your pet."
 msgstr ""
@@ -1069,7 +1069,7 @@ msgid "Chat commands"
 msgstr ""
 
 msgid "Trade"
-msgstr ""
+msgstr "Dagang"
 
 msgid "/blacklist NICK - add nick to blacklist relation list."
 msgstr ""
@@ -1115,7 +1115,7 @@ msgid "\"Emote shortcut 14\""
 msgstr ""
 
 msgid "Commands"
-msgstr ""
+msgstr "Perintah"
 
 msgid "\"Stop Attack\""
 msgstr ""
@@ -1201,7 +1201,7 @@ msgid ""
 msgstr ""
 
 msgid "Skills"
-msgstr ""
+msgstr "Keahlian"
 
 msgid "\"Item shortcut 7\""
 msgstr ""

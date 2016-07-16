@@ -5,12 +5,12 @@
 # Maria <mtorres2022@gmail.com>, 2012
 # 0x0Eddine <salahbubuli44@gmail.com>, 2012
 # Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2012-2016
-# osuka <owen942009@gmail.com>, 2013
-# osuka <owen942009@gmail.com>, 2013-2014
+# osuka <oscar-u2011@hotmail.com>, 2013
+# osuka <oscar-u2011@hotmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2016-03-25 22:19+0000\n"
+"PO-Revision-Date: 2016-07-03 21:08+0000\n"
 "Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/akaras/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"

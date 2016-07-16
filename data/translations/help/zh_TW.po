@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2016-01-04 17:36+0000\n"
+"PO-Revision-Date: 2016-07-03 21:08+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/akaras/manaplus/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -1066,7 +1066,7 @@ msgid "Chat commands"
 msgstr ""
 
 msgid "Trade"
-msgstr ""
+msgstr "交易"
 
 msgid "/blacklist NICK - add nick to blacklist relation list."
 msgstr ""
@@ -1198,7 +1198,7 @@ msgid ""
 msgstr ""
 
 msgid "Skills"
-msgstr ""
+msgstr "技能"
 
 msgid "\"Item shortcut 7\""
 msgstr ""

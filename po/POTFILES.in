@@ -183,6 +183,7 @@ src/resources/mapreader.cpp
 src/resources/memorymanager.cpp
 src/resources/modinfo.cpp
 src/resources/notifications.h
+src/resources/skilltypelist.h
 src/utils/booleanoptions.h
 src/utils/gettext.h
 src/utils/stringutils.cpp

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2016-01-04 17:36+0000\n"
+"PO-Revision-Date: 2016-07-03 21:08+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/akaras/manaplus/language/nl_BE/)\n"
 "MIME-Version: 1.0\n"
@@ -554,7 +554,7 @@ msgid "Powered By"
 msgstr ""
 
 msgid "Other"
-msgstr ""
+msgstr "Andere"
 
 msgid "\"Outfit shortcut 14\""
 msgstr ""
@@ -1069,7 +1069,7 @@ msgid "Chat commands"
 msgstr "Gespreksbevelen"
 
 msgid "Trade"
-msgstr ""
+msgstr "Handel"
 
 msgid "/blacklist NICK - add nick to blacklist relation list."
 msgstr ""
@@ -1201,7 +1201,7 @@ msgid ""
 msgstr ""
 
 msgid "Skills"
-msgstr ""
+msgstr "Vaardigheden"
 
 msgid "\"Item shortcut 7\""
 msgstr ""

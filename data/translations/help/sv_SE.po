@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2016-01-04 17:36+0000\n"
+"PO-Revision-Date: 2016-07-03 21:08+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/akaras/manaplus/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,7 @@ msgid "/away, /away MSG - set away mode."
 msgstr ""
 
 msgid "GM"
-msgstr ""
+msgstr "GM"
 
 msgid "/addattack NAME - add monster to attack list."
 msgstr ""
@@ -166,7 +166,7 @@ msgid "\"Change move type\""
 msgstr ""
 
 msgid "Tabs"
-msgstr ""
+msgstr "Flikar"
 
 msgid "\"Outfit shortcut 4\""
 msgstr ""
@@ -317,7 +317,7 @@ msgid "Different patches"
 msgstr ""
 
 msgid "Sound effects"
-msgstr ""
+msgstr "Ljudeffekter"
 
 msgid "\"Talk\""
 msgstr ""
@@ -551,7 +551,7 @@ msgid "Powered By"
 msgstr ""
 
 msgid "Other"
-msgstr ""
+msgstr "Annat"
 
 msgid "\"Outfit shortcut 14\""
 msgstr ""
@@ -934,7 +934,7 @@ msgid "/help - show small help about chat commands. "
 msgstr ""
 
 msgid "Debug"
-msgstr ""
+msgstr "Debug"
 
 msgid "/setdrop N - set drop counter to requested value."
 msgstr ""
@@ -1010,7 +1010,7 @@ msgid "KEYBOARD:"
 msgstr ""
 
 msgid "Windows"
-msgstr ""
+msgstr "Fönster"
 
 msgid "/emotepet N - use emotion number N from your pet."
 msgstr ""
@@ -1066,7 +1066,7 @@ msgid "Chat commands"
 msgstr ""
 
 msgid "Trade"
-msgstr ""
+msgstr "Trade"
 
 msgid "/blacklist NICK - add nick to blacklist relation list."
 msgstr ""
@@ -1112,7 +1112,7 @@ msgid "\"Emote shortcut 14\""
 msgstr ""
 
 msgid "Commands"
-msgstr ""
+msgstr "Kommando"
 
 msgid "\"Stop Attack\""
 msgstr ""
@@ -1198,7 +1198,7 @@ msgid ""
 msgstr ""
 
 msgid "Skills"
-msgstr ""
+msgstr "Skills"
 
 msgid "\"Item shortcut 7\""
 msgstr ""
