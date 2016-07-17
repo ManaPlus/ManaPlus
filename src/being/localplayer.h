@@ -423,6 +423,8 @@ class LocalPlayer final : public Being,
 
         bool canMove() const;
 
+        void freezeMoving(const int timeWaitTicks);
+
     protected:
         void updateCoords() override final;
 
@@ -493,6 +495,7 @@ class LocalPlayer final : public Being,
         int mTestParticleTime;
         unsigned long mTestParticleHash;
         int mSyncPlayerMoveDistance;
+        int mUnfreezeTime;
         unsigned char mWalkingDir;  // The direction the player is walking in.
         /** Whether or not the name settings have changed */
         bool mUpdateName;
@@ -519,6 +522,7 @@ class LocalPlayer final : public Being,
         bool mWaitPing;
         bool mShowNavigePath;
         bool mAllowRename;
+        bool mFreezed;
 };
 
 extern LocalPlayer *localPlayer;

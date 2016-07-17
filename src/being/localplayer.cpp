@@ -158,6 +158,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mTestParticleTime(0),
     mTestParticleHash(0L),
     mSyncPlayerMoveDistance(config.getBoolValue("syncPlayerMoveDistance")),
+    mUnfreezeTime(0),
     mWalkingDir(0),
     mUpdateName(true),
     mBlockAdvert(false),
@@ -179,7 +180,8 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mPathSetByMouse(false),
     mWaitPing(false),
     mShowNavigePath(false),
-    mAllowRename(false)
+    mAllowRename(false),
+    mFreezed(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
 
@@ -250,6 +252,13 @@ void LocalPlayer::logic()
 
     if (mActivityTime == 0 || mLastAction != -1)
         mActivityTime = cur_time;
+
+    if (mUnfreezeTime > 0 &&
+        mUnfreezeTime <= tick_time)
+    {
+        mUnfreezeTime = 0;
+        mFreezed = false;
+    }
 
     if ((mAction != BeingAction::MOVE || mNextStep) && !mNavigatePath.empty())
     {
@@ -2714,7 +2723,19 @@ void LocalPlayer::playerDeath()
 
 bool LocalPlayer::canMove() const
 {
-    return mAction != BeingAction::DEAD &&
+    return !mFreezed &&
+        mAction != BeingAction::DEAD &&
         (serverFeatures->haveMoveWhileSit() ||
         mAction != BeingAction::SIT);
+}
+
+void LocalPlayer::freezeMoving(const int timeWaitTicks)
+{
+    if (timeWaitTicks <= 0)
+        return;
+    const int nextTime = tick_time + timeWaitTicks;
+    if (mUnfreezeTime < nextTime)
+        mUnfreezeTime = nextTime;
+    if (mUnfreezeTime > 0)
+        mFreezed = true;
 }

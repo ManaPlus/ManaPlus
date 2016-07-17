@@ -30,6 +30,8 @@
 
 #include "being/mercenaryinfo.h"
 
+#include "const/utils/timer.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "particle/particleengine.h"
@@ -961,9 +963,9 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
         UNIMPLIMENTEDPACKETFIELD(0);
         return;
     }
-    else if (dstId != BeingId_zero)
+    Being *const srcBeing = actorManager->findBeing(srcId);
+    if (dstId != BeingId_zero)
     {   // being to being
-        Being *const srcBeing = actorManager->findBeing(srcId);
         Being *const dstBeing = actorManager->findBeing(dstId);
         if (srcBeing)
             srcBeing->setAction(BeingAction::CAST, skillId);
@@ -972,13 +974,14 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
     }
     else if (dstX != 0 || dstY != 0)
     {   // being to position
-        Being *const srcBeing = actorManager->findBeing(srcId);
         if (srcBeing)
             srcBeing->setAction(BeingAction::CAST, skillId);
         skillDialog->playCastingDstTileEffect(skillId,
             dstX, dstY,
             castTime);
     }
+    if (srcBeing == localPlayer)
+        localPlayer->freezeMoving(castTime / MILLISECONDS_IN_A_TICK);
 }
 
 void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)
