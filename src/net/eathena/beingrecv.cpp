@@ -947,6 +947,46 @@ void BeingRecv::processSkillCasting(Net::MessageIn &msg)
     }
 }
 
+void BeingRecv::processSkillCasting2(Net::MessageIn &msg)
+{
+    msg.readInt16("len");  // for now unused
+    const BeingId srcId = msg.readBeingId("src id");
+    const BeingId dstId = msg.readBeingId("dst id");
+    const int dstX = msg.readInt16("dst x");
+    const int dstY = msg.readInt16("dst y");
+    const int skillId = msg.readInt16("skill id");
+    msg.readInt32("property");  // can be used to trigger effect
+    const int castTime = msg.readInt32("cast time");
+    msg.readInt32("skill range");
+
+    if (!effectManager)
+        return;
+
+    if (srcId == BeingId_zero)
+    {
+        UNIMPLIMENTEDPACKETFIELD(0);
+        return;
+    }
+    else if (dstId != BeingId_zero)
+    {   // being to being
+        Being *const srcBeing = actorManager->findBeing(srcId);
+        Being *const dstBeing = actorManager->findBeing(dstId);
+        if (srcBeing)
+            srcBeing->setAction(BeingAction::CAST, skillId);
+        skillDialog->playCastingSrcEffect(skillId, srcBeing);
+        skillDialog->playCastingDstEffect(skillId, dstBeing);
+    }
+    else if (dstX != 0 || dstY != 0)
+    {   // being to position
+        Being *const srcBeing = actorManager->findBeing(srcId);
+        if (srcBeing)
+            srcBeing->setAction(BeingAction::CAST, skillId);
+        skillDialog->playCastingDstTileEffect(skillId,
+            dstX, dstY,
+            castTime);
+    }
+}
+
 void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingStatusChange")

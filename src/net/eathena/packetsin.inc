@@ -805,6 +805,7 @@ if (serverVersion > 0)
     packet(SMSG_MAP_SET_TILES_TYPE,        0x0b1b,  34, &Ea::MapRecv::processSetTilesType,              0);
     packet(SMSG_NPC_SKIN,                  0x0b1c,  -1, &NpcRecv::processNpcSkin,                       0);
     packet(SMSG_PLAYER_KILLED_BY,          0x0b1d,   6, &PlayerRecv::processKilledBy,                   0);
+    packet(SMSG_SKILL_CASTING2,            0x0b1e,  -1, &BeingRecv::processSkillCasting2,               0);
 
     // char server
     packet(SMSG_CHAR_PASSWORD_RESPONSE,    0x0062,   3, &LoginRecv::processCharPasswordResponse,        0);
