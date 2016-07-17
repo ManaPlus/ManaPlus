@@ -110,6 +110,7 @@ namespace EAthena
         void processGraffiti(Net::MessageIn &msg);
         void processSkillDamage(Net::MessageIn &msg);
         void processNavigateTo(Net::MessageIn &msg);
+
         Being *createBeing2(Net::MessageIn &msg,
                             const BeingId id,
                             const int32_t job,
@@ -117,7 +118,13 @@ namespace EAthena
         void applyPlayerAction(Net::MessageIn &msg,
                                Being *const being,
                                const uint8_t type);
-
+        void processSkillCastingContinue(Net::MessageIn &msg,
+                                         const BeingId srcId,
+                                         const BeingId dstId,
+                                         const int dstX,
+                                         const int dstY,
+                                         const int skillId,
+                                         const int castTime);
     }  // namespace BeingRecv
 }  // namespace EAthena
 

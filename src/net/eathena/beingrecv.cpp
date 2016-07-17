@@ -919,32 +919,11 @@ void BeingRecv::processSkillCasting(Net::MessageIn &msg)
     if (msg.getVersion() >= 20091124)
         msg.readInt8("dispossable");
 
-    if (!effectManager)
-        return;
-
-    if (srcId == BeingId_zero)
-    {
-        UNIMPLIMENTEDPACKETFIELD(0);
-        return;
-    }
-    else if (dstId != BeingId_zero)
-    {   // being to being
-        Being *const srcBeing = actorManager->findBeing(srcId);
-        Being *const dstBeing = actorManager->findBeing(dstId);
-        if (srcBeing)
-            srcBeing->setAction(BeingAction::CAST, skillId);
-        skillDialog->playCastingSrcEffect(skillId, srcBeing);
-        skillDialog->playCastingDstEffect(skillId, dstBeing);
-    }
-    else if (dstX != 0 || dstY != 0)
-    {   // being to position
-        Being *const srcBeing = actorManager->findBeing(srcId);
-        if (srcBeing)
-            srcBeing->setAction(BeingAction::CAST, skillId);
-        skillDialog->playCastingDstTileEffect(skillId,
-            dstX, dstY,
-            castTime);
-    }
+    processSkillCastingContinue(msg,
+        srcId, dstId,
+        dstX, dstY,
+        skillId,
+        castTime);
 }
 
 void BeingRecv::processSkillCasting2(Net::MessageIn &msg)
@@ -959,6 +938,21 @@ void BeingRecv::processSkillCasting2(Net::MessageIn &msg)
     const int castTime = msg.readInt32("cast time");
     msg.readInt32("skill range");
 
+    processSkillCastingContinue(msg,
+        srcId, dstId,
+        dstX, dstY,
+        skillId,
+        castTime);
+}
+
+void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
+                                            const BeingId srcId,
+                                            const BeingId dstId,
+                                            const int dstX,
+                                            const int dstY,
+                                            const int skillId,
+                                            const int castTime)
+{
     if (!effectManager)
         return;
 
