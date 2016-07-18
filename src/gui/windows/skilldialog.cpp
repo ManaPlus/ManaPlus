@@ -390,6 +390,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                         node, "description", "");
                     data->particle = XML::getProperty(
                         node, "particle", "");
+                    data->castingAnimation = XML::getProperty(
+                        node, "castingAnimation", "");
 
                     data->soundHit.sound = XML::getProperty(
                         node, "soundHit", "");

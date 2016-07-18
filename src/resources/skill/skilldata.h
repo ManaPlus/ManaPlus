@@ -33,13 +33,15 @@ struct SkillData final
     std::string shortName;
     std::string dispName;
     std::string description;
-    Image *icon;
 
     std::string particle;
     std::string invokeCmd;
+    std::string castingAnimation;
 
     SoundInfo soundHit;
     SoundInfo soundMiss;
+
+    Image *icon;
 
     int updateEffectId;
     int removeEffectId;
