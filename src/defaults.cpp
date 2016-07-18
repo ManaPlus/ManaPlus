@@ -644,6 +644,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("gmCharCommandSymbol", "#");
     AddDEF("linkCommandSymbol", "=");
     AddDEF("emptyAtlasName", "ignored");
+    AddDEF("skillCastingAnimation", "");
 
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");
