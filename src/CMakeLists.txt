@@ -766,7 +766,7 @@ SET(SRCS
     resources/sdlscreenshothelper.cpp
     resources/sdlscreenshothelper.h
     resources/skill/skilltypeentry.h
-    resources/skilltypelist.h
+    resources/skill/skilltypelist.h
     const/net/skill.h
     const/resources/skill.h
     enums/resources/skillowner.h

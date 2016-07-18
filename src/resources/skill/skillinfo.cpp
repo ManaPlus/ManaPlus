@@ -28,9 +28,8 @@
 
 #include "utils/stringutils.h"
 
-#include "resources/skilltypelist.h"
-
 #include "resources/skill/skilldata.h"
+#include "resources/skill/skilltypelist.h"
 
 #include "debug.h"
 
