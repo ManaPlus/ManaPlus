@@ -22,7 +22,7 @@
 
 #include "gui/models/skillmodel.h"
 
-#include "gui/widgets/skilldata.h"
+#include "resources/skill/skilldata.h"
 
 #include "debug.h"
 

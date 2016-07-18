@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/skilldata.h"
+#include "resources/skill/skilldata.h"
 
 #include "configuration.h"
 

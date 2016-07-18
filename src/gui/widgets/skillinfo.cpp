@@ -24,13 +24,13 @@
 
 #include "being/playerinfo.h"
 
-#include "gui/widgets/skilldata.h"
-
 #include "gui/models/skillmodel.h"
 
 #include "utils/stringutils.h"
 
 #include "resources/skilltypelist.h"
+
+#include "resources/skill/skilldata.h"
 
 #include "debug.h"
 

@@ -1029,8 +1029,8 @@ manaplus_SOURCES += main.cpp \
 	      gui/widgets/shoplistbox.h \
 	      gui/widgets/shortcutcontainer.cpp \
 	      gui/widgets/shortcutcontainer.h \
-	      gui/widgets/skilldata.cpp \
-	      gui/widgets/skilldata.h \
+	      resources/skill/skilldata.cpp \
+	      resources/skill/skilldata.h \
 	      gui/widgets/skillinfo.cpp \
 	      gui/widgets/skillinfo.h \
 	      gui/widgets/skilllistbox.h \

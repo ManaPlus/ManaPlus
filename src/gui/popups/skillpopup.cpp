@@ -28,12 +28,13 @@
 #include "gui/fonts/font.h"
 
 #include "gui/widgets/label.h"
-#include "gui/widgets/skilldata.h"
 #include "gui/widgets/skillinfo.h"
 #include "gui/widgets/textbox.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include "resources/skill/skilldata.h"
 
 #include "debug.h"
 
