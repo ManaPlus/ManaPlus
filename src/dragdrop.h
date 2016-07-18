@@ -28,11 +28,10 @@
 
 #include "enums/dragdropsource.h"
 
-#include "gui/widgets/skillinfo.h"
-
 #include "resources/image/image.h"
 
 #include "resources/skill/skilldata.h"
+#include "resources/skill/skillinfo.h"
 
 #include "localconsts.h"
 

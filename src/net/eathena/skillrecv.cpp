@@ -32,7 +32,6 @@
 #include "enums/resources/notifytypes.h"
 
 #include "gui/widgets/createwidget.h"
-#include "gui/widgets/skillinfo.h"
 
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/textselectdialog.h"
@@ -46,6 +45,8 @@
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"
+
+#include "resources/skill/skillinfo.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

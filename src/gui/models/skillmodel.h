@@ -23,8 +23,9 @@
 #ifndef GUI_MODELS_SKILLMODEL_H
 #define GUI_MODELS_SKILLMODEL_H
 
-#include "gui/widgets/skillinfo.h"
 #include "gui/models/listmodel.h"
+
+#include "resources/skill/skillinfo.h"
 
 #include "localconsts.h"
 

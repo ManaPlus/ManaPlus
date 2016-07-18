@@ -91,11 +91,11 @@
 #include "resources/map/map.h"
 
 #include "resources/skill/skilldata.h"
+#include "resources/skill/skillinfo.h"
 
 #include "resources/sprite/animatedsprite.h"
 
 #include "gui/widgets/createwidget.h"
-#include "gui/widgets/skillinfo.h"
 
 #include "gui/widgets/tabs/chat/langtab.h"
 

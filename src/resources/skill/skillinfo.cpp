@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/skillinfo.h"
+#include "resources/skill/skillinfo.h"
 
 #include "being/playerinfo.h"
 

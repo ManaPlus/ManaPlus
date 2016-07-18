@@ -266,8 +266,8 @@ SET(SRCS
     gui/widgets/shortcutcontainer.h
     resources/skill/skilldata.cpp
     resources/skill/skilldata.h
-    gui/widgets/skillinfo.cpp
-    gui/widgets/skillinfo.h
+    resources/skill/skillinfo.cpp
+    resources/skill/skillinfo.h
     gui/widgets/skilllistbox.h
     gui/models/skillmodel.cpp
     gui/models/skillmodel.h

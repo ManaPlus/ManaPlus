@@ -60,7 +60,6 @@
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/skillinfo.h"
 #include "gui/widgets/textfield.h"
 
 #include "gui/widgets/tabs/chat/whispertab.h"
@@ -91,6 +90,8 @@
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"
 #include "resources/map/speciallayer.h"
+
+#include "resources/skill/skillinfo.h"
 
 #include "utils/copynpaste.h"
 #include "utils/gettext.h"
