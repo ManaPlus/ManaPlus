@@ -23,7 +23,7 @@
 
 #include "utils/gettext.h"
 
-#include "resources/skilltypeentry.h"
+#include "resources/skill/skilltypeentry.h"
 
 #include "localconsts.h"
 

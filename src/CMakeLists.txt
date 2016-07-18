@@ -765,7 +765,7 @@ SET(SRCS
     resources/sdlmusic.h
     resources/sdlscreenshothelper.cpp
     resources/sdlscreenshothelper.h
-    resources/skilltypeentry.h
+    resources/skill/skilltypeentry.h
     resources/skilltypelist.h
     const/net/skill.h
     const/resources/skill.h
