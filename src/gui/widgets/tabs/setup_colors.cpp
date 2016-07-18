@@ -326,6 +326,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
         case UserColorId::ATTACK_RANGE:
         case UserColorId::MONSTER_ATTACK_RANGE:
         case UserColorId::FLOOR_ITEM_TEXT:
+        case UserColorId::SKILL_ATTACK_RANGE:
             mTextPreview->setShadow(false);
             break;
         default:
@@ -338,6 +339,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
         case UserColorId::ATTACK_RANGE:
         case UserColorId::ATTACK_RANGE_BORDER:
         case UserColorId::MONSTER_ATTACK_RANGE:
+        case UserColorId::SKILL_ATTACK_RANGE:
         case UserColorId::HOME_PLACE:
         case UserColorId::HOME_PLACE_BORDER:
         case UserColorId::AIR_COLLISION_HIGHLIGHT:

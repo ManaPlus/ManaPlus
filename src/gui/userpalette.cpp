@@ -85,6 +85,7 @@ const std::string ColorTypeNames[CAST_SIZE(
     "ColorAttackRange",
     "ColorAttackRangeBorder",
     "ColorMonsterAttackRange",
+    "ColorSkillAttackRange",
     "",
     "ColorFloorItemText",
     "ColorHomePlace",
@@ -378,6 +379,12 @@ UserPalette::UserPalette() :
         // TRANSLATORS: palette color
         _("Monster attack range"),
         20);
+    addColor(UserColorId::SKILL_ATTACK_RANGE,
+        0x0,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Skill attack range border"),
+        76);
     addLabel(UserColorId::LABEL_OTHER,
         // TRANSLATORS: palette label
         _("Other"));
