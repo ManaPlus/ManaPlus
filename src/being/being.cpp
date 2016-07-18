@@ -242,6 +242,10 @@ Being::Being(const BeingId id,
     mKarma(0),
     mManner(0),
     mAreaSize(11),
+    mCastEndTime(0),
+    mCastX1(0),
+    mCastSize(0),
+    mCastY1(0),
 #ifdef EATHENA_SUPPORT
     mCreatorId(BeingId_zero),
 #endif
@@ -257,7 +261,8 @@ Being::Being(const BeingId id,
     mAway(false),
     mInactive(false),
     mNeedPosUpdate(true),
-    mPetAi(true)
+    mPetAi(true),
+    mDrawCast(false)
 {
     for (int f = 0; f < 20; f ++)
     {
@@ -1782,6 +1787,12 @@ void Being::logic() restrict2
     for_each_horses(mUpHorseSprites)
         (*it)->update(time);
 #endif
+
+    if (mCastEndTime != 0 && mCastEndTime < tick_time)
+    {
+        mCastEndTime = 0;
+        mDrawCast = false;
+    }
 
     if (mAnimationEffect)
     {
@@ -3486,7 +3497,23 @@ void Being::drawPlayer(Graphics *restrict const graphics,
         drawBeingCursor(graphics, px, py);
         drawPlayerSpriteAt(graphics, px, py);
 #endif
+        if (mDrawCast)
+            drawCasting(graphics, offsetX, offsetY);
     }
+}
+
+void Being::drawCasting(Graphics *const graphics,
+                        const int offsetX,
+                        const int offsetY) const
+{
+    graphics->setColor(userPalette->getColorWithAlpha(
+        UserColorId::ATTACK_RANGE_BORDER));
+
+    graphics->drawRectangle(Rect(
+        mCastX1 + offsetX,
+        mCastY1 + offsetY,
+        mCastSize,
+        mCastSize));
 }
 
 void Being::drawBeingCursor(Graphics *const graphics,
@@ -5000,6 +5027,25 @@ void Being::serverRemove() restrict2 noexcept2
 {
     // remove some flags what can survive player remove and next visible
     mTrickDead = false;
+}
+
+void Being::addCast(const int dstX,
+                    const int dstY,
+                    const int skillId A_UNUSED,
+                    const int range A_UNUSED,
+                    const int waitTimeTicks)
+{
+    if (waitTimeTicks <= 0)
+    {
+        mCastEndTime = 0;
+        mDrawCast = false;
+        return;
+    }
+    mCastEndTime = tick_time + waitTimeTicks;
+    mDrawCast = true;
+    mCastX1 = (dstX - range) * mapTileSize;
+    mCastY1 = (dstY - range) * mapTileSize;
+    mCastSize = range * mapTileSize * 2 + mapTileSize;
 }
 
 #ifdef EATHENA_SUPPORT

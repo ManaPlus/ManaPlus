@@ -1038,6 +1038,12 @@ class Being notfinal : public ActorSprite,
 
         void serverRemove() restrict2 noexcept2;
 
+        void addCast(const int dstX,
+                     const int dstY,
+                     const int skillId,
+                     const int range,
+                     const int waitTimeTicks);
+
     protected:
         void drawPlayerSpriteAt(Graphics *restrict const graphics,
                                 const int x,
@@ -1170,6 +1176,10 @@ class Being notfinal : public ActorSprite,
                              const int offsetX,
                              const int offsetY) const A_NONNULL(2);
 
+        void drawCasting(Graphics *const graphics,
+                         const int offsetX,
+                         const int offsetY) const A_NONNULL(2);
+
         const ActorTypeT mType;
 
         /** Speech Bubble components */
@@ -1255,6 +1265,11 @@ class Being notfinal : public ActorSprite,
         int mKarma;
         int mManner;
         int mAreaSize;
+        int mCastEndTime;
+        int mCastX1;
+        int mCastSize;
+        int mCastY1;
+        int mCastHeight;
 #ifdef EATHENA_SUPPORT
         BeingId mCreatorId;
 #endif
@@ -1271,6 +1286,7 @@ class Being notfinal : public ActorSprite,
         bool mInactive;
         bool mNeedPosUpdate;
         bool mPetAi;
+        bool mDrawCast;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

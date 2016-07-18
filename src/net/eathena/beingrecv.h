@@ -124,6 +124,7 @@ namespace EAthena
                                          const int dstX,
                                          const int dstY,
                                          const int skillId,
+                                         const int range,
                                          const int castTime);
     }  // namespace BeingRecv
 }  // namespace EAthena
