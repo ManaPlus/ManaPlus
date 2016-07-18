@@ -1041,6 +1041,7 @@ class Being notfinal : public ActorSprite,
         void addCast(const int dstX,
                      const int dstY,
                      const int skillId,
+                     const int skillLevel,
                      const int range,
                      const int waitTimeTicks);
 
@@ -1090,6 +1091,7 @@ class Being notfinal : public ActorSprite,
         BeingInfo *restrict mInfo;
         AnimatedSprite *restrict mEmotionSprite;
         AnimatedSprite *restrict mAnimationEffect;
+        AnimatedSprite *restrict mCastingEffect;
         AnimatedSprite *restrict mBadges[BadgeIndex::BadgeIndexSize];
 
         std::string mSpriteAction;
@@ -1266,10 +1268,11 @@ class Being notfinal : public ActorSprite,
         int mManner;
         int mAreaSize;
         int mCastEndTime;
-        int mCastX1;
-        int mCastSize;
-        int mCastY1;
-        int mCastHeight;
+        int mCastRectX;
+        int mCastRectSize;
+        int mCastRectY;
+        int mCastAnimationX;
+        int mCastAnimationY;
 #ifdef EATHENA_SUPPORT
         BeingId mCreatorId;
 #endif

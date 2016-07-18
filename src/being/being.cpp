@@ -154,6 +154,7 @@ Being::Being(const BeingId id,
     mInfo(BeingInfo::unknown),
     mEmotionSprite(nullptr),
     mAnimationEffect(nullptr),
+    mCastingEffect(nullptr),
     mBadges(),
     mSpriteAction(SpriteAction::STAND),
     mName(),
@@ -244,9 +245,11 @@ Being::Being(const BeingId id,
     mManner(0),
     mAreaSize(11),
     mCastEndTime(0),
-    mCastX1(0),
-    mCastSize(0),
-    mCastY1(0),
+    mCastRectX(0),
+    mCastRectSize(0),
+    mCastRectY(0),
+    mCastAnimationX(0),
+    mCastAnimationY(0),
 #ifdef EATHENA_SUPPORT
     mCreatorId(BeingId_zero),
 #endif
@@ -336,6 +339,7 @@ Being::~Being()
     delete2(mText);
     delete2(mEmotionSprite);
     delete2(mAnimationEffect);
+    delete2(mCastingEffect);
     mBadgesCount = 0;
 #ifdef EATHENA_SUPPORT
     delete2(mChat);
@@ -1592,6 +1596,8 @@ void Being::setAction(const BeingActionT &restrict action,
             mEmotionSprite->play(currentAction);
         if (mAnimationEffect)
             mAnimationEffect->play(currentAction);
+        if (mCastingEffect)
+            mCastingEffect->play(currentAction);
         for_each_badges()
         {
             AnimatedSprite *const sprite = mBadges[f];
@@ -1663,6 +1669,8 @@ void Being::setDirection(const uint8_t direction) restrict2
         mEmotionSprite->setSpriteDirection(dir);
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
+    if (mCastingEffect)
+        mCastingEffect->setSpriteDirection(dir);
 
     for_each_badges()
     {
@@ -1793,6 +1801,7 @@ void Being::logic() restrict2
     {
         mCastEndTime = 0;
         mDrawCast = false;
+        delete2(mCastingEffect);
     }
 
     if (mAnimationEffect)
@@ -1800,6 +1809,12 @@ void Being::logic() restrict2
         mAnimationEffect->update(time);
         if (mAnimationEffect->isTerminated())
             delete2(mAnimationEffect)
+    }
+    if (mCastingEffect)
+    {
+        mCastingEffect->update(time);
+        if (mCastingEffect->isTerminated())
+            delete2(mCastingEffect)
     }
     for_each_badges()
     {
@@ -3511,10 +3526,17 @@ void Being::drawCasting(Graphics *const graphics,
         UserColorId::ATTACK_RANGE_BORDER));
 
     graphics->drawRectangle(Rect(
-        mCastX1 + offsetX,
-        mCastY1 + offsetY,
-        mCastSize,
-        mCastSize));
+        mCastRectX + offsetX,
+        mCastRectY + offsetY,
+        mCastRectSize,
+        mCastRectSize));
+
+    if (mCastingEffect)
+    {
+        mCastingEffect->draw(graphics,
+            mCastAnimationX + offsetX,
+            mCastAnimationY + offsetY);
+    }
 }
 
 void Being::drawBeingCursor(Graphics *const graphics,
@@ -5032,8 +5054,9 @@ void Being::serverRemove() restrict2 noexcept2
 
 void Being::addCast(const int dstX,
                     const int dstY,
-                    const int skillId A_UNUSED,
-                    const int range A_UNUSED,
+                    const int skillId,
+                    const int skillLevel,
+                    const int range,
                     const int waitTimeTicks)
 {
     if (waitTimeTicks <= 0)
@@ -5044,9 +5067,36 @@ void Being::addCast(const int dstX,
     }
     mCastEndTime = tick_time + waitTimeTicks;
     mDrawCast = true;
-    mCastX1 = (dstX - range) * mapTileSize;
-    mCastY1 = (dstY - range) * mapTileSize;
-    mCastSize = range * mapTileSize * 2 + mapTileSize;
+    mCastRectX = (dstX - range) * mapTileSize;
+    mCastRectY = (dstY - range) * mapTileSize;
+    mCastRectSize = range * mapTileSize * 2 + mapTileSize;
+    SkillData *const data = skillDialog->getSkillDataByLevel(
+        skillId,
+        skillLevel);
+    delete2(mCastingEffect);
+    if (data)
+    {
+        const std::string castingAnimation = data->castingAnimation;
+        if (!castingAnimation.empty())
+        {
+            mCastingEffect = AnimatedSprite::load(
+                paths.getStringValue("sprites") + castingAnimation);
+            if (mCastingEffect)
+            {
+                mCastAnimationX = mCastRectX +
+                    (mCastRectSize - mCastingEffect->getWidth()) / 2;
+                mCastAnimationY = mCastRectY +
+                    (mCastRectSize - mCastingEffect->getHeight()) / 2;
+            }
+            else
+            {
+                reportAlways("Skill %d/%d casting animation '%s' load failed",
+                    skillId,
+                    skillLevel,
+                    castingAnimation.c_str());
+            }
+        }
+    }
 }
 
 #ifdef EATHENA_SUPPORT

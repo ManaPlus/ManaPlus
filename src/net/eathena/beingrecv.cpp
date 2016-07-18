@@ -925,6 +925,7 @@ void BeingRecv::processSkillCasting(Net::MessageIn &msg)
         srcId, dstId,
         dstX, dstY,
         skillId,
+        1,
         0,
         castTime);
 }
@@ -937,6 +938,7 @@ void BeingRecv::processSkillCasting2(Net::MessageIn &msg)
     const int dstX = msg.readInt16("dst x");
     const int dstY = msg.readInt16("dst y");
     const int skillId = msg.readInt16("skill id");
+    const int skillLevel = msg.readInt16("skill level");
     msg.readInt32("property");  // can be used to trigger effect
     const int castTime = msg.readInt32("cast time");
     const int range = msg.readInt32("skill range");
@@ -945,6 +947,7 @@ void BeingRecv::processSkillCasting2(Net::MessageIn &msg)
         srcId, dstId,
         dstX, dstY,
         skillId,
+        skillLevel,
         range,
         castTime);
 }
@@ -955,6 +958,7 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
                                             const int dstX,
                                             const int dstY,
                                             const int skillId,
+                                            const int skillLevel,
                                             const int range,
                                             const int castTime)
 {
@@ -984,6 +988,7 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
             castTime);
         srcBeing->addCast(dstX, dstY,
             skillId,
+            skillLevel,
             range,
             castTime / MILLISECONDS_IN_A_TICK);
     }
