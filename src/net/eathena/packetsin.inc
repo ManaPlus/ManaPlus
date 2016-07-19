@@ -807,6 +807,7 @@ if (serverVersion > 0)
     packet(SMSG_PLAYER_KILLED_BY,          0x0b1d,   6, &PlayerRecv::processKilledBy,                   0);
     packet(SMSG_SKILL_CASTING2,            0x0b1e,  -1, &BeingRecv::processSkillCasting2,               0);
     packet(SMSG_PLAYER_ADD_SKILL2,         0x0b1f,  -1, &SkillRecv::processSkillAdd2,                   0);
+    packet(SMSG_PLAYER_UPDATE_SKILL2,      0x0b20,  -1, &SkillRecv::processSkillUpdate2,                0);
 
     // char server
     packet(SMSG_CHAR_PASSWORD_RESPONSE,    0x0062,   3, &LoginRecv::processCharPasswordResponse,        0);
