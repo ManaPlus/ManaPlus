@@ -31,8 +31,6 @@
 
 #include "const/resources/spriteaction.h"
 
-#include "gui/popups/skillpopup.h"
-
 #include "gui/shortcut/itemshortcut.h"
 
 #include "gui/windows/setupwindow.h"
