@@ -121,6 +121,7 @@ void SkillInfo::update()
     }
     else
     {
+        skillEffect.clear();
         for (size_t f = 0; f < skillTypeListSize; f ++)
         {
             const SkillTypeEntry &item = skillTypeList[f];
