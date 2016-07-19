@@ -927,6 +927,7 @@ void BeingRecv::processSkillCasting(Net::MessageIn &msg)
         skillId,
         1,
         0,
+        SkillType2::Unknown,
         castTime);
 }
 
@@ -942,6 +943,8 @@ void BeingRecv::processSkillCasting2(Net::MessageIn &msg)
     msg.readInt32("property");  // can be used to trigger effect
     const int castTime = msg.readInt32("cast time");
     const int range = msg.readInt32("skill range");
+    const SkillType2::SkillType2 inf2 =
+        static_cast<SkillType2::SkillType2>(msg.readInt32("inf2"));
 
     processSkillCastingContinue(msg,
         srcId, dstId,
@@ -949,6 +952,7 @@ void BeingRecv::processSkillCasting2(Net::MessageIn &msg)
         skillId,
         skillLevel,
         range,
+        inf2,
         castTime);
 }
 
@@ -960,6 +964,7 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
                                             const int skillId,
                                             const int skillLevel,
                                             const int range,
+                                            const SkillType2::SkillType2 inf2,
                                             const int castTime)
 {
     if (!effectManager)
@@ -992,8 +997,11 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
             range,
             castTime / MILLISECONDS_IN_A_TICK);
     }
-    if (srcBeing == localPlayer)
+    if (srcBeing == localPlayer &&
+        (inf2 & SkillType2::FreeCastAny) == 0)
+    {
         localPlayer->freezeMoving(castTime / MILLISECONDS_IN_A_TICK);
+    }
 }
 
 void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)

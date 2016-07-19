@@ -21,6 +21,7 @@
 #ifndef ENUMS_RESOURCES_SKILLTYPE_H
 #define ENUMS_RESOURCES_SKILLTYPE_H
 
+// aka inf
 namespace SkillType
 {
     enum SkillType

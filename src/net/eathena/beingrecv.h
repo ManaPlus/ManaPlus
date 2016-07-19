@@ -25,6 +25,8 @@
 
 #include "net/eathena/beingtype.h"
 
+#include "enums/resources/skilltype2.h"
+
 #include "enums/simpletypes/beingid.h"
 
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
@@ -126,6 +128,7 @@ namespace EAthena
                                          const int skillId,
                                          const int skillLevel,
                                          const int range,
+                                         const SkillType2::SkillType2 inf2,
                                          const int castTime);
     }  // namespace BeingRecv
 }  // namespace EAthena
