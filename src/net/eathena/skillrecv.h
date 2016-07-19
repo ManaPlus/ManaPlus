@@ -37,6 +37,7 @@ namespace EAthena
         void processSkillCoolDown(Net::MessageIn &msg);
         void processSkillCoolDownList(Net::MessageIn &msg);
         void processSkillAdd(Net::MessageIn &msg);
+        void processSkillAdd2(Net::MessageIn &msg);
         void processSkillUpdate(Net::MessageIn &msg);
         void processSkillDelete(Net::MessageIn &msg);
         void processSkillWarpPoint(Net::MessageIn &msg);
