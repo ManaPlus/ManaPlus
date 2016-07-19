@@ -179,3 +179,9 @@ void SkillPopup::mouseMoved(MouseEvent &event)
     setVisible(Visible_false);
     mLastId = 0;
 }
+
+void SkillPopup::reset()
+{
+    mLastId = 0;
+    mLastLevel = 0;
+}

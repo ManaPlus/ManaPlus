@@ -31,6 +31,8 @@
 
 #include "const/resources/spriteaction.h"
 
+#include "gui/popups/skillpopup.h"
+
 #include "gui/shortcut/itemshortcut.h"
 
 #include "gui/windows/setupwindow.h"
@@ -215,6 +217,8 @@ void SkillDialog::update()
         if (info && info->modifiable == Modifiable_true)
             info->update();
     }
+
+    skillPopup->reset();
 }
 
 void SkillDialog::updateModels()
