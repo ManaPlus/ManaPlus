@@ -76,6 +76,11 @@ void StatusEffectDB::load()
         SkipError_true);
     loadXmlDir("statusEffectsPatchDir", loadXmlFile);
 
+    if (!blockIdToIdMap.empty())
+    {
+        reportAlways("Detected legacy attribute block-id "
+            "in status-effects.xml");
+    }
     mLoaded = true;
 }
 
