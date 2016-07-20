@@ -648,16 +648,6 @@ void EquipmentWindow::fillBoxes()
         {
             loadPage(node);
         }
-        else if (xmlNameEqual(node, "playerbox"))
-        {
-            addDefaultPage();
-            loadPlayerBox(node, 0);
-        }
-        else if (xmlNameEqual(node, "slot"))
-        {
-            addDefaultPage();
-            loadSlot(node, mImageSet, 0);
-        }
     }
     delete doc;
 }
