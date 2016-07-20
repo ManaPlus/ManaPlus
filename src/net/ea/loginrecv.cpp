@@ -138,7 +138,8 @@ void LoginRecv::processLoginError(Net::MessageIn &msg)
             break;
         case 5:
             // TRANSLATORS: error message
-            errorMessage = _("Client too old or wrong server type.");
+            errorMessage = _("Client too old or wrong server type.\n"
+                "Please update client on http://manaplus.org");
             break;
         case 6:
             // TRANSLATORS: error message
