@@ -9,7 +9,7 @@ export LOG="logs/icccheck.log"
 mkdir logs
 rm ${LOG}
 
-find $DIR -type f -name "*.png" -exec ./tools/ci/scripts/icccheckfile.sh {} \; >${LOG}
+find -H $DIR -type f -name "*.png" -exec ./tools/ci/scripts/icccheckfile.sh {} \; >${LOG}
 check_error $?
 
 export RES=$(cat ${LOG})

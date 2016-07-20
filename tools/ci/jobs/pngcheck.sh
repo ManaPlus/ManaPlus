@@ -10,7 +10,7 @@ export LOG2="pngcheck2.log"
 rm ${LOG1}
 rm ${LOG2}
 
-find data -type f -name "*.png" -exec pngcheck {} \; >${LOG1}
+find -H . -type f -name "*.png" -exec pngcheck {} \; >${LOG1}
 
 grep -v "32-bit RGB+alpha, non-interlaced, " ${LOG1} >${LOG2}
 export DATA=$(cat pngcheck2.log)
