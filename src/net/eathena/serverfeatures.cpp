@@ -37,7 +37,7 @@ ServerFeatures::ServerFeatures()
 
 bool ServerFeatures::haveServerOnlineList() const
 {
-    return serverVersion >= 5;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveOnlineList() const
@@ -62,7 +62,7 @@ bool ServerFeatures::haveServerHp() const
 
 bool ServerFeatures::havePlayerStatusUpdate() const
 {
-    return serverVersion >= 5;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveBrokenPlayerAttackDistance() const
@@ -202,12 +202,12 @@ bool ServerFeatures::haveCart() const
 
 bool ServerFeatures::haveTalkPet() const
 {
-    return serverVersion >= 5;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveMovePet() const
 {
-    return serverVersion >= 5;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveServerWarpNames() const
