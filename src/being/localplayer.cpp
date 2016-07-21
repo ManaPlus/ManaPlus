@@ -157,7 +157,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mTestParticleName(),
     mTestParticleTime(0),
     mTestParticleHash(0L),
-    mSyncPlayerMoveDistance(config.getBoolValue("syncPlayerMoveDistance")),
+    mSyncPlayerMoveDistance(config.getIntValue("syncPlayerMoveDistance")),
     mUnfreezeTime(0),
     mWalkingDir(0),
     mUpdateName(true),
@@ -2524,7 +2524,7 @@ void LocalPlayer::setRealPos(const int x, const int y)
         {
             mCrossX = x;
             mCrossY = y;
-            fixPos();
+            //fixPos();
         }
     }
     if (mMap->isCustom())
