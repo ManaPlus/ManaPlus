@@ -2524,7 +2524,6 @@ void LocalPlayer::setRealPos(const int x, const int y)
         {
             mCrossX = x;
             mCrossY = y;
-            //fixPos();
         }
     }
     if (mMap->isCustom())
