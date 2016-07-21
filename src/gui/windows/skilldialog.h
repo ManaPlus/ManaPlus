@@ -34,6 +34,8 @@
 
 #include "listeners/actionlistener.h"
 
+#include "utils/xml.h"
+
 class Being;
 class Button;
 class Label;
@@ -164,6 +166,11 @@ class SkillDialog final : public Window,
 
     private:
         void addSkillDuration(SkillInfo *const skill);
+
+        void loadSkillData(XmlNodePtr node,
+                           const std::string &name,
+                           SkillInfo *const skill,
+                           const int level);
 
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;

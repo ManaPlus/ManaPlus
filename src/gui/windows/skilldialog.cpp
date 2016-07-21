@@ -367,56 +367,9 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                         mSkills[id] = skill;
                     }
 
-                    std::string icon = XML::getProperty(node, "icon", "");
                     const int level = (skill->alwaysVisible == Visible_true)
                         ? 0 : XML::getProperty(node, "level", 0);
-                    SkillData *data = skill->getData(level);
-                    if (!data)
-                        data = new SkillData;
-
-                    data->name = name;
-                    data->setIcon(icon);
-                    if (skill->id < SKILL_VAR_MIN_ID)
-                    {
-                        data->dispName = strprintf("%s, %u",
-                            name.c_str(), skill->id);
-                    }
-                    else
-                    {
-                        data->dispName = strprintf("%s, (%u)",
-                            name.c_str(), skill->id - SKILL_VAR_MIN_ID);
-                    }
-                    data->shortName = XML::langProperty(node,
-                        "shortName", name.substr(0, 3));
-                    data->description = XML::langProperty(
-                        node, "description", "");
-                    data->particle = XML::getProperty(
-                        node, "particle", "");
-                    data->castingAnimation = XML::getProperty(
-                        node,
-                        "castingAnimation",
-                        paths.getStringValue("skillCastingAnimation"));
-
-                    data->soundHit.sound = XML::getProperty(
-                        node, "soundHit", "");
-                    data->soundHit.delay = XML::getProperty(
-                        node, "soundHitDelay", 0);
-                    data->soundMiss.sound = XML::getProperty(
-                        node, "soundMiss", "");
-                    data->soundMiss.delay = XML::getProperty(
-                        node, "soundMissDelay", 0);
-                    data->invokeCmd = XML::getProperty(
-                        node, "invokeCmd", "");
-                    data->updateEffectId = XML::getProperty(
-                        node, "levelUpEffectId", -1);
-                    data->removeEffectId = XML::getProperty(
-                        node, "removeEffectId", -1);
-                    data->hitEffectId = XML::getProperty(
-                        node, "hitEffectId", -1);
-                    data->missEffectId = XML::getProperty(
-                        node, "missEffectId", -1);
-
-                    skill->addData(level, data);
+                    loadSkillData(node, name, skill, level);
                 }
             }
 
@@ -436,6 +389,63 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
             mTabs->addTab(tab, scroll);
         }
     }
+}
+
+void SkillDialog::loadSkillData(XmlNodePtr node,
+                                const std::string &name,
+                                SkillInfo *const skill,
+                                const int level)
+{
+    SkillData *data = skill->getData(level);
+    if (!data)
+        data = new SkillData;
+
+    data->name = name;
+    const std::string icon = XML::getProperty(node, "icon", "");
+    data->setIcon(icon);
+    if (skill->id < SKILL_VAR_MIN_ID)
+    {
+        data->dispName = strprintf("%s, %u",
+            name.c_str(),
+            skill->id);
+    }
+    else
+    {
+        data->dispName = strprintf("%s, (%u)",
+            name.c_str(),
+            skill->id - SKILL_VAR_MIN_ID);
+    }
+    data->shortName = XML::langProperty(node,
+        "shortName", name.substr(0, 3));
+    data->description = XML::langProperty(
+        node, "description", "");
+    data->particle = XML::getProperty(
+        node, "particle", "");
+    data->castingAnimation = XML::getProperty(
+        node,
+        "castingAnimation",
+        paths.getStringValue("skillCastingAnimation"));
+
+    data->soundHit.sound = XML::getProperty(
+        node, "soundHit", "");
+    data->soundHit.delay = XML::getProperty(
+        node, "soundHitDelay", 0);
+    data->soundMiss.sound = XML::getProperty(
+        node, "soundMiss", "");
+    data->soundMiss.delay = XML::getProperty(
+        node, "soundMissDelay", 0);
+    data->invokeCmd = XML::getProperty(
+        node, "invokeCmd", "");
+    data->updateEffectId = XML::getProperty(
+        node, "levelUpEffectId", -1);
+    data->removeEffectId = XML::getProperty(
+        node, "removeEffectId", -1);
+    data->hitEffectId = XML::getProperty(
+        node, "hitEffectId", -1);
+    data->missEffectId = XML::getProperty(
+        node, "missEffectId", -1);
+
+    skill->addData(level, data);
 }
 
 void SkillDialog::removeSkill(const int id)
