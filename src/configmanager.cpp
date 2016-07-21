@@ -413,7 +413,9 @@ void ConfigManager::checkConfigVersion()
     if (version < 13)
         config.setValue("keyWindowBotChecker", -1);
 
-    config.setValue("cfgver", 13);
+    if (version < 14 && config.getIntValue("syncPlayerMoveDistance") == 2)
+        config.setValue("syncPlayerMoveDistance", 5);
+    config.setValue("cfgver", 14);
 }
 
 #undef unassignKey

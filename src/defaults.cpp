@@ -103,7 +103,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("followMode", 0);
     AddDEF("imitationMode", 0);
     AddDEF("syncPlayerMove", true);
-    AddDEF("syncPlayerMoveDistance", 2);
+    AddDEF("syncPlayerMoveDistance", 5);
     AddDEF("drawPath", false);
     AddDEF("moveToTargetType", 10);
     AddDEF("crazyMoveProgram", "mumrsonmdmlon");
@@ -359,7 +359,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("uselonglivesprites", false);
     AddDEF("uselonglivesounds", true);
     AddDEF("screenDensity", 0);
-    AddDEF("cfgver", 13);
+    AddDEF("cfgver", 14);
     AddDEF("enableDebugLog", false);
     AddDEF("doubleClick", true);
     AddDEF("useDiagonalSpeed", true);
