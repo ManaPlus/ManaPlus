@@ -26,7 +26,6 @@
 #include "gui/widgets/window.h"
 
 #include "enums/simpletypes/autotarget.h"
-#include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/modifiable.h"
 
 #include "enums/resources/skillowner.h"
