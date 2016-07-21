@@ -167,10 +167,11 @@ class SkillDialog final : public Window,
     private:
         void addSkillDuration(SkillInfo *const skill);
 
+        SkillInfo *loadSkill(XmlNodePtr node,
+                             SkillModel *const model);
+
         void loadSkillData(XmlNodePtr node,
-                           const std::string &name,
-                           SkillInfo *const skill,
-                           const int level);
+                           SkillInfo *const skill);
 
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;

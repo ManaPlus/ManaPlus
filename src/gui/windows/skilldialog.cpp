@@ -310,7 +310,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                 // TRANSLATORS: skills dialog default skill tab
                 strprintf(_("Skill Set %d"), setCount));
 
-            SkillModel *const model = new SkillModel();
+            SkillModel *const model = new SkillModel;
             if (!mDefaultModel)
                 mDefaultModel = model;
 
@@ -318,58 +318,15 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
             {
                 if (xmlNameEqual(node, "skill"))
                 {
-                    int id = XML::getIntProperty(node, "id", -1, -1, 1000000);
-                    if (id == -1)
+                    SkillInfo *const skill = loadSkill(node, model);
+                    if (skill == nullptr)
+                        continue;
+                    for_each_xml_child_node(levelNode, node)
                     {
-                        id = XML::getIntProperty(node, "var", -1, -1, 100000);
-                        if (id == -1)
+                        if (!xmlNameEqual(levelNode, "level"))
                             continue;
-                        id += SKILL_VAR_MIN_ID;
+                        loadSkillData(node, skill);
                     }
-
-                    std::string name = XML::langProperty(node, "name",
-                        // TRANSLATORS: skills dialog. skill id
-                        strprintf(_("Skill %d"), id));
-
-                    SkillInfo *skill = getSkill(id);
-                    if (!skill)
-                    {
-                        skill = new SkillInfo;
-                        skill->id = CAST_U32(id);
-                        skill->modifiable = Modifiable_false;
-                        skill->model = model;
-                        skill->update();
-                        skill->useButton = XML::getProperty(
-                            // TRANSLATORS: skills dialog button
-                            node, "useButton", _("Use"));
-                        skill->owner = parseOwner(XML::getProperty(
-                            node, "owner", "player"));
-                        skill->errorText = XML::getProperty(
-                            node, "errorText", name);
-                        skill->alwaysVisible = fromBool(XML::getBoolProperty(
-                            node, "alwaysVisible", false), Visible);
-                        skill->castingSrcEffectId = XML::getProperty(
-                            node, "castingSrcEffectId", -1);
-                        skill->castingDstEffectId = XML::getProperty(
-                            node, "castingDstEffectId", -1);
-                        skill->castingAction = XML::getProperty(node,
-                            "castingAction", SpriteAction::CAST);
-                        skill->castingRideAction = XML::getProperty(node,
-                            "castingRideAction", SpriteAction::CASTRIDE);
-                        skill->castingSkyAction = XML::getProperty(node,
-                            "castingSkyAction", SpriteAction::CASTSKY);
-                        skill->castingWaterAction = XML::getProperty(node,
-                            "castingWaterAction", SpriteAction::CASTWATER);
-                        skill->useTextParameter = XML::getBoolProperty(
-                            node, "useTextParameter", false);
-                        skill->visible = skill->alwaysVisible;
-                        model->addSkill(skill);
-                        mSkills[id] = skill;
-                    }
-
-                    const int level = (skill->alwaysVisible == Visible_true)
-                        ? 0 : XML::getProperty(node, "level", 0);
-                    loadSkillData(node, name, skill, level);
                 }
             }
 
@@ -391,15 +348,76 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
     }
 }
 
-void SkillDialog::loadSkillData(XmlNodePtr node,
-                                const std::string &name,
-                                SkillInfo *const skill,
-                                const int level)
+SkillInfo *SkillDialog::loadSkill(XmlNodePtr node,
+                                  SkillModel *const model)
 {
+    int id = XML::getIntProperty(node, "id", -1, -1, 1000000);
+    if (id == -1)
+    {
+        id = XML::getIntProperty(node, "var", -1, -1, 100000);
+        if (id == -1)
+            return nullptr;
+        id += SKILL_VAR_MIN_ID;
+    }
+
+    std::string name = XML::langProperty(node, "name",
+        // TRANSLATORS: skills dialog. skill id
+        strprintf(_("Skill %d"), id));
+
+    SkillInfo *skill = getSkill(id);
+    if (!skill)
+    {
+        skill = new SkillInfo;
+        skill->id = CAST_U32(id);
+        skill->modifiable = Modifiable_false;
+        skill->model = model;
+        skill->update();
+        skill->useButton = XML::getProperty(
+            // TRANSLATORS: skills dialog button
+            node, "useButton", _("Use"));
+        skill->owner = parseOwner(XML::getProperty(
+            node, "owner", "player"));
+        skill->errorText = XML::getProperty(
+            node, "errorText", name);
+        skill->alwaysVisible = fromBool(XML::getBoolProperty(
+            node, "alwaysVisible", false), Visible);
+        skill->castingSrcEffectId = XML::getProperty(
+            node, "castingSrcEffectId", -1);
+        skill->castingDstEffectId = XML::getProperty(
+            node, "castingDstEffectId", -1);
+        skill->castingAction = XML::getProperty(node,
+            "castingAction", SpriteAction::CAST);
+        skill->castingRideAction = XML::getProperty(node,
+            "castingRideAction", SpriteAction::CASTRIDE);
+        skill->castingSkyAction = XML::getProperty(node,
+            "castingSkyAction", SpriteAction::CASTSKY);
+        skill->castingWaterAction = XML::getProperty(node,
+            "castingWaterAction", SpriteAction::CASTWATER);
+        skill->useTextParameter = XML::getBoolProperty(
+            node, "useTextParameter", false);
+        skill->visible = skill->alwaysVisible;
+        model->addSkill(skill);
+        mSkills[id] = skill;
+    }
+
+    loadSkillData(node, skill);
+    return skill;
+}
+
+void SkillDialog::loadSkillData(XmlNodePtr node,
+                                SkillInfo *const skill)
+{
+    if (!skill)
+        return;
+    const int level = (skill->alwaysVisible == Visible_true) ?
+        0 : XML::getProperty(node, "level", 0);
     SkillData *data = skill->getData(level);
     if (!data)
         data = new SkillData;
 
+    const std::string name = XML::langProperty(node, "name",
+        // TRANSLATORS: skills dialog. skill id
+        strprintf(_("Skill %u"), skill->id));
     data->name = name;
     const std::string icon = XML::getProperty(node, "icon", "");
     data->setIcon(icon);
