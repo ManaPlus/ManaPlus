@@ -2117,7 +2117,6 @@ void LocalPlayer::updateCoords()
                     break;
                 }
             }
-
             if (mDrawPath && mShowNavigePath)
             {
                 tmpLayer->clean();
@@ -2584,6 +2583,11 @@ void LocalPlayer::updateNavigateList()
             }
         }
     }
+}
+
+void LocalPlayer::failMove(const int x A_UNUSED,
+                           const int y A_UNUSED)
+{
 }
 
 void LocalPlayer::waitFor(const std::string &nick)

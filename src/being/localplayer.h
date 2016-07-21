@@ -425,6 +425,9 @@ class LocalPlayer final : public Being,
 
         void freezeMoving(const int timeWaitTicks);
 
+        void failMove(const int x,
+                      const int y);
+
     protected:
         void updateCoords() override final;
 
@@ -523,6 +526,7 @@ class LocalPlayer final : public Being,
         bool mShowNavigePath;
         bool mAllowRename;
         bool mFreezed;
+        bool mAllowNextStep;
 };
 
 extern LocalPlayer *localPlayer;

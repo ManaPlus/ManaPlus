@@ -40,6 +40,7 @@ namespace EAthena
         void processPlayerHeal(Net::MessageIn &msg);
         void processPlayerSkillMessage(Net::MessageIn &msg);
         void processWalkResponse(Net::MessageIn &msg);
+        void processWalkError(Net::MessageIn &msg);
         void processNotifyMapInfo(Net::MessageIn &msg);
         void processPlayerFameBlacksmith(Net::MessageIn &msg);
         void processPlayerFameAlchemist(Net::MessageIn &msg);

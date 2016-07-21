@@ -220,6 +220,15 @@ void PlayerRecv::processWalkResponse(Net::MessageIn &msg)
     BLOCK_END("PlayerRecv::processWalkResponse")
 }
 
+void PlayerRecv::processWalkError(Net::MessageIn &msg)
+{
+    msg.readInt32("tick");
+    const int x = msg.readInt16("x");
+    const int y = msg.readInt16("y");
+    if (localPlayer)
+        localPlayer->failMove(x, y);
+}
+
 void PlayerRecv::processPvpInfo(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
