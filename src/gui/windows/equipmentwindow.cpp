@@ -650,6 +650,8 @@ void EquipmentWindow::fillBoxes()
         }
     }
     delete doc;
+    if (reportTrue(mPages.empty()))
+        fillDefault();
 }
 
 void EquipmentWindow::addDefaultPage()
