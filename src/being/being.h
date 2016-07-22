@@ -209,6 +209,10 @@ class Being notfinal : public ActorSprite,
                           const int damage,
                           const int attackId = 1) restrict2;
 
+        void handleSkillCasting(Being *restrict const victim,
+                                const int skillId,
+                                const int skillLevel) restrict2;
+
         void handleSkill(Being *restrict const victim,
                          const int damage,
                          const int skillId,

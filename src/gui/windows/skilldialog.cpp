@@ -439,6 +439,8 @@ void SkillDialog::loadSkillData(XmlNodePtr node,
         node, "description", "");
     data->particle = XML::getProperty(
         node, "particle", "");
+    data->castingParticle = XML::getProperty(
+        node, "castingParticle", "");
     data->castingAnimation = XML::getProperty(
         node,
         "castingAnimation",

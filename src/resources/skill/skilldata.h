@@ -35,6 +35,7 @@ struct SkillData final
     std::string description;
 
     std::string particle;
+    std::string castingParticle;
     std::string invokeCmd;
     std::string castingAnimation;
 

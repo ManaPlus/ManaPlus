@@ -38,6 +38,7 @@ SkillData::SkillData() :
     dispName(),
     description(),
     particle(),
+    castingParticle(),
     invokeCmd(),
     castingAnimation(),
     soundHit(std::string(), 0),

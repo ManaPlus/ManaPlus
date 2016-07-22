@@ -980,9 +980,7 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
     {   // being to being
         Being *const dstBeing = actorManager->findBeing(dstId);
         if (srcBeing)
-            srcBeing->setAction(BeingAction::CAST, skillId);
-        skillDialog->playCastingSrcEffect(skillId, srcBeing);
-        skillDialog->playCastingDstEffect(skillId, dstBeing);
+            srcBeing->handleSkillCasting(dstBeing, skillId, skillLevel);
     }
     else if (dstX != 0 || dstY != 0)
     {   // being to position

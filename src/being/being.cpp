@@ -1019,6 +1019,25 @@ void Being::handleAttack(Being *restrict const victim,
     BLOCK_END("Being::handleAttack")
 }
 
+void Being::handleSkillCasting(Being *restrict const victim,
+                               const int skillId,
+                               const int skillLevel) restrict2
+{
+    if (!victim || !mInfo || !skillDialog)
+        return;
+
+    setAction(BeingAction::CAST, skillId);
+
+    skillDialog->playCastingSrcEffect(skillId, this);
+    skillDialog->playCastingDstEffect(skillId, victim);
+
+    const SkillData *restrict const data = skillDialog->getSkillDataByLevel(
+        skillId,
+        skillLevel);
+    if (data)
+        fireMissile(victim, data->castingParticle);
+}
+
 void Being::handleSkill(Being *restrict const victim,
                         const int damage,
                         const int skillId,
