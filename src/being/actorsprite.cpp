@@ -34,7 +34,6 @@
 #include "listeners/debugmessagelistener.h"
 
 #include "particle/particle.h"
-#include "particle/particleengine.h"
 
 #include "resources/db/statuseffectdb.h"
 
