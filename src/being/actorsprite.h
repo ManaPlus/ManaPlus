@@ -81,9 +81,14 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
         { return BlockType::NONE; }
 
         /**
-         * Take control of a particle.
+         * Take control of a particle. Particle can be auto deleted.
          */
-        void controlParticle(Particle *const particle);
+        void controlAutoParticle(Particle *const particle);
+
+        /**
+         * Take control of a particle. Owner must remove particle by self.
+         */
+        void controlCustomParticle(Particle *const particle);
 
         /**
          * Returns the required size of a target cursor for this being.
@@ -189,6 +194,8 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
             return mStatusParticleEffects.size() +
                 mChildParticleEffects.size();
         }
+
+        void controlParticleDeleted(Particle *const particle);
 
     protected:
         /**

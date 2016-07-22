@@ -44,8 +44,6 @@ void ParticleList::addLocally(Particle *const particle)
 {
     if (particle)
     {
-        // The effect may not die without the beings permission or we segfault
-        particle->disableAutoDelete();
         mElements.push_back(particle);
         mSize ++;
     }
@@ -74,7 +72,10 @@ void ParticleList::removeLocally(const Particle *const particle)
 void ParticleList::clearLocally()
 {
     FOR_EACH (ParticleListCIter, it, mElements)
+    {
         (*it)->kill();
+        (*it)->prepareToDie();
+    }
 
     mElements.clear();
     mSize = 0U;

@@ -1349,7 +1349,7 @@ void Being::fireMissile(Being *restrict const victim,
     {
         target->moveBy(Vector(0.0F, 0.0F, 32.0F));
         target->setLifetime(1000);
-        victim->controlParticle(target);
+        victim->controlAutoParticle(target);
 
         missile->setDestination(target, 7, 0);
         missile->setDieDistance(8);
@@ -4849,7 +4849,7 @@ void Being::addItemParticles(const int id,
         FOR_EACH (StringVectCIter, itr, display.particles)
         {
             Particle *const p = particleEngine->addEffect(*itr, 0, 0);
-            controlParticle(p);
+            controlCustomParticle(p);
             pi->files.push_back(*itr);
             pi->particles.push_back(p);
         }
@@ -4893,7 +4893,7 @@ void Being::recreateItemParticles() restrict2
             {
                 Particle *const p = particleEngine->addEffect(
                     *str, 0, 0);
-                controlParticle(p);
+                controlCustomParticle(p);
                 pi->particles.push_back(p);
             }
         }

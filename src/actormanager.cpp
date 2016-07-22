@@ -405,6 +405,21 @@ Being *ActorManager::findBeing(const BeingId id) const
     return nullptr;
 }
 
+ActorSprite *ActorManager::findActor(const BeingId id) const
+{
+    const ActorSpritesMapConstIterator it = mActorsIdMap.find(id);
+    if (it != mActorsIdMap.end())
+    {
+        ActorSprite *const actor = (*it).second;
+        if (actor &&
+            actor->getId() == id)
+        {
+            return actor;
+        }
+    }
+    return nullptr;
+}
+
 Being *ActorManager::findBeing(const int x, const int y,
                                const ActorTypeT type) const
 {

@@ -2709,7 +2709,7 @@ void LocalPlayer::setTestParticle(const std::string &fileName,
     if (!fileName.empty())
     {
         mTestParticle = particleEngine->addEffect(fileName, 0, 0, 0);
-        controlParticle(mTestParticle);
+        controlCustomParticle(mTestParticle);
         if (updateHash)
             mTestParticleHash = UpdaterWindow::getFileHash(mTestParticleName);
     }

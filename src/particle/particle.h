@@ -28,6 +28,8 @@
 #include "enums/particle/alivestatus.h"
 #include "enums/particle/particletype.h"
 
+#include "enums/simpletypes/beingid.h"
+
 #include "particle/particleengine.h"
 
 #include "localconsts.h"
@@ -238,6 +240,9 @@ class Particle notfinal : public Actor
                                     const signed char conditions) restrict2
         { mDeathEffect = effectFile; mDeathEffectConditions = conditions; }
 
+        void setActor(const BeingId actor)
+        { mActor = actor; }
+
     protected:
         void updateSelf() restrict2;
 
@@ -269,6 +274,8 @@ class Particle notfinal : public Actor
 
         /**< The image used for this particle. */
         Image *restrict mImage;
+
+        BeingId mActor;
 
     private:
         // List of child emitters.

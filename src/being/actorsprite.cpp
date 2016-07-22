@@ -33,6 +33,7 @@
 
 #include "listeners/debugmessagelistener.h"
 
+#include "particle/particle.h"
 #include "particle/particleengine.h"
 
 #include "resources/db/statuseffectdb.h"
@@ -141,9 +142,29 @@ void ActorSprite::setMap(Map *const map)
     mMustResetParticles = true;  // Reset status particles on next redraw
 }
 
-void ActorSprite::controlParticle(Particle *const particle)
+void ActorSprite::controlAutoParticle(Particle *const particle)
 {
-    mChildParticleEffects.addLocally(particle);
+    if (particle)
+    {
+        particle->setActor(mId);
+        mChildParticleEffects.addLocally(particle);
+    }
+}
+
+void ActorSprite::controlCustomParticle(Particle *const particle)
+{
+    if (particle)
+    {
+        // The effect may not die without the beings permission or we segfault
+        particle->disableAutoDelete();
+        mChildParticleEffects.addLocally(particle);
+    }
+}
+
+void ActorSprite::controlParticleDeleted(Particle *const particle)
+{
+    if (particle)
+        mChildParticleEffects.removeLocally(particle);
 }
 
 void ActorSprite::setTargetType(const TargetCursorTypeT type)
@@ -456,7 +477,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
         FOR_EACH (StringVectCIter, itr, display.particles)
         {
             Particle *const p = particleEngine->addEffect(*itr, 0, 0);
-            controlParticle(p);
+            controlAutoParticle(p);
         }
     }
 

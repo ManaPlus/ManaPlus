@@ -22,7 +22,10 @@
 
 #include "particle/particle.h"
 
+#include "actormanager.h"
 #include "logger.h"
+
+#include "being/actorsprite.h"
 
 #include "particle/animationparticle.h"
 #include "particle/particleemitter.h"
@@ -61,6 +64,7 @@ Particle::Particle() :
     mType(ParticleType::Normal),
     mAnimation(nullptr),
     mImage(nullptr),
+    mActor(BeingId_zero),
     mChildEmitters(),
     mChildParticles(),
     mChildMoveParticles(),
@@ -82,6 +86,13 @@ Particle::Particle() :
 
 Particle::~Particle()
 {
+    if (mActor != BeingId_zero &&
+        actorManager)
+    {
+        ActorSprite *const actor = actorManager->findActor(mActor);
+        if (actor)
+            actor->controlParticleDeleted(this);
+    }
     // Delete child emitters and child particles
     clear();
     delete2(mAnimation);

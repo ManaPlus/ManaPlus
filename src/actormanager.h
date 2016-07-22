@@ -124,6 +124,8 @@ class ActorManager final: public ConfigListener
          */
         Being *findBeing(const BeingId id) const A_WARN_UNUSED;
 
+        ActorSprite *findActor(const BeingId id) const A_WARN_UNUSED;
+
         /**
          * Returns a being at specific coordinates.
          */

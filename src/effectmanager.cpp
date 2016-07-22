@@ -134,7 +134,7 @@ bool EffectManager::trigger(const int id,
             {
                 Particle *const selfFX = particleEngine->addEffect(
                     effect.gfx, 0, 0, rotation);
-                being->controlParticle(selfFX);
+                being->controlAutoParticle(selfFX);
             }
             if (!effect.sfx.empty())
                 soundManager.playSfx(effect.sfx);
@@ -165,7 +165,7 @@ Particle *EffectManager::triggerReturn(const int id,
             {
                 rValue = particleEngine->addEffect(
                     effect.gfx, 0, 0, rotation);
-                being->controlParticle(rValue);
+                being->controlCustomParticle(rValue);
             }
             if (!effect.sfx.empty())
                 soundManager.playSfx(effect.sfx);
