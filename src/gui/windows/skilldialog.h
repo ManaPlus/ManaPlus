@@ -128,6 +128,12 @@ class SkillDialog final : public Window,
 
         void playRemoveEffect(const int id) const;
 
+        void playSrcEffect(const int id,
+                           Being *const being) const;
+
+        void playDstEffect(const int id,
+                           Being *const being) const;
+
         void playCastingSrcEffect(const int id,
                                   Being *const being) const;
 

@@ -523,6 +523,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("completeQuestEffectId", -1);
     AddDEF("skillLevelUpEffectId", -1);
     AddDEF("skillRemoveEffectId", -1);
+    AddDEF("skillSrcEffectId", -1);
+    AddDEF("skillDstEffectId", -1);
     AddDEF("skillCastingSrcEffectId", -1);
     AddDEF("skillCastingDstEffectId", -1);
     AddDEF("skillCastingGroundEffectId", -1);

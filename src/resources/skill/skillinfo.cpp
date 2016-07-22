@@ -56,6 +56,8 @@ SkillInfo::SkillInfo() :
     cooldown(0),
     castingSrcEffectId(-1),
     castingDstEffectId(-1),
+    srcEffectId(-1),
+    dstEffectId(-1),
     type(SkillType::Unknown),
     owner(SkillOwner::Player),
     modifiable(Modifiable_false),

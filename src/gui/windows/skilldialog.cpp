@@ -385,6 +385,10 @@ SkillInfo *SkillDialog::loadSkill(XmlNodePtr node,
             node, "castingSrcEffectId", -1);
         skill->castingDstEffectId = XML::getProperty(
             node, "castingDstEffectId", -1);
+        skill->srcEffectId = XML::getProperty(
+            node, "srcEffectId", -1);
+        skill->dstEffectId = XML::getProperty(
+            node, "dstEffectId", -1);
         skill->castingAction = XML::getProperty(node,
             "castingAction", SpriteAction::CAST);
         skill->castingRideAction = XML::getProperty(node,
@@ -733,6 +737,31 @@ void SkillDialog::playCastingDstEffect(const int id,
         paths.getIntValue("skillCastingDstEffectId"));
 }
 
+void SkillDialog::playSrcEffect(const int id,
+                                Being *const being) const
+{
+    if (!effectManager)
+        return;
+    SkillInfo *const info = getSkill(id);
+    if (!info)
+        return;
+    effectManager->triggerDefault(info->srcEffectId,
+        being,
+        paths.getIntValue("skillSrcEffectId"));
+}
+
+void SkillDialog::playDstEffect(const int id,
+                                Being *const being) const
+{
+    if (!effectManager)
+        return;
+    SkillInfo *const info = getSkill(id);
+    if (!info)
+        return;
+    effectManager->triggerDefault(info->dstEffectId,
+        being,
+        paths.getIntValue("skillDstEffectId"));
+}
 
 void SkillDialog::playCastingDstTileEffect(const int id,
                                            const int x,

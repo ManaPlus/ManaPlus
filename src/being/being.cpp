@@ -1052,6 +1052,9 @@ void Being::handleSkill(Being *restrict const victim,
     if (data)
         fireMissile(victim, data->particle);
 
+    skillDialog->playSrcEffect(skillId, this);
+    skillDialog->playDstEffect(skillId, victim);
+
     if (this != localPlayer && skill)
     {
         const SkillType::SkillType type = skill->type;
