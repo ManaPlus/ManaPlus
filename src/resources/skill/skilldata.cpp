@@ -50,6 +50,7 @@ SkillData::SkillData() :
     missEffectId(-1),
     castingSrcEffectId(-1),
     castingDstEffectId(-1),
+    castingGroundEffectId(-1),
     srcEffectId(-1),
     dstEffectId(-1)
 {

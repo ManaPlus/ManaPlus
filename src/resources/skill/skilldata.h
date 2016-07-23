@@ -50,6 +50,7 @@ struct SkillData final
     int missEffectId;
     int castingSrcEffectId;
     int castingDstEffectId;
+    int castingGroundEffectId;
     int srcEffectId;
     int dstEffectId;
 

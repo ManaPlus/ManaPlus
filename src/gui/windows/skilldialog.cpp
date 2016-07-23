@@ -468,6 +468,8 @@ void SkillDialog::loadSkillData(XmlNodePtr node,
         node, "srcEffectId", -1);
     data->dstEffectId = XML::getProperty(
         node, "dstEffectId", -1);
+    data->castingGroundEffectId = XML::getProperty(
+        node, "castingGroundEffectId", -1);
 
     skill->addData(level, data);
 }
@@ -723,7 +725,7 @@ void SkillDialog::playCastingDstTileEffect(const int id,
     SkillData *const data = getSkillDataByLevel(id, level);
     if (!data)
         return;
-    effectManager->triggerDefault(data->castingDstEffectId,
+    effectManager->triggerDefault(data->castingGroundEffectId,
         x * 32,
         y * 32,
         cur_time + delay / 1000,  // end time in seconds
