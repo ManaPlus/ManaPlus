@@ -981,6 +981,15 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
         Being *const dstBeing = actorManager->findBeing(dstId);
         if (srcBeing)
             srcBeing->handleSkillCasting(dstBeing, skillId, skillLevel);
+        if (dstBeing)
+        {
+            srcBeing->addCast(dstBeing->getTileX(),
+                dstBeing->getTileY(),
+                skillId,
+                skillLevel,
+                range,
+                castTime / MILLISECONDS_IN_A_TICK);
+        }
     }
     else if (dstX != 0 || dstY != 0)
     {   // being to position
