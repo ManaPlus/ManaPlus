@@ -987,6 +987,7 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
         if (srcBeing)
             srcBeing->setAction(BeingAction::CAST, skillId);
         skillDialog->playCastingDstTileEffect(skillId,
+            skillLevel,
             dstX, dstY,
             castTime);
         srcBeing->addCast(dstX, dstY,

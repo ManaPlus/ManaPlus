@@ -1028,14 +1028,20 @@ void Being::handleSkillCasting(Being *restrict const victim,
 
     setAction(BeingAction::CAST, skillId);
 
-    skillDialog->playCastingSrcEffect(skillId, this);
-    skillDialog->playCastingDstEffect(skillId, victim);
-
     const SkillData *restrict const data = skillDialog->getSkillDataByLevel(
         skillId,
         skillLevel);
+
     if (data)
+    {
+        effectManager->triggerDefault(data->castingSrcEffectId,
+            this,
+            paths.getIntValue("skillCastingSrcEffectId"));
+        effectManager->triggerDefault(data->castingDstEffectId,
+            victim,
+            paths.getIntValue("skillCastingDstEffectId"));
         fireMissile(victim, data->castingParticle);
+    }
 }
 
 void Being::handleSkill(Being *restrict const victim,
@@ -1050,10 +1056,15 @@ void Being::handleSkill(Being *restrict const victim,
     const SkillData *restrict const data = skill
         ? skill->getData1(skillLevel) : nullptr;
     if (data)
+    {
+        effectManager->triggerDefault(data->srcEffectId,
+            this,
+            paths.getIntValue("skillSrcEffectId"));
+        effectManager->triggerDefault(data->dstEffectId,
+            victim,
+            paths.getIntValue("skillDstEffectId"));
         fireMissile(victim, data->particle);
-
-    skillDialog->playSrcEffect(skillId, this);
-    skillDialog->playDstEffect(skillId, victim);
+    }
 
     if (this != localPlayer && skill)
     {

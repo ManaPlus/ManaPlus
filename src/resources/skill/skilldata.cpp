@@ -47,7 +47,11 @@ SkillData::SkillData() :
     updateEffectId(-1),
     removeEffectId(-1),
     hitEffectId(-1),
-    missEffectId(-1)
+    missEffectId(-1),
+    castingSrcEffectId(-1),
+    castingDstEffectId(-1),
+    srcEffectId(-1),
+    dstEffectId(-1)
 {
 }
 

@@ -48,6 +48,10 @@ struct SkillData final
     int removeEffectId;
     int hitEffectId;
     int missEffectId;
+    int castingSrcEffectId;
+    int castingDstEffectId;
+    int srcEffectId;
+    int dstEffectId;
 
     SkillData();
     A_DELETE_COPY(SkillData)

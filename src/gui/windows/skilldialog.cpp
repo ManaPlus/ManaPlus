@@ -381,14 +381,6 @@ SkillInfo *SkillDialog::loadSkill(XmlNodePtr node,
             node, "errorText", name);
         skill->alwaysVisible = fromBool(XML::getBoolProperty(
             node, "alwaysVisible", false), Visible);
-        skill->castingSrcEffectId = XML::getProperty(
-            node, "castingSrcEffectId", -1);
-        skill->castingDstEffectId = XML::getProperty(
-            node, "castingDstEffectId", -1);
-        skill->srcEffectId = XML::getProperty(
-            node, "srcEffectId", -1);
-        skill->dstEffectId = XML::getProperty(
-            node, "dstEffectId", -1);
         skill->castingAction = XML::getProperty(node,
             "castingAction", SpriteAction::CAST);
         skill->castingRideAction = XML::getProperty(node,
@@ -468,6 +460,14 @@ void SkillDialog::loadSkillData(XmlNodePtr node,
         node, "hitEffectId", -1);
     data->missEffectId = XML::getProperty(
         node, "missEffectId", -1);
+    data->castingSrcEffectId = XML::getProperty(
+        node, "castingSrcEffectId", -1);
+    data->castingDstEffectId = XML::getProperty(
+        node, "castingDstEffectId", -1);
+    data->srcEffectId = XML::getProperty(
+        node, "srcEffectId", -1);
+    data->dstEffectId = XML::getProperty(
+        node, "dstEffectId", -1);
 
     skill->addData(level, data);
 }
@@ -712,68 +712,18 @@ void SkillDialog::playRemoveEffect(const int id) const
         paths.getIntValue("skillRemoveEffectId"));
 }
 
-void SkillDialog::playCastingSrcEffect(const int id, Being *const being) const
-{
-    if (!effectManager)
-        return;
-    SkillInfo *const info = getSkill(id);
-    if (!info)
-        return;
-    effectManager->triggerDefault(info->castingSrcEffectId,
-        being,
-        paths.getIntValue("skillCastingSrcEffectId"));
-}
-
-void SkillDialog::playCastingDstEffect(const int id,
-                                       Being *const being) const
-{
-    if (!effectManager)
-        return;
-    SkillInfo *const info = getSkill(id);
-    if (!info)
-        return;
-    effectManager->triggerDefault(info->castingDstEffectId,
-        being,
-        paths.getIntValue("skillCastingDstEffectId"));
-}
-
-void SkillDialog::playSrcEffect(const int id,
-                                Being *const being) const
-{
-    if (!effectManager)
-        return;
-    SkillInfo *const info = getSkill(id);
-    if (!info)
-        return;
-    effectManager->triggerDefault(info->srcEffectId,
-        being,
-        paths.getIntValue("skillSrcEffectId"));
-}
-
-void SkillDialog::playDstEffect(const int id,
-                                Being *const being) const
-{
-    if (!effectManager)
-        return;
-    SkillInfo *const info = getSkill(id);
-    if (!info)
-        return;
-    effectManager->triggerDefault(info->dstEffectId,
-        being,
-        paths.getIntValue("skillDstEffectId"));
-}
-
 void SkillDialog::playCastingDstTileEffect(const int id,
+                                           const int level,
                                            const int x,
                                            const int y,
                                            const int delay) const
 {
     if (!effectManager)
         return;
-    SkillInfo *const info = getSkill(id);
-    if (!info)
+    SkillData *const data = getSkillDataByLevel(id, level);
+    if (!data)
         return;
-    effectManager->triggerDefault(info->castingDstEffectId,
+    effectManager->triggerDefault(data->castingDstEffectId,
         x * 32,
         y * 32,
         cur_time + delay / 1000,  // end time in seconds
