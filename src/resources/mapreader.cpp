@@ -1262,6 +1262,7 @@ void MapReader::loadEmptyAtlas()
         mEmptyAtlas = Loader::getEmptyAtlas(
             info->atlas,
             *info->files);
+        delete info;
     }
 }
 
