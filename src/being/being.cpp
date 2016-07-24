@@ -3725,8 +3725,8 @@ void Being::drawPlayerSpriteAt(Graphics *restrict const graphics,
         mAction != BeingAction::DEAD)
     {
         drawHpBar(graphics,
-            PlayerInfo::getAttribute(Attributes::MAX_HP),
-            PlayerInfo::getAttribute(Attributes::HP),
+            PlayerInfo::getAttribute(Attributes::PLAYER_MAX_HP),
+            PlayerInfo::getAttribute(Attributes::PLAYER_HP),
             0,
             UserColorId::PLAYER_HP,
             UserColorId::PLAYER_HP2,

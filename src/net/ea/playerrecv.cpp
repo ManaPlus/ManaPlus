@@ -181,9 +181,9 @@ void PlayerRecv::processPlayerStatUpdate4(Net::MessageIn &msg)
     {
         const int oldValue = PlayerInfo::getStatBase(
             static_cast<AttributesT>(type));
-        const int points = PlayerInfo::getAttribute(Attributes::CHAR_POINTS)
-            + oldValue - value;
-        PlayerInfo::setAttribute(Attributes::CHAR_POINTS, points);
+        const int points = PlayerInfo::getAttribute(
+            Attributes::PLAYER_CHAR_POINTS) + oldValue - value;
+        PlayerInfo::setAttribute(Attributes::PLAYER_CHAR_POINTS, points);
         NotifyManager::notify(NotifyTypes::SKILL_RAISE_ERROR);
     }
 

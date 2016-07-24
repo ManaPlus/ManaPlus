@@ -974,7 +974,7 @@ void ChatWindow::statChanged(const AttributesT id,
     if (!mShowBattleEvents || !config.getBoolValue("showJobExp"))
         return;
 
-    if (id != Attributes::JOB)
+    if (id != Attributes::PLAYER_JOB)
         return;
 
     const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
@@ -1000,7 +1000,7 @@ void ChatWindow::attributeChanged(const AttributesT id,
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (id)
     {
-        case Attributes::EXP:
+        case Attributes::PLAYER_EXP:
         {
             if (oldVal > newVal)
                 break;
@@ -1013,7 +1013,7 @@ void ChatWindow::attributeChanged(const AttributesT id,
             }
             break;
         }
-        case Attributes::LEVEL:
+        case Attributes::PLAYER_LEVEL:
             battleChatLog(std::string("Level: ").append(toString(newVal)),
                 ChatMsgType::BY_SERVER);
             break;

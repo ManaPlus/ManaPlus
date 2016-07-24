@@ -39,27 +39,27 @@ namespace
 
 void StatDb::addDefaultStats()
 {
-    mBasicStats.push_back(BasicStat(Attributes::STR,
+    mBasicStats.push_back(BasicStat(Attributes::PLAYER_STR,
         "str",
         // TRANSLATORS: player stat
         _("Strength")));
-    mBasicStats.push_back(BasicStat(Attributes::AGI,
+    mBasicStats.push_back(BasicStat(Attributes::PLAYER_AGI,
         "agi",
         // TRANSLATORS: player stat
         _("Agility")));
-    mBasicStats.push_back(BasicStat(Attributes::VIT,
+    mBasicStats.push_back(BasicStat(Attributes::PLAYER_VIT,
         "vit",
         // TRANSLATORS: player stat
         _("Vitality")));
-    mBasicStats.push_back(BasicStat(Attributes::INT,
+    mBasicStats.push_back(BasicStat(Attributes::PLAYER_INT,
         "int",
         // TRANSLATORS: player stat
         _("Intelligence")));
-    mBasicStats.push_back(BasicStat(Attributes::DEX,
+    mBasicStats.push_back(BasicStat(Attributes::PLAYER_DEX,
         "dex",
         // TRANSLATORS: player stat
         _("Dexterity")));
-    mBasicStats.push_back(BasicStat(Attributes::LUK,
+    mBasicStats.push_back(BasicStat(Attributes::PLAYER_LUK,
         "luk",
         // TRANSLATORS: player stat
         _("Luck")));

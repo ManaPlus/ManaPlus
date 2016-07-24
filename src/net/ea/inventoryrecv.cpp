@@ -171,8 +171,8 @@ void InventoryRecv::processPlayerAttackRange(Net::MessageIn &msg)
     const int range = msg.readInt16("range");
     if (localPlayer)
         localPlayer->setAttackRange(range);
-    PlayerInfo::setStatBase(Attributes::ATTACK_RANGE, range);
-    PlayerInfo::setStatMod(Attributes::ATTACK_RANGE, 0);
+    PlayerInfo::setStatBase(Attributes::PLAYER_ATTACK_RANGE, range);
+    PlayerInfo::setStatMod(Attributes::PLAYER_ATTACK_RANGE, 0);
     BLOCK_END("InventoryRecv::processPlayerAttackRange")
 }
 

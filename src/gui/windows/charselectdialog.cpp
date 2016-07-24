@@ -244,17 +244,17 @@ void CharSelectDialog::action(const ActionEvent &event)
                 _("Hp: %u/%u\nMp: %u/%u\nLevel: %u\n"
                 "Experience: %u\nMoney: %s"),
                 CAST_U32(
-                character->data.mAttributes[Attributes::HP]),
+                character->data.mAttributes[Attributes::PLAYER_HP]),
                 CAST_U32(
-                character->data.mAttributes[Attributes::MAX_HP]),
+                character->data.mAttributes[Attributes::PLAYER_MAX_HP]),
                 CAST_U32(
-                character->data.mAttributes[Attributes::MP]),
+                character->data.mAttributes[Attributes::PLAYER_MP]),
                 CAST_U32(
-                character->data.mAttributes[Attributes::MAX_MP]),
+                character->data.mAttributes[Attributes::PLAYER_MAX_MP]),
                 CAST_U32(
-                character->data.mAttributes[Attributes::LEVEL]),
+                character->data.mAttributes[Attributes::PLAYER_LEVEL]),
                 CAST_U32(
-                character->data.mAttributes[Attributes::EXP]),
+                character->data.mAttributes[Attributes::PLAYER_EXP]),
                 Units::formatCurrency(
                 character->data.mAttributes[Attributes::MONEY]).c_str());
             CREATEWIDGET(OkDialog, data->getName(), msg,

@@ -88,9 +88,9 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
-    data.mAttributes[Attributes::EXP] = msg.readInt32("exp");
+    data.mAttributes[Attributes::PLAYER_EXP] = msg.readInt32("exp");
     data.mAttributes[Attributes::MONEY] = msg.readInt32("money");
-    Stat &jobStat = data.mStats[Attributes::JOB];
+    Stat &jobStat = data.mStats[Attributes::PLAYER_JOB];
     jobStat.exp = msg.readInt32("job");
 
     const int temp = msg.readInt32("job level");
@@ -109,16 +109,16 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
 
     if (packetVersion >= 20081217)
     {
-        data.mAttributes[Attributes::HP] = msg.readInt32("hp");
-        data.mAttributes[Attributes::MAX_HP] = msg.readInt32("max hp");
+        data.mAttributes[Attributes::PLAYER_HP] = msg.readInt32("hp");
+        data.mAttributes[Attributes::PLAYER_MAX_HP] = msg.readInt32("max hp");
     }
     else
     {
-        data.mAttributes[Attributes::HP] = msg.readInt16("hp");
-        data.mAttributes[Attributes::MAX_HP] = msg.readInt16("max hp");
+        data.mAttributes[Attributes::PLAYER_HP] = msg.readInt16("hp");
+        data.mAttributes[Attributes::PLAYER_MAX_HP] = msg.readInt16("max hp");
     }
-    data.mAttributes[Attributes::MP] = msg.readInt16("mp/sp");
-    data.mAttributes[Attributes::MAX_MP] = msg.readInt16("max mp/sp");
+    data.mAttributes[Attributes::PLAYER_MP] = msg.readInt16("mp/sp");
+    data.mAttributes[Attributes::PLAYER_MAX_MP] = msg.readInt16("max mp/sp");
 
     msg.readInt16("speed");
     const uint16_t race = msg.readInt16("class");
@@ -133,7 +133,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         weapon);
     tempPlayer->setWeaponId(weapon);
 
-    data.mAttributes[Attributes::LEVEL] = msg.readInt16("level");
+    data.mAttributes[Attributes::PLAYER_LEVEL] = msg.readInt16("level");
 
     msg.readInt16("skill points");
     const int bottomClothes = msg.readInt16("head bottom");
@@ -161,12 +161,12 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
 
     character->dummy = tempPlayer;
 
-    character->data.mStats[Attributes::STR].base = msg.readUInt8("str");
-    character->data.mStats[Attributes::AGI].base = msg.readUInt8("agi");
-    character->data.mStats[Attributes::VIT].base = msg.readUInt8("vit");
-    character->data.mStats[Attributes::INT].base = msg.readUInt8("int");
-    character->data.mStats[Attributes::DEX].base = msg.readUInt8("dex");
-    character->data.mStats[Attributes::LUK].base = msg.readUInt8("luk");
+    character->data.mStats[Attributes::PLAYER_STR].base = msg.readUInt8("str");
+    character->data.mStats[Attributes::PLAYER_AGI].base = msg.readUInt8("agi");
+    character->data.mStats[Attributes::PLAYER_VIT].base = msg.readUInt8("vit");
+    character->data.mStats[Attributes::PLAYER_INT].base = msg.readUInt8("int");
+    character->data.mStats[Attributes::PLAYER_DEX].base = msg.readUInt8("dex");
+    character->data.mStats[Attributes::PLAYER_LUK].base = msg.readUInt8("luk");
 
     character->slot = msg.readInt16("character slot id");
     if (packetVersion >= 20061023)
@@ -282,7 +282,7 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
     // Prevent the selected local player from being deleted
     localPlayer = charServerHandler->mSelectedCharacter->dummy;
     PlayerInfo::setBackend(charServerHandler->mSelectedCharacter->data);
-    PlayerInfo::setStatBase(Attributes::WALK_SPEED,
+    PlayerInfo::setStatBase(Attributes::PLAYER_WALK_SPEED,
         playerHandler->getDefaultWalkSpeed());
 
     charServerHandler->mSelectedCharacter->dummy = nullptr;

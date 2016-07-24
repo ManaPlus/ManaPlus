@@ -398,18 +398,22 @@ void setTrading(const Trading trading)
 
 void updateAttrs()
 {
-    const int attackDelay = getStatBase(Attributes::ATTACK_DELAY);
+    const int attackDelay = getStatBase(Attributes::PLAYER_ATTACK_DELAY);
     if (attackDelay)
     {
-        setStatBase(Attributes::ATTACK_SPEED,
-            getStatBase(Attributes::ATK) * 1000 / attackDelay, Notify_false);
-        setStatMod(Attributes::ATTACK_SPEED,
-            getStatMod(Attributes::ATK) * 1000 / attackDelay, Notify_true);
+        setStatBase(Attributes::PLAYER_ATTACK_SPEED,
+            getStatBase(Attributes::PLAYER_ATK) * 1000 / attackDelay,
+            Notify_false);
+        setStatMod(Attributes::PLAYER_ATTACK_SPEED,
+            getStatMod(Attributes::PLAYER_ATK) * 1000 / attackDelay,
+            Notify_true);
     }
     else
     {
-        setStatBase(Attributes::ATTACK_SPEED, 0, Notify_false);
-        setStatMod(Attributes::ATTACK_SPEED, 0, Notify_true);
+        setStatBase(Attributes::PLAYER_ATTACK_SPEED, 0,
+            Notify_false);
+        setStatMod(Attributes::PLAYER_ATTACK_SPEED, 0,
+            Notify_true);
     }
 }
 

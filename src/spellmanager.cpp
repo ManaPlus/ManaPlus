@@ -143,7 +143,7 @@ void SpellManager::invoke(const int spellId) const
         >= CAST_S32(spell->getBaseLvl()) &&
         PlayerInfo::getSkillLevel(CAST_S32(
         spell->getSchool())) >= CAST_S32(spell->getSchoolLvl())
-        && PlayerInfo::getAttribute(Attributes::MP)
+        && PlayerInfo::getAttribute(Attributes::PLAYER_MP)
         >= CAST_S32(spell->getMana()))
         )
 #endif

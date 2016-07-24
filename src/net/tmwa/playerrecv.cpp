@@ -37,14 +37,14 @@ namespace TmwAthena
 void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerRecv::processPlayerStatUpdate5")
-    PlayerInfo::setAttribute(Attributes::CHAR_POINTS,
+    PlayerInfo::setAttribute(Attributes::PLAYER_CHAR_POINTS,
         msg.readInt16("char points"));
 
     unsigned int val = msg.readUInt8("str");
-    PlayerInfo::setStatBase(Attributes::STR, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_STR, val);
     if (statusWindow)
     {
-        statusWindow->setPointsNeeded(Attributes::STR,
+        statusWindow->setPointsNeeded(Attributes::PLAYER_STR,
             msg.readUInt8("str cost"));
     }
     else
@@ -53,10 +53,10 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("agi");
-    PlayerInfo::setStatBase(Attributes::AGI, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_AGI, val);
     if (statusWindow)
     {
-        statusWindow->setPointsNeeded(Attributes::AGI,
+        statusWindow->setPointsNeeded(Attributes::PLAYER_AGI,
             msg.readUInt8("agi cost"));
     }
     else
@@ -65,10 +65,10 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("vit");
-    PlayerInfo::setStatBase(Attributes::VIT, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_VIT, val);
     if (statusWindow)
     {
-        statusWindow->setPointsNeeded(Attributes::VIT,
+        statusWindow->setPointsNeeded(Attributes::PLAYER_VIT,
             msg.readUInt8("vit cost"));
     }
     else
@@ -77,10 +77,10 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("int");
-    PlayerInfo::setStatBase(Attributes::INT, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_INT, val);
     if (statusWindow)
     {
-        statusWindow->setPointsNeeded(Attributes::INT,
+        statusWindow->setPointsNeeded(Attributes::PLAYER_INT,
             msg.readUInt8("int cost"));
     }
     else
@@ -89,10 +89,10 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("dex");
-    PlayerInfo::setStatBase(Attributes::DEX, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_DEX, val);
     if (statusWindow)
     {
-        statusWindow->setPointsNeeded(Attributes::DEX,
+        statusWindow->setPointsNeeded(Attributes::PLAYER_DEX,
             msg.readUInt8("dex cost"));
     }
     else
@@ -101,10 +101,10 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("luk");
-    PlayerInfo::setStatBase(Attributes::LUK, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_LUK, val);
     if (statusWindow)
     {
-        statusWindow->setPointsNeeded(Attributes::LUK,
+        statusWindow->setPointsNeeded(Attributes::PLAYER_LUK,
             msg.readUInt8("luk cost"));
     }
     else
@@ -112,34 +112,35 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
         msg.readUInt8("luk cost");
     }
 
-    PlayerInfo::setStatBase(Attributes::ATK,
+    PlayerInfo::setStatBase(Attributes::PLAYER_ATK,
         msg.readInt16("atk"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::ATK, msg.readInt16("atk+"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_ATK, msg.readInt16("atk+"));
     PlayerInfo::updateAttrs();
 
     val = msg.readInt16("matk");
-    PlayerInfo::setStatBase(Attributes::MATK, val, Notify_false);
+    PlayerInfo::setStatBase(Attributes::PLAYER_MATK, val, Notify_false);
 
     val = msg.readInt16("matk+");
-    PlayerInfo::setStatMod(Attributes::MATK, val);
+    PlayerInfo::setStatMod(Attributes::PLAYER_MATK, val);
 
-    PlayerInfo::setStatBase(Attributes::DEF,
+    PlayerInfo::setStatBase(Attributes::PLAYER_DEF,
         msg.readInt16("def"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::DEF, msg.readInt16("def+"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_DEF, msg.readInt16("def+"));
 
-    PlayerInfo::setStatBase(Attributes::MDEF,
+    PlayerInfo::setStatBase(Attributes::PLAYER_MDEF,
         msg.readInt16("mdef"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::MDEF, msg.readInt16("mdef+"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_MDEF, msg.readInt16("mdef+"));
 
-    PlayerInfo::setStatBase(Attributes::HIT, msg.readInt16("hit"));
+    PlayerInfo::setStatBase(Attributes::PLAYER_HIT, msg.readInt16("hit"));
 
-    PlayerInfo::setStatBase(Attributes::FLEE,
+    PlayerInfo::setStatBase(Attributes::PLAYER_FLEE,
         msg.readInt16("flee"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::FLEE, msg.readInt16("flee+"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_FLEE, msg.readInt16("flee+"));
 
-    PlayerInfo::setStatBase(Attributes::CRIT, msg.readInt16("crit"));
+    PlayerInfo::setStatBase(Attributes::PLAYER_CRIT, msg.readInt16("crit"));
 
-    PlayerInfo::setStatBase(Attributes::MANNER, msg.readInt16("manner"));
+    PlayerInfo::setStatBase(Attributes::PLAYER_MANNER,
+        msg.readInt16("manner"));
     msg.readInt16("unused?");
     BLOCK_END("PlayerRecv::processPlayerStatUpdate5")
 }

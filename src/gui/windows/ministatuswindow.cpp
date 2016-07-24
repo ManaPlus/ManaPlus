@@ -274,16 +274,16 @@ void MiniStatusWindow::attributeChanged(const AttributesT id,
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (id)
     {
-        case Attributes::HP:
-        case Attributes::MAX_HP:
+        case Attributes::PLAYER_HP:
+        case Attributes::PLAYER_MAX_HP:
             StatusWindow::updateHPBar(mHpBar);
             break;
-        case Attributes::MP:
-        case Attributes::MAX_MP:
+        case Attributes::PLAYER_MP:
+        case Attributes::PLAYER_MAX_MP:
             statusWindow->updateMPBar(mMpBar);
             break;
-        case Attributes::EXP:
-        case Attributes::EXP_NEEDED:
+        case Attributes::PLAYER_EXP:
+        case Attributes::PLAYER_EXP_NEEDED:
             StatusWindow::updateXPBar(mXpBar);
             break;
         case Attributes::TOTAL_WEIGHT:
@@ -354,18 +354,18 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
         {
             // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d (GM %d)"),
-                PlayerInfo::getAttribute(Attributes::LEVEL),
+                PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL),
                 localPlayer->getGMLevel());
         }
         else
         {
             // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d"),
-                PlayerInfo::getAttribute(Attributes::LEVEL));
+                PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL));
         }
 
-        const int exp = PlayerInfo::getAttribute(Attributes::EXP);
-        const int expNeed = PlayerInfo::getAttribute(Attributes::EXP_NEEDED);
+        const int exp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
+        const int expNeed = PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED);
         if (exp > expNeed)
         {
             textPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
@@ -383,25 +383,25 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     else if (event.getSource() == mHpBar)
     {
         textPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
-            strprintf("%d/%d", PlayerInfo::getAttribute(Attributes::HP),
-            PlayerInfo::getAttribute(Attributes::MAX_HP)));
+            strprintf("%d/%d", PlayerInfo::getAttribute(Attributes::PLAYER_HP),
+            PlayerInfo::getAttribute(Attributes::PLAYER_MAX_HP)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mMpBar)
     {
         textPopup->show(x + rect.x, y + rect.y, event.getSource()->getId(),
-            strprintf("%d/%d", PlayerInfo::getAttribute(Attributes::MP),
-            PlayerInfo::getAttribute(Attributes::MAX_MP)));
+            strprintf("%d/%d", PlayerInfo::getAttribute(Attributes::PLAYER_MP),
+            PlayerInfo::getAttribute(Attributes::PLAYER_MAX_MP)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mJobBar)
     {
         const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
-            Attributes::JOB);
+            Attributes::PLAYER_JOB);
 
         // TRANSLATORS: job bar label
         const std::string level = strprintf(_("Job level: %d"),
-            PlayerInfo::getStatBase(Attributes::JOB));
+            PlayerInfo::getStatBase(Attributes::PLAYER_JOB));
 
         if (exp.first > exp.second)
         {

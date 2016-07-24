@@ -49,7 +49,7 @@ int PlayerHandler::getDefaultWalkSpeed() const
 
 bool PlayerHandler::canUseMagic() const
 {
-    return PlayerInfo::getStatEffective(Attributes::MATK) > 0;
+    return PlayerInfo::getStatEffective(Attributes::PLAYER_MATK) > 0;
 }
 
 }  // namespace Ea

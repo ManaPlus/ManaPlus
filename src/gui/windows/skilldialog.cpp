@@ -206,7 +206,7 @@ void SkillDialog::update()
 {
     // TRANSLATORS: skills dialog label
     mPointsLabel->setCaption(strprintf(_("Skill points available: %d"),
-        PlayerInfo::getAttribute(Attributes::SKILL_POINTS)));
+        PlayerInfo::getAttribute(Attributes::PLAYER_SKILL_POINTS)));
     mPointsLabel->adjustSize();
 
     FOR_EACH (SkillMap::const_iterator, it, mSkills)

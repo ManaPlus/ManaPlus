@@ -194,9 +194,9 @@ LocalPlayer::LocalPlayer(const BeingId id,
     else
         mNameColor = nullptr;
 
-    PlayerInfo::setStatBase(Attributes::WALK_SPEED,
+    PlayerInfo::setStatBase(Attributes::PLAYER_WALK_SPEED,
         getWalkSpeed());
-    PlayerInfo::setStatMod(Attributes::WALK_SPEED, 0);
+    PlayerInfo::setStatMod(Attributes::PLAYER_WALK_SPEED, 0);
 
     loadHomes();
 
@@ -1167,7 +1167,7 @@ void LocalPlayer::statChanged(const AttributesT id,
                               const int oldVal2)
 {
     if (!mShowJobExp ||
-        id != Attributes::JOB ||
+        id != Attributes::PLAYER_JOB ||
         serverFeatures->haveExpPacket())
     {
         return;
@@ -1189,7 +1189,7 @@ void LocalPlayer::attributeChanged(const AttributesT id,
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (id)
     {
-        case Attributes::EXP:
+        case Attributes::PLAYER_EXP:
         {
             if (serverFeatures->haveExpPacket())
                 break;
@@ -1200,10 +1200,10 @@ void LocalPlayer::attributeChanged(const AttributesT id,
             addXpMessage(change);
             break;
         }
-        case Attributes::LEVEL:
+        case Attributes::PLAYER_LEVEL:
             mLevel = newVal;
             break;
-        case Attributes::HP:
+        case Attributes::PLAYER_HP:
             if (oldVal != 0 && newVal == 0)
                 PlayerDeathListener::distributeEvent();
             break;
@@ -1677,7 +1677,7 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
     if (PlayerInfo::getSkillLevel(340) >= baseMagic
         && PlayerInfo::getSkillLevel(342) >= schoolMagic)
     {
-        if (PlayerInfo::getAttribute(Attributes::MP) >= mana)
+        if (PlayerInfo::getAttribute(Attributes::PLAYER_MP) >= mana)
         {
             if (!PacketLimiter::limitPackets(PacketType::PACKET_CHAT))
                 return;
@@ -2562,7 +2562,7 @@ void LocalPlayer::respawn()
 
 int LocalPlayer::getLevel() const
 {
-    return PlayerInfo::getAttribute(Attributes::LEVEL);
+    return PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL);
 }
 
 void LocalPlayer::updateNavigateList()

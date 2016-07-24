@@ -566,7 +566,7 @@ impHandler0(healmd)
 #endif
     if (actorManager)
     {
-        const int matk = PlayerInfo::getStatEffective(Attributes::MATK);
+        const int matk = PlayerInfo::getStatEffective(Attributes::PLAYER_MATK);
         int maxHealingRadius;
 
         // magic levels < 2
@@ -601,7 +601,7 @@ impHandler0(itenplz)
     {
         if (playerHandler &&
             playerHandler->canUseMagic() &&
-            PlayerInfo::getAttribute(Attributes::MP) >= 3)
+            PlayerInfo::getAttribute(Attributes::PLAYER_MP) >= 3)
         {
             actorManager->itenplz();
         }
