@@ -388,137 +388,139 @@ void Being::setSubtype(const BeingTypeId subtype,
     mSubType = subtype;
     mLook = look;
 
-    if (mType == ActorType::Monster)
+    switch (mType)
     {
-        mInfo = MonsterDB::get(mSubType);
-        if (mInfo)
-        {
-            setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(),
-                ForceDisplay_true,
-                0,
-                mInfo->getColor(fromInt(mLook, ItemColor)));
-            mYDiff = mInfo->getSortOffsetY();
-        }
-    }
-#ifdef EATHENA_SUPPORT
-    if (mType == ActorType::Pet)
-    {
-        mInfo = PETDB::get(mSubType);
-        if (mInfo)
-        {
-            setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(),
-                ForceDisplay_true,
-                0,
-                mInfo->getColor(fromInt(mLook, ItemColor)));
-            mYDiff = mInfo->getSortOffsetY();
-        }
-    }
-    else if (mType == ActorType::Mercenary)
-    {
-        mInfo = MercenaryDB::get(mSubType);
-        if (mInfo)
-        {
-            setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(),
-                ForceDisplay_true,
-                0,
-                mInfo->getColor(fromInt(mLook, ItemColor)));
-            mYDiff = mInfo->getSortOffsetY();
-        }
-    }
-    if (mType == ActorType::Homunculus)
-    {
-        mInfo = HomunculusDB::get(mSubType);
-        if (mInfo)
-        {
-            setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(),
-                ForceDisplay_true,
-                0,
-                mInfo->getColor(fromInt(mLook, ItemColor)));
-            mYDiff = mInfo->getSortOffsetY();
-        }
-    }
-    if (mType == ActorType::SkillUnit)
-    {
-        mInfo = SkillUnitDb::get(mSubType);
-        if (mInfo)
-        {
-            setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(),
-                ForceDisplay_false,
-                0,
-                mInfo->getColor(fromInt(mLook, ItemColor)));
-            mYDiff = mInfo->getSortOffsetY();
-        }
-    }
-#endif
-    else if (mType == ActorType::Npc)
-    {
-        mInfo = NPCDB::get(mSubType);
-        if (mInfo)
-        {
-            setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
-            mYDiff = mInfo->getSortOffsetY();
-        }
-    }
-    else if (mType == ActorType::Avatar)
-    {
-        mInfo = AvatarDB::get(mSubType);
-        if (mInfo)
-            setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
-    }
-    else if (mType == ActorType::LocalPet)
-    {
-        mInfo = PETDB::get(fromInt(mId, BeingTypeId));
-        if (mInfo)
-        {
-            setName(mInfo->getName());
-            setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
-            mYDiff = mInfo->getSortOffsetY();
-            const int speed = mInfo->getWalkSpeed();
-            if (!speed)
+        case ActorType::Monster:
+            mInfo = MonsterDB::get(mSubType);
+            if (mInfo)
             {
-                if (playerHandler)
-                    setWalkSpeed(playerHandler->getDefaultWalkSpeed());
+                setName(mInfo->getName());
+                setupSpriteDisplay(mInfo->getDisplay(),
+                    ForceDisplay_true,
+                    0,
+                    mInfo->getColor(fromInt(mLook, ItemColor)));
+                mYDiff = mInfo->getSortOffsetY();
+            }
+            break;
+#ifdef EATHENA_SUPPORT
+        case ActorType::Pet:
+            mInfo = PETDB::get(mSubType);
+            if (mInfo)
+            {
+                setName(mInfo->getName());
+                setupSpriteDisplay(mInfo->getDisplay(),
+                    ForceDisplay_true,
+                    0,
+                    mInfo->getColor(fromInt(mLook, ItemColor)));
+                mYDiff = mInfo->getSortOffsetY();
+            }
+            break;
+        case ActorType::Mercenary:
+            mInfo = MercenaryDB::get(mSubType);
+            if (mInfo)
+            {
+                setName(mInfo->getName());
+                setupSpriteDisplay(mInfo->getDisplay(),
+                    ForceDisplay_true,
+                    0,
+                    mInfo->getColor(fromInt(mLook, ItemColor)));
+                mYDiff = mInfo->getSortOffsetY();
+            }
+            break;
+        case ActorType::Homunculus:
+            mInfo = HomunculusDB::get(mSubType);
+            if (mInfo)
+            {
+                setName(mInfo->getName());
+                setupSpriteDisplay(mInfo->getDisplay(),
+                    ForceDisplay_true,
+                    0,
+                    mInfo->getColor(fromInt(mLook, ItemColor)));
+                mYDiff = mInfo->getSortOffsetY();
+            }
+            break;
+        case ActorType::SkillUnit:
+            mInfo = SkillUnitDb::get(mSubType);
+            if (mInfo)
+            {
+                setName(mInfo->getName());
+                setupSpriteDisplay(mInfo->getDisplay(),
+                    ForceDisplay_false,
+                    0,
+                    mInfo->getColor(fromInt(mLook, ItemColor)));
+                mYDiff = mInfo->getSortOffsetY();
+            }
+            break;
+#endif
+        case ActorType::Npc:
+            mInfo = NPCDB::get(mSubType);
+            if (mInfo)
+            {
+                setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
+                mYDiff = mInfo->getSortOffsetY();
+            }
+            break;
+        case ActorType::Avatar:
+            mInfo = AvatarDB::get(mSubType);
+            if (mInfo)
+                setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
+            break;
+        case ActorType::LocalPet:
+            mInfo = PETDB::get(fromInt(mId, BeingTypeId));
+            if (mInfo)
+            {
+                setName(mInfo->getName());
+                setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
+                mYDiff = mInfo->getSortOffsetY();
+                const int speed = mInfo->getWalkSpeed();
+                if (!speed)
+                {
+                    if (playerHandler)
+                        setWalkSpeed(playerHandler->getDefaultWalkSpeed());
+                    else
+                        setWalkSpeed(1);
+                }
                 else
-                    setWalkSpeed(1);
+                {
+                    setWalkSpeed(speed);
+                }
+            }
+            break;
+        case ActorType::Player:
+        {
+            int id = -100 - toInt(subtype, int);
+            // Prevent showing errors when sprite doesn't exist
+            if (!ItemDB::exists(id))
+            {
+                id = -100;
+                // TRANSLATORS: default race name
+                setRaceName(_("Human"));
+                if (charServerHandler)
+                {
+                    setSpriteId(charServerHandler->baseSprite(),
+                        id);
+                }
             }
             else
             {
-                setWalkSpeed(speed);
+                const ItemInfo &restrict info = ItemDB::get(id);
+                setRaceName(info.getName());
+                if (charServerHandler)
+                {
+                    setSpriteColor(charServerHandler->baseSprite(),
+                        id,
+                        info.getColor(fromInt(mLook, ItemColor)));
+                }
             }
+            break;
         }
-    }
-    else if (mType == ActorType::Player)
-    {
-        int id = -100 - toInt(subtype, int);
-
-        // Prevent showing errors when sprite doesn't exist
-        if (!ItemDB::exists(id))
-        {
-            id = -100;
-            // TRANSLATORS: default race name
-            setRaceName(_("Human"));
-            if (charServerHandler)
-            {
-                setSpriteId(charServerHandler->baseSprite(),
-                    id);
-            }
-        }
-        else
-        {
-            const ItemInfo &restrict info = ItemDB::get(id);
-            setRaceName(info.getName());
-            if (charServerHandler)
-            {
-                setSpriteColor(charServerHandler->baseSprite(),
-                    id,
-                    info.getColor(fromInt(mLook, ItemColor)));
-            }
-        }
+        case ActorType::Unknown:
+        case ActorType::FloorItem:
+        case ActorType::Portal:
+        default:
+            reportAlways("Wrong being type %d in setSubType",
+                CAST_S32(mType));
+            break;
     }
 }
 
