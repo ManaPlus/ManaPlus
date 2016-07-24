@@ -50,6 +50,7 @@ static const int DEFAULT_BEING_HEIGHT = 32;
 
 class AnimatedSprite;
 class BeingCacheEntry;
+class CastingEffect;
 class Color;
 class Equipment;
 class FlashText;
@@ -1095,7 +1096,7 @@ class Being notfinal : public ActorSprite,
         BeingInfo *restrict mInfo;
         AnimatedSprite *restrict mEmotionSprite;
         AnimatedSprite *restrict mAnimationEffect;
-        AnimatedSprite *restrict mCastingEffect;
+        CastingEffect *restrict mCastingEffect;
         AnimatedSprite *restrict mBadges[BadgeIndex::BadgeIndexSize];
 
         std::string mSpriteAction;
@@ -1272,11 +1273,6 @@ class Being notfinal : public ActorSprite,
         int mManner;
         int mAreaSize;
         int mCastEndTime;
-        int mCastRectX;
-        int mCastRectSize;
-        int mCastRectY;
-        int mCastAnimationX;
-        int mCastAnimationY;
 #ifdef EATHENA_SUPPORT
         BeingId mCreatorId;
 #endif
@@ -1293,7 +1289,6 @@ class Being notfinal : public ActorSprite,
         bool mInactive;
         bool mNeedPosUpdate;
         bool mPetAi;
-        bool mDrawCast;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

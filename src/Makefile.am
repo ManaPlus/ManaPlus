@@ -845,6 +845,8 @@ manaplus_SOURCES += main.cpp \
 	      enums/being/beingdirection.h \
 	      being/beingflag.h \
 	      being/beingspeech.h \
+	      being/castingeffect.cpp \
+	      being/castingeffect.h \
 	      being/localplayer.cpp \
 	      being/localplayer.h \
 	      being/mercenaryinfo.h \

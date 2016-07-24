@@ -940,6 +940,8 @@ SET(SRCS
     enums/being/beingdirection.h
     being/beingflag.h
     being/beingspeech.h
+    being/castingeffect.cpp
+    being/castingeffect.h
     beingequipbackend.cpp
     beingequipbackend.h
     spellmanager.cpp

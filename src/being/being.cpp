@@ -36,6 +36,7 @@
 #include "being/beingcacheentry.h"
 #include "being/beingflag.h"
 #include "being/beingspeech.h"
+#include "being/castingeffect.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -245,11 +246,6 @@ Being::Being(const BeingId id,
     mManner(0),
     mAreaSize(11),
     mCastEndTime(0),
-    mCastRectX(0),
-    mCastRectSize(0),
-    mCastRectY(0),
-    mCastAnimationX(0),
-    mCastAnimationY(0),
 #ifdef EATHENA_SUPPORT
     mCreatorId(BeingId_zero),
 #endif
@@ -265,8 +261,7 @@ Being::Being(const BeingId id,
     mAway(false),
     mInactive(false),
     mNeedPosUpdate(true),
-    mPetAi(true),
-    mDrawCast(false)
+    mPetAi(true)
 {
     for (int f = 0; f < 20; f ++)
     {
@@ -1631,8 +1626,6 @@ void Being::setAction(const BeingActionT &restrict action,
             mEmotionSprite->play(currentAction);
         if (mAnimationEffect)
             mAnimationEffect->play(currentAction);
-        if (mCastingEffect)
-            mCastingEffect->play(currentAction);
         for_each_badges()
         {
             AnimatedSprite *const sprite = mBadges[f];
@@ -1704,8 +1697,6 @@ void Being::setDirection(const uint8_t direction) restrict2
         mEmotionSprite->setSpriteDirection(dir);
     if (mAnimationEffect)
         mAnimationEffect->setSpriteDirection(dir);
-    if (mCastingEffect)
-        mCastingEffect->setSpriteDirection(dir);
 
     for_each_badges()
     {
@@ -1835,7 +1826,6 @@ void Being::logic() restrict2
     if (mCastEndTime != 0 && mCastEndTime < tick_time)
     {
         mCastEndTime = 0;
-        mDrawCast = false;
         delete2(mCastingEffect);
     }
 
@@ -3548,29 +3538,6 @@ void Being::drawPlayer(Graphics *restrict const graphics,
         drawBeingCursor(graphics, px, py);
         drawPlayerSpriteAt(graphics, px, py);
 #endif
-        if (mDrawCast)
-            drawCasting(graphics, offsetX, offsetY);
-    }
-}
-
-void Being::drawCasting(Graphics *const graphics,
-                        const int offsetX,
-                        const int offsetY) const
-{
-    graphics->setColor(userPalette->getColorWithAlpha(
-        UserColorId::ATTACK_RANGE_BORDER));
-
-    graphics->drawRectangle(Rect(
-        mCastRectX + offsetX,
-        mCastRectY + offsetY,
-        mCastRectSize,
-        mCastRectSize));
-
-    if (mCastingEffect)
-    {
-        mCastingEffect->draw(graphics,
-            mCastAnimationX + offsetX,
-            mCastAnimationY + offsetY);
     }
 }
 
@@ -5097,14 +5064,9 @@ void Being::addCast(const int dstX,
     if (waitTimeTicks <= 0)
     {
         mCastEndTime = 0;
-        mDrawCast = false;
         return;
     }
     mCastEndTime = tick_time + waitTimeTicks;
-    mDrawCast = true;
-    mCastRectX = (dstX - range) * mapTileSize;
-    mCastRectY = (dstY - range) * mapTileSize;
-    mCastRectSize = range * mapTileSize * 2 + mapTileSize;
     SkillData *const data = skillDialog->getSkillDataByLevel(
         skillId,
         skillLevel);
@@ -5112,25 +5074,18 @@ void Being::addCast(const int dstX,
     if (data)
     {
         const std::string castingAnimation = data->castingAnimation;
-        if (!castingAnimation.empty())
-        {
-            mCastingEffect = AnimatedSprite::load(
-                paths.getStringValue("sprites") + castingAnimation);
-            if (mCastingEffect)
-            {
-                mCastAnimationX = mCastRectX +
-                    (mCastRectSize - mCastingEffect->getWidth()) / 2;
-                mCastAnimationY = mCastRectY +
-                    (mCastRectSize - mCastingEffect->getHeight()) / 2;
-            }
-            else
-            {
-                reportAlways("Skill %d/%d casting animation '%s' load failed",
-                    skillId,
-                    skillLevel,
-                    castingAnimation.c_str());
-            }
-        }
+        mCastingEffect = new CastingEffect(skillId,
+            skillLevel,
+            castingAnimation,
+            dstX,
+            dstY,
+            range);
+        mCastingEffect->setMap(mMap);
+    }
+    else
+    {
+        reportAlways("Want to draw casting for unknown skill %d",
+            skillId);
     }
 }
 
