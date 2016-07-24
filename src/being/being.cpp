@@ -509,9 +509,10 @@ void Being::setSubtype(const BeingTypeId subtype,
             }
             break;
         }
+        case ActorType::Portal:
+            break;
         case ActorType::Unknown:
         case ActorType::FloorItem:
-        case ActorType::Portal:
         default:
             reportAlways("Wrong being type %d in setSubType",
                 CAST_S32(mType));
