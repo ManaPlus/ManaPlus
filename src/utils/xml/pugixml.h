@@ -32,6 +32,8 @@
 
 #include "utils/xml/pugixml.inc"
 
+#include "resources/resource.h"
+
 #include <pugixml.hpp>
 
 #include <string>
@@ -47,7 +49,7 @@ namespace XML
      * A helper class for parsing an XML document, which also cleans it up
      * again (RAII).
      */
-    class Document final
+    class Document final : public Resource
     {
         public:
             /**

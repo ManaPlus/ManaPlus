@@ -32,6 +32,8 @@
 
 #include "utils/xml/libxml.inc"
 
+#include "resources/resource.h"
+
 #ifndef _GLIBCXX_STRING
 #include <string>
 #endif  // _GLIBCXX_STRING
@@ -47,7 +49,7 @@ namespace XML
      * A helper class for parsing an XML document, which also cleans it up
      * again (RAII).
      */
-    class Document final
+    class Document final : public Resource
     {
         public:
             /**

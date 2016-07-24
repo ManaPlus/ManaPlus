@@ -748,6 +748,8 @@ SET(SRCS
     resources/loaders/subimagesetloader.h
     resources/loaders/walklayerloader.cpp
     resources/loaders/walklayerloader.h
+    resources/loaders/xmlloader.cpp
+    resources/loaders/xmlloader.h
     resources/resourcemanager/resourcemanager.cpp
     resources/resourcemanager/resourcemanager.h
     resources/safeopenglimagehelper.cpp
