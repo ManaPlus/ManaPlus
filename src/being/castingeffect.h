@@ -53,7 +53,7 @@ class CastingEffect final : public Actor
                   const int offsetX,
                   const int offsetY) const override final A_NONNULL(2);
 
-        virtual int getSortPixelY() const restrict2 override A_WARN_UNUSED
+        int getSortPixelY() const restrict2 override A_WARN_UNUSED
         { return mPixelY - mYDiff; }
 
         void update(const int time);
