@@ -25,8 +25,6 @@
 
 #include "enums/being/actortype.h"
 
-#include "enums/simpletypes/beingid.h"
-
 #include "localconsts.h"
 
 class AnimatedSprite;

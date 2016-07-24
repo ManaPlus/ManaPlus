@@ -23,8 +23,6 @@
 #ifndef RESOURCES_SPRITE_SPRITEDEF_H
 #define RESOURCES_SPRITE_SPRITEDEF_H
 
-#include "resources/resource.h"
-
 #include "enums/resources/spritedirection.h"
 
 #include "utils/xml.h"

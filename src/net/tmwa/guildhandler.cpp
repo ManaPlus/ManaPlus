@@ -21,8 +21,6 @@
 
 #include "net/tmwa/guildhandler.h"
 
-#include "net/ea/guildrecv.h"
-
 #include "debug.h"
 
 extern Net::GuildHandler *guildHandler;
