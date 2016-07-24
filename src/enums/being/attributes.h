@@ -26,6 +26,7 @@
 
 enumStart(Attributes)
 {
+    // player attributes
     PLAYER_LEVEL        = 0,
     PLAYER_HP,
     PLAYER_MAX_HP,
@@ -61,6 +62,28 @@ enumStart(Attributes)
     PLAYER_ATK,
     CART_TOTAL_WEIGHT = 1000,
     CART_MAX_WEIGHT,
+
+    // homunculus attributes
+    HOMUN_LEVEL,
+    HOMUN_HP,
+    HOMUN_MAX_HP,
+    HOMUN_MP,
+    HOMUN_MAX_MP,
+    HOMUN_EXP,
+    HOMUN_EXP_NEEDED,
+    HOMUN_SKILL_POINTS,
+    HOMUN_ATTACK_DELAY,
+    HOMUN_ATTACK_RANGE,
+    HOMUN_WALK_SPEED,
+    HOMUN_ATTACK_SPEED,
+    HOMUN_CRIT,
+    HOMUN_FLEE,
+    HOMUN_HIT,
+    HOMUN_MDEF,
+    HOMUN_MATK,
+    HOMUN_DEF,
+    HOMUN_ATK,
+
     MAX_ATTRIBUTE
 }
 enumEnd(Attributes);

@@ -113,25 +113,43 @@ void HomunculusRecv::processHomunculusInfo(Net::MessageIn &msg)
     const std::string name = msg.readString(24, "name");
     msg.readUInt8("flags");  // 0x01 - renamed, 0x02 - vaporize, 0x04 - alive
     const int level = msg.readInt16("level");
+    PlayerInfo::setAttribute(Attributes::HOMUN_LEVEL, level);
     const int hungry = msg.readInt16("hungry");
     const int intimacy = msg.readInt16("intimacy");
     const int equip = msg.readInt16("equip");
-    msg.readInt16("atk");
-    msg.readInt16("matk");
-    msg.readInt16("hit");
-    msg.readInt16("luk/3 or crit/10");
-    msg.readInt16("def");
-    msg.readInt16("mdef");
-    msg.readInt16("flee");
-    msg.readInt16("attack speed");
-    msg.readInt16("hp");
-    msg.readInt16("max hp");
-    msg.readInt16("sp");
-    msg.readInt16("max sp");
-    msg.readInt32("exp");
-    msg.readInt32("next exp");
-    msg.readInt16("skill points");
+    PlayerInfo::setAttribute(Attributes::HOMUN_ATK,
+        msg.readInt16("atk"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_MATK,
+        msg.readInt16("matk"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_HIT,
+        msg.readInt16("hit"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_CRIT,
+        msg.readInt16("luk/3 or crit/10"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_DEF,
+        msg.readInt16("def"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_MDEF,
+        msg.readInt16("mdef"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_FLEE,
+        msg.readInt16("flee"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_ATTACK_DELAY,
+        msg.readInt16("attack speed"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_HP,
+        msg.readInt16("hp"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_MAX_HP,
+        msg.readInt16("max hp"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_MP,
+        msg.readInt16("sp"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_MAX_MP,
+        msg.readInt16("max sp"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_EXP,
+        msg.readInt32("exp"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_EXP_NEEDED,
+        msg.readInt32("next exp"));
+    PlayerInfo::setAttribute(Attributes::HOMUN_SKILL_POINTS,
+        msg.readInt16("skill points"));
     const int range = msg.readInt16("attack range");
+    PlayerInfo::setAttribute(Attributes::HOMUN_ATTACK_RANGE,
+        range);
 
     HomunculusInfo *const info = PlayerInfo::getHomunculus();
     if (!info)  // we can't find homunculus being because id is missing
