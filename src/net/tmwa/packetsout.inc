@@ -99,25 +99,6 @@ packet(CMSG_ADMIN_HIDE,              0x019D,   0, nullptr);
 packet(CMSG_ADMIN_KICK,              0x00CC,   0, nullptr);
 packet(CMSG_ADMIN_MUTE,              0x0149,   0, nullptr);
 
-packet(CMSG_GUILD_CHECK_MASTER,      0x014d,   0, nullptr);
-packet(CMSG_GUILD_REQUEST_INFO,      0x014f,   0, nullptr);
-packet(CMSG_GUILD_REQUEST_EMBLEM,    0x0151,   0, nullptr);
-packet(CMSG_GUILD_CHANGE_EMBLEM,     0x0153,   0, nullptr);
-packet(CMSG_GUILD_CHANGE_MEMBER_POS, 0x0155,   0, nullptr);
-packet(CMSG_GUILD_LEAVE,             0x0159,   0, nullptr);
-packet(CMSG_GUILD_EXPULSION,         0x015b,   0, nullptr);
-packet(CMSG_GUILD_BREAK,             0x015d,   0, nullptr);
-packet(CMSG_GUILD_CHANGE_POS_INFO,   0x0161,   0, nullptr);
-packet(CMSG_GUILD_CREATE,            0x0165,   0, nullptr);
-packet(CMSG_GUILD_INVITE,            0x0168,   0, nullptr);
-packet(CMSG_GUILD_INVITE_REPLY,      0x016b,   0, nullptr);
-packet(CMSG_GUILD_CHANGE_NOTICE,     0x016e,   0, nullptr);
-packet(CMSG_GUILD_ALLIANCE_REQUEST,  0x0170,   0, nullptr);
-packet(CMSG_GUILD_ALLIANCE_REPLY,    0x0172,   0, nullptr);
-packet(CMSG_GUILD_MESSAGE,           0x017e,   0, nullptr);
-packet(CMSG_GUILD_OPPOSITION,        0x0180,   0, nullptr);
-packet(CMSG_GUILD_ALLIANCE_DELETE,   0x0183,   0, nullptr);
-
 packet(CMSG_SOLVE_CHAR_NAME,         0x0193,   0, nullptr);
 packet(CMSG_IGNORE_NICK,             0x00cf,   0, nullptr);
 

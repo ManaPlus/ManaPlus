@@ -49,7 +49,6 @@
 #include "net/tmwa/chatrecv.h"
 #include "net/tmwa/gamerecv.h"
 #include "net/tmwa/generalrecv.h"
-#include "net/tmwa/guildrecv.h"
 #include "net/tmwa/inventoryrecv.h"
 #include "net/tmwa/itemrecv.h"
 #include "net/tmwa/loginrecv.h"

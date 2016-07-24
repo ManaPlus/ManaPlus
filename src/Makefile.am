@@ -1489,8 +1489,6 @@ manaplus_SOURCES += \
 	      net/tmwa/guildhandler.h \
 	      net/tmwa/guildmanager.cpp \
 	      net/tmwa/guildmanager.h \
-	      net/tmwa/guildrecv.cpp \
-	      net/tmwa/guildrecv.h \
 	      net/tmwa/inventoryhandler.cpp \
 	      net/tmwa/inventoryhandler.h \
 	      net/tmwa/inventoryrecv.cpp \

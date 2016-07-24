@@ -95,11 +95,4 @@ class GuildHandler final : public Ea::GuildHandler
 
 }  // namespace TmwAthena
 
-extern GuildTab *guildTab;
-
-namespace Ea
-{
-    extern Guild *taGuild;
-}
-
 #endif  // NET_TMWA_GUILDHANDLER_H
