@@ -75,7 +75,7 @@ bool ServerFeatures::haveNativeGuilds() const
 
 bool ServerFeatures::haveIncompleteChatMessages() const
 {
-    return tmwServerVersion > 0 && tmwServerVersion <= 0x100209;
+    return tmwServerVersion <= 0x100209;
 }
 
 bool ServerFeatures::haveRaceSelection() const
@@ -95,7 +95,7 @@ bool ServerFeatures::haveChatChannels() const
 
 bool ServerFeatures::haveServerIgnore() const
 {
-    return tmwServerVersion == 0;
+    return false;
 }
 
 bool ServerFeatures::haveMove3() const
@@ -230,12 +230,7 @@ bool ServerFeatures::haveChangePassword() const
 
 bool ServerFeatures::haveTeamId() const
 {
-    return tmwServerVersion > 0;
-}
-
-bool ServerFeatures::haveNewGuild() const
-{
-    return tmwServerVersion > 0;
+    return true;
 }
 
 bool ServerFeatures::haveAdvancedSprites() const

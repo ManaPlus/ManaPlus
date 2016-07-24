@@ -235,11 +235,6 @@ bool ServerFeatures::haveTeamId() const
     return false;
 }
 
-bool ServerFeatures::haveNewGuild() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveAdvancedSprites() const
 {
     return serverVersion >= 7;

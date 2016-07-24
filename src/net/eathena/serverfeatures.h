@@ -114,8 +114,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveTeamId() const override final A_CONST;
 
-        bool haveNewGuild() const override final A_CONST;
-
         bool haveAdvancedSprites() const override final;
 
         bool haveExtendedRiding() const override final;
