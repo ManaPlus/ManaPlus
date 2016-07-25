@@ -365,7 +365,8 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
         }
 
         const int exp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
-        const int expNeed = PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED);
+        const int expNeed = PlayerInfo::getAttribute(
+            Attributes::PLAYER_EXP_NEEDED);
         if (exp > expNeed)
         {
             textPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",

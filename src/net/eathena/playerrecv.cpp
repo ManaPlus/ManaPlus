@@ -151,7 +151,8 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     PlayerInfo::setStatBase(Attributes::PLAYER_ATK,
         msg.readInt16("left atk"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::PLAYER_ATK, msg.readInt16("right atk"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_ATK,
+        msg.readInt16("right atk"));
     PlayerInfo::updateAttrs();
 
     val = msg.readInt16("right matk");
@@ -162,19 +163,24 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     PlayerInfo::setStatBase(Attributes::PLAYER_DEF,
         msg.readInt16("left def"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::PLAYER_DEF, msg.readInt16("right def"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_DEF,
+        msg.readInt16("right def"));
 
     PlayerInfo::setStatBase(Attributes::PLAYER_MDEF,
         msg.readInt16("left mdef"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::PLAYER_MDEF, msg.readInt16("right mdef"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_MDEF,
+        msg.readInt16("right mdef"));
 
-    PlayerInfo::setStatBase(Attributes::PLAYER_HIT, msg.readInt16("hit"));
+    PlayerInfo::setStatBase(Attributes::PLAYER_HIT,
+        msg.readInt16("hit"));
 
     PlayerInfo::setStatBase(Attributes::PLAYER_FLEE,
         msg.readInt16("flee"), Notify_false);
-    PlayerInfo::setStatMod(Attributes::PLAYER_FLEE, msg.readInt16("flee2/10"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_FLEE,
+        msg.readInt16("flee2/10"));
 
-    PlayerInfo::setStatBase(Attributes::PLAYER_CRIT, msg.readInt16("crit/10"));
+    PlayerInfo::setStatBase(Attributes::PLAYER_CRIT,
+        msg.readInt16("crit/10"));
 
     PlayerInfo::setAttribute(Attributes::PLAYER_ATTACK_DELAY,
         msg.readInt16("attack speed"));

@@ -547,7 +547,8 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                 if (m)
                 {
                     m->setHp(base);
-                    m->setMaxHp(PlayerInfo::getAttribute(Attributes::PLAYER_MAX_HP));
+                    m->setMaxHp(PlayerInfo::getAttribute(
+                        Attributes::PLAYER_MAX_HP));
                 }
             }
             break;
@@ -629,7 +630,8 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
         // ++ here used in wrong way. Need like Sp::NEXTBASEEXP?
         case Sp::NEXTJOBEXP:
             PlayerInfo::setStatExperience(Attributes::PLAYER_JOB,
-                PlayerInfo::getStatExperience(Attributes::PLAYER_JOB).first, base);
+                PlayerInfo::getStatExperience(Attributes::PLAYER_JOB).first,
+                base);
             break;
         case Sp::WEIGHT:
             PlayerInfo::setAttribute(Attributes::TOTAL_WEIGHT, base);

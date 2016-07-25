@@ -161,7 +161,8 @@ void KillStats::action(const ActionEvent &event)
         mKillCounter = 0;
         mExpCounter = 0;
         mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
-            PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED) / 100, "?"));
+            PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED) / 100,
+            "?"));
         // TRANSLATORS: kill stats window label
         mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
         // TRANSLATORS: kill stats window label
@@ -303,7 +304,8 @@ void KillStats::recalcStats()
 
     if (curTime != 0 && mLastHost == 0xFF6B66 && cur_time > 1)
     {
-        const int newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED);
+        const int newExp = PlayerInfo::getAttribute(
+            Attributes::PLAYER_EXP_NEEDED);
         if (m1minExpTime != 0)
             m1minSpeed = newExp - m1minExpNum;
         mStatsReUpdated = true;
@@ -347,7 +349,8 @@ void KillStats::update()
         mExpTime1Label->setCaption(strprintf(_("  Time for next level: %s"),
             toString(static_cast<float>((PlayerInfo::getAttribute(
             Attributes::PLAYER_EXP_NEEDED) - PlayerInfo::getAttribute(
-            Attributes::PLAYER_EXP)) / static_cast<float>(m1minSpeed))).c_str()));
+            Attributes::PLAYER_EXP)) /
+            static_cast<float>(m1minSpeed))).c_str()));
     }
     else
     {

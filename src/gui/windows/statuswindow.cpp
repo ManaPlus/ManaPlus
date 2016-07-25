@@ -121,8 +121,9 @@ StatusWindow::StatusWindow() :
 
     max = PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED);
     mXpBar = new ProgressBar(this,
-        max ? static_cast<float>(PlayerInfo::getAttribute(Attributes::PLAYER_EXP))
-        / static_cast<float>(max) : static_cast<float>(0),
+        max ?
+        static_cast<float>(PlayerInfo::getAttribute(Attributes::PLAYER_EXP)) /
+        static_cast<float>(max) : static_cast<float>(0),
         80,
         0,
         ProgressColorId::PROG_EXP,
