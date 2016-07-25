@@ -41,11 +41,11 @@
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/statuswindowattrs.h"
 #include "gui/widgets/vertcontainer.h"
 #include "gui/widgets/windowcontainer.h"
 
 #include "gui/widgets/attrs/attrdisplay.h"
+#include "gui/widgets/attrs/changedisplay.h"
 #include "gui/widgets/attrs/derdisplay.h"
 
 #include "net/inventoryhandler.h"
@@ -712,86 +712,5 @@ void StatusWindow::action(const ActionEvent &event)
             ++ it;
         }
         chatWindow->addInputText(str);
-    }
-}
-
-ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
-                             const AttributesT id,
-                             const std::string &restrict name,
-                             const std::string &restrict shortName) :
-    AttrDisplay(widget, id, name, shortName),
-    ActionListener(),
-    mNeeded(1),
-    // TRANSLATORS: status window label
-    mPoints(new Label(this, _("Max"))),
-    // TRANSLATORS: status window label (plus sign)
-    mInc(new Button(this, _("+"), "inc", this))
-{
-    // Do the layout
-    ContainerPlacer place = mLayout->getPlacer(0, 0);
-
-    place(0, 0, mLabel, 3);
-    place(4, 0, mValue, 2);
-    place(6, 0, mInc);
-    place(7, 0, mPoints);
-}
-
-std::string ChangeDisplay::update()
-{
-    if (mNeeded > 0)
-    {
-        mPoints->setCaption(toString(mNeeded));
-    }
-    else
-    {
-        // TRANSLATORS: status bar label
-        mPoints->setCaption(_("Max"));
-    }
-
-    mInc->setEnabled(PlayerInfo::getAttribute(Attributes::PLAYER_CHAR_POINTS)
-        >= mNeeded && mNeeded > 0);
-
-    return AttrDisplay::update();
-}
-
-void ChangeDisplay::setPointsNeeded(const int needed)
-{
-    mNeeded = needed;
-    update();
-}
-
-void ChangeDisplay::action(const ActionEvent &event)
-{
-    if (event.getSource() == mInc)
-    {
-        int cnt = 1;
-        if (config.getBoolValue("quickStats"))
-        {
-            cnt = mInc->getClickCount();
-            if (cnt > 10)
-                cnt = 10;
-        }
-
-        const int newpoints = PlayerInfo::getAttribute(
-            Attributes::PLAYER_CHAR_POINTS) - cnt;
-        PlayerInfo::setAttribute(Attributes::PLAYER_CHAR_POINTS,
-            newpoints);
-
-        const int newbase = PlayerInfo::getStatBase(mId) + cnt;
-        PlayerInfo::setStatBase(mId, newbase);
-
-        if (serverFeatures->haveMultyStatusUp())
-        {
-            playerHandler->increaseAttribute(mId, cnt);
-        }
-        else
-        {
-            for (int f = 0; f < cnt; f ++)
-            {
-                playerHandler->increaseAttribute(mId, 1);
-                if (cnt != 1)
-                    SDL_Delay(100);
-            }
-        }
     }
 }

@@ -137,6 +137,8 @@ SET(SRCS
     gui/widgets/characterviewsmall.h
     gui/widgets/attrs/attrdisplay.cpp
     gui/widgets/attrs/attrdisplay.h
+    gui/widgets/attrs/changedisplay.cpp
+    gui/widgets/attrs/changedisplay.h
     gui/widgets/attrs/derdisplay.cpp
     gui/widgets/attrs/derdisplay.h
     gui/widgets/tabs/debugwindowtabs.cpp
@@ -202,7 +204,6 @@ SET(SRCS
     gui/widgets/itemshortcutcontainer.h
     gui/widgets/spellshortcutcontainer.cpp
     gui/widgets/spellshortcutcontainer.h
-    gui/widgets/statuswindowattrs.h
     gui/widgets/label.cpp
     gui/widgets/label.h
     gui/widgets/tabs/chat/langtab.cpp

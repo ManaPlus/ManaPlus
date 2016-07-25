@@ -945,6 +945,8 @@ manaplus_SOURCES += main.cpp \
 	      gui/widgets/tabs/chat/channeltab.h \
 	      gui/widgets/attrs/attrdisplay.cpp \
 	      gui/widgets/attrs/attrdisplay.h \
+	      gui/widgets/attrs/changedisplay.cpp \
+	      gui/widgets/attrs/changedisplay.h \
 	      gui/widgets/attrs/derdisplay.cpp \
 	      gui/widgets/attrs/derdisplay.h \
 	      gui/widgets/tabs/debugwindowtabs.cpp \
@@ -984,7 +986,6 @@ manaplus_SOURCES += main.cpp \
 	      gui/widgets/itemshortcutcontainer.h \
 	      gui/widgets/spellshortcutcontainer.cpp \
 	      gui/widgets/spellshortcutcontainer.h \
-	      gui/widgets/statuswindowattrs.h \
 	      gui/widgets/selldialog.cpp \
 	      gui/widgets/selldialog.h \
 	      gui/widgets/tabs/setup_audio.cpp \
