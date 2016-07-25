@@ -23,11 +23,7 @@
 #ifndef GUI_WIDGETS_STATUSWINDOWATTRS_H
 #define GUI_WIDGETS_STATUSWINDOWATTRS_H
 
-#include "enums/being/attributes.h"
-
-#include "gui/widgets/container.h"
-
-#include "gui/widgets/label.h"
+#include "gui/widgets/attrs/attrdisplay.h"
 
 #include "listeners/actionlistener.h"
 
@@ -35,51 +31,6 @@
 
 class Button;
 class LayoutHelper;
-
-class AttrDisplay notfinal : public Container
-{
-    public:
-        enum Type
-        {
-            DERIVED = 0,
-            CHANGEABLE,
-            UNKNOWN
-        };
-
-        A_DELETE_COPY(AttrDisplay)
-
-        virtual ~AttrDisplay();
-
-        virtual std::string update();
-
-        virtual Type getType() const
-        { return UNKNOWN; }
-
-        std::string getValue() const
-        {
-            if (!mValue)
-                return "-";
-            else
-                return mValue->getCaption();
-        }
-
-        const std::string &getShortName() const
-        { return mShortName; }
-
-    protected:
-        AttrDisplay(const Widget2 *const widget,
-                    const AttributesT id,
-                    const std::string &restrict name,
-                    const std::string &restrict shortName);
-
-        const AttributesT mId;
-        const std::string mName;
-        const std::string mShortName;
-
-        LayoutHelper *mLayout;
-        Label *mLabel;
-        Label *mValue;
-};
 
 class DerDisplay final : public AttrDisplay
 {

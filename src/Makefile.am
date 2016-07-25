@@ -943,6 +943,8 @@ manaplus_SOURCES += main.cpp \
 	      gui/widgets/tabs/chat/battletab.h \
 	      gui/widgets/tabs/chat/channeltab.cpp \
 	      gui/widgets/tabs/chat/channeltab.h \
+	      gui/widgets/attrs/attrdisplay.cpp \
+	      gui/widgets/attrs/attrdisplay.h \
 	      gui/widgets/tabs/debugwindowtabs.cpp \
 	      gui/widgets/tabs/debugwindowtabs.h \
 	      gui/widgets/tabs/chat/chattab.cpp \

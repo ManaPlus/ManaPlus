@@ -45,6 +45,8 @@
 #include "gui/widgets/vertcontainer.h"
 #include "gui/widgets/windowcontainer.h"
 
+#include "gui/widgets/attrs/attrdisplay.h"
+
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
@@ -710,40 +712,6 @@ void StatusWindow::action(const ActionEvent &event)
         }
         chatWindow->addInputText(str);
     }
-}
-
-AttrDisplay::AttrDisplay(const Widget2 *const widget,
-                         const AttributesT id,
-                         const std::string &restrict name,
-                         const std::string &restrict shortName) :
-    Container(widget),
-    mId(id),
-    mName(name),
-    mShortName(shortName),
-    mLayout(new LayoutHelper(this)),
-    mLabel(new Label(this, name)),
-    mValue(new Label(this, "1 "))
-{
-    setSize(100, 32);
-
-    mLabel->setAlignment(Graphics::CENTER);
-    mValue->setAlignment(Graphics::CENTER);
-}
-
-AttrDisplay::~AttrDisplay()
-{
-    delete2(mLayout);
-}
-
-std::string AttrDisplay::update()
-{
-    const int base = PlayerInfo::getStatBase(mId);
-    const int bonus = PlayerInfo::getStatMod(mId);
-    std::string value = toString(base + bonus);
-    if (bonus)
-        value.append(strprintf("=%d%+d", base, bonus));
-    mValue->setCaption(value);
-    return mName;
 }
 
 DerDisplay::DerDisplay(const Widget2 *const widget,

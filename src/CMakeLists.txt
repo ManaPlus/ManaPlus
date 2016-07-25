@@ -135,6 +135,8 @@ SET(SRCS
     gui/widgets/characterviewnormal.h
     gui/widgets/characterviewsmall.cpp
     gui/widgets/characterviewsmall.h
+    gui/widgets/attrs/attrdisplay.cpp
+    gui/widgets/attrs/attrdisplay.h
     gui/widgets/tabs/debugwindowtabs.cpp
     gui/widgets/tabs/debugwindowtabs.h
     gui/widgets/tabs/chat/chattab.cpp
