@@ -84,6 +84,26 @@ enumStart(Attributes)
     HOMUN_DEF,
     HOMUN_ATK,
 
+    // mercenary attributes
+    MERC_LEVEL,
+    MERC_HP,
+    MERC_MAX_HP,
+    MERC_MP,
+    MERC_MAX_MP,
+    MERC_ATTACK_DELAY,
+    MERC_ATTACK_RANGE,
+    MERC_CRIT,
+    MERC_FLEE,
+    MERC_HIT,
+    MERC_MDEF,
+    MERC_MATK,
+    MERC_DEF,
+    MERC_ATK,
+    MERC_EXPIRE,
+    MERC_FAITH,
+    MERC_CALLS,
+    MERC_KILLS,
+
     MAX_ATTRIBUTE
 }
 enumEnd(Attributes);
