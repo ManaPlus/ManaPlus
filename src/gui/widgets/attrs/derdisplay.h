@@ -20,43 +20,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_STATUSWINDOWATTRS_H
-#define GUI_WIDGETS_STATUSWINDOWATTRS_H
+#ifndef GUI_WIDGETS_ATTRS_DERDISPLAY_H
+#define GUI_WIDGETS_ATTRS_DERDISPLAY_H
 
 #include "gui/widgets/attrs/attrdisplay.h"
 
-#include "listeners/actionlistener.h"
-
 #include "localconsts.h"
 
-class Button;
-class LayoutHelper;
-
-class ChangeDisplay final : public AttrDisplay,
-                            public ActionListener
+class DerDisplay final : public AttrDisplay
 {
     public:
-        ChangeDisplay(const Widget2 *const widget,
-                      const AttributesT id,
-                      const std::string &restrict name,
-                      const std::string &restrict shortName);
+        DerDisplay(const Widget2 *const widget,
+                   const AttributesT id,
+                   const std::string &restrict name,
+                   const std::string &restrict shortName);
 
-        A_DELETE_COPY(ChangeDisplay)
-
-        std::string update() override final;
+        A_DELETE_COPY(DerDisplay)
 
         Type getType() const override final
-        { return CHANGEABLE; }
-
-        void setPointsNeeded(const int needed);
-
-        void action(const ActionEvent &event) override final;
-
-    private:
-        int mNeeded;
-
-        Label *mPoints;
-        Button *mInc;
+        { return DERIVED; }
 };
 
-#endif  // GUI_WIDGETS_STATUSWINDOWATTRS_H
+#endif  // GUI_WIDGETS_ATTRS_DERDISPLAY_H

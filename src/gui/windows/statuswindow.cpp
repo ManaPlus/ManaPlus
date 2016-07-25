@@ -46,6 +46,7 @@
 #include "gui/widgets/windowcontainer.h"
 
 #include "gui/widgets/attrs/attrdisplay.h"
+#include "gui/widgets/attrs/derdisplay.h"
 
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
@@ -712,18 +713,6 @@ void StatusWindow::action(const ActionEvent &event)
         }
         chatWindow->addInputText(str);
     }
-}
-
-DerDisplay::DerDisplay(const Widget2 *const widget,
-                       const AttributesT id,
-                       const std::string &restrict name,
-                       const std::string &restrict shortName) :
-    AttrDisplay(widget, id, name, shortName)
-{
-    ContainerPlacer place = mLayout->getPlacer(0, 0);
-
-    place(0, 0, mLabel, 3);
-    place(3, 0, mValue, 2);
 }
 
 ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
