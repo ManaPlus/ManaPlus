@@ -34,7 +34,7 @@ namespace
 {
     bool mLoaded = false;
     static std::vector<BasicStat> mBasicStats;
-    static std::vector<BasicStat> mExtendedStats;
+    static std::map<std::string, std::vector<BasicStat> > mStats;
 }  // namespace
 
 void StatDb::addDefaultStats()
@@ -72,7 +72,7 @@ const std::vector<BasicStat> &StatDb::getBasicStats()
 
 const std::vector<BasicStat> &StatDb::getExtendedStats()
 {
-    return mExtendedStats;
+    return mStats["extended"];
 }
 
 void StatDb::load()
@@ -111,9 +111,11 @@ static void loadBasicStats(const XmlNodePtr rootNode)
     }
 }
 
-static void loadExtendedStats(const XmlNodePtr rootNode)
+static void loadStats(const XmlNodePtr rootNode,
+                      const std::string &page)
 {
     const int maxAttr = static_cast<int>(Attributes::MAX_ATTRIBUTE);
+    std::vector<BasicStat> &stats = mStats[page];
     for_each_xml_child_node(node, rootNode)
     {
         if (xmlNameEqual(node, "stat"))
@@ -126,7 +128,7 @@ static void loadExtendedStats(const XmlNodePtr rootNode)
                     name.c_str());
                 continue;
             }
-            mExtendedStats.push_back(BasicStat(static_cast<AttributesT>(id),
+            stats.push_back(BasicStat(static_cast<AttributesT>(id),
                 std::string(),
                 name));
         }
@@ -165,13 +167,23 @@ void StatDb::loadXmlFile(const std::string &fileName,
         }
         else if (xmlNameEqual(node, "extended"))
         {
-            loadExtendedStats(node);
+            loadStats(node, "extended");
+        }
+        else if (xmlNameEqual(node, "page"))
+        {
+            std::string page = XML::getProperty(node, "name", "");
+            if (page.empty())
+            {
+                reportAlways("Page without name in stats.xml");
+                page = "Unknown";
+            }
+            loadStats(node, page);
         }
     }
     if (skipError == SkipError_false)
     {
         if (mBasicStats.empty() &&
-            mExtendedStats.empty())
+            mStats.empty())
         {
             reportAlways("StatDb: no stats found");
             addDefaultStats();
@@ -184,6 +196,6 @@ void StatDb::unload()
     logger->log1("Unloading stat database...");
 
     mBasicStats.clear();
-    mExtendedStats.clear();
+    mStats.clear();
     mLoaded = false;
 }
