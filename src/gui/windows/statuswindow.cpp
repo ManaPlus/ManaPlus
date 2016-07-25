@@ -36,7 +36,6 @@
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
@@ -44,19 +43,16 @@
 #include "gui/widgets/vertcontainer.h"
 #include "gui/widgets/windowcontainer.h"
 
-#include "gui/widgets/attrs/attrdisplay.h"
 #include "gui/widgets/attrs/changedisplay.h"
 #include "gui/widgets/attrs/derdisplay.h"
 
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
-#include "net/serverfeatures.h"
 
 #include "resources/db/statdb.h"
 
 #include "resources/item/item.h"
 
-#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
