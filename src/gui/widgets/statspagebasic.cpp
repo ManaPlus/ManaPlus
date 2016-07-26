@@ -57,7 +57,10 @@ StatsPageBasic::StatsPageBasic(const Widget2 *const widget) :
     FOR_EACH (std::vector<BasicStat>::const_iterator, it, basicStats)
     {
         const BasicStat &stat = *it;
-        AttrDisplay *disp = new ChangeDisplay(this, stat.attr, stat.name, stat.tag);
+        AttrDisplay *disp = new ChangeDisplay(this,
+            stat.attr,
+            stat.name,
+            stat.tag);
         disp->update();
         mAttrCont->add2(disp, true);
         mAttrs[stat.attr] = disp;

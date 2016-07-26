@@ -38,7 +38,7 @@ class StatsPageBasic final : public Container,
                              public StatListener
 {
     public:
-        StatsPageBasic(const Widget2 *const widget);
+        explicit StatsPageBasic(const Widget2 *const widget);
 
         A_DELETE_COPY(StatsPageBasic)
 
