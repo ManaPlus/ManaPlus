@@ -51,44 +51,44 @@ void MercenaryRecv::processMercenaryInfo(Net::MessageIn &msg)
     // +++ need create if need mercenary being and update stats
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
-    PlayerInfo::setAttribute(Attributes::MERC_ATK,
+    PlayerInfo::setStatBase(Attributes::MERC_ATK,
         msg.readInt16("atk"));
-    PlayerInfo::setAttribute(Attributes::MERC_MATK,
+    PlayerInfo::setStatBase(Attributes::MERC_MATK,
         msg.readInt16("matk"));
-    PlayerInfo::setAttribute(Attributes::MERC_HIT,
+    PlayerInfo::setStatBase(Attributes::MERC_HIT,
         msg.readInt16("hit"));
-    PlayerInfo::setAttribute(Attributes::MERC_CRIT,
+    PlayerInfo::setStatBase(Attributes::MERC_CRIT,
         msg.readInt16("crit/10"));
-    PlayerInfo::setAttribute(Attributes::MERC_DEF,
+    PlayerInfo::setStatBase(Attributes::MERC_DEF,
         msg.readInt16("def"));
-    PlayerInfo::setAttribute(Attributes::MERC_MDEF,
+    PlayerInfo::setStatBase(Attributes::MERC_MDEF,
         msg.readInt16("mdef"));
-    PlayerInfo::setAttribute(Attributes::MERC_FLEE,
+    PlayerInfo::setStatBase(Attributes::MERC_FLEE,
         msg.readInt16("flee"));
-    PlayerInfo::setAttribute(Attributes::MERC_ATTACK_DELAY,
+    PlayerInfo::setStatBase(Attributes::MERC_ATTACK_DELAY,
         msg.readInt16("attack speed"));
     const std::string name = msg.readString(24, "name");
     const int level = msg.readInt16("level");
-    PlayerInfo::setAttribute(Attributes::MERC_LEVEL,
+    PlayerInfo::setStatBase(Attributes::MERC_LEVEL,
         level);
-    PlayerInfo::setAttribute(Attributes::MERC_HP,
+    PlayerInfo::setStatBase(Attributes::MERC_HP,
         msg.readInt32("hp"));
-    PlayerInfo::setAttribute(Attributes::MERC_MAX_HP,
+    PlayerInfo::setStatBase(Attributes::MERC_MAX_HP,
         msg.readInt32("max hp"));
-    PlayerInfo::setAttribute(Attributes::MERC_MP,
+    PlayerInfo::setStatBase(Attributes::MERC_MP,
         msg.readInt32("sp"));
-    PlayerInfo::setAttribute(Attributes::MERC_MAX_MP,
+    PlayerInfo::setStatBase(Attributes::MERC_MAX_MP,
         msg.readInt32("max sp"));
-    PlayerInfo::setAttribute(Attributes::MERC_EXPIRE,
+    PlayerInfo::setStatBase(Attributes::MERC_EXPIRE,
         msg.readInt32("expire time"));
-    PlayerInfo::setAttribute(Attributes::MERC_FAITH,
+    PlayerInfo::setStatBase(Attributes::MERC_FAITH,
         msg.readInt16("faith"));
-    PlayerInfo::setAttribute(Attributes::MERC_CALLS,
+    PlayerInfo::setStatBase(Attributes::MERC_CALLS,
         msg.readInt32("calls"));
-    PlayerInfo::setAttribute(Attributes::MERC_KILLS,
+    PlayerInfo::setStatBase(Attributes::MERC_KILLS,
         msg.readInt32("kills"));
     const int range = msg.readInt16("attack range");
-    PlayerInfo::setAttribute(Attributes::MERC_ATTACK_RANGE,
+    PlayerInfo::setStatBase(Attributes::MERC_ATTACK_RANGE,
         range);
     if (dstBeing && localPlayer)
     {
