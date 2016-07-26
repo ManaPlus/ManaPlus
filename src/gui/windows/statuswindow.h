@@ -120,8 +120,6 @@ class StatusWindow final : public Window,
         ProgressBar *mJobBar;
 
         StatsPageBasic *mBasicStatsPage;
-
-        Label *mCharacterPointsLabel A_NONNULLPOINTER;
         Button *mCopyButton;
 };
 
