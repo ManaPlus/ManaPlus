@@ -37,7 +37,8 @@
 
 #include "debug.h"
 
-StatsPage::StatsPage(const Widget2 *const widget) :
+StatsPage::StatsPage(const Widget2 *const widget,
+                     const std::string &page) :
     Container(widget),
     WidgetListener(),
     StatListener(),
@@ -51,7 +52,7 @@ StatsPage::StatsPage(const Widget2 *const widget) :
     mAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
 
     add(mAttrScroll);
-    const std::vector<BasicStat> &basicStats = StatDb::getExtendedStats();
+    const std::vector<BasicStat> &basicStats = StatDb::getStats(page);
     FOR_EACH (std::vector<BasicStat>::const_iterator, it, basicStats)
     {
         const BasicStat &stat = *it;

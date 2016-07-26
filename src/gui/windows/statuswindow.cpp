@@ -48,6 +48,8 @@
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
 
+#include "resources/db/statdb.h"
+
 #include "resources/item/item.h"
 
 #include "utils/gettext.h"
@@ -213,15 +215,18 @@ void StatusWindow::addTabs()
 {
     // TRANSLATORS: status window tab name
     addTabBasic(_("Basic"));
-    // TRANSLATORS: status window tab name
-    addTab(_("Extended"));
+    const std::vector<std::string> &pages = StatDb::getPages();
+    FOR_EACH(std::vector<std::string>::const_iterator, it, pages)
+    {
+        addTab(*it);
+    }
     mTabs->adjustSize();
 }
 
 void StatusWindow::addTab(const std::string &name)
 {
     mTabs->addTab(name,
-        new StatsPage(this));
+        new StatsPage(this, name));
 }
 
 void StatusWindow::addTabBasic(const std::string &name)

@@ -35,6 +35,7 @@ namespace
     bool mLoaded = false;
     static std::vector<BasicStat> mBasicStats;
     static std::map<std::string, std::vector<BasicStat> > mStats;
+    static std::vector<std::string> mPages;
 }  // namespace
 
 void StatDb::addDefaultStats()
@@ -70,9 +71,14 @@ const std::vector<BasicStat> &StatDb::getBasicStats()
     return mBasicStats;
 }
 
-const std::vector<BasicStat> &StatDb::getExtendedStats()
+const std::vector<BasicStat> &StatDb::getStats(const std::string &page)
 {
-    return mStats["extended"];
+    return mStats[page];
+}
+
+const std::vector<std::string> &StatDb::getPages()
+{
+    return mPages;
 }
 
 void StatDb::load()
@@ -116,6 +122,7 @@ static void loadStats(const XmlNodePtr rootNode,
 {
     const int maxAttr = static_cast<int>(Attributes::MAX_ATTRIBUTE);
     std::vector<BasicStat> &stats = mStats[page];
+    mPages.push_back(page);
     for_each_xml_child_node(node, rootNode)
     {
         if (xmlNameEqual(node, "stat"))
@@ -167,11 +174,12 @@ void StatDb::loadXmlFile(const std::string &fileName,
         }
         else if (xmlNameEqual(node, "extended"))
         {
-            loadStats(node, "extended");
+            // TRANSLATORS: stats page name
+            loadStats(node, _("Extended"));
         }
         else if (xmlNameEqual(node, "page"))
         {
-            std::string page = XML::getProperty(node, "name", "");
+            std::string page = XML::langProperty(node, "name", "");
             if (page.empty())
             {
                 reportAlways("Page without name in stats.xml");

@@ -35,7 +35,8 @@ class StatsPage final : public Container,
                         public StatListener
 {
     public:
-        StatsPage(const Widget2 *const widget);
+        StatsPage(const Widget2 *const widget,
+                  const std::string &page);
 
         A_DELETE_COPY(StatsPage)
 

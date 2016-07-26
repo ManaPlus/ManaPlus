@@ -42,7 +42,9 @@ namespace StatDb
 
     const std::vector<BasicStat> &getBasicStats();
 
-    const std::vector<BasicStat> &getExtendedStats();
+    const std::vector<BasicStat> &getStats(const std::string &page);
+
+    const std::vector<std::string> &getPages();
 }  // namespace StatDb
 
 #endif  // RESOURCES_DB_STATDB_H
