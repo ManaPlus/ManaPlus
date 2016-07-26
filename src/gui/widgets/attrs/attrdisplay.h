@@ -31,6 +31,7 @@
 
 #include "localconsts.h"
 
+class AttrDisplay;
 class LayoutHelper;
 
 class AttrDisplay notfinal : public Container
@@ -77,5 +78,7 @@ class AttrDisplay notfinal : public Container
         Label *mLabel;
         Label *mValue;
 };
+
+typedef std::map<AttributesT, AttrDisplay*> Attrs;
 
 #endif  // GUI_WIDGETS_ATTRS_ATTRDISPLAY_H

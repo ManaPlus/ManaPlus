@@ -27,7 +27,6 @@
 
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
-#include "gui/windows/statuswindow.h"
 
 #include "gui/widgets/tabs/chat/guildtab.h"
 #include "gui/widgets/tabs/chat/partytab.h"
@@ -204,11 +203,6 @@ void GeneralHandler::gameStarted() const
 {
     if (skillDialog)
         skillDialog->loadSkills();
-
-    if (!statusWindow)
-        return;
-
-    statusWindow->addAttributes();
 }
 
 void GeneralHandler::gameEnded() const

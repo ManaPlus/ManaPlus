@@ -204,6 +204,10 @@ SET(SRCS
     gui/widgets/itemshortcutcontainer.h
     gui/widgets/spellshortcutcontainer.cpp
     gui/widgets/spellshortcutcontainer.h
+    gui/widgets/statspage.cpp
+    gui/widgets/statspage.h
+    gui/widgets/statspagebasic.cpp
+    gui/widgets/statspagebasic.h
     gui/widgets/label.cpp
     gui/widgets/label.h
     gui/widgets/tabs/chat/langtab.cpp

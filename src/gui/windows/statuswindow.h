@@ -25,8 +25,6 @@
 
 #include "gui/widgets/window.h"
 
-#include "enums/simpletypes/modifiable.h"
-
 #include "listeners/actionlistener.h"
 #include "listeners/attributelistener.h"
 #include "listeners/statlistener.h"
@@ -36,6 +34,8 @@ class Button;
 class Label;
 class ProgressBar;
 class ScrollArea;
+class StatsPageBasic;
+class TabbedArea;
 class VertContainer;
 
 /**
@@ -58,11 +58,6 @@ class StatusWindow final : public Window,
 
         void setPointsNeeded(const AttributesT id,
                              const int needed);
-
-        void addAttribute(const AttributesT id,
-                          const std::string &restrict name,
-                          const std::string &restrict shortName = "",
-                          const Modifiable modifiable = Modifiable_false);
 
         static void updateHPBar(ProgressBar *const bar,
                                 const bool showMax = false);
@@ -87,8 +82,6 @@ class StatusWindow final : public Window,
 
         void action(const ActionEvent &event) override;
 
-        void clearAttributes();
-
         void attributeChanged(const AttributesT id,
                               const int oldVal,
                               const int newVal) override final;
@@ -99,15 +92,15 @@ class StatusWindow final : public Window,
 
         void updateLevelLabel();
 
-        void addAttributes();
-
     private:
+        void addTabs();
+        void addTab(const std::string &name);
+        void addTabBasic(const std::string &name);
+
         static std::string translateLetter(const char *const letters);
         static std::string translateLetter2(const std::string &letters);
 
-        /**
-         * Status Part
-         */
+        TabbedArea *mTabs A_NONNULLPOINTER;
         Label *mLvlLabel A_NONNULLPOINTER;
         Label *mMoneyLabel A_NONNULLPOINTER;
         Label *mHpLabel A_NONNULLPOINTER;
@@ -121,16 +114,10 @@ class StatusWindow final : public Window,
         Label *mJobLabel;
         ProgressBar *mJobBar;
 
-        VertContainer *mAttrCont A_NONNULLPOINTER;
-        ScrollArea *mAttrScroll A_NONNULLPOINTER;
-        VertContainer *mDAttrCont A_NONNULLPOINTER;
-        ScrollArea *mDAttrScroll A_NONNULLPOINTER;
+        StatsPageBasic *mBasicStatsPage;
 
         Label *mCharacterPointsLabel A_NONNULLPOINTER;
         Button *mCopyButton;
-
-        typedef std::map<AttributesT, AttrDisplay*> Attrs;
-        Attrs mAttrs;
 };
 
 extern StatusWindow *statusWindow;

@@ -36,20 +36,17 @@
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/createwidget.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
-#include "gui/widgets/scrollarea.h"
-#include "gui/widgets/vertcontainer.h"
+#include "gui/widgets/statspage.h"
+#include "gui/widgets/statspagebasic.h"
+#include "gui/widgets/tabbedarea.h"
 #include "gui/widgets/windowcontainer.h"
-
-#include "gui/widgets/attrs/changedisplay.h"
-#include "gui/widgets/attrs/derdisplay.h"
 
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
-
-#include "resources/db/statdb.h"
 
 #include "resources/item/item.h"
 
@@ -65,6 +62,7 @@ StatusWindow::StatusWindow() :
     ActionListener(),
     AttributeListener(),
     StatListener(),
+    mTabs(CREATEWIDGETR(TabbedArea, this)),
     // TRANSLATORS: status window label
     mLvlLabel(new Label(this, strprintf(_("Level: %d"), 0))),
     // TRANSLATORS: status window label
@@ -80,14 +78,9 @@ StatusWindow::StatusWindow() :
     mJobLvlLabel(nullptr),
     mJobLabel(nullptr),
     mJobBar(nullptr),
-    mAttrCont(new VertContainer(this, 32)),
-    mAttrScroll(new ScrollArea(this, mAttrCont, false)),
-    mDAttrCont(new VertContainer(this, 32)),
-    mDAttrScroll(new ScrollArea(this, mDAttrCont, false)),
-    mCharacterPointsLabel(new Label(this, "C")),
+    mBasicStatsPage(new StatsPageBasic(this)),
     // TRANSLATORS: status window button
-    mCopyButton(new Button(this, _("Copy to chat"), "copy", this)),
-    mAttrs()
+    mCopyButton(new Button(this, _("Copy to chat"), "copy", this))
 {
     setWindowName("Status");
     if (setupWindow)
@@ -193,21 +186,10 @@ StatusWindow::StatusWindow() :
         place(3, 0, mMoneyLabel, 3);
     }
 
-    // ----------------------
-    // Stats Part
-    // ----------------------
-
-    mAttrScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-    mAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
-    place(0, 3, mAttrScroll, 5, 3);
-
-    mDAttrScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-    mDAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
-    place(6, 3, mDAttrScroll, 5, 3);
+    place(0, 3, mTabs, 9, 3);
 
     getLayout().setRowHeight(3, LayoutType::SET);
 
-    place(0, 6, mCharacterPointsLabel, 5);
     place(0, 5, mCopyButton);
 
     loadWindowState();
@@ -222,35 +204,30 @@ StatusWindow::StatusWindow() :
     mMoneyLabel->setCaption(strprintf(_("Money: %s"), Units::formatCurrency(
         PlayerInfo::getAttribute(Attributes::MONEY)).c_str()));
     mMoneyLabel->adjustSize();
-    // TRANSLATORS: status window label
-    mCharacterPointsLabel->setCaption(strprintf(_("Character points: %d"),
-        PlayerInfo::getAttribute(Attributes::PLAYER_CHAR_POINTS)));
-    mCharacterPointsLabel->adjustSize();
 
     updateLevelLabel();
+    addTabs();
 }
 
-void StatusWindow::addAttributes()
+void StatusWindow::addTabs()
 {
-    clearAttributes();
+    // TRANSLATORS: status window tab name
+    addTabBasic(_("Basic"));
+    // TRANSLATORS: status window tab name
+    addTab(_("Extended"));
+    mTabs->adjustSize();
+}
 
-    const std::vector<BasicStat> &basicStats = StatDb::getBasicStats();
-    FOR_EACH (std::vector<BasicStat>::const_iterator, it, basicStats)
-    {
-        const BasicStat &stat = *it;
-        addAttribute(stat.attr,
-            stat.name,
-            stat.tag,
-            Modifiable_true);
-    }
+void StatusWindow::addTab(const std::string &name)
+{
+    mTabs->addTab(name,
+        new StatsPage(this));
+}
 
-    const std::vector<BasicStat> &extendedStats = StatDb::getExtendedStats();
-    FOR_EACH (std::vector<BasicStat>::const_iterator, it, extendedStats)
-    {
-        const BasicStat &stat = *it;
-        addAttribute(stat.attr,
-            stat.name);
-    }
+void StatusWindow::addTabBasic(const std::string &name)
+{
+    mTabs->addTab(name,
+        mBasicStatsPage);
 }
 
 void StatusWindow::updateLevelLabel()
@@ -325,9 +302,6 @@ void StatusWindow::statChanged(const AttributesT id,
     else
     {
         updateMPBar(mMpBar, true);
-        const Attrs::const_iterator it = mAttrs.find(id);
-        if (it != mAttrs.end() && it->second)
-            it->second->update();
     }
 }
 
@@ -361,32 +335,6 @@ void StatusWindow::attributeChanged(const AttributesT id,
             mMoneyLabel->adjustSize();
             break;
 
-        case Attributes::PLAYER_CHAR_POINTS:
-            mCharacterPointsLabel->setCaption(strprintf(
-                // TRANSLATORS: status window label
-                _("Character points: %d"), newVal));
-
-            mCharacterPointsLabel->adjustSize();
-            // Update all attributes
-            for (Attrs::const_iterator it = mAttrs.begin();
-                 it != mAttrs.end(); ++it)
-            {
-                if (it->second)
-                    it->second->update();
-            }
-            break;
-
-        // ??
-        case Attributes::PLAYER_CORR_POINTS:
-            // Update all attributes
-            for (Attrs::const_iterator it = mAttrs.begin();
-                 it != mAttrs.end(); ++it)
-            {
-                if (it->second)
-                    it->second->update();
-            }
-            break;
-
         case Attributes::PLAYER_LEVEL:
             // TRANSLATORS: status window label
             mLvlLabel->setCaption(strprintf(_("Level: %d"), newVal));
@@ -402,45 +350,7 @@ void StatusWindow::attributeChanged(const AttributesT id,
 void StatusWindow::setPointsNeeded(const AttributesT id,
                                    const int needed)
 {
-    const Attrs::const_iterator it = mAttrs.find(id);
-
-    if (it != mAttrs.end())
-    {
-        AttrDisplay *const disp = it->second;
-        if (disp && disp->getType() == AttrDisplay::CHANGEABLE)
-            static_cast<ChangeDisplay*>(disp)->setPointsNeeded(needed);
-    }
-}
-
-void StatusWindow::addAttribute(const AttributesT id,
-                                const std::string &restrict name,
-                                const std::string &restrict shortName,
-                                const Modifiable modifiable)
-{
-    AttrDisplay *disp;
-
-    if (modifiable == Modifiable_true)
-    {
-        disp = new ChangeDisplay(this, id, name, shortName);
-        disp->update();
-        mAttrCont->add1(disp);
-    }
-    else
-    {
-        disp = new DerDisplay(this, id, name, shortName);
-        disp->update();
-        mDAttrCont->add1(disp);
-    }
-    mAttrs[id] = disp;
-}
-
-void StatusWindow::clearAttributes()
-{
-    mAttrCont->clear();
-    mDAttrCont->clear();
-    FOR_EACH (Attrs::iterator, it, mAttrs)
-        delete (*it).second;
-    mAttrs.clear();
+    mBasicStatsPage->setPointsNeeded(id, needed);
 }
 
 void StatusWindow::updateHPBar(ProgressBar *const bar, const bool showMax)
@@ -694,20 +604,6 @@ void StatusWindow::action(const ActionEvent &event)
 
     if (event.getId() == "copy")
     {
-        Attrs::const_iterator it = mAttrs.begin();
-        const Attrs::const_iterator it_end = mAttrs.end();
-        std::string str;
-        while (it != it_end)
-        {
-            const ChangeDisplay *const attr = dynamic_cast<ChangeDisplay*>(
-                (*it).second);
-            if (attr)
-            {
-                str.append(strprintf("%s:%s ", attr->getShortName().c_str(),
-                    attr->getValue().c_str()));
-            }
-            ++ it;
-        }
-        chatWindow->addInputText(str);
+        chatWindow->addInputText(mBasicStatsPage->getStatsStr());
     }
 }

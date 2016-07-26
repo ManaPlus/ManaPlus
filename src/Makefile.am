@@ -986,6 +986,10 @@ manaplus_SOURCES += main.cpp \
 	      gui/widgets/itemshortcutcontainer.h \
 	      gui/widgets/spellshortcutcontainer.cpp \
 	      gui/widgets/spellshortcutcontainer.h \
+	      gui/widgets/statspage.cpp \
+	      gui/widgets/statspage.h \
+	      gui/widgets/statspagebasic.cpp \
+	      gui/widgets/statspagebasic.h \
 	      gui/widgets/selldialog.cpp \
 	      gui/widgets/selldialog.h \
 	      gui/widgets/tabs/setup_audio.cpp \
