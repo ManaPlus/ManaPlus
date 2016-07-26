@@ -151,6 +151,7 @@ void HomunculusRecv::processHomunculusInfo(Net::MessageIn &msg)
     PlayerInfo::setStatBase(Attributes::HOMUN_ATTACK_RANGE,
         range);
 
+    PlayerInfo::updateAttrs();
     HomunculusInfo *const info = PlayerInfo::getHomunculus();
     if (!info)  // we can't find homunculus being because id is missing
         return;

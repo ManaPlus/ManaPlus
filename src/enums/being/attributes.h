@@ -91,6 +91,7 @@ enumStart(Attributes)
     MERC_MAX_MP,
     MERC_ATTACK_DELAY,
     MERC_ATTACK_RANGE,
+    MERC_ATTACK_SPEED,
     MERC_CRIT,
     MERC_FLEE,
     MERC_HIT,

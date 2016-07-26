@@ -90,6 +90,8 @@ void MercenaryRecv::processMercenaryInfo(Net::MessageIn &msg)
     const int range = msg.readInt16("attack range");
     PlayerInfo::setStatBase(Attributes::MERC_ATTACK_RANGE,
         range);
+    PlayerInfo::updateAttrs();
+
     if (dstBeing && localPlayer)
     {
         MercenaryInfo *const mercenary = new MercenaryInfo;

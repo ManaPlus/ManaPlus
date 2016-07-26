@@ -396,25 +396,37 @@ void setTrading(const Trading trading)
     mTrading = trading;
 }
 
+#define updateAttackStat(atk, delay, speed) \
+    attackDelay = getStatBase(delay); \
+    if (attackDelay) \
+    { \
+        setStatBase(speed, \
+            getStatBase(atk) * 1000 / attackDelay, \
+            Notify_false); \
+        setStatMod(speed, \
+            getStatMod(atk) * 1000 / attackDelay, \
+            Notify_true); \
+    } \
+    else \
+    { \
+        setStatBase(speed, 0, \
+            Notify_false); \
+        setStatMod(speed, 0, \
+            Notify_true); \
+    }
+
 void updateAttrs()
 {
-    const int attackDelay = getStatBase(Attributes::PLAYER_ATTACK_DELAY);
-    if (attackDelay)
-    {
-        setStatBase(Attributes::PLAYER_ATTACK_SPEED,
-            getStatBase(Attributes::PLAYER_ATK) * 1000 / attackDelay,
-            Notify_false);
-        setStatMod(Attributes::PLAYER_ATTACK_SPEED,
-            getStatMod(Attributes::PLAYER_ATK) * 1000 / attackDelay,
-            Notify_true);
-    }
-    else
-    {
-        setStatBase(Attributes::PLAYER_ATTACK_SPEED, 0,
-            Notify_false);
-        setStatMod(Attributes::PLAYER_ATTACK_SPEED, 0,
-            Notify_true);
-    }
+    int attackDelay;
+    updateAttackStat(Attributes::PLAYER_ATK,
+        Attributes::PLAYER_ATTACK_DELAY,
+        Attributes::PLAYER_ATTACK_SPEED)
+    updateAttackStat(Attributes::HOMUN_ATK,
+        Attributes::HOMUN_ATTACK_DELAY,
+        Attributes::HOMUN_ATTACK_SPEED)
+    updateAttackStat(Attributes::MERC_ATK,
+        Attributes::MERC_ATTACK_DELAY,
+        Attributes::MERC_ATTACK_SPEED)
 }
 
 void init()
