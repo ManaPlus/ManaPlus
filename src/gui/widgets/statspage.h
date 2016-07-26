@@ -23,6 +23,7 @@
 
 #include "gui/widgets/attrs/attrdisplay.h"
 
+#include "listeners/attributelistener.h"
 #include "listeners/statlistener.h"
 
 #include "localconsts.h"
@@ -32,6 +33,7 @@ class VertContainer;
 
 class StatsPage final : public Container,
                         public WidgetListener,
+                        public AttributeListener,
                         public StatListener
 {
     public:
@@ -41,6 +43,10 @@ class StatsPage final : public Container,
         A_DELETE_COPY(StatsPage)
 
         void widgetResized(const Event &event) override final;
+
+        void attributeChanged(const AttributesT id,
+                              const int oldVal,
+                              const int newVal) override final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,

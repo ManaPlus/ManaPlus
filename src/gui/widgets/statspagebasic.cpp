@@ -105,7 +105,7 @@ void StatsPageBasic::attributeChanged(const AttributesT id,
                 if (it->second)
                     it->second->update();
             }
-            break;
+            return;
 
         case Attributes::PLAYER_CORR_POINTS:
             // Update all attributes
@@ -115,12 +115,15 @@ void StatsPageBasic::attributeChanged(const AttributesT id,
                 if (it->second)
                     it->second->update();
             }
-            break;
+            return;
 
         default:
             break;
     }
     PRAGMA45(GCC diagnostic pop)
+    const Attrs::const_iterator it = mAttrs.find(id);
+    if (it != mAttrs.end() && it->second)
+        it->second->update();
 }
 
 void StatsPageBasic::setPointsNeeded(const AttributesT id,

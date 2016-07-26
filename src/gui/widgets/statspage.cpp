@@ -41,6 +41,7 @@ StatsPage::StatsPage(const Widget2 *const widget,
                      const std::string &page) :
     Container(widget),
     WidgetListener(),
+    AttributeListener(),
     StatListener(),
     mAttrs(),
     mAttrCont(new VertContainer(this, 32)),
@@ -66,6 +67,15 @@ StatsPage::StatsPage(const Widget2 *const widget,
 void StatsPage::widgetResized(const Event &event A_UNUSED)
 {
     mAttrScroll->setSize(getWidth(), getHeight());
+}
+
+void StatsPage::attributeChanged(const AttributesT id,
+                                 const int oldVal A_UNUSED,
+                                 const int newVal A_UNUSED)
+{
+    const Attrs::const_iterator it = mAttrs.find(id);
+    if (it != mAttrs.end() && it->second)
+        it->second->update();
 }
 
 void StatsPage::statChanged(const AttributesT id,
