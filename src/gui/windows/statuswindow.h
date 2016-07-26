@@ -34,6 +34,7 @@ class Button;
 class Label;
 class ProgressBar;
 class ScrollArea;
+class StatsPage;
 class StatsPageBasic;
 class TabbedArea;
 class VertContainer;
@@ -55,6 +56,8 @@ class StatusWindow final : public Window,
         StatusWindow();
 
         A_DELETE_COPY(StatusWindow)
+
+        ~StatusWindow();
 
         void setPointsNeeded(const AttributesT id,
                              const int needed);
@@ -99,6 +102,8 @@ class StatusWindow final : public Window,
 
         static std::string translateLetter(const char *const letters);
         static std::string translateLetter2(const std::string &letters);
+
+        std::vector<StatsPage*> mPages;
 
         TabbedArea *mTabs A_NONNULLPOINTER;
         Label *mLvlLabel A_NONNULLPOINTER;

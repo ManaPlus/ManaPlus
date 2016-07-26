@@ -52,6 +52,8 @@
 
 #include "resources/item/item.h"
 
+#include "utils/delete2.h"
+#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -64,6 +66,7 @@ StatusWindow::StatusWindow() :
     ActionListener(),
     AttributeListener(),
     StatListener(),
+    mPages(),
     mTabs(CREATEWIDGETR(TabbedArea, this)),
     // TRANSLATORS: status window label
     mLvlLabel(new Label(this, strprintf(_("Level: %d"), 0))),
@@ -211,6 +214,12 @@ StatusWindow::StatusWindow() :
     addTabs();
 }
 
+StatusWindow::~StatusWindow()
+{
+    delete2(mBasicStatsPage);
+    delete_all(mPages);
+}
+
 void StatusWindow::addTabs()
 {
     // TRANSLATORS: status window tab name
@@ -225,8 +234,10 @@ void StatusWindow::addTabs()
 
 void StatusWindow::addTab(const std::string &name)
 {
+    StatsPage *const page = new StatsPage(this, name);
     mTabs->addTab(name,
-        new StatsPage(this, name));
+        page);
+    mPages.push_back(page);
 }
 
 void StatusWindow::addTabBasic(const std::string &name)
