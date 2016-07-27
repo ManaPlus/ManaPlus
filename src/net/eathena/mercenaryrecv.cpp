@@ -33,17 +33,45 @@
 
 #include "net/messagein.h"
 
+#include "net/eathena/sp.h"
+
+#include "utils/checkutils.h"
+
 #include "debug.h"
 
 namespace EAthena
 {
 
+#define setMercStat(sp, stat) \
+        case sp: \
+            PlayerInfo::setStatBase(stat, \
+                val); \
+            break;
+
 void MercenaryRecv::processMercenaryUpdate(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    // +++ need create if need mercenary being and update stats
-    msg.readInt16("type");
-    msg.readInt32("value");
+    const int sp = msg.readInt16("type");
+    const int val = msg.readInt32("value");
+    switch (sp)
+    {
+        setMercStat(Sp::ATK1, Attributes::MERC_ATK);
+        setMercStat(Sp::MATK1, Attributes::MERC_MATK);
+        setMercStat(Sp::HIT, Attributes::MERC_HIT);
+        setMercStat(Sp::CRITICAL, Attributes::MERC_CRIT);
+        setMercStat(Sp::DEF1, Attributes::MERC_DEF);
+        setMercStat(Sp::MDEF1, Attributes::MERC_MDEF);
+        setMercStat(Sp::MERCFLEE, Attributes::MERC_FLEE);
+        setMercStat(Sp::ASPD, Attributes::MERC_ATTACK_DELAY);
+        setMercStat(Sp::HP, Attributes::MERC_HP);
+        setMercStat(Sp::MAXHP, Attributes::MERC_MAX_HP);
+        setMercStat(Sp::SP, Attributes::MERC_MP);
+        setMercStat(Sp::MAXSP, Attributes::MERC_MAX_MP);
+        setMercStat(Sp::MERCKILLS, Attributes::MERC_KILLS);
+        setMercStat(Sp::MERCFAITH, Attributes::MERC_FAITH);
+        default:
+            reportAlways("Unknown mercenary stat %d",
+                sp);
+    }
 }
 
 void MercenaryRecv::processMercenaryInfo(Net::MessageIn &msg)

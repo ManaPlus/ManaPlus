@@ -101,7 +101,7 @@ namespace Sp
         MOD_DROP                = 126,
         MOD_DEATH               = 127,
 
-        SP_MERCFLEE             = 165,
+        MERCFLEE                = 165,
 
         MERCKILLS               = 189,
         MERCFAITH               = 190,
