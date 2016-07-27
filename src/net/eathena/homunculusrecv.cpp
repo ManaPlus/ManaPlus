@@ -25,6 +25,7 @@
 
 #include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
+#include "being/localplayer.h"
 
 #include "enums/resources/notifytypes.h"
 
@@ -203,6 +204,14 @@ void HomunculusRecv::processHomunculusFood(Net::MessageIn &msg)
             ItemDB::get(itemId).getName().c_str());
         NotifyManager::notify(NotifyTypes::HOMUNCULUS_FEED_FAIL, name);
     }
+}
+
+void HomunculusRecv::processHomunculusExp(Net::MessageIn &msg)
+{
+    const int exp = msg.readInt32("exp");
+    msg.readInt32("unused");
+    if (localPlayer)
+        localPlayer->addHomunXpMessage(exp);
 }
 
 }  // namespace EAthena

@@ -1144,6 +1144,19 @@ void LocalPlayer::addXpMessage(const int change)
     }
 }
 
+void LocalPlayer::addHomunXpMessage(const int change)
+{
+    if (change != 0 && mMessages.size() < 20)
+    {
+        addMessageToQueue(strprintf("%s %d %s",
+            // TRANSLATORS: get homunculus xp message
+            _("Homun"),
+            change,
+            // TRANSLATORS: get xp message
+            _("xp")));
+    }
+}
+
 void LocalPlayer::addHpMessage(const int change)
 {
     if (change != 0 && mMessages.size() < 20)

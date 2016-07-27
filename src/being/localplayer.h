@@ -376,6 +376,8 @@ class LocalPlayer final : public Being,
 
         void addXpMessage(const int change);
 
+        void addHomunXpMessage(const int change);
+
         void addJobMessage(const int change);
 
         void addHpMessage(const int change);
