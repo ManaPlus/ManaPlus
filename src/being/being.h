@@ -957,6 +957,11 @@ class Being notfinal : public ActorSprite,
         { return mLastAttackY; }
 
 #ifdef EATHENA_SUPPORT
+        void drawHomunculus(Graphics *restrict const graphics,
+                            const int offsetX,
+                            const int offsetY) const
+                            restrict2 A_NONNULL(2);
+
         void setTrickDead(const bool b) restrict2 override final;
 
         void setChat(ChatObject *restrict const obj) restrict2;
@@ -1066,6 +1071,12 @@ class Being notfinal : public ActorSprite,
         void drawMonsterSpriteAt(Graphics *restrict const graphics,
                                  const int x,
                                  const int y) const restrict2 A_NONNULL(2);
+
+#ifdef EATHENA_SUPPORT
+        void drawHomunculusSpriteAt(Graphics *restrict const graphics,
+                                    const int x,
+                                    const int y) const restrict2 A_NONNULL(2);
+#endif  // EATHENA_SUPPORT
 
         void drawCompound(Graphics *const graphics,
                           const int posX,

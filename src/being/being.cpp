@@ -40,6 +40,9 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
+#ifdef EATHENA_SUPPORT
+#include "being/homunculusinfo.h"
+#endif  // EATHENA_SUPPORT
 
 #include "const/utils/timer.h"
 
@@ -3588,6 +3591,20 @@ void Being::drawMonster(Graphics *restrict const graphics,
     drawMonsterSpriteAt(graphics, px, py);
 }
 
+#ifdef EATHENA_SUPPORT
+void Being::drawHomunculus(Graphics *restrict const graphics,
+                           const int offsetX,
+                           const int offsetY) const restrict2
+{
+    // getActorX() + offsetX;
+    const int px = mPixelX - mapTileSize / 2 + offsetX;
+    // getActorY() + offsetY;
+    const int py = mPixelY - mapTileSize + offsetY;
+    drawBeingCursor(graphics, px, py);
+    drawHomunculusSpriteAt(graphics, px, py);
+}
+#endif  // EATHENA_SUPPORT
+
 void Being::drawPortal(Graphics *restrict const graphics,
                        const int offsetX,
                        const int offsetY) const restrict2
@@ -3615,6 +3632,17 @@ void Being::draw(Graphics *restrict const graphics,
                 offsetX,
                 offsetY);
             break;
+#ifdef EATHENA_SUPPORT
+        case ActorType::Homunculus:
+            drawHomunculus(graphics,
+                offsetX,
+                offsetY);
+            break;
+        case ActorType::Pet:
+        case ActorType::Mercenary:
+        case ActorType::SkillUnit:
+        case ActorType::Unknown:
+#endif
         case ActorType::Monster:
             drawMonster(graphics,
                 offsetX,
@@ -3624,13 +3652,6 @@ void Being::draw(Graphics *restrict const graphics,
         case ActorType::FloorItem:
         case ActorType::LocalPet:
         case ActorType::Avatar:
-#ifdef EATHENA_SUPPORT
-        case ActorType::Pet:
-        case ActorType::Mercenary:
-        case ActorType::Homunculus:
-        case ActorType::SkillUnit:
-        case ActorType::Unknown:
-#endif
         default:
             drawOther(graphics,
                 offsetX,
@@ -3797,6 +3818,63 @@ void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
                   4);
     }
 }
+
+#ifdef EATHENA_SUPPORT
+void Being::drawHomunculusSpriteAt(Graphics *restrict const graphics,
+                                   const int x,
+                                   const int y) const restrict2
+{
+    if (mHighlightMonsterAttackRange &&
+        mAction != BeingAction::DEAD)
+    {
+        if (!userPalette)
+        {
+            CompoundSprite::drawSimple(graphics, x, y);
+            return;
+        }
+
+        int attackRange;
+        if (mAttackRange)
+            attackRange = mapTileSize * mAttackRange;
+        else
+            attackRange = mapTileSize;
+
+        graphics->setColor(userPalette->getColorWithAlpha(
+            UserColorId::MONSTER_ATTACK_RANGE));
+
+        graphics->fillRectangle(Rect(
+            x - attackRange, y - attackRange,
+            2 * attackRange + mapTileSize, 2 * attackRange + mapTileSize));
+    }
+
+    CompoundSprite::drawSimple(graphics, x, y);
+
+    if (mShowMobHP &&
+        mInfo)
+    {
+        const HomunculusInfo *const info = PlayerInfo::getHomunculus();
+        if (info &&
+            mId == info->id)
+        {
+            // show hp bar here
+            int maxHP = PlayerInfo::getStatBase(Attributes::HOMUN_MAX_HP);
+            if (!maxHP)
+                maxHP = mInfo->getMaxHP();
+
+            drawHpBar(graphics,
+                maxHP,
+                PlayerInfo::getStatBase(Attributes::HOMUN_HP),
+                mDamageTaken,
+                UserColorId::MONSTER_HP,
+                UserColorId::MONSTER_HP2,
+                x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
+                y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
+                2 * 50,
+                4);
+        }
+    }
+}
+#endif
 
 void Being::drawPortalSpriteAt(Graphics *restrict const graphics,
                                const int x,
