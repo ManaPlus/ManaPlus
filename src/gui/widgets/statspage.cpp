@@ -20,18 +20,10 @@
 
 #include "gui/widgets/statspage.h"
 
-#include "being/playerinfo.h"
-
-#include "gui/widgets/button.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/vertcontainer.h"
 
 #include "gui/widgets/attrs/derdisplay.h"
-
-#include "gui/windows/chatwindow.h"
-
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "resources/db/statdb.h"
 

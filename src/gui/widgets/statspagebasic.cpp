@@ -22,14 +22,10 @@
 
 #include "being/playerinfo.h"
 
-#include "gui/widgets/button.h"
-#include "gui/widgets/label.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/vertcontainer.h"
 
 #include "gui/widgets/attrs/changedisplay.h"
-
-#include "gui/windows/chatwindow.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
