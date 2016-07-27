@@ -191,7 +191,7 @@ StatusWindow::StatusWindow() :
         place(3, 0, mMoneyLabel, 3);
     }
 
-    place(0, 3, mTabs, 9, 3);
+    place(0, 3, mTabs, 11, 3);
 
     getLayout().setRowHeight(3, LayoutType::SET);
 
