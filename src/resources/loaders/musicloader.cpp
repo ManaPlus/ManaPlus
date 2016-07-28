@@ -36,7 +36,6 @@ namespace
     struct ResourceLoader final
     {
         std::string path;
-        ResourceManager::loader fun;
 
         static Resource *load(const void *const v)
         {
@@ -51,15 +50,30 @@ namespace
                     rl->path.c_str());
                 return nullptr;
             }
-            Resource *const res = rl->fun(rw, rl->path);
-            return res;
+#ifdef USE_SDL2
+            if (Mix_Music *const music = Mix_LoadMUSType_RW(rw, MUS_OGG, 1))
+            {
+                return new SDLMusic(music, nullptr, rl->path);
+            }
+#else
+            // Mix_LoadMUSType_RW was added without version changed in SDL1.2 :(
+            if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
+            {
+                return new SDLMusic(music, rw, rl->path);
+            }
+#endif
+            else
+            {
+                logger->log("Error, failed to load music: %s", Mix_GetError());
+                return nullptr;
+            }
         }
     };
 }  // namespace
 
 SDLMusic *Loader::getMusic(const std::string &idPath)
 {
-    ResourceLoader rl = { idPath, &SDLMusic::load };
+    ResourceLoader rl = { idPath };
     return static_cast<SDLMusic*>(resourceManager->get(
         idPath, ResourceLoader::load, &rl));
 }

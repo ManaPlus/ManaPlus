@@ -42,23 +42,16 @@ class SDLMusic final : public Resource
             mRw(nullptr)
         { }
 
+        SDLMusic(Mix_Music *const music,
+                 SDL_RWops *const rw,
+                 const std::string &name);
+
         A_DELETE_COPY(SDLMusic)
 
         /**
          * Destructor.
          */
         ~SDLMusic();
-
-        /**
-         * Loads a music from a buffer in memory.
-         *
-         * @param rw         The SDL_RWops to load the music data from.
-         *
-         * @return <code>NULL</code> if the an error occurred, a valid pointer
-         *         otherwise.
-         */
-        static Resource *load(SDL_RWops *const rw,
-                              const std::string &name) A_WARN_UNUSED;
 
         /**
          * Plays the music.
@@ -78,13 +71,6 @@ class SDLMusic final : public Resource
         { return mName; }
 
     protected:
-        /**
-         * Constructor.
-         */
-        SDLMusic(Mix_Music *const music,
-                 SDL_RWops *const rw,
-                 const std::string &name);
-
         std::string mName;
         Mix_Music *mMusic;
         SDL_RWops *mRw;
