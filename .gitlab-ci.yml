@@ -690,7 +690,7 @@ gcc-6_sanitize_i386:
 gcc_eathena:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh --without-opengl --disable-tmwa --enable-eathena
+  - ./tools/ci/jobs/gcc6.sh --without-opengl --disable-tmwa
   image: debian:unstable
   artifacts:
     paths:
@@ -723,7 +723,7 @@ gcc_cilkplus:
 gcc_eathena_opengl:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh --with-opengl --disable-tmwa --enable-eathena
+  - ./tools/ci/jobs/gcc6.sh --with-opengl --disable-tmwa
   image: debian:unstable
   artifacts:
     paths:
@@ -734,7 +734,7 @@ gcc_eathena_opengl:
 gcc_eathena_opengl_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --disable-tmwa --enable-eathena
+  - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --disable-tmwa
   image: debian:unstable
   artifacts:
     paths:
@@ -745,7 +745,7 @@ gcc_eathena_opengl_sdl2:
 gcc_eathena_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --disable-tmwa --enable-eathena
+  - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --disable-tmwa
   image: debian:unstable
   artifacts:
     paths:
@@ -756,7 +756,7 @@ gcc_eathena_sdl2:
 gcc_portable:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh --with-opengl --enable-tmwa --enable-eathena --enable-portable=yes
+  - ./tools/ci/jobs/gcc6.sh --with-opengl --enable-tmwa --enable-portable=yes
   image: debian:unstable
   artifacts:
     paths:
@@ -767,7 +767,7 @@ gcc_portable:
 gcc_eathena_c++11:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_c++11.sh --without-opengl --disable-tmwa --enable-eathena
+  - ./tools/ci/jobs/gcc5_c++11.sh --without-opengl --disable-tmwa
   image: debian:unstable
   artifacts:
     paths:
@@ -778,7 +778,7 @@ gcc_eathena_c++11:
 gcc_eathena_sdl2_c++11:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sdl2_c++11.sh --without-opengl --disable-tmwa --enable-eathena
+  - ./tools/ci/jobs/gcc5_sdl2_c++11.sh --without-opengl --disable-tmwa
   image: debian:unstable
   artifacts:
     paths:
