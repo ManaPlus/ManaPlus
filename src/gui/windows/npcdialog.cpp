@@ -794,7 +794,7 @@ void NpcDialog::itemIndexRequest(const int size)
     buildLayout();
 }
 
-void NpcDialog::itemCraftRequest(const int size A_TMWA_UNUSED)
+void NpcDialog::itemCraftRequest(const int size)
 {
     mActionState = NPC_ACTION_INPUT;
     mInputState = NPC_INPUT_ITEM_CRAFT;
@@ -1368,9 +1368,9 @@ std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
     return str;
 }
 
-void NpcDialog::addCraftItem(Item *const item A_TMWA_UNUSED,
-                             const int amount A_TMWA_UNUSED,
-                             const int slot A_TMWA_UNUSED)
+void NpcDialog::addCraftItem(Item *const item,
+                             const int amount,
+                             const int slot)
 {
     if (mInputState != NPC_INPUT_ITEM_CRAFT)
         return;

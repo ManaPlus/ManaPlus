@@ -97,7 +97,6 @@
 #define A_UNUSED  __attribute__ ((unused))
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #define DEPRECATED __attribute__ ((deprecated))
-#define A_TMWA_UNUSED
 #ifdef DYECMD
 #define A_DYECMD_UNUSED __attribute__ ((unused))
 #else  // DYECMD

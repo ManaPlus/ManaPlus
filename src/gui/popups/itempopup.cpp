@@ -161,7 +161,7 @@ void ItemPopup::setItem(const ItemInfo &item,
                         const ItemColor color,
                         const bool showImage,
                         int id,
-                        const int *const cards A_TMWA_UNUSED)
+                        const int *const cards)
 {
     if (!mIcon || (item.getName() == mLastName && color == mLastColor
         && id == mLastId))

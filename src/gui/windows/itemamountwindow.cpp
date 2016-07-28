@@ -466,7 +466,7 @@ void ItemAmountWindow::showWindow(const ItemAmountWindowUsageT usage,
                                   Window *const parent,
                                   Item *const item,
                                   int maxRange,
-                                  int tag A_TMWA_UNUSED)
+                                  int tag)
 {
     if (!item)
         return;
