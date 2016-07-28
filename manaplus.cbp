@@ -19,7 +19,6 @@
 					<Add option="-DENABLE_NLS" />
 					<Add option="-DUSE_MUMBLE" />
 					<Add option="-DTMWA_SUPPORT" />
-					<Add option="-DEATHENA_SUPPORT" />
 					<Add option="-DENABLE_LIBXML" />
 					<Add directory="src/" />
 					<Add directory="include" />
