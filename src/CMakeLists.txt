@@ -26,9 +26,6 @@ IF (ENABLE_NLS)
     SET(FLAGS "${FLAGS} -DENABLE_NLS=1")
 ENDIF()
 
-IF (ENABLE_EATHENA)
-    SET(FLAGS "${FLAGS} -DEATHENA_SUPPORT=1")
-ENDIF()
 IF (ENABLE_TMWA)
     SET(FLAGS "${FLAGS} -DTMWA_SUPPORT=1")
 ENDIF()
@@ -1388,6 +1385,210 @@ SET(SRCS
     gui/rect.cpp
     gui/widgets/widget.cpp
     gui/widgets/basiccontainer2.cpp
+    gui/windows/bankwindow.cpp
+    gui/windows/bankwindow.h
+    gui/windows/buyingstoreselldialog.cpp
+    gui/windows/buyingstoreselldialog.h
+    gui/windows/eggselectiondialog.cpp
+    gui/windows/eggselectiondialog.h
+    gui/windows/maileditwindow.cpp
+    gui/windows/maileditwindow.h
+    gui/windows/mailviewwindow.cpp
+    gui/windows/mailviewwindow.h
+    gui/windows/mailwindow.cpp
+    gui/windows/mailwindow.h
+    listeners/banklistener.cpp
+    listeners/banklistener.h
+    listeners/buyingstoremodelistener.cpp
+    listeners/buyingstoremodelistener.h
+    listeners/buyingstoreslotslistener.cpp
+    listeners/buyingstoreslotslistener.h
+    listeners/pincodelistener.cpp
+    listeners/pincodelistener.h
+    listeners/shoprenamelistener.cpp
+    listeners/shoprenamelistener.h
+    listeners/skillwarplistener.cpp
+    listeners/skillwarplistener.h
+    listeners/vendingmodelistener.cpp
+    listeners/vendingmodelistener.h
+    listeners/vendingslotslistener.cpp
+    listeners/vendingslotslistener.h
+    net/auctionhandler.h
+    net/bankhandler.h
+    net/battlegroundhandler.h
+    net/buyingstorehandler.h
+    net/cashshophandler.h
+    net/elementalhandler.h
+    net/familyhandler.h
+    net/friendshandler.h
+    net/homunculushandler.h
+    net/hostsgroup.h
+    net/mailhandler.h
+    net/maphandler.h
+    net/markethandler.h
+    net/mercenaryhandler.h
+    net/roulettehandler.h
+    net/searchstorehandler.h
+    net/vendinghandler.h
+    net/eathena/adminrecv.cpp
+    net/eathena/adminrecv.h
+    net/eathena/adminhandler.cpp
+    net/eathena/adminhandler.h
+    net/eathena/auctionrecv.cpp
+    net/eathena/auctionrecv.h
+    net/eathena/auctionhandler.cpp
+    net/eathena/auctionhandler.h
+    net/eathena/bankrecv.cpp
+    net/eathena/bankrecv.h
+    net/eathena/bankhandler.cpp
+    net/eathena/bankhandler.h
+    net/eathena/battlegroundrecv.cpp
+    net/eathena/battlegroundrecv.h
+    net/eathena/battlegroundhandler.cpp
+    net/eathena/battlegroundhandler.h
+    net/eathena/cashshophandler.cpp
+    net/eathena/cashshophandler.h
+    net/eathena/cashshoprecv.cpp
+    net/eathena/cashshoprecv.h
+    net/eathena/beingrecv.cpp
+    net/eathena/beingrecv.h
+    net/eathena/beinghandler.cpp
+    net/eathena/beinghandler.h
+    net/eathena/buyingstorehandler.cpp
+    net/eathena/buyingstorehandler.h
+    net/eathena/buyingstorerecv.cpp
+    net/eathena/buyingstorerecv.h
+    net/eathena/beingtype.h
+    net/eathena/buysellhandler.cpp
+    net/eathena/buysellhandler.h
+    net/eathena/buysellrecv.cpp
+    net/eathena/buysellrecv.h
+    net/eathena/charserverhandler.cpp
+    net/eathena/charserverhandler.h
+    net/eathena/charserverrecv.cpp
+    net/eathena/charserverrecv.h
+    net/eathena/chathandler.cpp
+    net/eathena/chathandler.h
+    net/eathena/chatrecv.cpp
+    net/eathena/chatrecv.h
+    net/eathena/elementalhandler.cpp
+    net/eathena/elementalhandler.h
+    net/eathena/elementalrecv.cpp
+    net/eathena/elementalrecv.h
+    net/eathena/familyhandler.cpp
+    net/eathena/familyhandler.h
+    net/eathena/familyrecv.cpp
+    net/eathena/familyrecv.h
+    net/eathena/friendshandler.cpp
+    net/eathena/friendshandler.h
+    net/eathena/friendsrecv.cpp
+    net/eathena/friendsrecv.h
+    net/eathena/gamehandler.cpp
+    net/eathena/gamehandler.h
+    net/eathena/gamerecv.cpp
+    net/eathena/gamerecv.h
+    net/eathena/generalhandler.cpp
+    net/eathena/generalhandler.h
+    net/eathena/generalrecv.cpp
+    net/eathena/generalrecv.h
+    net/eathena/guildhandler.cpp
+    net/eathena/guildhandler.h
+    net/eathena/guildrecv.cpp
+    net/eathena/guildrecv.h
+    net/eathena/homunculushandler.cpp
+    net/eathena/homunculushandler.h
+    net/eathena/homunculusrecv.cpp
+    net/eathena/homunculusrecv.h
+    net/eathena/inventoryhandler.cpp
+    net/eathena/inventoryhandler.h
+    net/eathena/inventoryrecv.cpp
+    net/eathena/inventoryrecv.h
+    net/eathena/itemflags.h
+    net/eathena/itemhandler.cpp
+    net/eathena/itemhandler.h
+    net/eathena/itemrecv.cpp
+    net/eathena/itemrecv.h
+    net/eathena/loginhandler.cpp
+    net/eathena/loginhandler.h
+    net/eathena/loginrecv.cpp
+    net/eathena/loginrecv.h
+    net/eathena/mailhandler.cpp
+    net/eathena/mailhandler.h
+    net/eathena/mailrecv.cpp
+    net/eathena/mailrecv.h
+    net/eathena/maphandler.cpp
+    net/eathena/maphandler.h
+    net/eathena/maprecv.cpp
+    net/eathena/maprecv.h
+    net/eathena/maptypeproperty2.h
+    net/eathena/markethandler.cpp
+    net/eathena/markethandler.h
+    net/eathena/marketrecv.cpp
+    net/eathena/marketrecv.h
+    net/eathena/menu.cpp
+    net/eathena/menu.h
+    net/eathena/menutype.h
+    net/eathena/mercenaryhandler.cpp
+    net/eathena/mercenaryhandler.h
+    net/eathena/mercenaryrecv.cpp
+    net/eathena/mercenaryrecv.h
+    net/eathena/messagein.cpp
+    net/eathena/messagein.h
+    net/eathena/messageout.cpp
+    net/eathena/messageout.h
+    net/eathena/network.cpp
+    net/eathena/network.h
+    net/eathena/npchandler.cpp
+    net/eathena/npchandler.h
+    net/eathena/npcrecv.cpp
+    net/eathena/npcrecv.h
+    net/eathena/packetsin.inc
+    net/eathena/packetsout.inc
+    net/eathena/partyhandler.cpp
+    net/eathena/partyhandler.h
+    net/eathena/partyrecv.cpp
+    net/eathena/partyrecv.h
+    net/eathena/pethandler.cpp
+    net/eathena/pethandler.h
+    net/eathena/petrecv.cpp
+    net/eathena/petrecv.h
+    net/eathena/playerhandler.cpp
+    net/eathena/playerhandler.h
+    net/eathena/playerrecv.cpp
+    net/eathena/playerrecv.h
+    net/eathena/protocolout.cpp
+    net/eathena/protocolout.h
+    net/eathena/questhandler.cpp
+    net/eathena/questhandler.h
+    net/eathena/questrecv.cpp
+    net/eathena/questrecv.h
+    net/eathena/recvpackets.inc
+    net/eathena/roulettehandler.cpp
+    net/eathena/roulettehandler.h
+    net/eathena/rouletterecv.cpp
+    net/eathena/rouletterecv.h
+    net/eathena/searchstorehandler.cpp
+    net/eathena/searchstorehandler.h
+    net/eathena/searchstorerecv.cpp
+    net/eathena/searchstorerecv.h
+    net/eathena/serverfeatures.cpp
+    net/eathena/serverfeatures.h
+    net/eathena/skillhandler.cpp
+    net/eathena/skillhandler.h
+    net/eathena/skillrecv.cpp
+    net/eathena/skillrecv.h
+    net/eathena/sp.h
+    net/eathena/sprite.h
+    net/eathena/tradehandler.cpp
+    net/eathena/tradehandler.h
+    net/eathena/traderecv.cpp
+    net/eathena/traderecv.h
+    net/eathena/updateprotocol.cpp
+    net/eathena/updateprotocol.h
+    net/eathena/vendinghandler.cpp
+    net/eathena/vendinghandler.h
+    net/eathena/vendingrecv.cpp
+    net/eathena/vendingrecv.h
     )
 
 SET(DYE_CMD_SRCS
@@ -1701,9 +1902,6 @@ SET(SRCS_TMWA
     net/tmwa/traderecv.h
     net/tmwa/updateprotocol.cpp
     net/tmwa/updateprotocol.h
-    )
-
-SET(SRCS_TMWAEATHENA
     net/tmwa/auctionhandler.cpp
     net/tmwa/auctionhandler.h
     net/tmwa/bankhandler.cpp
@@ -1738,213 +1936,6 @@ SET(SRCS_TMWAEATHENA
     net/tmwa/vendinghandler.h
     )
 
-SET(SRCS_EATHENA
-    gui/windows/bankwindow.cpp
-    gui/windows/bankwindow.h
-    gui/windows/buyingstoreselldialog.cpp
-    gui/windows/buyingstoreselldialog.h
-    gui/windows/eggselectiondialog.cpp
-    gui/windows/eggselectiondialog.h
-    gui/windows/maileditwindow.cpp
-    gui/windows/maileditwindow.h
-    gui/windows/mailviewwindow.cpp
-    gui/windows/mailviewwindow.h
-    gui/windows/mailwindow.cpp
-    gui/windows/mailwindow.h
-    listeners/banklistener.cpp
-    listeners/banklistener.h
-    listeners/buyingstoremodelistener.cpp
-    listeners/buyingstoremodelistener.h
-    listeners/buyingstoreslotslistener.cpp
-    listeners/buyingstoreslotslistener.h
-    listeners/pincodelistener.cpp
-    listeners/pincodelistener.h
-    listeners/shoprenamelistener.cpp
-    listeners/shoprenamelistener.h
-    listeners/skillwarplistener.cpp
-    listeners/skillwarplistener.h
-    listeners/vendingmodelistener.cpp
-    listeners/vendingmodelistener.h
-    listeners/vendingslotslistener.cpp
-    listeners/vendingslotslistener.h
-    net/auctionhandler.h
-    net/bankhandler.h
-    net/battlegroundhandler.h
-    net/buyingstorehandler.h
-    net/cashshophandler.h
-    net/elementalhandler.h
-    net/familyhandler.h
-    net/friendshandler.h
-    net/homunculushandler.h
-    net/hostsgroup.h
-    net/mailhandler.h
-    net/maphandler.h
-    net/markethandler.h
-    net/mercenaryhandler.h
-    net/roulettehandler.h
-    net/searchstorehandler.h
-    net/vendinghandler.h
-    net/eathena/adminrecv.cpp
-    net/eathena/adminrecv.h
-    net/eathena/adminhandler.cpp
-    net/eathena/adminhandler.h
-    net/eathena/auctionrecv.cpp
-    net/eathena/auctionrecv.h
-    net/eathena/auctionhandler.cpp
-    net/eathena/auctionhandler.h
-    net/eathena/bankrecv.cpp
-    net/eathena/bankrecv.h
-    net/eathena/bankhandler.cpp
-    net/eathena/bankhandler.h
-    net/eathena/battlegroundrecv.cpp
-    net/eathena/battlegroundrecv.h
-    net/eathena/battlegroundhandler.cpp
-    net/eathena/battlegroundhandler.h
-    net/eathena/cashshophandler.cpp
-    net/eathena/cashshophandler.h
-    net/eathena/cashshoprecv.cpp
-    net/eathena/cashshoprecv.h
-    net/eathena/beingrecv.cpp
-    net/eathena/beingrecv.h
-    net/eathena/beinghandler.cpp
-    net/eathena/beinghandler.h
-    net/eathena/buyingstorehandler.cpp
-    net/eathena/buyingstorehandler.h
-    net/eathena/buyingstorerecv.cpp
-    net/eathena/buyingstorerecv.h
-    net/eathena/beingtype.h
-    net/eathena/buysellhandler.cpp
-    net/eathena/buysellhandler.h
-    net/eathena/buysellrecv.cpp
-    net/eathena/buysellrecv.h
-    net/eathena/charserverhandler.cpp
-    net/eathena/charserverhandler.h
-    net/eathena/charserverrecv.cpp
-    net/eathena/charserverrecv.h
-    net/eathena/chathandler.cpp
-    net/eathena/chathandler.h
-    net/eathena/chatrecv.cpp
-    net/eathena/chatrecv.h
-    net/eathena/elementalhandler.cpp
-    net/eathena/elementalhandler.h
-    net/eathena/elementalrecv.cpp
-    net/eathena/elementalrecv.h
-    net/eathena/familyhandler.cpp
-    net/eathena/familyhandler.h
-    net/eathena/familyrecv.cpp
-    net/eathena/familyrecv.h
-    net/eathena/friendshandler.cpp
-    net/eathena/friendshandler.h
-    net/eathena/friendsrecv.cpp
-    net/eathena/friendsrecv.h
-    net/eathena/gamehandler.cpp
-    net/eathena/gamehandler.h
-    net/eathena/gamerecv.cpp
-    net/eathena/gamerecv.h
-    net/eathena/generalhandler.cpp
-    net/eathena/generalhandler.h
-    net/eathena/generalrecv.cpp
-    net/eathena/generalrecv.h
-    net/eathena/guildhandler.cpp
-    net/eathena/guildhandler.h
-    net/eathena/guildrecv.cpp
-    net/eathena/guildrecv.h
-    net/eathena/homunculushandler.cpp
-    net/eathena/homunculushandler.h
-    net/eathena/homunculusrecv.cpp
-    net/eathena/homunculusrecv.h
-    net/eathena/inventoryhandler.cpp
-    net/eathena/inventoryhandler.h
-    net/eathena/inventoryrecv.cpp
-    net/eathena/inventoryrecv.h
-    net/eathena/itemflags.h
-    net/eathena/itemhandler.cpp
-    net/eathena/itemhandler.h
-    net/eathena/itemrecv.cpp
-    net/eathena/itemrecv.h
-    net/eathena/loginhandler.cpp
-    net/eathena/loginhandler.h
-    net/eathena/loginrecv.cpp
-    net/eathena/loginrecv.h
-    net/eathena/mailhandler.cpp
-    net/eathena/mailhandler.h
-    net/eathena/mailrecv.cpp
-    net/eathena/mailrecv.h
-    net/eathena/maphandler.cpp
-    net/eathena/maphandler.h
-    net/eathena/maprecv.cpp
-    net/eathena/maprecv.h
-    net/eathena/maptypeproperty2.h
-    net/eathena/markethandler.cpp
-    net/eathena/markethandler.h
-    net/eathena/marketrecv.cpp
-    net/eathena/marketrecv.h
-    net/eathena/menu.cpp
-    net/eathena/menu.h
-    net/eathena/menutype.h
-    net/eathena/mercenaryhandler.cpp
-    net/eathena/mercenaryhandler.h
-    net/eathena/mercenaryrecv.cpp
-    net/eathena/mercenaryrecv.h
-    net/eathena/messagein.cpp
-    net/eathena/messagein.h
-    net/eathena/messageout.cpp
-    net/eathena/messageout.h
-    net/eathena/network.cpp
-    net/eathena/network.h
-    net/eathena/npchandler.cpp
-    net/eathena/npchandler.h
-    net/eathena/npcrecv.cpp
-    net/eathena/npcrecv.h
-    net/eathena/packetsin.inc
-    net/eathena/packetsout.inc
-    net/eathena/partyhandler.cpp
-    net/eathena/partyhandler.h
-    net/eathena/partyrecv.cpp
-    net/eathena/partyrecv.h
-    net/eathena/pethandler.cpp
-    net/eathena/pethandler.h
-    net/eathena/petrecv.cpp
-    net/eathena/petrecv.h
-    net/eathena/playerhandler.cpp
-    net/eathena/playerhandler.h
-    net/eathena/playerrecv.cpp
-    net/eathena/playerrecv.h
-    net/eathena/protocolout.cpp
-    net/eathena/protocolout.h
-    net/eathena/questhandler.cpp
-    net/eathena/questhandler.h
-    net/eathena/questrecv.cpp
-    net/eathena/questrecv.h
-    net/eathena/recvpackets.inc
-    net/eathena/roulettehandler.cpp
-    net/eathena/roulettehandler.h
-    net/eathena/rouletterecv.cpp
-    net/eathena/rouletterecv.h
-    net/eathena/searchstorehandler.cpp
-    net/eathena/searchstorehandler.h
-    net/eathena/searchstorerecv.cpp
-    net/eathena/searchstorerecv.h
-    net/eathena/serverfeatures.cpp
-    net/eathena/serverfeatures.h
-    net/eathena/skillhandler.cpp
-    net/eathena/skillhandler.h
-    net/eathena/skillrecv.cpp
-    net/eathena/skillrecv.h
-    net/eathena/sp.h
-    net/eathena/sprite.h
-    net/eathena/tradehandler.cpp
-    net/eathena/tradehandler.h
-    net/eathena/traderecv.cpp
-    net/eathena/traderecv.h
-    net/eathena/updateprotocol.cpp
-    net/eathena/updateprotocol.h
-    net/eathena/vendinghandler.cpp
-    net/eathena/vendinghandler.h
-    net/eathena/vendingrecv.cpp
-    net/eathena/vendingrecv.h
-    )
-
 IF (WIN32)
     SET(SRCS
         ${SRCS}
@@ -1963,17 +1954,11 @@ ENDIF ()
 #SET (PROGRAMS manaplus dyecmd)
 SET (PROGRAMS manaplus)
 
-IF (ENABLE_EATHENA)
-IF (ENABLE_TMWA)
-    SET(SRCS ${SRCS} ${SRCS_EATHENA} ${SRCS_TMWA} ${SRCS_TMWAEATHENA})
-ELSE()
-    SET(SRCS ${SRCS} ${SRCS_EATHENA})
-ENDIF(ENABLE_TMWA)
-ELSE()
 IF (ENABLE_TMWA)
     SET(SRCS ${SRCS} ${SRCS_TMWA})
+ELSE()
+    SET(SRCS ${SRCS})
 ENDIF(ENABLE_TMWA)
-ENDIF(ENABLE_EATHENA)
 
 ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_EVOL})
 #ADD_EXECUTABLE(dyecmd WIN32 ${DYE_CMD_SRCS})

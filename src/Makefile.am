@@ -1550,12 +1550,8 @@ manaplus_SOURCES += \
 	      net/tmwa/traderecv.cpp \
 	      net/tmwa/traderecv.h \
 	      net/tmwa/updateprotocol.cpp \
-	      net/tmwa/updateprotocol.h
-endif
-
-if ENABLE_EATHENA
-if ENABLE_TMWA
-manaplus_SOURCES += net/tmwa/auctionhandler.cpp \
+	      net/tmwa/updateprotocol.h \
+	      net/tmwa/auctionhandler.cpp \
 	      net/tmwa/auctionhandler.h \
 	      net/tmwa/bankhandler.cpp \
 	      net/tmwa/bankhandler.h \
@@ -1589,7 +1585,6 @@ manaplus_SOURCES += net/tmwa/auctionhandler.cpp \
 	      net/tmwa/vendinghandler.h
 endif
 
-manaplus_CXXFLAGS += -DEATHENA_SUPPORT
 manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      gui/windows/bankwindow.h \
 	      gui/windows/buyingstoreselldialog.cpp \
@@ -1802,7 +1797,6 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/vendinghandler.h \
 	      net/eathena/vendingrecv.cpp \
 	      net/eathena/vendingrecv.h
-endif
 
 manaplus_SOURCES += \
 	      mumblemanager.cpp \

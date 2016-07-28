@@ -362,17 +362,6 @@ else
     without_librt=no
 fi
 
-# Enable eAthena
-AC_ARG_ENABLE(eathena,
-[  --enable-eathena    Turn on eAthena support],
-[case "${enableval}" in
-  yes) with_eathena=true ;;
-  no)  with_eathena=false ;;
-  *) AC_MSG_ERROR(bad value ${enableval} for --enable-eathena) ;;
-esac],[with_eathena=true])
-
-AM_CONDITIONAL(ENABLE_EATHENA, test x$with_eathena = xtrue)
-
 # Enable tmwA
 AC_ARG_ENABLE(tmwa,
 [  --enable-tmwa    Turn on tmwA support],
