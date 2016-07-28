@@ -20,9 +20,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/sdlmusic.h"
+#include "resources/soundeffect.h"
 
-#include "resources/loaders/musicloader.h"
+#include "resources/loaders/soundloader.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
@@ -57,9 +57,9 @@ namespace
     };
 }  // namespace
 
-SDLMusic *Loader::getMusic(const std::string &idPath)
+SoundEffect *Loader::getSoundEffect(const std::string &idPath)
 {
-    ResourceLoader rl = { idPath, &SDLMusic::load };
-    return static_cast<SDLMusic*>(resourceManager->get(
+    ResourceLoader rl = { idPath, &SoundEffect::load };
+    return static_cast<SoundEffect*>(resourceManager->get(
         idPath, ResourceLoader::load, &rl));
 }

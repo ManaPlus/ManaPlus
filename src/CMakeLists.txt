@@ -746,6 +746,8 @@ SET(SRCS
     resources/loaders/shaderloader.h
     resources/loaders/shaderprogramloader.cpp
     resources/loaders/shaderprogramloader.h
+    resources/loaders/soundloader.cpp
+    resources/loaders/soundloader.h
     resources/loaders/spritedefloader.cpp
     resources/loaders/spritedefloader.h
     resources/loaders/subimageloader.cpp

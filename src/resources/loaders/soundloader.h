@@ -20,23 +20,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_RESOURCEMANAGER_MUSICLOADER_H
-#define RESOURCES_RESOURCEMANAGER_MUSICLOADER_H
+#ifndef RESOURCES_RESOURCEMANAGER_SOUNDLOADER_H
+#define RESOURCES_RESOURCEMANAGER_SOUNDLOADER_H
 
 #include "localconsts.h"
 
 #include <string>
 
-class Resource;
 class SoundEffect;
 
 namespace Loader
 {
     /**
      * Convenience wrapper around ResourceManager::get for loading
-     * songs.
+     * samples.
      */
-    SDLMusic *getMusic(const std::string &idPath) A_WARN_UNUSED;
+    SoundEffect *getSoundEffect(const std::string &idPath) A_WARN_UNUSED;
 }  // namespace Loader
 
-#endif  // RESOURCES_RESOURCEMANAGER_MUSICLOADER_H
+#endif  // RESOURCES_RESOURCEMANAGER_SOUNDLOADER_H

@@ -32,6 +32,7 @@
 #include "resources/soundeffect.h"
 
 #include "resources/loaders/musicloader.h"
+#include "resources/loaders/soundloader.h"
 
 #include "utils/checkutils.h"
 #include "utils/physfstools.h"
