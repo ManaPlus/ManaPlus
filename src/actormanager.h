@@ -376,7 +376,6 @@ class ActorManager final: public ConfigListener
         size_t size() const
         { return mActors.size(); }
 
-#ifdef EATHENA_SUPPORT
         void removeRoom(const int chatId);
 
         void updateRoom(const ChatObject *const newChat);
@@ -385,7 +384,6 @@ class ActorManager final: public ConfigListener
 
         void addChar(const int32_t id,
                      const std::string &name);
-#endif
 
 #ifndef UNITTESTS
     protected:
@@ -413,9 +411,7 @@ class ActorManager final: public ConfigListener
         ActorSpritesMap mActorsIdMap;
         IdNameMapping mIdName;
         std::set<BeingId> mBlockedBeings;
-#ifdef EATHENA_SUPPORT
         std::map<int32_t, std::string> mChars;
-#endif
         Map *mMap;
         std::string mSpellHeal1;
         std::string mSpellHeal2;

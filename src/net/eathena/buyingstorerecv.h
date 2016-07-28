@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_BUYINGSTORERECV_H
 #define NET_EATHENA_BUYINGSTORERECV_H
 
-#ifdef EATHENA_SUPPORT
-
 namespace Net
 {
     class MessageIn;
@@ -54,5 +52,4 @@ namespace EAthena
     }  // namespace BuyingStoreRecv
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_BUYINGSTORERECV_H

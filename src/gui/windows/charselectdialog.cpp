@@ -27,9 +27,7 @@
 #include "units.h"
 
 #include "listeners/charrenamelistener.h"
-#ifdef EATHENA_SUPPORT
 #include "listeners/pincodelistener.h"
-#endif
 
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/chardeleteconfirm.h"
@@ -165,7 +163,6 @@ void CharSelectDialog::postInit()
     Window::postInit();
     setVisible(Visible_true);
     requestFocus();
-#ifdef EATHENA_SUPPORT
     if (charServerHandler->isNeedCreatePin())
     {
         EditDialog *const dialog = CREATEWIDGETR(EditDialog,
@@ -175,7 +172,6 @@ void CharSelectDialog::postInit()
             "OK");
         dialog->addActionListener(&pincodeListener);
     }
-#endif
 }
 
 void CharSelectDialog::action(const ActionEvent &event)

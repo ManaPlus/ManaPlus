@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_HOMUNCULUSHANDLER_H
 #define NET_EATHENA_HOMUNCULUSHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/homunculushandler.h"
 
 namespace EAthena
@@ -56,5 +54,4 @@ class HomunculusHandler final : public Net::HomunculusHandler
 
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_HOMUNCULUSHANDLER_H

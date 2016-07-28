@@ -21,8 +21,6 @@
 #ifndef LISTENERS_VENDINGMODELISTENER_H
 #define LISTENERS_VENDINGMODELISTENER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "listeners/baselistener.hpp"
 
 #include "localconsts.h"
@@ -37,5 +35,4 @@ class VendingModeListener notfinal
     defineListenerHeader(VendingModeListener)
 };
 
-#endif  // EATHENA_SUPPORT
 #endif  // LISTENERS_VENDINGMODELISTENER_H

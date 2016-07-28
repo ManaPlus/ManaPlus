@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_AUCTIONHANDLER_H
 #define NET_EATHENA_AUCTIONHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/auctionhandler.h"
 
 namespace EAthena
@@ -62,5 +60,4 @@ class AuctionHandler final : public Net::AuctionHandler
 
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_AUCTIONHANDLER_H

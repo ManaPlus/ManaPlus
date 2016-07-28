@@ -2205,7 +2205,6 @@ void ChatWindow::toggleChatFocus()
         requestChatFocus();
 }
 
-#ifdef EATHENA_SUPPORT
 void ChatWindow::joinRoom(const bool isJoin)
 {
     Tab *const tab = mChatTabs->getTabByIndex(0);
@@ -2224,4 +2223,3 @@ void ChatWindow::joinRoom(const bool isJoin)
         tab->setCaption(name);
     }
 }
-#endif

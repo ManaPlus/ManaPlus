@@ -30,20 +30,16 @@
 #include "being/flooritem.h"
 #include "being/localplayer.h"
 #include "being/playerrelations.h"
-#ifdef EATHENA_SUPPORT
 #include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
-#endif
 
 #include "gui/viewport.h"
 
 #include "gui/popups/popupmenu.h"
 
-#ifdef EATHENA_SUPPORT
 #include "gui/shortcut/emoteshortcut.h"
 
 #include "gui/windows/mailwindow.h"
-#endif
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/inventorywindow.h"
@@ -56,19 +52,15 @@
 
 #include "input/inputactionoperators.h"
 
-#ifdef EATHENA_SUPPORT
 #include "listeners/inputactionreplaylistener.h"
-#endif
 
 #include "net/adminhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
-#ifdef EATHENA_SUPPORT
 #include "net/familyhandler.h"
 #include "net/homunculushandler.h"
 #include "net/mailhandler.h"
 #include "net/net.h"
-#endif
 #include "net/npchandler.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
@@ -556,7 +548,6 @@ impHandler(imitation)
 
 impHandler(sendMail)
 {
-#ifdef EATHENA_SUPPORT
     const ServerTypeT type = Net::getNetworkType();
     if (type == ServerType::EATHENA || type == ServerType::EVOL2)
     {
@@ -569,9 +560,7 @@ impHandler(sendMail)
             mailHandler->send(name, _("Quick message"), text);
         }
     }
-    else
-#endif
-    if (serverConfig.getBoolValue("enableManaMarketBot"))
+    else if (serverConfig.getBoolValue("enableManaMarketBot"))
     {
         chatHandler->privateMessage("ManaMarket", "!mail " + event.args);
         return true;
@@ -909,7 +898,6 @@ impHandler(serverUnIgnoreWhisper)
 
 impHandlerE(setHomunculusName)
 {
-#ifdef EATHENA_SUPPORT
     const std::string args = event.args;
     if (args.empty())
     {
@@ -929,19 +917,16 @@ impHandlerE(setHomunculusName)
         homunculusHandler->setName(args);
         return true;
     }
-#endif
     return false;
 }
 
 impHandler0(fireHomunculus)
 {
-#ifdef EATHENA_SUPPORT
     if (homunculusHandler)
     {
         homunculusHandler->fire();
         return true;
     }
-#endif
     return false;
 }
 
@@ -973,7 +958,6 @@ impHandler(warp)
 
 impHandlerE(homunTalk)
 {
-#ifdef EATHENA_SUPPORT
     if (!serverFeatures || !serverFeatures->haveTalkPet())
         return false;
 
@@ -985,13 +969,11 @@ impHandlerE(homunTalk)
         homunculusHandler->talk(args);
         return true;
     }
-#endif
     return false;
 }
 
 impHandlerE(homunEmote)
 {
-#ifdef EATHENA_SUPPORT
     if (!serverFeatures || !serverFeatures->haveTalkPet())
         return false;
 
@@ -1006,14 +988,12 @@ impHandlerE(homunEmote)
             Game::instance()->setValidSpeed();
         return true;
     }
-#endif
 
     return false;
 }
 
 impHandlerE(commandHomunEmote)
 {
-#ifdef EATHENA_SUPPORT
     if (!serverFeatures || !serverFeatures->haveTalkPet())
         return false;
 
@@ -1023,25 +1003,19 @@ impHandlerE(commandHomunEmote)
             atoi(event.args.c_str())));
         return true;
     }
-#endif
     return false;
 }
 
 impHandlerE(createPublicChatRoom)
 {
-#ifdef EATHENA_SUPPORT
     if (!chatHandler || event.args.empty())
         return false;
     chatHandler->createChatRoom(event.args, "", 100, true);
     return true;
-#else
-    return false;
-#endif
 }
 
 impHandlerE(joinChatRoom)
 {
-#ifdef EATHENA_SUPPORT
     if (!chatHandler)
         return false;
     const std::string args = event.args;
@@ -1052,20 +1026,15 @@ impHandlerE(joinChatRoom)
         return false;
     chatHandler->joinChat(chat, "");
     return true;
-#else
-    return false;
-#endif
 }
 
 impHandler0(leaveChatRoom)
 {
-#ifdef EATHENA_SUPPORT
     if (chatHandler)
     {
         chatHandler->leaveChatRoom();
         return true;
     }
-#endif
     return false;
 }
 
@@ -1187,16 +1156,12 @@ impHandler(skill)
 
 impHandlerE(craft)
 {
-#ifdef EATHENA_SUPPORT
     const std::string args = event.args;
     if (args.empty() || !inventoryWindow)
         return false;
 
     inventoryWindow->moveItemToCraft(atoi(args.c_str()));
     return true;
-#else
-    return false;
-#endif
 }
 
 impHandler(npcClipboard)
@@ -1597,19 +1562,14 @@ impHandler(commandGuildRecall)
 
 impHandlerE(mailTo)
 {
-#ifdef EATHENA_SUPPORT
     if (!mailWindow)
         return false;
     mailWindow->createMail(event.args);
     return true;
-#else
-    return false;
-#endif
 }
 
 impHandlerE(adoptChild)
 {
-#ifdef EATHENA_SUPPORT
     const std::string nick = getNick(event);
     Being *const being = actorManager->findBeingByName(
         nick, ActorType::Player);
@@ -1617,9 +1577,6 @@ impHandlerE(adoptChild)
         return true;
     familyHandler->askForChild(being);
     return true;
-#else
-    return false;
-#endif
 }
 
 impHandler(showSkillLevels)

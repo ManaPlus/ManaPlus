@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_ELEMENTALHANDLER_H
 #define NET_TMWA_ELEMENTALHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/elementalhandler.h"
 
 namespace TmwAthena
@@ -36,5 +34,4 @@ namespace TmwAthena
     };
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_ELEMENTALHANDLER_H

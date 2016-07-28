@@ -60,29 +60,17 @@ impHandler0(targetNPC)
 
 impHandler0(targetMercenary)
 {
-#ifdef EATHENA_SUPPORT
     return setTarget(ActorType::Mercenary, AllowSort_true);
-#else
-    return false;
-#endif
 }
 
 impHandler0(targetSkillUnit)
 {
-#ifdef EATHENA_SUPPORT
     return setTarget(ActorType::SkillUnit, AllowSort_true);
-#else
-    return false;
-#endif
 }
 
 impHandler0(targetPet)
 {
-#ifdef EATHENA_SUPPORT
     return setTarget(ActorType::Pet, AllowSort_true);
-#else
-    return false;
-#endif
 }
 
 impHandler0(contextMenu)

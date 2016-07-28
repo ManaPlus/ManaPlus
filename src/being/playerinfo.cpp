@@ -26,11 +26,9 @@
 
 #include "being/localplayer.h"
 
-#ifdef EATHENA_SUPPORT
 #include "being/homunculusinfo.h"
 #include "being/mercenaryinfo.h"
 #include "being/petinfo.h"
-#endif
 
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"
@@ -53,13 +51,11 @@ PlayerInfoBackend mData;
 int mCharId = 0;
 
 Inventory *mInventory = nullptr;
-#ifdef EATHENA_SUPPORT
 Inventory *mCartInventory = nullptr;
 MercenaryInfo *mMercenary = nullptr;
 HomunculusInfo *mHomunculus = nullptr;
 PetInfo *mPet = nullptr;
 std::string mRoomName;
-#endif
 Equipment *mEquipment = nullptr;
 BeingId mPetBeingId = BeingId_zero;
 GuildPositionFlags::Type mGuildPositionFlags = GuildPositionFlags::None;
@@ -211,12 +207,10 @@ Inventory *getStorageInventory()
     return nullptr;
 }
 
-#ifdef EATHENA_SUPPORT
 Inventory *getCartInventory()
 {
     return mCartInventory;
 }
-#endif
 
 void clearInventory()
 {
@@ -273,7 +267,6 @@ void useEquipItem(const Item *const item, const Sfx sfx)
 {
     if (item)
     {
-#ifdef EATHENA_SUPPORT
         if (item->getType() == ItemType::Card)
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
@@ -284,9 +277,7 @@ void useEquipItem(const Item *const item, const Sfx sfx)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USECARD);
             }
         }
-        else
-#endif
-        if (item->isEquipment() == Equipm_true)
+        else if (item->isEquipment() == Equipm_true)
         {
             if (item->isEquipped() == Equipped_true)
             {
@@ -436,9 +427,7 @@ void init()
 void deinit()
 {
     clearInventory();
-#ifdef EATHENA_SUPPORT
     delete2(mMercenary);
-#endif
     mPetBeingId = BeingId_zero;
 }
 
@@ -464,9 +453,7 @@ void gameDestroyed()
 {
     delete2(mInventory);
     delete2(mEquipment);
-#ifdef EATHENA_SUPPORT
     delete2(mCartInventory);
-#endif
 }
 
 void stateChange(const StateT state)
@@ -477,9 +464,7 @@ void stateChange(const StateT state)
         {
             mInventory = new Inventory(InventoryType::Inventory);
             mEquipment = new Equipment();
-#ifdef EATHENA_SUPPORT
             mCartInventory = new Inventory(InventoryType::Cart);
-#endif
         }
     }
 }
@@ -520,7 +505,6 @@ bool isItemProtected(const int id)
     return mProtectedItems.find(id) != mProtectedItems.end();
 }
 
-#ifdef EATHENA_SUPPORT
 void setMercenary(MercenaryInfo *const info)
 {
     delete mMercenary;
@@ -631,7 +615,6 @@ bool isInRoom()
 {
     return !mRoomName.empty();
 }
-#endif
 
 void setGuildPositionFlags(const GuildPositionFlags::Type pos)
 {

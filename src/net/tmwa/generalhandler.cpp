@@ -51,7 +51,6 @@
 #include "net/tmwa/skillhandler.h"
 #include "net/tmwa/questhandler.h"
 
-#ifdef EATHENA_SUPPORT
 #include "net/tmwa/auctionhandler.h"
 #include "net/tmwa/bankhandler.h"
 #include "net/tmwa/battlegroundhandler.h"
@@ -68,7 +67,6 @@
 #include "net/tmwa/roulettehandler.h"
 #include "net/tmwa/searchstorehandler.h"
 #include "net/tmwa/vendinghandler.h"
-#endif
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -98,7 +96,6 @@ GeneralHandler::GeneralHandler() :
     mSkillHandler(new SkillHandler),
     mTradeHandler(new TradeHandler),
     mQuestHandler(new QuestHandler),
-#ifdef EATHENA_SUPPORT
     mServerFeatures(new ServerFeatures),
     mAuctionHandler(new AuctionHandler),
     mBankHandler(new BankHandler),
@@ -116,9 +113,6 @@ GeneralHandler::GeneralHandler() :
     mRouletteHandler(new RouletteHandler),
     mSearchStoreHandler(new SearchStoreHandler),
     mVendingHandler(new VendingHandler)
-#else
-    mServerFeatures(new ServerFeatures)
-#endif
 {
     generalHandler = this;
 }

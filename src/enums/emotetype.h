@@ -26,10 +26,8 @@
 enumStart(EmoteType)
 {
     Player = 0,
-#ifdef EATHENA_SUPPORT
     Homunculus,
     Mercenary,
-#endif
     Pet
 }
 enumEnd(EmoteType);

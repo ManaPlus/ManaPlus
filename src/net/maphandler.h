@@ -21,8 +21,6 @@
 #ifndef NET_MAPHANDLER_H
 #define NET_MAPHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "localconsts.h"
 
 namespace Net
@@ -39,5 +37,4 @@ class MapHandler notfinal
 
 extern Net::MapHandler *mapHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_MAPHANDLER_H

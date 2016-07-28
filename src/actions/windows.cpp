@@ -22,15 +22,11 @@
 
 #include "actions/actiondef.h"
 
-#ifdef EATHENA_SUPPORT
 #include "being/localplayer.h"
-#endif
 
 #include "gui/dialogsmanager.h"
 
-#ifdef EATHENA_SUPPORT
 #include "gui/windows/bankwindow.h"
-#endif
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/statuswindow.h"
@@ -55,9 +51,7 @@
 
 #include "utils/gettext.h"
 
-#ifdef EATHENA_SUPPORT
 #include "net/serverfeatures.h"
-#endif
 
 #include "debug.h"
 
@@ -272,20 +266,15 @@ impHandler0(questsWindowShow)
 
 impHandler0(bankWindowShow)
 {
-#ifdef EATHENA_SUPPORT
     if (!serverFeatures || !serverFeatures->haveBankApi())
         return false;
 
     showHideWindow(bankWindow);
     return true;
-#else
-    return false;
-#endif
 }
 
 impHandler0(cartWindowShow)
 {
-#ifdef EATHENA_SUPPORT
     if (!serverFeatures ||
         !serverFeatures->haveCart() ||
         !localPlayer ||
@@ -298,9 +287,6 @@ impHandler0(cartWindowShow)
     if (inventoryWindow)
         inventoryWindow->updateDropButton();
     return true;
-#else
-    return false;
-#endif
 }
 
 impHandler0(updaterWindowShow)
@@ -329,12 +315,8 @@ impHandler0(quickWindowShow)
 
 impHandler0(mailWindowShow)
 {
-#ifdef EATHENA_SUPPORT
     showHideWindow(mailWindow);
     return true;
-#else
-    return false;
-#endif
 }
 
 }  // namespace Actions

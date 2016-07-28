@@ -21,8 +21,6 @@
 #ifndef LISTENERS_REQUESTADOPTCHILDLISTENER_H
 #define LISTENERS_REQUESTADOPTCHILDLISTENER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "gui/windows/confirmdialog.h"
 
 #include "net/familyhandler.h"
@@ -39,5 +37,4 @@ struct RequestAdoptChildListener final : public ActionListener
         }
 };
 
-#endif  // EATHENA_SUPPORT
 #endif  // LISTENERS_REQUESTADOPTCHILDLISTENER_H

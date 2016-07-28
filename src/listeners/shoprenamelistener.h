@@ -21,8 +21,6 @@
 #ifndef LISTENERS_SHOPRENAMELISTENER_H
 #define LISTENERS_SHOPRENAMELISTENER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "listeners/actionlistener.h"
 
 #include "localconsts.h"
@@ -47,5 +45,4 @@ class ShopRenameListener final : public ActionListener
 
 extern ShopRenameListener shopRenameListener;
 
-#endif  // EATHENA_SUPPORT
 #endif  // LISTENERS_SHOPRENAMELISTENER_H

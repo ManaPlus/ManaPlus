@@ -23,8 +23,6 @@
 #ifndef GUI_WINDOWS_EGGSELECTIONDIALOG_H
 #define GUI_WINDOWS_EGGSELECTIONDIALOG_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "gui/widgets/selldialog.h"
 
 class EggSelectionDialog final : public SellDialog
@@ -44,5 +42,4 @@ class EggSelectionDialog final : public SellDialog
         void sellAction(const ActionEvent &event) override final;
 };
 
-#endif  // EATHENA_SUPPORT
 #endif  // GUI_WINDOWS_EGGSELECTIONDIALOG_H

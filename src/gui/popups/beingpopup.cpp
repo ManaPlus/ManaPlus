@@ -126,7 +126,6 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         (*it)->setCaption(std::string());
     }
 
-#ifdef EATHENA_SUPPORT
     const ActorTypeT type = b->getType();
     if (type == ActorType::Pet)
     {
@@ -167,7 +166,6 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
     }
     else
-#endif
     {
         if (!(b->getPartyName().empty()))
         {
@@ -199,7 +197,6 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             num ++;
         }
 
-#ifdef EATHENA_SUPPORT
         if (!b->getBuyBoard().empty())
         {
             ptr = mLabels[num];
@@ -209,9 +206,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             ptr->adjustSize();
             num ++;
         }
-#endif
 
-#ifdef EATHENA_SUPPORT
         if (!b->getSellBoard().empty())
         {
             ptr = mLabels[num];
@@ -221,7 +216,6 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             ptr->adjustSize();
             num ++;
         }
-#endif
 
         if (!b->getComment().empty())
         {
@@ -244,7 +238,6 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             num ++;
         }
 
-#ifdef EATHENA_SUPPORT
         const ChatObject *const chat = b->getChat();
         if (chat)
         {
@@ -255,7 +248,6 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             ptr->adjustSize();
             num ++;
         }
-#endif
     }
     ptr = mLabels[num];
     // TRANSLATORS: being popup label

@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_BANKRECV_H
 #define NET_EATHENA_BANKRECV_H
 
-#ifdef EATHENA_SUPPORT
-
 namespace Net
 {
     class MessageIn;
@@ -38,5 +36,4 @@ namespace EAthena
     }  // namespace BankRecv
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_BANKRECV_H

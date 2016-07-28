@@ -40,10 +40,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
-#ifdef EATHENA_SUPPORT
 #include "being/homunculusinfo.h"
 #include "being/mercenaryinfo.h"
-#endif  // EATHENA_SUPPORT
 
 #include "const/utils/timer.h"
 
@@ -145,10 +143,8 @@ static const unsigned int SPEECH_MAX_TIME = 800;
 #define for_each_badges() \
     for (int f = 0; f < BadgeIndex::BadgeIndexSize; f++)
 
-#ifdef EATHENA_SUPPORT
 #define for_each_horses(name) \
     FOR_EACH (std::vector<AnimatedSprite*>::const_iterator, it, name)
-#endif
 
 Being::Being(const BeingId id,
              const ActorTypeT type,
@@ -205,20 +201,16 @@ Being::Being(const BeingId id,
     mSpriteHide(new int[20]),
     mSpriteDraw(new int[20]),
     mComment(),
-#ifdef EATHENA_SUPPORT
     mBuyBoard(),
     mSellBoard(),
-#endif
     mPets(),
     mOwner(nullptr),
     mSpecialParticle(nullptr),
-#ifdef EATHENA_SUPPORT
     mChat(nullptr),
     mHorseInfo(nullptr),
     mDownHorseSprites(),
     mUpHorseSprites(),
     mSpiritParticles(),
-#endif
     mX(0),
     mY(0),
     mCachedX(0),
@@ -250,9 +242,7 @@ Being::Being(const BeingId id,
     mManner(0),
     mAreaSize(11),
     mCastEndTime(0),
-#ifdef EATHENA_SUPPORT
     mCreatorId(BeingId_zero),
-#endif
     mTeamId(0U),
     mLook(0U),
     mBadgesCount(0U),
@@ -281,12 +271,9 @@ Being::Being(const BeingId id,
     setSubtype(subtype, 0);
 
     if (mType == ActorType::Player
-#ifdef EATHENA_SUPPORT
         || mType == ActorType::Mercenary
         || mType == ActorType::Pet
-        || mType == ActorType::Homunculus
-#endif
-    )
+        || mType == ActorType::Homunculus)
     {
         mShowName = config.getBoolValue("visiblenames");
     }
@@ -295,12 +282,8 @@ Being::Being(const BeingId id,
         mGotComment = true;
     }
 
-#ifdef EATHENA_SUPPORT
     if (mType == ActorType::Portal ||
         mType == ActorType::SkillUnit)
-#else
-    if (mType == ActorType::Portal)
-#endif
     {
         mShowName = false;
     }
@@ -340,10 +323,8 @@ Being::~Being()
     delete2(mAnimationEffect);
     delete2(mCastingEffect);
     mBadgesCount = 0;
-#ifdef EATHENA_SUPPORT
     delete2(mChat);
     removeHorse();
-#endif
 
     if (mOwner)
     {
@@ -365,9 +346,7 @@ Being::~Being()
     mPets.clear();
 
     removeAllItemsParticles();
-#ifdef EATHENA_SUPPORT
     mSpiritParticles.clear();
-#endif
 }
 
 void Being::createSpeechBubble() restrict2
@@ -401,7 +380,6 @@ void Being::setSubtype(const BeingTypeId subtype,
                 mYDiff = mInfo->getSortOffsetY();
             }
             break;
-#ifdef EATHENA_SUPPORT
         case ActorType::Pet:
             mInfo = PETDB::get(mSubType);
             if (mInfo)
@@ -450,7 +428,6 @@ void Being::setSubtype(const BeingTypeId subtype,
                 mYDiff = mInfo->getSortOffsetY();
             }
             break;
-#endif
         case ActorType::Npc:
             mInfo = NPCDB::get(mSubType);
             if (mInfo)
@@ -720,15 +697,11 @@ void Being::takeDamage(Being *restrict const attacker,
             color = &userPalette->getColor(UserColorId::MISS);
         }
     }
-    else if (mType == ActorType::Monster
-#ifdef EATHENA_SUPPORT
-             ||
+    else if (mType == ActorType::Monster ||
              mType == ActorType::Mercenary ||
              mType == ActorType::Pet ||
              mType == ActorType::Homunculus ||
-             mType == ActorType::SkillUnit
-#endif
-    )
+             mType == ActorType::SkillUnit)
     {
         if (attacker == localPlayer)
         {
@@ -1592,14 +1565,9 @@ void Being::setAction(const BeingActionT &restrict action,
                     this,
                     false,
                     mX, mY);
-#ifdef EATHENA_SUPPORT
                 if (mType == ActorType::Monster ||
                     mType == ActorType::Npc ||
                     mType == ActorType::SkillUnit)
-#else
-                if (mType == ActorType::Monster ||
-                    mType == ActorType::Npc)
-#endif
                 {
                     mYDiff = mInfo->getDeadSortOffsetY();
                 }
@@ -1637,12 +1605,10 @@ void Being::setAction(const BeingActionT &restrict action,
             if (sprite)
                 sprite->play(currentAction);
         }
-#ifdef EATHENA_SUPPORT
         for_each_horses(mDownHorseSprites)
             (*it)->play(currentAction);
         for_each_horses(mUpHorseSprites)
             (*it)->play(currentAction);
-#endif
         mAction = action;
     }
 
@@ -1710,12 +1676,10 @@ void Being::setDirection(const uint8_t direction) restrict2
             sprite->setSpriteDirection(dir);
     }
 
-#ifdef EATHENA_SUPPORT
     for_each_horses(mDownHorseSprites)
         (*it)->setSpriteDirection(dir);
     for_each_horses(mUpHorseSprites)
         (*it)->setSpriteDirection(dir);
-#endif
     recalcSpritesOrder();
 }
 
@@ -1821,12 +1785,10 @@ void Being::logic() restrict2
     const int time = tick_time * MILLISECONDS_IN_A_TICK;
     if (mEmotionSprite)
         mEmotionSprite->update(time);
-#ifdef EATHENA_SUPPORT
     for_each_horses(mDownHorseSprites)
         (*it)->update(time);
     for_each_horses(mUpHorseSprites)
         (*it)->update(time);
-#endif
 
     if (mCastEndTime != 0 && mCastEndTime < tick_time)
     {
@@ -2445,7 +2407,6 @@ void Being::updateColors()
             setDefaultNameColor(UserColorId::NPC);
             mTextColor = &userPalette->getColor(UserColorId::NPC);
         }
-#ifdef EATHENA_SUPPORT
         else if (mType == ActorType::Pet)
         {
             setDefaultNameColor(UserColorId::PET);
@@ -2461,7 +2422,6 @@ void Being::updateColors()
             setDefaultNameColor(UserColorId::SKILLUNIT);
             mTextColor = &userPalette->getColor(UserColorId::SKILLUNIT);
         }
-#endif
 #ifdef TMWA_SUPPORT
         else if (mType == ActorType::LocalPet)
         {
@@ -3514,7 +3474,6 @@ void Being::drawPlayer(Graphics *restrict const graphics,
         const int px = mPixelX - mapTileSize / 2 + offsetX;
         // getActorY() + offsetY;
         const int py = mPixelY - mapTileSize + offsetY;
-#ifdef EATHENA_SUPPORT
         if (mHorseInfo)
         {
             for_each_horses(mDownHorseSprites)
@@ -3539,10 +3498,6 @@ void Being::drawPlayer(Graphics *restrict const graphics,
             drawBeingCursor(graphics, px, py);
             drawPlayerSpriteAt(graphics, px, py);
         }
-#else
-        drawBeingCursor(graphics, px, py);
-        drawPlayerSpriteAt(graphics, px, py);
-#endif
     }
 }
 
@@ -3592,7 +3547,6 @@ void Being::drawMonster(Graphics *restrict const graphics,
     drawMonsterSpriteAt(graphics, px, py);
 }
 
-#ifdef EATHENA_SUPPORT
 void Being::drawHomunculus(Graphics *restrict const graphics,
                            const int offsetX,
                            const int offsetY) const restrict2
@@ -3616,7 +3570,6 @@ void Being::drawMercenary(Graphics *restrict const graphics,
     drawBeingCursor(graphics, px, py);
     drawMercenarySpriteAt(graphics, px, py);
 }
-#endif  // EATHENA_SUPPORT
 
 void Being::drawPortal(Graphics *restrict const graphics,
                        const int offsetX,
@@ -3645,7 +3598,6 @@ void Being::draw(Graphics *restrict const graphics,
                 offsetX,
                 offsetY);
             break;
-#ifdef EATHENA_SUPPORT
         case ActorType::Homunculus:
             drawHomunculus(graphics,
                 offsetX,
@@ -3659,7 +3611,6 @@ void Being::draw(Graphics *restrict const graphics,
         case ActorType::Pet:
         case ActorType::SkillUnit:
         case ActorType::Unknown:
-#endif
         case ActorType::Monster:
             drawMonster(graphics,
                 offsetX,
@@ -3836,7 +3787,6 @@ void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
     }
 }
 
-#ifdef EATHENA_SUPPORT
 void Being::drawHomunculusSpriteAt(Graphics *restrict const graphics,
                                    const int x,
                                    const int y) const restrict2
@@ -3946,7 +3896,6 @@ void Being::drawMercenarySpriteAt(Graphics *restrict const graphics,
         }
     }
 }
-#endif
 
 void Being::drawPortalSpriteAt(Graphics *restrict const graphics,
                                const int x,
@@ -4465,12 +4414,10 @@ std::string Being::loadComment(const std::string &restrict name,
         case ActorType::Portal:
         case ActorType::LocalPet:
         case ActorType::Avatar:
-#ifdef EATHENA_SUPPORT
         case ActorType::Mercenary:
         case ActorType::Homunculus:
         case ActorType::Pet:
         case ActorType::SkillUnit:
-#endif
         default:
             return "";
     }
@@ -4505,12 +4452,10 @@ void Being::saveComment(const std::string &restrict name,
         case ActorType::LocalPet:
         case ActorType::Avatar:
         case ActorType::Unknown:
-#ifdef EATHENA_SUPPORT
         case ActorType::Pet:
         case ActorType::Mercenary:
         case ActorType::Homunculus:
         case ActorType::SkillUnit:
-#endif
         default:
             return;
     }
@@ -5150,7 +5095,6 @@ void Being::updateBadgesCount() restrict2
     }
 }
 
-#ifdef EATHENA_SUPPORT
 void Being::setChat(ChatObject *restrict const obj) restrict2
 {
     delete mChat;
@@ -5172,7 +5116,6 @@ void Being::setBuyBoard(const std::string &restrict text) restrict2
     updateName();
     showShopBadge(mShop);
 }
-#endif
 
 void Being::enableShop(const bool b) restrict2
 {
@@ -5183,20 +5126,12 @@ void Being::enableShop(const bool b) restrict2
 
 bool Being::isBuyShopEnabled() const restrict2
 {
-#ifdef EATHENA_SUPPORT
     return mShop && (!serverFeatures->haveVending() || !mBuyBoard.empty());
-#else
-    return mShop;
-#endif
 }
 
 bool Being::isSellShopEnabled() const restrict2
 {
-#ifdef EATHENA_SUPPORT
     return mShop && (!serverFeatures->haveVending() || !mSellBoard.empty());
-#else
-    return mShop;
-#endif
 }
 
 void Being::serverRemove() restrict2 noexcept2
@@ -5240,7 +5175,6 @@ void Being::addCast(const int dstX,
     }
 }
 
-#ifdef EATHENA_SUPPORT
 void Being::removeHorse() restrict2
 {
     delete_all(mUpHorseSprites);
@@ -5363,4 +5297,3 @@ void Being::stopCast(const bool b)
     if (b && mAction == BeingAction::CAST)
         setAction(BeingAction::STAND, 0);
 }
-#endif

@@ -21,8 +21,6 @@
 #ifndef NET_FRIENDSHANDLER_H
 #define NET_FRIENDSHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include <string>
 
 #include "localconsts.h"
@@ -49,5 +47,4 @@ class FriendsHandler notfinal
 
 extern Net::FriendsHandler *friendsHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_FRIENDSHANDLER_H

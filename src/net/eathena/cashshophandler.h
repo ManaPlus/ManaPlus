@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_CASHSHOPHANDLER_H
 #define NET_EATHENA_CASHSHOPHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/cashshophandler.h"
 
 namespace EAthena
@@ -53,5 +51,4 @@ class CashShopHandler final : public Net::CashShopHandler
 
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_CASHSHOPHANDLER_H

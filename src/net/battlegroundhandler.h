@@ -21,8 +21,6 @@
 #ifndef NET_BATTLEGROUNDHANDLER_H
 #define NET_BATTLEGROUNDHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "enums/net/battlegroundtype.h"
 
 #include <string>
@@ -54,5 +52,4 @@ class BattleGroundHandler notfinal
 
 extern Net::BattleGroundHandler *battleGroundHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_BATTLEGROUNDHANDLER_H

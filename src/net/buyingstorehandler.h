@@ -21,8 +21,6 @@
 #ifndef NET_BUYINGSTOREHANDLER_H
 #define NET_BUYINGSTOREHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include <string>
 #include <vector>
 
@@ -60,5 +58,4 @@ class BuyingStoreHandler notfinal
 
 extern Net::BuyingStoreHandler *buyingStoreHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_BUYINGSTOREHANDLER_H

@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_BUYINGSTOREHANDLER_H
 #define NET_EATHENA_BUYINGSTOREHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/buyingstorehandler.h"
 
 namespace EAthena
@@ -51,5 +49,4 @@ class BuyingStoreHandler final : public Net::BuyingStoreHandler
 
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_BUYINGSTOREHANDLER_H

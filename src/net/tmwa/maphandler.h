@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_MAPHANDLER_H
 #define NET_TMWA_MAPHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/maphandler.h"
 
 namespace TmwAthena
@@ -38,5 +36,4 @@ class MapHandler final : public Net::MapHandler
 
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_MAPHANDLER_H

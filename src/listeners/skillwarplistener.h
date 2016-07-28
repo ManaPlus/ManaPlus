@@ -21,8 +21,6 @@
 #ifndef LISTENERS_SKILLWARPLISTENER_H
 #define LISTENERS_SKILLWARPLISTENER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "listeners/actionlistener.h"
 
 #include "localconsts.h"
@@ -51,5 +49,4 @@ class SkillWarpListener final : public ActionListener
 
 extern SkillWarpListener skillWarpListener;
 
-#endif  // EATHENA_SUPPORT
 #endif  // LISTENERS_SKILLWARPLISTENER_H

@@ -21,8 +21,6 @@
 #ifndef NET_ROULETTEHANDLER_H
 #define NET_ROULETTEHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "localconsts.h"
 
 namespace Net
@@ -39,5 +37,4 @@ class RouletteHandler notfinal
 
 extern Net::RouletteHandler *rouletteHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_ROULETTEHANDLER_H

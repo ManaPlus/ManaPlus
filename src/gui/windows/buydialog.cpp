@@ -22,9 +22,7 @@
 
 #include "gui/windows/buydialog.h"
 
-#ifdef EATHENA_SUPPORT
 #include "actormanager.h"
-#endif
 #include "configuration.h"
 #include "units.h"
 
@@ -48,11 +46,9 @@
 
 #include "net/adminhandler.h"
 #include "net/buysellhandler.h"
-#ifdef EATHENA_SUPPORT
 #include "net/cashshophandler.h"
 #include "net/markethandler.h"
 #include "net/vendinghandler.h"
-#endif
 #include "net/serverfeatures.h"
 #include "net/npchandler.h"
 
@@ -443,14 +439,12 @@ void BuyDialog::close()
         case Nick:
         case Items:
             break;
-#ifdef EATHENA_SUPPORT
         case Market:
             marketHandler->close();
             break;
         case Cash:
             cashShopHandler->close();
             break;
-#endif
         default:
             buySellHandler->close();
             break;
@@ -537,7 +531,6 @@ void BuyDialog::action(const ActionEvent &event)
                 if (mConfirmButton)
                     mConfirmButton->setEnabled(true);
             }
-#ifdef EATHENA_SUPPORT
             else if (mNpcId == fromInt(Market, BeingId))
             {
                 marketHandler->buyItem(item->getId(),
@@ -554,7 +547,6 @@ void BuyDialog::action(const ActionEvent &event)
                     item->getColor(),
                     mAmountItems);
             }
-#endif
             else
             {
                 npcHandler->buyItem(mNpcId,
@@ -567,7 +559,6 @@ void BuyDialog::action(const ActionEvent &event)
         }
         else if (mNpcId == fromInt(Nick, BeingId))
         {
-#ifdef EATHENA_SUPPORT
             if (serverFeatures->haveVending())
             {
                 const Being *const being = actorManager->findBeingByName(
@@ -583,9 +574,6 @@ void BuyDialog::action(const ActionEvent &event)
                 }
             }
             else if (tradeWindow)
-#else
-            if (tradeWindow)
-#endif
             {
                 buySellHandler->sendBuyRequest(mNick,
                     item, mAmountItems);
@@ -598,13 +586,11 @@ void BuyDialog::action(const ActionEvent &event)
     {
         std::vector<ShopItem*> &items = mShopItems->allItems();
 
-#ifdef EATHENA_SUPPORT
         if (mNpcId == fromInt(Market, BeingId))
         {
             marketHandler->buyItems(items);
         }
         else
-#endif
         {
             npcHandler->buyItems(items);
         }

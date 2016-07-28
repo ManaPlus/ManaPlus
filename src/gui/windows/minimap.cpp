@@ -352,12 +352,9 @@ void Minimap::draw2(Graphics *const graphics)
                     break;
 
                 case ActorType::LocalPet:
-#ifdef EATHENA_SUPPORT
                 case ActorType::Pet:
-#endif
                     type = UserColorId::PET;
                     break;
-#ifdef EATHENA_SUPPORT
                 case ActorType::Mercenary:
                     type = UserColorId::MERCENARY;
                     break;
@@ -369,7 +366,6 @@ void Minimap::draw2(Graphics *const graphics)
                 case ActorType::SkillUnit:
                     type = UserColorId::SKILLUNIT;
                     break;
-#endif
                 case ActorType::Avatar:
                 case ActorType::Unknown:
                 case ActorType::Player:

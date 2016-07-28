@@ -21,8 +21,6 @@
 #ifndef LISTENERS_BANKLISTENER_H
 #define LISTENERS_BANKLISTENER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "listeners/baselistener.hpp"
 
 #include "localconsts.h"
@@ -37,5 +35,4 @@ class BankListener notfinal
     defineListenerHeader(BankListener)
 };
 
-#endif  // EATHENA_SUPPORT
 #endif  // LISTENERS_BANKLISTENER_H

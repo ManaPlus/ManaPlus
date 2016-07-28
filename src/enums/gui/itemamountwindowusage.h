@@ -35,13 +35,9 @@ enumStart(ItemAmountWindowUsage)
     CartRemove,
     ItemSplit,
     ShopBuyAdd,
-#ifdef EATHENA_SUPPORT
     ShopSellAdd,
     CraftAdd,
     MailAdd
-#else
-    ShopSellAdd
-#endif
 }
 enumEnd(ItemAmountWindowUsage);
 

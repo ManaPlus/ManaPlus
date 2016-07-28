@@ -64,11 +64,9 @@
 
 #include "gui/popups/popupmenu.h"
 
-#ifdef EATHENA_SUPPORT
 #include "gui/windows/bankwindow.h"
 #include "gui/windows/cutinwindow.h"
 #include "gui/windows/mailwindow.h"
-#endif
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/debugwindow.h"
 #include "gui/windows/didyouknowwindow.h"
@@ -209,14 +207,12 @@ static void createGuiWindows()
     CREATEWIDGETV0(miniStatusWindow, MiniStatusWindow);
     CREATEWIDGETV(inventoryWindow, InventoryWindow,
         PlayerInfo::getInventory());
-#ifdef EATHENA_SUPPORT
     if (serverFeatures && serverFeatures->haveCart())
     {
         CREATEWIDGETV(cartWindow, InventoryWindow,
             PlayerInfo::getCartInventory());
     }
     CREATEWIDGETV0(cutInWindow, CutInWindow);
-#endif
     CREATEWIDGETV0(shopWindow, ShopWindow);
     CREATEWIDGETV0(skillDialog, SkillDialog);
     CREATEWIDGETV0(minimap, Minimap);
@@ -255,10 +251,8 @@ static void createGuiWindows()
             new SpellShortcutContainer(nullptr, f));
     }
 
-#ifdef EATHENA_SUPPORT
     CREATEWIDGETV0(bankWindow, BankWindow);
     CREATEWIDGETV0(mailWindow, MailWindow);
-#endif
     CREATEWIDGETV0(whoIsOnline, WhoIsOnline);
     CREATEWIDGETV0(killStats, KillStats);
     CREATEWIDGETV0(socialWindow, SocialWindow);
@@ -346,9 +340,7 @@ static void destroyGuiWindows()
     delete2(statusWindow)
     delete2(miniStatusWindow)
     delete2(inventoryWindow)
-#ifdef EATHENA_SUPPORT
     delete2(cartWindow)
-#endif
     delete2(shopWindow)
     delete2(skillDialog)
     delete2(minimap)
@@ -362,11 +354,9 @@ static void destroyGuiWindows()
     delete2(socialWindow)
     delete2(dropShortcutWindow);
     delete2(spellShortcutWindow);
-#ifdef EATHENA_SUPPORT
     delete2(bankWindow);
     delete2(cutInWindow);
     delete2(mailWindow);
-#endif
     delete2(questsWindow);
     delete2(whoIsOnline);
     delete2(killStats);
@@ -428,9 +418,7 @@ Game::Game() :
     initEngines();
 
     chatWindow->postConnection();
-#ifdef EATHENA_SUPPORT
     mailWindow->postConnection();
-#endif
 
     // Initialize beings
     if (actorManager)

@@ -68,14 +68,10 @@ static const Being *getPet()
         return *pets.begin();
     }
 #endif
-#ifdef EATHENA_SUPPORT
     const BeingId id = PlayerInfo::getPetBeingId();
     if (id == BeingId_zero)
         return nullptr;
     return actorManager->findBeing(id);
-#else
-    return nullptr;
-#endif
 }
 
 impHandler(commandEmotePet)

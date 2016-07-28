@@ -32,9 +32,7 @@
 #include "const/gui/chat.h"
 #endif
 
-#ifdef EATHENA_SUPPORT
 #include "gui/windows/editdialog.h"
-#endif
 
 #include "gui/windows/itemamountwindow.h"
 #include "gui/windows/setupwindow.h"
@@ -51,9 +49,7 @@
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/tabstrip.h"
 
-#ifdef EATHENA_SUPPORT
 #include "listeners/shoprenamelistener.h"
-#endif
 
 #ifdef TMWA_SUPPORT
 #include "actormanager.h"
@@ -69,10 +65,8 @@
 #include "being/playerrelations.h"
 #include "net/chathandler.h"
 #endif
-#ifdef EATHENA_SUPPORT
 #include "net/buyingstorehandler.h"
 #include "net/vendinghandler.h"
-#endif
 #include "net/serverfeatures.h"
 #ifdef TMWA_SUPPORT
 #include "net/tradehandler.h"
@@ -102,12 +96,10 @@ ShopWindow::DialogList ShopWindow::instances;
 ShopWindow::ShopWindow() :
     // TRANSLATORS: shop window name
     Window(_("Personal Shop"), Modal_false, nullptr, "shop.xml"),
-#ifdef EATHENA_SUPPORT
     VendingModeListener(),
     VendingSlotsListener(),
     BuyingStoreModeListener(),
     BuyingStoreSlotsListener(),
-#endif
     ActionListener(),
     SelectionListener(),
     // TRANSLATORS: shop window button
@@ -217,9 +209,7 @@ ShopWindow::ShopWindow() :
 
     center();
     loadWindowState();
-#ifdef EATHENA_SUPPORT
     updateShopName();
-#endif
     instances.push_back(this);
 }
 
@@ -308,7 +298,6 @@ void ShopWindow::action(const ActionEvent &event)
         isBuySelected = false;
         updateSelection();
     }
-#ifdef EATHENA_SUPPORT
     else if (eventId == "publish")
     {
         if (isBuySelected)
@@ -378,17 +367,12 @@ void ShopWindow::action(const ActionEvent &event)
         shopRenameListener.setDialog(dialog);
         dialog->addActionListener(&shopRenameListener);
     }
-#endif
 
     if (mSelectedItem < 1)
         return;
 
-#ifdef EATHENA_SUPPORT
     const Inventory *const inv = mHaveVending && !isBuySelected
         ? PlayerInfo::getCartInventory() : PlayerInfo::getInventory();
-#else
-    const Inventory *const inv = PlayerInfo::getInventory();
-#endif
     if (!inv)
         return;
 
@@ -1122,7 +1106,6 @@ void ShopWindow::updateSelection()
     updateButtonsAndLabels();
 }
 
-#ifdef EATHENA_SUPPORT
 void ShopWindow::updateShopName()
 {
     if (mSellShopName.empty())
@@ -1173,4 +1156,3 @@ void ShopWindow::buyingStoreEnabled(const bool b)
         mBuyShopSize = 0;
     updateButtonsAndLabels();
 }
-#endif

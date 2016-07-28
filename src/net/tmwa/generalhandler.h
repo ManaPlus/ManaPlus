@@ -45,7 +45,6 @@ class SkillHandler;
 class TradeHandler;
 class QuestHandler;
 class ServerFeatures;
-#ifdef EATHENA_SUPPORT
 class AuctionHandler;
 class BankHandler;
 class BattleGroundHandler;
@@ -62,7 +61,6 @@ class MercenaryHandler;
 class RouletteHandler;
 class SearchStoreHandler;
 class VendingHandler;
-#endif
 
 class GeneralHandler final : public Net::GeneralHandler
 {
@@ -110,7 +108,6 @@ class GeneralHandler final : public Net::GeneralHandler
         TradeHandler *mTradeHandler;
         QuestHandler *mQuestHandler;
         ServerFeatures *mServerFeatures;
-#ifdef EATHENA_SUPPORT
         AuctionHandler *mAuctionHandler;
         BankHandler *mBankHandler;
         BattleGroundHandler *mBattleGroundHandler;
@@ -127,7 +124,6 @@ class GeneralHandler final : public Net::GeneralHandler
         RouletteHandler *mRouletteHandler;
         SearchStoreHandler *mSearchStoreHandler;
         VendingHandler *mVendingHandler;
-#endif
 };
 
 }  // namespace TmwAthena

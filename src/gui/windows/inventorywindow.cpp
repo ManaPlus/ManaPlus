@@ -72,9 +72,7 @@
 
 InventoryWindow *inventoryWindow = nullptr;
 InventoryWindow *storageWindow = nullptr;
-#ifdef EATHENA_SUPPORT
 InventoryWindow *cartWindow = nullptr;
-#endif
 InventoryWindow::WindowList InventoryWindow::invInstances;
 InsertCardListener insertCardListener;
 
@@ -124,11 +122,9 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             case InventoryType::Inventory:
             case InventoryType::Trade:
             case InventoryType::Npc:
-#ifdef EATHENA_SUPPORT
             case InventoryType::Vending:
             case InventoryType::Mail:
             case InventoryType::Craft:
-#endif
             case InventoryType::TypeEnd:
             default:
                 mSortDropDown->setSelected(config.getIntValue(
@@ -138,12 +134,10 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
                 mSortDropDown->setSelected(config.getIntValue(
                     "storageSortOrder"));
                 break;
-#ifdef EATHENA_SUPPORT
             case InventoryType::Cart:
                 mSortDropDown->setSelected(config.getIntValue(
                     "cartSortOrder"));
                 break;
-#endif
         };
     }
     else
@@ -285,7 +279,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             break;
         }
 
-#ifdef EATHENA_SUPPORT
         case InventoryType::Cart:
         {
             // TRANSLATORS: storage button
@@ -315,16 +308,13 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             place(6, 6, mInvCloseButton);
             break;
         }
-#endif
 
         default:
         case InventoryType::Trade:
         case InventoryType::Npc:
-#ifdef EATHENA_SUPPORT
         case InventoryType::Vending:
         case InventoryType::Mail:
         case InventoryType::Craft:
-#endif
         case InventoryType::TypeEnd:
             break;
     };
@@ -382,11 +372,9 @@ void InventoryWindow::storeSortOrder() const
             case InventoryType::Inventory:
             case InventoryType::Trade:
             case InventoryType::Npc:
-#ifdef EATHENA_SUPPORT
             case InventoryType::Vending:
             case InventoryType::Mail:
             case InventoryType::Craft:
-#endif
             case InventoryType::TypeEnd:
             default:
                 config.setValue("inventorySortOrder",
@@ -396,12 +384,10 @@ void InventoryWindow::storeSortOrder() const
                 config.setValue("storageSortOrder",
                     mSortDropDown->getSelected());
                 break;
-#ifdef EATHENA_SUPPORT
             case InventoryType::Cart:
                 config.setValue("cartSortOrder",
                     mSortDropDown->getSelected());
                 break;
-#endif
         };
     }
 }
@@ -444,13 +430,11 @@ void InventoryWindow::action(const ActionEvent &event)
             ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreAdd,
                 this, item);
         }
-#ifdef EATHENA_SUPPORT
         else if (cartWindow && cartWindow->isWindowVisible())
         {
             ItemAmountWindow::showWindow(ItemAmountWindowUsage::CartAdd,
                 this, item);
         }
-#endif
     }
     else if (eventId == "sort")
     {
@@ -492,7 +476,6 @@ void InventoryWindow::action(const ActionEvent &event)
                 item->getQuantity(),
                 InventoryType::Storage);
         }
-#ifdef EATHENA_SUPPORT
         else if (cartWindow && cartWindow->isWindowVisible())
         {
             inventoryHandler->moveItem2(InventoryType::Inventory,
@@ -501,7 +484,6 @@ void InventoryWindow::action(const ActionEvent &event)
                 InventoryType::Cart);
         }
         else
-#endif
         {
             if (PlayerInfo::isItemProtected(item->getId()))
                 return;
@@ -530,13 +512,11 @@ void InventoryWindow::action(const ActionEvent &event)
             ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreRemove,
                 this, item);
         }
-#ifdef EATHENA_SUPPORT
         else if (cartWindow && cartWindow->isWindowVisible())
         {
             ItemAmountWindow::showWindow(ItemAmountWindowUsage::CartRemove,
                 this, item);
         }
-#endif
     }
 }
 
@@ -824,9 +804,7 @@ void InventoryWindow::close()
     switch (mInventory->getType())
     {
         case InventoryType::Inventory:
-#ifdef EATHENA_SUPPORT
         case InventoryType::Cart:
-#endif
             setVisible(Visible_false);
             break;
 
@@ -842,11 +820,9 @@ void InventoryWindow::close()
         default:
         case InventoryType::Trade:
         case InventoryType::Npc:
-#ifdef EATHENA_SUPPORT
         case InventoryType::Vending:
         case InventoryType::Mail:
         case InventoryType::Craft:
-#endif
         case InventoryType::TypeEnd:
             break;
     }
@@ -857,12 +833,8 @@ void InventoryWindow::updateWeight()
     if (!mInventory || !mWeightBar)
         return;
     const InventoryTypeT type = mInventory->getType();
-#ifdef EATHENA_SUPPORT
     if (type != InventoryType::Inventory &&
         type != InventoryType::Cart)
-#else
-    if (type != InventoryType::Inventory)
-#endif
     {
         return;
     }
@@ -907,11 +879,7 @@ void InventoryWindow::updateDropButton()
     if (!mDropButton)
         return;
 
-#ifdef EATHENA_SUPPORT
     if (isStorageActive() || (cartWindow && cartWindow->isWindowVisible()))
-#else
-    if (isStorageActive())
-#endif
     {
         // TRANSLATORS: inventory button
         mDropButton->setCaption(_("Store"));
@@ -981,12 +949,8 @@ void InventoryWindow::widgetResized(const Event &event)
     if (!mInventory)
         return;
     const InventoryTypeT type = mInventory->getType();
-#ifdef EATHENA_SUPPORT
     if (type != InventoryType::Inventory &&
         type != InventoryType::Cart)
-#else
-    if (type != InventoryType::Inventory)
-#endif
     {
         return;
     }
@@ -1041,7 +1005,6 @@ void InventoryWindow::attributeChanged(const AttributesT id,
     }
 }
 
-#ifdef EATHENA_SUPPORT
 void InventoryWindow::combineItems(const int index1,
                                    const int index2)
 {
@@ -1104,4 +1067,3 @@ void InventoryWindow::moveItemToCraft(const int craftSlot)
         }
     }
 }
-#endif

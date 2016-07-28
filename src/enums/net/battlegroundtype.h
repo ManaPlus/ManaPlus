@@ -20,7 +20,6 @@
 
 #ifndef ENUMS_NET_BATTLEGROUNDTYPE_H
 #define ENUMS_NET_BATTLEGROUNDTYPE_H
-#ifdef EATHENA_SUPPORT
 
 #include "enums/simpletypes/enumdefines.h"
 
@@ -33,5 +32,4 @@ enumStart(BattleGroundType)
 }
 enumEnd(BattleGroundType);
 
-#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_NET_BATTLEGROUNDTYPE_H

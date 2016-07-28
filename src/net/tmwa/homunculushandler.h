@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_HOMUNCULUSHANDLER_H
 #define NET_TMWA_HOMUNCULUSHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/homunculushandler.h"
 
 namespace TmwAthena
@@ -59,5 +57,4 @@ class HomunculusHandler final : public Net::HomunculusHandler
 
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_HOMUNCULUSHANDLER_H

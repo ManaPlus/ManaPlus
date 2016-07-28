@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_FAMILYRECV_H
 #define NET_EATHENA_FAMILYRECV_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "enums/simpletypes/beingid.h"
 
 namespace Net
@@ -44,5 +42,4 @@ namespace EAthena
     }  // namespace FamilyRecv
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_FAMILYRECV_H

@@ -33,9 +33,7 @@
 #include "gui/popups/itempopup.h"
 
 #include "gui/windows/maileditwindow.h"
-#ifdef EATHENA_SUPPORT
 #include "gui/windows/npcdialog.h"
-#endif  // EATHENA_SUPPORT
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/tradewindow.h"
 
@@ -49,9 +47,7 @@
 #include "gui/widgets/slider.h"
 
 #include "net/inventoryhandler.h"
-#ifdef EATHENA_SUPPORT
 #include "net/npchandler.h"
-#endif  // EATHENA_SUPPORT
 
 #include "resources/item/item.h"
 
@@ -98,7 +94,6 @@ void ItemAmountWindow::finish(Item *const item,
             if (shopWindow)
                 shopWindow->addSellItem(item, amount, price);
             break;
-#ifdef EATHENA_SUPPORT
         case ItemAmountWindowUsage::CartAdd:
             inventoryHandler->moveItem2(InventoryType::Inventory,
                 item->getInvIndex(), amount, InventoryType::Cart);
@@ -118,7 +113,6 @@ void ItemAmountWindow::finish(Item *const item,
                 dialog->addCraftItem(item, amount, price);  // price as slot
             break;
         }
-#endif
         default:
             break;
     }
@@ -264,7 +258,6 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to store."));
             break;
-#ifdef EATHENA_SUPPORT
         case ItemAmountWindowUsage::MailAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to send."));
@@ -273,7 +266,6 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to craft."));
             break;
-#endif
         case ItemAmountWindowUsage::CartAdd:
             // TRANSLATORS: amount window message
             setCaption(_("Select amount of items to store to cart."));
@@ -365,7 +357,6 @@ void ItemAmountWindow::action(const ActionEvent &event)
         }
         else
         {
-#ifdef EATHENA_SUPPORT
             if (mUsage == ItemAmountWindowUsage::CraftAdd)
             {
                 finish(mItem,
@@ -374,7 +365,6 @@ void ItemAmountWindow::action(const ActionEvent &event)
                     mUsage);
             }
             else
-#endif
             {
                 finish(mItem,
                     mItemAmountTextField->getValue(),
@@ -488,23 +478,16 @@ void ItemAmountWindow::showWindow(const ItemAmountWindowUsageT usage,
         usage != ItemAmountWindowUsage::ShopSellAdd &&
         maxRange <= 1)
     {
-#ifdef EATHENA_SUPPORT
         if (usage == ItemAmountWindowUsage::CraftAdd)
             finish(item, maxRange, tag, usage);
         else
-#endif
             finish(item, maxRange, 0, usage);
     }
     else
     {
-#ifdef EATHENA_SUPPORT
         ItemAmountWindow *const window = CREATEWIDGETR(ItemAmountWindow,
             usage, parent, item, maxRange);
         if (usage == ItemAmountWindowUsage::CraftAdd)
             window->mPrice = tag;
-#else
-        CREATEWIDGET(ItemAmountWindow,
-            usage, parent, item, maxRange);
-#endif
     }
 }

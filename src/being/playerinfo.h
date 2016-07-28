@@ -37,9 +37,7 @@
 
 #include "utils/intmap.h"
 
-#ifdef EATHENA_SUPPORT
 #include <string>
-#endif
 
 /**
  * Stat information storage structure.
@@ -164,9 +162,7 @@ namespace PlayerInfo
 
     Inventory *getStorageInventory() A_WARN_UNUSED;
 
-#ifdef EATHENA_SUPPORT
     Inventory *getCartInventory() A_WARN_UNUSED;
-#endif
 
     /**
      * Clears the player's inventory and equipment.
@@ -253,7 +249,6 @@ namespace PlayerInfo
 
     bool isItemProtected(const int id);
 
-#ifdef EATHENA_SUPPORT
     MercenaryInfo *getMercenary();
 
     void setMercenary(MercenaryInfo *const info);
@@ -288,7 +283,6 @@ namespace PlayerInfo
     void setRoomName(const std::string &name);
 
     bool isInRoom();
-#endif
 
     void setGuildPositionFlags(const GuildPositionFlags::Type pos);
 

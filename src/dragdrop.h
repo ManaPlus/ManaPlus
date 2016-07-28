@@ -230,10 +230,8 @@ class DragDrop final
         {
             return mSource == DragDropSource::Inventory
                 || mSource == DragDropSource::Storage
-#ifdef EATHENA_SUPPORT
                 || mSource == DragDropSource::Cart
                 || mSource == DragDropSource::Craft
-#endif
                 || mSource == DragDropSource::Trade
                 || mSource == DragDropSource::Outfit
                 || mSource == DragDropSource::Ground

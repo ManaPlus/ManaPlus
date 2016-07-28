@@ -20,7 +20,6 @@
 
 #ifndef ENUMS_BEING_RANK_H
 #define ENUMS_BEING_RANK_H
-#ifdef EATHENA_SUPPORT
 
 #include "enums/simpletypes/enumdefines.h"
 
@@ -33,5 +32,4 @@ enumStart(Rank)
 }
 enumEnd(Rank);
 
-#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_BEING_RANK_H

@@ -739,9 +739,7 @@ void InputManager::updateConditionMask() restrict2
 
     if (!PlayerInfo::isVending())
         mMask |= InputCondition::NOVENDING;
-#ifdef EATHENA_SUPPORT
     if (!PlayerInfo::isInRoom())
-#endif
         mMask |= InputCondition::NOROOM;
 
     const NpcDialog *restrict const dialog = NpcDialog::getActive();

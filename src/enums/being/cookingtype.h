@@ -20,7 +20,6 @@
 
 #ifndef ENUMS_BEING_COOKINGTYPE_H
 #define ENUMS_BEING_COOKINGTYPE_H
-#ifdef EATHENA_SUPPORT
 
 #include "enums/simpletypes/enumdefines.h"
 
@@ -35,5 +34,4 @@ enumStart(CookingType)
 }
 enumEnd(CookingType);
 
-#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_BEING_COOKINGTYPE_H

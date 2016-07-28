@@ -602,7 +602,6 @@ void Client::gameClear()
     EmoteDB::unload();
     ItemDB::unload();
     ItemFieldDb::unload();
-#ifdef EATHENA_SUPPORT
     const ServerTypeT type = Net::getNetworkType();
     if (type == ServerType::EATHENA ||
         type == ServerType::EVOL2)
@@ -612,7 +611,6 @@ void Client::gameClear()
         SkillUnitDb::unload();
         HorseDB::unload();
     }
-#endif
     MonsterDB::unload();
     NPCDB::unload();
     NpcDialogDB::unload();
@@ -1331,7 +1329,6 @@ int Client::gameExec()
                     ItemFieldDb::load();
                     ItemDB::load();
                     Being::load();
-#ifdef EATHENA_SUPPORT
                     const ServerTypeT type = Net::getNetworkType();
                     if (type == ServerType::EATHENA ||
                         type == ServerType::EVOL2)
@@ -1341,7 +1338,6 @@ int Client::gameExec()
                         SkillUnitDb::load();
                         HorseDB::load();
                     }
-#endif
                     MonsterDB::load();
                     AvatarDB::load();
                     BadgesDB::load();

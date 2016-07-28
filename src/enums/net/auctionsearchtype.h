@@ -20,7 +20,6 @@
 
 #ifndef ENUMS_NET_AUCTIONSEARCHTYPE_H
 #define ENUMS_NET_AUCTIONSEARCHTYPE_H
-#ifdef EATHENA_SUPPORT
 
 #include "enums/simpletypes/enumdefines.h"
 
@@ -35,5 +34,4 @@ enumStart(AuctionSearchType)
 }
 enumEnd(AuctionSearchType);
 
-#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_NET_AUCTIONSEARCHTYPE_H

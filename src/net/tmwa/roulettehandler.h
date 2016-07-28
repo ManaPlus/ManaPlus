@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_ROULETTEHANDLER_H
 #define NET_TMWA_ROULETTEHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/roulettehandler.h"
 
 namespace TmwAthena
@@ -37,5 +35,4 @@ class RouletteHandler final : public Net::RouletteHandler
 
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_ROULETTEHANDLER_H

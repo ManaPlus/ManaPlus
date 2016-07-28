@@ -33,15 +33,11 @@ enumStart(ActorType)
     FloorItem,
     Portal,
     LocalPet,
-#ifdef EATHENA_SUPPORT
     Avatar,
     Pet,
     Mercenary,
     Homunculus,
     SkillUnit
-#else
-    Avatar
-#endif
 }
 enumEnd(ActorType);
 

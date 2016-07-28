@@ -73,9 +73,7 @@ class ItemPopup final : public Popup
         void resetPopup();
 
     private:
-#ifdef EATHENA_SUPPORT
         std::string getCardsString(const int *const cards);
-#endif
 
         Label *mItemName A_NONNULLPOINTER;
         TextBox *mItemDesc A_NONNULLPOINTER;

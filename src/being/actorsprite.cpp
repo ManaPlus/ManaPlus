@@ -382,7 +382,6 @@ void ActorSprite::updateStatusEffect(const int32_t index,
         return;
     if (effect->mIsPoison && getType() == ActorType::Player)
         setPoison(newStatus == Enable_true);
-#ifdef EATHENA_SUPPORT
     else if (effect->mIsCart && localPlayer == this)
         setHaveCart(newStatus == Enable_true);
     else if (effect->mIsRiding)
@@ -391,7 +390,6 @@ void ActorSprite::updateStatusEffect(const int32_t index,
         setTrickDead(newStatus == Enable_true);
     else if (effect->mIsPostDelay)
         stopCast(newStatus == Enable_true);
-#endif
     handleStatusEffect(effect, index, start);
 }
 

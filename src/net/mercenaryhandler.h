@@ -21,8 +21,6 @@
 #ifndef NET_MERCENARYHANDLER_H
 #define NET_MERCENARYHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/keep.h"
 
@@ -59,5 +57,4 @@ class MercenaryHandler notfinal
 
 extern Net::MercenaryHandler *mercenaryHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_MERCENARYHANDLER_H

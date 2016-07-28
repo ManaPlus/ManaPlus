@@ -46,9 +46,7 @@ class TextField;
 
 extern InventoryWindow *inventoryWindow;
 extern InventoryWindow *storageWindow;
-#ifdef EATHENA_SUPPORT
 extern InventoryWindow *cartWindow;
-#endif  // EATHENA_SUPPORT
 
 /**
  * Inventory dialog.
@@ -156,12 +154,10 @@ class InventoryWindow final : public Window,
                               const int oldVal,
                               const int newVal) override final;
 
-#ifdef EATHENA_SUPPORT
         void combineItems(const int index1,
                           const int index2);
 
         void moveItemToCraft(const int craftSlot);
-#endif
 
         static bool isAnyInputFocused();
 

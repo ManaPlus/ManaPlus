@@ -165,9 +165,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showSkillLevelPopup(const SkillInfo *const info);
 
-#ifdef EATHENA_SUPPORT
         void showCraftPopup();
-#endif
 
         void showEmoteType();
 
@@ -223,7 +221,6 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addWindowMenu(const Window *const window);
 
-#ifdef EATHENA_SUPPORT
         void showHomunGMCommands();
 
         void showPetGMCommands();
@@ -231,7 +228,6 @@ class PopupMenu final : public Popup, public LinkHandler
         void showMercenaryGMCommands();
 
         void addChat(const Being *const being);
-#endif
 
         void addMailCommands();
 

@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_FRIENDSRECV_H
 #define NET_EATHENA_FRIENDSRECV_H
 
-#ifdef EATHENA_SUPPORT
-
 namespace Net
 {
     class MessageIn;
@@ -40,5 +38,4 @@ namespace EAthena
     }  // namespace FriendsRecv
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_FRIENDSRECV_H

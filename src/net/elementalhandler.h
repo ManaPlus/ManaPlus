@@ -21,8 +21,6 @@
 #ifndef NET_ELEMENTALHANDLER_H
 #define NET_ELEMENTALHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "localconsts.h"
 
 namespace Net
@@ -39,5 +37,4 @@ class ElementalHandler notfinal
 
 extern Net::ElementalHandler *elementalHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_ELEMENTALHANDLER_H

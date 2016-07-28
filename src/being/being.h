@@ -956,7 +956,6 @@ class Being notfinal : public ActorSprite,
         virtual int getLastAttackY() const restrict2
         { return mLastAttackY; }
 
-#ifdef EATHENA_SUPPORT
         void drawHomunculus(Graphics *restrict const graphics,
                             const int offsetX,
                             const int offsetY) const
@@ -1002,7 +1001,6 @@ class Being notfinal : public ActorSprite,
 
         BeingId getCreatorId() const noexcept2 A_WARN_UNUSED
         { return mCreatorId; }
-#endif
 
         void setKarma(const int karma) restrict2 noexcept2
         { mKarma = karma; }
@@ -1077,7 +1075,6 @@ class Being notfinal : public ActorSprite,
                                  const int x,
                                  const int y) const restrict2 A_NONNULL(2);
 
-#ifdef EATHENA_SUPPORT
         void drawHomunculusSpriteAt(Graphics *restrict const graphics,
                                     const int x,
                                     const int y) const restrict2 A_NONNULL(2);
@@ -1085,7 +1082,6 @@ class Being notfinal : public ActorSprite,
         void drawMercenarySpriteAt(Graphics *restrict const graphics,
                                    const int x,
                                    const int y) const restrict2 A_NONNULL(2);
-#endif  // EATHENA_SUPPORT
 
         void drawCompound(Graphics *const graphics,
                           const int posX,
@@ -1224,20 +1220,16 @@ class Being notfinal : public ActorSprite,
         int *restrict mSpriteHide A_NONNULLPOINTER;
         int *restrict mSpriteDraw A_NONNULLPOINTER;
         std::string mComment;
-#ifdef EATHENA_SUPPORT
         std::string mBuyBoard;
         std::string mSellBoard;
-#endif
         std::vector<Being*> mPets;
         Being *restrict mOwner;
         Particle *restrict mSpecialParticle;
-#ifdef EATHENA_SUPPORT
         ChatObject *restrict mChat;
         HorseInfo *restrict mHorseInfo;
         std::vector<AnimatedSprite*> mDownHorseSprites;
         std::vector<AnimatedSprite*> mUpHorseSprites;
         std::vector<Particle*> mSpiritParticles;
-#endif
 
         int mX;             // position in tiles
         int mY;             // position in tiles
@@ -1293,9 +1285,7 @@ class Being notfinal : public ActorSprite,
         int mManner;
         int mAreaSize;
         int mCastEndTime;
-#ifdef EATHENA_SUPPORT
         BeingId mCreatorId;
-#endif
         uint16_t mTeamId;
         uint16_t mLook;
         uint16_t mBadgesCount;

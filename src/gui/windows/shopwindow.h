@@ -47,12 +47,10 @@ class TabStrip;
  * \ingroup Interface
  */
 class ShopWindow final : public Window,
-#ifdef EATHENA_SUPPORT
                          public VendingModeListener,
                          public VendingSlotsListener,
                          public BuyingStoreModeListener,
                          public BuyingStoreSlotsListener,
-#endif
                          public ActionListener,
                          public SelectionListener
 {
@@ -148,7 +146,6 @@ class ShopWindow final : public Window,
 
         bool isShopEmpty() const A_WARN_UNUSED;
 
-#ifdef EATHENA_SUPPORT
         void vendingEnabled(const bool b) override final;
 
         void vendingSlotsChanged(const int slots) override final;
@@ -158,18 +155,14 @@ class ShopWindow final : public Window,
         void buyingStoreSlotsChanged(const int slots) override final;
 
         void setShopName(const std::string &name);
-#endif
 
     private:
 #ifdef TMWA_SUPPORT
         void startTrade();
 #endif
-
         void updateSelection();
 
-#ifdef EATHENA_SUPPORT
         void updateShopName();
-#endif
 
         typedef std::list<ShopWindow*> DialogList;
         static DialogList instances;

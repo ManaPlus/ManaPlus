@@ -209,9 +209,7 @@ class ChatWindow final : public Window,
                             const bool switchTo,
                             const bool join) A_WARN_UNUSED;
 
-#ifdef EATHENA_SUPPORT
         void joinRoom(const bool isJoin);
-#endif
 
         void removeAllWhispers();
 

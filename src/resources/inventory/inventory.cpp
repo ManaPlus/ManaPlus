@@ -320,9 +320,7 @@ std::string Inventory::getName() const
     switch (mType)
     {
         case InventoryType::Inventory:
-#ifdef EATHENA_SUPPORT
         case InventoryType::Vending:
-#endif
         case InventoryType::TypeEnd:
         default:
         {
@@ -339,7 +337,6 @@ std::string Inventory::getName() const
             // TRANSLATORS: inventory type name
             return N_("Npc");
         }
-#ifdef EATHENA_SUPPORT
         case InventoryType::Cart:
         {
             // TRANSLATORS: inventory type name
@@ -355,7 +352,6 @@ std::string Inventory::getName() const
             // TRANSLATORS: inventory type name
             return N_("Craft");
         }
-#endif
         case InventoryType::Trade:
         {
             // TRANSLATORS: inventory type name

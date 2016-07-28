@@ -78,20 +78,16 @@
 
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
-#ifdef EATHENA_SUPPORT
 #include "net/buyingstorehandler.h"
-#endif
 #include "net/buysellhandler.h"
 #include "net/chathandler.h"
 #include "net/download.h"
 #include "net/gamehandler.h"
 #include "net/inventoryhandler.h"
 #include "net/ipc.h"
-#ifdef EATHENA_SUPPORT
 #include "net/mercenaryhandler.h"
 #include "net/net.h"
 #include "net/vendinghandler.h"
-#endif
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
@@ -261,12 +257,10 @@ static Item *getItemByInvIndex(const InputEvent &event,
             break;
         case InventoryType::Trade:
         case InventoryType::Npc:
-#ifdef EATHENA_SUPPORT
         case InventoryType::Cart:
         case InventoryType::Vending:
         case InventoryType::Mail:
         case InventoryType::Craft:
-#endif
         case InventoryType::TypeEnd:
         default:
             break;
@@ -507,10 +501,8 @@ impHandler(dropItemInvAll)
 
 impHandler(heal)
 {
-#ifdef EATHENA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
-#endif
     if (actorManager && localPlayer)
     {
         std::string args = event.args;
@@ -560,10 +552,8 @@ impHandler(heal)
 
 impHandler0(healmd)
 {
-#ifdef EATHENA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
-#endif
     if (actorManager)
     {
         const int matk = PlayerInfo::getStatEffective(Attributes::PLAYER_MATK);
@@ -593,10 +583,8 @@ impHandler0(healmd)
 
 impHandler0(itenplz)
 {
-#ifdef EATHENA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
-#endif
     if (actorManager)
     {
         if (playerHandler &&
@@ -622,10 +610,8 @@ impHandler0(setHome)
 
 impHandler0(magicAttack)
 {
-#ifdef EATHENA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
-#endif
     if (localPlayer)
     {
         localPlayer->magicAttack();
@@ -729,12 +715,9 @@ impHandler(buy)
     }
     else if (being->getType() == ActorType::Player)
     {
-#ifdef EATHENA_SUPPORT
         if (vendingHandler && serverFeatures->haveVending())
             vendingHandler->open(being);
-        else
-#endif
-        if (buySellHandler)
+        else if (buySellHandler)
             buySellHandler->requestSellList(being->getName());
         return true;
     }
@@ -778,12 +761,9 @@ impHandler(sell)
     }
     else if (being->getType() == ActorType::Player)
     {
-#ifdef EATHENA_SUPPORT
         if (buyingStoreHandler && serverFeatures->haveVending())
             buyingStoreHandler->open(being);
-        else
-#endif
-        if (buySellHandler)
+        else if (buySellHandler)
             buySellHandler->requestBuyList(being->getName());
         return true;
     }
@@ -1529,13 +1509,9 @@ impHandler(uploadLog)
 
 impHandler0(mercenaryFire)
 {
-#ifdef EATHENA_SUPPORT
     if (mercenaryHandler)
         mercenaryHandler->fire();
     return true;
-#else
-    return false;
-#endif
 }
 
 impHandler(useItem)
@@ -1703,7 +1679,6 @@ impHandler0(testInfo)
 
 impHandlerE(craftKey)
 {
-#ifdef EATHENA_SUPPORT
     const int slot = (event.action - InputAction::CRAFT_1);
     if (slot >= 0 && slot < 9)
     {
@@ -1711,7 +1686,6 @@ impHandlerE(craftKey)
             inventoryWindow->moveItemToCraft(slot);
         return true;
     }
-#endif
     return false;
 }
 
@@ -1805,7 +1779,6 @@ impHandler(setEmoteType)
     {
         settings.emoteType = EmoteType::Pet;
     }
-#ifdef EATHENA_SUPPORT
     else if (args == "homun" || args == "homunculus")
     {
         settings.emoteType = EmoteType::Homunculus;
@@ -1814,7 +1787,6 @@ impHandler(setEmoteType)
     {
         settings.emoteType = EmoteType::Mercenary;
     }
-#endif
     return true;
 }
 

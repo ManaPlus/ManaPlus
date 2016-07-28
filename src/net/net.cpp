@@ -30,15 +30,12 @@
 #include "net/tmwa/generalhandler.h"
 #endif
 
-#ifdef EATHENA_SUPPORT
 #include "net/eathena/generalhandler.h"
-#endif
 
 #include "debug.h"
 
 namespace Net
 {
-#ifdef EATHENA_SUPPORT
     class AuctionHandler;
     class BankHandler;
     class BattleGroundHandler;
@@ -55,7 +52,6 @@ namespace Net
     class SearchStoreHandler;
     class RouletteHandler;
     class VendingHandler;
-#endif
     class AdminHandler;
     class BeingHandler;
     class BuySellHandler;
@@ -91,7 +87,6 @@ Net::TradeHandler *tradeHandler = nullptr;
 Net::BeingHandler *beingHandler = nullptr;
 Net::BuySellHandler *buySellHandler = nullptr;
 Net::ServerFeatures *serverFeatures = nullptr;
-#ifdef EATHENA_SUPPORT
 Net::AuctionHandler *auctionHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
 Net::BattleGroundHandler *battleGroundHandler = nullptr;
@@ -108,7 +103,6 @@ Net::MercenaryHandler *mercenaryHandler = nullptr;
 Net::RouletteHandler *rouletteHandler = nullptr;
 Net::SearchStoreHandler *searchStoreHandler = nullptr;
 Net::VendingHandler *vendingHandler = nullptr;
-#endif
 Net::QuestHandler *questHandler = nullptr;
 
 namespace Net
@@ -132,11 +126,7 @@ void connectToServer(const ServerInfo &server)
         {
             case ServerType::EATHENA:
             case ServerType::EVOL2:
-#ifdef EATHENA_SUPPORT
                 new EAthena::GeneralHandler;
-#else
-                new TmwAthena::GeneralHandler;
-#endif
                 break;
             case ServerType::TMWATHENA:
             case ServerType::UNKNOWN:

@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_FAMILYHANDLER_H
 #define NET_EATHENA_FAMILYHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/familyhandler.h"
 
 namespace EAthena
@@ -41,5 +39,4 @@ class FamilyHandler final : public Net::FamilyHandler
 
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_FAMILYHANDLER_H

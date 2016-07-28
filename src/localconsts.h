@@ -97,11 +97,7 @@
 #define A_UNUSED  __attribute__ ((unused))
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
 #define DEPRECATED __attribute__ ((deprecated))
-#ifndef EATHENA_SUPPORT
-#define A_TMWA_UNUSED  __attribute__ ((unused))
-#else  // EATHENA_SUPPORT
 #define A_TMWA_UNUSED
-#endif  // EATHENA_SUPPORT
 #ifdef DYECMD
 #define A_DYECMD_UNUSED __attribute__ ((unused))
 #else  // DYECMD

@@ -21,8 +21,6 @@
 #ifndef NET_MARKETHANDLER_H
 #define NET_MARKETHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "enums/resources/itemtype.h"
 
 #include "enums/simpletypes/itemcolor.h"
@@ -56,5 +54,4 @@ class MarketHandler notfinal
 
 extern Net::MarketHandler *marketHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_MARKETHANDLER_H

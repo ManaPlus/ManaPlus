@@ -149,15 +149,11 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     switch (mServer.type)
     {
         case ServerType::EATHENA:
-#ifdef EATHENA_SUPPORT
 #ifdef TMWA_SUPPORT
             mTypeField->setSelected(1);
 #else   // TMWA_SUPPORT
             mTypeField->setSelected(0);
 #endif  // TMWA_SUPPORT
-#else   // EATHENA_SUPPORT
-            mTypeField->setSelected(0);
-#endif  // EATHENA_SUPPORT
             break;
         default:
         case ServerType::UNKNOWN:
@@ -165,15 +161,11 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
             mTypeField->setSelected(0);
             break;
         case ServerType::EVOL2:
-#ifdef EATHENA_SUPPORT
 #ifdef TMWA_SUPPORT
             mTypeField->setSelected(2);
 #else   // TMWA_SUPPORT
             mTypeField->setSelected(1);
 #endif  // TMWA_SUPPORT
-#else   // EATHENA_SUPPORT
-            mTypeField->setSelected(0);
-#endif  // EATHENA_SUPPORT
             break;
     }
 
@@ -236,7 +228,6 @@ void EditServerDialog::action(const ActionEvent &event)
                 mPortField->getText().c_str()));
             mServer.persistentIp = mPersistentIp->isSelected();
 
-#if defined(TMWA_SUPPORT) || defined(EATHENA_SUPPORT)
             if (mTypeField)
             {
                 switch (mTypeField->getSelected())
@@ -245,16 +236,13 @@ void EditServerDialog::action(const ActionEvent &event)
                     case 0:
                         mServer.type = ServerType::TMWATHENA;
                         break;
-#ifdef EATHENA_SUPPORT
                     case 1:
                         mServer.type = ServerType::EATHENA;
                         break;
                     case 2:
                         mServer.type = ServerType::EVOL2;
                         break;
-#endif
 #else
-#ifdef EATHENA_SUPPORT
                     case 0:
                         mServer.type = ServerType::EATHENA;
                         break;
@@ -262,14 +250,12 @@ void EditServerDialog::action(const ActionEvent &event)
                         mServer.type = ServerType::EVOL2;
                         break;
 #endif
-#endif
                     default:
                         mServer.type = ServerType::UNKNOWN;
                         break;
                 }
             }
             else
-#endif  // defined(TMWA_SUPPORT) || defined(EATHENA_SUPPORT)
             {
                 mServer.type = ServerType::TMWATHENA;
             }

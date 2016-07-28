@@ -199,9 +199,7 @@ ActorManager::ActorManager() :
     mActorsIdMap(),
     mIdName(),
     mBlockedBeings(),
-#ifdef EATHENA_SUPPORT
     mChars(),
-#endif
     mMap(nullptr),
     mSpellHeal1(serverConfig.getValue("spellHeal1", "#lum")),
     mSpellHeal2(serverConfig.getValue("spellHeal2", "#inma")),
@@ -277,11 +275,9 @@ Being *ActorManager::createBeing(const BeingId id,
     mActorsIdMap[being->getId()] = being;
 
     if (type == ActorType::Player
-#ifdef EATHENA_SUPPORT
         || type == ActorType::Mercenary
         || type == ActorType::Pet
         || type == ActorType::Homunculus
-#endif
         || type == ActorType::Npc)
     {
         being->updateFromCache();
@@ -592,12 +588,10 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
             case ActorType::Npc:
             case ActorType::Monster:
             case ActorType::LocalPet:
-#ifdef EATHENA_SUPPORT
             case ActorType::Pet:
             case ActorType::Mercenary:
             case ActorType::Homunculus:
             case ActorType::SkillUnit:
-#endif
             {
                 const Being *const being = static_cast<const Being*>(*it);
                 if (!being)
@@ -1003,9 +997,7 @@ void ActorManager::clear()
         mActorsIdMap[localPlayer->getId()] = localPlayer;
     }
 
-#ifdef EATHENA_SUPPORT
     mChars.clear();
-#endif
 }
 
 Being *ActorManager::findNearestPvpPlayer() const
@@ -1391,10 +1383,8 @@ void ActorManager::healTarget() const
 
 void ActorManager::heal(const Being *const target) const
 {
-#ifdef EATHENA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return;
-#endif
 
     if (!localPlayer ||
         !chatWindow ||
@@ -1517,10 +1507,8 @@ Being* ActorManager::findMostDamagedPlayer(const int maxTileDist) const
 
 void ActorManager::itenplz() const
 {
-#ifdef EATHENA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return;
-#endif
     if (!localPlayer ||
         !chatWindow ||
         !localPlayer->isAlive() ||
@@ -2178,7 +2166,6 @@ std::string ActorManager::getSeenPlayerById(const BeingId id) const
     return std::string();
 }
 
-#ifdef EATHENA_SUPPORT
 void ActorManager::removeRoom(const int chatId)
 {
     for_actors
@@ -2237,5 +2224,3 @@ void ActorManager::addChar(const int32_t id,
 
     guiInput->simulateMouseMove();
 }
-
-#endif

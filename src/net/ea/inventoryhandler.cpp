@@ -87,12 +87,10 @@ size_t InventoryHandler::getSize(const InventoryTypeT type) const
         case InventoryType::Trade:
             return 12;
         case InventoryType::Npc:
-#ifdef EATHENA_SUPPORT
         case InventoryType::Cart:
         case InventoryType::Vending:
         case InventoryType::Mail:
         case InventoryType::Craft:
-#endif
         case InventoryType::TypeEnd:
         default:
             return 0;

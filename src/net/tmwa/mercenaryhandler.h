@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_MERCENARYHANDLER_H
 #define NET_TMWA_MERCENARYHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/mercenaryhandler.h"
 
 namespace TmwAthena
@@ -55,5 +53,4 @@ class MercenaryHandler final : public Net::MercenaryHandler
 
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_MERCENARYHANDLER_H

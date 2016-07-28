@@ -23,8 +23,6 @@
 #ifndef GUI_WINDOWS_INSERTCARDDIALOG_H
 #define GUI_WINDOWS_INSERTCARDDIALOG_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "gui/widgets/selldialog.h"
 
 class InsertCardDialog final : public SellDialog
@@ -48,5 +46,4 @@ class InsertCardDialog final : public SellDialog
         int mItemIndex;
 };
 
-#endif  // EATHENA_SUPPORT
 #endif  // GUI_WINDOWS_INSERTCARDDIALOG_H

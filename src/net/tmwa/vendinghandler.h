@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_VENDINGHANDLER_H
 #define NET_TMWA_VENDINGHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/vendinghandler.h"
 
 namespace TmwAthena
@@ -56,5 +54,4 @@ class VendingHandler final : public Net::VendingHandler
 
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_VENDINGHANDLER_H

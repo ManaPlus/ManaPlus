@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_FAMILYHANDLER_H
 #define NET_TMWA_FAMILYHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/familyhandler.h"
 
 namespace TmwAthena
@@ -43,5 +41,4 @@ class FamilyHandler final : public Net::FamilyHandler
 
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_FAMILYHANDLER_H

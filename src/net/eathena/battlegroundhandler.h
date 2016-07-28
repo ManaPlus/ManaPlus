@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_BATTLEGROUNDHANDLER_H
 #define NET_EATHENA_BATTLEGROUNDHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/battlegroundhandler.h"
 
 namespace EAthena
@@ -48,5 +46,4 @@ class BattleGroundHandler final : public Net::BattleGroundHandler
 
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_BATTLEGROUNDHANDLER_H

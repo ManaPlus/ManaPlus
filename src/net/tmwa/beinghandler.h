@@ -39,13 +39,11 @@ class BeingHandler final : public Ea::BeingHandler
 
         void undress(Being *const being) const override final;
 
-#ifdef EATHENA_SUPPORT
         void requestRanks(const RankT rank A_UNUSED) const override final
                           A_CONST;
 
         void viewPlayerEquipment(const Being *const being) const override final
                                  A_CONST;
-#endif
 
         void requestNameByCharId(const int id) const override final A_CONST;
 };

@@ -31,12 +31,10 @@ enumStart(InventoryType)
     Storage,
     Trade,
     Npc,
-#ifdef EATHENA_SUPPORT
     Cart,
     Vending,
     Mail,
     Craft,
-#endif
     TypeEnd
 }
 enumEnd(InventoryType);

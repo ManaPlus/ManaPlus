@@ -21,8 +21,6 @@
 #ifndef NET_BANKHANDLER_H
 #define NET_BANKHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "localconsts.h"
 
 namespace Net
@@ -49,5 +47,4 @@ class BankHandler notfinal
 
 extern Net::BankHandler *bankHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_BANKHANDLER_H

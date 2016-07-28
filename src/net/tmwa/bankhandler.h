@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_BANKHANDLER_H
 #define NET_TMWA_BANKHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/bankhandler.h"
 
 namespace TmwAthena
@@ -48,5 +46,4 @@ class BankHandler final : public Net::BankHandler
 
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_BANKHANDLER_H

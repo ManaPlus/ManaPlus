@@ -21,8 +21,6 @@
 #ifndef LISTENERS_BUYINGSTORESLOTSLISTENER_H
 #define LISTENERS_BUYINGSTORESLOTSLISTENER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "listeners/baselistener.hpp"
 
 #include "localconsts.h"
@@ -37,5 +35,4 @@ class BuyingStoreSlotsListener notfinal
     defineListenerHeader(BuyingStoreSlotsListener)
 };
 
-#endif  // EATHENA_SUPPORT
 #endif  // LISTENERS_BUYINGSTORESLOTSLISTENER_H

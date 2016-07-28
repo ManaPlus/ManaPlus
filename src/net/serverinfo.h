@@ -168,18 +168,14 @@ class ServerInfo final
 #ifdef TMWA_SUPPORT
             if (compareStrI(serverType, "tmwathena") == 0)
                 return ServerType::TMWATHENA;
-#endif  // TMWA_SUPPORT
-#if defined(TMWA_SUPPORT) && defined(EATHENA_SUPPORT)
             else
-#endif  // defined(TMWA_SUPPORT) && defined(EATHENA_SUPPORT)
-#ifdef EATHENA_SUPPORT
+#endif  // TMWA_SUPPORT
             if (compareStrI(serverType, "eathena") == 0)
                 return ServerType::EATHENA;
             else if (compareStrI(serverType, "hercules") == 0)
                 return ServerType::EATHENA;
             else if (compareStrI(serverType, "evol2") == 0)
                 return ServerType::EVOL2;
-#endif  // EATHENA_SUPPORT
             return ServerType::UNKNOWN;
         }
 };

@@ -446,12 +446,8 @@ bool Viewport::leftMouseAction()
             }
             else if (!stopAttack &&
                      (type == ActorType::Monster ||
-                     type == ActorType::Npc
-#ifdef EATHENA_SUPPORT
-                     ||
-                     type == ActorType::SkillUnit
-#endif
-                     ))
+                     type == ActorType::Npc ||
+                     type == ActorType::SkillUnit))
             {
                 if ((localPlayer->withinAttackRange(mHoverBeing) ||
                     inputManager.isActionActive(InputAction::ATTACK)))
@@ -837,11 +833,9 @@ void Viewport::mouseMoved(MouseEvent &event)
     if (mHoverBeing
         && (type == ActorType::Player
         || type == ActorType::Npc
-#ifdef EATHENA_SUPPORT
         || type == ActorType::Homunculus
         || type == ActorType::Mercenary
         || type == ActorType::Pet
-#endif
         || type == ActorType::LocalPet))
     {
         popupManager->hideTextPopup();
@@ -899,12 +893,10 @@ void Viewport::mouseMoved(MouseEvent &event)
             case ActorType::Monster:
             case ActorType::Portal:
             case ActorType::LocalPet:
-#ifdef EATHENA_SUPPORT
             case ActorType::Pet:
             case ActorType::Mercenary:
             case ActorType::Homunculus:
             case ActorType::SkillUnit:
-#endif
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 

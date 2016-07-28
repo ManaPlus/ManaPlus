@@ -21,8 +21,6 @@
 #ifndef NET_EATHENA_HOMUNCULUSRECV_H
 #define NET_EATHENA_HOMUNCULUSRECV_H
 
-#ifdef EATHENA_SUPPORT
-
 namespace Net
 {
     class MessageIn;
@@ -41,5 +39,4 @@ namespace EAthena
     }  // namespace HomunculusRecv
 }  // namespace EAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_EATHENA_HOMUNCULUSRECV_H

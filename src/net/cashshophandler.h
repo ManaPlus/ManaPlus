@@ -21,8 +21,6 @@
 #ifndef NET_CASHSHOPHANDLER_H
 #define NET_CASHSHOPHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "enums/simpletypes/itemcolor.h"
 
 #include <vector>
@@ -60,5 +58,4 @@ class CashShopHandler notfinal
 
 extern Net::CashShopHandler *cashShopHandler;
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_CASHSHOPHANDLER_H

@@ -21,8 +21,6 @@
 #ifndef GUI_WINDOWS_MAILVIEWWINDOW_H
 #define GUI_WINDOWS_MAILVIEWWINDOW_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -63,5 +61,4 @@ class MailViewWindow final : public Window,
 
 extern MailViewWindow *mailViewWindow;
 
-#endif  // EATHENA_SUPPORT
 #endif  // GUI_WINDOWS_MAILVIEWWINDOW_H

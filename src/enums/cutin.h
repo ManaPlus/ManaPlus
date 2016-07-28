@@ -21,8 +21,6 @@
 #ifndef ENUMS_CUTIN_H
 #define ENUMS_CUTIN_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "enums/simpletypes/enumdefines.h"
 
 enumStart(CutIn)
@@ -35,5 +33,4 @@ enumStart(CutIn)
 }
 enumEnd(CutIn);
 
-#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_CUTIN_H

@@ -40,19 +40,13 @@
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
-#ifdef EATHENA_SUPPORT
 #include "gui/windows/itemamountwindow.h"
 #include "gui/windows/npcdialog.h"
-#endif
 
-#ifdef EATHENA_SUPPORT
 #include "input/inputmanager.h"
-#endif
 
 #include "net/inventoryhandler.h"
-#ifdef EATHENA_SUPPORT
 #include "net/npchandler.h"
-#endif
 #include "net/tradehandler.h"
 
 #include "utils/delete2.h"
@@ -602,7 +596,6 @@ void ItemContainer::mousePressed(MouseEvent &event)
             case InventoryType::Npc:
                 src = DragDropSource::Npc;
                 break;
-#ifdef EATHENA_SUPPORT
             case InventoryType::Cart:
                 src = DragDropSource::Cart;
                 break;
@@ -612,11 +605,8 @@ void ItemContainer::mousePressed(MouseEvent &event)
             case InventoryType::Craft:
                 src = DragDropSource::Craft;
                 break;
-#endif
             default:
-#ifdef EATHENA_SUPPORT
             case InventoryType::Vending:
-#endif
             case InventoryType::TypeEnd:
                 break;
         }
@@ -712,7 +702,6 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             case InventoryType::Npc:
                 dst = DragDropSource::Npc;
                 break;
-#ifdef EATHENA_SUPPORT
             case InventoryType::Mail:
                 dst = DragDropSource::Mail;
                 break;
@@ -722,11 +711,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             case InventoryType::Craft:
                 dst = DragDropSource::Craft;
                 break;
-#endif
             default:
-#ifdef EATHENA_SUPPORT
             case InventoryType::Vending:
-#endif
             case InventoryType::TypeEnd:
                 break;
         }
@@ -748,7 +734,6 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             dstContainer = InventoryType::Inventory;
             inventory = PlayerInfo::getStorageInventory();
         }
-#ifdef EATHENA_SUPPORT
         if (src == DragDropSource::Inventory
             && dst == DragDropSource::Cart)
         {
@@ -789,7 +774,6 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             dstContainer = InventoryType::Cart;
             inventory = PlayerInfo::getStorageInventory();
         }
-#endif
         if (src == DragDropSource::Inventory
             && dst == DragDropSource::Trade)
         {
@@ -797,12 +781,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             inventory = PlayerInfo::getInventory();
         }
         else if (src == DragDropSource::Inventory
-#ifdef EATHENA_SUPPORT
                  && (dst == DragDropSource::Npc
                  || dst == DragDropSource::Mail))
-#else
-                 && dst == DragDropSource::Npc)
-#endif
         {
             inventory = PlayerInfo::getInventory();
             if (inventory)
@@ -865,7 +845,6 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 return;
             }
         }
-#ifdef EATHENA_SUPPORT
         else if (src == DragDropSource::Inventory &&
                  dst == DragDropSource::Craft)
         {
@@ -946,7 +925,6 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             }
             return;
         }
-#endif
 
         if (inventory)
         {

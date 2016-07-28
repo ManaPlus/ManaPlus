@@ -26,10 +26,8 @@
 
 #include "being/localplayer.h"
 
-#ifdef EATHENA_SUPPORT
 #include "net/homunculushandler.h"
 #include "net/mercenaryhandler.h"
-#endif
 #include "net/pethandler.h"
 
 #include "resources/db/emotedb.h"
@@ -110,14 +108,12 @@ void EmoteShortcut::useEmote(const int index) const
                 case EmoteType::Pet:
                     petHandler->emote(emote, 0);
                     break;
-#ifdef EATHENA_SUPPORT
                 case EmoteType::Homunculus:
                     homunculusHandler->emote(emote);
                     break;
                 case EmoteType::Mercenary:
                     mercenaryHandler->emote(emote);
                     break;
-#endif
             }
         }
     }

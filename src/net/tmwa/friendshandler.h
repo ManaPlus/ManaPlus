@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_FRIENDSHANDLER_H
 #define NET_TMWA_FRIENDSHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/friendshandler.h"
 
 namespace TmwAthena
@@ -46,5 +44,4 @@ class FriendsHandler final : public Net::FriendsHandler
 
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_FRIENDSHANDLER_H

@@ -67,11 +67,9 @@
 #include "net/adminhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
-#ifdef EATHENA_SUPPORT
 #include "net/homunculushandler.h"
 #include "net/mercenaryhandler.h"
 #include "net/npchandler.h"
-#endif
 #include "net/net.h"
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
@@ -163,9 +161,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     mY = y;
 
     const std::string &name = mName;
-#ifdef EATHENA_SUPPORT
     if (being->getType() != ActorType::SkillUnit)
-#endif
     {
         mBrowserBox->addRow(name + being->getGenderSignWithSpace());
     }
@@ -258,9 +254,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("/navigateto 'NAME'", _("Move"));
             addPlayerMisc();
             addBuySell(being);
-#ifdef EATHENA_SUPPORT
             addChat(being);
-#endif
             break;
         }
 
@@ -293,9 +287,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add comment to npc
             mBrowserBox->addRow("addcomment", _("Add comment"));
-#ifdef EATHENA_SUPPORT
             addChat(being);
-#endif
             break;
 
         case ActorType::Monster:
@@ -339,7 +331,6 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             break;
         }
 
-#ifdef EATHENA_SUPPORT
         case ActorType::Mercenary:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: Mercenary move to master
@@ -435,7 +426,6 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 creatorName.c_str()));
             break;
         }
-#endif
         case ActorType::Avatar:
         case ActorType::Unknown:
         case ActorType::FloorItem:
@@ -1122,7 +1112,6 @@ void PopupMenu::showEmoteType()
     // TRANSLATORS: show emotes for pet
     mBrowserBox->addRow("/setemotetype pet", _("Pet"));
 
-#ifdef EATHENA_SUPPORT
     if (serverFeatures->haveServerPets())
     {
         // TRANSLATORS: popup menu item
@@ -1133,7 +1122,6 @@ void PopupMenu::showEmoteType()
         // TRANSLATORS: show emotes for mercenary
         mBrowserBox->addRow("/setemotetype merc", _("Mercenary"));
     }
-#endif
     mBrowserBox->addRow("##3---");
 
     // TRANSLATORS: popup menu item
@@ -1479,7 +1467,6 @@ void PopupMenu::handleLink(const std::string &link,
         if (Widget::widgetExists(mWindow))
             mWindow->setSticky(true);
     }
-#ifdef EATHENA_SUPPORT
     else if (link == "join chat" && being)
     {
         const ChatObject *const chat = being->getChat();
@@ -1511,7 +1498,6 @@ void PopupMenu::handleLink(const std::string &link,
         showCraftPopup();
         return;
     }
-#endif
     else if (link == "pet feed")
     {
         petHandler->feed();
@@ -1799,7 +1785,6 @@ void PopupMenu::showPopup(Window *const parent,
                 }
                 mBrowserBox->addRow("##3---");
             }
-#ifdef EATHENA_SUPPORT
             if (npcHandler)
             {
                 NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
@@ -1812,7 +1797,6 @@ void PopupMenu::showPopup(Window *const parent,
                         _("Move to craft..."));
                 }
             }
-#endif
             addUseDrop(item, isProtected);
             break;
 
@@ -1846,12 +1830,10 @@ void PopupMenu::showPopup(Window *const parent,
 
         case InventoryType::Trade:
         case InventoryType::Npc:
-#ifdef EATHENA_SUPPORT
         case InventoryType::Cart:
         case InventoryType::Vending:
         case InventoryType::Mail:
         case InventoryType::Craft:
-#endif
         case InventoryType::TypeEnd:
         default:
             break;
@@ -2687,7 +2669,6 @@ void PopupMenu::addParty(const std::string &nick)
     }
 }
 
-#ifdef EATHENA_SUPPORT
 void PopupMenu::addChat(const Being *const being)
 {
     if (!being)
@@ -2702,7 +2683,6 @@ void PopupMenu::addChat(const Being *const being)
         mBrowserBox->addRow("##3---");
     }
 }
-#endif
 
 void PopupMenu::addPlayerMisc()
 {
@@ -3197,7 +3177,6 @@ void PopupMenu::showGMPopup(const std::string &name)
             case ActorType::FloorItem:
                 showFloorItemGMCommands();
                 break;
-#ifdef EATHENA_SUPPORT
             case ActorType::Homunculus:
                 showHomunGMCommands();
                 break;
@@ -3209,7 +3188,6 @@ void PopupMenu::showGMPopup(const std::string &name)
                 break;
             case ActorType::SkillUnit:
                 break;
-#endif
             default:
             case ActorType::Unknown:
                 if (mItemId != 0)
@@ -3230,7 +3208,6 @@ void PopupMenu::showGMPopup(const std::string &name)
     showPopup(getX(), getY());
 }
 
-#ifdef EATHENA_SUPPORT
 void PopupMenu::showHomunGMCommands()
 {
 }
@@ -3262,40 +3239,33 @@ void PopupMenu::showCraftPopup()
 
     showPopup(mX, mY);
 }
-#endif
 
 void PopupMenu::addMailCommands()
 {
-#ifdef EATHENA_SUPPORT
     if (!serverFeatures->haveMail())
         return;
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: open mail dialog
     mBrowserBox->addRow("/mailto 'NAME'", _("Mail to..."));
-#endif
 }
 
 void PopupMenu::addCatchPetCommands()
 {
-#ifdef EATHENA_SUPPORT
     if (!serverFeatures->haveServerPets())
         return;
     // TRANSLATORS: popup menu item
     // TRANSLATORS: catch pet command
     mBrowserBox->addRow("/catchpet :'BEINGID'", _("Taming pet"));
-#endif
 }
 
 void PopupMenu::showAdoptCommands()
 {
-#ifdef EATHENA_SUPPORT
     if (!serverFeatures->haveFamily())
         return;
     // TRANSLATORS: popup menu item
     // TRANSLATORS: adopt child command
     mBrowserBox->addRow("/adoptchild 'NAME'", _("Adopt child"));
-#endif
 }
 
 void PopupMenu::moveUp()

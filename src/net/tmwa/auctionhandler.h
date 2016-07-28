@@ -21,8 +21,6 @@
 #ifndef NET_TMWA_AUCTIONHANDLER_H
 #define NET_TMWA_AUCTIONHANDLER_H
 
-#ifdef EATHENA_SUPPORT
-
 #include "net/auctionhandler.h"
 
 namespace TmwAthena
@@ -62,5 +60,4 @@ class AuctionHandler final : public Net::AuctionHandler
 
 }  // namespace TmwAthena
 
-#endif  // EATHENA_SUPPORT
 #endif  // NET_TMWA_AUCTIONHANDLER_H

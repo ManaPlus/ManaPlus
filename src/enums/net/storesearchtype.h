@@ -20,7 +20,6 @@
 
 #ifndef ENUMS_NET_STORESEARCHTYPE_H
 #define ENUMS_NET_STORESEARCHTYPE_H
-#ifdef EATHENA_SUPPORT
 
 #include "enums/simpletypes/enumdefines.h"
 
@@ -31,5 +30,4 @@ enumStart(StoreSearchType)
 }
 enumEnd(StoreSearchType);
 
-#endif  // EATHENA_SUPPORT
 #endif  // ENUMS_NET_STORESEARCHTYPE_H
