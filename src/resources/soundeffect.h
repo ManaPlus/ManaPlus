@@ -35,23 +35,22 @@
 class SoundEffect final : public Resource
 {
     public:
+        /**
+         * Constructor.
+         */
+        SoundEffect(Mix_Chunk *const soundEffect,
+                    const std::string &name) :
+            Resource(),
+            mName(name),
+            mChunk(soundEffect)
+        { }
+
         A_DELETE_COPY(SoundEffect)
 
         /**
          * Destructor.
          */
         ~SoundEffect();
-
-        /**
-         * Loads a sample from a buffer in memory.
-         *
-         * @param rw         The SDL_RWops to load the sample data from.
-         *
-         * @return <code>NULL</code> if the an error occurred, a valid pointer
-         *         otherwise.
-         */
-        static Resource *load(SDL_RWops *const rw,
-                              const std::string &name);
 
         /**
          * Plays the sample.
@@ -72,16 +71,6 @@ class SoundEffect final : public Resource
         { return mName; }
 
     protected:
-        /**
-         * Constructor.
-         */
-        SoundEffect(Mix_Chunk *const soundEffect,
-                    const std::string &name) :
-            Resource(),
-            mName(name),
-            mChunk(soundEffect)
-        { }
-
         std::string mName;
         Mix_Chunk *mChunk;
 };

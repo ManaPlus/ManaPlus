@@ -31,25 +31,6 @@ SoundEffect::~SoundEffect()
     Mix_FreeChunk(mChunk);
 }
 
-Resource *SoundEffect::load(SDL_RWops *const rw,
-                            const std::string &name)
-{
-    if (!rw)
-        return nullptr;
-    // Load the music data and free the RWops structure
-    Mix_Chunk *const tmpSoundEffect = Mix_LoadWAV_RW(rw, 1);
-
-    if (tmpSoundEffect)
-    {
-        return new SoundEffect(tmpSoundEffect, name);
-    }
-    else
-    {
-        logger->log("Error, failed to load sound effect: %s", Mix_GetError());
-        return nullptr;
-    }
-}
-
 bool SoundEffect::play(const int loops, const int volume,
                        const int channel) const
 {

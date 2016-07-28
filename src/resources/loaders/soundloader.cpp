@@ -36,7 +36,6 @@ namespace
     struct ResourceLoader final
     {
         std::string path;
-        ResourceManager::loader fun;
 
         static Resource *load(const void *const v)
         {
@@ -51,15 +50,26 @@ namespace
                     rl->path.c_str());
                 return nullptr;
             }
-            Resource *const res = rl->fun(rw, rl->path);
-            return res;
+            // Load the music data and free the RWops structure
+            Mix_Chunk *const tmpSoundEffect = Mix_LoadWAV_RW(rw, 1);
+
+            if (tmpSoundEffect)
+            {
+                return new SoundEffect(tmpSoundEffect, rl->path);
+            }
+            else
+            {
+                reportAlways("Error, failed to load sound effect: %s",
+                    Mix_GetError());
+                return nullptr;
+            }
         }
     };
 }  // namespace
 
 SoundEffect *Loader::getSoundEffect(const std::string &idPath)
 {
-    ResourceLoader rl = { idPath, &SoundEffect::load };
+    ResourceLoader rl = { idPath };
     return static_cast<SoundEffect*>(resourceManager->get(
         idPath, ResourceLoader::load, &rl));
 }
