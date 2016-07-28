@@ -79,23 +79,8 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
         if (!atlas)
             continue;
 
-        // create atlas base on sorted images
-        SDL_Surface *const surface = createSDLAtlas(atlas);
-
-        if (!surface)
-            continue;
-
-        // debug save
-//        ImageWriter::writePNG(surface, settings.tempDir
-//            + "/atlas" + name + toString(k) + ".png");
-//        k ++;
-
-        // convert SDL images to OpenGL
+        createSDLAtlas(atlas);
         convertAtlas(atlas);
-
-        // free SDL atlas surface
-        MSDL_FreeSurface(surface);
-
         resource->atlases.push_back(atlas);
     }
 
@@ -281,7 +266,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
     BLOCK_END("AtlasManager::simpleSort")
 }
 
-SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
+void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 {
     BLOCK_START("AtlasManager::createSDLAtlas")
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -300,7 +285,7 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     if (atlas->items.size() == 1)
     {
         BLOCK_END("AtlasManager::createSDLAtlas")
-        return nullptr;
+        return;
     }
 
     // using only power of two sizes.
@@ -316,11 +301,13 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     if (!surface)
     {
         BLOCK_END("AtlasManager::createSDLAtlas")
-        return nullptr;
+        return;
     }
     BLOCK_END("AtlasManager::createSDLAtlas create surface")
 
     Image *image = imageHelper->loadSurface(surface);
+    // free SDL atlas surface
+    MSDL_FreeSurface(surface);
 
     // drawing SDL images to surface
     FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
@@ -334,7 +321,6 @@ SDL_Surface *AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     }
     atlas->atlasImage = image;
     BLOCK_END("AtlasManager::createSDLAtlas")
-    return surface;
 }
 
 void AtlasManager::convertAtlas(TextureAtlas *const atlas)
