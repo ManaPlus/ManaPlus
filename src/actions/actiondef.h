@@ -30,8 +30,6 @@ SETTINGS_H
 INPUT_INPUTMANAGER_H
 
 #define impHandler(name) bool name(InputEvent &event)
-#define impHandlerE(name) bool name(InputEvent &event)
-
 #define impHandler0(name) bool name(InputEvent &event A_UNUSED)
 #define impHandlerVoid(name) bool name(InputEvent &event A_UNUSED) \
     { \

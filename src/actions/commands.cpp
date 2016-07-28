@@ -896,7 +896,7 @@ impHandler(serverUnIgnoreWhisper)
     return false;
 }
 
-impHandlerE(setHomunculusName)
+impHandler(setHomunculusName)
 {
     const std::string args = event.args;
     if (args.empty())
@@ -956,7 +956,7 @@ impHandler(warp)
     return false;
 }
 
-impHandlerE(homunTalk)
+impHandler(homunTalk)
 {
     if (!serverFeatures || !serverFeatures->haveTalkPet())
         return false;
@@ -972,7 +972,7 @@ impHandlerE(homunTalk)
     return false;
 }
 
-impHandlerE(homunEmote)
+impHandler(homunEmote)
 {
     if (!serverFeatures || !serverFeatures->haveTalkPet())
         return false;
@@ -992,7 +992,7 @@ impHandlerE(homunEmote)
     return false;
 }
 
-impHandlerE(commandHomunEmote)
+impHandler(commandHomunEmote)
 {
     if (!serverFeatures || !serverFeatures->haveTalkPet())
         return false;
@@ -1006,7 +1006,7 @@ impHandlerE(commandHomunEmote)
     return false;
 }
 
-impHandlerE(createPublicChatRoom)
+impHandler(createPublicChatRoom)
 {
     if (!chatHandler || event.args.empty())
         return false;
@@ -1014,7 +1014,7 @@ impHandlerE(createPublicChatRoom)
     return true;
 }
 
-impHandlerE(joinChatRoom)
+impHandler(joinChatRoom)
 {
     if (!chatHandler)
         return false;
@@ -1154,7 +1154,7 @@ impHandler(skill)
     return true;
 }
 
-impHandlerE(craft)
+impHandler(craft)
 {
     const std::string args = event.args;
     if (args.empty() || !inventoryWindow)
@@ -1560,7 +1560,7 @@ impHandler(commandGuildRecall)
     return true;
 }
 
-impHandlerE(mailTo)
+impHandler(mailTo)
 {
     if (!mailWindow)
         return false;
@@ -1568,7 +1568,7 @@ impHandlerE(mailTo)
     return true;
 }
 
-impHandlerE(adoptChild)
+impHandler(adoptChild)
 {
     const std::string nick = getNick(event);
     Being *const being = actorManager->findBeingByName(

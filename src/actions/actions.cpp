@@ -1677,7 +1677,7 @@ impHandler0(testInfo)
     return false;
 }
 
-impHandlerE(craftKey)
+impHandler(craftKey)
 {
     const int slot = (event.action - InputAction::CRAFT_1);
     if (slot >= 0 && slot < 9)
