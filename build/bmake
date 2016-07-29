@@ -26,8 +26,7 @@ cd build/tmp
 --enable-memdebug=no \
 --enable-tcmalloc=no \
 --enable-googleprofiler=no \
---enable-werror \
---disable-tmwa
+--enable-werror
 
 cd po
 make -j8 update-gmo 2>../../make1.log
