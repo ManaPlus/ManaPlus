@@ -22,8 +22,6 @@
 
 #include "resources/soundeffect.h"
 
-#include "logger.h"
-
 #include "debug.h"
 
 SoundEffect::~SoundEffect()
