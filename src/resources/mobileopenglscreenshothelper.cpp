@@ -82,6 +82,7 @@ SDL_Surface *MobileOpenGLScreenshotHelper::getScreenshot()
     if (!screenshot)
     {
         MSDL_FreeSurface(tmpImage);
+        delete [] buf;
         return nullptr;
     }
 

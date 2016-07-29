@@ -43,17 +43,17 @@ CastingEffect::CastingEffect(const int skillId,
     Actor(),
     mSprite(animation.empty() ? nullptr :
         AnimatedSprite::load(paths.getStringValue("sprites") + animation)),
-    mPixelX(x * mapTileSize),
-    mPixelY(y * mapTileSize),
     mRectX((x - range) * mapTileSize),
     mRectY((y - range) * mapTileSize),
     mRectSize(range * mapTileSize * 2 + mapTileSize),
     mAnimationX(mRectX + (mRectSize - (mSprite ?
         mSprite->getWidth() : 0)) / 2),
     mAnimationY(mRectY + (mRectSize - (mSprite ?
-        mSprite->getHeight() : 0)) / 2),
-    mYDiff(range * mapTileSize + 31)
+        mSprite->getHeight() : 0)) / 2)
 {
+    mPixelX = x * mapTileSize;
+    mPixelY = y * mapTileSize;
+    mYDiff = range * mapTileSize + 31;
     if (!mSprite)
     {
         reportAlways("Skill %d/%d casting animation '%s' load failed",

@@ -66,14 +66,11 @@ class CastingEffect final : public Actor
 
     protected:
         AnimatedSprite *mSprite;
-        int mPixelX;
-        int mPixelY;
         int mRectX;
         int mRectY;
         int mRectSize;
         int mAnimationX;
         int mAnimationY;
-        int mYDiff;
 };
 
 #endif  // BEING_CASTINGEFFECT_H

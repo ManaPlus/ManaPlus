@@ -1166,11 +1166,11 @@ impHandler(craft)
 
 impHandler(npcClipboard)
 {
-    int x = 0;
-    int y = 0;
-
     if (npcHandler)
     {
+        int x = 0;
+        int y = 0;
+
         NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
 
         if (dialog && parse2Int(event.args, x, y))
