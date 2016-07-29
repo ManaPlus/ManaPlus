@@ -31,7 +31,6 @@
 
 #include "localconsts.h"
 
-class AttrDisplay;
 class LayoutHelper;
 
 class AttrDisplay notfinal : public Container

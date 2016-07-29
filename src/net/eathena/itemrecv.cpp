@@ -26,9 +26,9 @@
 #include "itemcolormanager.h"
 #include "logger.h"
 
-#include "net/messagein.h"
+#include "const/resources/item/cards.h"
 
-#include "resources/item/cardslist.h"
+#include "net/messagein.h"
 
 #include "debug.h"
 

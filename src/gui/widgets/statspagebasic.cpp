@@ -37,6 +37,7 @@
 StatsPageBasic::StatsPageBasic(const Widget2 *const widget) :
     Container(widget),
     WidgetListener(),
+    AttributeListener(),
     StatListener(),
     mAttrs(),
     mAttrCont(new VertContainer(this, 32)),

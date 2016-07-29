@@ -57,6 +57,7 @@ namespace XML
     Document::Document(const std::string &filename,
                        const UseResman useResman,
                        const SkipError skipError) :
+        Resource(),
         mDoc(),
         mData(nullptr),
         mIsValid(false)

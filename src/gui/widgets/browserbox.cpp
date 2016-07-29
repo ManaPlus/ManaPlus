@@ -27,6 +27,8 @@
 #include "main.h"
 #include "settings.h"
 
+#include "const/resources/item/cards.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
@@ -44,8 +46,6 @@
 #include "resources/db/itemdb.h"
 
 #include "resources/image/image.h"
-
-#include "resources/item/cardslist.h"
 
 #include "resources/loaders/imageloader.h"
 #include "resources/loaders/imagesetloader.h"

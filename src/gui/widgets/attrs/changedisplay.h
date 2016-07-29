@@ -30,7 +30,6 @@
 #include "localconsts.h"
 
 class Button;
-class LayoutHelper;
 
 class ChangeDisplay final : public AttrDisplay,
                             public ActionListener

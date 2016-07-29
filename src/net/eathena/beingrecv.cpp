@@ -980,15 +980,17 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
     {   // being to being
         Being *const dstBeing = actorManager->findBeing(dstId);
         if (srcBeing)
-            srcBeing->handleSkillCasting(dstBeing, skillId, skillLevel);
-        if (dstBeing)
         {
-            srcBeing->addCast(dstBeing->getTileX(),
-                dstBeing->getTileY(),
-                skillId,
-                skillLevel,
-                range,
-                castTime / MILLISECONDS_IN_A_TICK);
+            srcBeing->handleSkillCasting(dstBeing, skillId, skillLevel);
+            if (dstBeing)
+            {
+                srcBeing->addCast(dstBeing->getTileX(),
+                    dstBeing->getTileY(),
+                    skillId,
+                    skillLevel,
+                    range,
+                    castTime / MILLISECONDS_IN_A_TICK);
+            }
         }
     }
     else if (dstX != 0 || dstY != 0)
@@ -999,11 +1001,14 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
             skillLevel,
             dstX, dstY,
             castTime);
-        srcBeing->addCast(dstX, dstY,
-            skillId,
-            skillLevel,
-            range,
-            castTime / MILLISECONDS_IN_A_TICK);
+        if (srcBeing)
+        {
+            srcBeing->addCast(dstX, dstY,
+                skillId,
+                skillLevel,
+                range,
+                castTime / MILLISECONDS_IN_A_TICK);
+        }
     }
     if (srcBeing == localPlayer &&
         (inf2 & SkillType2::FreeCastAny) == 0)

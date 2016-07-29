@@ -534,7 +534,6 @@ class LocalPlayer final : public Being,
         bool mShowNavigePath;
         bool mAllowRename;
         bool mFreezed;
-        bool mAllowNextStep;
 };
 
 extern LocalPlayer *localPlayer;

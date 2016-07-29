@@ -37,7 +37,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/createwidget.h"
-#include "gui/widgets/layouthelper.h"
+#include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/statspage.h"

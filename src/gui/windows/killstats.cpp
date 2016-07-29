@@ -201,7 +201,8 @@ void KillStats::resetTimes()
 
 void KillStats::gainXp(int xp)
 {
-    const int expNeed = PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED);
+    const int expNeed = PlayerInfo::getAttribute(
+        Attributes::PLAYER_EXP_NEEDED);
     if (xp == expNeed)
         xp = 0;
     else if (!xp)

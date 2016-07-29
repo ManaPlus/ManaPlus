@@ -28,7 +28,6 @@
 #include "localconsts.h"
 
 class AnimatedSprite;
-class Map;
 
 class CastingEffect final : public Actor
 {

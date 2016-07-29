@@ -35,7 +35,6 @@
 
 #include "utils/xml.h"
 
-class Being;
 class Button;
 class Label;
 class SkillModel;

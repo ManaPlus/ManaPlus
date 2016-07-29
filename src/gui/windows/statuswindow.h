@@ -29,15 +29,12 @@
 #include "listeners/attributelistener.h"
 #include "listeners/statlistener.h"
 
-class AttrDisplay;
 class Button;
 class Label;
 class ProgressBar;
-class ScrollArea;
 class StatsPage;
 class StatsPageBasic;
 class TabbedArea;
-class VertContainer;
 
 /**
  * The player status dialog.
