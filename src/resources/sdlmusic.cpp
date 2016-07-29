@@ -22,8 +22,6 @@
 
 #include "resources/sdlmusic.h"
 
-#include "logger.h"
-
 #include "debug.h"
 
 SDLMusic::SDLMusic(Mix_Music *const music,
