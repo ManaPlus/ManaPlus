@@ -889,11 +889,13 @@ class Being notfinal : public ActorSprite,
 
         void addEffect(const std::string &restrict name) restrict2;
 
+#ifdef TMWA_SUPPORT
         void addPet(const BeingId id) restrict2;
 
-        void removePet(const BeingId id) restrict2;
-
         void updatePets() restrict2;
+#endif
+
+        void removePet(const BeingId id) restrict2;
 
         void fixPetSpawnPos(int &restrict dstX,
                             int &restrict dstY) const restrict2;

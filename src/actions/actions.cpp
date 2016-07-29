@@ -583,6 +583,7 @@ impHandler0(healmd)
 
 impHandler0(itenplz)
 {
+#ifdef TMWA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
     if (actorManager)
@@ -595,6 +596,7 @@ impHandler0(itenplz)
         }
         return true;
     }
+#endif
     return false;
 }
 
@@ -610,6 +612,7 @@ impHandler0(setHome)
 
 impHandler0(magicAttack)
 {
+#ifdef TMWA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
     if (localPlayer)
@@ -617,6 +620,7 @@ impHandler0(magicAttack)
         localPlayer->magicAttack();
         return true;
     }
+#endif
     return false;
 }
 

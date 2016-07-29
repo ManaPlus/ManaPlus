@@ -1638,6 +1638,7 @@ void LocalPlayer::specialMove(const unsigned char direction)
     }
 }
 
+#ifdef TMWA_SUPPORT
 void LocalPlayer::magicAttack() const
 {
     if (Net::getNetworkType() != ServerType::TMWATHENA)
@@ -1693,6 +1694,7 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
         }
     }
 }
+#endif
 
 void LocalPlayer::loadHomes()
 {

@@ -42,7 +42,9 @@
 
 #include "debug.h"
 
+#ifdef TMWA_SUPPORT
 const unsigned int MAGIC_START_ID = 340;
+#endif
 
 TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor name

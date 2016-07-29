@@ -351,7 +351,9 @@ void Minimap::draw2(Graphics *const graphics)
                     type = UserColorId::PORTAL_HIGHLIGHT;
                     break;
 
+#ifdef TMWA_SUPPORT
                 case ActorType::LocalPet:
+#endif
                 case ActorType::Pet:
                     type = UserColorId::PET;
                     break;

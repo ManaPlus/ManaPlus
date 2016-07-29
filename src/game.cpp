@@ -433,10 +433,10 @@ Game::Game() :
 #ifdef TMWA_SUPPORT
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
-#endif
 
     if (localPlayer)
         localPlayer->updatePets();
+#endif
 
     settings.disableLoggingInGame = config.getBoolValue(
         "disableLoggingInGame");

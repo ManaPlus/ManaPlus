@@ -204,7 +204,9 @@ class LocalPlayer final : public Being,
 
         void tryPingRequest();
 
+#ifdef TMWA_SUPPORT
         void magicAttack() const;
+#endif
 
         void specialMove(const unsigned char direction);
 
@@ -441,8 +443,12 @@ class LocalPlayer final : public Being,
 
         void changeEquipmentBeforeAttack(const Being *const target) const;
 
-        static void tryMagic(const std::string &spell, const int baseMagic,
-                             const int schoolMagic, const int mana);
+#ifdef TMWA_SUPPORT
+        static void tryMagic(const std::string &spell,
+                             const int baseMagic,
+                             const int schoolMagic,
+                             const int mana);
+#endif
 
         void loadHomes();
 

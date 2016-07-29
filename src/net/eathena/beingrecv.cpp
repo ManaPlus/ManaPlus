@@ -1735,7 +1735,6 @@ void BeingRecv::processBeingSlide(Net::MessageIn &msg)
 
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(x, y);
-    dstBeing->updatePets();
 }
 
 void BeingRecv::processStarsKill(Net::MessageIn &msg)

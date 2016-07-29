@@ -80,9 +80,7 @@ static uint16_t defaultPortForServerType(const ServerTypeT type)
         case ServerType::EVOL2:
             return 6900;
         case ServerType::UNKNOWN:
-#ifdef TMWA_SUPPORT
         case ServerType::TMWATHENA:
-#endif
             return 6901;
     }
 }

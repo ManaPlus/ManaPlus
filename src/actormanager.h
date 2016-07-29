@@ -231,7 +231,9 @@ class ActorManager final: public ConfigListener
 
         void heal(const Being *const target) const;
 
+#ifdef TMWA_SUPPORT
         void itenplz() const;
+#endif
 
         /**
          * Returns the whole list of beings.

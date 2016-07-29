@@ -328,8 +328,10 @@ Being::~Being()
 
     if (mOwner)
     {
+#ifdef TMWA_SUPPORT
         if (mType == ActorType::LocalPet)
             mOwner->unassignPet(this);
+#endif
 
         mOwner = nullptr;
     }
@@ -441,6 +443,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             if (mInfo)
                 setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
             break;
+#ifdef TMWA_SUPPORT
         case ActorType::LocalPet:
             mInfo = PETDB::get(fromInt(mId, BeingTypeId));
             if (mInfo)
@@ -462,6 +465,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                 }
             }
             break;
+#endif
         case ActorType::Player:
         {
             int id = -100 - toInt(subtype, int);
@@ -2553,12 +2557,14 @@ void Being::setSpriteId(const unsigned int slot,
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
 
+#ifdef TMWA_SUPPORT
         if (mType == ActorType::Player)
         {
             const BeingId pet = fromInt(info.getPet(), BeingId);
             if (pet != BeingId_zero)
                 addPet(pet);
         }
+#endif
 
         if (!filename.empty())
         {
@@ -2685,12 +2691,14 @@ void Being::setSpriteColor(const unsigned int slot,
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
 
+#ifdef TMWA_SUPPORT
         if (mType == ActorType::Player)
         {
             const BeingId pet = fromInt(info.getPet(), BeingId);
             if (pet != BeingId_zero)
                 addPet(pet);
         }
+#endif
 
         if (!filename.empty())
         {
@@ -2781,12 +2789,14 @@ void Being::setSpriteColorId(const unsigned int slot,
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
 
+#ifdef TMWA_SUPPORT
         if (mType == ActorType::Player)
         {
             const BeingId pet = fromInt(info.getPet(), BeingId);
             if (pet != BeingId_zero)
                 addPet(pet);
         }
+#endif
 
         if (!filename.empty())
         {
@@ -2879,12 +2889,14 @@ void Being::setSpriteCards(const unsigned int slot,
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
 
+#ifdef TMWA_SUPPORT
         if (mType == ActorType::Player)
         {
             const BeingId pet = fromInt(info.getPet(), BeingId);
             if (pet != BeingId_zero)
                 addPet(pet);
         }
+#endif
 
         if (!cards.isEmpty())
             colorId = ItemColorManager::getColorFromCards(cards);
@@ -3618,7 +3630,9 @@ void Being::draw(Graphics *restrict const graphics,
             break;
         case ActorType::Npc:
         case ActorType::FloorItem:
+#ifdef TMWA_SUPPORT
         case ActorType::LocalPet:
+#endif
         case ActorType::Avatar:
         default:
             drawOther(graphics,
@@ -4412,7 +4426,9 @@ std::string Being::loadComment(const std::string &restrict name,
         case ActorType::Monster:
         case ActorType::FloorItem:
         case ActorType::Portal:
+#ifdef TMWA_SUPPORT
         case ActorType::LocalPet:
+#endif
         case ActorType::Avatar:
         case ActorType::Mercenary:
         case ActorType::Homunculus:
@@ -4449,7 +4465,9 @@ void Being::saveComment(const std::string &restrict name,
         case ActorType::Monster:
         case ActorType::FloorItem:
         case ActorType::Portal:
+#ifdef TMWA_SUPPORT
         case ActorType::LocalPet:
+#endif
         case ActorType::Avatar:
         case ActorType::Unknown:
         case ActorType::Pet:
@@ -4655,6 +4673,7 @@ void Being::addEffect(const std::string &restrict name) restrict2
         paths.getStringValue("sprites") + name);
 }
 
+#ifdef TMWA_SUPPORT
 void Being::addPet(const BeingId id) restrict2
 {
     if (!actorManager || !config.getBoolValue("usepets"))
@@ -4679,6 +4698,7 @@ void Being::addPet(const BeingId id) restrict2
         being->setTileCoords(dstX, dstY);
     }
 }
+#endif
 
 Being *Being::findChildPet(const BeingId id) restrict2
 {
@@ -4728,6 +4748,7 @@ void Being::removeAllPets() restrict2
     mPets.clear();
 }
 
+#ifdef TMWA_SUPPORT
 void Being::updatePets() restrict2
 {
     removeAllPets();
@@ -4742,6 +4763,7 @@ void Being::updatePets() restrict2
             addPet(pet);
     }
 }
+#endif
 
 void Being::unassignPet(const Being *restrict const pet1) restrict2
 {

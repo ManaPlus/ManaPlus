@@ -835,8 +835,10 @@ void Viewport::mouseMoved(MouseEvent &event)
         || type == ActorType::Npc
         || type == ActorType::Homunculus
         || type == ActorType::Mercenary
-        || type == ActorType::Pet
-        || type == ActorType::LocalPet))
+#ifdef TMWA_SUPPORT
+        || type == ActorType::LocalPet
+#endif
+        || type == ActorType::Pet))
     {
         popupManager->hideTextPopup();
         if (mShowBeingPopup && beingPopup)
@@ -892,7 +894,9 @@ void Viewport::mouseMoved(MouseEvent &event)
             case ActorType::Npc:
             case ActorType::Monster:
             case ActorType::Portal:
+#ifdef TMWA_SUPPORT
             case ActorType::LocalPet:
+#endif
             case ActorType::Pet:
             case ActorType::Mercenary:
             case ActorType::Homunculus:

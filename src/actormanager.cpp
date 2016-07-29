@@ -587,7 +587,9 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
             case ActorType::Player:
             case ActorType::Npc:
             case ActorType::Monster:
+#ifdef TMWA_SUPPORT
             case ActorType::LocalPet:
+#endif
             case ActorType::Pet:
             case ActorType::Mercenary:
             case ActorType::Homunculus:
@@ -1505,6 +1507,7 @@ Being* ActorManager::findMostDamagedPlayer(const int maxTileDist) const
     return target;
 }
 
+#ifdef TMWA_SUPPORT
 void ActorManager::itenplz() const
 {
     if (Net::getNetworkType() != ServerType::TMWATHENA)
@@ -1522,6 +1525,7 @@ void ActorManager::itenplz() const
 
     chatWindow->localChatInput(mSpellItenplz);
 }
+#endif
 
 bool ActorManager::hasActorSprite(const ActorSprite *const actor) const
 {
