@@ -1,3 +1,15 @@
+2016-07-30 New release 1.6.7.30
+fix: not allow moving while casting if skill not allow moving.
+fix: update skill in skills window after skill was changed.
+fix: moving desync distance read.
+fix: possible player particles leaks.
+add: show casting effect on ground and on caster and target.
+add: show skill action effects on caster and target.
+add: homunculus and mercenary attributes into status window.
+add: show homunculus and mercenary hp bar.
+remove: support for outdated equipmentwindow.xml format.
+remove: native guilds support (tmwa).
+
 2016-07-16 New release 1.6.7.16
 fix: invoking complex skill types.
 fix: clean statdb on unload.
