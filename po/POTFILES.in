@@ -37,11 +37,13 @@ src/gui/sdlinput.cpp
 src/gui/sdlinput.h
 src/gui/setupinputpages.cpp
 src/gui/userpalette.cpp
+src/gui/widgets/attrs/changedisplay.cpp
 src/gui/widgets/characterdisplay.cpp
 src/gui/widgets/itemcontainer.cpp
 src/gui/widgets/itemlinkhandler.cpp
 src/gui/widgets/selldialog.cpp
 src/gui/widgets/setupitem.cpp
+src/gui/widgets/statspagebasic.cpp
 src/gui/widgets/tabs/chat/battletab.cpp
 src/gui/widgets/tabs/chat/chattab.cpp
 src/gui/widgets/tabs/chat/emulateguildtab.cpp
