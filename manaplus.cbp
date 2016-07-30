@@ -86,6 +86,7 @@
 			<Option compilerVar="WINDRES" />
 		</Unit>
 		<Unit filename="src/notifymanager.cpp" />
+		<Unit filename="src/being/castingeffect.cpp" />
 		<Unit filename="src/being/flooritem.cpp" />
 		<Unit filename="src/being/playerrelations.cpp" />
 		<Unit filename="src/being/playerinfo.cpp" />
@@ -255,6 +256,7 @@
 		<Unit filename="src/resources/inventory/complexinventory.cpp" />
 		<Unit filename="src/resources/beingcommon.cpp" />
 		<Unit filename="src/resources/loaders/imagesetloader.cpp" />
+		<Unit filename="src/resources/loaders/soundloader.cpp" />
 		<Unit filename="src/resources/loaders/musicloader.cpp" />
 		<Unit filename="src/resources/loaders/atlasloader.cpp" />
 		<Unit filename="src/resources/loaders/shaderprogramloader.cpp" />
@@ -265,6 +267,7 @@
 		<Unit filename="src/resources/loaders/walklayerloader.cpp" />
 		<Unit filename="src/resources/loaders/shaderloader.cpp" />
 		<Unit filename="src/resources/loaders/spritedefloader.cpp" />
+		<Unit filename="src/resources/loaders/xmlloader.cpp" />
 		<Unit filename="src/resources/loaders/rescaledloader.cpp" />
 		<Unit filename="src/resources/imagewriter.cpp" />
 		<Unit filename="src/resources/sdlscreenshothelper.cpp" />
@@ -293,6 +296,8 @@
 		<Unit filename="src/resources/openglscreenshothelper.cpp" />
 		<Unit filename="src/resources/imagehelper.cpp" />
 		<Unit filename="src/resources/action.cpp" />
+		<Unit filename="src/resources/skill/skilldata.cpp" />
+		<Unit filename="src/resources/skill/skillinfo.cpp" />
 		<Unit filename="src/guild.cpp" />
 		<Unit filename="src/logger.cpp" />
 		<Unit filename="src/gui/popupmanager.cpp" />
@@ -373,8 +378,12 @@
 		<Unit filename="src/gui/widgets/desktop.cpp" />
 		<Unit filename="src/gui/widgets/windowcontainer.cpp" />
 		<Unit filename="src/gui/widgets/setupquickitem.cpp" />
+		<Unit filename="src/gui/widgets/statspagebasic.cpp" />
 		<Unit filename="src/gui/widgets/container.cpp" />
 		<Unit filename="src/gui/widgets/emotepage.cpp" />
+		<Unit filename="src/gui/widgets/attrs/derdisplay.cpp" />
+		<Unit filename="src/gui/widgets/attrs/attrdisplay.cpp" />
+		<Unit filename="src/gui/widgets/attrs/changedisplay.cpp" />
 		<Unit filename="src/gui/widgets/shortcutcontainer.cpp" />
 		<Unit filename="src/gui/widgets/widget.cpp" />
 		<Unit filename="src/gui/widgets/emoteshortcutcontainer.cpp" />
@@ -415,9 +424,8 @@
 		<Unit filename="src/gui/widgets/label.cpp" />
 		<Unit filename="src/gui/widgets/basiccontainer.cpp" />
 		<Unit filename="src/gui/widgets/containerplacer.cpp" />
-		<Unit filename="src/gui/widgets/skilldata.cpp" />
 		<Unit filename="src/gui/widgets/radiobutton.cpp" />
-		<Unit filename="src/gui/widgets/skillinfo.cpp" />
+		<Unit filename="src/gui/widgets/statspage.cpp" />
 		<Unit filename="src/gui/widgets/slider.cpp" />
 		<Unit filename="src/gui/widgets/layoutcell.cpp" />
 		<Unit filename="src/gui/widgets/layout.cpp" />
@@ -642,7 +650,6 @@
 		<Unit filename="src/net/tmwa/updateprotocol.cpp" />
 		<Unit filename="src/net/tmwa/elementalhandler.cpp" />
 		<Unit filename="src/net/tmwa/beingrecv.cpp" />
-		<Unit filename="src/net/tmwa/guildrecv.cpp" />
 		<Unit filename="src/net/tmwa/chatrecv.cpp" />
 		<Unit filename="src/net/tmwa/auctionhandler.cpp" />
 		<Unit filename="src/net/tmwa/beinghandler.cpp" />
@@ -730,6 +737,7 @@
 		<Unit filename="src/being/actor.h" />
 		<Unit filename="src/being/beingflag.h" />
 		<Unit filename="src/being/playerinfo.h" />
+		<Unit filename="src/being/castingeffect.h" />
 		<Unit filename="src/being/flooritem.h" />
 		<Unit filename="src/being/petinfo.h" />
 		<Unit filename="src/being/mercenaryinfo.h" />
@@ -912,7 +920,6 @@
 		<Unit filename="src/resources/atlas/atlasitem.h" />
 		<Unit filename="src/resources/atlas/textureatlas.h" />
 		<Unit filename="src/resources/atlas/atlasmanager.h" />
-		<Unit filename="src/resources/skilltypelist.h" />
 		<Unit filename="src/resources/horseinfo.h" />
 		<Unit filename="src/resources/chatobject.h" />
 		<Unit filename="src/resources/sdlscreenshothelper.h" />
@@ -974,8 +981,10 @@
 		<Unit filename="src/resources/loaders/emptyatlasloader.h" />
 		<Unit filename="src/resources/loaders/musicloader.h" />
 		<Unit filename="src/resources/loaders/imagesetloader.h" />
+		<Unit filename="src/resources/loaders/xmlloader.h" />
 		<Unit filename="src/resources/loaders/rescaledloader.h" />
 		<Unit filename="src/resources/loaders/spritedefloader.h" />
+		<Unit filename="src/resources/loaders/soundloader.h" />
 		<Unit filename="src/resources/loaders/shaderloader.h" />
 		<Unit filename="src/resources/loaders/subimageloader.h" />
 		<Unit filename="src/resources/loaders/imageloader.h" />
@@ -993,7 +1002,6 @@
 		<Unit filename="src/resources/dye/dye.h" />
 		<Unit filename="src/resources/dye/dyepalette.h" />
 		<Unit filename="src/resources/dye/dyecolor.h" />
-		<Unit filename="src/resources/skilltypeentry.h" />
 		<Unit filename="src/resources/map/tileanimation.h" />
 		<Unit filename="src/resources/map/tileinfo.h" />
 		<Unit filename="src/resources/map/mapitem.h" />
@@ -1042,6 +1050,10 @@
 		<Unit filename="src/resources/effectdescription.h" />
 		<Unit filename="src/resources/mstack.h" />
 		<Unit filename="src/resources/openglimagehelper.h" />
+		<Unit filename="src/resources/skill/skillinfo.h" />
+		<Unit filename="src/resources/skill/skilldata.h" />
+		<Unit filename="src/resources/skill/skilltypelist.h" />
+		<Unit filename="src/resources/skill/skilltypeentry.h" />
 		<Unit filename="src/effectmanager.h" />
 		<Unit filename="src/graphicsmanager.h" />
 		<Unit filename="src/itemcolormanager.h" />
@@ -1116,10 +1128,8 @@
 		<Unit filename="src/gui/colorpair.h" />
 		<Unit filename="src/gui/widgets/shoplistbox.h" />
 		<Unit filename="src/gui/widgets/extendedlistbox.h" />
-		<Unit filename="src/gui/widgets/skillinfo.h" />
 		<Unit filename="src/gui/widgets/basiccontainer2.h" />
 		<Unit filename="src/gui/widgets/tabstrip.h" />
-		<Unit filename="src/gui/widgets/skilldata.h" />
 		<Unit filename="src/gui/widgets/textpreview.h" />
 		<Unit filename="src/gui/widgets/vertcontainer.h" />
 		<Unit filename="src/gui/widgets/scrollarea.h" />
@@ -1128,10 +1138,13 @@
 		<Unit filename="src/gui/widgets/equipmentpage.h" />
 		<Unit filename="src/gui/widgets/popup.h" />
 		<Unit filename="src/gui/widgets/browserbox.h" />
+		<Unit filename="src/gui/widgets/attrs/derdisplay.h" />
+		<Unit filename="src/gui/widgets/attrs/attrdisplay.h" />
+		<Unit filename="src/gui/widgets/attrs/changedisplay.h" />
+		<Unit filename="src/gui/widgets/statspagebasic.h" />
 		<Unit filename="src/gui/widgets/desktop.h" />
 		<Unit filename="src/gui/widgets/widget.h" />
 		<Unit filename="src/gui/widgets/textbox.h" />
-		<Unit filename="src/gui/widgets/statuswindowattrs.h" />
 		<Unit filename="src/gui/widgets/icon.h" />
 		<Unit filename="src/gui/widgets/slider.h" />
 		<Unit filename="src/gui/widgets/widget2.h" />
@@ -1213,6 +1226,7 @@
 		<Unit filename="src/gui/widgets/spellshortcutcontainer.h" />
 		<Unit filename="src/gui/widgets/characterdisplay.h" />
 		<Unit filename="src/gui/widgets/checkbox.h" />
+		<Unit filename="src/gui/widgets/statspage.h" />
 		<Unit filename="src/gui/widgets/avatarlistbox.h" />
 		<Unit filename="src/gui/widgets/serverslistbox.h" />
 		<Unit filename="src/gui/widgets/virtshortcutcontainer.h" />
@@ -1475,7 +1489,6 @@
 		<Unit filename="src/net/tmwa/generalrecv.h" />
 		<Unit filename="src/net/tmwa/cashshophandler.h" />
 		<Unit filename="src/net/tmwa/partyrecv.h" />
-		<Unit filename="src/net/tmwa/guildrecv.h" />
 		<Unit filename="src/net/tmwa/sprite.h" />
 		<Unit filename="src/net/tmwa/loginrecv.h" />
 		<Unit filename="src/net/tmwa/beingrecv.h" />
@@ -1610,6 +1623,7 @@
 		<Unit filename="src/enums/dragdropsource.h" />
 		<Unit filename="src/enums/magicschool.h" />
 		<Unit filename="src/enums/equipslot.h" />
+		<Unit filename="src/enums/resources/skilltype2.h" />
 		<Unit filename="src/enums/resources/notifytypes.h" />
 		<Unit filename="src/enums/resources/itemtype.h" />
 		<Unit filename="src/enums/resources/map/maptype.h" />
