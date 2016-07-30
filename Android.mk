@@ -61,10 +61,12 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/resources/map/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/rect/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/item/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/resources/skill/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/windows/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/shortcut/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/widgets/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/gui/widgets/attrs/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/widgets/tabs/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/widgets/tabs/chat/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/gui/fonts/*.cpp) \
