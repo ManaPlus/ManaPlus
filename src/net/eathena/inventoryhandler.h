@@ -80,7 +80,7 @@ class InventoryHandler final : public Ea::InventoryHandler
         void mergetItemsCancel() const override final;
 
         int getProjectileSlot() const override final
-        { return 23; }
+        { return 10; }
 
         int getItemIndex() const override final A_WARN_UNUSED
         { return mItemIndex; }
