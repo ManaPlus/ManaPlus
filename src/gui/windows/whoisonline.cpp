@@ -59,6 +59,10 @@
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
+#ifndef TMWA_SUPPORT
+#include <curl/curl.h>
+#endif
+
 #include "debug.h"
 
 #ifdef free
