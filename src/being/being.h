@@ -746,6 +746,9 @@ class Being notfinal : public ActorSprite,
         int getHP() const restrict2 noexcept2 A_WARN_UNUSED
         { return mHP; }
 
+        int getMaxHP() const restrict2 noexcept2 A_WARN_UNUSED
+        { return mMaxHP; }
+
         uint8_t calcDirection(const int dstX,
                               const int dstY) const restrict2 A_WARN_UNUSED;
 

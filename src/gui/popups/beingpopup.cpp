@@ -72,7 +72,7 @@ void BeingPopup::postInit()
 
 void BeingPopup::addLabels(const int fontHeight)
 {
-    for (int f = 0; f < 10; f ++)
+    for (int f = 0; f < 11; f ++)
     {
         Label *const label = new Label(this, "A");
         label->setPosition(0, fontHeight * (f + 1));
@@ -259,6 +259,24 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             level));
         ptr->adjustSize();
         num ++;
+    }
+
+    const int maxHp = b->getMaxHP();
+    if (maxHp > 0)
+    {
+        int hp = b->getHP();
+        if (hp == 0)
+            hp = maxHp - b->getDamageTaken();
+        if (hp > 0)
+        {
+            ptr = mLabels[num];
+            // TRANSLATORS: being popup label
+            ptr->setCaption(strprintf(_("Hp: %d/%d"),
+                hp,
+                maxHp));
+            ptr->adjustSize();
+            num ++;
+        }
     }
 
     ptr = mLabels[num];
