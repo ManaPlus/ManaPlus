@@ -29,8 +29,6 @@
 #include "utils/files.h"
 #include "utils/sdlhelper.h"
 
-#include <curl/curl.h>
-
 #include <zlib.h>
 
 #define CURLVERSION_ATLEAST(a, b, c) ((LIBCURL_VERSION_MAJOR > (a)) || \

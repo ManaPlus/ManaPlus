@@ -24,6 +24,8 @@
 
 #include "enums/net/downloadstatus.h"
 
+#include <curl/curl.h>
+
 #include <string>
 #include <queue>
 
@@ -39,7 +41,6 @@ typedef size_t (*WriteFunction)( void *ptr, size_t size, size_t nmemb,
                                  void *stream);
 
 struct SDL_Thread;
-typedef void CURL;
 struct curl_httppost;
 struct curl_slist;
 
