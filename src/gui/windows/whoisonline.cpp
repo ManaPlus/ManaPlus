@@ -59,9 +59,6 @@
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
-// Curl should be included after Guichan to avoid Windows redefinitions
-#include <curl/curl.h>
-
 #include "debug.h"
 
 #ifdef free
