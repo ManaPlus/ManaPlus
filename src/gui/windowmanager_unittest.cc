@@ -47,6 +47,8 @@
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/serverdialog.h"
 
+#include "input/touch/touchmanager.h"
+
 #include "render/sdlgraphics.h"
 
 #include "resources/sdlimagehelper.h"
@@ -81,14 +83,9 @@ TEST_CASE("Windows tests", "windowmanager")
     ActorSprite::load();
     gui = new Gui();
     gui->postInit(mainGraphics);
+    touchManager.init();
 
-#ifdef USE_SDL2
-    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
-        graphicsManager.createWindow(640, 480, 0,
-        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
-#else
-    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
-#endif
+    mainGraphics->setVideoMode(640, 480, 1, 8, false, false, false, false);
 
     SECTION("setupWindow")
     {
@@ -174,6 +171,9 @@ TEST_CASE("Windows tests", "windowmanager")
             State::SWITCH_SERVER);
         delete2(connectionDialog);
     }
+
+    gui->draw();
+    mainGraphics->updateScreen();
 
     delete2(userPalette);
     delete2(client);

@@ -53,7 +53,7 @@ TouchManager::TouchManager() :
     mKeyboard(nullptr),
     mPad(nullptr),
     mObjects(),
-    mVertexes(new ImageCollection),
+    mVertexes(nullptr),
     mRedraw(true),
     mShowJoystick(false),
     mShowButtons(false),
@@ -86,6 +86,8 @@ void TouchManager::shutdown() restrict2
 
 void TouchManager::init() restrict2
 {
+    mVertexes = new ImageCollection;
+
     config.addListener("showScreenJoystick", this);
     config.addListener("showScreenButtons", this);
     config.addListener("showScreenKeyboard", this);

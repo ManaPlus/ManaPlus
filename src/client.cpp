@@ -301,6 +301,8 @@ void Client::gameInit()
     logger->setDebugLog(config.getBoolValue("debugLog"));
     logger->setReportUnimplimented(config.getBoolValue("unimplimentedLog"));
 
+    touchManager.init();
+
     config.incValue("runcount");
 
 #ifndef ANDROID
