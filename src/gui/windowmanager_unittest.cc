@@ -142,6 +142,7 @@ TEST_CASE("Windows tests", "windowmanager")
     userPalette = new UserPalette;
     theme = new Theme;
     ActorSprite::load();
+    config.setValue("fontSize", 16);
     gui = new Gui();
     gui->postInit(mainGraphics);
     touchManager.init();
