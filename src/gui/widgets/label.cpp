@@ -285,7 +285,7 @@ void Label::widgetHidden(const Event &event A_UNUSED)
     mTextChunk.deleteImage();
 }
 
-void Label::final()
+void Label::finalCleanup()
 {
     mSkin = nullptr;
 }

@@ -292,8 +292,8 @@ Gui::~Gui()
         setTop(nullptr);
 
     delete2(mFocusHandler);
-    Label::final();
-    Tab::final();
+    Label::finalCleanup();
+    Tab::finalCleanup();
 }
 
 void Gui::logic()

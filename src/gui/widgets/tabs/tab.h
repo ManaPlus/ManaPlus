@@ -202,7 +202,7 @@ class Tab notfinal : public BasicContainer,
 
         void setImage(Image *const image);
 
-        static void final();
+        static void finalCleanup();
 
     protected:
         friend class TabbedArea;
