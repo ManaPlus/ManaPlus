@@ -20,6 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef TMWA_SUPPORT
+
 #include "gui/windows/shopselldialog.h"
 
 #include "being/playerinfo.h"
@@ -54,3 +56,5 @@ void ShopSellDialog::sellAction(const ActionEvent &event A_UNUSED)
     if (tradeWindow)
         tradeWindow->addAutoItem(mNick, item, mAmountItems);
 }
+
+#endif  // TMWA_SUPPORT
