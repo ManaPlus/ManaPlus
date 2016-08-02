@@ -71,7 +71,10 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/widgets/label.h"
 #include "gui/widgets/window.h"
+
+#include "gui/widgets/tabs/tab.h"
 
 #ifndef DYECMD
 #include "dragdrop.h"
@@ -289,6 +292,8 @@ Gui::~Gui()
         setTop(nullptr);
 
     delete2(mFocusHandler);
+    Label::final();
+    Tab::final();
 }
 
 void Gui::logic()

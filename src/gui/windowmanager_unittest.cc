@@ -156,12 +156,16 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("bankWindow")
     {
         CREATEWIDGETV0(bankWindow, BankWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(bankWindow);
     }
     SECTION("buyDialog")
     {
         BuyDialog *dialog;
         CREATEWIDGETV(dialog, BuyDialog, BeingId_zero);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("BuyingStoreSellDialog")
@@ -169,12 +173,16 @@ TEST_CASE("Windows tests", "windowmanager")
         BuyingStoreSellDialog *dialog;
         CREATEWIDGETV(dialog, BuyingStoreSellDialog,
             BeingId_zero, 0);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("BuySellDialog")
     {
         BuySellDialog *dialog;
         CREATEWIDGETV(dialog, BuySellDialog, BeingId_zero);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("ChangeEmailDialog")
@@ -182,6 +190,8 @@ TEST_CASE("Windows tests", "windowmanager")
         LoginData data;
         ChangeEmailDialog *dialog;
         CREATEWIDGETV(dialog, ChangeEmailDialog, data);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("ChangePasswordDialog")
@@ -189,6 +199,8 @@ TEST_CASE("Windows tests", "windowmanager")
         LoginData data;
         ChangePasswordDialog *dialog;
         CREATEWIDGETV(dialog, ChangePasswordDialog, data);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
 /*
@@ -212,6 +224,8 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("ChatWindow")
     {
         CREATEWIDGETV0(chatWindow, ChatWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(chatWindow);
     }
     SECTION("ConfirmDialog")
@@ -219,21 +233,29 @@ TEST_CASE("Windows tests", "windowmanager")
         ConfirmDialog *dialog;
         CREATEWIDGETV(dialog, ConfirmDialog,
             "", "", "", false, Modal_false, nullptr);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("CutinWindow")
     {
         CREATEWIDGETV0(cutInWindow, CutInWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(cutInWindow);
     }
     SECTION("DebugWindow")
     {
         CREATEWIDGETV0(debugWindow, DebugWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(debugWindow);
     }
     SECTION("didYouKnowWindow")
     {
         CREATEWIDGETV0(didYouKnowWindow, DidYouKnowWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(didYouKnowWindow);
     }
     SECTION("EditDialog")
@@ -241,6 +263,8 @@ TEST_CASE("Windows tests", "windowmanager")
         EditDialog *dialog;
         CREATEWIDGETV(dialog, EditDialog,
             "", "", "", 100, nullptr, Modal_false);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("EditServerDialog")
@@ -252,17 +276,23 @@ TEST_CASE("Windows tests", "windowmanager")
             settings.configDir);
         EditServerDialog *editServerDialog = CREATEWIDGETR(EditServerDialog,
             serverDialog, mCurrentServer, 0);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(editServerDialog);
         delete2(serverDialog);
     }
     SECTION("EggSelectionDialog")
     {
         EggSelectionDialog *dialog = CREATEWIDGETR0(EggSelectionDialog);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("EmoteWindow")
     {
         EmoteWindow *dialog = CREATEWIDGETR0(EmoteWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("EquipmentWindow")
@@ -275,6 +305,8 @@ TEST_CASE("Windows tests", "windowmanager")
             map);
         EquipmentWindow *dialog = CREATEWIDGETR(EquipmentWindow,
             equipment, being, false);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
         delete2(being);
         delete2(map);
@@ -283,6 +315,8 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("helpWindow")
     {
         CREATEWIDGETV0(helpWindow, HelpWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(helpWindow);
     }
     SECTION("InsertCardDialog")
@@ -299,6 +333,8 @@ TEST_CASE("Windows tests", "windowmanager")
             Equipped_false);
         InsertCardDialog *dialog = CREATEWIDGETR(InsertCardDialog,
             0, item);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
         delete2(item);
     }
@@ -307,6 +343,8 @@ TEST_CASE("Windows tests", "windowmanager")
         Inventory *inventory = new Inventory(InventoryType::Inventory);
         InventoryWindow *dialog = CREATEWIDGETR(InventoryWindow,
             inventory);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
         delete2(inventory);
     }
@@ -324,12 +362,16 @@ TEST_CASE("Windows tests", "windowmanager")
             Equipped_false);
         ItemAmountWindow *dialog = CREATEWIDGETR(ItemAmountWindow,
             ItemAmountWindowUsage::ItemDrop, nullptr, item);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
         delete2(item);
     }
     SECTION("KillStats")
     {
         CREATEWIDGETV0(killStats, KillStats);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(killStats);
     }
     SECTION("loginDialog")
@@ -339,11 +381,15 @@ TEST_CASE("Windows tests", "windowmanager")
             loginData,
             &mCurrentServer,
             &settings.options.updateHost);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(loginDialog);
     }
     SECTION("MailEditWindow")
     {
         CREATEWIDGETV0(mailEditWindow, MailEditWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(mailEditWindow);
     }
     SECTION("MailViewWindow")
@@ -351,31 +397,43 @@ TEST_CASE("Windows tests", "windowmanager")
         MailMessage *message = new MailMessage;
         CREATEWIDGETV(mailViewWindow, MailViewWindow,
             message);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(mailViewWindow);
     }
     SECTION("MailWindow")
     {
         CREATEWIDGETV0(mailWindow, MailWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(mailWindow);
     }
     SECTION("Minimap")
     {
         CREATEWIDGETV0(minimap, Minimap);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(minimap);
     }
     SECTION("MiniStatusWindow")
     {
         CREATEWIDGETV0(miniStatusWindow, MiniStatusWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(miniStatusWindow);
     }
     SECTION("NpcDialog")
     {
         NpcDialog *dialog = CREATEWIDGETR(NpcDialog, BeingId_zero);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("NpcSellDialog")
     {
         NpcSellDialog *dialog = CREATEWIDGETR(NpcSellDialog, BeingId_zero);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("OkDialog")
@@ -383,28 +441,38 @@ TEST_CASE("Windows tests", "windowmanager")
         OkDialog *dialog = CREATEWIDGETR(OkDialog,
             "", "", "", DialogType::SILENCE, Modal_false,
             ShowCenter_true, nullptr, 100);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("OutfitWindow")
     {
         CREATEWIDGETV0(outfitWindow, OutfitWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(outfitWindow);
     }
     SECTION("QuestsWindow")
     {
         CREATEWIDGETV0(questsWindow, QuestsWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(questsWindow);
     }
     SECTION("QuitDialog")
     {
         CREATEWIDGETV(quitDialog, QuitDialog,
             &quitDialog);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(quitDialog);
     }
     SECTION("RegisterDialog")
     {
         RegisterDialog *dialog = CREATEWIDGETR(RegisterDialog,
             loginData);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("serversDialog")
@@ -414,11 +482,15 @@ TEST_CASE("Windows tests", "windowmanager")
         ServerDialog *serverDialog = CREATEWIDGETR(ServerDialog,
             &mCurrentServer,
             settings.configDir);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(serverDialog);
     }
     SECTION("setupWindow")
     {
         CREATEWIDGETV0(setupWindow, SetupWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(setupWindow);
     }
     SECTION("ShopSellDialog")
@@ -428,26 +500,36 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("ShopWindow")
     {
         CREATEWIDGETV0(shopWindow, ShopWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(shopWindow);
     }
     SECTION("ShortcutWindow")
     {
         CREATEWIDGETV(itemShortcutWindow, ShortcutWindow, "");
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(itemShortcutWindow);
     }
     SECTION("SkillDialog")
     {
         CREATEWIDGETV0(skillDialog, SkillDialog);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(skillDialog);
     }
     SECTION("SocialWindow")
     {
         CREATEWIDGETV0(socialWindow, SocialWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(socialWindow);
     }
     SECTION("StatusWindow")
     {
         CREATEWIDGETV0(statusWindow, StatusWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(statusWindow);
     }
     SECTION("TextCommandEditor")
@@ -456,34 +538,46 @@ TEST_CASE("Windows tests", "windowmanager")
             CommandTarget::NoTarget, "");
         TextCommandEditor *dialog = CREATEWIDGETR(TextCommandEditor,
             textCommand);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("TextDialog")
     {
         TextDialog *dialog = CREATEWIDGETR(TextDialog,
             "", "", nullptr, false);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("TextSelectDialog")
     {
         TextSelectDialog *dialog = CREATEWIDGETR(TextSelectDialog,
             "", "", AllowQuit_false);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("TradeWindow")
     {
         CREATEWIDGETV0(tradeWindow, TradeWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(tradeWindow);
     }
     SECTION("UpdaterWindow")
     {
         CREATEWIDGETV(updaterWindow, UpdaterWindow,
             "", "", false, UpdateType::Skip);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(updaterWindow);
     }
     SECTION("WhoIsOnline")
     {
         CREATEWIDGETV0(whoIsOnline, WhoIsOnline);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(whoIsOnline);
     }
     SECTION("WorldSelectDialog")
@@ -491,41 +585,57 @@ TEST_CASE("Windows tests", "windowmanager")
         Worlds worlds;
         WorldSelectDialog *dialog = CREATEWIDGETR(WorldSelectDialog,
             worlds);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
     }
     SECTION("popupMenu")
     {
         CREATEWIDGETV0(popupMenu, PopupMenu);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(popupMenu);
     }
     SECTION("beingPopup")
     {
         CREATEWIDGETV0(beingPopup, BeingPopup);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(beingPopup);
     }
     SECTION("textPopup")
     {
         CREATEWIDGETV0(textPopup, TextPopup);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(textPopup);
     }
     SECTION("textBoxPopup")
     {
         CREATEWIDGETV0(textBoxPopup, TextBoxPopup);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(textBoxPopup);
     }
     SECTION("itemPopup")
     {
         CREATEWIDGETV0(itemPopup, ItemPopup);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(itemPopup);
     }
     SECTION("spellPopup")
     {
         CREATEWIDGETV0(spellPopup, SpellPopup);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(spellPopup);
     }
     SECTION("desktop")
     {
         CREATEWIDGETV(desktop, Desktop, nullptr);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(desktop);
     }
     SECTION("connectionDialog")
@@ -534,11 +644,10 @@ TEST_CASE("Windows tests", "windowmanager")
             // TRANSLATORS: connection dialog header
             _("Logging in"),
             State::SWITCH_SERVER);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(connectionDialog);
     }
-
-    gui->draw();
-    mainGraphics->updateScreen();
 
     delete2(userPalette);
     delete2(client);

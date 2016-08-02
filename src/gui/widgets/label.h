@@ -172,6 +172,7 @@ class Label final : public Widget,
 
         static int mInstances;
 
+        static void final();
     private:
         /**
          * Holds the caption of the label.

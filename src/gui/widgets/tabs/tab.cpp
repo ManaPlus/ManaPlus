@@ -478,3 +478,11 @@ void Tab::mouseExited(MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }
+
+void Tab::final()
+{
+    for (int f = 0; f < TAB_COUNT; f ++)
+    {
+        tabImg[f] = nullptr;
+    }
+}
