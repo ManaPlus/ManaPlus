@@ -21,7 +21,6 @@
 #include "catch.hpp"
 #include "client.h"
 #include "configuration.h"
-#include "graphicsmanager.h"
 #include "settings.h"
 #include "units.h"
 #include "textcommand.h"
