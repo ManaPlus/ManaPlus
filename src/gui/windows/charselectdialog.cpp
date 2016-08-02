@@ -276,11 +276,6 @@ void CharSelectDialog::action(const ActionEvent &event)
     {
         client->setState(State::CHANGEEMAIL);
     }
-    else if (eventId == "unregister")
-    {
-        charServerHandler->clear();
-        client->setState(State::UNREGISTER);
-    }
     else if (eventId == "try delete character")
     {
         if (mDeleteDialog && mDeleteIndex != -1)

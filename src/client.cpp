@@ -69,7 +69,6 @@
 #include "gui/windows/registerdialog.h"
 #include "gui/windows/serverdialog.h"
 #include "gui/windows/setupwindow.h"
-#include "gui/windows/unregisterdialog.h"
 #include "gui/windows/updaterwindow.h"
 #include "gui/windows/quitdialog.h"
 #include "gui/windows/worldselectdialog.h"
@@ -1609,40 +1608,6 @@ int Client::gameExec()
                         nullptr,
                         260);
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = nullptr;  // OkDialog deletes itself
-                    break;
-
-                case State::UNREGISTER:
-                    logger->log1("State: UNREGISTER");
-                    CREATEWIDGETV(mCurrentDialog,
-                        UnRegisterDialog,
-                        loginData);
-                    break;
-
-                case State::UNREGISTER_ATTEMPT:
-                    logger->log1("State: UNREGISTER ATTEMPT");
-                    if (loginHandler)
-                    {
-                        loginHandler->unregisterAccount(
-                            loginData.username,
-                            loginData.password);
-                    }
-                    break;
-
-                case State::UNREGISTER_SUCCESS:
-                    logger->log1("State: UNREGISTER SUCCESS");
-                    if (loginHandler)
-                        loginHandler->disconnect();
-
-                    mCurrentDialog = DialogsManager::openErrorDialog(
-                        // TRANSLATORS: unregister message header
-                        _("Unregister Successful"),
-                        // TRANSLATORS: unregister message text
-                        _("Farewell, come back any time..."),
-                        Modal_true);
-                    loginData.clear();
-                    // The errorlistener sets the state to State::CHOOSE_SERVER
-                    mCurrentDialog->addActionListener(&errorListener);
                     mCurrentDialog = nullptr;  // OkDialog deletes itself
                     break;
 

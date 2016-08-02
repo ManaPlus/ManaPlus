@@ -522,8 +522,6 @@ SET(SRCS
     gui/touchactiondata.h
     gui/windows/tradewindow.cpp
     gui/windows/tradewindow.h
-    gui/windows/unregisterdialog.cpp
-    gui/windows/unregisterdialog.h
     gui/windows/updaterwindow.cpp
     gui/windows/updaterwindow.h
     gui/userpalette.cpp
