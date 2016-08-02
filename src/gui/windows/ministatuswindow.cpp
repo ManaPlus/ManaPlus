@@ -301,7 +301,8 @@ void MiniStatusWindow::attributeChanged(const AttributesT id,
 
 void MiniStatusWindow::updateStatus()
 {
-    statusWindow->updateStatusBar(mStatusBar);
+    if (statusWindow)
+        statusWindow->updateStatusBar(mStatusBar);
     if (mStatusPopup && mStatusPopup->isPopupVisible())
         mStatusPopup->update();
 }

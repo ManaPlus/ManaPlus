@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="items.xsl"?>
+<!-- Authors: 4144, Alige, Piman, Reid
+Copyright (C) 2010-2015 Evol Online -->
+
+<!--
+New organization (04/12/11).
+-0      -99       = Hairstyles
+-100    -infinity = Races
+30      500       = Weapon Animations
+501     699       = Usable Items
+700     999       = Generic Items
+1000    1299      = Necklaces
+1300    1799      = Chest Armors
+1800    1999      = Boots
+2000    2199      = Gloves
+2200    2499      = Pants
+2500    2699      = Wings
+2700    2899      = Shields
+2900    3199      = Head Gears
+3200    3499      = Neck Armors
+3500    3999      = Weapons
+4000    4999      = Pets
+5000    5999      = Cards
+6000    6999      = Bows
+7000    7999      = Arrows
+Colors for dyeable equipments or items are now set up by itemcolors.xml.
+-->
+
+<items>
+    <!-- Hairstyles -->
+    <item id="-1" type="hairsprite" name="Bald">
+        <sprite>hairstyles/hairstyle01.xml</sprite>
+    </item>
+    <item id="-2" type="hairsprite" name="Bowl Cut" colors="hairS">
+        <sprite>hairstyles/hairstyle02.xml</sprite>
+    </item>
+    <item id="-3" type="hairsprite" name="Combed Back" colors="hairS">
+        <sprite>hairstyles/hairstyle03.xml</sprite>
+    </item>
+    <item id="-4" type="hairsprite" name="Emo" colors="hairS">
+        <sprite>hairstyles/hairstyle04.xml</sprite>
+    </item>
+    <item id="-5" type="hairsprite" name="Mohawk" colors="hairS">
+        <sprite>hairstyles/hairstyle05.xml</sprite>
+    </item>
+    <item id="-6" type="hairsprite" name="Pompadour" colors="hairS">
+        <sprite>hairstyles/hairstyle06.xml</sprite>
+    </item>
+    <item id="-7" type="hairsprite" name="Center Parting" colors="hairS">
+        <sprite>hairstyles/hairstyle07.xml</sprite>
+    </item>
+    <item id="-8" type="hairsprite" name="Long and Slick" colors="hair">
+        <sprite>hairstyles/hairstyle08.xml</sprite>
+    </item>
+    <item id="-9" type="hairsprite" name="Short and Curly" colors="hair">
+        <sprite>hairstyles/hairstyle09.xml</sprite>
+    </item>
+    <item id="-10" type="hairsprite" name="Pigtails" colors="hair">
+        <sprite>hairstyles/hairstyle10.xml</sprite>
+    </item>
+    <item id="-11" type="hairsprite" name="Long and Curly" colors="hair">
+        <sprite>hairstyles/hairstyle11.xml</sprite>
+    </item>
+    <item id="-12" type="hairsprite" name="Parted" colors="hair">
+        <sprite>hairstyles/hairstyle12.xml</sprite>
+    </item>
+    <item id="-13" type="hairsprite" name="Perky Ponytail" colors="hairS">
+        <sprite>hairstyles/hairstyle13.xml</sprite>
+    </item>
+    <item id="-14" type="hairsprite" name="Wave" colors="hairS">
+        <sprite>hairstyles/hairstyle14.xml</sprite>
+    </item>
+    <item id="-15" type="hairsprite" name="Mane" colors="hairS">
+        <sprite>hairstyles/hairstyle15.xml</sprite>
+    </item>
+    <item id="-16" type="hairsprite" name="Bun" colors="hairS">
+        <sprite>hairstyles/hairstyle16.xml</sprite>
+    </item>
+    <item id="-17" type="hairsprite" name="Wavy" colors="hairS">
+        <sprite>hairstyles/hairstyle17.xml</sprite>
+    </item>
+    <item id="-18" type="hairsprite" name="Bunches" colors="hairS">
+        <sprite>hairstyles/hairstyle18.xml</sprite>
+    </item>
+    <item id="-19" type="hairsprite" name="Long Ponytail" colors="hairS">
+        <sprite>hairstyles/hairstyle19.xml</sprite>
+    </item>
+    <item id="-20" type="hairsprite" name="Infinitely Long" colors="hair">
+        <sprite>hairstyles/hairstyle20.xml</sprite>
+    </item>
+    <item id="-21" type="hairsprite" name="Choppy" colors="hair">
+        <sprite>hairstyles/hairstyle21.xml</sprite>
+    </item>
+    <item id="-22" type="hairsprite" name="Wild" colors="hair">
+        <sprite>hairstyles/hairstyle22.xml</sprite>
+    </item>
+    <item id="-23" type="hairsprite" name="Punk" colors="hairS">
+        <sprite>hairstyles/hairstyle23.xml</sprite>
+    </item>
+    <item id="-24" type="hairsprite" name="Imperial" colors="hairS">
+        <sprite>hairstyles/hairstyle24.xml</sprite>
+    </item>
+    <item id="-25" type="hairsprite" name="Side Strand" colors="hairS">
+        <sprite>hairstyles/hairstyle25.xml</sprite>
+    </item>
+    <item id="-26" type="hairsprite" name="Messy" colors="hairS">
+        <sprite>hairstyles/hairstyle26.xml</sprite>
+    </item>
+    <item id="-27" type="hairsprite" name="Flat Ponytail" colors="hairS">
+        <sprite>hairstyles/hairstyle27.xml</sprite>
+    </item>
+    <item id="-28" type="hairsprite" name="Tapered Nape" colors="hairS">
+        <sprite>hairstyles/hairstyle28.xml</sprite>
+    </item>
+
+    <!-- Races -->
+    <item id="-100" type="racesprite" name="Human">
+        <sprite gender="unisex">races/human-male.xml</sprite>
+        <sprite gender="female">races/human-female.xml</sprite>
+        <sound event="hit">weapons/barehands/hit1.ogg</sound>
+        <sound event="miss">weapons/barehands/miss1.ogg</sound>
+    </item>
+    <item id="-101" type="racesprite" name="Ukar">
+        <sprite gender="unisex">races/ukar-male.xml</sprite>
+        <sprite gender="female">races/ukar-female.xml</sprite>
+        <sound event="hit">weapons/barehands/hit1.ogg</sound>
+        <sound event="miss">weapons/barehands/miss1.ogg</sound>
+    </item>
+    <item id="-102" type="racesprite" name="Demon">
+        <sprite gender="unisex">races/demon-male.xml</sprite>
+        <sprite gender="female">races/demon-female.xml</sprite>
+        <sound event="hit">weapons/barehands/hit1.ogg</sound>
+        <sound event="miss">weapons/barehands/miss1.ogg</sound>
+    </item>
+    <item id="-103" type="racesprite" name="Elven">
+        <sprite gender="unisex">races/elven-male.xml</sprite>
+        <sprite gender="female">races/elven-female.xml</sprite>
+        <sound event="hit">weapons/barehands/hit1.ogg</sound>
+        <sound event="miss">weapons/barehands/miss1.ogg</sound>
+    </item>
+    <item id="-104" type="racesprite" name="Orc">
+        <sprite gender="unisex">races/orc-male.xml</sprite>
+        <sprite gender="female">races/orc-female.xml</sprite>
+        <sound event="hit">weapons/barehands/hit1.ogg</sound>
+        <sound event="miss">weapons/barehands/miss1.ogg</sound>
+    </item>
+    <item id="-105" type="racesprite" name="Raijin">
+        <sprite gender="unisex">races/raijin-male.xml</sprite>
+        <sprite gender="female">races/raijin-female.xml</sprite>
+        <sound event="hit">weapons/barehands/hit1.ogg</sound>
+        <sound event="miss">weapons/barehands/miss1.ogg</sound>
+    </item>
+    <item id="-106" type="racesprite" name="Tritan">
+        <sprite gender="unisex">races/tritan-male.xml</sprite>
+        <sprite gender="female">races/tritan-female.xml</sprite>
+        <sound event="hit">weapons/barehands/hit1.ogg</sound>
+        <sound event="miss">weapons/barehands/miss1.ogg</sound>
+    </item>
+
+    <!-- Special Races -->
+    <item id="-150" type="racesprite" name="Piou">
+        <sprite gender="unisex">races/piou-unisex.xml</sprite>
+        <sound event="hit">monsters/piou/hit1.ogg</sound>
+        <sound event="miss">monsters/piou/miss1.ogg</sound>
+    </item>
+
+    <!-- Cards -->
+    <item id="5000"
+        image="dye.png|S:#3c3c3c,3e1e28,4d4d4d,6f2630,686868,a6313f,919191,d15b5b,b6b6b6,e59b77,dfdfdf,efe0c1"
+        name="Crimson Cashmere Dye"
+        useButton="Dye"
+        description="Color dye that can be used on cashemere clothing."
+        type="card"
+        weight="1"
+        cardColor="2"
+        maxFloorOffset="15"/>
+    <item id="5001"
+        image="dye.png|S:#3c3c3c,302525,4d4d4d,4a3430,686868,69453a,919191,96664c,b6b6b6,bf8d67,dfdfdf,e6c19c"
+        name="Chocolate Cashmere Dye"
+        useButton="Dye"
+        description="Color dye that can be used on cashemere clothing."
+        type="card"
+        weight="1"
+        cardColor="3"
+        maxFloorOffset="15"/>
+</items>
