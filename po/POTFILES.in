@@ -124,7 +124,6 @@ src/gui/windows/textcommandeditor.cpp
 src/gui/windows/textdialog.cpp
 src/gui/windows/textselectdialog.cpp
 src/gui/windows/tradewindow.cpp
-src/gui/windows/unregisterdialog.cpp
 src/gui/windows/updaterwindow.cpp
 src/gui/windows/whoisonline.cpp
 src/gui/windows/worldselectdialog.cpp
