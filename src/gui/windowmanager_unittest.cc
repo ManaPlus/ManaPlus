@@ -47,6 +47,7 @@
 #include "gui/windows/buydialog.h"
 #include "gui/windows/buyingstoreselldialog.h"
 #include "gui/windows/buyselldialog.h"
+#include "gui/windows/charselectdialog.h"
 #include "gui/windows/changeemaildialog.h"
 #include "gui/windows/changepassworddialog.h"
 #include "gui/windows/chatwindow.h"
@@ -97,6 +98,7 @@
 
 #include "net/logindata.h"
 
+#include "net/eathena/charserverhandler.h"
 #include "net/eathena/inventoryhandler.h"
 #include "net/eathena/serverfeatures.h"
 #include "net/eathena/playerhandler.h"
@@ -145,6 +147,7 @@ TEST_CASE("Windows tests", "windowmanager")
     gui->postInit(mainGraphics);
     touchManager.init();
     Units::loadUnits();
+    charServerHandler = new EAthena::CharServerHandler;
     serverFeatures = new EAthena::ServerFeatures;
     inventoryHandler = new EAthena::InventoryHandler;
     playerHandler = new EAthena::PlayerHandler;
@@ -203,24 +206,29 @@ TEST_CASE("Windows tests", "windowmanager")
         mainGraphics->updateScreen();
         delete2(dialog);
     }
-/*
     SECTION("CharSelectDialog")
     {
         LoginData data;
         CharSelectDialog *dialog;
         CREATEWIDGETV(dialog, CharSelectDialog, data);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(dialog);
     }
     SECTION("CharCreateDialog")
     {
+/*
         LoginData data;
         CharSelectDialog *dialog2;
         CREATEWIDGETV(dialog2, CharSelectDialog, data);
         CharCreateDialog *dialog;
         CREATEWIDGETV(dialog, CharCreateDialog, dialog2, 0);
+        gui->draw();
+        mainGraphics->updateScreen();
         delete2(dialog);
         delete2(dialog2);
-    }
 */
+    }
     SECTION("ChatWindow")
     {
         CREATEWIDGETV0(chatWindow, ChatWindow);
