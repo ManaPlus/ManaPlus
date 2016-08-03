@@ -276,31 +276,41 @@ Being *ActorManager::createBeing(const BeingId id,
 
     mActorsIdMap[being->getId()] = being;
 
-    if (type == ActorType::Player
-        || type == ActorType::Mercenary
-        || type == ActorType::Pet
-        || type == ActorType::Homunculus
-        || type == ActorType::Npc)
+    switch (type)
     {
-        being->updateFromCache();
-        if (beingHandler)
-            beingHandler->requestNameById(id);
-        if (localPlayer)
-            localPlayer->checkNewName(being);
-    }
-    else if (type == ActorType::Monster)
-    {
-        if (serverFeatures && serverFeatures->haveMonsterName())
-            beingHandler->requestNameById(id);
-    }
-    else if (type == ActorType::Portal)
-    {
-        if (beingHandler &&
-            serverFeatures &&
-            serverFeatures->haveServerWarpNames())
-        {
-            beingHandler->requestNameById(id);
-        }
+        case ActorType::Player:
+        case ActorType::Mercenary:
+        case ActorType::Pet:
+        case ActorType::Homunculus:
+        case ActorType::Npc:
+            being->updateFromCache();
+            if (beingHandler)
+                beingHandler->requestNameById(id);
+            if (localPlayer)
+                localPlayer->checkNewName(being);
+            break;
+        case ActorType::Monster:
+            if (serverFeatures && serverFeatures->haveMonsterName())
+                beingHandler->requestNameById(id);
+            break;
+        case ActorType::Portal:
+            if (beingHandler &&
+                serverFeatures &&
+                serverFeatures->haveServerWarpNames())
+            {
+                beingHandler->requestNameById(id);
+            }
+            break;
+        case ActorType::SkillUnit:
+        case ActorType::Elemental:
+            break;
+        default:
+        case ActorType::FloorItem:
+        case ActorType::LocalPet:
+        case ActorType::Avatar:
+        case ActorType::Unknown:
+            reportAlways("CreateBeing for unknown type %d", CAST_S32(type));
+            break;
     }
 
     if (type == ActorType::Player)

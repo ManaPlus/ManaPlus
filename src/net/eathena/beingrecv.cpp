@@ -60,6 +60,7 @@
 
 #include "resources/map/map.h"
 
+#include "utils/checkutils.h"
 #include "utils/timer.h"
 
 #include "debug.h"
@@ -407,36 +408,55 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
-    if (dstBeing->getType() == ActorType::Player)
+    const ActorTypeT actorType = dstBeing->getType();
+    switch (actorType)
     {
-        dstBeing->setGender(Being::intToGender(gender));
-        dstBeing->setHairColor(hairColor);
-        // Set these after the gender, as the sprites may be gender-specific
-        if (hairStyle == 0)
-        {
-            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
-                0,
-                std::string());
-        }
-        else
-        {
-            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
-                hairStyle * -1,
-                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
-        }
-        dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-        dstBeing->updateSprite(SPRITE_HAIR, shoes);
-        dstBeing->updateSprite(SPRITE_SHOES, gloves);
-        dstBeing->updateSprite(SPRITE_BODY, weapon);
-        dstBeing->setWeaponId(weapon);
-//        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
-    }
-    else if (dstBeing->getType() == ActorType::Npc
-             && serverFeatures->haveNpcGender())
-    {
-        dstBeing->setGender(Being::intToGender(gender));
+        case ActorType::Player:
+            dstBeing->setGender(Being::intToGender(gender));
+            dstBeing->setHairColor(hairColor);
+            // Set these after the gender, as the sprites may be gender-specific
+            if (hairStyle == 0)
+            {
+                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                    0,
+                    std::string());
+            }
+            else
+            {
+                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                    hairStyle * -1,
+                    ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+            }
+            dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
+            dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
+            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+            dstBeing->updateSprite(SPRITE_HAIR, shoes);
+            dstBeing->updateSprite(SPRITE_SHOES, gloves);
+            dstBeing->updateSprite(SPRITE_BODY, weapon);
+            dstBeing->setWeaponId(weapon);
+            break;
+        case ActorType::Npc:
+            if (serverFeatures->haveNpcGender())
+            {
+                dstBeing->setGender(Being::intToGender(gender));
+            }
+            break;
+        default:
+        case ActorType::Monster:
+        case ActorType::Portal:
+        case ActorType::Pet:
+        case ActorType::Mercenary:
+        case ActorType::Homunculus:
+        case ActorType::SkillUnit:
+        case ActorType::Elemental:
+            break;
+        case ActorType::FloorItem:
+        case ActorType::LocalPet:
+        case ActorType::Avatar:
+        case ActorType::Unknown:
+            reportAlways("Wrong being type detected: %d",
+                CAST_S32(actorType));
+            break;
     }
 
     uint8_t dir;
@@ -605,37 +625,56 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
-    if (dstBeing->getType() == ActorType::Player)
+    const ActorTypeT actorType = dstBeing->getType();
+    switch (actorType)
     {
-        dstBeing->setGender(Being::intToGender(gender));
-        dstBeing->setHairColor(hairColor);
-        // Set these after the gender, as the sprites may be gender-specific
-        if (hairStyle == 0)
-        {
-            dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
-        }
-        else
-        {
-            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
-                hairStyle * -1,
-                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
-        }
-        if (!serverFeatures->haveMove3())
-        {
-            dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-            dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-            dstBeing->updateSprite(SPRITE_HAIR, shoes);
-            dstBeing->updateSprite(SPRITE_SHOES, gloves);
-            dstBeing->updateSprite(SPRITE_BODY, weapon);
-            dstBeing->setWeaponId(weapon);
-        }
-//        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
-    }
-    else if (dstBeing->getType() == ActorType::Npc
-             && serverFeatures->haveNpcGender())
-    {
-        dstBeing->setGender(Being::intToGender(gender));
+        case ActorType::Player:
+            dstBeing->setGender(Being::intToGender(gender));
+            dstBeing->setHairColor(hairColor);
+            // Set these after the gender, as the sprites may be gender-specific
+            if (hairStyle == 0)
+            {
+                dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
+            }
+            else
+            {
+                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                    hairStyle * -1,
+                    ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+            }
+            if (!serverFeatures->haveMove3())
+            {
+                dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
+                dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
+                dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+                dstBeing->updateSprite(SPRITE_HAIR, shoes);
+                dstBeing->updateSprite(SPRITE_SHOES, gloves);
+                dstBeing->updateSprite(SPRITE_BODY, weapon);
+                dstBeing->setWeaponId(weapon);
+            }
+            break;
+        case ActorType::Npc:
+            if (serverFeatures->haveNpcGender())
+            {
+                dstBeing->setGender(Being::intToGender(gender));
+            }
+            break;
+        default:
+        case ActorType::Monster:
+        case ActorType::Portal:
+        case ActorType::Pet:
+        case ActorType::Mercenary:
+        case ActorType::Homunculus:
+        case ActorType::SkillUnit:
+        case ActorType::Elemental:
+            break;
+        case ActorType::FloorItem:
+        case ActorType::LocalPet:
+        case ActorType::Avatar:
+        case ActorType::Unknown:
+            reportAlways("Wrong being type detected: %d",
+                CAST_S32(actorType));
+            break;
     }
 
     uint16_t srcX, srcY, dstX, dstY;
@@ -803,34 +842,53 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
-    if (dstBeing->getType() == ActorType::Player)
+    const ActorTypeT actorType = dstBeing->getType();
+    switch (actorType)
     {
-        dstBeing->setGender(Being::intToGender(gender));
-        dstBeing->setHairColor(hairColor);
-        // Set these after the gender, as the sprites may be gender-specific
-        if (hairStyle == 0)
-        {
-            dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
-        }
-        else
-        {
-            dstBeing->updateSprite(SPRITE_HAIR_COLOR,
-                hairStyle * -1,
-                ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
-        }
-        dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-        dstBeing->updateSprite(SPRITE_HAIR, shoes);
-        dstBeing->updateSprite(SPRITE_SHOES, gloves);
-        dstBeing->updateSprite(SPRITE_BODY, weapon);
-        dstBeing->setWeaponId(weapon);
-//        Ea::BeingRecv::setSprite(dstBeing, SPRITE_FLOOR, shield);
-    }
-    else if (dstBeing->getType() == ActorType::Npc
-             && serverFeatures->haveNpcGender())
-    {
-        dstBeing->setGender(Being::intToGender(gender));
+        case ActorType::Player:
+            dstBeing->setGender(Being::intToGender(gender));
+            dstBeing->setHairColor(hairColor);
+            // Set these after the gender, as the sprites may be gender-specific
+            if (hairStyle == 0)
+            {
+                dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
+            }
+            else
+            {
+                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                    hairStyle * -1,
+                    ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+            }
+            dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
+            dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
+            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+            dstBeing->updateSprite(SPRITE_HAIR, shoes);
+            dstBeing->updateSprite(SPRITE_SHOES, gloves);
+            dstBeing->updateSprite(SPRITE_BODY, weapon);
+            dstBeing->setWeaponId(weapon);
+            break;
+        case ActorType::Npc:
+            if (serverFeatures->haveNpcGender())
+            {
+                dstBeing->setGender(Being::intToGender(gender));
+            }
+            break;
+        default:
+        case ActorType::Monster:
+        case ActorType::Portal:
+        case ActorType::Pet:
+        case ActorType::Mercenary:
+        case ActorType::Homunculus:
+        case ActorType::SkillUnit:
+        case ActorType::Elemental:
+            break;
+        case ActorType::FloorItem:
+        case ActorType::LocalPet:
+        case ActorType::Avatar:
+        case ActorType::Unknown:
+            reportAlways("Wrong being type detected: %d",
+                CAST_S32(actorType));
+            break;
     }
 
     uint8_t dir;

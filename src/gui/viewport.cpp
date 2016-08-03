@@ -49,6 +49,8 @@
 
 #include "input/inputmanager.h"
 
+#include "utils/checkutils.h"
+
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"
 #include "resources/map/speciallayer.h"
@@ -432,44 +434,61 @@ bool Viewport::leftMouseAction()
         else
         {
             const ActorTypeT type = mHoverBeing->getType();
-            if (type == ActorType::Player)
+            switch (type)
             {
-                validateSpeed();
-                if (actorManager)
-                {
-                    if (localPlayer != mHoverBeing || mSelfMouseHeal)
-                        actorManager->heal(mHoverBeing);
-                    if (localPlayer == mHoverBeing && mHoverItem)
-                        localPlayer->pickUp(mHoverItem);
-                    return true;
-                }
-            }
-            else if (!stopAttack &&
-                     (type == ActorType::Monster ||
-                     type == ActorType::Npc ||
-                     type == ActorType::SkillUnit))
-            {
-                if ((localPlayer->withinAttackRange(mHoverBeing) ||
-                    inputManager.isActionActive(InputAction::ATTACK)))
-                {
+                case ActorType::Player:
                     validateSpeed();
-                    if (!mStatsReUpdated && localPlayer != mHoverBeing)
+                    if (actorManager)
                     {
-                        localPlayer->attack(mHoverBeing,
-                            !inputManager.isActionActive(
-                            InputAction::STOP_ATTACK));
+                        if (localPlayer != mHoverBeing || mSelfMouseHeal)
+                            actorManager->heal(mHoverBeing);
+                        if (localPlayer == mHoverBeing && mHoverItem)
+                            localPlayer->pickUp(mHoverItem);
                         return true;
                     }
-                }
-                else if (!inputManager.isActionActive(InputAction::ATTACK))
-                {
-                    validateSpeed();
-                    if (!mStatsReUpdated && localPlayer != mHoverBeing)
+                    break;
+                case ActorType::Monster:
+                case ActorType::Npc:
+                case ActorType::SkillUnit:
+                    if (!stopAttack)
                     {
-                        localPlayer->setGotoTarget(mHoverBeing);
-                        return true;
+                        if ((localPlayer->withinAttackRange(mHoverBeing) ||
+                            inputManager.isActionActive(InputAction::ATTACK)))
+                        {
+                            validateSpeed();
+                            if (!mStatsReUpdated && localPlayer != mHoverBeing)
+                            {
+                                localPlayer->attack(mHoverBeing,
+                                    !inputManager.isActionActive(
+                                    InputAction::STOP_ATTACK));
+                                return true;
+                            }
+                        }
+                        else if (!inputManager.isActionActive(InputAction::ATTACK))
+                        {
+                            validateSpeed();
+                            if (!mStatsReUpdated && localPlayer != mHoverBeing)
+                            {
+                                localPlayer->setGotoTarget(mHoverBeing);
+                                return true;
+                            }
+                        }
                     }
-                }
+                    break;
+                case ActorType::FloorItem:
+                case ActorType::Portal:
+                case ActorType::Pet:
+                case ActorType::Mercenary:
+                case ActorType::Homunculus:
+                case ActorType::Elemental:
+                    break;
+                case ActorType::Unknown:
+                case ActorType::LocalPet:
+                case ActorType::Avatar:
+                default:
+                    reportAlways("Left click on unknown actor type: %d",
+                        CAST_S32(type));
+                    break;
             }
         }
     }
