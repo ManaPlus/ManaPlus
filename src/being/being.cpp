@@ -271,7 +271,7 @@ Being::Being(const BeingId id,
     setMap(map);
     setSubtype(subtype, 0);
 
-    bool showName = false;
+    bool showName1 = false;
 
     switch (mType)
     {
@@ -280,11 +280,11 @@ Being::Being(const BeingId id,
         case ActorType::Pet:
         case ActorType::Homunculus:
         case ActorType::Elemental:
-            showName = config.getBoolValue("visiblenames");
+            showName1 = config.getBoolValue("visiblenames");
             break;
         case ActorType::Portal:
         case ActorType::SkillUnit:
-            showName = false;
+            showName1 = false;
             break;
         default:
         case ActorType::Unknown:
@@ -307,8 +307,8 @@ Being::Being(const BeingId id,
 
     if (mType == ActorType::Npc)
         setShowName(true);
-    else if (showName)
-        setShowName(showName);
+    else if (showName1)
+        setShowName(showName1);
 
     updateColors();
     updatePercentHP();
