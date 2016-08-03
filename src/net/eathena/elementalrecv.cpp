@@ -22,28 +22,52 @@
 
 #include "logger.h"
 
+#include "being/playerinfo.h"
+
 #include "net/messagein.h"
+
+#include "net/eathena/sp.h"
+
+#include "utils/checkutils.h"
 
 #include "debug.h"
 
 namespace EAthena
 {
 
+#define setElementalStat(sp, stat) \
+        case sp: \
+            PlayerInfo::setStatBase(stat, \
+                val); \
+            break;
+
 void ElementalRecv::processElementalUpdateStatus(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("type");
-    msg.readInt32("value");
+    const int sp = msg.readInt16("type");
+    const int val = msg.readInt32("value");
+    switch (sp)
+    {
+        setElementalStat(Sp::HP, Attributes::ELEMENTAL_HP);
+        setElementalStat(Sp::MAXHP, Attributes::ELEMENTAL_MAX_HP);
+        setElementalStat(Sp::SP, Attributes::ELEMENTAL_MP);
+        setElementalStat(Sp::MAXSP, Attributes::ELEMENTAL_MAX_MP);
+        default:
+            reportAlways("Unknown elemental stat %d",
+                sp);
+    }
 }
 
 void ElementalRecv::processElementalInfo(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     msg.readInt32("elemental id");
-    msg.readInt32("hp");
-    msg.readInt32("max hp");
-    msg.readInt32("sp");
-    msg.readInt32("max sp");
+    PlayerInfo::setStatBase(Attributes::ELEMENTAL_HP,
+        msg.readInt32("hp"));
+    PlayerInfo::setStatBase(Attributes::ELEMENTAL_MAX_HP,
+        msg.readInt32("max hp"));
+    PlayerInfo::setStatBase(Attributes::ELEMENTAL_MP,
+        msg.readInt32("sp"));
+    PlayerInfo::setStatBase(Attributes::ELEMENTAL_MAX_MP,
+        msg.readInt32("max sp"));
 }
 
 }  // namespace EAthena
