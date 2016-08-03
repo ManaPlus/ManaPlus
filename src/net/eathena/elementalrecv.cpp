@@ -59,7 +59,7 @@ void ElementalRecv::processElementalUpdateStatus(Net::MessageIn &msg)
 
 void ElementalRecv::processElementalInfo(Net::MessageIn &msg)
 {
-    msg.readInt32("elemental id");
+    const BeingId id = msg.readBeingId("elemental id");
     PlayerInfo::setStatBase(Attributes::ELEMENTAL_HP,
         msg.readInt32("hp"));
     PlayerInfo::setStatBase(Attributes::ELEMENTAL_MAX_HP,
@@ -68,6 +68,7 @@ void ElementalRecv::processElementalInfo(Net::MessageIn &msg)
         msg.readInt32("sp"));
     PlayerInfo::setStatBase(Attributes::ELEMENTAL_MAX_MP,
         msg.readInt32("max sp"));
+    PlayerInfo::setElemental(id);
 }
 
 }  // namespace EAthena

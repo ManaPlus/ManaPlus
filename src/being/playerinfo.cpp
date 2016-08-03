@@ -59,6 +59,7 @@ std::string mRoomName;
 Equipment *mEquipment = nullptr;
 BeingId mPetBeingId = BeingId_zero;
 GuildPositionFlags::Type mGuildPositionFlags = GuildPositionFlags::None;
+BeingId mElementalId = BeingId_zero;
 
 Trading mTrading = Trading_false;
 bool mVending = false;
@@ -519,6 +520,16 @@ void setMercenaryBeing(Being *const being)
     being->setOwner(localPlayer);
     being->setLevel(mMercenary->level);
     being->setAttackRange(mMercenary->range);
+}
+
+void setElemental(const BeingId id)
+{
+    mElementalId = id;
+}
+
+BeingId getElementalId()
+{
+    return mElementalId;
 }
 
 MercenaryInfo *getMercenary()

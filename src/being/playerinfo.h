@@ -269,9 +269,13 @@ namespace PlayerInfo
 
     void setHomunculusBeing(Being *const being);
 
+    void setElemental(const BeingId id);
+
     BeingId getHomunculusId();
 
     BeingId getMercenaryId();
+
+    BeingId getElementalId();
 
     void updateMoveAI();
 
