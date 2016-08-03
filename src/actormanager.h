@@ -218,6 +218,7 @@ class ActorManager final: public ConfigListener
         */
         Being *findNearestPvpPlayer() const A_WARN_UNUSED;
 
+#ifdef TMWA_SUPPORT
        /**
         * Heal all players in distance.
         *
@@ -231,7 +232,6 @@ class ActorManager final: public ConfigListener
 
         void heal(const Being *const target) const;
 
-#ifdef TMWA_SUPPORT
         void itenplz() const;
 #endif
 

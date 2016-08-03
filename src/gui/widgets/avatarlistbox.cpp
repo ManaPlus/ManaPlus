@@ -613,6 +613,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
     const MouseButtonT eventButton = event.getButton();
     if (eventButton == MouseButton::LEFT)
     {
+#ifdef TMWA_SUPPORT
         if (type == MapItemType::EMPTY)
         {
             const Being *const being = actorManager->findBeingByName(
@@ -621,6 +622,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
                 actorManager->heal(being);
         }
         else
+#endif  // TMWA_SUPPORT
         {
             localPlayer->navigateTo(ava->getX(), ava->getY());
         }

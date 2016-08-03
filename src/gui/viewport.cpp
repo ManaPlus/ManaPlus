@@ -440,8 +440,11 @@ bool Viewport::leftMouseAction()
                     validateSpeed();
                     if (actorManager)
                     {
+#ifdef TMWA_SUPPORT
                         if (localPlayer != mHoverBeing || mSelfMouseHeal)
                             actorManager->heal(mHoverBeing);
+#endif  // TMWA_SUPPORT
+
                         if (localPlayer == mHoverBeing && mHoverItem)
                             localPlayer->pickUp(mHoverItem);
                         return true;
@@ -484,7 +487,9 @@ bool Viewport::leftMouseAction()
                 case ActorType::Elemental:
                     break;
                 case ActorType::Unknown:
+#ifdef TMWA_SUPPORT
                 case ActorType::LocalPet:
+#endif
                 case ActorType::Avatar:
                 default:
                     reportAlways("Left click on unknown actor type: %d",

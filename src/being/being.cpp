@@ -291,7 +291,9 @@ Being::Being(const BeingId id,
         case ActorType::Npc:
         case ActorType::Monster:
         case ActorType::FloorItem:
+#ifdef TMWA_SUPPORT
         case ActorType::LocalPet:
+#endif
         case ActorType::Avatar:
             break;
     }

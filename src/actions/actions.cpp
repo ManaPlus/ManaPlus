@@ -499,6 +499,7 @@ impHandler(dropItemInvAll)
     return true;
 }
 
+#ifdef TMWA_SUPPORT
 impHandler(heal)
 {
     if (Net::getNetworkType() != ServerType::TMWATHENA)
@@ -549,9 +550,17 @@ impHandler(heal)
     }
     return false;
 }
+#else  // TMWA_SUPPORT
+
+impHandler0(heal)
+{
+    return false;
+}
+#endif  // TMWA_SUPPORT
 
 impHandler0(healmd)
 {
+#ifdef TMWA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
     if (actorManager)
@@ -578,6 +587,8 @@ impHandler0(healmd)
             Game::instance()->setValidSpeed();
         return true;
     }
+#endif // TMWA_SUPPORT
+
     return false;
 }
 

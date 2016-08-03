@@ -309,7 +309,9 @@ Being *ActorManager::createBeing(const BeingId id,
             break;
         default:
         case ActorType::FloorItem:
+#ifdef TMWA_SUPPORT
         case ActorType::LocalPet:
+#endif
         case ActorType::Avatar:
         case ActorType::Unknown:
             reportAlways("CreateBeing for unknown type %d", CAST_S32(type));
@@ -1391,6 +1393,7 @@ bool ActorManager::validateBeing(const Being *const aroundBeing,
         || localPlayer->isReachable(being, maxCost));
 }
 
+#ifdef TMWA_SUPPORT
 void ActorManager::healTarget() const
 {
     if (!localPlayer)
@@ -1482,6 +1485,7 @@ void ActorManager::heal(const Being *const target) const
         }
     }
 }
+#endif  // TMWA_SUPPORT
 
 Being* ActorManager::findMostDamagedPlayer(const int maxTileDist) const
 {
