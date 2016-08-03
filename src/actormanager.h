@@ -415,9 +415,11 @@ class ActorManager final: public ConfigListener
         std::set<BeingId> mBlockedBeings;
         std::map<int32_t, std::string> mChars;
         Map *mMap;
+#ifdef TMWA_SUPPORT
         std::string mSpellHeal1;
         std::string mSpellHeal2;
         std::string mSpellItenplz;
+#endif
         bool mTargetDeadPlayers;
         bool mTargetOnlyReachable;
         bool mCyclePlayers;

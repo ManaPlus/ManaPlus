@@ -201,9 +201,11 @@ ActorManager::ActorManager() :
     mBlockedBeings(),
     mChars(),
     mMap(nullptr),
+#ifdef TMWA_SUPPORT
     mSpellHeal1(serverConfig.getValue("spellHeal1", "#lum")),
     mSpellHeal2(serverConfig.getValue("spellHeal2", "#inma")),
     mSpellItenplz(serverConfig.getValue("spellItenplz", "#itenplz")),
+#endif
     mTargetDeadPlayers(config.getBoolValue("targetDeadPlayers")),
     mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
     mCyclePlayers(config.getBoolValue("cyclePlayers")),
