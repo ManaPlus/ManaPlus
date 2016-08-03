@@ -908,6 +908,11 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
                 {
                     conditionLayer = atoi(value.c_str());
                 }
+                else if (pname == "SideView")
+                {
+                    if (value != "down")
+                        return;
+                }
             }
         }
 
