@@ -605,6 +605,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("skillUnitsFile", "skillunits.xml");
     AddDEF("skillUnitsPatchFile", "skillunits_patch.xml");
     AddDEF("skillUnitsPatchDir", "skillunits.d");
+    AddDEF("elementalsFile", "elementals.xml");
+    AddDEF("elementalsPatchFile", "elementals_patch.xml");
+    AddDEF("elementalsPatchDir", "elementals.d");
     AddDEF("mapsRemapFile", "maps/remap.xml");
     AddDEF("mapsRemapPatchFile", "maps/remap_patch.xml");
     AddDEF("mapsRemapPatchDir", "maps/remap.d");

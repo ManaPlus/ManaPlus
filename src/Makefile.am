@@ -1237,6 +1237,8 @@ manaplus_SOURCES += main.cpp \
 	      resources/db/commandsdb.h \
 	      resources/db/deaddb.cpp \
 	      resources/db/deaddb.h \
+	      resources/db/elementaldb.cpp \
+	      resources/db/elementaldb.h \
 	      resources/db/emotedb.cpp \
 	      resources/db/emotedb.h \
 	      resources/db/homunculusdb.cpp \

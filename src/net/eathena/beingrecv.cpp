@@ -1985,8 +1985,10 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
         case BeingType::SKILL:
             type = ActorType::SkillUnit;
             break;
-        case BeingType::ITEM:
         case BeingType::ELEMENTAL:
+            type = ActorType::Elemental;
+            break;
+        case BeingType::ITEM:
             logger->log("not supported object type: %d, job: %d",
                 CAST_S32(beingType), CAST_S32(job));
             break;

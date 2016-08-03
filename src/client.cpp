@@ -105,6 +105,7 @@
 #include "resources/db/chardb.h"
 #include "resources/db/colordb.h"
 #include "resources/db/deaddb.h"
+#include "resources/db/elementaldb.h"
 #include "resources/db/emotedb.h"
 #include "resources/db/homunculusdb.h"
 #include "resources/db/horsedb.h"
@@ -609,6 +610,7 @@ void Client::gameClear()
     {
         MercenaryDB::unload();
         HomunculusDB::unload();
+        ElementalDb::unload();
         SkillUnitDb::unload();
         HorseDB::unload();
     }
@@ -1336,6 +1338,7 @@ int Client::gameExec()
                     {
                         MercenaryDB::load();
                         HomunculusDB::load();
+                        ElementalDb::load();
                         SkillUnitDb::load();
                         HorseDB::load();
                     }

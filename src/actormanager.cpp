@@ -301,8 +301,11 @@ Being *ActorManager::createBeing(const BeingId id,
                 beingHandler->requestNameById(id);
             }
             break;
-        case ActorType::SkillUnit:
         case ActorType::Elemental:
+            if (beingHandler)
+                beingHandler->requestNameById(id);
+            break;
+        case ActorType::SkillUnit:
             break;
         default:
         case ActorType::FloorItem:

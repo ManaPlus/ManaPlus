@@ -79,6 +79,7 @@
 
 #include "resources/db/avatardb.h"
 #include "resources/db/badgesdb.h"
+#include "resources/db/elementaldb.h"
 #include "resources/db/emotedb.h"
 #include "resources/db/homunculusdb.h"
 #include "resources/db/horsedb.h"
@@ -270,23 +271,33 @@ Being::Being(const BeingId id,
     setMap(map);
     setSubtype(subtype, 0);
 
-    if (mType == ActorType::Player
-        || mType == ActorType::Mercenary
-        || mType == ActorType::Pet
-        || mType == ActorType::Homunculus)
+    bool showName = false;
+
+    switch (mType)
     {
-        mShowName = config.getBoolValue("visiblenames");
-    }
-    else if (mType != ActorType::Npc)
-    {
-        mGotComment = true;
+        case ActorType::Player:
+        case ActorType::Mercenary:
+        case ActorType::Pet:
+        case ActorType::Homunculus:
+        case ActorType::Elemental:
+            showName = config.getBoolValue("visiblenames");
+            break;
+        case ActorType::Portal:
+        case ActorType::SkillUnit:
+            showName = false;
+            break;
+        default:
+        case ActorType::Unknown:
+        case ActorType::Npc:
+        case ActorType::Monster:
+        case ActorType::FloorItem:
+        case ActorType::LocalPet:
+        case ActorType::Avatar:
+            break;
     }
 
-    if (mType == ActorType::Portal ||
-        mType == ActorType::SkillUnit)
-    {
-        mShowName = false;
-    }
+    if (mType != ActorType::Npc)
+        mGotComment = true;
 
     config.addListener("visiblenames", this);
 
@@ -294,8 +305,8 @@ Being::Being(const BeingId id,
 
     if (mType == ActorType::Npc)
         setShowName(true);
-    else
-        setShowName(mShowName);
+    else if (showName)
+        setShowName(showName);
 
     updateColors();
     updatePercentHP();
@@ -430,6 +441,18 @@ void Being::setSubtype(const BeingTypeId subtype,
                 mYDiff = mInfo->getSortOffsetY();
             }
             break;
+        case ActorType::Elemental:
+            mInfo = ElementalDb::get(mSubType);
+            if (mInfo)
+            {
+                setName(mInfo->getName());
+                setupSpriteDisplay(mInfo->getDisplay(),
+                    ForceDisplay_false,
+                    0,
+                    mInfo->getColor(fromInt(mLook, ItemColor)));
+                mYDiff = mInfo->getSortOffsetY();
+            }
+            break;
         case ActorType::Npc:
             mInfo = NPCDB::get(mSubType);
             if (mInfo)
@@ -498,7 +521,6 @@ void Being::setSubtype(const BeingTypeId subtype,
             break;
         case ActorType::Unknown:
         case ActorType::FloorItem:
-        case ActorType::Elemental:
         default:
             reportAlways("Wrong being type %d in setSubType",
                 CAST_S32(mType));

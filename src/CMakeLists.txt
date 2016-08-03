@@ -635,6 +635,8 @@ SET(SRCS
     resources/delayedmanager.h
     resources/db/deaddb.cpp
     resources/db/deaddb.h
+    resources/db/elementaldb.cpp
+    resources/db/elementaldb.h
     resources/dye/dye.cpp
     resources/dye/dye.h
     resources/dye/dyecolor.h
