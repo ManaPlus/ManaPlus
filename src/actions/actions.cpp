@@ -587,7 +587,7 @@ impHandler0(healmd)
             Game::instance()->setValidSpeed();
         return true;
     }
-#endif // TMWA_SUPPORT
+#endif  // TMWA_SUPPORT
 
     return false;
 }
@@ -607,7 +607,7 @@ impHandler0(itenplz)
         }
         return true;
     }
-#endif
+#endif  // TMWA_SUPPORT
     return false;
 }
 
