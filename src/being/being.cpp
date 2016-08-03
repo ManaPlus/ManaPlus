@@ -3606,6 +3606,18 @@ void Being::drawMercenary(Graphics *restrict const graphics,
     drawMercenarySpriteAt(graphics, px, py);
 }
 
+void Being::drawElemental(Graphics *restrict const graphics,
+                          const int offsetX,
+                          const int offsetY) const restrict2
+{
+    // getActorX() + offsetX;
+    const int px = mPixelX - mapTileSize / 2 + offsetX;
+    // getActorY() + offsetY;
+    const int py = mPixelY - mapTileSize + offsetY;
+    drawBeingCursor(graphics, px, py);
+    drawElementalSpriteAt(graphics, px, py);
+}
+
 void Being::drawPortal(Graphics *restrict const graphics,
                        const int offsetX,
                        const int offsetY) const restrict2
@@ -3643,6 +3655,11 @@ void Being::draw(Graphics *restrict const graphics,
                 offsetX,
                 offsetY);
             break;
+        case ActorType::Elemental:
+            drawElemental(graphics,
+                offsetX,
+                offsetY);
+            break;
         case ActorType::Monster:
             drawMonster(graphics,
                 offsetX,
@@ -3653,7 +3670,6 @@ void Being::draw(Graphics *restrict const graphics,
         case ActorType::Unknown:
         case ActorType::Npc:
         case ActorType::FloorItem:
-        case ActorType::Elemental:
 #ifdef TMWA_SUPPORT
         case ActorType::LocalPet:
 #endif
@@ -3924,6 +3940,59 @@ void Being::drawMercenarySpriteAt(Graphics *restrict const graphics,
             drawHpBar(graphics,
                 maxHP,
                 PlayerInfo::getStatBase(Attributes::MERC_HP),
+                mDamageTaken,
+                UserColorId::MONSTER_HP,
+                UserColorId::MONSTER_HP2,
+                x - 50 + mapTileSize / 2 + mInfo->getHpBarOffsetX(),
+                y + mapTileSize - 6 + mInfo->getHpBarOffsetY(),
+                2 * 50,
+                4);
+        }
+    }
+}
+
+void Being::drawElementalSpriteAt(Graphics *restrict const graphics,
+                                  const int x,
+                                  const int y) const restrict2
+{
+    if (mHighlightMonsterAttackRange &&
+        mAction != BeingAction::DEAD)
+    {
+        if (!userPalette)
+        {
+            CompoundSprite::drawSimple(graphics, x, y);
+            return;
+        }
+
+        int attackRange;
+        if (mAttackRange)
+            attackRange = mapTileSize * mAttackRange;
+        else
+            attackRange = mapTileSize;
+
+        graphics->setColor(userPalette->getColorWithAlpha(
+            UserColorId::MONSTER_ATTACK_RANGE));
+
+        graphics->fillRectangle(Rect(
+            x - attackRange, y - attackRange,
+            2 * attackRange + mapTileSize, 2 * attackRange + mapTileSize));
+    }
+
+    CompoundSprite::drawSimple(graphics, x, y);
+
+    if (mShowMobHP &&
+        mInfo)
+    {
+        if (mId == PlayerInfo::getElementalId())
+        {
+            // show hp bar here
+            int maxHP = PlayerInfo::getStatBase(Attributes::ELEMENTAL_MAX_HP);
+            if (!maxHP)
+                maxHP = mInfo->getMaxHP();
+
+            drawHpBar(graphics,
+                maxHP,
+                PlayerInfo::getStatBase(Attributes::ELEMENTAL_HP),
                 mDamageTaken,
                 UserColorId::MONSTER_HP,
                 UserColorId::MONSTER_HP2,
