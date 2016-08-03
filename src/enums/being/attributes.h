@@ -104,6 +104,12 @@ enumStart(Attributes)
     MERC_CALLS,
     MERC_KILLS,
 
+    // elemental attributes
+    ELEMENTAL_HP,
+    ELEMENTAL_MAX_HP,
+    ELEMENTAL_MP,
+    ELEMENTAL_MAX_MP,
+
     MAX_ATTRIBUTE
 }
 enumEnd(Attributes);
