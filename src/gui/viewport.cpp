@@ -464,7 +464,8 @@ bool Viewport::leftMouseAction()
                                 return true;
                             }
                         }
-                        else if (!inputManager.isActionActive(InputAction::ATTACK))
+                        else if (!inputManager.isActionActive(
+                                 InputAction::ATTACK))
                         {
                             validateSpeed();
                             if (!mStatsReUpdated && localPlayer != mHoverBeing)
