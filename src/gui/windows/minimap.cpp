@@ -372,6 +372,7 @@ void Minimap::draw2(Graphics *const graphics)
                 case ActorType::Unknown:
                 case ActorType::Player:
                 case ActorType::FloorItem:
+                case ActorType::Elemental:
                 default:
                     continue;
             }

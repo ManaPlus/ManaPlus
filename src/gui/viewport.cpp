@@ -901,6 +901,7 @@ void Viewport::mouseMoved(MouseEvent &event)
             case ActorType::Mercenary:
             case ActorType::Homunculus:
             case ActorType::SkillUnit:
+            case ActorType::Elemental:
                 gui->setCursorType(mHoverBeing->getHoverCursor());
                 break;
 

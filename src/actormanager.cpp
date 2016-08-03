@@ -596,6 +596,7 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
             case ActorType::Mercenary:
             case ActorType::Homunculus:
             case ActorType::SkillUnit:
+            case ActorType::Elemental:
             {
                 const Being *const being = static_cast<const Being*>(*it);
                 if (!being)

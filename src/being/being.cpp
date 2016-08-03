@@ -498,6 +498,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             break;
         case ActorType::Unknown:
         case ActorType::FloorItem:
+        case ActorType::Elemental:
         default:
             reportAlways("Wrong being type %d in setSubType",
                 CAST_S32(mType));
@@ -3620,16 +3621,17 @@ void Being::draw(Graphics *restrict const graphics,
                 offsetX,
                 offsetY);
             break;
-        case ActorType::Pet:
-        case ActorType::SkillUnit:
-        case ActorType::Unknown:
         case ActorType::Monster:
             drawMonster(graphics,
                 offsetX,
                 offsetY);
             break;
+        case ActorType::Pet:
+        case ActorType::SkillUnit:
+        case ActorType::Unknown:
         case ActorType::Npc:
         case ActorType::FloorItem:
+        case ActorType::Elemental:
 #ifdef TMWA_SUPPORT
         case ActorType::LocalPet:
 #endif
@@ -4434,6 +4436,7 @@ std::string Being::loadComment(const std::string &restrict name,
         case ActorType::Homunculus:
         case ActorType::Pet:
         case ActorType::SkillUnit:
+        case ActorType::Elemental:
         default:
             return "";
     }
@@ -4474,6 +4477,7 @@ void Being::saveComment(const std::string &restrict name,
         case ActorType::Mercenary:
         case ActorType::Homunculus:
         case ActorType::SkillUnit:
+        case ActorType::Elemental:
         default:
             return;
     }

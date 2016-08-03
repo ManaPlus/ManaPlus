@@ -39,7 +39,8 @@ enumStart(ActorType)
     Pet,
     Mercenary,
     Homunculus,
-    SkillUnit
+    SkillUnit,
+    Elemental
 }
 enumEnd(ActorType);
 
