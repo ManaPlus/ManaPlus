@@ -20,8 +20,6 @@
 
 #include "net/eathena/elementalrecv.h"
 
-#include "logger.h"
-
 #include "being/playerinfo.h"
 
 #include "net/messagein.h"
