@@ -23,6 +23,8 @@
 
 #include "enums/simpletypes/stringdefines.h"
 
+#include "debug.h"
+
 namespace AttributesEnum
 {
     stringEnumStart(AttributesT)
