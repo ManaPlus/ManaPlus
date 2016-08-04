@@ -23,6 +23,8 @@
 
 #include "enums/simpletypes/stringdefines.h"
 
+#include <map>
+
 #include "debug.h"
 
 namespace AttributesEnum

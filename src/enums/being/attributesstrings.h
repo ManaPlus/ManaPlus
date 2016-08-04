@@ -26,6 +26,8 @@
 
 #include "enums/simpletypes/stringdefines2.h"
 
+#include <string>
+
 namespace AttributesEnum
 {
     stringEnumDef(AttributesT)

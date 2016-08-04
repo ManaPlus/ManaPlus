@@ -21,8 +21,6 @@
 #ifndef ENUMS_SIMPLETYPES_STRINGDEFINES2_H
 #define ENUMS_SIMPLETYPES_STRINGDEFINES2_H
 
-#include <string>
-
 #include "localconsts.h"
 
 #define stringEnumDef(type) \
