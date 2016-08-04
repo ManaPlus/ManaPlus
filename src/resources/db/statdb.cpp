@@ -22,6 +22,8 @@
 
 #include "configuration.h"
 
+#include "enums/being/attributesstrings.h"
+
 #include "utils/checkutils.h"
 
 #include "resources/beingcommon.h"
@@ -102,17 +104,29 @@ static void loadBasicStats(const XmlNodePtr rootNode)
         if (xmlNameEqual(node, "stat"))
         {
             const std::string name = XML::getProperty(node, "name", "");
-            const int id = XML::getProperty(node, "id", 0);
-            if (id <= 0 || id >= maxAttr)
+            const std::string attr = XML::getProperty(node, "attr", "");
+            if (attr.empty() || AttributesEnum::find(attr) == false)
             {
-                reportAlways("Wrong id for basic stat with name %s",
-                    name.c_str());
-                continue;
+                const int id = XML::getProperty(node, "id", 0);
+                if (id <= 0 || id >= maxAttr)
+                {
+                    reportAlways("Wrong attr or id for basic "
+                        "stat with name %s",
+                        name.c_str());
+                    continue;
+                }
+                const std::string tag = XML::getProperty(node, "tag", "");
+                mBasicStats.push_back(BasicStat(static_cast<AttributesT>(id),
+                    tag,
+                    name));
             }
-            const std::string tag = XML::getProperty(node, "tag", "");
-            mBasicStats.push_back(BasicStat(static_cast<AttributesT>(id),
-                tag,
-                name));
+            else
+            {
+                const std::string tag = XML::getProperty(node, "tag", "");
+                mBasicStats.push_back(BasicStat(AttributesEnum::get(attr),
+                    tag,
+                    name));
+            }
         }
     }
 }
@@ -128,16 +142,27 @@ static void loadStats(const XmlNodePtr rootNode,
         if (xmlNameEqual(node, "stat"))
         {
             const std::string name = XML::getProperty(node, "name", "");
-            const int id = XML::getProperty(node, "id", 0);
-            if (id <= 0 || id >= maxAttr)
+            const std::string attr = XML::getProperty(node, "attr", "");
+            if (attr.empty() || AttributesEnum::find(attr) == false)
             {
-                reportAlways("Wrong id for extended stat with name %s",
-                    name.c_str());
-                continue;
+                const int id = XML::getProperty(node, "id", 0);
+                if (id <= 0 || id >= maxAttr)
+                {
+                    reportAlways("Wrong attr or id for extended "
+                        "stat with name %s",
+                        name.c_str());
+                    continue;
+                }
+                stats.push_back(BasicStat(static_cast<AttributesT>(id),
+                    std::string(),
+                    name));
             }
-            stats.push_back(BasicStat(static_cast<AttributesT>(id),
-                std::string(),
-                name));
+            else
+            {
+                stats.push_back(BasicStat(AttributesEnum::get(attr),
+                    std::string(),
+                    name));
+            }
         }
     }
 }

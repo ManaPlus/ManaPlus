@@ -41,6 +41,8 @@
 
 #include "const/net/net.h"
 
+#include "enums/being/attributesstrings.h"
+
 #include "input/inputmanager.h"
 #include "input/joystick.h"
 #include "input/keyboardconfig.h"
@@ -1321,6 +1323,7 @@ int Client::gameExec()
                     delete spellShortcut;
                     spellShortcut = new SpellShortcut;
 
+                    AttributesEnum::init();
                     // Load XML databases
                     CharDB::load();
                     StatDb::load();
