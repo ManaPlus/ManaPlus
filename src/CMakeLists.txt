@@ -918,6 +918,8 @@ SET(SRCS
     enums/being/actortype.h
     enums/being/attacktype.h
     enums/being/attributes.h
+    enums/being/attributesstrings.cpp
+    enums/being/attributesstrings.h
     enums/being/badgeindex.h
     listeners/actorspritelistener.h
     listeners/arrowslistener.cpp
@@ -1266,6 +1268,8 @@ SET(SRCS
     enums/simpletypes/showemptyrows.h
     enums/simpletypes/skiperror.h
     enums/simpletypes/speech.h
+    enums/simpletypes/stringdefines.h
+    enums/simpletypes/stringdefines2.h
     enums/simpletypes/trading.h
     enums/simpletypes/tryremovecolors.h
     enums/simpletypes/useargs.h
