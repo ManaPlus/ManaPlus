@@ -251,8 +251,7 @@ gcc-5_sdl2_tests:
   tags:
     - docker
 
-# disable for now because it randomly failing
-.gcc-5_sdl2_tests_i386:
+gcc-5_sdl2_tests_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
