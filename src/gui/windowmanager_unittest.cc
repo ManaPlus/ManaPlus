@@ -71,7 +71,6 @@
 #include "gui/windows/mailwindow.h"
 #include "gui/windows/minimap.h"
 #include "gui/windows/ministatuswindow.h"
-#include "gui/windows/npcdialog.h"
 #include "gui/windows/npcselldialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
