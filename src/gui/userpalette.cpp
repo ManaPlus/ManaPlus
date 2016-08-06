@@ -64,6 +64,12 @@ const std::string ColorTypeNames[CAST_SIZE(
     "ColorPlayerHp2",
     "ColorMonsterHp",
     "ColorMonsterHp2",
+    "ColorHomunHp",
+    "ColorHomunHp2",
+    "ColorMercHp",
+    "ColorMercHp2",
+    "ColorElementalHp",
+    "ColorElementalHp2",
     "",
     "ColorHitPlayerMonster",
     "ColorHitMonsterPlayer",
@@ -272,6 +278,43 @@ UserPalette::UserPalette() :
         GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Monster HP bar (second color)"),
+        50);
+    addColor(UserColorId::HOMUN_HP,
+        0x00ff00,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Homunculus HP bar"),
+        50);
+    addColor(UserColorId::HOMUN_HP2,
+        0xff0000,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Homunculus HP bar (second color)"),
+        50);
+    addColor(UserColorId::MERC_HP,
+        0x00ff00,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Mercenary HP bar"),
+        50);
+    addColor(UserColorId::MERC_HP2,
+        0xff0000,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Mercenary HP bar (second color)"),
+        50);
+
+    addColor(UserColorId::ELEMENTAL_HP,
+        0x00ff00,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Elemental HP bar"),
+        50);
+    addColor(UserColorId::ELEMENTAL_HP2,
+        0xff0000,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Elemental HP bar (second color)"),
         50);
     addLabel(UserColorId::LABEL_HITS,
         // TRANSLATORS: palette label

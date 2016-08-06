@@ -350,6 +350,12 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
         case UserColorId::ROAD_POINT:
         case UserColorId::MONSTER_HP:
         case UserColorId::MONSTER_HP2:
+        case UserColorId::HOMUN_HP:
+        case UserColorId::HOMUN_HP2:
+        case UserColorId::MERC_HP:
+        case UserColorId::MERC_HP2:
+        case UserColorId::ELEMENTAL_HP:
+        case UserColorId::ELEMENTAL_HP2:
         case UserColorId::PLAYER_HP:
         case UserColorId::PLAYER_HP2:
         case UserColorId::FLOOR_ITEM_TEXT:
