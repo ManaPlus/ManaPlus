@@ -1,6 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2009  Aethyra Development Team
  *  Copyright (C) 2011-2016  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -19,38 +18,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_HORSEINFO_H
-#define RESOURCES_HORSEINFO_H
-
-#include "resources/sprite/spritereference.h"
-
-#include "resources/horseoffset.h"
+#ifndef RESOURCES_HORSEOFFSET_H
+#define RESOURCES_HORSEOFFSET_H
 
 #include "localconsts.h"
 
-struct HorseInfo final
+struct HorseOffset final
 {
-    HorseInfo() :
-        downSprites(),
-        upSprites(),
-        offsets()
-    {
-        for (int f = 0; f < 10; f ++)
-        {
-            offsets[f].upOffsetX = 0;
-            offsets[f].upOffsetY = 0;
-            offsets[f].downOffsetX = 0;
-            offsets[f].downOffsetY = 0;
-            offsets[f].riderOffsetX = 0;
-            offsets[f].riderOffsetY = 0;
-        }
-    }
+    HorseOffset() :
+        upOffsetX(0),
+        upOffsetY(0),
+        downOffsetX(0),
+        downOffsetY(0),
+        riderOffsetX(0),
+        riderOffsetY(0)
+    { }
 
-    A_DELETE_COPY(HorseInfo)
+    A_DELETE_COPY(HorseOffset)
 
-    std::vector<SpriteReference*> downSprites;
-    std::vector<SpriteReference*> upSprites;
-    HorseOffset offsets[10];  // by direction
+    int upOffsetX;
+    int upOffsetY;
+    int downOffsetX;
+    int downOffsetY;
+    int riderOffsetX;
+    int riderOffsetY;
 };
 
-#endif  // RESOURCES_HORSEINFO_H
+#endif  // RESOURCES_HORSEOFFSET_H

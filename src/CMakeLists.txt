@@ -655,6 +655,7 @@ SET(SRCS
     resources/fboinfo.h
     resources/frame.h
     resources/horseinfo.h
+    resources/horseoffset.h
     resources/image/image.cpp
     resources/image/image.h
     resources/imagehelper.cpp

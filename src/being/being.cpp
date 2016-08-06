@@ -3513,23 +3513,24 @@ void Being::drawPlayer(Graphics *restrict const graphics,
         const int py = mPixelY - mapTileSize + offsetY;
         if (mHorseInfo)
         {
+            HorseOffset &offset = mHorseInfo->offsets[mSpriteDirection];
             for_each_horses(mDownHorseSprites)
             {
                 (*it)->draw(graphics,
-                    px + mHorseInfo->downOffsetX,
-                    py + mHorseInfo->downOffsetY);
+                    px + offset.downOffsetX,
+                    py + offset.downOffsetY);
             }
 
             drawBeingCursor(graphics, px, py);
             drawPlayerSpriteAt(graphics,
-                px + mHorseInfo->riderOffsetX,
-                py + mHorseInfo->riderOffsetY);
+                px + offset.riderOffsetX,
+                py + offset.riderOffsetY);
 
             for_each_horses(mUpHorseSprites)
             {
                 (*it)->draw(graphics,
-                    px + mHorseInfo->upOffsetX,
-                    py + mHorseInfo->upOffsetY);
+                    px + offset.upOffsetX,
+                    py + offset.upOffsetY);
             }
         }
         else

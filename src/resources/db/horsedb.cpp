@@ -23,6 +23,8 @@
 
 #include "configuration.h"
 
+#include "enums/resources/spritedirection.h"
+
 #include "resources/beingcommon.h"
 #include "resources/horseinfo.h"
 
@@ -71,11 +73,6 @@ void HorseDB::load()
     currentSprite->variant = 0;
     mUnknown.upSprites.push_back(currentSprite);
 
-    mUnknown.upOffsetX = 0;
-    mUnknown.upOffsetY = 0;
-    mUnknown.downOffsetX = 0;
-    mUnknown.downOffsetY = 0;
-
     logger->log1("Initializing horse database...");
 
     loadXmlFile(paths.getStringValue("horsesFile"), SkipError_false);
@@ -83,6 +80,69 @@ void HorseDB::load()
     loadXmlDir("horsesPatchDir", loadXmlFile);
 
     mLoaded = true;
+}
+
+static int parseDirectionName(const std::string &name)
+{
+    int id = -1;
+    if (name == "down")
+    {
+        id = SpriteDirection::DOWN;
+    }
+    else if (name == "downleft" || name == "leftdown")
+    {
+        id = SpriteDirection::DOWNLEFT;
+    }
+    else if (name == "left")
+    {
+        id = SpriteDirection::LEFT;
+    }
+    else if (name == "upleft" || name == "leftup")
+    {
+        id = SpriteDirection::UPLEFT;
+    }
+    else if (name == "up")
+    {
+        id = SpriteDirection::UP;
+    }
+    else if (name == "upright" || name == "rightup")
+    {
+        id = SpriteDirection::UPRIGHT;
+    }
+    else if (name == "right")
+    {
+        id = SpriteDirection::RIGHT;
+    }
+    else if (name == "downright" || name == "rightdown")
+    {
+        id = SpriteDirection::DOWNRIGHT;
+    }
+    // hack for died action.
+    else if (name == "died")
+    {
+        id = 9;
+    }
+
+    return id;
+}
+
+static void loadRiderOffset(XmlNodePtrConst node,
+                            HorseInfo *const currentInfo)
+{
+    const std::string dirName = XML::getProperty(node,
+        "direction", "");
+    const int dir = parseDirectionName(dirName);
+    if (dir == -1)
+    {
+        reportAlways("Wrong or missing horse rider direcion: %s",
+            dirName.c_str());
+        return;
+    }
+    HorseOffset &offset = currentInfo->offsets[dir];
+    offset.riderOffsetX = XML::getProperty(node,
+        "riderOffsetX", 0);
+    offset.riderOffsetY = XML::getProperty(node,
+        "riderOffsetY", 0);
 }
 
 void HorseDB::loadXmlFile(const std::string &fileName,
@@ -131,33 +191,46 @@ void HorseDB::loadXmlFile(const std::string &fileName,
 
         if (!currentInfo)
             continue;
-        currentInfo->upOffsetX = XML::getProperty(horseNode,
-            "upOffsetX", 0);
-        currentInfo->upOffsetY = XML::getProperty(horseNode,
-            "upOffsetY", 0);
-        currentInfo->downOffsetX = XML::getProperty(horseNode,
-            "downOffsetX", 0);
-        currentInfo->downOffsetY = XML::getProperty(horseNode,
-            "downOffsetY", 0);
-        currentInfo->riderOffsetX = XML::getProperty(horseNode,
-            "riderOffsetX", 0);
-        currentInfo->riderOffsetY = XML::getProperty(horseNode,
-            "riderOffsetY", 0);
-
         for_each_xml_child_node(spriteNode, horseNode)
         {
-            if (!XmlHaveChildContent(spriteNode))
-                continue;
-
-            if (xmlNameEqual(spriteNode, "sprite"))
-                loadSprite(downSprites)
-
             if (xmlNameEqual(spriteNode, "down"))
                 loadDownSprites(spriteNode, currentInfo);
             else if (xmlNameEqual(spriteNode, "up"))
                 loadUpSprites(spriteNode, currentInfo);
+            else if (xmlNameEqual(spriteNode, "offset"))
+                loadRiderOffset(spriteNode, currentInfo);
         }
         mHorseInfos[id] = currentInfo;
+    }
+}
+
+static void loadOffset(XmlNodePtrConst node,
+                       HorseInfo *const currentInfo,
+                       const bool isUp)
+{
+    const std::string dirName = XML::getProperty(node,
+        "direction", "");
+    const int dir = parseDirectionName(dirName);
+    if (dir == -1)
+    {
+        reportAlways("Wrong or missing horse direcion: %s",
+            dirName.c_str());
+        return;
+    }
+    HorseOffset &offset = currentInfo->offsets[dir];
+    if (isUp)
+    {
+        offset.upOffsetX = XML::getProperty(node,
+            "horseOffsetX", 0);
+        offset.upOffsetY = XML::getProperty(node,
+            "horseOffsetY", 0);
+    }
+    else
+    {
+        offset.downOffsetX = XML::getProperty(node,
+            "horseOffsetX", 0);
+        offset.downOffsetY = XML::getProperty(node,
+            "horseOffsetY", 0);
     }
 }
 
@@ -166,9 +239,10 @@ static void loadDownSprites(XmlNodePtrConst parentNode,
 {
     for_each_xml_child_node(spriteNode, parentNode)
     {
+        if (xmlNameEqual(spriteNode, "offset"))
+            loadOffset(spriteNode, currentInfo, false);
         if (!XmlHaveChildContent(spriteNode))
             continue;
-
         if (xmlNameEqual(spriteNode, "sprite"))
             loadSprite(downSprites)
     }
@@ -179,9 +253,10 @@ static void loadUpSprites(XmlNodePtrConst parentNode,
 {
     for_each_xml_child_node(spriteNode, parentNode)
     {
+        if (xmlNameEqual(spriteNode, "offset"))
+            loadOffset(spriteNode, currentInfo, true);
         if (!XmlHaveChildContent(spriteNode))
             continue;
-
         if (xmlNameEqual(spriteNode, "sprite"))
             loadSprite(upSprites)
     }
