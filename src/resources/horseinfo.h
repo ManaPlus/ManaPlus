@@ -34,7 +34,9 @@ struct HorseInfo final
         downOffsetX(0),
         downOffsetY(0),
         upOffsetX(0),
-        upOffsetY(0)
+        upOffsetY(0),
+        riderOffsetX(0),
+        riderOffsetY(0)
     { }
 
     A_DELETE_COPY(HorseInfo)
@@ -45,6 +47,8 @@ struct HorseInfo final
     int downOffsetY;
     int upOffsetX;
     int upOffsetY;
+    int riderOffsetX;
+    int riderOffsetY;
 };
 
 #endif  // RESOURCES_HORSEINFO_H

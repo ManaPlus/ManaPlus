@@ -141,6 +141,10 @@ void HorseDB::loadXmlFile(const std::string &fileName,
             "downOffsetX", offsetX);
         currentInfo->downOffsetY = XML::getProperty(horseNode,
             "downOffsetY", offsetY);
+        currentInfo->riderOffsetX = XML::getProperty(horseNode,
+            "riderOffsetX", 0);
+        currentInfo->riderOffsetY = XML::getProperty(horseNode,
+            "riderOffsetY", 0);
 
         for_each_xml_child_node(spriteNode, horseNode)
         {

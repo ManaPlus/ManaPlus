@@ -3521,7 +3521,9 @@ void Being::drawPlayer(Graphics *restrict const graphics,
             }
 
             drawBeingCursor(graphics, px, py);
-            drawPlayerSpriteAt(graphics, px, py);
+            drawPlayerSpriteAt(graphics,
+                px + mHorseInfo->riderOffsetX,
+                py + mHorseInfo->riderOffsetY);
 
             for_each_horses(mUpHorseSprites)
             {
