@@ -26,8 +26,9 @@
 
 #include "debug.h"
 
-static const int blockWalkMask = (BlockMask::WALL | BlockMask::AIR
-    | BlockMask::WATER);
+static const int blockWalkMask = (BlockMask::WALL |
+    BlockMask::AIR |
+    BlockMask::WATER);
 
 #ifndef DYECMD
 namespace

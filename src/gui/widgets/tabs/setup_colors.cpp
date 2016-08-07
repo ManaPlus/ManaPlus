@@ -294,6 +294,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
     {
         case UserColorId::AIR_COLLISION_HIGHLIGHT:
         case UserColorId::WATER_COLLISION_HIGHLIGHT:
+        case UserColorId::MONSTER_COLLISION_HIGHLIGHT:
         case UserColorId::GROUNDTOP_COLLISION_HIGHLIGHT:
         case UserColorId::COLLISION_HIGHLIGHT:
         case UserColorId::PORTAL_HIGHLIGHT:
@@ -344,6 +345,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
         case UserColorId::HOME_PLACE_BORDER:
         case UserColorId::AIR_COLLISION_HIGHLIGHT:
         case UserColorId::WATER_COLLISION_HIGHLIGHT:
+        case UserColorId::MONSTER_COLLISION_HIGHLIGHT:
         case UserColorId::GROUNDTOP_COLLISION_HIGHLIGHT:
         case UserColorId::COLLISION_HIGHLIGHT:
         case UserColorId::WALKABLE_HIGHLIGHT:

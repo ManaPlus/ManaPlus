@@ -84,6 +84,7 @@ const std::string ColorTypeNames[CAST_SIZE(
     "ColorCollisionHighlight",
     "ColorCollisionAirHighlight",
     "ColorCollisionWaterHighlight",
+    "ColorCollisionMonsterHighlight",
     "ColorCollisionGroundtopHighlight",
     "ColorWalkableTileHighlight",
     "ColorNet",
@@ -383,6 +384,12 @@ UserPalette::UserPalette() :
         GradientType::STATIC,
         // TRANSLATORS: palette color
         _("Water collision highlight"),
+        64);
+    addColor(UserColorId::MONSTER_COLLISION_HIGHLIGHT,
+        0x2050e0,
+        GradientType::STATIC,
+        // TRANSLATORS: palette color
+        _("Monster collision highlight"),
         64);
     addColor(UserColorId::GROUNDTOP_COLLISION_HIGHLIGHT,
         0xffff00,

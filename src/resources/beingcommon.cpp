@@ -60,7 +60,8 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
     const int allFlags = BlockMask::GROUND |
         BlockMask::WALL |
         BlockMask::WATER |
-        BlockMask::AIR;
+        BlockMask::AIR |
+        BlockMask::MONSTERWALL;
     StringVect tokens;
     splitToStringVector(tokens, walkStr, ',');
     FOR_EACH (StringVectCIter, it, tokens)
@@ -73,6 +74,8 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
             block |= allFlags;
         else if (walkStr == "wall")
             block |= BlockMask::WALL;
+        else if (walkStr == "monsterwall")
+            block |= BlockMask::MONSTERWALL;
         else if (walkStr == "swim" || walkStr == "water")
             block |= BlockMask::WATER;
         else if (walkStr == "walkswim" || walkStr == "swimwalk")  // legacy

@@ -578,6 +578,9 @@ inline static void setTile(Map *const map,
                         case Map::COLLISION_PLAYER_WALL:
                             map->addBlockMask(x, y, BlockType::PLAYERWALL);
                             break;
+                        case Map::COLLISION_MONSTER_WALL:
+                            map->addBlockMask(x, y, BlockType::MONSTERWALL);
+                            break;
                         default:
                             break;
                     }
