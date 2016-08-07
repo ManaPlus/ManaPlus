@@ -77,7 +77,8 @@ class Map final : public Properties,
             COLLISION_AIR = 2,          // air units can walk
             COLLISION_WATER = 3,        // water units can walk
             COLLISION_GROUNDTOP = 4,    // no collision (chair, bed, etc)
-            COLLISION_MAX = 5           // count index
+            COLLISION_PLAYER_WALL = 5,  // full collision for player
+            COLLISION_MAX = 6           // count index
         };
 
         /**

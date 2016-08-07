@@ -27,12 +27,13 @@
 
 enumStart(BlockType)
 {
-    NONE      = -1,
-    GROUND    = 0,
-    WALL      = 1,
-    AIR       = 2,
-    WATER     = 3,
-    GROUNDTOP = 4,
+    NONE       = -1,
+    GROUND     = 0,
+    WALL       = 1,
+    AIR        = 2,
+    WATER      = 3,
+    GROUNDTOP  = 4,
+    PLAYERWALL = 5,
     NB_BLOCKTYPES
 }
 enumEnd(BlockType);

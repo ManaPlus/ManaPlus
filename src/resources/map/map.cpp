@@ -591,6 +591,7 @@ void Map::drawCollision(Graphics *restrict const graphics,
             fillCollision(BlockMask::AIR, AIR_COLLISION_HIGHLIGHT);
             fillCollision(BlockMask::WATER, WATER_COLLISION_HIGHLIGHT);
             fillCollision(BlockMask::GROUNDTOP, GROUNDTOP_COLLISION_HIGHLIGHT);
+            fillCollision(BlockMask::PLAYERWALL, COLLISION_HIGHLIGHT);
         }
     }
 }
@@ -709,6 +710,9 @@ void Map::addBlockMask(const int x, const int y,
         case BlockType::GROUNDTOP:
             mMetaTiles[tileNum].blockmask |= BlockMask::GROUNDTOP;
             break;
+        case BlockType::PLAYERWALL:
+            mMetaTiles[tileNum].blockmask |= BlockMask::PLAYERWALL;
+            break;
         default:
         case BlockType::NONE:
         case BlockType::NB_BLOCKTYPES:
@@ -741,6 +745,9 @@ void Map::setBlockMask(const int x, const int y,
             break;
         case BlockType::GROUNDTOP:
             mMetaTiles[tileNum].blockmask = BlockMask::GROUNDTOP;
+            break;
+        case BlockType::PLAYERWALL:
+            mMetaTiles[tileNum].blockmask = BlockMask::PLAYERWALL;
             break;
         default:
         case BlockType::NONE:

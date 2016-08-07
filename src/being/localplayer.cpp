@@ -2645,7 +2645,10 @@ void LocalPlayer::checkNewName(Being *const being)
 unsigned char LocalPlayer::getBlockWalkMask() const
 {
     // for now blocking all types of collisions
-    return BlockMask::WALL | BlockMask::AIR | BlockMask::WATER;
+    return BlockMask::WALL |
+        BlockMask::AIR |
+        BlockMask::WATER |
+        BlockMask::PLAYERWALL;
 }
 
 void LocalPlayer::removeHome()

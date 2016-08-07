@@ -27,11 +27,12 @@ namespace BlockMask
 {
     enum BlockMask
     {
-        WALL      = 0x80,  // 1000 0000
-        AIR       = 0x04,  // 0000 0100
-        WATER     = 0x08,  // 0000 1000
-        GROUND    = 0x10,  // 0001 0000
-        GROUNDTOP = 0x20   // 0010 0000
+        WALL       = 0x80,  // 1000 0000
+        AIR        = 0x04,  // 0000 0100
+        WATER      = 0x08,  // 0000 1000
+        GROUND     = 0x10,  // 0001 0000
+        GROUNDTOP  = 0x20,  // 0010 0000
+        PLAYERWALL = 0x40   // 0100 0000
     };
 }  // namespace BlockMask
 

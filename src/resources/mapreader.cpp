@@ -575,6 +575,9 @@ inline static void setTile(Map *const map,
                         case Map::COLLISION_GROUNDTOP:
                             map->addBlockMask(x, y, BlockType::GROUNDTOP);
                             break;
+                        case Map::COLLISION_PLAYER_WALL:
+                            map->addBlockMask(x, y, BlockType::PLAYERWALL);
+                            break;
                         default:
                             break;
                     }

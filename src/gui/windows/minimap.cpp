@@ -153,8 +153,10 @@ void Minimap::setMap(const Map *const map)
                 return;
             }
             const int size = surface->h * surface->w;
-            const int mask = (BlockMask::WALL | BlockMask::AIR
-                | BlockMask::WATER);
+            const int mask = (BlockMask::WALL |
+                BlockMask::AIR |
+                BlockMask::WATER |
+                BlockMask::PLAYERWALL);
 
             for (int ptr = 0; ptr < size; ptr ++)
             {
