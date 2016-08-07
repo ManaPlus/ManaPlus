@@ -324,6 +324,7 @@ bool Particle::update() restrict2
             {
                 // move particle with its parent if desired
                 (*p)->moveBy(change);
+                ++p;
             }
         }
 
