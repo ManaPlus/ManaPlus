@@ -191,7 +191,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         size_t getParticlesCount() const
         {
-            return mStatusParticleEffects.size() +
+            return mStatusParticleEffects.usedSize() +
                 mChildParticleEffects.size();
         }
 

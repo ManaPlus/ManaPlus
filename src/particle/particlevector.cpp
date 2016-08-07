@@ -95,3 +95,15 @@ void ParticleVector::moveTo(const float x, const float y)
         }
     }
 }
+
+size_t ParticleVector::usedSize() const
+{
+    size_t cnt = 0;
+    for (std::vector<Particle *>::const_iterator it = mIndexedElements.begin();
+         it != mIndexedElements.end(); ++it)
+    {
+        if (*it)
+            cnt ++;
+    }
+    return cnt;
+}
