@@ -33,7 +33,7 @@ namespace BlockMask
         GROUND      = 0x10,  // 0001 0000
         GROUNDTOP   = 0x20,  // 0010 0000
         PLAYERWALL  = 0x40,  // 0100 0000
-        MONSTERWALL = 0x80   // 1000 0000
+        MONSTERWALL = 0x02   // 0000 0010
     };
 }  // namespace BlockMask
 
