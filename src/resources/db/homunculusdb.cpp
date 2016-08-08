@@ -95,6 +95,9 @@ void HomunculusDB::loadXmlFile(const std::string &fileName,
         currentInfo->setBlockType(BlockType::NONE);
         BeingCommon::readBasicAttributes(currentInfo,
             homunculusNode, "attack");
+        BeingCommon::readWalkingAttributes(currentInfo,
+            homunculusNode,
+            0);
 
         currentInfo->setMaxHP(XML::getProperty(homunculusNode, "maxHP", 0));
 

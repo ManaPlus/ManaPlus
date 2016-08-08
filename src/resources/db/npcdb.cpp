@@ -104,6 +104,7 @@ void NPCDB::loadXmlFile(const std::string &fileName,
             "targetSelection", true));
 
         BeingCommon::readBasicAttributes(currentInfo, npcNode, "talk");
+        BeingCommon::readWalkingAttributes(currentInfo, npcNode, 0);
 
         currentInfo->setDeadSortOffsetY(XML::getProperty(npcNode,
             "deadSortOffsetY", 31));

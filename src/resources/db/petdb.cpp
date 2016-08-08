@@ -106,6 +106,7 @@ void PETDB::loadXmlFile(const std::string &fileName,
             "targetSelection", true));
 
         BeingCommon::readBasicAttributes(currentInfo, petNode, "talk");
+        BeingCommon::readWalkingAttributes(currentInfo, petNode, 0);
 
         currentInfo->setDeadSortOffsetY(XML::getProperty(petNode,
             "deadSortOffsetY", 31));

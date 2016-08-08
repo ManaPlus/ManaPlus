@@ -95,6 +95,9 @@ void ElementalDb::loadXmlFile(const std::string &fileName,
         currentInfo->setBlockType(BlockType::NONE);
         BeingCommon::readBasicAttributes(currentInfo,
             elementalNode, "attack");
+        BeingCommon::readWalkingAttributes(currentInfo,
+            elementalNode,
+            0);
 
         currentInfo->setMaxHP(XML::getProperty(elementalNode, "maxHP", 0));
 

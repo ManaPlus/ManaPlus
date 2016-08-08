@@ -96,6 +96,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName,
 
         currentInfo->setBlockType(BlockType::NONE);
         BeingCommon::readBasicAttributes(currentInfo, mercenaryNode, "attack");
+        BeingCommon::readWalkingAttributes(currentInfo, mercenaryNode, 0);
 
         currentInfo->setMaxHP(XML::getProperty(mercenaryNode, "maxHP", 0));
 

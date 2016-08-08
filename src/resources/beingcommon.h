@@ -53,6 +53,10 @@ namespace BeingCommon
                              XmlNodePtrConst node,
                              const std::string &hoverCursor) A_NONNULL(1);
 
+    void readWalkingAttributes(BeingInfo *const info,
+                               XmlNodePtrConst node,
+                               const int moreBlockFlags) A_NONNULL(1);
+
     void getIncludeFiles(const std::string &dir,
                          StringVect &list,
                          const std::string &ext);

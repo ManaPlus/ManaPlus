@@ -22,6 +22,8 @@
 
 #include "resources/db/monsterdb.h"
 
+#include "enums/resources/map/blockmask.h"
+
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
@@ -101,6 +103,8 @@ void MonsterDB::loadXmlFile(const std::string &fileName,
             monsterNode, "name", _("unnamed")));
 
         BeingCommon::readBasicAttributes(currentInfo, monsterNode, "attack");
+        BeingCommon::readWalkingAttributes(currentInfo, monsterNode,
+            BlockMask::MONSTERWALL);
 
         currentInfo->setMaxHP(XML::getProperty(monsterNode, "maxHP", 0));
 

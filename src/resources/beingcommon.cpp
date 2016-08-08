@@ -52,7 +52,12 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
 
     info->setQuickActionEffectId(XML::getProperty(node,
         "quickActionEffect", -1));
+}
 
+void BeingCommon::readWalkingAttributes(BeingInfo *const info,
+                                        XmlNodePtrConst node,
+                                        const int moreBlockFlags)
+{
     unsigned char block = 0;
     std::string walkStr = XML::getProperty(
         node, "walkType", "walk");
@@ -61,7 +66,7 @@ void BeingCommon::readBasicAttributes(BeingInfo *const info,
         BlockMask::WALL |
         BlockMask::WATER |
         BlockMask::AIR |
-        BlockMask::MONSTERWALL;
+        moreBlockFlags;
     StringVect tokens;
     splitToStringVector(tokens, walkStr, ',');
     FOR_EACH (StringVectCIter, it, tokens)
