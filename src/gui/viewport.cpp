@@ -623,8 +623,15 @@ void Viewport::getMouseTile(const int x, const int y,
         const int tileViewY = mPixelViewY / th;
         for (int f = tileViewY; f < tileViewY + heightTiles; f ++)
         {
-            if (!mMap->getWalk(destX, f))
+            if (!mMap->getWalk(destX,
+                f,
+                BlockMask::WALL |
+                BlockMask::AIR |
+                BlockMask::WATER |
+                BlockMask::PLAYERWALL))
+            {
                 continue;
+            }
 
             const int offset = mMap->getHeightOffset(
                 destX, f) * th2;
@@ -697,7 +704,12 @@ void Viewport::walkByMouse(const MouseEvent &event)
                 else if (y < 0)
                     dy = -1;
 
-                if (mMap->getWalk(playerX + dx, playerY + dy))
+                if (mMap->getWalk(playerX + dx,
+                    playerY + dy,
+                    BlockMask::WALL |
+                    BlockMask::AIR |
+                    BlockMask::WATER |
+                    BlockMask::PLAYERWALL))
                 {
                     localPlayer->navigateTo(playerX + dx, playerY + dy);
                 }
@@ -708,17 +720,35 @@ void Viewport::walkByMouse(const MouseEvent &event)
                         // try avoid diagonal collision
                         if (x2 > y2)
                         {
-                            if (mMap->getWalk(playerX + dx, playerY))
+                            if (mMap->getWalk(playerX + dx,
+                                playerY,
+                                BlockMask::WALL |
+                                BlockMask::AIR |
+                                BlockMask::WATER |
+                                BlockMask::PLAYERWALL))
+                            {
                                 dy = 0;
+                            }
                             else
+                            {
                                 dx = 0;
+                            }
                         }
                         else
                         {
-                            if (mMap->getWalk(playerX, playerY + dy))
+                            if (mMap->getWalk(playerX,
+                                playerY + dy,
+                                BlockMask::WALL |
+                                BlockMask::AIR |
+                                BlockMask::WATER |
+                                BlockMask::PLAYERWALL))
+                            {
                                 dx = 0;
+                            }
                             else
+                            {
                                 dy = 0;
+                            }
                         }
                     }
                     else
@@ -726,17 +756,45 @@ void Viewport::walkByMouse(const MouseEvent &event)
                         // try avoid vertical or horisontal collision
                         if (!dx)
                         {
-                            if (mMap->getWalk(playerX + 1, playerY + dy))
+                            if (mMap->getWalk(playerX + 1,
+                                playerY + dy,
+                                BlockMask::WALL |
+                                BlockMask::AIR |
+                                BlockMask::WATER |
+                                BlockMask::PLAYERWALL))
+                            {
                                 dx = 1;
-                            if (mMap->getWalk(playerX - 1, playerY + dy))
+                            }
+                            if (mMap->getWalk(playerX - 1,
+                                playerY + dy,
+                                BlockMask::WALL |
+                                BlockMask::AIR |
+                                BlockMask::WATER |
+                                BlockMask::PLAYERWALL))
+                            {
                                 dx = -1;
+                            }
                         }
                         if (!dy)
                         {
-                            if (mMap->getWalk(playerX + dx, playerY + 1))
+                            if (mMap->getWalk(playerX + dx,
+                                playerY + 1,
+                                BlockMask::WALL |
+                                BlockMask::AIR |
+                                BlockMask::WATER |
+                                BlockMask::PLAYERWALL))
+                            {
                                 dy = 1;
-                            if (mMap->getWalk(playerX + dx, playerY - 1))
+                            }
+                            if (mMap->getWalk(playerX + dx,
+                                playerY - 1,
+                                BlockMask::WALL |
+                                BlockMask::AIR |
+                                BlockMask::WATER |
+                                BlockMask::PLAYERWALL))
+                            {
                                 dy = -1;
+                            }
                         }
                     }
                     localPlayer->navigateTo(playerX + dx, playerY + dy);

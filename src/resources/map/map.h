@@ -164,8 +164,7 @@ class Map final : public Properties,
          * without walkmask, only blocks against colliding tiles.
          */
         bool getWalk(const int x, const int y,
-                     const unsigned char blockWalkMask = BlockMask::WALL
-                     | BlockMask::AIR | BlockMask::WATER) const
+                     const unsigned char blockWalkMask) const
                      restrict2 A_WARN_UNUSED;
 
         void setWalk(const int x, const int y) restrict2;
