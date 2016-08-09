@@ -547,7 +547,7 @@ void Being::setPixelPositionF(const Vector &restrict pos) restrict2
     if (mText)
     {
         mText->adviseXY(CAST_S32(pos.x),
-            CAST_S32(pos.y) - getHeight() - mText->getHeight() - 6,
+            CAST_S32(pos.y) - getHeight() - mText->getHeight() - 9,
             mMoveNames);
     }
 }
@@ -657,12 +657,16 @@ void Being::setSpeech(const std::string &restrict text,
     if (speech == BeingSpeech::TEXT_OVERHEAD)
     {
         delete mText;
+        mText = nullptr;
         mText = new Text(mSpeech,
             mPixelX,
             mPixelY - getHeight(),
             Graphics::CENTER,
             &userPalette->getColor(UserColorId::PARTICLE),
             Speech_true);
+        mText->adviseXY(mPixelX,
+            (mY + 1) * mapTileSize - getHeight() - mText->getHeight() - 9,
+            mMoveNames);
     }
     else
     {
@@ -1802,13 +1806,7 @@ void Being::logic() restrict2
     {
         mSpeechTime--;
         if (mSpeechTime == 0 && mText != nullptr)
-        {
             delete2(mText)
-        }
-        else if (mText != nullptr)
-        {
-            delete2(mText)
-        }
     }
 
     const int time = tick_time * MILLISECONDS_IN_A_TICK;
@@ -2228,6 +2226,9 @@ void Being::drawSpeech(const int offsetX,
                 Graphics::CENTER,
                 &theme->getColor(ThemeColorId::BUBBLE_TEXT, 255),
                 Speech_true);
+            mText->adviseXY(mPixelX,
+                (mY + 1) * mapTileSize - getHeight() - mText->getHeight() - 9,
+                mMoveNames);
         }
     }
     else if (speech == BeingSpeech::NO_SPEECH)
