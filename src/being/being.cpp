@@ -49,6 +49,8 @@
 
 #include "enums/being/beingdirection.h"
 
+#include "enums/resources/map/blockmask.h"
+
 #include "particle/particleinfo.h"
 
 #include "gui/gui.h"

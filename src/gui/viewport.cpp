@@ -33,6 +33,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
 
 #include "gui/gui.h"

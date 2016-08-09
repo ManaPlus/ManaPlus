@@ -40,6 +40,7 @@
 
 #include "enums/being/beingdirection.h"
 
+#include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
 
 #include "particle/particleengine.h"

@@ -20,6 +20,8 @@
 
 #include "navigationmanager.h"
 
+#include "enums/resources/map/blockmask.h"
+
 #include "resources/map/map.h"
 #include "resources/map/metatile.h"
 #include "resources/map/walklayer.h"

@@ -29,6 +29,8 @@
 
 #include "being/localplayer.h"
 
+#include "enums/resources/map/blockmask.h"
+
 #include "gui/popupmanager.h"
 #include "gui/viewport.h"
 #include "gui/userpalette.h"

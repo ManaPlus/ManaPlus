@@ -39,6 +39,7 @@
 
 #include "enums/resources/notifytypes.h"
 
+#include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
 
 #include "gui/userpalette.h"
