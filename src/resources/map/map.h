@@ -29,7 +29,6 @@
 
 #include "enums/render/rendertype.h"
 
-#include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/blocktype.h"
 #include "enums/resources/map/maptype.h"
 
