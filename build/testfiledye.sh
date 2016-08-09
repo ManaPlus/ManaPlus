@@ -6,7 +6,7 @@ export includes="-I. -I/usr/include -I/usr/include/SDL -I/usr/include/libxml2"
 export LOGFILE="../build/testfile.log"
 
 function run {
-    export CXX="g++-5"
+    export CXX="g++"
 
     export CMD="$CXX -c $1 $2 $3"
     echo $CMD >>${LOGFILE}
