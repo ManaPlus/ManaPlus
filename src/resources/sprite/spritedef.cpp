@@ -39,6 +39,7 @@
 #include "resources/dye/dye.h"
 
 #include "resources/loaders/imagesetloader.h"
+#include "resources/loaders/xmlloader.h"
 
 #include "resources/sprite/spritereference.h"
 
@@ -93,10 +94,12 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     if (pos != std::string::npos)
         palettes = animationFile.substr(pos + 1);
 
-    XML::Document doc(animationFile.substr(0, pos),
+    XML::Document *const doc = Loader::getXml(animationFile.substr(0, pos),
         UseResman_true,
         SkipError_false);
-    XmlNodePtrConst rootNode = doc.rootNode();
+    if (!doc)
+        return nullptr;
+    XmlNodePtrConst rootNode = doc->rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
@@ -105,6 +108,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
         const std::string errorFile = paths.getStringValue("sprites").append(
             paths.getStringValue("spriteErrorFile"));
         BLOCK_END("SpriteDef::load")
+        doc->decRef();
         if (animationFile != errorFile)
             return load(errorFile, 0, prot);
         else
@@ -123,6 +127,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
         def->incRef();
         def->setProtected(true);
     }
+    doc->decRef();
     BLOCK_END("SpriteDef::load")
     return def;
 }
@@ -470,18 +475,24 @@ void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
     }
     mProcessedFiles.insert(filename);
 
-    XML::Document doc(filename, UseResman_true, SkipError_false);
-    const XmlNodePtr rootNode = doc.rootNode();
+    XML::Document *const doc = Loader::getXml(filename,
+        UseResman_true,
+        SkipError_false);
+    if (!doc)
+        return;
+    const XmlNodePtr rootNode = doc->rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
         reportAlways("%s: No sprite root node in %s",
             mSource.c_str(),
             filename.c_str());
+        doc->decRef();
         return;
     }
 
     loadSprite(rootNode, variant);
+    doc->decRef();
 }
 
 SpriteDef::~SpriteDef()
