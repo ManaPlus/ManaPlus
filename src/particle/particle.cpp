@@ -38,6 +38,7 @@
 #include "resources/image/image.h"
 
 #include "resources/loaders/imageloader.h"
+#include "resources/loaders/xmlloader.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
@@ -410,14 +411,17 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
     const size_t pos = particleEffectFile.find('|');
     const std::string dyePalettes = (pos != std::string::npos)
         ? particleEffectFile.substr(pos + 1) : "";
-    XML::Document doc(particleEffectFile.substr(0, pos),
+    XML::Document *doc = Loader::getXml(particleEffectFile.substr(0, pos),
         UseResman_true,
         SkipError_false);
-    const XmlNodePtrConst rootNode = doc.rootNode();
+    if (!doc)
+        return nullptr;
+    const XmlNodePtrConst rootNode = doc->rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "effect"))
     {
         logger->log("Error loading particle: %s", particleEffectFile.c_str());
+        doc->decRef();
         return nullptr;
     }
 
@@ -537,6 +541,7 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
         mChildParticles.push_back(newParticle);
     }
 
+    doc->decRef();
     return newParticle;
 }
 

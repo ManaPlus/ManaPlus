@@ -29,7 +29,9 @@
 
 namespace Loader
 {
-    XML::Document *getXml(const std::string &idPath) A_WARN_UNUSED;
+    XML::Document *getXml(const std::string &idPath,
+                          const UseResman useResman,
+                          const SkipError skipError) A_WARN_UNUSED;
 
 }  // namespace Loader
 

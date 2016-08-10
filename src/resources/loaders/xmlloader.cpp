@@ -33,7 +33,9 @@ namespace
 {
     struct ResourceLoader final
     {
-        std::string path;
+        const std::string path;
+        const UseResman useResman;
+        const SkipError skipError;
 
         static Resource *load(const void *const v)
         {
@@ -48,16 +50,20 @@ namespace
                     rl->path.c_str());
                 return nullptr;
             }
-            Resource *const res = nullptr;
+            Resource *const res = new XML::Document(rl->path,
+                rl->useResman,
+                rl->skipError);
             return res;
         }
     };
 
 }  // namespace
 
-XML::Document *Loader::getXml(const std::string &idPath)
+XML::Document *Loader::getXml(const std::string &idPath,
+                              const UseResman useResman,
+                              const SkipError skipError)
 {
-    ResourceLoader rl = { idPath};
+    ResourceLoader rl = { idPath, useResman, skipError };
     return static_cast<XML::Document*>(resourceManager->get(
         idPath, ResourceLoader::load, &rl));
 }
