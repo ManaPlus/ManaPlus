@@ -42,6 +42,7 @@
 #include "resources/loaders/imagesetloader.h"
 #include "resources/loaders/subimageloader.h"
 #include "resources/loaders/subimagesetloader.h"
+#include "resources/loaders/xmlloader.h"
 
 #include "utils/dtor.h"
 #include "utils/files.h"
@@ -397,19 +398,24 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     const std::string path = resolveThemePath(filename);
     if (!PhysFs::exists(path.c_str()))
         return nullptr;
-    XML::Document doc(path,
+    XML::Document *const doc = Loader::getXml(path,
         UseResman_true,
         SkipError_true);
-    const XmlNodePtr rootNode = doc.rootNode();
-
-    if (!rootNode || !xmlNameEqual(rootNode, "skinset"))
+    if (!doc)
         return nullptr;
+    const XmlNodePtr rootNode = doc->rootNode();
+    if (!rootNode || !xmlNameEqual(rootNode, "skinset"))
+    {
+        doc->decRef();
+        return nullptr;
+    }
 
     const std::string skinSetImage = XML::getProperty(rootNode, "image", "");
 
     if (skinSetImage.empty())
     {
         logger->log1("Theme::readSkin(): Skinset does not define an image!");
+        doc->decRef();
         return nullptr;
     }
 
@@ -534,6 +540,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
         titlePadding, mOptions);
     delete images;
     skin->updateAlpha(mMinimumOpacity);
+    doc->decRef();
     return skin;
 }
 
@@ -996,12 +1003,17 @@ void Theme::loadColors(std::string file)
     else
         file.append("/colors.xml");
 
-    XML::Document doc(resolveThemePath(file), UseResman_true, SkipError_false);
-    const XmlNodePtrConst root = doc.rootNode();
+    XML::Document *const doc = Loader::getXml(resolveThemePath(file),
+        UseResman_true,
+        SkipError_false);
+    if (!doc)
+        return;
+    const XmlNodePtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "colors"))
     {
         logger->log("Error loading colors file: %s", file.c_str());
+        doc->decRef();
         return;
     }
 
@@ -1060,6 +1072,7 @@ void Theme::loadColors(std::string file)
             }
         }
     }
+    doc->decRef();
 }
 
 #define loadGrid() \
@@ -1187,11 +1200,18 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
             themeName).append("/info.xml");
     }
     logger->log("loading: " + path);
-    XML::Document doc(path, UseResman_true, SkipError_false);
-    const XmlNodePtrConst rootNode = doc.rootNode();
+    XML::Document *const doc = Loader::getXml(path,
+        UseResman_true,
+        SkipError_false);
+    if (!doc)
+        return nullptr;
+    const XmlNodePtrConst rootNode = doc->rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "info"))
+    {
+        doc->decRef();
         return nullptr;
+    }
 
     ThemeInfo *const info = new ThemeInfo();
 
@@ -1230,6 +1250,7 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
         else if (xmlNameEqual(infoNode, npcfontSize2.c_str()))
             readIntValue(npcfontSize);
     }
+    doc->decRef();
     return info;
 }
 
