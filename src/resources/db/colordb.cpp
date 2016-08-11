@@ -92,6 +92,7 @@ void ColorDB::loadHair(const std::string &fileName,
         return;
     }
 
+    reportAlways("Found legacy hair.xml");
     for_each_xml_child_node(node, root)
     {
         if (xmlNameEqual(node, "include"))
