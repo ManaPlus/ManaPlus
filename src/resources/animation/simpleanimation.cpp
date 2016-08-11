@@ -34,6 +34,7 @@
 
 #include "resources/loaders/imagesetloader.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 
 #include "debug.h"
@@ -185,7 +186,7 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
 
             if (index < 0)
             {
-                logger->log1("No valid value for 'index'");
+                reportAlways("No valid value for 'index'");
                 continue;
             }
 
@@ -193,7 +194,7 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
 
             if (!img)
             {
-                logger->log("No image at index %d", index);
+                reportAlways("No image at index %d", index);
                 continue;
             }
 
@@ -207,7 +208,7 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
 
             if (start < 0 || end < 0)
             {
-                logger->log1("No valid value for 'start' or 'end'");
+                reportAlways("No valid value for 'start' or 'end'");
                 continue;
             }
 
@@ -217,7 +218,7 @@ void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
 
                 if (!img)
                 {
-                    logger->log("No image at index %d", start);
+                    reportAlways("No image at index %d", start);
                     continue;
                 }
 
