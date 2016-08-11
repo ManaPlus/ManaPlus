@@ -26,6 +26,7 @@
 
 #include "resources/image/image.h"
 
+#include "utils/checkutils.h"
 #include "utils/sdlcheckutils.h"
 
 #include "debug.h"
@@ -70,7 +71,10 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
     SDL_Texture *const texture = SDL_CreateTextureFromSurface(
         mRenderer, tmpImage);
     if (!texture)
+    {
+        reportAlways("Texture from surface creation failed");
         return nullptr;
+    }
     SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
     return new Image(texture, tmpImage->w, tmpImage->h);
 }

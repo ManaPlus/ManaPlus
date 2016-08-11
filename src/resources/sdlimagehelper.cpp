@@ -31,6 +31,7 @@
 
 #include "resources/image/image.h"
 
+#include "utils/checkutils.h"
 #include "utils/sdlcheckutils.h"
 
 #include <SDL_gfxBlitFunc.h>
@@ -49,7 +50,8 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     SDL_Surface *const tmpImage = loadPng(rw);
     if (!tmpImage)
     {
-        logger->log("Error, image load failed: %s", IMG_GetError());
+        reportAlways("Error, image load failed: %s",
+            IMG_GetError());
         return nullptr;
     }
 
@@ -173,7 +175,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
 
     if (!image)
     {
-        logger->log1("Error: Image convert failed.");
+        reportAlways("Error: Image convert failed.");
         delete [] alphaChannel;
         return nullptr;
     }
@@ -272,7 +274,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
 
     if (!image)
     {
-        logger->log1("Error: Image convert failed.");
+        reportAlways("Error: Image convert failed.");
         delete [] alphaChannel;
         return nullptr;
     }
