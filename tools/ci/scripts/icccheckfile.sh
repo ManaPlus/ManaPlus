@@ -1,7 +1,7 @@
 #!/bin/bash
 
-identify -verbose $1 | grep profile >/dev/null
+identify -verbose $1 | egrep -i "profile|iCCP" >/dev/null
 
 if [ "$?" == 0 ]; then
-    echo "ICC profile found for image $1"
+    echo "ICC or iCCP profile found for image $1"
 fi
