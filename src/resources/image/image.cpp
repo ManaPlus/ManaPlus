@@ -82,8 +82,6 @@ Image::Image(SDL_Texture *restrict const image,
     }
     else
     {
-        logger->log("Image::Image(SDL_Texture *const image):"
-            " Couldn't load invalid Surface!");
         mBounds.w = 0;
         mBounds.h = 0;
     }
@@ -128,8 +126,6 @@ Image::Image(SDL_Surface *restrict const image, const bool hasAlphaChannel0,
     }
     else
     {
-        logger->log(
-          "Image::Image(SDL_Surface*): Couldn't load invalid Surface!");
         mBounds.w = 0;
         mBounds.h = 0;
     }
@@ -168,11 +164,6 @@ Image::Image(const GLuint glimage, const int width, const int height,
     if (mGLImage)
     {
         mLoaded = true;
-    }
-    else
-    {
-        logger->log("Image::Image(GLuint*, ...):"
-            " Couldn't load invalid Surface!");
     }
 }
 #endif
