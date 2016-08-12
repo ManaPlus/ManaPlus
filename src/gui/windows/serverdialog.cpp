@@ -49,6 +49,10 @@
 
 #include "debug.h"
 
+#ifdef WIN32
+#undef ERROR
+#endif
+
 static const int MAX_SERVERLIST = 15;
 
 static std::string serverTypeToString(const ServerTypeT type)

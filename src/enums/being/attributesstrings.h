@@ -31,6 +31,6 @@
 namespace AttributesEnum
 {
     stringEnumDef(AttributesT)
-}
+}  // namespace AttributesEnum
 
 #endif  // ENUMS_BEING_ATTRIBUTESSTRINGS_H

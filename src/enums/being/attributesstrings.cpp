@@ -114,4 +114,4 @@ namespace AttributesEnum
         strEnumDef(Attributes, ELEMENTAL_MP)
         strEnumDef(Attributes, ELEMENTAL_MAX_MP)
     stringEnumEnd
-}
+}  // namespace AttributesEnum

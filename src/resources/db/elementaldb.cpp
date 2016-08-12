@@ -52,7 +52,7 @@ void ElementalDb::load()
 }
 
 void ElementalDb::loadXmlFile(const std::string &fileName,
-                               const SkipError skipError)
+                              const SkipError skipError)
 {
     XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtr rootNode = doc.rootNode();

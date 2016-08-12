@@ -62,7 +62,7 @@ void BeingCommon::readWalkingAttributes(BeingInfo *const info,
     std::string walkStr = XML::getProperty(
         node, "walkType", "walk");
 
-    const int allFlags = BlockMask::GROUND |
+    const unsigned char allFlags = BlockMask::GROUND |
         BlockMask::WALL |
         BlockMask::WATER |
         BlockMask::AIR |

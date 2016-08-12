@@ -46,7 +46,8 @@
     }
 
 StatusPopup::StatusPopup() :
-    Popup("StatusPopup", "statuspopup.xml")
+    Popup("StatusPopup", "statuspopup.xml"),
+    mLabels()
 {
     for (int f = 0; f < STATUSPOPUP_NUM_LABELS; f ++)
         mLabels[f] = new Label(this);
