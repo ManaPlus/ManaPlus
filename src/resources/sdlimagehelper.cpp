@@ -24,8 +24,6 @@
 
 #include "resources/sdlimagehelper.h"
 
-#include "logger.h"
-
 #include "resources/dye/dye.h"
 #include "resources/dye/dyepalette.h"
 
