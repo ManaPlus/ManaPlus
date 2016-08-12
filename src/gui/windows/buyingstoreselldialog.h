@@ -27,8 +27,6 @@
 
 #include "gui/widgets/selldialog.h"
 
-class Being;
-
 /**
  * The sell dialog.
  *

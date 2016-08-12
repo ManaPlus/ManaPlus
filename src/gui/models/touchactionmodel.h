@@ -25,7 +25,7 @@
 
 #include "gui/models/namesmodel.h"
 
-#include "gui/widgets/setupitem.h"
+#include <map>
 
 class TouchActionsModel final : public NamesModel
 {

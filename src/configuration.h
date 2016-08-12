@@ -24,10 +24,10 @@
 #define CONFIGURATION_H
 
 #include "utils/stringutils.h"
-#include "utils/xml.h"
-
 #ifdef ENABLE_PUGIXML
 #include "utils/xmlwriter.h"
+#else
+#include "utils/xml.h"
 #endif  // ENABLE_PUGIXML
 
 #include "defaults.h"

@@ -23,6 +23,7 @@
 #include "gui/shortcut/spellshortcut.h"
 
 #include "spellmanager.h"
+#include "textcommand.h"
 
 #include "debug.h"
 

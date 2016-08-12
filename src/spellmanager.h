@@ -23,9 +23,14 @@
 #ifndef SPELLMANAGER_H
 #define SPELLMANAGER_H
 
-#include "textcommand.h"
+#include <string>
+#include <map>
+#include <vector>
 
-#include "being/being.h"
+#include "localconsts.h"
+
+class Being;
+class TextCommand;
 
 class SpellManager final
 {

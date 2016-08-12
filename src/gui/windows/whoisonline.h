@@ -33,8 +33,6 @@ class Button;
 class OnlinePlayer;
 class ScrollArea;
 
-struct SDL_Thread;
-
 /**
  * Update progress window GUI
  *

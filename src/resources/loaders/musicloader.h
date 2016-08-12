@@ -27,9 +27,7 @@
 
 #include <string>
 
-class Resource;
 class SDLMusic;
-class SoundEffect;
 
 namespace Loader
 {

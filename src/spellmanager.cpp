@@ -23,6 +23,7 @@
 #include "spellmanager.h"
 
 #include "configuration.h"
+#include "textcommand.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"

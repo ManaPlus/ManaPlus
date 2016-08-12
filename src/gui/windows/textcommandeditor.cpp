@@ -23,6 +23,7 @@
 #include "gui/windows/textcommandeditor.h"
 
 #include "spellmanager.h"
+#include "textcommand.h"
 
 #include "input/keyboardconfig.h"
 

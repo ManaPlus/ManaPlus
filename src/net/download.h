@@ -41,8 +41,6 @@ typedef size_t (*WriteFunction)( void *ptr, size_t size, size_t nmemb,
                                  void *stream);
 
 struct SDL_Thread;
-struct curl_httppost;
-struct curl_slist;
 
 namespace Net
 {
