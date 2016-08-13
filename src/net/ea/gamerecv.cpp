@@ -60,7 +60,7 @@ void GameRecv::processCharSwitchResponse(Net::MessageIn &msg)
 
 void GameRecv::processMapQuitResponse(Net::MessageIn &msg)
 {
-    if (msg.readUInt8("response"))
+    if (msg.readInt16("response"))
     {
         CREATEWIDGET(OkDialog,
             // TRANSLATORS: error header
