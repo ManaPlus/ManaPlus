@@ -229,6 +229,7 @@
 		<Unit filename="src/resources/db/npcdb.cpp" />
 		<Unit filename="src/resources/db/chardb.cpp" />
 		<Unit filename="src/resources/db/sounddb.cpp" />
+		<Unit filename="src/resources/db/elementaldb.cpp" />
 		<Unit filename="src/resources/db/commandsdb.cpp" />
 		<Unit filename="src/resources/db/skillunitdb.cpp" />
 		<Unit filename="src/resources/db/deaddb.cpp" />
@@ -304,7 +305,6 @@
 		<Unit filename="src/gui/windowmanager.cpp" />
 		<Unit filename="src/gui/userpalette.cpp" />
 		<Unit filename="src/gui/windows/didyouknowwindow.cpp" />
-		<Unit filename="src/gui/windows/unregisterdialog.cpp" />
 		<Unit filename="src/gui/windows/mailviewwindow.cpp" />
 		<Unit filename="src/gui/windows/ministatuswindow.cpp" />
 		<Unit filename="src/gui/windows/okdialog.cpp" />
@@ -708,6 +708,7 @@
 		<Unit filename="src/debug/debug_new.cpp" />
 		<Unit filename="src/settings.cpp" />
 		<Unit filename="src/client.cpp" />
+		<Unit filename="src/enums/being/attributesstrings.cpp" />
 		<Unit filename="src/avatar.cpp" />
 		<Unit filename="src/particle/particlevector.cpp" />
 		<Unit filename="src/particle/rotationalparticle.cpp" />
@@ -943,6 +944,7 @@
 		<Unit filename="src/resources/db/weaponsdb.h" />
 		<Unit filename="src/resources/db/commandsdb.h" />
 		<Unit filename="src/resources/db/itemdb.h" />
+		<Unit filename="src/resources/db/elementaldb.h" />
 		<Unit filename="src/resources/db/monsterdb.h" />
 		<Unit filename="src/resources/db/moddb.h" />
 		<Unit filename="src/resources/db/npcdialogdb.h" />
@@ -1047,6 +1049,7 @@
 		<Unit filename="src/resources/questitemtext.h" />
 		<Unit filename="src/resources/itemtypemap.h" />
 		<Unit filename="src/resources/updatefile.h" />
+		<Unit filename="src/resources/horseoffset.h" />
 		<Unit filename="src/resources/effectdescription.h" />
 		<Unit filename="src/resources/mstack.h" />
 		<Unit filename="src/resources/openglimagehelper.h" />
@@ -1084,7 +1087,6 @@
 		<Unit filename="src/gui/windows/textselectdialog.h" />
 		<Unit filename="src/gui/windows/editdialog.h" />
 		<Unit filename="src/gui/windows/minimap.h" />
-		<Unit filename="src/gui/windows/unregisterdialog.h" />
 		<Unit filename="src/gui/windows/questswindow.h" />
 		<Unit filename="src/gui/windows/changeemaildialog.h" />
 		<Unit filename="src/gui/windows/shopselldialog.h" />
@@ -1603,6 +1605,7 @@
 		<Unit filename="src/main.h" />
 		<Unit filename="src/enums/guildpositionflags.h" />
 		<Unit filename="src/enums/being/pickup.h" />
+		<Unit filename="src/enums/being/attributesstrings.h" />
 		<Unit filename="src/enums/being/badgeindex.h" />
 		<Unit filename="src/enums/being/targetcursorsize.h" />
 		<Unit filename="src/enums/being/targetcursortype.h" />
@@ -1675,6 +1678,7 @@
 		<Unit filename="src/enums/simpletypes/notify.h" />
 		<Unit filename="src/enums/simpletypes/allowsort.h" />
 		<Unit filename="src/enums/simpletypes/tryremovecolors.h" />
+		<Unit filename="src/enums/simpletypes/stringdefines2.h" />
 		<Unit filename="src/enums/simpletypes/sfx.h" />
 		<Unit filename="src/enums/simpletypes/autotarget.h" />
 		<Unit filename="src/enums/simpletypes/trading.h" />
@@ -1702,6 +1706,7 @@
 		<Unit filename="src/enums/simpletypes/speech.h" />
 		<Unit filename="src/enums/simpletypes/useargs.h" />
 		<Unit filename="src/enums/simpletypes/donotalign.h" />
+		<Unit filename="src/enums/simpletypes/stringdefines.h" />
 		<Unit filename="src/enums/simpletypes/modal.h" />
 		<Unit filename="src/enums/simpletypes/beingid.h" />
 		<Unit filename="src/enums/simpletypes/enable.h" />
