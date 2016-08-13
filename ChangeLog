@@ -1,3 +1,17 @@
+2016-08-14 New release 1.6.8.14
+fix: arrow slot in equipment window.
+fix: compilation with new curl 7.50.
+fix: freeze with some particle types.
+fix: particles count in popup.
+add: show being level at popup.
+add: shop hp/max hp in being popup.
+add: support for elemental beings.
+add: extend stats.xml with attribute names.
+add: extend riding offsets.
+add: player wall collision. (player cant walk).
+add: monster wall collision. (monster cant walk).
+add: cache most xml files.
+
 2016-07-30 New release 1.6.7.30
 fix: not allow moving while casting if skill not allow moving.
 fix: update skill in skills window after skill was changed.
