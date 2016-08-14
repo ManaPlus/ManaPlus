@@ -515,6 +515,7 @@ data/help/Makefile
 data/help/idx/Makefile
 data/help/tips/Makefile
 data/icons/Makefile
+data/music/Makefile
 data/perserver/Makefile
 data/perserver/default/Makefile
 data/translations/Makefile

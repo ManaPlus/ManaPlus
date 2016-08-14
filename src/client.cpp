@@ -555,7 +555,7 @@ void Client::initSoundManager()
     }
     soundManager.playMusic(branding.getValue(
         "loginMusic",
-        "Magick - Real.ogg"),
+        "keprohm.ogg"),
         SkipError_true);
 }
 

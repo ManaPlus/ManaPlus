@@ -443,7 +443,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF("wallpapersFile", "");
     AddDEF("appName", "ManaPlus");
     AddDEF("appIcon", "icons/manaplus");
-    AddDEF("loginMusic", "Magick - Real.ogg");
+    AddDEF("loginMusic", "keprohm.ogg");
     AddDEF("defaultServer", "");
     AddDEF("defaultPort", DEFAULT_PORT);
     AddDEF("defaultServerType", "tmwathena");
