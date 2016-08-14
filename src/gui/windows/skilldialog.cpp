@@ -627,7 +627,7 @@ void SkillDialog::useItem(const int itemId,
         return;
 
     const SkillInfo *const info = (*it).second;
-    CastType castType = CastType::Default;
+    CastTypeT castType = CastType::Default;
     if (!data.empty())
     {
         // +++ read only cast type from data
