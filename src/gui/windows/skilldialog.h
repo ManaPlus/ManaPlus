@@ -37,6 +37,7 @@
 
 #include "utils/xml.h"
 
+class Being;
 class Button;
 class Label;
 class SkillModel;
@@ -144,13 +145,15 @@ class SkillDialog final : public Window,
                              const AutoTarget autoTarget,
                              int level,
                              const bool withText,
-                             const std::string &text);
+                             const std::string &text,
+                             CastTypeT castType);
 
         static void useSkill(const SkillInfo *const info,
                              const AutoTarget autoTarget,
                              int level,
                              const bool withText,
-                             const std::string &text);
+                             const std::string &text,
+                             const CastTypeT castType);
 
         SkillData *getSkillData(const int id) const;
 
@@ -164,6 +167,26 @@ class SkillDialog final : public Window,
                                  const CastTypeT type);
 
     private:
+        static void useSkillDefault(const SkillInfo *const info,
+                                    const AutoTarget autoTarget,
+                                    int level,
+                                    const bool withText,
+                                    const std::string &text);
+
+        static void useSkillTarget(const SkillInfo *const info,
+                                   const AutoTarget autoTarget,
+                                   int level,
+                                   const bool withText,
+                                   const std::string &text,
+                                   const Being *being);
+
+        static void useSkillPosition(const SkillInfo *const info,
+                                     int level,
+                                     const bool withText,
+                                     const std::string &text,
+                                     const int x,
+                                     const int y);
+
         void addSkillDuration(SkillInfo *const skill);
 
         SkillInfo *loadSkill(XmlNodePtr node,

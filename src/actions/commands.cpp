@@ -1143,7 +1143,8 @@ impHandler(skill)
             AutoTarget_true,
             level,
             false,
-            "");
+            "",
+            CastType::Default);
     }
     else
     {
@@ -1151,7 +1152,8 @@ impHandler(skill)
             AutoTarget_true,
             level,
             true,
-            text);
+            text,
+            CastType::Default);
     }
     return true;
 }

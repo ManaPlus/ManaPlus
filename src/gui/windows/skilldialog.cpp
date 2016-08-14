@@ -178,7 +178,8 @@ void SkillDialog::action(const ActionEvent &event)
                 fromBool(config.getBoolValue("skillAutotarget"), AutoTarget),
                 info->customSelectedLevel,
                 info->useTextParameter,
-                std::string());
+                std::string(),
+                info->customCastType);
         }
     }
     else if (eventId == "close")
@@ -626,14 +627,18 @@ void SkillDialog::useItem(const int itemId,
         return;
 
     const SkillInfo *const info = (*it).second;
-    if (data.empty())
+    CastType castType = CastType::Default;
+    if (!data.empty())
     {
-        useSkill(info, autoTarget, level, false, std::string());
+        // +++ read only cast type from data
+        castType = static_cast<CastTypeT>(atoi(data.c_str()));
     }
-    else if (data.size() > 1)
-    {
-        
-    }
+    useSkill(info,
+        autoTarget,
+        level,
+        false,
+        std::string(),
+        castType);
 }
 
 void SkillDialog::updateTabSelection()
@@ -745,23 +750,28 @@ void SkillDialog::useSkill(const int skillId,
                            const AutoTarget autoTarget,
                            int level,
                            const bool withText,
-                           const std::string &text)
+                           const std::string &text,
+                           CastTypeT castType)
 {
     SkillInfo *const info = skillDialog->getSkill(skillId);
     if (!info)
         return;
+    if (castType == CastType::Default)
+        castType = info->customCastType;
     useSkill(info,
         autoTarget,
         level,
         withText,
-        text);
+        text,
+        castType);
 }
 
 void SkillDialog::useSkill(const SkillInfo *const info,
                            const AutoTarget autoTarget,
                            int level,
                            const bool withText,
-                           const std::string &text)
+                           const std::string &text,
+                           const CastTypeT castType)
 {
     if (!info || !localPlayer)
         return;
@@ -775,6 +785,231 @@ void SkillDialog::useSkill(const SkillInfo *const info,
         if (!cmd.empty())
             SpellManager::invokeCommand(cmd, localPlayer->getTarget());
     }
+    switch (castType)
+    {
+        default:
+        case CastType::Default:
+            useSkillDefault(info,
+                autoTarget,
+                level,
+                withText,
+                text);
+            break;
+        case CastType::Target:
+        {
+            const Being *const being = localPlayer->getTarget();
+            useSkillTarget(info,
+                autoTarget,
+                level,
+                withText,
+                text,
+                being);
+            break;
+        }
+        case CastType::Position:
+        {
+            int x = 0;
+            int y = 0;
+            viewport->getMouseTile(x, y);
+            useSkillPosition(info,
+                level,
+                withText,
+                text,
+                x,
+                y);
+            break;
+        }
+        case CastType::Self:
+            // +++ probably need call useSkillSelf
+            useSkillTarget(info,
+                autoTarget,
+                level,
+                withText,
+                text,
+                localPlayer);
+            break;
+    }
+}
+
+void SkillDialog::useSkillTarget(const SkillInfo *const info,
+                                 const AutoTarget autoTarget,
+                                 int level,
+                                 const bool withText,
+                                 const std::string &text,
+                                 const Being *being)
+{
+    SkillType::SkillType type = info->type;
+    if ((type & SkillType::Attack) != 0)
+    {
+        if (!being && autoTarget == AutoTarget_true)
+        {
+            being = localPlayer->setNewTarget(ActorType::Monster,
+                AllowSort_true);
+        }
+        if (being)
+        {
+            skillHandler->useBeing(info->id,
+                level,
+                being->getId());
+        }
+    }
+    else if ((type & SkillType::Support) != 0)
+    {
+        if (!being)
+            being = localPlayer;
+        if (being)
+        {
+            skillHandler->useBeing(info->id,
+                level,
+                being->getId());
+        }
+    }
+    else if ((type & SkillType::Self) != 0)
+    {
+        skillHandler->useBeing(info->id,
+            level,
+            localPlayer->getId());
+    }
+    else if ((type & SkillType::Ground) != 0)
+    {
+        if (!being)
+            return;
+        const int x = being->getTileX();
+        const int y = being->getTileY();
+        if (info->useTextParameter)
+        {
+            if (withText)
+            {
+                skillHandler->usePos(info->id,
+                    level,
+                    x, y,
+                    text);
+            }
+            else
+            {
+                const SkillData *data = info->getData1(level);
+                textSkillListener.setSkill(info->id,
+                    x,
+                    y,
+                    level);
+                TextDialog *const dialog = CREATEWIDGETR(TextDialog,
+                    // TRANSLATORS: text skill dialog header
+                    strprintf(_("Add text to skill %s"),
+                    data->name.c_str()),
+                    // TRANSLATORS: text skill dialog field
+                    _("Text: "));
+                dialog->setModal(Modal_true);
+                textSkillListener.setDialog(dialog);
+                dialog->setActionEventId("ok");
+                dialog->addActionListener(&textSkillListener);
+            }
+        }
+        else
+        {
+            skillHandler->usePos(info->id,
+                level,
+                x, y);
+        }
+    }
+    else if ((type & SkillType::TargetTrap) != 0)
+    {
+        // for now unused
+    }
+    else if (type == SkillType::Unknown ||
+             type == SkillType::Unused)
+    {
+        // unknown / unused
+    }
+    else
+    {
+        reportAlways("Unsupported skill type: %d", type);
+    }
+}
+
+void SkillDialog::useSkillPosition(const SkillInfo *const info,
+                                   int level,
+                                   const bool withText,
+                                   const std::string &text,
+                                   const int x,
+                                   const int y)
+{
+    SkillType::SkillType type = info->type;
+    if ((type & SkillType::Ground) != 0)
+    {
+        if (info->useTextParameter)
+        {
+            if (withText)
+            {
+                skillHandler->usePos(info->id,
+                    level,
+                    x, y,
+                    text);
+            }
+            else
+            {
+                const SkillData *data = info->getData1(level);
+                textSkillListener.setSkill(info->id,
+                    x,
+                    y,
+                    level);
+                TextDialog *const dialog = CREATEWIDGETR(TextDialog,
+                    // TRANSLATORS: text skill dialog header
+                    strprintf(_("Add text to skill %s"),
+                    data->name.c_str()),
+                    // TRANSLATORS: text skill dialog field
+                    _("Text: "));
+                dialog->setModal(Modal_true);
+                textSkillListener.setDialog(dialog);
+                dialog->setActionEventId("ok");
+                dialog->addActionListener(&textSkillListener);
+            }
+        }
+        else
+        {
+            skillHandler->usePos(info->id,
+                level,
+                x, y);
+        }
+    }
+    else if ((type & SkillType::Support) != 0)
+    {
+        // wrong type
+        skillHandler->useBeing(info->id,
+            level,
+            localPlayer->getId());
+    }
+    else if ((type & SkillType::Self) != 0)
+    {
+        skillHandler->useBeing(info->id,
+            level,
+            localPlayer->getId());
+    }
+    else if ((type & SkillType::Attack) != 0)
+    {
+        // do nothing
+        // +++ probably need select some target on x,y position?
+    }
+    else if ((type & SkillType::TargetTrap) != 0)
+    {
+        // for now unused
+    }
+    else if (type == SkillType::Unknown ||
+             type == SkillType::Unused)
+    {
+        // unknown / unused
+    }
+    else
+    {
+        reportAlways("Unsupported skill type: %d", type);
+    }
+}
+
+void SkillDialog::useSkillDefault(const SkillInfo *const info,
+                                  const AutoTarget autoTarget,
+                                  int level,
+                                  const bool withText,
+                                  const std::string &text)
+{
     SkillType::SkillType type = info->type;
     if ((type & SkillType::Attack) != 0)
     {
@@ -825,6 +1060,7 @@ void SkillDialog::useSkill(const SkillInfo *const info,
             }
             else
             {
+                const SkillData *data = info->getData1(level);
                 textSkillListener.setSkill(info->id,
                     x,
                     y,
