@@ -42,6 +42,9 @@
 ItemShortcut *itemShortcut[SHORTCUT_TABS];
 
 ItemShortcut::ItemShortcut(const int number) :
+    mItems(),
+    mItemColors(),
+    mItemData(),
     mItemSelected(-1),
     mItemColorSelected(ItemColor_one),
     mNumber(number)
@@ -58,6 +61,7 @@ void ItemShortcut::load(const bool oldConfig)
 {
     std::string name;
     std::string color;
+    std::string data;
     const Configuration *cfg;
     if (oldConfig)
         cfg = &config;
@@ -69,11 +73,13 @@ void ItemShortcut::load(const bool oldConfig)
         name = std::string("shortcut").append(toString(mNumber)).append("_");
         color = std::string("shortcutColor").append(
             toString(mNumber)).append("_");
+        data = std::string("shortcutData").append(toString(mNumber)).append("_");
     }
     else
     {
         name = "shortcut";
         color = "shortcutColor";
+        data = "shortcutData";
     }
     for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
@@ -84,6 +90,7 @@ void ItemShortcut::load(const bool oldConfig)
 
         mItems[i] = itemId;
         mItemColors[i] = itemColor;
+        mItemData[i] = cfg->getValue(data + toString(i), std::string());
     }
 }
 
@@ -91,31 +98,37 @@ void ItemShortcut::save() const
 {
     std::string name;
     std::string color;
+    std::string data;
     if (mNumber)
     {
         name = std::string("shortcut").append(toString(mNumber)).append("_");
         color = std::string("shortcutColor").append(
             toString(mNumber)).append("_");
+        data = std::string("shortcutData").append(toString(mNumber)).append("_");
     }
     else
     {
         name = "shortcut";
         color = "shortcutColor";
+        data = "shortcutData";
     }
 
     for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         const int itemId = mItems[i] ? mItems[i] : -1;
         const int itemColor = toInt(mItemColors[i], int);
+        const std::string itemData = mItemData[i];
         if (itemId != -1)
         {
             serverConfig.setValue(name + toString(i), itemId);
             serverConfig.setValue(color + toString(i), itemColor);
+            serverConfig.setValue(data + toString(i), itemData);
         }
         else
         {
             serverConfig.deleteKey(name + toString(i));
             serverConfig.deleteKey(color + toString(i));
+            serverConfig.deleteKey(data + toString(i));
         }
     }
 }
@@ -144,7 +157,8 @@ void ItemShortcut::useItem(const int index) const
         {
             skillDialog->useItem(itemId,
                 fromBool(config.getBoolValue("skillAutotarget"), AutoTarget),
-                toInt(itemColor, int));
+                toInt(itemColor, int),
+                mItemData[index]);
         }
     }
 }
@@ -235,5 +249,9 @@ void ItemShortcut::swap(const int index1, const int index2)
     const ItemColor tmpColor = mItemColors[index1];
     mItemColors[index1] = mItemColors[index2];
     mItemColors[index2] = tmpColor;
+
+    const std::string tmpData = mItemData[index1];
+    mItemData[index1] = mItemData[index2];
+    mItemData[index2] = tmpData;
     save();
 }

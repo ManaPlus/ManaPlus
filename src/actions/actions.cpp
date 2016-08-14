@@ -1550,9 +1550,11 @@ impHandler(useItem)
     }
     else if (skillDialog)
     {
+        // +++ probably need get data parameter from args
         skillDialog->useItem(itemId,
             fromBool(config.getBoolValue("skillAutotarget"), AutoTarget),
-            0);
+            0,
+            std::string());
     }
     return true;
 }

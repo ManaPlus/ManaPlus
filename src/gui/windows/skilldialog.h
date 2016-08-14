@@ -117,7 +117,8 @@ class SkillDialog final : public Window,
 
         void useItem(const int itemId,
                      const AutoTarget autoTarget,
-                     const int level) const;
+                     const int level,
+                     const std::string &data) const;
 
         void updateTabSelection();
 

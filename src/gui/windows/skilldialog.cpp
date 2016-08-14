@@ -615,7 +615,8 @@ void SkillDialog::widgetResized(const Event &event)
 
 void SkillDialog::useItem(const int itemId,
                           const AutoTarget autoTarget,
-                          const int level) const
+                          const int level,
+                          const std::string &data) const
 {
     const std::map<int, SkillInfo*>::const_iterator
         it = mSkills.find(itemId - SKILL_MIN_ID);
@@ -623,8 +624,14 @@ void SkillDialog::useItem(const int itemId,
         return;
 
     const SkillInfo *const info = (*it).second;
-    // +++ need add skill level here
-    useSkill(info, autoTarget, level);
+    if (data.empty())
+    {
+        useSkill(info, autoTarget, level);
+    }
+    else if (data.size() > 1)
+    {
+        
+    }
 }
 
 void SkillDialog::updateTabSelection()

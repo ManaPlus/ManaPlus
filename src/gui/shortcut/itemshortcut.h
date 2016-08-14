@@ -25,6 +25,8 @@
 
 #include "enums/simpletypes/itemcolor.h"
 
+#include <string>
+
 #include "localconsts.h"
 
 const unsigned int SHORTCUT_ITEMS = 20;
@@ -155,6 +157,7 @@ class ItemShortcut final
     private:
         int mItems[SHORTCUT_ITEMS];             /**< The items. */
         ItemColor mItemColors[SHORTCUT_ITEMS];  /**< The item colors. */
+        std::string mItemData[SHORTCUT_ITEMS];
         int mItemSelected;
         ItemColor mItemColorSelected;
         int mNumber;
