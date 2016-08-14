@@ -33,8 +33,6 @@
 #include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
 
-#include "enums/resources/skill/casttype.h"
-
 #include "gui/viewport.h"
 
 #include "gui/popups/popupmenu.h"
