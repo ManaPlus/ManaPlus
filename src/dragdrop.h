@@ -164,7 +164,7 @@ class DragDrop final
                     mTag = tag;
                 }
                 mItem = info->id;
-                mItemColor = fromInt(info->selectedLevel,
+                mItemColor = fromInt(info->customSelectedLevel,
                     ItemColor);
             }
         }

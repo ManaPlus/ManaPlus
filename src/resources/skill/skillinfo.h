@@ -29,6 +29,8 @@
 #include "enums/resources/skillowner.h"
 #include "enums/resources/skilltype.h"
 
+#include "enums/resources/skill/casttype.h"
+
 #include <string>
 #include <vector>
 #include <map>
@@ -57,7 +59,7 @@ struct SkillInfo final
     SkillModel *model;
     SkillData *data;
     int level;
-    int selectedLevel;
+    int customSelectedLevel;
     int skillLevelWidth;
     unsigned int id;
     int range;
@@ -67,6 +69,7 @@ struct SkillInfo final
     int cooldown;
     SkillType::SkillType type;
     SkillOwner::Type owner;
+    CastTypeT customCastType;
     Modifiable modifiable;
     Visible visible;
     Visible alwaysVisible;

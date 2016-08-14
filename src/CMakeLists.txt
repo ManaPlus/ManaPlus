@@ -1088,6 +1088,7 @@ SET(SRCS
     maingui.h
     enums/resources/map/blockmask.h
     enums/resources/map/blocktype.h
+    enums/resources/skill/casttype.h
     resources/map/location.h
     resources/map/map.cpp
     resources/map/map.h

@@ -46,6 +46,7 @@ SkillPopup::SkillPopup() :
     mSkillDesc(new TextBox(this)),
     mSkillEffect(new TextBox(this)),
     mSkillLevel(new TextBox(this)),
+    mSkillCastType(new TextBox(this)),
     mLastId(0U),
     mLastLevel(-1)
 {
@@ -68,6 +69,11 @@ SkillPopup::SkillPopup() :
     mSkillLevel->setPosition(0, 3 * fontHeight);
     mSkillLevel->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
         getThemeColor(ThemeColorId::POPUP_OUTLINE));
+
+    mSkillCastType->setEditable(false);
+    mSkillCastType->setPosition(0, 4 * fontHeight);
+    mSkillCastType->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
 }
 
 void SkillPopup::postInit()
@@ -77,6 +83,7 @@ void SkillPopup::postInit()
     add(mSkillDesc);
     add(mSkillEffect);
     add(mSkillLevel);
+    add(mSkillCastType);
 
     addMouseListener(this);
 }
@@ -136,6 +143,27 @@ void SkillPopup::show(const SkillInfo *const skill,
                 196);
         }
     }
+    std::string castStr;
+    switch (skill->customCastType)
+    {
+        case CastType::Default:
+        default:
+            castStr = _("Default");
+            break;
+        case CastType::Target:
+            castStr = _("Target");
+            break;
+        case CastType::Position:
+            castStr = _("Mouse position");
+            break;
+        case CastType::Self:
+            castStr = _("Self position");
+            break;
+    }
+    mSkillCastType->setTextWrapped(strprintf(
+        // TRANSLATORS: skill cast type
+        _("Cast type: %s"),
+        castStr.c_str()), 196);
 
     int minWidth = mSkillName->getWidth();
 
@@ -147,25 +175,32 @@ void SkillPopup::show(const SkillInfo *const skill,
         minWidth = mSkillEffect->getMinWidth();
     if (mSkillLevel->getMinWidth() > minWidth)
         minWidth = mSkillLevel->getMinWidth();
+    if (mSkillCastType->getMinWidth() > minWidth)
+        minWidth = mSkillCastType->getMinWidth();
 
     const int numRowsDesc = mSkillDesc->getNumberOfRows();
     const int numRowsEffect = mSkillEffect->getNumberOfRows();
     const int numRowsLevel = mSkillLevel->getNumberOfRows();
+    const int numRowsCast = mSkillCastType->getNumberOfRows();
     const int height = getFont()->getHeight();
 
     if (skill->skillEffect.empty())
     {
         setContentSize(minWidth,
-            (numRowsDesc + numRowsLevel + 1) * height);
+            (numRowsDesc + numRowsLevel + numRowsCast + 1) * height);
         mSkillLevel->setPosition(0, (numRowsDesc + 1) * height);
+        mSkillCastType->setPosition(0, (numRowsDesc + 2) * height);
     }
     else
     {
         setContentSize(minWidth,
-            (numRowsDesc + numRowsLevel + numRowsEffect + 1) * height);
+            (numRowsDesc + numRowsLevel + numRowsEffect + numRowsCast + 1) *
+            height);
         mSkillEffect->setPosition(0, (numRowsDesc + 1) * height);
         mSkillLevel->setPosition(0,
             (numRowsDesc + numRowsEffect + 1) * height);
+        mSkillCastType->setPosition(0,
+            (numRowsDesc + numRowsEffect + 2) * height);
     }
 
     mSkillDesc->setPosition(0, 1 * height);

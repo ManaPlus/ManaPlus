@@ -673,6 +673,8 @@ enumStart(InputAction)
     SET_EMOTE_TYPE,
     CAMERA_RESTORE,
     SHOW_SKILL_LEVELS,
+    SHOW_SKILL_TYPE,
+    SELECT_SKILL_TYPE,
     TOTAL
 }
 enumEnd(InputAction);

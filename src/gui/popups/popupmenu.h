@@ -165,6 +165,8 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showSkillLevelPopup(const SkillInfo *const info);
 
+        void showSkillTypePopup(const SkillInfo *const info);
+
         void showCraftPopup();
 
         void showEmoteType();

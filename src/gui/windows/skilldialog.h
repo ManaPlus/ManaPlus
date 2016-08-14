@@ -31,6 +31,8 @@
 #include "enums/resources/skillowner.h"
 #include "enums/resources/skilltype.h"
 
+#include "enums/resources/skill/casttype.h"
+
 #include "listeners/actionlistener.h"
 
 #include "utils/xml.h"
@@ -157,6 +159,9 @@ class SkillDialog final : public Window,
 
         void selectSkillLevel(const int skillId,
                               const int level);
+
+        void selectSkillCastType(const int skillId,
+                                 const CastTypeT type);
 
     private:
         void addSkillDuration(SkillInfo *const skill);

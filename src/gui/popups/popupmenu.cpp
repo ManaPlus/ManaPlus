@@ -2361,7 +2361,7 @@ void PopupMenu::showNpcDialogPopup(const BeingId npcId,
 
 void PopupMenu::showSkillPopup(const SkillInfo *const info)
 {
-    if (!info || info->level <= 1)
+    if (!info)
         return;
     setMousePos();
 
@@ -2373,10 +2373,17 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
 
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("Skill"));
-    mBrowserBox->addRow("/showskilllevels 'ITEMID'",
+    if (info->level > 1)
+    {
+        mBrowserBox->addRow("/showskilllevels 'ITEMID'",
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: set skill level
+            _("Skill level..."));
+    }
+    mBrowserBox->addRow("/showskilltypes 'ITEMID'",
         // TRANSLATORS: popup menu item
-        // TRANSLATORS: set skill level
-        _("Set skill level"));
+        // TRANSLATORS: set skill cast type
+        _("Skill cast type..."));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2414,6 +2421,48 @@ void PopupMenu::showSkillLevelMenu()
         // TRANSLATORS: popup menu item
         // TRANSLATORS: skill level
         _("Max level"));
+    mBrowserBox->addRow("##3---");
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(mX, mY);
+}
+
+void PopupMenu::showSkillTypePopup(const SkillInfo *const info)
+{
+    if (!info)
+        return;
+    setMousePos();
+
+    // using mItemId as skill id
+    mItemId = info->id;
+    // using mItemIndex as skill level
+    mItemIndex = info->level;
+
+    for (int f = 0; f < maxCards; f ++)
+        mItemCards[f] = 0;
+    mBrowserBox->clearRows();
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: skill cast type header
+    mBrowserBox->addRow(_("Select skill cast type"));
+    mBrowserBox->addRow(strprintf("/selectskilltype %d 0", mItemId),
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: skill cast type
+        _("Default"));
+    mBrowserBox->addRow(strprintf("/selectskilltype %d 1", mItemId),
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: skill cast type
+        _("Target"));
+    mBrowserBox->addRow(strprintf("/selectskilltype %d 2", mItemId),
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: skill cast type
+        _("Mouse position"));
+    mBrowserBox->addRow(strprintf("/selectskilltype %d 3", mItemId),
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: skill cast type
+        _("Self"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu

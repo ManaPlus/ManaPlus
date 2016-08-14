@@ -142,6 +142,8 @@ namespace Actions
     decHandler(mailTo);
     decHandler(adoptChild);
     decHandler(showSkillLevels);
+    decHandler(showSkillType);
+    decHandler(selectSkillType);
 }  // namespace Actions
 
 #undef decHandler

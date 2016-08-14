@@ -46,7 +46,7 @@ SkillInfo::SkillInfo() :
     model(nullptr),
     data(nullptr),
     level(0),
-    selectedLevel(0),
+    customSelectedLevel(0),
     skillLevelWidth(0),
     id(0),
     range(0),
@@ -56,6 +56,7 @@ SkillInfo::SkillInfo() :
     cooldown(0),
     type(SkillType::Unknown),
     owner(SkillOwner::Player),
+    customCastType(CastType::Default),
     modifiable(Modifiable_false),
     visible(Visible_false),
     alwaysVisible(Visible_false),
@@ -95,7 +96,7 @@ void SkillInfo::update()
     }
     else
     {
-        if (!selectedLevel)
+        if (!customSelectedLevel)
         {
             // TRANSLATORS: skill level
             skillLevel = strprintf(_("Lvl: %d"), baseLevel);
@@ -104,7 +105,7 @@ void SkillInfo::update()
         {
             // TRANSLATORS: skill level
             skillLevel = strprintf(_("Lvl: %d / %d"),
-                selectedLevel,
+                customSelectedLevel,
                 baseLevel);
         }
     }
@@ -153,8 +154,8 @@ void SkillInfo::update()
     }
 
     level = baseLevel;
-    if (selectedLevel > level)
-        selectedLevel = level;
+    if (customSelectedLevel > level)
+        customSelectedLevel = level;
 
     skillLevelWidth = -1;
 

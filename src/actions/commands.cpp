@@ -33,6 +33,8 @@
 #include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
 
+#include "enums/resources/skill/casttype.h"
+
 #include "gui/viewport.h"
 
 #include "gui/popups/popupmenu.h"
@@ -1590,6 +1592,33 @@ impHandler(showSkillLevels)
         return false;
     popupMenu->showSkillLevelPopup(skill);
     return true;
+}
+
+impHandler(showSkillType)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    const SkillInfo *restrict const skill = skillDialog->getSkill(
+        atoi(args.c_str()));
+    if (!skill)
+        return false;
+    popupMenu->showSkillTypePopup(skill);
+    return true;
+}
+
+impHandler(selectSkillType)
+{
+    int skill = 0;
+    int type = 0;
+
+    if (skillDialog && parse2Int(event.args, skill, type))
+    {
+        skillDialog->selectSkillCastType(skill,
+            static_cast<CastTypeT>(type));
+        return true;
+    }
+    return false;
 }
 
 }  // namespace Actions

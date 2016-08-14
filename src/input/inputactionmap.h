@@ -5527,6 +5527,18 @@ static const InputActionData inputActionData
         "showskilllevels",
         UseArgs_true,
         Protected_true},
+    {"keyShowskilltype",
+        defaultAction(&Actions::showSkillType),
+        InputCondition::INGAME,
+        "showskilltypes",
+        UseArgs_true,
+        Protected_true},
+    {"keySelectSkillType",
+        defaultAction(&Actions::selectSkillType),
+        InputCondition::INGAME,
+        "selectskilltype",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -66,6 +66,7 @@ class SkillPopup final : public Popup
         TextBox *mSkillDesc A_NONNULLPOINTER;
         TextBox *mSkillEffect A_NONNULLPOINTER;
         TextBox *mSkillLevel A_NONNULLPOINTER;
+        TextBox *mSkillCastType A_NONNULLPOINTER;
         unsigned int mLastId;
         int mLastLevel;
 };

@@ -176,7 +176,7 @@ void SkillDialog::action(const ActionEvent &event)
             const SkillInfo *const info = tab->getSelectedInfo();
             useSkill(info,
                 fromBool(config.getBoolValue("skillAutotarget"), AutoTarget),
-                info->selectedLevel);
+                info->customSelectedLevel);
         }
     }
     else if (eventId == "close")
@@ -908,8 +908,18 @@ void SkillDialog::selectSkillLevel(const int skillId,
     if (!info)
         return;
     if (level > info->level)
-        info->selectedLevel = info->level;
+        info->customSelectedLevel = info->level;
     else
-        info->selectedLevel = level;
+        info->customSelectedLevel = level;
+    info->update();
+}
+
+void SkillDialog::selectSkillCastType(const int skillId,
+                                      const CastTypeT type)
+{
+    SkillInfo *const info = getSkill(skillId);
+    if (!info)
+        return;
+    info->customCastType = type;
     info->update();
 }
