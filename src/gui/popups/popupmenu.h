@@ -188,6 +188,8 @@ class PopupMenu final : public Popup, public LinkHandler
     private:
         void setMousePos();
 
+        void setMousePos2();
+
         void addPlayerRelation(const std::string &name);
 
         void addFollow();

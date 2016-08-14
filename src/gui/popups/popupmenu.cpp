@@ -482,6 +482,22 @@ void PopupMenu::setMousePos()
     }
 }
 
+void PopupMenu::setMousePos2()
+{
+    if (mX == 0 && mY == 0)
+    {
+        if (viewport)
+        {
+            mX = viewport->mMouseX;
+            mY = viewport->mMouseY;
+        }
+        else
+        {
+            Gui::getMouseState(mX, mY);
+        }
+    }
+}
+
 void PopupMenu::showPopup(const int x, const int y,
                           const std::vector<ActorSprite*> &beings)
 {
@@ -2392,7 +2408,7 @@ void PopupMenu::showSkillLevelPopup(const SkillInfo *const info)
 {
     if (!info)
         return;
-    setMousePos();
+    setMousePos2();
 
     // using mItemId as skill id
     mItemId = info->id;
@@ -2430,7 +2446,7 @@ void PopupMenu::showSkillTypePopup(const SkillInfo *const info)
 {
     if (!info)
         return;
-    setMousePos();
+    setMousePos2();
 
     // using mItemId as skill id
     mItemId = info->id;
