@@ -77,7 +77,6 @@ stdout.txt
 include/*
 lib/*
 packaging/windows/upx/*
-data/music/*.ogg
 
 # files created by Qt Creator
 mana.creator.user*
