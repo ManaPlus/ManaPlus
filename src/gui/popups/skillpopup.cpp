@@ -152,15 +152,19 @@ void SkillPopup::show(const SkillInfo *const skill,
     {
         case CastType::Default:
         default:
+            // TRANSLATORS: skill cast type
             castStr = _("Default");
             break;
         case CastType::Target:
+            // TRANSLATORS: skill cast type
             castStr = _("Target");
             break;
         case CastType::Position:
+            // TRANSLATORS: skill cast type
             castStr = _("Mouse position");
             break;
         case CastType::Self:
+            // TRANSLATORS: skill cast type
             castStr = _("Self position");
             break;
     }
