@@ -47,6 +47,7 @@ SkillPopup::SkillPopup() :
     mSkillEffect(new TextBox(this)),
     mSkillLevel(new TextBox(this)),
     mSkillCastType(new TextBox(this)),
+    mCastType(CastType::Default),
     mLastId(0U),
     mLastLevel(-1)
 {
@@ -93,18 +94,21 @@ SkillPopup::~SkillPopup()
 }
 
 void SkillPopup::show(const SkillInfo *const skill,
-                      const int level)
+                      const int level,
+                      const CastTypeT castType)
 {
     if (!skill ||
         !skill->data ||
         (skill->id == mLastId &&
-        level == mLastLevel))
+        level == mLastLevel &&
+        castType == mCastType))
     {
         return;
     }
 
     mLastId = skill->id;
     mLastLevel = level;
+    mCastType = castType;
 
     mSkillName->setCaption(skill->data->dispName);
     mSkillName->adjustSize();
@@ -144,7 +148,7 @@ void SkillPopup::show(const SkillInfo *const skill,
         }
     }
     std::string castStr;
-    switch (skill->customCastType)
+    switch (castType)
     {
         case CastType::Default:
         default:

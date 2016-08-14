@@ -73,6 +73,9 @@ class ItemShortcut final
         ItemColor getItemColor(const int index) const A_WARN_UNUSED
         { return mItemColors[index]; }
 
+        std::string getItemData(const int index) const A_WARN_UNUSED
+        { return mItemData[index]; }
+
         /**
          * Returns the amount of shortcut items.
          */

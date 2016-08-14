@@ -200,7 +200,8 @@ class SkillListBox final : public ListBox
             if (!skill)
                 return;
             skillPopup->show(skill,
-                skill->customSelectedLevel);
+                skill->customSelectedLevel,
+                skill->customCastType);
             skillPopup->position(viewport->mMouseX,
                 viewport->mMouseY);
         }

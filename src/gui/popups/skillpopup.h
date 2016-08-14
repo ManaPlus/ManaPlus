@@ -26,6 +26,8 @@
 
 #include "gui/widgets/popup.h"
 
+#include "enums/resources/skill/casttype.h"
+
 class Label;
 class TextBox;
 
@@ -55,7 +57,8 @@ class SkillPopup final : public Popup
          * Sets the info to be displayed given a particular item.
          */
         void show(const SkillInfo *const skill,
-                  const int level);
+                  const int level,
+                  const CastTypeT type);
 
         void mouseMoved(MouseEvent &event) override final;
 
@@ -67,6 +70,7 @@ class SkillPopup final : public Popup
         TextBox *mSkillEffect A_NONNULLPOINTER;
         TextBox *mSkillLevel A_NONNULLPOINTER;
         TextBox *mSkillCastType A_NONNULLPOINTER;
+        CastTypeT mCastType;
         unsigned int mLastId;
         int mLastLevel;
 };
