@@ -73,6 +73,10 @@ class ItemShortcut final
         ItemColor getItemColor(const int index) const A_WARN_UNUSED
         { return mItemColors[index]; }
 
+        void setItemData(const int index,
+                         const std::string &data)
+        { mItemData[index] = data; }
+
         std::string getItemData(const int index) const A_WARN_UNUSED
         { return mItemData[index]; }
 

@@ -432,12 +432,15 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
                     = skillDialog->getSkillByItem(itemId);
                 if (skill)
                 {
+                    const std::string itemData = selShortcut->getItemData(
+                        index);
                     selShortcut->removeItem(index);
                     dragDrop.dragSkill(skill,
                         DragDropSource::Shortcuts,
                         index);
                     dragDrop.setItem(itemId);
                     dragDrop.setItemColor(itemColor);
+                    dragDrop.setItemData(itemData);
                 }
                 else
                 {
@@ -522,6 +525,8 @@ void ItemShortcutContainer::mouseReleased(MouseEvent &event)
             }
             else
             {
+                selShortcut->setItemData(index,
+                    dragDrop.getItemData());
                 selShortcut->setItem(index, dragDrop.getItem(),
                     dragDrop.getItemColor());
             }

@@ -220,6 +220,9 @@ class SkillListBox final : public ListBox
                             return;
                         dragDrop.dragSkill(skill, DragDropSource::Skills);
                         dragDrop.setItem(skill->id + SKILL_MIN_ID);
+                        // +++ using only cast type in data
+                        dragDrop.setItemData(toString(CAST_S32(
+                            skill->customCastType)));
                     }
                     ListBox::mouseDragged(event);
                 }

@@ -42,6 +42,7 @@ class DragDrop final
                  const DragDropSourceT source) :
             mItemImage(item ? item->getImage() : nullptr),
             mText(),
+            mItemData(),
             mSource(source),
             mItem(item ? item->getId() : 0),
             mSelItem(0),
@@ -73,6 +74,12 @@ class DragDrop final
         Image *getItemImage()
         { return mItemImage; }
 
+        void setItemData(const std::string &data)
+        { mItemData = data; }
+
+        std::string getItemData()
+        { return mItemData; }
+
         DragDropSourceT getSource() const
         { return mSource; }
 
@@ -83,6 +90,7 @@ class DragDrop final
             if (mItemImage)
                 mItemImage->decRef();
 
+            mItemData.clear();
             mText.clear();
             if (item)
             {
@@ -113,6 +121,7 @@ class DragDrop final
                 mItemImage->decRef();
             mItem = 0;
             mItemColor = ItemColor_one;
+            mItemData.clear();
 
             if (command)
             {
@@ -151,6 +160,7 @@ class DragDrop final
             mItemImage = nullptr;
             mSource = DragDropSource::Empty;
             mTag = -1;
+            mItemData.clear();
             if (info)
             {
                 const SkillData *const data = info->data;
@@ -178,6 +188,7 @@ class DragDrop final
             mItemImage = nullptr;
             mSource = DragDropSource::Empty;
             mText.clear();
+            mItemData.clear();
             mTag = -1;
         }
 
@@ -241,6 +252,7 @@ class DragDrop final
     private:
         Image *mItemImage;
         std::string mText;
+        std::string mItemData;
         DragDropSourceT mSource;
         int mItem;
         int mSelItem;
