@@ -73,7 +73,8 @@ void ItemShortcut::load(const bool oldConfig)
         name = std::string("shortcut").append(toString(mNumber)).append("_");
         color = std::string("shortcutColor").append(
             toString(mNumber)).append("_");
-        data = std::string("shortcutData").append(toString(mNumber)).append("_");
+        data = std::string("shortcutData").append(
+            toString(mNumber)).append("_");
     }
     else
     {
@@ -104,7 +105,8 @@ void ItemShortcut::save() const
         name = std::string("shortcut").append(toString(mNumber)).append("_");
         color = std::string("shortcutColor").append(
             toString(mNumber)).append("_");
-        data = std::string("shortcutData").append(toString(mNumber)).append("_");
+        data = std::string("shortcutData").append(
+            toString(mNumber)).append("_");
     }
     else
     {
