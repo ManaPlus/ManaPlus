@@ -2373,13 +2373,10 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
 
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("Skill"));
-    if (info->level > 1)
-    {
-        mBrowserBox->addRow("/showskilllevels 'ITEMID'",
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: set skill level
-            _("Skill level..."));
-    }
+    mBrowserBox->addRow("/showskilllevels 'ITEMID'",
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: set skill level
+        _("Skill level..."));
     mBrowserBox->addRow("/showskilltypes 'ITEMID'",
         // TRANSLATORS: popup menu item
         // TRANSLATORS: set skill cast type
@@ -2393,7 +2390,7 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
 
 void PopupMenu::showSkillLevelPopup(const SkillInfo *const info)
 {
-    if (!info || info->level <= 1)
+    if (!info)
         return;
     setMousePos();
 
