@@ -149,8 +149,8 @@ class SkillDialog final : public Window,
         static void useSkill(const SkillInfo *const info,
                              const AutoTarget autoTarget,
                              int level,
-                             const bool withText = false,
-                             const std::string &text = "");
+                             const bool withText,
+                             const std::string &text);
 
         SkillData *getSkillData(const int id) const;
 

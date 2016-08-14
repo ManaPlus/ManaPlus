@@ -176,7 +176,9 @@ void SkillDialog::action(const ActionEvent &event)
             const SkillInfo *const info = tab->getSelectedInfo();
             useSkill(info,
                 fromBool(config.getBoolValue("skillAutotarget"), AutoTarget),
-                info->customSelectedLevel);
+                info->customSelectedLevel,
+                info->useTextParameter,
+                std::string());
         }
     }
     else if (eventId == "close")
@@ -626,7 +628,7 @@ void SkillDialog::useItem(const int itemId,
     const SkillInfo *const info = (*it).second;
     if (data.empty())
     {
-        useSkill(info, autoTarget, level);
+        useSkill(info, autoTarget, level, false, std::string());
     }
     else if (data.size() > 1)
     {
