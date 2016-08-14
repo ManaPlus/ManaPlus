@@ -2414,15 +2414,13 @@ void PopupMenu::showSkillLevelPopup(const SkillInfo *const info)
     mItemId = info->id;
     // using mItemIndex as skill level
     mItemIndex = info->level;
-    showSkillLevelMenu();
-}
 
-void PopupMenu::showSkillLevelMenu()
-{
     for (int f = 0; f < maxCards; f ++)
         mItemCards[f] = 0;
     mBrowserBox->clearRows();
-    // mItemIndex as skill level
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: skill level header
+    mBrowserBox->addRow(_("Select skill level"));
     for (int f = 1; f <= mItemIndex; f ++)
     {
         mBrowserBox->addRow(strprintf("/selectskilllevel %d %d", mItemId, f),

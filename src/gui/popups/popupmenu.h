@@ -249,8 +249,6 @@ class PopupMenu final : public Popup, public LinkHandler
 
         bool addBeingMenu();
 
-        void showSkillLevelMenu();
-
         BrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
 
