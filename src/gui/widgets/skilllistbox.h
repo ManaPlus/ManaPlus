@@ -40,6 +40,7 @@
 #include "gui/popups/skillpopup.h"
 
 #include "utils/delete2.h"
+#include "utils/stringutils.h"
 
 #include "render/graphics.h"
 
