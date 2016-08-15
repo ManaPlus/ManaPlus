@@ -179,13 +179,23 @@ void Setup_Audio::apply()
     if (config.getBoolValue("sound"))
     {
         soundManager.init();
-        if (viewport && config.getBoolValue("playMusic"))
+        if (config.getBoolValue("playMusic"))
         {
-            const Map *const map = viewport->getMap();
-            if (map)
-            {
-                soundManager.playMusic(map->getMusicFile(),
-                    SkipError_false);
+            if (viewport)
+            {  // in game
+                const Map *const map = viewport->getMap();
+                if (map)
+                {
+                    soundManager.playMusic(map->getMusicFile(),
+                        SkipError_false);
+                }
+            }
+            else
+            {  // not in game
+                soundManager.playMusic(branding.getValue(
+                    "loginMusic",
+                    "keprohm.ogg"),
+                    SkipError_true);
             }
         }
         else
