@@ -1135,6 +1135,7 @@ impHandler(skill)
         if (sz > 2)
             text = vect[2];
     }
+    // +++ add here also cast type and offsets
     if (text.empty())
     {
         skillDialog->useSkill(skillId,
@@ -1142,7 +1143,9 @@ impHandler(skill)
             level,
             false,
             "",
-            CastType::Default);
+            CastType::Default,
+            0,
+            0);
     }
     else
     {
@@ -1151,7 +1154,9 @@ impHandler(skill)
             level,
             true,
             text,
-            CastType::Default);
+            CastType::Default,
+            0,
+            0);
     }
     return true;
 }

@@ -179,7 +179,9 @@ void SkillDialog::action(const ActionEvent &event)
                 info->customSelectedLevel,
                 info->useTextParameter,
                 std::string(),
-                info->customCastType);
+                info->customCastType,
+                info->customOffsetX,
+                info->customOffsetY);
         }
     }
     else if (eventId == "close")
@@ -628,17 +630,30 @@ void SkillDialog::useItem(const int itemId,
 
     const SkillInfo *const info = (*it).second;
     CastTypeT castType = CastType::Default;
+    int offsetX = 0;
+    int offsetY = 0;
+
     if (!data.empty())
     {
-        // +++ read only cast type from data
-        castType = static_cast<CastTypeT>(atoi(data.c_str()));
+        std::vector<int> vect;
+        splitToIntVector(vect, data, ' ');
+        const size_t sz = vect.size();
+        if (sz > 0)
+            castType = static_cast<CastTypeT>(vect[0]);
+        if (sz > 2)
+        {
+            offsetX = vect[1];
+            offsetY = vect[2];
+        }
     }
     useSkill(info,
         autoTarget,
         level,
         false,
         std::string(),
-        castType);
+        castType,
+        offsetX,
+        offsetY);
 }
 
 void SkillDialog::updateTabSelection()
@@ -751,7 +766,9 @@ void SkillDialog::useSkill(const int skillId,
                            int level,
                            const bool withText,
                            const std::string &text,
-                           CastTypeT castType)
+                           CastTypeT castType,
+                           const int offsetX,
+                           const int offsetY)
 {
     SkillInfo *const info = skillDialog->getSkill(skillId);
     if (!info)
@@ -763,7 +780,9 @@ void SkillDialog::useSkill(const int skillId,
         level,
         withText,
         text,
-        castType);
+        castType,
+        offsetX,
+        offsetY);
 }
 
 void SkillDialog::useSkill(const SkillInfo *const info,
@@ -771,7 +790,9 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                            int level,
                            const bool withText,
                            const std::string &text,
-                           const CastTypeT castType)
+                           const CastTypeT castType,
+                           const int offsetX,
+                           const int offsetY)
 {
     if (!info || !localPlayer)
         return;
@@ -793,7 +814,9 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 autoTarget,
                 level,
                 withText,
-                text);
+                text,
+                offsetX,
+                offsetY);
             break;
         case CastType::Target:
         {
@@ -803,7 +826,9 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 level,
                 withText,
                 text,
-                being);
+                being,
+                offsetX,
+                offsetY);
             break;
         }
         case CastType::Position:
@@ -816,7 +841,9 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 withText,
                 text,
                 x,
-                y);
+                y,
+                offsetX,
+                offsetY);
             break;
         }
         case CastType::Self:
@@ -826,7 +853,9 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                 level,
                 withText,
                 text,
-                localPlayer);
+                localPlayer,
+                offsetX,
+                offsetY);
             break;
     }
 }
@@ -836,7 +865,9 @@ void SkillDialog::useSkillTarget(const SkillInfo *const info,
                                  int level,
                                  const bool withText,
                                  const std::string &text,
-                                 const Being *being)
+                                 const Being *being,
+                                 int offsetX,
+                                 int offsetY)
 {
     SkillType::SkillType type = info->type;
     if ((type & SkillType::Attack) != 0)
@@ -874,8 +905,9 @@ void SkillDialog::useSkillTarget(const SkillInfo *const info,
     {
         if (!being)
             return;
-        const int x = being->getTileX();
-        const int y = being->getTileY();
+        being->fixDirectionOffsets(offsetX, offsetY);
+        const int x = being->getTileX() + offsetX;
+        const int y = being->getTileY() + offsetY;
         if (info->useTextParameter)
         {
             if (withText)
@@ -931,26 +963,30 @@ void SkillDialog::useSkillPosition(const SkillInfo *const info,
                                    const bool withText,
                                    const std::string &text,
                                    const int x,
-                                   const int y)
+                                   const int y,
+                                   int offsetX,
+                                   int offsetY)
 {
     SkillType::SkillType type = info->type;
     if ((type & SkillType::Ground) != 0)
     {
+        localPlayer->fixDirectionOffsets(offsetX, offsetY);
         if (info->useTextParameter)
         {
             if (withText)
             {
                 skillHandler->usePos(info->id,
                     level,
-                    x, y,
+                    x + offsetX,
+                    y + offsetY,
                     text);
             }
             else
             {
                 const SkillData *data = info->getData1(level);
                 textSkillListener.setSkill(info->id,
-                    x,
-                    y,
+                    x + offsetX,
+                    y + offsetY,
                     level);
                 TextDialog *const dialog = CREATEWIDGETR(TextDialog,
                     // TRANSLATORS: text skill dialog header
@@ -968,7 +1004,8 @@ void SkillDialog::useSkillPosition(const SkillInfo *const info,
         {
             skillHandler->usePos(info->id,
                 level,
-                x, y);
+                x + offsetX,
+                y + offsetY);
         }
     }
     else if ((type & SkillType::Support) != 0)
@@ -1008,7 +1045,9 @@ void SkillDialog::useSkillDefault(const SkillInfo *const info,
                                   const AutoTarget autoTarget,
                                   int level,
                                   const bool withText,
-                                  const std::string &text)
+                                  const std::string &text,
+                                  int offsetX,
+                                  int offsetY)
 {
     SkillType::SkillType type = info->type;
     if ((type & SkillType::Attack) != 0)
@@ -1049,6 +1088,9 @@ void SkillDialog::useSkillDefault(const SkillInfo *const info,
         int x = 0;
         int y = 0;
         viewport->getMouseTile(x, y);
+        localPlayer->fixDirectionOffsets(offsetX, offsetY);
+        x += offsetX;
+        y += offsetY;
         if (info->useTextParameter)
         {
             if (withText)

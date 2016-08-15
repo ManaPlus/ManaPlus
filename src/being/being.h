@@ -1068,6 +1068,9 @@ class Being notfinal : public ActorSprite,
                      const int range,
                      const int waitTimeTicks);
 
+        void fixDirectionOffsets(int &offsetX,
+                                 int &offsetY) const;
+
     protected:
         void drawPlayerSpriteAt(Graphics *restrict const graphics,
                                 const int x,

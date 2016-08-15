@@ -5422,3 +5422,30 @@ void Being::stopCast(const bool b)
     if (b && mAction == BeingAction::CAST)
         setAction(BeingAction::STAND, 0);
 }
+
+void Being::fixDirectionOffsets(int &offsetX,
+                                int &offsetY) const
+{
+    const uint8_t dir = mDirection;
+    if (dir & BeingDirection::DOWN)
+    {
+        // do nothing
+    }
+    else if (dir & BeingDirection::UP)
+    {
+        offsetX = -offsetX;
+        offsetY = -offsetY;
+    }
+    else if (dir & BeingDirection::LEFT)
+    {
+        const int tmp = offsetY;
+        offsetY = offsetX;
+        offsetX = -tmp;
+    }
+    else if (dir & BeingDirection::RIGHT)
+    {
+        const int tmp = offsetY;
+        offsetY = -offsetX;
+        offsetX = tmp;
+    }
+}

@@ -145,14 +145,18 @@ class SkillDialog final : public Window,
                              int level,
                              const bool withText,
                              const std::string &text,
-                             CastTypeT castType);
+                             CastTypeT castType,
+                             const int offsetX,
+                             const int offsetY);
 
         static void useSkill(const SkillInfo *const info,
                              const AutoTarget autoTarget,
                              int level,
                              const bool withText,
                              const std::string &text,
-                             const CastTypeT castType);
+                             const CastTypeT castType,
+                             const int offsetX,
+                             const int offsetY);
 
         SkillData *getSkillData(const int id) const;
 
@@ -176,21 +180,27 @@ class SkillDialog final : public Window,
                                     const AutoTarget autoTarget,
                                     int level,
                                     const bool withText,
-                                    const std::string &text);
+                                    const std::string &text,
+                                    int offsetX,
+                                    int offsetY);
 
         static void useSkillTarget(const SkillInfo *const info,
                                    const AutoTarget autoTarget,
                                    int level,
                                    const bool withText,
                                    const std::string &text,
-                                   const Being *being);
+                                   const Being *being,
+                                   int offsetX,
+                                   int offsetY);
 
         static void useSkillPosition(const SkillInfo *const info,
                                      int level,
                                      const bool withText,
                                      const std::string &text,
                                      const int x,
-                                     const int y);
+                                     const int y,
+                                     int offsetX,
+                                     int offsetY);
 
         void addSkillDuration(SkillInfo *const skill);
 
