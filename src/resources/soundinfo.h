@@ -21,7 +21,7 @@
 #ifndef RESOURCES_SOUNDINFO_H
 #define RESOURCES_SOUNDINFO_H
 
-#include "enums/resources/itemsoundevent.h"
+#include "enums/resources/item/itemsoundevent.h"
 
 #include <map>
 #include <string>

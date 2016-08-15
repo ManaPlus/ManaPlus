@@ -21,7 +21,7 @@
 #ifndef ITEMSOUNDMANAGER_H
 #define ITEMSOUNDMANAGER_H
 
-#include "enums/resources/itemsoundevent.h"
+#include "enums/resources/item/itemsoundevent.h"
 
 #include "localconsts.h"
 

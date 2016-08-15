@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_RESOURCES_ITEMSOUNDEVENT_H
-#define ENUMS_RESOURCES_ITEMSOUNDEVENT_H
+#ifndef ENUMS_RESOURCES_ITEM_ITEMSOUNDEVENT_H
+#define ENUMS_RESOURCES_ITEM_ITEMSOUNDEVENT_H
 
 namespace ItemSoundEvent
 {
@@ -44,4 +44,4 @@ namespace ItemSoundEvent
     };
 }  // namespace ItemSoundEvent
 
-#endif  // ENUMS_RESOURCES_ITEMSOUNDEVENT_H
+#endif  // ENUMS_RESOURCES_ITEM_ITEMSOUNDEVENT_H
