@@ -1287,7 +1287,7 @@ manaplus_SOURCES += main.cpp \
 	      enums/resources/imagetype.h \
 	      enums/resources/item/itemdbtype.h \
 	      enums/resources/item/itemsoundevent.h \
-	      enums/resources/itemtype.h \
+	      enums/resources/item/itemtype.h \
 	      resources/itemtypemap.h \
 	      resources/itemtypemapdata.h \
 	      resources/mapinfo.h \
