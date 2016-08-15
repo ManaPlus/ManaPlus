@@ -47,6 +47,8 @@ SkillInfo::SkillInfo() :
     data(nullptr),
     level(0),
     customSelectedLevel(0),
+    customOffsetX(0),
+    customOffsetY(0),
     skillLevelWidth(0),
     id(0),
     range(0),

@@ -59,6 +59,8 @@ struct SkillInfo final
     SkillData *data;
     int level;
     int customSelectedLevel;
+    int customOffsetX;
+    int customOffsetY;
     int skillLevelWidth;
     unsigned int id;
     int range;

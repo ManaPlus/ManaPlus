@@ -2397,10 +2397,65 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
         // TRANSLATORS: popup menu item
         // TRANSLATORS: set skill cast type
         _("Skill cast type..."));
+    mBrowserBox->addRow("/showskilloffsetx 'ITEMID'",
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: set skill cast offset by x
+        _("Skill offset by x..."));
+    mBrowserBox->addRow("/showskilloffsety 'ITEMID'",
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: set skill cast offset by y
+        _("Skill offset by y..."));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
 
+    showPopup(mX, mY);
+}
+
+void PopupMenu::showSkillOffsetPopup(const SkillInfo *const info,
+                                     const bool isOffsetX)
+{
+    if (!info)
+        return;
+    setMousePos2();
+
+    // using mItemId as skill id
+    mItemId = info->id;
+    // using mItemIndex as skill level
+    mItemIndex = info->level;
+    mBrowserBox->clearRows();
+    char letter = ' ';
+
+    if (isOffsetX)
+    {
+        // TRANSLATORS: popup menu header
+        mBrowserBox->addRow(_("Skill cast offset by x"));
+        letter = 'x';
+    }
+    else
+    {
+        // TRANSLATORS: popup menu header
+        mBrowserBox->addRow(_("Skill cast offset by y"));
+        letter = 'y';
+    }
+    for (int f = -9; f <= 9; f ++)
+    {
+        const std::string command = strprintf(
+            "/setskilloffset%c 'ITEMID' %d", letter, f);
+        if (f == 0)
+        {
+            mBrowserBox->addRow(command,
+                strprintf("%d", f).c_str());
+        }
+        else
+        {
+            mBrowserBox->addRow(command,
+                strprintf("%+d", f).c_str());
+        }
+    }
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
     showPopup(mX, mY);
 }
 

@@ -144,6 +144,10 @@ namespace Actions
     decHandler(showSkillLevels);
     decHandler(showSkillType);
     decHandler(selectSkillType);
+    decHandler(showSkillOffsetX);
+    decHandler(showSkillOffsetY);
+    decHandler(setSkillOffsetX);
+    decHandler(setSkillOffsetY);
 }  // namespace Actions
 
 #undef decHandler

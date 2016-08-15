@@ -1621,4 +1621,56 @@ impHandler(selectSkillType)
     return false;
 }
 
+impHandler(showSkillOffsetX)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    const SkillInfo *restrict const skill = skillDialog->getSkill(
+        atoi(args.c_str()));
+    if (!skill)
+        return false;
+    popupMenu->showSkillOffsetPopup(skill, true);
+    return true;
+}
+
+impHandler(showSkillOffsetY)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    const SkillInfo *restrict const skill = skillDialog->getSkill(
+        atoi(args.c_str()));
+    if (!skill)
+        return false;
+    popupMenu->showSkillOffsetPopup(skill, false);
+    return true;
+}
+
+impHandler(setSkillOffsetX)
+{
+    int skill = 0;
+    int offset = 0;
+
+    if (skillDialog && parse2Int(event.args, skill, offset))
+    {
+        skillDialog->setSkillOffsetX(skill, offset);
+        return true;
+    }
+    return false;
+}
+
+impHandler(setSkillOffsetY)
+{
+    int skill = 0;
+    int offset = 0;
+
+    if (skillDialog && parse2Int(event.args, skill, offset))
+    {
+        skillDialog->setSkillOffsetY(skill, offset);
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

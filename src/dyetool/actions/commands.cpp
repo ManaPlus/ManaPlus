@@ -144,5 +144,9 @@ impHandlerVoid(adoptChild)
 impHandlerVoid(showSkillLevels)
 impHandlerVoid(showSkillType)
 impHandlerVoid(selectSkillType)
+impHandlerVoid(showSkillOffsetX)
+impHandlerVoid(showSkillOffsetY)
+impHandlerVoid(setSkillOffsetX)
+impHandlerVoid(setSkillOffsetY)
 
 }  // namespace Actions

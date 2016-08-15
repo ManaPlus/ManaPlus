@@ -675,6 +675,10 @@ enumStart(InputAction)
     SHOW_SKILL_LEVELS,
     SHOW_SKILL_TYPE,
     SELECT_SKILL_TYPE,
+    SHOW_SKILL_OFFSET_X,
+    SHOW_SKILL_OFFSET_Y,
+    SET_SKILL_OFFSET_X,
+    SET_SKILL_OFFSET_Y,
     TOTAL
 }
 enumEnd(InputAction);

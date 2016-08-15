@@ -1161,3 +1161,23 @@ void SkillDialog::selectSkillCastType(const int skillId,
     info->customCastType = type;
     info->update();
 }
+
+void SkillDialog::setSkillOffsetX(const int skillId,
+                                  const int offset)
+{
+    SkillInfo *const info = getSkill(skillId);
+    if (!info)
+        return;
+    info->customOffsetX = offset;
+    info->update();
+}
+
+void SkillDialog::setSkillOffsetY(const int skillId,
+                                  const int offset)
+{
+    SkillInfo *const info = getSkill(skillId);
+    if (!info)
+        return;
+    info->customOffsetY = offset;
+    info->update();
+}

@@ -165,6 +165,12 @@ class SkillDialog final : public Window,
         void selectSkillCastType(const int skillId,
                                  const CastTypeT type);
 
+        void setSkillOffsetX(const int skillId,
+                             const int offset);
+
+        void setSkillOffsetY(const int skillId,
+                             const int offset);
+
     private:
         static void useSkillDefault(const SkillInfo *const info,
                                     const AutoTarget autoTarget,
