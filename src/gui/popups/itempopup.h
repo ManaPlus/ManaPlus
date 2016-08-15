@@ -24,7 +24,7 @@
 #ifndef GUI_POPUPS_ITEMPOPUP_H
 #define GUI_POPUPS_ITEMPOPUP_H
 
-#include "enums/resources/itemdbtype.h"
+#include "enums/resources/item/itemdbtype.h"
 
 #include "enums/simpletypes/itemcolor.h"
 
