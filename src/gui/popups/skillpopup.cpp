@@ -49,7 +49,9 @@ SkillPopup::SkillPopup() :
     mSkillCastType(new TextBox(this)),
     mCastType(CastType::Default),
     mLastId(0U),
-    mLastLevel(-1)
+    mLastLevel(-1),
+    mOffsetX(0),
+    mOffsetY(0)
 {
     mSkillName->setFont(boldFont);
     mSkillName->setPosition(0, 0);
@@ -95,13 +97,17 @@ SkillPopup::~SkillPopup()
 
 void SkillPopup::show(const SkillInfo *const skill,
                       const int level,
-                      const CastTypeT castType)
+                      const CastTypeT castType,
+                      const int offsetX,
+                      const int offsetY)
 {
     if (!skill ||
         !skill->data ||
         (skill->id == mLastId &&
         level == mLastLevel &&
-        castType == mCastType))
+        castType == mCastType &&
+        offsetX == mOffsetX &&
+        offsetY == mOffsetY))
     {
         return;
     }
@@ -109,6 +115,8 @@ void SkillPopup::show(const SkillInfo *const skill,
     mLastId = skill->id;
     mLastLevel = level;
     mCastType = castType;
+    mOffsetX = offsetX;
+    mOffsetY = offsetY;
 
     mSkillName->setCaption(skill->data->dispName);
     mSkillName->adjustSize();
@@ -168,12 +176,12 @@ void SkillPopup::show(const SkillInfo *const skill,
             castStr = _("Self position");
             break;
     }
-    if (skill->customOffsetX != 0 ||
-        skill->customOffsetY != 0)
+    if (offsetX != 0 ||
+        offsetY != 0)
     {
         castStr.append(strprintf(" (%+d,%+d)",
-            skill->customOffsetX,
-            skill->customOffsetY));
+            offsetX,
+            offsetY));
     }
     mSkillCastType->setTextWrapped(strprintf(
         // TRANSLATORS: skill cast type
@@ -234,4 +242,7 @@ void SkillPopup::reset()
 {
     mLastId = 0;
     mLastLevel = 0;
+    mCastType = CastType::Default;
+    mOffsetX = 0;
+    mOffsetY = 0;
 }

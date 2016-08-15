@@ -599,16 +599,28 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         if (!skill)
             return;
 
-        // +++ for now from data only get cast type
         const std::string data = selShortcut->getItemData(index);
         CastTypeT castType = CastType::Default;
+        int offsetX = 0;
+        int offsetY = 0;
         if (!data.empty())
         {
-            castType = static_cast<CastTypeT>(atoi(data.c_str()));
+            std::vector<int> vect;
+            splitToIntVector(vect, data, ' ');
+            const size_t sz = vect.size();
+            if (sz > 0)
+                castType = static_cast<CastTypeT>(vect[0]);
+            if (sz > 2)
+            {
+                offsetX = vect[1];
+                offsetY = vect[2];
+            }
         }
         skillPopup->show(skill,
             toInt(itemColor, int),
-            castType);
+            castType,
+            offsetX,
+            offsetY);
         skillPopup->position(viewport->mMouseX,
             viewport->mMouseY);
     }

@@ -58,7 +58,9 @@ class SkillPopup final : public Popup
          */
         void show(const SkillInfo *const skill,
                   const int level,
-                  const CastTypeT type);
+                  const CastTypeT type,
+                  const int offsetX,
+                  const int offsetY);
 
         void mouseMoved(MouseEvent &event) override final;
 
@@ -73,6 +75,8 @@ class SkillPopup final : public Popup
         CastTypeT mCastType;
         unsigned int mLastId;
         int mLastLevel;
+        int mOffsetX;
+        int mOffsetY;
 };
 
 extern SkillPopup *skillPopup;

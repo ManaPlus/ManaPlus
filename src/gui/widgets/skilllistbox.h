@@ -202,7 +202,9 @@ class SkillListBox final : public ListBox
                 return;
             skillPopup->show(skill,
                 skill->customSelectedLevel,
-                skill->customCastType);
+                skill->customCastType,
+                skill->customOffsetX,
+                skill->customOffsetY);
             skillPopup->position(viewport->mMouseX,
                 viewport->mMouseY);
         }
@@ -221,9 +223,10 @@ class SkillListBox final : public ListBox
                             return;
                         dragDrop.dragSkill(skill, DragDropSource::Skills);
                         dragDrop.setItem(skill->id + SKILL_MIN_ID);
-                        // +++ using only cast type in data
-                        dragDrop.setItemData(toString(CAST_S32(
-                            skill->customCastType)));
+                        dragDrop.setItemData(strprintf("%d %d %d",
+                            CAST_S32(skill->customCastType),
+                            skill->customOffsetX,
+                            skill->customOffsetY));
                     }
                     ListBox::mouseDragged(event);
                 }
