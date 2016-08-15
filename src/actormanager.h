@@ -25,7 +25,7 @@
 
 #include "enums/being/actortype.h"
 
-#include "enums/resources/itemtype.h"
+#include "enums/resources/item/itemtype.h"
 
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/allplayers.h"

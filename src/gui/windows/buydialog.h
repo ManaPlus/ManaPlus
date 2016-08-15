@@ -23,7 +23,7 @@
 #ifndef GUI_WINDOWS_BUYDIALOG_H
 #define GUI_WINDOWS_BUYDIALOG_H
 
-#include "enums/resources/itemtype.h"
+#include "enums/resources/item/itemtype.h"
 
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/itemcolor.h"

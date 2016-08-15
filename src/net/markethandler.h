@@ -21,7 +21,7 @@
 #ifndef NET_MARKETHANDLER_H
 #define NET_MARKETHANDLER_H
 
-#include "enums/resources/itemtype.h"
+#include "enums/resources/item/itemtype.h"
 
 #include "enums/simpletypes/itemcolor.h"
 

@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_SELLDIALOG_H
 #define GUI_WIDGETS_SELLDIALOG_H
 
-#include "enums/resources/itemtype.h"
+#include "enums/resources/item/itemtype.h"
 
 #include "enums/simpletypes/advanced.h"
 #include "enums/simpletypes/issell.h"

@@ -23,7 +23,7 @@
 #ifndef GUI_MODELS_SHOPITEMS_H
 #define GUI_MODELS_SHOPITEMS_H
 
-#include "enums/resources/itemtype.h"
+#include "enums/resources/item/itemtype.h"
 
 #include "enums/simpletypes/itemcolor.h"
 

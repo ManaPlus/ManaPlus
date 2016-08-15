@@ -25,7 +25,7 @@
 
 #include "enums/inventorytype.h"
 
-#include "enums/resources/itemtype.h"
+#include "enums/resources/item/itemtype.h"
 
 #include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/damaged.h"

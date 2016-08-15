@@ -25,7 +25,7 @@
 
 #include "gui/widgets/window.h"
 
-#include "enums/resources/itemtype.h"
+#include "enums/resources/item/itemtype.h"
 
 #include "enums/simpletypes/damaged.h"
 #include "enums/simpletypes/equipm.h"
