@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_RESOURCES_SKILLTYPE2_H
-#define ENUMS_RESOURCES_SKILLTYPE2_H
+#ifndef ENUMS_RESOURCES_SKILL_SKILLTYPE2_H
+#define ENUMS_RESOURCES_SKILL_SKILLTYPE2_H
 
 // aka inf2
 namespace SkillType2
@@ -48,4 +48,4 @@ namespace SkillType2
     };
 }  // namespace SkillType2
 
-#endif  // ENUMS_RESOURCES_SKILLTYPE2_H
+#endif  // ENUMS_RESOURCES_SKILL_SKILLTYPE2_H

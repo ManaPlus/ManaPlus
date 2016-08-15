@@ -21,7 +21,7 @@
 #ifndef RESOURCES_SKILLTYPEENTRY_H
 #define RESOURCES_SKILLTYPEENTRY_H
 
-#include "enums/resources/skilltype.h"
+#include "enums/resources/skill/skilltype.h"
 
 #include "localconsts.h"
 

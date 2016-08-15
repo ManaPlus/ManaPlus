@@ -25,7 +25,7 @@
 
 #include "net/eathena/beingtype.h"
 
-#include "enums/resources/skilltype2.h"
+#include "enums/resources/skill/skilltype2.h"
 
 #include "enums/simpletypes/beingid.h"
 
