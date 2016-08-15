@@ -168,6 +168,13 @@ void SkillPopup::show(const SkillInfo *const skill,
             castStr = _("Self position");
             break;
     }
+    if (skill->customOffsetX != 0 ||
+        skill->customOffsetY != 0)
+    {
+        castStr.append(strprintf(" (%+d,%+d)",
+            skill->customOffsetX,
+            skill->customOffsetY));
+    }
     mSkillCastType->setTextWrapped(strprintf(
         // TRANSLATORS: skill cast type
         _("Cast type: %s"),
