@@ -92,6 +92,7 @@
 #include "resources/skill/skillinfo.h"
 
 #include "utils/copynpaste.h"
+#include "utils/checkutils.h"
 #include "utils/gettext.h"
 #include "utils/process.h"
 
@@ -1690,7 +1691,7 @@ void PopupMenu::handleLink(const std::string &link,
     // Unknown actions
     else if (link != "cancel")
     {
-        logger->log("PopupMenu: Warning, unknown action '%s'", link.c_str());
+        reportAlways("PopupMenu: Warning, unknown action '%s'", link.c_str());
     }
 
     if (!mAllowCleanMenu)

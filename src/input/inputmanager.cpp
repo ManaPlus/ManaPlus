@@ -53,6 +53,7 @@
 #include "gui/windows/textdialog.h"
 #include "gui/windows/tradewindow.h"
 
+#include "utils/checkutils.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
 
@@ -847,6 +848,12 @@ bool InputManager::executeChatCommand(const std::string &restrict cmd,
             func(evt);
             return true;
         }
+    }
+    else
+    {
+        reportAlways("Unknown chat command: /%s %s",
+            cmd.c_str(),
+            args.c_str());
     }
     return false;
 }
