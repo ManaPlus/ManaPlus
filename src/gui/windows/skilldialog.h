@@ -28,10 +28,10 @@
 #include "enums/simpletypes/autotarget.h"
 #include "enums/simpletypes/modifiable.h"
 
-#include "enums/resources/skillowner.h"
 #include "enums/resources/skilltype.h"
 
 #include "enums/resources/skill/casttype.h"
+#include "enums/resources/skill/skillowner.h"
 
 #include "listeners/actionlistener.h"
 

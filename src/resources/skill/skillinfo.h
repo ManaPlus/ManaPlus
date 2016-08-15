@@ -26,10 +26,10 @@
 #include "enums/simpletypes/modifiable.h"
 #include "enums/simpletypes/visible.h"
 
-#include "enums/resources/skillowner.h"
 #include "enums/resources/skilltype.h"
 
 #include "enums/resources/skill/casttype.h"
+#include "enums/resources/skill/skillowner.h"
 
 #include <string>
 #include <vector>

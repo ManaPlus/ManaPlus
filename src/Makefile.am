@@ -444,7 +444,7 @@ SRC += events/actionevent.h \
 	      resources/skill/skilltypelist.h \
 	      const/net/skill.h \
 	      const/resources/skill.h \
-	      enums/resources/skillowner.h \
+	      enums/resources/skill/skillowner.h \
 	      enums/resources/skilltype.h \
 	      enums/resources/skilltype2.h \
 	      resources/soundeffect.cpp \
