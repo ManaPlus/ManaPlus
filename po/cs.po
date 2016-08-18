@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011
 # Pitriss <chytrex@wjake.com>, 2011
@@ -14,14 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-08-13 17:42+0300\n"
+"POT-Creation-Date: 2016-08-18 22:55+0300\n"
 "PO-Revision-Date: 2016-08-15 08:40+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: Czech (http://www.transifex.com/akaras/manaplus/language/cs/)\n"
+"Language-Team: Czech (http://www.transifex.com/akaras/manaplus/language/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #. TRANSLATORS: file uploaded message
@@ -35,7 +36,6 @@ msgstr "Soubor byl uploadován"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: quit dialog button
-#. TRANSLATORS: ok dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
 #: src/actions/actions.cpp:167 src/client.cpp:1575 src/client.cpp:1610
@@ -55,10 +55,9 @@ msgstr "Soubor byl uploadován"
 #: src/gui/windows/editserverdialog.cpp:59
 #: src/gui/windows/editserverdialog.cpp:209
 #: src/gui/windows/itemamountwindow.cpp:190 src/gui/windows/quitdialog.cpp:67
-#: src/gui/windows/registerdialog.cpp:256 src/gui/windows/socialwindow.cpp:531
-#: src/gui/windows/textdialog.cpp:53 src/net/ea/charserverrecv.cpp:108
-#: src/net/ea/charserverrecv.cpp:134 src/net/ea/gamerecv.cpp:71
-#: src/net/eathena/charserverrecv.cpp:423
+#: src/gui/windows/registerdialog.cpp:256 src/gui/windows/textdialog.cpp:53
+#: src/net/ea/charserverrecv.cpp:108 src/net/ea/charserverrecv.cpp:134
+#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:423
 #: src/net/eathena/charserverrecv.cpp:458
 #: src/net/eathena/charserverrecv.cpp:486 src/net/tmwa/charserverrecv.cpp:305
 msgid "OK"
@@ -107,80 +106,85 @@ msgid "Uploaded log into:"
 msgstr "Nahrány záznmy do:"
 
 #. TRANSLATORS: last seen disabled warning
-#: src/actions/actions.cpp:1737
+#: src/actions/actions.cpp:1739
 msgid ""
 "Last seen disabled. Enable in players / collect players id and seen log."
 msgstr ""
 
 #. TRANSLATORS: last seen error
-#: src/actions/actions.cpp:1756 src/actions/actions.cpp:1770
+#: src/actions/actions.cpp:1758 src/actions/actions.cpp:1772
 msgid "You not saw this nick."
 msgstr ""
 
 #. TRANSLATORS: last seen message
-#: src/actions/actions.cpp:1762
+#: src/actions/actions.cpp:1764
 #, c-format
 msgid "Last seen for %s: %s"
 msgstr ""
 
 #. TRANSLATORS: whisper send
-#: src/actions/chat.cpp:266
+#: src/actions/chat.cpp:268
 msgid "Cannot send empty whisper or channel message!"
 msgstr ""
 
 #. TRANSLATORS: new whisper or channel query
-#: src/actions/chat.cpp:315
+#: src/actions/chat.cpp:317
 #, c-format
 msgid "Cannot create a whisper tab \"%s\"! It probably already exists."
 msgstr "Není možné vytvořit záložku šeptání \"%s\"! Zdá se že již existuje."
 
-#. TRANSLATORS: create party message
-#. TRANSLATORS: chat error message
-#: src/actions/chat.cpp:340 src/gui/widgets/tabs/chat/partytab.cpp:72
-msgid "Party name is missing."
-msgstr "Chybí jméno party."
+#. TRANSLATORS: dialog header
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: create party
+#: src/actions/chat.cpp:342 src/gui/popups/popupmenu.cpp:3408
+#, fuzzy
+msgid "Create party"
+msgstr "Vytvořit partu"
 
-#. TRANSLATORS: create guild message
-#: src/actions/chat.cpp:363
-msgid "Guild name is missing."
-msgstr "Chybí jméno gildy."
+#. TRANSLATORS: dialog header
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: create guild
+#: src/actions/chat.cpp:366 src/gui/popups/popupmenu.cpp:3415
+#, fuzzy
+msgid "Create guild"
+msgstr "Gilda cíle:"
 
 #. TRANSLATORS: party invite message
 #. TRANSLATORS: guild invite message
 #. TRANSLATORS: party kick message
 #. TRANSLATORS: change relation
-#: src/actions/chat.cpp:385 src/actions/chat.cpp:418 src/actions/chat.cpp:424
-#: src/actions/chat.cpp:497 src/actions/chat.cpp:532
+#: src/actions/chat.cpp:389 src/actions/chat.cpp:422 src/actions/chat.cpp:428
+#: src/actions/chat.cpp:501 src/actions/chat.cpp:536
 #: src/actions/commands.cpp:99
 msgid "Please specify a name."
 msgstr "Prosím zadej jméno."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/actions/chat.cpp:445
+#: src/actions/chat.cpp:449
 msgid "Return toggles chat."
 msgstr "Enter přepíná chat."
 
-#: src/actions/chat.cpp:445
+#: src/actions/chat.cpp:449
 msgid "Message closes chat."
 msgstr "Zpráva zavírá chat."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/actions/chat.cpp:457
+#: src/actions/chat.cpp:461
 msgid "Return now toggles chat."
 msgstr "Enter nyní přepíná chat."
 
 #. TRANSLATORS: message from toggle chat command
-#: src/actions/chat.cpp:467
+#: src/actions/chat.cpp:471
 msgid "Message now closes chat."
 msgstr "Zpráva nyní ukončuje chat."
 
 #. TRANSLATORS: equipped hat chat message
-#: src/actions/chat.cpp:620
+#: src/actions/chat.cpp:624
 msgid "no hat equipped."
 msgstr ""
 
 #. TRANSLATORS: equipped hat chat message
-#: src/actions/chat.cpp:626
+#: src/actions/chat.cpp:630
 #, c-format
 msgid "equipped hat %s."
 msgstr ""
@@ -455,8 +459,8 @@ msgstr "Vidíš %s"
 #. TRANSLATORS: add player to completle ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
-#: src/being/playerrelations.cpp:471 src/gui/popups/popupmenu.cpp:2517
-#: src/gui/popups/popupmenu.cpp:2559
+#: src/being/playerrelations.cpp:471 src/gui/popups/popupmenu.cpp:2633
+#: src/gui/popups/popupmenu.cpp:2675
 msgid "Completely ignore"
 msgstr "Kompletně ignorovat"
 
@@ -540,8 +544,8 @@ msgstr "Nápověda"
 #. TRANSLATORS: shop window button
 #: src/client.cpp:894 src/client.cpp:1489 src/client.cpp:1508
 #: src/dyetool/client.cpp:510 src/gui/dialogsmanager.cpp:116
-#: src/gui/popups/popupmenu.cpp:751 src/gui/popups/popupmenu.cpp:828
-#: src/gui/popups/popupmenu.cpp:1082 src/gui/windows/didyouknowwindow.cpp:81
+#: src/gui/popups/popupmenu.cpp:768 src/gui/popups/popupmenu.cpp:845
+#: src/gui/popups/popupmenu.cpp:1099 src/gui/windows/didyouknowwindow.cpp:81
 #: src/gui/windows/inventorywindow.cpp:267
 #: src/gui/windows/inventorywindow.cpp:290
 #: src/gui/windows/maileditwindow.cpp:53 src/gui/windows/mailviewwindow.cpp:61
@@ -753,7 +757,8 @@ msgstr "     --renderer       : Nastaví typ vykreslování"
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:112
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr "  -T --tests          : Spustit testování ovladačů a automatickou konfiguraci"
+msgstr ""
+"  -T --tests          : Spustit testování ovladačů a automatickou konfiguraci"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:118
@@ -1243,21 +1248,21 @@ msgstr "Zpráva"
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:148 src/gui/popups/popupmenu.cpp:2894
+#: src/gui/dialogsmanager.cpp:148 src/gui/popups/popupmenu.cpp:3010
 msgid "Revive"
 msgstr "Oživ"
 
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:178
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr "Nesete více než polovinu vaší váhy. Regenerace života nyní není možná."
 
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:198
 msgid "You are carrying less than half your weight. You can regain health."
-msgstr "Nesete méně než polovinu vaší váhy. Regenerace života je nyní opět možná."
+msgstr ""
+"Nesete méně než polovinu vaší váhy. Regenerace života je nyní opět možná."
 
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
@@ -1268,8 +1273,7 @@ msgstr "Nesete méně než polovinu vaší váhy. Regenerace života je nyní op
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:32
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:663
-#: src/gui/windows/serverdialog.cpp:597
+#: src/gui/windows/equipmentwindow.cpp:663 src/gui/windows/serverdialog.cpp:597
 msgid "default"
 msgstr "výchozí"
 
@@ -1430,8 +1434,8 @@ msgstr "Maximální (23)"
 
 #. TRANSLATORS: language
 #. TRANSLATORS: popup menu header
-#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2144
-#: src/gui/popups/popupmenu.cpp:2224 src/gui/widgets/tabs/socialtabbase.h:50
+#: src/gui/models/langlistmodel.h:45 src/gui/popups/popupmenu.cpp:2161
+#: src/gui/popups/popupmenu.cpp:2241 src/gui/widgets/tabs/socialtabbase.h:50
 msgid "(default)"
 msgstr "(výchozí)"
 
@@ -1737,8 +1741,8 @@ msgstr ""
 #. TRANSLATORS: skill level
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
-#: src/gui/popups/beingpopup.cpp:258 src/gui/popups/popupmenu.cpp:2411
-#: src/gui/popups/skillpopup.cpp:128 src/gui/windows/ministatuswindow.cpp:364
+#: src/gui/popups/beingpopup.cpp:258 src/gui/popups/popupmenu.cpp:2485
+#: src/gui/popups/skillpopup.cpp:147 src/gui/windows/ministatuswindow.cpp:364
 #: src/gui/windows/statuswindow.cpp:72 src/gui/windows/statuswindow.cpp:261
 #: src/gui/windows/statuswindow.cpp:356
 #, c-format
@@ -1756,58 +1760,6 @@ msgstr ""
 #, c-format
 msgid "Particles: %u"
 msgstr ""
-
-#. TRANSLATORS: party popup item
-#. TRANSLATORS: party creation message
-#: src/gui/popups/createpartypopup.h:50 src/gui/windows/socialwindow.cpp:527
-msgid "Create Party"
-msgstr "Vytvořit partu"
-
-#. TRANSLATORS: party popup item
-#. TRANSLATORS: popup menu item
-#. TRANSLATORS: close menu
-#. TRANSLATORS: shop window button
-#. TRANSLATORS: button in change email dialog
-#. TRANSLATORS: change password dialog button
-#. TRANSLATORS: char create dialog button
-#. TRANSLATORS: connection dialog button
-#. TRANSLATORS: edit server dialog button
-#. TRANSLATORS: item amount window button
-#. TRANSLATORS: quit dialog button
-#. TRANSLATORS: register dialog. button.
-#. TRANSLATORS: setup button
-#. TRANSLATORS: command editor button
-#. TRANSLATORS: text dialog button
-#. TRANSLATORS: updater window button
-#. TRANSLATORS: input action name
-#: src/gui/popups/createpartypopup.h:53 src/gui/popups/popupmenu.cpp:447
-#: src/gui/popups/popupmenu.cpp:515 src/gui/popups/popupmenu.cpp:620
-#: src/gui/popups/popupmenu.cpp:674 src/gui/popups/popupmenu.cpp:709
-#: src/gui/popups/popupmenu.cpp:756 src/gui/popups/popupmenu.cpp:781
-#: src/gui/popups/popupmenu.cpp:806 src/gui/popups/popupmenu.cpp:1003
-#: src/gui/popups/popupmenu.cpp:1030 src/gui/popups/popupmenu.cpp:1068
-#: src/gui/popups/popupmenu.cpp:1132 src/gui/popups/popupmenu.cpp:1861
-#: src/gui/popups/popupmenu.cpp:1901 src/gui/popups/popupmenu.cpp:1959
-#: src/gui/popups/popupmenu.cpp:2008 src/gui/popups/popupmenu.cpp:2049
-#: src/gui/popups/popupmenu.cpp:2120 src/gui/popups/popupmenu.cpp:2201
-#: src/gui/popups/popupmenu.cpp:2237 src/gui/popups/popupmenu.cpp:2270
-#: src/gui/popups/popupmenu.cpp:2291 src/gui/popups/popupmenu.cpp:2313
-#: src/gui/popups/popupmenu.cpp:2339 src/gui/popups/popupmenu.cpp:2357
-#: src/gui/popups/popupmenu.cpp:2382 src/gui/popups/popupmenu.cpp:2420
-#: src/gui/popups/popupmenu.cpp:2739 src/gui/popups/popupmenu.cpp:2867
-#: src/gui/popups/popupmenu.cpp:3069 src/gui/popups/popupmenu.cpp:3212
-#: src/gui/popups/popupmenu.cpp:3244 src/gui/windows/buyselldialog.cpp:75
-#: src/gui/windows/changeemaildialog.cpp:56
-#: src/gui/windows/changepassworddialog.cpp:58
-#: src/gui/windows/charcreatedialog.cpp:114
-#: src/gui/windows/connectiondialog.cpp:52
-#: src/gui/windows/editserverdialog.cpp:61
-#: src/gui/windows/itemamountwindow.cpp:192 src/gui/windows/quitdialog.cpp:69
-#: src/gui/windows/registerdialog.cpp:64 src/gui/windows/setupwindow.cpp:101
-#: src/gui/windows/textcommandeditor.cpp:98 src/gui/windows/textdialog.cpp:60
-#: src/gui/windows/updaterwindow.cpp:190 src/input/pages/gui.cpp:103
-msgid "Cancel"
-msgstr "Zrušit"
 
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:224
@@ -1830,7 +1782,7 @@ msgstr ""
 #. TRANSLATORS: trade with player
 #. TRANSLATORS: trade chat tab name
 #. TRANSLATORS: inventory type name
-#: src/gui/popups/popupmenu.cpp:175 src/gui/popups/popupmenu.cpp:904
+#: src/gui/popups/popupmenu.cpp:176 src/gui/popups/popupmenu.cpp:921
 #: src/gui/widgets/tabs/chat/tradetab.cpp:39
 #: src/resources/inventory/inventory.cpp:358
 msgid "Trade"
@@ -1844,8 +1796,8 @@ msgstr "Obchod"
 #. TRANSLATORS: attack player
 #. TRANSLATORS: input action name
 #. TRANSLATORS: Skill type
-#: src/gui/popups/popupmenu.cpp:178 src/gui/popups/popupmenu.cpp:298
-#: src/gui/popups/popupmenu.cpp:907 src/input/pages/basic.cpp:40
+#: src/gui/popups/popupmenu.cpp:179 src/gui/popups/popupmenu.cpp:299
+#: src/gui/popups/popupmenu.cpp:924 src/input/pages/basic.cpp:40
 #: src/resources/skill/skilltypelist.h:35
 msgid "Attack"
 msgstr "Útok"
@@ -1856,36 +1808,36 @@ msgstr "Útok"
 #. TRANSLATORS: whisper to npc
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: send whisper to player
-#: src/gui/popups/popupmenu.cpp:181 src/gui/popups/popupmenu.cpp:272
-#: src/gui/popups/popupmenu.cpp:538
+#: src/gui/popups/popupmenu.cpp:182 src/gui/popups/popupmenu.cpp:273
+#: src/gui/popups/popupmenu.cpp:555
 msgid "Whisper"
 msgstr "Šeptat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: heal player
-#: src/gui/popups/popupmenu.cpp:188 src/gui/popups/popupmenu.cpp:912
-#: src/gui/popups/popupmenu.cpp:2959
+#: src/gui/popups/popupmenu.cpp:189 src/gui/popups/popupmenu.cpp:929
+#: src/gui/popups/popupmenu.cpp:3075
 msgid "Heal"
 msgstr "Vyléčit"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from guild
-#: src/gui/popups/popupmenu.cpp:208 src/gui/popups/popupmenu.cpp:224
-#: src/gui/popups/popupmenu.cpp:589 src/gui/popups/popupmenu.cpp:940
+#: src/gui/popups/popupmenu.cpp:209 src/gui/popups/popupmenu.cpp:225
+#: src/gui/popups/popupmenu.cpp:606 src/gui/popups/popupmenu.cpp:957
 msgid "Kick from guild"
 msgstr "Vykopnout z gildy"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: change player position in guild
-#: src/gui/popups/popupmenu.cpp:215 src/gui/popups/popupmenu.cpp:231
-#: src/gui/popups/popupmenu.cpp:596 src/gui/popups/popupmenu.cpp:947
+#: src/gui/popups/popupmenu.cpp:216 src/gui/popups/popupmenu.cpp:232
+#: src/gui/popups/popupmenu.cpp:613 src/gui/popups/popupmenu.cpp:964
 msgid "Change pos in guild"
 msgstr "Změnit pozici v gildě"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to guild
-#: src/gui/popups/popupmenu.cpp:244 src/gui/popups/popupmenu.cpp:608
-#: src/gui/popups/popupmenu.cpp:961
+#: src/gui/popups/popupmenu.cpp:245 src/gui/popups/popupmenu.cpp:625
+#: src/gui/popups/popupmenu.cpp:978
 msgid "Invite to guild"
 msgstr "Pozvat do gildy"
 
@@ -1893,7 +1845,7 @@ msgstr "Pozvat do gildy"
 #. TRANSLATORS: set player invisible for self by id
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: nuke player
-#: src/gui/popups/popupmenu.cpp:251 src/gui/popups/popupmenu.cpp:2930
+#: src/gui/popups/popupmenu.cpp:252 src/gui/popups/popupmenu.cpp:3046
 msgid "Nuke"
 msgstr "Vyhladit"
 
@@ -1910,9 +1862,9 @@ msgstr "Vyhladit"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move to player location
 #. TRANSLATORS: input tab sub tab name
-#: src/gui/popups/popupmenu.cpp:254 src/gui/popups/popupmenu.cpp:286
-#: src/gui/popups/popupmenu.cpp:570 src/gui/popups/popupmenu.cpp:737
-#: src/gui/popups/popupmenu.cpp:919 src/gui/popups/popupmenu.cpp:988
+#: src/gui/popups/popupmenu.cpp:255 src/gui/popups/popupmenu.cpp:287
+#: src/gui/popups/popupmenu.cpp:587 src/gui/popups/popupmenu.cpp:754
+#: src/gui/popups/popupmenu.cpp:936 src/gui/popups/popupmenu.cpp:1005
 #: src/gui/setupinputpages.cpp:48
 msgid "Move"
 msgstr "Jdi sem"
@@ -1921,7 +1873,7 @@ msgstr "Jdi sem"
 #. TRANSLATORS: talk with npc
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
-#: src/gui/popups/popupmenu.cpp:266 src/input/pages/basic.cpp:88
+#: src/gui/popups/popupmenu.cpp:267 src/input/pages/basic.cpp:88
 #: src/resources/db/npcdb.cpp:152
 msgid "Talk"
 msgstr "Promluv"
@@ -1936,7 +1888,7 @@ msgstr "Promluv"
 #. TRANSLATORS: shop window tab name
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
-#: src/gui/popups/popupmenu.cpp:276 src/gui/popups/popupmenu.cpp:2589
+#: src/gui/popups/popupmenu.cpp:277 src/gui/popups/popupmenu.cpp:2705
 #: src/gui/windows/buydialog.cpp:191 src/gui/windows/buydialog.cpp:210
 #: src/gui/windows/buydialog.cpp:281 src/gui/windows/buydialog.cpp:285
 #: src/gui/windows/buyselldialog.cpp:71 src/gui/windows/shopwindow.cpp:162
@@ -1954,7 +1906,7 @@ msgstr "Nákup"
 #. TRANSLATORS: shop window tab name
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
-#: src/gui/popups/popupmenu.cpp:279 src/gui/popups/popupmenu.cpp:2601
+#: src/gui/popups/popupmenu.cpp:280 src/gui/popups/popupmenu.cpp:2717
 #: src/gui/widgets/selldialog.cpp:54 src/gui/widgets/selldialog.cpp:107
 #: src/gui/widgets/selldialog.cpp:145 src/gui/windows/buyselldialog.cpp:73
 #: src/gui/windows/shopwindow.cpp:164 src/input/pages/basic.cpp:256
@@ -1966,26 +1918,26 @@ msgstr "Prodej"
 #. TRANSLATORS: add comment to npc
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add comment to player
-#: src/gui/popups/popupmenu.cpp:289 src/gui/popups/popupmenu.cpp:549
-#: src/gui/popups/popupmenu.cpp:2699
+#: src/gui/popups/popupmenu.cpp:290 src/gui/popups/popupmenu.cpp:566
+#: src/gui/popups/popupmenu.cpp:2815
 msgid "Add comment"
 msgstr "Přidat komentář"
 
 #. TRANSLATORS: remove monster from attack list
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:313
+#: src/gui/popups/popupmenu.cpp:314
 msgid "Remove from attack list"
 msgstr "Vyřadit ze seznamu útoku"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add monster to priotiry attack list
-#: src/gui/popups/popupmenu.cpp:320
+#: src/gui/popups/popupmenu.cpp:321
 msgid "Add to priority attack list"
 msgstr "Přidat do prioritního seznamu útoku"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add monster to attack list
-#: src/gui/popups/popupmenu.cpp:324
+#: src/gui/popups/popupmenu.cpp:325
 msgid "Add to attack list"
 msgstr "Přidat do seznamu útoku"
 
@@ -1993,19 +1945,19 @@ msgstr "Přidat do seznamu útoku"
 #. TRANSLATORS: add monster to ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to pickup list
-#: src/gui/popups/popupmenu.cpp:328 src/gui/popups/popupmenu.cpp:2721
+#: src/gui/popups/popupmenu.cpp:329 src/gui/popups/popupmenu.cpp:2837
 msgid "Add to ignore list"
 msgstr "Vložit do seznamu ignorovaných"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: Mercenary move to master
-#: src/gui/popups/popupmenu.cpp:337 src/gui/popups/popupmenu.cpp:354
+#: src/gui/popups/popupmenu.cpp:338 src/gui/popups/popupmenu.cpp:355
 msgid "Move to master"
 msgstr "Přesunout k veliteli"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: fire mercenary
-#: src/gui/popups/popupmenu.cpp:342
+#: src/gui/popups/popupmenu.cpp:343
 msgid "Fire"
 msgstr "Oheň"
 
@@ -2013,7 +1965,7 @@ msgstr "Oheň"
 #. TRANSLATORS: feed homunculus
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: feed pet
-#: src/gui/popups/popupmenu.cpp:357 src/gui/popups/popupmenu.cpp:376
+#: src/gui/popups/popupmenu.cpp:358 src/gui/popups/popupmenu.cpp:377
 msgid "Feed"
 msgstr "Nakrmit"
 
@@ -2023,8 +1975,8 @@ msgstr "Nakrmit"
 #. TRANSLATORS: rename map item
 #. TRANSLATORS: character rename button
 #. TRANSLATORS: shop window button
-#: src/gui/popups/popupmenu.cpp:361 src/gui/popups/popupmenu.cpp:387
-#: src/gui/popups/popupmenu.cpp:694 src/gui/windows/charselectdialog.cpp:105
+#: src/gui/popups/popupmenu.cpp:362 src/gui/popups/popupmenu.cpp:388
+#: src/gui/popups/popupmenu.cpp:711 src/gui/windows/charselectdialog.cpp:105
 #: src/gui/windows/shopwindow.cpp:186
 msgid "Rename"
 msgstr "Přejmenovat"
@@ -2033,13 +1985,13 @@ msgstr "Přejmenovat"
 #. TRANSLATORS: delete homunculus
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kill player
-#: src/gui/popups/popupmenu.cpp:365 src/gui/popups/popupmenu.cpp:2933
+#: src/gui/popups/popupmenu.cpp:366 src/gui/popups/popupmenu.cpp:3049
 msgid "Kill"
 msgstr "Zabít"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pet drop loot
-#: src/gui/popups/popupmenu.cpp:379
+#: src/gui/popups/popupmenu.cpp:380
 msgid "Drop loot"
 msgstr "Upustit kořist"
 
@@ -2047,7 +1999,7 @@ msgstr "Upustit kořist"
 #. TRANSLATORS: pet unequip item
 #. TRANSLATORS: equipment window button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:382 src/gui/windows/equipmentwindow.cpp:73
+#: src/gui/popups/popupmenu.cpp:383 src/gui/windows/equipmentwindow.cpp:73
 #: src/gui/windows/inventorywindow.cpp:202 src/resources/itemtypemapdata.h:45
 #: src/resources/itemtypemapdata.h:49 src/resources/itemtypemapdata.h:53
 #: src/resources/itemtypemapdata.h:57 src/resources/itemtypemapdata.h:61
@@ -2060,7 +2012,7 @@ msgstr "Odebrat z vybavení"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pet return to egg
-#: src/gui/popups/popupmenu.cpp:401 src/resources/db/petdb.cpp:160
+#: src/gui/popups/popupmenu.cpp:402 src/resources/db/petdb.cpp:160
 msgid "Return to egg"
 msgstr "Vrátit k vejci"
 
@@ -2068,39 +2020,88 @@ msgstr "Vrátit k vejci"
 #. TRANSLATORS: add being name to chat
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player name to chat
-#: src/gui/popups/popupmenu.cpp:442 src/gui/popups/popupmenu.cpp:616
+#: src/gui/popups/popupmenu.cpp:443 src/gui/popups/popupmenu.cpp:633
 msgid "Add name to chat"
 msgstr "Vložit jméno do chatu"
 
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: close menu
+#. TRANSLATORS: shop window button
+#. TRANSLATORS: button in change email dialog
+#. TRANSLATORS: change password dialog button
+#. TRANSLATORS: char create dialog button
+#. TRANSLATORS: connection dialog button
+#. TRANSLATORS: edit server dialog button
+#. TRANSLATORS: item amount window button
+#. TRANSLATORS: quit dialog button
+#. TRANSLATORS: register dialog. button.
+#. TRANSLATORS: setup button
+#. TRANSLATORS: command editor button
+#. TRANSLATORS: text dialog button
+#. TRANSLATORS: updater window button
+#. TRANSLATORS: input action name
+#: src/gui/popups/popupmenu.cpp:448 src/gui/popups/popupmenu.cpp:532
+#: src/gui/popups/popupmenu.cpp:637 src/gui/popups/popupmenu.cpp:691
+#: src/gui/popups/popupmenu.cpp:726 src/gui/popups/popupmenu.cpp:773
+#: src/gui/popups/popupmenu.cpp:798 src/gui/popups/popupmenu.cpp:823
+#: src/gui/popups/popupmenu.cpp:1020 src/gui/popups/popupmenu.cpp:1047
+#: src/gui/popups/popupmenu.cpp:1085 src/gui/popups/popupmenu.cpp:1149
+#: src/gui/popups/popupmenu.cpp:1878 src/gui/popups/popupmenu.cpp:1918
+#: src/gui/popups/popupmenu.cpp:1976 src/gui/popups/popupmenu.cpp:2025
+#: src/gui/popups/popupmenu.cpp:2066 src/gui/popups/popupmenu.cpp:2137
+#: src/gui/popups/popupmenu.cpp:2218 src/gui/popups/popupmenu.cpp:2254
+#: src/gui/popups/popupmenu.cpp:2287 src/gui/popups/popupmenu.cpp:2308
+#: src/gui/popups/popupmenu.cpp:2330 src/gui/popups/popupmenu.cpp:2356
+#: src/gui/popups/popupmenu.cpp:2374 src/gui/popups/popupmenu.cpp:2411
+#: src/gui/popups/popupmenu.cpp:2459 src/gui/popups/popupmenu.cpp:2494
+#: src/gui/popups/popupmenu.cpp:2536 src/gui/popups/popupmenu.cpp:2855
+#: src/gui/popups/popupmenu.cpp:2983 src/gui/popups/popupmenu.cpp:3185
+#: src/gui/popups/popupmenu.cpp:3328 src/gui/popups/popupmenu.cpp:3360
+#: src/gui/popups/popupmenu.cpp:3426 src/gui/popups/popupmenu.cpp:3436
+#: src/gui/popups/popupmenu.cpp:3446 src/gui/popups/popupmenu.cpp:3456
+#: src/gui/popups/popupmenu.cpp:3466 src/gui/popups/popupmenu.cpp:3476
+#: src/gui/popups/popupmenu.cpp:3486 src/gui/windows/buyselldialog.cpp:75
+#: src/gui/windows/changeemaildialog.cpp:56
+#: src/gui/windows/changepassworddialog.cpp:58
+#: src/gui/windows/charcreatedialog.cpp:114
+#: src/gui/windows/connectiondialog.cpp:52
+#: src/gui/windows/editserverdialog.cpp:61
+#: src/gui/windows/itemamountwindow.cpp:192 src/gui/windows/quitdialog.cpp:69
+#: src/gui/windows/registerdialog.cpp:64 src/gui/windows/setupwindow.cpp:101
+#: src/gui/windows/textcommandeditor.cpp:98 src/gui/windows/textdialog.cpp:60
+#: src/gui/windows/updaterwindow.cpp:190 src/input/pages/gui.cpp:103
+msgid "Cancel"
+msgstr "Zrušit"
+
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:492 src/gui/widgets/tabs/setup_players.cpp:59
+#: src/gui/popups/popupmenu.cpp:509 src/gui/widgets/tabs/setup_players.cpp:59
 msgid "Players"
 msgstr "Hráči"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player from party
-#: src/gui/popups/popupmenu.cpp:561 src/gui/popups/popupmenu.cpp:2642
-#: src/gui/popups/popupmenu.cpp:2667
+#: src/gui/popups/popupmenu.cpp:578 src/gui/popups/popupmenu.cpp:2758
+#: src/gui/popups/popupmenu.cpp:2783
 msgid "Kick from party"
 msgstr "Vykopnout z party"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pickup item from ground
-#: src/gui/popups/popupmenu.cpp:654 src/gui/popups/popupmenu.cpp:663
+#: src/gui/popups/popupmenu.cpp:671 src/gui/popups/popupmenu.cpp:680
 msgid "Pick up"
 msgstr "Sebrat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item name to chat
-#: src/gui/popups/popupmenu.cpp:668 src/gui/popups/popupmenu.cpp:1857
-#: src/gui/popups/popupmenu.cpp:1944 src/gui/popups/popupmenu.cpp:1992
-#: src/gui/popups/popupmenu.cpp:2265
+#: src/gui/popups/popupmenu.cpp:685 src/gui/popups/popupmenu.cpp:1874
+#: src/gui/popups/popupmenu.cpp:1961 src/gui/popups/popupmenu.cpp:2009
+#: src/gui/popups/popupmenu.cpp:2282
 msgid "Add to chat"
 msgstr "Přidat do chatu"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:691 src/gui/popups/popupmenu.cpp:727
+#: src/gui/popups/popupmenu.cpp:708 src/gui/popups/popupmenu.cpp:744
 msgid "Map Item"
 msgstr "Označit na mapě"
 
@@ -2110,28 +2111,28 @@ msgstr "Označit na mapě"
 #. TRANSLATORS: remove attack target
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup filter
-#: src/gui/popups/popupmenu.cpp:697 src/gui/popups/popupmenu.cpp:2197
-#: src/gui/popups/popupmenu.cpp:2233
+#: src/gui/popups/popupmenu.cpp:714 src/gui/popups/popupmenu.cpp:2214
+#: src/gui/popups/popupmenu.cpp:2250
 msgid "Remove"
 msgstr "Odebrat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: warp to map item
 #. TRANSLATORS: warp select button
-#: src/gui/popups/popupmenu.cpp:704 src/gui/popups/popupmenu.cpp:733
+#: src/gui/popups/popupmenu.cpp:721 src/gui/popups/popupmenu.cpp:750
 #: src/net/eathena/skillrecv.cpp:435
 msgid "Warp"
 msgstr "Přesun"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move camera to map item
-#: src/gui/popups/popupmenu.cpp:740
+#: src/gui/popups/popupmenu.cpp:757
 msgid "Move camera"
 msgstr "Přesunout kameru"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: restore camera to default view
-#: src/gui/popups/popupmenu.cpp:745
+#: src/gui/popups/popupmenu.cpp:762
 msgid "Restore camera"
 msgstr ""
 
@@ -2140,7 +2141,7 @@ msgstr ""
 #. TRANSLATORS: long button name for outfits window.
 #. TRANSLATORS: outfits button tooltip
 #. TRANSLATORS: outfits window name
-#: src/gui/popups/popupmenu.cpp:770 src/gui/setupinputpages.cpp:58
+#: src/gui/popups/popupmenu.cpp:787 src/gui/setupinputpages.cpp:58
 #: src/gui/windowmenu.cpp:155 src/gui/windows/inventorywindow.cpp:231
 #: src/gui/windows/outfitwindow.cpp:60
 msgid "Outfits"
@@ -2148,69 +2149,68 @@ msgstr "Výstroje"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: clear selected outfit
-#: src/gui/popups/popupmenu.cpp:773
+#: src/gui/popups/popupmenu.cpp:790
 msgid "Clear outfit"
 msgstr "Vyčistit výstroj"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: long button name for spells window.
-#: src/gui/popups/popupmenu.cpp:799 src/gui/windowmenu.cpp:136
+#: src/gui/popups/popupmenu.cpp:816 src/gui/windowmenu.cpp:136
 msgid "Spells"
 msgstr "Kouzla"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: edit selected spell
-#: src/gui/popups/popupmenu.cpp:802
+#: src/gui/popups/popupmenu.cpp:819
 msgid "Edit spell"
 msgstr "Upravit kouzlo"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove all text from chat tab
 #. TRANSLATORS: npc dialog button
-#: src/gui/popups/popupmenu.cpp:833 src/gui/windows/npcdialog.cpp:125
+#: src/gui/popups/popupmenu.cpp:850 src/gui/windows/npcdialog.cpp:125
 msgid "Clear"
 msgstr "Vymazat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: disable chat tab highlight
-#: src/gui/popups/popupmenu.cpp:840
+#: src/gui/popups/popupmenu.cpp:857
 msgid "Disable highlight"
 msgstr "Vypnout zvýrazňování"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable chat tab highlight
-#: src/gui/popups/popupmenu.cpp:846
+#: src/gui/popups/popupmenu.cpp:863
 msgid "Enable highlight"
 msgstr "Zapnout zvýrazňování"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: do not remove player names from chat tab
-#: src/gui/popups/popupmenu.cpp:852
+#: src/gui/popups/popupmenu.cpp:869
 msgid "Don't remove name"
 msgstr "Neodebírat jméno"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player names from chat tab
-#: src/gui/popups/popupmenu.cpp:858
+#: src/gui/popups/popupmenu.cpp:875
 msgid "Remove name"
 msgstr "Odebrat jméno"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
-#: src/gui/popups/popupmenu.cpp:864
+#: src/gui/popups/popupmenu.cpp:881
 msgid "Enable away"
 msgstr "Zapnout \"away\""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: disable away messages in chat tab
-#: src/gui/popups/popupmenu.cpp:870
+#: src/gui/popups/popupmenu.cpp:887
 msgid "Disable away"
 msgstr "Vypnout \"away\""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable away messages in chat tab
-#. TRANSLATORS: social window button
-#: src/gui/popups/popupmenu.cpp:877 src/gui/windows/socialwindow.cpp:81
+#: src/gui/popups/popupmenu.cpp:894
 msgid "Leave"
 msgstr "Opustit"
 
@@ -2220,116 +2220,116 @@ msgstr "Opustit"
 #. TRANSLATORS: copy link to clipboard
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy npc text to clipboard
-#: src/gui/popups/popupmenu.cpp:882 src/gui/popups/popupmenu.cpp:2309
-#: src/gui/popups/popupmenu.cpp:2353
+#: src/gui/popups/popupmenu.cpp:899 src/gui/popups/popupmenu.cpp:2326
+#: src/gui/popups/popupmenu.cpp:2370
 msgid "Copy to clipboard"
 msgstr "Kopírovat do schránky"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:1012
+#: src/gui/popups/popupmenu.cpp:1029
 msgid "Change guild position"
 msgstr "Změň hodnost v guildě"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:1062
+#: src/gui/popups/popupmenu.cpp:1079
 msgid "window"
 msgstr "okno"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: unlock window
-#: src/gui/popups/popupmenu.cpp:1091
+#: src/gui/popups/popupmenu.cpp:1108
 msgid "Unlock"
 msgstr "Odemknout"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: lock window
-#: src/gui/popups/popupmenu.cpp:1097
+#: src/gui/popups/popupmenu.cpp:1114
 msgid "Lock"
 msgstr "Zamknout"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:1108
+#: src/gui/popups/popupmenu.cpp:1125
 msgid "Show emotes for:"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for player
 #. TRANSLATORS: settings group
-#: src/gui/popups/popupmenu.cpp:1112 src/gui/widgets/tabs/setup_other.cpp:226
+#: src/gui/popups/popupmenu.cpp:1129 src/gui/widgets/tabs/setup_other.cpp:226
 msgid "Player"
 msgstr "Hráč"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for pet
-#: src/gui/popups/popupmenu.cpp:1116
+#: src/gui/popups/popupmenu.cpp:1133
 msgid "Pet"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for homuncules
 #. TRANSLATORS: palette color
-#: src/gui/popups/popupmenu.cpp:1122 src/gui/userpalette.cpp:208
+#: src/gui/popups/popupmenu.cpp:1139 src/gui/userpalette.cpp:208
 msgid "Homunculus"
 msgstr "Človíček"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for mercenary
 #. TRANSLATORS: palette color
-#: src/gui/popups/popupmenu.cpp:1126 src/gui/userpalette.cpp:203
+#: src/gui/popups/popupmenu.cpp:1143 src/gui/userpalette.cpp:203
 msgid "Mercenary"
 msgstr "Žoldák"
 
 #. TRANSLATORS: dialog caption
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1184
+#: src/gui/popups/popupmenu.cpp:1201
 msgid "Rename map sign          "
 msgstr "Přejmenovat značku na mapě "
 
 #. TRANSLATORS: label
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1187
+#: src/gui/popups/popupmenu.cpp:1204
 msgid "Name:                    "
 msgstr "Jméno:                   "
 
 #. TRANSLATORS: dialog caption
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1202
+#: src/gui/popups/popupmenu.cpp:1219
 msgid "Player comment            "
 msgstr "Hráčův komentář           "
 
 #. TRANSLATORS: label
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popups/popupmenu.cpp:1205
+#: src/gui/popups/popupmenu.cpp:1222
 msgid "Comment:                      "
 msgstr "Komentář:                     "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
-#: src/gui/popups/popupmenu.cpp:1737
+#: src/gui/popups/popupmenu.cpp:1754
 msgid "Add to trade"
 msgstr "Přidat k obchodu"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add 10 item amount to trade
-#: src/gui/popups/popupmenu.cpp:1745
+#: src/gui/popups/popupmenu.cpp:1762
 msgid "Add to trade 10"
 msgstr "Přidat 10 k obchodu"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add half item amount to trade
-#: src/gui/popups/popupmenu.cpp:1750
+#: src/gui/popups/popupmenu.cpp:1767
 msgid "Add to trade half"
 msgstr "Přidat polovinu k obchodu"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all amount except one item to trade
-#: src/gui/popups/popupmenu.cpp:1754
+#: src/gui/popups/popupmenu.cpp:1771
 msgid "Add to trade all-1"
 msgstr "Vlož do obchodu vše-1"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all amount item to trade
-#: src/gui/popups/popupmenu.cpp:1758
+#: src/gui/popups/popupmenu.cpp:1775
 msgid "Add to trade all"
 msgstr "Přidat vše k obchodu"
 
@@ -2338,8 +2338,8 @@ msgstr "Přidat vše k obchodu"
 #. TRANSLATORS: storage button
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: setup button
-#: src/gui/popups/popupmenu.cpp:1766 src/gui/popups/popupmenu.cpp:1940
-#: src/gui/popups/popupmenu.cpp:1987 src/gui/windows/inventorywindow.cpp:262
+#: src/gui/popups/popupmenu.cpp:1783 src/gui/popups/popupmenu.cpp:1957
+#: src/gui/popups/popupmenu.cpp:2004 src/gui/windows/inventorywindow.cpp:262
 #: src/gui/windows/inventorywindow.cpp:285
 #: src/gui/windows/inventorywindow.cpp:885 src/gui/windows/setupwindow.cpp:103
 msgid "Store"
@@ -2347,63 +2347,63 @@ msgstr "Uložit"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add 10 item amount to storage
-#: src/gui/popups/popupmenu.cpp:1774
+#: src/gui/popups/popupmenu.cpp:1791
 msgid "Store 10"
 msgstr "Uschovat 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add half item amount to storage
-#: src/gui/popups/popupmenu.cpp:1779
+#: src/gui/popups/popupmenu.cpp:1796
 msgid "Store half"
 msgstr "Uschovat polovinu"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all except one item to storage
-#: src/gui/popups/popupmenu.cpp:1783
+#: src/gui/popups/popupmenu.cpp:1800
 msgid "Store all-1"
 msgstr "Ulož vše-1"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add all item amount to storage
-#: src/gui/popups/popupmenu.cpp:1787
+#: src/gui/popups/popupmenu.cpp:1804
 msgid "Store all"
 msgstr "Uschovat všechny"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: sub menu for craft
-#: src/gui/popups/popupmenu.cpp:1800
+#: src/gui/popups/popupmenu.cpp:1817
 msgid "Move to craft..."
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
 #. TRANSLATORS: storage button
-#: src/gui/popups/popupmenu.cpp:1809 src/gui/windows/inventorywindow.cpp:264
+#: src/gui/popups/popupmenu.cpp:1826 src/gui/windows/inventorywindow.cpp:264
 #: src/gui/windows/inventorywindow.cpp:287
 msgid "Retrieve"
 msgstr "Vzít"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get 10 item amount from storage
-#: src/gui/popups/popupmenu.cpp:1817
+#: src/gui/popups/popupmenu.cpp:1834
 msgid "Retrieve 10"
 msgstr "Vzít 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get half item amount from storage
-#: src/gui/popups/popupmenu.cpp:1822
+#: src/gui/popups/popupmenu.cpp:1839
 msgid "Retrieve half"
 msgstr "Vzít polovinu"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get all except one item amount from storage
-#: src/gui/popups/popupmenu.cpp:1826
+#: src/gui/popups/popupmenu.cpp:1843
 msgid "Retrieve all-1"
 msgstr "Vyber vše-1"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get all item amount from storage
-#: src/gui/popups/popupmenu.cpp:1830
+#: src/gui/popups/popupmenu.cpp:1847
 msgid "Retrieve all"
 msgstr "Vzít všechny"
 
@@ -2414,17 +2414,17 @@ msgstr "Vzít všechny"
 #. TRANSLATORS: default use button name
 #. TRANSLATORS: skills dialog button
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:1894 src/gui/popups/popupmenu.cpp:2793
+#: src/gui/popups/popupmenu.cpp:1911 src/gui/popups/popupmenu.cpp:2909
 #: src/gui/windows/inventorywindow.cpp:200
 #: src/gui/windows/inventorywindow.cpp:784 src/gui/windows/skilldialog.cpp:91
-#: src/gui/windows/skilldialog.cpp:166 src/gui/windows/skilldialog.cpp:377
-#: src/gui/windows/skilldialog.cpp:559 src/gui/windows/skilldialog.cpp:646
+#: src/gui/windows/skilldialog.cpp:166 src/gui/windows/skilldialog.cpp:382
+#: src/gui/windows/skilldialog.cpp:564 src/gui/windows/skilldialog.cpp:675
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
 msgid "Use"
 msgstr "Použít"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2004
+#: src/gui/popups/popupmenu.cpp:2021
 msgid "Clear drop window"
 msgstr "Vyčistit okno upuštění"
 
@@ -2433,43 +2433,43 @@ msgstr "Vyčistit okno upuštění"
 #. TRANSLATORS: hide player
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: hide npc
-#: src/gui/popups/popupmenu.cpp:2035 src/gui/popups/popupmenu.cpp:2097
-#: src/gui/popups/popupmenu.cpp:2951 src/gui/popups/popupmenu.cpp:2971
-#: src/gui/popups/popupmenu.cpp:3085
+#: src/gui/popups/popupmenu.cpp:2052 src/gui/popups/popupmenu.cpp:2114
+#: src/gui/popups/popupmenu.cpp:3067 src/gui/popups/popupmenu.cpp:3087
+#: src/gui/popups/popupmenu.cpp:3201
 msgid "Hide"
 msgstr "Skrýt"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2042 src/gui/popups/popupmenu.cpp:2104
+#: src/gui/popups/popupmenu.cpp:2059 src/gui/popups/popupmenu.cpp:2121
 msgid "Show"
 msgstr "Zobrazit"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2111
+#: src/gui/popups/popupmenu.cpp:2128
 msgid "Open yellow bar settings"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2113
+#: src/gui/popups/popupmenu.cpp:2130
 msgid "Reset yellow bar"
 msgstr "Resetovat žlutý pruh"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy status to chat
 #. TRANSLATORS: status window button
-#: src/gui/popups/popupmenu.cpp:2117 src/gui/windows/statuswindow.cpp:88
+#: src/gui/popups/popupmenu.cpp:2134 src/gui/windows/statuswindow.cpp:88
 msgid "Copy to chat"
 msgstr "Zkopírovat do chatu"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target up
-#: src/gui/popups/popupmenu.cpp:2160 src/gui/popups/popupmenu.cpp:2179
+#: src/gui/popups/popupmenu.cpp:2177 src/gui/popups/popupmenu.cpp:2196
 msgid "Move up"
 msgstr "Posunout nahoru"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move attack target down
-#: src/gui/popups/popupmenu.cpp:2166 src/gui/popups/popupmenu.cpp:2185
+#: src/gui/popups/popupmenu.cpp:2183 src/gui/popups/popupmenu.cpp:2202
 msgid "Move down"
 msgstr "Posunout dolů"
 
@@ -2477,175 +2477,245 @@ msgstr "Posunout dolů"
 #. TRANSLATORS: undress item from player
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: undress player
-#: src/gui/popups/popupmenu.cpp:2262 src/gui/popups/popupmenu.cpp:2696
+#: src/gui/popups/popupmenu.cpp:2279 src/gui/popups/popupmenu.cpp:2812
 msgid "Undress"
 msgstr "Svléknout"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: copy text to clipboard
-#: src/gui/popups/popupmenu.cpp:2284
+#: src/gui/popups/popupmenu.cpp:2301
 msgid "Copy"
 msgstr "Kopírovat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: paste text from clipboard
-#: src/gui/popups/popupmenu.cpp:2287
+#: src/gui/popups/popupmenu.cpp:2304
 msgid "Paste"
 msgstr "Vložit"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: open link in browser
-#: src/gui/popups/popupmenu.cpp:2306
+#: src/gui/popups/popupmenu.cpp:2323
 msgid "Open link"
 msgstr "Otevřít odkaz"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2324
+#: src/gui/popups/popupmenu.cpp:2341
 msgid "Show window"
 msgstr "Zobrazit okno"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2375
+#: src/gui/popups/popupmenu.cpp:2392
 msgid "Skill"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set skill level
-#: src/gui/popups/popupmenu.cpp:2379
-msgid "Set skill level"
+#: src/gui/popups/popupmenu.cpp:2396
+msgid "Skill level..."
+msgstr ""
+
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: set skill cast type
+#: src/gui/popups/popupmenu.cpp:2400
+msgid "Skill cast type..."
+msgstr ""
+
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: set skill cast offset by x
+#: src/gui/popups/popupmenu.cpp:2404
+msgid "Skill offset by x..."
+msgstr ""
+
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: set skill cast offset by y
+#: src/gui/popups/popupmenu.cpp:2408
+msgid "Skill offset by y..."
+msgstr ""
+
+#. TRANSLATORS: popup menu header
+#: src/gui/popups/popupmenu.cpp:2433
+msgid "Skill cast offset by x"
+msgstr ""
+
+#. TRANSLATORS: popup menu header
+#: src/gui/popups/popupmenu.cpp:2439
+msgid "Skill cast offset by y"
+msgstr ""
+
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: skill level header
+#: src/gui/popups/popupmenu.cpp:2479
+msgid "Select skill level"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: skill level
-#: src/gui/popups/popupmenu.cpp:2416
+#: src/gui/popups/popupmenu.cpp:2490
 msgid "Max level"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
+#. TRANSLATORS: skill cast type header
+#: src/gui/popups/popupmenu.cpp:2516
+msgid "Select skill cast type"
+msgstr ""
+
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: skill cast type
+#. TRANSLATORS: button in input settings tab
+#: src/gui/popups/popupmenu.cpp:2520 src/gui/popups/skillpopup.cpp:164
+#: src/gui/widgets/tabs/setup_input.cpp:69
+msgid "Default"
+msgstr "Výchozí"
+
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: skill cast type
+#. TRANSLATORS: debug window tab
+#: src/gui/popups/popupmenu.cpp:2524 src/gui/popups/skillpopup.cpp:168
+#: src/gui/windows/debugwindow.cpp:63
+msgid "Target"
+msgstr "Cíl"
+
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: skill cast type
+#: src/gui/popups/popupmenu.cpp:2528 src/gui/popups/skillpopup.cpp:172
+#, fuzzy
+msgid "Mouse position"
+msgstr "Automaticky upravit pozici"
+
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: skill cast type
+#. TRANSLATORS: Skill type
+#: src/gui/popups/popupmenu.cpp:2532 src/resources/skill/skilltypelist.h:39
+msgid "Self"
+msgstr "Svůj"
+
+#. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to disregarded list
-#: src/gui/popups/popupmenu.cpp:2463 src/gui/popups/popupmenu.cpp:2499
-#: src/gui/popups/popupmenu.cpp:2538 src/gui/popups/popupmenu.cpp:2556
+#: src/gui/popups/popupmenu.cpp:2579 src/gui/popups/popupmenu.cpp:2615
+#: src/gui/popups/popupmenu.cpp:2654 src/gui/popups/popupmenu.cpp:2672
 msgid "Disregard"
 msgstr "Přehlížet"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
 #. TRANSLATORS: confirm dialog button
-#: src/gui/popups/popupmenu.cpp:2466 src/gui/popups/popupmenu.cpp:2502
-#: src/gui/popups/popupmenu.cpp:2541 src/gui/windows/confirmdialog.cpp:62
+#: src/gui/popups/popupmenu.cpp:2582 src/gui/popups/popupmenu.cpp:2618
+#: src/gui/popups/popupmenu.cpp:2657 src/gui/windows/confirmdialog.cpp:62
 msgid "Ignore"
 msgstr "Ignorovat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to black list
-#: src/gui/popups/popupmenu.cpp:2469 src/gui/popups/popupmenu.cpp:2544
+#: src/gui/popups/popupmenu.cpp:2585 src/gui/popups/popupmenu.cpp:2660
 msgid "Black list"
 msgstr "Černá listina"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to enemy list
-#: src/gui/popups/popupmenu.cpp:2472 src/gui/popups/popupmenu.cpp:2505
+#: src/gui/popups/popupmenu.cpp:2588 src/gui/popups/popupmenu.cpp:2621
 msgid "Set as enemy"
 msgstr "Nastavit jako nepřítele"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to erased list
-#: src/gui/popups/popupmenu.cpp:2475 src/gui/popups/popupmenu.cpp:2508
-#: src/gui/popups/popupmenu.cpp:2520 src/gui/popups/popupmenu.cpp:2529
-#: src/gui/popups/popupmenu.cpp:2547
+#: src/gui/popups/popupmenu.cpp:2591 src/gui/popups/popupmenu.cpp:2624
+#: src/gui/popups/popupmenu.cpp:2636 src/gui/popups/popupmenu.cpp:2645
+#: src/gui/popups/popupmenu.cpp:2663
 msgid "Erase"
 msgstr "Vymazat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to friends list
-#: src/gui/popups/popupmenu.cpp:2485
+#: src/gui/popups/popupmenu.cpp:2601
 msgid "Be friend"
 msgstr "Být přátelé"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove player from ignore list
-#: src/gui/popups/popupmenu.cpp:2496 src/gui/popups/popupmenu.cpp:2514
-#: src/gui/popups/popupmenu.cpp:2526 src/gui/popups/popupmenu.cpp:2535
-#: src/gui/popups/popupmenu.cpp:2553
+#: src/gui/popups/popupmenu.cpp:2612 src/gui/popups/popupmenu.cpp:2630
+#: src/gui/popups/popupmenu.cpp:2642 src/gui/popups/popupmenu.cpp:2651
+#: src/gui/popups/popupmenu.cpp:2669
 msgid "Unignore"
 msgstr "Odignorovat"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2572
+#: src/gui/popups/popupmenu.cpp:2688
 msgid "Follow"
 msgstr "Následovat"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: imitate player
-#: src/gui/popups/popupmenu.cpp:2576
+#: src/gui/popups/popupmenu.cpp:2692
 msgid "Imitate"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: buy item
-#: src/gui/popups/popupmenu.cpp:2595 src/gui/popups/popupmenu.cpp:2619
+#: src/gui/popups/popupmenu.cpp:2711 src/gui/popups/popupmenu.cpp:2735
 msgid "Buy (?)"
 msgstr "Koupit (?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: sell item
-#: src/gui/popups/popupmenu.cpp:2607 src/gui/popups/popupmenu.cpp:2622
+#: src/gui/popups/popupmenu.cpp:2723 src/gui/popups/popupmenu.cpp:2738
 msgid "Sell (?)"
 msgstr "Prodat (?)"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to party
-#: src/gui/popups/popupmenu.cpp:2636 src/gui/popups/popupmenu.cpp:2661
+#: src/gui/popups/popupmenu.cpp:2752 src/gui/popups/popupmenu.cpp:2777
 msgid "Invite to party"
 msgstr "Pozvat do party"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to party
-#: src/gui/popups/popupmenu.cpp:2685
+#: src/gui/popups/popupmenu.cpp:2801
 #, c-format
 msgid "Join chat %s"
 msgstr "Připojit k chatu %s"
 
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2693
+#: src/gui/popups/popupmenu.cpp:2809
 msgid "Show Items"
 msgstr "Zobrazit předměty"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove item from pickup list
-#: src/gui/popups/popupmenu.cpp:2710
+#: src/gui/popups/popupmenu.cpp:2826
 msgid "Remove from pickup list"
 msgstr "Odeber ze seznamu sběru"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: popup menu item
-#: src/gui/popups/popupmenu.cpp:2717
+#: src/gui/popups/popupmenu.cpp:2833
 msgid "Add to pickup list"
 msgstr "Přidej do seznamu sběru"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: remove protection from item
-#: src/gui/popups/popupmenu.cpp:2769
+#: src/gui/popups/popupmenu.cpp:2885
 msgid "Unprotect item"
 msgstr "Přestat chránit předmět"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add protection to item
-#: src/gui/popups/popupmenu.cpp:2778
+#: src/gui/popups/popupmenu.cpp:2894
 msgid "Protect item"
 msgstr "Chránit předmět"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop item
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2808 src/gui/windows/inventorywindow.cpp:215
+#: src/gui/popups/popupmenu.cpp:2924 src/gui/windows/inventorywindow.cpp:215
 #: src/gui/windows/inventorywindow.cpp:893
 msgid "Drop..."
 msgstr "Upustit..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: drop all item amount
-#: src/gui/popups/popupmenu.cpp:2811
+#: src/gui/popups/popupmenu.cpp:2927
 msgid "Drop all"
 msgstr "Upustit vše"
 
@@ -2653,38 +2723,38 @@ msgstr "Upustit vše"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: long button name for drops window.
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2817 src/gui/windowmenu.cpp:140
+#: src/gui/popups/popupmenu.cpp:2933 src/gui/windowmenu.cpp:140
 #: src/gui/windows/inventorywindow.cpp:898
 msgid "Drop"
 msgstr "Upustit"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm commands
-#: src/gui/popups/popupmenu.cpp:2828
+#: src/gui/popups/popupmenu.cpp:2944
 msgid "GM..."
 msgstr "GM..."
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:2836
+#: src/gui/popups/popupmenu.cpp:2952
 #, c-format
 msgid "Show %s"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show player account info
-#: src/gui/popups/popupmenu.cpp:2840
+#: src/gui/popups/popupmenu.cpp:2956
 msgid "Account info"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show player level
-#: src/gui/popups/popupmenu.cpp:2843
+#: src/gui/popups/popupmenu.cpp:2959
 msgid "Level"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show player stats
-#: src/gui/popups/popupmenu.cpp:2846
+#: src/gui/popups/popupmenu.cpp:2962
 msgid "Stats"
 msgstr ""
 
@@ -2693,7 +2763,7 @@ msgstr ""
 #. TRANSLATORS: long button name for inventory window.
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
-#: src/gui/popups/popupmenu.cpp:2849 src/gui/windowmenu.cpp:106
+#: src/gui/popups/popupmenu.cpp:2965 src/gui/windowmenu.cpp:106
 #: src/gui/windows/inventorywindow.cpp:146
 #: src/resources/inventory/inventory.cpp:328
 msgid "Inventory"
@@ -2702,7 +2772,7 @@ msgstr "Inventář"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show player storage list
 #. TRANSLATORS: inventory type name
-#: src/gui/popups/popupmenu.cpp:2852 src/resources/inventory/inventory.cpp:333
+#: src/gui/popups/popupmenu.cpp:2968 src/resources/inventory/inventory.cpp:333
 msgid "Storage"
 msgstr "Sklad"
 
@@ -2711,7 +2781,7 @@ msgstr "Sklad"
 #. TRANSLATORS: long button name for cart window.
 #. TRANSLATORS: cart button tooltip
 #. TRANSLATORS: inventory type name
-#: src/gui/popups/popupmenu.cpp:2855 src/gui/windowmenu.cpp:110
+#: src/gui/popups/popupmenu.cpp:2971 src/gui/windowmenu.cpp:110
 #: src/gui/windows/inventorywindow.cpp:233
 #: src/resources/inventory/inventory.cpp:343
 msgid "Cart"
@@ -2720,31 +2790,31 @@ msgstr "Košík"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm commands
 #. TRANSLATORS: settings option
-#: src/gui/popups/popupmenu.cpp:2858 src/gui/widgets/tabs/setup_chat.cpp:87
+#: src/gui/popups/popupmenu.cpp:2974 src/gui/widgets/tabs/setup_chat.cpp:87
 msgid "Commands"
 msgstr "Příkazy"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm char commands
-#: src/gui/popups/popupmenu.cpp:2861
+#: src/gui/popups/popupmenu.cpp:2977
 msgid "Char commands"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: back to gm menu
-#: src/gui/popups/popupmenu.cpp:2864 src/gui/popups/popupmenu.cpp:3066
+#: src/gui/popups/popupmenu.cpp:2980 src/gui/popups/popupmenu.cpp:3182
 msgid "Back"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: find player position
-#: src/gui/popups/popupmenu.cpp:2878
+#: src/gui/popups/popupmenu.cpp:2994
 msgid "Locate"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: check player ip
-#: src/gui/popups/popupmenu.cpp:2884
+#: src/gui/popups/popupmenu.cpp:3000
 msgid "Check ip"
 msgstr "Zkontrolovat ip"
 
@@ -2752,7 +2822,7 @@ msgstr "Zkontrolovat ip"
 #. TRANSLATORS: go to player position
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: warp to npc
-#: src/gui/popups/popupmenu.cpp:2888 src/gui/popups/popupmenu.cpp:3096
+#: src/gui/popups/popupmenu.cpp:3004 src/gui/popups/popupmenu.cpp:3212
 msgid "Goto"
 msgstr "Jdi na"
 
@@ -2760,109 +2830,109 @@ msgstr "Jdi na"
 #. TRANSLATORS: recall player to current position
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: warp npc to player location
-#: src/gui/popups/popupmenu.cpp:2891 src/gui/popups/popupmenu.cpp:3090
+#: src/gui/popups/popupmenu.cpp:3007 src/gui/popups/popupmenu.cpp:3206
 msgid "Recall"
 msgstr "Zavolej zpět"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall all party members to player location
-#: src/gui/popups/popupmenu.cpp:2906
+#: src/gui/popups/popupmenu.cpp:3022
 msgid "Recall party"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall all guild members to player location
-#: src/gui/popups/popupmenu.cpp:2913
+#: src/gui/popups/popupmenu.cpp:3029
 msgid "Recall guild"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: give party leader status
-#: src/gui/popups/popupmenu.cpp:2924
+#: src/gui/popups/popupmenu.cpp:3040
 msgid "Give party leader"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show menu
-#: src/gui/popups/popupmenu.cpp:2939
+#: src/gui/popups/popupmenu.cpp:3055
 msgid "Show..."
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: mute menu
-#: src/gui/popups/popupmenu.cpp:2942
+#: src/gui/popups/popupmenu.cpp:3058
 msgid "Mute..."
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: enable immortal mode for player
-#: src/gui/popups/popupmenu.cpp:2962
+#: src/gui/popups/popupmenu.cpp:3078
 msgid "Immortal"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: send player to jail
-#: src/gui/popups/popupmenu.cpp:2965
+#: src/gui/popups/popupmenu.cpp:3081
 msgid "Jail"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: restore player from jail
-#: src/gui/popups/popupmenu.cpp:2968
+#: src/gui/popups/popupmenu.cpp:3084
 msgid "Unjail"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set player as killer
-#: src/gui/popups/popupmenu.cpp:2975
+#: src/gui/popups/popupmenu.cpp:3091
 msgid "Killer"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set player as killable
-#: src/gui/popups/popupmenu.cpp:2978
+#: src/gui/popups/popupmenu.cpp:3094
 msgid "Killable"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set player save position
-#: src/gui/popups/popupmenu.cpp:2981
+#: src/gui/popups/popupmenu.cpp:3097
 msgid "Set save"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: warp player to save position
-#: src/gui/popups/popupmenu.cpp:2984
+#: src/gui/popups/popupmenu.cpp:3100
 msgid "Warp to save"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: warp player to random position on same map
-#: src/gui/popups/popupmenu.cpp:2987
+#: src/gui/popups/popupmenu.cpp:3103
 msgid "Warp to random"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: spawn player clone
-#: src/gui/popups/popupmenu.cpp:2991
+#: src/gui/popups/popupmenu.cpp:3107
 msgid "Spawn clone"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: spawn slave player clone
-#: src/gui/popups/popupmenu.cpp:2994
+#: src/gui/popups/popupmenu.cpp:3110
 msgid "Spawn slave clone"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: spawn evil player clone
-#: src/gui/popups/popupmenu.cpp:2997
+#: src/gui/popups/popupmenu.cpp:3113
 msgid "Spawn evil clone"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: break guild
-#: src/gui/popups/popupmenu.cpp:3001
+#: src/gui/popups/popupmenu.cpp:3117
 msgid "Break guild"
 msgstr ""
 
@@ -2870,31 +2940,31 @@ msgstr ""
 #. TRANSLATORS: kick player
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick monster
-#: src/gui/popups/popupmenu.cpp:3008 src/gui/popups/popupmenu.cpp:3079
-#: src/gui/popups/popupmenu.cpp:3108
+#: src/gui/popups/popupmenu.cpp:3124 src/gui/popups/popupmenu.cpp:3195
+#: src/gui/popups/popupmenu.cpp:3224
 msgid "Kick"
 msgstr "Vykopnout"
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:3016
+#: src/gui/popups/popupmenu.cpp:3132
 #, c-format
 msgid "Mute %s"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: mute player
-#: src/gui/popups/popupmenu.cpp:3024 src/gui/popups/popupmenu.cpp:3028
-#: src/gui/popups/popupmenu.cpp:3032 src/gui/popups/popupmenu.cpp:3036
-#: src/gui/popups/popupmenu.cpp:3040
+#: src/gui/popups/popupmenu.cpp:3140 src/gui/popups/popupmenu.cpp:3144
+#: src/gui/popups/popupmenu.cpp:3148 src/gui/popups/popupmenu.cpp:3152
+#: src/gui/popups/popupmenu.cpp:3156
 #, c-format
 msgid "Mute %d"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: mute player
-#: src/gui/popups/popupmenu.cpp:3045 src/gui/popups/popupmenu.cpp:3049
-#: src/gui/popups/popupmenu.cpp:3053 src/gui/popups/popupmenu.cpp:3057
-#: src/gui/popups/popupmenu.cpp:3061
+#: src/gui/popups/popupmenu.cpp:3161 src/gui/popups/popupmenu.cpp:3165
+#: src/gui/popups/popupmenu.cpp:3169 src/gui/popups/popupmenu.cpp:3173
+#: src/gui/popups/popupmenu.cpp:3177
 #, c-format
 msgid "Unmute %d"
 msgstr ""
@@ -2903,19 +2973,19 @@ msgstr ""
 #. TRANSLATORS: disguise to npc
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: disguise to monster
-#: src/gui/popups/popupmenu.cpp:3093 src/gui/popups/popupmenu.cpp:3120
+#: src/gui/popups/popupmenu.cpp:3209 src/gui/popups/popupmenu.cpp:3236
 msgid "Disguise"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: spawn monster
-#: src/gui/popups/popupmenu.cpp:3111
+#: src/gui/popups/popupmenu.cpp:3227
 msgid "Spawn same"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: spawn slave monster
-#: src/gui/popups/popupmenu.cpp:3117
+#: src/gui/popups/popupmenu.cpp:3233
 msgid "Spawn slave"
 msgstr ""
 
@@ -2927,8 +2997,8 @@ msgstr ""
 #. TRANSLATORS: info message header
 #. TRANSLATORS: info header
 #. TRANSLATORS: info message
-#: src/gui/popups/popupmenu.cpp:3124 src/gui/popups/popupmenu.cpp:3143
-#: src/gui/popups/popupmenu.cpp:3156 src/gui/windows/charselectdialog.cpp:74
+#: src/gui/popups/popupmenu.cpp:3240 src/gui/popups/popupmenu.cpp:3259
+#: src/gui/popups/popupmenu.cpp:3272 src/gui/windows/charselectdialog.cpp:74
 #: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:419
 #: src/net/eathena/charserverrecv.cpp:455
 msgid "Info"
@@ -2936,62 +3006,81 @@ msgstr "Informace"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show selected monster in current map
-#: src/gui/popups/popupmenu.cpp:3127
+#: src/gui/popups/popupmenu.cpp:3243
 msgid "Search"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show selected monster spawns in all maps
-#: src/gui/popups/popupmenu.cpp:3131
+#: src/gui/popups/popupmenu.cpp:3247
 msgid "Search spawns"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show who drops item
-#: src/gui/popups/popupmenu.cpp:3146 src/gui/popups/popupmenu.cpp:3159
+#: src/gui/popups/popupmenu.cpp:3262 src/gui/popups/popupmenu.cpp:3275
 msgid "Who drops"
 msgstr ""
 
 #. TRANSLATORS: popup menu header
-#: src/gui/popups/popupmenu.cpp:3166
+#: src/gui/popups/popupmenu.cpp:3282
 msgid "GM commands"
 msgstr "GM příkazy"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: move current item to craft slot
-#: src/gui/popups/popupmenu.cpp:3239
+#: src/gui/popups/popupmenu.cpp:3355
 #, c-format
 msgid "Move to craft %d"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: open mail dialog
-#: src/gui/popups/popupmenu.cpp:3256
+#: src/gui/popups/popupmenu.cpp:3372
 msgid "Mail to..."
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: catch pet command
-#: src/gui/popups/popupmenu.cpp:3265
+#: src/gui/popups/popupmenu.cpp:3381
 msgid "Taming pet"
 msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: adopt child command
-#: src/gui/popups/popupmenu.cpp:3274
+#: src/gui/popups/popupmenu.cpp:3390
 msgid "Adopt child"
 msgstr ""
 
+#. TRANSLATORS: popup menu item
+#. TRANSLATORS: leave party
+#: src/gui/popups/popupmenu.cpp:3402
+#, fuzzy
+msgid "Leave party"
+msgstr "Opustit partu?"
+
 #. TRANSLATORS: skill level
-#: src/gui/popups/skillpopup.cpp:119
+#: src/gui/popups/skillpopup.cpp:138
 #, c-format
 msgid "Level: %d / %d"
 msgstr ""
 
 #. TRANSLATORS: skill level for tmw fake skills
-#: src/gui/popups/skillpopup.cpp:135
+#: src/gui/popups/skillpopup.cpp:154
 msgid "Level: Unknown"
 msgstr ""
+
+#. TRANSLATORS: skill cast type
+#: src/gui/popups/skillpopup.cpp:176
+#, fuzzy
+msgid "Self position"
+msgstr "Automaticky upravit pozici"
+
+#. TRANSLATORS: skill cast type
+#: src/gui/popups/skillpopup.cpp:188
+#, fuzzy, c-format
+msgid "Cast type: %s"
+msgstr "Typ: %s"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: status window tab name
@@ -3527,6 +3616,11 @@ msgstr "Jazyk"
 msgid "Party"
 msgstr "Parta"
 
+#. TRANSLATORS: chat error message
+#: src/gui/widgets/tabs/chat/partytab.cpp:72
+msgid "Party name is missing."
+msgstr "Chybí jméno party."
+
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
 #: src/gui/widgets/tabs/chat/partytab.cpp:99 src/resources/notifications.h:210
@@ -3535,15 +3629,13 @@ msgstr "Sdílení předmětů povoleno."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:104
-#: src/resources/notifications.h:214
+#: src/gui/widgets/tabs/chat/partytab.cpp:104 src/resources/notifications.h:214
 msgid "Item sharing disabled."
 msgstr "Sdílení předmětů zakázáno."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:109
-#: src/resources/notifications.h:218
+#: src/gui/widgets/tabs/chat/partytab.cpp:109 src/resources/notifications.h:218
 msgid "Item sharing not possible."
 msgstr "Sdílení předmětů není možné."
 
@@ -3554,22 +3646,19 @@ msgstr "Stav sdílení předmětů neznámý."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:150
-#: src/resources/notifications.h:198
+#: src/gui/widgets/tabs/chat/partytab.cpp:150 src/resources/notifications.h:198
 msgid "Experience sharing enabled."
 msgstr "Sdílení zkušeností povoleno."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:155
-#: src/resources/notifications.h:202
+#: src/gui/widgets/tabs/chat/partytab.cpp:155 src/resources/notifications.h:202
 msgid "Experience sharing disabled."
 msgstr "Sdílení zkušeností zakázáno."
 
 #. TRANSLATORS: chat message
 #. TRANSLATORS: notification message
-#: src/gui/widgets/tabs/chat/partytab.cpp:160
-#: src/resources/notifications.h:206
+#: src/gui/widgets/tabs/chat/partytab.cpp:160 src/resources/notifications.h:206
 msgid "Experience sharing not possible."
 msgstr "Sdílení zkušeností není možné."
 
@@ -4010,15 +4099,15 @@ msgstr "Chránít zaměření chatu"
 msgid ""
 "Enables aggressive protection of input focus in chat window.\n"
 "\n"
-"Note: no other text inputs will be allowed to receive text input when you typing in chat window."
+"Note: no other text inputs will be allowed to receive text input when you "
+"typing in chat window."
 msgstr ""
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: settings colors tab name
 #. TRANSLATORS: emotes tab name
 #: src/gui/widgets/tabs/setup_chat.cpp:67
-#: src/gui/widgets/tabs/setup_colors.cpp:86
-#: src/gui/windows/emotewindow.cpp:117
+#: src/gui/widgets/tabs/setup_colors.cpp:86 src/gui/windows/emotewindow.cpp:117
 msgid "Colors"
 msgstr "Barvy"
 
@@ -4042,9 +4131,11 @@ msgstr "Zobrazit seznam barev"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:79
 msgid ""
-"Enable this setting to show color selection drop-down in chat window. Chat window will display color selection drop-down.\n"
+"Enable this setting to show color selection drop-down in chat window. Chat "
+"window will display color selection drop-down.\n"
 "\n"
-"It allows one to select default color of outgoing chat messages easily, but also occupies some space in chat window."
+"It allows one to select default color of outgoing chat messages easily, but "
+"also occupies some space in chat window."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4071,9 +4162,11 @@ msgstr "Omezit maximum znaků na řádek"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:103
 msgid ""
-"Limits how many characters will be shown in longest lines of text displayed in chat.\n"
+"Limits how many characters will be shown in longest lines of text displayed "
+"in chat.\n"
 "\n"
-"Note: long lines can make client slower. Lines longer than this limit will be truncated."
+"Note: long lines can make client slower. Lines longer than this limit will "
+"be truncated."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4084,7 +4177,9 @@ msgstr "Omezit počet řádků chatu"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:112
 msgid ""
-"Limits how many lines chat will keep in scrollback buffer. Chat keeps specified number of last lines of text. Oldest lines exceeding this limit are discarded from scrollback buffer.\n"
+"Limits how many lines chat will keep in scrollback buffer. Chat keeps "
+"specified number of last lines of text. Oldest lines exceeding this limit "
+"are discarded from scrollback buffer.\n"
 "\n"
 "Note: keeping too many lines in scroll buffer can slow client down."
 msgstr ""
@@ -4125,8 +4220,8 @@ msgstr "Zobrazovat historii chatu"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:139
 msgid ""
-"If this setting enabled, client will load old chat tabs content from logs on"
-" startup instead of starting with empty chat tabs."
+"If this setting enabled, client will load old chat tabs content from logs on "
+"startup instead of starting with empty chat tabs."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4137,9 +4232,11 @@ msgstr "Zobrazit zprávy o připojení party"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:146
 msgid ""
-"If this setting is enabled, online status changes of party members will be shown in party tab of chat.\n"
+"If this setting is enabled, online status changes of party members will be "
+"shown in party tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows one to see when your buddies are coming online."
+"This adds some extra noise to chat, but allows one to see when your buddies "
+"are coming online."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4150,9 +4247,11 @@ msgstr "Zobrazit zprávy o připojení gildy"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:154
 msgid ""
-"If this setting is enabled, online status changes of guild members will be shown in guild tab of chat.\n"
+"If this setting is enabled, online status changes of guild members will be "
+"shown in guild tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows one to see when your buddies are coming online."
+"This adds some extra noise to chat, but allows one to see when your buddies "
+"are coming online."
 msgstr ""
 
 #. TRANSLATORS: settings group
@@ -4168,9 +4267,13 @@ msgstr "Skrýt obchodní zprávy"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:166
 msgid ""
-"If this setting enabled, no messages related to built-in ManaPlus shop will be displayed in chat. Disable this setting if you want to see shop-related messages.\n"
+"If this setting enabled, no messages related to built-in ManaPlus shop will "
+"be displayed in chat. Disable this setting if you want to see shop-related "
+"messages.\n"
 "\n"
-"Note: technically, ManaPlus shop implemented as usual private messages with special content. If you disable this setting, you will be able to see these messages and get idea when other players are looking at your shop."
+"Note: technically, ManaPlus shop implemented as usual private messages with "
+"special content. If you disable this setting, you will be able to see these "
+"messages and get idea when other players are looking at your shop."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4183,7 +4286,8 @@ msgstr "Zobrazit MVP zprávy"
 msgid ""
 "Enable this setting to see MVP messages from server.\n"
 "\n"
-"Note: MVP messages are not used on TMW/Evol/etc servers, so this feature usually makes little difference."
+"Note: MVP messages are not used on TMW/Evol/etc servers, so this feature "
+"usually makes little difference."
 msgstr ""
 
 #. TRANSLATORS: settings group
@@ -4202,9 +4306,12 @@ msgstr "Všecha šeptání jako záložky"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:189
 msgid ""
-"If this setting enabled, all whispers (private messages) will be placed in separate tabs, separate tab for each player. If this setting disabled, all whispers will appear in General tab.\n"
+"If this setting enabled, all whispers (private messages) will be placed in "
+"separate tabs, separate tab for each player. If this setting disabled, all "
+"whispers will appear in General tab.\n"
 "\n"
-"Note: putting all whispers to single General tab is known to be confusing. Think twice before disabling this feature."
+"Note: putting all whispers to single General tab is known to be confusing. "
+"Think twice before disabling this feature."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4215,7 +4322,8 @@ msgstr "Zaznamenávat zprávy o magii v debug záložce"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:199
 msgid ""
-"If this setting is enabled, spell invocation will be shown in Debug tab. If disabled, it will be shown in General tab instead.\n"
+"If this setting is enabled, spell invocation will be shown in Debug tab. If "
+"disabled, it will be shown in General tab instead.\n"
 "\n"
 "Note: it does not affects server replies related to spells."
 msgstr ""
@@ -4228,9 +4336,11 @@ msgstr "Zobrazovat serverové zprávy v debug záložce"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:207
 msgid ""
-"If this setting is enabled, server messages will be shown in Debug tab of chat. If disabled, server messages will appear in General chat instead.\n"
+"If this setting is enabled, server messages will be shown in Debug tab of "
+"chat. If disabled, server messages will appear in General chat instead.\n"
 "\n"
-"Note: according to 4144, disabling this could also make you to lose some debug messages from client in Debug tab since these are fake server messages."
+"Note: according to 4144, disabling this could also make you to lose some "
+"debug messages from client in Debug tab since these are fake server messages."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4255,9 +4365,11 @@ msgstr "Povolit GM záložku"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:226
 msgid ""
-"If enabled, GM tab will appear in chat. It displays text related GM activity.\n"
+"If enabled, GM tab will appear in chat. It displays text related GM "
+"activity.\n"
 "\n"
-"Note: this setting only makes difference for GMs (Game Masters) since this tab only appears for GMs."
+"Note: this setting only makes difference for GMs (Game Masters) since this "
+"tab only appears for GMs."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4268,7 +4380,8 @@ msgstr "Povolit záložku jazyka"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:234
 msgid ""
-"If this feature enabled, language tab will appear if server supports this feature.\n"
+"If this feature enabled, language tab will appear if server supports this "
+"feature.\n"
 "\n"
 "Note: only supported by Evol server yet."
 msgstr ""
@@ -4281,7 +4394,9 @@ msgstr "Zobrazit zprávy všech jazyků"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:242
 msgid ""
-"If this setting enabled and server supports different chats for different languages, you will see messages for all languages, regardless of your language preferences.\n"
+"If this setting enabled and server supports different chats for different "
+"languages, you will see messages for all languages, regardless of your "
+"language preferences.\n"
 "\n"
 "Note: it only works on servers supporting language tabs feature, like Evol."
 msgstr ""
@@ -4294,7 +4409,9 @@ msgstr "Zapnout bitevní záložku"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:252
 msgid ""
-"If this setting enabled, Battle tab will appear in chat. This tab will contain messages related to battles, like damage and experience gain, if battle messages are enabled.\n"
+"If this setting enabled, Battle tab will appear in chat. This tab will "
+"contain messages related to battles, like damage and experience gain, if "
+"battle messages are enabled.\n"
 "\n"
 "Note: client restart required to take effect."
 msgstr ""
@@ -4320,7 +4437,10 @@ msgstr "Změnit velikost záložek pokud nutno"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:269
 msgid ""
-"If this feature enabled, text in chat will be automatically adjusted to adapt to appearance of chat input field when you typing message and when input field of chat disappears. If disabled, chat input area will always occupy its place, which could be otherwise usable for text.\n"
+"If this feature enabled, text in chat will be automatically adjusted to "
+"adapt to appearance of chat input field when you typing message and when "
+"input field of chat disappears. If disabled, chat input area will always "
+"occupy its place, which could be otherwise usable for text.\n"
 "\n"
 "Note: its mostly about jumpy attitude vs less usable space for text."
 msgstr ""
@@ -4355,7 +4475,8 @@ msgstr "Zvýrazňovaná slova (oddělená čárkou)"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:299
 msgid ""
-"Here you can specify some extra words which will also cause highlighting. Use comma to separate words.\n"
+"Here you can specify some extra words which will also cause highlighting. "
+"Use comma to separate words.\n"
 "\n"
 "Note: frequent highlights are annoying - use it with caution."
 msgstr ""
@@ -4368,7 +4489,8 @@ msgstr "Globálně ignorovaná jména (oddělená čárkou)"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:307
 msgid ""
-"This setting allows you to ignore some global messages if particular sender (NPC, GM) annoys you too much. Global will be moved to Debug instead.\n"
+"This setting allows you to ignore some global messages if particular sender "
+"(NPC, GM) annoys you too much. Global will be moved to Debug instead.\n"
 "\n"
 "Note: careless use of this feature can make you to miss important announces!"
 msgstr ""
@@ -4381,9 +4503,12 @@ msgstr "Zobrazit knoflík pro smajlíky v chatu"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:316
 msgid ""
-"If this setting enabled, button will appear near text input field. This button allows one to invoke composing window, which allows one to insert smiles and text formatting easily.\n"
+"If this setting enabled, button will appear near text input field. This "
+"button allows one to invoke composing window, which allows one to insert "
+"smiles and text formatting easily.\n"
 "\n"
-"Note: same window can also be invoked by hotkey when typing, usually F1 by default."
+"Note: same window can also be invoked by hotkey when typing, usually F1 by "
+"default."
 msgstr ""
 
 #. TRANSLATORS: settings option
@@ -4472,11 +4597,6 @@ msgid "Unassign"
 msgstr "Odebrat"
 
 #. TRANSLATORS: button in input settings tab
-#: src/gui/widgets/tabs/setup_input.cpp:69
-msgid "Default"
-msgstr "Výchozí"
-
-#. TRANSLATORS: button in input settings tab
 #: src/gui/widgets/tabs/setup_input.cpp:71
 msgid "Reset all keys"
 msgstr "Resetovat všecky klávesy"
@@ -4497,7 +4617,9 @@ msgstr "Kolize kláves detekována/y."
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
-msgstr "Konflikt klávesy \"%s\" a klávesy \"%s\". Vyřeš jej, neboť se hra může chovat podivně."
+msgstr ""
+"Konflikt klávesy \"%s\" a klávesy \"%s\". Vyřeš jej, neboť se hra může "
+"chovat podivně."
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
@@ -5045,7 +5167,9 @@ msgstr "HW akcelerace"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:74
 msgid "Enable opacity cache (Software, can use much memory)"
-msgstr "Povolit vyrovnávací pamět průhlednosti (Softwarově, může používat hodně paměti)"
+msgstr ""
+"Povolit vyrovnávací pamět průhlednosti (Softwarově, může používat hodně "
+"paměti)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:79
@@ -5130,12 +5254,15 @@ msgstr "Zapni atlasy textur (OpenGL)"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:150
 msgid "Cache all sprites per map (can use additional memory)"
-msgstr "Načítat veškeré obrázky pro mapu do vyrovnávací paměti (může používat více paměti)"
+msgstr ""
+"Načítat veškeré obrázky pro mapu do vyrovnávací paměti (může používat více "
+"paměti)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:155
 msgid "Cache all sounds (can use additional memory)"
-msgstr "Uchovávat všechny zvuky ve vyrovnávací paměti (může používat více paměti)"
+msgstr ""
+"Uchovávat všechny zvuky ve vyrovnávací paměti (může používat více paměti)"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_perfomance.cpp:160
@@ -5266,7 +5393,9 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_players.cpp:143
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
-msgstr "Emulovat prave kliknutí tlačítka myši dlouhým klinutím myši (užitečné pro dotyková rozhraní)"
+msgstr ""
+"Emulovat prave kliknutí tlačítka myši dlouhým klinutím myši (užitečné pro "
+"dotyková rozhraní)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:148
@@ -5545,13 +5674,16 @@ msgstr "Žádné"
 #: src/gui/widgets/tabs/setup_video.cpp:233
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
-msgstr "Selhalo přepnutí do módu v okně a obnovení předchozího módu taktéž selhalo!"
+msgstr ""
+"Selhalo přepnutí do módu v okně a obnovení předchozího módu taktéž selhalo!"
 
 #. TRANSLATORS: video error message
 #: src/gui/widgets/tabs/setup_video.cpp:240
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
-msgstr "Selhalo přepnutí do módu celé obrazovky a obnovení předchozího módu taktéž selhalo!"
+msgstr ""
+"Selhalo přepnutí do módu celé obrazovky a obnovení předchozího módu taktéž "
+"selhalo!"
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:253
@@ -5761,70 +5893,70 @@ msgid "Atk"
 msgstr "FÚ"
 
 #. TRANSLATORS: mobs group name in social window
-#: src/gui/widgets/tabs/socialattacktab.h:65
+#: src/gui/widgets/tabs/socialattacktab.h:66
 msgid "Priority mobs"
 msgstr "Prioritní monstra"
 
 #. TRANSLATORS: mobs group name in social window
-#: src/gui/widgets/tabs/socialattacktab.h:67
+#: src/gui/widgets/tabs/socialattacktab.h:68
 msgid "Attack mobs"
 msgstr "Útočit na monstra"
 
 #. TRANSLATORS: mobs group name in social window
-#: src/gui/widgets/tabs/socialattacktab.h:69
+#: src/gui/widgets/tabs/socialattacktab.h:70
 msgid "Ignore mobs"
 msgstr "Ignorovat monstra"
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialfriendstab.h:114
+#: src/gui/widgets/tabs/socialfriendstab.h:115
 #, c-format
 msgid "Friends: %u/%u"
 msgstr "Přátelé: %u/%u"
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialguildtab2.h:97
-#: src/gui/widgets/tabs/socialguildtab.h:166
-#: src/gui/widgets/tabs/socialpartytab.h:159
+#: src/gui/widgets/tabs/socialguildtab2.h:98
+#: src/gui/widgets/tabs/socialguildtab.h:167
+#: src/gui/widgets/tabs/socialpartytab.h:160
 #, c-format
 msgid "Players: %u/%u"
 msgstr "Hráči: %u/%u"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/socialguildtab.h:84
+#: src/gui/widgets/tabs/socialguildtab.h:85
 #, c-format
 msgid "Invited user %s to guild %s."
 msgstr "Pozvali jste %s do gildy %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/socialguildtab.h:102
+#: src/gui/widgets/tabs/socialguildtab.h:103
 #, c-format
 msgid "Guild %s quit requested."
 msgstr "Požadován odchod z gildy %s."
 
 #. TRANSLATORS: guild invite message
-#: src/gui/widgets/tabs/socialguildtab.h:118
+#: src/gui/widgets/tabs/socialguildtab.h:119
 msgid "Member Invite to Guild"
 msgstr "Člen pozval do gildy"
 
 #. TRANSLATORS: guild invite message
-#: src/gui/widgets/tabs/socialguildtab.h:120
+#: src/gui/widgets/tabs/socialguildtab.h:121
 #, c-format
 msgid "Who would you like to invite to guild %s?"
 msgstr "Koho byste rád pozval do gildy %s?"
 
 #. TRANSLATORS: guild leave message
-#: src/gui/widgets/tabs/socialguildtab.h:130
+#: src/gui/widgets/tabs/socialguildtab.h:131
 msgid "Leave Guild?"
 msgstr "Opustit gildu?"
 
 #. TRANSLATORS: guild leave message
-#: src/gui/widgets/tabs/socialguildtab.h:132
+#: src/gui/widgets/tabs/socialguildtab.h:133
 #, c-format
 msgid "Are you sure you want to leave guild %s?"
 msgstr "Jste si jisti že chcete opustit gildu %s?"
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialguildtab.h:142
+#: src/gui/widgets/tabs/socialguildtab.h:143
 #, c-format
 msgid "Members: %u/%u"
 msgstr "Členové: %u/%u"
@@ -5836,41 +5968,41 @@ msgid "Nav"
 msgstr "Nav"
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialnavigationtab.h:161
+#: src/gui/widgets/tabs/socialnavigationtab.h:162
 #, c-format
 msgid "Portals: %u/%u"
 msgstr "Portály: %u/%u"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/socialpartytab.h:86
+#: src/gui/widgets/tabs/socialpartytab.h:87
 #, c-format
 msgid "Invited user %s to party."
 msgstr "Hráč %s pozván do party."
 
 #. TRANSLATORS: tab in social window
-#: src/gui/widgets/tabs/socialpartytab.h:103
+#: src/gui/widgets/tabs/socialpartytab.h:104
 #, c-format
 msgid "Party %s quit requested."
 msgstr "Odchod z party %s vyžádán."
 
 #. TRANSLATORS: party invite message
-#: src/gui/widgets/tabs/socialpartytab.h:119
+#: src/gui/widgets/tabs/socialpartytab.h:120
 msgid "Member Invite to Party"
 msgstr "Přijetí člena do party"
 
 #. TRANSLATORS: party invite message
-#: src/gui/widgets/tabs/socialpartytab.h:121
+#: src/gui/widgets/tabs/socialpartytab.h:122
 #, c-format
 msgid "Who would you like to invite to party %s?"
 msgstr "Koho chceš pozvat do party %s?"
 
 #. TRANSLATORS: party leave message
-#: src/gui/widgets/tabs/socialpartytab.h:131
+#: src/gui/widgets/tabs/socialpartytab.h:132
 msgid "Leave Party?"
 msgstr "Opustit partu?"
 
 #. TRANSLATORS: party leave message
-#: src/gui/widgets/tabs/socialpartytab.h:133
+#: src/gui/widgets/tabs/socialpartytab.h:134
 #, c-format
 msgid "Are you sure you want to leave party %s?"
 msgstr "Opravdu chceš opustit partu %s?"
@@ -5882,17 +6014,17 @@ msgid "Pik"
 msgstr "Sb"
 
 #. TRANSLATORS: items group name in social window
-#: src/gui/widgets/tabs/socialpickuptab.h:65
+#: src/gui/widgets/tabs/socialpickuptab.h:66
 msgid "Pickup items"
 msgstr "Sbírej věci"
 
 #. TRANSLATORS: items group name in social window
-#: src/gui/widgets/tabs/socialpickuptab.h:67
+#: src/gui/widgets/tabs/socialpickuptab.h:68
 msgid "Ignore items"
 msgstr "Ignoruj věci"
 
 #. TRANSLATORS: social window label
-#: src/gui/widgets/tabs/socialplayerstab.h:188
+#: src/gui/widgets/tabs/socialplayerstab.h:189
 #, c-format
 msgid "Visible players: %d"
 msgstr "Viditelní hráči: %d"
@@ -6125,10 +6257,8 @@ msgstr "Počet:"
 #. TRANSLATORS: buy dialog button
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
-#. TRANSLATORS: social window button
 #: src/gui/windows/buydialog.cpp:281 src/gui/windows/charcreatedialog.cpp:112
 #: src/gui/windows/charselectdialog.cpp:609
-#: src/gui/windows/socialwindow.cpp:77
 msgid "Create"
 msgstr "Vytvořit"
 
@@ -6245,8 +6375,7 @@ msgstr "^"
 #: src/gui/windows/charcreatedialog.cpp:196
 #: src/gui/windows/charcreatedialog.cpp:209
 #: src/gui/windows/charcreatedialog.cpp:220
-#: src/gui/windows/charcreatedialog.cpp:230
-#: src/gui/windows/outfitwindow.cpp:65
+#: src/gui/windows/charcreatedialog.cpp:230 src/gui/windows/outfitwindow.cpp:65
 msgid ">"
 msgstr ">"
 
@@ -6264,8 +6393,7 @@ msgstr "Rozdělte prosím %d bodů"
 #: src/gui/windows/charcreatedialog.cpp:200
 #: src/gui/windows/charcreatedialog.cpp:211
 #: src/gui/windows/charcreatedialog.cpp:222
-#: src/gui/windows/charcreatedialog.cpp:232
-#: src/gui/windows/outfitwindow.cpp:63
+#: src/gui/windows/charcreatedialog.cpp:232 src/gui/windows/outfitwindow.cpp:63
 msgid "<"
 msgstr "<"
 
@@ -6291,8 +6419,7 @@ msgstr "Vzhled:"
 
 #. TRANSLATORS: one char size female character gender
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/charcreatedialog.cpp:251
-#: src/gui/windows/socialwindow.cpp:73
+#: src/gui/windows/charcreatedialog.cpp:251 src/gui/windows/socialwindow.cpp:72
 msgid "F"
 msgstr "P"
 
@@ -6391,7 +6518,12 @@ msgid ""
 "Level: %u\n"
 "Experience: %u\n"
 "Money: %s"
-msgstr "Život: %u/%u\nMana: %u/%u\nÚroveň: %u\nZkušenost: %u\nPeníze: %s"
+msgstr ""
+"Život: %u/%u\n"
+"Mana: %u/%u\n"
+"Úroveň: %u\n"
+"Zkušenost: %u\n"
+"Peníze: %s"
 
 #. TRANSLATORS: error message
 #: src/gui/windows/charselectdialog.cpp:299
@@ -6457,11 +6589,6 @@ msgid "Yes"
 msgstr "Ano"
 
 #. TRANSLATORS: debug window tab
-#: src/gui/windows/debugwindow.cpp:63
-msgid "Target"
-msgstr "Cíl"
-
-#. TRANSLATORS: debug window tab
 #: src/gui/windows/debugwindow.cpp:65
 msgid "Net"
 msgstr "Síť"
@@ -6493,8 +6620,7 @@ msgstr "Upravit server"
 
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/editserverdialog.cpp:57
-#: src/gui/windows/serverdialog.cpp:106
+#: src/gui/windows/editserverdialog.cpp:57 src/gui/windows/serverdialog.cpp:106
 msgid "Connect"
 msgstr "Připojit"
 
@@ -6563,8 +6689,8 @@ msgstr "Písma"
 #. TRANSLATORS: unknown equipment page name
 #. TRANSLATORS: unknown hosts group name
 #. TRANSLATORS: Skill type
-#: src/gui/windows/equipmentwindow.cpp:672
-#: src/gui/windows/serverdialog.cpp:455 src/resources/skill/skillinfo.cpp:118
+#: src/gui/windows/equipmentwindow.cpp:672 src/gui/windows/serverdialog.cpp:455
+#: src/resources/skill/skillinfo.cpp:121
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -6862,15 +6988,13 @@ msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:61
-#: src/gui/windows/mailviewwindow.cpp:105
+#: src/gui/windows/maileditwindow.cpp:61 src/gui/windows/mailviewwindow.cpp:105
 msgid "Money:"
 msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view item label
-#: src/gui/windows/maileditwindow.cpp:63
-#: src/gui/windows/mailviewwindow.cpp:124
+#: src/gui/windows/maileditwindow.cpp:63 src/gui/windows/mailviewwindow.cpp:124
 #: src/gui/windows/mailviewwindow.cpp:133
 msgid "Item:"
 msgstr ""
@@ -7272,172 +7396,137 @@ msgid "Up"
 msgstr "Zvýšit"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:208
+#: src/gui/windows/skilldialog.cpp:213
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Dovednostních bodů: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:311
+#: src/gui/windows/skilldialog.cpp:316
 #, c-format
 msgid "Skill Set %d"
 msgstr "Dovednost nastavena %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:365
+#: src/gui/windows/skilldialog.cpp:370
 #, c-format
 msgid "Skill %d"
 msgstr "Dovednost %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:416
+#: src/gui/windows/skilldialog.cpp:421
 #, c-format
 msgid "Skill %u"
 msgstr ""
 
 #. TRANSLATORS: skills dialog. skill level
 #. TRANSLATORS: skill level
-#: src/gui/windows/skilldialog.cpp:554 src/resources/skill/skillinfo.cpp:101
+#: src/gui/windows/skilldialog.cpp:559 src/resources/skill/skillinfo.cpp:104
 #, c-format
 msgid "Lvl: %d"
 msgstr "Úroveň: %d"
 
 #. TRANSLATORS: skill error message
-#: src/gui/windows/skilldialog.cpp:561
+#: src/gui/windows/skilldialog.cpp:566
 #, c-format
 msgid "Failed skill: %s"
 msgstr "Neúspěšná dovednost: %s"
 
 #. TRANSLATORS: text skill dialog header
-#: src/gui/windows/skilldialog.cpp:825
+#: src/gui/windows/skilldialog.cpp:932 src/gui/windows/skilldialog.cpp:996
+#: src/gui/windows/skilldialog.cpp:1115
 #, c-format
 msgid "Add text to skill %s"
 msgstr ""
 
 #. TRANSLATORS: text skill dialog field
-#: src/gui/windows/skilldialog.cpp:828
+#: src/gui/windows/skilldialog.cpp:935 src/gui/windows/skilldialog.cpp:999
+#: src/gui/windows/skilldialog.cpp:1118
 msgid "Text: "
 msgstr ""
 
 #. TRANSLATORS: here P is title for visible players tab in social window
-#: src/gui/windows/socialwindow.cpp:68
+#: src/gui/windows/socialwindow.cpp:67
 msgid "P"
 msgstr "H"
 
 #. TRANSLATORS: social window button
-#: src/gui/windows/socialwindow.cpp:79
-msgid "Invite"
-msgstr "Pozvat"
+#: src/gui/windows/socialwindow.cpp:75
+msgid "Menu"
+msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:270
+#: src/gui/windows/socialwindow.cpp:261
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "Přijato pozvání do party od %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:282
+#: src/gui/windows/socialwindow.cpp:273
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "Odmítnuto přijetí do party od %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:300
+#: src/gui/windows/socialwindow.cpp:291
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "Přijato pozvání do gildy od %s."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:319
+#: src/gui/windows/socialwindow.cpp:310
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "Odmítnuto pozvání do gildy od %s."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:367
-#, c-format
-msgid "Creating guild called %s."
-msgstr "Vytvářím gildu s názvem %s."
-
-#. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:392
-#, c-format
-msgid "Creating party called %s."
-msgstr "Vytvářím partu s názvem %s."
-
-#. TRANSLATORS: guild creation message
-#: src/gui/windows/socialwindow.cpp:409
-msgid "Guild Name"
-msgstr "Název gildy"
-
-#. TRANSLATORS: guild creation message
-#: src/gui/windows/socialwindow.cpp:411
-msgid "Choose your guild's name."
-msgstr "Zvolte jméno vaší gildy."
-
-#. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:426
 msgid "Received guild request, but one already exists."
 msgstr "Obdržen požadavek na vytvoření gildy, ale tato již existuje."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:435
+#: src/gui/windows/socialwindow.cpp:376
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s vás zve ke vstupu do gildy %s."
 
 #. TRANSLATORS: guild invite message
-#: src/gui/windows/socialwindow.cpp:443
+#: src/gui/windows/socialwindow.cpp:384
 msgid "Accept Guild Invite"
 msgstr "Přílmout pozvání do gildy"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/socialwindow.cpp:463
+#: src/gui/windows/socialwindow.cpp:404
 msgid "Received party request, but one already exists."
 msgstr "Obdržen požadavek na vytvoření party, ale tato již existuje."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:476
+#: src/gui/windows/socialwindow.cpp:417
 msgid "You have been invited you to join a party."
 msgstr "Byli jste pozváni k připojení se do party."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:481
+#: src/gui/windows/socialwindow.cpp:422
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "Byli jste pozváni k připojení se do party %s."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:490
+#: src/gui/windows/socialwindow.cpp:431
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s vás pozval ke vstupu do jeho party."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:496
+#: src/gui/windows/socialwindow.cpp:437
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s vás zve ke vstupu do party: %s."
 
 #. TRANSLATORS: party invite message
-#: src/gui/windows/socialwindow.cpp:507
+#: src/gui/windows/socialwindow.cpp:448
 msgid "Accept Party Invite"
 msgstr "Přijmout pozvání do party"
-
-#. TRANSLATORS: party creation error
-#: src/gui/windows/socialwindow.cpp:529
-msgid "Cannot create party. You are already in a party"
-msgstr "Nemohu vytvořit partu. Již jste členem party."
-
-#. TRANSLATORS: party creation message
-#: src/gui/windows/socialwindow.cpp:542
-msgid "Party Name"
-msgstr "Jméno party"
-
-#. TRANSLATORS: party creation message
-#: src/gui/windows/socialwindow.cpp:544
-msgid "Choose your party's name."
-msgstr "Zvolte jméno vaší party."
 
 #. TRANSLATORS: status window label
 #: src/gui/windows/statuswindow.cpp:76
@@ -7578,8 +7667,7 @@ msgstr "Nemáš dost peněz."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:526
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr "Přidání věci selhalo. Nelze předávat stejný předmět v jednom okně."
 
 #. TRANSLATORS: trade error
@@ -7665,25 +7753,25 @@ msgstr "Vyber svět"
 #. TRANSLATORS: long key name. must be short.
 #. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
-#: src/input/inputmanager.cpp:395 src/input/inputmanager.cpp:438
+#: src/input/inputmanager.cpp:396 src/input/inputmanager.cpp:439
 #: src/input/keyboardconfig.cpp:101
 #, c-format
 msgid "key_%d"
 msgstr "kl_%d"
 
 #. TRANSLATORS: long joystick button name. must be short.
-#: src/input/inputmanager.cpp:401
+#: src/input/inputmanager.cpp:402
 #, c-format
 msgid "JButton%d"
 msgstr "Jknoflík%d"
 
 #. TRANSLATORS: unknown long key type
-#: src/input/inputmanager.cpp:415
+#: src/input/inputmanager.cpp:416
 msgid "unknown key"
 msgstr "neznámá klávesa"
 
 #. TRANSLATORS: short joystick button name. muse be very short
-#: src/input/inputmanager.cpp:444
+#: src/input/inputmanager.cpp:445
 #, c-format
 msgid "JB%d"
 msgstr "JK%d"
@@ -7691,7 +7779,7 @@ msgstr "JK%d"
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:458 src/input/keyboardconfig.cpp:145
+#: src/input/inputmanager.cpp:459 src/input/keyboardconfig.cpp:145
 msgid "u key"
 msgstr "n kl"
 
@@ -8520,7 +8608,9 @@ msgstr "Vypsat verzi OpenGL do chatu"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:370
 msgid "Print enabled mods in chat"
-msgstr "Vypsa\nt povolené mody do chatu"
+msgstr ""
+"Vypsa\n"
+"t povolené mody do chatu"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:376
@@ -8849,7 +8939,9 @@ msgstr "Neznámá chyba postavy na serveru."
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:75
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Nelze vytvořit postavu. Nejpravděpodobněji její jméno již na serveru existuje."
+msgstr ""
+"Nelze vytvořit postavu. Nejpravděpodobněji její jméno již na serveru "
+"existuje."
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:80 src/net/ea/loginrecv.cpp:160
@@ -9007,7 +9099,9 @@ msgstr ""
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
-msgstr "Byl jste dočasně vyloučen ze hry do %s.\nProsím kontaktujte GM team přes fórum."
+msgstr ""
+"Byl jste dočasně vyloučen ze hry do %s.\n"
+"Prosím kontaktujte GM team přes fórum."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:152 src/net/eathena/loginrecv.cpp:93
@@ -10577,30 +10671,30 @@ msgid "Error saving location. You do not have warp skill."
 msgstr ""
 
 #. TRANSLATORS: skill level
-#: src/resources/skill/skillinfo.cpp:106
+#: src/resources/skill/skillinfo.cpp:109
 #, c-format
 msgid "Lvl: %d / %d"
 msgstr ""
 
 #. TRANSLATORS: skill type
-#: src/resources/skill/skillinfo.cpp:113
+#: src/resources/skill/skillinfo.cpp:116
 #, c-format
 msgid "Type: %s"
 msgstr "Typ: %s"
 
 #. TRANSLATORS: Skill type
-#: src/resources/skill/skillinfo.cpp:137
+#: src/resources/skill/skillinfo.cpp:140
 msgid "Unknown:"
 msgstr "Neznámý:"
 
 #. TRANSLATORS: skill mana
-#: src/resources/skill/skillinfo.cpp:144
+#: src/resources/skill/skillinfo.cpp:147
 #, c-format
 msgid " / Mana: -%d"
 msgstr " / Mana: -%d"
 
 #. TRANSLATORS: skill range
-#: src/resources/skill/skillinfo.cpp:152
+#: src/resources/skill/skillinfo.cpp:155
 #, c-format
 msgid "Range: %d"
 msgstr "Dosah: %d"
@@ -10609,11 +10703,6 @@ msgstr "Dosah: %d"
 #: src/resources/skill/skilltypelist.h:37
 msgid "Ground"
 msgstr "Země"
-
-#. TRANSLATORS: Skill type
-#: src/resources/skill/skilltypelist.h:39
-msgid "Self"
-msgstr "Svůj"
 
 #. TRANSLATORS: Skill type
 #: src/resources/skill/skilltypelist.h:41
@@ -10690,3 +10779,30 @@ msgstr "%d vteřinu"
 #, c-format
 msgid "%d seconds"
 msgstr "%d vteřin"
+
+#~ msgid "Guild name is missing."
+#~ msgstr "Chybí jméno gildy."
+
+#~ msgid "Invite"
+#~ msgstr "Pozvat"
+
+#~ msgid "Creating guild called %s."
+#~ msgstr "Vytvářím gildu s názvem %s."
+
+#~ msgid "Creating party called %s."
+#~ msgstr "Vytvářím partu s názvem %s."
+
+#~ msgid "Guild Name"
+#~ msgstr "Název gildy"
+
+#~ msgid "Choose your guild's name."
+#~ msgstr "Zvolte jméno vaší gildy."
+
+#~ msgid "Cannot create party. You are already in a party"
+#~ msgstr "Nemohu vytvořit partu. Již jste členem party."
+
+#~ msgid "Party Name"
+#~ msgstr "Jméno party"
+
+#~ msgid "Choose your party's name."
+#~ msgstr "Zvolte jméno vaší party."
