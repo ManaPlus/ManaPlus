@@ -213,11 +213,11 @@ const MapInfo *MapDB::getMapAtlas(const std::string &name)
 
 const MapInfo *MapDB::getAtlas(const std::string &name)
 {
-    MapInfo *const info = new MapInfo;
-
     const AtlasCIter it = mAtlases.find(name);
     if (it == mAtlases.end())
         return nullptr;
+
+    MapInfo *const info = new MapInfo;
     info->atlas = name;
     info->files = &(*it).second;
     return info;

@@ -1074,7 +1074,8 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
                 castTime / MILLISECONDS_IN_A_TICK);
         }
     }
-    if (srcBeing == localPlayer &&
+    if (localPlayer &&
+        srcBeing == localPlayer &&
         (inf2 & SkillType2::FreeCastAny) == 0)
     {
         localPlayer->freezeMoving(castTime / MILLISECONDS_IN_A_TICK);

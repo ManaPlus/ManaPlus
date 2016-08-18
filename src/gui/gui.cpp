@@ -275,7 +275,10 @@ Gui::~Gui()
 
     if (windowContainer)
         windowContainer->slowLogic();
-    delete getTop();
+    Widget *top = mTop;
+    if (Widget::widgetExists(mTop))
+        setTop(nullptr);
+    delete top;
 
     delete2(mGuiFont);
     delete2(boldFont);
@@ -283,13 +286,8 @@ Gui::~Gui()
     delete2(mSecureFont);
     delete2(mInfoParticleFont);
     delete2(mNpcFont);
-
     delete2(guiInput);
-
     delete2(theme);
-
-    if (Widget::widgetExists(mTop))
-        setTop(nullptr);
 
     delete2(mFocusHandler);
     Label::finalCleanup();

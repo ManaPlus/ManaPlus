@@ -68,7 +68,8 @@ if (top && left && bottom && right)
         calcPatternInline(vert, right, x + w - rw, y + th, rw, h - th - bh);
 }
 
-calcTileVertexesInline(vert, topLeft, x, y);
+if (topLeft)
+    calcTileVertexesInline(vert, topLeft, x, y);
 if (topRight)
 {
     const int trw = topRight->getWidth();

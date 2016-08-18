@@ -874,8 +874,11 @@ void SkillDialog::useSkillTarget(const SkillInfo *const info,
     {
         if (!being && autoTarget == AutoTarget_true)
         {
-            being = localPlayer->setNewTarget(ActorType::Monster,
-                AllowSort_true);
+            if (localPlayer)
+            {
+                being = localPlayer->setNewTarget(ActorType::Monster,
+                    AllowSort_true);
+            }
         }
         if (being)
         {

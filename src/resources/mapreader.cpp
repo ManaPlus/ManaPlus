@@ -1199,7 +1199,12 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                         const int duration = XML::getProperty(
                             frameNode, "duration", 0) /  10;
 
-                        ani->addFrame(set->get(tileId), duration, 0, 0, 100);
+                        if (set)
+                        {
+                            ani->addFrame(set->get(tileId),
+                                duration,
+                                0, 0, 100);
+                        }
                     }
                 }
 
