@@ -29,7 +29,6 @@ src/gui/models/sortlistmodelinv.h
 src/gui/models/targettypemodel.h
 src/gui/models/updatetypemodel.h
 src/gui/popups/beingpopup.cpp
-src/gui/popups/createpartypopup.h
 src/gui/popups/itempopup.cpp
 src/gui/popups/popupmenu.cpp
 src/gui/popups/skillpopup.cpp
