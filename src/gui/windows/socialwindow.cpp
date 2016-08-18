@@ -59,7 +59,6 @@ SocialWindow::SocialWindow() :
     mGuilds(),
     mParties(),
     mPartyAcceptDialog(nullptr),
-    mPartyCreateDialog(nullptr),
     mAttackFilter(nullptr),
     mPickupFilter(nullptr),
     // TRANSLATORS: here P is title for visible players tab in social window
@@ -322,69 +321,6 @@ void SocialWindow::action(const ActionEvent &event)
 
         mGuildInvited = 0;
         mGuildAcceptDialog = nullptr;
-    }
-    else if (eventId == "invite" && mTabs->getSelectedTabIndex() > -1)
-    {
-        if (mTabs->getSelectedTab())
-            static_cast<SocialTab*>(mTabs->getSelectedTab())->invite();
-    }
-    else if (eventId == "leave" && mTabs->getSelectedTabIndex() > -1)
-    {
-        if (mTabs->getSelectedTab())
-            static_cast<SocialTab*>(mTabs->getSelectedTab())->leave();
-    }
-    else if (eventId == "create guild")
-    {
-        if (!serverFeatures->haveNativeGuilds())
-            return;
-
-        if (!mGuildCreateDialog)
-            return;
-
-        std::string name = mGuildCreateDialog->getText();
-
-        if (name.size() > 16)
-            return;
-
-        guildHandler->create(name);
-        if (localChatTab)
-        {
-            // TRANSLATORS: chat message
-            localChatTab->chatLog(strprintf(_("Creating guild called %s."),
-                name.c_str()),
-                ChatMsgType::BY_SERVER);
-        }
-
-        mGuildCreateDialog = nullptr;
-    }
-    else if (eventId == "~create guild")
-    {
-        mGuildCreateDialog = nullptr;
-    }
-    else if (eventId == "create party")
-    {
-        if (!mPartyCreateDialog)
-            return;
-
-        std::string name = mPartyCreateDialog->getText();
-
-        if (name.size() > 24)
-            return;
-
-        partyHandler->create(name);
-        if (localChatTab)
-        {
-            // TRANSLATORS: chat message
-            localChatTab->chatLog(strprintf(_("Creating party called %s."),
-                name.c_str()),
-                ChatMsgType::BY_SERVER);
-        }
-
-        mPartyCreateDialog = nullptr;
-    }
-    else if (eventId == "~create party")
-    {
-        mPartyCreateDialog = nullptr;
     }
 }
 

@@ -144,7 +144,6 @@ class SocialWindow final : public Window,
         PartyMap mParties;
 
         ConfirmDialog *mPartyAcceptDialog;
-        TextDialog *mPartyCreateDialog;
 
         SocialTab *mAttackFilter;
         SocialTab *mPickupFilter;
