@@ -29,7 +29,6 @@
 
 class Button;
 class ConfirmDialog;
-class CreatePartyPopup;
 class Guild;
 class Label;
 class Map;
@@ -156,8 +155,6 @@ class SocialWindow final : public Window,
         SocialTab *mPlayers A_NONNULLPOINTER;
         SocialTab *mNavigation A_NONNULLPOINTER;
         SocialTab *mFriends A_NONNULLPOINTER;
-
-        CreatePartyPopup *mCreatePopup A_NONNULLPOINTER;
 
         Button *mCreateButton A_NONNULLPOINTER;
         Label *mCountLabel A_NONNULLPOINTER;

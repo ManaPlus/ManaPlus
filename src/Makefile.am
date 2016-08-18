@@ -942,7 +942,6 @@ manaplus_SOURCES += main.cpp \
 	      gui/popups/speechbubble.h \
 	      gui/popups/beingpopup.cpp \
 	      gui/popups/beingpopup.h \
-	      gui/popups/createpartypopup.h \
 	      gui/widgets/itemcontainer.cpp \
 	      gui/widgets/itemcontainer.h \
 	      gui/widgets/tabs/chat/battletab.cpp \

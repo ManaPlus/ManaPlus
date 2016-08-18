@@ -37,8 +37,6 @@
 #include "gui/widgets/tabs/socialpickuptab.h"
 #include "gui/widgets/tabs/socialplayerstab.h"
 
-#include "gui/popups/createpartypopup.h"
-
 #include "net/serverfeatures.h"
 
 #ifdef TMWA_SUPPORT
@@ -72,7 +70,6 @@ SocialWindow::SocialWindow() :
     // TRANSLATORS: here F is title for friends tab in social window
     mFriends(new SocialFriendsTab(this, _("F"),
         getOptionBool("showtabbackground"))),
-    mCreatePopup(CREATEWIDGETR0(CreatePartyPopup)),
     // TRANSLATORS: social window button
     mCreateButton(new Button(this, _("Create"), "create", this)),
     mCountLabel(new Label(this, "1000 / 1000")),
@@ -167,7 +164,6 @@ SocialWindow::~SocialWindow()
 
         mPartyInviter.clear();
     }
-    delete2(mCreatePopup);
     delete2(mPlayers);
     delete2(mNavigation);
     delete2(mAttackFilter);
