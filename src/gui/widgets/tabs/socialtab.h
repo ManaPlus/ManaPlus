@@ -80,7 +80,8 @@ class SocialTab notfinal : public Tab
             mConfirmDialog(nullptr),
             mScroll(nullptr),
             mList(nullptr),
-            mCounterString()
+            mCounterString(),
+            mMenuAction("menu")
         {
         }
 
@@ -116,12 +117,19 @@ class SocialTab notfinal : public Tab
         void setCurrent() override final
         {
             updateCounter();
+            updateMenu();
         }
 
         void updateCounter() const
         {
             if (socialWindow)
-                socialWindow->setCounter(this, mCounterString);
+                socialWindow->updateCounter(this, mCounterString);
+        }
+
+        void updateMenu() const
+        {
+            if (socialWindow)
+                socialWindow->updateMenu(this, mMenuAction);
         }
 
         TextDialog *mInviteDialog;
@@ -129,6 +137,7 @@ class SocialTab notfinal : public Tab
         ScrollArea *mScroll;
         AvatarListBox *mList;
         std::string mCounterString;
+        std::string mMenuAction;
 };
 
 #endif  // GUI_WIDGETS_TABS_SOCIALTAB_H

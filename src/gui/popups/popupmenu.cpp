@@ -3390,6 +3390,103 @@ void PopupMenu::showAdoptCommands()
     mBrowserBox->addRow("/adoptchild 'NAME'", _("Adopt child"));
 }
 
+void PopupMenu::addSocialMenu()
+{
+    mBrowserBox->clearRows();
+    setMousePos();
+    const Party *const party = localPlayer->getParty();
+    if (party)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: leave party
+        mBrowserBox->addRow("/leaveparty", _("Leave party"));
+    }
+    else
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: create party
+        mBrowserBox->addRow("/createparty", _("Create party"));
+    }
+    const Guild *const guild = localPlayer->getGuild();
+    if (!guild)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: create guild
+        mBrowserBox->addRow("/createguild", _("Create guild"));
+    }
+    mBrowserBox->addRow("##3---");
+}
+
+void PopupMenu::showPartyPopup()
+{
+    addSocialMenu();
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(mX, mY);
+}
+
+void PopupMenu::showGuildPopup()
+{
+    addSocialMenu();
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(mX, mY);
+}
+
+void PopupMenu::showAttackPopup()
+{
+    addSocialMenu();
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(mX, mY);
+}
+
+void PopupMenu::showNavigationPopup()
+{
+    addSocialMenu();
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(mX, mY);
+}
+
+void PopupMenu::showPickupPopup()
+{
+    addSocialMenu();
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(mX, mY);
+}
+
+void PopupMenu::showPlayersPopup()
+{
+    addSocialMenu();
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(mX, mY);
+}
+
+void PopupMenu::showFriendsPopup()
+{
+    addSocialMenu();
+
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: close menu
+    mBrowserBox->addRow("cancel", _("Cancel"));
+    showPopup(mX, mY);
+}
+
 void PopupMenu::moveUp()
 {
     mBrowserBox->moveSelectionUp();
@@ -3402,5 +3499,6 @@ void PopupMenu::moveDown()
 
 void PopupMenu::select()
 {
+
     mBrowserBox->selectSelection();
 }

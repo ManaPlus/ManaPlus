@@ -117,7 +117,11 @@ class SocialWindow final : public Window,
 
         void widgetResized(const Event &event) override final;
 
-        void setCounter(const SocialTab *const tab, const std::string &str);
+        void updateCounter(const SocialTab *const tab,
+                           const std::string &count);
+
+        void updateMenu(const SocialTab *const tab,
+                        const std::string &menu);
 
         void updateGuildCounter(const int online = 0, const int total = 0);
 
@@ -151,7 +155,7 @@ class SocialWindow final : public Window,
         SocialTab *mNavigation A_NONNULLPOINTER;
         SocialTab *mFriends A_NONNULLPOINTER;
 
-        Button *mCreateButton A_NONNULLPOINTER;
+        Button *mMenuButton A_NONNULLPOINTER;
         Label *mCountLabel A_NONNULLPOINTER;
         TabbedArea *mTabs A_NONNULLPOINTER;
         Map *mMap;

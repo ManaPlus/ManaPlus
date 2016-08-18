@@ -30,6 +30,8 @@
 
 #include "gui/windows/chatwindow.h"
 
+#include "listeners/inputactionreplaylistener.h"
+
 #include "net/charserverhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
@@ -336,9 +338,10 @@ impHandler(createParty)
 
     if (event.args.empty())
     {
-        // TRANSLATORS: create party message
-        event.tab->chatLog(_("Party name is missing."),
-            ChatMsgType::BY_SERVER);
+        // TRANSLATORS: dialog header
+        inputActionReplayListener.openDialog(_("Create party"),
+            "",
+            InputAction::CREATE_PARTY);
     }
     else
     {
@@ -359,9 +362,10 @@ impHandler(createGuild)
 
     if (event.args.empty())
     {
-        // TRANSLATORS: create guild message
-        event.tab->chatLog(_("Guild name is missing."),
-            ChatMsgType::BY_SERVER);
+        // TRANSLATORS: dialog header
+        inputActionReplayListener.openDialog(_("Create guild"),
+            "",
+            InputAction::CREATE_GUILD);
     }
     else
     {

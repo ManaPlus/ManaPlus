@@ -58,6 +58,7 @@ class SocialNavigationTab final : public SocialTab
             // TRANSLATORS: Navigation tab name in social window.
             // TRANSLATORS: Should be small
             setCaption(_("Nav"));
+            mMenuAction = "navigation";
         }
 
         A_DELETE_COPY(SocialNavigationTab)

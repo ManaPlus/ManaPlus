@@ -21,6 +21,8 @@
 
 #include "gui/windows/socialwindow.h"
 
+#include "gui/popups/popupmenu.h"
+
 #include "gui/windows/okdialog.h"
 #include "gui/windows/setupwindow.h"
 
@@ -70,7 +72,7 @@ SocialWindow::SocialWindow() :
     mFriends(new SocialFriendsTab(this, _("F"),
         getOptionBool("showtabbackground"))),
     // TRANSLATORS: social window button
-    mCreateButton(new Button(this, _("Create"), "create", this)),
+    mMenuButton(new Button(this, _("Menu"), "menu", this)),
     mCountLabel(new Label(this, "1000 / 1000")),
     mTabs(CREATEWIDGETR(TabbedArea, this)),
     mMap(nullptr),
@@ -98,7 +100,7 @@ void SocialWindow::postInit()
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    place(0, 0, mCreateButton);
+    place(0, 0, mMenuButton);
     place(0, 1, mCountLabel);
     place(0, 2, mTabs, 2, 4);
 
@@ -321,6 +323,34 @@ void SocialWindow::action(const ActionEvent &event)
 
         mGuildInvited = 0;
         mGuildAcceptDialog = nullptr;
+    }
+    else if (eventId == "party")
+    {
+        popupMenu->showPartyPopup();
+    }
+    else if (eventId == "guild")
+    {
+        popupMenu->showGuildPopup();
+    }
+    else if (eventId == "attack")
+    {
+        popupMenu->showAttackPopup();
+    }
+    else if (eventId == "friends")
+    {
+        popupMenu->showFriendsPopup();
+    }
+    else if (eventId == "navigation")
+    {
+        popupMenu->showNavigationPopup();
+    }
+    else if (eventId == "pickup")
+    {
+        popupMenu->showPickupPopup();
+    }
+    else if (eventId == "players")
+    {
+        popupMenu->showPlayersPopup();
     }
 }
 
@@ -560,14 +590,21 @@ void SocialWindow::widgetResized(const Event &event)
         mTabs->adjustSize();
 }
 
-void SocialWindow::setCounter(const SocialTab *const tab,
-                              const std::string &str)
+void SocialWindow::updateCounter(const SocialTab *const tab,
+                                 const std::string &counter)
 {
     if (mTabs->getSelectedTab() == tab)
     {
-        mCountLabel->setCaption(str);
+        mCountLabel->setCaption(counter);
         mCountLabel->adjustSize();
     }
+}
+
+void SocialWindow::updateMenu(const SocialTab *const tab,
+                              const std::string &menu)
+{
+    if (mTabs->getSelectedTab() == tab)
+        mMenuButton->setActionEventId(menu);
 }
 
 void SocialWindow::updateGuildCounter(const int online, const int total)

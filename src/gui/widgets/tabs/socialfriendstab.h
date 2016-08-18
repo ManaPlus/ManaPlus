@@ -52,6 +52,7 @@ class SocialFriendsTab final : public SocialTab
 
             getPlayersAvatars();
             setCaption(name);
+            mMenuAction = "friends";
         }
 
         A_DELETE_COPY(SocialFriendsTab)

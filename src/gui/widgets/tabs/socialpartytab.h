@@ -61,6 +61,7 @@ class SocialPartyTab final : public SocialTab,
                 ThemeColorId::PARTY_SOCIAL_TAB_SELECTED_OUTLINE));
 
             createControls(party, showBackground);
+            mMenuAction = "party";
         }
 
         A_DELETE_COPY(SocialPartyTab)

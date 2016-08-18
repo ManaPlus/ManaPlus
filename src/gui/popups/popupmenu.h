@@ -174,6 +174,20 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void showEmoteType();
 
+        void showPartyPopup();
+
+        void showGuildPopup();
+
+        void showAttackPopup();
+
+        void showNavigationPopup();
+
+        void showPickupPopup();
+
+        void showPlayersPopup();
+
+        void showFriendsPopup();
+
         /**
          * Handles link action.
          */
@@ -249,6 +263,8 @@ class PopupMenu final : public Popup, public LinkHandler
         void showMonsterGMCommands();
 
         void showAdoptCommands();
+
+        void addSocialMenu();
 
         bool addBeingMenu();
 

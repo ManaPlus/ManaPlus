@@ -59,6 +59,7 @@ class SocialGuildTab2 final : public SocialTab,
                 ThemeColorId::GUILD_SOCIAL_TAB_SELECTED_OUTLINE));
 
             createControls(guild, showBackground);
+            mMenuAction = "guild";
         }
 
         A_DELETE_COPY(SocialGuildTab2)

@@ -47,6 +47,7 @@ class SocialPickupTab final : public SocialTab
             // TRANSLATORS: Pickup filter tab name in social window.
             // TRANSLATORS: Should be small
             setCaption(_("Pik"));
+            mMenuAction = "pickup";
         }
 
         A_DELETE_COPY(SocialPickupTab)
