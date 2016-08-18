@@ -377,37 +377,33 @@ void MobileOpenGLGraphics::drawPatternCached(const Image *restrict const image,
 
     unsigned int vp = mVpCached;
     const unsigned int vLimit = mMaxVertices * 4;
-    // Draw a set of textured rectangles
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
-//    {
-        const float texX1 = static_cast<float>(srcX) / tw;
-        const float texY1 = static_cast<float>(srcY) / th;
+    const float texX1 = static_cast<float>(srcX) / tw;
+    const float texY1 = static_cast<float>(srcY) / th;
 
-        for (int py = 0; py < h; py += ih)
+    for (int py = 0; py < h; py += ih)
+    {
+        const int height = (py + ih >= h) ? h - py : ih;
+        const float texY2 = static_cast<float>(srcY + height) / th;
+        const int dstY = y + py;
+        for (int px = 0; px < w; px += iw)
         {
-            const int height = (py + ih >= h) ? h - py : ih;
-            const float texY2 = static_cast<float>(srcY + height) / th;
-            const int dstY = y + py;
-            for (int px = 0; px < w; px += iw)
+            const int width = (px + iw >= w) ? w - px : iw;
+            const int dstX = x + px;
+
+            const float texX2 = static_cast<float>(srcX + width) / tw;
+
+            vertFill2D(mFloatTexArrayCached, mShortVertArrayCached,
+                texX1, texY1, texX2, texY2,
+                dstX, dstY, width, height);
+
+            vp += 12;
+            if (vp >= vLimit)
             {
-                const int width = (px + iw >= w) ? w - px : iw;
-                const int dstX = x + px;
-
-                const float texX2 = static_cast<float>(srcX + width) / tw;
-
-                vertFill2D(mFloatTexArrayCached, mShortVertArrayCached,
-                    texX1, texY1, texX2, texY2,
-                    dstX, dstY, width, height);
-
-                vp += 12;
-                if (vp >= vLimit)
-                {
-                    completeCache();
-                    vp = 0;
-                }
+                completeCache();
+                vp = 0;
             }
         }
-//    }
+    }
     mVpCached = vp;
 }
 
@@ -499,38 +495,35 @@ void MobileOpenGLGraphics::drawPatternInline(const Image *restrict const image,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
     // Draw a set of textured rectangles
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
-//    {
-        const float texX1 = static_cast<float>(srcX) / tw;
-        const float texY1 = static_cast<float>(srcY) / th;
+    const float texX1 = static_cast<float>(srcX) / tw;
+    const float texY1 = static_cast<float>(srcY) / th;
 
-        for (int py = 0; py < h; py += ih)
+    for (int py = 0; py < h; py += ih)
+    {
+        const int height = (py + ih >= h) ? h - py : ih;
+        const float texY2 = static_cast<float>(srcY + height) / th;
+        const int dstY = y + py;
+        for (int px = 0; px < w; px += iw)
         {
-            const int height = (py + ih >= h) ? h - py : ih;
-            const float texY2 = static_cast<float>(srcY + height) / th;
-            const int dstY = y + py;
-            for (int px = 0; px < w; px += iw)
+            const int width = (px + iw >= w) ? w - px : iw;
+            const int dstX = x + px;
+
+            const float texX2 = static_cast<float>(srcX + width) / tw;
+
+            vertFill2D(mFloatTexArray, mShortVertArray,
+                texX1, texY1, texX2, texY2,
+                dstX, dstY, width, height);
+
+            vp += 12;
+            if (vp >= vLimit)
             {
-                const int width = (px + iw >= w) ? w - px : iw;
-                const int dstX = x + px;
-
-                const float texX2 = static_cast<float>(srcX + width) / tw;
-
-                vertFill2D(mFloatTexArray, mShortVertArray,
-                    texX1, texY1, texX2, texY2,
-                    dstX, dstY, width, height);
-
-                vp += 12;
-                if (vp >= vLimit)
-                {
-                    drawTriangleArrayfs(vp);
-                    vp = 0;
-                }
+                drawTriangleArrayfs(vp);
+                vp = 0;
             }
         }
-        if (vp > 0)
-            drawTriangleArrayfs(vp);
-//    }
+    }
+    if (vp > 0)
+        drawTriangleArrayfs(vp);
 }
 
 void MobileOpenGLGraphics::drawRescaledPattern(const Image *
@@ -568,49 +561,46 @@ void MobileOpenGLGraphics::drawRescaledPattern(const Image *
     const unsigned int vLimit = mMaxVertices * 4;
 
     // Draw a set of textured rectangles
-//    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
-//    {
-        const float tw = static_cast<float>(image->mTexWidth);
-        const float th = static_cast<float>(image->mTexHeight);
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
 
-        const float texX1 = static_cast<float>(srcX) / tw;
-        const float texY1 = static_cast<float>(srcY) / th;
+    const float texX1 = static_cast<float>(srcX) / tw;
+    const float texY1 = static_cast<float>(srcY) / th;
 
-        const float tFractionW = iw / tw;
-        const float tFractionH = ih / th;
+    const float tFractionW = iw / tw;
+    const float tFractionH = ih / th;
 
-        for (int py = 0; py < h; py += scaledHeight)
+    for (int py = 0; py < h; py += scaledHeight)
+    {
+        const int height = (py + scaledHeight >= h)
+            ? h - py : scaledHeight;
+        const int dstY = y + py;
+        const float visibleFractionH = static_cast<float>(height)
+            / scaledHeight;
+        const float texY2 = texY1 + tFractionH * visibleFractionH;
+        for (int px = 0; px < w; px += scaledWidth)
         {
-            const int height = (py + scaledHeight >= h)
-                ? h - py : scaledHeight;
-            const int dstY = y + py;
-            const float visibleFractionH = static_cast<float>(height)
-                / scaledHeight;
-            const float texY2 = texY1 + tFractionH * visibleFractionH;
-            for (int px = 0; px < w; px += scaledWidth)
+            const int width = (px + scaledWidth >= w)
+                ? w - px : scaledWidth;
+            const int dstX = x + px;
+            const float visibleFractionW = static_cast<float>(width)
+                / scaledWidth;
+            const float texX2 = texX1 + tFractionW * visibleFractionW;
+
+            vertFill2D(mFloatTexArray, mShortVertArray,
+                texX1, texY1, texX2, texY2,
+                dstX, dstY, width, height);
+
+            vp += 12;
+            if (vp >= vLimit)
             {
-                const int width = (px + scaledWidth >= w)
-                    ? w - px : scaledWidth;
-                const int dstX = x + px;
-                const float visibleFractionW = static_cast<float>(width)
-                    / scaledWidth;
-                const float texX2 = texX1 + tFractionW * visibleFractionW;
-
-                vertFill2D(mFloatTexArray, mShortVertArray,
-                    texX1, texY1, texX2, texY2,
-                    dstX, dstY, width, height);
-
-                vp += 12;
-                if (vp >= vLimit)
-                {
-                    drawTriangleArrayfs(vp);
-                    vp = 0;
-                }
+                drawTriangleArrayfs(vp);
+                vp = 0;
             }
         }
-        if (vp > 0)
-            drawTriangleArrayfs(vp);
-//    }
+    }
+    if (vp > 0)
+        drawTriangleArrayfs(vp);
 }
 
 inline void MobileOpenGLGraphics::drawVertexes(const

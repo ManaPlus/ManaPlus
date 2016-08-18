@@ -188,17 +188,18 @@ void Client::gameInit()
 
     GettextHelper::initLang();
 
-//    chatLogger = new ChatLogger;
-//    if (settings.options.chatLogDir.empty())
-//    {
-//        chatLogger->setBaseLogDir(settings.localDataDir
-//            + std::string("/logs/"));
-//    }
-//    else
-//    {
-//        chatLogger->setBaseLogDir(settings.options.chatLogDir);
-//    }
-
+/*
+    chatLogger = new ChatLogger;
+    if (settings.options.chatLogDir.empty())
+    {
+        chatLogger->setBaseLogDir(settings.localDataDir
+            + std::string("/logs/"));
+    }
+    else
+    {
+        chatLogger->setBaseLogDir(settings.options.chatLogDir);
+    }
+*/
     logger->setLogToStandardOut(config.getBoolValue("logToStandardOut"));
 
     // Log the client version
@@ -571,10 +572,12 @@ int Client::gameExec()
         BLOCK_END("~Client::SDL_framerateDelay")
 
         BLOCK_START("Client::gameExec 6")
-//        if (mState == State::CONNECT_GAME)
-//        {
-//            stateConnectGame1();
-//        }
+/*
+        if (mState == State::CONNECT_GAME)
+        {
+            stateConnectGame1();
+        }
+*/
         BLOCK_END("Client::gameExec 6")
 
         if (mState != mOldState)

@@ -56,7 +56,8 @@
 
 // keyData must be in same order as enum keyAction.
 static const InputActionData inputActionData
-    [CAST_SIZE(InputAction::TOTAL)] = {
+    [CAST_SIZE(InputAction::TOTAL)] =
+    {
     {"keyMoveUp",
         addKey(SDLK_UP),
         emptyKey,

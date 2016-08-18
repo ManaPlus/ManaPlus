@@ -43,14 +43,16 @@ namespace XML
 {
     static void showErrorStatus(pugi::xml_parse_result &result)
     {
-//        switch (result.status)
-//        {
-//            case pugi::status_ok:
-//                break;
-//            case pugi::status_file_not_found:
-//                logger->log("xml error: %s", result.description());
-//                break;
-//        }
+/*
+        switch (result.status)
+        {
+            case pugi::status_ok:
+                break;
+            case pugi::status_file_not_found:
+                logger->log("xml error: %s", result.description());
+                break;
+        }
+*/
         logger->log("xml error: %s", result.description());
     }
 

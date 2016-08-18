@@ -34,7 +34,8 @@ Andreas Schiffler -- aschiffler at ferzkopp dot net
 
 /* Set up for C function definitions, even when using C++ */
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #ifndef M_PI

@@ -975,12 +975,14 @@ Path Map::findPath(const int startX, const int startY,
                     ++Gcost;
                 }
 
+/*
                 // It costs extra to walk through a being (needs to be enough
                 // to make it more attractive to walk around).
-//                if (occupied(x, y))
-//                {
-//                    Gcost += 3 * basicCost;
-//                }
+                if (occupied(x, y))
+                {
+                    Gcost += 3 * basicCost;
+                }
+*/
 
                 // Skip if Gcost becomes too much
                 // Warning: probably not entirely accurate
