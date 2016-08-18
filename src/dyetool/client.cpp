@@ -591,11 +591,13 @@ int Client::gameExec()
 
             // State has changed, while the quitDialog was active, it might
             // not be correct anymore
-//            if (mQuitDialog)
-//            {
-//                mQuitDialog->scheduleDelete();
-//                mQuitDialog = nullptr;
-//            }
+/*
+            if (mQuitDialog)
+            {
+                mQuitDialog->scheduleDelete();
+                mQuitDialog = nullptr;
+            }
+*/
             BLOCK_END("Client::gameExec 7")
 
             BLOCK_START("Client::gameExec 8")
