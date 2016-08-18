@@ -392,17 +392,6 @@ void SocialWindow::action(const ActionEvent &event)
     }
 }
 
-void SocialWindow::showGuildCreate()
-{
-    CREATEWIDGETV(mGuildCreateDialog, TextDialog,
-        // TRANSLATORS: guild creation message
-        _("Guild Name"),
-        // TRANSLATORS: guild creation message
-        _("Choose your guild's name."), this);
-    mGuildCreateDialog->setActionEventId("create guild");
-    mGuildCreateDialog->addActionListener(this);
-}
-
 void SocialWindow::showGuildInvite(const std::string &restrict guildName,
                                    const int guildId,
                                    const std::string &restrict inviterName)

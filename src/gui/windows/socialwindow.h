@@ -69,8 +69,6 @@ class SocialWindow final : public Window,
                              const int guildId,
                              const std::string &restrict inviterName);
 
-        void showGuildCreate();
-
         void showPartyInvite(const std::string &restrict partyName,
                              const std::string &restrict inviter,
                              const int partyId);
