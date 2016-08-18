@@ -75,10 +75,6 @@ SocialWindow::SocialWindow() :
     mCreatePopup(CREATEWIDGETR0(CreatePartyPopup)),
     // TRANSLATORS: social window button
     mCreateButton(new Button(this, _("Create"), "create", this)),
-    // TRANSLATORS: social window button
-    mInviteButton(new Button(this, _("Invite"), "invite", this)),
-    // TRANSLATORS: social window button
-    mLeaveButton(new Button(this, _("Leave"), "leave", this)),
     mCountLabel(new Label(this, "1000 / 1000")),
     mTabs(CREATEWIDGETR(TabbedArea, this)),
     mMap(nullptr),
@@ -107,10 +103,8 @@ void SocialWindow::postInit()
         setupWindow->registerWindowForReset(this);
 
     place(0, 0, mCreateButton);
-    place(1, 0, mInviteButton);
-    place(2, 0, mLeaveButton);
     place(0, 1, mCountLabel);
-    place(0, 2, mTabs, 4, 4);
+    place(0, 2, mTabs, 2, 4);
 
     widgetResized(Event(nullptr));
 
@@ -583,12 +577,10 @@ void SocialWindow::resetDamage(const std::string &name)
 
 void SocialWindow::updateButtons()
 {
-    if (!mTabs)
-        return;
+//    if (!mTabs)
+//        return;
 
-    const bool hasTabs = mTabs->getNumberOfTabs() > 0;
-    mInviteButton->setEnabled(hasTabs);
-    mLeaveButton->setEnabled(hasTabs);
+//    const bool hasTabs = mTabs->getNumberOfTabs() > 0;
 }
 
 void SocialWindow::updatePortals()

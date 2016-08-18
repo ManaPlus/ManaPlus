@@ -160,8 +160,6 @@ class SocialWindow final : public Window,
         CreatePartyPopup *mCreatePopup A_NONNULLPOINTER;
 
         Button *mCreateButton A_NONNULLPOINTER;
-        Button *mInviteButton A_NONNULLPOINTER;
-        Button *mLeaveButton A_NONNULLPOINTER;
         Label *mCountLabel A_NONNULLPOINTER;
         TabbedArea *mTabs A_NONNULLPOINTER;
         Map *mMap;
