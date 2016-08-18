@@ -3499,6 +3499,5 @@ void PopupMenu::moveDown()
 
 void PopupMenu::select()
 {
-
     mBrowserBox->selectSelection();
 }
