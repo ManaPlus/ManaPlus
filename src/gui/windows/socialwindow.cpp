@@ -323,10 +323,6 @@ void SocialWindow::action(const ActionEvent &event)
         mGuildInvited = 0;
         mGuildAcceptDialog = nullptr;
     }
-    else if (eventId == "create")
-    {
-        showPartyCreate();
-    }
     else if (eventId == "invite" && mTabs->getSelectedTabIndex() > -1)
     {
         if (mTabs->getSelectedTab())
@@ -492,37 +488,6 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
     mPartyAcceptDialog->addActionListener(this);
     mPartyInviter = inviter;
     mPartyId = partyId;
-}
-
-void SocialWindow::showPartyCreate()
-{
-    if (!localPlayer)
-        return;
-
-    if (localPlayer->getParty())
-    {
-        CREATEWIDGET(OkDialog,
-            // TRANSLATORS: party creation message
-            _("Create Party"),
-            // TRANSLATORS: party creation error
-            _("Cannot create party. You are already in a party"),
-            // TRANSLATORS: ok dialog button
-            _("OK"),
-            DialogType::ERROR,
-            Modal_true,
-            ShowCenter_true,
-            this,
-            260);
-        return;
-    }
-
-    CREATEWIDGETV(mPartyCreateDialog, TextDialog,
-        // TRANSLATORS: party creation message
-        _("Party Name"),
-        // TRANSLATORS: party creation message
-        _("Choose your party's name."), this);
-    mPartyCreateDialog->setActionEventId("create party");
-    mPartyCreateDialog->addActionListener(this);
 }
 
 void SocialWindow::updateActiveList()

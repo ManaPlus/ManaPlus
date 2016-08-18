@@ -73,8 +73,6 @@ class SocialWindow final : public Window,
                              const std::string &restrict inviter,
                              const int partyId);
 
-        void showPartyCreate();
-
         void updateActiveList();
 
         void updateAvatar(const std::string &name);
