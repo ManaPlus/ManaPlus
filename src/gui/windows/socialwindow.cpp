@@ -39,8 +39,6 @@
 #include "gui/widgets/tabs/socialpickuptab.h"
 #include "gui/widgets/tabs/socialplayerstab.h"
 
-#include "net/serverfeatures.h"
-
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"
 #endif
