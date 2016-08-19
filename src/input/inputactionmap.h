@@ -5570,6 +5570,12 @@ static const InputActionData inputActionData
         "leaveguild|guildleave",
         UseArgs_false,
         Protected_true},
+    {"keyGuildNotice",
+        defaultAction(&Actions::guildNotice),
+        InputCondition::INGAME,
+        "notice|guildnotice",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

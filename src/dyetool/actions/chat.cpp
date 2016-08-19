@@ -60,5 +60,6 @@ impHandlerVoid(chatPartyTab)
 impHandlerVoid(chatGuildTab)
 impHandlerVoid(hat)
 impHandlerVoid(chatClipboard)
+impHandlerVoid(guildNotice)
 
 }  // namespace Actions

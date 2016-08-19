@@ -646,4 +646,19 @@ impHandler(chatClipboard)
     return false;
 }
 
+impHandler(guildNotice)
+{
+    if (!localPlayer)
+        return false;
+    const std::string args = event.args;
+    const std::string str1 = args.substr(0, 60);
+    std::string str2("");
+    if (args.size() > 60)
+        str2 = args.substr(60);
+    const Guild *const guild = localPlayer->getGuild();
+    if (guild)
+        guildHandler->changeNotice(guild->getId(), str1, str2);
+    return true;
+}
+
 }  // namespace Actions
