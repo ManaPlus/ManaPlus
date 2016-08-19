@@ -333,7 +333,7 @@ impHandler0(clearChatTab)
 
 impHandler(createParty)
 {
-    if (!event.tab || !partyHandler)
+    if (!partyHandler)
         return false;
 
     if (event.args.empty())
@@ -353,7 +353,6 @@ impHandler(createParty)
 impHandler(createGuild)
 {
     if (!guildHandler ||
-        !event.tab ||
         !serverFeatures ||
         !serverFeatures->haveNativeGuilds())
     {
