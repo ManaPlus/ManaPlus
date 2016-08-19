@@ -940,6 +940,18 @@ impHandler0(leaveParty)
     return false;
 }
 
+impHandler0(leaveGuild)
+{
+    if (guildHandler && localPlayer)
+    {
+        const Guild *const guild = localPlayer->getGuild();
+        if (guild)
+            guildHandler->leave(guild->getId());
+        return true;
+    }
+    return false;
+}
+
 impHandler(warp)
 {
     int x = 0;

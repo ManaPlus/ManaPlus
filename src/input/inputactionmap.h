@@ -5564,6 +5564,12 @@ static const InputActionData inputActionData
         "setskilloffsety",
         UseArgs_true,
         Protected_true},
+    {"keyLeaveGuild",
+        defaultAction(&Actions::leaveGuild),
+        InputCondition::INGAME,
+        "leaveguild|guildleave",
+        UseArgs_false,
+        Protected_true},
 };
 
 #undef defaultAction

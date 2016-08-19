@@ -79,6 +79,7 @@ namespace Actions
     decHandler(setHomunculusName);
     decHandler(fireHomunculus);
     decHandler(leaveParty);
+    decHandler(leaveGuild);
     decHandler(warp);
     decHandler(homunTalk);
     decHandler(homunEmote);

@@ -679,6 +679,7 @@ enumStart(InputAction)
     SHOW_SKILL_OFFSET_Y,
     SET_SKILL_OFFSET_X,
     SET_SKILL_OFFSET_Y,
+    LEAVE_GUILD,
     TOTAL
 }
 enumEnd(InputAction);
