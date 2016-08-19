@@ -22,6 +22,8 @@
 #ifndef NET_EATHENA_PARTYRECV_H
 #define NET_EATHENA_PARTYRECV_H
 
+#include "enums/net/partyshare.h"
+
 namespace Net
 {
     class MessageIn;
@@ -31,6 +33,8 @@ namespace EAthena
 {
     namespace PartyRecv
     {
+        extern PartyShareT mShareAutoItems;
+
         void processPartySettings(Net::MessageIn &msg);
         void processPartyInvitationStats(Net::MessageIn &msg);
         void processPartyMemberInfo(Net::MessageIn &msg);
@@ -40,6 +44,9 @@ namespace EAthena
         void processPartyItemPickup(Net::MessageIn &msg);
         void processPartyLeader(Net::MessageIn &msg);
         void processPartyInvited(Net::MessageIn &msg);
+
+        void processPartyAutoItemSettingsContinue(Net::MessageIn &msg,
+                                                  const PartyShareT item);
     }  // namespace PartyRecv
 }  // namespace EAthena
 

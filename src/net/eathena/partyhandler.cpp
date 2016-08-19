@@ -32,6 +32,7 @@
 #include "net/ea/partyrecv.h"
 
 #include "net/eathena/messageout.h"
+#include "net/eathena/partyrecv.h"
 #include "net/eathena/protocolout.h"
 
 #include "debug.h"
@@ -191,6 +192,16 @@ void PartyHandler::allowInvite(const bool allow) const
 {
     createOutPacket(CMSG_PARTY_ALLOW_INVITES);
     outMsg.writeInt8(CAST_S8(allow ? 1 : 0), "allow");
+}
+
+PartyShareT PartyHandler::getShareAutoItems() const
+{
+    return PartyRecv::mShareAutoItems;
+}
+
+void PartyHandler::setShareAutoItems(const PartyShareT share) const
+{
+    PartyRecv::mShareAutoItems = share;
 }
 
 }  // namespace EAthena

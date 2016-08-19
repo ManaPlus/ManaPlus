@@ -151,4 +151,13 @@ void PartyHandler::allowInvite(const bool allow A_UNUSED) const
 {
 }
 
+PartyShareT PartyHandler::getShareAutoItems() const
+{
+    return PartyShare::NOT_POSSIBLE;
+}
+
+void PartyHandler::setShareAutoItems(const PartyShareT share A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

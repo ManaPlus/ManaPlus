@@ -58,6 +58,10 @@ class PartyHandler final : public Ea::PartyHandler
         void changeLeader(const std::string &name) const override final;
 
         void allowInvite(const bool allow) const override final;
+
+        void setShareAutoItems(const PartyShareT share) const override final;
+
+        PartyShareT getShareAutoItems() const override final A_WARN_UNUSED;
 };
 
 }  // namespace EAthena

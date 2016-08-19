@@ -42,6 +42,11 @@
 namespace EAthena
 {
 
+namespace PartyRecv
+{
+    PartyShareT mShareAutoItems = PartyShare::UNKNOWN;
+}  // namespace PartyRecv
+
 void PartyRecv::processPartyInvitationStats(Net::MessageIn &msg)
 {
     // +++ for now server allow only switch this option but not using it.
@@ -94,8 +99,10 @@ void PartyRecv::processPartySettings(Net::MessageIn &msg)
     {
         const PartyShareT item = static_cast<PartyShareT>(
             msg.readInt8("pickup item share (&1)"));
-        msg.readInt8("get item share (&2)");
         Ea::PartyRecv::processPartyItemSettingsContinue(msg, item);
+        const PartyShareT autoItem = static_cast<PartyShareT>(
+            msg.readInt8("get auto item share (&2)"));
+        processPartyAutoItemSettingsContinue(msg, autoItem);
     }
 }
 
@@ -313,6 +320,36 @@ void PartyRecv::processPartyInvited(Net::MessageIn &msg)
 
     if (socialWindow)
         socialWindow->showPartyInvite(partyName, std::string(), id);
+}
+
+void PartyRecv::processPartyAutoItemSettingsContinue(Net::MessageIn &msg,
+                                                     const PartyShareT item)
+{
+    switch (item)
+    {
+        case PartyShare::YES:
+            if (mShareAutoItems == PartyShare::YES)
+                break;
+            mShareAutoItems = PartyShare::YES;
+            NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_ON);
+            break;
+        case PartyShare::NO:
+            if (mShareAutoItems == PartyShare::NO)
+                break;
+            mShareAutoItems = PartyShare::NO;
+            NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_OFF);
+            break;
+        case PartyShare::NOT_POSSIBLE:
+            if (mShareAutoItems == PartyShare::NOT_POSSIBLE)
+                break;
+            mShareAutoItems = PartyShare::NOT_POSSIBLE;
+            NotifyManager::notify(NotifyTypes::PARTY_ITEM_SHARE_ERROR);
+            break;
+        default:
+        case PartyShare::UNKNOWN:
+            UNIMPLIMENTEDPACKETFIELD(CAST_S32(item));
+            break;
+    }
 }
 
 }  // namespace EAthena

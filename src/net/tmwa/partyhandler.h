@@ -59,6 +59,10 @@ class PartyHandler final : public Ea::PartyHandler
                           A_CONST;
 
         void allowInvite(const bool allow) const override final A_CONST;
+
+        void setShareAutoItems(const PartyShareT share) const override final;
+
+        PartyShareT getShareAutoItems() const override final A_WARN_UNUSED;
 };
 
 }  // namespace TmwAthena

@@ -62,6 +62,10 @@ class PartyHandler notfinal
 
         virtual void setShareItems(const PartyShareT share) const = 0;
 
+        virtual PartyShareT getShareAutoItems() const A_WARN_UNUSED = 0;
+
+        virtual void setShareAutoItems(const PartyShareT share) const = 0;
+
         virtual void changeLeader(const std::string &name) const = 0;
 
         virtual void allowInvite(const bool allow) const = 0;
