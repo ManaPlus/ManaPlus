@@ -30,10 +30,12 @@
 
 #include "const/sound.h"
 
+#include "gui/windows/chatwindow.h"
+
+#include "input/inputmanager.h"
+
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
-
-#include "gui/windows/chatwindow.h"
 
 #include "utils/booleanoptions.h"
 
@@ -64,29 +66,21 @@ void PartyTab::handleInput(const std::string &msg)
 bool PartyTab::handleCommand(const std::string &restrict type,
                              const std::string &restrict args)
 {
-    if (type == "create" || type == "new")
-    {
-        if (args.empty())
-        {
-            // TRANSLATORS: chat error message
-            chatLog(_("Party name is missing."), ChatMsgType::BY_SERVER);
-        }
-        else
-        {
-            partyHandler->create(args);
-        }
-    }
-    else if (type == "invite")
+    if (type == "invite")
     {
         partyHandler->invite(args);
     }
     else if (type == "leave")
     {
-        partyHandler->leave();
+        inputManager.executeChatCommand(InputAction::LEAVE_PARTY,
+            args,
+            this);
     }
     else if (type == "kick")
     {
-        partyHandler->kick(args);
+        inputManager.executeChatCommand(InputAction::KICK_PARTY,
+            args,
+            this);
     }
     else if (type == "item")
     {
@@ -193,7 +187,10 @@ bool PartyTab::handleCommand(const std::string &restrict type,
     else if (type == "setleader"
              && serverFeatures->haveChangePartyLeader())
     {
-        partyHandler->changeLeader(args);
+        inputManager.executeChatCommand(
+            InputAction::COMMAND_CHANGE_PARTY_LEADER,
+            args,
+            this);
     }
     else
     {
