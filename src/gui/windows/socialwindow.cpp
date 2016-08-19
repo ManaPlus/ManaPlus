@@ -23,7 +23,6 @@
 
 #include "gui/popups/popupmenu.h"
 
-#include "gui/windows/okdialog.h"
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
