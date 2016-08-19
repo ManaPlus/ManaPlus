@@ -32,13 +32,14 @@
 #include "gui/widgets/tabs/socialattacktab.h"
 #include "gui/widgets/tabs/socialfriendstab.h"
 #include "gui/widgets/tabs/socialguildtab.h"
-#include "gui/widgets/tabs/socialguildtab2.h"
 #include "gui/widgets/tabs/socialnavigationtab.h"
 #include "gui/widgets/tabs/socialpartytab.h"
 #include "gui/widgets/tabs/socialpickuptab.h"
 #include "gui/widgets/tabs/socialplayerstab.h"
 
 #ifdef TMWA_SUPPORT
+#include "gui/widgets/tabs/socialguildtab2.h"
+
 #include "net/tmwa/guildmanager.h"
 #endif
 
@@ -183,11 +184,13 @@ bool SocialWindow::addTab(Guild *const guild)
         tab = new SocialGuildTab(this, guild,
             getOptionBool("showtabbackground"));
     }
+#ifdef TMWA_SUPPORT
     else
     {
         tab = new SocialGuildTab2(this, guild,
             getOptionBool("showtabbackground"));
     }
+#endif  // TMWA_SUPPORT
 
     mGuilds[guild] = tab;
     mTabs->addTab(tab, tab->mScroll);

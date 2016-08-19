@@ -1059,7 +1059,6 @@ manaplus_SOURCES += main.cpp \
 	      gui/widgets/tabs/socialfriendsfunctor.h \
 	      gui/widgets/tabs/socialfriendstab.h \
 	      gui/widgets/tabs/socialguildtab.h \
-	      gui/widgets/tabs/socialguildtab2.h \
 	      gui/widgets/tabs/socialnavigationtab.h \
 	      gui/widgets/tabs/socialpartytab.h \
 	      gui/widgets/tabs/socialpickuptab.h \
@@ -1471,6 +1470,7 @@ manaplus_CXXFLAGS += -DTMWA_SUPPORT
 manaplus_SOURCES += \
 	      enums/magicschool.h \
 	      gui/models/magicschoolmodel.h \
+	      gui/widgets/tabs/socialguildtab2.h \
 	      gui/widgets/tabs/chat/emulateguildtab.cpp \
 	      gui/widgets/tabs/chat/emulateguildtab.h \
 	      gui/windows/shopselldialog.cpp \

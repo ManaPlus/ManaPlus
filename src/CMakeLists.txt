@@ -290,7 +290,6 @@ SET(SRCS
     gui/widgets/tabs/socialfriendsfunctor.h
     gui/widgets/tabs/socialfriendstab.h
     gui/widgets/tabs/socialguildtab.h
-    gui/widgets/tabs/socialguildtab2.h
     gui/widgets/tabs/socialnavigationtab.h
     gui/widgets/tabs/socialpartytab.h
     gui/widgets/tabs/socialpickuptab.h
@@ -1941,6 +1940,7 @@ SET(SRCS_TMWA
     net/tmwa/searchstorehandler.h
     net/tmwa/vendinghandler.cpp
     net/tmwa/vendinghandler.h
+    gui/widgets/tabs/socialguildtab2.h
     )
 
 IF (WIN32)
