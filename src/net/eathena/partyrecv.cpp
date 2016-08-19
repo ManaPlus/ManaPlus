@@ -135,8 +135,9 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         Ea::taParty->clearMembers();
 
     const int length = msg.readInt16("len");
+    const std::string name = msg.readString(24, "party name");
     if (Ea::taParty)
-        Ea::taParty->setName(msg.readString(24, "party name"));
+        Ea::taParty->setName(name);
 
     const int count = (length - 28) / 46;
     if (localPlayer && Ea::taParty)
