@@ -151,5 +151,6 @@ impHandlerVoid(setSkillOffsetX)
 impHandlerVoid(setSkillOffsetY)
 impHandlerVoid(partyItemShare)
 impHandlerVoid(partyExpShare)
+impHandlerVoid(partyAutoItemShare)
 
 }  // namespace Actions

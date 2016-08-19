@@ -683,6 +683,7 @@ enumStart(InputAction)
     GUILD_NOTICE,
     PARTY_ITEM_SHARE,
     PARTY_EXP_SHARE,
+    PARTY_AUTO_ITEM_SHARE,
     TOTAL
 }
 enumEnd(InputAction);

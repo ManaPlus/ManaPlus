@@ -151,6 +151,7 @@ namespace Actions
     decHandler(setSkillOffsetY);
     decHandler(partyItemShare);
     decHandler(partyExpShare);
+    decHandler(partyAutoItemShare);
 }  // namespace Actions
 
 #undef decHandler

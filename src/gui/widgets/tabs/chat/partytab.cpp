@@ -88,6 +88,12 @@ bool PartyTab::handleCommand(const std::string &restrict type,
             args,
             this);
     }
+    else if (type == "autoitem")
+    {
+        inputManager.executeChatCommand(InputAction::PARTY_AUTO_ITEM_SHARE,
+            args,
+            this);
+    }
     else if (type == "exp")
     {
         inputManager.executeChatCommand(InputAction::PARTY_EXP_SHARE,

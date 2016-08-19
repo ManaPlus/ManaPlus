@@ -1822,4 +1822,70 @@ impHandler(partyExpShare)
     return true;
 }
 
+impHandler(partyAutoItemShare)
+{
+    if (!localPlayer)
+        return false;
+
+    if (localPlayer->isInParty() == false)
+        return true;
+
+    ChatTab *tab = event.tab;
+    if (tab == nullptr)
+        tab = localChatTab;
+    if (tab == nullptr)
+        return true;
+
+    const std::string args = event.args;
+    if (args.empty())
+    {
+        switch (partyHandler->getShareAutoItems())
+        {
+            case PartyShare::YES:
+                // TRANSLATORS: chat message
+                tab->chatLog(_("Auto item sharing enabled."),
+                    ChatMsgType::BY_SERVER);
+                return true;
+            case PartyShare::NO:
+                // TRANSLATORS: chat message
+                tab->chatLog(_("Auto item sharing disabled."),
+                    ChatMsgType::BY_SERVER);
+                return true;
+            case PartyShare::NOT_POSSIBLE:
+                // TRANSLATORS: chat message
+                tab->chatLog(_("Auto item sharing not possible."),
+                    ChatMsgType::BY_SERVER);
+                return true;
+            case PartyShare::UNKNOWN:
+                // TRANSLATORS: chat message
+                tab->chatLog(_("Auto item sharing unknown."),
+                    ChatMsgType::BY_SERVER);
+                return true;
+            default:
+                break;
+        }
+    }
+
+    const signed char opt = parseBoolean(args);
+
+    switch (opt)
+    {
+        case 1:
+            partyHandler->setShareAutoItems(
+                PartyShare::YES);
+            break;
+        case 0:
+            partyHandler->setShareAutoItems(
+                PartyShare::NO);
+            break;
+        case -1:
+            tab->chatLog(strprintf(BOOLEAN_OPTIONS, "item"),
+                ChatMsgType::BY_SERVER);
+            break;
+        default:
+            break;
+    }
+    return true;
+}
+
 }  // namespace Actions

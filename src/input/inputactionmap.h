@@ -5588,6 +5588,12 @@ static const InputActionData inputActionData
         "expshare|shareexp",
         UseArgs_true,
         Protected_true},
+    {"keyPartyAutoItemShare",
+        defaultAction(&Actions::partyAutoItemShare),
+        InputCondition::INGAME,
+        "autoitemshare|shareautoitem|itemautoshare",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction
