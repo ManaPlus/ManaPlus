@@ -27,9 +27,11 @@
 
 #include "const/sound.h"
 
-#include "net/guildhandler.h"
-
 #include "gui/windows/chatwindow.h"
+
+#include "input/inputmanager.h"
+
+#include "net/guildhandler.h"
 
 #include "utils/gettext.h"
 
@@ -64,19 +66,21 @@ bool GuildTab::handleCommand(const std::string &restrict type,
     }
     else if (type == "leave" && Ea::taGuild)
     {
-        guildHandler->leave(Ea::taGuild->getId());
+        inputManager.executeChatCommand(InputAction::LEAVE_GUILD,
+            std::string(),
+            this);
     }
     else if (type == "kick" && Ea::taGuild)
     {
-        guildHandler->kick(Ea::taGuild->getMember(args), "");
+        inputManager.executeChatCommand(InputAction::KICK_GUILD,
+            args,
+            this);
     }
     else if (type == "notice" && Ea::taGuild)
     {
-        std::string str1 = args.substr(0, 60);
-        std::string str2("");
-        if (args.size() > 60)
-            str2 = args.substr(60);
-        guildHandler->changeNotice(Ea::taGuild->getId(), str1, str2);
+        inputManager.executeChatCommand(InputAction::GUILD_NOTICE,
+            args,
+            this);
     }
     else
     {
