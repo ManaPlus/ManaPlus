@@ -41,9 +41,10 @@ namespace Ea
         void processPartyCreate(Net::MessageIn &msg);
         void processPartyLeave(Net::MessageIn &msg);
         void processPartyUpdateCoords(Net::MessageIn &msg);
-        void processPartySettingsContinue(Net::MessageIn &msg,
-                                          const PartyShareT exp,
-                                          const PartyShareT item);
+        void processPartyExpSettingsContinue(Net::MessageIn &msg,
+                                             const PartyShareT exp);
+        void processPartyItemSettingsContinue(Net::MessageIn &msg,
+                                              const PartyShareT item);
 
         void createTab();
     }  // namespace PartyRecv

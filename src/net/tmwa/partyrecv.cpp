@@ -58,7 +58,8 @@ void PartyRecv::processPartySettings(Net::MessageIn &msg)
         msg.readInt16("share exp"));
     const PartyShareT item = static_cast<PartyShareT>(
         msg.readInt16("share items"));
-    Ea::PartyRecv::processPartySettingsContinue(msg, exp, item);
+    Ea::PartyRecv::processPartyExpSettingsContinue(msg, exp);
+    Ea::PartyRecv::processPartyItemSettingsContinue(msg, item);
 }
 
 void PartyRecv::processPartyInfo(Net::MessageIn &msg)

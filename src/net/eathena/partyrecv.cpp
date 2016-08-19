@@ -89,12 +89,13 @@ void PartyRecv::processPartySettings(Net::MessageIn &msg)
 
     const PartyShareT exp = static_cast<PartyShareT>(
         msg.readInt32("party exp"));
+    Ea::PartyRecv::processPartyExpSettingsContinue(msg, exp);
     if (msg.getVersion() >= 20090603)
     {
         const PartyShareT item = static_cast<PartyShareT>(
             msg.readInt8("pickup item share (&1)"));
         msg.readInt8("get item share (&2)");
-        Ea::PartyRecv::processPartySettingsContinue(msg, exp, item);
+        Ea::PartyRecv::processPartyItemSettingsContinue(msg, item);
     }
 }
 

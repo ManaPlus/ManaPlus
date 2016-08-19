@@ -60,9 +60,8 @@ void PartyRecv::processPartyCreate(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::PARTY_CREATED);
 }
 
-void PartyRecv::processPartySettingsContinue(Net::MessageIn &msg,
-                                             const PartyShareT exp,
-                                             const PartyShareT item)
+void PartyRecv::processPartyExpSettingsContinue(Net::MessageIn &msg,
+                                                const PartyShareT exp)
 {
     switch (exp)
     {
@@ -89,7 +88,11 @@ void PartyRecv::processPartySettingsContinue(Net::MessageIn &msg,
             UNIMPLIMENTEDPACKETFIELD(CAST_S32(exp));
             break;
     }
+}
 
+void PartyRecv::processPartyItemSettingsContinue(Net::MessageIn &msg,
+                                                 const PartyShareT item)
+{
     switch (item)
     {
         case PartyShare::YES:
