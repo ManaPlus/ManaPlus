@@ -406,6 +406,7 @@ void GuildRecv::processGuildLeave(Net::MessageIn &msg)
         {
             taGuild->removeFromMembers();
             taGuild->clearMembers();
+            localPlayer->removeGuild(taGuild->getId());
         }
         NotifyManager::notify(NotifyTypes::GUILD_LEFT);
         delete2(guildTab)
