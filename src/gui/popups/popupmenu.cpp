@@ -3408,7 +3408,13 @@ void PopupMenu::addSocialMenu()
         mBrowserBox->addRow("/createparty", _("Create party"));
     }
     const Guild *const guild = localPlayer->getGuild();
-    if (!guild)
+    if (guild)
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: leave guild
+        mBrowserBox->addRow("/leaveguild", _("Leave guild"));
+    }
+    else
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: create guild
