@@ -5576,6 +5576,12 @@ static const InputActionData inputActionData
         "notice|guildnotice",
         UseArgs_true,
         Protected_true},
+    {"keyPartyItemShare",
+        defaultAction(&Actions::partyItemShare),
+        InputCondition::INGAME,
+        "itemshare|shareitem",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

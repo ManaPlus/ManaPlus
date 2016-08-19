@@ -149,6 +149,7 @@ namespace Actions
     decHandler(showSkillOffsetY);
     decHandler(setSkillOffsetX);
     decHandler(setSkillOffsetY);
+    decHandler(partyItemShare);
 }  // namespace Actions
 
 #undef decHandler

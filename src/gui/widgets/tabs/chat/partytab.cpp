@@ -84,54 +84,9 @@ bool PartyTab::handleCommand(const std::string &restrict type,
     }
     else if (type == "item")
     {
-        if (args.empty())
-        {
-            switch (partyHandler->getShareItems())
-            {
-                case PartyShare::YES:
-                    // TRANSLATORS: chat message
-                    chatLog(_("Item sharing enabled."),
-                        ChatMsgType::BY_SERVER);
-                    return true;
-                case PartyShare::NO:
-                    // TRANSLATORS: chat message
-                    chatLog(_("Item sharing disabled."),
-                        ChatMsgType::BY_SERVER);
-                    return true;
-                case PartyShare::NOT_POSSIBLE:
-                    // TRANSLATORS: chat message
-                    chatLog(_("Item sharing not possible."),
-                        ChatMsgType::BY_SERVER);
-                    return true;
-                case PartyShare::UNKNOWN:
-                    // TRANSLATORS: chat message
-                    chatLog(_("Item sharing unknown."),
-                        ChatMsgType::BY_SERVER);
-                    return true;
-                default:
-                    break;
-            }
-        }
-
-        const signed char opt = parseBoolean(args);
-
-        switch (opt)
-        {
-            case 1:
-                partyHandler->setShareItems(
-                    PartyShare::YES);
-                break;
-            case 0:
-                partyHandler->setShareItems(
-                    PartyShare::NO);
-                break;
-            case -1:
-                chatLog(strprintf(BOOLEAN_OPTIONS, "item"),
-                    ChatMsgType::BY_SERVER);
-                break;
-            default:
-                break;
-        }
+        inputManager.executeChatCommand(InputAction::PARTY_ITEM_SHARE,
+            args,
+            this);
     }
     else if (type == "exp")
     {
