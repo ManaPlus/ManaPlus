@@ -58,8 +58,8 @@ void PartyRecv::processPartyMemberInfo(Net::MessageIn &msg)
     msg.readString(24, "party name");
     const std::string nick = msg.readString(24, "player name");
     const std::string map = msg.readString(16, "map name");
-    msg.readInt8("party.item&1");
-    msg.readInt8("party.item&2");
+    msg.readInt8("pickup item share (&1)");
+    msg.readInt8("get item share (&2)");
 
     if (!Ea::taParty)
         return;
@@ -87,13 +87,13 @@ void PartyRecv::processPartySettings(Net::MessageIn &msg)
         Ea::PartyRecv::createTab();
     }
 
-    msg.readInt32("party exp");
+    const PartyShareT exp = static_cast<PartyShareT>(
+        msg.readInt32("party exp"));
     if (msg.getVersion() >= 20090603)
     {
-        const PartyShareT exp = static_cast<PartyShareT>(
-            msg.readInt8("share exp"));
         const PartyShareT item = static_cast<PartyShareT>(
-            msg.readInt8("share item"));
+            msg.readInt8("pickup item share (&1)"));
+        msg.readInt8("get item share (&2)");
         Ea::PartyRecv::processPartySettingsContinue(msg, exp, item);
     }
 }
