@@ -682,6 +682,7 @@ enumStart(InputAction)
     LEAVE_GUILD,
     GUILD_NOTICE,
     PARTY_ITEM_SHARE,
+    PARTY_EXP_SHARE,
     TOTAL
 }
 enumEnd(InputAction);

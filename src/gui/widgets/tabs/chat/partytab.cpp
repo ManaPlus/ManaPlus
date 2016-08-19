@@ -37,7 +37,7 @@
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
 
-#include "utils/booleanoptions.h"
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -90,54 +90,9 @@ bool PartyTab::handleCommand(const std::string &restrict type,
     }
     else if (type == "exp")
     {
-        if (args.empty())
-        {
-            switch (partyHandler->getShareExperience())
-            {
-                case PartyShare::YES:
-                    // TRANSLATORS: chat message
-                    chatLog(_("Experience sharing enabled."),
-                        ChatMsgType::BY_SERVER);
-                    return true;
-                case PartyShare::NO:
-                    // TRANSLATORS: chat message
-                    chatLog(_("Experience sharing disabled."),
-                        ChatMsgType::BY_SERVER);
-                    return true;
-                case PartyShare::NOT_POSSIBLE:
-                    // TRANSLATORS: chat message
-                    chatLog(_("Experience sharing not possible."),
-                        ChatMsgType::BY_SERVER);
-                    return true;
-                case PartyShare::UNKNOWN:
-                    // TRANSLATORS: chat message
-                    chatLog(_("Experience sharing unknown."),
-                        ChatMsgType::BY_SERVER);
-                    return true;
-                default:
-                    break;
-            }
-        }
-
-        const signed char opt = parseBoolean(args);
-
-        switch (opt)
-        {
-            case 1:
-                partyHandler->setShareExperience(
-                    PartyShare::YES);
-                break;
-            case 0:
-                partyHandler->setShareExperience(
-                    PartyShare::NO);
-                break;
-            case -1:
-                chatLog(strprintf(BOOLEAN_OPTIONS, "exp"),
-                    ChatMsgType::BY_SERVER);
-                break;
-            default:
-                break;
-        }
+        inputManager.executeChatCommand(InputAction::PARTY_EXP_SHARE,
+            args,
+            this);
     }
     else if (type == "setleader"
              && serverFeatures->haveChangePartyLeader())

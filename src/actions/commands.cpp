@@ -1756,4 +1756,70 @@ impHandler(partyItemShare)
     return true;
 }
 
+impHandler(partyExpShare)
+{
+    if (!localPlayer)
+        return false;
+
+    if (localPlayer->isInParty() == false)
+        return true;
+
+    ChatTab *tab = event.tab;
+    if (tab == nullptr)
+        tab = localChatTab;
+    if (tab == nullptr)
+        return true;
+
+    const std::string args = event.args;
+    if (args.empty())
+    {
+        switch (partyHandler->getShareExperience())
+        {
+            case PartyShare::YES:
+                // TRANSLATORS: chat message
+                tab->chatLog(_("Experience sharing enabled."),
+                    ChatMsgType::BY_SERVER);
+                return true;
+            case PartyShare::NO:
+                // TRANSLATORS: chat message
+                tab->chatLog(_("Experience sharing disabled."),
+                    ChatMsgType::BY_SERVER);
+                return true;
+            case PartyShare::NOT_POSSIBLE:
+                // TRANSLATORS: chat message
+                tab->chatLog(_("Experience sharing not possible."),
+                    ChatMsgType::BY_SERVER);
+                return true;
+            case PartyShare::UNKNOWN:
+                // TRANSLATORS: chat message
+                tab->chatLog(_("Experience sharing unknown."),
+                    ChatMsgType::BY_SERVER);
+                return true;
+            default:
+                break;
+        }
+    }
+
+    const signed char opt = parseBoolean(args);
+
+    switch (opt)
+    {
+        case 1:
+            partyHandler->setShareExperience(
+                PartyShare::YES);
+            break;
+        case 0:
+            partyHandler->setShareExperience(
+                PartyShare::NO);
+            break;
+        case -1:
+            tab->chatLog(strprintf(BOOLEAN_OPTIONS, "exp"),
+                ChatMsgType::BY_SERVER);
+            break;
+        default:
+            break;
+    }
+    return true;
+}
+
 }  // namespace Actions
