@@ -3407,18 +3407,22 @@ void PopupMenu::addSocialMenu()
         // TRANSLATORS: create party
         mBrowserBox->addRow("/createparty", _("Create party"));
     }
-    const Guild *const guild = localPlayer->getGuild();
-    if (guild)
+
+    if (serverFeatures->haveNativeGuilds())
     {
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: leave guild
-        mBrowserBox->addRow("/leaveguild", _("Leave guild"));
-    }
-    else
-    {
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: create guild
-        mBrowserBox->addRow("/createguild", _("Create guild"));
+        const Guild *const guild = localPlayer->getGuild();
+        if (guild)
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: leave guild
+            mBrowserBox->addRow("/leaveguild", _("Leave guild"));
+        }
+        else
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: create guild
+            mBrowserBox->addRow("/createguild", _("Create guild"));
+        }
     }
     mBrowserBox->addRow("##3---");
 }
