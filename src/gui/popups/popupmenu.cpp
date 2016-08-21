@@ -3442,6 +3442,10 @@ void PopupMenu::showGuildPopup()
     addSocialMenu();
 
     // TRANSLATORS: popup menu item
+    // TRANSLATORS: change guild notice message
+    mBrowserBox->addRow("/guildnotice", _("Change notice"));
+
+    // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
     showPopup(mX, mY);

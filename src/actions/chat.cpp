@@ -651,6 +651,15 @@ impHandler(guildNotice)
     if (!localPlayer)
         return false;
     const std::string args = event.args;
+    if (args.empty())
+    {
+        // TRANSLATORS: dialog header
+        inputActionReplayListener.openDialog(_("Guild notice"),
+            "",
+            InputAction::GUILD_NOTICE);
+        return true;
+    }
+
     const std::string str1 = args.substr(0, 60);
     std::string str2("");
     if (args.size() > 60)
