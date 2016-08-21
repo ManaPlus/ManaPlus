@@ -422,7 +422,7 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     const int len = msg.readInt16("len") - 14;
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
-    if (!dstBeing)
+    if (!dstBeing || dstBeing == localPlayer)
     {
         DEBUGLOGSTR("invisible player?");
         msg.readInt16("speed");
@@ -436,14 +436,8 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     dstBeing->setWalkSpeed(speed);
     const int16_t x = msg.readInt16("x");
     const int16_t y = msg.readInt16("y");
-
-    dstBeing->setAction(BeingAction::STAND, 0);
-    dstBeing->setTileCoords(x, y);
-
-    if (dstBeing == localPlayer)
-        return;
-
     const unsigned char *moves = msg.readBytes(len, "moving path");
+
     Path path;
     if (moves)
     {
@@ -486,6 +480,11 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
         delete [] moves;
     }
 
+    if (path.empty())
+        return;
+
+    dstBeing->setAction(BeingAction::STAND, 0);
+    dstBeing->setTileCoords(x, y);
     dstBeing->setPath(path);
     BLOCK_END("BeingRecv::processBeingMove3")
 }
