@@ -355,14 +355,16 @@ void Files::deleteFilesInDirectory(std::string path)
     const struct dirent *next_file = nullptr;
     DIR *const dir = opendir(path.c_str());
 
-    while ((next_file = readdir(dir)))
-    {
-        const std::string file = next_file->d_name;
-        if (file != "." && file != "..")
-            remove((path + file).c_str());
-    }
     if (dir)
+    {
+        while ((next_file = readdir(dir)))
+        {
+            const std::string file = next_file->d_name;
+            if (file != "." && file != "..")
+                remove((path + file).c_str());
+        }
         closedir(dir);
+    }
 }
 
 void Files::getFilesInDir(const std::string &dir,

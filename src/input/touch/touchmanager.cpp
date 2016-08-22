@@ -86,6 +86,7 @@ void TouchManager::shutdown() restrict2
 
 void TouchManager::init() restrict2
 {
+    delete mVertexes;
     mVertexes = new ImageCollection;
 
     config.addListener("showScreenJoystick", this);
