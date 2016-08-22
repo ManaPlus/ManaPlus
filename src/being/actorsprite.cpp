@@ -160,7 +160,7 @@ void ActorSprite::controlCustomParticle(Particle *const particle)
     }
 }
 
-void ActorSprite::controlParticleDeleted(Particle *const particle)
+void ActorSprite::controlParticleDeleted(const Particle *const particle)
 {
     if (particle)
         mChildParticleEffects.removeLocally(particle);

@@ -34,7 +34,7 @@
 struct EmptyAtlasLoader final
 {
     const std::string name;
-    const StringVect *files;
+    const StringVect *const files;
 
     static Resource *load(const void *const v)
     {

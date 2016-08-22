@@ -35,9 +35,9 @@ namespace
 {
     struct RescaledLoader final
     {
-        const Image *image;
-        int width;
-        int height;
+        const Image *const image;
+        const int width;
+        const int height;
         static Resource *load(const void *const v)
         {
             if (!v)

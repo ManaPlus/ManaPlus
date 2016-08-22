@@ -401,7 +401,7 @@ void ScrollArea::safeDraw(Graphics *const graphics)
     BLOCK_END("ScrollArea::draw")
 }
 
-void ScrollArea::updateCalcFlag(Graphics *const graphics)
+void ScrollArea::updateCalcFlag(const Graphics *const graphics)
 {
     if (!mRedraw)
     {

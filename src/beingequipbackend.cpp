@@ -41,20 +41,21 @@ BeingEquipBackend::BeingEquipBackend(Being *const being)
         {
             const int idx = inventoryHandler->
                 convertFromServerSlot(CAST_S32(f));
-            const int id = being->mSlots[f].spriteId;
+            const BeingSlot &slot = being->mSlots[f];
+            const int id = slot.spriteId;
             if (id > 0 && idx >= 0 && idx < EQUIPMENT_SIZE)
             {
                 Item *const item = new Item(id,
                     ItemType::Unknown,
                     1,
                     0,
-                    being->mSlots[f].colorId,
+                    slot.colorId,
                     Identified_true,
                     Damaged_false,
                     Favorite_false,
                     Equipm_true,
                     Equipped_true);
-                const CardsList &cards = being->mSlots[f].cardsId;
+                const CardsList &cards = slot.cardsId;
                 if (!cards.isEmpty())
                     item->setCards(&cards.cards[0], maxCards);
                 mEquipment[idx] = item;

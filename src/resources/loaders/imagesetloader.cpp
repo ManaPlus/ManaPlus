@@ -36,9 +36,9 @@
 
 struct ImageSetLoader final
 {
-    std::string path;
-    int w;
-    int h;
+    const std::string path;
+    const int w;
+    const int h;
     static Resource *load(const void *const v)
     {
         if (!v)

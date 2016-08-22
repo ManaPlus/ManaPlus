@@ -36,7 +36,7 @@
 struct WalkLayerLoader final
 {
     const std::string name;
-    Map *map;
+    const Map *const map;
 
     static Resource *load(const void *const v)
     {

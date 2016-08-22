@@ -36,8 +36,8 @@ namespace
 {
     struct SpriteDefLoader final
     {
-        std::string path;
-        int variant;
+        const std::string path;
+        const int variant;
         static Resource *load(const void *const v)
         {
             if (!v)

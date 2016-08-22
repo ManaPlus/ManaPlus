@@ -35,9 +35,11 @@ namespace
 {
     struct SubImageLoader final
     {
-        Image *parent;
-        int x, y;
-        int width, height;
+        Image *const parent;
+        const int x;
+        const int y;
+        const int width;
+        const int height;
         static Resource *load(const void *const v)
         {
             if (!v)

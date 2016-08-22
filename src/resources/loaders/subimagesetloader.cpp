@@ -36,7 +36,7 @@ namespace
 {
     struct SubImageSetLoader final
     {
-        Image *parent;
+        Image *const parent;
         int width;
         int height;
         static Resource *load(const void *const v)

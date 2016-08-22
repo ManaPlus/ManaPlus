@@ -35,7 +35,7 @@ namespace
 {
     struct ResourceLoader final
     {
-        std::string path;
+        const std::string path;
 
         static Resource *load(const void *const v)
         {

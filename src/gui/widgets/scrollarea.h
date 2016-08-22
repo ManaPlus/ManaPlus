@@ -466,7 +466,7 @@ class ScrollArea final : public BasicContainer,
 
         Image *getImageByState(Rect &dim, const BUTTON_DIR dir);
 
-        void updateCalcFlag(Graphics *const graphics) A_NONNULL(2);
+        void updateCalcFlag(const Graphics *const graphics) A_NONNULL(2);
 
         static int instances;
         static float mAlpha;

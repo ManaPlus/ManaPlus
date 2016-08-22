@@ -2625,7 +2625,7 @@ void Being::setSpriteId(const unsigned int slot,
 
     BeingSlot &beingSlot = mSlots[slot];
     beingSlot.spriteId = id;
-    beingSlot.color = "";
+    beingSlot.color.clear();
     beingSlot.colorId = ItemColor_one;
     beingSlot.cardsId = CardsList(nullptr);
     recalcSpritesOrder();

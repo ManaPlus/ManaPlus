@@ -195,7 +195,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
                 mChildParticleEffects.size();
         }
 
-        void controlParticleDeleted(Particle *const particle);
+        void controlParticleDeleted(const Particle *const particle);
 
     protected:
         /**

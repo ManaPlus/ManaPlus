@@ -1234,7 +1234,7 @@ void LocalPlayer::moveToTarget(int dist)
     bool gotPos(false);
     Path debugPath;
 
-    unsigned int limit(0);
+    size_t limit(0);
 
     if (dist == -1)
     {
@@ -1299,7 +1299,7 @@ void LocalPlayer::moveToTarget(int dist)
         else
         {
             Position pos(0, 0);
-            unsigned int f = 0;
+            size_t f = 0;
 
             for (Path::const_iterator i = debugPath.begin(),
                  i_fend = debugPath.end();
