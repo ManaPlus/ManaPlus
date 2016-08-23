@@ -56,18 +56,6 @@ namespace Actions
 
 static const Being *getPet()
 {
-#ifdef TMWA_SUPPORT
-    if (!localPlayer)
-        return nullptr;
-
-    if (Net::getNetworkType() == ServerType::TMWATHENA)
-    {
-        const std::vector<Being*> &pets = localPlayer->getPets();
-        if (pets.empty())
-            return nullptr;
-        return *pets.begin();
-    }
-#endif
     const BeingId id = PlayerInfo::getPetBeingId();
     if (id == BeingId_zero)
         return nullptr;

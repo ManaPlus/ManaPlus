@@ -895,19 +895,11 @@ class Being notfinal : public ActorSprite,
         void fixPetSpawnPos(int &restrict dstX,
                             int &restrict dstY) const restrict2;
 
-        const std::vector<Being*> &getPets() const restrict2 noexcept2
-        { return mPets; }
-
-        Being *getFirstPet() restrict2
-        { return mPets.empty() ? nullptr : mPets[0]; }
-
         void setOwner(Being *restrict const owner) restrict2 noexcept2
         { mOwner = owner; }
 
         Being *getOwner() const restrict2 noexcept2
         { return mOwner; }
-
-        Being *findChildPet(const BeingId id) restrict2;
 
         void playSfx(const SoundInfo &sound,
                      Being *restrict const being,
@@ -1231,7 +1223,6 @@ class Being notfinal : public ActorSprite,
         std::string mComment;
         std::string mBuyBoard;
         std::string mSellBoard;
-        std::vector<Being*> mPets;
         Being *restrict mOwner;
         Particle *restrict mSpecialParticle;
         ChatObject *restrict mChat;

@@ -207,7 +207,6 @@ Being::Being(const BeingId id,
     mComment(),
     mBuyBoard(),
     mSellBoard(),
-    mPets(),
     mOwner(nullptr),
     mSpecialParticle(nullptr),
     mChat(nullptr),
@@ -338,18 +337,6 @@ Being::~Being()
     mBadgesCount = 0;
     delete2(mChat);
     removeHorse();
-
-    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
-    {
-        Being *pet = *it;
-        if (pet)
-        {
-            pet->setOwner(nullptr);
-            actorManager->erase(pet);
-            delete pet;
-        }
-    }
-    mPets.clear();
 
     removeAllItemsParticles();
     mSpiritParticles.clear();
@@ -1902,13 +1889,6 @@ void Being::logic() restrict2
     {
         if (mType != ActorType::Player && actorManager)
             actorManager->destroy(this);
-    }
-
-    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
-    {
-        Being *const pet = *it;
-        if (pet)
-            pet->petLogic();
     }
 
     const SoundInfo *restrict const sound = mNextSound.sound;
@@ -4641,17 +4621,6 @@ void Being::addEffect(const std::string &restrict name) restrict2
     delete mAnimationEffect;
     mAnimationEffect = AnimatedSprite::load(
         paths.getStringValue("sprites") + name);
-}
-
-Being *Being::findChildPet(const BeingId id) restrict2
-{
-    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
-    {
-        Being *restrict const pet = *it;
-        if (pet && pet->mId == id)
-            return pet;
-    }
-    return nullptr;
 }
 
 void Being::fixPetSpawnPos(int &restrict dstX,
