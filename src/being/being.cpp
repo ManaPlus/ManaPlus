@@ -94,6 +94,8 @@
 
 #include "resources/image/image.h"
 
+#include "resources/item/item.h"
+
 #include "resources/map/map.h"
 
 #include "resources/skill/skilldata.h"
@@ -5101,6 +5103,8 @@ void Being::addItemParticlesCards(const int id,
         for (int f = 0; f < maxCards; f ++)
         {
             const int cardId = cards.cards[f];
+            if (!Item::isItem(cardId))
+                continue;
             const ItemInfo &info = ItemDB::get(cardId);
             const SpriteDisplay &restrict display2 = info.getDisplay();
             FOR_EACH (StringVectCIter, itr, display2.particles)
@@ -5121,6 +5125,8 @@ void Being::addItemParticlesCards(const int id,
         for (int f = 0; f < maxCards; f ++)
         {
             const int cardId = cards.cards[f];
+            if (!Item::isItem(cardId))
+                continue;
             const ItemInfo &info = ItemDB::get(cardId);
             const SpriteDisplay &restrict display2 = info.getDisplay();
             FOR_EACH (StringVectCIter, itr, display2.particles)

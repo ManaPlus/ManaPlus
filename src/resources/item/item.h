@@ -227,6 +227,8 @@ class Item notfinal
 
         void updateColor();
 
+        static bool isItem(const int id);
+
         int mId;              /**< Item id. */
         ItemColor mColor;
         int mQuantity;        /**< Number of items. */
