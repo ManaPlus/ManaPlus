@@ -111,49 +111,6 @@ void PETDB::loadXmlFile(const std::string &fileName,
         currentInfo->setDeadSortOffsetY(XML::getProperty(petNode,
             "deadSortOffsetY", 31));
 
-        currentInfo->setStartFollowDist(XML::getProperty(petNode,
-            "startFollowDistance", 3));
-        currentInfo->setFollowDist(XML::getProperty(petNode,
-            "followDistance", 0));
-        currentInfo->setWarpDist(XML::getProperty(petNode,
-            "warpDistance", 11));
-
-        currentInfo->setWalkSpeed(XML::getProperty(petNode,
-            "walkSpeed", 0));
-
-        currentInfo->setTargetOffsetX(XML::getProperty(petNode,
-            "offsetX", 0));
-        currentInfo->setTargetOffsetY(XML::getProperty(petNode,
-            "offsetY", 1));
-        currentInfo->setSitOffsetX(XML::getProperty(petNode,
-            "sitOffsetX", 0));
-        currentInfo->setSitOffsetY(XML::getProperty(petNode,
-            "sitOffsetY", 1));
-        currentInfo->setMoveOffsetX(XML::getProperty(petNode,
-            "moveOffsetX", 0));
-        currentInfo->setMoveOffsetY(XML::getProperty(petNode,
-            "moveOffsetY", 1));
-        currentInfo->setDeadOffsetX(XML::getProperty(petNode,
-            "deadOffsetX", 0));
-        currentInfo->setDeadOffsetY(XML::getProperty(petNode,
-            "deadOffsetY", 1));
-        currentInfo->setAttackOffsetX(XML::getProperty(petNode,
-            "attackOffsetX", currentInfo->getTargetOffsetX()));
-        currentInfo->setAttackOffsetY(XML::getProperty(petNode,
-            "attackOffsetY", currentInfo->getTargetOffsetY()));
-
-        currentInfo->setThinkTime(XML::getProperty(petNode,
-            "thinkTime", 500) / 10);
-
-        currentInfo->setDirectionType(XML::getProperty(petNode,
-            "directionType", 1));
-        currentInfo->setSitDirectionType(XML::getProperty(petNode,
-            "sitDirectionType", 1));
-        currentInfo->setDeadDirectionType(XML::getProperty(petNode,
-            "deadDirectionType", 1));
-        currentInfo->setAttackDirectionType(XML::getProperty(petNode,
-            "attackDirectionType", 4));
-
         const std::string returnMessage = XML::langProperty(petNode,
             // TRANSLATORS: popup menu item
             // TRANSLATORS: pet return to egg
