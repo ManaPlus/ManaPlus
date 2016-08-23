@@ -85,7 +85,6 @@
 #include "resources/db/emotedb.h"
 #include "resources/db/homunculusdb.h"
 #include "resources/db/horsedb.h"
-#include "resources/db/itemdb.h"
 #include "resources/db/mercenarydb.h"
 #include "resources/db/monsterdb.h"
 #include "resources/db/npcdb.h"
