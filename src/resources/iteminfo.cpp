@@ -73,7 +73,6 @@ ItemInfo::ItemInfo() :
     maxFloorOffsetX(mapTileSize),
     maxFloorOffsetY(mapTileSize),
     mPickupCursor(Cursor::CURSOR_POINTER),
-    mPet(0),
     mProtected(false)
 {
     for (int f = 0; f < 10; f ++)

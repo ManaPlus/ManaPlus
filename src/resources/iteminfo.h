@@ -243,12 +243,6 @@ class ItemInfo final
 
         bool isRemoveItemId(int id) const A_WARN_UNUSED;
 
-        void setPet(const int pet)
-        { mPet = pet; }
-
-        int getPet() const
-        { return mPet; }
-
         void setCardColor(const ItemColor color)
         { mCardColor = color; }
 
@@ -380,7 +374,6 @@ class ItemInfo final
         int maxFloorOffsetX;
         int maxFloorOffsetY;
         Cursor::Cursor mPickupCursor;
-        int mPet;
         bool mProtected;
 };
 

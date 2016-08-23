@@ -305,7 +305,6 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             node, "rideattack-action", "");
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
-        int pet = XML::getProperty(node, "pet", 0);
         const int maxFloorOffset = XML::getIntProperty(
             node, "maxFloorOffset", mapTileSize, 0, mapTileSize);
         const int maxFloorOffsetX = XML::getIntProperty(
@@ -411,9 +410,6 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             useButton2 = useButton2FromItemType(itemInfo->getType());
         itemInfo->setUseButton2(useButton2);
         itemInfo->addTag(mTags["All"]);
-        if (!pet && inheritItemInfo)
-            pet = inheritItemInfo->getPet();
-        itemInfo->setPet(pet);
         itemInfo->setProtected(XML::getBoolProperty(
             node, "sellProtected", false));
         if (cardColor != -1)
