@@ -76,9 +76,7 @@ static const Being *getPet()
 
 impHandler(commandEmotePet)
 {
-    // need use actual pet id
-    petHandler->emote(CAST_U8(
-        atoi(event.args.c_str())), 0);
+    petHandler->emote(CAST_U8(atoi(event.args.c_str())));
     return true;
 }
 
@@ -123,7 +121,7 @@ impHandler(petEmote)
     {
         const int emotion = event.action - InputAction::PET_EMOTE_1;
         if (emoteShortcut)
-            petHandler->emote(emoteShortcut->getEmote(emotion), 0);
+            petHandler->emote(emoteShortcut->getEmote(emotion));
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
@@ -166,7 +164,7 @@ impHandler0(petMoveUp)
     const Being *const pet = getPet();
     if (!pet)
         return false;
-    petHandler->move(0, pet->getTileX(), pet->getTileY() - 1);
+    petHandler->move(pet->getTileX(), pet->getTileY() - 1);
     return true;
 }
 
@@ -175,7 +173,7 @@ impHandler0(petMoveDown)
     const Being *const pet = getPet();
     if (!pet)
         return false;
-    petHandler->move(0, pet->getTileX(), pet->getTileY() + 1);
+    petHandler->move(pet->getTileX(), pet->getTileY() + 1);
     return true;
 }
 
@@ -184,7 +182,7 @@ impHandler0(petMoveLeft)
     const Being *const pet = getPet();
     if (!pet)
         return false;
-    petHandler->move(0, pet->getTileX() - 1, pet->getTileY());
+    petHandler->move(pet->getTileX() - 1, pet->getTileY());
     return true;
 }
 
@@ -193,7 +191,7 @@ impHandler0(petMoveRight)
     const Being *const pet = getPet();
     if (!pet)
         return false;
-    petHandler->move(0, pet->getTileX() + 1, pet->getTileY());
+    petHandler->move(pet->getTileX() + 1, pet->getTileY());
     return true;
 }
 
@@ -221,18 +219,6 @@ impHandler0(petDirectRight)
     return true;
 }
 
-impHandler0(petAiStart)
-{
-    petHandler->startAi(true);
-    return true;
-}
-
-impHandler0(petAiStop)
-{
-    petHandler->startAi(false);
-    return true;
-}
-
 impHandler(petMove)
 {
     int x = 0;
@@ -240,7 +226,7 @@ impHandler(petMove)
 
     if (parse2Int(event.args, x, y))
     {
-        petHandler->move(0, x, y);
+        petHandler->move(x, y);
         return true;
     }
     return false;

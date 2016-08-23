@@ -753,7 +753,7 @@ void CrazyMoves::crazyMoveAe() const
     if (mMoveProgram[settings.crazyMoveState - 1] == 'e')
         localPlayer->emote(emoteId);
     else if (PacketLimiter::limitPackets(PacketType::PACKET_CHAT))
-        petHandler->emote(emoteId, 0);
+        petHandler->emote(emoteId);
 
     settings.crazyMoveState ++;
 }

@@ -40,20 +40,12 @@ PetHandler::PetHandler() :
     petHandler = this;
 }
 
-void PetHandler::move(const int petId A_UNUSED,
-                      const int x A_UNUSED,
+void PetHandler::move(const int x A_UNUSED,
                       const int y A_UNUSED) const
 {
 }
 
-void PetHandler::spawn(const Being *const being A_UNUSED,
-                       const int petId A_UNUSED,
-                       const int x A_UNUSED, const int y A_UNUSED) const
-{
-}
-
-void PetHandler::emote(const uint8_t emoteId A_UNUSED,
-                       const int petId A_UNUSED)
+void PetHandler::emote(const uint8_t emoteId A_UNUSED)
 {
 }
 
@@ -90,10 +82,6 @@ void PetHandler::unequip() const
 }
 
 void PetHandler::setDirection(const unsigned char type A_UNUSED) const
-{
-}
-
-void PetHandler::startAi(const bool start A_UNUSED) const
 {
 }
 

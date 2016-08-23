@@ -39,8 +39,8 @@ PetHandler::PetHandler()
     petHandler = this;
 }
 
-void PetHandler::move(const int petId A_UNUSED,
-                      const int x, const int y) const
+void PetHandler::move(const int x,
+                      const int y) const
 {
     if (!serverFeatures->haveMovePet())
         return;
@@ -50,14 +50,7 @@ void PetHandler::move(const int petId A_UNUSED,
     outMsg.writeInt16(CAST_S16(y), "y");
 }
 
-void PetHandler::spawn(const Being *const being A_UNUSED,
-                       const int petId A_UNUSED,
-                       const int x A_UNUSED, const int y A_UNUSED) const
-{
-}
-
-void PetHandler::emote(const uint8_t emoteId,
-                       const int petId A_UNUSED)
+void PetHandler::emote(const uint8_t emoteId)
 {
     createOutPacket(CMSG_PET_EMOTE);
     outMsg.writeInt8(emoteId, "emote id");
@@ -125,10 +118,6 @@ void PetHandler::setDirection(const unsigned char type) const
     outMsg.writeInt8(0, "unused");
     outMsg.writeInt8(MessageOut::toServerDirection(type),
         "pet direction");
-}
-
-void PetHandler::startAi(const bool start A_UNUSED) const
-{
 }
 
 }  // namespace EAthena

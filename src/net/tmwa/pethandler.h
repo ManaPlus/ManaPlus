@@ -33,15 +33,10 @@ class PetHandler final : public Net::PetHandler
 
         A_DELETE_COPY(PetHandler)
 
-        void move(const int petId,
-                  const int x, const int y) const override final;
+        void move(const int x,
+                  const int y) const override final;
 
-        void spawn(const Being *const being,
-                   const int petId,
-                   const int x, const int y) const override final A_CONST;
-
-        void emote(const uint8_t emoteId,
-                   const int petId) override final;
+        void emote(const uint8_t emoteId) override final;
 
         void catchPet(const Being *const being) const override final A_CONST;
 
@@ -60,8 +55,6 @@ class PetHandler final : public Net::PetHandler
         void unequip() const override final A_CONST;
 
         void setDirection(const unsigned char type) const override final;
-
-        void startAi(const bool start) const override final;
 
     protected:
         int mRandCounter;

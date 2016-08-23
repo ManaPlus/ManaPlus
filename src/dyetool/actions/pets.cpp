@@ -40,8 +40,6 @@ impHandlerVoid(petDirectUp)
 impHandlerVoid(petDirectDown)
 impHandlerVoid(petDirectLeft)
 impHandlerVoid(petDirectRight)
-impHandlerVoid(petAiStart)
-impHandlerVoid(petAiStop)
 impHandlerVoid(petMove)
 
 }  // namespace Actions

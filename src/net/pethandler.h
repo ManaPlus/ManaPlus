@@ -32,15 +32,10 @@ class PetHandler notfinal
         virtual ~PetHandler()
         { }
 
-        virtual void move(const int petId,
-                          const int x, const int y) const = 0;
+        virtual void move(const int x,
+                          const int y) const = 0;
 
-        virtual void spawn(const Being *const being,
-                           const int petId,
-                           const int x, const int y) const = 0;
-
-        virtual void emote(const uint8_t emoteId,
-                           const int petId) = 0;
+        virtual void emote(const uint8_t emoteId) = 0;
 
         virtual void catchPet(const Being *const being) const = 0;
 
@@ -59,8 +54,6 @@ class PetHandler notfinal
         virtual void unequip() const = 0;
 
         virtual void setDirection(const unsigned char type) const = 0;
-
-        virtual void startAi(const bool start) const = 0;
 };
 
 }  // namespace Net

@@ -106,7 +106,7 @@ void EmoteShortcut::useEmote(const int index) const
                     localPlayer->emote(emote);
                     break;
                 case EmoteType::Pet:
-                    petHandler->emote(emote, 0);
+                    petHandler->emote(emote);
                     break;
                 case EmoteType::Homunculus:
                     homunculusHandler->emote(emote);
