@@ -892,14 +892,6 @@ class Being notfinal : public ActorSprite,
 
         void addEffect(const std::string &restrict name) restrict2;
 
-#ifdef TMWA_SUPPORT
-        void addPet(const BeingId id) restrict2;
-
-        void updatePets() restrict2;
-#endif
-
-        void removePet(const BeingId id) restrict2;
-
         void fixPetSpawnPos(int &restrict dstX,
                             int &restrict dstY) const restrict2;
 
@@ -914,10 +906,6 @@ class Being notfinal : public ActorSprite,
 
         Being *getOwner() const restrict2 noexcept2
         { return mOwner; }
-
-        void unassignPet(const Being *restrict const pet) restrict2;
-
-        void removeAllPets() restrict2;
 
         Being *findChildPet(const BeingId id) restrict2;
 

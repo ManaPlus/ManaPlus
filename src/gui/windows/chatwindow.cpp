@@ -1611,32 +1611,19 @@ bool ChatWindow::resortChatLog(std::string line,
             {
                 if (line.find(": \302\202\302e") != std::string::npos)
                 {
-                    const std::string nick = line.substr(0, idx2 - 1);
-                    line = line.substr(idx2 + 6);
-                    localPetEmote(nick, CAST_U8(
-                        atoi(line.c_str())));
+                    // Do nothing. Before was local pet emote
                 }
                 else if (line.find(": \302\202\302m") != std::string::npos)
                 {
-                    const std::string nick = line.substr(0, idx2 - 1);
-                    line = line.substr(idx2 + 6);
-                    int x = 0;
-                    int y = 0;
-                    if (parse2Int(line, x, y))
-                        localPetMove(nick, x, y);
+                    // Do nothing. Before was local pet move
                 }
                 else if (line.find(": \302\202\302d") != std::string::npos)
                 {
-                    const std::string nick = line.substr(0, idx2 - 1);
-                    line = line.substr(idx2 + 6);
-                    localPetDirection(nick, CAST_U8(
-                        atoi(line.c_str())));
+                    // Do nothing. Before was local pet direction
                 }
                 else if (line.find(": \302\202\302a") != std::string::npos)
                 {
-                    const std::string nick = line.substr(0, idx2 - 1);
-                    line = line.substr(idx2 + 6);
-                    localPetAi(nick, atoi(line.c_str()) ? true : false);
+                    // Do nothing. Before was local pet ai enable/disable
                 }
                 // ignore other special message formats.
                 return false;
@@ -1645,13 +1632,7 @@ bool ChatWindow::resortChatLog(std::string line,
             // pet talk message detected
             if (line.find(": \302\202\303 ") != std::string::npos)
             {
-                if (actorManager && idx2 > 1)
-                {
-                    const std::string nick = line.substr(0, idx2 - 1);
-                    line = line.substr(idx2 + 6);
-                    localPetSay(nick, line);
-                }
-
+                // Do nothing. Before was local pet talk
                 return false;
             }
 
@@ -1748,75 +1729,6 @@ void ChatWindow::channelChatLog(const std::string &channel,
 
     if (tab)
         tab->chatLog(line, own, ignoreRecord, tryRemoveColors);
-}
-
-static Being *getPetForNick(const std::string &nick)
-{
-    Being *const being = actorManager->findBeingByName(
-        nick, ActorType::Player);
-    if (being)
-        return being->getFirstPet();
-    return nullptr;
-}
-
-void ChatWindow::localPetSay(const std::string &nick, const std::string &text)
-{
-    Being *const pet = getPetForNick(nick);
-    if (pet)
-        pet->setSpeech(text, GENERAL_CHANNEL);
-
-    if (!localChatTab)
-        return;
-    if (pet)
-    {
-        // TRANSLATORS: owners pet name. For example: 4144's pet
-        localChatTab->chatLog(strprintf(_("%s's pet"), nick.c_str()), text);
-    }
-    else
-    {
-        localChatTab->chatLog(nick, text);
-    }
-}
-
-void ChatWindow::localPetEmote(const std::string &nick, const uint8_t emoteId)
-{
-    Being *const pet = getPetForNick(nick);
-    if (pet)
-        pet->setEmote(emoteId, 0);
-}
-
-void ChatWindow::localPetAi(const std::string &nick, const bool start)
-{
-    Being *const pet = getPetForNick(nick);
-    if (pet)
-    {
-        if (start)
-            pet->enablePetAi();
-        else
-            pet->disablePetAi();
-    }
-}
-
-void ChatWindow::localPetMove(const std::string &nick,
-                              const int x, const int y)
-{
-    Being *const pet = getPetForNick(nick);
-    if (pet)
-    {
-        pet->setDestination(x, y);
-        pet->disablePetAi();
-    }
-}
-
-void ChatWindow::localPetDirection(const std::string &nick,
-                                   uint8_t dir)
-{
-    Being *const pet = getPetForNick(nick);
-    if (pet)
-    {
-        pet->setDirection(dir);
-        pet->disablePetAi();
-    }
 }
 
 void ChatWindow::initTradeFilter()

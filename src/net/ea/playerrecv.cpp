@@ -120,9 +120,6 @@ void PlayerRecv::processPlayerWarp(Net::MessageIn &msg)
 
         localPlayer->setAction(BeingAction::STAND, 0);
         localPlayer->setTileCoords(x, y);
-#ifdef TMWA_SUPPORT
-        localPlayer->updatePets();
-#endif
         localPlayer->navigateClean();
         localPlayer->reset();
     }

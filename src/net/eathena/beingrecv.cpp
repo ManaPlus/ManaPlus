@@ -451,9 +451,6 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         case ActorType::Elemental:
             break;
         case ActorType::FloorItem:
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-#endif
         case ActorType::Avatar:
         case ActorType::Unknown:
             reportAlways("Wrong being type detected: %d",
@@ -671,9 +668,6 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         case ActorType::Elemental:
             break;
         case ActorType::FloorItem:
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-#endif
         case ActorType::Avatar:
         case ActorType::Unknown:
             reportAlways("Wrong being type detected: %d",
@@ -887,9 +881,6 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         case ActorType::Elemental:
             break;
         case ActorType::FloorItem:
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-#endif
         case ActorType::Avatar:
         case ActorType::Unknown:
             reportAlways("Wrong being type detected: %d",

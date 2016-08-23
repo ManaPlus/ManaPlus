@@ -302,21 +302,6 @@ class ChatWindow final : public Window,
                          const int oldVal1,
                          const int oldVal2) override final;
 
-        static void localPetSay(const std::string &nick,
-                                const std::string &text);
-
-        static void localPetEmote(const std::string &nick,
-                                  const uint8_t emoteId);
-
-        static void localPetMove(const std::string &nick,
-                                 const int x, const int y);
-
-        static void localPetDirection(const std::string &nick,
-                                      uint8_t dir);
-
-        static void localPetAi(const std::string &nick,
-                               const bool start);
-
         void postConnection();
 
         void showGMTab();

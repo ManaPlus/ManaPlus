@@ -488,9 +488,6 @@ bool Viewport::leftMouseAction()
                 case ActorType::Elemental:
                     break;
                 case ActorType::Unknown:
-#ifdef TMWA_SUPPORT
-                case ActorType::LocalPet:
-#endif
                 case ActorType::Avatar:
                 default:
                     reportAlways("Left click on unknown actor type: %d",
@@ -919,9 +916,6 @@ void Viewport::mouseMoved(MouseEvent &event)
         || type == ActorType::Npc
         || type == ActorType::Homunculus
         || type == ActorType::Mercenary
-#ifdef TMWA_SUPPORT
-        || type == ActorType::LocalPet
-#endif
         || type == ActorType::Pet))
     {
         popupManager->hideTextPopup();
@@ -978,9 +972,6 @@ void Viewport::mouseMoved(MouseEvent &event)
             case ActorType::Npc:
             case ActorType::Monster:
             case ActorType::Portal:
-#ifdef TMWA_SUPPORT
-            case ActorType::LocalPet:
-#endif
             case ActorType::Pet:
             case ActorType::Mercenary:
             case ActorType::Homunculus:

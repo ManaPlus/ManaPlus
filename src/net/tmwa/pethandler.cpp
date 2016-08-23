@@ -41,10 +41,9 @@ PetHandler::PetHandler() :
 }
 
 void PetHandler::move(const int petId A_UNUSED,
-                      const int x, const int y) const
+                      const int x A_UNUSED,
+                      const int y A_UNUSED) const
 {
-    chatHandler->talk(strprintf("\302\202\302m%d,%dg%d",
-        x, y, tick_time), GENERAL_CHANNEL);
 }
 
 void PetHandler::spawn(const Being *const being A_UNUSED,
@@ -53,15 +52,9 @@ void PetHandler::spawn(const Being *const being A_UNUSED,
 {
 }
 
-void PetHandler::emote(const uint8_t emoteId,
+void PetHandler::emote(const uint8_t emoteId A_UNUSED,
                        const int petId A_UNUSED)
 {
-    mRandCounter ++;
-    if (mRandCounter > 10000)
-        mRandCounter = 1000;
-
-    chatHandler->talk(strprintf("\302\202\302e%dz%d",
-        CAST_S32(emoteId), mRandCounter), GENERAL_CHANNEL);
 }
 
 void PetHandler::catchPet(const Being *const being A_UNUSED) const
@@ -96,16 +89,12 @@ void PetHandler::unequip() const
 {
 }
 
-void PetHandler::setDirection(const unsigned char type) const
+void PetHandler::setDirection(const unsigned char type A_UNUSED) const
 {
-    chatHandler->talk(strprintf("\302\202\302d%dg%d",
-        CAST_S32(type), tick_time), GENERAL_CHANNEL);
 }
 
-void PetHandler::startAi(const bool start) const
+void PetHandler::startAi(const bool start A_UNUSED) const
 {
-    chatHandler->talk(strprintf("\302\202\302a%dg%d",
-        start ? 1 : 0, tick_time), GENERAL_CHANNEL);
 }
 
 }  // namespace TmwAthena

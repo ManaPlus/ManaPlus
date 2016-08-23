@@ -32,9 +32,6 @@ enumStart(ActorType)
     Monster,
     FloorItem,
     Portal,
-#ifdef TMWA_SUPPORT
-    LocalPet,
-#endif
     Avatar,
     Pet,
     Mercenary,

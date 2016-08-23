@@ -432,9 +432,6 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         case ActorType::FloorItem:
         case ActorType::Portal:
         case ActorType::Elemental:
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-#endif
         default:
             break;
     }
@@ -3313,9 +3310,6 @@ void PopupMenu::showGMPopup(const std::string &name)
                     showItemGMCommands();
                 break;
             case ActorType::Portal:
-#ifdef TMWA_SUPPORT
-            case ActorType::LocalPet:
-#endif
             case ActorType::Avatar:
             case ActorType::Elemental:
                 break;

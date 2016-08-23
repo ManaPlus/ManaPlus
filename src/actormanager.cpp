@@ -309,9 +309,6 @@ Being *ActorManager::createBeing(const BeingId id,
             break;
         default:
         case ActorType::FloorItem:
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-#endif
         case ActorType::Avatar:
         case ActorType::Unknown:
             reportAlways("CreateBeing for unknown type %d", CAST_S32(type));
@@ -604,9 +601,6 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
             case ActorType::Player:
             case ActorType::Npc:
             case ActorType::Monster:
-#ifdef TMWA_SUPPORT
-            case ActorType::LocalPet:
-#endif
             case ActorType::Pet:
             case ActorType::Mercenary:
             case ActorType::Homunculus:

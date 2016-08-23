@@ -294,9 +294,6 @@ Being::Being(const BeingId id,
         case ActorType::Npc:
         case ActorType::Monster:
         case ActorType::FloorItem:
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-#endif
         case ActorType::Avatar:
             break;
     }
@@ -342,15 +339,6 @@ Being::~Being()
     delete2(mChat);
     removeHorse();
 
-    if (mOwner)
-    {
-#ifdef TMWA_SUPPORT
-        if (mType == ActorType::LocalPet)
-            mOwner->unassignPet(this);
-#endif
-
-        mOwner = nullptr;
-    }
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)
     {
         Being *pet = *it;
@@ -471,29 +459,6 @@ void Being::setSubtype(const BeingTypeId subtype,
             if (mInfo)
                 setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
             break;
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-            mInfo = PETDB::get(fromInt(mId, BeingTypeId));
-            if (mInfo)
-            {
-                setName(mInfo->getName());
-                setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
-                mYDiff = mInfo->getSortOffsetY();
-                const int speed = mInfo->getWalkSpeed();
-                if (!speed)
-                {
-                    if (playerHandler)
-                        setWalkSpeed(playerHandler->getDefaultWalkSpeed());
-                    else
-                        setWalkSpeed(1);
-                }
-                else
-                {
-                    setWalkSpeed(speed);
-                }
-            }
-            break;
-#endif
         case ActorType::Player:
         {
             int id = -100 - toInt(subtype, int);
@@ -2455,13 +2420,6 @@ void Being::updateColors()
             setDefaultNameColor(UserColorId::SKILLUNIT);
             mTextColor = &userPalette->getColor(UserColorId::SKILLUNIT);
         }
-#ifdef TMWA_SUPPORT
-        else if (mType == ActorType::LocalPet)
-        {
-            setDefaultNameColor(UserColorId::PET);
-            mTextColor = &userPalette->getColor(UserColorId::PET);
-        }
-#endif
         else if (this == localPlayer)
         {
             mNameColor = &userPalette->getColor(UserColorId::SELF);
@@ -2565,17 +2523,7 @@ void Being::setSpriteId(const unsigned int slot,
 
         const int id1 = mSlots[slot].spriteId;
         if (id1)
-        {
-            const ItemInfo &info = ItemDB::get(id1);
-            if (mMap &&
-                mType == ActorType::Player)
-            {
-                const BeingId pet = fromInt(info.getPet(), BeingId);
-                if (pet != BeingId_zero)
-                    removePet(pet);
-            }
             removeItemParticles(id1);
-        }
     }
     else
     {
@@ -2585,15 +2533,6 @@ void Being::setSpriteId(const unsigned int slot,
         int lastTime = 0;
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
-
-#ifdef TMWA_SUPPORT
-        if (mType == ActorType::Player)
-        {
-            const BeingId pet = fromInt(info.getPet(), BeingId);
-            if (pet != BeingId_zero)
-                addPet(pet);
-        }
-#endif
 
         if (!filename.empty())
         {
@@ -2652,17 +2591,7 @@ void Being::unSetSprite(const unsigned int slot) restrict2
     BeingSlot &beingSlot = mSlots[slot];
     const int id1 = beingSlot.spriteId;
     if (id1)
-    {
-        const ItemInfo &info = ItemDB::get(id1);
-        if (mMap &&
-            mType == ActorType::Player)
-        {
-            const BeingId pet = fromInt(info.getPet(), BeingId);
-            if (pet != BeingId_zero)
-                removePet(pet);
-        }
         removeItemParticles(id1);
-    }
 
     beingSlot.spriteId = 0;
     beingSlot.color = std::string();
@@ -2699,17 +2628,7 @@ void Being::setSpriteColor(const unsigned int slot,
 
         const int id1 = mSlots[slot].spriteId;
         if (id1)
-        {
-            const ItemInfo &info = ItemDB::get(id1);
-            if (mMap &&
-                mType == ActorType::Player)
-            {
-                const BeingId pet = fromInt(info.getPet(), BeingId);
-                if (pet != BeingId_zero)
-                    removePet(pet);
-            }
             removeItemParticles(id1);
-        }
     }
     else
     {
@@ -2719,15 +2638,6 @@ void Being::setSpriteColor(const unsigned int slot,
         int lastTime = 0;
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
-
-#ifdef TMWA_SUPPORT
-        if (mType == ActorType::Player)
-        {
-            const BeingId pet = fromInt(info.getPet(), BeingId);
-            if (pet != BeingId_zero)
-                addPet(pet);
-        }
-#endif
 
         if (!filename.empty())
         {
@@ -2797,17 +2707,7 @@ void Being::setSpriteColorId(const unsigned int slot,
 
         const int id1 = mSlots[slot].spriteId;
         if (id1)
-        {
-            const ItemInfo &info = ItemDB::get(id1);
-            if (mMap &&
-                mType == ActorType::Player)
-            {
-                const BeingId pet = fromInt(info.getPet(), BeingId);
-                if (pet != BeingId_zero)
-                    removePet(pet);
-            }
             removeItemParticles(id1);
-        }
     }
     else
     {
@@ -2817,15 +2717,6 @@ void Being::setSpriteColorId(const unsigned int slot,
         int lastTime = 0;
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
-
-#ifdef TMWA_SUPPORT
-        if (mType == ActorType::Player)
-        {
-            const BeingId pet = fromInt(info.getPet(), BeingId);
-            if (pet != BeingId_zero)
-                addPet(pet);
-        }
-#endif
 
         if (!filename.empty())
         {
@@ -2897,17 +2788,7 @@ void Being::setSpriteCards(const unsigned int slot,
 
         const int id1 = mSlots[slot].spriteId;
         if (id1)
-        {
-            const ItemInfo &info = ItemDB::get(id1);
-            if (mMap &&
-                mType == ActorType::Player)
-            {
-                const BeingId pet = fromInt(info.getPet(), BeingId);
-                if (pet != BeingId_zero)
-                    removePet(pet);
-            }
             removeItemParticles(id1);
-        }
     }
     else
     {
@@ -2917,15 +2798,6 @@ void Being::setSpriteCards(const unsigned int slot,
         int lastTime = 0;
         int startTime = 0;
         AnimatedSprite *restrict equipmentSprite = nullptr;
-
-#ifdef TMWA_SUPPORT
-        if (mType == ActorType::Player)
-        {
-            const BeingId pet = fromInt(info.getPet(), BeingId);
-            if (pet != BeingId_zero)
-                addPet(pet);
-        }
-#endif
 
         if (!cards.isEmpty())
             colorId = ItemColorManager::getColorFromCards(cards);
@@ -3682,9 +3554,6 @@ void Being::draw(Graphics *restrict const graphics,
         case ActorType::Unknown:
         case ActorType::Npc:
         case ActorType::FloorItem:
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-#endif
         case ActorType::Avatar:
         default:
             drawOther(graphics,
@@ -4531,9 +4400,6 @@ std::string Being::loadComment(const std::string &restrict name,
         case ActorType::Monster:
         case ActorType::FloorItem:
         case ActorType::Portal:
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-#endif
         case ActorType::Avatar:
         case ActorType::Mercenary:
         case ActorType::Homunculus:
@@ -4571,9 +4437,6 @@ void Being::saveComment(const std::string &restrict name,
         case ActorType::Monster:
         case ActorType::FloorItem:
         case ActorType::Portal:
-#ifdef TMWA_SUPPORT
-        case ActorType::LocalPet:
-#endif
         case ActorType::Avatar:
         case ActorType::Unknown:
         case ActorType::Pet:
@@ -4780,33 +4643,6 @@ void Being::addEffect(const std::string &restrict name) restrict2
         paths.getStringValue("sprites") + name);
 }
 
-#ifdef TMWA_SUPPORT
-void Being::addPet(const BeingId id) restrict2
-{
-    if (!actorManager || !config.getBoolValue("usepets"))
-        return;
-
-    Being *restrict const pet = findChildPet(id);
-    if (pet)
-    {
-        pet->incUsage();
-        return;
-    }
-
-    Being *const being = actorManager->createBeing(
-        id, ActorType::LocalPet, BeingTypeId_zero);
-    if (being)
-    {
-        being->setOwner(this);
-        mPets.push_back(being);
-        int dstX = mX;
-        int dstY = mY;
-        being->fixPetSpawnPos(dstX, dstY);
-        being->setTileCoords(dstX, dstY);
-    }
-}
-#endif
-
 Being *Being::findChildPet(const BeingId id) restrict2
 {
     FOR_EACH (std::vector<Being*>::iterator, it, mPets)
@@ -4816,72 +4652,6 @@ Being *Being::findChildPet(const BeingId id) restrict2
             return pet;
     }
     return nullptr;
-}
-
-void Being::removePet(const BeingId id) restrict2
-{
-    if (!actorManager)
-        return;
-
-    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
-    {
-        Being *restrict const pet = *it;
-        if (pet && pet->mId == id)
-        {
-            if (!pet->decUsage())
-            {
-                pet->setOwner(nullptr);
-                actorManager->erase(pet);
-                mPets.erase(it);
-                delete pet;
-                return;
-            }
-        }
-    }
-}
-
-void Being::removeAllPets() restrict2
-{
-    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
-    {
-        Being *restrict const pet = *it;
-        if (pet)
-        {
-            pet->setOwner(nullptr);
-            actorManager->erase(pet);
-            delete pet;
-        }
-    }
-    mPets.clear();
-}
-
-#ifdef TMWA_SUPPORT
-void Being::updatePets() restrict2
-{
-    removeAllPets();
-    FOR_EACH (std::vector<BeingSlot>::const_iterator, it, mSlots)
-    {
-        const int id = (*it).spriteId;
-        if (!id)
-            continue;
-        const ItemInfo &restrict info = ItemDB::get(id);
-        const BeingId pet = fromInt(info.getPet(), BeingId);
-        if (pet != BeingId_zero)
-            addPet(pet);
-    }
-}
-#endif
-
-void Being::unassignPet(const Being *restrict const pet1) restrict2
-{
-    FOR_EACH (std::vector<Being*>::iterator, it, mPets)
-    {
-        if (*it == pet1)
-        {
-            mPets.erase(it);
-            return;
-        }
-    }
 }
 
 void Being::fixPetSpawnPos(int &restrict dstX,
