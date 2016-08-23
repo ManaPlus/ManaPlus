@@ -2949,7 +2949,9 @@ void Being::setSpriteCards(const unsigned int slot,
         CompoundSprite::setSprite(slot, equipmentSprite);
         mSpriteDraw[slot] = id;
 
-        addItemParticles(id, info.getDisplay());
+        addItemParticlesCards(id,
+            info.getDisplay(),
+            cards);
 
         setAction(mAction, 0);
         if (equipmentSprite)
@@ -3039,6 +3041,7 @@ void Being::setTempSprite(const unsigned int slot,
         CompoundSprite::setSprite(slot, equipmentSprite);
         mSpriteDraw[slot] = id;
 
+        // +++ here probably need use existing cards
         addItemParticles(id, info.getDisplay());
 
         setAction(mAction, 0);
@@ -5062,6 +5065,69 @@ void Being::addItemParticles(const int id,
     {
         FOR_EACH (StringVectCIter, itr, display.particles)
             pi->files.push_back(*itr);
+    }
+}
+
+void Being::addItemParticlesCards(const int id,
+                                  const SpriteDisplay &restrict display,
+                                  CardsList cards) restrict2
+{
+    const SpriteParticleInfoIter it = mSpriteParticles.find(id);
+    ParticleInfo *restrict pi = nullptr;
+    if (it == mSpriteParticles.end())
+    {
+        pi = new ParticleInfo();
+        mSpriteParticles[id] = pi;
+    }
+    else
+    {
+        pi = (*it).second;
+    }
+
+    if (!pi || !pi->particles.empty())
+        return;
+
+    // setup particle effects
+    if (ParticleEngine::enabled &&
+        particleEngine)
+    {
+        FOR_EACH (StringVectCIter, itr, display.particles)
+        {
+            Particle *const p = particleEngine->addEffect(*itr, 0, 0);
+            controlCustomParticle(p);
+            pi->files.push_back(*itr);
+            pi->particles.push_back(p);
+        }
+        for (int f = 0; f < maxCards; f ++)
+        {
+            const int cardId = cards.cards[f];
+            const ItemInfo &info = ItemDB::get(cardId);
+            const SpriteDisplay &restrict display2 = info.getDisplay();
+            FOR_EACH (StringVectCIter, itr, display2.particles)
+            {
+                Particle *const p = particleEngine->addEffect(*itr, 0, 0);
+                controlCustomParticle(p);
+                pi->files.push_back(*itr);
+                pi->particles.push_back(p);
+            }
+        }
+    }
+    else
+    {
+        FOR_EACH (StringVectCIter, itr, display.particles)
+        {
+            pi->files.push_back(*itr);
+        }
+        for (int f = 0; f < maxCards; f ++)
+        {
+            const int cardId = cards.cards[f];
+            const ItemInfo &info = ItemDB::get(cardId);
+            const SpriteDisplay &restrict display2 = info.getDisplay();
+            FOR_EACH (StringVectCIter, itr, display2.particles)
+            {
+                pi->files.push_back(*itr);
+            }
+        }
     }
 }
 

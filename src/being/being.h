@@ -1114,6 +1114,10 @@ class Being notfinal : public ActorSprite,
         void addItemParticles(const int id,
                               const SpriteDisplay &restrict display) restrict2;
 
+        void addItemParticlesCards(const int id,
+                                   const SpriteDisplay &restrict display,
+                                   CardsList cards) restrict2;
+
         void removeAllItemsParticles() restrict2;
 
         void removeItemParticles(const int id) restrict2;
