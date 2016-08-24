@@ -595,14 +595,6 @@ BeingId getMercenaryId()
     return mMercenary ? mMercenary->id : BeingId_zero;
 }
 
-void updateMoveAI()
-{
-    if (mMercenary && mercenaryHandler)
-        mercenaryHandler->moveToMaster();
-    if (mHomunculus && homunculusHandler)
-        homunculusHandler->moveToMaster();
-}
-
 void updateAttackAi(const BeingId targetId,
                     const Keep keep)
 {

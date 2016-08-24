@@ -277,8 +277,6 @@ namespace PlayerInfo
 
     BeingId getElementalId();
 
-    void updateMoveAI();
-
     void updateAttackAi(const BeingId targetId,
                         const Keep keep);
 

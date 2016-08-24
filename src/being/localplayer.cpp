@@ -480,8 +480,6 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
     {
         Being::nextTile();
     }
-
-    PlayerInfo::updateMoveAI();
 }
 
 bool LocalPlayer::pickUp(FloorItem *const item)
