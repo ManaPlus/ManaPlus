@@ -20,13 +20,6 @@
 
 #include "net/tmwa/pethandler.h"
 
-#include "const/gui/chat.h"
-
-#include "net/chathandler.h"
-
-#include "utils/stringutils.h"
-#include "utils/timer.h"
-
 #include "debug.h"
 
 extern Net::PetHandler *petHandler;

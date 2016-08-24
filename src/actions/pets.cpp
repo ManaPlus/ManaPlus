@@ -39,9 +39,6 @@
 #include "gui/shortcut/emoteshortcut.h"
 
 #include "net/chathandler.h"
-#ifdef TMWA_SUPPORT
-#include "net/net.h"
-#endif
 #include "net/pethandler.h"
 #include "net/serverfeatures.h"
 
