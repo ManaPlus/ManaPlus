@@ -2108,7 +2108,6 @@ void Being::updateBotFollow(int dstX,
             {
                 dstY = mY;
             }
-
         }
         botFixOffset(dstX, dstY);
         moveBotTo(dstX, dstY);
