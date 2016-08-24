@@ -57,6 +57,9 @@ namespace BeingCommon
                                XmlNodePtrConst node,
                                const int moreBlockFlags) A_NONNULL(1);
 
+    void readAiAttributes(BeingInfo *const info,
+                          XmlNodePtrConst node);
+
     void getIncludeFiles(const std::string &dir,
                          StringVect &list,
                          const std::string &ext);

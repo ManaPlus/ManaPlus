@@ -98,51 +98,13 @@ void HomunculusDB::loadXmlFile(const std::string &fileName,
         BeingCommon::readWalkingAttributes(currentInfo,
             homunculusNode,
             0);
+        BeingCommon::readAiAttributes(currentInfo,
+            homunculusNode);
 
         currentInfo->setMaxHP(XML::getProperty(homunculusNode, "maxHP", 0));
 
         currentInfo->setDeadSortOffsetY(XML::getProperty(
             homunculusNode, "deadSortOffsetY", 31));
-
-        currentInfo->setStartFollowDist(XML::getProperty(homunculusNode,
-            "startFollowDistance", 3));
-        currentInfo->setFollowDist(XML::getProperty(homunculusNode,
-            "followDistance", 0));
-        currentInfo->setWarpDist(XML::getProperty(homunculusNode,
-            "warpDistance", 11));
-
-        currentInfo->setTargetOffsetX(XML::getProperty(homunculusNode,
-            "offsetX", 0));
-        currentInfo->setTargetOffsetY(XML::getProperty(homunculusNode,
-            "offsetY", 1));
-        currentInfo->setSitOffsetX(XML::getProperty(homunculusNode,
-            "sitOffsetX", 0));
-        currentInfo->setSitOffsetY(XML::getProperty(homunculusNode,
-            "sitOffsetY", 1));
-        currentInfo->setMoveOffsetX(XML::getProperty(homunculusNode,
-            "moveOffsetX", 0));
-        currentInfo->setMoveOffsetY(XML::getProperty(homunculusNode,
-            "moveOffsetY", 1));
-        currentInfo->setDeadOffsetX(XML::getProperty(homunculusNode,
-            "deadOffsetX", 0));
-        currentInfo->setDeadOffsetY(XML::getProperty(homunculusNode,
-            "deadOffsetY", 1));
-        currentInfo->setAttackOffsetX(XML::getProperty(homunculusNode,
-            "attackOffsetX", currentInfo->getTargetOffsetX()));
-        currentInfo->setAttackOffsetY(XML::getProperty(homunculusNode,
-            "attackOffsetY", currentInfo->getTargetOffsetY()));
-
-        currentInfo->setThinkTime(XML::getProperty(homunculusNode,
-            "thinkTime", 500) / 10);
-
-        currentInfo->setDirectionType(XML::getProperty(homunculusNode,
-            "directionType", 1));
-        currentInfo->setSitDirectionType(XML::getProperty(homunculusNode,
-            "sitDirectionType", 1));
-        currentInfo->setDeadDirectionType(XML::getProperty(homunculusNode,
-            "deadDirectionType", 1));
-        currentInfo->setAttackDirectionType(XML::getProperty(homunculusNode,
-            "attackDirectionType", 4));
 
         currentInfo->setColorsList(XML::getProperty(homunculusNode,
             "colors", ""));

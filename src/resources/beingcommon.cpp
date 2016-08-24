@@ -89,6 +89,50 @@ void BeingCommon::readWalkingAttributes(BeingInfo *const info,
     info->setBlockWalkMask(CAST_U8(block ^ allFlags));
 }
 
+void BeingCommon::readAiAttributes(BeingInfo *const info,
+                                   XmlNodePtrConst node)
+{
+    info->setStartFollowDist(XML::getProperty(node,
+        "startFollowDistance", 3));
+    info->setFollowDist(XML::getProperty(node,
+        "followDistance", 0));
+    info->setWarpDist(XML::getProperty(node,
+        "warpDistance", 11));
+
+    info->setTargetOffsetX(XML::getProperty(node,
+        "offsetX", 0));
+    info->setTargetOffsetY(XML::getProperty(node,
+        "offsetY", 1));
+    info->setSitOffsetX(XML::getProperty(node,
+        "sitOffsetX", 0));
+    info->setSitOffsetY(XML::getProperty(node,
+        "sitOffsetY", 1));
+    info->setMoveOffsetX(XML::getProperty(node,
+        "moveOffsetX", 0));
+    info->setMoveOffsetY(XML::getProperty(node,
+        "moveOffsetY", 1));
+    info->setDeadOffsetX(XML::getProperty(node,
+        "deadOffsetX", 0));
+    info->setDeadOffsetY(XML::getProperty(node,
+        "deadOffsetY", 1));
+    info->setAttackOffsetX(XML::getProperty(node,
+        "attackOffsetX", info->getTargetOffsetX()));
+    info->setAttackOffsetY(XML::getProperty(node,
+        "attackOffsetY", info->getTargetOffsetY()));
+
+    info->setThinkTime(XML::getProperty(node,
+        "thinkTime", 500) / 10);
+
+    info->setDirectionType(XML::getProperty(node,
+        "directionType", 1));
+    info->setSitDirectionType(XML::getProperty(node,
+        "sitDirectionType", 1));
+    info->setDeadDirectionType(XML::getProperty(node,
+        "deadDirectionType", 1));
+    info->setAttackDirectionType(XML::getProperty(node,
+        "attackDirectionType", 4));
+}
+
 bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,
                                   SpriteDisplay &display,
                                   BeingInfo *const currentInfo,

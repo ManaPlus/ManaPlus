@@ -97,51 +97,12 @@ void MercenaryDB::loadXmlFile(const std::string &fileName,
         currentInfo->setBlockType(BlockType::NONE);
         BeingCommon::readBasicAttributes(currentInfo, mercenaryNode, "attack");
         BeingCommon::readWalkingAttributes(currentInfo, mercenaryNode, 0);
+        BeingCommon::readAiAttributes(currentInfo, mercenaryNode);
 
         currentInfo->setMaxHP(XML::getProperty(mercenaryNode, "maxHP", 0));
 
         currentInfo->setDeadSortOffsetY(XML::getProperty(
             mercenaryNode, "deadSortOffsetY", 31));
-
-        currentInfo->setStartFollowDist(XML::getProperty(mercenaryNode,
-            "startFollowDistance", 3));
-        currentInfo->setFollowDist(XML::getProperty(mercenaryNode,
-            "followDistance", 0));
-        currentInfo->setWarpDist(XML::getProperty(mercenaryNode,
-            "warpDistance", 11));
-
-        currentInfo->setTargetOffsetX(XML::getProperty(mercenaryNode,
-            "offsetX", 0));
-        currentInfo->setTargetOffsetY(XML::getProperty(mercenaryNode,
-            "offsetY", 1));
-        currentInfo->setSitOffsetX(XML::getProperty(mercenaryNode,
-            "sitOffsetX", 0));
-        currentInfo->setSitOffsetY(XML::getProperty(mercenaryNode,
-            "sitOffsetY", 1));
-        currentInfo->setMoveOffsetX(XML::getProperty(mercenaryNode,
-            "moveOffsetX", 0));
-        currentInfo->setMoveOffsetY(XML::getProperty(mercenaryNode,
-            "moveOffsetY", 1));
-        currentInfo->setDeadOffsetX(XML::getProperty(mercenaryNode,
-            "deadOffsetX", 0));
-        currentInfo->setDeadOffsetY(XML::getProperty(mercenaryNode,
-            "deadOffsetY", 1));
-        currentInfo->setAttackOffsetX(XML::getProperty(mercenaryNode,
-            "attackOffsetX", currentInfo->getTargetOffsetX()));
-        currentInfo->setAttackOffsetY(XML::getProperty(mercenaryNode,
-            "attackOffsetY", currentInfo->getTargetOffsetY()));
-
-        currentInfo->setThinkTime(XML::getProperty(mercenaryNode,
-            "thinkTime", 500) / 10);
-
-        currentInfo->setDirectionType(XML::getProperty(mercenaryNode,
-            "directionType", 1));
-        currentInfo->setSitDirectionType(XML::getProperty(mercenaryNode,
-            "sitDirectionType", 1));
-        currentInfo->setDeadDirectionType(XML::getProperty(mercenaryNode,
-            "deadDirectionType", 1));
-        currentInfo->setAttackDirectionType(XML::getProperty(mercenaryNode,
-            "attackDirectionType", 4));
 
         currentInfo->setColorsList(XML::getProperty(mercenaryNode,
             "colors", ""));
