@@ -67,6 +67,8 @@
 
 #include "net/charserverhandler.h"
 #include "net/gamehandler.h"
+#include "net/homunculushandler.h"
+#include "net/mercenaryhandler.h"
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
@@ -258,7 +260,7 @@ Being::Being(const BeingId id,
     mAway(false),
     mInactive(false),
     mNeedPosUpdate(true),
-    mPetAi(true)
+    mBotAi(true)
 {
     for (int f = 0; f < 20; f ++)
     {
@@ -1764,6 +1766,15 @@ void Being::logic() restrict2
             delete2(mText)
     }
 
+    if (mOwner)
+    {
+        if (mType == ActorType::Homunculus ||
+            mType == ActorType::Mercenary)
+        {
+            botLogic();
+        }
+    }
+
     const int time = tick_time * MILLISECONDS_IN_A_TICK;
     if (mEmotionSprite)
         mEmotionSprite->update(time);
@@ -1907,7 +1918,7 @@ void Being::logic() restrict2
     BLOCK_END("Being::logic")
 }
 
-void Being::petLogic() restrict2
+void Being::botLogic() restrict2
 {
     if (!mOwner || !mMap || !mInfo)
         return;
@@ -1919,32 +1930,161 @@ void Being::petLogic() restrict2
 
     mMoveTime = time;
 
-    const int dstX0 = mOwner->mX;
-    const int dstY0 = mOwner->mY;
-    int dstX = dstX0;
-    int dstY = dstY0;
-    const int followDist = mInfo->getStartFollowDist();
+    int dstX = mOwner->mX;
+    int dstY = mOwner->mY;
     const int warpDist = mInfo->getWarpDist();
-    const int dist = mInfo->getFollowDist();
     const int divX = abs(dstX - mX);
     const int divY = abs(dstY - mY);
 
     if (divX >= warpDist || divY >= warpDist)
     {
-        setAction(BeingAction::STAND, 0);
-        fixPetSpawnPos(dstX, dstY);
-        setTileCoords(dstX, dstY);
-        mPetAi = true;
-    }
-    else if (!followDist || divX > followDist || divY > followDist)
-    {
-        if (!mPetAi)
-            return;
-        if (!dist)
-        {
-            fixPetSpawnPos(dstX, dstY);
-        }
+        if (mType == ActorType::Homunculus)
+            homunculusHandler->moveToMaster();
         else
+            mercenaryHandler->moveToMaster();
+        mBotAi = true;
+        return;
+    }
+    if (!mBotAi)
+        return;
+    if (mAction == BeingAction::MOVE)
+    {
+        if (mOwner->mAction == BeingAction::MOVE)
+        {
+            updateBotFollow(dstX, dstY,
+                divX, divY);
+        }
+        return;
+    }
+
+    switch (mOwner->mAction)
+    {
+        case BeingAction::MOVE:
+        case BeingAction::PRESTAND:
+            updateBotFollow(dstX, dstY,
+                divX, divY);
+            break;
+        case BeingAction::STAND:
+        case BeingAction::SPAWN:
+            botFixOffset(dstX, dstY);
+            moveBotTo(dstX, dstY);
+            break;
+        case BeingAction::ATTACK:
+        {
+            const Being *const target = localPlayer->getTarget();
+            if (!target)
+                return;
+            const BeingId targetId = target->getId();
+            if (mType == ActorType::Homunculus)
+            {
+                homunculusHandler->attack(targetId,
+                    Keep_true);
+            }
+            else
+            {
+                mercenaryHandler->attack(targetId,
+                    Keep_true);
+            }
+            break;
+        }
+        case BeingAction::SIT:
+            botFixOffset(dstX, dstY);
+            moveBotTo(dstX, dstY);
+            break;
+        case BeingAction::DEAD:
+            botFixOffset(dstX, dstY);
+            moveBotTo(dstX, dstY);
+            break;
+        case BeingAction::CAST:
+        case BeingAction::HURT:
+        default:
+            break;
+    }
+}
+
+void Being::botFixOffset(int &restrict dstX,
+                         int &restrict dstY) const
+{
+    if (!mInfo || !mOwner)
+        return;
+
+    int offsetX1;
+    int offsetY1;
+    switch (mOwner->getCurrentAction())
+    {
+        case BeingAction::SIT:
+            offsetX1 = mInfo->getSitOffsetX();
+            offsetY1 = mInfo->getSitOffsetY();
+            break;
+
+        case BeingAction::MOVE:
+            offsetX1 = mInfo->getMoveOffsetX();
+            offsetY1 = mInfo->getMoveOffsetY();
+            break;
+
+        case BeingAction::DEAD:
+            offsetX1 = mInfo->getDeadOffsetX();
+            offsetY1 = mInfo->getDeadOffsetY();
+            break;
+
+        case BeingAction::ATTACK:
+            offsetX1 = mInfo->getAttackOffsetX();
+            offsetY1 = mInfo->getAttackOffsetY();
+            break;
+
+        case BeingAction::SPAWN:
+        case BeingAction::HURT:
+        case BeingAction::STAND:
+        case BeingAction::PRESTAND:
+        case BeingAction::CAST:
+        default:
+            offsetX1 = mInfo->getTargetOffsetX();
+            offsetY1 = mInfo->getTargetOffsetY();
+            break;
+    }
+
+    int offsetX = offsetX1;
+    int offsetY = offsetY1;
+    switch (mOwner->mDirection)
+    {
+        case BeingDirection::LEFT:
+            offsetX = -offsetY1;
+            offsetY = offsetX1;
+            break;
+        case BeingDirection::RIGHT:
+            offsetX = offsetY1;
+            offsetY = -offsetX1;
+            break;
+        case BeingDirection::UP:
+            offsetY = -offsetY;
+            offsetX = -offsetX;
+            break;
+        default:
+        case BeingDirection::DOWN:
+            break;
+    }
+    dstX += offsetX;
+    dstY += offsetY;
+    if (mMap)
+    {
+        if (!mMap->getWalk(dstX, dstY, getBlockWalkMask()))
+        {
+            dstX = mOwner->mX;
+            dstY = mOwner->mY;
+        }
+    }
+}
+
+void Being::updateBotFollow(int dstX,
+                            int dstY,
+                            const int divX,
+                            const int divY)
+{
+    const int followDist = mInfo->getStartFollowDist();
+    const int dist = mInfo->getFollowDist();
+    if (divX > followDist || divY > followDist)
+    {
+        if (dist > 0)
         {
             if (divX > followDist)
             {
@@ -1968,119 +2108,134 @@ void Being::petLogic() restrict2
             {
                 dstY = mY;
             }
-        }
 
-        const unsigned char blockWalkMask = getBlockWalkMask();
-        if (!mMap->getWalk(dstX, dstY, blockWalkMask))
-        {
-            if (dstX != dstX0)
-            {
-                dstX = dstX0;
-                if (!mMap->getWalk(dstX, dstY, blockWalkMask))
-                    dstY = dstY0;
-            }
-            else if (dstY != dstY0)
-            {
-                dstY = dstY0;
-                if (!mMap->getWalk(dstX, dstY, blockWalkMask))
-                    dstX = dstX0;
-            }
         }
-        if (mX != dstX || mY != dstY)
+        botFixOffset(dstX, dstY);
+        moveBotTo(dstX, dstY);
+    }
+}
+
+void Being::moveBotTo(int dstX,
+                      int dstY)
+{
+    const int dstX0 = mOwner->mX;
+    const int dstY0 = mOwner->mY;
+    const unsigned char blockWalkMask = getBlockWalkMask();
+    if (!mMap->getWalk(dstX, dstY, blockWalkMask))
+    {
+        if (dstX != dstX0)
         {
-            setPath(mMap->findPath(mX, mY, dstX, dstY, blockWalkMask));
-            return;
+            dstX = dstX0;
+            if (!mMap->getWalk(dstX, dstY, blockWalkMask))
+                dstY = dstY0;
+        }
+        else if (dstY != dstY0)
+        {
+            dstY = dstY0;
+            if (!mMap->getWalk(dstX, dstY, blockWalkMask))
+                dstX = dstX0;
         }
     }
-    if (!mPetAi)
-        return;
-
-    if (mOwner->getCurrentAction() != BeingAction::ATTACK)
+    if (mX != dstX || mY != dstY)
     {
-        if (mAction == BeingAction::ATTACK)
-            setAction(BeingAction::STAND, 0);
+        if (mType == ActorType::Homunculus)
+            homunculusHandler->move(dstX, dstY);
+        else
+            mercenaryHandler->move(dstX, dstY);
+        return;
     }
     else
     {
-        if (mAction == BeingAction::STAND || mAction == BeingAction::ATTACK)
-            setAction(BeingAction::ATTACK, 0);
+        updateBotDirection(dstX, dstY);
+    }
+}
+
+void Being::updateBotDirection(const int dstX,
+                               const int dstY)
+{
+    int directionType = 0;
+    switch (mOwner->getCurrentAction())
+    {
+        case BeingAction::STAND:
+        case BeingAction::MOVE:
+        case BeingAction::HURT:
+        case BeingAction::SPAWN:
+        case BeingAction::CAST:
+        case BeingAction::PRESTAND:
+        default:
+            directionType = mInfo->getDirectionType();
+            break;
+        case BeingAction::SIT:
+            directionType = mInfo->getSitDirectionType();
+            break;
+        case BeingAction::DEAD:
+            directionType = mInfo->getDeadDirectionType();
+            break;
+        case BeingAction::ATTACK:
+            directionType = mInfo->getAttackDirectionType();
+            break;
     }
 
-    if (mAction == BeingAction::STAND || mAction == BeingAction::ATTACK)
+    uint8_t newDir = 0;
+    switch (directionType)
     {
-        int directionType = 0;
-        switch (mOwner->getCurrentAction())
+        case 0:
+        default:
+            return;
+
+        case 1:
+            newDir = mOwner->mDirection;
+            break;
+
+        case 2:
         {
-            case BeingAction::STAND:
-            case BeingAction::MOVE:
-            case BeingAction::HURT:
-            case BeingAction::SPAWN:
-            case BeingAction::CAST:
-            case BeingAction::PRESTAND:
-            default:
-                directionType = mInfo->getDirectionType();
-                break;
-            case BeingAction::SIT:
-                directionType = mInfo->getSitDirectionType();
-                break;
-            case BeingAction::DEAD:
-                directionType = mInfo->getDeadDirectionType();
-                break;
-            case BeingAction::ATTACK:
-                directionType = mInfo->getAttackDirectionType();
-                break;
+            const int dstX0 = mOwner->mX;
+            const int dstY0 = mOwner->mY;
+            if (dstX > dstX0)
+                newDir |= BeingDirection::LEFT;
+            else if (dstX < dstX0)
+                newDir |= BeingDirection::RIGHT;
+            if (dstY > dstY0)
+                newDir |= BeingDirection::UP;
+            else if (dstY < dstY0)
+                newDir |= BeingDirection::DOWN;
+            break;
         }
-
-        uint8_t newDir = 0;
-        switch (directionType)
+        case 3:
         {
-            case 0:
-            default:
-                return;
-
-            case 1:
-                newDir = mOwner->mDirection;
-                break;
-
-            case 2:
-                if (dstX > dstX0)
-                    newDir |= BeingDirection::LEFT;
-                else if (dstX < dstX0)
-                    newDir |= BeingDirection::RIGHT;
-                if (dstY > dstY0)
-                    newDir |= BeingDirection::UP;
-                else if (dstY < dstY0)
-                    newDir |= BeingDirection::DOWN;
-                break;
-
-            case 3:
-                if (dstX > dstX0)
-                    newDir |= BeingDirection::RIGHT;
-                else if (dstX < dstX0)
-                    newDir |= BeingDirection::LEFT;
-                if (dstY > dstY0)
-                    newDir |= BeingDirection::DOWN;
-                else if (dstY < dstY0)
-                    newDir |= BeingDirection::UP;
-                break;
-
-            case 4:
-            {
-                const int dstX2 = mOwner->getLastAttackX();
-                const int dstY2 = mOwner->getLastAttackY();
-                if (dstX > dstX2)
-                    newDir |= BeingDirection::LEFT;
-                else if (dstX < dstX2)
-                    newDir |= BeingDirection::RIGHT;
-                if (dstY > dstY2)
-                    newDir |= BeingDirection::UP;
-                else if (dstY < dstY2)
-                    newDir |= BeingDirection::DOWN;
-                break;
-            }
+            const int dstX0 = mOwner->mX;
+            const int dstY0 = mOwner->mY;
+            if (dstX > dstX0)
+                newDir |= BeingDirection::RIGHT;
+            else if (dstX < dstX0)
+                newDir |= BeingDirection::LEFT;
+            if (dstY > dstY0)
+                newDir |= BeingDirection::DOWN;
+            else if (dstY < dstY0)
+                newDir |= BeingDirection::UP;
+            break;
         }
-        if (newDir && newDir != mDirection)
-            setDirection(newDir);
+        case 4:
+        {
+            const int dstX2 = mOwner->getLastAttackX();
+            const int dstY2 = mOwner->getLastAttackY();
+            if (dstX > dstX2)
+                newDir |= BeingDirection::LEFT;
+            else if (dstX < dstX2)
+                newDir |= BeingDirection::RIGHT;
+            if (dstY > dstY2)
+                newDir |= BeingDirection::UP;
+            else if (dstY < dstY2)
+                newDir |= BeingDirection::DOWN;
+            break;
+        }
+    }
+    if (newDir && newDir != mDirection)
+    {
+        if (mType == ActorType::Homunculus)
+            homunculusHandler->setDirection(newDir);
+        else
+            mercenaryHandler->setDirection(newDir);
     }
 }
 
@@ -4621,79 +4776,6 @@ void Being::addEffect(const std::string &restrict name) restrict2
     delete mAnimationEffect;
     mAnimationEffect = AnimatedSprite::load(
         paths.getStringValue("sprites") + name);
-}
-
-void Being::fixPetSpawnPos(int &restrict dstX,
-                           int &restrict dstY) const
-{
-    if (!mInfo || !mOwner)
-        return;
-
-    int offsetX1;
-    int offsetY1;
-    switch (mOwner->getCurrentAction())
-    {
-        case BeingAction::SIT:
-            offsetX1 = mInfo->getSitOffsetX();
-            offsetY1 = mInfo->getSitOffsetY();
-            break;
-
-        case BeingAction::MOVE:
-            offsetX1 = mInfo->getMoveOffsetX();
-            offsetY1 = mInfo->getMoveOffsetY();
-            break;
-
-        case BeingAction::DEAD:
-            offsetX1 = mInfo->getDeadOffsetX();
-            offsetY1 = mInfo->getDeadOffsetY();
-            break;
-
-        case BeingAction::ATTACK:
-            offsetX1 = mInfo->getAttackOffsetX();
-            offsetY1 = mInfo->getAttackOffsetY();
-            break;
-
-        case BeingAction::SPAWN:
-        case BeingAction::HURT:
-        case BeingAction::STAND:
-        case BeingAction::PRESTAND:
-        case BeingAction::CAST:
-        default:
-            offsetX1 = mInfo->getTargetOffsetX();
-            offsetY1 = mInfo->getTargetOffsetY();
-            break;
-    }
-
-    int offsetX = offsetX1;
-    int offsetY = offsetY1;
-    switch (mOwner->mDirection)
-    {
-        case BeingDirection::LEFT:
-            offsetX = -offsetY1;
-            offsetY = offsetX1;
-            break;
-        case BeingDirection::RIGHT:
-            offsetX = offsetY1;
-            offsetY = -offsetX1;
-            break;
-        case BeingDirection::UP:
-            offsetY = -offsetY;
-            offsetX = -offsetX;
-            break;
-        default:
-        case BeingDirection::DOWN:
-            break;
-    }
-    dstX += offsetX;
-    dstY += offsetY;
-    if (mMap)
-    {
-        if (!mMap->getWalk(dstX, dstY, getBlockWalkMask()))
-        {
-            dstX = mOwner->mX;
-            dstY = mOwner->mY;
-        }
-    }
 }
 
 void Being::playSfx(const SoundInfo &sound,

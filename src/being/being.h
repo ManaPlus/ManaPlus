@@ -372,7 +372,7 @@ class Being notfinal : public ActorSprite,
          */
         void logic() restrict2 override;
 
-        void petLogic() restrict2;
+        void botLogic() restrict2;
 
         /**
          * Draws the speech text above the being.
@@ -892,9 +892,6 @@ class Being notfinal : public ActorSprite,
 
         void addEffect(const std::string &restrict name) restrict2;
 
-        void fixPetSpawnPos(int &restrict dstX,
-                            int &restrict dstY) const restrict2;
-
         void setOwner(Being *restrict const owner) restrict2 noexcept2
         { mOwner = owner; }
 
@@ -1004,11 +1001,11 @@ class Being notfinal : public ActorSprite,
         int getManner() const restrict2 noexcept2 A_WARN_UNUSED
         { return mManner; }
 
-        void disablePetAi() restrict2 noexcept2
-        { mPetAi = false; }
+        void disableBotAi() restrict2 noexcept2
+        { mBotAi = false; }
 
-        void enablePetAi() restrict2 noexcept2
-        { mPetAi = true; }
+        void enableBotAi() restrict2 noexcept2
+        { mBotAi = true; }
 
         int getAreaSize() const restrict2 noexcept2 A_WARN_UNUSED
         { return mAreaSize; }
@@ -1204,6 +1201,20 @@ class Being notfinal : public ActorSprite,
                          const int offsetX,
                          const int offsetY) const A_NONNULL(2);
 
+        void updateBotFollow(int dstX,
+                             int dstY,
+                             const int divX,
+                             const int divY);
+
+        void moveBotTo(int dstX,
+                       int dstY);
+
+        void updateBotDirection(const int dstX,
+                                const int dstY);
+
+        void botFixOffset(int &restrict dstX,
+                          int &restrict dstY) const;
+
         const ActorTypeT mType;
 
         /** Speech Bubble components */
@@ -1298,7 +1309,7 @@ class Being notfinal : public ActorSprite,
         bool mAway;
         bool mInactive;
         bool mNeedPosUpdate;
-        bool mPetAi;
+        bool mBotAi;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
