@@ -828,6 +828,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Error saving location. You do not have warp skill."),
             NotifyFlags::EMPTY},
+        {"buy trade fail",
+            // TRANSLATORS: notification message
+            N_("Unable to buy while trading."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

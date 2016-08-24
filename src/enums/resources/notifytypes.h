@@ -228,6 +228,7 @@ namespace NotifyTypes
         SKILL_MEMO_SAVED,
         SKILL_MEMO_ERROR_LEVEL,
         SKILL_MEMO_ERROR_SKILL,
+        BUY_TRADE_FAILED,
 
         TYPE_END
     };

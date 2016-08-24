@@ -22,9 +22,12 @@
 
 #include "actormanager.h"
 #include "itemcolormanager.h"
+#include "notifymanager.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
+
+#include "enums/resources/notifytypes.h"
 
 #include "gui/windows/buydialog.h"
 
@@ -135,10 +138,34 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
 
 void VendingRecv::processBuyAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
     msg.readInt16("inv index");
     msg.readInt16("amount");
-    msg.readUInt8("flag");
+    const int flag = msg.readUInt8("flag");
+    switch (flag)
+    {
+        case 0:
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_NO_MONEY);
+            break;
+        case 2:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_OVERWEIGHT);
+            break;
+        case 4:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_TOO_MANY_ITEMS);
+            break;
+        case 5:
+            NotifyManager::notify(NotifyTypes::BUY_TRADE_FAILED);
+            break;
+        case 6:  // +++ probably need show exact error messages?
+        case 7:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED);
+            break;
+        default:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED);
+            UNIMPLIMENTEDPACKETFIELD(flag);
+            break;
+    }
 }
 
 void VendingRecv::processOpen(Net::MessageIn &msg)
