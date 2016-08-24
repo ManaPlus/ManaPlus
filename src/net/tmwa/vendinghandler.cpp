@@ -46,6 +46,12 @@ void VendingHandler::buy(const Being *const being A_UNUSED,
 {
 }
 
+void VendingHandler::buyItems(const Being *const being A_UNUSED,
+                              const std::vector<ShopItem*> &items A_UNUSED)
+                              const
+{
+}
+
 void VendingHandler::buy2(const Being *const being A_UNUSED,
                           const int vendId A_UNUSED,
                           const int index A_UNUSED,

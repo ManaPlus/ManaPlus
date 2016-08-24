@@ -73,6 +73,41 @@ void VendingHandler::buy(const Being *const being,
     outMsg.writeInt16(CAST_S16(index), "index");
 }
 
+void VendingHandler::buyItems(const Being *const being,
+                              const std::vector<ShopItem*> &items) const
+{
+    int cnt = 0;
+    const int pairSize = 4;
+
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        if (!usedQuantity)
+            continue;
+        cnt ++;
+    }
+
+    if (cnt > 100)
+        return;
+
+    createOutPacket(CMSG_VENDING_BUY);
+    outMsg.writeInt16(CAST_S16(4 + 4 + pairSize * cnt), "len");
+    outMsg.writeBeingId(being->getId(), "account id");
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        if (!usedQuantity)
+            continue;
+        item->increaseQuantity(usedQuantity);
+        item->increaseUsedQuantity(-usedQuantity);
+        item->update();
+        outMsg.writeInt16(CAST_S16(usedQuantity), "amount");
+        outMsg.writeInt16(CAST_S16(item->getInvIndex()), "index");
+    }
+}
+
 void VendingHandler::buy2(const Being *const being,
                           const int vendId,
                           const int index,

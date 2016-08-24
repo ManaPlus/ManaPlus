@@ -41,6 +41,10 @@ class VendingHandler final : public Net::VendingHandler
                  const int index,
                  const int amount) const override final A_CONST;
 
+        void buyItems(const Being *const being,
+                      const std::vector<ShopItem*> &items) const
+                      override final A_CONST;
+
         void buy2(const Being *const being,
                   const int vendId,
                   const int index,

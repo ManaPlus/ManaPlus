@@ -98,7 +98,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
     if (!being)
         return;
     int cards[maxCards];
-    CREATEWIDGETV(mBuyDialog, BuyDialog, being->getName());
+    CREATEWIDGETV(mBuyDialog, BuyDialog, being);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
     if (msg.getVersion() >= 20100105)
         msg.readInt32("vender id");

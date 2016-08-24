@@ -26,6 +26,8 @@
 #include "configuration.h"
 #include "units.h"
 
+#include "being/being.h"
+
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/tradewindow.h"
 
@@ -222,6 +224,26 @@ BuyDialog::BuyDialog(std::string nick) :
     mAmountItems(0),
     mMaxItems(0),
     mAdvanced(false)
+{
+    init();
+}
+
+BuyDialog::BuyDialog(const Being *const being) :
+    // TRANSLATORS: buy dialog name
+    Window(_("Buy"), Modal_false, nullptr, "buy.xml"),
+    ActionListener(),
+    SelectionListener(),
+    mSortModel(new SortListModelBuy),
+    mSortDropDown(new DropDown(this, mSortModel, false,
+        Modal_false, this, "sort")),
+    mFilterTextField(new TextField(this, "", true, this, "namefilter", true)),
+    mFilterLabel(nullptr),
+    mNick(being ? being->getName() : std::string()),
+    mNpcId(fromInt(Vending, BeingId)),
+    mMoney(0),
+    mAmountItems(0),
+    mMaxItems(0),
+    mAdvanced(true)
 {
     init();
 }
@@ -446,6 +468,9 @@ void BuyDialog::close()
         case Cash:
             cashShopHandler->close();
             break;
+        case Vending:
+            vendingHandler->close();
+            break;
         default:
             buySellHandler->close();
             break;
@@ -523,6 +548,23 @@ void BuyDialog::action(const ActionEvent &event)
                 item->getColor(),
                 mAmountItems);
         }
+        else if (mNpcId == fromInt(Nick, BeingId))
+        {
+            if (tradeWindow)
+            {
+                buySellHandler->sendBuyRequest(mNick,
+                    item, mAmountItems);
+                tradeWindow->addAutoMoney(mNick,
+                    item->getPrice() * mAmountItems);
+            }
+        }
+        else if (mNpcId == fromInt(Vending, BeingId))
+        {
+            item->increaseUsedQuantity(mAmountItems);
+            item->update();
+            if (mConfirmButton)
+                mConfirmButton->setEnabled(true);
+        }
         else if (mNpcId != fromInt(Nick, BeingId))
         {
             if (mAdvanced)
@@ -558,30 +600,6 @@ void BuyDialog::action(const ActionEvent &event)
 
             updateSlider(selectedItem);
         }
-        else if (mNpcId == fromInt(Nick, BeingId))
-        {
-            if (serverFeatures->haveVending())
-            {
-                const Being *const being = actorManager->findBeingByName(
-                    mNick);
-                if (being)
-                {
-                    vendingHandler->buy(being,
-                        item->getInvIndex(),
-                        mAmountItems);
-                    item->increaseQuantity(-mAmountItems);
-                    item->update();
-                    updateSlider(selectedItem);
-                }
-            }
-            else if (tradeWindow)
-            {
-                buySellHandler->sendBuyRequest(mNick,
-                    item, mAmountItems);
-                tradeWindow->addAutoMoney(mNick,
-                    item->getPrice() * mAmountItems);
-            }
-        }
     }
     else if (eventId == "confirm")
     {
@@ -590,6 +608,17 @@ void BuyDialog::action(const ActionEvent &event)
         if (mNpcId == fromInt(Market, BeingId))
         {
             marketHandler->buyItems(items);
+        }
+        else if (mNpcId == fromInt(Vending, BeingId))
+        {
+            const Being *const being = actorManager->findBeingByName(
+                mNick,
+                ActorType::Player);
+            if (being)
+            {
+                vendingHandler->buyItems(being,
+                    items);
+            }
         }
         else
         {

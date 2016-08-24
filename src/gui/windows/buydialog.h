@@ -33,6 +33,7 @@
 #include "listeners/actionlistener.h"
 #include "listeners/selectionlistener.h"
 
+class Being;
 class Button;
 class DropDown;
 class ShopItem;
@@ -76,6 +77,13 @@ class BuyDialog final : public Window,
          */
         explicit BuyDialog(std::string nick);
 
+        /**
+         * Constructor.
+         *
+         * @see Window::Window
+         */
+        explicit BuyDialog(const Being *const being);
+
         A_DELETE_COPY(BuyDialog)
 
         /**
@@ -85,10 +93,11 @@ class BuyDialog final : public Window,
 
         enum
         {
-            Nick   = -1,
-            Items  = -2,
-            Market = -3,
-            Cash   = -4
+            Nick    = -1,
+            Items   = -2,
+            Market  = -3,
+            Cash    = -4,
+            Vending = -5
         };
 
         void init();

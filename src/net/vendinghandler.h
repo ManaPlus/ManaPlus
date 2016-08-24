@@ -46,6 +46,9 @@ class VendingHandler notfinal
                          const int index,
                          const int amount) const = 0;
 
+        virtual void buyItems(const Being *const being,
+                              const std::vector<ShopItem*> &items) const = 0;
+
         virtual void buy2(const Being *const being,
                           const int vendId,
                           const int index,
