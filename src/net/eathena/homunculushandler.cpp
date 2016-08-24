@@ -63,7 +63,7 @@ void HomunculusHandler::move(const int x, const int y) const
     outMsg.writeBeingId(id, "homunculus id");
     outMsg.writeCoordinates(CAST_U16(x),
         CAST_U16(y),
-        0U, "position");
+        1U, "position");
 }
 
 void HomunculusHandler::attack(const BeingId targetId,

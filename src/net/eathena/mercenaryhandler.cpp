@@ -63,7 +63,7 @@ void MercenaryHandler::move(const int x, const int y) const
     outMsg.writeBeingId(id, "mercenary id");
     outMsg.writeCoordinates(CAST_U16(x),
         CAST_U16(y),
-        0U, "position");
+        1U, "position");
 }
 
 void MercenaryHandler::attack(const BeingId targetId,
