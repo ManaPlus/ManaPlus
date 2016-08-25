@@ -81,15 +81,19 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1->mItem || !pair2->mItem)
+                const Item *const item1 = pair1->mItem;
+                const Item *const item2 = pair2->mItem;
+                if (!item1 || !item2)
                     return false;
 
-                const std::string name1 = pair1->mItem->getInfo().getName();
-                const std::string name2 = pair2->mItem->getInfo().getName();
+                const std::string name1 = item1->getInfo().getName(
+                    item1->getColor());
+                const std::string name2 = item2->getInfo().getName(
+                    item2->getColor());
                 if (name1 == name2)
                 {
-                    return pair1->mItem->getInvIndex() <
-                        pair2->mItem->getInvIndex();
+                    return item1->getInvIndex() <
+                        item2->getInvIndex();
                 }
                 return (name1 < name2);
             }
