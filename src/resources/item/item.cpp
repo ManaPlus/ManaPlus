@@ -181,11 +181,3 @@ void Item::updateColor()
     if (serverFeatures && serverFeatures->haveItemColors())
         setId(mId, ItemColorManager::getColorFromCards(&mCards[0]));
 }
-
-bool Item::isItem(const int id)
-{
-    return id != 0 &&
-        id != CARD0_FORGE &&
-        id != CARD0_CREATE &&
-        id != CARD0_PET;
-}

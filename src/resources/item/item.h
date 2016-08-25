@@ -227,7 +227,13 @@ class Item notfinal
 
         void updateColor();
 
-        static bool isItem(const int id);
+        static constexpr bool isItem(const int id)
+        {
+            return id != 0 &&
+                id != CARD0_FORGE &&
+                id != CARD0_CREATE &&
+                id != CARD0_PET;
+        }
 
         int mId;              /**< Item id. */
         ItemColor mColor;
