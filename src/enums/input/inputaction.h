@@ -684,6 +684,7 @@ enumStart(InputAction)
     PARTY_ITEM_SHARE,
     PARTY_EXP_SHARE,
     PARTY_AUTO_ITEM_SHARE,
+    CREATE_ITEM,
     TOTAL
 }
 enumEnd(InputAction);

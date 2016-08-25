@@ -1492,6 +1492,21 @@ impHandler0(createItems)
     return true;
 }
 
+impHandler(createItem)
+{
+    int id = 0;
+    int amount = 0;
+
+    if (!adminHandler)
+        return false;
+
+    if (parse2Int(event.args, id, amount))
+        adminHandler->createItems(id, ItemColor_one, amount);
+    else
+        adminHandler->createItems(atoi(event.args.c_str()), ItemColor_one, 1);
+    return true;
+}
+
 impHandler(uploadConfig)
 {
     // TRANSLATORS: upload config chat message

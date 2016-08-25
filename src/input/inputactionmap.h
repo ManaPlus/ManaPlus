@@ -5594,6 +5594,12 @@ static const InputActionData inputActionData
         "autoitemshare|shareautoitem|itemautoshare",
         UseArgs_true,
         Protected_true},
+    {"keyCreateItem",
+        defaultAction(&Actions::createItem),
+        InputCondition::INGAME,
+        "createitem",
+        UseArgs_true,
+        Protected_false},
 };
 
 #undef defaultAction

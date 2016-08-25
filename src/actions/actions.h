@@ -95,6 +95,7 @@ namespace Actions
     decHandler(testSdlFont);
 #endif
     decHandler(createItems);
+    decHandler(createItem);
     decHandler(uploadConfig);
     decHandler(uploadServerConfig);
     decHandler(uploadLog);

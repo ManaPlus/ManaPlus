@@ -92,6 +92,7 @@ impHandlerVoid(dumpMods)
 impHandlerVoid(testSdlFont)
 #endif
 impHandlerVoid(createItems)
+impHandlerVoid(createItem)
 impHandlerVoid(uploadConfig)
 impHandlerVoid(uploadServerConfig)
 impHandlerVoid(uploadLog)
