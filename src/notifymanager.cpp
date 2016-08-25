@@ -24,8 +24,6 @@
 
 #include "being/localplayer.h"
 
-#include "enums/resources/notifytypes.h"
-
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
 

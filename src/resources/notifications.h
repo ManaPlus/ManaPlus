@@ -21,15 +21,17 @@
 #ifndef RESOURCES_NOTIFICATIONS_H
 #define RESOURCES_NOTIFICATIONS_H
 
-#include "localconsts.h"
+#include "enums/resources/notifytypes.h"
 
 #include "resources/notificationinfo.h"
 
 #include "utils/gettext.h"
 
+#include "localconsts.h"
+
 namespace NotifyManager
 {
-    static const NotificationInfo notifications[] =
+    static const NotificationInfo notifications[NotifyTypes::TYPE_END] =
     {
         {"",
             "", NotifyFlags::EMPTY},
