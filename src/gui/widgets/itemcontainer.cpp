@@ -84,8 +84,14 @@ namespace
                 if (!pair1->mItem || !pair2->mItem)
                     return false;
 
-                return (pair1->mItem->getInfo().getName()
-                        < pair2->mItem->getInfo().getName());
+                const std::string name1 = pair1->mItem->getInfo().getName();
+                const std::string name2 = pair2->mItem->getInfo().getName();
+                if (name1 == name2)
+                {
+                    return pair1->mItem->getInvIndex() <
+                        pair2->mItem->getInvIndex();
+                }
+                return (name1 < name2);
             }
     } itemAlphaInvSorter;
 
@@ -98,7 +104,14 @@ namespace
                 if (!pair1->mItem || !pair2->mItem)
                     return false;
 
-                return pair1->mItem->getId() < pair2->mItem->getId();
+                const int id1 = pair1->mItem->getId();
+                const int id2 = pair2->mItem->getId();
+                if (id1 == id2)
+                {
+                    return pair1->mItem->getInvIndex() <
+                        pair2->mItem->getInvIndex();
+                }
+                return id1 < id2;
             }
     } itemIdInvSorter;
 
@@ -115,8 +128,16 @@ namespace
                 const int w2 = pair2->mItem->getInfo().getWeight();
                 if (w1 == w2)
                 {
-                    return (pair1->mItem->getInfo().getName()
-                            < pair2->mItem->getInfo().getName());
+                    const std::string name1 =
+                        pair1->mItem->getInfo().getName();
+                    const std::string name2 =
+                        pair2->mItem->getInfo().getName();
+                    if (name1 == name2)
+                    {
+                        return pair1->mItem->getInvIndex() <
+                            pair2->mItem->getInvIndex();
+                    }
+                    return (name1 < name2);
                 }
                 return w1 < w2;
             }
@@ -135,8 +156,16 @@ namespace
                 const int c2 = pair2->mItem->getQuantity();
                 if (c1 == c2)
                 {
-                    return (pair1->mItem->getInfo().getName()
-                            < pair2->mItem->getInfo().getName());
+                    const std::string name1 =
+                        pair1->mItem->getInfo().getName();
+                    const std::string name2 =
+                        pair2->mItem->getInfo().getName();
+                    if (name1 == name2)
+                    {
+                        return pair1->mItem->getInvIndex() <
+                            pair2->mItem->getInvIndex();
+                    }
+                    return (name1 < name2);
                 }
                 return c1 < c2;
             }
@@ -157,7 +186,14 @@ namespace
                 const ItemDbTypeT t2 = info2.getType();
                 if (t1 == t2)
                 {
-                    return (info1.getName() < info2.getName());
+                    const std::string name1 = info1.getName();
+                    const std::string name2 = info2.getName();
+                    if (name1 == name2)
+                    {
+                        return pair1->mItem->getInvIndex() <
+                            pair2->mItem->getInvIndex();
+                    }
+                    return (name1 < name2);
                 }
                 return t1 < t2;
             }
