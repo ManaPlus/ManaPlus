@@ -230,5 +230,6 @@ void StatDb::unload()
 
     mBasicStats.clear();
     mStats.clear();
+    mPages.clear();
     mLoaded = false;
 }
