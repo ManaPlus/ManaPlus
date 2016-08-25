@@ -3270,6 +3270,25 @@ void PopupMenu::showItemGMCommands()
     // TRANSLATORS: popup menu item
     // TRANSLATORS: show who drops item
     mBrowserBox->addRow("/whodrops 'ITEMID'", _("Who drops"));
+    mBrowserBox->addRow("##3---");
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: gm create item
+    mBrowserBox->addRow("/createitem 'ITEMID' 1", _("Add 1"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: gm create item
+    mBrowserBox->addRow("/createitem 'ITEMID' 5", _("Add 5"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: gm create item
+    mBrowserBox->addRow("/createitem 'ITEMID' 10", _("Add 10"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: gm create item
+    mBrowserBox->addRow("/createitem 'ITEMID' 100", _("Add 100"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: gm create item
+    mBrowserBox->addRow("/createitem 'ITEMID' 1000", _("Add 1000"));
+    // TRANSLATORS: popup menu item
+    // TRANSLATORS: gm create item
+    mBrowserBox->addRow("/createitem 'ITEMID' 10000", _("Add 10000"));
 }
 
 void PopupMenu::showGMPopup(const std::string &name)
