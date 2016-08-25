@@ -832,6 +832,9 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Unable to buy while trading."),
             NotifyFlags::EMPTY},
+        {"vending sold item",
+            ("%s"),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

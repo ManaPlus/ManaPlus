@@ -229,6 +229,7 @@ namespace NotifyTypes
         SKILL_MEMO_ERROR_LEVEL,
         SKILL_MEMO_ERROR_SKILL,
         BUY_TRADE_FAILED,
+        VENDING_SOLD_ITEM,
 
         TYPE_END
     };

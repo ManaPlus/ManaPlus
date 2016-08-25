@@ -27,6 +27,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "const/net/inventory.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/buydialog.h"
@@ -38,7 +40,14 @@
 
 #include "net/messagein.h"
 
+#include "resources/iteminfo.h"
+
+#include "resources/inventory/inventory.h"
+
 #include "resources/item/shopitem.h"
+
+#include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -209,9 +218,21 @@ void VendingRecv::processOpen(Net::MessageIn &msg)
 
 void VendingRecv::processReport(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
-    msg.readInt16("inv index");
-    msg.readInt16("amount");
+    const int index = msg.readInt16("inv index") - INVENTORY_OFFSET;
+    const int amount = msg.readInt16("amount");
+    const Inventory *const inventory = PlayerInfo::getCartInventory();
+    if (!inventory)
+        return;
+    const Item *const item = inventory->getItem(index);
+    if (!item)
+        return;
+
+    const ItemInfo &info = item->getInfo();
+    // TRANSLATORS: vending sold item message
+    const std::string str = strprintf(_("Sold item %s amount %d"),
+        info.getLink().c_str(),
+        amount);
+    NotifyManager::notify(NotifyTypes::VENDING_SOLD_ITEM, str);
 }
 
 void VendingRecv::processOpenStatus(Net::MessageIn &msg)
