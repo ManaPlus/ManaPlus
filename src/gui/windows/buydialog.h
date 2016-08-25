@@ -70,12 +70,14 @@ class BuyDialog final : public Window,
          */
         explicit BuyDialog(const BeingId npcId);
 
+#ifdef TMWA_SUPPORT
         /**
          * Constructor.
          *
          * @see Window::Window
          */
         explicit BuyDialog(std::string nick);
+#endif  // TMWA_SUPPORT
 
         /**
          * Constructor.
@@ -93,7 +95,9 @@ class BuyDialog final : public Window,
 
         enum
         {
+#ifdef TMWA_SUPPORT
             Nick    = -1,
+#endif  // TMWA_SUPPORT
             Items   = -2,
             Market  = -3,
             Cash    = -4,

@@ -208,6 +208,7 @@ BuyDialog::BuyDialog(const BeingId npcId) :
     init();
 }
 
+#ifdef TMWA_SUPPORT
 BuyDialog::BuyDialog(std::string nick) :
     // TRANSLATORS: buy dialog name
     Window(_("Buy"), Modal_false, nullptr, "buy.xml"),
@@ -227,6 +228,7 @@ BuyDialog::BuyDialog(std::string nick) :
 {
     init();
 }
+#endif  // TMWA_SUPPORT
 
 BuyDialog::BuyDialog(const Being *const being) :
     // TRANSLATORS: buy dialog name
@@ -259,8 +261,11 @@ void BuyDialog::init()
     setDefaultSize(260, 230, ImagePosition::CENTER);
 
     // reset advance flag for personal shops and cash shop
-    if (mAdvanced &&
-        (mNpcId == fromInt(Nick, BeingId) || mNpcId == fromInt(Cash, BeingId)))
+    if (mAdvanced && (
+#ifdef TMWA_SUPPORT
+        mNpcId == fromInt(Nick, BeingId) ||
+#endif
+        mNpcId == fromInt(Cash, BeingId)))
     {
         mAdvanced = false;
     }
@@ -459,7 +464,9 @@ void BuyDialog::close()
 {
     switch (toInt(mNpcId, int))
     {
+#ifdef TMWA_SUPPORT
         case Nick:
+#endif  // TMWA_SUPPORT
         case Items:
             break;
         case Market:
@@ -548,6 +555,7 @@ void BuyDialog::action(const ActionEvent &event)
                 item->getColor(),
                 mAmountItems);
         }
+#ifdef TMWA_SUPPORT
         else if (mNpcId == fromInt(Nick, BeingId))
         {
             if (tradeWindow)
@@ -558,6 +566,7 @@ void BuyDialog::action(const ActionEvent &event)
                     item->getPrice() * mAmountItems);
             }
         }
+#endif  // TMWA_SUPPORT
         else if (mNpcId == fromInt(Vending, BeingId))
         {
             item->increaseUsedQuantity(mAmountItems);
@@ -565,7 +574,11 @@ void BuyDialog::action(const ActionEvent &event)
             if (mConfirmButton)
                 mConfirmButton->setEnabled(true);
         }
+#ifdef TMWA_SUPPORT
         else if (mNpcId != fromInt(Nick, BeingId))
+#else
+        else
+#endif  // TMWA_SUPPORT
         {
             if (mAdvanced)
             {
