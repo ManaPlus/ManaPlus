@@ -158,6 +158,7 @@ src/net/eathena/mailrecv.cpp
 src/net/eathena/maptypeproperty2.h
 src/net/eathena/playerrecv.cpp
 src/net/eathena/skillrecv.cpp
+src/net/eathena/vendingrecv.cpp
 src/net/ea/traderecv.cpp
 src/net/tmwa/charserverhandler.cpp
 src/net/tmwa/charserverrecv.cpp
