@@ -2528,7 +2528,7 @@ msgstr "Niveau de compétence..."
 #. TRANSLATORS: set skill cast type
 #: src/gui/popups/popupmenu.cpp:2400
 msgid "Skill cast type..."
-msgstr "Type de jet de compétence"
+msgstr "Type de jet de compétence..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set skill cast offset by x
