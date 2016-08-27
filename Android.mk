@@ -88,6 +88,8 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/enums/render/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/resources/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/resources/map/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/enums/resources/item/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/enums/resources/skill/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/gui/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/input/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/net/*.cpp) \
