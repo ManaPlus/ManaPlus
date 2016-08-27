@@ -1,3 +1,21 @@
+2016-08-27 New release 1.6.7.27
+fix: show skill level selection with skills with level 1.
+fix: leave guild.
+fix: getting party settings from server.
+fix: mercenary and homunculus moving.
+fix: remove stats pages on reconnecting to server.
+add: skill cast type and offsets into skills and shortcut window.
+add: default background music by Obani.
+add: menu in social window.
+add: change get auto item option in party.
+add: particle effects for equipment from cards.
+add: custom ai to homunculus and mercenary.
+add: in vending (sell) shop allow buy many items at once.
+add: in vending show for seller what item was sold.
+add: in item gm menu allow add more same item.
+add: improve sorting in inventory.
+remove: local pets support (tmwa).
+
 2016-08-14 New release 1.6.8.14
 fix: arrow slot in equipment window.
 fix: compilation with new curl 7.50.
