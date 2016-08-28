@@ -138,13 +138,6 @@ class ResourceManager final : public MemoryCounter
          */
         void moveToDeleted(Resource *const res);
 
-        /**
-         * Loads the given filename as an SDL surface. The returned surface is
-         * expected to be freed by the caller using SDL_FreeSurface.
-         */
-        SDL_Surface *loadSDLSurface(const std::string &filename)
-                                    const A_WARN_UNUSED;
-
         void scheduleDelete(SDL_Surface *const surface);
 
         void clearScheduled();

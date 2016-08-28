@@ -650,22 +650,6 @@ void ResourceManager::deleteInstance()
     delete2(instance);
 }
 
-SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename) const
-{
-    if (SDL_RWops *const rw = MPHYSFSRWOPS_openRead(filename.c_str()))
-    {
-        if (!IMG_isPNG(rw))
-        {
-            reportAlways("Error, image is not png: %s", filename.c_str());
-            return nullptr;
-        }
-        SDL_Surface *const surface = MIMG_LoadPNG_RW(rw);
-        SDL_RWclose(rw);
-        return surface;
-    }
-    return nullptr;
-}
-
 void ResourceManager::scheduleDelete(SDL_Surface *const surface)
 {
     deletedSurfaces.insert(surface);
