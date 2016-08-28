@@ -33,6 +33,7 @@
 
 #include <string>
 #include <queue>
+#include <time.h>
 
 namespace Net
 {

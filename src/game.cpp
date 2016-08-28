@@ -151,7 +151,7 @@ QuitDialog *quitDialog = nullptr;
 Window *disconnectedDialog = nullptr;
 
 bool mStatsReUpdated = false;
-const unsigned adjustDelay = 10;
+const time_t adjustDelay = 10;
 
 /**
  * Initialize every game sub-engines in the right order
@@ -730,7 +730,7 @@ void Game::adjustPerfomance()
     {
         mNextAdjustTime = time + adjustDelay;
     }
-    else if (mNextAdjustTime < CAST_U32(time))
+    else if (mNextAdjustTime < time)
     {
         mNextAdjustTime = time + adjustDelay;
 
