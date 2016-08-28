@@ -72,7 +72,8 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
         mRenderer, tmpImage);
     if (!texture)
     {
-        reportAlways("Texture from surface creation failed");
+        reportAlways("Texture from surface creation failed: %s",
+            SDL_GetError());
         return nullptr;
     }
     SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
