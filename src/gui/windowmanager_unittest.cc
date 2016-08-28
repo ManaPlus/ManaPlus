@@ -21,6 +21,7 @@
 #include "catch.hpp"
 #include "client.h"
 #include "configuration.h"
+#include "graphicsmanager.h"
 #include "settings.h"
 #include "units.h"
 #include "textcommand.h"
@@ -141,9 +142,16 @@ TEST_CASE("Windows tests", "windowmanager")
     branding.setValue("onlineServerFile", "test/serverlistplus.xml");
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif
+    ActorSprite::load();
     userPalette = new UserPalette;
     theme = new Theme;
-    ActorSprite::load();
     config.setValue("fontSize", 16);
     gui = new Gui();
     gui->postInit(mainGraphics);
@@ -154,6 +162,7 @@ TEST_CASE("Windows tests", "windowmanager")
     inventoryHandler = new EAthena::InventoryHandler;
     playerHandler = new EAthena::PlayerHandler;
     paths.setValue("itemIcons", "");
+
     TranslationManager::init();
 
     mainGraphics->setVideoMode(640, 480, 1, 8, false, false, false, false);
