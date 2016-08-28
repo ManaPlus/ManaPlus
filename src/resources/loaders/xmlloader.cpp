@@ -43,13 +43,6 @@ namespace
                 return nullptr;
             const ResourceLoader *const
                 rl = static_cast<const ResourceLoader *const>(v);
-            SDL_RWops *const rw = MPHYSFSRWOPS_openRead(rl->path.c_str());
-            if (!rw)
-            {
-                reportAlways("Error loading resource: %s",
-                    rl->path.c_str());
-                return nullptr;
-            }
             Resource *const res = new XML::Document(rl->path,
                 rl->useResman,
                 rl->skipError);
