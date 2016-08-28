@@ -53,7 +53,7 @@ namespace Ea
         std::string getLastWhisperNick();
 
         extern WhisperQueue mSentWhispers;
-        extern int mMotdTime;
+        extern time_t mMotdTime;
         extern bool mShowAllLang;
         extern bool mShowMotd;
         extern bool mSkipping;

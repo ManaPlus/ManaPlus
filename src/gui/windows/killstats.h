@@ -73,7 +73,7 @@ class KillStats final : public Window,
                               const int newVal) override final;
 
     private:
-        int mKillTimer;  /**< Timer for kill stats. */
+        time_t mKillTimer;  /**< Timer for kill stats. */
         Button *mResetButton A_NONNULLPOINTER;
         Button *mTimerButton A_NONNULLPOINTER;
         Label *mLine1;
@@ -98,15 +98,15 @@ class KillStats final : public Window,
         int mKillTCounter;   /**< Timer Kill counter. */
         int mExpTCounter;    /**< Timer Exp counter. */
 
-        int m1minExpTime;
+        time_t m1minExpTime;
         int m1minExpNum;
         int m1minSpeed;
 
-        int m5minExpTime;
+        time_t m5minExpTime;
         int m5minExpNum;
         int m5minSpeed;
 
-        int m15minExpTime;
+        time_t m15minExpTime;
         int m15minExpNum;
         int m15minSpeed;
 };

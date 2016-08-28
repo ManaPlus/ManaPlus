@@ -33,7 +33,7 @@
 
 static const int MAX_LASTKEYS = 10;
 
-extern volatile int cur_time;
+extern volatile time_t cur_time;
 
 class Map;
 
@@ -131,13 +131,13 @@ class Game final
         std::string mMapName;
         bool mValidSpeed;
         LastKey mLastKeys[MAX_LASTKEYS];
-        unsigned mNextAdjustTime;
+        time_t mNextAdjustTime;
         int mAdjustLevel;
         bool mAdjustPerfomance;
         int mLowerCounter;
         int mPing;
-        int mTime;
-        int mTime2;
+        time_t mTime;
+        time_t mTime2;
 
         static Game *mInstance;
 };

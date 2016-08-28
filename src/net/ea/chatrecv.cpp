@@ -46,7 +46,7 @@ namespace Ea
 namespace ChatRecv
 {
     WhisperQueue mSentWhispers;
-    int mMotdTime = -1;
+    time_t mMotdTime = 0;
     bool mShowAllLang = false;
     bool mShowMotd = false;
     bool mSkipping = true;

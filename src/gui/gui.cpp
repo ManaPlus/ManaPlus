@@ -345,7 +345,7 @@ void Gui::slowLogic()
     if (windowContainer)
         windowContainer->slowLogic();
 
-    const int time = cur_time;
+    const time_t time = cur_time;
     if (mTime != time)
     {
         logger->flush();

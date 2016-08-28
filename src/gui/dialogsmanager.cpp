@@ -58,7 +58,7 @@
 OkDialog *deathNotice = nullptr;
 DialogsManager *dialogsManager = nullptr;
 OkDialog *weightNotice = nullptr;
-int weightNoticeTime = 0;
+time_t weightNoticeTime = 0;
 
 #ifndef DYECMD
 namespace

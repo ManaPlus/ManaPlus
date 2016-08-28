@@ -41,7 +41,7 @@
 
 #include "debug.h"
 
-extern volatile int cur_time;
+extern volatile time_t cur_time;
 
 FloorItem::FloorItem(const BeingId id,
                      const int itemId,
@@ -161,7 +161,7 @@ void FloorItem::draw(Graphics *const graphics,
 
     if (mHighlight)
     {
-        const int curTime = cur_time;
+        const time_t curTime = cur_time;
         font = gui->getFont();
         if (mDropTime < curTime)
         {

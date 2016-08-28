@@ -50,7 +50,7 @@ volatile int fps = 0;         /**< Frames counted in the last second */
 volatile int lps = 0;         /**< Logic processed per second */
 volatile int frame_count = 0; /**< Counts the frames during one second */
 volatile int logic_count = 0; /**< Counts the logic during one second */
-volatile int cur_time;
+volatile time_t cur_time = 0;
 
 static uint32_t nextTick(uint32_t interval, void *param A_UNUSED);
 static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED);

@@ -238,7 +238,7 @@ class Viewport final : public WindowContainer,
         int mViewXmax;
         int mViewYmax;
 
-        int mLocalWalkTime; /**< Timestamp before the next walk can be sent. */
+        time_t mLocalWalkTime; /**< Timestamp before the next walk can be sent. */
 
         int mCameraRelativeX;
         int mCameraRelativeY;

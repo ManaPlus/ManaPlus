@@ -68,7 +68,7 @@ class MapDebugTab final : public DebugTab
         Label *mMapActorCountLabel A_NONNULLPOINTER;
         Label *mXYLabel A_NONNULLPOINTER;
         Label *mTexturesLabel A_NONNULLPOINTER;
-        int mUpdateTime;
+        time_t mUpdateTime;
 #ifdef DEBUG_DRAW_CALLS
         Label *mDrawCallsLabel A_NONNULLPOINTER;
 #endif

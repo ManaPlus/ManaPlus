@@ -26,7 +26,7 @@
 extern volatile int fps;
 extern volatile int lps;
 extern volatile int tick_time;
-extern volatile int cur_time;
+extern volatile time_t cur_time;
 extern volatile int frame_count;
 extern volatile int logic_count;
 

@@ -623,7 +623,7 @@ void Game::slowLogic()
     BLOCK_START("Game::slowLogic")
     if (localPlayer)
         localPlayer->slowLogic();
-    const int time = cur_time;
+    const time_t time = cur_time;
     if (mTime != time)
     {
         if (valTest(Updated))
@@ -725,7 +725,7 @@ void Game::slowLogic()
 void Game::adjustPerfomance()
 {
     FUNC_BLOCK("Game::adjustPerfomance", 1)
-    const int time = cur_time;
+    const time_t time = cur_time;
     if (mNextAdjustTime <= adjustDelay)
     {
         mNextAdjustTime = time + adjustDelay;
@@ -1123,7 +1123,7 @@ void Game::updateHistory(const SDL_Event &event)
         bool old = false;
 
         const InputActionT key = keyboard.getKeyIndex(event);
-        const int time = cur_time;
+        const time_t time = cur_time;
         int idx = -1;
         for (int f = 0; f < MAX_LASTKEYS; f ++)
         {
@@ -1178,7 +1178,7 @@ void Game::checkKeys()
     if (!localPlayer || !settings.attackType)
         return;
 
-    const int time = cur_time;
+    const time_t time = cur_time;
     for (int f = 0; f < MAX_LASTKEYS; f ++)
     {
         LastKey &lastKey = mLastKeys[f];

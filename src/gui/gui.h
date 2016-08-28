@@ -529,7 +529,7 @@ class Gui final
         FocusListenerList mFocusListeners;
         Color mForegroundColor;
         Color mForegroundColor2;
-        int mTime;
+        time_t mTime;
         bool mCustomCursor;                 /**< Show custom cursor */
         bool mDoubleClick;
 };

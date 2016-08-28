@@ -228,7 +228,7 @@ class BrowserBox final : public Widget,
         int mHeight;
         int mWidth;
         int mYStart;
-        int mUpdateTime;
+        time_t mUpdateTime;
         int mPadding;
         unsigned int mNewLinePadding;
         int mItemPadding;

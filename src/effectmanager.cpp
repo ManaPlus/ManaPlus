@@ -238,7 +238,7 @@ void EffectManager::triggerDefault(int effectId,
 
 void EffectManager::logic()
 {
-    const int time = cur_time;
+    const time_t time = cur_time;
     bool found(true);
     while (found)
     {

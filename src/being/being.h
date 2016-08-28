@@ -66,7 +66,7 @@ struct HorseInfo;
 struct SkillInfo;
 struct ParticleInfo;
 
-extern volatile int cur_time;
+extern volatile time_t cur_time;
 
 struct NextSoundInfo final
 {
@@ -705,19 +705,19 @@ class Being notfinal : public ActorSprite,
         void setOtherTime() restrict2 noexcept2
         { mOtherTime = cur_time; }
 
-        int getMoveTime() const restrict2 noexcept2
+        time_t getMoveTime() const restrict2 noexcept2
         { return mMoveTime; }
 
-        int getAttackTime() const restrict2 noexcept2
+        time_t getAttackTime() const restrict2 noexcept2
         { return mAttackTime; }
 
-        int getTalkTime() const restrict2 noexcept2
+        time_t getTalkTime() const restrict2 noexcept2
         { return mTalkTime; }
 
-        int getTestTime() const restrict2 noexcept2
+        time_t getTestTime() const restrict2 noexcept2
         { return mTestTime; }
 
-        int getOtherTime() const restrict2 noexcept2
+        time_t getOtherTime() const restrict2 noexcept2
         { return mOtherTime; }
 
         void resetCounters() restrict2;
@@ -1259,7 +1259,7 @@ class Being notfinal : public ActorSprite,
         ReachableT mReachable;
         int mGoodStatus;
 
-        static int mUpdateConfigTime;
+        static time_t mUpdateConfigTime;
         static unsigned int mConfLineLim;
         static int mSpeechType;
         static bool mHighlightMapPortals;
@@ -1279,11 +1279,11 @@ class Being notfinal : public ActorSprite,
         static uint8_t mShowBadges;
         static int mAwayEffect;
 
-        int mMoveTime;
-        int mAttackTime;
-        int mTalkTime;
-        int mOtherTime;
-        int mTestTime;
+        time_t mMoveTime;
+        time_t mAttackTime;
+        time_t mTalkTime;
+        time_t mOtherTime;
+        time_t mTestTime;
         int mAttackDelay;
         int mMinHit;
         int mMaxHit;

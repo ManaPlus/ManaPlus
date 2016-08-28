@@ -289,7 +289,7 @@ void KillStats::gainXp(int xp)
 void KillStats::recalcStats()
 {
     BLOCK_START("KillStats::recalcStats")
-    const int curTime = cur_time;
+    const time_t curTime = cur_time;
 
     // Need Update Exp Counter
     if (curTime - m1minExpTime > 60)

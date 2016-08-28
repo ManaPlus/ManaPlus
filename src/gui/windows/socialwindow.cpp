@@ -464,7 +464,7 @@ void SocialWindow::updateActiveList()
 void SocialWindow::slowLogic()
 {
     BLOCK_START("SocialWindow::slowLogic")
-    const unsigned int nowTime = cur_time;
+    const time_t nowTime = cur_time;
     if (mNeedUpdate && nowTime - mLastUpdateTime > 1)
     {
         mPlayers->updateList();

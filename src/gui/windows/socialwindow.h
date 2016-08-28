@@ -160,7 +160,7 @@ class SocialWindow final : public Window,
         TabbedArea *mTabs A_NONNULLPOINTER;
         Map *mMap;
 
-        int mLastUpdateTime;
+        time_t mLastUpdateTime;
         int mPartyId;
         bool mNeedUpdate;
         bool mProcessedPortals;

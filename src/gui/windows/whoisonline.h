@@ -134,7 +134,7 @@ class WhoIsOnline final : public Window,
             UPDATE_LIST
         };
 
-        int mUpdateTimer;
+        time_t mUpdateTimer;
 
         /** A thread that use libcurl to download updates. */
         SDL_Thread *mThread;

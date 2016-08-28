@@ -144,7 +144,7 @@ class Font final
         unsigned int mDeleteCounter;
 
         // Word surfaces cache
-        int mCleanTime;
+        time_t mCleanTime;
         mutable TextChunkList mCache[CACHES_NUMBER];
 };
 

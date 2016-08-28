@@ -277,7 +277,7 @@ class TextField notfinal : public Widget,
         static ImageRect skin;
         int mMinimum;
         int mMaximum;
-        int mLastEventPaste;
+        time_t mLastEventPaste;
         int mPadding;
         bool mNumeric;
         bool mLoseFocusOnTab;

@@ -118,7 +118,7 @@
 
 const unsigned int CACHE_SIZE = 50;
 
-int Being::mUpdateConfigTime = 0;
+time_t Being::mUpdateConfigTime = 0;
 unsigned int Being::mConfLineLim = 0;
 int Being::mSpeechType = 0;
 bool Being::mHighlightMapPortals = false;

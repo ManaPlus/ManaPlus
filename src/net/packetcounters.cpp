@@ -24,7 +24,7 @@
 
 #include "debug.h"
 
-extern volatile int cur_time;
+extern volatile time_t cur_time;
 extern volatile bool runCounters;
 
 int PacketCounters::mInCurrentSec = 0;
@@ -108,7 +108,7 @@ void PacketCounters::updateCounter(int &restrict currentSec,
                                    int &restrict calc,
                                    int &restrict counter)
 {
-    const int idx = cur_time % 60;
+    const time_t idx = cur_time % 60;
     if (currentSec != idx)
     {
         currentSec = idx;

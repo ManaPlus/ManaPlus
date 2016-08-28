@@ -343,7 +343,7 @@ void LocalPlayer::logic()
 void LocalPlayer::slowLogic()
 {
     BLOCK_START("LocalPlayer::slowLogic")
-    const int time = cur_time;
+    const time_t time = cur_time;
     if (weightNotice && weightNoticeTime < time)
     {
         weightNotice->scheduleDelete();
@@ -1873,11 +1873,11 @@ std::string LocalPlayer::getPingTime() const
         if (!mPingTime)
             str = "?";
         else
-            str = toString(mPingTime);
+            str = toString(CAST_S32(mPingTime));
     }
     else
     {
-        int time = tick_time;
+        time_t time = tick_time;
         if (time > mPingSendTick)
             time -= mPingSendTick;
         else
@@ -1885,9 +1885,9 @@ std::string LocalPlayer::getPingTime() const
         if (time <= mPingTime)
             time = mPingTime;
         if (mPingTime != time)
-            str = strprintf("%d (%d)", mPingTime, time);
+            str = strprintf("%d (%d)", CAST_S32(mPingTime), CAST_S32(time));
         else
-            str = toString(time);
+            str = toString(CAST_S32(time));
     }
     return str;
 }
@@ -1954,7 +1954,7 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
 {
     if (settings.awayMode)
     {
-        const int time = cur_time;
+        const time_t time = cur_time;
         if (mAfkTime == 0 || time < mAfkTime
             || time - mAfkTime > awayLimitTimer)
         {
@@ -2490,7 +2490,7 @@ void LocalPlayer::fixPos()
     const int dx = abs(mX - mCrossX);
     const int dy = abs(mY - mCrossY);
     const int dist = dx > dy ? dx : dy;
-    const int time = cur_time;
+    const time_t time = cur_time;
     const int maxDist = mSyncPlayerMove ? mSyncPlayerMoveDistance : 7;
 
     if (dist > maxDist)

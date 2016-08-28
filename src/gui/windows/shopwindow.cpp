@@ -1030,7 +1030,7 @@ void ShopWindow::updateTimes()
     BLOCK_END("ShopWindow::updateTimes")
 }
 
-bool ShopWindow::checkFloodCounter(int &counterTime)
+bool ShopWindow::checkFloodCounter(time_t &counterTime)
 {
     if (!counterTime || counterTime > cur_time)
         counterTime = cur_time;

@@ -484,9 +484,9 @@ class LocalPlayer final : public Being,
         OkDialog *mAwayDialog;
 
         int mPingSendTick;
-        int mPingTime;
-        int mAfkTime;
-        int mActivityTime;
+        time_t mPingTime;
+        time_t mAfkTime;
+        time_t mActivityTime;
         int mNavigateX;
         int mNavigateY;
         BeingId mNavigateId;
@@ -503,7 +503,7 @@ class LocalPlayer final : public Being,
         int mAdvertTime;
         Particle *mTestParticle;
         std::string mTestParticleName;
-        int mTestParticleTime;
+        time_t mTestParticleTime;
         unsigned long mTestParticleHash;
         int mSyncPlayerMoveDistance;
         int mUnfreezeTime;

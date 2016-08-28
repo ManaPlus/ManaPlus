@@ -93,7 +93,7 @@ void ChatRecv::processChatContinue(std::string chatMsg,
         channel.empty())
     {
         // skip motd from "new" tmw server
-        if (Ea::ChatRecv::mMotdTime == -1)
+        if (Ea::ChatRecv::mMotdTime == 0)
         {
             Ea::ChatRecv::mMotdTime = cur_time + 1;
         }

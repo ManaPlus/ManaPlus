@@ -136,7 +136,7 @@ class ShopWindow final : public Window,
                             const int mode);
         void updateTimes();
 
-        static bool checkFloodCounter(int &counterTime) A_WARN_UNUSED;
+        static bool checkFloodCounter(time_t &counterTime) A_WARN_UNUSED;
 
         bool findShopItem(const ShopItem *const shopItem,
                           const int mode) const A_WARN_UNUSED;
@@ -188,9 +188,9 @@ class ShopWindow final : public Window,
         std::string mTradeNick;
         std::string mSellShopName;
         int mSelectedItem;
-        int mAnnonceTime;
-        int mLastRequestTimeList;
-        int mLastRequestTimeItem;
+        time_t mAnnonceTime;
+        time_t mLastRequestTimeList;
+        time_t mLastRequestTimeItem;
         int mRandCounter;
         int mTradeMoney;
         int mSellShopSize;

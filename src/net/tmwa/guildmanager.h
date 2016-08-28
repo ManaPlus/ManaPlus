@@ -96,7 +96,7 @@ class GuildManager final
         StringVect mTempList;
         EmulateGuildTab *mTab;
         bool mRequest;
-        int mRequestTime;
+        time_t mRequestTime;
         bool mGotOnlineInfo;
 };
 
