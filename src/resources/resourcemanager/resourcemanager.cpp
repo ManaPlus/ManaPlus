@@ -38,7 +38,9 @@
 #include "utils/delete2.h"
 #include "utils/physfsrwops.h"
 
+#ifndef USE_OPENGL
 #include <SDL_image.h>
+#endif
 #include <sstream>
 
 #include <sys/time.h>
