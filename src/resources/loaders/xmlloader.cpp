@@ -23,7 +23,6 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/checkutils.h"
-#include "utils/physfsrwops.h"
 
 #include "resources/loaders/xmlloader.h"
 
