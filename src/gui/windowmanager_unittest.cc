@@ -132,6 +132,9 @@ TEST_CASE("Windows tests", "windowmanager")
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
+    delete ResourceManager::instance;
+    ResourceManager::instance = nullptr;
+    resourceManager = nullptr;
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);

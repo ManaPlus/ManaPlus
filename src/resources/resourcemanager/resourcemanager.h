@@ -188,7 +188,9 @@ class ResourceManager final : public MemoryCounter
 
         static void init();
 
+#ifndef UNITTESTS
     private:
+#endif
         /**
          * Deletes the resource after logging a cleanup message.
          */
