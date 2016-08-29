@@ -20,7 +20,6 @@
 
 #include "catch.hpp"
 #include "client.h"
-#include "logger.h"
 #include "graphicsmanager.h"
 
 #include "being/actorsprite.h"
