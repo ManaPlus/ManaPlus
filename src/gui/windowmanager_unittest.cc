@@ -672,5 +672,4 @@ TEST_CASE("Windows tests", "windowmanager")
     delete2(client);
     delete2(serverFeatures);
     delete2(inventoryHandler);
-    windowContainer = nullptr;
 }

@@ -168,6 +168,16 @@ SocialWindow::~SocialWindow()
     delete2(mAttackFilter);
     delete2(mPickupFilter);
     delete2(mFriends);
+    FOR_EACH (GuildMap::iterator, it, mGuilds)
+    {
+        delete (*it).second;
+    }
+    mGuilds.clear();
+    FOR_EACH (PartyMap::iterator, it, mParties)
+    {
+        delete (*it).second;
+    }
+    mParties.clear();
 }
 
 bool SocialWindow::addTab(Guild *const guild)
@@ -217,6 +227,9 @@ bool SocialWindow::removeTab(Guild *const guild)
 
 bool SocialWindow::addTab(Party *const party)
 {
+    if (!party)
+        return false;
+
     if (mParties.find(party) != mParties.end())
         return false;
 

@@ -148,6 +148,7 @@ TEST_CASE("BrowserBox tests", "browserbox")
     row = "##1%%2";
     box->addRow(row);
 
+    delete box;
     delete client;
     client = nullptr;
 }

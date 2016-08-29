@@ -304,6 +304,8 @@ static void dyeCheck(const std::string &dyeString,
     {
         REQUIRE(ptr1[idx] == ptr2[idx]);
     }
+    image2->decRef();
+    image1->decRef();
 }
 
 TEST_CASE("Dye real dye")

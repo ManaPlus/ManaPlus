@@ -89,6 +89,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
         REQUIRE(false == sprite->update(11));
         REQUIRE(10 == sprite->getFrameTime());
         REQUIRE(0 == sprite->getFrameIndex());
+        delete(sprite);
     }
 
     SECTION("basic test 2")
@@ -149,6 +150,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
         REQUIRE(true == sprite->update(1 + 10 + 20 + 10 + 25 + 10 + 10 + 1));
         REQUIRE(4 == sprite->getFrameIndex());
         REQUIRE(1 == sprite->getFrameTime());
+        delete(sprite);
     }
 
     SECTION("basic test 3")
@@ -166,6 +168,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
         REQUIRE(true == sprite2->update(1 + 10 + 20 + 10 + 25 + 10 + 10 + 1));
         REQUIRE(1 == sprite2->getFrameIndex());
         REQUIRE(1 == sprite2->getFrameTime());
+        delete(sprite2);
     }
 
     delete client;

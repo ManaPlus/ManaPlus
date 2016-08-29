@@ -349,5 +349,6 @@ TEST_CASE("xml doc")
         // clean again
         ::remove(tempXmlName);
     }
+    delete2(theme);
     delete2(client);
 }
