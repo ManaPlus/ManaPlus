@@ -69,7 +69,9 @@ ResourceManager::~ResourceManager()
     ResourceIterator iter = mResources.begin();
 
 #ifdef DEBUG_LEAKS
+#ifdef UNITTESTS
     bool status(false);
+#endif
     while (iter != mResources.end())
     {
         if (iter->second)
@@ -79,7 +81,9 @@ ResourceManager::~ResourceManager()
                 logger->log(std::string("ResourceLeak: ").append(
                     iter->second->getIdPath()).append(" (").append(
                     toString(iter->second->getRefCount())).append(")"));
+#ifdef UNITTESTS
                 status = true;
+#endif
             }
         }
         ++iter;
@@ -642,7 +646,9 @@ void ResourceManager::deleteInstance()
         logger->log1("clean orphans end");
         ResourceIterator iter = resourceManager->mResources.begin();
 
+#ifdef UNITTESTS
         bool status(false);
+#endif
         while (iter != resourceManager->mResources.end())
         {
             const Resource *const res = iter->second;
@@ -653,7 +659,9 @@ void ResourceManager::deleteInstance()
                     logger->log(std::string("ResourceLeak: ").append(
                         res->getIdPath()).append(" (").append(toString(
                         res->getRefCount())).append(")"));
+#ifdef UNITTESTS
                     status = true;
+#endif
                 }
             }
             ++iter;
