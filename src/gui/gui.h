@@ -530,6 +530,7 @@ class Gui final
         Color mForegroundColor;
         Color mForegroundColor2;
         time_t mTime;
+        time_t mTime10;
         bool mCustomCursor;                 /**< Show custom cursor */
         bool mDoubleClick;
 };

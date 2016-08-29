@@ -140,6 +140,7 @@ Gui::Gui() :
     mForegroundColor(theme->getColor(ThemeColorId::TEXT, 255)),
     mForegroundColor2(theme->getColor(ThemeColorId::TEXT_OUTLINE, 255)),
     mTime(0),
+    mTime10(0),
     mCustomCursor(false),
     mDoubleClick(true)
 {
@@ -352,6 +353,13 @@ void Gui::slowLogic()
         if (ipc)
             ipc->flush();
         mTime = time;
+
+        if (time > mTime10 || mTime10 - time > 10)
+        {
+            mTime10 = time + 10;
+            if (resourceManager)
+                resourceManager->cleanOrphans();
+        }
     }
 
     BLOCK_END("Gui::slowLogic")

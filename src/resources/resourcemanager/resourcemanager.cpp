@@ -481,7 +481,6 @@ Resource *ResourceManager::get(const std::string &idPath,
             resource->mIdPath.c_str());
 #endif
         mResources[idPath] = resource;
-        cleanOrphans();
     }
     else
     {
