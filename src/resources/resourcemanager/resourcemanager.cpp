@@ -48,7 +48,6 @@
 #include "debug.h"
 
 ResourceManager *resourceManager = nullptr;
-ResourceManager *ResourceManager::instance = nullptr;
 
 ResourceManager::ResourceManager() :
     deletedSurfaces(),
@@ -624,16 +623,16 @@ void ResourceManager::decRefDelete(Resource *const res)
 void ResourceManager::deleteInstance()
 {
 #ifdef DUMP_LEAKED_RESOURCES
-    if (instance)
+    if (resourceManager)
     {
         logger->log1("clean orphans start");
-        instance->cleanProtected();
-        while (instance->cleanOrphans(true))
+        resourceManager->cleanProtected();
+        while (resourceManager->cleanOrphans(true))
             continue;
         logger->log1("clean orphans end");
-        ResourceIterator iter = instance->mResources.begin();
+        ResourceIterator iter = resourceManager->mResources.begin();
 
-        while (iter != instance->mResources.end())
+        while (iter != resourceManager->mResources.end())
         {
             const Resource *const res = iter->second;
             if (res)
@@ -649,7 +648,7 @@ void ResourceManager::deleteInstance()
         }
     }
 #endif
-    delete2(instance);
+    delete2(resourceManager);
 }
 
 void ResourceManager::scheduleDelete(SDL_Surface *const surface)

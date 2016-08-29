@@ -191,7 +191,6 @@ class ResourceManager final : public MemoryCounter
 
         static void logResource(const Resource *const res);
 
-        static ResourceManager *instance;
         std::set<SDL_Surface*> deletedSurfaces;
         Resources mResources;
         Resources mOrphanedResources;
