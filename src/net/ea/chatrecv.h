@@ -33,7 +33,9 @@
 
 #include <string>
 #include <queue>
-#include <time.h>
+#ifndef __time_t_defined
+#include <sys/time.h>
+#endif  // __time_t_defined
 
 namespace Net
 {
