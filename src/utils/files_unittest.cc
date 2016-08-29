@@ -63,6 +63,7 @@ TEST_CASE("Files renameFile")
 
     delete [] buf;
     delete [] buf2;
+    ResourceManager::deleteInstance();
 }
 
 TEST_CASE("Files existsLocal")
@@ -76,6 +77,7 @@ TEST_CASE("Files existsLocal")
     REQUIRE(Files::existsLocal(Files::getPath("help/about.txt")) == true);
     REQUIRE_FALSE(Files::existsLocal(Files::getPath("help/about1.txt")));
     REQUIRE_FALSE(Files::existsLocal(Files::getPath("help1/about.txt")));
+    ResourceManager::deleteInstance();
 }
 
 TEST_CASE("Files loadTextFileString")
@@ -88,6 +90,7 @@ TEST_CASE("Files loadTextFileString")
     resourceManager->addToSearchPath("../data", Append_false);
     REQUIRE(Files::loadTextFileString("test/simplefile.txt") ==
         "this is test \nfile.");
+    ResourceManager::deleteInstance();
 }
 
 TEST_CASE("Files loadTextFile")
@@ -104,6 +107,7 @@ TEST_CASE("Files loadTextFile")
     REQUIRE(lines.size() == 2);
     REQUIRE(lines[0] == "this is test ");
     REQUIRE(lines[1] == "file.");
+    ResourceManager::deleteInstance();
 }
 
 TEST_CASE("Files saveTextFile")
@@ -121,6 +125,7 @@ TEST_CASE("Files saveTextFile")
     std::string data = Files::loadTextFileString("test/tempfile.txt");
     ::remove((dir + "/tempfile.txt").c_str());
     REQUIRE(data == "test line\ntext line2\n");
+    ResourceManager::deleteInstance();
 }
 
 TEST_CASE("Files getFilesInDir")
@@ -149,4 +154,5 @@ TEST_CASE("Files getFilesInDir")
     REQUIRE(list[2] == "perserver/default/defaultcommands.xml");
     REQUIRE(list[3] == "perserver/default/features.xml");
     REQUIRE(list[4] == "perserver/default/weapons.xml");
+    ResourceManager::deleteInstance();
 }

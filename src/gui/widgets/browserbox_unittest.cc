@@ -27,6 +27,8 @@
 
 #include "gui/widgets/browserbox.h"
 
+#include "resources/resourcemanager/resourcemanager.h"
+
 #include "resources/sdlimagehelper.h"
 
 #include <physfs.h>
@@ -43,6 +45,7 @@ TEST_CASE("BrowserBox tests", "browserbox")
     logger = new Logger();
     imageHelper = new SDLImageHelper();
     theme = new Theme;
+    ResourceManager::init();
     ActorSprite::load();
     Widget::setGlobalFont(new Font("/usr/share/fonts/truetype/"
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));

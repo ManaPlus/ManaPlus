@@ -25,6 +25,8 @@
 #include "logger.h"
 #include "graphicsmanager.h"
 
+#include "being/actorsprite.h"
+
 #include "resources/sdlimagehelper.h"
 
 #include "resources/db/palettedb.h"
@@ -33,6 +35,7 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
+#include "utils/delete2.h"
 #include "utils/env.h"
 #include "utils/physfstools.h"
 
@@ -65,6 +68,7 @@ TEST_CASE("DyePalette tests")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif
 
+    ActorSprite::load();
     paths.setDefaultValues(getPathsDefaults());
     PaletteDB::load();
 
@@ -367,4 +371,5 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[2] == 46);
         REQUIRE(palette.mColors[0].value[3] == 0x77);
     }
+    delete2(client);
 }

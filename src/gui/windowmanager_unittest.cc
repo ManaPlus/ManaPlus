@@ -133,10 +133,10 @@ TEST_CASE("Windows tests", "windowmanager")
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
-    delete ResourceManager::instance;
-    ResourceManager::instance = nullptr;
+    delete resourceManager;
     resourceManager = nullptr;
     ResourceManager::init();
+    resourceManager->cleanOrphans(true);
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
     branding.setValue("onlineServerFile", "test/serverlistplus.xml");
@@ -228,17 +228,15 @@ TEST_CASE("Windows tests", "windowmanager")
     }
     SECTION("CharCreateDialog")
     {
-/*
-        LoginData data;
-        CharSelectDialog *dialog2;
-        CREATEWIDGETV(dialog2, CharSelectDialog, data);
-        CharCreateDialog *dialog;
-        CREATEWIDGETV(dialog, CharCreateDialog, dialog2, 0);
-        gui->draw();
-        mainGraphics->updateScreen();
-        delete2(dialog);
-        delete2(dialog2);
-*/
+//        LoginData data;
+//        CharSelectDialog *dialog2;
+//        CREATEWIDGETV(dialog2, CharSelectDialog, data);
+//        CharCreateDialog *dialog;
+//        CREATEWIDGETV(dialog, CharCreateDialog, dialog2, 0);
+//        gui->draw();
+//        mainGraphics->updateScreen();
+//        delete2(dialog);
+//        delete2(dialog2);
     }
     SECTION("ChatWindow")
     {
@@ -562,6 +560,7 @@ TEST_CASE("Windows tests", "windowmanager")
         mainGraphics->updateScreen();
         delete2(dialog);
     }
+
     SECTION("TextDialog")
     {
         TextDialog *dialog = CREATEWIDGETR(TextDialog,

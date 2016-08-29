@@ -20,19 +20,28 @@
 
 #include "catch.hpp"
 #include "client.h"
+#include "graphicsmanager.h"
 #include "logger.h"
+
+#include "being/actorsprite.h"
 
 #include "utils/translation/podict.h"
 #include "utils/translation/poparser.h"
 
+#include "resources/sdlimagehelper.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
+#include "utils/delete2.h"
+#include "utils/env.h"
 #include "utils/physfstools.h"
 
 #include "debug.h"
 
 TEST_CASE("PoParser tests", "PoParser")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     client = new Client;
     PHYSFS_init("manaplus");
     dirSeparator = "/";
@@ -40,6 +49,17 @@ TEST_CASE("PoParser tests", "PoParser")
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+
+    imageHelper = new SDLImageHelper();
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif
+
+    ActorSprite::load();
 
     SECTION("PoParser empty")
     {
@@ -92,4 +112,5 @@ TEST_CASE("PoParser tests", "PoParser")
         delete parser;
         delete dict;
     }
+    delete2(client);
 }

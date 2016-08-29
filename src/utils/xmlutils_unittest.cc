@@ -58,6 +58,7 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     REQUIRE(0 == arr[2]);
     REQUIRE(1 == arr[3]);
     REQUIRE(1 == arr[4]);
+    ResourceManager::deleteInstance();
 }
 
 TEST_CASE("xmlutils readXmlStringMap 1")
@@ -86,4 +87,5 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     REQUIRE(arr["Kitty"] == "0");
     REQUIRE(arr["xD"] == "1");
     REQUIRE(arr["Metal"] == "26");
+    ResourceManager::deleteInstance();
 }

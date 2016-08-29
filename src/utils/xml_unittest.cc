@@ -21,9 +21,18 @@
 #include "catch.hpp"
 #include "client.h"
 #include "logger.h"
+#include "graphicsmanager.h"
 
+#include "being/actorsprite.h"
+
+#include "gui/theme.h"
+
+#include "utils/delete2.h"
+#include "utils/env.h"
 #include "utils/physfstools.h"
 #include "utils/xml.h"
+
+#include "resources/sdlimagehelper.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
@@ -31,6 +40,8 @@
 
 TEST_CASE("xml doc")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     client = new Client;
     PHYSFS_init("manaplus");
     dirSeparator = "/";
@@ -39,7 +50,19 @@ TEST_CASE("xml doc")
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+    imageHelper = new SDLImageHelper();
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif
+
+    theme = new Theme;
+    Theme::selectSkin();
     const char *const tempXmlName = "tempxml.xml";
+    ActorSprite::load();
 
     SECTION("load1")
     {
@@ -326,4 +349,5 @@ TEST_CASE("xml doc")
         // clean again
         ::remove(tempXmlName);
     }
+    delete2(client);
 }

@@ -24,6 +24,8 @@
 #include "graphicsmanager.h"
 #include "logger.h"
 
+#include "being/actorsprite.h"
+
 #include "resources/sdlimagehelper.h"
 #ifdef USE_SDL2
 #include "resources/surfaceimagehelper.h"
@@ -38,6 +40,7 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
+#include "utils/delete2.h"
 #include "utils/env.h"
 #include "utils/physfstools.h"
 
@@ -330,6 +333,8 @@ TEST_CASE("Dye real dye")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif
 
+    ActorSprite::load();
+
     SECTION("B dye")
     {
         dyeCheck("|B:#FFC88A", "arrow_up_B.png");
@@ -344,4 +349,5 @@ TEST_CASE("Dye real dye")
     {
         dyeCheck("|A:#0000FFFF,FF000050", "arrow_up_A.png");
     }
+    delete2(client);
 }
