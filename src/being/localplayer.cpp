@@ -110,7 +110,7 @@ class SkillDialog;
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
 extern OkDialog *weightNotice;
-extern int weightNoticeTime;
+extern time_t weightNoticeTime;
 extern MiniStatusWindow *miniStatusWindow;
 extern SkillDialog *skillDialog;
 
