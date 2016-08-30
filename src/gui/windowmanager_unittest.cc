@@ -41,7 +41,6 @@
 
 #include "gui/widgets/desktop.h"
 #include "gui/widgets/createwidget.h"
-#include "gui/widgets/windowcontainer.h"
 
 #include "gui/windows/bankwindow.h"
 #include "gui/windows/buydialog.h"
