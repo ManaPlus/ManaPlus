@@ -29,7 +29,6 @@
 #include "utils/delete2.h"
 #include "utils/env.h"
 #include "utils/physfstools.h"
-#include "utils/xml.h"
 
 #include "resources/sdlimagehelper.h"
 
