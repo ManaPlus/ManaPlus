@@ -80,6 +80,8 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
             continue;
 
         createSDLAtlas(atlas);
+        if (atlas->atlasImage == nullptr)
+            continue;
         convertAtlas(atlas);
         resource->atlases.push_back(atlas);
     }
@@ -284,6 +286,7 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     // do not create atlas based on only one image
     if (atlas->items.size() == 1)
     {
+        logger->log("Skip atlas creation because only one image in atlas.");
         BLOCK_END("AtlasManager::createSDLAtlas")
         return;
     }
@@ -300,6 +303,9 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
         width, height, 32U, rmask, gmask, bmask, amask);
     if (!surface)
     {
+        reportAlways("Error creating surface for atlas. Size: %dx%d",
+            width,
+            height);
         BLOCK_END("AtlasManager::createSDLAtlas")
         return;
     }
@@ -308,16 +314,20 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     Image *image = imageHelper->loadSurface(surface);
     // free SDL atlas surface
     MSDL_FreeSurface(surface);
+    if (image == nullptr)
+    {
+        reportAlways("Error converting surface to texture. Size: %dx%d",
+            width,
+            height);
+        return;
+    }
 
     // drawing SDL images to surface
     FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
     {
         AtlasItem *const item = *it;
-        if (image)
-        {
-            imageHelper->copySurfaceToImage(image, item->x, item->y,
-                item->image->mSDLSurface);
-        }
+        imageHelper->copySurfaceToImage(image, item->x, item->y,
+            item->image->mSDLSurface);
     }
     atlas->atlasImage = image;
     BLOCK_END("AtlasManager::createSDLAtlas")
