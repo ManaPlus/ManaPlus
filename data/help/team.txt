@@ -41,6 +41,9 @@
 ##3Dutch
 ##9Elvano Miok (Elvano)
 
+##3Esperanto
+##9Tirifto
+
 ##3Vlaams
 ##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>
 
