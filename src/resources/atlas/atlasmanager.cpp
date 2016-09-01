@@ -44,6 +44,8 @@
 
 #include <SDL_endian.h>
 
+#include "utils/checkutils.h"
+
 #include "debug.h"
 
 #ifndef SDL_BYTEORDER
