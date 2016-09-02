@@ -387,6 +387,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableTradeFilter", true);
     AddDEF("enableIdCollecting", false);
     AddDEF("checkOpenGLVersion", true);
+    AddDEF("openglContext", false);
     return configData;
 }
 

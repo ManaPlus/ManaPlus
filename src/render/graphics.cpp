@@ -288,10 +288,10 @@ bool Graphics::setOpenGLMode() restrict2
     mRect.w = CAST_S32(w1 / mScale);
     mRect.h = CAST_S32(h1 / mScale);
 
-    createGLContext();
+    createGLContext(config.getBoolValue("openglContext"));
 #else  // USE_SDL2
 
-    createGLContext();
+    createGLContext(config.getBoolValue("openglContext"));
     mRect.w = CAST_U16(mWindow->w / mScale);
     mRect.h = CAST_U16(mWindow->h / mScale);
 
@@ -389,7 +389,7 @@ int Graphics::getSoftwareFlags() const restrict2
 }
 
 #ifdef USE_OPENGL
-void Graphics::createGLContext() restrict2
+void Graphics::createGLContext(const bool custom A_UNUSED) restrict2
 {
 #ifdef USE_SDL2
     mGLContext = SDL_GL_CreateContext(mWindow);

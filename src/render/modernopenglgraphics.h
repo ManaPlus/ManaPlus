@@ -77,7 +77,7 @@ class ModernOpenGLGraphics final : public Graphics
                          uint32_t *restrict const arr)
                          restrict2 override final A_NONNULL(3);
 
-        void createGLContext() restrict2 override final;
+        void createGLContext(const bool custom) restrict2 override final;
 
         #include "render/graphicsdef.hpp"
         RENDER_GRAPHICSDEF_HPP

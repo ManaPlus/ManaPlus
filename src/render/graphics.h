@@ -404,9 +404,9 @@ class Graphics notfinal
 
 #ifdef USE_OPENGL
 #ifdef USE_SDL2
-        virtual void createGLContext() restrict2;
+        virtual void createGLContext(const bool custom) restrict2;
 #else
-        virtual void createGLContext() restrict2 A_CONST;
+        virtual void createGLContext(const bool custom) restrict2 A_CONST;
 #endif
 #endif
 

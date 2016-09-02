@@ -1221,12 +1221,19 @@ void ModernOpenGLGraphics::clearScreen() const restrict2
         GL_STENCIL_BUFFER_BIT);
 }
 
-void ModernOpenGLGraphics::createGLContext() restrict2
+void ModernOpenGLGraphics::createGLContext(const bool custom) restrict2
 {
-    if (mGLContext)
-        SDL::makeCurrentContext(mGLContext);
+    if (custom)
+    {
+        if (mGLContext)
+            SDL::makeCurrentContext(mGLContext);
+        else
+            mGLContext = SDL::createGLContext(mWindow, 3, 3, 0x01);
+    }
     else
-        mGLContext = SDL::createGLContext(mWindow, 3, 3, 0x01);
+    {
+        Graphics::createGLContext(false);
+    }
 }
 
 void ModernOpenGLGraphics::finalize(ImageCollection *restrict const col)

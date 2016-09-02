@@ -1227,9 +1227,9 @@ void MobileOpenGL2Graphics::clearScreen() const restrict2
         GL_STENCIL_BUFFER_BIT);
 }
 
-void MobileOpenGL2Graphics::createGLContext() restrict2
+void MobileOpenGL2Graphics::createGLContext(const bool custom) restrict2
 {
-    Graphics::createGLContext();
+    Graphics::createGLContext(custom);
 /*
     if (mGLContext)
         SDL::makeCurrentContext(mGLContext);
