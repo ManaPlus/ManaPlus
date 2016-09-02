@@ -104,6 +104,13 @@ void *SDL::createGLContext(SDL_Window *const window,
 //    SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
     SDL_ClearError();
     void *context = SDL_GL_CreateContext(window);
+    if (SDL_GetError())
+    {
+        logger->log("Error to switch to context %d.%d: %s",
+            major,
+            minor,
+            SDL_GetError());
+    }
     if (SDL_GetError() && (major > 3 || (major == 3 && minor > 3)))
     {
         logger->log("Try fallback to OpenGL 3.3 core context");
@@ -111,6 +118,11 @@ void *SDL::createGLContext(SDL_Window *const window,
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
         SDL_ClearError();
         context = SDL_GL_CreateContext(window);
+        if (SDL_GetError())
+        {
+            logger->log("Error to switch to core context 3.3: %s",
+                SDL_GetError());
+        }
         if (SDL_GetError() && profile == 0x01)
         {
             logger->log("Try fallback to OpenGL 3.3 compatibility context");
@@ -119,15 +131,29 @@ void *SDL::createGLContext(SDL_Window *const window,
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, 0x02);
             SDL_ClearError();
             context = SDL_GL_CreateContext(window);
+            if (SDL_GetError())
+            {
+                logger->log("Error to switch to compatibility context 3.3: %s",
+                    SDL_GetError());
+            }
         }
     }
     if (SDL_GetError() && (major > 3 || (major == 3 && minor > 0)))
     {
+        logger->log("Error to switch to core context %d.%d: %s",
+            major,
+            minor,
+            SDL_GetError());
         logger->log("Try fallback to OpenGL 3.0 core context");
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, profile);
         context = SDL_GL_CreateContext(window);
+        if (SDL_GetError())
+        {
+            logger->log("Error to switch to core context 3.0: %s",
+                SDL_GetError());
+        }
     }
     if (SDL_GetError() && (major > 2 || (major == 2 && minor > 1)))
     {
@@ -136,6 +162,11 @@ void *SDL::createGLContext(SDL_Window *const window,
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, 0x02);
         context = SDL_GL_CreateContext(window);
+        if (SDL_GetError())
+        {
+            logger->log("Error to switch to compatibility context 2.1: %s",
+                SDL_GetError());
+        }
     }
     return context;
 }
