@@ -87,6 +87,7 @@ void *GlxHelper::createContext(const unsigned long window,
         XSetErrorHandler(handler);
         return nullptr;
     }
+    logger->log("Found %d frame buffer contexts.", fbcount);
 
     int attribs[] =
     {
@@ -112,6 +113,13 @@ void *GlxHelper::createContext(const unsigned long window,
     {
         mglXDestroyContext(display, context2);
         logger->log("make current context %d.%d failed", major, minor);
+        return nullptr;
+    }
+
+    if (mglXGetCurrentContext() != context2)
+    {
+        mglXDestroyContext(display, context2);
+        logger->log("context cant be changed to %d.%d.", major, minor);
         return nullptr;
     }
 
