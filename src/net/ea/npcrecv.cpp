@@ -211,6 +211,20 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
                 mDialog->itemCraftRequest(invSize);
             break;
         }
+        case 14:
+        {
+            const NpcDialogs::iterator it = NpcDialog::mNpcDialogs.find(npcId);
+            if (it != NpcDialog::mNpcDialogs.end())
+            {
+                NpcDialog *const dialog = (*it).second;
+                if (dialog)
+                    dialog->close();
+                if (dialog == Ea::NpcRecv::mDialog)
+                    Ea::NpcRecv::mDialog = nullptr;
+                NpcDialog::mNpcDialogs.erase(it);
+            }
+            break;
+        }
         default:
             UNIMPLIMENTEDPACKETFIELD(cmd);
             break;
