@@ -640,6 +640,8 @@ void ChatWindow::chatInput(const std::string &message) const
     else
     {
         tab = getFocused();
+        if (tab == nullptr)
+            tab = localChatTab;
     }
     if (tab)
         tab->chatInput(msg);
