@@ -38,6 +38,8 @@
 
 #include "const/sound.h"
 
+#include "enums/equipslot.h"
+
 #include "enums/being/beingdirection.h"
 
 #include "enums/resources/map/blockmask.h"
@@ -70,7 +72,6 @@
 #include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
-#include "resources/itemslot.h"
 
 #include "resources/db/weaponsdb.h"
 
@@ -960,7 +961,7 @@ int LocalPlayer::getAttackRange() const
     else
     {
         const Item *const weapon = PlayerInfo::getEquipment(
-            ItemSlot::FIGHT1_SLOT);
+            EquipSlot::FIGHT1_SLOT);
         if (weapon)
         {
             const ItemInfo &info = weapon->getInfo();

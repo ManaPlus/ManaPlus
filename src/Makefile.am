@@ -1280,7 +1280,6 @@ manaplus_SOURCES += main.cpp \
 	      resources/db/weaponsdb.h \
 	      resources/iteminfo.h \
 	      resources/iteminfo.cpp \
-	      resources/itemslot.h \
 	      enums/resources/imageposition.h \
 	      enums/resources/imagetype.h \
 	      enums/resources/item/itemdbtype.h \
