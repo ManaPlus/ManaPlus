@@ -88,7 +88,7 @@ packet(SMSG_MAP_NOT_FOUND,                 0x0840,  -1, &GeneralRecv::processMap
 
 // map server, unknown versions
 packet(SMSG_ADMIN_GET_LOGIN_ACK,           0x01e0,  30, &AdminRecv::processAdminGetLoginAck,            0);
-packet(SMSG_ADMIN_KICK_ACK,                0x00cd,   6, &Ea::AdminRecv::processKickAck,                 0);
+packet(SMSG_ADMIN_KICK_ACK,                0x00cd,   3, &Ea::AdminRecv::processKickAck,                 0);
 packet(SMSG_ADMIN_SET_TILE_TYPE,           0x0192,  24, &AdminRecv::processSetTileType,                 0);
 packet(SMSG_BATTLE_BEGINS,                 0x08df,  50, &BattleGroundRecv::processBattleBegins,         0);
 packet(SMSG_BATTLE_JOINED,                 0x08d9,  30, &BattleGroundRecv::processBattleJoined,         0);
@@ -238,7 +238,7 @@ packet(SMSG_PLAYER_REFINE,                 0x0188,   8, &InventoryRecv::processP
 packet(SMSG_PLAYER_REPAIR_EFFECT,          0x01fe,   5, &InventoryRecv::processPlayerRepairEffect,      0);
 packet(SMSG_PLAYER_REPAIR_LIST,            0x01fc,  -1, &InventoryRecv::processPlayerRepairList,        0);
 packet(SMSG_PLAYER_SKILLS,                 0x010f,  -1, &SkillRecv::processPlayerSkills,                0);
-packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,      0x01cd,  29, &SkillRecv::processSkillAutoSpells,             0);
+packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,      0x01cd,  30, &SkillRecv::processSkillAutoSpells,             0);
 packet(SMSG_PLAYER_SKILL_PRODUCE_EFFECT,   0x018f,   6, &SkillRecv::processSkillProduceEffect,          0);
 packet(SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST, 0x018d,  -1, &SkillRecv::processSkillProduceMixList,         0);
 packet(SMSG_PLAYER_SKILL_UP,               0x010e,  11, &Ea::SkillRecv::processPlayerSkillUp,           0);
@@ -366,7 +366,7 @@ packet(SMSG_PK_RANKS_LIST,                 0x0238, 282, &BeingRecv::processPkRan
 packet(SMSG_HOMUNCULUS_INFO,               0x022e,  71, &HomunculusRecv::processHomunculusInfo,         20050530);
 
 // 20050531
-packet(SMSG_HOMUNCULUS_SKILL_UP,           0x0239,   0, &HomunculusRecv::processHomunculusSkillUp,      20050531);
+packet(SMSG_HOMUNCULUS_SKILL_UP,           0x0239,  11, &HomunculusRecv::processHomunculusSkillUp,      20050531);
 
 // 20050608
 packet(SMSG_HOMUNCULUS_FOOD,               0x022f,   5, &HomunculusRecv::processHomunculusFood,         20050608);
@@ -627,7 +627,7 @@ packet(SMSG_BUYINGSTORE_SELLER_SELL_FAILED, 0x0824,   6, &BuyingStoreRecv::proce
 
 // 20100601
 packet(SMSG_SEARCHSTORE_SEARCH_ACK,        0x0836,   0, &SearchStoreRecv::processSearchAck,             20100601);
-packet(SMSG_SEARCHSTORE_SEARCH_FAILED,     0x0837,   0, &SearchStoreRecv::processSearchFailed,          20100601);
+packet(SMSG_SEARCHSTORE_SEARCH_FAILED,     0x0837,   3, &SearchStoreRecv::processSearchFailed,          20100601);
 
 // 20100608
 if (packetVersion >= 20100608)
