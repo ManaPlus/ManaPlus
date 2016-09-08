@@ -158,4 +158,13 @@ void GuildRecv::processGuildEmblem(Net::MessageIn &msg)
     msg.readInt16("emblem id");
 }
 
+void GuildRecv::processOnlineInfo(Net::MessageIn &msg)
+{
+    // look like unused packet
+    UNIMPLIMENTEDPACKET;
+    msg.readBeingId("being id");
+    msg.readInt32("char id");
+    msg.readInt32("online");
+}
+
 }  // namespace EAthena

@@ -40,6 +40,7 @@ namespace EAthena
         void processGuildExpulsion(Net::MessageIn &msg);
         void processGuildExpulsionList(Net::MessageIn &msg);
         void processGuildEmblem(Net::MessageIn &msg);
+        void processOnlineInfo(Net::MessageIn &msg);
     }  // namespace GuildRecv
 }  // namespace EAthena
 

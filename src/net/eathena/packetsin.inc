@@ -292,6 +292,7 @@ packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr,                
 packet(SMSG_MERGE_ITEM,                    0x096d,  -1, &InventoryRecv::processMergeItem,               0);
 packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, &InventoryRecv::processMergeItemResponse,       0);
 packet(SMSG_ADD_MAP_MARKER,                0x09c1,  10, &MapRecv::processAddMapMarker,                  0);
+packet(SMSG_GUILD_ONLINE_INFO,             0x016d,  14, &GuildRecv::processOnlineInfo,                  0);
 
 // 3
 if (packetVersion >= 3)
