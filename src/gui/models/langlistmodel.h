@@ -37,7 +37,7 @@ struct Language final
     std::string icon;
 };
 
-const int langs_count = 21;
+const int langs_count = 22;
 
 const Language LANG_NAME[langs_count] =
 {
@@ -82,7 +82,9 @@ const Language LANG_NAME[langs_count] =
     // TRANSLATORS: language
     {N_("Turkish"), "tr_TR", "tr.png"},
     // TRANSLATORS: language
-    {N_("Ukrainian"), "uk_UA", "ua.png"}
+    {N_("Ukrainian"), "uk_UA", "ua.png"},
+    // TRANSLATORS: language
+    {N_("Esperanto"), "eo", "eo.png"}
 };
 
 class LangListModel final : public ExtendedListModel

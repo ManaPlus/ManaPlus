@@ -4,6 +4,7 @@ SET(FILES
     cz.png
     de.png
     en.png
+    eo.png
     es.png
     fi.png
     fr.png

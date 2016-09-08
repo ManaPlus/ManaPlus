@@ -6,6 +6,7 @@ flags_DATA =				\
 	cz.png			\
 	de.png			\
 	en.png			\
+	eo.png			\
 	es.png			\
 	fi.png			\
 	fr.png			\
