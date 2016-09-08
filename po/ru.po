@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-09-01 16:56+0300\n"
-"PO-Revision-Date: 2016-08-19 10:07+0000\n"
+"POT-Creation-Date: 2016-09-08 22:14+0300\n"
+"PO-Revision-Date: 2016-09-02 09:18+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/akaras/manaplus/language/"
 "ru/)\n"
@@ -200,9 +200,8 @@ msgstr "Одета шапка: %s."
 
 #. TRANSLATORS: dialog header
 #: src/actions/chat.cpp:657
-#, fuzzy
 msgid "Guild notice"
-msgstr "Имя гильдии: %s"
+msgstr ""
 
 #. TRANSLATORS: change relation
 #: src/actions/commands.cpp:142
@@ -347,27 +346,23 @@ msgstr "Политика распределения опыта неизвест�
 
 #. TRANSLATORS: chat message
 #: src/actions/commands.cpp:1846
-#, fuzzy
 msgid "Auto item sharing enabled."
-msgstr "Обмен предметами включен."
+msgstr ""
 
 #. TRANSLATORS: chat message
 #: src/actions/commands.cpp:1851
-#, fuzzy
 msgid "Auto item sharing disabled."
-msgstr "Обмен предметами выключен."
+msgstr ""
 
 #. TRANSLATORS: chat message
 #: src/actions/commands.cpp:1856
-#, fuzzy
 msgid "Auto item sharing not possible."
-msgstr "Обмен предметами невозможен."
+msgstr ""
 
 #. TRANSLATORS: chat message
 #: src/actions/commands.cpp:1861
-#, fuzzy
 msgid "Auto item sharing unknown."
-msgstr "Статус обмена предметами неизвестен."
+msgstr ""
 
 #. TRANSLATORS: dialog header
 #: src/actions/pets.cpp:89
@@ -421,59 +416,59 @@ msgstr "Б"
 
 #. TRANSLATORS: chat message after death
 #. TRANSLATORS: player killed message
-#: src/being/localplayer.cpp:400 src/net/eathena/playerrecv.cpp:471
+#: src/being/localplayer.cpp:401 src/net/eathena/playerrecv.cpp:471
 #, c-format
 msgid "You were killed by %s."
 msgstr "Вы были убиты %s."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:873
+#: src/being/localplayer.cpp:874
 msgid "Tried to pick up nonexistent item."
 msgstr "Попытка поднять несуществующий предмет."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:877
+#: src/being/localplayer.cpp:878
 msgid "Item is too heavy."
 msgstr "Предмет слишком тяжелый."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:881
+#: src/being/localplayer.cpp:882
 msgid "Item is too far away."
 msgstr "Предмет слишком далеко."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:885
+#: src/being/localplayer.cpp:886
 msgid "Inventory is full."
 msgstr "Инвентарь переполнен."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:889
+#: src/being/localplayer.cpp:890
 msgid "Stack is too big."
 msgstr "Слишком много предметов."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:893
+#: src/being/localplayer.cpp:894
 msgid "Item belongs to someone else."
 msgstr "Предмет принадлежит кому-то еще."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:897
+#: src/being/localplayer.cpp:898
 msgid "You can't pickup this amount of items."
 msgstr "Вы не можете поднять такое количество."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:901
+#: src/being/localplayer.cpp:902
 msgid "Your item stack has max amount."
 msgstr "Слишком много предметов в стэке."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:908
+#: src/being/localplayer.cpp:909
 msgid "Unknown problem picking up item."
 msgstr "Неизвестная проблема при поднятии предмета."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:932
+#: src/being/localplayer.cpp:933
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -484,58 +479,58 @@ msgstr[3] "Вы подняли %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1110 src/being/localplayer.cpp:1112
-#: src/being/localplayer.cpp:1138 src/being/localplayer.cpp:1151
+#: src/being/localplayer.cpp:1111 src/being/localplayer.cpp:1113
+#: src/being/localplayer.cpp:1139 src/being/localplayer.cpp:1152
 msgid "xp"
 msgstr "опыт"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1116 src/being/localplayer.cpp:1122
-#: src/being/localplayer.cpp:1128
+#: src/being/localplayer.cpp:1117 src/being/localplayer.cpp:1123
+#: src/being/localplayer.cpp:1129
 msgid "job"
 msgstr "работа"
 
 #. TRANSLATORS: get homunculus xp message
-#: src/being/localplayer.cpp:1148
+#: src/being/localplayer.cpp:1149
 msgid "Homun"
 msgstr ""
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1160
+#: src/being/localplayer.cpp:1161
 msgid "hp"
 msgstr "здоровье"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1169
+#: src/being/localplayer.cpp:1170
 msgid "mana"
 msgstr "мана"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2253
+#: src/being/localplayer.cpp:2254
 #, c-format
 msgid "Follow: %s"
 msgstr "Следовать за: %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2259 src/being/localplayer.cpp:2284
+#: src/being/localplayer.cpp:2260 src/being/localplayer.cpp:2285
 msgid "Follow canceled"
 msgstr "Следование отменено"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2269
+#: src/being/localplayer.cpp:2270
 #, c-format
 msgid "Imitation: %s"
 msgstr "Имитация: %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2275 src/being/localplayer.cpp:2289
+#: src/being/localplayer.cpp:2276 src/being/localplayer.cpp:2290
 msgid "Imitation canceled"
 msgstr "Имитация отменена"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2638
+#: src/being/localplayer.cpp:2639
 #, c-format
 msgid "You see %s"
 msgstr "Вы видите %s"
@@ -898,7 +893,7 @@ msgstr "dyecmd файл_строка_цвета файл_назначения"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: chat tab name
-#: src/game.cpp:262 src/gui/windows/chatwindow.cpp:2133
+#: src/game.cpp:262 src/gui/windows/chatwindow.cpp:2135
 msgid "General"
 msgstr "Общие"
 
@@ -1628,6 +1623,11 @@ msgstr "Турецкий"
 #: src/gui/models/langlistmodel.h:85
 msgid "Ukrainian"
 msgstr "Украинский"
+
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:87
+msgid "Esperanto"
+msgstr ""
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:35
@@ -3187,16 +3187,14 @@ msgstr ""
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: leave guild
 #: src/gui/popups/popupmenu.cpp:3431
-#, fuzzy
 msgid "Leave guild"
-msgstr "Покинуть Гильдию?"
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: change guild notice message
 #: src/gui/popups/popupmenu.cpp:3459
-#, fuzzy
 msgid "Change notice"
-msgstr "Сменить логин"
+msgstr ""
 
 #. TRANSLATORS: skill level
 #: src/gui/popups/skillpopup.cpp:138
@@ -5291,87 +5289,93 @@ msgid "Enable texture sampler (OpenGL)"
 msgstr "Включить \"образец\" текстур (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:97
+#: src/gui/widgets/tabs/setup_perfomance.cpp:96
+#, fuzzy
+msgid "Enable OpenGL context creation"
+msgstr "Включить лог OpenGL"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_perfomance.cpp:101
 msgid "Better quality (disable for better performance)"
 msgstr "Улучшение качества (выключите для лучшей производительности)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:101
+#: src/gui/widgets/tabs/setup_perfomance.cpp:105
 msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr ""
 "Включить исправление альфа канала (программный режим, может быть очень "
 "медленным)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:106
+#: src/gui/widgets/tabs/setup_perfomance.cpp:110
 msgid "Show beings transparency"
 msgstr "Отображать прозрачность на персонажах и монстрах"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:110
+#: src/gui/widgets/tabs/setup_perfomance.cpp:114
 msgid "Enable reorder sprites (need for mods support)."
 msgstr "Включить перестановку спрайтов (нужен для модов)."
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:115
+#: src/gui/widgets/tabs/setup_perfomance.cpp:119
 msgid "Small memory (enable for lower memory usage)"
 msgstr ""
 "Уменьшенное потребление памяти (включите для меньшего потребления памяти)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:120
+#: src/gui/widgets/tabs/setup_perfomance.cpp:124
 msgid "Disable advanced beings caching (Software)"
 msgstr "Выключить расширенное кеширование сущностей (программный режим)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:124
+#: src/gui/widgets/tabs/setup_perfomance.cpp:128
 msgid "Disable beings caching (Software)"
 msgstr "Выключить кеширование сущностей (программный режим)"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_perfomance.cpp:129
+#: src/gui/widgets/tabs/setup_perfomance.cpp:133
 msgid "Different options (enable or disable can improve performance)"
 msgstr ""
 "Разные настройки (включение или выключение может улучшить производительность)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:134
+#: src/gui/widgets/tabs/setup_perfomance.cpp:138
 msgid "Enable texture compression (OpenGL)"
 msgstr "Включить компрессию текстур (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:138
+#: src/gui/widgets/tabs/setup_perfomance.cpp:142
 msgid "Enable rectangular texture extension (OpenGL)"
 msgstr "Включить расширение - прямоугольные текстуры (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:142
+#: src/gui/widgets/tabs/setup_perfomance.cpp:146
 msgid "Use new texture internal format (OpenGL)"
 msgstr "Использовать новый формат текстур (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:146
+#: src/gui/widgets/tabs/setup_perfomance.cpp:150
 msgid "Enable texture atlases (OpenGL)"
 msgstr "Включить атласы текстур (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:150
+#: src/gui/widgets/tabs/setup_perfomance.cpp:154
 msgid "Cache all sprites per map (can use additional memory)"
 msgstr "Кэшировать все спрайты на карте (может быть использовано много памяти)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:155
+#: src/gui/widgets/tabs/setup_perfomance.cpp:159
 msgid "Cache all sounds (can use additional memory)"
 msgstr "Кешировать все звуки (может использовать дополнительную память)"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_perfomance.cpp:160
+#: src/gui/widgets/tabs/setup_perfomance.cpp:164
 msgid "Critical options (DO NOT change if you don't know what you're doing)"
 msgstr ""
 "Очень важные настройки (НЕ МЕНЯЙТЕ если вы не уверены в том, что вы делаете)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:164
+#: src/gui/widgets/tabs/setup_perfomance.cpp:168
 msgid "Disable logging in game (do not enable)"
 msgstr "Отключить ведение лога в игре (не включать)"
 
@@ -6653,29 +6657,29 @@ msgid "Enter password:"
 msgstr "Введите пароль:"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:679
+#: src/gui/windows/chatwindow.cpp:681
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Присутствуют: %s; Всего %d игроков."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1139
+#: src/gui/windows/chatwindow.cpp:1141
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Вы прошептали %s: %s"
 
 #. TRANSLATORS: prefix for moved message to trade tab.
-#: src/gui/windows/chatwindow.cpp:1571
+#: src/gui/windows/chatwindow.cpp:1573
 msgid "Moved: "
 msgstr "Перемещено: "
 
 #. TRANSLATORS: moved message to trade tab warning.
-#: src/gui/windows/chatwindow.cpp:1579
+#: src/gui/windows/chatwindow.cpp:1581
 msgid "Your message was moved to trade tab"
 msgstr "Ваше сообщение перемещено на страницу торговли"
 
 #. TRANSLATORS: error message
-#: src/gui/windows/chatwindow.cpp:1604
+#: src/gui/windows/chatwindow.cpp:1606
 msgid "Broken nick detected: "
 msgstr "Обнаружен некорректный ник: "
 
@@ -9614,9 +9618,9 @@ msgstr "Выберите точку назначения"
 
 #. TRANSLATORS: vending sold item message
 #: src/net/eathena/vendingrecv.cpp:232
-#, fuzzy, c-format
+#, c-format
 msgid "Sold item %s amount %d"
-msgstr "Нужен предмет %s в количестве %d."
+msgstr ""
 
 #. TRANSLATORS: trade header
 #: src/net/ea/traderecv.cpp:79
@@ -10780,9 +10784,8 @@ msgstr "Ошибка сохранения позиции. У вас нет ум�
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:835
-#, fuzzy
 msgid "Unable to buy while trading."
-msgstr "Невозможно продавать в режиме обмена."
+msgstr ""
 
 #. TRANSLATORS: skill level
 #: src/resources/skill/skillinfo.cpp:109
@@ -10895,9 +10898,3 @@ msgstr "%d секунда"
 #, c-format
 msgid "%d seconds"
 msgstr "%d секунд"
-
-#~ msgid "Party name is missing."
-#~ msgstr "Не указано название группы."
-
-#~ msgid "%s's pet"
-#~ msgstr "животное %s'а"

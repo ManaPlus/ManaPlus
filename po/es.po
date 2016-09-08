@@ -24,9 +24,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-09-01 16:56+0300\n"
-"PO-Revision-Date: 2016-08-19 10:07+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2016-09-08 22:14+0300\n"
+"PO-Revision-Date: 2016-09-03 01:27+0000\n"
+"Last-Translator: Nelson Martell <nelson6e65@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/akaras/manaplus/language/"
 "es/)\n"
 "Language: es\n"
@@ -151,14 +151,14 @@ msgstr ""
 #. TRANSLATORS: create party
 #: src/actions/chat.cpp:342 src/gui/popups/popupmenu.cpp:3421
 msgid "Create party"
-msgstr ""
+msgstr "Crear grupo"
 
 #. TRANSLATORS: dialog header
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: create guild
 #: src/actions/chat.cpp:365 src/gui/popups/popupmenu.cpp:3437
 msgid "Create guild"
-msgstr ""
+msgstr "Crear gremio"
 
 #. TRANSLATORS: party invite message
 #. TRANSLATORS: guild invite message
@@ -202,9 +202,8 @@ msgstr "tiene puesto el sombrero %s."
 
 #. TRANSLATORS: dialog header
 #: src/actions/chat.cpp:657
-#, fuzzy
 msgid "Guild notice"
-msgstr "Nombre del gremio: %s"
+msgstr "Nota del gremio"
 
 #. TRANSLATORS: change relation
 #: src/actions/commands.cpp:142
@@ -349,27 +348,23 @@ msgstr "Compartir experiencia desconocido."
 
 #. TRANSLATORS: chat message
 #: src/actions/commands.cpp:1846
-#, fuzzy
 msgid "Auto item sharing enabled."
-msgstr "Compartir artículos habilitado."
+msgstr "Auto-compartir artículo habilitado."
 
 #. TRANSLATORS: chat message
 #: src/actions/commands.cpp:1851
-#, fuzzy
 msgid "Auto item sharing disabled."
-msgstr "Compartir artículos deshabilitado."
+msgstr "Auto-compartir artículo deshabilitado."
 
 #. TRANSLATORS: chat message
 #: src/actions/commands.cpp:1856
-#, fuzzy
 msgid "Auto item sharing not possible."
-msgstr "No se puede compartir artículos."
+msgstr "No se puede auto-compartir artículo."
 
 #. TRANSLATORS: chat message
 #: src/actions/commands.cpp:1861
-#, fuzzy
 msgid "Auto item sharing unknown."
-msgstr "Compartir artículos desconocido."
+msgstr "Auto-compartir artículo desconocido."
 
 #. TRANSLATORS: dialog header
 #: src/actions/pets.cpp:89
@@ -423,59 +418,59 @@ msgstr "I"
 
 #. TRANSLATORS: chat message after death
 #. TRANSLATORS: player killed message
-#: src/being/localplayer.cpp:400 src/net/eathena/playerrecv.cpp:471
+#: src/being/localplayer.cpp:401 src/net/eathena/playerrecv.cpp:471
 #, c-format
 msgid "You were killed by %s."
 msgstr "Fuiste asesinado por %s."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:873
+#: src/being/localplayer.cpp:874
 msgid "Tried to pick up nonexistent item."
 msgstr "Intentaste recoger un objeto inexistente."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:877
+#: src/being/localplayer.cpp:878
 msgid "Item is too heavy."
 msgstr "El artículo es muy pesado."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:881
+#: src/being/localplayer.cpp:882
 msgid "Item is too far away."
 msgstr "El artículo está muy lejos."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:885
+#: src/being/localplayer.cpp:886
 msgid "Inventory is full."
 msgstr "El inventario está lleno."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:889
+#: src/being/localplayer.cpp:890
 msgid "Stack is too big."
 msgstr "El agrupamiento es demasiado grande."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:893
+#: src/being/localplayer.cpp:894
 msgid "Item belongs to someone else."
 msgstr "El artículo pertenece a alguien más."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:897
+#: src/being/localplayer.cpp:898
 msgid "You can't pickup this amount of items."
 msgstr "No puedes recoger esta cantidad de objetos."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:901
+#: src/being/localplayer.cpp:902
 msgid "Your item stack has max amount."
 msgstr "Tu montón de objetos esta al máximo."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:908
+#: src/being/localplayer.cpp:909
 msgid "Unknown problem picking up item."
 msgstr "Problema desconocido al intentar recoger el artículo."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:932
+#: src/being/localplayer.cpp:933
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -484,58 +479,58 @@ msgstr[1] "Recogiste %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1110 src/being/localplayer.cpp:1112
-#: src/being/localplayer.cpp:1138 src/being/localplayer.cpp:1151
+#: src/being/localplayer.cpp:1111 src/being/localplayer.cpp:1113
+#: src/being/localplayer.cpp:1139 src/being/localplayer.cpp:1152
 msgid "xp"
 msgstr "exp"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1116 src/being/localplayer.cpp:1122
-#: src/being/localplayer.cpp:1128
+#: src/being/localplayer.cpp:1117 src/being/localplayer.cpp:1123
+#: src/being/localplayer.cpp:1129
 msgid "job"
 msgstr "trabajo"
 
 #. TRANSLATORS: get homunculus xp message
-#: src/being/localplayer.cpp:1148
+#: src/being/localplayer.cpp:1149
 msgid "Homun"
-msgstr ""
+msgstr "Homúnculo"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1160
+#: src/being/localplayer.cpp:1161
 msgid "hp"
 msgstr "hp"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1169
+#: src/being/localplayer.cpp:1170
 msgid "mana"
 msgstr "maná"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2253
+#: src/being/localplayer.cpp:2254
 #, c-format
 msgid "Follow: %s"
 msgstr "Seguir: %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2259 src/being/localplayer.cpp:2284
+#: src/being/localplayer.cpp:2260 src/being/localplayer.cpp:2285
 msgid "Follow canceled"
 msgstr "Seguimiento cancelado"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2269
+#: src/being/localplayer.cpp:2270
 #, c-format
 msgid "Imitation: %s"
 msgstr "Imitación: %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2275 src/being/localplayer.cpp:2289
+#: src/being/localplayer.cpp:2276 src/being/localplayer.cpp:2290
 msgid "Imitation canceled"
 msgstr "Imitación cancelada"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2638
+#: src/being/localplayer.cpp:2639
 #, c-format
 msgid "You see %s"
 msgstr "Tú ves %s"
@@ -899,7 +894,7 @@ msgstr "dyecmd archivoOrigen archivoDestino"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: chat tab name
-#: src/game.cpp:262 src/gui/windows/chatwindow.cpp:2133
+#: src/game.cpp:262 src/gui/windows/chatwindow.cpp:2135
 msgid "General"
 msgstr "General"
 
@@ -1629,6 +1624,11 @@ msgstr "Turco"
 msgid "Ukrainian"
 msgstr "Ucraniano"
 
+#. TRANSLATORS: language
+#: src/gui/models/langlistmodel.h:87
+msgid "Esperanto"
+msgstr ""
+
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:35
 msgid "General Magic"
@@ -1843,7 +1843,7 @@ msgstr "Nivel: %d"
 #: src/gui/popups/beingpopup.cpp:274
 #, c-format
 msgid "Hp: %d/%d"
-msgstr ""
+msgstr "Hp: %d/%d"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:284
@@ -2464,7 +2464,7 @@ msgstr "Almacenar todo"
 #. TRANSLATORS: sub menu for craft
 #: src/gui/popups/popupmenu.cpp:1814
 msgid "Move to craft..."
-msgstr ""
+msgstr "Moverse a crear..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: get item from storage
@@ -2604,13 +2604,13 @@ msgstr "Habilidad"
 #. TRANSLATORS: set skill level
 #: src/gui/popups/popupmenu.cpp:2393
 msgid "Skill level..."
-msgstr ""
+msgstr "Nivel de habilidad..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set skill cast type
 #: src/gui/popups/popupmenu.cpp:2397
 msgid "Skill cast type..."
-msgstr ""
+msgstr "Tipo de invocación de habilidad..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set skill cast offset by x
@@ -2638,7 +2638,7 @@ msgstr ""
 #. TRANSLATORS: skill level header
 #: src/gui/popups/popupmenu.cpp:2476
 msgid "Select skill level"
-msgstr ""
+msgstr "Seleccionar nivel de habilidad"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: skill level
@@ -2650,7 +2650,7 @@ msgstr "Nivel máximo"
 #. TRANSLATORS: skill cast type header
 #: src/gui/popups/popupmenu.cpp:2513
 msgid "Select skill cast type"
-msgstr ""
+msgstr "Seleccionar tipo de invocación de habilidad"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: skill cast type
@@ -2672,7 +2672,7 @@ msgstr "Objetivo"
 #. TRANSLATORS: skill cast type
 #: src/gui/popups/popupmenu.cpp:2525 src/gui/popups/skillpopup.cpp:172
 msgid "Mouse position"
-msgstr ""
+msgstr "Posición del ratón"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: skill cast type
@@ -2928,13 +2928,13 @@ msgstr "Llamar"
 #. TRANSLATORS: recall all party members to player location
 #: src/gui/popups/popupmenu.cpp:3019
 msgid "Recall party"
-msgstr ""
+msgstr "Llamar al grupo"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall all guild members to player location
 #: src/gui/popups/popupmenu.cpp:3026
 msgid "Recall guild"
-msgstr ""
+msgstr "Llamar al gremio"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: give party leader status
@@ -3116,37 +3116,37 @@ msgstr "Quién lo soltó"
 #. TRANSLATORS: gm create item
 #: src/gui/popups/popupmenu.cpp:3276
 msgid "Add 1"
-msgstr ""
+msgstr "Agregar 1"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm create item
 #: src/gui/popups/popupmenu.cpp:3279
 msgid "Add 5"
-msgstr ""
+msgstr "Agregar 5"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm create item
 #: src/gui/popups/popupmenu.cpp:3282
 msgid "Add 10"
-msgstr ""
+msgstr "Agregar 10"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm create item
 #: src/gui/popups/popupmenu.cpp:3285
 msgid "Add 100"
-msgstr ""
+msgstr "Agregar 100"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm create item
 #: src/gui/popups/popupmenu.cpp:3288
 msgid "Add 1000"
-msgstr ""
+msgstr "Agregar 1000"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: gm create item
 #: src/gui/popups/popupmenu.cpp:3291
 msgid "Add 10000"
-msgstr ""
+msgstr "Agregar 10000"
 
 #. TRANSLATORS: popup menu header
 #: src/gui/popups/popupmenu.cpp:3298
@@ -3182,21 +3182,19 @@ msgstr "Adoptar hijo"
 #. TRANSLATORS: leave party
 #: src/gui/popups/popupmenu.cpp:3415
 msgid "Leave party"
-msgstr ""
+msgstr "Dejar grupo"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: leave guild
 #: src/gui/popups/popupmenu.cpp:3431
-#, fuzzy
 msgid "Leave guild"
-msgstr "¿Dejar el gremio?"
+msgstr "Dejar gremio"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: change guild notice message
 #: src/gui/popups/popupmenu.cpp:3459
-#, fuzzy
 msgid "Change notice"
-msgstr "Cambiar de Login"
+msgstr "Cambiar nota"
 
 #. TRANSLATORS: skill level
 #: src/gui/popups/skillpopup.cpp:138
@@ -3212,13 +3210,13 @@ msgstr "Nivel: Desconocido"
 #. TRANSLATORS: skill cast type
 #: src/gui/popups/skillpopup.cpp:176
 msgid "Self position"
-msgstr ""
+msgstr "Posición propia"
 
 #. TRANSLATORS: skill cast type
 #: src/gui/popups/skillpopup.cpp:188
 #, c-format
 msgid "Cast type: %s"
-msgstr ""
+msgstr "Tipo de invocación: %s"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: status window tab name
@@ -3417,22 +3415,22 @@ msgstr "Barra de HP del monstruo (segundo color)"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:287
 msgid "Homunculus HP bar"
-msgstr ""
+msgstr "Barra de HP del homúnculo"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:293
 msgid "Homunculus HP bar (second color)"
-msgstr ""
+msgstr "Barra de HP del homúnculo (segundo color)"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:299
 msgid "Mercenary HP bar"
-msgstr ""
+msgstr "Barra de HP del mercenario"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:305
 msgid "Mercenary HP bar (second color)"
-msgstr ""
+msgstr "Barra de HP del mercenario (segundo color)"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:312
@@ -3517,7 +3515,7 @@ msgstr "Resaltado de colisión en el agua"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:392
 msgid "Monster collision highlight"
-msgstr ""
+msgstr "Resaltado de colisión de monstruo"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:398
@@ -5321,84 +5319,90 @@ msgid "Enable texture sampler (OpenGL)"
 msgstr "Habilitar muestreo de texturas (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:97
+#: src/gui/widgets/tabs/setup_perfomance.cpp:96
+#, fuzzy
+msgid "Enable OpenGL context creation"
+msgstr "Habilitar registro OpenGl"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_perfomance.cpp:101
 msgid "Better quality (disable for better performance)"
 msgstr "Mejor calidad (deshabilitar para un mejor desempeño)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:101
+#: src/gui/widgets/tabs/setup_perfomance.cpp:105
 msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr "Habilitar corrección de canal alfa (Software, puede ser muy lento)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:106
+#: src/gui/widgets/tabs/setup_perfomance.cpp:110
 msgid "Show beings transparency"
 msgstr "Mostrar transparencia de criaturas"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:110
+#: src/gui/widgets/tabs/setup_perfomance.cpp:114
 msgid "Enable reorder sprites (need for mods support)."
 msgstr "Habilitar re-ordenamiento de sprites (necesario para soporte de mods)."
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:115
+#: src/gui/widgets/tabs/setup_perfomance.cpp:119
 msgid "Small memory (enable for lower memory usage)"
 msgstr "Poca memoria (permite un uso más bajo de memoria)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:120
+#: src/gui/widgets/tabs/setup_perfomance.cpp:124
 msgid "Disable advanced beings caching (Software)"
 msgstr "Deshabilitar caché avanzado de criaturas (Software)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:124
+#: src/gui/widgets/tabs/setup_perfomance.cpp:128
 msgid "Disable beings caching (Software)"
 msgstr "Deshabilitar caché de criaturas (Software)"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_perfomance.cpp:129
+#: src/gui/widgets/tabs/setup_perfomance.cpp:133
 msgid "Different options (enable or disable can improve performance)"
 msgstr ""
 "Opciones diferentes (habitar o deshabilitar puede mejorar el rendimiento)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:134
+#: src/gui/widgets/tabs/setup_perfomance.cpp:138
 msgid "Enable texture compression (OpenGL)"
 msgstr "Habilitar compresión de texturas (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:138
+#: src/gui/widgets/tabs/setup_perfomance.cpp:142
 msgid "Enable rectangular texture extension (OpenGL)"
 msgstr "Habilitar extensiones de textura rectangulares (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:142
+#: src/gui/widgets/tabs/setup_perfomance.cpp:146
 msgid "Use new texture internal format (OpenGL)"
 msgstr "Usar nuevo formato de textura interna (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:146
+#: src/gui/widgets/tabs/setup_perfomance.cpp:150
 msgid "Enable texture atlases (OpenGL)"
 msgstr "Habilitar atlas de texturas (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:150
+#: src/gui/widgets/tabs/setup_perfomance.cpp:154
 msgid "Cache all sprites per map (can use additional memory)"
 msgstr ""
 "Almacenar en caché todos los sprites por mapa (puede usar memoria adicional)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:155
+#: src/gui/widgets/tabs/setup_perfomance.cpp:159
 msgid "Cache all sounds (can use additional memory)"
 msgstr "Almacenar en caché todos los sonidos (puede usar memoria adicional)"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_perfomance.cpp:160
+#: src/gui/widgets/tabs/setup_perfomance.cpp:164
 msgid "Critical options (DO NOT change if you don't know what you're doing)"
 msgstr "Opciones críticas (NO las cambies si no sabes lo que estás haciendo)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:164
+#: src/gui/widgets/tabs/setup_perfomance.cpp:168
 msgid "Disable logging in game (do not enable)"
 msgstr "Deshabilitar registro en el juego (no habilitar)"
 
@@ -6685,29 +6689,29 @@ msgid "Enter password:"
 msgstr "Ingrese contraseña:"
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:679
+#: src/gui/windows/chatwindow.cpp:681
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Presentes: %s; %d jugadores están presentes."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1139
+#: src/gui/windows/chatwindow.cpp:1141
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Susurrando a %s: %s"
 
 #. TRANSLATORS: prefix for moved message to trade tab.
-#: src/gui/windows/chatwindow.cpp:1571
+#: src/gui/windows/chatwindow.cpp:1573
 msgid "Moved: "
 msgstr "Movido: "
 
 #. TRANSLATORS: moved message to trade tab warning.
-#: src/gui/windows/chatwindow.cpp:1579
+#: src/gui/windows/chatwindow.cpp:1581
 msgid "Your message was moved to trade tab"
 msgstr "Tu mensaje fue movido a la pestaña de intercambio."
 
 #. TRANSLATORS: error message
-#: src/gui/windows/chatwindow.cpp:1604
+#: src/gui/windows/chatwindow.cpp:1606
 msgid "Broken nick detected: "
 msgstr "Nombre roto detectado: "
 
@@ -7546,7 +7550,7 @@ msgstr "Habilidad %d"
 #: src/gui/windows/skilldialog.cpp:421
 #, c-format
 msgid "Skill %u"
-msgstr ""
+msgstr "Habilidad %u"
 
 #. TRANSLATORS: skills dialog. skill level
 #. TRANSLATORS: skill level
@@ -7582,7 +7586,7 @@ msgstr "J"
 #. TRANSLATORS: social window button
 #: src/gui/windows/socialwindow.cpp:73
 msgid "Menu"
-msgstr ""
+msgstr "Menú"
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:274
@@ -7804,7 +7808,7 @@ msgstr ""
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:539
 msgid "Failed adding item. You can not trade equipped items."
-msgstr ""
+msgstr "Fallo al agregar artículo. No puedes intercambiar artículos equipados."
 
 #. TRANSLATORS: updater window name
 #: src/gui/windows/updaterwindow.cpp:171
@@ -9225,6 +9229,8 @@ msgid ""
 "Client too old or wrong server type.\n"
 "Please update client on http://manaplus.org"
 msgstr ""
+"El cliente es muy viejo o el tipo de servidor es incorrecto.\n"
+"Por favor, actualiza en cliente en http://manaplus.org/es"
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:146 src/net/eathena/loginrecv.cpp:84
@@ -9344,7 +9350,7 @@ msgstr "No se puede abrir el cana. El canal %s no existe."
 #. TRANSLATORS: adopt child message
 #: src/net/eathena/familyrecv.cpp:73
 msgid "Request parents"
-msgstr ""
+msgstr "Solicitar padres"
 
 #. TRANSLATORS: adopt child message
 #: src/net/eathena/familyrecv.cpp:75
@@ -9650,9 +9656,9 @@ msgstr "Seleccionar portal objetivo"
 
 #. TRANSLATORS: vending sold item message
 #: src/net/eathena/vendingrecv.cpp:232
-#, fuzzy, c-format
+#, c-format
 msgid "Sold item %s amount %d"
-msgstr "Se necesita el artículo %s (x%d)"
+msgstr "Artículo %s vendido, en cantidad de %d"
 
 #. TRANSLATORS: trade header
 #: src/net/ea/traderecv.cpp:79
@@ -9843,7 +9849,7 @@ msgstr "Suerte"
 #. TRANSLATORS: stats page name
 #: src/resources/db/statdb.cpp:203
 msgid "Extended"
-msgstr ""
+msgstr "Extendido"
 
 #. TRANSLATORS: inventory type name
 #: src/resources/inventory/inventory.cpp:338
@@ -10822,9 +10828,8 @@ msgstr "Error al guardar posición. No tienes la habilidad de teletransporte."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:835
-#, fuzzy
 msgid "Unable to buy while trading."
-msgstr "Incapaz de vender mientras intercambia."
+msgstr ""
 
 #. TRANSLATORS: skill level
 #: src/resources/skill/skillinfo.cpp:109
@@ -10936,9 +10941,3 @@ msgstr "%d segundos"
 #, c-format
 msgid "%d seconds"
 msgstr "%d segundos"
-
-#~ msgid "Party name is missing."
-#~ msgstr "Falta el nombre del grupo."
-
-#~ msgid "%s's pet"
-#~ msgstr "Mascota de %s"
