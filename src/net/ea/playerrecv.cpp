@@ -221,7 +221,7 @@ void PlayerRecv::processPlayerArrowMessage(Net::MessageIn &msg)
 
 void PlayerRecv::processMapMusic(Net::MessageIn &msg)
 {
-    const int size = msg.readInt16("len") - 5;
+    const int size = msg.readInt16("len") - 4;
     const std::string music = msg.readString(size, "name");
     soundManager.playMusic(music,
         SkipError_false);
