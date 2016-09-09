@@ -65,7 +65,8 @@ export CXXFLAGS="${CXXFLAGS} -Wdeprecated"
 export CXXFLAGS="${CXXFLAGS} -Wdeprecated-declarations"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wdesignated-init"
-export CXXFLAGS="${CXXFLAGS} -Wdisabled-optimization"
+# some times can be triggered
+#export CXXFLAGS="${CXXFLAGS} -Wdisabled-optimization"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wdiscarded-array-qualifiers"
 #export CXXFLAGS="${CXXFLAGS} -Wdiscarded-qualifiers"
