@@ -287,7 +287,7 @@ void LocalPlayer::logic()
     {
         if (mMessageTime == 0)
         {
-            MessagePair info = mMessages.front();
+            const MessagePair info = mMessages.front();
 
             if (particleEngine && gui)
             {

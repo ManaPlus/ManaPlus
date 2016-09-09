@@ -136,7 +136,7 @@ class FloorItem final : public ActorSprite
         int mCards[maxCards];
         int mItemId;
         int mX, mY;
-        int mDropTime;
+        time_t mDropTime;
         int mAmount;
         int mRefine;
         int mHeightPosDiff;

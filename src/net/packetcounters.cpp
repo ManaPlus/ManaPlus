@@ -108,7 +108,7 @@ void PacketCounters::updateCounter(int &restrict currentSec,
                                    int &restrict calc,
                                    int &restrict counter)
 {
-    const time_t idx = cur_time % 60;
+    const int idx = CAST_S32(cur_time % 60);
     if (currentSec != idx)
     {
         currentSec = idx;

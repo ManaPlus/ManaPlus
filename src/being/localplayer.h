@@ -500,7 +500,7 @@ class LocalPlayer final : public Being,
 
         std::string mLastHitFrom;
         std::string mWaitFor;
-        int mAdvertTime;
+        time_t mAdvertTime;
         Particle *mTestParticle;
         std::string mTestParticleName;
         time_t mTestParticleTime;

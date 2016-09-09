@@ -118,7 +118,7 @@
 
 extern std::string tradePartnerName;
 extern QuitDialog *quitDialog;
-extern int start_time;
+extern time_t start_time;
 extern char **environ;
 
 namespace Actions
@@ -1214,7 +1214,7 @@ impHandler0(uptime)
     {
         // TRANSLATORS: uptime command
         debugChatTab->chatLog(strprintf(_("Client uptime: %s"),
-            timeDiffToString(cur_time - start_time).c_str()),
+            timeDiffToString(CAST_S32(cur_time - start_time)).c_str()),
             ChatMsgType::BY_SERVER);
     }
     return true;

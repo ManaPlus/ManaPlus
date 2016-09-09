@@ -73,7 +73,7 @@ class EffectManager final
          */
         bool trigger(const int id,
                      const int x, const int y,
-                     const int endTime,
+                     const time_t endTime,
                      const int rotation = 0);
 
         void triggerDefault(int effectId,
@@ -83,7 +83,7 @@ class EffectManager final
         void triggerDefault(int effectId,
                             const int x,
                             const int y,
-                            const int endTime,
+                            const time_t endTime,
                             const int defaultEffectId);
 
         void logic();

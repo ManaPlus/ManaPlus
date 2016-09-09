@@ -40,7 +40,7 @@ class Map;
 struct LastKey final
 {
     InputActionT key;
-    int time;
+    time_t time;
     int cnt;
 };
 

@@ -85,10 +85,10 @@ class BeingCacheEntry final
         int getLevel() const
         { return mLevel; }
 
-        void setTime(const int n)
+        void setTime(const time_t n)
         { mTime = n; }
 
-        int getTime() const
+        time_t getTime() const
         { return mTime; }
 
         unsigned getPvpRank() const
@@ -129,7 +129,7 @@ class BeingCacheEntry final
         BeingId mId;              /**< Unique sprite id */
         int mLevel;
         unsigned int mPvpRank;
-        int mTime;
+        time_t mTime;
         int mFlags;
         uint16_t mTeamId;
         bool mIsAdvanced;

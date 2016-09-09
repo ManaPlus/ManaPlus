@@ -180,7 +180,7 @@ Particle *EffectManager::triggerReturn(const int id,
 
 bool EffectManager::trigger(const int id,
                             const int x, const int y,
-                            const int endTime,
+                            const time_t endTime,
                             const int rotation)
 {
     if (!particleEngine || id == -1)
@@ -226,7 +226,7 @@ void EffectManager::triggerDefault(int effectId,
 void EffectManager::triggerDefault(int effectId,
                                    const int x,
                                    const int y,
-                                   const int endTime,
+                                   const time_t endTime,
                                    const int defaultEffectId)
 {
     if (effectId == -1)

@@ -28,14 +28,14 @@ class Particle;
 struct ParticleTimer final
 {
     ParticleTimer(Particle *const particle0,
-                  const int endTime0) A_NONNULL(2) :
+                  const time_t endTime0) A_NONNULL(2) :
         particle(particle0),
         endTime(endTime0)
     {
     }
 
     Particle *const particle;
-    const int endTime;
+    const time_t endTime;
 };
 
 #endif  // PARTICLE_PARTICLETIMER_H
