@@ -196,7 +196,7 @@ bool isSafeMode = false;
 int serverVersion = 0;
 int packetVersion = 0;
 unsigned int tmwServerVersion = 0;
-int start_time;
+time_t start_time;
 unsigned int mLastHost = 0;
 unsigned long mSearchHash = 0;
 int textures_count = 0;

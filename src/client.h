@@ -47,7 +47,7 @@ class QuitDialog;
 extern bool isSafeMode;
 extern int serverVersion;
 extern unsigned int tmwServerVersion;
-extern int start_time;
+extern time_t start_time;
 extern int textures_count;
 
 extern std::string errorMessage;
