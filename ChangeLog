@@ -1,3 +1,9 @@
+2016-09-10 New release 1.6.9.10
+fix: file handlers leak.
+fix: running command in chat if not tab selected.
+add: esperanto translation selection.
+add: option for create custom OpenGL context.
+
 2016-08-27 New release 1.6.8.27
 fix: show skill level selection with skills with level 1.
 fix: leave guild.
