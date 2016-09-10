@@ -1039,7 +1039,6 @@
 		<Unit filename="src/resources/openglscreenshothelper.h" />
 		<Unit filename="src/resources/memorymanager.h" />
 		<Unit filename="src/resources/fboinfo.h" />
-		<Unit filename="src/resources/itemslot.h" />
 		<Unit filename="src/resources/imageset.h" />
 		<Unit filename="src/resources/surfaceimagehelper.h" />
 		<Unit filename="src/resources/ambientlayer.h" />
