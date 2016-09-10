@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-09-08 22:14+0300\n"
-"PO-Revision-Date: 2016-09-02 09:18+0000\n"
+"PO-Revision-Date: 2016-09-09 08:39+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/akaras/manaplus/language/"
 "it/)\n"
@@ -5269,9 +5269,8 @@ msgstr "Attiva campionamento texture (OpenGL)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:96
-#, fuzzy
 msgid "Enable OpenGL context creation"
-msgstr "Attiva registro attivita' OpenGL"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:101
