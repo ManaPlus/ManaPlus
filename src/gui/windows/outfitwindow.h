@@ -64,7 +64,7 @@ class OutfitWindow final : public Window,
 
         void mouseReleased(MouseEvent &event) override final;
 
-        void load(const bool oldConfig = false);
+        void load();
 
         void wearOutfit(const int outfit, const bool unwearEmpty = true,
                         const bool select = false);

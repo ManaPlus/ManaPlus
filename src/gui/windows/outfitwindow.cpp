@@ -134,13 +134,9 @@ OutfitWindow::~OutfitWindow()
     save();
 }
 
-void OutfitWindow::load(const bool oldConfig)
+void OutfitWindow::load()
 {
-    const Configuration *cfg;
-    if (oldConfig)
-        cfg = &config;
-    else
-        cfg = &serverConfig;
+    const Configuration *cfg = &serverConfig;
 
     memset(mItems, -1, sizeof(mItems));
     memset(mItemColors, 1, sizeof(mItemColors));
