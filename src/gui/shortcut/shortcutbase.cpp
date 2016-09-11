@@ -51,13 +51,9 @@ ShortcutBase::~ShortcutBase()
     mItemColors = nullptr;
 }
 
-void ShortcutBase::load(const bool oldConfig)
+void ShortcutBase::load()
 {
-    const Configuration *cfg;
-    if (oldConfig)
-        cfg = &config;
-    else
-        cfg = &serverConfig;
+    const Configuration *cfg = &serverConfig;
 
     for (int i = 0; i < mMaxSize; i++)
     {
