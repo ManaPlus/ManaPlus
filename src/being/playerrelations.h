@@ -60,7 +60,7 @@ class PlayerRelationsManager final
         /**
          * Load configuration from our config file, or substitute defaults.
          */
-        void load(const bool oldConfig = false);
+        void load();
 
         /**
          * Save configuration to our config file.

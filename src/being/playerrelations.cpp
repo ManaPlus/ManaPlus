@@ -181,13 +181,9 @@ int PlayerRelationsManager::getPlayerIgnoreStrategyIndex(
     return -1;
 }
 
-void PlayerRelationsManager::load(const bool oldConfig)
+void PlayerRelationsManager::load()
 {
-    Configuration *cfg;
-    if (oldConfig)
-        cfg = &config;
-    else
-        cfg = &serverConfig;
+    Configuration *cfg = &serverConfig;
     clear();
 
     mPersistIgnores = cfg->getValue(PERSIST_IGNORE_LIST, 1);
