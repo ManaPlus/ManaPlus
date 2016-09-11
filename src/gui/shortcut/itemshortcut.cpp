@@ -57,16 +57,12 @@ ItemShortcut::~ItemShortcut()
     logger->log1("ItemShortcut::~ItemShortcut");
 }
 
-void ItemShortcut::load(const bool oldConfig)
+void ItemShortcut::load()
 {
     std::string name;
     std::string color;
     std::string data;
-    const Configuration *cfg;
-    if (oldConfig)
-        cfg = &config;
-    else
-        cfg = &serverConfig;
+    const Configuration *cfg = &serverConfig;
 
     if (mNumber)
     {

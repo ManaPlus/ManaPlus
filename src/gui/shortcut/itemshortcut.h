@@ -55,7 +55,7 @@ class ItemShortcut final
         /**
          * Load the configuration information.
          */
-        void load(const bool oldConfig = false);
+        void load();
 
         /**
          * Save the configuration information.
