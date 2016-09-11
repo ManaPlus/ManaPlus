@@ -250,13 +250,9 @@ TextCommand *SpellManager::createNewSpell() const
     return new TextCommand(CAST_U32(mSpellsVector.size()));
 }
 
-void SpellManager::load(const bool oldConfig)
+void SpellManager::load()
 {
-    const Configuration *cfg;
-    if (oldConfig)
-        cfg = &config;
-    else
-        cfg = &serverConfig;
+    const Configuration *cfg = &serverConfig;
 
     delete_all(mSpells);
     mSpells.clear();

@@ -56,7 +56,7 @@ class SpellManager final
 
         void invoke(const int spellId) const;
 
-        void load(const bool oldConfig = false);
+        void load();
 
         void save() const;
 
