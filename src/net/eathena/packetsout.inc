@@ -181,7 +181,6 @@ packet(CMSG_SOLVE_CHAR_NAME,              0x0193,   6, clif->pSolveCharName);
 packet(CMSG_IGNORE_ALL,                   0x00d0,   3, clif->pPMIgnoreAll);
 packet(CMSG_IGNORE_NICK,                  0x00cf,  27, clif->pPMIgnore);
 packet(CMSG_REQUEST_IGNORE_LIST,          0x00d3,   2, clif->pPMIgnoreList);
-packet(CMSG_REQUEST_RANKS,                0x097c,   4, clif->pRanklist);
 packet(CMSG_SET_SHORTCUTS,                0x02ba,  11, clif->pHotkey);
 packet(CMSG_NPC_COMPLETE_PROGRESS_BAR,    0x02f1,   2, clif->pProgressbar);
 packet(CMSG_NPC_PRODUCE_MIX,              0x018e,  10, clif->pProduceMix);
@@ -291,6 +290,7 @@ packet(CMSG_BANK_WITHDRAW,                0x0000,   0, nullptr);
 packet(CMSG_BANK_CHECK,                   0x0000,   0, nullptr);
 packet(CMSG_BANK_OPEN,                    0x0000,   0, nullptr);
 packet(CMSG_BANK_CLOSE,                   0x0000,   0, nullptr);
+packet(CMSG_REQUEST_RANKS,                0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -841,6 +841,7 @@ if (packetVersion >= 20130605)
     packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
     packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
+    packet(CMSG_REQUEST_RANKS,            0x097c,   4, clif->pRanklist);
 }
 
 // 20130612

@@ -29,6 +29,7 @@
 #include "debug.h"
 
 extern Net::BeingHandler *beingHandler;
+extern int packetVersion;
 extern int serverVersion;
 
 namespace EAthena
@@ -69,6 +70,9 @@ void BeingHandler::undress(Being *const being) const
 
 void BeingHandler::requestRanks(const RankT rank) const
 {
+    if (packetVersion < 20130605)
+        return;
+
     createOutPacket(CMSG_REQUEST_RANKS);
     outMsg.writeInt16(CAST_S16(rank), "type");
 }
