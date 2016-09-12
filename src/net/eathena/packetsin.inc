@@ -766,6 +766,7 @@ if (packetVersion >= 20131223)
     packet(SMSG_BEING_SPAWN,               0x09dc,  -1, &BeingRecv::processBeingSpawn,                  20131223);
     packet(SMSG_BEING_VISIBLE,             0x09dd,  -1, &BeingRecv::processBeingVisible,                20131223);
     packet(SMSG_WHISPER_RESPONSE,          0x09df,   7, &ChatRecv::processWhisperResponse,              20131223);
+    packet(SMSG_SKILL_NO_DAMAGE,           0x09cb,  17, &Ea::BeingRecv::processSkillNoDamage,           20131223);
 }
 
 // 20141016

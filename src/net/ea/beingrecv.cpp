@@ -380,7 +380,11 @@ void BeingRecv::processPlayerMoveToAttack(Net::MessageIn &msg)
 void BeingRecv::processSkillNoDamage(Net::MessageIn &msg)
 {
     const int id = msg.readInt16("skill id");
-    const int heal = msg.readInt16("heal");
+    int heal;
+    if (msg.getVersion() >= 20131223)
+        heal = msg.readInt32("heal");
+    else
+        heal = msg.readInt16("heal");
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("dst being id"));
     Being *const srcBeing = actorManager->findBeing(
