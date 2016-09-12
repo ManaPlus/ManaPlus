@@ -44,6 +44,11 @@ BeingHandler::BeingHandler(const bool enableSync) :
 void BeingHandler::requestNameById(const BeingId id) const
 {
     createOutPacket(CMSG_NAME_REQUEST);
+    if (packetVersion >= 20080827 && packetVersion < 20101124)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt32(0, "unused");
+    }
     outMsg.writeBeingId(id, "being id");
 }
 
@@ -89,6 +94,11 @@ void BeingHandler::viewPlayerEquipment(const Being *const being) const
 void BeingHandler::requestNameByCharId(const int id) const
 {
     createOutPacket(CMSG_SOLVE_CHAR_NAME);
+    if (packetVersion >= 20080827 && packetVersion < 20101124)
+    {
+        outMsg.writeInt32(9, "unused");
+        outMsg.writeInt32(9, "unused");
+    }
     outMsg.writeInt32(id, "character id");
 }
 

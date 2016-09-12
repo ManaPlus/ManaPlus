@@ -390,6 +390,8 @@ void PlayerHandler::setDestination(const int x, const int y,
                                    const int direction) const
 {
     createOutPacket(CMSG_PLAYER_CHANGE_DEST);
+    if (packetVersion >= 20080827 && packetVersion < 20101124)
+        outMsg.writeInt32(0, "unused");
     outMsg.writeCoordinates(CAST_U16(x),
         CAST_U16(y),
         CAST_U8(direction), "destination");

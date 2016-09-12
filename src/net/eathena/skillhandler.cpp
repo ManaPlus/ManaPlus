@@ -53,10 +53,26 @@ void SkillHandler::usePos(const int id, const int level,
                           const int x, const int y) const
 {
     createOutPacket(CMSG_SKILL_USE_POSITION);
-    outMsg.writeInt16(CAST_S16(level), "skill level");
-    outMsg.writeInt16(CAST_S16(id), "skill id");
-    outMsg.writeInt16(CAST_S16(x), "x");
-    outMsg.writeInt16(CAST_S16(y), "y");
+    if (packetVersion >= 20080827 && packetVersion < 20101124)
+    {
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt32(0, "unused");
+        outMsg.writeInt16(CAST_S16(level), "skill level");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt16(CAST_S16(id), "skill id");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt16(CAST_S16(x), "x");
+        outMsg.writeInt16(0, "unused");
+        outMsg.writeInt8(0, "unused");
+        outMsg.writeInt16(CAST_S16(y), "y");
+    }
+    else
+    {
+        outMsg.writeInt16(CAST_S16(level), "skill level");
+        outMsg.writeInt16(CAST_S16(id), "skill id");
+        outMsg.writeInt16(CAST_S16(x), "x");
+        outMsg.writeInt16(CAST_S16(y), "y");
+    }
 }
 
 void SkillHandler::usePos(const int id, const int level,

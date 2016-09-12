@@ -494,6 +494,11 @@ if (packetVersion >= 20080827)
     packet(CMSG_ITEM_PICKUP,              0x00f5,  11, clif->pTakeItem);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0116,  17, clif->pDropItem);
     packet(CMSG_MOVE_TO_STORAGE,          0x0094,  19, clif->pMoveToKafra);
+    packet(CMSG_PLAYER_CHANGE_DEST,       0x00a7,   9, clif->pWalkToXY);
+    packet(CMSG_NAME_REQUEST,             0x008c,  14, clif->pGetCharNameRequest);
+    packet(CMSG_SKILL_USE_POSITION,       0x0113,  25, clif->pUseSkillToPos);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x00a2,  14, clif->pSolveCharName);
+    packet(CMSG_MOVE_FROM_STORAGE,        0x00f7,  17, clif->pMoveFromKafra);
 }
 
 // 20080910

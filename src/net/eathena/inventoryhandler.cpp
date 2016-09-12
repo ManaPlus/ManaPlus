@@ -476,6 +476,7 @@ void InventoryHandler::moveItem2(const InventoryTypeT source,
             packet = CMSG_MOVE_FROM_CART_TO_STORAGE;
     }
 
+    // for packetVersion < 20101124 need use other packet offset
     if (packet)
     {
         createOutPacket(packet);
