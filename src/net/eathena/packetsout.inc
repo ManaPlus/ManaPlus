@@ -88,7 +88,6 @@ packet(CMSG_PLAYER_USE_CARD,              0x017a,   4, clif->pUseCard);
 packet(CMSG_PLAYER_INSERT_CARD,           0x017c,   6, clif->pInsertCard);
 packet(CMSG_PLAYER_VIEW_EQUIPMENT,        0x02d6,   6, clif->pViewPlayerEquip);
 packet(CMSG_PLAYER_SET_EQUIPMENT_VISIBLE, 0x02d8,  10, clif->pEquipTick);
-packet(CMSG_PLAYER_FAVORITE_ITEM,         0x0907,   5, clif->pMoveItem);
 
 packet(CMSG_ITEM_PICKUP,                  0x009f,   6, clif->pTakeItem);
 packet(CMSG_PLAYER_CHANGE_DIR,            0x009b,   5, clif->pChangeDir);
@@ -291,6 +290,7 @@ packet(CMSG_BANK_CHECK,                   0x0000,   0, nullptr);
 packet(CMSG_BANK_OPEN,                    0x0000,   0, nullptr);
 packet(CMSG_BANK_CLOSE,                   0x0000,   0, nullptr);
 packet(CMSG_REQUEST_RANKS,                0x0000,   0, nullptr);
+packet(CMSG_PLAYER_FAVORITE_ITEM,         0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -637,6 +637,7 @@ if (packetVersion >= 20120410)
     packet(CMSG_MOVE_FROM_STORAGE,        0x08a6,   8, clif->pMoveFromKafra);
     packet(CMSG_HOMUNCULUS_MENU,          0x0885,   5, clif->pHomMenu);
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
+    packet(CMSG_PLAYER_FAVORITE_ITEM,     0x0907,   5, clif->pMoveItem);
 }
 
 // 20120418

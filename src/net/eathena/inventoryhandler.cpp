@@ -508,7 +508,7 @@ void InventoryHandler::insertCard(const int cardIndex,
 void InventoryHandler::favoriteItem(const Item *const item,
                                     const bool favorite) const
 {
-    if (!item)
+    if (!item || packetVersion < 20120410)
         return;
     createOutPacket(CMSG_PLAYER_FAVORITE_ITEM);
     outMsg.writeInt16(CAST_S16(item->getInvIndex()
