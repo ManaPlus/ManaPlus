@@ -220,6 +220,13 @@ void VendingRecv::processReport(Net::MessageIn &msg)
 {
     const int index = msg.readInt16("inv index") - INVENTORY_OFFSET;
     const int amount = msg.readInt16("amount");
+    if (msg.getVersion() >= 20141016)
+    {
+        UNIMPLIMENTEDPACKET;
+        msg.readInt32("char id");
+        msg.readInt32("time");
+        msg.readInt32("zeny");
+    }
     const Inventory *const inventory = PlayerInfo::getCartInventory();
     if (!inventory)
         return;
