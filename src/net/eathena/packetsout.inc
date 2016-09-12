@@ -679,6 +679,7 @@ if (packetVersion >= 20120702)
 if (packetVersion >= 20120710)
 {
     packet(CMSG_BUYINGSTORE_CLOSE,        0x0886,   2, clif->pReqCloseBuyingStore);
+    packet(CMSG_SOLVE_CHAR_NAME,          0x0368,   6, clif->pSolveCharName);
 }
 
 // 20120716
