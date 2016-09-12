@@ -107,9 +107,17 @@ void BattleGroundRecv::processBattleUpdateHp(Net::MessageIn &msg)
 {
     UNIMPLIMENTEDPACKET;
     msg.readBeingId("account id");
-    msg.readString(24, "name");
-    msg.readInt16("hp");
-    msg.readInt16("max hp");
+    if (msg.getVersion() >= 20140613)
+    {
+        msg.readInt32("hp");
+        msg.readInt32("max hp");
+    }
+    else
+    {
+        msg.readString(24, "name");
+        msg.readInt16("hp");
+        msg.readInt16("max hp");
+    }
 }
 
 }  // namespace EAthena

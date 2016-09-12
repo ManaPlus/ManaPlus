@@ -769,6 +769,12 @@ if (packetVersion >= 20131223)
     packet(SMSG_SKILL_NO_DAMAGE,           0x09cb,  17, &Ea::BeingRecv::processSkillNoDamage,           20131223);
 }
 
+// 20140613
+if (packetVersion >= 20140613)
+{
+    packet(SMSG_BATTLE_UPDATE_HP,          0x0a0e,  14, &BattleGroundRecv::processBattleUpdateHp,       20140613);
+}
+
 // 20141016
 packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRouletteOpenAck,          20141016);
 packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c, 344, &RouletteRecv::processRouletteInfoAckType,      20141016);
