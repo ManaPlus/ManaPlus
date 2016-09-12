@@ -88,7 +88,10 @@ void InventoryHandler::equipItem(const Item *const item) const
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     // here we set flag for any slots,
     // probably better set to slot from item properties
-    outMsg.writeInt32(0xFFFFFFFFU, "wear location");
+    if (packetVersion >= 20130320)
+        outMsg.writeInt32(0xFFFFFFFFU, "wear location");
+    else
+        outMsg.writeInt16(0x7FFFU, "wear location");
 }
 
 void InventoryHandler::unequipItem(const Item *const item) const

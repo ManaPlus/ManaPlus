@@ -82,7 +82,7 @@ packet(CMSG_SKILL_USE_MAP,                0x011b,  20, clif->pUseSkillMap);
 
 packet(CMSG_PLAYER_INVENTORY_USE,         0x0439,   8, clif->pUseItem);
 packet(CMSG_PLAYER_INVENTORY_DROP,        0x00a2,   6, clif->pDropItem);
-packet(CMSG_PLAYER_EQUIP,                 0x0998,   8, clif->pEquipItem);
+packet(CMSG_PLAYER_EQUIP,                 0x00a9,   6, clif->pEquipItem);
 packet(CMSG_PLAYER_UNEQUIP,               0x00ab,   4, clif->pUnequipItem);
 packet(CMSG_PLAYER_USE_CARD,              0x017a,   4, clif->pUseCard);
 packet(CMSG_PLAYER_INSERT_CARD,           0x017c,   6, clif->pInsertCard);
@@ -729,6 +729,7 @@ if (packetVersion >= 20130320)
     packet(CMSG_HOMUNCULUS_MENU,          0x093f,   5, clif->pHomMenu);
     packet(CMSG_BUYINGSTORE_CREATE,       0x0938,  -1, clif->pReqOpenBuyingStore);
     packet(CMSG_SKILL_USE_BEING,          0x089b,  10, clif->pUseSkillToId);
+    packet(CMSG_PLAYER_EQUIP,             0x0998,   8, clif->pEquipItem);
 }
 
 // 20130515
