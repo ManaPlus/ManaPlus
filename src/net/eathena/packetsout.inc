@@ -501,6 +501,8 @@ if (packetVersion >= 20080827)
 if (packetVersion >= 20080910)
 {
     packet(CMSG_MAP_SERVER_CONNECT,       0x0436,  19, clif->pWantToConnection);
+    packet(CMSG_PLAYER_CHANGE_ACT,        0x0437,   7, clif->pActionRequest);
+    packet(CMSG_SKILL_USE_BEING,          0x0438,  10, clif->pUseSkillToId);
 }
 
 // 20090603
