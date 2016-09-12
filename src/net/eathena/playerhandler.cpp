@@ -454,8 +454,11 @@ void PlayerHandler::setShortcut(const int idx,
 
 void PlayerHandler::shortcutShiftRow(const int row) const
 {
-    if (serverVersion != 0 && serverVersion < 11)
+    if (packetVersion < 20141022 ||
+        (serverVersion != 0 && serverVersion < 11))
+    {
         return;
+    }
     createOutPacket(CMSG_SHORTCUTS_ROW_SHIFT);
     outMsg.writeInt8(CAST_S8(row), "row");
 }

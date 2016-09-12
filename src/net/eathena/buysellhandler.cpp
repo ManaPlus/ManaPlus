@@ -30,6 +30,7 @@
 #include "debug.h"
 
 extern Net::BuySellHandler *buySellHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -63,6 +64,9 @@ void BuySellHandler::sendSellRequest(const std::string &nick A_UNUSED,
 
 void BuySellHandler::close() const
 {
+    if (packetVersion < 20131218)
+        return;
+
     createOutPacket(CMSG_NPC_SHOP_CLOSE);
 }
 

@@ -108,8 +108,6 @@ packet(CMSG_NPC_STR_RESPONSE,             0x01d5,  -1, clif->pNpcStringInput);
 packet(CMSG_NPC_BUY_SELL_REQUEST,         0x00c5,   7, clif->pNpcBuySellSelected);
 packet(CMSG_NPC_BUY_REQUEST,              0x00c8,  -1, clif->pNpcBuyListSend);
 packet(CMSG_NPC_SELL_REQUEST,             0x00c9,  -1, clif->pNpcSellListSend);
-packet(CMSG_NPC_MARKET_CLOSE,             0x09d8,   2, clif->pNPCMarketClosed);
-packet(CMSG_NPC_MARKET_BUY,               0x09d6,  -1, clif->pNPCMarketPurchase);
 packet(CMSG_NPC_CASH_SHOP_BUY,            0x0288,  -1, clif->pcashshop_buy);
 packet(CMSG_NPC_CASH_SHOP_CLOSE,          0x084a,   2, clif->pCashShopClose);
 packet(CMSG_NPC_CASH_SHOP_OPEN,           0x0844,   2, clif->pCashShopOpen);
@@ -185,7 +183,6 @@ packet(CMSG_IGNORE_NICK,                  0x00cf,  27, clif->pPMIgnore);
 packet(CMSG_REQUEST_IGNORE_LIST,          0x00d3,   2, clif->pPMIgnoreList);
 packet(CMSG_REQUEST_RANKS,                0x097c,   4, clif->pRanklist);
 packet(CMSG_SET_SHORTCUTS,                0x02ba,  11, clif->pHotkey);
-packet(CMSG_SHORTCUTS_ROW_SHIFT,          0x0a01,   3, clif->pHotkeyRowShift);
 packet(CMSG_NPC_COMPLETE_PROGRESS_BAR,    0x02f1,   2, clif->pProgressbar);
 packet(CMSG_NPC_PRODUCE_MIX,              0x018e,  10, clif->pProduceMix);
 packet(CMSG_NPC_COOKING,                  0x025b,   6, clif->pCooking);
@@ -194,7 +191,6 @@ packet(CMSG_NPC_REFINE,                   0x0222,   6, clif->pWeaponRefine);
 packet(CMSG_NPC_IDENTIFY,                 0x0178,   4, clif->pItemIdentify);
 packet(CMSG_NPC_SELECT_ARROW,             0x01ae,   4, clif->pSelectArrow);
 packet(CMSG_NPC_SELECT_AUTO_SPELL,        0x01ce,   6, clif->pAutoSpell);
-packet(CMSG_NPC_SHOP_CLOSE,               0x09d4,   2, clif->pNPCShopClosed);
 
 packet(CMSG_PLAYER_MAPMOVE,               0x0140,  22, clif->pMapMove);
 packet(CMSG_REMOVE_OPTION,                0x012a,   2, clif->pRemoveOption);
@@ -292,6 +288,10 @@ packet(CMSG_QUICK_IDENTIFY_ITEM,          0x0000,   0, nullptr);
 packet(CMSG_PARTY_INVITE2,                0x0000,   0, nullptr);
 packet(CMSG_SKILL_FEEL_SAVE_OK,           0x0000,   0, nullptr);
 packet(CMSG_PLAYER_LESS_EFFECTS,          0x0000,   0, nullptr);
+packet(CMSG_SHORTCUTS_ROW_SHIFT,          0x0000,   0, nullptr);
+packet(CMSG_NPC_SHOP_CLOSE,               0x0000,   0, nullptr);
+packet(CMSG_NPC_MARKET_BUY,               0x0000,   0, nullptr);
+packet(CMSG_NPC_MARKET_CLOSE,             0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -987,6 +987,9 @@ if (packetVersion >= 20131218)
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
     packet(CMSG_BUYINGSTORE_CREATE,       0x0815,  -1, clif->pReqOpenBuyingStore);
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
+    packet(CMSG_NPC_SHOP_CLOSE,           0x09d4,   2, clif->pNPCShopClosed);
+    packet(CMSG_NPC_MARKET_BUY,           0x09d6,  -1, clif->pNPCMarketPurchase);
+    packet(CMSG_NPC_MARKET_CLOSE,         0x09d8,   2, clif->pNPCMarketClosed);
 }
 
 // 20131223
@@ -1175,6 +1178,7 @@ if (packetVersion >= 20141022)
     packet(CMSG_MAP_SERVER_CONNECT,       0x093b,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x0896,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x091a,  26, clif->pFriendsListAdd);
+    packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0a01,   3, clif->pHotkeyRowShift);
 }
 
 // 20150513

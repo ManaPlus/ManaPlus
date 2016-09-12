@@ -29,6 +29,7 @@
 #include "debug.h"
 
 extern Net::MarketHandler *marketHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -41,6 +42,9 @@ MarketHandler::MarketHandler()
 
 void MarketHandler::close() const
 {
+    if (packetVersion < 20131218)
+        return;
+
     createOutPacket(CMSG_NPC_MARKET_CLOSE);
 }
 
@@ -49,6 +53,8 @@ void MarketHandler::buyItem(const int itemId,
                             const ItemColor color A_UNUSED,
                             const int amount) const
 {
+    if (packetVersion < 20131218)
+        return;
     const bool nonStack = type == ItemType::Weapon ||
         type == ItemType::Armor ||
         type == ItemType::PetEgg ||
@@ -69,6 +75,8 @@ void MarketHandler::buyItem(const int itemId,
 
 void MarketHandler::buyItems(const std::vector<ShopItem*> &items) const
 {
+    if (packetVersion < 20131218)
+        return;
     int cnt = 0;
     const int pairSize = 6;
 
