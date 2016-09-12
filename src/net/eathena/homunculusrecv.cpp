@@ -134,10 +134,20 @@ void HomunculusRecv::processHomunculusInfo(Net::MessageIn &msg)
         msg.readInt16("flee"));
     PlayerInfo::setStatBase(Attributes::HOMUN_ATTACK_DELAY,
         msg.readInt16("attack speed"));
-    PlayerInfo::setStatBase(Attributes::HOMUN_HP,
-        msg.readInt16("hp"));
-    PlayerInfo::setStatBase(Attributes::HOMUN_MAX_HP,
-        msg.readInt16("max hp"));
+    if (msg.getVersion() >= 20150513)
+    {
+        PlayerInfo::setStatBase(Attributes::HOMUN_HP,
+            msg.readInt32("hp"));
+        PlayerInfo::setStatBase(Attributes::HOMUN_MAX_HP,
+            msg.readInt32("max hp"));
+    }
+    else
+    {
+        PlayerInfo::setStatBase(Attributes::HOMUN_HP,
+            msg.readInt16("hp"));
+        PlayerInfo::setStatBase(Attributes::HOMUN_MAX_HP,
+            msg.readInt16("max hp"));
+    }
     PlayerInfo::setStatBase(Attributes::HOMUN_MP,
         msg.readInt16("sp"));
     PlayerInfo::setStatBase(Attributes::HOMUN_MAX_MP,
