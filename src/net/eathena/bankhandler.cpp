@@ -26,6 +26,7 @@
 #include "debug.h"
 
 extern Net::BankHandler *bankHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -37,6 +38,8 @@ BankHandler::BankHandler()
 
 void BankHandler::deposit(const int money) const
 {
+    if (packetVersion < 20130724)
+        return;
     createOutPacket(CMSG_BANK_DEPOSIT);
     outMsg.writeInt32(0, "account id");
     outMsg.writeInt32(money, "money");
@@ -44,6 +47,8 @@ void BankHandler::deposit(const int money) const
 
 void BankHandler::withdraw(const int money) const
 {
+    if (packetVersion < 20130724)
+        return;
     createOutPacket(CMSG_BANK_WITHDRAW);
     outMsg.writeInt32(0, "account id");
     outMsg.writeInt32(money, "money");
@@ -51,18 +56,24 @@ void BankHandler::withdraw(const int money) const
 
 void BankHandler::check() const
 {
+    if (packetVersion < 20130724)
+        return;
     createOutPacket(CMSG_BANK_CHECK);
     outMsg.writeInt32(0, "account id");
 }
 
 void BankHandler::open() const
 {
+    if (packetVersion < 20130724)
+        return;
     createOutPacket(CMSG_BANK_OPEN);
     outMsg.writeInt32(0, "unused");
 }
 
 void BankHandler::close() const
 {
+    if (packetVersion < 20130724)
+        return;
     createOutPacket(CMSG_BANK_CLOSE);
     outMsg.writeInt32(0, "unused");
 }

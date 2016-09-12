@@ -233,12 +233,6 @@ packet(CMSG_MAIL_SEND,                    0x0248,  -1, clif->pMail_send);
 packet(CMSG_FAMILY_ASK_FOR_CHILD,         0x01f9,   6, clif->pAdopt_request);
 packet(CMSG_FAMILY_ASK_FOR_CHILD_REPLY,   0x01f7,  14, clif->pAdopt_reply);
 
-packet(CMSG_BANK_DEPOSIT,                 0x09a7,  10, clif->pBankDeposit);
-packet(CMSG_BANK_WITHDRAW,                0x09a9,  10, clif->pBankWithdraw);
-packet(CMSG_BANK_CHECK,                   0x09ab,   6, clif->pBankCheck);
-packet(CMSG_BANK_OPEN,                    0x09b6,   6, clif->pBankOpen);
-packet(CMSG_BANK_CLOSE,                   0x09b8,   6, clif->pBankClose);
-
 packet(CMSG_FRIENDS_ADD_PLAYER,           0x0202,  26, clif->pFriendsListAdd);
 packet(CMSG_FRIENDS_REQUEST_ACK,          0x0208,  14, clif->pFriendsListReply);
 packet(CMSG_FRIENDS_DELETE_PLAYER,        0x0203,  10, clif->pFriendsListRemove);
@@ -292,6 +286,11 @@ packet(CMSG_SHORTCUTS_ROW_SHIFT,          0x0000,   0, nullptr);
 packet(CMSG_NPC_SHOP_CLOSE,               0x0000,   0, nullptr);
 packet(CMSG_NPC_MARKET_BUY,               0x0000,   0, nullptr);
 packet(CMSG_NPC_MARKET_CLOSE,             0x0000,   0, nullptr);
+packet(CMSG_BANK_DEPOSIT,                 0x0000,   0, nullptr);
+packet(CMSG_BANK_WITHDRAW,                0x0000,   0, nullptr);
+packet(CMSG_BANK_CHECK,                   0x0000,   0, nullptr);
+packet(CMSG_BANK_OPEN,                    0x0000,   0, nullptr);
+packet(CMSG_BANK_CLOSE,                   0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -922,6 +921,16 @@ if (packetVersion >= 20130703)
     packet(CMSG_BUYINGSTORE_OPEN,         0x0202,   6, clif->pReqClickBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x094a,   5, clif->pHomMenu);
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0362,   6, clif->pDropItem);
+}
+
+// 20130724
+if (packetVersion >= 20130724)
+{
+    packet(CMSG_BANK_DEPOSIT,             0x09a7,  10, clif->pBankDeposit);
+    packet(CMSG_BANK_WITHDRAW,            0x09a9,  10, clif->pBankWithdraw);
+    packet(CMSG_BANK_CHECK,               0x09ab,   6, clif->pBankCheck);
+    packet(CMSG_BANK_OPEN,                0x09b6,   6, clif->pBankOpen);
+    packet(CMSG_BANK_CLOSE,               0x09b8,   6, clif->pBankClose);
 }
 
 // 20130807
