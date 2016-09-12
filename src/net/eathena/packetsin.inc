@@ -839,6 +839,7 @@ if (packetVersion >= 20150513)
     packet(SMSG_BEING_VISIBLE,             0x09ff,  -1, &BeingRecv::processBeingVisible,                20150513);
     packet(SMSG_BEING_SPAWN,               0x09fe,  -1, &BeingRecv::processBeingSpawn,                  20150513);
     packet(SMSG_BEING_MOVE,                0x09fd,  -1, &BeingRecv::processBeingMove,                   20150513);
+    packet(SMSG_PLAYER_HEAL,               0x0a27,   8, &PlayerRecv::processPlayerHeal,                 20150513);
 }
 
 // 20150805

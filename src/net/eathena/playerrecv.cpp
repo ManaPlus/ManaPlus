@@ -251,7 +251,11 @@ void PlayerRecv::processPlayerHeal(Net::MessageIn &msg)
         return;
 
     const int type = msg.readInt16("var id");
-    const int amount = msg.readInt16("value");
+    int amount;
+    if (msg.getVersion() >= 20150513)
+        amount = msg.readInt32("value");
+    else
+        amount = msg.readInt16("value");
     if (type == Sp::HP)
     {
         const int base = PlayerInfo::getAttribute(Attributes::PLAYER_HP) +
