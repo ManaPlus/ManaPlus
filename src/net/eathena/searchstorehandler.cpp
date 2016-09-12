@@ -26,6 +26,7 @@
 #include "debug.h"
 
 extern Net::SearchStoreHandler *searchStoreHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -40,6 +41,9 @@ void SearchStoreHandler::search(const StoreSearchTypeT type,
                                 const int maxPrice,
                                 const int itemId) const
 {
+    if (packetVersion < 20100601)
+        return;
+
     createOutPacket(CMSG_SEARCHSTORE_SEARCH);
     outMsg.writeInt16(23, "len");
     outMsg.writeInt8(CAST_U8(type), "search type");
@@ -52,11 +56,15 @@ void SearchStoreHandler::search(const StoreSearchTypeT type,
 
 void SearchStoreHandler::nextPage() const
 {
+    if (packetVersion < 20100608)
+        return;
     createOutPacket(CMSG_SEARCHSTORE_NEXT_PAGE);
 }
 
 void SearchStoreHandler::close() const
 {
+    if (packetVersion < 20100608)
+        return;
     createOutPacket(CMSG_SEARCHSTORE_CLOSE);
 }
 
@@ -64,6 +72,8 @@ void SearchStoreHandler::select(const int accountId,
                                 const int storeId,
                                 const int itemId) const
 {
+    if (packetVersion < 20100608)
+        return;
     createOutPacket(CMSG_SEARCHSTORE_CLICK);
     outMsg.writeInt32(accountId, "account id");
     outMsg.writeInt32(storeId, "store id");

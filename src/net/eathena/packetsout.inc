@@ -240,7 +240,6 @@ packet(CMSG_VENDING_BUY,                  0x0134,  -1, clif->pPurchaseReq);
 packet(CMSG_VENDING_BUY2,                 0x0801,  -1, clif->pPurchaseReq2);
 packet(CMSG_VENDING_CREATE_SHOP,          0x01b2,  -1, clif->pOpenVending);
 
-packet(CMSG_SEARCHSTORE_CLOSE,            0x083b,   2, clif->pCloseSearchStoreInfo);
 
 packet(CMSG_MERGE_ITEM_ACK,               0x096e,  -1, clif->ackmergeitems);
 packet(CMSG_MERGE_ITEM_CANCEL,            0x0974,   2, clif->cancelmergeitem);
@@ -262,6 +261,7 @@ packet(CMSG_BUYINGSTORE_CLOSE,            0x0000,   0, nullptr);
 packet(CMSG_BUYINGSTORE_CREATE,           0x0000,   0, nullptr);
 packet(CMSG_BUYINGSTORE_SELL,             0x0000,   0, nullptr);
 packet(CMSG_SEARCHSTORE_SEARCH,           0x0000,   0, nullptr);
+packet(CMSG_SEARCHSTORE_CLOSE,            0x0000,   0, nullptr);
 packet(CMSG_HOMUNCULUS_MENU,              0x0000,   0, nullptr);
 packet(CMSG_SEARCHSTORE_CLICK,            0x0000,   0, nullptr);
 packet(CMSG_BUYINGSTORE_OPEN,             0x0000,   0, nullptr);
@@ -540,6 +540,7 @@ if (packetVersion >= 20100608)
 {
     packet(CMSG_SEARCHSTORE_CLICK,        0x083c,  12, clif->pSearchStoreInfoListItemClick);
     packet(CMSG_SEARCHSTORE_NEXT_PAGE,    0x0838,   2, clif->pSearchStoreInfoNextPage);
+    packet(CMSG_SEARCHSTORE_CLOSE,        0x083b,   2, clif->pCloseSearchStoreInfo);
 }
 
 // 20101124
