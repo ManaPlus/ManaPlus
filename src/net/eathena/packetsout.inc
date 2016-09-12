@@ -62,11 +62,6 @@ packet(CMSG_CHAT_JOIN_CHANNEL,            0x0b07,   0, nullptr);
 packet(CMSG_CHAT_PART_CHANNEL,            0x0b09,   0, nullptr);
 packet(CMSG_BATTLE_CHAT_MESSAGE,          0x02db,  -1, clif->pBattleChat);
 
-packet(CMSG_BATTLE_REGISTER,              0x08d7,  28, clif->pBGQueueRegister);
-packet(CMSG_BATTLE_REVOKE,                0x08da,  26, clif->pBGQueueRevokeReq);
-packet(CMSG_BATTLE_BEGIN_ACK,             0x08e0,  51, clif->pBGQueueBattleBeginAck);
-packet(CMSG_BATTLE_CHECK_STATE,           0x090a,  26, clif->pBGQueueCheckState);
-
 packet(CMSG_CREAYE_CHAT_ROOM,             0x00d5,  -1, clif->pCreateChatRoom);
 packet(CMSG_LEAVE_CHAT_ROOM,              0x00e3,   2, clif->pChatLeave);
 packet(CMSG_SET_CHAT_ROOM_OPTIONS,        0x00de,  -1, clif->pChatRoomStatusChange);
@@ -291,6 +286,10 @@ packet(CMSG_BANK_OPEN,                    0x0000,   0, nullptr);
 packet(CMSG_BANK_CLOSE,                   0x0000,   0, nullptr);
 packet(CMSG_REQUEST_RANKS,                0x0000,   0, nullptr);
 packet(CMSG_PLAYER_FAVORITE_ITEM,         0x0000,   0, nullptr);
+packet(CMSG_BATTLE_REGISTER,              0x0000,   0, nullptr);
+packet(CMSG_BATTLE_REVOKE,                0x0000,   0, nullptr);
+packet(CMSG_BATTLE_BEGIN_ACK,             0x0000,   0, nullptr);
+packet(CMSG_BATTLE_CHECK_STATE,           0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -569,6 +568,10 @@ if (packetVersion >= 20111005)
     packet(CMSG_SKILL_USE_POSITION,       0x0369,  10, clif->pUseSkillToPos);
     packet(CMSG_SOLVE_CHAR_NAME,          0x0838,   6, clif->pSolveCharName);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0897,   8, clif->pMoveFromKafra);
+    packet(CMSG_BATTLE_REGISTER,          0x08d7,  28, clif->pBGQueueRegister);
+    packet(CMSG_BATTLE_REVOKE,            0x08da,  26, clif->pBGQueueRevokeReq);
+    packet(CMSG_BATTLE_BEGIN_ACK,         0x08e0,  51, clif->pBGQueueBattleBeginAck);
+    packet(CMSG_BATTLE_CHECK_STATE,       0x090a,  26, clif->pBGQueueCheckState);
 }
 
 // 20111102
