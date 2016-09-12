@@ -777,6 +777,7 @@ packet(SMSG_ROULETTE_RECV_ITEM_ACK,        0x0a22,   5, &RouletteRecv::processRo
 if (packetVersion >= 20141016)
 {
     packet(SMSG_VENDING_REPORT,            0x09e5,  18, &VendingRecv::processReport,                    20141016);
+    packet(SMSG_BUYINGSTORE_REPORT,        0x09e6,  22, &BuyingStoreRecv::processBuyingStoreReport,     20141016);
 }
 
 // 20141022
