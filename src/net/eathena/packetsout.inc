@@ -102,11 +102,6 @@ packet(CMSG_NPC_STR_RESPONSE,             0x01d5,  -1, clif->pNpcStringInput);
 packet(CMSG_NPC_BUY_SELL_REQUEST,         0x00c5,   7, clif->pNpcBuySellSelected);
 packet(CMSG_NPC_BUY_REQUEST,              0x00c8,  -1, clif->pNpcBuyListSend);
 packet(CMSG_NPC_SELL_REQUEST,             0x00c9,  -1, clif->pNpcSellListSend);
-packet(CMSG_NPC_CASH_SHOP_BUY,            0x0288,  -1, clif->pcashshop_buy);
-packet(CMSG_NPC_CASH_SHOP_CLOSE,          0x084a,   2, clif->pCashShopClose);
-packet(CMSG_NPC_CASH_SHOP_OPEN,           0x0844,   2, clif->pCashShopOpen);
-packet(CMSG_NPC_CASH_SHOP_REQUEST_TAB,    0x0846,   4, clif->pCashShopReqTab);
-packet(CMSG_NPC_CASH_SHOP_SCHEDULE,       0x08c9,   2, clif->pCashShopSchedule);
 
 packet(CMSG_TRADE_REQUEST,                0x00e4,   6, clif->pTradeRequest);
 packet(CMSG_TRADE_RESPONSE,               0x00e6,   3, clif->pTradeAck);
@@ -290,6 +285,11 @@ packet(CMSG_BATTLE_REGISTER,              0x0000,   0, nullptr);
 packet(CMSG_BATTLE_REVOKE,                0x0000,   0, nullptr);
 packet(CMSG_BATTLE_BEGIN_ACK,             0x0000,   0, nullptr);
 packet(CMSG_BATTLE_CHECK_STATE,           0x0000,   0, nullptr);
+packet(CMSG_NPC_CASH_SHOP_BUY,            0x0000,   0, nullptr);
+packet(CMSG_NPC_CASH_SHOP_CLOSE,          0x0000,   0, nullptr);
+packet(CMSG_NPC_CASH_SHOP_OPEN,           0x0000,   0, nullptr);
+packet(CMSG_NPC_CASH_SHOP_REQUEST_TAB,    0x0000,   0, nullptr);
+packet(CMSG_NPC_CASH_SHOP_SCHEDULE,       0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -552,6 +552,16 @@ if (packetVersion >= 20101124)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0369,   6, clif->pSolveCharName);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0365,   8, clif->pMoveFromKafra);
     packet(CMSG_MAP_SERVER_CONNECT,       0x0436,  19, clif->pWantToConnection);
+}
+
+// 20110718
+if (packetVersion >= 20110718)
+{
+    packet(CMSG_NPC_CASH_SHOP_BUY,        0x0288,  -1, clif->pcashshop_buy);
+    packet(CMSG_NPC_CASH_SHOP_CLOSE,      0x084a,   2, clif->pCashShopClose);
+    packet(CMSG_NPC_CASH_SHOP_OPEN,       0x0844,   2, clif->pCashShopOpen);
+    packet(CMSG_NPC_CASH_SHOP_REQUEST_TAB, 0x0846,   4, clif->pCashShopReqTab);
+    packet(CMSG_NPC_CASH_SHOP_SCHEDULE,   0x08c9,   2, clif->pCashShopSchedule);
 }
 
 // 20111005
