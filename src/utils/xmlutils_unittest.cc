@@ -89,3 +89,32 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     REQUIRE(arr["Metal"] == "26");
     ResourceManager::deleteInstance();
 }
+
+TEST_CASE("xmlutils readXmlIntMap 1")
+{
+    client = new Client;
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    XML::initXML();
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data/test", Append_false);
+    resourceManager->addToSearchPath("../data/test", Append_false);
+
+    std::map<int32_t, int32_t> arr;
+
+    readXmlIntMap("testintmap.xml",
+        "tests",
+        "sub",
+        "item",
+        "id",
+        "val",
+        arr,
+        SkipError_false);
+
+    REQUIRE(arr.size() == 3);
+    REQUIRE(arr[1] == 2);
+    REQUIRE(arr[10] == 20);
+    REQUIRE(arr[3] == 0);
+    ResourceManager::deleteInstance();
+}

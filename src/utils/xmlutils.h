@@ -44,4 +44,13 @@ void readXmlStringMap(const std::string &fileName,
                       std::map<std::string, std::string> &arr,
                       const SkipError skipError);
 
+void readXmlIntMap(const std::string &fileName,
+                   const std::string &rootName,
+                   const std::string &sectionName,
+                   const std::string &itemName,
+                   const std::string &attributeKeyName,
+                   const std::string &attributeValueName,
+                   std::map<int32_t, int32_t> &arr,
+                   const SkipError skipError);
+
 #endif  // UTILS_XMLUTILS_H

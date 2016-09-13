@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Author: 4144
+Copyright (C) 2016 ManaPlus developers -->
+
+<tests>
+    <sub>
+        <item id="1" val="2"/>
+        <item id="10" val="20"/>
+        <item id="3"/>
+    </sub>
+</tests>

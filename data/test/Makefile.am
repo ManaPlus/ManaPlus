@@ -13,6 +13,7 @@ test_DATA =				\
 	quests.xml \
 	serverlistplus.xml \
 	simplefile.txt \
+	testintmap.xml \
 	units.xml
 
 EXTRA_DIST =				\

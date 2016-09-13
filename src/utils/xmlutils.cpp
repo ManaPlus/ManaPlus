@@ -130,3 +130,57 @@ void readXmlStringMap(const std::string &fileName,
         }
     }
 }
+
+void readXmlIntMap(const std::string &fileName,
+                   const std::string &rootName,
+                   const std::string &sectionName,
+                   const std::string &itemName,
+                   const std::string &attributeKeyName,
+                   const std::string &attributeValueName,
+                   std::map<int32_t, int32_t> &arr,
+                   const SkipError skipError)
+{
+    XML::Document doc(fileName, UseResman_true, skipError);
+    const XmlNodePtrConst rootNode = doc.rootNode();
+
+    if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))
+    {
+        logger->log("Error while loading %s!", fileName.c_str());
+        return;
+    }
+
+    for_each_xml_child_node(sectionNode, rootNode)
+    {
+        if (!xmlNameEqual(sectionNode, sectionName.c_str()))
+            continue;
+        for_each_xml_child_node(childNode, sectionNode)
+        {
+            if (xmlNameEqual(childNode, itemName.c_str()))
+            {
+                const std::string key = XML::getProperty(childNode,
+                    attributeKeyName.c_str(), "");
+                if (key.empty())
+                    continue;
+                const int32_t val = XML::getProperty(childNode,
+                    attributeValueName.c_str(), 0);
+                arr[atoi(key.c_str())] = val;
+            }
+            else if (xmlNameEqual(childNode, "include"))
+            {
+                const std::string name = XML::getProperty(
+                    childNode, "name", "");
+                if (!name.empty())
+                {
+                    readXmlIntMap(name,
+                        rootName,
+                        sectionName,
+                        itemName,
+                        attributeKeyName,
+                        attributeValueName,
+                        arr,
+                        skipError);
+                }
+            }
+        }
+    }
+}

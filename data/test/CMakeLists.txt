@@ -11,6 +11,7 @@ SET(FILES
     quests.xml
     serverlistplus.xml
     simplefile.txt
+    testintmap.xml
     units.xml
     )
 
