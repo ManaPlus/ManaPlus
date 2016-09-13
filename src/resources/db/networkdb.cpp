@@ -21,6 +21,7 @@
 #include "resources/db/networkdb.h"
 
 #include "configuration.h"
+#include "logger.h"
 
 #include "utils/xmlutils.h"
 
@@ -39,6 +40,7 @@ void NetworkDb::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing network database...");
     loadXmlFile(paths.getStringValue("networkFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("networkPatchFile"), SkipError_true);
     loadXmlDir("networkPatchDir", loadXmlFile);
@@ -62,4 +64,9 @@ void NetworkDb::unload()
 {
     mInPackets.clear();
     mLoaded = false;
+}
+
+const NetworkInfos &NetworkDb::getFakePackets()
+{
+    return mInPackets;
 }

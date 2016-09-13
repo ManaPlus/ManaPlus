@@ -80,6 +80,10 @@
 
 #include "net/eathena/messagein.h"
 
+#include "resources/db/networkdb.h"
+
+#include "utils/checkutils.h"
+
 #include "debug.h"
 
 extern int packetVersion;
@@ -109,6 +113,34 @@ void Network::registerHandlers()
 {
 #include "net/eathena/recvpackets.inc"
     RECVPACKETS_VOID
+}
+
+void Network::registerFakeHandlers()
+{
+    const NetworkInfos &packets = NetworkDb::getFakePackets();
+    FOR_EACH (NetworkInfosIter, it, packets)
+    {
+        const size_t id = (*it).first;
+        if (id >= packet_lengths_size)
+        {
+            reportAlways("Wrong fake packet id %d", CAST_S32(id));
+            continue;
+        }
+        if (mPackets[id].len != 0 ||
+            mPackets[id].func != nullptr ||
+            mPackets[id].version != 0)
+        {
+            continue;
+        }
+        const int32_t len = (*it).second;
+        logger->log("Add fake packet: %d, %d",
+            CAST_S32(id),
+            len);
+        mPackets[id].name = "fake";
+        mPackets[id].len = len;
+        mPackets[id].func = nullptr;
+        mPackets[id].version = 0;
+    }
 }
 
 void Network::clearHandlers()

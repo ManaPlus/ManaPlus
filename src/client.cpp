@@ -616,6 +616,7 @@ void Client::gameClear()
         ElementalDb::unload();
         SkillUnitDb::unload();
         HorseDB::unload();
+        NetworkDb::unload();
     }
     MonsterDB::unload();
     NPCDB::unload();
@@ -627,7 +628,6 @@ void Client::gameClear()
     PETDB::unload();
     StatusEffectDB::unload();
     ModDB::unload();
-    NetworkDb::unload();
 
     if (loginHandler)
         loginHandler->clearWorlds();
@@ -1327,7 +1327,6 @@ int Client::gameExec()
 
                     AttributesEnum::init();
                     // Load XML databases
-                    NetworkDb::load();
                     CharDB::load();
                     StatDb::load();
                     DeadDB::load();
@@ -1342,6 +1341,9 @@ int Client::gameExec()
                     if (type == ServerType::EATHENA ||
                         type == ServerType::EVOL2)
                     {
+                        NetworkDb::load();
+                        if (loginHandler)
+                            loginHandler->updatePacketVersion();
                         MercenaryDB::load();
                         HomunculusDB::load();
                         ElementalDb::load();

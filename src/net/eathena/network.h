@@ -51,6 +51,8 @@ class Network final : public Ea::Network
 
         void registerHandlers();
 
+        void registerFakeHandlers();
+
         static Network *mInstance;
 
     protected:

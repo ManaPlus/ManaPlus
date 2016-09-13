@@ -45,6 +45,7 @@ void updateProtocol()
     {
         network->clearHandlers();
         network->registerHandlers();
+        network->registerFakeHandlers();
     }
 }
 

@@ -43,6 +43,8 @@ namespace NetworkDb
      * Clear the chars data
      */
     void unload();
+
+    const NetworkInfos &getFakePackets();
 }  // namespace NetworkDb
 
 #endif  // RESOURCES_DB_NETWORKDB_H
