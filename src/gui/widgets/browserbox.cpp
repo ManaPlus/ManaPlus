@@ -773,8 +773,17 @@ int BrowserBox::calcHeight()
 
                     if (c == '<' && link < CAST_S32(mLinks.size()))
                     {
-                        const int size = font->getWidth(
-                            mLinks[CAST_SIZE(link)].caption) + 1;
+                        int size;
+                        if (bold)
+                        {
+                            size = boldFont->getWidth(
+                                mLinks[CAST_SIZE(link)].caption) + 1;
+                        }
+                        else
+                        {
+                            size = font->getWidth(
+                                mLinks[CAST_SIZE(link)].caption) + 1;
+                        }
 
                         BrowserLink &linkRef = mLinks[CAST_SIZE(
                             link)];
