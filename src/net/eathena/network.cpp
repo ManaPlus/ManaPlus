@@ -22,8 +22,6 @@
 
 #include "net/eathena/network.h"
 
-#include "logger.h"
-
 #include "net/packetinfo.h"
 
 #include "net/ea/adminrecv.h"
