@@ -118,6 +118,7 @@
 #include "resources/db/mercenarydb.h"
 #include "resources/db/moddb.h"
 #include "resources/db/monsterdb.h"
+#include "resources/db/networkdb.h"
 #include "resources/db/npcdb.h"
 #include "resources/db/npcdialogdb.h"
 #include "resources/db/palettedb.h"
@@ -626,6 +627,7 @@ void Client::gameClear()
     PETDB::unload();
     StatusEffectDB::unload();
     ModDB::unload();
+    NetworkDb::unload();
 
     if (loginHandler)
         loginHandler->clearWorlds();
@@ -1325,6 +1327,7 @@ int Client::gameExec()
 
                     AttributesEnum::init();
                     // Load XML databases
+                    NetworkDb::load();
                     CharDB::load();
                     StatDb::load();
                     DeadDB::load();

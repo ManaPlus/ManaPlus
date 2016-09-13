@@ -1260,6 +1260,8 @@ manaplus_SOURCES += main.cpp \
 	      resources/db/moddb.h \
 	      resources/db/monsterdb.cpp \
 	      resources/db/monsterdb.h \
+	      resources/db/networkdb.cpp \
+	      resources/db/networkdb.h \
 	      resources/db/npcdb.cpp \
 	      resources/db/npcdb.h \
 	      resources/db/npcdialogdb.cpp \

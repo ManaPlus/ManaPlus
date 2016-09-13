@@ -627,6 +627,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("badgesFile", "badges.xml");
     AddDEF("badgesPatchFile", "badges_patch.xml");
     AddDEF("badgesPatchDir", "badges.d");
+    AddDEF("networkFile", "network.xml");
+    AddDEF("networkPatchFile", "network_patch.xml");
+    AddDEF("networkPatchDir", "network.d");
     AddDEF("statFile", "stats.xml");
     AddDEF("statPatchFile", "stats_patch.xml");
     AddDEF("statPatchDir", "stats.d");
