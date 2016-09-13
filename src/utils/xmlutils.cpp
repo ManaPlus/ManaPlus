@@ -34,7 +34,6 @@ void readXmlIntVector(const std::string &fileName,
                       std::vector<int> &arr,
                       const SkipError skipError)
 {
-    arr.clear();
     XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 

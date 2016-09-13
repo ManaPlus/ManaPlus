@@ -117,8 +117,8 @@ void Network::registerHandlers()
 
 void Network::registerFakeHandlers()
 {
-    const NetworkInfos &packets = NetworkDb::getFakePackets();
-    FOR_EACH (NetworkInfosIter, it, packets)
+    const NetworkInPacketInfos &packets = NetworkDb::getFakePackets();
+    FOR_EACH (NetworkInPacketInfosIter, it, packets)
     {
         const size_t id = (*it).first;
         if (id >= packet_lengths_size)
@@ -138,6 +138,30 @@ void Network::registerFakeHandlers()
             len);
         mPackets[id].name = "fake";
         mPackets[id].len = len;
+        mPackets[id].func = nullptr;
+        mPackets[id].version = 0;
+    }
+
+    const NetworkRemovePacketInfos &removePackets =
+        NetworkDb::getRemovePackets();
+    FOR_EACH (NetworkRemovePacketInfosIter, it, removePackets)
+    {
+        const size_t id = *it;
+        if (id >= packet_lengths_size)
+        {
+            reportAlways("Wrong remove packet id %d", CAST_S32(id));
+            continue;
+        }
+        if (mPackets[id].len == 0 &&
+            mPackets[id].func == nullptr &&
+            mPackets[id].version == 0)
+        {
+            continue;
+        }
+        logger->log("Remove packet: %d",
+            CAST_S32(id));
+        mPackets[id].name = "";
+        mPackets[id].len = 0;
         mPackets[id].func = nullptr;
         mPackets[id].version = 0;
     }

@@ -24,10 +24,13 @@
 #include "enums/simpletypes/skiperror.h"
 
 #include <map>
+#include <vector>
 #include <string>
 
-typedef std::map<int32_t, int32_t> NetworkInfos;
-typedef NetworkInfos::const_iterator NetworkInfosIter;
+typedef std::map<int32_t, int32_t> NetworkInPacketInfos;
+typedef NetworkInPacketInfos::const_iterator NetworkInPacketInfosIter;
+typedef std::vector<int> NetworkRemovePacketInfos;
+typedef NetworkRemovePacketInfos::const_iterator NetworkRemovePacketInfosIter;
 
 namespace NetworkDb
 {
@@ -44,7 +47,9 @@ namespace NetworkDb
      */
     void unload();
 
-    const NetworkInfos &getFakePackets();
+    const NetworkInPacketInfos &getFakePackets();
+
+    const NetworkRemovePacketInfos &getRemovePackets();
 }  // namespace NetworkDb
 
 #endif  // RESOURCES_DB_NETWORKDB_H

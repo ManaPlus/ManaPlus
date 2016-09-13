@@ -32,7 +32,8 @@
 namespace
 {
     bool mLoaded = false;
-    NetworkInfos mInPackets;
+    NetworkInPacketInfos mInPackets;
+    NetworkRemovePacketInfos mRemovePackets;
 }  // namespace
 
 void NetworkDb::load()
@@ -58,15 +59,29 @@ void NetworkDb::loadXmlFile(const std::string &fileName,
         "len",
         mInPackets,
         skipError);
+
+    readXmlIntVector(fileName,
+        "network",
+        "inpackets",
+        "removepacket",
+        "id",
+        mRemovePackets,
+        skipError);
 }
 
 void NetworkDb::unload()
 {
     mInPackets.clear();
+    mRemovePackets.clear();
     mLoaded = false;
 }
 
-const NetworkInfos &NetworkDb::getFakePackets()
+const NetworkInPacketInfos &NetworkDb::getFakePackets()
 {
     return mInPackets;
+}
+
+const NetworkRemovePacketInfos &NetworkDb::getRemovePackets()
+{
+    return mRemovePackets;
 }
