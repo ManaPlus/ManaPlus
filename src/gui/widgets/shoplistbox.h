@@ -91,7 +91,7 @@ class ShopListBox final : public ListBox
         void setType(const ShopListBoxTypeT type)
         { mType = type; }
 
-        ShopListBoxType getType() const
+        ShopListBoxTypeT getType() const
         { return mType; }
 
     private:
