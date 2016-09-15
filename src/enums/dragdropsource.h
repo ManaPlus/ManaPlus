@@ -39,7 +39,9 @@ enumStart(DragDropSource)
     Equipment,
     Cart,
     Mail,
-    Craft
+    Craft,
+    ShopBuy,
+    ShopSell
 }
 enumEnd(DragDropSource);
 

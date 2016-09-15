@@ -22,6 +22,7 @@
 
 #include "gui/widgets/shoplistbox.h"
 
+#include "dragdrop.h"
 #include "settings.h"
 
 #include "being/playerinfo.h"
@@ -35,9 +36,15 @@
 
 #include "gui/models/shopitems.h"
 
+#include "gui/windows/itemamountwindow.h"
+
+#include "net/serverfeatures.h"
+
 #include "render/graphics.h"
 
 #include "resources/image/image.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/item/shopitem.h"
 
@@ -239,6 +246,48 @@ void ShopListBox::mouseMoved(MouseEvent &event)
 void ShopListBox::mouseReleased(MouseEvent& event)
 {
     ListBox::mouseReleased(event);
+    if (event.getType() == MouseEventType::RELEASED2)
+    {
+        if (dragDrop.isEmpty())
+            return;
+        const DragDropSourceT src = dragDrop.getSource();
+        if (mType != ShopListBoxType::SellShop &&
+            mType != ShopListBoxType::BuyShop)
+        {
+            return;
+        }
+        if (mType == ShopListBoxType::SellShop &&
+            serverFeatures->haveCart() &&
+            src != DragDropSource::Cart)
+        {
+            return;
+        }
+        Inventory *inventory;
+        if (src == DragDropSource::Inventory)
+            inventory = PlayerInfo::getInventory();
+        else if (src == DragDropSource::Cart)
+            inventory = PlayerInfo::getCartInventory();
+        else
+            return;
+        if (!inventory)
+            return;
+        Item *const item = inventory->getItem(dragDrop.getTag());
+        if (mType == ShopListBoxType::BuyShop)
+        {
+            ItemAmountWindow::showWindow(
+                ItemAmountWindowUsage::ShopBuyAdd,
+                nullptr,
+                item);
+        }
+        else
+        {
+            ItemAmountWindow::showWindow(
+                ItemAmountWindowUsage::ShopSellAdd,
+                nullptr,
+                item);
+        }
+    }
+
     if (event.getButton() == MouseButton::RIGHT)
     {
         setSelected(std::max(0, getSelectionByMouse(event.getY())));
