@@ -46,12 +46,14 @@
 const int ITEM_ICON_SIZE = 32;
 
 ShopListBox::ShopListBox(const Widget2 *const widget,
-                         ListModel *const listModel) :
+                         ListModel *const listModel,
+                         const ShopListBoxTypeT type) :
     ListBox(widget, listModel, "shoplistbox.xml"),
     mPlayerMoney(0),
     mShopItems(nullptr),
     mBackgroundColor(getThemeColor(ThemeColorId::BACKGROUND)),
     mWarningColor(getThemeColor(ThemeColorId::SHOP_WARNING)),
+    mType(type),
     mPriceCheck(true),
     mProtectItems(false)
 {
@@ -62,12 +64,14 @@ ShopListBox::ShopListBox(const Widget2 *const widget,
 
 ShopListBox::ShopListBox(const Widget2 *const widget,
                          ListModel *const listModel,
-                         ShopItems *const shopListModel) :
+                         ShopItems *const shopListModel,
+                         const ShopListBoxTypeT type) :
     ListBox(widget, listModel, "shoplistbox.xml"),
     mPlayerMoney(0),
     mShopItems(shopListModel),
     mBackgroundColor(getThemeColor(ThemeColorId::BACKGROUND)),
     mWarningColor(getThemeColor(ThemeColorId::SHOP_WARNING)),
+    mType(type),
     mPriceCheck(true),
     mProtectItems(false)
 {

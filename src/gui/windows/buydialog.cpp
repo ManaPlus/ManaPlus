@@ -274,7 +274,8 @@ void BuyDialog::init()
 
     mShopItems = new ShopItems;
 
-    CREATEWIDGETV(mShopItemList, ShopListBox, this, mShopItems, mShopItems);
+    CREATEWIDGETV(mShopItemList, ShopListBox, this,
+        mShopItems, mShopItems, ShopListBoxType::Unknown);
     mScrollArea = new ScrollArea(this, mShopItemList,
         getOptionBool("showbackground"), "buy_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);

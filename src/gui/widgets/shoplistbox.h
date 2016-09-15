@@ -25,6 +25,8 @@
 
 #include "gui/widgets/listbox.h"
 
+#include "enums/gui/shoplistboxtype.h"
+
 class ShopItems;
 
 /**
@@ -41,14 +43,16 @@ class ShopListBox final : public ListBox
          * Constructor.
          */
         ShopListBox(const Widget2 *const widget,
-                    ListModel *const listModel);
+                    ListModel *const listModel,
+                    const ShopListBoxTypeT type);
 
         /**
          * Constructor with shopitems
          */
         ShopListBox(const Widget2 *const widget,
                     ListModel *const listModel,
-                    ShopItems *const shopListModel);
+                    ShopItems *const shopListModel,
+                    const ShopListBoxTypeT type);
 
         A_DELETE_COPY(ShopListBox)
 
@@ -84,6 +88,12 @@ class ShopListBox final : public ListBox
         void setProtectItems(bool p)
         { mProtectItems = p; }
 
+        void setType(const ShopListBoxTypeT type)
+        { mType = type; }
+
+        ShopListBoxType getType() const
+        { return mType; }
+
     private:
         int mPlayerMoney;
 
@@ -95,6 +105,7 @@ class ShopListBox final : public ListBox
 
         Color mBackgroundColor;
         Color mWarningColor;
+        ShopListBoxTypeT mType;
 
         bool mPriceCheck;
         bool mProtectItems;

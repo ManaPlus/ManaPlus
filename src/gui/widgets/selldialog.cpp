@@ -96,7 +96,8 @@ void SellDialog::postInit()
     mShopItemList = CREATEWIDGETR(ShopListBox,
         this,
         mShopItems,
-        mShopItems);
+        mShopItems,
+        ShopListBoxType::Unknown);
     mShopItemList->setProtectItems(true);
     mScrollArea = new ScrollArea(this, mShopItemList,
         getOptionBool("showbackground"), "sell_background.xml");

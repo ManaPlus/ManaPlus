@@ -4835,6 +4835,8 @@ void Being::setTileCoords(const int x, const int y) restrict2
 
 void Being::setMap(Map *restrict const map) restrict2
 {
+    mCastEndTime = 0;
+    delete2(mCastingEffect);
     ActorSprite::setMap(map);
     if (mMap)
     {
