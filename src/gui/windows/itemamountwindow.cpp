@@ -51,6 +51,7 @@
 
 #include "resources/item/item.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #ifndef USE_SDL2
@@ -309,6 +310,7 @@ void ItemAmountWindow::postInit()
 
 ItemAmountWindow::~ItemAmountWindow()
 {
+    delete2(mItemsModal);
 }
 
 // Show ItemTooltip
