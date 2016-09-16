@@ -42,8 +42,6 @@
 
 #include "render/graphics.h"
 
-#include "resources/image/image.h"
-
 #include "resources/inventory/inventory.h"
 
 #include "resources/item/shopitem.h"
