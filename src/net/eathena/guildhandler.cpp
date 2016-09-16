@@ -70,6 +70,11 @@ void GuildHandler::invite(const std::string &name) const
         outMsg.writeInt32(0, "unused");
         outMsg.writeInt32(0, "unused");
     }
+    else if (packetVersion >= 20120418)
+    {
+        createOutPacket(CMSG_GUILD_INVITE2);
+        outMsg.writeString(being->getName(), 24, "name");
+    }
 }
 
 void GuildHandler::invite(const Being *const being) const

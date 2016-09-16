@@ -290,6 +290,7 @@ packet(CMSG_NPC_CASH_SHOP_CLOSE,          0x0000,   0, nullptr);
 packet(CMSG_NPC_CASH_SHOP_OPEN,           0x0000,   0, nullptr);
 packet(CMSG_NPC_CASH_SHOP_REQUEST_TAB,    0x0000,   0, nullptr);
 packet(CMSG_NPC_CASH_SHOP_SCHEDULE,       0x0000,   0, nullptr);
+packet(CMSG_GUILD_INVITE2,                0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -676,6 +677,7 @@ if (packetVersion >= 20120418)
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
+    packet(CMSG_GUILD_INVITE2,            0x0916,  26, clif->pGuildInvite2);
 }
 
 // 20120702
