@@ -40,8 +40,6 @@
 
 #include "net/serverfeatures.h"
 
-#include "render/graphics.h"
-
 #include "resources/inventory/inventory.h"
 
 #include "resources/item/shopitem.h"
