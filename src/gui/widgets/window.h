@@ -67,6 +67,7 @@
 #define GUI_WIDGETS_WINDOW_H
 
 #include "enums/simpletypes/modal.h"
+#include "enums/simpletypes/move.h"
 
 #include "enums/resources/imageposition.h"
 
@@ -556,7 +557,7 @@ class Window notfinal : public BasicContainer2,
          * @param movable True if the window should be movable, false otherwise.
          * @see isMovable
          */
-        void setMovable(bool movable)
+        void setMovable(Move movable)
         { mMovable = movable; }
 
         /**
@@ -566,7 +567,7 @@ class Window notfinal : public BasicContainer2,
          * @see setMovable
          */
         bool isMovable() const
-        { return mMovable; }
+        { return mMovable == Move_true; }
 
         Rect getChildrenArea() override;
 
@@ -617,7 +618,7 @@ class Window notfinal : public BasicContainer2,
         /**
          * True if the window is movable, false otherwise.
          */
-        bool mMovable;
+        Move mMovable;
 
         /**
          * Holds a drag offset as an x coordinate where the drag of the window

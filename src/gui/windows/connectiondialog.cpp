@@ -42,7 +42,7 @@ ConnectionDialog::ConnectionDialog(const std::string &text,
     mCancelState(cancelState)
 {
     mTitleBarHeight = 0;
-    setMovable(false);
+    setMovable(Move_false);
     setMinWidth(0);
 
     ProgressIndicator *const progressIndicator = new ProgressIndicator(this);
