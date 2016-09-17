@@ -23,6 +23,7 @@
 #include "actormanager.h"
 #include "itemcolormanager.h"
 #include "notifymanager.h"
+#include "units.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -220,12 +221,12 @@ void VendingRecv::processReport(Net::MessageIn &msg)
 {
     const int index = msg.readInt16("inv index") - INVENTORY_OFFSET;
     const int amount = msg.readInt16("amount");
+    int money = 0;
     if (msg.getVersion() >= 20141016)
     {
-        UNIMPLIMENTEDPACKET;
         msg.readInt32("char id");
         msg.readInt32("time");
-        msg.readInt32("zeny");
+        money = msg.readInt32("zeny");
     }
     const Inventory *const inventory = PlayerInfo::getCartInventory();
     if (!inventory)
@@ -235,10 +236,22 @@ void VendingRecv::processReport(Net::MessageIn &msg)
         return;
 
     const ItemInfo &info = item->getInfo();
-    // TRANSLATORS: vending sold item message
-    const std::string str = strprintf(_("Sold item %s amount %d"),
-        info.getLink().c_str(),
-        amount);
+    std::string str;
+    if (money != 0)
+    {
+        // TRANSLATORS: vending sold item message
+        str = strprintf(_("Sold item %s amount %d. You got: %s"),
+            info.getLink().c_str(),
+            amount,
+            Units::formatCurrency(money).c_str());
+    }
+    else
+    {
+        // TRANSLATORS: vending sold item message
+        str = strprintf(_("Sold item %s amount %d"),
+            info.getLink().c_str(),
+            amount);
+    }
     NotifyManager::notify(NotifyTypes::VENDING_SOLD_ITEM, str);
 }
 
