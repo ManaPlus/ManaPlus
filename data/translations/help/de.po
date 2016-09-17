@@ -18,7 +18,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2016-07-03 21:08+0000\n"
+"PO-Revision-Date: 2016-09-12 17:39+0000\n"
 "Last-Translator: Kristin Joris <kristin.joris@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/akaras/manaplus/language/de/)\n"
 "MIME-Version: 1.0\n"

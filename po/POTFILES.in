@@ -143,7 +143,6 @@ src/logger.h
 src/net/ea/charserverrecv.cpp
 src/net/ea/chatrecv.cpp
 src/net/ea/gamerecv.cpp
-src/net/ea/guildrecv.cpp
 src/net/ea/loginrecv.cpp
 src/net/ea/network.cpp
 src/net/eathena/charserverrecv.cpp
@@ -151,6 +150,7 @@ src/net/eathena/chatrecv.cpp
 src/net/eathena/familyrecv.cpp
 src/net/eathena/generalhandler.cpp
 src/net/eathena/generalrecv.cpp
+src/net/eathena/guildrecv.cpp
 src/net/eathena/inventoryrecv.cpp
 src/net/eathena/itemflags.h
 src/net/eathena/loginrecv.cpp

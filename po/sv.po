@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-09-08 22:14+0300\n"
+"POT-Creation-Date: 2016-09-17 17:14+0300\n"
 "PO-Revision-Date: 2016-09-09 08:39+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/akaras/manaplus/"
@@ -32,7 +32,7 @@ msgstr ""
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:167 src/client.cpp:1575 src/client.cpp:1610
+#: src/actions/actions.cpp:167 src/client.cpp:1580 src/client.cpp:1615
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:182
 #: src/gui/dialogsmanager.cpp:202 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
@@ -48,7 +48,7 @@ msgstr ""
 #: src/gui/windows/charselectdialog.cpp:301 src/gui/windows/editdialog.cpp:50
 #: src/gui/windows/editserverdialog.cpp:59
 #: src/gui/windows/editserverdialog.cpp:209
-#: src/gui/windows/itemamountwindow.cpp:190 src/gui/windows/quitdialog.cpp:67
+#: src/gui/windows/itemamountwindow.cpp:191 src/gui/windows/quitdialog.cpp:67
 #: src/gui/windows/registerdialog.cpp:256 src/gui/windows/textdialog.cpp:53
 #: src/net/ea/charserverrecv.cpp:108 src/net/ea/charserverrecv.cpp:134
 #: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:423
@@ -399,7 +399,7 @@ msgstr "I"
 
 #. TRANSLATORS: chat message after death
 #. TRANSLATORS: player killed message
-#: src/being/localplayer.cpp:401 src/net/eathena/playerrecv.cpp:471
+#: src/being/localplayer.cpp:401 src/net/eathena/playerrecv.cpp:475
 #, c-format
 msgid "You were killed by %s."
 msgstr ""
@@ -521,69 +521,69 @@ msgstr "Du ser %s"
 #. TRANSLATORS: add player to completle ignore list
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add player to ignore list
-#: src/being/playerrelations.cpp:471 src/gui/popups/popupmenu.cpp:2630
+#: src/being/playerrelations.cpp:467 src/gui/popups/popupmenu.cpp:2630
 #: src/gui/popups/popupmenu.cpp:2672
 msgid "Completely ignore"
 msgstr "Fullständigt ignorera"
 
 #. TRANSLATORS: ignore/unignore action
-#: src/being/playerrelations.cpp:488
+#: src/being/playerrelations.cpp:484
 msgid "Print '...'"
 msgstr "Print '...'"
 
 #. TRANSLATORS: ignore/unignore action
-#: src/being/playerrelations.cpp:511
+#: src/being/playerrelations.cpp:507
 msgid "Blink name"
 msgstr "Blink-namn"
 
 #. TRANSLATORS: ignore strategi
-#: src/being/playerrelations.cpp:557
+#: src/being/playerrelations.cpp:553
 msgid "Floating '...' bubble"
 msgstr "Floating '...' bubble"
 
 #. TRANSLATORS: ignore strategi
-#: src/being/playerrelations.cpp:561
+#: src/being/playerrelations.cpp:557
 msgid "Floating bubble"
 msgstr "Floating bubble"
 
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
-#: src/client.cpp:875 src/dyetool/client.cpp:492 src/gui/windowmenu.cpp:189
+#: src/client.cpp:877 src/dyetool/client.cpp:492 src/gui/windowmenu.cpp:189
 #: src/gui/windows/setupwindow.cpp:66
 msgid "Setup"
 msgstr "Inställningar"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:878 src/dyetool/client.cpp:495
+#: src/client.cpp:880 src/dyetool/client.cpp:495
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:881 src/dyetool/client.cpp:498
+#: src/client.cpp:883 src/dyetool/client.cpp:498
 #: src/gui/widgets/tabs/setup_video.cpp:110
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:884 src/dyetool/client.cpp:501
+#: src/client.cpp:886 src/dyetool/client.cpp:501
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:887 src/dyetool/client.cpp:504
+#: src/client.cpp:889 src/dyetool/client.cpp:504
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
-#: src/client.cpp:890 src/dyetool/client.cpp:507 src/gui/windowmenu.cpp:74
+#: src/client.cpp:892 src/dyetool/client.cpp:507 src/gui/windowmenu.cpp:74
 #: src/gui/windows/helpwindow.cpp:53
 msgid "Help"
 msgstr "Hjälp"
@@ -604,7 +604,7 @@ msgstr "Hjälp"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:894 src/client.cpp:1489 src/client.cpp:1508
+#: src/client.cpp:896 src/client.cpp:1494 src/client.cpp:1513
 #: src/dyetool/client.cpp:511 src/gui/dialogsmanager.cpp:116
 #: src/gui/popups/popupmenu.cpp:765 src/gui/popups/popupmenu.cpp:842
 #: src/gui/popups/popupmenu.cpp:1096 src/gui/windows/didyouknowwindow.cpp:81
@@ -617,32 +617,32 @@ msgid "Close"
 msgstr "Stäng"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1120
+#: src/client.cpp:1122
 msgid "Connecting to server"
 msgstr "Ansluter till server"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1177 src/gui/windowmanager_unittest.cc:663
+#: src/client.cpp:1179 src/gui/windowmanager_unittest.cc:663
 msgid "Logging in"
 msgstr "Loggar in"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1226
+#: src/client.cpp:1228
 msgid "Entering game world"
 msgstr "Går in i spelvärld"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1375
+#: src/client.cpp:1380
 msgid "Requesting characters"
 msgstr "Begär karaktärer"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1418
+#: src/client.cpp:1423
 msgid "Connecting to the game server"
 msgstr "Ansluter till spelservern"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1430
+#: src/client.cpp:1435
 msgid "Changing game servers"
 msgstr "Ändrar spelserver"
 
@@ -658,7 +658,7 @@ msgstr "Ändrar spelserver"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1486 src/client.cpp:1505 src/client.cpp:1710
+#: src/client.cpp:1491 src/client.cpp:1510 src/client.cpp:1715
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:471
@@ -672,27 +672,27 @@ msgid "Error"
 msgstr "Error"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1524
+#: src/client.cpp:1529
 msgid "Requesting registration details"
 msgstr "Begär registreringsuppgifter"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1571
+#: src/client.cpp:1576
 msgid "Password Change"
 msgstr "Lösenordsändring"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1573
+#: src/client.cpp:1578
 msgid "Password changed successfully!"
 msgstr "Lösenordsändring har lyckats!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1606
+#: src/client.cpp:1611
 msgid "Email Change"
 msgstr "Byte av E-post"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1608
+#: src/client.cpp:1613
 msgid "Email changed successfully!"
 msgstr "E-posten har ändrats!"
 
@@ -1958,8 +1958,8 @@ msgstr "Prata med"
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:277 src/gui/popups/popupmenu.cpp:2702
 #: src/gui/windows/buydialog.cpp:193 src/gui/windows/buydialog.cpp:213
-#: src/gui/windows/buydialog.cpp:234 src/gui/windows/buydialog.cpp:308
-#: src/gui/windows/buydialog.cpp:312 src/gui/windows/buyselldialog.cpp:71
+#: src/gui/windows/buydialog.cpp:234 src/gui/windows/buydialog.cpp:309
+#: src/gui/windows/buydialog.cpp:313 src/gui/windows/buyselldialog.cpp:71
 #: src/gui/windows/shopwindow.cpp:162 src/input/pages/basic.cpp:250
 #: src/resources/db/npcdb.cpp:154
 msgid "Buy"
@@ -1976,8 +1976,8 @@ msgstr "Köp"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:280 src/gui/popups/popupmenu.cpp:2714
-#: src/gui/widgets/selldialog.cpp:54 src/gui/widgets/selldialog.cpp:107
-#: src/gui/widgets/selldialog.cpp:145 src/gui/windows/buyselldialog.cpp:73
+#: src/gui/widgets/selldialog.cpp:54 src/gui/widgets/selldialog.cpp:108
+#: src/gui/widgets/selldialog.cpp:146 src/gui/windows/buyselldialog.cpp:73
 #: src/gui/windows/shopwindow.cpp:164 src/input/pages/basic.cpp:256
 #: src/resources/db/npcdb.cpp:156
 msgid "Sell"
@@ -2135,7 +2135,7 @@ msgstr "Lägg till namnet i chat"
 #: src/gui/windows/charcreatedialog.cpp:114
 #: src/gui/windows/connectiondialog.cpp:52
 #: src/gui/windows/editserverdialog.cpp:61
-#: src/gui/windows/itemamountwindow.cpp:192 src/gui/windows/quitdialog.cpp:69
+#: src/gui/windows/itemamountwindow.cpp:193 src/gui/windows/quitdialog.cpp:69
 #: src/gui/windows/registerdialog.cpp:64 src/gui/windows/setupwindow.cpp:101
 #: src/gui/windows/textcommandeditor.cpp:98 src/gui/windows/textdialog.cpp:60
 #: src/gui/windows/updaterwindow.cpp:190 src/input/pages/gui.cpp:103
@@ -3562,7 +3562,7 @@ msgstr "Väg-märke"
 #. TRANSLATORS: status bar label
 #: src/gui/widgets/attrs/changedisplay.cpp:48
 #: src/gui/widgets/attrs/changedisplay.cpp:70
-#: src/gui/widgets/selldialog.cpp:133 src/gui/windows/buydialog.cpp:322
+#: src/gui/widgets/selldialog.cpp:134 src/gui/windows/buydialog.cpp:323
 #: src/gui/windows/statuswindow.cpp:434 src/gui/windows/statuswindow.cpp:490
 msgid "Max"
 msgstr "Max"
@@ -3574,9 +3574,9 @@ msgstr "Max"
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
 #: src/gui/widgets/attrs/changedisplay.cpp:50
-#: src/gui/widgets/selldialog.cpp:129 src/gui/windows/buydialog.cpp:302
-#: src/gui/windows/itemamountwindow.cpp:188
-#: src/gui/windows/itemamountwindow.cpp:224 src/gui/windows/npcdialog.cpp:121
+#: src/gui/widgets/selldialog.cpp:130 src/gui/windows/buydialog.cpp:303
+#: src/gui/windows/itemamountwindow.cpp:189
+#: src/gui/windows/itemamountwindow.cpp:225 src/gui/windows/npcdialog.cpp:121
 msgid "+"
 msgstr "+"
 
@@ -3617,7 +3617,7 @@ msgstr "Öppna url"
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: trade window button
-#: src/gui/widgets/selldialog.cpp:107 src/gui/windows/buydialog.cpp:308
+#: src/gui/widgets/selldialog.cpp:108 src/gui/windows/buydialog.cpp:309
 #: src/gui/windows/maileditwindow.cpp:55 src/gui/windows/npcdialog.cpp:130
 #: src/gui/windows/serverdialog.cpp:108 src/gui/windows/shopwindow.cpp:118
 #: src/gui/windows/tradewindow.cpp:85
@@ -3631,7 +3631,7 @@ msgstr "Lägg till"
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: input action name
-#: src/gui/widgets/selldialog.cpp:111 src/gui/windows/buydialog.cpp:320
+#: src/gui/widgets/selldialog.cpp:112 src/gui/windows/buydialog.cpp:321
 #: src/gui/windows/quitdialog.cpp:51 src/gui/windows/quitdialog.cpp:56
 #: src/gui/windows/quitdialog.cpp:58 src/gui/windows/serverdialog.cpp:104
 #: src/gui/windows/textselectdialog.cpp:91 src/input/pages/basic.cpp:226
@@ -3643,16 +3643,16 @@ msgstr "Avsluta"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
-#: src/gui/widgets/selldialog.cpp:131 src/gui/windows/buydialog.cpp:305
-#: src/gui/windows/itemamountwindow.cpp:186
-#: src/gui/windows/itemamountwindow.cpp:221 src/gui/windows/npcdialog.cpp:123
+#: src/gui/widgets/selldialog.cpp:132 src/gui/windows/buydialog.cpp:306
+#: src/gui/windows/itemamountwindow.cpp:187
+#: src/gui/windows/itemamountwindow.cpp:222 src/gui/windows/npcdialog.cpp:123
 msgid "-"
 msgstr "-"
 
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
-#: src/gui/widgets/selldialog.cpp:140 src/gui/widgets/selldialog.cpp:357
-#: src/gui/windows/buydialog.cpp:288 src/gui/windows/buydialog.cpp:715
+#: src/gui/widgets/selldialog.cpp:141 src/gui/widgets/selldialog.cpp:358
+#: src/gui/windows/buydialog.cpp:289 src/gui/windows/buydialog.cpp:716
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Pris: %s / Totalt: %s"
@@ -6286,7 +6286,7 @@ msgstr "SET"
 #. TRANSLATORS: short key name
 #. TRANSLATORS: outfits window label
 #: src/gui/windowmenu.cpp:322 src/gui/windows/outfitwindow.cpp:77
-#: src/gui/windows/outfitwindow.cpp:629
+#: src/gui/windows/outfitwindow.cpp:625
 #, c-format
 msgid "Key: %s"
 msgstr "Nyckel: %s"
@@ -6313,20 +6313,20 @@ msgid "Create items"
 msgstr "Skapa items"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:297
+#: src/gui/windows/buydialog.cpp:298
 msgid "Amount:"
 msgstr "Antal:"
 
 #. TRANSLATORS: buy dialog button
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/buydialog.cpp:308 src/gui/windows/charcreatedialog.cpp:112
+#: src/gui/windows/buydialog.cpp:309 src/gui/windows/charcreatedialog.cpp:112
 #: src/gui/windows/charselectdialog.cpp:609
 msgid "Create"
 msgstr "Skapa"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:359
+#: src/gui/windows/buydialog.cpp:360
 msgid "Filter:"
 msgstr ""
 
@@ -6819,67 +6819,67 @@ msgid "Insert %s into %s?"
 msgstr ""
 
 #. TRANSLATORS: item amount window button
-#: src/gui/windows/itemamountwindow.cpp:194
+#: src/gui/windows/itemamountwindow.cpp:195
 msgid "All"
 msgstr "Alla"
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:251
+#: src/gui/windows/itemamountwindow.cpp:252
 msgid "Select amount of items to trade."
 msgstr "Välj antal items att byta."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:255
+#: src/gui/windows/itemamountwindow.cpp:256
 msgid "Select amount of items to drop."
 msgstr "Välj antal items att slänga."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:259
+#: src/gui/windows/itemamountwindow.cpp:260
 msgid "Select amount of items to store."
 msgstr "Välj antal items att lagra."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:263
+#: src/gui/windows/itemamountwindow.cpp:264
 msgid "Select amount of items to send."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:267
+#: src/gui/windows/itemamountwindow.cpp:268
 msgid "Select amount of items to craft."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:271
+#: src/gui/windows/itemamountwindow.cpp:272
 msgid "Select amount of items to store to cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:275
+#: src/gui/windows/itemamountwindow.cpp:276
 msgid "Select amount of items to retrieve."
 msgstr "Välj antal items att apportera."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:279
+#: src/gui/windows/itemamountwindow.cpp:280
 msgid "Select amount of items to retrieve from cart."
 msgstr ""
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:283
+#: src/gui/windows/itemamountwindow.cpp:284
 msgid "Select amount of items to split."
 msgstr "Välj antal items att dela."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:287
+#: src/gui/windows/itemamountwindow.cpp:288
 msgid "Add to buy shop."
 msgstr "Lägg till i buy shop."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:291
+#: src/gui/windows/itemamountwindow.cpp:292
 msgid "Add to sell shop."
 msgstr "Lägg till i sell shop."
 
 #. TRANSLATORS: amount window message
-#: src/gui/windows/itemamountwindow.cpp:295
+#: src/gui/windows/itemamountwindow.cpp:296
 msgid "Unknown."
 msgstr "Okänd."
 
@@ -7209,7 +7209,7 @@ msgid "Do you really want to sell %s?"
 msgstr "Vill du verkligen sälja %s?"
 
 #. TRANSLATORS: outfits window label
-#: src/gui/windows/outfitwindow.cpp:69 src/gui/windows/outfitwindow.cpp:623
+#: src/gui/windows/outfitwindow.cpp:69 src/gui/windows/outfitwindow.cpp:619
 #, c-format
 msgid "Outfit: %d"
 msgstr "Klädsel: %d"
@@ -9063,60 +9063,6 @@ msgstr "Spel"
 msgid "Request to quit denied!"
 msgstr "Efterfrågning att avsluta nekad!"
 
-#. TRANSLATORS: guild info message
-#: src/net/ea/guildrecv.cpp:116
-#, c-format
-msgid "Guild name: %s"
-msgstr "Guild-namn: %s"
-
-#. TRANSLATORS: guild info message
-#: src/net/ea/guildrecv.cpp:119
-#, c-format
-msgid "Guild master: %s"
-msgstr "Guild master: %s"
-
-#. TRANSLATORS: guild info message
-#: src/net/ea/guildrecv.cpp:122
-#, c-format
-msgid "Guild level: %d"
-msgstr "Guild level: %d"
-
-#. TRANSLATORS: guild info message
-#: src/net/ea/guildrecv.cpp:125
-#, c-format
-msgid "Online members: %d"
-msgstr "Medlemmar online: %d"
-
-#. TRANSLATORS: guild info message
-#: src/net/ea/guildrecv.cpp:128
-#, c-format
-msgid "Max members: %d"
-msgstr "Maximalt antal medlemmar: %d"
-
-#. TRANSLATORS: guild info message
-#: src/net/ea/guildrecv.cpp:131
-#, c-format
-msgid "Average level: %d"
-msgstr "Medel-level: %d"
-
-#. TRANSLATORS: guild info message
-#: src/net/ea/guildrecv.cpp:134
-#, c-format
-msgid "Guild exp: %d"
-msgstr "Guild exp: %d"
-
-#. TRANSLATORS: guild info message
-#: src/net/ea/guildrecv.cpp:137
-#, c-format
-msgid "Guild next exp: %d"
-msgstr "Guild nästa exp: %d"
-
-#. TRANSLATORS: guild info message
-#: src/net/ea/guildrecv.cpp:140
-#, c-format
-msgid "Guild castle: %s"
-msgstr "Guild slott: %s"
-
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:119 src/net/eathena/loginrecv.cpp:57
 msgid "Unregistered ID."
@@ -9427,6 +9373,60 @@ msgstr "Okänt anslutningsfel."
 msgid "Map not found"
 msgstr ""
 
+#. TRANSLATORS: guild info message
+#: src/net/eathena/guildrecv.cpp:116
+#, c-format
+msgid "Guild name: %s"
+msgstr "Guild-namn: %s"
+
+#. TRANSLATORS: guild info message
+#: src/net/eathena/guildrecv.cpp:119
+#, c-format
+msgid "Guild master: %s"
+msgstr "Guild master: %s"
+
+#. TRANSLATORS: guild info message
+#: src/net/eathena/guildrecv.cpp:122
+#, c-format
+msgid "Guild level: %d"
+msgstr "Guild level: %d"
+
+#. TRANSLATORS: guild info message
+#: src/net/eathena/guildrecv.cpp:125
+#, c-format
+msgid "Online members: %d"
+msgstr "Medlemmar online: %d"
+
+#. TRANSLATORS: guild info message
+#: src/net/eathena/guildrecv.cpp:128
+#, c-format
+msgid "Max members: %d"
+msgstr "Maximalt antal medlemmar: %d"
+
+#. TRANSLATORS: guild info message
+#: src/net/eathena/guildrecv.cpp:131
+#, c-format
+msgid "Average level: %d"
+msgstr "Medel-level: %d"
+
+#. TRANSLATORS: guild info message
+#: src/net/eathena/guildrecv.cpp:134
+#, c-format
+msgid "Guild exp: %d"
+msgstr "Guild exp: %d"
+
+#. TRANSLATORS: guild info message
+#: src/net/eathena/guildrecv.cpp:137
+#, c-format
+msgid "Guild next exp: %d"
+msgstr "Guild nästa exp: %d"
+
+#. TRANSLATORS: guild info message
+#: src/net/eathena/guildrecv.cpp:140
+#, c-format
+msgid "Guild castle: %s"
+msgstr "Guild slott: %s"
+
 #. TRANSLATORS: notification message
 #: src/net/eathena/inventoryrecv.cpp:844
 #, c-format
@@ -9463,7 +9463,7 @@ msgid "You have new mail from %s with subject %s"
 msgstr ""
 
 #. TRANSLATORS: player killed message
-#: src/net/eathena/playerrecv.cpp:460
+#: src/net/eathena/playerrecv.cpp:464
 msgid "You were killed by unknown source."
 msgstr ""
 
@@ -9574,7 +9574,13 @@ msgid "Select warp target"
 msgstr ""
 
 #. TRANSLATORS: vending sold item message
-#: src/net/eathena/vendingrecv.cpp:232
+#: src/net/eathena/vendingrecv.cpp:243
+#, c-format
+msgid "Sold item %s amount %d. You got: %s"
+msgstr ""
+
+#. TRANSLATORS: vending sold item message
+#: src/net/eathena/vendingrecv.cpp:251
 #, c-format
 msgid "Sold item %s amount %d"
 msgstr ""
