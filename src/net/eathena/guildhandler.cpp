@@ -26,12 +26,17 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
-#include "net/ea/guildrecv.h"
+#include "gui/widgets/tabs/chat/guildtab.h"
 
+#include "net/eathena/guildrecv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
+
+GuildTab *guildTab = nullptr;
 
 extern Net::GuildHandler *guildHandler;
 extern int packetVersion;
@@ -40,13 +45,25 @@ namespace EAthena
 {
 
 GuildHandler::GuildHandler() :
-    Ea::GuildHandler()
+    Net::GuildHandler()
 {
     guildHandler = this;
+    GuildRecv::showBasicInfo = false;
 }
 
 GuildHandler::~GuildHandler()
 {
+    delete2(guildTab);
+}
+
+void GuildHandler::clear() const
+{
+    taGuild = nullptr;
+}
+
+ChatTab *GuildHandler::getTab() const
+{
+    return guildTab;
 }
 
 void GuildHandler::create(const std::string &name) const
@@ -164,7 +181,7 @@ void GuildHandler::info() const
     // 3 = skill info
     // 4 = expulsion list
 
-    Ea::GuildRecv::showBasicInfo = true;
+    GuildRecv::showBasicInfo = true;
     createOutPacket(CMSG_GUILD_REQUEST_INFO);
     outMsg.writeInt32(0, "action");  // Request basic info
 }

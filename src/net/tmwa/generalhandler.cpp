@@ -202,12 +202,8 @@ void GeneralHandler::gameStarted() const
 void GeneralHandler::gameEnded() const
 {
     if (socialWindow)
-    {
-        socialWindow->removeTab(Ea::taGuild);
         socialWindow->removeTab(Ea::taParty);
-    }
 
-    delete2(guildTab);
     delete2(partyTab);
 }
 

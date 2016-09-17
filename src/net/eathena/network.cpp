@@ -30,7 +30,6 @@
 #include "net/ea/charserverrecv.h"
 #include "net/ea/chatrecv.h"
 #include "net/ea/gamerecv.h"
-#include "net/ea/guildrecv.h"
 #include "net/ea/inventoryrecv.h"
 #include "net/ea/itemrecv.h"
 #include "net/ea/loginrecv.h"

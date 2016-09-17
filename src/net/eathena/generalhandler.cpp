@@ -198,7 +198,7 @@ void GeneralHandler::gameEnded() const
 {
     if (socialWindow)
     {
-        socialWindow->removeTab(Ea::taGuild);
+        socialWindow->removeTab(taGuild);
         socialWindow->removeTab(Ea::taParty);
     }
 

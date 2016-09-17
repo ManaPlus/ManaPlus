@@ -29,13 +29,22 @@ namespace TmwAthena
 {
 
 GuildHandler::GuildHandler() :
-    Ea::GuildHandler()
+    Net::GuildHandler()
 {
     guildHandler = this;
 }
 
 GuildHandler::~GuildHandler()
 {
+}
+
+void GuildHandler::clear() const
+{
+}
+
+ChatTab *GuildHandler::getTab() const
+{
+    return nullptr;
 }
 
 void GuildHandler::create(const std::string &name A_UNUSED) const

@@ -37,10 +37,10 @@
 
 #include "debug.h"
 
-namespace Ea
+namespace EAthena
 {
     extern Guild *taGuild;
-}  // namespace Ea
+}  // namespace EAthena
 
 GuildTab::GuildTab(const Widget2 *const widget) :
     // TRANSLATORS: guild chat tab name
@@ -60,23 +60,23 @@ GuildTab::~GuildTab()
 bool GuildTab::handleCommand(const std::string &restrict type,
                              const std::string &restrict args)
 {
-    if (type == "invite" && Ea::taGuild)
+    if (type == "invite" && EAthena::taGuild)
     {
         guildHandler->invite(args);
     }
-    else if (type == "leave" && Ea::taGuild)
+    else if (type == "leave" && EAthena::taGuild)
     {
         inputManager.executeChatCommand(InputAction::LEAVE_GUILD,
             std::string(),
             this);
     }
-    else if (type == "kick" && Ea::taGuild)
+    else if (type == "kick" && EAthena::taGuild)
     {
         inputManager.executeChatCommand(InputAction::KICK_GUILD,
             args,
             this);
     }
-    else if (type == "notice" && Ea::taGuild)
+    else if (type == "notice" && EAthena::taGuild)
     {
         inputManager.executeChatCommand(InputAction::GUILD_NOTICE,
             args,
@@ -92,7 +92,7 @@ bool GuildTab::handleCommand(const std::string &restrict type,
 
 void GuildTab::handleInput(const std::string &msg)
 {
-    if (!Ea::taGuild)
+    if (!EAthena::taGuild)
         return;
 
     guildHandler->chat(ChatWindow::doReplace(msg));
@@ -100,8 +100,8 @@ void GuildTab::handleInput(const std::string &msg)
 
 void GuildTab::getAutoCompleteList(StringVect &names) const
 {
-    if (Ea::taGuild)
-        Ea::taGuild->getNames(names);
+    if (EAthena::taGuild)
+        EAthena::taGuild->getNames(names);
 }
 
 void GuildTab::getAutoCompleteCommands(StringVect &names) const

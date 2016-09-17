@@ -1425,10 +1425,6 @@ manaplus_SOURCES += main.cpp \
 	      net/ea/gamehandler.h \
 	      net/ea/gamerecv.cpp \
 	      net/ea/gamerecv.h \
-	      net/ea/guildhandler.cpp \
-	      net/ea/guildhandler.h \
-	      net/ea/guildrecv.cpp \
-	      net/ea/guildrecv.h \
 	      net/ea/inventoryhandler.cpp \
 	      net/ea/inventoryhandler.h \
 	      net/ea/inventoryrecv.cpp \

@@ -22,12 +22,14 @@
 #ifndef NET_EATHENA_GUILDHANDLER_H
 #define NET_EATHENA_GUILDHANDLER_H
 
-#include "net/ea/guildhandler.h"
+#include "net/guildhandler.h"
+
+class GuildTab;
 
 namespace EAthena
 {
 
-class GuildHandler final : public Ea::GuildHandler
+class GuildHandler final : public Net::GuildHandler
 {
     public:
         GuildHandler();
@@ -35,6 +37,10 @@ class GuildHandler final : public Ea::GuildHandler
         A_DELETE_COPY(GuildHandler)
 
         ~GuildHandler();
+
+        void clear() const override final;
+
+        ChatTab *getTab() const override final;
 
         void create(const std::string &name) const override final;
 
@@ -89,11 +95,10 @@ class GuildHandler final : public Ea::GuildHandler
         void requestEmblem(const int guildId) const override final;
 };
 
+extern Guild *taGuild;
+
 }  // namespace EAthena
 
-namespace Ea
-{
-    extern Guild *taGuild;
-}
+extern GuildTab *guildTab;
 
 #endif  // NET_EATHENA_GUILDHANDLER_H
