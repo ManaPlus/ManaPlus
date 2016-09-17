@@ -28,7 +28,6 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 
-#include "gui/widgets/tabs/chat/guildtab.h"
 #include "gui/widgets/tabs/chat/partytab.h"
 
 #include "net/tmwa/adminhandler.h"
