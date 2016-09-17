@@ -86,7 +86,7 @@ int BrowserBox::mInstances = 0;
 
 BrowserBox::BrowserBox(const Widget2 *const widget,
                        const unsigned int mode,
-                       const bool opaque,
+                       const Opaque opaque,
                        const std::string &skin) :
     Widget(widget),
     MouseListener(),
@@ -506,7 +506,7 @@ void BrowserBox::draw(Graphics *const graphics)
     if (mDimension.width != mWidth)
         updateHeight();
 
-    if (mOpaque)
+    if (mOpaque == Opaque_true)
     {
         graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(Rect(0, 0,

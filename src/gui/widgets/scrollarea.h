@@ -68,6 +68,8 @@
 
 #include "gui/widgets/basiccontainer.h"
 
+#include "enums/simpletypes/opaque.h"
+
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
@@ -113,7 +115,7 @@ class ScrollArea final : public BasicContainer,
          */
         ScrollArea(Widget2 *const widget2,
                    Widget *const widget,
-                   const bool opaque = true,
+                   const Opaque opaque = Opaque_true,
                    const std::string &skin = "");
 
         A_DELETE_COPY(ScrollArea)
@@ -152,13 +154,13 @@ class ScrollArea final : public BasicContainer,
         /**
          * Sets whether the widget should draw its background or not.
          */
-        void setOpaque(bool opaque);
+        void setOpaque(Opaque opaque);
 
         /**
          * Returns whether the widget draws its background or not.
          */
         bool isOpaque() const A_WARN_UNUSED
-        { return mOpaque; }
+        { return mOpaque == Opaque_true; }
 
         /**
          * Called when the mouse moves in the widget area.
@@ -591,7 +593,7 @@ class ScrollArea final : public BasicContainer,
          * True if the scroll area should be opaque (that is
          * display its background), false otherwise.
          */
-        bool mOpaque;
+        Opaque mOpaque;
 
         bool mHasMouse;
 };

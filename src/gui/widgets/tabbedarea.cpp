@@ -91,7 +91,7 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
     mVisibleTabsWidth(0),
     mTabScrollIndex(0),
     mRightMargin(0),
-    mOpaque(false),
+    mOpaque(Opaque_false),
     mEnableScrollButtons(false),
     mFollowDownScroll(false),
     mBlockSwitching(true),
@@ -104,12 +104,12 @@ TabbedArea::TabbedArea(const Widget2 *const widget) :
 
 void TabbedArea::postInit()
 {
-    mTabContainer->setOpaque(false);
+    mTabContainer->setOpaque(Opaque_false);
 
     add(mTabContainer);
     add(mWidgetContainer);
 
-    mWidgetContainer->setOpaque(false);
+    mWidgetContainer->setOpaque(Opaque_false);
     addWidgetListener(this);
 
     mArrowButton[0] = new Button(this, "<", "shift_left", this);

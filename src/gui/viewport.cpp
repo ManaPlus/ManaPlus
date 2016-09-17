@@ -95,7 +95,7 @@ Viewport::Viewport() :
     mMouseClicked(false),
     mPlayerFollowMouse(false)
 {
-    setOpaque(false);
+    setOpaque(Opaque_false);
     addMouseListener(this);
 
     config.addListener("ScrollLaziness", this);

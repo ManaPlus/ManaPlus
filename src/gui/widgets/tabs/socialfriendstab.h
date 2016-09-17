@@ -43,7 +43,7 @@ class SocialFriendsTab final : public SocialTab
     public:
         SocialFriendsTab(const Widget2 *const widget,
                          std::string name,
-                         const bool showBackground) :
+                         const Opaque showBackground) :
             SocialTab(widget),
             mBeings(new BeingsListModel),
             mFriendSorter()

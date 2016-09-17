@@ -141,7 +141,8 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mServersList->addMouseListener(this);
 
     ScrollArea *const usedScroll = new ScrollArea(this, mServersList,
-        getOptionBool("showbackground"), "server_background.xml");
+        fromBool(getOptionBool("showbackground"), Opaque),
+        "server_background.xml");
     usedScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mServersList->addSelectionListener(this);

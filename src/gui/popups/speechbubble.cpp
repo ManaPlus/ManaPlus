@@ -39,7 +39,7 @@ SpeechBubble::SpeechBubble() :
     mText(),
     mSpacing(mSkin ? mSkin->getOption("spacing") : 2),
     mCaption(new Label(this)),
-    mSpeechBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+    mSpeechBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
         "speechbrowserbox.xml"))
 {
     setContentSize(140, 46);
@@ -47,7 +47,7 @@ SpeechBubble::SpeechBubble() :
     setMinHeight(8);
 
     mCaption->setFont(boldFont);
-    mSpeechBox->setOpaque(false);
+    mSpeechBox->setOpaque(Opaque_false);
     mSpeechBox->setForegroundColorAll(getThemeColor(ThemeColorId::BUBBLE_TEXT),
         getThemeColor(ThemeColorId::BUBBLE_TEXT_OUTLINE));
 }

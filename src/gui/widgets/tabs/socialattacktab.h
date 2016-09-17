@@ -38,7 +38,7 @@ class SocialAttackTab final : public SocialTab
 {
     public:
         SocialAttackTab(const Widget2 *const widget,
-                        const bool showBackground) :
+                        const Opaque showBackground) :
             SocialTab(widget),
             mBeings(new BeingsListModel)
         {

@@ -341,7 +341,9 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
             SkillListBox *const listbox = new SkillListBox(this, model);
             listbox->setActionEventId("sel");
             listbox->addActionListener(this);
-            ScrollArea *const scroll = new ScrollArea(this, listbox, false);
+            ScrollArea *const scroll = new ScrollArea(this,
+                listbox,
+                Opaque_false);
             scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
             scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 

@@ -84,7 +84,7 @@ TextBox::TextBox(const Widget2 *const widget) :
     mCaretRow(0),
     mMinWidth(getWidth()),
     mEditable(true),
-    mOpaque(true)
+    mOpaque(Opaque_true)
 {
     mAllowLogic = false;
     setText("");
@@ -95,7 +95,7 @@ TextBox::TextBox(const Widget2 *const widget) :
     adjustSize();
 
     mForegroundColor = getThemeColor(ThemeColorId::TEXTBOX);
-    setOpaque(false);
+    setOpaque(Opaque_false);
     setFrameSize(0);
 }
 
@@ -445,7 +445,7 @@ void TextBox::keyPressed(KeyEvent& event)
 void TextBox::draw(Graphics *const graphics)
 {
     BLOCK_START("TextBox::draw")
-    if (mOpaque)
+    if (mOpaque == Opaque_true)
     {
         graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(Rect(0, 0, getWidth(), getHeight()));

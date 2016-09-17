@@ -68,6 +68,8 @@
 
 #include "gui/widgets/widget.h"
 
+#include "enums/simpletypes/opaque.h"
+
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 
@@ -258,7 +260,7 @@ class TextBox final : public Widget,
          * @see setOpaque
          */
         bool isOpaque() const
-        { return mOpaque; }
+        { return mOpaque == Opaque_true; }
 
         /**
          * Sets the text box to be opaque or not. An opaque text box will draw
@@ -268,7 +270,7 @@ class TextBox final : public Widget,
          * @param opaque True if the text box should be opaque, false otherwise.
          * @see isOpaque
          */
-        void setOpaque(const bool opaque)
+        void setOpaque(const Opaque opaque)
         { mOpaque = opaque; }
 
         void fontChanged() override final
@@ -321,7 +323,7 @@ class TextBox final : public Widget,
         /**
          * True if the text box is editable, false otherwise.
          */
-        bool mOpaque;
+        Opaque mOpaque;
 };
 
 #endif  // GUI_WIDGETS_TEXTBOX_H

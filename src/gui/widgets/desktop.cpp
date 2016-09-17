@@ -52,7 +52,7 @@ Desktop::Desktop(const Widget2 *const widget) :
     LinkHandler(),
     WidgetListener(),
     mWallpaper(nullptr),
-    mVersionLabel(new BrowserBox(this, BrowserBox::AUTO_WRAP, false,
+    mVersionLabel(new BrowserBox(this, BrowserBox::AUTO_WRAP, Opaque_false,
         "browserbox.xml")),
     mSkin(nullptr),
     mBackgroundColor(getThemeColor(ThemeColorId::BACKGROUND, 128)),

@@ -104,7 +104,7 @@ class SocialTab notfinal : public Tab
         }
 
         void createControls(AvatarListModel *const listModel,
-                            const bool showBackground)
+                            const Opaque showBackground)
         {
             CREATEWIDGETV(mList, AvatarListBox, this, listModel);
             mScroll = new ScrollArea(this, mList, showBackground,

@@ -57,7 +57,8 @@ MailWindow::MailWindow() :
     mListBox(CREATEWIDGETR(ExtendedListBox,
         this, mMailModel, "extendedlistbox.xml")),
     mListScrollArea(new ScrollArea(this, mListBox,
-        getOptionBool("showlistbackground"), "mail_listbackground.xml")),
+        fromBool(getOptionBool("showlistbackground"), Opaque),
+        "mail_listbackground.xml")),
     // TRANSLATORS: mail window button
     mRefreshButton(new Button(this, _("Refresh"), "refresh", this)),
     // TRANSLATORS: mail window button

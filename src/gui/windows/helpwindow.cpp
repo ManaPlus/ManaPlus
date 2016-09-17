@@ -54,10 +54,10 @@ HelpWindow::HelpWindow() :
     ActionListener(),
     // TRANSLATORS: help window. button.
     mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
-        true, "help_background.xml")),
+        Opaque_true, "help_background.xml")),
     mTagFileMap()
 {
     setMinWidth(300);
@@ -73,7 +73,7 @@ HelpWindow::HelpWindow() :
 
     setDefaultSize(500, 400, ImagePosition::CENTER);
 
-    mBrowserBox->setOpaque(false);
+    mBrowserBox->setOpaque(Opaque_false);
 
     mBrowserBox->setLinkHandler(this);
     if (gui)

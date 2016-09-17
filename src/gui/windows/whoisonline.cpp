@@ -98,9 +98,9 @@ WhoIsOnline::WhoIsOnline() :
     mThread(nullptr),
     mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
         "onlinebrowserbox.xml")),
-    mScrollArea(new ScrollArea(this, mBrowserBox, false)),
+    mScrollArea(new ScrollArea(this, mBrowserBox, Opaque_false)),
     // TRANSLATORS: who is online. button.
     mUpdateButton(new Button(this, _("Update"), "update", this)),
     mOnlinePlayers(),
@@ -142,7 +142,7 @@ void WhoIsOnline::postInit()
     mUpdateButton->setEnabled(false);
     mUpdateButton->setDimension(Rect(5, 5, w - 10, 20 + 5));
 
-    mBrowserBox->setOpaque(false);
+    mBrowserBox->setOpaque(Opaque_false);
     mScrollArea->setDimension(Rect(5, 20 + 10, w - 10, h - 10 - 30));
     mScrollArea->setSize(w - 10, h - 10 - 30);
     mBrowserBox->setLinkHandler(this);

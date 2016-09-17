@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2016  The ManaPlus Developers
+ *  Copyright (C) 2015-2016  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,24 +18,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/tabs/setuptab.h"
+#ifndef ENUMS_SIMPLETYPES_OPAQUE_H
+#define ENUMS_SIMPLETYPES_OPAQUE_H
 
-#include "debug.h"
+#include "enums/simpletypes/booldefines.h"
 
-SetupTab::SetupTab(const Widget2 *const widget) :
-    Container(widget),
-    ActionListener(),
-    WidgetListener(),
-    mName()
-{
-    setOpaque(Opaque_false);
-    addWidgetListener(this);
-}
+PRAGMA6(GCC diagnostic push)
+PRAGMA6(GCC diagnostic ignored "-Wunused-const-variable")
 
-void SetupTab::externalUpdated()
-{
-}
+defBoolEnum(Opaque);
 
-void SetupTab::externalUnloaded()
-{
-}
+PRAGMA6(GCC diagnostic pop)
+
+#endif  // ENUMS_SIMPLETYPES_OPAQUE_H

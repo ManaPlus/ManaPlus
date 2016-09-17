@@ -71,7 +71,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     mResetKeysButton(new Button(this, _("Reset all keys"), "resetkeys", this)),
     mTabs(new TabStrip(this, config.getIntValue("fontSize") + 10)),
     mScrollArea(new ScrollArea(this, mKeyList,
-        true, "setup_input_background.xml")),
+        Opaque_true, "setup_input_background.xml")),
     mKeySetting(false),
     mActionDataSize(new int [SETUP_PAGES])
 {

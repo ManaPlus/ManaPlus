@@ -193,10 +193,10 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     mProgressBar(new ProgressBar(this, 0.0, 310, 0,
         ProgressColorId::PROG_UPDATE,
         "updateprogressbar.xml", "updateprogressbar_fill.xml")),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
-        true, "update_background.xml")),
+        Opaque_true, "update_background.xml")),
     mDownloadStatus(UpdateDownloadStatus::UPDATE_NEWS),
     mDownloadedBytes(0),
     mUpdateIndex(0),
@@ -216,7 +216,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     setMinHeight(220);
 
     mProgressBar->setSmoothProgress(false);
-    mBrowserBox->setOpaque(false);
+    mBrowserBox->setOpaque(Opaque_false);
     mBrowserBox->setLinkHandler(this);
     mBrowserBox->setProcessVars(true);
     mBrowserBox->setEnableKeys(true);

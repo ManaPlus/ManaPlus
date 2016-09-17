@@ -104,7 +104,7 @@ PopupMenu *popupMenu = nullptr;
 
 PopupMenu::PopupMenu() :
     Popup("PopupMenu", "popupmenu.xml"),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
         "popupbrowserbox.xml")),
     mScrollArea(nullptr),
     mBeingId(BeingId_zero),
@@ -129,14 +129,14 @@ PopupMenu::PopupMenu() :
     mY(0),
     mAllowCleanMenu(true)
 {
-    mBrowserBox->setOpaque(false);
+    mBrowserBox->setOpaque(Opaque_false);
     mBrowserBox->setLinkHandler(this);
     mRenameListener.setMapItem(nullptr);
     mRenameListener.setDialog(nullptr);
     mPlayerListener.setNick("");
     mPlayerListener.setDialog(nullptr);
     mPlayerListener.setType(ActorType::Unknown);
-    mScrollArea = new ScrollArea(this, mBrowserBox, false);
+    mScrollArea = new ScrollArea(this, mBrowserBox, Opaque_false);
     mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
     addMouseListener(this);
 }

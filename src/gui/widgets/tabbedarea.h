@@ -174,11 +174,11 @@ class TabbedArea final : public ActionListener,
         Tab* getSelectedTab() const A_WARN_UNUSED
         { return mSelectedTab; }
 
-        void setOpaque(const bool opaque)
+        void setOpaque(const Opaque opaque)
         { mOpaque = opaque; }
 
         bool isOpaque() const A_WARN_UNUSED
-        { return mOpaque; }
+        { return mOpaque == Opaque_true; }
 
         void adjustSize();
 
@@ -283,7 +283,7 @@ class TabbedArea final : public ActionListener,
         unsigned int mTabScrollIndex;
         int mRightMargin;
 
-        bool mOpaque;
+        Opaque mOpaque;
         bool mEnableScrollButtons;
         bool mFollowDownScroll;
         bool mBlockSwitching;

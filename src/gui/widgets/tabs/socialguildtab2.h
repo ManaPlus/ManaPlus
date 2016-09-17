@@ -40,7 +40,7 @@ class SocialGuildTab2 final : public SocialTab,
     public:
         SocialGuildTab2(const Widget2 *const widget,
                         Guild *const guild,
-                        const bool showBackground) :
+                        const Opaque showBackground) :
             SocialTab(widget),
             ActionListener()
         {

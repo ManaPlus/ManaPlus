@@ -99,19 +99,22 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mNpcId(npcId),
     mDefaultInt(0),
     mDefaultString(),
-    mTextBox(new BrowserBox(this, BrowserBox::AUTO_WRAP, true,
+    mTextBox(new BrowserBox(this, BrowserBox::AUTO_WRAP, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mTextBox,
-        getOptionBool("showtextbackground"), "npc_textbackground.xml")),
+        fromBool(getOptionBool("showtextbackground"), Opaque),
+        "npc_textbackground.xml")),
     mText(),
     mNewText(),
     mItemList(CREATEWIDGETR(ExtendedListBox,
         this, this, "extendedlistbox.xml")),
     mListScrollArea(new ScrollArea(this, mItemList,
-        getOptionBool("showlistbackground"), "npc_listbackground.xml")),
+        fromBool(getOptionBool("showlistbackground"), Opaque),
+        "npc_listbackground.xml")),
     mSkinContainer(new Container(this)),
     mSkinScrollArea(new ScrollArea(this, mSkinContainer,
-        getOptionBool("showlistbackground"), "npc_listbackground.xml")),
+        fromBool(getOptionBool("showlistbackground"), Opaque),
+        "npc_listbackground.xml")),
     mItems(),
     mImages(),
     mItemLinkHandler(new ItemLinkHandler),
@@ -135,7 +138,8 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mItemContainer(new ItemContainer(this, mInventory,
         10000, ShowEmptyRows_true)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
-        getOptionBool("showitemsbackground"), "npc_listbackground.xml")),
+        fromBool(getOptionBool("showitemsbackground"), Opaque),
+        "npc_listbackground.xml")),
     mInputState(NPC_INPUT_NONE),
     mActionState(NPC_ACTION_WAIT),
     mSkinControls(),
@@ -165,7 +169,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mPlayerBox->setHeight(100);
 
     // Setup output text box
-    mTextBox->setOpaque(false);
+    mTextBox->setOpaque(Opaque_false);
     mTextBox->setMaxRow(config.getIntValue("ChatLogLength"));
     mTextBox->setLinkHandler(mItemLinkHandler);
     mTextBox->setProcessVars(true);
@@ -1289,9 +1293,9 @@ void NpcDialog::createSkinControls()
         const NpcTextInfo *const info = *it;
         BrowserBox *box = new BrowserBox(this,
             BrowserBox::AUTO_WRAP,
-            true,
+            Opaque_true,
             "browserbox.xml");
-        box->setOpaque(false);
+        box->setOpaque(Opaque_false);
         box->setMaxRow(config.getIntValue("ChatLogLength"));
         box->setLinkHandler(mItemLinkHandler);
         box->setProcessVars(true);

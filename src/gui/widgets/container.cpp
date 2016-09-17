@@ -29,7 +29,7 @@
 Container::Container(const Widget2 *const widget) :
     BasicContainer2(widget)
 {
-    setOpaque(false);
+    setOpaque(Opaque_false);
 }
 
 Container::~Container()

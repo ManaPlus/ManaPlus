@@ -45,7 +45,7 @@ ConfirmDialog::ConfirmDialog(const std::string &restrict title,
     mIgnore(ignore)
 {
     mTextBox->setEditable(false);
-    mTextBox->setOpaque(false);
+    mTextBox->setOpaque(Opaque_false);
     mTextBox->setTextWrapped(msg, 260);
     soundManager.playGuiSound(soundEvent);
 }

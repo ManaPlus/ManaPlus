@@ -41,7 +41,7 @@ float GuiTable::mAlpha = 1.0;
 
 GuiTable::GuiTable(const Widget2 *const widget,
                    TableModel *const initial_model,
-                   const bool opacity) :
+                   const Opaque opacity) :
     Widget(widget),
     MouseListener(),
     KeyListener(),
@@ -235,7 +235,7 @@ void GuiTable::draw(Graphics *const graphics)
     const int width = rect.width;
     const int height = rect.height;
     const int y = rect.y;
-    if (mOpaque)
+    if (mOpaque == Opaque_true)
     {
         mBackgroundColor.a = CAST_U32(mAlpha * 255.0F);
         graphics->setColor(mBackgroundColor);
@@ -353,7 +353,7 @@ void GuiTable::safeDraw(Graphics *const graphics)
     const int width = rect.width;
     const int height = rect.height;
     const int y = rect.y;
-    if (mOpaque)
+    if (mOpaque == Opaque_true)
     {
         mBackgroundColor.a = CAST_U32(mAlpha * 255.0F);
         graphics->setColor(mBackgroundColor);

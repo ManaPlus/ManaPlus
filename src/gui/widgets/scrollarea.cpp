@@ -103,7 +103,7 @@ static std::string const buttonFiles[2] =
 
 ScrollArea::ScrollArea(Widget2 *const widget2,
                        Widget *const widget,
-                       const bool opaque,
+                       const Opaque opaque,
                        const std::string &skin) :
     BasicContainer(widget2),
     MouseListener(),
@@ -137,7 +137,7 @@ ScrollArea::ScrollArea(Widget2 *const widget2,
     mRightButtonPressed(false),
     mIsVerticalMarkerDragged(false),
     mIsHorizontalMarkerDragged(false),
-    mOpaque(true),
+    mOpaque(Opaque_true),
     mHasMouse(false)
 {
     setContent(widget);
@@ -320,7 +320,7 @@ void ScrollArea::draw(Graphics *const graphics)
     BLOCK_START("ScrollArea::draw")
     if (mVBarVisible || mHBarVisible)
     {
-        if (!mOpaque)
+        if (mOpaque == Opaque_false)
             updateCalcFlag(graphics);
         // need add caching or remove calc calls.
 //        if (mRedraw)
@@ -430,7 +430,7 @@ void ScrollArea::updateCalcFlag(const Graphics *const graphics)
 void ScrollArea::drawFrame(Graphics *const graphics)
 {
     BLOCK_START("ScrollArea::drawFrame")
-    if (mOpaque)
+    if (mOpaque == Opaque_true)
     {
         const int bs = mFrameSize * 2;
         const int w = mDimension.width + bs;
@@ -455,7 +455,7 @@ void ScrollArea::drawFrame(Graphics *const graphics)
 void ScrollArea::safeDrawFrame(Graphics *const graphics)
 {
     BLOCK_START("ScrollArea::drawFrame")
-    if (mOpaque)
+    if (mOpaque == Opaque_true)
     {
         const int bs = mFrameSize * 2;
         const int w = mDimension.width + bs;
@@ -469,10 +469,10 @@ void ScrollArea::safeDrawFrame(Graphics *const graphics)
     BLOCK_END("ScrollArea::drawFrame")
 }
 
-void ScrollArea::setOpaque(bool opaque)
+void ScrollArea::setOpaque(Opaque opaque)
 {
     mOpaque = opaque;
-    setFrameSize(mOpaque ? 2 : 0);
+    setFrameSize(mOpaque == Opaque_true ? 2 : 0);
 }
 
 Image *ScrollArea::getImageByState(Rect &dim, const BUTTON_DIR dir)

@@ -25,6 +25,8 @@
 
 #include "gui/widgets/widget.h"
 
+#include "enums/simpletypes/opaque.h"
+
 #include "localconsts.h"
 
 /**
@@ -110,7 +112,7 @@ class TextPreview final : public Widget
          *
          * @param opaque Whether the widget should be opaque or not
          */
-        void setOpaque(const bool opaque)
+        void setOpaque(const Opaque opaque)
         { mOpaque = opaque; }
 
         /**
@@ -118,7 +120,7 @@ class TextPreview final : public Widget
          * is shown below the widget)
          */
         bool isOpaque() const A_WARN_UNUSED
-        { return mOpaque; }
+        { return mOpaque == Opaque_true; }
 
         void adjustSize();
 
@@ -134,7 +136,7 @@ class TextPreview final : public Widget
         static float mAlpha;
         static Skin *mSkin;
         bool mTextAlpha;
-        bool mOpaque;
+        Opaque mOpaque;
         bool mShadow;
         bool mOutline;
 };

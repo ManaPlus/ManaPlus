@@ -70,7 +70,8 @@ MailEditWindow::MailEditWindow() :
     mInventory(new Inventory(InventoryType::Mail, 1)),
     mItemContainer(new ItemContainer(this, mInventory)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
-        getOptionBool("showitemsbackground"), "mailedit_listbackground.xml"))
+        fromBool(getOptionBool("showitemsbackground"), Opaque),
+        "mailedit_listbackground.xml"))
 {
     setWindowName("MailEdit");
     setCloseButton(true);

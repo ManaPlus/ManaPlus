@@ -58,10 +58,12 @@ EmoteWindow::EmoteWindow() :
     mEmotePage(new EmotePage(this)),
     mColorModel(ColorModel::createDefault(this)),
     mColorPage(CREATEWIDGETR(ColorPage, this, mColorModel, "colorpage.xml")),
-    mScrollColorPage(new ScrollArea(this, mColorPage, false, "emotepage.xml")),
+    mScrollColorPage(new ScrollArea(this, mColorPage, Opaque_false,
+        "emotepage.xml")),
     mFontModel(new NamesModel),
     mFontPage(CREATEWIDGETR(ListBox, this, mFontModel, "")),
-    mScrollFontPage(new ScrollArea(this, mFontPage, false, "fontpage.xml")),
+    mScrollFontPage(new ScrollArea(this, mFontPage, Opaque_false,
+        "fontpage.xml")),
     mImageSet(Theme::getImageSetFromThemeXml("emotetabs.xml", "", 17, 16))
 {
     setShowTitle(false);

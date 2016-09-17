@@ -52,10 +52,10 @@ DidYouKnowWindow::DidYouKnowWindow() :
     // TRANSLATORS: did you know window name
     Window(_("Did You Know?"), Modal_false, nullptr, "didyouknow.xml"),
     ActionListener(),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, true,
+    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
-        true, "didyouknow_background.xml")),
+        Opaque_true, "didyouknow_background.xml")),
     // TRANSLATORS: did you know window button
     mButtonPrev(new Button(this, _("< Previous"), "prev", this)),
     // TRANSLATORS: did you know window button
@@ -76,7 +76,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
         setupWindow->registerWindowForReset(this);
     setDefaultSize(500, 400, ImagePosition::CENTER);
 
-    mBrowserBox->setOpaque(false);
+    mBrowserBox->setOpaque(Opaque_false);
     // TRANSLATORS: did you know window button
     Button *const okButton = new Button(this, _("Close"), "close", this);
 

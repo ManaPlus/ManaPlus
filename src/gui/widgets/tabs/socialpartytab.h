@@ -42,7 +42,7 @@ class SocialPartyTab final : public SocialTab,
     public:
         SocialPartyTab(const Widget2 *const widget,
                        Party *const party,
-                       const bool showBackground) :
+                       const Opaque showBackground) :
             SocialTab(widget),
             ActionListener(),
             mParty(party)

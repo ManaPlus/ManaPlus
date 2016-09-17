@@ -277,7 +277,8 @@ void BuyDialog::init()
     CREATEWIDGETV(mShopItemList, ShopListBox, this,
         mShopItems, mShopItems, ShopListBoxType::Unknown);
     mScrollArea = new ScrollArea(this, mShopItemList,
-        getOptionBool("showbackground"), "buy_background.xml");
+        fromBool(getOptionBool("showbackground"), Opaque),
+        "buy_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mSlider = new Slider(this, 1.0, 1.0);

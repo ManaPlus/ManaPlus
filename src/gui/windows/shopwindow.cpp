@@ -113,7 +113,8 @@ ShopWindow::ShopWindow() :
         this, mSellShopItems, mSellShopItems, ShopListBoxType::SellShop)),
     mCurrentShopItemList(nullptr),
     mScrollArea(new ScrollArea(this, mBuyShopItemList,
-        getOptionBool("showbuybackground"), "shop_buy_background.xml")),
+        fromBool(getOptionBool("showbuybackground"), Opaque),
+        "shop_buy_background.xml")),
     // TRANSLATORS: shop window label
     mAddButton(new Button(this, _("Add"), "add", this)),
     // TRANSLATORS: shop window label

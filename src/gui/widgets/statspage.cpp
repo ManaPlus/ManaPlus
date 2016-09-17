@@ -37,7 +37,7 @@ StatsPage::StatsPage(const Widget2 *const widget,
     StatListener(),
     mAttrs(),
     mAttrCont(new VertContainer(this, 32)),
-    mAttrScroll(new ScrollArea(this, mAttrCont, false))
+    mAttrScroll(new ScrollArea(this, mAttrCont, Opaque_false))
 {
     addWidgetListener(this);
 

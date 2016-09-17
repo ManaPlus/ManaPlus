@@ -73,7 +73,7 @@
 
 BasicContainer2::BasicContainer2(const Widget2 *const widget) :
     BasicContainer(widget),
-    mOpaque(true)
+    mOpaque(Opaque_true)
 {
 }
 
@@ -84,7 +84,7 @@ BasicContainer2::~BasicContainer2()
 void BasicContainer2::draw(Graphics *const graphics)
 {
     BLOCK_START("BasicContainer2::draw")
-    if (mOpaque)
+    if (mOpaque == Opaque_true)
     {
         graphics->setColor(mBaseColor);
         graphics->fillRectangle(Rect(0, 0,
@@ -98,7 +98,7 @@ void BasicContainer2::draw(Graphics *const graphics)
 void BasicContainer2::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("BasicContainer2::draw")
-    if (isOpaque())
+    if (mOpaque == Opaque_true)
     {
         graphics->setColor(mBaseColor);
         graphics->fillRectangle(Rect(0, 0,

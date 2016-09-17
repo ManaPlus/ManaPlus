@@ -46,7 +46,7 @@ OkDialog::OkDialog(const std::string &restrict title,
     mTextBox(new TextBox(this))
 {
     mTextBox->setEditable(false);
-    mTextBox->setOpaque(false);
+    mTextBox->setOpaque(Opaque_false);
     mTextBox->setTextWrapped(msg, minWidth);
 
     // TRANSLATORS: ok dialog button

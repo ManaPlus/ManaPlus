@@ -66,6 +66,8 @@
 
 #include "gui/widgets/basiccontainer.h"
 
+#include "enums/simpletypes/opaque.h"
+
 /**
   * An implementation of a container able to contain other widgets. A widget's
   * position in the container is relative to the container itself and not the screen.
@@ -102,7 +104,7 @@ class BasicContainer2: public BasicContainer
           * @param opaque True if the container should be opaque, false otherwise.
           * @see isOpaque
           */
-        void setOpaque(bool opaque)
+        void setOpaque(Opaque opaque)
         { mOpaque = opaque; }
 
         /**
@@ -112,7 +114,7 @@ class BasicContainer2: public BasicContainer
           * @see setOpaque
           */
         bool isOpaque() const
-        { return mOpaque; }
+        { return mOpaque == Opaque_true; }
 
         /**
           * Adds a widget to the container.
@@ -145,7 +147,7 @@ class BasicContainer2: public BasicContainer
         /**
           * True if the container is opaque, false otherwise.
           */
-        bool mOpaque;
+        Opaque mOpaque;
 };
 
 #endif  // GUI_WIDGETS_BASICCONTAINER2_H

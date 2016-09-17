@@ -110,7 +110,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     setName(_("Video"));
 
     ScrollArea *const scrollArea = new ScrollArea(this, mModeList,
-        true, "setup_video_background.xml");
+        Opaque_true, "setup_video_background.xml");
     scrollArea->setWidth(150);
     scrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 

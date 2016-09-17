@@ -45,7 +45,7 @@ void TextBoxPopup::postInit()
     const int fontHeight = getFont()->getHeight();
     setMinHeight(fontHeight);
     mTextBox->setEditable(false);
-    mTextBox->setOpaque(false);
+    mTextBox->setOpaque(Opaque_false);
     add(mTextBox);
     addMouseListener(this);
 }

@@ -82,7 +82,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     // TRANSLATORS: relation dialog name
     setName(_("Relations"));
 
-    mPlayerTable->setOpaque(false);
+    mPlayerTable->setOpaque(Opaque_false);
 
     mPlayerTableTitleModel->fixColumnWidth(NAME_COLUMN, NAME_COLUMN_WIDTH);
     mPlayerTableTitleModel->fixColumnWidth(RELATION_CHOICE_COLUMN,

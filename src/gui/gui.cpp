@@ -164,7 +164,7 @@ void Gui::postInit(Graphics *const graphics)
     WindowContainer *const guiTop = new WindowContainer(nullptr);
     guiTop->setFocusable(true);
     guiTop->setSize(graphics->mWidth, graphics->mHeight);
-    guiTop->setOpaque(false);
+    guiTop->setOpaque(Opaque_false);
     Window::setWindowContainer(guiTop);
     setTop(guiTop);
 

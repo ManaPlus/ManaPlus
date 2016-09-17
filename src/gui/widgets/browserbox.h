@@ -26,6 +26,8 @@
 
 #include "listeners/mouselistener.h"
 
+#include "enums/simpletypes/opaque.h"
+
 #include "gui/widgets/linepart.h"
 #include "gui/widgets/widget.h"
 
@@ -66,7 +68,7 @@ class BrowserBox final : public Widget,
          */
         BrowserBox(const Widget2 *const widget,
                    const unsigned int mode,
-                   const bool opaque,
+                   const Opaque opaque,
                    const std::string &skin);
 
         A_DELETE_COPY(BrowserBox)
@@ -84,7 +86,7 @@ class BrowserBox final : public Widget,
         /**
          * Sets the BrowserBox opacity.
          */
-        void setOpaque(bool opaque)
+        void setOpaque(Opaque opaque)
         { mOpaque = opaque; }
 
         /**
@@ -238,7 +240,7 @@ class BrowserBox final : public Widget,
         Color mHyperLinkColor;
         Color mColors[2][COLORS_MAX];
 
-        bool mOpaque;
+        Opaque mOpaque;
         bool mUseLinksAndUserColors;
         bool mUseEmotes;
         bool mAlwaysUpdate;

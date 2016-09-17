@@ -48,7 +48,7 @@ TextPreview::TextPreview(const Widget2 *const widget,
     mTextBGColor(nullptr),
     mPadding(0),
     mTextAlpha(false),
-    mOpaque(false),
+    mOpaque(Opaque_false),
     mShadow(false),
     mOutline(false)
 {
@@ -93,7 +93,7 @@ void TextPreview::draw(Graphics *const graphics)
     const int intAlpha = CAST_S32(mAlpha * 255.0F);
     const int alpha = mTextAlpha ? intAlpha : 255;
 
-    if (mOpaque)
+    if (mOpaque == Opaque_true)
     {
         graphics->setColor(Color(CAST_S32(mBGColor->r),
                     CAST_S32(mBGColor->g),

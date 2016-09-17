@@ -78,7 +78,8 @@ void TextSelectDialog::postInit()
         mModel,
         "listbox.xml");
     mScrollArea = new ScrollArea(this, mItemList,
-        getOptionBool("showbackground"), "sell_background.xml");
+        fromBool(getOptionBool("showbackground"), Opaque),
+        "sell_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mSelectButton = new Button(this,

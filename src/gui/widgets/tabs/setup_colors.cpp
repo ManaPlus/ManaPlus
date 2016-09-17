@@ -54,11 +54,11 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     SelectionListener(),
     mColorBox(CREATEWIDGETR(ListBox, this, userPalette, "")),
     mScroll(new ScrollArea(this, mColorBox,
-        true, "setup_colors_background.xml")),
-    mPreview(new BrowserBox(this, BrowserBox::AUTO_WRAP, true,
+        Opaque_true, "setup_colors_background.xml")),
+    mPreview(new BrowserBox(this, BrowserBox::AUTO_WRAP, Opaque_true,
         "browserbox.xml")),
     mTextPreview(new TextPreview(this, gettext(rawmsg))),
-    mPreviewBox(new ScrollArea(this, mPreview, true,
+    mPreviewBox(new ScrollArea(this, mPreview, Opaque_true,
         "setup_colors_preview_background.xml")),
     mSelected(-1),
     // TRANSLATORS: colors tab. label.
@@ -86,7 +86,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     setName(_("Colors"));
     mColorBox->addSelectionListener(this);
     mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-    mPreview->setOpaque(false);
+    mPreview->setOpaque(Opaque_false);
 
     // don't do anything with links
     mPreview->setLinkHandler(nullptr);
@@ -170,7 +170,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mBlueSlider->addActionListener(this);
     mBlueSlider->setEnabled(false);
 
-    setOpaque(false);
+    setOpaque(Opaque_false);
 
     // Do the layout
     LayoutHelper h(this);
@@ -281,7 +281,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
     mTextPreview->setFont(boldFont);
     mTextPreview->setTextColor(col);
     mTextPreview->setTextBGColor(nullptr);
-    mTextPreview->setOpaque(false);
+    mTextPreview->setOpaque(Opaque_false);
     mTextPreview->setShadow(true);
     mTextPreview->setOutline(true);
     mTextPreview->useTextAlpha(false);
@@ -302,7 +302,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
         case UserColorId::ROAD_POINT:
         case UserColorId::NET:
             mTextPreview->setBGColor(col);
-            mTextPreview->setOpaque(true);
+            mTextPreview->setOpaque(Opaque_true);
             mTextPreview->setOutline(false);
             mTextPreview->setShadow(false);
             break;

@@ -69,9 +69,9 @@ ChatTab::ChatTab(const Widget2 *const widget,
                  const std::string &logName,
                  const ChatTabTypeT &type) :
     Tab(widget),
-    mTextOutput(new BrowserBox(this, BrowserBox::AUTO_WRAP, true,
+    mTextOutput(new BrowserBox(this, BrowserBox::AUTO_WRAP, Opaque_true,
        "browserbox.xml")),
-    mScrollArea(new ScrollArea(this, mTextOutput, false)),
+    mScrollArea(new ScrollArea(this, mTextOutput, Opaque_false)),
     mChannelName(channel),
     mLogName(logName),
     mType(type),
@@ -82,7 +82,7 @@ ChatTab::ChatTab(const Widget2 *const widget,
 {
     setCaption(name);
 
-    mTextOutput->setOpaque(false);
+    mTextOutput->setOpaque(Opaque_false);
     mTextOutput->setMaxRow(config.getIntValue("ChatLogLength"));
     if (chatWindow)
         mTextOutput->setLinkHandler(chatWindow->mItemLinkHandler);

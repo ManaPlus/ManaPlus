@@ -68,11 +68,14 @@ QuestsWindow::QuestsWindow() :
     mQuestsListBox(CREATEWIDGETR(ExtendedListBox,
         this, mQuestsModel, "extendedlistbox.xml")),
     mQuestScrollArea(new ScrollArea(this, mQuestsListBox,
-        getOptionBool("showlistbackground"), "quests_list_background.xml")),
+        fromBool(getOptionBool("showlistbackground"), Opaque),
+        "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),
-    mText(new BrowserBox(this, BrowserBox::AUTO_WRAP, true, "browserbox.xml")),
+    mText(new BrowserBox(this, BrowserBox::AUTO_WRAP, Opaque_true,
+        "browserbox.xml")),
     mTextScrollArea(new ScrollArea(this, mText,
-        getOptionBool("showtextbackground"), "quests_text_background.xml")),
+        fromBool(getOptionBool("showtextbackground"), Opaque),
+        "quests_text_background.xml")),
     // TRANSLATORS: quests window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
@@ -104,7 +107,7 @@ QuestsWindow::QuestsWindow() :
     mQuestsListBox->addActionListener(this);
 
     mQuestScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-    mText->setOpaque(false);
+    mText->setOpaque(Opaque_false);
     mText->setLinkHandler(mItemLinkHandler);
     mTextScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mQuestsListBox->setWidth(500);

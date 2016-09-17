@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+#include "enums/simpletypes/opaque.h"
+
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 #include "listeners/tablemodellistener.h"
@@ -54,7 +56,7 @@ class GuiTable final : public Widget,
     public:
         GuiTable(const Widget2 *const widget,
                  TableModel *const initial_model,
-                 const bool opacity = true);
+                 const Opaque opacity = Opaque_true);
 
         A_DELETE_COPY(GuiTable)
 
@@ -131,7 +133,7 @@ class GuiTable final : public Widget,
          *
          * @param opaque True if the table should be opaque, false otherwise.
          */
-        void setOpaque(bool opaque)
+        void setOpaque(Opaque opaque)
         { mOpaque = opaque; }
 
         /**
@@ -141,7 +143,7 @@ class GuiTable final : public Widget,
          * @return True if the table is opaque, false otherwise.
          */
         bool isOpaque() const A_WARN_UNUSED
-        { return mOpaque; }
+        { return mOpaque == Opaque_true; }
 
         // Inherited from MouseListener
         void mousePressed(MouseEvent& event) override final;
@@ -198,7 +200,7 @@ class GuiTable final : public Widget,
 
         bool mLinewiseMode;
         bool mWrappingEnabled;
-        bool mOpaque;
+        Opaque mOpaque;
         bool mSelectable;
 };
 
