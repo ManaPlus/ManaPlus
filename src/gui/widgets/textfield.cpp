@@ -107,7 +107,7 @@ ImageRect TextField::skin;
 
 TextField::TextField(const Widget2 *restrict const widget,
                      const std::string &restrict text,
-                     const bool loseFocusOnTab,
+                     const LoseFocusOnTab loseFocusOnTab,
                      ActionListener *restrict const listener,
                      const std::string &restrict eventId,
                      const bool sendAlwaysEvents) :
@@ -475,7 +475,7 @@ bool TextField::handleNormalKeys(const InputActionT action, bool &consumed)
             break;
 
         case InputAction::GUI_TAB:
-            if (mLoseFocusOnTab)
+            if (mLoseFocusOnTab == LoseFocusOnTab_true)
                 return false;
             consumed = true;
             break;

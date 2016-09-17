@@ -365,7 +365,11 @@ void SetupItemTextField::createControls()
 
     mLabel = new Label(this, mText);
     mLabel->setToolTip(mDescription);
-    mTextField = new TextField(this, mValue, true, mParent, mEventName);
+    mTextField = new TextField(this,
+        mValue,
+        LoseFocusOnTab_true,
+        mParent,
+        mEventName);
     // TRANSLATORS: setup item button
     mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;

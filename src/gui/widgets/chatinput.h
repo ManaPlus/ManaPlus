@@ -40,7 +40,7 @@ class ChatInput final : public TextField
 {
     public:
         explicit ChatInput(ChatWindow *const window) :
-            TextField(window, "", false),
+            TextField(window, "", LoseFocusOnTab_false),
             mWindow(window),
             mFocusGaining(false)
         {

@@ -695,6 +695,7 @@ SRC += events/actionevent.h \
 	      enums/simpletypes/isstart.h \
 	      enums/simpletypes/itemcolor.h \
 	      enums/simpletypes/keep.h \
+	      enums/simpletypes/losefocusontab.h \
 	      enums/simpletypes/mainconfig.h \
 	      enums/simpletypes/modal.h \
 	      enums/simpletypes/modifiable.h \

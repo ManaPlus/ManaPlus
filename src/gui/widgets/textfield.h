@@ -71,6 +71,8 @@
 #include "listeners/mouselistener.h"
 #include "listeners/widgetlistener.h"
 
+#include "enums/simpletypes/losefocusontab.h"
+
 #include "gui/fonts/textchunk.h"
 
 #include "gui/widgets/widget.h"
@@ -94,7 +96,8 @@ class TextField notfinal : public Widget,
          */
         explicit TextField(const Widget2 *restrict const widget,
                            const std::string &restrict text = "",
-                           const bool loseFocusOnTab = true,
+                           const LoseFocusOnTab loseFocusOnTab =
+                           LoseFocusOnTab_true,
                            ActionListener *restrict
                            const listener = nullptr,
                            const std::string &restrict eventId = "",
@@ -280,7 +283,7 @@ class TextField notfinal : public Widget,
         time_t mLastEventPaste;
         int mPadding;
         bool mNumeric;
-        bool mLoseFocusOnTab;
+        LoseFocusOnTab mLoseFocusOnTab;
         bool mAllowSpecialActions;
         bool mSendAlwaysEvents;
         bool mTextChanged;
