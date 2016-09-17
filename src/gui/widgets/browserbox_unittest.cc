@@ -51,7 +51,7 @@ TEST_CASE("BrowserBox tests", "browserbox")
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
     BrowserBox *const box = new BrowserBox(nullptr,
         BrowserBox::AUTO_WRAP,
-        true,
+        Opaque_true,
         "");
     box->setWidth(100);
     std::string row = "test";
