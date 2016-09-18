@@ -198,6 +198,11 @@ bool ServerFeatures::haveCart() const
     return false;
 }
 
+bool ServerFeatures::haveCards() const
+{
+    return false;
+}
+
 bool ServerFeatures::haveTalkPet() const
 {
     return true;

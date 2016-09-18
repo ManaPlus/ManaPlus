@@ -100,6 +100,8 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveCart() const override final A_CONST;
 
+        bool haveCards() const override final A_CONST;
+
         bool haveTalkPet() const override final A_CONST;
 
         bool haveMovePet() const override final A_CONST;

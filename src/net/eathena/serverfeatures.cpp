@@ -200,6 +200,11 @@ bool ServerFeatures::haveCart() const
     return true;
 }
 
+bool ServerFeatures::haveCards() const
+{
+    return true;
+}
+
 bool ServerFeatures::haveTalkPet() const
 {
     return serverVersion > 0;
