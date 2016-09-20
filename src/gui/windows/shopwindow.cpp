@@ -819,6 +819,10 @@ void ShopWindow::sendMessage(const std::string &nick,
 
 void ShopWindow::showList(const std::string &nick, std::string data)
 {
+    const Inventory *const inv = PlayerInfo::getInventory();
+    if (!inv)
+        return;
+
     BuyDialog *buyDialog = nullptr;
     SellDialog *sellDialog = nullptr;
     if (data.find("B1") == 0)
@@ -835,10 +839,6 @@ void ShopWindow::showList(const std::string &nick, std::string data)
     {
         return;
     }
-
-    const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
-        return;
 
     if (buyDialog)
         buyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));

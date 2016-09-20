@@ -90,7 +90,7 @@ void GuildHandler::invite(const std::string &name) const
     else if (packetVersion >= 20120418)
     {
         createOutPacket(CMSG_GUILD_INVITE2);
-        outMsg.writeString(being->getName(), 24, "name");
+        outMsg.writeString(name, 24, "name");
     }
 }
 

@@ -265,15 +265,15 @@ void SpellManager::load()
         return;
     }
 
-    unsigned int targetType;
-    unsigned int basicLvl;
-    unsigned int school;
-    unsigned int schoolLvl;
-    unsigned int mana;
-    unsigned int commandType;
-
     for (unsigned i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
     {
+        unsigned int targetType;
+        unsigned int basicLvl;
+        unsigned int school;
+        unsigned int schoolLvl;
+        unsigned int mana;
+        unsigned int commandType;
+
         std::string flags =
             cfg->getValue("commandShortcutFlags" + toString(i), "");
         std::stringstream ss(flags);
