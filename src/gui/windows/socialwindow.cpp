@@ -109,6 +109,9 @@ void SocialWindow::postInit()
     mTabs->addTab(mPlayers, mPlayers->mScroll);
     mTabs->addTab(mFriends, mFriends->mScroll);
     mTabs->addTab(mNavigation, mNavigation->mScroll);
+    mTabs->setSelectable(false);
+    mTabs->getTabContainer()->setSelectable(false);
+    mTabs->getWidgetContainer()->setSelectable(false);
 
     if (config.getBoolValue("enableAttackFilter"))
     {

@@ -100,6 +100,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mTabs = new TabStrip(this, "equipment", size);
     mTabs->addActionListener(this);
     mTabs->setActionEventId("tab_");
+    mTabs->setSelectable(false);
 
     mYPadding = mTabs->getHeight() + getOption("tabPadding", 2);
 
@@ -112,6 +113,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     // Control that shows the Player
     mPlayerBox->setDimension(Rect(50, 80 + mYPadding, 74, 168));
     mPlayerBox->setPlayer(being);
+    mPlayerBox->setSelectable(false);
 
     if (foring)
         setWindowName("Being equipment");

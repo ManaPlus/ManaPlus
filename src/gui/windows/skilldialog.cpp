@@ -104,6 +104,9 @@ SkillDialog::SkillDialog() :
 
     mUseButton->setEnabled(false);
     mIncreaseButton->setEnabled(false);
+    mTabs->setSelectable(false);
+    mTabs->getTabContainer()->setSelectable(false);
+    mTabs->getWidgetContainer()->setSelectable(false);
 
     place(0, 0, mTabs, 5, 5);
     place(0, 5, mPointsLabel, 4);

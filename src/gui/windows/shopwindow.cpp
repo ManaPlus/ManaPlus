@@ -163,6 +163,8 @@ ShopWindow::ShopWindow() :
     mTabs->addButton(_("Buy"), "buy", true);
     // TRANSLATORS: shop window tab name
     mTabs->addButton(_("Sell"), "sell", false);
+    mTabs->setSelectable(false);
+    mScrollArea->setSelectable(false);
 
     loadList();
 

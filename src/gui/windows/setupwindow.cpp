@@ -93,6 +93,10 @@ void SetupWindow::postInit()
     setMinWidth(310);
     setMinHeight(210);
 
+    mPanel->setSelectable(false);
+    mPanel->getTabContainer()->setSelectable(false);
+    mPanel->getWidgetContainer()->setSelectable(false);
+
     static const char *const buttonNames[] =
     {
         // TRANSLATORS: setup button

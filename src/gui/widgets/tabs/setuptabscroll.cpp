@@ -38,6 +38,8 @@ SetupTabScroll::SetupTabScroll(const Widget2 *const widget) :
 {
     mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
+    mScroll->setSelectable(false);
+    mContainer->setSelectable(false);
 }
 
 SetupTabScroll::~SetupTabScroll()

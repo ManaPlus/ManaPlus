@@ -32,6 +32,7 @@ SetupTab::SetupTab(const Widget2 *const widget) :
 {
     setOpaque(Opaque_false);
     addWidgetListener(this);
+    setSelectable(false);
 }
 
 void SetupTab::externalUpdated()

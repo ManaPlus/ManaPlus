@@ -180,6 +180,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     mFilter = new TabStrip(this, "filter_" + getWindowName(), size + 16);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
+    mFilter->setSelectable(false);
 
     StringVect tags = ItemDB::getTags();
     const size_t sz = tags.size();
