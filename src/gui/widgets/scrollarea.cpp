@@ -1446,3 +1446,10 @@ void ScrollArea::checkPolicies()
             break;
     }
 }
+
+bool ScrollArea::isSelectable() const
+{
+    if (mVBarVisible || mHBarVisible)
+        return true;
+    return Widget::isSelectable();
+}

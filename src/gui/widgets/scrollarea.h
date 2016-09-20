@@ -432,6 +432,8 @@ class ScrollArea final : public BasicContainer,
 
         void mouseWheelMovedDown(MouseEvent& event) override final;
 
+        bool isSelectable() const override final;
+
     protected:
         enum BUTTON_DIR
         {

@@ -1023,7 +1023,7 @@ class Widget notfinal : public Widget2
         void setRedraw(const bool b) noexcept2
         { mRedraw = b; }
 
-        bool isSelectable() const noexcept2 A_WARN_UNUSED
+        virtual bool isSelectable() const A_WARN_UNUSED
         { return mSelectable; }
 
         void setSelectable(const bool selectable)
