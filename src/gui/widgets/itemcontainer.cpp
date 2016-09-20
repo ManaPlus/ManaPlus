@@ -47,6 +47,7 @@
 
 #include "net/inventoryhandler.h"
 #include "net/npchandler.h"
+#include "net/serverfeatures.h"
 #include "net/tradehandler.h"
 
 #include "utils/delete2.h"
@@ -784,6 +785,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         if (src == DragDropSource::Inventory
             && dst == DragDropSource::Inventory)
         {
+            if (!serverFeatures->haveCards())
+                return;
             const int index = getSlotIndex(event.getX(), event.getY());
             if (index == Inventory::NO_SLOT_INDEX)
                 return;
