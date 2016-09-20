@@ -1023,6 +1023,12 @@ class Widget notfinal : public Widget2
         void setRedraw(const bool b) noexcept2
         { mRedraw = b; }
 
+        bool isSelectable() const noexcept2 A_WARN_UNUSED
+        { return mSelectable; }
+
+        void setSelectable(const bool selectable)
+        { mSelectable = selectable; }
+
         static void distributeWindowResizeEvent();
 
         void windowResized();
@@ -1245,6 +1251,8 @@ class Widget notfinal : public Widget2
         bool mMouseConsume;
 
         bool mRedraw;
+
+        bool mSelectable;
 
         /**
           * Holds the global font used by the widget.

@@ -44,7 +44,7 @@ class DebugTab notfinal : public Container
     protected:
         explicit DebugTab(const Widget2 *const widget) :
             Container(widget)
-        { }
+        { setSelectable(false); }
 };
 
 class MapDebugTab final : public DebugTab

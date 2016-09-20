@@ -57,6 +57,9 @@ DebugWindow::DebugWindow() :
 
     setDefaultSize(400, 300, ImagePosition::CENTER);
 
+    mTabs->setSelectable(false);
+    mTabs->getWidgetContainer()->setSelectable(false);
+    mTabs->getTabContainer()->setSelectable(false);
     // TRANSLATORS: debug window tab
     mTabs->addTab(std::string(_("Map")), mMapWidget);
     // TRANSLATORS: debug window tab

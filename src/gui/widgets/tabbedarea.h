@@ -237,6 +237,12 @@ class TabbedArea final : public ActionListener,
 
         void selectPrevTab();
 
+        Widget *getTabContainer() const
+        { return mTabContainer; }
+
+        Widget *getWidgetContainer() const
+        { return mWidgetContainer; }
+
     private:
         typedef std::vector <std::pair<Tab*, Widget*> > TabContainer;
 

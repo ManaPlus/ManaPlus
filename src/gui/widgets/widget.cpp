@@ -105,7 +105,8 @@ Widget::Widget(const Widget2 *const widget) :
     mEnabled(true),
     mAllowLogic(true),
     mMouseConsume(true),
-    mRedraw(true)
+    mRedraw(true),
+    mSelectable(true)
 {
     mAllWidgets.push_back(this);
     mAllWidgetsSet.insert(this);

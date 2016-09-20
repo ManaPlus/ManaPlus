@@ -1230,6 +1230,7 @@ Widget* Gui::getWidgetAt(const int x, const int y) const
     // If the widget's parent has no child then we have found the widget..
     Widget* parent = mTop;
     Widget* child = mTop;
+    Widget* selectable = mTop;
 
     while (child)
     {
@@ -1238,9 +1239,11 @@ Widget* Gui::getWidgetAt(const int x, const int y) const
         parent->getAbsolutePosition(parentX, parentY);
         child = parent->getWidgetAt(x - parentX, y - parentY);
         parent = swap;
+        if (parent && parent->isSelectable())
+            selectable = parent;
     }
 
-    return parent;
+    return selectable;
 }
 
 Widget* Gui::getMouseEventSource(const int x, const int y) const
