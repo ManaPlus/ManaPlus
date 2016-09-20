@@ -40,9 +40,12 @@ StatsPage::StatsPage(const Widget2 *const widget,
     mAttrScroll(new ScrollArea(this, mAttrCont, Opaque_false))
 {
     addWidgetListener(this);
+    setSelectable(false);
 
     mAttrScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
+    mAttrScroll->setSelectable(false);
+    mAttrCont->setSelectable(false);
 
     add(mAttrScroll);
     const std::vector<BasicStat> &basicStats = StatDb::getStats(page);

@@ -45,9 +45,12 @@ StatsPageBasic::StatsPageBasic(const Widget2 *const widget) :
     mCharacterPointsLabel(new Label(this, "C"))
 {
     addWidgetListener(this);
+    setSelectable(false);
 
     mAttrScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
+    mAttrScroll->setSelectable(false);
+    mAttrCont->setSelectable(false);
 
     add(mAttrScroll);
     const std::vector<BasicStat> &basicStats = StatDb::getBasicStats();

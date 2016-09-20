@@ -45,6 +45,7 @@ AttrDisplay::AttrDisplay(const Widget2 *const widget,
 {
     setSize(100, 32);
 
+    setSelectable(false);
     mLabel->setAlignment(Graphics::CENTER);
     mValue->setAlignment(Graphics::CENTER);
 }

@@ -97,6 +97,10 @@ StatusWindow::StatusWindow() :
     setDefaultSize((windowContainer->getWidth() - 480) / 2,
         (windowContainer->getHeight() - 500) / 2, 480, 500);
 
+    mTabs->setSelectable(false);
+    mTabs->getWidgetContainer()->setSelectable(false);
+    mTabs->getTabContainer()->setSelectable(false);
+
     if (localPlayer && !localPlayer->getRaceName().empty())
     {
         setCaption(strprintf("%s (%s)", localPlayer->getName().c_str(),
@@ -116,6 +120,7 @@ StatusWindow::StatusWindow() :
         "hpprogressbar.xml", "hpprogressbar_fill.xml");
     mHpBar->setColor(getThemeColor(ThemeColorId::HP_BAR),
         getThemeColor(ThemeColorId::HP_BAR_OUTLINE));
+    mHpBar->setSelectable(false);
 
     max = PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED);
     mXpBar = new ProgressBar(this,
@@ -128,6 +133,7 @@ StatusWindow::StatusWindow() :
         "xpprogressbar.xml", "xpprogressbar_fill.xml");
     mXpBar->setColor(getThemeColor(ThemeColorId::XP_BAR),
         getThemeColor(ThemeColorId::XP_BAR_OUTLINE));
+    mXpBar->setSelectable(false);
 
     const bool job = serverConfig.getValueBool("showJob", true);
 
@@ -144,6 +150,7 @@ StatusWindow::StatusWindow() :
         useMagic ? ProgressColorId::PROG_MP : ProgressColorId::PROG_NO_MP,
         useMagic ? "mpprogressbar.xml" : "nompprogressbar.xml",
         useMagic ? "mpprogressbar_fill.xml" : "nompprogressbar_fill.xml");
+    mMpBar->setSelectable(false);
     if (useMagic)
     {
         mMpBar->setColor(getThemeColor(ThemeColorId::MP_BAR),
@@ -177,6 +184,7 @@ StatusWindow::StatusWindow() :
             "jobprogressbar.xml", "jobprogressbar_fill.xml");
         mJobBar->setColor(getThemeColor(ThemeColorId::JOB_BAR),
             getThemeColor(ThemeColorId::JOB_BAR_OUTLINE));
+        mJobBar->setSelectable(false);
 
         place(3, 0, mJobLvlLabel, 3);
         place(5, 2, mJobLabel).setPadding(3);
