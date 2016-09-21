@@ -152,5 +152,6 @@ impHandlerVoid(setSkillOffsetY)
 impHandlerVoid(partyItemShare)
 impHandlerVoid(partyExpShare)
 impHandlerVoid(partyAutoItemShare)
+impHandlerVoid(outfitToChat)
 
 }  // namespace Actions

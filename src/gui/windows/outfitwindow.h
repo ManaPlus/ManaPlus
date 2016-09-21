@@ -97,6 +97,8 @@ class OutfitWindow final : public Window,
 
         void clearCurrentOutfit();
 
+        std::string getOutfitString() const;
+
     private:
         int getIndexFromGrid(const int pointX,
                              const int pointY) const A_WARN_UNUSED;

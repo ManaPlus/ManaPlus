@@ -1888,4 +1888,15 @@ impHandler(partyAutoItemShare)
     return true;
 }
 
+impHandler0(outfitToChat)
+{
+    if (!outfitWindow || !chatWindow)
+        return false;
+
+    const std::string str = outfitWindow->getOutfitString();
+    if (!str.empty())
+        chatWindow->addInputText(str);
+    return true;
+}
+
 }  // namespace Actions

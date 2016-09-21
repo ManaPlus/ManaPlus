@@ -722,3 +722,27 @@ void OutfitWindow::clearCurrentOutfit()
     }
     save();
 }
+
+std::string OutfitWindow::getOutfitString() const
+{
+    std::string str;
+    for (unsigned int i = 0; i < OUTFIT_ITEM_COUNT; i++)
+    {
+        const int id = mItems[mCurrentOutfit][i];
+        if (id < 0)
+            continue;
+
+        const ItemColor color = mItemColors[mCurrentOutfit][i];
+        std::vector<int> ids;
+        ids.push_back(id);
+        ids.push_back(CAST_S32(color));
+
+        const std::string name = ItemDB::getNamesStr(ids);
+        if (name.empty())
+            continue;
+        str.append("[");
+        str.append(name);
+        str.append("] ");
+    }
+    return str;
+}

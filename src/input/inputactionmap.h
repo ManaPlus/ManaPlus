@@ -5599,7 +5599,13 @@ static const InputActionData inputActionData
         InputCondition::INGAME,
         "createitem",
         UseArgs_true,
-        Protected_false},
+        Protected_true},
+    {"keyCopyOutfitToChat",
+        defaultAction(&Actions::outfitToChat),
+        InputCondition::INGAME,
+        "outfittochat|copyoutfittochat",
+        UseArgs_false,
+        Protected_true},
 };
 
 #undef defaultAction
