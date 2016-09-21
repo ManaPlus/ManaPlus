@@ -177,6 +177,8 @@ void InputManager::retrieve() restrict2
                     i2 ++;
                 }
             }
+            for (; i2 < inputFunctionSize; i2 ++)
+                kf.values[i2] = InputItem();
         }
         updateKeyString(kf, i);
     }
