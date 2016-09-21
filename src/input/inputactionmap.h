@@ -1264,7 +1264,7 @@ static const InputActionData inputActionData
         &Actions::copyEquippedToOutfit,
         InputAction::NO_VALUE, 50,
         InputCondition::GAME | InputCondition::VALIDSPEED,
-        "",
+        "copyequippedtooutfit|itemstooutfit",
         UseArgs_false,
         Protected_true},
     {"keyOutfitShortcut1",

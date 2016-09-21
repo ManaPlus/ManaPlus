@@ -787,6 +787,10 @@ void PopupMenu::showOutfitsWindowPopup(const int x, const int y)
     mBrowserBox->addRow("/outfittochat", _("Add to chat"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
+    // TRANSLATORS: copy equipment from player to outfit
+    mBrowserBox->addRow("/itemstooutfit", _("Copy from player"));
+    mBrowserBox->addRow("##3---");
+    // TRANSLATORS: popup menu item
     // TRANSLATORS: clear selected outfit
     mBrowserBox->addRow("clear outfit", _("Clear outfit"));
     mBrowserBox->addRow("##3---");
