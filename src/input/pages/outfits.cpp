@@ -38,19 +38,25 @@ SetupActionData setupActionDataOutfits[] =
     },
     {
         // TRANSLATORS: input action name
-        N_("Wear Outfit"),
+        N_("Wear outfit"),
         InputAction::WEAR_OUTFIT,
         "",
     },
     {
         // TRANSLATORS: input action name
-        N_("Copy Outfit"),
+        N_("Copy Outfit to other outfit"),
         InputAction::COPY_OUTFIT,
         "",
     },
     {
         // TRANSLATORS: input action name
-        N_("Copy equipped to Outfit"),
+        N_("Copy outfit to chat"),
+        InputAction::COPY_OUTFIT_TO_CHAT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
+        N_("Copy equipped to outfit"),
         InputAction::COPY_EQUIPED_OUTFIT,
         "",
     },
