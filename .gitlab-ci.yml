@@ -477,6 +477,27 @@ gcc_eathena:
   image: debian:unstable
   <<: *log-failed-jobs
 
+gcc_without_mumble:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5.sh --without-mumble
+  image: debian:unstable
+  <<: *log-failed-jobs
+
+gcc_without_customnls:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5.sh --enable-customnls
+  image: debian:unstable
+  <<: *log-failed-jobs
+
+gcc_without_customnls_nonls:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5.sh --enable-customnls --disable-nls
+  image: debian:unstable
+  <<: *log-failed-jobs
+
 gcc_without_opengl:
   stage: build
   script:
