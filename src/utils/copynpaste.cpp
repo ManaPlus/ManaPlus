@@ -28,7 +28,7 @@
  */
 
 #ifdef _MSC_VER
-#include "msvc/config.h"
+# include "msvc/config.h"
 #elif defined(HAVE_CONFIG_H)
 #include "config.h"
 #endif  // _MSC_VER
