@@ -29,7 +29,7 @@ namespace Files
 {
 #ifdef ANDROID
     void extractLocale();
-#endif
+#endif  // ANDROID
 
 #if defined(ANDROID) || defined(__native_client__)
     typedef void (*CopyFileCallbackPtr) (int cnt);

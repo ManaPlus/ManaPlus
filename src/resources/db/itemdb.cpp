@@ -1070,4 +1070,4 @@ ItemDB::ItemInfos &ItemDB::getItemInfosTest()
 {
     return mItemInfos;
 }
-#endif
+#endif  // UNITTESTS

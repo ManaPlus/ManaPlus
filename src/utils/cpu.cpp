@@ -27,7 +27,8 @@
 // nothing
 #elif defined(__linux__) || defined(__linux)
 #include "utils/stringutils.h"
-#endif
+#endif  // (defined(__amd64__) || defined(__i386__)) && defined(__GNUC__)
+        // && (GCC_VERSION >= 40800) && !defined(ANDROID)
 
 #include "debug.h"
 
@@ -91,9 +92,11 @@ void Cpu::detect()
     }
     fclose(file);
     logger->log("cpu features was not detected");
-#else
+#else  // OTHER
+
     logger->log("cpu features not supported");
-#endif
+#endif  // (defined(__amd64__) || defined(__i386__)) && defined(__GNUC__)
+        // && (GCC_VERSION >= 40800) && !defined(ANDROID)
 }
 
 void Cpu::printFlags()

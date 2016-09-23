@@ -51,7 +51,7 @@
 
 #ifdef WIN32
 #undef ERROR
-#endif
+#endif  // WIN32
 
 static const int MAX_SERVERLIST = 15;
 
@@ -62,9 +62,11 @@ static std::string serverTypeToString(const ServerTypeT type)
         case ServerType::TMWATHENA:
 #ifdef TMWA_SUPPORT
             return "TmwAthena";
-#else
+#else  // TMWA_SUPPORT
+
             return "";
-#endif
+#endif  // TMWA_SUPPORT
+
         case ServerType::EATHENA:
             return "eAthena";
         case ServerType::EVOL2:

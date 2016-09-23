@@ -36,7 +36,8 @@ class ConfigManager final
 
 #ifndef ANDROID
         static void storeSafeParameters();
-#endif
+#endif  // ANDROID
+
         static void backupConfig(const std::string &name);
 
         static void checkConfigVersion();

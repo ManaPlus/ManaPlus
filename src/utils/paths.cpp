@@ -19,10 +19,10 @@
  */
 
 #ifdef _MSC_VER
-#  include "msvc/config.h"
+#include "msvc/config.h"
 #elif defined(HAVE_CONFIG_H)
-#  include "config.h"
-#endif
+#include "config.h"
+#endif  // _MSC_VER
 
 #include "utils/paths.h"
 
@@ -33,12 +33,12 @@
 #include "utils/files.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
-#endif
+#endif  // USE_X11
 
 #ifdef __native_client__
 #include <limits.h>
 #define realpath(N, R) strcpy(R, N)
-#endif
+#endif  // __native_client__
 
 #ifdef WIN32
 #include "utils/specialfolder.h"
@@ -47,13 +47,13 @@
 #include <limits>
 #elif defined __native_client__
 #include <limits.h>
-#endif
+#endif  // WIN32
 
 #ifdef ANDROID
 #ifdef USE_SDL2
 #include <SDL_system.h>
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
 #include "debug.h"
 
@@ -69,9 +69,12 @@ std::string getRealPath(const std::string &str)
     if (!realPath)
         return "";
     realpath(str.c_str(), realPath);
-#else
+#else  // defined(__OpenBSD__) || defined(__ANDROID__) ||
+       // defined(__native_client__)
+
     char *realPath = realpath(str.c_str(), nullptr);
-#endif
+#endif  // defined(__OpenBSD__) || defined(__ANDROID__) ||
+        // defined(__native_client__)
 
     if (!realPath)
         return "";
@@ -148,13 +151,14 @@ std::string getSelfName()
     }
 }
 
-#else
+#else  // WIN32
+
 std::string getSelfName()
 {
     return "";
 }
 
-#endif
+#endif  // WIN32
 
 std::string getPicturesDir()
 {
@@ -195,9 +199,10 @@ std::string getPicturesDir()
     }
 
     return std::string(PhysFs::getUserDir()).append("Desktop");
-#else
+#else  // WIN32
+
     return std::string(PhysFs::getUserDir()).append("Desktop");
-#endif
+#endif  // WIN32
 }
 
 #ifdef ANDROID
@@ -205,7 +210,7 @@ std::string getSdStoragePath()
 {
     return getenv("DATADIR2");
 }
-#endif
+#endif  // ANDROID
 
 std::string getPackageDir()
 {

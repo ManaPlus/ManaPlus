@@ -30,7 +30,7 @@
 #include "gui/windows/tradewindow.h"
 
 #include "const/gui/chat.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "gui/windows/editdialog.h"
 
@@ -54,7 +54,7 @@
 #ifdef TMWA_SUPPORT
 #include "actormanager.h"
 #include "soundmanager.h"
-#endif
+#endif  // TMWA_SUPPORT
 #include "configuration.h"
 #include "settings.h"
 
@@ -64,20 +64,20 @@
 #ifdef TMWA_SUPPORT
 #include "being/playerrelations.h"
 #include "net/chathandler.h"
-#endif
+#endif  // TMWA_SUPPORT
 #include "net/buyingstorehandler.h"
 #include "net/vendinghandler.h"
 #include "net/serverfeatures.h"
 #ifdef TMWA_SUPPORT
 #include "net/tradehandler.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
 #ifdef TMWA_SUPPORT
 #include "resources/iteminfo.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "resources/inventory/inventory.h"
 
@@ -271,7 +271,7 @@ void ShopWindow::action(const ActionEvent &event)
             announce(mSellShopItems, SELL);
         }
     }
-#endif
+#endif  // TMWA_SUPPORT
     else if (eventId == "delete")
     {
         if (isBuySelected)
@@ -1071,7 +1071,7 @@ bool ShopWindow::findShopItem(const ShopItem *const shopItem,
     }
     return false;
 }
-#endif
+#endif  // TMWA_SUPPORT
 
 int ShopWindow::sumAmount(const Item *const shopItem)
 {

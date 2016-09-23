@@ -53,7 +53,7 @@ Image::Image(SDL_Texture *restrict const image,
     mGLImage(0),
     mTexWidth(0),
     mTexHeight(0),
-#endif
+#endif  // USE_OPENGL
     mBounds(),
     mAlpha(1.0F),
     mSDLSurface(nullptr),
@@ -68,7 +68,7 @@ Image::Image(SDL_Texture *restrict const image,
 {
 #ifdef DEBUG_IMAGES
     logger->log("created image: %p", this);
-#endif
+#endif  // DEBUG_IMAGES
 
     mBounds.x = 0;
     mBounds.y = 0;
@@ -86,7 +86,7 @@ Image::Image(SDL_Texture *restrict const image,
         mBounds.h = 0;
     }
 }
-#endif
+#endif  // USE_SDL2
 
 Image::Image(SDL_Surface *restrict const image, const bool hasAlphaChannel0,
              uint8_t *restrict const alphaChannel) :
@@ -95,13 +95,13 @@ Image::Image(SDL_Surface *restrict const image, const bool hasAlphaChannel0,
     mGLImage(0),
     mTexWidth(0),
     mTexHeight(0),
-#endif
+#endif  // USE_OPENGL
     mBounds(),
     mAlpha(1.0F),
     mSDLSurface(image),
 #ifdef USE_SDL2
     mTexture(nullptr),
-#endif
+#endif  // USE_SDL2
     mAlphaChannel(alphaChannel),
     mAlphaCache(),
     mLoaded(false),
@@ -112,7 +112,7 @@ Image::Image(SDL_Surface *restrict const image, const bool hasAlphaChannel0,
 {
 #ifdef DEBUG_IMAGES
     logger->log("created image: %p", static_cast<void*>(this));
-#endif
+#endif  // DEBUG_IMAGES
 
     mBounds.x = 0;
     mBounds.y = 0;
@@ -143,7 +143,7 @@ Image::Image(const GLuint glimage, const int width, const int height,
     mSDLSurface(nullptr),
 #ifdef USE_SDL2
     mTexture(nullptr),
-#endif
+#endif  // USE_SDL2
     mAlphaChannel(nullptr),
     mAlphaCache(),
     mLoaded(false),
@@ -154,7 +154,7 @@ Image::Image(const GLuint glimage, const int width, const int height,
 {
 #ifdef DEBUG_IMAGES
     logger->log("created image: %p", static_cast<void*>(this));
-#endif
+#endif  // DEBUG_IMAGES
 
     mBounds.x = 0;
     mBounds.y = 0;
@@ -166,14 +166,15 @@ Image::Image(const GLuint glimage, const int width, const int height,
         mLoaded = true;
     }
 }
-#endif
+#endif  // USE_OPENGL
 
 Image::~Image()
 {
 #ifdef DEBUG_IMAGES
     logger->log("delete image: %p", static_cast<void*>(this));
     logger->log("  %s, %s", mIdPath.c_str(), mSource.c_str());
-#endif
+#endif  // DEBUG_IMAGES
+
     unload();
 }
 
@@ -210,7 +211,7 @@ void Image::unload()
         SDL_DestroyTexture(mTexture);
         mTexture = nullptr;
     }
-#endif
+#endif  // USE_SDL2
 
 #ifdef USE_OPENGL
     if (mGLImage)
@@ -220,9 +221,9 @@ void Image::unload()
 #ifdef DEBUG_OPENGL_LEAKS
         if (textures_count > 0)
             textures_count --;
-#endif
+#endif  // DEBUG_OPENGL_LEAKS
     }
-#endif
+#endif  // USE_OPENGL
 }
 
 bool Image::hasAlphaChannel() const
@@ -233,7 +234,7 @@ bool Image::hasAlphaChannel() const
 #ifdef USE_OPENGL
     if (OpenGLImageHelper::mUseOpenGL != RENDER_SOFTWARE)
         return true;
-#endif
+#endif  // USE_OPENGL
 
     return false;
 }
@@ -272,7 +273,8 @@ void Image::setAlpha(const float alpha)
                     {
                         logger->log("alpha: " + toString(i->first));
                     }
-#endif
+#endif  // DEBUG_ALPHA_CACHE
+
                     SDLCleanCache();
                 }
                 surface = mSDLSurface;
@@ -309,11 +311,12 @@ void Image::setAlpha(const float alpha)
 #ifdef USE_SDL2
             SDL_SetSurfaceAlphaMod(mSDLSurface,
                 CAST_U8(255 * mAlpha));
-#else
+#else  // USE_SDL2
+
             // Set the alpha value this image is drawn at
             SDL_SetAlpha(mSDLSurface, SDL_SRCALPHA,
                 CAST_U8(255 * mAlpha));
-#endif
+#endif  // USE_SDL2
         }
         else
         {
@@ -391,7 +394,7 @@ void Image::setAlpha(const float alpha)
         SDL_SetTextureAlphaMod(mTexture,
             CAST_U8(255 * mAlpha));
     }
-#endif
+#endif  // USE_SDL2
     else
     {
         mAlpha = alpha;
@@ -446,19 +449,21 @@ Image *Image::getSubImage(const int x, const int y,
             width, height,
             mTexWidth, mTexHeight);
     }
-#endif
+#endif  // USE_OPENGL
 
 #ifdef USE_SDL2
 #ifndef USE_OPENGL
     const RenderType mode = ImageHelper::mUseOpenGL;
-#endif
+#endif  // USE_OPENGL
+
     if (mode == RENDER_SOFTWARE)
         return new SubImage(this, mSDLSurface, x, y, width, height);
     else
         return new SubImage(this, mTexture, x, y, width, height);
-#else
+#else  // USE_SDL2
+
     return new SubImage(this, mSDLSurface, x, y, width, height);
-#endif
+#endif  // USE_SDL2
 }
 
 void Image::SDLTerminateAlphaCache()
@@ -488,4 +493,4 @@ void Image::decRef()
         OpenGLImageHelper::invalidate(mGLImage);
     Resource::decRef();
 }
-#endif
+#endif  // USE_OPENGL

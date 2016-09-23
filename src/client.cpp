@@ -96,7 +96,7 @@
 
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "particle/particleengine.h"
 
@@ -141,7 +141,7 @@
 #include "utils/mrand.h"
 #ifdef ANDROID
 #include "utils/paths.h"
-#endif
+#endif  // ANDROID
 #include "utils/physfstools.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
@@ -154,34 +154,34 @@
 #ifdef USE_OPENGL
 #include "test/testlauncher.h"
 #include "test/testmain.h"
-#else
+#else  // USE_OPENGL
 #include "configuration.h"
-#endif
+#endif  // USE_OPENGL
 
 #ifdef WIN32
 #include <SDL_syswm.h>
 #include "utils/specialfolder.h"
 #undef ERROR
-#endif
+#endif  // WIN32
 
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
 #include <fstream>
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
 #include <sys/stat.h>
 
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"
-#endif
+#endif  // USE_MUMBLE
 
 #ifdef USE_SDL2
 #include <SDL2_framerate.h>
-#else
+#else  // USE_SDL2
 #include <SDL_framerate.h>
-#endif
+#endif  // USE_SDL2
 
 #include "debug.h"
 
@@ -237,7 +237,7 @@ Client::Client() :
     mPerfomanceButton(nullptr),
 #ifdef ANDROID
     mCloseButton(nullptr),
-#endif
+#endif  // ANDROID
     mState(State::CHOOSE_SERVER),
     mOldState(State::START),
     mSkin(nullptr),
@@ -291,7 +291,8 @@ void Client::gameInit()
 
 #ifdef USE_FUZZER
     Fuzzer::init();
-#endif
+#endif  // USE_FUZZER
+
     if (settings.options.test.empty())
         ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();
@@ -309,7 +310,7 @@ void Client::gameInit()
 #ifndef ANDROID
     if (settings.options.test.empty())
         ConfigManager::storeSafeParameters();
-#endif
+#endif  // ANDROID
 
     ResourceManager::init();
     if (!resourceManager->setWriteDir(settings.localDataDir))
@@ -351,20 +352,22 @@ void Client::gameInit()
     PacketLimiter::initPacketLimiter();
 #ifndef USE_SDL2
     SDL_EnableUNICODE(1);
-#endif
+#endif  // USE_SDL2
+
     WindowManager::applyKeyRepeat();
 
     // disable unused SDL events
 #ifndef USE_SDL2
     SDL_EventState(SDL_VIDEOEXPOSE, SDL_IGNORE);
-#endif
+#endif  // USE_SDL2
+
     SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
     SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
 
 #ifdef WIN32
     Dirs::extractDataDir();
     Dirs::mountDataDir();
-#endif
+#endif  // WIN32
 
     WindowManager::setIcon();
     ConfigManager::checkConfigVersion();
@@ -372,15 +375,17 @@ void Client::gameInit()
     Cpu::detect();
 #if defined(USE_OPENGL)
 #if !defined(ANDROID) && !defined(__APPLE__) && \
-!defined(__native_client__) && !defined(UNITTESTS)
+    !defined(__native_client__) && !defined(UNITTESTS)
     if (!settings.options.safeMode &&
         settings.options.test.empty() &&
         !config.getBoolValue("videodetected"))
     {
         graphicsManager.detectVideoSettings();
     }
-#endif
-#endif
+#endif  // !defined(ANDROID) && !defined(__APPLE__) &&
+        // !defined(__native_client__) && !defined(UNITTESTS)
+#endif  // defined(USE_OPENGL)
+
     updateEnv();
     initGraphics();
 
@@ -389,7 +394,7 @@ void Client::gameInit()
 #ifndef WIN32
     Dirs::extractDataDir();
     Dirs::mountDataDir();
-#endif
+#endif  // WIN32
 
     Dirs::updateDataPath();
 
@@ -405,7 +410,7 @@ void Client::gameInit()
     TranslationManager::loadCurrentLang();
 #ifdef ENABLE_CUSTOMNLS
     TranslationManager::loadGettextLang();
-#endif
+#endif  // ENABLE_CUSTOMNLS
 
     WindowManager::initTitle();
 
@@ -499,13 +504,13 @@ void Client::gameInit()
 #ifdef ANDROID
 #ifndef USE_SDL2
     WindowManager::updateScreenKeyboard(SDL_GetScreenKeyboardHeight(nullptr));
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
 #ifdef USE_MUMBLE
     if (!mumbleManager)
         mumbleManager = new MumbleManager();
-#endif
+#endif  // USE_MUMBLE
 
     mSkin = theme->load("windowmenu.xml", "");
     if (mSkin)
@@ -642,7 +647,7 @@ void Client::gameClear()
 
 #ifdef USE_MUMBLE
     delete2(mumbleManager);
-#endif
+#endif  // USE_MUMBLE
 
     PlayerInfo::deinit();
 
@@ -712,7 +717,8 @@ void Client::gameClear()
 
 #ifdef DEBUG_CONFIG
     config.enableKeyLogging();
-#endif
+#endif  // DEBUG_CONFIG
+
     config.removeOldKeys();
     config.write();
     serverConfig.write();
@@ -725,12 +731,12 @@ void Client::gameClear()
 
 #ifdef USE_PROFILER
     Perfomance::clear();
-#endif
+#endif  // USE_PROFILER
 
 #ifdef DEBUG_OPENGL_LEAKS
     if (logger)
         logger->log("textures left: %d", textures_count);
-#endif
+#endif  // DEBUG_OPENGL_LEAKS
 
     delete2(chatLogger);
     TranslationManager::close();
@@ -749,16 +755,16 @@ int Client::testsExec()
         TestLauncher launcher(settings.options.test);
         return launcher.exec();
     }
-#else
+#else  // USE_OPENGL
+
     return 0;
-#endif
+#endif  // USE_OPENGL
 }
 
 #define ADDBUTTON(var, object) var = object; \
     x -= var->getWidth() + mButtonSpacing; \
     var->setPosition(x, mButtonPadding); \
     top->add(var);
-
 
 void Client::stateConnectGame1()
 {
@@ -828,11 +834,11 @@ void Client::stateConnectServer1()
 #ifdef USE_MUMBLE
         if (mumbleManager)
             mumbleManager->setServer(mCurrentServer.hostname);
-#endif
+#endif  // USE_MUMBLE
 
 #ifdef TMWA_SUPPORT
         GuildManager::init();
-#endif
+#endif  // TMWA_SUPPORT
 
         if (!mConfigAutoSaved)
         {
@@ -894,7 +900,8 @@ void Client::stateGame1()
     ADDBUTTON(mCloseButton, new Button(desktop,
         // TRANSLATORS: close quick button
         _("Close"), "close", this))
-#endif
+#endif  // ANDROID
+
     desktop->setSize(mainGraphics->getWidth(),
         mainGraphics->getHeight());
 }
@@ -1450,7 +1457,7 @@ int Client::gameExec()
 #ifdef USE_MUMBLE
                         if (mumbleManager)
                             mumbleManager->setPlayer(localPlayer->getName());
-#endif
+#endif  // USE_MUMBLE
                     }
 
                     // Fade out logon-music here too to give the desired effect
@@ -1465,7 +1472,8 @@ int Client::gameExec()
 
 #ifdef ANDROID
                     delete2(mCloseButton);
-#endif
+#endif  // ANDROID
+
                     delete2(mSetupButton);
                     delete2(mVideoButton);
                     delete2(mThemesButton);
@@ -1918,8 +1926,8 @@ void Client::moveButtons(const int width)
 #ifdef ANDROID
         x -= mCloseButton->getWidth() + mButtonSpacing;
         mCloseButton->setPosition(x, mButtonPadding);
-#endif
-#endif
+#endif  // ANDROID
+#endif  // WIN32
     }
 }
 
@@ -1934,7 +1942,7 @@ void Client::logVars()
 #ifdef ANDROID
     logger->log("APPDIR: %s", getenv("APPDIR"));
     logger->log("DATADIR2: %s", getSdStoragePath().c_str());
-#endif
+#endif  // ANDROID
 }
 
 void Client::slowLogic()
@@ -1966,62 +1974,3 @@ void Client::slowLogic()
         }
     }
 }
-
-#ifdef ANDROID
-#ifdef USE_SDL2
-/*
-void Client::extractAssets()
-{
-    if (!getenv("APPDIR"))
-    {
-        logger->log("error: APPDIR is not set!");
-        return;
-    }
-    const std::string fileName = std::string(getenv(
-        "APPDIR")).append("/data.zip");
-    logger->log("Extracting asset into: " + fileName);
-    uint8_t *buf = new uint8_t[1000000];
-
-    FILE *const file = fopen(fileName.c_str(), "w");
-    for (int f = 0; f < 100; f ++)
-    {
-        std::string part = strprintf("manaplus-data.zip%u%u",
-            CAST_U32(f / 10),
-            CAST_U32(f % 10));
-        logger->log("testing asset: " + part);
-        SDL_RWops *const rw = SDL_RWFromFile(part.c_str(), "r");
-        if (rw)
-        {
-            const int size = SDL_RWsize(rw);
-            int size2 = SDL_RWread(rw, buf, 1, size);
-            logger->log("asset size: %d", size2);
-            fwrite(buf, 1, size2, file);
-            SDL_RWclose(rw);
-            Dirs::setProgress();
-        }
-        else
-        {
-            break;
-        }
-    }
-    fclose(file);
-
-    const std::string fileName2 = std::string(getenv(
-        "APPDIR")).append("/locale.zip");
-    FILE *const file2 = fopen(fileName2.c_str(), "w");
-    SDL_RWops *const rw = SDL_RWFromFile("manaplus-locale.zip", "r");
-    if (rw)
-    {
-        const int size = SDL_RWsize(rw);
-        int size2 = SDL_RWread(rw, buf, 1, size);
-        fwrite(buf, 1, size2, file2);
-        SDL_RWclose(rw);
-        setProgress();
-    }
-    fclose(file2);
-
-    delete [] buf;
-}
-*/
-#endif
-#endif

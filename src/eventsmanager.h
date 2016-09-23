@@ -48,9 +48,10 @@ class EventsManager final : public ConfigListener
 
 #ifdef USE_SDL2
         static void handleSDL2WindowEvent(const SDL_Event &event);
-#else
+#else  // USE_SDL2
+
         static void handleActive(const SDL_Event &event);
-#endif
+#endif  // USE_SDL2
 
         void optionChanged(const std::string &name) override final;
 

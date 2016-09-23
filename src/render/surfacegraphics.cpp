@@ -63,7 +63,8 @@ void SurfaceGraphics::drawImage(const Image *restrict const image,
 
 #ifdef USE_SDL2
     SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
-#else
+#else  // USE_SDL2
+
     if (mBlitMode == BlitMode::BLIT_NORMAL)
     {
         SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
@@ -73,7 +74,7 @@ void SurfaceGraphics::drawImage(const Image *restrict const image,
         SurfaceImageHelper::combineSurface(image->mSDLSurface,
             &srcRect, mTarget, &dstRect);
     }
-#endif
+#endif  // USE_SDL2
 }
 
 void SurfaceGraphics::copyImage(const Image *restrict const image,
@@ -97,9 +98,10 @@ void SurfaceGraphics::copyImage(const Image *restrict const image,
 #ifdef USE_SDL2
     // probably need change some flags
     SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
-#else
+#else  // USE_SDL2
+
     SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
-#endif
+#endif  // USE_SDL2
 }
 
 void SurfaceGraphics::drawImageCached(const Image *restrict const image,
@@ -123,7 +125,8 @@ void SurfaceGraphics::drawImageCached(const Image *restrict const image,
 
 #ifdef USE_SDL2
     SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
-#else
+#else  // USE_SDL2
+
     if (mBlitMode == BlitMode::BLIT_NORMAL)
     {
         SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
@@ -133,7 +136,7 @@ void SurfaceGraphics::drawImageCached(const Image *restrict const image,
         SurfaceImageHelper::combineSurface(image->mSDLSurface, &srcRect,
             mTarget, &dstRect);
     }
-#endif
+#endif  // USE_SDL2
 }
 
 void SurfaceGraphics::completeCache() restrict2

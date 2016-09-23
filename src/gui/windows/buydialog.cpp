@@ -267,7 +267,7 @@ void BuyDialog::init()
     if (mAdvanced && (
 #ifdef TMWA_SUPPORT
         mNpcId == fromInt(Nick, BeingId) ||
-#endif
+#endif  // TMWA_SUPPORT
         mNpcId == fromInt(Cash, BeingId)))
     {
         mAdvanced = false;

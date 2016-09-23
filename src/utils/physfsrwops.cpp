@@ -34,14 +34,14 @@
 #ifdef USE_SDL2
 #define PHYSFSINT int64_t
 #define PHYSFSSIZE size_t
-#else
+#else  // USE_SDL2
 #define PHYSFSINT int32_t
 #define PHYSFSSIZE int
-#endif
+#endif  // USE_SDL2
 
 #ifdef DUMP_LEAKED_RESOURCES
 static int openedRWops = 0;
-#endif
+#endif  // DUMP_LEAKED_RESOURCES
 
 static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
                                   const int whence)
@@ -172,10 +172,11 @@ static int physfsrwops_close(SDL_RWops *const rw)
     if (openedRWops <= 0)
         logger->log("closing already closed RWops");
     openedRWops --;
-#endif
+#endif  // DUMP_LEAKED_RESOURCES
 #ifdef DEBUG_PHYSFS
     FakePhysFSClose(rw);
-#endif
+#endif  // DEBUG_PHYSFS
+
     return 0;
 } /* physfsrwops_close */
 
@@ -186,7 +187,7 @@ static PHYSFSINT physfsrwops_size(SDL_RWops *const rw)
         rw->hidden.unknown.data1);
     return PHYSFS_fileLength(handle);
 } /* physfsrwops_size */
-#endif
+#endif  // USE_SDL2
 
 static SDL_RWops *create_rwops(PHYSFS_file *const handle)
 {
@@ -203,7 +204,8 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
         {
 #ifdef USE_SDL2
             retval->size  = &physfsrwops_size;
-#endif
+#endif  // USE_SDL2
+
             retval->seek  = &physfsrwops_seek;
             retval->read  = &physfsrwops_read;
             retval->write = &physfsrwops_write;
@@ -212,7 +214,7 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
         } /* if */
 #ifdef DUMP_LEAKED_RESOURCES
         openedRWops ++;
-#endif
+#endif  // DUMP_LEAKED_RESOURCES
     } /* else */
 
     return retval;
@@ -238,7 +240,7 @@ static bool checkFilePath(const char *const fname)
         return false;
     return true;
 }
-#endif
+#endif  // __APPLE__
 
 SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname)
 {
@@ -246,18 +248,19 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname)
 #ifdef __APPLE__
     if (!checkFilePath(fname))
         return nullptr;
-#endif
+#endif  // __APPLE__
 #ifdef USE_FUZZER
     if (Fuzzer::conditionTerminate(fname))
         return nullptr;
-#endif
+#endif  // USE_FUZZER
 #ifdef USE_PROFILER
     SDL_RWops *const ret = create_rwops(PhysFs::openRead(fname));
     BLOCK_END("PHYSFSRWOPS_openRead")
     return ret;
-#else
+#else  // USE_PROFILER
+
     return create_rwops(PhysFs::openRead(fname));
-#endif
+#endif  // USE_PROFILER
 } /* PHYSFSRWOPS_openRead */
 
 SDL_RWops *PHYSFSRWOPS_openWrite(const char *const fname)
@@ -265,7 +268,8 @@ SDL_RWops *PHYSFSRWOPS_openWrite(const char *const fname)
 #ifdef __APPLE__
     if (!checkFilePath(fname))
         return nullptr;
-#endif
+#endif  // __APPLE__
+
     return create_rwops(PhysFs::openWrite(fname));
 } /* PHYSFSRWOPS_openWrite */
 
@@ -274,7 +278,8 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname)
 #ifdef __APPLE__
     if (!checkFilePath(fname))
         return nullptr;
-#endif
+#endif  // __APPLE__
+
     return create_rwops(PhysFs::openAppend(fname));
 } /* PHYSFSRWOPS_openAppend */
 
@@ -284,6 +289,6 @@ void reportRWops()
     if (openedRWops)
         logger->log("leaking RWops: %d", openedRWops);
 }
-#endif
+#endif  // DUMP_LEAKED_RESOURCES
 
 /* end of physfsrwops.c ... */

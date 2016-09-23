@@ -40,7 +40,7 @@
 
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "resources/iteminfo.h"
 
@@ -96,7 +96,7 @@ static void outString(ChatTab *const tab,
                 {
                     guildManager->chat(str);
                 }
-#endif
+#endif  // TMWA_SUPPORT
             }
             break;
         }
@@ -408,9 +408,10 @@ impHandler(guild)
                 guildHandler->invite(args);
             else if (guildManager)
                 guildManager->invite(args);
-#else
+#else  // TMWA_SUPPORT
+
             guildHandler->invite(args);
-#endif
+#endif  // TMWA_SUPPORT
         }
     }
     else
@@ -523,7 +524,7 @@ impHandler(kickGuild)
                 {
                     guildManager->kick(event.args);
                 }
-#endif
+#endif  // TMWA_SUPPORT
             }
         }
     }

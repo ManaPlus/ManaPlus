@@ -25,7 +25,7 @@
 #include "game.h"
 #ifdef USE_OPENGL
 #include "graphicsmanager.h"
-#endif
+#endif  // USE_OPENGL
 #include "main.h"
 #include "spellmanager.h"
 
@@ -74,7 +74,7 @@
 
 #if defined USE_OPENGL
 #include "render/normalopenglgraphics.h"
-#endif
+#endif  // USE_OPENGL
 
 #include "net/adminhandler.h"
 #include "net/beinghandler.h"
@@ -109,8 +109,8 @@
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
-#endif
-#endif
+#endif  // USE_OPENGL
+#endif  // ANDROID
 
 #include <sstream>
 
@@ -608,6 +608,7 @@ impHandler0(itenplz)
         return true;
     }
 #endif  // TMWA_SUPPORT
+
     return false;
 }
 
@@ -631,7 +632,8 @@ impHandler0(magicAttack)
         localPlayer->magicAttack();
         return true;
     }
-#endif
+#endif  // TMWA_SUPPORT
+
     return false;
 }
 
@@ -942,13 +944,16 @@ impHandler0(showKeyboard)
         SDL_StopTextInput();
     else
         SDL_StartTextInput();
-#else
+#else  // USE_SDL2
+
     SDL_ANDROID_ToggleScreenKeyboardTextInput(nullptr);
-#endif
+#endif  // USE_SDL2
+
     return true;
-#else
+#else  // ANDROID
+
     return false;
-#endif
+#endif  // ANDROID
 }
 
 impHandler0(showWindows)
@@ -1296,12 +1301,13 @@ impHandler0(dump)
     check_leaks();
     return true;
 }
-#else
+#else  // DEBUG_DUMP_LEAKS1
+
 impHandler0(dump)
 {
     return true;
 }
-#endif
+#endif  // DEBUG_DUMP_LEAKS1
 
 impHandler0(serverIgnoreAll)
 {
@@ -1350,9 +1356,10 @@ impHandler(dumpGraphics)
 
 #if defined USE_OPENGL
     str.append(strprintf(",%d", mainGraphics->getOpenGL()));
-#else
+#else  // defined USE_OPENGL
+
     str.append(",0");
-#endif
+#endif  // defined USE_OPENGL
 
     str.append(strprintf(",%f,", static_cast<double>(settings.guiAlpha)))
         .append(config.getBoolValue("adjustPerfomance") ? "1" : "0")
@@ -1395,7 +1402,9 @@ impHandler0(dumpOGL)
 {
 #if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__)
     NormalOpenGLGraphics::dumpSettings();
-#endif
+#endif  // defined(USE_OPENGL) && !defined(ANDROID) &&
+        // !defined(__native_client__)
+
     return true;
 }
 
@@ -1406,12 +1415,13 @@ impHandler(dumpGL)
     outStringNormal(event.tab, str, str);
     return true;
 }
-#else
+#else  // USE_OPENGL
+
 impHandler0(dumpGL)
 {
     return true;
 }
-#endif
+#endif  // USE_OPENGL
 
 impHandler(dumpMods)
 {
@@ -1467,7 +1477,7 @@ impHandler0(testSdlFont)
     }
     return true;
 }
-#endif
+#endif  // defined USE_OPENGL && defined DEBUG_SDLFONT
 
 impHandler0(createItems)
 {

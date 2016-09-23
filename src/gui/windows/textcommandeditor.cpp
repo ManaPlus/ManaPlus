@@ -45,7 +45,7 @@
 
 #ifdef TMWA_SUPPORT
 const unsigned int MAGIC_START_ID = 340;
-#endif
+#endif  // TMWA_SUPPORT
 
 TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor name
@@ -54,14 +54,14 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 #ifdef TMWA_SUPPORT
     mIsMagicCommand(command ?
         (command->getCommandType() == TextCommandType::Magic) : false),
-#endif
+#endif  // TMWA_SUPPORT
     mCommand(command),
 #ifdef TMWA_SUPPORT
     // TRANSLATORS: command editor button
     mIsMagic(new RadioButton(this, _("magic"), "magic", mIsMagicCommand)),
     // TRANSLATORS: command editor button
     mIsOther(new RadioButton(this, _("other"), "magic", !mIsMagicCommand)),
-#endif
+#endif  // TMWA_SUPPORT
     // TRANSLATORS: command editor label
     mSymbolLabel(new Label(this, _("Symbol:"))),
     mSymbolTextField(new TextField(this)),
@@ -93,7 +93,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     // TRANSLATORS: command editor label
     mSchoolLvlLabel(new Label(this, _("School level:"))),
     mSchoolLvlField(new IntTextField(this, 0)),
-#endif
+#endif  // TMWA_SUPPORT
     // TRANSLATORS: command editor button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     // TRANSLATORS: command editor button
@@ -129,7 +129,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
     mSchoolLvlField->setRange(0, 5);
     mSchoolLvlField->setWidth(20);
-#endif
+#endif  // TMWA_SUPPORT
 
     mTypeDropDown->setActionEventId("type");
     mTypeDropDown->addActionListener(this);
@@ -150,19 +150,13 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
             showControls(Visible_true);
         else
             showControls(Visible_false);
-#endif
 
-        mSymbolTextField->setText(command->getSymbol());
-        mCommandTextField->setText(command->getCommand());
-        mCommentTextField->setText(command->getComment());
-        mTypeDropDown->setSelected(CAST_S32(command->getTargetType()));
-#ifdef TMWA_SUPPORT
         mManaField->setValue(command->getMana());
         mMagicLvlField->setValue(command->getBaseLvl());
         mSchoolDropDown->setSelected(CAST_S32(command->getSchool())
             - MAGIC_START_ID);
         mSchoolLvlField->setValue(command->getSchoolLvl());
-#endif
+#endif  // TMWA_SUPPORT
     }
 
     ContainerPlacer placer;
@@ -198,7 +192,8 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     placer(0, 10, mSaveButton, 2).setPadding(3);
     placer(2, 10, mCancelButton, 2).setPadding(3);
     placer(4, 10, mDeleteButton, 2).setPadding(3);
-#else
+#else  // TMWA_SUPPORT
+
     placer(0, 0, mSymbolLabel, 2).setPadding(3);
     placer(2, 0, mSymbolTextField, 3).setPadding(3);
     placer(0, 1, mCommandLabel, 2).setPadding(3);
@@ -216,7 +211,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     placer(0, 5, mSaveButton, 2).setPadding(3);
     placer(2, 5, mCancelButton, 2).setPadding(3);
     placer(4, 5, mDeleteButton, 2).setPadding(3);
-#endif
+#endif  // TMWA_SUPPORT
 
     setWidth(w);
     setHeight(h);
@@ -239,7 +234,7 @@ TextCommandEditor::~TextCommandEditor()
     delete2(mTargetTypeModel);
 #ifdef TMWA_SUPPORT
     delete2(mMagicSchoolModel);
-#endif
+#endif  // TMWA_SUPPORT
 }
 
 void TextCommandEditor::action(const ActionEvent &event)
@@ -270,7 +265,7 @@ void TextCommandEditor::action(const ActionEvent &event)
         mIsMagicCommand = false;
         showControls(Visible_false);
     }
-#endif
+#endif  // TMWA_SUPPORT
 }
 
 #ifdef TMWA_SUPPORT
@@ -285,7 +280,7 @@ void TextCommandEditor::showControls(const Visible show)
     mSchoolLvlLabel->setVisible(show);
     mSchoolLvlField->setVisible(show);
 }
-#endif
+#endif  // TMWA_SUPPORT
 
 void TextCommandEditor::scheduleDelete()
 {
@@ -302,7 +297,7 @@ void TextCommandEditor::save()
         mCommand->setCommandType(TextCommandType::Magic);
     else
         mCommand->setCommandType(TextCommandType::Text);
-#endif
+#endif  // TMWA_SUPPORT
 
     mCommand->setSymbol(mSymbolTextField->getText());
     mCommand->setCommand(mCommandTextField->getText());
@@ -317,7 +312,8 @@ void TextCommandEditor::save()
     mCommand->setSchool(static_cast<MagicSchoolT>(
             mSchoolDropDown->getSelected() + MAGIC_START_ID));
     mCommand->setSchoolLvl(mSchoolLvlField->getValue());
-#endif
+#endif  // TMWA_SUPPORT
+
     if (spellManager)
         spellManager->save();
 }
@@ -337,7 +333,8 @@ void TextCommandEditor::deleteCommand()
     mCommand->setBaseLvl(0);
     mCommand->setSchool(MagicSchool::SkillMagic);
     mCommand->setSchoolLvl(0);
-#endif
+#endif  // TMWA_SUPPORT
+
     if (spellManager)
         spellManager->save();
 }

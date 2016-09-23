@@ -36,7 +36,7 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 Dye::Dye(const std::string &restrict description)
 {
@@ -164,9 +164,11 @@ void Dye::normalDye(uint32_t *restrict pixels,
         const uint32_t p = pixels[ptr];
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         const int alpha = p & 0xff000000;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         const int alpha = p & 0xff;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         if (alpha)
         {
             unsigned int color[3];
@@ -174,11 +176,13 @@ void Dye::normalDye(uint32_t *restrict pixels,
             color[0] = (p) & 255U;
             color[1] = (p >> 8U) & 255U;
             color[2] = (p >> 16U) & 255U;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
             color[0] = (p >> 24U) & 255U;
             color[1] = (p >> 16U) & 255U;
             color[2] = (p >> 8U) & 255U;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
             const unsigned int cmax = std::max(
                 color[0], std::max(color[1], color[2]));
             if (cmax == 0)
@@ -205,10 +209,11 @@ void Dye::normalDye(uint32_t *restrict pixels,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
             pixels[ptr] = (color[0]) | (color[1] << 8)
                 | (color[2] << 16) | alpha;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
             pixels[ptr] = (color[0] << 24) | (color[1] << 16)
                 | (color[2] << 8) | alpha;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
         }
 endlabel:{}
     }
@@ -222,9 +227,11 @@ endlabel:{}
         const uint32_t p = *pixels;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         const int alpha = p & 0xff000000;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         const int alpha = p & 0xff;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         if (!alpha)
             continue;
         unsigned int color[3];
@@ -232,11 +239,12 @@ endlabel:{}
         color[0] = (p) & 255U;
         color[1] = (p >> 8U) & 255U;
         color[2] = (p >> 16U) & 255U;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         color[0] = (p >> 24U) & 255U;
         color[1] = (p >> 16U) & 255U;
         color[2] = (p >> 8U) & 255U;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
         const unsigned int cmax = std::max(
             color[0], std::max(color[1], color[2]));
@@ -263,10 +271,11 @@ endlabel:{}
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         *pixels = (color[0]) | (color[1] << 8)
             | (color[2] << 16) | alpha;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         *pixels = (color[0] << 24) | (color[1] << 16)
             | (color[2] << 8) | alpha;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
     }
 #endif  // ENABLE_CILKPLUS
 }
@@ -283,9 +292,11 @@ void Dye::normalOGLDye(uint32_t *restrict pixels,
         const uint32_t p = pixels[ptr];
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         const int alpha = p & 255;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         const int alpha = p & 0xff000000;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         if (alpha)
         {
             unsigned int color[3];
@@ -293,11 +304,12 @@ void Dye::normalOGLDye(uint32_t *restrict pixels,
             color[0] = (p >> 24U) & 255U;
             color[1] = (p >> 16U) & 255U;
             color[2] = (p >> 8U) & 255U;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
             color[0] = (p) & 255U;
             color[1] = (p >> 8U) & 255U;
             color[2] = (p >> 16U) & 255U;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
             const unsigned int cmax = std::max(
                 color[0], std::max(color[1], color[2]));
@@ -324,10 +336,11 @@ void Dye::normalOGLDye(uint32_t *restrict pixels,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
             pixels[ptr] = (color[0] << 24) | (color[1] << 16)
                 | (color[2] << 8) | alpha;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
             pixels[ptr] = (color[0]) | (color[1] << 8)
                 | (color[2] << 16) | alpha;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
         }
 endlabel:{}
     }
@@ -341,9 +354,11 @@ endlabel:{}
         const uint32_t p = *pixels;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         const int alpha = p & 255;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         const int alpha = p & 0xff000000;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         if (!alpha)
             continue;
         unsigned int color[3];
@@ -351,11 +366,12 @@ endlabel:{}
         color[0] = (p >> 24U) & 255U;
         color[1] = (p >> 16U) & 255U;
         color[2] = (p >> 8U) & 255U;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         color[0] = (p) & 255U;
         color[1] = (p >> 8U) & 255U;
         color[2] = (p >> 16U) & 255U;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
         const unsigned int cmax = std::max(
             color[0], std::max(color[1], color[2]));
@@ -382,10 +398,11 @@ endlabel:{}
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         *pixels = (color[0] << 24) | (color[1] << 16)
             | (color[2] << 8) | alpha;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         *pixels = (color[0]) | (color[1] << 8)
             | (color[2] << 16) | alpha;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
     }
 #endif  // ENABLE_CILKPLUS
 }

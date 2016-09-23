@@ -94,7 +94,7 @@
 
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"
-#endif
+#endif  // USE_MUMBLE
 
 #include <climits>
 
@@ -246,7 +246,7 @@ void LocalPlayer::logic()
 #ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setPos(mX, mY, mDirection);
-#endif
+#endif  // USE_MUMBLE
 
     // Actions are allowed once per second
     if (get_elapsed_time(mLastAction) >= 1000)
@@ -409,7 +409,7 @@ void LocalPlayer::setAction(const BeingActionT &action,
 #ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setAction(CAST_S32(action));
-#endif
+#endif  // USE_MUMBLE
 }
 
 void LocalPlayer::setGMLevel(const int level)
@@ -1694,7 +1694,7 @@ void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
         }
     }
 }
-#endif
+#endif  // TMWA_SUPPORT
 
 void LocalPlayer::loadHomes()
 {

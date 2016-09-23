@@ -67,20 +67,20 @@
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
 #ifdef USE_SDL2
 #include <SDL2_framerate.h>
-#else
+#else  // USE_SDL2
 #include <SDL_framerate.h>
-#endif
+#endif  // USE_SDL2
 
 #include <SDL_image.h>
 
 #ifdef WIN32
 #include <SDL_syswm.h>
-#endif
+#endif  // WIN32
 
 #include "debug.h"
 
@@ -91,7 +91,8 @@ namespace
     SDL_Surface *mIcon(nullptr);
 #ifndef USE_SDL2
     int mKeyboardHeight(0);
-#endif
+#endif  // USE_SDL2
+
     bool mIsMinimized(false);
     bool mNewMessageFlag(false);
 }  // namespace
@@ -118,7 +119,8 @@ void WindowManager::createWindows()
     CREATEWIDGETV0(itemPopup, ItemPopup);
     CREATEWIDGETV0(spellPopup, SpellPopup);
     CREATEWIDGETV0(skillPopup, SkillPopup);
-#endif
+#endif  // DYECMD
+
     CREATEWIDGETV0(textPopup, TextPopup);
 }
 
@@ -137,7 +139,8 @@ void WindowManager::deleteWindows()
     delete2(userPalette);
     delete2(spellManager)
     delete2(spellShortcut)
-#endif
+#endif  // DYECMD
+
     delete2(textPopup);
 }
 
@@ -161,7 +164,7 @@ void WindowManager::initTitle()
         settings.windowCaption.c_str());
 #ifndef WIN32
     setIcon();
-#endif
+#endif  // WIN32
 }
 
 void WindowManager::updateTitle()
@@ -221,9 +224,10 @@ void WindowManager::doResizeVideo(const int actualWidth,
 #ifdef __native_client__
     naclPostMessage("resize-window",
         strprintf("%d,%d", actualWidth, actualHeight));
-#else
+#else  // __native_client__
+
     resizeVideo(actualWidth, actualHeight, always);
-#endif
+#endif  // __native_client__
 }
 
 void WindowManager::resizeVideo(int actualWidth,
@@ -262,7 +266,7 @@ void WindowManager::resizeVideo(int actualWidth,
         Game *const game = Game::instance();
         if (game)
             game->videoResized(width, height);
-#endif
+#endif  // DYECMD
 
         if (gui)
             gui->draw();
@@ -278,11 +282,12 @@ bool WindowManager::setFullScreen(const bool fs)
     naclPostMessage("set-fullscreen",
         fs ? "on" : "off");
     return true;
-#else
+#else  // __native_client__
+
     if (!mainGraphics)
         return false;
     return mainGraphics->setFullscreen(fs);
-#endif
+#endif  // __native_client__
 }
 
 void WindowManager::applyGrabMode()
@@ -312,7 +317,7 @@ void WindowManager::applyKeyRepeat()
 #ifndef USE_SDL2
     SDL_EnableKeyRepeat(config.getIntValue("repeateDelay"),
         config.getIntValue("repeateInterval"));
-#endif
+#endif  // USE_SDL2
 }
 
 void WindowManager::applyScale()
@@ -353,9 +358,11 @@ void WindowManager::setIcon()
     std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
 #ifdef WIN32
     iconFile.append(".ico");
-#else
+#else  // WIN32
+
     iconFile.append(".png");
-#endif
+#endif  // WIN32
+
     iconFile = Files::getPath(iconFile);
     logger->log("Loading icon from file: %s", iconFile.c_str());
 
@@ -376,27 +383,31 @@ void WindowManager::setIcon()
     }
     if (icon)
         SetClassLong(pInfo.window, GCL_HICON, reinterpret_cast<LONG>(icon));
-#else
+#else  // WIN32
+
     mIcon = MIMG_Load(iconFile.c_str());
     if (mIcon)
     {
 #ifdef USE_SDL2
         SDL_SetSurfaceAlphaMod(mIcon, SDL_ALPHA_OPAQUE);
-#else
+#else  // USE_SDL2
+
         SDL_SetAlpha(mIcon, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-#endif
+#endif  // USE_SDL2
+
         SDL::SetWindowIcon(mainGraphics->getWindow(), mIcon);
     }
-#endif
+#endif  // WIN32
 }
 
 bool WindowManager::isKeyboardVisible()
 {
 #ifdef USE_SDL2
     return SDL_IsTextInputActive();
-#else
+#else  // USE_SDL2
+
     return mKeyboardHeight > 1;
-#endif
+#endif  // USE_SDL2
 }
 
 bool WindowManager::getIsMinimized()
@@ -409,7 +420,7 @@ void WindowManager::updateScreenKeyboard(const int height)
 {
     mKeyboardHeight = height;
 }
-#endif
+#endif  // USE_SDL2
 
 void WindowManager::deleteIcon()
 {

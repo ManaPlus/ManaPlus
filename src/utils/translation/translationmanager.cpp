@@ -50,7 +50,7 @@ void TranslationManager::loadGettextLang()
     delete mainTranslator;
     mainTranslator = loadLang(getLang(), "manaplus/");
 }
-#endif
+#endif  // ENABLE_CUSTOMNLS
 
 void TranslationManager::close()
 {

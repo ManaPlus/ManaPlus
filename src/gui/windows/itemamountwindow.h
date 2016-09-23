@@ -87,7 +87,7 @@ class ItemAmountWindow final : public Window,
 
 #ifndef UNITTESTS
     private:
-#endif
+#endif  // UNITTESTS
         static void finish(Item *const item,
                            const int amount,
                            const int price,

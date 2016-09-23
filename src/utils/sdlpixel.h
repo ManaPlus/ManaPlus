@@ -68,6 +68,10 @@
 
 #include <SDL.h>
 
+#ifndef SDL_BYTEORDER
+#error missing SDL_endian.h
+#endif  // SDL_BYTEORDER
+
 /**
   * Puts a pixel on an SDL_Surface.
   *
@@ -107,11 +111,13 @@ inline void SDLputPixel(SDL_Surface* surface, int x, int y,
             p[0] = CAST_U8((pixel >> 16) & 0xff);
             p[1] = CAST_U8((pixel >> 8) & 0xff);
             p[2] = CAST_U8((pixel) & 0xff);
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
             p[0] = CAST_U8((pixel) & 0xff);
             p[1] = CAST_U8((pixel >> 8) & 0xff);
             p[2] = CAST_U8((pixel >> 16) & 0xff);
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
             break;
 
         case 4:
@@ -218,14 +224,16 @@ inline void SDLputPixelAlpha(SDL_Surface* surface, int x, int y,
                 + color.g * color.a) >> 8);
             p[0] = CAST_U8((p[0] * (255 - color.a)
                 + color.r * color.a) >> 8);
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
             p[0] = CAST_U8((p[0] * (255 - color.a)
                 + color.b * color.a) >> 8);
             p[1] = CAST_U8((p[1] * (255 - color.a)
                 + color.g * color.a) >> 8);
             p[2] = CAST_U8((p[2] * (255 - color.a)
                 + color.r * color.a) >> 8);
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
             break;
 
         case 4:

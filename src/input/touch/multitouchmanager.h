@@ -27,7 +27,7 @@
 
 #ifdef USE_SDL2
 union SDL_Event;
-#endif
+#endif  // USE_SDL2
 
 struct MultiTouchEvent final
 {
@@ -59,7 +59,7 @@ class MultiTouchManager final
 
         void checkDevice(const long touchId,
                          const long fingerId);
-#endif
+#endif  // USE_SDL2
 
     private:
         MultiTouchDevicesMap mEvents;

@@ -173,13 +173,14 @@ class MouseInput final
 
         int getTouchY() const A_WARN_UNUSED
         { return mRealY; }
-#else
+#else  // ANDROID
+
         int getTouchX() const A_WARN_UNUSED
         { return mX; }
 
         int getTouchY() const A_WARN_UNUSED
         { return mY; }
-#endif
+#endif  // ANDROID
 
     protected:
         /**

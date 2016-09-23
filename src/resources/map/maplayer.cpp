@@ -375,7 +375,7 @@ void MapLayer::drawOGL(Graphics *const graphics) const restrict2
     BLOCK_END("MapLayer::drawOGL")
 //    logger->log("draws: %d", k);
 }
-#endif
+#endif  // USE_OPENGL
 
 void MapLayer::drawFringe(Graphics *const graphics,
                           int startX,

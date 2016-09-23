@@ -203,7 +203,7 @@ class ConfigurationObject notfinal
 
         void setIsMain(bool b)
         { mIsMain = b; }
-#endif
+#endif  // DEBUG_CONFIG
 
     protected:
         ConfigurationObject();
@@ -222,7 +222,7 @@ class ConfigurationObject notfinal
 #ifdef DEBUG_CONFIG
         bool mLogKeys;
         bool mIsMain;
-#endif
+#endif  // DEBUG_CONFIG
 };
 
 #define valTest(num) mStatsRe##num
@@ -289,7 +289,7 @@ class Configuration final : public ConfigurationObject
         void checkListeners(ConfigListener *const listener,
                             const char *const file,
                             const unsigned line);
-#endif
+#endif  // ENABLE_CHECKS
 
         void setValue(const std::string &key,
                       const std::string &value) override;

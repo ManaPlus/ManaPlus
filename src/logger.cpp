@@ -34,7 +34,7 @@
 #include <windows.h>
 #elif defined __APPLE__
 #include <Carbon/Carbon.h>
-#endif
+#endif  // WIN32
 
 #include <sys/time.h>
 
@@ -99,7 +99,7 @@ Logger::Logger() :
 {
 #if defined __native_client__ && defined(NACL_LOG)
     std::cout.setf(std::ios_base::unitbuf);
-#endif
+#endif  // defined __native_client__ && defined(NACL_LOG)
 }
 
 Logger::~Logger()
@@ -206,7 +206,7 @@ void Logger::dlog2(const std::string &str,
         }
     }
 }
-#endif
+#endif  // ENABLEDEBUGLOG
 
 void Logger::log1(const char *const buf)
 {
@@ -385,9 +385,11 @@ void Logger::safeError(const std::string &error_text)
         error_text).append("\"");
     if (system(msg.c_str()) == -1)
         std::cerr << "Error: " << error_text << std::endl;
-#else
+#else  // WIN32
+
     std::cerr << "Error: " << error_text << std::endl;
-#endif
+#endif  // WIN32
+
     exit(1);
 }
 
@@ -413,9 +415,11 @@ void Logger::error(const std::string &error_text)
         "Please see log file for more information.\"");
     if (system(msg.c_str()) == -1)
         std::cerr << "Error: " << error_text << std::endl;
-#else
+#else  // WIN32
+
     std::cerr << "Error: " << error_text << std::endl;
-#endif
+#endif  // WIN32
+
     exit(1);
 }
 

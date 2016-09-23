@@ -52,7 +52,7 @@
 
 #ifdef WIN32
 #include <sys/time.h>
-#endif
+#endif  // WIN32
 
 #include <sstream>
 

@@ -32,7 +32,7 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 SdlScreenshotHelper::SdlScreenshotHelper() :
     ScreenshotHelper()
@@ -56,11 +56,13 @@ SDL_Surface *SdlScreenshotHelper::getScreenshot()
     const int rmask = 0xff000000;
     const int gmask = 0x00ff0000;
     const int bmask = 0x0000ff00;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     const int rmask = 0x000000ff;
     const int gmask = 0x0000ff00;
     const int bmask = 0x00ff0000;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     const int amask = 0x00000000;
 
     SDL_Surface *const screenshot = MSDL_CreateRGBSurface(SDL_SWSURFACE,
@@ -71,7 +73,7 @@ SDL_Surface *SdlScreenshotHelper::getScreenshot()
 #ifndef USE_SDL2
     if (screenshot)
         SDL_BlitSurface(mainGraphics->mWindow, nullptr, screenshot, nullptr);
-#endif
+#endif  // USE_SDL2
 
     return screenshot;
 }

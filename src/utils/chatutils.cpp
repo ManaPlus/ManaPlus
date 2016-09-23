@@ -36,7 +36,7 @@
 
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "utils/stringutils.h"
 
@@ -78,7 +78,7 @@ void outStringNormal(ChatTab *const tab,
                 {
                     guildManager->chat(str);
                 }
-#endif
+#endif  // TMWA_SUPPORT
             }
             break;
         }

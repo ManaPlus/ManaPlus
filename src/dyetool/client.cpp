@@ -61,7 +61,8 @@
 #include "utils/mrand.h"
 #ifdef ANDROID
 #include "utils/paths.h"
-#endif
+#endif  // ANDROID
+
 #include "utils/physfstools.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
@@ -76,20 +77,20 @@
 #include <SDL_syswm.h>
 #include "utils/specialfolder.h"
 #undef ERROR
-#endif
+#endif  // WIN32
 
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
 #include <fstream>
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
 #ifdef USE_SDL2
 #include <SDL2_framerate.h>
-#else
+#else  // USE_SDL2
 #include <SDL_framerate.h>
-#endif
+#endif  // USE_SDL2
 
 #include "debug.h"
 
@@ -120,7 +121,7 @@ Client::Client() :
     mPerfomanceButton(nullptr),
 #ifdef ANDROID
     mCloseButton(nullptr),
-#endif
+#endif  // ANDROID
     mState(State::GAME),
     mOldState(State::START),
     mSkin(nullptr),
@@ -162,7 +163,8 @@ void Client::gameInit()
 
 #ifdef USE_FUZZER
     Fuzzer::init();
-#endif
+#endif  // USE_FUZZER
+
     if (settings.options.test.empty())
         ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();
@@ -177,7 +179,7 @@ void Client::gameInit()
 #ifndef ANDROID
     if (settings.options.test.empty())
         ConfigManager::storeSafeParameters();
-#endif
+#endif  // ANDROID
 
     ResourceManager::init();
     if (!resourceManager->setWriteDir(settings.localDataDir))
@@ -219,20 +221,22 @@ void Client::gameInit()
 
 #ifndef USE_SDL2
     SDL_EnableUNICODE(1);
-#endif
+#endif  // USE_SDL2
+
     WindowManager::applyKeyRepeat();
 
     // disable unused SDL events
 #ifndef USE_SDL2
     SDL_EventState(SDL_VIDEOEXPOSE, SDL_IGNORE);
-#endif
+#endif  // USE_SDL2
+
     SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
     SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
 
 #ifdef WIN32
     Dirs::extractDataDir();
     Dirs::mountDataDir();
-#endif
+#endif  // WIN32
 
     WindowManager::setIcon();
     ConfigManager::checkConfigVersion();
@@ -245,15 +249,17 @@ void Client::gameInit()
     {
         graphicsManager.detectVideoSettings();
     }
-#endif
-#endif
+#endif  // !defined(ANDROID) && !defined(__APPLE__) &&
+        // !defined(__native_client__)
+#endif  // defined(USE_OPENGL)
+
     updateEnv();
     initGraphics();
 
 #ifndef WIN32
     Dirs::extractDataDir();
     Dirs::mountDataDir();
-#endif
+#endif  // WIN32
 
     Dirs::updateDataPath();
 
@@ -269,7 +275,7 @@ void Client::gameInit()
     TranslationManager::loadCurrentLang();
 #ifdef ENABLE_CUSTOMNLS
     TranslationManager::loadGettextLang();
-#endif
+#endif  // ENABLE_CUSTOMNLS
 
     WindowManager::initTitle();
 
@@ -323,8 +329,8 @@ void Client::gameInit()
 #ifdef ANDROID
 #ifndef USE_SDL2
     WindowManager::updateScreenKeyboard(SDL_GetScreenKeyboardHeight(nullptr));
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
     mSkin = theme->load("windowmenu.xml", "");
     if (mSkin)
@@ -444,7 +450,8 @@ void Client::gameClear()
 
 #ifdef DEBUG_CONFIG
     config.enableKeyLogging();
-#endif
+#endif  // DEBUG_CONFIG
+
     config.removeOldKeys();
     config.write();
     serverConfig.write();
@@ -457,12 +464,12 @@ void Client::gameClear()
 
 #ifdef USE_PROFILER
     Perfomance::clear();
-#endif
+#endif  // USE_PROFILER
 
 #ifdef DEBUG_OPENGL_LEAKS
     if (logger)
         logger->log("textures left: %d", textures_count);
-#endif
+#endif  // DEBUG_OPENGL_LEAKS
 
 //    delete2(chatLogger);
     TranslationManager::close();
@@ -509,7 +516,8 @@ void Client::stateGame()
     ADDBUTTON(mCloseButton, new Button(desktop,
         // TRANSLATORS: close quick button
         _("Close"), "close", this))
-#endif
+#endif  // ANDROID
+
     desktop->setSize(mainGraphics->getWidth(),
         mainGraphics->getHeight());
 }
@@ -730,8 +738,8 @@ void Client::moveButtons(const int width)
 #ifdef ANDROID
         x -= mCloseButton->getWidth() + mButtonSpacing;
         mCloseButton->setPosition(x, mButtonPadding);
-#endif
-#endif
+#endif  // ANDROID
+#endif  // WIN32
     }
 }
 
@@ -746,7 +754,7 @@ void Client::logVars()
 #ifdef ANDROID
     logger->log("APPDIR: %s", getenv("APPDIR"));
     logger->log("DATADIR2: %s", getSdStoragePath().c_str());
-#endif
+#endif  // ANDROID
 }
 
 void Client::slowLogic()

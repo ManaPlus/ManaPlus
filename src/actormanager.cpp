@@ -205,7 +205,7 @@ ActorManager::ActorManager() :
     mSpellHeal1(serverConfig.getValue("spellHeal1", "#lum")),
     mSpellHeal2(serverConfig.getValue("spellHeal2", "#inma")),
     mSpellItenplz(serverConfig.getValue("spellItenplz", "#itenplz")),
-#endif
+#endif  // TMWA_SUPPORT
     mTargetDeadPlayers(config.getBoolValue("targetDeadPlayers")),
     mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
     mCyclePlayers(config.getBoolValue("cyclePlayers")),
@@ -1539,7 +1539,7 @@ void ActorManager::itenplz() const
 
     chatWindow->localChatInput(mSpellItenplz);
 }
-#endif
+#endif  // TMWA_SUPPORT
 
 bool ActorManager::hasActorSprite(const ActorSprite *const actor) const
 {
@@ -1798,7 +1798,7 @@ void ActorManager::parseLevels(std::string levels) const
     }
     updatePlayerNames();
 }
-#endif
+#endif  // TMWA_SUPPORT
 
 void ActorManager::optionChanged(const std::string &name)
 {

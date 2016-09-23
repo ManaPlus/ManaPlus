@@ -140,13 +140,15 @@ ChatWindow::ChatWindow() :
         setDefaultSize(w, 90, ImagePosition::UPPER_LEFT, -110, -35);
     else
         setDefaultSize(w, 123, ImagePosition::UPPER_LEFT, -110, -35);
-#else
+#else  // ANDROID
+
     if (mainGraphics->getWidth() < 600)
         w = mainGraphics->getWidth() - 10;
     if (w < 100)
         w = 100;
     setDefaultSize(w, 123, ImagePosition::LOWER_LEFT);
-#endif
+#endif  // ANDROID
+
     setMinWidth(150);
     setMinHeight(90);
 
@@ -2080,7 +2082,7 @@ void ChatWindow::logicChildren()
     BasicContainer::logicChildren();
     BLOCK_END("ChatWindow::logicChildren")
 }
-#endif
+#endif  // USE_PROFILER
 
 void ChatWindow::addGlobalMessage(const std::string &line)
 {

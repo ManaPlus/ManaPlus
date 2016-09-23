@@ -30,7 +30,7 @@
 #ifdef ANDROID
 #include "utils/mkdir.h"
 #include "utils/paths.h"
-#endif
+#endif  // ANDROID
 #include "utils/physfscheckutils.h"
 #include "utils/physfsrwops.h"
 #include "utils/process.h"
@@ -38,7 +38,7 @@
 
 #ifdef __MINGW32__
 #include <windows.h>
-#endif
+#endif  // __MINGW32__
 
 #include <iostream>
 
@@ -47,7 +47,7 @@
 
 #ifndef SDL_VERSIONNUM
 #error missing <SDL_version.h>
-#endif
+#endif  // SDL_VERSIONNUM
 
 #define SDL_IMAGE_COMPILEDVERSION \
     SDL_VERSIONNUM(SDL_IMAGE_MAJOR_VERSION, \
@@ -70,15 +70,16 @@ char *selfName = nullptr;
 #ifndef UNITTESTS
 #ifdef ANDROID
 int main(int argc, char *argv[])
-#else
+#else  // ANDROID
+
 int mainGui(int argc, char *argv[])
-#endif
+#endif  // ANDROID
 {
 #if defined(__MINGW32__)
     // load mingw crash handler. Won't fail if dll is not present.
     // may load libray from current dir, it may not same as program dir
     LoadLibrary("exchndl.dll");
-#endif
+#endif  // defined(__MINGW32__)
 
     selfName = argv[0];
 
@@ -88,20 +89,21 @@ int mainGui(int argc, char *argv[])
 
 #ifdef ANDROID
     mkdir_r(getSdStoragePath().c_str());
-#endif
+#endif  // ANDROID
 
     PhysFs::init(argv[0]);
     XML::initXML();
 #if SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
     IMG_Init(IMG_INIT_PNG);
-#endif
+#endif  // SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
 #if SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
     Mix_Init(MIX_INIT_OGG);
-#endif
+#endif  // SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
 
 #ifdef WIN32
     SetCurrentDirectory(PhysFs::getBaseDir());
-#endif
+#endif  // WIN32
+
     setPriority(true);
     client = new Client;
     int ret = 0;
@@ -119,17 +121,18 @@ int mainGui(int argc, char *argv[])
 
 #if SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
     Mix_Quit();
-#endif
+#endif  // SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
 #if SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
     IMG_Quit();
-#endif
+#endif  // SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
 
 #ifdef DUMP_LEAKED_RESOURCES
     reportRWops();
-#endif
+#endif  // DUMP_LEAKED_RESOURCES
 #ifdef DEBUG_PHYSFS
     reportPhysfsLeaks();
-#endif
+#endif  // DEBUG_PHYSFS
+
     return ret;
 }
-#endif
+#endif  // UNITTESTS

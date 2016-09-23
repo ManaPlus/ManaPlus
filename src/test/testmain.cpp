@@ -426,4 +426,4 @@ int TestMain::invokeSafeOpenGLRenderTest(const std::string &test)
     log->log("%s: %d", test.c_str(), ret);
     return ret;
 }
-#endif
+#endif  // USE_OPENGL

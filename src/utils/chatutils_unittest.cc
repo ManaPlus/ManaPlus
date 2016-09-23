@@ -61,9 +61,11 @@ TEST_CASE("chatutils replaceVars")
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
         SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
-#else
+#else  // USE_SDL2
+
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
-#endif
+#endif  // USE_SDL2
+
     ActorSprite::load();
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
         BeingTypeId_zero);

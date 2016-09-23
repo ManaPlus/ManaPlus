@@ -158,7 +158,7 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable mumble voice chat"), "",
         "enableMumble", this, "enableMumbleEvent");
-#endif
+#endif  // USE_MUMBLE
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Download music"), "",

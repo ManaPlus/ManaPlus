@@ -30,7 +30,7 @@
 #include <sys/time.h>
 #elif defined __APPLE__
 #include <Carbon/Carbon.h>
-#endif
+#endif  // WIN32
 
 #include "configuration.h"
 #include "utils/mkdir.h"

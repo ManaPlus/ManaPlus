@@ -37,7 +37,7 @@ struct NotificationInfo final
     { }
 
     A_DELETE_COPY(NotificationInfo)
-#endif
+#endif  // ADVGCC
 
     const char *sound;
     const char *text;

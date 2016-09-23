@@ -62,7 +62,7 @@ TextCommand::TextCommand(const int id,
 {
     loadImage();
 }
-#endif
+#endif  // TMWA_SUPPORT
 
 TextCommand::TextCommand(const int id,
                          const std::string &symbol,
@@ -82,7 +82,7 @@ TextCommand::TextCommand(const int id,
     mBaseLvl(0),
     mSchoolLvl(0),
     mCommandType(TextCommandType::Text),
-#endif
+#endif  // TMWA_SUPPORT
     mImage(nullptr)
 {
     loadImage();
@@ -101,7 +101,7 @@ TextCommand::TextCommand(const int id) :
     mBaseLvl(0),
     mSchoolLvl(0),
     mCommandType(TextCommandType::Text),
-#endif
+#endif  // TMWA_SUPPORT
     mImage(nullptr)
 {
     loadImage();

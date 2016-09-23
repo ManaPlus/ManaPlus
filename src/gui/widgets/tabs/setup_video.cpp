@@ -48,11 +48,11 @@
 
 #if defined(ANDROID) || defined(__APPLE__) || !defined(USE_OPENGL)
 #include "configuration.h"
-#endif
+#endif  // defined(ANDROID) || defined(__APPLE__) || !defined(USE_OPENGL)
 
 #if defined(ANDROID) || defined(__APPLE__)
 #include "utils/stringutils.h"
-#endif
+#endif  // defined(ANDROID) || defined(__APPLE__)
 
 #include "gui/models/modelistmodel.h"
 #include "gui/models/opengllistmodel.h"
@@ -86,7 +86,8 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
     // TRANSLATORS: video settings button
     mDetectButton(new Button(this, _("Detect best mode"), "detect", this)),
-#endif
+#endif  // !defined(ANDROID) && !defined(__APPLE__) &&
+        // !defined(__native_client__)
     mDialog(nullptr),
     mCustomCursorEnabled(config.getBoolValue("customcursor")),
     mEnableResize(config.getBoolValue("enableresize")),
@@ -95,11 +96,11 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 #ifdef ANDROID
         // TRANSLATORS: video settings checkbox
         _("Show cursor"),
-#else
+#else  // ANDROID
         // TRANSLATORS: video settings checkbox
         _("Custom cursor"),
-#endif
-                          mCustomCursorEnabled)),
+#endif  // ANDROID
+        mCustomCursorEnabled)),
     // TRANSLATORS: video settings checkbox
     mEnableResizeCheckBox(new CheckBox(this, _("Enable resize"),
                           mEnableResize)),
@@ -179,13 +180,15 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
     place(0, 8, mDetectButton);
-#else
+#else  // !defined(ANDROID) && !defined(__APPLE__) &&
+       // !defined(__native_client__)
     mNoFrameCheckBox->setEnabled(false);
     mEnableResizeCheckBox->setEnabled(false);
 #ifndef __native_client__
     mFsCheckBox->setEnabled(false);
 #endif  // __native_client__
-#endif
+#endif  // !defined(ANDROID) && !defined(__APPLE__) &&
+        // !defined(__native_client__)
 
     int width = 600;
 
@@ -220,7 +223,7 @@ void Setup_Video::apply()
         // checks for opengl usage
         if (intToRenderType(config.getIntValue("opengl")) == RENDER_SOFTWARE)
         {
-#endif
+#endif  // defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
             if (!WindowManager::setFullScreen(fullscreen))
             {
                 fullscreen = !fullscreen;
@@ -261,7 +264,8 @@ void Setup_Video::apply()
                 nullptr,
                 260);
         }
-#endif
+#endif  // defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
+
         config.setValue("screen", fullscreen);
     }
 
@@ -425,10 +429,11 @@ void Setup_Video::action(const ActionEvent &event)
                         260);
                 }
             }
-#else
+#else  // defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
+
             mainGraphics->setWindowSize(width, height);
             WindowManager::doResizeVideo(width, height, false);
-#endif
+#endif  // defined(WIN32) || defined(__APPLE__) || defined(ANDROID)
         }
 
         config.setValue("oldscreen", config.getBoolValue("screen"));
@@ -501,5 +506,5 @@ void Setup_Video::action(const ActionEvent &event)
             delete test;
         }
     }
-#endif
+#endif  // defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)
 }

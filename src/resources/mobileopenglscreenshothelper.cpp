@@ -32,7 +32,7 @@
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"
-#endif
+#endif  // __native_client__
 
 #include "debug.h"
 
@@ -89,10 +89,11 @@ SDL_Surface *MobileOpenGLScreenshotHelper::getScreenshot()
 #ifdef USE_SDL2
     SDL_SetSurfaceAlphaMod(tmpImage, SDL_ALPHA_OPAQUE);
     SDL_SetSurfaceBlendMode(tmpImage, SDL_BLENDMODE_NONE);
-#else
+#else  // USE_SDL2
+
     // Make sure the alpha channel is not used, but copied to destination
     SDL_SetAlpha(tmpImage, 0, SDL_ALPHA_OPAQUE);
-#endif
+#endif  // USE_SDL2
 
     if (SDL_MUSTLOCK(screenshot))
         SDL_LockSurface(screenshot);

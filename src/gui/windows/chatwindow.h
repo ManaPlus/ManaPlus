@@ -310,7 +310,7 @@ class ChatWindow final : public Window,
 
 #ifdef USE_PROFILER
         void logicChildren();
-#endif
+#endif  // USE_PROFILER
 
     protected:
         friend class ChannelTab;

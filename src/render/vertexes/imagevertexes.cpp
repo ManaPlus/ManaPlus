@@ -28,7 +28,7 @@ ImageVertexes::ImageVertexes() :
     image(nullptr),
 #ifdef USE_OPENGL
     ogl(),
-#endif
+#endif  // USE_OPENGL
     sdl()
 {
     sdl.reserve(30);

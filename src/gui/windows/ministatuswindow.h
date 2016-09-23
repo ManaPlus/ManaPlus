@@ -102,7 +102,7 @@ class MiniStatusWindow final : public Window,
 
 #ifdef USE_PROFILER
         void logicChildren();
-#endif
+#endif  // USE_PROFILER
 
     private:
         bool isInBar(ProgressBar *bar, int x, int y) const;

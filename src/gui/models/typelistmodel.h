@@ -39,9 +39,9 @@ class TypeListModel final : public ListModel
         int getNumberOfElements() override final A_WARN_UNUSED
 #if defined(TMWA_SUPPORT)
         { return 3; }
-#else
+#else  // defined(TMWA_SUPPORT)
         { return 2; }
-#endif
+#endif  // defined(TMWA_SUPPORT)
 
         /**
          * Used to get an element from the list

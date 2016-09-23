@@ -43,7 +43,7 @@ class PoDict final
 
 #ifndef UNITTESTS
     protected:
-#endif
+#endif  // UNITTESTS
         friend class PoParser;
 
         PoMap *getMap()
@@ -63,6 +63,6 @@ class PoDict final
 extern PoDict *translator;
 #ifdef ENABLE_CUSTOMNLS
 extern PoDict *mainTranslator;
-#endif
+#endif  // ENABLE_CUSTOMNLS
 
 #endif  // UTILS_TRANSLATION_PODICT_H

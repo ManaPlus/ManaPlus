@@ -29,7 +29,7 @@
 #include "party.h"
 #ifdef TMWA_SUPPORT
 #include "settings.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "gui/onlineplayer.h"
 #include "gui/popupmanager.h"
@@ -51,7 +51,7 @@
 
 #ifdef TMWA_SUPPORT
 #include "net/download.h"
-#endif
+#endif  // TMWA_SUPPORT
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
@@ -61,17 +61,17 @@
 
 #ifndef TMWA_SUPPORT
 #include <curl/curl.h>
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "debug.h"
 
 #ifdef free
 #undef free
-#endif
+#endif  // free
 
 #ifdef malloc
 #undef malloc
-#endif
+#endif  // malloc
 
 WhoIsOnline *whoIsOnline = nullptr;
 
@@ -603,7 +603,7 @@ int WhoIsOnline::downloadThread(void *ptr)
         wio->mDownloadStatus = UPDATE_ERROR;
     return 0;
 }
-#endif
+#endif  // TMWA_SUPPORT
 
 void WhoIsOnline::download()
 {
@@ -625,7 +625,7 @@ void WhoIsOnline::download()
         if (mThread == nullptr)
             mDownloadStatus = UPDATE_ERROR;
     }
-#endif
+#endif  // TMWA_SUPPORT
 }
 
 void WhoIsOnline::logic()
@@ -698,7 +698,8 @@ void WhoIsOnline::slowLogic()
         default:
             break;
     }
-#endif
+#endif  // TMWA_SUPPORT
+
     BLOCK_END("WhoIsOnline::slowLogic")
 }
 
@@ -725,7 +726,7 @@ void WhoIsOnline::action(const ActionEvent &event)
             }
         }
         else
-#endif
+#endif  // TMWA_SUPPORT
         {
             if (PacketLimiter::limitPackets(PacketType::PACKET_ONLINELIST))
             {

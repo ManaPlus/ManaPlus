@@ -29,17 +29,17 @@
 #define GL_COLOR_ATTACHMENT0              0x8CE0
 #define GL_FRAMEBUFFER                    0x8D40
 #define GL_RENDERBUFFER                   0x8D41
-#endif
+#endif  // GL_NUM_EXTENSIONS
 
 #ifndef GL_COMPRESSED_RGBA_ARB
 #define GL_COMPRESSED_RGBA_ARB            0x84EE
 #define GL_COMPRESSED_RGBA_S3TC_DXT5_EXT  0x83F3
 #define GL_COMPRESSED_RGBA_FXT1_3DFX      0x86B1
-#endif
+#endif  // GL_COMPRESSED_RGBA_ARB
 #ifndef GL_MAX_ELEMENTS_VERTICES
 #define GL_MAX_ELEMENTS_VERTICES          0x80E8
 #define GL_MAX_ELEMENTS_INDICES           0x80E9
-#endif
+#endif  // GL_MAX_ELEMENTS_VERTICES
 
 #ifndef GL_DEBUG_OUTPUT
 #define GL_DEBUG_OUTPUT_SYNCHRONOUS       0x8242
@@ -61,14 +61,14 @@
 #define GL_DEBUG_SEVERITY_HIGH            0x9146
 #define GL_DEBUG_SEVERITY_MEDIUM          0x9147
 #define GL_DEBUG_SEVERITY_LOW             0x9148
-#endif
+#endif  // GL_DEBUG_OUTPUT
 
 #ifndef GL_DEBUG_TYPE_PUSH_GROUP
 #define GL_DEBUG_TYPE_PUSH_GROUP          0x8269
-#endif
+#endif  // GL_DEBUG_TYPE_PUSH_GROUP
 #ifndef GL_DEBUG_TYPE_POP_GROUP
 #define GL_DEBUG_TYPE_POP_GROUP           0x826a
-#endif
+#endif  // GL_DEBUG_TYPE_POP_GROUP
 
 #ifndef GL_EXT_debug_label
 #define GL_PROGRAM_PIPELINE_OBJECT_EXT    0x8A4F
@@ -77,18 +77,18 @@
 #define GL_BUFFER_OBJECT_EXT              0x9151
 #define GL_QUERY_OBJECT_EXT               0x9153
 #define GL_VERTEX_ARRAY_OBJECT_EXT        0x9154
-#endif
+#endif  // GL_EXT_debug_label
 
 #ifndef GL_ARRAY_BUFFER
 #define GL_ARRAY_BUFFER                   0x8892
 #define GL_ELEMENT_ARRAY_BUFFER           0x8893
-#endif
+#endif  // GL_ARRAY_BUFFER
 
 #ifndef GL_STREAM_DRAW
 #define GL_STREAM_DRAW                    0x88E0
 #define GL_STATIC_DRAW                    0x88E4
 #define GL_DYNAMIC_DRAW                   0x88E8
-#endif
+#endif  // GL_STREAM_DRAW
 
 #ifndef GL_COMPILE_STATUS
 #define GL_FRAGMENT_SHADER                0x8B30
@@ -97,39 +97,39 @@
 #define GL_LINK_STATUS                    0x8B82
 #define GL_VALIDATE_STATUS                0x8B83
 #define GL_INFO_LOG_LENGTH                0x8B84
-#endif
+#endif  // GL_COMPILE_STATUS
 
 #ifndef GL_DEPTH_CLAMP
 #define GL_DEPTH_CLAMP                    0x864F
 #define GL_RASTERIZER_DISCARD             0x8C89
 #define GL_SAMPLE_MASK                    0x8E51
-#endif
+#endif  // GL_DEPTH_CLAMP
 
 #ifndef GL_POLYGON_SMOOTH
 #define GL_POLYGON_SMOOTH                 0x0B41
-#endif
+#endif  // GL_POLYGON_SMOOTH
 
 #ifndef GL_DEPTH_BOUNDS_TEST_EXT
 #define GL_DEPTH_BOUNDS_TEST_EXT          0x8890
-#endif
+#endif  // GL_DEPTH_BOUNDS_TEST_EXT
 
 #ifndef GL_TEXTURE_COMPRESSION_HINT_ARB
 #define GL_TEXTURE_COMPRESSION_HINT_ARB   0x84EF
-#endif
+#endif  // GL_TEXTURE_COMPRESSION_HINT_ARB
 
 #ifndef GLX_CONTEXT_PROFILE_MASK_ARB
 #define GLX_CONTEXT_PROFILE_MASK_ARB      0x9126
-#endif
+#endif  // GLX_CONTEXT_PROFILE_MASK_ARB
 
 #ifndef GLX_CONTEXT_MAJOR_VERSION_ARB
 #define GLX_CONTEXT_MAJOR_VERSION_ARB     0x2091
 #define GLX_CONTEXT_MINOR_VERSION_ARB     0x2092
 #define GLX_CONTEXT_FLAGS_ARB             0x2094
-#endif
+#endif  // GLX_CONTEXT_MAJOR_VERSION_ARB
 
 #ifndef GL_COMPRESSED_RGBA_BPTC_UNORM_ARB
 #define GL_COMPRESSED_RGBA_BPTC_UNORM_ARB 0x8E8C
-#endif
+#endif  // GL_COMPRESSED_RGBA_BPTC_UNORM_ARB
 
 #endif  // USE_OPENGL
 

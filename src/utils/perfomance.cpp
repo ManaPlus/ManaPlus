@@ -97,4 +97,4 @@ namespace Perfomance
     }
 }  // namespace Perfomance
 
-#endif
+#endif  // USE_PROFILER

@@ -122,11 +122,11 @@
 #define A_CONST __attribute__ ((const))
 #define A_PURE __attribute__ ((pure))
 #define A_INLINE __attribute__ ((always_inline))
-#else
+#else  // ENABLE_CILKPLUS
 #define A_CONST
 #define A_PURE
 #define A_INLINE
-#endif
+#endif  // ENABLE_CILKPLUS
 
 #ifdef __INTEL_COMPILER
 #define RETURNS_NONNULL
@@ -140,11 +140,11 @@
 
 #ifndef ENABLE_CILKPLUS
 #define A_NONNULL(...) __attribute__((nonnull (__VA_ARGS__)))
-#else
+#else  // ENABLE_CILKPLUS
 #define A_NONNULL(...)
-#endif
+#endif  // ENABLE_CILKPLUS
 
-#else
+#else  // __GNUC__
 #define A_UNUSED
 #define A_WARN_UNUSED
 #define gnu_printf printf
@@ -153,14 +153,14 @@
 #define restrict2
 #define RETURNS_NONNULL
 #define A_NONNULL(...)
-#endif
+#endif  // __GNUC__
 #ifdef __clang__
 #define gnu_printf printf
-#endif
+#endif  // __clang__
 
 #ifdef ENABLE_CILKPLUS
 #include <cilk/cilk.h>
-#endif
+#endif  // ENABLE_CILKPLUS
 
 #ifdef ADVGCC
 #define const2 const
@@ -242,9 +242,9 @@
 
 #ifdef ENABLE_CHECKPLUGIN
 #define A_NONNULLPOINTER __attribute__((nonnullpointer))
-#else
+#else  // ENABLE_CHECKPLUGIN
 #define A_NONNULLPOINTER
-#endif
+#endif  // ENABLE_CHECKPLUGIN
 
 #ifdef ENABLE_CHECKS
 
@@ -261,24 +261,24 @@
 #ifdef USE_SDL2
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch-default"
-#endif
+#endif  // USE_SDL2
 #include <SDL_version.h>
 #ifdef USE_SDL2
 #pragma GCC diagnostic pop
-#endif
+#endif  // USE_SDL2
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 #ifndef USE_SDL2
 #warning using SDL2 headers but configure set to use SDL1.2
 #warning please add configure flag --with-sdl2
 #define USE_SDL2
-#endif
-#else
+#endif  // USE_SDL2
+#else  // SDL_VERSION_ATLEAST(2, 0, 0)
 #ifdef USE_SDL2
 #error using SDL1.2 headers but configure set to use SDL2
 #error please remove configure flag --with-sdl2
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // SDL_VERSION_ATLEAST(2, 0, 0)
 
 // #define DEBUG_CONFIG 1
 // #define DEBUG_BIND_TEXTURE 1
@@ -316,9 +316,9 @@
 
 #ifdef DYECMD
 #undef USE_FUZZER
-#endif
+#endif  // DYECMD
 #include "utils/perfomance.h"
 UTILS_PERFOMANCE_H  // guard for protect previous include
 #ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
+#endif  // HAVE_CONFIG_H

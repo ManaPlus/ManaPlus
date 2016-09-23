@@ -26,7 +26,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/mkdir.h"
-#endif
+#endif  // defined(ANDROID) || defined(__native_client__)
 
 #include "utils/mkdir.h"
 #include "utils/paths.h"
@@ -77,7 +77,8 @@ namespace
 {
 #ifdef ANDROID
     int mFilesCount = 0;
-#endif
+#endif  // ANDROID
+
     Files::CopyFileCallbackPtr mCallbackPtr = nullptr;
 }  // namespace
 
@@ -101,7 +102,7 @@ void Files::copyPhysFsFile(const std::string &restrict inFile,
         mCallbackPtr(mFilesCount);
         mFilesCount ++;
     }
-#endif
+#endif  // ANDROID
 }
 
 void Files::copyPhysFsDir(const std::string &restrict inDir,
@@ -169,9 +170,10 @@ int Files::renameFile(const std::string &restrict srcName,
         return 0;
 
     return -1;
-#else
+#else  // defined __native_client__
+
     return ::rename(srcName.c_str(), dstName.c_str());
-#endif
+#endif  // defined __native_client__
 }
 
 int Files::copyFile(const std::string &restrict srcName,
@@ -265,7 +267,7 @@ std::string Files::getPath(const std::string &file)
         std::string dataZip = "/http/data.zip/";
         if (path.substr(0, dataZip.length()) == dataZip)
             path = path.replace(0, dataZip.length(), "/http/data/");
-#endif
+#endif  // defined __native_client__
     }
     else
     {

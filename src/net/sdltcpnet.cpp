@@ -28,7 +28,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <linux/tcp.h>
-#else
+#else  // defined(M_TCPOK) && !defined(ANDROID)
 #include <netinet/in.h>
 #include <netinet/tcp.h>
 #include <netdb.h>
@@ -37,9 +37,9 @@
 #define TCP_THIN_LINEAR_TIMEOUTS 16
 // Fast retrans. after 1 dupack
 #define TCP_THIN_DUPACK          17
-#endif
+#endif  // defined(M_TCPOK) && !defined(ANDROID)
 
-#endif
+#endif  // defined __linux__ || defined __linux
 
 PRAGMACLANG6(GCC diagnostic push)
 PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
@@ -60,7 +60,9 @@ struct TCPsocketHack final
     IPaddress localAddress;
     int sflag;
 };
-#endif
+#endif  // !defined(__native_client__)
+        // && (defined(TCP_THIN_LINEAR_TIMEOUTS)
+        // || defined(TCP_THIN_DUPACK))
 
 void TcpNet::init()
 {
@@ -118,18 +120,20 @@ TcpNet::Socket TcpNet::open(IPaddress *const ip)
                 {
                     logger->log_r("error on set TCP_THIN_LINEAR_TIMEOUTS");
                 }
-#endif
+#endif  // TCP_THIN_LINEAR_TIMEOUTS
 #ifdef TCP_THIN_DUPACK
                 if (setsockopt(hack->channel, IPPROTO_TCP,
                     TCP_THIN_DUPACK, &val, sizeof(val)))
                 {
                     logger->log_r("error on set TCP_THIN_DUPACK");
                 }
-#endif
+#endif  // TCP_THIN_DUPACK
             }
         }
     }
-#endif
+#endif  // !defined(__native_client__)
+        // && (defined(TCP_THIN_LINEAR_TIMEOUTS)
+        // || defined(TCP_THIN_DUPACK))
     return sock;
 }
 

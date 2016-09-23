@@ -222,4 +222,4 @@ GLint *OpenGLGraphicsVertexes::continueIntTexArray() restrict2
     }
     return mIntTexArray;
 }
-#endif
+#endif  // USE_OPENGL

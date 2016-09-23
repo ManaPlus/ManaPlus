@@ -160,7 +160,7 @@ class ResourceManager final : public MemoryCounter
 
         Resources* getOrphanedResources() A_WARN_UNUSED
         { return &mOrphanedResources; }
-#endif
+#endif  // DEBUG_DUMP_LEAKS
 
         bool cleanOrphans(const bool always = false);
 
@@ -183,7 +183,7 @@ class ResourceManager final : public MemoryCounter
 
 #ifndef UNITTESTS
     private:
-#endif
+#endif  // UNITTESTS
         /**
          * Deletes the resource after logging a cleanup message.
          */

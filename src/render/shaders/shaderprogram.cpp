@@ -25,7 +25,7 @@
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"
-#endif
+#endif  // __native_client__
 
 #include "render/shaders/shader.h"
 

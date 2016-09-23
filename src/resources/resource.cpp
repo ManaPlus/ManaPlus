@@ -38,16 +38,17 @@ void Resource::incRef()
     logger->log("before incRef for: %p", static_cast<void*>(this));
     mRefCount++;
     logger->log("after incRef: %p, %u", static_cast<void*>(this), mRefCount);
-#else
+#else  // DEBUG_IMAGES
+
     mRefCount++;
-#endif
+#endif  // DEBUG_IMAGES
 }
 
 void Resource::decRef()
 {
 #ifdef DEBUG_IMAGES
     logger->log("before decRef for: %p", static_cast<void*>(this));
-#endif
+#endif  // DEBUG_IMAGES
 
     // Reference may not already have reached zero
     if (mRefCount == 0)
@@ -60,7 +61,7 @@ void Resource::decRef()
 
 #ifdef DEBUG_IMAGES
     logger->log("after decRef: %p, %u", static_cast<void*>(this), mRefCount);
-#endif
+#endif  // DEBUG_IMAGES
 
     if (mRefCount == 0 && !mNotCount)
     {

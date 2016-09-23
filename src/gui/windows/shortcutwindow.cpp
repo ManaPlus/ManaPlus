@@ -264,4 +264,4 @@ void ShortcutWindow::logicChildren()
     BasicContainer::logicChildren();
     BLOCK_END("ShortcutWindow::logicChildren")
 }
-#endif
+#endif  // USE_PROFILER

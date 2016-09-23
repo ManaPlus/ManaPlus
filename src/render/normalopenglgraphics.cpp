@@ -85,11 +85,11 @@ GLuint NormalOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int NormalOpenGLGraphics::mDrawCalls = 0;
 unsigned int NormalOpenGLGraphics::mLastDrawCalls = 0;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 #ifdef DEBUG_BIND_TEXTURE
 unsigned int NormalOpenGLGraphics::mBinds = 0;
 unsigned int NormalOpenGLGraphics::mLastBinds = 0;
-#endif
+#endif  // DEBUG_BIND_TEXTURE
 
 NormalOpenGLGraphics::NormalOpenGLGraphics() :
     mFloatTexArray(nullptr),
@@ -110,7 +110,7 @@ NormalOpenGLGraphics::NormalOpenGLGraphics() :
 #ifdef DEBUG_BIND_TEXTURE
     mOldTexture(),
     mOldTextureId(0),
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     mFbo()
 {
     mOpenGL = RENDER_NORMAL_OPENGL;
@@ -250,7 +250,8 @@ static inline void drawQuad(const Image *restrict const image,
         bindPointerIntFloat(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
         glDrawArrays(GL_QUADS, 0, 4);
     }
     else
@@ -273,7 +274,8 @@ static inline void drawQuad(const Image *restrict const image,
         bindPointerInt(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
         glDrawArrays(GL_QUADS, 0, 4);
     }
 }
@@ -322,7 +324,8 @@ static inline void drawRescaledQuad(const Image *restrict const image,
         bindPointerIntFloat(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
         glDrawArrays(GL_QUADS, 0, 4);
     }
     else
@@ -345,7 +348,8 @@ static inline void drawRescaledQuad(const Image *restrict const image,
         bindPointerInt(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
         glDrawArrays(GL_QUADS, 0, 4);
     }
 }
@@ -366,7 +370,8 @@ void NormalOpenGLGraphics::drawImageInline(const Image *restrict const image,
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
@@ -404,7 +409,8 @@ void NormalOpenGLGraphics::testDraw() restrict2
         bindPointerIntFloat(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
         glDrawArrays(GL_QUADS, 0, 4);
     }
     else
@@ -428,7 +434,8 @@ void NormalOpenGLGraphics::testDraw() restrict2
         bindPointerInt(&vert[0], &tex[0]);
 #ifdef DEBUG_DRAW_CALLS
         NormalOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
         glDrawArrays(GL_QUADS, 0, 4);
     }
 }
@@ -600,7 +607,8 @@ void NormalOpenGLGraphics::completeCache() restrict2
     setColorAlpha(mAlphaCached);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, mImageCached);
     setTexturingAndBlending(true);
 
@@ -634,7 +642,8 @@ void NormalOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
@@ -676,7 +685,8 @@ void NormalOpenGLGraphics::drawPatternInline(const Image *restrict const image,
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -769,7 +779,8 @@ void NormalOpenGLGraphics::drawRescaledPattern(const Image *
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -1060,7 +1071,8 @@ void NormalOpenGLGraphics::drawTileCollection(const ImageCollection
         setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
         debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
         bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
         setTexturingAndBlending(true);
         drawVertexes(vert->ogl);
@@ -1182,7 +1194,8 @@ void NormalOpenGLGraphics::drawTileVertexes(const ImageVertexes *
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
     drawVertexes(vert->ogl);
@@ -1221,20 +1234,21 @@ void NormalOpenGLGraphics::updateScreen() restrict2
 #ifdef DEBUG_DRAW_CALLS
     mLastDrawCalls = mDrawCalls;
     mDrawCalls = 0;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 #ifdef DEBUG_BIND_TEXTURE
     mLastBinds = mBinds;
     mBinds = 0;
-#endif
+#endif  // DEBUG_BIND_TEXTURE
 #ifdef USE_SDL2
     SDL_GL_SwapWindow(mWindow);
-#else
+#else  // USE_SDL2
     SDL_GL_SwapBuffers();
-#endif
+#endif  // USE_SDL2
 #ifdef DEBUG_OPENGL
     if (isGLNotNull(mglFrameTerminator))
         mglFrameTerminator();
-#endif
+#endif  // DEBUG_OPENGL
+
 // may be need clear?
 //  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     BLOCK_END("Graphics::updateScreen")
@@ -1255,11 +1269,12 @@ void NormalOpenGLGraphics::beginDraw() restrict2
     glOrthof(0.0, static_cast<float>(w),
         static_cast<float>(h),
         0.0, -1.0, 1.0);
-#else
+#else  // ANDROID
+
     glOrtho(0.0, static_cast<double>(w),
         static_cast<double>(h),
         0.0, -1.0, 1.0);
-#endif
+#endif  // ANDROID
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -1281,7 +1296,7 @@ void NormalOpenGLGraphics::beginDraw() restrict2
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     glHint(GL_POINT_SMOOTH_HINT, GL_FASTEST);
     glHint(GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
-#endif
+#endif  // ANDROID
 
     pushClipArea(Rect(0, 0, w, h));
 }
@@ -1355,11 +1370,12 @@ void NormalOpenGLGraphics::drawPoint(int x, int y) restrict2
 
 #ifdef ANDROID
     // TODO need fix
-#else
+#else  // ANDROID
+
     glBegin(GL_POINTS);
     glVertex2i(x, y);
     glEnd();
-#endif
+#endif  // ANDROID
 }
 
 void NormalOpenGLGraphics::drawLine(int x1, int y1,
@@ -1450,8 +1466,9 @@ void NormalOpenGLGraphics::drawRectangle(const Rect &restrict rect,
     glVertexPointer(2, GL_FLOAT, 0, &vert);
     vertPtr = nullptr;
 #ifdef DEBUG_DRAW_CALLS
-        mDrawCalls ++;
-#endif
+    mDrawCalls ++;
+#endif  // DEBUG_DRAW_CALLS
+
     glDrawArrays(filled ? GL_QUADS : GL_LINE_LOOP, 0, 4);
     BLOCK_END("Graphics::drawRectangle")
 }
@@ -1516,7 +1533,7 @@ void NormalOpenGLGraphics::bindTexture(const GLenum target,
         glBindTexture(target, texture);
 #ifdef DEBUG_BIND_TEXTURE
         mBinds ++;
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     }
 }
 
@@ -1525,7 +1542,8 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size) restrict2
     bindPointerIntFloat(&mIntVertArray[0], &mFloatTexArray[0]);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1535,7 +1553,8 @@ inline void NormalOpenGLGraphics::drawQuadArrayfiCached(const int size)
     bindPointerIntFloat(&mIntVertArrayCached[0], &mFloatTexArrayCached[0]);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1550,7 +1569,8 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *restrict const
     glTexCoordPointer(2, GL_FLOAT, 0, floatTexArray);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1559,7 +1579,8 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const int size) restrict2
     bindPointerInt(&mIntVertArray[0], &mIntTexArray[0]);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1569,7 +1590,8 @@ inline void NormalOpenGLGraphics::drawQuadArrayiiCached(const int size)
     bindPointerInt(&mIntVertArrayCached[0], &mIntTexArrayCached[0]);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1584,7 +1606,8 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *restrict const
     glTexCoordPointer(2, GL_INT, 0, intTexArray);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
@@ -1594,7 +1617,8 @@ inline void NormalOpenGLGraphics::drawLineArrayi(const int size) restrict2
     vertPtr = nullptr;
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 
@@ -1604,7 +1628,8 @@ inline void NormalOpenGLGraphics::drawLineArrayf(const int size) restrict2
     vertPtr = nullptr;
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 
@@ -1690,12 +1715,13 @@ void NormalOpenGLGraphics::debugBindTexture(const Image *restrict const image)
         mOldTexture = texture;
     }
 }
-#else
+#else  // DEBUG_BIND_TEXTURE
+
 void NormalOpenGLGraphics::debugBindTexture(const Image *restrict const
                                             image A_UNUSED) restrict2
 {
 }
-#endif
+#endif  // DEBUG_BIND_TEXTURE
 
 #endif  // defined(USE_OPENGL) && !defined(ANDROID) &&
         // !defined(__native_client__)

@@ -26,7 +26,7 @@
 
 #ifdef DEBUG_BIND_TEXTURE
 #include "logger.h"
-#endif
+#endif  // DEBUG_BIND_TEXTURE
 
 #include "render/vertexes/imagecollection.h"
 
@@ -41,7 +41,7 @@ GLuint NullOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int NullOpenGLGraphics::mDrawCalls = 0;
 unsigned int NullOpenGLGraphics::mLastDrawCalls = 0;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 
 NullOpenGLGraphics::NullOpenGLGraphics() :
     mFloatTexArray(nullptr),
@@ -56,7 +56,7 @@ NullOpenGLGraphics::NullOpenGLGraphics() :
 #ifdef DEBUG_BIND_TEXTURE
     mOldTexture(),
     mOldTextureId(0),
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     mFbo()
 {
     mOpenGL = RENDER_NULL;
@@ -122,13 +122,13 @@ static inline void drawQuad(const Image *restrict const image A_UNUSED,
     {
 #ifdef DEBUG_DRAW_CALLS
         NullOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     }
     else
     {
 #ifdef DEBUG_DRAW_CALLS
         NullOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     }
 }
 
@@ -146,13 +146,13 @@ static inline void drawRescaledQuad(const Image *restrict const image A_UNUSED,
     {
 #ifdef DEBUG_DRAW_CALLS
         NullOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     }
     else
     {
 #ifdef DEBUG_DRAW_CALLS
         NullOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     }
 }
 
@@ -178,7 +178,8 @@ void NullOpenGLGraphics::drawImageInline(const Image *restrict const image,
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
@@ -228,7 +229,8 @@ void NullOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
@@ -268,7 +270,8 @@ void NullOpenGLGraphics::drawPatternInline(const Image *restrict const image,
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -401,7 +404,8 @@ void NullOpenGLGraphics::drawRescaledPattern(const Image *restrict const image,
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -748,7 +752,8 @@ void NullOpenGLGraphics::drawTileCollection(const ImageCollection
         setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
         debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
         bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
         setTexturingAndBlending(true);
         drawVertexes(vert->ogl);
@@ -909,7 +914,8 @@ void NullOpenGLGraphics::drawTileVertexes(const ImageVertexes *
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
     drawVertexes(vert->ogl);
@@ -946,7 +952,8 @@ void NullOpenGLGraphics::updateScreen() restrict2
 #ifdef DEBUG_DRAW_CALLS
     mLastDrawCalls = mDrawCalls;
     mDrawCalls = 0;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     BLOCK_END("Graphics::updateScreen")
 }
 
@@ -1049,7 +1056,8 @@ void NullOpenGLGraphics::drawRectangle(const Rect &restrict rect A_UNUSED,
 
 #ifdef DEBUG_DRAW_CALLS
         mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     BLOCK_END("Graphics::drawRectangle")
 }
 
@@ -1116,7 +1124,7 @@ inline void NullOpenGLGraphics::drawQuadArrayfi(const int size A_UNUSED)
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 }
 
 inline void NullOpenGLGraphics::drawQuadArrayfi(const GLint *restrict const
@@ -1128,7 +1136,7 @@ inline void NullOpenGLGraphics::drawQuadArrayfi(const GLint *restrict const
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 }
 
 inline void NullOpenGLGraphics::drawQuadArrayii(const int size A_UNUSED)
@@ -1136,7 +1144,7 @@ inline void NullOpenGLGraphics::drawQuadArrayii(const int size A_UNUSED)
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 }
 
 inline void NullOpenGLGraphics::drawQuadArrayii(const GLint *restrict const
@@ -1148,7 +1156,7 @@ inline void NullOpenGLGraphics::drawQuadArrayii(const GLint *restrict const
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 }
 
 inline void NullOpenGLGraphics::drawLineArrayi(const int size A_UNUSED)
@@ -1156,7 +1164,7 @@ inline void NullOpenGLGraphics::drawLineArrayi(const int size A_UNUSED)
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 }
 
 inline void NullOpenGLGraphics::drawLineArrayf(const int size A_UNUSED)
@@ -1164,7 +1172,7 @@ inline void NullOpenGLGraphics::drawLineArrayf(const int size A_UNUSED)
 {
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 }
 
 void NullOpenGLGraphics::dumpSettings()
@@ -1227,11 +1235,11 @@ void NullOpenGLGraphics::debugBindTexture(const Image *restrict const image)
         mOldTexture = texture;
     }
 }
-#else
+#else  // DEBUG_BIND_TEXTURE
+
 void NullOpenGLGraphics::debugBindTexture(const Image *restrict const
                                           image A_UNUSED) restrict2
 {
 }
-#endif
-
+#endif  // DEBUG_BIND_TEXTURE
 #endif  // USE_OPENGL

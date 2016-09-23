@@ -69,7 +69,7 @@ namespace ItemDB
     ItemDB::NamedItemInfos &getNamedItemInfosTest();
 
     ItemDB::ItemInfos &getItemInfosTest();
-#endif
+#endif  // UNITTESTS
 
     int getTagId(const std::string &tagName) A_WARN_UNUSED;
 }  // namespace ItemDB

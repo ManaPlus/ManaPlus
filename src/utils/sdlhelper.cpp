@@ -48,7 +48,8 @@ bool SDL::getAllVideoModes(StringVect &modeList)
     logger->log("support mode: " + modeString);
     modeList.push_back(modeString);
     return true;
-#else
+#else  // ANDROID
+
     /* Check which modes are available */
     if (modes == static_cast<SDL_Rect **>(nullptr))
     {
@@ -72,7 +73,7 @@ bool SDL::getAllVideoModes(StringVect &modeList)
         }
         return true;
     }
-#endif
+#endif  // ANDROID
 }
 
 void SDL::SetWindowTitle(const SDL_Surface *const window A_UNUSED,
@@ -162,7 +163,8 @@ void SDL::makeCurrentContext(void *const context)
         info.info.x11.display,
         context);
 }
-#else
+#else  // defined(USE_X11) && defined(USE_OPENGL)
+
 void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
                            const int major A_UNUSED,
                            const int minor A_UNUSED,
@@ -174,6 +176,6 @@ void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
 void SDL::makeCurrentContext(void *const context A_UNUSED)
 {
 }
-#endif
+#endif  // defined(USE_X11) && defined(USE_OPENGL)
 
 #endif  // USE_SDL2

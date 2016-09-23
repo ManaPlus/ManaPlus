@@ -85,7 +85,7 @@ void ConfigManager::initConfiguration()
 {
 #ifdef DEBUG_CONFIG
     config.setIsMain(true);
-#endif
+#endif  // DEBUG_CONFIG
 
     // Fill configuration with defaults
     config.setValue("hwaccel", false);
@@ -96,12 +96,15 @@ void ConfigManager::initConfiguration()
     config.setValue("opengl", CAST_S32(RENDER_GLES_OPENGL));
 #elif (defined WIN32)
     config.setValue("opengl", CAST_S32(RENDER_SAFE_OPENGL));
-#else
+#else  // (defined __APPLE__)
+
     config.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
-#endif
-#else
+#endif  // (defined __APPLE__)
+#else  // USE_OPENGL
+
     config.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
-#endif
+#endif  // USE_OPENGL
+
     config.setValue("screen", false);
     config.setValue("sound", true);
     config.setValue("guialpha", 0.8F);
@@ -289,9 +292,10 @@ void ConfigManager::storeSafeParameters()
     }
 #if defined(__APPLE__)
     config.setValue("opengl", CAST_S32(RENDER_NORMAL_OPENGL));
-#else
+#else  // defined(__APPLE__)
+
     config.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
-#endif
+#endif  // defined(__APPLE__)
 
     config.write();
 
@@ -330,7 +334,7 @@ void ConfigManager::storeSafeParameters()
         config.setValue("screenheight", height);
     }
 }
-#endif
+#endif  // __native_client__
 
 #define unassignKey(key, value) \
     if (config.getStringValue(prefix + key) == value) \
@@ -358,13 +362,13 @@ void ConfigManager::checkConfigVersion()
         config.setValue("audioFrequency", 44100);
 #ifdef ANDROID
         config.setValue("customcursor", false);
-#endif
+#endif  // ANDROID
     }
     if (version < 4)
     {
 #ifdef ANDROID
         config.setValue("showDidYouKnow", false);
-#endif
+#endif  // ANDROID
     }
     if (version < 5)
     {
@@ -392,9 +396,11 @@ void ConfigManager::checkConfigVersion()
     {
 #ifdef USE_SDL2
         const std::string prefix = std::string("sdl2");
-#else
+#else  // USE_SDL2
+
         const std::string prefix = std::string();
-#endif
+#endif  // USE_SDL2
+
         unassignKey("keyDirectUp", "k108");
         unassignKey("keyDirectDown", "k59");
         unassignKey("keyDirectLeft", "k107");
@@ -404,9 +410,11 @@ void ConfigManager::checkConfigVersion()
     {
 #ifdef USE_SDL2
         const std::string prefix = std::string("sdl2");
-#else
+#else  // USE_SDL2
+
         const std::string prefix = std::string();
-#endif
+#endif  // USE_SDL2
+
         unassignKey("keyAttack", "k120");
     }
 

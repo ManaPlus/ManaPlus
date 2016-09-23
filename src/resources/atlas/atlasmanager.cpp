@@ -26,7 +26,7 @@
 
 #ifdef DEBUG_IMAGES
 #include "logger.h"
-#endif
+#endif  // DEBUG_IMAGES
 
 #include "utils/mathutils.h"
 #include "utils/physfscheckutils.h"
@@ -50,7 +50,7 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 AtlasManager::AtlasManager()
 {
@@ -70,7 +70,7 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
     int sz = settings.textureSize;
     if (maxSize > sz)
         maxSize = sz;
-#endif
+#endif  // !defined(ANDROID) && !defined(__APPLE__)
 
     // sorting images on atlases.
     simpleSort(name, atlases, images, maxSize);
@@ -163,7 +163,8 @@ void AtlasManager::loadImages(const StringVect &files,
 #ifdef DEBUG_IMAGES
                 logger->log("set name %p, %s", static_cast<void*>(image),
                     image->mIdPath.c_str());
-#endif
+#endif  // DEBUG_IMAGES
+
                 images.push_back(image);
             }
         }
@@ -278,12 +279,13 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     const unsigned int gmask = 0x00ff0000;
     const unsigned int bmask = 0x0000ff00;
     const unsigned int amask = 0x000000ff;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     const unsigned int rmask = 0x000000ff;
     const unsigned int gmask = 0x0000ff00;
     const unsigned int bmask = 0x00ff0000;
     const unsigned int amask = 0xff000000;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     // do not create atlas based on only one image
     if (atlas->items.size() == 1)
@@ -356,7 +358,8 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 #ifdef DEBUG_IMAGES
     logger->log("set name %p, %s", static_cast<void*>(image),
         image->mIdPath.c_str());
-#endif
+#endif  // DEBUG_IMAGES
+
     image->incRef();
 
     FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
@@ -374,7 +377,8 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 #ifdef DEBUG_IMAGES
             logger->log("set name %p, %s", static_cast<void*>(image2),
                 image2->mIdPath.c_str());
-#endif
+#endif  // DEBUG_IMAGES
+
             image2->incRef();
         }
     }
@@ -439,4 +443,4 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
     }
 }
 
-#endif
+#endif  // USE_OPENGL

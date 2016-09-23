@@ -74,7 +74,7 @@
 
 #ifdef USE_SDL2
 #include <string>
-#endif
+#endif  // USE_SDL2
 
 class Widget;
 
@@ -100,7 +100,7 @@ class KeyEvent: public InputGuiEvent
             mKey(key),
 #ifdef USE_SDL2
             mText(),
-#endif
+#endif  // USE_SDL2
             mType(type),
             mActionId(actionId)
         { }
@@ -136,7 +136,7 @@ class KeyEvent: public InputGuiEvent
 
         std::string getText() const
         { return mText; }
-#endif
+#endif  // USE_SDL2
 
     protected:
         /**
@@ -146,7 +146,7 @@ class KeyEvent: public InputGuiEvent
 
 #ifdef USE_SDL2
         std::string mText;
-#endif
+#endif  // USE_SDL2
 
         /**
           * Holds the type of the key event.

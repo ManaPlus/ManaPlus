@@ -76,7 +76,7 @@
 
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "resources/chatobject.h"
 #include "resources/iteminfo.h"
@@ -237,7 +237,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 #ifdef TMWA_SUPPORT
                     if (guild2->getServerGuild()
                         || (guildManager && guildManager->havePower()))
-#endif
+#endif  // TMWA_SUPPORT
                     {
                         mBrowserBox->addRow("/guild 'NAME'",
                             // TRANSLATORS: popup menu item
@@ -595,7 +595,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
 #ifdef TMWA_SUPPORT
             if (guild2->getServerGuild() || (guildManager
                 && guildManager->havePower()))
-#endif
+#endif  // TMWA_SUPPORT
             {
                 mBrowserBox->addRow("/kickguild 'NAME'",
                     // TRANSLATORS: popup menu item
@@ -615,7 +615,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
 #ifdef TMWA_SUPPORT
             if (guild2->getServerGuild() || (guildManager
                 && guildManager->havePower()))
-#endif
+#endif  // TMWA_SUPPORT
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: invite player to guild
@@ -954,7 +954,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 #ifdef TMWA_SUPPORT
                         if (guild2->getServerGuild() || (guildManager
                             && guildManager->havePower()))
-#endif
+#endif  // TMWA_SUPPORT
                         {
                             mBrowserBox->addRow("/kickguild 'NAME'",
                                 // TRANSLATORS: popup menu item
@@ -975,7 +975,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 #ifdef TMWA_SUPPORT
                     if (guild2->getServerGuild() || (guildManager
                         && guildManager->havePower()))
-#endif
+#endif  // TMWA_SUPPORT
                     {
                         mBrowserBox->addRow("/guild 'NAME'",
                             // TRANSLATORS: popup menu item

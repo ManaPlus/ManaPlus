@@ -24,7 +24,7 @@
 
 #ifdef DEBUG_IMAGES
 #include "logger.h"
-#endif
+#endif  // DEBUG_IMAGES
 
 #include "debug.h"
 
@@ -47,10 +47,10 @@ SubImage::SubImage(Image *const parent,
         mSource = parent->getIdPath();
 #ifdef DEBUG_IMAGES
         logger->log("set name2 %p, %s", this, mSource.c_str());
-#endif
+#endif  // DEBUG_IMAGES
 #ifdef DEBUG_BIND_TEXTURE
         mIdPath = parent->getIdPath();
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     }
     else
     {
@@ -80,7 +80,7 @@ SubImage::SubImage(Image *const parent,
     }
     mUseAlphaCache = false;
 }
-#endif
+#endif  // USE_SDL2
 
 SubImage::SubImage(Image *const parent,
                    SDL_Surface *const image,
@@ -101,10 +101,10 @@ SubImage::SubImage(Image *const parent,
 #ifdef DEBUG_IMAGES
         logger->log("set name2 %p, %s", static_cast<void*>(this),
             mSource.c_str());
-#endif
+#endif  // DEBUG_IMAGES
 #ifdef DEBUG_BIND_TEXTURE
         mIdPath = parent->getIdPath();
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     }
     else
     {
@@ -163,10 +163,10 @@ SubImage::SubImage(Image *const parent,
 #ifdef DEBUG_IMAGES
         logger->log("set name2 %p, %s", static_cast<void*>(this),
             mSource.c_str());
-#endif
+#endif  // DEBUG_IMAGES
 #ifdef DEBUG_BIND_TEXTURE
         mIdPath = parent->getIdPath();
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     }
     else
     {
@@ -177,14 +177,14 @@ SubImage::SubImage(Image *const parent,
     }
     mIsAlphaVisible = mHasAlphaChannel;
 }
-#endif
+#endif  // USE_OPENGL
 
 SubImage::~SubImage()
 {
 #ifdef DEBUG_IMAGES
     logger->log("delete subimage: %p", static_cast<void*>(this));
     logger->log("  %s, %s", mIdPath.c_str(), mSource.c_str());
-#endif
+#endif  // DEBUG_IMAGES
     // Avoid destruction of the image
     mSDLSurface = nullptr;
     // Avoid possible destruction of its alpha channel
@@ -192,16 +192,17 @@ SubImage::~SubImage()
 #ifdef USE_SDL2
     // Avoid destruction of texture
     mTexture = nullptr;
-#endif
+#endif  // USE_SDL2
 #ifdef USE_OPENGL
     mGLImage = 0;
-#endif
+#endif  // USE_OPENGL
     if (mParent)
     {
 #ifdef DEBUG_IMAGES
         logger->log("decref from subminage: %p, parent: %p",
             static_cast<void*>(this), static_cast<void*>(mParent));
-#endif
+#endif  // DEBUG_IMAGES
+
         mParent->decRef();
         mParent = nullptr;
     }
@@ -221,7 +222,7 @@ void SubImage::decRef()
 {
     Resource::decRef();
 }
-#endif
+#endif  // USE_OPENGL
 
 int SubImage::calcMemoryLocal() const
 {

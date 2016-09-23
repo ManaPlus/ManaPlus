@@ -64,7 +64,7 @@ class DebugWindow final : public Window
 
 #ifdef USE_PROFILER
         void logicChildren();
-#endif
+#endif  // USE_PROFILER
 
     private:
         TabbedArea *mTabs A_NONNULLPOINTER;

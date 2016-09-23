@@ -493,11 +493,12 @@ void SafeOpenGLGraphics::updateScreen() restrict2
     SDL_GL_SwapWindow(mWindow);
 #else
     SDL_GL_SwapBuffers();
-#endif
+#endif  // USE_SDL2
 #ifdef DEBUG_OPENGL
     if (isGLNotNull(mglFrameTerminator))
         mglFrameTerminator();
-#endif
+#endif  // DEBUG_OPENGL
+
     BLOCK_END("Graphics::updateScreen")
 }
 

@@ -47,7 +47,8 @@ class ImageVertexes final
         const Image *restrict image;
 #ifdef USE_OPENGL
         OpenGLGraphicsVertexes ogl;
-#endif
+#endif  // USE_OPENGL
+
         DoubleRects sdl;
 };
 

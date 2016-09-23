@@ -41,7 +41,7 @@
 #include "gui/widgets/tabs/socialguildtab2.h"
 
 #include "net/tmwa/guildmanager.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "debug.h"
 
@@ -313,9 +313,10 @@ void SocialWindow::action(const ActionEvent &event)
                 guildHandler->inviteResponse(mGuildInvited, true);
             else
                 guildManager->inviteResponse(true);
-#else
+#else  // TMWA_SUPPORT
+
             guildHandler->inviteResponse(mGuildInvited, true);
-#endif
+#endif  // TMWA_SUPPORT
         }
         else if (eventId == "no")
         {
@@ -332,9 +333,10 @@ void SocialWindow::action(const ActionEvent &event)
                 guildHandler->inviteResponse(mGuildInvited, false);
             else
                 guildManager->inviteResponse(false);
-#else
+#else  // TMWA_SUPPORT
+
             guildHandler->inviteResponse(mGuildInvited, false);
-#endif
+#endif  // TMWA_SUPPORT
         }
 
         mGuildInvited = 0;
@@ -657,4 +659,4 @@ void SocialWindow::logicChildren()
     BasicContainer::logicChildren();
     BLOCK_END("SocialWindow::logicChildren")
 }
-#endif
+#endif  // USE_PROFILER

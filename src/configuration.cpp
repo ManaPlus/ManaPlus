@@ -39,9 +39,9 @@
 StringIntMap optionsCount;
 #define GETLOG() if (logger) {logger->log("config get: " + key); \
     if (mIsMain) optionsCount[key] = 1; }
-#else
+#else  // DEBUG_CONFIG
 #define GETLOG()
-#endif
+#endif  // DEBUG_CONFIG
 
 Configuration config;              // XML file configuration reader
 Configuration serverConfig;        // XML file server configuration reader
@@ -342,9 +342,10 @@ ConfigurationObject::ConfigurationObject() :
     mContainerOptions(),
     mLogKeys(false),
     mIsMain(false)
-#else
+#else  // DEBUG_CONFIG
+
     mContainerOptions()
-#endif
+#endif  // DEBUG_CONFIG
 {
 }
 
@@ -366,7 +367,7 @@ Configuration::Configuration() :
 #ifdef DEBUG_CONFIG
     mLogKeys = false;
     mIsMain = false;
-#endif
+#endif  // DEBUG_CONFIG
 }
 
 void Configuration::cleanDefaults()
@@ -807,7 +808,8 @@ void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
             if (optionsCount.find(i->first) == optionsCount.end())
                 logger->log("unused configuration option: " + i->first);
         }
-#endif
+#endif  // DEBUG_CONFIG
+
         XmlTextWriterStartElement(writer, "option");
         XmlTextWriterWriteAttribute(writer, "name", i->first.c_str());
         XmlTextWriterWriteAttribute(writer, "value", i->second.c_str());
@@ -921,7 +923,7 @@ void Configuration::checkListeners(ConfigListener *const listener,
         }
     }
 }
-#endif
+#endif  // ENABLE_CHECKS
 
 void Configuration::removeListeners(ConfigListener *const listener)
 {

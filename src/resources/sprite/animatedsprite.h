@@ -135,7 +135,7 @@ class AnimatedSprite final : public Sprite
 
         unsigned int getFrameTime() const restrict2
         { return mFrameTime; }
-#endif
+#endif  // UNITTESTS
 
 #ifdef DEBUG_ANIMATIONS
         void setSpriteName(const std::string &restrict name)
@@ -143,7 +143,7 @@ class AnimatedSprite final : public Sprite
 
         std::string getSpriteName() const A_WARN_UNUSED
         { return mSpriteName; }
-#endif
+#endif  // DEBUG_ANIMATIONS
 
     private:
         bool updateCurrentAnimation(const unsigned int dt) restrict2;
@@ -153,7 +153,8 @@ class AnimatedSprite final : public Sprite
 
 #ifdef DEBUG_ANIMATIONS
         std::string mSpriteName;
-#endif
+#endif  // DEBUG_ANIMATIONS
+
         SpriteDirection::Type mDirection;  /**< The sprite direction. */
         int mLastTime;                 /**< The last time update was called. */
 

@@ -268,7 +268,8 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                     if (id)
                         bLink.caption = ItemDB::get(id).getName();
                 }
-#endif
+#endif  // DYECMD
+
                 if (translator)
                     bLink.caption = translator->getStr(bLink.caption);
             }

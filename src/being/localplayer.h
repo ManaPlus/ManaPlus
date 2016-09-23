@@ -206,7 +206,7 @@ class LocalPlayer final : public Being,
 
 #ifdef TMWA_SUPPORT
         void magicAttack() const;
-#endif
+#endif  // TMWA_SUPPORT
 
         void specialMove(const unsigned char direction);
 
@@ -448,7 +448,7 @@ class LocalPlayer final : public Being,
                              const int baseMagic,
                              const int schoolMagic,
                              const int mana);
-#endif
+#endif  // TMWA_SUPPORT
 
         void loadHomes();
 

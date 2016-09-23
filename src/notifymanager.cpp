@@ -29,7 +29,7 @@
 
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "resources/notifications.h"
 
@@ -51,9 +51,9 @@ namespace NotifyManager
                 return guildHandler->getTab();
             else if (guildManager)
                 return guildManager->getTab();
-#else
+#else  // TMWA_SUPPORT
             return guildHandler->getTab();
-#endif
+#endif  // TMWA_SUPPORT
         }
         return nullptr;
     }

@@ -27,7 +27,7 @@
 
 #ifdef WIN32
 #undef ERROR
-#endif
+#endif  // WIN32
 
 enumStart(State)
 {

@@ -63,13 +63,14 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event)
 {
 #ifdef USE_SDL2
     return event.key.keysym.scancode;
-#else
+#else  // USE_SDL2
+
     if (event.key.keysym.sym)
         return CAST_S32(event.key.keysym.sym);
     else if (event.key.keysym.scancode > 1)
         return -event.key.keysym.scancode;
     return 0;
-#endif
+#endif  // USE_SDL2
 }
 
 InputActionT KeyboardConfig::getKeyIndex(const SDL_Event &event, const int grp)
@@ -92,9 +93,10 @@ std::string KeyboardConfig::getKeyName(const int key)
 #ifdef USE_SDL2
         return SDL_GetKeyName(SDL_GetKeyFromScancode(
             static_cast<SDL_Scancode>(key)));
-#else
+#else  // USE_SDL2
+
         return SDL_GetKeyName(static_cast<SDLKey>(key));
-#endif
+#endif  // USE_SDL2
     }
 
     // TRANSLATORS: long key name, should be short
@@ -151,9 +153,10 @@ SDLKey KeyboardConfig::getKeyFromEvent(const SDL_Event &event)
 {
 #ifdef USE_SDL2
     return event.key.keysym.scancode;
-#else
+#else  // USE_SDL2
+
     return event.key.keysym.sym;
-#endif
+#endif  // USE_SDL2
 }
 
 KeysVector *KeyboardConfig::getActionVector(const SDL_Event &event)

@@ -147,7 +147,7 @@ void SpellManager::invoke(const int spellId) const
         && PlayerInfo::getAttribute(Attributes::PLAYER_MP)
         >= CAST_S32(spell->getMana()))
         )
-#endif
+#endif  // TMWA_SUPPORT
     {
         const Being *const target = localPlayer->getTarget();
         if (spell->getTargetType() == CommandTarget::NoTarget)
@@ -159,11 +159,12 @@ void SpellManager::invoke(const int spellId) const
             spell->getCommandType() == TextCommandType::Text)) &&
             (spell->getTargetType() == CommandTarget::AllowTarget ||
             spell->getTargetType() == CommandTarget::NeedTarget))
-#else
+#else  // TMWA_SUPPORT
+
         if (target &&
             (spell->getTargetType() == CommandTarget::AllowTarget ||
             spell->getTargetType() == CommandTarget::NeedTarget))
-#endif
+#endif  // TMWA_SUPPORT
         {
             invokeSpell(spell, target);
         }
@@ -302,7 +303,7 @@ void SpellManager::load()
                 static_cast<MagicSchoolT>(school), schoolLvl, mana));
         }
         else
-#endif
+#endif  // TMWA_SUPPORT
         {
             addSpell(new TextCommand(i, symbol, cmd, comment,
                 static_cast<CommandTargetT>(targetType), icon));
@@ -340,7 +341,8 @@ void SpellManager::save() const
                     CAST_U32(spell->getSchool()),
                     spell->getSchoolLvl(),
                     CAST_U32(spell->getMana())));
-#else
+#else  // TMWA_SUPPORT
+
                 serverConfig.setValue("commandShortcutFlags" + toString(i),
                     strprintf("%u %u %u %u %u %u", 1U,
                     CAST_U32(spell->getTargetType()),
@@ -348,7 +350,7 @@ void SpellManager::save() const
                     0U,
                     0U,
                     0U));
-#endif
+#endif  // TMWA_SUPPORT
             }
             else
             {

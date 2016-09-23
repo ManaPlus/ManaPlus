@@ -28,6 +28,6 @@
 
 #include "localconsts.h"
 std::string getSpecialFolderLocation(const int folderId) A_WARN_UNUSED;
-#endif
+#endif  // WIN32
 
 #endif  // UTILS_SPECIALFOLDER_H

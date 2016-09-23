@@ -27,11 +27,11 @@
 
 #ifdef WIN32
 #include <sys/time.h>
-#endif
+#endif  // WIN32
 
 #ifdef __native_client__
 #include <sys/time.h>
-#endif
+#endif  // __native_client__
 
 #include "localconsts.h"
 
@@ -84,5 +84,5 @@ class TestLauncher final
         std::ofstream file;
 };
 
-#endif
+#endif  // USE_OPENGL
 #endif  // TEST_TESTLAUNCHER_H

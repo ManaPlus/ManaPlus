@@ -24,7 +24,7 @@
 #include "render/graphics.h"
 
 #include "gui/sdlinput.h"
-#endif
+#endif  // USE_SDL2
 #include "debug.h"
 
 MultiTouchManager multiTouchManager;
@@ -85,4 +85,4 @@ void MultiTouchManager::checkDevice(const long touchId,
         }
     }
 }
-#endif
+#endif  // USE_SDL2

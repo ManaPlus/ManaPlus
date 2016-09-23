@@ -28,7 +28,7 @@
 
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/generalhandler.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #include "net/eathena/generalhandler.h"
 
@@ -133,9 +133,11 @@ void connectToServer(const ServerInfo &server)
             default:
 #ifdef TMWA_SUPPORT
                 new TmwAthena::GeneralHandler;
-#else
+#else  // TMWA_SUPPORT
+
                 new EAthena::GeneralHandler;
-#endif
+#endif  // TMWA_SUPPORT
+
                 break;
         }
 

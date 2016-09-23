@@ -67,6 +67,6 @@ class TextChunk final
 
 #ifdef UNITTESTS
 extern int textChunkCnt;
-#endif
+#endif  // UNITTESTS
 
 #endif  // GUI_FONTS_TEXTCHUNK_H

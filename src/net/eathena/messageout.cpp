@@ -32,7 +32,7 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 namespace EAthena
 {
@@ -57,9 +57,11 @@ void MessageOut::writeInt16(const int16_t value, const char *const str)
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int16_t swap = SDL_Swap16(value);
     memcpy(mData + CAST_SIZE(mPos), &swap, sizeof(int16_t));
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     memcpy(mData + CAST_SIZE(mPos), &value, sizeof(int16_t));
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     DEBUGLOG2("writeInt16: " + toStringPrint(CAST_U32(
         CAST_U16(value))),
         mPos, str);
@@ -75,9 +77,11 @@ void MessageOut::writeInt32(const int32_t value, const char *const str)
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int32_t swap = SDL_Swap32(value);
     memcpy(mData + CAST_SIZE(mPos), &swap, sizeof(int32_t));
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     memcpy(mData + CAST_SIZE(mPos), &value, sizeof(int32_t));
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     mPos += 4;
     PacketCounters::incOutBytes(4);
 }

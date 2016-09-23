@@ -25,15 +25,16 @@
 #ifdef UNITTESTS
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#endif
+#endif  // UNITTESTS
 #include "debug.h"
 
 #if !defined(UNITTESTS) && !defined(ANDROID)
 #if defined __native_client__
 extern "C"
-#endif
+#endif  // defined __native_client__
+
 int main(int argc, char *argv[])
 {
     return mainGui(argc, argv);
 }
-#endif
+#endif  // !defined(UNITTESTS) && !defined(ANDROID)

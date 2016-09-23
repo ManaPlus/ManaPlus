@@ -23,9 +23,9 @@
 
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>
-#else
+#else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <stdint.h>
-#endif
+#endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 
 static const uint32_t maxPacketVersion = 20151001;
 

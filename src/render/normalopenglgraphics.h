@@ -35,17 +35,17 @@
 #include <GLES/gl.h>
 #include <GLES/glext.h>
 #include <GLES2/gl2.h>
-#else
+#else  // ANDROID
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
-#endif
+#endif  // USE_SDL2
 #include <SDL_opengl.h>
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #elif !defined(__native_client__)
 #include <GL/glext.h>
 #endif  // defined(__APPLE__)
-#endif
+#endif  // ANDROID
 
 class OpenGLGraphicsVertexes;
 
@@ -96,7 +96,7 @@ class NormalOpenGLGraphics final : public Graphics
 #ifdef DEBUG_BIND_TEXTURE
         unsigned int getBinds() const restrict2 noexcept2
         { return mLastBinds; }
-#endif
+#endif  // DEBUG_BIND_TEXTURE
 
     private:
         GLfloat *mFloatTexArray A_NONNULLPOINTER;
@@ -120,9 +120,11 @@ class NormalOpenGLGraphics final : public Graphics
         unsigned int mOldTextureId;
         static unsigned int mBinds;
         static unsigned int mLastBinds;
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
         FBOInfo mFbo;
 };
-#endif
+#endif  // defined USE_OPENGL && !defined ANDROID &&
+        // !defined(__native_client__)
 
 #endif  // RENDER_NORMALOPENGLGRAPHICS_H

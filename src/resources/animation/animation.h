@@ -84,7 +84,7 @@ class Animation final : public MemoryCounter
 #ifdef UNITTESTS
         Frames &getFrames() noexcept2
         { return mFrames; }
-#endif
+#endif  // UNITTESTS
 
         int calcMemoryLocal() const override final;
 

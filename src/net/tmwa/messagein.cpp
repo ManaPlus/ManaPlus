@@ -35,7 +35,7 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 namespace TmwAthena
 {
@@ -64,9 +64,10 @@ uint16_t MessageIn::readId() const
         int16_t swap;
         memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(int16_t));
         value = SDL_Swap16(swap);
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int16_t));
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
     }
     return value;
 }
@@ -80,9 +81,10 @@ int16_t MessageIn::readInt16(const char *const str)
         int16_t swap;
         memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(int16_t));
         value = SDL_Swap16(swap);
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int16_t));
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
     }
     DEBUGLOG2("readInt16:  " + toStringPrint(CAST_U32(
         CAST_U16(value))),
@@ -101,9 +103,10 @@ uint16_t MessageIn::readUInt16(const char *const str)
         uint16_t swap;
         memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(uint16_t));
         value = SDL_Swap16(swap);
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         memcpy(&value, mData + CAST_SIZE(mPos), sizeof(uint16_t));
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
     }
     DEBUGLOG2("readUInt16:  " + toStringPrint(CAST_U32(
         CAST_U16(value))),
@@ -122,9 +125,10 @@ int32_t MessageIn::readInt32(const char *const str)
         int32_t swap;
         memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(int32_t));
         value = SDL_Swap32(swap);
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int32_t));
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
     }
     DEBUGLOG2("readInt32:  " + toStringPrint(CAST_U32(value)),
         mPos, str);
@@ -147,9 +151,10 @@ int64_t MessageIn::readInt64(const char *const str)
         int64_t swap;
         memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(int64_t));
         value = SDL_Swap64(swap);
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
         memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int64_t));
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
     }
     DEBUGLOG2("readInt64:  " + toStringPrint(CAST_U32(value)),
         mPos, str);

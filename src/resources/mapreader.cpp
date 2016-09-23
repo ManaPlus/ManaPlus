@@ -25,7 +25,7 @@
 #include "configuration.h"
 #ifdef USE_OPENGL
 #include "graphicsmanager.h"
-#endif
+#endif  // USE_OPENGL
 #include "main.h"
 
 #include "const/resources/map/map.h"
@@ -45,7 +45,7 @@
 #include "resources/db/mapdb.h"
 #include "resources/loaders/atlasloader.h"
 #include "resources/loaders/emptyatlasloader.h"
-#endif
+#endif  // USE_OPENGL
 
 #include "resources/map/tileanimation.h"
 
@@ -372,7 +372,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         }
     }
     BLOCK_END("MapReader::readMap load atlas")
-#endif
+#endif  // USE_OPENGL
 
     for_each_xml_child_node(childNode, node)
     {
@@ -1101,7 +1101,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                         reportAlways("Error: image '%s' not present in atlas",
                             source.c_str());
                     }
-#endif
+#endif  // USE_OPENGL
                 }
                 else
                 {

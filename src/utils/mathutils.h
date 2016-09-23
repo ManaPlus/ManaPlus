@@ -27,7 +27,7 @@
 
 #ifndef USE_SDL2
 #include <cmath>
-#endif
+#endif  // USE_SDL2
 
 #include "localconsts.h"
 

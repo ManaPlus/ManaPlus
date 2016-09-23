@@ -57,4 +57,4 @@ bool Fuzzer::conditionTerminate(const char *const name)
     return false;
 }
 
-#endif
+#endif  // USE_FUZZER

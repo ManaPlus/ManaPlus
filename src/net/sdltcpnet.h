@@ -24,12 +24,12 @@
 #ifdef USE_SDL2
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch-default"
-#endif
+#endif  // USE_SDL2
 #include <SDL_stdinc.h>
 _SDL_stdinc_h
 #ifdef USE_SDL2
 #pragma GCC diagnostic pop
-#endif
+#endif  // USE_SDL2
 
 #include <SDL_net.h>
 

@@ -31,4 +31,4 @@
 
 MGL_DEFINE
 
-#endif
+#endif  // USE_OPENGL

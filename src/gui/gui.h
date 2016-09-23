@@ -95,9 +95,9 @@ class Window;
 
 #ifdef USE_SDL2
 #define MouseStateType uint32_t
-#else
+#else  // USE_SDL2
 #define MouseStateType uint8_t
-#endif
+#endif  // USE_SDL2
 
 /**
  * \defgroup GUI Core GUI related classes (widgets)
@@ -523,7 +523,8 @@ class Gui final
 #ifdef ANDROID
         uint16_t mLastMouseRealX;
         uint16_t mLastMouseRealY;
-#endif
+#endif  // ANDROID
+
         typedef std::list<FocusListener*> FocusListenerList;
         typedef FocusListenerList::iterator FocusListenerIterator;
         FocusListenerList mFocusListeners;

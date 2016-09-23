@@ -170,4 +170,4 @@ void DebugWindow::logicChildren()
     BasicContainer::logicChildren();
     BLOCK_END("DebugWindow::logicChildren")
 }
-#endif
+#endif  // USE_PROFILER

@@ -133,7 +133,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Grab mouse and keyboard input"),
         "", "grabinput", this, "grabinputEvent");
-#endif
+#endif  // ANDROID
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Blurring textures (OpenGL)"),
@@ -211,7 +211,7 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Center game window"),
         "", "centerwindow", this, "centerwindowEvent");
-#endif
+#endif  // defined(WIN32) || defined(__APPLE__)
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Allow screensaver to run"),
@@ -244,5 +244,5 @@ void Setup_Visual::apply()
     WindowManager::applyGrabMode();
 #ifndef WIN32
     WindowManager::applyScale();
-#endif
+#endif  // WIN32
 }

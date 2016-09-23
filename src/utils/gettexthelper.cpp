@@ -22,7 +22,7 @@
 
 #if defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS)
 #include "configuration.h"
-#endif
+#endif  // defined(ENABLE_NLS) || defined(ENABLE_CUSTOMNLS)
 
 #ifdef ENABLE_NLS
 #include "client.h"
@@ -148,8 +148,9 @@ void GettextHelper::bindTextDomain(const char *const path)
     else
         logger->log("bindtextdomain failed");
 }
-#else
+#else  // ENABLE_NLS
+
 void GettextHelper::bindTextDomain(const char *const path A_UNUSED)
 {
 }
-#endif
+#endif  // ENABLE_NLS

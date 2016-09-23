@@ -51,7 +51,7 @@ static bool modeSorter(const std::string &mode1, const std::string &mode2)
 
     return false;
 }
-#endif
+#endif  // ANDROID
 
 ModeListModel::ModeListModel() :
     mVideoModes()
@@ -69,7 +69,7 @@ ModeListModel::ModeListModel() :
 
     std::sort(mVideoModes.begin(), mVideoModes.end(), &modeSorter);
     mVideoModes.push_back("custom");
-#endif
+#endif  // ANDROID
 }
 
 #ifndef ANDROID
@@ -85,7 +85,7 @@ void ModeListModel::addCustomMode(const std::string &mode)
     }
     mVideoModes.push_back(mode);
 }
-#endif
+#endif  // ANDROID
 
 int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
 {

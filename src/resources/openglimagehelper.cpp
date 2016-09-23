@@ -31,7 +31,7 @@
 #include "render/modernopenglgraphics.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"
-#endif
+#endif  // __native_client__
 #include "render/normalopenglgraphics.h"
 #include "render/safeopenglgraphics.h"
 
@@ -52,7 +52,7 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 int OpenGLImageHelper::mTextureType = 0;
 int OpenGLImageHelper::mInternalTextureType = GL_RGBA8;
@@ -163,10 +163,11 @@ SDL_Surface *OpenGLImageHelper::convertSurfaceNormalize(SDL_Surface *tmpImage,
 
 #ifdef USE_SDL2
     SDL_SetSurfaceAlphaMod(tmpImage, SDL_ALPHA_OPAQUE);
-#else
+#else  // USE_SDL2
+
     // Make sure the alpha channel is not used, but copied to destination
     SDL_SetAlpha(tmpImage, 0, SDL_ALPHA_OPAQUE);
-#endif
+#endif  // USE_SDL2
 
     // Determine 32-bit masks based on byte order
     uint32_t rmask, gmask, bmask, amask;
@@ -175,12 +176,13 @@ SDL_Surface *OpenGLImageHelper::convertSurfaceNormalize(SDL_Surface *tmpImage,
     gmask = 0x00ff0000;
     bmask = 0x0000ff00;
     amask = 0x000000ff;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     rmask = 0x000000ff;
     gmask = 0x0000ff00;
     bmask = 0x00ff0000;
     amask = 0xff000000;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     if (tmpImage->format->BitsPerPixel != 32
         || realWidth != width || realHeight != height
@@ -191,7 +193,8 @@ SDL_Surface *OpenGLImageHelper::convertSurfaceNormalize(SDL_Surface *tmpImage,
         SDL_Surface *oldImage = tmpImage;
 #ifdef USE_SDL2
         SDL_SetSurfaceBlendMode(oldImage, SDL_BLENDMODE_NONE);
-#endif
+#endif  // USE_SDL2
+
         tmpImage = MSDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
             32, rmask, gmask, bmask, amask);
 
@@ -213,10 +216,11 @@ SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
 
 #ifdef USE_SDL2
     SDL_SetSurfaceAlphaMod(tmpImage, SDL_ALPHA_OPAQUE);
-#else
+#else  // USE_SDL2
+
     // Make sure the alpha channel is not used, but copied to destination
     SDL_SetAlpha(tmpImage, 0, SDL_ALPHA_OPAQUE);
-#endif
+#endif  // USE_SDL2
 
     // Determine 32-bit masks based on byte order
     uint32_t rmask, gmask, bmask, amask;
@@ -225,12 +229,13 @@ SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
     gmask = 0x00ff0000;
     bmask = 0x0000ff00;
     amask = 0x000000ff;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     rmask = 0x000000ff;
     gmask = 0x0000ff00;
     bmask = 0x00ff0000;
     amask = 0xff000000;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     if (tmpImage->format->BitsPerPixel != 32
         || rmask != tmpImage->format->Rmask
@@ -240,7 +245,8 @@ SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
         SDL_Surface *oldImage = tmpImage;
 #ifdef USE_SDL2
         SDL_SetSurfaceBlendMode(oldImage, SDL_BLENDMODE_NONE);
-#endif
+#endif  // USE_SDL2
+
         tmpImage = MSDL_CreateRGBSurface(SDL_SWSURFACE, width, height,
             32, rmask, gmask, bmask, amask);
 
@@ -278,7 +284,8 @@ void OpenGLImageHelper::bindTexture(const GLuint texture)
         case RENDER_GLES2_OPENGL:
             MobileOpenGL2Graphics::bindTexture(mTextureType, texture);
             break;
-#else
+#else  // ANDROID
+
         case RENDER_NORMAL_OPENGL:
             NormalOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
@@ -294,7 +301,8 @@ void OpenGLImageHelper::bindTexture(const GLuint texture)
         case RENDER_GLES2_OPENGL:
             MobileOpenGL2Graphics::bindTexture(mTextureType, texture);
             break;
-#endif
+#endif  // ANDROID
+
         case RENDER_SOFTWARE:
         case RENDER_SDL2_DEFAULT:
         case RENDER_NULL:
@@ -356,7 +364,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     }
 #if !defined(ANDROID) && !defined(__native_client__)
     mglTexParameteri(mTextureType, GL_TEXTURE_MAX_LEVEL, 0);
-#endif
+#endif  // !defined(ANDROID) && !defined(__native_client__)
 
     mglTexImage2D(mTextureType, 0, mInternalTextureType,
         tmpImage->w, tmpImage->h,
@@ -371,7 +379,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         mglLabelObject(GL_TEXTURE, texture, strlen(text), text);
     }
 */
-#endif
+#endif  // DEBUG_OPENGL
 
 /*
     GLint compressed;
@@ -385,7 +393,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
 
 #ifdef DEBUG_OPENGL_LEAKS
     textures_count ++;
-#endif
+#endif  // DEBUG_OPENGL_LEAKS
 
     if (SDL_MUSTLOCK(tmpImage))
         SDL_UnlockSurface(tmpImage);
@@ -428,12 +436,13 @@ SDL_Surface *OpenGLImageHelper::create32BitSurface(int width,
     const int gmask = 0x00ff0000;
     const int bmask = 0x0000ff00;
     const int amask = 0x000000ff;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     const int rmask = 0x000000ff;
     const int gmask = 0x0000ff00;
     const int bmask = 0x00ff0000;
     const int amask = 0xff000000;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     width = powerOfTwo(width);
     height = powerOfTwo(height);
@@ -503,4 +512,4 @@ void OpenGLImageHelper::copySurfaceToImage(const Image *const image,
         MSDL_FreeSurface(surface);
 }
 
-#endif
+#endif  // USE_OPENGL

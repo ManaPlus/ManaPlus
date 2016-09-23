@@ -67,7 +67,8 @@ namespace XML
 #ifdef USE_FUZZER
         if (Fuzzer::conditionTerminate(filename.c_str()))
             return;
-#endif
+#endif  // USE_FUZZER
+
         BLOCK_START("XML::Document::Document")
         int size = 0;
         char *data = nullptr;

@@ -71,10 +71,11 @@ class MapDebugTab final : public DebugTab
         time_t mUpdateTime;
 #ifdef DEBUG_DRAW_CALLS
         Label *mDrawCallsLabel A_NONNULLPOINTER;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 #ifdef DEBUG_BIND_TEXTURE
         Label *mBindsLabel A_NONNULLPOINTER;
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
         Label *mFPSLabel A_NONNULLPOINTER;
         Label *mLPSLabel A_NONNULLPOINTER;
         std::string mFPSText;

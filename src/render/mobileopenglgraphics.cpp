@@ -27,7 +27,7 @@
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"
-#endif
+#endif  // __native_client__
 
 #include "render/vertexes/imagecollection.h"
 
@@ -70,7 +70,7 @@ GLuint MobileOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int MobileOpenGLGraphics::mDrawCalls = 0;
 unsigned int MobileOpenGLGraphics::mLastDrawCalls = 0;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 
 MobileOpenGLGraphics::MobileOpenGLGraphics() :
     mFloatTexArray(nullptr),
@@ -89,7 +89,7 @@ MobileOpenGLGraphics::MobileOpenGLGraphics() :
 #ifdef DEBUG_BIND_TEXTURE
     mOldTexture(),
     mOldTextureId(0),
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     mFbo()
 {
     mOpenGL = RENDER_GLES_OPENGL;
@@ -205,7 +205,7 @@ static inline void drawQuad(const Image *restrict const image,
 
 #ifdef DEBUG_DRAW_CALLS
         MobileOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
         mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
 }
@@ -258,7 +258,7 @@ static inline void drawRescaledQuad(const Image *restrict const image,
 
 #ifdef DEBUG_DRAW_CALLS
         MobileOpenGLGraphics::mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
         mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
 }
@@ -279,7 +279,7 @@ void MobileOpenGLGraphics::drawImageInline(const Image *restrict const image,
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
@@ -415,7 +415,7 @@ void MobileOpenGLGraphics::completeCache() restrict2
     setColorAlpha(mAlphaCached);
 #ifdef DEBUG_BIND_TEXTURE
 //    debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, mImageCached);
     setTexturingAndBlending(true);
 
@@ -445,7 +445,7 @@ void MobileOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
@@ -487,7 +487,7 @@ void MobileOpenGLGraphics::drawPatternInline(const Image *restrict const image,
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -552,7 +552,7 @@ void MobileOpenGLGraphics::drawRescaledPattern(const Image *
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -745,7 +745,7 @@ void MobileOpenGLGraphics::drawTileCollection(const ImageCollection *
         setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
         debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
         bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
         setTexturingAndBlending(true);
         drawVertexes(vert->ogl);
@@ -848,7 +848,7 @@ void MobileOpenGLGraphics::drawTileVertexes(const ImageVertexes *
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
     drawVertexes(vert->ogl);
@@ -888,16 +888,18 @@ void MobileOpenGLGraphics::updateScreen() restrict2
 #ifdef DEBUG_DRAW_CALLS
     mLastDrawCalls = mDrawCalls;
     mDrawCalls = 0;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 #ifdef USE_SDL2
     SDL_GL_SwapWindow(mWindow);
-#else
+#else  // USE_SDL2
+
     SDL_GL_SwapBuffers();
-#endif
+#endif  // USE_SDL2
 #ifdef DEBUG_OPENGL
     if (isGLNotNull(mglFrameTerminator))
         mglFrameTerminator();
-#endif
+#endif  // DEBUG_OPENGL
+
     BLOCK_END("Graphics::updateScreen")
 }
 
@@ -913,11 +915,12 @@ void MobileOpenGLGraphics::beginDraw() restrict2
     glOrthof(0.0, static_cast<float>(mRect.w),
         static_cast<float>(mRect.h),
         0.0, -1.0, 1.0);
-#else
+#else  // ANDROID
+
     glOrtho(0.0, static_cast<double>(mRect.w),
         static_cast<double>(mRect.h),
         0.0, -1.0, 1.0);
-#endif
+#endif  // ANDROID
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -937,7 +940,7 @@ void MobileOpenGLGraphics::beginDraw() restrict2
     mglHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     mglHint(GL_POINT_SMOOTH_HINT, GL_FASTEST);
     mglHint(GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
-#endif
+#endif  // ANDROID
 
     pushClipArea(Rect(0, 0, mRect.w, mRect.h));
 }
@@ -1006,20 +1009,21 @@ void MobileOpenGLGraphics::popClipArea() restrict2
 
 #ifdef ANDROID
 void MobileOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED) restrict2
-#else
+#else  // ANDROID
 void MobileOpenGLGraphics::drawPoint(int x, int y) restrict2
-#endif
+#endif  // ANDROID
 {
     setTexturingAndBlending(false);
     restoreColor();
 
 #ifdef ANDROID
     // TODO need fix
-#else
+#else  // ANDROID
+
     glBegin(GL_POINTS);
     glVertex2i(x, y);
     glEnd();
-#endif
+#endif  // ANDROID
 }
 
 void MobileOpenGLGraphics::drawLine(int x1, int y1,
@@ -1113,7 +1117,8 @@ void MobileOpenGLGraphics::drawRectangle(const Rect &restrict rect,
         glVertexPointer(2, GL_SHORT, 0, &vert);
 #ifdef DEBUG_DRAW_CALLS
         mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
         mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
     else
@@ -1129,7 +1134,8 @@ void MobileOpenGLGraphics::drawRectangle(const Rect &restrict rect,
         glVertexPointer(2, GL_SHORT, 0, &vert);
 #ifdef DEBUG_DRAW_CALLS
         mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
         mglDrawArrays(GL_LINE_LOOP, 0, 4);
     }
     BLOCK_END("Graphics::drawRectangle")
@@ -1205,7 +1211,8 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(const int size) restrict2
 
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
@@ -1217,7 +1224,8 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfsCached(const int size)
 
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
@@ -1232,7 +1240,8 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(const GLshort *restrict
 
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
 }
 
@@ -1242,7 +1251,8 @@ inline void MobileOpenGLGraphics::drawLineArrays(const int size) restrict2
 
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
+
     mglDrawArrays(GL_LINES, 0, size / 2);
 }
 
@@ -1330,11 +1340,12 @@ void MobileOpenGLGraphics::debugBindTexture(const Image *restrict const image)
         mOldTexture = texture;
     }
 }
-#else
+#else  // DEBUG_BIND_TEXTURE
+
 void MobileOpenGLGraphics::debugBindTexture(const Image *restrict const
                                             image A_UNUSED) restrict2
 {
 }
-#endif
+#endif  // DEBUG_BIND_TEXTURE
 
 #endif  // defined(USE_OPENGL) && !defined(__native_client__)

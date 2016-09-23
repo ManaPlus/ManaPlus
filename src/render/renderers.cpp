@@ -29,12 +29,14 @@ static RenderType getDefault() noexcept2
 #ifdef USE_OPENGL
 #ifdef ANDROID
     return RENDER_GLES_OPENGL;
-#else
+#else  // ANDROID
+
     return RENDER_NORMAL_OPENGL;
-#endif
-#else
+#endif  // ANDROID
+#else  // USE_OPENGL
+
     return RENDER_SOFTWARE;
-#endif
+#endif  // USE_OPENGL
 }
 
 RenderType intToRenderType(const int mode) noexcept2

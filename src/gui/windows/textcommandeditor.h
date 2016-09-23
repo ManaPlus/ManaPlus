@@ -34,7 +34,8 @@ class IntTextField;
 class Label;
 #ifdef TMWA_SUPPORT
 class MagicSchoolModel;
-#endif
+#endif  // TMWA_SUPPORT
+
 class RadioButton;
 class TargetTypeModel;
 class TextCommand;
@@ -65,7 +66,7 @@ class TextCommandEditor final : public Window,
     private:
 #ifdef TMWA_SUPPORT
         void showControls(const Visible show);
-#endif
+#endif  // TMWA_SUPPORT
 
         void save();
 
@@ -73,12 +74,13 @@ class TextCommandEditor final : public Window,
 
 #ifdef TMWA_SUPPORT
         bool mIsMagicCommand;
-#endif
+#endif  // TMWA_SUPPORT
 
         TextCommand*  mCommand;
 #ifdef TMWA_SUPPORT
         RadioButton*  mIsMagic          A_NONNULLPOINTER;
-#endif
+#endif  // TMWA_SUPPORT
+
         RadioButton*  mIsOther          A_NONNULLPOINTER;
         Label*        mSymbolLabel      A_NONNULLPOINTER;
         TextField*    mSymbolTextField  A_NONNULLPOINTER;
@@ -102,7 +104,8 @@ class TextCommandEditor final : public Window,
         DropDown*     mSchoolDropDown   A_NONNULLPOINTER;
         Label*        mSchoolLvlLabel   A_NONNULLPOINTER;
         IntTextField* mSchoolLvlField   A_NONNULLPOINTER;
-#endif
+#endif  // TMWA_SUPPORT
+
         Button*       mCancelButton     A_NONNULLPOINTER;
         Button*       mSaveButton       A_NONNULLPOINTER;
         Button*       mDeleteButton     A_NONNULLPOINTER;

@@ -31,4 +31,4 @@
 
 MGLX_DEFINE
 
-#endif
+#endif  // defined(USE_OPENGL) && defined(USE_X11)

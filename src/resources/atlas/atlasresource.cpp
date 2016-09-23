@@ -88,4 +88,4 @@ int AtlasResource::calcMemoryChilds(const int level) const
     return sz;
 }
 
-#endif
+#endif  // USE_OPENGL

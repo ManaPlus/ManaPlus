@@ -39,14 +39,15 @@ class SubImage final : public Image
 #ifdef USE_SDL2
         SubImage(Image *const parent, SDL_Texture *const image,
                  const int x, const int y, const int width, const int height);
-#endif
+#endif  // USE_SDL2
+
         SubImage(Image *const parent, SDL_Surface *const image,
                  const int x, const int y, const int width, const int height);
 #ifdef USE_OPENGL
         SubImage(Image *const parent, const GLuint image,
                  const int x, const int y, const int width, const int height,
                  const int texWidth, const int textHeight);
-#endif
+#endif  // USE_OPENGL
 
         A_DELETE_COPY(SubImage)
 
@@ -72,7 +73,7 @@ class SubImage final : public Image
 
 #ifdef USE_OPENGL
         void decRef() override final;
-#endif
+#endif  // USE_OPENGL
 
         SDL_Rect mInternalBounds;
 

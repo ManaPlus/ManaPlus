@@ -32,9 +32,7 @@
 #include "debug.h"
 
 bool SDLImageHelper::mEnableAlphaCache = false;
-#ifdef USE_SDL2
 SDL_Renderer *SDLImageHelper::mRenderer = nullptr;
-#endif
 
 Image *SDLImageHelper::loadSurface(SDL_Surface *const tmpImage)
 {

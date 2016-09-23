@@ -197,7 +197,8 @@ void IPC::flush()
                 chatWindow->chatInput(*it);
             }
         }
-#endif
+#endif  // DYECMD
+
         mDelayedCommands.clear();
         SDL_mutexV(mMutex);
     }

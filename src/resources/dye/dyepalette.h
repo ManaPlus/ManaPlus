@@ -92,7 +92,7 @@ class DyePalette final
 
 #ifndef UNITTESTS
     private:
-#endif
+#endif  // UNITTESTS
         std::vector<DyeColor> mColors;
 };
 

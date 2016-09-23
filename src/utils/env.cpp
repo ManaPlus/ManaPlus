@@ -35,7 +35,7 @@ void updateEnv()
         setEnv("SDL_VIDEO_CENTERED", "1");
     else
         setEnv("SDL_VIDEO_CENTERED", "0");
-#endif
+#endif  // defined(WIN32) || defined(__APPLE__)
 
     if (config.getBoolValue("allowscreensaver"))
         setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "1");
@@ -60,7 +60,7 @@ void updateEnv()
         default:
             break;
     }
-#endif
+#endif  // WIN32
 }
 
 void setEnv(const char *const name, const char *const value)
@@ -70,9 +70,10 @@ void setEnv(const char *const name, const char *const value)
 #ifdef WIN32
     if (putenv(const_cast<char*>((std::string(name)
         + "=" + value).c_str())))
-#else
+#else  // WIN32
+
     if (setenv(name, value, 1))
-#endif
+#endif  // WIN32
     {
         logger->log("setenv failed: %s=%s", name, value);
     }

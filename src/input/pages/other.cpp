@@ -390,7 +390,7 @@ SetupActionData setupActionDataOther[] =
         InputAction::TEST_SDL_FONT,
         "",
     },
-#endif
+#endif  // defined USE_OPENGL && defined DEBUG_SDLFONT
     {
         // TRANSLATORS: input action name
         N_("Upload main config"),

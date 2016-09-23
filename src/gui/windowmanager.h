@@ -63,7 +63,7 @@ namespace WindowManager
 
 #ifndef USE_SDL2
     void updateScreenKeyboard(const int height);
-#endif
+#endif  // USE_SDL2
 
     void reloadWallpaper();
 

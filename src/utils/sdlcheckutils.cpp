@@ -46,7 +46,8 @@ static SDL_Surface *addSurface(const char *restrict const name,
 #ifdef DEBUG_SURFACE_ALLOCATION
     logger->log("add surface: %s %s:%u %p", name,
         file, line, static_cast<void*>(surface));
-#endif
+#endif  // DEBUG_SURFACE_ALLOCATION
+
     std::map<void*, SDLMemoryObject*>::iterator
         it = mSurfaces.find(surface);
     if (it != mSurfaces.end())
@@ -58,7 +59,8 @@ static SDL_Surface *addSurface(const char *restrict const name,
             logger->log("adding existing surface: %p, count:%d\n"
                 "was add %s\nwas deleted %s", surface, obj->mCnt,
                 obj->mAddFile.c_str(), obj->mRemoveFile.c_str());
-#endif
+#endif  // DEBUG_SURFACE_ALLOCATION
+
             obj->mCnt ++;
         }
     }
@@ -76,7 +78,8 @@ static void deleteSurface(const char *restrict const name A_UNUSED,
 {
 #ifdef DEBUG_SURFACE_ALLOCATION
     logger->log("delete surface: %s %s:%u %p", name, file, line, surface);
-#endif
+#endif  // DEBUG_SURFACE_ALLOCATION
+
     std::map<void*, SDLMemoryObject*>::iterator
         it = mSurfaces.find(surface);
     if (it == mSurfaces.end())
@@ -94,7 +97,8 @@ static void deleteSurface(const char *restrict const name A_UNUSED,
             logger->log("debug deleting surface: %p, count:%d\n"
                 "was add %s\nwas deleted %s", surface, cnt,
                 obj->mAddFile.c_str(), obj->mRemoveFile.c_str());
-#endif
+#endif  // DEBUG_SURFACE_ALLOCATION
+
             if (cnt < 1)
             {   // surface was here but was deleted
                 logger->log("deleting already deleted surface: %p at %s:%d\n"

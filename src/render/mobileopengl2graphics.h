@@ -142,7 +142,8 @@ class MobileOpenGL2Graphics final : public Graphics
         GLuint mDrawTypeUniform;
 #ifndef __native_client__
         GLuint mVao;
-#endif
+#endif  // __native_client__
+
         GLuint mVbo;
         GLuint mVboBinded;
         GLuint mAttributesBinded;
@@ -151,7 +152,8 @@ class MobileOpenGL2Graphics final : public Graphics
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;
         unsigned mOldTextureId;
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
         FBOInfo mFbo;
 };
 #endif  // defined(USE_OPENGL) && !defined(ANDROID)

@@ -322,7 +322,7 @@ unsigned char *MessageIn::readBytes(int length, const char *const dstr)
     if (dstr)
         logger->dlog(dstr);
     logger->dlog("ReadBytes: " + str);
-#endif
+#endif  // ENABLEDEBUGLOG
 
     PacketCounters::incInBytes(length);
     return buf;

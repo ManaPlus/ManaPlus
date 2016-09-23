@@ -27,14 +27,14 @@
 #ifdef USE_SDL2
 #ifdef ANDROID
 #include <SDL_system.h>
-#endif
-#endif
+#endif  // ANDROID
+#endif  // USE_SDL2
 
 #include "debug.h"
 
 #ifndef __native_client__
 const int timeOut = 10;
-#endif
+#endif  // __native_client__
 
 #ifdef WIN32
 
@@ -220,7 +220,7 @@ bool execFile(const std::string &pathName, const std::string &name,
     return true;
 }
 
-#else
+#else  // OTHER
 
 int execFileWait(const std::string &pathName A_UNUSED,
                  const std::string &name A_UNUSED,
@@ -239,7 +239,7 @@ bool execFile(const std::string &pathName A_UNUSED,
     return false;
 }
 
-#endif
+#endif  // WIN32
 
 #ifdef WIN32
 bool openBrowser(std::string url)
@@ -252,14 +252,17 @@ bool openBrowser(std::string url)
 #include "utils/stringutils.h"
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
-#endif
+#endif  // USE_SDL2
+
 bool openBrowser(std::string url)
 {
 #ifdef USE_SDL2
     SDL_OpenBrowser(replaceAll(url, " ", "").c_str());
-#else
+#else  // USE_SDL2
+
     SDL_ANDROID_OpenBrowser(replaceAll(url, " ", "").c_str());
-#endif
+#endif  // USE_SDL2
+
     return true;
 }
 #elif defined __APPLE__
@@ -287,13 +290,13 @@ bool openBrowser(std::string url)
     naclPostMessage("open-browser", url);
     return true;
 }
-#else
+#else  // OTHER
 bool openBrowser(std::string url)
 {
     return false;
 }
 
-#endif
+#endif  // WIN32
 
 #ifdef WIN32
 void setPriority(const bool big)
@@ -304,8 +307,9 @@ void setPriority(const bool big)
     else
         SetPriorityClass(hCurrentProcess, BELOW_NORMAL_PRIORITY_CLASS);
 }
-#else
+#else  // WIN32
+
 void setPriority(const bool big A_UNUSED)
 {
 }
-#endif
+#endif  // WIN32

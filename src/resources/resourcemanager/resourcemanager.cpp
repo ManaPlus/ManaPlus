@@ -40,7 +40,7 @@
 
 #ifndef USE_OPENGL
 #include <SDL_image.h>
-#endif
+#endif  // USE_OPENGL
 #include <sstream>
 
 #include <sys/time.h>
@@ -71,7 +71,8 @@ ResourceManager::~ResourceManager()
 #ifdef DEBUG_LEAKS
 #ifdef UNITTESTS
     bool status(false);
-#endif
+#endif  // UNITTESTS
+
     while (iter != mResources.end())
     {
         if (iter->second)
@@ -83,7 +84,7 @@ ResourceManager::~ResourceManager()
                     toString(iter->second->getRefCount())).append(")"));
 #ifdef UNITTESTS
                 status = true;
-#endif
+#endif  // UNITTESTS
             }
         }
         ++iter;
@@ -92,10 +93,10 @@ ResourceManager::~ResourceManager()
 #ifdef UNITTESTS
     if (status)
         reportAlways("Found leaked resources.");
-#endif
+#endif  // UNITTESTS
 
     iter = mResources.begin();
-#endif
+#endif  // DEBUG_LEAKS
 
     while (iter != mResources.end())
     {
@@ -105,7 +106,8 @@ ResourceManager::~ResourceManager()
             ++iter;
             continue;
         }
-#endif
+#endif  // DEBUG_LEAKS
+
         if (dynamic_cast<SpriteDef*>(iter->second))
         {
             cleanUp(iter->second);
@@ -129,7 +131,8 @@ ResourceManager::~ResourceManager()
             ++iter;
             continue;
         }
-#endif
+#endif  // DEBUG_LEAKS
+
         if (dynamic_cast<ImageSet*>(iter->second))
         {
             cleanUp(iter->second);
@@ -153,7 +156,8 @@ ResourceManager::~ResourceManager()
             ++iter;
             continue;
         }
-#endif
+#endif  // DEBUG_LEAKS
+
         if (iter->second)
         {
             cleanUp(iter->second);
@@ -193,7 +197,7 @@ void ResourceManager::cleanUp(Resource *const res)
     delete res;
 #ifdef DEBUG_LEAKS
     cleanOrphans(true);
-#endif
+#endif  // DEBUG_LEAKS
 }
 
 void ResourceManager::cleanProtected()
@@ -286,9 +290,10 @@ void ResourceManager::logResource(const Resource *const res)
             src.append(" ").append(toString(count));
         logger->log("resource(%s) %s", res->mIdPath.c_str(), src.c_str());
     }
-#else
+#else  // USE_OPENGL
+
     logger->log("resource(%s)", res->mIdPath.c_str());
-#endif
+#endif  // USE_OPENGL
 }
 
 void ResourceManager::clearDeleted(const bool full)
@@ -420,7 +425,8 @@ bool ResourceManager::addResource(const std::string &idPath,
 #ifdef DEBUG_IMAGES
         logger->log("set name %p, %s", static_cast<void*>(resource),
             resource->mIdPath.c_str());
-#endif
+#endif  // DEBUG_IMAGES
+
         mResources[idPath] = resource;
         return true;
     }
@@ -494,14 +500,16 @@ Resource *ResourceManager::get(const std::string &idPath,
 #ifdef DEBUG_IMAGES
         logger->log("set name %p, %s", static_cast<void*>(resource),
             resource->mIdPath.c_str());
-#endif
+#endif  // DEBUG_IMAGES
+
         mResources[idPath] = resource;
     }
     else
     {
         reportAlways("Error loading image: %s", idPath.c_str());
     }
-#else
+#else  // DISABLE_RESOURCE_CACHING
+
     Resource *resource = fun(data, idPath);
 
     if (resource)
@@ -511,13 +519,13 @@ Resource *ResourceManager::get(const std::string &idPath,
 #ifdef DEBUG_IMAGES
         logger->log("set name %p, %s", static_cast<void*>(resource),
             resource->mIdPath.c_str());
-#endif
+#endif  // DEBUG_IMAGES
     }
     else
     {
         reportAlways("Error loading image: " + idPath);
     }
-#endif
+#endif  // DISABLE_RESOURCE_CACHING
 
     // Returns nullptr if the object could not be created.
     return resource;
@@ -565,9 +573,10 @@ void ResourceManager::release(Resource *const res)
 
     mOrphanedResources.insert(*resIter);
     mResources.erase(resIter);
-#else
+#else  // DISABLE_RESOURCE_CACHING
+
     delete res;
-#endif
+#endif  // DISABLE_RESOURCE_CACHING
 }
 
 void ResourceManager::moveToDeleted(Resource *const res)
@@ -648,7 +657,8 @@ void ResourceManager::deleteInstance()
 
 #ifdef UNITTESTS
         bool status(false);
-#endif
+#endif  // UNITTESTS
+
         while (iter != resourceManager->mResources.end())
         {
             const Resource *const res = iter->second;
@@ -661,7 +671,7 @@ void ResourceManager::deleteInstance()
                         res->getRefCount())).append(")"));
 #ifdef UNITTESTS
                     status = true;
-#endif
+#endif  // UNITTESTS
                 }
             }
             ++iter;
@@ -669,9 +679,10 @@ void ResourceManager::deleteInstance()
 #ifdef UNITTESTS
         if (status)
             reportAlways("Found leaked resources.");
-#endif
+#endif  // UNITTESTS
     }
-#endif
+#endif  // DUMP_LEAKED_RESOURCES
+
     delete2(resourceManager);
 }
 

@@ -89,5 +89,5 @@ class TestMain final
         Configuration mConfig;
 };
 
-#endif
+#endif  // USE_OPENGL
 #endif  // TEST_TESTMAIN_H

@@ -58,7 +58,7 @@
 
 #ifdef USE_OPENGL
 #include "render/renderers.h"
-#endif
+#endif  // USE_OPENGL
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
@@ -117,9 +117,9 @@ Map::Map(const std::string &name,
     mOpacity(config.getFloatValue("guialpha")),
 #ifdef USE_OPENGL
     mOpenGL(intToRenderType(config.getIntValue("opengl"))),
-#else
+#else  // USE_OPENGL
     mOpenGL(RENDER_SOFTWARE),
-#endif
+#endif  // USE_OPENGL
     mPvp(0),
     mTilesetsIndexed(false),
     mIndexedTilesets(nullptr),
@@ -149,9 +149,9 @@ Map::Map(const std::string &name,
         mOpenGL == RENDER_GLES_OPENGL ||
         mOpenGL == RENDER_GLES2_OPENGL ||
         mOpenGL == RENDER_MODERN_OPENGL),
-#else
+#else  // USE_OPENGL
     mCachedDraw(false),
-#endif
+#endif  // USE_OPENGL
     mCustom(false),
     mDrawOnlyFringe(false)
 {
@@ -388,7 +388,7 @@ void Map::draw(Graphics *restrict const graphics,
             updateFlag = 1;
         }
     }
-#endif
+#endif  // USE_OPENGL
 
     if (mDrawOnlyFringe)
     {
@@ -444,7 +444,7 @@ void Map::draw(Graphics *restrict const graphics,
                 (*it)->drawOGL(graphics);
         }
         else
-#endif
+#endif  // USE_OPENGL
         {
             FOR_EACH (Layers::iterator, it, mDrawUnderLayers)
             {
@@ -1442,7 +1442,8 @@ void Map::reduce() restrict2
 {
 #ifdef USE_SDL2
     return;
-#else
+#else  // USE_SDL2
+
     if (!mFringeLayer ||
         mOpenGL != RENDER_SOFTWARE ||
         !config.getBoolValue("enableMapReduce"))
@@ -1590,7 +1591,7 @@ void Map::reduce() restrict2
         }
     }
     logger->log("tiles reduced: %d", cnt);
-#endif
+#endif  // USE_SDL2
 }
 
 void Map::addHeights(const MapHeights *restrict const heights) restrict2

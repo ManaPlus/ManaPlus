@@ -26,14 +26,14 @@
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"
-#endif
+#endif  // DYECMD
 
 #include <algorithm>
 #include <sstream>
 
 #ifdef WIN32
 #include <sys/time.h>
-#endif
+#endif  // WIN32
 
 #include "utils/gettext.h"
 
@@ -1066,8 +1066,9 @@ void replaceItemLinks(std::string &msg)
         start2 = msg.find('[', start2 + 1);
     }
 }
-#else
+#else  // DYECMD
+
 void replaceItemLinks(std::string &msg A_UNUSED)
 {
 }
-#endif
+#endif  // DYECMD

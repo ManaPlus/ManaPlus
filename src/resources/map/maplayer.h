@@ -123,7 +123,7 @@ class MapLayer final: public MemoryCounter, public ConfigListener
                        int endY,
                        const int scrollX,
                        const int scrollY) restrict2 A_NONNULL(2);
-#endif
+#endif  // USE_OPENGL
 
         void updateSDL(const Graphics *restrict const graphics,
                        int startX,

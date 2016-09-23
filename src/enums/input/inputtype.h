@@ -26,10 +26,10 @@
 // hack to avoid conflicts with windows headers.
 #ifdef KEYBOARD
 #undef KEYBOARD
-#endif
+#endif  // KEYBOARD
 #ifdef MOUSE
 #undef MOUSE
-#endif
+#endif  // MOUSE
 
 enumStart(InputType)
 {

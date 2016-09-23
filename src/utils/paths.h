@@ -41,7 +41,7 @@ std::string getPicturesDir() A_WARN_UNUSED;
 
 #ifdef ANDROID
 std::string getSdStoragePath() A_WARN_UNUSED;
-#endif
+#endif  // ANDROID
 
 std::string getPackageDir() A_WARN_UNUSED;
 

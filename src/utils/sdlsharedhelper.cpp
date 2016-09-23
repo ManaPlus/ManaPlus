@@ -25,7 +25,7 @@
 #include <ppapi/cpp/instance.h>
 #include <ppapi/cpp/mouse_cursor.h>
 #include <ppapi_simple/ps.h>
-#endif
+#endif  // __native_client__
 
 #include <SDL_events.h>
 
@@ -43,7 +43,8 @@ void SDL::showCursor(const bool show)
     pp::MouseCursor::SetCursor(
         pp::InstanceHandle(PSGetInstanceId()),
         cursor);
-#endif
+#endif  // __native_client__
+
     if (show)
         SDL_ShowCursor(SDL_ENABLE);
     else

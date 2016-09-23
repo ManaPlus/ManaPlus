@@ -77,7 +77,8 @@ AnimatedSprite *AnimatedSprite::load(const std::string &restrict filename,
     AnimatedSprite *restrict const as = new AnimatedSprite(s);
 #ifdef DEBUG_ANIMATIONS
     as->setSpriteName(filename);
-#endif
+#endif  // DEBUG_ANIMATIONS
+
     as->play(SpriteAction::STAND);
     s->decRef();
     return as;
@@ -100,7 +101,8 @@ AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &restrict
     AnimatedSprite *restrict const as = new AnimatedSprite(nullptr);
 #ifdef DEBUG_ANIMATIONS
     as->setSpriteName(filename);
-#endif
+#endif  // DEBUG_ANIMATIONS
+
     as->play(SpriteAction::STAND);
     as->setDelayLoad(filename, variant);
     return as;
@@ -114,7 +116,8 @@ AnimatedSprite *AnimatedSprite::clone(const AnimatedSprite *restrict const
     AnimatedSprite *restrict const sprite = new AnimatedSprite(anim->mSprite);
 #ifdef DEBUG_ANIMATIONS
     sprite->setSpriteName(anim->getSpriteName());
-#endif
+#endif  // DEBUG_ANIMATIONS
+
     sprite->play(SpriteAction::STAND);
     return sprite;
 }

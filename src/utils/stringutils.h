@@ -103,10 +103,10 @@ std::string strprintf(const char *const format, ...) A_NONNULL(1) A_WARN_UNUSED
 #ifdef __GNUC__
 #ifdef __OpenBSD__
     __attribute__((__format__(printf, 1, 2)))
-#else
+#else  // __OpenBSD__
     __attribute__((__format__(gnu_printf, 1, 2)))
-#endif
-#endif
+#endif  // __OpenBSD__
+#endif  // __GNUC__
 ;
 
 /**

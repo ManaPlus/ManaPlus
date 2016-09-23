@@ -52,12 +52,12 @@
 #include "../config.h"
 #elif defined WIN32
 #include "winver.h"
-#else
+#else  // HAVE_CONFIG_H
 #ifdef PACKAGE_VERSION
 #undef PACKAGE_VERSION
-#endif
+#endif  // PACKAGE_VERSION
 #define PACKAGE_VERSION SMALL_VERSION;
-#endif
+#endif  // HAVE_CONFIG_H
 
 #if defined __APPLE__
 #define PACKAGE_OS "Mac OS X"
@@ -128,9 +128,9 @@
 #define PACKAGE_OS "Windows"
 #elif defined __native_client__
 #define PACKAGE_OS "nacl"
-#else
+#else  // OTHER
 #define PACKAGE_OS "Other"
-#endif
+#endif  // defined __APPLE__
 
 // define DEBUG_LEAKS 1
 // define DEBUG_CONFIG 1
@@ -141,16 +141,16 @@
 
 #ifdef USE_SDL2
 #define SDL_NAME "SDL2"
-#else
+#else  // USE_SDL2
 #define SDL_NAME "SDL1.2"
-#endif
-#if  defined(ENABLE_PUGIXML)
+#endif  // USE_SDL2
+#if defined(ENABLE_PUGIXML)
 #define XML_NAME "pugixml"
 #elif defined(ENABLE_LIBXML)
 #define XML_NAME "libxml2"
-#else
+#else  // defined(ENABLE_PUGIXML)
 #define XML_NAME "unknown"
-#endif
+#endif  // defined(ENABLE_PUGIXML)
 
 #define PACKAGE_EXTENDED_VERSION "ManaPlus (" PACKAGE_OS \
 "; %s; " SDL_NAME ", " XML_NAME "; 4144 v" SMALL_VERSION ")"
@@ -162,15 +162,15 @@
 #ifdef ANDROID
 #ifdef PKG_DATADIR
 #undef PKG_DATADIR
-#endif
+#endif  // PKG_DATADIR
 #ifdef LOCALEDIR
 #undef LOCALEDIR
-#endif
+#endif  // LOCALEDIR
 #define LOCALEDIR "locale"
-#endif
+#endif  // ANDROID
 
 #ifndef PKG_DATADIR
 #define PKG_DATADIR ""
-#endif
+#endif  // PKG_DATADIR
 
 #endif  // MAIN_H

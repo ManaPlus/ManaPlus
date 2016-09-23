@@ -25,17 +25,17 @@
 
 #ifdef ANDROID
 #include <GLES/gl.h>
-#else
+#else  // ANDROID
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
-#endif
+#endif  // USE_SDL2
 #include <SDL_opengl.h>
 // hack to hide warnings
 #undef GL_GLEXT_VERSION
 #undef GL_GLEXT_PROTOTYPES
-#endif
+#endif  // ANDROID
 
-#endif
+#endif  // USE_OPENGL
 
 #include "sdlshared.h"
 
@@ -50,7 +50,7 @@ class TestMain;
 struct FBOInfo;
 #ifdef USE_SDL2
 struct SDL_Renderer;
-#endif
+#endif  // USE_SDL2
 struct SDL_Window;
 
 class GraphicsManager final
@@ -76,7 +76,7 @@ class GraphicsManager final
 #ifdef USE_SDL2
         SDL_Renderer *createRenderer(SDL_Window *const window,
                                      const int flags);
-#endif
+#endif  // USE_SDL2
 
         bool getAllVideoModes(StringVect &modeList);
 
@@ -163,7 +163,7 @@ class GraphicsManager final
 
         static void resetCachedError()
         { mLastError = GL_NO_ERROR; }
-#endif
+#endif  // USE_OPENGL
 
     private:
         std::set<std::string> mExtensions;
@@ -179,7 +179,8 @@ class GraphicsManager final
         std::string mGlShaderVersionString;
 #ifdef USE_OPENGL
         static GLenum mLastError;
-#endif
+#endif  // USE_OPENGL
+
         int mMinor;
 
         int mMajor;
@@ -216,7 +217,8 @@ class GraphicsManager final
         bool mSupportModernOpengl;
 
         bool mGles;
-#endif
+#endif  // USE_OPENGL
+
         bool mUseAtlases;
 };
 

@@ -27,7 +27,7 @@
 ImageCollection::ImageCollection() :
 #ifdef USE_OPENGL
     currentGLImage(0),
-#endif
+#endif  // USE_OPENGL
     currentImage(nullptr),
     currentVert(nullptr),
     draws()
@@ -43,7 +43,7 @@ void ImageCollection::clear() restrict2
 {
 #ifdef USE_OPENGL
     currentGLImage = 0;
-#endif
+#endif  // USE_OPENGL
     currentImage = nullptr;
     currentVert = nullptr;
 

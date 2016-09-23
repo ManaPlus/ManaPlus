@@ -67,9 +67,9 @@ class ServerInfo final
             updateHosts(),
 #ifdef TMWA_SUPPORT
             port(6901),
-#else
+#else  // TMWA_SUPPORT
             port(6900),
-#endif
+#endif  // TMWA_SUPPORT
             version(),
             packetVersion(),
             save(false),

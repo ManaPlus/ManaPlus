@@ -42,7 +42,7 @@ struct SetupActionData final
     { }
 
     A_DELETE_COPY(SetupActionData)
-#endif
+#endif  // ADVGCC
 
     std::string name;
     const InputActionT actionId;

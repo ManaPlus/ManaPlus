@@ -99,12 +99,12 @@ static int FakeSDL_RenderCopy(SDL_Renderer *restrict const renderer,
     return ret;
 }
 
-#else
+#else  // DEBUG_SDL_SURFACES
 
 #define MSDL_RenderCopy(render, texture, src, dst) \
     SDL_RenderCopy(render, texture, src, dst)
 
-#endif
+#endif  // DEBUG_SDL_SURFACES
 
 #define setRenderDrawColor(mColor) \
     SDL_SetRenderDrawColor(mRenderer, \

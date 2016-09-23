@@ -53,7 +53,7 @@ class TextCommand final
                     const MagicSchoolT school = MagicSchool::SkillMagic,
                     const unsigned int schoolLvl = 0U,
                     const unsigned int mana = 0U);
-#endif
+#endif  // TMWA_SUPPORT
 
         /**
          * Constructor.
@@ -128,7 +128,7 @@ class TextCommand final
 
         void setCommandType(const TextCommandTypeT commandType)
         { mCommandType = commandType; }
-#endif
+#endif  // TMWA_SUPPORT
 
         void setCommand(const std::string &command)
         { mCommand = command; }
@@ -170,7 +170,8 @@ class TextCommand final
         unsigned mBaseLvl;
         unsigned mSchoolLvl;
         TextCommandTypeT mCommandType;
-#endif
+#endif  // TMWA_SUPPORT
+
         Image *mImage;
 };
 

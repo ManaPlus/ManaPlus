@@ -29,7 +29,7 @@
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"
-#endif
+#endif  // __native_client__
 
 #include "render/shaders/shaderprogram.h"
 #include "render/shaders/shadersmanager.h"
@@ -82,7 +82,7 @@ GLuint ModernOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS
 unsigned int ModernOpenGLGraphics::mDrawCalls = 0;
 unsigned int ModernOpenGLGraphics::mLastDrawCalls = 0;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 
 ModernOpenGLGraphics::ModernOpenGLGraphics() :
     mIntArray(nullptr),
@@ -109,7 +109,7 @@ ModernOpenGLGraphics::ModernOpenGLGraphics() :
 #ifdef DEBUG_BIND_TEXTURE
     mOldTexture(),
     mOldTextureId(0),
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     mFbo()
 {
     mOpenGL = RENDER_MODERN_OPENGL;
@@ -285,7 +285,7 @@ void ModernOpenGLGraphics::drawQuad(const int srcX,
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
@@ -313,7 +313,7 @@ void ModernOpenGLGraphics::drawRescaledQuad(const int srcX, const int srcY,
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
@@ -332,7 +332,7 @@ void ModernOpenGLGraphics::drawImageInline(const Image *restrict const image,
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     bindTexture(GL_TEXTURE_2D, image->mGLImage);
     setTexturingAndBlending(true);
     bindArrayBufferAndAttributes(mVbo);
@@ -370,7 +370,7 @@ void ModernOpenGLGraphics::testDraw() restrict2
 //        elements, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 //    glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
 }
@@ -415,7 +415,7 @@ void ModernOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
     bindArrayBufferAndAttributes(mVbo);
@@ -459,7 +459,8 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *restrict const image,
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -521,7 +522,8 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *
 
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -589,7 +591,7 @@ inline void ModernOpenGLGraphics::drawVertexes(const
         bindArrayBufferAndAttributes(*ivbo);
 #ifdef DEBUG_DRAW_CALLS
         mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 //        logger->log("draw from array: %u", *ivbo);
         mglDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
     }
@@ -708,7 +710,8 @@ void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
         setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
         debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
         bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
         drawVertexes(vert->ogl);
     }
@@ -803,7 +806,8 @@ void ModernOpenGLGraphics::drawTileVertexes(const ImageVertexes *
     setColorAlpha(image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
     debugBindTexture(image);
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
     bindArrayBufferAndAttributes(mVbo);
@@ -842,16 +846,16 @@ void ModernOpenGLGraphics::updateScreen() restrict2
 #ifdef DEBUG_DRAW_CALLS
     mLastDrawCalls = mDrawCalls;
     mDrawCalls = 0;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 #ifdef USE_SDL2
     SDL_GL_SwapWindow(mWindow);
-#else
+#else  // USE_SDL2
     SDL_GL_SwapBuffers();
-#endif
+#endif  // USE_SDL2
 #ifdef DEBUG_OPENGL
     if (isGLNotNull(mglFrameTerminator))
         mglFrameTerminator();
-#endif
+#endif  // DEBUG_OPENGL
     BLOCK_END("Graphics::updateScreen")
 }
 
@@ -908,7 +912,7 @@ void ModernOpenGLGraphics::drawPoint(int x, int y) restrict2
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_POINTS, 0, 1);
 }
 
@@ -928,7 +932,7 @@ void ModernOpenGLGraphics::drawLine(int x1, int y1,
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_LINES, 0, 2);
 }
 
@@ -954,7 +958,7 @@ void ModernOpenGLGraphics::drawRectangle(const Rect &restrict rect) restrict2
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_LINE_LOOP, 0, 4);
 }
 
@@ -980,7 +984,7 @@ void ModernOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
         vertices, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
@@ -1298,7 +1302,7 @@ void ModernOpenGLGraphics::drawTriangleArray(const int size) restrict2
         mIntArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
@@ -1310,7 +1314,7 @@ void ModernOpenGLGraphics::drawTriangleArray(const GLint *restrict const array,
         array, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLES, 0, size / 4);
 }
 
@@ -1321,7 +1325,7 @@ void ModernOpenGLGraphics::drawLineArrays(const int size)
         mIntArray, GL_STREAM_DRAW);
 #ifdef DEBUG_DRAW_CALLS
     mDrawCalls ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_LINES, 0, size / 4);
 }
 
@@ -1342,12 +1346,12 @@ void ModernOpenGLGraphics::debugBindTexture(const Image *restrict const image)
         mOldTexture = texture;
     }
 }
-#else
+#else  // DEBUG_BIND_TEXTURE
 void ModernOpenGLGraphics::debugBindTexture(const Image *restrict const
                                             image A_UNUSED) restrict2
 {
 }
-#endif
+#endif  // DEBUG_BIND_TEXTURE
 
 #endif  // defined(USE_OPENGL) && !defined(ANDROID) &&
         // !defined(__native_client__)

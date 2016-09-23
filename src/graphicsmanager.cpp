@@ -45,7 +45,6 @@
 #include "settings.h"
 
 #ifdef USE_OPENGL
-
 #include "render/mobileopengl2graphics.h"
 #include "render/mobileopenglgraphics.h"
 #include "render/modernopenglgraphics.h"
@@ -55,7 +54,8 @@
 #include "render/opengl/mgl.h"
 #include "render/opengl/mglcheck.h"
 #include "render/opengl/mglemu.h"
-#endif
+#endif  // USE_OPENGL
+
 #include "render/sdlgraphics.h"
 
 #ifdef USE_OPENGL
@@ -77,7 +77,7 @@
 #include "resources/sdl2softwareimagehelper.h"
 #include "resources/sdl2softwarescreenshothelper.h"
 #include "resources/surfaceimagehelper.h"
-#endif
+#endif  // USE_SDL2
 
 #include "utils/delete2.h"
 #include "utils/sdlhelper.h"
@@ -97,11 +97,11 @@
 #ifdef USE_OPENGL
 #ifndef GL_MAX_RENDERBUFFER_SIZE
 #define GL_MAX_RENDERBUFFER_SIZE 0x84E8
-#endif
+#endif  // GL_MAX_RENDERBUFFER_SIZE
 #define useCompression(name) \
     OpenGLImageHelper::setInternalTextureType(name); \
     logger->log("using " #name " texture compression");
-#endif
+#endif  // USE_OPENGL
 
 GraphicsManager graphicsManager;
 
@@ -123,7 +123,7 @@ const std::string densityNames[] =
 
 #ifdef USE_OPENGL
 GLenum GraphicsManager::mLastError(GL_NO_ERROR);
-#endif
+#endif  // USE_OPENGL
 
 GraphicsManager::GraphicsManager() :
     mExtensions(),
@@ -151,7 +151,7 @@ GraphicsManager::GraphicsManager() :
     mSupportDebug(0),
     mSupportModernOpengl(false),
     mGles(false),
-#endif
+#endif  // USE_OPENGL
     mUseAtlases(false)
 {
 }
@@ -161,7 +161,7 @@ GraphicsManager::~GraphicsManager()
 #ifdef USE_OPENGL
     if (isGLNotNull(mglGenSamplers) && mTextureSampler)
         mglDeleteSamplers(1, &mTextureSampler);
-#endif
+#endif  // USE_OPENGL
 }
 
 #ifdef USE_OPENGL
@@ -180,7 +180,8 @@ int GraphicsManager::detectGraphics()
     int compressTextures = 0;
 #if !defined(ANDROID) && !defined(__native_client__)
     mainGraphics = new NormalOpenGLGraphics;
-#endif
+#endif  // !defined(ANDROID) && !defined(__native_client__)
+
     SDL_Window *const window = createWindow(100, 100, 0,
         SDL_ANYFORMAT | SDL_OPENGL);
     mainGraphics->setWindow(window, 100, 100);
@@ -411,18 +412,19 @@ void GraphicsManager::createRenderers()
         default:
 #ifndef USE_SDL2
         case RENDER_SDL2_DEFAULT:
-#endif
-#ifdef USE_SDL2
-            imageHelper = new SDL2SoftwareImageHelper;
-            surfaceImageHelper = new SurfaceImageHelper;
-            mainGraphics = new SDL2SoftwareGraphics;
-            screenshortHelper = new Sdl2SoftwareScreenshotHelper;
-#else
             imageHelper = new SDLImageHelper;
             surfaceImageHelper = imageHelper;
             mainGraphics = new SDLGraphics;
             screenshortHelper = new SdlScreenshotHelper;
-#endif
+#else  // USE_SDL2
+
+            imageHelper = new SDL2SoftwareImageHelper;
+            surfaceImageHelper = new SurfaceImageHelper;
+            mainGraphics = new SDL2SoftwareGraphics;
+            screenshortHelper = new Sdl2SoftwareScreenshotHelper;
+
+#endif  // USE_SDL2
+
             break;
 #ifdef USE_SDL2
         case RENDER_SDL2_DEFAULT:
@@ -432,7 +434,7 @@ void GraphicsManager::createRenderers()
             mainGraphics->setRendererFlags(SDL_RENDERER_ACCELERATED);
             screenshortHelper = new SdlScreenshotHelper;
             break;
-#endif
+#endif  // USE_SDL2
     };
 #endif  // USE_OPENGL
 }
@@ -471,15 +473,18 @@ void GraphicsManager::setVideoMode()
 #elif defined __native_client__
 #ifdef USE_SDL2
     // not implimented
-#else
+#else  // USE_SDL2
+
     const SDL_VideoInfo* info = SDL_GetVideoInfo();
     int width = info->current_w;
     int height = info->current_h;
-#endif
-#else
+#endif  // USE_SDL2
+#else  // defined __native_client__
+
     int width = config.getIntValue("screenwidth");
     int height = config.getIntValue("screenheight");
-#endif
+#endif  // defined __native_client__
+
     const int scale = config.getIntValue("scale");
 
     // Try to set the desired video mode
@@ -524,12 +529,12 @@ void GraphicsManager::initGraphics()
         config.getBoolValue("alphaCache") && !openGLMode);
     ImageHelper::setEnableAlpha((config.getFloatValue("guialpha") != 1.0F ||
         openGLMode) && config.getBoolValue("enableGuiOpacity"));
-#else
+#else  // USE_OPENGL
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache"));
     ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0F &&
         config.getBoolValue("enableGuiOpacity"));
-#endif
+#endif  // USE_OPENGL
     createRenderers();
     detectPixelSize();
     setVideoMode();
@@ -592,7 +597,7 @@ void GraphicsManager::initGraphics()
         settings.textureSize = sizes[pos];
     logger->log("Detected max texture size: %u", settings.textureSize);
 #endif  // !defined(ANDROID) && !defined(__APPLE__)
-#endif
+#endif  // USE_OPENGL
 }
 
 #ifdef USE_SDL2
@@ -612,13 +617,14 @@ SDL_Renderer *GraphicsManager::createRenderer(SDL_Window *const window,
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     return renderer;
 }
-#else
+#else  // USE_SDL2
+
 SDL_Window *GraphicsManager::createWindow(const int w, const int h,
                                           const int bpp, const int flags)
 {
     return SDL_SetVideoMode(w, h, bpp, flags);
 }
-#endif
+#endif  // USE_SDL2
 
 #ifdef USE_OPENGL
 void GraphicsManager::updateExtensions()
@@ -727,7 +733,7 @@ void GraphicsManager::updatePlanformExtensions()
             }
             logger->log("width=%d", DisplayWidth(display, screenNum));
         }
-#endif
+#endif  // WIN32
     }
 }
 
@@ -827,7 +833,8 @@ void GraphicsManager::updateTextureFormat()
         OpenGLImageHelper::setInternalTextureType(GL_RGBA);
 #ifndef ANDROID
         SafeOpenGLImageHelper::setInternalTextureType(GL_RGBA);
-#endif
+#endif  // ANDROID
+
         logger->log1("using RGBA texture format");
     }
     else
@@ -835,7 +842,8 @@ void GraphicsManager::updateTextureFormat()
         OpenGLImageHelper::setInternalTextureType(4);
 #ifndef ANDROID
         SafeOpenGLImageHelper::setInternalTextureType(4);
-#endif
+#endif  // ANDROID
+
         logger->log1("using 4 texture format");
     }
 }
@@ -880,7 +888,7 @@ void GraphicsManager::setGLVersion()
         mMajor = 1;
         mMinor = 0;
     }
-#endif
+#endif  // ANDROID
 }
 
 void GraphicsManager::logVersion() const
@@ -985,7 +993,8 @@ void GraphicsManager::initOpenGLFunctions()
 {
 #ifdef __native_client__
     emulateFunction(glTextureSubImage2DEXT);
-#else
+#else  // __native_client__
+
     const bool is10 = checkGLVersion(1, 0);
     const bool is11 = checkGLVersion(1, 1);
     const bool is12 = checkGLVersion(1, 2);
@@ -1361,8 +1370,8 @@ void GraphicsManager::initOpenGLFunctions()
 
 #ifdef WIN32
     assignFunctionARB(wglGetExtensionsString);
-#endif
-#endif
+#endif  // WIN32
+#endif  // __native_client__
 }
 
 void GraphicsManager::updateLimits()
@@ -1370,7 +1379,8 @@ void GraphicsManager::updateLimits()
     GLint value = 0;
 #ifdef __native_client__
     mMaxVertices = 500;
-#else
+#else  // __native_client__
+
     glGetIntegerv(GL_MAX_ELEMENTS_VERTICES, &value);
     logger->log("GL_MAX_ELEMENTS_VERTICES: %d", value);
 
@@ -1387,7 +1397,7 @@ void GraphicsManager::updateLimits()
             "Overriding to 500");
         mMaxVertices = 500;
     }
-#endif
+#endif  // __native_client__
 
     value = 0;
     glGetIntegerv(GL_MAX_RENDERBUFFER_SIZE, &value);
@@ -1433,7 +1443,7 @@ void GraphicsManager::createTextureSampler()
     OpenGLImageHelper::setUseTextureSampler(mUseTextureSampler);
 #ifndef ANDROID
     SafeOpenGLImageHelper::setUseTextureSampler(false);
-#endif
+#endif  // ANDROID
 }
 
 GLenum GraphicsManager::getLastError()
@@ -1617,7 +1627,7 @@ void GraphicsManager::updateDebugLog() const
         mglDebugMessageCallback(&debugCallback, this);
     }
 }
-#endif
+#endif  // USE_OPENGL
 
 void GraphicsManager::detectPixelSize()
 {
@@ -1649,7 +1659,7 @@ void GraphicsManager::detectPixelSize()
             mWidthMM = DisplayWidthMM(display, screenNum);
             mHeightMM = DisplayHeightMM(display, screenNum);
         }
-#endif
+#endif  // WIN32
     }
 #if defined ANDROID
 #ifdef USE_SDL2
@@ -1671,11 +1681,13 @@ void GraphicsManager::detectPixelSize()
     mMaxHeight = atoi(getenv("DISPLAY_RESOLUTION_HEIGHT"));
     mWidthMM = atoi(getenv("DISPLAY_WIDTH_MM"));
     mHeightMM = atoi(getenv("DISPLAY_HEIGHT_MM"));
-#else
+#else  // USE_SDL2
+
     SDL_ANDROID_GetMetrics(&mMaxWidth, &mMaxHeight,
         &mWidthMM, &mHeightMM, &mDensity);
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // defined ANDROID
+
     logger->log("screen size in pixels: %ux%u", mMaxWidth, mMaxHeight);
     logger->log("screen size in millimeters: %ux%u", mWidthMM, mHeightMM);
     logger->log("actual screen density: " + getDensityString());

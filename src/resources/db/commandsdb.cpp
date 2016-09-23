@@ -117,7 +117,7 @@ void CommandsDB::loadXmlFile(const std::string &fileName,
             commandNode, "level2", 0, 0, 1000);
         const int mana = XML::getIntProperty(
             commandNode, "mana", 0, 0, 100000);
-#endif
+#endif  // TMWA_SUPPORT
 
         TextCommand *cmd = nullptr;
 #ifdef TMWA_SUPPORT
@@ -135,7 +135,7 @@ void CommandsDB::loadXmlFile(const std::string &fileName,
                 mana);
         }
         else
-#endif
+#endif  // TMWA_SUPPORT
         {
             cmd = new TextCommand(id,
                 name,

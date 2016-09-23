@@ -54,7 +54,7 @@ class BeingPopup final : public Popup
 
 #ifdef USE_PROFILER
         void logic();
-#endif
+#endif  // USE_PROFILER
 
     private:
         void addLabels(const int fontHeight);

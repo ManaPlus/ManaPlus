@@ -68,11 +68,11 @@
 #ifdef USE_OPENGL
 #include "configuration.h"
 #include "graphicsmanager.h"
-#endif
+#endif  // USE_OPENGL
 
 #if defined(USE_OPENGL) && defined(USE_X11)
 #include "render/openglx/mglxinit.h"
-#endif
+#endif  // defined(USE_OPENGL) && defined(USE_X11)
 
 #ifdef USE_OPENGL
 #include "resources/openglimagehelper.h"
@@ -102,8 +102,8 @@ RENDER_OPENGL_MGLDEFINES_H
 #ifdef USE_OPENGL
 #ifndef GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX
 #define GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX 0x9049
-#endif
-#endif
+#endif  // GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX
+#endif  // USE_OPENGL
 
 Graphics *mainGraphics A_NONNULLPOINTER = nullptr;
 
@@ -116,10 +116,10 @@ Graphics::Graphics() :
     mWindow(nullptr),
 #ifdef USE_SDL2
     mRenderer(nullptr),
-#endif
+#endif  // USE_SDL2
 #ifdef USE_OPENGL
     mGLContext(nullptr),
-#endif
+#endif  // USE_OPENGL
     mBpp(0),
     mAlpha(false),
     mFullscreen(false),
@@ -158,8 +158,8 @@ Graphics::~Graphics()
         SDL_GL_DeleteContext(mGLContext);
         mGLContext = nullptr;
     }
-#endif
-#endif
+#endif  // USE_OPENGL
+#endif  // USE_SDL2
 }
 
 void Graphics::setSync(const bool sync) restrict2
@@ -233,7 +233,8 @@ int Graphics::getOpenGLFlags() const restrict2
     int displayFlags = SDL_WINDOW_OPENGL;
     if (mFullscreen)
         displayFlags |= SDL_WINDOW_FULLSCREEN;
-#else
+#else  // USE_SDL2
+
     int displayFlags = SDL_ANYFORMAT | SDL_OPENGL;
 #endif  // USE_SDL2
 
@@ -248,14 +249,15 @@ int Graphics::getOpenGLFlags() const restrict2
 #if !defined(_WIN32)
         if (mEnableResize)
             displayFlags |= SDL_RESIZABLE;
-#endif
+#endif  // !defined(_WIN32)
     }
 
     if (mNoFrame)
         displayFlags |= SDL_NOFRAME;
 
     return displayFlags;
-#else
+#else  // USE_OPENGL
+
     return 0;
 #endif  // USE_OPENGL
 }
@@ -276,10 +278,10 @@ bool Graphics::setOpenGLMode() restrict2
 
 #if defined(USE_X11)
     Glx::initFunctions();
-#endif
+#endif  // defined(USE_X11)
 #ifdef __native_client__
     NaclGles::initGles();
-#endif
+#endif   // __native_client__
 
 #ifdef USE_SDL2
     int w1 = 0;
@@ -303,7 +305,7 @@ bool Graphics::setOpenGLMode() restrict2
         const GLint VBL = 1;
         CGLSetParameter(CGLGetCurrentContext(), kCGLCPSwapInterval, &VBL);
     }
-#endif
+#endif  // __APPLE__
 
     graphicsManager.setGLVersion();
     graphicsManager.logVersion();
@@ -344,7 +346,7 @@ bool Graphics::setOpenGLMode() restrict2
 #ifndef ANDROID
         SafeOpenGLImageHelper::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
         SafeOpenGLImageHelper::mTextureSize = texSize;
-#endif
+#endif  // ANDROID
     }
     else
     {
@@ -354,7 +356,8 @@ bool Graphics::setOpenGLMode() restrict2
 #ifndef ANDROID
         SafeOpenGLImageHelper::mTextureType = GL_TEXTURE_2D;
         SafeOpenGLImageHelper::mTextureSize = texSize;
-#endif
+#endif  // ANDROID
+
         logger->log("OpenGL texture size: %d pixels",
             OpenGLImageHelper::mTextureSize);
     }
@@ -369,14 +372,15 @@ int Graphics::getSoftwareFlags() const restrict2
 {
 #ifdef USE_SDL2
     int displayFlags = SDL_WINDOW_SHOWN;
-#else
+#else  // USE_SDL2
+
     int displayFlags = SDL_ANYFORMAT;
 
     if (mHWAccel)
         displayFlags |= SDL_HWSURFACE | SDL_DOUBLEBUF;
     else
         displayFlags |= SDL_SWSURFACE;
-#endif
+#endif  // USE_SDL2
 
     if (mFullscreen)
         displayFlags |= SDL_FULLSCREEN;
@@ -393,9 +397,9 @@ void Graphics::createGLContext(const bool custom A_UNUSED) restrict2
 {
 #ifdef USE_SDL2
     mGLContext = SDL_GL_CreateContext(mWindow);
-#endif
+#endif  // USE_SDL2
 }
-#endif
+#endif  // USE_OPENGL
 
 void Graphics::updateMemoryInfo() restrict2
 {
@@ -409,7 +413,7 @@ void Graphics::updateMemoryInfo() restrict2
             &mStartFreeMem);
         logger->log("free video memory: %d", mStartFreeMem);
     }
-#endif
+#endif  // USE_OPENGL
 }
 
 int Graphics::getMemoryUsage() const restrict2
@@ -425,7 +429,7 @@ int Graphics::getMemoryUsage() const restrict2
             &val);
         return mStartFreeMem - val;
     }
-#endif
+#endif  // USE_OPENGL
     return 0;
 }
 
@@ -445,7 +449,7 @@ void Graphics::dumpRendererInfo(const char *restrict const str,
     if (info.flags & SDL_RENDERER_TARGETTEXTURE)
         logger->log(" texture target");
 }
-#endif
+#endif  // USE_SDL2
 
 bool Graphics::videoInfo() restrict2
 {
@@ -467,7 +471,8 @@ bool Graphics::videoInfo() restrict2
                 dumpRendererInfo("renderer name: %s", info);
         }
     }
-#else
+#else  // USE_SDL2
+
     char videoDriverName[65];
     if (SDL_VideoDriverName(videoDriverName, 64))
         logger->log("Using video driver: %s", videoDriverName);
@@ -500,7 +505,7 @@ bool Graphics::videoInfo() restrict2
             ((vi->blit_sw_A) ? "yes" : "no"));
     logger->log("Accelerated color fills: %s",
             ((vi->blit_fill) ? "yes" : "no"));
-#endif
+#endif  // USE_SDL2
 
     return true;
 }
@@ -614,12 +619,12 @@ void Graphics::setWindowSize(const int width,
 {
     SDL_SetWindowSize(mWindow, width, height);
 }
-#else
+#else  // USE_SDL2
 void Graphics::setWindowSize(const int width A_UNUSED,
                              const int height A_UNUSED) restrict2
 {
 }
-#endif
+#endif  // USE_SDL2
 
 void Graphics::pushClipArea(const Rect &restrict area) restrict2
 {
@@ -713,10 +718,11 @@ void Graphics::setOpenGLFlags() restrict2
 #ifndef ANDROID
 #ifndef __MINGW32__
     glHint(GL_TEXTURE_COMPRESSION_HINT, GL_FASTEST);
-#endif
-#endif
+#endif  // __MINGW32__
+#endif  // ANDROID
+
     glHint(GL_TEXTURE_COMPRESSION_HINT_ARB, GL_FASTEST);
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
-#endif
+#endif  // USE_OPENGL

@@ -30,9 +30,9 @@ RENDER_OPENGL_MGL_H
     mglPushGroupMarker(sizeof(text), text);
 #define GLDEBUG_END() if (mglPopGroupMarker) \
     mglPopGroupMarker();
-#else
+#else  // defined(DEBUG_OPENGL) && defined(USE_OPENGL)
 #define GLDEBUG_START(text)
 #define GLDEBUG_END()
-#endif
+#endif  // defined(DEBUG_OPENGL) && defined(USE_OPENGL)
 
 #endif  // RENDER_OPENGL_OPENGLDEBUG_H

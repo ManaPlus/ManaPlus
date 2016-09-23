@@ -54,7 +54,7 @@
 #ifdef WIN32
 #include <windows.h>
 #define sleep(seconds) Sleep((seconds) * 1000)
-#endif
+#endif  // WIN32
 
 #include <sys/time.h>
 
@@ -501,7 +501,8 @@ int TestLauncher::testDyeSpeed()
         ((static_cast<long int>(time1.tv_sec) * 1000000000L
         + static_cast<long int>(time1.tv_nsec)) / 1);
     printf("time: %ld\n", diff);
-#endif
+#endif  // defined __linux__ || defined __linux
+
     return 0;
 }
 
@@ -689,4 +690,4 @@ int TestLauncher::calcFps(const timeval &start,
     return CAST_S32(static_cast<long>(calls) * 10000 / mtime);
 }
 
-#endif
+#endif  // USE_OPENGL

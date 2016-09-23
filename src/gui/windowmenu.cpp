@@ -89,9 +89,10 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
         _("Chat"), x, h, InputAction::WINDOW_CHAT,
 #ifdef ANDROID
         Visible_true);
-#else
+#else  // ANDROID
         Visible_false);
-#endif
+#endif  // ANDROID
+
     // TRANSLATORS: short button name for status window.
     addButton(N_("STA"),
         // TRANSLATORS: long button name for status window.
@@ -175,9 +176,10 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
         _("Debug"), x, h, InputAction::WINDOW_DEBUG,
 #ifdef ANDROID
         Visible_true);
-#else
+#else  // ANDROID
         Visible_false);
-#endif
+#endif  // ANDROID
+
     // TRANSLATORS: short button name for windows list menu.
     addButton(N_("WIN"),
         // TRANSLATORS: long button name for windows list menu.
@@ -471,4 +473,4 @@ void WindowMenu::logicChildren()
     BasicContainer::logicChildren();
     BLOCK_END("WindowMenu::logicChildren")
 }
-#endif
+#endif  // USE_PROFILER

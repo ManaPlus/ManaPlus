@@ -32,11 +32,11 @@
 
 #ifdef WIN32
 #include <sys/time.h>
-#endif
+#endif  // WIN32
 
 #ifdef __clang__
 #include <time.h>
-#endif
+#endif  // __clang__
 
 #include "debug.h"
 

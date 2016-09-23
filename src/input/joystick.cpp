@@ -198,7 +198,7 @@ void Joystick::logic()
             logger->log("axis 3 pos: %d", SDL_JoystickGetAxis(mJoystick, 3));
         if (SDL_JoystickGetAxis(mJoystick, 4))
             logger->log("axis 4 pos: %d", SDL_JoystickGetAxis(mJoystick, 4));
-#endif
+#endif  // DEBUG_JOYSTICK
 
         if (!mDirection && mHaveHats)
         {
@@ -224,7 +224,7 @@ void Joystick::logic()
 #ifdef DEBUG_JOYSTICK
             if (mActiveButtons[i])
                 logger->log("button: %d", i);
-#endif
+#endif  // DEBUG_JOYSTICK
         }
     }
     else

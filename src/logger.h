@@ -26,12 +26,12 @@
 #ifdef USE_SDL2
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch-default"
-#endif
+#endif  // USE_SDL2
 #include <SDL_stdinc.h>
 _SDL_stdinc_h
 #ifdef USE_SDL2
 #pragma GCC diagnostic pop
-#endif
+#endif  // USE_SDL2
 #include <SDL_mutex.h>
 
 #include <fstream>
@@ -50,12 +50,12 @@ _SDL_stdinc_h
     if (logger) \
         logger->dlog(str)
 #define IGNOREDEBUGLOG mIgnore = Net::isIgnorePacket(mId)
-#else
+#else  // ENABLEDEBUGLOG
 #define DEBUGLOG(str) {}
 #define DEBUGLOG2(str, comment) {}
 #define DEBUGLOGSTR(str)
 #define IGNOREDEBUGLOG {}
-#endif
+#endif  // ENABLEDEBUGLOG
 
 #define UNIMPLIMENTEDPACKET \
     logger->unimplimented(msg.getId())
@@ -178,7 +178,7 @@ class Logger final
         void dlog2(const std::string &str,
                    const int pos,
                    const char* const comment);
-#endif
+#endif  // ENABLEDEBUGLOG
 
         void setDebugLog(const bool n)
         { mDebugLog = n; }
@@ -193,7 +193,7 @@ class Logger final
         void error(const std::string &error_text)
 #ifndef ENABLE_CILKPLUS
         __attribute__ ((noreturn))
-#endif
+#endif  // ENABLE_CILKPLUS
         ;
 
         /**
@@ -203,7 +203,7 @@ class Logger final
         void safeError(const std::string &error_text)
 #ifndef ENABLE_CILKPLUS
         __attribute__ ((noreturn))
-#endif
+#endif  // ENABLE_CILKPLUS
         ;
 
         void unimplimented(const int id);

@@ -33,10 +33,11 @@ namespace
 #ifdef USE_SDL2
     SDL_TimerID mLogicCounterId(0);
     SDL_TimerID mSecondsCounterId(0);
-#else
+#else  // USE_SDL2
+
     SDL_TimerID mLogicCounterId(nullptr);
     SDL_TimerID mSecondsCounterId(nullptr);
-#endif
+#endif  // USE_SDL2
 }  // namespace
 
 /**

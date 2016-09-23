@@ -319,4 +319,4 @@ void BeingPopup::logic()
     logicChildren();
     BLOCK_END("BeingPopup::logic")
 }
-#endif
+#endif  // USE_PROFILER

@@ -316,9 +316,9 @@ static const InputActionData inputActionData
         addKey(SDLK_ESCAPE),
 #if defined(USE_SDL2) && defined(ANDROID)
         addKey(SDLK_AC_BACK),
-#else
+#else  // defined(USE_SDL2) && defined(ANDROID)
         emptyKey,
-#endif
+#endif  // defined(USE_SDL2) && defined(ANDROID)
         Input::GRP_DEFAULT,
         &Actions::quit,
         InputAction::NO_VALUE, 50,
@@ -2311,9 +2311,9 @@ static const InputActionData inputActionData
     {"keyIgnoreInput1",
 #ifdef USE_SDL2
         emptyKey,
-#else
+#else  // USE_SDL2
         addKey(SDLK_LSUPER),
-#endif
+#endif  // USE_SDL2
         emptyKey,
         Input::GRP_DEFAULT,
         &Actions::ignoreInput,
@@ -2325,9 +2325,9 @@ static const InputActionData inputActionData
     {"keyIgnoreInput2",
 #ifdef USE_SDL2
         emptyKey,
-#else
+#else  // USE_SDL2
         addKey(SDLK_RSUPER),
-#endif
+#endif  // USE_SDL2
         emptyKey,
         Input::GRP_DEFAULT,
         &Actions::ignoreInput,
@@ -2637,9 +2637,9 @@ static const InputActionData inputActionData
         addKey(SDLK_ESCAPE),
 #if defined(USE_SDL2) && defined(ANDROID)
         addKey(SDLK_AC_BACK),
-#else
+#else  // defined(USE_SDL2) && defined(ANDROID)
         emptyKey,
-#endif
+#endif  // defined(USE_SDL2) && defined(ANDROID)
         Input::GRP_GUICHAN,
         nullptr,
         InputAction::NO_VALUE, 50,
@@ -3503,16 +3503,16 @@ static const InputActionData inputActionData
         Input::GRP_DEFAULT,
 #if defined USE_OPENGL && defined DEBUG_SDLFONT
         &Actions::testSdlFont,
-#else
+#else  // defined USE_OPENGL && defined DEBUG_SDLFONT
         nullptr,
-#endif
+#endif  // defined USE_OPENGL && defined DEBUG_SDLFONT
         InputAction::NO_VALUE, 50,
         InputCondition::INGAME,
 #if defined USE_OPENGL && defined DEBUG_SDLFONT
         "testsdlfont",
-#else
+#else  // defined USE_OPENGL && defined DEBUG_SDLFONT
         "",
-#endif
+#endif  // defined USE_OPENGL && defined DEBUG_SDLFONT
         UseArgs_false,
         Protected_true},
     {"keyEnableHightlight",

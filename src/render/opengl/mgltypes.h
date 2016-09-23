@@ -27,14 +27,14 @@
 #include <GLES/gl.h>
 #include <GLES/glext.h>
 #define APIENTRY GL_APIENTRY
-#else
+#else  // ANDROID
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
-#endif
+#endif  // USE_SDL2
 #include <SDL_opengl.h>
 #ifdef __native_client__
 #include <GL/Regal.h>
-#else
+#else  // __native_client__
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #else  // defined(__APPLE__)
@@ -44,8 +44,8 @@
 #error missing include <GL/glext.h>
 #endif  //  __glext_h_
 #endif  // defined(__APPLE__)
-#endif
-#endif
+#endif  // __native_client__
+#endif  // ANDROID
 
 #include "render/opengl/mgldefines.h"
 RENDER_OPENGL_MGLDEFINES_H
@@ -142,7 +142,8 @@ typedef void (APIENTRY *glGetProgramInfoLog_t) (GLuint program,
 typedef void (APIENTRY *glBindAttribLocation_t) (GLuint program,
     GLuint index, const GLchar *name);
 typedef void (APIENTRY *glActiveTexture_t) (GLenum texture);
-#endif
+#endif  // __native_client__
+
 typedef GLint (APIENTRY *glGetAttribLocation_t) (GLuint program,
     const GLchar *name);
 typedef void (APIENTRY *glUniform3f_t) (GLint location,
@@ -215,9 +216,9 @@ typedef void (APIENTRY *glDebugMessageCallback_t) (GLDEBUGPROC_t callback,
 
 #ifdef WIN32
 typedef const char* (APIENTRY * wglGetExtensionsString_t) (HDC hdc);
-#else
+#else  // WIN32
 #define CALLBACK
-#endif
+#endif  // WIN32
 
 #endif  // USE_OPENGL
 #endif  // RENDER_OPENGL_MGLTYPES_H

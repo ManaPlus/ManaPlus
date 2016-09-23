@@ -26,7 +26,7 @@
 #ifdef DYECMD
 #include "dyetool/client.h"
 
-#else
+#else  // DYECMD
 
 #include "enums/state.h"
 
@@ -112,9 +112,10 @@ class Client final : public ConfigListener,
 
 #ifdef ANDROID
         static void logVars();
-#else
+#else  // ANDROID
+
         static void logVars() A_CONST;
-#endif
+#endif  // ANDROID
 
         void stateConnectGame1();
 
@@ -139,7 +140,7 @@ class Client final : public ConfigListener,
         Button *mPerfomanceButton;
 #ifdef ANDROID
         Button *mCloseButton;
-#endif
+#endif  // ANDROID
 
         StateT mState;
         StateT mOldState;

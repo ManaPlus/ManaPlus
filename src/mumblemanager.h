@@ -15,7 +15,7 @@
 #include <string>
 #if defined (__FreeBSD__) || (defined __DragonFly__)
 #include <sys/stat.h>
-#endif
+#endif  // defined (__FreeBSD__) || (defined __DragonFly__)
 
 #include "localconsts.h"
 

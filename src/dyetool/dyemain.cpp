@@ -81,9 +81,10 @@ int main(int argc, char **argv)
 
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;
-#else
+#else  // USE_SDL2
+
     imageHelper = new SDLImageHelper;
-#endif
+#endif  // USE_SDL2
 
     ResourceManager::init();
     resourceManager->setWriteDir(".");

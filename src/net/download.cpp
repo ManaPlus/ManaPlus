@@ -38,7 +38,7 @@
 
 #if defined __native_client__
 #include "utils/files.h"
-#endif
+#endif  // defined __native_client__
 
 #include <sstream>
 
@@ -530,7 +530,8 @@ void Download::addProxy(CURL *const curl)
         case 3:  // HTTP 1.0
 #if CURLVERSION_ATLEAST(7, 19, 4)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP_1_0);
-#endif
+#endif  // CURLVERSION_ATLEAST(7, 19, 4)
+
             break;
         case 4:  // SOCKS4
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
@@ -538,20 +539,24 @@ void Download::addProxy(CURL *const curl)
         case 5:  // SOCKS4A
 #if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4A);
-#else
+#else  // CURLVERSION_ATLEAST(7, 18, 0)
+
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
-#endif
+#endif  // CURLVERSION_ATLEAST(7, 18, 0)
+
             break;
         case 6:  // SOCKS5
 #if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
-#endif
+#endif  // CURLVERSION_ATLEAST(7, 18, 0)
+
             break;
         case 7:  // SOCKS5 hostname
 #if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE,
                 CURLPROXY_SOCKS5_HOSTNAME);
-#endif
+#endif  // CURLVERSION_ATLEAST(7, 18, 0)
+
             break;
     }
 }
@@ -563,13 +568,13 @@ void Download::secureCurl(CURL *const curl)
         CURLPROTO_HTTP | CURLPROTO_HTTPS);
     curl_easy_setopt(curl, CURLOPT_REDIR_PROTOCOLS,
         CURLPROTO_HTTP | CURLPROTO_HTTPS);
-#endif
+#endif  // CURLVERSION_ATLEAST(7, 19, 4)
 #if CURLVERSION_ATLEAST(7, 21, 0)
     curl_easy_setopt(curl, CURLOPT_WILDCARDMATCH, 0);
-#endif
+#endif  // CURLVERSION_ATLEAST(7, 21, 0)
 #if CURLVERSION_ATLEAST(7, 15, 1)
     curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 3);
-#endif
+#endif  // CURLVERSION_ATLEAST(7, 15, 1)
 }
 
 #if CURLVERSION_ATLEAST(7, 21, 7)
@@ -577,11 +582,12 @@ void Download::addHeaders(CURL *const curl)
 {
     curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, "");
 }
-#else
+#else  //  CURLVERSION_ATLEAST(7, 21, 7)
+
 void Download::addHeaders(CURL *const curl A_UNUSED)
 {
 }
-#endif
+#endif  //  CURLVERSION_ATLEAST(7, 21, 7)
 
 void Download::prepareForm(curl_httppost **form, const std::string &fileName)
 {

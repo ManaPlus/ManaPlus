@@ -101,4 +101,4 @@ void WindowContainer::draw(Graphics *const graphics)
     Container::draw(graphics);
     BLOCK_END("WindowContainer::draw")
 }
-#endif
+#endif  // USE_PROFILER

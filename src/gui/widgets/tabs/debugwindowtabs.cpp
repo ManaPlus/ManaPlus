@@ -36,7 +36,7 @@
 
 #ifdef USE_OPENGL
 #include "resources/imagehelper.h"
-#endif
+#endif  // USE_OPENGL
 
 #include "resources/map/map.h"
 
@@ -75,12 +75,12 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     mDrawCallsLabel(new Label(this, strprintf("%s %s",
         // TRANSLATORS: debug window label
         _("Draw calls:"), "?"))),
-#endif
+#endif  // DEBUG_DRAW_CALLS
 #ifdef DEBUG_BIND_TEXTURE
     mBindsLabel(new Label(this, strprintf("%s %s",
         // TRANSLATORS: debug window label
         _("Texture binds:"), "?"))),
-#endif
+#endif  // DEBUG_BIND_TEXTURE
     // TRANSLATORS: debug window label, frames per second
     mFPSLabel(new Label(this, strprintf(_("%d FPS"), 0))),
     // TRANSLATORS: debug window label, logic per second
@@ -125,10 +125,11 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
             mFPSText = _("%d FPS (SDL2 default)");
             break;
     };
-#else
+#else  // USE_OPENGL
+
     // TRANSLATORS: debug window label
     mFPSText = _("%d FPS (Software)");
-#endif
+#endif  // USE_OPENGL
 
     place(0, 0, mFPSLabel, 2);
     place(0, 1, mLPSLabel, 2);
@@ -144,22 +145,24 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 #if defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS) \
     || defined(DEBUG_BIND_TEXTURE)
     int n = 10;
-#endif
+#endif  // defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS)
+        // || defined(DEBUG_BIND_TEXTURE)
 #ifdef DEBUG_OPENGL_LEAKS
     mTexturesLabel = new Label(this, strprintf("%s %s",
         // TRANSLATORS: debug window label
         _("Textures count:"), "?"));
     place(0, n, mTexturesLabel, 2);
     n ++;
-#endif
+#endif  // DEBUG_OPENGL_LEAKS
 #ifdef DEBUG_DRAW_CALLS
     place(0, n, mDrawCallsLabel, 2);
     n ++;
-#endif
+#endif  // DEBUG_DRAW_CALLS
 #ifdef DEBUG_BIND_TEXTURE
     place(0, n, mBindsLabel, 2);
-#endif
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+#endif  // USE_OPENGL
+
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
     setDimension(Rect(0, 0, 600, 300));
@@ -221,7 +224,7 @@ void MapDebugTab::logic()
             mTexturesLabel->setCaption(strprintf("%s %d",
                 // TRANSLATORS: debug window label
                 _("Textures count:"), textures_count));
-#endif
+#endif  // DEBUG_OPENGL_LEAKS
 #ifdef DEBUG_DRAW_CALLS
             if (mainGraphics)
             {
@@ -229,7 +232,7 @@ void MapDebugTab::logic()
                     // TRANSLATORS: debug window label
                     _("Draw calls:"), mainGraphics->getDrawCalls()));
             }
-#endif
+#endif  // DEBUG_DRAW_CALLS
 #ifdef DEBUG_BIND_TEXTURE
             if (mainGraphics)
             {
@@ -237,8 +240,8 @@ void MapDebugTab::logic()
                     // TRANSLATORS: debug window label
                     _("Texture binds:"), mainGraphics->getBinds()));
             }
-#endif
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+#endif  // USE_OPENGL
         }
     }
     else

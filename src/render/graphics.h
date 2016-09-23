@@ -86,10 +86,10 @@
 #ifdef USE_SDL2
 #define RectPos int32_t
 #define RectSize int32_t
-#else
+#else  // USE_SDL2
 #define RectPos int16_t
 #define RectSize uint16_t
-#endif
+#endif  // USE_SDL2
 
 class Image;
 class ImageCollection;
@@ -106,7 +106,8 @@ class Graphics notfinal
     public:
 #ifdef USE_OPENGL
         friend class OpenGLScreenshotHelper;
-#endif
+#endif  // USE_SDL2
+
         friend class SdlScreenshotHelper;
 
         A_DELETE_COPY(Graphics)
@@ -250,9 +251,9 @@ class Graphics notfinal
         void setWindowSize(const int width,
 #ifdef USE_SDL2
             const int height) restrict2;
-#else
+#else  // USE_SDL2
             const int height) restrict2 A_CONST;
-#endif
+#endif  // USE_SDL2
 
         /**
          * Returns the width of the screen.
@@ -321,18 +322,18 @@ class Graphics notfinal
 #ifdef DEBUG_DRAW_CALLS
         virtual unsigned int getDrawCalls() const restrict2
         { return 0; }
-#endif
+#endif  // DEBUG_DRAW_CALLS
 #ifdef DEBUG_BIND_TEXTURE
         virtual unsigned int getBinds() const restrict2
         { return 0; }
-#endif
+#endif  // DEBUG_BIND_TEXTURE
 #ifdef USE_SDL2
         void dumpRendererInfo(const char *restrict const str,
                               const SDL_RendererInfo &restrict info) restrict2;
 
         virtual void setRendererFlags(const uint32_t flags A_UNUSED) restrict2
         { }
-#endif
+#endif  // USE_SDL2
 
         /**
          * Blits an image onto the screen.
@@ -405,10 +406,11 @@ class Graphics notfinal
 #ifdef USE_OPENGL
 #ifdef USE_SDL2
         virtual void createGLContext(const bool custom) restrict2;
-#else
+#else  // USE_SDL2
+
         virtual void createGLContext(const bool custom) restrict2 A_CONST;
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // USE_OPENGL
 
         /**
          * Draws a single point/pixel.
@@ -503,7 +505,8 @@ class Graphics notfinal
 
 #ifdef USE_OPENGL
         void setOpenGLFlags() restrict2;
-#endif
+#endif  // USE_OPENGL
+
         /**
          * Holds the clip area stack.
          */

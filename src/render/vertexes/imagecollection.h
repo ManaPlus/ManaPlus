@@ -40,7 +40,8 @@ class ImageCollection final
 
 #ifdef USE_OPENGL
         GLuint currentGLImage;
-#endif
+#endif  // USE_OPENGL
+
         const Image *restrict currentImage;
 
         ImageVertexes *restrict currentVert;

@@ -27,7 +27,7 @@
 
 #ifdef ANDROID
 #include "utils/paths.h"
-#endif
+#endif  // ANDROID
 
 #include "debug.h"
 
@@ -43,11 +43,12 @@ namespace PhysFs
     void init(const char *const name A_UNUSED)
     {
         if (!PHYSFS_init((getRealPath(".").append("/fakebinary")).c_str()))
-#else
+#else  // defined(__native_client__)
+
     void init(const char *const name)
     {
         if (!PHYSFS_init(name))
-#endif
+#endif  // defined(__native_client__)
         {
             std::cout << "Error while initializing PhysFS: "
                 << PHYSFS_getLastError() << std::endl;

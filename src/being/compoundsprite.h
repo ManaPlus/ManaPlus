@@ -130,7 +130,8 @@ class CompoundSprite notfinal : public Sprite
         int mLastTime;
 #ifndef USE_SDL2
         mutable int mNextRedrawTime;
-#endif
+#endif  // USE_SDL2
+
         static bool mEnableDelay;
         mutable bool mNeedsRedraw;
         bool mEnableAlphaFix;

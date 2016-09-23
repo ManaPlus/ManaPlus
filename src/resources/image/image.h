@@ -33,13 +33,13 @@
 
 #ifdef ANDROID
 #include <GLES/gl.h>
-#else
+#else  // ANDROID
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
-#endif
+#endif  // USE_SDL2
 #include <SDL_opengl.h>
-#endif
-#endif
+#endif  // ANDROID
+#endif  // USE_OPENGL
 
 #ifdef USE_SDL2
 #include <SDL_render.h>
@@ -64,7 +64,7 @@ class Image notfinal : public Resource
     friend class SDL2SoftwareGraphics;
     friend class SDL2SoftwareImageHelper;
     friend class SurfaceImageHelper;
-#endif
+#endif  // USE_SDL2
     friend class TestLauncher;
 #ifdef USE_OPENGL
     friend class AtlasManager;
@@ -171,7 +171,7 @@ class Image notfinal : public Resource
         GLuint mGLImage;
         int mTexWidth;
         int mTexHeight;
-#endif
+#endif  // USE_OPENGL
 
         bool isHasAlphaChannel() const A_WARN_UNUSED
         { return mHasAlphaChannel; }
@@ -212,14 +212,14 @@ class Image notfinal : public Resource
 #ifdef USE_SDL2
         Image(SDL_Texture *restrict const image,
               const int width, const int height);
-#endif
+#endif  // USE_SDL2
 
         SDL_Surface *getByAlpha(const float alpha) A_WARN_UNUSED;
 
         SDL_Surface *mSDLSurface;
 #ifdef USE_SDL2
         SDL_Texture *mTexture;
-#endif
+#endif  // USE_SDL2
 
         /** Alpha Channel pointer used for 32bit based SDL surfaces */
         uint8_t *mAlphaChannel;
@@ -241,7 +241,7 @@ class Image notfinal : public Resource
          */
         Image(const GLuint glimage, const int width, const int height,
               const int texWidth, const int texHeight);
-#endif
+#endif  // USE_OPENGL
 };
 
 #endif  // RESOURCES_IMAGE_H

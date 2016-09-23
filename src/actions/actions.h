@@ -83,7 +83,7 @@ namespace Actions
     decHandler(error)
 #ifndef ENABLE_CILKPLUS
     __attribute__ ((noreturn))
-#endif
+#endif  // ENABLE_CILKPLUS
     ;
     decHandler(dumpGraphics);
     decHandler(dumpEnvironment);
@@ -93,7 +93,8 @@ namespace Actions
     decHandler(dumpMods);
 #if defined USE_OPENGL && defined DEBUG_SDLFONT
     decHandler(testSdlFont);
-#endif
+#endif  // defined USE_OPENGL && defined DEBUG_SDLFONT
+
     decHandler(createItems);
     decHandler(createItem);
     decHandler(uploadConfig);

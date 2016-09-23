@@ -56,7 +56,7 @@ class WindowContainer notfinal : public Container
 
 #ifdef USE_PROFILER
         void draw(Graphics *const graphics) override A_NONNULL(2);
-#endif
+#endif  // UNITTESTS
 
     private:
         /**

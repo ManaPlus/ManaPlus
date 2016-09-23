@@ -27,7 +27,7 @@ std::string empty;
 PoDict *translator = nullptr;
 #ifdef ENABLE_CUSTOMNLS
 PoDict *mainTranslator = nullptr;
-#endif
+#endif  // ENABLE_CUSTOMNLS
 
 PoDict::PoDict(std::string lang) :
     mPoLines(),

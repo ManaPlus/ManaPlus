@@ -78,9 +78,9 @@
 
 #ifndef DYECMD
 #include "dragdrop.h"
-#else
+#else  // DYECMD
 #include "resources/image/image.h"
-#endif
+#endif  // DYECMD
 #include "settings.h"
 
 #include "listeners/focuslistener.h"
@@ -135,7 +135,7 @@ Gui::Gui() :
 #ifdef ANDROID
     mLastMouseRealX(0),
     mLastMouseRealY(0),
-#endif
+#endif  // ANDROID
     mFocusListeners(),
     mForegroundColor(theme->getColor(ThemeColorId::TEXT, 255)),
     mForegroundColor2(theme->getColor(ThemeColorId::TEXT_OUTLINE, 255)),
@@ -408,7 +408,7 @@ bool Gui::handleKeyInput()
 #ifdef USE_SDL2
         if (!keyInput.getText().empty())
             eventToGlobalKeyListeners.setText(keyInput.getText());
-#endif
+#endif  // USE_SDL2
 
         distributeKeyEventToGlobalKeyListeners(
             eventToGlobalKeyListeners);
@@ -434,7 +434,7 @@ bool Gui::handleKeyInput()
 #ifdef USE_SDL2
                 if (!keyInput.getText().empty())
                     event.setText(keyInput.getText());
-#endif
+#endif  // USE_SDL2
 
                 if (!mFocusHandler->getFocused()->isFocusable())
                     mFocusHandler->focusNone();
@@ -511,7 +511,8 @@ void Gui::draw()
             const int posY = mouseY - (image->mBounds.h / 2);
             mGraphics->drawImage(image, posX, posY);
         }
-#endif
+#endif  // DYECMD
+
         Image *const mouseCursor = mMouseCursors->get(
             CAST_SIZE(mCursorType));
         if (mouseCursor)
@@ -927,7 +928,8 @@ void Gui::distributeMouseEvent(Widget *const source,
 #ifndef DYECMD
         if (type == MouseEventType::RELEASED)
             dragDrop.clear();
-#endif
+#endif  // DYECMD
+
         if (!widget || event.isConsumed())
             break;
 
@@ -1005,8 +1007,9 @@ void Gui::handleMouseInput()
 #ifndef USE_SDL2
             SDL_WarpMouse(mLastMouseX, mLastMouseY,
                 mLastMouseRealX, mLastMouseRealY);
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
+
             mMouseInactivityTimer = 0;
             continue;
         }
@@ -1018,7 +1021,8 @@ void Gui::handleMouseInput()
 #ifdef ANDROID
         mLastMouseRealX = mouseInput.getRealX();
         mLastMouseRealY = mouseInput.getRealY();
-#endif
+#endif  // ANDROID
+
         switch (mouseInput.getType())
         {
             case MouseEventType::PRESSED:

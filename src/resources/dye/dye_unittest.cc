@@ -323,17 +323,16 @@ TEST_CASE("Dye real dye")
 
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;
-#else
-    imageHelper = new SDLImageHelper;
-#endif
 
-#ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
         SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
-#else
+#else  // USE_SDL2
+
+    imageHelper = new SDLImageHelper;
+
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
-#endif
+#endif  // USE_SDL2
 
     ActorSprite::load();
 

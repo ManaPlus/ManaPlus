@@ -38,7 +38,7 @@
 
 #ifndef USE_SDL2
 #include <SDL_keyboard.h>
-#endif
+#endif  // USE_SDL2
 
 #include "debug.h"
 
@@ -131,7 +131,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("customcursor", false);
     AddDEF("showDidYouKnow", false);
     AddDEF("longmouseclick", true);
-#else
+#else  // ANDROID
+
     AddDEF("screenwidth", defaultScreenWidth);
     AddDEF("screenheight", defaultScreenHeight);
     AddDEF("showScreenJoystick", false);
@@ -145,7 +146,8 @@ DefaultsData* getConfigDefaults()
     AddDEF("customcursor", true);
     AddDEF("showDidYouKnow", true);
     AddDEF("longmouseclick", false);
-#endif
+#endif  // ANDROID
+
     AddDEF("showEmotesButton", true);
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
@@ -283,20 +285,24 @@ DefaultsData* getConfigDefaults()
     AddDEF("blur", false);
 #if defined(WIN32) || defined(__APPLE__)
     AddDEF("centerwindow", true);
-#else
+#else  // defined(WIN32) || defined(__APPLE__)
+
     AddDEF("centerwindow", false);
-#endif
+#endif  // defined(WIN32) || defined(__APPLE__)
+
     AddDEF("audioFrequency", 44100);
     AddDEF("audioChannels", 2);
 #ifdef USE_SDL2
     AddDEF("repeateDelay", 500);
     AddDEF("repeateInterval", 30);
     AddDEF("repeateInterval2", 500);
-#else
+#else  // USE_SDL2
+
     AddDEF("repeateDelay", SDL_DEFAULT_REPEAT_DELAY);
     AddDEF("repeateInterval", SDL_DEFAULT_REPEAT_INTERVAL);
     AddDEF("repeateInterval2", SDL_DEFAULT_REPEAT_DELAY);
-#endif
+#endif  // USE_SDL2
+
     AddDEF("compresstextures", 0);
     AddDEF("rectangulartextures", false);
     AddDEF("networksleep", 0);
@@ -307,9 +313,11 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableCompoundSpriteDelay", true);
 #ifdef ANDROID
     AddDEF("useAtlases", false);
-#else
+#else  // ANDROID
+
     AddDEF("useAtlases", true);
-#endif
+#endif  // ANDROID
+
     AddDEF("useTextureSampler", false);
     AddDEF("ministatussaved", 0);
     AddDEF("allowscreensaver", false);
@@ -317,9 +325,11 @@ DefaultsData* getConfigDefaults()
     AddDEF("protectChatFocus", true);
 #if defined(__APPLE__)
     AddDEF("enableGamma", false);
-#else
+#else  // defined(__APPLE__)
+
     AddDEF("enableGamma", true);
-#endif
+#endif  // defined(__APPLE__)
+
     AddDEF("logInput", false);
     AddDEF("highlightWords", "");
     AddDEF("globalsFilter", "Sagatha");

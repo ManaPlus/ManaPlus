@@ -18,7 +18,7 @@
 
 #ifdef __OpenBSD__
 #include <sys/param.h>
-#endif
+#endif  // __OpenBSD__
 #include <wchar.h>
 #include <cctype>
 
@@ -30,13 +30,13 @@
 
 #ifndef WIN32
 #include <sys/mman.h>
-#endif
+#endif  // WIN32
 
 #include "debug.h"
 
 #ifdef USE_MUMBLE
 MumbleManager *mumbleManager = nullptr;
-#endif
+#endif  // USE_MUMBLE
 
 MumbleManager::MumbleManager() :
     mLinkedMem(nullptr),
@@ -53,9 +53,11 @@ MumbleManager::~MumbleManager()
 #ifdef WIN32
         UnmapViewOfFile(mLinkedMem);
 #elif defined BSD4_4
-#else
+#else  // WIN32
+
         munmap(mLinkedMem, sizeof(struct LinkedMem));
-#endif
+#endif  // WIN32
+
         mLinkedMem = nullptr;
     }
 }
@@ -88,7 +90,8 @@ void MumbleManager::init()
 {
 #if defined BSD4_4
     return;
-#endif
+#endif  // defined BSD4_4
+
     if (mLinkedMem || !config.getBoolValue("enableMumble"))
         return;
 
@@ -113,7 +116,8 @@ void MumbleManager::init()
         return;
     }
 #elif defined BSD4_4
-#else
+#else  // WIN32
+
     char memName[256];
     snprintf(memName, sizeof(memName), "/MumbleLink.%u", getuid());
 
@@ -137,7 +141,8 @@ void MumbleManager::init()
         return;
     }
 
-#endif
+#endif  // WIN32
+
     wcsncpy(mLinkedMemCache.name, L"ManaPlus", 256);
     wcsncpy(mLinkedMemCache.description, L"ManaPlus Plugin", 2048);
     mLinkedMemCache.uiVersion = 2;
@@ -292,4 +297,4 @@ void MumbleManager::setServer(const std::string &serverName)
     memcpy(mLinkedMem, &mLinkedMemCache, sizeof(mLinkedMemCache));
 }
 
-#endif
+#endif  // USE_MUMBLE

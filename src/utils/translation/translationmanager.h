@@ -43,7 +43,7 @@ class TranslationManager final
 
 #ifdef ENABLE_CUSTOMNLS
         static void loadGettextLang();
-#endif
+#endif  // ENABLE_CUSTOMNLS
 
         static bool translateFile(const std::string &fileName,
                                   PoDict *const dict,

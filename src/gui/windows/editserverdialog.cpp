@@ -242,14 +242,16 @@ void EditServerDialog::action(const ActionEvent &event)
                     case 2:
                         mServer.type = ServerType::EVOL2;
                         break;
-#else
+#else  // TMWA_SUPPORT
+
                     case 0:
                         mServer.type = ServerType::EATHENA;
                         break;
                     case 1:
                         mServer.type = ServerType::EVOL2;
                         break;
-#endif
+#endif  // TMWA_SUPPORT
+
                     default:
                         mServer.type = ServerType::UNKNOWN;
                         break;

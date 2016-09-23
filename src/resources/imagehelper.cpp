@@ -35,7 +35,7 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 ImageHelper *imageHelper = nullptr;
 ImageHelper *surfaceImageHelper = nullptr;
@@ -79,12 +79,13 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     rgba.Gmask = 0x0000FF00;
     rgba.Bmask = 0x00FF0000;
     rgba.Amask = 0xFF000000;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     rgba.Rmask = 0xFF000000;
     rgba.Gmask = 0x00FF0000;
     rgba.Bmask = 0x0000FF00;
     rgba.Amask = 0x000000FF;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     SDL_Surface *const surf = MSDL_ConvertSurface(
         tmpImage, &rgba, SDL_SWSURFACE);
@@ -135,7 +136,8 @@ SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
 #ifndef USE_SDL2
     RGBAFormat.colorkey = 0;
     RGBAFormat.alpha = 0;
-#endif
+#endif  // USE_SDL2
+
     RGBAFormat.BitsPerPixel = 32;
     RGBAFormat.BytesPerPixel = 4;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -151,7 +153,8 @@ SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
     RGBAFormat.Amask = 0x000000FF;
     RGBAFormat.Ashift = 24;
     RGBAFormat.Aloss = 0;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     RGBAFormat.Rmask = 0x000000FF;
     RGBAFormat.Rshift = 24;
     RGBAFormat.Rloss = 0;
@@ -164,7 +167,8 @@ SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
     RGBAFormat.Amask = 0xFF000000;
     RGBAFormat.Ashift = 0;
     RGBAFormat.Aloss = 0;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     return MSDL_ConvertSurface(tmpImage, &RGBAFormat, SDL_SWSURFACE);
 }
 
@@ -178,7 +182,8 @@ void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image)
         logger->log("Bytes per pixel: %d", format->BytesPerPixel);
 #ifndef USE_SDL2
         logger->log("Alpha: %d", format->alpha);
-#endif
+#endif  // USE_SDL2
+
         logger->log("Loss: %02x, %02x, %02x, %02x",
             CAST_U32(format->Rloss),
             CAST_U32(format->Gloss),
@@ -226,12 +231,13 @@ SDL_Surface *ImageHelper::create32BitSurface(int width,
     const int gmask = 0x00ff0000;
     const int bmask = 0x0000ff00;
     const int amask = 0x000000ff;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     const int rmask = 0x000000ff;
     const int gmask = 0x0000ff00;
     const int bmask = 0x00ff0000;
     const int amask = 0xff000000;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     return MSDL_CreateRGBSurface(SDL_SWSURFACE,
         width, height, 32, rmask, gmask, bmask, amask);

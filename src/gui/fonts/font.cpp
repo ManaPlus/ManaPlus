@@ -247,12 +247,14 @@ void Font::drawString(Graphics *const graphics,
         {
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter ++;
-#endif
+#endif  // DEBUG_FONT_COUNTERS
+
             cache->removeBack();
         }
 #ifdef DEBUG_FONT_COUNTERS
         mCreateCounter ++;
-#endif
+#endif  // DEBUG_FONT_COUNTERS
+
         TextChunk *chunk2 = new TextChunk(text, col, col2, this);
 
         chunk2->generate(mFont, alpha);
@@ -321,36 +323,40 @@ void Font::doClean()
         const size_t size = CAST_SIZE(cache->size);
 #ifdef DEBUG_FONT_COUNTERS
         logger->log("ptr: %u, size: %ld", f, size);
-#endif
+#endif  // DEBUG_FONT_COUNTERS
+
         if (size > CACHE_SIZE_SMALL3)
         {
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter += 100;
-#endif
+#endif  // DEBUG_FONT_COUNTERS
+
             cache->removeBack(100);
 #ifdef DEBUG_FONT_COUNTERS
             logger->log("delete3");
-#endif
+#endif  // DEBUG_FONT_COUNTERS
         }
         else if (size > CACHE_SIZE_SMALL2)
         {
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter += 20;
-#endif
+#endif  // DEBUG_FONT_COUNTERS
+
             cache->removeBack(20);
 #ifdef DEBUG_FONT_COUNTERS
             logger->log("delete2");
-#endif
+#endif  // DEBUG_FONT_COUNTERS
         }
         else if (size > CACHE_SIZE_SMALL1)
         {
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter ++;
-#endif
+#endif  // DEBUG_FONT_COUNTERS
+
             cache->removeBack();
 #ifdef DEBUG_FONT_COUNTERS
             logger->log("delete1");
-#endif
+#endif  // DEBUG_FONT_COUNTERS
         }
     }
 }
@@ -405,12 +411,14 @@ void Font::generate(TextChunk &chunk)
         {
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter ++;
-#endif
+#endif  // DEBUG_FONT_COUNTERS
+
             cache->removeBack();
         }
 #ifdef DEBUG_FONT_COUNTERS
         mCreateCounter ++;
-#endif
+#endif  // DEBUG_FONT_COUNTERS
+
         const float alpha = static_cast<float>(chunk.color.a) / 255.0F;
         chunk.generate(mFont, alpha);
 //        logger->log("generate image: " + chunk.text);

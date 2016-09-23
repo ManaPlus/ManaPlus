@@ -78,7 +78,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable map reduce (Software)"), "",
         "enableMapReduce", this, "enableMapReduceEvent");
-#endif
+#endif  // USE_SDL2
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable compound sprite delay (Software)"), "",
@@ -127,7 +127,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Disable beings caching (Software)"), "",
         "disableBeingCaching", this, "disableBeingCachingEvent");
-#endif
+#endif  // USE_SDL2
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Different options (enable or disable can "

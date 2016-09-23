@@ -42,10 +42,10 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
 #ifdef __GNUC__
 #ifdef __OpenBSD__
     __attribute__((__format__(printf, 2, 3)))
-#else
+#else  // __OpenBSD__
     __attribute__((__format__(gnu_printf, 2, 3)))
-#endif
-#endif
+#endif  // __OpenBSD__
+#endif  // __GNUC__
 ;
 
 static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
@@ -89,7 +89,8 @@ namespace XML
 #ifdef USE_FUZZER
         if (Fuzzer::conditionTerminate(filename.c_str()))
             return;
-#endif
+#endif  // USE_FUZZER
+
         BLOCK_START("XML::Document::Document")
         int size = 0;
         char *data = nullptr;

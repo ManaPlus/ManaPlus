@@ -47,7 +47,7 @@ namespace
         int y;
     };
 }  // namespace
-#endif
+#endif  // DYECMD
 
 NavigationManager::NavigationManager()
 {
@@ -172,4 +172,4 @@ bool NavigationManager::findWalkableTile(int &x1, int &y1,
     }
     return false;
 }
-#endif
+#endif  // DYECMD

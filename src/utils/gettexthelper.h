@@ -23,7 +23,7 @@
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
+#endif  // HAVE_CONFIG_H
 
 #include "localconsts.h"
 
@@ -35,9 +35,9 @@ class GettextHelper final
     private:
 #ifdef ENABLE_NLS
         static void bindTextDomain(const char *const path);
-#else
+#else  // ENABLE_NLS
         static void bindTextDomain(const char *const path A_UNUSED);
-#endif
+#endif  // ENABLE_NLS
 };
 
 #endif  // UTILS_GETTEXTHELPER_H

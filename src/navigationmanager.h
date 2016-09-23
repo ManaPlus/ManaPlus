@@ -39,7 +39,7 @@ class NavigationManager final
 
 #ifndef DYECMD
         static Resource *loadWalkLayer(const Map *const map);
-#endif
+#endif  // DYECMD
 
     private:
 #ifndef DYECMD
@@ -55,7 +55,7 @@ class NavigationManager final
                             const int num,
                             const MetaTile *const tiles,
                             int *const data) A_NONNULL(6, 7);
-#endif
+#endif  // DYECMD
 };
 
 #endif  // NAVIGATIONMANAGER_H

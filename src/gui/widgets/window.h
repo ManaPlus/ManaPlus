@@ -578,7 +578,7 @@ class Window notfinal : public BasicContainer2,
 
 #ifdef USE_PROFILER
         virtual void logic();
-#endif
+#endif  // USE_PROFILER
 
     protected:
         bool canMove() const A_WARN_UNUSED;

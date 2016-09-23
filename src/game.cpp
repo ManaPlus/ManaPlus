@@ -134,16 +134,16 @@
 
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"
-#endif
+#endif  // TMWA_SUPPORT
 
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"
-#endif
+#endif  // USE_MUMBLE
 
 #ifdef WIN32
 #include <sys/time.h>
 #undef ERROR
-#endif
+#endif  // WIN32
 
 #include "debug.h"
 
@@ -162,7 +162,8 @@ static void initEngines()
     effectManager = new EffectManager;
 #ifdef TMWA_SUPPORT
     GuildManager::init();
-#endif
+#endif  // TMWA_SUPPORT
+
     crazyMoves = new CrazyMoves;
 
     particleEngine = new ParticleEngine;
@@ -320,7 +321,7 @@ static void destroyGuiWindows()
 #ifdef TMWA_SUPPORT
     if (guildManager)
         guildManager->clear();
-#endif
+#endif  // TMWA_SUPPORT
 
     delete2(windowMenu);
     delete2(localChatTab)  // Need to do this first, so it can remove itself
@@ -332,7 +333,8 @@ static void destroyGuiWindows()
 #ifdef TMWA_SUPPORT
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->reload();
-#endif
+#endif  // TMWA_SUPPORT
+
     logger->log("start deleting");
     delete2(emoteWindow);
     delete2(chatWindow)
@@ -413,7 +415,7 @@ Game::Game() :
 
 #ifdef USE_OPENGL
     MapReader::loadEmptyAtlas();
-#endif
+#endif  // USE_OPENGL
 
     initEngines();
 
@@ -433,7 +435,7 @@ Game::Game() :
 #ifdef TMWA_SUPPORT
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
-#endif
+#endif  // TMWA_SUPPORT
 
     settings.disableLoggingInGame = config.getBoolValue(
         "disableLoggingInGame");
@@ -443,7 +445,7 @@ Game::~Game()
 {
 #ifdef USE_OPENGL
     MapReader::unloadEmptyAtlas();
-#endif
+#endif  // USE_OPENGL
 
     settings.disableLoggingInGame = false;
     touchManager.setInGame(false);
@@ -465,10 +467,11 @@ Game::~Game()
     delete2(mCurrentMap)
 #ifdef TMWA_SUPPORT
     delete2(guildManager)
-#endif
+#endif  // TMWA_SUPPORT
 #ifdef USE_MUMBLE
     delete2(mumbleManager)
-#endif
+#endif  // USE_MUMBLE
+
     delete2(crazyMoves);
 
     Being::clearCache();
@@ -576,7 +579,8 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     cutFirst(nacScreenshotlDir, "/persistent");
     naclPostMessage("copy-from-persistent", nacScreenshotlDir);
     logger->log("nacl screenshot path: " + nacScreenshotlDir);
-#endif
+#endif  // __native_client__
+
     if (success)
     {
         if (localChatTab)
@@ -658,11 +662,10 @@ void Game::slowLogic()
 #ifdef TMWA_SUPPORT
     if (shopWindow)
         cilk_spawn shopWindow->updateTimes();
-#endif
-#ifdef TMWA_SUPPORT
     if (guildManager)
         guildManager->slowLogic();
-#endif
+#endif  // TMWA_SUPPORT
+
     if (skillDialog)
         cilk_spawn skillDialog->slowLogic();
 
@@ -1104,7 +1107,7 @@ void Game::changeMap(const std::string &mapPath)
 #ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setMap(mapPath);
-#endif
+#endif  // USE_MUMBLE
 
     if (localPlayer)
         localPlayer->recreateItemParticles();

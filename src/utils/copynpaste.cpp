@@ -28,10 +28,10 @@
  */
 
 #ifdef _MSC_VER
-#  include "msvc/config.h"
+#include "msvc/config.h"
 #elif defined(HAVE_CONFIG_H)
-#  include "config.h"
-#endif
+#include "config.h"
+#endif  // _MSC_VER
 
 #include "utils/copynpaste.h"
 
@@ -45,7 +45,7 @@
 #if defined(__APPLE__)
 #ifdef Status
 #undef Status
-#endif
+#endif  // Status
 #include <Carbon/Carbon.h>
 #elif defined USE_X11
 #include "render/graphics.h"
@@ -58,7 +58,7 @@
 #include "utils/naclmessages.h"
 #elif defined WIN32
 #include <SDL_syswm.h>
-#endif
+#endif  // defined(__APPLE__)
 
 #endif  // USE_SDL2
 
@@ -81,7 +81,7 @@ bool sendBuffer(const std::string &restrict text)
     return !SDL_SetClipboardText(text.c_str());
 }
 
-#else
+#else  //  USE_SDL2
 
 #ifdef WIN32
 bool retrieveBuffer(std::string& text, size_t& pos)
@@ -450,9 +450,10 @@ static bool runxsel(const std::string &text, const char *p1, const char *p2)
         const char *const xselPath =
 #if defined __OpenBSD__ || defined __FreeBSD__ || defined __DragonFly__
             "/usr/local/bin/xsel";
-#else
+#else  // defined __OpenBSD__ || defined __FreeBSD__ || defined __DragonFly__
             "/usr/bin/xsel";
-#endif
+#endif  // defined __OpenBSD__ || defined __FreeBSD__ || defined __DragonFly__
+
         if (p2)
         {
             execl(xselPath, "xsel", p1, p2,
@@ -496,7 +497,8 @@ bool sendBuffer(const std::string &restrict text)
     naclPostMessage("clipboard-copy", text);
     return true;
 }
-#else
+#else  // WIN32
+
 bool retrieveBuffer(std::string&, size_t&)
 {
     return false;
@@ -506,5 +508,5 @@ bool sendBuffer(const std::string &restrict text A_UNUSED)
 {
     return false;
 }
-#endif
+#endif  // WIN32
 #endif  // USE_SDL2

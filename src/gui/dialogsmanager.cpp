@@ -39,7 +39,7 @@
 #include "gui/windows/updaterwindow.h"
 
 #include "listeners/playerpostdeathlistener.h"
-#endif
+#endif  // DYECMD
 
 #include "listeners/weightlistener.h"
 
@@ -53,7 +53,7 @@
 
 #ifdef WIN32
 #undef ERROR
-#endif
+#endif  // WIN32
 
 OkDialog *deathNotice = nullptr;
 DialogsManager *dialogsManager = nullptr;
@@ -66,7 +66,7 @@ namespace
     PlayerPostDeathListener postDeathListener;
     WeightListener weightListener;
 }  // namespace
-#endif
+#endif  // DYECMD
 
 DialogsManager::DialogsManager() :
     AttributeListener(),
@@ -84,7 +84,8 @@ void DialogsManager::closeDialogs()
     SellDialog::closeAll();
     if (inventoryHandler)
         inventoryHandler->destroyStorage();
-#endif
+#endif  // DYECMD
+
     if (deathNotice)
     {
         deathNotice->scheduleDelete();
@@ -100,7 +101,7 @@ void DialogsManager::createUpdaterWindow()
         settings.oldUpdates,
         false,
         UpdateType::Normal);
-#endif
+#endif  // DYECMD
 }
 
 Window *DialogsManager::openErrorDialog(const std::string &header,
@@ -153,7 +154,7 @@ void DialogsManager::playerDeath()
             260);
         deathNotice->addActionListener(&postDeathListener);
     }
-#endif
+#endif  // DYECMD
 }
 
 #ifndef DYECMD
@@ -211,10 +212,11 @@ void DialogsManager::attributeChanged(const AttributesT id,
         }
     }
 }
-#else
+#else  // DYECMD
+
 void DialogsManager::attributeChanged(const AttributesT id A_UNUSED,
                                       const int oldVal A_UNUSED,
                                       const int newVal A_UNUSED)
 {
 }
-#endif
+#endif  // DYECMD

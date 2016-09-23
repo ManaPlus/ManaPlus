@@ -90,7 +90,7 @@ impHandlerVoid(dumpGL)
 impHandlerVoid(dumpMods)
 #if defined USE_OPENGL && defined DEBUG_SDLFONT
 impHandlerVoid(testSdlFont)
-#endif
+#endif  // defined USE_OPENGL && defined DEBUG_SDLFONT
 impHandlerVoid(createItems)
 impHandlerVoid(createItem)
 impHandlerVoid(uploadConfig)

@@ -42,8 +42,8 @@
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
 #include "debug.h"
 

@@ -233,7 +233,7 @@ class ActorManager final: public ConfigListener
         void heal(const Being *const target) const;
 
         void itenplz() const;
-#endif
+#endif  // TMWA_SUPPORT
 
         /**
          * Returns the whole list of beings.
@@ -286,7 +286,7 @@ class ActorManager final: public ConfigListener
 
 #ifdef TMWA_SUPPORT
         void parseLevels(std::string levels) const;
-#endif
+#endif  // TMWA_SUPPORT
 
         bool pickUpAll(const int x1,
                        const int y1,
@@ -389,7 +389,7 @@ class ActorManager final: public ConfigListener
 
 #ifndef UNITTESTS
     protected:
-#endif
+#endif  // UNITTESTS
         bool validateBeing(const Being *const aroundBeing,
                            Being *const being,
                            const ActorTypeT &type,
@@ -419,7 +419,8 @@ class ActorManager final: public ConfigListener
         std::string mSpellHeal1;
         std::string mSpellHeal2;
         std::string mSpellItenplz;
-#endif
+#endif  // TMWA_SUPPORT
+
         bool mTargetDeadPlayers;
         bool mTargetOnlyReachable;
         bool mCyclePlayers;

@@ -33,7 +33,7 @@
 #include "input/keyboardconfig.h"
 #ifdef USE_SDL2
 #include "input/touch/multitouchmanager.h"
-#endif
+#endif  // USE_SDL2
 
 #include "input/touch/touchmanager.h"
 
@@ -129,9 +129,11 @@ void InputManager::retrieve() restrict2
 #ifdef USE_SDL2
         const std::string cf = std::string("sdl2")
             + inputActionData[i].configField;
-#else
+#else  // USE_SDL2
+
         const std::string cf = inputActionData[i].configField;
-#endif
+#endif  // USE_SDL2
+
         InputFunction &restrict kf = mKey[i];
         if (!cf.empty())
         {
@@ -191,9 +193,11 @@ void InputManager::store() const restrict2
 #ifdef USE_SDL2
         const std::string cf = std::string("sdl2")
             + inputActionData[i].configField;
-#else
+#else  // USE_SDL2
+
         const std::string cf = inputActionData[i].configField;
-#endif
+#endif  // USE_SDL2
+
         if (!cf.empty())
         {
             std::string keyStr;
@@ -268,10 +272,12 @@ void InputManager::resetKey(const InputActionT i) restrict2
         val0.value = -1;
     if (val1.value == SDL_SCANCODE_UNKNOWN)
         val1.value = -1;
-#else
+#else  // USE_SDL2
+
     val0.value = kd.defaultValue1;
     val1.value = kd.defaultValue2;
-#endif
+#endif  // USE_SDL2
+
     updateKeyString(key, CAST_SIZE(i));
 }
 
@@ -343,7 +349,7 @@ void InputManager::callbackNewKey() restrict2
 {
 #ifndef DYECMD
     mSetupInput->newKeyCallback(mNewKeyIndex);
-#endif
+#endif  // DYECMD
 }
 
 bool InputManager::isActionActive(const InputActionT index) const restrict2
@@ -570,13 +576,14 @@ bool InputManager::handleAssignKey(const SDL_Event &restrict event,
     }
     return false;
 }
-#else
+#else  // DYECMD
+
 bool InputManager::handleAssignKey(const SDL_Event &restrict event A_UNUSED,
                                    const InputTypeT type A_UNUSED) restrict2
 {
     return false;
 }
-#endif
+#endif  // DYECMD
 
 bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
 {
@@ -605,7 +612,8 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
                 BLOCK_END("InputManager::handleEvent")
                 return true;
             }
-#endif
+#endif  // DYECMD
+
             break;
         }
         case SDL_KEYUP:
@@ -639,14 +647,15 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
         case SDL_FINGERUP:
             multiTouchManager.handleFingerUp(event);
             break;
-#else
+#else  // USE_SDL2
 #ifdef ANDROID
         case SDL_ACCELEROMETER:
         {
             break;
         }
-#endif
-#endif
+#endif  // ANDROID
+#endif  // USE_SDL2
+
         default:
             break;
     }
@@ -689,8 +698,9 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
         {
             break;
         }
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
+
         default:
             break;
     }
@@ -779,7 +789,7 @@ void InputManager::updateConditionMask() restrict2
         mMask |= InputCondition::NOFOLLOW;
         mMask |= InputCondition::NOBLOCK;
     }
-#endif
+#endif  // DYECMD
 
     if (!settings.awayMode)
         mMask |= InputCondition::NOAWAY;

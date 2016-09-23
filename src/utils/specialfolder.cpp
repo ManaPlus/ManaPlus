@@ -56,4 +56,4 @@ std::string getSpecialFolderLocation(const int folderId)
     return ret;
 }
 
-#endif
+#endif  // WIN32

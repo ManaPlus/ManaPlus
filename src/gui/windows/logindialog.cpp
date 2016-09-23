@@ -180,9 +180,11 @@ void LoginDialog::postInit()
     setContentSize(310, h);
 #ifdef ANDROID
     setDefaultSize(310, h, ImagePosition::UPPER_CENTER, 0, 0);
-#else
+#else  // ANDROID
+
     setDefaultSize(310, h, ImagePosition::CENTER, 0, 0);
-#endif
+#endif  // ANDROID
+
     center();
     loadWindowState();
     reflowLayout();

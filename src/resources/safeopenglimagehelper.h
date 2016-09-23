@@ -30,19 +30,19 @@
 #ifndef GL_TEXTURE_RECTANGLE_ARB
 #define GL_TEXTURE_RECTANGLE_ARB 0x84F5
 #define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB 0x84F8
-#endif
+#endif  // GL_TEXTURE_RECTANGLE_ARB
 
 #include "resources/imagehelper.h"
 
 #ifdef ANDROID
 #include <GLES/gl.h>
 #define GL_RGBA8 GL_RGBA8_OES
-#else
+#else  // ANDROID
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
-#endif
+#endif  // USE_SDL2
 #include <SDL_opengl.h>
-#endif
+#endif  // ANDROID
 
 class Dye;
 class Image;

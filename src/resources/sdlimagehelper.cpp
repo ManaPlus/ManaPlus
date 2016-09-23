@@ -39,7 +39,7 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 bool SDLImageHelper::mEnableAlphaCache = false;
 
@@ -65,12 +65,13 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     rgba.Gmask = 0x0000FF00;
     rgba.Bmask = 0x00FF0000;
     rgba.Amask = 0xFF000000;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     rgba.Rmask = 0xFF000000;
     rgba.Gmask = 0x00FF0000;
     rgba.Bmask = 0x0000FF00;
     rgba.Amask = 0x000000FF;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     SDL_Surface *const surf = MSDL_ConvertSurface(
         tmpImage, &rgba, SDL_SWSURFACE);

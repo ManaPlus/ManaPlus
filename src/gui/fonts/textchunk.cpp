@@ -46,7 +46,7 @@ char *restrict strBuf = nullptr;
 
 #ifdef UNITTESTS
 int textChunkCnt = 0;
-#endif
+#endif  // UNITTESTS
 
 TextChunk::TextChunk() :
     img(nullptr),
@@ -59,7 +59,7 @@ TextChunk::TextChunk() :
 {
 #ifdef UNITTESTS
     textChunkCnt ++;
-#endif
+#endif  // UNITTESTS
 }
 
 TextChunk::TextChunk(const std::string &restrict text0,
@@ -76,7 +76,7 @@ TextChunk::TextChunk(const std::string &restrict text0,
 {
 #ifdef UNITTESTS
     textChunkCnt ++;
-#endif
+#endif  // UNITTESTS
 }
 
 TextChunk::~TextChunk()
@@ -84,7 +84,7 @@ TextChunk::~TextChunk()
     delete2(img);
 #ifdef UNITTESTS
     textChunkCnt --;
-#endif
+#endif  // UNITTESTS
 }
 
 bool TextChunk::operator==(const TextChunk &restrict chunk) const
@@ -103,9 +103,10 @@ void TextChunk::generate(TTF_Font *restrict const font,
     sdlCol.g = CAST_U8(color.g);
 #ifdef USE_SDL2
     sdlCol.a = 255;
-#else
+#else  // USE_SDL2
+
     sdlCol.unused = 0;
-#endif
+#endif  // USE_SDL2
 
     getSafeUtf8String(text, strBuf);
 
@@ -140,9 +141,11 @@ void TextChunk::generate(TTF_Font *restrict const font,
         sdlCol2.g = CAST_U8(color2.g);
 #ifdef USE_SDL2
         sdlCol2.a = 255;
-#else
+#else  // USE_SDL2
+
         sdlCol2.unused = 0;
-#endif
+#endif  // USE_SDL2
+
         SDL_Surface *const surface2 = MTTF_RenderUTF8_Blended(
             font, strBuf, sdlCol2);
         if (!surface2)

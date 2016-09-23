@@ -54,14 +54,14 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 #ifndef USE_SDL2
 static const int BUFFER_WIDTH = 100;
 static const int BUFFER_HEIGHT = 100;
 static const unsigned cache_max_size = 10;
 static const unsigned cache_clean_part = 3;
-#endif
+#endif  // USE_SDL2
 
 bool CompoundSprite::mEnableDelay = true;
 
@@ -78,7 +78,7 @@ CompoundSprite::CompoundSprite() :
     mLastTime(0),
 #ifndef USE_SDL2
     mNextRedrawTime(0),
-#endif
+#endif  // USE_SDL2
     mNeedsRedraw(false),
     mEnableAlphaFix(config.getBoolValue("enableAlphaFix")),
     mDisableAdvBeingCaching(config.getBoolValue("disableAdvBeingCaching")),
@@ -326,12 +326,12 @@ void CompoundSprite::redraw() const
     const int gmask = 0x00ff0000;
     const int bmask = 0x0000ff00;
     const int amask = 0x000000ff;
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
     const int rmask = 0x000000ff;
     const int gmask = 0x0000ff00;
     const int bmask = 0x00ff0000;
     const int amask = 0xff000000;
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
@@ -371,11 +371,7 @@ void CompoundSprite::redraw() const
     SDL_Surface *const surfaceA = MSDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
 
-#ifdef USE_SDL2
-    SDL_SetSurfaceAlphaMod(surface, 255);
-#else
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
-#endif
     SDL_BlitSurface(surface, nullptr, surfaceA, nullptr);
 
     delete mImage;
@@ -393,7 +389,7 @@ void CompoundSprite::redraw() const
     {
         mAlphaImage = nullptr;
     }
-#endif
+#endif  // USE_SDL2
 }
 
 void CompoundSprite::setAlpha(float alpha)
@@ -403,7 +399,7 @@ void CompoundSprite::setAlpha(float alpha)
         if (mEnableAlphaFix &&
 #ifdef USE_OPENGL
             imageHelper->useOpenGL() == RENDER_SOFTWARE &&
-#endif
+#endif  // USE_OPENGL
             mSprites.size() > 3U)
         {
             FOR_EACH (SpriteConstIterator, it, mSprites)
@@ -422,7 +418,7 @@ void CompoundSprite::updateImages() const
 #ifdef USE_OPENGL
     if (imageHelper->useOpenGL() != RENDER_SOFTWARE)
         return;
-#endif
+#endif  // USE_OPENGL
 
     if (mEnableDelay)
     {
@@ -452,7 +448,7 @@ void CompoundSprite::updateImages() const
             redraw();
         }
     }
-#endif
+#endif  // USE_SDL2
 }
 
 bool CompoundSprite::updateFromCache() const
@@ -520,7 +516,7 @@ bool CompoundSprite::updateFromCache() const
     mImage = nullptr;
     mAlphaImage = nullptr;
 //    miss++;
-#endif
+#endif  // USE_SDL2
     return false;
 }
 

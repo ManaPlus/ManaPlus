@@ -464,10 +464,12 @@ void UpdaterWindow::loadPatch()
 #elif defined(WIN32)
             const std::string url = "windowsDownloadUrl";
             const std::string text = "windowsDownloadUrl";
-#else
+#else  // defined(ANDROID)
+
             const std::string url = "otherDownloadUrl";
             const std::string text = "otherDownloadUrl";
-#endif
+#endif  // defined(ANDROID)
+
             mBrowserBox->addRow(std::string("  ##1[@@").append(
                 branding.getStringValue(url)).append("|").append(
                 branding.getStringValue(text)).append("@@]"), true);

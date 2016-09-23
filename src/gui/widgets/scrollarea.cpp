@@ -841,10 +841,12 @@ void ScrollArea::mouseReleased(MouseEvent& event)
 #ifdef ANDROID
             int dx = mClickX - event.getX();
             int dy = mClickY - event.getY();
-#else
+#else  // ANDROID
+
             int dx = event.getX() - mClickX;
             int dy = event.getY() - mClickY;
-#endif
+#endif  // ANDROID
+
             if ((dx < 20 && dx > 0) || (dx > -20 && dx < 0))
                 dx = 0;
 

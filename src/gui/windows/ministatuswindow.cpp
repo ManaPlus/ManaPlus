@@ -571,4 +571,4 @@ void MiniStatusWindow::logicChildren()
     BasicContainer::logicChildren();
     BLOCK_END("MiniStatusWindow::logicChildren")
 }
-#endif
+#endif  // USE_PROFILER

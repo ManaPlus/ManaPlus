@@ -117,7 +117,7 @@ static void printHelp()
         // TRANSLATORS: command line help
         _("  -O --no-opengl      : Disable OpenGL for this session") <<
         std::endl
-#endif
+#endif  // USE_OPENGL
         ;
 }
 

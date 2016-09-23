@@ -61,7 +61,7 @@ class ModeListModel final : public ListModel
     private:
 #ifndef ANDROID
         void addCustomMode(const std::string &mode);
-#endif
+#endif  // ANDROID
 
         StringVect mVideoModes;
 };

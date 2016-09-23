@@ -81,10 +81,11 @@ void IntTextField::keyPressed(KeyEvent &event)
         if (chr < '0' || chr > '9')
             return;
     }
-#else
+#else  // USE_SDL2
+
     if (!event.getKey().isNumber())
         return;
-#endif
+#endif  // USE_SDL2
 
     TextField::keyPressed(event);
 

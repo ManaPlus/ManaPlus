@@ -43,7 +43,7 @@ SDLMusic::~SDLMusic()
         SDL_RWclose(mRw);
         mRw = nullptr;
     }
-#endif
+#endif  // USE_SDL2
 }
 
 bool SDLMusic::play(const int loops, const int fadeIn)

@@ -24,10 +24,10 @@
 #include "client.h"
 #ifndef DYECMD
 #include "game.h"
-#endif
+#endif  // DYECMD
 #ifdef USE_MUMBLE
 #include "mumblemanager.h"
-#endif
+#endif  // USE_MUMBLE
 #include "sdlshared.h"
 #include "settings.h"
 
@@ -88,7 +88,7 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event) const
             handleSDL2WindowEvent(event);
             BLOCK_END("EventsManager::handleCommonEvents")
             return true;
-#else
+#else  // USE_SDL2
         case SDL_VIDEORESIZE:
             WindowManager::resizeVideo(event.resize.w,
                 event.resize.h,
@@ -106,8 +106,8 @@ bool EventsManager::handleCommonEvents(const SDL_Event &event) const
             return true;
         case SDL_ACCELEROMETER:
             break;
-#endif
-#endif
+#endif  // ANDROID
+#endif  // USE_SDL2
         default:
             break;
     }
@@ -132,7 +132,7 @@ bool EventsManager::handleEvents() const
         Game::instance()->handleInput();
     }
     else
-#endif
+#endif  // DYECMD
     {
         SDL_Event event;
         // Handle SDL events
@@ -153,11 +153,8 @@ bool EventsManager::handleEvents() const
                         }
                         break;
 
-#endif
-#else
-#ifndef USE_SDL2
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
                     default:
                         break;
                 }
@@ -169,7 +166,7 @@ bool EventsManager::handleEvents() const
                 mumbleManager->setPos(localPlayer->getTileX(),
                     localPlayer->getTileY(), localPlayer->getDirection());
             }
-#endif
+#endif  // USE_MUMBLE
         }
         if (client->getState() == State::EXIT)
         {
@@ -198,7 +195,8 @@ void EventsManager::handleGameEvents() const
         if (handleCommonEvents(event))
             break;
     }  // End while
-#endif
+#endif  // DYECMD
+
     BLOCK_END("EventsManager::handleGameEvents")
 }
 
@@ -346,7 +344,8 @@ void EventsManager::logEvent(const SDL_Event &event)
         case SDL_APP_DIDENTERBACKGROUND:
             logger->log("SDL_APP_DIDENTERBACKGROUND");
             break;
-#else
+#else  // USE_SDL2
+
         case SDL_MOUSEMOTION:
             logger->log("event: SDL_MOUSEMOTION: %u,%d,%d",
                 event.motion.state, event.motion.x, event.motion.y);
@@ -369,7 +368,8 @@ void EventsManager::logEvent(const SDL_Event &event)
             logger->log("event: SDL_ACTIVEEVENT: %d %d",
                 event.active.state, event.active.gain);
             break;
-#endif
+#endif  // USE_SDL2
+
         case SDL_MOUSEBUTTONDOWN:
             logger->log("event: SDL_MOUSEBUTTONDOWN: %d,%d,%d,%d",
                 event.button.button, event.button.state,
@@ -417,8 +417,9 @@ void EventsManager::logEvent(const SDL_Event &event)
         case SDL_ACCELEROMETER:
             logger->log("event: SDL_ACCELEROMETER");
             break;
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
+
         default:
             logger->log("event: other: %u", event.type);
             break;
@@ -430,7 +431,8 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
 {
 #ifndef DYECMD
     int fpsLimit = 0;
-#endif
+#endif  // DYECMD
+
     const int eventType = event.window.event;
     const bool inGame = (client->getState() == State::GAME);
     switch (eventType)
@@ -463,7 +465,8 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
                     localPlayer->setHalfAway(true);
                 }
             }
-#endif
+#endif  // DYECMD
+
             setPriority(false);
             break;
         case SDL_WINDOWEVENT_RESTORED:
@@ -479,7 +482,8 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
                     localPlayer->setHalfAway(false);
                 }
             }
-#endif
+#endif  // DYECMD
+
             setPriority(true);
             break;
         default:
@@ -501,15 +505,17 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
         }
         Game::instance()->updateFrameRate(fpsLimit);
     }
-#endif
+#endif  // DYECMD
 }
-#else
+#else  // USE_SDL2
+
 void EventsManager::handleActive(const SDL_Event &event)
 {
 #ifndef DYECMD
     int fpsLimit = 0;
     const bool inGame = (client->getState() == State::GAME);
-#endif
+#endif  // DYECMD
+
     if (event.active.state & SDL_APPACTIVE)
     {
         if (event.active.gain)
@@ -522,14 +528,15 @@ void EventsManager::handleActive(const SDL_Event &event)
                     fpsLimit = config.getIntValue("fpslimit");
                 localPlayer->setHalfAway(false);
             }
-#endif
+#endif  // DYECMD
+
             setPriority(true);
         }
         else
         {   // window minimization
 #ifdef ANDROID
             client->setState(State::EXIT);
-#else
+#else  // ANDROID
             WindowManager::setIsMinimized(true);
 #ifndef DYECMD
             if (inGame && localPlayer && !settings.awayMode)
@@ -537,19 +544,20 @@ void EventsManager::handleActive(const SDL_Event &event)
                 fpsLimit = config.getIntValue("altfpslimit");
                 localPlayer->setHalfAway(true);
             }
-#endif
+#endif  // DYECMD
+
             setPriority(false);
-#endif
+#endif  // ANDROID
         }
 #ifndef DYECMD
         if (inGame && localPlayer)
             localPlayer->updateStatus();
-#endif
+#endif  // DYECMD
     }
 #ifndef DYECMD
     if (inGame && localPlayer)
         localPlayer->updateName();
-#endif
+#endif  // DYECMD
 
     if (event.active.state & SDL_APPINPUTFOCUS)
         settings.inputFocused = event.active.gain;
@@ -558,6 +566,6 @@ void EventsManager::handleActive(const SDL_Event &event)
 #ifndef DYECMD
     if (inGame)
         Game::instance()->updateFrameRate(fpsLimit);
-#endif
+#endif  // DYECMD
 }
-#endif
+#endif  // USE_SDL2

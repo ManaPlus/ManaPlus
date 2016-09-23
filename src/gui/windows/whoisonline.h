@@ -63,7 +63,7 @@ class WhoIsOnline final : public Window,
          * Loads and display online list from the memory buffer.
          */
         void loadWebList();
-#endif
+#endif  // TMWA_SUPPORT
 
         void loadList(const std::vector<OnlinePlayer*> &list);
 
@@ -118,7 +118,7 @@ class WhoIsOnline final : public Window,
                                   size_t size,
                                   size_t nmemb,
                                   FILE *restrict stream);
-#endif
+#endif  // TMWA_SUPPORT
 
         const std::string prepareNick(const std::string &restrict nick,
                                       const int level,

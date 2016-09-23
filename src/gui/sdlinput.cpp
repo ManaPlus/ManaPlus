@@ -165,7 +165,8 @@ void SDLInput::pushInput(const SDL_Event &event)
                 mouseInput.setY(gui->getLastMouseY());
 #ifdef ANDROID
                 mouseInput.setReal(0, 0);
-#endif
+#endif  // ANDROID
+
                 mouseInput.setButton(MouseButton::WHEEL);
                 if (y > 0)
                     mouseInput.setType(MouseEventType::WHEEL_MOVED_UP);
@@ -177,14 +178,14 @@ void SDLInput::pushInput(const SDL_Event &event)
 
             break;
         }
-#endif
+#endif  // USE_SDL2
 
 #ifdef ANDROID
 #ifndef USE_SDL2
         case SDL_ACCELEROMETER:
             break;
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
         case SDL_MOUSEBUTTONDOWN:
         {
@@ -197,11 +198,13 @@ void SDLInput::pushInput(const SDL_Event &event)
 #ifdef ANDROID
 #ifdef USE_SDL2
             mouseInput.setReal(x, y);
-#else
+#else  // USE_SDL2
+
             mouseInput.setReal(event.button.realx / scale,
                 event.button.realy / scale);
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
+
             mouseInput.setButton(convertMouseButton(event.button.button));
 
 #ifndef USE_SDL2
@@ -210,7 +213,7 @@ void SDLInput::pushInput(const SDL_Event &event)
             else if (event.button.button == SDL_BUTTON_WHEELUP)
                 mouseInput.setType(MouseEventType::WHEEL_MOVED_UP);
             else
-#endif
+#endif  // USE_SDL2
                 mouseInput.setType(MouseEventType::PRESSED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
@@ -227,11 +230,13 @@ void SDLInput::pushInput(const SDL_Event &event)
 #ifdef ANDROID
 #ifdef USE_SDL2
             mouseInput.setReal(x, y);
-#else
+#else  // USE_SDL2
+
             mouseInput.setReal(event.button.realx / scale,
                 event.button.realy / scale);
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
+
             mouseInput.setButton(convertMouseButton(event.button.button));
             mouseInput.setType(MouseEventType::RELEASED);
             mouseInput.setTimeStamp(SDL_GetTicks());
@@ -248,11 +253,13 @@ void SDLInput::pushInput(const SDL_Event &event)
 #ifdef ANDROID
 #ifdef USE_SDL2
             mouseInput.setReal(x, y);
-#else
+#else  // USE_SDL2
+
             mouseInput.setReal(event.motion.realx / scale,
                 event.motion.realy / scale);
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
+
             mouseInput.setButton(MouseButton::EMPTY);
             mouseInput.setType(MouseEventType::MOVED);
             mouseInput.setTimeStamp(SDL_GetTicks());
@@ -282,7 +289,8 @@ void SDLInput::pushInput(const SDL_Event &event)
             if ((event.active.state & SDL_APPMOUSEFOCUS) && event.active.gain)
                 mMouseInWindow = true;
             break;
-#endif
+#endif  // USE_SDL2
+
         default:
             break;
     }  // end switch
@@ -311,7 +319,8 @@ MouseButtonT SDLInput::convertMouseButton(const int button)
         case SDL_BUTTON_WHEELUP:
         case SDL_BUTTON_WHEELDOWN:
             return MouseButton::EMPTY;
-#endif
+#endif  // USE_SDL2
+
         default:
             // We have an unknown mouse type which is ignored.
             logger->log("unknown button type: %d", button);
@@ -324,9 +333,10 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
     const SDL_keysym keysym = event.key.keysym;
 #ifdef USE_SDL2
     int value = keysym.scancode;
-#else
+#else  // USE_SDL2
+
     int value = keysym.unicode;
-#endif
+#endif  // USE_SDL2
 
     PRAGMA45(GCC diagnostic push)
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
@@ -366,7 +376,7 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
           // is only valid on key down events in SDL.
 #ifndef USE_SDL2
           if (event.type == SDL_KEYUP || keysym.unicode == ' ')
-#endif
+#endif  // USE_SDL2
           {
               value = KeyValue::SPACE;
           }
@@ -374,7 +384,7 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
       case SDLK_ESCAPE:
 #ifdef USE_SDL2
       case SDLK_AC_BACK:
-#endif
+#endif  // USE_SDL2
           value = KeyValue::ESCAPE;
           break;
       case SDLK_DELETE:
@@ -465,7 +475,8 @@ int SDLInput::convertKeyCharacter(const SDL_Event &event)
       case SDLK_RSUPER:
           value = KeyValue::RIGHT_SUPER;
           break;
-#endif
+#endif  // USE_SDL2
+
       case SDLK_MODE:
           value = KeyValue::ALT_GR;
           break;

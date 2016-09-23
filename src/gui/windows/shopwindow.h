@@ -140,8 +140,8 @@ class ShopWindow final : public Window,
 
         bool findShopItem(const ShopItem *const shopItem,
                           const int mode) const A_WARN_UNUSED;
+#endif  // TMWA_SUPPORT
 
-#endif
         static int sumAmount(const Item *const shopItem) A_WARN_UNUSED;
 
         bool isShopEmpty() const A_WARN_UNUSED;
@@ -159,7 +159,8 @@ class ShopWindow final : public Window,
     private:
 #ifdef TMWA_SUPPORT
         void startTrade();
-#endif
+#endif  // TMWA_SUPPORT
+
         void updateSelection();
 
         void updateShopName();

@@ -83,7 +83,8 @@ void MemoryManager::printAllMemory(ChatTab *const tab A_DYECMD_UNUSED)
 #ifdef DYECMD
     if (resourceManager)
         resourceManager->calcMemory(0);
-#else
+#else  // DYECMD
+
     int sz = 0;
     if (resourceManager)
         sz += resourceManager->calcMemory(0);
@@ -93,5 +94,5 @@ void MemoryManager::printAllMemory(ChatTab *const tab A_DYECMD_UNUSED)
         tab->chatLog(strprintf(_("Calculated memory usage: %d"), sz),
             ChatMsgType::BY_SERVER);
     }
-#endif
+#endif  // DYECMD
 }

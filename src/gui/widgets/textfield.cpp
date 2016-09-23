@@ -312,7 +312,8 @@ void TextField::keyPressed(KeyEvent &event)
         return;
     }
     bool consumed(false);
-#else
+#else  // USE_SDL2
+
     if (val >= 32)
     {
         if (mNumeric)
@@ -375,7 +376,7 @@ void TextField::keyPressed(KeyEvent &event)
         mLastEventPaste = 0;
 
     bool consumed(false);
-#endif
+#endif  // USE_SDL2
 
     const InputActionT action = event.getActionId();
     if (!inputManager.isActionActive(InputAction::GUI_CTRL))
@@ -562,13 +563,15 @@ void TextField::handleCtrlKeys(const InputActionT action, bool &consumed)
         {
 #ifdef USE_SDL2
             handlePaste();
-#else
+#else  // USE_SDL2
+
             // hack to prevent paste key sticking
             if (mLastEventPaste && mLastEventPaste > cur_time)
                 break;
             handlePaste();
             mLastEventPaste = cur_time + 2;
-#endif
+#endif  // USE_SDL2
+
             consumed = true;
             break;
         }
@@ -762,14 +765,15 @@ void TextField::mousePressed(MouseEvent &event)
 #ifdef ANDROID
     if (!WindowManager::isKeyboardVisible())
         inputManager.executeAction(InputAction::SHOW_KEYBOARD);
-#endif
+#endif  // ANDROID
+
     event.consume();
     if (event.getButton() == MouseButton::RIGHT)
     {
 #ifndef DYECMD
         if (popupMenu)
             popupMenu->showTextFieldPopup(this);
-#endif
+#endif  // DYECMD
     }
     else if (event.getButton() == MouseButton::LEFT)
     {
@@ -784,7 +788,7 @@ void TextField::focusGained(const Event &event A_UNUSED)
 #ifdef ANDROID
     if (!WindowManager::isKeyboardVisible())
         inputManager.executeAction(InputAction::SHOW_KEYBOARD);
-#endif
+#endif  // ANDROID
 }
 
 void TextField::focusLost(const Event &event A_UNUSED)

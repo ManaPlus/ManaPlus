@@ -48,9 +48,9 @@ class Resource notfinal : public MemoryCounter
 #ifdef DEBUG_DUMP_LEAKS
             mNotCount(false),
             mDumped(false)
-#else
+#else  // DEBUG_DUMP_LEAKS
             mNotCount(false)
-#endif
+#endif  // DEBUG_DUMP_LEAKS
         {
         }
 
@@ -108,7 +108,7 @@ class Resource notfinal : public MemoryCounter
 
         void setDumped(const bool n)
         { mDumped = n; }
-#endif
+#endif  // DEBUG_DUMP_LEAKS
 
     protected:
         /**
@@ -126,7 +126,7 @@ class Resource notfinal : public MemoryCounter
         bool mNotCount;
 #ifdef DEBUG_DUMP_LEAKS
         bool mDumped;
-#endif
+#endif  // DEBUG_DUMP_LEAKS
 };
 
 #endif  // RESOURCES_RESOURCE_H

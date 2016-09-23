@@ -84,7 +84,7 @@ class WindowMenu final : public Container,
 
 #ifdef USE_PROFILER
         void logicChildren();
-#endif
+#endif  // USE_PROFILER
 
     protected:
         void drawChildren(Graphics *const graphics) override final

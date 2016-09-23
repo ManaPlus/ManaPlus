@@ -28,7 +28,7 @@
 #ifdef WIN32
 #undef ERROR
 #undef IGNORE
-#endif
+#endif  // WIN32
 
 /**
   * All the key functions.

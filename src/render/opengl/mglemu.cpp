@@ -44,4 +44,4 @@ void APIENTRY emuglActiveTexture(GLenum texture A_UNUSED)
 {
 }
 
-#endif
+#endif  // USE_OPENGL

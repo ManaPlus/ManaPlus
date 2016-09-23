@@ -32,17 +32,17 @@
 #ifdef ANDROID
 #include <GLES/gl.h>
 #include <GLES/glext.h>
-#else
+#else  // ANDROID
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
-#endif
+#endif  // USE_SDL2
 #include <SDL_opengl.h>
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #elif !defined(__native_client__)
 #include <GL/glext.h>
 #endif  // defined(__APPLE__)
-#endif
+#endif  // ANDROID
 
 class SafeOpenGLGraphics final : public Graphics
 {
@@ -72,6 +72,6 @@ class SafeOpenGLGraphics final : public Graphics
         bool mColorAlpha;
         FBOInfo mFbo;
 };
-#endif
 
+#endif  // defined USE_OPENGL && !defined ANDROID
 #endif  // RENDER_SAFEOPENGLGRAPHICS_H

@@ -37,7 +37,7 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 extern unsigned int mLastHost;
 
@@ -353,10 +353,11 @@ uint16_t Network::readWord(const int pos) const
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     return SDL_Swap16(*reinterpret_cast<uint16_t*>(
         mInBuffer + CAST_SIZE(pos)));
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
     return (*reinterpret_cast<uint16_t*>(
         mInBuffer + CAST_SIZE(pos)));
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 }
 
 void Network::fixSendBuffer()

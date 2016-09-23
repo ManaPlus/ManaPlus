@@ -26,14 +26,14 @@
 #ifdef ANDROID
 #include <GLES/gl.h>
 #include <GLES/glext.h>
-#else
+#else  // ANDROID
 #include <SDL_opengl.h>
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #elif !defined(__native_client__)
 #include <GL/glext.h>
 #endif  // defined(__APPLE__)
-#endif
+#endif  // ANDROID
 
 #include "localconsts.h"
 

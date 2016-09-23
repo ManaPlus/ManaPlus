@@ -70,7 +70,8 @@ class Setup_Video final : public SetupTab,
         Label *mAltFpsLabel;
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
         Button *mDetectButton;
-#endif
+#endif  // !defined(ANDROID) && !defined(__APPLE__) &&
+        // !defined(__native_client__)
         TextDialog *mDialog;
         bool mCustomCursorEnabled;
         bool mEnableResize;

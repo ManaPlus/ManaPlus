@@ -150,6 +150,6 @@ class Font final
 
 #ifdef UNITTESTS
 extern int textChunkCnt;
-#endif
+#endif  // UNITTESTS
 
 #endif  // GUI_FONTS_FONT_H

@@ -415,7 +415,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use FBO for screenshots (only for opengl)"),
         "", "usefbo", this, "usefboEvent");
-#endif
+#endif  // ANDROID
 
 #ifndef WIN32
     // TRANSLATORS: settings option
@@ -423,7 +423,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "screenshotDirectory3", this, "screenshotDirectory3Event",
         MainConfig_true,
         UseBase64_true);
-#endif
+#endif  // WIN32
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Network delay between sub servers"),

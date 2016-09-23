@@ -69,9 +69,9 @@
 #include "configuration.h"
 #ifndef DYECMD
 #include "dragdrop.h"
-#else
+#else  // DYECMD
 #include "resources/image/image.h"
-#endif
+#endif  // DYECMD
 #include "soundmanager.h"
 
 #include "const/sound.h"
@@ -247,7 +247,7 @@ Window::~Window()
 #ifndef DYECMD
     if (setupWindow)
         setupWindow->unregisterWindowForReset(this);
-#endif
+#endif  // DYECMD
 
     client->windowRemoved(this);
 
@@ -869,7 +869,7 @@ void Window::mousePressed(MouseEvent &event)
             popupMenu->showWindowPopup(this);
         }
     }
-#endif
+#endif  // DYECMD
 }
 
 void Window::close()
@@ -908,7 +908,7 @@ void Window::updateResizeHandler(MouseEvent &event)
 #ifndef DYECMD
     if (!dragDrop.isEmpty())
         return;
-#endif
+#endif  // DYECMD
 
     mResizeHandles = getResizeHandles(event);
 
@@ -1481,4 +1481,4 @@ void Window::logic()
     logicChildren();
     BLOCK_END("Window::logic")
 }
-#endif
+#endif  // USE_PROFILER

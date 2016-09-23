@@ -84,7 +84,7 @@ class KeyInput final
             mType(KeyEventType::PRESSED),
 #ifdef USE_SDL2
             mText(),
-#endif
+#endif  // USE_SDL2
             mActionId(InputAction::UNDEFINED_VALUE)
         { }
 
@@ -93,7 +93,7 @@ class KeyInput final
             mType(k.mType),
 #ifdef USE_SDL2
             mText(k.mText),
-#endif
+#endif  // USE_SDL2
             mActionId(k.mActionId)
         {
         }
@@ -104,7 +104,7 @@ class KeyInput final
             mType = k.mType;
 #ifdef USE_SDL2
             mText = k.mText;
-#endif
+#endif  // USE_SDL2
             mActionId = k.mActionId;
             return *this;
         }
@@ -152,7 +152,7 @@ class KeyInput final
         {
             return mText;
         }
-#endif
+#endif  // USE_SDL2
 
     protected:
         /**
@@ -167,7 +167,7 @@ class KeyInput final
 
 #ifdef USE_SDL2
         std::string mText;
-#endif
+#endif  // USE_SDL2
 
         InputActionT mActionId;
 };

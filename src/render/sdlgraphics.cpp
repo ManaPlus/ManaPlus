@@ -40,13 +40,13 @@
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h
-#endif
+#endif  // SDL_BYTEORDER
 
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN
 static unsigned int *cR = nullptr;
 static unsigned int *cG = nullptr;
 static unsigned int *cB = nullptr;
-#endif
+#endif  // SDL_BYTEORDER == SDL_LIL_ENDIAN
 
 SDLGraphics::SDLGraphics() :
     Graphics(),
@@ -970,11 +970,11 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                         p[2] = CAST_U8((p[2] * ca + cb) >> 8);
                         p[1] = CAST_U8((p[1] * ca + cg) >> 8);
                         p[0] = CAST_U8((p[0] * ca + cr) >> 8);
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
                         p[0] = CAST_U8((p[0] * ca + cb) >> 8);
                         p[1] = CAST_U8((p[1] * ca + cg) >> 8);
                         p[2] = CAST_U8((p[2] * ca + cr) >> 8);
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
                     }
                 }
                 break;
@@ -1004,7 +1004,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                             | (g & 0xff00) | (r & 0xff0000));
                     }
                 }
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
                 if (!cR)
                 {
                     cR = new unsigned int[0x100];
@@ -1064,7 +1064,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                             | cR[(dst & rMask) / rShift];
                     }
                 }
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
                 break;
             }
             default:
@@ -1235,7 +1235,7 @@ void SDLGraphics::drawHLine(int x1, int y, int x2) restrict2
                 p[2] = b2;
                 p += 3;
             }
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
             for (; x1 <= x2; ++x1)
             {
                 p[0] = b2;
@@ -1243,7 +1243,7 @@ void SDLGraphics::drawHLine(int x1, int y, int x2) restrict2
                 p[2] = b0;
                 p += 3;
             }
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
             break;
         }
 
@@ -1365,7 +1365,7 @@ void SDLGraphics::drawVLine(int x, int y1, int y2) restrict2
                 p[2] = b2;
                 p += pitch;
             }
-#else
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
             for (; y1 <= y2; ++y1)
             {
                 p[0] = b2;
@@ -1373,7 +1373,7 @@ void SDLGraphics::drawVLine(int x, int y1, int y2) restrict2
                 p[2] = b0;
                 p += pitch;
             }
-#endif
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
             break;
         }
 

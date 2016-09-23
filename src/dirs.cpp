@@ -31,7 +31,8 @@
 #include "utils/base64.h"
 #if defined(__native_client__) || (defined(ANDROID) && defined(USE_SDL2))
 #include "utils/files.h"
-#endif
+#endif  // defined(__native_client__) || (defined(ANDROID) &&
+        // defined(USE_SDL2))
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
@@ -44,18 +45,18 @@
 #include "main.h"
 
 #include "render/graphics.h"
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
 #ifdef __APPLE__
 #include <CoreFoundation/CFBundle.h>
-#endif
+#endif  // __APPLE__
 
 #ifdef WIN32
 #include <SDL_syswm.h>
 #include "utils/specialfolder.h"
 #undef ERROR
-#endif
+#endif  // WIN32
 
 #include <sys/stat.h>
 
@@ -65,7 +66,7 @@
 
 #if defined __native_client__
 #define _nacl_dir std::string("/persistent/manaplus")
-#endif
+#endif  // defined __native_client__
 
 #ifdef ANDROID
 #ifdef USE_SDL2
@@ -148,8 +149,8 @@ void extractAssets()
     delete [] buf;
 }
 
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
 void Dirs::updateDataPath()
 {
@@ -184,7 +185,7 @@ void Dirs::extractDataDir()
         "/data");
     Files::extractZip(zipName, "data", dirName);
     Files::extractLocale();
-#endif
+#endif  // defined(ANDROID) && defined(USE_SDL2)
 }
 
 void Dirs::mountDataDir()
@@ -211,7 +212,8 @@ void Dirs::mountDataDir()
     resourceManager->addToSearchPath(path, Append_false);
 // possible this need for support run client from dmg images.
 //    mPackageDir = path;
-#endif
+#endif  // defined __APPLE__
+
     resourceManager->addToSearchPath(PKG_DATADIR "data", Append_false);
     setPackageDir(PKG_DATADIR "data");
     resourceManager->addToSearchPath("data", Append_false);
@@ -225,12 +227,12 @@ void Dirs::mountDataDir()
         resourceManager->addToSearchPath(appDir + "/data/perserver/default",
             Append_false);
     }
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 
 #if defined __native_client__
     resourceManager->addToSearchPath("/http/data.zip", Append_false);
-#endif
+#endif  // defined __native_client__
 
     // Add branding/data to PhysFS search path
     if (!settings.options.brandingPath.empty())
@@ -242,9 +244,11 @@ void Dirs::mountDataDir()
         const int loc1 = path.find_last_of('/');
         const int loc2 = path.find_last_of('\\');
         const int loc = CAST_S32(std::max(loc1, loc2));
-#else
+#else  // WIN32
+
         const int loc = CAST_S32(path.find_last_of('/'));
-#endif
+#endif  // WIN32
+
         if (loc > 0)
         {
             resourceManager->addToSearchPath(path.substr(
@@ -344,10 +348,11 @@ void Dirs::initLocalDataDir()
             "appShort", "ManaPlus") + "/local";
 #elif defined __native_client__
         settings.localDataDir = _nacl_dir.append("/local");
-#else
+#else  // __APPLE__
+
         settings.localDataDir = std::string(PhysFs::getUserDir()) +
             ".local/share/mana";
-#endif
+#endif  // __APPLE__
     }
 
     if (mkdir_r(settings.localDataDir.c_str()))
@@ -358,7 +363,7 @@ void Dirs::initLocalDataDir()
     }
 #ifdef USE_PROFILER
     Perfomance::init(settings.localDataDir + "/profiler.log");
-#endif
+#endif  // USE_PROFILER
 }
 
 void Dirs::initTempDir()
@@ -403,10 +408,12 @@ void Dirs::initConfigDir()
             "appShort", "ManaPlus").append("/config");
 #elif defined __native_client__
         settings.configDir = _nacl_dir.append("/config");
-#else
+#else  // __APPLE__
+
         settings.configDir = std::string(PhysFs::getUserDir()).append(
             "/.config/mana/").append(branding.getValue("appShort", "mana"));
-#endif
+#endif  // __APPLE__
+
         logger->log("Generating config dir: " + settings.configDir);
     }
 
@@ -478,7 +485,7 @@ void Dirs::initUpdatesDir()
 #ifdef WIN32
     if (settings.updatesDir.find(":") != std::string::npos)
         replaceAll(settings.updatesDir, ":", "_");
-#endif
+#endif  // WIN32
 
     const std::string updateDir("/" + settings.updatesDir);
 
@@ -508,13 +515,14 @@ void Dirs::initUpdatesDir()
                 errorMessage = _("Error creating updates directory!");
                 client->setState(State::ERROR);
             }
-#else
+#else  // defined WIN32
+
             logger->log("Error: %s/%s can't be made, but doesn't exist!",
                 settings.localDataDir.c_str(), settings.updatesDir.c_str());
             // TRANSLATORS: update server initialisation error
             errorMessage = _("Error creating updates directory!");
             client->setState(State::ERROR);
-#endif
+#endif  // defined WIN32
         }
     }
     const std::string updateLocal = updateDir + "/local";

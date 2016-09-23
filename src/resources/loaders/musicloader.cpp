@@ -55,13 +55,14 @@ namespace
             {
                 return new SDLMusic(music, nullptr, rl->path);
             }
-#else
+#else  // USE_SDL2
+
             // Mix_LoadMUSType_RW was added without version changed in SDL1.2 :(
             if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
             {
                 return new SDLMusic(music, rw, rl->path);
             }
-#endif
+#endif  // USE_SDL2
             else
             {
                 logger->log("Error, failed to load music: %s", Mix_GetError());

@@ -24,15 +24,9 @@
 #if defined WIN32
 #include <limits.h>
 #include <windows.h>
-#endif
+#endif  // defined WIN32
 
 #include <sys/stat.h>
-
-#ifdef M_MKDIR_TEST_
-// compile with -D_MKDIR_TEST_ to get a standalone binary
-#include <cstdio>
-#include <cstdlib>
-#endif
 
 #include "debug.h"
 
@@ -101,15 +95,12 @@ int mkdir_r(const char *const pathname)
                     return -1;
             }
 
-#ifdef M_MKDIR_TEST_
-            printf("%s\n", tmp);
-#endif
             *p = '/';
         }
     }
     return 0;
 }
-#else
+#else  // WIN32
 
 /// Create a directory, making leading components first if necessary
 int mkdir_r(const char *const pathname)
@@ -164,22 +155,10 @@ int mkdir_r(const char *const pathname)
                 return -1;
             }
 
-#ifdef M_MKDIR_TEST_
-            printf("%s\n", tmp);
-#endif
             *p = '/';
         }
     }
     delete []tmp;
     return 0;
 }
-#endif
-
-#ifdef M_MKDIR_TEST_
-int main(int argc, char** argv)
-{
-    if (argc < 2)
-        exit(1);
-    mkdir_r(argv[1]);
-}
-#endif
+#endif  // WIN32

@@ -23,14 +23,14 @@
 
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>
-#else
+#else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <stdint.h>
-#endif
+#endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 
 #ifdef TMWA_SUPPORT
 static const uint16_t DEFAULT_PORT = 6901;
-#else
-static const uint16_t DEFAULT_PORT = 6900;
-#endif
+#else  // TMWA_SUPPORT
 
+static const uint16_t DEFAULT_PORT = 6900;
+#endif  // TMWA_SUPPORT
 #endif  // CONST_NET_NET_H

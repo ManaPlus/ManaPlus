@@ -102,7 +102,7 @@ class Client final : public ActionListener
         Button *mPerfomanceButton;
 #ifdef ANDROID
         Button *mCloseButton;
-#endif
+#endif  // ANDROID
 
         StateT mState;
         StateT mOldState;

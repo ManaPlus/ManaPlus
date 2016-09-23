@@ -64,7 +64,8 @@ class ImageHelper notfinal
         virtual Image *createTextSurface(SDL_Surface *const tmpImage,
                                          const int width, const int height,
                                          float alpha) A_WARN_UNUSED = 0;
-#else
+#else  // __GNUC__
+
         virtual Image *loadSurface(SDL_Surface *const) A_WARN_UNUSED
         { return nullptr; }
 
@@ -72,7 +73,7 @@ class ImageHelper notfinal
                                          const int width, const int height,
                                          const float alpha) const A_WARN_UNUSED
         { return nullptr; }
-#endif
+#endif  // __GNUC__
 
         virtual SDL_Surface *create32BitSurface(int width,
                                                 int height)

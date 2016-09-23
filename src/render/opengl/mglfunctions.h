@@ -35,10 +35,10 @@ LOGGER_H
 #define getFunction(name) nullptr
 #elif defined __native_client__
 #define getFunction(name) glGetProcAddressREGAL(name)
-#else
+#else  // WIN32
 #define getFunction(name) glXGetProcAddress(\
     reinterpret_cast<const GLubyte*>(name))
-#endif
+#endif  // WIN32
 
 #define assignFunction(func) \
     { \

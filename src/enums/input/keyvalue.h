@@ -71,7 +71,7 @@
 // that windows define with Guichan.
 #if defined (_WIN32) && defined(DELETE)
 #undef DELETE
-#endif
+#endif  // defined (_WIN32) && defined(DELETE)
 
 namespace KeyValue
 {

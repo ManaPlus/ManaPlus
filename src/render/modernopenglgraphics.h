@@ -35,17 +35,17 @@
 #include <GLES/gl.h>
 #include <GLES/glext.h>
 #include <GLES2/gl2.h>
-#else
+#else  // ANDROID
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
-#endif
+#endif  // USE_SDL2
 #include <SDL_opengl.h>
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #elif !defined(__native_client__)
 #include <GL/glext.h>
 #endif  // defined(__APPLE__)
-#endif
+#endif  // ANDROID
 
 class OpenGLGraphicsVertexes;
 class ShaderProgram;
@@ -146,7 +146,8 @@ class ModernOpenGLGraphics final : public Graphics
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;
         unsigned mOldTextureId;
-#endif
+#endif  // DEBUG_BIND_TEXTURE
+
         FBOInfo mFbo;
 };
 #endif  // defined(USE_OPENGL) && !defined(ANDROID) &&

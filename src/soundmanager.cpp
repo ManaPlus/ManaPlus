@@ -26,7 +26,7 @@
 
 #ifndef DYECMD
 #include "being/localplayer.h"
-#endif
+#endif  // DYECMD
 
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"
@@ -255,10 +255,10 @@ void SoundManager::info()
 
 #ifdef USE_SDL2
     const char *driver = SDL_GetCurrentAudioDriver();
-#else
+#else  // USE_SDL2
     char driver[40] = "Unknown";
     SDL_AudioDriverName(driver, 40);
-#endif
+#endif  // USE_SDL2
 
     Mix_QuerySpec(&rate, &audioFormat, &channels);
     switch (audioFormat)
@@ -443,7 +443,7 @@ void SoundManager::playSfx(const std::string &path A_UNUSED,
                            const int y A_UNUSED) const
 {
 }
-#else
+#else  // DYECMD
 void SoundManager::playSfx(const std::string &path,
                            const int x, const int y) const
 {
@@ -479,7 +479,7 @@ void SoundManager::playSfx(const std::string &path,
             sample->decRef();
     }
 }
-#endif
+#endif  // DYECMD
 
 void SoundManager::playGuiSound(const std::string &name)
 {

@@ -34,9 +34,10 @@ class Dirs final
 
 #if defined(ANDROID) && defined(USE_SDL2)
         static void extractDataDir();
-#else
+#else  // defined(ANDROID) && defined(USE_SDL2)
+
         static void extractDataDir() A_CONST;
-#endif
+#endif  // defined(ANDROID) && defined(USE_SDL2)
 
         static void mountDataDir();
 
@@ -57,8 +58,8 @@ class Dirs final
 #ifdef ANDROID
 #ifdef USE_SDL2
         static void setProgress();
-#endif
-#endif
+#endif  // USE_SDL2
+#endif  // ANDROID
 };
 
 #endif  // DIRS_H
