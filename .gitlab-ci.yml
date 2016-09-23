@@ -350,14 +350,14 @@ gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh
-  image: debian:unstable
+  image: debian:stable
   <<: *log-failed-jobs
 
 gcc-4.9_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh
-  image: vicamo/debian:sid-i386
+  image: vicamo/debian:stable-i386
   <<: *log-failed-jobs
   tags:
     - docker
@@ -366,14 +366,14 @@ gcc-4.9_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49_c++11.sh
-  image: debian:unstable
+  image: debian:stable
   <<: *log-failed-jobs
 
 cmake_gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/cmake_gcc49.sh
-  image: debian:unstable
+  image: debian:stable
   <<: *log-failed-jobs
   tags:
     - docker
@@ -509,7 +509,7 @@ gcc_cilkplus:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh --enable-cilkplus
-  image: debian:unstable
+  image: debian:stable
   <<: *log-failed-jobs
 
 gcc_eathena_opengl:
