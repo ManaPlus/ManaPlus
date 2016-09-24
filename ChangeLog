@@ -1,3 +1,13 @@
+2016-09-24 New release 1.6.9.24
+fix: bold links hightlight.
+fix: some rare memory leaks.
+fix: not try insert intems into each other in legacy servers.
+fix: reading keys from configuration.
+add: support for fake and remove packets xml file.
+add: drag and drop into shop window.
+add: allow drag most windows by used parts.
+add: extend outfits window menu.
+
 2016-09-10 New release 1.6.9.10
 fix: file handlers leak.
 fix: running command in chat if not tab selected.
