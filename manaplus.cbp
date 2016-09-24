@@ -239,6 +239,7 @@
 		<Unit filename="src/resources/db/itemdb.cpp" />
 		<Unit filename="src/resources/db/homunculusdb.cpp" />
 		<Unit filename="src/resources/db/monsterdb.cpp" />
+		<Unit filename="src/resources/db/networkdb.cpp" />
 		<Unit filename="src/resources/db/npcdialogdb.cpp" />
 		<Unit filename="src/resources/db/petdb.cpp" />
 		<Unit filename="src/resources/db/mercenarydb.cpp" />
@@ -683,7 +684,6 @@
 		<Unit filename="src/net/ea/npchandler.cpp" />
 		<Unit filename="src/net/ea/inventoryrecv.cpp" />
 		<Unit filename="src/net/ea/npcrecv.cpp" />
-		<Unit filename="src/net/ea/guildhandler.cpp" />
 		<Unit filename="src/net/ea/adminrecv.cpp" />
 		<Unit filename="src/net/ea/playerrecv.cpp" />
 		<Unit filename="src/net/ea/charserverhandler.cpp" />
@@ -693,7 +693,6 @@
 		<Unit filename="src/net/ea/maprecv.cpp" />
 		<Unit filename="src/net/ea/buysellrecv.cpp" />
 		<Unit filename="src/net/ea/beingrecv.cpp" />
-		<Unit filename="src/net/ea/guildrecv.cpp" />
 		<Unit filename="src/net/ea/chatrecv.cpp" />
 		<Unit filename="src/net/ea/beinghandler.cpp" />
 		<Unit filename="src/net/ea/playerhandler.cpp" />
@@ -951,6 +950,7 @@
 		<Unit filename="src/resources/db/statuseffectdb.h" />
 		<Unit filename="src/resources/db/badgesdb.h" />
 		<Unit filename="src/resources/db/skillunitdb.h" />
+		<Unit filename="src/resources/db/networkdb.h" />
 		<Unit filename="src/resources/db/mapdb.h" />
 		<Unit filename="src/resources/db/deaddb.h" />
 		<Unit filename="src/resources/db/itemfielddb.h" />
@@ -1552,13 +1552,11 @@
 		<Unit filename="src/net/ea/gamehandler.h" />
 		<Unit filename="src/net/ea/buysellhandler.h" />
 		<Unit filename="src/net/ea/partyrecv.h" />
-		<Unit filename="src/net/ea/guildrecv.h" />
 		<Unit filename="src/net/ea/loginrecv.h" />
 		<Unit filename="src/net/ea/beingrecv.h" />
 		<Unit filename="src/net/ea/adminrecv.h" />
 		<Unit filename="src/net/ea/gamerecv.h" />
 		<Unit filename="src/net/ea/playerrecv.h" />
-		<Unit filename="src/net/ea/guildhandler.h" />
 		<Unit filename="src/net/ea/itemhandler.h" />
 		<Unit filename="src/net/ea/beinghandler.h" />
 		<Unit filename="src/net/ea/equipbackend.h" />
@@ -1652,6 +1650,7 @@
 		<Unit filename="src/enums/gui/gradienttype.h" />
 		<Unit filename="src/enums/gui/itemamountwindowusage.h" />
 		<Unit filename="src/enums/gui/progresscolorid.h" />
+		<Unit filename="src/enums/gui/shoplistboxtype.h" />
 		<Unit filename="src/enums/screendensity.h" />
 		<Unit filename="src/enums/cutin.h" />
 		<Unit filename="src/enums/input/inputtype.h" />
@@ -1673,12 +1672,14 @@
 		<Unit filename="src/enums/commandtarget.h" />
 		<Unit filename="src/enums/simpletypes/visible.h" />
 		<Unit filename="src/enums/simpletypes/damaged.h" />
+		<Unit filename="src/enums/simpletypes/opaque.h" />
 		<Unit filename="src/enums/simpletypes/showcenter.h" />
 		<Unit filename="src/enums/simpletypes/notify.h" />
 		<Unit filename="src/enums/simpletypes/allowsort.h" />
 		<Unit filename="src/enums/simpletypes/tryremovecolors.h" />
 		<Unit filename="src/enums/simpletypes/stringdefines2.h" />
 		<Unit filename="src/enums/simpletypes/sfx.h" />
+		<Unit filename="src/enums/simpletypes/losefocusontab.h" />
 		<Unit filename="src/enums/simpletypes/autotarget.h" />
 		<Unit filename="src/enums/simpletypes/trading.h" />
 		<Unit filename="src/enums/simpletypes/forcedisplay.h" />
