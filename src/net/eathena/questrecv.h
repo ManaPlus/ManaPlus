@@ -32,6 +32,7 @@ namespace EAthena
     {
         void processAddQuest(Net::MessageIn &msg);
         void processAddQuests(Net::MessageIn &msg);
+        void processAddQuests2(Net::MessageIn &msg);
         void processAddQuestsObjectives(Net::MessageIn &msg);
         void processUpdateQuestsObjectives(Net::MessageIn &msg);
         void processRemoveQuest(Net::MessageIn &msg);

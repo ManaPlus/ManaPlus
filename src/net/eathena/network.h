@@ -29,7 +29,7 @@
  * Protocol version, reported to the eAthena char and mapserver who can adjust
  * the protocol accordingly.
  */
-#define CLIENT_PROTOCOL_VERSION      19
+#define CLIENT_PROTOCOL_VERSION      20
 
 namespace EAthena
 {

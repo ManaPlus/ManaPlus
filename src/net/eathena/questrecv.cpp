@@ -85,6 +85,29 @@ void QuestRecv::processAddQuests(Net::MessageIn &msg)
         questsWindow->rebuild(false);
 }
 
+void QuestRecv::processAddQuests2(Net::MessageIn &msg)
+{
+    msg.readInt16("len");
+    const int num = msg.readInt32("quests count");
+    for (int f = 0; f < num; f ++)
+    {
+        const int var = msg.readInt32("quest id");
+        msg.readUInt8("state");
+        const int val = msg.readInt32("count1");
+        // +++ need use all this fields
+        msg.readInt32("count2");
+        msg.readInt32("count3");
+        msg.readInt32("time");
+        if (questsWindow)
+            questsWindow->updateQuest(var, val);
+        if (skillDialog)
+            skillDialog->updateQuest(var, val);
+    }
+
+    if (questsWindow)
+        questsWindow->rebuild(false);
+}
+
 void QuestRecv::processAddQuestsObjectives(Net::MessageIn &msg)
 {
     msg.readInt16("len");
