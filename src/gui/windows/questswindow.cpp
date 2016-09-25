@@ -336,9 +336,13 @@ void QuestsWindow::action(const ActionEvent &event)
     }
 }
 
-void QuestsWindow::updateQuest(const int var, const int val)
+void QuestsWindow::updateQuest(const int var,
+                               const int val1,
+                               const int val2 A_UNUSED,
+                               const int val3 A_UNUSED,
+                               const int time A_UNUSED)
 {
-    mVars[var] = val;
+    mVars[var] = val1;
 }
 
 void QuestsWindow::rebuild(const bool playSound)

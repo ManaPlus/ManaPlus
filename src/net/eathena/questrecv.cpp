@@ -51,12 +51,12 @@ void QuestRecv::processAddQuest(Net::MessageIn &msg)
 
     if (questsWindow)
     {
-        questsWindow->updateQuest(var, val);
+        questsWindow->updateQuest(var, val, 0, 0, 0);
         questsWindow->rebuild(true);
     }
     if (skillDialog)
     {
-        skillDialog->updateQuest(var, val);
+        skillDialog->updateQuest(var, val, 0, 0, 0);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
     }
 }
@@ -65,20 +65,20 @@ void QuestRecv::processAddQuest2(Net::MessageIn &msg)
 {
     const int var = msg.readInt32("quest id");
     msg.readUInt8("state");
-    const int val = msg.readInt32("count1");
+    const int val1 = msg.readInt32("count1");
     // +++ need use all this fields
-    msg.readInt32("count2");
-    msg.readInt32("count3");
-    msg.readInt32("time");
+    const int val2 = msg.readInt32("count2");
+    const int val3 = msg.readInt32("count3");
+    const int time = msg.readInt32("time");
 
     if (questsWindow)
     {
-        questsWindow->updateQuest(var, val);
+        questsWindow->updateQuest(var, val1, val2, val3, time);
         questsWindow->rebuild(true);
     }
     if (skillDialog)
     {
-        skillDialog->updateQuest(var, val);
+        skillDialog->updateQuest(var, val1, val2, val3, time);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
     }
 }
@@ -98,9 +98,9 @@ void QuestRecv::processAddQuests(Net::MessageIn &msg)
             msg.readInt16("objectives count");
         }
         if (questsWindow)
-            questsWindow->updateQuest(var, val);
+            questsWindow->updateQuest(var, val, 0, 0, 0);
         if (skillDialog)
-            skillDialog->updateQuest(var, val);
+            skillDialog->updateQuest(var, val, 0, 0, 0);
     }
 
     if (questsWindow)
@@ -115,15 +115,15 @@ void QuestRecv::processAddQuests2(Net::MessageIn &msg)
     {
         const int var = msg.readInt32("quest id");
         msg.readUInt8("state");
-        const int val = msg.readInt32("count1");
+        const int val1 = msg.readInt32("count1");
         // +++ need use all this fields
-        msg.readInt32("count2");
-        msg.readInt32("count3");
-        msg.readInt32("time");
+        const int val2 = msg.readInt32("count2");
+        const int val3 = msg.readInt32("count3");
+        const int time = msg.readInt32("time");
         if (questsWindow)
-            questsWindow->updateQuest(var, val);
+            questsWindow->updateQuest(var, val1, val2, val3, time);
         if (skillDialog)
-            skillDialog->updateQuest(var, val);
+            skillDialog->updateQuest(var, val1, val2, val3, time);
     }
 
     if (questsWindow)
@@ -174,12 +174,12 @@ void QuestRecv::processRemoveQuest(Net::MessageIn &msg)
     // but changing status to -1
     if (questsWindow)
     {
-        questsWindow->updateQuest(var, val);
+        questsWindow->updateQuest(var, val, 0, 0, 0);
         questsWindow->rebuild(true);
     }
     if (skillDialog)
     {
-        skillDialog->updateQuest(var, val);
+        skillDialog->updateQuest(var, val, 0, 0, 0);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
     }
 }

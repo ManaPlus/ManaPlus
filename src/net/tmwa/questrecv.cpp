@@ -38,12 +38,12 @@ void QuestRecv::processSetQuestVar(Net::MessageIn &msg)
     const int val = msg.readInt32("value");
     if (questsWindow)
     {
-        questsWindow->updateQuest(var, val);
+        questsWindow->updateQuest(var, val, 0, 0, 0);
         questsWindow->rebuild(true);
     }
     if (skillDialog)
     {
-        skillDialog->updateQuest(var, val);
+        skillDialog->updateQuest(var, val, 0, 0, 0);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
     }
 }
@@ -56,9 +56,9 @@ void QuestRecv::processPlayerQuests(Net::MessageIn &msg)
         const int var = msg.readInt16("variable");
         const int val = msg.readInt32("value");
         if (questsWindow)
-            questsWindow->updateQuest(var, val);
+            questsWindow->updateQuest(var, val, 0, 0, 0);
         if (skillDialog)
-            skillDialog->updateQuest(var, val);
+            skillDialog->updateQuest(var, val, 0, 0, 0);
     }
     if (questsWindow)
         questsWindow->rebuild(false);

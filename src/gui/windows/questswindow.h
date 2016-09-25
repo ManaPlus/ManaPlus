@@ -59,7 +59,11 @@ class QuestsWindow final : public Window,
 
         void action(const ActionEvent &event) override final;
 
-        void updateQuest(const int var, const int val);
+        void updateQuest(const int var,
+                         const int val1,
+                         const int val2,
+                         const int val3,
+                         const int time);
 
         void rebuild(const bool playSound);
 

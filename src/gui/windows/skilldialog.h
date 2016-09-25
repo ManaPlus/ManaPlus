@@ -124,7 +124,11 @@ class SkillDialog final : public Window,
 
         void updateTabSelection();
 
-        void updateQuest(const int var, const int val);
+        void updateQuest(const int var,
+                         const int val1,
+                         const int val2,
+                         const int val3,
+                         const int time);
 
         void playUpdateEffect(const int id) const;
 

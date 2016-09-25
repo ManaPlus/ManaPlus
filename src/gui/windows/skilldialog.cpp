@@ -682,7 +682,11 @@ void SkillDialog::updateTabSelection()
     }
 }
 
-void SkillDialog::updateQuest(const int var, const int val)
+void SkillDialog::updateQuest(const int var,
+                              const int val1,
+                              const int val2 A_UNUSED,
+                              const int val3 A_UNUSED,
+                              const int time A_UNUSED)
 {
     const int id = var + SKILL_VAR_MIN_ID;
     const SkillMap::const_iterator it = mSkills.find(id);
@@ -692,8 +696,8 @@ void SkillDialog::updateQuest(const int var, const int val)
         SkillInfo *const info = it->second;
         if (info)
         {
-            PlayerInfo::setSkillLevel(id, val);
-            info->level = val;
+            PlayerInfo::setSkillLevel(id, val1);
+            info->level = val1;
             info->update();
         }
     }
