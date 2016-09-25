@@ -824,6 +824,7 @@ if (serverVersion > 0)
     packet(SMSG_WALK_ERROR,                0x0b21,  10, &PlayerRecv::processWalkError,                  0);
     packet(SMSG_HOMUNCULUS_EXP,            0x0b22,  10, &HomunculusRecv::processHomunculusExp,          0);
     packet(SMSG_QUEST_LIST2,               0x0b23,  -1, &QuestRecv::processAddQuests2,                  0);
+    packet(SMSG_QUEST_ADD2,                0x0b24,  23, &QuestRecv::processAddQuest2,                   0);
 
     // char server
     packet(SMSG_CHAR_PASSWORD_RESPONSE,    0x0062,   3, &LoginRecv::processCharPasswordResponse,        0);

@@ -31,6 +31,7 @@ namespace EAthena
     namespace QuestRecv
     {
         void processAddQuest(Net::MessageIn &msg);
+        void processAddQuest2(Net::MessageIn &msg);
         void processAddQuests(Net::MessageIn &msg);
         void processAddQuests2(Net::MessageIn &msg);
         void processAddQuestsObjectives(Net::MessageIn &msg);
