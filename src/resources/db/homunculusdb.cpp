@@ -27,6 +27,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/dtor.h"
+#include "utils/gettext.h"
 
 #include "configuration.h"
 
@@ -93,6 +94,10 @@ void HomunculusDB::loadXmlFile(const std::string &fileName,
             currentInfo = new BeingInfo;
 
         currentInfo->setBlockType(BlockType::NONE);
+        currentInfo->setName(XML::langProperty(
+            // TRANSLATORS: unknown info name
+            homunculusNode, "name", _("unnamed")));
+
         BeingCommon::readBasicAttributes(currentInfo,
             homunculusNode, "attack");
         BeingCommon::readWalkingAttributes(currentInfo,
