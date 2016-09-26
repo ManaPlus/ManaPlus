@@ -29,7 +29,6 @@
 
 #include "listeners/actionlistener.h"
 
-#include "utils/intmap.h"
 #include "utils/xml.h"
 
 #include "resources/questvar.h"
