@@ -297,7 +297,8 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                         if (id)
                         {
                             std::vector<int> parts;
-                            splitToIntVector(parts, bLink.link.substr(idx), ',');
+                            splitToIntVector(parts,
+                                bLink.link.substr(idx), ',');
                             while (parts.size() < maxCards)
                                 parts.push_back(0);
                             const ItemColor itemColor =
