@@ -46,6 +46,7 @@
 
 #include "resources/db/itemdb.h"
 #include "resources/db/monsterdb.h"
+#include "resources/db/petdb.h"
 #endif  // DYECMD
 
 #include "resources/imageset.h"
@@ -258,6 +259,14 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                     const BeingTypeId id = static_cast<BeingTypeId>(
                         atoi(bLink.link.substr(1).c_str()));
                     BeingInfo *info = MonsterDB::get(id);
+                    if (info)
+                        bLink.caption = info->getName();
+                }
+                else if (!link.empty() && link[0] == 'p')
+                {  // pet link
+                    const BeingTypeId id = static_cast<BeingTypeId>(
+                        atoi(bLink.link.substr(1).c_str()));
+                    BeingInfo *info = PETDB::get(id);
                     if (info)
                         bLink.caption = info->getName();
                 }
