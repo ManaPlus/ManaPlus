@@ -30,7 +30,6 @@
 
 #include "enums/simpletypes/append.h"
 
-#include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
 #include "resources/updatefile.h"
@@ -42,6 +41,7 @@
 
 class BrowserBox;
 class Button;
+class ItemLinkHandler;
 class Label;
 class ProgressBar;
 class ScrollArea;
@@ -58,7 +58,6 @@ namespace Net
  */
 class UpdaterWindow final : public Window,
                             public ActionListener,
-                            public LinkHandler,
                             public KeyListener
 {
     public:
@@ -113,9 +112,6 @@ class UpdaterWindow final : public Window,
         void keyPressed(KeyEvent &event) override final;
 
         void logic() override final;
-
-        void handleLink(const std::string &link,
-                        MouseEvent *const event A_UNUSED) override final;
 
         void loadFile(std::string file);
 
@@ -210,6 +206,7 @@ class UpdaterWindow final : public Window,
 
         std::string mUpdateServerPath;
 
+        ItemLinkHandler *mItemLinkHandler A_NONNULLPOINTER;
         Label *mLabel A_NONNULLPOINTER;
         Button *mCancelButton A_NONNULLPOINTER;
         Button *mPlayButton A_NONNULLPOINTER;

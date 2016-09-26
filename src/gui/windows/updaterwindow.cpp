@@ -30,6 +30,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
+#include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
@@ -184,6 +185,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     mUpdateFiles(),
     mTempUpdateFiles(),
     mUpdateServerPath(mUpdateHost),
+    mItemLinkHandler(new ItemLinkHandler),
     // TRANSLATORS: updater window label
     mLabel(new Label(this, _("Connecting..."))),
     // TRANSLATORS: updater window button
@@ -217,7 +219,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
 
     mProgressBar->setSmoothProgress(false);
     mBrowserBox->setOpaque(Opaque_false);
-    mBrowserBox->setLinkHandler(this);
+    mBrowserBox->setLinkHandler(mItemLinkHandler);
     mBrowserBox->setProcessVars(true);
     mBrowserBox->setEnableKeys(true);
     mBrowserBox->setEnableTabs(true);
@@ -270,6 +272,7 @@ UpdaterWindow::~UpdaterWindow()
         delete2(mDownload)
     }
     free(mMemoryBuffer);
+    delete2(mItemLinkHandler);
 }
 
 void UpdaterWindow::setProgress(const float p)
@@ -1067,15 +1070,6 @@ unsigned long UpdaterWindow::getFileHash(const std::string &filePath)
     if (!buf)
         return 0;
     return Net::Download::adlerBuffer(buf, size);
-}
-
-void UpdaterWindow::handleLink(const std::string &link,
-                               MouseEvent *const event A_UNUSED)
-{
-    if (strStartWith(link, "http://") || strStartWith(link, "https://"))
-        openBrowser(link);
-    else if (link == "news")
-        loadFile("news");
 }
 
 void UpdaterWindow::loadFile(std::string file)
