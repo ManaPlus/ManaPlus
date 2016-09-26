@@ -23,7 +23,6 @@
 #ifndef GUI_WINDOWS_DIDYOUKNOWWINDOW_H
 #define GUI_WINDOWS_DIDYOUKNOWWINDOW_H
 
-#include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
@@ -31,13 +30,13 @@
 class Button;
 class BrowserBox;
 class CheckBox;
+class ItemLinkHandler;
 class ScrollArea;
 
 /**
  * The help dialog.
  */
 class DidYouKnowWindow final : public Window,
-                               public LinkHandler,
                                public ActionListener
 {
     public:
@@ -45,6 +44,8 @@ class DidYouKnowWindow final : public Window,
          * Constructor.
          */
         DidYouKnowWindow();
+
+        ~DidYouKnowWindow();
 
         A_DELETE_COPY(DidYouKnowWindow)
 
@@ -55,12 +56,6 @@ class DidYouKnowWindow final : public Window,
          */
         void action(const ActionEvent &event) override final;
 
-        /**
-         * Handles link action.
-         */
-        void handleLink(const std::string &link,
-                        MouseEvent *const event) override final;
-
         void loadData(int num = 0);
 
         void setVisible(Visible visible) override final;
@@ -68,6 +63,7 @@ class DidYouKnowWindow final : public Window,
     private:
         void loadFile(const int num);
 
+        ItemLinkHandler *mItemLinkHandler A_NONNULLPOINTER;
         BrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
         Button *mButtonPrev A_NONNULLPOINTER;

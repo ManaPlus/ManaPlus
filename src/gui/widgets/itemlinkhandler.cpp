@@ -198,6 +198,15 @@ void ItemLinkHandler::handleLink(const std::string &link,
     {
         handleCommandLink(link, "=");
     }
+    else if (link == "news")
+    {
+        if (helpWindow)
+            helpWindow->loadHelpSimple("news");
+    }
+    if (link == "copyright")
+    {
+        inputManager.executeAction(InputAction::WINDOW_ABOUT);
+    }
     else
     {
         handleItemLink(link);

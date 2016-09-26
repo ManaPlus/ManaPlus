@@ -31,10 +31,12 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/checkbox.h"
+#include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/process.h"
 
@@ -52,6 +54,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     // TRANSLATORS: did you know window name
     Window(_("Did You Know?"), Modal_false, nullptr, "didyouknow.xml"),
     ActionListener(),
+    mItemLinkHandler(new ItemLinkHandler),
     mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
@@ -80,7 +83,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     // TRANSLATORS: did you know window button
     Button *const okButton = new Button(this, _("Close"), "close", this);
 
-    mBrowserBox->setLinkHandler(this);
+    mBrowserBox->setLinkHandler(mItemLinkHandler);
     if (gui)
         mBrowserBox->setFont(gui->getHelpFont());
     mBrowserBox->setProcessVars(true);
@@ -107,6 +110,11 @@ void DidYouKnowWindow::postInit()
     widgetResized(Event(nullptr));
 }
 
+DidYouKnowWindow::~DidYouKnowWindow()
+{
+    delete2(mItemLinkHandler);
+}
+
 void DidYouKnowWindow::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
@@ -131,13 +139,6 @@ void DidYouKnowWindow::action(const ActionEvent &event)
                 mOpenAgainCheckBox->isSelected());
         }
     }
-}
-
-void DidYouKnowWindow::handleLink(const std::string &link,
-                                  MouseEvent *const event A_UNUSED)
-{
-    if (strStartWith(link, "http://") || strStartWith(link, "https://"))
-        openBrowser(link);
 }
 
 void DidYouKnowWindow::loadData(int num)

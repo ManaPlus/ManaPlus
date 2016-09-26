@@ -69,6 +69,8 @@ class HelpWindow final : public Window,
          */
         void loadHelp(const std::string &helpFile);
 
+        void loadHelpSimple(const std::string &helpFile);
+
         /**
          * Seach for given text in tags.
          */

@@ -127,6 +127,16 @@ void HelpWindow::loadHelp(const std::string &helpFile)
     setVisible(Visible_true);
 }
 
+void HelpWindow::loadHelpSimple(const std::string &helpFile)
+{
+    if (!checkPath(helpFile))
+        return;
+    mBrowserBox->clearRows();
+    loadFile(helpFile);
+    mScrollArea->setVerticalScrollAmount(0);
+    setVisible(Visible_true);
+}
+
 void HelpWindow::loadFile(std::string file)
 {
     trim(file);
