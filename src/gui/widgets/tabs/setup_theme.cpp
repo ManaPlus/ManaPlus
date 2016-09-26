@@ -313,7 +313,7 @@ void Setup_Theme::action(const ActionEvent &event)
             // TRANSLATORS: ok dialog button
             _("OK"),
             DialogType::OK,
-            Modal_false,
+            Modal_true,
             ShowCenter_true,
             nullptr,
             600);
