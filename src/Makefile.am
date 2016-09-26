@@ -393,6 +393,7 @@ SRC += events/actionevent.h \
 	      resources/questeffect.h \
 	      resources/questitem.h \
 	      resources/questitemtext.h \
+	      resources/questvar.h \
 	      enums/resources/questtype.h \
 	      resources/resource.cpp \
 	      resources/resource.h \

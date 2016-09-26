@@ -189,7 +189,7 @@ void QuestsWindow::loadXmlFile(const std::string &fileName,
             const int id = XML::getProperty(varNode, "id", 0);
             if (id < 0)
                 continue;
-            mVars[id] = 0;
+            mVars[id] = QuestVar();
             for_each_xml_child_node(questNode, varNode)
             {
                 if (xmlNameEqual(questNode, "quest"))
@@ -298,6 +298,7 @@ void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
                 std::string()));
         }
     }
+    quest->var = var;
     mQuests[var].push_back(quest);
 }
 
@@ -338,11 +339,11 @@ void QuestsWindow::action(const ActionEvent &event)
 
 void QuestsWindow::updateQuest(const int var,
                                const int val1,
-                               const int val2 A_UNUSED,
-                               const int val3 A_UNUSED,
-                               const int time A_UNUSED)
+                               const int val2,
+                               const int val3,
+                               const int time1)
 {
-    mVars[var] = val1;
+    mVars[var] = QuestVar(val1, val2, val3, time1);
 }
 
 void QuestsWindow::rebuild(const bool playSound)
@@ -357,10 +358,10 @@ void QuestsWindow::rebuild(const bool playSound)
     int updatedQuest = -1;
     int newCompleteStatus = -1;
 
-    FOR_EACH (IntMapCIter, it, mVars)
+    FOR_EACH (NpcQuestVarMapCIter, it, mVars)
     {
         const int var = (*it).first;
-        const int val = (*it).second;
+        const QuestVar &val = (*it).second;
         const std::vector<QuestItem*> &quests = mQuests[var];
         FOR_EACH (std::vector<QuestItem*>::const_iterator, it2, quests)
         {
@@ -368,14 +369,20 @@ void QuestsWindow::rebuild(const bool playSound)
                 continue;
             QuestItem *const quest = *it2;
             // complete quest
-            if (quest->complete.find(val) != quest->complete.end())
+            if (quest->complete.find(val.var1) != quest->complete.end())
+            {
                 complete.push_back(quest);
+            }
             // incomplete quest
-            else if (quest->incomplete.find(val) != quest->incomplete.end())
+            else if (quest->incomplete.find(val.var1) != quest->incomplete.end())
+            {
                 incomplete.push_back(quest);
+            }
             // hidden quest
             else
+            {
                 hidden.push_back(quest);
+            }
         }
     }
 
@@ -465,39 +472,49 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
         return;
 
     const std::vector<QuestItemText> &texts = quest->texts;
+    const QuestVar &var = mVars[quest->var];
+    const std::string var1 = toString(var.var1);
+    const std::string var2 = toString(var.var2);
+    const std::string var3 = toString(var.var3);
+    const std::string timeStr = timeDiffToString(var.time1).c_str();
     mText->clearRows();
     FOR_EACH (std::vector<QuestItemText>::const_iterator, it, texts)
     {
         const QuestItemText &data = *it;
+        std::string text = data.text;
+        replaceAll(text, "{@@var1}", var1);
+        replaceAll(text, "{@@var2}", var2);
+        replaceAll(text, "{@@var3}", var3);
+        replaceAll(text, "{@@time}", timeStr);
         switch (data.type)
         {
             case QuestType::TEXT:
             default:
-                mText->addRow(data.text);
+                mText->addRow(text);
                 break;
             case QuestType::NAME:
-                mText->addRow(std::string("[").append(data.text).append("]"));
+                mText->addRow(std::string("[").append(text).append("]"));
                 break;
             case QuestType::REWARD:
                 mText->addRow(std::string(
                     // TRANSLATORS: quest reward
                     _("Reward:")).append(
                     " ").append(
-                    data.text));
+                    text));
                 break;
             case QuestType::GIVER:
                 mText->addRow(std::string(
                     // TRANSLATORS: quest giver name
                     _("Quest Giver:")).append(
                     " ").append(
-                    data.text));
+                    text));
                 break;
             case QuestType::NPC:
                 mText->addRow(std::string(
                     // TRANSLATORS: quest npc name
                     _("Npc:")).append(
                     " ").append(
-                    data.text));
+                    text));
                 break;
             case QuestType::COORDINATES:
                 mText->addRow(std::string(
@@ -506,7 +523,7 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
                     _("Coordinates:"),
                     data.data1.c_str(),
                     data.data2.c_str(),
-                    data.text.c_str())));
+                    text.c_str())));
                 break;
         }
     }
@@ -543,11 +560,11 @@ void QuestsWindow::updateEffects()
         const QuestEffect *const effect = *it;
         if (effect)
         {
-            const IntMapCIter varIt = mVars.find(effect->var);
+            const NpcQuestVarMapCIter varIt = mVars.find(effect->var);
             if (varIt != mVars.end())
             {
                 const std::set<int> &vals = effect->values;
-                if (vals.find(mVars[effect->var]) != vals.end())
+                if (vals.find(mVars[effect->var].var1) != vals.end())
                     mNpcEffects[effect->id] = effect;
             }
         }

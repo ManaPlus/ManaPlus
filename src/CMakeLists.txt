@@ -721,6 +721,7 @@ SET(SRCS
     resources/questeffect.h
     resources/questitem.h
     resources/questitemtext.h
+    resources/questvar.h
     enums/resources/questtype.h
     resources/db/palettedb.cpp
     resources/db/palettedb.h

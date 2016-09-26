@@ -66,7 +66,6 @@ void QuestRecv::processAddQuest2(Net::MessageIn &msg)
     const int var = msg.readInt32("quest id");
     msg.readUInt8("state");
     const int val1 = msg.readInt32("count1");
-    // +++ need use all this fields
     const int val2 = msg.readInt32("count2");
     const int val3 = msg.readInt32("count3");
     const int time = msg.readInt32("time");
@@ -116,7 +115,6 @@ void QuestRecv::processAddQuests2(Net::MessageIn &msg)
         const int var = msg.readInt32("quest id");
         msg.readUInt8("state");
         const int val1 = msg.readInt32("count1");
-        // +++ need use all this fields
         const int val2 = msg.readInt32("count2");
         const int val3 = msg.readInt32("count3");
         const int time = msg.readInt32("time");

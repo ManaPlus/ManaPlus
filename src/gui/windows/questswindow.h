@@ -27,10 +27,12 @@
 
 #include "gui/widgets/window.h"
 
+#include "listeners/actionlistener.h"
+
 #include "utils/intmap.h"
 #include "utils/xml.h"
 
-#include "listeners/actionlistener.h"
+#include "resources/questvar.h"
 
 class Being;
 class Button;
@@ -46,6 +48,8 @@ struct QuestItem;
 
 typedef std::map<BeingTypeId, const QuestEffect*> NpcQuestEffectMap;
 typedef NpcQuestEffectMap::const_iterator NpcQuestEffectMapCIter;
+typedef std::map<int, QuestVar> NpcQuestVarMap;
+typedef NpcQuestVarMap::const_iterator NpcQuestVarMapCIter;
 
 class QuestsWindow final : public Window,
                            public ActionListener
@@ -63,7 +67,7 @@ class QuestsWindow final : public Window,
                          const int val1,
                          const int val2,
                          const int val3,
-                         const int time);
+                         const int time1);
 
         void rebuild(const bool playSound);
 
@@ -92,8 +96,8 @@ class QuestsWindow final : public Window,
         Button *mCloseButton A_NONNULLPOINTER;
         Image *mCompleteIcon;
         Image *mIncompleteIcon;
-        // quest variables: var, value
-        IntMap mVars;
+        // quest variables: var, (val1, val2, val3, time)
+        NpcQuestVarMap mVars;
         // quests: var, quests
         std::map<int, std::vector<QuestItem*> > mQuests;
         std::vector<QuestEffect*> mAllEffects;

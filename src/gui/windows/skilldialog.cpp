@@ -686,7 +686,7 @@ void SkillDialog::updateQuest(const int var,
                               const int val1,
                               const int val2 A_UNUSED,
                               const int val3 A_UNUSED,
-                              const int time A_UNUSED)
+                              const int time1 A_UNUSED)
 {
     const int id = var + SKILL_VAR_MIN_ID;
     const SkillMap::const_iterator it = mSkills.find(id);

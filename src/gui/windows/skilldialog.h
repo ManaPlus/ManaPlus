@@ -128,7 +128,7 @@ class SkillDialog final : public Window,
                          const int val1,
                          const int val2,
                          const int val3,
-                         const int time);
+                         const int time1);
 
         void playUpdateEffect(const int id) const;
 
