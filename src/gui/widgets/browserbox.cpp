@@ -40,10 +40,15 @@
 
 #include "render/graphics.h"
 
-#include "resources/imageset.h"
+#ifndef DYECMD
+#include "resources/beinginfo.h"
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"
+#include "resources/db/monsterdb.h"
+#endif  // DYECMD
+
+#include "resources/imageset.h"
 
 #include "resources/image/image.h"
 
@@ -247,26 +252,38 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             {
                 bLink.caption = bLink.link;
 #ifndef DYECMD
-                size_t idx = bLink.link.find(",");
-                if (idx != std::string::npos)
-                {
-                    const int id = atoi(bLink.link.substr(0, idx).c_str());
-                    if (id)
-                    {
-                        std::vector<int> parts;
-                        splitToIntVector(parts, bLink.link.substr(idx), ',');
-                        while (parts.size() < maxCards)
-                            parts.push_back(0);
-                        const ItemColor itemColor =
-                            ItemColorManager::getColorFromCards(&parts[0]);
-                        bLink.caption = ItemDB::get(id).getName(itemColor);
-                    }
+                const std::string link = bLink.link;
+                if (!link.empty() && link[0] == 'm')
+                {  // monster link
+                    const BeingTypeId id = static_cast<BeingTypeId>(
+                        atoi(bLink.link.substr(1).c_str()));
+                    BeingInfo *info = MonsterDB::get(id);
+                    if (info)
+                        bLink.caption = info->getName();
                 }
                 else
-                {
-                    const int id = atoi(bLink.link.c_str());
-                    if (id)
-                        bLink.caption = ItemDB::get(id).getName();
+                {  // item link
+                    size_t idx = bLink.link.find(",");
+                    if (idx != std::string::npos)
+                    {
+                        const int id = atoi(bLink.link.substr(0, idx).c_str());
+                        if (id)
+                        {
+                            std::vector<int> parts;
+                            splitToIntVector(parts, bLink.link.substr(idx), ',');
+                            while (parts.size() < maxCards)
+                                parts.push_back(0);
+                            const ItemColor itemColor =
+                                ItemColorManager::getColorFromCards(&parts[0]);
+                            bLink.caption = ItemDB::get(id).getName(itemColor);
+                        }
+                    }
+                    else
+                    {
+                        const int id = atoi(bLink.link.c_str());
+                        if (id)
+                            bLink.caption = ItemDB::get(id).getName();
+                    }
                 }
 #endif  // DYECMD
 
