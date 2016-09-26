@@ -46,6 +46,7 @@
 
 #include "resources/db/homunculusdb.h"
 #include "resources/db/itemdb.h"
+#include "resources/db/mercenarydb.h"
 #include "resources/db/monsterdb.h"
 #include "resources/db/petdb.h"
 #endif  // DYECMD
@@ -276,6 +277,14 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                     const BeingTypeId id = static_cast<BeingTypeId>(
                         atoi(bLink.link.substr(1).c_str()));
                     BeingInfo *info = HomunculusDB::get(id);
+                    if (info)
+                        bLink.caption = info->getName();
+                }
+                else if (!link.empty() && link[0] == 'M')
+                {  // homunculus link
+                    const BeingTypeId id = static_cast<BeingTypeId>(
+                        atoi(bLink.link.substr(1).c_str()));
+                    BeingInfo *info = MercenaryDB::get(id);
                     if (info)
                         bLink.caption = info->getName();
                 }

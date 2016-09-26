@@ -27,6 +27,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/dtor.h"
+#include "utils/gettext.h"
 
 #include "configuration.h"
 
@@ -95,6 +96,9 @@ void MercenaryDB::loadXmlFile(const std::string &fileName,
             currentInfo = new BeingInfo;
 
         currentInfo->setBlockType(BlockType::NONE);
+        currentInfo->setName(XML::langProperty(
+            // TRANSLATORS: unknown info name
+            mercenaryNode, "name", _("unnamed")));
         BeingCommon::readBasicAttributes(currentInfo, mercenaryNode, "attack");
         BeingCommon::readWalkingAttributes(currentInfo, mercenaryNode, 0);
         BeingCommon::readAiAttributes(currentInfo, mercenaryNode);
