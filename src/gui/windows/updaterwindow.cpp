@@ -1035,6 +1035,7 @@ void UpdaterWindow::logic()
             enable();
             // TRANSLATORS: updater window label
             setLabel(_("Completed"));
+            mDownloadStatus = UpdateDownloadStatus::UPDATE_IDLE;
             break;
         case UpdateDownloadStatus::UPDATE_IDLE:
             break;
