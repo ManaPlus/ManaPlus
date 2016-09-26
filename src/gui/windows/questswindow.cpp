@@ -374,7 +374,8 @@ void QuestsWindow::rebuild(const bool playSound)
                 complete.push_back(quest);
             }
             // incomplete quest
-            else if (quest->incomplete.find(val.var1) != quest->incomplete.end())
+            else if (quest->incomplete.find(val.var1) !=
+                     quest->incomplete.end())
             {
                 incomplete.push_back(quest);
             }
