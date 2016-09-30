@@ -208,9 +208,13 @@ void ActorSprite::setStatusEffect(const int32_t index,
     {
         updateStatusEffect(index, active, start);
         if (active == Enable_true)
+        {
             mStatusEffects.insert(index);
+        }
         else
+        {
             mStatusEffects.erase(index);
+        }
     }
 }
 
@@ -390,25 +394,33 @@ void ActorSprite::updateStatusEffect(const int32_t index,
         setTrickDead(newStatus == Enable_true);
     else if (effect->mIsPostDelay)
         stopCast(newStatus == Enable_true);
-    handleStatusEffect(effect, index, start);
+    handleStatusEffect(effect, index, newStatus, start);
 }
 
 void ActorSprite::handleStatusEffect(const StatusEffect *const effect,
                                      const int32_t effectId,
+                                     const Enable newStatus,
                                      const IsStart start)
 {
-    if (!effect)
+    if (effect == nullptr)
         return;
 
-    if (effectId >= 0)
+    if (newStatus == Enable_true)
     {
-        Particle *particle = nullptr;
-        if (start == IsStart_true)
-            particle = effect->getStartParticle();
-        if (!particle)
-            particle = effect->getParticle();
-        if (particle)
-            mStatusParticleEffects.setLocally(effectId, particle);
+        if (effectId >= 0)
+        {
+            Particle *particle = nullptr;
+            if (start == IsStart_true)
+                particle = effect->getStartParticle();
+            if (!particle)
+                particle = effect->getParticle();
+            if (particle)
+                mStatusParticleEffects.setLocally(effectId, particle);
+        }
+    }
+    else
+    {
+        mStatusParticleEffects.delLocally(effectId);
     }
 }
 

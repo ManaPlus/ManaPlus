@@ -437,6 +437,7 @@ class LocalPlayer final : public Being,
 
         void handleStatusEffect(const StatusEffect *const effect,
                                 const int32_t effectId,
+                                const Enable newStatus,
                                 const IsStart start) override final;
 
         void startWalking(const unsigned char dir);

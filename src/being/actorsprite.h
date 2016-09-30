@@ -223,6 +223,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
          */
         virtual void handleStatusEffect(const StatusEffect *const effect,
                                         const int32_t effectId,
+                                        const Enable newStatus,
                                         const IsStart start);
 
         void setupSpriteDisplay(const SpriteDisplay &display,
