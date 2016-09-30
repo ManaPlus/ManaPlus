@@ -154,6 +154,7 @@ int inflateMemory(unsigned char *restrict const in,
         {
             case Z_NEED_DICT:
                 ret = Z_DATA_ERROR;
+                A_FALLTHROUGH
             case Z_DATA_ERROR:
             case Z_MEM_ERROR:
                 (void) inflateEnd(&strm);

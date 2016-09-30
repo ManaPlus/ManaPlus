@@ -14,6 +14,7 @@ export CXXFLAGS="${CXXFLAGS} -Waggressive-loop-optimizations"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Waliasing"
 #export CXXFLAGS="${CXXFLAGS} -Walign-commons"
+export CXXFLAGS="${CXXFLAGS} -Waligned-new=all"
 export CXXFLAGS="${CXXFLAGS} -Wall"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wampersand"
@@ -88,6 +89,7 @@ export CXXFLAGS="${CXXFLAGS} -Wextra"
 export CXXFLAGS="${CXXFLAGS} -Wformat"
 export CXXFLAGS="${CXXFLAGS} -Wformat-contains-nul"
 export CXXFLAGS="${CXXFLAGS} -Wformat-extra-args"
+export CXXFLAGS="${CXXFLAGS} -Wformat-length=2"
 # +++ ignoring. probably need use some times
 #export CXXFLAGS="${CXXFLAGS} -Wformat-nonliteral"
 export CXXFLAGS="${CXXFLAGS} -Wformat-security"
@@ -116,6 +118,7 @@ export CXXFLAGS="${CXXFLAGS} -Winit-self"
 #export CXXFLAGS="${CXXFLAGS} -Winline"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wint-conversion"
+export CXXFLAGS="${CXXFLAGS} -Wint-in-bool-context"
 export CXXFLAGS="${CXXFLAGS} -Wint-to-pointer-cast"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Winteger-division"

@@ -163,12 +163,19 @@
 #endif  // ENABLE_CILKPLUS
 
 #ifdef ADVGCC
+
 #define const2 const
 #if GCC_VERSION >= 60000
 #define PRAGMA6(str) _Pragma(#str)
 #else  // GCC_VERSION > 60000
 #define PRAGMA6(str)
 #endif  // GCC_VERSION > 60000
+#if GCC_VERSION >= 70000
+#define A_FALLTHROUGH __attribute__ ((fallthrough));
+#else  // GCC_VERSION > 70000
+#define A_FALLTHROUGH
+#endif  // GCC_VERSION > 70000
+
 #else  // ADVGCC
 #define const2
 #define PRAGMA6(str)
