@@ -179,6 +179,7 @@
 #else  // ADVGCC
 #define const2
 #define PRAGMA6(str)
+#define A_FALLTHROUGH
 #endif  // ADVGCC
 
 #ifdef __clang__
