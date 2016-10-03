@@ -261,6 +261,20 @@ void SpriteDef::loadImageSet(const XmlNodePtr node,
     mImageSets[name] = imageSet;
 }
 
+const ImageSet *SpriteDef::getImageSet(const std::string &imageSetName) const
+{
+    const ImageSetCIterator si = mImageSets.find(imageSetName);
+    if (si == mImageSets.end())
+    {
+        reportAlways("%s: Imageset \"%s\" not defined in %s",
+            mSource.c_str(),
+            imageSetName.c_str(),
+            getIdPath().c_str());
+        return nullptr;
+    }
+    return si->second;
+}
+
 void SpriteDef::loadAction(const XmlNodePtr node,
                            const int variant_offset)
 {
@@ -270,17 +284,7 @@ void SpriteDef::loadAction(const XmlNodePtr node,
     const std::string actionName = XML::getProperty(node, "name", "");
     const std::string imageSetName = XML::getProperty(node, "imageset", "");
     const unsigned hp = XML::getProperty(node, "hp", 100);
-
-    const ImageSetIterator si = mImageSets.find(imageSetName);
-    if (si == mImageSets.end())
-    {
-        reportAlways("%s: Imageset \"%s\" not defined in %s",
-            mSource.c_str(),
-            imageSetName.c_str(),
-            getIdPath().c_str());
-        return;
-    }
-    const ImageSet *const imageSet = si->second;
+    const ImageSet *const imageSet = getImageSet(imageSetName);
 
     if (actionName == SpriteAction::INVALID)
     {
@@ -313,10 +317,10 @@ void SpriteDef::loadAction(const XmlNodePtr node,
 
 void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
                               Action *const action,
-                              const ImageSet *const imageSet,
+                              const ImageSet *const imageSet0,
                               const int variant_offset) const
 {
-    if (!action || !imageSet || !animationNode)
+    if (!action || !imageSet0 || !animationNode)
         return;
 
     const std::string directionName =
@@ -341,6 +345,16 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
     {
         const int delay = XML::getIntProperty(
             frameNode, "delay", 0, 0, 100000);
+        const std::string imageSetName = XML::getProperty(frameNode,
+            "imageset",
+            "");
+        const ImageSet *imageSet = imageSet0;
+        if (!imageSetName.empty())
+        {
+            imageSet = getImageSet(imageSetName);
+            if (imageSet == nullptr)
+                imageSet = imageSet;
+        }
         const int offsetX = XML::getProperty(frameNode, "offsetX", 0)
             + imageSet->getOffsetX() - imageSet->getWidth() / 2
             + mapTileSize / 2;
@@ -362,7 +376,6 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
             }
 
             Image *const img = imageSet->get(index + variant_offset);
-
             if (!img)
             {
                 reportAlways("%s: No image at index %d at direction '%s'",

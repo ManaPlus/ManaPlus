@@ -130,6 +130,8 @@ class SpriteDef final : public Resource
         void includeSprite(const XmlNodePtr includeNode,
                            const int variant);
 
+        const ImageSet *getImageSet(const std::string &imageSetName) const;
+
         /**
          * Complete missing actions by copying existing ones.
          */
@@ -149,6 +151,7 @@ class SpriteDef final : public Resource
 
         typedef std::map<std::string, ImageSet*> ImageSets;
         typedef ImageSets::iterator ImageSetIterator;
+        typedef ImageSets::const_iterator ImageSetCIterator;
         typedef std::map<std::string, Action*> ActionMap;
         typedef std::map<unsigned, ActionMap*> Actions;
         typedef Actions::const_iterator ActionsConstIter;
