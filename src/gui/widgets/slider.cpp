@@ -101,7 +101,7 @@ Slider::Slider(Widget2 *const widget,
     mStepLength(stepLength),
     mScaleStart(0),
     mScaleEnd(scaleEnd),
-    mOrientation(HORIZONTAL),
+    mOrientation(Orientation::HORIZONTAL),
     mVertexes(new ImageCollection),
     mMarkerLength(10),
     mHasMouse(false)
@@ -120,7 +120,7 @@ Slider::Slider(Widget2 *const widget,
     mStepLength(stepLength),
     mScaleStart(scaleStart),
     mScaleEnd(scaleEnd),
-    mOrientation(HORIZONTAL),
+    mOrientation(Orientation::HORIZONTAL),
     mVertexes(new ImageCollection),
     mMarkerLength(10),
     mHasMouse(false)
@@ -382,7 +382,7 @@ void Slider::mousePressed(MouseEvent &event)
         && x >= 0 && x <= width && y >= 0 && y <= height)
     {
         event.consume();
-        if (mOrientation == HORIZONTAL)
+        if (mOrientation == Orientation::HORIZONTAL)
             setValue(markerPositionToValue(x - mMarkerLength / 2));
         else
             setValue(markerPositionToValue(height - y - mMarkerLength / 2));
@@ -392,7 +392,7 @@ void Slider::mousePressed(MouseEvent &event)
 
 void Slider::mouseDragged(MouseEvent &event)
 {
-    if (mOrientation == HORIZONTAL)
+    if (mOrientation == Orientation::HORIZONTAL)
     {
         setValue(markerPositionToValue(event.getX() - mMarkerLength / 2));
     }
@@ -425,7 +425,7 @@ void Slider::keyPressed(KeyEvent& event)
 {
     const InputActionT action = event.getActionId();
 
-    if (mOrientation == HORIZONTAL)
+    if (mOrientation == Orientation::HORIZONTAL)
     {
         if (action == InputAction::GUI_RIGHT)
         {
@@ -479,7 +479,7 @@ void Slider::setValue(const double value)
 double Slider::markerPositionToValue(const int v) const
 {
     int w;
-    if (mOrientation == HORIZONTAL)
+    if (mOrientation == Orientation::HORIZONTAL)
         w = mDimension.width;
     else
         w = mDimension.height;
@@ -491,7 +491,7 @@ double Slider::markerPositionToValue(const int v) const
 int Slider::valueToMarkerPosition(const double value) const
 {
     int v;
-    if (mOrientation == HORIZONTAL)
+    if (mOrientation == Orientation::HORIZONTAL)
         v = mDimension.width;
     else
         v = mDimension.height;

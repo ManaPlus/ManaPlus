@@ -66,6 +66,8 @@
 #ifndef GUI_WIDGETS_SLIDER_H
 #define GUI_WIDGETS_SLIDER_H
 
+#include "enums/gui/orientation.h"
+
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 
@@ -85,16 +87,6 @@ class Slider final : public Widget,
                      public KeyListener
 {
     public:
-        /**
-         * Draw orientations for the slider. A slider can be drawn vertically or
-         * horizontally.
-         */
-        enum Orientation
-        {
-            HORIZONTAL = 0,
-            VERTICAL
-        };
-
         /**
          * Constructor with scale start equal to 0.
          */
@@ -236,7 +228,7 @@ class Slider final : public Widget,
          * @param orientation The orientation of the slider.
          * @see getOrientation
          */
-        void setOrientation(const Orientation orientation)
+        void setOrientation(const OrientationT orientation)
         { mOrientation = orientation; }
 
         /**
@@ -246,7 +238,7 @@ class Slider final : public Widget,
          * @return The orientation of the slider.
          * @see setOrientation
          */
-        Orientation getOrientation() const
+        OrientationT getOrientation() const
         { return mOrientation; }
 
         /**
@@ -343,7 +335,7 @@ class Slider final : public Widget,
          * Holds the orientation of the slider. A slider can be drawn
          * vertically or horizontally.
          */
-        Orientation mOrientation;
+        OrientationT mOrientation;
 
         ImageCollection *mVertexes A_NONNULLPOINTER;
 
