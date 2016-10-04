@@ -353,7 +353,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
         {
             imageSet = getImageSet(imageSetName);
             if (imageSet == nullptr)
-                imageSet = imageSet;
+                imageSet = imageSet0;
         }
         const int offsetX = XML::getProperty(frameNode, "offsetX", 0)
             + imageSet->getOffsetX() - imageSet->getWidth() / 2
