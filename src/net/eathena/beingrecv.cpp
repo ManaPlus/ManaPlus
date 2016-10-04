@@ -296,11 +296,11 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         return;
 
     // need set type based on id
-    BeingType::BeingType type = BeingType::MONSTER;
+    BeingTypeT type = BeingType::MONSTER;
     if (msg.getVersion() >= 20091103)
     {
         msg.readInt16("len");
-        type = static_cast<BeingType::BeingType>(
+        type = static_cast<BeingTypeT>(
             msg.readUInt8("object type"));
     }
 
@@ -516,10 +516,10 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 
     if (msg.getVersion() >= 20091103)
         msg.readInt16("len");
-    BeingType::BeingType type;
+    BeingTypeT type;
     if (msg.getVersion() >= 20071106)
     {
-        type = static_cast<BeingType::BeingType>(
+        type = static_cast<BeingTypeT>(
             msg.readUInt8("object type"));
     }
     else
@@ -741,11 +741,11 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         return;
 
     // need get type from id
-    BeingType::BeingType type = BeingType::MONSTER;
+    BeingTypeT type = BeingType::MONSTER;
     if (msg.getVersion() >= 20091103)
     {
         msg.readInt16("len");
-        type = static_cast<BeingType::BeingType>(
+        type = static_cast<BeingTypeT>(
             msg.readUInt8("object type"));
     }
 
@@ -1611,7 +1611,7 @@ void BeingRecv::processBeingFakeName(Net::MessageIn &msg)
         msg.skip(3, "unused");
         return;
     }
-    const BeingType::BeingType type = static_cast<BeingType::BeingType>(
+    const BeingTypeT type = static_cast<BeingTypeT>(
         msg.readUInt8("object type"));
     const BeingId id = msg.readBeingId("npc id");
     msg.skip(8, "unused");
@@ -1953,7 +1953,7 @@ void BeingRecv::processNameResponse2(Net::MessageIn &msg)
 Being *BeingRecv::createBeing2(Net::MessageIn &msg,
                                const BeingId id,
                                const int32_t job,
-                               const BeingType::BeingType beingType)
+                               const BeingTypeT beingType)
 {
     if (!actorManager)
         return nullptr;
@@ -1992,7 +1992,7 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
             break;
         case BeingType::CHAT:
         default:
-            UNIMPLIMENTEDPACKETFIELD(beingType);
+            UNIMPLIMENTEDPACKETFIELD(CAST_S32(beingType));
             type = ActorType::Monster;
             logger->log("not supported object type: %d, job: %d",
                 CAST_S32(beingType), CAST_S32(job));

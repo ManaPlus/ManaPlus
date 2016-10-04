@@ -1681,7 +1681,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/buyingstorehandler.h \
 	      net/eathena/buyingstorerecv.cpp \
 	      net/eathena/buyingstorerecv.h \
-	      net/eathena/beingtype.h \
+	      enums/net/beingtype.h \
 	      net/eathena/buysellhandler.cpp \
 	      net/eathena/buysellhandler.h \
 	      net/eathena/buysellrecv.cpp \

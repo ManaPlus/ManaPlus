@@ -23,7 +23,7 @@
 #ifndef NET_EATHENA_BEINGRECV_H
 #define NET_EATHENA_BEINGRECV_H
 
-#include "net/eathena/beingtype.h"
+#include "enums/net/beingtype.h"
 
 #include "enums/resources/skill/skilltype2.h"
 
@@ -116,7 +116,7 @@ namespace EAthena
         Being *createBeing2(Net::MessageIn &msg,
                             const BeingId id,
                             const int32_t job,
-                            const BeingType::BeingType beingType);
+                            const BeingTypeT beingType);
         void applyPlayerAction(Net::MessageIn &msg,
                                Being *const being,
                                const uint8_t type);

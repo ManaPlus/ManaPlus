@@ -18,28 +18,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_BEINGTYPE_H
-#define NET_EATHENA_BEINGTYPE_H
+#ifndef ENUMS_NET_BEINGTYPE_H
+#define ENUMS_NET_BEINGTYPE_H
 
-namespace EAthena
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(BeingType)
 {
-    namespace BeingType
-    {
-        enum BeingType
-        {
-            PC = 0,
-            NPC = 1,
-            ITEM = 2,
-            SKILL = 3,
-            CHAT = 4,
-            MONSTER = 5,
-            NPC_EVENT = 6,
-            PET = 7,
-            HOMUN = 8,
-            MERSOL = 9,
-            ELEMENTAL = 10
-        };
-    }  // namespace BeingType
-}  // namespace EAthena
+    PC        = 0,
+    NPC       = 1,
+    ITEM      = 2,
+    SKILL     = 3,
+    CHAT      = 4,
+    MONSTER   = 5,
+    NPC_EVENT = 6,
+    PET       = 7,
+    HOMUN     = 8,
+    MERSOL    = 9,
+    ELEMENTAL = 10
+}
+enumEnd(BeingType);
 
-#endif  // NET_EATHENA_BEINGTYPE_H
+#endif  // ENUMS_NET_BEINGTYPE_H
