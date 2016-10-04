@@ -1289,6 +1289,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/iteminfo.h \
 	      resources/iteminfo.cpp \
 	      enums/resources/cursor.h \
+	      enums/resources/frametype.h \
 	      enums/resources/imageposition.h \
 	      enums/resources/imagetype.h \
 	      enums/resources/item/itemdbtype.h \

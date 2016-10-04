@@ -20,29 +20,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_FRAME_H
-#define RESOURCES_FRAME_H
+#ifndef ENUMS_RESOURCES_FRAMETYPE_H
+#define ENUMS_RESOURCES_FRAMETYPE_H
 
-#include "enums/resources/frametype.h"
-
-#include <string>
+#include "enums/simpletypes/enumdefines.h"
 
 #include "localconsts.h"
 
-class Image;
-
-/**
- * A single frame in an animation, with a delay and an offset.
- */
-struct Frame final
+enumStart(FrameType)
 {
-    Image *image;
-    int delay;
-    int offsetX;
-    int offsetY;
-    int rand;
-    FrameTypeT type;
-    std::string nextAction;
-};
+    ANIMATION = 0,
+    JUMP,
+    GOTO,
+    LABEL,
+    PAUSE
+}
+enumEnd(FrameType);
 
-#endif  // RESOURCES_FRAME_H
+#endif  // ENUMS_RESOURCES_FRAMETYPE_H

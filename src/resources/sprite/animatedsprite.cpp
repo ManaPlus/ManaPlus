@@ -215,7 +215,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
 {
     // move code from Animation::isTerminator(*mFrame)
     if (!mFrame || !mAnimation || (!mFrame->image
-        && mFrame->type == Frame::ANIMATION))
+        && mFrame->type == FrameType::ANIMATION))
     {
         return false;
     }
@@ -224,8 +224,8 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
 
     while ((mFrameTime > CAST_U32(mFrame->delay) &&
            mFrame->delay > 0) ||
-           (mFrame->type != Frame::ANIMATION &&
-           mFrame->type != Frame::PAUSE))
+           (mFrame->type != FrameType::ANIMATION &&
+           mFrame->type != FrameType::PAUSE))
     {
         bool fail(true);
         mFrameTime -= CAST_U32(mFrame->delay);
@@ -239,12 +239,12 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
         {
             fail = true;
         }
-        else if ((mFrame->type == Frame::LABEL
+        else if ((mFrame->type == FrameType::LABEL
                  && !mFrame->nextAction.empty()))
         {
             fail = false;
         }
-        else if (mFrame->type == Frame::GOTO &&
+        else if (mFrame->type == FrameType::GOTO &&
                  !mFrame->nextAction.empty())
         {
             const int rand = mFrame->rand;
@@ -255,7 +255,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
                 {
                     const Frame *restrict const frame =
                         &mAnimation->mFrames[i];
-                    if (frame->type == Frame::LABEL &&
+                    if (frame->type == FrameType::LABEL &&
                         mFrame->nextAction == frame->nextAction)
                     {
                         mFrameIndex = CAST_U32(i);
@@ -277,7 +277,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
                 fail = false;
             }
         }
-        else if (mFrame->type == Frame::JUMP &&
+        else if (mFrame->type == FrameType::JUMP &&
                  !mFrame->nextAction.empty())
         {
             const int rand = mFrame->rand;
@@ -290,7 +290,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
         }
         // copy code from Animation::isTerminator(*mFrame)
         else if (!mFrame->image &&
-                 mFrame->type == Frame::ANIMATION)
+                 mFrame->type == FrameType::ANIMATION)
         {
             const int rand = mFrame->rand;
             if (rand == 100 ||

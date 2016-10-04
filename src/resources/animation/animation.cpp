@@ -45,7 +45,7 @@ void Animation::addFrame(Image *const image, const int delay,
                          const int rand) noexcept2
 {
     Frame frame
-        = { image, delay, offsetX, offsetY, rand, Frame::ANIMATION, "" };
+        = { image, delay, offsetX, offsetY, rand, FrameType::ANIMATION, "" };
     mFrames.push_back(frame);
     mDuration += delay;
 }
@@ -57,30 +57,30 @@ void Animation::addTerminator(const int rand) noexcept2
 
 bool Animation::isTerminator(const Frame &candidate) noexcept2
 {
-    return (!candidate.image && candidate.type == Frame::ANIMATION);
+    return (!candidate.image && candidate.type == FrameType::ANIMATION);
 }
 
 void Animation::addJump(const std::string &name, const int rand) noexcept2
 {
-    Frame frame = { nullptr, 0, 0, 0, rand, Frame::JUMP, name };
+    Frame frame = { nullptr, 0, 0, 0, rand, FrameType::JUMP, name };
     mFrames.push_back(frame);
 }
 
 void Animation::addLabel(const std::string &name) noexcept2
 {
-    Frame frame = { nullptr, 0, 0, 0, 100, Frame::LABEL, name };
+    Frame frame = { nullptr, 0, 0, 0, 100, FrameType::LABEL, name };
     mFrames.push_back(frame);
 }
 
 void Animation::addGoto(const std::string &name, const int rand) noexcept2
 {
-    Frame frame = { nullptr, 0, 0, 0, rand, Frame::GOTO, name };
+    Frame frame = { nullptr, 0, 0, 0, rand, FrameType::GOTO, name };
     mFrames.push_back(frame);
 }
 
 void Animation::addPause(const int delay, const int rand) noexcept2
 {
-    Frame frame = { nullptr, delay, 0, 0, rand, Frame::PAUSE, "" };
+    Frame frame = { nullptr, delay, 0, 0, rand, FrameType::PAUSE, "" };
     mFrames.push_back(frame);
 }
 
@@ -89,7 +89,7 @@ void Animation::setLastFrameDelay(const int delay) noexcept2
     for (FramesRevIter it = mFrames.rbegin(), it_end = mFrames.rend();
          it != it_end; ++ it)
     {
-        if ((*it).type == Frame::ANIMATION && (*it).image)
+        if ((*it).type == FrameType::ANIMATION && (*it).image)
         {
             (*it).delay = delay;
             break;
