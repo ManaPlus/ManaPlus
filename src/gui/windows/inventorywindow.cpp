@@ -27,6 +27,8 @@
 
 #include "being/playerinfo.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
@@ -51,7 +53,6 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tabstrip.h"

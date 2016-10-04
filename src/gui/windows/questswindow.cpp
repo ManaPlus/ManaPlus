@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/gui.h"
 
 #include "gui/fonts/font.h"
@@ -39,7 +41,6 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"

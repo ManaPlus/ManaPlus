@@ -32,6 +32,8 @@
 #include "const/gui/chat.h"
 #endif  // TMWA_SUPPORT
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/windows/editdialog.h"
 
 #include "gui/windows/itemamountwindow.h"
@@ -44,7 +46,6 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/tabstrip.h"

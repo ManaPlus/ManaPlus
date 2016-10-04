@@ -22,6 +22,8 @@
 
 #include "gui/windows/textselectdialog.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/windows/setupwindow.h"
 
 #include "gui/models/namesmodel.h"
@@ -30,7 +32,6 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 

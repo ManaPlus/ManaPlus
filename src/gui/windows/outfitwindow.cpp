@@ -30,6 +30,8 @@
 
 #include "const/emoteshortcut.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "input/inputactionoperators.h"
 #include "input/inputmanager.h"
 
@@ -43,7 +45,6 @@
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 
 #include "utils/gettext.h"
 

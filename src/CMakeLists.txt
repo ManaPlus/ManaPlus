@@ -217,7 +217,7 @@ SET(SRCS
     gui/widgets/layoutcell.h
     gui/widgets/layouthelper.cpp
     gui/widgets/layouthelper.h
-    gui/widgets/layouttype.h
+    enums/gui/layouttype.h
     gui/widgets/linepart.cpp
     gui/widgets/linepart.h
     gui/widgets/linkhandler.h

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_LAYOUTTYPE_H
-#define GUI_WIDGETS_LAYOUTTYPE_H
+#ifndef ENUMS_GUI_WIDGETS_LAYOUTTYPE_H
+#define ENUMS_GUI_WIDGETS_LAYOUTTYPE_H
 
 #include "localconsts.h"
 
@@ -39,4 +39,4 @@ namespace LayoutType
     };
 }  // namespace LayoutType
 
-#endif  // GUI_WIDGETS_LAYOUTTYPE_H
+#endif  // ENUMS_GUI_WIDGETS_LAYOUTTYPE_H

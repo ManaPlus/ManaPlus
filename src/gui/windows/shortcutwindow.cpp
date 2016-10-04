@@ -22,13 +22,14 @@
 
 #include "gui/windows/shortcutwindow.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/windows/setupwindow.h"
 #include "gui/widgets/tabbedarea.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shortcutcontainer.h"
 

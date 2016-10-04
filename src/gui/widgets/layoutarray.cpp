@@ -22,8 +22,9 @@
 
 #include "gui/widgets/layoutarray.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/widgets/layoutcell.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/widget.h"
 
 #include <cassert>

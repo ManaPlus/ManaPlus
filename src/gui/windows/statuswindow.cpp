@@ -30,6 +30,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/windows/chatwindow.h"
 
 #include "gui/windows/equipmentwindow.h"
@@ -38,7 +40,6 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/statspage.h"
 #include "gui/widgets/statspagebasic.h"

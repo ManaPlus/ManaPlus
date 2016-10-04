@@ -28,6 +28,8 @@
 
 #include "being/being.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/tradewindow.h"
 
@@ -41,7 +43,6 @@
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"

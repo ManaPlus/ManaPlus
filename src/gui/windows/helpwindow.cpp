@@ -24,6 +24,8 @@
 
 #include "configuration.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
@@ -33,7 +35,6 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/gettext.h"

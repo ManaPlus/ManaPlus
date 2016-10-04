@@ -24,6 +24,8 @@
 
 #include "units.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/windows/setupwindow.h"
 
 #include "gui/models/shopitems.h"
@@ -33,7 +35,6 @@
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/shoplistbox.h"
 #include "gui/widgets/slider.h"

@@ -32,6 +32,8 @@
 #include "being/being.h"
 #include "being/playerinfo.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/gui.h"
 #include "gui/viewport.h"
 
@@ -50,7 +52,6 @@
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/scrollarea.h"

@@ -24,6 +24,8 @@
 
 #include "configuration.h"
 
+#include "enums/gui/layouttype.h"
+
 #include "gui/gui.h"
 
 #include "gui/windows/setupwindow.h"
@@ -33,7 +35,6 @@
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/layouttype.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/delete2.h"
