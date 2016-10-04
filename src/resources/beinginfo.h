@@ -31,7 +31,7 @@
 #include "enums/simpletypes/itemcolor.h"
 
 #include "resources/beingmenuitem.h"
-#include "resources/cursor.h"
+#include "resources/cursors.h"
 #include "resources/soundinfo.h"
 
 #include "resources/sprite/spritedisplay.h"
@@ -81,12 +81,12 @@ class BeingInfo final
         { mTargetCursorSize = targetSize; }
 
         void setHoverCursor(const std::string &name)
-        { return setHoverCursor(Cursor::stringToCursor(name)); }
+        { return setHoverCursor(Cursors::stringToCursor(name)); }
 
-        void setHoverCursor(const Cursor::Cursor &cursor)
+        void setHoverCursor(const CursorT &cursor)
         { mHoverCursor = cursor; }
 
-        Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
+        CursorT getHoverCursor() const A_WARN_UNUSED
         { return mHoverCursor; }
 
         TargetCursorSizeT getTargetCursorSize() const A_WARN_UNUSED
@@ -347,7 +347,7 @@ class BeingInfo final
         SpriteDisplay mDisplay;
         std::string mName;
         TargetCursorSizeT mTargetCursorSize;
-        Cursor::Cursor mHoverCursor;
+        CursorT mHoverCursor;
         ItemSoundEvents mSounds;
         Attacks mAttacks;
         std::vector<BeingMenuItem> mMenu;

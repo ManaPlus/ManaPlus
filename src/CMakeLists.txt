@@ -627,8 +627,8 @@ SET(SRCS
     resources/db/colordb.h
     resources/db/commandsdb.cpp
     resources/db/commandsdb.h
-    resources/cursor.cpp
-    resources/cursor.h
+    resources/cursors.cpp
+    resources/cursors.h
     resources/delayedmanager.cpp
     resources/delayedmanager.h
     resources/db/deaddb.cpp
@@ -670,6 +670,7 @@ SET(SRCS
     resources/db/itemfielddb.h
     resources/iteminfo.h
     resources/iteminfo.cpp
+    enums/resources/cursor.h
     enums/resources/imageposition.h
     enums/resources/imagetype.h
     enums/resources/item/itemdbtype.h

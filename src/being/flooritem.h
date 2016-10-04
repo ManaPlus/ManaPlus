@@ -33,7 +33,7 @@
 
 #include "being/actorsprite.h"
 
-#include "resources/cursor.h"
+#include "resources/cursors.h"
 
 class ItemInfo;
 
@@ -113,7 +113,7 @@ class FloorItem final : public ActorSprite
         void disableHightlight()
         { mHighlight = false; }
 
-        Cursor::Cursor getHoverCursor() const A_WARN_UNUSED
+        CursorT getHoverCursor() const A_WARN_UNUSED
         { return mCursor; }
 
         void setCards(const int *const cards, int sz);
@@ -142,7 +142,7 @@ class FloorItem final : public ActorSprite
         int mHeightPosDiff;
         ItemTypeT mItemType;
         unsigned int mPickupCount;
-        Cursor::Cursor mCursor;
+        CursorT mCursor;
         ItemColor mColor;
         Identified mIdentified;
         Damaged mDamaged;

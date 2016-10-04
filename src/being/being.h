@@ -877,7 +877,7 @@ class Being notfinal : public ActorSprite,
                          const int attackId,
                          const int level) const restrict2 A_WARN_UNUSED;
 
-        Cursor::Cursor getHoverCursor() const restrict2 A_WARN_UNUSED
+        CursorT getHoverCursor() const restrict2 A_WARN_UNUSED
         { return mInfo ? mInfo->getHoverCursor() : Cursor::CURSOR_POINTER; }
 
         void addAfkEffect() restrict2;

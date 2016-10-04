@@ -71,7 +71,7 @@
 #include "enums/events/mousebutton.h"
 #include "enums/events/mouseeventtype.h"
 
-#include "resources/cursor.h"
+#include "resources/cursors.h"
 
 #include <deque>
 #include <list>
@@ -192,7 +192,7 @@ class Gui final
         /**
          * Sets which cursor should be used.
          */
-        void setCursorType(const Cursor::Cursor index)
+        void setCursorType(const CursorT index)
         { mCursorType = index; }
 
         void setDoubleClick(const bool b)
@@ -519,7 +519,7 @@ class Gui final
         ImageSet *mMouseCursors;
         float mMouseCursorAlpha;
         int mMouseInactivityTimer;
-        Cursor::Cursor mCursorType;
+        CursorT mCursorType;
 #ifdef ANDROID
         uint16_t mLastMouseRealX;
         uint16_t mLastMouseRealY;

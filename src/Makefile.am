@@ -357,8 +357,8 @@ SRC += events/actionevent.h \
 	      resources/atlas/atlasresource.h \
 	      resources/rect/doublerect.h \
 	      resources/attack.h \
-	      resources/cursor.cpp \
-	      resources/cursor.h \
+	      resources/cursors.cpp \
+	      resources/cursors.h \
 	      resources/dye/dye.cpp \
 	      resources/dye/dye.h \
 	      resources/dye/dyecolor.h \
@@ -1288,6 +1288,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/db/weaponsdb.h \
 	      resources/iteminfo.h \
 	      resources/iteminfo.cpp \
+	      enums/resources/cursor.h \
 	      enums/resources/imageposition.h \
 	      enums/resources/imagetype.h \
 	      enums/resources/item/itemdbtype.h \

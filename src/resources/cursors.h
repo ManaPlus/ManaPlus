@@ -21,42 +21,21 @@
 #ifndef RESOURCES_CURSOR_H
 #define RESOURCES_CURSOR_H
 
+#include "enums/resources/cursor.h"
+
 #include <string>
 
 #include "localconsts.h"
 
-namespace Cursor
+namespace Cursors
 {
-    /**
-      * Cursors are in graphic order from left to right.
-      * CURSOR_POINTER should be left untouched.
-      * CURSOR_TOTAL should always be last.
-      */
-    enum Cursor
-    {
-        CURSOR_POINTER = 0,
-        CURSOR_RESIZE_ACROSS,
-        CURSOR_RESIZE_DOWN,
-        CURSOR_RESIZE_DOWN_LEFT,
-        CURSOR_RESIZE_DOWN_RIGHT,
-        CURSOR_FIGHT,
-        CURSOR_PICKUP,
-        CURSOR_TALK,
-        CURSOR_ACTION,
-        CURSOR_LEFT,
-        CURSOR_UP,
-        CURSOR_RIGHT,
-        CURSOR_DOWN,
-        CURSOR_TOTAL
-    };
-
     struct StrToCursor final
     {
         std::string str;
-        Cursor cursor;
+        CursorT cursor;
     };
 
-    Cursor stringToCursor(const std::string &name) A_WARN_UNUSED;
+    CursorT stringToCursor(const std::string &name) A_WARN_UNUSED;
 }  // namespace Cursor
 
 #endif  // RESOURCES_CURSOR_H

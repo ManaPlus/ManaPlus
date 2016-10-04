@@ -30,7 +30,7 @@
 #include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/itemcolor.h"
 
-#include "resources/cursor.h"
+#include "resources/cursors.h"
 #include "resources/soundinfo.h"
 
 #include "resources/sprite/spritedisplay.h"
@@ -287,12 +287,12 @@ class ItemInfo final
                                         const A_WARN_UNUSED;
 
         void setPickupCursor(const std::string &cursor)
-        { return setPickupCursor(Cursor::stringToCursor(cursor)); }
+        { return setPickupCursor(Cursors::stringToCursor(cursor)); }
 
-        void setPickupCursor(const Cursor::Cursor &cursor)
+        void setPickupCursor(const CursorT &cursor)
         { mPickupCursor = cursor; }
 
-        Cursor::Cursor getPickupCursor() const A_WARN_UNUSED
+        CursorT getPickupCursor() const A_WARN_UNUSED
         { return mPickupCursor; }
 
         void setProtected(const bool b)
@@ -373,7 +373,7 @@ class ItemInfo final
         int mMissEffectId;
         int maxFloorOffsetX;
         int maxFloorOffsetY;
-        Cursor::Cursor mPickupCursor;
+        CursorT mPickupCursor;
         bool mProtected;
 };
 
