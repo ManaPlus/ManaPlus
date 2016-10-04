@@ -231,7 +231,7 @@ class NpcDialog final : public Window,
                           const int amount,
                           const int slot);
 
-        NpcInputState getInputState()
+        NpcInputStateT getInputState()
         { return mInputState; }
 
         void copyToClipboard(const int x, const int y) const;
@@ -305,7 +305,6 @@ class NpcDialog final : public Window,
         ComplexInventory *mComplexInventory A_NONNULLPOINTER;
         ItemContainer *mItemContainer A_NONNULLPOINTER;
         ScrollArea *mItemScrollArea A_NONNULLPOINTER;
-
 
         NpcInputStateT mInputState;
         NpcActionStateT mActionState;
