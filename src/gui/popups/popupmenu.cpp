@@ -1814,7 +1814,7 @@ void PopupMenu::showPopup(Window *const parent,
             {
                 NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
                 if (dialog &&
-                    dialog->getInputState() == NpcDialog::NPC_INPUT_ITEM_CRAFT)
+                    dialog->getInputState() == NpcInputState::ITEM_CRAFT)
                 {
                     mBrowserBox->addRow("craftmenu",
                         // TRANSLATORS: popup menu item

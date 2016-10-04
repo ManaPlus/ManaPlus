@@ -141,7 +141,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mItemScrollArea(new ScrollArea(this, mItemContainer,
         fromBool(getOptionBool("showitemsbackground"), Opaque),
         "npc_listbackground.xml")),
-    mInputState(NPC_INPUT_NONE),
+    mInputState(NpcInputState::NONE),
     mActionState(NPC_ACTION_WAIT),
     mSkinControls(),
     mSkinName(),
@@ -338,7 +338,7 @@ void NpcDialog::action(const ActionEvent &event)
                                     // in the textbox
             switch (mInputState)
             {
-                case NPC_INPUT_LIST:
+                case NpcInputState::LIST:
                 {
                     if (mDialogInfo)
                         return;
@@ -360,7 +360,7 @@ void NpcDialog::action(const ActionEvent &event)
                     npcHandler->listInput(mNpcId, choice);
                     break;
                 }
-                case NPC_INPUT_STRING:
+                case NpcInputState::STRING:
                 {
                     if (!PacketLimiter::limitPackets(
                         PacketType::PACKET_NPC_INPUT))
@@ -371,7 +371,7 @@ void NpcDialog::action(const ActionEvent &event)
                     npcHandler->stringInput(mNpcId, printText);
                     break;
                 }
-                case NPC_INPUT_INTEGER:
+                case NpcInputState::INTEGER:
                 {
                     if (!PacketLimiter::limitPackets(
                         PacketType::PACKET_NPC_INPUT))
@@ -383,7 +383,7 @@ void NpcDialog::action(const ActionEvent &event)
                         mNpcId, mIntField->getValue());
                     break;
                 }
-                case NPC_INPUT_ITEM:
+                case NpcInputState::ITEM:
                 {
                     restoreVirtuals();
                     if (!PacketLimiter::limitPackets(
@@ -431,7 +431,7 @@ void NpcDialog::action(const ActionEvent &event)
                     mInventory->clear();
                     break;
                 }
-                case NPC_INPUT_ITEM_INDEX:
+                case NpcInputState::ITEM_INDEX:
                 {
                     restoreVirtuals();
                     if (!PacketLimiter::limitPackets(
@@ -473,7 +473,7 @@ void NpcDialog::action(const ActionEvent &event)
                     mInventory->clear();
                     break;
                 }
-                case NPC_INPUT_ITEM_CRAFT:
+                case NpcInputState::ITEM_CRAFT:
                 {
                     restoreVirtuals();
                     if (!PacketLimiter::limitPackets(
@@ -508,13 +508,13 @@ void NpcDialog::action(const ActionEvent &event)
                     break;
                 }
 
-                case NPC_INPUT_NONE:
+                case NpcInputState::NONE:
                 default:
                     break;
             }
-            if (mInputState != NPC_INPUT_ITEM &&
-                mInputState != NPC_INPUT_ITEM_INDEX &&
-                mInputState != NPC_INPUT_ITEM_CRAFT)
+            if (mInputState != NpcInputState::ITEM &&
+                mInputState != NpcInputState::ITEM_INDEX &&
+                mInputState != NpcInputState::ITEM_CRAFT)
             {
                 // addText will auto remove the input layout
                 addText(strprintf("> \"%s\"", printText.c_str()), false);
@@ -529,21 +529,21 @@ void NpcDialog::action(const ActionEvent &event)
     {
         switch (mInputState)
         {
-            case NPC_INPUT_STRING:
+            case NpcInputState::STRING:
                 mTextField->setText(mDefaultString);
                 break;
-            case NPC_INPUT_INTEGER:
+            case NpcInputState::INTEGER:
                 mIntField->setValue(mDefaultInt);
                 break;
-            case NPC_INPUT_ITEM:
-            case NPC_INPUT_ITEM_INDEX:
+            case NpcInputState::ITEM:
+            case NpcInputState::ITEM_INDEX:
                 mInventory->clear();
                 break;
-            case NPC_INPUT_ITEM_CRAFT:
+            case NpcInputState::ITEM_CRAFT:
                 mComplexInventory->clear();
                 break;
-            case NPC_INPUT_NONE:
-            case NPC_INPUT_LIST:
+            case NpcInputState::NONE:
+            case NpcInputState::LIST:
             default:
                 break;
         }
@@ -560,17 +560,17 @@ void NpcDialog::action(const ActionEvent &event)
     {
         switch (mInputState)
         {
-            case NPC_INPUT_ITEM:
-            case NPC_INPUT_ITEM_INDEX:
+            case NpcInputState::ITEM:
+            case NpcInputState::ITEM_INDEX:
                 mInventory->clear();
                 break;
-            case NPC_INPUT_ITEM_CRAFT:
+            case NpcInputState::ITEM_CRAFT:
                 mComplexInventory->clear();
                 break;
-            case NPC_INPUT_STRING:
-            case NPC_INPUT_INTEGER:
-            case NPC_INPUT_LIST:
-            case NPC_INPUT_NONE:
+            case NpcInputState::STRING:
+            case NpcInputState::INTEGER:
+            case NpcInputState::LIST:
+            case NpcInputState::NONE:
             default:
                 clearRows();
                 break;
@@ -583,19 +583,19 @@ void NpcDialog::action(const ActionEvent &event)
         {
             switch (mInputState)
             {
-                case NPC_INPUT_ITEM:
+                case NpcInputState::ITEM:
                     npcHandler->stringInput(mNpcId, "0,0");
                     break;
-                case NPC_INPUT_ITEM_INDEX:
+                case NpcInputState::ITEM_INDEX:
                     npcHandler->stringInput(mNpcId, "-1");
                     break;
-                case NPC_INPUT_ITEM_CRAFT:
+                case NpcInputState::ITEM_CRAFT:
                     npcHandler->stringInput(mNpcId, "");
                     break;
-                case NPC_INPUT_STRING:
-                case NPC_INPUT_INTEGER:
-                case NPC_INPUT_NONE:
-                case NPC_INPUT_LIST:
+                case NpcInputState::STRING:
+                case NpcInputState::INTEGER:
+                case NpcInputState::NONE:
+                case NpcInputState::LIST:
                 default:
                     npcHandler->listInput(mNpcId, 255);
                     break;
@@ -613,7 +613,7 @@ void NpcDialog::action(const ActionEvent &event)
             Inventory *const inventory = PlayerInfo::getInventory();
             if (inventory)
             {
-                if (mInputState == NPC_INPUT_ITEM_CRAFT)
+                if (mInputState == NpcInputState::ITEM_CRAFT)
                 {
                     if (mComplexInventory->addVirtualItem(item, -1, 1))
                         inventory->virtualRemove(item, 1);
@@ -638,9 +638,9 @@ void NpcDialog::action(const ActionEvent &event)
                 npcHandler->listInput(mNpcId, CAST_U8(cnt + 1));
                 printText = mItems[cnt];
 
-                if (mInputState != NPC_INPUT_ITEM &&
-                    mInputState != NPC_INPUT_ITEM_INDEX &&
-                    mInputState != NPC_INPUT_ITEM_CRAFT)
+                if (mInputState != NpcInputState::ITEM &&
+                    mInputState != NpcInputState::ITEM_INDEX &&
+                    mInputState != NpcInputState::ITEM_CRAFT)
                 {
                     // addText will auto remove the input layout
                     addText(strprintf("> \"%s\"", printText.c_str()), false);
@@ -689,7 +689,7 @@ void NpcDialog::choiceRequest()
     }
     mImages.clear();
     mActionState = NPC_ACTION_INPUT;
-    mInputState = NPC_INPUT_LIST;
+    mInputState = NpcInputState::LIST;
     buildLayout();
 }
 
@@ -743,7 +743,7 @@ void NpcDialog::refocus()
 void NpcDialog::textRequest(const std::string &defaultText)
 {
     mActionState = NPC_ACTION_INPUT;
-    mInputState = NPC_INPUT_STRING;
+    mInputState = NpcInputState::STRING;
     mDefaultString = defaultText;
     mTextField->setText(defaultText);
 
@@ -776,7 +776,7 @@ void NpcDialog::integerRequest(const int defaultValue, const int min,
                                const int max)
 {
     mActionState = NPC_ACTION_INPUT;
-    mInputState = NPC_INPUT_INTEGER;
+    mInputState = NpcInputState::INTEGER;
     mDefaultInt = defaultValue;
     mIntField->setRange(min, max);
     mIntField->setValue(defaultValue);
@@ -786,7 +786,7 @@ void NpcDialog::integerRequest(const int defaultValue, const int min,
 void NpcDialog::itemRequest(const int size)
 {
     mActionState = NPC_ACTION_INPUT;
-    mInputState = NPC_INPUT_ITEM;
+    mInputState = NpcInputState::ITEM;
     mInventory->resize(size);
     buildLayout();
 }
@@ -794,7 +794,7 @@ void NpcDialog::itemRequest(const int size)
 void NpcDialog::itemIndexRequest(const int size)
 {
     mActionState = NPC_ACTION_INPUT;
-    mInputState = NPC_INPUT_ITEM_INDEX;
+    mInputState = NpcInputState::ITEM_INDEX;
     mInventory->resize(size);
     buildLayout();
 }
@@ -802,7 +802,7 @@ void NpcDialog::itemIndexRequest(const int size)
 void NpcDialog::itemCraftRequest(const int size)
 {
     mActionState = NPC_ACTION_INPUT;
-    mInputState = NPC_INPUT_ITEM_CRAFT;
+    mInputState = NpcInputState::ITEM_CRAFT;
     mComplexInventory->resize(size);
     buildLayout();
 }
@@ -814,17 +814,17 @@ void NpcDialog::move(const int amount)
 
     switch (mInputState)
     {
-        case NPC_INPUT_INTEGER:
+        case NpcInputState::INTEGER:
             mIntField->setValue(mIntField->getValue() + amount);
             break;
-        case NPC_INPUT_LIST:
+        case NpcInputState::LIST:
             mItemList->setSelected(mItemList->getSelected() - amount);
             break;
-        case NPC_INPUT_NONE:
-        case NPC_INPUT_STRING:
-        case NPC_INPUT_ITEM:
-        case NPC_INPUT_ITEM_INDEX:
-        case NPC_INPUT_ITEM_CRAFT:
+        case NpcInputState::NONE:
+        case NpcInputState::STRING:
+        case NpcInputState::ITEM:
+        case NpcInputState::ITEM_INDEX:
+        case NpcInputState::ITEM_CRAFT:
         default:
             break;
     }
@@ -999,7 +999,7 @@ void NpcDialog::placeItemInputControls()
         mItemContainer->setMaxColumns(10000);
     }
 
-    if (mInputState == NPC_INPUT_ITEM_CRAFT)
+    if (mInputState == NpcInputState::ITEM_CRAFT)
         mItemContainer->setInventory(mComplexInventory);
     else
         mItemContainer->setInventory(mInventory);
@@ -1058,12 +1058,12 @@ void NpcDialog::buildLayout()
             mButton->setCaption(CAPTION_CLOSE);
         placeNormalControls();
     }
-    else if (mInputState != NPC_INPUT_NONE)
+    else if (mInputState != NpcInputState::NONE)
     {
         mButton->setCaption(CAPTION_SUBMIT);
         switch (mInputState)
         {
-            case NPC_INPUT_LIST:
+            case NpcInputState::LIST:
                 if (!mDialogInfo)
                     placeMenuControls();
                 else
@@ -1071,21 +1071,21 @@ void NpcDialog::buildLayout()
                 mItemList->setSelected(-1);
                 break;
 
-            case NPC_INPUT_STRING:
+            case NpcInputState::STRING:
                 placeTextInputControls();
                 break;
 
-            case NPC_INPUT_INTEGER:
+            case NpcInputState::INTEGER:
                 placeIntInputControls();
                 break;
 
-            case NPC_INPUT_ITEM:
-            case NPC_INPUT_ITEM_INDEX:
-            case NPC_INPUT_ITEM_CRAFT:
+            case NpcInputState::ITEM:
+            case NpcInputState::ITEM_INDEX:
+            case NpcInputState::ITEM_CRAFT:
                 placeItemInputControls();
                 break;
 
-            case NPC_INPUT_NONE:
+            case NpcInputState::NONE:
             default:
                 break;
         }
@@ -1377,7 +1377,7 @@ void NpcDialog::addCraftItem(Item *const item,
                              const int amount,
                              const int slot)
 {
-    if (mInputState != NPC_INPUT_ITEM_CRAFT)
+    if (mInputState != NpcInputState::ITEM_CRAFT)
         return;
 
     Inventory *const inventory = PlayerInfo::getInventory();

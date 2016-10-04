@@ -1054,7 +1054,7 @@ void InventoryWindow::moveItemToCraft(const int craftSlot)
 
     NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
     if (dialog &&
-        dialog->getInputState() == NpcDialog::NPC_INPUT_ITEM_CRAFT)
+        dialog->getInputState() == NpcInputState::ITEM_CRAFT)
     {
         if (item->getQuantity() > 1
             && !inputManager.isActionActive(InputAction::STOP_ATTACK))

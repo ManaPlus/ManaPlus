@@ -26,6 +26,8 @@
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/beingtypeid.h"
 
+#include "enums/gui/npcinputstate.h"
+
 #include "gui/models/extendedlistmodel.h"
 
 #include "gui/widgets/window.h"
@@ -76,17 +78,6 @@ class NpcDialog final : public Window,
         ~NpcDialog();
 
         void postInit() override final;
-
-        enum NpcInputState
-        {
-            NPC_INPUT_NONE = 0,
-            NPC_INPUT_LIST,
-            NPC_INPUT_STRING,
-            NPC_INPUT_INTEGER,
-            NPC_INPUT_ITEM,
-            NPC_INPUT_ITEM_INDEX,
-            NPC_INPUT_ITEM_CRAFT
-        };
 
         enum NpcActionState
         {
@@ -323,7 +314,7 @@ class NpcDialog final : public Window,
         ScrollArea *mItemScrollArea A_NONNULLPOINTER;
 
 
-        NpcInputState mInputState;
+        NpcInputStateT mInputState;
         NpcActionState mActionState;
         std::vector<Widget*> mSkinControls;
         std::string mSkinName;
