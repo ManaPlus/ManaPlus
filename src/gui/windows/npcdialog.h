@@ -26,6 +26,7 @@
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/beingtypeid.h"
 
+#include "enums/gui/npcactionstate.h"
 #include "enums/gui/npcinputstate.h"
 
 #include "gui/models/extendedlistmodel.h"
@@ -78,14 +79,6 @@ class NpcDialog final : public Window,
         ~NpcDialog();
 
         void postInit() override final;
-
-        enum NpcActionState
-        {
-            NPC_ACTION_WAIT = 0,
-            NPC_ACTION_NEXT,
-            NPC_ACTION_INPUT,
-            NPC_ACTION_CLOSE
-        };
 
         /**
          * Called when receiving actions from the widgets.
@@ -230,7 +223,7 @@ class NpcDialog final : public Window,
         void mousePressed(MouseEvent &event) override final;
 
         int isCloseState() const
-        { return mActionState == NPC_ACTION_CLOSE; }
+        { return mActionState == NpcActionState::CLOSE; }
 
         void setSkin(const std::string &skin);
 
@@ -315,7 +308,7 @@ class NpcDialog final : public Window,
 
 
         NpcInputStateT mInputState;
-        NpcActionState mActionState;
+        NpcActionStateT mActionState;
         std::vector<Widget*> mSkinControls;
         std::string mSkinName;
         PlayerBox *mPlayerBox A_NONNULLPOINTER;

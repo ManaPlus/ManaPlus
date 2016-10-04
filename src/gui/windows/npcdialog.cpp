@@ -142,7 +142,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
         fromBool(getOptionBool("showitemsbackground"), Opaque),
         "npc_listbackground.xml")),
     mInputState(NpcInputState::NONE),
-    mActionState(NPC_ACTION_WAIT),
+    mActionState(NpcActionState::WAIT),
     mSkinControls(),
     mSkinName(),
     mPlayerBox(new PlayerBox(nullptr)),
@@ -296,19 +296,19 @@ void NpcDialog::addText(const std::string &text, const bool save)
         mTextBox->addRow(text);
     }
     mScrollArea->setVerticalScrollAmount(mScrollArea->getVerticalMaxScroll());
-    mActionState = NPC_ACTION_WAIT;
+    mActionState = NpcActionState::WAIT;
     buildLayout();
 }
 
 void NpcDialog::showNextButton()
 {
-    mActionState = NPC_ACTION_NEXT;
+    mActionState = NpcActionState::NEXT;
     buildLayout();
 }
 
 void NpcDialog::showCloseButton()
 {
-    mActionState = NPC_ACTION_CLOSE;
+    mActionState = NpcActionState::CLOSE;
     buildLayout();
 }
 
@@ -317,7 +317,7 @@ void NpcDialog::action(const ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "ok")
     {
-        if (mActionState == NPC_ACTION_NEXT)
+        if (mActionState == NpcActionState::NEXT)
         {
             if (!PacketLimiter::limitPackets(PacketType::PACKET_NPC_NEXT))
                 return;
@@ -325,14 +325,14 @@ void NpcDialog::action(const ActionEvent &event)
             nextDialog();
             addText(std::string(), false);
         }
-        else if (mActionState == NPC_ACTION_CLOSE
-                 || mActionState == NPC_ACTION_WAIT)
+        else if (mActionState == NpcActionState::CLOSE
+                 || mActionState == NpcActionState::WAIT)
         {
             if (cutInWindow)
                 cutInWindow->hide();
             closeDialog();
         }
-        else if (mActionState == NPC_ACTION_INPUT)
+        else if (mActionState == NpcActionState::INPUT)
         {
             std::string printText;  // Text that will get printed
                                     // in the textbox
@@ -579,7 +579,7 @@ void NpcDialog::action(const ActionEvent &event)
     else if (eventId == "close")
     {
         restoreVirtuals();
-        if (mActionState == NPC_ACTION_INPUT)
+        if (mActionState == NpcActionState::INPUT)
         {
             switch (mInputState)
             {
@@ -688,7 +688,7 @@ void NpcDialog::choiceRequest()
             (*it)->decRef();
     }
     mImages.clear();
-    mActionState = NPC_ACTION_INPUT;
+    mActionState = NpcActionState::INPUT;
     mInputState = NpcInputState::LIST;
     buildLayout();
 }
@@ -742,7 +742,7 @@ void NpcDialog::refocus()
 
 void NpcDialog::textRequest(const std::string &defaultText)
 {
-    mActionState = NPC_ACTION_INPUT;
+    mActionState = NpcActionState::INPUT;
     mInputState = NpcInputState::STRING;
     mDefaultString = defaultText;
     mTextField->setText(defaultText);
@@ -775,7 +775,7 @@ bool NpcDialog::isAnyInputFocused()
 void NpcDialog::integerRequest(const int defaultValue, const int min,
                                const int max)
 {
-    mActionState = NPC_ACTION_INPUT;
+    mActionState = NpcActionState::INPUT;
     mInputState = NpcInputState::INTEGER;
     mDefaultInt = defaultValue;
     mIntField->setRange(min, max);
@@ -785,7 +785,7 @@ void NpcDialog::integerRequest(const int defaultValue, const int min,
 
 void NpcDialog::itemRequest(const int size)
 {
-    mActionState = NPC_ACTION_INPUT;
+    mActionState = NpcActionState::INPUT;
     mInputState = NpcInputState::ITEM;
     mInventory->resize(size);
     buildLayout();
@@ -793,7 +793,7 @@ void NpcDialog::itemRequest(const int size)
 
 void NpcDialog::itemIndexRequest(const int size)
 {
-    mActionState = NPC_ACTION_INPUT;
+    mActionState = NpcActionState::INPUT;
     mInputState = NpcInputState::ITEM_INDEX;
     mInventory->resize(size);
     buildLayout();
@@ -801,7 +801,7 @@ void NpcDialog::itemIndexRequest(const int size)
 
 void NpcDialog::itemCraftRequest(const int size)
 {
-    mActionState = NPC_ACTION_INPUT;
+    mActionState = NpcActionState::INPUT;
     mInputState = NpcInputState::ITEM_CRAFT;
     mComplexInventory->resize(size);
     buildLayout();
@@ -809,7 +809,7 @@ void NpcDialog::itemCraftRequest(const int size)
 
 void NpcDialog::move(const int amount)
 {
-    if (mActionState != NPC_ACTION_INPUT)
+    if (mActionState != NpcActionState::INPUT)
         return;
 
     switch (mInputState)
@@ -1048,13 +1048,13 @@ void NpcDialog::buildLayout()
 {
     clearLayout();
 
-    if (mActionState != NPC_ACTION_INPUT)
+    if (mActionState != NpcActionState::INPUT)
     {
-        if (mActionState == NPC_ACTION_WAIT)
+        if (mActionState == NpcActionState::WAIT)
             mButton->setCaption(CAPTION_WAITING);
-        else if (mActionState == NPC_ACTION_NEXT)
+        else if (mActionState == NpcActionState::NEXT)
             mButton->setCaption(CAPTION_NEXT);
-        else if (mActionState == NPC_ACTION_CLOSE)
+        else if (mActionState == NpcActionState::CLOSE)
             mButton->setCaption(CAPTION_CLOSE);
         placeNormalControls();
     }
