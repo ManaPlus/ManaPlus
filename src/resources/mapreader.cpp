@@ -31,6 +31,7 @@
 #include "const/resources/map/map.h"
 
 #include "enums/resources/map/mapitemtype.h"
+#include "enums/resources/map/maplayertype.h"
 
 #include "resources/map/map.h"
 #include "resources/map/mapheights.h"
@@ -529,14 +530,14 @@ void MapReader::readProperties(const XmlNodePtrConst node,
 
 inline static void setTile(Map *const map,
                            MapLayer *const layer,
-                           const MapLayer::Type &layerType,
+                           const MapLayerTypeT &layerType,
                            MapHeights *const heights,
                            const int x, const int y,
                            const int gid) A_NONNULL(1);
 
 inline static void setTile(Map *const map,
                            MapLayer *const layer,
-                           const MapLayer::Type &layerType,
+                           const MapLayerTypeT &layerType,
                            MapHeights *const heights,
                            const int x, const int y,
                            const int gid)
@@ -544,7 +545,7 @@ inline static void setTile(Map *const map,
     const Tileset * const set = map->getTilesetWithGid(gid);
     switch (layerType)
     {
-        case MapLayer::TILES:
+        case MapLayerType::TILES:
         {
             Image *const img = set ? set->get(gid - set->getFirstGid())
                 : nullptr;
@@ -553,7 +554,7 @@ inline static void setTile(Map *const map,
             break;
         }
 
-        case MapLayer::COLLISION:
+        case MapLayerType::COLLISION:
         {
             if (set)
             {
@@ -595,7 +596,7 @@ inline static void setTile(Map *const map,
             break;
         }
 
-        case MapLayer::HEIGHTS:
+        case MapLayerType::HEIGHTS:
         {
             if (!set || !heights)
                 break;
@@ -614,7 +615,7 @@ inline static void setTile(Map *const map,
         }
 
         default:
-        case MapLayer::ACTIONS:
+        case MapLayerType::ACTIONS:
             break;
     }
 }
@@ -622,7 +623,7 @@ inline static void setTile(Map *const map,
 bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
                                 Map *const map,
                                 MapLayer *const layer,
-                                const MapLayer::Type &layerType,
+                                const MapLayerTypeT &layerType,
                                 MapHeights *const heights,
                                 const std::string &compression,
                                 int &restrict x, int &restrict y,
@@ -759,7 +760,7 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
 bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
                              Map *const map,
                              MapLayer *const layer,
-                             const MapLayer::Type &layerType,
+                             const MapLayerTypeT &layerType,
                              MapHeights *const heights,
                              int &restrict x, int &restrict y,
                              const int w, const int h)
@@ -859,13 +860,13 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
     int tileCondition = -1;
     int conditionLayer = 0;
 
-    MapLayer::Type layerType = MapLayer::TILES;
+    MapLayerTypeT layerType = MapLayerType::TILES;
     if (isCollisionLayer)
-        layerType = MapLayer::COLLISION;
+        layerType = MapLayerType::COLLISION;
     else if (isHeightLayer)
-        layerType = MapLayer::HEIGHTS;
+        layerType = MapLayerType::HEIGHTS;
     else if (isActionsLayer)
-        layerType = MapLayer::ACTIONS;
+        layerType = MapLayerType::ACTIONS;
 
     map->indexTilesets();
 
@@ -933,7 +934,7 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
 
         switch (layerType)
         {
-            case MapLayer::TILES:
+            case MapLayerType::TILES:
             {
                 layer = new MapLayer(name,
                     offsetX, offsetY,
@@ -944,15 +945,15 @@ void MapReader::readLayer(const XmlNodePtr node, Map *const map)
                 map->addLayer(layer);
                 break;
             }
-            case MapLayer::HEIGHTS:
+            case MapLayerType::HEIGHTS:
             {
                 heights = new MapHeights(w, h);
                 map->addHeights(heights);
                 break;
             }
             default:
-            case MapLayer::ACTIONS:
-            case MapLayer::COLLISION:
+            case MapLayerType::ACTIONS:
+            case MapLayerType::COLLISION:
                 break;
         }
 

@@ -48,14 +48,6 @@ struct MetaTile;
 class MapLayer final: public MemoryCounter, public ConfigListener
 {
     public:
-        enum Type
-        {
-            TILES = 0,
-            COLLISION,
-            HEIGHTS,
-            ACTIONS
-        };
-
         friend class Map;
 
         /**

@@ -23,6 +23,8 @@
 #ifndef RESOURCES_MAPREADER_H
 #define RESOURCES_MAPREADER_H
 
+#include "enums/resources/map/maplayertype.h"
+
 #include "utils/xml.h"
 
 #include "resources/map/maplayer.h"
@@ -82,7 +84,7 @@ class MapReader final
         static bool readBase64Layer(const XmlNodePtrConst childNode,
                                     Map *const map,
                                     MapLayer *const layer,
-                                    const MapLayer::Type &layerType,
+                                    const MapLayerTypeT &layerType,
                                     MapHeights *const heights,
                                     const std::string &compression,
                                     int &restrict x, int &restrict y,
@@ -91,7 +93,7 @@ class MapReader final
         static bool readCsvLayer(const XmlNodePtrConst childNode,
                                  Map *const map,
                                  MapLayer *const layer,
-                                 const MapLayer::Type &layerType,
+                                 const MapLayerTypeT &layerType,
                                  MapHeights *const heights,
                                  int &restrict x, int &restrict y,
                                  const int w, const int h) A_NONNULL(2);
