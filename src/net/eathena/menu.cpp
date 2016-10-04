@@ -18,11 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/eathena/menutype.h"
+#include "enums/net/menutype.h"
 
 #include "debug.h"
 
 namespace EAthena
 {
-    MenuType::Type menu = MenuType::Unknown;
+    MenuTypeT menu = MenuType::Unknown;
 }  // namespace EAthena

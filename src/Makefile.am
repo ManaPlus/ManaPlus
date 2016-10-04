@@ -1750,7 +1750,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/marketrecv.h \
 	      net/eathena/menu.cpp \
 	      net/eathena/menu.h \
-	      net/eathena/menutype.h \
+	      enums/net/menutype.h \
 	      net/eathena/mercenaryhandler.cpp \
 	      net/eathena/mercenaryhandler.h \
 	      net/eathena/mercenaryrecv.cpp \

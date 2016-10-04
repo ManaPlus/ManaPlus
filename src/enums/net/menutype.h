@@ -21,31 +21,28 @@
 #ifndef NET_EATHENA_MENUTYPE_H
 #define NET_EATHENA_MENUTYPE_H
 
-namespace EAthena
+#include "enums/simpletypes/enumdefines.h"
+
+enumStart(MenuType)
 {
-    namespace MenuType
-    {
-        enum Type
-        {
-            Unknown = 0,
-            Analysis,
-            AutoSpell,
-            AutoShadowSpell,
-            ChangeMaterial,
-            CreateConvert,
-            Eggs,
-            Feel,
-            Identify,
-            MagicDecoy,
-            MakingArrows,
-            PoisoningWeapon,
-            ReadingSpellBook,
-            RepairWespon,
-            Teleport,
-            Warp,
-            WeaponeRefine
-        };
-    }  // namespace MenuType
-}  // namespace EAthena
+    Unknown = 0,
+    Analysis,
+    AutoSpell,
+    AutoShadowSpell,
+    ChangeMaterial,
+    CreateConvert,
+    Eggs,
+    Feel,
+    Identify,
+    MagicDecoy,
+    MakingArrows,
+    PoisoningWeapon,
+    ReadingSpellBook,
+    RepairWespon,
+    Teleport,
+    Warp,
+    WeaponeRefine
+}
+enumEnd(MenuType);
 
 #endif  // NET_EATHENA_MENUTYPE_H

@@ -21,11 +21,11 @@
 #ifndef NET_EATHENA_MENU_H
 #define NET_EATHENA_MENU_H
 
-#include "net/eathena/menutype.h"
+#include "enums/net/menutype.h"
 
 namespace EAthena
 {
-    extern MenuType::Type menu;
+    extern MenuTypeT menu;
 }  // namespace EAthena
 
 #endif  // NET_EATHENA_MENU_H
