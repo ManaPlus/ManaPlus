@@ -69,18 +69,6 @@ class Map final : public Properties,
                   public MemoryCounter
 {
     public:
-        enum CollisionTypes
-        {
-            COLLISION_EMPTY = 0,         // no collision
-            COLLISION_WALL = 1,          // full collison
-            COLLISION_AIR = 2,           // air units can walk
-            COLLISION_WATER = 3,         // water units can walk
-            COLLISION_GROUNDTOP = 4,     // no collision (chair, bed, etc)
-            COLLISION_PLAYER_WALL = 5,   // full collision for player
-            COLLISION_MONSTER_WALL = 6,  // full collision for monster
-            COLLISION_MAX = 7            // count index
-        };
-
         /**
          * Constructor, taking map and tile size as parameters.
          */

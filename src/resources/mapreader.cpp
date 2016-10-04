@@ -30,6 +30,7 @@
 
 #include "const/resources/map/map.h"
 
+#include "enums/resources/map/collisiontype.h"
 #include "enums/resources/map/mapitemtype.h"
 #include "enums/resources/map/maplayertype.h"
 
@@ -560,29 +561,41 @@ inline static void setTile(Map *const map,
             {
                 if (map->getVersion() >= 1)
                 {
-                    switch (gid - set->getFirstGid())
+                    const int collisionId = gid - set->getFirstGid();
+                    CollisionTypeT type;
+                    if (collisionId < 0 ||
+                        collisionId >= CAST_S32(CollisionType::COLLISION_MAX))
                     {
-                        case Map::COLLISION_EMPTY:
+                        type = CollisionType::COLLISION_EMPTY;
+                    }
+                    else
+                    {
+                        type = static_cast<CollisionTypeT>(collisionId);
+                    }
+                    switch (type)
+                    {
+                        case CollisionType::COLLISION_EMPTY:
                             map->addBlockMask(x, y, BlockType::GROUND);
                             break;
-                        case Map::COLLISION_WALL:
+                        case CollisionType::COLLISION_WALL:
                             map->addBlockMask(x, y, BlockType::WALL);
                             break;
-                        case Map::COLLISION_AIR:
+                        case CollisionType::COLLISION_AIR:
                             map->addBlockMask(x, y, BlockType::AIR);
                             break;
-                        case Map::COLLISION_WATER:
+                        case CollisionType::COLLISION_WATER:
                             map->addBlockMask(x, y, BlockType::WATER);
                             break;
-                        case Map::COLLISION_GROUNDTOP:
+                        case CollisionType::COLLISION_GROUNDTOP:
                             map->addBlockMask(x, y, BlockType::GROUNDTOP);
                             break;
-                        case Map::COLLISION_PLAYER_WALL:
+                        case CollisionType::COLLISION_PLAYER_WALL:
                             map->addBlockMask(x, y, BlockType::PLAYERWALL);
                             break;
-                        case Map::COLLISION_MONSTER_WALL:
+                        case CollisionType::COLLISION_MONSTER_WALL:
                             map->addBlockMask(x, y, BlockType::MONSTERWALL);
                             break;
+                        case CollisionType::COLLISION_MAX:
                         default:
                             break;
                     }

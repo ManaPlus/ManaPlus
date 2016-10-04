@@ -1327,6 +1327,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/updatefile.h \
 	      enums/resources/map/blockmask.h \
 	      enums/resources/map/blocktype.h \
+	      enums/resources/map/collisiontype.h \
 	      enums/resources/skill/casttype.h \
 	      resources/map/location.h \
 	      resources/map/map.cpp \
