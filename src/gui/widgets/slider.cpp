@@ -67,6 +67,8 @@
 
 #include "settings.h"
 
+#include "enums/gui/slidergrid.h"
+
 #include "gui/gui.h"
 
 #include "utils/delete2.h"

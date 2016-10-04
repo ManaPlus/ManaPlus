@@ -67,7 +67,6 @@
 #define GUI_WIDGETS_SLIDER_H
 
 #include "enums/gui/orientation.h"
-#include "enums/gui/slidergrid.h"
 
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
