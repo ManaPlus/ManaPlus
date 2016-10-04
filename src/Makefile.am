@@ -1300,6 +1300,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/itemtypemapdata.h \
 	      resources/mapinfo.h \
 	      enums/resources/map/mapitemtype.h \
+	      enums/resources/map/maplayerposition.h \
 	      resources/mapreader.cpp \
 	      resources/mapreader.h \
 	      resources/modinfo.cpp \

@@ -352,7 +352,9 @@ void Map::draw(Graphics *restrict const graphics,
                         static_cast<float>(scrollY));
 
     // Draw backgrounds
-    drawAmbientLayers(graphics, BACKGROUND_LAYERS, mOverlayDetail);
+    drawAmbientLayers(graphics,
+        MapLayerPosition::BACKGROUND_LAYERS,
+        mOverlayDetail);
 
     if (mDrawLayersFlags == MapType::BLACKWHITE && userPalette)
     {
@@ -521,7 +523,9 @@ void Map::draw(Graphics *restrict const graphics,
         }
     }
 
-    drawAmbientLayers(graphics, FOREGROUND_LAYERS, mOverlayDetail);
+    drawAmbientLayers(graphics,
+        MapLayerPosition::FOREGROUND_LAYERS,
+        mOverlayDetail);
     BLOCK_END("Map::draw")
 }
 
@@ -639,12 +643,12 @@ void Map::updateAmbientLayers(const float scrollX,
 }
 
 void Map::drawAmbientLayers(Graphics *restrict const graphics,
-                            const LayerType type,
+                            const MapLayerPositionT type,
                             const int detail) const restrict2
 {
     BLOCK_START("Map::drawAmbientLayers")
     // Detail 0 = no ambient effects except background image
-    if (detail <= 0 && type != BACKGROUND_LAYERS)
+    if (detail <= 0 && type != MapLayerPosition::BACKGROUND_LAYERS)
     {
         BLOCK_END("Map::drawAmbientLayers")
         return;
@@ -654,10 +658,10 @@ void Map::drawAmbientLayers(Graphics *restrict const graphics,
     const AmbientLayerVector *restrict layers = nullptr;
     switch (type)
     {
-        case FOREGROUND_LAYERS:
+        case MapLayerPosition::FOREGROUND_LAYERS:
             layers = &mForegrounds;
             break;
-        case BACKGROUND_LAYERS:
+        case MapLayerPosition::BACKGROUND_LAYERS:
             layers = &mBackgrounds;
             break;
         default:

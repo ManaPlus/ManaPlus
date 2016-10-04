@@ -688,6 +688,7 @@ SET(SRCS
     resources/db/moddb.h
     resources/mapinfo.h
     enums/resources/map/mapitemtype.h
+    enums/resources/map/maplayerposition.h
     resources/mapreader.cpp
     resources/mapreader.h
     resources/memorycounter.cpp

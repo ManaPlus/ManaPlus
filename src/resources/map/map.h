@@ -30,6 +30,7 @@
 #include "enums/render/rendertype.h"
 
 #include "enums/resources/map/blocktype.h"
+#include "enums/resources/map/maplayerposition.h"
 #include "enums/resources/map/maptype.h"
 
 #include "resources/memorycounter.h"
@@ -381,12 +382,6 @@ class Map final : public Properties,
         void removeActor(const Actors::iterator &restrict iterator) restrict2;
 
     private:
-        enum LayerType
-        {
-            FOREGROUND_LAYERS = 0,
-            BACKGROUND_LAYERS
-        };
-
         /**
          * Updates scrolling of ambient layers. Has to be called each game tick.
          */
@@ -397,7 +392,7 @@ class Map final : public Properties,
          * Draws the foreground or background layers to the given graphics output.
          */
         void drawAmbientLayers(Graphics *restrict const graphics,
-                               const LayerType type,
+                               const MapLayerPositionT type,
                                const int detail) const restrict2 A_NONNULL(2);
 
         /**
