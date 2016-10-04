@@ -130,6 +130,7 @@ SRC += events/actionevent.h \
 	      enums/gui/progresscolorid.h \
 	      enums/gui/serverdialogdonwloadstatus.h \
 	      enums/gui/shoplistboxtype.h \
+	      enums/gui/slidergrid.h \
 	      enums/gui/themecolorid.h \
 	      enums/gui/updatedownloadstatus.h \
 	      enums/gui/usercolorid.h \
