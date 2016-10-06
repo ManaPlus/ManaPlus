@@ -71,7 +71,7 @@
 #include "enums/events/mousebutton.h"
 #include "enums/events/mouseeventtype.h"
 
-#include "resources/cursors.h"
+#include "enums/resources/cursor.h"
 
 #include <deque>
 #include <list>

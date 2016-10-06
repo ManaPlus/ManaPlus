@@ -35,6 +35,7 @@
 
 #include "resources/map/map.h"
 #include "resources/map/mapheights.h"
+#include "resources/map/maplayer.h"
 #include "resources/map/tileset.h"
 
 #include "resources/beingcommon.h"

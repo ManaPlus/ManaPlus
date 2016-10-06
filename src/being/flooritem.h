@@ -25,6 +25,8 @@
 
 #include "const/resources/item/cards.h"
 
+#include "enums/resources/cursor.h"
+
 #include "enums/resources/item/itemtype.h"
 
 #include "enums/simpletypes/damaged.h"
@@ -32,8 +34,6 @@
 #include "enums/simpletypes/itemcolor.h"
 
 #include "being/actorsprite.h"
-
-#include "resources/cursors.h"
 
 class ItemInfo;
 

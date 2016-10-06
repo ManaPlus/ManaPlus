@@ -25,6 +25,10 @@
 
 #include "enums/simpletypes/enumdefines.h"
 
+#ifdef INPUT
+#undef
+#endif  // INPUT
+
 enumStart(NpcActionState)
 {
     WAIT = 0,
