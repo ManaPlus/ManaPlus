@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2016-09-18 08:10+0000\n"
+"PO-Revision-Date: 2016-09-28 10:45+0000\n"
 "Last-Translator: Alige\n"
 "Language-Team: French (http://www.transifex.com/akaras/manaplus/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -203,7 +203,7 @@ msgid "\"Copy equiped to Outfit\""
 msgstr "\"Copier l'équipement porté dans les tenues\""
 
 msgid "/outfit next - wear next outfit."
-msgstr "/outfit next - met la tenue suivante."
+msgstr "/outfit next - mettre la tenue suivante."
 
 msgid "\"Outfit shortcut 3\""
 msgstr "\"Raccourci de tenue 3\""
@@ -223,7 +223,7 @@ msgid "/catchpet - try to catch pet."
 msgstr "/catchpet - essaye d'attraper l'animal de compagnie."
 
 msgid "/outfit prev - wear previous outfit."
-msgstr "/outfit prev - met la tenue précédente."
+msgstr "/outfit prev - mettre la tenue précédente."
 
 msgid "##2Party level2:##9 enables a char to create a party."
 msgstr "##2Groupe level2:##P Permet à un personnage de créer un groupe."
@@ -812,7 +812,7 @@ msgid "\"Item shortcut 14\""
 msgstr "\"Raccourci d'objet 14\""
 
 msgid "/outfit N - wear outfit number N."
-msgstr "/outfit N - met la tenue numéro N."
+msgstr "/outfit N - mettre la tenue numéro N."
 
 msgid "/dirs - show client dirs in debug chat tab."
 msgstr "/dirs - Liste les répertoires utilisés par le client dans l'onglet d'informations de débogage."

@@ -170,7 +170,9 @@ src/render/rendererslistsdl2.h
 src/render/rendererslistsdl.h
 src/resources/beinginfo.cpp
 src/resources/db/avatardb.cpp
+src/resources/db/homunculusdb.cpp
 src/resources/db/itemdb.cpp
+src/resources/db/mercenarydb.cpp
 src/resources/db/moddb.cpp
 src/resources/db/monsterdb.cpp
 src/resources/db/npcdb.cpp
