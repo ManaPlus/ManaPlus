@@ -1,3 +1,11 @@
+2016-10-08 New release 1.6.10.8
+fix: fix modal dialogs if update window is open.
+fix: theme info dialog.
+fix: removing particle effect after it was disabled on server.
+add: in quest texts add fields for data from server.
+add: support for links to monsters, pets, homunculuses.
+add: more than one image support in one animation action.
+
 2016-09-24 New release 1.6.9.24
 fix: bold links hightlight.
 fix: some rare memory leaks.
