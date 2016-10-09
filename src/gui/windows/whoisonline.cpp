@@ -536,6 +536,7 @@ int WhoIsOnline::downloadThread(void *ptr)
                 break;
             }
             wio->mDownloadedBytes = 0;
+            curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
             curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1);
             curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,
                                    &WhoIsOnline::memoryWrite);
