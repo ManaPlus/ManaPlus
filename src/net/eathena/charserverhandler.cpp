@@ -120,6 +120,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
         else if (packetVersion >= 20120307)
         {
             outMsg.writeInt8(CAST_U8(slot), "slot");
+            outMsg.writeInt16(CAST_S16(hairColor), "hair color");
             outMsg.writeInt16(CAST_S16(hairstyle), "hair style");
         }
         else
