@@ -26,6 +26,7 @@
 #include "being/being.h"
 
 #include "enums/being/pickup.h"
+#include "enums/being/visiblename.h"
 
 #include "enums/simpletypes/allowsort.h"
 #include "enums/simpletypes/keep.h"
@@ -514,6 +515,7 @@ class LocalPlayer final : public Being,
         bool mBlockAdvert;
         bool mTargetDeadPlayers;
         Keep mServerAttack;
+        VisibleName::Type mVisibleNames;
         bool mEnableAdvert;
         bool mTradebot;
         bool mTargetOnlyReachable;

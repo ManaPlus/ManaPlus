@@ -1,7 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  Andrei Karas
  *  Copyright (C) 2011-2016  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -20,29 +18,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_SETUP_PLAYERS_H
-#define GUI_WIDGETS_TABS_SETUP_PLAYERS_H
+#ifndef ENUMS_BEING_VISIBLENAME_H
+#define ENUMS_BEING_VISIBLENAME_H
 
-#include "gui/widgets/tabs/setuptabscroll.h"
-
-class NamesModel;
-
-class Setup_Players final : public SetupTabScroll
+namespace VisibleName
 {
-    public:
-        explicit Setup_Players(const Widget2 *const widget);
+    enum Type
+    {
+        Hide            = 0,
+        Show            = 1,
+        ShowOnSelection = 2
+    };
+}  // namespace BeingDirection
 
-        ~Setup_Players();
-
-        A_DELETE_COPY(Setup_Players)
-
-        void apply() override final;
-
-        void externalUpdated() override final;
-
-    private:
-        NamesModel *mBadgesList;
-        NamesModel *mVisibleNamesList;
-};
-
-#endif  // GUI_WIDGETS_TABS_SETUP_PLAYERS_H
+#endif  // ENUMS_BEING_VISIBLENAME_H

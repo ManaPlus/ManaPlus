@@ -1197,6 +1197,7 @@ SET(SRCS
     enums/being/relation.h
     enums/being/targetcursorsize.h
     enums/being/targetcursortype.h
+    enums/being/visiblename.h
     listeners/playerrelationslistener.h
     listeners/renamelistener.cpp
     listeners/renamelistener.h

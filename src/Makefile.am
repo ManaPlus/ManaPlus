@@ -657,6 +657,7 @@ SRC += events/actionevent.h \
 	      enums/being/relation.h \
 	      enums/being/targetcursorsize.h \
 	      enums/being/targetcursortype.h \
+	      enums/being/visiblename.h \
 	      position.cpp \
 	      position.h \
 	      render/safeopenglgraphics.cpp\

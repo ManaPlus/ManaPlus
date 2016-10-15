@@ -166,6 +166,8 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mBlockAdvert(false),
     mTargetDeadPlayers(config.getBoolValue("targetDeadPlayers")),
     mServerAttack(fromBool(config.getBoolValue("serverAttack"), Keep)),
+    mVisibleNames(static_cast<VisibleName::Type>(
+        config.getIntValue("visiblenames"))),
     mEnableAdvert(config.getBoolValue("enableAdvert")),
     mTradebot(config.getBoolValue("tradebot")),
     mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
@@ -216,6 +218,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     config.addListener("tradebot", this);
     config.addListener("targetOnlyReachable", this);
     config.addListener("showserverpos", this);
+    config.addListener("visiblenames", this);
     setShowName(config.getBoolValue("showownname"));
 }
 
@@ -553,21 +556,27 @@ void LocalPlayer::setTarget(Being *const target)
         oldTarget = mTarget;
     }
 
-    if (mTarget && mTarget->getType() == ActorType::Monster)
-        mTarget->setShowName(false);
+    if (mTarget)
+    {
+        if (mTarget->getType() == ActorType::Monster)
+            mTarget->setShowName(false);
+    }
 
     mTarget = target;
 
     if (oldTarget)
         oldTarget->updateName();
 
-    if (mTarget)
+    if (target)
     {
-        mLastTargetX = mTarget->mX;
-        mLastTargetY = mTarget->mY;
-        mTarget->updateName();
+        mLastTargetX = target->mX;
+        mLastTargetY = target->mY;
+        target->updateName();
+        if (mVisibleNames == VisibleName::ShowOnSelection)
+            target->setShowName(true);
     }
-
+    if (oldTarget && mVisibleNames == VisibleName::ShowOnSelection)
+        oldTarget->setShowName(false);
     if (target && target->getType() == ActorType::Monster)
         target->setShowName(true);
 }
@@ -1073,33 +1082,66 @@ void LocalPlayer::addMessageToQueue(const std::string &message,
 void LocalPlayer::optionChanged(const std::string &value)
 {
     if (value == "showownname")
+    {
         setShowName(config.getBoolValue("showownname"));
+    }
     else if (value == "targetDeadPlayers")
+    {
         mTargetDeadPlayers = config.getBoolValue("targetDeadPlayers");
+    }
     else if (value == "enableBuggyServers")
+    {
         mIsServerBuggy = serverConfig.getBoolValue("enableBuggyServers");
+    }
     else if (value == "syncPlayerMove")
+    {
         mSyncPlayerMove = config.getBoolValue("syncPlayerMove");
+    }
     else if (value == "syncPlayerMoveDistance")
+    {
         mSyncPlayerMoveDistance = config.getIntValue("syncPlayerMoveDistance");
+    }
     else if (value == "drawPath")
+    {
         mDrawPath = config.getBoolValue("drawPath");
+    }
     else if (value == "serverAttack")
+    {
         mServerAttack = fromBool(config.getBoolValue("serverAttack"), Keep);
+    }
     else if (value == "attackMoving")
+    {
         mAttackMoving = config.getBoolValue("attackMoving");
+    }
     else if (value == "attackNext")
+    {
         mAttackNext = config.getBoolValue("attackNext");
+    }
     else if (value == "showJobExp")
+    {
         mShowJobExp = config.getBoolValue("showJobExp");
+    }
     else if (value == "enableAdvert")
+    {
         mEnableAdvert = config.getBoolValue("enableAdvert");
+    }
     else if (value == "tradebot")
+    {
         mTradebot = config.getBoolValue("tradebot");
+    }
     else if (value == "targetOnlyReachable")
+    {
         mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
+    }
     else if (value == "showserverpos")
+    {
         mShowServerPos = config.getBoolValue("showserverpos");
+    }
+    else if (value == "visiblenames")
+    {
+        mVisibleNames = static_cast<VisibleName::Type>(
+            config.getIntValue("visiblenames"));
+    }
 }
 
 void LocalPlayer::addJobMessage(const int change)

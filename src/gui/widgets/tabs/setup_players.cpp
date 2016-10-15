@@ -51,9 +51,22 @@ static const char *const badgesList[] =
     N_("show at bottom"),
 };
 
+static const int visibleNamesListSize = 3;
+
+static const char *const visibleNamesList[] =
+{
+    // TRANSLATORS: visible name type
+    N_("hide"),
+    // TRANSLATORS: visible name type
+    N_("show"),
+    // TRANSLATORS: visible name type
+    N_("show on selection")
+};
+
 Setup_Players::Setup_Players(const Widget2 *const widget) :
     SetupTabScroll(widget),
-    mBadgesList(new NamesModel)
+    mBadgesList(new NamesModel),
+    mVisibleNamesList(new NamesModel)
 {
     // TRANSLATORS: settings tab name
     setName(_("Players"));
@@ -82,9 +95,12 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Target dead players"), "",
         "targetDeadPlayers", this, "targetDeadPlayersEvent");
 
+    mVisibleNamesList->fillFromArray(&visibleNamesList[0],
+        visibleNamesListSize);
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Visible names"), "",
-        "visiblenames", this, "visiblenamesEvent");
+    new SetupItemDropDown(_("Show player names"), "",
+        "visiblenames", this, "visiblenamesEvent",
+        mVisibleNamesList, 150);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto move names"), "",

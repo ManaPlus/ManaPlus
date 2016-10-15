@@ -30,6 +30,8 @@
 
 #include "enums/screendensity.h"
 
+#include "enums/being/visiblename.h"
+
 #include "enums/input/inputaction.h"
 
 #include "render/graphics.h"
@@ -82,7 +84,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("OverlayDetail", 2);
     AddDEF("speechBubbleAlpha", 1.0F);
     AddDEF("MostUsedServerName0", "server.themanaworld.org");
-    AddDEF("visiblenames", true);
+    AddDEF("visiblenames", VisibleName::Show);
     AddDEF("speech", CAST_S32(BeingSpeech::NO_NAME_IN_BUBBLE));
     AddDEF("showgender", true);
     AddDEF("showlevel", false);

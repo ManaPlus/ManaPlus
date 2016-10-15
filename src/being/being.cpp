@@ -275,7 +275,7 @@ Being::Being(const BeingId id,
     setMap(map);
     setSubtype(subtype, 0);
 
-    bool showName1 = false;
+    VisibleName::Type showName1 = VisibleName::Hide;
 
     switch (mType)
     {
@@ -284,11 +284,12 @@ Being::Being(const BeingId id,
         case ActorType::Pet:
         case ActorType::Homunculus:
         case ActorType::Elemental:
-            showName1 = config.getBoolValue("visiblenames");
+            showName1 = static_cast<VisibleName::Type>(
+                config.getIntValue("visiblenames"));
             break;
         case ActorType::Portal:
         case ActorType::SkillUnit:
-            showName1 = false;
+            showName1 = VisibleName::Hide;
             break;
         default:
         case ActorType::Unknown:
@@ -306,10 +307,11 @@ Being::Being(const BeingId id,
 
     reReadConfig();
 
-    if (mType == ActorType::Npc)
+    if (mType == ActorType::Npc ||
+        showName1 == VisibleName::Show)
+    {
         setShowName(true);
-    else if (showName1)
-        setShowName(showName1);
+    }
 
     updateColors();
     updatePercentHP();
@@ -2398,7 +2400,7 @@ void Being::updateCoords() restrict2
 void Being::optionChanged(const std::string &restrict value) restrict2
 {
     if (mType == ActorType::Player && value == "visiblenames")
-        setShowName(config.getBoolValue("visiblenames"));
+        setShowName(config.getIntValue("visiblenames") == VisibleName::Show);
 }
 
 void Being::flashName(const int time) restrict2
