@@ -61,6 +61,10 @@ packet(SMSG_PET_STATUS,                    0x01a2,  35, &PetRecv::processPetStat
 // fake packets for add packet name
 packet(SMSG_SELECT_CART,                   0x0000,   0, nullptr,                                        0);
 packet(CMSG_NAVIGATE_TO,                   0x0000,   0, nullptr,                                        0);
+packet(SMSG_MERGE_ITEM,                    0x0000,   0, nullptr,                                        0);
+packet(SMSG_ACK_MERGE_ITEMS,               0x0000,   0, nullptr,                                        0);
+packet(SMSG_RANKS_LIST,                    0x0000,   0, nullptr,                                        0);
+packet(SMSG_CHAR_CHARACTERS,               0x0000,   0, nullptr,                                        0);
 
 // login server, unknown version
 packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
@@ -69,7 +73,6 @@ packet(SMSG_LOGIN_ERROR,                   0x006a,  23, &Ea::LoginRecv::processL
 
 // char server, unknown version
 packet(SMSG_CHAR_CHANGE_SLOT,              0x08d5,  -1, &CharServerRecv::processCharChangeSlot,         0);
-packet(SMSG_CHAR_CHARACTERS,               0x099d,  -1, &CharServerRecv::processCharCharacters,         0);
 packet(SMSG_CHAR_CHECK_RENAME,             0x028e,   4, &CharServerRecv::processCharCheckRename,        0);
 packet(SMSG_CHAR_CREATE_FAILED,            0x006e,   3, &Ea::CharServerRecv::processCharCreateFailed,   0);
 packet(SMSG_CHAR_CREATE_SUCCEEDED,         0x006d, 149, &CharServerRecv::processCharCreate,             0);
@@ -256,7 +259,6 @@ packet(SMSG_PLAYER_USE_CARD,               0x017b,  -1, &InventoryRecv::processP
 packet(SMSG_PLAYER_WARP,                   0x0091,  22, &Ea::PlayerRecv::processPlayerWarp,             0);
 packet(SMSG_PVP_MAP_MODE,                  0x0199,   4, &Ea::BeingRecv::processPvpMapMode,              0);
 packet(SMSG_PVP_SET,                       0x019a,  14, &BeingRecv::processPvpSet,                      0);
-packet(SMSG_RANKS_LIST,                    0x097d, 288, &BeingRecv::processRanksList,                   0);
 packet(SMSG_SCRIPT_MESSAGE,                0x08b3,  -1, &ChatRecv::processScriptMessage,                0);
 packet(SMSG_SERVER_PING,                   0x007f,   6, &GameRecv::processServerTick,                   0);
 packet(SMSG_SKILL_ARROW_CREATE_LIST,       0x01ad,  -1, &SkillRecv::processSkillArrowCreateList,        0);
@@ -289,8 +291,6 @@ packet(SMSG_WHO_ANSWER,                    0x00c2,   6, &Ea::GameRecv::processWh
 packet(SMSG_BOOKING_CANCEL_VOLUNTEER,      0x0909,   6, nullptr,                                        0);
 packet(SMSG_BOOKING_ADD_FILTERING_LIST,    0x090b,  30, nullptr,                                        0);
 packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr,                                        0);
-packet(SMSG_MERGE_ITEM,                    0x096d,  -1, &InventoryRecv::processMergeItem,               0);
-packet(SMSG_ACK_MERGE_ITEMS,               0x096f,   7, &InventoryRecv::processMergeItemResponse,       0);
 packet(SMSG_ADD_MAP_MARKER,                0x09c1,  10, &MapRecv::processAddMapMarker,                  0);
 packet(SMSG_GUILD_ONLINE_INFO,             0x016d,  14, &GuildRecv::processOnlineInfo,                  0);
 
@@ -687,6 +687,13 @@ if (packetVersion >= 20120221)
     packet(SMSG_BEING_SPAWN,               0x090f,  -1, &BeingRecv::processBeingSpawn,                  20120221);
 }
 
+// 20120229
+if (packetVersion >= 20120229)
+{
+    packet(SMSG_MERGE_ITEM,                0x096d,  -1, &InventoryRecv::processMergeItem,               20120229);
+    packet(SMSG_ACK_MERGE_ITEMS,           0x096f,   7, &InventoryRecv::processMergeItemResponse,       20120229);
+}
+
 // 20120410
 packet(SMSG_BEING_CHARM,                   0x08cf,  10, &BeingRecv::processBeingCharm,                  20120410);
 packet(SMSG_RECRUIT_REGISTER_ACK,          0x08e6,   4, nullptr,                                        20120410);
@@ -699,6 +706,18 @@ packet(SMSG_BOOKING_VOLUNTEER_INFO,        0x08f2,  36, nullptr,                
 packet(SMSG_BOOKING_REFUSE_VOLUNTEER,      0x08fa,   6, nullptr,                                        20120410);
 packet(SMSG_PLAYER_FAVORITE_ITEM,          0x0908,   5, &InventoryRecv::processFavoriteItem,            20120410);
 packet(SMSG_MONSTER_HP,                    0x0977,  14, &BeingRecv::processMonsterHp,                   20120410);
+
+// 20120419
+if (packetVersion >= 20120419)
+{
+    packet(SMSG_CHAR_CHARACTERS,           0x099d,  -1, &CharServerRecv::processCharCharacters,         20120419);
+}
+
+// 20120502
+if (packetVersion >= 20120502)
+{
+    packet(SMSG_RANKS_LIST,                0x097d, 288, &BeingRecv::processRanksList,                   20120502);
+}
 
 // 20120618
 if (packetVersion >= 20120618)
