@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-10-08 16:00+0300\n"
+"POT-Creation-Date: 2016-10-22 15:53+0300\n"
 "PO-Revision-Date: 2016-09-25 10:11+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Turkish (http://www.transifex.com/akaras/manaplus/language/"
@@ -376,84 +376,84 @@ msgid "Visible on map"
 msgstr "Haritada görünür"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:459
+#: src/being/being.cpp:461
 msgid "Human"
 msgstr "İnsan"
 
 #. TRANSLATORS: dodge or miss message in attacks
-#: src/being/being.cpp:655
+#: src/being/being.cpp:657
 msgid "dodge"
 msgstr "kaçınıldı"
 
-#: src/being/being.cpp:655
+#: src/being/being.cpp:657
 msgid "miss"
 msgstr "kaçırıldı"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2436 src/gui/windows/whoisonline.cpp:885
+#: src/being/being.cpp:2438 src/gui/windows/whoisonline.cpp:886
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2441 src/gui/windows/whoisonline.cpp:890
+#: src/being/being.cpp:2443 src/gui/windows/whoisonline.cpp:891
 msgid "I"
 msgstr "İ"
 
 #. TRANSLATORS: chat message after death
 #. TRANSLATORS: player killed message
-#: src/being/localplayer.cpp:401 src/net/eathena/playerrecv.cpp:475
+#: src/being/localplayer.cpp:404 src/net/eathena/playerrecv.cpp:475
 #, c-format
 msgid "You were killed by %s."
 msgstr "%s tarafından öldürüldün."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:874
+#: src/being/localplayer.cpp:883
 msgid "Tried to pick up nonexistent item."
 msgstr "Var olmayan item toplanmaya çalışıldı."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:878
+#: src/being/localplayer.cpp:887
 msgid "Item is too heavy."
 msgstr "İtem çok ağır."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:882
+#: src/being/localplayer.cpp:891
 msgid "Item is too far away."
 msgstr "İtem çok uzakta."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:886
+#: src/being/localplayer.cpp:895
 msgid "Inventory is full."
 msgstr "Envanter dolu."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:890
+#: src/being/localplayer.cpp:899
 msgid "Stack is too big."
 msgstr "Küme çok büyük."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:894
+#: src/being/localplayer.cpp:903
 msgid "Item belongs to someone else."
 msgstr "İtem başkasına ait."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:898
+#: src/being/localplayer.cpp:907
 msgid "You can't pickup this amount of items."
 msgstr "Bu miktardaki itemi alamazsınız."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:902
+#: src/being/localplayer.cpp:911
 msgid "Your item stack has max amount."
 msgstr "İtem kümesi maksimum miktarda."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:909
+#: src/being/localplayer.cpp:918
 msgid "Unknown problem picking up item."
 msgstr "İtem toplamada bilinmeyen hata."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:933
+#: src/being/localplayer.cpp:942
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -462,58 +462,58 @@ msgstr[1] ""
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1113 src/being/localplayer.cpp:1115
-#: src/being/localplayer.cpp:1141 src/being/localplayer.cpp:1154
+#: src/being/localplayer.cpp:1155 src/being/localplayer.cpp:1157
+#: src/being/localplayer.cpp:1183 src/being/localplayer.cpp:1196
 msgid "xp"
 msgstr "xp"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1119 src/being/localplayer.cpp:1125
-#: src/being/localplayer.cpp:1131
+#: src/being/localplayer.cpp:1161 src/being/localplayer.cpp:1167
+#: src/being/localplayer.cpp:1173
 msgid "job"
 msgstr "iş"
 
 #. TRANSLATORS: get homunculus xp message
-#: src/being/localplayer.cpp:1151
+#: src/being/localplayer.cpp:1193
 msgid "Homun"
 msgstr ""
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1163
+#: src/being/localplayer.cpp:1205
 msgid "hp"
 msgstr ""
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1172
+#: src/being/localplayer.cpp:1214
 msgid "mana"
 msgstr ""
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2256
+#: src/being/localplayer.cpp:2298
 #, c-format
 msgid "Follow: %s"
 msgstr "Takip et: %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2262 src/being/localplayer.cpp:2287
+#: src/being/localplayer.cpp:2304 src/being/localplayer.cpp:2329
 msgid "Follow canceled"
 msgstr "Takip iptal edildi."
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2272
+#: src/being/localplayer.cpp:2314
 #, c-format
 msgid "Imitation: %s"
 msgstr "Taklit: %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2278 src/being/localplayer.cpp:2292
+#: src/being/localplayer.cpp:2320 src/being/localplayer.cpp:2334
 msgid "Imitation canceled"
 msgstr "Taklit iptal edildi"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2641
+#: src/being/localplayer.cpp:2683
 #, c-format
 msgid "You see %s"
 msgstr "%s görüyorsun"
@@ -2147,7 +2147,7 @@ msgstr "İptal"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: settings tab name
-#: src/gui/popups/popupmenu.cpp:506 src/gui/widgets/tabs/setup_players.cpp:59
+#: src/gui/popups/popupmenu.cpp:506 src/gui/widgets/tabs/setup_players.cpp:72
 msgid "Players"
 msgstr "Oyuncular"
 
@@ -5352,7 +5352,9 @@ msgid "Disable logging in game (do not enable)"
 msgstr ""
 
 #. TRANSLATORS: screen badges type
+#. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:45
+#: src/gui/widgets/tabs/setup_players.cpp:59
 msgid "hide"
 msgstr ""
 
@@ -5371,109 +5373,120 @@ msgstr ""
 msgid "show at bottom"
 msgstr ""
 
+#. TRANSLATORS: visible name type
+#: src/gui/widgets/tabs/setup_players.cpp:61
+msgid "show"
+msgstr ""
+
+#. TRANSLATORS: visible name type
+#: src/gui/widgets/tabs/setup_players.cpp:63
+msgid "show on selection"
+msgstr ""
+
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:66
+#: src/gui/widgets/tabs/setup_players.cpp:79
 msgid "Show gender"
 msgstr "Cinsiyeti göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:70
+#: src/gui/widgets/tabs/setup_players.cpp:83
 msgid "Show level"
 msgstr "Leveli göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:74
+#: src/gui/widgets/tabs/setup_players.cpp:87
 msgid "Show own name"
 msgstr "Kendi adını göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:78
+#: src/gui/widgets/tabs/setup_players.cpp:91
 msgid "Enable extended mouse targeting"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:82
+#: src/gui/widgets/tabs/setup_players.cpp:95
 msgid "Target dead players"
 msgstr "Ölü oyuncuları hedef al"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:86
-msgid "Visible names"
-msgstr "Görünür isimler"
+#: src/gui/widgets/tabs/setup_players.cpp:101
+#, fuzzy
+msgid "Show player names"
+msgstr "Oyuncu açılır pencerelerini göster"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:90
+#: src/gui/widgets/tabs/setup_players.cpp:106
 msgid "Auto move names"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:95
+#: src/gui/widgets/tabs/setup_players.cpp:111
 msgid "Badges"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:99
+#: src/gui/widgets/tabs/setup_players.cpp:115
 msgid "Secure trades"
 msgstr "Güvenli takas"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:103
+#: src/gui/widgets/tabs/setup_players.cpp:119
 msgid "Unsecure chars in names"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:107
+#: src/gui/widgets/tabs/setup_players.cpp:123
 msgid "Show statuses"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:111
+#: src/gui/widgets/tabs/setup_players.cpp:127
 msgid "Show ip addresses on screenshots"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:115
+#: src/gui/widgets/tabs/setup_players.cpp:131
 msgid "Allow self heal with mouse click"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:119
+#: src/gui/widgets/tabs/setup_players.cpp:135
 msgid "Group friends in who is online window"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:123
+#: src/gui/widgets/tabs/setup_players.cpp:139
 msgid "Hide erased players nicks"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:127
+#: src/gui/widgets/tabs/setup_players.cpp:143
 msgid "Collect players id and seen log"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:131
+#: src/gui/widgets/tabs/setup_players.cpp:147
 msgid "Use special diagonal speed in players moving"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:135
+#: src/gui/widgets/tabs/setup_players.cpp:151
 msgid "Log players actions (for GM)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:139
+#: src/gui/widgets/tabs/setup_players.cpp:155
 msgid "Create screenshots for each complete trades"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:143
+#: src/gui/widgets/tabs/setup_players.cpp:159
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_players.cpp:148
+#: src/gui/widgets/tabs/setup_players.cpp:164
 msgid "Enable remote commands"
 msgstr ""
 
@@ -7772,7 +7785,7 @@ msgid "Completed"
 msgstr "Tamamlandı"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:93 src/gui/windows/whoisonline.cpp:656
+#: src/gui/windows/whoisonline.cpp:93 src/gui/windows/whoisonline.cpp:657
 msgid "Who Is Online - Updating"
 msgstr "Kimler Online - Güncelleniyor"
 
@@ -7787,12 +7800,12 @@ msgid "Who Is Online - "
 msgstr "Kimler Online - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:672
+#: src/gui/windows/whoisonline.cpp:673
 msgid "Who Is Online - error"
 msgstr "Kimler Online - hata"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:719
+#: src/gui/windows/whoisonline.cpp:720
 msgid "Who Is Online - Update"
 msgstr "Kimler Online - Güncelle"
 
@@ -10858,3 +10871,6 @@ msgstr "%d saniye"
 #, c-format
 msgid "%d seconds"
 msgstr "%d saniyeler"
+
+#~ msgid "Visible names"
+#~ msgstr "Görünür isimler"
