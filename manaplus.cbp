@@ -1601,6 +1601,7 @@
 		<Unit filename="src/enums/being/pickup.h" />
 		<Unit filename="src/enums/being/attributesstrings.h" />
 		<Unit filename="src/enums/being/badgeindex.h" />
+		<Unit filename="src/enums/being/visiblename.h" />
 		<Unit filename="src/enums/being/targetcursorsize.h" />
 		<Unit filename="src/enums/being/targetcursortype.h" />
 		<Unit filename="src/enums/being/gender.h" />
