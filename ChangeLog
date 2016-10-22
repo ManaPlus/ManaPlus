@@ -1,3 +1,8 @@
+2016-10-22 New release 1.6.10.22
+fix: character creation for packet version >= 20120307 (hercules)
+add: support for redicts in online list (legacy servers)
+add: option to show player name only on selected player.
+
 2016-10-08 New release 1.6.10.8
 fix: fix modal dialogs if update window is open.
 fix: theme info dialog.

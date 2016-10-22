@@ -22,8 +22,7 @@ EXTRA_DIST = $(desktop_DATA) \
 	     ChangeLog \
 	     INSTALL \
 	     PKGBUILD \
-	     README \
-	     README.cmake
+	     README
 
 # Autopoint m4 stuff
 ACLOCAL_AMFLAGS = -I m4
