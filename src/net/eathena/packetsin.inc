@@ -496,7 +496,7 @@ if (packetVersion >= 20080102)
     packet(SMSG_PLAYER_INVENTORY,          0x02e8,  -1, &InventoryRecv::processPlayerInventory,         20080102);
     packet(SMSG_PLAYER_CART_ITEMS,         0x02e9,  -1, &InventoryRecv::processPlayerCartItems,         20080102);
     packet(SMSG_PLAYER_STORAGE_ITEMS,      0x02ea,  -1, &InventoryRecv::processPlayerStorage,           20080102);
-    packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  14, &GameRecv::processMapLogin,                     20080102);
+    packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  13, &GameRecv::processMapLogin,                     20080102);
     packet(SMSG_BEING_MOVE,                0x02ec,  67, &BeingRecv::processBeingMove,                   20080102);
     packet(SMSG_BEING_SPAWN,               0x02ed,  59, &BeingRecv::processBeingSpawn,                  20080102);
     packet(SMSG_BEING_VISIBLE,             0x02ee,  60, &BeingRecv::processBeingVisible,                20080102);
@@ -543,7 +543,7 @@ packet(SMSG_QUEST_NPC_EFFECT,              0x0446,  14, &QuestRecv::processNpcQu
 
 // 20090603
 packet(SMSG_PARTY_SETTINGS,                0x07d8,   8, &PartyRecv::processPartySettings,               20090603);
-packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 269, &PlayerRecv::processPlayerShortcuts,            20090603);
+packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 268, &PlayerRecv::processPlayerShortcuts,            20090603);
 
 // 20090715
 packet(SMSG_PLAYER_UPDATE_SKILL,           0x07e1,  15, &SkillRecv::processSkillUpdate,                 20090715);
@@ -796,7 +796,7 @@ if (packetVersion >= 20140613)
 
 // 20141016
 packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRouletteOpenAck,          20141016);
-packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c, 344, &RouletteRecv::processRouletteInfoAckType,      20141016);
+packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c,  -1, &RouletteRecv::processRouletteInfoAckType,      20141016);
 packet(SMSG_ROULETTE_GENERATE_ACK_TYPE,    0x0a20,  21, &RouletteRecv::processRouletteGenerateAckType,  20141016);
 packet(SMSG_ROULETTE_RECV_ITEM_ACK,        0x0a22,   5, &RouletteRecv::processRouletteItemAck,          20141016);
 if (packetVersion >= 20141016)
