@@ -85,7 +85,7 @@ void SoundDB::unload()
 {
     mSounds.resize(NotifyTypes::TYPE_END);
     for (int f = 0; f < NotifyTypes::TYPE_END; f ++)
-        mSounds[f] = "";
+        mSounds[f].clear();
 }
 
 std::string &SoundDB::getSound(const int id)
