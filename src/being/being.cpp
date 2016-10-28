@@ -2741,7 +2741,7 @@ void Being::unSetSprite(const unsigned int slot) restrict2
 // set sprite id, use color string, reset cards
 void Being::setSpriteColor(const unsigned int slot,
                            const int id,
-                           std::string color) restrict2
+                           const std::string &color) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -2898,7 +2898,7 @@ void Being::setSpriteColorId(const unsigned int slot,
 // set sprite id, colors from cards, cards
 void Being::setSpriteCards(const unsigned int slot,
                            const int id,
-                           CardsList cards) restrict2
+                           const CardsList &cards) restrict2
 {
     if (!charServerHandler || slot >= charServerHandler->maxSprite())
         return;
@@ -4902,7 +4902,7 @@ void Being::addItemParticles(const int id,
 
 void Being::addItemParticlesCards(const int id,
                                   const SpriteDisplay &restrict display,
-                                  CardsList cards) restrict2
+                                  const CardsList &cards) restrict2
 {
     const SpriteParticleInfoIter it = mSpriteParticles.find(id);
     ParticleInfo *restrict pi = nullptr;

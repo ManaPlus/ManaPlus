@@ -327,7 +327,7 @@ class Being notfinal : public ActorSprite,
 
         void setSpriteColor(const unsigned int slot,
                             const int id,
-                            std::string color) restrict2;
+                            const std::string &color) restrict2;
 
         void setSpriteColorId(const unsigned int slot,
                               const int id,
@@ -335,7 +335,7 @@ class Being notfinal : public ActorSprite,
 
         void setSpriteCards(const unsigned int slot,
                             const int id,
-                            CardsList cards) restrict2;
+                            const CardsList &restrict cards) restrict2;
 
         void setSpriteId(const unsigned int slot,
                          const int id) restrict2;
@@ -1093,7 +1093,7 @@ class Being notfinal : public ActorSprite,
 
         void addItemParticlesCards(const int id,
                                    const SpriteDisplay &restrict display,
-                                   CardsList cards) restrict2;
+                                   const CardsList &restrict cards) restrict2;
 
         void removeAllItemsParticles() restrict2;
 

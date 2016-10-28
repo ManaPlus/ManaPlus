@@ -478,7 +478,7 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
     const std::string var1 = toString(var.var1);
     const std::string var2 = toString(var.var2);
     const std::string var3 = toString(var.var3);
-    const std::string timeStr = timeDiffToString(var.time1).c_str();
+    const std::string timeStr = timeDiffToString(var.time1);
     mText->clearRows();
     FOR_EACH (std::vector<QuestItemText>::const_iterator, it, texts)
     {
