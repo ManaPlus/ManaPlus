@@ -159,8 +159,8 @@ class GuiTable final : public Widget,
 
         void requestFocus() override;
 
-        void setSelectable(bool b)
-        { mSelectable = b; }
+        void setSelectableGui(bool b)
+        { mSelectableGui = b; }
 
     protected:
         /** Frees all action listeners on inner widgets. */
@@ -201,7 +201,7 @@ class GuiTable final : public Widget,
         bool mLinewiseMode;
         bool mWrappingEnabled;
         Opaque mOpaque;
-        bool mSelectable;
+        bool mSelectableGui;
 };
 
 #endif  // GUI_WIDGETS_GUITABLE_H

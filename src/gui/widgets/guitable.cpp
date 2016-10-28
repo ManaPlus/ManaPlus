@@ -54,7 +54,7 @@ GuiTable::GuiTable(const Widget2 *const widget,
     mLinewiseMode(false),
     mWrappingEnabled(false),
     mOpaque(opacity),
-    mSelectable(true)
+    mSelectableGui(true)
 {
     mAllowLogic = false;
     mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND);
@@ -104,7 +104,7 @@ void GuiTable::recomputeDimensions()
     const int columns_nr = mModel->getColumns();
     int width = 0;
 
-    if (mSelectable)
+    if (mSelectableGui)
     {
         if (mSelectedRow >= rows_nr)
             mSelectedRow = rows_nr - 1;
@@ -148,7 +148,7 @@ int GuiTable::getColumnWidth(const int i) const
 
 void GuiTable::setSelectedRow(const int selected)
 {
-    if (!mSelectable)
+    if (!mSelectableGui)
     {
         mSelectedRow = -1;
     }
@@ -523,7 +523,7 @@ void GuiTable::keyPressed(KeyEvent& event)
 // -- MouseListener notifications
 void GuiTable::mousePressed(MouseEvent& event)
 {
-    if (!mSelectable)
+    if (!mSelectableGui)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
