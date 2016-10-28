@@ -497,7 +497,7 @@ void Client::gameInit()
     settings.guiAlpha = config.getFloatValue("guialpha");
     optionChanged("fpslimit");
 
-    start_time = CAST_S32(time(nullptr));
+    start_time = time(nullptr);
 
     PlayerInfo::init();
 

@@ -470,7 +470,7 @@ static bool runxsel(const std::string &text, const char *p1, const char *p2)
 
     // parent
     close(fd[0]);
-    const int len = CAST_S32(strlen(text.c_str()));
+    const int len = text.length();
     if (write(fd[1], text.c_str(), len) != len)
     {
         close(fd[1]);

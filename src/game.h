@@ -39,8 +39,8 @@ class Map;
 
 struct LastKey final
 {
-    InputActionT key;
     time_t time;
+    InputActionT key;
     int cnt;
 };
 

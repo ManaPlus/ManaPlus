@@ -322,7 +322,7 @@ void Client::gameInit()
     SDL_initFramerate(&fpsManager);
     WindowManager::setFramerate(fpsLimit);
 
-    start_time = CAST_S32(time(nullptr));
+    start_time = time(nullptr);
 
 //    PlayerInfo::init();
 
