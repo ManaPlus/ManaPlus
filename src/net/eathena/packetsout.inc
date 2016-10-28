@@ -291,6 +291,8 @@ packet(CMSG_NPC_CASH_SHOP_OPEN,           0x0000,   0, nullptr);
 packet(CMSG_NPC_CASH_SHOP_REQUEST_TAB,    0x0000,   0, nullptr);
 packet(CMSG_NPC_CASH_SHOP_SCHEDULE,       0x0000,   0, nullptr);
 packet(CMSG_GUILD_INVITE2,                0x0000,   0, nullptr);
+packet(CMSG_STORAGE_PASSWORD,             0x0000,   0, nullptr);
+packet(CMSG_ITEM_LIST_WINDOW_SELECT,      0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
