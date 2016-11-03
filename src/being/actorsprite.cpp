@@ -218,6 +218,7 @@ void ActorSprite::setStatusEffect(const int32_t index,
     }
 }
 
+// function for legacy configs only. Must be removed in future
 void ActorSprite::setStatusEffectBlock(const int offset,
                                        const uint16_t newEffects)
 {
@@ -231,7 +232,7 @@ void ActorSprite::setStatusEffectBlock(const int offset,
         {
             setStatusEffect(index,
                 fromBool(val, Enable),
-                IsStart_false);
+                IsStart_true);
         }
         else if (val && config.getBoolValue("unimplimentedLog"))
         {
