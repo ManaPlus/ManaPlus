@@ -34,13 +34,11 @@
 #include <cmath>
 #endif  // USE_SDL2
 
+#ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
+#endif  // SDL_BYTEORDER
 
 #include "debug.h"
-
-#ifndef SDL_BYTEORDER
-#error missing SDL_endian.h
-#endif  // SDL_BYTEORDER
 
 DyePalette::DyePalette(const std::string &restrict description,
                        const uint8_t blockSize) :

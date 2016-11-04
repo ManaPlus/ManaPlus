@@ -26,13 +26,11 @@
 
 #include "utils/sdlcheckutils.h"
 
+#ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
+#endif  // SDL_BYTEORDER
 
 #include "debug.h"
-
-#ifndef SDL_BYTEORDER
-#error missing SDL_endian.h
-#endif  // SDL_BYTEORDER
 
 SdlScreenshotHelper::SdlScreenshotHelper() :
     ScreenshotHelper()

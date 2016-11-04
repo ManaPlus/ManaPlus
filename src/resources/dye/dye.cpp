@@ -30,13 +30,11 @@
 
 #include <sstream>
 
+#ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
+#endif  // SDL_BYTEORDER
 
 #include "debug.h"
-
-#ifndef SDL_BYTEORDER
-#error missing SDL_endian.h
-#endif  // SDL_BYTEORDER
 
 Dye::Dye(const std::string &restrict description)
 {
