@@ -30,6 +30,7 @@
 #include "debug.h"
 
 extern Net::HomunculusHandler *homunculusHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -80,6 +81,8 @@ void HomunculusHandler::attack(const BeingId targetId,
 
 void HomunculusHandler::feed() const
 {
+    if (packetVersion < 20050425)
+        return;
     createOutPacket(CMSG_HOMUNCULUS_MENU);
     outMsg.writeInt16(0, "type");
     outMsg.writeInt8(1, "command");  // feed
@@ -87,6 +90,8 @@ void HomunculusHandler::feed() const
 
 void HomunculusHandler::fire() const
 {
+    if (packetVersion < 20050425)
+        return;
     createOutPacket(CMSG_HOMUNCULUS_MENU);
     outMsg.writeInt16(0, "type");
     outMsg.writeInt8(2, "command");  // delete

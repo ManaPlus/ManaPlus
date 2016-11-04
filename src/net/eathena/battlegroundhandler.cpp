@@ -26,6 +26,7 @@
 #include "debug.h"
 
 extern Net::BattleGroundHandler *battleGroundHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -38,6 +39,8 @@ BattleGroundHandler::BattleGroundHandler()
 void BattleGroundHandler::registerBg(const BattleGroundTypeT &type,
                                      const std::string &name) const
 {
+    if (packetVersion < 20111005)
+        return;
     createOutPacket(CMSG_BATTLE_REGISTER);
     outMsg.writeInt16(CAST_S16(type), "type");
     outMsg.writeString(name, 24, "bg name");
@@ -45,6 +48,8 @@ void BattleGroundHandler::registerBg(const BattleGroundTypeT &type,
 
 void BattleGroundHandler::rekoveRequest(const std::string &name) const
 {
+    if (packetVersion < 20111005)
+        return;
     createOutPacket(CMSG_BATTLE_REVOKE);
     outMsg.writeString(name, 24, "bg name");
 }
@@ -53,6 +58,8 @@ void BattleGroundHandler::beginAck(const bool result,
                                    const std::string &bgName,
                                    const std::string &gameName) const
 {
+    if (packetVersion < 20111005)
+        return;
     createOutPacket(CMSG_BATTLE_BEGIN_ACK);
     outMsg.writeInt8(CAST_S8(result ? 1 : 0), "result");
     outMsg.writeString(bgName, 24, "bg name");
@@ -61,6 +68,8 @@ void BattleGroundHandler::beginAck(const bool result,
 
 void BattleGroundHandler::checkState(const std::string &name) const
 {
+    if (packetVersion < 20111005)
+        return;
     createOutPacket(CMSG_BATTLE_CHECK_STATE);
     outMsg.writeString(name, 24, "bg name");
 }

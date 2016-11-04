@@ -48,6 +48,8 @@ void BuyingStoreHandler::create(const std::string &name,
                                 const bool flag,
                                 const std::vector<ShopItem*> &items) const
 {
+    if (packetVersion < 20100303)
+        return;
     createOutPacket(CMSG_BUYINGSTORE_CREATE);
     outMsg.writeInt16(CAST_S16(89 + items.size() * 8), "len");
     outMsg.writeInt32(maxMoney, "limit money");
@@ -74,6 +76,8 @@ void BuyingStoreHandler::open(const Being *const being) const
 {
     if (!being)
         return;
+    if (packetVersion < 20100420)
+        return;
     createOutPacket(CMSG_BUYINGSTORE_OPEN);
     outMsg.writeBeingId(being->getId(), "account id");
 }
@@ -83,7 +87,9 @@ void BuyingStoreHandler::sell(const Being *const being,
                               const Item *const item,
                               const int amount) const
 {
-    if (!being || !item || packetVersion < 20100420)
+    if (!being || !item)
+        return;
+    if (packetVersion < 20100420)
         return;
 
     createOutPacket(CMSG_BUYINGSTORE_SELL);

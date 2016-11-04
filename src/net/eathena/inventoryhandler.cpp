@@ -509,7 +509,9 @@ void InventoryHandler::insertCard(const int cardIndex,
 void InventoryHandler::favoriteItem(const Item *const item,
                                     const bool favorite) const
 {
-    if (!item || packetVersion < 20120410)
+    if (!item)
+        return;
+    if (packetVersion < 20120410)
         return;
     createOutPacket(CMSG_PLAYER_FAVORITE_ITEM);
     outMsg.writeInt16(CAST_S16(item->getInvIndex()
@@ -539,6 +541,8 @@ int InventoryHandler::convertFromServerSlot(const int serverSlot) const
 void InventoryHandler::selectCart(const BeingId accountId,
                                   const int type) const
 {
+    if (packetVersion < 20150805)
+        return;
     createOutPacket(CMSG_SELECT_CART);
     outMsg.writeBeingId(accountId, "account id");
     outMsg.writeInt8(CAST_S8(type), "type");
@@ -546,6 +550,8 @@ void InventoryHandler::selectCart(const BeingId accountId,
 
 void InventoryHandler::identifyItem(const Item *const item) const
 {
+    if (packetVersion < 20150513)
+        return;
     createOutPacket(CMSG_QUICK_IDENTIFY_ITEM);
     outMsg.writeInt16(CAST_S16(item->getInvIndex()),
         "item index");

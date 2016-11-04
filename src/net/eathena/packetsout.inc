@@ -248,9 +248,6 @@ packet(CMSG_SET_STATUS,                   0x0b0e,   0, nullptr);
 
 packet(CMSG_ONLINE_LIST,                  0x0b0f,   0, nullptr);
 
-// 20150805
-packet(CMSG_SELECT_CART,                  0x0980,   7, clif->pSelectCart);
-
 #ifndef PACKETS_UPDATE
 // 0
 packet(CMSG_ALCHEMIST_RANKS,              0x0000,   0, nullptr);
@@ -293,6 +290,7 @@ packet(CMSG_NPC_CASH_SHOP_SCHEDULE,       0x0000,   0, nullptr);
 packet(CMSG_GUILD_INVITE2,                0x0000,   0, nullptr);
 packet(CMSG_STORAGE_PASSWORD,             0x0000,   0, nullptr);
 packet(CMSG_ITEM_LIST_WINDOW_SELECT,      0x0000,   0, nullptr);
+packet(CMSG_SELECT_CART,                  0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -489,6 +487,12 @@ if (packetVersion >= 20070212)
     packet(CMSG_MOVE_TO_STORAGE,          0x0094,  14, clif->pMoveToKafra);
 }
 
+// 20070227
+if (packetVersion >= 20070227)
+{
+    packet(CMSG_PARTY_INVITE2,            0x02c4,  26, clif->pPartyInvite2);
+}
+
 // 20080827
 if (packetVersion >= 20080827)
 {
@@ -561,16 +565,21 @@ if (packetVersion >= 20101124)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0369,   6, clif->pSolveCharName);
     packet(CMSG_MOVE_FROM_STORAGE,        0x0365,   8, clif->pMoveFromKafra);
     packet(CMSG_MAP_SERVER_CONNECT,       0x0436,  19, clif->pWantToConnection);
+    packet(CMSG_NPC_CASH_SHOP_BUY,        0x0288,  -1, clif->pcashshop_buy);
+}
+
+// 20110614
+if (packetVersion >= 20110614)
+{
+    packet(CMSG_NPC_CASH_SHOP_SCHEDULE,   0x08c9,   2, clif->pCashShopSchedule);
 }
 
 // 20110718
 if (packetVersion >= 20110718)
 {
-    packet(CMSG_NPC_CASH_SHOP_BUY,        0x0288,  -1, clif->pcashshop_buy);
     packet(CMSG_NPC_CASH_SHOP_CLOSE,      0x084a,   2, clif->pCashShopClose);
     packet(CMSG_NPC_CASH_SHOP_OPEN,       0x0844,   2, clif->pCashShopOpen);
     packet(CMSG_NPC_CASH_SHOP_REQUEST_TAB, 0x0846,   4, clif->pCashShopReqTab);
-    packet(CMSG_NPC_CASH_SHOP_SCHEDULE,   0x08c9,   2, clif->pCashShopSchedule);
 }
 
 // 20111005
@@ -1297,6 +1306,12 @@ if (packetVersion >= 20150513)
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x08a8,  26, clif->pFriendsListAdd);
     packet(CMSG_STORAGE_PASSWORD,         0x0923,  36, clif->pStoragePassword);
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x0960,  -1, clif->pItemListWindowSelected);
+}
+
+// 20150805
+if (packetVersion >= 20150805)
+{
+    packet(CMSG_SELECT_CART,              0x0980,   7, clif->pSelectCart);
 }
 
 // 20150916

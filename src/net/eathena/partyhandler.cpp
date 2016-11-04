@@ -63,7 +63,6 @@ void PartyHandler::invite(const std::string &name) const
 {
     if (!actorManager)
         return;
-
     const Being *const being = actorManager->findBeingByName(
         name, ActorType::Player);
     if (being)
@@ -73,6 +72,8 @@ void PartyHandler::invite(const std::string &name) const
     }
     else
     {
+        if (packetVersion < 20070227)
+            return;
         createOutPacket(CMSG_PARTY_INVITE2);
         outMsg.writeString(name, 24, "nick");
     }

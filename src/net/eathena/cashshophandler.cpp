@@ -27,6 +27,7 @@
 #include "debug.h"
 
 extern Net::CashShopHandler *cashShopHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -42,6 +43,8 @@ void CashShopHandler::buyItem(const int points,
                               const ItemColor color A_UNUSED,
                               const int amount) const
 {
+    if (packetVersion < 20101124)
+        return;
     createOutPacket(CMSG_NPC_CASH_SHOP_BUY);
     outMsg.writeInt16(10 + 4, "len");
     outMsg.writeInt32(points, "points");
@@ -58,22 +61,30 @@ void CashShopHandler::buyItems(const std::vector<ShopItem*> &items A_UNUSED)
 
 void CashShopHandler::close() const
 {
+    if (packetVersion < 20110718)
+        return;
     createOutPacket(CMSG_NPC_CASH_SHOP_CLOSE);
 }
 
 void CashShopHandler::requestPoints() const
 {
+    if (packetVersion < 20110718)
+        return;
     createOutPacket(CMSG_NPC_CASH_SHOP_OPEN);
 }
 
 void CashShopHandler::requestTab(const int tab) const
 {
+    if (packetVersion < 20110718)
+        return;
     createOutPacket(CMSG_NPC_CASH_SHOP_REQUEST_TAB);
     outMsg.writeInt16(CAST_S16(tab), "tab");
 }
 
 void CashShopHandler::schedule() const
 {
+    if (packetVersion < 20110614)
+        return;
     createOutPacket(CMSG_NPC_CASH_SHOP_SCHEDULE);
 }
 
