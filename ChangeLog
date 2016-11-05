@@ -1,3 +1,7 @@
+2016-11-05 New release 1.6.11.5
+fix: legacy status effects with block-id.
+fix: some packets for some packet versions.
+
 2016-10-22 New release 1.6.10.22
 fix: character creation for packet version >= 20120307 (hercules)
 add: support for redicts in online list (legacy servers)
