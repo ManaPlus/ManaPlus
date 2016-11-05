@@ -33,6 +33,7 @@
 # Philipp <philipp.krueger1@googlemail.com>, 2012
 # Rosemarie Tauber <horos@online.de>, 2012
 # Shaman, 2016
+# Shaman, 2016
 # Kristin Joris <kristin.joris@gmail.com>, 2015-2016
 # Shaman, 2016
 # valsu <valsu@hylia.de>, 2015-2016
@@ -41,8 +42,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-10-22 15:53+0300\n"
-"PO-Revision-Date: 2016-09-25 10:11+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2016-11-04 08:34+0000\n"
+"Last-Translator: Shaman\n"
 "Language-Team: German (http://www.transifex.com/akaras/manaplus/language/"
 "de/)\n"
 "Language: de\n"
@@ -1647,7 +1648,7 @@ msgstr "Ukrainisch"
 #. TRANSLATORS: language
 #: src/gui/models/langlistmodel.h:87
 msgid "Esperanto"
-msgstr ""
+msgstr "Esperanto"
 
 #. TRANSLATORS: magic school
 #: src/gui/models/magicschoolmodel.h:35
@@ -2266,7 +2267,7 @@ msgstr "Ausrüstungset"
 #. TRANSLATORS: copy equipment from player to outfit
 #: src/gui/popups/popupmenu.cpp:791
 msgid "Copy from player"
-msgstr ""
+msgstr "Kopie vom Spieler"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: clear selected outfit
@@ -5444,7 +5445,7 @@ msgstr "Texturensampler aktiveren (OpenGL)"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:96
 msgid "Enable OpenGL context creation"
-msgstr ""
+msgstr "ObenGL Kontext-Erstellung aktivieren"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:101
@@ -5556,13 +5557,12 @@ msgstr "Unten anzeigen"
 #. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:61
 msgid "show"
-msgstr ""
+msgstr "zeigen"
 
 #. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:63
-#, fuzzy
 msgid "show on selection"
-msgstr "Auswählen & Bewegen"
+msgstr "in der Auswahl anzeigen"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:79
@@ -5591,9 +5591,8 @@ msgstr "Anvisieren toter Spieler"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:101
-#, fuzzy
 msgid "Show player names"
-msgstr "Namen anderer Spieler"
+msgstr "Spielernamen anzeigen"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:106
@@ -8928,22 +8927,22 @@ msgstr "Ausrüstungsset-Tasten"
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:41
 msgid "Wear outfit"
-msgstr ""
+msgstr "Ausrüstungsset anziehen"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:47
 msgid "Copy Outfit to other outfit"
-msgstr ""
+msgstr "Ausrüstungsset zu anderem Ausrüstungsset kopieren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:53
 msgid "Copy outfit to chat"
-msgstr ""
+msgstr "Ausrüstungsset zu Chat kopieren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:59
 msgid "Copy equipped to outfit"
-msgstr ""
+msgstr "Aktuelle Ausrüstung zu Ausrüstungsset kopieren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:65
@@ -9797,13 +9796,13 @@ msgstr "Warp Ziel auswählen"
 #: src/net/eathena/vendingrecv.cpp:243
 #, c-format
 msgid "Sold item %s amount %d. You got: %s"
-msgstr ""
+msgstr "%d von Gegenstand %s verkauft. Du hast %s erhalten."
 
 #. TRANSLATORS: vending sold item message
 #: src/net/eathena/vendingrecv.cpp:251
 #, c-format
 msgid "Sold item %s amount %d"
-msgstr ""
+msgstr "%d von Gegenstand %s verkauft"
 
 #. TRANSLATORS: trade header
 #: src/net/ea/traderecv.cpp:79
@@ -11098,6 +11097,3 @@ msgstr "%d Sekunden"
 #, c-format
 msgid "%d seconds"
 msgstr "%d Sekunden"
-
-#~ msgid "Visible names"
-#~ msgstr "Sichtbare Namen"

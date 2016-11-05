@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-10-22 15:53+0300\n"
-"PO-Revision-Date: 2016-09-25 10:11+0000\n"
+"PO-Revision-Date: 2016-10-23 08:29+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/akaras/manaplus/language/"
 "uk/)\n"
@@ -5386,9 +5386,8 @@ msgstr ""
 
 #. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:63
-#, fuzzy
 msgid "show on selection"
-msgstr "Рух і вибір"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:79
@@ -5417,9 +5416,8 @@ msgstr "Дозволити наводити фокус на мертвих гр�
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:101
-#, fuzzy
 msgid "Show player names"
-msgstr "Імена інших гравців"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:106
@@ -10888,6 +10886,3 @@ msgstr "%d секунда"
 #, c-format
 msgid "%d seconds"
 msgstr "%d секунд"
-
-#~ msgid "Visible names"
-#~ msgstr "Видимі імена"

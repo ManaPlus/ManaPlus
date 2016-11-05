@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-10-22 15:53+0300\n"
-"PO-Revision-Date: 2016-09-25 10:11+0000\n"
+"PO-Revision-Date: 2016-10-23 08:29+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/akaras/manaplus/language/"
 "it/)\n"
@@ -5391,9 +5391,8 @@ msgstr ""
 
 #. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:63
-#, fuzzy
 msgid "show on selection"
-msgstr "Mostra bottoni sullo schermo"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:79
@@ -5422,9 +5421,8 @@ msgstr "Target sui personaggi morti"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:101
-#, fuzzy
 msgid "Show player names"
-msgstr "Visualizza messaggi popup"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:106
@@ -10899,6 +10897,3 @@ msgstr "%d secondi"
 #, c-format
 msgid "%d seconds"
 msgstr "%d secondi"
-
-#~ msgid "Visible names"
-#~ msgstr "Nomi visibili"

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-10-22 15:53+0300\n"
-"PO-Revision-Date: 2016-10-05 21:26+0000\n"
+"PO-Revision-Date: 2016-10-26 13:02+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Esperanto (http://www.transifex.com/akaras/manaplus/language/"
 "eo/)\n"
@@ -5495,9 +5495,8 @@ msgstr ""
 
 #. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:63
-#, fuzzy
 msgid "show on selection"
-msgstr "Movo kaj selekto"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:79
@@ -5526,9 +5525,8 @@ msgstr "Celi mortajn ludantojn"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:101
-#, fuzzy
 msgid "Show player names"
-msgstr "Aliaj nomoj"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:106
@@ -11007,6 +11005,3 @@ msgstr "%d sekundo"
 #, c-format
 msgid "%d seconds"
 msgstr "%d sekundoj"
-
-#~ msgid "Visible names"
-#~ msgstr "Videblaj nomoj"

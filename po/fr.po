@@ -28,7 +28,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-10-22 15:53+0300\n"
-"PO-Revision-Date: 2016-09-28 10:42+0000\n"
+"PO-Revision-Date: 2016-10-28 09:40+0000\n"
 "Last-Translator: Alige\n"
 "Language-Team: French (http://www.transifex.com/akaras/manaplus/language/"
 "fr/)\n"
@@ -5557,13 +5557,12 @@ msgstr "afficher en bas"
 #. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:61
 msgid "show"
-msgstr ""
+msgstr "afficher"
 
 #. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:63
-#, fuzzy
 msgid "show on selection"
-msgstr "Déplacement & sélection"
+msgstr "afficher sur la sélection"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:79
@@ -5592,9 +5591,8 @@ msgstr "Viser les joueurs morts"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:101
-#, fuzzy
 msgid "Show player names"
-msgstr "Autres noms de joueurs"
+msgstr "Afficher les noms des joueurs"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:106
@@ -11103,6 +11101,3 @@ msgstr "%d secondes"
 #, c-format
 msgid "%d seconds"
 msgstr "%d secondes"
-
-#~ msgid "Visible names"
-#~ msgstr "Afficher les noms"
