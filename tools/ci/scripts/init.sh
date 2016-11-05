@@ -139,6 +139,7 @@ function gitclone {
 
 function check_error {
     if [ "$1" != 0 ]; then
+        cp config.log logs
         cat $ERRFILE
         exit $1
     fi
