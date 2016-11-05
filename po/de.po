@@ -42,8 +42,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2016-10-22 15:53+0300\n"
-"PO-Revision-Date: 2016-11-04 08:34+0000\n"
-"Last-Translator: Shaman\n"
+"PO-Revision-Date: 2016-11-05 13:51+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/akaras/manaplus/language/"
 "de/)\n"
 "Language: de\n"
@@ -9796,13 +9796,13 @@ msgstr "Warp Ziel auswählen"
 #: src/net/eathena/vendingrecv.cpp:243
 #, c-format
 msgid "Sold item %s amount %d. You got: %s"
-msgstr "%d von Gegenstand %s verkauft. Du hast %s erhalten."
+msgstr ""
 
 #. TRANSLATORS: vending sold item message
 #: src/net/eathena/vendingrecv.cpp:251
 #, c-format
 msgid "Sold item %s amount %d"
-msgstr "%d von Gegenstand %s verkauft"
+msgstr ""
 
 #. TRANSLATORS: trade header
 #: src/net/ea/traderecv.cpp:79
