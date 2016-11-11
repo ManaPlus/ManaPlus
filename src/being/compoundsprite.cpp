@@ -46,11 +46,11 @@
 #include "resources/map/map.h"
 
 #include "utils/timer.h"
-#endif  // USE_SDL2
 
 #ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
 #endif  // SDL_BYTEORDER
+#endif  // USE_SDL2
 
 #include "debug.h"
 
