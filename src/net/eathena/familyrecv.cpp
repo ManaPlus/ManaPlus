@@ -115,7 +115,7 @@ void FamilyRecv::processAskForChildReply(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::ADOPT_CHILD_ERROR_BABY_MARRIED);
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(type);
+            UNIMPLEMENTEDPACKETFIELD(type);
             break;
     }
 }

@@ -285,7 +285,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL6);
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(type);
+            UNIMPLEMENTEDPACKETFIELD(type);
             break;
     }
 }
@@ -961,7 +961,7 @@ void BeingRecv::processMapType(Net::MessageIn &msg)
     if (type == 19)
         NotifyManager::notify(NotifyTypes::MAP_TYPE_BATTLEFIELD);
     else
-        UNIMPLIMENTEDPACKETFIELD(type);
+        UNIMPLEMENTEDPACKETFIELD(type);
 }
 
 void BeingRecv::processSkillCasting(Net::MessageIn &msg)
@@ -1027,7 +1027,7 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
 
     if (srcId == BeingId_zero)
     {
-        UNIMPLIMENTEDPACKETFIELD(0);
+        UNIMPLEMENTEDPACKETFIELD(0);
         return;
     }
     Being *const srcBeing = actorManager->findBeing(srcId);
@@ -1249,7 +1249,7 @@ void BeingRecv::processBeingAction2(Net::MessageIn &msg)
         default:
         case AttackType::MISS:
         case AttackType::SKILLMISS:
-            UNIMPLIMENTEDPACKETFIELD(CAST_S32(type));
+            UNIMPLEMENTEDPACKETFIELD(CAST_S32(type));
             break;
     }
     BLOCK_END("BeingRecv::processBeingAction2")
@@ -1311,7 +1311,7 @@ void BeingRecv::processSkillAutoCast(Net::MessageIn &msg)
 
 void BeingRecv::processRanksList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ here need window with rank tables.
     msg.readInt16("rank type");
     for (int f = 0; f < 10; f ++)
@@ -1323,7 +1323,7 @@ void BeingRecv::processRanksList(Net::MessageIn &msg)
 
 void BeingRecv::processBlacksmithRanksList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ here need window with rank tables.
     for (int f = 0; f < 10; f ++)
         msg.readString(24, "name");
@@ -1333,7 +1333,7 @@ void BeingRecv::processBlacksmithRanksList(Net::MessageIn &msg)
 
 void BeingRecv::processAlchemistRanksList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ here need window with rank tables.
     for (int f = 0; f < 10; f ++)
         msg.readString(24, "name");
@@ -1343,7 +1343,7 @@ void BeingRecv::processAlchemistRanksList(Net::MessageIn &msg)
 
 void BeingRecv::processTaekwonRanksList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ here need window with rank tables.
     for (int f = 0; f < 10; f ++)
         msg.readString(24, "name");
@@ -1353,7 +1353,7 @@ void BeingRecv::processTaekwonRanksList(Net::MessageIn &msg)
 
 void BeingRecv::processPkRanksList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ here need window with rank tables.
     for (int f = 0; f < 10; f ++)
         msg.readString(24, "name");
@@ -1415,7 +1415,7 @@ void BeingRecv::processBeingSpecialEffect(Net::MessageIn &msg)
 
 void BeingRecv::processBeingSpecialEffectNum(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ need somhow show this effects.
     // type is not same with self/misc effect.
     msg.readBeingId("account id");
@@ -1425,7 +1425,7 @@ void BeingRecv::processBeingSpecialEffectNum(Net::MessageIn &msg)
 
 void BeingRecv::processBeingSoundEffect(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ need play this effect.
     msg.readString(24, "sound effect name");
     msg.readUInt8("type");
@@ -1435,7 +1435,7 @@ void BeingRecv::processBeingSoundEffect(Net::MessageIn &msg)
 
 void BeingRecv::processSkillGroundNoDamage(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("skill id");
     msg.readInt32("src id");
     msg.readInt16("val");
@@ -1642,7 +1642,7 @@ void BeingRecv::processBeingStatUpdate1(Net::MessageIn &msg)
 
     if (type != Sp::MANNER)
     {
-        UNIMPLIMENTEDPACKETFIELD(type);
+        UNIMPLEMENTEDPACKETFIELD(type);
         return;
     }
     dstBeing->setManner(value);
@@ -1724,7 +1724,7 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
 
 void BeingRecv::processMonsterInfo(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt16("class");
     msg.readInt16("level");
@@ -1738,7 +1738,7 @@ void BeingRecv::processMonsterInfo(Net::MessageIn &msg)
 
 void BeingRecv::processClassChange(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readBeingId("being id");
     msg.readUInt8("type");
@@ -1756,7 +1756,7 @@ void BeingRecv::processSpiritBalls(Net::MessageIn &msg)
 
 void BeingRecv::processBladeStop(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt32("src being id");
     msg.readInt32("dst being id");
@@ -1765,7 +1765,7 @@ void BeingRecv::processBladeStop(Net::MessageIn &msg)
 
 void BeingRecv::processComboDelay(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readBeingId("being id");
     msg.readInt32("wait");
@@ -1773,7 +1773,7 @@ void BeingRecv::processComboDelay(Net::MessageIn &msg)
 
 void BeingRecv::processWddingEffect(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readBeingId("being id");
 }
@@ -1800,7 +1800,7 @@ void BeingRecv::processBeingSlide(Net::MessageIn &msg)
 
 void BeingRecv::processStarsKill(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readString(24, "map name");
     msg.readInt32("monster id");
@@ -1810,14 +1810,14 @@ void BeingRecv::processStarsKill(Net::MessageIn &msg)
 
 void BeingRecv::processGladiatorFeelRequest(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readUInt8("which");
 }
 
 void BeingRecv::processBossMapInfo(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readUInt8("info type");
     msg.readInt32("x");
@@ -1831,7 +1831,7 @@ void BeingRecv::processBossMapInfo(Net::MessageIn &msg)
 
 void BeingRecv::processBeingFont(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readBeingId("account id");
     msg.readInt16("font");
@@ -1839,7 +1839,7 @@ void BeingRecv::processBeingFont(Net::MessageIn &msg)
 
 void BeingRecv::processBeingMilleniumShield(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readBeingId("account id");
     msg.readInt16("shields");
@@ -1848,7 +1848,7 @@ void BeingRecv::processBeingMilleniumShield(Net::MessageIn &msg)
 
 void BeingRecv::processBeingCharm(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readBeingId("account id");
     msg.readInt16("charm type");
@@ -1857,7 +1857,7 @@ void BeingRecv::processBeingCharm(Net::MessageIn &msg)
 
 void BeingRecv::processBeingViewEquipment(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     const int count = (msg.readInt16("len") - 45) / 31;
     msg.readString(24, "name");
@@ -1992,7 +1992,7 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
             break;
         case BeingType::CHAT:
         default:
-            UNIMPLIMENTEDPACKETFIELD(CAST_S32(beingType));
+            UNIMPLEMENTEDPACKETFIELD(CAST_S32(beingType));
             type = ActorType::Monster;
             logger->log("not supported object type: %d, job: %d",
                 CAST_S32(beingType), CAST_S32(job));
@@ -2086,7 +2086,7 @@ void BeingRecv::processSkillDamage(Net::MessageIn &msg)
 
 void BeingRecv::processNavigateTo(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // 0 position
     // 1 no position
     // 3 monster
@@ -2126,7 +2126,7 @@ void BeingRecv::applyPlayerAction(Net::MessageIn &msg,
             break;
 
         default:
-            UNIMPLIMENTEDPACKETFIELD(type);
+            UNIMPLEMENTEDPACKETFIELD(type);
             break;
     }
 }

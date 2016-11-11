@@ -62,7 +62,7 @@ void MailRecv::processMailOpen(Net::MessageIn &msg)
             break;
 
         default:
-            UNIMPLIMENTEDPACKETFIELD(flag);
+            UNIMPLEMENTEDPACKETFIELD(flag);
             break;
     }
 }
@@ -128,7 +128,7 @@ void MailRecv::processGetAttachment(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::MAIL_GET_ATTACH_TOO_MANY_ITEMS);
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(flag);
+            UNIMPLEMENTEDPACKETFIELD(flag);
             break;
     }
 }
@@ -145,7 +145,7 @@ void MailRecv::processSendMailAck(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::MAIL_SEND_ERROR);
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(flag);
+            UNIMPLEMENTEDPACKETFIELD(flag);
             break;
     }
 }

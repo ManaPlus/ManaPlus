@@ -215,7 +215,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             dstBeing->setLook(CAST_U16(id));
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(type);
+            UNIMPLEMENTEDPACKETFIELD(type);
             break;
     }
 }
@@ -1426,7 +1426,7 @@ void BeingRecv::applyPlayerAction(Net::MessageIn &msg,
             break;
 
         default:
-            UNIMPLIMENTEDPACKETFIELD(type);
+            UNIMPLEMENTEDPACKETFIELD(type);
             break;
     }
 }

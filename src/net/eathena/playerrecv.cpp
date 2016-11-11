@@ -204,7 +204,7 @@ void PlayerRecv::processPlayerGetExp(Net::MessageIn &msg)
         else if (stat == 2)
             localPlayer->addJobMessage(exp);
         else
-            UNIMPLIMENTEDPACKETFIELD(stat);
+            UNIMPLEMENTEDPACKETFIELD(stat);
     }
     // need show particle depend on isQuest flag, for now ignored
 }
@@ -237,7 +237,7 @@ void PlayerRecv::processWalkError(Net::MessageIn &msg)
 
 void PlayerRecv::processPvpInfo(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("char id");
     msg.readBeingId("account id");
     msg.readInt32("pvp won");
@@ -326,55 +326,55 @@ void PlayerRecv::processPlayerSkillMessage(Net::MessageIn &msg)
 
 void PlayerRecv::processNotifyMapInfo(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("type");
 }
 
 void PlayerRecv::processPlayerFameBlacksmith(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("points");
     msg.readInt32("total points");
 }
 
 void PlayerRecv::processPlayerFameAlchemist(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("points");
     msg.readInt32("total points");
 }
 
 void PlayerRecv::processPlayerUpgradeMessage(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("result");
     msg.readInt16("item id");
 }
 
 void PlayerRecv::processPlayerFameTaekwon(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("points");
     msg.readInt32("total points");
 }
 
 void PlayerRecv::processPlayerReadBook(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("book id");
     msg.readInt32("page");
 }
 
 void PlayerRecv::processPlayerEquipTickAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("unused");
     msg.readInt32("flag");
 }
 
 void PlayerRecv::processPlayerAutoShadowSpellList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int count = (msg.readInt16("len") - 8) / 2;
     for (int f = 0; f < count; f ++)
         msg.readInt16("skill id");
@@ -382,7 +382,7 @@ void PlayerRecv::processPlayerAutoShadowSpellList(Net::MessageIn &msg)
 
 void PlayerRecv::processPlayerRankPoints(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("type");
     msg.readInt32("points");
     msg.readInt32("fame");
@@ -449,7 +449,7 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
 
 void PlayerRecv::processDressRoomOpen(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("view");
 }
 

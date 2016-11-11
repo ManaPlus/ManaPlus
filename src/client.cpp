@@ -303,7 +303,7 @@ void Client::gameInit()
     initPaths();
     logger->log("init 4");
     logger->setDebugLog(config.getBoolValue("debugLog"));
-    logger->setReportUnimplimented(config.getBoolValue("unimplimentedLog"));
+    logger->setReportUnimplemented(config.getBoolValue("unimplimentedLog"));
 
     config.incValue("runcount");
 

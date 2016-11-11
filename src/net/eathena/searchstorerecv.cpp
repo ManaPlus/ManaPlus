@@ -36,7 +36,7 @@ namespace EAthena
 
 void SearchStoreRecv::processSearchAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int count = (msg.readInt16("len") - 7) / 106;
     msg.readUInt8("is first page");
     msg.readUInt8("is next page");
@@ -60,7 +60,7 @@ void SearchStoreRecv::processSearchAck(Net::MessageIn &msg)
 
 void SearchStoreRecv::processSearchFailed(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int result = msg.readUInt8("result");
     switch (result)
     {
@@ -93,7 +93,7 @@ void SearchStoreRecv::processSearchFailed(Net::MessageIn &msg)
 
 void SearchStoreRecv::processSearchOpen(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("effect");
     if (msg.getVersion() >= 20100701)
         msg.readUInt8("uses");
@@ -101,7 +101,7 @@ void SearchStoreRecv::processSearchOpen(Net::MessageIn &msg)
 
 void SearchStoreRecv::processSearchClickAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("x");
     msg.readInt16("y");
 }

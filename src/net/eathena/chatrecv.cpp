@@ -349,7 +349,7 @@ void ChatRecv::processWhisperResponse(Net::MessageIn &msg)
 
 void ChatRecv::processChatIgnoreList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ need put it in some object or window
     const int count = (msg.readInt16("len") - 4) / 24;
     for (int f = 0; f < count; f ++)
@@ -420,7 +420,7 @@ void ChatRecv::processChatRoomLeave(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::ROOM_KICKED, name);
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(status);
+            UNIMPLEMENTEDPACKETFIELD(status);
             break;
     }
     if (localPlayer && name == localPlayer->getName())
@@ -583,7 +583,7 @@ void ChatRecv::processChatRoomCreateAck(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::ROOM_ALREADY_EXISTS);
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(result);
+            UNIMPLEMENTEDPACKETFIELD(result);
             break;
     }
     mChatRoom.clear();
@@ -624,7 +624,7 @@ void ChatRecv::processChatRoomJoinFailed(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::ROOM_ERROR_RACE);
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(result);
+            UNIMPLEMENTEDPACKETFIELD(result);
     }
 }
 
@@ -674,26 +674,26 @@ void ChatRecv::processChatRoomRoleChange(Net::MessageIn &msg)
             // dont show normal role
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(role);
+            UNIMPLEMENTEDPACKETFIELD(role);
             break;
     }
 }
 
 void ChatRecv::processMVPItem(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("item id");
 }
 
 void ChatRecv::processMVPExp(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("exo");
 }
 
 void ChatRecv::processMVPNoItem(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 }
 
 void ChatRecv::processMannerMessage(Net::MessageIn &msg)
@@ -707,7 +707,7 @@ void ChatRecv::processMannerMessage(Net::MessageIn &msg)
         case 5:
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(result);
+            UNIMPLEMENTEDPACKETFIELD(result);
             break;
     }
 }
@@ -726,7 +726,7 @@ void ChatRecv::processChatSilence(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::MANNER_NEGATIVE_POINTS, name);
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(result);
+            UNIMPLEMENTEDPACKETFIELD(result);
             break;
     }
 }
@@ -740,7 +740,7 @@ void ChatRecv::processChatTalkieBox(Net::MessageIn &msg)
 
 void ChatRecv::processBattleChatMessage(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int sz = msg.readInt16("len") - 24 - 8;
     msg.readBeingId("account id");
     msg.readString(24, "nick");

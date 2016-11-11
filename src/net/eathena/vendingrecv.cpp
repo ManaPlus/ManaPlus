@@ -173,7 +173,7 @@ void VendingRecv::processBuyAck(Net::MessageIn &msg)
             break;
         default:
             NotifyManager::notify(NotifyTypes::BUY_FAILED);
-            UNIMPLIMENTEDPACKETFIELD(flag);
+            UNIMPLEMENTEDPACKETFIELD(flag);
             break;
     }
 }
@@ -257,7 +257,7 @@ void VendingRecv::processReport(Net::MessageIn &msg)
 
 void VendingRecv::processOpenStatus(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readUInt8("result");
 }
 

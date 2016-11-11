@@ -80,7 +80,7 @@ void GameRecv::processServerTick(Net::MessageIn &msg)
 
 void GameRecv::processMapAuthRefuse(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readUInt8("error");
 }
 }  // namespace EAthena

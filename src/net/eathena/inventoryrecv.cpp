@@ -279,7 +279,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
                 break;
             default:
                 pickup = Pickup::UNKNOWN;
-                UNIMPLIMENTEDPACKETFIELD(err);
+                UNIMPLEMENTEDPACKETFIELD(err);
                 break;
         }
         if (localPlayer)
@@ -921,7 +921,7 @@ void InventoryRecv::processCartInfo(Net::MessageIn &msg)
 
 void InventoryRecv::processCartRemove(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ need close or clear cart?
 }
 
@@ -1160,7 +1160,7 @@ void InventoryRecv::processPlayerCartRemove(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerIdentifyList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     menu = MenuType::Identify;
     const int count = msg.readInt16("len") - 4;
@@ -1170,7 +1170,7 @@ void InventoryRecv::processPlayerIdentifyList(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerIdentified(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt16("inv index");
     msg.readUInt8("flag");
@@ -1208,7 +1208,7 @@ void InventoryRecv::processPlayerRefine(Net::MessageIn &msg)
             notifyType = NotifyTypes::REFINE_DOWNGRADE;
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(flag);
+            UNIMPLEMENTEDPACKETFIELD(flag);
             notifyType = NotifyTypes::REFINE_UNKNOWN;
             break;
     }
@@ -1217,7 +1217,7 @@ void InventoryRecv::processPlayerRefine(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerRepairList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     const int count = (msg.readInt16("len") - 4) / 13;
     for (int f = 0; f < count; f ++)
@@ -1233,7 +1233,7 @@ void InventoryRecv::processPlayerRepairList(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerRepairEffect(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt16("item index");
     msg.readUInt8("flag");
@@ -1241,7 +1241,7 @@ void InventoryRecv::processPlayerRepairEffect(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerRefineList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     const int count = (msg.readInt16("len") - 4) / 13;
 
@@ -1258,14 +1258,14 @@ void InventoryRecv::processPlayerRefineList(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerStoragePassword(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt16("info");
 }
 
 void InventoryRecv::processPlayerStoragePasswordResult(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt16("result");
     msg.readInt16("error count");
@@ -1273,7 +1273,7 @@ void InventoryRecv::processPlayerStoragePasswordResult(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerCookingList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     const int count = (msg.readInt16("len") - 6) / 2;
     msg.readInt16("list type");
@@ -1283,7 +1283,7 @@ void InventoryRecv::processPlayerCookingList(Net::MessageIn &msg)
 
 void InventoryRecv::processItemDamaged(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt16("position");
     msg.readBeingId("account id");
@@ -1291,7 +1291,7 @@ void InventoryRecv::processItemDamaged(Net::MessageIn &msg)
 
 void InventoryRecv::processFavoriteItem(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt16("item index");
     msg.readUInt8("favorite (0 - favorite)");
@@ -1361,7 +1361,7 @@ void InventoryRecv::processPlayerInventoryRemove(Net::MessageIn &msg)
 
 void InventoryRecv::processSelectCart(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     const int count = msg.readInt16("len") - 8;
     msg.readBeingId("account id");
@@ -1391,7 +1391,7 @@ int InventoryRecv::getSlot(const int eAthenaSlot)
 
 void InventoryRecv::processMergeItem(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     const int count = (msg.readInt16("len") - 4) / 2;
     for (int f = 0; f < count; f ++)
@@ -1400,7 +1400,7 @@ void InventoryRecv::processMergeItem(Net::MessageIn &msg)
 
 void InventoryRecv::processMergeItemResponse(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt16("inv index");
     msg.readInt16("amount");

@@ -213,7 +213,7 @@ void PlayerRecv::processPlayerArrowMessage(Net::MessageIn &msg)
             // arrows equiped
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(type);
+            UNIMPLEMENTEDPACKETFIELD(type);
             break;
     }
     BLOCK_END("PlayerRecv::processPlayerArrowMessage")

@@ -1444,7 +1444,7 @@ void SDLGraphics::drawLine(int x1, int y1,
         return;
     }
 
-    //  other cases not implimented
+    //  other cases not implemented
 }
 
 bool SDLGraphics::setVideoMode(const int w, const int h,

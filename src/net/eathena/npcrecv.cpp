@@ -49,7 +49,7 @@ void NpcRecv::processNpcCutin(Net::MessageIn &msg)
 
 void NpcRecv::processNpcViewPoint(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     Ea::NpcRecv::mRequestLang = false;
     // +++ probably need add nav point and start moving to it
     msg.readInt32("npc id");
@@ -64,7 +64,7 @@ void NpcRecv::processNpcViewPoint(Net::MessageIn &msg)
 
 void NpcRecv::processNpcShowProgressBar(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     Ea::NpcRecv::mRequestLang = false;
     // +++ probably need show progress bar in npc dialog
     msg.readInt32("color");
@@ -73,7 +73,7 @@ void NpcRecv::processNpcShowProgressBar(Net::MessageIn &msg)
 
 void NpcRecv::processNpcCloseTimeout(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     Ea::NpcRecv::mRequestLang = false;
     // this packet send after npc closed by timeout.
     msg.readInt32("npc id");
@@ -93,7 +93,7 @@ void NpcRecv::processArea(Net::MessageIn &msg)
 
 void NpcRecv::processShowDigit(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readUInt8("type");
     msg.readInt32("value");
@@ -101,7 +101,7 @@ void NpcRecv::processShowDigit(Net::MessageIn &msg)
 
 void NpcRecv::processProgressBarAbort(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 }
 
 void NpcRecv::processNpcSkin(Net::MessageIn &msg)

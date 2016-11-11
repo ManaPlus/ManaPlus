@@ -41,7 +41,7 @@ ImegeGraphics::~ImegeGraphics()
 void ImegeGraphics::drawImage(const Image *restrict const image A_UNUSED,
                               int dstX A_UNUSED, int dstY A_UNUSED) restrict2
 {
-    // for now not implimented
+    // for now not implemented
 }
 
 void ImegeGraphics::copyImage(const Image *restrict const image,

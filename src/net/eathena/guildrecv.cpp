@@ -273,7 +273,7 @@ void GuildRecv::processGuildPosInfoList(Net::MessageIn &msg)
 
 void GuildRecv::processGuildPositionChanged(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("len");
     msg.readInt32("id");
     msg.readInt32("mode");
@@ -298,7 +298,7 @@ void GuildRecv::processGuildMemberPosChange(Net::MessageIn &msg)
 
 void GuildRecv::processGuildEmblemData(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int length = msg.readInt16("len");
 
     msg.readInt32("guild id");
@@ -463,7 +463,7 @@ void GuildRecv::processGuildMessage(Net::MessageIn &msg)
 
 void GuildRecv::processGuildSkillUp(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("skill id");
     msg.readInt16("level");
     msg.readInt16("sp");
@@ -473,33 +473,33 @@ void GuildRecv::processGuildSkillUp(Net::MessageIn &msg)
 
 void GuildRecv::processGuildReqAlliance(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("id");
     msg.readString(24, "name");
 }
 
 void GuildRecv::processGuildReqAllianceAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("flag");
 }
 
 void GuildRecv::processGuildDelAlliance(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("guild id");
     msg.readInt32("flag");
 }
 
 void GuildRecv::processGuildOppositionAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readUInt8("flag");
 }
 
 void GuildRecv::processGuildBroken(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("flag");
 }
 
@@ -652,7 +652,7 @@ void GuildRecv::processGuildExpulsionList(Net::MessageIn &msg)
 
 void GuildRecv::processGuildEmblem(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("being id");
     msg.readInt32("guild id");
     msg.readInt16("emblem id");
@@ -661,7 +661,7 @@ void GuildRecv::processGuildEmblem(Net::MessageIn &msg)
 void GuildRecv::processOnlineInfo(Net::MessageIn &msg)
 {
     // look like unused packet
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("being id");
     msg.readInt32("char id");
     msg.readInt32("online");

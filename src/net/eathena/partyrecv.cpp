@@ -286,7 +286,7 @@ void PartyRecv::processPartyInviteResponse(Net::MessageIn &msg)
 
 void PartyRecv::processPartyItemPickup(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ probably need add option to show pickup notifications
     // in party tab
     msg.readBeingId("account id");
@@ -347,7 +347,7 @@ void PartyRecv::processPartyAutoItemSettingsContinue(Net::MessageIn &msg,
             break;
         default:
         case PartyShare::UNKNOWN:
-            UNIMPLIMENTEDPACKETFIELD(CAST_S32(item));
+            UNIMPLEMENTEDPACKETFIELD(CAST_S32(item));
             break;
     }
 }

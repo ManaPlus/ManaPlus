@@ -31,7 +31,7 @@ namespace EAthena
 
 void RouletteRecv::processRouletteInfoAckType(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int count = (msg.readInt16("len") - 8) / 8;
     msg.readInt32("serial");
 
@@ -46,14 +46,14 @@ void RouletteRecv::processRouletteInfoAckType(Net::MessageIn &msg)
 
 void RouletteRecv::processRouletteItemAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readUInt8("result");
     msg.readInt16("item id");
 }
 
 void RouletteRecv::processRouletteGenerateAckType(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readUInt8("result");
     msg.readInt16("step");
     msg.readInt16("idx");
@@ -65,7 +65,7 @@ void RouletteRecv::processRouletteGenerateAckType(Net::MessageIn &msg)
 
 void RouletteRecv::processRouletteOpenAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readUInt8("result");
     msg.readInt32("serial");
     msg.readUInt8("step");

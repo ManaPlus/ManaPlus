@@ -711,7 +711,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             break;
 
         default:
-            UNIMPLIMENTEDPACKETFIELD(type);
+            UNIMPLEMENTEDPACKETFIELD(type);
             break;
     }
 }

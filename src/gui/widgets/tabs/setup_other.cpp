@@ -392,7 +392,7 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
         "ignorelogpackets", this, "ignorelogpacketsEvent");
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Log unimplimented packets"), "",
+    new SetupItemCheckBox(_("Log unimplemented packets"), "",
         "unimplimentedLog", this, "unimplimentedLogEvent");
 
     // TRANSLATORS: settings option
@@ -453,7 +453,7 @@ void Setup_Other::apply()
     SetupTabScroll::apply();
 
     logger->setDebugLog(config.getBoolValue("debugLog"));
-    logger->setReportUnimplimented(config.getBoolValue("unimplimentedLog"));
+    logger->setReportUnimplemented(config.getBoolValue("unimplimentedLog"));
     Net::loadIgnorePackets();
 }
 

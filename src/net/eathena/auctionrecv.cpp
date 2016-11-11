@@ -33,13 +33,13 @@ namespace EAthena
 
 void AuctionRecv::processOpenWindow(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("flag");  // 0 - open, 1 - close
 }
 
 void AuctionRecv::processAuctionResults(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("len");
     msg.readInt32("pages");
     const int itemCount = msg.readInt32("items count");
@@ -65,20 +65,20 @@ void AuctionRecv::processAuctionResults(Net::MessageIn &msg)
 
 void AuctionRecv::processAuctionSetItem(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("index");
     msg.readUInt8("flag");
 }
 
 void AuctionRecv::processAuctionMessage(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readUInt8("message");
 }
 
 void AuctionRecv::processAuctionClose(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("flag");
 }
 

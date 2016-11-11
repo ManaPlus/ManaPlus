@@ -31,14 +31,14 @@ namespace EAthena
 
 void AdminRecv::processAdminGetLoginAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("account id");
     msg.readString(24, "login");
 }
 
 void AdminRecv::processSetTileType(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ here need set collision tile for map
     msg.readInt16("x");
     msg.readInt16("y");
@@ -48,7 +48,7 @@ void AdminRecv::processSetTileType(Net::MessageIn &msg)
 
 void AdminRecv::processAccountStats(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ need show in other players stats window, nick in mStatsName
     msg.readUInt8("str");
     msg.readUInt8("need str");

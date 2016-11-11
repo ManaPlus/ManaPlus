@@ -102,7 +102,7 @@ void ItemRecv::processItemDropped2(Net::MessageIn &msg)
 
 void ItemRecv::processItemMvpDropped(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("len");
     msg.readUInt8("type");
     msg.readInt16("item id");

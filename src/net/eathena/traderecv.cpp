@@ -165,14 +165,14 @@ void TradeRecv::processTradeItemAddResponse(Net::MessageIn &msg)
             break;
         default:
             NotifyManager::notify(NotifyTypes::TRADE_ADD_ERROR);
-            UNIMPLIMENTEDPACKETFIELD(res);
+            UNIMPLEMENTEDPACKETFIELD(res);
             break;
     }
 }
 
 void TradeRecv::processTradeUndo(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ here need clear trade window from partner side?
 }
 

@@ -417,7 +417,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
         }
 
         default:
-            UNIMPLIMENTEDPACKETFIELD(reason);
+            UNIMPLEMENTEDPACKETFIELD(reason);
             break;
     }
 
@@ -456,14 +456,14 @@ void SkillRecv::processSkillMemoMessage(Net::MessageIn &msg)
             NotifyManager::notify(NotifyTypes::SKILL_MEMO_ERROR_SKILL);
             break;
         default:
-            UNIMPLIMENTEDPACKETFIELD(type);
+            UNIMPLEMENTEDPACKETFIELD(type);
             break;
     }
 }
 
 void SkillRecv::processSkillProduceMixList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     const int count = (msg.readInt16("len") - 8) / 8;
     for (int f = 0; f < count; f ++)
@@ -476,7 +476,7 @@ void SkillRecv::processSkillProduceMixList(Net::MessageIn &msg)
 
 void SkillRecv::processSkillProduceEffect(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt16("flag");
     msg.readInt16("item id");
@@ -484,14 +484,14 @@ void SkillRecv::processSkillProduceEffect(Net::MessageIn &msg)
 
 void SkillRecv::processSkillUnitUpdate(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readBeingId("being id");
 }
 
 void SkillRecv::processSkillArrowCreateList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     const int count = (msg.readInt16("len") - 4) / 2;
     for (int f = 0; f < count; f ++)
@@ -500,7 +500,7 @@ void SkillRecv::processSkillArrowCreateList(Net::MessageIn &msg)
 
 void SkillRecv::processSkillAutoSpells(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     for (int f = 0; f < 7; f ++)
         msg.readInt32("skill id");
@@ -510,7 +510,7 @@ void SkillRecv::processSkillAutoSpells(Net::MessageIn &msg)
 
 void SkillRecv::processSkillDevotionEffect(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readBeingId("being id");
     for (int f = 0; f < 5; f ++)
@@ -520,7 +520,7 @@ void SkillRecv::processSkillDevotionEffect(Net::MessageIn &msg)
 
 void SkillRecv::processSkillItemListWindow(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
 
     msg.readInt32("skill level");
     msg.readInt32("unused");

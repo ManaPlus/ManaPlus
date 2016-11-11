@@ -115,7 +115,7 @@ void LoginRecv::processLoginError2(Net::MessageIn &msg)
         default:
             // TRANSLATORS: error message
             errorMessage = _("Unknown error.");
-            UNIMPLIMENTEDPACKETFIELD(code);
+            UNIMPLEMENTEDPACKETFIELD(code);
             break;
     }
     client->setState(State::ERROR);
@@ -173,7 +173,7 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
 
 void LoginRecv::processCondingKey(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int sz = msg.readInt16("len") - 4;
     msg.readString(sz, "coding key");
 }

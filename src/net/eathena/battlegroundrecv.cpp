@@ -34,7 +34,7 @@ namespace EAthena
 
 void BattleGroundRecv::processBattleEmblem(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("account id");
     msg.readString(24, "name");
     msg.readInt16("bg id");
@@ -54,14 +54,14 @@ void BattleGroundRecv::processBattleEmblem2(Net::MessageIn &msg)
 
 void BattleGroundRecv::processBattleUpdateScore(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("camp a points");
     msg.readInt16("camp b points");
 }
 
 void BattleGroundRecv::processBattleUpdateCoords(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("account id");
     msg.readString(24, "name");
     msg.readInt16("class");
@@ -71,41 +71,41 @@ void BattleGroundRecv::processBattleUpdateCoords(Net::MessageIn &msg)
 
 void BattleGroundRecv::processBattlePlay(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readString(24, "battle ground name");
 }
 
 void BattleGroundRecv::processBattleQueueAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readUInt8("type");
     msg.readString(24, "bg name");
 }
 
 void BattleGroundRecv::processBattleBegins(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readString(24, "bg name");
     msg.readString(24, "game name");
 }
 
 void BattleGroundRecv::processBattleNoticeDelete(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readUInt8("type");
     msg.readString(24, "bg name");
 }
 
 void BattleGroundRecv::processBattleJoined(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readString(24, "name");
     msg.readInt32("position");
 }
 
 void BattleGroundRecv::processBattleUpdateHp(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("account id");
     if (msg.getVersion() >= 20140613)
     {

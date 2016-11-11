@@ -193,7 +193,7 @@ void BuyingStoreRecv::processBuyingStoreSellerSellFailed(Net::MessageIn &msg)
 
 void BuyingStoreRecv::processBuyingStoreReport(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("item id");
     msg.readInt16("amount");
     if (msg.getVersion() >= 20141016)

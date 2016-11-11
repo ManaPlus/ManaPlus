@@ -69,7 +69,7 @@ void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
 
 void CashShopRecv::processCashShopBuyAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("cash points");
     if (packetVersion >= 20070711)
         msg.readInt32("kafra points");
@@ -78,14 +78,14 @@ void CashShopRecv::processCashShopBuyAck(Net::MessageIn &msg)
 
 void CashShopRecv::processCashShopPoints(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("cash points");
     msg.readInt32("kafra points");
 }
 
 void CashShopRecv::processCashShopBuy(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("id");
     msg.readInt16("result");
     msg.readInt32("cash points");
@@ -94,7 +94,7 @@ void CashShopRecv::processCashShopBuy(Net::MessageIn &msg)
 
 void CashShopRecv::processCashShopTabPriceList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int count = (msg.readInt16("len") - 10) / 6;
     msg.readInt32("tab");
     const int itemsCount = msg.readInt16("count");
@@ -110,7 +110,7 @@ void CashShopRecv::processCashShopTabPriceList(Net::MessageIn &msg)
 
 void CashShopRecv::processCashShopSchedule(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int count = (msg.readInt16("len") - 8) / 6;
     const int itemsCount = msg.readInt16("count");
     msg.readInt16("tab");

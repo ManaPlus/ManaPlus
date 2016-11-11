@@ -226,7 +226,7 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
             break;
         }
         default:
-            UNIMPLIMENTEDPACKETFIELD(cmd);
+            UNIMPLEMENTEDPACKETFIELD(cmd);
             break;
     }
 }

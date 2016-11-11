@@ -31,7 +31,7 @@ namespace EAthena
 
 void FriendsRecv::processPlayerOnline(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("account id");
     msg.readInt32("char id");
     msg.readUInt8("flag");  // 0 - online, 1 - offline
@@ -39,7 +39,7 @@ void FriendsRecv::processPlayerOnline(Net::MessageIn &msg)
 
 void FriendsRecv::processFriendsList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int count = (msg.readInt16("size") - 4) / 32;
     for (int f = 0; f < count; f ++)
     {
@@ -51,7 +51,7 @@ void FriendsRecv::processFriendsList(Net::MessageIn &msg)
 
 void FriendsRecv::processRequestAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("type");
     msg.readBeingId("account id");
     msg.readInt32("char id");
@@ -60,7 +60,7 @@ void FriendsRecv::processRequestAck(Net::MessageIn &msg)
 
 void FriendsRecv::processRequest(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("account id");
     msg.readInt32("char id");
     msg.readString(24, "name");
@@ -68,7 +68,7 @@ void FriendsRecv::processRequest(Net::MessageIn &msg)
 
 void FriendsRecv::processDeletePlayer(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("account id");
     msg.readInt32("char id");
 }

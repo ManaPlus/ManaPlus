@@ -85,7 +85,7 @@ void PartyRecv::processPartyExpSettingsContinue(Net::MessageIn &msg,
             break;
         default:
         case PartyShare::UNKNOWN:
-            UNIMPLIMENTEDPACKETFIELD(CAST_S32(exp));
+            UNIMPLEMENTEDPACKETFIELD(CAST_S32(exp));
             break;
     }
 }
@@ -115,7 +115,7 @@ void PartyRecv::processPartyItemSettingsContinue(Net::MessageIn &msg,
             break;
         default:
         case PartyShare::UNKNOWN:
-            UNIMPLIMENTEDPACKETFIELD(CAST_S32(item));
+            UNIMPLEMENTEDPACKETFIELD(CAST_S32(item));
             break;
     }
 }

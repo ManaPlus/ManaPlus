@@ -359,7 +359,7 @@ void CharServerRecv::processPincodeStatus(Net::MessageIn &msg)
         case 8:  // pincode was incorrect
             break;
         default:
-            UNIMPLIMENTEDPACKET;
+            UNIMPLEMENTEDPACKET;
             break;
     }
 }
@@ -466,7 +466,7 @@ void CharServerRecv::processCharRename(Net::MessageIn &msg)
 
 void CharServerRecv::processCharChangeSlot(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("len");
     msg.readInt16("flag");  // 0 - ok, 1 - error
     msg.readInt16("unused");
@@ -494,14 +494,14 @@ void CharServerRecv::processCharDeleteFailed(Net::MessageIn &msg)
 
 void CharServerRecv::processCharCaptchaNotSupported(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("5");
     msg.readUInt8("1");
 }
 
 void CharServerRecv::processCharDelete2Ack(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("char id");
     msg.readInt32("result");
     // for packets before 20130000, this is raw time
@@ -511,14 +511,14 @@ void CharServerRecv::processCharDelete2Ack(Net::MessageIn &msg)
 
 void CharServerRecv::processCharDelete2AcceptActual(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("char id");
     msg.readInt32("result");
 }
 
 void CharServerRecv::processCharDelete2CancelAck(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("char id");
     msg.readInt32("result");
 }
@@ -551,7 +551,7 @@ void CharServerRecv::processCharCharacters(Net::MessageIn &msg)
 
 void CharServerRecv::processCharBanCharList(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     const int count = (msg.readInt16("len") - 4) / 24;
     for (int f = 0; f < count; f ++)
     {

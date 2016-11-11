@@ -95,7 +95,7 @@ Logger::Logger() :
     mThreadLocked(false),
     mLogToStandardOut(true),
     mDebugLog(false),
-    mReportUnimplimented(false)
+    mReportUnimplemented(false)
 {
 #if defined __native_client__ && defined(NACL_LOG)
     std::cout.setf(std::ios_base::unitbuf);
@@ -423,9 +423,9 @@ void Logger::error(const std::string &error_text)
     exit(1);
 }
 
-void Logger::unimplimented(const int id)
+void Logger::unimplemented(const int id)
 {
-    if (!mReportUnimplimented)
+    if (!mReportUnimplemented)
         return;
 
     const std::string str = strprintf("Unimplimented packet: %d (0x%x)",
@@ -435,10 +435,10 @@ void Logger::unimplimented(const int id)
     log(str);
 }
 
-void Logger::unimplimented(const int id,
+void Logger::unimplemented(const int id,
                            const int id2)
 {
-    if (!mReportUnimplimented)
+    if (!mReportUnimplemented)
         return;
 
     const std::string str = strprintf(
@@ -450,11 +450,11 @@ void Logger::unimplimented(const int id,
     log(str);
 }
 
-void Logger::unimplimented(const uint32_t id,
+void Logger::unimplemented(const uint32_t id,
                            const uint32_t id2,
                            const uint32_t id3) const
 {
-    if (!mReportUnimplimented)
+    if (!mReportUnimplemented)
         return;
 
     const std::string str = strprintf(

@@ -54,7 +54,7 @@ void *GlxHelper::createContext(const unsigned long window,
         || isGLNull(mglXChooseFBConfig))
     {
         logger->log("Can't change context, functions in driver "
-            "not implimented");
+            "not implemented");
         XSetErrorHandler(handler);
         return context;
     }

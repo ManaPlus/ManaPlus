@@ -57,14 +57,14 @@ _SDL_stdinc_h
 #define IGNOREDEBUGLOG {}
 #endif  // ENABLEDEBUGLOG
 
-#define UNIMPLIMENTEDPACKET \
-    logger->unimplimented(msg.getId())
+#define UNIMPLEMENTEDPACKET \
+    logger->unimplemented(msg.getId())
 
-#define UNIMPLIMENTEDPACKETFIELD(field) \
-    logger->unimplimented(msg.getId(), field)
+#define UNIMPLEMENTEDPACKETFIELD(field) \
+    logger->unimplemented(msg.getId(), field)
 
 #define WRONGPACKETSIZE \
-    logger->unimplimented(CAST_U32(mId), mLength, mPos)
+    logger->unimplemented(CAST_U32(mId), mLength, mPos)
 
 /**
  * The Log Class : Useful to write debug or info messages
@@ -183,8 +183,8 @@ class Logger final
         void setDebugLog(const bool n)
         { mDebugLog = n; }
 
-        void setReportUnimplimented(const bool n)
-        { mReportUnimplimented = n; }
+        void setReportUnimplemented(const bool n)
+        { mReportUnimplemented = n; }
 
         /**
          * Log an error and quit. The error will pop-up on Windows and Mac, and
@@ -206,12 +206,12 @@ class Logger final
 #endif  // ENABLE_CILKPLUS
         ;
 
-        void unimplimented(const int id);
+        void unimplemented(const int id);
 
-        void unimplimented(const int id,
+        void unimplemented(const int id,
                            const int id2);
 
-        void unimplimented(const uint32_t id,
+        void unimplemented(const uint32_t id,
                            const uint32_t id2,
                            const uint32_t id3) const;
 
@@ -222,7 +222,7 @@ class Logger final
         volatile bool mThreadLocked;
         bool mLogToStandardOut;
         bool mDebugLog;
-        bool mReportUnimplimented;
+        bool mReportUnimplemented;
 };
 
 extern Logger *logger;

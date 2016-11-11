@@ -472,7 +472,7 @@ void GraphicsManager::setVideoMode()
     int height = res[1];
 #elif defined __native_client__
 #ifdef USE_SDL2
-    // not implimented
+    // not implemented
 #else  // USE_SDL2
 
     const SDL_VideoInfo* info = SDL_GetVideoInfo();
@@ -568,7 +568,7 @@ void GraphicsManager::initGraphics()
         }
         if (openGLMode == RENDER_GLES2_OPENGL)
         {
-            // +++ here need check also not implimented gles flag
+            // +++ here need check also not implemented gles flag
             if (!checkGLVersion(2, 0))
             {
                 logger->log("Fallback to software mode");

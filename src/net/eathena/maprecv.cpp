@@ -31,20 +31,20 @@ namespace EAthena
 
 void MapRecv::processInstanceStart(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readString(61, "instance name");
     msg.readInt16("flag");
 }
 
 void MapRecv::processInstanceCreate(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt16("flag");
 }
 
 void MapRecv::processInstanceInfo(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readString(61, "instance name");
     msg.readInt32("remaining time");
     msg.readInt32("no players close time");
@@ -52,14 +52,14 @@ void MapRecv::processInstanceInfo(Net::MessageIn &msg)
 
 void MapRecv::processInstanceDelete(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("flag");
     msg.readInt32("unused");
 }
 
 void MapRecv::processAddMapMarker(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     msg.readBeingId("account id");
     msg.readInt16("x");
     msg.readInt16("y");

@@ -184,7 +184,7 @@ void QuestRecv::processRemoveQuest(Net::MessageIn &msg)
 
 void QuestRecv::processActivateQuest(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // +++ need enable/disable quests depend on this packet
     msg.readInt32("quest id");
     msg.readUInt8("activate");
@@ -192,7 +192,7 @@ void QuestRecv::processActivateQuest(Net::MessageIn &msg)
 
 void QuestRecv::processNpcQuestEffect(Net::MessageIn &msg)
 {
-    UNIMPLIMENTEDPACKET;
+    UNIMPLEMENTEDPACKET;
     // this packed mostly useless, because manaplus can show any
     // kind of effects based on quest states.
     msg.readInt32("npc id");
