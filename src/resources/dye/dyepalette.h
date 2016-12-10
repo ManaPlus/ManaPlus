@@ -84,11 +84,11 @@ class DyePalette final
                               const int bufSize) const restrict2;
 
         static unsigned int hexDecode(const signed char c)
-                                      A_CONST A_WARN_UNUSED;
+                                      noexcept2 A_CONST A_WARN_UNUSED;
 
-        static void hexToColor(const std::string &hexStr,
+        static void hexToColor(const std::string &restrict hexStr,
                                const uint8_t blockSize,
-                               DyeColor &color);
+                               DyeColor &color) noexcept2;
 
 #ifndef UNITTESTS
     private:

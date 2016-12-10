@@ -97,9 +97,9 @@ DyePalette::DyePalette(const std::string &restrict description,
     logger->log("Error, invalid embedded palette: %s", description.c_str());
 }
 
-void DyePalette::hexToColor(const std::string &hexStr,
+void DyePalette::hexToColor(const std::string &restrict hexStr,
                             const uint8_t blockSize,
-                            DyeColor &color)
+                            DyeColor &color) noexcept2
 {
     for (size_t i = 0, colorIdx = 0;
          i < blockSize && colorIdx < 4;
@@ -111,7 +111,7 @@ void DyePalette::hexToColor(const std::string &hexStr,
     }
 }
 
-unsigned int DyePalette::hexDecode(const signed char c)
+unsigned int DyePalette::hexDecode(const signed char c) noexcept2
 {
     if ('0' <= c && c <= '9')
         return c - '0';

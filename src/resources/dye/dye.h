@@ -63,19 +63,19 @@ class Dye final
         /**
          * Return special dye palete (S)
          */
-        const DyePalette *getSPalete() const A_WARN_UNUSED
+        const DyePalette *getSPalete() const restrict2 noexcept2 A_WARN_UNUSED
         { return mDyePalettes[sPaleteIndex]; }
 
         /**
          * Return special dye palete (A)
          */
-        const DyePalette *getAPalete() const A_WARN_UNUSED
+        const DyePalette *getAPalete() const restrict2 noexcept2 A_WARN_UNUSED
         { return mDyePalettes[aPaleteIndex]; }
 
         /**
          * Return dye type for S - 1, for A - 2, 0 for other
          */
-        int getType() const restrict2 A_WARN_UNUSED;
+        int getType() const restrict2 noexcept2 A_WARN_UNUSED;
 
         void normalDye(uint32_t *restrict pixels,
                        const int bufSize) const restrict2;

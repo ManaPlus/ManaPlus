@@ -141,7 +141,7 @@ void Dye::instantiate(std::string &restrict target,
     target = s.str();
 }
 
-int Dye::getType() const restrict2
+int Dye::getType() const restrict2 noexcept2
 {
     if (mDyePalettes[sPaleteIndex])
         return 1;
