@@ -378,6 +378,13 @@ cmake_gcc-4.9:
   tags:
     - docker
 
+clang-4.0:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/clang40.sh
+  image: debian:unstable
+  <<: *log-failed-jobs
+
 gcc-5:
   stage: build
   script:
@@ -3310,6 +3317,7 @@ success:
   script:
   - echo "nothing"
   image: debian:unstable
+  variables: GIT_STRATEGY=none
   when: on_success
 
 failure:
@@ -3317,5 +3325,6 @@ failure:
   script:
   - echo "nothing"
   image: debian:unstable
+  variables: GIT_STRATEGY=none
   when: on_failure
   <<: *log-failed-jobs
