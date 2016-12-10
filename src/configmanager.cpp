@@ -263,7 +263,7 @@ void ConfigManager::storeSafeParameters()
     enableMumble = config.getBoolValue("enableMumble");
     enableMapReduce = config.getBoolValue("enableMapReduce");
 
-    if (!settings.options.safeMode && tmpOpengl == RenderType::RENDER_SOFTWARE)
+    if (!settings.options.safeMode && tmpOpengl == RENDER_SOFTWARE)
     {
         // if video mode configured reset most settings to safe
         config.setValue("hwaccel", false);
@@ -306,7 +306,7 @@ void ConfigManager::storeSafeParameters()
     }
 
     config.setValue("safemode", false);
-    if (tmpOpengl == RenderType::RENDER_SOFTWARE)
+    if (tmpOpengl == RENDER_SOFTWARE)
     {
         config.setValue("hwaccel", tmpHwaccel);
         config.setValue("opengl", CAST_S32(tmpOpengl));

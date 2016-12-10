@@ -527,9 +527,9 @@ void GraphicsManager::initGraphics()
 #endif  // ANDROID
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache") &&
-        openGLMode == RenderType::RENDER_SOFTWARE);
+        openGLMode == RENDER_SOFTWARE);
     ImageHelper::setEnableAlpha((config.getFloatValue("guialpha") != 1.0F ||
-        openGLMode != RenderType::RENDER_SOFTWARE) &&
+        openGLMode != RENDER_SOFTWARE) &&
         config.getBoolValue("enableGuiOpacity"));
 #else  // USE_OPENGL
     SurfaceImageHelper::SDLSetEnableAlphaCache(
