@@ -957,8 +957,6 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
     FOR_EACH (KeyToActionMapIter, it, actionMap)
     {
         KeysVector *const keys = &it->second;
-        if (!keys)
-            continue;
         if (keys->size() > 1)
             std::sort(keys->begin(), keys->end(), inputActionDataSorter);
     }

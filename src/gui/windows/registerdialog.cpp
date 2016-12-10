@@ -224,7 +224,7 @@ void RegisterDialog::action(const ActionEvent &event)
             error = 2;
         }
         else if (mEmailField &&
-                 mEmailField->getText().find("@") == std::string::npos)
+                 mEmailField->getText().find('@') == std::string::npos)
         {
             // TRANSLATORS: error message
             errorMsg = _("Incorrect email.");

@@ -211,7 +211,7 @@ static bool splitWhisper(const std::string &args,
     }
     else
     {
-        const size_t pos = args.find(" ");
+        const size_t pos = args.find(' ');
         if (pos != std::string::npos)
         {
             recvnick = args.substr(0, pos);

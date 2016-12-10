@@ -227,7 +227,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             idx1 = tmp.find("###");
             while (idx1 != std::string::npos)
             {
-                const size_t idx2 = tmp.find(";", idx1);
+                const size_t idx2 = tmp.find(';', idx1);
                 if (idx2 == std::string::npos)
                     break;
 
@@ -242,7 +242,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         idx1 = tmp.find("@@");
         while (idx1 != std::string::npos)
         {
-            const size_t idx2 = tmp.find("|", idx1);
+            const size_t idx2 = tmp.find('|', idx1);
             const size_t idx3 = tmp.find("@@", idx2);
 
             if (idx2 == std::string::npos || idx3 == std::string::npos)
@@ -290,7 +290,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                 }
                 else
                 {  // item link
-                    size_t idx = bLink.link.find(",");
+                    size_t idx = bLink.link.find(',');
                     if (idx != std::string::npos)
                     {
                         const int id = atoi(bLink.link.substr(0, idx).c_str());
@@ -359,7 +359,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         idx1 = newRow.find("\\t");
         while (idx1 != std::string::npos)
         {
-            const size_t idx2 = newRow.find(";", idx1);
+            const size_t idx2 = newRow.find(';', idx1);
             if (idx2 == std::string::npos)
                 break;
 
@@ -445,7 +445,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
                 if (nextChar < sz && tempRow.at(nextChar) == ' ')
                 {
                     int nextSpacePos = CAST_U32(
-                        tempRow.find(" ", (nextChar + 1)));
+                        tempRow.find(' ', (nextChar + 1)));
                     if (nextSpacePos <= 0)
                         nextSpacePos = CAST_U32(sz) - 1U;
 

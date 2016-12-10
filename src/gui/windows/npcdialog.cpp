@@ -708,7 +708,7 @@ void NpcDialog::parseListItems(const std::string &itemString)
     {
         if (tmp.empty())
             continue;
-        const size_t pos = tmp.find("|");
+        const size_t pos = tmp.find('|');
         if (pos == std::string::npos)
         {
             mItems.push_back(tmp);

@@ -48,11 +48,11 @@ LangVect getLang()
         return langs;
     }
 
-    size_t dot = lang.find(".");
+    size_t dot = lang.find('.');
     if (dot != std::string::npos)
         lang = lang.substr(0, dot);
     langs.push_back(lang);
-    dot = lang.find("_");
+    dot = lang.find('_');
     if (dot != std::string::npos)
         langs.push_back(lang.substr(0, dot));
     return langs;
@@ -90,10 +90,10 @@ std::string getLangShort()
         return "";
     }
 
-    size_t dot = lang.find(".");
+    size_t dot = lang.find('.');
     if (dot != std::string::npos)
         lang = lang.substr(0, dot);
-    dot = lang.find("_");
+    dot = lang.find('_');
     if (dot != std::string::npos)
         return lang.substr(0, dot);
     return lang;

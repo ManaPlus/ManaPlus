@@ -116,7 +116,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
     mMinWidth = minDimension;
 
     const size_t textSize = text.size();
-    size_t spacePos = text.rfind(" ", textSize);
+    size_t spacePos = text.rfind(' ', textSize);
 
     if (spacePos != std::string::npos)
     {
@@ -136,7 +136,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
     do
     {
         // Determine next piece of string to wrap
-        newlinePos = text.find("\n", lastNewlinePos);
+        newlinePos = text.find('\n', lastNewlinePos);
 
         if (newlinePos == std::string::npos)
             newlinePos = textSize;
@@ -151,7 +151,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
 
         do
         {
-            spacePos = line.find(" ", lastSpacePos);
+            spacePos = line.find(' ', lastSpacePos);
 
             if (spacePos == std::string::npos)
                 spacePos = sz;
@@ -190,7 +190,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
                     wrappedStream.clear();
                     wrappedStream.str("");
                     lastNewlinePos = 0;
-                    newlinePos = text.find("\n", lastNewlinePos);
+                    newlinePos = text.find('\n', lastNewlinePos);
                     if (newlinePos == std::string::npos)
                         newlinePos = textSize;
                     line = text.substr(lastNewlinePos, newlinePos -
@@ -208,7 +208,7 @@ void TextBox::setTextWrapped(const std::string &text, const int minDimension)
         }
         while (spacePos != sz);
 
-        if (text.find("\n", lastNewlinePos) != std::string::npos)
+        if (text.find('\n', lastNewlinePos) != std::string::npos)
             wrappedStream << "\n";
 
         lastNewlinePos = newlinePos + 1;
@@ -240,7 +240,7 @@ void TextBox::setText(const std::string& text)
     int length;
     do
     {
-        pos = text.find("\n", lastPos);
+        pos = text.find('\n', lastPos);
 
         if (pos != std::string::npos)
             length = CAST_S32(pos - lastPos);

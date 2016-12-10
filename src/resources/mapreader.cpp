@@ -327,7 +327,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
 
     BLOCK_START("MapReader::readMap xml")
     // Take the filename off the path
-    const std::string pathDir = path.substr(0, path.rfind("/") + 1);
+    const std::string pathDir = path.substr(0, path.rfind('/') + 1);
 
     const int w = XML::getProperty(node, "width", 0);
     const int h = XML::getProperty(node, "height", 0);
@@ -354,7 +354,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         w, h,
         tilew, tileh);
 
-    const std::string fileName = path.substr(path.rfind("/") + 1);
+    const std::string fileName = path.substr(path.rfind('/') + 1);
     map->setProperty("shortName", fileName);
 
 #ifdef USE_OPENGL
@@ -800,7 +800,7 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
     {
         while (oldPos != csv.npos)
         {
-            const size_t pos = csv.find_first_of(",", oldPos);
+            const size_t pos = csv.find_first_of(',', oldPos);
             if (pos == csv.npos)
                 return false;
 
@@ -830,7 +830,7 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
     {
         while (oldPos != csv.npos)
         {
-            const size_t pos = csv.find_first_of(",", oldPos);
+            const size_t pos = csv.find_first_of(',', oldPos);
             if (pos == csv.npos)
                 return false;
 
@@ -1078,7 +1078,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
         }
 
         // Reset path to be realtive to the tsx file
-        pathDir = filename.substr(0, filename.rfind("/") + 1);
+        pathDir = filename.substr(0, filename.rfind('/') + 1);
     }
 
     const int tw = XML::getProperty(node, "tilewidth", map->getTileWidth());
@@ -1272,7 +1272,7 @@ Map *MapReader::createEmptyMap(const std::string &restrict filename,
 void MapReader::updateMusic(Map *const map)
 {
     std::string name = map->getProperty("shortName");
-    const size_t p = name.rfind(".");
+    const size_t p = name.rfind('.');
     if (p != std::string::npos)
         name = name.substr(0, p);
     name.append(".ogg");

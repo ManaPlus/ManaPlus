@@ -265,11 +265,11 @@ unsigned int decodeStr(const std::string &str)
 
 std::string extractNameFromSprite(std::string str)
 {
-    const size_t pos1 = str.rfind(".");
+    const size_t pos1 = str.rfind('.');
     if (pos1 != std::string::npos)
     {
-        size_t pos2 = str.rfind("/");
-        const size_t pos3 = str.rfind("\\");
+        size_t pos2 = str.rfind('/');
+        const size_t pos3 = str.rfind('\\');
         if (pos3 != std::string::npos)
         {
             if (pos2 == std::string::npos || pos3 > pos2)
@@ -287,12 +287,12 @@ std::string extractNameFromSprite(std::string str)
 
 std::string removeSpriteIndex(std::string str)
 {
-    const size_t pos1 = str.rfind("[");
+    const size_t pos1 = str.rfind('[');
 
     if (pos1 != std::string::npos)
     {
-        size_t pos2 = str.rfind("/");
-        const size_t pos3 = str.rfind("\\");
+        size_t pos2 = str.rfind('/');
+        const size_t pos3 = str.rfind('\\');
         if (pos3 != std::string::npos)
         {
             if (pos2 == std::string::npos || pos3 > pos2)
@@ -341,8 +341,8 @@ void getSafeUtf8String(std::string text, char *const buf)
 
 std::string getFileName(const std::string &path)
 {
-    size_t pos1 = path.rfind("/");
-    const size_t pos2 = path.rfind("\\");
+    size_t pos1 = path.rfind('/');
+    const size_t pos2 = path.rfind('\\');
     if (pos1 == std::string::npos)
         pos1 = pos2;
     else if (pos2 != std::string::npos && pos2 > pos1)
@@ -355,8 +355,8 @@ std::string getFileName(const std::string &path)
 
 std::string getFileDir(const std::string &path)
 {
-    size_t pos1 = path.rfind("/");
-    const size_t pos2 = path.rfind("\\");
+    size_t pos1 = path.rfind('/');
+    const size_t pos2 = path.rfind('\\');
     if (pos1 == std::string::npos)
         pos1 = pos2;
     else if (pos2 != std::string::npos && pos2 > pos1)
@@ -398,7 +398,7 @@ bool getBoolFromString(const std::string &text)
 
 void replaceSpecialChars(std::string &text)
 {
-    size_t pos1 = text.find("&");
+    size_t pos1 = text.find('&');
     while (pos1 != std::string::npos)
     {
         const size_t idx = pos1 + 1;
@@ -425,7 +425,7 @@ void replaceSpecialChars(std::string &text)
             pos1 = f + 1;
         }
 
-        pos1 = text.find("&", pos1);
+        pos1 = text.find('&', pos1);
     }
 }
 
@@ -512,7 +512,7 @@ std::string combineDye(std::string file, const std::string &dye)
 {
     if (dye.empty())
         return file;
-    const size_t pos = file.find_last_of("|");
+    const size_t pos = file.find_last_of('|');
     if (pos != std::string::npos)
         return file.substr(0, pos).append("|").append(dye);
     return file.append("|").append(dye);
@@ -523,7 +523,7 @@ std::string combineDye2(std::string file, const std::string &dye)
     if (dye.empty())
         return file;
 
-    const size_t pos = file.find_last_of("|");
+    const size_t pos = file.find_last_of('|');
     if (pos != std::string::npos)
     {
         const std::string dye1 = file.substr(pos + 1);
@@ -550,7 +550,7 @@ std::string combineDye3(std::string file, const std::string &dye)
     if (dye.empty())
         return file;
 
-    const size_t pos = file.find_last_of("|");
+    const size_t pos = file.find_last_of('|');
     if (pos != std::string::npos)
     {
         const std::string dye1 = file.substr(pos + 1);
@@ -866,9 +866,9 @@ void secureChatCommand(std::string &str)
 bool parse2Int(const std::string &args, int &x, int &y)
 {
     bool isValid = false;
-    size_t pos = args.find(" ");
+    size_t pos = args.find(' ');
     if (pos == std::string::npos)
-        pos = args.find(",");
+        pos = args.find(',');
     if (pos != std::string::npos)
     {
         if (pos + 1 < args.length())
@@ -884,9 +884,9 @@ bool parse2Int(const std::string &args, int &x, int &y)
 bool parse2Str(const std::string &args, std::string &str1, std::string &str2)
 {
     bool isValid = false;
-    size_t pos = args.find(" ");
+    size_t pos = args.find(' ');
     if (pos == std::string::npos)
-        pos = args.find(",");
+        pos = args.find(',');
     if (pos != std::string::npos)
     {
         if (pos + 1 < args.length())

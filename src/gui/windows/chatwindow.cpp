@@ -1107,7 +1107,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
             if (tab->getRemoveNames())
             {
                 std::string msg = mes;
-                const size_t idx = mes.find(":");
+                const size_t idx = mes.find(':');
                 if (idx != std::string::npos && idx > 0)
                 {
                     std::string nick2 = msg.substr(0, idx);
@@ -1592,10 +1592,10 @@ bool ChatWindow::resortChatLog(std::string line,
     if (idx2 != std::string::npos)
     {
         std::string tmpNick = line.substr(0, idx2);
-        if (tmpNick.find("#") != std::string::npos ||
-            tmpNick.find(":") != std::string::npos ||
-            tmpNick.find("%") != std::string::npos ||
-            tmpNick.find("@") != std::string::npos ||
+        if (tmpNick.find('#') != std::string::npos ||
+            tmpNick.find(':') != std::string::npos ||
+            tmpNick.find('%') != std::string::npos ||
+            tmpNick.find('@') != std::string::npos ||
             tmpNick.size() < 5 ||
             tmpNick[0] == '@' ||
             tmpNick[0] == '/' ||

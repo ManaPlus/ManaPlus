@@ -702,7 +702,7 @@ impHandler(openUrl)
 
 impHandler(execute)
 {
-    const size_t idx = event.args.find(" ");
+    const size_t idx = event.args.find(' ');
     std::string name;
     std::string params;
     if (idx == std::string::npos)

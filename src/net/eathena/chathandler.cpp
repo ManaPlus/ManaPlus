@@ -120,7 +120,7 @@ void ChatHandler::sendRaw(const std::string &args) const
     if (line.empty())
         return;
 
-    size_t pos = line.find(" ");
+    size_t pos = line.find(' ');
     if (pos != std::string::npos)
     {
         str = line.substr(0, pos);
@@ -129,7 +129,7 @@ void ChatHandler::sendRaw(const std::string &args) const
         outMsg = new MessageOut(id);
         outMsg->writeInt16(id, "packet id");
         line = line.substr(pos + 1);
-        pos = line.find(" ");
+        pos = line.find(' ');
     }
     else
     {
@@ -145,7 +145,7 @@ void ChatHandler::sendRaw(const std::string &args) const
         str = line.substr(0, pos);
         processRaw(*outMsg, str);
         line = line.substr(pos + 1);
-        pos = line.find(" ");
+        pos = line.find(' ');
     }
     if (!line.empty())
         processRaw(*outMsg, line);

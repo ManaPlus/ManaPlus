@@ -92,7 +92,7 @@ Download::Download(void *const ptr,
         const std::string serverName = settings.serverName;
         if (!serverName.empty())
         {
-            if (mUrl.find("?") == std::string::npos)
+            if (mUrl.find('?') == std::string::npos)
                 mUrl.append("?host=");
             else
                 mUrl.append("&host=");

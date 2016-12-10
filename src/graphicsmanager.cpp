@@ -526,9 +526,11 @@ void GraphicsManager::initGraphics()
     SafeOpenGLImageHelper::setBlur(config.getBoolValue("blur"));
 #endif  // ANDROID
     SurfaceImageHelper::SDLSetEnableAlphaCache(
-        config.getBoolValue("alphaCache") && !openGLMode);
+        config.getBoolValue("alphaCache") &&
+        openGLMode == RenderType::RENDER_SOFTWARE);
     ImageHelper::setEnableAlpha((config.getFloatValue("guialpha") != 1.0F ||
-        openGLMode) && config.getBoolValue("enableGuiOpacity"));
+        openGLMode != RenderType::RENDER_SOFTWARE) &&
+        config.getBoolValue("enableGuiOpacity"));
 #else  // USE_OPENGL
     SurfaceImageHelper::SDLSetEnableAlphaCache(
         config.getBoolValue("alphaCache"));

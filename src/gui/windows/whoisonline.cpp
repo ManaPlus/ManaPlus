@@ -430,7 +430,7 @@ void WhoIsOnline::loadWebList()
                 }
 
                 trim(lineStr);
-                pos = lineStr.find("/", 0);
+                pos = lineStr.find('/', 0);
 
                 if (pos != std::string::npos)
                     lineStr = lineStr.substr(0, pos);

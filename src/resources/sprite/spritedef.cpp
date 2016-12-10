@@ -418,7 +418,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
                 FOR_EACH (StringVectCIter, it, vals)
                 {
                     const std::string str = *it;
-                    const size_t idx = str.find("-");
+                    const size_t idx = str.find('-');
                     if (str == "p")
                     {
                         animation->addPause(delay, rand);

@@ -34,13 +34,13 @@
 #ifndef ANDROID
 static bool modeSorter(const std::string &mode1, const std::string &mode2)
 {
-    const int width1 = atoi(mode1.substr(0, mode1.find("x")).c_str());
-    const int height1 = atoi(mode1.substr(mode1.find("x") + 1).c_str());
+    const int width1 = atoi(mode1.substr(0, mode1.find('x')).c_str());
+    const int height1 = atoi(mode1.substr(mode1.find('x') + 1).c_str());
     if (!width1 || !height1)
         return false;
 
-    const int width2 = atoi(mode2.substr(0, mode2.find("x")).c_str());
-    const int height2 = atoi(mode2.substr(mode2.find("x") + 1).c_str());
+    const int width2 = atoi(mode2.substr(0, mode2.find('x')).c_str());
+    const int height2 = atoi(mode2.substr(mode2.find('x') + 1).c_str());
     if (!width2 || !height2)
         return false;
     if (width1 != width2)

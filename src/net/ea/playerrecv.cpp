@@ -85,7 +85,7 @@ void PlayerRecv::processPlayerWarp(Net::MessageIn &msg)
     const bool sameMap = (currentMapName == mapPath);
 
     // Switch the actual map, deleting the previous one if necessary
-    mapPath = mapPath.substr(0, mapPath.rfind("."));
+    mapPath = mapPath.substr(0, mapPath.rfind('.'));
     game->changeMap(mapPath);
 
     int scrollOffsetX = 0;

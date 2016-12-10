@@ -284,7 +284,7 @@ std::string Units::formatWeight(const int value)
 static std::string splitNumber(std::string str, const std::string &separator)
 {
     std::string lastPart;
-    const size_t point = str.find(".");
+    const size_t point = str.find('.');
     if (point != std::string::npos)
     {
         lastPart = str.substr(point);

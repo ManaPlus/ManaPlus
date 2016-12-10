@@ -377,8 +377,8 @@ void Setup_Video::action(const ActionEvent &event)
                 return;
             }
         }
-        const int width = atoi(mode.substr(0, mode.find("x")).c_str());
-        const int height = atoi(mode.substr(mode.find("x") + 1).c_str());
+        const int width = atoi(mode.substr(0, mode.find('x')).c_str());
+        const int height = atoi(mode.substr(mode.find('x') + 1).c_str());
         if (!width || !height)
             return;
 

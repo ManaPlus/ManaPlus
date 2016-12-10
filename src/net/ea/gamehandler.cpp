@@ -44,7 +44,7 @@ void GameHandler::who() const
 
 void GameHandler::setMap(const std::string &map)
 {
-    GameRecv::mMap = map.substr(0, map.rfind("."));
+    GameRecv::mMap = map.substr(0, map.rfind('.'));
 }
 
 void GameHandler::clear() const

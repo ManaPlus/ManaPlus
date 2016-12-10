@@ -1782,7 +1782,7 @@ void ActorManager::parseLevels(std::string levels) const
         std::string part = levels.substr(f, pos - f);
         if (part.empty())
             break;
-        const size_t bktPos = part.rfind("(");
+        const size_t bktPos = part.rfind('(');
         if (bktPos != std::string::npos)
         {
             Being *const being = findBeingByName(part.substr(0, bktPos),

@@ -108,8 +108,8 @@ std::string &fixDirSeparators(std::string &str)
 
 std::string removeLast(const std::string &str)
 {
-    size_t pos2 = str.rfind("/");
-    const size_t pos3 = str.rfind("\\");
+    size_t pos2 = str.rfind('/');
+    const size_t pos3 = str.rfind('\\');
     if (pos3 != std::string::npos)
     {
         if (pos2 == std::string::npos || pos3 > pos2)

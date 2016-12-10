@@ -401,8 +401,9 @@ Game::Game() :
         top->add(viewport);
     viewport->requestMoveToBottom();
 
-    AnimatedSprite::setEnableCache(mainGraphics->getOpenGL()
-        && config.getBoolValue("enableDelayedAnimations"));
+    AnimatedSprite::setEnableCache(
+        mainGraphics->getOpenGL() != RenderType::RENDER_SOFTWARE &&
+        config.getBoolValue("enableDelayedAnimations"));
 
     CompoundSprite::setEnableDelay(
         config.getBoolValue("enableCompoundSpriteDelay"));
@@ -656,7 +657,7 @@ void Game::slowLogic()
             effectManager->logic();
     }
 
-    if (mainGraphics->getOpenGL())
+    if (mainGraphics->getOpenGL() != RenderType::RENDER_SOFTWARE)
         DelayedManager::delayedLoad();
 
 #ifdef TMWA_SUPPORT
