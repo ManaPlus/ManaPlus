@@ -384,6 +384,8 @@ clang-4.0:
   - ./tools/ci/jobs/clang40.sh
   image: debian:unstable
   <<: *log-failed-jobs
+  tags:
+    - docker
 
 gcc-5:
   stage: build
