@@ -73,11 +73,6 @@ Image *SurfaceImageHelper::_SDLload(SDL_Surface *tmpImage) const
     return new Image(image, false, nullptr);
 }
 
-RenderType SurfaceImageHelper::useOpenGL() const
-{
-    return RENDER_SOFTWARE;
-}
-
 int SurfaceImageHelper::combineSurface(SDL_Surface *restrict const src,
                                        SDL_Rect *restrict const srcrect,
                                        SDL_Surface *restrict const dst,
