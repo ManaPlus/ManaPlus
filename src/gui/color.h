@@ -75,7 +75,13 @@ class Color final
         /**
           * Constructor. Initializes the color to black.
           */
-        Color();
+        constexpr Color() :
+            r(0U),
+            g(0U),
+            b(0U),
+            a(255U)
+        {
+        }
 
         /**
           * Constructor. Constructs a color from the bytes in an integer.
@@ -90,7 +96,13 @@ class Color final
           *
           * @param color The color to initialise the object with.
           */
-        explicit Color(const unsigned int color);
+        constexpr Color(const unsigned int color) :
+            r((color >> 16) & 0xFFU),
+            g((color >>  8) & 0xFFU),
+            b(color         & 0xFFU),
+            a(255U)
+        {
+        }
 
         /**
           * Constructor. The default alpha value is 255.
@@ -101,10 +113,17 @@ class Color final
           * @param a Alpha, used for transparency. A value of 0 means
           *          totaly transparent, 255 is totaly opaque.
           */
-        Color(const unsigned int r,
-              const unsigned int g,
-              const unsigned int b,
-              const unsigned int a = 255);
+        constexpr Color(const unsigned int ar,
+                        const unsigned int ag,
+                        const unsigned int ab,
+                        const unsigned int aa = 255) :
+            r(ar),
+            g(ag),
+            b(ab),
+            a(aa)
+        {
+        }
+
 
         /**
           * Adds the RGB values of two colors together. The values will be
@@ -116,7 +135,19 @@ class Color final
           * @param color A color to add to this color.
           * @return The added colors with an alpha value set to 255.
           */
-        Color operator+(const Color& color) const;
+        constexpr Color operator+(const Color& color) const
+        {
+            Color result(r + color.r,
+                         g + color.g,
+                         b + color.b,
+                         255U);
+
+            result.r = (result.r > 255U ? 255U : result.r);
+            result.g = (result.g > 255U ? 255U : result.g);
+            result.b = (result.b > 255U ? 255U : result.b);
+
+            return result;
+        }
 
         /**
           * Subtracts the RGB values of one color from another.
@@ -128,7 +159,19 @@ class Color final
           * @param color A color to subtract from this color.
           * @return The subtracted colors with an alpha value set to 255.
           */
-        Color operator-(const Color& color) const;
+        constexpr Color operator-(const Color& color) const
+        {
+            Color result(r - color.r,
+                         g - color.g,
+                         b - color.b,
+                         255U);
+
+            result.r = (result.r > 255U ? 255U : result.r);
+            result.g = (result.g > 255U ? 255U : result.g);
+            result.b = (result.b > 255U ? 255U : result.b);
+
+            return result;
+        }
 
         /**
           * Multiplies the RGB values of a color with a float value.
@@ -139,7 +182,19 @@ class Color final
           *         the add and subtract operations, be multiplied as
           *         well.
           */
-        Color operator*(const float value) const;
+        constexpr Color operator*(const float value) const
+        {
+            Color result(CAST_U32(static_cast<float>(r) * value),
+                         CAST_U32(static_cast<float>(g) * value),
+                         CAST_U32(static_cast<float>(b) * value),
+                         a);
+
+            result.r = (result.r > 255U ? 255U : result.r);
+            result.g = (result.g > 255U ? 255U : result.g);
+            result.b = (result.b > 255U ? 255U : result.b);
+
+            return result;
+        }
 
         /**
           * Compares two colors.
@@ -147,7 +202,10 @@ class Color final
           * @return True if the two colors have the same RGBA components
           *         false otherwise.
           */
-        bool operator==(const Color& color) const;
+        constexpr bool operator==(const Color& color) const
+        {
+            return r == color.r && g == color.g && b == color.b && a == color.a;
+        }
 
         /**
           * Compares two colors.
@@ -155,7 +213,10 @@ class Color final
           * @return True if the two colors have different RGBA components,
           *         false otherwise.
           */
-        bool operator!=(const Color& color) const;
+        constexpr bool operator!=(const Color& color) const
+        {
+            return !(r == color.r && g == color.g && b == color.b && a == color.a);
+        }
 
         /**
           * Holds the red color component (range 0-255).

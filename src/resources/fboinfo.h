@@ -39,7 +39,7 @@
 
 struct FBOInfo final
 {
-    FBOInfo() :
+    constexpr2 FBOInfo() :
         fboId(0), textureId(0), rboId(0)
     {
     }

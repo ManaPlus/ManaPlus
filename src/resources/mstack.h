@@ -28,7 +28,7 @@
 template<typename T>
 struct MStack final
 {
-    explicit MStack(const size_t maxSize) :
+    constexpr2 explicit MStack(const size_t maxSize) :
         mStack(new T[maxSize]),
         mMaxSize(maxSize),
         mPointer(mStack - 1),

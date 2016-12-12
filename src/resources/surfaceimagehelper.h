@@ -63,10 +63,10 @@ class SurfaceImageHelper final : public ImageHelper
                                  const float alpha)
                                  override final A_WARN_UNUSED;
 
-        static void SDLSetEnableAlphaCache(const bool n)
+        constexpr static void SDLSetEnableAlphaCache(const bool n) noexcept2
         { mEnableAlphaCache = n; }
 
-        static bool SDLGetEnableAlphaCache() A_WARN_UNUSED
+        static bool SDLGetEnableAlphaCache() noexcept2 A_WARN_UNUSED
         { return mEnableAlphaCache; }
 
          /**

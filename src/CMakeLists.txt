@@ -1327,7 +1327,6 @@ SET(SRCS
     enums/gui/chatmsgtype.h
     enums/gui/chattabtype.h
     gui/cliprect.h
-    gui/color.cpp
     gui/color.h
     gui/colorpair.h
     enums/gui/dialogtype.h
@@ -1399,7 +1398,6 @@ SET(SRCS
     gui/widgets/basiccontainer2.h
     gui/widgets/basiccontainer.cpp
     gui/cliprect.cpp
-    gui/color.cpp
     gui/dialogsmanager.cpp
     gui/dialogsmanager.h
     input/key.cpp
@@ -1614,7 +1612,6 @@ SET(SRCS
 
 SET(DYE_CMD_SRCS
     gui/cliprect.cpp
-    gui/color.cpp
     gui/rect.cpp
     events/actionevent.h
     gui/cliprect.h

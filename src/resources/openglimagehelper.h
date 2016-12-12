@@ -92,28 +92,28 @@ class OpenGLImageHelper final : public ImageHelper
 
         // OpenGL only public functions
 
-        static int getTextureType() A_WARN_UNUSED
+        static int getTextureType() noexcept2 A_WARN_UNUSED
         { return mTextureType; }
 
-        static int getInternalTextureType() A_WARN_UNUSED
+        static int getInternalTextureType() noexcept2 A_WARN_UNUSED
         { return mInternalTextureType; }
 
-        static void setInternalTextureType(const int n)
+        constexpr static void setInternalTextureType(const int n) noexcept2
         { mInternalTextureType = n; }
 
-        static void setBlur(const bool n)
+        constexpr static void setBlur(const bool n) noexcept2
         { mBlur = n; }
 
         static int mTextureType;
 
         static int mInternalTextureType;
 
-        static int getTextureSize() A_WARN_UNUSED
+        static int getTextureSize() noexcept2 A_WARN_UNUSED
         { return mTextureSize; }
 
         static void initTextureSampler(const GLint id);
 
-        static void setUseTextureSampler(const bool b)
+        constexpr static void setUseTextureSampler(const bool b) noexcept2
         { mUseTextureSampler = b; }
 
         static void invalidate(const GLuint textureId);

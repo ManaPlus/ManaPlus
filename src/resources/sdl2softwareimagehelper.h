@@ -60,10 +60,10 @@ class SDL2SoftwareImageHelper final : public ImageHelper
                                  const float alpha)
                                  override final A_WARN_UNUSED;
 
-        static void SDLSetEnableAlphaCache(const bool n)
+        constexpr static void SDLSetEnableAlphaCache(const bool n) noexcept2
         { mEnableAlphaCache = n; }
 
-        static bool SDLGetEnableAlphaCache() A_WARN_UNUSED
+        static bool SDLGetEnableAlphaCache() noexcept2 A_WARN_UNUSED
         { return mEnableAlphaCache; }
 
         static SDL_Surface* SDLDuplicateSurface(SDL_Surface *const tmpImage)
@@ -74,7 +74,7 @@ class SDL2SoftwareImageHelper final : public ImageHelper
                                   SDL_Surface *restrict const dst,
                                   SDL_Rect *restrict const dstrect);
 
-        static void setFormat(SDL_PixelFormat *const format)
+        constexpr2 static void setFormat(SDL_PixelFormat *const format) noexcept2
         {
             mFormat = format;
             if (mFormat)

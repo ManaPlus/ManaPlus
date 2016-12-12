@@ -79,7 +79,7 @@ class Joystick final
 
         void setNumber(const int n);
 
-        static void setEnabled(const bool enabled)
+        constexpr static void setEnabled(const bool enabled) noexcept2
         { mEnabled = enabled; }
 
         static void getNames(std::vector <std::string> &names);

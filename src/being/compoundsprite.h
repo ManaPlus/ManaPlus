@@ -97,13 +97,13 @@ class CompoundSprite notfinal : public Sprite
 
         bool updateNumber(const unsigned num) override final;
 
-        static void setEnableDelay(bool b)
+        constexpr static void setEnableDelay(bool b) noexcept2
         { mEnableDelay = b; }
 
-        int getLastTime() const A_WARN_UNUSED
+        int getLastTime() const noexcept2 A_WARN_UNUSED
         { return mLastTime; }
 
-        int getStartTime() const A_WARN_UNUSED
+        int getStartTime() const noexcept2 A_WARN_UNUSED
         { return mStartTime; }
 
         std::vector<Sprite*> mSprites;

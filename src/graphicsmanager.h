@@ -161,7 +161,7 @@ class GraphicsManager final
         static GLenum getLastErrorCached()
         { return mLastError; }
 
-        static void resetCachedError()
+        constexpr static void resetCachedError() noexcept2
         { mLastError = GL_NO_ERROR; }
 #endif  // USE_OPENGL
 
