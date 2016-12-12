@@ -121,7 +121,7 @@ class Theme final : public Palette,
         /**
          * Get the minimum opacity allowed to skins.
          */
-        float getMinimumOpacity() const A_WARN_UNUSED
+        float getMinimumOpacity() const noexcept2 A_WARN_UNUSED
         { return mMinimumOpacity; }
 
         /**

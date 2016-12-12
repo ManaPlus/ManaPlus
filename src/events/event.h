@@ -101,7 +101,7 @@ class Event notfinal
           *
           * @return The source widget of the event.
           */
-        Widget* getSource() const A_WARN_UNUSED
+        Widget* getSource() const noexcept2 A_WARN_UNUSED
         { return mSource; }
 
     protected:

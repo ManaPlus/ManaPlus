@@ -139,7 +139,7 @@ class Palette notfinal
                 gradientIndex = rand();
             }
 
-            inline unsigned int getRGB() const A_WARN_UNUSED
+            inline unsigned int getRGB() const noexcept2 A_WARN_UNUSED
             {
                 return (committedColor.r << 16) | (committedColor.g << 8) |
                         committedColor.b;

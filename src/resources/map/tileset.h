@@ -53,13 +53,14 @@ class Tileset final : public ImageSet
         /**
          * Returns the first gid.
          */
-        int getFirstGid() const A_WARN_UNUSED
+        int getFirstGid() const noexcept2 A_WARN_UNUSED
         { return mFirstGid; }
 
         /**
          * Set tileset property.
          */
-        void setProperties(const std::map<std::string, std::string> &props)
+        void setProperties(const std::map<std::string,
+                           std::string> &props) noexcept2
         { mProperties = props; }
 
         /**

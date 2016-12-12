@@ -62,25 +62,25 @@ class ItemInfo final
 
         ~ItemInfo();
 
-        void setId(const int id)
+        void setId(const int id) noexcept2
         { mId = id; }
 
-        int getId() const A_WARN_UNUSED
+        int getId() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
-        void setName(const std::string &name)
+        void setName(const std::string &name) noexcept2
         { mName = name; }
 
-        const std::string &getName() const A_WARN_UNUSED
+        const std::string &getName() const noexcept2 A_WARN_UNUSED
         { return mName; }
 
         const std::string getName(const ItemColor color)
                                   const A_WARN_UNUSED;
 
-        void setNameEn(const std::string &name)
+        void setNameEn(const std::string &name) noexcept2
         { mNameEn = name; }
 
-        const std::string &getNameEn() const A_WARN_UNUSED
+        const std::string &getNameEn() const noexcept2 A_WARN_UNUSED
         { return mNameEn; }
 
         const std::string getNameEn(const ItemColor color)
@@ -88,55 +88,55 @@ class ItemInfo final
 
         const std::string getLink() const A_WARN_UNUSED;
 
-        void setDisplay(const SpriteDisplay &display)
+        void setDisplay(const SpriteDisplay &display) noexcept2
         { mDisplay = display; }
 
-        const SpriteDisplay &getDisplay() const A_WARN_UNUSED
+        const SpriteDisplay &getDisplay() const noexcept2 A_WARN_UNUSED
         { return mDisplay; }
 
-        void setDescription(const std::string &description)
+        void setDescription(const std::string &description) noexcept2
         { mDescription = description; }
 
-        const std::string &getDescription() const A_WARN_UNUSED
+        const std::string &getDescription() const noexcept2 A_WARN_UNUSED
         { return mDescription; }
 
         const std::string getDescription(const ItemColor color)
                                          const A_WARN_UNUSED;
 
-        void setEffect(const std::string &effect)
+        void setEffect(const std::string &effect) noexcept2
         { mEffect = effect; }
 
-        const std::string &getEffect() const A_WARN_UNUSED
+        const std::string &getEffect() const noexcept2 A_WARN_UNUSED
         { return mEffect; }
 
-        void setType(const ItemDbTypeT type)
+        void setType(const ItemDbTypeT type) noexcept2
         { mType = type; }
 
-        void setUseButton(const std::string &str)
+        void setUseButton(const std::string &str) noexcept2
         { mUseButton = str; }
 
-        const std::string &getUseButton() const A_WARN_UNUSED
+        const std::string &getUseButton() const noexcept2 A_WARN_UNUSED
         { return mUseButton; }
 
-        void setUseButton2(const std::string &str)
+        void setUseButton2(const std::string &str) noexcept2
         { mUseButton2 = str; }
 
-        const std::string &getUseButton2() const A_WARN_UNUSED
+        const std::string &getUseButton2() const noexcept2 A_WARN_UNUSED
         { return mUseButton2; }
 
-        ItemDbTypeT getType() const A_WARN_UNUSED
+        ItemDbTypeT getType() const noexcept2 A_WARN_UNUSED
         { return mType; }
 
-        void setWeight(const int weight)
+        void setWeight(const int weight) noexcept2
         { mWeight = weight; }
 
-        int getWeight() const A_WARN_UNUSED
+        int getWeight() const noexcept2 A_WARN_UNUSED
         { return mWeight; }
 
-        int getView() const
+        int getView() const noexcept2 A_WARN_UNUSED
         { return mView; }
 
-        void setView(const int view)
+        void setView(const int view) noexcept2
         { mView = view; }
 
         void setSprite(const std::string &animationFile,
@@ -156,46 +156,46 @@ class ItemInfo final
 
         // Handlers for seting and getting the string
         // used for particles when attacking
-        void setMissileParticleFile(const std::string &s)
+        void setMissileParticleFile(const std::string &s) noexcept2
         { mMissileParticleFile = s; }
 
-        const std::string &getMissileParticleFile() const A_WARN_UNUSED
+        const std::string &getMissileParticleFile() const noexcept2 A_WARN_UNUSED
         { return mMissileParticleFile; }
 
-        void setHitEffectId(const int s)
+        void setHitEffectId(const int s) noexcept2
         { mHitEffectId = s; }
 
-        int getHitEffectId() const A_WARN_UNUSED
+        int getHitEffectId() const noexcept2 A_WARN_UNUSED
         { return mHitEffectId; }
 
-        void setCriticalHitEffectId(const int s)
+        void setCriticalHitEffectId(const int s) noexcept2
         { mCriticalHitEffectId = s; }
 
-        int getCriticalHitEffectId() const A_WARN_UNUSED
+        int getCriticalHitEffectId() const noexcept2 A_WARN_UNUSED
         { return mCriticalHitEffectId; }
 
-        void setMissEffectId(const int s)
+        void setMissEffectId(const int s) noexcept2
         { mMissEffectId = s; }
 
-        int getMissEffectId() const A_WARN_UNUSED
+        int getMissEffectId() const noexcept2 A_WARN_UNUSED
         { return mMissEffectId; }
 
-        const std::string &getAttackAction() const
+        const std::string &getAttackAction() const noexcept2 A_WARN_UNUSED
         { return mAttackAction; }
 
-        const std::string &getSkyAttackAction() const
+        const std::string &getSkyAttackAction() const noexcept2 A_WARN_UNUSED
         { return mSkyAttackAction; }
 
-        const std::string &getWaterAttackAction() const
+        const std::string &getWaterAttackAction() const noexcept2 A_WARN_UNUSED
         { return mWaterAttackAction; }
 
-        const std::string &getRideAttackAction() const
+        const std::string &getRideAttackAction() const noexcept2 A_WARN_UNUSED
         { return mRideAttackAction; }
 
-        int getAttackRange() const A_WARN_UNUSED
+        int getAttackRange() const noexcept2 A_WARN_UNUSED
         { return mAttackRange; }
 
-        void setAttackRange(const int r)
+        void setAttackRange(const int r) noexcept2
         { mAttackRange = r; }
 
         void addSound(const ItemSoundEvent::Type event,
@@ -217,36 +217,36 @@ class ItemInfo final
 
         void setDrawPriority(const int direction, const int n);
 
-        const IntMap &getTags() const A_WARN_UNUSED
+        const IntMap &getTags() const noexcept2 A_WARN_UNUSED
         { return mTags; }
 
         void addTag(const int tag)
         { mTags[tag] = 1; }
 
-        void setRemoveSprites()
+        void setRemoveSprites() noexcept2
         { mIsRemoveSprites = true; }
 
-        bool isRemoveSprites() const A_WARN_UNUSED
+        bool isRemoveSprites() const noexcept2 A_WARN_UNUSED
         { return mIsRemoveSprites; }
 
-        void setMaxFloorOffsetX(const int i)
+        void setMaxFloorOffsetX(const int i) noexcept2
         { maxFloorOffsetX = i; }
 
-        void setMaxFloorOffsetY(const int i)
+        void setMaxFloorOffsetY(const int i) noexcept2
         { maxFloorOffsetY = i; }
 
-        int getMaxFloorOffsetX() const A_WARN_UNUSED
+        int getMaxFloorOffsetX() const noexcept2 A_WARN_UNUSED
         { return maxFloorOffsetX; }
 
-        int getMaxFloorOffsetY() const A_WARN_UNUSED
+        int getMaxFloorOffsetY() const noexcept2 A_WARN_UNUSED
         { return maxFloorOffsetY; }
 
         bool isRemoveItemId(int id) const A_WARN_UNUSED;
 
-        void setCardColor(const ItemColor color)
+        void setCardColor(const ItemColor color) noexcept2
         { mCardColor = color; }
 
-        ItemColor getCardColor() const
+        ItemColor getCardColor() const noexcept2
         { return mCardColor; }
 
         /** Effects to be shown when weapon attacks - see also effects.xml */
@@ -270,16 +270,16 @@ class ItemInfo final
 
         void setIconColorsList(const std::string &name);
 
-        bool isHaveColors() const A_WARN_UNUSED
+        bool isHaveColors() const noexcept2 A_WARN_UNUSED
         { return !mColorsListName.empty(); }
 
-        bool isHaveIconColors() const A_WARN_UNUSED
+        bool isHaveIconColors() const noexcept2 A_WARN_UNUSED
         { return !mIconColorsListName.empty(); }
 
-        std::string getColorsListName() const A_WARN_UNUSED
+        std::string getColorsListName() const noexcept2 A_WARN_UNUSED
         { return mColorsListName; }
 
-        std::string getIconColorsListName() const A_WARN_UNUSED
+        std::string getIconColorsListName() const noexcept2 A_WARN_UNUSED
         { return mIconColorsListName; }
 
         const std::string replaceColors(std::string str,
@@ -289,22 +289,22 @@ class ItemInfo final
         void setPickupCursor(const std::string &cursor)
         { return setPickupCursor(Cursors::stringToCursor(cursor)); }
 
-        void setPickupCursor(const CursorT &cursor)
+        void setPickupCursor(const CursorT &cursor) noexcept2
         { mPickupCursor = cursor; }
 
-        CursorT getPickupCursor() const A_WARN_UNUSED
+        CursorT getPickupCursor() const noexcept2 A_WARN_UNUSED
         { return mPickupCursor; }
 
-        void setProtected(const bool b)
+        void setProtected(const bool b) noexcept2
         { mProtected = b; }
 
-        bool isProtected() const
+        bool isProtected() const noexcept2 A_WARN_UNUSED
         { return mProtected; }
 
-        int getColorsSize() const
+        int getColorsSize() const noexcept2 A_WARN_UNUSED
         { return mColorsList ? CAST_S32(mColorsList->size()) : 0; }
 
-        int getIconColorsSize() const
+        int getIconColorsSize() const noexcept2 A_WARN_UNUSED
         {
             return mIconColorsList ? CAST_S32(mIconColorsList->size())
                 : 0;

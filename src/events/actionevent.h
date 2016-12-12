@@ -123,7 +123,7 @@ class ActionEvent final : public Event
           *
           * @return The identifier of the event.
           */
-        const std::string &getId() const A_WARN_UNUSED
+        const std::string &getId() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
     protected:

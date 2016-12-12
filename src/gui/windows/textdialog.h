@@ -68,7 +68,7 @@ class TextDialog final : public Window,
 
         void setText(const std::string &text);
 
-        static bool isActive() A_WARN_UNUSED
+        static bool isActive() noexcept2 A_WARN_UNUSED
         { return instances; }
 
         void close() override final;

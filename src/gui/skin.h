@@ -52,31 +52,31 @@ class Skin final
          * name if a dialog for skin selection for a specific window type is
          * done.
          */
-        const std::string &getName() const A_WARN_UNUSED
+        const std::string &getName() const noexcept2 A_WARN_UNUSED
         { return mName; }
 
         /**
          * Returns the skin's xml file path.
          */
-        const std::string &getFilePath() const A_WARN_UNUSED
+        const std::string &getFilePath() const noexcept2 A_WARN_UNUSED
         { return mFilePath; }
 
         /**
          * Returns the background skin.
          */
-        const ImageRect &getBorder() const A_WARN_UNUSED
+        const ImageRect &getBorder() const noexcept2 A_WARN_UNUSED
         { return *mBorder; }
 
         /**
          * Returns the image used by a close button for this skin.
          */
-        const Image *getCloseImage(const bool state) const A_WARN_UNUSED
+        const Image *getCloseImage(const bool state) const noexcept2 A_WARN_UNUSED
         { return state ? mCloseImageHighlighted : mCloseImage; }
 
         /**
          * Returns the image used by a sticky button for this skin.
          */
-        const Image *getStickyImage(const bool state) const A_WARN_UNUSED
+        const Image *getStickyImage(const bool state) const noexcept2 A_WARN_UNUSED
         { return state ? mStickyImageDown : mStickyImageUp; }
 
         /**
@@ -94,10 +94,10 @@ class Skin final
          */
         void updateAlpha(const float minimumOpacityAllowed = 0.0F);
 
-        int getPadding() const A_WARN_UNUSED
+        int getPadding() const noexcept2 A_WARN_UNUSED
         { return mPadding; }
 
-        int getTitlePadding() const A_WARN_UNUSED
+        int getTitlePadding() const noexcept2 A_WARN_UNUSED
         { return mTitlePadding; }
 
         int getOption(const std::string &name) const A_WARN_UNUSED

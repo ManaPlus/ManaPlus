@@ -87,7 +87,7 @@ class GuiTable final : public Widget,
 
         void setSelectedColumn(const int selected);
 
-        bool isWrappingEnabled() const A_WARN_UNUSED
+        bool isWrappingEnabled() const noexcept2 A_WARN_UNUSED
         { return mWrappingEnabled; }
 
         void setWrappingEnabled(bool wrappingEnabled)
@@ -142,7 +142,7 @@ class GuiTable final : public Widget,
          *
          * @return True if the table is opaque, false otherwise.
          */
-        bool isOpaque() const A_WARN_UNUSED
+        bool isOpaque() const noexcept2 A_WARN_UNUSED
         { return mOpaque == Opaque_true; }
 
         // Inherited from MouseListener

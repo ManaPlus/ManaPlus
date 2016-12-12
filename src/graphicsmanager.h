@@ -125,10 +125,10 @@ class GraphicsManager final
 
         void updateLimits();
 
-        int getMaxVertices() const A_WARN_UNUSED
+        int getMaxVertices() const noexcept2 A_WARN_UNUSED
         { return mMaxVertices; }
 
-        bool getUseAtlases() const A_WARN_UNUSED
+        bool getUseAtlases() const noexcept2 A_WARN_UNUSED
         { return mUseAtlases; }
 
         void logVersion() const;
@@ -144,7 +144,7 @@ class GraphicsManager final
 
         void createTextureSampler();
 
-        bool isUseTextureSampler() const A_WARN_UNUSED
+        bool isUseTextureSampler() const noexcept2 A_WARN_UNUSED
         { return mUseTextureSampler; }
 
         static GLenum getLastError();

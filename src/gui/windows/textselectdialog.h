@@ -75,13 +75,13 @@ class TextSelectDialog notfinal : public Window,
 
         void addText(const std::string &text);
 
-        std::string getText() const A_WARN_UNUSED
+        std::string getText() const noexcept2 A_WARN_UNUSED
         { return mText; }
 
-        void setTag(const int tag)
+        void setTag(const int tag) noexcept2
         { mTag = tag; }
 
-        int getTag() const A_WARN_UNUSED
+        int getTag() const noexcept2 A_WARN_UNUSED
         { return mTag; }
 
     protected:

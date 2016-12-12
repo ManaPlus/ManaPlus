@@ -138,7 +138,7 @@ class ChatTab notfinal : public Tab
         /**
          * Returns type of the being.
          */
-        ChatTabTypeT getType() const A_WARN_UNUSED
+        ChatTabTypeT getType() const noexcept2 A_WARN_UNUSED
         { return mType; }
 
         void saveToLogFile(const std::string &msg) const;
@@ -151,22 +151,22 @@ class ChatTab notfinal : public Tab
 
         void loadFromLogFile(const std::string &name);
 
-        bool getAllowHighlight() const A_WARN_UNUSED
+        bool getAllowHighlight() const noexcept2 A_WARN_UNUSED
         { return mAllowHightlight; }
 
-        void setAllowHighlight(const bool n)
+        void setAllowHighlight(const bool n) noexcept2
         { mAllowHightlight = n; }
 
-        bool getRemoveNames() const A_WARN_UNUSED
+        bool getRemoveNames() const noexcept2 A_WARN_UNUSED
         { return mRemoveNames; }
 
-        void setRemoveNames(const bool n)
+        void setRemoveNames(const bool n) noexcept2
         { mRemoveNames = n; }
 
-        bool getNoAway() const A_WARN_UNUSED
+        bool getNoAway() const noexcept2 A_WARN_UNUSED
         { return mNoAway; }
 
-        void setNoAway(const bool n)
+        void setNoAway(const bool n) noexcept2
         { mNoAway = n; }
 
         void addNewRow(std::string &line);

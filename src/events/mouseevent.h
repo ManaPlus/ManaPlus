@@ -111,7 +111,7 @@ class MouseEvent: public InputGuiEvent
           *
           * @return The button of the mouse event.
           */
-        MouseButtonT getButton() const A_WARN_UNUSED
+        MouseButtonT getButton() const noexcept2 A_WARN_UNUSED
         { return mButton; }
 
         /**
@@ -122,7 +122,7 @@ class MouseEvent: public InputGuiEvent
           * @return The x coordinate of the mouse event.
           * @see Widget::addMouseListener, Widget::removeMouseListener
           */
-        int getX() const A_WARN_UNUSED
+        int getX() const noexcept2 A_WARN_UNUSED
         { return mX; }
 
         /**
@@ -133,7 +133,7 @@ class MouseEvent: public InputGuiEvent
           * @return The y coordinate of the mouse event.
           * @see Widget::addMouseListener, Widget::removeMouseListener
           */
-        int getY() const A_WARN_UNUSED
+        int getY() const noexcept2 A_WARN_UNUSED
         { return mY; }
 
         /**
@@ -142,7 +142,7 @@ class MouseEvent: public InputGuiEvent
           *
           * @return The number of clicks generated with the same button.
           */
-        int getClickCount() const A_WARN_UNUSED
+        int getClickCount() const noexcept2 A_WARN_UNUSED
         { return mClickCount; }
 
         /**
@@ -150,7 +150,7 @@ class MouseEvent: public InputGuiEvent
           *
           * @return The type of the event.
           */
-        MouseEventTypeT getType() const A_WARN_UNUSED
+        MouseEventTypeT getType() const noexcept2 A_WARN_UNUSED
         { return mType; }
 
         void setX(int n)

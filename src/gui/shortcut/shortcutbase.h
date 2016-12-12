@@ -75,13 +75,13 @@ class ShortcutBase notfinal
         /**
          * Returns the amount of shortcut items.
          */
-        int getItemCount() const A_WARN_UNUSED
+        int getItemCount() const noexcept2 A_WARN_UNUSED
         { return mMaxSize; }
 
         /**
          * Returns the item ID that is currently selected.
          */
-        int getItemSelected() const A_WARN_UNUSED
+        int getItemSelected() const noexcept2 A_WARN_UNUSED
         { return mItemSelected; }
 
         /**
@@ -115,7 +115,7 @@ class ShortcutBase notfinal
         /**
          * A flag to check if the item is selected.
          */
-        bool isItemSelected() const A_WARN_UNUSED
+        bool isItemSelected() const noexcept2 A_WARN_UNUSED
         { return mItemSelected > -1; }
 
         /**

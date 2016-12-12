@@ -37,10 +37,10 @@ class PartyMember final : public Avatar
     public:
         A_DELETE_COPY(PartyMember)
 
-        const Party *getParty() const A_WARN_UNUSED
+        const Party *getParty() const noexcept2 A_WARN_UNUSED
         { return mParty; }
 
-        bool getLeader() const A_WARN_UNUSED
+        bool getLeader() const noexcept2 A_WARN_UNUSED
         { return mLeader; }
 
         void setLeader(const bool leader)
@@ -92,14 +92,14 @@ class Party final : public AvatarListModel
          * Get the name of the party.
          * @return returns name of the party
          */
-        const std::string &getName() const A_WARN_UNUSED
+        const std::string &getName() const noexcept2 A_WARN_UNUSED
         { return mName; }
 
         /**
          * Get the id of the party.
          * @return Returns the id of the party
          */
-        int16_t getId() const A_WARN_UNUSED
+        int16_t getId() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
         /**
@@ -135,7 +135,7 @@ class Party final : public AvatarListModel
          * Get whether user can invite users to this party.
          * @return Returns true if user can invite users
          */
-        bool getInviteRights() const A_WARN_UNUSED
+        bool getInviteRights() const noexcept2 A_WARN_UNUSED
         { return mCanInviteUsers; }
 
         void setRights(const int16_t rights);

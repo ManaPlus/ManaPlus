@@ -92,10 +92,10 @@ class Game final
         /**
          * Returns the currently active map.
          */
-        Map *getCurrentMap() const A_WARN_UNUSED
+        Map *getCurrentMap() const noexcept2 A_WARN_UNUSED
         { return mCurrentMap; }
 
-        const std::string &getCurrentMapName() const A_WARN_UNUSED
+        const std::string &getCurrentMapName() const noexcept2 A_WARN_UNUSED
         { return mMapName; }
 
         void setValidSpeed();
@@ -109,7 +109,7 @@ class Game final
 
         static void videoResized(const int width, const int height);
 
-        bool getValidSpeed() const A_WARN_UNUSED
+        bool getValidSpeed() const noexcept2 A_WARN_UNUSED
         { return mValidSpeed; }
 
         static void moveInDirection(const unsigned char direction);

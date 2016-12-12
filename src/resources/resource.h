@@ -73,28 +73,28 @@ class Resource notfinal : public MemoryCounter
         /**
          * Return the path identifying this resource.
          */
-        const std::string &getIdPath() const A_WARN_UNUSED
+        const std::string &getIdPath() const noexcept2 A_WARN_UNUSED
         { return mIdPath; }
 
         /**
          * Return refCount for this resource.
          */
-        unsigned getRefCount() const A_WARN_UNUSED
+        unsigned getRefCount() const noexcept2 A_WARN_UNUSED
         { return mRefCount; }
 
-        void setSource(const std::string &str)
+        void setSource(const std::string &str) noexcept2
         { mSource = str; }
 
-        std::string getSource() const A_WARN_UNUSED
+        std::string getSource() const noexcept2 A_WARN_UNUSED
         { return mSource; }
 
-        void setProtected(const bool b)
+        void setProtected(const bool b) noexcept2
         { mProtected = b; }
 
-        bool isProtected() const
+        bool isProtected() const noexcept2
         { return mProtected; }
 
-        void setNotCount(const bool b)
+        void setNotCount(const bool b) noexcept2
         { mNotCount = b; }
 
         int calcMemoryLocal() const override;
@@ -103,10 +103,10 @@ class Resource notfinal : public MemoryCounter
         { return mIdPath + "-" + mSource; }
 
 #ifdef DEBUG_DUMP_LEAKS
-        bool getDumped() const A_WARN_UNUSED
+        bool getDumped() const noexcept2 A_WARN_UNUSED
         { return mDumped; }
 
-        void setDumped(const bool n)
+        void setDumped(const bool n) noexcept2
         { mDumped = n; }
 #endif  // DEBUG_DUMP_LEAKS
 

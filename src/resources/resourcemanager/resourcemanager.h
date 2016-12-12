@@ -147,7 +147,7 @@ class ResourceManager final : public MemoryCounter
          */
         static void deleteInstance();
 
-        int size() const A_WARN_UNUSED
+        int size() const noexcept2 A_WARN_UNUSED
         { return CAST_S32(mResources.size()); }
 
         typedef std::map<std::string, Resource*> Resources;

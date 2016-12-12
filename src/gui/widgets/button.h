@@ -167,16 +167,16 @@ class Button final : public Widget,
         void setDescription(const std::string &text)
         { mDescription = text; }
 
-        std::string getDescription() const A_WARN_UNUSED
+        std::string getDescription() const noexcept2 A_WARN_UNUSED
         { return mDescription; }
 
-        int getClickCount() const A_WARN_UNUSED
+        int getClickCount() const noexcept2 A_WARN_UNUSED
         { return mClickCount; }
 
         void setTag(int tag)
         { mTag = tag; }
 
-        int getTag() const A_WARN_UNUSED
+        int getTag() const noexcept2 A_WARN_UNUSED
         { return mTag; }
 
         void setStick(bool b)
@@ -219,7 +219,7 @@ class Button final : public Widget,
          *
          * @return The caption of the button.
          */
-        const std::string& getCaption() const
+        const std::string& getCaption() const noexcept2 A_WARN_UNUSED
         { return mCaption; }
 
         /**
@@ -229,7 +229,7 @@ class Button final : public Widget,
          * @param alignment The alignment of the caption.
          * @see getAlignment, Graphics
          */
-        void setAlignment(Graphics::Alignment alignment)
+        void setAlignment(Graphics::Alignment alignment) noexcept2
         { mAlignment = alignment; }
 
         /**
@@ -238,7 +238,7 @@ class Button final : public Widget,
          * @return The alignment of the caption.
          * @see setAlignment, Graphics
          */
-        Graphics::Alignment getAlignment() const
+        Graphics::Alignment getAlignment() const noexcept2 A_WARN_UNUSED
         { return mAlignment; }
 
         void focusLost(const Event& event) override final;
@@ -255,10 +255,10 @@ class Button final : public Widget,
 
         void setWindow(Widget *const widget) override final;
 
-        void setImageWidth(const int width)
+        void setImageWidth(const int width) noexcept2
         { mImageWidth = width; }
 
-        void setImageHeight(const int height)
+        void setImageHeight(const int height) noexcept2
         { mImageHeight = height; }
 
         enum

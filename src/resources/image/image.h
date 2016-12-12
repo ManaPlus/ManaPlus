@@ -96,19 +96,19 @@ class Image notfinal : public Resource
         /**
          * Tells is the image is loaded
          */
-        bool isLoaded() const A_WARN_UNUSED
+        bool isLoaded() const noexcept2 A_WARN_UNUSED
         { return mLoaded; }
 
         /**
          * Returns the width of the image.
          */
-        inline int getWidth() const A_WARN_UNUSED A_INLINE
+        inline int getWidth() const noexcept2 A_WARN_UNUSED A_INLINE
         { return mBounds.w; }
 
         /**
          * Returns the height of the image.
          */
-        inline int getHeight() const A_WARN_UNUSED A_INLINE
+        inline int getHeight() const noexcept2 A_WARN_UNUSED A_INLINE
         { return mBounds.h; }
 
         /**
@@ -149,7 +149,7 @@ class Image notfinal : public Resource
         /**
          * Get the alpha Channel of a SDL surface.
          */
-        uint8_t *SDLgetAlphaChannel() const A_WARN_UNUSED
+        uint8_t *SDLgetAlphaChannel() const noexcept2 A_WARN_UNUSED
         { return mAlphaChannel; }
 
         void SDLCleanCache();
@@ -157,13 +157,13 @@ class Image notfinal : public Resource
         void SDLTerminateAlphaCache();
 
 #ifdef USE_OPENGL
-        int getTextureWidth() const A_WARN_UNUSED
+        int getTextureWidth() const noexcept2 A_WARN_UNUSED
         { return mTexWidth; }
 
-        int getTextureHeight() const A_WARN_UNUSED
+        int getTextureHeight() const noexcept2 A_WARN_UNUSED
         { return mTexHeight; }
 
-        GLuint getGLImage() const A_WARN_UNUSED
+        GLuint getGLImage() const noexcept2 A_WARN_UNUSED
         { return mGLImage; }
 
         void decRef() override;
@@ -173,27 +173,27 @@ class Image notfinal : public Resource
         int mTexHeight;
 #endif  // USE_OPENGL
 
-        bool isHasAlphaChannel() const A_WARN_UNUSED
+        bool isHasAlphaChannel() const noexcept2 A_WARN_UNUSED
         { return mHasAlphaChannel; }
 
-        bool isAlphaVisible() const A_WARN_UNUSED
+        bool isAlphaVisible() const noexcept2 A_WARN_UNUSED
         { return mIsAlphaVisible; }
 
         void setAlphaVisible(const bool b)
         { mIsAlphaVisible = b; }
 
-        bool isAlphaCalculated() const A_WARN_UNUSED
+        bool isAlphaCalculated() const noexcept2 A_WARN_UNUSED
         { return mIsAlphaCalculated; }
 
-        void setAlphaCalculated(const bool b)
+        void setAlphaCalculated(const bool b) noexcept2
         { mIsAlphaCalculated = b; }
 
-        SDL_Surface* getSDLSurface()
+        SDL_Surface* getSDLSurface() noexcept2 A_WARN_UNUSED
         { return mSDLSurface; }
 
         int calcMemoryLocal() const override;
 
-        virtual ImageTypeT getType() const
+        virtual ImageTypeT getType() const noexcept2 A_WARN_UNUSED
         { return ImageType::Image; }
 
         SDL_Rect mBounds;

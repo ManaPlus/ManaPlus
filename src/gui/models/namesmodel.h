@@ -40,10 +40,10 @@ class NamesModel notfinal : public ListModel
 
         std::string getElementAt(int i) override final A_WARN_UNUSED;
 
-        StringVect &getNames() A_WARN_UNUSED
+        StringVect &getNames() noexcept2 A_WARN_UNUSED
         { return mNames; }
 
-        size_t size() const A_WARN_UNUSED
+        size_t size() const noexcept2 A_WARN_UNUSED
         { return mNames.size(); }
 
         void clear()

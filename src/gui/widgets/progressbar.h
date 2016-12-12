@@ -85,7 +85,7 @@ class ProgressBar final : public Widget,
         /**
          * Returns the current progress.
          */
-        float getProgress() const A_WARN_UNUSED
+        float getProgress() const noexcept2 A_WARN_UNUSED
         { return mProgress; }
 
         /**
@@ -104,7 +104,7 @@ class ProgressBar final : public Widget,
         /**
          * Returns the color of the progress bar.
          */
-        const Color &getBackgroundColor() const A_WARN_UNUSED
+        const Color &getBackgroundColor() const noexcept2 A_WARN_UNUSED
         { return mBackgroundColor; }
 
         /**
@@ -115,19 +115,19 @@ class ProgressBar final : public Widget,
         /**
          * Returns the text shown on the progress bar.
          */
-        const std::string &text() const A_WARN_UNUSED
+        const std::string &text() const noexcept2 A_WARN_UNUSED
         { return mText; }
 
         /**
          * Set whether the progress is moved smoothly.
          */
-        void setSmoothProgress(bool smoothProgress)
+        void setSmoothProgress(bool smoothProgress) noexcept2
         { mSmoothProgress = smoothProgress; }
 
         /**
          * Set whether the color changing is made smoothly.
          */
-        void setSmoothColorChange(bool smoothColorChange)
+        void setSmoothColorChange(bool smoothColorChange) noexcept2
         { mSmoothColorChange = smoothColorChange; }
 
         void widgetResized(const Event &event) override final;
@@ -136,7 +136,7 @@ class ProgressBar final : public Widget,
 
         void widgetHidden(const Event &event) override final;
 
-        void setPadding(unsigned int padding)
+        void setPadding(unsigned int padding) noexcept2
         { mPadding = padding; }
 
     private:

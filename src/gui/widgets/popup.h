@@ -97,7 +97,7 @@ class Popup notfinal : public Container,
          */
         void setMinWidth(const int width);
 
-        int getMinWidth() const A_WARN_UNUSED
+        int getMinWidth() const noexcept2 A_WARN_UNUSED
         { return mMinWidth; }
 
         /**
@@ -105,7 +105,7 @@ class Popup notfinal : public Container,
          */
         void setMinHeight(const int height);
 
-        int getMinHeight() const A_WARN_UNUSED
+        int getMinHeight() const noexcept2 A_WARN_UNUSED
         { return mMinHeight; }
 
         /**
@@ -113,7 +113,7 @@ class Popup notfinal : public Container,
          */
         void setMaxWidth(const int width);
 
-        int getMaxWidth() const A_WARN_UNUSED
+        int getMaxWidth() const noexcept2 A_WARN_UNUSED
         { return mMaxWidth; }
 
         /**
@@ -121,7 +121,7 @@ class Popup notfinal : public Container,
          */
         void setMaxHeight(const int height);
 
-        int getMaxHeight() const A_WARN_UNUSED
+        int getMaxHeight() const noexcept2 A_WARN_UNUSED
         { return mMaxHeight; }
 
         /**
@@ -131,19 +131,19 @@ class Popup notfinal : public Container,
          * @return The padding of the popup.
          * @see setPadding
          */
-        int getPadding() const A_WARN_UNUSED
+        int getPadding() const noexcept2 A_WARN_UNUSED
         { return mPadding; }
 
-        void setPadding(int padding)
+        void setPadding(int padding) noexcept2
         { mPadding = padding; }
 
         /**
          * Sets the name of the popup. This is only useful for debug purposes.
          */
-        void setPopupName(const std::string &name)
+        void setPopupName(const std::string &name) noexcept2
         { mPopupName = name; }
 
-        const std::string &getPopupName() const
+        const std::string &getPopupName() const noexcept2
         { return mPopupName; }
 
         /**
@@ -170,7 +170,7 @@ class Popup notfinal : public Container,
 
         void widgetMoved(const Event &event) override final;
 
-        bool isPopupVisible() const
+        bool isPopupVisible() const noexcept2
         { return mVisible == Visible_true; }
 
         void postInit() override

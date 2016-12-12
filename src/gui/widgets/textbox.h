@@ -104,7 +104,7 @@ class TextBox final : public Widget,
         /**
          * Get the minimum text width for the text box.
          */
-        int getMinWidth() const A_WARN_UNUSED
+        int getMinWidth() const noexcept2 A_WARN_UNUSED
         { return mMinWidth; }
 
         void keyPressed(KeyEvent& event) override final;
@@ -259,7 +259,7 @@ class TextBox final : public Widget,
          * @return True if the text box is opaque, false otherwise.
          * @see setOpaque
          */
-        bool isOpaque() const
+        bool isOpaque() const noexcept2
         { return mOpaque == Opaque_true; }
 
         /**
@@ -270,7 +270,7 @@ class TextBox final : public Widget,
          * @param opaque True if the text box should be opaque, false otherwise.
          * @see isOpaque
          */
-        void setOpaque(const Opaque opaque)
+        void setOpaque(const Opaque opaque) noexcept2
         { mOpaque = opaque; }
 
         void fontChanged() override final

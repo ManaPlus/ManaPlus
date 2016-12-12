@@ -116,7 +116,7 @@ class KeyEvent: public InputGuiEvent
           *
           * @return The type of the event.
           */
-        KeyEventTypeT getType() const A_WARN_UNUSED
+        KeyEventTypeT getType() const noexcept2 A_WARN_UNUSED
         { return mType; }
 
         /**
@@ -124,10 +124,10 @@ class KeyEvent: public InputGuiEvent
           *
           * @return The key of the event.
           */
-        const Key &getKey() const A_WARN_UNUSED
+        const Key &getKey() const noexcept2 A_WARN_UNUSED
         { return mKey; }
 
-        InputActionT getActionId() const A_WARN_UNUSED
+        InputActionT getActionId() const noexcept2 A_WARN_UNUSED
         { return mActionId; }
 
 #ifdef USE_SDL2

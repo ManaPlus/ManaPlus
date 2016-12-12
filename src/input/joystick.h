@@ -93,24 +93,24 @@ class Joystick final
 
         void finishCalibration();
 
-        bool isCalibrating() const A_WARN_UNUSED
+        bool isCalibrating() const noexcept2 A_WARN_UNUSED
         { return mCalibrating; }
 
         bool buttonPressed(const unsigned char no) const A_WARN_UNUSED;
 
-        bool isUp() const A_WARN_UNUSED
+        bool isUp() const noexcept2 A_WARN_UNUSED
         { return mEnabled && (mDirection & UP); }
 
-        bool isDown() const A_WARN_UNUSED
+        bool isDown() const noexcept2 A_WARN_UNUSED
         { return mEnabled && (mDirection & DOWN); }
 
-        bool isLeft() const A_WARN_UNUSED
+        bool isLeft() const noexcept2 A_WARN_UNUSED
         { return mEnabled && (mDirection & LEFT); }
 
-        bool isRight() const A_WARN_UNUSED
+        bool isRight() const noexcept2 A_WARN_UNUSED
         { return mEnabled && (mDirection & RIGHT); }
 
-        int getNumber() const A_WARN_UNUSED
+        int getNumber() const noexcept2 A_WARN_UNUSED
         { return mNumber; }
 
         void setUseInactive(const bool b)

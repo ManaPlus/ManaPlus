@@ -60,7 +60,7 @@ class Icon final : public Widget
         /**
          * Gets the current Image.
          */
-        Image *getImage() const A_WARN_UNUSED
+        Image *getImage() const noexcept2 A_WARN_UNUSED
         { return mImage; }
 
         /**

@@ -74,7 +74,7 @@ class SetupItem notfinal : public ActionListener,
         void setWidget(Widget *widget)
         { mWidget = widget; }
 
-        Widget *getWidget() const A_WARN_UNUSED
+        Widget *getWidget() const noexcept2 A_WARN_UNUSED
         { return mWidget; }
 
         Configuration *getConfig() const RETURNS_NONNULL A_WARN_UNUSED;
@@ -93,20 +93,20 @@ class SetupItem notfinal : public ActionListener,
 
         virtual void externalUnloaded(const std::string &eventName) A_CONST;
 
-        MainConfig isMainConfig() const A_WARN_UNUSED
+        MainConfig isMainConfig() const noexcept2 A_WARN_UNUSED
         { return mMainConfig; }
 
         void fixFirstItemSize(Widget *const widget);
 
         virtual void rereadValue();
 
-        void setValue(const std::string &str)
+        void setValue(const std::string &str) noexcept2
         { mValue = str; }
 
-        std::string getValue() const
+        std::string getValue() const noexcept2
         { return mValue; }
 
-        std::string getEventName() const
+        std::string getEventName() const noexcept2
         { return mEventName; }
 
     protected:

@@ -127,6 +127,7 @@ class PlayerRelationsManager final
          * \return A player ignore strategy, or nullptr
          */
         const PlayerIgnoreStrategy *getPlayerIgnoreStrategy() const
+                                                              noexcept2
                                                               A_WARN_UNUSED
         { return mIgnoreStrategy; }
 
@@ -134,6 +135,7 @@ class PlayerRelationsManager final
          * Sets the strategy to call when ignoring players.
          */
         void setPlayerIgnoreStrategy(PlayerIgnoreStrategy *const strategy)
+                                     noexcept2
         { mIgnoreStrategy = strategy; }
 
         /**
@@ -163,7 +165,7 @@ class PlayerRelationsManager final
         /**
          * Do we persist our `ignore' setup?
          */
-        bool getPersistIgnores() const
+        bool getPersistIgnores() const noexcept2 A_WARN_UNUSED
         { return mPersistIgnores; }
 
         void ignoreTrade(const std::string &name) const;
@@ -177,7 +179,7 @@ class PlayerRelationsManager final
          *
          * @param value Whether to persist ignores
          */
-        void setPersistIgnores(const bool value)
+        void setPersistIgnores(const bool value) noexcept2
         { mPersistIgnores = value; }
 
         void addListener(PlayerRelationsListener *const listener)

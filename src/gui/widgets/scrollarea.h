@@ -159,7 +159,7 @@ class ScrollArea final : public BasicContainer,
         /**
          * Returns whether the widget draws its background or not.
          */
-        bool isOpaque() const A_WARN_UNUSED
+        bool isOpaque() const noexcept2 A_WARN_UNUSED
         { return mOpaque == Opaque_true; }
 
         /**
@@ -432,7 +432,7 @@ class ScrollArea final : public BasicContainer,
 
         void mouseWheelMovedDown(MouseEvent& event) override final;
 
-        bool isSelectable() const override final;
+        bool isSelectable() const noexcept2 override final A_WARN_UNUSED;
 
     protected:
         enum BUTTON_DIR

@@ -69,12 +69,12 @@ class Vector final
          * Returns true if all coordinates are set to 0, otherwise returns
          * false.
          */
-        bool isNull() const A_WARN_UNUSED
+        bool isNull() const noexcept2 A_WARN_UNUSED
         {
             return x == 0.0F && y == 0.0F && z == 0.0F;
         }
 
-        Vector &operator=(const Vector &v)
+        Vector &operator=(const Vector &v) noexcept2
         {
             x = v.x;
             y = v.y;
@@ -85,7 +85,7 @@ class Vector final
         /**
          * Scale vector operator.
          */
-        Vector operator*(const float c) const A_WARN_UNUSED
+        Vector operator*(const float c) const noexcept2 A_WARN_UNUSED
         {
             return Vector(x * c,
                           y * c,
@@ -95,7 +95,7 @@ class Vector final
         /**
          * In-place scale vector operator.
          */
-        Vector &operator*=(const float c)
+        Vector &operator*=(const float c) noexcept2
         {
             x *= c;
             y *= c;
@@ -106,7 +106,7 @@ class Vector final
         /**
          * Scale vector operator.
          */
-        Vector operator/(const float c) const A_WARN_UNUSED
+        Vector operator/(const float c) const noexcept2 A_WARN_UNUSED
         {
             return Vector(x / c,
                           y / c,
@@ -116,7 +116,7 @@ class Vector final
         /**
          * In-place scale vector operator.
          */
-        Vector &operator/=(const float c) A_WARN_UNUSED
+        Vector &operator/=(const float c) noexcept2 A_WARN_UNUSED
         {
             x /= c;
             y /= c;
@@ -127,7 +127,7 @@ class Vector final
         /**
          * Add vector operator.
          */
-        Vector operator+(const Vector &v) const A_WARN_UNUSED
+        Vector operator+(const Vector &v) const noexcept2 A_WARN_UNUSED
         {
             return Vector(x + v.x,
                           y + v.y,
@@ -137,7 +137,7 @@ class Vector final
         /**
          * In-place add vector operator.
          */
-        Vector &operator+=(const Vector &v)
+        Vector &operator+=(const Vector &v) noexcept2
         {
             x += v.x;
             y += v.y;
@@ -148,7 +148,7 @@ class Vector final
         /**
          * Subtract vector operator.
          */
-        Vector operator-(const Vector &v) const A_WARN_UNUSED
+        Vector operator-(const Vector &v) const noexcept2 A_WARN_UNUSED
         {
             return Vector(x - v.x,
                           y - v.y,
@@ -158,7 +158,7 @@ class Vector final
         /**
          * In-place subtract vector operator.
          */
-        Vector &operator-=(const Vector &v)
+        Vector &operator-=(const Vector &v) noexcept2
         {
             x -= v.x;
             y -= v.y;
@@ -178,7 +178,7 @@ class Vector final
         /**
          * Returns the squared length of this vector. Avoids the square root.
          */
-        float squaredLength() const A_WARN_UNUSED
+        float squaredLength() const noexcept2 A_WARN_UNUSED
         {
             return x * x + y * y + z * z;
         }

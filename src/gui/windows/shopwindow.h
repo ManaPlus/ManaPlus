@@ -120,7 +120,7 @@ class ShopWindow final : public Window,
         void setAcceptPlayer(const std::string &name)
         { mAcceptPlayer = name; }
 
-        const std::string &getAcceptPlayer() const A_WARN_UNUSED
+        const std::string &getAcceptPlayer() const noexcept2 A_WARN_UNUSED
         { return mAcceptPlayer; }
 
         void announce(ShopItems *const list, const int mode);

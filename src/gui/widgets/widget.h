@@ -226,7 +226,7 @@ class Widget notfinal : public Widget2
           *      setDimension, getDimension
           * @since 0.1.0
           */
-        int getWidth() const A_WARN_UNUSED
+        int getWidth() const noexcept2 A_WARN_UNUSED
         { return mDimension.width; }
 
         /**
@@ -247,7 +247,7 @@ class Widget notfinal : public Widget2
           *      setDimension, getDimension
           * @since 0.1.0
           */
-        int getHeight() const A_WARN_UNUSED
+        int getHeight() const noexcept2 A_WARN_UNUSED
         { return mDimension.height; }
 
         /**
@@ -279,7 +279,7 @@ class Widget notfinal : public Widget2
           * @see setX, setY, getY, setPosition, setDimension, getDimension
           * @since 0.1.0
           */
-        int getX() const A_WARN_UNUSED
+        int getX() const noexcept2 A_WARN_UNUSED
         { return mDimension.x; }
 
         /**
@@ -300,7 +300,7 @@ class Widget notfinal : public Widget2
           * @see setY, setX, getX, setPosition, setDimension, getDimension
           * @since 0.1.0
           */
-        int getY() const A_WARN_UNUSED
+        int getY() const noexcept2 A_WARN_UNUSED
         { return mDimension.y; }
 
         /**
@@ -1023,10 +1023,10 @@ class Widget notfinal : public Widget2
         void setRedraw(const bool b) noexcept2
         { mRedraw = b; }
 
-        virtual bool isSelectable() const A_WARN_UNUSED
+        virtual bool isSelectable() const noexcept2 A_WARN_UNUSED
         { return mSelectable; }
 
-        void setSelectable(const bool selectable)
+        void setSelectable(const bool selectable) noexcept2
         { mSelectable = selectable; }
 
         static void distributeWindowResizeEvent();

@@ -122,7 +122,7 @@ class ServerInfo final
             return *this;
         }
 
-        bool isValid() const A_WARN_UNUSED
+        bool isValid() const noexcept2 A_WARN_UNUSED
         {
             return !(hostname.empty()
                 || port == 0

@@ -181,7 +181,7 @@ class ChatWindow final : public Window,
          */
         void setRecordingFile(const std::string &msg);
 
-        bool getReturnTogglesChat() const A_WARN_UNUSED
+        bool getReturnTogglesChat() const noexcept2 A_WARN_UNUSED
         { return mReturnToggles; }
 
         void setReturnTogglesChat(const bool toggles)

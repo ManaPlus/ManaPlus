@@ -112,7 +112,7 @@ class SkillDialog final : public Window,
                               const int id,
                               const int duration);
 
-        bool hasSkills() const A_WARN_UNUSED
+        bool hasSkills() const noexcept2 A_WARN_UNUSED
         { return !mSkills.empty(); }
 
         void widgetResized(const Event &event) override final;

@@ -78,7 +78,7 @@ class FloorItem final : public ActorSprite
         /**
          * Returns the item ID.
          */
-        int getItemId() const A_WARN_UNUSED
+        int getItemId() const noexcept2 A_WARN_UNUSED
         { return mItemId; }
 
         /**
@@ -95,41 +95,41 @@ class FloorItem final : public ActorSprite
         int getTileY() const override final A_WARN_UNUSED
         { return mY; }
 
-        void incrementPickup()
+        void incrementPickup() noexcept2
         { mPickupCount ++; }
 
-        unsigned getPickupCount() const A_WARN_UNUSED
+        unsigned getPickupCount() const noexcept2 A_WARN_UNUSED
         { return mPickupCount; }
 
-        ItemColor getColor() const A_WARN_UNUSED
+        ItemColor getColor() const noexcept2 A_WARN_UNUSED
         { return mColor; }
 
-        bool getShowMsg() const A_WARN_UNUSED
+        bool getShowMsg() const noexcept2 A_WARN_UNUSED
         { return mShowMsg; }
 
-        void setShowMsg(const bool n)
+        void setShowMsg(const bool n) noexcept2
         { mShowMsg = n; }
 
-        void disableHightlight()
+        void disableHightlight() noexcept2
         { mHighlight = false; }
 
-        CursorT getHoverCursor() const A_WARN_UNUSED
+        CursorT getHoverCursor() const noexcept2 A_WARN_UNUSED
         { return mCursor; }
 
         void setCards(const int *const cards, int sz);
 
         int getCard(const int index) const;
 
-        int getRefine() const A_WARN_UNUSED
+        int getRefine() const noexcept2 A_WARN_UNUSED
         { return mRefine; }
 
-        ItemTypeT getItemType() const A_WARN_UNUSED
+        ItemTypeT getItemType() const noexcept2 A_WARN_UNUSED
         { return mItemType; }
 
-        Identified getIdentified() const A_WARN_UNUSED
+        Identified getIdentified() const noexcept2 A_WARN_UNUSED
         { return mIdentified; }
 
-        Damaged getDamaged() const A_WARN_UNUSED
+        Damaged getDamaged() const noexcept2 A_WARN_UNUSED
         { return mDamaged; }
 
     private:

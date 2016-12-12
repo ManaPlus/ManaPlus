@@ -174,7 +174,7 @@ class Tab notfinal : public BasicContainer,
         void setFlash(const int flash)
         { mFlash = flash; mRedraw = true; }
 
-        int getFlash() const A_WARN_UNUSED
+        int getFlash() const noexcept2 A_WARN_UNUSED
         { return mFlash; }
 
         void widgetResized(const Event &event) override final;
@@ -183,7 +183,7 @@ class Tab notfinal : public BasicContainer,
 
         void setLabelFont(Font *const font);
 
-        Label *getLabel() const A_WARN_UNUSED
+        Label *getLabel() const noexcept2 A_WARN_UNUSED
         { return mLabel; }
 
         void adjustSize();

@@ -128,7 +128,7 @@ class Graphics notfinal
         };
 
         void setWindow(SDL_Window *restrict const window,
-                       const int width, const int height) restrict2
+                       const int width, const int height) restrict2 noexcept2
         {
             mWindow = window;
             mRect.w = static_cast<RectSize>(width);

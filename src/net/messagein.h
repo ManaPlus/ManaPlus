@@ -47,19 +47,19 @@ class MessageIn notfinal
         /**
          * Returns the message ID.
          */
-        int getId() const A_WARN_UNUSED
+        int getId() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
         /**
          * Returns the message length.
          */
-        unsigned int getLength() const A_WARN_UNUSED
+        unsigned int getLength() const noexcept2 A_WARN_UNUSED
         { return mLength; }
 
         /**
          * Returns the length of unread data.
          */
-        unsigned int getUnreadLength() const A_WARN_UNUSED
+        unsigned int getUnreadLength() const noexcept2 A_WARN_UNUSED
         { return mLength > mPos ? mLength - mPos : 0; }
 
         /**< Reads a byte. */
@@ -124,7 +124,7 @@ class MessageIn notfinal
         static uint8_t fromServerDirection(const uint8_t serverDir)
                                            A_WARN_UNUSED;
 
-        unsigned int getVersion() const A_WARN_UNUSED
+        unsigned int getVersion() const noexcept2 A_WARN_UNUSED
         { return mVersion; }
 
     protected:

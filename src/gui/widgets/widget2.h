@@ -82,12 +82,12 @@ class Widget2 notfinal
             }
         }
 
-        void setForegroundColor2(const Color &color)
+        void setForegroundColor2(const Color &color) noexcept2
         {
             mForegroundColor2 = color;
         }
 
-        Widget* getWindow() const A_WARN_UNUSED
+        Widget* getWindow() const noexcept2 A_WARN_UNUSED
         {
             return mWindow;
         }

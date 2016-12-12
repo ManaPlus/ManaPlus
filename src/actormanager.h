@@ -318,22 +318,22 @@ class ActorManager final: public ConfigListener
         void setAttackMobs(const std::list<std::string> &mobs)
         { mAttackMobs = mobs; }
 
-        int getPriorityAttackMobsSize() const A_WARN_UNUSED
+        int getPriorityAttackMobsSize() const noexcept2 A_WARN_UNUSED
         { return CAST_S32(mPriorityAttackMobs.size()); }
 
-        int getAttackMobsSize() const A_WARN_UNUSED
+        int getAttackMobsSize() const noexcept2 A_WARN_UNUSED
         { return CAST_S32(mAttackMobs.size()); }
 
-        int getPickupItemsSize() const A_WARN_UNUSED
+        int getPickupItemsSize() const noexcept2 A_WARN_UNUSED
         { return CAST_S32(mPickupItems.size()); }
 
 #define defList(list1, mob) \
         bool isIn##list1##List(const std::string &name) const A_WARN_UNUSED\
         { return m##list1##mob##Set.find(name) != m##list1##mob##Set.end(); }\
         void rebuild##list1##mob();\
-        std::set<std::string> get##list1##mob##Set() const A_WARN_UNUSED\
+        std::set<std::string> get##list1##mob##Set() const noexcept2 A_WARN_UNUSED\
         { return m##list1##mob##Set; }\
-        std::list<std::string> get##list1##mob() const A_WARN_UNUSED\
+        std::list<std::string> get##list1##mob() const noexcept2 A_WARN_UNUSED\
         { return m##list1##mob; }
 
         defList(Attack, Mobs)
@@ -342,10 +342,10 @@ class ActorManager final: public ConfigListener
         defList(Pickup, Items)
         defList(IgnorePickup, Items)
 
-        const StringIntMap &getAttackMobsMap() const A_WARN_UNUSED
+        const StringIntMap &getAttackMobsMap() const noexcept2 A_WARN_UNUSED
         { return mAttackMobsMap; }
 
-        const StringIntMap &getPriorityAttackMobsMap() const A_WARN_UNUSED
+        const StringIntMap &getPriorityAttackMobsMap() const noexcept2 A_WARN_UNUSED
         { return mPriorityAttackMobsMap; }
 
         int getAttackMobIndex(const std::string &name) const A_WARN_UNUSED;

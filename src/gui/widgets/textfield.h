@@ -164,7 +164,7 @@ class TextField notfinal : public Widget,
          */
         int getValue() const A_WARN_UNUSED;
 
-        void setSendAlwaysEvents(const bool b)
+        void setSendAlwaysEvents(const bool b) noexcept2
         { mSendAlwaysEvents = b; }
 
         void adjustSize();

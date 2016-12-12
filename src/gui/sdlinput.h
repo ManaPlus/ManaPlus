@@ -109,10 +109,10 @@ class SDLInput final
 
         KeyInput dequeueKeyInput() A_WARN_UNUSED;
 
-        bool isKeyQueueEmpty() const A_WARN_UNUSED
+        bool isKeyQueueEmpty() const noexcept2 A_WARN_UNUSED
         { return mKeyInputQueue.empty(); }
 
-        bool isMouseQueueEmpty() const A_WARN_UNUSED
+        bool isMouseQueueEmpty() const noexcept2 A_WARN_UNUSED
         { return mMouseInputQueue.empty(); }
 
         MouseInput dequeueMouseInput() A_WARN_UNUSED;

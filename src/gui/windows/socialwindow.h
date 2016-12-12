@@ -97,16 +97,16 @@ class SocialWindow final : public Window,
 
         void prevTab();
 
-        const Map* getMap() const A_WARN_UNUSED
+        const Map* getMap() const noexcept2 A_WARN_UNUSED
         { return mMap; }
 
         void setMap(Map *const map)
         { mMap = map; mProcessedPortals = false; }
 
-        bool getProcessedPortals() const A_WARN_UNUSED
+        bool getProcessedPortals() const noexcept2 A_WARN_UNUSED
         { return mProcessedPortals; }
 
-        void setProcessedPortals(const bool n)
+        void setProcessedPortals(const bool n) noexcept2
         { mProcessedPortals = n; }
 
         void selectPortal(const unsigned num);

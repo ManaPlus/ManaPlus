@@ -67,12 +67,12 @@ class BeingInfo final
         void setName(const std::string &name)
         { mName = name; }
 
-        const std::string &getName() const A_WARN_UNUSED
+        const std::string &getName() const noexcept2 A_WARN_UNUSED
         { return mName; }
 
         void setDisplay(const SpriteDisplay &display);
 
-        const SpriteDisplay &getDisplay() const A_WARN_UNUSED
+        const SpriteDisplay &getDisplay() const noexcept2 A_WARN_UNUSED
         { return mDisplay; }
 
         void setTargetCursorSize(const std::string &size);
@@ -86,10 +86,10 @@ class BeingInfo final
         void setHoverCursor(const CursorT &cursor)
         { mHoverCursor = cursor; }
 
-        CursorT getHoverCursor() const A_WARN_UNUSED
+        CursorT getHoverCursor() const noexcept2 A_WARN_UNUSED
         { return mHoverCursor; }
 
-        TargetCursorSizeT getTargetCursorSize() const A_WARN_UNUSED
+        TargetCursorSizeT getTargetCursorSize() const noexcept2 A_WARN_UNUSED
         { return mTargetCursorSize; }
 
         void addSound(const ItemSoundEvent::Type event,
@@ -118,58 +118,58 @@ class BeingInfo final
         /**
          * Gets the way the being is blocked by other objects
          */
-        unsigned char getBlockWalkMask() const A_WARN_UNUSED
+        unsigned char getBlockWalkMask() const noexcept2 A_WARN_UNUSED
         { return mBlockWalkMask; }
 
         void setBlockType(const BlockTypeT &blockType)
         { mBlockType = blockType; }
 
-        BlockTypeT getBlockType() const A_WARN_UNUSED
+        BlockTypeT getBlockType() const noexcept2 A_WARN_UNUSED
         { return mBlockType; }
 
         void setTargetOffsetX(const int n)
         { mTargetOffsetX = n; }
 
-        int getTargetOffsetX() const A_WARN_UNUSED
+        int getTargetOffsetX() const noexcept2 A_WARN_UNUSED
         { return mTargetOffsetX; }
 
         void setTargetOffsetY(const int n)
         { mTargetOffsetY = n; }
 
-        int getTargetOffsetY() const A_WARN_UNUSED
+        int getTargetOffsetY() const noexcept2 A_WARN_UNUSED
         { return mTargetOffsetY; }
 
         void setNameOffsetX(const int n)
         { mNameOffsetX = n; }
 
-        int getNameOffsetX() const A_WARN_UNUSED
+        int getNameOffsetX() const noexcept2 A_WARN_UNUSED
         { return mNameOffsetX; }
 
         void setNameOffsetY(const int n)
         { mNameOffsetY = n; }
 
-        int getNameOffsetY() const A_WARN_UNUSED
+        int getNameOffsetY() const noexcept2 A_WARN_UNUSED
         { return mNameOffsetY; }
 
         void setHpBarOffsetX(const int n)
         { mHpBarOffsetX = n; }
 
-        int getHpBarOffsetX() const A_WARN_UNUSED
+        int getHpBarOffsetX() const noexcept2 A_WARN_UNUSED
         { return mHpBarOffsetX; }
 
         void setHpBarOffsetY(const int n)
         { mHpBarOffsetY = n; }
 
-        int getHpBarOffsetY() const A_WARN_UNUSED
+        int getHpBarOffsetY() const noexcept2 A_WARN_UNUSED
         { return mHpBarOffsetY; }
 
         void setMaxHP(const int n)
         { mMaxHP = n; }
 
-        int getMaxHP() const A_WARN_UNUSED
+        int getMaxHP() const noexcept2 A_WARN_UNUSED
         { return mMaxHP; }
 
-        bool isStaticMaxHP() const A_WARN_UNUSED
+        bool isStaticMaxHP() const noexcept2 A_WARN_UNUSED
         { return mStaticMaxHP; }
 
         void setStaticMaxHP(const bool n)
@@ -178,31 +178,31 @@ class BeingInfo final
         void setTargetSelection(const bool n)
         { mTargetSelection = n; }
 
-        bool isTargetSelection() const A_WARN_UNUSED
+        bool isTargetSelection() const noexcept2 A_WARN_UNUSED
         { return mTargetSelection; }
 
-        int getSortOffsetY() const A_WARN_UNUSED
+        int getSortOffsetY() const noexcept2 A_WARN_UNUSED
         { return mSortOffsetY; }
 
         void setSortOffsetY(const int n)
         { mSortOffsetY = n; }
 
-        int getDeadSortOffsetY() const A_WARN_UNUSED
+        int getDeadSortOffsetY() const noexcept2 A_WARN_UNUSED
         { return mDeadSortOffsetY; }
 
         void setDeadSortOffsetY(const int n)
         { mDeadSortOffsetY = n; }
 
-        BeingTypeId getAvatarId() const A_WARN_UNUSED
+        BeingTypeId getAvatarId() const noexcept2 A_WARN_UNUSED
         { return mAvatarId; }
 
         void setAvatarId(const BeingTypeId id)
         { mAvatarId = id; }
 
-        int getWidth() const A_WARN_UNUSED
+        int getWidth() const noexcept2 A_WARN_UNUSED
         { return mWidth; }
 
-        int getHeight() const A_WARN_UNUSED
+        int getHeight() const noexcept2 A_WARN_UNUSED
         { return mHeight; }
 
         void setWidth(const int n)
@@ -214,115 +214,115 @@ class BeingInfo final
         void setStartFollowDist(const int n)
         { mStartFollowDist = n; }
 
-        int getStartFollowDist() const A_WARN_UNUSED
+        int getStartFollowDist() const noexcept2 A_WARN_UNUSED
         { return mStartFollowDist; }
 
         void setFollowDist(const int n)
         { mFollowDist = n; }
 
-        int getFollowDist() const A_WARN_UNUSED
+        int getFollowDist() const noexcept2 A_WARN_UNUSED
         { return mFollowDist; }
 
         void setWalkSpeed(const int n)
         { mWalkSpeed = n; }
 
-        int getWalkSpeed() const A_WARN_UNUSED
+        int getWalkSpeed() const noexcept2 A_WARN_UNUSED
         { return mWalkSpeed; }
 
         void setWarpDist(const int n)
         { mWarpDist = n; }
 
-        int getWarpDist() const A_WARN_UNUSED
+        int getWarpDist() const noexcept2 A_WARN_UNUSED
         { return mWarpDist; }
 
         void setSitOffsetX(const int n)
         { mSitOffsetX = n; }
 
-        int getSitOffsetX() const A_WARN_UNUSED
+        int getSitOffsetX() const noexcept2 A_WARN_UNUSED
         { return mSitOffsetX; }
 
         void setSitOffsetY(const int n)
         { mSitOffsetY = n; }
 
-        int getSitOffsetY() const A_WARN_UNUSED
+        int getSitOffsetY() const noexcept2 A_WARN_UNUSED
         { return mSitOffsetY; }
 
         void setMoveOffsetX(const int n)
         { mMoveOffsetX = n; }
 
-        int getMoveOffsetX() const A_WARN_UNUSED
+        int getMoveOffsetX() const noexcept2 A_WARN_UNUSED
         { return mMoveOffsetX; }
 
         void setMoveOffsetY(const int n)
         { mMoveOffsetY = n; }
 
-        int getMoveOffsetY() const A_WARN_UNUSED
+        int getMoveOffsetY() const noexcept2 A_WARN_UNUSED
         { return mMoveOffsetY; }
 
         void setDeadOffsetX(const int n)
         { mDeadOffsetX = n; }
 
-        int getDeadOffsetX() const A_WARN_UNUSED
+        int getDeadOffsetX() const noexcept2 A_WARN_UNUSED
         { return mDeadOffsetX; }
 
         void setDeadOffsetY(const int n)
         { mDeadOffsetY = n; }
 
-        int getDeadOffsetY() const A_WARN_UNUSED
+        int getDeadOffsetY() const noexcept2 A_WARN_UNUSED
         { return mDeadOffsetY; }
 
         void setAttackOffsetX(const int n)
         { mAttackOffsetX = n; }
 
-        int getAttackOffsetX() const A_WARN_UNUSED
+        int getAttackOffsetX() const noexcept2 A_WARN_UNUSED
         { return mAttackOffsetX; }
 
         void setAttackOffsetY(const int n)
         { mAttackOffsetY = n; }
 
-        int getAttackOffsetY() const A_WARN_UNUSED
+        int getAttackOffsetY() const noexcept2 A_WARN_UNUSED
         { return mAttackOffsetY; }
 
         void setThinkTime(const int n)
         { mThinkTime = n; }
 
-        int getThinkTime() const A_WARN_UNUSED
+        int getThinkTime() const noexcept2 A_WARN_UNUSED
         { return mThinkTime; }
 
         void setDirectionType(const int n)
         { mDirectionType = n; }
 
-        int getDirectionType() const A_WARN_UNUSED
+        int getDirectionType() const noexcept2 A_WARN_UNUSED
         { return mDirectionType; }
 
         void setSitDirectionType(const int n)
         { mSitDirectionType = n; }
 
-        int getSitDirectionType() const A_WARN_UNUSED
+        int getSitDirectionType() const noexcept2 A_WARN_UNUSED
         { return mSitDirectionType; }
 
         void setDeadDirectionType(const int n)
         { mDeadDirectionType = n; }
 
-        int getDeadDirectionType() const A_WARN_UNUSED
+        int getDeadDirectionType() const noexcept2 A_WARN_UNUSED
         { return mDeadDirectionType; }
 
         void setAttackDirectionType(const int n)
         { mAttackDirectionType = n; }
 
-        int getAttackDirectionType() const A_WARN_UNUSED
+        int getAttackDirectionType() const noexcept2 A_WARN_UNUSED
         { return mAttackDirectionType; }
 
         void setAllowDelete(const bool b)
         { mAllowDelete = b; }
 
-        int getAllowDelete() const A_WARN_UNUSED
+        int getAllowDelete() const noexcept2 A_WARN_UNUSED
         { return mAllowDelete; }
 
         void setQuickActionEffectId(const int n)
         { mQuickActionEffectId = n; }
 
-        int getQuickActionEffectId() const A_WARN_UNUSED
+        int getQuickActionEffectId() const noexcept2 A_WARN_UNUSED
         { return mQuickActionEffectId; }
 
         void setColorsList(const std::string &name);

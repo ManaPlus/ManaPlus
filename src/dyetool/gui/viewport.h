@@ -115,13 +115,13 @@ class Viewport final : public WindowContainer,
         /**
          * Returns camera x offset in pixels.
          */
-        int getCameraX() const A_WARN_UNUSED
+        int getCameraX() const noexcept2 A_WARN_UNUSED
         { return mPixelViewX; }
 
         /**
          * Returns camera y offset in pixels.
          */
-        int getCameraY() const A_WARN_UNUSED
+        int getCameraY() const noexcept2 A_WARN_UNUSED
         { return mPixelViewY; }
 
         /**
@@ -135,21 +135,21 @@ class Viewport final : public WindowContainer,
          */
         void cleanHoverItems();
 
-        Map *getMap() const A_WARN_UNUSED
+        Map *getMap() const noexcept2 A_WARN_UNUSED
         { return mMap; }
 
         void moveCamera(const int dx, const int dy);
 
-        int getCameraRelativeX() const A_WARN_UNUSED
+        int getCameraRelativeX() const noexcept2 A_WARN_UNUSED
         { return mCameraRelativeX; }
 
-        int getCameraRelativeY() const A_WARN_UNUSED
+        int getCameraRelativeY() const noexcept2 A_WARN_UNUSED
         { return mCameraRelativeY; }
 
-        void setCameraRelativeX(const int n)
+        void setCameraRelativeX(const int n) noexcept2
         { mCameraRelativeX = n; }
 
-        void setCameraRelativeY(const int n)
+        void setCameraRelativeY(const int n) noexcept2
         { mCameraRelativeY = n; }
 
         void videoResized();

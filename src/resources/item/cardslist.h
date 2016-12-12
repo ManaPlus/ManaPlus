@@ -54,7 +54,7 @@ struct CardsList final
         }
     }
 
-    bool isEmpty() const A_WARN_UNUSED
+    bool isEmpty() const noexcept2 A_WARN_UNUSED
     {
         return cards[0] == 0 &&
             cards[1] == 0 &&

@@ -96,7 +96,7 @@ class ShopItems final : public ListModel
         int getNumberOfElements() override final A_WARN_UNUSED
         { return CAST_S32(mShopItems.size()); }
 
-        bool empty() const A_WARN_UNUSED
+        bool empty() const noexcept2 A_WARN_UNUSED
         { return mShopItems.empty(); }
 
         /**

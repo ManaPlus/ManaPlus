@@ -87,7 +87,7 @@ struct SkillInfo final
 
     void addData(const int level, SkillData *const data);
 
-    bool isUsable() const A_WARN_UNUSED
+    bool isUsable() const noexcept2 A_WARN_UNUSED
     {
         return type == SkillType::Attack
             || type == SkillType::Self

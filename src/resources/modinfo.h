@@ -33,28 +33,28 @@ class ModInfo final
 
         A_DELETE_COPY(ModInfo)
 
-        void setName(const std::string &name)
+        void setName(const std::string &name) noexcept2
         { mName = name; }
 
-        const std::string &getName() const A_WARN_UNUSED
+        const std::string &getName() const noexcept2 A_WARN_UNUSED
         { return mName; }
 
-        void setDescription(const std::string &text)
+        void setDescription(const std::string &text) noexcept2
         { mDescription = text; }
 
-        const std::string &getDescription() const A_WARN_UNUSED
+        const std::string &getDescription() const noexcept2 A_WARN_UNUSED
         { return mDescription; }
 
-        void setHelp(const std::string &text)
+        void setHelp(const std::string &text) noexcept2
         { mHelp = text; }
 
-        const std::string &getHelp() const A_WARN_UNUSED
+        const std::string &getHelp() const noexcept2 A_WARN_UNUSED
         { return mHelp; }
 
         void setLocalDir(const std::string &text)
         { mLocalDir = text; }
 
-        const std::string &getLocalDir() const A_WARN_UNUSED
+        const std::string &getLocalDir() const noexcept2 A_WARN_UNUSED
         { return mLocalDir; }
 
     private:

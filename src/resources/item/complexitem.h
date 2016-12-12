@@ -55,7 +55,7 @@ class ComplexItem final : public Item
         void addChild(const Item *const item,
                       const int amount);
 
-        const std::vector<Item*> &getChilds() const A_WARN_UNUSED
+        const std::vector<Item*> &getChilds() const noexcept2 A_WARN_UNUSED
         { return mChildItems; }
 
     protected:

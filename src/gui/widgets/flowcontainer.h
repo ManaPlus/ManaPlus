@@ -58,10 +58,10 @@ class FlowContainer final : public Container,
          */
         void widgetResized(const Event &event) override final;
 
-        int getBoxWidth() const A_WARN_UNUSED
+        int getBoxWidth() const noexcept2 A_WARN_UNUSED
         { return mBoxWidth; }
 
-        int getBoxHeight() const A_WARN_UNUSED
+        int getBoxHeight() const noexcept2 A_WARN_UNUSED
         { return mBoxHeight; }
 
         void add(Widget *const widget) override final;

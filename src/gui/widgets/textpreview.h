@@ -112,14 +112,14 @@ class TextPreview final : public Widget
          *
          * @param opaque Whether the widget should be opaque or not
          */
-        void setOpaque(const Opaque opaque)
+        void setOpaque(const Opaque opaque) noexcept2
         { mOpaque = opaque; }
 
         /**
          * Gets opacity for this widget (whether or not the background color
          * is shown below the widget)
          */
-        bool isOpaque() const A_WARN_UNUSED
+        bool isOpaque() const noexcept2 A_WARN_UNUSED
         { return mOpaque == Opaque_true; }
 
         void adjustSize();

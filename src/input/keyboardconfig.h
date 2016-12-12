@@ -57,7 +57,7 @@ class KeyboardConfig final
         /**
          * Get the enable flag, which will stop the user from doing actions.
          */
-        bool isEnabled() const A_WARN_UNUSED
+        bool isEnabled() const noexcept2 A_WARN_UNUSED
         { return mEnabled; }
 
         /**

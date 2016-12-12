@@ -59,10 +59,10 @@ class Text notfinal
 
         void setColor(const Color *const color);
 
-        int getWidth() const A_WARN_UNUSED
+        int getWidth() const noexcept2 A_WARN_UNUSED
         { return mWidth; }
 
-        int getHeight() const A_WARN_UNUSED
+        int getHeight() const noexcept2 A_WARN_UNUSED
         { return mHeight; }
 
         /**
@@ -78,10 +78,10 @@ class Text notfinal
 
 //        int getWidth() A_WARN_UNUSED;
 
-        int getX() const A_WARN_UNUSED
+        int getX() const noexcept2 A_WARN_UNUSED
         { return mX; }
 
-        int getY() const A_WARN_UNUSED
+        int getY() const noexcept2 A_WARN_UNUSED
         { return mY; }
 
     private:

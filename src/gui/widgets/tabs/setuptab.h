@@ -40,7 +40,7 @@ class SetupTab notfinal : public Container,
     public:
         A_DELETE_COPY(SetupTab)
 
-        const std::string &getName() const A_WARN_UNUSED
+        const std::string &getName() const noexcept2 A_WARN_UNUSED
         { return mName; }
 
         /**
@@ -64,7 +64,7 @@ class SetupTab notfinal : public Container,
          * Sets the name displayed on the tab. Should be set in the
          * constructor of a subclass.
          */
-        void setName(const std::string &name)
+        void setName(const std::string &name) noexcept2
         { mName = name; }
 
     private:

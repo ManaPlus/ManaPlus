@@ -166,36 +166,36 @@ class BrowserBox final : public Widget,
 
         typedef std::list<std::string> TextRows;
 
-        TextRows &getRows() A_WARN_UNUSED
+        TextRows &getRows() noexcept2 A_WARN_UNUSED
         { return mTextRows; }
 
-        bool hasRows() const A_WARN_UNUSED
+        bool hasRows() const noexcept2 A_WARN_UNUSED
         { return !mTextRows.empty(); }
 
-        void setAlwaysUpdate(const bool n)
+        void setAlwaysUpdate(const bool n) noexcept2
         { mAlwaysUpdate = n; }
 
-        void setProcessVars(const bool n)
+        void setProcessVars(const bool n) noexcept2
         { mProcessVars = n; }
 
-        void setEnableImages(const bool n)
+        void setEnableImages(const bool n) noexcept2
         { mEnableImages = n; }
 
-        void setEnableKeys(const bool n)
+        void setEnableKeys(const bool n) noexcept2
         { mEnableKeys = n; }
 
-        void setEnableTabs(const bool n)
+        void setEnableTabs(const bool n) noexcept2
         { mEnableTabs = n; }
 
         std::string getTextAtPos(const int x, const int y) const A_WARN_UNUSED;
 
-        int getPadding() const A_WARN_UNUSED
+        int getPadding() const noexcept2 A_WARN_UNUSED
         { return mPadding; }
 
         void setForegroundColorAll(const Color &color1,
                                    const Color &color2);
 
-        unsigned int getDataWidth() const A_WARN_UNUSED
+        unsigned int getDataWidth() const noexcept2 A_WARN_UNUSED
         { return mDataWidth; }
 
         void moveSelectionUp();

@@ -70,7 +70,7 @@ class Inventory notfinal
         /**
          * Returns the size that this instance is configured for.
          */
-        unsigned getSize() const A_WARN_UNUSED
+        unsigned getSize() const noexcept2 A_WARN_UNUSED
         { return mSize; }
 
         /**
@@ -152,7 +152,7 @@ class Inventory notfinal
         /**
          * Get the number of slots filled with an item
          */
-        int getNumberOfSlotsUsed() const A_WARN_UNUSED
+        int getNumberOfSlotsUsed() const noexcept2 A_WARN_UNUSED
         { return mUsed; }
 
         /**
@@ -164,10 +164,10 @@ class Inventory notfinal
 
         void removeInventoyListener(InventoryListener *const listener);
 
-        InventoryTypeT getType() const A_WARN_UNUSED
+        InventoryTypeT getType() const noexcept2 A_WARN_UNUSED
         { return mType; }
 
-        bool isMainInventory() const A_WARN_UNUSED
+        bool isMainInventory() const noexcept2 A_WARN_UNUSED
         { return mType == InventoryType::Inventory; }
 
         const Item *findItemBySprite(std::string spritePath,

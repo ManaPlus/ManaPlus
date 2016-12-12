@@ -46,29 +46,29 @@ class MapItem final
 
         ~MapItem();
 
-        int getType() const A_WARN_UNUSED
+        int getType() const noexcept2 A_WARN_UNUSED
         { return mType; }
 
         void setType(const int type);
 
         void setPos(const int x, const int y);
 
-        int getX() const A_WARN_UNUSED
+        int getX() const noexcept2 A_WARN_UNUSED
         { return mX; }
 
-        int getY() const A_WARN_UNUSED
+        int getY() const noexcept2 A_WARN_UNUSED
         { return mY; }
 
-        const std::string &getComment() const A_WARN_UNUSED
+        const std::string &getComment() const noexcept2 A_WARN_UNUSED
         { return mComment; }
 
-        void setComment(const std::string &comment)
+        void setComment(const std::string &comment) noexcept2
         { mComment = comment; }
 
-        const std::string &getName() const A_WARN_UNUSED
+        const std::string &getName() const noexcept2 A_WARN_UNUSED
         { return mName; }
 
-        void setName(const std::string &name)
+        void setName(const std::string &name) noexcept2
         { mName = name; }
 
         void draw(Graphics *const graphics,

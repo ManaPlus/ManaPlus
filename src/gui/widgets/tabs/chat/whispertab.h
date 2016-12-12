@@ -33,7 +33,7 @@ class WhisperTab final : public ChatTab
     public:
         A_DELETE_COPY(WhisperTab)
 
-        const std::string &getNick() const A_WARN_UNUSED
+        const std::string &getNick() const noexcept2 A_WARN_UNUSED
         { return mNick; }
 
         bool handleCommand(const std::string &restrict type,

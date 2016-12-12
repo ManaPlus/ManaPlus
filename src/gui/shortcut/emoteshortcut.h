@@ -66,7 +66,7 @@ class EmoteShortcut final
         /**
          * Returns the emote ID that is currently selected.
          */
-        unsigned char getEmoteSelected() const A_WARN_UNUSED
+        unsigned char getEmoteSelected() const noexcept2 A_WARN_UNUSED
         { return mEmoteSelected; }
 
         /**
@@ -97,7 +97,7 @@ class EmoteShortcut final
         /**
          * A flag to check if the Emote is selected.
          */
-        bool isEmoteSelected() const A_WARN_UNUSED
+        bool isEmoteSelected() const noexcept2 A_WARN_UNUSED
         { return mEmoteSelected; }
 
         /**

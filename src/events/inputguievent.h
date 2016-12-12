@@ -106,7 +106,7 @@ class InputGuiEvent: public Event
           *         false otherwise.
           * @see consume
           */
-        bool isConsumed() const A_WARN_UNUSED
+        bool isConsumed() const noexcept2 A_WARN_UNUSED
         { return mIsConsumed; }
 
     protected:

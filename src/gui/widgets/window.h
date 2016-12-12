@@ -181,13 +181,13 @@ class Window notfinal : public BasicContainer2,
          */
         void setCloseButton(const bool flag);
 
-        bool getCloseButton() const A_WARN_UNUSED
+        bool getCloseButton() const noexcept2 A_WARN_UNUSED
         { return mCloseWindowButton; }
 
         void setAllowClose(const bool b)
         { mAllowClose = b; }
 
-        bool getAlowClose() const A_WARN_UNUSED
+        bool getAlowClose() const noexcept2 A_WARN_UNUSED
         { return mCloseWindowButton || mAllowClose; }
 
         /**
@@ -200,7 +200,7 @@ class Window notfinal : public BasicContainer2,
          */
         void setMinWidth(const int width);
 
-        int getMinWidth() const A_WARN_UNUSED
+        int getMinWidth() const noexcept2 A_WARN_UNUSED
         { return mMinWinWidth; }
 
         /**
@@ -208,7 +208,7 @@ class Window notfinal : public BasicContainer2,
          */
         void setMinHeight(const int height);
 
-        int getMinHeight() const A_WARN_UNUSED
+        int getMinHeight() const noexcept2 A_WARN_UNUSED
         { return mMinWinHeight; }
 
         /**
@@ -216,7 +216,7 @@ class Window notfinal : public BasicContainer2,
          */
         void setMaxWidth(const int width);
 
-        int getMaxWidth() const A_WARN_UNUSED
+        int getMaxWidth() const noexcept2 A_WARN_UNUSED
         { return mMaxWinWidth; }
 
         /**
@@ -224,7 +224,7 @@ class Window notfinal : public BasicContainer2,
          */
         void setMaxHeight(const int height);
 
-        int getMaxHeight() const A_WARN_UNUSED
+        int getMaxHeight() const noexcept2 A_WARN_UNUSED
         { return mMaxWinHeight; }
 
         /**
@@ -248,7 +248,7 @@ class Window notfinal : public BasicContainer2,
         /**
          * Returns whether the window is sticky.
          */
-        bool isSticky() const A_WARN_UNUSED
+        bool isSticky() const noexcept2 A_WARN_UNUSED
         { return mSticky; }
 
         /**
@@ -259,7 +259,7 @@ class Window notfinal : public BasicContainer2,
         /**
          * Returns whether the window sticky locking window.
          */
-        bool isStickyButtonLock() const A_WARN_UNUSED
+        bool isStickyButtonLock() const noexcept2 A_WARN_UNUSED
         { return mStickyButtonLock; }
 
         /**
@@ -277,7 +277,7 @@ class Window notfinal : public BasicContainer2,
         /**
          * Returns whether the window is visible by default.
          */
-        bool isDefaultVisible() const A_WARN_UNUSED
+        bool isDefaultVisible() const noexcept2 A_WARN_UNUSED
         { return mDefaultVisible; }
 
         /**
@@ -357,7 +357,7 @@ class Window notfinal : public BasicContainer2,
         /**
          * Returns the name of the window. This is not the window title.
          */
-        const std::string &getWindowName() const A_WARN_UNUSED
+        const std::string &getWindowName() const noexcept2 A_WARN_UNUSED
         { return mWindowName; }
 
         /**
@@ -474,7 +474,7 @@ class Window notfinal : public BasicContainer2,
         void enableVisibleSound(bool b)
         { mPlayVisibleSound = b; }
 
-        bool isWindowVisible() const A_WARN_UNUSED
+        bool isWindowVisible() const noexcept2 A_WARN_UNUSED
         { return mVisible == Visible_true; }
 
         /**
@@ -589,10 +589,10 @@ class Window notfinal : public BasicContainer2,
         bool getOptionBool(const std::string &name,
                            const bool def = false) const A_WARN_UNUSED;
 
-        void setTitlePadding(const int p)
+        void setTitlePadding(const int p) noexcept2
         { mTitlePadding = p; }
 
-        int getTitlePadding() const A_WARN_UNUSED
+        int getTitlePadding() const noexcept2 A_WARN_UNUSED
         { return mTitlePadding; }
 
         /**

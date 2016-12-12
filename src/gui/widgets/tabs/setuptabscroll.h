@@ -42,7 +42,7 @@ class SetupTabScroll notfinal : public SetupTab
 
         void addControl(SetupItem *const widget, const std::string &event);
 
-        VertContainer *getContainer() const A_WARN_UNUSED
+        VertContainer *getContainer() const noexcept2 A_WARN_UNUSED
         { return mContainer; }
 
         void apply() override;
@@ -56,7 +56,7 @@ class SetupTabScroll notfinal : public SetupTab
         void action(const ActionEvent &event A_UNUSED) override final
         { }
 
-        int getPreferredFirstItemSize() const A_WARN_UNUSED
+        int getPreferredFirstItemSize() const noexcept2 A_WARN_UNUSED
         { return mPreferredFirstItemSize; }
 
         void widgetResized(const Event &event) override final;
@@ -65,7 +65,7 @@ class SetupTabScroll notfinal : public SetupTab
 
         void clear() override final;
 
-        const std::set<SetupItem*> &getAllItems() const
+        const std::set<SetupItem*> &getAllItems() const noexcept2
         { return mAllItems; }
 
     protected:

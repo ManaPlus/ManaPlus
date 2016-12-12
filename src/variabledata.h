@@ -51,7 +51,7 @@ class IntData final : public VariableData
             mData(value)
         { }
 
-        int getData() const A_WARN_UNUSED
+        int getData() const noexcept2 A_WARN_UNUSED
         { return mData; }
 
         int getType() const override final A_WARN_UNUSED
@@ -68,7 +68,7 @@ class StringData final : public VariableData
             mData(value)
         { }
 
-        const std::string &getData() const A_WARN_UNUSED
+        const std::string &getData() const noexcept2 A_WARN_UNUSED
         { return mData; }
 
         int getType() const override final A_WARN_UNUSED
@@ -85,7 +85,7 @@ class FloatData final : public VariableData
             mData(value)
         { }
 
-        double getData() const A_WARN_UNUSED
+        double getData() const noexcept2 A_WARN_UNUSED
         { return mData; }
 
         int getType() const override final A_WARN_UNUSED
@@ -102,7 +102,7 @@ class BoolData final : public VariableData
             mData(value)
         { }
 
-        bool getData() const A_WARN_UNUSED
+        bool getData() const noexcept2 A_WARN_UNUSED
         { return mData; }
 
         int getType() const override final A_WARN_UNUSED

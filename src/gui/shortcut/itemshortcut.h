@@ -89,7 +89,7 @@ class ItemShortcut final
         /**
          * Returns the item ID that is currently selected.
          */
-        int getItemSelected() const A_WARN_UNUSED
+        int getItemSelected() const noexcept2 A_WARN_UNUSED
         { return mItemSelected; }
 
         /**
@@ -127,13 +127,13 @@ class ItemShortcut final
         /**
          * Returns selected shortcut item ID.
          */
-        int getSelectedItem() const A_WARN_UNUSED
+        int getSelectedItem() const noexcept2 A_WARN_UNUSED
         { return mItemSelected; }
 
         /**
          * A flag to check if the item is selected.
          */
-        bool isItemSelected() const A_WARN_UNUSED
+        bool isItemSelected() const noexcept2 A_WARN_UNUSED
         { return mItemSelected > -1; }
 
         /**

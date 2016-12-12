@@ -339,7 +339,7 @@ class Configuration final : public ConfigurationObject
 
         bool resetBoolValue(const std::string &key);
 
-        const std::string &getConfigPath() const A_WARN_UNUSED
+        const std::string &getConfigPath() const noexcept2 A_WARN_UNUSED
         { return mConfigPath; }
 
         /**
@@ -355,12 +355,12 @@ class Configuration final : public ConfigurationObject
 
         bool getBoolValue(const std::string &key) const A_WARN_UNUSED;
 
-        std::string getDirectory() const A_WARN_UNUSED
+        std::string getDirectory() const noexcept2 A_WARN_UNUSED
         { return mDirectory; }
 
         void removeOldKeys();
 
-        std::string getFileName() const A_WARN_UNUSED
+        std::string getFileName() const noexcept2 A_WARN_UNUSED
         { return mFilename; }
 
         void writeUpdated();

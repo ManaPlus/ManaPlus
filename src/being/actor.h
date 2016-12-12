@@ -70,7 +70,7 @@ class Actor notfinal
         /**
          * Returns the pixel position of this actor.
          */
-        const Vector &getPixelPositionF() const A_WARN_UNUSED
+        const Vector &getPixelPositionF() const noexcept2 A_WARN_UNUSED
         { return mPos; }
 
         /**
@@ -81,7 +81,7 @@ class Actor notfinal
         /**
          * Returns the pixels X coordinate of the actor.
          */
-        int getPixelX() const A_WARN_UNUSED
+        int getPixelX() const noexcept2 A_WARN_UNUSED
         { return CAST_S32(mPos.x); }
 
         /**
@@ -124,7 +124,7 @@ class Actor notfinal
 
         virtual void setMap(Map *const map);
 
-        const Map* getMap() const A_WARN_UNUSED
+        const Map* getMap() const noexcept2 A_WARN_UNUSED
         { return mMap; }
 
         int mPixelX;

@@ -162,7 +162,7 @@ class TabbedArea final : public ActionListener,
          */
         void logic() override final;
 
-        int getContainerHeight() const A_WARN_UNUSED
+        int getContainerHeight() const noexcept2 A_WARN_UNUSED
         { return mWidgetContainer->getHeight(); }
 
         void setSelectedTab(Tab *const tab);
@@ -171,13 +171,13 @@ class TabbedArea final : public ActionListener,
 
         int getSelectedTabIndex() const A_WARN_UNUSED;
 
-        Tab* getSelectedTab() const A_WARN_UNUSED
+        Tab* getSelectedTab() const noexcept2 A_WARN_UNUSED
         { return mSelectedTab; }
 
         void setOpaque(const Opaque opaque)
         { mOpaque = opaque; }
 
-        bool isOpaque() const A_WARN_UNUSED
+        bool isOpaque() const noexcept2 A_WARN_UNUSED
         { return mOpaque == Opaque_true; }
 
         void adjustSize();
@@ -201,21 +201,21 @@ class TabbedArea final : public ActionListener,
 
         void enableScrollButtons(const bool enable);
 
-        void setRightMargin(const int n)
+        void setRightMargin(const int n) noexcept2
         { mRightMargin = n; }
 
-        int getRightMargin() const A_WARN_UNUSED
+        int getRightMargin() const noexcept2 A_WARN_UNUSED
         { return mRightMargin; }
 
-        void setFollowDownScroll(const bool n)
+        void setFollowDownScroll(const bool n) noexcept2
         { mFollowDownScroll = n; }
 
-        bool getFollowDownScroll() const A_WARN_UNUSED
+        bool getFollowDownScroll() const noexcept2 A_WARN_UNUSED
         { return mFollowDownScroll; }
 
         void keyPressed(KeyEvent& event) override final;
 
-        void setBlockSwitching(const bool b)
+        void setBlockSwitching(const bool b) noexcept2
         { mBlockSwitching = b; }
 
         void setWidth(int width);
@@ -228,7 +228,7 @@ class TabbedArea final : public ActionListener,
 
         void death(const Event &event) override final;
 
-        void setResizeHeight(bool b)
+        void setResizeHeight(bool b) noexcept2
         { mResizeHeight = b; }
 
         void adjustWidget(Widget *const widget) const;
@@ -237,10 +237,10 @@ class TabbedArea final : public ActionListener,
 
         void selectPrevTab();
 
-        Widget *getTabContainer() const
+        Widget *getTabContainer() const noexcept2 A_WARN_UNUSED
         { return mTabContainer; }
 
-        Widget *getWidgetContainer() const
+        Widget *getWidgetContainer() const noexcept2 A_WARN_UNUSED
         { return mWidgetContainer; }
 
     private:

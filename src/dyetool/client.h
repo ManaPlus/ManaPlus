@@ -65,7 +65,7 @@ class Client final : public ActionListener
         void setState(const StateT state)
         { mState = state; }
 
-        StateT getState() const A_WARN_UNUSED
+        StateT getState() const noexcept2 A_WARN_UNUSED
         { return mState; }
 
         void action(const ActionEvent &event) override final;

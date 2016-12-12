@@ -78,13 +78,13 @@ class WhoIsOnline final : public Window,
 
         void widgetResized(const Event &event) override final;
 
-        const std::set<OnlinePlayer*> &getOnlinePlayers() const A_WARN_UNUSED
+        const std::set<OnlinePlayer*> &getOnlinePlayers() const noexcept2 A_WARN_UNUSED
         { return mOnlinePlayers; }
 
-        const std::set<std::string> &getOnlineNicks() const A_WARN_UNUSED
+        const std::set<std::string> &getOnlineNicks() const noexcept2 A_WARN_UNUSED
         { return mOnlineNicks; }
 
-        void setAllowUpdate(const bool n)
+        void setAllowUpdate(const bool n) noexcept2
         { mAllowUpdate = n; }
 
         void optionChanged(const std::string &name) override final;

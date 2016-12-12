@@ -150,7 +150,7 @@ class Gui final
          */
         void videoResized() const;
 
-        FocusHandler *getFocusHandler() const A_WARN_UNUSED
+        FocusHandler *getFocusHandler() const noexcept2 A_WARN_UNUSED
         { return mFocusHandler; }
 
         /**
@@ -246,7 +246,7 @@ class Gui final
          * @return The top widget. NULL if no top widget has been set.
          * @since 0.1.0
          */
-        Widget* getTop() const A_WARN_UNUSED
+        Widget* getTop() const noexcept2 A_WARN_UNUSED
         { return mTop; }
 
         /**

@@ -67,16 +67,16 @@ class KeyListModel final : public ListModel
         void setElementAt(const int i, const std::string &caption)
         { setupActionData[mSelectedData][i].text = caption; }
 
-        void setSize(const int size)
+        void setSize(const int size) noexcept2
         { mSize = size; }
 
-        void setDataNum(const int num)
+        void setDataNum(const int num) noexcept2
         { mDataNum = num; }
 
-        void setSelectedData(const int i)
+        void setSelectedData(const int i) noexcept2
         { mSelectedData = i; }
 
-        int getSelectedData() const A_WARN_UNUSED
+        int getSelectedData() const noexcept2 A_WARN_UNUSED
         { return mSelectedData; }
 
     private:

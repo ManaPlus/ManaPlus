@@ -39,10 +39,10 @@ class GuildMember final : public Avatar
     public:
         A_DELETE_COPY(GuildMember)
 
-        const Guild *getGuild() const A_WARN_UNUSED
+        const Guild *getGuild() const noexcept2 A_WARN_UNUSED
         { return mGuild; }
 
-        int getPos() const A_WARN_UNUSED
+        int getPos() const noexcept2 A_WARN_UNUSED
         { return mPos; }
 
         void setPos(const int pos)
@@ -116,14 +116,14 @@ class Guild final : public AvatarListModel
          * Get the name of the guild.
          * @return returns name of the guild
          */
-        const std::string &getName() const A_WARN_UNUSED
+        const std::string &getName() const noexcept2 A_WARN_UNUSED
         { return mName; }
 
         /**
          * Get the id of the guild.
          * @return Returns the id of the guild
          */
-        int16_t getId() const A_WARN_UNUSED
+        int16_t getId() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
         /**
@@ -159,7 +159,7 @@ class Guild final : public AvatarListModel
          * Get whether user can invite users to this guild.
          * @return Returns true if user can invite users
          */
-        bool getInviteRights() const A_WARN_UNUSED
+        bool getInviteRights() const noexcept2 A_WARN_UNUSED
         { return mCanInviteUsers; }
 
         void setRights(const int16_t rights);
@@ -180,13 +180,13 @@ class Guild final : public AvatarListModel
 
         static Guild *getGuild(const int16_t id) A_WARN_UNUSED;
 
-        const PositionsMap &getPositions() const A_WARN_UNUSED
+        const PositionsMap &getPositions() const noexcept2 A_WARN_UNUSED
         { return mPositions; }
 
         void setEmblemId(const int id)
         { mEmblemId = id; }
 
-        int getEmblemId() const A_WARN_UNUSED
+        int getEmblemId() const noexcept2 A_WARN_UNUSED
         { return mEmblemId; }
 
         static void clearGuilds();
@@ -194,7 +194,7 @@ class Guild final : public AvatarListModel
         void setServerGuild(const bool b)
         { mServerGuild = b; }
 
-        bool getServerGuild() const A_WARN_UNUSED
+        bool getServerGuild() const noexcept2 A_WARN_UNUSED
         { return mServerGuild; }
 
         typedef std::vector<GuildMember*> MemberList;

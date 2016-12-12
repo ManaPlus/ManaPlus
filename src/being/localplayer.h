@@ -116,7 +116,7 @@ class LocalPlayer final : public Being,
 
         void setGMLevel(const int level);
 
-        int getGMLevel() const A_WARN_UNUSED
+        int getGMLevel() const noexcept2 A_WARN_UNUSED
         { return mGMLevel; }
 
         void stopAttack(const bool keepAttack = false);
@@ -150,7 +150,7 @@ class LocalPlayer final : public Being,
         /**
          * Gets the walking direction
          */
-        unsigned char getWalkingDir() const A_WARN_UNUSED
+        unsigned char getWalkingDir() const noexcept2 A_WARN_UNUSED
         { return mWalkingDir; }
 
         /**
@@ -192,13 +192,13 @@ class LocalPlayer final : public Being,
         { mPathSetByMouse = true; }
 
         /** Tells if the path has been set by mouse. */
-        bool isPathSetByMouse() const A_WARN_UNUSED
+        bool isPathSetByMouse() const noexcept2 A_WARN_UNUSED
         { return mPathSetByMouse; }
 
-        unsigned int getMoveState() const A_WARN_UNUSED
+        unsigned int getMoveState() const noexcept2 A_WARN_UNUSED
         { return mMoveState; }
 
-        void setMoveState(const unsigned int n)
+        void setMoveState(const unsigned int n) noexcept2
         { mMoveState = n; }
 
         std::string getPingTime() const A_WARN_UNUSED;
@@ -240,7 +240,7 @@ class LocalPlayer final : public Being,
         void setHalfAway(const bool n)
         { mInactive = n; }
 
-        bool getHalfAway() const A_WARN_UNUSED
+        bool getHalfAway() const noexcept2 A_WARN_UNUSED
         { return mInactive; }
 
         void afkRespond(ChatTab *const tab, const std::string &nick);
@@ -272,7 +272,7 @@ class LocalPlayer final : public Being,
 
         void setRealPos(const int x, const int y);
 
-        bool isServerBuggy() const A_WARN_UNUSED
+        bool isServerBuggy() const noexcept2 A_WARN_UNUSED
         { return mIsServerBuggy; }
 
         void fixPos();
@@ -308,15 +308,15 @@ class LocalPlayer final : public Being,
          */
         void setNextDest(const int x, const int y);
 
-        int getNextDestX() const A_WARN_UNUSED
+        int getNextDestX() const noexcept2 A_WARN_UNUSED
         { return mNextDestX; }
 
-        int getNextDestY() const A_WARN_UNUSED
+        int getNextDestY() const noexcept2 A_WARN_UNUSED
         { return mNextDestY; }
 
         void respawn();
 
-        const FloorItem *getPickUpTarget() const A_WARN_UNUSED
+        const FloorItem *getPickUpTarget() const noexcept2 A_WARN_UNUSED
         { return mPickUpTarget; }
 
         void unSetPickUpTarget()
@@ -330,13 +330,13 @@ class LocalPlayer final : public Being,
         /**
          * Get the playername followed by the current player.
          */
-        const std::string &getFollow() const A_WARN_UNUSED
+        const std::string &getFollow() const noexcept2 A_WARN_UNUSED
         { return mPlayerFollowed; }
 
         /**
          * Get the playername imitated by the current player.
          */
-        const std::string &getImitate() const A_WARN_UNUSED
+        const std::string &getImitate() const noexcept2 A_WARN_UNUSED
         { return mPlayerImitated; }
 
         /**
@@ -350,7 +350,7 @@ class LocalPlayer final : public Being,
          * Gets if the engine has to check
          * if the Player Name is to be displayed.
          */
-        bool getCheckNameSetting() const A_WARN_UNUSED
+        bool getCheckNameSetting() const noexcept2 A_WARN_UNUSED
         { return mUpdateName; }
 
         void fixAttackTarget();
@@ -411,19 +411,19 @@ class LocalPlayer final : public Being,
 
         void updateMusic() const;
 
-        void setAfkTime(const int v)
+        void setAfkTime(const int v) noexcept2
         { mAfkTime = v; }
 
         void setAwayDialog(OkDialog *const dialog)
         { mAwayDialog = dialog; }
 
-        AwayListener *getAwayListener() const A_WARN_UNUSED
+        AwayListener *getAwayListener() const noexcept2 A_WARN_UNUSED
         { return mAwayListener; }
 
-        void setRename(const bool r)
+        void setRename(const bool r) noexcept2
         { mAllowRename = r; }
 
-        bool getRename() const
+        bool getRename() const noexcept2
         { return mAllowRename; }
 
         bool canMove() const;

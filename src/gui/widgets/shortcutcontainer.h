@@ -77,13 +77,13 @@ class ShortcutContainer notfinal : public Widget,
         {
         }
 
-        int getMaxItems() const A_WARN_UNUSED
+        int getMaxItems() const noexcept2 A_WARN_UNUSED
         { return mMaxItems; }
 
-        int getBoxWidth() const A_WARN_UNUSED
+        int getBoxWidth() const noexcept2 A_WARN_UNUSED
         { return mBoxWidth; }
 
-        int getBoxHeight() const A_WARN_UNUSED
+        int getBoxHeight() const noexcept2 A_WARN_UNUSED
         { return mBoxHeight; }
 
         void drawBackground(Graphics *const g) A_NONNULL(2);

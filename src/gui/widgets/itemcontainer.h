@@ -133,13 +133,13 @@ class ItemContainer final : public Widget,
 
         void updateMatrix();
 
-        bool getClickCount() const A_WARN_UNUSED
+        bool getClickCount() const noexcept2 A_WARN_UNUSED
         { return mClicks; }
 
-        void unsetInventory()
+        void unsetInventory() noexcept2
         { mInventory = nullptr; }
 
-        void setInventory(Inventory *const inventory)
+        void setInventory(Inventory *const inventory) noexcept2
         { mInventory = inventory; }
 
         void setCellBackgroundImage(const std::string &xmlName);

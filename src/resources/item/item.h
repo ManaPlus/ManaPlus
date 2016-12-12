@@ -75,91 +75,91 @@ class Item notfinal
         /**
          * Returns the item id.
          */
-        int getId() const A_WARN_UNUSED
+        int getId() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
         /**
          * Returns the item image.
          */
-        Image *getImage() const A_WARN_UNUSED
+        Image *getImage() const noexcept2 A_WARN_UNUSED
         { return mImage; }
 
         /**
          * Sets the number of items.
          */
-        void setQuantity(const int quantity)
+        void setQuantity(const int quantity) noexcept2
         { mQuantity = quantity; }
 
         /**
          * Increases the number of items by the given amount.
          */
-        void increaseQuantity(const int amount)
+        void increaseQuantity(const int amount) noexcept2
         { mQuantity += amount; }
 
         /**
          * Returns the number of items.
          */
-        int getQuantity() const A_WARN_UNUSED
+        int getQuantity() const noexcept2 A_WARN_UNUSED
         { return mQuantity; }
 
         /**
          * Sets whether this item is considered equipment.
          */
-        void setEquipment(const Equipm equipment)
+        void setEquipment(const Equipm equipment) noexcept2
         { mEquipment = equipment; }
 
         /**
          * Returns whether this item is considered equipment.
          */
-        Equipm isEquipment() const A_WARN_UNUSED
+        Equipm isEquipment() const noexcept2 A_WARN_UNUSED
         { return mEquipment; }
 
         /**
          * Sets whether this item is equipped.
          */
-        void setEquipped(const Equipped equipped)
+        void setEquipped(const Equipped equipped) noexcept2
         { mEquipped = equipped; }
 
         /**
          * Returns whether this item is equipped.
          */
-        Equipped isEquipped() const A_WARN_UNUSED
+        Equipped isEquipped() const noexcept2 A_WARN_UNUSED
         { return mEquipped; }
 
         /**
          * Sets this item refine level.
          */
-        void setRefine(const uint8_t refine)
+        void setRefine(const uint8_t refine) noexcept2
         { mRefine = refine; }
 
         /**
          * Returns this item refine level.
          */
-        uint8_t getRefine() const A_WARN_UNUSED
+        uint8_t getRefine() const noexcept2 A_WARN_UNUSED
         { return mRefine; }
 
         /**
          * Sets whether this item is in equipment.
          */
-        void setInEquipment(const bool inEquipment)
+        void setInEquipment(const bool inEquipment) noexcept2
         { mInEquipment = inEquipment; }
 
         /**
          * Returns whether this item is in equipment.
          */
-        bool isInEquipment() const A_WARN_UNUSED
+        bool isInEquipment() const noexcept2 A_WARN_UNUSED
         { return mInEquipment; }
 
         /**
          * Sets the inventory index of this item.
          */
-        void setInvIndex(const int index)
+        void setInvIndex(const int index) noexcept2
         { mInvIndex = index; }
 
         /**
          * Returns the inventory index of this item.
          */
-        int getInvIndex() const A_WARN_UNUSED
+        int getInvIndex() const noexcept2 A_WARN_UNUSED
         { return mInvIndex; }
 
         /**
@@ -175,31 +175,31 @@ class Item notfinal
 
         bool isHaveTag(const int tagId) const A_WARN_UNUSED;
 
-        ItemColor getColor() const A_WARN_UNUSED
+        ItemColor getColor() const noexcept2 A_WARN_UNUSED
         { return mColor; }
 
-        void setColor(const ItemColor color)
+        void setColor(const ItemColor color) noexcept2
         { mColor = color; }
 
-        const std::string &getDescription() const A_WARN_UNUSED
+        const std::string &getDescription() const noexcept2 A_WARN_UNUSED
         { return mDescription; }
 
-        void setIdentified(const Identified b)
+        void setIdentified(const Identified b) noexcept2
         { mIdentified = b; }
 
-        Identified getIdentified() const A_WARN_UNUSED
+        Identified getIdentified() const noexcept2 A_WARN_UNUSED
         { return mIdentified; }
 
-        void setDamaged(const Damaged b)
+        void setDamaged(const Damaged b) noexcept2
         { mDamaged = b; }
 
-        Damaged getDamaged() const A_WARN_UNUSED
+        Damaged getDamaged() const noexcept2 A_WARN_UNUSED
         { return mDamaged; }
 
-        void setFavorite(const Favorite b)
+        void setFavorite(const Favorite b) noexcept2
         { mFavorite = b; }
 
-        Favorite getFavorite() const A_WARN_UNUSED
+        Favorite getFavorite() const noexcept2 A_WARN_UNUSED
         { return mFavorite; }
 
         void setCard(const int index, const int id);
@@ -208,26 +208,26 @@ class Item notfinal
 
         void setCards(const int *const cards, const int size);
 
-        const int *getCards() const
+        const int *getCards() const noexcept2 A_WARN_UNUSED
         { return mCards; }
 
-        void setType(const ItemTypeT type)
+        void setType(const ItemTypeT type) noexcept2
         { mType = type; }
 
-        ItemTypeT getType() const A_WARN_UNUSED
+        ItemTypeT getType() const noexcept2 A_WARN_UNUSED
         { return mType; }
 
-        void setTag(const int tag)
+        void setTag(const int tag) noexcept2
         { mTag = tag; }
 
-        int getTag() const A_WARN_UNUSED
+        int getTag() const noexcept2 A_WARN_UNUSED
         { return mTag; }
 
         void addCard(const int card);
 
         void updateColor();
 
-        static constexpr bool isItem(const int id)
+        static constexpr bool isItem(const int id) noexcept2 A_WARN_UNUSED
         {
             return id != 0 &&
                 id != CARD0_FORGE &&

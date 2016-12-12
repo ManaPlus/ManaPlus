@@ -142,13 +142,13 @@ class Being notfinal : public ActorSprite,
                             const int dstY) restrict2;
 
         void setCachedDestination(const int dstX,
-                                  const int dstY) restrict2
+                                  const int dstY) restrict2 noexcept2
         { mCachedX = dstX; mCachedY = dstY; }
 
-        int getCachedX() const A_WARN_UNUSED
+        int getCachedX() const noexcept2 A_WARN_UNUSED
         { return mCachedX; }
 
-        int getCachedY() const A_WARN_UNUSED
+        int getCachedY() const noexcept2 A_WARN_UNUSED
         { return mCachedY; }
 
         /**

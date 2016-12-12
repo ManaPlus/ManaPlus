@@ -138,10 +138,10 @@ class AnimatedSprite final : public Sprite
 #endif  // UNITTESTS
 
 #ifdef DEBUG_ANIMATIONS
-        void setSpriteName(const std::string &restrict name)
+        void setSpriteName(const std::string &restrict name) noexcept2
         { mSpriteName = name; }
 
-        std::string getSpriteName() const A_WARN_UNUSED
+        std::string getSpriteName() const noexcept2 A_WARN_UNUSED
         { return mSpriteName; }
 #endif  // DEBUG_ANIMATIONS
 

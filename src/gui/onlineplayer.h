@@ -48,27 +48,27 @@ class OnlinePlayer final
 
         A_DELETE_COPY(OnlinePlayer)
 
-        const std::string getNick() const A_WARN_UNUSED
+        const std::string getNick() const noexcept2 A_WARN_UNUSED
         { return mNick; }
 
-        unsigned char getStaus() const A_WARN_UNUSED
+        unsigned char getStaus() const noexcept2 A_WARN_UNUSED
         { return mStatus; }
 
         void setIsGM(const bool b)
         { mIsGM = b; }
 
-        char getVersion() const A_WARN_UNUSED
+        char getVersion() const noexcept2 A_WARN_UNUSED
         { return mVersion; }
 
-        char getLevel() const A_WARN_UNUSED
+        char getLevel() const noexcept2 A_WARN_UNUSED
         { return mLevel; }
 
-        const std::string getText() const A_WARN_UNUSED
+        const std::string getText() const noexcept2 A_WARN_UNUSED
         { return mText; }
 
         void setText(std::string str);
 
-        void setLevel(const char level)
+        void setLevel(const char level) noexcept2
         { mLevel = level; }
 
     private:

@@ -49,7 +49,7 @@ class Avatar notfinal
         /**
          * Returns the avatar's name.
          */
-        std::string getName() const A_WARN_UNUSED
+        std::string getName() const noexcept2 A_WARN_UNUSED
         { return mName; }
 
         /**
@@ -61,7 +61,7 @@ class Avatar notfinal
         /**
          * Returns the avatar's original name.
          */
-        std::string getOriginalName() const A_WARN_UNUSED
+        std::string getOriginalName() const noexcept2 A_WARN_UNUSED
         { return mOriginalName; }
 
         std::string getComplexName() const A_WARN_UNUSED;
@@ -77,7 +77,7 @@ class Avatar notfinal
         /**
          * Returns the avatar's online status.
          */
-        bool getOnline() const A_WARN_UNUSED
+        bool getOnline() const noexcept2 A_WARN_UNUSED
         { return mOnline; }
 
         /**
@@ -86,97 +86,97 @@ class Avatar notfinal
         void setOnline(const bool online)
         { mOnline = online; }
 
-        int getHp() const A_WARN_UNUSED
+        int getHp() const noexcept2 A_WARN_UNUSED
         { return mHp; }
 
         void setHp(const int hp)
         { mHp = hp; }
 
-        int getMaxHp() const A_WARN_UNUSED
+        int getMaxHp() const noexcept2 A_WARN_UNUSED
         { return mMaxHp; }
 
         void setMaxHp(const int maxHp)
         { mMaxHp = maxHp; }
 
-        int getDamageHp() const A_WARN_UNUSED
+        int getDamageHp() const noexcept2 A_WARN_UNUSED
         { return mDamageHp; }
 
         void setDamageHp(const int damageHp)
         { mDamageHp = damageHp; }
 
-        bool getDisplayBold() const A_WARN_UNUSED
+        bool getDisplayBold() const noexcept2 A_WARN_UNUSED
         { return mDisplayBold; }
 
         void setDisplayBold(const bool displayBold)
         { mDisplayBold = displayBold; }
 
-        int getLevel() const A_WARN_UNUSED
+        int getLevel() const noexcept2 A_WARN_UNUSED
         { return mLevel; }
 
         void setLevel(const int level)
         { mLevel = level; }
 
-        std::string getMap() const A_WARN_UNUSED
+        std::string getMap() const noexcept2 A_WARN_UNUSED
         { return mMap; }
 
         void setMap(const std::string &map)
         { mMap = map; }
 
-        int getX() const A_WARN_UNUSED
+        int getX() const noexcept2 A_WARN_UNUSED
         { return mX; }
 
         void setX(const int x)
         { mX = x; }
 
-        int getY() const A_WARN_UNUSED
+        int getY() const noexcept2 A_WARN_UNUSED
         { return mY; }
 
         void setY(const int y)
         { mY = y; }
 
-        int getType() const A_WARN_UNUSED
+        int getType() const noexcept2 A_WARN_UNUSED
         { return mType; }
 
         void setType(const int n)
         { mType = n; }
 
-        int getExp() const A_WARN_UNUSED
+        int getExp() const noexcept2 A_WARN_UNUSED
         { return mExp; }
 
         void setExp(const int n)
         { mExp = n; }
 
-        BeingId getID() const A_WARN_UNUSED
+        BeingId getID() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
         void setID(const BeingId id)
         { mId = id; }
 
-        int getCharId() const A_WARN_UNUSED
+        int getCharId() const noexcept2 A_WARN_UNUSED
         { return mCharId; }
 
         void setCharId(const int id)
         { mCharId = id; }
 
-        GenderT getGender() const A_WARN_UNUSED
+        GenderT getGender() const noexcept2 A_WARN_UNUSED
         { return mGender; }
 
         void setGender(const GenderT g)
         { mGender = g; }
 
-        int getRace() const A_WARN_UNUSED
+        int getRace() const noexcept2 A_WARN_UNUSED
         { return mRace; }
 
         void setRace(const int r)
         { mRace = r; }
 
-        const std::string &getIp() const A_WARN_UNUSED
+        const std::string &getIp() const noexcept2 A_WARN_UNUSED
         { return mIp; }
 
         void setIp(const std::string &ip)
         { mIp = ip; }
 
-        bool getPoison() const A_WARN_UNUSED
+        bool getPoison() const noexcept2 A_WARN_UNUSED
         { return mPoison; }
 
         void setPoison(const bool b)

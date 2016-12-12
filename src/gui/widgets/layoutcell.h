@@ -123,16 +123,16 @@ class LayoutCell notfinal
         void setType(int t)
         { mType = t; }
 
-        int getWidth() const A_WARN_UNUSED
+        int getWidth() const noexcept2 A_WARN_UNUSED
         { return mExtent[0]; }
 
-        int getHeight() const A_WARN_UNUSED
+        int getHeight() const noexcept2 A_WARN_UNUSED
         { return mExtent[1]; }
 
-        void setWidth(const int w)
+        void setWidth(const int w) noexcept2
         { mExtent[0] = w; }
 
-        void setHeight(const int h)
+        void setHeight(const int h) noexcept2
         { mExtent[1] = h; }
 
         enum

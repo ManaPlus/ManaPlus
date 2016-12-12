@@ -58,10 +58,10 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         virtual ~ActorSprite();
 
-        BeingId getId() const A_WARN_UNUSED
+        BeingId getId() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
-        void setId(const BeingId id)
+        void setId(const BeingId id) noexcept2
         { mId = id; }
 
         /**

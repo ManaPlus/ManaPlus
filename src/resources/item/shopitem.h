@@ -126,7 +126,7 @@ class ShopItem final : public Item
          *
          * @return the price of the item
          */
-        int getPrice() const A_WARN_UNUSED
+        int getPrice() const noexcept2 A_WARN_UNUSED
         { return mPrice; }
 
         /**
@@ -134,24 +134,24 @@ class ShopItem final : public Item
          *
          * @return the display name for the item in the shop list
          */
-        const std::string &getDisplayName() const A_WARN_UNUSED
+        const std::string &getDisplayName() const noexcept2 A_WARN_UNUSED
         { return mDisplayName; }
 
-        void setVisible(const bool b)
+        void setVisible(const bool b) noexcept2
         { mVisible = b; }
 
-        bool isVisible() const
+        bool isVisible() const noexcept2 A_WARN_UNUSED
         { return mVisible; }
 
         void increaseUsedQuantity(const int amount);
 
-        int getUsedQuantity() const A_WARN_UNUSED
+        int getUsedQuantity() const noexcept2 A_WARN_UNUSED
         { return mUsedQuantity; }
 
-        void setDisabled(const bool b)
+        void setDisabled(const bool b) noexcept2
         { mDisabled = b; }
 
-        bool getDisabled() const A_WARN_UNUSED
+        bool getDisabled() const noexcept2 A_WARN_UNUSED
         { return mDisabled; }
 
     protected:

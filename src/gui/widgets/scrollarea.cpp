@@ -1449,7 +1449,7 @@ void ScrollArea::checkPolicies()
     }
 }
 
-bool ScrollArea::isSelectable() const
+bool ScrollArea::isSelectable() const noexcept2
 {
     if (mVBarVisible || mHBarVisible)
         return true;

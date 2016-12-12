@@ -77,7 +77,7 @@ class Equipment final
         void setBackend(Backend *const backend)
         { mBackend = backend; }
 
-        const Backend *getBackend() const A_WARN_UNUSED
+        const Backend *getBackend() const noexcept2 A_WARN_UNUSED
         { return mBackend; }
 
     private:

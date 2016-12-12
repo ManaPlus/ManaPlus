@@ -108,77 +108,77 @@ class MouseInput final
         ~MouseInput()
         { }
 
-        void setType(MouseEventTypeT type)
+        void setType(MouseEventTypeT type) noexcept2
         {
             mType = type;
         }
 
-        MouseEventTypeT getType() const
+        MouseEventTypeT getType() const noexcept2
         {
             return mType;
         }
 
-        void setButton(MouseButtonT button)
+        void setButton(MouseButtonT button) noexcept2
         {
             mButton = button;
         }
 
-        MouseButtonT getButton() const
+        MouseButtonT getButton() const noexcept2
         {
             return mButton;
         }
 
-        int getTimeStamp() const
+        int getTimeStamp() const noexcept2
         {
             return mTimeStamp;
         }
 
-        void setTimeStamp(int timeStamp)
+        void setTimeStamp(int timeStamp) noexcept2
         {
             mTimeStamp = timeStamp;
         }
 
-        void setX(int x)
+        void setX(int x) noexcept2
         {
             mX = x;
         }
 
-        int getX() const
+        int getX() const noexcept2
         {
             return mX;
         }
 
-        void setY(int y)
+        void setY(int y) noexcept2
         {
             mY = y;
         }
 
-        int getY() const
+        int getY() const noexcept2
         {
             return mY;
         }
 
-        void setReal(const int x, const int y)
+        void setReal(const int x, const int y) noexcept2
         { mRealX = x; mRealY = y; }
 
-        int getRealX() const A_WARN_UNUSED
+        int getRealX() const noexcept2 A_WARN_UNUSED
         { return mRealX; }
 
-        int getRealY() const A_WARN_UNUSED
+        int getRealY() const noexcept2 A_WARN_UNUSED
         { return mRealY; }
 
 #ifdef ANDROID
-        int getTouchX() const A_WARN_UNUSED
+        int getTouchX() const noexcept2 A_WARN_UNUSED
         { return mRealX; }
 
-        int getTouchY() const A_WARN_UNUSED
+        int getTouchY() const noexcept2 A_WARN_UNUSED
         { return mRealY; }
 #else  // ANDROID
 
-        int getTouchX() const A_WARN_UNUSED
+        int getTouchX() const noexcept2 A_WARN_UNUSED
         { return mX; }
 
-        int getTouchY() const A_WARN_UNUSED
+        int getTouchY() const noexcept2 A_WARN_UNUSED
         { return mY; }
 #endif  // ANDROID
 

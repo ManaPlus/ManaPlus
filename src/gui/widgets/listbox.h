@@ -137,7 +137,7 @@ class ListBox notfinal : public Widget,
 
         void refocus();
 
-        void setDistributeMousePressed(const bool b)
+        void setDistributeMousePressed(const bool b) noexcept2
         { mDistributeMousePressed = b; }
 
         virtual void adjustSize();
@@ -146,16 +146,16 @@ class ListBox notfinal : public Widget,
 
         virtual int getSelectionByMouse(const int y) const;
 
-        void setCenter(const bool b)
+        void setCenter(const bool b) noexcept2
         { mCenterText = b; }
 
-        int getPressedIndex() const
+        int getPressedIndex() const noexcept2 A_WARN_UNUSED
         { return mPressedIndex; }
 
         virtual unsigned int getRowHeight() const A_WARN_UNUSED
         { return mRowHeight; }
 
-        void setRowHeight(unsigned int n)
+        void setRowHeight(unsigned int n) noexcept2
         { mRowHeight = n; }
 
         /**
@@ -164,7 +164,7 @@ class ListBox notfinal : public Widget,
          * @return the selected item as an index in the list model.
          * @see setSelected
          */
-        int getSelected() const
+        int getSelected() const noexcept2 A_WARN_UNUSED
         { return mSelected; }
 
          /**
@@ -190,7 +190,7 @@ class ListBox notfinal : public Widget,
          * @return the list model used.
          * @see setListModel
          */
-        ListModel *getListModel() const
+        ListModel *getListModel() const noexcept2 A_WARN_UNUSED
         { return mListModel; }
 
         /**
@@ -205,7 +205,7 @@ class ListBox notfinal : public Widget,
          * @return true if wrapping is enabled, fasle otherwise.
          * @see setWrappingEnabled
          */
-        bool isWrappingEnabled() const
+        bool isWrappingEnabled() const noexcept2 A_WARN_UNUSED
         { return mWrappingEnabled; }
 
         /**
@@ -219,7 +219,7 @@ class ListBox notfinal : public Widget,
          *
          * @see isWrappingEnabled
          */
-        void setWrappingEnabled(const bool wrappingEnabled)
+        void setWrappingEnabled(const bool wrappingEnabled) noexcept2
         { mWrappingEnabled = wrappingEnabled; }
 
         /**

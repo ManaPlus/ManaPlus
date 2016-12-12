@@ -98,7 +98,7 @@ class KeyInput final
         {
         }
 
-        KeyInput &operator=(const KeyInput &k)
+        KeyInput &operator=(const KeyInput &k) noexcept2
         {
             mKey = k.mKey;
             mType = k.mType;
@@ -112,43 +112,43 @@ class KeyInput final
         ~KeyInput()
         { }
 
-        void setType(KeyEventTypeT type)
+        void setType(KeyEventTypeT type) noexcept2
         {
             mType = type;
         }
 
-        KeyEventTypeT getType() const
+        KeyEventTypeT getType() const noexcept2 A_WARN_UNUSED
         {
             return mType;
         }
 
-        void setKey(const Key& key)
+        void setKey(const Key& key) noexcept2
         {
             mKey = key;
         }
 
-        const Key& getKey() const
+        const Key& getKey() const noexcept2
         {
             return mKey;
         }
 
-        void setActionId(const InputActionT n)
+        void setActionId(const InputActionT n) noexcept2
         {
             mActionId = n;
         }
 
-        InputActionT getActionId() const A_WARN_UNUSED
+        InputActionT getActionId() const noexcept2 A_WARN_UNUSED
         {
             return mActionId;
         }
 
 #ifdef USE_SDL2
-        void setText(const std::string &text)
+        void setText(const std::string &text) noexcept2
         {
             mText = text;
         }
 
-        std::string getText() const
+        std::string getText() const noexcept2
         {
             return mText;
         }

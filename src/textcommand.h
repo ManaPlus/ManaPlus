@@ -77,38 +77,38 @@ class TextCommand final
          */
         ~TextCommand();
 
-        std::string getName() const A_WARN_UNUSED
+        std::string getName() const noexcept2 A_WARN_UNUSED
         { return mCommand; }
 
-        std::string getCommand() const A_WARN_UNUSED
+        std::string getCommand() const noexcept2 A_WARN_UNUSED
         { return mCommand; }
 
-        std::string getComment() const A_WARN_UNUSED
+        std::string getComment() const noexcept2 A_WARN_UNUSED
         { return mComment; }
 
-        std::string getSymbol() const A_WARN_UNUSED
+        std::string getSymbol() const noexcept2 A_WARN_UNUSED
         { return mSymbol; }
 
-        int getId() const A_WARN_UNUSED
+        int getId() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
-        CommandTargetT getTargetType() const A_WARN_UNUSED
+        CommandTargetT getTargetType() const noexcept2 A_WARN_UNUSED
         { return mTargetType; }
 
-        std::string getIcon() const A_WARN_UNUSED
+        std::string getIcon() const noexcept2 A_WARN_UNUSED
         { return mIcon; }
 
 #ifdef TMWA_SUPPORT
-        unsigned int getMana() const A_WARN_UNUSED
+        unsigned int getMana() const noexcept2 A_WARN_UNUSED
         { return mMana; }
 
-        MagicSchoolT getSchool() const A_WARN_UNUSED
+        MagicSchoolT getSchool() const noexcept2 A_WARN_UNUSED
         { return mSchool; }
 
-        unsigned getBaseLvl() const A_WARN_UNUSED
+        unsigned getBaseLvl() const noexcept2 A_WARN_UNUSED
         { return mBaseLvl; }
 
-        unsigned getSchoolLvl() const A_WARN_UNUSED
+        unsigned getSchoolLvl() const noexcept2 A_WARN_UNUSED
         { return mSchoolLvl; }
 
         void setMana(const unsigned int mana)
@@ -123,7 +123,7 @@ class TextCommand final
         void setSchoolLvl(const unsigned int schoolLvl)
         { mSchoolLvl = schoolLvl; }
 
-        TextCommandTypeT getCommandType() const A_WARN_UNUSED
+        TextCommandTypeT getCommandType() const noexcept2 A_WARN_UNUSED
         { return mCommandType; }
 
         void setCommandType(const TextCommandTypeT commandType)
@@ -148,10 +148,10 @@ class TextCommand final
         void setIcon(const std::string &icon)
         { mIcon = icon; loadImage(); }
 
-        bool isEmpty() const A_WARN_UNUSED
+        bool isEmpty() const noexcept2 A_WARN_UNUSED
         { return mCommand.empty() && mSymbol.empty(); }
 
-        Image *getImage() const A_WARN_UNUSED
+        Image *getImage() const noexcept2 A_WARN_UNUSED
         { return mImage; }
 
     private:
