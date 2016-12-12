@@ -74,7 +74,8 @@ class SDL2SoftwareImageHelper final : public ImageHelper
                                   SDL_Surface *restrict const dst,
                                   SDL_Rect *restrict const dstrect);
 
-        constexpr2 static void setFormat(SDL_PixelFormat *const format) noexcept2
+        constexpr2 static void setFormat(SDL_PixelFormat *const format)
+                                         noexcept2
         {
             mFormat = format;
             if (mFormat)

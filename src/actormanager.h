@@ -331,7 +331,8 @@ class ActorManager final: public ConfigListener
         bool isIn##list1##List(const std::string &name) const A_WARN_UNUSED\
         { return m##list1##mob##Set.find(name) != m##list1##mob##Set.end(); }\
         void rebuild##list1##mob();\
-        std::set<std::string> get##list1##mob##Set() const noexcept2 A_WARN_UNUSED\
+        std::set<std::string> get##list1##mob##Set() const noexcept2\
+                                                   A_WARN_UNUSED\
         { return m##list1##mob##Set; }\
         std::list<std::string> get##list1##mob() const noexcept2 A_WARN_UNUSED\
         { return m##list1##mob; }
@@ -345,7 +346,8 @@ class ActorManager final: public ConfigListener
         const StringIntMap &getAttackMobsMap() const noexcept2 A_WARN_UNUSED
         { return mAttackMobsMap; }
 
-        const StringIntMap &getPriorityAttackMobsMap() const noexcept2 A_WARN_UNUSED
+        const StringIntMap &getPriorityAttackMobsMap() const noexcept2
+                                                     A_WARN_UNUSED
         { return mPriorityAttackMobsMap; }
 
         int getAttackMobIndex(const std::string &name) const A_WARN_UNUSED;

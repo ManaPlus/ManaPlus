@@ -159,7 +159,8 @@ class ItemInfo final
         void setMissileParticleFile(const std::string &s) noexcept2
         { mMissileParticleFile = s; }
 
-        const std::string &getMissileParticleFile() const noexcept2 A_WARN_UNUSED
+        const std::string &getMissileParticleFile() const noexcept2
+                                                  A_WARN_UNUSED
         { return mMissileParticleFile; }
 
         void setHitEffectId(const int s) noexcept2

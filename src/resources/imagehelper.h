@@ -96,7 +96,8 @@ class ImageHelper notfinal
 
         static SDL_Surface *loadPng(SDL_RWops *const rw);
 
-        constexpr static void setOpenGlMode(const RenderType useOpenGL) noexcept2
+        constexpr static void setOpenGlMode(const RenderType useOpenGL)
+                                            noexcept2
         { mUseOpenGL = useOpenGL; }
 
         virtual RenderType useOpenGL() const noexcept2 A_WARN_UNUSED

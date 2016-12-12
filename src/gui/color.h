@@ -215,7 +215,10 @@ class Color final
           */
         constexpr bool operator!=(const Color& color) const
         {
-            return !(r == color.r && g == color.g && b == color.b && a == color.a);
+            return !(r == color.r &&
+                g == color.g &&
+                b == color.b &&
+                a == color.a);
         }
 
         /**

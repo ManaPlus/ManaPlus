@@ -70,13 +70,15 @@ class Skin final
         /**
          * Returns the image used by a close button for this skin.
          */
-        const Image *getCloseImage(const bool state) const noexcept2 A_WARN_UNUSED
+        const Image *getCloseImage(const bool state) const
+                                   noexcept2 A_WARN_UNUSED
         { return state ? mCloseImageHighlighted : mCloseImage; }
 
         /**
          * Returns the image used by a sticky button for this skin.
          */
-        const Image *getStickyImage(const bool state) const noexcept2 A_WARN_UNUSED
+        const Image *getStickyImage(const bool state) const
+                                    noexcept2 A_WARN_UNUSED
         { return state ? mStickyImageDown : mStickyImageUp; }
 
         /**
