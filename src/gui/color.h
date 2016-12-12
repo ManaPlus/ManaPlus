@@ -135,7 +135,7 @@ class Color final
           * @param color A color to add to this color.
           * @return The added colors with an alpha value set to 255.
           */
-        constexpr Color operator+(const Color& color) const
+        constexpr2 Color operator+(const Color& color) const
         {
             Color result(r + color.r,
                          g + color.g,
@@ -159,7 +159,7 @@ class Color final
           * @param color A color to subtract from this color.
           * @return The subtracted colors with an alpha value set to 255.
           */
-        constexpr Color operator-(const Color& color) const
+        constexpr2 Color operator-(const Color& color) const
         {
             Color result(r - color.r,
                          g - color.g,
@@ -182,7 +182,7 @@ class Color final
           *         the add and subtract operations, be multiplied as
           *         well.
           */
-        constexpr Color operator*(const float value) const
+        constexpr2 Color operator*(const float value) const
         {
             Color result(CAST_U32(static_cast<float>(r) * value),
                          CAST_U32(static_cast<float>(g) * value),
