@@ -97,7 +97,7 @@ class CompoundSprite notfinal : public Sprite
 
         bool updateNumber(const unsigned num) override final;
 
-        constexpr static void setEnableDelay(bool b) noexcept2
+        constexpr2 static void setEnableDelay(bool b) noexcept2
         { mEnableDelay = b; }
 
         int getLastTime() const noexcept2 A_WARN_UNUSED

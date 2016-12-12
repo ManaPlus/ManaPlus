@@ -114,7 +114,7 @@ class AnimatedSprite final : public Sprite
         bool isTerminated() const restrict2 noexcept2
         { return mTerminated; }
 
-        constexpr static void setEnableCache(const bool b) noexcept2
+        constexpr2 static void setEnableCache(const bool b) noexcept2
         { mEnableCache = b; }
 
         void setLastTime(const int time) noexcept2

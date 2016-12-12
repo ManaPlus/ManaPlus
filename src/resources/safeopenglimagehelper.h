@@ -98,10 +98,10 @@ class SafeOpenGLImageHelper final : public ImageHelper
         static int getInternalTextureType() A_WARN_UNUSED
         { return mInternalTextureType; }
 
-        constexpr static void setInternalTextureType(const int n) noexcept2
+        constexpr2 static void setInternalTextureType(const int n) noexcept2
         { mInternalTextureType = n; }
 
-        constexpr static void setBlur(const bool n) noexcept2
+        constexpr2 static void setBlur(const bool n) noexcept2
         { mBlur = n; }
 
         static int mTextureType;
@@ -113,7 +113,7 @@ class SafeOpenGLImageHelper final : public ImageHelper
 
         static void initTextureSampler(const GLint id);
 
-        constexpr static void setUseTextureSampler(const bool b) noexcept2
+        constexpr2 static void setUseTextureSampler(const bool b) noexcept2
         { mUseTextureSampler = b; }
 
         static void invalidate(const GLuint textureId);

@@ -60,7 +60,7 @@ class SDL2SoftwareImageHelper final : public ImageHelper
                                  const float alpha)
                                  override final A_WARN_UNUSED;
 
-        constexpr static void SDLSetEnableAlphaCache(const bool n) noexcept2
+        constexpr2 static void SDLSetEnableAlphaCache(const bool n) noexcept2
         { mEnableAlphaCache = n; }
 
         static bool SDLGetEnableAlphaCache() noexcept2 A_WARN_UNUSED

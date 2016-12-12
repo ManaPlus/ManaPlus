@@ -91,12 +91,12 @@ class ImageHelper notfinal
 
         static void dumpSurfaceFormat(const SDL_Surface *const image);
 
-        constexpr static void setEnableAlpha(const bool n) noexcept2
+        constexpr2 static void setEnableAlpha(const bool n) noexcept2
         { mEnableAlpha = n; }
 
         static SDL_Surface *loadPng(SDL_RWops *const rw);
 
-        constexpr static void setOpenGlMode(const RenderType useOpenGL)
+        constexpr2 static void setOpenGlMode(const RenderType useOpenGL)
                                             noexcept2
         { mUseOpenGL = useOpenGL; }
 

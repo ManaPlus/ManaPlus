@@ -70,7 +70,7 @@ class Game final
         static Game *instance() A_WARN_UNUSED
         { return mInstance; }
 
-        constexpr static void clearInstance() noexcept2
+        constexpr2 static void clearInstance() noexcept2
         { mInstance = nullptr; }
 
         /**

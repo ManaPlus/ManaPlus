@@ -81,7 +81,7 @@ class SDLImageHelper final : public ImageHelper
                                 SDL_Surface *const surface)
                                 const override final;
 
-        constexpr static void SDLSetEnableAlphaCache(const bool n) noexcept2
+        constexpr2 static void SDLSetEnableAlphaCache(const bool n) noexcept2
         { mEnableAlphaCache = n; }
 
         static bool SDLGetEnableAlphaCache() noexcept2 A_WARN_UNUSED
