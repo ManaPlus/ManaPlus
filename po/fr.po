@@ -27,7 +27,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-10-22 15:53+0300\n"
+"POT-Creation-Date: 2016-12-12 20:27+0300\n"
 "PO-Revision-Date: 2016-10-28 09:40+0000\n"
 "Last-Translator: Alige\n"
 "Language-Team: French (http://www.transifex.com/akaras/manaplus/language/"
@@ -917,24 +917,24 @@ msgid "Debug"
 msgstr "Débogage"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:589
+#: src/game.cpp:590
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr "Capture d'écran sauvegardée sous %s"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:599
+#: src/game.cpp:600
 msgid "Saving screenshot failed!"
 msgstr "La capture d'écran a échoué !"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:685
+#: src/game.cpp:686
 msgid "The connection to the server was lost."
 msgstr ""
 "La connexion au serveur a été coupée, le programme va maintenant se fermer."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:688
+#: src/game.cpp:689
 msgid "Network Error"
 msgstr "Erreur Réseau"
 
@@ -5344,7 +5344,8 @@ msgstr "Ignorer les paquets d'identification"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:395
-msgid "Log unimplimented packets"
+#, fuzzy
+msgid "Log unimplemented packets"
 msgstr "Effectuer l'historique des paquets non implémentés"
 
 #. TRANSLATORS: settings option

@@ -4,6 +4,8 @@
 #
 # Translators:
 # 0x0Eddine <salahbubuli44@gmail.com>, 2012,2014-2015
+# Albert, 2016
+# Albert, 2016
 # Andrei Karas <akaras@inbox.ru>, 2011
 # Jumpy <antoinebcn@hotmail.com>, 2011
 # Maria <mtorres2022@gmail.com>, 2012
@@ -24,9 +26,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-10-22 15:53+0300\n"
-"PO-Revision-Date: 2016-10-23 08:29+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2016-12-12 20:27+0300\n"
+"PO-Revision-Date: 2016-12-02 19:36+0000\n"
+"Last-Translator: Nelson Martell <nelson6e65@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/akaras/manaplus/language/"
 "es/)\n"
 "Language: es\n"
@@ -907,23 +909,23 @@ msgid "Debug"
 msgstr "Depurador"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:589
+#: src/game.cpp:590
 #, c-format
 msgid "Screenshot saved as %s"
 msgstr "Captura de pantalla guardada como %s"
 
 #. TRANSLATORS: save file message
-#: src/game.cpp:599
+#: src/game.cpp:600
 msgid "Saving screenshot failed!"
 msgstr "¡El guardado de la captura de pantalla ha fallado!"
 
 #. TRANSLATORS: error message text
-#: src/game.cpp:685
+#: src/game.cpp:686
 msgid "The connection to the server was lost."
 msgstr "Se ha perdido la conexión con el servidor."
 
 #. TRANSLATORS: error message header
-#: src/game.cpp:688
+#: src/game.cpp:689
 msgid "Network Error"
 msgstr "Error de Red"
 
@@ -2246,7 +2248,7 @@ msgstr "Vestimenta"
 #. TRANSLATORS: copy equipment from player to outfit
 #: src/gui/popups/popupmenu.cpp:791
 msgid "Copy from player"
-msgstr ""
+msgstr "Copiar desde reproductor"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: clear selected outfit
@@ -2626,23 +2628,23 @@ msgstr "Tipo de invocación de habilidad..."
 #. TRANSLATORS: set skill cast offset by x
 #: src/gui/popups/popupmenu.cpp:2409
 msgid "Skill offset by x..."
-msgstr ""
+msgstr "Compensación de habilidad mediante x..."
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set skill cast offset by y
 #: src/gui/popups/popupmenu.cpp:2413
 msgid "Skill offset by y..."
-msgstr ""
+msgstr "Compensación de habilidad mediante y..."
 
 #. TRANSLATORS: popup menu header
 #: src/gui/popups/popupmenu.cpp:2438
 msgid "Skill cast offset by x"
-msgstr ""
+msgstr "Compensación de habilidad de reparto mediante x"
 
 #. TRANSLATORS: popup menu header
 #: src/gui/popups/popupmenu.cpp:2444
 msgid "Skill cast offset by y"
-msgstr ""
+msgstr "Compensación de habilidad de reparto mediante y"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: skill level header
@@ -3016,25 +3018,25 @@ msgstr "Transportar aleatoriamente"
 #. TRANSLATORS: spawn player clone
 #: src/gui/popups/popupmenu.cpp:3112
 msgid "Spawn clone"
-msgstr ""
+msgstr "Engendrar clon"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: spawn slave player clone
 #: src/gui/popups/popupmenu.cpp:3115
 msgid "Spawn slave clone"
-msgstr ""
+msgstr "Engendrar clon esclavo"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: spawn evil player clone
 #: src/gui/popups/popupmenu.cpp:3118
 msgid "Spawn evil clone"
-msgstr ""
+msgstr "Engendrar clon malvado"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: break guild
 #: src/gui/popups/popupmenu.cpp:3122
 msgid "Break guild"
-msgstr ""
+msgstr "Romper gremio"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: kick player
@@ -3081,13 +3083,13 @@ msgstr "Disfraz"
 #. TRANSLATORS: spawn monster
 #: src/gui/popups/popupmenu.cpp:3232
 msgid "Spawn same"
-msgstr ""
+msgstr "Engendrar igual"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: spawn slave monster
 #: src/gui/popups/popupmenu.cpp:3238
 msgid "Spawn slave"
-msgstr ""
+msgstr "Engendrar esclavo"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show monster information
@@ -3114,7 +3116,7 @@ msgstr "Buscar"
 #. TRANSLATORS: show selected monster spawns in all maps
 #: src/gui/popups/popupmenu.cpp:3252
 msgid "Search spawns"
-msgstr ""
+msgstr "Buscar engendros"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show who drops item
@@ -3168,7 +3170,7 @@ msgstr "Comandos GM"
 #: src/gui/popups/popupmenu.cpp:3376
 #, c-format
 msgid "Move to craft %d"
-msgstr ""
+msgstr "Cambiar al oficio %d"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: open mail dialog
@@ -4242,6 +4244,11 @@ msgid ""
 "It allows one to select default color of outgoing chat messages easily, but "
 "also occupies some space in chat window."
 msgstr ""
+"Habilitar este ajuste para mostrar la selección de color en la ventana de "
+"chat. La ventana de chat mostrará la selección de color.\n"
+"\n"
+"Permite seleccionar el color por defecto de los mensajes de chat salientes "
+"fácilmente, pero también ocupa espacio en la ventana de chat."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:90
@@ -4276,6 +4283,11 @@ msgid ""
 "Note: long lines can make client slower. Lines longer than this limit will "
 "be truncated."
 msgstr ""
+"Limita cuántos caracteres se mostrarán en líneas de texto más largas "
+"mostradas en el chat.\n"
+"\n"
+"Nota: las líneas largas pueden hacer al cliente más lento. Las líneas más "
+"largas que este límite serán truncadas."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:110
@@ -4291,6 +4303,11 @@ msgid ""
 "\n"
 "Note: keeping too many lines in scroll buffer can slow client down."
 msgstr ""
+"Limita cuántas líneas de chat se mantendrán en el búfer. El chat conserva un "
+"número específico de últimas líneas de texto. Las líneas más antiguas que "
+"excedan este límite se desechan del búfer.\n"
+"\n"
+"Nota: conservar demasiadas líneas en el búfer pueden desacelerar el cliente."
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_chat.cpp:120
@@ -4309,6 +4326,10 @@ msgid ""
 "\n"
 "Note: chat logs can take noticeable amount of disk space over time."
 msgstr ""
+"Si habilita este ajuste, los registros del chat se escribirán en el disco.\n"
+"\n"
+"Nota: los registros de chat pueden ocupar una notable cantidad de espacio en "
+"el disco conforme pasa el tiempo."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:131
@@ -4351,6 +4372,11 @@ msgid ""
 "This adds some extra noise to chat, but allows one to see when your buddies "
 "are coming online."
 msgstr ""
+"Si este ajuste está habilitado, los cambios de estado en línea de los "
+"miembros del grupo se mostrarán en la pestaña de chat del grupo.\n"
+"\n"
+"Esto añade algún ruido extra al chat, pero permite ver cuándo están en línea "
+"sus colegas."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:152
@@ -4393,6 +4419,13 @@ msgid ""
 "special content. If you disable this setting, you will be able to see these "
 "messages and get idea when other players are looking at your shop."
 msgstr ""
+"Si este ajuste está habilitado, ningún mensaje relacionado con la tienda "
+"incorporada de ManaPlus se mostrará en el chat. Deshabilite este ajuste si "
+"quiere ver los mensajes relacionados con la tienda.\n"
+"\n"
+"Nota: técnicamente, la tienda de ManaPlus implementa como es habitual "
+"mensajes privados con contenido especial. Si deshabilita este ajuste, podrá "
+"ver esos mensajes y saber cuándo otros jugadores están mirando en su tienda."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:175
@@ -4407,6 +4440,10 @@ msgid ""
 "Note: MVP messages are not used on TMW/Evol/etc servers, so this feature "
 "usually makes little difference."
 msgstr ""
+"Habilite este ajuste para ver los mensajes MVP del servidor.\n"
+"\n"
+"Nota: los mensajes MVP no se usan en los servidores TMW/Evol/etc, así que "
+"esta característica normalmente significa una diferencia pequeña."
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: input action group
@@ -4431,6 +4468,12 @@ msgid ""
 "Note: putting all whispers to single General tab is known to be confusing. "
 "Think twice before disabling this feature."
 msgstr ""
+"Si este ajuste está habilitado, todos los susurros (mensajes privados) se "
+"ubicarán en pestañas separadas, una pestaña separada para cada jugador. Si "
+"está deshabilitado, los susurros aparecerán en la pestaña General.\n"
+"\n"
+"Nota: poner todos los susurros en la pestaña General es confuso. Piénselo "
+"dos veces antes de deshabilitar esta característica."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:197
@@ -4445,6 +4488,12 @@ msgid ""
 "\n"
 "Note: it does not affects server replies related to spells."
 msgstr ""
+"Si este ajuste está deshabilitado, la invocación de hechizo se mostrará en "
+"la pestaña Depurar. Si está deshabilitado, se mostrará en la pestaña General "
+"en su lugar.\n"
+"\n"
+"Nota: eso no afecta a las respuestas del servidor relacionadas con los "
+"hechizos."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:205
@@ -4460,6 +4509,13 @@ msgid ""
 "Note: according to 4144, disabling this could also make you to lose some "
 "debug messages from client in Debug tab since these are fake server messages."
 msgstr ""
+"Si este ajuste está deshabilitado, los mensajes del servidor se mostrarán en "
+"la pestaña Depurar o en el chat. Si está deshabilitado, los mensajes del "
+"servidor aparecerán en el chat General en su lugar.\n"
+"\n"
+"Nota: de acuerdo a 4144, deshabilitar esto también le hace perder algunos "
+"mensajes de depuración del cliente en la pestaña Depurar desde que son "
+"mensajes falsos del servidor."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:215
@@ -4474,6 +4530,11 @@ msgid ""
 "less noisy. If this setting is disabled, all trade related players messages "
 "will stay in General tab."
 msgstr ""
+"Habilita la pestaña de comercio. La pestaña Comercio es básicamente un "
+"filtro. Los mensajes que palabras típicas para comercios irán a la pestaña "
+"Comercio. Esto hará a la pestaña General menos ruidosa. Si este ajuste está "
+"deshabilitado, codos los mensajes de jugadores relacionados con el comercio "
+"estarán en la pestaña General."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:224
@@ -4489,6 +4550,11 @@ msgid ""
 "Note: this setting only makes difference for GMs (Game Masters) since this "
 "tab only appears for GMs."
 msgstr ""
+"Si está habilitado, la pestaña GM aparecerá en el chat. Esta muestra texto "
+"relacionado con la actividad de GM.\n"
+"\n"
+"Nota: este ajuste sólo hace diferencia para GMs (Game Masters) desde que "
+"esta pestaña sólo aparece para GMs."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:232
@@ -4522,6 +4588,12 @@ msgid ""
 "\n"
 "Note: it only works on servers supporting language tabs feature, like Evol."
 msgstr ""
+"Si este ajuste está habilitado y el servidor soporta distintos chats para "
+"distintos idiomas, usted verá mensajes para todos los idiomas, a pesar de "
+"sus preferencias de idioma.\n"
+"\n"
+"Nota: Sólo funciona en servidores que soporten la característica de pestañas "
+"de idioma, como Evol."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:250
@@ -4537,6 +4609,11 @@ msgid ""
 "\n"
 "Note: client restart required to take effect."
 msgstr ""
+"Si este ajuste está habilitado, la pestaña Batalla aparecerá en el chat. "
+"Esta pestaña contendrá mensajes relacionados con las batallas, como el daño "
+"y la esperiencia ganada, si los mensajes de batalla están habilitados.\n"
+"\n"
+"Nota: se requiere reiniciar el cliente para que tenga efecto."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:259
@@ -4570,6 +4647,14 @@ msgid ""
 "\n"
 "Note: its mostly about jumpy attitude vs less usable space for text."
 msgstr ""
+"Si esta característica está habilitada, el texto del chat se ajustará "
+"automáticamente para adaptarse a la apariencia del campo de texto cuando "
+"escribe un mensaje y cuando el campo de texto del chat desaparece. Si está "
+"deshabilitado, el área de entrada de chat siempre ocupará este lugar, que "
+"podría ser de otro modo utilizable para el texto.\n"
+"\n"
+"Nota: su actitud principalmente nerviosa contra un espacio menos utilizable "
+"para texto."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:279
@@ -4627,6 +4712,12 @@ msgid ""
 "\n"
 "Note: careless use of this feature can make you to miss important announces!"
 msgstr ""
+"Este ajuste le permite pasar por alto algunos mensajes globales si un "
+"remitente particular (NPC, GM) le molesta demasiado. Global se moverá a "
+"Depurar en su lugar.\n"
+"\n"
+"Nota: ¡un uso descuidado de esta característica puede hacerle perder "
+"anuncios importantes!"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:314
@@ -4643,6 +4734,12 @@ msgid ""
 "Note: same window can also be invoked by hotkey when typing, usually F1 by "
 "default."
 msgstr ""
+"Si este ajuste está habilitado, un botón aparecerá junto al campo de entrada "
+"de texto. Este botón permite convocar una ventana de redacción, que permite "
+"insertar fácilmente emoticonos y formato de texto.\n"
+"\n"
+"Nota: la misma ventana puede ser convocada mediante combinación de teclas al "
+"escribir, usualmente F1 por defecto."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:324
@@ -5232,7 +5329,8 @@ msgstr "Ignorar registro de paquetes"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:395
-msgid "Log unimplimented packets"
+#, fuzzy
+msgid "Log unimplemented packets"
 msgstr "Registrar paquetes sin implementar"
 
 #. TRANSLATORS: settings option
@@ -5440,12 +5538,12 @@ msgstr "mostrar debajo"
 #. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:61
 msgid "show"
-msgstr ""
+msgstr "mostrar"
 
 #. TRANSLATORS: visible name type
 #: src/gui/widgets/tabs/setup_players.cpp:63
 msgid "show on selection"
-msgstr ""
+msgstr "mostrar en la selección"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:79
@@ -5475,7 +5573,7 @@ msgstr "Apuntar a jugadores muertos"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:101
 msgid "Show player names"
-msgstr ""
+msgstr "Mostrar nombres de jugador"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:106
@@ -8017,7 +8115,7 @@ msgstr "Apuntar a mercenario"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:136
 msgid "Target skill unit"
-msgstr ""
+msgstr "Unidad de habilidad de objetivo"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:142
@@ -8242,7 +8340,7 @@ msgstr "Mostrar sonrisas"
 #: src/input/pages/craft.cpp:80
 #, c-format
 msgid "Craft shortcut %d"
-msgstr ""
+msgstr "Atajo de oficio %d"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:35
@@ -8814,22 +8912,22 @@ msgstr "Teclas de vestimenta"
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:41
 msgid "Wear outfit"
-msgstr ""
+msgstr "Ponerse vestimenta"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:47
 msgid "Copy Outfit to other outfit"
-msgstr ""
+msgstr "Copiar Atuendo a otro atuendo"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:53
 msgid "Copy outfit to chat"
-msgstr ""
+msgstr "Copiar atuendo al chat"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:59
 msgid "Copy equipped to outfit"
-msgstr ""
+msgstr "Copiar equipado a atuendo"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:65
@@ -9398,12 +9496,12 @@ msgstr "Pago cambiado."
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:102
 msgid "Pay wrong ip."
-msgstr ""
+msgstr "Pagar IP incorrecta."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:106
 msgid "Pay game room."
-msgstr ""
+msgstr "Pagar sala de juego."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:110
@@ -9418,22 +9516,22 @@ msgstr "Rechazo de censura japonesa."
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:119
 msgid "Remained other account."
-msgstr ""
+msgstr "Permanecer en otra cuenta."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:123
 msgid "Ip unfair."
-msgstr ""
+msgstr "IP parcial."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:127
 msgid "Ip count all."
-msgstr ""
+msgstr "La IP cuenta todo."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:131
 msgid "Ip count."
-msgstr ""
+msgstr "Contar IP."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:136
@@ -9443,12 +9541,12 @@ msgstr "Memoria."
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:140
 msgid "Han valid."
-msgstr ""
+msgstr "Han válido."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:144
 msgid "Ip limited access."
-msgstr ""
+msgstr "Acceso limitado de IP."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:148
@@ -9639,7 +9737,7 @@ msgstr "¡Estás llevando muchas cosas para hacer esto!"
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:366
 msgid "Fail summon."
-msgstr ""
+msgstr "Invocación fallida."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:370
@@ -10525,7 +10623,7 @@ msgstr "%s ha sido expulsado de la sala."
 #: src/resources/notifications.h:542
 #, c-format
 msgid "%s role changed to room owner."
-msgstr ""
+msgstr "La labor %s cambió a la sala del propietario."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:546
@@ -10545,7 +10643,7 @@ msgstr "Error al unirse a la sala. Expulsado de la sala."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:558
 msgid "Room join failed. Not enough money."
-msgstr ""
+msgstr "Unión a la sala fallida. Dinero insuficiente."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:562
@@ -10616,7 +10714,7 @@ msgstr "Adjuntaste exitosamente."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:614
 msgid "Error on getting attach successfully."
-msgstr ""
+msgstr "Error al adjuntar con éxito."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:618
@@ -10673,7 +10771,7 @@ msgstr ""
 #: src/resources/notifications.h:660
 #, c-format
 msgid "Item %s bound to you."
-msgstr ""
+msgstr "Objeto %s dirigido a usted."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:664
@@ -10728,7 +10826,7 @@ msgstr "Escaparse +50."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:704
 msgid "Full strip failed because of coating."
-msgstr ""
+msgstr "Línea completa fallida al cubrirla."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:708
@@ -10802,13 +10900,13 @@ msgstr "Jugador %s teletransportado."
 #: src/resources/notifications.h:790
 #, c-format
 msgid "Player %s trick dead."
-msgstr ""
+msgstr "Jugador %s murió."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:794
 #, c-format
 msgid "Player %s unknown remove."
-msgstr ""
+msgstr "Jugador %s eliminación desconocida."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:798
@@ -10862,7 +10960,7 @@ msgstr "Error al guardar posición. No tienes la habilidad de teletransporte."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:835
 msgid "Unable to buy while trading."
-msgstr ""
+msgstr "Imposible comprar mientras comercia."
 
 #. TRANSLATORS: skill level
 #: src/resources/skill/skillinfo.cpp:109
@@ -10911,7 +11009,7 @@ msgstr "Apoyo"
 #. TRANSLATORS: Skill type
 #: src/resources/skill/skilltypelist.h:45
 msgid "TargetTrap"
-msgstr ""
+msgstr "Trampa de objetivo"
 
 #. TRANSLATORS: chat option changed message
 #: src/utils/booleanoptions.h:29
