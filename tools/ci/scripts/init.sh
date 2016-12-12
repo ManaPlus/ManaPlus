@@ -221,16 +221,8 @@ function run_check_warnings {
 
 function run_h {
     rm $ERRFILE
-    echo "$CC -c -x c++ $* $includes */*/*/*/*.h"
-    $CC -c -x c++ $* $includes */*/*/*/*.h 2>$ERRFILE
-    echo "$CC -c -x c++ $* $includes */*/*/*.h"
-    $CC -c -x c++ $* $includes */*/*/*.h 2>>$ERRFILE
-    echo "$CC -c -x c++ $* $includes */*/*.h"
-    $CC -c -x c++ $* $includes */*/*.h 2>>$ERRFILE
-    echo "$CC -c -x c++ $* $includes */*.h"
-    $CC -c -x c++ $* $includes */*.h 2>>$ERRFILE
-    echo "$CC -c -x c++ $* $includes *.h"
-    $CC -c -x c++ $* $includes *.h 2>>$ERRFILE
+    echo "$CC -c -x c++ $* $includes */*/*/*/*.h */*/*/*.h */*/*.h */*.h *.h"
+    $CC -c -x c++ $* $includes */*/*/*/*.h */*/*/*.h */*/*.h */*.h *.h 2>$ERRFILE
     DATA=$(cat $ERRFILE)
     if [ "$DATA" != "" ];
     then
