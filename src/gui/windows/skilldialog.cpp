@@ -31,6 +31,8 @@
 
 #include "const/resources/spriteaction.h"
 
+#include "enums/resources/skill/skillsettype.h"
+
 #include "gui/shortcut/itemshortcut.h"
 
 #include "gui/windows/setupwindow.h"
@@ -318,6 +320,14 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                 // TRANSLATORS: skills dialog default skill tab
                 strprintf(_("Skill Set %d"), setCount));
 
+            const std::string setTypeStr = XML::getProperty(set, "type", "");
+            SkillSetTypeT setType = SkillSetType::VerticalList;
+            if (setTypeStr == "list" ||
+                setTypeStr == "vertical")
+            {
+                setType = SkillSetType::VerticalList;
+            }
+
             SkillModel *const model = new SkillModel;
             if (!mDefaultModel)
                 mDefaultModel = model;
@@ -340,20 +350,31 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
 
             model->updateVisibilities();
 
-            // possible leak listbox, scroll
-            SkillListBox *const listbox = new SkillListBox(this, model);
-            listbox->setActionEventId("sel");
-            listbox->addActionListener(this);
-            ScrollArea *const scroll = new ScrollArea(this,
-                listbox,
-                Opaque_false);
-            scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-            scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
-
-            SkillTab *const tab = new SkillTab(this, setName, listbox);
-            mDeleteTabs.push_back(tab);
-
-            mTabs->addTab(tab, scroll);
+            switch (setType)
+            {
+                case SkillSetType::VerticalList:
+                {
+                    // possible leak listbox, scroll
+                    SkillListBox *const listbox = new SkillListBox(this,
+                        model);
+                    listbox->setActionEventId("sel");
+                    listbox->addActionListener(this);
+                    ScrollArea *const scroll = new ScrollArea(this,
+                        listbox,
+                        Opaque_false);
+                    scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+                    scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+                    SkillTab *const tab = new SkillTab(this, setName, listbox);
+                    mDeleteTabs.push_back(tab);
+                    mTabs->addTab(tab, scroll);
+                    break;
+                }
+                case SkillSetType::Rectangle:
+                default:
+                    reportAlways("Unsupported skillset type: %s",
+                        setTypeStr.c_str());
+                    break;
+            }
         }
     }
 }
