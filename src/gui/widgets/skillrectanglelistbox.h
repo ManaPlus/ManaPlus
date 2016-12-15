@@ -333,11 +333,22 @@ class SkillRectangleListBox final : public Widget,
                     model->getSkillAt(mSelected) == skill)
                 {
                     skillPopup->hide();
-                    if (button == MouseButton::LEFT &&
-                        event.getX() >
-                        getWidth() - mPadding - skill->skillLevelWidth)
+
+                    const int x = skill->x * mBoxWidth + mPadding;
+                    const int y = skill->y * mBoxHeight + mPadding;
+                    Font *const font = getFont();
+                    const int height = font->getHeight();
+                    const int eventX = event.getX();
+                    const int eventY = event.getY() - mTextYOffset;
+                    if (button == MouseButton::LEFT)
                     {
-                        popupMenu->showSkillLevelPopup(skill);
+                        if (eventX >= x + mTextXOffset &&
+                            eventX <= x + mBoxWidth - mTextXOffset &&
+                            eventY >= y &&
+                            eventY <= y + height)
+                        {
+                            popupMenu->showSkillLevelPopup(skill);
+                        }
                     }
                     else if (button == MouseButton::RIGHT)
                     {
