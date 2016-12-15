@@ -432,7 +432,6 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
             }
 
             model->updateVisibilities();
-
         }
     }
 }

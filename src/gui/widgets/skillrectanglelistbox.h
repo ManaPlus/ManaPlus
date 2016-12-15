@@ -159,7 +159,6 @@ class SkillRectangleListBox final : public Widget,
                 SkillInfo *const e = model->getSkillAt(mSelected);
                 if (e)
                 {
-                    //const SkillData *const data = e->data;
                     const int x = e->x * mBoxWidth + mPadding;
                     const int y = e->y * mBoxHeight + mPadding;
 
@@ -219,7 +218,8 @@ class SkillRectangleListBox final : public Widget,
                         if (e->skillLevelWidth < 0)
                         {
                             // Add one for padding
-                            e->skillLevelWidth = font->getWidth(e->skillLevel) + 1;
+                            e->skillLevelWidth = font->getWidth(
+                                e->skillLevel) + 1;
                         }
                     }
                 }
