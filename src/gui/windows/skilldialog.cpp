@@ -398,7 +398,6 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                     reportAlways("Unsupported skillset type: %s",
                         setTypeStr.c_str());
                     return;
-                    break;
             }
             if (!mDefaultModel)
             {
