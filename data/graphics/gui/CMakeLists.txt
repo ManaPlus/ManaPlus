@@ -69,6 +69,7 @@ SET (FILES
     sell.xml
     server.xml
     shop.xml
+    skillrectanglelistbox.xml
     slider.xml
     slider_highlighted.xml
     speechbrowserbox.xml

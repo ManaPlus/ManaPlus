@@ -76,7 +76,10 @@ class SkillRectangleListBox final : public Widget,
             mSkillClicked(false)
         {
             if (theme)
-                mSkin = theme->load("listbox.xml", "");
+            {
+                mSkin = theme->load("skillrectanglelistbox.xml",
+                    "listbox.xml");
+            }
 
             if (mSkin)
             {

@@ -101,6 +101,7 @@ gui_DATA =				\
 	shoplistbox.xml		\
 	skilllistbox.xml		\
 	skillpopup.xml		\
+	skillrectanglelistbox.xml		\
 	slider.xml		\
 	slider_highlighted.xml		\
 	social.xml		\
