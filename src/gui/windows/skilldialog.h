@@ -215,6 +215,8 @@ class SkillDialog final : public Window,
         void loadSkillData(XmlNodePtr node,
                            SkillInfo *const skill);
 
+        void addDefaultTab();
+
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;
         std::vector<SkillInfo*> mDurations;

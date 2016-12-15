@@ -130,6 +130,24 @@ SkillDialog::~SkillDialog()
     clearSkills();
 }
 
+void SkillDialog::addDefaultTab()
+{
+    mDefaultModel = new SkillModel;
+    SkillListBox *const listbox = new SkillListBox(this,
+        mDefaultModel);
+    listbox->setActionEventId("sel");
+    listbox->addActionListener(this);
+    ScrollArea *const scroll = new ScrollArea(this,
+        listbox,
+        Opaque_false);
+    scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+    // TRANSLATORS: unknown skills tab name
+    mDefaultTab = new SkillTab(this, _("Unknown"), listbox);
+    mDeleteTabs.push_back(mDefaultTab);
+    mTabs->addTab(mDefaultTab, scroll);
+}
+
 void SkillDialog::action(const ActionEvent &event)
 {
     const std::string &eventId = event.getId();
@@ -256,6 +274,7 @@ void SkillDialog::clearSkills()
 {
     mTabs->removeAll();
     mDeleteTabs.clear();
+    mDefaultTab = nullptr;
     mDefaultModel = nullptr;
 
     delete_all(mSkills);
@@ -285,6 +304,7 @@ void SkillDialog::loadSkills()
         loadXmlFile(paths.getStringValue("skillsFile2"), SkipError_false);
     loadXmlFile(paths.getStringValue("skillsPatchFile"), SkipError_true);
     loadXmlDir("skillsPatchDir", loadXmlFile);
+    addDefaultTab();
 
     update();
 }
