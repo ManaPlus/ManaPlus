@@ -238,7 +238,7 @@ void TabbedArea::addTab(Tab *const tab,
     mTabContainer->add(tab);
     mTabs.push_back(std::pair<Tab*, Widget*>(tab, widget));
 
-    if (!mSelectedTab)
+    if (!mSelectedTab && tab->mVisible == Visible_true)
         setSelectedTab(tab);
 
     adjustTabPositions();
@@ -248,6 +248,7 @@ void TabbedArea::addTab(Tab *const tab,
     widget->setSize(getWidth() - frameSize,
         getHeight() - frameSize - mTabContainer->getHeight());
 
+    widgetResized(Event(nullptr));
     updateTabsWidth();
     updateArrowEnableState();
 }
@@ -419,6 +420,23 @@ void TabbedArea::setSelectedTab(Tab *const tab)
     widgetResized(Event(nullptr));
 }
 
+void TabbedArea::setSelectedTabDefault()
+{
+    if (mSelectedTab == nullptr ||
+        mSelectedTab->mVisible == Visible_false)
+    {
+        for (size_t i = 0; i < mTabs.size(); i++)
+        {
+            Tab *const tab = mTabs[i].first;
+            if (tab && tab->mVisible == Visible_true)
+            {
+                setSelectedTab(tab);
+                return;
+            }
+        }
+    }
+}
+
 int TabbedArea::getSelectedTabIndex() const
 {
     for (unsigned int i = 0, fsz = CAST_U32(mTabs.size());
@@ -492,9 +510,13 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
         int newWidth = mVisibleTabsWidth;
         while (mTabScrollIndex && newWidth < innerWidth)
         {
-            newWidth += mTabs[mTabScrollIndex - 1].first->getWidth();
-            if (newWidth < innerWidth)
-                --mTabScrollIndex;
+            Tab *const tab = mTabs[mTabScrollIndex - 1].first;
+            if (tab && tab->mVisible == Visible_true)
+            {
+                newWidth += tab->getWidth();
+                if (newWidth < innerWidth)
+                    --mTabScrollIndex;
+            }
         }
 
         if (mArrowButton[1])
@@ -516,8 +538,9 @@ void TabbedArea::updateTabsWidth()
     mTabsWidth = 0;
     FOR_EACH (TabContainer::const_iterator, itr, mTabs)
     {
-        if ((*itr).first)
-            mTabsWidth += (*itr).first->getWidth();
+        Tab *const tab = (*itr).first;
+        if (tab && tab->mVisible == Visible_true)
+            mTabsWidth += tab->getWidth();
     }
     updateVisibleTabsWidth();
 }
@@ -527,8 +550,9 @@ void TabbedArea::updateVisibleTabsWidth()
     mVisibleTabsWidth = 0;
     for (size_t i = mTabScrollIndex, sz = mTabs.size(); i < sz; ++i)
     {
-        if (mTabs[i].first)
-            mVisibleTabsWidth += CAST_S32(mTabs[i].first->getWidth());
+        Tab *const tab = mTabs[i].first;
+        if (tab && tab->mVisible == Visible_true)
+            mVisibleTabsWidth += CAST_S32(tab->getWidth());
     }
 }
 
@@ -576,8 +600,12 @@ void TabbedArea::adjustTabPositions()
     for (size_t i = 0; i < sz; ++i)
     {
         const Tab *const tab = mTabs[i].first;
-        if (tab && tab->getHeight() > maxTabHeight)
+        if (tab &&
+            tab->mVisible == Visible_true &&
+            tab->getHeight() > maxTabHeight)
+        {
             maxTabHeight = tab->getHeight();
+        }
     }
 
     int x = (mEnableScrollButtons && mArrowButton[0]->mVisible == Visible_true)
@@ -585,7 +613,7 @@ void TabbedArea::adjustTabPositions()
     for (size_t i = mTabScrollIndex; i < sz; ++i)
     {
         Tab *const tab = mTabs[i].first;
-        if (!tab)
+        if (!tab || tab->mVisible == Visible_false)
             continue;
         tab->setPosition(x, maxTabHeight - tab->getHeight());
         x += tab->getWidth();
@@ -598,7 +626,7 @@ void TabbedArea::adjustTabPositions()
         for (unsigned i = 0; i < mTabScrollIndex; ++i)
         {
             Tab *const tab = mTabs[i].first;
-            if (tab)
+            if (tab && tab->mVisible == Visible_true)
             {
                 x -= tab->getWidth();
                 tab->setPosition(x, maxTabHeight - tab->getHeight());

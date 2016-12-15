@@ -145,7 +145,10 @@ void SkillDialog::addDefaultTab()
     // TRANSLATORS: unknown skills tab name
     mDefaultTab = new SkillTab(this, _("Unknown"), listbox);
     mDeleteTabs.push_back(mDefaultTab);
+    mDefaultTab->setVisible(Visible_false);
     mTabs->addTab(mDefaultTab, scroll);
+    mTabs->adjustTabPositions();
+    mTabs->setSelectedTabDefault();
 }
 
 void SkillDialog::action(const ActionEvent &event)
@@ -403,11 +406,11 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                 mDefaultTab = tab;
             }
 
+            mDeleteTabs.push_back(tab);
             if (alwaysVisible == true)
                 tab->setVisible(Visible_true);
             else
                 tab->setVisible(Visible_false);
-            mDeleteTabs.push_back(tab);
             mTabs->addTab(tab, scroll);
 
             for_each_xml_child_node(node, set)
@@ -602,7 +605,11 @@ bool SkillDialog::updateSkill(const int id,
             info->sp = sp;
             info->update();
             if (info->tab)
+            {
                 info->tab->setVisible(Visible_true);
+                mTabs->adjustTabPositions();
+                mTabs->setSelectedTabDefault();
+            }
         }
         return true;
     }
@@ -655,6 +662,8 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
         skill->tab = mDefaultTab;
         mDefaultModel->addSkill(skill);
         mDefaultTab->setVisible(Visible_true);
+        mTabs->adjustTabPositions();
+        mTabs->setSelectedTabDefault();
 
         mSkills[id] = skill;
         mDefaultModel->updateVisibilities();

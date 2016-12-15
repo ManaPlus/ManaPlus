@@ -167,6 +167,8 @@ class TabbedArea final : public ActionListener,
 
         void setSelectedTab(Tab *const tab);
 
+        void setSelectedTabDefault();
+
         void setSelectedTabByIndex(const size_t index);
 
         int getSelectedTabIndex() const A_WARN_UNUSED;
