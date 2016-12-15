@@ -277,6 +277,7 @@ SET(SRCS
     resources/skill/skillinfo.cpp
     resources/skill/skillinfo.h
     gui/widgets/skilllistbox.h
+    gui/widgets/skillrectanglelistbox.h
     gui/models/skillmodel.cpp
     gui/models/skillmodel.h
     gui/models/sortlistmodelbuy.h

@@ -56,6 +56,8 @@ SkillInfo::SkillInfo() :
     duration(0),
     durationTime(0),
     cooldown(0),
+    x(0),
+    y(0),
     type(SkillType::Unknown),
     owner(SkillOwner::Player),
     customCastType(CastType::Default),

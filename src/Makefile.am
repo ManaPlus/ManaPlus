@@ -1062,6 +1062,7 @@ manaplus_SOURCES += main.cpp \
 	      resources/skill/skillinfo.cpp \
 	      resources/skill/skillinfo.h \
 	      gui/widgets/skilllistbox.h \
+	      gui/widgets/skillrectanglelistbox.h \
 	      gui/widgets/tabs/shortcuttab.h \
 	      gui/widgets/tabs/skilltab.h \
 	      gui/widgets/tabs/socialattacktab.h \

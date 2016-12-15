@@ -322,10 +322,15 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
 
             const std::string setTypeStr = XML::getProperty(set, "type", "");
             SkillSetTypeT setType = SkillSetType::VerticalList;
-            if (setTypeStr == "list" ||
+            if (setTypeStr == "" ||
+                setTypeStr == "list" ||
                 setTypeStr == "vertical")
             {
                 setType = SkillSetType::VerticalList;
+            }
+            else if (setTypeStr == "rectangle")
+            {
+                setType = SkillSetType::Rectangle;
             }
 
             SkillModel *const model = new SkillModel;
@@ -370,6 +375,22 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                     break;
                 }
                 case SkillSetType::Rectangle:
+                {
+                    SkillRectangleListBox *const listbox =
+                        new SkillRectangleListBox(this,
+                        model);
+                    listbox->setActionEventId("sel");
+                    listbox->addActionListener(this);
+                    ScrollArea *const scroll = new ScrollArea(this,
+                        listbox,
+                        Opaque_false);
+                    scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+                    scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+                    SkillTab *const tab = new SkillTab(this, setName, listbox);
+                    mDeleteTabs.push_back(tab);
+                    mTabs->addTab(tab, scroll);
+                    break;
+                }
                 default:
                     reportAlways("Unsupported skillset type: %s",
                         setTypeStr.c_str());
@@ -422,6 +443,10 @@ SkillInfo *SkillDialog::loadSkill(XmlNodePtr node,
             "castingWaterAction", SpriteAction::CASTWATER);
         skill->useTextParameter = XML::getBoolProperty(
             node, "useTextParameter", false);
+        skill->x = XML::getProperty(node,
+            "x", 0);
+        skill->y = XML::getProperty(node,
+            "y", 0);
         skill->visible = skill->alwaysVisible;
         model->addSkill(skill);
         mSkills[id] = skill;

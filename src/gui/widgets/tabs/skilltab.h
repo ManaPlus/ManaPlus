@@ -26,6 +26,7 @@
 #include "gui/windows/skilldialog.h"
 
 #include "gui/widgets/skilllistbox.h"
+#include "gui/widgets/skillrectanglelistbox.h"
 
 #include "gui/widgets/tabs/tab.h"
 
@@ -38,7 +39,18 @@ class SkillTab final : public Tab
                  const std::string &name,
                  SkillListBox *const listBox) :
             Tab(widget),
-            mListBox(listBox)
+            mListBox(listBox),
+            mRectangleListBox(nullptr)
+        {
+            setCaption(name);
+        }
+
+        SkillTab(const Widget2 *const widget,
+                 const std::string &name,
+                 SkillRectangleListBox *const listBox) :
+            Tab(widget),
+            mListBox(nullptr),
+            mRectangleListBox(listBox)
         {
             setCaption(name);
         }
@@ -48,12 +60,15 @@ class SkillTab final : public Tab
         ~SkillTab()
         {
             delete2(mListBox)
+            delete2(mRectangleListBox)
         }
 
         SkillInfo *getSelectedInfo() const
         {
             if (mListBox)
                 return mListBox->getSelectedInfo();
+            else if (mRectangleListBox)
+                return mRectangleListBox->getSelectedInfo();
             else
                 return nullptr;
         }
@@ -67,6 +82,7 @@ class SkillTab final : public Tab
 
     private:
         SkillListBox *mListBox;
+        SkillRectangleListBox *mRectangleListBox;
 };
 
 #endif  // GUI_WIDGETS_TABS_SKILLTAB_H

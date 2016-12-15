@@ -68,6 +68,8 @@ struct SkillInfo final
     int duration;
     int durationTime;
     int cooldown;
+    int x;
+    int y;
     SkillType::SkillType type;
     SkillOwner::Type owner;
     CastTypeT customCastType;
