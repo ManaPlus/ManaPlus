@@ -93,7 +93,8 @@ SkillDialog::SkillDialog() :
     mUseButton(new Button(this, _("Use"), "use", this)),
     // TRANSLATORS: skills dialog button
     mIncreaseButton(new Button(this, _("Up"), "inc", this)),
-    mDefaultModel(nullptr)
+    mDefaultModel(nullptr),
+    mDefaultTab(nullptr)
 {
     setWindowName("Skills");
     setCloseButton(true);
@@ -333,9 +334,61 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                 setType = SkillSetType::Rectangle;
             }
 
+            bool alwaysVisible = false;
             SkillModel *const model = new SkillModel;
+            SkillTab *tab = nullptr;
+            ScrollArea *scroll = nullptr;
+
+            switch (setType)
+            {
+                case SkillSetType::VerticalList:
+                {
+                    // possible leak listbox, scroll
+                    SkillListBox *const listbox = new SkillListBox(this,
+                        model);
+                    listbox->setActionEventId("sel");
+                    listbox->addActionListener(this);
+                    scroll = new ScrollArea(this,
+                        listbox,
+                        Opaque_false);
+                    scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+                    scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+                    tab = new SkillTab(this, setName, listbox);
+                    break;
+                }
+                case SkillSetType::Rectangle:
+                {
+                    SkillRectangleListBox *const listbox =
+                        new SkillRectangleListBox(this,
+                        model);
+                    listbox->setActionEventId("sel");
+                    listbox->addActionListener(this);
+                    scroll = new ScrollArea(this,
+                        listbox,
+                        Opaque_false);
+                    scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+                    scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
+                    tab = new SkillTab(this, setName, listbox);
+                    break;
+                }
+                default:
+                    reportAlways("Unsupported skillset type: %s",
+                        setTypeStr.c_str());
+                    return;
+                    break;
+            }
             if (!mDefaultModel)
+            {
                 mDefaultModel = model;
+                mDefaultTab = tab;
+            }
+
+            if (alwaysVisible == true)
+                tab->setVisible(Visible_true);
+            else
+                tab->setVisible(Visible_false);
+            mDeleteTabs.push_back(tab);
+            mTabs->addTab(tab, scroll);
 
             for_each_xml_child_node(node, set)
             {
@@ -344,6 +397,9 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                     SkillInfo *const skill = loadSkill(node, model);
                     if (skill == nullptr)
                         continue;
+                    if (skill->alwaysVisible == Visible_true)
+                        alwaysVisible = true;
+                    skill->tab = tab;
                     for_each_xml_child_node(levelNode, node)
                     {
                         if (!xmlNameEqual(levelNode, "level"))
@@ -355,47 +411,6 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
 
             model->updateVisibilities();
 
-            switch (setType)
-            {
-                case SkillSetType::VerticalList:
-                {
-                    // possible leak listbox, scroll
-                    SkillListBox *const listbox = new SkillListBox(this,
-                        model);
-                    listbox->setActionEventId("sel");
-                    listbox->addActionListener(this);
-                    ScrollArea *const scroll = new ScrollArea(this,
-                        listbox,
-                        Opaque_false);
-                    scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-                    scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
-                    SkillTab *const tab = new SkillTab(this, setName, listbox);
-                    mDeleteTabs.push_back(tab);
-                    mTabs->addTab(tab, scroll);
-                    break;
-                }
-                case SkillSetType::Rectangle:
-                {
-                    SkillRectangleListBox *const listbox =
-                        new SkillRectangleListBox(this,
-                        model);
-                    listbox->setActionEventId("sel");
-                    listbox->addActionListener(this);
-                    ScrollArea *const scroll = new ScrollArea(this,
-                        listbox,
-                        Opaque_false);
-                    scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-                    scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
-                    SkillTab *const tab = new SkillTab(this, setName, listbox);
-                    mDeleteTabs.push_back(tab);
-                    mTabs->addTab(tab, scroll);
-                    break;
-                }
-                default:
-                    reportAlways("Unsupported skillset type: %s",
-                        setTypeStr.c_str());
-                    break;
-            }
         }
     }
 }
@@ -566,6 +581,8 @@ bool SkillDialog::updateSkill(const int id,
             info->type = type;
             info->sp = sp;
             info->update();
+            if (info->tab)
+                info->tab->setVisible(Visible_true);
         }
         return true;
     }
@@ -615,7 +632,9 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
         skill->useButton = _("Use");
         // TRANSLATORS: skill error message
         skill->errorText = strprintf(_("Failed skill: %s"), name.c_str());
+        skill->tab = mDefaultTab;
         mDefaultModel->addSkill(skill);
+        mDefaultTab->setVisible(Visible_true);
 
         mSkills[id] = skill;
         mDefaultModel->updateVisibilities();

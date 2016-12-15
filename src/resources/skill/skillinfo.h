@@ -39,6 +39,7 @@
 struct SkillData;
 
 class SkillModel;
+class SkillTab;
 
 typedef std::map<int, SkillData*> SkillDataMap;
 typedef SkillDataMap::iterator SkillDataMapIter;
@@ -56,6 +57,7 @@ struct SkillInfo final
     std::string castingWaterAction;
     SkillDataMap dataMap;
     SkillModel *model;
+    SkillTab *tab;
     SkillData *data;
     int level;
     int customSelectedLevel;

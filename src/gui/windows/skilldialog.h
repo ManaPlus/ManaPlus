@@ -40,6 +40,7 @@ class Being;
 class Button;
 class Label;
 class SkillModel;
+class SkillTab;
 class Tab;
 class TabbedArea;
 
@@ -223,6 +224,7 @@ class SkillDialog final : public Window,
         Button *mUseButton A_NONNULLPOINTER;
         Button *mIncreaseButton A_NONNULLPOINTER;
         SkillModel *mDefaultModel;
+        SkillTab *mDefaultTab;
 };
 
 extern SkillDialog *skillDialog;

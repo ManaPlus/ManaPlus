@@ -44,6 +44,7 @@ SkillInfo::SkillInfo() :
     castingWaterAction(),
     dataMap(),
     model(nullptr),
+    tab(nullptr),
     data(nullptr),
     level(0),
     customSelectedLevel(0),
