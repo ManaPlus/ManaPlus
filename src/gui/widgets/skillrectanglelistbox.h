@@ -29,8 +29,6 @@
 #include "gui/skin.h"
 #include "gui/viewport.h"
 
-#include "gui/widgets/widget.h"
-
 #include "gui/fonts/font.h"
 
 #include "gui/models/skillmodel.h"
