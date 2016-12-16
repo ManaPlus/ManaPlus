@@ -228,11 +228,6 @@ bool ServerFeatures::haveMute() const
     return false;
 }
 
-bool ServerFeatures::haveChangePassword() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveTeamId() const
 {
     return true;

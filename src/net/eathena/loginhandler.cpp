@@ -87,7 +87,7 @@ void LoginHandler::changePassword(const std::string &restrict oldPassword,
                                   const std::string &restrict newPassword)
                                   const
 {
-    if (!serverFeatures->haveChangePassword())
+    if (serverVersion == 0)
         return;
     createOutPacket(CMSG_CHAR_PASSWORD_CHANGE);
     outMsg.writeStringNoLog(oldPassword, 24, "old password");

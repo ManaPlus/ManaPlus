@@ -109,8 +109,6 @@ class ServerFeatures notfinal
 
         virtual bool haveMute() const = 0;
 
-        virtual bool haveChangePassword() const = 0;
-
         virtual bool haveTeamId() const = 0;
 
         virtual bool haveAdvancedSprites() const = 0;

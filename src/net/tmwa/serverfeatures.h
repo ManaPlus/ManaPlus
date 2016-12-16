@@ -112,8 +112,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveMute() const override final A_CONST;
 
-        bool haveChangePassword() const override final A_CONST;
-
         bool haveTeamId() const override final;
 
         bool haveAdvancedSprites() const override final A_CONST;
