@@ -490,9 +490,11 @@ int TestLauncher::testDyeSpeed()
     for (int f = 0; f < sz; f ++)
         buf[f] = f;
 
+    pal.replaceSColor(buf, sz);
+
     clock_gettime(CLOCK_MONOTONIC, &time1);
 
-    for (int f = 0; f < 1000; f ++)
+    for (int f = 0; f < 50000; f ++)
         pal.replaceSColor(buf, sz);
 
     clock_gettime(CLOCK_MONOTONIC, &time2);
@@ -500,6 +502,7 @@ int TestLauncher::testDyeSpeed()
         + static_cast<long int>(time2.tv_nsec)) / 1) -
         ((static_cast<long int>(time1.tv_sec) * 1000000000L
         + static_cast<long int>(time1.tv_nsec)) / 1);
+    printf("salt: %u\n", buf[0]);
     printf("time: %ld\n", diff);
 #endif  // defined __linux__ || defined __linux
 
