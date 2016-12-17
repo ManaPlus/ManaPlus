@@ -276,7 +276,7 @@ gcc-4.8_i386:
 clang-3.0:
   stage: build
   script:
-  - ./tools/ci/jobs/clang3.sh
+  - ./tools/ci/jobs/clang.sh clang
   image: debian:oldstable
   <<: *log-failed-jobs
   tags:
@@ -285,7 +285,7 @@ clang-3.0:
 clang-3.0_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/clang3.sh
+  - ./tools/ci/jobs/clang.sh clang
   image: vicamo/debian:oldstable-i386
   <<: *log-failed-jobs
   tags:
