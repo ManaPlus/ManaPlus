@@ -298,12 +298,9 @@ void Map::initializeAmbientLayers() restrict2
 
 void Map::addLayer(MapLayer *const layer) restrict2
 {
-    if (layer)
-    {
-        mLayers.push_back(layer);
-        if (layer->isFringeLayer() && !mFringeLayer)
-            mFringeLayer = layer;
-    }
+    mLayers.push_back(layer);
+    if (layer->isFringeLayer() && !mFringeLayer)
+        mFringeLayer = layer;
 }
 
 void Map::addTileset(Tileset *const tileset) restrict2
