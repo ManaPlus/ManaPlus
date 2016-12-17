@@ -298,7 +298,7 @@ void WindowManager::applyGrabMode()
 
 void WindowManager::applyGamma()
 {
-    if (config.getFloatValue("enableGamma"))
+    if (config.getBoolValue("enableGamma"))
     {
         SDL::setGamma(mainGraphics->getWindow(),
             config.getFloatValue("gamma"));
