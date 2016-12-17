@@ -18,6 +18,7 @@ export CXXFLAGS="-Weverything -Wno-documentation -Wno-padded -Wno-sign-conversio
 -Wno-disabled-macro-expansion -Wno-format-nonliteral -stdlib=libc++ \
 -Wno-reserved-id-macro -Wno-packed -Wno-documentation-unknown-command \
 -Wno-variadic-macros -Wno-double-promotion \
+-Wpointer-bool-conversion \
 -O3 -std=c++11 -Wno-c++98-compat-pedantic"
 
 do_init
