@@ -291,6 +291,24 @@ clang-3.0_i386:
   tags:
     - docker
 
+clang-3.3:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang.sh clang-3.3
+  image: ubuntu:12.04
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+clang-3.3_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang.sh clang-3.3
+  image: vicamo/ubuntu:precise-i386
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
 clang-3.4:
   stage: build
   script:
@@ -319,6 +337,60 @@ clang-3.5_i386:
   script:
   - ./tools/ci/jobs/clang35.sh
   image: vicamo/debian:stable-i386
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+clang-3.6:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang36.sh
+  image: ubuntu:14.04
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+clang-3.6_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang36.sh
+  image: vicamo/ubuntu:trusty-i386
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+clang-3.7:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang37.sh
+  image: ubuntu:16.04
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+clang-3.7_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang37.sh
+  image: vicamo/ubuntu:xenial-i386
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+clang-3.8:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang38.sh
+  image: ubuntu:16.04
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+clang-3.8_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang38.sh
+  image: vicamo/ubuntu:xenial-i386
   <<: *log-failed-jobs
   tags:
     - docker
