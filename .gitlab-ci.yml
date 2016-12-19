@@ -462,7 +462,7 @@ cmake_gcc-4.9:
 gcc-5:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh
+  - ./tools/ci/jobs/gcc5.sh --enable-werror
   image: debian:unstable
   <<: *log-failed-jobs
 
@@ -561,36 +561,50 @@ gcc_eathena:
 gcc_without_mumble:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh --without-mumble
+  - ./tools/ci/jobs/gcc5.sh --without-mumble --enable-werror
   image: debian:unstable
   <<: *log-failed-jobs
 
 gcc_without_customnls:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh --enable-customnls
+  - ./tools/ci/jobs/gcc5.sh --enable-customnls --enable-werror
   image: debian:unstable
   <<: *log-failed-jobs
 
 gcc_without_customnls_nonls:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh --enable-customnls --disable-nls
+  - ./tools/ci/jobs/gcc5.sh --enable-customnls --disable-nls --enable-werror
   image: debian:unstable
   <<: *log-failed-jobs
 
 gcc_without_opengl:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh --without-opengl
+  - ./tools/ci/jobs/gcc5.sh --without-opengl --enable-werror
   image: debian:unstable
   <<: *log-failed-jobs
 
-gcc_cilkplus:
+gcc49_cilkplus:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh --enable-cilkplus
   image: debian:stable
+  <<: *log-failed-jobs
+
+gcc-5_cilkplus:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5.sh --enable-cilkplus
+  image: debian:unstable
+  <<: *log-failed-jobs
+
+gcc-6_cilkplus:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --enable-cilkplus
+  image: debian:unstable
   <<: *log-failed-jobs
 
 gcc_eathena_opengl:
