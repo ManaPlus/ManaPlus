@@ -118,14 +118,24 @@
 #endif  // __clang__
 #endif  // __native_client__
 
-#ifndef ENABLE_CILKPLUS
-#define A_CONST __attribute__ ((const))
-#define A_PURE __attribute__ ((pure))
-#define A_INLINE __attribute__ ((always_inline))
-#else  // ENABLE_CILKPLUS
+#ifdef ENABLE_CILKPLUS
+#ifdef __GNUC__
+#if GCC_VERSION < 60000
+#define BAD_CILKPLUS
+#else  // GCC_VERSION < 60000
+#define GOOD_CILKPLUS
+#endif  // GCC_VERSION < 60000
+#endif  // __GNUC__
+#endif  // ENABLE_CILKPLUS
+
+#if defined(ENABLE_CILKPLUS) && defined(BAD_CILKPLUS)
 #define A_CONST
 #define A_PURE
 #define A_INLINE
+#else  // ENABLE_CILKPLUS
+#define A_CONST __attribute__ ((const))
+#define A_PURE __attribute__ ((pure))
+#define A_INLINE __attribute__ ((always_inline))
 #endif  // ENABLE_CILKPLUS
 
 #ifdef __INTEL_COMPILER

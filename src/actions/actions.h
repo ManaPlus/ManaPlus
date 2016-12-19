@@ -81,9 +81,9 @@ namespace Actions
     decHandler(serverIgnoreAll);
     decHandler(serverUnIgnoreAll);
     decHandler(error)
-#ifndef ENABLE_CILKPLUS
+#ifndef BAD_CILKPLUS
     __attribute__ ((noreturn))
-#endif  // ENABLE_CILKPLUS
+#endif  // BAD_CILKPLUS
     ;
     decHandler(dumpGraphics);
     decHandler(dumpEnvironment);

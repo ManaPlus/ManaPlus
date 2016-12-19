@@ -105,12 +105,12 @@ class Logger final
             __attribute__((__format__(printf, 2, 3)))
 #else  // __OpenBSD__
 
-#ifdef ENABLE_CILKPLUS
+#ifdef BAD_CILKPLUS
             __attribute__((__format__(gnu_printf, 1, 2)))
-#else  // ENABLE_CILKPLUS
+#else  // BAD_CILKPLUS
 
             __attribute__((__format__(gnu_printf, 2, 3)))
-#endif  // ENABLE_CILKPLUS
+#endif  // BAD_CILKPLUS
 
 #endif  // __OpenBSD__
 #endif  // __GNUC__
@@ -126,12 +126,12 @@ class Logger final
             __attribute__((__format__(printf, 2, 3)))
 #else  // __OpenBSD__
 
-#ifdef ENABLE_CILKPLUS
+#ifdef BAD_CILKPLUS
             __attribute__((__format__(gnu_printf, 1, 2)))
-#else  // ENABLE_CILKPLUS
+#else  // BAD_CILKPLUS
 
             __attribute__((__format__(gnu_printf, 2, 3)))
-#endif  // ENABLE_CILKPLUS
+#endif  // BAD_CILKPLUS
 
 #endif  // __OpenBSD__
 #endif  // __GNUC__
@@ -146,12 +146,12 @@ class Logger final
             __attribute__((__format__(printf, 2, 3)))
 #else  // __OpenBSD__
 
-#ifdef ENABLE_CILKPLUS
+#ifdef BAD_CILKPLUS
             __attribute__((__format__(gnu_printf, 1, 2)))
-#else  // ENABLE_CILKPLUS
+#else  // BAD_CILKPLUS
 
             __attribute__((__format__(gnu_printf, 2, 3)))
-#endif  // ENABLE_CILKPLUS
+#endif  // BAD_CILKPLUS
 
 #endif  // __OpenBSD__
 #endif  // __GNUC__
@@ -191,9 +191,9 @@ class Logger final
          * will be printed to standard error everywhere else.
          */
         void error(const std::string &error_text)
-#ifndef ENABLE_CILKPLUS
+#ifndef BAD_CILKPLUS
         __attribute__ ((noreturn))
-#endif  // ENABLE_CILKPLUS
+#endif  // BAD_CILKPLUS
         ;
 
         /**
@@ -201,9 +201,9 @@ class Logger final
          * will be printed to standard error everywhere else.
          */
         void safeError(const std::string &error_text)
-#ifndef ENABLE_CILKPLUS
+#ifndef BAD_CILKPLUS
         __attribute__ ((noreturn))
-#endif  // ENABLE_CILKPLUS
+#endif  // BAD_CILKPLUS
         ;
 
         void unimplemented(const int id);
