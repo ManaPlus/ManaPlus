@@ -138,6 +138,16 @@
 #define A_INLINE __attribute__ ((always_inline))
 #endif  // ENABLE_CILKPLUS
 
+#ifdef __x86_64__
+#define SIMD_SUPPORTED
+#endif  // __x86_64__
+
+#ifdef SIMD_SUPPORTED
+#define FUNCTION_SIMD_DEFAULT __attribute__ ((target ("default")))
+#else  // SIMD_SUPPORTED
+#define FUNCTION_SIMD_DEFAULT
+#endif  // SIMD_SUPPORTED
+
 #ifdef __INTEL_COMPILER
 #define RETURNS_NONNULL
 #else  // __INTEL_COMPILER

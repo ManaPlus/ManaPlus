@@ -21,6 +21,10 @@
 #ifndef RESOURCES_DYE_DYECOLOR_H
 #define RESOURCES_DYE_DYECOLOR_H
 
+#ifndef SDL_BIG_ENDIAN
+#include <SDL_endian.h>
+#endif  // SDL_BYTEORDER
+
 #include "localconsts.h"
 
 struct DyeColor final
@@ -38,6 +42,7 @@ struct DyeColor final
         value[1] = g;
         value[2] = b;
         value[3] = 255;
+//        value2 = buildHex(r, g, b, 255);
     }
 
     DyeColor(const uint8_t r,
@@ -49,9 +54,15 @@ struct DyeColor final
         value[1] = g;
         value[2] = b;
         value[3] = a;
+//        value2 = buildHex(r, g, b, a);
     }
 
-    uint8_t value[4];
+    union
+    {
+        uint8_t value[4];
+        uint32_t value1;
+    };
+//    uint32_t value2;
 };
 
 #endif  // RESOURCES_DYE_DYECOLOR_H

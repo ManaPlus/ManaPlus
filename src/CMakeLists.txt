@@ -643,6 +643,7 @@ SET(SRCS
     resources/dye/dyecolor.h
     resources/dye/dyepalette.cpp
     resources/dye/dyepalette.h
+    resources/dye/dyepalette_replacescolor.cpp
     resources/effectdescription.h
     resources/emoteinfo.h
     resources/emotesprite.h
