@@ -46,7 +46,7 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
 {
 #ifdef __x86_64__
     if (bufSize % 8 == 0)
-        replaceSColor256(pixels, bufSize);
+        replaceSColorSimd(pixels, bufSize);
     else
         replaceSColorDefault(pixels, bufSize);
 #else  // __x86_64__
@@ -152,8 +152,8 @@ void print256(const char *const text, const __m256i &val)
 }
 
 __attribute__ ((target ("avx2")))
-void DyePalette::replaceSColor256(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2
+void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
+                                   const int bufSize) const restrict2
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
@@ -205,8 +205,8 @@ void DyePalette::replaceSColor256(uint32_t *restrict pixels,
 #endif  // __x86_64__
 
 FUNCTION_SIMD_DEFAULT
-void DyePalette::replaceSColor256(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2
+void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
+                                   const int bufSize) const restrict2
 {
     replaceSColorDefault(pixels, bufSize);
 }
