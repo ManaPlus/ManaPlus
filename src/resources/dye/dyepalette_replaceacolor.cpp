@@ -138,11 +138,13 @@ void DyePalette::replaceAColorDefault(uint32_t *restrict pixels,
 }
 
 #ifdef SIMD_SUPPORTED
+/*
 static void print256(const char *const text, const __m256i &val);
 static void print256(const char *const text, const __m256i &val)
 {
     printf("%s 0x%016llx%016llx%016llx%016llx\n", text, val[0], val[1], val[2], val[3]);
 }
+*/
 
 __attribute__ ((target ("avx2")))
 void DyePalette::replaceAColorSimd(uint32_t *restrict pixels,
@@ -159,7 +161,7 @@ void DyePalette::replaceAColorSimd(uint32_t *restrict pixels,
 
     for (int ptr = 0; ptr < bufEnd; ptr += 8)
     {
-        //__m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
+//        __m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
         __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]));
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
@@ -178,8 +180,7 @@ void DyePalette::replaceAColorSimd(uint32_t *restrict pixels,
 
             ++ it;
         }
-        //print256("res     ", base);
-        //_mm256_store_si256(reinterpret_cast<__m256i*>(pixels), base);
+//        _mm256_store_si256(reinterpret_cast<__m256i*>(pixels), base);
         _mm256_storeu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
     }
 

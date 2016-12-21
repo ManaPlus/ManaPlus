@@ -134,11 +134,13 @@ void DyePalette::replaceSColorDefault(uint32_t *restrict pixels,
 }
 
 #ifdef SIMD_SUPPORTED
+/*
 static void print256(const char *const text, const __m256i &val);
 static void print256(const char *const text, const __m256i &val)
 {
     printf("%s 0x%016llx%016llx%016llx%016llx\n", text, val[0], val[1], val[2], val[3]);
 }
+*/
 
 __attribute__ ((target ("avx2")))
 void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
@@ -156,44 +158,33 @@ void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
     for (int ptr = 0; ptr < bufEnd; ptr += 8)
     {
         __m256i mask = _mm256_set1_epi32(0xffffff00);
-        //__m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
+//        __m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
         __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]));
-        //print256("mask  ", mask);
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
         {
-            //print256("base  ", base);
             const DyeColor &col = *it;
             ++ it;
             const DyeColor &col2 = *it;
 
             __m256i base2 = _mm256_and_si256(mask, base);
-            //print256("base2  ", base2);
             __m256i newMask = _mm256_set1_epi32(col2.valueS);
-            //print256("newMask  ", newMask);
             __m256i cmpMask = _mm256_set1_epi32(col.valueS);
-            //print256("cmpMask  ", cmpMask);
             __m256i cmpRes = _mm256_cmpeq_epi32(base2, cmpMask);
-            //print256("cmpRes  ", cmpRes);
             cmpRes = _mm256_and_si256(mask, cmpRes);
-            //print256("cmpRes  ", cmpRes);
             __m256i srcAnd = _mm256_andnot_si256(cmpRes, base);
-            //print256("srcAnd  ", srcAnd);
             __m256i dstAnd = _mm256_and_si256(cmpRes, newMask);
-            //print256("dstAnd  ", dstAnd);
             base = _mm256_or_si256(srcAnd, dstAnd);
             ++ it;
         }
-        //print256("res     ", base);
-        //_mm256_store_si256(reinterpret_cast<__m256i*>(pixels), base);
+//        _mm256_store_si256(reinterpret_cast<__m256i*>(pixels), base);
         _mm256_storeu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
     }
 
     // complete end without simd
     for (int ptr = bufSize - mod; ptr < bufSize; ptr ++)
     {
-//        logger->log("past");
         uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         const unsigned int data = pixels[ptr] & 0x00ffffff;
