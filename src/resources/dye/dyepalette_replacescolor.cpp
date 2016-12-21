@@ -45,10 +45,7 @@ void DyePalette::replaceSColor(uint32_t *restrict pixels,
                                const int bufSize) const restrict2
 {
 #ifdef SIMD_SUPPORTED
-    if (bufSize % 8 == 0)
-        replaceSColorSimd(pixels, bufSize);
-    else
-        replaceSColorDefault(pixels, bufSize);
+    replaceSColorSimd(pixels, bufSize);
 #else  // SIMD_SUPPORTED
     replaceSColorDefault(pixels, bufSize);
 #endif  // SIMD_SUPPORTED
@@ -161,14 +158,14 @@ void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
         return;
     if (sz % 2)
         -- it_end;
+    const int mod = bufSize % 8;
+    const int bufEnd = bufSize - mod;
 
-    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
-         pixels != p_end;
-         pixels += 8)
+    for (int ptr = 0; ptr < bufEnd; ptr += 8)
     {
         __m256i mask = _mm256_set1_epi32(0xffffff00);
         //__m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
-        __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(pixels));
+        __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]));
         //print256("mask  ", mask);
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
@@ -198,8 +195,49 @@ void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
         }
         //print256("res     ", base);
         //_mm256_store_si256(reinterpret_cast<__m256i*>(pixels), base);
-        _mm256_storeu_si256(reinterpret_cast<__m256i*>(pixels), base);
+        _mm256_storeu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
     }
+
+    // complete end without simd
+    for (int ptr = bufSize - mod; ptr < bufSize; ptr ++)
+    {
+//        logger->log("past");
+        uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        const unsigned int data = pixels[ptr] & 0x00ffffff;
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+        const unsigned int data = pixels[ptr] & 0xffffff00;
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        while (it != it_end)
+        {
+            const DyeColor &col = *it;
+            ++ it;
+            const DyeColor &col2 = *it;
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            const unsigned int coldata = (col.value[2] << 16U)
+                | (col.value[1] << 8U) | (col.value[0]);
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+            const unsigned int coldata = (col.value[2] << 8U)
+                | (col.value[1] << 16U) | (col.value[0] << 24U);
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+            if (data == coldata)
+            {
+                p[3] = col2.value[0];
+                p[2] = col2.value[1];
+                p[1] = col2.value[2];
+                break;
+            }
+
+            ++ it;
+        }
+    }
+//    logger->log("end");
 }
 
 #endif  // SIMD_SUPPORTED
