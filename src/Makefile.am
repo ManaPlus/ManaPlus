@@ -366,6 +366,7 @@ SRC += events/actionevent.h \
 	      resources/dye/dyepalette.cpp \
 	      resources/dye/dyepalette.h \
 	      resources/dye/dyepalette_replacescolor.cpp \
+	      resources/dye/dyepalette_replacesoglcolor.cpp \
 	      resources/fboinfo.h \
 	      resources/frame.h \
 	      resources/image/image.cpp \

@@ -41,21 +41,21 @@
 
 #include "debug.h"
 
-void DyePalette::replaceSColor(uint32_t *restrict pixels,
-                               const int bufSize) const restrict2
+void DyePalette::replaceSOGLColor(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2
 {
 #ifdef SIMD_SUPPORTED
-    if (bufSize % 8 == 0)
-        replaceSColorSimd(pixels, bufSize);
+    if (bufSize >= 8)
+        replaceSOGLColorSimd(pixels, bufSize);
     else
-        replaceSColorDefault(pixels, bufSize);
+        replaceSOGLColorDefault(pixels, bufSize);
 #else  // SIMD_SUPPORTED
-    replaceSColorDefault(pixels, bufSize);
+    replaceSOGLColorDefault(pixels, bufSize);
 #endif  // SIMD_SUPPORTED
 }
 
-void DyePalette::replaceSColorDefault(uint32_t *restrict pixels,
-                                      const int bufSize) const restrict2
+void DyePalette::replaceSOGLColorDefault(uint32_t *restrict pixels,
+                                         const int bufSize) const restrict2
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
@@ -69,10 +69,10 @@ void DyePalette::replaceSColorDefault(uint32_t *restrict pixels,
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-        const unsigned int data = pixels[ptr] & 0x00ffffff;
+        const unsigned int data = (pixels[ptr]) & 0xffffff00;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-        const unsigned int data = pixels[ptr] & 0xffffff00;
+        const unsigned int data = (pixels[ptr]) & 0x00ffffff;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
@@ -83,35 +83,38 @@ void DyePalette::replaceSColorDefault(uint32_t *restrict pixels,
             const DyeColor &col2 = *it;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int coldata = (col.value[2] << 16U)
-                | (col.value[1] << 8U) | (col.value[0]);
+            const unsigned int coldata = (col.value[0] << 24)
+                | (col.value[1] << 16) | (col.value[2] << 8);
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int coldata = (col.value[2] << 8U)
-                | (col.value[1] << 16U) | (col.value[0] << 24U);
+
+            const unsigned int coldata = (col.value[0])
+                | (col.value[1] << 8) | (col.value[2] << 16);
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
             if (data == coldata)
             {
-                p[3] = col2.value[0];
-                p[2] = col2.value[1];
-                p[1] = col2.value[2];
+                p[0] = col2.value[0];
+                p[1] = col2.value[1];
+                p[2] = col2.value[2];
                 break;
             }
+
             ++ it;
         }
     }
+
 #else  // ENABLE_CILKPLUS
 
     for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
-         ++ pixels)
+         ++pixels)
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-        const unsigned int data = (*pixels) & 0x00ffffff;
+        const unsigned int data = (*pixels) & 0xffffff00;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-        const unsigned int data = (*pixels) & 0xffffff00;
+        const unsigned int data = (*pixels) & 0x00ffffff;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
@@ -122,19 +125,19 @@ void DyePalette::replaceSColorDefault(uint32_t *restrict pixels,
             const DyeColor &col2 = *it;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int coldata = (col.value[2] << 16U)
-                | (col.value[1] << 8U) | (col.value[0]);
+            const unsigned int coldata = (col.value[0] << 24)
+                | (col.value[1] << 16) | (col.value[2] << 8);
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-            const unsigned int coldata = (col.value[2] << 8U)
-                | (col.value[1] << 16U) | (col.value[0] << 24U);
+            const unsigned int coldata = (col.value[0])
+                | (col.value[1] << 8) | (col.value[2] << 16);
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
             if (data == coldata)
             {
-                p[3] = col2.value[0];
-                p[2] = col2.value[1];
-                p[1] = col2.value[2];
+                p[0] = col2.value[0];
+                p[1] = col2.value[1];
+                p[2] = col2.value[2];
                 break;
             }
 
@@ -152,8 +155,8 @@ static void print256(const char *const text, const __m256i &val)
 }
 
 __attribute__ ((target ("avx2")))
-void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
-                                   const int bufSize) const restrict2
+void DyePalette::replaceSOGLColorSimd(uint32_t *restrict pixels,
+                                      const int bufSize) const restrict2
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
@@ -166,7 +169,7 @@ void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
          pixels != p_end;
          pixels += 8)
     {
-        __m256i mask = _mm256_set1_epi32(0xffffff00);
+        __m256i mask = _mm256_set1_epi32(0x00ffffff);
         //__m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
         __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(pixels));
         //print256("mask  ", mask);
@@ -181,9 +184,9 @@ void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
 
             __m256i base2 = _mm256_and_si256(mask, base);
             //print256("base2  ", base2);
-            __m256i newMask = _mm256_set1_epi32(buildHex(col2.value[0], col2.value[1], col2.value[2], 0));
+            __m256i newMask = _mm256_set1_epi32(buildHex(0, col2.value[2], col2.value[1], col2.value[0]));
             //print256("newMask  ", newMask);
-            __m256i cmpMask = _mm256_set1_epi32(buildHex(col.value[0], col.value[1], col.value[2], 0));
+            __m256i cmpMask = _mm256_set1_epi32(buildHex(0, col.value[2], col.value[1], col.value[0]));
             //print256("cmpMask  ", cmpMask);
             __m256i cmpRes = _mm256_cmpeq_epi32(base2, cmpMask);
             //print256("cmpRes  ", cmpRes);
@@ -205,8 +208,8 @@ void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
 #endif  // SIMD_SUPPORTED
 
 FUNCTION_SIMD_DEFAULT
-void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
-                                   const int bufSize) const restrict2
+void DyePalette::replaceSOGLColorSimd(uint32_t *restrict pixels,
+                                      const int bufSize) const restrict2
 {
-    replaceSColorDefault(pixels, bufSize);
+    replaceSOGLColorDefault(pixels, bufSize);
 }
