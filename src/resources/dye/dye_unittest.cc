@@ -48,19 +48,7 @@
 #include <SDL.h>
 #endif  // USE_SDL2
 
-#ifndef SDL_BIG_ENDIAN
-#include <SDL_endian.h>
-#endif  // SDL_BYTEORDER
-
 #include "debug.h"
-
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-#define buildHex(a, b, c, d) \
-    (d) * 16777216U + (c) * 65536U + (b) * 256U + CAST_U32(a)
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-#define buildHex(a, b, c, d) \
-    (a) * 16777216U + (b) * 65536U + (c) * 256U + CAST_U32(d)
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
 #ifdef USE_OPENGL
 

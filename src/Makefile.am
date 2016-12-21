@@ -480,6 +480,7 @@ SRC += events/actionevent.h \
 	      utils/base64.cpp \
 	      utils/base64.h \
 	      utils/booleanoptions.h \
+	      utils/buildhex.h \
 	      utils/checkutils.cpp \
 	      utils/checkutils.h \
 	      utils/copynpaste.cpp \

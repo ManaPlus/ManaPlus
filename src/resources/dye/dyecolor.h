@@ -21,21 +21,16 @@
 #ifndef RESOURCES_DYE_DYECOLOR_H
 #define RESOURCES_DYE_DYECOLOR_H
 
-#ifndef SDL_BIG_ENDIAN
-#include <SDL_endian.h>
-#endif  // SDL_BYTEORDER
+#include "utils/buildhex.h"
 
 #include "localconsts.h"
-
-#define buildHex(a, b, c, d) \
-    (a) * 16777216U + (b) * 65536U + (c) * 256U + CAST_U32(d)
 
 struct DyeColor final
 {
     DyeColor() noexcept2 :
         valueA(buildHex(0, 0, 0, 255)),
         valueS(buildHex(0, 0, 0, 0)),
-        valueSOgl(buildHex(0, 0, 0, 0))
+        valueSOgl(buildHexOgl(0, 0, 0, 0))
     {
         value[3] = 255;
     }
@@ -45,7 +40,7 @@ struct DyeColor final
              const uint8_t b) noexcept2 :
         valueA(buildHex(r, g, b, 255)),
         valueS(buildHex(r, g, b, 0)),
-        valueSOgl(buildHex(0, b, g, r))
+        valueSOgl(buildHexOgl(0, b, g, r))
     {
         value[0] = r;
         value[1] = g;
@@ -59,7 +54,7 @@ struct DyeColor final
              const uint8_t a) noexcept2 :
         valueA(buildHex(r, g, b, a)),
         valueS(buildHex(r, g, b, 0)),
-        valueSOgl(buildHex(0, b, g, r))
+        valueSOgl(buildHexOgl(0, b, g, r))
     {
         value[0] = r;
         value[1] = g;
@@ -71,7 +66,7 @@ struct DyeColor final
     {
         valueA = buildHex(value[0], value[1], value[2], value[3]);
         valueS = buildHex(value[0], value[1], value[2], 0);
-        valueSOgl = buildHex(0, value[2], value[1], value[0]);
+        valueSOgl = buildHexOgl(0, value[2], value[1], value[0]);
     }
 
     union

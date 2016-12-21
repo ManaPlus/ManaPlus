@@ -830,6 +830,7 @@ SET(SRCS
     utils/base64.cpp
     utils/base64.h
     utils/booleanoptions.h
+    utils/buildhex.h
     utils/chatutils.cpp
     utils/chatutils.h
     utils/checkutils.cpp
