@@ -27,42 +27,61 @@
 
 #include "localconsts.h"
 
+#define buildHex(a, b, c, d) \
+    (a) * 16777216U + (b) * 65536U + (c) * 256U + CAST_U32(d)
+
 struct DyeColor final
 {
-    DyeColor() noexcept2
+    DyeColor() noexcept2 :
+        valueA(buildHex(0, 0, 0, 255)),
+        valueS(buildHex(0, 0, 0, 0)),
+        valueSOgl(buildHex(0, 0, 0, 0))
     {
         value[3] = 255;
     }
 
     DyeColor(const uint8_t r,
              const uint8_t g,
-             const uint8_t b) noexcept2
+             const uint8_t b) noexcept2 :
+        valueA(buildHex(r, g, b, 255)),
+        valueS(buildHex(r, g, b, 0)),
+        valueSOgl(buildHex(0, b, g, r))
     {
         value[0] = r;
         value[1] = g;
         value[2] = b;
         value[3] = 255;
-//        value2 = buildHex(r, g, b, 255);
     }
 
     DyeColor(const uint8_t r,
              const uint8_t g,
              const uint8_t b,
-             const uint8_t a) noexcept2
+             const uint8_t a) noexcept2 :
+        valueA(buildHex(r, g, b, a)),
+        valueS(buildHex(r, g, b, 0)),
+        valueSOgl(buildHex(0, b, g, r))
     {
         value[0] = r;
         value[1] = g;
         value[2] = b;
         value[3] = a;
-//        value2 = buildHex(r, g, b, a);
+    }
+
+    void update()
+    {
+        valueA = buildHex(value[0], value[1], value[2], value[3]);
+        valueS = buildHex(value[0], value[1], value[2], 0);
+        valueSOgl = buildHex(0, value[2], value[1], value[0]);
     }
 
     union
     {
         uint8_t value[4];
-        uint32_t value1;
+        uint32_t valueAOgl;
     };
-//    uint32_t value2;
+    uint32_t valueA;
+    uint32_t valueS;
+    uint32_t valueSOgl;
 };
 
 #endif  // RESOURCES_DYE_DYECOLOR_H

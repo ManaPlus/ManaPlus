@@ -31,14 +31,6 @@
 #ifdef __x86_64__
 // avx2
 #include "immintrin.h"
-
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-#define buildHex(a, b, c, d) \
-    (d) * 16777216U + (c) * 65536U + (b) * 256U + CAST_U32(a)
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-#define buildHex(a, b, c, d) \
-    (a) * 16777216U + (b) * 65536U + (c) * 256U + CAST_U32(d)
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 #endif  // __x86_64__
 
 #include "debug.h"
@@ -177,8 +169,8 @@ void DyePalette::replaceAColorSimd(uint32_t *restrict pixels,
             ++ it;
             const DyeColor &col2 = *it;
 
-            __m256i newMask = _mm256_set1_epi32(buildHex(col2.value[0], col2.value[1], col2.value[2], col2.value[3]));
-            __m256i cmpMask = _mm256_set1_epi32(buildHex(col.value[0], col.value[1], col.value[2],  col.value[3]));
+            __m256i newMask = _mm256_set1_epi32(col2.valueA);
+            __m256i cmpMask = _mm256_set1_epi32(col.valueA);
             __m256i cmpRes = _mm256_cmpeq_epi32(base, cmpMask);
             __m256i srcAnd = _mm256_andnot_si256(cmpRes, base);
             __m256i dstAnd = _mm256_and_si256(cmpRes, newMask);

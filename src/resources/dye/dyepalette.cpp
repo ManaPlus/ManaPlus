@@ -109,6 +109,7 @@ void DyePalette::hexToColor(const std::string &restrict hexStr,
             hexDecode(hexStr[i]) << 4)
             + hexDecode(hexStr[i + 1]));
     }
+    color.update();
 }
 
 unsigned int DyePalette::hexDecode(const signed char c) noexcept2
