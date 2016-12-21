@@ -94,6 +94,28 @@ class DyePalette final
                            const int bufSize) const restrict2;
 
         /**
+         * replace colors for SDL for A dye.
+         */
+        void replaceAColorDefault(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2;
+
+        /**
+         * replace colors for SDL for A dye.
+         */
+        FUNCTION_SIMD_DEFAULT
+        void replaceAColorSimd(uint32_t *restrict pixels,
+                               const int bufSize) const restrict2;
+
+#ifdef SIMD_SUPPORTED
+        /**
+         * replace colors for SDL for A dye.
+         */
+        __attribute__ ((target ("avx2")))
+        void replaceAColorSimd(uint32_t *restrict pixels,
+                               const int bufSize) const restrict2;
+#endif  // SIMD_SUPPORTED
+
+        /**
          * replace colors for OpenGL for S dye.
          */
         void replaceSOGLColor(uint32_t *restrict pixels,
