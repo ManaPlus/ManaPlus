@@ -115,6 +115,7 @@ class DyePalette final
                                const int bufSize) const restrict2;
 #endif  // SIMD_SUPPORTED
 
+#ifdef USE_OPENGL
         /**
          * replace colors for OpenGL for S dye.
          */
@@ -170,6 +171,7 @@ class DyePalette final
         void replaceAOGLColorSimd(uint32_t *restrict pixels,
                                   const int bufSize) const restrict2;
 #endif  // SIMD_SUPPORTED
+#endif  // USE_OPENGL
 
         static unsigned int hexDecode(const signed char c)
                                       noexcept2 A_CONST A_WARN_UNUSED;

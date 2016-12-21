@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef USE_OPENGL
+
 #include "resources/dye/dyepalette.h"
 
 #include "logger.h"
@@ -213,3 +215,5 @@ void DyePalette::replaceSOGLColorSimd(uint32_t *restrict pixels,
 {
     replaceSOGLColorDefault(pixels, bufSize);
 }
+
+#endif  // USE_OPENGL
