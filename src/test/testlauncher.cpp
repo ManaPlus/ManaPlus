@@ -479,6 +479,43 @@ int TestLauncher::testDye()
     return 0;
 }
 
+#if defined __linux__ || defined __linux
+static void initBuffer(uint32_t *const buf,
+                       const int sz)
+{
+    for (int f = 0; f < sz; f ++)
+        buf[f] = f;
+}
+
+static void calcTime(const char *const msg1,
+                     const char *const msg2,
+                     timespec &time1,
+                     timespec &time2,
+                     uint32_t *const buf)
+{
+    clock_gettime(CLOCK_MONOTONIC, &time2);
+    long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
+        + static_cast<long int>(time2.tv_nsec)) / 1) -
+        ((static_cast<long int>(time1.tv_sec) * 1000000000L
+        + static_cast<long int>(time1.tv_nsec)) / 1);
+    printf("%s: %u\n", msg1, buf[0]);
+    printf("%s: %011ld\n", msg2, diff);
+}
+
+#define runDyeTest(msg1, msg2, func) \
+    initBuffer(buf, sz); \
+    pal.func(buf, sz); \
+    clock_gettime(CLOCK_MONOTONIC, &time1); \
+    for (int f = 0; f < 50000; f ++) \
+        pal.func(buf, sz); \
+    calcTime(msg1, \
+        msg2, \
+        time1, \
+        time2, \
+        buf)
+
+#endif  // defined __linux__ || defined __linux
+
 int TestLauncher::testDyeSSpeed()
 {
 #if defined __linux__ || defined __linux
@@ -489,41 +526,8 @@ int TestLauncher::testDyeSSpeed()
 
     DyePalette pal("#0000ff,000000,000020,706050", 6);
 
-    for (int f = 0; f < sz; f ++)
-        buf[f] = f;
-
-    pal.replaceSColor(buf, sz);
-
-    clock_gettime(CLOCK_MONOTONIC, &time1);
-
-    for (int f = 0; f < 50000; f ++)
-        pal.replaceSColorDefault(buf, sz);
-
-    clock_gettime(CLOCK_MONOTONIC, &time2);
-    long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
-        + static_cast<long int>(time2.tv_nsec)) / 1) -
-        ((static_cast<long int>(time1.tv_sec) * 1000000000L
-        + static_cast<long int>(time1.tv_nsec)) / 1);
-    printf("dye s salt: %u\n", buf[0]);
-    printf("default time: %011ld\n", diff);
-
-    for (int f = 0; f < sz; f ++)
-        buf[f] = f;
-
-    pal.replaceSColor(buf, sz);
-
-    clock_gettime(CLOCK_MONOTONIC, &time1);
-
-    for (int f = 0; f < 50000; f ++)
-        pal.replaceSColorSimd(buf, sz);
-
-    clock_gettime(CLOCK_MONOTONIC, &time2);
-    diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
-        + static_cast<long int>(time2.tv_nsec)) / 1) -
-        ((static_cast<long int>(time1.tv_sec) * 1000000000L
-        + static_cast<long int>(time1.tv_nsec)) / 1);
-    printf("dye s salt: %u\n", buf[0]);
-    printf("simd time   : %011ld\n", diff);
+    runDyeTest("dye s salt", "default time", replaceSColorDefault);
+    runDyeTest("dye s salt", "simd time   ", replaceSColorSimd);
 #endif  // defined __linux__ || defined __linux
 
     return 0;
@@ -539,42 +543,10 @@ int TestLauncher::testDyeASpeed()
 
     DyePalette pal("#0000ffff,00000000,000020ff,70605040", 8);
 
-    for (int f = 0; f < sz; f ++)
-        buf[f] = f;
-
-    pal.replaceAColor(buf, sz);
-
-    clock_gettime(CLOCK_MONOTONIC, &time1);
-
-    for (int f = 0; f < 50000; f ++)
-        pal.replaceSColorDefault(buf, sz);
-
-    clock_gettime(CLOCK_MONOTONIC, &time2);
-    long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
-        + static_cast<long int>(time2.tv_nsec)) / 1) -
-        ((static_cast<long int>(time1.tv_sec) * 1000000000L
-        + static_cast<long int>(time1.tv_nsec)) / 1);
-    printf("dye a salt: %u\n", buf[0]);
-    printf("default time: %011ld\n", diff);
-
-    for (int f = 0; f < sz; f ++)
-        buf[f] = f;
-
-    pal.replaceAColor(buf, sz);
-
-    clock_gettime(CLOCK_MONOTONIC, &time1);
-
-    for (int f = 0; f < 50000; f ++)
-        pal.replaceSColorSimd(buf, sz);
-
-    clock_gettime(CLOCK_MONOTONIC, &time2);
-    diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
-        + static_cast<long int>(time2.tv_nsec)) / 1) -
-        ((static_cast<long int>(time1.tv_sec) * 1000000000L
-        + static_cast<long int>(time1.tv_nsec)) / 1);
-    printf("dye a salt: %u\n", buf[0]);
-    printf("simd time   : %011ld\n", diff);
-
+    runDyeTest("dye a salt", "default time", replaceAColorDefault);
+    runDyeTest("dye a salt", "simd time   ", replaceAColorSimd);
+    runDyeTest("dye a salt", "sse2 time   ", replaceAColorSse2);
+    runDyeTest("dye a salt", "avx2 time   ", replaceAColorAvx2);
 #endif  // defined __linux__ || defined __linux
 
     return 0;
