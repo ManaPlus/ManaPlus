@@ -59,6 +59,8 @@
 #define PACKAGE_VERSION SMALL_VERSION;
 #endif  // HAVE_CONFIG_H
 
+#include "localconsts.h"
+
 #if defined __APPLE__
 #define PACKAGE_OS "Mac OS X"
 #elif defined(__ANDROID__) || defined(ANDROID)
@@ -152,12 +154,18 @@
 #define XML_NAME "unknown"
 #endif  // defined(ENABLE_PUGIXML)
 
+#ifdef SIMD_SUPPORTED
+#define SIMD_NAME ", SIMD"
+#else  // SIMD_SUPPORTED
+#define SIMD_NAME ""
+#endif  // SIMD_SUPPORTED
+
 #define PACKAGE_EXTENDED_VERSION "ManaPlus (" PACKAGE_OS \
-"; %s; " SDL_NAME ", " XML_NAME "; 4144 v" SMALL_VERSION ")"
+"; %s; " SDL_NAME ", " XML_NAME SIMD_NAME "; 4144 v" SMALL_VERSION ")"
 #define PACKAGE_VERSION_4144 "ManaPlus 4144-" SMALL_VERSION ""
 
 #define FULL_VERSION "ManaPlus " SMALL_VERSION " " PACKAGE_OS ", " \
-    SDL_NAME ", " XML_NAME
+    SDL_NAME ", " XML_NAME SIMD_NAME
 
 #ifdef ANDROID
 #ifdef PKG_DATADIR
