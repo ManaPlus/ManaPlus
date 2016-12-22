@@ -44,101 +44,14 @@ void DyePalette::replaceAOGLColor(uint32_t *restrict pixels,
     else
         replaceAOGLColorDefault(pixels, bufSize);
 #else  // SIMD_SUPPORTED
-    replaceAOGLColorDefault(pixels, bufSize);
+#include "resources/dye/dyepalette_replaceaoglcolor_default.hpp"
 #endif  // SIMD_SUPPORTED
 }
 
 void DyePalette::replaceAOGLColorDefault(uint32_t *restrict pixels,
                                          const int bufSize) const restrict2
 {
-    std::vector<DyeColor>::const_iterator it_end = mColors.end();
-    const size_t sz = mColors.size();
-    if (!sz || !pixels)
-        return;
-    if (sz % 2)
-        -- it_end;
-
-#ifdef ENABLE_CILKPLUS
-    cilk_for (int ptr = 0; ptr < bufSize; ptr ++)
-    {
-        uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
-        const unsigned int data = pixels[ptr];
-
-        std::vector<DyeColor>::const_iterator it = mColors.begin();
-        while (it != it_end)
-        {
-            const DyeColor &col = *it;
-            ++ it;
-            const DyeColor &col2 = *it;
-
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int coldata = (col.value[0] << 24U)
-                | (col.value[1] << 16U)
-                | (col.value[2] << 8U)
-                | col.value[3];
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            const unsigned int coldata = (col.value[0])
-                | (col.value[1] << 8U)
-                | (col.value[2] << 16U)
-                | (col.value[3] << 24U);
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            if (data == coldata)
-            {
-                p[0] = col2.value[0];
-                p[1] = col2.value[1];
-                p[2] = col2.value[2];
-                p[3] = col2.value[3];
-                break;
-            }
-
-            ++ it;
-        }
-    }
-
-#else  // ENABLE_CILKPLUS
-
-    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
-         pixels != p_end;
-         ++pixels)
-    {
-        uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
-        const unsigned int data = *pixels;
-
-        std::vector<DyeColor>::const_iterator it = mColors.begin();
-        while (it != it_end)
-        {
-            const DyeColor &col = *it;
-            ++ it;
-            const DyeColor &col2 = *it;
-
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int coldata = (col.value[0] << 24U)
-                | (col.value[1] << 16U)
-                | (col.value[2] << 8U)
-                | col.value[3];
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            const unsigned int coldata = (col.value[0])
-                | (col.value[1] << 8U)
-                | (col.value[2] << 16U)
-                | (col.value[3] << 24U);
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            if (data == coldata)
-            {
-                p[0] = col2.value[0];
-                p[1] = col2.value[1];
-                p[2] = col2.value[2];
-                p[3] = col2.value[3];
-                break;
-            }
-
-            ++ it;
-        }
-    }
-#endif  // ENABLE_CILKPLUS
+#include "resources/dye/dyepalette_replaceaoglcolor_default.hpp"
 }
 
 
@@ -152,43 +65,32 @@ static void print256(const char *const text, const __m256i &val)
 }
 */
 
+__attribute__ ((target ("sse2")))
+void DyePalette::replaceAOGLColorSimd(uint32_t *restrict pixels,
+                                      const int bufSize) const restrict2
+{
+#include "resources/dye/dyepalette_replaceaoglcolor_sse2.hpp"
+}
+
 __attribute__ ((target ("avx2")))
 void DyePalette::replaceAOGLColorSimd(uint32_t *restrict pixels,
                                       const int bufSize) const restrict2
 {
-    std::vector<DyeColor>::const_iterator it_end = mColors.end();
-    const size_t sz = mColors.size();
-    if (!sz || !pixels)
-        return;
-    if (sz % 2)
-        -- it_end;
+#include "resources/dye/dyepalette_replaceaoglcolor_avx2.hpp"
+}
 
-    for (int ptr = 0; ptr < bufSize; ptr += 8)
-    {
-//        __m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(
-//            &pixels[ptr]));
-        __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(
-            &pixels[ptr]));
+__attribute__ ((target ("sse2")))
+void DyePalette::replaceAOGLColorSse2(uint32_t *restrict pixels,
+                                      const int bufSize) const restrict2
+{
+#include "resources/dye/dyepalette_replaceaoglcolor_sse2.hpp"
+}
 
-        std::vector<DyeColor>::const_iterator it = mColors.begin();
-        while (it != it_end)
-        {
-            const DyeColor &col = *it;
-            ++ it;
-            const DyeColor &col2 = *it;
-
-            __m256i newMask = _mm256_set1_epi32(col2.valueAOgl);
-            __m256i cmpMask = _mm256_set1_epi32(col.valueAOgl);
-            __m256i cmpRes = _mm256_cmpeq_epi32(base, cmpMask);
-            __m256i srcAnd = _mm256_andnot_si256(cmpRes, base);
-            __m256i dstAnd = _mm256_and_si256(cmpRes, newMask);
-            base = _mm256_or_si256(srcAnd, dstAnd);
-
-            ++ it;
-        }
-//        _mm256_store_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
-        _mm256_storeu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
-    }
+__attribute__ ((target ("avx2")))
+void DyePalette::replaceAOGLColorAvx2(uint32_t *restrict pixels,
+                                      const int bufSize) const restrict2
+{
+#include "resources/dye/dyepalette_replaceaoglcolor_avx2.hpp"
 }
 
 #endif  // SIMD_SUPPORTED
@@ -197,7 +99,21 @@ FUNCTION_SIMD_DEFAULT
 void DyePalette::replaceAOGLColorSimd(uint32_t *restrict pixels,
                                       const int bufSize) const restrict2
 {
-    replaceAOGLColorDefault(pixels, bufSize);
+#include "resources/dye/dyepalette_replaceaoglcolor_default.hpp"
+}
+
+FUNCTION_SIMD_DEFAULT
+void DyePalette::replaceAOGLColorSse2(uint32_t *restrict pixels,
+                                      const int bufSize) const restrict2
+{
+#include "resources/dye/dyepalette_replaceaoglcolor_default.hpp"
+}
+
+FUNCTION_SIMD_DEFAULT
+void DyePalette::replaceAOGLColorAvx2(uint32_t *restrict pixels,
+                                      const int bufSize) const restrict2
+{
+#include "resources/dye/dyepalette_replaceaoglcolor_default.hpp"
 }
 
 #endif  // USE_OPENGL
