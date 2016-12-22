@@ -528,6 +528,8 @@ int TestLauncher::testDyeSSpeed()
 
     runDyeTest("dye s salt", "default time", replaceSColorDefault);
     runDyeTest("dye s salt", "simd time   ", replaceSColorSimd);
+    runDyeTest("dye s salt", "sse2 time   ", replaceSColorSse2);
+    runDyeTest("dye s salt", "avx2 time   ", replaceSColorAvx2);
 #endif  // defined __linux__ || defined __linux
 
     return 0;
