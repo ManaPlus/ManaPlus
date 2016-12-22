@@ -24,8 +24,6 @@
 
 #include "resources/dye/dyepalette.h"
 
-#include "logger.h"
-
 #ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
 #endif  // SDL_BYTEORDER

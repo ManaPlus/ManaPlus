@@ -96,7 +96,7 @@ class Color final
           *
           * @param color The color to initialise the object with.
           */
-        constexpr Color(const unsigned int color) :
+        explicit constexpr Color(const unsigned int color) :
             r((color >> 16) & 0xFFU),
             g((color >>  8) & 0xFFU),
             b(color         & 0xFFU),
@@ -204,7 +204,10 @@ class Color final
           */
         constexpr bool operator==(const Color& color) const
         {
-            return r == color.r && g == color.g && b == color.b && a == color.a;
+            return r == color.r &&
+                g == color.g &&
+                b == color.b &&
+                a == color.a;
         }
 
         /**

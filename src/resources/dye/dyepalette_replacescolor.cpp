@@ -20,8 +20,6 @@
 
 #include "resources/dye/dyepalette.h"
 
-#include "logger.h"
-
 #ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
 #endif  // SDL_BYTEORDER
@@ -159,7 +157,8 @@ void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
     {
         __m256i mask = _mm256_set1_epi32(0xffffff00);
 //        __m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
-        __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]));
+        __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(
+            &pixels[ptr]));
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
@@ -220,7 +219,6 @@ void DyePalette::replaceSColorSimd(uint32_t *restrict pixels,
             ++ it;
         }
     }
-//    logger->log("end");
 }
 
 #endif  // SIMD_SUPPORTED

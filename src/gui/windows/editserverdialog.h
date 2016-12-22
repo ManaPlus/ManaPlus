@@ -47,7 +47,8 @@ class EditServerDialog final : public Window,
                                public KeyListener
 {
     public:
-        EditServerDialog(ServerDialog *const parent, ServerInfo server,
+        EditServerDialog(ServerDialog *const parent,
+                         const ServerInfo &server,
                          const int index);
 
         A_DELETE_COPY(EditServerDialog)

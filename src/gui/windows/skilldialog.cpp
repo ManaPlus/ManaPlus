@@ -346,7 +346,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
 
             const std::string setTypeStr = XML::getProperty(set, "type", "");
             SkillSetTypeT setType = SkillSetType::VerticalList;
-            if (setTypeStr == "" ||
+            if (setTypeStr.empty() ||
                 setTypeStr == "list" ||
                 setTypeStr == "vertical")
             {

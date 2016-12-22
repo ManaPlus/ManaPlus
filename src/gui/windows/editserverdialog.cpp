@@ -41,7 +41,7 @@
 #include "debug.h"
 
 EditServerDialog::EditServerDialog(ServerDialog *const parent,
-                                   ServerInfo server,
+                                   const ServerInfo &server,
                                    const int index) :
     // TRANSLATORS: edit server dialog name
     Window(_("Edit Server"), Modal_true, parent),
