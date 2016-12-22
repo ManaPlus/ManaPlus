@@ -139,7 +139,9 @@
 #endif  // ENABLE_CILKPLUS
 
 #ifdef __x86_64__
+#ifndef __clang__
 #define SIMD_SUPPORTED
+#endif  // __clang__
 #endif  // __x86_64__
 
 #ifdef SIMD_SUPPORTED
