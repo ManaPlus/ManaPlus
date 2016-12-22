@@ -102,9 +102,11 @@ int TestLauncher::exec()
     else if (mTest == "104")
         return testFps3();
     else if (mTest == "105")
-        return testDyeSpeed();
+        return testDyeSSpeed();
     else if (mTest == "106")
         return testStackSpeed();
+    else if (mTest == "107")
+        return testDyeASpeed();
 
     return -1;
 }
@@ -477,7 +479,7 @@ int TestLauncher::testDye()
     return 0;
 }
 
-int TestLauncher::testDyeSpeed()
+int TestLauncher::testDyeSSpeed()
 {
 #if defined __linux__ || defined __linux
     const int sz = 100000;
@@ -502,7 +504,39 @@ int TestLauncher::testDyeSpeed()
         + static_cast<long int>(time2.tv_nsec)) / 1) -
         ((static_cast<long int>(time1.tv_sec) * 1000000000L
         + static_cast<long int>(time1.tv_nsec)) / 1);
-    printf("salt: %u\n", buf[0]);
+    printf("dye s salt: %u\n", buf[0]);
+    printf("time: %ld\n", diff);
+#endif  // defined __linux__ || defined __linux
+
+    return 0;
+}
+
+int TestLauncher::testDyeASpeed()
+{
+#if defined __linux__ || defined __linux
+    const int sz = 100000;
+    uint32_t buf[sz];
+    timespec time1;
+    timespec time2;
+
+    DyePalette pal("#0000ffff,00000000,000020ff,70605040", 8);
+
+    for (int f = 0; f < sz; f ++)
+        buf[f] = f;
+
+    pal.replaceAColor(buf, sz);
+
+    clock_gettime(CLOCK_MONOTONIC, &time1);
+
+    for (int f = 0; f < 50000; f ++)
+        pal.replaceSColor(buf, sz);
+
+    clock_gettime(CLOCK_MONOTONIC, &time2);
+    long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
+        + static_cast<long int>(time2.tv_nsec)) / 1) -
+        ((static_cast<long int>(time1.tv_sec) * 1000000000L
+        + static_cast<long int>(time1.tv_nsec)) / 1);
+    printf("dye a salt: %u\n", buf[0]);
     printf("time: %ld\n", diff);
 #endif  // defined __linux__ || defined __linux
 

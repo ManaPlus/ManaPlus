@@ -74,7 +74,9 @@ class TestLauncher final
 
         int testDraw();
 
-        int testDyeSpeed();
+        int testDyeSSpeed();
+
+        int testDyeASpeed();
 
         int testStackSpeed();
 
