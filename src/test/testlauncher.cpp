@@ -497,7 +497,7 @@ int TestLauncher::testDyeSSpeed()
     clock_gettime(CLOCK_MONOTONIC, &time1);
 
     for (int f = 0; f < 50000; f ++)
-        pal.replaceSColor(buf, sz);
+        pal.replaceSColorDefault(buf, sz);
 
     clock_gettime(CLOCK_MONOTONIC, &time2);
     long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
@@ -505,7 +505,25 @@ int TestLauncher::testDyeSSpeed()
         ((static_cast<long int>(time1.tv_sec) * 1000000000L
         + static_cast<long int>(time1.tv_nsec)) / 1);
     printf("dye s salt: %u\n", buf[0]);
-    printf("time: %ld\n", diff);
+    printf("default time: %011ld\n", diff);
+
+    for (int f = 0; f < sz; f ++)
+        buf[f] = f;
+
+    pal.replaceSColor(buf, sz);
+
+    clock_gettime(CLOCK_MONOTONIC, &time1);
+
+    for (int f = 0; f < 50000; f ++)
+        pal.replaceSColorSimd(buf, sz);
+
+    clock_gettime(CLOCK_MONOTONIC, &time2);
+    diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
+        + static_cast<long int>(time2.tv_nsec)) / 1) -
+        ((static_cast<long int>(time1.tv_sec) * 1000000000L
+        + static_cast<long int>(time1.tv_nsec)) / 1);
+    printf("dye s salt: %u\n", buf[0]);
+    printf("simd time   : %011ld\n", diff);
 #endif  // defined __linux__ || defined __linux
 
     return 0;
@@ -529,7 +547,7 @@ int TestLauncher::testDyeASpeed()
     clock_gettime(CLOCK_MONOTONIC, &time1);
 
     for (int f = 0; f < 50000; f ++)
-        pal.replaceSColor(buf, sz);
+        pal.replaceSColorDefault(buf, sz);
 
     clock_gettime(CLOCK_MONOTONIC, &time2);
     long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
@@ -537,7 +555,26 @@ int TestLauncher::testDyeASpeed()
         ((static_cast<long int>(time1.tv_sec) * 1000000000L
         + static_cast<long int>(time1.tv_nsec)) / 1);
     printf("dye a salt: %u\n", buf[0]);
-    printf("time: %ld\n", diff);
+    printf("default time: %011ld\n", diff);
+
+    for (int f = 0; f < sz; f ++)
+        buf[f] = f;
+
+    pal.replaceAColor(buf, sz);
+
+    clock_gettime(CLOCK_MONOTONIC, &time1);
+
+    for (int f = 0; f < 50000; f ++)
+        pal.replaceSColorSimd(buf, sz);
+
+    clock_gettime(CLOCK_MONOTONIC, &time2);
+    diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L
+        + static_cast<long int>(time2.tv_nsec)) / 1) -
+        ((static_cast<long int>(time1.tv_sec) * 1000000000L
+        + static_cast<long int>(time1.tv_nsec)) / 1);
+    printf("dye a salt: %u\n", buf[0]);
+    printf("simd time   : %011ld\n", diff);
+
 #endif  // defined __linux__ || defined __linux
 
     return 0;
