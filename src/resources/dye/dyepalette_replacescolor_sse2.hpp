@@ -27,7 +27,7 @@
     const int mod = bufSize % 8;
     const int bufEnd = bufSize - mod;
 
-    for (int ptr = 0; ptr < bufEnd; ptr += 8)
+    for (int ptr = 0; ptr < bufEnd; ptr += 4)
     {
         __m128i mask = _mm_set1_epi32(0xffffff00);
 //        __m128i base = _mm_load_si128(reinterpret_cast<__m128i*>(pixels));

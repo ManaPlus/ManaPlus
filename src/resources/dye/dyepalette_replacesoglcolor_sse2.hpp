@@ -25,7 +25,7 @@
     if (sz % 2)
         -- it_end;
 
-    for (int ptr = 0; ptr < bufSize; ptr += 8)
+    for (int ptr = 0; ptr < bufSize; ptr += 4)
     {
         __m128i mask = _mm_set1_epi32(0x00ffffff);
 //        __m128i base = _mm_load_si128(reinterpret_cast<__m128i*>(
