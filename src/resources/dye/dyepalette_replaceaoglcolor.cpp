@@ -28,10 +28,10 @@
 #include <SDL_endian.h>
 #endif  // SDL_BYTEORDER
 
-#ifdef __x86_64__
+#ifdef SIMD_SUPPORTED
 // avx2
-#include "immintrin.h"
-#endif  // __x86_64__
+#include <immintrin.h>
+#endif  // SIMD_SUPPORTED
 
 #include "debug.h"
 

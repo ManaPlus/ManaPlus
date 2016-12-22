@@ -139,9 +139,11 @@
 #endif  // ENABLE_CILKPLUS
 
 #ifdef __x86_64__
-#ifndef __clang__
+#if !defined(__clang__) && defined(__GNUC__)
+#if GCC_VERSION >= 40700
 #define SIMD_SUPPORTED
-#endif  // __clang__
+#endif  // GCC_VERSION > 40700
+#endif  // !defined(__clang__) && defined(__GNUC__)
 #endif  // __x86_64__
 
 #ifdef SIMD_SUPPORTED
