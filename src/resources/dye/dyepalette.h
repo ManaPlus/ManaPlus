@@ -204,12 +204,44 @@ class DyePalette final
         void replaceSOGLColorSimd(uint32_t *restrict pixels,
                                   const int bufSize) const restrict2;
 
+        /**
+         * replace colors for OpenGL for S dye.
+         */
+        FUNCTION_SIMD_DEFAULT
+        void replaceSOGLColorSse2(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2;
+
+        /**
+         * replace colors for OpenGL for S dye.
+         */
+        FUNCTION_SIMD_DEFAULT
+        void replaceSOGLColorAvx2(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2;
+
 #ifdef SIMD_SUPPORTED
+        /**
+         * replace colors for OpenGL for S dye.
+         */
+        __attribute__ ((target ("sse2")))
+        void replaceSOGLColorSimd(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2;
         /**
          * replace colors for OpenGL for S dye.
          */
         __attribute__ ((target ("avx2")))
         void replaceSOGLColorSimd(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2;
+        /**
+         * replace colors for OpenGL for S dye.
+         */
+        __attribute__ ((target ("sse2")))
+        void replaceSOGLColorSse2(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2;
+        /**
+         * replace colors for OpenGL for S dye.
+         */
+        __attribute__ ((target ("avx2")))
+        void replaceSOGLColorAvx2(uint32_t *restrict pixels,
                                   const int bufSize) const restrict2;
 #endif  // SIMD_SUPPORTED
 
