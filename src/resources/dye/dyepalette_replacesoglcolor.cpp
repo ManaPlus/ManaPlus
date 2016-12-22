@@ -159,13 +159,13 @@ void DyePalette::replaceSOGLColorSimd(uint32_t *restrict pixels,
     if (sz % 2)
         -- it_end;
 
-    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
-         pixels != p_end;
-         pixels += 8)
+    for (int ptr = 0; ptr < bufSize; ptr += 8)
     {
         __m256i mask = _mm256_set1_epi32(0x00ffffff);
-//        __m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
-        __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(pixels));
+//        __m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(
+//            &pixels[ptr]));
+        __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(
+            &pixels[ptr]));
 
         std::vector<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
@@ -184,8 +184,8 @@ void DyePalette::replaceSOGLColorSimd(uint32_t *restrict pixels,
             base = _mm256_or_si256(srcAnd, dstAnd);
             ++ it;
         }
-//        _mm256_store_si256(reinterpret_cast<__m256i*>(pixels), base);
-        _mm256_storeu_si256(reinterpret_cast<__m256i*>(pixels), base);
+//        _mm256_store_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
+        _mm256_storeu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
     }
 }
 
