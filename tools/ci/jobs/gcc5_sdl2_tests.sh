@@ -46,7 +46,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wlogical-not-parentheses -Woverloaded-virtual"
 
 do_init
-run_configure --with-sdl2 --enable-unittests=yes
+run_configure --with-sdl2 --enable-unittests=yes $*
 export SDL_VIDEODRIVER=dummy
 run_make_check
 

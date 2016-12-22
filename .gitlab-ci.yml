@@ -133,6 +133,24 @@ gcc-5_sanitize_tests_i386:
   tags:
     - docker
 
+gcc-5_sanitize_no_opengl_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl
+  image: debian:unstable
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+gcc-5_sanitize_no_opengltests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl
+  image: vicamo/debian:sid-i386
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
 gcc-5_tests:
   stage: build
   script:
@@ -169,6 +187,24 @@ gcc-6_tests_i386:
   tags:
     - docker
 
+gcc-6_tests_no_opengl:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-opengl
+  image: debian:unstable
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+gcc-6_tests_no_opengl_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-opengl
+  image: vicamo/debian:sid-i386
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
 gcc-5_sdl2_tests:
   stage: build
   script:
@@ -182,6 +218,24 @@ gcc-5_sdl2_tests_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
+  image: vicamo/debian:sid-i386
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+gcc-5_sdl2_no_opengl_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl
+  image: debian:unstable
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
+gcc-5_sdl2_no_opengl_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl
   image: vicamo/debian:sid-i386
   <<: *log-failed-jobs
   tags:

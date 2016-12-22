@@ -55,7 +55,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wreturn-type -Wsequence-point -Wswitch"
 
 do_init
-run_configure --enable-unittests=yes
+run_configure --enable-unittests=yes $*
 export SDL_VIDEODRIVER=dummy
 export ASAN_OPTIONS=detect_leaks=0
 run_make_check
