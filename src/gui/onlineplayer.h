@@ -37,7 +37,7 @@ class OnlinePlayer final
                      const GenderT gender,
                      const signed char version) :
             mNick(nick),
-            mText(""),
+            mText(),
             mStatus(status),
             mLevel(level),
             mVersion(version),

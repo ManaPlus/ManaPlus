@@ -719,12 +719,9 @@ void ChatWindow::mousePressed(MouseEvent &event)
                 }
                 else
                 {
-                    if (cTab)
-                    {
-                        popupMenu->showChatPopup(viewport->mMouseX,
-                            viewport->mMouseY,
-                            cTab);
-                    }
+                    popupMenu->showChatPopup(viewport->mMouseX,
+                        viewport->mMouseY,
+                        cTab);
                 }
             }
         }

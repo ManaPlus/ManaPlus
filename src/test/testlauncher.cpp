@@ -489,9 +489,9 @@ static void initBuffer(uint32_t *const buf,
 
 static void calcTime(const char *const msg1,
                      const char *const msg2,
-                     timespec &time1,
+                     const timespec &time1,
                      timespec &time2,
-                     uint32_t *const buf)
+                     const uint32_t *const buf)
 {
     clock_gettime(CLOCK_MONOTONIC, &time2);
     long diff = ((static_cast<long int>(time2.tv_sec) * 1000000000L

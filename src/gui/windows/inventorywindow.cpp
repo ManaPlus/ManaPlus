@@ -172,11 +172,6 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 
     mItems->addSelectionListener(this);
 
-    ScrollArea *const invenScroll = new ScrollArea(this, mItems,
-        fromBool(getOptionBool("showbackground"), Opaque),
-        "inventory_background.xml");
-    invenScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-
     const int size = config.getIntValue("fontSize");
     mFilter = new TabStrip(this, "filter_" + getWindowName(), size + 16);
     mFilter->addActionListener(this);
@@ -193,6 +188,11 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         invInstances.push_back(this);
         return;
     }
+
+    ScrollArea *const invenScroll = new ScrollArea(this, mItems,
+        fromBool(getOptionBool("showbackground"), Opaque),
+        "inventory_background.xml");
+    invenScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     switch (mInventory->getType())
     {

@@ -494,7 +494,7 @@ void TextBox::setForegroundColorAll(const Color &color1,
 std::string TextBox::getText() const
 {
     if (mTextRows.empty())
-        return std::string("");
+        return std::string();
 
     int i;
     std::string text;

@@ -2730,7 +2730,7 @@ void Being::unSetSprite(const unsigned int slot) restrict2
         removeItemParticles(id1);
 
     beingSlot.spriteId = 0;
-    beingSlot.color = std::string();
+    beingSlot.color.clear();
     beingSlot.colorId = ItemColor_one;
     beingSlot.cardsId = CardsList(nullptr);
     recalcSpritesOrder();
