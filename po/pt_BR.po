@@ -27,9 +27,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2016-12-12 20:27+0300\n"
-"PO-Revision-Date: 2016-10-23 08:29+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2016-12-23 21:36+0300\n"
+"PO-Revision-Date: 2016-12-18 00:55+0000\n"
+"Last-Translator: Diogo RBG <diogorbg@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/akaras/manaplus/"
 "language/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -899,7 +899,7 @@ msgstr "dyecmd srcdyestring dstfile"
 
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: chat tab name
-#: src/game.cpp:263 src/gui/windows/chatwindow.cpp:2137
+#: src/game.cpp:263 src/gui/windows/chatwindow.cpp:2134
 msgid "General"
 msgstr "Geral"
 
@@ -2523,9 +2523,9 @@ msgstr "Retirar tudo"
 #. TRANSLATORS: inventory button
 #: src/gui/popups/popupmenu.cpp:1916 src/gui/popups/popupmenu.cpp:2914
 #: src/gui/windows/inventorywindow.cpp:204
-#: src/gui/windows/inventorywindow.cpp:788 src/gui/windows/skilldialog.cpp:91
-#: src/gui/windows/skilldialog.cpp:169 src/gui/windows/skilldialog.cpp:387
-#: src/gui/windows/skilldialog.cpp:569 src/gui/windows/skilldialog.cpp:680
+#: src/gui/windows/inventorywindow.cpp:788 src/gui/windows/skilldialog.cpp:93
+#: src/gui/windows/skilldialog.cpp:193 src/gui/windows/skilldialog.cpp:465
+#: src/gui/windows/skilldialog.cpp:657 src/gui/windows/skilldialog.cpp:772
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
 msgid "Use"
 msgstr "Usar"
@@ -3204,7 +3204,7 @@ msgstr "Deixar grupo"
 #. TRANSLATORS: leave guild
 #: src/gui/popups/popupmenu.cpp:3439
 msgid "Leave guild"
-msgstr ""
+msgstr "Sair da guilda"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: change guild notice message
@@ -5326,9 +5326,8 @@ msgstr "Ignorar pacotes de registro"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:395
-#, fuzzy
 msgid "Log unimplemented packets"
-msgstr "Registrar pacotes não implementados"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:399
@@ -6370,7 +6369,7 @@ msgstr "HAB"
 
 #. TRANSLATORS: long button name for skills window.
 #. TRANSLATORS: skills dialog name
-#: src/gui/windowmenu.cpp:123 src/gui/windows/skilldialog.cpp:83
+#: src/gui/windowmenu.cpp:123 src/gui/windows/skilldialog.cpp:85
 msgid "Skills"
 msgstr "Habilidades"
 
@@ -6806,23 +6805,23 @@ msgid "Present: %s; %d players are present."
 msgstr "Presentes: %s; %d jogadores estão presentes."
 
 #. TRANSLATORS: chat message
-#: src/gui/windows/chatwindow.cpp:1143
+#: src/gui/windows/chatwindow.cpp:1140
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Enviando MP para %s: %s"
 
 #. TRANSLATORS: prefix for moved message to trade tab.
-#: src/gui/windows/chatwindow.cpp:1575
+#: src/gui/windows/chatwindow.cpp:1572
 msgid "Moved: "
 msgstr "Movido: "
 
 #. TRANSLATORS: moved message to trade tab warning.
-#: src/gui/windows/chatwindow.cpp:1583
+#: src/gui/windows/chatwindow.cpp:1580
 msgid "Your message was moved to trade tab"
 msgstr "Sua mensagem foi movida para a aba de negociação"
 
 #. TRANSLATORS: error message
-#: src/gui/windows/chatwindow.cpp:1608
+#: src/gui/windows/chatwindow.cpp:1605
 msgid "Broken nick detected: "
 msgstr "Apelido suspeito detectado: "
 
@@ -6931,9 +6930,10 @@ msgstr "Fontes"
 
 #. TRANSLATORS: unknown equipment page name
 #. TRANSLATORS: unknown hosts group name
+#. TRANSLATORS: unknown skills tab name
 #. TRANSLATORS: Skill type
 #: src/gui/windows/equipmentwindow.cpp:674 src/gui/windows/serverdialog.cpp:458
-#: src/resources/skill/skillinfo.cpp:121
+#: src/gui/windows/skilldialog.cpp:146 src/resources/skill/skillinfo.cpp:124
 msgid "Unknown"
 msgstr "Desconhecido"
 
@@ -7632,57 +7632,57 @@ msgid "Personal Shop - %s"
 msgstr "Loja Pessoal - %s"
 
 #. TRANSLATORS: skills dialog button
-#: src/gui/windows/skilldialog.cpp:93
+#: src/gui/windows/skilldialog.cpp:95
 msgid "Up"
 msgstr "+"
 
 #. TRANSLATORS: skills dialog label
-#: src/gui/windows/skilldialog.cpp:216
+#: src/gui/windows/skilldialog.cpp:240
 #, c-format
 msgid "Skill points available: %d"
 msgstr "Pontos de habilidade disponíveis: %d"
 
 #. TRANSLATORS: skills dialog default skill tab
-#: src/gui/windows/skilldialog.cpp:319
+#: src/gui/windows/skilldialog.cpp:345
 #, c-format
 msgid "Skill Set %d"
 msgstr "Habilidade %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:375
+#: src/gui/windows/skilldialog.cpp:453
 #, c-format
 msgid "Skill %d"
 msgstr "Habilidade %d"
 
 #. TRANSLATORS: skills dialog. skill id
-#: src/gui/windows/skilldialog.cpp:426
+#: src/gui/windows/skilldialog.cpp:508
 #, c-format
 msgid "Skill %u"
 msgstr "habilidade %u"
 
 #. TRANSLATORS: skills dialog. skill level
 #. TRANSLATORS: skill level
-#: src/gui/windows/skilldialog.cpp:564 src/resources/skill/skillinfo.cpp:104
+#: src/gui/windows/skilldialog.cpp:652 src/resources/skill/skillinfo.cpp:107
 #, c-format
 msgid "Lvl: %d"
 msgstr "Nível: %d"
 
 #. TRANSLATORS: skill error message
-#: src/gui/windows/skilldialog.cpp:571
+#: src/gui/windows/skilldialog.cpp:659
 #, c-format
 msgid "Failed skill: %s"
 msgstr "Habilidade falhou: %s"
 
 #. TRANSLATORS: text skill dialog header
-#: src/gui/windows/skilldialog.cpp:941 src/gui/windows/skilldialog.cpp:1005
-#: src/gui/windows/skilldialog.cpp:1124
+#: src/gui/windows/skilldialog.cpp:1033 src/gui/windows/skilldialog.cpp:1097
+#: src/gui/windows/skilldialog.cpp:1216
 #, c-format
 msgid "Add text to skill %s"
 msgstr "Adicione um texto a habilidade %s"
 
 #. TRANSLATORS: text skill dialog field
-#: src/gui/windows/skilldialog.cpp:944 src/gui/windows/skilldialog.cpp:1008
-#: src/gui/windows/skilldialog.cpp:1127
+#: src/gui/windows/skilldialog.cpp:1036 src/gui/windows/skilldialog.cpp:1100
+#: src/gui/windows/skilldialog.cpp:1219
 msgid "Text: "
 msgstr "Texto: "
 
@@ -9767,13 +9767,13 @@ msgstr "Selecione o alvo do warp"
 #: src/net/eathena/vendingrecv.cpp:243
 #, c-format
 msgid "Sold item %s amount %d. You got: %s"
-msgstr ""
+msgstr "Item vendido: %s quantidade: %d. Você obteve: %s"
 
 #. TRANSLATORS: vending sold item message
 #: src/net/eathena/vendingrecv.cpp:251
 #, c-format
 msgid "Sold item %s amount %d"
-msgstr ""
+msgstr "item vendido: %s quantidade: %d"
 
 #. TRANSLATORS: trade header
 #: src/net/ea/traderecv.cpp:79
@@ -10945,30 +10945,30 @@ msgid "Unable to buy while trading."
 msgstr ""
 
 #. TRANSLATORS: skill level
-#: src/resources/skill/skillinfo.cpp:109
+#: src/resources/skill/skillinfo.cpp:112
 #, c-format
 msgid "Lvl: %d / %d"
 msgstr "Lvl: %d / %d"
 
 #. TRANSLATORS: skill type
-#: src/resources/skill/skillinfo.cpp:116
+#: src/resources/skill/skillinfo.cpp:119
 #, c-format
 msgid "Type: %s"
 msgstr "Tipo: %s"
 
 #. TRANSLATORS: Skill type
-#: src/resources/skill/skillinfo.cpp:140
+#: src/resources/skill/skillinfo.cpp:143
 msgid "Unknown:"
 msgstr "Desconhecido(a):"
 
 #. TRANSLATORS: skill mana
-#: src/resources/skill/skillinfo.cpp:147
+#: src/resources/skill/skillinfo.cpp:150
 #, c-format
 msgid " / Mana: -%d"
 msgstr " / Mana: -%d"
 
 #. TRANSLATORS: skill range
-#: src/resources/skill/skillinfo.cpp:155
+#: src/resources/skill/skillinfo.cpp:158
 #, c-format
 msgid "Range: %d"
 msgstr "Alcance: %d"
