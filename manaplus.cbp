@@ -273,7 +273,11 @@
 		<Unit filename="src/resources/loaders/rescaledloader.cpp" />
 		<Unit filename="src/resources/imagewriter.cpp" />
 		<Unit filename="src/resources/sdlscreenshothelper.cpp" />
+		<Unit filename="src/resources/dye/dyepalette_replaceaoglcolor.cpp" />
+		<Unit filename="src/resources/dye/dyepalette_replacesoglcolor.cpp" />
+		<Unit filename="src/resources/dye/dyepalette_replacescolor.cpp" />
 		<Unit filename="src/resources/dye/dyepalette.cpp" />
+		<Unit filename="src/resources/dye/dyepalette_replaceacolor.cpp" />
 		<Unit filename="src/resources/dye/dye.cpp" />
 		<Unit filename="src/resources/map/objectslayer.cpp" />
 		<Unit filename="src/resources/map/mapitem.cpp" />
@@ -494,7 +498,6 @@
 		<Unit filename="src/gui/models/touchactionmodel.cpp" />
 		<Unit filename="src/gui/models/extendednamesmodel.cpp" />
 		<Unit filename="src/gui/models/namesmodel.cpp" />
-		<Unit filename="src/gui/color.cpp" />
 		<Unit filename="src/chatlogger.cpp" />
 		<Unit filename="src/beingequipbackend.cpp" />
 		<Unit filename="src/units.cpp" />
@@ -785,6 +788,7 @@
 		<Unit filename="src/utils/base64.h" />
 		<Unit filename="src/utils/stringvector.h" />
 		<Unit filename="src/utils/physfsrwops.h" />
+		<Unit filename="src/utils/buildhex.h" />
 		<Unit filename="src/utils/intmap.h" />
 		<Unit filename="src/utils/fuzzer.h" />
 		<Unit filename="src/utils/sdlsharedhelper.h" />
@@ -1224,6 +1228,7 @@
 		<Unit filename="src/gui/widgets/textfield.h" />
 		<Unit filename="src/gui/widgets/characterviewsmall.h" />
 		<Unit filename="src/gui/widgets/windowcontainer.h" />
+		<Unit filename="src/gui/widgets/skillrectanglelistbox.h" />
 		<Unit filename="src/gui/widgets/setupitem.h" />
 		<Unit filename="src/gui/widgets/spellshortcutcontainer.h" />
 		<Unit filename="src/gui/widgets/characterdisplay.h" />
@@ -1639,6 +1644,7 @@
 		<Unit filename="src/enums/resources/item/itemsoundevent.h" />
 		<Unit filename="src/enums/resources/questtype.h" />
 		<Unit filename="src/enums/resources/notifyflags.h" />
+		<Unit filename="src/enums/resources/skill/skillsettype.h" />
 		<Unit filename="src/enums/resources/skill/skilltype2.h" />
 		<Unit filename="src/enums/resources/skill/skilltype.h" />
 		<Unit filename="src/enums/resources/skill/skillowner.h" />
