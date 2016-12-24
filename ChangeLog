@@ -1,3 +1,13 @@
+2016-12-24 New release 1.6.12.24
+fix: some typos.
+fix: compilation with cilk plus and gcc 6.
+fix: hair animation in char create dialog.
+add: rectangular skill pages.
+add: show skill tabs only with active skills.
+add: special tab for unknown skills.
+add: using sse2/avx2 in A and S dye.
+remove: support for evol plugin version 5.
+
 2016-11-05 New release 1.6.11.5
 fix: legacy status effects with block-id.
 fix: some packets for some packet versions.
