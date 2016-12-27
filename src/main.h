@@ -65,6 +65,8 @@
 #define PACKAGE_OS "Mac OS X"
 #elif defined(__ANDROID__) || defined(ANDROID)
 #define PACKAGE_OS "Android"
+#elif defined(__FreeBSD_kernel__) && defined(__GLIBC__)
+#define PACKAGE_OS "kFreeBSD"
 #elif defined __FreeBSD__ || defined __DragonFly__
 #define PACKAGE_OS "FreeBSD"
 #elif defined(__NetBSD__) || defined(__NetBSD)
