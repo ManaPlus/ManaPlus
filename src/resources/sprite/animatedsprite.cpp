@@ -187,7 +187,7 @@ bool AnimatedSprite::play(const std::string &restrict spriteAction) restrict2
 bool AnimatedSprite::update(const int time) restrict2
 {
     // Avoid freaking out at first frame or when tick_time overflows
-    if (time < mLastTime || mLastTime == 0)
+    if (A_UNLIKELY(time < mLastTime || mLastTime == 0))
         mLastTime = time;
 
     // If not enough time has passed yet, do nothing
@@ -200,7 +200,7 @@ bool AnimatedSprite::update(const int time) restrict2
     const Animation *restrict const animation = mAnimation;
     const Frame *restrict const frame = mFrame;
 
-    if (!updateCurrentAnimation(dt))
+    if (A_UNLIKELY(!updateCurrentAnimation(dt)))
     {
         // Animation finished, reset to default
         play(SpriteAction::STAND);
