@@ -182,7 +182,6 @@ SRC += events/actionevent.h \
 	      gui/dialogsmanager.cpp \
 	      gui/dialogsmanager.h \
 	      input/key.cpp \
-	      gui/rect.cpp \
 	      gui/widgets/widget.cpp \
 	      gui/widgets/basiccontainer2.cpp \
 	      gui/models/colorlistmodel.h \

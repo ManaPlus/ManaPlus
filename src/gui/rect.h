@@ -78,7 +78,13 @@ class Rect notfinal
           * Constructor. The default rectangle is an empty rectangle
           * at the coordinates (0,0).
           */
-        Rect();
+        constexpr Rect() :
+            x(0),
+            y(0),
+            width(0),
+            height(0)
+        {
+        }
 
         /**
           * Constructor.
@@ -89,9 +95,18 @@ class Rect notfinal
           * @param height The height of the rectangle.
           * @since 0.1.0
           */
-        Rect(const int x, const int y, const int width, const int height);
+        constexpr Rect(const int x_,
+             const int y_,
+             const int width_,
+             const int height_) :
+            x(x_),
+            y(y_),
+            width(width_),
+            height(height_)
+        {
+        }
 
-        Rect(const Rect &r) :
+        constexpr Rect(const Rect &r) :
             x(r.x),
             y(r.y),
             width(r.width),
@@ -120,10 +135,16 @@ class Rect notfinal
           * @param height The height of the rectangle.
           * @since 0.1.0
           */
-        void setAll(const int x,
-                    const int y,
+        void setAll(const int x0,
+                    const int y0,
                     const int width0,
-                    const int height0);
+                    const int height0)
+        {
+            x = x0;
+            y = y0;
+            width = width0;
+            height = height0;
+        }
 
         /**
           * Checks if another rectangle intersects with the rectangle.
@@ -132,7 +153,41 @@ class Rect notfinal
           * @return True if the rectangles intersect, false otherwise.
           * @since 0.1.0
           */
-        bool isIntersecting(const Rect& rectangle) const A_WARN_UNUSED;
+        bool isIntersecting(const Rect& rectangle) const A_WARN_UNUSED
+        {
+            int x_ = x;
+            int y_ = y;
+            int width_ = width;
+            int height_ = height;
+
+            x_ -= rectangle.x;
+            y_ -= rectangle.y;
+
+            if (x_ < 0)
+            {
+                width_ += x_;
+            }
+            else if (x_ + width_ > rectangle.width)
+            {
+                width_ = rectangle.width - x_;
+            }
+
+            if (y_ < 0)
+            {
+                height_ += y_;
+            }
+            else if (y_ + height_ > rectangle.height)
+            {
+                height_ = rectangle.height - y_;
+            }
+
+            if (width_ <= 0 || height_ <= 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         /**
           * Checks if a point is inside the rectangle
@@ -142,7 +197,14 @@ class Rect notfinal
           * @return True if the point is inside the rectangle.
           * @since 0.1.0
           */
-        bool isPointInRect(const int x, const int y) const A_WARN_UNUSED;
+        bool isPointInRect(const int x_,
+                           const int y_) const A_WARN_UNUSED
+        {
+            return x_ >= x
+                && y_ >= y
+                && x_ < x + width
+                && y_ < y + height;
+        }
 
         /**
           * Holds the x coordinate of the rectangle.
