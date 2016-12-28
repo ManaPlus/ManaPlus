@@ -1768,7 +1768,7 @@ void Being::logic() restrict2
             delete2(mText)
     }
 
-    if (mOwner)
+    if (A_UNLIKELY(mOwner != nullptr))
     {
         if (mType == ActorType::Homunculus ||
             mType == ActorType::Mercenary)
@@ -1785,19 +1785,19 @@ void Being::logic() restrict2
     for_each_horses(mUpHorseSprites)
         (*it)->update(time);
 
-    if (mCastEndTime != 0 && mCastEndTime < tick_time)
+    if (A_UNLIKELY(mCastEndTime != 0 && mCastEndTime < tick_time))
     {
         mCastEndTime = 0;
         delete2(mCastingEffect);
     }
 
-    if (mAnimationEffect)
+    if (A_UNLIKELY(mAnimationEffect))
     {
         mAnimationEffect->update(time);
         if (mAnimationEffect->isTerminated())
             delete2(mAnimationEffect)
     }
-    if (mCastingEffect)
+    if (A_UNLIKELY(mCastingEffect))
     {
         mCastingEffect->update(time);
         if (mCastingEffect->isTerminated())
@@ -1883,7 +1883,7 @@ void Being::logic() restrict2
             + mapTileSize / 2 + xOffset), yOffset3);
     }
 
-    if (mEmotionSprite)
+    if (A_UNLIKELY(mEmotionSprite))
     {
         mEmotionTime--;
         if (mEmotionTime == 0)
@@ -1895,17 +1895,17 @@ void Being::logic() restrict2
     if (frameCount < 10)
         frameCount = 10;
 
-    if (!isAlive() &&
-        mSpeed &&
+    if (A_UNLIKELY(!isAlive() &&
+        mSpeed != 0 &&
         gameHandler->removeDeadBeings() &&
-        get_elapsed_time(mActionTime) / mSpeed >= frameCount)
+        get_elapsed_time(mActionTime) / mSpeed >= frameCount))
     {
         if (mType != ActorType::Player && actorManager)
             actorManager->destroy(this);
     }
 
     const SoundInfo *restrict const sound = mNextSound.sound;
-    if (sound)
+    if (A_UNLIKELY(sound))
     {
         const int time2 = tick_time;
         if (time2 > mNextSound.time)
