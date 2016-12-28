@@ -1175,8 +1175,8 @@ class Being notfinal : public ActorSprite,
          * If walking in direction 'neg' the value is negated.
          * TODO: Used by eAthena only?
          */
-        int getOffset(const signed char pos,
-                      const signed char neg) const restrict2 A_WARN_UNUSED;
+        template<signed char pos, signed char neg>
+        int getOffset() const restrict2 A_WARN_UNUSED;
 
         int searchSlotValue(const std::vector<int> &restrict slotRemap,
                             const int val) const restrict2 A_WARN_UNUSED;

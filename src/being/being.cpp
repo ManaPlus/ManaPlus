@@ -1858,10 +1858,10 @@ void Being::logic() restrict2
 
     if (mAction == BeingAction::MOVE || mNeedPosUpdate)
     {
-        const int xOffset = getOffset(
-            BeingDirection::LEFT, BeingDirection::RIGHT);
-        const int yOffset = getOffset(
-            BeingDirection::UP, BeingDirection::DOWN);
+        const int xOffset = getOffset<BeingDirection::LEFT,
+            BeingDirection::RIGHT>();
+        const int yOffset = getOffset<BeingDirection::UP,
+            BeingDirection::DOWN>();
         int offset = xOffset;
         if (!offset)
             offset = yOffset;
@@ -2343,8 +2343,8 @@ void Being::drawSpeech(const int offsetX,
     }
 }
 
-int Being::getOffset(const signed char pos,
-                     const signed char neg) const restrict2
+template<signed char pos, signed char neg>
+int Being::getOffset() const restrict2
 {
     // Check whether we're walking in the requested direction
     if (mAction != BeingAction::MOVE || !(mDirection & (pos | neg)))
