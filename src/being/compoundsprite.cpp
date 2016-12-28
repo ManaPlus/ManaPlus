@@ -128,7 +128,7 @@ bool CompoundSprite::play(const std::string &action)
 bool CompoundSprite::update(const int time)
 {
     bool ret = false;
-    if (!mLastTime)
+    if (A_UNLIKELY(mLastTime == 0))
         mStartTime = time;
     mLastTime = time;
     FOR_EACH (SpriteIterator, it, mSprites)
