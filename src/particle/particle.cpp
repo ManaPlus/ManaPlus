@@ -126,7 +126,7 @@ void Particle::draw(Graphics *restrict const,
 void Particle::updateSelf() restrict2
 {
     // calculate particle movement
-    if (mMomentum != 1.0F)
+    if (A_LIKELY(mMomentum != 1.0F))
         mVelocity *= mMomentum;
 
     if (mTarget && mAcceleration != 0.0F)
@@ -167,7 +167,7 @@ void Particle::updateSelf() restrict2
         }
     }
 
-    if (mRandomness >= 10)  // reduce useless calculations
+    if (A_LIKELY(mRandomness >= 10))  // reduce useless calculations
     {
         const int rand2 = mRandomness * 2;
         mVelocity.x += static_cast<float>(mrand() % rand2 - mRandomness)
@@ -186,7 +186,7 @@ void Particle::updateSelf() restrict2
     mPos.z += mVelocity.z * SIN45;
 
     // Update other stuff
-    if (mLifetimeLeft > 0)
+    if (A_LIKELY(mLifetimeLeft > 0))
         mLifetimeLeft--;
 
     mLifetimePast++;
@@ -231,8 +231,8 @@ void Particle::updateSelf() restrict2
     }
 
     // create death effect when the particle died
-    if (mAlive != AliveStatus::ALIVE &&
-        mAlive != AliveStatus::DEAD_LONG_AGO)
+    if (A_UNLIKELY(mAlive != AliveStatus::ALIVE &&
+        mAlive != AliveStatus::DEAD_LONG_AGO))
     {
         if ((CAST_U32(mAlive) & mDeathEffectConditions)
             > 0x00  && !mDeathEffect.empty())
@@ -248,9 +248,9 @@ void Particle::updateSelf() restrict2
 
 bool Particle::update() restrict2
 {
-    if (mAlive == AliveStatus::ALIVE)
+    if (A_LIKELY(mAlive == AliveStatus::ALIVE))
     {
-        if (mLifetimeLeft == 0)
+        if (A_UNLIKELY(mLifetimeLeft == 0))
         {
             mAlive = AliveStatus::DEAD_TIMEOUT;
             if (mChildParticles.empty())
@@ -284,13 +284,14 @@ bool Particle::update() restrict2
                     const float range = static_cast<const float>(PI / size);
 
                     // Determines which frame the particle should play
-                    if (rad < range || rad > PI2 - range)
+                    if (A_UNLIKELY(rad < range || rad > PI2 - range))
                     {
                         mAnimation->setFrame(0);
                     }
                     else
                     {
                         const float range2 = 2 * range;
+                        // +++ need move condition outside of for
                         for (int c = 1; c < size; c++)
                         {
                             const float cRange = static_cast<float>(c) *
@@ -335,7 +336,7 @@ bool Particle::update() restrict2
         {
             Particle *restrict const particle = *p;
             // update particle
-            if (particle->update())
+            if (A_LIKELY(particle->update()))
             {
                 ++p;
             }
@@ -346,9 +347,9 @@ bool Particle::update() restrict2
                 p = mChildParticles.erase(p);
             }
         }
-        if (mAlive != AliveStatus::ALIVE &&
+        if (A_UNLIKELY(mAlive != AliveStatus::ALIVE &&
             mChildParticles.empty() &&
-            mAutoDelete)
+            mAutoDelete))
         {
             return false;
         }
@@ -367,7 +368,7 @@ bool Particle::update() restrict2
         {
             Particle *restrict const particle = *p;
             // update particle
-            if (particle->update())
+            if (A_LIKELY(particle->update()))
             {
                 ++p;
             }
@@ -378,8 +379,8 @@ bool Particle::update() restrict2
                 p = mChildParticles.erase(p);
             }
         }
-        if (mChildParticles.empty() &&
-            mAutoDelete)
+        if (A_UNLIKELY(mChildParticles.empty() &&
+            mAutoDelete))
         {
             return false;
         }
