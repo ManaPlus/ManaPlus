@@ -357,6 +357,8 @@ class Map final : public Properties,
 
         void updateConditionLayers() restrict2;
 
+        void preCacheLayers() restrict2;
+
         int calcMemoryLocal() const override final;
 
         int calcMemoryChilds(const int level) const override final;

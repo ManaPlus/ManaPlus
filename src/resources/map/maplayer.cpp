@@ -145,26 +145,23 @@ void MapLayer::draw(Graphics *const graphics,
 
             int c = 0;
             const Image *const img = tilePtr->image;
-            if (img)
+            const int px = x32 + dx;
+            const int py = py0 - img->mBounds.h;
+            if (mSpecialFlag ||
+                img->mBounds.h <= mapTileSize)
             {
-                const int px = x32 + dx;
-                const int py = py0 - img->mBounds.h;
-                if (mSpecialFlag ||
-                    img->mBounds.h <= mapTileSize)
-                {
-                    int width = 0;
-                    // here need not draw over player position
-                    c = getTileDrawWidth(tilePtr, endX - x, width);
+                int width = 0;
+                // here need not draw over player position
+                c = getTileDrawWidth(tilePtr, endX - x, width);
 
-                    if (!c)
-                    {
-                        graphics->drawImage(img, px, py);
-                    }
-                    else
-                    {
-                        graphics->drawPattern(img, px, py,
-                            width, img->mBounds.h);
-                    }
+                if (!c)
+                {
+                    graphics->drawImage(img, px, py);
+                }
+                else
+                {
+                    graphics->drawPattern(img, px, py,
+                        width, img->mBounds.h);
                 }
             }
 
@@ -242,22 +239,19 @@ void MapLayer::updateSDL(const Graphics *const graphics,
             if (!tilePtr->isEnabled)
                 continue;
             Image *const img = (*tilePtr).image;
-            if (img)
+            const int px = x * mapTileSize + dx;
+            const int py = py0 - img->mBounds.h;
+            if (mSpecialFlag ||
+                img->mBounds.h <= mapTileSize)
             {
-                const int px = x * mapTileSize + dx;
-                const int py = py0 - img->mBounds.h;
-                if (mSpecialFlag ||
-                    img->mBounds.h <= mapTileSize)
+                if (lastImage != img)
                 {
-                    if (lastImage != img)
-                    {
-                        imgVert = new ImageVertexes();
-                        imgVert->image = img;
-                        row->images.push_back(imgVert);
-                        lastImage = img;
-                    }
-                    graphics->calcTileSDL(imgVert, px, py);
+                    imgVert = new ImageVertexes();
+                    imgVert->image = img;
+                    row->images.push_back(imgVert);
+                    lastImage = img;
                 }
+                graphics->calcTileSDL(imgVert, px, py);
             }
         }
     }
@@ -310,39 +304,36 @@ void MapLayer::updateOGL(Graphics *const graphics,
             if (!tilePtr->isEnabled)
                 continue;
             Image *const img = (*tilePtr).image;
-            if (img)
+            const int px = x * mapTileSize + dx;
+            const int py = py0 - img->mBounds.h;
+            const GLuint imgGlImage = img->mGLImage;
+            if (mSpecialFlag ||
+                img->mBounds.h <= mapTileSize)
             {
-                const int px = x * mapTileSize + dx;
-                const int py = py0 - img->mBounds.h;
-                const GLuint imgGlImage = img->mGLImage;
-                if (mSpecialFlag ||
-                    img->mBounds.h <= mapTileSize)
+                if (!lastImage ||
+                    lastImage->mGLImage != imgGlImage)
                 {
-                    if (!lastImage ||
-                        lastImage->mGLImage != imgGlImage)
-                    {
-                        if (img->mBounds.w > mapTileSize)
-                            imgSet.clear();
+                    if (img->mBounds.w > mapTileSize)
+                        imgSet.clear();
 
-                        if (imgSet.find(imgGlImage) != imgSet.end())
-                        {
-                            imgVert = imgSet[imgGlImage];
-                        }
-                        else
-                        {
-                            if (lastImage)
-                                imgSet[lastImage->mGLImage] = imgVert;
-                            imgVert = new ImageVertexes();
-                            imgVert->ogl.init();
-                            imgVert->image = img;
-                            row->images.push_back(imgVert);
-                        }
+                    if (imgSet.find(imgGlImage) != imgSet.end())
+                    {
+                        imgVert = imgSet[imgGlImage];
                     }
-                    lastImage = img;
+                    else
+                    {
+                        if (lastImage)
+                            imgSet[lastImage->mGLImage] = imgVert;
+                        imgVert = new ImageVertexes();
+                        imgVert->ogl.init();
+                        imgVert->image = img;
+                        row->images.push_back(imgVert);
+                    }
+                }
+                lastImage = img;
 //                    if (imgVert->image->mGLImage != lastImage->mGLImage)
 //                        logger->log("wrong image draw");
-                    graphics->calcTileVertexes(imgVert, lastImage, px, py);
-                }
+                graphics->calcTileVertexes(imgVert, lastImage, px, py);
             }
         }
     }
@@ -512,15 +503,11 @@ void MapLayer::drawFringe(Graphics *const graphics,
             TileInfo *tilePtr = &mTiles[CAST_SIZE(startX + yWidth)];
             for (int x = startX; x < endX; x++, tilePtr++)
             {
-                if (!tilePtr->isEnabled)
-                    continue;
                 const int x32 = x * mapTileSize;
-
-                const int px1 = x32 - scrollX;
                 int c = 0;
-                const Image *const img = tilePtr->image;
-                if (img)
+                if (tilePtr->isEnabled)
                 {
+                    const Image *const img = tilePtr->image;
                     if (mSpecialFlag ||
                         img->mBounds.h <= mapTileSize)
                     {
@@ -549,6 +536,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                         c1 = specialWidth - x - 1;
                     if (c1 < 0)
                         c1 = 0;
+                    const int px1 = x32 - scrollX;
 
                     const int ptr = y * specialWidth + x;
 
@@ -605,30 +593,27 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     continue;
                 const int x32 = x * mapTileSize;
                 const Image *const img = tilePtr->image;
-                if (img)
+                const int px = x32 + dx;
+                const int py = py0 - img->mBounds.h;
+                if (mSpecialFlag ||
+                    img->mBounds.h <= mapTileSize)
                 {
-                    const int px = x32 + dx;
-                    const int py = py0 - img->mBounds.h;
-                    if (mSpecialFlag ||
-                        img->mBounds.h <= mapTileSize)
-                    {
-                        int width = 0;
-                        // here need not draw over player position
-                        const int c = getTileDrawWidth(tilePtr,
-                            endX - x,
-                            width);
+                    int width = 0;
+                    // here need not draw over player position
+                    const int c = getTileDrawWidth(tilePtr,
+                        endX - x,
+                        width);
 
-                        if (!c)
-                        {
-                            graphics->drawImage(img, px, py);
-                        }
-                        else
-                        {
-                            graphics->drawPattern(img, px, py,
-                                width, img->mBounds.h);
-                            x += c;
-                            tilePtr += c;
-                        }
+                    if (!c)
+                    {
+                        graphics->drawImage(img, px, py);
+                    }
+                    else
+                    {
+                        graphics->drawPattern(img, px, py,
+                            width, img->mBounds.h);
+                        x += c;
+                        tilePtr += c;
                     }
                 }
             }
@@ -701,8 +686,7 @@ int MapLayer::getTileDrawWidth(const TileInfo *restrict tilePtr,
         if (img != img1 || !tilePtr->isEnabled)
             break;
         c ++;
-        if (img)
-            width += img->mBounds.w;
+        width += img->mBounds.w;
     }
     BLOCK_END("MapLayer::getTileDrawWidth")
     return c;
@@ -729,9 +713,10 @@ void MapLayer::updateConditionTiles(MetaTile *const metaTiles,
         TileInfo *tilePtr = mTiles + y * mWidth;
         for (int x = mX; x < width1; x ++, metaPtr ++, tilePtr ++)
         {
-            if (metaPtr->blockmask & mTileCondition ||
+            if (tilePtr->image != nullptr &&
+                (metaPtr->blockmask & mTileCondition ||
                 (metaPtr->blockmask == 0 &&
-                mTileCondition == BlockMask::GROUND))
+                mTileCondition == BlockMask::GROUND)))
             {
                 tilePtr->isEnabled = true;
             }
@@ -739,6 +724,23 @@ void MapLayer::updateConditionTiles(MetaTile *const metaTiles,
             {
                 tilePtr->isEnabled = false;
             }
+        }
+    }
+}
+
+void MapLayer::updateCache(const int width,
+                           const int height) restrict
+{
+    const int width1 = width < mWidth ? width : mWidth;
+    const int height1 = height < mHeight ? height : mHeight;
+
+    for (int y = mY; y < height1; y ++)
+    {
+        TileInfo *tilePtr = mTiles + y * mWidth;
+        for (int x = mX; x < width1; x ++, tilePtr ++)
+        {
+            if (tilePtr->image == nullptr)
+                tilePtr->isEnabled = false;
         }
     }
 }

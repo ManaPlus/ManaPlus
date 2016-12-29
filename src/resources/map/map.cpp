@@ -1716,6 +1716,16 @@ void Map::updateConditionLayers() restrict2
     }
 }
 
+void Map::preCacheLayers() restrict2
+{
+    FOR_EACH (LayersCIter, it, mLayers)
+    {
+        MapLayer *restrict const layer = *it;
+        if (layer)
+            layer->updateCache(mWidth, mHeight);
+    }
+}
+
 int Map::calcMemoryLocal() const
 {
     return static_cast<int>(sizeof(Map) +

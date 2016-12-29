@@ -173,6 +173,9 @@ class MapLayer final: public MemoryCounter, public ConfigListener
                                   const int width,
                                   const int height) restrict A_NONNULL(2);
 
+        void updateCache(const int width,
+                         const int height) restrict;
+
     private:
         const int mX;
         const int mY;

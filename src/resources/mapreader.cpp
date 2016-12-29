@@ -291,6 +291,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
             updateMusic(map);
 
         map->updateConditionLayers();
+        map->preCacheLayers();
     }
 
     BLOCK_END("MapReader::readMap str")
