@@ -83,7 +83,7 @@ class ItemShortcut final
         /**
          * Returns the amount of shortcut items.
          */
-        static int getItemCount() A_WARN_UNUSED
+        constexpr static int getItemCount() A_WARN_UNUSED
         { return SHORTCUT_ITEMS; }
 
         /**
