@@ -33,7 +33,6 @@ _SDL_stdinc_h
 #pragma GCC diagnostic pop
 #endif  // USE_SDL2
 #include <SDL_events.h>
-#include <SDL_keyboard.h>
 
 #include "sdlshared.h"
 
