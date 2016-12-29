@@ -106,7 +106,7 @@ class SoundManager final : public ConfigListener
         void fadeOutAndPlayMusic(const std::string &fileName,
                                  const int ms = 1000);
 
-        static int getMaxVolume() A_WARN_UNUSED
+        constexpr static int getMaxVolume() A_WARN_UNUSED
         { return MIX_MAX_VOLUME; }
 
         void setMusicVolume(const int volume);
