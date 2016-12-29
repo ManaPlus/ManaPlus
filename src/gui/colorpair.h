@@ -27,14 +27,15 @@ class Color;
 
 struct ColorPair final
 {
-    ColorPair(const Color* c1, const Color* c2) :
+    constexpr ColorPair(const Color *const c1,
+              const Color *const c2) :
         color1(c1),
         color2(c2)
     {
     }
 
-    const Color* color1;
-    const Color* color2;
+    const Color *const color1;
+    const Color *const color2;
 };
 
 #endif  // GUI_COLORPAIR_H
