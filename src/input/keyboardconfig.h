@@ -90,8 +90,8 @@ class KeyboardConfig final
 #endif  // USE_SDL2
         }
 
-        constexpr static int getKeyValueFromEvent(const SDL_Event &event)
-                                                  A_WARN_UNUSED
+        constexpr2 static int getKeyValueFromEvent(const SDL_Event &event)
+                                                   A_WARN_UNUSED
         {
 #ifdef USE_SDL2
             return event.key.keysym.scancode;
