@@ -908,9 +908,36 @@ class Being notfinal : public ActorSprite,
 
         void setLook(const uint16_t look) restrict2;
 
-        static uint8_t genderToInt(const GenderT sex) A_CONST A_WARN_UNUSED;
+        constexpr2 static uint8_t genderToInt(const GenderT sex)
+                                              A_CONST A_WARN_UNUSED
+        {
+            switch (sex)
+            {
+                case Gender::FEMALE:
+                case Gender::UNSPECIFIED:
+                default:
+                    return 0;
+                case Gender::MALE:
+                    return 1;
+                case Gender::OTHER:
+                    return 3;
+            }
+        }
 
-        static GenderT intToGender(const uint8_t sex) A_CONST A_WARN_UNUSED;
+        constexpr2 static GenderT intToGender(const uint8_t sex)
+                                              A_CONST A_WARN_UNUSED
+        {
+            switch (sex)
+            {
+                case 0:
+                default:
+                    return Gender::FEMALE;
+                case 1:
+                    return Gender::MALE;
+                case 3:
+                    return Gender::OTHER;
+            }
+        }
 
         NextSoundInfo mNextSound;
 

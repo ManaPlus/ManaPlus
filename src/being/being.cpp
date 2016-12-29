@@ -4687,35 +4687,6 @@ void Being::updatePercentHP() restrict2
     BLOCK_END("Being::updatePercentHP")
 }
 
-uint8_t Being::genderToInt(const GenderT sex)
-{
-    switch (sex)
-    {
-        case Gender::FEMALE:
-        case Gender::UNSPECIFIED:
-        default:
-            return 0;
-        case Gender::MALE:
-            return 1;
-        case Gender::OTHER:
-            return 3;
-    }
-}
-
-GenderT Being::intToGender(const uint8_t sex)
-{
-    switch (sex)
-    {
-        case 0:
-        default:
-            return Gender::FEMALE;
-        case 1:
-            return Gender::MALE;
-        case 3:
-            return Gender::OTHER;
-    }
-}
-
 int Being::getSpriteID(const int slot) const restrict2
 {
     if (slot < 0 || CAST_SIZE(slot) >= mSlots.size())
