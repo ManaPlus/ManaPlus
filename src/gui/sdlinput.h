@@ -85,7 +85,7 @@
 #include <SDL_events.h>
 
 #ifdef USE_SDL2
-#include <SDL_keyboard.h>
+#include "sdlshared.h"
 #endif  // USE_SDL2
 
 #include "input/mouseinput.h"
