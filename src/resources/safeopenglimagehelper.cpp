@@ -130,17 +130,9 @@ Image *SafeOpenGLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
 
 int SafeOpenGLImageHelper::powerOfTwo(const int input)
 {
-    int value;
-    if (mTextureType == GL_TEXTURE_2D)
-    {
-        value = 1;
-        while (value < input && value < mTextureSize)
-            value <<= 1;
-    }
-    else
-    {
-        value = input;
-    }
+    int value = 1;
+    while (value < input && value < mTextureSize)
+        value <<= 1;
     return value >= mTextureSize ? mTextureSize : value;
 }
 
