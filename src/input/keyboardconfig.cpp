@@ -59,20 +59,6 @@ void KeyboardConfig::deinit()
     mActiveKeys2 = nullptr;
 }
 
-int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event)
-{
-#ifdef USE_SDL2
-    return event.key.keysym.scancode;
-#else  // USE_SDL2
-
-    if (event.key.keysym.sym)
-        return CAST_S32(event.key.keysym.sym);
-    else if (event.key.keysym.scancode > 1)
-        return -event.key.keysym.scancode;
-    return 0;
-#endif  // USE_SDL2
-}
-
 InputActionT KeyboardConfig::getKeyIndex(const SDL_Event &event, const int grp)
 {
     const int keyValue = getKeyValueFromEvent(event);
@@ -147,16 +133,6 @@ std::string KeyboardConfig::getKeyShortString(const std::string &key)
         return _("u key");
     }
     return key;
-}
-
-SDLKey KeyboardConfig::getKeyFromEvent(const SDL_Event &event)
-{
-#ifdef USE_SDL2
-    return event.key.keysym.scancode;
-#else  // USE_SDL2
-
-    return event.key.keysym.sym;
-#endif  // USE_SDL2
 }
 
 KeysVector *KeyboardConfig::getActionVector(const SDL_Event &event)

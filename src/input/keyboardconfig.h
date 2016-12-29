@@ -32,13 +32,12 @@ _SDL_stdinc_h
 #ifdef USE_SDL2
 #pragma GCC diagnostic pop
 #endif  // USE_SDL2
+#include <SDL_events.h>
 #include <SDL_keyboard.h>
 
 #include "sdlshared.h"
 
 #include "events/inputevent.h"
-
-union SDL_Event;
 
 class KeyboardConfig final
 {
@@ -80,9 +79,32 @@ class KeyboardConfig final
         static std::string getKeyShortString(const std::string &key)
                                              A_WARN_UNUSED;
 
-        static SDLKey getKeyFromEvent(const SDL_Event &event) A_WARN_UNUSED;
+        constexpr static SDLKey getKeyFromEvent(const SDL_Event &event)
+                                                A_WARN_UNUSED
+        {
+#ifdef USE_SDL2
+            return event.key.keysym.scancode;
+#else  // USE_SDL2
 
-        static int getKeyValueFromEvent(const SDL_Event &event) A_WARN_UNUSED;
+            return event.key.keysym.sym;
+#endif  // USE_SDL2
+        }
+
+        constexpr static int getKeyValueFromEvent(const SDL_Event &event)
+                                                  A_WARN_UNUSED
+        {
+#ifdef USE_SDL2
+            return event.key.keysym.scancode;
+#else  // USE_SDL2
+
+            if (event.key.keysym.sym)
+                return CAST_S32(event.key.keysym.sym);
+            else if (event.key.keysym.scancode > 1)
+                return -event.key.keysym.scancode;
+            return 0;
+#endif  // USE_SDL2
+        }
+
 
         KeysVector *getActionVector(const SDL_Event &event) A_WARN_UNUSED;
 
