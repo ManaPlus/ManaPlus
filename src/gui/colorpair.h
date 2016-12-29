@@ -34,8 +34,8 @@ struct ColorPair final
     {
     }
 
-    const Color *const color1;
-    const Color *const color2;
+    const Color *color1;
+    const Color *color2;
 };
 
 #endif  // GUI_COLORPAIR_H
