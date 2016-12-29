@@ -91,11 +91,6 @@ class Animation final : public MemoryCounter
         std::string getCounterName() const override
         { return mName; }
 
-        /**
-         * Determines whether the given animation frame is a terminator.
-         */
-        static bool isTerminator(const Frame &phase) noexcept2 A_WARN_UNUSED;
-
     protected:
         Frames mFrames;
         std::string mName;

@@ -55,11 +55,6 @@ void Animation::addTerminator(const int rand) noexcept2
     addFrame(nullptr, 0, 0, 0, rand);
 }
 
-bool Animation::isTerminator(const Frame &candidate) noexcept2
-{
-    return (!candidate.image && candidate.type == FrameType::ANIMATION);
-}
-
 void Animation::addJump(const std::string &name, const int rand) noexcept2
 {
     Frame frame = { nullptr, 0, 0, 0, rand, FrameType::JUMP, name };
