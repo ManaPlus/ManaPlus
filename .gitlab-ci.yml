@@ -55,6 +55,13 @@ gcc-4.4:
   image: debian:oldstable
   <<: *log-failed-jobs
 
+gcc-5_sdl2:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc5_sdl2.sh
+  image: debian:unstable
+  <<: *log-failed-jobs
+
 mplint_po:
   stage: prebuild
   script:
@@ -524,13 +531,6 @@ gcc-5_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
-  image: debian:unstable
-  <<: *log-failed-jobs
-
-gcc-5_sdl2:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5_sdl2.sh
   image: debian:unstable
   <<: *log-failed-jobs
 
