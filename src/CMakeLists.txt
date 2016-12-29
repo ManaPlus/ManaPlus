@@ -1416,7 +1416,6 @@ SET(SRCS
     listeners/wrongdatanoticelistener.h
     gui/widgets/basiccontainer2.h
     gui/widgets/basiccontainer.cpp
-    gui/cliprect.cpp
     gui/dialogsmanager.cpp
     gui/dialogsmanager.h
     input/key.cpp

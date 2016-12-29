@@ -177,7 +177,6 @@ SRC += events/actionevent.h \
 	      listeners/wrongdatanoticelistener.h \
 	      gui/widgets/basiccontainer2.h \
 	      gui/widgets/basiccontainer.cpp \
-	      gui/cliprect.cpp \
 	      gui/colorpair.h \
 	      gui/dialogsmanager.cpp \
 	      gui/dialogsmanager.h \
