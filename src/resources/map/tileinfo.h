@@ -29,11 +29,15 @@ struct TileInfo final
 {
     TileInfo() :
         image(nullptr),
+        width(0),
+        count(1),
         isEnabled(true)
     {
     }
 
     Image *image;
+    int width;
+    int count;
     bool isEnabled;
 };
 

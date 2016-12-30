@@ -150,18 +150,20 @@ void MapLayer::draw(Graphics *const graphics,
             if (mSpecialFlag ||
                 img->mBounds.h <= mapTileSize)
             {
-                int width = 0;
                 // here need not draw over player position
-                c = getTileDrawWidth(tilePtr, endX - x, width);
+                c = tilePtr->count;
 
-                if (!c)
+                if (c == 0)
                 {
                     graphics->drawImage(img, px, py);
                 }
                 else
                 {
-                    graphics->drawPattern(img, px, py,
-                        width, img->mBounds.h);
+                    graphics->drawPattern(img,
+                        px,
+                        py,
+                        tilePtr->width,
+                        img->mBounds.h);
                 }
             }
 
@@ -513,18 +515,20 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     {
                         const int px = x32 + dx;
                         const int py = py0 - img->mBounds.h;
-                        int width = 0;
                         // here need not draw over player position
-                        c = getTileDrawWidth(tilePtr, endX - x, width);
+                        c = tilePtr->count;
 
-                        if (!c)
+                        if (c == 0)
                         {
                             graphics->drawImage(img, px, py);
                         }
                         else
                         {
-                            graphics->drawPattern(img, px, py,
-                                width, img->mBounds.h);
+                            graphics->drawPattern(img,
+                                px,
+                                py,
+                                tilePtr->width,
+                                img->mBounds.h);
                         }
                     }
                 }
@@ -598,20 +602,19 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 if (mSpecialFlag ||
                     img->mBounds.h <= mapTileSize)
                 {
-                    int width = 0;
-                    // here need not draw over player position
-                    const int c = getTileDrawWidth(tilePtr,
-                        endX - x,
-                        width);
+                    const int c = tilePtr->count;
 
-                    if (!c)
+                    if (c == 0)
                     {
                         graphics->drawImage(img, px, py);
                     }
                     else
                     {
-                        graphics->drawPattern(img, px, py,
-                            width, img->mBounds.h);
+                        graphics->drawPattern(img,
+                            px,
+                            py,
+                            tilePtr->width,
+                            img->mBounds.h);
                         x += c;
                         tilePtr += c;
                     }
@@ -740,7 +743,17 @@ void MapLayer::updateCache(const int width,
         for (int x = mX; x < width1; x ++, tilePtr ++)
         {
             if (tilePtr->image == nullptr)
+            {
                 tilePtr->isEnabled = false;
+            }
+            else
+            {
+                int tileWidth = 0;
+                tilePtr->count = getTileDrawWidth(tilePtr,
+                    width1 - x,
+                    tileWidth);
+                tilePtr->width = tileWidth;
+            }
         }
     }
 }

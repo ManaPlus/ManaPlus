@@ -52,6 +52,7 @@ void MapRecv::processSetTilesType(Net::MessageIn &msg)
                 map->setBlockMask(x, y, mask);
         }
         map->updateConditionLayers();
+        map->preCacheLayers();
     }
 }
 
