@@ -135,12 +135,28 @@ void MapLayer::draw(Graphics *const graphics,
 
         const int py0 = y32 + dy;
 
-        TileInfo *tilePtr = &mTiles[CAST_SIZE(startX + yWidth)];
-
-        for (int x = startX; x < endX; x++, tilePtr++)
+        int x0 = startX;
+        TileInfo *tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
+        if (tilePtr->isEnabled == false)
+        {
+            if (tilePtr->count == 0 || x0 + tilePtr->count >= endX)
+                continue;
+            x0 += tilePtr->count + 1;
+            tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
+            if (mTiles[x0 + yWidth].isEnabled == false)
+                continue;
+        }
+        for (int x = x0; x < endX; x++, tilePtr++)
         {
             if (!tilePtr->isEnabled)
+            {
+                if (x + tilePtr->count + 1 >= endX)
+                    break;
+                const int c = tilePtr->count;
+                x += c;
+                tilePtr += c;
                 continue;
+            }
             const int x32 = x * mapTileSize;
 
             int c = 0;
@@ -434,6 +450,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
             }
             BLOCK_END("MapLayer::drawFringe drawmobs")
 
+            // remove this condition, because it always true
             if (y < specialHeight)
             {
                 const int ptr = y * specialWidth;
@@ -502,8 +519,23 @@ void MapLayer::drawFringe(Graphics *const graphics,
             const int py0 = y32 + dy;
             const int py1 = y32 - scrollY;
 
-            TileInfo *tilePtr = &mTiles[CAST_SIZE(startX + yWidth)];
-            for (int x = startX; x < endX; x++, tilePtr++)
+            int x0 = startX;
+            TileInfo *tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
+            if (tilePtr->isEnabled == false)
+            {
+                // here need draw special layers only and continue
+                // for now special layer can be not drawed, if skipped before for
+                //if (tilePtr->count == 0 || x0 + tilePtr->count >= endX)
+                if (x0 + tilePtr->count >= endX)
+                {
+                    continue;
+                }
+                x0 += tilePtr->count + 1;
+                tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
+                if (mTiles[x0 + yWidth].isEnabled == false)
+                    continue;
+            }
+            for (int x = x0; x < endX; x++, tilePtr++)
             {
                 const int x32 = x * mapTileSize;
                 int c = 0;
@@ -515,7 +547,6 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     {
                         const int px = x32 + dx;
                         const int py = py0 - img->mBounds.h;
-                        // here need not draw over player position
                         c = tilePtr->count;
 
                         if (c == 0)
@@ -531,8 +562,22 @@ void MapLayer::drawFringe(Graphics *const graphics,
                                 img->mBounds.h);
                         }
                     }
+//                    logger->log("ok tiles3: (%d,%d) to %d, +%d", x, y, endX, tilePtr->count);
+                }
+                else
+                {
+                    // here need draw special layers only and continue
+                    // for now special layer can be not drawed
+                    if (x + tilePtr->count + 1 >= endX)
+                        break;
+//                    logger->log("error tiles3: (%d,%d) to %d, +%d", x, y, endX, tilePtr->count);
+                    c = tilePtr->count;
+                    x += c;
+                    tilePtr += c;
+                    continue;
                 }
 
+                // remove this condition, because it always true
                 if (y < specialHeight)
                 {
                     int c1 = c;
@@ -590,11 +635,30 @@ void MapLayer::drawFringe(Graphics *const graphics,
 
             const int py0 = y32 + dy;
 
-            TileInfo *tilePtr = &mTiles[CAST_SIZE(startX + yWidth)];
-            for (int x = startX; x < endX; x++, tilePtr++)
+            int x0 = startX;
+            TileInfo *tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
+            if (tilePtr->isEnabled == false)
+            {
+                if (x0 + tilePtr->count >= endX)
+                    continue;
+                x0 += tilePtr->count + 1;
+                tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
+                if (mTiles[x0 + yWidth].isEnabled == false)
+                    continue;
+            }
+            for (int x = x0; x < endX; x++, tilePtr++)
             {
                 if (!tilePtr->isEnabled)
+                {
+                    if (x + tilePtr->count + 1 >= endX)
+                        break;
+//                    logger->log("error tiles4: (%d,%d) to %d, +%d", x, y, endX, tilePtr->count);
+                    const int c = tilePtr->count;
+                    x += c;
+                    tilePtr += c;
                     continue;
+                }
+//                logger->log("ok tiles4: (%d,%d) to %d, +%d", x, y, endX, tilePtr->count);
                 const int x32 = x * mapTileSize;
                 const Image *const img = tilePtr->image;
                 const int px = x32 + dx;
@@ -675,12 +739,6 @@ int MapLayer::getTileDrawWidth(const TileInfo *restrict tilePtr,
     BLOCK_START("MapLayer::getTileDrawWidth")
     const Image *const img1 = tilePtr->image;
     int c = 0;
-    if (!img1)
-    {
-        width = 0;
-        BLOCK_END("MapLayer::getTileDrawWidth")
-        return c;
-    }
     width = img1->mBounds.w;
     for (int x = 1; x < endX; x++)
     {
@@ -692,6 +750,23 @@ int MapLayer::getTileDrawWidth(const TileInfo *restrict tilePtr,
         width += img->mBounds.w;
     }
     BLOCK_END("MapLayer::getTileDrawWidth")
+    return c;
+}
+
+int MapLayer::getEmptyTileDrawWidth(const TileInfo *restrict tilePtr,
+                                    const int endX)
+{
+    BLOCK_START("MapLayer::getEmptyTileDrawWidth")
+    int c = 0;
+    for (int x = 1; x < endX; x++)
+    {
+        tilePtr ++;
+        const Image *const img = tilePtr->image;
+        if (img != nullptr || !tilePtr->isEnabled)
+            break;
+        c ++;
+    }
+    BLOCK_END("MapLayer::getEmptyTileDrawWidth")
     return c;
 }
 
@@ -745,6 +820,8 @@ void MapLayer::updateCache(const int width,
             if (tilePtr->image == nullptr)
             {
                 tilePtr->isEnabled = false;
+                tilePtr->count = getEmptyTileDrawWidth(tilePtr,
+                    width1 - x);
             }
             else
             {
