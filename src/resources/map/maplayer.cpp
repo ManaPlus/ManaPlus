@@ -127,6 +127,24 @@ void MapLayer::draw(Graphics *const graphics,
 
     const int dx = mPixelX - scrollX;
     const int dy = mPixelY - scrollY;
+/*
+    logger->log("draw layer: %s", mName.c_str());
+
+    if (mName == "walllayer")
+    {
+        for (int y = startY; y < endY; y++)
+        {
+            for (int x = startX; x < endX; x++)
+            {
+                TileInfo *tilePtr = &mTiles[CAST_SIZE(y * mWidth + x)];
+                if (tilePtr->isEnabled == true && y == 11)
+                {
+                    logger->log("visible %d,%d", x, y);
+                }
+            }
+        }
+    }
+*/
 
     for (int y = startY; y < endY; y++)
     {
@@ -137,26 +155,49 @@ void MapLayer::draw(Graphics *const graphics,
 
         int x0 = startX;
         TileInfo *tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
+//        if (mName == "walllayer")
+//            logger->log("test %d,%d", x0, y);
         if (tilePtr->isEnabled == false)
         {
-            if (tilePtr->count == 0 || x0 + tilePtr->count >= endX)
+//            if (mName == "walllayer")
+//                logger->log("hidden 1");
+            if (x0 + tilePtr->nextTile >= endX)
+            {
+//                if (mName == "walllayer")
+//                    logger->log("skip 1");
                 continue;
-            x0 += tilePtr->count + 1;
+            }
+//            if (mName == "walllayer")
+//                logger->log("hidden 2");
+            x0 += tilePtr->nextTile + 1;
             tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
+//            if (mName == "walllayer")
+//                logger->log("hidden jump to %d,%d", x0, y);
             if (mTiles[x0 + yWidth].isEnabled == false)
+            {
+//                if (mName == "walllayer")
+//                    logger->log("skip 2");
                 continue;
+            }
+//            if (mName == "walllayer")
+//                logger->log("hidden 3");
         }
+//        if (mName == "walllayer")
+//            logger->log("for x in %d to %d", x0, endX);
         for (int x = x0; x < endX; x++, tilePtr++)
         {
             if (!tilePtr->isEnabled)
             {
                 if (x + tilePtr->count + 1 >= endX)
                     break;
+                logger->log("error tiles: %s (%d,%d) to %d, +%d, %d", mName.c_str(), x, y, endX, tilePtr->count, tilePtr->nextTile);
                 const int c = tilePtr->count;
                 x += c;
                 tilePtr += c;
                 continue;
             }
+//            if (mName == "walllayer")
+//                logger->log("ok tiles: %s (%d,%d) to %d, +%d, %d", mName.c_str(), x, y, endX, tilePtr->count, tilePtr->nextTile);
             const int x32 = x * mapTileSize;
 
             int c = 0;
@@ -172,6 +213,8 @@ void MapLayer::draw(Graphics *const graphics,
                 if (c == 0)
                 {
                     graphics->drawImage(img, px, py);
+//                    if (mName == "walllayer")
+//                        logger->log("draw image %d,%d", x, y);
                 }
                 else
                 {
@@ -180,11 +223,14 @@ void MapLayer::draw(Graphics *const graphics,
                         py,
                         tilePtr->width,
                         img->mBounds.h);
+//                    if (mName == "walllayer")
+//                        logger->log("draw pattern %d,%d, width=%d", x, y, tilePtr->width);
                 }
             }
 
-            x += c;
-            tilePtr += c;
+            const int nextTile = tilePtr->nextTile;
+            x += nextTile;
+            tilePtr += nextTile;
         }
     }
     BLOCK_END("MapLayer::draw")
@@ -557,14 +603,14 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 drawSpecialLayer(graphics,
                     y,
                     0,
-                    std::min(x0 + tilePtr->count, endX),
+                    std::min(x0 + tilePtr->nextTile, endX),
                     scrollX,
                     scrollY);
-                if (x0 + tilePtr->count >= endX)
+                if (x0 + tilePtr->nextTile >= endX)
                 {
                     continue;
                 }
-                x0 += tilePtr->count + 1;
+                x0 += tilePtr->nextTile + 1;
                 tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
                 if (mTiles[x0 + yWidth].isEnabled == false)
                     continue;
@@ -602,7 +648,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 {
                     if (x + tilePtr->count + 1 >= endX)
                         break;
-                    logger->log("error tiles3: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
+                    logger->log("error tiles1: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
                     c = tilePtr->count;
                     x += c;
                     tilePtr += c;
@@ -647,9 +693,9 @@ void MapLayer::drawFringe(Graphics *const graphics,
             TileInfo *tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
             if (tilePtr->isEnabled == false)
             {
-                if (x0 + tilePtr->count >= endX)
+                if (x0 + tilePtr->nextTile >= endX)
                     continue;
-                x0 += tilePtr->count + 1;
+                x0 += tilePtr->nextTile + 1;
                 tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
                 if (mTiles[x0 + yWidth].isEnabled == false)
                     continue;
@@ -660,7 +706,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 {
                     if (x + tilePtr->count + 1 >= endX)
                         break;
-                    logger->log("error tiles4: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
+                    logger->log("error tiles2: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
                     const int c = tilePtr->count;
                     x += c;
                     tilePtr += c;
@@ -754,7 +800,8 @@ int MapLayer::getTileDrawWidth(const TileInfo *restrict tilePtr,
     {
         tilePtr ++;
         const Image *const img = tilePtr->image;
-        if (img == nullptr || !tilePtr->isEnabled)
+        if (img == nullptr ||
+            tilePtr->isEnabled == false)
         {
             break;
         }
@@ -770,7 +817,8 @@ int MapLayer::getTileDrawWidth(const TileInfo *restrict tilePtr,
     int c2 = c;
     for (int x2 = c2 + 1; x2 < endX; x2++)
     {
-        if (tilePtr->image != nullptr)
+        if (tilePtr->image != nullptr &&
+            tilePtr->isEnabled == true)
         {
             break;
         }
@@ -792,7 +840,7 @@ int MapLayer::getEmptyTileDrawWidth(const TileInfo *restrict tilePtr,
     {
         tilePtr ++;
         const Image *const img = tilePtr->image;
-        if (img != nullptr || !tilePtr->isEnabled)
+        if (img != nullptr && tilePtr->isEnabled == true)
             break;
         c ++;
     }
@@ -810,16 +858,18 @@ void MapLayer::setDrawLayerFlags(const MapTypeT &n) restrict
         mDrawLayerFlags != MapType::SPECIAL4);
 }
 
-void MapLayer::updateConditionTiles(MetaTile *const metaTiles,
+void MapLayer::updateConditionTiles(const MetaTile *const metaTiles,
                                     const int width,
                                     const int height) restrict
 {
     const int width1 = width < mWidth ? width : mWidth;
     const int height1 = height < mHeight ? height : mHeight;
+//    if (mName == "walllayer")
+//        logger->log("MapLayer::updateConditionTiles start: %s, %d", mName.c_str(), mTileCondition);
 
     for (int y = mY; y < height1; y ++)
     {
-        MetaTile *metaPtr = metaTiles + (y - mY) * width;
+        const MetaTile *metaPtr = metaTiles + (y - mY) * width;
         TileInfo *tilePtr = mTiles + y * mWidth;
         for (int x = mX; x < width1; x ++, metaPtr ++, tilePtr ++)
         {
@@ -829,13 +879,28 @@ void MapLayer::updateConditionTiles(MetaTile *const metaTiles,
                 mTileCondition == BlockMask::GROUND)))
             {
                 tilePtr->isEnabled = true;
+//                if (mName == "walllayer")
+//                    logger->log("update1: %d,%d (%p,%d) %d", x, y, (void*)tilePtr->image, metaPtr->blockmask, tilePtr->isEnabled ? 1 : 0);
             }
             else
             {
                 tilePtr->isEnabled = false;
+//                if (mName == "walllayer")
+//                    logger->log("update2: %d,%d (%p,%d) %d", x, y, (void*)tilePtr->image, metaPtr->blockmask, tilePtr->isEnabled ? 1 : 0);
             }
+/*
+            if (mName == "walllayer")
+            {
+                if (x == 18 && y == 11)
+                {
+//                    logger->log("update: %d,%d (%p,%d) %d", x, y, (void*)tilePtr->image, metaPtr->blockmask, tilePtr->isEnabled ? 1 : 0);
+                }
+            }
+*/
         }
     }
+//    if (mName == "walllayer")
+//        logger->log("MapLayer::updateConditionTiles end: %s", mName.c_str());
 }
 
 void MapLayer::updateCache(const int width,
@@ -844,18 +909,23 @@ void MapLayer::updateCache(const int width,
     const int width1 = width < mWidth ? width : mWidth;
     const int height1 = height < mHeight ? height : mHeight;
 
+//    if (mName == "walllayer")
+//        logger->log("MapLayer::updateCache start: %s", mName.c_str());
     for (int y = mY; y < height1; y ++)
     {
-        TileInfo *tilePtr = mTiles + y * mWidth;
-        for (int x = mX; x < width1; x ++, tilePtr ++)
+        for (int x = mX; x < width1; x ++)
         {
+            TileInfo *tilePtr = mTiles + y * mWidth + x;
             int nextTile = 0;
-            if (tilePtr->image == nullptr)
+            if (tilePtr->image == nullptr || tilePtr->isEnabled == false)
             {
                 tilePtr->isEnabled = false;
                 tilePtr->count = getEmptyTileDrawWidth(tilePtr,
                     width1 - x,
                     nextTile);
+                tilePtr->width = 0;
+//                if (mName == "walllayer")
+//                    logger->log("set1 count/next to %d,%d = %d and %d", x, y, tilePtr->count, nextTile);
             }
             else
             {
@@ -865,10 +935,23 @@ void MapLayer::updateCache(const int width,
                     tileWidth,
                     nextTile);
                 tilePtr->width = tileWidth;
+//                if (mName == "walllayer")
+//                    logger->log("set2 count/next to %d,%d = %d and %d", x, y, tilePtr->count, nextTile);
             }
             tilePtr->nextTile = nextTile;
+/*
+            if (mName == "walllayer")
+            {
+                if (x == 18 && y == 11)
+                {
+//                    logger->log("set count/next to %d,%d = %d and %d", x, y, tilePtr->count, tilePtr->nextTile);
+                }
+            }
+*/
         }
     }
+//    if (mName == "walllayer")
+//        logger->log("MapLayer::updateCache end: %s", mName.c_str());
 }
 
 int MapLayer::calcMemoryLocal() const

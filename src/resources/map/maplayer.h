@@ -170,6 +170,10 @@ class MapLayer final: public MemoryCounter, public ConfigListener
             return mTiles;
         }
 
+        void setTileCondition(const int c)
+        {
+            mTileCondition = c;
+        }
 #endif  // UNITTESTS
 
 #ifndef UNITTESTS
@@ -185,7 +189,7 @@ class MapLayer final: public MemoryCounter, public ConfigListener
                                          int &restrict nextTile)
                                          A_WARN_UNUSED A_NONNULL(1);
 
-        void updateConditionTiles(MetaTile *restrict const metaTiles,
+        void updateConditionTiles(const MetaTile *restrict const metaTiles,
                                   const int width,
                                   const int height) restrict A_NONNULL(2);
 
