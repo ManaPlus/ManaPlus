@@ -192,6 +192,13 @@ class MapLayer final: public MemoryCounter, public ConfigListener
         void updateCache(const int width,
                          const int height) restrict;
 
+        void drawSpecialLayer(Graphics *const graphics,
+                              const int y,
+                              const int startX,
+                              const int endX,
+                              const int scrollX,
+                              const int scrollY) const restrict;
+
     private:
         const int mX;
         const int mY;

@@ -386,6 +386,43 @@ void MapLayer::drawOGL(Graphics *const graphics) const restrict2
 }
 #endif  // USE_OPENGL
 
+void MapLayer::drawSpecialLayer(Graphics *const graphics,
+                                const int y,
+                                const int startX,
+                                const int endX,
+                                const int scrollX,
+                                const int scrollY) const restrict
+{
+    const int specialWidth = mSpecialLayer->mWidth;
+    const int y32 = y * mapTileSize;
+    const int ptr = y * specialWidth;
+    const int py1 = y32 - scrollY;
+    int endX1 = endX;
+    if (endX1 > specialWidth)
+        endX1 = specialWidth;
+    if (endX1 < 0)
+        endX1 = 0;
+
+    for (int x = startX; x < endX1; x++)
+    {
+        const int px1 = x * mapTileSize - scrollX;
+
+        const MapItem *item = mSpecialLayer->mTiles[ptr + x];
+        if (item)
+        {
+            item->draw(graphics, px1, py1,
+                mapTileSize, mapTileSize);
+        }
+
+        item = mTempLayer->mTiles[ptr + x];
+        if (item)
+        {
+            item->draw(graphics, px1, py1,
+                mapTileSize, mapTileSize);
+        }
+    }
+}
+
 void MapLayer::drawFringe(Graphics *const graphics,
                           int startX,
                           int startY,
@@ -424,7 +461,6 @@ void MapLayer::drawFringe(Graphics *const graphics,
     const int dx = mPixelX - scrollX;
     const int dy = mPixelY - scrollY;
 
-    const int specialWidth = mSpecialLayer->mWidth;
     const int specialHeight = mSpecialLayer->mHeight;
 
     const bool flag = mDrawLayerFlags == MapType::SPECIAL3 ||
@@ -437,7 +473,6 @@ void MapLayer::drawFringe(Graphics *const graphics,
     {   // flag
         for (int y = startY; y < minEndY; y ++)
         {
-            const int y32 = y * mapTileSize;
             const int y32s = (y + mActorsFix) * mapTileSize;
 
             BLOCK_START("MapLayer::drawFringe drawmobs")
@@ -453,32 +488,12 @@ void MapLayer::drawFringe(Graphics *const graphics,
             // remove this condition, because it always true
             if (y < specialHeight)
             {
-                const int ptr = y * specialWidth;
-                const int py1 = y32 - scrollY;
-                int endX1 = endX;
-                if (endX1 > specialWidth)
-                    endX1 = specialWidth;
-                if (endX1 < 0)
-                    endX1 = 0;
-
-                for (int x = startX; x < endX1; x++)
-                {
-                    const int px1 = x * mapTileSize - scrollX;
-
-                    const MapItem *item = mSpecialLayer->mTiles[ptr + x];
-                    if (item)
-                    {
-                        item->draw(graphics, px1, py1,
-                            mapTileSize, mapTileSize);
-                    }
-
-                    item = mTempLayer->mTiles[ptr + x];
-                    if (item)
-                    {
-                        item->draw(graphics, px1, py1,
-                            mapTileSize, mapTileSize);
-                    }
-                }
+                drawSpecialLayer(graphics,
+                    y,
+                    startX,
+                    endX,
+                    scrollX,
+                    scrollY);
             }
         }
 
@@ -517,7 +532,6 @@ void MapLayer::drawFringe(Graphics *const graphics,
             BLOCK_END("MapLayer::drawFringe drawmobs")
 
             const int py0 = y32 + dy;
-            const int py1 = y32 - scrollY;
 
             int x0 = startX;
             TileInfo *tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
@@ -526,6 +540,12 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 // here need draw special layers only and continue
                 // for now special layer can be not drawed, if skipped before for
                 //if (tilePtr->count == 0 || x0 + tilePtr->count >= endX)
+                drawSpecialLayer(graphics,
+                    y,
+                    0,
+                    std::min(x0 + tilePtr->count, endX),
+                    scrollX,
+                    scrollY);
                 if (x0 + tilePtr->count >= endX)
                 {
                     continue;
@@ -577,42 +597,17 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     continue;
                 }
 
+                const int nextTile = tilePtr->nextTile;
                 // remove this condition, because it always true
                 if (y < specialHeight)
                 {
-                    int c1 = c;
-                    if (c1 + x + 1 > specialWidth)
-                        c1 = specialWidth - x - 1;
-                    if (c1 < 0)
-                        c1 = 0;
-                    const int px1 = x32 - scrollX;
-
-                    const int ptr = y * specialWidth + x;
-
-                    for (int x1 = 0; x1 < c1 + 1; x1 ++)
-                    {
-                        const MapItem *const item1
-                            = mSpecialLayer->mTiles[ptr + x1];
-                        const MapItem *const item2
-                            = mTempLayer->mTiles[ptr + x1];
-                        if (item1 || item2)
-                        {
-                            const int px2 = px1 + (x1 * mapTileSize);
-                            if (item1 && item1->mType != MapItemType::EMPTY)
-                            {
-                                item1->draw(graphics, px2, py1,
-                                    mapTileSize, mapTileSize);
-                            }
-
-                            if (item2 && item2->mType != MapItemType::EMPTY)
-                            {
-                                item2->draw(graphics, px2, py1,
-                                    mapTileSize, mapTileSize);
-                            }
-                        }
-                    }
+                    drawSpecialLayer(graphics,
+                        y,
+                        x,
+                        std::min(x + nextTile, endX),
+                        scrollX,
+                        scrollY);
                 }
-                const int nextTile = tilePtr->nextTile;
                 x += nextTile;
                 tilePtr += nextTile;
             }
