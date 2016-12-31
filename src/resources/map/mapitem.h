@@ -33,6 +33,7 @@ class MapItem final
     public:
         friend class Map;
         friend class MapLayer;
+        friend class SpecialLayer;
 
         MapItem();
 

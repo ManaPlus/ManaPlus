@@ -57,16 +57,19 @@ class SpecialLayer final : public MemoryCounter
 
         void addRoad(const Path &road);
 
-        void clean() const;
+        void clean();
 
         int calcMemoryLocal() const override final;
 
         std::string getCounterName() const override final
         { return mName; }
 
+        void updateCache();
+
     private:
         const std::string mName;
         MapItem **mTiles;
+        int *mCache;
         int mWidth;
         int mHeight;
 };

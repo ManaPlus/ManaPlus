@@ -402,24 +402,39 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
         endX1 = specialWidth;
     if (endX1 < 0)
         endX1 = 0;
-
-    for (int x = startX; x < endX1; x++)
+    int x0 = startX;
+    const MapItem *item0 = mSpecialLayer->mTiles[ptr + startX];
+    if (!item0 || item0->mType == MapItemType::EMPTY)
+    {
+        x0 += mSpecialLayer->mCache[ptr + startX];
+    }
+    for (int x = x0; x < endX1; x++)
     {
         const int px1 = x * mapTileSize - scrollX;
-
-        const MapItem *item = mSpecialLayer->mTiles[ptr + x];
+        const MapItem *const item = mSpecialLayer->mTiles[ptr + x];
         if (item)
         {
             item->draw(graphics, px1, py1,
                 mapTileSize, mapTileSize);
         }
+        x += mSpecialLayer->mCache[ptr + x];
+    }
 
-        item = mTempLayer->mTiles[ptr + x];
+    item0 = mTempLayer->mTiles[ptr + startX];
+    if (!item0 || item0->mType == MapItemType::EMPTY)
+    {
+        x0 += mTempLayer->mCache[ptr + startX];
+    }
+    for (int x = x0; x < endX1; x++)
+    {
+        const int px1 = x * mapTileSize - scrollX;
+        const MapItem *const item = mTempLayer->mTiles[ptr + x];
         if (item)
         {
             item->draw(graphics, px1, py1,
                 mapTileSize, mapTileSize);
         }
+        x += mSpecialLayer->mCache[ptr + x];
     }
 }
 

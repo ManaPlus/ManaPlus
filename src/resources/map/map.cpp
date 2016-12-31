@@ -1275,7 +1275,10 @@ void Map::addPortalTile(const std::string &restrict name,
                         const int x, const int y) restrict2
 {
     if (mSpecialLayer)
+    {
         mSpecialLayer->setTile(x, y, new MapItem(type, name, x, y));
+        mSpecialLayer->updateCache();
+    }
 
     mMapPortals.push_back(new MapItem(type, name, x, y));
 }
@@ -1296,6 +1299,7 @@ void Map::updatePortalTile(const std::string &restrict name,
         {
             item = new MapItem(type, name, x, y);
             mSpecialLayer->setTile(x, y, item);
+            mSpecialLayer->updateCache();
         }
     }
     else if (addNew)

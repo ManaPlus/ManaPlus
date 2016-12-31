@@ -1186,6 +1186,7 @@ void PopupMenu::handleLink(const std::string &link,
                     const int y = static_cast<const int>(mMapItem->getY());
                     specialLayer->setTile(x, y,
                         CAST_S32(MapItemType::EMPTY));
+                    specialLayer->updateCache();
                     if (socialWindow)
                         socialWindow->removePortal(x, y);
                     if (isHome && localPlayer)

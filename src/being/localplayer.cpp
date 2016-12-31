@@ -1811,6 +1811,7 @@ void LocalPlayer::setHome()
             {
                 specialLayer->setTile(CAST_S32(pos.x),
                     CAST_S32(pos.y), MapItemType::EMPTY);
+                specialLayer->updateCache();
             }
 
             pos.x = static_cast<float>(mX);
@@ -1872,6 +1873,7 @@ void LocalPlayer::setHome()
         else
         {
             specialLayer->setTile(mX, mY, MapItemType::EMPTY);
+            specialLayer->updateCache();
             socialWindow->removePortal(mX, mY);
         }
     }
@@ -2083,7 +2085,7 @@ void LocalPlayer::navigateClean()
 
     mNavigatePath.clear();
 
-    const SpecialLayer *const tmpLayer = mMap->getTempLayer();
+    SpecialLayer *const tmpLayer = mMap->getTempLayer();
     if (!tmpLayer)
         return;
 
@@ -2553,6 +2555,7 @@ void LocalPlayer::setRealPos(const int x, const int y)
         return;
 
     SpecialLayer *const layer = mMap->getTempLayer();
+    bool cacheUpdated(false);
     if (layer)
     {
         if ((mCrossX || mCrossY) &&
@@ -2560,6 +2563,8 @@ void LocalPlayer::setRealPos(const int x, const int y)
             layer->getTile(mCrossX, mCrossY)->getType() == MapItemType::CROSS)
         {
             layer->setTile(mCrossX, mCrossY, MapItemType::EMPTY);
+            layer->updateCache();
+            cacheUpdated = true;
         }
 
         if (mShowServerPos)
@@ -2569,7 +2574,11 @@ void LocalPlayer::setRealPos(const int x, const int y)
             if (!mapItem || mapItem->getType() == MapItemType::EMPTY)
             {
                 if (mX != x && mY != y)
+                {
                     layer->setTile(x, y, MapItemType::CROSS);
+                    if (cacheUpdated == false)
+                        layer->updateCache();
+                }
             }
         }
 

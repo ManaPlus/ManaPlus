@@ -36,6 +36,7 @@ SpecialLayer::SpecialLayer(const std::string &name,
     MemoryCounter(),
     mName(name),
     mTiles(new MapItem*[width * height]),
+    mCache(new int[width * height]),
     mWidth(width),
     mHeight(height)
 {
@@ -47,6 +48,7 @@ SpecialLayer::~SpecialLayer()
     for (int f = 0; f < mWidth * mHeight; f ++)
         delete2(mTiles[f])
     delete [] mTiles;
+    delete [] mCache;
 }
 
 MapItem* SpecialLayer::getTile(const int x, const int y) const
@@ -107,9 +109,10 @@ void SpecialLayer::addRoad(const Path &road)
         else
             item->setType(MapItemType::ROAD);
     }
+    updateCache();
 }
 
-void SpecialLayer::clean() const
+void SpecialLayer::clean()
 {
     if (!mTiles)
         return;
@@ -120,6 +123,7 @@ void SpecialLayer::clean() const
         if (item)
             item->setType(MapItemType::EMPTY);
     }
+    updateCache();
 }
 
 void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
@@ -157,4 +161,27 @@ int SpecialLayer::calcMemoryLocal() const
 {
     return static_cast<int>(sizeof(SpecialLayer) +
         sizeof(MapItem) * mWidth * mHeight);
+}
+
+void SpecialLayer::updateCache()
+{
+    for (int y = 0; y < mHeight; y ++)
+    {
+        const int y2 = y * mWidth;
+        for (int x = 0; x < mWidth; x ++)
+        {
+            int c = 10000;
+            for (int f = x + 1; f < mWidth; f ++)
+            {
+                MapItem *const item = mTiles[f + y2];
+                if (item != nullptr &&
+                    item->mType != MapItemType::EMPTY)
+                {
+                    c = f - x - 1;
+                    break;
+                }
+            }
+            mCache[x + y2] = c;
+        }
+    }
 }
