@@ -539,7 +539,6 @@ void MapLayer::drawFringe(Graphics *const graphics,
             {
                 // here need draw special layers only and continue
                 // for now special layer can be not drawed, if skipped before for
-                //if (tilePtr->count == 0 || x0 + tilePtr->count >= endX)
                 drawSpecialLayer(graphics,
                     y,
                     0,
@@ -586,11 +585,9 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 }
                 else
                 {
-                    // here need draw special layers only and continue
-                    // for now special layer can be not drawed
                     if (x + tilePtr->count + 1 >= endX)
                         break;
-//                    logger->log("error tiles3: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
+                    logger->log("error tiles3: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
                     c = tilePtr->count;
                     x += c;
                     tilePtr += c;
@@ -648,7 +645,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 {
                     if (x + tilePtr->count + 1 >= endX)
                         break;
-//                    logger->log("error tiles4: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
+                    logger->log("error tiles4: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
                     const int c = tilePtr->count;
                     x += c;
                     tilePtr += c;
