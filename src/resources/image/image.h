@@ -81,6 +81,11 @@ class Image notfinal : public Resource
 #endif  // USE_OPENGL
 
     public:
+#ifdef UNITTESTS
+        Image(const int width,
+              const int height);
+#endif  // UNITTESTS
+
         A_DELETE_COPY(Image)
 
         /**

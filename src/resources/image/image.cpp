@@ -45,6 +45,36 @@
 
 #include "debug.h"
 
+#ifdef UNITTESTS
+Image::Image(const int width,
+             const int height) :
+    Resource(),
+#ifdef USE_OPENGL
+    mGLImage(0),
+    mTexWidth(0),
+    mTexHeight(0),
+#endif  // USE_OPENGL
+    mBounds(),
+    mAlpha(1.0F),
+    mSDLSurface(nullptr),
+#ifdef USE_SDL2
+    mTexture(nullptr),
+#endif  // USE_SDL2
+    mAlphaChannel(nullptr),
+    mAlphaCache(),
+    mLoaded(false),
+    mHasAlphaChannel(false),
+    mUseAlphaCache(false),
+    mIsAlphaVisible(true),
+    mIsAlphaCalculated(false)
+{
+    mBounds.x = 0;
+    mBounds.y = 0;
+    mBounds.w = width;
+    mBounds.h = height;
+}
+#endif  // UNITTESTS
+
 #ifdef USE_SDL2
 Image::Image(SDL_Texture *restrict const image,
              const int width, const int height) :

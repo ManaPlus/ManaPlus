@@ -31,13 +31,20 @@ struct TileInfo final
         image(nullptr),
         width(0),
         count(1),
+        nextTile(1),
         isEnabled(true)
     {
     }
 
+    /* tile image */
     Image *image;
+    /* repeated tile width in pixels */
     int width;
+    /* repeated tiles count - 1 */
     int count;
+    /* number of tiles to get next tile */
+    int nextTile;
+    /* is tile enabled flag. if set to true, also mean image is non null */
     bool isEnabled;
 };
 

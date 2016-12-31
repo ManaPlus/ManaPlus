@@ -164,13 +164,25 @@ class MapLayer final: public MemoryCounter, public ConfigListener
         std::string getCounterName() const override final
         { return mName; }
 
+#ifdef UNITTESTS
+        TileInfo *getTiles() const
+        {
+            return mTiles;
+        }
+
+#endif  // UNITTESTS
+
+#ifndef UNITTESTS
     protected:
+#endif  // UNITTESTS
         static int getTileDrawWidth(const TileInfo *restrict img,
                                     const int endX,
-                                    int &width) A_WARN_UNUSED A_NONNULL(1);
+                                    int &restrict width,
+                                    int &restrict nextTile) A_WARN_UNUSED A_NONNULL(1);
 
         static int getEmptyTileDrawWidth(const TileInfo *restrict img,
-                                         const int endX)
+                                         const int endX,
+                                         int &restrict nextTile)
                                          A_WARN_UNUSED A_NONNULL(1);
 
         void updateConditionTiles(MetaTile *restrict const metaTiles,

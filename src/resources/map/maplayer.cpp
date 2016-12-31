@@ -562,7 +562,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                                 img->mBounds.h);
                         }
                     }
-//                    logger->log("ok tiles3: (%d,%d) to %d, +%d", x, y, endX, tilePtr->count);
+//                    logger->log("ok tiles3: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
                 }
                 else
                 {
@@ -570,7 +570,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     // for now special layer can be not drawed
                     if (x + tilePtr->count + 1 >= endX)
                         break;
-//                    logger->log("error tiles3: (%d,%d) to %d, +%d", x, y, endX, tilePtr->count);
+//                    logger->log("error tiles3: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
                     c = tilePtr->count;
                     x += c;
                     tilePtr += c;
@@ -612,8 +612,9 @@ void MapLayer::drawFringe(Graphics *const graphics,
                         }
                     }
                 }
-                x += c;
-                tilePtr += c;
+                const int nextTile = tilePtr->nextTile;
+                x += nextTile;
+                tilePtr += nextTile;
             }
         }
 
@@ -652,13 +653,13 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 {
                     if (x + tilePtr->count + 1 >= endX)
                         break;
-//                    logger->log("error tiles4: (%d,%d) to %d, +%d", x, y, endX, tilePtr->count);
+//                    logger->log("error tiles4: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
                     const int c = tilePtr->count;
                     x += c;
                     tilePtr += c;
                     continue;
                 }
-//                logger->log("ok tiles4: (%d,%d) to %d, +%d", x, y, endX, tilePtr->count);
+//                logger->log("ok tiles4: (%d,%d) to %d, +%d, %d", x, y, endX, tilePtr->count, tilePtr->nextTile);
                 const int x32 = x * mapTileSize;
                 const Image *const img = tilePtr->image;
                 const int px = x32 + dx;
@@ -679,10 +680,11 @@ void MapLayer::drawFringe(Graphics *const graphics,
                             py,
                             tilePtr->width,
                             img->mBounds.h);
-                        x += c;
-                        tilePtr += c;
                     }
                 }
+                const int nextTile = tilePtr->nextTile;
+                x += nextTile;
+                tilePtr += nextTile;
             }
         }
     }  // !flag
@@ -734,7 +736,8 @@ void MapLayer::drawFringe(Graphics *const graphics,
 
 int MapLayer::getTileDrawWidth(const TileInfo *restrict tilePtr,
                                const int endX,
-                               int &width)
+                               int &restrict width,
+                               int &restrict nextTile)
 {
     BLOCK_START("MapLayer::getTileDrawWidth")
     const Image *const img1 = tilePtr->image;
@@ -744,17 +747,37 @@ int MapLayer::getTileDrawWidth(const TileInfo *restrict tilePtr,
     {
         tilePtr ++;
         const Image *const img = tilePtr->image;
-        if (img != img1 || !tilePtr->isEnabled)
+        if (img == nullptr || !tilePtr->isEnabled)
+        {
             break;
+        }
+        if (img != img1)
+        {
+            nextTile = c;
+            BLOCK_END("MapLayer::getTileDrawWidth")
+            return c;
+        }
         c ++;
         width += img->mBounds.w;
     }
+    int c2 = c;
+    for (int x2 = c2 + 1; x2 < endX; x2++)
+    {
+        if (tilePtr->image != nullptr)
+        {
+            break;
+        }
+        c2 ++;
+        tilePtr ++;
+    }
+    nextTile = c2;
     BLOCK_END("MapLayer::getTileDrawWidth")
     return c;
 }
 
 int MapLayer::getEmptyTileDrawWidth(const TileInfo *restrict tilePtr,
-                                    const int endX)
+                                    const int endX,
+                                    int &restrict nextTile)
 {
     BLOCK_START("MapLayer::getEmptyTileDrawWidth")
     int c = 0;
@@ -767,6 +790,8 @@ int MapLayer::getEmptyTileDrawWidth(const TileInfo *restrict tilePtr,
         c ++;
     }
     BLOCK_END("MapLayer::getEmptyTileDrawWidth")
+
+    nextTile = c;
     return c;
 }
 
@@ -817,20 +842,24 @@ void MapLayer::updateCache(const int width,
         TileInfo *tilePtr = mTiles + y * mWidth;
         for (int x = mX; x < width1; x ++, tilePtr ++)
         {
+            int nextTile = 0;
             if (tilePtr->image == nullptr)
             {
                 tilePtr->isEnabled = false;
                 tilePtr->count = getEmptyTileDrawWidth(tilePtr,
-                    width1 - x);
+                    width1 - x,
+                    nextTile);
             }
             else
             {
                 int tileWidth = 0;
                 tilePtr->count = getTileDrawWidth(tilePtr,
                     width1 - x,
-                    tileWidth);
+                    tileWidth,
+                    nextTile);
                 tilePtr->width = tileWidth;
             }
+            tilePtr->nextTile = nextTile;
         }
     }
 }
