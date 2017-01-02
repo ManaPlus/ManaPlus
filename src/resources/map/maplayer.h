@@ -182,7 +182,8 @@ class MapLayer final: public MemoryCounter, public ConfigListener
         static int getTileDrawWidth(const TileInfo *restrict img,
                                     const int endX,
                                     int &restrict width,
-                                    int &restrict nextTile) A_WARN_UNUSED A_NONNULL(1);
+                                    int &restrict nextTile)
+                                    A_WARN_UNUSED A_NONNULL(1);
 
         static int getEmptyTileDrawWidth(const TileInfo *restrict img,
                                          const int endX,

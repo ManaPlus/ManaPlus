@@ -559,8 +559,6 @@ void MapLayer::drawFringe(Graphics *const graphics,
             TileInfo *tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
             if (tilePtr->isEnabled == false)
             {
-                // here need draw special layers only and continue
-                // for now special layer can be not drawed, if skipped before for
                 drawSpecialLayer(graphics,
                     y,
                     0,
