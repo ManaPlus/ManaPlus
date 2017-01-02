@@ -40,6 +40,8 @@
 #include "resources/map/metatile.h"
 #include "resources/map/speciallayer.h"
 
+#include "utils/checkutils.h"
+
 #include "debug.h"
 
 MapLayer::MapLayer(const std::string &name,
@@ -155,7 +157,7 @@ void MapLayer::draw(Graphics *const graphics,
             {
                 if (x + tilePtr->count + 1 >= endX)
                     break;
-                logger->log("error tiles: %s (%d,%d) to %d, +%d, %d",
+                reportAlways("error tiles: %s (%d,%d) to %d, +%d, %d",
                     mName.c_str(),
                     x, y,
                     endX,
@@ -606,7 +608,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 {
                     if (x + tilePtr->count + 1 >= endX)
                         break;
-                    logger->log("error tiles1: (%d,%d) to %d, +%d, %d",
+                    reportAlways("error tiles1: (%d,%d) to %d, +%d, %d",
                         x, y,
                         endX,
                         tilePtr->count,
@@ -668,7 +670,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 {
                     if (x + tilePtr->count + 1 >= endX)
                         break;
-                    logger->log("error tiles2: (%d,%d) to %d, +%d, %d",
+                    reportAlways("error tiles2: (%d,%d) to %d, +%d, %d",
                         x, y,
                         endX,
                         tilePtr->count,
