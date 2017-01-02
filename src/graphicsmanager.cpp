@@ -221,13 +221,6 @@ int GraphicsManager::detectGraphics()
         logger->log("disable OpenGL");
         mode = RENDER_SOFTWARE;
     }
-    else if (findI(mGlRenderer, "LLVM") != std::string::npos)
-    {
-        // llvm opengl emulation
-        logger->log("detected llvm driver");
-        logger->log("disable OpenGL");
-        mode = RENDER_SOFTWARE;
-    }
     else if (findI(mGlVendor, "NVIDIA") != std::string::npos)
     {
         // hope it can work well
