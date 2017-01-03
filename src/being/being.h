@@ -450,14 +450,12 @@ class Being notfinal : public ActorSprite,
 
         /**
          * Sets the attack speed.
-         * @todo In what unit?
          */
         void setAttackSpeed(const int speed) restrict2 noexcept2
         { mAttackSpeed = speed; }
 
         /**
          * Gets the attack speed.
-         * @todo In what unit?
          */
         int getAttackSpeed() const restrict2 noexcept2 A_WARN_UNUSED
         { return mAttackSpeed; }
@@ -1200,7 +1198,6 @@ class Being notfinal : public ActorSprite,
         /**
          * Calculates the offset in the given directions.
          * If walking in direction 'neg' the value is negated.
-         * TODO: Used by eAthena only?
          */
         template<signed char pos, signed char neg>
         int getOffset() const restrict2 A_WARN_UNUSED;

@@ -126,7 +126,6 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "Note: chat logs can take noticeable amount of disk space over time."),
         "enableChatLog", this, "enableChatLogEvent");
 
-    // TODO: ask 4144 if popup description is correct.
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable debug chat Log"),
         // TRANSLATORS: settings description

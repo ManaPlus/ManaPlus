@@ -963,9 +963,7 @@ Path Map::findPath(const int startX, const int startY,
                     ? basicCost : basicCost2);
 
                 /* Demote an arbitrary direction to speed pathfinding by
-                   adding a defect (TODO: change depending on the desired
-                   visual effect, e.g. a cross-product defect toward
-                   destination).
+                   adding a defect 
                    Important: as long as the total defect along any path is
                    less than the basicCost, the pathfinder will still find one
                    of the shortest paths! */

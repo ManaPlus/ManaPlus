@@ -204,7 +204,6 @@ bool EffectManager::trigger(const int id,
             }
             if (!effect.sfx.empty())
                 soundManager.playSfx(effect.sfx);
-            // TODO add sprite effect to position
             return rValue;
         }
     }

@@ -108,8 +108,6 @@ class TabbedArea final : public ActionListener,
 
         /**
          * Return how many tabs have been created.
-         *
-         * @todo Remove this method when upgrading to Guichan 0.9.0
          */
         int getNumberOfTabs() const A_WARN_UNUSED;
 

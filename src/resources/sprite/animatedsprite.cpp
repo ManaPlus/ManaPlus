@@ -434,7 +434,6 @@ const void *AnimatedSprite::getHash() const restrict2
 
 bool AnimatedSprite::updateNumber(const unsigned num) restrict2
 {
-    // TODO need store num in delayed object if it exist for future usage
     if (!mSprite)
         return false;
 

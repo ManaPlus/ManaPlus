@@ -100,10 +100,6 @@ class Map final : public Properties,
         /**
          * Draws the map to the given graphics output. This method draws all
          * layers, actors and overlay effects.
-         *
-         * TODO: For efficiency reasons, this method could take into account
-         * the clipping rectangle set on the Graphics object. However,
-         * currently the map is always drawn full-screen.
          */
         void draw(Graphics *restrict const graphics,
                   int scrollX,

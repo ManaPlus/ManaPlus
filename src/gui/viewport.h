@@ -46,10 +46,6 @@ class MapItem;
 /**
  * The viewport on the map. Displays the current map and handles mouse input
  * and the popup menu.
- *
- * TODO: This class is planned to be extended to allow floating widgets on top
- * of it such as NPC messages, which are positioned using map pixel
- * coordinates.
  */
 class Viewport final : public WindowContainer,
                        public MouseListener,
