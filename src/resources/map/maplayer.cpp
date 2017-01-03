@@ -400,11 +400,11 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
                                 const int scrollX,
                                 const int scrollY) const restrict
 {
-    const int specialWidth = mSpecialLayer->mWidth;
     const int y32 = y * mapTileSize;
-    const int ptr = y * specialWidth;
     const int py1 = y32 - scrollY;
     int endX1 = endX;
+    int specialWidth = mSpecialLayer->mWidth;
+    int ptr = y * specialWidth;
     if (endX1 > specialWidth)
         endX1 = specialWidth;
     if (endX1 < 0)
@@ -427,6 +427,11 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
         x += mSpecialLayer->mCache[ptr + x];
     }
 
+    specialWidth = mTempLayer->mWidth;
+    ptr = y * specialWidth;
+    endX1 = endX;
+    if (endX1 > specialWidth)
+        endX1 = specialWidth;
     item0 = mTempLayer->mTiles[ptr + startX];
     if (!item0 || item0->mType == MapItemType::EMPTY)
     {
@@ -441,7 +446,7 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
             item->draw(graphics, px1, py1,
                 mapTileSize, mapTileSize);
         }
-        x += mSpecialLayer->mCache[ptr + x];
+        x += mTempLayer->mCache[ptr + x];
     }
 }
 
