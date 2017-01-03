@@ -10,7 +10,7 @@ export CXX=g++
 
 export LANG=C
 
-export CXXFLAGS="-g -pg -fno-inline -fno-omit-frame-pointer"
+export CXXFLAGS="-g -pg -fno-inline -fno-omit-frame-pointer -Wno-attributes"
 
 autoreconf -i
 cd build/tmp

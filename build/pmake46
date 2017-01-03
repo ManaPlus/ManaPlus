@@ -19,7 +19,8 @@ export CXXFLAGS="-pg -fno-inline -Wunreachable-code -Wmissing-field-initializers
 -Wunused-parameter -Wredundant-decls -Wlogical-op \
 -Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
 -Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
--Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe"
+-Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe \
+-Wno-attributes"
 
 autoreconf -i
 ./configure --prefix=$dir/run \

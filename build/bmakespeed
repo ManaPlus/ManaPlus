@@ -16,7 +16,7 @@ export CXXFLAGS="-pedantic -ggdb3 -O5 -pipe -ffast-math \
 -funsafe-loop-optimizations -flto -fwhole-program \
 -march=native -fsched-pressure
 -std=gnu++1z \
--fno-var-tracking"
+-fno-var-tracking -Wno-attributes"
 
 source ./build/gcc6flags.sh
 

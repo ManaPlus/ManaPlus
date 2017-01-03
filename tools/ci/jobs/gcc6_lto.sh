@@ -12,7 +12,8 @@ aptget_install gcc-6 g++-6 \
     libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 export CXXFLAGS="-ggdb3 -pipe -ffast-math -O9 -flto -fwhole-program \
--fno-omit-frame-pointer -funswitch-loops -D_FORTIFY_SOURCE=2 -std=gnu++1z"
+-fno-omit-frame-pointer -funswitch-loops -D_FORTIFY_SOURCE=2 -std=gnu++1z \
+-Wno-attributes"
 
 source ./tools/ci/flags/gcc6.sh
 

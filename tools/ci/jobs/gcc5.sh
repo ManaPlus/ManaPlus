@@ -39,7 +39,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable -ftrapv \
 -fsched-pressure \
 -Wconditionally-supported -Wdate-time \
--fno-var-tracking \
+-fno-var-tracking -Wno-attributes \
 -Wopenmp-simd -Wformat-signedness \
 -Wswitch-bool -Wmemset-transposed-args -Wchkp -Wsized-deallocation \
 -Wlogical-not-parentheses -Woverloaded-virtual \

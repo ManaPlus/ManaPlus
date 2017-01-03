@@ -50,7 +50,8 @@ export CXXFLAGS="-Wvariadic-macros -Wvla -Wredundant-decls \
 -Wstack-protector -Wshadow -Wunused -Wunused-macros -Wsynth \
 -Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated -Wextra \
 -Wendif-labels -Wformat=1 -Wimport -Wnon-virtual-dtor -Wpsabi \
--Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 -Wc++0x-compat"
+-Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 -Wc++0x-compat \
+-Wno-attributes"
 
 autoreconf -i
 ./configure --prefix=$dir/run \

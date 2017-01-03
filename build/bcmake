@@ -3,7 +3,7 @@
 cd ..
 
 export PATH=/home/mingw/cross/i686-w64-mingw32/bin:/home/mingw/cross/bin:$PATH
-export CXXFLAGS="-Wall -O5 -flto -fwhole-program -ffast-math -funswitch-loops -funsafe-loop-optimizations -std=gnu++0x"
+export CXXFLAGS="-Wall -O5 -flto -fwhole-program -ffast-math -funswitch-loops -funsafe-loop-optimizations -std=gnu++0x -Wno-attributes"
 #export CXXFLAGS="-Wall -O5 -g1 -ffast-math -funswitch-loops -funsafe-loop-optimizations -std=gnu++0x"
 cmake -DCMAKE_TOOLCHAIN_FILE=build/toolchain.cmake . 2>build/make1.log
 

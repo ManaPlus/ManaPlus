@@ -36,7 +36,8 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable \
 -fsched-pressure \
--Wconditionally-supported -Wdate-time"
+-Wconditionally-supported -Wdate-time \
+-Wno-attributes"
 
 autoreconf -i
 ./configure --prefix=$dir/run \

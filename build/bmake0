@@ -26,7 +26,8 @@ export CXXFLAGS="-Wvariadic-macros -Wvla -Wredundant-decls \
 -Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 -Wc++11-compat -std=c++0x \
 -Wdelete-non-virtual-dtor -Wmaybe-uninitialized -Wunused-local-typedefs \
 -Wvector-operation-performance -Wfree-nonheap-object -Winvalid-memory-model \
--Wnarrowing -Wzero-as-null-pointer-constant"
+-Wnarrowing -Wzero-as-null-pointer-constant \
+-Wno-attributes"
 
 autoreconf -i
 ./configure --prefix=$dir/run \

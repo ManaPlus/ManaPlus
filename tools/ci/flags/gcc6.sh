@@ -23,7 +23,8 @@ export CXXFLAGS="${CXXFLAGS} -Warray-bounds=2"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Warray-temporaries"
 #export CXXFLAGS="${CXXFLAGS} -Wassign-intercept"
-export CXXFLAGS="${CXXFLAGS} -Wattributes"
+# show warning for padding
+#export CXXFLAGS="${CXXFLAGS} -Wattributes"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wbad-function-cast"
 export CXXFLAGS="${CXXFLAGS} -Wbool-compare"

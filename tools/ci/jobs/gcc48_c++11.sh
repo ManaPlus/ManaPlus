@@ -36,7 +36,8 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Woverlength-strings -Wpedantic -Wsign-compare -Wsizeof-pointer-memaccess \
 -Wsuggest-attribute=format -Wtype-limits -Wuninitialized \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
--Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable"
+-Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable \
+-Wno-attributes"
 
 do_init
 run_configure --enable-werror

@@ -51,7 +51,8 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wc++14-compat -Wsized-deallocation -Wlogical-not-parentheses \
 -Woverloaded-virtual -Warray-bounds -Wbool-compare -Wchar-subscripts \
 -Wcomment -Wmissing-braces -Wnonnull -Wopenmp-simd -Wparentheses \
--Wreturn-type -Wsequence-point -Wswitch"
+-Wreturn-type -Wsequence-point -Wswitch \
+-Wno-attributes"
 
 do_init
 run_configure --enable-werror

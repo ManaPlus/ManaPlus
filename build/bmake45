@@ -37,7 +37,8 @@ export CXXFLAGS="-Wunreachable-code -Wmissing-field-initializers \
 -Wpacked -Wshadow -Wunused -Wsynth \
 -Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated -Wextra \
 -Wendif-labels -Wformat=1 -Wimport -Wnon-virtual-dtor -Wpsabi \
--Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2"
+-Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 \
+-Wno-attributes"
 
 autoreconf -i
 ./configure --prefix=$dir/run \

@@ -37,7 +37,8 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wsuggest-attribute=format -Wtype-limits -Wuninitialized \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable \
--fno-var-tracking -Woverloaded-virtual"
+-fno-var-tracking -Wno-attributes \
+-Woverloaded-virtual"
 
 do_init
 run_configure --enable-werror
