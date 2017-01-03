@@ -427,6 +427,7 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
         x += mSpecialLayer->mCache[ptr + x];
     }
 
+    x0 = startX;
     specialWidth = mTempLayer->mWidth;
     ptr = y * specialWidth;
     endX1 = endX;

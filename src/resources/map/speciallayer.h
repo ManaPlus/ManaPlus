@@ -68,8 +68,8 @@ class SpecialLayer final : public MemoryCounter
 
     private:
         const std::string mName;
-        MapItem **mTiles;
-        int *mCache;
+        MapItem **mTiles __attribute__((packed));
+        int *mCache __attribute__((packed));
         int mWidth;
         int mHeight;
 };
