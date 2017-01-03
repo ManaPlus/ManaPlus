@@ -20,8 +20,6 @@
 
 #include "catch.hpp"
 
-#include "logger.h"
-
 #include "enums/resources/map/blockmask.h"
 
 #include "resources/image/image.h"
