@@ -68,8 +68,6 @@
 
 /**
   * Represents a rectangle.
-  *
-  * @since 0.1.0
   */
 class Rect notfinal
 {
@@ -89,11 +87,10 @@ class Rect notfinal
         /**
           * Constructor.
           *
-          * @param x The x coordinate of the rectangle.
-          * @param y The y coordinate of the rectangle.
-          * @param width The width of the rectangle.
-          * @param height The height of the rectangle.
-          * @since 0.1.0
+          * @param x_ The x coordinate of the rectangle.
+          * @param y_ The y coordinate of the rectangle.
+          * @param width_ The width of the rectangle.
+          * @param height_ The height of the rectangle.
           */
         constexpr Rect(const int x_,
              const int y_,
@@ -129,11 +126,10 @@ class Rect notfinal
         /**
           * Sets the dimension of a rectangle.
           *
-          * @param x The x coordinate of the rectangle.
-          * @param y The y coordinate of the rectangle.
-          * @param width The width of the rectangle.
-          * @param height The height of the rectangle.
-          * @since 0.1.0
+          * @param x0 The x coordinate of the rectangle.
+          * @param y0 The y coordinate of the rectangle.
+          * @param width0 The width of the rectangle.
+          * @param height0 The height of the rectangle.
           */
         void setAll(const int x0,
                     const int y0,
@@ -151,7 +147,6 @@ class Rect notfinal
           *
           * @param rectangle Another rectangle to check for intersection.
           * @return True if the rectangles intersect, false otherwise.
-          * @since 0.1.0
           */
         bool isIntersecting(const Rect& rectangle) const A_WARN_UNUSED
         {
@@ -192,10 +187,9 @@ class Rect notfinal
         /**
           * Checks if a point is inside the rectangle
           *
-          * @param x The x coordinate of the point.
-          * @param y The y coordinate of the point.
+          * @param x_ The x coordinate of the point.
+          * @param y_ The y coordinate of the point.
           * @return True if the point is inside the rectangle.
-          * @since 0.1.0
           */
         bool isPointInRect(const int x_,
                            const int y_) const A_WARN_UNUSED

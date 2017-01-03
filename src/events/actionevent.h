@@ -92,7 +92,6 @@ class Widget;
   * @see Widget::addActionListener, Widget::removeActionListener,
   *      Widget::distributeActionEvent
   * @author Olof Naessén
-  * @since 0.6.0
   */
 class ActionEvent final : public Event
 {

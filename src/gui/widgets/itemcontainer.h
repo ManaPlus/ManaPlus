@@ -51,14 +51,6 @@ class ItemContainer final : public Widget,
                             public WidgetListener
 {
     public:
-        /**
-         * Constructor. Initializes the graphic.
-         *
-         * @param inventory
-         * @param gridColumns Amount of columns in grid.
-         * @param gridRows    Amount of rows in grid.
-         * @param offset      Index offset
-         */
         ItemContainer(const Widget2 *const widget,
                       Inventory *const inventory,
                       const int maxColumns = 100000,

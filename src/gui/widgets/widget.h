@@ -93,7 +93,6 @@ class WidgetListener;
   *
   * @author Olof Naessén
   * @author Per Larsson.
-  * @since 0.1.0
   */
 class Widget notfinal : public Widget2
 {
@@ -122,7 +121,6 @@ class Widget notfinal : public Widget2
           * outside of a widget's dimension.
           *
           * @param graphics aA graphics object to draw with.
-          * @since 0.1.0
           */
         virtual void draw(Graphics *const graphics) A_NONNULL(2) = 0;
 
@@ -146,7 +144,6 @@ class Widget notfinal : public Widget2
           *
           * @param graphics A graphics object to draw with.
           * @see setFrameSize, getFrameSize
-          * @since 0.8.0
           */
         virtual void drawFrame(Graphics* graphics A_UNUSED) A_NONNULL(2)
         { }
@@ -166,7 +163,6 @@ class Widget notfinal : public Widget2
           *
           * @param frameSize The size of the widget's frame.
           * @see getFrameSize, drawFrame
-          * @since 0.8.0
           */
         void setFrameSize(const unsigned int frameSize) noexcept2
         { mFrameSize = frameSize; }
@@ -183,7 +179,6 @@ class Widget notfinal : public Widget2
           *
           * @return The size of the widget's frame.
           * @see setFrameSize, drawFrame
-          * @since 0.8.0
           */
         unsigned int getFrameSize() const noexcept2 A_WARN_UNUSED
         { return mFrameSize; }
@@ -193,7 +188,6 @@ class Widget notfinal : public Widget2
           * You can do logic stuff here like playing an animation.
           *
           * @see Gui::logic
-          * @since 0.1.0
           */
         virtual void logic()
         { }
@@ -203,7 +197,6 @@ class Widget notfinal : public Widget2
           *
           * @return The widget's parent container. NULL if the widget
           *         has no parent.
-          * @since 0.1.0
           */
         Widget* getParent() const noexcept2 A_WARN_UNUSED
         { return mParent; }
@@ -214,7 +207,6 @@ class Widget notfinal : public Widget2
           * @param width The width of the widget.
           * @see getWidth, setHeight, getHeight, setSize,
           *      setDimension, getDimensi
-          * @since 0.1.0
           */
         void setWidth(const int width);
 
@@ -224,7 +216,6 @@ class Widget notfinal : public Widget2
           * @return The width of the widget.
           * @see setWidth, setHeight, getHeight, setSize,
           *      setDimension, getDimension
-          * @since 0.1.0
           */
         int getWidth() const noexcept2 A_WARN_UNUSED
         { return mDimension.width; }
@@ -235,7 +226,6 @@ class Widget notfinal : public Widget2
           * @param height The height of the widget.
           * @see getHeight, setWidth, getWidth, setSize,
           *      setDimension, getDimension
-          * @since 0.1.0
           */
         void setHeight(const int height);
 
@@ -245,7 +235,6 @@ class Widget notfinal : public Widget2
           * @return The height of the widget.
           * @see setHeight, setWidth, getWidth, setSize,
           *      setDimension, getDimension
-          * @since 0.1.0
           */
         int getHeight() const noexcept2 A_WARN_UNUSED
         { return mDimension.height; }
@@ -257,7 +246,6 @@ class Widget notfinal : public Widget2
           * @param height The height of the widget.
           * @see setWidth, setHeight, getWidth, getHeight,
           *      setDimension, getDimension
-          * @since 0.1.0
           */
         void setSize(const int width, const int height);
 
@@ -267,7 +255,6 @@ class Widget notfinal : public Widget2
           *
           * @param x The x coordinate of the widget.
           * @see getX, setY, getY, setPosition, setDimension, getDimension
-          * @since 0.1.0
           */
         void setX(const int x);
 
@@ -277,7 +264,6 @@ class Widget notfinal : public Widget2
           *
           * @return The x coordinate of the widget.
           * @see setX, setY, getY, setPosition, setDimension, getDimension
-          * @since 0.1.0
           */
         int getX() const noexcept2 A_WARN_UNUSED
         { return mDimension.x; }
@@ -288,7 +274,6 @@ class Widget notfinal : public Widget2
           *
           * @param y The y coordinate of the widget.
           * @see setY, setX, getX, setPosition, setDimension, getDimension
-          * @since 0.1.0
           */
         void setY(const int y);
 
@@ -298,7 +283,6 @@ class Widget notfinal : public Widget2
           *
           * @return The y coordinate of the widget.
           * @see setY, setX, getX, setPosition, setDimension, getDimension
-          * @since 0.1.0
           */
         int getY() const noexcept2 A_WARN_UNUSED
         { return mDimension.y; }
@@ -310,7 +294,6 @@ class Widget notfinal : public Widget2
           * @param x The x coordinate of the widget.
           * @param y The y coordinate of the widget.
           * @see setX, getX, setY, getY, setDimension, getDimension
-          * @since 0.1.0
           */
         void setPosition(const int x, const int y);
 
@@ -320,7 +303,6 @@ class Widget notfinal : public Widget2
           *
           * @param dimension The dimension of the widget.
           * @see getDimension, setX, getX, setY, getY, setPosition
-          * @since 0.1.0
           */
         void setDimension(const Rect& dimension);
 
@@ -330,7 +312,6 @@ class Widget notfinal : public Widget2
           *
           * @return The dimension of the widget.
           * @see getDimension, setX, getX, setY, getY, setPosition
-          * @since 0.1.0
           */
         const Rect& getDimension() const noexcept2 A_WARN_UNUSED
         { return mDimension; }
@@ -341,7 +322,6 @@ class Widget notfinal : public Widget2
           * @param focusable True if the widget should be focusable,
           *                  false otherwise.
           * @see isFocusable
-          * @since 0.1.0
           */
         void setFocusable(const bool focusable);
 
@@ -350,7 +330,6 @@ class Widget notfinal : public Widget2
           *
           * @return True if the widget should be focusable, false otherwise.
           * @see setFocusable
-          * @since 0.1.0
           */
         bool isFocusable() const A_WARN_UNUSED;
 
@@ -358,7 +337,6 @@ class Widget notfinal : public Widget2
           * Checks if the widget is focused.
           *
           * @return True if the widget is focused, false otherwise.
-          * @since 0.1.0
           */
         virtual bool isFocused() const A_WARN_UNUSED;
 
@@ -369,7 +347,6 @@ class Widget notfinal : public Widget2
           * @param enabled True if widget should be enabled,
           *                false otherwise.
           * @see isEnabled
-          * @since 0.1.0
           */
         void setEnabled(const bool enabled) noexcept2
         { mEnabled = enabled; }
@@ -380,7 +357,6 @@ class Widget notfinal : public Widget2
           *
           * @return True if widget is enabled, false otherwise.
           * @see setEnabled
-          * @since 0.1.0
           */
         bool isEnabled() const A_WARN_UNUSED;
 
@@ -389,7 +365,6 @@ class Widget notfinal : public Widget2
           *
           * @param visible True if widget should be visible, false otherwise.
           * @see isVisible
-          * @since 0.1.0
           */
         void setVisible(Visible visible);
 
@@ -398,7 +373,6 @@ class Widget notfinal : public Widget2
           *
           * @return True if widget is be visible, false otherwise.
           * @see setVisible
-          * @since 0.1.0
           */
         bool isVisible() const A_WARN_UNUSED
         { return mVisible == Visible_true &&
@@ -409,7 +383,6 @@ class Widget notfinal : public Widget2
           *
           * @param color The baseground color.
           * @see getBaseColor
-          * @since 0.1.0
           */
         void setBaseColor(const Color& color) noexcept2
         { mBaseColor = color; }
@@ -419,7 +392,6 @@ class Widget notfinal : public Widget2
           *
           * @return The base color.
           * @see setBaseColor
-          * @since 0.1.0
           */
         const Color& getBaseColor() const noexcept2 A_WARN_UNUSED
         { return mBaseColor; }
@@ -429,7 +401,6 @@ class Widget notfinal : public Widget2
           *
           * @param color The foreground color.
           * @see getForegroundColor
-          * @since 0.1.0
           */
         void setForegroundColor(const Color& color) noexcept2
         { mForegroundColor = color; }
@@ -438,7 +409,6 @@ class Widget notfinal : public Widget2
           * Gets the foreground color.
           *
           * @see setForegroundColor
-          * @since 0.1.0
           */
         const Color& getForegroundColor() const noexcept2 A_WARN_UNUSED
         { return mForegroundColor; }
@@ -448,7 +418,6 @@ class Widget notfinal : public Widget2
           *
           * @param color The background Color.
           * @see setBackgroundColor
-          * @since 0.1.0
           */
         void setBackgroundColor(const Color &color) noexcept2
         { mBackgroundColor = color; }
@@ -457,7 +426,6 @@ class Widget notfinal : public Widget2
           * Gets the background color.
           *
           * @see setBackgroundColor
-          * @since 0.1.0
           */
         const Color &getBackgroundColor() const noexcept2 A_WARN_UNUSED
         { return mBackgroundColor; }
@@ -487,7 +455,6 @@ class Widget notfinal : public Widget2
           *
           * @param focusHandler The focus handler to use.
           * @see getFocusHandler
-          * @since 0.1.0
           */
         virtual void setFocusHandler(FocusHandler *const focusHandler);
 
@@ -500,7 +467,6 @@ class Widget notfinal : public Widget2
           *
           * @return The focus handler used.
           * @see setFocusHandler
-          * @since 0.1.0
           */
         FocusHandler* getFocusHandler() noexcept2 A_WARN_UNUSED
         { return mFocusHandler; }
@@ -512,7 +478,6 @@ class Widget notfinal : public Widget2
           *
           * @param actionListener The action listener to add.
           * @see removeActionListener
-          * @since 0.1.0
           */
         void addActionListener(ActionListener *const actionListener);
 
@@ -521,7 +486,6 @@ class Widget notfinal : public Widget2
           *
           * @param actionListener The action listener to remove.
           * @see addActionListener
-          * @since 0.1.0
           */
         void removeActionListener(ActionListener *const actionListener);
 
@@ -532,7 +496,6 @@ class Widget notfinal : public Widget2
           *
           * @param deathListener The death listener to add.
           * @see removeDeathListener
-          * @since 0.1.0
           */
         void addDeathListener(WidgetDeathListener *const deathListener);
 
@@ -541,7 +504,6 @@ class Widget notfinal : public Widget2
           *
           * @param deathListener The death listener to remove.
           * @see addDeathListener
-          * @since 0.1.0
           */
         void removeDeathListener(WidgetDeathListener *const deathListener);
 
@@ -552,7 +514,6 @@ class Widget notfinal : public Widget2
           *
           * @param mouseListener The mouse listener to add.
           * @see removeMouseListener
-          * @since 0.1.0
           */
         void addMouseListener(MouseListener *const mouseListener);
 
@@ -561,7 +522,6 @@ class Widget notfinal : public Widget2
           *
           * @param mouseListener The mouse listener to remove.
           * @see addMouseListener
-          * @since 0.1.0
           */
         void removeMouseListener(MouseListener *const mouseListener);
 
@@ -572,7 +532,6 @@ class Widget notfinal : public Widget2
           *
           * @param keyListener The key listener to add.
           * @see removeKeyListener
-          * @since 0.1.0
           */
         void addKeyListener(KeyListener *const keyListener);
 
@@ -581,7 +540,6 @@ class Widget notfinal : public Widget2
           *
           * @param keyListener The key listener to remove.
           * @see addKeyListener
-          * @since 0.1.0
           */
         void removeKeyListener(KeyListener *const keyListener);
 
@@ -592,7 +550,6 @@ class Widget notfinal : public Widget2
           *
           * @param focusListener The focus listener to add.
           * @see removeFocusListener
-          * @since 0.7.0
           */
         void addFocusListener(FocusListener *const focusListener);
 
@@ -601,7 +558,6 @@ class Widget notfinal : public Widget2
           *
           * @param focusListener The focus listener to remove.
           * @see addFocusListener
-          * @since 0.7.0
           */
         void removeFocusListener(FocusListener *const focusListener);
 
@@ -612,7 +568,6 @@ class Widget notfinal : public Widget2
           *
           * @param widgetListener The widget listener to add.
           * @see removeWidgetListener
-          * @since 0.8.0
           */
         void addWidgetListener(WidgetListener *const widgetListener);
 
@@ -621,7 +576,6 @@ class Widget notfinal : public Widget2
           *
           * @param widgetListener The widget listener to remove.
           * @see addWidgetListener
-          * @since 0.8.0
           */
         void removeWidgetListener(WidgetListener *const widgetListener);
 
@@ -635,7 +589,6 @@ class Widget notfinal : public Widget2
           *
           * @param actionEventId The action event identifier.
           * @see getActionEventId
-          * @since 0.6.0
           */
         void setActionEventId(const std::string &actionEventId) noexcept2
         { mActionEventId = actionEventId; }
@@ -645,7 +598,6 @@ class Widget notfinal : public Widget2
           *
           * @return The action event identifier of the widget.
           * @see setActionEventId
-          * @since 0.6.0
           */
         const std::string &getActionEventId() const noexcept2
         { return mActionEventId; }
@@ -655,7 +607,6 @@ class Widget notfinal : public Widget2
           *
           * @param x The absolute x coordinate will be stored in this parameter.
           * @param y The absolute y coordinate will be stored in this parameter.
-          * @since 0.1.0
           */
         virtual void getAbsolutePosition(int& x, int& y) const;
 
@@ -668,7 +619,6 @@ class Widget notfinal : public Widget2
           *
           * @param parent The parent of the widget.
           * @see getParent
-          * @since 0.1.0
           */
         virtual void setParent(Widget* parent)
         { mParent = parent; }
@@ -680,7 +630,6 @@ class Widget notfinal : public Widget2
           *
           * @return The font set for the widget.
           * @see setFont, setGlobalFont
-          * @since 0.1.0
           */
         Font *getFont() const RETURNS_NONNULL A_WARN_UNUSED;
 
@@ -689,7 +638,6 @@ class Widget notfinal : public Widget2
           *
           * @param font The global font.
           * @see getGlobalFont
-          * @since 0.1.0
           */
         static void setGlobalFont(Font *const font);
 
@@ -699,7 +647,6 @@ class Widget notfinal : public Widget2
           *
           * @param font The font to set for the widget.
           * @see getFont
-          * @since 0.1.0
           */
         void setFont(Font *const font);
 
@@ -707,8 +654,6 @@ class Widget notfinal : public Widget2
           * Called when the font has changed. If the change is global,
           * this function will only be called if the widget doesn't have a
           * font already set.
-          *
-          * @since 0.1.0
           */
         virtual void fontChanged()
         { }
@@ -719,7 +664,6 @@ class Widget notfinal : public Widget2
           *
           * @param widget The widget to check.
           * @return True if an instance of the widget exists, false otherwise.
-          * @since 0.1.0
           */
         static bool widgetExists(const Widget *const widget) A_WARN_UNUSED;
 
@@ -731,7 +675,6 @@ class Widget notfinal : public Widget2
           *
           * @return True if tab in is enabled, false otherwise.
           * @see setTabInEnabled
-          * @since 0.1.0
           */
         bool isTabInEnabled() const noexcept2 A_WARN_UNUSED
         { return mTabIn; }
@@ -744,7 +687,6 @@ class Widget notfinal : public Widget2
           *
           * @param enabled True if tab in should be enabled, false otherwise.
           * @see isTabInEnabled
-          * @since 0.1.0
           */
         void setTabInEnabled(const bool enabled) noexcept2
         { mTabIn = enabled; }
@@ -757,7 +699,6 @@ class Widget notfinal : public Widget2
           *
           * @return True if tab out is enabled, false otherwise.
           * @see setTabOutEnabled
-          * @since 0.1.0
           */
         bool isTabOutEnabled() const noexcept2 A_WARN_UNUSED
         { return mTabOut; }
@@ -770,7 +711,6 @@ class Widget notfinal : public Widget2
           *
           * @param enabled True if tab out should be enabled, false otherwise.
           * @see isTabOutEnabled
-          * @since 0.1.0
           */
         void setTabOutEnabled(const bool enabled) noexcept2
         { mTabOut = enabled; }
@@ -781,7 +721,6 @@ class Widget notfinal : public Widget2
           *
           * @throws Exception if another widget already has modal focus.
           * @see releaseModalFocus, isModalFocused
-          * @since 0.4.0
           */
         virtual void requestModalFocus();
 
@@ -792,7 +731,6 @@ class Widget notfinal : public Widget2
           *
           * @throws Exception if another widget already has modal focus.
           * @see releaseModalMouseInputFocus, isModalMouseInputFocused
-          * @since 0.6.0
           */
         virtual void requestModalMouseInputFocus();
 
@@ -801,7 +739,6 @@ class Widget notfinal : public Widget2
           * widget has modal focus.
           *
           * @see requestModalFocus, isModalFocused
-          * @since 0.4.0
           */
         virtual void releaseModalFocus();
 
@@ -810,7 +747,6 @@ class Widget notfinal : public Widget2
           * be released if the widget has modal mouse input focus.
           *
           * @see requestModalMouseInputFocus, isModalMouseInputFocused
-          * @since 0.6.0
           */
         virtual void releaseModalMouseInputFocus();
 
@@ -819,7 +755,6 @@ class Widget notfinal : public Widget2
           *
           * @return True if the widget has modal focus, false otherwise.
           * @see requestModalFocus, releaseModalFocus
-          * @since 0.8.0
           */
         virtual bool isModalFocused() const A_WARN_UNUSED;
 
@@ -829,7 +764,6 @@ class Widget notfinal : public Widget2
           * @return True if the widget has modal mouse input focus, false
           *         otherwise.
           * @see requestModalMouseInputFocus, releaseModalMouseInputFocus
-          * @since 0.8.0
           */
         virtual bool isModalMouseInputFocused() const A_WARN_UNUSED;
 
@@ -845,7 +779,6 @@ class Widget notfinal : public Widget2
           * @param y The y coordinate of the widget to get.
           * @return The widget at the specified coodinate, NULL
           *         if no widget is found.
-          * @since 0.6.0
           */
         virtual Widget *getWidgetAt(int x A_UNUSED,
                                     int y A_UNUSED) A_WARN_UNUSED
@@ -855,7 +788,6 @@ class Widget notfinal : public Widget2
           * Gets the mouse listeners of the widget.
           *
           * @return The mouse listeners of the widget.
-          * @since 0.6.0
           */
         const std::list<MouseListener*>& getMouseListeners() const
                                          A_CONST A_WARN_UNUSED;
@@ -864,7 +796,6 @@ class Widget notfinal : public Widget2
           * Gets the key listeners of the widget.
           *
           * @return The key listeners of the widget.
-          * @since 0.6.0
           */
         const std::list<KeyListener*>& getKeyListeners() const
                                        A_CONST A_WARN_UNUSED;
@@ -873,7 +804,6 @@ class Widget notfinal : public Widget2
           * Gets the focus listeners of the widget.
           *
           * @return The focus listeners of the widget.
-          * @since 0.7.0
           */
         const std::list<FocusListener*>& getFocusListeners() const
                                          A_CONST A_WARN_UNUSED;
@@ -896,7 +826,6 @@ class Widget notfinal : public Widget2
           * @see BasicContainer
           * @see BasicContainer::getChildrenArea
           * @see BasicContainer::drawChildren
-          * @since 0.1.0
           */
         virtual Rect getChildrenArea() A_WARN_UNUSED;
 
@@ -906,7 +835,6 @@ class Widget notfinal : public Widget2
           * @return the internalFocusHandler used. If no internal focus handler
           *         is used, NULL will be returned.
           * @see setInternalFocusHandler
-          * @since 0.1.0
           */
         virtual FocusHandler* getInternalFocusHandler() A_WARN_UNUSED;
 
@@ -917,7 +845,6 @@ class Widget notfinal : public Widget2
           *
           * @param focusHandler The internal focus handler to be used.
           * @see getInternalFocusHandler
-          * @since 0.1.0
           */
         void setInternalFocusHandler(FocusHandler *const internalFocusHandler);
 
@@ -927,7 +854,6 @@ class Widget notfinal : public Widget2
           *
           * @param widget The widget to move to the top.
           * @see moveToBottom
-          * @since 0.1.0
           */
         virtual void moveToTop(Widget* widget A_UNUSED)
         { }
@@ -938,7 +864,6 @@ class Widget notfinal : public Widget2
           *
           * @param widget The widget to move to the bottom.
           * @see moveToTop
-          * @since 0.1.0
           */
         virtual void moveToBottom(Widget* widget A_UNUSED)
         { }
@@ -947,7 +872,6 @@ class Widget notfinal : public Widget2
           * Focuses the next widget in the widget.
           *
           * @see moveToBottom
-          * @since 0.1.0
           */
         virtual void focusNext()
         { }
@@ -956,7 +880,6 @@ class Widget notfinal : public Widget2
           * Focuses the previous widget in the widget.
           *
           * @see moveToBottom
-          * @since 0.1.0
           */
         virtual void focusPrevious()
         { }
@@ -967,7 +890,6 @@ class Widget notfinal : public Widget2
           *
           * @param widget The target widget.
           * @param area The area to show.
-          * @since 0.1.0
           */
         virtual void showWidgetPart(Widget *const widget A_UNUSED,
                                     const Rect &area A_UNUSED)
@@ -981,21 +903,10 @@ class Widget notfinal : public Widget2
           *
           * @param id The id to set to the widget.
           * @see getId
-          * @since 0.8.0
           */
         void setId(const std::string& id)
         { mId = id; }
 
-        /**
-          * Gets the id of a widget. An id can be useful if a widget needs to be
-          * identified in a container. For example, if widgets are created by an
-          * XML document, a certain widget can be retrieved given that the widget
-          * has an id.
-          *
-          * @param id The id to set to the widget.
-          * @see setId
-          * @since 0.8.0
-          */
         const std::string& getId() const noexcept2 A_WARN_UNUSED
         { return mId; }
 
@@ -1007,7 +918,6 @@ class Widget notfinal : public Widget2
           * of a ScrollArea.
           *
           * @param rectangle The rectangle to be shown.
-          * @since 0.8.0
           */
         virtual void showPart(const Rect &rectangle);
 
@@ -1047,29 +957,22 @@ class Widget notfinal : public Widget2
         /**
           * Distributes an action event to all action listeners
           * of the widget.
-          *
-          * @since 0.8.0
           */
         void distributeActionEvent();
 
         /**
           * Distributes resized events to all of the widget's listeners.
-          *
-          * @since 0.8.0
           */
         void distributeResizedEvent();
 
         /**
           * Distributes moved events to all of the widget's listeners.
-          *
-          * @since 0.8.0
           */
         void distributeMovedEvent();
 
         /**
           * Distributes hidden events to all of the widget's listeners.
           *
-          * @since 0.8.0
           * @author Olof Naessén
           */
         void distributeHiddenEvent();
@@ -1077,7 +980,6 @@ class Widget notfinal : public Widget2
         /**
           * Distributes shown events to all of the widget's listeners.
           *
-          * @since 0.8.0
           * @author Olof Naessén
           */
         void distributeShownEvent();

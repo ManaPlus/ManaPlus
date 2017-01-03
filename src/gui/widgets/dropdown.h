@@ -55,14 +55,6 @@ class DropDown final : public ActionListener,
                        public SelectionListener
 {
     public:
-        /**
-         * Contructor.
-         *
-         * @param listModel the ListModel to use.
-         * @param scrollArea the ScrollArea to use.
-         * @param listBox the listBox to use.
-         * @see ListModel, ScrollArea, ListBox.
-         */
         DropDown(const Widget2 *const widget,
                  ListModel *const listModel,
                  const bool extended = false,

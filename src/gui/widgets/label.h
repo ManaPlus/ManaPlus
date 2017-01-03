@@ -146,7 +146,7 @@ class Label final : public Widget,
          * Sets the alignment of the caption. The alignment is relative
          * to the center of the label.
          *
-         * @param alignemnt The alignment of the caption of the label.
+         * @param alignment The alignment of the caption of the label.
          * @see getAlignment, Graphics
          */
         void setAlignment(Graphics::Alignment alignment)

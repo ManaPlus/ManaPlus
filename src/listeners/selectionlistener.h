@@ -76,7 +76,6 @@
   *      DropDown::addSelectionListener,
   *      DropDown::removeSelectionListener
   * @author Olof Naessén
-  * @since 0.8.0
   */
 class SelectionListener notfinal
 {
@@ -93,7 +92,6 @@ class SelectionListener notfinal
           * been changed.
           *
           * @param event The event of the value change.
-          * @since 0.8.0
           */
         virtual void valueChanged(const SelectionEvent &event A_UNUSED)
         { }

@@ -28,7 +28,7 @@
 
 /**
  * Attempts to retrieve text from the clipboard buffer and inserts it in
- * \a text at position \pos. The characters are encoded in utf-8.
+ * \a text at position. The characters are encoded in utf-8.
  *
  * Implemented for Windows, X11 and Mac OS X.
  *

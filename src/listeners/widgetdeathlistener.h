@@ -71,7 +71,6 @@
   *
   * @see Widget::addDeathListener, Widget::removeDeathListener
   * @author Olof Naessén
-  * @since 0.6.0
   */
 class WidgetDeathListener notfinal
 {

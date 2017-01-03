@@ -115,14 +115,8 @@ class ResourceManager final : public MemoryCounter
         Resource *getFromCache(const std::string &filename,
                                const int variant) A_WARN_UNUSED;
 
-        /**
-         * Adds a preformatted resource to the resource map.
-         *
-         * @param path The file name.
-         * @param Resource  The Resource to add.
-         * @return true if successfull, false otherwise.
-         */
-        bool addResource(const std::string &idPath, Resource *const resource);
+        bool addResource(const std::string &idPath,
+                         Resource *const resource);
 
         /**
          * Releases a resource, placing it in the set of orphaned resources.

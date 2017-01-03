@@ -231,7 +231,6 @@ class ListBox notfinal : public Widget,
          * using removeSelectionListener().
          *
          * @param selectionListener The selection listener to add.
-         * @since 0.8.0
          */
         void addSelectionListener(SelectionListener *const selectionListener);
 
@@ -239,7 +238,6 @@ class ListBox notfinal : public Widget,
          * Removes a selection listener from the list box.
          *
          * @param selectionListener The selection listener to remove.
-         * @since 0.8.0
          */
         void removeSelectionListener(SelectionListener *const
                                      selectionListener);
@@ -247,8 +245,6 @@ class ListBox notfinal : public Widget,
         /**
          * Distributes a value changed event to all selection listeners
          * of the list box.
-         *
-         * @since 0.8.0
          */
         void distributeValueChangedEvent();
 

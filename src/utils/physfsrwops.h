@@ -46,7 +46,7 @@ _SDL_stdinc_h
  *  RWops is closed. PhysicsFS should be configured to your liking before
  *  opening files through this method.
  *
- *   @param filename File to open in platform-independent notation.
+ *  @param fname File to open in platform-independent notation.
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
@@ -58,7 +58,7 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname) A_WARN_UNUSED;
  *  RWops is closed. PhysicsFS should be configured to your liking before
  *  opening files through this method.
  *
- *   @param filename File to open in platform-independent notation.
+ *  @param fname File to open in platform-independent notation.
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
@@ -70,7 +70,7 @@ SDL_RWops *PHYSFSRWOPS_openWrite(const char *const fname) A_WARN_UNUSED;
  *  RWops is closed. PhysicsFS should be configured to your liking before
  *  opening files through this method.
  *
- *   @param filename File to open in platform-independent notation.
+ *  @param fname File to open in platform-independent notation.
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
@@ -82,7 +82,7 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname) A_WARN_UNUSED;
  *  the RWops. The actual PhysicsFS handle will be destroyed when the
  *  RWops is closed.
  *
- *   @param handle a valid PhysicsFS file handle.
+ *  @param handle a valid PhysicsFS file handle.
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */

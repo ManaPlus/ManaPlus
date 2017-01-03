@@ -73,7 +73,6 @@
   *
   * @see Widget::addFocusListener, Widget::removeFocusListener
   * @author Olof Naessén
-  * @since 0.7.0
   */
 class FocusListener notfinal
 {

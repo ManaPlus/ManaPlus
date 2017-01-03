@@ -74,7 +74,6 @@
   * container, consider inheriting from this class.
   *
   * @see Container
-  * @since 0.6.0
   */
 class BasicContainer notfinal : public Widget,
                                 public WidgetDeathListener
@@ -103,7 +102,7 @@ class BasicContainer notfinal : public Widget,
           *
           * @param widget The widget whom wants a specific part of
           *               itself to be visible.
-          * @param rectangle The rectangle to be visible.
+          * @param area The rectangle to be visible.
           */
         void showWidgetPart(Widget *restrict const widget,
                             const Rect &restrict area) restrict2 override;

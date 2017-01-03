@@ -74,7 +74,6 @@ class Widget;
   * Represents a selection event.
   *
   * @author Olof Naessén
-  * @since 0.8.0
   */
 class SelectionEvent final: public Event
 {

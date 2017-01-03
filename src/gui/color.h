@@ -107,10 +107,10 @@ class Color final
         /**
           * Constructor. The default alpha value is 255.
           *
-          * @param r Red color component (range 0-255).
-          * @param g Green color component  (range 0-255).
-          * @param b Blue color component (range 0-255).
-          * @param a Alpha, used for transparency. A value of 0 means
+          * @param ar Red color component (range 0-255).
+          * @param ag Green color component  (range 0-255).
+          * @param ab Blue color component (range 0-255).
+          * @param aa Alpha, used for transparency. A value of 0 means
           *          totaly transparent, 255 is totaly opaque.
           */
         constexpr Color(const unsigned int ar,

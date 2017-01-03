@@ -38,7 +38,6 @@ class ImageParticle notfinal : public Particle
         /**
          * Constructor. The image is reference counted by this particle.
          *
-         * @param map   the map this particle appears on
          * @param image an Image instance, may not be NULL
          */
         explicit ImageParticle(Image *restrict const image);

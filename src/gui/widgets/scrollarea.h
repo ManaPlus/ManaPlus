@@ -108,11 +108,6 @@ class ScrollArea final : public BasicContainer,
             SHOW_AUTO
         };
 
-        /**
-         * Constructor.
-         *
-         * @param content the initial content to show in the scroll area
-         */
         ScrollArea(Widget2 *const widget2,
                    Widget *const widget,
                    const Opaque opaque = Opaque_true,

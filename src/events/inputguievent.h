@@ -70,7 +70,6 @@
   * Base class for all events concerning input.
   *
   * @author Olof Naessén
-  * @since 0.6.0
   */
 class InputGuiEvent: public Event
 {
@@ -79,7 +78,6 @@ class InputGuiEvent: public Event
           * Constructor.
           *
           * @param source The source widget of the event.
-          * @param isMetaPressed True if meta is pressed, false otherwise.
           */
         explicit InputGuiEvent(Widget *const source) :
             Event(source),

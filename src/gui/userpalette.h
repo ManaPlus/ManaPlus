@@ -105,11 +105,6 @@ class UserPalette final : public Palette, public ListModel
         void setGradient(const UserColorIdT type,
                          const GradientTypeT grad);
 
-        /**
-         * Sets the gradient delay for the specified color.
-         *
-         * @param grad gradient type to set
-         */
         void setGradientDelay(const UserColorIdT type,
                               const int delay)
         { mColors[CAST_SIZE(type)].delay = delay; }
@@ -240,13 +235,6 @@ class UserPalette final : public Palette, public ListModel
         static std::string getConfigName(const std::string &typeName)
                                          A_WARN_UNUSED;
 
-        /**
-         * Initialise color
-         *
-         * @param c character that needs initialising
-         * @param rgb default color if not found in config
-         * @param text identifier of color
-         */
         void addColor(const UserColorIdT type,
                       const unsigned rgb,
                       GradientTypeT grad,

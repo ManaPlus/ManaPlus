@@ -74,7 +74,7 @@ class ShopItems final : public ListModel
          *
          * @param inventoryIndex the inventory index of the item
          * @param id the id of the item
-         * @param quantity number of available copies of the item
+         * @param amount number of available copies of the item
          * @param price price of the item
          */
         ShopItem *addItem2(const int inventoryIndex,

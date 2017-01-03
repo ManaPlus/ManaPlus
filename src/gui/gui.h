@@ -235,7 +235,6 @@ class Gui final
          *
          * @param top The top widget.
          * @see Container
-         * @since 0.1.0
          */
         void setTop(Widget *const top);
 
@@ -244,7 +243,6 @@ class Gui final
          * of the GUI.
          *
          * @return The top widget. NULL if no top widget has been set.
-         * @since 0.1.0
          */
         Widget* getTop() const noexcept2 A_WARN_UNUSED
         { return mTop; }
@@ -255,7 +253,6 @@ class Gui final
          * @param graphics The graphics object to use for drawing.
          * @see getGraphics, AllegroGraphics, HGEGraphics,
          *      OpenLayerGraphics, OpenGLGraphics, SDLGraphics
-         * @since 0.1.0
          */
         void setGraphics(Graphics *const graphics) A_NONNULL(2);
 
@@ -266,7 +263,6 @@ class Gui final
          *          graphics object has been set.
          * @see setGraphics, AllegroGraphics, HGEGraphics,
          *      OpenLayerGraphics, OpenGLGraphics, SDLGraphics
-         * @since 0.1.0
          */
         Graphics* getGraphics() const RETURNS_NONNULL A_WARN_UNUSED;
 
@@ -276,7 +272,6 @@ class Gui final
          * @param input The input object to use for input handling.
          * @see getInput, AllegroInput, HGEInput, OpenLayerInput,
          *      SDLInput
-         * @since 0.1.0
          */
         void setInput(SDLInput *const input) A_NONNULL(2);
 
@@ -287,7 +282,6 @@ class Gui final
          *          input object has been set.
          * @see setInput, AllegroInput, HGEInput, OpenLayerInput,
          *      SDLInput
-         * @since 0.1.0
          */
         SDLInput* getInput() const A_WARN_UNUSED;
 
@@ -299,7 +293,6 @@ class Gui final
          *
          * @param keyListener The key listener to add.
          * @see removeGlobalKeyListener
-         * @since 0.5.0
          */
         void addGlobalKeyListener(KeyListener *const keyListener);
 
@@ -309,7 +302,6 @@ class Gui final
          * @param keyListener The key listener to remove.
          * @throws Exception if the key listener hasn't been added.
          * @see addGlobalKeyListener
-         * @since 0.5.0
          */
         void removeGlobalKeyListener(KeyListener *const keyListener);
 
@@ -339,7 +331,6 @@ class Gui final
          * Handles mouse wheel moved down input.
          *
          * @param mouseInput The mouse input to handle.
-         * @since 0.6.0
          */
         void handleMouseWheelMovedDown(const MouseInput& mouseInput);
 
@@ -347,7 +338,6 @@ class Gui final
          * Handles mouse wheel moved up input.
          *
          * @param mouseInput The mouse input to handle.
-         * @since 0.6.0
          */
         void handleMouseWheelMovedUp(const MouseInput& mouseInput);
 
@@ -355,7 +345,6 @@ class Gui final
          * Gets the widget at a certain position.
          *
          * @return The widget at a certain position.
-         * @since 0.6.0
          */
         Widget* getWidgetAt(const int x, const int y) const A_WARN_UNUSED;
 
@@ -363,7 +352,6 @@ class Gui final
          * Gets the source of the mouse event.
          *
          * @return The source widget of the mouse event.
-         * @since 0.6.0
          */
         Widget* getMouseEventSource(const int x,
                                     const int y) const A_WARN_UNUSED;
@@ -372,7 +360,6 @@ class Gui final
          * Gets the source of the key event.
          *
          * @return The source widget of the key event.
-         * @since 0.6.0
          */
         Widget* getKeyEventSource() const A_WARN_UNUSED;
 
@@ -381,7 +368,6 @@ class Gui final
          *
          * @param event The key event to distribute.
 
-         * @since 0.6.0
          */
         void distributeKeyEvent(KeyEvent &event) const;
 
@@ -390,7 +376,6 @@ class Gui final
          *
          * @param event The key event to distribute.
          *
-         * @since 0.6.0
          */
         void distributeKeyEventToGlobalKeyListeners(KeyEvent& event);
 
@@ -399,7 +384,6 @@ class Gui final
          * to be checked at each logic iteration as it might be necessary to
          * distribute mouse entered or mouse exited events.
          *
-         * @since 0.8.0
          */
         void handleModalMouseInputFocus();
 
@@ -408,7 +392,6 @@ class Gui final
          * each logic iteration as it might be necessary to distribute
          * mouse entered or mouse exited events.
          *
-         * @since 0.8.0
          */
         void handleModalFocus();
 
@@ -416,7 +399,6 @@ class Gui final
          * Handles modal focus gained. If modal focus has been gained it might
          * be necessary to distribute mouse entered or mouse exited events.
          *
-         * @since 0.8.0
          */
         void handleModalFocusGained();
 
@@ -425,7 +407,6 @@ class Gui final
          * gained it might be necessary to distribute mouse entered or mouse
          * exited events.
          *
-         * @since 0.8.0
          */
         void handleModalFocusReleased();
 

@@ -72,7 +72,6 @@
   * Interface for listening for mouse events from widgets.
   *
   * @see Widget::addMouseListener, Widget::removeMouseListener
-  * @since 0.1.0
   */
 class MouseListener notfinal
 {
@@ -87,7 +86,6 @@ class MouseListener notfinal
           * Called when the mouse has entered into the widget area.
           *
           * @param event Describes the event.
-          * @since 0.6.0
           */
         virtual void mouseEntered(MouseEvent &event A_UNUSED)
         {
@@ -97,7 +95,6 @@ class MouseListener notfinal
           * Called when the mouse has exited the widget area.
           *
           * @param event Describes the event.
-          * @since 0.6.0
           */
         virtual void mouseExited(MouseEvent &event A_UNUSED)
         {
@@ -110,7 +107,6 @@ class MouseListener notfinal
           *       Use mouseClickMessage to check for mouse clicks.
           *
           * @param event Describes the event.
-          * @since 0.6.0
           */
         virtual void mousePressed(MouseEvent &event A_UNUSED)
         {
@@ -120,7 +116,6 @@ class MouseListener notfinal
           * Called when a mouse button has been released on the widget area.
           *
           * @param event Describes the event.
-          * @since 0.6.0
           */
         virtual void mouseReleased(MouseEvent &event A_UNUSED)
         {
@@ -131,7 +126,6 @@ class MouseListener notfinal
           * the widget area.
           *
           * @param event Describes the event.
-          * @since 0.6.0
           */
         virtual void mouseClicked(MouseEvent &event A_UNUSED)
         {
@@ -141,7 +135,6 @@ class MouseListener notfinal
           * Called when the mouse wheel has moved up on the widget area.
           *
           * @param event Describes the event.
-          * @since 0.6.0
           */
         virtual void mouseWheelMovedUp(MouseEvent &event A_UNUSED)
         {
@@ -150,8 +143,7 @@ class MouseListener notfinal
         /**
           * Called when the mouse wheel has moved down on the widget area.
           *
-          * @param mousEvent Describes the event.
-          * @since 0.6.0
+          * @param event Describes the event.
           */
         virtual void mouseWheelMovedDown(MouseEvent &event A_UNUSED)
         {
@@ -162,7 +154,6 @@ class MouseListener notfinal
           * has been pressed (i.e no widget is being dragged).
           *
           * @param event Describes the event.
-          * @since 0.6.0
           */
         virtual void mouseMoved(MouseEvent &event A_UNUSED)
         {
@@ -173,7 +164,6 @@ class MouseListener notfinal
           * pressed on the widget.
           *
           * @param event Describes the event.
-          * @since 0.6.0
           */
         virtual void mouseDragged(MouseEvent &event A_UNUSED)
         {

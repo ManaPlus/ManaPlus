@@ -73,7 +73,6 @@ class Widget;
   * inherit from this class.
   *
   * @author Olof Naessén
-  * @since 0.6.0
   */
 class Event notfinal
 {

@@ -191,7 +191,8 @@ class Being notfinal : public ActorSprite,
          * @param attacker the attacking being
          * @param damage the amount of damage recieved (0 means miss)
          * @param type the attack type
-         * @param id skill id
+         * @param attackId the attack id
+         * @param level the skill level
          */
         void takeDamage(Being *restrict const attacker,
                         const int damage,
@@ -204,7 +205,7 @@ class Being notfinal : public ActorSprite,
          *
          * @param victim the victim being
          * @param damage the amount of damage dealt (0 means miss)
-         * @param type the attack type
+         * @param attackId the attack id
          */
         void handleAttack(Being *restrict const victim,
                           const int damage,

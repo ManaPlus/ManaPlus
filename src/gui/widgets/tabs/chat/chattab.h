@@ -74,9 +74,8 @@ class ChatTab notfinal : public Tab
          *
          * @param line Text message.
          * @param own  Type of message (usually the owner-type).
-         * @param channelName which channel to send the message to.
          * @param ignoreRecord should this not be recorded?
-         * @param removeColors try remove color if configured
+         * @param tryRemoveColors try remove color if configured
          */
         void chatLog(std::string line,
                      ChatMsgTypeT own,

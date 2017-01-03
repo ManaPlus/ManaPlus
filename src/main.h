@@ -38,11 +38,6 @@
  * sprites define the visible part of \link Being Beings\endlink and
  * \link FloorItem FloorItems\endlink, they are drawn from top to bottom
  * by the map, interleaved with the tiles in the fringe layer.
- *
- * The client supports two servers, \link EAthena eAthena\endlink (the TMW
- * version) and the \link EvolServ server\endlink. To achieve this, the
- * \link Net network communication layer\endlink is abstracted in many
- * different interfaces, which have different implementations for each server.
  */
 
 #define SMALL_VERSION "1.6.12.24"

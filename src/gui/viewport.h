@@ -134,7 +134,7 @@ class Viewport final : public WindowContainer,
         { mPixelViewX += x; mPixelViewY += y; }
 
         /**
-         * Clear all hover item\being etc
+         * Clear all hover item, being etc
          */
         void cleanHoverItems();
 
