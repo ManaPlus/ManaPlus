@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008  Fate <fate.tmw@googlemail.com>
  *  Copyright (C) 2008  Chuck Miller <shadowmil@gmail.com>
- *  Copyright (C) 2011-2016  The ManaPlus Developers
+ *  Copyright (C) 2011-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *

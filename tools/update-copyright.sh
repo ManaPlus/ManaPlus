@@ -3,6 +3,7 @@
 # Copyright (C) 2010 The ManaWorld Development Team.
 # Copyright (C) 2012-2016 The ManaPlus Developers.
 
+cd ..
 new_year="$1"
 [[ -z $new_year ]] && echo "Missing parameter: year" && exit 1
 
