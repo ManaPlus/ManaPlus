@@ -1,6 +1,7 @@
 stages:
   - prebuild
   - build
+  - stats
   - success
   - failure
 
@@ -3451,6 +3452,53 @@ deheader_sdl2_withoutopengl_cc:
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *log-failed-jobs
+
+doxygen:
+  stage: build
+  script:
+  - ./tools/ci/jobs/doxygen.sh
+  image: debian:unstable
+  artifacts:
+    paths:
+    - doxygen
+    expire_in: 3 week
+    when: always
+  tags:
+    - docker
+  only:
+    - master
+
+gitstats:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gitstats.sh
+  image: debian:unstable
+  artifacts:
+    paths:
+    - stats
+    expire_in: 3 week
+    when: always
+  tags:
+    - docker
+  only:
+    - master
+
+# stats
+
+pages:
+  stage: stats
+  script:
+  - ./tools/ci/jobs/pages.sh
+  image: debian:unstable
+  dependencies:
+    - doxygen
+    - gitstats
+  artifacts:
+    paths:
+    - public
+    expire_in: 3 week
+  only:
+    - master
 
 # reports
 
