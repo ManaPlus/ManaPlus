@@ -350,4 +350,5 @@ TEST_CASE("xml doc")
     }
     delete2(theme);
     delete2(client);
+//    PhysFs::deinit();
 }

@@ -31,6 +31,8 @@
 
 #include "resources/sdlimagehelper.h"
 
+#include "utils/physfstools.h"
+
 #include <physfs.h>
 
 #include "debug.h"
@@ -46,6 +48,8 @@ TEST_CASE("BrowserBox tests", "browserbox")
     imageHelper = new SDLImageHelper();
     theme = new Theme;
     ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
     ActorSprite::load();
     Widget::setGlobalFont(new Font("/usr/share/fonts/truetype/"
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
@@ -151,4 +155,5 @@ TEST_CASE("BrowserBox tests", "browserbox")
     delete box;
     delete client;
     client = nullptr;
+//    PhysFs::deinit();
 }

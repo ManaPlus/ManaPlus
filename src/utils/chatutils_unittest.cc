@@ -234,6 +234,7 @@ TEST_CASE("chatutils replaceVars")
 
     delete2(actorManager);
     delete2(client);
+//    PhysFs::deinit();
 }
 
 TEST_CASE("chatutils textToMe")

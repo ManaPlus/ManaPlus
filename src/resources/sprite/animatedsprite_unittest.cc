@@ -175,4 +175,5 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
 
     delete client;
     client = nullptr;
+//    PhysFs::deinit();
 }

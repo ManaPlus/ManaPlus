@@ -660,4 +660,5 @@ TEST_CASE("resourcemanager", "resourcemanager")
     resourceManager = safeResman;
     delete client;
     client = nullptr;
+//    PhysFs::deinit();
 }

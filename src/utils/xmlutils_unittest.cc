@@ -59,6 +59,7 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     REQUIRE(1 == arr[3]);
     REQUIRE(1 == arr[4]);
     ResourceManager::deleteInstance();
+//    PhysFs::deinit();
 }
 
 TEST_CASE("xmlutils readXmlStringMap 1")
@@ -88,6 +89,7 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     REQUIRE(arr["xD"] == "1");
     REQUIRE(arr["Metal"] == "26");
     ResourceManager::deleteInstance();
+//    PhysFs::deinit();
 }
 
 TEST_CASE("xmlutils readXmlIntMap 1")
@@ -117,4 +119,5 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     REQUIRE(arr[10] == 20);
     REQUIRE(arr[3] == 0);
     ResourceManager::deleteInstance();
+//    PhysFs::deinit();
 }

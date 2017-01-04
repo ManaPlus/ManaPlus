@@ -44,6 +44,7 @@ namespace PhysFs
     const char *getRealDir(const char *const filename);
     bool mkdir(const char *const dirName);
     void *loadFile(const std::string &fileName, int &fileSize);
+    bool deinit();
 }  // namespace PhysFs
 
 extern const char *dirSeparator;

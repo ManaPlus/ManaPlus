@@ -163,4 +163,6 @@ TEST_CASE("integrity tests", "integrity")
 
     delete client;
     client = nullptr;
+
+//    PhysFs::deinit();
 }

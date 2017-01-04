@@ -373,4 +373,5 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[3] == 0x77);
     }
     delete2(client);
+//    PhysFs::deinit();
 }

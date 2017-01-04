@@ -19,12 +19,16 @@
  */
 
 #include "catch.hpp"
+#include "logger.h"
 
+#include "utils/physfstools.h"
 #include "utils/stringutils.h"
 
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
 
@@ -619,6 +623,13 @@ TEST_CASE("stringuntils escapeString")
 
 TEST_CASE("stringuntils replaceItemLinks")
 {
+    PHYSFS_init("manaplus");
+    dirSeparator = "/";
+    logger = new Logger();
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+
     ItemDB::NamedItemInfos &namedInfos = ItemDB::getNamedItemInfosTest();
     ItemDB::ItemInfos &infos = ItemDB::getItemInfosTest();
     ItemInfo *info = new ItemInfo;
@@ -833,4 +844,6 @@ TEST_CASE("stringuntils replaceItemLinks")
         replaceItemLinks(str);
         REQUIRE(str == "[[test name 1 ,test name2[] test name 1]");
     }
+    ResourceManager::deleteInstance();
+//    PhysFs::deinit();
 }

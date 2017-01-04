@@ -161,4 +161,14 @@ namespace PhysFs
 
         return buffer;
     }
+
+    bool deinit()
+    {
+        if (PHYSFS_deinit() != 0)
+        {
+            logger->log("Physfs deinit error: %s", PHYSFS_getLastError());
+            return false;
+        }
+        return true;
+    }
 }  // namespace PhysFs

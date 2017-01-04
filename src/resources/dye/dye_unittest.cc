@@ -2392,4 +2392,5 @@ TEST_CASE("Dye real dye")
         dyeCheck("|A:#0000FFFF,FF000050", "arrow_up_A.png");
     }
     delete2(client);
+//    PhysFs::deinit();
 }

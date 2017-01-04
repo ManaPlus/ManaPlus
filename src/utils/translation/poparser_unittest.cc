@@ -114,4 +114,5 @@ TEST_CASE("PoParser tests", "PoParser")
         delete dict;
     }
     delete2(client);
+//    PhysFs::deinit();
 }
