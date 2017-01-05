@@ -49,6 +49,12 @@
 #error missing <SDL_version.h>
 #endif  // SDL_VERSIONNUM
 
+#ifdef UNITTESTS
+//#define CATCH_CONFIG_MAIN
+#define CATCH_CONFIG_RUNNER
+#include "catch.hpp"
+#endif  // UNITTESTS
+
 #define SDL_IMAGE_COMPILEDVERSION \
     SDL_VERSIONNUM(SDL_IMAGE_MAJOR_VERSION, \
     SDL_IMAGE_MINOR_VERSION, SDL_IMAGE_PATCHLEVEL)
@@ -135,4 +141,12 @@ int mainGui(int argc, char *argv[])
 
     return ret;
 }
+#else  // UNITTESTS
+
+int main(int argc, char *argv[])
+{
+    PhysFs::init(argv[0]);
+    return Catch::Session().run(argc, argv);
+}
+
 #endif  // UNITTESTS

@@ -279,6 +279,7 @@ Gui::~Gui()
     Widget *top = mTop;
     if (Widget::widgetExists(mTop))
         setTop(nullptr);
+    Window::setWindowContainer(nullptr);
     delete top;
 
     delete2(mGuiFont);

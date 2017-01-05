@@ -19,6 +19,7 @@
  */
 
 #include "catch.hpp"
+#include "configuration.h"
 #include "logger.h"
 
 #include "utils/physfstools.h"
@@ -623,15 +624,17 @@ TEST_CASE("stringuntils escapeString")
 
 TEST_CASE("stringuntils replaceItemLinks")
 {
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+    resourceManager->addToSearchPath("data/test", Append_false);
+    resourceManager->addToSearchPath("../data/test", Append_false);
 
     ItemDB::NamedItemInfos &namedInfos = ItemDB::getNamedItemInfosTest();
     ItemDB::ItemInfos &infos = ItemDB::getItemInfosTest();
+    paths.setDefaultValues(getPathsDefaults());
     ItemInfo *info = new ItemInfo;
     info->setId(123456);
     info->setName("test name 1");

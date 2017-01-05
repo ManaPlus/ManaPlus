@@ -127,7 +127,6 @@ TEST_CASE("Windows tests", "windowmanager")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
@@ -138,6 +137,9 @@ TEST_CASE("Windows tests", "windowmanager")
     resourceManager->cleanOrphans(true);
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+    resourceManager->addToSearchPath("data/test", Append_false);
+    resourceManager->addToSearchPath("../data/test", Append_false);
+    paths.setDefaultValues(getPathsDefaults());
     branding.setValue("onlineServerFile", "test/serverlistplus.xml");
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;
@@ -150,10 +152,11 @@ TEST_CASE("Windows tests", "windowmanager")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
-    ActorSprite::load();
     userPalette = new UserPalette;
-    theme = new Theme;
     config.setValue("fontSize", 16);
+    theme = new Theme;
+    Theme::selectSkin();
+    ActorSprite::load();
     gui = new Gui();
     gui->postInit(mainGraphics);
     touchManager.init();

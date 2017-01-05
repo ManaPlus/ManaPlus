@@ -20,12 +20,19 @@
 
 #include "catch.hpp"
 #include "client.h"
+#include "graphicsmanager.h"
 
 #include "being/actorsprite.h"
+
+#include "gui/gui.h"
 
 #include "gui/fonts/font.h"
 
 #include "gui/widgets/browserbox.h"
+
+#include "render/sdlgraphics.h"
+
+#include "resources/sdlimagehelper.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
@@ -41,16 +48,31 @@ extern const char *dirSeparator;
 
 TEST_CASE("BrowserBox tests", "browserbox")
 {
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     client = new Client;
     logger = new Logger();
     imageHelper = new SDLImageHelper();
-    theme = new Theme;
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+
+    mainGraphics = new SDLGraphics;
+    imageHelper = new SDLImageHelper;
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else  // USE_SDL2
+
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif  // USE_SDL2
+
+    theme = new Theme;
+    Theme::selectSkin();
     ActorSprite::load();
+    gui = new Gui();
+    gui->postInit(mainGraphics);
+
     Widget::setGlobalFont(new Font("/usr/share/fonts/truetype/"
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
     BrowserBox *const box = new BrowserBox(nullptr,

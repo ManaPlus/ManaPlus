@@ -24,11 +24,14 @@
 
 #include "being/actorsprite.h"
 
+#include "gui/gui.h"
 #include "gui/theme.h"
 
 #include "utils/delete2.h"
 #include "utils/env.h"
 #include "utils/physfstools.h"
+
+#include "render/sdlgraphics.h"
 
 #include "resources/sdlimagehelper.h"
 
@@ -41,13 +44,13 @@ TEST_CASE("xml doc")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+    mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
@@ -62,6 +65,8 @@ TEST_CASE("xml doc")
     Theme::selectSkin();
     const char *const tempXmlName = "tempxml.xml";
     ActorSprite::load();
+    gui = new Gui();
+    gui->postInit(mainGraphics);
 
     SECTION("load1")
     {

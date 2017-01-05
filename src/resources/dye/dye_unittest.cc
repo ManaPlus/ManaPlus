@@ -2354,7 +2354,6 @@ TEST_CASE("Dye real dye")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();

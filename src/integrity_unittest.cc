@@ -66,7 +66,6 @@ TEST_CASE("integrity tests", "integrity")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);

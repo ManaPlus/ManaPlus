@@ -25,16 +25,21 @@
 
 #include "being/actorsprite.h"
 
-#include "utils/translation/podict.h"
-#include "utils/translation/poparser.h"
-
-#include "resources/sdlimagehelper.h"
-
-#include "resources/resourcemanager/resourcemanager.h"
+#include "gui/gui.h"
+#include "gui/theme.h"
 
 #include "utils/delete2.h"
 #include "utils/env.h"
 #include "utils/physfstools.h"
+
+#include "utils/translation/podict.h"
+#include "utils/translation/poparser.h"
+
+#include "render/sdlgraphics.h"
+
+#include "resources/sdlimagehelper.h"
+
+#include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"
 
@@ -43,13 +48,13 @@ TEST_CASE("PoParser tests", "PoParser")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
 
+    mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
@@ -60,7 +65,11 @@ TEST_CASE("PoParser tests", "PoParser")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
+    theme = new Theme;
+    Theme::selectSkin();
     ActorSprite::load();
+    gui = new Gui();
+    gui->postInit(mainGraphics);
 
     SECTION("PoParser empty")
     {

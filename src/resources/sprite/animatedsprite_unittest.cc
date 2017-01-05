@@ -28,7 +28,10 @@
 
 #include "being/actorsprite.h"
 
+#include "gui/gui.h"
 #include "gui/theme.h"
+
+#include "render/sdlgraphics.h"
 
 #include "resources/sdlimagehelper.h"
 
@@ -52,7 +55,6 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
 
     initRand();
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
@@ -60,8 +62,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
-    theme = new Theme;
-    Theme::selectSkin();
+    mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
@@ -72,7 +73,11 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
+    theme = new Theme;
+    Theme::selectSkin();
     ActorSprite::load();
+    gui = new Gui();
+    gui->postInit(mainGraphics);
 
     SECTION("basic test 1")
     {
@@ -92,6 +97,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
         REQUIRE(10 == sprite->getFrameTime());
         REQUIRE(0 == sprite->getFrameIndex());
         delete sprite;
+        logger->log("test4");
     }
 
     SECTION("basic test 2")

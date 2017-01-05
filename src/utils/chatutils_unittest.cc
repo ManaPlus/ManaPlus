@@ -27,11 +27,14 @@
 
 #include "being/localplayer.h"
 
+#include "gui/gui.h"
 #include "gui/theme.h"
 
 #include "utils/chatutils.h"
 #include "utils/delete2.h"
 #include "utils/physfstools.h"
+
+#include "render/sdlgraphics.h"
 
 #include "resources/sdlimagehelper.h"
 
@@ -46,7 +49,6 @@
 TEST_CASE("chatutils replaceVars")
 {
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
@@ -57,6 +59,10 @@ TEST_CASE("chatutils replaceVars")
     theme = new Theme;
     Theme::selectSkin();
     imageHelper = new SDLImageHelper();
+    mainGraphics = new SDLGraphics;
+
+    gui = new Gui();
+    gui->postInit(mainGraphics);
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,

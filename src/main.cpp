@@ -22,10 +22,6 @@
 
 #include "maingui.h"
 
-#ifdef UNITTESTS
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
-#endif  // UNITTESTS
 #include "debug.h"
 
 #if !defined(UNITTESTS) && !defined(ANDROID)

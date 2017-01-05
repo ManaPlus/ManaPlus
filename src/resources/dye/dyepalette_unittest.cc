@@ -27,6 +27,11 @@
 
 #include "being/actorsprite.h"
 
+#include "gui/gui.h"
+#include "gui/theme.h"
+
+#include "render/sdlgraphics.h"
+
 #include "resources/sdlimagehelper.h"
 
 #include "resources/db/palettedb.h"
@@ -50,7 +55,6 @@ TEST_CASE("DyePalette tests")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
@@ -59,6 +63,7 @@ TEST_CASE("DyePalette tests")
     resourceManager->addToSearchPath("data/test", Append_false);
     resourceManager->addToSearchPath("../data/test", Append_false);
 
+    mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
@@ -69,7 +74,11 @@ TEST_CASE("DyePalette tests")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
+    theme = new Theme;
+    Theme::selectSkin();
     ActorSprite::load();
+    gui = new Gui();
+    gui->postInit(mainGraphics);
     paths.setDefaultValues(getPathsDefaults());
     PaletteDB::load();
 

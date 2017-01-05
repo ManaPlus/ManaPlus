@@ -31,7 +31,6 @@
 
 TEST_CASE("Files renameFile")
 {
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
@@ -69,7 +68,6 @@ TEST_CASE("Files renameFile")
 
 TEST_CASE("Files existsLocal")
 {
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
@@ -84,7 +82,6 @@ TEST_CASE("Files existsLocal")
 
 TEST_CASE("Files loadTextFileString")
 {
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
@@ -98,7 +95,6 @@ TEST_CASE("Files loadTextFileString")
 
 TEST_CASE("Files loadTextFile")
 {
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
@@ -116,7 +112,6 @@ TEST_CASE("Files loadTextFile")
 
 TEST_CASE("Files saveTextFile")
 {
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
@@ -135,7 +130,6 @@ TEST_CASE("Files saveTextFile")
 
 TEST_CASE("Files getFilesInDir")
 {
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();

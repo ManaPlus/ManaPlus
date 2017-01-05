@@ -34,7 +34,6 @@
 TEST_CASE("xmlutils readXmlIntVector 1")
 {
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
     logger = new Logger();
@@ -65,7 +64,6 @@ TEST_CASE("xmlutils readXmlIntVector 1")
 TEST_CASE("xmlutils readXmlStringMap 1")
 {
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
     logger = new Logger();
@@ -95,7 +93,6 @@ TEST_CASE("xmlutils readXmlStringMap 1")
 TEST_CASE("xmlutils readXmlIntMap 1")
 {
     client = new Client;
-    PHYSFS_init("manaplus");
     dirSeparator = "/";
     XML::initXML();
     logger = new Logger();
