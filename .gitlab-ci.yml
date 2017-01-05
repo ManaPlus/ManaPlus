@@ -132,6 +132,15 @@ gcc-5_sanitize_tests:
   tags:
     - docker
 
+gcc-6_tests_simd:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests_simd.sh
+  image: debian:unstable
+  <<: *log-failed-jobs
+  tags:
+    - docker
+
 gcc-5_sanitize_tests_i386:
   stage: build
   script:
