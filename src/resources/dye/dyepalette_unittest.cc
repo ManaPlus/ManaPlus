@@ -22,7 +22,6 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "logger.h"
 #include "graphicsmanager.h"
 
 #include "being/actorsprite.h"

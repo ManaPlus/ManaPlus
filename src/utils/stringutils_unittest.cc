@@ -23,7 +23,6 @@
 #include "logger.h"
 
 #include "utils/physfstools.h"
-#include "utils/stringutils.h"
 
 #include "resources/iteminfo.h"
 

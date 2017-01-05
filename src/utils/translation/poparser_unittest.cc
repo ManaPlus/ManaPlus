@@ -21,7 +21,6 @@
 #include "catch.hpp"
 #include "client.h"
 #include "graphicsmanager.h"
-#include "logger.h"
 
 #include "being/actorsprite.h"
 

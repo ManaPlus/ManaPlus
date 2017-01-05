@@ -32,15 +32,9 @@
 
 #include "render/sdlgraphics.h"
 
-#include "resources/sdlimagehelper.h"
-
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "resources/sdlimagehelper.h"
-
-#include "utils/physfstools.h"
-
-#include <physfs.h>
 
 #include "debug.h"
 
