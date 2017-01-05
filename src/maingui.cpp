@@ -50,7 +50,6 @@
 #endif  // SDL_VERSIONNUM
 
 #ifdef UNITTESTS
-//#define CATCH_CONFIG_MAIN
 #define CATCH_CONFIG_RUNNER
 #include "catch.hpp"
 #endif  // UNITTESTS
