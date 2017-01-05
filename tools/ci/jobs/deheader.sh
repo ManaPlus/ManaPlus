@@ -13,5 +13,5 @@ aptget_install python wget \
 export dir=$(pwd)
 
 rm deheader
-wget "https://gitlab.com/4144/deheader/raw/master/deheader"
+tools/ci/scripts/retry.sh wget "https://gitlab.com/4144/deheader/raw/master/deheader"
 chmod +x deheader
