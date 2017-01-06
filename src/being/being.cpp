@@ -4187,6 +4187,12 @@ void Being::recalcSpritesOrder() restrict2
 
     const unsigned int hairSlot = charServerHandler->hairSprite();
 
+    for (size_t slot = sz; slot < 20; slot ++)
+    {
+        oldHide[slot] = 0;
+        updatedSprite[slot] = false;
+    }
+
     for (size_t slot = 0; slot < sz; slot ++)
     {
         oldHide[slot] = mSpriteHide[slot];
