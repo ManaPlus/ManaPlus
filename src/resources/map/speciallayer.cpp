@@ -41,6 +41,7 @@ SpecialLayer::SpecialLayer(const std::string &name,
     mHeight(height)
 {
     std::fill_n(mTiles, mWidth * mHeight, static_cast<MapItem*>(nullptr));
+    std::fill_n(mCache, mWidth * mHeight, 10000);
 }
 
 SpecialLayer::~SpecialLayer()
