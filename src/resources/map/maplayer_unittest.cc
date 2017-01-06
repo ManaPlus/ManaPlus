@@ -528,8 +528,6 @@ TEST_CASE("MapLayer updateCache")
     Image *const img2 = new Image(32, 32);
     Image *const img3 = new Image(32, 32);
     MapLayer *layer = nullptr;
-    int width;
-    int nextTile;
 
     SECTION("simple 1")
     {
@@ -893,8 +891,6 @@ TEST_CASE("MapLayer updateConditionTiles")
     Image *const img1 = new Image(32, 32);
     Map *map = nullptr;
     MapLayer *layer = nullptr;
-    int width;
-    int nextTile;
 
     SECTION("simple 1")
     {

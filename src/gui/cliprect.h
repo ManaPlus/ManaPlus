@@ -80,7 +80,7 @@ class ClipRect final : public Rect
         /**
           * Constructor.
           */
-        constexpr ClipRect() :
+        ClipRect() :
             Rect(0, 0, 0, 0),
             xOffset(0),
             yOffset(0)
@@ -101,7 +101,7 @@ class ClipRect final : public Rect
           *                 calculating the actual screen coordinate from
           *                 the relative screen coordinate.
           */
-        constexpr ClipRect(const int x0,
+        ClipRect(const int x0,
                  const int y0,
                  const int width0,
                  const int height0,

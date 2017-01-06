@@ -28,7 +28,7 @@ class Color;
 struct ColorPair final
 {
     constexpr ColorPair(const Color *const c1,
-              const Color *const c2) :
+                        const Color *const c2) :
         color1(c1),
         color2(c2)
     {

@@ -54,8 +54,6 @@ void DyePalette::replaceAOGLColorDefault(uint32_t *restrict pixels,
 #include "resources/dye/dyepalette_replaceaoglcolor_default.hpp"
 }
 
-
-
 #ifdef SIMD_SUPPORTED
 /*
 static void print256(const char *const text, const __m256i &val);

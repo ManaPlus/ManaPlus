@@ -170,17 +170,13 @@ void MapLayer::draw(Graphics *const graphics,
             }
             const int x32 = x * mapTileSize;
 
-            int c = 0;
             const Image *const img = tilePtr->image;
             const int px = x32 + dx;
             const int py = py0 - img->mBounds.h;
             if (mSpecialFlag ||
                 img->mBounds.h <= mapTileSize)
             {
-                // here need not draw over player position
-                c = tilePtr->count;
-
-                if (c == 0)
+                if (tilePtr->count == 0)
                 {
                     graphics->drawImage(img, px, py);
                 }

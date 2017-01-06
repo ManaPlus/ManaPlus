@@ -2555,9 +2555,9 @@ void LocalPlayer::setRealPos(const int x, const int y)
         return;
 
     SpecialLayer *const layer = mMap->getTempLayer();
-    bool cacheUpdated(false);
     if (layer)
     {
+        bool cacheUpdated(false);
         if ((mCrossX || mCrossY) &&
             layer->getTile(mCrossX, mCrossY) &&
             layer->getTile(mCrossX, mCrossY)->getType() == MapItemType::CROSS)

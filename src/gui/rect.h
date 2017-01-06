@@ -93,9 +93,9 @@ class Rect notfinal
           * @param height_ The height of the rectangle.
           */
         constexpr Rect(const int x_,
-             const int y_,
-             const int width_,
-             const int height_) :
+                       const int y_,
+                       const int width_,
+                       const int height_) :
             x(x_),
             y(y_),
             width(width_),
