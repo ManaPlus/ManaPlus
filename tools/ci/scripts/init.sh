@@ -206,6 +206,13 @@ function run_make_check {
         echo "valgrind error"
         exit 1
     fi
+    export DATA=$(grep -A 2 "uninitialised" valg.log|grep ".cpp")
+    if [ "$DATA" != "" ];
+    then
+        cat valg.log
+        echo "valgrind error"
+        exit 1
+    fi
     cat valg.log
     echo "valgrind check"
 }
