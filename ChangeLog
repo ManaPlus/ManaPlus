@@ -1,3 +1,10 @@
+2017-01-07 New release 1.7.1.7
+fix: compilation for kFreeBSD.
+fix: wrong dye with OpenGL and rectangular textures enabled.
+fix: possible issue with sprite replaces.
+add: improve a bit performance.
+add: unblacklist auto detect OpenGL modes with LLVM in driver.
+
 2016-12-24 New release 1.6.12.24
 fix: some typos.
 fix: compilation with cilk plus and gcc 6.
