@@ -362,7 +362,6 @@
 		<Unit filename="src/gui/windows/equipmentwindow.cpp" />
 		<Unit filename="src/gui/windows/minimap.cpp" />
 		<Unit filename="src/gui/focushandler.cpp" />
-		<Unit filename="src/gui/cliprect.cpp" />
 		<Unit filename="src/gui/sdlinput.cpp" />
 		<Unit filename="src/gui/themecolorsidoperators.cpp" />
 		<Unit filename="src/gui/setupinputpages.cpp" />
@@ -476,7 +475,6 @@
 		<Unit filename="src/gui/fonts/textchunklist.cpp" />
 		<Unit filename="src/gui/viewport.cpp" />
 		<Unit filename="src/gui/windowmenu.cpp" />
-		<Unit filename="src/gui/rect.cpp" />
 		<Unit filename="src/gui/popups/speechbubble.cpp" />
 		<Unit filename="src/gui/popups/skillpopup.cpp" />
 		<Unit filename="src/gui/popups/textpopup.cpp" />
