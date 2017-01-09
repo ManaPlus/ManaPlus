@@ -1871,6 +1871,8 @@ manaplustests_CXXFLAGS += -DUSE_X11
 endif
 
 manaplustests_SOURCES = ${manaplus_SOURCES} \
+	      render/mockgraphics.cc \
+	      render/mockgraphics.h \
 	      enums/enums_unittest.cc \
 	      utils/checkutils_unittest.cc \
 	      utils/xml_unittest.cc \
@@ -1894,6 +1896,7 @@ manaplustests_SOURCES = ${manaplus_SOURCES} \
 	      resources/resourcemanager/resourcemanager_unittest.cc \
 	      gui/windowmanager_unittest.cc
 endif
+
 
 EXTRA_DIST = CMakeLists.txt \
 	     winver.h.in \
