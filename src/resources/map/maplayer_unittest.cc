@@ -19,10 +19,15 @@
  */
 
 #include "catch.hpp"
+#include "logger.h"
 #include "graphicsmanager.h"
+
+#include "being/localplayer.h"
 
 #include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
+
+#include "gui/theme.h"
 
 #include "render/mockgraphics.h"
 
@@ -2339,6 +2344,7 @@ TEST_CASE("MapLayer drawFringe")
     ResourceManager::init();
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
+    logger = new Logger;
 
     imageHelper = new SDLImageHelper;
 #ifdef USE_SDL2
@@ -2349,6 +2355,12 @@ TEST_CASE("MapLayer drawFringe")
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
+
+    theme = new Theme;
+    Theme::selectSkin();
+
+    localPlayer = new LocalPlayer(static_cast<BeingId>(1),
+        BeingTypeId_zero);
 
     Image *const img1 = new Image(32, 32);
     Image *const img2 = new Image(32, 32);

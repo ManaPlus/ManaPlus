@@ -109,9 +109,6 @@ void MapLayer::draw(Graphics *const graphics,
                     const int scrollX,
                     const int scrollY) const restrict
 {
-    if (!localPlayer)
-        return;
-
     BLOCK_START("MapLayer::draw")
     startX -= mX;
     startY -= mY;
@@ -140,7 +137,7 @@ void MapLayer::draw(Graphics *const graphics,
         TileInfo *tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
         if (tilePtr->isEnabled == false)
         {
-            if (x0 + tilePtr->nextTile >= endX)
+            if (x0 + tilePtr->nextTile + 1 >= endX)
             {
                 continue;
             }
@@ -567,7 +564,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     std::min(x0 + tilePtr->nextTile + 1, endX),
                     scrollX,
                     scrollY);
-                if (x0 + tilePtr->nextTile >= endX)
+                if (x0 + tilePtr->nextTile + 1 >= endX)
                 {
                     continue;
                 }
@@ -657,7 +654,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
             TileInfo *tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
             if (tilePtr->isEnabled == false)
             {
-                if (x0 + tilePtr->nextTile >= endX)
+                if (x0 + tilePtr->nextTile + 1 >= endX)
                     continue;
                 x0 += tilePtr->nextTile + 1;
                 tilePtr = &mTiles[CAST_SIZE(x0 + yWidth)];
