@@ -66,6 +66,14 @@ class SpecialLayer final : public MemoryCounter
 
         void updateCache();
 
+#ifdef UNITTESTS
+        const int *getCache() const
+        { return mCache; }
+
+        MapItem **getTiles() const
+        { return mTiles; }
+#endif  // UNITTESTS
+
     private:
         const std::string mName;
         MapItem **mTiles;
