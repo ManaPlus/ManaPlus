@@ -314,6 +314,17 @@ AC_ARG_ENABLE(applebuild,
 esac],[applebuild_enabled=false])
 
 
+# Option to enable gcov
+AC_ARG_WITH(gcov,[  --with-gcov        use gcov ] )
+if test "x$with_gcov" == "xyes"; then
+    with_gcov=yes
+    CPPFLAGS="$CPPFLAGS -coverage"
+    LDFLAGS="$LDFLAGS -coverage"
+else
+    with_gcov=no
+fi
+AM_CONDITIONAL(USE_GCOV, test x$with_gcov = xyes)
+
 # Option to enable OpenGL
 AC_ARG_WITH(opengl,[  --without-opengl        don't use OpenGL ] )
 if test "x$with_opengl" == "xno"; then

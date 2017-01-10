@@ -2,3 +2,5 @@ rm -rf tmp
 cd ..
 make distclean
 make clean
+find src -type f -name "*.gcno" -exec rm {} \;
+find src -type f -name "*.gcda" -exec rm {} \;
