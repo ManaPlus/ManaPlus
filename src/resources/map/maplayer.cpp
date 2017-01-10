@@ -564,7 +564,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 drawSpecialLayer(graphics,
                     y,
                     0,
-                    std::min(x0 + tilePtr->nextTile, endX),
+                    std::min(x0 + tilePtr->nextTile + 1, endX),
                     scrollX,
                     scrollY);
                 if (x0 + tilePtr->nextTile >= endX)
@@ -626,7 +626,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                     drawSpecialLayer(graphics,
                         y,
                         x,
-                        std::min(x + nextTile, endX),
+                        std::min(x + nextTile + 1, endX),
                         scrollX,
                         scrollY);
                 }

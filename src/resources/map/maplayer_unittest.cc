@@ -1638,6 +1638,702 @@ TEST_CASE("MapLayer draw")
     delete mock;
 }
 
+TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
+{
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+
+    imageHelper = new SDLImageHelper;
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else  // USE_SDL2
+
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif  // USE_SDL2
+
+    Map *map = nullptr;
+    MapLayer *layer = nullptr;
+    SpecialLayer *specialLayer = nullptr;
+    MockGraphics *const mock = new MockGraphics;
+    const Actors actors;
+
+    SECTION("simple 1")
+    {
+        map = new Map("map",
+            1, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            1, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getSpecialLayer();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 1,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 0);
+
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 1,
+            0, 0);
+//        REQUIRE(mock->mDraws.size() == 1);
+    }
+
+    SECTION("simple 2")
+    {
+        map = new Map("map",
+            1, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            1, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getSpecialLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 1,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 1);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+    }
+
+    SECTION("simple 3")
+    {
+        map = new Map("map",
+            2, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            2, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getSpecialLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 2,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 1);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+    }
+
+    SECTION("simple 4")
+    {
+        map = new Map("map",
+            2, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            2, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getSpecialLayer();
+        specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 2,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 1);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 32);
+        REQUIRE(mock->mDraws[0].y == 0);
+    }
+
+    SECTION("simple 5")
+    {
+        map = new Map("map",
+            2, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            2, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getSpecialLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 2,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 2);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 32);
+        REQUIRE(mock->mDraws[1].y == 0);
+    }
+
+    SECTION("simple 6")
+    {
+        map = new Map("map",
+            3, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            3, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getSpecialLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 3,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 2);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 64);
+        REQUIRE(mock->mDraws[1].y == 0);
+    }
+
+    SECTION("simple 7")
+    {
+        map = new Map("map",
+            3, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            3, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getSpecialLayer();
+        specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
+        specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 3,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 2);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 32);
+        REQUIRE(mock->mDraws[0].y == 0);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 64);
+        REQUIRE(mock->mDraws[1].y == 0);
+    }
+
+    SECTION("simple 8")
+    {
+        map = new Map("map",
+            3, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            3, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getSpecialLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->setTile(1, 0, MapItemType::ARROW_DOWN);
+        specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 3,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 3);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 32);
+        REQUIRE(mock->mDraws[1].y == 0);
+        REQUIRE(mock->mDraws[2].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[2].x == 64);
+        REQUIRE(mock->mDraws[2].y == 0);
+    }
+
+    SECTION("normal 1")
+    {
+        const int maxX = 100;
+        const int maxY = 50;
+        map = new Map("map",
+            maxX, maxY,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            maxX, maxY,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getSpecialLayer();
+        specialLayer->setTile(0, 5, MapItemType::ARROW_UP);
+        specialLayer->setTile(1, 5, MapItemType::ARROW_DOWN);
+        specialLayer->setTile(2, 5, MapItemType::ARROW_UP);
+        specialLayer->setTile(3, 5, MapItemType::EMPTY);
+        specialLayer->setTile(4, 5, MapItemType::EMPTY);
+        specialLayer->setTile(6, 5, MapItemType::ARROW_LEFT);
+        specialLayer->setTile(10, 20, MapItemType::ARROW_LEFT);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            5,
+            0, maxX,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 4);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0 * 32);
+        REQUIRE(mock->mDraws[0].y == 5 * 32);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 1 * 32);
+        REQUIRE(mock->mDraws[1].y == 5 * 32);
+        REQUIRE(mock->mDraws[2].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[2].x == 2 * 32);
+        REQUIRE(mock->mDraws[2].y == 5 * 32);
+        REQUIRE(mock->mDraws[3].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[3].x == 6 * 32);
+        REQUIRE(mock->mDraws[3].y == 5 * 32);
+
+        mock->mDraws.clear();
+        layer->drawSpecialLayer(mock,
+            4,
+            0, maxX,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 0);
+
+        layer->drawSpecialLayer(mock,
+            6,
+            0, maxX,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 0);
+
+        layer->drawSpecialLayer(mock,
+            20,
+            0, maxX,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 1);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 10 * 32);
+        REQUIRE(mock->mDraws[0].y == 20 * 32);
+    }
+
+    delete map;
+    delete mock;
+}
+
+TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
+{
+    ResourceManager::init();
+    resourceManager->addToSearchPath("data", Append_false);
+    resourceManager->addToSearchPath("../data", Append_false);
+
+    imageHelper = new SDLImageHelper;
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else  // USE_SDL2
+
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif  // USE_SDL2
+
+    Map *map = nullptr;
+    MapLayer *layer = nullptr;
+    SpecialLayer *specialLayer = nullptr;
+    MockGraphics *const mock = new MockGraphics;
+    const Actors actors;
+
+    SECTION("simple 1")
+    {
+        map = new Map("map",
+            1, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            1, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getTempLayer();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 1,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 0);
+
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 1,
+            0, 0);
+//        REQUIRE(mock->mDraws.size() == 1);
+    }
+
+    SECTION("simple 2")
+    {
+        map = new Map("map",
+            1, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            1, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getTempLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 1,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 1);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+    }
+
+    SECTION("simple 3")
+    {
+        map = new Map("map",
+            2, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            2, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getTempLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 2,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 1);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+    }
+
+    SECTION("simple 4")
+    {
+        map = new Map("map",
+            2, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            2, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getTempLayer();
+        specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 2,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 1);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 32);
+        REQUIRE(mock->mDraws[0].y == 0);
+    }
+
+    SECTION("simple 5")
+    {
+        map = new Map("map",
+            2, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            2, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getTempLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 2,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 2);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 32);
+        REQUIRE(mock->mDraws[1].y == 0);
+    }
+
+    SECTION("simple 6")
+    {
+        map = new Map("map",
+            3, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            3, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getTempLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 3,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 2);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 64);
+        REQUIRE(mock->mDraws[1].y == 0);
+    }
+
+    SECTION("simple 7")
+    {
+        map = new Map("map",
+            3, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            3, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getTempLayer();
+        specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
+        specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 3,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 2);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 32);
+        REQUIRE(mock->mDraws[0].y == 0);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 64);
+        REQUIRE(mock->mDraws[1].y == 0);
+    }
+
+    SECTION("simple 8")
+    {
+        map = new Map("map",
+            3, 1,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            3, 1,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getTempLayer();
+        specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
+        specialLayer->setTile(1, 0, MapItemType::ARROW_DOWN);
+        specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            0,
+            0, 3,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 3);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0);
+        REQUIRE(mock->mDraws[0].y == 0);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 32);
+        REQUIRE(mock->mDraws[1].y == 0);
+        REQUIRE(mock->mDraws[2].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[2].x == 64);
+        REQUIRE(mock->mDraws[2].y == 0);
+    }
+
+    SECTION("normal 1")
+    {
+        const int maxX = 100;
+        const int maxY = 50;
+        map = new Map("map",
+            maxX, maxY,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            maxX, maxY,
+            true,
+            0,
+            0);
+        map->addLayer(layer);
+        layer->setSpecialLayer(map->getSpecialLayer());
+        layer->setTempLayer(map->getTempLayer());
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer = map->getTempLayer();
+        specialLayer->setTile(0, 5, MapItemType::ARROW_UP);
+        specialLayer->setTile(1, 5, MapItemType::ARROW_DOWN);
+        specialLayer->setTile(2, 5, MapItemType::ARROW_UP);
+        specialLayer->setTile(3, 5, MapItemType::EMPTY);
+        specialLayer->setTile(4, 5, MapItemType::EMPTY);
+        specialLayer->setTile(6, 5, MapItemType::ARROW_LEFT);
+        specialLayer->setTile(10, 20, MapItemType::ARROW_LEFT);
+        specialLayer->updateCache();
+
+        layer->drawSpecialLayer(mock,
+            5,
+            0, maxX,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 4);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 0 * 32);
+        REQUIRE(mock->mDraws[0].y == 5 * 32);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[1].x == 1 * 32);
+        REQUIRE(mock->mDraws[1].y == 5 * 32);
+        REQUIRE(mock->mDraws[2].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[2].x == 2 * 32);
+        REQUIRE(mock->mDraws[2].y == 5 * 32);
+        REQUIRE(mock->mDraws[3].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[3].x == 6 * 32);
+        REQUIRE(mock->mDraws[3].y == 5 * 32);
+
+        mock->mDraws.clear();
+        layer->drawSpecialLayer(mock,
+            4,
+            0, maxX,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 0);
+
+        layer->drawSpecialLayer(mock,
+            6,
+            0, maxX,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 0);
+
+        layer->drawSpecialLayer(mock,
+            20,
+            0, maxX,
+            0, 0);
+        REQUIRE(mock->mDraws.size() == 1);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 10 * 32);
+        REQUIRE(mock->mDraws[0].y == 20 * 32);
+    }
+
+    delete map;
+    delete mock;
+}
+
 TEST_CASE("MapLayer drawFringe")
 {
     ResourceManager::init();
@@ -2271,20 +2967,20 @@ TEST_CASE("MapLayer drawFringe")
         map->addLayer(layer);
         SpecialLayer *const specialLayer = map->getSpecialLayer();
         SpecialLayer *const tempLayer = map->getTempLayer();
-        specialLayer->setTile(1, 10, MapItemType::ARROW_UP);
-        specialLayer->setTile(10, 10, MapItemType::ARROW_DOWN);
         layer->setSpecialLayer(specialLayer);
         layer->setTempLayer(tempLayer);
         TileInfo *const tiles = layer->getTiles();
+        specialLayer->setTile(1, 10, MapItemType::ARROW_UP);
+        specialLayer->setTile(10, 10, MapItemType::ARROW_DOWN);
+        specialLayer->updateCache();
         layer->updateCache(maxX, maxY);
 
-        logger->log("normal 3 draw");
         layer->drawFringe(mock,
             0, 0,
             maxX, maxY,
             0, 0,
             actors);
-//+        REQUIRE(mock->mDraws.size() == 8);
+        REQUIRE(mock->mDraws.size() == 8);
         REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawPattern);
         REQUIRE(mock->mDraws[0].x == 32 * 1);
         REQUIRE(mock->mDraws[0].y == 32 * 10);
@@ -2330,7 +3026,7 @@ TEST_CASE("MapLayer drawFringe")
             maxX, maxY,
             -10, 20,
             actors);
-        REQUIRE(mock->mDraws.size() == 6);
+        REQUIRE(mock->mDraws.size() == 8);
         REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawPattern);
         REQUIRE(mock->mDraws[0].x == 32 * 1 + 10);
         REQUIRE(mock->mDraws[0].y == 32 * 10 - 20);
@@ -2338,31 +3034,172 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[0].height == 32);
         REQUIRE(mock->mDraws[0].image == img1);
         REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
-        REQUIRE(mock->mDraws[1].x == 32 * 4 + 10);
+        REQUIRE(mock->mDraws[1].x == 32 * 1 + 10);
         REQUIRE(mock->mDraws[1].y == 32 * 10 - 20);
-        REQUIRE(mock->mDraws[1].image == img2);
+        //REQUIRE(mock->mDraws[1].image == img2);
         REQUIRE(mock->mDraws[2].drawType == MockDrawType::DrawImage);
-        REQUIRE(mock->mDraws[2].x == 32 * 6 + 10);
+        REQUIRE(mock->mDraws[2].x == 32 * 4 + 10);
         REQUIRE(mock->mDraws[2].y == 32 * 10 - 20);
         REQUIRE(mock->mDraws[2].image == img2);
-        REQUIRE(mock->mDraws[3].drawType == MockDrawType::DrawPattern);
-        REQUIRE(mock->mDraws[3].x == 32 * 9 + 10);
+        REQUIRE(mock->mDraws[3].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[3].x == 32 * 6 + 10);
         REQUIRE(mock->mDraws[3].y == 32 * 10 - 20);
-        REQUIRE(mock->mDraws[3].width == 64);
-        REQUIRE(mock->mDraws[3].height == 32);
         REQUIRE(mock->mDraws[3].image == img2);
-        REQUIRE(mock->mDraws[4].drawType == MockDrawType::DrawImage);
-        REQUIRE(mock->mDraws[4].x == 32 * 11 + 10);
+        REQUIRE(mock->mDraws[4].drawType == MockDrawType::DrawPattern);
+        REQUIRE(mock->mDraws[4].x == 32 * 9 + 10);
         REQUIRE(mock->mDraws[4].y == 32 * 10 - 20);
-        REQUIRE(mock->mDraws[4].image == img3);
-        REQUIRE(mock->mDraws[5].drawType == MockDrawType::DrawPattern);
-        REQUIRE(mock->mDraws[5].x == 32 * 15 + 10);
+        REQUIRE(mock->mDraws[4].width == 64);
+        REQUIRE(mock->mDraws[4].height == 32);
+        REQUIRE(mock->mDraws[4].image == img2);
+        REQUIRE(mock->mDraws[5].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[5].x == 32 * 10 + 10);
         REQUIRE(mock->mDraws[5].y == 32 * 10 - 20);
-        REQUIRE(mock->mDraws[5].width == 96);
-        REQUIRE(mock->mDraws[5].height == 32);
-        REQUIRE(mock->mDraws[5].image == img1);
+        //REQUIRE(mock->mDraws[5].image == img2);
+        REQUIRE(mock->mDraws[6].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[6].x == 32 * 11 + 10);
+        REQUIRE(mock->mDraws[6].y == 32 * 10 - 20);
+        REQUIRE(mock->mDraws[6].image == img3);
+        REQUIRE(mock->mDraws[7].drawType == MockDrawType::DrawPattern);
+        REQUIRE(mock->mDraws[7].x == 32 * 15 + 10);
+        REQUIRE(mock->mDraws[7].y == 32 * 10 - 20);
+        REQUIRE(mock->mDraws[7].width == 96);
+        REQUIRE(mock->mDraws[7].height == 32);
+        REQUIRE(mock->mDraws[7].image == img1);
     }
 
+    SECTION("normal 4")
+    {
+        const int maxX = 100;
+        const int maxY = 100;
+        map = new Map("map",
+            maxX, maxY,
+            32, 32);
+        layer = new MapLayer("test",
+            0, 0,
+            maxX, maxY,
+            true,
+            0,
+            0);
+        layer->setTile(1, 10, img1);
+        layer->setTile(2, 10, img1);
+        layer->setTile(3, 10, img1);
+        layer->setTile(4, 10, img2);
+        layer->setTile(5, 10, nullptr);
+        layer->setTile(6, 10, img2);
+        layer->setTile(7, 10, nullptr);
+        layer->setTile(8, 10, nullptr);
+        layer->setTile(9, 10, img2);
+        layer->setTile(10, 10, img2);
+        layer->setTile(11, 10, img3);
+        layer->setTile(12, 10, nullptr);
+        layer->setTile(13, 10, nullptr);
+        layer->setTile(14, 10, nullptr);
+        layer->setTile(15, 10, img1);
+        layer->setTile(16, 10, img1);
+        layer->setTile(17, 10, img1);
+        map->addLayer(layer);
+        SpecialLayer *const specialLayer = map->getSpecialLayer();
+        SpecialLayer *const tempLayer = map->getTempLayer();
+        layer->setSpecialLayer(specialLayer);
+        layer->setTempLayer(tempLayer);
+        TileInfo *const tiles = layer->getTiles();
+        specialLayer->setTile(0, 10, MapItemType::ARROW_UP);
+        specialLayer->setTile(10, 10, MapItemType::ARROW_DOWN);
+        specialLayer->setTile(90, 10, MapItemType::ARROW_DOWN);
+        specialLayer->updateCache();
+        layer->updateCache(maxX, maxY);
+
+        layer->drawFringe(mock,
+            0, 0,
+            maxX - 20, maxY,
+            0, 0,
+            actors);
+        REQUIRE(mock->mDraws.size() == 8);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 32 * 0);
+        REQUIRE(mock->mDraws[0].y == 32 * 10);
+        //REQUIRE(mock->mDraws[0].image == img2);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawPattern);
+        REQUIRE(mock->mDraws[1].x == 32 * 1);
+        REQUIRE(mock->mDraws[1].y == 32 * 10);
+        REQUIRE(mock->mDraws[1].width == 96);
+        REQUIRE(mock->mDraws[1].height == 32);
+        REQUIRE(mock->mDraws[1].image == img1);
+        REQUIRE(mock->mDraws[2].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[2].x == 32 * 4);
+        REQUIRE(mock->mDraws[2].y == 32 * 10);
+        REQUIRE(mock->mDraws[2].image == img2);
+        REQUIRE(mock->mDraws[3].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[3].x == 32 * 6);
+        REQUIRE(mock->mDraws[3].y == 32 * 10);
+        REQUIRE(mock->mDraws[3].image == img2);
+        REQUIRE(mock->mDraws[4].drawType == MockDrawType::DrawPattern);
+        REQUIRE(mock->mDraws[4].x == 32 * 9);
+        REQUIRE(mock->mDraws[4].y == 32 * 10);
+        REQUIRE(mock->mDraws[4].width == 64);
+        REQUIRE(mock->mDraws[4].height == 32);
+        REQUIRE(mock->mDraws[4].image == img2);
+        REQUIRE(mock->mDraws[5].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[5].x == 32 * 10);
+        REQUIRE(mock->mDraws[5].y == 32 * 10);
+        //REQUIRE(mock->mDraws[5].image == img2);
+        REQUIRE(mock->mDraws[6].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[6].x == 32 * 11);
+        REQUIRE(mock->mDraws[6].y == 32 * 10);
+        REQUIRE(mock->mDraws[6].image == img3);
+        REQUIRE(mock->mDraws[7].drawType == MockDrawType::DrawPattern);
+        REQUIRE(mock->mDraws[7].x == 32 * 15);
+        REQUIRE(mock->mDraws[7].y == 32 * 10);
+        REQUIRE(mock->mDraws[7].width == 96);
+        REQUIRE(mock->mDraws[7].height == 32);
+        REQUIRE(mock->mDraws[7].image == img1);
+
+        mock->mDraws.clear();
+        layer->drawFringe(mock,
+            0, 0,
+            maxX - 20, maxY,
+            -10, 20,
+            actors);
+        REQUIRE(mock->mDraws.size() == 8);
+        REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[0].x == 32 * 0 + 10);
+        REQUIRE(mock->mDraws[0].y == 32 * 10 - 20);
+        //REQUIRE(mock->mDraws[0].image == img2);
+        REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawPattern);
+        REQUIRE(mock->mDraws[1].x == 32 * 1 + 10);
+        REQUIRE(mock->mDraws[1].y == 32 * 10 - 20);
+        REQUIRE(mock->mDraws[1].width == 96);
+        REQUIRE(mock->mDraws[1].height == 32);
+        REQUIRE(mock->mDraws[1].image == img1);
+        REQUIRE(mock->mDraws[2].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[2].x == 32 * 4 + 10);
+        REQUIRE(mock->mDraws[2].y == 32 * 10 - 20);
+        REQUIRE(mock->mDraws[2].image == img2);
+        REQUIRE(mock->mDraws[3].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[3].x == 32 * 6 + 10);
+        REQUIRE(mock->mDraws[3].y == 32 * 10 - 20);
+        REQUIRE(mock->mDraws[3].image == img2);
+        REQUIRE(mock->mDraws[4].drawType == MockDrawType::DrawPattern);
+        REQUIRE(mock->mDraws[4].x == 32 * 9 + 10);
+        REQUIRE(mock->mDraws[4].y == 32 * 10 - 20);
+        REQUIRE(mock->mDraws[4].width == 64);
+        REQUIRE(mock->mDraws[4].height == 32);
+        REQUIRE(mock->mDraws[4].image == img2);
+        REQUIRE(mock->mDraws[5].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[5].x == 32 * 10 + 10);
+        REQUIRE(mock->mDraws[5].y == 32 * 10 - 20);
+        //REQUIRE(mock->mDraws[5].image == img2);
+        REQUIRE(mock->mDraws[6].drawType == MockDrawType::DrawImage);
+        REQUIRE(mock->mDraws[6].x == 32 * 11 + 10);
+        REQUIRE(mock->mDraws[6].y == 32 * 10 - 20);
+        REQUIRE(mock->mDraws[6].image == img3);
+        REQUIRE(mock->mDraws[7].drawType == MockDrawType::DrawPattern);
+        REQUIRE(mock->mDraws[7].x == 32 * 15 + 10);
+        REQUIRE(mock->mDraws[7].y == 32 * 10 - 20);
+        REQUIRE(mock->mDraws[7].width == 96);
+        REQUIRE(mock->mDraws[7].height == 32);
+        REQUIRE(mock->mDraws[7].image == img1);
+    }
 
     delete map;
     delete img1;
