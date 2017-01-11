@@ -281,8 +281,8 @@ bool MockGraphics::setVideoMode(const int w, const int h,
         return false;
     }
 
-    mRect.w = CAST_U16(mWindow->w);
-    mRect.h = CAST_U16(mWindow->h);
+    mRect.w = CAST_U16(mRect.w);
+    mRect.h = CAST_U16(mRect.h);
 
     return videoInfo();
 }
