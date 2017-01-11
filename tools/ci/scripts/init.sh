@@ -217,6 +217,13 @@ function run_make_check {
     echo "valgrind check"
 }
 
+function run_gcov {
+    gcovr -r . --gcov-executable=$1 --html -o logs/$2.html
+    check_error $?
+    gcovr -r . --gcov-executable=$1 -o logs/$2.txt
+    check_error $?
+}
+
 function run_check_warnings {
     DATA=$(cat $ERRFILE)
     if [ "$DATA" != "" ];

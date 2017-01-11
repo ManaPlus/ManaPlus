@@ -10,6 +10,7 @@ aptget_install gcc-6 g++-6 \
     make autoconf automake autopoint gettext libphysfs-dev \
     libxml2-dev libcurl4-gnutls-dev libpng-dev \
     libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev \
+    gcovr \
     valgrind
 
 export CXXFLAGS="-pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
@@ -20,9 +21,10 @@ export CXXFLAGS="-pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 source ./tools/ci/flags/gcc6.sh
 
 do_init
-run_configure --enable-unittests=yes $*
+run_configure --enable-unittests=yes --with-gcov $*
 export SDL_VIDEODRIVER=dummy
 run_make_check
+run_gcov gcov-6 gcc-6
 
 source ./tools/ci/scripts/exit.sh
 

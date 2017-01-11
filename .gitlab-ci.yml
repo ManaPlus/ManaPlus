@@ -3520,6 +3520,8 @@ pages:
   dependencies:
     - doxygen
     - gitstats
+    - gcc-6_tests
+    - gcc-6_sdl2_tests
   artifacts:
     paths:
     - public
