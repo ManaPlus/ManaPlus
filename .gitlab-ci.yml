@@ -222,6 +222,24 @@ gcc-6_tests_no_opengl_i386:
   tags:
     - docker
 
+gcc-6_sdl2_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sdl2_tests.sh
+  image: debian:unstable
+  <<: *job-artifacts
+  tags:
+    - docker
+
+gcc-6_sdl2_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sdl2_tests.sh
+  image: vicamo/debian:sid-i386
+  <<: *job-artifacts
+  tags:
+    - docker
+
 gcc-5_sdl2_tests:
   stage: build
   script:
