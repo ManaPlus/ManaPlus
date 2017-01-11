@@ -19,7 +19,6 @@
  */
 
 #include "catch.hpp"
-#include "logger.h"
 #include "graphicsmanager.h"
 
 #include "being/localplayer.h"

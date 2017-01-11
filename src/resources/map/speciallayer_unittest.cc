@@ -29,8 +29,6 @@
 
 #include "resources/sdlimagehelper.h"
 
-#include "resources/image/image.h"
-
 #include "resources/map/speciallayer.h"
 
 #include "resources/resourcemanager/resourcemanager.h"

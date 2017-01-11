@@ -30,10 +30,6 @@
 
 #include "render/vertexes/imagecollection.h"
 
-#include "resources/imagerect.h"
-
-#include "resources/image/image.h"
-
 #include "debug.h"
 
 #ifndef SDL_BIG_ENDIAN
