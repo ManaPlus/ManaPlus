@@ -3002,7 +3002,7 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[1].x == 32 * 1);
         REQUIRE(mock->mDraws[1].y == 32 * 10);
-        //REQUIRE(mock->mDraws[1].image == img2);
+//        REQUIRE(mock->mDraws[1].image == img2);
         REQUIRE(mock->mDraws[2].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[2].x == 32 * 4);
         REQUIRE(mock->mDraws[2].y == 32 * 10);
@@ -3020,7 +3020,7 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[5].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[5].x == 32 * 10);
         REQUIRE(mock->mDraws[5].y == 32 * 10);
-        //REQUIRE(mock->mDraws[5].image == img2);
+//        REQUIRE(mock->mDraws[5].image == img2);
         REQUIRE(mock->mDraws[6].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[6].x == 32 * 11);
         REQUIRE(mock->mDraws[6].y == 32 * 10);
@@ -3048,7 +3048,7 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[1].x == 32 * 1 + 10);
         REQUIRE(mock->mDraws[1].y == 32 * 10 - 20);
-        //REQUIRE(mock->mDraws[1].image == img2);
+//        REQUIRE(mock->mDraws[1].image == img2);
         REQUIRE(mock->mDraws[2].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[2].x == 32 * 4 + 10);
         REQUIRE(mock->mDraws[2].y == 32 * 10 - 20);
@@ -3066,7 +3066,7 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[5].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[5].x == 32 * 10 + 10);
         REQUIRE(mock->mDraws[5].y == 32 * 10 - 20);
-        //REQUIRE(mock->mDraws[5].image == img2);
+//        REQUIRE(mock->mDraws[5].image == img2);
         REQUIRE(mock->mDraws[6].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[6].x == 32 * 11 + 10);
         REQUIRE(mock->mDraws[6].y == 32 * 10 - 20);
@@ -3130,7 +3130,7 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[0].x == 32 * 0);
         REQUIRE(mock->mDraws[0].y == 32 * 10);
-        //REQUIRE(mock->mDraws[0].image == img2);
+//        REQUIRE(mock->mDraws[0].image == img2);
         REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawPattern);
         REQUIRE(mock->mDraws[1].x == 32 * 1);
         REQUIRE(mock->mDraws[1].y == 32 * 10);
@@ -3154,7 +3154,7 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[5].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[5].x == 32 * 10);
         REQUIRE(mock->mDraws[5].y == 32 * 10);
-        //REQUIRE(mock->mDraws[5].image == img2);
+//        REQUIRE(mock->mDraws[5].image == img2);
         REQUIRE(mock->mDraws[6].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[6].x == 32 * 11);
         REQUIRE(mock->mDraws[6].y == 32 * 10);
@@ -3176,7 +3176,7 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[0].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[0].x == 32 * 0 + 10);
         REQUIRE(mock->mDraws[0].y == 32 * 10 - 20);
-        //REQUIRE(mock->mDraws[0].image == img2);
+//        REQUIRE(mock->mDraws[0].image == img2);
         REQUIRE(mock->mDraws[1].drawType == MockDrawType::DrawPattern);
         REQUIRE(mock->mDraws[1].x == 32 * 1 + 10);
         REQUIRE(mock->mDraws[1].y == 32 * 10 - 20);
@@ -3200,7 +3200,7 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[5].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[5].x == 32 * 10 + 10);
         REQUIRE(mock->mDraws[5].y == 32 * 10 - 20);
-        //REQUIRE(mock->mDraws[5].image == img2);
+//        REQUIRE(mock->mDraws[5].image == img2);
         REQUIRE(mock->mDraws[6].drawType == MockDrawType::DrawImage);
         REQUIRE(mock->mDraws[6].x == 32 * 11 + 10);
         REQUIRE(mock->mDraws[6].y == 32 * 10 - 20);
