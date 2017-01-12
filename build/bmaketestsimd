@@ -1,0 +1,32 @@
+#!/bin/bash
+
+cd ..
+
+dir=`pwd`
+
+export CC=gcc
+export CXX=g++
+
+export LANG=C
+
+export CXXFLAGS="-pedantic -ggdb3 -O5 -pipe -Wstrict-aliasing=2 \
+-Wstrict-overflow=1 -Wformat=1 -D_FORTIFY_SOURCE=2 \
+-ffast-math -funswitch-loops -flto -fwhole-program \
+-funsafe-loop-optimizations \
+-march=native -fsched-pressure
+-std=gnu++1z -Wformat=1 \
+-fno-var-tracking -Wno-attributes"
+
+source ./build/gcc6flags.sh
+
+autoreconf -i
+./configure --prefix=$dir/run \
+--datadir=$dir/run/share/games \
+--bindir=$dir/run/bin \
+--mandir=$dir/run/share/man \
+--enable-unittests
+
+cd po
+make -j8 update-gmo 2>../build/make1.log
+cd ..
+make -j8 check 2>build/make2.log
