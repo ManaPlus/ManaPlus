@@ -186,10 +186,10 @@ gcc-5_tests_i386:
   tags:
     - docker
 
-gcc-6_tests:
+gcc-6_tests_gcov:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests.sh
+  - ./tools/ci/jobs/gcc6_tests_gcov.sh
   image: debian:unstable
   <<: *job-artifacts
   tags:
@@ -222,10 +222,10 @@ gcc-6_tests_no_opengl_i386:
   tags:
     - docker
 
-gcc-6_sdl2_tests:
+gcc-6_sdl2_tests_gcov:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sdl2_tests.sh
+  - ./tools/ci/jobs/gcc6_sdl2_tests_gcov.sh
   image: debian:unstable
   <<: *job-artifacts
   tags:
