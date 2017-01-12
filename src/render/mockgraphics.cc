@@ -30,10 +30,6 @@
 
 #include "debug.h"
 
-#ifndef SDL_BIG_ENDIAN
-#error missing SDL_endian.h
-#endif  // SDL_BYTEORDER
-
 MockGraphics::MockGraphics() :
     Graphics()
 {
