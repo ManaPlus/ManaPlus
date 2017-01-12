@@ -20,7 +20,7 @@ export CXXFLAGS="-pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 source ./tools/ci/flags/gcc6.sh
 
 do_init
-run_configure --enable-unittests=yes --with-sdl2 --with-gcov $*
+run_configure --enable-unittests=yes --with-sdl2 $*
 export SDL_VIDEODRIVER=dummy
 run_make_check
 
