@@ -26,8 +26,6 @@
 
 #include "utils/sdlcheckutils.h"
 
-#include "utils/sdlpixel.h"
-
 #include "render/vertexes/imagecollection.h"
 
 #include "debug.h"
