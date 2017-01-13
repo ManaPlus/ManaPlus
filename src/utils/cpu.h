@@ -33,7 +33,9 @@ namespace Cpu
         FEATURE_SSE2  = 4,
         FEATURE_SSSE3 = 8,
         FEATURE_SSE4  = 16,
-        FEATURE_SSE42 = 32
+        FEATURE_SSE42 = 32,
+        FEATURE_AVX   = 64,
+        FEATURE_AVX2  = 128
     };
 
     void detect();

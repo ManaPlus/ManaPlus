@@ -51,6 +51,10 @@ void Cpu::detect()
         mCpuFlags |= FEATURE_SSE4;
     if (__builtin_cpu_supports ("sse4.2"))
         mCpuFlags |= FEATURE_SSE42;
+    if (__builtin_cpu_supports ("avx"))
+        mCpuFlags |= FEATURE_AVX;
+    if (__builtin_cpu_supports ("avx2"))
+        mCpuFlags |= FEATURE_AVX2;
     printFlags();
 #elif defined(__linux__) || defined(__linux)
     FILE *file = fopen("/proc/cpuinfo", "r");
@@ -84,6 +88,10 @@ void Cpu::detect()
                     mCpuFlags |= FEATURE_SSE4;
                 else if (flag == "sse4_2")
                     mCpuFlags |= FEATURE_SSE42;
+                else if (flag == "avx")
+                    mCpuFlags |= FEATURE_AVX;
+                else if (flag == "avx2")
+                    mCpuFlags |= FEATURE_AVX2;
             }
             fclose(file);
             printFlags();
@@ -114,5 +122,9 @@ void Cpu::printFlags()
         str.append(" sse4");
     if (mCpuFlags & FEATURE_SSE42)
         str.append(" sse4_2");
+    if (mCpuFlags & FEATURE_AVX)
+        str.append(" avx");
+    if (mCpuFlags & FEATURE_AVX2)
+        str.append(" avx2");
     logger->log(str);
 }
