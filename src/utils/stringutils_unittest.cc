@@ -486,7 +486,7 @@ TEST_CASE("stringutils getSafeUtf8String 2")
     data1[65509] = '\0';
     char *data2 = new char[65510];
     memset(data2, 'a', 65500);
-    data1[65500] = '\0';
+    data2[65500] = '\0';
     getSafeUtf8String(data1, str);
     REQUIRE(str != nullptr);
     REQUIRE(strcmp(data2, str) == 0);
