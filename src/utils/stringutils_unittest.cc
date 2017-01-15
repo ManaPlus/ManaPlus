@@ -112,6 +112,9 @@ TEST_CASE("stringuntils atox 1")
 
     str = "0x";
     REQUIRE(0 == atox(str));
+
+    str = "zzz";
+    REQUIRE(0 == atox(str));
 }
 
 TEST_CASE("stringuntils ipToString 1")
@@ -130,6 +133,115 @@ TEST_CASE("stringuntils toString 1")
         static_cast<signed int>(30000000)));
     REQUIRE(strprintf("%d", 3000) == toString(CAST_U16(3000)));
     REQUIRE(strprintf("%d", 123) == toString(CAST_U8(123)));
+    REQUIRE(strprintf("%ld", static_cast<unsigned long>(30000000)) == toString(
+        static_cast<unsigned long>(30000000)));
+    REQUIRE(strprintf("%f", 3.1f) == toString(3.1f));
+    REQUIRE(strprintf("%f", 3.1) == toString(3.1));
+}
+
+TEST_CASE("stringuntils toStringPrint 1")
+{
+    REQUIRE(toStringPrint(0) == "0 0x0");
+    REQUIRE(toStringPrint(10) == "10 0xa");
+    REQUIRE(toStringPrint(255) == "255 0xff");
+}
+
+TEST_CASE("stringuntils parse2Int 1")
+{
+    int a = -1;
+    int b = -1;
+
+    REQUIRE(parse2Int("", a, b) == false);
+    REQUIRE(a == -1);
+    REQUIRE(b == -1);
+
+    a = -1;
+    b = -1;
+    REQUIRE(parse2Int(",", a, b) == false);
+    REQUIRE(a == -1);
+    REQUIRE(b == -1);
+
+    a = -1;
+    b = -1;
+    REQUIRE(parse2Int("10,20", a, b) == true);
+    REQUIRE(a == 10);
+    REQUIRE(b == 20);
+
+    a = -1;
+    b = -1;
+    REQUIRE(parse2Int("10 20", a, b) == true);
+    REQUIRE(a == 10);
+    REQUIRE(b == 20);
+
+    a = -1;
+    b = -1;
+    REQUIRE(parse2Int("10 z20", a, b) == true);
+    REQUIRE(a == 10);
+    REQUIRE(b == 0);
+}
+
+TEST_CASE("stringuntils parse2Str 1")
+{
+    std::string str1 = "-";
+    std::string str2 = "-";
+
+    REQUIRE(parse2Str("", str1, str2) == false);
+    REQUIRE(str1 == "-");
+    REQUIRE(str2 == "-");
+
+    REQUIRE(parse2Str(",", str1, str2) == false);
+    REQUIRE(str1 == "-");
+    REQUIRE(str2 == "-");
+
+    str1 = "-";
+    str2 = "-";
+    REQUIRE(parse2Str("test line", str1, str2) == true);
+    REQUIRE(str1 == "test");
+    REQUIRE(str2 == "line");
+
+    str1 = "-";
+    str2 = "-";
+    REQUIRE(parse2Str("test,line", str1, str2) == true);
+    REQUIRE(str1 == "test");
+    REQUIRE(str2 == "line");
+}
+
+TEST_CASE("stringuntils parseNumber 1")
+{
+    REQUIRE(parseNumber("") == 0);
+    REQUIRE(parseNumber("0x") == 0);
+    REQUIRE(parseNumber("10") == 10);
+    REQUIRE(parseNumber("h10") == 16);
+    REQUIRE(parseNumber("x100") == 256);
+    REQUIRE(parseNumber("0x20") == 32);
+}
+
+TEST_CASE("stringuntils removeToken 1")
+{
+    std::string str = "";
+
+    REQUIRE(removeToken(str, " ") == "");
+    REQUIRE(str == "");
+
+    str = "test";
+    REQUIRE(removeToken(str, " ") == "");
+    REQUIRE(str == "");
+
+    str = "test line";
+    REQUIRE(removeToken(str, " ") == "line");
+    REQUIRE(str == "line");
+
+    str = "test,line";
+    REQUIRE(removeToken(str, ",") == "line");
+    REQUIRE(str == "line");
+
+    str = "test line";
+    REQUIRE(removeToken(str, ",") == "");
+    REQUIRE(str == "");
+
+    str = ",line";
+    REQUIRE(removeToken(str, ",") == "");
+    REQUIRE(str == "");
 }
 
 TEST_CASE("stringuntils strprintf 1")
@@ -241,6 +353,10 @@ TEST_CASE("stringuntils findSameSubstringI")
     str2 = "test lINe";
     REQUIRE("test Li" == findSameSubstringI(str1, str2));
 
+    str1 = "test lINe";
+    str2 = "test Li";
+    REQUIRE("test lI" == findSameSubstringI(str1, str2));
+
     str1 = "teSt li";
     str2 = "est li";
     REQUIRE("" == findSameSubstringI(str1, str2));
@@ -274,6 +390,9 @@ TEST_CASE("stringuntils encodeStr 1")
     std::string str = encodeStr(10, 1);
     REQUIRE(10 == decodeStr(str));
 
+    str = "";
+    REQUIRE(0 == decodeStr(str));
+
     str = encodeStr(10, 2);
     REQUIRE(10 == decodeStr(str));
 
@@ -290,6 +409,9 @@ TEST_CASE("stringuntils extractNameFromSprite 1")
     REQUIRE("test" == extractNameFromSprite("test"));
     REQUIRE("test" == extractNameFromSprite("test.qwe"));
     REQUIRE("line" == extractNameFromSprite("test/line.zzz"));
+    REQUIRE("line" == extractNameFromSprite("test\\line.zzz"));
+    REQUIRE("line" == extractNameFromSprite("test/test2\\line.zzz"));
+    REQUIRE("line" == extractNameFromSprite("test\\test2/line.zzz"));
 }
 
 TEST_CASE("stringuntils removeSpriteIndex 1")
@@ -298,6 +420,80 @@ TEST_CASE("stringuntils removeSpriteIndex 1")
     REQUIRE("test" == removeSpriteIndex("test"));
     REQUIRE("test" == removeSpriteIndex("test[1]"));
     REQUIRE("line" == removeSpriteIndex("test/line[12]"));
+    REQUIRE("line" == removeSpriteIndex("test\\line[12]"));
+    REQUIRE("line" == removeSpriteIndex("test/test2\\line[12]"));
+    REQUIRE("line" == removeSpriteIndex("test\\test2/line[1]"));
+}
+
+TEST_CASE("stringutils getSafeUtf8String 1")
+{
+    const char *str;
+    str = getSafeUtf8String("");
+    REQUIRE(str != nullptr);
+    REQUIRE(strcmp("", str) == 0);
+    REQUIRE(str[0] == '\0');
+    REQUIRE(str[UTF8_MAX_SIZE - 1] == '\0');
+    delete [] str;
+
+    str = getSafeUtf8String("test line");
+    REQUIRE(str != nullptr);
+    REQUIRE(strcmp("test line", str) == 0);
+    REQUIRE(str[strlen("test line")] == '\0');
+    REQUIRE(str[UTF8_MAX_SIZE - 1] == '\0');
+    delete [] str;
+
+    str = getSafeUtf8String("1");
+    REQUIRE(str != nullptr);
+    REQUIRE(strcmp("1", str) == 0);
+    REQUIRE(str[1] == '\0');
+    REQUIRE(str[UTF8_MAX_SIZE - 1] == '\0');
+    delete [] str;
+}
+
+TEST_CASE("stringutils getSafeUtf8String 2")
+{
+    char *str;
+
+    getSafeUtf8String("test", nullptr);
+
+    str = new char[65535];
+    getSafeUtf8String("", str);
+    REQUIRE(str != nullptr);
+    REQUIRE(strcmp("", str) == 0);
+    REQUIRE(str[0] == '\0');
+    REQUIRE(str[UTF8_MAX_SIZE - 1] == '\0');
+    delete [] str;
+
+    str = new char[65535];
+    getSafeUtf8String("test line", str);
+    REQUIRE(str != nullptr);
+    REQUIRE(strcmp("test line", str) == 0);
+    REQUIRE(str[strlen("test line")] == '\0');
+    REQUIRE(str[UTF8_MAX_SIZE - 1] == '\0');
+    delete [] str;
+
+    str = new char[65535];
+    getSafeUtf8String("1", str);
+    REQUIRE(str != nullptr);
+    REQUIRE(strcmp("1", str) == 0);
+    REQUIRE(str[1] == '\0');
+    REQUIRE(str[UTF8_MAX_SIZE - 1] == '\0');
+    delete [] str;
+
+    str = new char[65535];
+    char *data1 = new char[65510];
+    memset(data1, 'a', 65510);
+    data1[65509] = '\0';
+    char *data2 = new char[65510];
+    memset(data2, 'a', 65500);
+    data1[65500] = '\0';
+    getSafeUtf8String(data1, str);
+    REQUIRE(str != nullptr);
+    REQUIRE(strcmp(data2, str) == 0);
+    REQUIRE(str[65500] == '\0');
+    delete [] data1;
+    delete [] data2;
+    delete [] str;
 }
 
 TEST_CASE("stringuntils getFileName 1")
@@ -347,9 +543,296 @@ TEST_CASE("stringuntils replaceAll 1")
 TEST_CASE("stringuntils getBoolFromString 1")
 {
     REQUIRE(getBoolFromString("true"));
+    REQUIRE(getBoolFromString("yes"));
+    REQUIRE(getBoolFromString("on"));
     REQUIRE(!getBoolFromString("false"));
+    REQUIRE(!getBoolFromString("no"));
+    REQUIRE(!getBoolFromString("off"));
     REQUIRE(getBoolFromString("1"));
     REQUIRE(!getBoolFromString("0"));
+    REQUIRE(getBoolFromString("2"));
+
+    REQUIRE(getBoolFromString(" true"));
+    REQUIRE(getBoolFromString("yes "));
+    REQUIRE(getBoolFromString(" on"));
+    REQUIRE(!getBoolFromString("false "));
+    REQUIRE(!getBoolFromString(" no"));
+    REQUIRE(!getBoolFromString("off "));
+    REQUIRE(getBoolFromString(" 1"));
+    REQUIRE(!getBoolFromString("0 "));
+    REQUIRE(getBoolFromString(" 2"));
+
+    REQUIRE(getBoolFromString("tRue "));
+    REQUIRE(getBoolFromString(" Yes"));
+    REQUIRE(getBoolFromString("ON "));
+    REQUIRE(!getBoolFromString(" fALse"));
+    REQUIRE(!getBoolFromString("nO "));
+    REQUIRE(!getBoolFromString(" oFF"));
+}
+
+TEST_CASE("stringuntils parseBoolean 1")
+{
+    REQUIRE(parseBoolean("true") == 1);
+    REQUIRE(parseBoolean("yes") == 1);
+    REQUIRE(parseBoolean("on") == 1);
+    REQUIRE(parseBoolean("false") == 0);
+    REQUIRE(parseBoolean("no") == 0);
+    REQUIRE(parseBoolean("off") == 0);
+    REQUIRE(parseBoolean("1") == 1);
+    REQUIRE(parseBoolean("0") == 0);
+    REQUIRE(parseBoolean("2") == -1);
+    REQUIRE(parseBoolean("test") == -1);
+    REQUIRE(parseBoolean("") == -1);
+
+    REQUIRE(parseBoolean("true ") == 1);
+    REQUIRE(parseBoolean(" yes") == 1);
+    REQUIRE(parseBoolean("on ") == 1);
+    REQUIRE(parseBoolean(" false") == 0);
+    REQUIRE(parseBoolean("no ") == 0);
+    REQUIRE(parseBoolean(" off") == 0);
+    REQUIRE(parseBoolean("1 ") == 1);
+    REQUIRE(parseBoolean(" 0") == 0);
+    REQUIRE(parseBoolean("2 ") == -1);
+    REQUIRE(parseBoolean(" test") == -1);
+    REQUIRE(parseBoolean(" ") == -1);
+
+    REQUIRE(parseBoolean(" tRue") == 1);
+    REQUIRE(parseBoolean("Yes ") == 1);
+    REQUIRE(parseBoolean(" ON") == 1);
+    REQUIRE(parseBoolean("FaLse ") == 0);
+    REQUIRE(parseBoolean(" nO") == 0);
+    REQUIRE(parseBoolean("oFf ") == 0);
+    REQUIRE(parseBoolean(" tEst") == -1);
+}
+
+TEST_CASE("stringuntils splitToIntSet 1")
+{
+    std::set<int> tokens;
+    splitToIntSet(tokens, "", ',');
+    REQUIRE(tokens.size() == 0);
+
+    tokens.clear();
+    splitToIntSet(tokens, "10z,aa,-1", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.find(10) != tokens.end());
+    REQUIRE(tokens.find(0) != tokens.end());
+    REQUIRE(tokens.find(-1) != tokens.end());
+
+    tokens.clear();
+    splitToIntSet(tokens, "10,2,30", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.find(10) != tokens.end());
+    REQUIRE(tokens.find(2) != tokens.end());
+    REQUIRE(tokens.find(30) != tokens.end());
+
+    tokens.clear();
+    splitToIntSet(tokens, "10,2,30,", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.find(10) != tokens.end());
+    REQUIRE(tokens.find(2) != tokens.end());
+    REQUIRE(tokens.find(30) != tokens.end());
+
+    tokens.clear();
+    splitToIntSet(tokens, "10,2;30", ',');
+    REQUIRE(tokens.size() == 2);
+    REQUIRE(tokens.find(10) != tokens.end());
+    REQUIRE(tokens.find(2) != tokens.end());
+
+    tokens.clear();
+    splitToIntSet(tokens, "10;20;30", ';');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.find(10) != tokens.end());
+    REQUIRE(tokens.find(20) != tokens.end());
+    REQUIRE(tokens.find(30) != tokens.end());
+}
+
+TEST_CASE("stringuntils splitToIntList 1")
+{
+    std::list<int> tokens;
+    tokens = splitToIntList("", ',');
+    REQUIRE(tokens.size() == 0);
+
+    tokens.clear();
+    tokens = splitToIntList("10z,a,-1", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.front() == 10);
+    tokens.pop_front();
+    REQUIRE(tokens.front() == 0);
+    tokens.pop_front();
+    REQUIRE(tokens.front() == -1);
+    tokens.pop_front();
+
+    tokens.clear();
+    tokens = splitToIntList("10,2,30", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.front() == 10);
+    tokens.pop_front();
+    REQUIRE(tokens.front() == 2);
+    tokens.pop_front();
+    REQUIRE(tokens.front() == 30);
+    tokens.pop_front();
+
+    tokens.clear();
+    tokens = splitToIntList("10,2,30,", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.front() == 10);
+    tokens.pop_front();
+    REQUIRE(tokens.front() == 2);
+    tokens.pop_front();
+    REQUIRE(tokens.front() == 30);
+    tokens.pop_front();
+
+    tokens.clear();
+    tokens = splitToIntList("10,2;30", ',');
+    REQUIRE(tokens.size() == 2);
+    REQUIRE(tokens.front() == 10);
+    tokens.pop_front();
+    REQUIRE(tokens.front() == 2);
+    tokens.pop_front();
+
+    tokens.clear();
+    tokens = splitToIntList("10;20;30", ';');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.front() == 10);
+    tokens.pop_front();
+    REQUIRE(tokens.front() == 20);
+    tokens.pop_front();
+    REQUIRE(tokens.front() == 30);
+    tokens.pop_front();
+}
+
+TEST_CASE("stringuntils splitToStringSet 1")
+{
+    std::set<std::string> tokens;
+    splitToStringSet(tokens, "", ',');
+    REQUIRE(tokens.size() == 0);
+
+    tokens.clear();
+    splitToStringSet(tokens, "10q,2w,30e", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.find("10q") != tokens.end());
+    REQUIRE(tokens.find("2w") != tokens.end());
+    REQUIRE(tokens.find("30e") != tokens.end());
+
+    tokens.clear();
+    splitToStringSet(tokens, "10q,2w,30e,", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.find("10q") != tokens.end());
+    REQUIRE(tokens.find("2w") != tokens.end());
+    REQUIRE(tokens.find("30e") != tokens.end());
+
+    tokens.clear();
+    splitToStringSet(tokens, "10q,,30e", ',');
+    REQUIRE(tokens.size() == 2);
+    REQUIRE(tokens.find("10q") != tokens.end());
+    REQUIRE(tokens.find("30e") != tokens.end());
+
+    tokens.clear();
+    splitToStringSet(tokens, "10q,2w,30e,", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.find("10q") != tokens.end());
+    REQUIRE(tokens.find("2w") != tokens.end());
+    REQUIRE(tokens.find("30e") != tokens.end());
+
+    tokens.clear();
+    splitToStringSet(tokens, "10w,2w;30e", ',');
+    REQUIRE(tokens.size() == 2);
+    REQUIRE(tokens.find("10w") != tokens.end());
+    REQUIRE(tokens.find("2w;30e") != tokens.end());
+
+    tokens.clear();
+    splitToStringSet(tokens, "10q;20w;30e", ';');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens.find("10q") != tokens.end());
+    REQUIRE(tokens.find("20w") != tokens.end());
+    REQUIRE(tokens.find("30e") != tokens.end());
+}
+
+TEST_CASE("stringuntils splitToIntVector 1")
+{
+    std::vector<int> tokens;
+    splitToIntVector(tokens, "", ',');
+    REQUIRE(tokens.size() == 0);
+
+    tokens.clear();
+    splitToIntVector(tokens, "10,2,30", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens[0] == 10);
+    REQUIRE(tokens[1] == 2);
+    REQUIRE(tokens[2] == 30);
+
+    tokens.clear();
+    splitToIntVector(tokens, "10,2a,z30", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens[0] == 10);
+    REQUIRE(tokens[1] == 2);
+    REQUIRE(tokens[2] == 0);
+
+    tokens.clear();
+    splitToIntVector(tokens, "10,2,30,", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens[0] == 10);
+    REQUIRE(tokens[1] == 2);
+    REQUIRE(tokens[2] == 30);
+
+    tokens.clear();
+    splitToIntVector(tokens, "10,,30", ',');
+    REQUIRE(tokens.size() == 2);
+    REQUIRE(tokens[0] == 10);
+    REQUIRE(tokens[2] == 30);
+
+    tokens.clear();
+    splitToIntVector(tokens, "10,2;30", ',');
+    REQUIRE(tokens.size() == 2);
+    REQUIRE(tokens[0] == 10);
+    REQUIRE(tokens[1] == 2);
+
+    tokens.clear();
+    splitToIntVector(tokens, "10;20;30", ';');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens[0] == 10);
+    REQUIRE(tokens[1] == 20);
+    REQUIRE(tokens[2] == 30);
+}
+
+TEST_CASE("stringuntils splitToStringVector 1")
+{
+    std::vector<std::string> tokens;
+    splitToStringVector(tokens, "", ',');
+    REQUIRE(tokens.size() == 0);
+
+    tokens.clear();
+    splitToStringVector(tokens, "t,line,zz", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens[0] == "t");
+    REQUIRE(tokens[1] == "line");
+    REQUIRE(tokens[2] == "zz");
+
+    tokens.clear();
+    splitToStringVector(tokens, "t,line,zz,", ',');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens[0] == "t");
+    REQUIRE(tokens[1] == "line");
+    REQUIRE(tokens[2] == "zz");
+
+    tokens.clear();
+    splitToStringVector(tokens, "t,,zz", ',');
+    REQUIRE(tokens.size() == 2);
+    REQUIRE(tokens[0] == "t");
+    REQUIRE(tokens[2] == "zz");
+
+    tokens.clear();
+    splitToStringVector(tokens, "10,a2;30", ',');
+    REQUIRE(tokens.size() == 2);
+    REQUIRE(tokens[0] == "10");
+    REQUIRE(tokens[1] == "a2;30");
+
+    tokens.clear();
+    splitToStringVector(tokens, "a10;b;3line", ';');
+    REQUIRE(tokens.size() == 3);
+    REQUIRE(tokens[0] == "a10");
+    REQUIRE(tokens[1] == "b");
+    REQUIRE(tokens[2] == "3line");
 }
 
 TEST_CASE("stringuntils replaceSpecialChars 1")
@@ -380,6 +863,10 @@ TEST_CASE("stringuntils replaceSpecialChars 1")
     replaceSpecialChars(str);
     REQUIRE("!" == str);
 
+    str = "&33z;";
+    replaceSpecialChars(str);
+    REQUIRE("&33z;" == str);
+
     str = "1&33;";
     replaceSpecialChars(str);
     REQUIRE("1!" == str);
@@ -397,18 +884,33 @@ TEST_CASE("stringuntils replaceSpecialChars 1")
     REQUIRE("test line!" == str);
 }
 
+TEST_CASE("stringuntils normalize 1")
+{
+    REQUIRE(normalize("") == "");
+    REQUIRE(normalize("test") == "test");
+    REQUIRE(normalize("Test") == "test");
+    REQUIRE(normalize(" test line") == "test line");
+    REQUIRE(normalize("test line ") == "test line");
+    REQUIRE(normalize(" tEst line") == "test line");
+    REQUIRE(normalize("test lIne ") == "test line");
+}
+
 TEST_CASE("stringuntils combineDye 1")
 {
     REQUIRE("" == combineDye("", ""));
     REQUIRE("test" == combineDye("test", ""));
     REQUIRE("|line" == combineDye("", "line"));
     REQUIRE("test|line" == combineDye("test", "line"));
+    REQUIRE("|line" == combineDye("|w", "line"));
+    REQUIRE("aaa|line" == combineDye("aaa|w", "line"));
+    REQUIRE("test|line" == combineDye("test|w", "line"));
 }
 
 TEST_CASE("stringuntils combineDye 2")
 {
     REQUIRE("" == combineDye2("", ""));
     REQUIRE("test" == combineDye2("test", ""));
+    REQUIRE("test" == combineDye2("test", "W"));
     REQUIRE("" == combineDye2("", "line"));
     REQUIRE("test.xml" == combineDye2("test.xml", "123"));
     REQUIRE("test.xml|#43413d,59544f,7a706c" ==
@@ -450,6 +952,11 @@ TEST_CASE("stringuntils packList 1")
 
     list.push_back("2");
     REQUIRE("test|line|2" == packList(list));
+
+    list.clear();
+    list.push_back("|test");
+    list.push_back("line");
+    REQUIRE("|test|line" == packList(list));
 }
 
 TEST_CASE("stringuntils stringToHexPath 1")
@@ -490,6 +997,11 @@ TEST_CASE("stringuntils deleteCharLeft 1")
     pos = 8;
     deleteCharLeft(str, &pos);
     REQUIRE("тес line" == str);
+
+    str = "test line\x0";
+    pos = 4;
+    deleteCharLeft(str, &pos);
+    REQUIRE("tes line\x0" == str);
 }
 
 TEST_CASE("stringuntils findLast 1")
@@ -516,8 +1028,11 @@ TEST_CASE("stringuntils findFirst 1")
     str = "test line";
     REQUIRE(findFirst(str, "test"));
 
+    str = "test";
+    REQUIRE(findFirst(str, "test line") == false);
+
     str = "test line";
-    REQUIRE(!findFirst(str, "est"));
+    REQUIRE(findFirst(str, "est") == false);
 }
 
 TEST_CASE("stringuntils findCutLast 1")
@@ -533,8 +1048,34 @@ TEST_CASE("stringuntils findCutLast 1")
     REQUIRE("test " == str);
 
     str = "test line";
-    REQUIRE(!findCutLast(str, "lin"));
+    REQUIRE(findCutLast(str, "lin") == false);
     REQUIRE("test line" == str);
+
+    str = "test";
+    REQUIRE(findCutLast(str, "test line") == false);
+    REQUIRE("test" == str);
+}
+
+TEST_CASE("stringuntils CutLast 1")
+{
+    std::string str;
+
+    str = "";
+    cutLast(str, "");
+    REQUIRE("" == str);
+
+    str = "test line";
+    cutLast(str, "line");
+    REQUIRE("test " == str);
+
+    str = "test line";
+    cutLast(str, "lin");
+    REQUIRE("test line" == str);
+
+    str = "test";
+    cutLast(str, "test line");
+    REQUIRE("test" == str);
+
 }
 
 TEST_CASE("stringuntils findCutFirst 1")
@@ -550,8 +1091,33 @@ TEST_CASE("stringuntils findCutFirst 1")
     REQUIRE(" line" == str);
 
     str = "test line";
-    REQUIRE(!findCutFirst(str, "est"));
+    REQUIRE(findCutFirst(str, "est") == false);
     REQUIRE("test line" == str);
+
+    str = "test";
+    REQUIRE(findCutFirst(str, "test line") == false);
+    REQUIRE("test" == str);
+}
+
+TEST_CASE("stringuntils cutFirst 1")
+{
+    std::string str;
+
+    str = "";
+    cutFirst(str, "");
+    REQUIRE("" == str);
+
+    str = "test line";
+    cutFirst(str, "test");
+    REQUIRE(" line" == str);
+
+    str = "test line";
+    cutFirst(str, "est");
+    REQUIRE("test line" == str);
+
+    str = "test";
+    cutFirst(str, "test line");
+    REQUIRE("test" == str);
 }
 
 TEST_CASE("stringuntils removeProtocol 1")
@@ -637,6 +1203,59 @@ TEST_CASE("stringuntils escapeString")
     REQUIRE(escapeString("\"123\"") == "\"\\\"123\\\"\"");
     REQUIRE(escapeString("\\") == "\"\\\"");
     REQUIRE(escapeString("12\\3") == "\"12\\3\"");
+}
+
+TEST_CASE("stringuntils secureChatCommand")
+{
+    std::string str;
+    secureChatCommand(str);
+    REQUIRE(str == "");
+    str = "test";
+    secureChatCommand(str);
+    REQUIRE(str == "test");
+    str = "test line";
+    secureChatCommand(str);
+    REQUIRE(str == "test line");
+    str = "/test";
+    secureChatCommand(str);
+    REQUIRE(str == "_/test");
+    str = "@test";
+    secureChatCommand(str);
+    REQUIRE(str == "_@test");
+    str = "#test";
+    secureChatCommand(str);
+    REQUIRE(str == "_#test");
+}
+
+TEST_CASE("stringuntils timeDiffToString")
+{
+    REQUIRE(timeDiffToString(60 * 60 * 24 * 7) == "1 week");
+    REQUIRE(timeDiffToString(60 * 60 * 24 * 7 * 2 +
+        60 * 60 * 24 * 3
+        ) == "2 weeks, 3 days");
+    REQUIRE(timeDiffToString(60 * 60 * 24 * 7 * 2 +
+        60 * 60 * 24 * 3 +
+        60 * 60 * 4
+        ) == "2 weeks, 3 days, 4 hours");
+    REQUIRE(timeDiffToString(60 * 60 * 24 * 7 * 2 +
+        60 * 60 * 24 * 3 +
+        60 * 60 * 4 +
+        60 * 7
+        ) == "2 weeks, 3 days, 4 hours, 7 minutes");
+    REQUIRE(timeDiffToString(60 * 60 * 24 * 7 * 2 +
+        60 * 60 * 24 * 3 +
+        60 * 60 * 4 +
+        60 * 7 +
+        10
+        ) == "2 weeks, 3 days, 4 hours, 7 minutes, 10 seconds");
+    REQUIRE(timeDiffToString(5) == "5 seconds");
+    REQUIRE(timeDiffToString(0) == "0 seconds");
+    REQUIRE(timeDiffToString(60 * 60 * 24 * 3
+        ) == "3 days");
+    REQUIRE(timeDiffToString(60 * 60 * 4
+        ) == "4 hours");
+    REQUIRE(timeDiffToString(60 * 7
+        ) == "7 minutes");
 }
 
 TEST_CASE("stringuntils replaceItemLinks")

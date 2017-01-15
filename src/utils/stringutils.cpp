@@ -39,8 +39,6 @@
 
 #include "debug.h"
 
-static size_t UTF8_MAX_SIZE = 10;
-
 std::string &trim(std::string &str)
 {
     size_t pos = str.find_last_not_of(' ');
@@ -367,7 +365,8 @@ std::string getFileDir(const std::string &path)
     return path.substr(0, pos1);
 }
 
-std::string& replaceAll(std::string& context, const std::string &restrict from,
+std::string& replaceAll(std::string& context,
+                        const std::string &restrict from,
                         const std::string &restrict to)
 {
     if (from.empty())
@@ -469,7 +468,8 @@ std::list<std::string> splitToStringList(const std::string &text,
     return tokens;
 }
 
-void splitToStringVector(StringVect &tokens, const std::string &text,
+void splitToStringVector(StringVect &tokens,
+                         const std::string &text,
                          const char separator)
 {
     std::stringstream ss(text);
@@ -482,7 +482,8 @@ void splitToStringVector(StringVect &tokens, const std::string &text,
     }
 }
 
-void splitToStringSet(std::set<std::string> &tokens, const std::string &text,
+void splitToStringSet(std::set<std::string> &tokens,
+                      const std::string &text,
                       const char separator)
 {
     std::stringstream ss(text);
@@ -495,7 +496,8 @@ void splitToStringSet(std::set<std::string> &tokens, const std::string &text,
     }
 }
 
-void splitToIntVector(std::vector<int> &tokens, const std::string &text,
+void splitToIntVector(std::vector<int> &tokens,
+                      const std::string &text,
                       const char separator)
 {
     std::stringstream ss(text);
@@ -508,7 +510,8 @@ void splitToIntVector(std::vector<int> &tokens, const std::string &text,
     }
 }
 
-std::string combineDye(std::string file, const std::string &dye)
+std::string combineDye(std::string file,
+                       const std::string &dye)
 {
     if (dye.empty())
         return file;
@@ -518,7 +521,8 @@ std::string combineDye(std::string file, const std::string &dye)
     return file.append("|").append(dye);
 }
 
-std::string combineDye2(std::string file, const std::string &dye)
+std::string combineDye2(std::string file,
+                        const std::string &dye)
 {
     if (dye.empty())
         return file;
@@ -545,7 +549,8 @@ std::string combineDye2(std::string file, const std::string &dye)
     }
 }
 
-std::string combineDye3(std::string file, const std::string &dye)
+std::string combineDye3(std::string file,
+                        const std::string &dye)
 {
     if (dye.empty())
         return file;
@@ -609,7 +614,8 @@ std::string stringToHexPath(const std::string &str)
     return hex;
 }
 
-void deleteCharLeft(std::string &str, unsigned *const pos)
+void deleteCharLeft(std::string &str,
+                    unsigned *const pos)
 {
     if (!pos)
         return;
@@ -648,7 +654,8 @@ bool findFirst(const std::string &restrict str1,
     return false;
 }
 
-bool findCutLast(std::string &restrict str1, const std::string &restrict str2)
+bool findCutLast(std::string &restrict str1,
+                 const std::string &restrict str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
@@ -662,7 +669,8 @@ bool findCutLast(std::string &restrict str1, const std::string &restrict str2)
     return false;
 }
 
-void cutLast(std::string &restrict str1, const std::string &restrict str2)
+void cutLast(std::string &restrict str1,
+             const std::string &restrict str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
@@ -672,7 +680,8 @@ void cutLast(std::string &restrict str1, const std::string &restrict str2)
         str1 = str1.substr(0, s1 - s2);
 }
 
-bool findCutFirst(std::string &restrict str1, const std::string &restrict str2)
+bool findCutFirst(std::string &restrict str1,
+                  const std::string &restrict str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
@@ -686,7 +695,8 @@ bool findCutFirst(std::string &restrict str1, const std::string &restrict str2)
     return false;
 }
 
-void cutFirst(std::string &restrict str1, const std::string &restrict str2)
+void cutFirst(std::string &restrict str1,
+              const std::string &restrict str2)
 {
     const size_t s1 = str1.size();
     const size_t s2 = str2.size();
@@ -737,15 +747,11 @@ std::string getDateTimeString()
 
 signed char parseBoolean(const std::string &value)
 {
-    const std::string opt = value.substr(0, 1);
-
-    if (opt == "1" ||
-        opt == "y" || opt == "Y" ||
-        opt == "t" || opt == "T")
+    std::string txt = value;
+    toLower(trim(txt));
+    if (txt == "true" || txt == "yes" || txt == "on" || txt == "1")
         return 1;
-    else if (opt == "0" ||
-             opt == "n" || opt == "N" ||
-             opt == "f" || opt == "F")
+    else if (txt == "false" || txt == "no" || txt == "off" || txt == "0")
         return 0;
     else
         return -1;
@@ -863,7 +869,9 @@ void secureChatCommand(std::string &str)
         str = "_" + str;
 }
 
-bool parse2Int(const std::string &args, int &x, int &y)
+bool parse2Int(const std::string &args,
+               int &x,
+               int &y)
 {
     bool isValid = false;
     size_t pos = args.find(' ');
@@ -881,7 +889,9 @@ bool parse2Int(const std::string &args, int &x, int &y)
     return isValid;
 }
 
-bool parse2Str(const std::string &args, std::string &str1, std::string &str2)
+bool parse2Str(const std::string &args,
+               std::string &str1,
+               std::string &str2)
 {
     bool isValid = false;
     size_t pos = args.find(' ');
@@ -914,7 +924,8 @@ uint32_t parseNumber(const std::string &str)
     return i;
 }
 
-std::string removeToken(std::string &str, const std::string &token)
+std::string removeToken(std::string &str,
+                        const std::string &token)
 {
     const size_t idx = str.find(token);
     if (idx > 0 && idx != std::string::npos)
