@@ -1075,7 +1075,6 @@ TEST_CASE("stringuntils CutLast 1")
     str = "test";
     cutLast(str, "test line");
     REQUIRE("test" == str);
-
 }
 
 TEST_CASE("stringuntils findCutFirst 1")
