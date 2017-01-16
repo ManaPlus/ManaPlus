@@ -1,5 +1,7 @@
 fontsdir = $(pkgdatadir)/data/fonts
 
+SUBDIRS = src
+
 fonts_DATA =				\
 	dejavusans.ttf			\
 	dejavusans-bold.ttf		\

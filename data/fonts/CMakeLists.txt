@@ -14,4 +14,6 @@ SET (FILES
     wqy-microhei.ttf
     )
 
+ADD_SUBDIRECTORY(src)
+
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/fonts)
