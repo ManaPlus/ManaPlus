@@ -97,8 +97,6 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
 
     if (!actorManager)
     {   // here can be look from char server
-        if (!serverFeatures->haveAdvancedSprites())
-            return;
         Net::Characters &chars = Net::CharServerHandler::mCharacters;
         const BeingId id = msg.readBeingId("being id");
 

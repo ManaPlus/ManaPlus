@@ -233,11 +233,6 @@ bool ServerFeatures::haveTeamId() const
     return true;
 }
 
-bool ServerFeatures::haveAdvancedSprites() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveExtendedRiding() const
 {
     return false;

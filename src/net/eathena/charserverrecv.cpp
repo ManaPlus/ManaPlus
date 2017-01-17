@@ -57,6 +57,7 @@
 
 extern Net::CharServerHandler *charServerHandler;
 extern int packetVersion;
+extern int serverVersion;
 
 namespace EAthena
 {
@@ -179,7 +180,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     int shoes = 0;
     if (packetVersion >= 20110111)
         shoes = msg.readInt32("robe");
-    if (!serverFeatures->haveAdvancedSprites())
+    if (serverVersion == 0)
     {
         tempPlayer->setSpriteId(SPRITE_HAIR,
             shoes);

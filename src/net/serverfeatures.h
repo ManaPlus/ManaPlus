@@ -116,8 +116,6 @@ class ServerFeatures notfinal
 
         virtual bool haveTeamId() const = 0;
 
-        virtual bool haveAdvancedSprites() const = 0;
-
         virtual bool haveExtendedRiding() const = 0;
 
         virtual bool haveAdvancedBuySell() const = 0;
