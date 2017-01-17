@@ -93,6 +93,8 @@ class MouseInput final
         {
         }
 
+        A_DEFAULT_COPY(MouseInput)
+
         MouseInput &operator=(const MouseInput &m)
         {
             mType = m.mType;

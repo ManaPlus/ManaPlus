@@ -32,6 +32,8 @@
 
 struct InputActionData final
 {
+    A_DEFAULT_COPY(InputActionData)
+
     const char *const configField;
     const InputTypeT defaultType1;
     const int defaultValue1;

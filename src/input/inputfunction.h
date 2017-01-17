@@ -29,6 +29,8 @@ const size_t inputFunctionSize = 3U;
 
 struct InputFunction final
 {
+    A_DEFAULT_COPY(InputFunction)
+
     InputItem values[inputFunctionSize];
 };
 

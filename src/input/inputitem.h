@@ -38,6 +38,8 @@ struct InputItem final
         value(value0)
     { }
 
+    A_DEFAULT_COPY(InputItem)
+
     InputTypeT type;
     int value;
 };

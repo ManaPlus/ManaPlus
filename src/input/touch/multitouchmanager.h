@@ -31,6 +31,8 @@ union SDL_Event;
 
 struct MultiTouchEvent final
 {
+    A_DELETE_COPY(MultiTouchEvent)
+
     bool active;
     float x;
     float y;

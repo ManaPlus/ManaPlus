@@ -98,6 +98,8 @@ class KeyInput final
         {
         }
 
+        A_DEFAULT_COPY(KeyInput)
+
         KeyInput &operator=(const KeyInput &k) noexcept2
         {
             mKey = k.mKey;

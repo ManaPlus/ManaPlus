@@ -28,6 +28,8 @@
 class InputActionSortFunctor final
 {
     public:
+        A_DEFAULT_COPY(InputActionSortFunctor)
+
         bool operator() (const InputActionT key1,
                          const InputActionT key2) const
         {

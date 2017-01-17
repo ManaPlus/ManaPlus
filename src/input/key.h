@@ -86,6 +86,8 @@ class Key final
           */
         explicit Key(const int value = 0);
 
+        A_DEFAULT_COPY(Key)
+
         /**
           * Checks if a key is a character.
           *
