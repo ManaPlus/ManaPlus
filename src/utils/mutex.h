@@ -62,6 +62,8 @@ class MutexLocker final
         {
         }
 
+        A_DEFAULT_COPY(MutexLocker)
+
         ~MutexLocker();
 
     private:

@@ -37,6 +37,8 @@ struct PHYSFSMemoryObject final
     {
     }
 
+    A_DELETE_COPY(PHYSFSMemoryObject)
+
     std::string mName;
     std::string mAddFile;
 };

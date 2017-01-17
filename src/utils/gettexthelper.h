@@ -30,6 +30,8 @@
 class GettextHelper final
 {
     public:
+        A_DELETE_COPY(GettextHelper)
+
         static void initLang();
 
     private:

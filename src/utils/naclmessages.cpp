@@ -34,6 +34,15 @@
 
 struct NaclMessageHandle final
 {
+    NaclMessageHandle() :
+        handled(false),
+        type(),
+        message(),
+        condv()
+    { }
+
+    A_DELETE_COPY(NaclMessageHandle)
+
     bool handled;
     std::string type;
     std::string message;

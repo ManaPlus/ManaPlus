@@ -33,7 +33,8 @@
 
 struct SDLMemoryObject final
 {
-    SDLMemoryObject(const std::string &name, const char *const file,
+    SDLMemoryObject(const std::string &name,
+                    const char *const file,
                     const unsigned int line) :
         mName(name),
         mAddFile(strprintf("%s:%u", file, line)),
@@ -41,6 +42,8 @@ struct SDLMemoryObject final
         mCnt(1)
     {
     }
+
+    A_DELETE_COPY(SDLMemoryObject)
 
     std::string mName;
     std::string mAddFile;

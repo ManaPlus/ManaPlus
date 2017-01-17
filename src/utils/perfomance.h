@@ -59,6 +59,8 @@ namespace Perfomance
                 blockStart(str);
             }
 
+            A_DELETE_COPY(Func)
+
             ~Func()
             {
                 blockEnd(name);

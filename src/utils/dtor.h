@@ -31,6 +31,8 @@
 template<typename T>
 struct dtor final : public std::unary_function <T, void>
 {
+    A_DEFAULT_COPY(dtor)
+
     void operator()(T &ptr)
     { delete ptr; }
 };

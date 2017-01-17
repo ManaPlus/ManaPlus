@@ -31,6 +31,8 @@ class PoDict;
 class TranslationManager final
 {
     public:
+        A_DELETE_COPY(TranslationManager)
+
         static PoDict *loadLang(const LangVect &lang,
                                 const std::string &subName,
                                 PoDict *const dict = nullptr);
