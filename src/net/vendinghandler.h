@@ -35,6 +35,11 @@ namespace Net
 class VendingHandler notfinal
 {
     public:
+        VendingHandler()
+        { }
+
+        A_DELETE_COPY(VendingHandler)
+
         virtual ~VendingHandler()
         { }
 

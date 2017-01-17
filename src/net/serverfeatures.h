@@ -28,6 +28,11 @@ namespace Net
 class ServerFeatures notfinal
 {
     public:
+        ServerFeatures()
+        { }
+
+        A_DELETE_COPY(ServerFeatures)
+
         virtual ~ServerFeatures()
         { }
 

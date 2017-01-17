@@ -35,6 +35,11 @@ namespace Net
 class GuildHandler notfinal
 {
     public:
+        GuildHandler()
+        { }
+
+        A_DELETE_COPY(GuildHandler)
+
         virtual ~GuildHandler()
         { }
 

@@ -35,6 +35,11 @@ namespace Net
 class CashShopHandler notfinal
 {
     public:
+        CashShopHandler()
+        { }
+
+        A_DELETE_COPY(CashShopHandler)
+
         virtual ~CashShopHandler()
         { }
 

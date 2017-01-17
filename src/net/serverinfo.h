@@ -100,6 +100,8 @@ class ServerInfo final
             version.second = info.version.second;
         }
 
+        A_DEFAULT_COPY(ServerInfo)
+
         ServerInfo &operator=(const ServerInfo &info)
         {
             type = info.type;

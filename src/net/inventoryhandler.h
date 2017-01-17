@@ -35,6 +35,11 @@ namespace Net
 class InventoryHandler notfinal
 {
     public:
+        InventoryHandler()
+        { }
+
+        A_DELETE_COPY(InventoryHandler)
+
         virtual ~InventoryHandler()
         { }
 

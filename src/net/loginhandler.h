@@ -34,6 +34,8 @@ namespace Net
 class LoginHandler notfinal
 {
     public:
+        A_DELETE_COPY(LoginHandler)
+
         void setServer(const ServerInfo &server)
         { mServer = server; }
 

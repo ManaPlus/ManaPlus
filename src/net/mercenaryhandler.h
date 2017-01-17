@@ -34,6 +34,11 @@ namespace Net
 class MercenaryHandler notfinal
 {
     public:
+        MercenaryHandler()
+        { }
+
+        A_DELETE_COPY(MercenaryHandler)
+
         virtual ~MercenaryHandler()
         { }
 

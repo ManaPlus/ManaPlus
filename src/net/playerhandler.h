@@ -39,6 +39,11 @@ namespace Net
 class PlayerHandler notfinal
 {
     public:
+        PlayerHandler()
+        { }
+
+        A_DELETE_COPY(PlayerHandler)
+
         virtual ~PlayerHandler()
         { }
 

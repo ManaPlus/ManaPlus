@@ -37,6 +37,11 @@ namespace Net
 class PartyHandler notfinal
 {
     public:
+        PartyHandler()
+        { }
+
+        A_DELETE_COPY(PartyHandler)
+
         virtual ~PartyHandler()
         { }
 

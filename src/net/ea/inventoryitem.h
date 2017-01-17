@@ -85,6 +85,8 @@ class InventoryItem final
             for (int f = 0; f < 4; f ++)
                 cards[f] = cards0[f];
         }
+
+        A_DEFAULT_COPY(InventoryItem)
 };
 
 typedef std::vector<InventoryItem> InventoryItems;

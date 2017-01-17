@@ -31,6 +31,11 @@ namespace Net
 class SearchStoreHandler notfinal
 {
     public:
+        SearchStoreHandler()
+        { }
+
+        A_DELETE_COPY(SearchStoreHandler)
+
         virtual ~SearchStoreHandler()
         { }
 

@@ -29,6 +29,11 @@ namespace Net
 class RouletteHandler notfinal
 {
     public:
+        RouletteHandler()
+        { }
+
+        A_DELETE_COPY(RouletteHandler)
+
         virtual ~RouletteHandler()
         { }
 };

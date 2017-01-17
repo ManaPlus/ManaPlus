@@ -35,6 +35,11 @@ namespace Net
 class AuctionHandler notfinal
 {
     public:
+        AuctionHandler()
+        { }
+
+        A_DELETE_COPY(AuctionHandler)
+
         virtual ~AuctionHandler()
         { }
 

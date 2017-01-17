@@ -27,6 +27,8 @@ namespace EAthena
 {
     struct ItemFlagBits final
     {
+        A_DEFAULT_COPY(ItemFlagBits)
+
         unsigned char isIdentified : 1;
         unsigned char isDamaged    : 1;
         unsigned char isFavorite   : 1;

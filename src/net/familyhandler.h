@@ -31,6 +31,11 @@ namespace Net
 class FamilyHandler notfinal
 {
     public:
+        FamilyHandler()
+        { }
+
+        A_DELETE_COPY(FamilyHandler)
+
         virtual ~FamilyHandler()
         { }
 

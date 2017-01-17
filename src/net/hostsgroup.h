@@ -33,6 +33,8 @@ struct HostsGroup final
     {
     }
 
+    A_DEFAULT_COPY(HostsGroup)
+
     std::string name;
     StringVect hosts;
 };

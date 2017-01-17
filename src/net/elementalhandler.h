@@ -29,6 +29,11 @@ namespace Net
 class ElementalHandler notfinal
 {
     public:
+        ElementalHandler()
+        { }
+
+        A_DELETE_COPY(ElementalHandler)
+
         virtual ~ElementalHandler()
         { }
 };

@@ -31,6 +31,11 @@ namespace Net
 class MailHandler notfinal
 {
     public:
+        MailHandler()
+        { }
+
+        A_DELETE_COPY(MailHandler)
+
         virtual ~MailHandler()
         { }
 

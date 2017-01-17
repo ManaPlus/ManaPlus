@@ -35,6 +35,8 @@ struct PacketInfo final
     {
     }
 
+    A_DELETE_COPY(PacketInfo)
+
     const char *name;
     PacketFuncPtr func;
     int len;

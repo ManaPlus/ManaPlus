@@ -31,6 +31,11 @@ namespace Net
 class BuySellHandler notfinal
 {
     public:
+        BuySellHandler()
+        { }
+
+        A_DELETE_COPY(BuySellHandler)
+
         virtual ~BuySellHandler()
         { }
 

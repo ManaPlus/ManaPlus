@@ -34,6 +34,11 @@ namespace Net
 class HomunculusHandler notfinal
 {
     public:
+        HomunculusHandler()
+        { }
+
+        A_DELETE_COPY(HomunculusHandler)
+
         virtual ~HomunculusHandler()
         { }
 

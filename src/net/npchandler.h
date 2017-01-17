@@ -47,6 +47,11 @@ class MessageIn;
 class NpcHandler notfinal
 {
     public:
+        NpcHandler()
+        { }
+
+        A_DELETE_COPY(NpcHandler)
+
         virtual ~NpcHandler()
         { }
 

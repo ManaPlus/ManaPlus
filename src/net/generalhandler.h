@@ -31,6 +31,11 @@ namespace Net
 class GeneralHandler notfinal
 {
     public:
+        GeneralHandler()
+        { }
+
+        A_DELETE_COPY(GeneralHandler)
+
         virtual ~GeneralHandler()
         { }
 

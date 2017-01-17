@@ -29,6 +29,11 @@ namespace Net
 class QuestHandler notfinal
 {
     public:
+        QuestHandler()
+        { }
+
+        A_DELETE_COPY(QuestHandler)
+
         virtual ~QuestHandler()
         { }
 

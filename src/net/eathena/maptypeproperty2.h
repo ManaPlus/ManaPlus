@@ -27,6 +27,8 @@ namespace EAthena
 {
     struct MapTypeProperty2Bits final
     {
+        A_DEFAULT_COPY(MapTypeProperty2Bits)
+
         uint32_t party             : 1;   // allow attack party members (PvP)
         uint32_t guild             : 1;   // allow attack guild members (GvG)
         uint32_t siege             : 1;   // show emblem in GvG (WoE castle)

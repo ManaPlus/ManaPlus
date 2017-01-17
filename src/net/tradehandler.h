@@ -34,6 +34,11 @@ namespace Net
 class TradeHandler notfinal
 {
     public:
+        TradeHandler()
+        { }
+
+        A_DELETE_COPY(TradeHandler)
+
         virtual ~TradeHandler()
         { }
 

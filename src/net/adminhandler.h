@@ -38,6 +38,11 @@ namespace Net
 class AdminHandler notfinal
 {
     public:
+        AdminHandler()
+        { }
+
+        A_DELETE_COPY(AdminHandler)
+
         virtual ~AdminHandler()
         { }
 

@@ -29,6 +29,11 @@ namespace Net
 class MapHandler notfinal
 {
     public:
+        MapHandler()
+        { }
+
+        A_DELETE_COPY(MapHandler)
+
         virtual ~MapHandler()
         { }
 };

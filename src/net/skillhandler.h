@@ -34,6 +34,11 @@ namespace Net
 class SkillHandler notfinal
 {
     public:
+        SkillHandler()
+        { }
+
+        A_DELETE_COPY(SkillHandler)
+
         virtual ~SkillHandler()
         { }
 

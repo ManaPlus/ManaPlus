@@ -31,6 +31,11 @@ namespace Net
 class GameHandler notfinal
 {
     public:
+        GameHandler()
+        { }
+
+        A_DELETE_COPY(GameHandler)
+
         virtual ~GameHandler()
         {}
 

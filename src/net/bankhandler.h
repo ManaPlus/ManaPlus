@@ -29,6 +29,11 @@ namespace Net
 class BankHandler notfinal
 {
     public:
+        BankHandler()
+        { }
+
+        A_DELETE_COPY(BankHandler)
+
         virtual ~BankHandler()
         { }
 

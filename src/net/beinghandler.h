@@ -32,6 +32,11 @@ namespace Net
 class BeingHandler notfinal
 {
     public:
+        BeingHandler()
+        { }
+
+        A_DELETE_COPY(BeingHandler)
+
         virtual ~BeingHandler()
         { }
 

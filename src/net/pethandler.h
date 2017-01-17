@@ -29,6 +29,11 @@ namespace Net
 class PetHandler notfinal
 {
     public:
+        PetHandler()
+        { }
+
+        A_DELETE_COPY(PetHandler)
+
         virtual ~PetHandler()
         { }
 

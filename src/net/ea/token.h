@@ -28,6 +28,11 @@
 
 struct Token final
 {
+    Token()
+    { }
+
+    A_DELETE_COPY(Token)
+
     BeingId account_ID;
     int session_ID1;
     int session_ID2;

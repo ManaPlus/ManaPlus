@@ -45,6 +45,8 @@ struct WorldInfo final
     {
     }
 
+    A_DELETE_COPY(WorldInfo)
+
     int address;
     std::string name;
     uint16_t port;

@@ -33,6 +33,11 @@ namespace Net
 class BattleGroundHandler notfinal
 {
     public:
+        BattleGroundHandler()
+        { }
+
+        A_DELETE_COPY(BattleGroundHandler)
+
         virtual ~BattleGroundHandler()
         { }
 

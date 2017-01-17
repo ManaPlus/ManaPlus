@@ -31,6 +31,11 @@ namespace Net
 class FriendsHandler notfinal
 {
     public:
+        FriendsHandler()
+        { }
+
+        A_DELETE_COPY(FriendsHandler)
+
         virtual void invite(const std::string &name) const = 0;
 
         virtual void inviteResponse(const int accountId,

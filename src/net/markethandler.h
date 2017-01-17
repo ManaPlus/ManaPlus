@@ -37,6 +37,11 @@ namespace Net
 class MarketHandler notfinal
 {
     public:
+        MarketHandler()
+        { }
+
+        A_DELETE_COPY(MarketHandler)
+
         virtual ~MarketHandler()
         { }
 

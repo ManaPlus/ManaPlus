@@ -33,6 +33,8 @@
 
 struct PacketLimit final
 {
+    A_DEFAULT_COPY(PacketLimit)
+
     int lastTime;
     int timeLimit;
     int cnt;

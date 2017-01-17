@@ -28,6 +28,11 @@
 class PacketCounters final
 {
     public:
+        PacketCounters()
+        { }
+
+        A_DELETE_COPY(PacketCounters)
+
         static void incInBytes(const int cnt);
 
         static void incInPackets();

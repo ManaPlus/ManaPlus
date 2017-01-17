@@ -36,6 +36,11 @@ namespace Net
 class BuyingStoreHandler notfinal
 {
     public:
+        BuyingStoreHandler()
+        { }
+
+        A_DELETE_COPY(BuyingStoreHandler)
+
         virtual ~BuyingStoreHandler()
         { }
 

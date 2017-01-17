@@ -35,6 +35,11 @@ namespace Net
 class ChatHandler notfinal
 {
     public:
+        ChatHandler()
+        { }
+
+        A_DELETE_COPY(ChatHandler)
+
         virtual ~ChatHandler()
         { }
 
