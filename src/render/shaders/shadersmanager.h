@@ -33,6 +33,11 @@ class ShaderProgram;
 class ShadersManager final
 {
     public:
+        ShadersManager()
+        { }
+
+        A_DELETE_COPY(ShadersManager)
+
         Shader *createShader(const unsigned int type,
                              const std::string &fileName) A_WARN_UNUSED;
 

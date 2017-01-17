@@ -48,6 +48,11 @@ class Equipment final
         class Backend notfinal
         {
             public:
+                Backend()
+                { }
+
+                A_DELETE_COPY(Backend)
+
                 virtual const Item *getEquipment(const int index)
                                                  const A_WARN_UNUSED = 0;
 

@@ -90,6 +90,8 @@ class Settings final
             uselonglivesprites(false)
         { }
 
+        A_DELETE_COPY(Settings)
+
         void init();
 
         std::string updateHost;

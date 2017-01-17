@@ -30,6 +30,8 @@
 class ConfigManager final
 {
     public:
+        A_DELETE_COPY(ConfigManager)
+
         static void initConfiguration();
 
         static void initServerConfig(const std::string &serverName);

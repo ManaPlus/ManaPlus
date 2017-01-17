@@ -108,6 +108,8 @@ class ActionEvent final : public Event
         {
         }
 
+        A_DELETE_COPY(ActionEvent)
+
         /**
           * Destructor.
           */

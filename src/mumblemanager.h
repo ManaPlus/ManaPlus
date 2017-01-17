@@ -21,6 +21,24 @@
 
 struct LinkedMem final
 {
+    LinkedMem() :
+        uiVersion(0U),
+        uiTick(0U),
+        fAvatarPosition(),
+        fAvatarFront(),
+        fAvatarTop(),
+        name(),
+        fCameraPosition(),
+        fCameraFront(),
+        fCameraTop(),
+        identity(),
+        context_len(0U),
+        context(),
+        description()
+    { }
+
+    A_DELETE_COPY(LinkedMem)
+
     uint32_t uiVersion;
     uint32_t uiTick;
     float fAvatarPosition[3];

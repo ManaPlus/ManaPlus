@@ -66,6 +66,8 @@ struct Options final
         testMode(false)
     {}
 
+    A_DELETE_COPY(Options)
+
     std::string username;
     std::string password;
     std::string character;

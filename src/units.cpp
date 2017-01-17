@@ -33,6 +33,8 @@
 
 struct UnitLevel final
 {
+    A_DEFAULT_COPY(UnitLevel)
+
     std::string symbol;
     int count;
     int round;
@@ -41,6 +43,8 @@ struct UnitLevel final
 
 struct UnitDescription final
 {
+    A_DEFAULT_COPY(UnitDescription)
+
     std::vector<struct UnitLevel> levels;
     double conversion;
     bool mix;

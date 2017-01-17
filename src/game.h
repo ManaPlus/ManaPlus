@@ -39,6 +39,14 @@ class Map;
 
 struct LastKey final
 {
+    A_DELETE_COPY(LastKey)
+
+    LastKey() :
+        time(0),
+        key(InputAction::NO_VALUE),
+        cnt(0)
+    { }
+
     time_t time;
     InputActionT key;
     int cnt;

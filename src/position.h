@@ -33,9 +33,13 @@
  */
 struct Position final
 {
-    Position(const int x0, const int y0) :
-        x(x0), y(y0)
+    Position(const int x0,
+             const int y0) :
+        x(x0),
+        y(y0)
     { }
+
+    A_DEFAULT_COPY(Position)
 
     int x;
     int y;

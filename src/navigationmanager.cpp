@@ -43,6 +43,8 @@ namespace
         {
         }
 
+        A_DEFAULT_COPY(Cell)
+
         int x;
         int y;
     };

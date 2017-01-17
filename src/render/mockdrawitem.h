@@ -44,6 +44,8 @@ struct MockDrawItem final
     {
     }
 
+    A_DEFAULT_COPY(MockDrawItem)
+
     const Image *image;
     MockDrawTypeT drawType;
     int x;

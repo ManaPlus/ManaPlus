@@ -34,6 +34,8 @@ namespace
     static class SortPartyFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortPartyFunctor)
+
             bool operator() (const PartyMember *const p1,
                              const PartyMember *const p2) const
             {

@@ -76,6 +76,8 @@ ActorManager *actorManager = nullptr;
 class FindBeingFunctor final
 {
     public:
+        A_DEFAULT_COPY(FindBeingFunctor)
+
         bool operator() (const ActorSprite *const actor) const
         {
             if (!actor
@@ -105,6 +107,8 @@ class FindBeingFunctor final
 class FindBeingEqualFunctor final
 {
     public:
+        A_DEFAULT_COPY(FindBeingEqualFunctor)
+
         bool operator() (const Being *const being) const
         {
             if (!being || !findBeing)
@@ -118,6 +122,8 @@ class FindBeingEqualFunctor final
 class SortBeingFunctor final
 {
     public:
+        A_DEFAULT_COPY(SortBeingFunctor)
+
         bool operator() (const Being *const being1,
                          const Being *const being2) const
         {

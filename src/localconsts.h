@@ -39,6 +39,8 @@
     + __clang_patchlevel__)
 #endif  // __clang__
 
+#define A_DEFAULT_COPY(func)
+
 #if !defined(__GXX_EXPERIMENTAL_CXX0X__)
 #undef nullptr
 #define nullptr 0

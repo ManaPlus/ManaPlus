@@ -35,6 +35,8 @@ namespace
     static class SortGuildFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortGuildFunctor)
+
             bool operator() (const GuildMember *const m1,
                              const GuildMember *const m2) const
             {

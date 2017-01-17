@@ -50,7 +50,9 @@ class Vector final
         /**
          * Constructor.
          */
-        Vector(const float x0, const float y0, const float z0 = 0.0F) :
+        Vector(const float x0,
+               const float y0,
+               const float z0 = 0.0F) :
             x(x0),
             y(y0),
             z(z0)
@@ -64,6 +66,8 @@ class Vector final
             y(v.y),
             z(v.z)
         {}
+
+        A_DEFAULT_COPY(Vector)
 
         /**
          * Returns true if all coordinates are set to 0, otherwise returns

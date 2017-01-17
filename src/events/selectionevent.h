@@ -87,6 +87,8 @@ class SelectionEvent final: public Event
             Event(source)
         { }
 
+        A_DELETE_COPY(SelectionEvent)
+
         /**
           * Destructor.
           */

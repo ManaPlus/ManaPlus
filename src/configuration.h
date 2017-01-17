@@ -47,6 +47,11 @@ template <class T, class CONT>
 class ConfigurationListManager notfinal
 {
     public:
+        ConfigurationListManager()
+        { }
+
+        A_DELETE_COPY(ConfigurationListManager)
+
         /**
          * Writes a value into a configuration object
          *
@@ -69,7 +74,8 @@ class ConfigurationListManager notfinal
                                     CONT container)
                                     const A_WARN_UNUSED = 0;
 
-        virtual ~ConfigurationListManager() {}
+        virtual ~ConfigurationListManager()
+        { }
 };
 
 /**
@@ -83,6 +89,8 @@ class ConfigurationObject notfinal
     friend class Configuration;
 
     public:
+        A_DELETE_COPY(ConfigurationObject)
+
         virtual ~ConfigurationObject();
 
         /**

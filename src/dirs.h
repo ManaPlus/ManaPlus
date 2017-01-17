@@ -28,6 +28,8 @@
 class Dirs final
 {
     public:
+        A_DELETE_COPY(Dirs)
+
         static void initUsersDir();
 
         static void updateDataPath();

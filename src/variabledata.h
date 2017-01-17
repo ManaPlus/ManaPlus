@@ -38,6 +38,11 @@ class VariableData notfinal
             DATA_BOOL
         };
 
+        VariableData()
+        { }
+
+        A_DELETE_COPY(VariableData)
+
         virtual ~VariableData()
         {}
 
@@ -48,8 +53,11 @@ class IntData final : public VariableData
 {
     public:
         explicit IntData(const int value) :
+            VariableData(),
             mData(value)
         { }
+
+        A_DELETE_COPY(IntData)
 
         int getData() const noexcept2 A_WARN_UNUSED
         { return mData; }
@@ -65,8 +73,11 @@ class StringData final : public VariableData
 {
     public:
         explicit StringData(const std::string &value) :
+            VariableData(),
             mData(value)
         { }
+
+        A_DELETE_COPY(StringData)
 
         const std::string &getData() const noexcept2 A_WARN_UNUSED
         { return mData; }
@@ -82,8 +93,11 @@ class FloatData final : public VariableData
 {
     public:
         explicit FloatData(const double value) :
+            VariableData(),
             mData(value)
         { }
+
+        A_DELETE_COPY(FloatData)
 
         double getData() const noexcept2 A_WARN_UNUSED
         { return mData; }
@@ -99,8 +113,11 @@ class BoolData final : public VariableData
 {
     public:
         explicit BoolData(const bool value) :
+            VariableData(),
             mData(value)
         { }
+
+        A_DELETE_COPY(BoolData)
 
         bool getData() const noexcept2 A_WARN_UNUSED
         { return mData; }
