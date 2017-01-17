@@ -40,9 +40,13 @@
 struct FBOInfo final
 {
     constexpr2 FBOInfo() :
-        fboId(0), textureId(0), rboId(0)
+        fboId(0),
+        textureId(0),
+        rboId(0)
     {
     }
+
+    A_DELETE_COPY(FBOInfo)
 
     GLuint fboId;
     GLuint textureId;

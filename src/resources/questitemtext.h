@@ -40,6 +40,8 @@ struct QuestItemText final
     {
     }
 
+    A_DEFAULT_COPY(QuestItemText)
+
     std::string text;
     QuestTypeT type;
     std::string data1;

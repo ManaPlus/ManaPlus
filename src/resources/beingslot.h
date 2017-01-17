@@ -39,6 +39,8 @@ struct BeingSlot final
     {
     }
 
+    A_DEFAULT_COPY(BeingSlot)
+
     int spriteId;
     CardsList cardsId;
     ItemColor colorId;

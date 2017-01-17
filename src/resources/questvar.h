@@ -44,6 +44,8 @@ struct QuestVar final
     {
     }
 
+    A_DEFAULT_COPY(QuestVar)
+
     int var1;
     int var2;
     int var3;

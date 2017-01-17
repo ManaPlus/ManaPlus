@@ -42,6 +42,8 @@ struct QuestItem final
     {
     }
 
+    A_DELETE_COPY(QuestItem)
+
     int var;
     std::string name;
     std::string group;

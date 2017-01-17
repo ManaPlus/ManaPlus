@@ -39,6 +39,8 @@ class Properties notfinal
         {
         }
 
+        A_DELETE_COPY(Properties)
+
         /**
          * Destructor.
          */

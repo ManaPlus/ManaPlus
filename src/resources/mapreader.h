@@ -40,6 +40,8 @@ class Tileset;
 class MapReader final
 {
     public:
+        A_DELETE_COPY(MapReader)
+
         /**
          * Read an XML map from a file.
          */

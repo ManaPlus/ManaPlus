@@ -39,6 +39,8 @@ struct QuestEffect final
     {
     }
 
+    A_DELETE_COPY(QuestEffect)
+
     std::string map;
     int var;
     BeingTypeId id;

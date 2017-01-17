@@ -34,6 +34,8 @@ struct NpcImageInfo final
     {
     }
 
+    A_DELETE_COPY(NpcImageInfo)
+
     std::string name;
     int x;
     int y;

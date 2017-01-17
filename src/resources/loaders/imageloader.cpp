@@ -39,6 +39,8 @@ namespace
 {
     struct DyedImageLoader final
     {
+        A_DELETE_COPY(DyedImageLoader)
+
         std::string path;
         static Resource *load(const void *const v)
         {

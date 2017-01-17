@@ -31,11 +31,14 @@
 
 struct SoundInfo final
 {
-    SoundInfo(const std::string &sound0, const int delay0) :
+    SoundInfo(const std::string &sound0,
+              const int delay0) :
         sound(sound0),
         delay(delay0)
     {
     }
+
+    A_DEFAULT_COPY(SoundInfo)
 
     std::string sound;
     int delay;

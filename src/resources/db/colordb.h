@@ -53,6 +53,8 @@ namespace ColorDB
             {
             }
 
+            A_DEFAULT_COPY(ItemColorData)
+
             ItemColor id;
             std::string name;
             std::string color;

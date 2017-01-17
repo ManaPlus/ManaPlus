@@ -442,6 +442,8 @@ class Map final : public Properties,
             {
             }
 
+            A_DEFAULT_COPY(ParticleEffectData)
+
             const2 std::string file;
             const2 int x;
             const2 int y;

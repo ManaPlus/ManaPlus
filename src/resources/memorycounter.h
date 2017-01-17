@@ -30,6 +30,8 @@ class MemoryCounter notfinal
     public:
         MemoryCounter();
 
+        A_DEFAULT_COPY(MemoryCounter)
+
 PRAGMACLANG(GCC diagnostic push)
 PRAGMACLANG(GCC diagnostic ignored "-Wdeprecated")
         virtual ~MemoryCounter()

@@ -38,6 +38,8 @@ struct NpcButtonInfo final
     {
     }
 
+    A_DELETE_COPY(NpcButtonInfo)
+
     std::string name;
     std::string value;
     std::string image;

@@ -33,6 +33,8 @@
 class Wallpaper final
 {
     public:
+        A_DELETE_COPY(Wallpaper)
+
         /**
          * Reads the folder that contains wallpapers and organizes the
          * wallpapers found by area, width, and height.

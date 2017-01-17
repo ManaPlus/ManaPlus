@@ -36,6 +36,8 @@ struct TileInfo final
     {
     }
 
+    A_DELETE_COPY(TileInfo)
+
     /* tile image */
     Image *image;
     /* repeated tile width in pixels */

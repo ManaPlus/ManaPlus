@@ -36,6 +36,8 @@ struct NpcTextInfo final
     {
     }
 
+    A_DELETE_COPY(NpcTextInfo)
+
     std::string text;
     int x;
     int y;

@@ -35,6 +35,8 @@ namespace
 {
     struct RescaledLoader final
     {
+        A_DELETE_COPY(RescaledLoader)
+
         const Image *const image;
         const int width;
         const int height;

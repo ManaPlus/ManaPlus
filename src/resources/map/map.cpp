@@ -77,7 +77,10 @@
 class ActorFunctuator final
 {
     public:
-        bool operator()(const Actor *const a, const Actor *const b) const
+        A_DEFAULT_COPY(ActorFunctuator)
+
+        bool operator()(const Actor *const a,
+                        const Actor *const b) const
         {
             if (!a || !b)
                 return false;

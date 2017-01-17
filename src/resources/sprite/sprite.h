@@ -32,6 +32,8 @@ class Image;
 class Sprite notfinal
 {
     public:
+        A_DELETE_COPY(Sprite)
+
         virtual ~Sprite()
         { }
 

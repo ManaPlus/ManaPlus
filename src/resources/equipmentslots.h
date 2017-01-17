@@ -27,6 +27,13 @@
 
 struct EquipmentSlotMap final
 {
+    EquipmentSlotMap() :
+        name(nullptr),
+        id(0)
+    { }
+
+    A_DELETE_COPY(EquipmentSlotMap)
+
     const char *const name;
     const int id;
 };

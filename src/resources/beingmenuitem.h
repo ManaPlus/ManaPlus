@@ -27,11 +27,14 @@
 
 struct BeingMenuItem final
 {
-    BeingMenuItem(const std::string &name0, const std::string &command0) :
+    BeingMenuItem(const std::string &name0,
+                  const std::string &command0) :
         name(name0),
         command(command0)
     {
     }
+
+    A_DEFAULT_COPY(BeingMenuItem)
 
     std::string name;
     std::string command;

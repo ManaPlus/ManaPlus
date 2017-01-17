@@ -46,6 +46,8 @@ namespace
 {
     struct SlotUsed final
     {
+        A_DEFAULT_COPY(SlotUsed)
+
         bool operator()(const Item *const item) const
         {
             return item && item->mId >= 0 && item->mQuantity > 0;

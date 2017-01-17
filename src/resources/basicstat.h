@@ -39,6 +39,8 @@ struct BasicStat final
         attr(attr0)
     {}
 
+    A_DEFAULT_COPY(BasicStat)
+
     std::string tag;
     std::string name;
     AttributesT attr;

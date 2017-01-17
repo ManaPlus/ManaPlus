@@ -47,6 +47,8 @@ class Animation final : public MemoryCounter
 
         explicit Animation(const std::string &name) noexcept2;
 
+        A_DEFAULT_COPY(Animation)
+
         /**
          * Appends a new animation at the end of the sequence.
          */

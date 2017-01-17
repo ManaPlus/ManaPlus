@@ -35,6 +35,8 @@ namespace
 {
     struct ResourceLoader final
     {
+        A_DELETE_COPY(ResourceLoader)
+
         const std::string path;
 
         static Resource *load(const void *const v)

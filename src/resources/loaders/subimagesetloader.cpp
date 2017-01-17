@@ -36,6 +36,8 @@ namespace
 {
     struct SubImageSetLoader final
     {
+        A_DELETE_COPY(SubImageSetLoader)
+
         Image *const parent;
         int width;
         int height;

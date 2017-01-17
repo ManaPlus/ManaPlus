@@ -36,6 +36,8 @@ struct NpcDialogInfo final
     {
     }
 
+    A_DELETE_COPY(NpcDialogInfo)
+
     NpcDialogMenuInfo menu;
     NpcInventoryInfo inventory;
     std::string name;

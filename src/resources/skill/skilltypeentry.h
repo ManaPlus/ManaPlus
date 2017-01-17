@@ -27,6 +27,8 @@
 
 struct SkillTypeEntry final
 {
+    A_DELETE_COPY(SkillTypeEntry)
+
     const SkillType::SkillType type;
     const char *const name;
 };

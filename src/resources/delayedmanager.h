@@ -36,6 +36,11 @@ typedef DelayedAnim::iterator DelayedAnimIter;
 class DelayedManager final
 {
     public:
+        DelayedManager()
+        { }
+
+        A_DELETE_COPY(DelayedManager)
+
         static void addDelayedAnimation(AnimationDelayLoad *const animation)
         { mDelayedAnimations.push_back(animation); }
 

@@ -36,6 +36,8 @@ class Image;
  */
 struct Frame final
 {
+    A_DEFAULT_COPY(Frame)
+
     Image *image;
     int delay;
     int offsetX;

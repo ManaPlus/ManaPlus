@@ -62,6 +62,8 @@ struct DyeColor final
         value[3] = a;
     }
 
+    A_DEFAULT_COPY(DyeColor)
+
     void update()
     {
         valueA = buildHex(value[0], value[1], value[2], value[3]);

@@ -33,6 +33,8 @@ struct NpcInventoryInfo final
     {
     }
 
+    A_DELETE_COPY(NpcInventoryInfo)
+
     std::string cell;
     int columns;
 };

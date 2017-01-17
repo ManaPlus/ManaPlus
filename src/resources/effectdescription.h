@@ -29,14 +29,17 @@
 
 struct EffectDescription final
 {
-    EffectDescription(const int id0, const std::string &gfx0,
+    EffectDescription(const int id0,
+                      const std::string &gfx0,
                       const std::string &sfx0,
                       const std::string &sprite0) :
         id(id0),
         gfx(gfx0),
         sfx(sfx0),
         sprite(sprite0)
-        { }
+    { }
+
+    A_DEFAULT_COPY(EffectDescription)
 
     int id;
     std::string gfx;

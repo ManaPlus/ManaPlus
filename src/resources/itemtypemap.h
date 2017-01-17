@@ -29,6 +29,8 @@
 
 struct ItemTypeMap final
 {
+    A_DELETE_COPY(ItemTypeMap)
+
     std::string name;
     ItemDbTypeT type;
     std::string useButton;

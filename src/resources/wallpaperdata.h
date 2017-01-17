@@ -35,6 +35,9 @@ struct WallpaperData final
         height(0)
     {
     }
+
+    A_DEFAULT_COPY(WallpaperData)
+
     std::string filename;
     int width;
     int height;

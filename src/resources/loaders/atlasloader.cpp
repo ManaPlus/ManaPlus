@@ -33,6 +33,8 @@
 
 struct AtlasLoader final
 {
+    A_DELETE_COPY(AtlasLoader)
+
     const std::string name;
     const StringVect *const files;
 

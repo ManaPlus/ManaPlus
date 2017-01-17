@@ -27,6 +27,8 @@
 
 struct DoubleRect final
 {
+    A_DEFAULT_COPY(DoubleRect)
+
     SDL_Rect src;
     SDL_Rect dst;
 };

@@ -39,6 +39,9 @@ struct UpdateFile final
             required(false)
         {
         }
+
+        A_DEFAULT_COPY(UpdateFile)
+
         std::string name;
         std::string hash;
         std::string type;

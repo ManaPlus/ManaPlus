@@ -35,6 +35,8 @@ namespace
 {
     struct SubImageLoader final
     {
+        A_DELETE_COPY(SubImageLoader)
+
         Image *const parent;
         const int x;
         const int y;

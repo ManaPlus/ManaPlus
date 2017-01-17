@@ -39,6 +39,8 @@ struct SpriteDisplay final
     {
     }
 
+    A_DEFAULT_COPY(SpriteDisplay)
+
     std::string image;
     std::string floor;
     std::vector<SpriteReference*> sprites;
