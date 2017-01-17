@@ -36,7 +36,7 @@ namespace
 {
     struct SpriteDefLoader final
     {
-        A_DELETE_COPY(SpriteDefLoader)
+        A_DEFAULT_COPY(SpriteDefLoader)
 
         const std::string path;
         const int variant;

@@ -35,7 +35,7 @@
 #ifndef DYECMD
 struct WalkLayerLoader final
 {
-    A_DELETE_COPY(WalkLayerLoader)
+    A_DEFAULT_COPY(WalkLayerLoader)
 
     const std::string name;
     const Map *const map;

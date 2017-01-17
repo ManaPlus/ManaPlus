@@ -37,7 +37,7 @@ namespace
 {
     struct ShaderLoader final
     {
-        A_DELETE_COPY(ShaderLoader)
+        A_DEFAULT_COPY(ShaderLoader)
 
         const std::string name;
         const unsigned int type;

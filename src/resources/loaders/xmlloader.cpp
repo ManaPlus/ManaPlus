@@ -32,7 +32,7 @@ namespace
 {
     struct ResourceLoader final
     {
-        A_DELETE_COPY(ResourceLoader)
+        A_DEFAULT_COPY(ResourceLoader)
 
         const std::string path;
         const UseResman useResman;

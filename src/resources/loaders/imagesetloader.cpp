@@ -40,7 +40,7 @@ struct ImageSetLoader final
     const int w;
     const int h;
 
-    A_DELETE_COPY(ImageSetLoader)
+    A_DEFAULT_COPY(ImageSetLoader)
 
     static Resource *load(const void *const v)
     {

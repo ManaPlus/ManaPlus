@@ -31,7 +31,7 @@ namespace Cursors
 {
     struct StrToCursor final
     {
-        A_DELETE_COPY(StrToCursor)
+        A_DEFAULT_COPY(StrToCursor)
 
         std::string str;
         CursorT cursor;

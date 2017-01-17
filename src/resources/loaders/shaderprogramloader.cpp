@@ -37,7 +37,7 @@ namespace
 {
     struct ShaderProgramLoader final
     {
-        A_DELETE_COPY(ShaderProgramLoader)
+        A_DEFAULT_COPY(ShaderProgramLoader)
 
         const std::string vertex;
         const std::string fragment;

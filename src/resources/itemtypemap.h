@@ -29,7 +29,7 @@
 
 struct ItemTypeMap final
 {
-    A_DELETE_COPY(ItemTypeMap)
+    A_DEFAULT_COPY(ItemTypeMap)
 
     std::string name;
     ItemDbTypeT type;
