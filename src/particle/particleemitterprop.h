@@ -41,6 +41,8 @@ template <typename T> struct ParticleEmitterProp final
     {
     }
 
+    A_DEFAULT_COPY(ParticleEmitterProp)
+
     void set(const T min, const T max)
     {
         minVal = min;

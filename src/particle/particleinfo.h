@@ -33,6 +33,8 @@ struct ParticleInfo final
     {
     }
 
+    A_DELETE_COPY(ParticleInfo)
+
     std::vector<std::string> files;
     std::vector<Particle*> particles;
 };

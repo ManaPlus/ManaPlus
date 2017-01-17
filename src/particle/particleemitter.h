@@ -55,6 +55,8 @@ class ParticleEmitter final
          */
         ParticleEmitter(const ParticleEmitter &o);
 
+        A_DEFAULT_COPY(ParticleEmitter)
+
         /**
          * Assignment operator that calls the copy constructor
          */

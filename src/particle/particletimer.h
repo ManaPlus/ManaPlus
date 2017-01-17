@@ -34,6 +34,8 @@ struct ParticleTimer final
     {
     }
 
+    A_DEFAULT_COPY(ParticleTimer)
+
     Particle *const particle;
     const time_t endTime;
 };
