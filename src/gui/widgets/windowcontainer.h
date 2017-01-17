@@ -36,6 +36,8 @@ class WindowContainer notfinal : public Container
     public:
         explicit WindowContainer(const Widget2 *const widget);
 
+        A_DELETE_COPY(WindowContainer)
+
         void slowLogic();
 
         /**

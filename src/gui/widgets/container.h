@@ -39,6 +39,8 @@ class Container notfinal : public BasicContainer2
     public:
         explicit Container(const Widget2 *const widget);
 
+        A_DELETE_COPY(Container)
+
         virtual ~Container();
 
         bool safeRemove(Widget *const widget);

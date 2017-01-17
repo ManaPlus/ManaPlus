@@ -35,6 +35,8 @@ class Widget;
 class Widget2 notfinal
 {
     public:
+        A_DEFAULT_COPY(Widget2)
+
         virtual ~Widget2()
         {
         }

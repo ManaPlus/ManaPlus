@@ -85,6 +85,8 @@ class LinePart final
             return *this;
         }
 
+        A_DEFAULT_COPY(LinePart)
+
         ~LinePart();
 
         int mX;

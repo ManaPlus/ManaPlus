@@ -43,6 +43,8 @@ class ServersListBox final : public ListBox
             mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT);
         }
 
+        A_DELETE_COPY(ServersListBox)
+
         void draw(Graphics *const graphics) override final A_NONNULL(2)
         {
             if (!mListModel)

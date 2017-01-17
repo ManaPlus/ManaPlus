@@ -67,6 +67,8 @@ namespace
     class ItemIdPair final
     {
         public:
+            A_DELETE_COPY(ItemIdPair)
+
             ItemIdPair(const int id, Item *const item) :
                 mId(id), mItem(item)
             {
@@ -79,6 +81,8 @@ namespace
     class SortItemAlphaFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemAlphaFunctor)
+
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
@@ -103,6 +107,8 @@ namespace
     class SortItemIdFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemIdFunctor)
+
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
@@ -123,6 +129,8 @@ namespace
     class SortItemWeightFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemWeightFunctor)
+
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
@@ -151,6 +159,8 @@ namespace
     class SortItemAmountFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemAmountFunctor)
+
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
@@ -179,6 +189,8 @@ namespace
     class SortItemTypeFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemTypeFunctor)
+
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {

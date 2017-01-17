@@ -35,11 +35,13 @@ class Widget;
 class ContainerPlacer final
 {
     public:
-        explicit ContainerPlacer(BasicContainer2 *c = nullptr,
-                                 LayoutCell *lc = nullptr) :
+        explicit ContainerPlacer(BasicContainer2 *const c = nullptr,
+                                 LayoutCell *const lc = nullptr) :
             mContainer(c),
             mCell(lc)
         {}
+
+        A_DEFAULT_COPY(ContainerPlacer)
 
         /**
          * Gets the pointed cell.
@@ -50,14 +52,18 @@ class ContainerPlacer final
         /**
          * Returns a placer for the same container but to an inner cell.
          */
-        ContainerPlacer at(const int x, const int y) A_WARN_UNUSED;
+        ContainerPlacer at(const int x,
+                           const int y) A_WARN_UNUSED;
 
         /**
          * Adds the given widget to the container and places it in the layout.
          * @see LayoutArray::place
          */
-        LayoutCell &operator()(const int x, const int y, Widget *const wg,
-            const int w = 1, const int h = 1);
+        LayoutCell &operator()(const int x,
+                               const int y,
+                               Widget *const wg,
+                               const int w = 1,
+                               const int h = 1);
 
     private:
         BasicContainer2 *mContainer;

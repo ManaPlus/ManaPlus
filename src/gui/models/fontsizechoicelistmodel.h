@@ -68,6 +68,12 @@ const char *SIZE_NAME[maxFontSizes] =
 class FontSizeChoiceListModel final : public ListModel
 {
     public:
+        FontSizeChoiceListModel() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(FontSizeChoiceListModel)
+
         ~FontSizeChoiceListModel()
         { }
 

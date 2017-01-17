@@ -37,6 +37,9 @@ struct ExtendedListBoxItem final
         y(y0)
     {
     }
+
+    A_DEFAULT_COPY(ExtendedListBoxItem)
+
     int row;
     std::string text;
     bool image;

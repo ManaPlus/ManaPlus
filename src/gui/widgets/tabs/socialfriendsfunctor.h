@@ -30,6 +30,8 @@
 class SortFriendsFunctor final
 {
     public:
+        A_DEFAULT_COPY(SortFriendsFunctor)
+
         bool operator() (const Avatar *const m1,
                          const Avatar *const m2) const
         {

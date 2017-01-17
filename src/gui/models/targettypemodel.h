@@ -39,6 +39,12 @@ const char *TARGET_TYPE_TEXT[3] =
 class TargetTypeModel final : public ListModel
 {
     public:
+        TargetTypeModel() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(TargetTypeModel)
+
         ~TargetTypeModel()
         { }
 

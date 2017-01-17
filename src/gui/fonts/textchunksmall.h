@@ -30,6 +30,8 @@
 class TextChunkSmall final
 {
     public:
+        A_DEFAULT_COPY(TextChunkSmall)
+
         TextChunkSmall(const std::string &restrict text0,
                        const Color &restrict color0,
                        const Color &restrict color1);

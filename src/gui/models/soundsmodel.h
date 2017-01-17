@@ -40,6 +40,8 @@ class SoundsModel final : public NamesModel
             Theme::fillSoundsList(mNames);
         }
 
+        A_DELETE_COPY(SoundsModel)
+
         ~SoundsModel()
         { }
 };

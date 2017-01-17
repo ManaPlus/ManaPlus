@@ -34,6 +34,12 @@
 class IgnoreChoicesListModel final : public ListModel
 {
     public:
+        IgnoreChoicesListModel() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(IgnoreChoicesListModel)
+
         ~IgnoreChoicesListModel()
         { }
 

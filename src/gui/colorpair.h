@@ -34,6 +34,8 @@ struct ColorPair final
     {
     }
 
+    A_DEFAULT_COPY(ColorPair)
+
     const Color *color1;
     const Color *color2;
 };

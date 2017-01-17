@@ -48,6 +48,12 @@ const char *MAGIC_SCHOOL_TEXT[6] =
 class MagicSchoolModel final : public ListModel
 {
     public:
+        MagicSchoolModel() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(MagicSchoolModel)
+
         ~MagicSchoolModel()
         { }
 

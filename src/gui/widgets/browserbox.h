@@ -47,6 +47,8 @@ struct BrowserLink final
     {
     }
 
+    A_DEFAULT_COPY(BrowserLink)
+
     int x1;
     int x2;
     int y1;

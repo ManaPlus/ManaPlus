@@ -295,6 +295,7 @@ void Theme::optionChanged(const std::string &)
 
 struct SkinParameter final
 {
+    A_DELETE_COPY(SkinParameter)
     int index;
     std::string name;
 };

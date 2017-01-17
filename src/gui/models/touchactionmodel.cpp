@@ -32,6 +32,8 @@ const int touchActionDataSize = 5;
 static class SortTouchActionFunctor final
 {
     public:
+        A_DEFAULT_COPY(SortTouchActionFunctor)
+
         bool operator() (const SetupActionData *const data1,
                          const SetupActionData *const data2) const
         {

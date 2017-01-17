@@ -125,6 +125,8 @@ class Color final
         }
 
 
+        A_DEFAULT_COPY(Color)
+
         /**
           * Adds the RGB values of two colors together. The values will be
           * clamped if they go out of range.

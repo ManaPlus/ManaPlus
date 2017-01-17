@@ -27,6 +27,7 @@
 #include "debug.h"
 
 SkillModel::SkillModel() :
+    ListModel(),
     mSkills(),
     mVisibleSkills()
 {

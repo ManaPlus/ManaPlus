@@ -78,6 +78,11 @@
 class ListModel notfinal
 {
     public:
+        ListModel()
+        { }
+
+        A_DELETE_COPY(ListModel)
+
         /**
           * Destructor.
           */

@@ -45,6 +45,12 @@ static const char *const SORT_NAME_INVENTORY[6] =
 class SortListModelInv final : public ListModel
 {
     public:
+        SortListModelInv() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(SortListModelInv)
+
         ~SortListModelInv()
         { }
 

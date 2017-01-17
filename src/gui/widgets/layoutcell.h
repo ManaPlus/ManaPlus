@@ -41,6 +41,8 @@ class LayoutCell notfinal
     friend class LayoutArray;
 
     public:
+        A_DEFAULT_COPY(LayoutCell)
+
         enum Alignment
         {
             LEFT = 0,

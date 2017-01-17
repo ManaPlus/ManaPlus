@@ -28,6 +28,12 @@
 class ExtendedListModel notfinal : public ListModel
 {
     public:
+        ExtendedListModel() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(ExtendedListModel)
+
         virtual const Image *getImageAt(int i) A_WARN_UNUSED = 0;
 };
 

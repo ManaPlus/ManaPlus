@@ -48,6 +48,12 @@ static const char *const SORT_NAME_BUY[7] =
 class SortListModelBuy final : public ListModel
 {
     public:
+        SortListModelBuy() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(SortListModelBuy)
+
         ~SortListModelBuy()
         { }
 

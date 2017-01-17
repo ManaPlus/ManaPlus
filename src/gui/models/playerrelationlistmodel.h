@@ -50,6 +50,12 @@ static const char *const RELATION_NAMES[PlayerRelation::RELATIONS_NR] =
 class PlayerRelationListModel final : public ListModel
 {
     public:
+        PlayerRelationListModel() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(PlayerRelationListModel)
+
         ~PlayerRelationListModel()
         { }
 

@@ -43,6 +43,9 @@ struct ThemeInfo final
         guiAlpha(0.0F)
     {
     }
+
+    A_DELETE_COPY(ThemeInfo)
+
     std::string name;
     std::string copyright;
     std::string font;

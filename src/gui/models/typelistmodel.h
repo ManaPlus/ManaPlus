@@ -30,8 +30,11 @@
 class TypeListModel final : public ListModel
 {
     public:
-        TypeListModel()
+        TypeListModel() :
+            ListModel()
         { }
+
+        A_DELETE_COPY(TypeListModel)
 
         /**
          * Used to get number of line in the list

@@ -114,6 +114,8 @@ class Palette notfinal
             {
             }
 
+            A_DEFAULT_COPY(ColorElem)
+
             int type;
             Color color;
             Color testColor;

@@ -34,6 +34,8 @@ class SkillModel final : public ListModel
     public:
         SkillModel();
 
+        A_DELETE_COPY(SkillModel)
+
         SkillInfo *getSkillAt(const int i) const;
 
         std::string getElementAt(int i) override final;

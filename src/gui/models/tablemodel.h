@@ -38,6 +38,8 @@ class TableModelListener;
 class TableModel notfinal
 {
     public:
+        A_DELETE_COPY(TableModel)
+
         virtual ~TableModel()
         { }
 

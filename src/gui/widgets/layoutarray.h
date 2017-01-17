@@ -40,6 +40,8 @@ class LayoutArray final
     public:
         LayoutArray();
 
+        A_DEFAULT_COPY(LayoutArray)
+
         ~LayoutArray();
 
         /**

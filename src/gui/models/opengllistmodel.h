@@ -30,6 +30,12 @@
 class OpenGLListModel final : public ListModel
 {
     public:
+        OpenGLListModel() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(OpenGLListModel)
+
         ~OpenGLListModel()
         { }
 

@@ -43,6 +43,8 @@ class DialogsManager final : public AttributeListener,
         virtual ~DialogsManager()
         { }
 
+        A_DELETE_COPY(DialogsManager)
+
         static void closeDialogs();
 
         static void createUpdaterWindow();

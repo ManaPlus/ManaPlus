@@ -80,6 +80,8 @@ namespace
     class NameFunctuator final
     {
         public:
+            A_DEFAULT_COPY(NameFunctuator)
+
             bool operator()(const OnlinePlayer *left,
                             const OnlinePlayer *right) const
             {

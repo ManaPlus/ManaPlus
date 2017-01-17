@@ -29,6 +29,12 @@
 class AvatarListModel notfinal : public ListModel
 {
     public:
+        AvatarListModel() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(AvatarListModel)
+
         virtual Avatar *getAvatarAt(const int i) A_WARN_UNUSED = 0;
 
         std::string getElementAt(int i) override final A_WARN_UNUSED

@@ -32,6 +32,8 @@
 
 struct Language final
 {
+    A_DEFAULT_COPY(Language)
+
     std::string name;
     std::string value;
     std::string icon;

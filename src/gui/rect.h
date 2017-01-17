@@ -111,6 +111,8 @@ class Rect notfinal
         {
         }
 
+        A_DEFAULT_COPY(Rect)
+
         Rect &operator=(const Rect &r)
         {
             x = r.x;

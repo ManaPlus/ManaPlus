@@ -68,6 +68,8 @@ namespace
     class SortItemPriceFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemPriceFunctor)
+
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
@@ -85,6 +87,8 @@ namespace
     class SortItemNameFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemNameFunctor)
+
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
@@ -102,6 +106,8 @@ namespace
     class SortItemIdFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemIdFunctor)
+
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
@@ -119,6 +125,8 @@ namespace
     class SortItemWeightFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemWeightFunctor)
+
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
@@ -136,6 +144,8 @@ namespace
     class SortItemAmountFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemAmountFunctor)
+
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
@@ -153,6 +163,8 @@ namespace
     class SortItemTypeFunctor final
     {
         public:
+            A_DEFAULT_COPY(SortItemTypeFunctor)
+
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {

@@ -62,6 +62,12 @@ const char *COLOR_NAME[14] =
 class ColorListModel final : public ListModel
 {
     public:
+        ColorListModel() :
+            ListModel()
+        { }
+
+        A_DELETE_COPY(ColorListModel)
+
         ~ColorListModel()
         { }
 

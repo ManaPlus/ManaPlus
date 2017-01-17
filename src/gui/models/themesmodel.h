@@ -40,6 +40,8 @@ class ThemesModel final : public NamesModel
             Theme::fillSkinsList(mNames);
         }
 
+        A_DELETE_COPY(ThemesModel)
+
         ~ThemesModel()
         { }
 };

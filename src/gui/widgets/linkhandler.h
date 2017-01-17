@@ -34,6 +34,11 @@
 class LinkHandler notfinal
 {
     public:
+        LinkHandler()
+        { }
+
+        A_DELETE_COPY(LinkHandler)
+
         virtual ~LinkHandler()
         { }
 
