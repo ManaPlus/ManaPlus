@@ -59,6 +59,11 @@ namespace
     class SortPlayersFunctor final
     {
         public:
+            SortPlayersFunctor()
+            { }
+
+            A_DEFAULT_COPY(SortPlayersFunctor)
+
             bool operator() (const std::string &str1,
                              const std::string &str2) const
             {
@@ -78,6 +83,11 @@ namespace
             PlayerRelation *>, std::map<std::string, PlayerRelation *> *>
     {
         public:
+            PlayerConfSerialiser()
+            { }
+
+            A_DELETE_COPY(PlayerConfSerialiser)
+
             ConfigurationObject *writeConfigItem(
                 const std::pair<std::string, PlayerRelation *> &value,
                 ConfigurationObject *const cobj) const override final
@@ -468,6 +478,8 @@ class PIS_nothing final : public PlayerIgnoreStrategy
             mShortName = PLAYER_IGNORE_STRATEGY_NOP;
         }
 
+        A_DELETE_COPY(PIS_nothing)
+
         void ignore(Being *const being A_UNUSED,
                     const unsigned int flags A_UNUSED) const override final
         {
@@ -484,6 +496,8 @@ class PIS_dotdotdot final : public PlayerIgnoreStrategy
             mDescription = _("Print '...'");
             mShortName = "dotdotdot";
         }
+
+        A_DELETE_COPY(PIS_dotdotdot)
 
         void ignore(Being *const being,
                     const unsigned int flags A_UNUSED) const override final
@@ -508,6 +522,8 @@ class PIS_blinkname final : public PlayerIgnoreStrategy
             mShortName = "blinkname";
         }
 
+        A_DELETE_COPY(PIS_blinkname)
+
         void ignore(Being *const being,
                     const unsigned int flags A_UNUSED) const override final
         {
@@ -522,7 +538,8 @@ class PIS_blinkname final : public PlayerIgnoreStrategy
 class PIS_emote final : public PlayerIgnoreStrategy
 {
     public:
-        PIS_emote(const uint8_t emote_nr, const std::string &description,
+        PIS_emote(const uint8_t emote_nr,
+                  const std::string &description,
                   const std::string &shortname) :
             PlayerIgnoreStrategy(),
             mEmotion(emote_nr)
@@ -530,6 +547,8 @@ class PIS_emote final : public PlayerIgnoreStrategy
             mDescription = description;
             mShortName = shortname;
         }
+
+        A_DELETE_COPY(PIS_emote)
 
         void ignore(Being *const being,
                     const unsigned int flags A_UNUSED) const override final

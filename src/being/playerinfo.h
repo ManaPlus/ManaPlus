@@ -44,6 +44,8 @@
  */
 struct Stat final
 {
+    A_DEFAULT_COPY(Stat)
+
     int base;
     int mod;
     int exp;
@@ -64,6 +66,8 @@ struct PlayerInfoBackend final
         mSkills()
     {
     }
+
+    A_DEFAULT_COPY(PlayerInfoBackend)
 
     AtrIntMap mAttributes;
     StatMap mStats;

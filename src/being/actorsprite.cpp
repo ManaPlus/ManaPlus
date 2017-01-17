@@ -193,6 +193,8 @@ void ActorSprite::setTargetType(const TargetCursorTypeT type)
 
 struct EffectDescription final
 {
+    A_DELETE_COPY(EffectDescription)
+
     std::string mGFXEffect;
     std::string mSFXEffect;
 };

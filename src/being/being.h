@@ -78,6 +78,8 @@ struct NextSoundInfo final
     {
     }
 
+    A_DELETE_COPY(NextSoundInfo)
+
     const SoundInfo *sound;
     int x;
     int y;
