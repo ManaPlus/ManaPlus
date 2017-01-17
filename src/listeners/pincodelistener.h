@@ -28,6 +28,12 @@
 class PincodeListener final : public ActionListener
 {
     public:
+        PincodeListener() :
+            ActionListener()
+        { }
+
+        A_DELETE_COPY(PincodeListener)
+
         void action(const ActionEvent &event) override final;
 };
 

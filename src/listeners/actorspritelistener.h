@@ -29,6 +29,11 @@ class ActorSprite;
 class ActorSpriteListener notfinal
 {
     public:
+        ActorSpriteListener()
+        { }
+
+        A_DELETE_COPY(ActorSpriteListener)
+
         /**
          * Destructor.
          */

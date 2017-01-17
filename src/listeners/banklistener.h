@@ -28,6 +28,8 @@
 class BankListener notfinal
 {
     public:
+        A_DELETE_COPY(BankListener)
+
         virtual void bankMoneyChanged(const int money) = 0;
 
         static void distributeEvent(const int money);

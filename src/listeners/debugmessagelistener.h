@@ -30,6 +30,8 @@
 class DebugMessageListener notfinal
 {
     public:
+        A_DELETE_COPY(DebugMessageListener)
+
         virtual void debugMessage(const std::string &msg) = 0;
 
         static void distributeEvent(const std::string &msg);

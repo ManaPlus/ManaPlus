@@ -28,6 +28,8 @@
 class BuyingStoreModeListener notfinal
 {
     public:
+        A_DELETE_COPY(BuyingStoreModeListener)
+
         virtual void buyingStoreEnabled(const bool b) = 0;
 
         static void distributeEvent(const bool b);

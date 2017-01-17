@@ -30,6 +30,8 @@
 class PlayerRelationsListener notfinal
 {
     public:
+        A_DELETE_COPY(PlayerRelationsListener)
+
         virtual ~PlayerRelationsListener()
         { }
 

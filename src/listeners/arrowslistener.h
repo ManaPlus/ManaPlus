@@ -28,6 +28,8 @@
 class ArrowsListener notfinal
 {
     public:
+        A_DELETE_COPY(ArrowsListener)
+
         virtual void arrowsChanged() = 0;
 
         static void distributeEvent();

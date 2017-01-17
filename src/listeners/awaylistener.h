@@ -28,6 +28,11 @@
 class AwayListener final : public ActionListener
 {
     public:
+        AwayListener()
+        { }
+
+        A_DELETE_COPY(AwayListener)
+
         void action(const ActionEvent &event) override final;
 };
 

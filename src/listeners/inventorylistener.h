@@ -30,6 +30,8 @@ class Inventory;
 class InventoryListener notfinal
 {
     public:
+        A_DELETE_COPY(InventoryListener)
+
         virtual ~InventoryListener()
         { }
 

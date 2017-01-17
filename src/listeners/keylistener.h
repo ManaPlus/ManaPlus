@@ -78,6 +78,8 @@ class Key;
 class KeyListener notfinal
 {
     public:
+        A_DELETE_COPY(KeyListener)
+
         /**
           * Destructor.
           */

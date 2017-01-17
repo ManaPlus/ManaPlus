@@ -30,6 +30,12 @@
 struct RequestAdoptChildListener final : public ActionListener
 {
     public:
+        RequestAdoptChildListener() :
+            ActionListener()
+        { }
+
+        A_DELETE_COPY(RequestAdoptChildListener)
+
         void action(const ActionEvent &event) override final
         {
             const std::string &eventId = event.getId();

@@ -41,6 +41,12 @@ extern OkDialog *deathNotice;
   */
 struct PlayerPostDeathListener final : public ActionListener
 {
+    PlayerPostDeathListener() :
+        ActionListener()
+    { }
+
+    A_DELETE_COPY(PlayerPostDeathListener)
+
     void action(const ActionEvent &event A_UNUSED) override final
     {
         if (playerHandler)

@@ -30,6 +30,8 @@
 class AttributeListener notfinal
 {
     public:
+        A_DELETE_COPY(AttributeListener)
+
         virtual void attributeChanged(const AttributesT id,
                                       const int oldVal,
                                       const int newVal) = 0;

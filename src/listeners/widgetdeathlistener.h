@@ -75,6 +75,8 @@
 class WidgetDeathListener notfinal
 {
     public:
+        A_DELETE_COPY(WidgetDeathListener)
+
         /**
           * Destructor.
           */

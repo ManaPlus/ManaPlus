@@ -30,6 +30,12 @@
 class ErrorListener final : public ActionListener
 {
     public:
+        ErrorListener() :
+            ActionListener()
+        { }
+
+        A_DELETE_COPY(ErrorListener)
+
         void action(const ActionEvent &event) override final;
 };
 

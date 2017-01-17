@@ -28,6 +28,8 @@
 class VendingSlotsListener notfinal
 {
     public:
+        A_DELETE_COPY(VendingSlotsListener)
+
         virtual void vendingSlotsChanged(const int slots) = 0;
 
         static void distributeEvent(const int slots);

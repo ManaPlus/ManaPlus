@@ -76,6 +76,8 @@
 class MouseListener notfinal
 {
     public:
+        A_DELETE_COPY(MouseListener)
+
         /**
           * Destructor.
           */

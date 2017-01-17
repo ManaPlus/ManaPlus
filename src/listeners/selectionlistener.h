@@ -105,6 +105,8 @@ class SelectionListener notfinal
           */
         SelectionListener()
         { }
+
+        A_DELETE_COPY(SelectionListener)
 };
 
 #endif  // LISTENERS_SELECTIONLISTENER_H

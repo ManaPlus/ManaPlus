@@ -40,6 +40,11 @@ extern ConfirmDialog *confirmDlg;
 struct RequestTradeListener final : public ActionListener
 {
     public:
+        RequestTradeListener()
+        { }
+
+        A_DELETE_COPY(RequestTradeListener)
+
         void action(const ActionEvent &event) override final
         {
             confirmDlg = nullptr;

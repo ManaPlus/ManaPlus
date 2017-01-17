@@ -30,6 +30,8 @@
 class StatListener notfinal
 {
     public:
+        A_DELETE_COPY(StatListener)
+
         virtual void statChanged(const AttributesT id,
                                  const int oldVal1,
                                  const int oldVal2) = 0;

@@ -30,6 +30,12 @@
 class UploadListener final : public ActionListener
 {
     public:
+        UploadListener() :
+            ActionListener()
+        { }
+
+        A_DELETE_COPY(UploadListener)
+
         void action(const ActionEvent &event A_UNUSED) override final;
 };
 

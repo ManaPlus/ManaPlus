@@ -36,6 +36,11 @@
 class ConfigListener notfinal
 {
     public:
+        ConfigListener()
+        { }
+
+        A_DELETE_COPY(ConfigListener)
+
         /**
          * Destructor.
          */

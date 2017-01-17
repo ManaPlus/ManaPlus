@@ -77,6 +77,8 @@
 class ActionListener notfinal
 {
     public:
+        A_DELETE_COPY(ActionListener)
+
         /**
           * Destructor.
           */

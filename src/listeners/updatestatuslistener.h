@@ -28,6 +28,8 @@
 class UpdateStatusListener notfinal
 {
     public:
+        A_DELETE_COPY(UpdateStatusListener)
+
         virtual void updateStatus() = 0;
 
         static void distributeEvent();

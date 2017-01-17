@@ -28,6 +28,8 @@
 class VendingModeListener notfinal
 {
     public:
+        A_DELETE_COPY(VendingModeListener)
+
         virtual void vendingEnabled(const bool b) = 0;
 
         static void distributeEvent(const bool b);

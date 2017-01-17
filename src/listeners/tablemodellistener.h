@@ -30,6 +30,11 @@ class Widget;
 class TableModelListener notfinal
 {
     public:
+        TableModelListener()
+        { }
+
+        A_DELETE_COPY(TableModelListener)
+
         /**
          * Must be invoked by the TableModel whenever a global change is about
          * to occur or has occurred (e.g., when a row or column is being

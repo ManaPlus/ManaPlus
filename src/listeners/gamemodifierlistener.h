@@ -28,6 +28,8 @@
 class GameModifierListener notfinal
 {
     public:
+        A_DELETE_COPY(GameModifierListener)
+
         virtual void gameModifiersChanged() = 0;
 
         static void distributeEvent();

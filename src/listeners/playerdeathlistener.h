@@ -28,6 +28,8 @@
 class PlayerDeathListener notfinal
 {
     public:
+        A_DELETE_COPY(PlayerDeathListener)
+
         virtual void playerDeath() = 0;
 
         static void distributeEvent();
