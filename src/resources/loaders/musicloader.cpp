@@ -48,6 +48,7 @@ namespace
             SDL_RWops *const rw = MPHYSFSRWOPS_openRead(rl->path.c_str());
             if (!rw)
             {
+                reportAlways("Physfs error: %s", PhysFs::getLastError());
                 reportAlways("Error loading resource: %s",
                     rl->path.c_str());
                 return nullptr;

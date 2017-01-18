@@ -166,6 +166,10 @@ void AtlasManager::loadImages(const StringVect &files,
                 images.push_back(image);
             }
         }
+        else
+        {
+            reportAlways("Physfs error: %s", PhysFs::getLastError());
+        }
         delete d;
     }
     BLOCK_END("AtlasManager::loadImages")
