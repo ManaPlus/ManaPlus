@@ -616,6 +616,8 @@ gcc-5_sanitize:
   - ./tools/ci/jobs/gcc5_sanitize.sh
   image: debian:unstable
   <<: *job-artifacts
+  tags:
+    - docker
 
 gcc-6_sanitize:
   stage: build
@@ -623,6 +625,8 @@ gcc-6_sanitize:
   - ./tools/ci/jobs/gcc6_sanitize.sh
   image: debian:unstable
   <<: *job-artifacts
+  tags:
+    - docker
 
 gcc-6_sanitize_i386:
   stage: build
