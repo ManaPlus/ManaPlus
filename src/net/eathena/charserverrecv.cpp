@@ -35,7 +35,6 @@
 #include "net/character.h"
 #include "net/charserverhandler.h"
 #include "net/playerhandler.h"
-#include "net/serverfeatures.h"
 
 #include "net/ea/token.h"
 
