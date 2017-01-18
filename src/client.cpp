@@ -350,6 +350,8 @@ void Client::gameInit()
 
     Dirs::initScreenshotDir();
 
+    updateEnv();
+
     // Initialize SDL
     logger->log1("Initializing SDL...");
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
@@ -396,7 +398,6 @@ void Client::gameInit()
         // !defined(__native_client__) && !defined(UNITTESTS)
 #endif  // defined(USE_OPENGL)
 
-    updateEnv();
     initGraphics();
 
     touchManager.init();

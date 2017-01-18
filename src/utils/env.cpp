@@ -55,7 +55,7 @@ void updateEnv()
             break;
         case 2:
             setEnv("__GL_SYNC_TO_VBLANK", "1");
-            setEnv("vblank_mode", "1");
+            setEnv("vblank_mode", "2");
             break;
         default:
             break;
