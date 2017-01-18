@@ -171,4 +171,14 @@ namespace PhysFs
         }
         return true;
     }
+
+    void permitLinks(const bool val)
+    {
+        PHYSFS_permitSymbolicLinks(val ? 1 : 0);
+    }
+
+    const char *getLastError()
+    {
+        return PHYSFS_getLastError();
+    }
 }  // namespace PhysFs

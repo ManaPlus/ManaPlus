@@ -349,7 +349,7 @@ bool ResourceManager::addToSearchPath(const std::string &path,
     {
         logger->log("Error: %s: addToSearchPath failed: %s",
             path.c_str(),
-            PHYSFS_getLastError());
+            PhysFs::getLastError());
         return false;
     }
     return true;
@@ -362,7 +362,7 @@ bool ResourceManager::removeFromSearchPath(const std::string &path) const
     {
         logger->log("Error: %s: removeFromSearchPath failed: %s",
             path.c_str(),
-            PHYSFS_getLastError());
+            PhysFs::getLastError());
         return false;
     }
     return true;

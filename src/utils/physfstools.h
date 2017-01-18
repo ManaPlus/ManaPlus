@@ -45,6 +45,8 @@ namespace PhysFs
     bool mkdir(const char *const dirName);
     void *loadFile(const std::string &fileName, int &fileSize);
     bool deinit();
+    void permitLinks(const bool val);
+    const char *getLastError();
 }  // namespace PhysFs
 
 extern const char *dirSeparator;

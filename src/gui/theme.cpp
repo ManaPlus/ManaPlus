@@ -570,9 +570,9 @@ void Theme::fillSkinsList(StringVect &list)
 
 void Theme::fillFontsList(StringVect &list)
 {
-    PHYSFS_permitSymbolicLinks(1);
+    PhysFs::permitLinks(true);
     Files::getFiles(branding.getStringValue("fontsPath"), list);
-    PHYSFS_permitSymbolicLinks(0);
+    PhysFs::permitLinks(false);
 }
 
 void Theme::fillSoundsList(StringVect &list)
