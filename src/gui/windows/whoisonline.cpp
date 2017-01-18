@@ -667,9 +667,9 @@ void WhoIsOnline::slowLogic()
     switch (mDownloadStatus)
     {
         case UPDATE_ERROR:
-            mBrowserBox->clearRows();
-            mBrowserBox->addRow("##1Failed to fetch the online list!");
-            mBrowserBox->addRow(mCurlError);
+            logger->assertLog("Failed to fetch the online list:");
+            if (mCurlError)
+                logger->assertLog("%s", mCurlError);
             mDownloadStatus = UPDATE_COMPLETE;
             // TRANSLATORS: who is online window name
             setCaption(_("Who Is Online - error"));
