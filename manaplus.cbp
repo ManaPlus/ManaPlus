@@ -755,6 +755,7 @@
 		<Unit filename="src/render/openglx/mglxtypes.h" />
 		<Unit filename="src/render/openglx/mglxinit.h" />
 		<Unit filename="src/render/openglx/mglx.h" />
+		<Unit filename="src/render/mockgraphics.h" />
 		<Unit filename="src/render/shaders/shadersmanager.h" />
 		<Unit filename="src/render/shaders/shader.h" />
 		<Unit filename="src/render/shaders/shaderprogram.h" />
@@ -771,6 +772,7 @@
 		<Unit filename="src/render/sdlgraphics.h" />
 		<Unit filename="src/render/rendererslistsdl.h" />
 		<Unit filename="src/render/sdl2softwaregraphics.h" />
+		<Unit filename="src/render/mockdrawitem.h" />
 		<Unit filename="src/render/mobileopenglgraphics.h" />
 		<Unit filename="src/render/nacl/naclgles.h" />
 		<Unit filename="src/render/nacl/naclfunctions.h" />
@@ -1619,6 +1621,7 @@
 		<Unit filename="src/enums/being/beingaction.h" />
 		<Unit filename="src/enums/emotetype.h" />
 		<Unit filename="src/enums/render/rendertype.h" />
+		<Unit filename="src/enums/render/mockdrawtype.h" />
 		<Unit filename="src/enums/render/blitmode.h" />
 		<Unit filename="src/enums/inventorytype.h" />
 		<Unit filename="src/enums/dragdropsource.h" />
