@@ -22,14 +22,48 @@
 
 #include "logger.h"
 
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_net.h>
+#include <SDL_ttf.h>
 #include <zlib.h>
 
 #include "debug.h"
 
+#define dumpCompiledSdlVersion(text, prefix) \
+    logger->log(" " text ": %d.%d.%d", \
+        prefix##_MAJOR_VERSION, \
+        prefix##_MINOR_VERSION, \
+        prefix##_PATCHLEVEL)
+
+static void dumpLinkedSdlVersion(const char *const text,
+                                 const SDL_version *const version)
+{
+    if (version)
+    {
+        logger->log(" %s: %d.%d.%d",
+            text,
+            version->major,
+            version->minor,
+            version->patch);
+    }
+}
+
 void dumpLibs()
 {
-    logger->log("Compiled with zLib: %s", ZLIB_VERSION);
+    logger->log("Compiled with:");
+    logger->log(" zLib: %s", ZLIB_VERSION);
+    dumpCompiledSdlVersion("SDL", SDL);
+    dumpCompiledSdlVersion("SDL_net", SDL_NET);
+    dumpCompiledSdlVersion("SDL_image", SDL_IMAGE);
+    dumpCompiledSdlVersion("SDL_ttf", SDL_TTF);
+
+    logger->log("Linked with:");
 #if ZLIB_VERNUM >= 0x1020
-    logger->log("Linked with zLib: %s", zlibVersion());
+    logger->log(" zLib: %s", zlibVersion());
 #endif  // ZLIB_VERNUM >= 0x1020
+    dumpLinkedSdlVersion("SDL", SDL_Linked_Version());
+    dumpLinkedSdlVersion("SDL_net", SDLNet_Linked_Version());
+    dumpLinkedSdlVersion("SDL_image", IMG_Linked_Version());
+    dumpLinkedSdlVersion("SDL_ttf", TTF_Linked_Version());
 }
