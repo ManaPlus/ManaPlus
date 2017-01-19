@@ -23,7 +23,6 @@
 #include "logger.h"
 
 #include <png.h>
-#include <SDL.h>
 #include <SDL_image.h>
 PRAGMACLANG6(GCC diagnostic push)
 PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
