@@ -499,6 +499,8 @@ SRC += events/actionevent.h \
 	      utils/cpu.h \
 	      utils/delete2.h \
 	      utils/dtor.h \
+	      utils/dumplibs.cpp \
+	      utils/dumplibs.h \
 	      utils/env.cpp \
 	      utils/env.h \
 	      utils/files.cpp \

@@ -105,6 +105,13 @@ AC_TYPE_UINT32_T
 AC_TYPE_INT64_T
 AC_TYPE_SSIZE_T
 
+# Search for *-config
+AC_PATH_PROG(PKG_CONFIG, pkg-config)
+AC_PATH_PROG(CURL_CONFIG, curl-config)
+
+LIBS="$LIBS `$PKG_CONFIG --libs zlib`"
+CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags zlib`"
+
 # Checks for internationalization support
 AM_GNU_GETTEXT([external],[need-ngettext])
 AM_GNU_GETTEXT_VERSION([0.16.1])
@@ -191,10 +198,6 @@ AC_MSG_ERROR([ *** SDL library found but cannot find headers (http://www.libsdl.
 if test "x$naclbuild_enabled" == "xfalse"; then
     AC_CHECK_SDL()
 fi
-
-# Search for *-config
-AC_PATH_PROG(PKG_CONFIG, pkg-config)
-AC_PATH_PROG(CURL_CONFIG, curl-config)
 
 # Checks for libraries
 AC_ARG_WITH(pthread,[  --without-pthread        don't check for pthread ] )
@@ -544,6 +547,10 @@ AC_OUTPUT
 
 echo
 echo "Build with OpenGL: $with_opengl"
+echo
+echo "LIBS: $LIBS"
+echo "CPPFLAGS: $CPPFLAGS"
+
 echo
 echo "configure complete, now type \"make\""
 echo

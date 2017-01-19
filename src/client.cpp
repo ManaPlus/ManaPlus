@@ -134,6 +134,7 @@
 
 #include "utils/cpu.h"
 #include "utils/delete2.h"
+#include "utils/dumplibs.h"
 #include "utils/env.h"
 #include "utils/fuzzer.h"
 #include "utils/gettext.h"
@@ -351,6 +352,7 @@ void Client::gameInit()
     Dirs::initScreenshotDir();
 
     updateEnv();
+    dumpLibs();
 
     // Initialize SDL
     logger->log1("Initializing SDL...");

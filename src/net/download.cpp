@@ -143,7 +143,7 @@ unsigned long Download::fadler32(FILE *const file)
     // Calculate Adler-32 checksum
     char *const buffer = new char[CAST_SIZE(fileSize)];
     const uInt read = static_cast<uInt>(fread(buffer, 1, fileSize, file));
-    unsigned long adler = adler32(0L, Z_NULL, 0);
+    unsigned long adler = adler32(0L, nullptr, 0);
     adler = adler32(static_cast<uInt>(adler),
         reinterpret_cast<Bytef*>(buffer), read);
     delete [] buffer;
@@ -153,7 +153,7 @@ unsigned long Download::fadler32(FILE *const file)
 unsigned long Download::adlerBuffer(const char *const buffer, int size)
 {
     FUNC_BLOCK("Download::adlerBuffer", 1)
-    unsigned long adler = adler32(0L, Z_NULL, 0);
+    unsigned long adler = adler32(0L, nullptr, 0);
     return adler32(static_cast<uInt>(adler),
         reinterpret_cast<const Bytef*>(buffer), size);
 }

@@ -128,9 +128,9 @@ int inflateMemory(unsigned char *restrict const in,
     out = static_cast<unsigned char*>(calloc(bufferSize, 1));
 
     z_stream strm;
-    strm.zalloc = Z_NULL;
-    strm.zfree = Z_NULL;
-    strm.opaque = Z_NULL;
+    strm.zalloc = nullptr;
+    strm.zfree = nullptr;
+    strm.opaque = nullptr;
     strm.next_in = in;
     strm.avail_in = inLength;
     strm.next_out = out;
