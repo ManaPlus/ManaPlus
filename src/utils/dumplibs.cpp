@@ -73,7 +73,16 @@ void dumpLibs()
 #ifdef LIBXML_TEST_VERSION
     LIBXML_TEST_VERSION
 #endif  // LIBXML_TEST_VERSION
+#ifdef USE_SDL2
+    SDL_version sdlVersion;
+    sdlVersion.major = 0;
+    sdlVersion.minor = 0;
+    sdlVersion.patch = 0;
+    SDL_GetVersion(&sdlVersion);
+    dumpLinkedSdlVersion("SDL", &sdlVersion);
+#else  // USE_SDL2
     dumpLinkedSdlVersion("SDL", SDL_Linked_Version());
+#endif  // USE_SDL2
     dumpLinkedSdlVersion("SDL_net", SDLNet_Linked_Version());
     dumpLinkedSdlVersion("SDL_image", IMG_Linked_Version());
     dumpLinkedSdlVersion("SDL_ttf", TTF_Linked_Version());
