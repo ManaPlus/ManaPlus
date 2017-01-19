@@ -111,6 +111,8 @@ AC_PATH_PROG(CURL_CONFIG, curl-config)
 
 LIBS="$LIBS `$PKG_CONFIG --libs zlib`"
 CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags zlib`"
+LIBS="$LIBS `$PKG_CONFIG --libs libpng`"
+CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags libpng`"
 
 # Checks for internationalization support
 AM_GNU_GETTEXT([external],[need-ngettext])
