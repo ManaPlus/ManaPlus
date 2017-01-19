@@ -22,11 +22,16 @@
 
 #include "logger.h"
 
+#include <png.h>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_net.h>
 #include <SDL_ttf.h>
 #include <zlib.h>
+
+#include <curl/curl.h>
+
+#include <libxml/xmlversion.h>
 
 #include "debug.h"
 
@@ -53,6 +58,9 @@ void dumpLibs()
 {
     logger->log("Compiled with:");
     logger->log(" zLib: %s", ZLIB_VERSION);
+    logger->log(" libxml2: %s", LIBXML_DOTTED_VERSION);
+    logger->log(" libcurl: %s", LIBCURL_VERSION);
+    logger->log(" libpng: %s", PNG_LIBPNG_VER_STRING);
     dumpCompiledSdlVersion("SDL", SDL);
     dumpCompiledSdlVersion("SDL_net", SDL_NET);
     dumpCompiledSdlVersion("SDL_image", SDL_IMAGE);
@@ -62,6 +70,9 @@ void dumpLibs()
 #if ZLIB_VERNUM >= 0x1020
     logger->log(" zLib: %s", zlibVersion());
 #endif  // ZLIB_VERNUM >= 0x1020
+#ifdef LIBXML_TEST_VERSION
+    LIBXML_TEST_VERSION
+#endif  // LIBXML_TEST_VERSION
     dumpLinkedSdlVersion("SDL", SDL_Linked_Version());
     dumpLinkedSdlVersion("SDL_net", SDLNet_Linked_Version());
     dumpLinkedSdlVersion("SDL_image", IMG_Linked_Version());
