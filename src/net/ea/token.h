@@ -28,7 +28,11 @@
 
 struct Token final
 {
-    Token()
+    Token() :
+        account_ID(BeingId_zero),
+        session_ID1(0),
+        session_ID2(0),
+        sex(Gender::UNSPECIFIED)
     { }
 
     A_DELETE_COPY(Token)
