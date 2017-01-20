@@ -9,6 +9,7 @@ SET(FILES
     LiberationMono-Regular.sfd
     LiberationSans-Bold.sfd
     LiberationSans-Regular.sfd
+    into.txt
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/fonts/src)

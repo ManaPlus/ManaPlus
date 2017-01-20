@@ -1,0 +1,5 @@
+In this directory present ttf fonts sources.
+
+For build this sources see debian packages:
+  fonts-dejavu
+  fonts-liberation

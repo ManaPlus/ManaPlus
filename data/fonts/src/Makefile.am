@@ -13,4 +13,5 @@ EXTRA_DIST =			\
 	LiberationMono-Regular.sfd \
 	LiberationSans-Bold.sfd \
 	LiberationSans-Regular.sfd \
+	info.txt \
 	CMakeLists.txt
