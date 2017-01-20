@@ -1266,6 +1266,8 @@ Map *MapReader::createEmptyMap(const std::string &restrict filename,
         -1);
     map->addLayer(layer);
     map->updateDrawLayersList();
+    map->updateConditionLayers();
+    map->preCacheLayers();
 
     return map;
 }
