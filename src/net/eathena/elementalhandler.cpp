@@ -27,7 +27,8 @@ extern Net::ElementalHandler *elementalHandler;
 namespace EAthena
 {
 
-ElementalHandler::ElementalHandler()
+ElementalHandler::ElementalHandler() :
+    Net::ElementalHandler()
 {
     elementalHandler = this;
 }

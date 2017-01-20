@@ -118,6 +118,7 @@ extern SkillDialog *skillDialog;
 LocalPlayer::LocalPlayer(const BeingId id,
                          const BeingTypeId subtype) :
     Being(id, ActorType::Player, subtype, nullptr),
+    ActorSpriteListener(),
     AttributeListener(),
     PlayerDeathListener(),
     StatListener(),

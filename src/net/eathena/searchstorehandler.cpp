@@ -31,7 +31,8 @@ extern int packetVersion;
 namespace EAthena
 {
 
-SearchStoreHandler::SearchStoreHandler()
+SearchStoreHandler::SearchStoreHandler() :
+    Net::SearchStoreHandler()
 {
     searchStoreHandler = this;
 }

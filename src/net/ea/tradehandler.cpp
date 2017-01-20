@@ -37,7 +37,8 @@ namespace
 namespace Ea
 {
 
-TradeHandler::TradeHandler()
+TradeHandler::TradeHandler() :
+    Net::TradeHandler()
 {
     confirmDlg = nullptr;
 }

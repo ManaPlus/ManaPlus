@@ -54,6 +54,7 @@ static bool modeSorter(const std::string &mode1, const std::string &mode2)
 #endif  // ANDROID
 
 ModeListModel::ModeListModel() :
+    ListModel(),
     mVideoModes()
 {
     SDL::getAllVideoModes(mVideoModes);

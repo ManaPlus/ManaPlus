@@ -47,6 +47,7 @@ WindowMenu *windowMenu = nullptr;
 
 WindowMenu::WindowMenu(const Widget2 *const widget) :
     Container(widget),
+    ConfigListener(),
     ActionListener(),
     SelectionListener(),
     MouseListener(),

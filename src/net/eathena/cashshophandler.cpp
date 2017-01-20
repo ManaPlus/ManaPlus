@@ -32,7 +32,8 @@ extern int packetVersion;
 namespace EAthena
 {
 
-CashShopHandler::CashShopHandler()
+CashShopHandler::CashShopHandler() :
+    Net::CashShopHandler()
 {
     cashShopHandler = this;
     CashShopRecv::mBuyDialog = nullptr;

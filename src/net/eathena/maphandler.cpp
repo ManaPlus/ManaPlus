@@ -27,7 +27,8 @@ extern Net::MapHandler *mapHandler;
 namespace EAthena
 {
 
-MapHandler::MapHandler()
+MapHandler::MapHandler() :
+    Net::MapHandler()
 {
     mapHandler = this;
 }

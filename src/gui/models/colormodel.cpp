@@ -27,6 +27,7 @@
 #include "debug.h"
 
 ColorModel::ColorModel() :
+    ListModel(),
     mNames(),
     mColors()
 {

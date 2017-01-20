@@ -59,6 +59,7 @@ static void fadeOutCallBack()
 }
 
 SoundManager::SoundManager() :
+    ConfigListener(),
     mNextMusicFile(),
     mInstalled(false),
     mSfxVolume(100),

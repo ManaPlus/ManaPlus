@@ -27,7 +27,8 @@ extern Net::MarketHandler *marketHandler;
 namespace TmwAthena
 {
 
-MarketHandler::MarketHandler()
+MarketHandler::MarketHandler() :
+    Net::MarketHandler()
 {
     marketHandler = this;
 }

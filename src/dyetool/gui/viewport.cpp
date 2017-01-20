@@ -39,6 +39,7 @@ extern volatile int tick_time;
 Viewport::Viewport() :
     WindowContainer(nullptr),
     MouseListener(),
+    ConfigListener(),
     mMouseX(0),
     mMouseY(0),
     mMap(nullptr),

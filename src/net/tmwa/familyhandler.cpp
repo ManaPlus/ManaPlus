@@ -27,7 +27,8 @@ extern Net::FamilyHandler *familyHandler;
 namespace TmwAthena
 {
 
-FamilyHandler::FamilyHandler()
+FamilyHandler::FamilyHandler() :
+    Net::FamilyHandler()
 {
     familyHandler = this;
 }

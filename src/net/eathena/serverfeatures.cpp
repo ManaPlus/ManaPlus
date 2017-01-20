@@ -30,7 +30,8 @@ extern Net::ServerFeatures *serverFeatures;
 namespace EAthena
 {
 
-ServerFeatures::ServerFeatures()
+ServerFeatures::ServerFeatures() :
+    Net::ServerFeatures()
 {
     serverFeatures = this;
 }

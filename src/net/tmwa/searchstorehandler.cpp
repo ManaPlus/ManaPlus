@@ -27,7 +27,8 @@ extern Net::SearchStoreHandler *searchStoreHandler;
 namespace TmwAthena
 {
 
-SearchStoreHandler::SearchStoreHandler()
+SearchStoreHandler::SearchStoreHandler() :
+    Net::SearchStoreHandler()
 {
     searchStoreHandler = this;
 }

@@ -27,7 +27,8 @@ extern Net::MapHandler *mapHandler;
 namespace TmwAthena
 {
 
-MapHandler::MapHandler()
+MapHandler::MapHandler() :
+    Net::MapHandler()
 {
     mapHandler = this;
 }

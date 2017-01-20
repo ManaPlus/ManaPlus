@@ -50,6 +50,7 @@
 EventsManager eventsManager;
 
 EventsManager::EventsManager() :
+    ConfigListener(),
     mLogInput(false)
 {
 }

@@ -30,7 +30,9 @@
 
 #include "debug.h"
 
-BeingEquipBackend::BeingEquipBackend(Being *const being)
+BeingEquipBackend::BeingEquipBackend(Being *const being) :
+    Equipment::Backend(),
+    mEquipment()
 {
     memset(mEquipment, 0, sizeof(mEquipment));
     if (being)

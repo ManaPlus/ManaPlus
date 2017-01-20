@@ -52,6 +52,7 @@ HelpWindow *helpWindow = nullptr;
 HelpWindow::HelpWindow() :
     // TRANSLATORS: help window name
     Window(_("Help"), Modal_false, nullptr, "help.xml"),
+    LinkHandler(),
     ActionListener(),
     // TRANSLATORS: help window. button.
     mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),

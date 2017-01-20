@@ -32,7 +32,8 @@
 namespace Ea
 {
 
-InventoryHandler::InventoryHandler()
+InventoryHandler::InventoryHandler() :
+    Net::InventoryHandler()
 {
     InventoryRecv::mEquips.clear();
     InventoryRecv::mInventoryItems.clear();

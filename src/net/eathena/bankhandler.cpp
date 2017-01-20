@@ -31,7 +31,8 @@ extern int packetVersion;
 namespace EAthena
 {
 
-BankHandler::BankHandler()
+BankHandler::BankHandler() :
+    Net::BankHandler()
 {
     bankHandler = this;
 }

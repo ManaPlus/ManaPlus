@@ -27,7 +27,8 @@ extern Net::BankHandler *bankHandler;
 namespace TmwAthena
 {
 
-BankHandler::BankHandler()
+BankHandler::BankHandler() :
+    Net::BankHandler()
 {
     bankHandler = this;
 }

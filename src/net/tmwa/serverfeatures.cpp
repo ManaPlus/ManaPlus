@@ -28,7 +28,8 @@ extern Net::ServerFeatures *serverFeatures;
 namespace TmwAthena
 {
 
-ServerFeatures::ServerFeatures()
+ServerFeatures::ServerFeatures() :
+    Net::ServerFeatures()
 {
     serverFeatures = this;
 }

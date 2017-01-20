@@ -29,6 +29,7 @@
 #include "debug.h"
 
 ShopItems::ShopItems(const bool mergeDuplicates) :
+    ListModel(),
     mAllShopItems(),
     mShopItems(),
     mMergeDuplicates(mergeDuplicates)

@@ -27,7 +27,8 @@ extern Net::RouletteHandler *rouletteHandler;
 namespace EAthena
 {
 
-RouletteHandler::RouletteHandler()
+RouletteHandler::RouletteHandler() :
+    Net::RouletteHandler()
 {
     rouletteHandler = this;
 }

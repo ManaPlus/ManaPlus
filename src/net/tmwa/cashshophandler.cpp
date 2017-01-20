@@ -27,7 +27,8 @@ extern Net::CashShopHandler *cashShopHandler;
 namespace TmwAthena
 {
 
-CashShopHandler::CashShopHandler()
+CashShopHandler::CashShopHandler() :
+    Net::CashShopHandler()
 {
     cashShopHandler = this;
 }

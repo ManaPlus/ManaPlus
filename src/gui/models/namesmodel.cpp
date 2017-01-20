@@ -25,6 +25,7 @@
 #include "debug.h"
 
 NamesModel::NamesModel() :
+    ListModel(),
     mNames()
 {
 }

@@ -124,7 +124,8 @@ std::string UserPalette::getConfigName(const std::string &typeName)
 }
 
 UserPalette::UserPalette() :
-    Palette(CAST_S32(UserColorId::USER_COLOR_LAST))
+    Palette(CAST_S32(UserColorId::USER_COLOR_LAST)),
+    ListModel()
 {
     mColors[CAST_SIZE(UserColorId::BEING)] = ColorElem();
     mColors[CAST_SIZE(UserColorId::PC)] = ColorElem();

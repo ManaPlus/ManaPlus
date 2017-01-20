@@ -34,7 +34,8 @@ extern int packetVersion;
 namespace EAthena
 {
 
-MarketHandler::MarketHandler()
+MarketHandler::MarketHandler() :
+    Net::MarketHandler()
 {
     marketHandler = this;
     MarketRecv::mBuyDialog = nullptr;

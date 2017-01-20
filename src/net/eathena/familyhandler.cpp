@@ -33,7 +33,8 @@ extern Net::FamilyHandler *familyHandler;
 namespace EAthena
 {
 
-FamilyHandler::FamilyHandler()
+FamilyHandler::FamilyHandler() :
+    Net::FamilyHandler()
 {
     FamilyRecv::mParent1 = BeingId_zero;
     FamilyRecv::mParent2 = BeingId_zero;

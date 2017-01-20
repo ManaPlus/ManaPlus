@@ -29,7 +29,8 @@
 namespace Ea
 {
 
-BeingHandler::BeingHandler(const bool enableSync)
+BeingHandler::BeingHandler(const bool enableSync) :
+    Net::BeingHandler()
 {
     BeingRecv::mSync = enableSync;
     BeingRecv::mSpawnId = BeingId_zero;
