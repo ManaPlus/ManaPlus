@@ -582,6 +582,7 @@ SRC += events/actionevent.h \
 	      const/equipment.h \
 	      const/spells.h \
 	      const/utils/timer.h \
+	      const/utils/utf8.h \
 	      const/gui/chat.h \
 	      const/gui/theme.h \
 	      const/render/graphics.h \

@@ -22,6 +22,8 @@
 
 #include "utils/stringutils.h"
 
+#include "const/utils/utf8.h"
+
 #ifndef DYECMD
 #include "resources/iteminfo.h"
 

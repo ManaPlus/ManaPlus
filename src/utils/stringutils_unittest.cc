@@ -22,6 +22,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "const/utils/utf8.h"
+
 #include "utils/physfstools.h"
 
 #include "resources/iteminfo.h"

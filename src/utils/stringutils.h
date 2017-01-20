@@ -30,8 +30,6 @@
 
 #include "localconsts.h"
 
-static const size_t UTF8_MAX_SIZE = 10;
-
 /**
  * Trims spaces off the end and the beginning of the given string.
  *
