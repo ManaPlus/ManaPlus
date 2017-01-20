@@ -23,6 +23,9 @@ Version: 1.7.1.7        Date: 2017-01-07
  - xsel (for clipboard access, used only in SDL 1.2)
  - xdg-open (from xdg-utils, for open url in browser)
 
+### Images and fonts sources:
+ - data/icons
+ - data/fonts/src
 
 ## 0. Index
 
