@@ -3,3 +3,15 @@ In this directory present ttf fonts sources.
 For build this sources see debian packages:
   fonts-dejavu
   fonts-liberation
+
+Mapping between ttf file names and sfd:
+dejavusans-bold.ttf             DejaVuSans-Bold.sfd
+dejavusansmono-bold.ttf         DejaVuSansMono-Bold.sfd
+dejavusansmono.ttf              DejaVuSansMono.sfd
+dejavusans.ttf                  DejaVuSans.sfd
+dejavuserifcondensed-bold.ttf   DejaVuSerifCondensed-Bold.sfd
+dejavuserifcondensed.ttf        DejaVuSerifCondensed.sfd
+liberationsans-bold.ttf         LiberationMono-Bold.sfd
+liberationsansmono-bold.ttf     LiberationSans-Bold.sfd
+liberationsansmono.ttf          LiberationMono-Regular.sfd
+liberationsans.ttf              LiberationSans-Regular.sfd
