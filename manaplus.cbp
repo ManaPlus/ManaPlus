@@ -147,6 +147,7 @@
 		<Unit filename="src/utils/translation/poparser.cpp" />
 		<Unit filename="src/utils/translation/podict.cpp" />
 		<Unit filename="src/utils/glxhelper.cpp" />
+		<Unit filename="src/utils/dumplibs.cpp" />
 		<Unit filename="src/utils/xml/pugixmlwriter.cpp" />
 		<Unit filename="src/utils/xml/pugixml.cpp" />
 		<Unit filename="src/utils/xml/libxml.cpp" />
@@ -813,6 +814,7 @@
 		<Unit filename="src/utils/sdlpixel.h" />
 		<Unit filename="src/utils/glxhelper.h" />
 		<Unit filename="src/utils/process.h" />
+		<Unit filename="src/utils/dumplibs.h" />
 		<Unit filename="src/utils/xml.h" />
 		<Unit filename="src/utils/gettexthelper.h" />
 		<Unit filename="src/utils/mkdir.h" />
@@ -894,6 +896,7 @@
 		<Unit filename="src/units.h" />
 		<Unit filename="src/const/render/graphics.h" />
 		<Unit filename="src/const/utils/timer.h" />
+		<Unit filename="src/const/utils/utf8.h" />
 		<Unit filename="src/const/equipment.h" />
 		<Unit filename="src/const/resources/spriteaction.h" />
 		<Unit filename="src/const/resources/skill.h" />
