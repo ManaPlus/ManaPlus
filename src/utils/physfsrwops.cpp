@@ -61,15 +61,17 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
         const PHYSFS_sint64 current = PHYSFS_tell(handle);
         if (current == -1)
         {
-            SDL_SetError("Can't find position in file: %s",
-                          PHYSFS_getLastError());
+            logger->assertLog(
+                "physfsrwops_seek: Can't find position in file: %s",
+                PHYSFS_getLastError());
             return -1;
         } /* if */
 
         pos = CAST_S32(current);
         if (static_cast<PHYSFS_sint64>(pos) != current)
         {
-            SDL_SetError("Can't fit current file position in an int!");
+            logger->assertLog("physfsrwops_seek: "
+                "Can't fit current file position in an int!");
             return -1;
         } /* if */
 
@@ -83,14 +85,16 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
         const PHYSFS_sint64 len = PHYSFS_fileLength(handle);
         if (len == -1)
         {
-            SDL_SetError("Can't find end of file: %s", PHYSFS_getLastError());
+            logger->assertLog("physfsrwops_seek:Can't find end of file: %s",
+                PHYSFS_getLastError());
             return -1;
         } /* if */
 
         pos = static_cast<PHYSFSINT>(len);
         if (static_cast<PHYSFS_sint64>(pos) != len)
         {
-            SDL_SetError("Can't fit end-of-file position in an int!");
+            logger->assertLog("physfsrwops_seek: "
+                "Can't fit end-of-file position in an int!");
             return -1;
         } /* if */
 
@@ -98,19 +102,21 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
     } /* else if */
     else
     {
-        SDL_SetError("Invalid 'whence' parameter.");
+        logger->assertLog("physfsrwops_seek: Invalid 'whence' parameter.");
         return -1;
     } /* else */
 
     if (pos < 0)
     {
-        SDL_SetError("Attempt to seek past start of file.");
+        logger->assertLog("physfsrwops_seek: "
+            "Attempt to seek past start of file.");
         return -1;
     } /* if */
 
     if (!PHYSFS_seek(handle, static_cast<PHYSFS_uint64>(pos)))
     {
-        SDL_SetError("PhysicsFS error: %s", PHYSFS_getLastError());
+        logger->assertLog("physfsrwops_seek: seek error: %s",
+            PHYSFS_getLastError());
         return -1;
     } /* if */
 
@@ -132,7 +138,10 @@ static PHYSFSSIZE physfsrwops_read(SDL_RWops *const rw,
     if (rc != static_cast<PHYSFS_sint64>(maxnum))
     {
         if (!PHYSFS_eof(handle)) /* not EOF? Must be an error. */
-            SDL_SetError("PhysicsFS error: %s", PHYSFS_getLastError());
+        {
+            logger->assertLog("physfsrwops_seek: read error: %s",
+                PHYSFS_getLastError());
+        }
     } /* if */
 
     return CAST_S32(rc);
@@ -150,7 +159,10 @@ static PHYSFSSIZE physfsrwops_write(SDL_RWops *const rw, const void *ptr,
         CAST_U32(size),
         CAST_U32(num));
     if (rc != static_cast<PHYSFS_sint64>(num))
-        SDL_SetError("PhysicsFS error: %s", PHYSFS_getLastError());
+    {
+        logger->assertLog("physfsrwops_seek: write error: %s",
+            PHYSFS_getLastError());
+    }
 
     return CAST_S32(rc);
 } /* physfsrwops_write */
@@ -163,14 +175,15 @@ static int physfsrwops_close(SDL_RWops *const rw)
         rw->hidden.unknown.data1);
     if (!PHYSFS_close(handle))
     {
-        SDL_SetError("PhysicsFS error: %s", PHYSFS_getLastError());
+        logger->assertLog("physfsrwops_seek: close error: %s",
+            PHYSFS_getLastError());
         return -1;
     } /* if */
 
     SDL_FreeRW(rw);
 #ifdef DUMP_LEAKED_RESOURCES
     if (openedRWops <= 0)
-        logger->log("closing already closed RWops");
+        logger->assertLog("physfsrwops_seek: closing already closed RWops");
     openedRWops --;
 #endif  // DUMP_LEAKED_RESOURCES
 #ifdef DEBUG_PHYSFS
@@ -195,7 +208,8 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
 
     if (!handle)
     {
-        SDL_SetError("PhysicsFS error: %s", PHYSFS_getLastError());
+        logger->assertLog("physfsrwops_seek: create rwops error: %s",
+            PHYSFS_getLastError());
     }
     else
     {
@@ -224,9 +238,14 @@ SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *const handle)
 {
     SDL_RWops *retval = nullptr;
     if (!handle)
-        SDL_SetError("NULL pointer passed to PHYSFSRWOPS_makeRWops().");
+    {
+        logger->assertLog("physfsrwops_seek: NULL pointer passed to "
+            "PHYSFSRWOPS_makeRWops().");
+    }
     else
+    {
         retval = create_rwops(handle);
+    }
 
     return retval;
 } /* PHYSFSRWOPS_makeRWops */
@@ -287,7 +306,10 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname)
 void reportRWops()
 {
     if (openedRWops)
-        logger->log("leaking RWops: %d", openedRWops);
+    {
+        logger->assertLog("physfsrwops_seek: leaking RWops: %d",
+            openedRWops);
+    }
 }
 #endif  // DUMP_LEAKED_RESOURCES
 
