@@ -29,6 +29,7 @@ PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
 PRAGMACLANG6(GCC diagnostic pop)
 #include <SDL_ttf.h>
+#include <physfs.h>
 #include <zlib.h>
 
 #include <curl/curl.h>
@@ -63,6 +64,12 @@ void dumpLibs()
     logger->log(" libxml2: %s", LIBXML_DOTTED_VERSION);
     logger->log(" libcurl: %s", LIBCURL_VERSION);
     logger->log(" libpng: %s", PNG_LIBPNG_VER_STRING);
+    PHYSFS_Version physfsVersion;
+    PHYSFS_VERSION(&physfsVersion);
+    logger->log(" libphysfs: %d.%d.%d",
+        physfsVersion.major,
+        physfsVersion.minor,
+        physfsVersion.patch);
     dumpCompiledSdlVersion("SDL", SDL);
     dumpCompiledSdlVersion("SDL_net", SDL_NET);
     dumpCompiledSdlVersion("SDL_image", SDL_IMAGE);
@@ -72,6 +79,11 @@ void dumpLibs()
 #if ZLIB_VERNUM >= 0x1020
     logger->log(" zLib: %s", zlibVersion());
 #endif  // ZLIB_VERNUM >= 0x1020
+    PHYSFS_getLinkedVersion(&physfsVersion);
+    logger->log(" libphysfs: %d.%d.%d",
+        physfsVersion.major,
+        physfsVersion.minor,
+        physfsVersion.patch);
 #ifdef LIBXML_TEST_VERSION
     LIBXML_TEST_VERSION
 #endif  // LIBXML_TEST_VERSION
