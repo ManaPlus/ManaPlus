@@ -346,6 +346,15 @@ gcc-4.7_i386:
   tags:
     - docker
 
+gcc-4.7_c++11:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc47_c++11.sh
+  image: debian:oldstable
+  <<: *job-artifacts
+  tags:
+    - docker
+
 gcc-4.8:
   stage: build
   script:
