@@ -821,7 +821,7 @@ TEST_CASE("stringuntils splitToStringVector 1")
     splitToStringVector(tokens, "t,,zz", ',');
     REQUIRE(tokens.size() == 2);
     REQUIRE(tokens[0] == "t");
-    REQUIRE(tokens[2] == "zz");
+    REQUIRE(tokens[1] == "zz");
 
     tokens.clear();
     splitToStringVector(tokens, "10,a2;30", ',');

@@ -1874,6 +1874,8 @@ manaplustests_CXXFLAGS += -DUSE_X11
 endif
 
 manaplustests_SOURCES = ${manaplus_SOURCES} \
+	      enums/render/mockdrawtype.h \
+	      render/mockdrawitem.h \
 	      render/mockgraphics.cc \
 	      render/mockgraphics.h \
 	      enums/enums_unittest.cc \

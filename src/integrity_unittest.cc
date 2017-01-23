@@ -32,14 +32,15 @@
 #include "resources/loaders/imageloader.h"
 
 #include "resources/sdlimagehelper.h"
+#ifdef USE_SDL2
+#include "resources/surfaceimagehelper.h"
+#endif  // USE_SDL2
 
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
 #include "utils/physfsrwops.h"
-#include "utils/physfstools.h"
 
-#include <physfs.h>
 #include <SDL_image.h>
 
 #include "debug.h"
@@ -108,12 +109,15 @@ TEST_CASE("integrity tests", "integrity")
     resourceManager->addToSearchPath("data", Append_false);
     resourceManager->addToSearchPath("../data", Append_false);
 
-    imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2
+    imageHelper = new SurfaceImageHelper;
+
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
         SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
 #else  // USE_SDL2
+
+    imageHelper = new SDLImageHelper();
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
@@ -207,8 +211,12 @@ TEST_CASE("integrity tests", "integrity")
 
     SECTION("integrity Loader::getImage test 2")
     {
+        resourceManager->addToSearchPath("data/test/test.zip", Append_false);
+        resourceManager->addToSearchPath("../data/test/test.zip", Append_false);
         Image *const image = Loader::getImage(
             "hide.png");
+        resourceManager->removeFromSearchPath("data/test/test.zip");
+        resourceManager->removeFromSearchPath("../data/test/test.zip");
         REQUIRE(image != nullptr);
         REQUIRE(image->getSDLSurface() != nullptr);
         image->decRef();
@@ -290,7 +298,7 @@ TEST_CASE("integrity tests", "integrity")
             CAST_U32(size1));
         if (rc != static_cast<PHYSFS_sint64>(size1))
         {
-            logger->log("PHYSFS_read %d bytes", rc);
+            logger->log("PHYSFS_read %d bytes", static_cast<int>(rc));
             if (!PHYSFS_eof(handle))
             {
                 logger->log("PhysicsFS read error: %s",
