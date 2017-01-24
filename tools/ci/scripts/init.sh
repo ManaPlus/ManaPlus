@@ -1,12 +1,7 @@
 #!/bin/bash
 
-pwd
-mkdir logs
-
 export dir=$(pwd)
 export ERRFILE=${dir}/logs/${LOGFILE}
-
-cat /etc/os-release
 
 rm ${ERRFILE}
 
@@ -65,9 +60,13 @@ function aptget_update {
 function aptget_install {
     if [ "$RUNFROMSHELL" != "" ];
     then
-        echo "Running from shell. Skipping apt-get install"
+        echo "Running from shell. Skipping apt-get"
         return
     fi
+
+    update_repos
+    aptget_update
+
     echo "apt-get -y -qq install $*"
     apt-get -y -qq install $*
     if [ "$?" != 0 ]; then
@@ -265,6 +264,3 @@ function run_mplint {
     check_error $?
     run_check_warnings
 }
-
-update_repos
-aptget_update
