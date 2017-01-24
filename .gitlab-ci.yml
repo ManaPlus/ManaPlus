@@ -6,6 +6,10 @@ stages:
 before_script:
   - uname -a
 
+variables:
+  GET_SOURCES_ATTEMPTS: "5"
+  ARTIFACT_DOWNLOAD_ATTEMPTS: "5"
+
 .job-artifacts: &job-artifacts
   artifacts:
     paths:
