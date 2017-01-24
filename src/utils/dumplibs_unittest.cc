@@ -23,7 +23,6 @@
 
 #include "utils/stringutils.h"
 
-#include <png.h>
 #include <SDL_image.h>
 PRAGMACLANG6(GCC diagnostic push)
 PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
@@ -32,10 +31,6 @@ PRAGMACLANG6(GCC diagnostic pop)
 #include <SDL_ttf.h>
 #include <physfs.h>
 #include <zlib.h>
-
-#include <curl/curl.h>
-
-#include <libxml/xmlversion.h>
 
 #include "debug.h"
 
