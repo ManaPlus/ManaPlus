@@ -292,6 +292,13 @@ gcc-6_lto_i386:
   tags:
     - docker
 
+gcc-5_tarball_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tarball_tests.sh
+  image: debian:unstable
+  <<: *job-artifacts
+
 # simple builds
 
 gcc-4.4_i386:
