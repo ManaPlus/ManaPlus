@@ -2,8 +2,6 @@ stages:
   - prebuild
   - build
   - stats
-  - success
-  - failure
 
 before_script:
   - uname -a
@@ -3548,24 +3546,3 @@ pages:
     expire_in: 3 week
   only:
     - master
-
-# reports
-
-success:
-  stage: success
-  script:
-  - echo "nothing"
-  image: debian:unstable
-  variables:
-    GIT_STRATEGY: none
-  when: on_success
-
-failure:
-  stage: failure
-  script:
-  - echo "nothing"
-  image: debian:unstable
-  variables:
-    GIT_STRATEGY: none
-  when: on_failure
-  <<: *job-artifacts
