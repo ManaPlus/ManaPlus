@@ -12,6 +12,7 @@ before_script:
   - tools/ci/scripts/dockerretry.sh apt-get update
   - tools/ci/scripts/dockerretry.sh apt-get install -y -qq ${PACKAGES}
 
+image: debian:unstable
 variables:
   GET_SOURCES_ATTEMPTS: "5"
   ARTIFACT_DOWNLOAD_ATTEMPTS: "5"
@@ -30,7 +31,6 @@ clang-3.9:
   stage: prebuild
   script:
   - ./tools/ci/jobs/clang39.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
@@ -56,7 +56,6 @@ gcc-6:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -94,7 +93,6 @@ gcc-5_sdl2:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -106,7 +104,6 @@ mplint_po:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh po
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc g++ git 
@@ -116,7 +113,6 @@ mplint_src:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh src
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc g++ git 
@@ -126,7 +122,6 @@ mplint_data:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh data
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc g++ git 
@@ -136,7 +131,6 @@ cpplint:
   stage: prebuild
   script:
   - ./tools/ci/jobs/cpplint.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget
@@ -145,7 +139,6 @@ gcc-5_h_all:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -171,7 +164,6 @@ pngcheck:
   stage: prebuild
   script:
   - ./tools/ci/jobs/pngcheck.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: pngcheck
@@ -180,7 +172,6 @@ icccheck:
   stage: prebuild
   script:
   - ./tools/ci/jobs/imagemagiccheck.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: imagemagick
@@ -191,7 +182,6 @@ gcc-5_sanitize_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -206,7 +196,6 @@ gcc-6_tests_simd:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_tests_simd.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -236,7 +225,6 @@ gcc-5_sanitize_no_opengl_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -266,7 +254,6 @@ gcc-5_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_tests.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -296,7 +283,6 @@ gcc-6_tests_gcov:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_tests_gcov.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -327,7 +313,6 @@ gcc-6_tests_no_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_tests.sh --without-opengl
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -357,7 +342,6 @@ gcc-6_sdl2_tests_gcov:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sdl2_tests_gcov.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -388,7 +372,6 @@ gcc-5_sdl2_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -418,7 +401,6 @@ gcc-5_sdl2_no_opengl_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -448,7 +430,6 @@ gcc-6_lto:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_lto.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -474,7 +455,6 @@ gcc-5_tarball_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_tarball_tests.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -803,7 +783,6 @@ clang-3.8_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang39.sh_c++11.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
@@ -893,7 +872,6 @@ cmake_gcc-4.9:
   stage: prebuild
   script:
   - ./tools/ci/jobs/clang40.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: clang-4.0 libc++-dev libc++abi-dev 
@@ -907,7 +885,6 @@ gcc-5:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --enable-werror
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -919,7 +896,6 @@ gcc-5_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -931,7 +907,6 @@ gcc-5_sdl2_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -957,7 +932,6 @@ gcc-snapshot:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-snapshot 
@@ -983,7 +957,6 @@ gcc-snapshot_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-snapshot 
@@ -1009,7 +982,6 @@ gcc-5_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1023,7 +995,6 @@ gcc-6_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1051,7 +1022,6 @@ gcc_eathena:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --without-opengl --disable-tmwa
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1063,7 +1033,6 @@ gcc_without_mumble:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --without-mumble --enable-werror
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1075,7 +1044,6 @@ gcc_without_customnls:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --enable-customnls --enable-werror
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1087,7 +1055,6 @@ gcc_without_customnls_nonls:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --enable-customnls --disable-nls --enable-werror
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1099,7 +1066,6 @@ gcc_without_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --without-opengl --enable-werror
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1123,7 +1089,6 @@ gcc-5_cilkplus:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --enable-cilkplus
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1135,7 +1100,6 @@ gcc-6_cilkplus:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --enable-cilkplus
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1147,7 +1111,6 @@ gcc_eathena_opengl:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --with-opengl --disable-tmwa
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1159,7 +1122,6 @@ gcc_eathena_opengl_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --disable-tmwa
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1171,7 +1133,6 @@ gcc_eathena_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --disable-tmwa
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1183,7 +1144,6 @@ gcc_portable:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --with-opengl --enable-tmwa --enable-portable=yes
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1195,7 +1155,6 @@ gcc_eathena_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh --without-opengl --disable-tmwa
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1207,7 +1166,6 @@ gcc_eathena_sdl2_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh --without-opengl --disable-tmwa
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1219,7 +1177,6 @@ clang-3.9_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/clang39_sdl2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
@@ -1231,7 +1188,6 @@ gcc-6_no_asserts:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --disable-asserts
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1245,7 +1201,6 @@ gcc-5_h_eathena_tmwa:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1257,7 +1212,6 @@ gcc-5_h_pugi_all:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1269,7 +1223,6 @@ gcc-5_tarball:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_tarball.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1289,7 +1242,6 @@ deheader_gui_windows_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1308,7 +1260,6 @@ deheader_sdl2_gui_windows_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1327,7 +1278,6 @@ deheader_gui_windows_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1346,7 +1296,6 @@ deheader_sdl2_gui_windows_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1365,7 +1314,6 @@ deheader_gui_widgets_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1384,7 +1332,6 @@ deheader_sdl2_gui_widgets_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1403,7 +1350,6 @@ deheader_gui_widgets_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1422,7 +1368,6 @@ deheader_sdl2_gui_widgets_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1441,7 +1386,6 @@ deheader_gui_models_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1460,7 +1404,6 @@ deheader_sdl2_gui_models_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1479,7 +1422,6 @@ deheader_gui_models_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1498,7 +1440,6 @@ deheader_sdl2_gui_models_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1517,7 +1458,6 @@ deheader_actions_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1536,7 +1476,6 @@ deheader_actions_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1555,7 +1494,6 @@ deheader_being_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1574,7 +1512,6 @@ deheader_being_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1593,7 +1530,6 @@ deheader_const_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1612,7 +1548,6 @@ deheader_dyetool_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1631,7 +1566,6 @@ deheader_dyetool_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1650,7 +1584,6 @@ deheader_enums_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1669,7 +1602,6 @@ deheader_events_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1688,7 +1620,6 @@ deheader_gui_fonts_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1707,7 +1638,6 @@ deheader_gui_fonts_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1726,7 +1656,6 @@ deheader_gui_models_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1745,7 +1674,6 @@ deheader_gui_popups_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1764,7 +1692,6 @@ deheader_gui_popups_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1783,7 +1710,6 @@ deheader_gui_shortcut_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1802,7 +1728,6 @@ deheader_gui_shortcut_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1821,7 +1746,6 @@ deheader_gui_widgets_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1840,7 +1764,6 @@ deheader_gui_windows_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1859,7 +1782,6 @@ deheader_gui_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1878,7 +1800,6 @@ deheader_gui_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1897,7 +1818,6 @@ deheader_input_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1916,7 +1836,6 @@ deheader_input_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1935,7 +1854,6 @@ deheader_listeners_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1954,7 +1872,6 @@ deheader_listeners_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1973,7 +1890,6 @@ deheader_net_ea_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -1992,7 +1908,6 @@ deheader_net_ea_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2011,7 +1926,6 @@ deheader_net_eathena_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2030,7 +1944,6 @@ deheader_net_eathena_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2049,7 +1962,6 @@ deheader_net_tmwa_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2068,7 +1980,6 @@ deheader_net_tmwa_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2087,7 +1998,6 @@ deheader_net_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2106,7 +2016,6 @@ deheader_net_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2125,7 +2034,6 @@ deheader_particle_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2144,7 +2052,6 @@ deheader_particle_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2163,7 +2070,6 @@ deheader_render_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2182,7 +2088,6 @@ deheader_render_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2201,7 +2106,6 @@ deheader_resources_db_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2220,7 +2124,6 @@ deheader_resources_db_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2239,7 +2142,6 @@ deheader_resources_map_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2258,7 +2160,6 @@ deheader_resources_map_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2277,7 +2178,6 @@ deheader_resources_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2296,7 +2196,6 @@ deheader_resources_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2315,7 +2214,6 @@ deheader_test_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2334,7 +2232,6 @@ deheader_test_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2353,7 +2250,6 @@ deheader_utils_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2372,7 +2268,6 @@ deheader_utils_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2391,7 +2286,6 @@ deheader_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2410,7 +2304,6 @@ deheader_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2429,7 +2322,6 @@ deheader_cc:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2450,7 +2342,6 @@ deheader_sdl2_actions_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2469,7 +2360,6 @@ deheader_sdl2_actions_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2488,7 +2378,6 @@ deheader_sdl2_being_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2507,7 +2396,6 @@ deheader_sdl2_being_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2526,7 +2414,6 @@ deheader_sdl2_const_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2545,7 +2432,6 @@ deheader_sdl2_dyetool_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2564,7 +2450,6 @@ deheader_sdl2_dyetool_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2583,7 +2468,6 @@ deheader_sdl2_enums_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2602,7 +2486,6 @@ deheader_sdl2_events_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2621,7 +2504,6 @@ deheader_sdl2_gui_fonts_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2640,7 +2522,6 @@ deheader_sdl2_gui_fonts_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2659,7 +2540,6 @@ deheader_sdl2_gui_models_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2678,7 +2558,6 @@ deheader_sdl2_gui_popups_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2697,7 +2576,6 @@ deheader_sdl2_gui_popups_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2716,7 +2594,6 @@ deheader_sdl2_gui_shortcut_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2735,7 +2612,6 @@ deheader_sdl2_gui_shortcut_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2754,7 +2630,6 @@ deheader_sdl2_gui_widgets_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2773,7 +2648,6 @@ deheader_sdl2_gui_windows_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2792,7 +2666,6 @@ deheader_sdl2_gui_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2811,7 +2684,6 @@ deheader_sdl2_gui_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2830,7 +2702,6 @@ deheader_sdl2_input_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2849,7 +2720,6 @@ deheader_sdl2_input_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2868,7 +2738,6 @@ deheader_sdl2_listeners_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2887,7 +2756,6 @@ deheader_sdl2_listeners_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2906,7 +2774,6 @@ deheader_sdl2_net_ea_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2925,7 +2792,6 @@ deheader_sdl2_net_ea_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2944,7 +2810,6 @@ deheader_sdl2_net_eathena_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2963,7 +2828,6 @@ deheader_sdl2_net_eathena_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -2982,7 +2846,6 @@ deheader_sdl2_net_tmwa_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3001,7 +2864,6 @@ deheader_sdl2_net_tmwa_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3020,7 +2882,6 @@ deheader_sdl2_net_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3039,7 +2900,6 @@ deheader_sdl2_net_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3058,7 +2918,6 @@ deheader_sdl2_particle_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3077,7 +2936,6 @@ deheader_sdl2_particle_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3096,7 +2954,6 @@ deheader_sdl2_render_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3115,7 +2972,6 @@ deheader_sdl2_render_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3134,7 +2990,6 @@ deheader_sdl2_resources_db_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3153,7 +3008,6 @@ deheader_sdl2_resources_db_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3172,7 +3026,6 @@ deheader_sdl2_resources_map_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3191,7 +3044,6 @@ deheader_sdl2_resources_map_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3210,7 +3062,6 @@ deheader_sdl2_resources_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3229,7 +3080,6 @@ deheader_sdl2_resources_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3248,7 +3098,6 @@ deheader_sdl2_test_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3267,7 +3116,6 @@ deheader_sdl2_test_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3286,7 +3134,6 @@ deheader_sdl2_utils_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3305,7 +3152,6 @@ deheader_sdl2_utils_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3324,7 +3170,6 @@ deheader_sdl2_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3343,7 +3188,6 @@ deheader_sdl2_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3362,7 +3206,6 @@ deheader_sdl2_cc:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3383,7 +3226,6 @@ deheader_actions_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3402,7 +3244,6 @@ deheader_actions_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3421,7 +3262,6 @@ deheader_being_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3440,7 +3280,6 @@ deheader_being_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3459,7 +3298,6 @@ deheader_const_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3478,7 +3316,6 @@ deheader_dyetool_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3497,7 +3334,6 @@ deheader_dyetool_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3516,7 +3352,6 @@ deheader_enums_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3535,7 +3370,6 @@ deheader_events_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3554,7 +3388,6 @@ deheader_gui_fonts_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3573,7 +3406,6 @@ deheader_gui_fonts_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3592,7 +3424,6 @@ deheader_gui_models_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3611,7 +3442,6 @@ deheader_gui_popups_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3630,7 +3460,6 @@ deheader_gui_popups_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3649,7 +3478,6 @@ deheader_gui_shortcut_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3668,7 +3496,6 @@ deheader_gui_shortcut_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3687,7 +3514,6 @@ deheader_gui_widgets_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3706,7 +3532,6 @@ deheader_gui_windows_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3725,7 +3550,6 @@ deheader_gui_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3744,7 +3568,6 @@ deheader_gui_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3763,7 +3586,6 @@ deheader_input_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3782,7 +3604,6 @@ deheader_input_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3801,7 +3622,6 @@ deheader_listeners_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3820,7 +3640,6 @@ deheader_listeners_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3839,7 +3658,6 @@ deheader_net_ea_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3858,7 +3676,6 @@ deheader_net_ea_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3877,7 +3694,6 @@ deheader_net_eathena_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3896,7 +3712,6 @@ deheader_net_eathena_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3915,7 +3730,6 @@ deheader_net_tmwa_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3934,7 +3748,6 @@ deheader_net_tmwa_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3953,7 +3766,6 @@ deheader_net_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3972,7 +3784,6 @@ deheader_net_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -3991,7 +3802,6 @@ deheader_particle_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4010,7 +3820,6 @@ deheader_particle_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4029,7 +3838,6 @@ deheader_render_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4048,7 +3856,6 @@ deheader_render_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4067,7 +3874,6 @@ deheader_resources_db_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4086,7 +3892,6 @@ deheader_resources_db_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4105,7 +3910,6 @@ deheader_resources_map_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4124,7 +3928,6 @@ deheader_resources_map_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4143,7 +3946,6 @@ deheader_resources_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4162,7 +3964,6 @@ deheader_resources_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4181,7 +3982,6 @@ deheader_test_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4200,7 +4000,6 @@ deheader_test_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4219,7 +4018,6 @@ deheader_utils_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4238,7 +4036,6 @@ deheader_utils_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4257,7 +4054,6 @@ deheader_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4276,7 +4072,6 @@ deheader_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4295,7 +4090,6 @@ deheader_withoutopengl_cc:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4316,7 +4110,6 @@ deheader_sdl2_actions_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4335,7 +4128,6 @@ deheader_sdl2_actions_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4354,7 +4146,6 @@ deheader_sdl2_being_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4373,7 +4164,6 @@ deheader_sdl2_being_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4392,7 +4182,6 @@ deheader_sdl2_const_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4411,7 +4200,6 @@ deheader_sdl2_dyetool_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4430,7 +4218,6 @@ deheader_sdl2_dyetool_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4449,7 +4236,6 @@ deheader_sdl2_enums_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4468,7 +4254,6 @@ deheader_sdl2_events_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4487,7 +4272,6 @@ deheader_sdl2_gui_fonts_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4506,7 +4290,6 @@ deheader_sdl2_gui_fonts_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4525,7 +4308,6 @@ deheader_sdl2_gui_models_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4544,7 +4326,6 @@ deheader_sdl2_gui_popups_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4563,7 +4344,6 @@ deheader_sdl2_gui_popups_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4582,7 +4362,6 @@ deheader_sdl2_gui_shortcut_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4601,7 +4380,6 @@ deheader_sdl2_gui_shortcut_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4620,7 +4398,6 @@ deheader_sdl2_gui_widgets_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4639,7 +4416,6 @@ deheader_sdl2_gui_windows_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4658,7 +4434,6 @@ deheader_sdl2_gui_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4677,7 +4452,6 @@ deheader_sdl2_gui_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4696,7 +4470,6 @@ deheader_sdl2_input_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4715,7 +4488,6 @@ deheader_sdl2_input_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4734,7 +4506,6 @@ deheader_sdl2_listeners_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4753,7 +4524,6 @@ deheader_sdl2_listeners_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4772,7 +4542,6 @@ deheader_sdl2_net_ea_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4791,7 +4560,6 @@ deheader_sdl2_net_ea_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4810,7 +4578,6 @@ deheader_sdl2_net_eathena_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4829,7 +4596,6 @@ deheader_sdl2_net_eathena_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4848,7 +4614,6 @@ deheader_sdl2_net_tmwa_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4867,7 +4632,6 @@ deheader_sdl2_net_tmwa_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4886,7 +4650,6 @@ deheader_sdl2_net_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4905,7 +4668,6 @@ deheader_sdl2_net_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4924,7 +4686,6 @@ deheader_sdl2_particle_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4943,7 +4704,6 @@ deheader_sdl2_particle_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4962,7 +4722,6 @@ deheader_sdl2_render_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -4981,7 +4740,6 @@ deheader_sdl2_render_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5000,7 +4758,6 @@ deheader_sdl2_resources_db_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5019,7 +4776,6 @@ deheader_sdl2_resources_db_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5038,7 +4794,6 @@ deheader_sdl2_resources_map_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5057,7 +4812,6 @@ deheader_sdl2_resources_map_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5076,7 +4830,6 @@ deheader_sdl2_resources_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5095,7 +4848,6 @@ deheader_sdl2_resources_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5114,7 +4866,6 @@ deheader_sdl2_test_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5133,7 +4884,6 @@ deheader_sdl2_test_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5152,7 +4902,6 @@ deheader_sdl2_utils_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5171,7 +4920,6 @@ deheader_sdl2_utils_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5190,7 +4938,6 @@ deheader_sdl2_withoutopengl_cpp:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5209,7 +4956,6 @@ deheader_sdl2_withoutopengl_h:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5228,7 +4974,6 @@ deheader_sdl2_withoutopengl_cc:
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
-  image: debian:unstable
   <<: *job-shared
   variables:
     PACKAGES: python wget 
@@ -5241,7 +4986,6 @@ doxygen:
   stage: build
   script:
   - ./tools/ci/jobs/doxygen.sh
-  image: debian:unstable
   artifacts:
     paths:
     - doxygen
@@ -5262,7 +5006,6 @@ gitstats:
   stage: build
   script:
   - ./tools/ci/jobs/gitstats.sh
-  image: debian:unstable
   artifacts:
     paths:
     - stats
@@ -5282,7 +5025,6 @@ pages:
   stage: stats
   script:
   - ./tools/ci/jobs/pages.sh
-  image: debian:unstable
   dependencies:
     - doxygen
     - gitstats
