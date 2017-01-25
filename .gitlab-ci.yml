@@ -8,6 +8,8 @@ before_script:
   - cat /etc/os-release
   - pwd
   - mkdir logs
+  - tools/ci/scripts/dockerretry.sh apt-get update
+  - tools/ci/scripts/dockerretry.sh apt-get install -y -qq ${PACKAGES}
 
 variables:
   GET_SOURCES_ATTEMPTS: "5"
@@ -29,6 +31,11 @@ clang-3.9:
   - ./tools/ci/jobs/clang39.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_c++11_i386:
   stage: prebuild
@@ -36,6 +43,11 @@ gcc-5_c++11_i386:
   - ./tools/ci/jobs/gcc5_c++11.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -45,6 +57,11 @@ gcc-6:
   - ./tools/ci/jobs/gcc6.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-6-i386:
   stage: prebuild
@@ -52,6 +69,11 @@ gcc-6-i386:
   - ./tools/ci/jobs/gcc6.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -61,6 +83,11 @@ gcc-4.4:
   - ./tools/ci/jobs/gcc44.sh
   image: debian:oldstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.4 g++-4.4 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_sdl2:
   stage: prebuild
@@ -68,6 +95,11 @@ gcc-5_sdl2:
   - ./tools/ci/jobs/gcc5_sdl2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 mplint_po:
   stage: prebuild
@@ -75,6 +107,9 @@ mplint_po:
   - ./tools/ci/jobs/mplint.sh po
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc g++ git 
+              make autoconf automake autopoint gettext
 
 mplint_src:
   stage: prebuild
@@ -82,6 +117,9 @@ mplint_src:
   - ./tools/ci/jobs/mplint.sh src
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc g++ git 
+              make autoconf automake autopoint gettext
 
 mplint_data:
   stage: prebuild
@@ -89,6 +127,9 @@ mplint_data:
   - ./tools/ci/jobs/mplint.sh data
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc g++ git 
+              make autoconf automake autopoint gettext
 
 cpplint:
   stage: prebuild
@@ -96,6 +137,8 @@ cpplint:
   - ./tools/ci/jobs/cpplint.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget
 
 gcc-5_h_all:
   stage: prebuild
@@ -103,6 +146,11 @@ gcc-5_h_all:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_h_all_i386:
   stage: prebuild
@@ -110,6 +158,11 @@ gcc-5_h_all_i386:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -119,6 +172,8 @@ pngcheck:
   - ./tools/ci/jobs/pngcheck.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: pngcheck
 
 icccheck:
   stage: prebuild
@@ -126,6 +181,8 @@ icccheck:
   - ./tools/ci/jobs/imagemagiccheck.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: imagemagick
 
 # tests
 
@@ -135,6 +192,12 @@ gcc-5_sanitize_tests:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -144,6 +207,12 @@ gcc-6_tests_simd:
   - ./tools/ci/jobs/gcc6_tests_simd.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -153,6 +222,12 @@ gcc-5_sanitize_tests_i386:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -162,6 +237,12 @@ gcc-5_sanitize_no_opengl_tests:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -171,6 +252,12 @@ gcc-5_sanitize_no_opengltests_i386:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -180,6 +267,12 @@ gcc-5_tests:
   - ./tools/ci/jobs/gcc5_tests.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -189,6 +282,12 @@ gcc-5_tests_i386:
   - ./tools/ci/jobs/gcc5_tests.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -198,6 +297,13 @@ gcc-6_tests_gcov:
   - ./tools/ci/jobs/gcc6_tests_gcov.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              gcovr 
+              valgrind
   tags:
     - docker
 
@@ -207,6 +313,12 @@ gcc-6_tests_i386:
   - ./tools/ci/jobs/gcc6_tests.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -216,6 +328,12 @@ gcc-6_tests_no_opengl:
   - ./tools/ci/jobs/gcc6_tests.sh --without-opengl
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -225,6 +343,12 @@ gcc-6_tests_no_opengl_i386:
   - ./tools/ci/jobs/gcc6_tests.sh --without-opengl
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
   tags:
     - docker
 
@@ -234,6 +358,13 @@ gcc-6_sdl2_tests_gcov:
   - ./tools/ci/jobs/gcc6_sdl2_tests_gcov.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
+              gcovr
+              valgrind
   tags:
     - docker
 
@@ -243,6 +374,12 @@ gcc-6_sdl2_tests_i386:
   - ./tools/ci/jobs/gcc6_sdl2_tests.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
+              valgrind
   tags:
     - docker
 
@@ -252,6 +389,12 @@ gcc-5_sdl2_tests:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              valgrind
   tags:
     - docker
 
@@ -261,6 +404,12 @@ gcc-5_sdl2_tests_i386:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              valgrind
   tags:
     - docker
 
@@ -270,6 +419,12 @@ gcc-5_sdl2_no_opengl_tests:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              valgrind
   tags:
     - docker
 
@@ -279,6 +434,12 @@ gcc-5_sdl2_no_opengl_tests_i386:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              valgrind
   tags:
     - docker
 
@@ -288,6 +449,11 @@ gcc-6_lto:
   - ./tools/ci/jobs/gcc6_lto.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-6_lto_i386:
   stage: build
@@ -295,6 +461,11 @@ gcc-6_lto_i386:
   - ./tools/ci/jobs/gcc6_lto.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -304,6 +475,12 @@ gcc-5_tarball_tests:
   - ./tools/ci/jobs/gcc6_tarball_tests.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
 
 # simple builds
 
@@ -313,6 +490,11 @@ gcc-4.4_i386:
   - ./tools/ci/jobs/gcc44.sh
   image: vicamo/debian:oldstable-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.4 g++-4.4 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -322,6 +504,11 @@ gcc-4.5:
   - ./tools/ci/jobs/gcc45.sh
   image: ubuntu:12.04
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.5 g++-4.5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -331,6 +518,11 @@ gcc-4.6:
   - ./tools/ci/jobs/gcc46.sh
   image: debian:oldstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.6 g++-4.6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-4.6_i386:
   stage: build
@@ -338,6 +530,11 @@ gcc-4.6_i386:
   - ./tools/ci/jobs/gcc46.sh
   image: vicamo/debian:oldstable-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.6 g++-4.6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -347,6 +544,11 @@ gcc-4.7:
   - ./tools/ci/jobs/gcc47.sh
   image: debian:oldstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.7 g++-4.7 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -356,6 +558,11 @@ gcc-4.7_i386:
   - ./tools/ci/jobs/gcc47.sh
   image: vicamo/debian:oldstable-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.7 g++-4.7 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -365,6 +572,11 @@ gcc-4.7_c++11:
   - ./tools/ci/jobs/gcc47_c++11.sh
   image: debian:oldstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.7 g++-4.7 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -374,6 +586,11 @@ gcc-4.8:
   - ./tools/ci/jobs/gcc48.sh
   image: debian:stable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.8 g++-4.8 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-4.8_i386:
   stage: build
@@ -381,6 +598,11 @@ gcc-4.8_i386:
   - ./tools/ci/jobs/gcc48.sh
   image: vicamo/debian:stable-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.8 g++-4.8 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -390,6 +612,11 @@ clang-3.0:
   - ./tools/ci/jobs/clang.sh clang
   image: debian:oldstable
   <<: *job-shared
+  variables:
+    PACKAGES: clang libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -399,6 +626,11 @@ clang-3.0_i386:
   - ./tools/ci/jobs/clang.sh clang
   image: vicamo/debian:oldstable-i386
   <<: *job-shared
+  variables:
+    PACKAGES: clang libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -408,6 +640,11 @@ clang-3.3:
   - ./tools/ci/jobs/clang.sh clang-3.3
   image: ubuntu:12.04
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.3 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -417,6 +654,11 @@ clang-3.3_i386:
   - ./tools/ci/jobs/clang.sh clang-3.3
   image: vicamo/ubuntu:precise-i386
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.3 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -426,6 +668,11 @@ clang-3.4:
   - ./tools/ci/jobs/clang34.sh
   image: debian:stable
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.4 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 clang-3.4_i386:
   stage: build
@@ -433,6 +680,11 @@ clang-3.4_i386:
   - ./tools/ci/jobs/clang34.sh
   image: vicamo/debian:stable-i386
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.4 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -442,6 +694,11 @@ clang-3.5:
   - ./tools/ci/jobs/clang35.sh
   image: debian:stable
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.5 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 clang-3.5_i386:
   stage: build
@@ -449,6 +706,11 @@ clang-3.5_i386:
   - ./tools/ci/jobs/clang35.sh
   image: vicamo/debian:stable-i386
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.5 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -458,6 +720,11 @@ clang-3.6:
   - ./tools/ci/jobs/clang36.sh
   image: ubuntu:14.04
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.6 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -467,6 +734,11 @@ clang-3.6_i386:
   - ./tools/ci/jobs/clang36.sh
   image: vicamo/ubuntu:trusty-i386
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.6 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -476,6 +748,11 @@ clang-3.7:
   - ./tools/ci/jobs/clang37.sh
   image: ubuntu:16.04
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.7 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -485,6 +762,11 @@ clang-3.7_i386:
   - ./tools/ci/jobs/clang37.sh
   image: vicamo/ubuntu:xenial-i386
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.7 libc++-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -494,6 +776,11 @@ clang-3.8:
   - ./tools/ci/jobs/clang38.sh
   image: ubuntu:16.04
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.8 libc++-dev libc++abi-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -503,6 +790,11 @@ clang-3.8_i386:
   - ./tools/ci/jobs/clang38.sh
   image: vicamo/ubuntu:xenial-i386
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.8 libc++-dev libc++abi-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -512,6 +804,11 @@ clang-3.8_i386:
   - ./tools/ci/jobs/clang39.sh_c++11.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 .clang-3.9_c++11_i386:
   stage: build
@@ -519,6 +816,11 @@ clang-3.8_i386:
   - ./tools/ci/jobs/clang39.sh_c++11.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -528,6 +830,11 @@ gcc-4.8_c++11:
   - ./tools/ci/jobs/gcc48_c++11.sh
   image: debian:stable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.8 g++-4.8 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-4.9:
   stage: build
@@ -535,6 +842,11 @@ gcc-4.9:
   - ./tools/ci/jobs/gcc49.sh
   image: debian:stable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-4.9_i386:
   stage: build
@@ -542,6 +854,11 @@ gcc-4.9_i386:
   - ./tools/ci/jobs/gcc49.sh
   image: vicamo/debian:stable-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -551,6 +868,11 @@ gcc-4.9_c++11:
   - ./tools/ci/jobs/gcc49_c++11.sh
   image: debian:stable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 cmake_gcc-4.9:
   stage: build
@@ -558,6 +880,11 @@ cmake_gcc-4.9:
   - ./tools/ci/jobs/cmake_gcc49.sh
   image: debian:stable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make cmake gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -567,6 +894,11 @@ cmake_gcc-4.9:
   - ./tools/ci/jobs/clang40.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: clang-4.0 libc++-dev libc++abi-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -576,6 +908,11 @@ gcc-5:
   - ./tools/ci/jobs/gcc5.sh --enable-werror
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_c++11:
   stage: build
@@ -583,6 +920,11 @@ gcc-5_c++11:
   - ./tools/ci/jobs/gcc5_c++11.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_sdl2_c++11:
   stage: build
@@ -590,6 +932,11 @@ gcc-5_sdl2_c++11:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 gcc-5_sdl2_c++11_i386:
   stage: build
@@ -597,6 +944,11 @@ gcc-5_sdl2_c++11_i386:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
   tags:
     - docker
 
@@ -606,6 +958,11 @@ gcc-snapshot:
   - ./tools/ci/jobs/gccsnapshot.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-snapshot 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-snapshot_i386:
   stage: build
@@ -613,6 +970,11 @@ gcc-snapshot_i386:
   - ./tools/ci/jobs/gccsnapshot.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-snapshot 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -622,6 +984,11 @@ gcc-snapshot_sdl2:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-snapshot 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 gcc-snapshot_sdl2_i386:
   stage: build
@@ -629,6 +996,11 @@ gcc-snapshot_sdl2_i386:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-snapshot 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
   tags:
     - docker
 
@@ -638,6 +1010,11 @@ gcc-5_sanitize:
   - ./tools/ci/jobs/gcc5_sanitize.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -647,6 +1024,11 @@ gcc-6_sanitize:
   - ./tools/ci/jobs/gcc6_sanitize.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -656,6 +1038,11 @@ gcc-6_sanitize_i386:
   - ./tools/ci/jobs/gcc6_sanitize.sh
   image: vicamo/debian:sid-i386
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
 
@@ -665,6 +1052,11 @@ gcc_eathena:
   - ./tools/ci/jobs/gcc6.sh --without-opengl --disable-tmwa
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc_without_mumble:
   stage: build
@@ -672,6 +1064,11 @@ gcc_without_mumble:
   - ./tools/ci/jobs/gcc5.sh --without-mumble --enable-werror
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc_without_customnls:
   stage: build
@@ -679,6 +1076,11 @@ gcc_without_customnls:
   - ./tools/ci/jobs/gcc5.sh --enable-customnls --enable-werror
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc_without_customnls_nonls:
   stage: build
@@ -686,6 +1088,11 @@ gcc_without_customnls_nonls:
   - ./tools/ci/jobs/gcc5.sh --enable-customnls --disable-nls --enable-werror
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc_without_opengl:
   stage: build
@@ -693,6 +1100,11 @@ gcc_without_opengl:
   - ./tools/ci/jobs/gcc5.sh --without-opengl --enable-werror
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc49_cilkplus:
   stage: build
@@ -700,6 +1112,11 @@ gcc49_cilkplus:
   - ./tools/ci/jobs/gcc49.sh --enable-cilkplus
   image: debian:stable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_cilkplus:
   stage: build
@@ -707,6 +1124,11 @@ gcc-5_cilkplus:
   - ./tools/ci/jobs/gcc5.sh --enable-cilkplus
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-6_cilkplus:
   stage: build
@@ -714,6 +1136,11 @@ gcc-6_cilkplus:
   - ./tools/ci/jobs/gcc6.sh --enable-cilkplus
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc_eathena_opengl:
   stage: build
@@ -721,6 +1148,11 @@ gcc_eathena_opengl:
   - ./tools/ci/jobs/gcc6.sh --with-opengl --disable-tmwa
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc_eathena_opengl_sdl2:
   stage: build
@@ -728,6 +1160,11 @@ gcc_eathena_opengl_sdl2:
   - ./tools/ci/jobs/gcc5_sdl2.sh --with-opengl --disable-tmwa
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 gcc_eathena_sdl2:
   stage: build
@@ -735,6 +1172,11 @@ gcc_eathena_sdl2:
   - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --disable-tmwa
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 gcc_portable:
   stage: build
@@ -742,6 +1184,11 @@ gcc_portable:
   - ./tools/ci/jobs/gcc6.sh --with-opengl --enable-tmwa --enable-portable=yes
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc_eathena_c++11:
   stage: build
@@ -749,6 +1196,11 @@ gcc_eathena_c++11:
   - ./tools/ci/jobs/gcc5_c++11.sh --without-opengl --disable-tmwa
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc_eathena_sdl2_c++11:
   stage: build
@@ -756,6 +1208,11 @@ gcc_eathena_sdl2_c++11:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh --without-opengl --disable-tmwa
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 clang-3.9_sdl2:
   stage: build
@@ -763,6 +1220,11 @@ clang-3.9_sdl2:
   - ./tools/ci/jobs/clang39_sdl2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 gcc-6_no_asserts:
   stage: build
@@ -770,6 +1232,11 @@ gcc-6_no_asserts:
   - ./tools/ci/jobs/gcc6.sh --disable-asserts
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 # different tools
 
@@ -779,6 +1246,11 @@ gcc-5_h_eathena_tmwa:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_h_pugi_all:
   stage: build
@@ -786,6 +1258,11 @@ gcc-5_h_pugi_all:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_tarball:
   stage: build
@@ -793,6 +1270,11 @@ gcc-5_tarball:
   - ./tools/ci/jobs/gcc5_tarball.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 # deheader default
 
@@ -804,10 +1286,16 @@ deheader_gui_windows_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_sdl2_gui_windows_cpp:
   stage: build
@@ -817,10 +1305,16 @@ deheader_sdl2_gui_windows_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_gui_windows_withoutopengl_cpp:
   stage: build
@@ -830,10 +1324,16 @@ deheader_gui_windows_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_sdl2_gui_windows_withoutopengl_cpp:
   stage: build
@@ -843,10 +1343,16 @@ deheader_sdl2_gui_windows_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_gui_widgets_cpp:
   stage: build
@@ -856,10 +1362,16 @@ deheader_gui_widgets_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_sdl2_gui_widgets_cpp:
   stage: build
@@ -869,10 +1381,16 @@ deheader_sdl2_gui_widgets_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_gui_widgets_withoutopengl_cpp:
   stage: build
@@ -882,10 +1400,16 @@ deheader_gui_widgets_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_sdl2_gui_widgets_withoutopengl_cpp:
   stage: build
@@ -895,10 +1419,16 @@ deheader_sdl2_gui_widgets_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_gui_models_cpp:
   stage: build
@@ -908,10 +1438,16 @@ deheader_gui_models_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_sdl2_gui_models_cpp:
   stage: build
@@ -921,10 +1457,16 @@ deheader_sdl2_gui_models_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_gui_models_withoutopengl_cpp:
   stage: build
@@ -934,10 +1476,16 @@ deheader_gui_models_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_sdl2_gui_models_withoutopengl_cpp:
   stage: build
@@ -947,10 +1495,16 @@ deheader_sdl2_gui_models_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_actions_cpp:
   stage: build
@@ -960,10 +1514,16 @@ deheader_actions_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_actions_h:
   stage: build
@@ -973,10 +1533,16 @@ deheader_actions_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_being_cpp:
   stage: build
@@ -986,10 +1552,16 @@ deheader_being_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_being_h:
   stage: build
@@ -999,10 +1571,16 @@ deheader_being_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_const_h:
   stage: build
@@ -1012,10 +1590,16 @@ deheader_const_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_dyetool_cpp:
   stage: build
@@ -1025,10 +1609,16 @@ deheader_dyetool_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_dyetool_h:
   stage: build
@@ -1038,10 +1628,16 @@ deheader_dyetool_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_enums_h:
   stage: build
@@ -1051,10 +1647,16 @@ deheader_enums_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_events_h:
   stage: build
@@ -1064,10 +1666,16 @@ deheader_events_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_fonts_cpp:
   stage: build
@@ -1077,10 +1685,16 @@ deheader_gui_fonts_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_fonts_h:
   stage: build
@@ -1090,10 +1704,16 @@ deheader_gui_fonts_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_models_h:
   stage: build
@@ -1103,10 +1723,16 @@ deheader_gui_models_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_popups_cpp:
   stage: build
@@ -1116,10 +1742,16 @@ deheader_gui_popups_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_popups_h:
   stage: build
@@ -1129,10 +1761,16 @@ deheader_gui_popups_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_shortcut_cpp:
   stage: build
@@ -1142,10 +1780,16 @@ deheader_gui_shortcut_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_shortcut_h:
   stage: build
@@ -1155,10 +1799,16 @@ deheader_gui_shortcut_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_widgets_h:
   stage: build
@@ -1168,10 +1818,16 @@ deheader_gui_widgets_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_windows_h:
   stage: build
@@ -1181,10 +1837,16 @@ deheader_gui_windows_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_cpp:
   stage: build
@@ -1194,10 +1856,16 @@ deheader_gui_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_h:
   stage: build
@@ -1207,10 +1875,16 @@ deheader_gui_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_input_cpp:
   stage: build
@@ -1220,10 +1894,16 @@ deheader_input_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_input_h:
   stage: build
@@ -1233,10 +1913,16 @@ deheader_input_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_listeners_cpp:
   stage: build
@@ -1246,10 +1932,16 @@ deheader_listeners_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_listeners_h:
   stage: build
@@ -1259,10 +1951,16 @@ deheader_listeners_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_ea_cpp:
   stage: build
@@ -1272,10 +1970,16 @@ deheader_net_ea_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_ea_h:
   stage: build
@@ -1285,10 +1989,16 @@ deheader_net_ea_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_eathena_cpp:
   stage: build
@@ -1298,10 +2008,16 @@ deheader_net_eathena_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_eathena_h:
   stage: build
@@ -1311,10 +2027,16 @@ deheader_net_eathena_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_tmwa_cpp:
   stage: build
@@ -1324,10 +2046,16 @@ deheader_net_tmwa_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_tmwa_h:
   stage: build
@@ -1337,10 +2065,16 @@ deheader_net_tmwa_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_cpp:
   stage: build
@@ -1350,10 +2084,16 @@ deheader_net_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_h:
   stage: build
@@ -1363,10 +2103,16 @@ deheader_net_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_particle_cpp:
   stage: build
@@ -1376,10 +2122,16 @@ deheader_particle_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_particle_h:
   stage: build
@@ -1389,10 +2141,16 @@ deheader_particle_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_render_cpp:
   stage: build
@@ -1402,10 +2160,16 @@ deheader_render_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_render_h:
   stage: build
@@ -1415,10 +2179,16 @@ deheader_render_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_db_cpp:
   stage: build
@@ -1428,10 +2198,16 @@ deheader_resources_db_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_db_h:
   stage: build
@@ -1441,10 +2217,16 @@ deheader_resources_db_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_map_cpp:
   stage: build
@@ -1454,10 +2236,16 @@ deheader_resources_map_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_map_h:
   stage: build
@@ -1467,10 +2255,16 @@ deheader_resources_map_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_cpp:
   stage: build
@@ -1480,10 +2274,16 @@ deheader_resources_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_h:
   stage: build
@@ -1493,10 +2293,16 @@ deheader_resources_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_test_cpp:
   stage: build
@@ -1506,10 +2312,16 @@ deheader_test_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_test_h:
   stage: build
@@ -1519,10 +2331,16 @@ deheader_test_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_utils_cpp:
   stage: build
@@ -1532,10 +2350,16 @@ deheader_utils_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_utils_h:
   stage: build
@@ -1545,10 +2369,16 @@ deheader_utils_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_cpp:
   stage: build
@@ -1558,10 +2388,16 @@ deheader_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_h:
   stage: build
@@ -1571,10 +2407,16 @@ deheader_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_cc:
   stage: build
@@ -1584,10 +2426,16 @@ deheader_cc:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 # deheader sdl2
 
@@ -1599,10 +2447,16 @@ deheader_sdl2_actions_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_actions_h:
   stage: build
@@ -1612,10 +2466,16 @@ deheader_sdl2_actions_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_being_cpp:
   stage: build
@@ -1625,10 +2485,16 @@ deheader_sdl2_being_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_being_h:
   stage: build
@@ -1638,10 +2504,16 @@ deheader_sdl2_being_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_const_h:
   stage: build
@@ -1651,10 +2523,16 @@ deheader_sdl2_const_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_dyetool_cpp:
   stage: build
@@ -1664,10 +2542,16 @@ deheader_sdl2_dyetool_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_dyetool_h:
   stage: build
@@ -1677,10 +2561,16 @@ deheader_sdl2_dyetool_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_enums_h:
   stage: build
@@ -1690,10 +2580,16 @@ deheader_sdl2_enums_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_events_h:
   stage: build
@@ -1703,10 +2599,16 @@ deheader_sdl2_events_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_fonts_cpp:
   stage: build
@@ -1716,10 +2618,16 @@ deheader_sdl2_gui_fonts_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_fonts_h:
   stage: build
@@ -1729,10 +2637,16 @@ deheader_sdl2_gui_fonts_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_models_h:
   stage: build
@@ -1742,10 +2656,16 @@ deheader_sdl2_gui_models_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_popups_cpp:
   stage: build
@@ -1755,10 +2675,16 @@ deheader_sdl2_gui_popups_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_popups_h:
   stage: build
@@ -1768,10 +2694,16 @@ deheader_sdl2_gui_popups_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_shortcut_cpp:
   stage: build
@@ -1781,10 +2713,16 @@ deheader_sdl2_gui_shortcut_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_shortcut_h:
   stage: build
@@ -1794,10 +2732,16 @@ deheader_sdl2_gui_shortcut_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_widgets_h:
   stage: build
@@ -1807,10 +2751,16 @@ deheader_sdl2_gui_widgets_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_windows_h:
   stage: build
@@ -1820,10 +2770,16 @@ deheader_sdl2_gui_windows_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_cpp:
   stage: build
@@ -1833,10 +2789,16 @@ deheader_sdl2_gui_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_h:
   stage: build
@@ -1846,10 +2808,16 @@ deheader_sdl2_gui_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_input_cpp:
   stage: build
@@ -1859,10 +2827,16 @@ deheader_sdl2_input_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_input_h:
   stage: build
@@ -1872,10 +2846,16 @@ deheader_sdl2_input_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_listeners_cpp:
   stage: build
@@ -1885,10 +2865,16 @@ deheader_sdl2_listeners_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_listeners_h:
   stage: build
@@ -1898,10 +2884,16 @@ deheader_sdl2_listeners_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_ea_cpp:
   stage: build
@@ -1911,10 +2903,16 @@ deheader_sdl2_net_ea_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_ea_h:
   stage: build
@@ -1924,10 +2922,16 @@ deheader_sdl2_net_ea_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_eathena_cpp:
   stage: build
@@ -1937,10 +2941,16 @@ deheader_sdl2_net_eathena_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_eathena_h:
   stage: build
@@ -1950,10 +2960,16 @@ deheader_sdl2_net_eathena_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_tmwa_cpp:
   stage: build
@@ -1963,10 +2979,16 @@ deheader_sdl2_net_tmwa_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_tmwa_h:
   stage: build
@@ -1976,10 +2998,16 @@ deheader_sdl2_net_tmwa_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_cpp:
   stage: build
@@ -1989,10 +3017,16 @@ deheader_sdl2_net_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_h:
   stage: build
@@ -2002,10 +3036,16 @@ deheader_sdl2_net_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_particle_cpp:
   stage: build
@@ -2015,10 +3055,16 @@ deheader_sdl2_particle_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_particle_h:
   stage: build
@@ -2028,10 +3074,16 @@ deheader_sdl2_particle_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_render_cpp:
   stage: build
@@ -2041,10 +3093,16 @@ deheader_sdl2_render_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_render_h:
   stage: build
@@ -2054,10 +3112,16 @@ deheader_sdl2_render_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_db_cpp:
   stage: build
@@ -2067,10 +3131,16 @@ deheader_sdl2_resources_db_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_db_h:
   stage: build
@@ -2080,10 +3150,16 @@ deheader_sdl2_resources_db_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_map_cpp:
   stage: build
@@ -2093,10 +3169,16 @@ deheader_sdl2_resources_map_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_map_h:
   stage: build
@@ -2106,10 +3188,16 @@ deheader_sdl2_resources_map_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_cpp:
   stage: build
@@ -2119,10 +3207,16 @@ deheader_sdl2_resources_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_h:
   stage: build
@@ -2132,10 +3226,16 @@ deheader_sdl2_resources_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_test_cpp:
   stage: build
@@ -2145,10 +3245,16 @@ deheader_sdl2_test_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_test_h:
   stage: build
@@ -2158,10 +3264,16 @@ deheader_sdl2_test_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_utils_cpp:
   stage: build
@@ -2171,10 +3283,16 @@ deheader_sdl2_utils_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_utils_h:
   stage: build
@@ -2184,10 +3302,16 @@ deheader_sdl2_utils_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_cpp:
   stage: build
@@ -2197,10 +3321,16 @@ deheader_sdl2_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_h:
   stage: build
@@ -2210,10 +3340,16 @@ deheader_sdl2_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_cc:
   stage: build
@@ -2223,10 +3359,16 @@ deheader_sdl2_cc:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 # dehedeart without opengl
 
@@ -2238,10 +3380,16 @@ deheader_actions_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_actions_withoutopengl_h:
   stage: build
@@ -2251,10 +3399,16 @@ deheader_actions_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_being_withoutopengl_cpp:
   stage: build
@@ -2264,10 +3418,16 @@ deheader_being_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_being_withoutopengl_h:
   stage: build
@@ -2277,10 +3437,16 @@ deheader_being_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_const_withoutopengl_h:
   stage: build
@@ -2290,10 +3456,16 @@ deheader_const_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_dyetool_withoutopengl_cpp:
   stage: build
@@ -2303,10 +3475,16 @@ deheader_dyetool_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_dyetool_withoutopengl_h:
   stage: build
@@ -2316,10 +3494,16 @@ deheader_dyetool_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_enums_withoutopengl_h:
   stage: build
@@ -2329,10 +3513,16 @@ deheader_enums_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_events_withoutopengl_h:
   stage: build
@@ -2342,10 +3532,16 @@ deheader_events_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_fonts_withoutopengl_cpp:
   stage: build
@@ -2355,10 +3551,16 @@ deheader_gui_fonts_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_fonts_withoutopengl_h:
   stage: build
@@ -2368,10 +3570,16 @@ deheader_gui_fonts_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_models_withoutopengl_h:
   stage: build
@@ -2381,10 +3589,16 @@ deheader_gui_models_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_popups_withoutopengl_cpp:
   stage: build
@@ -2394,10 +3608,16 @@ deheader_gui_popups_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_popups_withoutopengl_h:
   stage: build
@@ -2407,10 +3627,16 @@ deheader_gui_popups_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_shortcut_withoutopengl_cpp:
   stage: build
@@ -2420,10 +3646,16 @@ deheader_gui_shortcut_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_shortcut_withoutopengl_h:
   stage: build
@@ -2433,10 +3665,16 @@ deheader_gui_shortcut_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_widgets_withoutopengl_h:
   stage: build
@@ -2446,10 +3684,16 @@ deheader_gui_widgets_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_windows_withoutopengl_h:
   stage: build
@@ -2459,10 +3703,16 @@ deheader_gui_windows_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_withoutopengl_cpp:
   stage: build
@@ -2472,10 +3722,16 @@ deheader_gui_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_gui_withoutopengl_h:
   stage: build
@@ -2485,10 +3741,16 @@ deheader_gui_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_input_withoutopengl_cpp:
   stage: build
@@ -2498,10 +3760,16 @@ deheader_input_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_input_withoutopengl_h:
   stage: build
@@ -2511,10 +3779,16 @@ deheader_input_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_listeners_withoutopengl_cpp:
   stage: build
@@ -2524,10 +3798,16 @@ deheader_listeners_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_listeners_withoutopengl_h:
   stage: build
@@ -2537,10 +3817,16 @@ deheader_listeners_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_ea_withoutopengl_cpp:
   stage: build
@@ -2550,10 +3836,16 @@ deheader_net_ea_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_ea_withoutopengl_h:
   stage: build
@@ -2563,10 +3855,16 @@ deheader_net_ea_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_eathena_withoutopengl_cpp:
   stage: build
@@ -2576,10 +3874,16 @@ deheader_net_eathena_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_eathena_withoutopengl_h:
   stage: build
@@ -2589,10 +3893,16 @@ deheader_net_eathena_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_tmwa_withoutopengl_cpp:
   stage: build
@@ -2602,10 +3912,16 @@ deheader_net_tmwa_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_tmwa_withoutopengl_h:
   stage: build
@@ -2615,10 +3931,16 @@ deheader_net_tmwa_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_withoutopengl_cpp:
   stage: build
@@ -2628,10 +3950,16 @@ deheader_net_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_net_withoutopengl_h:
   stage: build
@@ -2641,10 +3969,16 @@ deheader_net_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_particle_withoutopengl_cpp:
   stage: build
@@ -2654,10 +3988,16 @@ deheader_particle_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_particle_withoutopengl_h:
   stage: build
@@ -2667,10 +4007,16 @@ deheader_particle_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_render_withoutopengl_cpp:
   stage: build
@@ -2680,10 +4026,16 @@ deheader_render_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_render_withoutopengl_h:
   stage: build
@@ -2693,10 +4045,16 @@ deheader_render_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_db_withoutopengl_cpp:
   stage: build
@@ -2706,10 +4064,16 @@ deheader_resources_db_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_db_withoutopengl_h:
   stage: build
@@ -2719,10 +4083,16 @@ deheader_resources_db_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_map_withoutopengl_cpp:
   stage: build
@@ -2732,10 +4102,16 @@ deheader_resources_map_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_map_withoutopengl_h:
   stage: build
@@ -2745,10 +4121,16 @@ deheader_resources_map_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_withoutopengl_cpp:
   stage: build
@@ -2758,10 +4140,16 @@ deheader_resources_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_resources_withoutopengl_h:
   stage: build
@@ -2771,10 +4159,16 @@ deheader_resources_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_test_withoutopengl_cpp:
   stage: build
@@ -2784,10 +4178,16 @@ deheader_test_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_test_withoutopengl_h:
   stage: build
@@ -2797,10 +4197,16 @@ deheader_test_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_utils_withoutopengl_cpp:
   stage: build
@@ -2810,10 +4216,16 @@ deheader_utils_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_utils_withoutopengl_h:
   stage: build
@@ -2823,10 +4235,16 @@ deheader_utils_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_withoutopengl_cpp:
   stage: build
@@ -2836,10 +4254,16 @@ deheader_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_withoutopengl_h:
   stage: build
@@ -2849,10 +4273,16 @@ deheader_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 deheader_withoutopengl_cc:
   stage: build
@@ -2862,10 +4292,16 @@ deheader_withoutopengl_cc:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 # deheader sdl2
 
@@ -2877,10 +4313,16 @@ deheader_sdl2_actions_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_actions_withoutopengl_h:
   stage: build
@@ -2890,10 +4332,16 @@ deheader_sdl2_actions_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_being_withoutopengl_cpp:
   stage: build
@@ -2903,10 +4351,16 @@ deheader_sdl2_being_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_being_withoutopengl_h:
   stage: build
@@ -2916,10 +4370,16 @@ deheader_sdl2_being_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_const_withoutopengl_h:
   stage: build
@@ -2929,10 +4389,16 @@ deheader_sdl2_const_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_dyetool_withoutopengl_cpp:
   stage: build
@@ -2942,10 +4408,16 @@ deheader_sdl2_dyetool_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_dyetool_withoutopengl_h:
   stage: build
@@ -2955,10 +4427,16 @@ deheader_sdl2_dyetool_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_enums_withoutopengl_h:
   stage: build
@@ -2968,10 +4446,16 @@ deheader_sdl2_enums_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_events_withoutopengl_h:
   stage: build
@@ -2981,10 +4465,16 @@ deheader_sdl2_events_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_fonts_withoutopengl_cpp:
   stage: build
@@ -2994,10 +4484,16 @@ deheader_sdl2_gui_fonts_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_fonts_withoutopengl_h:
   stage: build
@@ -3007,10 +4503,16 @@ deheader_sdl2_gui_fonts_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_models_withoutopengl_h:
   stage: build
@@ -3020,10 +4522,16 @@ deheader_sdl2_gui_models_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_popups_withoutopengl_cpp:
   stage: build
@@ -3033,10 +4541,16 @@ deheader_sdl2_gui_popups_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_popups_withoutopengl_h:
   stage: build
@@ -3046,10 +4560,16 @@ deheader_sdl2_gui_popups_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_shortcut_withoutopengl_cpp:
   stage: build
@@ -3059,10 +4579,16 @@ deheader_sdl2_gui_shortcut_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_shortcut_withoutopengl_h:
   stage: build
@@ -3072,10 +4598,16 @@ deheader_sdl2_gui_shortcut_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_widgets_withoutopengl_h:
   stage: build
@@ -3085,10 +4617,16 @@ deheader_sdl2_gui_widgets_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_windows_withoutopengl_h:
   stage: build
@@ -3098,10 +4636,16 @@ deheader_sdl2_gui_windows_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_withoutopengl_cpp:
   stage: build
@@ -3111,10 +4655,16 @@ deheader_sdl2_gui_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_gui_withoutopengl_h:
   stage: build
@@ -3124,10 +4674,16 @@ deheader_sdl2_gui_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_input_withoutopengl_cpp:
   stage: build
@@ -3137,10 +4693,16 @@ deheader_sdl2_input_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_input_withoutopengl_h:
   stage: build
@@ -3150,10 +4712,16 @@ deheader_sdl2_input_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_listeners_withoutopengl_cpp:
   stage: build
@@ -3163,10 +4731,16 @@ deheader_sdl2_listeners_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_listeners_withoutopengl_h:
   stage: build
@@ -3176,10 +4750,16 @@ deheader_sdl2_listeners_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_ea_withoutopengl_cpp:
   stage: build
@@ -3189,10 +4769,16 @@ deheader_sdl2_net_ea_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_ea_withoutopengl_h:
   stage: build
@@ -3202,10 +4788,16 @@ deheader_sdl2_net_ea_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_eathena_withoutopengl_cpp:
   stage: build
@@ -3215,10 +4807,16 @@ deheader_sdl2_net_eathena_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_eathena_withoutopengl_h:
   stage: build
@@ -3228,10 +4826,16 @@ deheader_sdl2_net_eathena_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_tmwa_withoutopengl_cpp:
   stage: build
@@ -3241,10 +4845,16 @@ deheader_sdl2_net_tmwa_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_tmwa_withoutopengl_h:
   stage: build
@@ -3254,10 +4864,16 @@ deheader_sdl2_net_tmwa_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_withoutopengl_cpp:
   stage: build
@@ -3267,10 +4883,16 @@ deheader_sdl2_net_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_net_withoutopengl_h:
   stage: build
@@ -3280,10 +4902,16 @@ deheader_sdl2_net_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_particle_withoutopengl_cpp:
   stage: build
@@ -3293,10 +4921,16 @@ deheader_sdl2_particle_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_particle_withoutopengl_h:
   stage: build
@@ -3306,10 +4940,16 @@ deheader_sdl2_particle_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_render_withoutopengl_cpp:
   stage: build
@@ -3319,10 +4959,16 @@ deheader_sdl2_render_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_render_withoutopengl_h:
   stage: build
@@ -3332,10 +4978,16 @@ deheader_sdl2_render_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_db_withoutopengl_cpp:
   stage: build
@@ -3345,10 +4997,16 @@ deheader_sdl2_resources_db_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_db_withoutopengl_h:
   stage: build
@@ -3358,10 +5016,16 @@ deheader_sdl2_resources_db_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_map_withoutopengl_cpp:
   stage: build
@@ -3371,10 +5035,16 @@ deheader_sdl2_resources_map_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_map_withoutopengl_h:
   stage: build
@@ -3384,10 +5054,16 @@ deheader_sdl2_resources_map_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_withoutopengl_cpp:
   stage: build
@@ -3397,10 +5073,16 @@ deheader_sdl2_resources_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_resources_withoutopengl_h:
   stage: build
@@ -3410,10 +5092,16 @@ deheader_sdl2_resources_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_test_withoutopengl_cpp:
   stage: build
@@ -3423,10 +5111,16 @@ deheader_sdl2_test_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_test_withoutopengl_h:
   stage: build
@@ -3436,10 +5130,16 @@ deheader_sdl2_test_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_utils_withoutopengl_cpp:
   stage: build
@@ -3449,10 +5149,16 @@ deheader_sdl2_utils_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_utils_withoutopengl_h:
   stage: build
@@ -3462,10 +5168,16 @@ deheader_sdl2_utils_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_withoutopengl_cpp:
   stage: build
@@ -3475,10 +5187,16 @@ deheader_sdl2_withoutopengl_cpp:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_withoutopengl_h:
   stage: build
@@ -3488,10 +5206,16 @@ deheader_sdl2_withoutopengl_h:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 deheader_sdl2_withoutopengl_cc:
   stage: build
@@ -3501,10 +5225,16 @@ deheader_sdl2_withoutopengl_cc:
   - export CXX=g++-5
   - export LOGFILE=logs/deheader.log
   - ./tools/ci/jobs/deheader_sdl2.sh
-  - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} ;
   - ./tools/ci/jobs/deheader2.sh
   image: debian:unstable
   <<: *job-shared
+  variables:
+    PACKAGES: python wget 
+              gcc-5 g++-5 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 doxygen:
   stage: build
@@ -3517,6 +5247,11 @@ doxygen:
     expire_in: 3 week
     when: always
   dependencies: []
+  variables:
+    PACKAGES: doxygen graphviz 
+              libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
   only:
@@ -3533,6 +5268,8 @@ gitstats:
     expire_in: 3 week
     when: always
   dependencies: []
+  variables:
+    PACKAGES: python zlib1g git-core gnuplot
   tags:
     - docker
   only:
@@ -3550,6 +5287,8 @@ pages:
     - gitstats
     - gcc-6_tests_gcov
     - gcc-6_sdl2_tests_gcov
+  variables:
+    PACKAGES: git-core python
   artifacts:
     paths:
     - public

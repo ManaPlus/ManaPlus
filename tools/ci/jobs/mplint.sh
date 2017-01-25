@@ -6,9 +6,6 @@ export LOGFILE=mplint_po.log
 
 source ./tools/ci/scripts/init.sh
 
-aptget_install gcc g++ git \
-    make autoconf automake autopoint gettext
-
 export CXXFLAGS="-std=gnu++11"
 
 do_init

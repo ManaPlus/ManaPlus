@@ -4,8 +4,6 @@ export LOGFILE=cpplint.log
 
 source ./tools/ci/scripts/init.sh
 
-aptget_install python wget
-
 rm cpplint.py
 tools/ci/scripts/retry.sh wget "https://raw.githubusercontent.com/google/styleguide/gh-pages/cpplint/cpplint.py"
 chmod +x cpplint.py

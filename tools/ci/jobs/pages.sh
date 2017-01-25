@@ -4,8 +4,6 @@ export LOGFILE=pages.log
 
 source ./tools/ci/scripts/init.sh
 
-aptget_install git-core python
-
 tools/ci/scripts/retry.sh git clone https://gitlab.com/4144/pagesindexgen.git pagesindexgen
 
 mkdir -p public/docs

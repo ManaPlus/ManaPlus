@@ -6,12 +6,6 @@ export LOGFILE=gcc5_sdl2_tests.log
 
 source ./tools/ci/scripts/init.sh
 
-aptget_install gcc-5 g++-5 \
-    make autoconf automake autopoint gettext libphysfs-dev \
-    libxml2-dev libcurl4-gnutls-dev libpng-dev \
-    libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev \
-    valgrind
-
 export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -fno-omit-frame-pointer -funswitch-loops \
 -Wvariadic-macros -Wvla -Wredundant-decls \

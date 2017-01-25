@@ -6,11 +6,6 @@ export LOGFILE=gcc48_c++11.log
 
 source ./tools/ci/scripts/init.sh
 
-aptget_install gcc-4.8 g++-4.8 \
-    make autoconf automake autopoint gettext libphysfs-dev \
-    libxml2-dev libcurl4-gnutls-dev libpng-dev \
-    libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-
 export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -funswitch-loops \
 -Wvariadic-macros -Wvla -Wredundant-decls \

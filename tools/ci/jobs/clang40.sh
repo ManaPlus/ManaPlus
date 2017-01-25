@@ -6,11 +6,6 @@ export LOGFILE=clang40.log
 
 source ./tools/ci/scripts/init.sh
 
-aptget_install clang-4.0 libc++-dev libc++abi-dev \
-    make autoconf automake autopoint gettext libphysfs-dev \
-    libxml2-dev libcurl4-gnutls-dev libpng-dev \
-    libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-
 export CXXFLAGS="-Weverything -Wno-documentation -Wno-padded -Wno-sign-conversion \
 -Wno-global-constructors -Wno-exit-time-destructors -Wno-weak-vtables \
 -Wno-overloaded-virtual -Wno-covered-switch-default -Wno-float-equal -Wno-conversion \

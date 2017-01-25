@@ -2,8 +2,6 @@
 
 source ./tools/ci/scripts/init.sh
 
-aptget_install imagemagick
-
 export LOG="logs/icccheck.log"
 
 mkdir logs

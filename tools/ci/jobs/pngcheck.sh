@@ -2,8 +2,6 @@
 
 source ./tools/ci/scripts/init.sh
 
-aptget_install pngcheck
-
 export LOG1="pngcheck.log"
 export LOG2="pngcheck2.log"
 
