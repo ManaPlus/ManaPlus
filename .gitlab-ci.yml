@@ -8,6 +8,7 @@ before_script:
   - cat /etc/os-release
   - pwd
   - mkdir logs
+  - tools/ci/scripts/updaterepos.sh
   - tools/ci/scripts/dockerretry.sh apt-get update
   - tools/ci/scripts/dockerretry.sh apt-get install -y -qq ${PACKAGES}
 
