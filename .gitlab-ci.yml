@@ -1252,6 +1252,195 @@ gcc-5_tarball:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
+# build with other libs versions
+
+gcc-6_zlib_v1.2.9:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: zlib
+    LIBVERSION: v1.2.9
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_zlib_v1.2.10:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: zlib
+    LIBVERSION: v1.2.10
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_zlib_v1.2.11:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: zlib
+    LIBVERSION: v1.2.11
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_libpng_master:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: libpng
+    LIBVERSION: master
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_libpng_libpng17:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: libpng
+    LIBVERSION: libpng17
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_libpng_libpng16:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: libpng
+    LIBVERSION: libpng16
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_libpng_libpng15:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: libpng
+    LIBVERSION: libpng15
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_libpng_libpng14:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: libpng
+    LIBVERSION: libpng14
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_libpng_libpng12:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: libpng
+    LIBVERSION: libpng12
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_libpng_libpng10:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: libpng
+    LIBVERSION: libpng10
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+gcc-6_libpng_libpng00:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    LIBNAME: libpng
+    LIBVERSION: libpng00
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
 # deheader default
 
 deheader_gui_windows_cpp:
