@@ -23,6 +23,8 @@
 #include "main.h"
 #include "settings.h"
 
+#include "input/inputmanager.h"
+
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -31,4 +33,21 @@ void BrowserBoxTools::replaceVars(std::string &data)
 {
     data = replaceAll(data, "%VER%", SMALL_VERSION);
     data = replaceAll(data, "%SUPPORTURL%", settings.supportUrl);
+}
+
+void BrowserBoxTools::replaceKeys(std::string &data)
+{
+    size_t idx1 = data.find("###");
+    while (idx1 != std::string::npos)
+    {
+        const size_t idx2 = data.find(';', idx1);
+        if (idx2 == std::string::npos)
+            break;
+
+        const std::string str = inputManager.getKeyValueByNameLong(
+            data.substr(idx1 + 3, idx2 - idx1 - 3));
+        data.replace(idx1, idx2 - idx1 + 1, str);
+
+        idx1 = data.find("###");
+    }
 }
