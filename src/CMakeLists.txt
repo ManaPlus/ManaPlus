@@ -1351,6 +1351,7 @@ SET(SRCS
     enums/gui/browserboxmode.h
     enums/gui/chatmsgtype.h
     enums/gui/chattabtype.h
+    enums/gui/colorname.h
     gui/cliprect.h
     gui/color.h
     gui/colorpair.h

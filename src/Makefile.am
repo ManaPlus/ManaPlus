@@ -123,6 +123,7 @@ SRC += events/actionevent.h \
 	      enums/gui/browserboxmode.h \
 	      enums/gui/chatmsgtype.h \
 	      enums/gui/chattabtype.h \
+	      enums/gui/colorname.h \
 	      gui/cliprect.h \
 	      gui/color.h \
 	      enums/gui/dialogtype.h \

@@ -96,8 +96,8 @@ ImageSet *BrowserBox::mEmotes = nullptr;
 int BrowserBox::mInstances = 0;
 
 #define readColor(color) \
-    mColors[0][color] = getThemeColor(ThemeColorId::color); \
-    mColors[1][color] = getThemeColor(ThemeColorId::color##_OUTLINE)
+    mColors[0][ColorName::color] = getThemeColor(ThemeColorId::color); \
+    mColors[1][ColorName::color] = getThemeColor(ThemeColorId::color##_OUTLINE)
 
 BrowserBox::BrowserBox(const Widget2 *const widget,
                        const BrowserBoxModeT mode,
@@ -778,44 +778,44 @@ int BrowserBox::calcHeight()
                         switch (c)
                         {
                             case '0':
-                                selColor[0] = mColors[0][BLACK];
-                                selColor[1] = mColors[1][BLACK];
+                                selColor[0] = mColors[0][ColorName::BLACK];
+                                selColor[1] = mColors[1][ColorName::BLACK];
                                 break;
                             case '1':
-                                selColor[0] = mColors[0][RED];
-                                selColor[1] = mColors[1][RED];
+                                selColor[0] = mColors[0][ColorName::RED];
+                                selColor[1] = mColors[1][ColorName::RED];
                                 break;
                             case '2':
-                                selColor[0] = mColors[0][GREEN];
-                                selColor[1] = mColors[1][GREEN];
+                                selColor[0] = mColors[0][ColorName::GREEN];
+                                selColor[1] = mColors[1][ColorName::GREEN];
                                 break;
                             case '3':
-                                selColor[0] = mColors[0][BLUE];
-                                selColor[1] = mColors[1][BLUE];
+                                selColor[0] = mColors[0][ColorName::BLUE];
+                                selColor[1] = mColors[1][ColorName::BLUE];
                                 break;
                             case '4':
-                                selColor[0] = mColors[0][ORANGE];
-                                selColor[1] = mColors[1][ORANGE];
+                                selColor[0] = mColors[0][ColorName::ORANGE];
+                                selColor[1] = mColors[1][ColorName::ORANGE];
                                 break;
                             case '5':
-                                selColor[0] = mColors[0][YELLOW];
-                                selColor[1] = mColors[1][YELLOW];
+                                selColor[0] = mColors[0][ColorName::YELLOW];
+                                selColor[1] = mColors[1][ColorName::YELLOW];
                                 break;
                             case '6':
-                                selColor[0] = mColors[0][PINK];
-                                selColor[1] = mColors[1][PINK];
+                                selColor[0] = mColors[0][ColorName::PINK];
+                                selColor[1] = mColors[1][ColorName::PINK];
                                 break;
                             case '7':
-                                selColor[0] = mColors[0][PURPLE];
-                                selColor[1] = mColors[1][PURPLE];
+                                selColor[0] = mColors[0][ColorName::PURPLE];
+                                selColor[1] = mColors[1][ColorName::PURPLE];
                                 break;
                             case '8':
-                                selColor[0] = mColors[0][GRAY];
-                                selColor[1] = mColors[1][GRAY];
+                                selColor[0] = mColors[0][ColorName::GRAY];
+                                selColor[1] = mColors[1][ColorName::GRAY];
                                 break;
                             case '9':
-                                selColor[0] = mColors[0][BROWN];
-                                selColor[1] = mColors[1][BROWN];
+                                selColor[0] = mColors[0][ColorName::BROWN];
+                                selColor[1] = mColors[1][ColorName::BROWN];
                                 break;
                             default:
                                 selColor[0] = textColor[0];

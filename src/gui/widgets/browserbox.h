@@ -29,6 +29,7 @@
 #include "enums/simpletypes/opaque.h"
 
 #include "enums/gui/browserboxmode.h"
+#include "enums/gui/colorname.h"
 
 #include "gui/browserlink.h"
 
@@ -114,21 +115,6 @@ class BrowserBox final : public Widget,
 
         void updateHeight();
 
-        enum
-        {
-            RED = 0,
-            BLACK,
-            GREEN,
-            BLUE,
-            ORANGE,
-            YELLOW,
-            PINK,
-            PURPLE,
-            GRAY,
-            BROWN,
-            COLORS_MAX
-        };
-
         typedef std::list<std::string> TextRows;
 
         TextRows &getRows() noexcept2 A_WARN_UNUSED
@@ -203,7 +189,7 @@ class BrowserBox final : public Widget,
 
         Color mHighlightColor;
         Color mHyperLinkColor;
-        Color mColors[2][COLORS_MAX];
+        Color mColors[2][ColorName::COLORS_MAX];
 
         Opaque mOpaque;
         bool mUseLinksAndUserColors;
