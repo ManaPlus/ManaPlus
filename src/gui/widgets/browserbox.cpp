@@ -60,6 +60,7 @@
 #include "resources/loaders/imageloader.h"
 #include "resources/loaders/imagesetloader.h"
 
+#include "utils/browserboxtools.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"
 #include "utils/translation/podict.h"
@@ -217,8 +218,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
 
     if (mProcessVars)
     {
-        tmp = replaceAll(tmp, "%VER%", SMALL_VERSION);
-        tmp = replaceAll(tmp, "%SUPPORTURL%", settings.supportUrl);
+        BrowserBoxTools::replaceVars(tmp);
     }
 
     // Use links and user defined colors
