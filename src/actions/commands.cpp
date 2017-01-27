@@ -93,12 +93,9 @@ static std::string getNick(const InputEvent &event)
         WhisperTab *const whisper = static_cast<WhisperTab* const>(event.tab);
         if (whisper->getNick().empty())
         {
-            if (event.tab)
-            {
-                // TRANSLATORS: change relation
-                event.tab->chatLog(_("Please specify a name."),
-                    ChatMsgType::BY_SERVER);
-            }
+            // TRANSLATORS: change relation
+            event.tab->chatLog(_("Please specify a name."),
+                ChatMsgType::BY_SERVER);
             return std::string();
         }
         args = whisper->getNick();

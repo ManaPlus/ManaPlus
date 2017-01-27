@@ -611,7 +611,7 @@ TEST_CASE("stringuntils splitToIntSet 1")
 {
     std::set<int> tokens;
     splitToIntSet(tokens, "", ',');
-    REQUIRE(tokens.size() == 0);
+    REQUIRE(tokens.empty() == true);
 
     tokens.clear();
     splitToIntSet(tokens, "10z,aa,-1", ',');
@@ -652,7 +652,7 @@ TEST_CASE("stringuntils splitToIntList 1")
 {
     std::list<int> tokens;
     tokens = splitToIntList("", ',');
-    REQUIRE(tokens.size() == 0);
+    REQUIRE(tokens.empty() == true);
 
     tokens.clear();
     tokens = splitToIntList("10z,a,-1", ',');
@@ -707,7 +707,7 @@ TEST_CASE("stringuntils splitToStringSet 1")
 {
     std::set<std::string> tokens;
     splitToStringSet(tokens, "", ',');
-    REQUIRE(tokens.size() == 0);
+    REQUIRE(tokens.empty() == true);
 
     tokens.clear();
     splitToStringSet(tokens, "10q,2w,30e", ',');
@@ -754,7 +754,7 @@ TEST_CASE("stringuntils splitToIntVector 1")
 {
     std::vector<int> tokens;
     splitToIntVector(tokens, "", ',');
-    REQUIRE(tokens.size() == 0);
+    REQUIRE(tokens.empty() == true);
 
     tokens.clear();
     splitToIntVector(tokens, "10,2,30", ',');
@@ -801,7 +801,7 @@ TEST_CASE("stringuntils splitToStringVector 1")
 {
     std::vector<std::string> tokens;
     splitToStringVector(tokens, "", ',');
-    REQUIRE(tokens.size() == 0);
+    REQUIRE(tokens.empty() == true);
 
     tokens.clear();
     splitToStringVector(tokens, "t,line,zz", ',');

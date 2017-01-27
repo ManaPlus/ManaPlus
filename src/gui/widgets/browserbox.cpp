@@ -621,11 +621,6 @@ int BrowserBox::calcHeight()
             // "Tokenize" the string at control sequences
             if (mUseLinksAndUserColors)
                 idx1 = row.find("##", start + 1);
-            if (idx1 < idx2)
-                end = idx1;
-            else
-                end = idx2;
-
             if (start == 0 || mUseLinksAndUserColors)
             {
                 // Check for color change in format "##x", x = [L,P,0..9]
