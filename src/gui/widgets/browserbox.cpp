@@ -23,15 +23,7 @@
 
 #include "gui/widgets/browserbox.h"
 
-#include "itemcolormanager.h"
-#include "main.h"
-#include "settings.h"
-
-#include "const/resources/item/cards.h"
-
 #include "enums/gui/linkhighlightmode.h"
-
-#include "input/inputmanager.h"
 
 #include "gui/gui.h"
 #include "gui/skin.h"
@@ -41,17 +33,6 @@
 #include "gui/widgets/linkhandler.h"
 
 #include "render/graphics.h"
-
-#ifndef DYECMD
-#include "resources/beinginfo.h"
-#include "resources/iteminfo.h"
-
-#include "resources/db/homunculusdb.h"
-#include "resources/db/itemdb.h"
-#include "resources/db/mercenarydb.h"
-#include "resources/db/monsterdb.h"
-#include "resources/db/petdb.h"
-#endif  // DYECMD
 
 #include "resources/imageset.h"
 
@@ -248,68 +229,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             bLink.y2 = bLink.y1 + font->getHeight();
             if (bLink.caption.empty())
             {
-                bLink.caption = bLink.link;
-#ifndef DYECMD
-                const std::string link = bLink.link;
-                if (!link.empty() && link[0] == 'm')
-                {  // monster link
-                    const BeingTypeId id = static_cast<BeingTypeId>(
-                        atoi(bLink.link.substr(1).c_str()));
-                    BeingInfo *info = MonsterDB::get(id);
-                    if (info)
-                        bLink.caption = info->getName();
-                }
-                else if (!link.empty() && link[0] == 'p')
-                {  // pet link
-                    const BeingTypeId id = static_cast<BeingTypeId>(
-                        atoi(bLink.link.substr(1).c_str()));
-                    BeingInfo *info = PETDB::get(id);
-                    if (info)
-                        bLink.caption = info->getName();
-                }
-                else if (!link.empty() && link[0] == 'h')
-                {  // homunculus link
-                    const BeingTypeId id = static_cast<BeingTypeId>(
-                        atoi(bLink.link.substr(1).c_str()));
-                    BeingInfo *info = HomunculusDB::get(id);
-                    if (info)
-                        bLink.caption = info->getName();
-                }
-                else if (!link.empty() && link[0] == 'M')
-                {  // homunculus link
-                    const BeingTypeId id = static_cast<BeingTypeId>(
-                        atoi(bLink.link.substr(1).c_str()));
-                    BeingInfo *info = MercenaryDB::get(id);
-                    if (info)
-                        bLink.caption = info->getName();
-                }
-                else
-                {  // item link
-                    size_t idx = bLink.link.find(',');
-                    if (idx != std::string::npos)
-                    {
-                        const int id = atoi(bLink.link.substr(0, idx).c_str());
-                        if (id)
-                        {
-                            std::vector<int> parts;
-                            splitToIntVector(parts,
-                                bLink.link.substr(idx), ',');
-                            while (parts.size() < maxCards)
-                                parts.push_back(0);
-                            const ItemColor itemColor =
-                                ItemColorManager::getColorFromCards(&parts[0]);
-                            bLink.caption = ItemDB::get(id).getName(itemColor);
-                        }
-                    }
-                    else
-                    {
-                        const int id = atoi(bLink.link.c_str());
-                        if (id)
-                            bLink.caption = ItemDB::get(id).getName();
-                    }
-                }
-#endif  // DYECMD
-
+                bLink.caption = BrowserBoxTools::replaceLinkCommands(bLink.link);
                 if (translator)
                     bLink.caption = translator->getStr(bLink.caption);
             }

@@ -30,6 +30,8 @@ namespace BrowserBoxTools
     void replaceVars(std::string &data);
 
     void replaceKeys(std::string &data);
+
+    std::string replaceLinkCommands(const std::string &link);
 }  // BrowserBoxTools
 
 #endif  // UTILS_BROWSERBOXTOOLS_H

@@ -20,12 +20,26 @@
 
 #include "utils/browserboxtools.h"
 
+#include "itemcolormanager.h"
 #include "main.h"
 #include "settings.h"
 
 #include "input/inputmanager.h"
 
 #include "utils/stringutils.h"
+
+#ifndef DYECMD
+#include "const/resources/item/cards.h"
+
+#include "resources/beinginfo.h"
+#include "resources/iteminfo.h"
+
+#include "resources/db/homunculusdb.h"
+#include "resources/db/itemdb.h"
+#include "resources/db/mercenarydb.h"
+#include "resources/db/monsterdb.h"
+#include "resources/db/petdb.h"
+#endif  // DYECMD
 
 #include "debug.h"
 
@@ -50,4 +64,73 @@ void BrowserBoxTools::replaceKeys(std::string &data)
 
         idx1 = data.find("###");
     }
+}
+
+std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
+{
+#ifdef DYECMD
+    return link;
+#else // DYECMD
+
+    std::string data = link;
+
+    if (!link.empty() && link[0] == 'm')
+    {  // monster link
+        const BeingTypeId id = static_cast<BeingTypeId>(
+            atoi(link.substr(1).c_str()));
+        BeingInfo *info = MonsterDB::get(id);
+        if (info)
+            data = info->getName();
+    }
+    else if (!link.empty() && link[0] == 'p')
+    {  // pet link
+        const BeingTypeId id = static_cast<BeingTypeId>(
+            atoi(link.substr(1).c_str()));
+        BeingInfo *info = PETDB::get(id);
+        if (info)
+            data = info->getName();
+    }
+    else if (!link.empty() && link[0] == 'h')
+    {  // homunculus link
+        const BeingTypeId id = static_cast<BeingTypeId>(
+            atoi(link.substr(1).c_str()));
+        BeingInfo *info = HomunculusDB::get(id);
+        if (info)
+            data = info->getName();
+    }
+    else if (!link.empty() && link[0] == 'M')
+    {  // homunculus link
+        const BeingTypeId id = static_cast<BeingTypeId>(
+            atoi(link.substr(1).c_str()));
+        BeingInfo *info = MercenaryDB::get(id);
+        if (info)
+            data = info->getName();
+    }
+    else
+    {  // item link
+        size_t idx = link.find(',');
+        if (idx != std::string::npos)
+        {
+            const int id = atoi(link.substr(0, idx).c_str());
+            if (id)
+            {
+                std::vector<int> parts;
+                splitToIntVector(parts,
+                    link.substr(idx), ',');
+                while (parts.size() < maxCards)
+                    parts.push_back(0);
+                const ItemColor itemColor =
+                    ItemColorManager::getColorFromCards(&parts[0]);
+                data = ItemDB::get(id).getName(itemColor);
+            }
+        }
+        else
+        {
+            const int id = atoi(link.c_str());
+            if (id)
+                data = ItemDB::get(id).getName();
+        }
+    }
+    return data;
+#endif  // DYECMD
 }
