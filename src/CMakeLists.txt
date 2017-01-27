@@ -1342,6 +1342,7 @@ SET(SRCS
     events/actionevent.h
     listeners/actionlistener.h
     gui/widgets/basiccontainer.h
+    gui/browserlink.h
     gui/buttoninfo.h
     gui/buttontext.h
     const/gui/chat.h

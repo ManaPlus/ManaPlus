@@ -28,34 +28,14 @@
 
 #include "enums/simpletypes/opaque.h"
 
+#include "gui/browserlink.h"
+
 #include "gui/widgets/linepart.h"
 #include "gui/widgets/widget.h"
 
 #include "localconsts.h"
 
 class LinkHandler;
-
-struct BrowserLink final
-{
-    BrowserLink() :
-        x1(0),
-        x2(0),
-        y1(0),
-        y2(0),
-        link(),
-        caption()
-    {
-    }
-
-    A_DEFAULT_COPY(BrowserLink)
-
-    int x1;
-    int x2;
-    int y1;
-    int y2;
-    std::string link;
-    std::string caption;
-};
 
 /**
  * A simple browser box able to handle links and forward events to the
