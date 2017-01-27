@@ -70,7 +70,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
 {
 #ifdef DYECMD
     return link;
-#else // DYECMD
+#else  // DYECMD
 
     std::string data = link;
 

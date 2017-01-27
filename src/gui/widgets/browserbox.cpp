@@ -229,7 +229,8 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             bLink.y2 = bLink.y1 + font->getHeight();
             if (bLink.caption.empty())
             {
-                bLink.caption = BrowserBoxTools::replaceLinkCommands(bLink.link);
+                bLink.caption = BrowserBoxTools::replaceLinkCommands(
+                    bLink.link);
                 if (translator)
                     bLink.caption = translator->getStr(bLink.caption);
             }
