@@ -29,6 +29,8 @@
 
 #include "const/resources/item/cards.h"
 
+#include "enums/gui/linkhighlightmode.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/gui.h"
@@ -110,7 +112,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mLinkHandler(nullptr),
     mSkin(nullptr),
     mMode(mode),
-    mHighMode(0),
+    mHighlightMode(0),
     mSelectedLink(-1),
     mMaxRows(0),
     mHeight(0),
@@ -155,9 +157,9 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
             mSkin->getOption("newLinePadding", 15));
         mItemPadding = mSkin->getOption("itemPadding");
         if (mSkin->getOption("highlightBackground"))
-            mHighMode |= BACKGROUND;
+            mHighlightMode |= LinkHighlightMode::BACKGROUND;
         if (mSkin->getOption("highlightUnderline"))
-            mHighMode |= UNDERLINE;
+            mHighlightMode |= LinkHighlightMode::UNDERLINE;
     }
 
     readColor(BLACK);
@@ -564,10 +566,10 @@ void BrowserBox::draw(Graphics *const graphics)
             mDimension.width, mDimension.height));
     }
 
-    if (mSelectedLink >= 0 && mSelectedLink
-        < CAST_S32(mLinks.size()))
+    if (mSelectedLink >= 0 &&
+        mSelectedLink < CAST_S32(mLinks.size()))
     {
-        if ((mHighMode & BACKGROUND))
+        if ((mHighlightMode & LinkHighlightMode::BACKGROUND))
         {
             BrowserLink &link = mLinks[CAST_SIZE(mSelectedLink)];
             graphics->setColor(mHighlightColor);
@@ -578,7 +580,7 @@ void BrowserBox::draw(Graphics *const graphics)
                 link.y2 - link.y1));
         }
 
-        if ((mHighMode & UNDERLINE))
+        if ((mHighlightMode & LinkHighlightMode::UNDERLINE))
         {
             BrowserLink &link = mLinks[CAST_SIZE(mSelectedLink)];
             graphics->setColor(mHyperLinkColor);

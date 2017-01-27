@@ -218,6 +218,7 @@ SET(SRCS
     gui/widgets/layouthelper.cpp
     gui/widgets/layouthelper.h
     enums/gui/layouttype.h
+    enums/gui/linkhighlightmode.h
     enums/gui/npcactionstate.h
     enums/gui/npcinputstate.h
     gui/widgets/linepart.cpp

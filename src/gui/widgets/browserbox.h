@@ -129,16 +129,6 @@ class BrowserBox final : public Widget,
             COLORS_MAX
         };
 
-        /**
-         * Highlight modes for links.
-         * This can be used for a bitmask.
-         */
-        enum
-        {
-            UNDERLINE  = 1,
-            BACKGROUND = 2
-        };
-
         typedef std::list<std::string> TextRows;
 
         TextRows &getRows() noexcept2 A_WARN_UNUSED
@@ -199,7 +189,7 @@ class BrowserBox final : public Widget,
         LinkHandler *mLinkHandler;
         Skin *mSkin;
         BrowserBoxModeT mMode;
-        unsigned int mHighMode;
+        unsigned int mHighlightMode;
         int mSelectedLink;
         unsigned int mMaxRows;
         int mHeight;
