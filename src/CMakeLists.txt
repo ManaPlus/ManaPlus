@@ -1347,6 +1347,7 @@ SET(SRCS
     gui/buttontext.h
     const/gui/chat.h
     gui/chatlog.h
+    enums/gui/browserboxmode.h
     enums/gui/chatmsgtype.h
     enums/gui/chattabtype.h
     gui/cliprect.h

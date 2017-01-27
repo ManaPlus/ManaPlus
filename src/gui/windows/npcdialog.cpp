@@ -100,7 +100,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mNpcId(npcId),
     mDefaultInt(0),
     mDefaultString(),
-    mTextBox(new BrowserBox(this, BrowserBox::AUTO_WRAP, Opaque_true,
+    mTextBox(new BrowserBox(this, BrowserBoxMode::AUTO_WRAP, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mTextBox,
         fromBool(getOptionBool("showtextbackground"), Opaque),
@@ -1293,7 +1293,7 @@ void NpcDialog::createSkinControls()
     {
         const NpcTextInfo *const info = *it;
         BrowserBox *box = new BrowserBox(this,
-            BrowserBox::AUTO_WRAP,
+            BrowserBoxMode::AUTO_WRAP,
             Opaque_true,
             "browserbox.xml");
         box->setOpaque(Opaque_false);

@@ -55,7 +55,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     mColorBox(CREATEWIDGETR(ListBox, this, userPalette, "")),
     mScroll(new ScrollArea(this, mColorBox,
         Opaque_true, "setup_colors_background.xml")),
-    mPreview(new BrowserBox(this, BrowserBox::AUTO_WRAP, Opaque_true,
+    mPreview(new BrowserBox(this, BrowserBoxMode::AUTO_WRAP, Opaque_true,
         "browserbox.xml")),
     mTextPreview(new TextPreview(this, gettext(rawmsg))),
     mPreviewBox(new ScrollArea(this, mPreview, Opaque_true,

@@ -39,7 +39,7 @@ SpeechBubble::SpeechBubble() :
     mText(),
     mSpacing(mSkin ? mSkin->getOption("spacing") : 2),
     mCaption(new Label(this)),
-    mSpeechBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
+    mSpeechBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
         "speechbrowserbox.xml"))
 {
     setContentSize(140, 46);

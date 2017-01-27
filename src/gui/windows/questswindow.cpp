@@ -72,7 +72,7 @@ QuestsWindow::QuestsWindow() :
         fromBool(getOptionBool("showlistbackground"), Opaque),
         "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),
-    mText(new BrowserBox(this, BrowserBox::AUTO_WRAP, Opaque_true,
+    mText(new BrowserBox(this, BrowserBoxMode::AUTO_WRAP, Opaque_true,
         "browserbox.xml")),
     mTextScrollArea(new ScrollArea(this, mText,
         fromBool(getOptionBool("showtextbackground"), Opaque),

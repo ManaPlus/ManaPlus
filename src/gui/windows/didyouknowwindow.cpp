@@ -55,7 +55,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     Window(_("Did You Know?"), Modal_false, nullptr, "didyouknow.xml"),
     ActionListener(),
     mItemLinkHandler(new ItemLinkHandler),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
         Opaque_true, "didyouknow_background.xml")),

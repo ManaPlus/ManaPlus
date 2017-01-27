@@ -56,7 +56,7 @@ HelpWindow::HelpWindow() :
     ActionListener(),
     // TRANSLATORS: help window. button.
     mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
         Opaque_true, "help_background.xml")),

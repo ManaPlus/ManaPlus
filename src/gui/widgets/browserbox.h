@@ -28,6 +28,8 @@
 
 #include "enums/simpletypes/opaque.h"
 
+#include "enums/gui/browserboxmode.h"
+
 #include "gui/browserlink.h"
 
 #include "gui/widgets/linepart.h"
@@ -49,7 +51,7 @@ class BrowserBox final : public Widget,
          * Constructor.
          */
         BrowserBox(const Widget2 *const widget,
-                   const unsigned int mode,
+                   const BrowserBoxModeT mode,
                    const Opaque opaque,
                    const std::string &skin);
 
@@ -111,15 +113,6 @@ class BrowserBox final : public Widget,
         void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         void updateHeight();
-
-        /**
-         * BrowserBox modes.
-         */
-        enum
-        {
-            AUTO_SIZE = 0,
-            AUTO_WRAP       /**< Maybe it needs a fix or to be redone. */
-        };
 
         enum
         {
@@ -205,7 +198,7 @@ class BrowserBox final : public Widget,
 
         LinkHandler *mLinkHandler;
         Skin *mSkin;
-        unsigned int mMode;
+        BrowserBoxModeT mMode;
         unsigned int mHighMode;
         int mSelectedLink;
         unsigned int mMaxRows;

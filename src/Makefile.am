@@ -120,6 +120,7 @@ SRC += events/actionevent.h \
 	      const/gui/chat.h \
 	      const/gui/pages.h \
 	      gui/chatlog.h \
+	      enums/gui/browserboxmode.h \
 	      enums/gui/chatmsgtype.h \
 	      enums/gui/chattabtype.h \
 	      gui/cliprect.h \

@@ -104,7 +104,7 @@ PopupMenu *popupMenu = nullptr;
 
 PopupMenu::PopupMenu() :
     Popup("PopupMenu", "popupmenu.xml"),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
         "popupbrowserbox.xml")),
     mScrollArea(nullptr),
     mBeingId(BeingId_zero),

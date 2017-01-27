@@ -100,7 +100,7 @@ WhoIsOnline::WhoIsOnline() :
     mThread(nullptr),
     mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
-    mBrowserBox(new BrowserBox(this, BrowserBox::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
         "onlinebrowserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox, Opaque_false)),
     // TRANSLATORS: who is online. button.

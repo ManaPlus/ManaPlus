@@ -98,7 +98,7 @@ int BrowserBox::mInstances = 0;
     mColors[1][color] = getThemeColor(ThemeColorId::color##_OUTLINE)
 
 BrowserBox::BrowserBox(const Widget2 *const widget,
-                       const unsigned int mode,
+                       const BrowserBoxModeT mode,
                        const Opaque opaque,
                        const std::string &skin) :
     Widget(widget),
@@ -409,7 +409,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
     }
 
     // Auto size mode
-    if (mMode == AUTO_SIZE)
+    if (mMode == BrowserBoxMode::AUTO_SIZE)
     {
         std::string plain = newRow;
         for (idx1 = plain.find("##");
@@ -426,7 +426,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
     }
 
     const int fontHeight = font->getHeight();
-    if (mMode == AUTO_WRAP)
+    if (mMode == BrowserBoxMode::AUTO_WRAP)
     {
         unsigned int y = 0;
         unsigned int nextChar;
@@ -911,8 +911,10 @@ int BrowserBox::calcHeight()
                 width = font->getWidth(part);
 
             // Auto wrap mode
-            if (mMode == AUTO_WRAP && wWidth > 0 && width > 0
-                && (x + CAST_U32(width) + 10) > wWidth)
+            if (mMode == BrowserBoxMode::AUTO_WRAP &&
+                wWidth > 0 &&
+                width > 0 &&
+                (x + CAST_U32(width) + 10) > wWidth)
             {
                 bool forced = false;
 
@@ -976,8 +978,11 @@ int BrowserBox::calcHeight()
             else
                 width = font->getWidth(part);
 
-            if (mMode == AUTO_WRAP && (width == 0 && !processed))
+            if (mMode == BrowserBoxMode::AUTO_WRAP &&
+                (width == 0 && !processed))
+            {
                 break;
+            }
 
             x += CAST_U32(width);
             if (x > mDataWidth)
