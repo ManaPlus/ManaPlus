@@ -134,3 +134,24 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
     return data;
 #endif  // DYECMD
 }
+
+void BrowserBoxTools::replaceTabs(std::string &data)
+{
+    size_t idx1 = data.find("\\t");
+    while (idx1 != std::string::npos)
+    {
+        const size_t idx2 = data.find(';', idx1);
+        if (idx2 == std::string::npos)
+            break;
+
+        const unsigned int newSize = CAST_U32(
+            atoi(data.substr(
+            idx1 + 2, idx2 - idx1 - 2).c_str()));
+        std::string str = data.substr(0, idx1);
+        while (str.size() < newSize)
+            str.append(" ");
+        str.append(data.substr(idx2 + 1));
+        data = str;
+        idx1 = data.find("\\t");
+    }
+}

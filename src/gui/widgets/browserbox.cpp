@@ -271,23 +271,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
 
     if (mEnableTabs)
     {
-        idx1 = newRow.find("\\t");
-        while (idx1 != std::string::npos)
-        {
-            const size_t idx2 = newRow.find(';', idx1);
-            if (idx2 == std::string::npos)
-                break;
-
-            const unsigned int newSize = CAST_U32(
-                atoi(newRow.substr(
-                idx1 + 2, idx2 - idx1 - 2).c_str()));
-            std::string str = newRow.substr(0, idx1);
-            while (str.size() < newSize)
-                str.append(" ");
-            str.append(newRow.substr(idx2 + 1));
-            newRow = str;
-            idx1 = newRow.find("\\t");
-        }
+        BrowserBoxTools::replaceTabs(newRow);
     }
 
     if (atTop)
