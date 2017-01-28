@@ -31,10 +31,8 @@
 
 #include <zlib.h>
 
-#define CURLVERSION_ATLEAST(a, b, c) ((LIBCURL_VERSION_MAJOR > (a)) || \
-    ((LIBCURL_VERSION_MAJOR == (a)) && (LIBCURL_VERSION_MINOR > (b))) || \
-    ((LIBCURL_VERSION_MAJOR == (a)) && (LIBCURL_VERSION_MINOR == (b)) && \
-    (LIBCURL_VERSION_PATCH >= (c))))
+#define CURLVERSION_ATLEAST(a, b, c) \
+    LIBCURL_VERSION_NUM >= ((a) * 0xffff + (b) * 0xff + c)
 
 #if defined __native_client__
 #include "utils/files.h"
@@ -337,7 +335,9 @@ int Download::downloadThread(void *ptr)
                     curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSFUNCTION,
                         &downloadProgress);
                     curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSDATA, ptr);
+#if CURLVERSION_ATLEAST(7, 10, 0)
                     curl_easy_setopt(d->mCurl, CURLOPT_NOSIGNAL, 1);
+#endif  // CURLVERSION_ATLEAST(7, 10, 0)
                     curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
                     curl_easy_setopt(d->mCurl, CURLOPT_TIMEOUT, 1800);
                     addHeaders(d->mCurl);
@@ -531,16 +531,16 @@ void Download::addProxy(CURL *const curl)
 #if CURLVERSION_ATLEAST(7, 19, 4)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP_1_0);
 #endif  // CURLVERSION_ATLEAST(7, 19, 4)
-
             break;
         case 4:  // SOCKS4
+#if CURLVERSION_ATLEAST(7, 10, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
+#endif  // CURLVERSION_ATLEAST(7, 10, 0)
             break;
         case 5:  // SOCKS4A
 #if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4A);
-#else  // CURLVERSION_ATLEAST(7, 18, 0)
-
+#elif CURLVERSION_ATLEAST(7, 10, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
 #endif  // CURLVERSION_ATLEAST(7, 18, 0)
 
@@ -561,7 +561,11 @@ void Download::addProxy(CURL *const curl)
     }
 }
 
+#if CURLVERSION_ATLEAST(7, 15, 1)
 void Download::secureCurl(CURL *const curl)
+#else  // CURLVERSION_ATLEAST(7, 15, 1)
+void Download::secureCurl(CURL *const curl A_UNUSED)
+#endif  // CURLVERSION_ATLEAST(7, 15, 1)
 {
 #if CURLVERSION_ATLEAST(7, 19, 4)
     curl_easy_setopt(curl, CURLOPT_PROTOCOLS,
