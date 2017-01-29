@@ -109,10 +109,10 @@ AC_TYPE_SSIZE_T
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
 AC_PATH_PROG(CURL_CONFIG, curl-config)
 
-LIBS="$LIBS `$PKG_CONFIG --libs zlib`"
-CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags zlib`"
-LIBS="$LIBS `$PKG_CONFIG --libs libpng`"
-CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags libpng`"
+LIBS="`$PKG_CONFIG --libs zlib` $LIBS"
+CPPFLAGS="`$PKG_CONFIG --cflags zlib` $CPPFLAGS"
+LIBS="`$PKG_CONFIG --libs libpng` $LIBS"
+CPPFLAGS="`$PKG_CONFIG --cflags libpng` $CPPFLAGS"
 
 # Checks for internationalization support
 AM_GNU_GETTEXT([external],[need-ngettext])
@@ -125,8 +125,8 @@ AC_ARG_WITH(sdl2,[  --with-sdl2        enable SDL 2 support] )
 if test "x$with_sdl2" == "xyes"; then
     AC_PATH_PROG(SDL_CONFIG, sdl2-config)
     if test -n "$SDL_CONFIG"; then
-        LIBS="$LIBS `$SDL_CONFIG --libs`"
-        CPPFLAGS="$CPPFLAGS `$SDL_CONFIG --cflags`"
+        LIBS="`$SDL_CONFIG --libs` $LIBS"
+        CPPFLAGS="`$SDL_CONFIG --cflags` $CPPFLAGS"
     fi
     AC_CHECK_LIB([SDL2], [SDL_Init], ,
     AC_MSG_ERROR([ *** Unable to find SDL2 library (http://www.libsdl.org/)]))
@@ -148,8 +148,8 @@ if test "x$with_sdl2" == "xyes"; then
 else
     AC_PATH_PROG(SDL_CONFIG, sdl-config)
     if test -n "$SDL_CONFIG"; then
-        LIBS="$LIBS `$SDL_CONFIG --libs`"
-        CPPFLAGS="$CPPFLAGS `$SDL_CONFIG --cflags`"
+        LIBS="`$SDL_CONFIG --libs` $LIBS"
+        CPPFLAGS="`$SDL_CONFIG --cflags` $CPPFLAGS"
     fi
 
     if test "x$naclbuild_enabled" == "xfalse"; then
@@ -223,8 +223,8 @@ AC_CHECK_HEADERS([physfs.h], ,
 AC_MSG_ERROR([ *** PhysFS library found but cannot find headers (http://icculus.org/physfs/)]))
 
 if test -n "$CURL_CONFIG"; then
-    LIBS="$LIBS `$CURL_CONFIG --libs`"
-    CPPFLAGS="$CPPFLAGS `$CURL_CONFIG --cflags`"
+    LIBS="`$CURL_CONFIG --libs` $LIBS"
+    CPPFLAGS="`$CURL_CONFIG --cflags` $CPPFLAGS"
 fi
 AC_CHECK_LIB([curl], [curl_global_init], ,
 AC_MSG_ERROR([ *** Unable to find CURL library (http://curl.haxx.se/)]))
@@ -260,8 +260,8 @@ esac
 
 if test "$xmllib" == "libxml"; then
     if test -n "$PKG_CONFIG"; then
-        LIBS="$LIBS `$PKG_CONFIG --libs libxml-2.0`"
-        CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags libxml-2.0`"
+        LIBS="`$PKG_CONFIG --libs libxml-2.0` $LIBS"
+        CPPFLAGS="`$PKG_CONFIG --cflags libxml-2.0` $CPPFLAGS"
     fi
     AC_CHECK_LIB([xml2], [xmlInitParser], ,
     AC_MSG_ERROR([ *** Unable to find libxml2 library (http://xmlsoft.org/)]))
