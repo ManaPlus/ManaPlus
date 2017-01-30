@@ -55,6 +55,15 @@ fi
 
 AM_CONDITIONAL(ENABLE_DYECMD, test x$with_dyecmd = xyes)
 
+# Option to enable ManaPlus game
+AC_ARG_WITH(manaplusgame,[  --without-manaplusgame        don't build ManaPlus game ] )
+if test "x$with_manaplusgame" == "xno"; then
+    with_manaplusgame=no
+else
+    with_manaplusgame=yes
+fi
+AM_CONDITIONAL(ENABLE_MANAPLUSGAME, test x$with_manaplusgame = xyes)
+
 # Enable nacl build
 AC_ARG_ENABLE(naclbuild,
 [  --enable-naclbuild    Turn on nacl building],

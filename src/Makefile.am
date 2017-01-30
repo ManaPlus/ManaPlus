@@ -1,9 +1,17 @@
 AUTOMAKE_OPTIONS = subdir-objects
 
+if ENABLE_MANAPLUSGAME
 if ENABLE_DYECMD
 bin_PROGRAMS = manaplus dyecmd
 else
 bin_PROGRAMS = manaplus
+endif
+else
+if ENABLE_DYECMD
+bin_PROGRAMS = dyecmd
+else
+bin_PROGRAMS = 
+endif
 endif
 
 dyecmd_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
@@ -810,8 +818,9 @@ SRC += utils/xml/libxml.cpp \
 endif
 
 dyecmd_SOURCES += ${SRC}
-manaplus_SOURCES += ${SRC}
 
+if ENABLE_MANAPLUSGAME
+manaplus_SOURCES += ${SRC}
 manaplus_SOURCES += main.cpp \
 	      main.h \
 	      avatar.cpp \
@@ -1844,6 +1853,7 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 manaplus_SOURCES += \
 	      mumblemanager.cpp \
 	      mumblemanager.h
+endif
 
 dyecmd_SOURCES += dyetool/gui/viewport.cpp \
 	      dyetool/gui/viewport.h \
