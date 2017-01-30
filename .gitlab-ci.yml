@@ -49,17 +49,6 @@ variables:
 
 # pre build
 
-clang-3.9:
-  stage: prebuild
-  script:
-  - ./tools/ci/jobs/clang39.sh
-  <<: *job-shared
-  variables:
-    PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-
 gcc-5_c++11_i386:
   stage: prebuild
   script:
@@ -74,17 +63,6 @@ gcc-5_c++11_i386:
   tags:
     - docker
 
-gcc-6:
-  stage: prebuild
-  script:
-  - ./tools/ci/jobs/gcc6.sh
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-
 gcc-6-i386:
   stage: prebuild
   script:
@@ -98,6 +76,28 @@ gcc-6-i386:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
+
+clang-3.9:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/clang39.sh
+  <<: *job-shared
+  variables:
+    PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+gcc-6:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc6.sh
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-4.4:
   stage: prebuild
