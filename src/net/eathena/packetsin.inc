@@ -190,7 +190,7 @@ packet(SMSG_MVP_EXP,                       0x010b,   6, &ChatRecv::processMVPExp
 packet(SMSG_MVP_EFFECT,                    0x010c,   6, &Ea::ChatRecv::processMVPEffect,                0);
 packet(SMSG_MVP_NO_ITEM,                   0x010d,   2, &ChatRecv::processMVPNoItem,                    0);
 packet(SMSG_NPC_BUY,                       0x00c6,  -1, &BuySellRecv::processNpcBuy,                    0);
-packet(SMSG_NPC_BUY_RESPONSE,              0x00ca,   3, &Ea::BuySellRecv::processNpcBuyResponse,        0);
+packet(SMSG_NPC_BUY_RESPONSE,              0x00ca,   3, &BuySellRecv::processNpcBuyResponse,            0);
 packet(SMSG_NPC_BUY_SELL_CHOICE,           0x00c4,   6, &Ea::BuySellRecv::processNpcBuySellChoice,      0);
 packet(SMSG_NPC_CASH_BUY,                  0x0849,  16, &CashShopRecv::processCashShopBuy,              0);
 packet(SMSG_NPC_CASH_POINTS,               0x0845,  10, &CashShopRecv::processCashShopPoints,           0);

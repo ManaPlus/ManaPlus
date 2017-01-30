@@ -62,7 +62,7 @@ packet(SMSG_MAP_MUSIC,                     0x0227,  -1, &Ea::PlayerRecv::process
 packet(SMSG_MAP_QUIT_RESPONSE,             0x018b,   4, &Ea::GameRecv::processMapQuitResponse,          0);
 packet(SMSG_MVP_EFFECT,                    0x010c,   6, &Ea::ChatRecv::processMVPEffect,                0);
 packet(SMSG_NPC_BUY,                       0x00c6,  -1, &BuySellRecv::processNpcBuy,                    0);
-packet(SMSG_NPC_BUY_RESPONSE,              0x00ca,   3, &Ea::BuySellRecv::processNpcBuyResponse,        0);
+packet(SMSG_NPC_BUY_RESPONSE,              0x00ca,   3, &BuySellRecv::processNpcBuyResponse,            0);
 packet(SMSG_NPC_BUY_SELL_CHOICE,           0x00c4,   6, &Ea::BuySellRecv::processNpcBuySellChoice,      0);
 packet(SMSG_NPC_CHANGETITLE,               0x0228,  -1, &Ea::NpcRecv::processChangeTitle,               0);
 packet(SMSG_NPC_CHOICE,                    0x00b7,  -1, &Ea::NpcRecv::processNpcChoice,                 0);

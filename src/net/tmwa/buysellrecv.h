@@ -34,6 +34,7 @@ namespace TmwAthena
     {
         void processNpcBuy(Net::MessageIn &msg);
         void processNpcSellResponse(Net::MessageIn &msg);
+        void processNpcBuyResponse(Net::MessageIn &msg);
     }  // namespace BuySellRecv
 }  // namespace TmwAthena
 

@@ -84,4 +84,32 @@ void BuySellRecv::processNpcSellResponse(Net::MessageIn &msg)
     }
 }
 
+void BuySellRecv::processNpcBuyResponse(Net::MessageIn &msg)
+{
+    const uint8_t response = msg.readUInt8("response");
+    if (response == 0U)
+    {
+        NotifyManager::notify(NotifyTypes::BUY_DONE);
+        return;
+    }
+    switch (response)
+    {
+        case 1:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_NO_MONEY);
+            break;
+
+        case 2:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_OVERWEIGHT);
+            break;
+
+        case 3:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_TOO_MANY_ITEMS);
+            break;
+
+        default:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED);
+            break;
+    };
+}
+
 }  // namespace EAthena

@@ -41,7 +41,6 @@ namespace Ea
 
         void processNpcBuySellChoice(Net::MessageIn &msg);
         void processNpcSell(Net::MessageIn &msg);
-        void processNpcBuyResponse(Net::MessageIn &msg);
     }  // namespace BuySellRecv
 }  // namespace Ea
 
