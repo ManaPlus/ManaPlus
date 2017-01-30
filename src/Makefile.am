@@ -101,13 +101,13 @@ dyecmd_CXXFLAGS += -DENABLE_CHECKS
 manaplus_CXXFLAGS += -DENABLE_CHECKS
 endif
 
-SRC = 
+BASE_SRC = 
 
 if USE_SDL2
 if USE_INTERNALSDLGFX
 dyecmd_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
 manaplus_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
-SRC += sdl2gfx/SDL2_framerate.c \
+BASE_SRC += sdl2gfx/SDL2_framerate.c \
 	      sdl2gfx/SDL2_framerate.h \
 	      sdl2gfx/SDL2_rotozoom.c \
 	      sdl2gfx/SDL2_rotozoom.h
@@ -117,7 +117,7 @@ manaplus_CXXFLAGS += -DUSE_SDL2
 endif
 endif
 
-SRC += events/actionevent.h \
+BASE_SRC += events/actionevent.h \
 	      listeners/actionlistener.h \
 	      listeners/attributelistener.cpp \
 	      listeners/attributelistener.h \
@@ -805,23 +805,22 @@ SRC += events/actionevent.h \
 	      winver.h
 
 if ENABLE_PUGIXML
-SRC += utils/xml/pugixml.cpp \
+BASE_SRC += utils/xml/pugixml.cpp \
 	      utils/xml/pugixml.h \
 	      utils/xml/pugixml.inc \
 	      utils/xml/pugixmlwriter.cpp \
 	      utils/xml/pugixmlwriter.h
 endif
 if ENABLE_LIBXML
-SRC += utils/xml/libxml.cpp \
+BASE_SRC += utils/xml/libxml.cpp \
 	      utils/xml/libxml.h \
 	      utils/xml/libxml.inc
 endif
 
-dyecmd_SOURCES += ${SRC}
+dyecmd_SOURCES += ${BASE_SRC}
 
-if ENABLE_MANAPLUSGAME
-manaplus_SOURCES += ${SRC}
-manaplus_SOURCES += main.cpp \
+SRC = ${BASE_SRC} \
+	      main.cpp \
 	      main.h \
 	      avatar.cpp \
 	      avatar.h \
@@ -1512,7 +1511,7 @@ manaplus_SOURCES += main.cpp \
 
 if ENABLE_TMWA
 manaplus_CXXFLAGS += -DTMWA_SUPPORT
-manaplus_SOURCES += \
+SRC += \
 	      enums/magicschool.h \
 	      gui/models/magicschoolmodel.h \
 	      gui/widgets/tabs/socialguildtab2.h \
@@ -1637,7 +1636,7 @@ manaplus_SOURCES += \
 	      net/tmwa/vendinghandler.h
 endif
 
-manaplus_SOURCES += gui/windows/bankwindow.cpp \
+SRC += gui/windows/bankwindow.cpp \
 	      gui/windows/bankwindow.h \
 	      gui/windows/buyingstoreselldialog.cpp \
 	      gui/windows/buyingstoreselldialog.h \
@@ -1850,10 +1849,9 @@ manaplus_SOURCES += gui/windows/bankwindow.cpp \
 	      net/eathena/vendingrecv.cpp \
 	      net/eathena/vendingrecv.h
 
-manaplus_SOURCES += \
+SRC += \
 	      mumblemanager.cpp \
 	      mumblemanager.h
-endif
 
 dyecmd_SOURCES += dyetool/gui/viewport.cpp \
 	      dyetool/gui/viewport.h \
@@ -1868,6 +1866,10 @@ dyecmd_SOURCES += dyetool/gui/viewport.cpp \
 	      dyetool/actions/tabs.cpp \
 	      dyetool/actions/target.cpp \
 	      dyetool/actions/windows.cpp
+
+if ENABLE_MANAPLUSGAME
+manaplus_SOURCES += ${SRC}
+endif
 
 if ENABLE_UNITTESTS
 TESTS = manaplustests
@@ -1889,7 +1891,7 @@ if USE_X11
 manaplustests_CXXFLAGS += -DUSE_X11
 endif
 
-manaplustests_SOURCES = ${manaplus_SOURCES} \
+manaplustests_SOURCES = ${SRC} \
 	      enums/render/mockdrawtype.h \
 	      render/mockdrawitem.h \
 	      render/mockgraphics.cc \
