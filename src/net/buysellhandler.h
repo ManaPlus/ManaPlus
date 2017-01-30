@@ -25,6 +25,8 @@
 
 #include "resources/item/shopitem.h"
 
+class BuyDialog;
+
 namespace Net
 {
 
@@ -52,6 +54,9 @@ class BuySellHandler notfinal
                                      const int amount) const = 0;
 
         virtual void close() const = 0;
+
+        virtual void cleanDialogReference(const BuyDialog *const dialog)
+                                          const = 0;
 };
 
 }  // namespace Net

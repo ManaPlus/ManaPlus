@@ -34,6 +34,9 @@ class BuySellHandler notfinal : public Net::BuySellHandler
         BuySellHandler();
 
         A_DELETE_COPY(BuySellHandler)
+
+        void cleanDialogReference(const BuyDialog *const dialog) const
+                                  override final;
 };
 
 }  // namespace Ea

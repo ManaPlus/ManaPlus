@@ -35,4 +35,10 @@ BuySellHandler::BuySellHandler()
     BuySellRecv::mBuyDialog = nullptr;
 }
 
+void BuySellHandler::cleanDialogReference(const BuyDialog *const dialog) const
+{
+    if (BuySellRecv::mBuyDialog == dialog)
+        BuySellRecv::mBuyDialog = nullptr;
+}
+
 }  // namespace Ea
