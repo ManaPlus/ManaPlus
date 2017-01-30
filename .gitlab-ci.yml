@@ -122,6 +122,28 @@ gcc-5_sdl2:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
+gcc-6_game_only:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc6.sh --without-dyetool
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+gcc-6_dyetool_only:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc6.sh --without-manaplusgame
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
 mplint_po:
   stage: prebuild
   script:
