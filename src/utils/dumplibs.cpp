@@ -22,6 +22,8 @@
 
 #include "logger.h"
 
+#include "utils/stringutils.h"
+
 #include <png.h>
 #include <SDL_image.h>
 PRAGMACLANG6(GCC diagnostic push)
@@ -44,6 +46,11 @@ PRAGMACLANG6(GCC diagnostic pop)
         prefix##_MINOR_VERSION, \
         prefix##_PATCHLEVEL)
 
+#define sdlVersionJoin(prefix) \
+    prefix##_MAJOR_VERSION, \
+    prefix##_MINOR_VERSION, \
+    prefix##_PATCHLEVEL
+
 static void dumpLinkedSdlVersion(const char *const text,
                                  const SDL_version *const version)
 {
@@ -57,6 +64,44 @@ static void dumpLinkedSdlVersion(const char *const text,
     }
 }
 
+static void compareVersions(const char *const libName,
+                            const char *const buildVersion,
+                            const char *const linkedVersion)
+{
+    if (strcmp(buildVersion, linkedVersion) != 0)
+    {
+        logger->assertLog(
+            "%s: compiled and linked versions not same: %s vs %s",
+            libName,
+            buildVersion,
+            linkedVersion);
+    }
+}
+
+static void compareSDLVersions(const char *const libName,
+                               const int major,
+                               const int minor,
+                               const int patch,
+                               const SDL_version *const linkedVersion)
+{
+    const std::string buildVersionStr = strprintf("%d.%d.%d",
+        major,
+        minor,
+        patch);
+    const std::string linkedVersionStr = strprintf("%d.%d.%d",
+        linkedVersion->major,
+        linkedVersion->minor,
+        linkedVersion->patch);
+    if (buildVersionStr != linkedVersionStr)
+    {
+        logger->assertLog(
+            "%s: compiled and linked versions not same: %s vs %s",
+            libName,
+            buildVersionStr.c_str(),
+            linkedVersionStr.c_str());
+    }
+}
+
 void dumpLibs()
 {
     logger->log("Compiled with:");
@@ -66,10 +111,11 @@ void dumpLibs()
     logger->log(" libpng: %s", PNG_LIBPNG_VER_STRING);
     PHYSFS_Version physfsVersion;
     PHYSFS_VERSION(&physfsVersion);
-    logger->log(" libphysfs: %d.%d.%d",
+    const std::string physfsCompiled = strprintf("%d.%d.%d",
         physfsVersion.major,
         physfsVersion.minor,
         physfsVersion.patch);
+    logger->log(" libphysfs: %s", physfsCompiled.c_str());
     dumpCompiledSdlVersion("SDL", SDL);
     dumpCompiledSdlVersion("SDL_net", SDL_NET);
     dumpCompiledSdlVersion("SDL_image", SDL_IMAGE);
@@ -80,10 +126,11 @@ void dumpLibs()
     logger->log(" zLib: %s", zlibVersion());
 #endif  // ZLIB_VERNUM >= 0x1020
     PHYSFS_getLinkedVersion(&physfsVersion);
-    logger->log(" libphysfs: %d.%d.%d",
+    const std::string physfsLinked = strprintf("%d.%d.%d",
         physfsVersion.major,
         physfsVersion.minor,
         physfsVersion.patch);
+    logger->log(" libphysfs: %s", physfsLinked.c_str());
 #ifdef LIBXML_TEST_VERSION
     LIBXML_TEST_VERSION
 #endif  // LIBXML_TEST_VERSION
@@ -100,4 +147,22 @@ void dumpLibs()
     dumpLinkedSdlVersion("SDL_net", SDLNet_Linked_Version());
     dumpLinkedSdlVersion("SDL_image", IMG_Linked_Version());
     dumpLinkedSdlVersion("SDL_ttf", TTF_Linked_Version());
+
+    compareVersions("zLib", ZLIB_VERSION, zlibVersion());
+    compareVersions("libphysfs", physfsCompiled.c_str(), physfsLinked.c_str());
+#ifdef USE_SDL2
+    compareSDLVersions("SDL", sdlVersionJoin(SDL), sdlVersion);
+#else  // USE_SDL2
+    compareSDLVersions("SDL", sdlVersionJoin(SDL), SDL_Linked_Version());
+#endif  // USE_SDL2
+
+    compareSDLVersions("SDL_net",
+        sdlVersionJoin(SDL_NET),
+        SDLNet_Linked_Version());
+    compareSDLVersions("SDL_image",
+        sdlVersionJoin(SDL_IMAGE),
+        IMG_Linked_Version());
+    compareSDLVersions("SDL_ttf",
+        sdlVersionJoin(SDL_TTF),
+        TTF_Linked_Version());
 }
