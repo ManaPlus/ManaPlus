@@ -409,7 +409,8 @@ BuyDialog::~BuyDialog()
 {
     delete2(mShopItems);
     instances.remove(this);
-    buySellHandler->cleanDialogReference(this);
+    if (buySellHandler)
+        buySellHandler->cleanDialogReference(this);
 }
 
 void BuyDialog::setMoney(const int amount)
