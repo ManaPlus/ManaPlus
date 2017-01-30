@@ -217,7 +217,7 @@ gcc-5_sanitize_tests:
 gcc-6_tests_simd:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests_simd.sh
+  - ./tools/ci/jobs/gcc6_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -231,7 +231,7 @@ gcc-6_tests_simd:
 gcc-5_sanitize_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sanitize_tests.sh
+  - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -246,7 +246,7 @@ gcc-5_sanitize_tests_i386:
 gcc-5_sanitize_no_opengl_tests:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl
+  - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl --without-dyecmd --without-manaplusgame
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -260,7 +260,7 @@ gcc-5_sanitize_no_opengl_tests:
 gcc-5_sanitize_no_opengltests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl
+  - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -275,7 +275,7 @@ gcc-5_sanitize_no_opengltests_i386:
 gcc-5_tests:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_tests.sh
+  - ./tools/ci/jobs/gcc5_tests.sh --without-dyecmd
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -289,7 +289,7 @@ gcc-5_tests:
 gcc-5_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_tests.sh
+  - ./tools/ci/jobs/gcc5_tests.sh --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -304,7 +304,7 @@ gcc-5_tests_i386:
 gcc-6_tests_gcov:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests_gcov.sh
+  - ./tools/ci/jobs/gcc6_tests_gcov.sh --without-dyecmd --without-manaplusgame
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -319,7 +319,7 @@ gcc-6_tests_gcov:
 gcc-6_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests.sh
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -334,7 +334,7 @@ gcc-6_tests_i386:
 gcc-6_tests_no_opengl:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests.sh --without-opengl
+  - ./tools/ci/jobs/gcc6_tests.sh --without-opengl --without-dyecmd --without-manaplusgame
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -348,7 +348,7 @@ gcc-6_tests_no_opengl:
 gcc-6_tests_no_opengl_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests.sh --without-opengl
+  - ./tools/ci/jobs/gcc6_tests.sh --without-opengl --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -363,7 +363,7 @@ gcc-6_tests_no_opengl_i386:
 gcc-6_sdl2_tests_gcov:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sdl2_tests_gcov.sh
+  - ./tools/ci/jobs/gcc6_sdl2_tests_gcov.sh --without-dyecmd --without-manaplusgame
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -378,7 +378,7 @@ gcc-6_sdl2_tests_gcov:
 gcc-6_sdl2_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sdl2_tests.sh
+  - ./tools/ci/jobs/gcc6_sdl2_tests.sh --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -393,7 +393,7 @@ gcc-6_sdl2_tests_i386:
 gcc-5_sdl2_tests:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sdl2_tests.sh
+  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-manaplusgame
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -407,7 +407,7 @@ gcc-5_sdl2_tests:
 gcc-5_sdl2_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sdl2_tests.sh
+  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -422,7 +422,7 @@ gcc-5_sdl2_tests_i386:
 gcc-5_sdl2_no_opengl_tests:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl
+  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl --without-dyecmd --without-manaplusgame
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -436,7 +436,7 @@ gcc-5_sdl2_no_opengl_tests:
 gcc-5_sdl2_no_opengl_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl
+  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -476,7 +476,7 @@ gcc-6_lto_i386:
 gcc-5_tarball_tests:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tarball_tests.sh
+  - ./tools/ci/jobs/gcc6_tarball_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
