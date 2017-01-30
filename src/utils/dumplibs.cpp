@@ -151,7 +151,7 @@ void dumpLibs()
     compareVersions("zLib", ZLIB_VERSION, zlibVersion());
     compareVersions("libphysfs", physfsCompiled.c_str(), physfsLinked.c_str());
 #ifdef USE_SDL2
-    compareSDLVersions("SDL", sdlVersionJoin(SDL), sdlVersion);
+    compareSDLVersions("SDL", sdlVersionJoin(SDL), &sdlVersion);
 #else  // USE_SDL2
     compareSDLVersions("SDL", sdlVersionJoin(SDL), SDL_Linked_Version());
 #endif  // USE_SDL2
