@@ -20,7 +20,11 @@
 
 #include "net/eathena/cashshoprecv.h"
 
+#include "notifymanager.h"
+
 #include "being/playerinfo.h"
+
+#include "enums/resources/notifytypes.h"
 
 #include "gui/windows/buydialog.h"
 
@@ -69,11 +73,37 @@ void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
 
 void CashShopRecv::processCashShopBuyAck(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
     msg.readInt32("cash points");
     if (packetVersion >= 20070711)
         msg.readInt32("kafra points");
-    msg.readInt16("error");
+    const uint16_t res = msg.readInt16("error");
+    switch (res)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::BUY_DONE);
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_NPC_NOT_FOUND);
+            break;
+        case 2:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_SYSTEM_ERROR);
+            break;
+        case 3:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_OVERWEIGHT);
+            break;
+        case 4:
+            NotifyManager::notify(NotifyTypes::BUY_TRADE_FAILED);
+            break;
+        case 5:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_WRONG_ITEM);
+            break;
+        case 6:
+            NotifyManager::notify(NotifyTypes::BUY_FAILED_NO_MONEY);
+            break;
+        default:
+            UNIMPLEMENTEDPACKETFIELD(res);
+            break;
+    }
 }
 
 void CashShopRecv::processCashShopPoints(Net::MessageIn &msg)

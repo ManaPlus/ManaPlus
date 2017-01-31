@@ -24,6 +24,8 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
+#include "resources/item/shopitem.h"
+
 #include "debug.h"
 
 extern Net::CashShopHandler *cashShopHandler;
@@ -54,10 +56,70 @@ void CashShopHandler::buyItem(const int points,
     outMsg.writeInt16(CAST_S16(itemId), "item id");
 }
 
-void CashShopHandler::buyItems(const std::vector<ShopItem*> &items A_UNUSED)
-                               const
+void CashShopHandler::buyItems(const int points,
+                               const std::vector<ShopItem*> &items) const
 {
-    // +++ probably need impliment buy many items at same time
+    if (packetVersion < 20101124)
+        return;
+
+    int cnt = 0;
+    const int pairSize = 4;
+
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    {
+        const ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        const ItemTypeT type = item->getType();
+        if (!usedQuantity)
+            continue;
+        if (type == ItemType::Weapon ||
+            type == ItemType::Armor ||
+            type == ItemType::PetEgg ||
+            type == ItemType::PetArmor)
+        {
+            cnt += item->getUsedQuantity();
+        }
+        else
+        {
+            cnt ++;
+        }
+    }
+
+    if (cnt > 100)
+        return;
+
+    createOutPacket(CMSG_NPC_CASH_SHOP_BUY);
+    outMsg.writeInt16(CAST_S16(10 + pairSize * cnt), "len");
+    outMsg.writeInt32(points, "points");
+    outMsg.writeInt16(cnt, "count");
+    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        if (!usedQuantity)
+            continue;
+        item->increaseQuantity(usedQuantity);
+        item->increaseUsedQuantity(-usedQuantity);
+        item->update();
+        const ItemTypeT type = item->getType();
+        if (type == ItemType::Weapon ||
+            type == ItemType::Armor ||
+            type == ItemType::PetEgg ||
+            type == ItemType::PetArmor)
+        {
+            for (int f = 0; f < usedQuantity; f ++)
+            {
+                outMsg.writeInt16(CAST_S16(1), "amount");
+                outMsg.writeInt16(CAST_S16(item->getId()),
+                    "item id");
+            }
+        }
+        else
+        {
+            outMsg.writeInt16(CAST_S16(usedQuantity), "amount");
+            outMsg.writeInt16(CAST_S16(item->getId()), "item id");
+        }
+    }
 }
 
 void CashShopHandler::close() const

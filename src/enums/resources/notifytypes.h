@@ -230,6 +230,9 @@ namespace NotifyTypes
         SKILL_MEMO_ERROR_SKILL,
         BUY_TRADE_FAILED,
         VENDING_SOLD_ITEM,
+        BUY_FAILED_NPC_NOT_FOUND,
+        BUY_FAILED_SYSTEM_ERROR,
+        BUY_FAILED_WRONG_ITEM,
 
         TYPE_END
     };

@@ -837,6 +837,18 @@ namespace NotifyManager
         {"vending sold item",
             ("%s"),
             NotifyFlags::STRING},
+        {"buy fail npc not found",
+            // TRANSLATORS: notification message
+            N_("Unable to buy. Npc not found."),
+            NotifyFlags::EMPTY},
+        {"buy fail system error",
+            // TRANSLATORS: notification message
+            N_("Unable to buy. Shop system error."),
+            NotifyFlags::EMPTY},
+        {"buy fail wrong item",
+            // TRANSLATORS: notification message
+            N_("Unable to buy. Wrong items selected."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

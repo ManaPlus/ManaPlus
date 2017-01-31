@@ -40,7 +40,8 @@ void CashShopHandler::buyItem(const int points A_UNUSED,
 {
 }
 
-void CashShopHandler::buyItems(const std::vector<ShopItem*> &items A_UNUSED)
+void CashShopHandler::buyItems(const int points A_UNUSED,
+                               const std::vector<ShopItem*> &items A_UNUSED)
                                const
 {
 }

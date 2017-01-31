@@ -277,11 +277,11 @@ void BuyDialog::init()
     setDefaultSize(260, 230, ImagePosition::CENTER);
 
     // reset advance flag for personal shops and cash shop
-    if (mAdvanced && (
+    if (mAdvanced &&
 #ifdef TMWA_SUPPORT
-        mNpcId == fromInt(Nick, BeingId) ||
+        mNpcId == fromInt(Nick, BeingId)
 #endif  // TMWA_SUPPORT
-        mNpcId == fromInt(Cash, BeingId)))
+        )
     {
         mAdvanced = false;
     }
@@ -652,6 +652,10 @@ void BuyDialog::action(const ActionEvent &event)
                 vendingHandler->buyItems(being,
                     items);
             }
+        }
+        else if (mNpcId == fromInt(Cash, BeingId))
+        {
+            cashShopHandler->buyItems(0, items);
         }
         else
         {
