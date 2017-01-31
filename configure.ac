@@ -137,6 +137,17 @@ if test "x$with_sdl2" == "xyes"; then
         LIBS="`$SDL_CONFIG --libs` $LIBS"
         CPPFLAGS="`$SDL_CONFIG --cflags` $CPPFLAGS"
     fi
+    LIBS="`$PKG_CONFIG --libs SDL2_gfx` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL2_gfx` $CPPFLAGS"
+    LIBS="`$PKG_CONFIG --libs SDL2_image` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL2_image` $CPPFLAGS"
+    LIBS="`$PKG_CONFIG --libs SDL2_mixer` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL2_mixer` $CPPFLAGS"
+    LIBS="`$PKG_CONFIG --libs SDL2_net` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL2_net` $CPPFLAGS"
+    LIBS="`$PKG_CONFIG --libs SDL2_ttf` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL2_ttf` $CPPFLAGS"
+
     AC_CHECK_LIB([SDL2], [SDL_Init], ,
     AC_MSG_ERROR([ *** Unable to find SDL2 library (http://www.libsdl.org/)]))
 
@@ -160,6 +171,16 @@ else
         LIBS="`$SDL_CONFIG --libs` $LIBS"
         CPPFLAGS="`$SDL_CONFIG --cflags` $CPPFLAGS"
     fi
+    LIBS="`$PKG_CONFIG --libs SDL_gfx` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL_gfx` $CPPFLAGS"
+    LIBS="`$PKG_CONFIG --libs SDL_image` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL_image` $CPPFLAGS"
+    LIBS="`$PKG_CONFIG --libs SDL_mixer` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL_mixer` $CPPFLAGS"
+    LIBS="`$PKG_CONFIG --libs SDL_net` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL_net` $CPPFLAGS"
+    LIBS="`$PKG_CONFIG --libs SDL_ttf` $LIBS"
+    CPPFLAGS="`$PKG_CONFIG --cflags SDL_ttf` $CPPFLAGS"
 
     if test "x$naclbuild_enabled" == "xfalse"; then
         AC_CHECK_LIB([SDL], [SDL_Init], ,
