@@ -53,9 +53,10 @@ void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
         count = (msg.readInt16("len") - 8) / 11;
 
     CREATEWIDGETV(mBuyDialog, BuyDialog, fromInt(BuyDialog::Cash, BeingId));
-    mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
+    const int points = msg.readInt32("cash points");
 
-    msg.readInt32("cash points");
+    mBuyDialog->setMoney(points);
+
     if (packetVersion >= 20070711)
         msg.readInt32("kafra points");
     for (int f = 0; f < count; f ++)
