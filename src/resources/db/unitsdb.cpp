@@ -322,6 +322,14 @@ std::string UnitsDb::formatCurrency(const int value)
     return formatUnit(value, defaultCurrency);
 }
 
+std::string UnitsDb::formatCurrency(std::string name,
+                                    const int value)
+{
+    if (mCurrencies.find(name) == mCurrencies.end())
+        name = DEFAULT_CURRENCY;
+    return formatUnit(value, mCurrencies[name]);
+}
+
 std::string UnitsDb::formatWeight(const int value)
 {
     return formatUnit(value, defaultWeight);

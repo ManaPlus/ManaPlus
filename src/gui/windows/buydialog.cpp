@@ -194,6 +194,7 @@ BuyDialog::BuyDialog() :
         this, "namefilter", true)),
     mFilterLabel(nullptr),
     mNick(),
+    mCurrency(),
     mNpcId(fromInt(Items, BeingId)),
     mMoney(0),
     mAmountItems(0),
@@ -745,8 +746,8 @@ void BuyDialog::updateButtonsAndLabels()
     mQuantityLabel->setCaption(strprintf("%d / %d", mAmountItems, mMaxItems));
     // TRANSLATORS: buy dialog label
     mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
-        UnitsDb::formatCurrency(price).c_str(),
-        UnitsDb::formatCurrency(mMoney - price).c_str()));
+        UnitsDb::formatCurrency(mCurrency, price).c_str(),
+        UnitsDb::formatCurrency(mCurrency, mMoney - price).c_str()));
 }
 
 void BuyDialog::setVisible(Visible visible)

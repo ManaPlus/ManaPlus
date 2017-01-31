@@ -48,6 +48,12 @@ class UnitsDb final
         static std::string formatCurrency(const int value) A_WARN_UNUSED;
 
         /**
+        * Formats the given number in the correct currency format.
+        */
+        static std::string formatCurrency(std::string name,
+                                          const int value) A_WARN_UNUSED;
+
+        /**
         * Formats the given number in the correct weight/mass format.
         */
         static std::string formatWeight(const int value) A_WARN_UNUSED;
