@@ -31,37 +31,36 @@
 
 #include "debug.h"
 
-struct UnitLevel final
+namespace
 {
-    A_DEFAULT_COPY(UnitLevel)
+    struct UnitLevel final
+    {
+        A_DEFAULT_COPY(UnitLevel)
 
-    std::string symbol;
-    int count;
-    int round;
-    std::string separator;
-};
+        std::string symbol;
+        int count;
+        int round;
+        std::string separator;
+    };
 
-struct UnitDescription final
-{
-    A_DEFAULT_COPY(UnitDescription)
+    struct UnitDescription final
+    {
+        A_DEFAULT_COPY(UnitDescription)
 
-    std::vector<struct UnitLevel> levels;
-    double conversion;
-    bool mix;
-};
+        std::vector<struct UnitLevel> levels;
+        double conversion;
+        bool mix;
+    };
 
-enum UnitType
-{
-    UNIT_WEIGHT = 0,
-    UNIT_CURRENCY = 1,
-    UNIT_END
-};
+    UnitDescription defaultCurrency;
+    UnitDescription defaultWeight;
+}  // namespace
 
-static std::string formatUnit(const int value, const int type);
+static std::string formatUnit(const int value,
+                              const UnitDescription &ud);
 
-static std::string splitNumber(std::string str, const std::string &separator);
-
-struct UnitDescription units[UNIT_END];
+static std::string splitNumber(std::string str,
+                               const std::string &separator);
 
 void UnitsDb::loadUnits()
 {
@@ -89,7 +88,7 @@ void UnitsDb::loadUnits()
         };
         ud.levels.push_back(ul);
 
-        units[UNIT_WEIGHT] = ud;
+        defaultWeight = ud;
     }
 
     {   // Setup default currency
@@ -101,7 +100,7 @@ void UnitsDb::loadUnits()
         UnitLevel bu = {"¤", 1, 0, ""};
         ud.levels.push_back(bu);
 
-        units[UNIT_CURRENCY] = ud;
+        defaultCurrency = ud;
     }
 
     loadXmlFile(paths.getStringValue("unitsFile"), SkipError_false);
@@ -185,9 +184,9 @@ void UnitsDb::loadXmlFile(const std::string &fileName,
             ud.levels.push_back(lev);
 
             if (type == "weight")
-                units[UNIT_WEIGHT] = ud;
+                defaultWeight = ud;
             else if (type == "currency")
-                units[UNIT_CURRENCY] = ud;
+                defaultCurrency = ud;
             else
                 logger->log("Error unknown unit type: %s", type.c_str());
         }
@@ -195,9 +194,8 @@ void UnitsDb::loadXmlFile(const std::string &fileName,
 }
 
 static std::string formatUnit(const int value,
-                              const int type)
+                              const UnitDescription &ud)
 {
-    const UnitDescription ud = units[type];
     UnitLevel ul;
 
     // Shortcut for 0; do the same for values less than 0  (for now)
@@ -278,12 +276,12 @@ static std::string formatUnit(const int value,
 
 std::string UnitsDb::formatCurrency(const int value)
 {
-    return formatUnit(value, UNIT_CURRENCY);
+    return formatUnit(value, defaultCurrency);
 }
 
 std::string UnitsDb::formatWeight(const int value)
 {
-    return formatUnit(value, UNIT_WEIGHT);
+    return formatUnit(value, defaultWeight);
 }
 
 static std::string splitNumber(std::string str,
