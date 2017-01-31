@@ -25,9 +25,12 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "utils/checkutils.h"
+
 #include "resources/beingcommon.h"
 
 #include <climits>
+#include <map>
 
 #include "debug.h"
 
@@ -54,6 +57,8 @@ namespace
 
     UnitDescription defaultCurrency;
     UnitDescription defaultWeight;
+
+    std::map<std::string, UnitDescription> mCurrencies;
 }  // namespace
 
 static std::string formatUnit(const int value,
@@ -108,6 +113,80 @@ void UnitsDb::loadUnits()
     loadXmlDir("unitsPatchDir", loadXmlFile);
 }
 
+static UnitDescription loadUnit(XmlNodePtr node)
+{
+    UnitDescription ud;
+    int level = 1;
+    ud.conversion = XML::getProperty(node, "conversion", 1);
+    ud.mix = XML::getProperty(node, "mix", "no") == "yes";
+
+    UnitLevel bu;
+    bu.symbol = XML::getProperty(node, "base", "¤");
+    bu.count = 1;
+    bu.round = XML::getProperty(node, "round", 2);
+    bu.separator = XML::getProperty(node, "separator", " ");
+
+    ud.levels.push_back(bu);
+
+    for_each_xml_child_node(uLevel, node)
+    {
+        if (xmlNameEqual(uLevel, "level"))
+        {
+            const UnitLevel ul =
+            {
+                XML::getProperty(uLevel, "symbol",
+                                 strprintf("¤%d", level)),
+                XML::getProperty(uLevel, "count", -1),
+                XML::getProperty(uLevel, "round", bu.round),
+                XML::getProperty(uLevel, "separator", bu.separator)
+            };
+
+            if (ul.count > 0)
+            {
+                ud.levels.push_back(ul);
+                level++;
+            }
+            else
+            {
+                logger->log("Error bad unit count: %d for %s in %s",
+                    ul.count,
+                    ul.symbol.c_str(),
+                    bu.symbol.c_str());
+            }
+        }
+    }
+
+    // Add one more level for saftey
+    const UnitLevel lev =
+    {
+        "",
+        INT_MAX,
+        0,
+        ""
+    };
+    ud.levels.push_back(lev);
+    return ud;
+}
+
+static void loadCurrencies(XmlNodePtr parentNode)
+{
+    for_each_xml_child_node(node, parentNode)
+    {
+        if (xmlNameEqual(node, "unit"))
+        {
+            const std::string name = XML::getProperty(node, "name", "");
+            if (name == "")
+            {
+                reportAlways("Error: unknown currency name.");
+                continue;
+            }
+            mCurrencies[name] = loadUnit(node);
+            if (name == "default")
+                defaultCurrency = mCurrencies[name];
+        }
+    }
+}
+
 void UnitsDb::loadXmlFile(const std::string &fileName,
                           const SkipError skipError)
 {
@@ -132,63 +211,18 @@ void UnitsDb::loadXmlFile(const std::string &fileName,
         }
         else if (xmlNameEqual(node, "unit"))
         {
-            UnitDescription ud;
-            int level = 1;
             const std::string type = XML::getProperty(node, "type", "");
-            ud.conversion = XML::getProperty(node, "conversion", 1);
-            ud.mix = XML::getProperty(node, "mix", "no") == "yes";
-
-            UnitLevel bu;
-            bu.symbol = XML::getProperty(node, "base", "¤");
-            bu.count = 1;
-            bu.round = XML::getProperty(node, "round", 2);
-            bu.separator = XML::getProperty(node, "separator", " ");
-
-            ud.levels.push_back(bu);
-
-            for_each_xml_child_node(uLevel, node)
-            {
-                if (xmlNameEqual(uLevel, "level"))
-                {
-                    const UnitLevel ul =
-                    {
-                        XML::getProperty(uLevel, "symbol",
-                                         strprintf("¤%d", level)),
-                        XML::getProperty(uLevel, "count", -1),
-                        XML::getProperty(uLevel, "round", bu.round),
-                        XML::getProperty(uLevel, "separator", bu.separator)
-                    };
-
-                    if (ul.count > 0)
-                    {
-                        ud.levels.push_back(ul);
-                        level++;
-                    }
-                    else
-                    {
-                        logger->log("Error bad unit count: %d for %s in %s",
-                                    ul.count, ul.symbol.c_str(),
-                                    bu.symbol.c_str());
-                    }
-                }
-            }
-
-            // Add one more level for saftey
-            const UnitLevel lev =
-            {
-                "",
-                INT_MAX,
-                0,
-                ""
-            };
-            ud.levels.push_back(lev);
-
+            UnitDescription ud = loadUnit(node);
             if (type == "weight")
                 defaultWeight = ud;
             else if (type == "currency")
                 defaultCurrency = ud;
             else
                 logger->log("Error unknown unit type: %s", type.c_str());
+        }
+        else if (xmlNameEqual(node, "currency"))
+        {
+            loadCurrencies(node);
         }
     }
 }
