@@ -35,6 +35,8 @@
 #include "net/ea/npcrecv.h"
 
 #include "net/eathena/messageout.h"
+#include "net/eathena/npcrecv.h"
+
 #include "net/eathena/protocolout.h"
 
 #include "resources/item/shopitem.h"
@@ -52,11 +54,14 @@ NpcHandler::NpcHandler() :
     npcHandler = this;
 }
 
-void NpcHandler::talk(const BeingId npcId) const
+void NpcHandler::talk(const Being *const being) const
 {
+    if (!being)
+        return;
     createOutPacket(CMSG_NPC_TALK);
-    outMsg.writeBeingId(npcId, "npc id");
+    outMsg.writeBeingId(being->getId(), "npc id");
     outMsg.writeInt8(0, "unused");
+    EAthena::NpcRecv::mNpcTypeId = being->getSubType();
 }
 
 void NpcHandler::nextDialog(const BeingId npcId) const
@@ -108,11 +113,14 @@ void NpcHandler::stringInput(const BeingId npcId,
     outMsg.writeInt8(0, "null byte");
 }
 
-void NpcHandler::buy(const BeingId beingId) const
+void NpcHandler::buy(const Being *const being) const
 {
+    if (!being)
+        return;
     createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
-    outMsg.writeBeingId(beingId, "npc id");
+    outMsg.writeBeingId(being->getId(), "npc id");
     outMsg.writeInt8(0, "action");
+    EAthena::NpcRecv::mNpcTypeId = being->getSubType();
 }
 
 void NpcHandler::sell(const BeingId beingId) const

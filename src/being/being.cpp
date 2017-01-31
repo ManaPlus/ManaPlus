@@ -3517,7 +3517,7 @@ void Being::talkTo() const restrict2
         return;
     }
 
-    npcHandler->talk(mId);
+    npcHandler->talk(this);
 }
 
 void Being::drawPlayer(Graphics *restrict const graphics,

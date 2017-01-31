@@ -35,7 +35,7 @@ class NpcHandler final : public Ea::NpcHandler
 
         A_DELETE_COPY(NpcHandler)
 
-        void talk(const BeingId npcId) const override final;
+        void talk(const Being *const being) const override final;
 
         void nextDialog(const BeingId npcId) const override final;
 
@@ -50,7 +50,7 @@ class NpcHandler final : public Ea::NpcHandler
         void stringInput(const BeingId npcId,
                          const std::string &value) const override final;
 
-        void buy(const BeingId beingId) const override final;
+        void buy(const Being *const being) const override final;
 
         void sell(const BeingId beingId) const override final;
 

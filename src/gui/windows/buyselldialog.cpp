@@ -22,6 +22,8 @@
 
 #include "gui/windows/buyselldialog.h"
 
+#include "actormanager.h"
+
 #include "net/buysellhandler.h"
 #include "net/npchandler.h"
 
@@ -129,9 +131,14 @@ void BuySellDialog::action(const ActionEvent &event)
     if (eventId == "Buy")
     {
         if (mNpcId != BeingId_negOne)
-            npcHandler->buy(mNpcId);
+        {
+            const Being *const being = actorManager->findBeing(mNpcId);
+            npcHandler->buy(being);
+        }
         else
+        {
             buySellHandler->requestSellList(mNick);
+        }
     }
     else if (eventId == "Sell")
     {

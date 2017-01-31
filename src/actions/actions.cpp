@@ -727,7 +727,7 @@ impHandler(buy)
     if (being->getType() == ActorType::Npc)
     {
         if (npcHandler)
-            npcHandler->buy(being->getId());
+            npcHandler->buy(being);
         return true;
     }
     else if (being->getType() == ActorType::Player)

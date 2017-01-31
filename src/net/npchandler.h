@@ -36,6 +36,7 @@
 
 #include "localconsts.h"
 
+class Being;
 class NpcDialog;
 class ShopItem;
 
@@ -58,7 +59,7 @@ class NpcHandler notfinal
         virtual BeingId getNpc(Net::MessageIn &msg,
                                const NpcActionT action) = 0;
 
-        virtual void talk(const BeingId npcId) const = 0;
+        virtual void talk(const Being *const being) const = 0;
 
         virtual void nextDialog(const BeingId npcId) const = 0;
 
@@ -73,7 +74,7 @@ class NpcHandler notfinal
         virtual void stringInput(const BeingId npcId,
                                  const std::string &value) const = 0;
 
-        virtual void buy(const BeingId beingId) const = 0;
+        virtual void buy(const Being *const being) const = 0;
 
         virtual void sell(const BeingId beingId) const = 0;
 
