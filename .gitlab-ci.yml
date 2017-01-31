@@ -1567,6 +1567,42 @@ gcc-6_curl_curl-7_52_1:
   tags:
     - docker
 
+.gcc-6_SDL_SDL-1.2:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: SDL-1.2
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libpng-dev libcurl4-gnutls-dev zlib1g-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip
+  tags:
+    - docker
+
+.gcc-6_SDL_default:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: default
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libxml2-dev libpng-dev libcurl4-gnutls-dev zlib1g-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              wget unzip
+  tags:
+    - docker
+
 # deheader default
 
 deheader_gui_windows_cpp:
