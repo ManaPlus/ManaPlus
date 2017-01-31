@@ -22,8 +22,6 @@
 
 #include "gui/widgets/characterdisplay.h"
 
-#include "units.h"
-
 #include "gui/gui.h"
 
 #include "gui/windows/charselectdialog.h"
@@ -36,6 +34,8 @@
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "net/character.h"
 
@@ -139,7 +139,7 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
             CAST_U32(
             mCharacter->data.mAttributes[Attributes::PLAYER_LEVEL])),
             // TRANSLATORS: character money
-            strprintf(_("Money: %s"), Units::formatCurrency(
+            strprintf(_("Money: %s"), UnitsDb::formatCurrency(
             mCharacter->data.mAttributes[Attributes::MONEY]).c_str()));
     }
     else

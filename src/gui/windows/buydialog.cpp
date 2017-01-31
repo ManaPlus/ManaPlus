@@ -24,7 +24,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "units.h"
 
 #include "being/being.h"
 
@@ -56,6 +55,8 @@
 #include "net/npchandler.h"
 
 #include "resources/iteminfo.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "utils/delete2.h"
 
@@ -738,8 +739,8 @@ void BuyDialog::updateButtonsAndLabels()
     mQuantityLabel->setCaption(strprintf("%d / %d", mAmountItems, mMaxItems));
     // TRANSLATORS: buy dialog label
     mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
-        Units::formatCurrency(price).c_str(),
-        Units::formatCurrency(mMoney - price).c_str()));
+        UnitsDb::formatCurrency(price).c_str(),
+        UnitsDb::formatCurrency(mMoney - price).c_str()));
 }
 
 void BuyDialog::setVisible(Visible visible)

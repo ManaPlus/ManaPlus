@@ -23,7 +23,6 @@
 #include "actormanager.h"
 #include "itemcolormanager.h"
 #include "notifymanager.h"
-#include "units.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -42,6 +41,8 @@
 #include "net/messagein.h"
 
 #include "resources/iteminfo.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "resources/inventory/inventory.h"
 
@@ -243,7 +244,7 @@ void VendingRecv::processReport(Net::MessageIn &msg)
         str = strprintf(_("Sold item %s amount %d. You got: %s"),
             info.getLink().c_str(),
             amount,
-            Units::formatCurrency(money).c_str());
+            UnitsDb::formatCurrency(money).c_str());
     }
     else
     {

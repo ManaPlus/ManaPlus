@@ -33,7 +33,6 @@
 #include "settings.h"
 #include "soundmanager.h"
 #include "spellmanager.h"
-#include "units.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -126,6 +125,7 @@
 #include "resources/db/skillunitdb.h"
 #include "resources/db/statdb.h"
 #include "resources/db/statuseffectdb.h"
+#include "resources/db/unitsdb.h"
 #include "resources/db/weaponsdb.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
@@ -1380,7 +1380,7 @@ int Client::gameExec()
                     EmoteDB::load();
 //                    ModDB::load();
                     StatusEffectDB::load();
-                    Units::loadUnits();
+                    UnitsDb::loadUnits();
                     EquipmentWindow::prepareSlotNames();
 
                     ActorSprite::load();

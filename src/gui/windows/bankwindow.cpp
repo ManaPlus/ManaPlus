@@ -20,8 +20,6 @@
 
 #include "gui/windows/bankwindow.h"
 
-#include "units.h"
-
 #include "net/bankhandler.h"
 
 #include "gui/windows/setupwindow.h"
@@ -33,6 +31,8 @@
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "debug.h"
 
@@ -89,7 +89,7 @@ void BankWindow::bankMoneyChanged(const int money)
 {
     // TRANSLATORS: bank window money label
     mBankMoneyLabel->setCaption(strprintf(_("Money in bank: %s"),
-        Units::formatCurrency(money).c_str()));
+        UnitsDb::formatCurrency(money).c_str()));
 }
 
 void BankWindow::action(const ActionEvent &event)

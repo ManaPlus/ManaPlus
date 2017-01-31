@@ -879,8 +879,6 @@ SRC = ${BASE_SRC} \
 	      gui/shortcut/spellshortcut.h \
 	      statuseffect.cpp \
 	      statuseffect.h \
-	      units.cpp \
-	      units.h \
 	      particle/animationparticle.cpp \
 	      particle/animationparticle.h \
 	      being/being.cpp \
@@ -1320,6 +1318,8 @@ SRC = ${BASE_SRC} \
 	      resources/db/statdb.h \
 	      resources/db/statuseffectdb.cpp \
 	      resources/db/statuseffectdb.h \
+	      resources/db/unitsdb.cpp \
+	      resources/db/unitsdb.h \
 	      resources/db/weaponsdb.cpp \
 	      resources/db/weaponsdb.h \
 	      resources/iteminfo.h \

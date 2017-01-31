@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "game.h"
-#include "units.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -49,6 +48,8 @@
 #include "gui/widgets/textfield.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "resources/item/item.h"
 
@@ -191,7 +192,7 @@ void TradeWindow::setMoney(const int amount)
     mGotMoney = amount;
     // TRANSLATORS: trade window money label
     mMoneyLabel->setCaption(strprintf(_("You get %s"),
-        Units::formatCurrency(amount).c_str()));
+        UnitsDb::formatCurrency(amount).c_str()));
     mMoneyLabel->adjustSize();
 }
 

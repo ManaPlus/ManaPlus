@@ -22,7 +22,6 @@
 
 #include "net/eathena/playerhandler.h"
 
-#include "units.h"
 #include "notifymanager.h"
 #include "party.h"
 
@@ -40,6 +39,8 @@
 #include "net/eathena/protocolout.h"
 #include "net/eathena/inventoryhandler.h"
 #include "net/eathena/sp.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "debug.h"
 
@@ -617,12 +618,12 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             if (newMoney > oldMoney)
             {
                 NotifyManager::notify(NotifyTypes::MONEY_GET,
-                    Units::formatCurrency(newMoney - oldMoney));
+                    UnitsDb::formatCurrency(newMoney - oldMoney));
             }
             else if (newMoney < oldMoney)
             {
                 NotifyManager::notify(NotifyTypes::MONEY_SPENT,
-                    Units::formatCurrency(oldMoney - newMoney).c_str());
+                    UnitsDb::formatCurrency(oldMoney - newMoney).c_str());
             }
 
             PlayerInfo::setAttribute(Attributes::MONEY, newMoney);

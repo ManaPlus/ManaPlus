@@ -25,7 +25,6 @@
 #include "configuration.h"
 #include "gamemodifiers.h"
 #include "settings.h"
-#include "units.h"
 
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
@@ -49,6 +48,7 @@
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
 
+#include "resources/db/unitsdb.h"
 #include "resources/db/statdb.h"
 
 #include "resources/item/item.h"
@@ -215,8 +215,9 @@ StatusWindow::StatusWindow() :
     updateXPBar(mXpBar, false);
 
     // TRANSLATORS: status window label
-    mMoneyLabel->setCaption(strprintf(_("Money: %s"), Units::formatCurrency(
-        PlayerInfo::getAttribute(Attributes::MONEY)).c_str()));
+    mMoneyLabel->setCaption(strprintf(_("Money: %s"),
+        UnitsDb::formatCurrency(PlayerInfo::getAttribute(
+        Attributes::MONEY)).c_str()));
     mMoneyLabel->adjustSize();
 
     updateLevelLabel();
@@ -356,7 +357,7 @@ void StatusWindow::attributeChanged(const AttributesT id,
         case Attributes::MONEY:
             // TRANSLATORS: status window label
             mMoneyLabel->setCaption(strprintf(_("Money: %s"),
-                Units::formatCurrency(newVal).c_str()));
+                UnitsDb::formatCurrency(newVal).c_str()));
             mMoneyLabel->adjustSize();
             break;
 
@@ -510,8 +511,9 @@ void StatusWindow::updateWeightBar(ProgressBar *const bar)
             progress = static_cast<float>(totalWeight)
                 / static_cast<float>(maxWeight);
         }
-        bar->setText(strprintf("%s/%s", Units::formatWeight(
-            totalWeight).c_str(), Units::formatWeight(maxWeight).c_str()));
+        bar->setText(strprintf("%s/%s",
+            UnitsDb::formatWeight(totalWeight).c_str(),
+            UnitsDb::formatWeight(maxWeight).c_str()));
         bar->setProgress(progress);
     }
 }
@@ -522,7 +524,7 @@ void StatusWindow::updateMoneyBar(ProgressBar *const bar)
         return;
 
     const int money = PlayerInfo::getAttribute(Attributes::MONEY);
-    bar->setText(Units::formatCurrency(money));
+    bar->setText(UnitsDb::formatCurrency(money));
     if (money > 0)
     {
         const float progress = static_cast<float>(money)

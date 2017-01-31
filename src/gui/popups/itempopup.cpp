@@ -25,7 +25,6 @@
 
 #include "actormanager.h"
 #include "configuration.h"
-#include "units.h"
 
 #include "gui/gui.h"
 
@@ -38,6 +37,8 @@
 #include "utils/gettext.h"
 
 #include "resources/iteminfo.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "resources/image/image.h"
 
@@ -222,7 +223,7 @@ void ItemPopup::setItem(const ItemInfo &item,
     mItemEffect->setTextWrapped(item.getEffect(), 196);
     // TRANSLATORS: popup label
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
-        Units::formatWeight(item.getWeight()).c_str()), 196);
+        UnitsDb::formatWeight(item.getWeight()).c_str()), 196);
     mItemCards->setTextWrapped(getCardsString(cards), 196);
 
     int minWidth = mItemName->getWidth() + space;

@@ -814,6 +814,8 @@ SET(SRCS
     resources/db/statdb.h
     resources/db/statuseffectdb.cpp
     resources/db/statuseffectdb.h
+    resources/db/unitsdb.cpp
+    resources/db/unitsdb.h
     resources/db/weaponsdb.cpp
     resources/db/weaponsdb.h
     resources/soundeffect.cpp
@@ -1335,8 +1337,6 @@ SET(SRCS
     input/touch/touchactions.h
     input/touch/touchmanager.cpp
     input/touch/touchmanager.h
-    units.cpp
-    units.h
     variabledata.h
     vector.cpp
     vector.h

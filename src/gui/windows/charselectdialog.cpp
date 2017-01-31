@@ -24,7 +24,6 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "units.h"
 
 #include "listeners/charrenamelistener.h"
 #include "listeners/pincodelistener.h"
@@ -47,6 +46,8 @@
 #include "net/charserverhandler.h"
 #include "net/logindata.h"
 #include "net/serverfeatures.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "debug.h"
 
@@ -251,7 +252,7 @@ void CharSelectDialog::action(const ActionEvent &event)
                 character->data.mAttributes[Attributes::PLAYER_LEVEL]),
                 CAST_U32(
                 character->data.mAttributes[Attributes::PLAYER_EXP]),
-                Units::formatCurrency(
+                UnitsDb::formatCurrency(
                 character->data.mAttributes[Attributes::MONEY]).c_str());
             CREATEWIDGET(OkDialog, data->getName(), msg,
                 // TRANSLATORS: ok dialog button

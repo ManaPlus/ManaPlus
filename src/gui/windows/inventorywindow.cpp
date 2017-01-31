@@ -23,7 +23,6 @@
 #include "gui/windows/inventorywindow.h"
 
 #include "configuration.h"
-#include "units.h"
 
 #include "being/playerinfo.h"
 
@@ -64,6 +63,8 @@
 #include "net/npchandler.h"
 
 #include "resources/iteminfo.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "resources/item/item.h"
 
@@ -701,7 +702,7 @@ void InventoryWindow::mouseMoved(MouseEvent &event)
     {
         // TRANSLATORS: money label
         textPopup->show(rect.x + x, rect.y + y, strprintf(_("Money: %s"),
-            Units::formatCurrency(PlayerInfo::getAttribute(
+            UnitsDb::formatCurrency(PlayerInfo::getAttribute(
             Attributes::MONEY)).c_str()));
     }
     else
@@ -856,8 +857,8 @@ void InventoryWindow::updateWeight()
     mWeightBar->setProgress(static_cast<float>(total)
         / static_cast<float>(max));
     mWeightBar->setText(strprintf("%s/%s",
-        Units::formatWeight(total).c_str(),
-        Units::formatWeight(max).c_str()));
+        UnitsDb::formatWeight(total).c_str(),
+        UnitsDb::formatWeight(max).c_str()));
 }
 
 void InventoryWindow::slotsChanged(const Inventory *const inventory)

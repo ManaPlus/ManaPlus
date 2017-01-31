@@ -22,13 +22,13 @@
 
 #include "resources/item/shopitem.h"
 
-#include "units.h"
-
 #include "resources/iteminfo.h"
 
 #include "utils/stringutils.h"
 
 #include "net/serverfeatures.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "debug.h"
 
@@ -99,7 +99,7 @@ void ShopItem::updateDisplayName(const int quantity)
     if (mPrice)
     {
         mDisplayName.append(" (").append(
-            Units::formatCurrency(mPrice)).append(") ");
+            UnitsDb::formatCurrency(mPrice)).append(") ");
     }
     if (mShowQuantity && quantity > 1)
         mDisplayName.append("[").append(toString(quantity)).append("]");

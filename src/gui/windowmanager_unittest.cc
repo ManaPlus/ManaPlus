@@ -23,7 +23,6 @@
 #include "configuration.h"
 #include "graphicsmanager.h"
 #include "settings.h"
-#include "units.h"
 #include "textcommand.h"
 
 #include "being/being.h"
@@ -105,6 +104,8 @@
 
 #include "resources/sdlimagehelper.h"
 
+#include "resources/db/unitsdb.h"
+
 #include "resources/item/item.h"
 
 #include "resources/map/map.h"
@@ -160,7 +161,7 @@ TEST_CASE("Windows tests", "windowmanager")
     gui = new Gui();
     gui->postInit(mainGraphics);
     touchManager.init();
-    Units::loadUnits();
+    UnitsDb::loadUnits();
     charServerHandler = new EAthena::CharServerHandler;
     serverFeatures = new EAthena::ServerFeatures;
     inventoryHandler = new EAthena::InventoryHandler;

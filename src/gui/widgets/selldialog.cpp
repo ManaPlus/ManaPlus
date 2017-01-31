@@ -22,8 +22,6 @@
 
 #include "gui/widgets/selldialog.h"
 
-#include "units.h"
-
 #include "enums/gui/layouttype.h"
 
 #include "gui/windows/setupwindow.h"
@@ -42,6 +40,8 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include "resources/db/unitsdb.h"
 
 #include "resources/item/shopitem.h"
 
@@ -358,8 +358,8 @@ void SellDialog::updateButtonsAndLabels()
     {
         // TRANSLATORS: sell dialog label
         mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
-            Units::formatCurrency(income).c_str(),
-            Units::formatCurrency(mPlayerMoney + income).c_str()));
+            UnitsDb::formatCurrency(income).c_str(),
+            UnitsDb::formatCurrency(mPlayerMoney + income).c_str()));
     }
     if (item)
         item->update();

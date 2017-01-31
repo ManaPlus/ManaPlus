@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UNITS_H
-#define UNITS_H
+#ifndef RESOURCES_DB_UNITSDB_H
+#define RESOURCES_DB_UNITSDB_H
 
 #include "enums/simpletypes/skiperror.h"
 
@@ -29,10 +29,10 @@
 
 #include "localconsts.h"
 
-class Units final
+class UnitsDb final
 {
     public:
-        A_DELETE_COPY(Units)
+        A_DELETE_COPY(UnitsDb)
 
         /**
         * Loads and parses the units.xml file (if found).
@@ -53,4 +53,4 @@ class Units final
         static std::string formatWeight(const int value) A_WARN_UNUSED;
 };
 
-#endif  // UNITS_H
+#endif  // RESOURCES_DB_UNITSDB_H

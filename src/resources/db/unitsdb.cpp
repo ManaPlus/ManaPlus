@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "units.h"
+#include "resources/db/unitsdb.h"
 
 #include "configuration.h"
 #include "logger.h"
@@ -63,7 +63,7 @@ static std::string splitNumber(std::string str, const std::string &separator);
 
 struct UnitDescription units[UNIT_END];
 
-void Units::loadUnits()
+void UnitsDb::loadUnits()
 {
     {   // Setup default weight
         UnitDescription ud;
@@ -109,8 +109,8 @@ void Units::loadUnits()
     loadXmlDir("unitsPatchDir", loadXmlFile);
 }
 
-void Units::loadXmlFile(const std::string &fileName,
-                        const SkipError skipError)
+void UnitsDb::loadXmlFile(const std::string &fileName,
+                          const SkipError skipError)
 {
     XML::Document doc(fileName, UseResman_true, skipError);
     const XmlNodePtrConst root = doc.rootNode();
@@ -194,7 +194,8 @@ void Units::loadXmlFile(const std::string &fileName,
     }
 }
 
-static std::string formatUnit(const int value, const int type)
+static std::string formatUnit(const int value,
+                              const int type)
 {
     const UnitDescription ud = units[type];
     UnitLevel ul;
@@ -275,17 +276,18 @@ static std::string formatUnit(const int value, const int type)
     }
 }
 
-std::string Units::formatCurrency(const int value)
+std::string UnitsDb::formatCurrency(const int value)
 {
     return formatUnit(value, UNIT_CURRENCY);
 }
 
-std::string Units::formatWeight(const int value)
+std::string UnitsDb::formatWeight(const int value)
 {
     return formatUnit(value, UNIT_WEIGHT);
 }
 
-static std::string splitNumber(std::string str, const std::string &separator)
+static std::string splitNumber(std::string str,
+                               const std::string &separator)
 {
     std::string lastPart;
     const size_t point = str.find('.');
