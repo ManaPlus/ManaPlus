@@ -51,6 +51,8 @@ class UnitsDb final
         * Formats the given number in the correct weight/mass format.
         */
         static std::string formatWeight(const int value) A_WARN_UNUSED;
+
+        static bool existsCurrency(const std::string &name) A_WARN_UNUSED;
 };
 
 #endif  // RESOURCES_DB_UNITSDB_H

@@ -59,6 +59,7 @@ BeingInfo::BeingInfo() :
     mAttacks(),
     mMenu(),
     mStrings(),
+    mCurrency(),
     mBlockWalkMask(BlockMask::WALL |
                    BlockMask::AIR |
                    BlockMask::WATER |

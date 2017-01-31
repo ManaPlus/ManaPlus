@@ -339,6 +339,12 @@ class BeingInfo final
 
         std::string getString(const int idx) const A_WARN_UNUSED;
 
+        std::string getCurrency() const A_WARN_UNUSED
+        { return mCurrency; }
+
+        void setCurrency(const std::string &name)
+        { mCurrency = name; }
+
         static void init();
 
         static void clear();
@@ -352,6 +358,7 @@ class BeingInfo final
         Attacks mAttacks;
         std::vector<BeingMenuItem> mMenu;
         std::map<int, std::string> mStrings;
+        std::string mCurrency;
         unsigned char mBlockWalkMask;
         BlockTypeT mBlockType;
         const std::map <ItemColor, ColorDB::ItemColorData> *mColors;

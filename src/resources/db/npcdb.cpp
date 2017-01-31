@@ -27,6 +27,8 @@
 #include "resources/beingcommon.h"
 #include "resources/beinginfo.h"
 
+#include "resources/db/unitsdb.h"
+
 #include "resources/sprite/spritereference.h"
 
 #include "utils/checkutils.h"
@@ -114,6 +116,16 @@ void NPCDB::loadXmlFile(const std::string &fileName,
 
         currentInfo->setAllowDelete(XML::getBoolProperty(npcNode,
             "allowDelete", true));
+
+        const std::string currency = XML::getProperty(npcNode,
+            "currency", "default");
+        if (UnitsDb::existsCurrency(currency) == false)
+        {
+            reportAlways("Not found currency '%s' for npc %d",
+                currency.c_str(),
+                CAST_S32(id));
+        }
+        currentInfo->setCurrency(currency);
 
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, npcNode)

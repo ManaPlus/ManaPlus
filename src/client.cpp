@@ -1374,13 +1374,13 @@ int Client::gameExec()
                     AvatarDB::load();
                     BadgesDB::load();
                     WeaponsDB::load();
+                    UnitsDb::loadUnits();
                     NPCDB::load();
                     NpcDialogDB::load();
                     PETDB::load();
                     EmoteDB::load();
 //                    ModDB::load();
                     StatusEffectDB::load();
-                    UnitsDb::loadUnits();
                     EquipmentWindow::prepareSlotNames();
 
                     ActorSprite::load();

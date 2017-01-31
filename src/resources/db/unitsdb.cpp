@@ -214,11 +214,18 @@ void UnitsDb::loadXmlFile(const std::string &fileName,
             const std::string type = XML::getProperty(node, "type", "");
             UnitDescription ud = loadUnit(node);
             if (type == "weight")
+            {
                 defaultWeight = ud;
+            }
             else if (type == "currency")
+            {
                 defaultCurrency = ud;
+                mCurrencies["default"] = ud;
+            }
             else
+            {
                 logger->log("Error unknown unit type: %s", type.c_str());
+            }
         }
         else if (xmlNameEqual(node, "currency"))
         {
@@ -316,6 +323,11 @@ std::string UnitsDb::formatCurrency(const int value)
 std::string UnitsDb::formatWeight(const int value)
 {
     return formatUnit(value, defaultWeight);
+}
+
+bool UnitsDb::existsCurrency(const std::string &name)
+{
+    return mCurrencies.find(name) != mCurrencies.end();
 }
 
 static std::string splitNumber(std::string str,
