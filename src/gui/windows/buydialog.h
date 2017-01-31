@@ -68,7 +68,8 @@ class BuyDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit BuyDialog(const BeingId npcId);
+        BuyDialog(const BeingId npcId,
+                  const std::string &currency);
 
 #ifdef TMWA_SUPPORT
         /**
@@ -76,7 +77,8 @@ class BuyDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit BuyDialog(std::string nick);
+        BuyDialog(const std::string &nick,
+                  const std::string &currency);
 #endif  // TMWA_SUPPORT
 
         /**
@@ -84,7 +86,8 @@ class BuyDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit BuyDialog(const Being *const being);
+        BuyDialog(const Being *const being,
+                  const std::string &currency);
 
         A_DELETE_COPY(BuyDialog)
 
@@ -193,6 +196,7 @@ class BuyDialog final : public Window,
         Label *mFilterLabel;
 
         std::string mNick;
+        std::string mCurrency;
         BeingId mNpcId;
         int mMoney;
         int mAmountItems;

@@ -803,6 +803,7 @@ SET(SRCS
     resources/skill/skilltypeentry.h
     resources/skill/skilltypelist.h
     const/net/skill.h
+    const/resources/currency.h
     const/resources/skill.h
     enums/resources/skill/skillowner.h
     enums/resources/skill/skillsettype.h

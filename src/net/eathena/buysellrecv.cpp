@@ -26,15 +26,23 @@
 
 #include "being/playerinfo.h"
 
+#include "const/resources/currency.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/buydialog.h"
 
 #include "gui/widgets/createwidget.h"
 
+#include "net/messagein.h"
+
 #include "net/ea/buysellrecv.h"
 
-#include "net/messagein.h"
+#include "net/eathena/npcrecv.h"
+
+#include "resources/beinginfo.h"
+
+#include "resources/db/npcdb.h"
 
 #include "debug.h"
 
@@ -46,8 +54,26 @@ void BuySellRecv::processNpcBuy(Net::MessageIn &msg)
     msg.readInt16("len");
     const int sz = 11;
     const int n_items = (msg.getLength() - 4) / sz;
+
+    const BeingTypeId npcId = NpcRecv::mNpcTypeId;
+    std::string currency;
+
+    if (npcId != BeingTypeId_zero)
+    {
+        const BeingInfo *info = NPCDB::get(npcId);
+        if (info)
+            currency = info->getCurrency();
+        else
+            currency = DEFAULT_CURRENCY;
+    }
+    else
+    {
+        currency = DEFAULT_CURRENCY;
+    }
+
     CREATEWIDGETV(Ea::BuySellRecv::mBuyDialog, BuyDialog,
-        Ea::BuySellRecv::mNpcId);
+        Ea::BuySellRecv::mNpcId,
+        currency);
     Ea::BuySellRecv::mBuyDialog->setMoney(
         PlayerInfo::getAttribute(Attributes::MONEY));
 

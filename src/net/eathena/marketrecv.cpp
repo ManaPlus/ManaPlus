@@ -24,6 +24,8 @@
 
 #include "being/playerinfo.h"
 
+#include "const/resources/currency.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/buydialog.h"
@@ -31,6 +33,12 @@
 #include "gui/widgets/createwidget.h"
 
 #include "net/messagein.h"
+
+#include "net/eathena/npcrecv.h"
+
+#include "resources/beinginfo.h"
+
+#include "resources/db/npcdb.h"
 
 #include "debug.h"
 
@@ -47,7 +55,25 @@ void MarketRecv::processMarketOpen(Net::MessageIn &msg)
 {
     const int len = (msg.readInt16("len") - 4) / 13;
 
-    CREATEWIDGETV(mBuyDialog, BuyDialog, fromInt(BuyDialog::Market, BeingId));
+    const BeingTypeId npcId = NpcRecv::mNpcTypeId;
+    std::string currency;
+
+    if (npcId != BeingTypeId_zero)
+    {
+        const BeingInfo *info = NPCDB::get(npcId);
+        if (info)
+            currency = info->getCurrency();
+        else
+            currency = DEFAULT_CURRENCY;
+    }
+    else
+    {
+        currency = DEFAULT_CURRENCY;
+    }
+
+    CREATEWIDGETV(mBuyDialog, BuyDialog,
+        fromInt(BuyDialog::Market, BeingId),
+        currency);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     for (int f = 0; f < len; f ++)

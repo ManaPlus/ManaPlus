@@ -18,31 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_NPCRECV_H
-#define NET_EATHENA_NPCRECV_H
+#ifndef CONST_RESOURCES_SKILL_H
+#define CONST_RESOURCES_SKILL_H
 
-#include "enums/simpletypes/beingtypeid.h"
+#include <string>
 
-namespace Net
-{
-    class MessageIn;
-}  // namespace Net
+const std::string DEFAULT_CURRENCY = "default";
 
-namespace EAthena
-{
-    namespace NpcRecv
-    {
-        extern BeingTypeId mNpcTypeId;
-
-        void processNpcCutin(Net::MessageIn &msg);
-        void processNpcViewPoint(Net::MessageIn &msg);
-        void processNpcShowProgressBar(Net::MessageIn &msg);
-        void processNpcCloseTimeout(Net::MessageIn &msg);
-        void processArea(Net::MessageIn &msg);
-        void processShowDigit(Net::MessageIn &msg);
-        void processProgressBarAbort(Net::MessageIn &msg);
-        void processNpcSkin(Net::MessageIn &msg);
-    }  // namespace NpcRecv
-}  // namespace EAthena
-
-#endif  // NET_EATHENA_NPCRECV_H
+#endif  // CONST_RESOURCES_SKILL_H

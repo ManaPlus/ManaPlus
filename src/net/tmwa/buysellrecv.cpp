@@ -26,6 +26,8 @@
 
 #include "being/playerinfo.h"
 
+#include "const/resources/currency.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/buydialog.h"
@@ -35,6 +37,8 @@
 #include "net/messagein.h"
 
 #include "net/ea/buysellrecv.h"
+
+#include "resources/db/npcdb.h"
 
 #include "debug.h"
 
@@ -46,7 +50,8 @@ void BuySellRecv::processNpcBuy(Net::MessageIn &msg)
     msg.readInt16("len");
     const unsigned int n_items = (msg.getLength() - 4U) / 11;
     CREATEWIDGETV(Ea::BuySellRecv::mBuyDialog, BuyDialog,
-        Ea::BuySellRecv::mNpcId);
+        Ea::BuySellRecv::mNpcId,
+        DEFAULT_CURRENCY);
     Ea::BuySellRecv::mBuyDialog->setMoney(
         PlayerInfo::getAttribute(Attributes::MONEY));
 

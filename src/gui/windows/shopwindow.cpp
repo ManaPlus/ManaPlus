@@ -23,6 +23,8 @@
 #include "gui/windows/shopwindow.h"
 
 #ifdef TMWA_SUPPORT
+#include "const/resources/currency.h"
+
 #include "gui/windows/buydialog.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/confirmdialog.h"
@@ -829,7 +831,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
     if (data.find("B1") == 0)
     {
         data = data.substr(2);
-        CREATEWIDGETV(buyDialog, BuyDialog, nick);
+        CREATEWIDGETV(buyDialog, BuyDialog, nick, DEFAULT_CURRENCY);
     }
     else if (data.find("S1") == 0)
     {
@@ -854,7 +856,6 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         const int id = decodeStr(data.substr(f, 2));
         const int price = decodeStr(data.substr(f + 2, 4));
         int amount = decodeStr(data.substr(f + 6, 3));
-        // +++ need impliment colors?
         if (buyDialog && amount > 0)
         {
             buyDialog->addItem(id,
@@ -865,7 +866,6 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         }
         if (sellDialog)
         {
-            // +++ need support for colors
             const Item *const item = inv->findItem(id, ItemColor_zero);
             if (item)
             {

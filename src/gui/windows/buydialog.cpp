@@ -203,7 +203,8 @@ BuyDialog::BuyDialog() :
     init();
 }
 
-BuyDialog::BuyDialog(const BeingId npcId) :
+BuyDialog::BuyDialog(const BeingId npcId,
+                     const std::string &currency) :
     // TRANSLATORS: buy dialog name
     Window(_("Buy"), Modal_false, nullptr, "buy.xml"),
     ActionListener(),
@@ -214,6 +215,7 @@ BuyDialog::BuyDialog(const BeingId npcId) :
         this, "namefilter", true)),
     mFilterLabel(nullptr),
     mNick(),
+    mCurrency(currency),
     mNpcId(npcId),
     mMoney(0),
     mAmountItems(0),
@@ -224,7 +226,8 @@ BuyDialog::BuyDialog(const BeingId npcId) :
 }
 
 #ifdef TMWA_SUPPORT
-BuyDialog::BuyDialog(std::string nick) :
+BuyDialog::BuyDialog(const std::string &nick,
+                     const std::string &currency) :
     // TRANSLATORS: buy dialog name
     Window(_("Buy"), Modal_false, nullptr, "buy.xml"),
     ActionListener(),
@@ -236,6 +239,7 @@ BuyDialog::BuyDialog(std::string nick) :
         this, "namefilter", true)),
     mFilterLabel(nullptr),
     mNick(nick),
+    mCurrency(currency),
     mNpcId(fromInt(Nick, BeingId)),
     mMoney(0),
     mAmountItems(0),
@@ -246,7 +250,8 @@ BuyDialog::BuyDialog(std::string nick) :
 }
 #endif  // TMWA_SUPPORT
 
-BuyDialog::BuyDialog(const Being *const being) :
+BuyDialog::BuyDialog(const Being *const being,
+                     const std::string &currency) :
     // TRANSLATORS: buy dialog name
     Window(_("Buy"), Modal_false, nullptr, "buy.xml"),
     ActionListener(),
@@ -258,6 +263,7 @@ BuyDialog::BuyDialog(const Being *const being) :
         this, "namefilter", true)),
     mFilterLabel(nullptr),
     mNick(being ? being->getName() : std::string()),
+    mCurrency(currency),
     mNpcId(fromInt(Vending, BeingId)),
     mMoney(0),
     mAmountItems(0),

@@ -25,6 +25,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "const/resources/currency.h"
+
 #include "utils/checkutils.h"
 
 #include "resources/beingcommon.h"
@@ -181,7 +183,7 @@ static void loadCurrencies(XmlNodePtr parentNode)
                 continue;
             }
             mCurrencies[name] = loadUnit(node);
-            if (name == "default")
+            if (name == DEFAULT_CURRENCY)
                 defaultCurrency = mCurrencies[name];
         }
     }
@@ -220,7 +222,7 @@ void UnitsDb::loadXmlFile(const std::string &fileName,
             else if (type == "currency")
             {
                 defaultCurrency = ud;
-                mCurrencies["default"] = ud;
+                mCurrencies[DEFAULT_CURRENCY] = ud;
             }
             else
             {

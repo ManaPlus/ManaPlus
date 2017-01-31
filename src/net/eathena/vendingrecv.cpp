@@ -24,6 +24,8 @@
 #include "itemcolormanager.h"
 #include "notifymanager.h"
 
+#include "const/resources/currency.h"
+
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
@@ -109,7 +111,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
     if (!being)
         return;
     int cards[maxCards];
-    CREATEWIDGETV(mBuyDialog, BuyDialog, being);
+    CREATEWIDGETV(mBuyDialog, BuyDialog, being, DEFAULT_CURRENCY);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
     if (msg.getVersion() >= 20100105)
         msg.readInt32("vender id");

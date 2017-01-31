@@ -37,6 +37,10 @@
 namespace EAthena
 {
 
+namespace NpcRecv
+{
+    BeingTypeId mNpcTypeId = BeingTypeId_zero;
+}  // namespace NpcRecv
 
 void NpcRecv::processNpcCutin(Net::MessageIn &msg)
 {
