@@ -27,6 +27,8 @@
 
 #include "being/being.h"
 
+#include "const/resources/currency.h"
+
 #include "gui/gui.h"
 #include "gui/mailmessage.h"
 #include "gui/userpalette.h"
@@ -182,7 +184,9 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("buyDialog")
     {
         BuyDialog *dialog;
-        CREATEWIDGETV(dialog, BuyDialog, BeingId_zero);
+        CREATEWIDGETV(dialog, BuyDialog,
+            BeingId_zero,
+            DEFAULT_CURRENCY);
         gui->draw();
         mainGraphics->updateScreen();
         delete2(dialog);
