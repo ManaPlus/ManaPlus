@@ -284,15 +284,14 @@ void BuyDialog::init()
     setMinHeight(220);
     setDefaultSize(260, 230, ImagePosition::CENTER);
 
-    // reset advance flag for personal shops and cash shop
-    if (mAdvanced &&
 #ifdef TMWA_SUPPORT
-        mNpcId == fromInt(Nick, BeingId)
-#endif  // TMWA_SUPPORT
-        )
+    // reset advance flag for personal shops
+    if (mAdvanced &&
+        mNpcId == fromInt(Nick, BeingId))
     {
         mAdvanced = false;
     }
+#endif  // TMWA_SUPPORT
 
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
