@@ -420,11 +420,8 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
     {
         const int px1 = x * mapTileSize - scrollX;
         const MapItem *const item = mTempLayer->mTiles[ptr + x];
-        if (item)
-        {
-            item->draw(graphics, px1, py1,
-                mapTileSize, mapTileSize);
-        }
+        item->draw(graphics, px1, py1,
+            mapTileSize, mapTileSize);
         x += mTempLayer->mCache[ptr + x];
     }
 }
