@@ -150,21 +150,6 @@ void MapLayer::draw(Graphics *const graphics,
         }
         for (int x = x0; x < endX; x++, tilePtr++)
         {
-            if (!tilePtr->isEnabled)
-            {
-                if (x + tilePtr->count + 1 >= endX)
-                    break;
-                reportAlways("error tiles: %s (%d,%d) to %d, +%d, %d",
-                    mName.c_str(),
-                    x, y,
-                    endX,
-                    tilePtr->count,
-                    tilePtr->nextTile);
-                const int c = tilePtr->count;
-                x += c;
-                tilePtr += c;
-                continue;
-            }
             const int x32 = x * mapTileSize;
 
             const Image *const img = tilePtr->image;
@@ -577,43 +562,26 @@ void MapLayer::drawFringe(Graphics *const graphics,
             {
                 const int x32 = x * mapTileSize;
                 int c = 0;
-                if (tilePtr->isEnabled)
+                const Image *const img = tilePtr->image;
+                if (mSpecialFlag ||
+                    img->mBounds.h <= mapTileSize)
                 {
-                    const Image *const img = tilePtr->image;
-                    if (mSpecialFlag ||
-                        img->mBounds.h <= mapTileSize)
-                    {
-                        const int px = x32 + dx;
-                        const int py = py0 - img->mBounds.h;
-                        c = tilePtr->count;
-
-                        if (c == 0)
-                        {
-                            graphics->drawImage(img, px, py);
-                        }
-                        else
-                        {
-                            graphics->drawPattern(img,
-                                px,
-                                py,
-                                tilePtr->width,
-                                img->mBounds.h);
-                        }
-                    }
-                }
-                else
-                {
-                    if (x + tilePtr->count + 1 >= endX)
-                        break;
-                    reportAlways("error tiles1: (%d,%d) to %d, +%d, %d",
-                        x, y,
-                        endX,
-                        tilePtr->count,
-                        tilePtr->nextTile);
+                    const int px = x32 + dx;
+                    const int py = py0 - img->mBounds.h;
                     c = tilePtr->count;
-                    x += c;
-                    tilePtr += c;
-                    continue;
+
+                    if (c == 0)
+                    {
+                        graphics->drawImage(img, px, py);
+                    }
+                    else
+                    {
+                        graphics->drawPattern(img,
+                            px,
+                            py,
+                            tilePtr->width,
+                            img->mBounds.h);
+                    }
                 }
 
                 const int nextTile = tilePtr->nextTile;
@@ -663,20 +631,6 @@ void MapLayer::drawFringe(Graphics *const graphics,
             }
             for (int x = x0; x < endX; x++, tilePtr++)
             {
-                if (!tilePtr->isEnabled)
-                {
-                    if (x + tilePtr->count + 1 >= endX)
-                        break;
-                    reportAlways("error tiles2: (%d,%d) to %d, +%d, %d",
-                        x, y,
-                        endX,
-                        tilePtr->count,
-                        tilePtr->nextTile);
-                    const int c = tilePtr->count;
-                    x += c;
-                    tilePtr += c;
-                    continue;
-                }
                 const int x32 = x * mapTileSize;
                 const Image *const img = tilePtr->image;
                 const int px = x32 + dx;
