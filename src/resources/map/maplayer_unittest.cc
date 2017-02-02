@@ -2117,8 +2117,14 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
         layer->setTempLayer(map->getTempLayer());
         TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
+        const int *const cache = specialLayer->getCache();
+        REQUIRE(cache[0] == 10000);
+        REQUIRE(cache[1] == 10000);
+
         specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
         specialLayer->updateCache();
+        REQUIRE(cache[0] == 0);
+        REQUIRE(cache[1] == 10000);
 
         layer->drawSpecialLayer(mock,
             0,

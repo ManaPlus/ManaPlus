@@ -391,7 +391,7 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
     const MapItem *item0 = mSpecialLayer->mTiles[ptr + startX];
     if (!item0 || item0->mType == MapItemType::EMPTY)
     {
-        x0 += mSpecialLayer->mCache[ptr + startX];
+        x0 += mSpecialLayer->mCache[ptr + startX] + 1;
     }
     for (int x = x0; x < endX1; x++)
     {
@@ -414,7 +414,7 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
     item0 = mTempLayer->mTiles[ptr + startX];
     if (!item0 || item0->mType == MapItemType::EMPTY)
     {
-        x0 += mTempLayer->mCache[ptr + startX];
+        x0 += mTempLayer->mCache[ptr + startX] + 1;
     }
     for (int x = x0; x < endX1; x++)
     {

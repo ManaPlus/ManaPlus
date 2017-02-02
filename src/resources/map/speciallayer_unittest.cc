@@ -62,8 +62,9 @@ TEST_CASE("SpecialLayer updateCache")
     {
         layer = new SpecialLayer("test",
             1, 1);
-        layer->setTile(0, 0, MapItemType::ARROW_UP);
         const int *const cache = layer->getCache();
+        REQUIRE(cache[0] == 10000);
+        layer->setTile(0, 0, MapItemType::ARROW_UP);
         layer->updateCache();
         REQUIRE(cache[0] == 10000);
     }
@@ -72,8 +73,10 @@ TEST_CASE("SpecialLayer updateCache")
     {
         layer = new SpecialLayer("test",
             2, 1);
-        layer->setTile(0, 0, MapItemType::ARROW_UP);
         const int *const cache = layer->getCache();
+        REQUIRE(cache[0] == 10000);
+        REQUIRE(cache[1] == 10000);
+        layer->setTile(0, 0, MapItemType::ARROW_UP);
         layer->updateCache();
         REQUIRE(cache[0] == 10000);
         REQUIRE(cache[1] == 10000);
@@ -141,6 +144,44 @@ TEST_CASE("SpecialLayer updateCache")
         REQUIRE(cache[0] == 0);
         REQUIRE(cache[1] == 0);
         REQUIRE(cache[2] == 10000);
+    }
+
+    SECTION("simple 7")
+    {
+        layer = new SpecialLayer("test",
+            3, 1);
+        const int *const cache = layer->getCache();
+        layer->updateCache();
+        REQUIRE(cache[0] == 10000);
+        REQUIRE(cache[1] == 10000);
+        REQUIRE(cache[2] == 10000);
+    }
+
+    SECTION("simple 8")
+    {
+        layer = new SpecialLayer("test",
+            3, 1);
+        layer->setTile(0, 0, MapItemType::EMPTY);
+        layer->setTile(1, 0, MapItemType::EMPTY);
+        layer->setTile(2, 0, MapItemType::EMPTY);
+        const int *const cache = layer->getCache();
+        layer->updateCache();
+        REQUIRE(cache[0] == 10000);
+        REQUIRE(cache[1] == 10000);
+        REQUIRE(cache[2] == 10000);
+    }
+
+    SECTION("simple 9")
+    {
+        layer = new SpecialLayer("test",
+            2, 1);
+        const int *const cache = layer->getCache();
+        REQUIRE(cache[0] == 10000);
+        REQUIRE(cache[1] == 10000);
+        layer->setTile(1, 0, MapItemType::ARROW_UP);
+        layer->updateCache();
+        REQUIRE(cache[0] == 0);
+        REQUIRE(cache[1] == 10000);
     }
 
     SECTION("normal 1")
