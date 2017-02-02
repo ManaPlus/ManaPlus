@@ -23,6 +23,6 @@ ${dir}/deheader -q -i "\"debug.h\"" \
 -m "-c -Werror -Wall -Wextra -Wundef -Wmissing-declarations -DLOCALEDIR=\\\"\\\" -I/usr/include $INCLUDES -I${dir}/src" $1 2>&1 | \
 grep -v "deheader: ./src/net/sdltcpnet.cpp has more than one inclusion of <netinet/tcp.h>" | \
 grep -v "deheader: remove <netinet/tcp.h> from ./src/net/sdltcpnet.cpp" | \
-grep -v "deheader: remove <climits> from resources/db/unitsdb.cpp" | \
+grep -v "deheader: remove <climits> from ./src/resources/db/unitsdb.cpp" | \
 grep -v "portability requires" | \
 tee -a ${LOGFILE}
