@@ -38,8 +38,6 @@
 
 #include "net/ea/buysellrecv.h"
 
-#include "resources/db/npcdb.h"
-
 #include "debug.h"
 
 namespace TmwAthena
