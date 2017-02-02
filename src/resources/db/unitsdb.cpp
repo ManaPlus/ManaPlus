@@ -23,16 +23,12 @@
 #include "resources/db/unitsdb.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "const/resources/currency.h"
 
 #include "utils/checkutils.h"
 
 #include "resources/beingcommon.h"
-
-#include <climits>
-#include <map>
 
 #include "debug.h"
 
