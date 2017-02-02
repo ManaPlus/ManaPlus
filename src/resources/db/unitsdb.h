@@ -29,36 +29,33 @@
 
 #include "localconsts.h"
 
-class UnitsDb final
+namespace UnitsDb
 {
-    public:
-        A_DELETE_COPY(UnitsDb)
+    /**
+    * Loads and parses the units.xml file (if found).
+    */
+    void loadUnits();
 
-        /**
-        * Loads and parses the units.xml file (if found).
-        */
-        static void loadUnits();
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
-        static void loadXmlFile(const std::string &fileName,
-                                const SkipError skipError);
+    /**
+    * Formats the given number in the correct currency format.
+    */
+    std::string formatCurrency(const int value) A_WARN_UNUSED;
 
-        /**
-        * Formats the given number in the correct currency format.
-        */
-        static std::string formatCurrency(const int value) A_WARN_UNUSED;
+    /**
+    * Formats the given number in the correct currency format.
+    */
+    std::string formatCurrency(std::string name,
+                                   const int value) A_WARN_UNUSED;
 
-        /**
-        * Formats the given number in the correct currency format.
-        */
-        static std::string formatCurrency(std::string name,
-                                          const int value) A_WARN_UNUSED;
+    /**
+    * Formats the given number in the correct weight/mass format.
+    */
+    std::string formatWeight(const int value) A_WARN_UNUSED;
 
-        /**
-        * Formats the given number in the correct weight/mass format.
-        */
-        static std::string formatWeight(const int value) A_WARN_UNUSED;
-
-        static bool existsCurrency(const std::string &name) A_WARN_UNUSED;
-};
+    bool existsCurrency(const std::string &name) A_WARN_UNUSED;
+}  // namespace UnitsDb
 
 #endif  // RESOURCES_DB_UNITSDB_H
