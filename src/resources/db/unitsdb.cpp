@@ -30,6 +30,8 @@
 
 #include "resources/beingcommon.h"
 
+#include <climits>
+
 #include "debug.h"
 
 namespace
