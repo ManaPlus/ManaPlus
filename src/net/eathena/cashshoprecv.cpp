@@ -22,8 +22,6 @@
 
 #include "notifymanager.h"
 
-#include "being/playerinfo.h"
-
 #include "const/resources/currency.h"
 
 #include "enums/resources/notifytypes.h"
