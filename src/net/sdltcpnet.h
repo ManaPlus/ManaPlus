@@ -26,7 +26,9 @@
 #pragma GCC diagnostic ignored "-Wswitch-default"
 #endif  // USE_SDL2
 #include <SDL_stdinc.h>
-_SDL_stdinc_h
+#if !defined(_SDL_stdinc_h) && !defined(SDL_stdinc_h_) && !defined(SDL_stdinc_h)
+#error need include SDL_stdinc.h
+#endif  // !defined(_SDL_stdinc_h) && !defined(SDL_stdinc_h_)
 #ifdef USE_SDL2
 #pragma GCC diagnostic pop
 #endif  // USE_SDL2
