@@ -73,11 +73,6 @@
 #undef malloc
 #endif  // malloc
 
-#ifdef TMWA_SUPPORT
-#define CURLVERSION_ATLEAST(a, b, c) \
-    LIBCURL_VERSION_NUM >= ((a) * 0xffff + (b) * 0xff + c)
-#endif  // TMWA_SUPPORT
-
 WhoIsOnline *whoIsOnline = nullptr;
 
 namespace
@@ -558,9 +553,9 @@ int WhoIsOnline::downloadThread(void *ptr)
             curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1);
             curl_easy_setopt(curl, CURLOPT_PROGRESSDATA, ptr);
 
-#if CURLVERSION_ATLEAST(7, 10, 0)
+#if LIBCURL_VERSION_NUM >= 0x070a00
             curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
-#endif  // CURLVERSION_ATLEAST(7, 10, 0)
+#endif  // LIBCURL_VERSION_NUM >= 0x070a00
             curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 7);
             curl_easy_setopt(curl, CURLOPT_TIMEOUT, 30);
             Net::Download::addHeaders(curl);

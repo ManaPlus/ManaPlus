@@ -31,9 +31,6 @@
 
 #include <zlib.h>
 
-#define CURLVERSION_ATLEAST(a, b, c) \
-    LIBCURL_VERSION_NUM >= ((a) * 0xffff + (b) * 0xff + c)
-
 #if defined __native_client__
 #include "utils/files.h"
 #endif  // defined __native_client__
@@ -335,9 +332,9 @@ int Download::downloadThread(void *ptr)
                     curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSFUNCTION,
                         &downloadProgress);
                     curl_easy_setopt(d->mCurl, CURLOPT_PROGRESSDATA, ptr);
-#if CURLVERSION_ATLEAST(7, 10, 0)
+#if LIBCURL_VERSION_NUM >= 0x070a00
                     curl_easy_setopt(d->mCurl, CURLOPT_NOSIGNAL, 1);
-#endif  // CURLVERSION_ATLEAST(7, 10, 0)
+#endif  // LIBCURL_VERSION_NUM >= 0x070a00
                     curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
                     curl_easy_setopt(d->mCurl, CURLOPT_TIMEOUT, 1800);
                     addHeaders(d->mCurl);
@@ -528,70 +525,70 @@ void Download::addProxy(CURL *const curl)
         case 2:  // HTTP
             break;
         case 3:  // HTTP 1.0
-#if CURLVERSION_ATLEAST(7, 19, 4)
+#if LIBCURL_VERSION_NUM >= 0x071304
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP_1_0);
-#endif  // CURLVERSION_ATLEAST(7, 19, 4)
+#endif  // LIBCURL_VERSION_NUM >= 0x071304
             break;
         case 4:  // SOCKS4
-#if CURLVERSION_ATLEAST(7, 10, 0)
+#if LIBCURL_VERSION_NUM >= 0x070a00
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
-#endif  // CURLVERSION_ATLEAST(7, 10, 0)
+#endif  // LIBCURL_VERSION_NUM >= 0x070a00
             break;
         case 5:  // SOCKS4A
-#if CURLVERSION_ATLEAST(7, 18, 0)
+#if LIBCURL_VERSION_NUM >= 0x071200
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4A);
-#elif CURLVERSION_ATLEAST(7, 10, 0)
+#elif LIBCURL_VERSION_NUM >= 0x071000
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
-#endif  // CURLVERSION_ATLEAST(7, 18, 0)
+#endif  // LIBCURL_VERSION_NUM >= 0x071200
 
             break;
         case 6:  // SOCKS5
-#if CURLVERSION_ATLEAST(7, 18, 0)
+#if LIBCURL_VERSION_NUM >= 0x071200
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
-#endif  // CURLVERSION_ATLEAST(7, 18, 0)
+#endif  // LIBCURL_VERSION_NUM >= 0x071200
 
             break;
         case 7:  // SOCKS5 hostname
-#if CURLVERSION_ATLEAST(7, 18, 0)
+#if LIBCURL_VERSION_NUM >= 0x071200
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE,
                 CURLPROXY_SOCKS5_HOSTNAME);
-#endif  // CURLVERSION_ATLEAST(7, 18, 0)
+#endif  // LIBCURL_VERSION_NUM >= 0x071200
 
             break;
     }
 }
 
-#if CURLVERSION_ATLEAST(7, 15, 1)
+#if LIBCURL_VERSION_NUM >= 0x070f01
 void Download::secureCurl(CURL *const curl)
-#else  // CURLVERSION_ATLEAST(7, 15, 1)
+#else  // LIBCURL_VERSION_NUM >= 0x070f01
 void Download::secureCurl(CURL *const curl A_UNUSED)
-#endif  // CURLVERSION_ATLEAST(7, 15, 1)
+#endif  // LIBCURL_VERSION_NUM >= 0x070f01
 {
-#if CURLVERSION_ATLEAST(7, 19, 4)
+#if LIBCURL_VERSION_NUM >= 0x071304
     curl_easy_setopt(curl, CURLOPT_PROTOCOLS,
         CURLPROTO_HTTP | CURLPROTO_HTTPS);
     curl_easy_setopt(curl, CURLOPT_REDIR_PROTOCOLS,
         CURLPROTO_HTTP | CURLPROTO_HTTPS);
-#endif  // CURLVERSION_ATLEAST(7, 19, 4)
-#if CURLVERSION_ATLEAST(7, 21, 0)
+#endif  // LIBCURL_VERSION_NUM >= 0x071304
+#if LIBCURL_VERSION_NUM >= 0x071500
     curl_easy_setopt(curl, CURLOPT_WILDCARDMATCH, 0);
-#endif  // CURLVERSION_ATLEAST(7, 21, 0)
-#if CURLVERSION_ATLEAST(7, 15, 1)
+#endif  // LIBCURL_VERSION_NUM >= 0x071500
+#if LIBCURL_VERSION_NUM >= 0x070f01
     curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 3);
-#endif  // CURLVERSION_ATLEAST(7, 15, 1)
+#endif  // LIBCURL_VERSION_NUM >= 0x070f01
 }
 
-#if CURLVERSION_ATLEAST(7, 21, 7)
+#if LIBCURL_VERSION_NUM >= 0x071507
 void Download::addHeaders(CURL *const curl)
 {
     curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, "");
 }
-#else  //  CURLVERSION_ATLEAST(7, 21, 7)
+#else  // LIBCURL_VERSION_NUM >= 0x071507
 
 void Download::addHeaders(CURL *const curl A_UNUSED)
 {
 }
-#endif  //  CURLVERSION_ATLEAST(7, 21, 7)
+#endif  // LIBCURL_VERSION_NUM >= 0x071507
 
 void Download::prepareForm(curl_httppost **form, const std::string &fileName)
 {
