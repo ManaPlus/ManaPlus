@@ -139,6 +139,7 @@
 		<Unit filename="src/utils/stringutils.cpp" />
 		<Unit filename="src/utils/physfstools.cpp" />
 		<Unit filename="src/utils/physfsrwops.cpp" />
+		<Unit filename="src/utils/browserboxtools.cpp" />
 		<Unit filename="src/utils/gmfunctions.cpp" />
 		<Unit filename="src/utils/sdlsharedhelper.cpp" />
 		<Unit filename="src/utils/base64.cpp" />
@@ -251,6 +252,7 @@
 		<Unit filename="src/resources/db/colordb.cpp" />
 		<Unit filename="src/resources/db/statdb.cpp" />
 		<Unit filename="src/resources/db/horsedb.cpp" />
+		<Unit filename="src/resources/db/unitsdb.cpp" />
 		<Unit filename="src/resources/sprite/animationdelayload.cpp" />
 		<Unit filename="src/resources/sprite/imagesprite.cpp" />
 		<Unit filename="src/resources/sprite/spritedef.cpp" />
@@ -499,7 +501,6 @@
 		<Unit filename="src/gui/models/namesmodel.cpp" />
 		<Unit filename="src/chatlogger.cpp" />
 		<Unit filename="src/beingequipbackend.cpp" />
-		<Unit filename="src/units.cpp" />
 		<Unit filename="src/actions/target.cpp" />
 		<Unit filename="src/actions/move.cpp" />
 		<Unit filename="src/actions/chat.cpp" />
@@ -818,6 +819,7 @@
 		<Unit filename="src/utils/xml.h" />
 		<Unit filename="src/utils/gettexthelper.h" />
 		<Unit filename="src/utils/mkdir.h" />
+		<Unit filename="src/utils/browserboxtools.h" />
 		<Unit filename="src/utils/paths.h" />
 		<Unit filename="src/utils/sdlmemoryobject.h" />
 		<Unit filename="src/utils/physfsmemoryobject.h" />
@@ -893,7 +895,6 @@
 		<Unit filename="src/listeners/skillwarplistener.h" />
 		<Unit filename="src/listeners/banklistener.h" />
 		<Unit filename="src/actormanager.h" />
-		<Unit filename="src/units.h" />
 		<Unit filename="src/const/render/graphics.h" />
 		<Unit filename="src/const/utils/timer.h" />
 		<Unit filename="src/const/utils/utf8.h" />
@@ -902,6 +903,7 @@
 		<Unit filename="src/const/resources/skill.h" />
 		<Unit filename="src/const/resources/map/map.h" />
 		<Unit filename="src/const/resources/item/cards.h" />
+		<Unit filename="src/const/resources/currency.h" />
 		<Unit filename="src/const/sound.h" />
 		<Unit filename="src/const/gui/chat.h" />
 		<Unit filename="src/const/gui/theme.h" />
@@ -969,6 +971,7 @@
 		<Unit filename="src/resources/db/chardb.h" />
 		<Unit filename="src/resources/db/npcdb.h" />
 		<Unit filename="src/resources/db/sounddb.h" />
+		<Unit filename="src/resources/db/unitsdb.h" />
 		<Unit filename="src/resources/db/petdb.h" />
 		<Unit filename="src/resources/db/avatardb.h" />
 		<Unit filename="src/resources/db/mercenarydb.h" />
@@ -1262,6 +1265,7 @@
 		<Unit filename="src/gui/fonts/textchunk.h" />
 		<Unit filename="src/gui/fonts/textchunklist.h" />
 		<Unit filename="src/gui/fonts/textchunksmall.h" />
+		<Unit filename="src/gui/browserlink.h" />
 		<Unit filename="src/gui/touchactiondata.h" />
 		<Unit filename="src/gui/chatlog.h" />
 		<Unit filename="src/gui/cliprect.h" />
@@ -1658,15 +1662,18 @@
 		<Unit filename="src/enums/gui/chattabtype.h" />
 		<Unit filename="src/enums/gui/serverdialogdonwloadstatus.h" />
 		<Unit filename="src/enums/gui/orientation.h" />
+		<Unit filename="src/enums/gui/linkhighlightmode.h" />
 		<Unit filename="src/enums/gui/updatedownloadstatus.h" />
 		<Unit filename="src/enums/gui/themecolorid.h" />
 		<Unit filename="src/enums/gui/usercolorid.h" />
+		<Unit filename="src/enums/gui/browserboxmode.h" />
 		<Unit filename="src/enums/gui/dialogtype.h" />
 		<Unit filename="src/enums/gui/chatmsgtype.h" />
 		<Unit filename="src/enums/gui/npcactionstate.h" />
 		<Unit filename="src/enums/gui/gradienttype.h" />
 		<Unit filename="src/enums/gui/itemamountwindowusage.h" />
 		<Unit filename="src/enums/gui/progresscolorid.h" />
+		<Unit filename="src/enums/gui/colorname.h" />
 		<Unit filename="src/enums/gui/shoplistboxtype.h" />
 		<Unit filename="src/enums/gui/layouttype.h" />
 		<Unit filename="src/enums/gui/npcinputstate.h" />
