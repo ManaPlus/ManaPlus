@@ -63,7 +63,7 @@ void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
 
     if (npcId != BeingTypeId_zero)
     {
-        const BeingInfo *info = NPCDB::get(npcId);
+        const BeingInfo *const info = NPCDB::get(npcId);
         if (info)
             currency = info->getCurrency();
         else

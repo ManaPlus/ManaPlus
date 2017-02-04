@@ -40,8 +40,6 @@
 #include "resources/map/metatile.h"
 #include "resources/map/speciallayer.h"
 
-#include "utils/checkutils.h"
-
 #include "debug.h"
 
 MapLayer::MapLayer(const std::string &name,
@@ -558,16 +556,14 @@ void MapLayer::drawFringe(Graphics *const graphics,
             for (int x = x0; x < endX; x++, tilePtr++)
             {
                 const int x32 = x * mapTileSize;
-                int c = 0;
                 const Image *const img = tilePtr->image;
                 if (mSpecialFlag ||
                     img->mBounds.h <= mapTileSize)
                 {
                     const int px = x32 + dx;
                     const int py = py0 - img->mBounds.h;
-                    c = tilePtr->count;
 
-                    if (c == 0)
+                    if (tilePtr->count == 0)
                     {
                         graphics->drawImage(img, px, py);
                     }

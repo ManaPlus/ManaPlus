@@ -102,7 +102,7 @@ void UnitsDb::loadUnits()
         ud.conversion = 1.0;
         ud.mix = false;
 
-        UnitLevel bu = {"¤", 1, 0, ""};
+        const UnitLevel bu = {"¤", 1, 0, ""};
         ud.levels.push_back(bu);
 
         defaultCurrency = ud;
@@ -175,7 +175,7 @@ static void loadCurrencies(XmlNodePtr parentNode)
         if (xmlNameEqual(node, "unit"))
         {
             const std::string name = XML::getProperty(node, "name", "");
-            if (name == "")
+            if (name.empty())
             {
                 reportAlways("Error: unknown currency name.");
                 continue;
