@@ -1,3 +1,14 @@
+2017-02-04 Nre release 1.7.2.4
+fix: compilation with very old libcurl versions.
+fix: compilation with very new SDL2 versions.
+fix: possible crash in buydialog.
+fix: unit tests compilation.
+add: unit tests for detect physfs bugs with new zlib.
+add: use pkg-config for all libs.
+add: impliment buy many items at once from cash shops.
+add: different currencies for npcs.
+add: impove map draw performance.
+
 2017-01-21 New release 1.7.1.21
 fix: minor issues in map layers drawing.
 fix: dont clean online list if http error happened (legacy server).
@@ -7,7 +18,7 @@ fix: crash with map without tmx file.
 add: detect cpu features avx and avx2.
 add: used font sources.
 add: logging about compiled and linked libraries versions on startup.
-remove: herculs plugin support version 6.
+remove: hercules plugin support version 6.
 
 2017-01-07 New release 1.7.1.7
 fix: compilation for kFreeBSD.
