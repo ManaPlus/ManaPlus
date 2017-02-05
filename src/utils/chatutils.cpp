@@ -146,12 +146,16 @@ void replaceVars(std::string &str)
             if (*it != localPlayer->getName())
                 newStr.append(*it).append(",");
         }
-        if (newStr[newStr.size() - 1] == ',')
-            newStr = newStr.substr(0, newStr.size() - 1);
         if (!newStr.empty())
+        {
+            if (newStr[newStr.size() - 1] == ',')
+                newStr = newStr.substr(0, newStr.size() - 1);
             replaceAll(str, "<PEOPLE>", newStr);
+        }
         else
+        {
             replaceAll(str, "<PEOPLE>", "");
+        }
     }
     if (str.find("<PARTY>") != std::string::npos)
     {
@@ -167,12 +171,16 @@ void replaceVars(std::string &str)
                 if (*it != localPlayer->getName())
                     newStr.append(*it).append(",");
             }
-            if (newStr[newStr.size() - 1] == ',')
-                newStr = newStr.substr(0, newStr.size() - 1);
             if (!newStr.empty())
+            {
+                if (newStr[newStr.size() - 1] == ',')
+                    newStr = newStr.substr(0, newStr.size() - 1);
                 replaceAll(str, "<PARTY>", newStr);
+            }
             else
+            {
                 replaceAll(str, "<PARTY>", "");
+            }
         }
         else
         {

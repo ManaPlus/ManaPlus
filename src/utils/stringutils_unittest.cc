@@ -781,7 +781,7 @@ TEST_CASE("stringuntils splitToIntVector 1")
     splitToIntVector(tokens, "10,,30", ',');
     REQUIRE(tokens.size() == 2);
     REQUIRE(tokens[0] == 10);
-    REQUIRE(tokens[2] == 30);
+    REQUIRE(tokens[1] == 30);
 
     tokens.clear();
     splitToIntVector(tokens, "10,2;30", ',');
