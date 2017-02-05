@@ -25,6 +25,9 @@ THE MANA PLUS CLIENT
   - data/icons
   - data/fonts/src
 
+ Run time issues:
+   due PhysFS bug with recent zlib versions, need apply patch to PhysFS from packaging/patches/physfs/zip_seek.diff
+
 
 0. Index
 --------
