@@ -26,6 +26,11 @@ manaplus_CXXFLAGS += -Werror
 dyecmd_CXXFLAGS += -Werror
 endif
 
+if ENABLE_GLIBCDEBUG
+manaplus_CXXFLAGS += -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC
+dyecmd_CXXFLAGS += -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC
+endif
+
 if USE_X11
 manaplus_CXXFLAGS += -DUSE_X11
 dyecmd_CXXFLAGS += -DUSE_X11
@@ -1887,7 +1892,9 @@ if ENABLE_ASSERTS
 manaplustests_CXXFLAGS += -DENABLE_ASSERTS
 manaplustests_LDFLAGS = -rdynamic
 endif
-
+if ENABLE_GLIBCDEBUG
+manaplustests_CXXFLAGS += -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC
+endif
 if USE_X11
 manaplustests_CXXFLAGS += -DUSE_X11
 endif

@@ -29,6 +29,19 @@ esac],[asserts_enabled=true])
 
 AM_CONDITIONAL(ENABLE_ASSERTS, test x$asserts_enabled = xtrue)
 
+# Enable -D_GLIBCXX_DEBUG
+AC_ARG_ENABLE(glibcdebug,
+[  --enable-glibcdebug    Enable glibc++ debug mode],
+[case "${enableval}" in
+  yes) glibcdebug_enabled=true
+ ;;
+  no)  glibcdebug_enabled=false
+ ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-glibcdebug) ;;
+esac],[glibcdebug_enabled=false])
+
+AM_CONDITIONAL(ENABLE_GLIBCDEBUG, test x$glibcdebug_enabled = xtrue)
+
 # Checks for android.
 AC_ARG_ENABLE(androidbuild,
 [  --enable-androidbuild    Turn on android building],
