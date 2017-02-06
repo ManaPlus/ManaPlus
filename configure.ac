@@ -591,6 +591,16 @@ AC_CONFIG_FILES([data/tmw/tmw], [chmod +x data/tmw/tmw])
 AC_OUTPUT
 
 echo
+if test "$with_manaplusgame" == "yes"; then
+    echo "Enabled building manaplus game."
+fi
+if test "$with_dyecmd" == "yes"; then
+    echo "Enabled building dyecmd."
+fi
+if test "$unittests_enabled" == true; then
+    echo "Enabled building unit tests."
+fi
+
 echo "Build with OpenGL: $with_opengl"
 echo
 echo "LIBS: $LIBS"
