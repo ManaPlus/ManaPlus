@@ -1678,6 +1678,95 @@ gcc-6_SDL_default_test:
   tags:
     - docker
 
+gcc-6_SDL_SDL-1.2_old:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: SDL-1.2_old
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              libjpeg-dev libtiff-dev 
+              wget unzip
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
+    POST_CXXFLAGS: "-Wno-undef"
+  tags:
+    - docker
+
+gcc-6_SDL_default_old:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh --with-sdl2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: default_old
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev
+              libjpeg-dev libtiff-dev
+              wget unzip
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
+    POST_CXXFLAGS: "-Wno-undef"
+  tags:
+    - docker
+
+gcc-6_SDL_SDL-1.2_old_test:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: SDL-1.2_old
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              valgrind 
+              libjpeg-dev libtiff-dev
+              wget unzip
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
+    POST_CXXFLAGS: "-Wno-undef"
+  tags:
+    - docker
+
+gcc-6_SDL_default_old_test:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: default_old
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              valgrind 
+              libjpeg-dev libtiff-dev
+              wget unzip
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
+    POST_CXXFLAGS: "-Wno-undef"
+  tags:
+    - docker
+
 # deheader default
 
 deheader_gui_windows_cpp:
