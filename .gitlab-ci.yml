@@ -1601,19 +1601,19 @@ gcc-6_SDL_SDL-1.2:
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} ./tools/ci/jobs/gcc6.sh
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
   <<: *job-shared
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev pkg-config 
-              libxml2-dev libcurl4-gnutls-dev 
+              make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
 
@@ -1621,18 +1621,18 @@ gcc-6_SDL_default:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} ./tools/ci/jobs/gcc6.sh --with-sdl2
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh --with-sdl2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
   <<: *job-shared
   variables:
     LIBNAME: SDL
     LIBVERSION: default
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev  pkg-config 
-              libxml2-dev libcurl4-gnutls-dev 
+              make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
 
@@ -1641,20 +1641,20 @@ gcc-6_SDL_SDL-1.2_test:
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --without-manaplusgame --without-dyecmd
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-shared
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev pkg-config 
-              libxml2-dev libcurl4-gnutls-dev 
+              make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
               valgrind 
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
 
@@ -1662,19 +1662,19 @@ gcc-6_SDL_default_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-shared
   variables:
     LIBNAME: SDL
     LIBVERSION: default
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev  pkg-config 
-              libxml2-dev libcurl4-gnutls-dev 
+              make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
               valgrind 
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
 
