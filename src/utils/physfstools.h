@@ -21,7 +21,11 @@
 #ifndef UTILS_PHYSFSTOOLS_H
 #define UTILS_PHYSFSTOOLS_H
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wlong-long"
 #include <physfs.h>
+#pragma GCC diagnostic pop
+
 #include <string>
 
 namespace PhysFs
