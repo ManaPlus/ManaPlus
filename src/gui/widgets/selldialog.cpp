@@ -22,6 +22,8 @@
 
 #include "gui/widgets/selldialog.h"
 
+#include "const/resources/currency.h"
+
 #include "enums/gui/layouttype.h"
 
 #include "gui/windows/setupwindow.h"
@@ -89,7 +91,8 @@ void SellDialog::postInit()
         setupWindow->registerWindowForReset(this);
 
     // Create a ShopItems instance, that is aware of duplicate entries.
-    mShopItems = new ShopItems(true);
+    mShopItems = new ShopItems(true,
+        DEFAULT_CURRENCY);
 
     if (mAdvanced == Advanced_true)
         mShopItems->setMergeDuplicates(false);

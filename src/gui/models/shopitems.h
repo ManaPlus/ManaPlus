@@ -53,7 +53,8 @@ class ShopItems final : public ListModel
          * @param mergeDuplicates lets the Shop look for duplicate entries and
          *                        merges them to one item.
          */
-        explicit ShopItems(const bool mergeDuplicates = false);
+        ShopItems(const bool mergeDuplicates,
+                  const std::string &currency);
 
         A_DELETE_COPY(ShopItems)
 
@@ -158,6 +159,8 @@ class ShopItems final : public ListModel
         std::vector<ShopItem*> mAllShopItems;
 
         std::vector<ShopItem*> mShopItems;
+
+        std::string mCurrency;
 
         /** Look for duplicate entries on addition. */
         bool mMergeDuplicates;

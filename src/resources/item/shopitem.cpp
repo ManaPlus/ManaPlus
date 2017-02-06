@@ -37,7 +37,8 @@ ShopItem::ShopItem(const int inventoryIndex,
                    const ItemTypeT type,
                    const ItemColor color,
                    const int quantity,
-                   const int price) :
+                   const int price,
+                   const std::string &currency) :
     Item(id, type, 0, 0, color,
          Identified_true,
          Damaged_false,
@@ -45,6 +46,7 @@ ShopItem::ShopItem(const int inventoryIndex,
          Equipm_false,
          Equipped_false),
     mDisplayName(),
+    mCurrency(currency),
     mDuplicates(),
     mPrice(price),
     mUsedQuantity(0),
@@ -60,7 +62,8 @@ ShopItem::ShopItem(const int inventoryIndex,
 ShopItem::ShopItem(const int id,
                    const ItemTypeT type,
                    const ItemColor color,
-                   const int price) :
+                   const int price,
+                   const std::string &currency) :
     Item(id, type, 0, 0, color,
          Identified_true,
          Damaged_false,
@@ -68,6 +71,7 @@ ShopItem::ShopItem(const int id,
          Equipm_false,
          Equipped_false),
     mDisplayName(),
+    mCurrency(currency),
     mDuplicates(),
     mPrice(price),
     mUsedQuantity(0),
@@ -99,7 +103,7 @@ void ShopItem::updateDisplayName(const int quantity)
     if (mPrice)
     {
         mDisplayName.append(" (").append(
-            UnitsDb::formatCurrency(mPrice)).append(") ");
+            UnitsDb::formatCurrency(mCurrency, mPrice)).append(") ");
     }
     if (mShowQuantity && quantity > 1)
         mDisplayName.append("[").append(toString(quantity)).append("]");

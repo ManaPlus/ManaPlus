@@ -107,8 +107,8 @@ ShopWindow::ShopWindow() :
     SelectionListener(),
     // TRANSLATORS: shop window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
-    mBuyShopItems(new ShopItems),
-    mSellShopItems(new ShopItems),
+    mBuyShopItems(new ShopItems(false, DEFAULT_CURRENCY)),
+    mSellShopItems(new ShopItems(false, DEFAULT_CURRENCY)),
     mTradeItem(nullptr),
     mBuyShopItemList(CREATEWIDGETR(ShopListBox,
         this, mBuyShopItems, mBuyShopItems, ShopListBoxType::BuyShop)),
@@ -952,7 +952,8 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
         ItemType::Unknown,
         ItemColor_one,
         amount,
-        price);
+        price,
+        DEFAULT_CURRENCY);
 
     if (mode == BUY)
     {

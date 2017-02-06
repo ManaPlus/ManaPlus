@@ -28,10 +28,12 @@
 
 #include "debug.h"
 
-ShopItems::ShopItems(const bool mergeDuplicates) :
+ShopItems::ShopItems(const bool mergeDuplicates,
+                     const std::string &currency) :
     ListModel(),
     mAllShopItems(),
     mShopItems(),
+    mCurrency(currency),
     mMergeDuplicates(mergeDuplicates)
 {
 }
@@ -58,7 +60,13 @@ ShopItem *ShopItems::addItem(const int id,
                              const int amount,
                              const int price)
 {
-    ShopItem *const item = new ShopItem(-1, id, type, color, amount, price);
+    ShopItem *const item = new ShopItem(-1,
+        id,
+        type,
+        color,
+        amount,
+        price,
+        mCurrency);
     mShopItems.push_back(item);
     mAllShopItems.push_back(item);
     return item;
@@ -73,7 +81,13 @@ ShopItem *ShopItems::addItemNoDup(const int id,
     ShopItem *item = findItem(id, color);
     if (!item)
     {
-        item = new ShopItem(-1, id, type, color, amount, price);
+        item = new ShopItem(-1,
+            id,
+            type,
+            color,
+            amount,
+            price,
+            mCurrency);
         mShopItems.push_back(item);
         mAllShopItems.push_back(item);
     }
@@ -97,7 +111,13 @@ ShopItem *ShopItems::addItem2(const int inventoryIndex,
     }
     else
     {
-        item = new ShopItem(inventoryIndex, id, type, color, quantity, price);
+        item = new ShopItem(inventoryIndex,
+            id,
+            type,
+            color,
+            quantity,
+            price,
+            mCurrency);
         mShopItems.push_back(item);
         mAllShopItems.push_back(item);
     }

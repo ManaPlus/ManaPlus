@@ -296,7 +296,8 @@ void BuyDialog::init()
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    mShopItems = new ShopItems;
+    mShopItems = new ShopItems(false,
+        mCurrency);
 
     CREATEWIDGETV(mShopItemList, ShopListBox, this,
         mShopItems, mShopItems, ShopListBoxType::Unknown);

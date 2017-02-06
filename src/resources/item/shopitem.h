@@ -49,7 +49,8 @@ class ShopItem final : public Item
                  const ItemTypeT type,
                  const ItemColor color,
                  const int quantity,
-                 const int price);
+                 const int price,
+                 const std::string &currency);
 
         /**
          * Constructor. Creates a new ShopItem. Inventory index will be set to
@@ -61,7 +62,8 @@ class ShopItem final : public Item
         ShopItem(const int id,
                  const ItemTypeT type,
                  const ItemColor color,
-                 const int price);
+                 const int price,
+                 const std::string &currency);
 
         A_DELETE_COPY(ShopItem)
 
@@ -158,6 +160,7 @@ class ShopItem final : public Item
         void updateDisplayName(const int quantity);
 
         std::string mDisplayName;
+        std::string mCurrency;
 
         /**
          * Struct to keep track of duplicates.
