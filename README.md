@@ -14,7 +14,7 @@ Version: 1.7.2.4        Date: 2017-02-04
 ### Powered by:
 
  - [SDL](http://libsdl.org/), SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
- - [libxml2](http://xmlsoft.org/) (XML parsing and writing)
+ - [libxml2](http://xmlsoft.org/) or [pugixml](http://pugixml.org/) (XML parsing and writing)
  - [PhysFS](https://icculus.org/physfs/) (Data files)
  - [libcurl](http://curl.haxx.se/) (HTTP downloads)
  - [zlib](http://zlib.net/) (Archives)

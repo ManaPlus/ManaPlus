@@ -12,7 +12,7 @@ THE MANA PLUS CLIENT
  Powered by:
 
   - SDL, SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
-  - libxml2 (XML parsing and writing)
+  - libxml2 or pugixml (XML parsing and writing)
   - PhysFS (Data files)
   - libcurl (HTTP downloads)
   - zlib (Archives)
