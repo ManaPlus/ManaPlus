@@ -26,14 +26,6 @@
 
 #include "localconsts.h"
 
-PRAGMA45(GCC diagnostic push)
-PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
-#include <SDL_stdinc.h>
-#if !defined(_SDL_stdinc_h) && !defined(SDL_stdinc_h_) && !defined(SDL_stdinc_h)
-#error need include SDL_stdinc.h
-#endif  // !defined(_SDL_stdinc_h) && !defined(SDL_stdinc_h_)
-
-PRAGMA45(GCC diagnostic pop)
 #include <SDL_thread.h>
 
 struct SDL_Surface;

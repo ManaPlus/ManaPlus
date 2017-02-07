@@ -23,18 +23,6 @@
 
 #include "localconsts.h"
 
-#ifdef USE_SDL2
-PRAGMA45(GCC diagnostic push)
-PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
-#endif  // USE_SDL2
-#include <SDL_stdinc.h>
-#if !defined(_SDL_stdinc_h) && !defined(SDL_stdinc_h_) && !defined(SDL_stdinc_h)
-#error need include SDL_stdinc.h
-#endif  // !defined(_SDL_stdinc_h) && !defined(SDL_stdinc_h_)
-#ifdef USE_SDL2
-PRAGMA45(GCC diagnostic pop)
-#endif  // USE_SDL2
-
 #ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
 #endif  // SDL_BYTEORDER
