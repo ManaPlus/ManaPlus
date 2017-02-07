@@ -1235,7 +1235,7 @@ gcc-6_pugixml_i386:
 gcc-6_pugixml_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sdl2.sh --with-sdl2 --enable-libxml=pugixml
+  - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-libxml=pugixml
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
