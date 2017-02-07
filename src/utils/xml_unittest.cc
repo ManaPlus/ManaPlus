@@ -30,6 +30,9 @@
 #include "utils/delete2.h"
 #include "utils/env.h"
 #include "utils/physfstools.h"
+#ifdef ENABLE_PUGIXML
+#include "utils/xmlwriter.h"
+#endif  // ENABLE_PUGIXML
 
 #include "render/sdlgraphics.h"
 

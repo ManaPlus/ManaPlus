@@ -26,7 +26,7 @@
 #include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/useresman.h"
 
-#include "utils/xml/pugixml.inc"
+#include "utils/xml/pugixml.h"
 
 #include <pugixml.hpp>
 

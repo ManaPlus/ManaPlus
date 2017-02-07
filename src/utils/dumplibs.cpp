@@ -39,7 +39,9 @@ PRAGMA45(GCC diagnostic pop)
 
 #include <curl/curl.h>
 
+#ifdef ENABLE_LIBXML
 #include <libxml/xmlversion.h>
+#endif  // ENABLE_LIBXML
 
 #include "debug.h"
 
@@ -109,7 +111,10 @@ void dumpLibs()
 {
     logger->log("Compiled with:");
     logger->log(" zLib: %s", ZLIB_VERSION);
+#ifdef ENABLE_LIBXML
     logger->log(" libxml2: %s", LIBXML_DOTTED_VERSION);
+#endif  // ENABLE_LIBXML
+
     logger->log(" libcurl: %s", LIBCURL_VERSION);
     logger->log(" libpng: %s", PNG_LIBPNG_VER_STRING);
     PHYSFS_Version physfsVersion;
