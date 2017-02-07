@@ -367,6 +367,35 @@ gcc-6_tests_glibcdebug:
   tags:
     - docker
 
+gcc-6_pugixml_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-6_pugixml_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
+  image: vicamo/debian:sid-i386
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
 gcc-6_tests_glibcdebug_i386:
   stage: build
   script:
@@ -1179,6 +1208,51 @@ gcc-6_cilkplus:
               make autoconf automake autopoint gettext libphysfs-dev 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+gcc-6_pugixml:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --enable-libxml=pugixml
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+gcc-6_pugixml_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --enable-libxml=pugixml
+  image: vicamo/debian:sid-i386
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+gcc-6_pugixml_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sdl2.sh --with-sdl2 --enable-libxml=pugixml
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+
+gcc-6_pugixml_sdl2_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-libxml=pugixml
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext libphysfs-dev 
+              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 gcc_eathena_opengl:
   stage: build
