@@ -21,10 +21,12 @@
 #ifndef UTILS_PHYSFSTOOLS_H
 #define UTILS_PHYSFSTOOLS_H
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wlong-long"
+#include "localconsts.h"
+
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wlong-long")
 #include <physfs.h>
-#pragma GCC diagnostic pop
+PRAGMA45(GCC diagnostic pop)
 
 #include <string>
 

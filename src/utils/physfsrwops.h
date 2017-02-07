@@ -26,15 +26,15 @@
 #define UTILS_PHYSFSRWOPS_H
 
 #ifdef USE_SDL2
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wswitch-default"
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
 #endif  // USE_SDL2
 #include <SDL_stdinc.h>
 #if !defined(_SDL_stdinc_h) && !defined(SDL_stdinc_h_) && !defined(SDL_stdinc_h)
 #error need include SDL_stdinc.h
 #endif  // !defined(_SDL_stdinc_h) && !defined(SDL_stdinc_h_)
 #ifdef USE_SDL2
-#pragma GCC diagnostic pop
+PRAGMA45(GCC diagnostic pop)
 #endif  // USE_SDL2
 #include <SDL_rwops.h>
 

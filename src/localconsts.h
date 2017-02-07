@@ -294,12 +294,12 @@
 #endif  // ENABLE_CHECKS
 
 #ifdef USE_SDL2
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wswitch-default"
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
 #endif  // USE_SDL2
 #include <SDL_version.h>
 #ifdef USE_SDL2
-#pragma GCC diagnostic pop
+PRAGMA45(GCC diagnostic pop)
 #endif  // USE_SDL2
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
