@@ -21,6 +21,8 @@
 #ifndef UTILS_BUILDHEX_H
 #define UTILS_BUILDHEX_H
 
+#include "localconsts.h"
+
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
@@ -36,8 +38,6 @@ PRAGMA45(GCC diagnostic pop)
 #ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
 #endif  // SDL_BYTEORDER
-
-#include "localconsts.h"
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
 #define buildHex(a, b, c, d) \

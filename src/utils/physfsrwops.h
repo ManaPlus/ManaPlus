@@ -25,6 +25,8 @@
 #ifndef UTILS_PHYSFSRWOPS_H
 #define UTILS_PHYSFSRWOPS_H
 
+#include "localconsts.h"
+
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
@@ -39,8 +41,6 @@ PRAGMA45(GCC diagnostic pop)
 #include <SDL_rwops.h>
 
 #include "utils/physfstools.h"
-
-#include "localconsts.h"
 
 /**
  * Open a platform-independent filename for reading, and make it accessible

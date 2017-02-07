@@ -23,6 +23,8 @@
 #ifndef RESOURCES_SCREENSHOTHELPER_H
 #define RESOURCES_SCREENSHOTHELPER_H
 
+#include "localconsts.h"
+
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
@@ -36,8 +38,6 @@ PRAGMA45(GCC diagnostic pop)
 #endif  // USE_SDL2
 
 #include <SDL_video.h>
-
-#include "localconsts.h"
 
 class ScreenshotHelper notfinal
 {

@@ -23,6 +23,8 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include "localconsts.h"
+
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
@@ -38,8 +40,6 @@ PRAGMA45(GCC diagnostic pop)
 
 #include <fstream>
 #include <vector>
-
-#include "localconsts.h"
 
 #ifdef ENABLEDEBUGLOG
 #define DEBUGLOG(str) \

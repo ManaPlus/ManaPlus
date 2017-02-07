@@ -24,6 +24,8 @@
 #ifdef USE_SDL2
 #include "utils/stringvector.h"
 
+#include "localconsts.h"
+
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
 #include <SDL_stdinc.h>
@@ -33,8 +35,6 @@ PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
 
 PRAGMA45(GCC diagnostic pop)
 #include <SDL_thread.h>
-
-#include "localconsts.h"
 
 struct SDL_Surface;
 struct SDL_SysWMinfo;

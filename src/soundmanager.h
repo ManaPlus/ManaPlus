@@ -23,6 +23,12 @@
 #ifndef SOUNDMANAGER_H
 #define SOUNDMANAGER_H
 
+#include "enums/simpletypes/skiperror.h"
+
+#include "listeners/configlistener.h"
+
+#include "localconsts.h"
+
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
@@ -35,12 +41,6 @@ PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
 PRAGMA45(GCC diagnostic pop)
 #endif  // USE_SDL2
 #include <SDL_mixer.h>
-
-#include "enums/simpletypes/skiperror.h"
-
-#include "listeners/configlistener.h"
-
-#include "localconsts.h"
 
 class SDLMusic;
 

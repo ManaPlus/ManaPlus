@@ -23,6 +23,8 @@
 #ifndef INPUT_KEYBOARDCONFIG_H
 #define INPUT_KEYBOARDCONFIG_H
 
+#include "localconsts.h"
+
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")

@@ -21,6 +21,8 @@
 #ifndef NET_SDLTCPNET_H
 #define NET_SDLTCPNET_H
 
+#include "localconsts.h"
+
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
@@ -34,8 +36,6 @@ PRAGMA45(GCC diagnostic pop)
 #endif  // USE_SDL2
 
 #include <SDL_net.h>
-
-#include "localconsts.h"
 
 namespace TcpNet
 {
