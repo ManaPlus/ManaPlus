@@ -470,10 +470,10 @@ gcc-6_sdl2_tests_i386:
   tags:
     - docker
 
-gcc-5_sdl2_tests:
+gcc-5_sdl2_tests_glibcdebug:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-manaplusgame
+  - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-manaplusgame --enable-glibcdebug
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
