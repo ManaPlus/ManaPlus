@@ -4,3 +4,14 @@ make distclean
 make clean
 find src -type f -name "*.gcno" -exec rm {} \;
 find src -type f -name "*.gcda" -exec rm {} \;
+find src -type f -name "*.o" -exec rm {} \;
+find src -type f -name "Makefile" -exec rm {} \;
+find src -type f -name "Makefile.in" -exec rm {} \;
+rm configure
+rm configure.in
+rm Makefile
+rm Makefile.in
+rm aclocal.m4
+rm -r autom4te.cache
+rm config.*
+rm depcomp
