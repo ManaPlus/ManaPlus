@@ -58,7 +58,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName,
         UseVirtFs_true,
         skipError);
-    const XmlNodePtr rootNode = doc.rootNode();
+    XmlNodeConstPtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "mercenaries"))
     {

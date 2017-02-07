@@ -406,7 +406,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
         SkipError_true);
     if (!doc)
         return nullptr;
-    const XmlNodePtr rootNode = doc->rootNode();
+    XmlNodeConstPtr rootNode = doc->rootNode();
     if (!rootNode || !xmlNameEqual(rootNode, "skinset"))
     {
         doc->decRef();
@@ -1011,7 +1011,7 @@ void Theme::loadColors(std::string file)
         SkipError_false);
     if (!doc)
         return;
-    const XmlNodePtrConst root = doc->rootNode();
+    XmlNodeConstPtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "colors"))
     {
@@ -1220,7 +1220,7 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
         SkipError_false);
     if (!doc)
         return nullptr;
-    const XmlNodePtrConst rootNode = doc->rootNode();
+    XmlNodeConstPtrConst rootNode = doc->rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "info"))
     {

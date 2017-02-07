@@ -449,7 +449,7 @@ void ServerDialog::downloadServerList()
     config.setValue("serverslistupdate", getDateString());
 }
 
-static void loadHostsGroup(const XmlNodePtr node,
+static void loadHostsGroup(XmlNodeConstPtr node,
                            ServerInfo &server)
 {
     HostsGroup group;
@@ -482,7 +482,7 @@ void ServerDialog::loadServers(const bool addNew)
         branding.getStringValue("onlineServerFile")),
         UseVirtFs_false,
         SkipError_false);
-    const XmlNodePtr rootNode = doc.rootNode();
+    XmlNodeConstPtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "serverlist"))
     {

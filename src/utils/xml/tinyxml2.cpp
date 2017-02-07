@@ -20,14 +20,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef ENABLE_PUGIXML
+#ifdef ENABLE_TINYXML2
 
-#include "utils/xml/pugixml.h"
+#include "utils/xml/tinyxml2.h"
 
 #include "fs/virtfstools.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
 #include "utils/fuzzer.h"
 #include "utils/stringutils.h"
 
@@ -42,19 +41,12 @@ namespace
 
 namespace XML
 {
-    static void showErrorStatus(pugi::xml_parse_result &result)
+    static void showErrorStatus(tinyxml2::XMLDocument &doc)
     {
-/*
-        switch (result.status)
-        {
-            case pugi::status_ok:
-                break;
-            case pugi::status_file_not_found:
-                logger->log("xml error: %s", result.description());
-                break;
-        }
-*/
-        logger->log("xml error: %s", result.description());
+        logger->log("xml error: %s, in lines: %s\n%s",
+            doc.ErrorName(),
+            doc.GetErrorStr1(),
+            doc.GetErrorStr2());
     }
 
     Document::Document(const std::string &filename,
@@ -111,23 +103,17 @@ namespace XML
 
         if (data)
         {
-            // +++ use other pugi::parse_* flags
-            pugi::xml_parse_result result = mDoc.load_buffer_inplace(data,
-                size,
-                pugi::parse_default,
-                pugi::encoding_utf8);
-            if (result.status != pugi::status_ok)
+            tinyxml2::XMLError result = mDoc.Parse(data,
+                size);
+            if (result != tinyxml2::XML_SUCCESS)
             {
-                showErrorStatus(result);
+                showErrorStatus(mDoc);
                 free(data);
             }
             else
             {
                 mData = data;
             }
-
-//            if (!mDoc)
-//                logger->log("Error parsing XML file %s", filename.c_str());
         }
         else if (skipError == SkipError_false)
         {
@@ -138,6 +124,7 @@ namespace XML
     }
 
     Document::Document(const char *const data, const int size) :
+        Resource(),
         mDoc(),
         mData(nullptr),
         mIsValid(true)
@@ -148,13 +135,12 @@ namespace XML
         char *buf = static_cast<char*>(calloc(size + 1, 1));
         strncpy(buf, data, size);
         buf[size] = 0;
-        pugi::xml_parse_result result = mDoc.load_buffer_inplace(buf,
-            size,
-            pugi::parse_default,
-            pugi::encoding_utf8);
-        if (result.status != pugi::status_ok)
+
+        tinyxml2::XMLError result = mDoc.Parse(buf,
+            size);
+        if (result != tinyxml2::XML_SUCCESS)
         {
-            showErrorStatus(result);
+            showErrorStatus(mDoc);
             free(buf);
         }
         else
@@ -167,13 +153,11 @@ namespace XML
     {
         free(mData);
         mData = nullptr;
-//        if (mDoc)
-//            xmlFreeDoc(mDoc);
     }
 
-    XmlNodePtr Document::rootNode()
+    XmlNodeConstPtr Document::rootNode()
     {
-        return mDoc.first_child();
+        return mDoc.FirstChildElement();
     }
 
     int getProperty(XmlNodeConstPtr node,
@@ -184,9 +168,9 @@ namespace XML
 
         if (!node)
             return ret;
-        const pugi::xml_attribute &attr = node.attribute(name);
-        if (!attr.empty())
-            ret = atoi(attr.value());
+        const char *attr = node->Attribute(name);
+        if (attr != nullptr)
+            ret = atoi(attr);
 
         return ret;
     }
@@ -201,9 +185,9 @@ namespace XML
 
         if (!node)
             return ret;
-        const pugi::xml_attribute &attr = node.attribute(name);
-        if (!attr.empty())
-            ret = atoi(attr.value());
+        const char *attr = node->Attribute(name);
+        if (attr != nullptr)
+            ret = atoi(attr);
 
         if (ret < min)
             ret = min;
@@ -220,9 +204,9 @@ namespace XML
 
         if (!node)
             return ret;
-        const pugi::xml_attribute &attr = node.attribute(name);
-        if (!attr.empty())
-            ret = atof(attr.value());
+        const char *attr = node->Attribute(name);
+        if (attr != nullptr)
+            ret = atof(attr);
 
         return ret;
     }
@@ -233,9 +217,9 @@ namespace XML
     {
         if (!node)
             return def;
-        const pugi::xml_attribute &attr = node.attribute(name);
-        if (!attr.empty())
-            return attr.value();
+        const char *attr = node->Attribute(name);
+        if (attr != nullptr)
+            return attr;
 
         return def;
     }
@@ -257,10 +241,10 @@ namespace XML
     {
         if (!node)
             return def;
-        const pugi::xml_attribute &attr = node.attribute(name);
-        if (!attr.empty())
+        const char *attr = node->Attribute(name);
+        if (attr != nullptr)
         {
-            std::string val = attr.value();
+            std::string val = attr;
             if (val == "true")
                 return true;
             if (val == "false")
@@ -270,47 +254,32 @@ namespace XML
         return def;
     }
 
-    XmlNodePtr findFirstChildByName(XmlNodeConstPtrConst parent,
-                                    const char *const name)
+    XmlNodeConstPtr findFirstChildByName(XmlNodeConstPtrConst parent,
+                                         const char *const name)
     {
         if (!parent || !name)
-            return pugi::xml_node();
-        for_each_xml_child_node(child, parent)
-        {
-            if (!strcmp(child.name(), name))
-                return child;
-        }
-
-        return pugi::xml_node();
+            return nullptr;
+        return parent->FirstChildElement(name);
     }
 
-    // Initialize libxml2 and check for potential ABI mismatches between
-    // compiled version and the shared library actually used.
+    // Initialize xml
     void initXML()
     {
-//        xmlInitParser();
-//        LIBXML_TEST_VERSION;
-
-        // Suppress libxml2 error messages
-//        xmlSetGenericErrorFunc(nullptr, &xmlErrorLogger);
     }
 
-    // Shutdown libxml
+    // Shutdown xml
     void cleanupXML()
     {
-//        xmlCleanupParser();
     }
 
     bool Document::validateXml(const std::string &fileName)
     {
-        pugi::xml_document doc;
-        pugi::xml_parse_result result = doc.load_file(fileName.c_str(),
-            pugi::parse_default,
-            pugi::encoding_utf8);
+        tinyxml2::XMLDocument doc;
+        tinyxml2::XMLError result = doc.LoadFile(fileName.c_str());
 
-        if (result.status != pugi::status_ok)
+        if (result != tinyxml2::XML_SUCCESS)
         {
-            showErrorStatus(result);
+            showErrorStatus(doc);
             return false;
         }
 
@@ -334,4 +303,4 @@ namespace XML
     }
 }  // namespace XML
 
-#endif  // ENABLE_PUGIXML
+#endif  // ENABLE_TINYXML2

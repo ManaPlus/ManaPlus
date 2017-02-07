@@ -501,7 +501,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     return map;
 }
 
-void MapReader::readProperties(const XmlNodePtrConst node,
+void MapReader::readProperties(XmlNodeConstPtrConst node,
                                Properties *const props)
 {
     BLOCK_START("MapReader::readProperties")
@@ -635,7 +635,7 @@ inline static void setTile(Map *const map,
     }
 }
 
-bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
+bool MapReader::readBase64Layer(XmlNodeConstPtrConst childNode,
                                 Map *const map,
                                 MapLayer *const layer,
                                 const MapLayerTypeT &layerType,
@@ -772,7 +772,7 @@ bool MapReader::readBase64Layer(const XmlNodePtrConst childNode,
     return true;
 }
 
-bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
+bool MapReader::readCsvLayer(XmlNodeConstPtrConst childNode,
                              Map *const map,
                              MapLayer *const layer,
                              const MapLayerTypeT &layerType,
@@ -854,7 +854,7 @@ bool MapReader::readCsvLayer(const XmlNodePtrConst childNode,
     return true;
 }
 
-void MapReader::readLayer(const XmlNodePtr node, Map *const map)
+void MapReader::readLayer(XmlNodeConstPtr node, Map *const map)
 {
     if (!node)
         return;

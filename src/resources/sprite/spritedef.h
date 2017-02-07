@@ -100,26 +100,26 @@ class SpriteDef final : public Resource
         /**
          * Loads a sprite element.
          */
-        void loadSprite(const XmlNodePtr spriteNode,
+        void loadSprite(XmlNodeConstPtr spriteNode,
                         const int variant,
                         const std::string &palettes = "");
 
         /**
          * Loads an imageset element.
          */
-        void loadImageSet(const XmlNodePtr node,
+        void loadImageSet(XmlNodeConstPtr node,
                           const std::string &palettes);
 
         /**
          * Loads an action element.
          */
-        void loadAction(const XmlNodePtr node,
+        void loadAction(XmlNodeConstPtr node,
                         const int variant_offset);
 
         /**
          * Loads an animation element.
          */
-        void loadAnimation(const XmlNodePtr animationNode,
+        void loadAnimation(XmlNodeConstPtr animationNode,
                            Action *const action,
                            const ImageSet *const imageSet,
                            const int variant_offset) const;
@@ -127,7 +127,7 @@ class SpriteDef final : public Resource
         /**
          * Include another sprite into this one.
          */
-        void includeSprite(const XmlNodePtr includeNode,
+        void includeSprite(XmlNodeConstPtr includeNode,
                            const int variant);
 
         const ImageSet *getImageSet(const std::string &imageSetName) const;

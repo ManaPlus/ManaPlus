@@ -630,7 +630,7 @@ void EquipmentWindow::fillBoxes()
         paths.getStringValue("equipmentWindowFile"),
         UseVirtFs_true,
         SkipError_false);
-    const XmlNodePtr root = doc->rootNode();
+    XmlNodeConstPtr root = doc->rootNode();
     if (!root)
     {
         delete doc;
@@ -666,7 +666,7 @@ void EquipmentWindow::addDefaultPage()
     }
 }
 
-void EquipmentWindow::loadPage(const XmlNodePtr node)
+void EquipmentWindow::loadPage(XmlNodeConstPtr node)
 {
     if (!node)
         return;
@@ -682,7 +682,7 @@ void EquipmentWindow::loadPage(const XmlNodePtr node)
     }
 }
 
-void EquipmentWindow::loadPlayerBox(const XmlNodePtr playerBoxNode,
+void EquipmentWindow::loadPlayerBox(XmlNodeConstPtr playerBoxNode,
                                     const int page)
 {
     EquipmentPage *const data = mPages[page];
@@ -692,7 +692,7 @@ void EquipmentWindow::loadPlayerBox(const XmlNodePtr playerBoxNode,
     data->height = XML::getProperty(playerBoxNode, "height", 168);
 }
 
-void EquipmentWindow::loadSlot(const XmlNodePtr slotNode,
+void EquipmentWindow::loadSlot(XmlNodeConstPtr slotNode,
                                const ImageSet *const imageset,
                                const int page)
 {
@@ -739,7 +739,7 @@ void EquipmentWindow::prepareSlotNames()
     XML::Document doc(paths.getStringValue("equipmentSlotsFile"),
         UseVirtFs_true,
         SkipError_false);
-    const XmlNodePtrConst root = doc.rootNode();
+    XmlNodeConstPtrConst root = doc.rootNode();
     if (!root)
         return;
 

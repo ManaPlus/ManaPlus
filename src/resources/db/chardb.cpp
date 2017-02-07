@@ -52,7 +52,7 @@ void CharDB::load()
         paths.getStringValue("charCreationFile"),
         UseVirtFs_true,
         SkipError_false);
-    const XmlNodePtrConst root = doc->rootNode();
+    XmlNodeConstPtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "chars"))
     {
@@ -109,7 +109,7 @@ void CharDB::load()
     mLoaded = true;
 }
 
-void CharDB::loadMinMax(const XmlNodePtr node,
+void CharDB::loadMinMax(XmlNodeConstPtr node,
                         unsigned *restrict const min,
                         unsigned *restrict const max)
 {

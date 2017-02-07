@@ -55,7 +55,7 @@ void ElementalDb::loadXmlFile(const std::string &fileName,
                               const SkipError skipError)
 {
     XML::Document doc(fileName, UseVirtFs_true, skipError);
-    const XmlNodePtr rootNode = doc.rootNode();
+    XmlNodeConstPtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "elementals"))
     {

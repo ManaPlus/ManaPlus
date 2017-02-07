@@ -29,16 +29,20 @@ __XML_XMLWRITER_H__
 
 #define XmlNodePtr xmlNodePtr
 #define XmlNodePtrConst xmlNode *const
+#define XmlNodeConstPtr const xmlNodePtr
+#define XmlNodeConstPtrConst const xmlNode *const
 #define XmlStrEqual(str1, str2) xmlStrEqual(str1, \
     reinterpret_cast<const xmlChar*>(str2))
 #define xmlNameEqual(node, str) xmlStrEqual((node)->name, \
     reinterpret_cast<const xmlChar*>(str))
-#define XmlTextWriterPtr xmlTextWriterPtr
+#define XmlTextWriterPtr const xmlTextWriterPtr
 #define xmlTypeEqual(node, typ) ((node)->type == (typ))
 #define XmlHasProp(node, name) (xmlHasProp(node, \
     reinterpret_cast<const xmlChar*>(name)) != nullptr)
 #define XmlGetProp(node, name) xmlGetProp(node, \
     reinterpret_cast<const xmlChar*>(name))
+#define XmlTextWriterStartRootElement(writer, name) \
+    xmlTextWriterStartElement(writer, reinterpret_cast<const xmlChar*>(name))
 #define XmlTextWriterStartElement(writer, name) \
     xmlTextWriterStartElement(writer, reinterpret_cast<const xmlChar*>(name))
 #define XmlTextWriterEndElement(writer) xmlTextWriterEndElement(writer)
@@ -49,6 +53,7 @@ __XML_XMLWRITER_H__
 #define XmlNodeGetContent(node) xmlNodeGetContent(node)
 #define XmlNewTextWriterFilename(name, flags) \
     xmlNewTextWriterFilename(name, flags)
+#define XmlSaveTextWriterFilename(writer, name)
 #define XmlTextWriterSetIndent(writer, flags) \
     xmlTextWriterSetIndent(writer, flags)
 #define XmlTextWriterStartDocument(writer, p1, p2, p3) \

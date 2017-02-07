@@ -43,7 +43,7 @@ class Particle;
 class ParticleEmitter final
 {
     public:
-        ParticleEmitter(const XmlNodePtrConst emitterNode,
+        ParticleEmitter(XmlNodeConstPtrConst emitterNode,
                         Particle *const target,
                         Map *const map,
                         const int rotation = 0,

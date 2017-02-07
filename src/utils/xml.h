@@ -23,6 +23,8 @@
 
 #ifdef ENABLE_PUGIXML
 #include "utils/xml/pugixml.h"
+#elif defined(ENABLE_TINYXML2)
+#include "utils/xml/tinyxml2.h"
 #else  // ENABLE_PUGIXML
 #include "utils/xml/libxml.h"
 #endif  // ENABLE_PUGIXML

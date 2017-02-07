@@ -114,13 +114,13 @@ class EquipmentWindow final : public Window,
 
         void addBox(const int idx, int x, int y, const int imageIndex);
 
-        void loadWindow(const XmlNodePtrConst windowNode);
+        void loadWindow(XmlNodeConstPtrConst windowNode);
 
-        void loadPage(const XmlNodePtr node);
+        void loadPage(XmlNodeConstPtr node);
 
-        void loadPlayerBox(const XmlNodePtr playerBoxNode, const int page);
+        void loadPlayerBox(XmlNodeConstPtr playerBoxNode, const int page);
 
-        void loadSlot(const XmlNodePtr slotNode,
+        void loadSlot(XmlNodeConstPtr slotNode,
                       const ImageSet *const imageset,
                       const int page);
 

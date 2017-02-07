@@ -96,7 +96,7 @@ void StatDb::load()
     mLoaded = true;
 }
 
-static void loadBasicStats(const XmlNodePtr rootNode)
+static void loadBasicStats(XmlNodeConstPtr rootNode)
 {
     const int maxAttr = static_cast<int>(Attributes::MAX_ATTRIBUTE);
     for_each_xml_child_node(node, rootNode)
@@ -131,7 +131,7 @@ static void loadBasicStats(const XmlNodePtr rootNode)
     }
 }
 
-static void loadStats(const XmlNodePtr rootNode,
+static void loadStats(XmlNodeConstPtr rootNode,
                       const std::string &page)
 {
     const int maxAttr = static_cast<int>(Attributes::MAX_ATTRIBUTE);
@@ -173,7 +173,7 @@ void StatDb::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName,
         UseVirtFs_true,
         skipError);
-    const XmlNodePtrConst rootNode = doc.rootNode();
+    XmlNodeConstPtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "stats"))
     {

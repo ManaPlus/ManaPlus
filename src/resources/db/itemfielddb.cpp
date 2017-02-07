@@ -51,7 +51,7 @@ void ItemFieldDb::load()
     mLoaded = true;
 }
 
-static void loadFields(const XmlNodePtr groupNode,
+static void loadFields(XmlNodeConstPtr groupNode,
                        ItemFieldDb::FieldInfos &fields1,
                        ItemFieldDb::FieldInfos &fields2)
 {
@@ -105,7 +105,7 @@ void ItemFieldDb::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName,
         UseVirtFs_true,
         skipError);
-    const XmlNodePtrConst rootNode = doc.rootNode();
+    XmlNodeConstPtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "itemfields"))
     {

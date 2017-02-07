@@ -436,7 +436,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
     }
 }
 
-SkillInfo *SkillDialog::loadSkill(XmlNodePtr node,
+SkillInfo *SkillDialog::loadSkill(XmlNodeConstPtr node,
                                   SkillModel *const model)
 {
     int id = XML::getIntProperty(node, "id", -1, -1, 1000000);
@@ -492,7 +492,7 @@ SkillInfo *SkillDialog::loadSkill(XmlNodePtr node,
     return skill;
 }
 
-void SkillDialog::loadSkillData(XmlNodePtr node,
+void SkillDialog::loadSkillData(XmlNodeConstPtr node,
                                 SkillInfo *const skill)
 {
     if (!skill)

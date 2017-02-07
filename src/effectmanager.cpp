@@ -51,7 +51,7 @@ void EffectManager::loadXmlFile(const std::string &fileName,
                                 const SkipError skipError)
 {
     XML::Document doc(fileName, UseVirtFs_true, skipError);
-    const XmlNodePtrConst root = doc.rootNode();
+    XmlNodeConstPtrConst root = doc.rootNode();
 
     if (!root ||
         !xmlNameEqual(root, "being-effects"))

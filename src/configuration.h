@@ -208,8 +208,8 @@ class ConfigurationObject notfinal
     protected:
         ConfigurationObject();
 
-        virtual void initFromXML(const XmlNodePtrConst parentNode);
-        virtual void writeToXML(const XmlTextWriterPtr writer);
+        virtual void initFromXML(XmlNodeConstPtrConst parentNode);
+        virtual void writeToXML(XmlTextWriterPtr writer);
 
         void deleteList(const std::string &name);
 

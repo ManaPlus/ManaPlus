@@ -197,7 +197,7 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::DEADRIDE, SpriteAction::DEAD);
 }
 
-void SpriteDef::loadSprite(const XmlNodePtr spriteNode,
+void SpriteDef::loadSprite(XmlNodeConstPtr spriteNode,
                            const int variant,
                            const std::string &palettes)
 {
@@ -230,7 +230,7 @@ void SpriteDef::loadSprite(const XmlNodePtr spriteNode,
     BLOCK_END("SpriteDef::loadSprite")
 }
 
-void SpriteDef::loadImageSet(const XmlNodePtr node,
+void SpriteDef::loadImageSet(XmlNodeConstPtr node,
                              const std::string &palettes)
 {
     const std::string name = XML::getProperty(node, "name", "");
@@ -275,7 +275,7 @@ const ImageSet *SpriteDef::getImageSet(const std::string &imageSetName) const
     return si->second;
 }
 
-void SpriteDef::loadAction(const XmlNodePtr node,
+void SpriteDef::loadAction(XmlNodeConstPtr node,
                            const int variant_offset)
 {
     if (!node)
@@ -315,7 +315,7 @@ void SpriteDef::loadAction(const XmlNodePtr node,
     }
 }
 
-void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
+void SpriteDef::loadAnimation(XmlNodeConstPtr animationNode,
                               Action *const action,
                               const ImageSet *const imageSet0,
                               const int variant_offset) const
@@ -471,7 +471,7 @@ void SpriteDef::loadAnimation(const XmlNodePtr animationNode,
     }  // for frameNode
 }
 
-void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
+void SpriteDef::includeSprite(XmlNodeConstPtr includeNode, const int variant)
 {
     std::string filename = XML::getProperty(includeNode, "file", "");
 
@@ -493,7 +493,7 @@ void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
         SkipError_false);
     if (!doc)
         return;
-    const XmlNodePtr rootNode = doc->rootNode();
+    XmlNodeConstPtr rootNode = doc->rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {

@@ -52,7 +52,7 @@ void QuestDb::load()
 }
 
 static void loadQuest(const int var,
-                      const XmlNodePtr node)
+                      XmlNodeConstPtr node)
 {
     if (!node)
         return;
@@ -155,7 +155,7 @@ static void loadQuest(const int var,
 }
 
 static void loadEffect(const int var,
-                       const XmlNodePtr node)
+                       XmlNodeConstPtr node)
 {
     QuestEffect *const effect = new QuestEffect;
     effect->map = XML::getProperty(node, "map", "");
@@ -180,7 +180,7 @@ void QuestDb::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName,
         UseVirtFs_true,
         skipError);
-    const XmlNodePtrConst root = doc.rootNode();
+    XmlNodeConstPtrConst root = doc.rootNode();
     if (!root)
         return;
 

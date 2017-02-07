@@ -62,7 +62,7 @@ void CommandsDB::loadXmlFile(const std::string &fileName,
                              const SkipError skipError)
 {
     XML::Document doc(fileName, UseVirtFs_true, skipError);
-    const XmlNodePtrConst rootNode = doc.rootNode();
+    XmlNodeConstPtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "commands"))
     {

@@ -57,7 +57,7 @@ void AvatarDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName,
         UseVirtFs_true,
         skipError);
-    const XmlNodePtrConst rootNode = doc.rootNode();
+    XmlNodeConstPtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "avatars"))
     {

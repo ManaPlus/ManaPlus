@@ -64,15 +64,15 @@ namespace
 
 // Forward declarations
 static void loadSpriteRef(ItemInfo *const itemInfo,
-                          const XmlNodePtr node) A_NONNULL(1);
+                          XmlNodeConstPtr node) A_NONNULL(1);
 static void loadSoundRef(ItemInfo *const itemInfo,
-                         const XmlNodePtr node) A_NONNULL(1);
+                         XmlNodeConstPtr node) A_NONNULL(1);
 static void loadFloorSprite(SpriteDisplay &display,
-                            const XmlNodePtrConst node);
+                            XmlNodeConstPtrConst node);
 static void loadReplaceSprite(ItemInfo *const itemInfo,
-                              const XmlNodePtr replaceNode) A_NONNULL(1);
+                              XmlNodeConstPtr replaceNode) A_NONNULL(1);
 static void loadOrderSprite(ItemInfo *const itemInfo,
-                            const XmlNodePtr node,
+                            XmlNodeConstPtr node,
                             const bool drawAfter) A_NONNULL(1);
 static int parseSpriteName(const std::string &name);
 static int parseDirectionName(const std::string &name);
@@ -125,7 +125,7 @@ static std::string useButton2FromItemType(const ItemDbTypeT &type)
 }
 
 static void readFields(std::string &effect,
-                       const XmlNodePtr node,
+                       XmlNodeConstPtr node,
                        const ItemFieldDb::FieldInfos &fields)
 {
     FOR_EACH (ItemFieldDb::FieldInfos::const_iterator, it, fields)
@@ -243,7 +243,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName,
         UseVirtFs_true,
         skipError);
-    const XmlNodePtrConst rootNode = doc.rootNode();
+    XmlNodeConstPtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "items"))
     {
@@ -829,7 +829,7 @@ static int parseDirectionName(const std::string &name)
     return id;
 }
 
-static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
+static void loadSpriteRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
 {
     const std::string gender = XML::getProperty(node, "gender", "unisex");
     if (!node || !XmlHaveChildContent(node))
@@ -846,7 +846,7 @@ static void loadSpriteRef(ItemInfo *const itemInfo, const XmlNodePtr node)
         itemInfo->setSprite(filename, Gender::OTHER, race);
 }
 
-static void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
+static void loadSoundRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
 {
     if (!node || !XmlHaveChildContent(node))
         return;
@@ -868,7 +868,7 @@ static void loadSoundRef(ItemInfo *const itemInfo, const XmlNodePtr node)
 }
 
 static void loadFloorSprite(SpriteDisplay &display,
-                            const XmlNodePtrConst floorNode)
+                            XmlNodeConstPtrConst floorNode)
 {
     if (!floorNode)
         return;
@@ -892,7 +892,7 @@ static void loadFloorSprite(SpriteDisplay &display,
 }
 
 static void loadReplaceSprite(ItemInfo *const itemInfo,
-                              const XmlNodePtr replaceNode)
+                              XmlNodeConstPtr replaceNode)
 {
     if (!replaceNode)
         return;
@@ -1025,7 +1025,7 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
 }
 
 static void loadOrderSprite(ItemInfo *const itemInfo,
-                            const XmlNodePtr node,
+                            XmlNodeConstPtr node,
                             const bool drawAfter)
 {
     const int sprite = parseSpriteName(XML::getProperty(node, "name", ""));

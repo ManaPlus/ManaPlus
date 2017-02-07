@@ -209,10 +209,10 @@ class SkillDialog final : public Window,
 
         void addSkillDuration(SkillInfo *const skill);
 
-        SkillInfo *loadSkill(XmlNodePtr node,
+        SkillInfo *loadSkill(XmlNodeConstPtr node,
                              SkillModel *const model);
 
-        void loadSkillData(XmlNodePtr node,
+        void loadSkillData(XmlNodeConstPtr node,
                            SkillInfo *const skill);
 
         void addDefaultTab();

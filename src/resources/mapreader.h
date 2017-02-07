@@ -63,7 +63,7 @@ class MapReader final
         /**
          * Reads a map layer and adds it to the given map.
          */
-        static void readLayer(const XmlNodePtr node,
+        static void readLayer(XmlNodeConstPtr node,
                               Map *const map) A_NONNULL(2);
 
 #ifdef USE_OPENGL
@@ -79,10 +79,10 @@ class MapReader final
          * @param props The Properties instance to which the properties will
          *              be assigned.
          */
-        static void readProperties(const XmlNodePtrConst node,
+        static void readProperties(XmlNodeConstPtrConst node,
                                    Properties *const props) A_NONNULL(2);
 
-        static bool readBase64Layer(const XmlNodePtrConst childNode,
+        static bool readBase64Layer(XmlNodeConstPtrConst childNode,
                                     Map *const map,
                                     MapLayer *const layer,
                                     const MapLayerTypeT &layerType,
@@ -91,7 +91,7 @@ class MapReader final
                                     int &restrict x, int &restrict y,
                                     const int w, const int h) A_NONNULL(2);
 
-        static bool readCsvLayer(const XmlNodePtrConst childNode,
+        static bool readCsvLayer(XmlNodeConstPtrConst childNode,
                                  Map *const map,
                                  MapLayer *const layer,
                                  const MapLayerTypeT &layerType,

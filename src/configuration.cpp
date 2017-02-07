@@ -703,7 +703,7 @@ bool Configuration::resetBoolValue(const std::string &key)
 }
 
 
-void ConfigurationObject::initFromXML(const XmlNodePtrConst parentNode)
+void ConfigurationObject::initFromXML(XmlNodeConstPtrConst parentNode)
 {
     clear();
 
@@ -773,7 +773,7 @@ void Configuration::init(const std::string &filename,
         return;
     }
 
-    const XmlNodePtrConst rootNode = doc.rootNode();
+    XmlNodeConstPtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "configuration"))
     {
@@ -793,7 +793,7 @@ void Configuration::reInit()
         return;
     }
 
-    const XmlNodePtrConst rootNode = doc.rootNode();
+    XmlNodeConstPtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "configuration"))
     {
@@ -804,7 +804,7 @@ void Configuration::reInit()
     initFromXML(rootNode);
 }
 
-void ConfigurationObject::writeToXML(const XmlTextWriterPtr writer)
+void ConfigurationObject::writeToXML(XmlTextWriterPtr writer A_UNUSED)
 {
     FOR_EACH (Options::const_iterator, i, mOptions)
     {
@@ -874,7 +874,7 @@ void Configuration::write()
         fclose(testFile);
     }
 
-    const XmlTextWriterPtr writer = XmlNewTextWriterFilename(
+    XmlTextWriterPtr writer = XmlNewTextWriterFilename(
         mConfigPath.c_str(), 0);
 
     if (!writer)
@@ -889,11 +889,13 @@ void Configuration::write()
     XmlTextWriterSetIndent(writer, 1);
     XmlTextWriterStartDocument(writer, nullptr, nullptr, nullptr);
 //    xmlTextWriterStartDocument(writer, nullptr, "utf8", nullptr);
-    XmlTextWriterStartElement(writer, "configuration");
+    XmlTextWriterStartRootElement(writer, "configuration");
 
     writeToXML(writer);
 
     XmlTextWriterEndDocument(writer);
+    XmlSaveTextWriterFilename(writer,
+        mConfigPath.c_str());
     XmlFreeTextWriter(writer);
     BLOCK_END("Configuration::write")
 }

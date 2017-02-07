@@ -165,7 +165,7 @@ namespace XML
         return mDoc ? xmlDocGetRootElement(mDoc) : nullptr;
     }
 
-    int getProperty(const XmlNodePtr node,
+    int getProperty(XmlNodeConstPtr node,
                     const char *const name,
                     int def)
     {
@@ -181,7 +181,7 @@ namespace XML
         return ret;
     }
 
-    int getIntProperty(const XmlNodePtr node,
+    int getIntProperty(XmlNodeConstPtr node,
                        const char *const name,
                        int def,
                        const int min,
@@ -202,7 +202,7 @@ namespace XML
         return ret;
     }
 
-    double getFloatProperty(const XmlNodePtr node,
+    double getFloatProperty(XmlNodeConstPtr node,
                             const char *const name,
                             double def)
     {
@@ -218,7 +218,7 @@ namespace XML
         return ret;
     }
 
-    std::string getProperty(const XmlNodePtr node,
+    std::string getProperty(XmlNodeConstPtr node,
                             const char *const name,
                             const std::string &def)
     {
@@ -233,7 +233,7 @@ namespace XML
         return def;
     }
 
-    std::string langProperty(const XmlNodePtr node,
+    std::string langProperty(XmlNodeConstPtr node,
                              const char *const name,
                              const std::string &def)
     {
@@ -244,7 +244,7 @@ namespace XML
         return translator->getStr(str);
     }
 
-    bool getBoolProperty(const XmlNodePtr node,
+    bool getBoolProperty(XmlNodeConstPtr node,
                          const char *const name,
                          const bool def)
     {
@@ -264,7 +264,7 @@ namespace XML
         return def;
     }
 
-    XmlNodePtr findFirstChildByName(const XmlNodePtrConst parent,
+    XmlNodePtr findFirstChildByName(XmlNodeConstPtrConst parent,
                                     const char *const name)
     {
         if (!parent)

@@ -65,6 +65,10 @@ if ENABLE_LIBXML
 manaplus_CXXFLAGS += -DENABLE_LIBXML
 dyecmd_CXXFLAGS += -DENABLE_LIBXML
 endif
+if ENABLE_TINYXML2
+manaplus_CXXFLAGS += -DENABLE_TINYXML2
+dyecmd_CXXFLAGS += -DENABLE_TINYXML2
+endif
 
 if ENABLE_PORTABLE
 dyecmd_CXXFLAGS += -DENABLE_PORTABLE
@@ -880,6 +884,11 @@ if ENABLE_LIBXML
 BASE_SRC += utils/xml/libxml.cpp \
 	      utils/xml/libxml.h \
 	      utils/xml/libxml.inc
+endif
+if ENABLE_TINYXML2
+BASE_SRC += utils/xml/tinyxml2.cpp \
+	      utils/xml/tinyxml2.h \
+	      utils/xml/tinyxml2.inc
 endif
 
 dyecmd_SOURCES += ${BASE_SRC}
@@ -1944,6 +1953,15 @@ check_PROGRAMS = manaplustests
 manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 manaplustests_LDFLAGS = 
+if ENABLE_PUGIXML
+manaplustests_CXXFLAGS += -DENABLE_PUGIXML
+endif
+if ENABLE_LIBXML
+manaplustests_CXXFLAGS += -DENABLE_LIBXML
+endif
+if ENABLE_TINYXML2
+manaplustests_CXXFLAGS += -DENABLE_TINYXML2
+endif
 if USE_PHYSFS
 manaplustests_CXXFLAGS += -DUSE_PHYSFS
 endif

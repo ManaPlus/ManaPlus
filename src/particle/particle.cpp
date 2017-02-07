@@ -417,7 +417,7 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
         SkipError_false);
     if (!doc)
         return nullptr;
-    const XmlNodePtrConst rootNode = doc->rootNode();
+    XmlNodeConstPtrConst rootNode = doc->rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "effect"))
     {

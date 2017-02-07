@@ -27,6 +27,8 @@
 
 #define XmlNodePtr pugi::xml_node
 #define XmlNodePtrConst pugi::xml_node 
+#define XmlNodeConstPtr const pugi::xml_node
+#define XmlNodeConstPtrConst const pugi::xml_node 
 #define xmlNameEqual(node, str) !strcmp((node).name(), str)
 #define xmlTypeEqual(node, typ) ((node).type() == (typ))
 #define XmlHasProp(node, name) (!((node).attribute(name).empty()))
@@ -37,12 +39,14 @@
 #define XmlFree(ptr)
 #define XmlNodeDefault pugi::xml_node()
 #define XmlNodeGetContent(node) (node).child_value()
-#define XmlTextWriterPtr XML::Writer *
+#define XmlTextWriterPtr const XML::Writer *
+#define XmlTextWriterStartRootElement(writer, name) (writer)->startNode(name)
 #define XmlTextWriterStartElement(writer, name) (writer)->startNode(name)
 #define XmlTextWriterEndElement(writer) (writer)->endNode()
 #define XmlTextWriterWriteAttribute(writer, name, content) \
     (writer)->addAttribute(name, content)
 #define XmlNewTextWriterFilename(name, flags) new XML::Writer(name);
+#define XmlSaveTextWriterFilename(writer, name)
 #define XmlTextWriterSetIndent(writer, flags)
 #define XmlTextWriterStartDocument(writer, p1, p2, p3)
 #define XmlTextWriterEndDocument(writer) (writer)->endDocument()

@@ -20,23 +20,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_XML_PUGIXML_H
-#define UTILS_XML_PUGIXML_H
+#ifndef UTILS_XML_TINYXML2_H
+#define UTILS_XML_TINYXML2_H
 
-#ifdef ENABLE_PUGIXML
+#ifdef ENABLE_TINYXML2
 
 #define XML_INCLUDE_DEFINE
 
 #include "enums/simpletypes/skiperror.h"
 #include "enums/simpletypes/usevirtfs.h"
 
-#include "utils/xml/pugixml.inc"
+#include "utils/xml/tinyxml2.inc"
 
 #include "resources/resource.h"
 
-#include <pugixml.hpp>
-
+#ifndef _GLIBCXX_STRING
 #include <string>
+#endif  // _GLIBCXX_STRING
 
 #include "localconsts.h"
 
@@ -83,7 +83,7 @@ namespace XML
             XmlNodePtr rootNode() A_WARN_UNUSED;
 
             bool isLoaded() const
-            { return !mDoc.empty(); }
+            { return mDoc.Error() == false; }
 
             bool isValid() const
             { return mIsValid; }
@@ -91,7 +91,7 @@ namespace XML
             static bool validateXml(const std::string &fileName);
 
         private:
-            pugi::xml_document mDoc;
+            tinyxml2::XMLDocument mDoc;
             char *mData;
             bool mIsValid;
     };
@@ -143,8 +143,9 @@ namespace XML
     /**
      * Finds the first child node with the given name
      */
-    XmlNodePtr findFirstChildByName(XmlNodeConstPtrConst parent,
-                                    const char *const name) A_WARN_UNUSED;
+    XmlNodeConstPtr findFirstChildByName(XmlNodeConstPtrConst parent,
+                                         const char *const name)
+                                         A_WARN_UNUSED;
 
     void initXML();
 
@@ -152,8 +153,9 @@ namespace XML
 }  // namespace XML
 
 #define for_each_xml_child_node(var, parent) \
-    for (pugi::xml_node var = parent.first_child(); \
-    var; var = var.next_sibling())
+    for (const tinyxml2::XMLElement *var = parent->FirstChildElement(); \
+    var != nullptr; \
+    var = var->NextSiblingElement())
 
-#endif  // ENABLE_PUGIXML
-#endif  // UTILS_XML_PUGIXML_H
+#endif  // ENABLE_TINYXML2
+#endif  // UTILS_XML_TINYXML2_H

@@ -33,7 +33,7 @@ RotationalParticle::RotationalParticle(Animation *restrict const animation) :
     mAnimation = new SimpleAnimation(animation);
 }
 
-RotationalParticle::RotationalParticle(const XmlNodePtr animationNode,
+RotationalParticle::RotationalParticle(XmlNodeConstPtr animationNode,
                                        const std::string &restrict
                                        dyePalettes) :
     ImageParticle(nullptr)

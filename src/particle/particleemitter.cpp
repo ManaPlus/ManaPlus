@@ -48,7 +48,7 @@ static const float DEG_RAD_FACTOR = 0.017453293F;
 typedef std::vector<ImageSet*>::const_iterator ImageSetVectorCIter;
 typedef std::list<ParticleEmitter>::const_iterator ParticleEmitterListCIter;
 
-ParticleEmitter::ParticleEmitter(const XmlNodePtrConst emitterNode,
+ParticleEmitter::ParticleEmitter(XmlNodeConstPtrConst emitterNode,
                                  Particle *const target,
                                  Map *const map, const int rotation,
                                  const std::string& dyePalettes) :

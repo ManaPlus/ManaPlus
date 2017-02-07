@@ -52,7 +52,7 @@ void DeadDB::loadXmlFile(const std::string &fileName,
     XML::Document *doc = new XML::Document(fileName,
         UseVirtFs_true,
         skipError);
-    const XmlNodePtrConst root = doc->rootNode();
+    XmlNodeConstPtrConst root = doc->rootNode();
 
     if (!root || !xmlNameEqual(root, "messages"))
     {

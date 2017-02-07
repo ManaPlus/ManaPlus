@@ -43,7 +43,7 @@ namespace CharDB
      */
     void unload();
 
-    void loadMinMax(const XmlNodePtr node,
+    void loadMinMax(XmlNodeConstPtr node,
                     unsigned *restrict const min,
                     unsigned *restrict const max);
 

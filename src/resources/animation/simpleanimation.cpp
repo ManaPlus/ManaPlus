@@ -49,7 +49,7 @@ SimpleAnimation::SimpleAnimation(Animation *const animation) :
 {
 }
 
-SimpleAnimation::SimpleAnimation(const XmlNodePtr animationNode,
+SimpleAnimation::SimpleAnimation(XmlNodeConstPtr animationNode,
                                  const std::string& dyePalettes) :
     mAnimation(new Animation("simple animation")),
     mAnimationTime(0),
@@ -145,7 +145,7 @@ Image *SimpleAnimation::getCurrentImage() const
         return nullptr;
 }
 
-void SimpleAnimation::initializeAnimation(const XmlNodePtr animationNode,
+void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,
                                           const std::string &dyePalettes)
 {
     mInitialized = false;

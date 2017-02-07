@@ -50,7 +50,7 @@ void NpcDialogDB::load()
 }
 
 static void loadNpcDialogMenu(NpcDialogInfo *const dialog,
-                              const XmlNodePtrConst node)
+                              XmlNodeConstPtrConst node)
 {
     for_each_xml_child_node(childNode, node)
     {
@@ -132,7 +132,7 @@ static void loadNpcDialogInventory(NpcDialogInfo *const dialog,
 }
 
 static void loadNpcDialog(NpcDialogInfo *const dialog,
-                          const XmlNodePtrConst node)
+                          XmlNodeConstPtrConst node)
 {
     for_each_xml_child_node(childNode, node)
     {
@@ -154,7 +154,7 @@ void NpcDialogDB::loadXmlFile(const std::string &fileName,
         UseVirtFs_true,
         skipError);
 
-    const XmlNodePtrConst root = doc->rootNode();
+    XmlNodeConstPtrConst root = doc->rootNode();
     if (!root)
     {
         delete doc;

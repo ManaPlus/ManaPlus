@@ -374,10 +374,17 @@ case $xmllib in
     "libxml")
         AM_CONDITIONAL(ENABLE_LIBXML, true)
         AM_CONDITIONAL(ENABLE_PUGIXML, false)
+        AM_CONDITIONAL(ENABLE_TINYXML2, false)
         ;;
     "pugixml")
         AM_CONDITIONAL(ENABLE_LIBXML, false)
         AM_CONDITIONAL(ENABLE_PUGIXML, true)
+        AM_CONDITIONAL(ENABLE_TINYXML2, false)
+        ;;
+    "tinyxml2")
+        AM_CONDITIONAL(ENABLE_LIBXML, false)
+        AM_CONDITIONAL(ENABLE_PUGIXML, false)
+        AM_CONDITIONAL(ENABLE_TINYXML2, true)
         ;;
     *)
         AC_MSG_ERROR([[Wrong xml lib name]])
@@ -404,6 +411,15 @@ if test "$xmllib" == "pugixml"; then
     fi
     AC_CHECK_HEADERS([pugixml.hpp], ,
     AC_MSG_ERROR([ *** pugixml library found but cannot find headers (http://pugixml.org/)]))
+fi
+
+if test "$xmllib" == "tinyxml2"; then
+    if test "$skip_check_lib" == "no"; then
+        AC_CHECK_LIB([tinyxml2], [main], ,
+        AC_MSG_ERROR([ *** Unable to find tinyxml2 library (http://grinninglizard.com/tinyxml2/)]))
+    fi
+    AC_CHECK_HEADERS([tinyxml2.h], ,
+    AC_MSG_ERROR([ *** tinyxml2 library found but cannot find headers (http://grinninglizard.com/tinyxml2/)]))
 fi
 
 if test "$skip_check_lib" == "no"; then

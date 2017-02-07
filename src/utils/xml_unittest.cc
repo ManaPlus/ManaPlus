@@ -152,7 +152,7 @@ TEST_CASE("xml doc")
             UseVirtFs_true,
             SkipError_false);
 
-        const XmlNodePtr rootNode = doc.rootNode();
+        XmlNodeConstPtr rootNode = doc.rootNode();
         REQUIRE(XML::getProperty(rootNode, "image", "") == "window.png");
     }
 
@@ -162,7 +162,7 @@ TEST_CASE("xml doc")
             UseVirtFs_true,
             SkipError_false);
 
-        const XmlNodePtr rootNode = doc.rootNode();
+        XmlNodeConstPtr rootNode = doc.rootNode();
 //        REQUIRE(XmlHaveChildContent(rootNode) == true);
         XmlNodePtr node = XmlNodeDefault;
         for_each_xml_child_node(widgetNode, rootNode)
@@ -202,7 +202,7 @@ TEST_CASE("xml doc")
             UseVirtFs_true,
             SkipError_false);
 
-        const XmlNodePtr rootNode = doc.rootNode();
+        XmlNodeConstPtr rootNode = doc.rootNode();
         XmlNodePtr node = XML::findFirstChildByName(rootNode, "widget");
         REQUIRE(node != nullptr);
         REQUIRE(xmlTypeEqual(node, XML_ELEMENT_NODE) == true);
@@ -234,7 +234,7 @@ TEST_CASE("xml doc")
             "<root><data option1=\"false\" option2=\"true\" "
             "option3=\"10.5\"/></root>";
         XML::Document doc(xml, strlen(xml));
-        const XmlNodePtr rootNode = doc.rootNode();
+        XmlNodeConstPtr rootNode = doc.rootNode();
         REQUIRE(XmlHaveChildContent(rootNode) == false);
         XmlNodePtr node = XML::findFirstChildByName(rootNode, "data");
         REQUIRE(node != nullptr);
@@ -257,7 +257,7 @@ TEST_CASE("xml doc")
             "<data option1=\"false\" option2=\"true\" "
             "option3=\"10.5\"/><!-- comment --></root>";
         XML::Document doc(xml.c_str(), xml.size());
-        const XmlNodePtr rootNode = doc.rootNode();
+        XmlNodeConstPtr rootNode = doc.rootNode();
 //        REQUIRE(XmlHaveChildContent(rootNode) == true);
         XmlNodePtr node = XML::findFirstChildByName(rootNode, "data");
         REQUIRE(node != nullptr);
@@ -292,13 +292,15 @@ TEST_CASE("xml doc")
         FILE *const testFile = fopen(tempXmlName, "w");
         REQUIRE(testFile);
         fclose(testFile);
-        const XmlTextWriterPtr writer = XmlNewTextWriterFilename(
+        XmlTextWriterPtr writer = XmlNewTextWriterFilename(
             tempXmlName,
             0);
         XmlTextWriterSetIndent(writer, 1);
         XmlTextWriterStartDocument(writer, nullptr, nullptr, nullptr);
-        XmlTextWriterStartElement(writer, "root");
+        XmlTextWriterStartRootElement(writer, "root");
         XmlTextWriterEndDocument(writer);
+        XmlSaveTextWriterFilename(writer, tempXmlName);
+        logger->log("xml test: %s", writer->CStr());
         XmlFreeTextWriter(writer);
 
         // load
@@ -326,12 +328,12 @@ TEST_CASE("xml doc")
         FILE *const testFile = fopen(tempXmlName, "w");
         REQUIRE(testFile);
         fclose(testFile);
-        const XmlTextWriterPtr writer = XmlNewTextWriterFilename(
+        XmlTextWriterPtr writer = XmlNewTextWriterFilename(
             tempXmlName,
             0);
         XmlTextWriterSetIndent(writer, 1);
         XmlTextWriterStartDocument(writer, nullptr, nullptr, nullptr);
-        XmlTextWriterStartElement(writer, "root");
+        XmlTextWriterStartRootElement(writer, "root");
 
         XmlTextWriterStartElement(writer, "option");
         XmlTextWriterWriteAttribute(writer, "name", "the name");
@@ -339,6 +341,7 @@ TEST_CASE("xml doc")
         XmlTextWriterEndElement(writer);
 
         XmlTextWriterEndDocument(writer);
+        XmlSaveTextWriterFilename(writer, tempXmlName);
         XmlFreeTextWriter(writer);
 
         // load
@@ -366,6 +369,7 @@ TEST_CASE("xml doc")
         // clean again
         ::remove(tempXmlName);
     }
+
     delete2(theme);
     delete2(client);
     VirtFs::unmountDirSilent("data");
