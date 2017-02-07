@@ -22,9 +22,9 @@
 
 #include "gui/windows/shopwindow.h"
 
-#ifdef TMWA_SUPPORT
 #include "const/resources/currency.h"
 
+#ifdef TMWA_SUPPORT
 #include "gui/windows/buydialog.h"
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/confirmdialog.h"
