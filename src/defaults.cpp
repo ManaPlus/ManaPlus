@@ -494,7 +494,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF("androidDownloadText", "Google Play");
     AddDEF("otherDownloadUrl", "http://manaplus.org/");
     AddDEF("otherDownloadText", "http://manaplus.org/");
-    AddDEF("windowsDownloadUrl", "http://download.evolonline.org/"
+    AddDEF("windowsDownloadUrl", "http://download.manaplus.org/"
         "manaplus/download/manaplus-win32.exe");
     AddDEF("windowsDownloadText", "download here");
     AddDEF("updateMirror1", "http://manaplus.org/update/");

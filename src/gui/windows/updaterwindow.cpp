@@ -63,11 +63,11 @@ UpdaterWindow *updaterWindow = nullptr;
 const std::string xmlUpdateFile("resources.xml");
 const std::string txtUpdateFile("resources2.txt");
 const std::string updateServer2
-    ("http://download.evolonline.org/manaplus/updates/");
-const std::string updateServer3
     ("http://download.manaplus.org/manaplus/updates/");
-const std::string updateServer4
+const std::string updateServer3
     ("http://download2.manaplus.org/manaplus/updates/");
+const std::string updateServer4
+    ("http://download.evolonline.org/manaplus/updates/");
 const std::string updateServer5
     ("http://download3.manaplus.org/manaplus/updates/");
 
