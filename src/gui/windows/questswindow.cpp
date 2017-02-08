@@ -142,6 +142,7 @@ QuestsWindow::~QuestsWindow()
 
     delete2(mItemLinkHandler);
     mQuestLinks.clear();
+    mQuestReverseLinks.clear();
     if (mCompleteIcon)
     {
         mCompleteIcon->decRef();
@@ -183,6 +184,7 @@ void QuestsWindow::rebuild(const bool playSound)
 {
     mQuestsModel->clear();
     mQuestLinks.clear();
+    mQuestReverseLinks.clear();
     StringVect &names = mQuestsModel->getNames();
     std::vector<Image*> &images = mQuestsModel->getImages();
     std::vector<QuestItem*> complete;
@@ -234,6 +236,7 @@ void QuestsWindow::rebuild(const bool playSound)
         }
         quest->completeFlag = 1;
         mQuestLinks.push_back(quest);
+        mQuestReverseLinks[quest->var] = k;
         names.push_back(quest->name);
         if (mCompleteIcon)
         {
@@ -257,6 +260,7 @@ void QuestsWindow::rebuild(const bool playSound)
         }
         quest->completeFlag = 0;
         mQuestLinks.push_back(quest);
+        mQuestReverseLinks[quest->var] = k;
         names.push_back(quest->name);
         if (mIncompleteIcon)
         {
@@ -459,4 +463,19 @@ void QuestsWindow::addEffect(Being *const being)
         if (effect)
             being->addSpecialEffect(effect->effectId);
     }
+}
+
+void QuestsWindow::selectQuest(const int varId)
+{
+    std::map<int, int>::const_iterator it = mQuestReverseLinks.find(varId);
+    if (it == mQuestReverseLinks.end())
+        return;
+    if (mVisible == Visible_false)
+        setVisible(Visible_true);
+    const int listPos = (*it).second;
+    if (listPos < 0)
+        return;
+    showQuest(mQuestLinks[listPos]);
+    mQuestsListBox->setSelected(listPos);
+    requestMoveToTop();
 }

@@ -76,6 +76,8 @@ class QuestsWindow final : public Window,
 
         void addEffect(Being *const being);
 
+        void selectQuest(const int varId);
+
     private:
         QuestsModel *mQuestsModel A_NONNULLPOINTER;
         ExtendedListBox *mQuestsListBox A_NONNULLPOINTER;
@@ -94,6 +96,7 @@ class QuestsWindow final : public Window,
         // npc effects for current map and values: npc, effect
         NpcQuestEffectMap mNpcEffects;
         std::vector<QuestItem*> mQuestLinks;
+        std::map<int, int> mQuestReverseLinks;
         int mNewQuestEffectId;
         int mCompleteQuestEffectId;
         const Map *mMap;

@@ -34,6 +34,7 @@
 
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/helpwindow.h"
+#include "gui/windows/questswindow.h"
 
 #include "input/inputmanager.h"
 
@@ -178,11 +179,14 @@ void ItemLinkHandler::handleSearchLink(const std::string &link)
 void ItemLinkHandler::handleLink(const std::string &link,
                                  MouseEvent *const event)
 {
+    if (link.empty())
+        return;
+
     if (strStartWith(link, "http://") || strStartWith(link, "https://"))
     {
         handleHttpLink(link, event);
     }
-    else if (!link.empty() && link[0] == '?')
+    else if (link[0] == '?')
     {
         handleSearchLink(link);
     }
@@ -203,9 +207,13 @@ void ItemLinkHandler::handleLink(const std::string &link,
         if (helpWindow)
             helpWindow->loadHelpSimple("news");
     }
-    if (link == "copyright")
+    else if (link == "copyright")
     {
         inputManager.executeAction(InputAction::WINDOW_ABOUT);
+    }
+    else if (link[0] == 'q')
+    {
+        questsWindow->selectQuest(atoi(link.substr(1).c_str()));
     }
     else
     {
