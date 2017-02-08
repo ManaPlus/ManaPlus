@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2016-2017  The ManaPlus Developers
+ *  Copyright (C) 2013-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,43 +18,36 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_QUESTVAR_H
-#define RESOURCES_QUESTVAR_H
+#ifndef RESOURCES_DB_QUESTDB_H
+#define RESOURCES_DB_QUESTDB_H
+
+#include "enums/simpletypes/skiperror.h"
+
+#include "resources/questvar.h"
 
 #include <map>
+#include <string>
+#include <vector>
 
 #include "localconsts.h"
 
-struct QuestVar final
+struct QuestEffect;
+struct QuestItem;
+
+namespace QuestDb
 {
-    QuestVar() :
-        var1(0),
-        var2(0),
-        var3(0),
-        time1(0)
-    {
-    }
+    void load();
 
-    QuestVar(const int v1,
-             const int v2,
-             const int v3,
-             const int t) :
-        var1(v1),
-        var2(v2),
-        var3(v3),
-        time1(t)
-    {
-    }
+    void loadXmlFile(const std::string &fileName,
+                     const SkipError skipError);
 
-    A_DEFAULT_COPY(QuestVar)
+    void unload();
 
-    int var1;
-    int var2;
-    int var3;
-    int time1;
-};
+    NpcQuestVarMap *getVars();
 
-typedef std::map<int, QuestVar> NpcQuestVarMap;
-typedef NpcQuestVarMap::const_iterator NpcQuestVarMapCIter;
+    std::map<int, std::vector<QuestItem*> > *getQuests();
 
-#endif  // RESOURCES_QUESTVAR_H
+    std::vector<QuestEffect*> *getAllEffects();
+}  // namespace QuestDb
+
+#endif  // RESOURCES_DB_QUESTDB_H

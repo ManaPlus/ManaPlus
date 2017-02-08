@@ -46,14 +46,13 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/delete2.h"
-#include "utils/dtor.h"
 #include "utils/gettext.h"
-
-#include "utils/translation/podict.h"
 
 #include "resources/beingcommon.h"
 #include "resources/questeffect.h"
 #include "resources/questitem.h"
+
+#include "resources/db/questdb.h"
 
 #include "resources/map/map.h"
 
@@ -81,10 +80,10 @@ QuestsWindow::QuestsWindow() :
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
     mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", "")),
-    mVars(),
-    mQuests(),
-    mAllEffects(),
     mMapEffects(),
+    mVars(nullptr),
+    mQuests(nullptr),
+    mAllEffects(nullptr),
     mNpcEffects(),
     mQuestLinks(),
     mNewQuestEffectId(paths.getIntValue("newQuestEffectId")),
@@ -129,30 +128,19 @@ QuestsWindow::QuestsWindow() :
 
     loadWindowState();
     enableVisibleSound(true);
-    loadXmlFile(paths.getStringValue("questsFile"), SkipError_false);
-    loadXmlFile(paths.getStringValue("questsPatchFile"), SkipError_true);
-    loadXmlDir("questsPatchDir", loadXmlFile);
+    QuestDb::load();
+    mVars = QuestDb::getVars();
+    mQuests = QuestDb::getQuests();
+    mAllEffects = QuestDb::getAllEffects();
 }
 
 QuestsWindow::~QuestsWindow()
 {
     delete2(mQuestsModel);
 
-    for (std::map<int, std::vector<QuestItem*> >::iterator it
-         = mQuests.begin(), it_end = mQuests.end(); it != it_end; ++ it)
-    {
-        std::vector<QuestItem*> &quests = (*it).second;
-        for (std::vector<QuestItem*>::iterator it2 = quests.begin(),
-             it2_end = quests.end(); it2 != it2_end; ++ it2)
-        {
-            delete *it2;
-        }
-    }
-    delete_all(mAllEffects);
-    mAllEffects.clear();
+    QuestDb::unload();
 
     delete2(mItemLinkHandler);
-    mQuests.clear();
     mQuestLinks.clear();
     if (mCompleteIcon)
     {
@@ -164,162 +152,6 @@ QuestsWindow::~QuestsWindow()
         mIncompleteIcon->decRef();
         mIncompleteIcon = nullptr;
     }
-}
-
-void QuestsWindow::loadXmlFile(const std::string &fileName,
-                               const SkipError skipError)
-{
-    XML::Document doc(fileName,
-        UseResman_true,
-        skipError);
-    const XmlNodePtrConst root = doc.rootNode();
-    if (!root)
-        return;
-
-    for_each_xml_child_node(varNode, root)
-    {
-        if (xmlNameEqual(varNode, "include"))
-        {
-            const std::string name = XML::getProperty(varNode, "name", "");
-            if (!name.empty())
-                loadXmlFile(name, skipError);
-            continue;
-        }
-        else if (xmlNameEqual(varNode, "var"))
-        {
-            const int id = XML::getProperty(varNode, "id", 0);
-            if (id < 0)
-                continue;
-            mVars[id] = QuestVar();
-            for_each_xml_child_node(questNode, varNode)
-            {
-                if (xmlNameEqual(questNode, "quest"))
-                    loadQuest(id, questNode);
-                else if (xmlNameEqual(questNode, "effect"))
-                    loadEffect(id, questNode);
-            }
-        }
-    }
-}
-
-void QuestsWindow::loadQuest(const int var, const XmlNodePtr node)
-{
-    if (!node)
-        return;
-    QuestItem *const quest = new QuestItem();
-    // TRANSLATORS: quests window quest name
-    quest->name = XML::langProperty(node, "name", _("unknown"));
-    quest->group = XML::getProperty(node, "group", "");
-    std::string incompleteStr = XML::getProperty(node, "incomplete", "");
-    std::string completeStr = XML::getProperty(node, "complete", "");
-    if (incompleteStr.empty() && completeStr.empty())
-    {
-        logger->log("complete flags incorrect");
-        delete quest;
-        return;
-    }
-    splitToIntSet(quest->incomplete, incompleteStr, ',');
-    splitToIntSet(quest->complete, completeStr, ',');
-    if (quest->incomplete.empty() && quest->complete.empty())
-    {
-        logger->log("complete flags incorrect");
-        delete quest;
-        return;
-    }
-    if (quest->incomplete.empty() || quest->complete.empty())
-        quest->broken = true;
-
-    for_each_xml_child_node(dataNode, node)
-    {
-        if (!xmlTypeEqual(dataNode, XML_ELEMENT_NODE))
-            continue;
-        const char *const data = reinterpret_cast<const char*>(
-            XmlNodeGetContent(dataNode));
-        if (!data)
-            continue;
-        std::string str = translator->getStr(data);
-
-        for (int f = 1; f < 100; f ++)
-        {
-            const std::string key = strprintf("text%d", f);
-            const std::string val = XML::getProperty(dataNode,
-                key.c_str(),
-                "");
-            if (val.empty())
-                break;
-            const std::string param = strprintf("{@@%d}", f);
-            replaceAll(str, param, val);
-        }
-        replaceItemLinks(str);
-        if (xmlNameEqual(dataNode, "text"))
-        {
-            quest->texts.push_back(QuestItemText(str,
-                QuestType::TEXT,
-                std::string(),
-                std::string()));
-        }
-        else if (xmlNameEqual(dataNode, "name"))
-        {
-            quest->texts.push_back(QuestItemText(str,
-                QuestType::NAME,
-                std::string(),
-                std::string()));
-        }
-        else if (xmlNameEqual(dataNode, "reward"))
-        {
-            quest->texts.push_back(QuestItemText(str,
-                QuestType::REWARD,
-                std::string(),
-                std::string()));
-        }
-        else if (xmlNameEqual(dataNode, "questgiver") ||
-                 xmlNameEqual(dataNode, "giver"))
-        {
-            quest->texts.push_back(QuestItemText(str,
-                QuestType::GIVER,
-                std::string(),
-                std::string()));
-        }
-        else if (xmlNameEqual(dataNode, "coordinates"))
-        {
-            const std::string str1 = toString(XML::getIntProperty(
-                dataNode, "x", 0, 1, 1000));
-            const std::string str2 = toString(XML::getIntProperty(
-                dataNode, "y", 0, 1, 1000));
-            quest->texts.push_back(QuestItemText(str,
-                QuestType::COORDINATES,
-                str1,
-                str2));
-        }
-        else if (xmlNameEqual(dataNode, "npc"))
-        {
-            quest->texts.push_back(QuestItemText(str,
-                QuestType::NPC,
-                std::string(),
-                std::string()));
-        }
-    }
-    quest->var = var;
-    mQuests[var].push_back(quest);
-}
-
-void QuestsWindow::loadEffect(const int var, const XmlNodePtr node)
-{
-    QuestEffect *const effect = new QuestEffect;
-    effect->map = XML::getProperty(node, "map", "");
-    effect->id = fromInt(XML::getProperty(node, "npc", -1), BeingTypeId);
-    effect->effectId = XML::getProperty(node, "effect", -1);
-    const std::string values = XML::getProperty(node, "value", "");
-    splitToIntSet(effect->values, values, ',');
-
-    if (effect->map.empty() || effect->id == BeingTypeId_negOne
-        || effect->effectId == -1 || values.empty())
-    {
-        delete effect;
-        return;
-    }
-    effect->var = var;
-    mAllEffects.push_back(effect);
 }
 
 void QuestsWindow::action(const ActionEvent &event)
@@ -344,7 +176,7 @@ void QuestsWindow::updateQuest(const int var,
                                const int val3,
                                const int time1)
 {
-    mVars[var] = QuestVar(val1, val2, val3, time1);
+    (*mVars)[var] = QuestVar(val1, val2, val3, time1);
 }
 
 void QuestsWindow::rebuild(const bool playSound)
@@ -359,11 +191,11 @@ void QuestsWindow::rebuild(const bool playSound)
     int updatedQuest = -1;
     int newCompleteStatus = -1;
 
-    FOR_EACH (NpcQuestVarMapCIter, it, mVars)
+    FOR_EACHP (NpcQuestVarMapCIter, it, mVars)
     {
         const int var = (*it).first;
         const QuestVar &val = (*it).second;
-        const std::vector<QuestItem*> &quests = mQuests[var];
+        const std::vector<QuestItem*> &quests = (*mQuests)[var];
         FOR_EACH (std::vector<QuestItem*>::const_iterator, it2, quests)
         {
             if (!*it2)
@@ -470,11 +302,11 @@ void QuestsWindow::rebuild(const bool playSound)
 
 void QuestsWindow::showQuest(const QuestItem *const quest)
 {
-    if (!quest || !translator)
+    if (!quest)
         return;
 
     const std::vector<QuestItemText> &texts = quest->texts;
-    const QuestVar &var = mVars[quest->var];
+    const QuestVar &var = (*mVars)[quest->var];
     const std::string var1 = toString(var.var1);
     const std::string var2 = toString(var.var2);
     const std::string var3 = toString(var.var3);
@@ -541,7 +373,7 @@ void QuestsWindow::setMap(const Map *const map)
             return;
 
         const std::string name = mMap->getProperty("shortName");
-        FOR_EACH (std::vector<QuestEffect*>::const_iterator, it,  mAllEffects)
+        FOR_EACHP (std::vector<QuestEffect*>::const_iterator, it,  mAllEffects)
         {
             const QuestEffect *const effect = *it;
             if (effect && name == effect->map)
@@ -562,11 +394,11 @@ void QuestsWindow::updateEffects()
         const QuestEffect *const effect = *it;
         if (effect)
         {
-            const NpcQuestVarMapCIter varIt = mVars.find(effect->var);
-            if (varIt != mVars.end())
+            const NpcQuestVarMapCIter varIt = mVars->find(effect->var);
+            if (varIt != mVars->end())
             {
                 const std::set<int> &vals = effect->values;
-                if (vals.find(mVars[effect->var].var1) != vals.end())
+                if (vals.find((*mVars)[effect->var].var1) != vals.end())
                     mNpcEffects[effect->id] = effect;
             }
         }

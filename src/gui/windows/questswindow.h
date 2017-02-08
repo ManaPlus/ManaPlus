@@ -47,8 +47,6 @@ struct QuestItem;
 
 typedef std::map<BeingTypeId, const QuestEffect*> NpcQuestEffectMap;
 typedef NpcQuestEffectMap::const_iterator NpcQuestEffectMapCIter;
-typedef std::map<int, QuestVar> NpcQuestVarMap;
-typedef NpcQuestVarMap::const_iterator NpcQuestVarMapCIter;
 
 class QuestsWindow final : public Window,
                            public ActionListener
@@ -79,13 +77,6 @@ class QuestsWindow final : public Window,
         void addEffect(Being *const being);
 
     private:
-        void loadXmlFile(const std::string &fileName,
-                         const SkipError skipError);
-
-        void loadQuest(const int var, const XmlNodePtr node);
-
-        void loadEffect(const int var, const XmlNodePtr node);
-
         QuestsModel *mQuestsModel A_NONNULLPOINTER;
         ExtendedListBox *mQuestsListBox A_NONNULLPOINTER;
         ScrollArea *mQuestScrollArea A_NONNULLPOINTER;
@@ -95,12 +86,11 @@ class QuestsWindow final : public Window,
         Button *mCloseButton A_NONNULLPOINTER;
         Image *mCompleteIcon;
         Image *mIncompleteIcon;
-        // quest variables: var, (val1, val2, val3, time)
-        NpcQuestVarMap mVars;
-        // quests: var, quests
-        std::map<int, std::vector<QuestItem*> > mQuests;
-        std::vector<QuestEffect*> mAllEffects;
         std::vector<const QuestEffect*> mMapEffects;
+        NpcQuestVarMap *mVars;
+        std::map<int, std::vector<QuestItem*> > *mQuests;
+        std::vector<QuestEffect*> *mAllEffects;
+
         // npc effects for current map and values: npc, effect
         NpcQuestEffectMap mNpcEffects;
         std::vector<QuestItem*> mQuestLinks;

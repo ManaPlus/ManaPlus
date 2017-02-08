@@ -1316,6 +1316,8 @@ SRC = ${BASE_SRC} \
 	      resources/db/palettedb.h \
 	      resources/db/petdb.cpp \
 	      resources/db/petdb.h \
+	      resources/db/questdb.cpp \
+	      resources/db/questdb.h \
 	      resources/db/skillunitdb.cpp \
 	      resources/db/skillunitdb.h \
 	      resources/db/sounddb.cpp \
