@@ -7,7 +7,7 @@ export LOGFILE=gcc44.log
 source ./tools/ci/scripts/init.sh
 
 do_init
-run_configure --enable-werror
+run_configure --enable-werror $*
 run_make
 
 source ./tools/ci/scripts/exit.sh
