@@ -25,7 +25,6 @@
 
 #include "resources/questvar.h"
 
-#include <map>
 #include <string>
 #include <vector>
 

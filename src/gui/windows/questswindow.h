@@ -29,8 +29,6 @@
 
 #include "listeners/actionlistener.h"
 
-#include "utils/xml.h"
-
 #include "resources/questvar.h"
 
 class Being;
