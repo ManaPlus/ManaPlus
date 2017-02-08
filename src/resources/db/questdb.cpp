@@ -241,3 +241,21 @@ std::vector<QuestEffect*> *QuestDb::getAllEffects()
 {
     return &mAllEffects;
 }
+
+std::string QuestDb::getName(const int id)
+{
+    std::map<int, std::vector<QuestItem*> >::const_iterator it =
+        mQuests.find(id);
+    if (it == mQuests.end())
+    {
+        // TRANSLATORS: quests window quest name
+        return _("unknown");
+    }
+    const std::vector<QuestItem*> &items = (*it).second;
+    if (items.empty())
+    {
+        // TRANSLATORS: quests window quest name
+        return _("unknown");
+    }
+    return items[0]->name;
+}

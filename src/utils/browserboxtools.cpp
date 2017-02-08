@@ -38,6 +38,7 @@
 #include "resources/db/itemdb.h"
 #include "resources/db/mercenarydb.h"
 #include "resources/db/monsterdb.h"
+#include "resources/db/questdb.h"
 #include "resources/db/petdb.h"
 #endif  // DYECMD
 
@@ -99,12 +100,17 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
             data = info->getName();
     }
     else if (!link.empty() && link[0] == 'M')
-    {  // homunculus link
+    {  // mercenary link
         const BeingTypeId id = static_cast<BeingTypeId>(
             atoi(link.substr(1).c_str()));
         BeingInfo *info = MercenaryDB::get(id);
         if (info)
             data = info->getName();
+    }
+    else if (!link.empty() && link[0] == 'q')
+    {  // quest link
+        data = QuestDb::getName(
+            atoi(link.substr(1).c_str()));
     }
     else
     {  // item link

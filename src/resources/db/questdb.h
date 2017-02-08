@@ -48,6 +48,8 @@ namespace QuestDb
     std::map<int, std::vector<QuestItem*> > *getQuests();
 
     std::vector<QuestEffect*> *getAllEffects();
+
+    std::string getName(const int id);
 }  // namespace QuestDb
 
 #endif  // RESOURCES_DB_QUESTDB_H
