@@ -29,7 +29,6 @@
 #endif  // DEBUG_IMAGES
 
 #include "utils/mathutils.h"
-#include "utils/physfscheckutils.h"
 #include "utils/virtfsrwops.h"
 #include "utils/sdlcheckutils.h"
 

@@ -65,7 +65,7 @@
 
 
 #ifdef DEBUG_PHYSFS
-// +++ need move this into VirtFs itself
+#define RWopsOpenRead(name) RWopsOpenRead(name, __FILE__, __LINE__)
 #else  // DEBUG_PHYSFS
 
 #endif  // DEBUG_PHYSFS

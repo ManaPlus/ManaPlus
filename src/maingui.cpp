@@ -31,7 +31,6 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #endif  // ANDROID
-#include "utils/physfscheckutils.h"
 #include "utils/virtfsrwops.h"
 #include "utils/process.h"
 #include "utils/xml.h"
@@ -135,7 +134,7 @@ int mainGui(int argc, char *argv[])
     VirtFs::reportRWops();
 #endif  // DUMP_LEAKED_RESOURCES
 #ifdef DEBUG_PHYSFS
-    reportPhysfsLeaks();
+    VirtFs::reportLeaks();
 #endif  // DEBUG_PHYSFS
 
     return ret;

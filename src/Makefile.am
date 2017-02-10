@@ -546,8 +546,6 @@ BASE_SRC += events/actionevent.h \
 	      utils/paths.h \
 	      utils/perfomance.cpp \
 	      utils/perfomance.h \
-	      utils/physfscheckutils.cpp \
-	      utils/physfscheckutils.h \
 	      utils/physfsmemoryobject.h \
 	      utils/virtfsrwops.cpp \
 	      utils/virtfsrwops.h \

@@ -33,13 +33,23 @@
 
 namespace VirtFs
 {
-    SDL_RWops *RWopsOpenRead(const char *const fname) A_WARN_UNUSED;
+#ifdef DEBUG_PHYSFS
+    SDL_RWops *RWopsOpenRead(const char *const fname,
+                             const char *restrict const file,
+                             const unsigned line);
+#else  // DEBUG_PHYSFS
+    SDL_RWops *RWopsOpenRead(const char *const fname);
+#endif  // DEBUG_PHYSFS
+
     SDL_RWops *RWopsOpenWrite(const char *const fname) A_WARN_UNUSED;
     SDL_RWops *RWopsOpenAppend(const char *const fname) A_WARN_UNUSED;
     SDL_RWops *MakeRWops(PHYSFS_file *const handle) A_WARN_UNUSED;
 #ifdef DUMP_LEAKED_RESOURCES
     void reportRWops();
 #endif  // DUMP_LEAKED_RESOURCES
+#ifdef DEBUG_PHYSFS
+    void reportLeaks();
+#endif  // DEBUG_PHYSFS
 }  // namespace VirtFs
 
 #endif  // UTILS_PHYSFSRWOPS_H

@@ -31,7 +31,6 @@
 
 #include "gui/fonts/font.h"
 
-#include "utils/physfscheckutils.h"
 #include "utils/virtfsrwops.h"
 
 #include "render/graphics.h"

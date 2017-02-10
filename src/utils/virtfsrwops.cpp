@@ -27,7 +27,9 @@
 #include "logger.h"
 
 #include "utils/fuzzer.h"
-#include "utils/physfscheckutils.h"
+#include "utils/physfsmemoryobject.h"
+
+#include <map>
 
 #include "debug.h"
 
@@ -42,6 +44,68 @@
 #ifdef DUMP_LEAKED_RESOURCES
 static int openedRWops = 0;
 #endif  // DUMP_LEAKED_RESOURCES
+
+#ifdef DEBUG_PHYSFS
+namespace
+{
+    std::map<void*, PHYSFSMemoryObject*> mRWops;
+}  // namespace
+
+static SDL_RWops *addDebugRWops(SDL_RWops *restrict const rwops,
+                                const char *restrict const name,
+                                const char *restrict const file,
+                                const unsigned line)
+{
+    if (!rwops)
+        return nullptr;
+
+    mRWops[rwops] = new PHYSFSMemoryObject(name, file, line);
+    return rwops;
+}
+
+static void deleteDebugRWops(SDL_RWops *const rwops)
+{
+    if (!rwops)
+        return;
+
+    std::map<void*, PHYSFSMemoryObject*>::iterator it = mRWops.find(rwops);
+    if (it == mRWops.end())
+    {
+        logger->log("bad RWops delete: %p", static_cast<void*>(rwops));
+    }
+    else
+    {
+        PHYSFSMemoryObject *const obj = (*it).second;
+        if (obj)
+        {
+            mRWops.erase(rwops);
+            delete obj;
+        }
+    }
+}
+
+void VirtFs::reportLeaks()
+{
+    if (!mRWops.empty())
+    {
+        logger->log("RWops leaks detected");
+        std::map<void*, PHYSFSMemoryObject*>::iterator it = mRWops.begin();
+        const std::map<void*, PHYSFSMemoryObject*>::iterator
+            it_end = mRWops.end();
+        for (; it != it_end; ++it)
+        {
+            PHYSFSMemoryObject *obj = (*it).second;
+            if (obj)
+            {
+                logger->log("file: %s at %s", obj->mName.c_str(),
+                    obj->mAddFile.c_str());
+                delete obj;
+            }
+        }
+        mRWops.clear();
+    }
+}
+#endif  // DEBUG_PHYSFS
 
 static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw,
                                   const PHYSFSINT offset,
@@ -188,7 +252,7 @@ static int physfsrwops_close(SDL_RWops *const rw)
     openedRWops --;
 #endif  // DUMP_LEAKED_RESOURCES
 #ifdef DEBUG_PHYSFS
-    FakePhysFSClose(rw);
+    deleteDebugRWops(rw);
 #endif  // DEBUG_PHYSFS
 
     return 0;
@@ -262,7 +326,14 @@ static bool checkFilePath(const char *const fname)
 }
 #endif  // __APPLE__
 
+#ifdef DEBUG_PHYSFS
+#undef RWopsOpenRead
+SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname,
+                                 const char *restrict const file,
+                                 const unsigned line)
+#else  // DEBUG_PHYSFS
 SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname)
+#endif  // DEBUG_PHYSFS
 {
     BLOCK_START("RWopsopenRead")
 #ifdef __APPLE__
@@ -274,12 +345,30 @@ SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname)
         return nullptr;
 #endif  // USE_FUZZER
 #ifdef USE_PROFILER
+
+#ifdef DEBUG_PHYSFS
+    SDL_RWops *const ret = addDebugRWops(
+        create_rwops(VirtFs::openRead(fname)),
+        fname,
+        file,
+        line);
+#else  // DEBUG_PHYSFS
     SDL_RWops *const ret = create_rwops(VirtFs::openRead(fname));
+#endif  // DEBUG_PHYSFS
+
     BLOCK_END("RWopsopenRead")
     return ret;
 #else  // USE_PROFILER
 
+#ifdef DEBUG_PHYSFS
+    return addDebugRWops(
+        create_rwops(VirtFs::openRead(fname)),
+        fname,
+        file,
+        line);
+#else  // DEBUG_PHYSFS
     return create_rwops(VirtFs::openRead(fname));
+#endif  // DEBUG_PHYSFS
 #endif  // USE_PROFILER
 } /* RWopsopenRead */
 

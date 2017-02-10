@@ -23,7 +23,7 @@
 
 #ifdef DEBUG_PHYSFS
 
-#include <string>
+#include "utils/stringutils.h"
 
 #include "localconsts.h"
 
