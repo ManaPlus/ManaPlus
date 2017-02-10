@@ -26,8 +26,8 @@
 
 #include "logger.h"
 
+#include "utils/debugmemoryobject.h"
 #include "utils/fuzzer.h"
-#include "utils/physfsmemoryobject.h"
 
 #include <map>
 
@@ -48,7 +48,7 @@ static int openedRWops = 0;
 #ifdef DEBUG_PHYSFS
 namespace
 {
-    std::map<void*, PHYSFSMemoryObject*> mRWops;
+    std::map<void*, VirtFs::DebugMemoryObject*> mRWops;
 }  // namespace
 
 static SDL_RWops *addDebugRWops(SDL_RWops *restrict const rwops,
@@ -59,7 +59,7 @@ static SDL_RWops *addDebugRWops(SDL_RWops *restrict const rwops,
     if (!rwops)
         return nullptr;
 
-    mRWops[rwops] = new PHYSFSMemoryObject(name, file, line);
+    mRWops[rwops] = new VirtFs::DebugMemoryObject(name, file, line);
     return rwops;
 }
 
@@ -68,14 +68,14 @@ static void deleteDebugRWops(SDL_RWops *const rwops)
     if (!rwops)
         return;
 
-    std::map<void*, PHYSFSMemoryObject*>::iterator it = mRWops.find(rwops);
+    std::map<void*, VirtFs::DebugMemoryObject*>::iterator it = mRWops.find(rwops);
     if (it == mRWops.end())
     {
         logger->log("bad RWops delete: %p", static_cast<void*>(rwops));
     }
     else
     {
-        PHYSFSMemoryObject *const obj = (*it).second;
+        VirtFs::DebugMemoryObject *const obj = (*it).second;
         if (obj)
         {
             mRWops.erase(rwops);
@@ -89,12 +89,12 @@ void VirtFs::reportLeaks()
     if (!mRWops.empty())
     {
         logger->log("RWops leaks detected");
-        std::map<void*, PHYSFSMemoryObject*>::iterator it = mRWops.begin();
-        const std::map<void*, PHYSFSMemoryObject*>::iterator
+        std::map<void*, VirtFs::DebugMemoryObject*>::iterator it = mRWops.begin();
+        const std::map<void*, VirtFs::DebugMemoryObject*>::iterator
             it_end = mRWops.end();
         for (; it != it_end; ++it)
         {
-            PHYSFSMemoryObject *obj = (*it).second;
+            VirtFs::DebugMemoryObject *obj = (*it).second;
             if (obj)
             {
                 logger->log("file: %s at %s", obj->mName.c_str(),

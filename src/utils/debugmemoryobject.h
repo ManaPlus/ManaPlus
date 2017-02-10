@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_PHYSFSMEMORYOBJECT_H
-#define UTILS_PHYSFSMEMORYOBJECT_H
+#ifndef UTILS_DEBUGMEMORYOBJECT_H
+#define UTILS_DEBUGMEMORYOBJECT_H
 
 #ifdef DEBUG_PHYSFS
 
@@ -27,21 +27,24 @@
 
 #include "localconsts.h"
 
-struct PHYSFSMemoryObject final
+namespace VirtFs
 {
-    PHYSFSMemoryObject(const char *const name,
-                       const char *const file,
-                       const unsigned int line) :
-        mName(name),
-        mAddFile(strprintf("%s:%u", file, line))
+    struct DebugMemoryObject final
     {
-    }
+        DebugMemoryObject(const char *const name,
+                          const char *const file,
+                          const unsigned int line) :
+            mName(name),
+            mAddFile(strprintf("%s:%u", file, line))
+        {
+        }
 
-    A_DELETE_COPY(PHYSFSMemoryObject)
+        A_DELETE_COPY(DebugMemoryObject)
 
-    std::string mName;
-    std::string mAddFile;
-};
+        std::string mName;
+        std::string mAddFile;
+    };
+}  // VirtFs
 
 #endif  // DEBUG_PHYSFS
-#endif  // UTILS_PHYSFSMEMORYOBJECT_H
+#endif  // UTILS_DEBUGMEMORYOBJECT_H
