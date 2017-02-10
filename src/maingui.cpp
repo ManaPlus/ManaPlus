@@ -32,7 +32,7 @@
 #include "utils/paths.h"
 #endif  // ANDROID
 #include "utils/physfscheckutils.h"
-#include "utils/physfsrwops.h"
+#include "utils/virtfsrwops.h"
 #include "utils/process.h"
 #include "utils/xml.h"
 
@@ -132,7 +132,7 @@ int mainGui(int argc, char *argv[])
 #endif  // SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
 
 #ifdef DUMP_LEAKED_RESOURCES
-    reportRWops();
+    VirtFs::reportRWops();
 #endif  // DUMP_LEAKED_RESOURCES
 #ifdef DEBUG_PHYSFS
     reportPhysfsLeaks();

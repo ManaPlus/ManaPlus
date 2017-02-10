@@ -27,7 +27,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/checkutils.h"
-#include "utils/physfsrwops.h"
+#include "utils/virtfsrwops.h"
 
 #include "debug.h"
 
@@ -45,7 +45,7 @@ namespace
                 return nullptr;
             const ResourceLoader *const
                 rl = static_cast<const ResourceLoader *const>(v);
-            SDL_RWops *const rw = MPHYSFSRWOPS_openRead(rl->path.c_str());
+            SDL_RWops *const rw = VirtFs::RWopsOpenRead(rl->path.c_str());
             if (!rw)
             {
                 reportAlways("Physfs error: %s", VirtFs::getLastError());

@@ -889,8 +889,8 @@ SET(SRCS
     utils/physfscheckutils.cpp
     utils/physfscheckutils.h
     utils/physfsmemoryobject.h
-    utils/physfsrwops.cpp
-    utils/physfsrwops.h
+    utils/virtfsrwops.cpp
+    utils/virtfsrwops.h
     utils/virtfs.cpp
     utils/virtfs.h
     utils/process.cpp
@@ -1767,8 +1767,8 @@ SET(DYE_CMD_SRCS
     utils/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
-    utils/physfsrwops.cpp
-    utils/physfsrwops.h
+    utils/virtfsrwops.cpp
+    utils/virtfsrwops.h
     utils/virtfs.cpp
     utils/virtfs.h
     utils/sdl2helper.cpp

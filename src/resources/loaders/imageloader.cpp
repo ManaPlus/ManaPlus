@@ -31,7 +31,7 @@
 #include "resources/dye/dye.h"
 
 #include "utils/checkutils.h"
-#include "utils/physfsrwops.h"
+#include "utils/virtfsrwops.h"
 
 #include "debug.h"
 
@@ -62,7 +62,7 @@ namespace
                 d = new Dye(path1.substr(p + 1));
                 path1 = path1.substr(0, p);
             }
-            SDL_RWops *const rw = MPHYSFSRWOPS_openRead(path1.c_str());
+            SDL_RWops *const rw = VirtFs::RWopsOpenRead(path1.c_str());
             if (!rw)
             {
                 delete d;

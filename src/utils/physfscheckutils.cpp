@@ -27,7 +27,7 @@
 #include "utils/stringutils.h"
 
 #include "utils/physfsmemoryobject.h"
-#include "utils/physfsrwops.h"
+#include "utils/virtfsrwops.h"
 
 #include <map>
 
@@ -75,7 +75,7 @@ SDL_RWops *FakePHYSFSRWOPS_openRead(const char *restrict const name,
                                     const char *restrict const file,
                                     const unsigned line)
 {
-    return addRWops(PHYSFSRWOPS_openRead(name), name, file, line);
+    return addRWops(VirtFs::RWopsOpenRead(name), name, file, line);
 }
 
 void FakePhysFSClose(SDL_RWops *const rwops)

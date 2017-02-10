@@ -65,12 +65,7 @@
 
 
 #ifdef DEBUG_PHYSFS
-
-#define MPHYSFSRWOPS_openRead(name) \
-    FakePHYSFSRWOPS_openRead(name, __FILE__, __LINE__)
-
+// +++ need move this into VirtFs itself
 #else  // DEBUG_PHYSFS
-
-#define MPHYSFSRWOPS_openRead(name) PHYSFSRWOPS_openRead(name)
 
 #endif  // DEBUG_PHYSFS

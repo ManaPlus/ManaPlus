@@ -22,7 +22,7 @@
  *  Copyright (C) 2012-2017  The ManaPlus Developers
  */
 
-#include "utils/physfsrwops.h"
+#include "utils/virtfsrwops.h"
 
 #include "logger.h"
 
@@ -43,7 +43,8 @@
 static int openedRWops = 0;
 #endif  // DUMP_LEAKED_RESOURCES
 
-static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
+static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw,
+                                  const PHYSFSINT offset,
                                   const int whence)
 {
     if (!rw)
@@ -234,13 +235,13 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
     return retval;
 } /* create_rwops */
 
-SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *const handle)
+SDL_RWops *VirtFs::MakeRWops(PHYSFS_file *const handle)
 {
     SDL_RWops *retval = nullptr;
     if (!handle)
     {
         logger->assertLog("physfsrwops_seek: NULL pointer passed to "
-            "PHYSFSRWOPS_makeRWops().");
+            "RWopsmakeRWops().");
     }
     else
     {
@@ -248,7 +249,7 @@ SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *const handle)
     }
 
     return retval;
-} /* PHYSFSRWOPS_makeRWops */
+} /* RWopsmakeRWops */
 
 #ifdef __APPLE__
 static bool checkFilePath(const char *const fname)
@@ -261,9 +262,9 @@ static bool checkFilePath(const char *const fname)
 }
 #endif  // __APPLE__
 
-SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname)
+SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname)
 {
-    BLOCK_START("PHYSFSRWOPS_openRead")
+    BLOCK_START("RWopsopenRead")
 #ifdef __APPLE__
     if (!checkFilePath(fname))
         return nullptr;
@@ -274,15 +275,15 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname)
 #endif  // USE_FUZZER
 #ifdef USE_PROFILER
     SDL_RWops *const ret = create_rwops(VirtFs::openRead(fname));
-    BLOCK_END("PHYSFSRWOPS_openRead")
+    BLOCK_END("RWopsopenRead")
     return ret;
 #else  // USE_PROFILER
 
     return create_rwops(VirtFs::openRead(fname));
 #endif  // USE_PROFILER
-} /* PHYSFSRWOPS_openRead */
+} /* RWopsopenRead */
 
-SDL_RWops *PHYSFSRWOPS_openWrite(const char *const fname)
+SDL_RWops *VirtFs::RWopsOpenWrite(const char *const fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))
@@ -290,9 +291,9 @@ SDL_RWops *PHYSFSRWOPS_openWrite(const char *const fname)
 #endif  // __APPLE__
 
     return create_rwops(VirtFs::openWrite(fname));
-} /* PHYSFSRWOPS_openWrite */
+} /* RWopsopenWrite */
 
-SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname)
+SDL_RWops *VirtFs::RWopsOpenAppend(const char *const fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))
@@ -300,10 +301,10 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname)
 #endif  // __APPLE__
 
     return create_rwops(VirtFs::openAppend(fname));
-} /* PHYSFSRWOPS_openAppend */
+} /* RWopsopenAppend */
 
 #ifdef DUMP_LEAKED_RESOURCES
-void reportRWops()
+void VirtFs::reportRWops()
 {
     if (openedRWops)
     {

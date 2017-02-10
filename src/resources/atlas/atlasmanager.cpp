@@ -30,7 +30,7 @@
 
 #include "utils/mathutils.h"
 #include "utils/physfscheckutils.h"
-#include "utils/physfsrwops.h"
+#include "utils/virtfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
 #include "resources/openglimagehelper.h"
@@ -149,7 +149,7 @@ void AtlasManager::loadImages(const StringVect &files,
             path = path.substr(0, p);
         }
 
-        SDL_RWops *const rw = MPHYSFSRWOPS_openRead(path.c_str());
+        SDL_RWops *const rw = VirtFs::RWopsOpenRead(path.c_str());
         if (rw)
         {
             Image *const image = d ? surfaceImageHelper->load(rw, *d)

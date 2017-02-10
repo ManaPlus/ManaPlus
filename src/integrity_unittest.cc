@@ -39,7 +39,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
-#include "utils/physfsrwops.h"
+#include "utils/virtfsrwops.h"
 
 #include <SDL_image.h>
 
@@ -240,7 +240,7 @@ TEST_CASE("integrity tests", "integrity")
         resourceManager->addToSearchPath("data/test/test.zip", Append_false);
         resourceManager->addToSearchPath("../data/test/test.zip", Append_false);
 
-        SDL_RWops *const rw = PHYSFSRWOPS_openRead(name1);
+        SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
         if (!rw)
             logger->log("Physfs error: %s", VirtFs::getLastError());
         resourceManager->removeFromSearchPath("data/test/test.zip");
@@ -403,7 +403,7 @@ TEST_CASE("integrity tests", "integrity")
         resourceManager->addToSearchPath("data/test/test.zip", Append_false);
         resourceManager->addToSearchPath("../data/test/test.zip", Append_false);
 
-        SDL_RWops *const rw = PHYSFSRWOPS_openRead(name1);
+        SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
         if (!rw)
             logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
@@ -438,7 +438,7 @@ TEST_CASE("integrity tests", "integrity")
         resourceManager->addToSearchPath("data/test/test.zip", Append_false);
         resourceManager->addToSearchPath("../data/test/test.zip", Append_false);
 
-        SDL_RWops *const rw = PHYSFSRWOPS_openRead(name1);
+        SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
         if (!rw)
             logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
@@ -460,7 +460,7 @@ TEST_CASE("integrity tests", "integrity")
         resourceManager->addToSearchPath("data/test/test.zip", Append_false);
         resourceManager->addToSearchPath("../data/test/test.zip", Append_false);
 
-        SDL_RWops *const rw = PHYSFSRWOPS_openRead(name1);
+        SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
         if (!rw)
             logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);

@@ -32,7 +32,7 @@
 #include "gui/fonts/font.h"
 
 #include "utils/physfscheckutils.h"
-#include "utils/physfsrwops.h"
+#include "utils/virtfsrwops.h"
 
 #include "render/graphics.h"
 
@@ -433,7 +433,7 @@ PRAGMA45(GCC diagnostic pop)
 
 int TestLauncher::testDye()
 {
-    SDL_RWops *rw = MPHYSFSRWOPS_openRead(
+    SDL_RWops *rw = VirtFs::RWopsOpenRead(
         "graphics/sprites/arrow_up.png");
     Dye *d = nullptr;
 
@@ -456,7 +456,7 @@ int TestLauncher::testDye()
                     settings.tempDir + "/testimage2.png");
             }
 
-            rw = MPHYSFSRWOPS_openRead(
+            rw = VirtFs::RWopsOpenRead(
                 "graphics/sprites/arrow_up.png");
             d = new Dye("S:#0000ff,00ff00,5c5cff,ff0000");
             image = surfaceImageHelper->load(rw, *d);
