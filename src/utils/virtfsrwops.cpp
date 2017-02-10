@@ -88,7 +88,8 @@ static void deleteDebugRWops(SDL_RWops *const rwops)
     if (!rwops)
         return;
 
-    std::map<void*, VirtFs::DebugMemoryObject*>::iterator it = mRWops.find(rwops);
+    std::map<void*, VirtFs::DebugMemoryObject*>::iterator it =
+        mRWops.find(rwops);
     if (it == mRWops.end())
     {
         logger->log("bad RWops delete: %p", static_cast<void*>(rwops));
@@ -109,7 +110,8 @@ void VirtFs::reportLeaks()
     if (!mRWops.empty())
     {
         logger->log("RWops leaks detected");
-        std::map<void*, VirtFs::DebugMemoryObject*>::iterator it = mRWops.begin();
+        std::map<void*, VirtFs::DebugMemoryObject*>::iterator it =
+            mRWops.begin();
         const std::map<void*, VirtFs::DebugMemoryObject*>::iterator
             it_end = mRWops.end();
         for (; it != it_end; ++it)
