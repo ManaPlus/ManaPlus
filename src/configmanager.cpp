@@ -33,7 +33,7 @@
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "render/renderers.h"
 

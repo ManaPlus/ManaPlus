@@ -117,7 +117,7 @@
 #include "utils/delete2.h"
 #include "utils/env.h"
 #include "utils/gettext.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "utils/translation/translationmanager.h"
 
@@ -296,7 +296,7 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("EditServerDialog")
     {
         ServerInfo mCurrentServer;
-        settings.configDir = PhysFs::getRealDir("test/serverlistplus.xml");
+        settings.configDir = VirtFs::getRealDir("test/serverlistplus.xml");
         ServerDialog *serverDialog = CREATEWIDGETR(ServerDialog,
             &mCurrentServer,
             settings.configDir);
@@ -505,7 +505,7 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("serversDialog")
     {
         ServerInfo mCurrentServer;
-        settings.configDir = PhysFs::getRealDir("test/serverlistplus.xml");
+        settings.configDir = VirtFs::getRealDir("test/serverlistplus.xml");
         ServerDialog *serverDialog = CREATEWIDGETR(ServerDialog,
             &mCurrentServer,
             settings.configDir);
@@ -681,5 +681,5 @@ TEST_CASE("Windows tests", "windowmanager")
     delete2(client);
     delete2(serverFeatures);
     delete2(inventoryHandler);
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }

@@ -34,7 +34,7 @@
 
 #include "configuration.h"
 #include "utils/mkdir.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "debug.h"
 

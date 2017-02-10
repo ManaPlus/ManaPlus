@@ -29,7 +29,7 @@
 
 #include <SDL_rwops.h>
 
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 /**
  * Open a platform-independent filename for reading, and make it accessible

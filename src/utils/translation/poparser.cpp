@@ -20,7 +20,7 @@
 
 #include "utils/translation/poparser.h"
 
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"
@@ -45,7 +45,7 @@ PoParser::PoParser() :
 void PoParser::openFile(const std::string &name)
 {
     int size;
-    char *buf = static_cast<char*>(PhysFs::loadFile(getFileName(name), size));
+    char *buf = static_cast<char*>(VirtFs::loadFile(getFileName(name), size));
 
     if (buf)
     {
@@ -261,7 +261,7 @@ PoDict *PoParser::getEmptyDict()
 bool PoParser::checkLang(const std::string &lang)
 {
     // check is po file exists
-    return PhysFs::exists(getFileName(lang).c_str());
+    return VirtFs::exists(getFileName(lang).c_str());
 }
 
 std::string PoParser::getFileName(const std::string &lang)

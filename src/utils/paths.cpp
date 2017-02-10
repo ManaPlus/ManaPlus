@@ -26,7 +26,7 @@
 
 #include "utils/paths.h"
 
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/stringutils.h"
 
 #ifdef USE_X11
@@ -172,7 +172,7 @@ std::string getPicturesDir()
     std::string file;
     if (!xdg)
     {
-        file = std::string(PhysFs::getUserDir()).append(
+        file = std::string(VirtFs::getUserDir()).append(
             "/.config/user-dirs.dirs");
     }
     else
@@ -190,18 +190,18 @@ std::string getPicturesDir()
             str = str.substr(0, str.size() - 1);
             // use hack to replace $HOME var.
             // if in string other vars, fallback to default path
-            replaceAll(str, "$HOME/", PhysFs::getUserDir());
+            replaceAll(str, "$HOME/", VirtFs::getUserDir());
             str = getRealPath(str);
             if (str.empty())
-                str = std::string(PhysFs::getUserDir()).append("Desktop");
+                str = std::string(VirtFs::getUserDir()).append("Desktop");
             return str;
         }
     }
 
-    return std::string(PhysFs::getUserDir()).append("Desktop");
+    return std::string(VirtFs::getUserDir()).append("Desktop");
 #else  // WIN32
 
-    return std::string(PhysFs::getUserDir()).append("Desktop");
+    return std::string(VirtFs::getUserDir()).append("Desktop");
 #endif  // WIN32
 }
 

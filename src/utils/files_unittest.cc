@@ -23,7 +23,7 @@
 #include "catch.hpp"
 #include "logger.h"
 
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
@@ -63,7 +63,7 @@ TEST_CASE("Files renameFile")
     delete [] buf;
     delete [] buf2;
     ResourceManager::deleteInstance();
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }
 
 TEST_CASE("Files existsLocal")
@@ -77,7 +77,7 @@ TEST_CASE("Files existsLocal")
     REQUIRE_FALSE(Files::existsLocal(Files::getPath("help/about1.txt")));
     REQUIRE_FALSE(Files::existsLocal(Files::getPath("help1/about.txt")));
     ResourceManager::deleteInstance();
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }
 
 TEST_CASE("Files loadTextFileString")
@@ -90,7 +90,7 @@ TEST_CASE("Files loadTextFileString")
     REQUIRE(Files::loadTextFileString("test/simplefile.txt") ==
         "this is test \nfile.");
     ResourceManager::deleteInstance();
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }
 
 TEST_CASE("Files loadTextFile")
@@ -107,7 +107,7 @@ TEST_CASE("Files loadTextFile")
     REQUIRE(lines[0] == "this is test ");
     REQUIRE(lines[1] == "file.");
     ResourceManager::deleteInstance();
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }
 
 TEST_CASE("Files saveTextFile")
@@ -125,7 +125,7 @@ TEST_CASE("Files saveTextFile")
     ::remove((dir + "/tempfile.txt").c_str());
     REQUIRE(data == "test line\ntext line2\n");
     ResourceManager::deleteInstance();
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }
 
 TEST_CASE("Files getFilesInDir")
@@ -154,5 +154,5 @@ TEST_CASE("Files getFilesInDir")
     REQUIRE(list[3] == "perserver/default/features.xml");
     REQUIRE(list[4] == "perserver/default/weapons.xml");
     ResourceManager::deleteInstance();
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }

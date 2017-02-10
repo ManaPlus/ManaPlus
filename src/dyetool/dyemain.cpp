@@ -37,7 +37,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/gettext.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include <iostream>
 
@@ -74,7 +74,7 @@ int main(int argc, char **argv)
     logger = new Logger;
     logger->setLogToStandardOut(false);
 
-    PhysFs::init(argv[0]);
+    VirtFs::init(argv[0]);
     SDL_Init(SDL_INIT_VIDEO);
 
     graphicsManager.createWindow(10, 10, 0, SDL_ANYFORMAT);

@@ -46,7 +46,7 @@
 
 #include "utils/dtor.h"
 #include "utils/files.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "debug.h"
 
@@ -64,7 +64,7 @@ static void initDefaultThemePath()
     defaultThemePath = branding.getStringValue("guiThemePath");
 
     logger->log("defaultThemePath: " + defaultThemePath);
-    if (!defaultThemePath.empty() && PhysFs::isDirectory(
+    if (!defaultThemePath.empty() && VirtFs::isDirectory(
         defaultThemePath.c_str()))
     {
         return;
@@ -397,7 +397,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
         return nullptr;
 
     const std::string path = resolveThemePath(filename);
-    if (!PhysFs::exists(path.c_str()))
+    if (!VirtFs::exists(path.c_str()))
         return nullptr;
     XML::Document *const doc = Loader::getXml(path,
         UseResman_true,
@@ -550,7 +550,7 @@ bool Theme::tryThemePath(const std::string &themeName)
     if (!themeName.empty())
     {
         const std::string path = defaultThemePath + themeName;
-        if (PhysFs::exists(path.c_str()))
+        if (VirtFs::exists(path.c_str()))
         {
             mThemePath = path;
             mThemeName = themeName;
@@ -570,19 +570,19 @@ void Theme::fillSkinsList(StringVect &list)
 
 void Theme::fillFontsList(StringVect &list)
 {
-    PhysFs::permitLinks(true);
+    VirtFs::permitLinks(true);
     Files::getFiles(branding.getStringValue("fontsPath"), list);
-    PhysFs::permitLinks(false);
+    VirtFs::permitLinks(false);
 }
 
 void Theme::fillSoundsList(StringVect &list)
 {
-    char **skins = PhysFs::enumerateFiles(
+    char **skins = VirtFs::enumerateFiles(
         branding.getStringValue("systemsounds").c_str());
 
     for (char **i = skins; *i; i++)
     {
-        if (!PhysFs::isDirectory((
+        if (!VirtFs::isDirectory((
             branding.getStringValue("systemsounds") + *i).c_str()))
         {
             std::string str = *i;
@@ -591,7 +591,7 @@ void Theme::fillSoundsList(StringVect &list)
         }
     }
 
-    PhysFs::freeList(skins);
+    VirtFs::freeList(skins);
 }
 
 void Theme::selectSkin()
@@ -637,14 +637,14 @@ std::string Theme::resolveThemePath(const std::string &path)
     if (file.find('/') != std::string::npos)
     {
         // Might be a valid path already
-        if (PhysFs::exists(file.c_str()))
+        if (VirtFs::exists(file.c_str()))
             return path;
     }
 
     // Try the theme
     file = getThemePath().append("/").append(file);
 
-    if (PhysFs::exists(file.c_str()))
+    if (VirtFs::exists(file.c_str()))
         return getThemePath().append("/").append(path);
 
     // Backup

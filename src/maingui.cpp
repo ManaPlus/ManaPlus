@@ -96,7 +96,7 @@ int mainGui(int argc, char *argv[])
     mkdir_r(getSdStoragePath().c_str());
 #endif  // ANDROID
 
-    PhysFs::init(argv[0]);
+    VirtFs::init(argv[0]);
     XML::initXML();
 #if SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
     IMG_Init(IMG_INIT_PNG);
@@ -106,7 +106,7 @@ int mainGui(int argc, char *argv[])
 #endif  // SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
 
 #ifdef WIN32
-    SetCurrentDirectory(PhysFs::getBaseDir());
+    SetCurrentDirectory(VirtFs::getBaseDir());
 #endif  // WIN32
 
     setPriority(true);
@@ -144,7 +144,7 @@ int mainGui(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-    PhysFs::init(argv[0]);
+    VirtFs::init(argv[0]);
     return Catch::Session().run(argc, argv);
 }
 

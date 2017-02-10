@@ -26,7 +26,7 @@
 
 #include "resources/wallpaperdata.h"
 
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include <algorithm>
 
@@ -54,21 +54,21 @@ static void initDefaultWallpaperPaths()
     // Init the path
     wallpaperPath = branding.getStringValue("wallpapersPath");
 
-    if (wallpaperPath.empty() || !PhysFs::isDirectory(wallpaperPath.c_str()))
+    if (wallpaperPath.empty() || !VirtFs::isDirectory(wallpaperPath.c_str()))
         wallpaperPath = paths.getValue("wallpapers", "");
 
-    if (wallpaperPath.empty() || !PhysFs::isDirectory(wallpaperPath.c_str()))
+    if (wallpaperPath.empty() || !VirtFs::isDirectory(wallpaperPath.c_str()))
         wallpaperPath = "graphics/images/";
 
     // Init the default file
     wallpaperFile = branding.getStringValue("wallpaperFile");
 
-    if (!wallpaperFile.empty() && !PhysFs::isDirectory(wallpaperFile.c_str()))
+    if (!wallpaperFile.empty() && !VirtFs::isDirectory(wallpaperFile.c_str()))
         return;
     else
         wallpaperFile = paths.getValue("wallpaperFile", "");
 
-    if (wallpaperFile.empty() || PhysFs::isDirectory(wallpaperFile.c_str()))
+    if (wallpaperFile.empty() || VirtFs::isDirectory(wallpaperFile.c_str()))
         wallpaperFile = "login_wallpaper.png";
 }
 
@@ -84,7 +84,7 @@ void Wallpaper::loadWallpapers()
 {
     wallpaperData.clear();
     initDefaultWallpaperPaths();
-    char **const imgs = PhysFs::enumerateFiles(wallpaperPath.c_str());
+    char **const imgs = VirtFs::enumerateFiles(wallpaperPath.c_str());
 
     for (char *const *i = imgs; *i; i++)
     {
@@ -121,7 +121,7 @@ void Wallpaper::loadWallpapers()
         }
     }
 
-    PhysFs::freeList(imgs);
+    VirtFs::freeList(imgs);
     std::sort(wallpaperData.begin(), wallpaperData.end(), &wallpaperCompare);
 }
 

@@ -35,7 +35,7 @@
 #include "resources/loaders/soundloader.h"
 
 #include "utils/checkutils.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include <SDL.h>
 
@@ -325,7 +325,7 @@ static SDLMusic *loadMusic(const std::string &fileName,
                            const SkipError skipError)
 {
     const std::string path = paths.getStringValue("music").append(fileName);
-    if (!PhysFs::exists(path.c_str()))
+    if (!VirtFs::exists(path.c_str()))
     {
         if (skipError == SkipError_false)
             reportAlways("Music file not found: %s", fileName.c_str());

@@ -551,8 +551,8 @@ BASE_SRC += events/actionevent.h \
 	      utils/physfsmemoryobject.h \
 	      utils/physfsrwops.cpp \
 	      utils/physfsrwops.h \
-	      utils/physfstools.cpp \
-	      utils/physfstools.h \
+	      utils/virtfs.cpp \
+	      utils/virtfs.h \
 	      utils/process.cpp \
 	      utils/process.h \
 	      utils/sdl2helper.cpp \

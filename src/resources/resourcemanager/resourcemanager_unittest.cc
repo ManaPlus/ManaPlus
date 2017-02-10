@@ -30,7 +30,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include <unistd.h>
 
@@ -659,5 +659,5 @@ TEST_CASE("resourcemanager", "resourcemanager")
     resourceManager = safeResman;
     delete client;
     client = nullptr;
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }

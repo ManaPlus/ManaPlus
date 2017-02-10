@@ -24,7 +24,7 @@
 
 #include "const/utils/utf8.h"
 
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "resources/iteminfo.h"
 
@@ -1485,5 +1485,5 @@ TEST_CASE("stringuntils replaceItemLinks")
         REQUIRE(str == "[[test name 1 ,test name2[] test name 1]");
     }
     ResourceManager::deleteInstance();
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }

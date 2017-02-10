@@ -255,7 +255,7 @@ static bool checkFilePath(const char *const fname)
 {
     if (!fname || !*fname)
         return false;
-    if (!PhysFs::exists(fname) || PhysFs::isDirectory(fname))
+    if (!VirtFs::exists(fname) || VirtFs::isDirectory(fname))
         return false;
     return true;
 }
@@ -273,12 +273,12 @@ SDL_RWops *PHYSFSRWOPS_openRead(const char *const fname)
         return nullptr;
 #endif  // USE_FUZZER
 #ifdef USE_PROFILER
-    SDL_RWops *const ret = create_rwops(PhysFs::openRead(fname));
+    SDL_RWops *const ret = create_rwops(VirtFs::openRead(fname));
     BLOCK_END("PHYSFSRWOPS_openRead")
     return ret;
 #else  // USE_PROFILER
 
-    return create_rwops(PhysFs::openRead(fname));
+    return create_rwops(VirtFs::openRead(fname));
 #endif  // USE_PROFILER
 } /* PHYSFSRWOPS_openRead */
 
@@ -289,7 +289,7 @@ SDL_RWops *PHYSFSRWOPS_openWrite(const char *const fname)
         return nullptr;
 #endif  // __APPLE__
 
-    return create_rwops(PhysFs::openWrite(fname));
+    return create_rwops(VirtFs::openWrite(fname));
 } /* PHYSFSRWOPS_openWrite */
 
 SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname)
@@ -299,7 +299,7 @@ SDL_RWops *PHYSFSRWOPS_openAppend(const char *const fname)
         return nullptr;
 #endif  // __APPLE__
 
-    return create_rwops(PhysFs::openAppend(fname));
+    return create_rwops(VirtFs::openAppend(fname));
 } /* PHYSFSRWOPS_openAppend */
 
 #ifdef DUMP_LEAKED_RESOURCES

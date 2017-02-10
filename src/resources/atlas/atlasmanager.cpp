@@ -168,7 +168,7 @@ void AtlasManager::loadImages(const StringVect &files,
         }
         else
         {
-            reportAlways("Physfs error: %s", PhysFs::getLastError());
+            reportAlways("Physfs error: %s", VirtFs::getLastError());
         }
         delete d;
     }

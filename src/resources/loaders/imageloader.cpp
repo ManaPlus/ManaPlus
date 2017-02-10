@@ -67,7 +67,7 @@ namespace
             {
                 delete d;
                 reportAlways("Image loading error: %s", path1.c_str());
-                reportAlways("Physfs error: %s", PhysFs::getLastError());
+                reportAlways("Physfs error: %s", VirtFs::getLastError());
                 BLOCK_END("DyedImageLoader::load")
                 return nullptr;
             }

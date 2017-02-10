@@ -79,7 +79,7 @@ static bool compareBuffers(const unsigned char *const buf2)
     bool isCorrect(true);
     int sz = 0;
     unsigned char *buf1 = static_cast<unsigned char*>(
-        PhysFs::loadFile("hide.png", sz));
+        VirtFs::loadFile("hide.png", sz));
     REQUIRE(buf1 != nullptr);
     REQUIRE(sz == 368);
     for (int f = 0; f < sz; f ++)
@@ -242,7 +242,7 @@ TEST_CASE("integrity tests", "integrity")
 
         SDL_RWops *const rw = PHYSFSRWOPS_openRead(name1);
         if (!rw)
-            logger->log("Physfs error: %s", PhysFs::getLastError());
+            logger->log("Physfs error: %s", VirtFs::getLastError());
         resourceManager->removeFromSearchPath("data/test/test.zip");
         resourceManager->removeFromSearchPath("../data/test/test.zip");
         REQUIRE(rw != nullptr);
@@ -405,7 +405,7 @@ TEST_CASE("integrity tests", "integrity")
 
         SDL_RWops *const rw = PHYSFSRWOPS_openRead(name1);
         if (!rw)
-            logger->log("Physfs error: %s", PhysFs::getLastError());
+            logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
         int64_t seek = SDL_RWseek(rw, 0, RW_SEEK_END);
         if (seek == -1)
@@ -440,7 +440,7 @@ TEST_CASE("integrity tests", "integrity")
 
         SDL_RWops *const rw = PHYSFSRWOPS_openRead(name1);
         if (!rw)
-            logger->log("Physfs error: %s", PhysFs::getLastError());
+            logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
         if (IMG_isPNG(rw) == false)
         {
@@ -462,7 +462,7 @@ TEST_CASE("integrity tests", "integrity")
 
         SDL_RWops *const rw = PHYSFSRWOPS_openRead(name1);
         if (!rw)
-            logger->log("Physfs error: %s", PhysFs::getLastError());
+            logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
         Resource *const res = imageHelper->load(rw);
         resourceManager->removeFromSearchPath("data/test/test.zip");
@@ -487,5 +487,5 @@ TEST_CASE("integrity tests", "integrity")
     delete client;
     client = nullptr;
 
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }

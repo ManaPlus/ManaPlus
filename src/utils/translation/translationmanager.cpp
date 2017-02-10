@@ -21,7 +21,7 @@
 #include "utils/translation/translationmanager.h"
 
 #include "utils/delete2.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"
@@ -93,7 +93,7 @@ bool TranslationManager::translateFile(const std::string &fileName,
 
     int contentsLength;
     char *fileContents = static_cast<char*>(
-        PhysFs::loadFile(fileName, contentsLength));
+        VirtFs::loadFile(fileName, contentsLength));
 
     if (!fileContents)
     {

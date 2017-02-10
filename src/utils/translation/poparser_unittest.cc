@@ -29,7 +29,7 @@
 
 #include "utils/delete2.h"
 #include "utils/env.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "utils/translation/podict.h"
 #include "utils/translation/poparser.h"
@@ -122,5 +122,5 @@ TEST_CASE("PoParser tests", "PoParser")
         delete dict;
     }
     delete2(client);
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }

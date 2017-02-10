@@ -36,7 +36,7 @@
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
@@ -260,7 +260,7 @@ void Dirs::mountDataDir()
 
 void Dirs::initRootDir()
 {
-    settings.rootDir = PhysFs::getBaseDir();
+    settings.rootDir = VirtFs::getBaseDir();
     const std::string portableName = settings.rootDir + "portable.xml";
     struct stat statbuf;
 
@@ -332,16 +332,16 @@ void Dirs::initLocalDataDir()
     {
 #ifdef __APPLE__
         // Use Application Directory instead of .mana
-        settings.localDataDir = std::string(PhysFs::getUserDir()) +
+        settings.localDataDir = std::string(VirtFs::getUserDir()) +
             "/Library/Application Support/" +
             branding.getValue("appName", "ManaPlus");
 #elif defined __HAIKU__
-        settings.localDataDir = std::string(PhysFs::getUserDir()) +
+        settings.localDataDir = std::string(VirtFs::getUserDir()) +
            "/config/data/Mana";
 #elif defined WIN32
         settings.localDataDir = getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
         if (settings.localDataDir.empty())
-            settings.localDataDir = std::string(PhysFs::getUserDir());
+            settings.localDataDir = std::string(VirtFs::getUserDir());
         settings.localDataDir.append("/Mana");
 #elif defined __ANDROID__
         settings.localDataDir = getSdStoragePath() + branding.getValue(
@@ -350,7 +350,7 @@ void Dirs::initLocalDataDir()
         settings.localDataDir = _nacl_dir.append("/local");
 #else  // __APPLE__
 
-        settings.localDataDir = std::string(PhysFs::getUserDir()) +
+        settings.localDataDir = std::string(VirtFs::getUserDir()) +
             ".local/share/mana";
 #endif  // __APPLE__
     }
@@ -389,7 +389,7 @@ void Dirs::initConfigDir()
         settings.configDir = settings.localDataDir + dirSeparator
             + branding.getValue("appShort", "mana");
 #elif defined __HAIKU__
-        settings.configDir = std::string(PhysFs::getUserDir()) +
+        settings.configDir = std::string(VirtFs::getUserDir()) +
            "/config/settings/Mana" +
            branding.getValue("appName", "ManaPlus");
 #elif defined WIN32
@@ -410,7 +410,7 @@ void Dirs::initConfigDir()
         settings.configDir = _nacl_dir.append("/config");
 #else  // __APPLE__
 
-        settings.configDir = std::string(PhysFs::getUserDir()).append(
+        settings.configDir = std::string(VirtFs::getUserDir()).append(
             "/.config/mana/").append(branding.getValue("appShort", "mana"));
 #endif  // __APPLE__
 
@@ -490,9 +490,9 @@ void Dirs::initUpdatesDir()
     const std::string updateDir("/" + settings.updatesDir);
 
     // Verify that the updates directory exists. Create if necessary.
-    if (!PhysFs::isDirectory(updateDir.c_str()))
+    if (!VirtFs::isDirectory(updateDir.c_str()))
     {
-        if (!PhysFs::mkdir(updateDir.c_str()))
+        if (!VirtFs::mkdir(updateDir.c_str()))
         {
 #if defined WIN32
             std::string newDir = settings.localDataDir +
@@ -527,10 +527,10 @@ void Dirs::initUpdatesDir()
     }
     const std::string updateLocal = updateDir + "/local";
     const std::string updateFix = updateDir + "/fix";
-    if (!PhysFs::isDirectory(updateLocal.c_str()))
-        PhysFs::mkdir(updateLocal.c_str());
-    if (!PhysFs::isDirectory(updateFix.c_str()))
-        PhysFs::mkdir(updateFix.c_str());
+    if (!VirtFs::isDirectory(updateLocal.c_str()))
+        VirtFs::mkdir(updateLocal.c_str());
+    if (!VirtFs::isDirectory(updateFix.c_str()))
+        VirtFs::mkdir(updateFix.c_str());
 }
 
 void Dirs::initScreenshotDir()

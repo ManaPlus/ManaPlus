@@ -143,7 +143,7 @@
 #ifdef ANDROID
 #include "utils/paths.h"
 #endif  // ANDROID
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 

@@ -32,7 +32,7 @@
 
 #include "utils/chatutils.h"
 #include "utils/delete2.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "render/sdlgraphics.h"
 
@@ -240,7 +240,7 @@ TEST_CASE("chatutils replaceVars")
 
     delete2(actorManager);
     delete2(client);
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }
 
 TEST_CASE("chatutils textToMe")

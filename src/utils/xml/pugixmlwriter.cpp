@@ -26,7 +26,7 @@
 
 #include "utils/delete2.h"
 #include "utils/fuzzer.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"

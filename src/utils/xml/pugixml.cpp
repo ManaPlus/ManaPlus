@@ -27,7 +27,7 @@
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/fuzzer.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"
@@ -75,7 +75,7 @@ namespace XML
         valid = true;
         if (useResman == UseResman_true)
         {
-            data = static_cast<char*>(PhysFs::loadFile(
+            data = static_cast<char*>(VirtFs::loadFile(
                 filename.c_str(), size));
         }
         else

@@ -336,7 +336,7 @@ void ResourceManager::clearDeleted(const bool full)
 }
 bool ResourceManager::setWriteDir(const std::string &path) const
 {
-    return static_cast<bool>(PhysFs::setWriteDir(path.c_str()));
+    return static_cast<bool>(VirtFs::setWriteDir(path.c_str()));
 }
 
 bool ResourceManager::addToSearchPath(const std::string &path,
@@ -344,12 +344,12 @@ bool ResourceManager::addToSearchPath(const std::string &path,
 {
     logger->log("Adding to PhysicsFS: %s (%s)", path.c_str(),
         append == Append_true ? "append" : "prepend");
-    if (!PhysFs::addToSearchPath(path.c_str(),
+    if (!VirtFs::addToSearchPath(path.c_str(),
         append == Append_true ? 1 : 0))
     {
         logger->log("Error: %s: addToSearchPath failed: %s",
             path.c_str(),
-            PhysFs::getLastError());
+            VirtFs::getLastError());
         return false;
     }
     return true;
@@ -358,11 +358,11 @@ bool ResourceManager::addToSearchPath(const std::string &path,
 bool ResourceManager::removeFromSearchPath(const std::string &path) const
 {
     logger->log("Removing from PhysicsFS: %s", path.c_str());
-    if (!PhysFs::removeFromSearchPath(path.c_str()))
+    if (!VirtFs::removeFromSearchPath(path.c_str()))
     {
         logger->log("Error: %s: removeFromSearchPath failed: %s",
             path.c_str(),
-            PhysFs::getLastError());
+            VirtFs::getLastError());
         return false;
     }
     return true;
@@ -373,7 +373,7 @@ void ResourceManager::searchAndAddArchives(const std::string &restrict path,
                                            const Append append) const
 {
     const char *const dirSep = dirSeparator;
-    char **list = PhysFs::enumerateFiles(path.c_str());
+    char **list = VirtFs::enumerateFiles(path.c_str());
 
     for (char **i = list; *i; i++)
     {
@@ -383,13 +383,13 @@ void ResourceManager::searchAndAddArchives(const std::string &restrict path,
         {
             const std::string file = path + (*i);
             const std::string realPath = std::string(
-                PhysFs::getRealDir(file.c_str()));
+                VirtFs::getRealDir(file.c_str()));
             addToSearchPath(std::string(realPath).append(
                 dirSep).append(file), append);
         }
     }
 
-    PhysFs::freeList(list);
+    VirtFs::freeList(list);
 }
 
 void ResourceManager::searchAndRemoveArchives(const std::string &restrict path,
@@ -397,7 +397,7 @@ void ResourceManager::searchAndRemoveArchives(const std::string &restrict path,
                                               const
 {
     const char *const dirSep = dirSeparator;
-    char **list = PhysFs::enumerateFiles(path.c_str());
+    char **list = VirtFs::enumerateFiles(path.c_str());
 
     for (char **i = list; *i; i++)
     {
@@ -406,13 +406,13 @@ void ResourceManager::searchAndRemoveArchives(const std::string &restrict path,
         {
             const std::string file = path + (*i);
             const std::string realPath = std::string(
-                PhysFs::getRealDir(file.c_str()));
+                VirtFs::getRealDir(file.c_str()));
             removeFromSearchPath(std::string(realPath).append(
                 dirSep).append(file));
         }
     }
 
-    PhysFs::freeList(list);
+    VirtFs::freeList(list);
 }
 
 bool ResourceManager::addResource(const std::string &idPath,

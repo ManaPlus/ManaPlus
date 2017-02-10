@@ -47,7 +47,7 @@
 
 #include "utils/delete2.h"
 #include "utils/files.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
@@ -1066,7 +1066,7 @@ unsigned long UpdaterWindow::getFileHash(const std::string &filePath)
 {
     int size = 0;
     const char *const buf = static_cast<const char*>(
-        PhysFs::loadFile(filePath, size));
+        VirtFs::loadFile(filePath, size));
     if (!buf)
         return 0;
     return Net::Download::adlerBuffer(buf, size);

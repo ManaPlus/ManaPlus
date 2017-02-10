@@ -41,7 +41,7 @@
 
 #include "utils/env.h"
 #include "utils/mrand.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #ifndef USE_SDL2
 #include <SDL.h>
@@ -181,5 +181,5 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
 
     delete client;
     client = nullptr;
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }

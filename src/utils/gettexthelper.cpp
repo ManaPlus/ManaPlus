@@ -28,7 +28,7 @@
 #include "client.h"
 #include "logger.h"
 
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include <libintl.h>
 
@@ -99,16 +99,16 @@ void GettextHelper::initLang()
     bindTextDomain((std::string(getenv("APPDIR")).append("/locale")).c_str());
 #else  // USE_SDL2
 
-    bindTextDomain((std::string(PhysFs::getBaseDir()).append(
+    bindTextDomain((std::string(VirtFs::getBaseDir()).append(
         "/locale")).c_str());
 #endif  // USE_SDL2
 #else  // ANDROID
 #ifdef ENABLE_PORTABLE
-    bindTextDomain((std::string(PhysFs::getBaseDir()).append(
+    bindTextDomain((std::string(VirtFs::getBaseDir()).append(
         "../locale/")).c_str());
 #else  // ENABLE_PORTABLE
 #ifdef __APPLE__
-    bindTextDomain((std::string(PhysFs::getBaseDir())
+    bindTextDomain((std::string(VirtFs::getBaseDir())
         .append("ManaPlus.app/Contents/Resources/locale/")).c_str());
 #else  // __APPLE__
 

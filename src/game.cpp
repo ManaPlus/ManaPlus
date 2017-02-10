@@ -121,7 +121,7 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 
@@ -531,7 +531,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
         logger->log("Directory %s doesn't exist and can't be created! "
                     "Setting screenshot directory to home.",
                     screenshotDirectory.c_str());
-        screenshotDirectory = std::string(PhysFs::getUserDir());
+        screenshotDirectory = std::string(VirtFs::getUserDir());
     }
 
     // Search for an unused screenshot name
@@ -1055,7 +1055,7 @@ void Game::changeMap(const std::string &mapPath)
     std::string realFullMap = paths.getValue("maps", "maps/").append(
         MapDB::getMapName(mMapName)).append(".tmx");
 
-    if (!PhysFs::exists(realFullMap.c_str()))
+    if (!VirtFs::exists(realFullMap.c_str()))
         realFullMap.append(".gz");
 
     // Attempt to load the new map

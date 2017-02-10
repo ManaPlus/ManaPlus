@@ -30,7 +30,7 @@ PRAGMA45(GCC diagnostic pop)
 
 #include <string>
 
-namespace PhysFs
+namespace VirtFs
 {
     void init(const char *const name);
     void updateDirSeparator();
@@ -53,6 +53,12 @@ namespace PhysFs
     bool deinit();
     void permitLinks(const bool val);
     const char *getLastError();
+    int64_t read(PHYSFS_File *const handle,
+                 void *const buffer,
+                 const uint32_t objSize,
+                 const uint32_t objCount);
+    void close(PHYSFS_file *const file);
+    int64_t fileLength(PHYSFS_File *const file);
 }  // namespace PhysFs
 
 extern const char *dirSeparator;

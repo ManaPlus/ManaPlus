@@ -42,7 +42,7 @@
 
 #include "utils/delete2.h"
 #include "utils/env.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #ifndef USE_SDL2
 #include <SDL.h>
@@ -2391,5 +2391,5 @@ TEST_CASE("Dye real dye")
         dyeCheck("|A:#0000FFFF,FF000050", "arrow_up_A.png");
     }
     delete2(client);
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }

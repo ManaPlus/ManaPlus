@@ -171,5 +171,5 @@ TEST_CASE("BrowserBox tests", "browserbox")
     delete box;
     delete client;
     client = nullptr;
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }

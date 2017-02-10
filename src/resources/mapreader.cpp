@@ -58,7 +58,7 @@
 #include "utils/base64.h"
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/stringmap.h"
 
 #include "utils/translation/podict.h"
@@ -1279,7 +1279,7 @@ void MapReader::updateMusic(Map *const map)
     if (p != std::string::npos)
         name = name.substr(0, p);
     name.append(".ogg");
-    if (PhysFs::exists(paths.getStringValue("music").append(name).c_str()))
+    if (VirtFs::exists(paths.getStringValue("music").append(name).c_str()))
         map->setProperty("music", name);
 }
 

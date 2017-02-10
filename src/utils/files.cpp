@@ -30,7 +30,7 @@
 
 #include "utils/mkdir.h"
 #include "utils/paths.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #include "utils/stringutils.h"
 
 #include <algorithm>
@@ -49,14 +49,14 @@ void Files::extractLocale()
     resourceManager->addToSearchPath(fileName2, Append_false);
 
     const std::string localDir = std::string(getenv("APPDIR")).append("/");
-    char **rootDirs = PhysFs::enumerateFiles("locale");
+    char **rootDirs = VirtFs::enumerateFiles("locale");
     for (char **i = rootDirs; *i; i++)
     {
         const std::string dir = std::string("locale/").append(*i);
-        if (PhysFs::isDirectory(dir.c_str()))
+        if (VirtFs::isDirectory(dir.c_str()))
         {
             const std::string moFile = dir + "/LC_MESSAGES/manaplus.mo";
-            if (PhysFs::exists((moFile).c_str()))
+            if (VirtFs::exists((moFile).c_str()))
             {
                 const std::string localFile = localDir + moFile;
                 const std::string localDir2 = localDir + dir + "/LC_MESSAGES";
@@ -65,7 +65,7 @@ void Files::extractLocale()
             }
         }
     }
-    PhysFs::freeList(rootDirs);
+    VirtFs::freeList(rootDirs);
     resourceManager->removeFromSearchPath(fileName2);
     remove(fileName2.c_str());
 }
@@ -91,7 +91,7 @@ void Files::copyPhysFsFile(const std::string &restrict inFile,
                            const std::string &restrict outFile)
 {
     int size = 0;
-    void *const buf = PhysFs::loadFile(inFile, size);
+    void *const buf = VirtFs::loadFile(inFile, size);
     FILE *const file = fopen(outFile.c_str(), "w");
     fwrite(buf, 1, size, file);
     fclose(file);
@@ -109,17 +109,17 @@ void Files::copyPhysFsDir(const std::string &restrict inDir,
                           const std::string &restrict outDir)
 {
     mkdir_r(outDir.c_str());
-    char **files = PhysFs::enumerateFiles(inDir.c_str());
+    char **files = VirtFs::enumerateFiles(inDir.c_str());
     for (char **i = files; *i; i++)
     {
         const std::string file = std::string(inDir).append("/").append(*i);
         const std::string outDir2 = std::string(outDir).append("/").append(*i);
-        if (PhysFs::isDirectory(file.c_str()))
+        if (VirtFs::isDirectory(file.c_str()))
             copyPhysFsDir(file, outDir2);
         else
             copyPhysFsFile(file, outDir2);
     }
-    PhysFs::freeList(files);
+    VirtFs::freeList(files);
 }
 
 void Files::extractZip(const std::string &restrict zipName,
@@ -211,35 +211,35 @@ int Files::copyFile(const std::string &restrict srcName,
 
 void Files::getFiles(const std::string &path, StringVect &list)
 {
-    char **const fonts = PhysFs::enumerateFiles(path.c_str());
+    char **const fonts = VirtFs::enumerateFiles(path.c_str());
     for (char *const *i = fonts; *i; i++)
     {
-        if (!PhysFs::isDirectory((path + *i).c_str()))
+        if (!VirtFs::isDirectory((path + *i).c_str()))
             list.push_back(*i);
     }
-    PhysFs::freeList(fonts);
+    VirtFs::freeList(fonts);
 }
 
 void Files::getDirs(const std::string &path, StringVect &list)
 {
-    char **const fonts = PhysFs::enumerateFiles(path.c_str());
+    char **const fonts = VirtFs::enumerateFiles(path.c_str());
     for (char *const *i = fonts; *i; i++)
     {
-        if (PhysFs::isDirectory((path + *i).c_str()))
+        if (VirtFs::isDirectory((path + *i).c_str()))
             list.push_back(*i);
     }
-    PhysFs::freeList(fonts);
+    VirtFs::freeList(fonts);
 }
 
 void Files::getFilesWithDir(const std::string &path, StringVect &list)
 {
-    char **const fonts = PhysFs::enumerateFiles(path.c_str());
+    char **const fonts = VirtFs::enumerateFiles(path.c_str());
     for (char *const *i = fonts; *i; i++)
     {
-        if (!PhysFs::isDirectory((path + *i).c_str()))
+        if (!VirtFs::isDirectory((path + *i).c_str()))
             list.push_back(path + *i);
     }
-    PhysFs::freeList(fonts);
+    VirtFs::freeList(fonts);
 }
 
 bool Files::existsLocal(const std::string &path)
@@ -256,7 +256,7 @@ bool Files::existsLocal(const std::string &path)
 std::string Files::getPath(const std::string &file)
 {
     // get the real path to the file
-    const char *const tmp = PhysFs::getRealDir(file.c_str());
+    const char *const tmp = VirtFs::getRealDir(file.c_str());
     std::string path;
 
     // if the file is not in the search path, then its nullptr
@@ -282,7 +282,7 @@ std::string Files::loadTextFileString(const std::string &fileName)
 {
     int contentsLength;
     char *fileContents = static_cast<char*>(
-        PhysFs::loadFile(fileName, contentsLength));
+        VirtFs::loadFile(fileName, contentsLength));
 
     if (!fileContents)
     {
@@ -299,7 +299,7 @@ bool Files::loadTextFile(const std::string &fileName,
 {
     int contentsLength;
     char *fileContents = static_cast<char*>(
-        PhysFs::loadFile(fileName, contentsLength));
+        VirtFs::loadFile(fileName, contentsLength));
 
     if (!fileContents)
     {

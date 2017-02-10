@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 
 #include "logger.h"
 
@@ -33,7 +33,7 @@
 
 const char *dirSeparator = nullptr;
 
-namespace PhysFs
+namespace VirtFs
 {
 #if defined(__native_client__)
     void init(const char *const name A_UNUSED)
@@ -51,7 +51,7 @@ namespace PhysFs
 #endif  // defined(__native_client__)
         {
             std::cout << "Error while initializing PhysFS: "
-                << PHYSFS_getLastError() << std::endl;
+                << VirtFs::getLastError() << std::endl;
             _exit(1);
         }
         updateDirSeparator();
@@ -141,23 +141,25 @@ namespace PhysFs
     void *loadFile(const std::string &fileName, int &fileSize)
     {
         // Attempt to open the specified file using PhysicsFS
-        PHYSFS_file *const file = PhysFs::openRead(fileName.c_str());
+        PHYSFS_file *const file = VirtFs::openRead(fileName.c_str());
 
         if (!file)
         {
             logger->log("Warning: Failed to load %s: %s",
-                        fileName.c_str(), PHYSFS_getLastError());
+                fileName.c_str(),
+                VirtFs::getLastError());
             return nullptr;
         }
 
-        logger->log("Loaded %s/%s", PhysFs::getRealDir(fileName.c_str()),
+        logger->log("Loaded %s/%s",
+            VirtFs::getRealDir(fileName.c_str()),
             fileName.c_str());
 
-        fileSize = CAST_S32(PHYSFS_fileLength(file));
+        fileSize = CAST_S32(VirtFs::fileLength(file));
         // Allocate memory and load the file
         void *const buffer = calloc(fileSize, 1);
-        PHYSFS_read(file, buffer, 1, fileSize);
-        PHYSFS_close(file);
+        VirtFs::read(file, buffer, 1, fileSize);
+        VirtFs::close(file);
 
         return buffer;
     }
@@ -166,7 +168,8 @@ namespace PhysFs
     {
         if (PHYSFS_deinit() != 0)
         {
-            logger->log("Physfs deinit error: %s", PHYSFS_getLastError());
+            logger->log("Physfs deinit error: %s",
+                VirtFs::getLastError());
             return false;
         }
         return true;
@@ -180,5 +183,23 @@ namespace PhysFs
     const char *getLastError()
     {
         return PHYSFS_getLastError();
+    }
+
+    void close(PHYSFS_file *const file)
+    {
+        PHYSFS_close(file);
+    }
+
+    int64_t read(PHYSFS_File *const file,
+                 void *const buffer,
+                 const uint32_t objSize,
+                 const uint32_t objCount)
+    {
+        return PHYSFS_read(file, buffer, objSize, objCount);
+    }
+
+    int64_t fileLength(PHYSFS_File *const file)
+    {
+        return PHYSFS_fileLength(file);
     }
 }  // namespace PhysFs

@@ -29,7 +29,7 @@
 
 #include "utils/delete2.h"
 #include "utils/env.h"
-#include "utils/physfstools.h"
+#include "utils/virtfs.h"
 #ifdef ENABLE_PUGIXML
 #include "utils/xmlwriter.h"
 #endif  // ENABLE_PUGIXML
@@ -358,5 +358,5 @@ TEST_CASE("xml doc")
     }
     delete2(theme);
     delete2(client);
-//    PhysFs::deinit();
+//    VirtFs::deinit();
 }
