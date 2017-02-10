@@ -34,11 +34,11 @@
 #include "debug.h"
 
 #ifdef USE_SDL2
-#define PHYSFSINT int64_t
-#define PHYSFSSIZE size_t
+#define RWOPSINT int64_t
+#define RWOPSSIZE size_t
 #else  // USE_SDL2
-#define PHYSFSINT int32_t
-#define PHYSFSSIZE int
+#define RWOPSINT int32_t
+#define RWOPSSIZE int
 #endif  // USE_SDL2
 
 #ifdef DUMP_LEAKED_RESOURCES
@@ -107,15 +107,15 @@ void VirtFs::reportLeaks()
 }
 #endif  // DEBUG_VIRTFS
 
-static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw,
-                                  const PHYSFSINT offset,
-                                  const int whence)
+static RWOPSINT virtfsrwops_seek(SDL_RWops *const rw,
+                                 const RWOPSINT offset,
+                                 const int whence)
 {
     if (!rw)
         return -1;
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
-    PHYSFSINT pos = 0;
+    RWOPSINT pos = 0;
 
     if (whence == SEEK_SET)
     {
@@ -127,7 +127,7 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw,
         if (current == -1)
         {
             logger->assertLog(
-                "physfsrwops_seek: Can't find position in file: %s",
+                "virtfsrwops_seek: Can't find position in file: %s",
                 VirtFs::getLastError());
             return -1;
         } /* if */
@@ -135,7 +135,7 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw,
         pos = CAST_S32(current);
         if (static_cast<int64_t>(pos) != current)
         {
-            logger->assertLog("physfsrwops_seek: "
+            logger->assertLog("virtfsrwops_seek: "
                 "Can't fit current file position in an int!");
             return -1;
         } /* if */
@@ -150,15 +150,15 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw,
         const int64_t len = VirtFs::fileLength(handle);
         if (len == -1)
         {
-            logger->assertLog("physfsrwops_seek:Can't find end of file: %s",
+            logger->assertLog("virtfsrwops_seek:Can't find end of file: %s",
                 VirtFs::getLastError());
             return -1;
         } /* if */
 
-        pos = static_cast<PHYSFSINT>(len);
+        pos = static_cast<RWOPSINT>(len);
         if (static_cast<int64_t>(pos) != len)
         {
-            logger->assertLog("physfsrwops_seek: "
+            logger->assertLog("virtfsrwops_seek: "
                 "Can't fit end-of-file position in an int!");
             return -1;
         } /* if */
@@ -167,31 +167,31 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw,
     } /* else if */
     else
     {
-        logger->assertLog("physfsrwops_seek: Invalid 'whence' parameter.");
+        logger->assertLog("virtfsrwops_seek: Invalid 'whence' parameter.");
         return -1;
     } /* else */
 
     if (pos < 0)
     {
-        logger->assertLog("physfsrwops_seek: "
+        logger->assertLog("virtfsrwops_seek: "
             "Attempt to seek past start of file.");
         return -1;
     } /* if */
 
     if (!VirtFs::seek(handle, static_cast<uint64_t>(pos)))
     {
-        logger->assertLog("physfsrwops_seek: seek error: %s",
+        logger->assertLog("virtfsrwops_seek: seek error: %s",
             VirtFs::getLastError());
         return -1;
     } /* if */
 
     return pos;
-} /* physfsrwops_seek */
+} /* virtfsrwops_seek */
 
-static PHYSFSSIZE physfsrwops_read(SDL_RWops *const rw,
-                                   void *ptr,
-                                   const PHYSFSSIZE size,
-                                   const PHYSFSSIZE maxnum)
+static RWOPSSIZE virtfsrwops_read(SDL_RWops *const rw,
+                                  void *ptr,
+                                  const RWOPSSIZE size,
+                                  const RWOPSSIZE maxnum)
 {
     if (!rw)
         return 0;
@@ -204,17 +204,18 @@ static PHYSFSSIZE physfsrwops_read(SDL_RWops *const rw,
     {
         if (!VirtFs::eof(handle)) /* not EOF? Must be an error. */
         {
-            logger->assertLog("physfsrwops_seek: read error: %s",
-                PHYSFS_getLastError());
+            logger->assertLog("virtfsrwops_seek: read error: %s",
+                VirtFs::getLastError());
         }
     } /* if */
 
     return CAST_S32(rc);
-} /* physfsrwops_read */
+} /* virtfsrwops_read */
 
-static PHYSFSSIZE physfsrwops_write(SDL_RWops *const rw, const void *ptr,
-                                    const PHYSFSSIZE size,
-                                    const PHYSFSSIZE num)
+static RWOPSSIZE virtfsrwops_write(SDL_RWops *const rw,
+                                   const void *ptr,
+                                   const RWOPSSIZE size,
+                                   const RWOPSSIZE num)
 {
     if (!rw)
         return 0;
@@ -225,14 +226,14 @@ static PHYSFSSIZE physfsrwops_write(SDL_RWops *const rw, const void *ptr,
         CAST_U32(num));
     if (rc != static_cast<int64_t>(num))
     {
-        logger->assertLog("physfsrwops_seek: write error: %s",
-            PHYSFS_getLastError());
+        logger->assertLog("virtfsrwops_seek: write error: %s",
+            VirtFs::getLastError());
     }
 
     return CAST_S32(rc);
-} /* physfsrwops_write */
+} /* virtfsrwops_write */
 
-static int physfsrwops_close(SDL_RWops *const rw)
+static int virtfsrwops_close(SDL_RWops *const rw)
 {
     if (!rw)
         return 0;
@@ -240,7 +241,7 @@ static int physfsrwops_close(SDL_RWops *const rw)
         rw->hidden.unknown.data1);
     if (!VirtFs::close(handle))
     {
-        logger->assertLog("physfsrwops_seek: close error: %s",
+        logger->assertLog("virtfsrwops_seek: close error: %s",
             VirtFs::getLastError());
         return -1;
     } /* if */
@@ -248,7 +249,7 @@ static int physfsrwops_close(SDL_RWops *const rw)
     SDL_FreeRW(rw);
 #ifdef DUMP_LEAKED_RESOURCES
     if (openedRWops <= 0)
-        logger->assertLog("physfsrwops_seek: closing already closed RWops");
+        logger->assertLog("virtfsrwops_seek: closing already closed RWops");
     openedRWops --;
 #endif  // DUMP_LEAKED_RESOURCES
 #ifdef DEBUG_VIRTFS
@@ -256,15 +257,15 @@ static int physfsrwops_close(SDL_RWops *const rw)
 #endif  // DEBUG_VIRTFS
 
     return 0;
-} /* physfsrwops_close */
+} /* virtfsrwops_close */
 
 #ifdef USE_SDL2
-static PHYSFSINT physfsrwops_size(SDL_RWops *const rw)
+static RWOPSINT virtfsrwops_size(SDL_RWops *const rw)
 {
     PHYSFS_file *const handle = static_cast<PHYSFS_file*>(
         rw->hidden.unknown.data1);
     return VirtFs::fileLength(handle);
-} /* physfsrwops_size */
+} /* virtfsrwops_size */
 #endif  // USE_SDL2
 
 static SDL_RWops *create_rwops(PHYSFS_file *const handle)
@@ -273,7 +274,7 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
 
     if (!handle)
     {
-        logger->assertLog("physfsrwops_seek: create rwops error: %s",
+        logger->assertLog("virtfsrwops_seek: create rwops error: %s",
             VirtFs::getLastError());
     }
     else
@@ -282,13 +283,13 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
         if (retval)
         {
 #ifdef USE_SDL2
-            retval->size  = &physfsrwops_size;
+            retval->size  = &virtfsrwops_size;
 #endif  // USE_SDL2
 
-            retval->seek  = &physfsrwops_seek;
-            retval->read  = &physfsrwops_read;
-            retval->write = &physfsrwops_write;
-            retval->close = &physfsrwops_close;
+            retval->seek  = &virtfsrwops_seek;
+            retval->read  = &virtfsrwops_read;
+            retval->write = &virtfsrwops_write;
+            retval->close = &virtfsrwops_close;
             retval->hidden.unknown.data1 = handle;
         } /* if */
 #ifdef DUMP_LEAKED_RESOURCES
@@ -304,7 +305,7 @@ SDL_RWops *VirtFs::MakeRWops(PHYSFS_file *const handle)
     SDL_RWops *retval = nullptr;
     if (!handle)
     {
-        logger->assertLog("physfsrwops_seek: NULL pointer passed to "
+        logger->assertLog("virtfsrwops_seek: NULL pointer passed to "
             "RWopsmakeRWops().");
     }
     else
@@ -397,7 +398,7 @@ void VirtFs::reportRWops()
 {
     if (openedRWops)
     {
-        logger->assertLog("physfsrwops_seek: leaking RWops: %d",
+        logger->assertLog("virtfsrwops_seek: leaking RWops: %d",
             openedRWops);
     }
 }
