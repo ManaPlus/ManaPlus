@@ -45,7 +45,7 @@
 static int openedRWops = 0;
 #endif  // DUMP_LEAKED_RESOURCES
 
-#ifdef DEBUG_PHYSFS
+#ifdef DEBUG_VIRTFS
 namespace
 {
     std::map<void*, VirtFs::DebugMemoryObject*> mRWops;
@@ -105,7 +105,7 @@ void VirtFs::reportLeaks()
         mRWops.clear();
     }
 }
-#endif  // DEBUG_PHYSFS
+#endif  // DEBUG_VIRTFS
 
 static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw,
                                   const PHYSFSINT offset,
@@ -251,9 +251,9 @@ static int physfsrwops_close(SDL_RWops *const rw)
         logger->assertLog("physfsrwops_seek: closing already closed RWops");
     openedRWops --;
 #endif  // DUMP_LEAKED_RESOURCES
-#ifdef DEBUG_PHYSFS
+#ifdef DEBUG_VIRTFS
     deleteDebugRWops(rw);
-#endif  // DEBUG_PHYSFS
+#endif  // DEBUG_VIRTFS
 
     return 0;
 } /* physfsrwops_close */
@@ -326,14 +326,14 @@ static bool checkFilePath(const char *const fname)
 }
 #endif  // __APPLE__
 
-#ifdef DEBUG_PHYSFS
+#ifdef DEBUG_VIRTFS
 #undef RWopsOpenRead
 SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname,
                                  const char *restrict const file,
                                  const unsigned line)
-#else  // DEBUG_PHYSFS
+#else  // DEBUG_VIRTFS
 SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname)
-#endif  // DEBUG_PHYSFS
+#endif  // DEBUG_VIRTFS
 {
     BLOCK_START("RWopsopenRead")
 #ifdef __APPLE__
@@ -346,29 +346,29 @@ SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname)
 #endif  // USE_FUZZER
 #ifdef USE_PROFILER
 
-#ifdef DEBUG_PHYSFS
+#ifdef DEBUG_VIRTFS
     SDL_RWops *const ret = addDebugRWops(
         create_rwops(VirtFs::openRead(fname)),
         fname,
         file,
         line);
-#else  // DEBUG_PHYSFS
+#else  // DEBUG_VIRTFS
     SDL_RWops *const ret = create_rwops(VirtFs::openRead(fname));
-#endif  // DEBUG_PHYSFS
+#endif  // DEBUG_VIRTFS
 
     BLOCK_END("RWopsopenRead")
     return ret;
 #else  // USE_PROFILER
 
-#ifdef DEBUG_PHYSFS
+#ifdef DEBUG_VIRTFS
     return addDebugRWops(
         create_rwops(VirtFs::openRead(fname)),
         fname,
         file,
         line);
-#else  // DEBUG_PHYSFS
+#else  // DEBUG_VIRTFS
     return create_rwops(VirtFs::openRead(fname));
-#endif  // DEBUG_PHYSFS
+#endif  // DEBUG_VIRTFS
 #endif  // USE_PROFILER
 } /* RWopsopenRead */
 

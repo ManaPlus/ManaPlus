@@ -133,9 +133,9 @@ int mainGui(int argc, char *argv[])
 #ifdef DUMP_LEAKED_RESOURCES
     VirtFs::reportRWops();
 #endif  // DUMP_LEAKED_RESOURCES
-#ifdef DEBUG_PHYSFS
+#ifdef DEBUG_VIRTFS
     VirtFs::reportLeaks();
-#endif  // DEBUG_PHYSFS
+#endif  // DEBUG_VIRTFS
 
     return ret;
 }

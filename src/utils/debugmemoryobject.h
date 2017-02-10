@@ -21,7 +21,7 @@
 #ifndef UTILS_DEBUGMEMORYOBJECT_H
 #define UTILS_DEBUGMEMORYOBJECT_H
 
-#ifdef DEBUG_PHYSFS
+#ifdef DEBUG_VIRTFS
 
 #include "utils/stringutils.h"
 
@@ -46,5 +46,5 @@ namespace VirtFs
     };
 }  // VirtFs
 
-#endif  // DEBUG_PHYSFS
+#endif  // DEBUG_VIRTFS
 #endif  // UTILS_DEBUGMEMORYOBJECT_H

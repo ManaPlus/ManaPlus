@@ -64,8 +64,6 @@
 #endif  // ENABLE_SDL_DEBUG
 
 
-#ifdef DEBUG_PHYSFS
+#ifdef DEBUG_VIRTFS
 #define RWopsOpenRead(name) RWopsOpenRead(name, __FILE__, __LINE__)
-#else  // DEBUG_PHYSFS
-
 #endif  // DEBUG_PHYSFS
