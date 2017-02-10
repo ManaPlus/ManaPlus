@@ -58,17 +58,17 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
     } /* if */
     else if (whence == SEEK_CUR)
     {
-        const PHYSFS_sint64 current = PHYSFS_tell(handle);
+        const int64_t current = VirtFs::tell(handle);
         if (current == -1)
         {
             logger->assertLog(
                 "physfsrwops_seek: Can't find position in file: %s",
-                PHYSFS_getLastError());
+                VirtFs::getLastError());
             return -1;
         } /* if */
 
         pos = CAST_S32(current);
-        if (static_cast<PHYSFS_sint64>(pos) != current)
+        if (static_cast<int64_t>(pos) != current)
         {
             logger->assertLog("physfsrwops_seek: "
                 "Can't fit current file position in an int!");
@@ -82,16 +82,16 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
     } /* else if */
     else if (whence == SEEK_END)
     {
-        const PHYSFS_sint64 len = PHYSFS_fileLength(handle);
+        const int64_t len = VirtFs::fileLength(handle);
         if (len == -1)
         {
             logger->assertLog("physfsrwops_seek:Can't find end of file: %s",
-                PHYSFS_getLastError());
+                VirtFs::getLastError());
             return -1;
         } /* if */
 
         pos = static_cast<PHYSFSINT>(len);
-        if (static_cast<PHYSFS_sint64>(pos) != len)
+        if (static_cast<int64_t>(pos) != len)
         {
             logger->assertLog("physfsrwops_seek: "
                 "Can't fit end-of-file position in an int!");
@@ -113,10 +113,10 @@ static PHYSFSINT physfsrwops_seek(SDL_RWops *const rw, const PHYSFSINT offset,
         return -1;
     } /* if */
 
-    if (!PHYSFS_seek(handle, static_cast<PHYSFS_uint64>(pos)))
+    if (!VirtFs::seek(handle, static_cast<uint64_t>(pos)))
     {
         logger->assertLog("physfsrwops_seek: seek error: %s",
-            PHYSFS_getLastError());
+            VirtFs::getLastError());
         return -1;
     } /* if */
 
@@ -132,12 +132,12 @@ static PHYSFSSIZE physfsrwops_read(SDL_RWops *const rw,
         return 0;
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
-    const PHYSFS_sint64 rc = PHYSFS_read(handle, ptr,
+    const int64_t rc = VirtFs::read(handle, ptr,
         CAST_U32(size),
         CAST_U32(maxnum));
-    if (rc != static_cast<PHYSFS_sint64>(maxnum))
+    if (rc != static_cast<int64_t>(maxnum))
     {
-        if (!PHYSFS_eof(handle)) /* not EOF? Must be an error. */
+        if (!VirtFs::eof(handle)) /* not EOF? Must be an error. */
         {
             logger->assertLog("physfsrwops_seek: read error: %s",
                 PHYSFS_getLastError());
@@ -155,10 +155,10 @@ static PHYSFSSIZE physfsrwops_write(SDL_RWops *const rw, const void *ptr,
         return 0;
     PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
         rw->hidden.unknown.data1);
-    const PHYSFS_sint64 rc = PHYSFS_write(handle, ptr,
+    const int64_t rc = VirtFs::write(handle, ptr,
         CAST_U32(size),
         CAST_U32(num));
-    if (rc != static_cast<PHYSFS_sint64>(num))
+    if (rc != static_cast<int64_t>(num))
     {
         logger->assertLog("physfsrwops_seek: write error: %s",
             PHYSFS_getLastError());
@@ -173,10 +173,10 @@ static int physfsrwops_close(SDL_RWops *const rw)
         return 0;
     PHYSFS_file *const handle = static_cast<PHYSFS_file*>(
         rw->hidden.unknown.data1);
-    if (!PHYSFS_close(handle))
+    if (!VirtFs::close(handle))
     {
         logger->assertLog("physfsrwops_seek: close error: %s",
-            PHYSFS_getLastError());
+            VirtFs::getLastError());
         return -1;
     } /* if */
 
@@ -198,7 +198,7 @@ static PHYSFSINT physfsrwops_size(SDL_RWops *const rw)
 {
     PHYSFS_file *const handle = static_cast<PHYSFS_file*>(
         rw->hidden.unknown.data1);
-    return PHYSFS_fileLength(handle);
+    return VirtFs::fileLength(handle);
 } /* physfsrwops_size */
 #endif  // USE_SDL2
 
@@ -209,7 +209,7 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
     if (!handle)
     {
         logger->assertLog("physfsrwops_seek: create rwops error: %s",
-            PHYSFS_getLastError());
+            VirtFs::getLastError());
     }
     else
     {

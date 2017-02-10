@@ -57,8 +57,16 @@ namespace VirtFs
                  void *const buffer,
                  const uint32_t objSize,
                  const uint32_t objCount);
-    void close(PHYSFS_file *const file);
+    int64_t write(PHYSFS_File *const file,
+                  const void *const buffer,
+                  const uint32_t objSize,
+                  const uint32_t objCount);
+    int close(PHYSFS_file *const file);
     int64_t fileLength(PHYSFS_File *const file);
+    int64_t tell(PHYSFS_File *const file);
+    int seek(PHYSFS_File *const file,
+             const uint64_t pos);
+    int eof(PHYSFS_File *const file);
 }  // namespace PhysFs
 
 extern const char *dirSeparator;

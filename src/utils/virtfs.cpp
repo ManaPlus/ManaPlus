@@ -185,9 +185,9 @@ namespace VirtFs
         return PHYSFS_getLastError();
     }
 
-    void close(PHYSFS_file *const file)
+    int close(PHYSFS_file *const file)
     {
-        PHYSFS_close(file);
+        return PHYSFS_close(file);
     }
 
     int64_t read(PHYSFS_File *const file,
@@ -198,8 +198,32 @@ namespace VirtFs
         return PHYSFS_read(file, buffer, objSize, objCount);
     }
 
+    int64_t write(PHYSFS_File *const file,
+                  const void *const buffer,
+                  const uint32_t objSize,
+                  const uint32_t objCount)
+    {
+        return PHYSFS_write(file, buffer, objSize, objCount);
+    }
+
     int64_t fileLength(PHYSFS_File *const file)
     {
         return PHYSFS_fileLength(file);
+    }
+
+    int64_t tell(PHYSFS_File *const file)
+    {
+        return PHYSFS_tell(file);
+    }
+
+    int seek(PHYSFS_File *const file,
+             const uint64_t pos)
+    {
+        return PHYSFS_seek(file, pos);
+    }
+
+    int eof(PHYSFS_File *const file)
+    {
+        return PHYSFS_eof(file);
     }
 }  // namespace PhysFs
