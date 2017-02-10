@@ -46,10 +46,13 @@
 
 #include "logger.h"
 
+#ifdef DEBUG_VIRTFS
 #include "utils/debugmemoryobject.h"
-#include "utils/fuzzer.h"
 
 #include <map>
+#endif  // DEBUG_VIRTFS
+
+#include "utils/fuzzer.h"
 
 #include "debug.h"
 
