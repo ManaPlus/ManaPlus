@@ -59,8 +59,8 @@ TEST_CASE("DyePalette tests")
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data/test", Append_false);
-    resourceManager->addToSearchPath("../data/test", Append_false);
+    VirtFs::addDirToSearchPath("data/test", Append_false);
+    VirtFs::addDirToSearchPath("../data/test", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();

@@ -94,8 +94,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
     logger = new Logger();
     ResourceManager::init();
     ResourceManager *safeResman = resourceManager;
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
 
     imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2

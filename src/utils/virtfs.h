@@ -21,6 +21,8 @@
 #ifndef UTILS_PHYSFSTOOLS_H
 #define UTILS_PHYSFSTOOLS_H
 
+#include "enums/simpletypes/append.h"
+
 #include "localconsts.h"
 
 #include <string>
@@ -42,8 +44,12 @@ namespace VirtFs
     VirtFile *openWrite(const char *const filename);
     VirtFile *openAppend(const char *const filename);
     bool setWriteDir(const char *const newDir);
-    bool addToSearchPath(const char *const newDir, const int appendToPath);
-    bool removeFromSearchPath(const char *const oldDir);
+    bool addDirToSearchPath(const std::string &newDir,
+                            const Append append);
+    bool removeDirFromSearchPath(const std::string &oldDir);
+    bool addZipToSearchPath(const std::string &newDir,
+                            const Append append);
+    bool removeZipFromSearchPath(const std::string &oldDir);
     const char *getRealDir(const char *const filename);
     bool mkdir(const char *const dirName);
     void *loadFile(const std::string &fileName, int &fileSize);

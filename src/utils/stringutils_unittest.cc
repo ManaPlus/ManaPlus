@@ -1264,10 +1264,10 @@ TEST_CASE("stringuntils replaceItemLinks")
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
-    resourceManager->addToSearchPath("data/test", Append_false);
-    resourceManager->addToSearchPath("../data/test", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data/test", Append_false);
+    VirtFs::addDirToSearchPath("../data/test", Append_false);
 
     ItemDB::NamedItemInfos &namedInfos = ItemDB::getNamedItemInfosTest();
     ItemDB::ItemInfos &infos = ItemDB::getItemInfosTest();

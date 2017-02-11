@@ -30,6 +30,8 @@
 
 #include "gui/widgets/browserbox.h"
 
+#include "utils/virtfs.h"
+
 #include "render/sdlgraphics.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
@@ -47,8 +49,8 @@ TEST_CASE("BrowserBox tests", "browserbox")
     logger = new Logger();
     imageHelper = new SDLImageHelper();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;

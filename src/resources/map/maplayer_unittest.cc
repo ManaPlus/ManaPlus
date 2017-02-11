@@ -28,6 +28,8 @@
 
 #include "gui/theme.h"
 
+#include "utils/virtfs.h"
+
 #include "render/mockgraphics.h"
 
 #include "resources/sdlimagehelper.h"
@@ -1645,8 +1647,8 @@ TEST_CASE("MapLayer draw")
 TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
 {
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
 
     imageHelper = new SDLImageHelper;
 #ifdef USE_SDL2
@@ -1993,8 +1995,8 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
 TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
 {
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
 
     imageHelper = new SDLImageHelper;
 #ifdef USE_SDL2
@@ -2347,8 +2349,8 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
 TEST_CASE("MapLayer drawFringe")
 {
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
     logger = new Logger;
 
     imageHelper = new SDLImageHelper;

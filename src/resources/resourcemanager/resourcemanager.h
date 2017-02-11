@@ -68,23 +68,6 @@ class ResourceManager final : public MemoryCounter
         bool setWriteDir(const std::string &path) const;
 
         /**
-         * Adds a directory or archive to the search path. If append is true
-         * then the directory is added to the end of the search path, otherwise
-         * it is added at the front.
-         *
-         * @return <code>true</code> on success, <code>false</code> otherwise.
-         */
-        bool addToSearchPath(const std::string &path,
-                             const Append append) const;
-
-        /**
-         * Remove a directory or archive from the search path.
-         *
-         * @return <code>true</code> on success, <code>false</code> otherwise.
-         */
-        bool removeFromSearchPath(const std::string &path) const;
-
-        /**
         * Searches for zip files and adds them to the search path.
         */
         void searchAndAddArchives(const std::string &restrict path,

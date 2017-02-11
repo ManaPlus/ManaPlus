@@ -190,9 +190,9 @@ void Dirs::extractDataDir()
 
 void Dirs::mountDataDir()
 {
-    resourceManager->addToSearchPath(PKG_DATADIR "data/perserver/default",
+    VirtFs::addDirToSearchPath(PKG_DATADIR "data/perserver/default",
         Append_false);
-    resourceManager->addToSearchPath("data/perserver/default",
+    VirtFs::addDirToSearchPath("data/perserver/default",
         Append_false);
 
 #if defined __APPLE__
@@ -209,29 +209,29 @@ void Dirs::mountDataDir()
     CFRelease(resourcesURL);
     // possible crash
     strncat(path, "/data", PATH_MAX - 1);
-    resourceManager->addToSearchPath(path, Append_false);
+    VirtFs::addDirToSearchPath(path, Append_false);
 // possible this need for support run client from dmg images.
 //    mPackageDir = path;
 #endif  // defined __APPLE__
 
-    resourceManager->addToSearchPath(PKG_DATADIR "data", Append_false);
+    VirtFs::addDirToSearchPath(PKG_DATADIR "data", Append_false);
     setPackageDir(PKG_DATADIR "data");
-    resourceManager->addToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
 
 #ifdef ANDROID
 #ifdef USE_SDL2
     if (getenv("APPDIR"))
     {
         const std::string appDir = getenv("APPDIR");
-        resourceManager->addToSearchPath(appDir + "/data", Append_false);
-        resourceManager->addToSearchPath(appDir + "/data/perserver/default",
+        VirtFs::addDirToSearchPath(appDir + "/data", Append_false);
+        VirtFs::addDirToSearchPath(appDir + "/data/perserver/default",
             Append_false);
     }
 #endif  // USE_SDL2
 #endif  // ANDROID
 
 #if defined __native_client__
-    resourceManager->addToSearchPath("/http/data.zip", Append_false);
+    VirtFs::addZipToSearchPath("/http/data.zip", Append_false);
 #endif  // defined __native_client__
 
     // Add branding/data to PhysFS search path
@@ -251,7 +251,7 @@ void Dirs::mountDataDir()
 
         if (loc > 0)
         {
-            resourceManager->addToSearchPath(path.substr(
+            VirtFs::addDirToSearchPath(path.substr(
                 0, loc + 1).append("data"),
                 Append_false);
         }

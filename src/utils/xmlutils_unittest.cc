@@ -38,8 +38,8 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
 
     std::vector<int> arr;
 
@@ -68,8 +68,8 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
 
     std::map<std::string, std::string> arr;
 
@@ -97,8 +97,8 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data/test", Append_false);
-    resourceManager->addToSearchPath("../data/test", Append_false);
+    VirtFs::addDirToSearchPath("data/test", Append_false);
+    VirtFs::addDirToSearchPath("../data/test", Append_false);
 
     std::map<int32_t, int32_t> arr;
 

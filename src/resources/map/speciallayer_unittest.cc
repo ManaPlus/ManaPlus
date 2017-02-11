@@ -27,13 +27,14 @@
 
 #include "enums/resources/map/mapitemtype.h"
 
+#include "utils/delete2.h"
+#include "utils/virtfs.h"
+
 #include "resources/sdlimagehelper.h"
 
 #include "resources/map/speciallayer.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
-
-#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -41,8 +42,8 @@ TEST_CASE("SpecialLayer updateCache")
 {
     client = new Client;
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
 
     imageHelper = new SDLImageHelper;
 #ifdef USE_SDL2

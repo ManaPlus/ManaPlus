@@ -136,14 +136,28 @@ namespace VirtFs
         return PHYSFS_setWriteDir(newDir);
     }
 
-    bool addToSearchPath(const char *const newDir, const int appendToPath)
+    bool addDirToSearchPath(const std::string &newDir,
+                            const Append append)
     {
-        return PHYSFS_addToSearchPath(newDir, appendToPath);
+        return PHYSFS_addToSearchPath(newDir.c_str(),
+            append == Append_true ? 1 : 0);
     }
 
-    bool removeFromSearchPath(const char *const oldDir)
+    bool removeDirFromSearchPath(const std::string &oldDir)
     {
-        return PHYSFS_removeFromSearchPath(oldDir);
+        return PHYSFS_removeFromSearchPath(oldDir.c_str());
+    }
+
+    bool addZipToSearchPath(const std::string &newDir,
+                            const Append append)
+    {
+        return PHYSFS_addToSearchPath(newDir.c_str(),
+            append == Append_true ? 1 : 0);
+    }
+
+    bool removeZipFromSearchPath(const std::string &oldDir)
+    {
+        return PHYSFS_removeFromSearchPath(oldDir.c_str());
     }
 
     const char *getRealDir(const char *const filename)

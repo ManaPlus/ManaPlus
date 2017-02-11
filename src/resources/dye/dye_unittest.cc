@@ -2358,8 +2358,8 @@ TEST_CASE("Dye real dye")
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data/test", Append_false);
-    resourceManager->addToSearchPath("../data/test", Append_false);
+    VirtFs::addDirToSearchPath("data/test", Append_false);
+    VirtFs::addDirToSearchPath("../data/test", Append_false);
 
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;

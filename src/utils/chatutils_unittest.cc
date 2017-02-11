@@ -54,8 +54,8 @@ TEST_CASE("chatutils replaceVars")
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();
-    resourceManager->addToSearchPath("data", Append_false);
-    resourceManager->addToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
     theme = new Theme;
     Theme::selectSkin();
     imageHelper = new SDLImageHelper();

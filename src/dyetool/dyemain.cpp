@@ -88,8 +88,8 @@ int main(int argc, char **argv)
 
     ResourceManager::init();
     resourceManager->setWriteDir(".");
-    resourceManager->addToSearchPath(".", Append_false);
-    resourceManager->addToSearchPath("/", Append_false);
+    VirtFs::addDirToSearchPath(".", Append_false);
+    VirtFs::addDirToSearchPath("/", Append_false);
     std::string src = argv[1];
     std::string dst;
     if (argc == 4)

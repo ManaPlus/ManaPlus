@@ -46,7 +46,7 @@ void Files::extractLocale()
 
     const std::string fileName2 = std::string(getenv(
         "APPDIR")).append("/locale.zip");
-    resourceManager->addToSearchPath(fileName2, Append_false);
+    VirtFs::addZipToSearchPath(fileName2, Append_false);
 
     const std::string localDir = std::string(getenv("APPDIR")).append("/");
     char **rootDirs = VirtFs::enumerateFiles("locale");
@@ -66,7 +66,7 @@ void Files::extractLocale()
         }
     }
     VirtFs::freeList(rootDirs);
-    resourceManager->removeFromSearchPath(fileName2);
+    VirtFs::removeZipFromSearchPath(fileName2);
     remove(fileName2.c_str());
 }
 #endif  // ANDROID
@@ -126,9 +126,9 @@ void Files::extractZip(const std::string &restrict zipName,
                        const std::string &restrict inDir,
                        const std::string &restrict outDir)
 {
-    resourceManager->addToSearchPath(zipName, Append_false);
+    VirtFs::addZipToSearchPath(zipName, Append_false);
     copyPhysFsDir(inDir, outDir);
-    resourceManager->removeFromSearchPath(zipName);
+    VirtFs::removeZipFromSearchPath(zipName);
     remove(zipName.c_str());
 }
 
