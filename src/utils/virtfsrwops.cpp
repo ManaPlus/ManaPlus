@@ -215,7 +215,7 @@ static RWOPSINT virtfsrwops_seek(SDL_RWops *const rw,
 } /* virtfsrwops_seek */
 
 static RWOPSSIZE virtfsrwops_read(SDL_RWops *const rw,
-                                  void *ptr,
+                                  void *const ptr,
                                   const RWOPSSIZE size,
                                   const RWOPSSIZE maxnum)
 {
@@ -239,7 +239,7 @@ static RWOPSSIZE virtfsrwops_read(SDL_RWops *const rw,
 } /* virtfsrwops_read */
 
 static RWOPSSIZE virtfsrwops_write(SDL_RWops *const rw,
-                                   const void *ptr,
+                                   const void *const ptr,
                                    const RWOPSSIZE size,
                                    const RWOPSSIZE num)
 {

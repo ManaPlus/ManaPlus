@@ -85,6 +85,7 @@ QuestsWindow::QuestsWindow() :
     mAllEffects(nullptr),
     mNpcEffects(),
     mQuestLinks(),
+    mQuestReverseLinks(),
     mNewQuestEffectId(paths.getIntValue("newQuestEffectId")),
     mCompleteQuestEffectId(paths.getIntValue("completeQuestEffectId")),
     mMap(nullptr)
