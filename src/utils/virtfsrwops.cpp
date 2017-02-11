@@ -54,7 +54,6 @@
 
 #include "utils/fuzzer.h"
 #include "utils/virtfile.h"
-#include "utils/virtfileprivate.h"
 #include "utils/virtfs.h"
 
 #include "debug.h"

@@ -38,8 +38,6 @@
 #include "utils/paths.h"
 #include "utils/virtfs.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #ifdef ANDROID
 #ifdef USE_SDL2
 #include "main.h"

@@ -43,8 +43,6 @@
 
 #include "resources/db/moddb.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #include "utils/delete2.h"
 #include "utils/files.h"
 #include "utils/virtfs.h"
