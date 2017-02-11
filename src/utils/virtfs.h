@@ -23,12 +23,9 @@
 
 #include "localconsts.h"
 
-PRAGMA45(GCC diagnostic push)
-PRAGMA45(GCC diagnostic ignored "-Wlong-long")
-#include <physfs.h>
-PRAGMA45(GCC diagnostic pop)
-
 #include <string>
+
+struct VirtFile;
 
 namespace VirtFs
 {
@@ -41,9 +38,9 @@ namespace VirtFs
     char **enumerateFiles(const char *const dir);
     bool isDirectory(const char *const fname);
     void freeList(void *const listVar);
-    PHYSFS_file *openRead(const char *const filename);
-    PHYSFS_file *openWrite(const char *const filename);
-    PHYSFS_file *openAppend(const char *const filename);
+    VirtFile *openRead(const char *const filename);
+    VirtFile *openWrite(const char *const filename);
+    VirtFile *openAppend(const char *const filename);
     bool setWriteDir(const char *const newDir);
     bool addToSearchPath(const char *const newDir, const int appendToPath);
     bool removeFromSearchPath(const char *const oldDir);
@@ -53,21 +50,21 @@ namespace VirtFs
     bool deinit();
     void permitLinks(const bool val);
     const char *getLastError();
-    int64_t read(PHYSFS_File *const handle,
+    int64_t read(VirtFile *const handle,
                  void *const buffer,
                  const uint32_t objSize,
                  const uint32_t objCount);
-    int64_t write(PHYSFS_File *const file,
+    int64_t write(VirtFile *const file,
                   const void *const buffer,
                   const uint32_t objSize,
                   const uint32_t objCount);
-    int close(PHYSFS_file *const file);
-    int64_t fileLength(PHYSFS_File *const file);
-    int64_t tell(PHYSFS_File *const file);
-    int seek(PHYSFS_File *const file,
+    int close(VirtFile *const file);
+    int64_t fileLength(VirtFile *const file);
+    int64_t tell(VirtFile *const file);
+    int seek(VirtFile *const file,
              const uint64_t pos);
-    int eof(PHYSFS_File *const file);
-}  // namespace PhysFs
+    int eof(VirtFile *const file);
+}  // namespace VirtFs
 
 extern const char *dirSeparator;
 

@@ -36,6 +36,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
+#include "utils/virtfs.h"
 #include "utils/virtfsrwops.h"
 
 #ifndef USE_OPENGL

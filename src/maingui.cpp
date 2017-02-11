@@ -31,6 +31,7 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #endif  // ANDROID
+#include "utils/virtfs.h"
 #include "utils/virtfsrwops.h"
 #include "utils/process.h"
 #include "utils/xml.h"

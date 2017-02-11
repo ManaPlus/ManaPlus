@@ -39,8 +39,10 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
+#include "utils/virtfs.h"
 #include "utils/virtfsrwops.h"
 
+#include <physfs.h>
 #include <SDL_image.h>
 
 #include "debug.h"

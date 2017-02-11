@@ -31,6 +31,7 @@
 #include "resources/dye/dye.h"
 
 #include "utils/checkutils.h"
+#include "utils/virtfs.h"
 #include "utils/virtfsrwops.h"
 
 #include "debug.h"

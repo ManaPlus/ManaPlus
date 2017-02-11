@@ -49,7 +49,7 @@
 
 #include <SDL_rwops.h>
 
-#include "utils/virtfs.h"
+struct VirtFile;
 
 namespace VirtFs
 {
@@ -64,7 +64,7 @@ namespace VirtFs
 
     SDL_RWops *RWopsOpenWrite(const char *const fname) A_WARN_UNUSED;
     SDL_RWops *RWopsOpenAppend(const char *const fname) A_WARN_UNUSED;
-    SDL_RWops *MakeRWops(PHYSFS_file *const handle) A_WARN_UNUSED;
+    SDL_RWops *MakeRWops(VirtFile *const handle) A_WARN_UNUSED;
 #ifdef DUMP_LEAKED_RESOURCES
     void reportRWops();
 #endif  // DUMP_LEAKED_RESOURCES

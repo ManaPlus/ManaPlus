@@ -22,6 +22,9 @@
 
 #include "logger.h"
 
+#include "utils/virtfile.h"
+#include "utils/virtfileprivate.h"
+
 #include <iostream>
 #include <unistd.h>
 
@@ -98,19 +101,34 @@ namespace VirtFs
         PHYSFS_freeList(listVar);
     }
 
-    PHYSFS_file *openRead(const char *const filename)
+    VirtFile *openRead(const char *const filename)
     {
-        return PHYSFS_openRead(filename);
+        PHYSFS_file *const handle = PHYSFS_openRead(filename);
+        if (!handle)
+            return nullptr;
+        VirtFile *const file = new VirtFile;
+        file->mPrivate = new VirtFilePrivate(handle);
+        return file;
     }
 
-    PHYSFS_file *openWrite(const char *const filename)
+    VirtFile *openWrite(const char *const filename)
     {
-        return PHYSFS_openWrite(filename);
+        PHYSFS_file *const handle = PHYSFS_openWrite(filename);
+        if (!handle)
+            return nullptr;
+        VirtFile *const file = new VirtFile;
+        file->mPrivate = new VirtFilePrivate(handle);
+        return file;
     }
 
-    PHYSFS_file *openAppend(const char *const filename)
+    VirtFile *openAppend(const char *const filename)
     {
-        return PHYSFS_openAppend(filename);
+        PHYSFS_file *const handle = PHYSFS_openAppend(filename);
+        if (!handle)
+            return nullptr;
+        VirtFile *const file = new VirtFile;
+        file->mPrivate = new VirtFilePrivate(handle);
+        return file;
     }
 
     bool setWriteDir(const char *const newDir)
@@ -141,7 +159,7 @@ namespace VirtFs
     void *loadFile(const std::string &fileName, int &fileSize)
     {
         // Attempt to open the specified file using PhysicsFS
-        PHYSFS_file *const file = VirtFs::openRead(fileName.c_str());
+        VirtFile *const file = VirtFs::openRead(fileName.c_str());
 
         if (!file)
         {
@@ -185,45 +203,63 @@ namespace VirtFs
         return PHYSFS_getLastError();
     }
 
-    int close(PHYSFS_file *const file)
+    int close(VirtFile *const file)
     {
-        return PHYSFS_close(file);
+        if (file == nullptr)
+            return 0;
+        delete file;
+        return 1;
     }
 
-    int64_t read(PHYSFS_File *const file,
+    int64_t read(VirtFile *const file,
                  void *const buffer,
                  const uint32_t objSize,
                  const uint32_t objCount)
     {
-        return PHYSFS_read(file, buffer, objSize, objCount);
+        if (file == nullptr)
+            return 0;
+        return PHYSFS_read(file->mPrivate->mFile,
+            buffer,
+            objSize,
+            objCount);
     }
 
-    int64_t write(PHYSFS_File *const file,
+    int64_t write(VirtFile *const file,
                   const void *const buffer,
                   const uint32_t objSize,
                   const uint32_t objCount)
     {
-        return PHYSFS_write(file, buffer, objSize, objCount);
+        if (file == nullptr)
+            return 0;
+        return PHYSFS_write(file->mPrivate->mFile,
+            buffer,
+            objSize,
+            objCount);
     }
 
-    int64_t fileLength(PHYSFS_File *const file)
+    int64_t fileLength(VirtFile *const file)
     {
-        return PHYSFS_fileLength(file);
+        if (file == nullptr)
+            return -1;
+        return PHYSFS_fileLength(file->mPrivate->mFile);
     }
 
-    int64_t tell(PHYSFS_File *const file)
+    int64_t tell(VirtFile *const file)
     {
-        return PHYSFS_tell(file);
+        if (file == nullptr)
+            return -1;
+        return PHYSFS_tell(file->mPrivate->mFile);
     }
 
-    int seek(PHYSFS_File *const file,
+    int seek(VirtFile *const file,
              const uint64_t pos)
     {
-        return PHYSFS_seek(file, pos);
+        return PHYSFS_seek(file->mPrivate->mFile,
+            pos);
     }
 
-    int eof(PHYSFS_File *const file)
+    int eof(VirtFile *const file)
     {
-        return PHYSFS_eof(file);
+        return PHYSFS_eof(file->mPrivate->mFile);
     }
 }  // namespace PhysFs

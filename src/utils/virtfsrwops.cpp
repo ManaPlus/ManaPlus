@@ -53,6 +53,9 @@
 #endif  // DEBUG_VIRTFS
 
 #include "utils/fuzzer.h"
+#include "utils/virtfile.h"
+#include "utils/virtfileprivate.h"
+#include "utils/virtfs.h"
 
 #include "debug.h"
 
@@ -138,7 +141,7 @@ static RWOPSINT virtfsrwops_seek(SDL_RWops *const rw,
 {
     if (!rw)
         return -1;
-    PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
+    VirtFile *const handle = static_cast<VirtFile *const>(
         rw->hidden.unknown.data1);
     RWOPSINT pos = 0;
 
@@ -220,7 +223,7 @@ static RWOPSSIZE virtfsrwops_read(SDL_RWops *const rw,
 {
     if (!rw)
         return 0;
-    PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
+    VirtFile *const handle = static_cast<VirtFile *const>(
         rw->hidden.unknown.data1);
     const int64_t rc = VirtFs::read(handle, ptr,
         CAST_U32(size),
@@ -244,7 +247,7 @@ static RWOPSSIZE virtfsrwops_write(SDL_RWops *const rw,
 {
     if (!rw)
         return 0;
-    PHYSFS_file *const handle = static_cast<PHYSFS_file *const>(
+    VirtFile *const handle = static_cast<VirtFile *const>(
         rw->hidden.unknown.data1);
     const int64_t rc = VirtFs::write(handle, ptr,
         CAST_U32(size),
@@ -262,7 +265,7 @@ static int virtfsrwops_close(SDL_RWops *const rw)
 {
     if (!rw)
         return 0;
-    PHYSFS_file *const handle = static_cast<PHYSFS_file*>(
+    VirtFile *const handle = static_cast<VirtFile*>(
         rw->hidden.unknown.data1);
     if (!VirtFs::close(handle))
     {
@@ -287,17 +290,17 @@ static int virtfsrwops_close(SDL_RWops *const rw)
 #ifdef USE_SDL2
 static RWOPSINT virtfsrwops_size(SDL_RWops *const rw)
 {
-    PHYSFS_file *const handle = static_cast<PHYSFS_file*>(
+    VirtFile *const handle = static_cast<VirtFile *const>(
         rw->hidden.unknown.data1);
     return VirtFs::fileLength(handle);
 } /* virtfsrwops_size */
 #endif  // USE_SDL2
 
-static SDL_RWops *create_rwops(PHYSFS_file *const handle)
+static SDL_RWops *create_rwops(VirtFile *const file)
 {
     SDL_RWops *retval = nullptr;
 
-    if (!handle)
+    if (!file)
     {
         logger->assertLog("virtfsrwops_seek: create rwops error: %s",
             VirtFs::getLastError());
@@ -315,7 +318,7 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
             retval->read  = &virtfsrwops_read;
             retval->write = &virtfsrwops_write;
             retval->close = &virtfsrwops_close;
-            retval->hidden.unknown.data1 = handle;
+            retval->hidden.unknown.data1 = file;
         } /* if */
 #ifdef DUMP_LEAKED_RESOURCES
         openedRWops ++;
@@ -325,7 +328,7 @@ static SDL_RWops *create_rwops(PHYSFS_file *const handle)
     return retval;
 } /* create_rwops */
 
-SDL_RWops *VirtFs::MakeRWops(PHYSFS_file *const handle)
+SDL_RWops *VirtFs::MakeRWops(VirtFile *const handle)
 {
     SDL_RWops *retval = nullptr;
     if (!handle)

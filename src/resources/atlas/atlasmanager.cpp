@@ -29,6 +29,7 @@
 #endif  // DEBUG_IMAGES
 
 #include "utils/mathutils.h"
+#include "utils/virtfs.h"
 #include "utils/virtfsrwops.h"
 #include "utils/sdlcheckutils.h"
 

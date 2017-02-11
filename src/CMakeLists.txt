@@ -906,6 +906,10 @@ SET(SRCS
     utils/stringvector.h
     utils/timer.cpp
     utils/timer.h
+    utils/virtfile.cpp
+    utils/virtfile.h
+    utils/virtfileprivate.cpp
+    utils/virtfileprivate.h
     utils/mutex.h
     utils/naclmessages.cpp
     utils/naclmessages.h
@@ -1780,6 +1784,10 @@ SET(DYE_CMD_SRCS
     utils/stringutils.h
     utils/timer.cpp
     utils/timer.h
+    utils/virtfile.cpp
+    utils/virtfile.h
+    utils/virtfileprivate.cpp
+    utils/virtfileprivate.h
     utils/xml.cpp
     utils/xml.h
     utils/xml.inc
