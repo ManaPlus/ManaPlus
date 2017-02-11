@@ -22,6 +22,7 @@
 
 #include "logger.h"
 
+#include "utils/checkutils.h"
 #include "utils/virtfile.h"
 #include "utils/virtfileprivate.h"
 
@@ -139,24 +140,44 @@ namespace VirtFs
     bool addDirToSearchPath(const std::string &newDir,
                             const Append append)
     {
+        if (newDir.find(".zip") != std::string::npos)
+        {
+            reportAlways("Called addDirToSearchPath with zip archive");
+            return false;
+        }
         return PHYSFS_addToSearchPath(newDir.c_str(),
             append == Append_true ? 1 : 0);
     }
 
     bool removeDirFromSearchPath(const std::string &oldDir)
     {
+        if (oldDir.find(".zip") != std::string::npos)
+        {
+            reportAlways("Called removeDirFromSearchPath with zip archive");
+            return false;
+        }
         return PHYSFS_removeFromSearchPath(oldDir.c_str());
     }
 
     bool addZipToSearchPath(const std::string &newDir,
                             const Append append)
     {
+        if (newDir.find(".zip") == std::string::npos)
+        {
+            reportAlways("Called addZipToSearchPath without zip archive");
+            return false;
+        }
         return PHYSFS_addToSearchPath(newDir.c_str(),
             append == Append_true ? 1 : 0);
     }
 
     bool removeZipFromSearchPath(const std::string &oldDir)
     {
+        if (oldDir.find(".zip") == std::string::npos)
+        {
+            reportAlways("Called removeZipFromSearchPath without zip archive");
+            return false;
+        }
         return PHYSFS_removeFromSearchPath(oldDir.c_str());
     }
 
