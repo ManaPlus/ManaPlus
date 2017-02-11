@@ -32,7 +32,7 @@ struct VirtFilePrivate final
 {
     VirtFilePrivate();
 
-    VirtFilePrivate(PHYSFS_file *const file);
+    explicit VirtFilePrivate(PHYSFS_file *const file);
 
     A_DELETE_COPY(VirtFilePrivate)
 
