@@ -53,7 +53,6 @@
 #endif  // DEBUG_VIRTFS
 
 #include "utils/fuzzer.h"
-#include "utils/virtfile.h"
 #include "utils/virtfs.h"
 
 #include "debug.h"

@@ -20,8 +20,6 @@
 
 #include "utils/virtfs.h"
 
-#include "logger.h"
-
 #include "utils/checkutils.h"
 #include "utils/virtfile.h"
 #include "utils/virtfileprivate.h"
