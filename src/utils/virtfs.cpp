@@ -140,6 +140,7 @@ namespace VirtFs
     bool addDirToSearchPath(const std::string &newDir,
                             const Append append)
     {
+        logger->log("Add virtual directory: " + newDir);
         if (newDir.find(".zip") != std::string::npos)
         {
             reportAlways("Called addDirToSearchPath with zip archive");
@@ -151,6 +152,7 @@ namespace VirtFs
 
     bool removeDirFromSearchPath(const std::string &oldDir)
     {
+        logger->log("Remove virtual directory: " + oldDir);
         if (oldDir.find(".zip") != std::string::npos)
         {
             reportAlways("Called removeDirFromSearchPath with zip archive");
@@ -162,6 +164,7 @@ namespace VirtFs
     bool addZipToSearchPath(const std::string &newDir,
                             const Append append)
     {
+        logger->log("Add virtual zip: " + newDir);
         if (newDir.find(".zip") == std::string::npos)
         {
             reportAlways("Called addZipToSearchPath without zip archive");
@@ -173,6 +176,7 @@ namespace VirtFs
 
     bool removeZipFromSearchPath(const std::string &oldDir)
     {
+        logger->log("Remove virtual zip: " + oldDir);
         if (oldDir.find(".zip") == std::string::npos)
         {
             reportAlways("Called removeZipFromSearchPath without zip archive");
