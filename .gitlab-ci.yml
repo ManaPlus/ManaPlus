@@ -8,14 +8,17 @@ before_script:
   - cat /etc/os-release
   - pwd
   - mkdir logs || true
-  - tools/ci/scripts/updaterepos.sh
-  - tools/ci/scripts/dockerretry.sh apt-get update
-  - tools/ci/scripts/dockerretry.sh apt-get install -y -qq ${PACKAGES}
+  - ${UPDATEREPOS}
+  - tools/ci/scripts/dockerretry.sh ${PMUPDATE}
+  - tools/ci/scripts/dockerretry.sh ${PMINSTALL} ${PACKAGES}
 
 image: debian:unstable
 variables:
   GET_SOURCES_ATTEMPTS: "5"
   ARTIFACT_DOWNLOAD_ATTEMPTS: "5"
+  UPDATEREPOS: "tools/ci/scripts/updaterepos.sh"
+  PMUPDATE: "apt-get update"
+  PMINSTALL: "apt-get install -y -qq"
 
 .job-shared: &job-shared
   artifacts:
@@ -1405,6 +1408,30 @@ gcc-5_tarball:
               make autoconf automake autopoint gettext libphysfs-dev 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+fedora_gcc-snapshot:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gccsnapshot.sh
+  <<: *job-shared
+  image: fedora:rawhide
+  variables:
+    PMUPDATE: "dnf install --refresh -y @development-tools"
+    PMINSTALL: "dnf install -y bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc physfs-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf"
+  tags:
+  - docker
+
+fedora_gcc-snapshot_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gccsnapshot_sdl2.sh
+  <<: *job-shared
+  image: fedora:rawhide
+  variables:
+    PMUPDATE: "dnf install --refresh -y @development-tools"
+    PMINSTALL: "dnf install -y bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc physfs-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf"
+  tags:
+  - docker
 
 # build with other libs versions
 
