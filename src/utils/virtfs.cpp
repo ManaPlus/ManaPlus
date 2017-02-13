@@ -130,9 +130,9 @@ namespace VirtFs
         return file;
     }
 
-    bool setWriteDir(const char *const newDir)
+    bool setWriteDir(const std::string &newDir)
     {
-        return PHYSFS_setWriteDir(newDir);
+        return PHYSFS_setWriteDir(newDir.c_str());
     }
 
     bool addDirToSearchPath(const std::string &newDir,

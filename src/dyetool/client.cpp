@@ -182,7 +182,7 @@ void Client::gameInit()
 #endif  // ANDROID
 
     ResourceManager::init();
-    if (!resourceManager->setWriteDir(settings.localDataDir))
+    if (!VirtFs::setWriteDir(settings.localDataDir))
     {
         logger->error(strprintf("%s couldn't be set as home directory! "
             "Exiting.", settings.localDataDir.c_str()));

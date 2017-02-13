@@ -60,14 +60,6 @@ class ResourceManager final : public MemoryCounter
         ~ResourceManager();
 
         /**
-         * Sets the write directory.
-         *
-         * @param path The path of the directory to be added.
-         * @return <code>true</code> on success, <code>false</code> otherwise.
-         */
-        bool setWriteDir(const std::string &path) const;
-
-        /**
         * Searches for zip files and adds them to the search path.
         */
         void searchAndAddArchives(const std::string &restrict path,

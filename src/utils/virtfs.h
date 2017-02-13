@@ -43,7 +43,7 @@ namespace VirtFs
     VirtFile *openRead(const char *const filename);
     VirtFile *openWrite(const char *const filename);
     VirtFile *openAppend(const char *const filename);
-    bool setWriteDir(const char *const newDir);
+    bool setWriteDir(const std::string &newDir);
     bool addDirToSearchPath(const std::string &newDir,
                             const Append append);
     bool removeDirFromSearchPath(const std::string &oldDir);

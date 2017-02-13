@@ -87,7 +87,7 @@ int main(int argc, char **argv)
 #endif  // USE_SDL2
 
     ResourceManager::init();
-    resourceManager->setWriteDir(".");
+    VirtFs::setWriteDir(".");
     VirtFs::addDirToSearchPath(".", Append_false);
     VirtFs::addDirToSearchPath("/", Append_false);
     std::string src = argv[1];

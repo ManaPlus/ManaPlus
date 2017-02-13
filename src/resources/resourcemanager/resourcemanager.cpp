@@ -334,10 +334,6 @@ void ResourceManager::clearDeleted(const bool full)
         }
     }
 }
-bool ResourceManager::setWriteDir(const std::string &path) const
-{
-    return static_cast<bool>(VirtFs::setWriteDir(path.c_str()));
-}
 
 void ResourceManager::searchAndAddArchives(const std::string &restrict path,
                                            const std::string &restrict ext,
