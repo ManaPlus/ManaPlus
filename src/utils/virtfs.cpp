@@ -38,16 +38,16 @@ const char *dirSeparator = nullptr;
 namespace VirtFs
 {
 #if defined(__native_client__)
-    void init(const char *const name A_UNUSED)
+    void init(const char *restrict const name A_UNUSED)
     {
         if (!PHYSFS_init("/fakebinary"))
 #elif defined(ANDROID)
-    void init(const char *const name A_UNUSED)
+    void init(const char *restrict const name A_UNUSED)
     {
         if (!PHYSFS_init((getRealPath(".").append("/fakebinary")).c_str()))
 #else  // defined(__native_client__)
 
-    void init(const char *const name)
+    void init(const char *restrict const name)
     {
         if (!PHYSFS_init(name))
 #endif  // defined(__native_client__)
@@ -80,62 +80,62 @@ namespace VirtFs
         return PHYSFS_getUserDir();
     }
 
-    bool exists(const char *const fname)
+    bool exists(const char *restrict const fname)
     {
         return PHYSFS_exists(fname);
     }
 
-    char **enumerateFiles(const char *const dir)
+    char **enumerateFiles(const char *restrict const dir)
     {
         return PHYSFS_enumerateFiles(dir);
     }
 
-    bool isDirectory(const char *const fname)
+    bool isDirectory(const char *restrict const fname)
     {
         return PHYSFS_isDirectory(fname);
     }
 
-    void freeList(void *const listVar)
+    void freeList(void *restrict const listVar)
     {
         PHYSFS_freeList(listVar);
     }
 
-    VirtFile *openRead(const char *const filename)
+    VirtFile *openRead(const char *restrict const filename)
     {
-        PHYSFS_file *const handle = PHYSFS_openRead(filename);
+        PHYSFS_file *restrict const handle = PHYSFS_openRead(filename);
         if (!handle)
             return nullptr;
-        VirtFile *const file = new VirtFile;
+        VirtFile *restrict const file = new VirtFile;
         file->mPrivate = new VirtFilePrivate(handle);
         return file;
     }
 
-    VirtFile *openWrite(const char *const filename)
+    VirtFile *openWrite(const char *restrict const filename)
     {
-        PHYSFS_file *const handle = PHYSFS_openWrite(filename);
+        PHYSFS_file *restrict const handle = PHYSFS_openWrite(filename);
         if (!handle)
             return nullptr;
-        VirtFile *const file = new VirtFile;
+        VirtFile *restrict const file = new VirtFile;
         file->mPrivate = new VirtFilePrivate(handle);
         return file;
     }
 
-    VirtFile *openAppend(const char *const filename)
+    VirtFile *openAppend(const char *restrict const filename)
     {
-        PHYSFS_file *const handle = PHYSFS_openAppend(filename);
+        PHYSFS_file *restrict const handle = PHYSFS_openAppend(filename);
         if (!handle)
             return nullptr;
-        VirtFile *const file = new VirtFile;
+        VirtFile *restrict const file = new VirtFile;
         file->mPrivate = new VirtFilePrivate(handle);
         return file;
     }
 
-    bool setWriteDir(const std::string &newDir)
+    bool setWriteDir(const std::string &restrict newDir)
     {
         return PHYSFS_setWriteDir(newDir.c_str());
     }
 
-    bool addDirToSearchPath(const std::string &newDir,
+    bool addDirToSearchPath(const std::string &restrict newDir,
                             const Append append)
     {
         logger->log("Add virtual directory: " + newDir);
@@ -148,7 +148,7 @@ namespace VirtFs
             append == Append_true ? 1 : 0);
     }
 
-    bool removeDirFromSearchPath(const std::string &oldDir)
+    bool removeDirFromSearchPath(const std::string &restrict oldDir)
     {
         logger->log("Remove virtual directory: " + oldDir);
         if (oldDir.find(".zip") != std::string::npos)
@@ -159,7 +159,7 @@ namespace VirtFs
         return PHYSFS_removeFromSearchPath(oldDir.c_str());
     }
 
-    bool addZipToSearchPath(const std::string &newDir,
+    bool addZipToSearchPath(const std::string &restrict newDir,
                             const Append append)
     {
         logger->log("Add virtual zip: " + newDir);
@@ -172,7 +172,7 @@ namespace VirtFs
             append == Append_true ? 1 : 0);
     }
 
-    bool removeZipFromSearchPath(const std::string &oldDir)
+    bool removeZipFromSearchPath(const std::string &restrict oldDir)
     {
         logger->log("Remove virtual zip: " + oldDir);
         if (oldDir.find(".zip") == std::string::npos)
@@ -183,12 +183,12 @@ namespace VirtFs
         return PHYSFS_removeFromSearchPath(oldDir.c_str());
     }
 
-    const char *getRealDir(const char *const filename)
+    const char *getRealDir(const char *restrict const filename)
     {
         return PHYSFS_getRealDir(filename);
     }
 
-    bool mkdir(const char *const dirname)
+    bool mkdir(const char *restrict const dirname)
     {
         return PHYSFS_mkdir(dirname);
     }
@@ -214,7 +214,7 @@ namespace VirtFs
         return PHYSFS_getLastError();
     }
 
-    int close(VirtFile *const file)
+    int close(VirtFile *restrict const file)
     {
         if (file == nullptr)
             return 0;
@@ -222,8 +222,8 @@ namespace VirtFs
         return 1;
     }
 
-    int64_t read(VirtFile *const file,
-                 void *const buffer,
+    int64_t read(VirtFile *restrict const file,
+                 void *restrict const buffer,
                  const uint32_t objSize,
                  const uint32_t objCount)
     {
@@ -235,8 +235,8 @@ namespace VirtFs
             objCount);
     }
 
-    int64_t write(VirtFile *const file,
-                  const void *const buffer,
+    int64_t write(VirtFile *restrict const file,
+                  const void *restrict const buffer,
                   const uint32_t objSize,
                   const uint32_t objCount)
     {
@@ -248,28 +248,28 @@ namespace VirtFs
             objCount);
     }
 
-    int64_t fileLength(VirtFile *const file)
+    int64_t fileLength(VirtFile *restrict const file)
     {
         if (file == nullptr)
             return -1;
         return PHYSFS_fileLength(file->mPrivate->mFile);
     }
 
-    int64_t tell(VirtFile *const file)
+    int64_t tell(VirtFile *restrict const file)
     {
         if (file == nullptr)
             return -1;
         return PHYSFS_tell(file->mPrivate->mFile);
     }
 
-    int seek(VirtFile *const file,
+    int seek(VirtFile *restrict const file,
              const uint64_t pos)
     {
         return PHYSFS_seek(file->mPrivate->mFile,
             pos);
     }
 
-    int eof(VirtFile *const file)
+    int eof(VirtFile *restrict const file)
     {
         return PHYSFS_eof(file->mPrivate->mFile);
     }

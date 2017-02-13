@@ -31,44 +31,44 @@ struct VirtFile;
 
 namespace VirtFs
 {
-    void init(const char *const name);
+    void init(const char *restrict const name);
     void updateDirSeparator();
     const char *getDirSeparator();
     const char *getBaseDir();
     const char *getUserDir();
-    bool exists(const char *const fname);
-    char **enumerateFiles(const char *const dir);
-    bool isDirectory(const char *const fname);
-    void freeList(void *const listVar);
-    VirtFile *openRead(const char *const filename);
-    VirtFile *openWrite(const char *const filename);
-    VirtFile *openAppend(const char *const filename);
-    bool setWriteDir(const std::string &newDir);
-    bool addDirToSearchPath(const std::string &newDir,
+    bool exists(const char *restrict const fname);
+    char **enumerateFiles(const char *restrict const dir);
+    bool isDirectory(const char *restrict const fname);
+    void freeList(void *restrict const listVar);
+    VirtFile *openRead(const char *restrict const filename);
+    VirtFile *openWrite(const char *restrict const filename);
+    VirtFile *openAppend(const char *restrict const filename);
+    bool setWriteDir(const std::string &restrict newDir);
+    bool addDirToSearchPath(const std::string &restrict newDir,
                             const Append append);
-    bool removeDirFromSearchPath(const std::string &oldDir);
-    bool addZipToSearchPath(const std::string &newDir,
+    bool removeDirFromSearchPath(const std::string &restrict oldDir);
+    bool addZipToSearchPath(const std::string &restrict newDir,
                             const Append append);
-    bool removeZipFromSearchPath(const std::string &oldDir);
-    const char *getRealDir(const char *const filename);
-    bool mkdir(const char *const dirName);
+    bool removeZipFromSearchPath(const std::string &restrict oldDir);
+    const char *getRealDir(const char *restrict const filename);
+    bool mkdir(const char *restrict const dirName);
     bool deinit();
     void permitLinks(const bool val);
     const char *getLastError();
-    int64_t read(VirtFile *const handle,
-                 void *const buffer,
+    int64_t read(VirtFile *restrict const handle,
+                 void *restrict const buffer,
                  const uint32_t objSize,
                  const uint32_t objCount);
-    int64_t write(VirtFile *const file,
-                  const void *const buffer,
+    int64_t write(VirtFile *restrict const file,
+                  const void *restrict const buffer,
                   const uint32_t objSize,
                   const uint32_t objCount);
-    int close(VirtFile *const file);
-    int64_t fileLength(VirtFile *const file);
-    int64_t tell(VirtFile *const file);
-    int seek(VirtFile *const file,
+    int close(VirtFile *restrict const file);
+    int64_t fileLength(VirtFile *restrict const file);
+    int64_t tell(VirtFile *restrict const file);
+    int seek(VirtFile *restrict const file,
              const uint64_t pos);
-    int eof(VirtFile *const file);
+    int eof(VirtFile *restrict const file);
 }  // namespace VirtFs
 
 extern const char *dirSeparator;
