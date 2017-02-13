@@ -25,8 +25,6 @@
 
 #include "resources/memorycounter.h"
 
-#include "enums/simpletypes/append.h"
-
 #include <map>
 #include <set>
 
@@ -58,19 +56,6 @@ class ResourceManager final : public MemoryCounter
          * that were still referenced.
          */
         ~ResourceManager();
-
-        /**
-        * Searches for zip files and adds them to the search path.
-        */
-        void searchAndAddArchives(const std::string &restrict path,
-                                  const std::string &restrict ext,
-                                  const Append append) const;
-
-        /**
-        * Searches for zip files and remove them from the search path.
-        */
-        void searchAndRemoveArchives(const std::string &restrict path,
-                                     const std::string &restrict ext) const;
 
         /**
          * Creates a resource and adds it to the resource map.

@@ -628,7 +628,7 @@ int Client::gameExec()
                     if (settings.options.dataPath.empty())
                     {
                         // Add customdata directory
-                        resourceManager->searchAndAddArchives(
+                        VirtFs::searchAndAddArchives(
                             "customdata/",
                             "zip",
                             Append_false);
@@ -636,7 +636,7 @@ int Client::gameExec()
 
                     if (!settings.options.skipUpdate)
                     {
-                        resourceManager->searchAndAddArchives(
+                        VirtFs::searchAndAddArchives(
                             settings.updatesDir + "/local/",
                             "zip",
                             Append_false);

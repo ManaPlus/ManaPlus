@@ -70,6 +70,11 @@ namespace VirtFs
     int seek(VirtFile *const file,
              const uint64_t pos);
     int eof(VirtFile *const file);
+    void searchAndAddArchives(const std::string &restrict path,
+                              const std::string &restrict ext,
+                              const Append append);
+    void searchAndRemoveArchives(const std::string &restrict path,
+                                 const std::string &restrict ext);
 }  // namespace VirtFs
 
 extern const char *dirSeparator;

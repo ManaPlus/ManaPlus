@@ -335,52 +335,6 @@ void ResourceManager::clearDeleted(const bool full)
     }
 }
 
-void ResourceManager::searchAndAddArchives(const std::string &restrict path,
-                                           const std::string &restrict ext,
-                                           const Append append) const
-{
-    const char *const dirSep = dirSeparator;
-    char **list = VirtFs::enumerateFiles(path.c_str());
-
-    for (char **i = list; *i; i++)
-    {
-        const size_t len = strlen(*i);
-
-        if (len > ext.length() && !ext.compare((*i) + (len - ext.length())))
-        {
-            const std::string file = path + (*i);
-            const std::string realPath = std::string(
-                VirtFs::getRealDir(file.c_str()));
-            VirtFs::addZipToSearchPath(std::string(realPath).append(
-                dirSep).append(file), append);
-        }
-    }
-
-    VirtFs::freeList(list);
-}
-
-void ResourceManager::searchAndRemoveArchives(const std::string &restrict path,
-                                              const std::string &restrict ext)
-                                              const
-{
-    const char *const dirSep = dirSeparator;
-    char **list = VirtFs::enumerateFiles(path.c_str());
-
-    for (char **i = list; *i; i++)
-    {
-        const size_t len = strlen(*i);
-        if (len > ext.length() && !ext.compare((*i) + (len - ext.length())))
-        {
-            const std::string file = path + (*i);
-            const std::string realPath = std::string(
-                VirtFs::getRealDir(file.c_str()));
-            VirtFs::removeZipFromSearchPath(std::string(realPath).append(
-                dirSep).append(file));
-        }
-    }
-
-    VirtFs::freeList(list);
-}
 
 bool ResourceManager::addResource(const std::string &idPath,
                                   Resource *const resource)
