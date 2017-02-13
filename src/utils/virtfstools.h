@@ -31,7 +31,8 @@ struct VirtFile;
 
 namespace VirtFs
 {
-    void *loadFile(const std::string &fileName, int &fileSize);
+    void *loadFile(const std::string &restrict fileName,
+                   int &restrict fileSize);
     void searchAndAddArchives(const std::string &restrict path,
                               const std::string &restrict ext,
                               const Append append);

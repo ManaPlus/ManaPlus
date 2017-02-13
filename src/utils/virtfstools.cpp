@@ -31,10 +31,11 @@
 
 namespace VirtFs
 {
-    void *loadFile(const std::string &fileName, int &fileSize)
+    void *loadFile(const std::string &restrict fileName,
+                   int &restrict fileSize)
     {
         // Attempt to open the specified file using PhysicsFS
-        VirtFile *const file = VirtFs::openRead(fileName.c_str());
+        VirtFile *restrict const file = VirtFs::openRead(fileName.c_str());
 
         if (!file)
         {
@@ -50,7 +51,7 @@ namespace VirtFs
 
         fileSize = CAST_S32(VirtFs::fileLength(file));
         // Allocate memory and load the file
-        void *const buffer = calloc(fileSize, 1);
+        void *restrict const buffer = calloc(fileSize, 1);
         VirtFs::read(file, buffer, 1, fileSize);
         VirtFs::close(file);
 
