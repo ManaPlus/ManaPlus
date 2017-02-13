@@ -13,7 +13,7 @@ export CXXFLAGS="-ggdb3 -pipe -ffast-math -O9 -flto -fwhole-program \
 source ./tools/ci/flags/gcc6.sh
 
 do_init
-run_configure --enable-werror
+run_configure --enable-werror $*
 run_make
 
 source ./tools/ci/scripts/exit.sh

@@ -11,7 +11,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -std=c++0x"
 
 do_init
-run_configure --enable-werror
+run_configure --enable-werror $*
 run_make
 
 source ./tools/ci/scripts/exit.sh

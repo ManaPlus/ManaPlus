@@ -9,7 +9,7 @@ source ./tools/ci/scripts/init.sh
 export CXXFLAGS="-stdlib=libc++"
 
 do_init
-run_configure --enable-werror
+run_configure --enable-werror $*
 run_make
 
 source ./tools/ci/scripts/exit.sh
