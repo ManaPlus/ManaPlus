@@ -21,7 +21,7 @@
 #include "utils/translation/translationmanager.h"
 
 #include "utils/delete2.h"
-#include "utils/virtfs.h"
+#include "utils/virtfstools.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"

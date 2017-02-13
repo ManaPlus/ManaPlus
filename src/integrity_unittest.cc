@@ -41,6 +41,7 @@
 #include "utils/env.h"
 #include "utils/virtfs.h"
 #include "utils/virtfsrwops.h"
+#include "utils/virtfstools.h"
 
 #include <physfs.h>
 #include <SDL_image.h>

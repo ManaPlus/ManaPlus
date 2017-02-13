@@ -64,6 +64,7 @@
 #endif  // ANDROID
 
 #include "utils/virtfs.h"
+#include "utils/virtfstools.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 

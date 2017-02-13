@@ -46,6 +46,7 @@
 #include "utils/delete2.h"
 #include "utils/files.h"
 #include "utils/virtfs.h"
+#include "utils/virtfstools.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"

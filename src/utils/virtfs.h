@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_PHYSFSTOOLS_H
-#define UTILS_PHYSFSTOOLS_H
+#ifndef UTILS_VIRTFS_H
+#define UTILS_VIRTFS_H
 
 #include "enums/simpletypes/append.h"
 
@@ -52,7 +52,6 @@ namespace VirtFs
     bool removeZipFromSearchPath(const std::string &oldDir);
     const char *getRealDir(const char *const filename);
     bool mkdir(const char *const dirName);
-    void *loadFile(const std::string &fileName, int &fileSize);
     bool deinit();
     void permitLinks(const bool val);
     const char *getLastError();
@@ -70,13 +69,8 @@ namespace VirtFs
     int seek(VirtFile *const file,
              const uint64_t pos);
     int eof(VirtFile *const file);
-    void searchAndAddArchives(const std::string &restrict path,
-                              const std::string &restrict ext,
-                              const Append append);
-    void searchAndRemoveArchives(const std::string &restrict path,
-                                 const std::string &restrict ext);
 }  // namespace VirtFs
 
 extern const char *dirSeparator;
 
-#endif  // UTILS_PHYSFSTOOLS_H
+#endif  // UTILS_VIRTFS_H

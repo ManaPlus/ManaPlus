@@ -193,32 +193,6 @@ namespace VirtFs
         return PHYSFS_mkdir(dirname);
     }
 
-    void *loadFile(const std::string &fileName, int &fileSize)
-    {
-        // Attempt to open the specified file using PhysicsFS
-        VirtFile *const file = VirtFs::openRead(fileName.c_str());
-
-        if (!file)
-        {
-            logger->log("Warning: Failed to load %s: %s",
-                fileName.c_str(),
-                VirtFs::getLastError());
-            return nullptr;
-        }
-
-        logger->log("Loaded %s/%s",
-            VirtFs::getRealDir(fileName.c_str()),
-            fileName.c_str());
-
-        fileSize = CAST_S32(VirtFs::fileLength(file));
-        // Allocate memory and load the file
-        void *const buffer = calloc(fileSize, 1);
-        VirtFs::read(file, buffer, 1, fileSize);
-        VirtFs::close(file);
-
-        return buffer;
-    }
-
     bool deinit()
     {
         if (PHYSFS_deinit() != 0)
@@ -299,50 +273,4 @@ namespace VirtFs
     {
         return PHYSFS_eof(file->mPrivate->mFile);
     }
-
-    void searchAndAddArchives(const std::string &restrict path,
-                              const std::string &restrict ext,
-                              const Append append)
-    {
-        char **list = VirtFs::enumerateFiles(path.c_str());
-
-        for (char **i = list; *i; i++)
-        {
-            const size_t len = strlen(*i);
-
-            if (len > ext.length() &&
-                !ext.compare((*i) + (len - ext.length())))
-            {
-                const std::string file = path + (*i);
-                const std::string realPath = std::string(
-                    VirtFs::getRealDir(file.c_str()));
-                VirtFs::addZipToSearchPath(std::string(realPath).append(
-                    dirSeparator).append(file), append);
-            }
-        }
-        VirtFs::freeList(list);
-    }
-
-    void searchAndRemoveArchives(const std::string &restrict path,
-                                 const std::string &restrict ext)
-    {
-        char **list = VirtFs::enumerateFiles(path.c_str());
-
-        for (char **i = list; *i; i++)
-        {
-            const size_t len = strlen(*i);
-            if (len > ext.length() &&
-                !ext.compare((*i) + (len - ext.length())))
-            {
-                const std::string file = path + (*i);
-                const std::string realPath = std::string(
-                    VirtFs::getRealDir(file.c_str()));
-                VirtFs::removeZipFromSearchPath(std::string(
-                    realPath).append(
-                    dirSeparator).append(
-                    file));
-            }
-        }
-        VirtFs::freeList(list);
-    }
-}  // namespace PhysFs
+}  // namespace VirtFs

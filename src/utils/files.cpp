@@ -29,6 +29,7 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/virtfs.h"
+#include "utils/virtfstools.h"
 #include "utils/stringutils.h"
 
 #include <algorithm>

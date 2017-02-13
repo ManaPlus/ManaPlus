@@ -26,7 +26,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/fuzzer.h"
-#include "utils/virtfs.h"
+#include "utils/virtfstools.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"
