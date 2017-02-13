@@ -14,6 +14,7 @@ test_DATA =				\
 	quests.xml \
 	serverlistplus.xml \
 	simplefile.txt \
+	test.txt \
 	test.zip \
 	testintmap.xml \
 	units.xml

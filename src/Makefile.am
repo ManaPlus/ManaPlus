@@ -1913,6 +1913,7 @@ manaplustests_SOURCES = ${SRC} \
 	      enums/enums_unittest.cc \
 	      utils/dumplibs_unittest.cc \
 	      utils/checkutils_unittest.cc \
+	      utils/virtfs_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/timer_unittest.cc \
 	      utils/xmlutils_unittest.cc \
