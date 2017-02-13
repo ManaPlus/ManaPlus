@@ -15,7 +15,7 @@ export CXXFLAGS="-pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 source ./tools/ci/flags/gccsnapshot.sh
 
 do_init
-run_configure --enable-werror --with-sdl2
+run_configure --enable-werror --with-sdl2 $*
 run_make
 
 source ./tools/ci/scripts/exit.sh
