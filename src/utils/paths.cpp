@@ -31,8 +31,6 @@
 
 #ifdef USE_X11
 #include "utils/files.h"
-
-#include "resources/resourcemanager/resourcemanager.h"
 #endif  // USE_X11
 
 #ifdef __native_client__
