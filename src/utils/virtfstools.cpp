@@ -22,10 +22,7 @@
 
 #include "logger.h"
 
-#include "utils/virtfile.h"
 #include "utils/virtfs.h"
-
-#include <unistd.h>
 
 #include "debug.h"
 
