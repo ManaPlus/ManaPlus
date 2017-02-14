@@ -20,8 +20,6 @@
 
 #include "utils/virtlist.h"
 
-#include "utils/delete2.h"
-
 #include "debug.h"
 
 VirtList::VirtList() :
