@@ -246,8 +246,6 @@ TEST_CASE("integrity tests", "integrity")
         SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
         if (!rw)
             logger->log("Physfs error: %s", VirtFs::getLastError());
-        VirtFs::removeZipFromSearchPath("data/test/test.zip");
-        VirtFs::removeZipFromSearchPath("../data/test/test.zip");
         REQUIRE(rw != nullptr);
         unsigned char buf[size1];
         const size_t sz = SDL_RWread(rw, buf, 1, size1);
@@ -255,6 +253,8 @@ TEST_CASE("integrity tests", "integrity")
             SDL_RWclose(rw);
         REQUIRE(sz == size1);
         SDL_RWclose(rw);
+        VirtFs::removeZipFromSearchPath("data/test/test.zip");
+        VirtFs::removeZipFromSearchPath("../data/test/test.zip");
         REQUIRE(compareBuffers(buf) == true);
     }
 
