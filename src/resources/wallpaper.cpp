@@ -55,21 +55,21 @@ static void initDefaultWallpaperPaths()
     // Init the path
     wallpaperPath = branding.getStringValue("wallpapersPath");
 
-    if (wallpaperPath.empty() || !VirtFs::isDirectory(wallpaperPath.c_str()))
+    if (wallpaperPath.empty() || !VirtFs::isDirectory(wallpaperPath))
         wallpaperPath = paths.getValue("wallpapers", "");
 
-    if (wallpaperPath.empty() || !VirtFs::isDirectory(wallpaperPath.c_str()))
+    if (wallpaperPath.empty() || !VirtFs::isDirectory(wallpaperPath))
         wallpaperPath = "graphics/images/";
 
     // Init the default file
     wallpaperFile = branding.getStringValue("wallpaperFile");
 
-    if (!wallpaperFile.empty() && !VirtFs::isDirectory(wallpaperFile.c_str()))
+    if (!wallpaperFile.empty() && !VirtFs::isDirectory(wallpaperFile))
         return;
     else
         wallpaperFile = paths.getValue("wallpaperFile", "");
 
-    if (wallpaperFile.empty() || VirtFs::isDirectory(wallpaperFile.c_str()))
+    if (wallpaperFile.empty() || VirtFs::isDirectory(wallpaperFile))
         wallpaperFile = "login_wallpaper.png";
 }
 
@@ -91,6 +91,7 @@ void Wallpaper::loadWallpapers()
     {
         // First, get the base filename of the image:
         std::string filename = *i;
+        const std::string name = filename;
         // If the backup file is found, we tell it.
         if (filename.find(wallpaperFile) != std::string::npos)
             haveBackup = true;
@@ -105,7 +106,6 @@ void Wallpaper::loadWallpapers()
         separator = filename.find('%');
         if (separator == std::string::npos)
         {
-            std::string name = filename;
             // Then, append the width and height search mask.
             filename.append("_%10dx%10d.png");
 

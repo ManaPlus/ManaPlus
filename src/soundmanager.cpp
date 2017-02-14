@@ -325,7 +325,7 @@ static SDLMusic *loadMusic(const std::string &fileName,
                            const SkipError skipError)
 {
     const std::string path = paths.getStringValue("music").append(fileName);
-    if (!VirtFs::exists(path.c_str()))
+    if (!VirtFs::exists(path))
     {
         if (skipError == SkipError_false)
             reportAlways("Music file not found: %s", fileName.c_str());

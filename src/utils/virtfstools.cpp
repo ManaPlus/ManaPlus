@@ -33,7 +33,7 @@ namespace VirtFs
                    int &restrict fileSize)
     {
         // Attempt to open the specified file using PhysicsFS
-        VirtFile *restrict const file = VirtFs::openRead(fileName.c_str());
+        VirtFile *restrict const file = VirtFs::openRead(fileName);
 
         if (!file)
         {
@@ -44,7 +44,7 @@ namespace VirtFs
         }
 
         logger->log("Loaded %s/%s",
-            VirtFs::getRealDir(fileName.c_str()),
+            VirtFs::getRealDir(fileName),
             fileName.c_str());
 
         fileSize = CAST_S32(VirtFs::fileLength(file));
@@ -71,7 +71,7 @@ namespace VirtFs
             {
                 const std::string file = path + str;
                 const std::string realPath = std::string(
-                    VirtFs::getRealDir(file.c_str()));
+                    VirtFs::getRealDir(file));
                 VirtFs::addZipToSearchPath(std::string(realPath).append(
                     dirSeparator).append(file), append);
             }
@@ -92,7 +92,7 @@ namespace VirtFs
             {
                 const std::string file = path + str;
                 const std::string realPath = std::string(
-                    VirtFs::getRealDir(file.c_str()));
+                    VirtFs::getRealDir(file));
                 VirtFs::removeZipFromSearchPath(std::string(
                     realPath).append(
                     dirSeparator).append(

@@ -262,7 +262,7 @@ PoDict *PoParser::getEmptyDict()
 bool PoParser::checkLang(const std::string &lang)
 {
     // check is po file exists
-    return VirtFs::exists(getFileName(lang).c_str());
+    return VirtFs::exists(getFileName(lang));
 }
 
 std::string PoParser::getFileName(const std::string &lang)

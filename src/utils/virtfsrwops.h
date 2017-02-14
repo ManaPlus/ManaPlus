@@ -47,6 +47,7 @@
 
 #include "localconsts.h"
 
+#include <string>
 #include <SDL_rwops.h>
 
 struct VirtFile;
@@ -54,16 +55,17 @@ struct VirtFile;
 namespace VirtFs
 {
 #ifdef DEBUG_VIRTFS
-    SDL_RWops *RWopsOpenRead(const char *const fname,
+    SDL_RWops *RWopsOpenRead(const std::string &restrict fname,
                              const char *restrict const file,
                              const unsigned line);
     void reportLeaks();
 #else  // DEBUG_VIRTFS
-    SDL_RWops *RWopsOpenRead(const char *const fname);
+    SDL_RWops *RWopsOpenRead(const std::string &restrict fname);
 #endif  // DEBUG_VIRTFS
 
-    SDL_RWops *RWopsOpenWrite(const char *const fname) A_WARN_UNUSED;
-    SDL_RWops *RWopsOpenAppend(const char *const fname) A_WARN_UNUSED;
+    SDL_RWops *RWopsOpenWrite(const std::string &restrict fname) A_WARN_UNUSED;
+    SDL_RWops *RWopsOpenAppend(const std::string &restrict fname)
+                               A_WARN_UNUSED;
     SDL_RWops *MakeRWops(VirtFile *const handle) A_WARN_UNUSED;
 #ifdef DUMP_LEAKED_RESOURCES
     void reportRWops();

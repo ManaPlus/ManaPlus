@@ -343,9 +343,9 @@ SDL_RWops *VirtFs::MakeRWops(VirtFile *const handle)
 } /* RWopsmakeRWops */
 
 #ifdef __APPLE__
-static bool checkFilePath(const char *const fname)
+static bool checkFilePath(const std::string &restrict fname)
 {
-    if (!fname || !*fname)
+    if (fname.empty())
         return false;
     if (!VirtFs::exists(fname) || VirtFs::isDirectory(fname))
         return false;
@@ -355,11 +355,11 @@ static bool checkFilePath(const char *const fname)
 
 #ifdef DEBUG_VIRTFS
 #undef RWopsOpenRead
-SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname,
+SDL_RWops *VirtFs::RWopsOpenRead(const std::string &restrict fname,
                                  const char *restrict const file,
                                  const unsigned line)
 #else  // DEBUG_VIRTFS
-SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname)
+SDL_RWops *VirtFs::RWopsOpenRead(const std::string &restrict fname)
 #endif  // DEBUG_VIRTFS
 {
     BLOCK_START("RWopsopenRead")
@@ -399,7 +399,7 @@ SDL_RWops *VirtFs::RWopsOpenRead(const char *const fname)
 #endif  // USE_PROFILER
 } /* RWopsopenRead */
 
-SDL_RWops *VirtFs::RWopsOpenWrite(const char *const fname)
+SDL_RWops *VirtFs::RWopsOpenWrite(const std::string &restrict fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))
@@ -409,7 +409,7 @@ SDL_RWops *VirtFs::RWopsOpenWrite(const char *const fname)
     return create_rwops(VirtFs::openWrite(fname));
 } /* RWopsopenWrite */
 
-SDL_RWops *VirtFs::RWopsOpenAppend(const char *const fname)
+SDL_RWops *VirtFs::RWopsOpenAppend(const std::string &restrict fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))

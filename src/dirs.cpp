@@ -488,9 +488,9 @@ void Dirs::initUpdatesDir()
     const std::string updateDir("/" + settings.updatesDir);
 
     // Verify that the updates directory exists. Create if necessary.
-    if (!VirtFs::isDirectory(updateDir.c_str()))
+    if (!VirtFs::isDirectory(updateDir))
     {
-        if (!VirtFs::mkdir(updateDir.c_str()))
+        if (!VirtFs::mkdir(updateDir))
         {
 #if defined WIN32
             std::string newDir = settings.localDataDir +
@@ -525,10 +525,10 @@ void Dirs::initUpdatesDir()
     }
     const std::string updateLocal = updateDir + "/local";
     const std::string updateFix = updateDir + "/fix";
-    if (!VirtFs::isDirectory(updateLocal.c_str()))
-        VirtFs::mkdir(updateLocal.c_str());
-    if (!VirtFs::isDirectory(updateFix.c_str()))
-        VirtFs::mkdir(updateFix.c_str());
+    if (!VirtFs::isDirectory(updateLocal))
+        VirtFs::mkdir(updateLocal);
+    if (!VirtFs::isDirectory(updateFix))
+        VirtFs::mkdir(updateFix);
 }
 
 void Dirs::initScreenshotDir()

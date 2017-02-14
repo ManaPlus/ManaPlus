@@ -1279,7 +1279,7 @@ void MapReader::updateMusic(Map *const map)
     if (p != std::string::npos)
         name = name.substr(0, p);
     name.append(".ogg");
-    if (VirtFs::exists(paths.getStringValue("music").append(name).c_str()))
+    if (VirtFs::exists(paths.getStringValue("music").append(name)))
         map->setProperty("music", name);
 }
 

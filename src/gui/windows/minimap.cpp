@@ -180,14 +180,14 @@ void Minimap::setMap(const Map *const map)
 
             std::string minimapName = map->getProperty("minimap");
 
-            if (minimapName.empty() && VirtFs::exists(tempname.c_str()))
+            if (minimapName.empty() && VirtFs::exists(tempname))
                 minimapName = tempname;
 
             if (minimapName.empty())
             {
                 tempname = std::string("graphics/minimaps/").append(
                     map->getFilename()).append(".png");
-                if (VirtFs::exists(tempname.c_str()))
+                if (VirtFs::exists(tempname))
                     minimapName = tempname;
             }
 

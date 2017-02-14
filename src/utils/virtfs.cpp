@@ -39,18 +39,18 @@ const char *dirSeparator = nullptr;
 namespace VirtFs
 {
 #if defined(__native_client__)
-    void init(const char *restrict const name A_UNUSED)
+    void init(const std::string &restrict name A_UNUSED)
     {
         if (!PHYSFS_init("/fakebinary"))
 #elif defined(ANDROID)
-    void init(const char *restrict const name A_UNUSED)
+    void init(const std::string &restrict name A_UNUSED)
     {
         if (!PHYSFS_init((getRealPath(".").append("/fakebinary")).c_str()))
 #else  // defined(__native_client__)
 
-    void init(const char *restrict const name)
+    void init(const std::string &restrict name)
     {
-        if (!PHYSFS_init(name))
+        if (!PHYSFS_init(name.c_str()))
 #endif  // defined(__native_client__)
         {
             std::cout << "Error while initializing PhysFS: "
@@ -81,9 +81,9 @@ namespace VirtFs
         return PHYSFS_getUserDir();
     }
 
-    bool exists(const char *restrict const fname)
+    bool exists(const std::string &restrict name)
     {
-        return PHYSFS_exists(fname);
+        return PHYSFS_exists(name.c_str());
     }
 
     VirtList *enumerateFiles(const std::string &restrict dir)
@@ -101,9 +101,9 @@ namespace VirtFs
         return files;
     }
 
-    bool isDirectory(const char *restrict const fname)
+    bool isDirectory(const std::string &restrict name)
     {
-        return PHYSFS_isDirectory(fname);
+        return PHYSFS_isDirectory(name.c_str());
     }
 
     void freeList(VirtList *restrict const handle)
@@ -111,9 +111,10 @@ namespace VirtFs
         delete handle;
     }
 
-    VirtFile *openRead(const char *restrict const filename)
+    VirtFile *openRead(const std::string &restrict filename)
     {
-        PHYSFS_file *restrict const handle = PHYSFS_openRead(filename);
+        PHYSFS_file *restrict const handle = PHYSFS_openRead(
+            filename.c_str());
         if (!handle)
             return nullptr;
         VirtFile *restrict const file = new VirtFile;
@@ -121,9 +122,10 @@ namespace VirtFs
         return file;
     }
 
-    VirtFile *openWrite(const char *restrict const filename)
+    VirtFile *openWrite(const std::string &restrict filename)
     {
-        PHYSFS_file *restrict const handle = PHYSFS_openWrite(filename);
+        PHYSFS_file *restrict const handle = PHYSFS_openWrite(
+            filename.c_str());
         if (!handle)
             return nullptr;
         VirtFile *restrict const file = new VirtFile;
@@ -131,9 +133,10 @@ namespace VirtFs
         return file;
     }
 
-    VirtFile *openAppend(const char *restrict const filename)
+    VirtFile *openAppend(const std::string &restrict filename)
     {
-        PHYSFS_file *restrict const handle = PHYSFS_openAppend(filename);
+        PHYSFS_file *restrict const handle = PHYSFS_openAppend(
+            filename.c_str());
         if (!handle)
             return nullptr;
         VirtFile *restrict const file = new VirtFile;
@@ -194,14 +197,14 @@ namespace VirtFs
         return PHYSFS_removeFromSearchPath(oldDir.c_str());
     }
 
-    const char *getRealDir(const char *restrict const filename)
+    const char *getRealDir(const std::string &restrict filename)
     {
-        return PHYSFS_getRealDir(filename);
+        return PHYSFS_getRealDir(filename.c_str());
     }
 
-    bool mkdir(const char *restrict const dirname)
+    bool mkdir(const std::string &restrict dirname)
     {
-        return PHYSFS_mkdir(dirname);
+        return PHYSFS_mkdir(dirname.c_str());
     }
 
     bool deinit()

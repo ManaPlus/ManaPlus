@@ -1055,7 +1055,7 @@ void Game::changeMap(const std::string &mapPath)
     std::string realFullMap = paths.getValue("maps", "maps/").append(
         MapDB::getMapName(mMapName)).append(".tmx");
 
-    if (!VirtFs::exists(realFullMap.c_str()))
+    if (!VirtFs::exists(realFullMap))
         realFullMap.append(".gz");
 
     // Attempt to load the new map

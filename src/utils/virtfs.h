@@ -32,18 +32,18 @@ struct VirtList;
 
 namespace VirtFs
 {
-    void init(const char *restrict const name);
+    void init(const std::string &restrict name);
     void updateDirSeparator();
     const char *getDirSeparator();
     const char *getBaseDir();
     const char *getUserDir();
-    bool exists(const char *restrict const fname);
+    bool exists(const std::string &restrict name);
     VirtList *enumerateFiles(const std::string &restrict dir) RETURNS_NONNULL;
-    bool isDirectory(const char *restrict const fname);
+    bool isDirectory(const std::string &restrict name);
     void freeList(VirtList *restrict const handle);
-    VirtFile *openRead(const char *restrict const filename);
-    VirtFile *openWrite(const char *restrict const filename);
-    VirtFile *openAppend(const char *restrict const filename);
+    VirtFile *openRead(const std::string &restrict filename);
+    VirtFile *openWrite(const std::string &restrict filename);
+    VirtFile *openAppend(const std::string &restrict filename);
     bool setWriteDir(const std::string &restrict newDir);
     bool addDirToSearchPath(const std::string &restrict newDir,
                             const Append append);
@@ -51,8 +51,8 @@ namespace VirtFs
     bool addZipToSearchPath(const std::string &restrict newDir,
                             const Append append);
     bool removeZipFromSearchPath(const std::string &restrict oldDir);
-    const char *getRealDir(const char *restrict const filename);
-    bool mkdir(const char *restrict const dirName);
+    const char *getRealDir(const std::string &restrict filename);
+    bool mkdir(const std::string &restrict dirName);
     bool deinit();
     void permitLinks(const bool val);
     const char *getLastError();

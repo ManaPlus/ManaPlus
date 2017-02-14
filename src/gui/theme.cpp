@@ -65,8 +65,8 @@ static void initDefaultThemePath()
     defaultThemePath = branding.getStringValue("guiThemePath");
 
     logger->log("defaultThemePath: " + defaultThemePath);
-    if (!defaultThemePath.empty() && VirtFs::isDirectory(
-        defaultThemePath.c_str()))
+    if (!defaultThemePath.empty() &&
+        VirtFs::isDirectory(defaultThemePath))
     {
         return;
     }
@@ -398,7 +398,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
         return nullptr;
 
     const std::string path = resolveThemePath(filename);
-    if (!VirtFs::exists(path.c_str()))
+    if (!VirtFs::exists(path))
         return nullptr;
     XML::Document *const doc = Loader::getXml(path,
         UseResman_true,
@@ -551,7 +551,7 @@ bool Theme::tryThemePath(const std::string &themeName)
     if (!themeName.empty())
     {
         const std::string path = defaultThemePath + themeName;
-        if (VirtFs::exists(path.c_str()))
+        if (VirtFs::exists(path))
         {
             mThemePath = path;
             mThemeName = themeName;
@@ -583,8 +583,8 @@ void Theme::fillSoundsList(StringVect &list)
 
     FOR_EACH (StringVectCIter, i, skins->names)
     {
-        if (!VirtFs::isDirectory((
-            branding.getStringValue("systemsounds") + *i).c_str()))
+        if (!VirtFs::isDirectory((branding.getStringValue(
+            "systemsounds") + *i)))
         {
             std::string str = *i;
             if (findCutLast(str, ".ogg"))
@@ -638,14 +638,14 @@ std::string Theme::resolveThemePath(const std::string &path)
     if (file.find('/') != std::string::npos)
     {
         // Might be a valid path already
-        if (VirtFs::exists(file.c_str()))
+        if (VirtFs::exists(file))
             return path;
     }
 
     // Try the theme
     file = getThemePath().append("/").append(file);
 
-    if (VirtFs::exists(file.c_str()))
+    if (VirtFs::exists(file))
         return getThemePath().append("/").append(path);
 
     // Backup

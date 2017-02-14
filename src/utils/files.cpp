@@ -53,10 +53,10 @@ void Files::extractLocale()
     FOR_EACH (StringVectCIter, i, rootDirs->names)
     {
         const std::string dir = std::string("locale/").append(*i);
-        if (VirtFs::isDirectory(dir.c_str()))
+        if (VirtFs::isDirectory(dir))
         {
             const std::string moFile = dir + "/LC_MESSAGES/manaplus.mo";
-            if (VirtFs::exists((moFile).c_str()))
+            if (VirtFs::exists((moFile)))
             {
                 const std::string localFile = localDir + moFile;
                 const std::string localDir2 = localDir + dir + "/LC_MESSAGES";
@@ -114,7 +114,7 @@ void Files::copyPhysFsDir(const std::string &restrict inDir,
     {
         const std::string file = std::string(inDir).append("/").append(*i);
         const std::string outDir2 = std::string(outDir).append("/").append(*i);
-        if (VirtFs::isDirectory(file.c_str()))
+        if (VirtFs::isDirectory(file))
             copyPhysFsDir(file, outDir2);
         else
             copyPhysFsFile(file, outDir2);
@@ -214,7 +214,7 @@ void Files::getFiles(const std::string &path, StringVect &list)
     VirtList *const fonts = VirtFs::enumerateFiles(path);
     FOR_EACH (StringVectCIter, i, fonts->names)
     {
-        if (!VirtFs::isDirectory((path + *i).c_str()))
+        if (!VirtFs::isDirectory(path + *i))
             list.push_back(*i);
     }
     VirtFs::freeList(fonts);
@@ -225,7 +225,7 @@ void Files::getDirs(const std::string &path, StringVect &list)
     VirtList *const fonts = VirtFs::enumerateFiles(path);
     FOR_EACH (StringVectCIter, i, fonts->names)
     {
-        if (VirtFs::isDirectory((path + *i).c_str()))
+        if (VirtFs::isDirectory(path + *i))
             list.push_back(*i);
     }
     VirtFs::freeList(fonts);
@@ -236,7 +236,7 @@ void Files::getFilesWithDir(const std::string &path, StringVect &list)
     VirtList *const fonts = VirtFs::enumerateFiles(path);
     FOR_EACH (StringVectCIter, i, fonts->names)
     {
-        if (!VirtFs::isDirectory((path + *i).c_str()))
+        if (!VirtFs::isDirectory(path + *i))
             list.push_back(path + *i);
     }
     VirtFs::freeList(fonts);
@@ -256,7 +256,7 @@ bool Files::existsLocal(const std::string &path)
 std::string Files::getPath(const std::string &file)
 {
     // get the real path to the file
-    const char *const tmp = VirtFs::getRealDir(file.c_str());
+    const char *const tmp = VirtFs::getRealDir(file);
     std::string path;
 
     // if the file is not in the search path, then its nullptr

@@ -46,7 +46,7 @@ namespace
                 return nullptr;
             const ResourceLoader *const
                 rl = static_cast<const ResourceLoader *const>(v);
-            SDL_RWops *const rw = VirtFs::RWopsOpenRead(rl->path.c_str());
+            SDL_RWops *const rw = VirtFs::RWopsOpenRead(rl->path);
             if (!rw)
             {
                 reportAlways("Physfs error: %s", VirtFs::getLastError());
