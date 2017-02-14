@@ -25,6 +25,8 @@
 #include "configuration.h"
 #include "logger.h"
 
+#include "utils/virtfstools.h"
+
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"
@@ -35,8 +37,6 @@
 
 #include "resources/loaders/shaderloader.h"
 
-#include "utils/files.h"
-
 #include "debug.h"
 
 ShadersManager shaders;
@@ -44,7 +44,7 @@ ShadersManager shaders;
 Shader *ShadersManager::createShader(const unsigned int type,
                                      const std::string &fileName)
 {
-    const std::string str = Files::loadTextFileString(fileName);
+    const std::string str = VirtFs::loadTextFileString(fileName);
     const char *ptrStr = str.c_str();
     GLuint shaderId = mglCreateShader(type);
     mglShaderSource(shaderId, 1, &ptrStr, nullptr);

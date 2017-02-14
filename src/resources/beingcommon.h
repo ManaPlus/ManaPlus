@@ -21,7 +21,8 @@
 #ifndef RESOURCES_BEINGCOMMON_H
 #define RESOURCES_BEINGCOMMON_H
 
-#include "utils/files.h"
+#include "utils/stringvector.h"
+#include "utils/virtfstools.h"
 #include "utils/xml.h"
 
 #include "localconsts.h"
@@ -33,7 +34,7 @@ struct SpriteDisplay;
 #define loadXmlDir(name, function) \
     { \
         StringVect listVect; \
-        Files::getFilesInDir(paths.getStringValue( \
+        VirtFs::getFilesInDir(paths.getStringValue( \
             name), listVect, ".xml"); \
         FOR_EACH (StringVectCIter, itVect, listVect) \
             function(*itVect, SkipError_true); \
@@ -42,7 +43,7 @@ struct SpriteDisplay;
 #define loadXmlDir2(name, function, ext, skipError) \
     { \
         StringVect listVect; \
-        Files::getFilesInDir(name, listVect, ext); \
+        VirtFs::getFilesInDir(name, listVect, ext); \
         FOR_EACH (StringVectCIter, itVect, listVect) \
             function(*itVect, skipError); \
     }

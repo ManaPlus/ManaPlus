@@ -60,6 +60,7 @@
 #include "utils/files.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
+#include "utils/virtfstools.h"
 #ifdef __native_client__
 #include "utils/naclmessages.h"
 #endif  // __native_client__
@@ -363,7 +364,7 @@ void WindowManager::setIcon()
     iconFile.append(".png");
 #endif  // WIN32
 
-    iconFile = Files::getPath(iconFile);
+    iconFile = VirtFs::getPath(iconFile);
     logger->log("Loading icon from file: %s", iconFile.c_str());
 
 #ifdef WIN32

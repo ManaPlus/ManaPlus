@@ -75,11 +75,11 @@
 #include "resources/image/image.h"
 
 #include "utils/delete2.h"
-#include "utils/files.h"
 #include "utils/paths.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"
+#include "utils/virtfstools.h"
 
 #include "debug.h"
 
@@ -162,7 +162,7 @@ TTF_Font *Font::openFont(const char *const name, const int size)
 //        return nullptr;
 //    return TTF_OpenFontIndexRW(rw, 1, size, 0);
 // #else
-    return TTF_OpenFontIndex(Files::getPath(name).c_str(),
+    return TTF_OpenFontIndex(VirtFs::getPath(name).c_str(),
         size, 0);
 // #endif
 }

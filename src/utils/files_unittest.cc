@@ -24,6 +24,7 @@
 #include "logger.h"
 
 #include "utils/virtfs.h"
+#include "utils/virtfstools.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
@@ -73,9 +74,9 @@ TEST_CASE("Files existsLocal")
     ResourceManager::init();
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
-    REQUIRE(Files::existsLocal(Files::getPath("help/about.txt")) == true);
-    REQUIRE_FALSE(Files::existsLocal(Files::getPath("help/about1.txt")));
-    REQUIRE_FALSE(Files::existsLocal(Files::getPath("help1/about.txt")));
+    REQUIRE(Files::existsLocal(VirtFs::getPath("help/about.txt")) == true);
+    REQUIRE_FALSE(Files::existsLocal(VirtFs::getPath("help/about1.txt")));
+    REQUIRE_FALSE(Files::existsLocal(VirtFs::getPath("help1/about.txt")));
     ResourceManager::deleteInstance();
 //    VirtFs::deinit();
 }
@@ -87,7 +88,7 @@ TEST_CASE("Files loadTextFileString")
     ResourceManager::init();
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
-    REQUIRE(Files::loadTextFileString("test/simplefile.txt") ==
+    REQUIRE(VirtFs::loadTextFileString("test/simplefile.txt") ==
         "this is test \nfile.");
     ResourceManager::deleteInstance();
 //    VirtFs::deinit();
@@ -102,7 +103,7 @@ TEST_CASE("Files loadTextFile")
     VirtFs::addDirToSearchPath("../data", Append_false);
 
     StringVect lines;
-    Files::loadTextFile("test/simplefile.txt", lines);
+    VirtFs::loadTextFile("test/simplefile.txt", lines);
     REQUIRE(lines.size() == 2);
     REQUIRE(lines[0] == "this is test ");
     REQUIRE(lines[1] == "file.");
@@ -118,10 +119,10 @@ TEST_CASE("Files saveTextFile")
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
 
-    const std::string dir = Files::getPath("test");
+    const std::string dir = VirtFs::getPath("test");
     REQUIRE(dir.size() > 0);
     Files::saveTextFile(dir, "tempfile.txt", "test line\ntext line2");
-    std::string data = Files::loadTextFileString("test/tempfile.txt");
+    std::string data = VirtFs::loadTextFileString("test/tempfile.txt");
     ::remove((dir + "/tempfile.txt").c_str());
     REQUIRE(data == "test line\ntext line2\n");
     ResourceManager::deleteInstance();
@@ -137,14 +138,14 @@ TEST_CASE("Files getFilesInDir")
     VirtFs::addDirToSearchPath("../data", Append_false);
 
     StringVect list;
-    Files::getFilesInDir("test",
+    VirtFs::getFilesInDir("test",
         list,
         ".gpl");
     REQUIRE(list.size() == 1);
     REQUIRE(list[0] == "test/palette.gpl");
 
     list.clear();
-    Files::getFilesInDir("perserver/default",
+    VirtFs::getFilesInDir("perserver/default",
         list,
         ".xml");
     REQUIRE(list.size() == 5);

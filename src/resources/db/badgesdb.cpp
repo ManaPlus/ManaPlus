@@ -22,7 +22,7 @@
 
 #include "configuration.h"
 
-#include "utils/files.h"
+#include "utils/virtfstools.h"
 #include "utils/xmlutils.h"
 
 #include "debug.h"
@@ -58,8 +58,10 @@ static void loadDB(const std::string &name, BadgesInfos &arr)
         name, arr, SkipError_true);
 
     StringVect listVect;
-    Files::getFilesInDir(paths.getStringValue(
-        "badgesPatchDir"), listVect, ".xml");
+    VirtFs::getFilesInDir(paths.getStringValue(
+        "badgesPatchDir"),
+        listVect,
+        ".xml");
     FOR_EACH (StringVectCIter, itVect, listVect)
         loadXmlFile(*itVect, name, arr, SkipError_true);
 }

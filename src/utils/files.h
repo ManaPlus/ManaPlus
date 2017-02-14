@@ -53,21 +53,7 @@ namespace Files
     int copyFile(const std::string &restrict pFrom,
                  const std::string &restrict pTo);
 
-    void getFiles(const std::string &path, StringVect &list);
-
-    void getDirs(const std::string &path, StringVect &list);
-
-    void getFilesWithDir(const std::string &restrict path,
-                         StringVect &restrict list);
-
     bool existsLocal(const std::string &path);
-
-    std::string getPath(const std::string &file);
-
-    bool loadTextFile(const std::string &fileName,
-                      StringVect &lines);
-
-    std::string loadTextFileString(const std::string &fileName);
 
     bool loadTextFileLocal(const std::string &fileName,
                            StringVect &lines);
@@ -77,11 +63,6 @@ namespace Files
                       const std::string &restrict text);
 
     void deleteFilesInDirectory(std::string path);
-
-    void getFilesInDir(const std::string &dir,
-                       StringVect &list,
-                       const std::string &ext);
-
 }  // namespace Files
 
 #endif  // UTILS_FILES_H

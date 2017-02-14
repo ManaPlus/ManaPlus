@@ -38,9 +38,9 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/gettext.h"
-#include "utils/files.h"
 #include "utils/paths.h"
 #include "utils/process.h"
+#include "utils/virtfstools.h"
 
 #include "utils/translation/podict.h"
 #include "utils/translation/translationmanager.h"
@@ -161,11 +161,11 @@ void HelpWindow::loadTags()
         helpPath = paths.getStringValue("tags");
 
     StringVect filesVect;
-    Files::getFilesInDir(helpPath, filesVect, ".idx");
+    VirtFs::getFilesInDir(helpPath, filesVect, ".idx");
     FOR_EACH (StringVectCIter, itVect, filesVect)
     {
         StringVect lines;
-        Files::loadTextFile(*itVect, lines);
+        VirtFs::loadTextFile(*itVect, lines);
         FOR_EACH (StringVectCIter, it, lines)
         {
             const std::string &str = *it;

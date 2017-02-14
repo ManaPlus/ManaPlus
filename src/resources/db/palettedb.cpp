@@ -23,7 +23,7 @@
 #include "configuration.h"
 
 #include "utils/checkutils.h"
-#include "utils/files.h"
+#include "utils/virtfstools.h"
 
 #include "resources/dye/dyecolor.h"
 
@@ -47,7 +47,7 @@ void PaletteDB::loadPalette()
 {
     mLoaded = true;
     StringVect lines;
-    Files::loadTextFile(paths.getStringValue("palettesDir") +
+    VirtFs::loadTextFile(paths.getStringValue("palettesDir") +
         paths.getStringValue("defaultPaletteFile"),
         lines);
     StringVectCIter it = lines.begin();

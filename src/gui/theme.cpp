@@ -47,6 +47,7 @@
 #include "utils/dtor.h"
 #include "utils/files.h"
 #include "utils/virtfs.h"
+#include "utils/virtfstools.h"
 #include "utils/virtlist.h"
 
 #include "debug.h"
@@ -566,13 +567,13 @@ bool Theme::tryThemePath(const std::string &themeName)
 
 void Theme::fillSkinsList(StringVect &list)
 {
-    Files::getDirs(branding.getStringValue("guiThemePath"), list);
+    VirtFs::getDirs(branding.getStringValue("guiThemePath"), list);
 }
 
 void Theme::fillFontsList(StringVect &list)
 {
     VirtFs::permitLinks(true);
-    Files::getFiles(branding.getStringValue("fontsPath"), list);
+    VirtFs::getFiles(branding.getStringValue("fontsPath"), list);
     VirtFs::permitLinks(false);
 }
 

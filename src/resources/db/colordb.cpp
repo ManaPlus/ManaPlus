@@ -53,7 +53,7 @@ void ColorDB::load()
         colors,
         SkipError_true);
     StringVect list;
-    Files::getFilesInDir(paths.getStringValue(
+    VirtFs::getFilesInDir(paths.getStringValue(
         "hairColorPatchDir"), list, ".xml");
     FOR_EACH (StringVectCIter, it2, list)
         loadHair(*it2, colors, SkipError_true);

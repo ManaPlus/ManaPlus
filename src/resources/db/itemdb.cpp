@@ -42,8 +42,8 @@
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/dtor.h"
-#include "utils/files.h"
 #include "utils/stringmap.h"
+#include "utils/virtfstools.h"
 
 #include "debug.h"
 
@@ -202,7 +202,7 @@ void ItemDB::load()
         SkipError_true);
 
     StringVect list;
-    Files::getFilesInDir(paths.getStringValue("itemsPatchDir"),
+    VirtFs::getFilesInDir(paths.getStringValue("itemsPatchDir"),
         list,
         ".xml");
     FOR_EACH (StringVectCIter, it, list)

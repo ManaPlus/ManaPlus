@@ -23,6 +23,8 @@
 
 #include "enums/simpletypes/append.h"
 
+#include "utils/stringvector.h"
+
 #include "localconsts.h"
 
 #include <string>
@@ -38,6 +40,19 @@ namespace VirtFs
                               const Append append);
     void searchAndRemoveArchives(const std::string &restrict path,
                                  const std::string &restrict ext);
+    void getFilesInDir(const std::string &dir,
+                       StringVect &list,
+                       const std::string &ext);
+    void getFilesWithDir(const std::string &restrict path,
+                         StringVect &restrict list);
+    void getFiles(const std::string &path,
+                  StringVect &list);
+    void getDirs(const std::string &path,
+                 StringVect &list);
+    std::string getPath(const std::string &file);
+    bool loadTextFile(const std::string &fileName,
+                      StringVect &lines);
+    std::string loadTextFileString(const std::string &fileName);
 }  // namespace VirtFs
 
 #endif  // UTILS_VIRTFSTOOLS_H

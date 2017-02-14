@@ -209,39 +209,6 @@ int Files::copyFile(const std::string &restrict srcName,
     return 0;
 }
 
-void Files::getFiles(const std::string &path, StringVect &list)
-{
-    VirtList *const fonts = VirtFs::enumerateFiles(path);
-    FOR_EACH (StringVectCIter, i, fonts->names)
-    {
-        if (!VirtFs::isDirectory(path + *i))
-            list.push_back(*i);
-    }
-    VirtFs::freeList(fonts);
-}
-
-void Files::getDirs(const std::string &path, StringVect &list)
-{
-    VirtList *const fonts = VirtFs::enumerateFiles(path);
-    FOR_EACH (StringVectCIter, i, fonts->names)
-    {
-        if (VirtFs::isDirectory(path + *i))
-            list.push_back(*i);
-    }
-    VirtFs::freeList(fonts);
-}
-
-void Files::getFilesWithDir(const std::string &path, StringVect &list)
-{
-    VirtList *const fonts = VirtFs::enumerateFiles(path);
-    FOR_EACH (StringVectCIter, i, fonts->names)
-    {
-        if (!VirtFs::isDirectory(path + *i))
-            list.push_back(path + *i);
-    }
-    VirtFs::freeList(fonts);
-}
-
 bool Files::existsLocal(const std::string &path)
 {
     bool flg(false);
@@ -251,70 +218,6 @@ bool Files::existsLocal(const std::string &path)
         flg = true;
     file.close();
     return flg;
-}
-
-std::string Files::getPath(const std::string &file)
-{
-    // get the real path to the file
-    const char *const tmp = VirtFs::getRealDir(file);
-    std::string path;
-
-    // if the file is not in the search path, then its nullptr
-    if (tmp)
-    {
-        path = std::string(tmp).append(dirSeparator).append(file);
-#if defined __native_client__
-        std::string dataZip = "/http/data.zip/";
-        if (path.substr(0, dataZip.length()) == dataZip)
-            path = path.replace(0, dataZip.length(), "/http/data/");
-#endif  // defined __native_client__
-    }
-    else
-    {
-        // if not found in search path return the default path
-        path = getPackageDir().append(dirSeparator).append(file);
-    }
-
-    return path;
-}
-
-std::string Files::loadTextFileString(const std::string &fileName)
-{
-    int contentsLength;
-    char *fileContents = static_cast<char*>(
-        VirtFs::loadFile(fileName, contentsLength));
-
-    if (!fileContents)
-    {
-        logger->log("Couldn't load text file: %s", fileName.c_str());
-        return std::string();
-    }
-    const std::string str = std::string(fileContents, contentsLength);
-    free(fileContents);
-    return str;
-}
-
-bool Files::loadTextFile(const std::string &fileName,
-                         StringVect &lines)
-{
-    int contentsLength;
-    char *fileContents = static_cast<char*>(
-        VirtFs::loadFile(fileName, contentsLength));
-
-    if (!fileContents)
-    {
-        logger->log("Couldn't load text file: %s", fileName.c_str());
-        return false;
-    }
-
-    std::istringstream iss(std::string(fileContents, contentsLength));
-    std::string line;
-
-    while (getline(iss, line))
-        lines.push_back(line);
-
-    free(fileContents);
-    return true;
 }
 
 bool Files::loadTextFileLocal(const std::string &fileName,
@@ -367,20 +270,4 @@ void Files::deleteFilesInDirectory(std::string path)
         }
         closedir(dir);
     }
-}
-
-void Files::getFilesInDir(const std::string &dir,
-                          StringVect &list,
-                          const std::string &ext)
-{
-    const std::string path = dir + "/";
-    StringVect tempList;
-    Files::getFilesWithDir(path, tempList);
-    FOR_EACH (StringVectCIter, it, tempList)
-    {
-        const std::string &str = *it;
-        if (findLast(str, ext))
-            list.push_back(str);
-    }
-    std::sort(list.begin(), list.end());
 }
