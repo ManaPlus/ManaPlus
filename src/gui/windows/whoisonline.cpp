@@ -25,7 +25,6 @@
 #include "actormanager.h"
 #include "configuration.h"
 #include "guild.h"
-#include "main.h"
 #include "party.h"
 #ifdef TMWA_SUPPORT
 #include "settings.h"
