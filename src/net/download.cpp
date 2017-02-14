@@ -322,9 +322,9 @@ int Download::downloadThread(void *ptr)
                                 file);
                         }
                     }
-                    curl_easy_setopt(d->mCurl, CURLOPT_USERAGENT,
-                        strprintf(PACKAGE_EXTENDED_VERSION,
-                        branding.getStringValue("appName").c_str()).c_str());
+                    curl_easy_setopt(d->mCurl,
+                        CURLOPT_USERAGENT,
+                        settings.userAgent.c_str());
 
                     curl_easy_setopt(d->mCurl, CURLOPT_ERRORBUFFER, d->mError);
                     curl_easy_setopt(d->mCurl, CURLOPT_URL, d->mUrl.c_str());

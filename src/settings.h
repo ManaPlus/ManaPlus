@@ -56,6 +56,7 @@ class Settings final
             gmCommandSymbol("@"),
             gmCharCommandSymbol("#"),
             linkCommandSymbol("="),
+            userAgent(),
             updateMirrors(),
             options(),
             guiAlpha(1.0F),
@@ -115,6 +116,7 @@ class Settings final
         std::string gmCommandSymbol;
         std::string gmCharCommandSymbol;
         std::string linkCommandSymbol;
+        std::string userAgent;
         std::vector<std::string> updateMirrors;
         Options options;
         float guiAlpha;

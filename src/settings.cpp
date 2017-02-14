@@ -21,6 +21,7 @@
 #include "settings.h"
 
 #include "configuration.h"
+#include "main.h"
 
 #include "debug.h"
 
@@ -29,4 +30,6 @@ Settings settings;
 void Settings::init()
 {
     uselonglivesprites = config.getBoolValue("uselonglivesprites");
+    userAgent = strprintf(PACKAGE_EXTENDED_VERSION,
+        branding.getStringValue("appName").c_str());
 }

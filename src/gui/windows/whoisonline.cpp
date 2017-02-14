@@ -544,9 +544,9 @@ int WhoIsOnline::downloadThread(void *ptr)
                                    &WhoIsOnline::memoryWrite);
             curl_easy_setopt(curl, CURLOPT_WRITEDATA, ptr);
 
-            curl_easy_setopt(curl, CURLOPT_USERAGENT,
-                strprintf(PACKAGE_EXTENDED_VERSION,
-                branding.getStringValue("appName").c_str()).c_str());
+            curl_easy_setopt(curl,
+                CURLOPT_USERAGENT,
+                settings.userAgent.c_str());
 
             curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, wio->mCurlError);
             curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
