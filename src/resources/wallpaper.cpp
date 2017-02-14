@@ -27,6 +27,7 @@
 #include "resources/wallpaperdata.h"
 
 #include "utils/virtfs.h"
+#include "utils/virtlist.h"
 
 #include <algorithm>
 
@@ -84,19 +85,19 @@ void Wallpaper::loadWallpapers()
 {
     wallpaperData.clear();
     initDefaultWallpaperPaths();
-    char **const imgs = VirtFs::enumerateFiles(wallpaperPath.c_str());
+    VirtList *const imgs = VirtFs::enumerateFiles(wallpaperPath);
 
-    for (char *const *i = imgs; *i; i++)
+    FOR_EACH (StringVectCIter, i, imgs->names)
     {
+        // First, get the base filename of the image:
+        std::string filename = *i;
         // If the backup file is found, we tell it.
-        if (strncmp (*i, wallpaperFile.c_str(), strlen(*i)) == 0)
+        if (filename.find(wallpaperFile) != std::string::npos)
             haveBackup = true;
 
         // If the image format is terminated by: "_<width>x<height>.png"
         // It is taken as a potential wallpaper.
 
-        // First, get the base filename of the image:
-        std::string filename = *i;
         size_t separator = filename.rfind('_');
         filename = filename.substr(0, separator);
 
@@ -104,12 +105,16 @@ void Wallpaper::loadWallpapers()
         separator = filename.find('%');
         if (separator == std::string::npos)
         {
+            std::string name = filename;
             // Then, append the width and height search mask.
             filename.append("_%10dx%10d.png");
 
             int width;
             int height;
-            if (sscanf(*i, filename.c_str(), &width, &height) == 2)
+            if (sscanf(name.c_str(),
+                filename.c_str(),
+                &width,
+                &height) == 2)
             {
                 WallpaperData wp;
                 wp.filename = wallpaperPath;

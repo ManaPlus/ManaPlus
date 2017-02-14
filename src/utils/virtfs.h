@@ -28,6 +28,7 @@
 #include <string>
 
 struct VirtFile;
+struct VirtList;
 
 namespace VirtFs
 {
@@ -37,9 +38,9 @@ namespace VirtFs
     const char *getBaseDir();
     const char *getUserDir();
     bool exists(const char *restrict const fname);
-    char **enumerateFiles(const char *restrict const dir);
+    VirtList *enumerateFiles(const std::string &restrict dir) RETURNS_NONNULL;
     bool isDirectory(const char *restrict const fname);
-    void freeList(void *restrict const listVar);
+    void freeList(VirtList *restrict const handle);
     VirtFile *openRead(const char *restrict const filename);
     VirtFile *openWrite(const char *restrict const filename);
     VirtFile *openAppend(const char *restrict const filename);

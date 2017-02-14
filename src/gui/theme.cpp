@@ -47,6 +47,7 @@
 #include "utils/dtor.h"
 #include "utils/files.h"
 #include "utils/virtfs.h"
+#include "utils/virtlist.h"
 
 #include "debug.h"
 
@@ -577,10 +578,10 @@ void Theme::fillFontsList(StringVect &list)
 
 void Theme::fillSoundsList(StringVect &list)
 {
-    char **skins = VirtFs::enumerateFiles(
-        branding.getStringValue("systemsounds").c_str());
+    VirtList *const skins = VirtFs::enumerateFiles(
+        branding.getStringValue("systemsounds"));
 
-    for (char **i = skins; *i; i++)
+    FOR_EACH (StringVectCIter, i, skins->names)
     {
         if (!VirtFs::isDirectory((
             branding.getStringValue("systemsounds") + *i).c_str()))

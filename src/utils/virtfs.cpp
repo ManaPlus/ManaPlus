@@ -23,6 +23,7 @@
 #include "utils/checkutils.h"
 #include "utils/virtfile.h"
 #include "utils/virtfileprivate.h"
+#include "utils/virtlist.h"
 
 #include <iostream>
 #include <unistd.h>
@@ -85,9 +86,19 @@ namespace VirtFs
         return PHYSFS_exists(fname);
     }
 
-    char **enumerateFiles(const char *restrict const dir)
+    VirtList *enumerateFiles(const std::string &restrict dir)
     {
-        return PHYSFS_enumerateFiles(dir);
+        char** handle = PHYSFS_enumerateFiles(dir.c_str());
+        VirtList *const files = new VirtList;
+        if (handle == nullptr)
+            return files;
+        for (char **i = handle; *i; i++)
+        {
+            std::string str = *i;
+            files->names.push_back(str);
+        }
+        PHYSFS_freeList(handle);
+        return files;
     }
 
     bool isDirectory(const char *restrict const fname)
@@ -95,9 +106,9 @@ namespace VirtFs
         return PHYSFS_isDirectory(fname);
     }
 
-    void freeList(void *restrict const listVar)
+    void freeList(VirtList *restrict const handle)
     {
-        PHYSFS_freeList(listVar);
+        delete handle;
     }
 
     VirtFile *openRead(const char *restrict const filename)

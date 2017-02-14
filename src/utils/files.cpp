@@ -30,6 +30,7 @@
 #include "utils/paths.h"
 #include "utils/virtfs.h"
 #include "utils/virtfstools.h"
+#include "utils/virtlist.h"
 #include "utils/stringutils.h"
 
 #include <algorithm>
@@ -48,8 +49,8 @@ void Files::extractLocale()
     VirtFs::addZipToSearchPath(fileName2, Append_false);
 
     const std::string localDir = std::string(getenv("APPDIR")).append("/");
-    char **rootDirs = VirtFs::enumerateFiles("locale");
-    for (char **i = rootDirs; *i; i++)
+    VirtList *const rootDirs = VirtFs::enumerateFiles("locale");
+    FOR_EACH (StringVectCIter, i, rootDirs->names)
     {
         const std::string dir = std::string("locale/").append(*i);
         if (VirtFs::isDirectory(dir.c_str()))
@@ -108,8 +109,8 @@ void Files::copyPhysFsDir(const std::string &restrict inDir,
                           const std::string &restrict outDir)
 {
     mkdir_r(outDir.c_str());
-    char **files = VirtFs::enumerateFiles(inDir.c_str());
-    for (char **i = files; *i; i++)
+    VirtList *const files = VirtFs::enumerateFiles(inDir);
+    FOR_EACH (StringVectCIter, i, files->names)
     {
         const std::string file = std::string(inDir).append("/").append(*i);
         const std::string outDir2 = std::string(outDir).append("/").append(*i);
@@ -210,8 +211,8 @@ int Files::copyFile(const std::string &restrict srcName,
 
 void Files::getFiles(const std::string &path, StringVect &list)
 {
-    char **const fonts = VirtFs::enumerateFiles(path.c_str());
-    for (char *const *i = fonts; *i; i++)
+    VirtList *const fonts = VirtFs::enumerateFiles(path);
+    FOR_EACH (StringVectCIter, i, fonts->names)
     {
         if (!VirtFs::isDirectory((path + *i).c_str()))
             list.push_back(*i);
@@ -221,8 +222,8 @@ void Files::getFiles(const std::string &path, StringVect &list)
 
 void Files::getDirs(const std::string &path, StringVect &list)
 {
-    char **const fonts = VirtFs::enumerateFiles(path.c_str());
-    for (char *const *i = fonts; *i; i++)
+    VirtList *const fonts = VirtFs::enumerateFiles(path);
+    FOR_EACH (StringVectCIter, i, fonts->names)
     {
         if (VirtFs::isDirectory((path + *i).c_str()))
             list.push_back(*i);
@@ -232,8 +233,8 @@ void Files::getDirs(const std::string &path, StringVect &list)
 
 void Files::getFilesWithDir(const std::string &path, StringVect &list)
 {
-    char **const fonts = VirtFs::enumerateFiles(path.c_str());
-    for (char *const *i = fonts; *i; i++)
+    VirtList *const fonts = VirtFs::enumerateFiles(path);
+    FOR_EACH (StringVectCIter, i, fonts->names)
     {
         if (!VirtFs::isDirectory((path + *i).c_str()))
             list.push_back(path + *i);

@@ -891,6 +891,8 @@ SET(SRCS
     utils/virtfsrwops.h
     utils/virtfstools.cpp
     utils/virtfstools.h
+    utils/virtlist.cpp
+    utils/virtlist.h
     utils/virtfs.cpp
     utils/virtfs.h
     utils/process.cpp
@@ -1775,6 +1777,8 @@ SET(DYE_CMD_SRCS
     utils/virtfsrwops.h
     utils/virtfstools.cpp
     utils/virtfstools.h
+    utils/virtlist.cpp
+    utils/virtlist.h
     utils/virtfs.cpp
     utils/virtfs.h
     utils/sdl2helper.cpp

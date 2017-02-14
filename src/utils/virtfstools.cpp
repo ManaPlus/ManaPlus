@@ -23,6 +23,7 @@
 #include "logger.h"
 
 #include "utils/virtfs.h"
+#include "utils/virtlist.h"
 
 #include "debug.h"
 
@@ -59,16 +60,16 @@ namespace VirtFs
                               const std::string &restrict ext,
                               const Append append)
     {
-        char **list = VirtFs::enumerateFiles(path.c_str());
-
-        for (char **i = list; *i; i++)
+        VirtList *const list = VirtFs::enumerateFiles(path);
+        FOR_EACH (StringVectCIter, i, list->names)
         {
-            const size_t len = strlen(*i);
+            const std::string str = *i;
+            const size_t len = str.size();
 
             if (len > ext.length() &&
-                !ext.compare((*i) + (len - ext.length())))
+                !ext.compare(str.substr(len - ext.length())))
             {
-                const std::string file = path + (*i);
+                const std::string file = path + str;
                 const std::string realPath = std::string(
                     VirtFs::getRealDir(file.c_str()));
                 VirtFs::addZipToSearchPath(std::string(realPath).append(
@@ -81,15 +82,15 @@ namespace VirtFs
     void searchAndRemoveArchives(const std::string &restrict path,
                                  const std::string &restrict ext)
     {
-        char **list = VirtFs::enumerateFiles(path.c_str());
-
-        for (char **i = list; *i; i++)
+        VirtList *const list = VirtFs::enumerateFiles(path);
+        FOR_EACH (StringVectCIter, i, list->names)
         {
-            const size_t len = strlen(*i);
+            const std::string str = *i;
+            const size_t len = str.size();
             if (len > ext.length() &&
-                !ext.compare((*i) + (len - ext.length())))
+                !ext.compare(str.substr(len - ext.length())))
             {
-                const std::string file = path + (*i);
+                const std::string file = path + str;
                 const std::string realPath = std::string(
                     VirtFs::getRealDir(file.c_str()));
                 VirtFs::removeZipFromSearchPath(std::string(

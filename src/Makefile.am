@@ -551,6 +551,8 @@ BASE_SRC += events/actionevent.h \
 	      utils/virtfsrwops.h \
 	      utils/virtfstools.cpp \
 	      utils/virtfstools.h \
+	      utils/virtlist.cpp \
+	      utils/virtlist.h \
 	      utils/virtfs.cpp \
 	      utils/virtfs.h \
 	      utils/process.cpp \
