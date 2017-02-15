@@ -79,6 +79,20 @@ TEST_CASE("VirtFs exists")
 
 static void removeTemp(StringVect &restrict list)
 {
+    int cnt = 0;
+    std::sort(list.begin(), list.end());
+
+    FOR_EACH (StringVectIter, it, list)
+    {
+        if (*it != "serverlistplus.xml.part")
+        {
+            logger->log("file: %d %s",
+                cnt,
+                (*it).c_str());
+            cnt ++;
+        }
+    }
+
     FOR_EACH (StringVectIter, it, list)
     {
         if (*it == "serverlistplus.xml.part")
