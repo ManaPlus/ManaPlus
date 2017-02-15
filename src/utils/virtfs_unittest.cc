@@ -20,8 +20,12 @@
 
 #include "catch.hpp"
 
+#include "configuration.h"
+
 #include "utils/checkutils.h"
 #include "utils/virtfs.h"
+#include "utils/virtfstools.h"
+#include "utils/virtlist.h"
 
 #include "debug.h"
 
@@ -77,7 +81,35 @@ TEST_CASE("VirtFs exists")
 
 TEST_CASE("VirtFs enumerateFiles")
 {
-    // +++ need implement
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
+    ::remove("data/test/serverlistplus.xml.part");
+    ::remove("../data/test/serverlistplus.xml.part");
+//    VirtFs::remove("test/serverlistplus.xml.part");
+
+    VirtList *list = nullptr;
+
+    VirtFs::permitLinks(false);
+    list = VirtFs::enumerateFiles("test");
+    const size_t sz = list->names.size();
+    REQUIRE(sz == 22);
+    VirtFs::freeList(list);
+
+    VirtFs::permitLinks(true);
+    list = VirtFs::enumerateFiles("test");
+    REQUIRE(list->names.size() > sz);
+    REQUIRE(list->names.size() - sz == 1);
+    REQUIRE(list->names.size() == 23);
+    VirtFs::freeList(list);
+
+    VirtFs::permitLinks(false);
+    list = VirtFs::enumerateFiles("test");
+    REQUIRE(list->names.size() == sz);
+    REQUIRE(list->names.size() == 22);
+    VirtFs::freeList(list);
+
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
 }
 
 TEST_CASE("VirtFs isDirectory")
@@ -87,21 +119,38 @@ TEST_CASE("VirtFs isDirectory")
     VirtFs::addDirToSearchPath("../data", Append_false);
 
     REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("test/units.xml/") == false);
+    REQUIRE(VirtFs::isDirectory("test//units.xml") == false);
     REQUIRE(VirtFs::isDirectory("test/units123.xml") == false);
+    REQUIRE(VirtFs::isDirectory("test//units123.xml") == false);
     REQUIRE(VirtFs::isDirectory("tesQ/units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("tesQ//units.xml") == false);
     REQUIRE(VirtFs::isDirectory("units.xml") == false);
     REQUIRE(VirtFs::isDirectory("test") == true);
+    REQUIRE(VirtFs::isDirectory("test/") == true);
+    REQUIRE(VirtFs::isDirectory("test//") == true);
+    REQUIRE(VirtFs::isDirectory("test/dir1") == true);
+    REQUIRE(VirtFs::isDirectory("test//dir1") == true);
+    REQUIRE(VirtFs::isDirectory("test//dir1/") == true);
+    REQUIRE(VirtFs::isDirectory("test//dir1//") == true);
+    REQUIRE(VirtFs::isDirectory("test/dir1/") == true);
+    REQUIRE(VirtFs::isDirectory("test/dir1//") == true);
     REQUIRE(VirtFs::isDirectory("testQ") == false);
+    REQUIRE(VirtFs::isDirectory("testQ/") == false);
+    REQUIRE(VirtFs::isDirectory("testQ//") == false);
 
     VirtFs::addDirToSearchPath("data/test", Append_false);
     VirtFs::addDirToSearchPath("../data/test", Append_false);
 
     REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("test/units.xml/") == false);
+    REQUIRE(VirtFs::isDirectory("test//units.xml") == false);
     REQUIRE(VirtFs::isDirectory("test/units123.xml") == false);
     REQUIRE(VirtFs::isDirectory("tesQ/units.xml") == false);
     REQUIRE(VirtFs::isDirectory("units.xml") == false);
     REQUIRE(VirtFs::isDirectory("test") == true);
     REQUIRE(VirtFs::isDirectory("testQ") == false);
+    REQUIRE(VirtFs::isDirectory("test/dir1") == true);
 
     VirtFs::removeDirFromSearchPath("data/test");
     VirtFs::removeDirFromSearchPath("../data/test");
@@ -110,8 +159,11 @@ TEST_CASE("VirtFs isDirectory")
     REQUIRE(VirtFs::isDirectory("test/units123.xml") == false);
     REQUIRE(VirtFs::isDirectory("tesQ/units.xml") == false);
     REQUIRE(VirtFs::isDirectory("units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("units.xml/") == false);
     REQUIRE(VirtFs::isDirectory("test") == true);
+    REQUIRE(VirtFs::isDirectory("test/") == true);
     REQUIRE(VirtFs::isDirectory("testQ") == false);
+    REQUIRE(VirtFs::isDirectory("test/dir1") == true);
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
@@ -178,6 +230,109 @@ TEST_CASE("VirtFs openRead")
     VirtFs::removeDirFromSearchPath("../data");
 }
 
+TEST_CASE("VirtFs addZipToSearchPath")
+{
+    // +++ need implement
+}
+
+TEST_CASE("VirtFs removeZipFromSearchPath")
+{
+    // +++ need implement
+}
+
+TEST_CASE("VirtFs getRealDir")
+{
+    REQUIRE(VirtFs::getRealDir(".") == "");
+    REQUIRE(VirtFs::getRealDir("..") == "");
+    const bool dir1 = VirtFs::addDirToSearchPath("data", Append_false);
+    REQUIRE((dir1 || VirtFs::addDirToSearchPath("../data", Append_false)) == true);
+    if (dir1 == true)
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "data");
+    }
+    else
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "../data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "../data");
+    }
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    VirtFs::addDirToSearchPath("data/test", Append_false);
+    VirtFs::addDirToSearchPath("../data/test", Append_false);
+    if (dir1 == true)
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "data");
+        REQUIRE(VirtFs::getRealDir("test.txt") ==
+            "data/test");
+    }
+    else
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "../data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "../data");
+        REQUIRE(VirtFs::getRealDir("test.txt") ==
+            "../data/test");
+    }
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    VirtFs::removeDirFromSearchPath("data/test");
+    VirtFs::removeDirFromSearchPath("../data/test");
+
+    if (dir1 == true)
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "data");
+    }
+    else
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "../data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "../data");
+    }
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
+}
+
+TEST_CASE("VirtFs permitLinks")
+{
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
+
+    ::remove("data/test/serverlistplus.xml.part");
+    ::remove("../data/test/serverlistplus.xml.part");
+//    VirtFs::remove("test/serverlistplus.xml.part");
+
+    StringVect list;
+    VirtFs::permitLinks(false);
+    VirtFs::getFiles("test", list);
+    const size_t sz = list.size();
+    REQUIRE(sz == 21);
+
+    list.clear();
+    VirtFs::permitLinks(true);
+    VirtFs::getFiles("test", list);
+    REQUIRE(list.size() > sz);
+    REQUIRE(list.size() - sz == 1);
+    REQUIRE(list.size() == 22);
+
+    list.clear();
+    VirtFs::permitLinks(false);
+    VirtFs::getFiles("test", list);
+    REQUIRE(list.size() == sz);
+    REQUIRE(list.size() == 21);
+
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
+}
+
 TEST_CASE("VirtFs read")
 {
     VirtFs::addDirToSearchPath("data", Append_false);
@@ -193,14 +348,17 @@ TEST_CASE("VirtFs read")
     REQUIRE(strcmp(static_cast<char*>(buffer),
         "test line 1\ntest line 2") == 0);
     REQUIRE(VirtFs::tell(file) == fileSize);
+    REQUIRE(VirtFs::eof(file) == true);
 
     free(buffer);
     buffer = calloc(fileSize + 1, 1);
     REQUIRE(VirtFs::seek(file, 12) != 0);
+    REQUIRE(VirtFs::eof(file) == false);
     REQUIRE(VirtFs::tell(file) == 12);
     REQUIRE(VirtFs::read(file, buffer, 1, 11) == 11);
     REQUIRE(strcmp(static_cast<char*>(buffer),
         "test line 2") == 0);
+    REQUIRE(VirtFs::eof(file) == true);
 
     VirtFs::close(file);
     free(buffer);

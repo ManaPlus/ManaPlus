@@ -1,3 +1,5 @@
+SUBDIRS = dir1
+
 testdir = $(pkgdatadir)/data/test
 
 test_DATA =				\
@@ -15,6 +17,7 @@ test_DATA =				\
 	serverlistplus.xml \
 	simplefile.txt \
 	test.txt \
+	test2.txt \
 	test.zip \
 	testintmap.xml \
 	units.xml

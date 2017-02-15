@@ -13,9 +13,12 @@ SET(FILES
     serverlistplus.xml
     simplefile.txt
     test.txt
+    test2.txt
     test.zip
     testintmap.xml
     units.xml
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/test)
+
+ADD_SUBDIRECTORY(dir1)

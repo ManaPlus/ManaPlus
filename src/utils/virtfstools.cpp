@@ -49,7 +49,7 @@ namespace VirtFs
         }
 
         logger->log("Loaded %s/%s",
-            VirtFs::getRealDir(fileName),
+            VirtFs::getRealDir(fileName).c_str(),
             fileName.c_str());
 
         fileSize = CAST_S32(VirtFs::fileLength(file));
@@ -75,8 +75,7 @@ namespace VirtFs
                 !ext.compare(str.substr(len - ext.length())))
             {
                 const std::string file = path + str;
-                const std::string realPath = std::string(
-                    VirtFs::getRealDir(file));
+                const std::string realPath = VirtFs::getRealDir(file);
                 VirtFs::addZipToSearchPath(std::string(realPath).append(
                     dirSeparator).append(file), append);
             }
@@ -96,8 +95,7 @@ namespace VirtFs
                 !ext.compare(str.substr(len - ext.length())))
             {
                 const std::string file = path + str;
-                const std::string realPath = std::string(
-                    VirtFs::getRealDir(file));
+                const std::string realPath = VirtFs::getRealDir(file);
                 VirtFs::removeZipFromSearchPath(std::string(
                     realPath).append(
                     dirSeparator).append(
@@ -141,7 +139,7 @@ namespace VirtFs
         VirtList *const fonts = VirtFs::enumerateFiles(path);
         FOR_EACH (StringVectCIter, i, fonts->names)
         {
-            if (!VirtFs::isDirectory(path + *i))
+            if (!VirtFs::isDirectory(path + dirSeparator + *i))
                 list.push_back(*i);
         }
         VirtFs::freeList(fonts);
@@ -152,7 +150,7 @@ namespace VirtFs
         VirtList *const fonts = VirtFs::enumerateFiles(path);
         FOR_EACH (StringVectCIter, i, fonts->names)
         {
-            if (VirtFs::isDirectory(path + *i))
+            if (VirtFs::isDirectory(path + dirSeparator + *i))
                 list.push_back(*i);
         }
         VirtFs::freeList(fonts);
@@ -161,11 +159,11 @@ namespace VirtFs
     std::string getPath(const std::string &file)
     {
         // get the real path to the file
-        const char *const tmp = VirtFs::getRealDir(file);
+        const std::string tmp = VirtFs::getRealDir(file);
         std::string path;
 
-        // if the file is not in the search path, then its nullptr
-        if (tmp)
+        // if the file is not in the search path, then its empty
+        if (!tmp.empty())
         {
             path = std::string(tmp).append(dirSeparator).append(file);
 #if defined __native_client__

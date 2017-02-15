@@ -197,14 +197,22 @@ namespace VirtFs
         return PHYSFS_removeFromSearchPath(oldDir.c_str());
     }
 
-    const char *getRealDir(const std::string &restrict filename)
+    std::string getRealDir(const std::string &restrict filename)
     {
-        return PHYSFS_getRealDir(filename.c_str());
+        const char *const str = PHYSFS_getRealDir(filename.c_str());
+        if (str == nullptr)
+            return std::string();
+        return str;
     }
 
     bool mkdir(const std::string &restrict dirname)
     {
         return PHYSFS_mkdir(dirname.c_str());
+    }
+
+    bool remove(const std::string &restrict filename)
+    {
+        return PHYSFS_delete(filename.c_str());
     }
 
     bool deinit()

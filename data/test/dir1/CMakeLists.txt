@@ -1,0 +1,5 @@
+SET(FILES
+    file1.txt
+    )
+
+INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/test/dir1)

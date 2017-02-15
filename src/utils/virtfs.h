@@ -51,8 +51,9 @@ namespace VirtFs
     bool addZipToSearchPath(const std::string &restrict newDir,
                             const Append append);
     bool removeZipFromSearchPath(const std::string &restrict oldDir);
-    const char *getRealDir(const std::string &restrict filename);
+    std::string getRealDir(const std::string &restrict filename);
     bool mkdir(const std::string &restrict dirName);
+    bool remove(const std::string &restrict filename);
     bool deinit();
     void permitLinks(const bool val);
     const char *getLastError();
