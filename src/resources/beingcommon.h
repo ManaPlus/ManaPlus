@@ -27,6 +27,7 @@
 
 #include "localconsts.h"
 
+UTILS_STRINGVECTOR_H
 UTILS_VIRTFSTOOLS_H
 
 class BeingInfo;

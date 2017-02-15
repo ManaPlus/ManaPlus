@@ -45,7 +45,6 @@
 #include "resources/loaders/xmlloader.h"
 
 #include "utils/dtor.h"
-#include "utils/files.h"
 #include "utils/virtfs.h"
 #include "utils/virtfstools.h"
 #include "utils/virtlist.h"
