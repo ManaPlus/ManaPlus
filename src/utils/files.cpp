@@ -27,15 +27,13 @@
 #endif  // defined(ANDROID) || defined(__native_client__)
 
 #include "utils/mkdir.h"
+#if defined(ANDROID) || defined(__native_client__)
 #include "utils/paths.h"
 #include "utils/virtfs.h"
 #include "utils/virtfstools.h"
-#include "utils/virtlist.h"
-#include "utils/stringutils.h"
+#endif  // defined(ANDROID) || defined(__native_client__)
 
-#include <algorithm>
 #include <dirent.h>
-#include <sstream>
 
 #include "debug.h"
 

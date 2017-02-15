@@ -57,7 +57,6 @@
 #include "input/touch/touchmanager.h"
 
 #include "utils/delete2.h"
-#include "utils/files.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
 #include "utils/virtfstools.h"

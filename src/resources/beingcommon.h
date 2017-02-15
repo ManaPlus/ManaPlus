@@ -27,6 +27,8 @@
 
 #include "localconsts.h"
 
+UTILS_VIRTFSTOOLS_H
+
 class BeingInfo;
 
 struct SpriteDisplay;

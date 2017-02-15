@@ -27,8 +27,6 @@
 
 #include "localconsts.h"
 
-#include <string>
-
 struct VirtFile;
 
 namespace VirtFs
