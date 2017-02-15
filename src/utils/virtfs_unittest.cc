@@ -245,7 +245,8 @@ TEST_CASE("VirtFs getRealDir")
     REQUIRE(VirtFs::getRealDir(".") == "");
     REQUIRE(VirtFs::getRealDir("..") == "");
     const bool dir1 = VirtFs::addDirToSearchPath("data", Append_false);
-    REQUIRE((dir1 || VirtFs::addDirToSearchPath("../data", Append_false)) == true);
+    REQUIRE((dir1 || VirtFs::addDirToSearchPath("../data", Append_false)) ==
+        true);
     if (dir1 == true)
     {
         REQUIRE(VirtFs::getRealDir("test") == "data");
