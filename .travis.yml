@@ -1,0 +1,152 @@
+sudo: required
+
+services:
+  - docker
+
+language: c++
+dist: trusty
+
+before_script:
+  - uname -a
+  - echo before_script
+  - sudo apt-get install docker
+
+script:
+  - docker pull ${IMAGE}
+  - docker run
+    --volume=$(pwd):/build:rw
+    -e PACKAGES="${PACKAGES}"
+    -e COMMAND="${COMMAND}"
+    ${IMAGE}
+    /bin/sh -x -c "cd /build; pwd; ./tools/ci/scripts/travis.docker.sh"
+  - docker ps -a
+
+env:
+    global:
+      - SDL1="libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev"
+      - SDL2="libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev"
+      - LIBS_PACKAGES="make autoconf automake autopoint gettext libphysfs-dev 
+                       libxml2-dev libcurl4-gnutls-dev libpng-dev"
+    matrix:
+# amd64, sdl1, --disable-tmwa
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL1}"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL1}"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc5_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL1}
+                  valgrind"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL1}
+                  valgrind"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc5_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL1}
+                  valgrind"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-6 g++-6
+                  ${LIBS_PACKAGES} ${SDL1}
+                  valgrind"
+
+# i386, sdl1, --disable-tmwa
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL1}"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL1}"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc5_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL1}
+                  valgrind"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL1}
+                  valgrind"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc5_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL1}
+                  valgrind"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL1}
+                  valgrind"
+
+# amd64, sdl2, --disable-tmwa
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL2}"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL2}"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc5_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL2}
+                  valgrind"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL2}
+                  valgrind"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc5_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL2}
+                  valgrind"
+      - IMAGE=debian:unstable
+        COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-6 g++-6
+                  ${LIBS_PACKAGES} ${SDL2}
+                  valgrind"
+
+# i386, sdl2, --disable-tmwa
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL2}"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL2}"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc5_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL2}
+                  valgrind"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL2}
+                  valgrind"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc5_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-5 g++-5 
+                  ${LIBS_PACKAGES} ${SDL2}
+                  valgrind"
+      - IMAGE=vicamo/debian:sid-i386
+        COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
+        PACKAGES="gcc-6 g++-6 
+                  ${LIBS_PACKAGES} ${SDL2}
+                  valgrind"
+
+notifications:
+  email: false
