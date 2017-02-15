@@ -106,6 +106,11 @@ namespace VirtFs
         return PHYSFS_isDirectory(name.c_str());
     }
 
+    bool isSymbolicLink(const std::string &restrict name)
+    {
+        return PHYSFS_isSymbolicLink(name.c_str());
+    }
+
     void freeList(VirtList *restrict const handle)
     {
         delete handle;

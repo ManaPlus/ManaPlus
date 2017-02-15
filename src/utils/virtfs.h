@@ -40,6 +40,7 @@ namespace VirtFs
     bool exists(const std::string &restrict name);
     VirtList *enumerateFiles(const std::string &restrict dir) RETURNS_NONNULL;
     bool isDirectory(const std::string &restrict name);
+    bool isSymbolicLink(const std::string &restrict name);
     void freeList(VirtList *restrict const handle);
     VirtFile *openRead(const std::string &restrict filename);
     VirtFile *openWrite(const std::string &restrict filename);

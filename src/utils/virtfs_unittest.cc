@@ -110,26 +110,26 @@ TEST_CASE("VirtFs enumerateFiles")
 
     VirtList *list = nullptr;
 
+    const int cnt1 = VirtFs::exists("test/test2.txt") ? 23 : 22;
+    const int cnt2 = 23;
+
     VirtFs::permitLinks(false);
     list = VirtFs::enumerateFiles("test");
     removeTemp(list->names);
     const size_t sz = list->names.size();
-    REQUIRE(sz == 22);
+    REQUIRE(sz == cnt1);
     VirtFs::freeList(list);
 
     VirtFs::permitLinks(true);
     list = VirtFs::enumerateFiles("test");
     removeTemp(list->names);
-    REQUIRE(list->names.size() > sz);
-    REQUIRE(list->names.size() - sz == 1);
-    REQUIRE(list->names.size() == 23);
+    REQUIRE(list->names.size() == cnt2);
     VirtFs::freeList(list);
 
     VirtFs::permitLinks(false);
     list = VirtFs::enumerateFiles("test");
     removeTemp(list->names);
-    REQUIRE(list->names.size() == sz);
-    REQUIRE(list->names.size() == 22);
+    REQUIRE(list->names.size() == cnt1);
     VirtFs::freeList(list);
 
     VirtFs::removeDirFromSearchPath("data");
@@ -331,27 +331,27 @@ TEST_CASE("VirtFs permitLinks")
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
 
+    const int cnt1 = VirtFs::exists("test/test2.txt") ? 22 : 21;
+    const int cnt2 = 22;
+
     StringVect list;
     VirtFs::permitLinks(false);
     VirtFs::getFiles("test", list);
     removeTemp(list);
     const size_t sz = list.size();
-    REQUIRE(sz == 21);
+    REQUIRE(sz == cnt1);
 
     list.clear();
     VirtFs::permitLinks(true);
     VirtFs::getFiles("test", list);
     removeTemp(list);
-    REQUIRE(list.size() > sz);
-    REQUIRE(list.size() - sz == 1);
-    REQUIRE(list.size() == 22);
+    REQUIRE(list.size() == cnt2);
 
     list.clear();
     VirtFs::permitLinks(false);
     VirtFs::getFiles("test", list);
     removeTemp(list);
-    REQUIRE(list.size() == sz);
-    REQUIRE(list.size() == 21);
+    REQUIRE(list.size() == cnt1);
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
