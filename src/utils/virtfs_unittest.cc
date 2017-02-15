@@ -20,8 +20,6 @@
 
 #include "catch.hpp"
 
-#include "configuration.h"
-
 #include "utils/checkutils.h"
 #include "utils/virtfs.h"
 #include "utils/virtfstools.h"
@@ -79,24 +77,35 @@ TEST_CASE("VirtFs exists")
     VirtFs::removeDirFromSearchPath("../data");
 }
 
+static void removeTemp(StringVect &restrict list)
+{
+    FOR_EACH (StringVectIter, it, list)
+    {
+        if (*it == "serverlistplus.xml.part")
+        {
+            list.erase(it);
+            return;
+        }
+    }
+}
+
 TEST_CASE("VirtFs enumerateFiles")
 {
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
-    ::remove("data/test/serverlistplus.xml.part");
-    ::remove("../data/test/serverlistplus.xml.part");
-//    VirtFs::remove("test/serverlistplus.xml.part");
 
     VirtList *list = nullptr;
 
     VirtFs::permitLinks(false);
     list = VirtFs::enumerateFiles("test");
+    removeTemp(list->names);
     const size_t sz = list->names.size();
     REQUIRE(sz == 22);
     VirtFs::freeList(list);
 
     VirtFs::permitLinks(true);
     list = VirtFs::enumerateFiles("test");
+    removeTemp(list->names);
     REQUIRE(list->names.size() > sz);
     REQUIRE(list->names.size() - sz == 1);
     REQUIRE(list->names.size() == 23);
@@ -104,6 +113,7 @@ TEST_CASE("VirtFs enumerateFiles")
 
     VirtFs::permitLinks(false);
     list = VirtFs::enumerateFiles("test");
+    removeTemp(list->names);
     REQUIRE(list->names.size() == sz);
     REQUIRE(list->names.size() == 22);
     VirtFs::freeList(list);
@@ -307,19 +317,17 @@ TEST_CASE("VirtFs permitLinks")
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
 
-    ::remove("data/test/serverlistplus.xml.part");
-    ::remove("../data/test/serverlistplus.xml.part");
-//    VirtFs::remove("test/serverlistplus.xml.part");
-
     StringVect list;
     VirtFs::permitLinks(false);
     VirtFs::getFiles("test", list);
+    removeTemp(list);
     const size_t sz = list.size();
     REQUIRE(sz == 21);
 
     list.clear();
     VirtFs::permitLinks(true);
     VirtFs::getFiles("test", list);
+    removeTemp(list);
     REQUIRE(list.size() > sz);
     REQUIRE(list.size() - sz == 1);
     REQUIRE(list.size() == 22);
@@ -327,6 +335,7 @@ TEST_CASE("VirtFs permitLinks")
     list.clear();
     VirtFs::permitLinks(false);
     VirtFs::getFiles("test", list);
+    removeTemp(list);
     REQUIRE(list.size() == sz);
     REQUIRE(list.size() == 21);
 
