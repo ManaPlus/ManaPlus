@@ -21,13 +21,11 @@
 #ifndef RESOURCES_BEINGCOMMON_H
 #define RESOURCES_BEINGCOMMON_H
 
-#include "utils/stringvector.h"
 #include "utils/virtfstools.h"
 #include "utils/xml.h"
 
 #include "localconsts.h"
 
-UTILS_STRINGVECTOR_H
 UTILS_VIRTFSTOOLS_H
 
 class BeingInfo;
