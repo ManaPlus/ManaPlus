@@ -299,6 +299,7 @@ void Client::gameInit()
         settings.logFileName = settings.options.logFileName;
     else
         settings.logFileName = settings.localDataDir + "/manaplus.log";
+    logger->log("Log file: " + settings.logFileName);
     logger->setLogFile(settings.logFileName);
 
 #ifdef USE_FUZZER

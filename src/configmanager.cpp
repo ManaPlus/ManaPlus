@@ -143,7 +143,7 @@ void ConfigManager::initConfiguration()
         config.init(configPath);
         logger->log1("init 3");
         config.setDefaultValues(getConfigDefaults());
-        logger->log("configPath: " + configPath);
+        logger->log("configuration file: " + configPath);
     }
 }
 
