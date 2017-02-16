@@ -1127,17 +1127,6 @@ gcc-6_sanitize_i386:
   tags:
     - docker
 
-gcc_eathena:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc6.sh --without-opengl --disable-tmwa
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-
 gcc_without_mumble:
   stage: build
   script:
@@ -1283,17 +1272,6 @@ gcc_eathena_opengl_sdl2:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
-gcc_eathena_sdl2:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5_sdl2.sh --without-opengl --disable-tmwa
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-
 gcc_portable:
   stage: build
   script:
@@ -1304,28 +1282,6 @@ gcc_portable:
               make autoconf automake autopoint gettext libphysfs-dev 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-
-gcc_eathena_c++11:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5_c++11.sh --without-opengl --disable-tmwa
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-
-gcc_eathena_sdl2_c++11:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5_sdl2_c++11.sh --without-opengl --disable-tmwa
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 clang-3.9_sdl2:
   stage: build
