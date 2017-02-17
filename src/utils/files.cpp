@@ -31,6 +31,7 @@
 #include "utils/paths.h"
 #include "utils/virtfs.h"
 #include "utils/virtfstools.h"
+#include "utils/virtlist.h"
 #endif  // defined(ANDROID) || defined(__native_client__)
 
 #include <dirent.h>

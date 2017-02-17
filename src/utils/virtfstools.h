@@ -27,8 +27,6 @@
 
 #include "localconsts.h"
 
-struct VirtFile;
-
 namespace VirtFs
 {
     void *loadFile(const std::string &restrict fileName,

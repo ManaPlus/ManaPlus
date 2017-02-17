@@ -88,11 +88,11 @@ namespace VirtFs
 
     VirtList *enumerateFiles(const std::string &restrict dir)
     {
-        char** handle = PHYSFS_enumerateFiles(dir.c_str());
+        char ** handle = PHYSFS_enumerateFiles(dir.c_str());
         VirtList *const files = new VirtList;
         if (handle == nullptr)
             return files;
-        for (char **i = handle; *i; i++)
+        for (const char *const *i = handle; *i; i++)
         {
             std::string str = *i;
             files->names.push_back(str);
