@@ -7,7 +7,8 @@ THE MANA PLUS CLIENT
   - See AUTHORS file for a list
 
  Build status:
-  https://gitlab.com/manaplus/manaplus/badges/master/build.svg
+  Gitlab CI: https://gitlab.com/manaplus/manaplus/badges/master/build.svg
+  Travis: https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master
 
  Powered by:
 

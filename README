@@ -4,7 +4,8 @@ THE MANA PLUS CLIENT
  Version: 1.7.2.4        Date: 2017-02-04
 
  Build status:
-  https://gitlab.com/manaplus/manaplus/badges/master/build.svg
+  Gitlab CI: https://gitlab.com/manaplus/manaplus/badges/master/build.svg
+  Travis: https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master
 
  Development team:
   - See AUTHORS file for a list
