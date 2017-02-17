@@ -13,6 +13,7 @@ before_script:
 
 script:
   - docker pull ${IMAGE}
+  - travis_wait 50 sleep infinity &
   - docker run
     --volume=$(pwd):/build:rw
     -e PACKAGES="${PACKAGES}"
