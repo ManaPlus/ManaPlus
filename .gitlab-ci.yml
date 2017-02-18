@@ -1746,7 +1746,7 @@ gcc-6_SDL_SDL-1.2:
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev
               wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
@@ -1765,7 +1765,7 @@ gcc-6_SDL_default:
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev
               wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
@@ -1787,7 +1787,7 @@ gcc-6_SDL_SDL-1.2_sanitize_test:
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
               valgrind 
               wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
@@ -1807,7 +1807,7 @@ gcc-6_SDL_default_sanitize_test:
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
               valgrind 
               wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
@@ -1829,7 +1829,7 @@ gcc-6_SDL_SDL-1.2_test:
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
               valgrind 
               wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
@@ -1849,7 +1849,7 @@ gcc-6_SDL_default_test:
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
               valgrind 
               wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.8.sh
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
