@@ -24,6 +24,13 @@
 
 #include "debug.h"
 
+#define SDL_MIXER_COMPILEDVERSION \
+    SDL_VERSIONNUM(SDL_MIXER_MAJOR_VERSION, \
+    SDL_MIXER_MINOR_VERSION, SDL_MIXER_PATCHLEVEL)
+
+#define SDL_MIXER_VERSION_ATLEAST(X, Y, Z) \
+    (SDL_MIXER_COMPILEDVERSION >= SDL_VERSIONNUM(X, Y, Z))
+
 SDLMusic::SDLMusic(Mix_Music *const music,
                    SDL_RWops *const rw,
                    const std::string &name) :
@@ -38,11 +45,13 @@ SDLMusic::~SDLMusic()
 {
     Mix_FreeMusic(mMusic);
 #ifndef USE_SDL2
+#if SDL_MIXER_VERSION_ATLEAST(1, 2, 12)
     if (mRw)
     {
         SDL_RWclose(mRw);
         mRw = nullptr;
     }
+#endif  // SDL_MIXER_VERSION_ATLEAST(1, 2, 12)
 #endif  // USE_SDL2
 }
 
