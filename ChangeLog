@@ -1,3 +1,11 @@
+2017-02-18 New release 1.7.2.18
+fix: wrong buffer access.
+fix: custom currency in shop items list.
+fix: compilation warnings in some libs.
+fix: possible use after free in web requests.
+add: quests links in npc window.
+add: show manaplus.log path in console at start.
+
 2017-02-04 Nre release 1.7.2.4
 fix: compilation with very old libcurl versions.
 fix: compilation with very new SDL2 versions.
