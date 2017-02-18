@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <id type="desktop">manaplus.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <license>GPL-2.0</license>
+  <name>The Mana Plus Client</name>
+  <summary>Extended client for The Mana World and similar servers</summary>
+  <description>
+    <p>
+        ManaPlus is extended client for Evol Online, The Mana World and similar servers
+	based on eAthena fork. As a 2D style game, Evol Online aims to create a friendly
+	environment where people can escape reality and interact with others while enjoying
+	themselves through a fantasy style game.
+    </p>
+    <p>
+        The Mana World (TMW) is a serious effort to create an innovative free and
+	open source MMORPG. TMW uses 2D graphics and aims to create a large and diverse
+	interactive world.
+    </p>
+  </description>
+  <url type="homepage">http://manaplus.org/</url>
+  <screenshots>
+    <screenshot type="default">http://manaplus.org/_media/manaplus_screenshot_8.png</screenshot>
+    <screenshot>http://manaplus.org/_media/manaplus_screenshot_11.png</screenshot>
+    <screenshot>http://manaplus.org/_media/manaplus_screenshot_15.png</screenshot>
+  </screenshots>
+</application>

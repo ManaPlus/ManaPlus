@@ -6,8 +6,13 @@ desktopdir = $(datarootdir)/applications
 desktop_DATA = manaplus.desktop \
 	     manaplustest.desktop
 
+appdatadir = $(datarootdir)/appdata
+
+appdata_DATA = manaplus.appdata.xml
+
 # Extra files to include
 EXTRA_DIST = $(desktop_DATA) \
+	     $(appdata_DATA) \
 	     CMakeLists.txt \
 	     po/CMakeLists.txt \
 	     po/*.po \
