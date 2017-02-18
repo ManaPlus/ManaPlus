@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-02-04 16:21+0300\n"
-"PO-Revision-Date: 2016-12-13 09:42+0000\n"
+"POT-Creation-Date: 2017-02-18 15:49+0300\n"
+"PO-Revision-Date: 2017-02-05 09:50+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/akaras/manaplus/language/"
 "ja/)\n"
@@ -38,7 +38,7 @@ msgstr ""
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:167 src/client.cpp:1601 src/client.cpp:1636
+#: src/actions/actions.cpp:167 src/client.cpp:1604 src/client.cpp:1639
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:183
 #: src/gui/dialogsmanager.cpp:203 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
@@ -394,12 +394,12 @@ msgid "miss"
 msgstr "ミス"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2435 src/gui/windows/whoisonline.cpp:891
+#: src/being/being.cpp:2435 src/gui/windows/whoisonline.cpp:890
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2440 src/gui/windows/whoisonline.cpp:896
+#: src/being/being.cpp:2440 src/gui/windows/whoisonline.cpp:895
 msgid "I"
 msgstr "I"
 
@@ -554,41 +554,41 @@ msgstr "吹出し"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
-#: src/client.cpp:896 src/dyetool/client.cpp:499 src/gui/windowmenu.cpp:192
+#: src/client.cpp:899 src/dyetool/client.cpp:501 src/gui/windowmenu.cpp:192
 #: src/gui/windows/setupwindow.cpp:66
 msgid "Setup"
 msgstr "設定"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:899 src/dyetool/client.cpp:502
+#: src/client.cpp:902 src/dyetool/client.cpp:504
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:902 src/dyetool/client.cpp:505
+#: src/client.cpp:905 src/dyetool/client.cpp:507
 #: src/gui/widgets/tabs/setup_video.cpp:111
 msgid "Video"
 msgstr "ビデオ"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:905 src/dyetool/client.cpp:508
+#: src/client.cpp:908 src/dyetool/client.cpp:510
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "テーマ"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:908 src/dyetool/client.cpp:511
+#: src/client.cpp:911 src/dyetool/client.cpp:513
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
-#: src/client.cpp:911 src/dyetool/client.cpp:514 src/gui/windowmenu.cpp:75
+#: src/client.cpp:914 src/dyetool/client.cpp:516 src/gui/windowmenu.cpp:75
 #: src/gui/windows/helpwindow.cpp:54
 msgid "Help"
 msgstr "ヘルプ"
@@ -609,45 +609,45 @@ msgstr "ヘルプ"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:915 src/client.cpp:1515 src/client.cpp:1534
-#: src/dyetool/client.cpp:518 src/gui/dialogsmanager.cpp:117
+#: src/client.cpp:918 src/client.cpp:1518 src/client.cpp:1537
+#: src/dyetool/client.cpp:520 src/gui/dialogsmanager.cpp:117
 #: src/gui/popups/popupmenu.cpp:765 src/gui/popups/popupmenu.cpp:850
 #: src/gui/popups/popupmenu.cpp:1104 src/gui/windows/didyouknowwindow.cpp:84
 #: src/gui/windows/inventorywindow.cpp:272
 #: src/gui/windows/inventorywindow.cpp:295
 #: src/gui/windows/maileditwindow.cpp:53 src/gui/windows/mailviewwindow.cpp:61
 #: src/gui/windows/npcdialog.cpp:87 src/gui/windows/npcdialog.cpp:132
-#: src/gui/windows/questswindow.cpp:81 src/gui/windows/shopwindow.cpp:109
+#: src/gui/windows/questswindow.cpp:79 src/gui/windows/shopwindow.cpp:109
 msgid "Close"
 msgstr "閉じる"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1142
+#: src/client.cpp:1145
 msgid "Connecting to server"
 msgstr "サーバーに接続しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1199 src/gui/windowmanager_unittest.cc:673
+#: src/client.cpp:1202 src/gui/windowmanager_unittest.cc:673
 msgid "Logging in"
 msgstr "ログインしています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1248
+#: src/client.cpp:1251
 msgid "Entering game world"
 msgstr "ゲームの世界に移動しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1400
+#: src/client.cpp:1403
 msgid "Requesting characters"
 msgstr "キャラクターを呼び出しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1443
+#: src/client.cpp:1446
 msgid "Connecting to the game server"
 msgstr "ゲームサーバーに接続しています"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1455
+#: src/client.cpp:1458
 msgid "Changing game servers"
 msgstr "ゲームサーバーを変更しています"
 
@@ -663,7 +663,7 @@ msgstr "ゲームサーバーを変更しています"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1512 src/client.cpp:1531 src/client.cpp:1736
+#: src/client.cpp:1515 src/client.cpp:1534 src/client.cpp:1739
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:471
@@ -677,27 +677,27 @@ msgid "Error"
 msgstr "エラー"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1550
+#: src/client.cpp:1553
 msgid "Requesting registration details"
 msgstr "登録内容を呼び出しています"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1597
+#: src/client.cpp:1600
 msgid "Password Change"
 msgstr "パスワード変更"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1599
+#: src/client.cpp:1602
 msgid "Password changed successfully!"
 msgstr "パスワードを変更しました!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1632
+#: src/client.cpp:1635
 msgid "Email Change"
 msgstr "メールアドレス変更"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1634
+#: src/client.cpp:1637
 msgid "Email changed successfully!"
 msgstr "メールアドレスを変更しました!"
 
@@ -835,30 +835,30 @@ msgid "  -O --no-opengl      : Disable OpenGL for this session"
 msgstr ""
 
 #. TRANSLATORS: directory creation error
-#: src/configmanager.cpp:61 src/dirs.cpp:361 src/dirs.cpp:376 src/dirs.cpp:423
+#: src/configmanager.cpp:61 src/dirs.cpp:359 src/dirs.cpp:374 src/dirs.cpp:421
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%sは存在しない為、作成できません."
 
 #. TRANSLATORS: update server initialisation error
-#: src/dirs.cpp:473
+#: src/dirs.cpp:471
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/dirs.cpp:515 src/dirs.cpp:523
+#: src/dirs.cpp:513 src/dirs.cpp:521
 msgid "Error creating updates directory!"
 msgstr "更新フォルダの作成エラ!"
 
 #. TRANSLATORS: directory creation error
-#: src/dirs.cpp:545 src/dirs.cpp:566
+#: src/dirs.cpp:543 src/dirs.cpp:564
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "エラー: %s は存在しない為、作成できません."
 
 #. TRANSLATORS: directory creation error
-#: src/dirs.cpp:597 src/dirs.cpp:605 src/dirs.cpp:613
+#: src/dirs.cpp:595 src/dirs.cpp:603 src/dirs.cpp:611
 #, c-format
 msgid "%s doesn't exist and can't be created!"
 msgstr ""
@@ -1963,8 +1963,8 @@ msgstr "話す"
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:277 src/gui/popups/popupmenu.cpp:2711
 #: src/gui/windows/buydialog.cpp:210 src/gui/windows/buydialog.cpp:233
-#: src/gui/windows/buydialog.cpp:257 src/gui/windows/buydialog.cpp:334
-#: src/gui/windows/buydialog.cpp:338 src/gui/windows/buyselldialog.cpp:73
+#: src/gui/windows/buydialog.cpp:257 src/gui/windows/buydialog.cpp:335
+#: src/gui/windows/buydialog.cpp:339 src/gui/windows/buyselldialog.cpp:73
 #: src/gui/windows/shopwindow.cpp:166 src/input/pages/basic.cpp:250
 #: src/resources/db/npcdb.cpp:166
 msgid "Buy"
@@ -1981,8 +1981,8 @@ msgstr "買う"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:280 src/gui/popups/popupmenu.cpp:2723
-#: src/gui/widgets/selldialog.cpp:55 src/gui/widgets/selldialog.cpp:110
-#: src/gui/widgets/selldialog.cpp:148 src/gui/windows/buyselldialog.cpp:75
+#: src/gui/widgets/selldialog.cpp:57 src/gui/widgets/selldialog.cpp:113
+#: src/gui/widgets/selldialog.cpp:151 src/gui/windows/buyselldialog.cpp:75
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:256
 #: src/resources/db/npcdb.cpp:168
 msgid "Sell"
@@ -2143,7 +2143,7 @@ msgstr "名前をチャットへ追加する"
 #: src/gui/windows/itemamountwindow.cpp:193 src/gui/windows/quitdialog.cpp:69
 #: src/gui/windows/registerdialog.cpp:64 src/gui/windows/setupwindow.cpp:105
 #: src/gui/windows/textcommandeditor.cpp:98 src/gui/windows/textdialog.cpp:60
-#: src/gui/windows/updaterwindow.cpp:192 src/input/pages/gui.cpp:103
+#: src/gui/windows/updaterwindow.cpp:191 src/input/pages/gui.cpp:103
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -3577,7 +3577,7 @@ msgstr ""
 #. TRANSLATORS: status bar label
 #: src/gui/widgets/attrs/changedisplay.cpp:48
 #: src/gui/widgets/attrs/changedisplay.cpp:70
-#: src/gui/widgets/selldialog.cpp:136 src/gui/windows/buydialog.cpp:348
+#: src/gui/widgets/selldialog.cpp:139 src/gui/windows/buydialog.cpp:349
 #: src/gui/windows/statuswindow.cpp:444 src/gui/windows/statuswindow.cpp:500
 msgid "Max"
 msgstr "最大"
@@ -3589,7 +3589,7 @@ msgstr "最大"
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
 #: src/gui/widgets/attrs/changedisplay.cpp:50
-#: src/gui/widgets/selldialog.cpp:132 src/gui/windows/buydialog.cpp:328
+#: src/gui/widgets/selldialog.cpp:135 src/gui/windows/buydialog.cpp:329
 #: src/gui/windows/itemamountwindow.cpp:189
 #: src/gui/windows/itemamountwindow.cpp:225 src/gui/windows/npcdialog.cpp:125
 msgid "+"
@@ -3617,12 +3617,12 @@ msgid "Eq."
 msgstr "装着."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:86
+#: src/gui/widgets/itemlinkhandler.cpp:87
 msgid "Run command"
 msgstr ""
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:117
+#: src/gui/widgets/itemlinkhandler.cpp:118
 msgid "Open url"
 msgstr "URLを開く"
 
@@ -3632,7 +3632,7 @@ msgstr "URLを開く"
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: trade window button
-#: src/gui/widgets/selldialog.cpp:110 src/gui/windows/buydialog.cpp:334
+#: src/gui/widgets/selldialog.cpp:113 src/gui/windows/buydialog.cpp:335
 #: src/gui/windows/maileditwindow.cpp:55 src/gui/windows/npcdialog.cpp:134
 #: src/gui/windows/serverdialog.cpp:110 src/gui/windows/shopwindow.cpp:122
 #: src/gui/windows/tradewindow.cpp:87
@@ -3646,7 +3646,7 @@ msgstr "追加"
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: input action name
-#: src/gui/widgets/selldialog.cpp:114 src/gui/windows/buydialog.cpp:346
+#: src/gui/widgets/selldialog.cpp:117 src/gui/windows/buydialog.cpp:347
 #: src/gui/windows/quitdialog.cpp:51 src/gui/windows/quitdialog.cpp:56
 #: src/gui/windows/quitdialog.cpp:58 src/gui/windows/serverdialog.cpp:106
 #: src/gui/windows/textselectdialog.cpp:93 src/input/pages/basic.cpp:226
@@ -3658,7 +3658,7 @@ msgstr "終了"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
-#: src/gui/widgets/selldialog.cpp:134 src/gui/windows/buydialog.cpp:331
+#: src/gui/widgets/selldialog.cpp:137 src/gui/windows/buydialog.cpp:332
 #: src/gui/windows/itemamountwindow.cpp:187
 #: src/gui/windows/itemamountwindow.cpp:222 src/gui/windows/npcdialog.cpp:127
 msgid "-"
@@ -3666,8 +3666,8 @@ msgstr "-"
 
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
-#: src/gui/widgets/selldialog.cpp:143 src/gui/widgets/selldialog.cpp:360
-#: src/gui/windows/buydialog.cpp:314 src/gui/windows/buydialog.cpp:747
+#: src/gui/widgets/selldialog.cpp:146 src/gui/widgets/selldialog.cpp:363
+#: src/gui/windows/buydialog.cpp:315 src/gui/windows/buydialog.cpp:748
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "価格:%s /合計:%s"
@@ -4701,8 +4701,8 @@ msgstr ""
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
-#: src/gui/widgets/tabs/setup_input.cpp:333
-#: src/gui/windows/questswindow.cpp:211
+#: src/gui/widgets/tabs/setup_input.cpp:333 src/resources/db/questdb.cpp:61
+#: src/resources/db/questdb.cpp:252 src/resources/db/questdb.cpp:258
 msgid "unknown"
 msgstr "不明"
 
@@ -6136,7 +6136,7 @@ msgstr "QE"
 
 #. TRANSLATORS: long button name for quests window.
 #. TRANSLATORS: quests window name
-#: src/gui/windowmenu.cpp:79 src/gui/windows/questswindow.cpp:66
+#: src/gui/windowmenu.cpp:79 src/gui/windows/questswindow.cpp:64
 msgid "Quests"
 msgstr "クエスト"
 
@@ -6335,20 +6335,20 @@ msgid "Create items"
 msgstr ""
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:323
+#: src/gui/windows/buydialog.cpp:324
 msgid "Amount:"
 msgstr "量:"
 
 #. TRANSLATORS: buy dialog button
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/buydialog.cpp:334 src/gui/windows/charcreatedialog.cpp:112
+#: src/gui/windows/buydialog.cpp:335 src/gui/windows/charcreatedialog.cpp:112
 #: src/gui/windows/charselectdialog.cpp:610
 msgid "Create"
 msgstr "作成"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:385
+#: src/gui/windows/buydialog.cpp:386
 msgid "Filter:"
 msgstr "フィルタ:"
 
@@ -6574,7 +6574,7 @@ msgstr ""
 #. TRANSLATORS: updater window button
 #: src/gui/windows/charselectdialog.cpp:73
 #: src/gui/windows/charselectdialog.cpp:600
-#: src/gui/windows/updaterwindow.cpp:194
+#: src/gui/windows/updaterwindow.cpp:193
 msgid "Play"
 msgstr "プレイ"
 
@@ -7239,22 +7239,22 @@ msgid "Away outfit"
 msgstr "AFK中の服装"
 
 #. TRANSLATORS: quest reward
-#: src/gui/windows/questswindow.cpp:503
+#: src/gui/windows/questswindow.cpp:339
 msgid "Reward:"
 msgstr ""
 
 #. TRANSLATORS: quest giver name
-#: src/gui/windows/questswindow.cpp:510
+#: src/gui/windows/questswindow.cpp:346
 msgid "Quest Giver:"
 msgstr ""
 
 #. TRANSLATORS: quest npc name
-#: src/gui/windows/questswindow.cpp:517
+#: src/gui/windows/questswindow.cpp:353
 msgid "Npc:"
 msgstr ""
 
 #. TRANSLATORS: quest coordinates
-#: src/gui/windows/questswindow.cpp:525
+#: src/gui/windows/questswindow.cpp:361
 msgid "Coordinates:"
 msgstr ""
 
@@ -7391,7 +7391,7 @@ msgid "Reset Windows"
 msgstr "ウィンドウをリセットする"
 
 #. TRANSLATORS: shop window name
-#: src/gui/windows/shopwindow.cpp:101 src/gui/windows/shopwindow.cpp:1118
+#: src/gui/windows/shopwindow.cpp:101 src/gui/windows/shopwindow.cpp:1119
 msgid "Personal Shop"
 msgstr "最大 (15)"
 
@@ -7428,35 +7428,35 @@ msgid "error: player busy"
 msgstr ""
 
 #. TRANSLATORS: error buy/sell shop request
-#: src/gui/windows/shopwindow.cpp:967
+#: src/gui/windows/shopwindow.cpp:968
 msgid "error: Can't sell this item"
 msgstr ""
 
 #. TRANSLATORS: error buy/sell shop request
-#: src/gui/windows/shopwindow.cpp:979
+#: src/gui/windows/shopwindow.cpp:980
 msgid "error: Can't buy this item"
 msgstr ""
 
 #. TRANSLATORS: buy shop request (nick, item)
-#: src/gui/windows/shopwindow.cpp:999
+#: src/gui/windows/shopwindow.cpp:1000
 #, c-format
 msgid "%s wants to buy %s do you accept?"
 msgstr ""
 
 #. TRANSLATORS: sell shop request (nick, item)
-#: src/gui/windows/shopwindow.cpp:1006
+#: src/gui/windows/shopwindow.cpp:1007
 #, c-format
 msgid "%s wants to sell %s do you accept?"
 msgstr ""
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
-#: src/gui/windows/shopwindow.cpp:1013 src/net/ea/traderecv.cpp:163
+#: src/gui/windows/shopwindow.cpp:1014 src/net/ea/traderecv.cpp:163
 msgid "Request for Trade"
 msgstr "トレードをリクエスト"
 
 #. TRANSLATORS: shop window name
-#: src/gui/windows/shopwindow.cpp:1123
+#: src/gui/windows/shopwindow.cpp:1124
 #, c-format
 msgid "Personal Shop - %s"
 msgstr ""
@@ -7749,62 +7749,62 @@ msgid "Failed adding item. You can not trade equipped items."
 msgstr ""
 
 #. TRANSLATORS: updater window name
-#: src/gui/windows/updaterwindow.cpp:172
+#: src/gui/windows/updaterwindow.cpp:171
 msgid "Updating..."
 msgstr "更新しています..."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:190
+#: src/gui/windows/updaterwindow.cpp:189
 msgid "Connecting..."
 msgstr "接続しています..."
 
 #. TRANSLATORS: updater window checkbox
-#: src/gui/windows/updaterwindow.cpp:416
+#: src/gui/windows/updaterwindow.cpp:415
 msgid "Show all news (can be slow)"
 msgstr ""
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:851
+#: src/gui/windows/updaterwindow.cpp:853
 msgid "##1  The update process is incomplete."
 msgstr "##1  アップデートは完了していません."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:853
+#: src/gui/windows/updaterwindow.cpp:855
 msgid "##1  It is strongly recommended that"
 msgstr "##1 する事を強く推奨します"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:855
+#: src/gui/windows/updaterwindow.cpp:857
 msgid "##1  you try again later."
 msgstr "##1  しばらくたってからもう一度試してください."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:1040
+#: src/gui/windows/updaterwindow.cpp:1042
 msgid "Completed"
 msgstr "完了"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:95 src/gui/windows/whoisonline.cpp:662
+#: src/gui/windows/whoisonline.cpp:94 src/gui/windows/whoisonline.cpp:661
 msgid "Who Is Online - Updating"
 msgstr "オンラインリスト - アップデート中"
 
 #. TRANSLATORS: who is online. button.
-#: src/gui/windows/whoisonline.cpp:107
+#: src/gui/windows/whoisonline.cpp:106
 msgid "Update"
 msgstr "アップデート"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:237
+#: src/gui/windows/whoisonline.cpp:236
 msgid "Who Is Online - "
 msgstr "オンラインリスト - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:678
+#: src/gui/windows/whoisonline.cpp:677
 msgid "Who Is Online - error"
 msgstr "オンラインリスト - エラー"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:725
+#: src/gui/windows/whoisonline.cpp:724
 msgid "Who Is Online - Update"
 msgstr "オンラインリスト - アップデート"
 
@@ -10766,9 +10766,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:842
-#, fuzzy
 msgid "Unable to buy. Npc not found."
-msgstr "購買できません."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:846
