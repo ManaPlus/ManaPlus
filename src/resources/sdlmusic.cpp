@@ -24,12 +24,14 @@
 
 #include "debug.h"
 
+#ifndef USE_SDL2
 #define SDL_MIXER_COMPILEDVERSION \
     SDL_VERSIONNUM(SDL_MIXER_MAJOR_VERSION, \
     SDL_MIXER_MINOR_VERSION, SDL_MIXER_PATCHLEVEL)
 
 #define SDL_MIXER_VERSION_ATLEAST(X, Y, Z) \
     (SDL_MIXER_COMPILEDVERSION >= SDL_VERSIONNUM(X, Y, Z))
+#endif  // USE_SDL2
 
 SDLMusic::SDLMusic(Mix_Music *const music,
                    SDL_RWops *const rw,
