@@ -83,11 +83,12 @@ static void loadQuest(const int var,
     {
         if (!xmlTypeEqual(dataNode, XML_ELEMENT_NODE))
             continue;
-        const char *const data = reinterpret_cast<const char*>(
+        char *const data = reinterpret_cast<char*>(
             XmlNodeGetContent(dataNode));
         if (!data)
             continue;
         std::string str = translator->getStr(data);
+        XmlFree(data);
 
         for (int f = 1; f < 100; f ++)
         {

@@ -171,6 +171,7 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
 Setup_Players::~Setup_Players()
 {
     delete2(mBadgesList);
+    delete2(mVisibleNamesList);
 }
 
 void Setup_Players::externalUpdated()

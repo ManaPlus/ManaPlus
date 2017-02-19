@@ -1178,16 +1178,28 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
 }
 
 #define readValue(name) \
-        info->name = reinterpret_cast<const char*>(\
-            XmlNodeGetContent(infoNode))
+        { \
+            tmpData = reinterpret_cast<char*>( \
+                XmlNodeGetContent(infoNode)); \
+            info->name = tmpData; \
+            XmlFree(tmpData); \
+        }
 
 #define readIntValue(name) \
-        info->name = atoi(reinterpret_cast<const char*>(\
-            XmlNodeGetContent(infoNode)))
+        { \
+            tmpData = reinterpret_cast<char*>( \
+                XmlNodeGetContent(infoNode)); \
+            info->name = atoi(tmpData); \
+            XmlFree(tmpData); \
+        }
 
 #define readFloatValue(name) \
-        info->name = static_cast<float>(atof(reinterpret_cast<const char*>(\
-            XmlNodeGetContent(infoNode))))
+        { \
+            tmpData = reinterpret_cast<char*>( \
+                XmlNodeGetContent(infoNode)); \
+            info->name = static_cast<float>(atof(tmpData)); \
+            XmlFree(tmpData); \
+        }
 
 ThemeInfo *Theme::loadInfo(const std::string &themeName)
 {
@@ -1219,38 +1231,39 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
 
     const std::string fontSize2("fontSize_" + mScreenDensity);
     const std::string npcfontSize2("npcfontSize_" + mScreenDensity);
+    char *tmpData = nullptr;
     for_each_xml_child_node(infoNode, rootNode)
     {
         if (xmlNameEqual(infoNode, "name"))
-            readValue(name);
+            readValue(name)
         else if (xmlNameEqual(infoNode, "copyright"))
-            readValue(copyright);
+            readValue(copyright)
         else if (xmlNameEqual(infoNode, "font"))
-            readValue(font);
+            readValue(font)
         else if (xmlNameEqual(infoNode, "boldFont"))
-            readValue(boldFont);
+            readValue(boldFont)
         else if (xmlNameEqual(infoNode, "particleFont"))
-            readValue(particleFont);
+            readValue(particleFont)
         else if (xmlNameEqual(infoNode, "helpFont"))
-            readValue(helpFont);
+            readValue(helpFont)
         else if (xmlNameEqual(infoNode, "secureFont"))
-            readValue(secureFont);
+            readValue(secureFont)
         else if (xmlNameEqual(infoNode, "npcFont"))
-            readValue(npcFont);
+            readValue(npcFont)
         else if (xmlNameEqual(infoNode, "japanFont"))
-            readValue(japanFont);
+            readValue(japanFont)
         else if (xmlNameEqual(infoNode, "chinaFont"))
-            readValue(chinaFont);
+            readValue(chinaFont)
         else if (xmlNameEqual(infoNode, "fontSize"))
-            readIntValue(fontSize);
+            readIntValue(fontSize)
         else if (xmlNameEqual(infoNode, "npcfontSize"))
-            readIntValue(npcfontSize);
+            readIntValue(npcfontSize)
         else if (xmlNameEqual(infoNode, "guialpha"))
-            readFloatValue(guiAlpha);
+            readFloatValue(guiAlpha)
         else if (xmlNameEqual(infoNode, fontSize2.c_str()))
-            readIntValue(fontSize);
+            readIntValue(fontSize)
         else if (xmlNameEqual(infoNode, npcfontSize2.c_str()))
-            readIntValue(npcfontSize);
+            readIntValue(npcfontSize)
     }
     doc->decRef();
     return info;

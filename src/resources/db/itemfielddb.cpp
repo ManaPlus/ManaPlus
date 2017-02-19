@@ -86,6 +86,13 @@ static void loadFields(const XmlNodePtr groupNode,
                 name.c_str());
             continue;
         }
+        if (fields1.find(name) != fields1.end())
+        {
+            reportAlways(
+                "Same field name detected: %s",
+                name.c_str());
+            continue;
+        }
         fields1[name] = new ItemFieldType(name,
             description,
             sign);

@@ -250,9 +250,16 @@ namespace XML
         xmlChar *const prop = XmlGetProp(node, name);
 
         if (XmlStrEqual(prop, "true"))
+        {
+            XmlFree(prop);
             return true;
+        }
         if (XmlStrEqual(prop, "false"))
+        {
+            XmlFree(prop);
             return false;
+        }
+        XmlFree(prop);
         return def;
     }
 
