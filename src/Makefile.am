@@ -1,7 +1,8 @@
 AUTOMAKE_OPTIONS = subdir-objects
 
-AM_TESTS_ENVIRONMENT = \
-	     ASAN_OPTIONS=detect_leaks=1
+# this need for enable asan in tests
+#AM_TESTS_ENVIRONMENT = \
+#	     ASAN_OPTIONS=detect_leaks=1
 
 if ENABLE_MANAPLUSGAME
 if ENABLE_DYECMD
