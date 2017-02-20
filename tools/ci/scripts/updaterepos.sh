@@ -9,4 +9,5 @@ echo "${DATA}"
 if [ "$DATA" != "" ]; then
     echo "Detected local runner"
     sed -i 's!http://httpredir.debian.org/debian!http://1.10.100.103/debian!' /etc/apt/sources.list || true
+    sed -i 's!http://deb.debian.org/debian!http://1.10.100.103/debian!' /etc/apt/sources.list || true
 fi
