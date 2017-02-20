@@ -39,6 +39,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
+#include "utils/delete2.h"
 #include "utils/virtfs.h"
 #include "utils/virtfsrwops.h"
 #include "utils/virtfstools.h"
@@ -490,5 +491,6 @@ TEST_CASE("integrity tests", "integrity")
     delete client;
     client = nullptr;
 
+    delete2(logger);
 //    VirtFs::deinit();
 }

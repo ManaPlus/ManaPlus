@@ -1,0 +1,3 @@
+leak:XGetVisualInfo
+leak:__strdup
+leak:Curl_open

@@ -40,6 +40,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
+#include "utils/delete2.h"
 #include "utils/mrand.h"
 #include "utils/virtfs.h"
 
@@ -179,7 +180,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
         delete sprite2;
     }
 
-    delete client;
-    client = nullptr;
+    delete2(client);
+    delete2(logger);
 //    VirtFs::deinit();
 }

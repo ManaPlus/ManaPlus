@@ -25,7 +25,7 @@
 #include "settings.h"
 #include "textcommand.h"
 
-#include "being/being.h"
+#include "being/localplayer.h"
 
 #include "const/resources/currency.h"
 
@@ -159,6 +159,10 @@ TEST_CASE("Windows tests", "windowmanager")
     config.setValue("fontSize", 16);
     theme = new Theme;
     Theme::selectSkin();
+
+    localPlayer = new LocalPlayer(static_cast<BeingId>(1),
+        BeingTypeId_zero);
+
     ActorSprite::load();
     gui = new Gui();
     gui->postInit(mainGraphics);
@@ -568,6 +572,7 @@ TEST_CASE("Windows tests", "windowmanager")
         gui->draw();
         mainGraphics->updateScreen();
         delete2(dialog);
+        delete2(textCommand);
     }
 
     SECTION("TextDialog")
@@ -677,9 +682,14 @@ TEST_CASE("Windows tests", "windowmanager")
         delete2(connectionDialog);
     }
 
+    delete2(localPlayer);
     delete2(userPalette);
     delete2(client);
     delete2(serverFeatures);
     delete2(inventoryHandler);
+    delete2(charServerHandler);
+    delete2(playerHandler);
+    delete2(logger);
+
 //    VirtFs::deinit();
 }

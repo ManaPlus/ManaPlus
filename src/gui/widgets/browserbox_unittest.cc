@@ -30,6 +30,7 @@
 
 #include "gui/widgets/browserbox.h"
 
+#include "utils/delete2.h"
 #include "utils/virtfs.h"
 
 #include "render/sdlgraphics.h"
@@ -170,8 +171,10 @@ TEST_CASE("BrowserBox tests", "browserbox")
     row = "##1%%2";
     box->addRow(row);
 
+    delete Widget::getGloablFont();
+    Widget::setGlobalFont(nullptr);
     delete box;
-    delete client;
-    client = nullptr;
+    delete2(client);
+    delete2(logger);
 //    VirtFs::deinit();
 }

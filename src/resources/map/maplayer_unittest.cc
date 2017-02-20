@@ -28,6 +28,7 @@
 
 #include "gui/theme.h"
 
+#include "utils/delete2.h"
 #include "utils/virtfs.h"
 
 #include "render/mockgraphics.h"
@@ -1646,6 +1647,7 @@ TEST_CASE("MapLayer draw")
 
 TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
 {
+    logger = new Logger;
     ResourceManager::init();
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
@@ -1990,10 +1992,12 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
 
     delete map;
     delete mock;
+    delete2(logger);
 }
 
 TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
 {
+    logger = new Logger;
     ResourceManager::init();
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
@@ -2344,14 +2348,15 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
 
     delete map;
     delete mock;
+    delete2(logger);
 }
 
 TEST_CASE("MapLayer drawFringe")
 {
+    logger = new Logger;
     ResourceManager::init();
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
-    logger = new Logger;
 
     imageHelper = new SDLImageHelper;
 #ifdef USE_SDL2
@@ -3220,9 +3225,11 @@ TEST_CASE("MapLayer drawFringe")
         REQUIRE(mock->mDraws[7].image == img1);
     }
 
+    delete2(localPlayer);
     delete map;
     delete img1;
     delete img2;
     delete img3;
     delete mock;
+    delete2(logger);
 }

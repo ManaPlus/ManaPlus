@@ -24,6 +24,8 @@
 
 #include "const/utils/utf8.h"
 
+#include "utils/delete2.h"
+#include "utils/dtor.h"
 #include "utils/virtfs.h"
 
 #include "resources/iteminfo.h"
@@ -1485,5 +1487,9 @@ TEST_CASE("stringuntils replaceItemLinks")
         REQUIRE(str == "[[test name 1 ,test name2[] test name 1]");
     }
     ResourceManager::deleteInstance();
+    delete2(logger);
+    delete_all(infos);
+    infos.clear();
+    namedInfos.clear();
 //    VirtFs::deinit();
 }

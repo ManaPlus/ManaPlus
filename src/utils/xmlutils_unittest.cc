@@ -22,12 +22,20 @@
 
 #include "catch.hpp"
 #include "client.h"
+#include "graphicsmanager.h"
 #include "logger.h"
 
+#include "being/actorsprite.h"
+
+#include "utils/delete2.h"
 #include "utils/virtfs.h"
 #include "utils/xml.h"
 
+#include "render/sdlgraphics.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
+
+#include "resources/sdlimagehelper.h"
 
 #include "debug.h"
 
@@ -38,6 +46,20 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
+
+    mainGraphics = new SDLGraphics;
+    imageHelper = new SDLImageHelper();
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else  // USE_SDL2
+
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif  // USE_SDL2
+
+    ActorSprite::load();
+
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
 
@@ -57,7 +79,9 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     REQUIRE(0 == arr[2]);
     REQUIRE(1 == arr[3]);
     REQUIRE(1 == arr[4]);
+    delete2(client);
     ResourceManager::deleteInstance();
+    delete2(logger);
 //    VirtFs::deinit();
 }
 
@@ -68,6 +92,20 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
+
+    mainGraphics = new SDLGraphics;
+    imageHelper = new SDLImageHelper();
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else  // USE_SDL2
+
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif  // USE_SDL2
+
+    ActorSprite::load();
+
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
 
@@ -86,7 +124,9 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     REQUIRE(arr["Kitty"] == "0");
     REQUIRE(arr["xD"] == "1");
     REQUIRE(arr["Metal"] == "26");
+    delete2(client);
     ResourceManager::deleteInstance();
+    delete2(logger);
 //    VirtFs::deinit();
 }
 
@@ -97,6 +137,20 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
+
+    mainGraphics = new SDLGraphics;
+    imageHelper = new SDLImageHelper();
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else  // USE_SDL2
+
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif  // USE_SDL2
+
+    ActorSprite::load();
+
     VirtFs::addDirToSearchPath("data/test", Append_false);
     VirtFs::addDirToSearchPath("../data/test", Append_false);
 
@@ -115,6 +169,8 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     REQUIRE(arr[1] == 2);
     REQUIRE(arr[10] == 20);
     REQUIRE(arr[3] == 0);
+    delete2(client);
     ResourceManager::deleteInstance();
+    delete2(logger);
 //    VirtFs::deinit();
 }

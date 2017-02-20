@@ -106,8 +106,6 @@ TEST_CASE("chatutils replaceVars")
         str = "test <SOMETHING>";
         replaceVars(str);
         REQUIRE(str == "test <SOMETHING>");
-
-        delete2(localPlayer);
     }
 
     SECTION("player")
@@ -123,8 +121,6 @@ TEST_CASE("chatutils replaceVars")
         str = "test <PLAYER>";
         replaceVars(str);
         REQUIRE(str == "test player1");
-
-        delete2(localPlayer);
     }
 
     SECTION("monster")
@@ -140,8 +136,6 @@ TEST_CASE("chatutils replaceVars")
         str = "test <MONSTER>";
         replaceVars(str);
         REQUIRE(str == "test monster1");
-
-        delete2(localPlayer);
     }
 
     SECTION("people")
@@ -239,7 +233,9 @@ TEST_CASE("chatutils replaceVars")
     }
 
     delete2(actorManager);
+    delete2(localPlayer);
     delete2(client);
+    delete2(logger);
 //    VirtFs::deinit();
 }
 

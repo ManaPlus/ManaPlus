@@ -30,6 +30,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
+#include "utils/delete2.h"
 #include "utils/virtfs.h"
 
 #include <unistd.h>
@@ -657,7 +658,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
 
     delete resourceManager;
     resourceManager = safeResman;
-    delete client;
-    client = nullptr;
+    delete2(client);
+    delete2(logger);
 //    VirtFs::deinit();
 }

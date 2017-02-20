@@ -21,6 +21,7 @@
 #include "catch.hpp"
 #include "logger.h"
 
+#include "utils/delete2.h"
 #include "utils/stringutils.h"
 
 #include <SDL_image.h>
@@ -137,4 +138,6 @@ TEST_CASE("dumplibs tests")
 
         REQUIRE(build == link);
     }
+
+    delete2(logger);
 }

@@ -21,6 +21,7 @@
 #include "catch.hpp"
 
 #include "utils/checkutils.h"
+#include "utils/delete2.h"
 #include "utils/virtfs.h"
 #include "utils/virtfstools.h"
 #include "utils/virtlist.h"
@@ -75,6 +76,7 @@ TEST_CASE("VirtFs exists")
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
+    delete2(logger);
 }
 
 static void removeTemp(StringVect &restrict list)
@@ -105,6 +107,8 @@ static void removeTemp(StringVect &restrict list)
 
 TEST_CASE("VirtFs enumerateFiles")
 {
+    logger = new Logger;
+
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
 
@@ -134,6 +138,7 @@ TEST_CASE("VirtFs enumerateFiles")
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
+    delete2(logger);
 }
 
 TEST_CASE("VirtFs isDirectory")
@@ -191,6 +196,7 @@ TEST_CASE("VirtFs isDirectory")
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
+    delete2(logger);
 }
 
 TEST_CASE("VirtFs openRead")
@@ -252,6 +258,7 @@ TEST_CASE("VirtFs openRead")
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
+    delete2(logger);
 }
 
 TEST_CASE("VirtFs addZipToSearchPath")
@@ -266,6 +273,7 @@ TEST_CASE("VirtFs removeZipFromSearchPath")
 
 TEST_CASE("VirtFs getRealDir")
 {
+    logger = new Logger();
     REQUIRE(VirtFs::getRealDir(".") == "");
     REQUIRE(VirtFs::getRealDir("..") == "");
     const bool dir1 = VirtFs::addDirToSearchPath("data", Append_false);
@@ -324,10 +332,12 @@ TEST_CASE("VirtFs getRealDir")
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
+    delete2(logger);
 }
 
 TEST_CASE("VirtFs permitLinks")
 {
+    logger = new Logger();
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
 
@@ -355,10 +365,12 @@ TEST_CASE("VirtFs permitLinks")
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
+    delete2(logger);
 }
 
 TEST_CASE("VirtFs read")
 {
+    logger = new Logger();
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);
 
@@ -389,4 +401,5 @@ TEST_CASE("VirtFs read")
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
+    delete2(logger);
 }

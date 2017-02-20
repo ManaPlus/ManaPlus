@@ -23,6 +23,7 @@
 #include "catch.hpp"
 #include "logger.h"
 
+#include "utils/delete2.h"
 #include "utils/virtfs.h"
 #include "utils/virtfstools.h"
 
@@ -64,6 +65,7 @@ TEST_CASE("Files renameFile")
     delete [] buf;
     delete [] buf2;
     ResourceManager::deleteInstance();
+    delete2(logger);
 //    VirtFs::deinit();
 }
 
@@ -78,6 +80,7 @@ TEST_CASE("Files existsLocal")
     REQUIRE_FALSE(Files::existsLocal(VirtFs::getPath("help/about1.txt")));
     REQUIRE_FALSE(Files::existsLocal(VirtFs::getPath("help1/about.txt")));
     ResourceManager::deleteInstance();
+    delete2(logger);
 //    VirtFs::deinit();
 }
 
@@ -91,6 +94,7 @@ TEST_CASE("Files loadTextFileString")
     REQUIRE(VirtFs::loadTextFileString("test/simplefile.txt") ==
         "this is test \nfile.");
     ResourceManager::deleteInstance();
+    delete2(logger);
 //    VirtFs::deinit();
 }
 
@@ -108,6 +112,7 @@ TEST_CASE("Files loadTextFile")
     REQUIRE(lines[0] == "this is test ");
     REQUIRE(lines[1] == "file.");
     ResourceManager::deleteInstance();
+    delete2(logger);
 //    VirtFs::deinit();
 }
 
@@ -126,6 +131,7 @@ TEST_CASE("Files saveTextFile")
     ::remove((dir + "/tempfile.txt").c_str());
     REQUIRE(data == "test line\ntext line2\n");
     ResourceManager::deleteInstance();
+    delete2(logger);
 //    VirtFs::deinit();
 }
 
@@ -155,5 +161,6 @@ TEST_CASE("Files getFilesInDir")
     REQUIRE(list[3] == "perserver/default/features.xml");
     REQUIRE(list[4] == "perserver/default/weapons.xml");
     ResourceManager::deleteInstance();
+    delete2(logger);
 //    VirtFs::deinit();
 }

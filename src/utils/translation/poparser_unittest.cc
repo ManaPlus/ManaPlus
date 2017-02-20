@@ -122,5 +122,6 @@ TEST_CASE("PoParser tests", "PoParser")
         delete dict;
     }
     delete2(client);
+    delete2(logger);
 //    VirtFs::deinit();
 }

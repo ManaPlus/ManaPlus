@@ -358,5 +358,6 @@ TEST_CASE("xml doc")
     }
     delete2(theme);
     delete2(client);
+    delete2(logger);
 //    VirtFs::deinit();
 }

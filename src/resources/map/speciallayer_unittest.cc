@@ -20,6 +20,7 @@
 
 #include "catch.hpp"
 #include "client.h"
+#include "logger.h"
 
 #include "graphicsmanager.h"
 
@@ -40,6 +41,7 @@
 
 TEST_CASE("SpecialLayer updateCache")
 {
+    logger = new Logger;
     client = new Client;
     ResourceManager::init();
     VirtFs::addDirToSearchPath("data", Append_false);
@@ -259,4 +261,5 @@ TEST_CASE("SpecialLayer updateCache")
     delete layer;
     resourceManager->cleanOrphans();
     delete2(client);
+    delete2(logger);
 }
