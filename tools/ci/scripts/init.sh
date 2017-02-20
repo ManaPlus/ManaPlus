@@ -140,6 +140,7 @@ function gitclone {
 function check_error {
     if [ "$1" != 0 ]; then
         cp config.log logs
+        cp src/test-suite.log logs
         cat $ERRFILE
         exit $1
     fi
@@ -195,6 +196,9 @@ function run_make_check {
     export ERR=$?
     if [ "${ERR}" != 0 ]; then
         cat $ERRFILE
+        cp src/*.log logs
+        cp src/manaplustests.trs logs
+        cp src/Makefile logs
         cat src/manaplustests.log
         exit ${ERR}
     fi
