@@ -472,7 +472,7 @@ TEST_CASE("integrity tests", "integrity")
         VirtFs::removeZipFromSearchPath("data/test/test.zip");
         VirtFs::removeZipFromSearchPath("../data/test/test.zip");
         REQUIRE(res != nullptr);
-        res->decRef();
+        delete res;
     }
 
     SECTION("integrity Loader::getImage test 10")
@@ -487,6 +487,8 @@ TEST_CASE("integrity tests", "integrity")
         REQUIRE(image->getSDLSurface() != nullptr);
         image->decRef();
     }
+
+    resourceManager->cleanOrphans(true);
 
     delete client;
     client = nullptr;

@@ -230,6 +230,8 @@ TEST_CASE("chatutils replaceVars")
         str = "test <PARTY>";
         replaceVars(str);
         REQUIRE(str == "test player1,player3");
+
+        Party::clearParties();
     }
 
     delete2(actorManager);

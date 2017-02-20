@@ -1992,6 +1992,7 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
 
     delete map;
     delete mock;
+    GraphicsManager::deleteRenderers();
     delete2(logger);
 }
 
@@ -2348,6 +2349,7 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
 
     delete map;
     delete mock;
+    GraphicsManager::deleteRenderers();
     delete2(logger);
 }
 
@@ -3231,5 +3233,7 @@ TEST_CASE("MapLayer drawFringe")
     delete img2;
     delete img3;
     delete mock;
+    delete2(theme);
+    GraphicsManager::deleteRenderers();
     delete2(logger);
 }

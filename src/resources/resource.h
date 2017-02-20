@@ -110,7 +110,9 @@ class Resource notfinal : public MemoryCounter
         { mDumped = n; }
 #endif  // DEBUG_DUMP_LEAKS
 
+#ifndef UNITTESTS
     protected:
+#endif  // UNITTESTS
         /**
          * Destructor.
          */

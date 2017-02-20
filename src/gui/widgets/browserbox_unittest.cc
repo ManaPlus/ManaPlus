@@ -48,7 +48,6 @@ TEST_CASE("BrowserBox tests", "browserbox")
     dirSeparator = "/";
     client = new Client;
     logger = new Logger();
-    imageHelper = new SDLImageHelper();
     ResourceManager::init();
     VirtFs::addDirToSearchPath("data", Append_false);
     VirtFs::addDirToSearchPath("../data", Append_false);

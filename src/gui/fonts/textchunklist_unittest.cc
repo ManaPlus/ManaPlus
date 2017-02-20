@@ -57,6 +57,7 @@ TEST_CASE("TextChunkList add 1", "TextChunkList")
 
     REQUIRE(1 == list.searchWidth.size());
     REQUIRE(chunk == (*list.searchWidth.find(chunk->text)).second);
+    delete chunk;
 }
 
 TEST_CASE("TextChunkList add 2", "TextChunkList")
@@ -87,6 +88,8 @@ TEST_CASE("TextChunkList add 2", "TextChunkList")
 
     REQUIRE(1 == list.searchWidth.size());
     REQUIRE(chunk1 == (*list.searchWidth.find(chunk1->text)).second);
+    delete chunk1;
+    delete chunk2;
 }
 
 TEST_CASE("TextChunkList addRemoveBack 1", "TextChunkList")
@@ -131,6 +134,7 @@ TEST_CASE("TextChunkList addRemoveBack 2", "TextChunkList")
 
     REQUIRE(1 == list.searchWidth.size());
     REQUIRE(chunk1 == (*list.searchWidth.find(chunk1->text)).second);
+    delete chunk1;
 }
 
 TEST_CASE("TextChunkList addRemoveBack 3", "TextChunkList")
@@ -182,6 +186,7 @@ TEST_CASE("TextChunkList addRemoveBack 4", "TextChunkList")
         chunk1->text, chunk1->color, chunk1->color2))).second);
 
     REQUIRE(0 == list.searchWidth.size());
+    delete chunk1;
 }
 
 TEST_CASE("TextChunkList moveToFirst 1", "TextChunkList")
@@ -199,6 +204,7 @@ TEST_CASE("TextChunkList moveToFirst 1", "TextChunkList")
     REQUIRE(chunk == list.end);
     REQUIRE(nullptr == chunk->prev);
     REQUIRE(nullptr == chunk->next);
+    delete chunk;
 }
 
 TEST_CASE("TextChunkList moveToFirst 2", "TextChunkList")
@@ -221,6 +227,8 @@ TEST_CASE("TextChunkList moveToFirst 2", "TextChunkList")
     REQUIRE(chunk2 == chunk1->next);
     REQUIRE(chunk1 == chunk2->prev);
     REQUIRE(nullptr == chunk2->next);
+    delete chunk1;
+    delete chunk2;
 }
 
 TEST_CASE("TextChunkList moveToFirst 3", "TextChunkList")
@@ -248,6 +256,9 @@ TEST_CASE("TextChunkList moveToFirst 3", "TextChunkList")
     REQUIRE(chunk3 == chunk2->next);
     REQUIRE(chunk2 == chunk3->prev);
     REQUIRE(nullptr == chunk3->next);
+    delete chunk1;
+    delete chunk2;
+    delete chunk3;
 }
 
 TEST_CASE("TextChunkList moveToFirst 4", "TextChunkList")
@@ -275,6 +286,9 @@ TEST_CASE("TextChunkList moveToFirst 4", "TextChunkList")
     REQUIRE(chunk3 == chunk2->next);
     REQUIRE(chunk2 == chunk3->prev);
     REQUIRE(nullptr == chunk3->next);
+    delete chunk1;
+    delete chunk2;
+    delete chunk3;
 }
 
 TEST_CASE("TextChunkList clear 1", "TextChunkList")
@@ -427,6 +441,8 @@ TEST_CASE("TextChunkList remove 2", "TextChunkList")
     REQUIRE((chunksLeft + 2) == textChunkCnt);
     REQUIRE(2 == list.search.size());
     REQUIRE(2 == list.searchWidth.size());
+    delete chunk2;
+    delete chunk3;
 }
 
 TEST_CASE("TextChunkList remove 3", "TextChunkList")
@@ -453,6 +469,8 @@ TEST_CASE("TextChunkList remove 3", "TextChunkList")
     REQUIRE((chunksLeft + 2) == textChunkCnt);
     REQUIRE(2 == list.search.size());
     REQUIRE(2 == list.searchWidth.size());
+    delete chunk1;
+    delete chunk3;
 }
 
 TEST_CASE("TextChunkList sort 1", "TextChunkList")
