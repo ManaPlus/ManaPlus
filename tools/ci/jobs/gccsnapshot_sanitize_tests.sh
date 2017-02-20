@@ -8,6 +8,7 @@ export PATH=/usr/lib/gcc-snapshot/bin:$PATH
 source ./tools/ci/scripts/init.sh
 
 export CXXFLAGS="-pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
+-fno-omit-frame-pointer \
 -Wstrict-overflow=1 -Wformat=1 -D_FORTIFY_SOURCE=2 \
 -fsanitize=address -fsanitize=undefined \
 -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable \
