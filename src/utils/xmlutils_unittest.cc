@@ -23,13 +23,11 @@
 #include "catch.hpp"
 #include "client.h"
 #include "graphicsmanager.h"
-#include "logger.h"
 
 #include "being/actorsprite.h"
 
 #include "utils/delete2.h"
 #include "utils/virtfs.h"
-#include "utils/xml.h"
 
 #include "render/sdlgraphics.h"
 
