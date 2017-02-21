@@ -73,7 +73,7 @@ void DeadDB::loadXmlFile(const std::string &fileName,
         }
         else if (xmlNameEqual(node, "message"))
         {
-            char *const data = reinterpret_cast<char*>(
+            XmlChar *const data = reinterpret_cast<XmlChar*>(
                 XmlNodeGetContent(node));
             if (!data)
                 continue;

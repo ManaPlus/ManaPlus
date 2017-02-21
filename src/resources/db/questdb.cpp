@@ -83,7 +83,7 @@ static void loadQuest(const int var,
     {
         if (!xmlTypeEqual(dataNode, XML_ELEMENT_NODE))
             continue;
-        char *const data = reinterpret_cast<char*>(
+        XmlChar *const data = reinterpret_cast<XmlChar*>(
             XmlNodeGetContent(dataNode));
         if (!data)
             continue;

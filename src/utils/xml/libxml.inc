@@ -61,6 +61,8 @@ __XML_XMLWRITER_H__
     (node)->xmlChildrenNode->content)
 #define XmlFree(ptr) xmlFree(ptr)
 #define XmlNodeDefault nullptr
+#define XmlChar char
+#define XmlConstChar const char
 
 #endif  // ENABLE_LIBXML
 #endif  // UTILS_XML_LIBXML_INC

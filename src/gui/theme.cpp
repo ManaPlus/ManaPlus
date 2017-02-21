@@ -1179,7 +1179,7 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
 
 #define readValue(name) \
         { \
-            tmpData = reinterpret_cast<char*>( \
+            tmpData = reinterpret_cast<XmlChar*>( \
                 XmlNodeGetContent(infoNode)); \
             info->name = tmpData; \
             XmlFree(tmpData); \
@@ -1187,7 +1187,7 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
 
 #define readIntValue(name) \
         { \
-            tmpData = reinterpret_cast<char*>( \
+            tmpData = reinterpret_cast<XmlChar*>( \
                 XmlNodeGetContent(infoNode)); \
             info->name = atoi(tmpData); \
             XmlFree(tmpData); \
@@ -1195,7 +1195,7 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
 
 #define readFloatValue(name) \
         { \
-            tmpData = reinterpret_cast<char*>( \
+            tmpData = reinterpret_cast<XmlChar*>( \
                 XmlNodeGetContent(infoNode)); \
             info->name = static_cast<float>(atof(tmpData)); \
             XmlFree(tmpData); \
@@ -1231,7 +1231,7 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
 
     const std::string fontSize2("fontSize_" + mScreenDensity);
     const std::string npcfontSize2("npcfontSize_" + mScreenDensity);
-    char *tmpData = nullptr;
+    XmlChar *tmpData = nullptr;
     for_each_xml_child_node(infoNode, rootNode)
     {
         if (xmlNameEqual(infoNode, "name"))

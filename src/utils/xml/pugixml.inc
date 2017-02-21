@@ -47,6 +47,8 @@
 #define XmlTextWriterStartDocument(writer, p1, p2, p3)
 #define XmlTextWriterEndDocument(writer) (writer)->endDocument()
 #define XmlFreeTextWriter(writer) delete writer
+#define XmlChar const char
+#define XmlConstChar const char
 
 #endif  // ENABLE_PUGIXML
 #endif  // UTILS_XML_PUGIXML_INC
