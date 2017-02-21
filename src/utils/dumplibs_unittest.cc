@@ -25,6 +25,7 @@
 #include "utils/stringutils.h"
 
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 PRAGMACLANG6(GCC diagnostic push)
 PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
@@ -115,6 +116,22 @@ TEST_CASE("dumplibs tests")
             SDL_IMAGE_MAJOR_VERSION,
             SDL_IMAGE_MINOR_VERSION,
             SDL_IMAGE_PATCHLEVEL);
+        const std::string link = strprintf("%d.%d.%d",
+            linkVersion->major,
+            linkVersion->minor,
+            linkVersion->patch);
+
+        REQUIRE(build == link);
+    }
+
+    SECTION("sdl_mixer")
+    {
+        const SDL_version *const linkVersion = Mix_Linked_Version();
+
+        const std::string build = strprintf("%d.%d.%d",
+            SDL_MIXER_MAJOR_VERSION,
+            SDL_MIXER_MINOR_VERSION,
+            SDL_MIXER_PATCHLEVEL);
         const std::string link = strprintf("%d.%d.%d",
             linkVersion->major,
             linkVersion->minor,

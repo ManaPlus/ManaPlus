@@ -26,6 +26,7 @@
 
 #include <png.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 PRAGMACLANG6(GCC diagnostic push)
 PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
@@ -127,6 +128,7 @@ void dumpLibs()
     dumpCompiledSdlVersion("SDL", SDL);
     dumpCompiledSdlVersion("SDL_net", SDL_NET);
     dumpCompiledSdlVersion("SDL_image", SDL_IMAGE);
+    dumpCompiledSdlVersion("SDL_mixer", SDL_MIXER);
     dumpCompiledSdlVersion("SDL_ttf", SDL_TTF);
 
     logger->log("Linked with:");
@@ -154,6 +156,7 @@ void dumpLibs()
 #endif  // USE_SDL2
     dumpLinkedSdlVersion("SDL_net", SDLNet_Linked_Version());
     dumpLinkedSdlVersion("SDL_image", IMG_Linked_Version());
+    dumpLinkedSdlVersion("SDL_mixer", Mix_Linked_Version());
     dumpLinkedSdlVersion("SDL_ttf", TTF_Linked_Version());
 
     compareVersions("zLib", ZLIB_VERSION, zlibVersion());
@@ -170,6 +173,9 @@ void dumpLibs()
     compareSDLVersions("SDL_image",
         sdlVersionJoin(SDL_IMAGE),
         IMG_Linked_Version());
+    compareSDLVersions("SDL_mixer",
+        sdlVersionJoin(SDL_MIXER),
+        Mix_Linked_Version());
     compareSDLVersions("SDL_ttf",
         sdlVersionJoin(SDL_TTF),
         TTF_Linked_Version());
