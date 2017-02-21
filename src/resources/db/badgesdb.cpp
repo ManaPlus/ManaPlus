@@ -22,7 +22,8 @@
 
 #include "configuration.h"
 
-#include "utils/virtfstools.h"
+#include "fs/virtfstools.h"
+
 #include "utils/xmlutils.h"
 
 #include "debug.h"

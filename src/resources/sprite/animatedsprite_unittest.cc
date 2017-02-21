@@ -28,6 +28,8 @@
 
 #include "being/actorsprite.h"
 
+#include "fs/virtfs.h"
+
 #include "gui/gui.h"
 #include "gui/theme.h"
 
@@ -42,7 +44,6 @@
 #include "utils/env.h"
 #include "utils/delete2.h"
 #include "utils/mrand.h"
-#include "utils/virtfs.h"
 
 #ifndef USE_SDL2
 #include <SDL.h>

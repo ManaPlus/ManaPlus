@@ -42,11 +42,8 @@
 
 #include "enums/being/attributesstrings.h"
 
-#include "input/inputmanager.h"
-#include "input/joystick.h"
-#include "input/keyboardconfig.h"
-
-#include "input/touch/touchmanager.h"
+#include "fs/virtfs.h"
+#include "fs/virtfstools.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
@@ -78,6 +75,12 @@
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
 #include "gui/widgets/windowcontainer.h"
+
+#include "input/inputmanager.h"
+#include "input/joystick.h"
+#include "input/keyboardconfig.h"
+
+#include "input/touch/touchmanager.h"
 
 #include "net/charserverhandler.h"
 #include "net/chathandler.h"
@@ -143,8 +146,6 @@
 #ifdef ANDROID
 #include "utils/paths.h"
 #endif  // ANDROID
-#include "utils/virtfs.h"
-#include "utils/virtfstools.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 

@@ -26,12 +26,12 @@
 #include "settings.h"
 #include "soundmanager.h"
 
+#include "fs/virtfsrwops.h"
+
 #include "gui/skin.h"
 #include "gui/theme.h"
 
 #include "gui/fonts/font.h"
-
-#include "utils/virtfsrwops.h"
 
 #include "render/graphics.h"
 

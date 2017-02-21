@@ -24,12 +24,13 @@
 
 #include "being/actorsprite.h"
 
+#include "fs/virtfs.h"
+
 #include "gui/gui.h"
 #include "gui/theme.h"
 
 #include "utils/delete2.h"
 #include "utils/env.h"
-#include "utils/virtfs.h"
 #ifdef ENABLE_PUGIXML
 #include "utils/xmlwriter.h"
 #endif  // ENABLE_PUGIXML

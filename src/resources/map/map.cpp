@@ -27,20 +27,14 @@
 #include "notifymanager.h"
 #include "settings.h"
 
-#include "resources/map/mapheights.h"
-#include "resources/map/maplayer.h"
-#include "resources/map/mapitem.h"
-#include "resources/map/objectslayer.h"
-#include "resources/map/speciallayer.h"
-#include "resources/map/tileset.h"
-#include "resources/map/walklayer.h"
-
 #include "being/localplayer.h"
 
 #include "enums/resources/notifytypes.h"
 
 #include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
+
+#include "fs/virtfs.h"
 
 #include "gui/userpalette.h"
 
@@ -53,8 +47,16 @@
 #include "resources/loaders/imageloader.h"
 
 #include "resources/map/location.h"
+#include "resources/map/mapheights.h"
 #include "resources/map/mapobjectlist.h"
+#include "resources/map/maplayer.h"
+#include "resources/map/mapitem.h"
+#include "resources/map/objectslayer.h"
+#include "resources/map/speciallayer.h"
 #include "resources/map/tileanimation.h"
+#include "resources/map/tileset.h"
+#include "resources/map/walklayer.h"
+
 
 #ifdef USE_OPENGL
 #include "render/renderers.h"
@@ -63,7 +65,6 @@
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/mkdir.h"
-#include "utils/virtfs.h"
 #include "utils/timer.h"
 
 #include <queue>

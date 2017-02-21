@@ -66,6 +66,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "fs/virtfstools.h"
+
 #include "gui/fonts/textchunk.h"
 
 #include "render/graphics.h"
@@ -79,7 +81,6 @@
 #include "utils/sdlcheckutils.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"
-#include "utils/virtfstools.h"
 
 #include "debug.h"
 

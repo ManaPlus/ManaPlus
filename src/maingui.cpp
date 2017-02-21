@@ -26,13 +26,14 @@
 #include "commandline.h"
 #include "settings.h"
 
+#include "fs/virtfs.h"
+#include "fs/virtfsrwops.h"
+
 #include "utils/delete2.h"
 #ifdef ANDROID
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #endif  // ANDROID
-#include "utils/virtfs.h"
-#include "utils/virtfsrwops.h"
 #include "utils/process.h"
 #include "utils/xml.h"
 

@@ -18,12 +18,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/virtfs.h"
+#include "fs/virtfs.h"
+
+#include "fs/virtfile.h"
+#include "fs/virtfileprivate.h"
+#include "fs/virtlist.h"
 
 #include "utils/checkutils.h"
-#include "utils/virtfile.h"
-#include "utils/virtfileprivate.h"
-#include "utils/virtlist.h"
 
 #include <iostream>
 #include <unistd.h>

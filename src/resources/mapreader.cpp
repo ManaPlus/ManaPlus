@@ -33,6 +33,8 @@
 #include "enums/resources/map/collisiontype.h"
 #include "enums/resources/map/mapitemtype.h"
 
+#include "fs/virtfs.h"
+
 #include "resources/map/map.h"
 #include "resources/map/mapheights.h"
 #include "resources/map/maplayer.h"
@@ -58,7 +60,6 @@
 #include "utils/base64.h"
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
-#include "utils/virtfs.h"
 #include "utils/stringmap.h"
 
 #include "utils/translation/podict.h"

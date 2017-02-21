@@ -25,13 +25,14 @@
 
 #include "being/actorsprite.h"
 
+#include "fs/virtfs.h"
+
 #include "resources/sdlimagehelper.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/env.h"
 #include "utils/delete2.h"
-#include "utils/virtfs.h"
 
 #include <unistd.h>
 

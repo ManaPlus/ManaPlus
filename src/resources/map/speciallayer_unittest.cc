@@ -28,8 +28,9 @@
 
 #include "enums/resources/map/mapitemtype.h"
 
+#include "fs/virtfs.h"
+
 #include "utils/delete2.h"
-#include "utils/virtfs.h"
 
 #include "resources/sdlimagehelper.h"
 

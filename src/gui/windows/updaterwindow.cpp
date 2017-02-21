@@ -29,6 +29,9 @@
 
 #include "enums/gui/layouttype.h"
 
+#include "fs/virtfs.h"
+#include "fs/virtfstools.h"
+
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
@@ -45,8 +48,6 @@
 
 #include "utils/delete2.h"
 #include "utils/files.h"
-#include "utils/virtfs.h"
-#include "utils/virtfstools.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"

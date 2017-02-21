@@ -23,9 +23,10 @@
 #include "catch.hpp"
 #include "logger.h"
 
+#include "fs/virtfs.h"
+#include "fs/virtfstools.h"
+
 #include "utils/delete2.h"
-#include "utils/virtfs.h"
-#include "utils/virtfstools.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 

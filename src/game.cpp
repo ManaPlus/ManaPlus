@@ -41,13 +41,7 @@
 
 #include "enums/being/beingdirection.h"
 
-#include "particle/particleengine.h"
-
-#include "input/inputmanager.h"
-#include "input/joystick.h"
-#include "input/keyboardconfig.h"
-
-#include "input/touch/touchmanager.h"
+#include "fs/virtfs.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
@@ -100,10 +94,18 @@
 #include "gui/widgets/tabs/chat/langtab.h"
 #include "gui/widgets/tabs/chat/tradetab.h"
 
+#include "input/inputmanager.h"
+#include "input/joystick.h"
+#include "input/keyboardconfig.h"
+
+#include "input/touch/touchmanager.h"
+
 #include "net/generalhandler.h"
 #include "net/gamehandler.h"
 #include "net/packetcounters.h"
 #include "net/serverfeatures.h"
+
+#include "particle/particleengine.h"
 
 #include "resources/delayedmanager.h"
 #include "resources/imagewriter.h"
@@ -121,7 +123,6 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
-#include "utils/virtfs.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 

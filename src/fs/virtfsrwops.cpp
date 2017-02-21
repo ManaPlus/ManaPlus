@@ -42,9 +42,11 @@
  *  Copyright (C) 2012-2017  The ManaPlus Developers
  */
 
-#include "utils/virtfsrwops.h"
+#include "fs/virtfsrwops.h"
 
 #include "logger.h"
+
+#include "fs/virtfs.h"
 
 #ifdef DEBUG_VIRTFS
 #include "utils/debugmemoryobject.h"
@@ -53,7 +55,6 @@
 #endif  // DEBUG_VIRTFS
 
 #include "utils/fuzzer.h"
-#include "utils/virtfs.h"
 
 #include "debug.h"
 

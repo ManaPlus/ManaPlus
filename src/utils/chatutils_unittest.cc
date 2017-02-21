@@ -27,12 +27,13 @@
 
 #include "being/localplayer.h"
 
+#include "fs/virtfs.h"
+
 #include "gui/gui.h"
 #include "gui/theme.h"
 
 #include "utils/chatutils.h"
 #include "utils/delete2.h"
-#include "utils/virtfs.h"
 
 #include "render/sdlgraphics.h"
 

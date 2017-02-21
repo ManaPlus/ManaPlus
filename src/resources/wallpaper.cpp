@@ -24,10 +24,10 @@
 
 #include "configuration.h"
 
-#include "resources/wallpaperdata.h"
+#include "fs/virtfs.h"
+#include "fs/virtlist.h"
 
-#include "utils/virtfs.h"
-#include "utils/virtlist.h"
+#include "resources/wallpaperdata.h"
 
 #include <algorithm>
 

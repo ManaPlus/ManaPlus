@@ -24,10 +24,11 @@
 
 #include "utils/xml/pugixml.h"
 
+#include "fs/virtfstools.h"
+
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/fuzzer.h"
-#include "utils/virtfstools.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"

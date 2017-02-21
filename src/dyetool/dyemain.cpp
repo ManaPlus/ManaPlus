@@ -24,6 +24,8 @@
 #include "maingui.h"
 #include "sdlshared.h"
 
+#include "fs/virtfs.h"
+
 #include "resources/imagewriter.h"
 
 #include "resources/image/image.h"
@@ -37,7 +39,6 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/gettext.h"
-#include "utils/virtfs.h"
 
 #include <iostream>
 

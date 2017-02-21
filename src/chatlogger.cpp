@@ -33,8 +33,10 @@
 #endif  // WIN32
 
 #include "configuration.h"
+
+#include "fs/virtfs.h"
+
 #include "utils/mkdir.h"
-#include "utils/virtfs.h"
 
 #include "debug.h"
 

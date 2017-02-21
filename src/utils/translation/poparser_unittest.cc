@@ -24,12 +24,13 @@
 
 #include "being/actorsprite.h"
 
+#include "fs/virtfs.h"
+
 #include "gui/gui.h"
 #include "gui/theme.h"
 
 #include "utils/delete2.h"
 #include "utils/env.h"
-#include "utils/virtfs.h"
 
 #include "utils/translation/podict.h"
 #include "utils/translation/poparser.h"

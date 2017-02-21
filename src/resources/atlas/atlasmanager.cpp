@@ -28,9 +28,10 @@
 #include "logger.h"
 #endif  // DEBUG_IMAGES
 
+#include "fs/virtfs.h"
+#include "fs/virtfsrwops.h"
+
 #include "utils/mathutils.h"
-#include "utils/virtfs.h"
-#include "utils/virtfsrwops.h"
 #include "utils/sdlcheckutils.h"
 
 #include "resources/openglimagehelper.h"

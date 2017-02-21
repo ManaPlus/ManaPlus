@@ -29,6 +29,8 @@
 #include "settings.h"
 #include "spellmanager.h"
 
+#include "fs/virtfstools.h"
+
 #include "gui/gui.h"
 #include "gui/userpalette.h"
 
@@ -59,7 +61,6 @@
 #include "utils/delete2.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
-#include "utils/virtfstools.h"
 #ifdef __native_client__
 #include "utils/naclmessages.h"
 #endif  // __native_client__

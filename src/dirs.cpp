@@ -28,6 +28,8 @@
 #include "main.h"
 #include "settings.h"
 
+#include "fs/virtfs.h"
+
 #include "utils/base64.h"
 #if defined(__native_client__) || (defined(ANDROID) && defined(USE_SDL2))
 #include "utils/files.h"
@@ -36,7 +38,6 @@
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
-#include "utils/virtfs.h"
 
 #ifdef ANDROID
 #ifdef USE_SDL2

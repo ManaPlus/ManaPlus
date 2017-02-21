@@ -26,7 +26,7 @@
 
 #include "enums/gui/layouttype.h"
 
-#include "input/inputmanager.h"
+#include "fs/virtfstools.h"
 
 #include "gui/gui.h"
 
@@ -37,10 +37,11 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
 
+#include "input/inputmanager.h"
+
 #include "utils/gettext.h"
 #include "utils/paths.h"
 #include "utils/process.h"
-#include "utils/virtfstools.h"
 
 #include "utils/translation/podict.h"
 #include "utils/translation/translationmanager.h"

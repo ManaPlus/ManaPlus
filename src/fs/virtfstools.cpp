@@ -18,14 +18,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/virtfstools.h"
+#include "fs/virtfstools.h"
 
 #include "logger.h"
 
+#include "fs/virtfs.h"
+#include "fs/virtlist.h"
+
 #include "utils/paths.h"
 #include "utils/stringutils.h"
-#include "utils/virtfs.h"
-#include "utils/virtlist.h"
 
 #include <algorithm>
 #include <sstream>

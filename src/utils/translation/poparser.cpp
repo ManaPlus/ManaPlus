@@ -20,8 +20,9 @@
 
 #include "utils/translation/poparser.h"
 
-#include "utils/virtfs.h"
-#include "utils/virtfstools.h"
+#include "fs/virtfs.h"
+#include "fs/virtfstools.h"
+
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"

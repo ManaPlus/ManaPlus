@@ -551,14 +551,14 @@ BASE_SRC += events/actionevent.h \
 	      utils/perfomance.cpp \
 	      utils/perfomance.h \
 	      utils/debugmemoryobject.h \
-	      utils/virtfsrwops.cpp \
-	      utils/virtfsrwops.h \
-	      utils/virtfstools.cpp \
-	      utils/virtfstools.h \
-	      utils/virtlist.cpp \
-	      utils/virtlist.h \
-	      utils/virtfs.cpp \
-	      utils/virtfs.h \
+	      fs/virtfsrwops.cpp \
+	      fs/virtfsrwops.h \
+	      fs/virtfstools.cpp \
+	      fs/virtfstools.h \
+	      fs/virtlist.cpp \
+	      fs/virtlist.h \
+	      fs/virtfs.cpp \
+	      fs/virtfs.h \
 	      utils/process.cpp \
 	      utils/process.h \
 	      utils/sdl2helper.cpp \
@@ -576,10 +576,10 @@ BASE_SRC += events/actionevent.h \
 	      utils/stringvector.h \
 	      utils/timer.cpp \
 	      utils/timer.h \
-	      utils/virtfile.cpp \
-	      utils/virtfile.h \
-	      utils/virtfileprivate.cpp \
-	      utils/virtfileprivate.h \
+	      fs/virtfile.cpp \
+	      fs/virtfile.h \
+	      fs/virtfileprivate.cpp \
+	      fs/virtfileprivate.h \
 	      utils/mutex.h \
 	      utils/naclmessages.cpp \
 	      utils/naclmessages.h \
@@ -1919,7 +1919,7 @@ manaplustests_SOURCES = ${SRC} \
 	      enums/enums_unittest.cc \
 	      utils/dumplibs_unittest.cc \
 	      utils/checkutils_unittest.cc \
-	      utils/virtfs_unittest.cc \
+	      fs/virtfs_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/timer_unittest.cc \
 	      utils/xmlutils_unittest.cc \

@@ -25,6 +25,10 @@
 
 #include "being/actorsprite.h"
 
+#include "fs/virtfs.h"
+#include "fs/virtfsrwops.h"
+#include "fs/virtfstools.h"
+
 #include "input/inputactionmap.h"
 
 #include "resources/image/image.h"
@@ -40,9 +44,6 @@
 
 #include "utils/env.h"
 #include "utils/delete2.h"
-#include "utils/virtfs.h"
-#include "utils/virtfsrwops.h"
-#include "utils/virtfstools.h"
 
 #include <physfs.h>
 #include <SDL_image.h>

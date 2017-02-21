@@ -24,9 +24,10 @@
 #include "config.h"
 #endif  // _MSC_VER
 
+#include "fs/virtfs.h"
+
 #include "utils/paths.h"
 
-#include "utils/virtfs.h"
 #include "utils/stringutils.h"
 
 #ifdef USE_X11

@@ -30,11 +30,8 @@
 #include "settings.h"
 #include "soundmanager.h"
 
-#include "input/inputmanager.h"
-#include "input/joystick.h"
-#include "input/keyboardconfig.h"
-
-#include "input/touch/touchmanager.h"
+#include "fs/virtfs.h"
+#include "fs/virtfstools.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"
@@ -47,6 +44,12 @@
 #include "gui/widgets/desktop.h"
 #include "gui/widgets/windowcontainer.h"
 #include "gui/widgets/window.h"
+
+#include "input/inputmanager.h"
+#include "input/joystick.h"
+#include "input/keyboardconfig.h"
+
+#include "input/touch/touchmanager.h"
 
 #include "resources/imagehelper.h"
 
@@ -63,8 +66,6 @@
 #include "utils/paths.h"
 #endif  // ANDROID
 
-#include "utils/virtfs.h"
-#include "utils/virtfstools.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 

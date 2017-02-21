@@ -22,13 +22,14 @@
 
 #include "resources/sdlmusic.h"
 
+#include "fs/virtfs.h"
+#include "fs/virtfsrwops.h"
+
 #include "resources/loaders/musicloader.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/checkutils.h"
-#include "utils/virtfs.h"
-#include "utils/virtfsrwops.h"
 
 #include "debug.h"
 

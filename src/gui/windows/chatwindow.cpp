@@ -35,6 +35,8 @@
 
 #include "const/gui/chat.h"
 
+#include "fs/virtfstools.h"
+
 #include "input/inputmanager.h"
 
 #include "gui/focushandler.h"
@@ -71,7 +73,6 @@
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"
-#include "utils/virtfstools.h"
 
 #include <sys/stat.h>
 

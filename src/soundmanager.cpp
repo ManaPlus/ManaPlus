@@ -28,6 +28,8 @@
 #include "being/localplayer.h"
 #endif  // DYECMD
 
+#include "fs/virtfs.h"
+
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"
 
@@ -35,7 +37,6 @@
 #include "resources/loaders/soundloader.h"
 
 #include "utils/checkutils.h"
-#include "utils/virtfs.h"
 
 #include <SDL.h>
 

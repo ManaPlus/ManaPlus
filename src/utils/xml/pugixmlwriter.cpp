@@ -24,9 +24,10 @@
 
 #include "logger.h"
 
+#include "fs/virtfs.h"
+
 #include "utils/delete2.h"
 #include "utils/fuzzer.h"
-#include "utils/virtfs.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"

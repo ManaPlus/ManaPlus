@@ -29,6 +29,10 @@
 
 #include "const/gui/theme.h"
 
+#include "fs/virtfs.h"
+#include "fs/virtfstools.h"
+#include "fs/virtlist.h"
+
 #include "gui/skin.h"
 #include "gui/themeinfo.h"
 
@@ -45,9 +49,6 @@
 #include "resources/loaders/xmlloader.h"
 
 #include "utils/dtor.h"
-#include "utils/virtfs.h"
-#include "utils/virtfstools.h"
-#include "utils/virtlist.h"
 
 #include "debug.h"
 

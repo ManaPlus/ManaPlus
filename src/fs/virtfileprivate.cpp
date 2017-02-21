@@ -18,15 +18,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/virtlist.h"
+#include "fs/virtfileprivate.h"
 
 #include "debug.h"
 
-VirtList::VirtList() :
-    names()
+VirtFilePrivate::VirtFilePrivate() :
+    mFile(nullptr)
 {
 }
 
-VirtList::~VirtList()
+VirtFilePrivate::VirtFilePrivate(PHYSFS_file *const file) :
+    mFile(file)
 {
+}
+
+VirtFilePrivate::~VirtFilePrivate()
+{
+    if (mFile != nullptr)
+    {
+        PHYSFS_close(mFile);
+        mFile = nullptr;
+    }
 }

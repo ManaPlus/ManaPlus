@@ -26,6 +26,8 @@
 
 #include "being/actorsprite.h"
 
+#include "fs/virtfs.h"
+
 #include "resources/sdlimagehelper.h"
 #ifdef USE_SDL2
 #include "resources/surfaceimagehelper.h"
@@ -42,7 +44,6 @@
 
 #include "utils/delete2.h"
 #include "utils/env.h"
-#include "utils/virtfs.h"
 
 #ifndef USE_SDL2
 #include <SDL.h>

@@ -22,6 +22,9 @@
 
 #include "resources/imagehelper.h"
 
+#include "fs/virtfs.h"
+#include "fs/virtfsrwops.h"
+
 #include "resources/image/image.h"
 
 #include "resources/loaders/imageloader.h"
@@ -31,8 +34,6 @@
 #include "resources/dye/dye.h"
 
 #include "utils/checkutils.h"
-#include "utils/virtfs.h"
-#include "utils/virtfsrwops.h"
 
 #include "debug.h"
 

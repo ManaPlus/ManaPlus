@@ -22,8 +22,9 @@
 
 #include "configuration.h"
 
+#include "fs/virtfstools.h"
+
 #include "utils/checkutils.h"
-#include "utils/virtfstools.h"
 
 #include "resources/dye/dyecolor.h"
 

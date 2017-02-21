@@ -26,10 +26,11 @@
 #include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
 
+#include "fs/virtfs.h"
+
 #include "gui/theme.h"
 
 #include "utils/delete2.h"
-#include "utils/virtfs.h"
 
 #include "render/mockgraphics.h"
 

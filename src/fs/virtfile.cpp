@@ -18,10 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/virtfile.h"
+#include "fs/virtfile.h"
+
+#include "fs/virtfileprivate.h"
 
 #include "utils/delete2.h"
-#include "utils/virtfileprivate.h"
 
 #include "debug.h"
 

@@ -24,9 +24,10 @@
 
 #include "utils/xml/libxml.h"
 
+#include "fs/virtfstools.h"
+
 #include "utils/checkutils.h"
 #include "utils/fuzzer.h"
-#include "utils/virtfstools.h"
 #include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"

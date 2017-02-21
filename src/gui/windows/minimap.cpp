@@ -31,6 +31,8 @@
 
 #include "enums/resources/map/blockmask.h"
 
+#include "fs/virtfs.h"
+
 #include "gui/popupmanager.h"
 #include "gui/viewport.h"
 #include "gui/userpalette.h"
@@ -50,7 +52,6 @@
 #include "resources/loaders/imageloader.h"
 
 #include "utils/gettext.h"
-#include "utils/virtfs.h"
 #include "utils/sdlcheckutils.h"
 
 #include "debug.h"

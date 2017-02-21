@@ -26,8 +26,9 @@
 
 #include "being/actorsprite.h"
 
+#include "fs/virtfs.h"
+
 #include "utils/delete2.h"
-#include "utils/virtfs.h"
 
 #include "render/sdlgraphics.h"
 

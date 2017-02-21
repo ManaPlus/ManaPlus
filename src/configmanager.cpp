@@ -29,11 +29,12 @@
 
 #include "being/beingspeech.h"
 
+#include "fs/virtfs.h"
+
 #include "utils/files.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/paths.h"
-#include "utils/virtfs.h"
 
 #include "render/renderers.h"
 

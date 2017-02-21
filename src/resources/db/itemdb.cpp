@@ -28,6 +28,8 @@
 
 #include "enums/resources/spritedirection.h"
 
+#include "fs/virtfstools.h"
+
 #include "resources/iteminfo.h"
 #include "resources/itemtypemapdata.h"
 
@@ -43,7 +45,6 @@
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/stringmap.h"
-#include "utils/virtfstools.h"
 
 #include "debug.h"
 

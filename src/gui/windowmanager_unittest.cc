@@ -29,6 +29,8 @@
 
 #include "const/resources/currency.h"
 
+#include "fs/virtfs.h"
+
 #include "gui/gui.h"
 #include "gui/mailmessage.h"
 #include "gui/userpalette.h"
@@ -117,7 +119,6 @@
 #include "utils/delete2.h"
 #include "utils/env.h"
 #include "utils/gettext.h"
-#include "utils/virtfs.h"
 
 #include "utils/translation/translationmanager.h"
 

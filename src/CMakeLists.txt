@@ -887,14 +887,14 @@ SET(SRCS
     utils/perfomance.cpp
     utils/perfomance.h
     utils/debugmemoryobject.h
-    utils/virtfsrwops.cpp
-    utils/virtfsrwops.h
-    utils/virtfstools.cpp
-    utils/virtfstools.h
-    utils/virtlist.cpp
-    utils/virtlist.h
-    utils/virtfs.cpp
-    utils/virtfs.h
+    fs/virtfsrwops.cpp
+    fs/virtfsrwops.h
+    fs/virtfstools.cpp
+    fs/virtfstools.h
+    fs/virtlist.cpp
+    fs/virtlist.h
+    fs/virtfs.cpp
+    fs/virtfs.h
     utils/process.cpp
     utils/process.h
     utils/sdl2helper.cpp
@@ -910,10 +910,10 @@ SET(SRCS
     utils/stringvector.h
     utils/timer.cpp
     utils/timer.h
-    utils/virtfile.cpp
-    utils/virtfile.h
-    utils/virtfileprivate.cpp
-    utils/virtfileprivate.h
+    fs/virtfile.cpp
+    fs/virtfile.h
+    fs/virtfileprivate.cpp
+    fs/virtfileprivate.h
     utils/mutex.h
     utils/naclmessages.cpp
     utils/naclmessages.h
@@ -1773,14 +1773,14 @@ SET(DYE_CMD_SRCS
     utils/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
-    utils/virtfsrwops.cpp
-    utils/virtfsrwops.h
-    utils/virtfstools.cpp
-    utils/virtfstools.h
-    utils/virtlist.cpp
-    utils/virtlist.h
-    utils/virtfs.cpp
-    utils/virtfs.h
+    fs/virtfsrwops.cpp
+    fs/virtfsrwops.h
+    fs/virtfstools.cpp
+    fs/virtfstools.h
+    fs/virtlist.cpp
+    fs/virtlist.h
+    fs/virtfs.cpp
+    fs/virtfs.h
     utils/sdl2helper.cpp
     utils/sdl2helper.h
     utils/sdlcheckutils.cpp
@@ -1792,10 +1792,10 @@ SET(DYE_CMD_SRCS
     utils/stringutils.h
     utils/timer.cpp
     utils/timer.h
-    utils/virtfile.cpp
-    utils/virtfile.h
-    utils/virtfileprivate.cpp
-    utils/virtfileprivate.h
+    fs/virtfile.cpp
+    fs/virtfile.h
+    fs/virtfileprivate.cpp
+    fs/virtfileprivate.h
     utils/xml.cpp
     utils/xml.h
     utils/xml.inc
