@@ -25,10 +25,11 @@
 #include "logger.h"
 #include "variabledata.h"
 
+#include "fs/paths.h"
+
 #include "listeners/configlistener.h"
 
 #include "utils/delete2.h"
-#include "utils/paths.h"
 #ifdef DEBUG_CONFIG
 #include "utils/stringmap.h"
 #endif  // DEBUG_CONFIG

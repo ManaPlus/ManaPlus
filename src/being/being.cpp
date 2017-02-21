@@ -51,7 +51,7 @@
 
 #include "enums/resources/map/blockmask.h"
 
-#include "particle/particleinfo.h"
+#include "fs/files.h"
 
 #include "gui/gui.h"
 #include "gui/userpalette.h"
@@ -73,6 +73,8 @@
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
+
+#include "particle/particleinfo.h"
 
 #include "resources/attack.h"
 #include "resources/chatobject.h"
@@ -110,7 +112,6 @@
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
-#include "utils/files.h"
 #include "utils/gettext.h"
 #include "utils/timer.h"
 

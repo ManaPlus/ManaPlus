@@ -27,10 +27,11 @@
 
 #include "being/being.h"
 
+#include "fs/paths.h"
+
 #include "gui/windows/logindialog.h"
 
 #include "utils/gettext.h"
-#include "utils/paths.h"
 
 #include "net/logindata.h"
 #include "net/loginhandler.h"

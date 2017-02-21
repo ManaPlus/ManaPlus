@@ -25,7 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 
-#include "listeners/openurllistener.h"
+#include "fs/paths.h"
 
 #include "gui/models/updatelistmodel.h"
 #include "gui/models/updatetypemodel.h"
@@ -40,13 +40,14 @@
 #include "gui/widgets/passwordfield.h"
 #include "gui/widgets/layoutcell.h"
 
+#include "listeners/openurllistener.h"
+
 #include "net/charserverhandler.h"
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/updatetypeoperators.h"
 
 #include "utils/delete2.h"
-#include "utils/paths.h"
 
 #include "debug.h"
 

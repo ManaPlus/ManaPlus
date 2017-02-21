@@ -24,14 +24,13 @@
 #include "config.h"
 #endif  // _MSC_VER
 
+#include "fs/paths.h"
 #include "fs/virtfs.h"
-
-#include "utils/paths.h"
 
 #include "utils/stringutils.h"
 
 #ifdef USE_X11
-#include "utils/files.h"
+#include "fs/files.h"
 #endif  // USE_X11
 
 #ifdef __native_client__
@@ -40,7 +39,7 @@
 #endif  // __native_client__
 
 #ifdef WIN32
-#include "utils/specialfolder.h"
+#include "fs/specialfolder.h"
 #define realpath(N, R) _fullpath((R), (N), _MAX_PATH)
 #elif defined __OpenBSD__
 #include <limits>

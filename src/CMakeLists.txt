@@ -865,8 +865,8 @@ SET(SRCS
     utils/dumplibs.h
     utils/env.cpp
     utils/env.h
-    utils/files.cpp
-    utils/files.h
+    fs/files.cpp
+    fs/files.h
     utils/fuzzer.cpp
     utils/fuzzer.h
     utils/gettext.h
@@ -882,8 +882,8 @@ SET(SRCS
     utils/mathutils.h
     utils/parameters.cpp
     utils/parameters.h
-    utils/paths.cpp
-    utils/paths.h
+    fs/paths.cpp
+    fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
     utils/debugmemoryobject.h
@@ -917,8 +917,8 @@ SET(SRCS
     utils/mutex.h
     utils/naclmessages.cpp
     utils/naclmessages.h
-    utils/mkdir.cpp
-    utils/mkdir.h
+    fs/mkdir.cpp
+    fs/mkdir.h
     utils/mrand.cpp
     utils/mrand.h
     utils/xml.h
@@ -1763,14 +1763,14 @@ SET(DYE_CMD_SRCS
     resources/sprite/spritedef.h
     resources/sprite/spritedisplay.h
     resources/sprite/spritereference.h
-    utils/files.cpp
-    utils/files.h
-    utils/mkdir.cpp
-    utils/mkdir.h
+    fs/files.cpp
+    fs/files.h
+    fs/mkdir.cpp
+    fs/mkdir.h
     utils/mrand.cpp
     utils/mrand.h
-    utils/paths.cpp
-    utils/paths.h
+    fs/paths.cpp
+    fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
     fs/virtfsrwops.cpp
@@ -1997,14 +1997,14 @@ SET(SRCS_TMWA
 IF (WIN32)
     SET(SRCS
         ${SRCS}
-        utils/specialfolder.cpp
-        utils/specialfolder.h
+        fs/specialfolder.cpp
+        fs/specialfolder.h
         manaplus.rc
     )
     SET(DYE_CMD_SRCS
         ${DYE_CMD_SRCS}
-        utils/specialfolder.cpp
-        utils/specialfolder.h
+        fs/specialfolder.cpp
+        fs/specialfolder.h
         manaplus.rc
     )
 ENDIF ()

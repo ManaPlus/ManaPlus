@@ -34,9 +34,8 @@
 
 #include "configuration.h"
 
+#include "fs/mkdir.h"
 #include "fs/virtfs.h"
-
-#include "utils/mkdir.h"
 
 #include "debug.h"
 

@@ -25,8 +25,9 @@
 #include "logger.h"
 #include "settings.h"
 
+#include "fs/paths.h"
+
 #include "utils/delete2.h"
-#include "utils/paths.h"
 #include "utils/process.h"
 
 #include "debug.h"

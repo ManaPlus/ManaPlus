@@ -24,6 +24,8 @@
 
 #include "client.h"
 
+#include "fs/paths.h"
+
 #include "gui/windows/logindialog.h"
 
 #include "net/logindata.h"
@@ -33,7 +35,6 @@
 #include "net/eathena/updateprotocol.h"
 
 #include "utils/gettext.h"
-#include "utils/paths.h"
 
 #include "debug.h"
 

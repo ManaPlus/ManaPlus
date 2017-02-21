@@ -34,6 +34,7 @@
 #include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
 
+#include "fs/mkdir.h"
 #include "fs/virtfs.h"
 
 #include "gui/userpalette.h"
@@ -64,7 +65,6 @@
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
-#include "utils/mkdir.h"
 #include "utils/timer.h"
 
 #include <queue>

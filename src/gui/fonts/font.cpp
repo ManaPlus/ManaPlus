@@ -66,6 +66,7 @@
 
 #include "gui/fonts/font.h"
 
+#include "fs/paths.h"
 #include "fs/virtfstools.h"
 
 #include "gui/fonts/textchunk.h"
@@ -77,7 +78,6 @@
 #include "resources/image/image.h"
 
 #include "utils/delete2.h"
-#include "utils/paths.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"

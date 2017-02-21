@@ -20,7 +20,7 @@
  */
 
 #ifdef WIN32
-#include "utils/specialfolder.h"
+#include "fs/specialfolder.h"
 #include <windows.h>
 
 #include "debug.h"

@@ -25,14 +25,10 @@
 #include "logger.h"
 #include "settings.h"
 
-#include "utils/files.h"
+#include "fs/files.h"
 #include "utils/sdlhelper.h"
 
 #include <zlib.h>
-
-#if defined __native_client__
-#include "utils/files.h"
-#endif  // defined __native_client__
 
 #include <sstream>
 

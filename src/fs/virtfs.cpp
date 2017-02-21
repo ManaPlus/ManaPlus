@@ -30,7 +30,7 @@
 #include <unistd.h>
 
 #ifdef ANDROID
-#include "utils/paths.h"
+#include "fs/paths.h"
 #endif  // ANDROID
 
 #include "debug.h"

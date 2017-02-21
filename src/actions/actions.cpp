@@ -38,6 +38,8 @@
 
 #include "const/resources/skill.h"
 
+#include "fs/files.h"
+
 #include "gui/gui.h"
 #include "gui/popupmanager.h"
 #include "gui/sdlinput.h"
@@ -102,7 +104,6 @@
 #include "utils/chatutils.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/files.h"
 #include "utils/timer.h"
 #include "utils/mathutils.h"
 

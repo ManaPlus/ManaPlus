@@ -31,8 +31,8 @@
 
 #include "utils/delete2.h"
 #ifdef ANDROID
-#include "utils/mkdir.h"
-#include "utils/paths.h"
+#include "fs/mkdir.h"
+#include "fs/paths.h"
 #endif  // ANDROID
 #include "utils/process.h"
 #include "utils/xml.h"

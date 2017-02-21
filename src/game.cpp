@@ -41,6 +41,7 @@
 
 #include "enums/being/beingdirection.h"
 
+#include "fs/mkdir.h"
 #include "fs/virtfs.h"
 
 #include "gui/dialogsmanager.h"
@@ -122,7 +123,6 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/mkdir.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 

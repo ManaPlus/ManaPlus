@@ -30,6 +30,8 @@
 
 #include "net/download.h"
 
+#include "fs/paths.h"
+
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
@@ -45,7 +47,6 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/langs.h"
-#include "utils/paths.h"
 
 #include "debug.h"
 

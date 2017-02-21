@@ -22,10 +22,10 @@
 
 #include "logger.h"
 
+#include "fs/paths.h"
 #include "fs/virtfs.h"
 #include "fs/virtlist.h"
 
-#include "utils/paths.h"
 #include "utils/stringutils.h"
 
 #include <algorithm>

@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/mkdir.h"
+#include "fs/mkdir.h"
 
 #if defined WIN32
 #include <limits.h>

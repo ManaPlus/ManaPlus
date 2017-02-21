@@ -25,8 +25,9 @@
 #include "main.h"
 #include "settings.h"
 
+#include "fs/paths.h"
+
 #include "utils/gettext.h"
-#include "utils/paths.h"
 #include "utils/stringutils.h"
 
 #include <getopt.h>

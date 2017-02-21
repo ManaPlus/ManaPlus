@@ -28,16 +28,16 @@
 #include "main.h"
 #include "settings.h"
 
+#include "fs/mkdir.h"
+#include "fs/paths.h"
 #include "fs/virtfs.h"
 
 #include "utils/base64.h"
 #if defined(__native_client__) || (defined(ANDROID) && defined(USE_SDL2))
-#include "utils/files.h"
+#include "fs/files.h"
 #endif  // defined(__native_client__) || (defined(ANDROID) &&
         // defined(USE_SDL2))
 #include "utils/gettext.h"
-#include "utils/mkdir.h"
-#include "utils/paths.h"
 
 #ifdef ANDROID
 #ifdef USE_SDL2
@@ -53,7 +53,7 @@
 
 #ifdef WIN32
 #include <SDL_syswm.h>
-#include "utils/specialfolder.h"
+#include "fs/specialfolder.h"
 #undef ERROR
 #endif  // WIN32
 

@@ -527,8 +527,8 @@ BASE_SRC += events/actionevent.h \
 	      utils/dumplibs.h \
 	      utils/env.cpp \
 	      utils/env.h \
-	      utils/files.cpp \
-	      utils/files.h \
+	      fs/files.cpp \
+	      fs/files.h \
 	      utils/fuzzer.cpp \
 	      utils/fuzzer.h \
 	      utils/gettext.h \
@@ -540,14 +540,14 @@ BASE_SRC += events/actionevent.h \
 	      utils/langs.cpp \
 	      utils/langs.h \
 	      utils/mathutils.h \
-	      utils/mkdir.cpp \
-	      utils/mkdir.h \
+	      fs/mkdir.cpp \
+	      fs/mkdir.h \
 	      utils/mrand.cpp \
 	      utils/mrand.h \
 	      utils/parameters.cpp \
 	      utils/parameters.h \
-	      utils/paths.cpp \
-	      utils/paths.h \
+	      fs/paths.cpp \
+	      fs/paths.h \
 	      utils/perfomance.cpp \
 	      utils/perfomance.h \
 	      utils/debugmemoryobject.h \
@@ -568,8 +568,8 @@ BASE_SRC += events/actionevent.h \
 	      utils/sdlhelper.cpp \
 	      utils/sdlhelper.h \
 	      utils/sdlmemoryobject.h \
-	      utils/specialfolder.cpp \
-	      utils/specialfolder.h \
+	      fs/specialfolder.cpp \
+	      fs/specialfolder.h \
 	      utils/stringmap.h \
 	      utils/stringutils.cpp \
 	      utils/stringutils.h \
@@ -1924,7 +1924,7 @@ manaplustests_SOURCES = ${SRC} \
 	      utils/timer_unittest.cc \
 	      utils/xmlutils_unittest.cc \
 	      utils/mathutils_unittest.cc \
-	      utils/files_unittest.cc \
+	      fs/files_unittest.cc \
 	      utils/stringutils_unittest.cc \
 	      utils/parameters_unittest.cc \
 	      resources/mstack_unittest.cc \

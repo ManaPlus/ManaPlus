@@ -18,21 +18,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/files.h"
+#include "fs/files.h"
 
 #include "logger.h"
 
+#include "fs/mkdir.h"
 #if defined(ANDROID) || defined(__native_client__)
-#include "utils/mkdir.h"
-#endif  // defined(ANDROID) || defined(__native_client__)
-
-#include "utils/mkdir.h"
-#if defined(ANDROID) || defined(__native_client__)
+#include "fs/paths.h"
 #include "fs/virtfs.h"
 #include "fs/virtfstools.h"
 #include "fs/virtlist.h"
-
-#include "utils/paths.h"
 #endif  // defined(ANDROID) || defined(__native_client__)
 
 #include <dirent.h>

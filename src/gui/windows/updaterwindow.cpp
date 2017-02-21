@@ -29,6 +29,9 @@
 
 #include "enums/gui/layouttype.h"
 
+#include "fs/files.h"
+#include "fs/mkdir.h"
+#include "fs/paths.h"
 #include "fs/virtfs.h"
 #include "fs/virtfstools.h"
 
@@ -47,10 +50,7 @@
 #include "resources/db/moddb.h"
 
 #include "utils/delete2.h"
-#include "utils/files.h"
 #include "utils/gettext.h"
-#include "utils/mkdir.h"
-#include "utils/paths.h"
 
 #include <sys/stat.h>
 

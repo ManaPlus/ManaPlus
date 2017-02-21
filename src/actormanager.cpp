@@ -40,10 +40,11 @@
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/questswindow.h"
 
+#include "fs/files.h"
+
 #include "input/inputmanager.h"
 
 #include "utils/checkutils.h"
-#include "utils/files.h"
 #include "utils/mathutils.h"
 #include "utils/gettext.h"
 

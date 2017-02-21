@@ -63,7 +63,7 @@
 #include "utils/gettexthelper.h"
 #include "utils/mrand.h"
 #ifdef ANDROID
-#include "utils/paths.h"
+#include "fs/paths.h"
 #endif  // ANDROID
 
 #include "utils/sdlcheckutils.h"
@@ -77,7 +77,7 @@
 
 #ifdef WIN32
 #include <SDL_syswm.h>
-#include "utils/specialfolder.h"
+#include "fs/specialfolder.h"
 #undef ERROR
 #endif  // WIN32
 
