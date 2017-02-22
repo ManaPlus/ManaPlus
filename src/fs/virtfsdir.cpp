@@ -283,7 +283,6 @@ namespace VirtFsDir
             VirtDirEntry *const entry = *it;
             if (Files::existsLocal(entry->mRootDir + name))
                 return true;
-
         }
         return false;
     }
@@ -504,7 +503,7 @@ namespace VirtFsDir
             reportAlways("VirtFsDir::fileLength error.");
             return -1;
         }
-        return (int64_t)statbuf.st_size;
+        return static_cast<int64_t>(statbuf.st_size);
     }
 
     int64_t tell(VirtFile *restrict const file)
@@ -558,7 +557,7 @@ namespace VirtFsDir
             reportAlways("VirtFsDir::fileLength error.");
             return -1;
         }
-        const int64_t len = (int64_t)statbuf.st_size;
+        const int64_t len = static_cast<int64_t>(statbuf.st_size);
         return pos < 0 || len < 0 || pos >= len;
     }
 }  // namespace VirtFs
