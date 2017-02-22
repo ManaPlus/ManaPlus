@@ -106,7 +106,7 @@ static void removeTemp(StringVect &restrict list)
     }
 }
 
-TEST_CASE("VirtFs enumerateFiles")
+TEST_CASE("VirtFs enumerateFiles1")
 {
     logger = new Logger;
 
@@ -115,8 +115,8 @@ TEST_CASE("VirtFs enumerateFiles")
 
     VirtList *list = nullptr;
 
-    const int cnt1 = VirtFs::exists("test/test2.txt") ? 23 : 22;
-    const int cnt2 = 23;
+    const int cnt1 = VirtFs::exists("test/test2.txt") ? 24 : 23;
+    const int cnt2 = 24;
 
     VirtFs::permitLinks(false);
     list = VirtFs::enumerateFiles("test");
@@ -139,6 +139,27 @@ TEST_CASE("VirtFs enumerateFiles")
 
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs enumerateFiles2")
+{
+    logger = new Logger;
+
+    VirtFs::addDirToSearchPath("data/test/dir1",
+        Append_false);
+    VirtFs::addDirToSearchPath("../data/test/dir1",
+        Append_false);
+
+    VirtList *list = nullptr;
+
+    list = VirtFs::enumerateFiles("/");
+    const size_t sz = list->names.size();
+    REQUIRE(list->names.size() == 5);
+    VirtFs::freeList(list);
+
+    VirtFs::removeDirFromSearchPath("data/test/dir1");
+    VirtFs::removeDirFromSearchPath("../data/test/dir1");
     delete2(logger);
 }
 

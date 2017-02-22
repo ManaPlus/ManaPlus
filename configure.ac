@@ -559,6 +559,7 @@ data/sfx/Makefile
 data/sfx/system/Makefile
 data/test/Makefile
 data/test/dir1/Makefile
+data/test/dir2/Makefile
 data/themes/Makefile
 data/themes/blacknblack/Makefile
 data/themes/blackwood/Makefile

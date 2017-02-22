@@ -18,37 +18,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfileprivate.h"
+#ifndef UTILS_VIRTDIRENTRY_H
+#define UTILS_VIRTDIRENTRY_H
 
-#include <unistd.h>
+#include <string>
 
-#include "debug.h"
+#include "localconsts.h"
 
-VirtFilePrivate::VirtFilePrivate() :
-    mFile(nullptr),
-    mFd(-1)
+struct VirtDirEntry final
 {
-}
+    VirtDirEntry(const std::string &userDir,
+                 const std::string &rootDir);
 
-VirtFilePrivate::VirtFilePrivate(const int fd) :
-    mFile(nullptr),
-    mFd(fd)
-{
-}
+    A_DELETE_COPY(VirtDirEntry)
 
-VirtFilePrivate::VirtFilePrivate(PHYSFS_file *const file) :
-    mFile(file),
-    mFd(-1)
-{
-}
+    ~VirtDirEntry();
 
-VirtFilePrivate::~VirtFilePrivate()
-{
-    if (mFile != nullptr)
-    {
-        PHYSFS_close(mFile);
-        mFile = nullptr;
-    }
-    if (mFd != -1)
-        close(mFd);
-}
+    std::string mUserDir;
+    std::string mRootDir;
+};
+
+#endif  // UTILS_VIRTDIRENTRY_H

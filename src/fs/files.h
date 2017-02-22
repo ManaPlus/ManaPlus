@@ -63,6 +63,10 @@ namespace Files
                       const std::string &restrict text);
 
     void deleteFilesInDirectory(std::string path);
+
+    void enumFiles(StringVect &files,
+                   std::string path,
+                   const bool skipSymlinks);
 }  // namespace Files
 
 #endif  // UTILS_FILES_H

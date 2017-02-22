@@ -34,11 +34,14 @@ struct VirtFilePrivate final
 
     explicit VirtFilePrivate(PHYSFS_file *const file);
 
+    explicit VirtFilePrivate(const int fd);
+
     A_DELETE_COPY(VirtFilePrivate)
 
     ~VirtFilePrivate();
 
     PHYSFS_file *mFile;
+    int mFd;
 };
 
 #endif  // UTILS_VIRTFILEPRIVATE_H

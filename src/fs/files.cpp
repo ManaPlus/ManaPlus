@@ -30,7 +30,10 @@
 #include "fs/virtlist.h"
 #endif  // defined(ANDROID) || defined(__native_client__)
 
+#include "utils/stringutils.h"
+
 #include <dirent.h>
+#include <sys/stat.h>
 
 #include "debug.h"
 
@@ -206,13 +209,8 @@ int Files::copyFile(const std::string &restrict srcName,
 
 bool Files::existsLocal(const std::string &path)
 {
-    bool flg(false);
-    std::fstream file;
-    file.open(path.c_str(), std::ios::in);
-    if (file.is_open())
-        flg = true;
-    file.close();
-    return flg;
+    struct stat statbuf;
+    return stat(path.c_str(), &statbuf) == 0;
 }
 
 bool Files::loadTextFileLocal(const std::string &fileName,
@@ -266,3 +264,35 @@ void Files::deleteFilesInDirectory(std::string path)
         closedir(dir);
     }
 }
+
+void Files::enumFiles(StringVect &files,
+                      std::string path,
+                      const bool skipSymlinks)
+{
+    if (findLast(path, "/") == false)
+        path += "/";
+    const struct dirent *next_file = nullptr;
+    DIR *const dir = opendir(path.c_str());
+
+    if (dir)
+    {
+        while ((next_file = readdir(dir)))
+        {
+            const std::string file = next_file->d_name;
+            if (file == "." || file == "..")
+                continue;
+            if (skipSymlinks == true)
+            {
+                struct stat statbuf;
+                if (lstat(path.c_str(), &statbuf) == 0 &&
+                    S_ISLNK(statbuf.st_mode) != 0)
+                {
+                    continue;
+                }
+            }
+            files.push_back(file);
+        }
+        closedir(dir);
+    }
+}
+

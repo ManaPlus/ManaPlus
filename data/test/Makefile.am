@@ -1,4 +1,4 @@
-SUBDIRS = dir1
+SUBDIRS = dir1 dir2
 
 testdir = $(pkgdatadir)/data/test
 

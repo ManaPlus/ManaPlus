@@ -24,6 +24,7 @@
 
 #include "fs/paths.h"
 #include "fs/virtfs.h"
+#include "fs/virtfsdir.h"
 #include "fs/virtlist.h"
 
 #include "utils/stringutils.h"
@@ -219,5 +220,21 @@ namespace VirtFs
 
         free(fileContents);
         return true;
+    }
+}  // namespace VirtFs
+
+// +++ temporary add it here
+namespace VirtFsDir
+{
+    void getFiles(const std::string &path,
+                  StringVect &list)
+    {
+        VirtList *const fonts = VirtFsDir::enumerateFiles(path);
+        FOR_EACH (StringVectCIter, i, fonts->names)
+        {
+            if (!VirtFsDir::isDirectory(path + dirSeparator + *i))
+                list.push_back(*i);
+        }
+        VirtFsDir::freeList(fonts);
     }
 }  // namespace VirtFs

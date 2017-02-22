@@ -887,6 +887,8 @@ SET(SRCS
     utils/perfomance.cpp
     utils/perfomance.h
     utils/debugmemoryobject.h
+    fs/virtfsdir.cpp
+    fs/virtfsdir.h
     fs/virtfsrwops.cpp
     fs/virtfsrwops.h
     fs/virtfstools.cpp
@@ -910,6 +912,8 @@ SET(SRCS
     utils/stringvector.h
     utils/timer.cpp
     utils/timer.h
+    fs/virtdirentry.cpp
+    fs/virtdirentry.h
     fs/virtfile.cpp
     fs/virtfile.h
     fs/virtfileprivate.cpp
@@ -1773,6 +1777,8 @@ SET(DYE_CMD_SRCS
     fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
+    fs/virtfsdir.cpp
+    fs/virtfsdir.h
     fs/virtfsrwops.cpp
     fs/virtfsrwops.h
     fs/virtfstools.cpp
@@ -1792,6 +1798,8 @@ SET(DYE_CMD_SRCS
     utils/stringutils.h
     utils/timer.cpp
     utils/timer.h
+    fs/virtdirentry.cpp
+    fs/virtdirentry.h
     fs/virtfile.cpp
     fs/virtfile.h
     fs/virtfileprivate.cpp
