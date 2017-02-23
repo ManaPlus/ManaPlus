@@ -21,7 +21,6 @@
 #include "catch.hpp"
 
 #include "fs/virtdirentry.h"
-#include "fs/virtfs.h"
 #include "fs/virtfsdir.h"
 #include "fs/virtfstools.h"
 #include "fs/virtlist.h"
