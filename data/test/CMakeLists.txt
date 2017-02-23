@@ -15,6 +15,9 @@ SET(FILES
     test.txt
     test2.txt
     test.zip
+    test2.zip
+    test3.zip
+    test4.zip
     testintmap.xml
     units.xml
     )

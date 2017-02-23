@@ -897,6 +897,9 @@ SET(SRCS
     fs/virtlist.h
     fs/virtfs.cpp
     fs/virtfs.h
+    fs/zip.cpp
+    fs/zip.h
+    fs/ziplocalheader.h
     utils/process.cpp
     utils/process.h
     utils/sdl2helper.cpp
@@ -1787,6 +1790,9 @@ SET(DYE_CMD_SRCS
     fs/virtlist.h
     fs/virtfs.cpp
     fs/virtfs.h
+    fs/zip.cpp
+    fs/zip.h
+    fs/ziplocalheader.h
     utils/sdl2helper.cpp
     utils/sdl2helper.h
     utils/sdlcheckutils.cpp

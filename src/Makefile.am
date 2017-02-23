@@ -561,6 +561,9 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtlist.h \
 	      fs/virtfs.cpp \
 	      fs/virtfs.h \
+	      fs/zip.cpp \
+	      fs/zip.h \
+	      fs/ziplocalheader.h \
 	      utils/process.cpp \
 	      utils/process.h \
 	      utils/sdl2helper.cpp \
@@ -1924,6 +1927,7 @@ manaplustests_SOURCES = ${SRC} \
 	      utils/dumplibs_unittest.cc \
 	      utils/checkutils_unittest.cc \
 	      fs/virtfs_unittest.cc \
+	      fs/zip_unittest.cc \
 	      fs/virtfsdir_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/timer_unittest.cc \
