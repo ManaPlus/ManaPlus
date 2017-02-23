@@ -36,6 +36,8 @@ struct ZipLocalHeader final
     {
     }
 
+    A_DELETE_COPY(ZipLocalHeader)
+
     std::string archiveName;
     std::string fileName;
     uint32_t dataOffset;
