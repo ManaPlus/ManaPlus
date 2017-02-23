@@ -25,7 +25,7 @@
 
 #include <string>
 
-struct ZipLocalHeader
+struct ZipLocalHeader final
 {
     ZipLocalHeader() :
         archiveName(),

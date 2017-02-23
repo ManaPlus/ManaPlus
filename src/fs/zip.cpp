@@ -80,7 +80,7 @@ namespace Zip
                 fseek(arcFile, 14, SEEK_CUR);  // + 14
                 // file header pointer on 18
                 readVal(&header->compressSize, 4,
-                    "zip compressed size") // + 4
+                    "zip compressed size")  // + 4
                 // file header pointer on 22
                 // +++ need add endian specific decoding for val32
                 readVal(&header->uncompressSize, 4,
@@ -115,8 +115,10 @@ namespace Zip
                     headers.push_back(header);
                     logger->log(" file name: %s",
                         header->fileName.c_str());
-                    logger->log(" compressed size: %u", header->compressSize);
-                    logger->log(" uncompressed size: %u", header->uncompressSize);
+                    logger->log(" compressed size: %u",
+                        header->compressSize);
+                    logger->log(" uncompressed size: %u",
+                        header->uncompressSize);
                 }
             }
             else if (buf[0] == 0x50 &&
@@ -126,7 +128,7 @@ namespace Zip
             {   // central directory file header
                 // !!! This is quick way for read zip archives. !!!
                 // !!! It ignore modified files in archive. !!!
-                // ignoring central directory entries because all data already read.
+                // ignoring central directory entries
                 break;
             }
             else if (buf[0] == 0x50 &&
@@ -136,7 +138,7 @@ namespace Zip
             {   // end of central directory
                 // !!! This is quick way for read zip archives. !!!
                 // !!! It ignore modified files in archive. !!!
-                // ignoring central directory entries because all data already read.
+                // ignoring end of central directory
                 break;
             }
             else
