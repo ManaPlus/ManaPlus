@@ -34,6 +34,7 @@ struct VirtFile final
     ~VirtFile();
 
     VirtFilePrivate *mPrivate;
+    uint8_t *mBuf;
 };
 
 #endif  // UTILS_VIRTFILE_H

@@ -32,7 +32,7 @@ struct VirtFilePrivate final
 {
     VirtFilePrivate();
 
-    explicit VirtFilePrivate(PHYSFS_file *const file);
+    explicit VirtFilePrivate(PHYSFS_file *restrict const file);
 
     explicit VirtFilePrivate(const int fd);
 
@@ -40,7 +40,10 @@ struct VirtFilePrivate final
 
     ~VirtFilePrivate();
 
+    // physfs fields
     PHYSFS_file *mFile;
+
+    // dirfs fields
     int mFd;
 };
 

@@ -32,7 +32,8 @@ struct ZipLocalHeader final
         fileName(),
         dataOffset(0U),
         compressSize(0U),
-        uncompressSize(0U)
+        uncompressSize(0U),
+        compressed(false)
     {
     }
 
@@ -43,6 +44,7 @@ struct ZipLocalHeader final
     uint32_t dataOffset;
     uint32_t compressSize;
     uint32_t uncompressSize;
+    bool compressed;
 };
 
 #endif  // UTILS_ZIPLOCALHEADER_H

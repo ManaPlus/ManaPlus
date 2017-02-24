@@ -40,7 +40,7 @@ TEST_CASE("Zip readArchiveInfo")
     if (Files::existsLocal(name) == false)
         prefix = "../";
 
-    SECTION("test 1")
+    SECTION("test.zip")
     {
         name = prefix + "data/test/test.zip";
 
@@ -56,7 +56,7 @@ TEST_CASE("Zip readArchiveInfo")
         REQUIRE(headers[1]->uncompressSize == 1959);
     }
 
-    SECTION("test 2")
+    SECTION("test2.zip")
     {
         name = prefix + "data/test/test2.zip";
 
@@ -118,7 +118,7 @@ TEST_CASE("Zip readArchiveInfo")
         REQUIRE(headers[10]->uncompressSize == 306);
     }
 
-    SECTION("test 3")
+    SECTION("test3.zip")
     {
         name = prefix + "data/test/test3.zip";
 
@@ -134,12 +134,121 @@ TEST_CASE("Zip readArchiveInfo")
         REQUIRE(headers[1]->uncompressSize == 306);
     }
 
-    SECTION("test 4")
+    SECTION("test4.zip")
     {
         name = prefix + "data/test/test4.zip";
 
         REQUIRE(Zip::readArchiveInfo(name, headers));
         REQUIRE(headers.size() == 0);
+    }
+
+    delete_all(headers);
+    delete2(logger);
+}
+
+TEST_CASE("Zip readCompressedFile")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    std::vector<ZipLocalHeader*> headers;
+    if (Files::existsLocal(name) == false)
+        prefix = "../";
+
+    SECTION("empty")
+    {
+        REQUIRE_THROWS(Zip::readCompressedFile(nullptr));
+    }
+
+    SECTION("test2.zip")
+    {
+        name = prefix + "data/test/test2.zip";
+
+        REQUIRE(Zip::readArchiveInfo(name, headers));
+        REQUIRE(headers.size() == 11);
+        // test.txt
+        uint8_t *const buf = Zip::readCompressedFile(headers[0]);
+        REQUIRE(buf != nullptr);
+        delete [] buf;
+    }
+
+    delete_all(headers);
+    delete2(logger);
+}
+
+TEST_CASE("Zip readFile")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    std::vector<ZipLocalHeader*> headers;
+    if (Files::existsLocal(name) == false)
+        prefix = "../";
+
+    SECTION("empty")
+    {
+        REQUIRE_THROWS(Zip::readFile(nullptr));
+    }
+
+    SECTION("test.zip")
+    {
+        name = prefix + "data/test/test.zip";
+
+        REQUIRE(Zip::readArchiveInfo(name, headers));
+        REQUIRE(headers.size() == 2);
+        for (int f = 0; f < 2; f ++)
+        {
+            logger->log("test header: %s, %u, %u",
+                headers[f]->fileName.c_str(),
+                headers[f]->compressSize,
+                headers[f]->uncompressSize);
+            uint8_t *const buf = Zip::readFile(headers[f]);
+            REQUIRE(buf != nullptr);
+            delete [] buf;
+        }
+    }
+
+    SECTION("test2.zip")
+    {
+        name = prefix + "data/test/test2.zip";
+
+        REQUIRE(Zip::readArchiveInfo(name, headers));
+        REQUIRE(headers.size() == 11);
+        // test.txt
+        uint8_t *buf = Zip::readFile(headers[0]);
+        REQUIRE(buf != nullptr);
+        const std::string str = std::string(reinterpret_cast<char*>(buf),
+            headers[0]->uncompressSize);
+        REQUIRE(str == "test line 1\ntest line 2");
+        delete [] buf;
+        for (int f = 0; f < 11; f ++)
+        {
+            logger->log("test header: %s, %u, %u",
+                headers[f]->fileName.c_str(),
+                headers[f]->compressSize,
+                headers[f]->uncompressSize);
+            buf = Zip::readFile(headers[f]);
+            REQUIRE(buf != nullptr);
+            delete [] buf;
+        }
+    }
+
+    SECTION("test3.zip")
+    {
+        name = prefix + "data/test/test3.zip";
+
+        REQUIRE(Zip::readArchiveInfo(name, headers));
+        REQUIRE(headers.size() == 2);
+        for (int f = 0; f < 2; f ++)
+        {
+            logger->log("test header: %s, %u, %u",
+                headers[f]->fileName.c_str(),
+                headers[f]->compressSize,
+                headers[f]->uncompressSize);
+            uint8_t *const buf = Zip::readFile(headers[f]);
+            REQUIRE(buf != nullptr);
+            delete [] buf;
+        }
     }
 
     delete_all(headers);

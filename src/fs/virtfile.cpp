@@ -27,11 +27,13 @@
 #include "debug.h"
 
 VirtFile::VirtFile() :
-    mPrivate(nullptr)
+    mPrivate(nullptr),
+    mBuf(nullptr)
 {
 }
 
 VirtFile::~VirtFile()
 {
     delete2(mPrivate);
+    delete [] mBuf;
 }

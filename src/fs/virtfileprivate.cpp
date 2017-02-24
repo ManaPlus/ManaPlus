@@ -21,6 +21,7 @@
 #include "fs/virtfileprivate.h"
 
 #include <unistd.h>
+#include <zlib.h>
 
 #include "debug.h"
 
@@ -36,7 +37,7 @@ VirtFilePrivate::VirtFilePrivate(const int fd) :
 {
 }
 
-VirtFilePrivate::VirtFilePrivate(PHYSFS_file *const file) :
+VirtFilePrivate::VirtFilePrivate(PHYSFS_file *restrict const file) :
     mFile(file),
     mFd(-1)
 {
@@ -45,10 +46,7 @@ VirtFilePrivate::VirtFilePrivate(PHYSFS_file *const file) :
 VirtFilePrivate::~VirtFilePrivate()
 {
     if (mFile != nullptr)
-    {
         PHYSFS_close(mFile);
-        mFile = nullptr;
-    }
     if (mFd != -1)
         close(mFd);
 }

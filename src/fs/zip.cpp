@@ -20,6 +20,7 @@
 
 #include "fs/zip.h"
 
+#include "fs/virtfile.h"
 #include "fs/ziplocalheader.h"
 
 #include "utils/checkutils.h"
@@ -27,6 +28,7 @@
 
 #include <iostream>
 #include <unistd.h>
+#include <zlib.h>
 
 #include "debug.h"
 
@@ -58,6 +60,7 @@ namespace Zip
         size_t cnt = 0U;
         uint8_t *const buf = new uint8_t[65535 + 10];
         uint16_t val16 = 0U;
+        uint16_t method = 0U;
         ZipLocalHeader *header = nullptr;
 
         logger->log("Read archive: %s", archiveName.c_str());
@@ -77,7 +80,13 @@ namespace Zip
                 header = new ZipLocalHeader;
                 header->archiveName = archiveName;
                 // skip useless fields
-                fseek(arcFile, 14, SEEK_CUR);  // + 14
+                fseek(arcFile, 4, SEEK_CUR);  // + 4
+                // file header pointer on 8
+                // +++ need add endian specific decoding for method
+                readVal(&method, 2, "compression method")  // + 2
+                header->compressed = (method != 0);
+                // file header pointer on 10
+                fseek(arcFile, 8, SEEK_CUR);  // + 8
                 // file header pointer on 18
                 readVal(&header->compressSize, 4,
                     "zip compressed size")  // + 4
@@ -115,6 +124,8 @@ namespace Zip
                     headers.push_back(header);
                     logger->log(" file name: %s",
                         header->fileName.c_str());
+                    logger->log(" compression method: %u",
+                        CAST_U32(method));
                     logger->log(" compressed size: %u",
                         header->compressSize);
                     logger->log(" uncompressed size: %u",
@@ -160,4 +171,105 @@ namespace Zip
         return true;
     }
 
+    void reportZlibError(const std::string &text,
+                         const int err)
+    {
+        reportAlways("Zlib error: '%s' in %s",
+            text.c_str(),
+            getZlibError(err).c_str());
+    }
+
+    std::string getZlibError(const int err)
+    {
+        switch (err)
+        {
+            case Z_OK:
+                return std::string();
+            default:
+                return "unknown zlib error";
+        }
+    }
+
+    uint8_t *readCompressedFile(const ZipLocalHeader *restrict const header)
+    {
+        if (header == nullptr)
+        {
+            reportAlways("Zip::readCompressedFile: header is null");
+            return nullptr;
+        }
+        FILE *restrict const arcFile = fopen(header->archiveName.c_str(),
+            "r");
+        if (arcFile == nullptr)
+        {
+            reportAlways("Can't open zip file %s",
+                header->archiveName.c_str());
+            return nullptr;
+        }
+
+        fseek(arcFile, header->dataOffset, SEEK_SET);
+        const uint32_t compressSize = header->compressSize;
+        uint8_t *const buf = new uint8_t[compressSize];
+        if (fread(static_cast<void*>(buf), 1, compressSize, arcFile) !=
+            compressSize)
+        {
+            reportAlways("Read zip compressed file error from archive: %s",
+                header->archiveName.c_str());
+            fclose(arcFile);
+            delete [] buf;
+            return nullptr;
+        }
+        fclose(arcFile);
+        return buf;
+    }
+
+    uint8_t *readFile(const ZipLocalHeader *restrict const header)
+    {
+        if (header == nullptr)
+        {
+            reportAlways("Open zip file error. header is null.");
+            return nullptr;
+        }
+        uint8_t *restrict const in = readCompressedFile(header);
+        if (in == nullptr)
+            return nullptr;
+        if (header->compressed == false)
+            return in;  //  return as is if data not compressed
+        const size_t outSize = header->uncompressSize;
+        uint8_t *restrict const out = new uint8_t[outSize];
+        if (outSize == 0)
+            return out;
+
+        z_stream strm;
+        strm.zalloc = nullptr;
+        strm.zfree = nullptr;
+        strm.opaque = nullptr;
+        strm.next_in = in;
+        strm.avail_in = header->compressSize;
+        strm.next_out = out;
+        strm.avail_out = outSize;
+
+        int ret = inflateInit2(&strm, -MAX_WBITS);
+        if (ret != Z_OK)
+        {
+            reportZlibError(header->archiveName, ret);
+            delete [] in;
+            delete [] out;
+            return nullptr;
+        }
+        ret = inflate(&strm, Z_FINISH);
+//        ret = inflate(&strm, Z_SYNC_FLUSH);
+        if (ret != Z_OK &&
+            ret != Z_STREAM_END)
+        {
+            reportZlibError("file decompression error",
+                ret);
+            inflateEnd(&strm);
+            delete [] in;
+            delete [] out;
+            return nullptr;
+        }
+        inflateEnd(&strm);
+        delete [] in;
+        return out;
+    }
 }  // namespace Zip
