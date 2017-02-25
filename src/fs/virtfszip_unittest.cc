@@ -24,7 +24,6 @@
 #include "fs/virtlist.h"
 #include "fs/virtfszip.h"
 #include "fs/virtzipentry.h"
-#include "fs/ziplocalheader.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
