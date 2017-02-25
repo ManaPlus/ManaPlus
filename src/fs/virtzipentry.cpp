@@ -18,18 +18,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfile.h"
+#include "fs/virtzipentry.h"
 
-#include "fs/virtfileprivate.h"
+#include "fs/ziplocalheader.h"
+
+#include "utils/dtor.h"
 
 #include "debug.h"
 
-VirtFile::VirtFile() :
-    mPrivate(nullptr)
+VirtZipEntry::VirtZipEntry(const std::string &restrict archiveName) :
+    mArchiveName(archiveName),
+    mHeaders()
 {
 }
 
-VirtFile::~VirtFile()
+VirtZipEntry::~VirtZipEntry()
 {
-    delete mPrivate;
+    delete_all(mHeaders);
 }

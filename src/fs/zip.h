@@ -26,13 +26,12 @@
 #include <string>
 #include <vector>
 
-struct VirtFile;
+struct VirtZipEntry;
 struct ZipLocalHeader;
 
 namespace Zip
 {
-    bool readArchiveInfo(const std::string &restrict archiveName,
-                         std::vector<ZipLocalHeader*> &restrict headers);
+    bool readArchiveInfo(VirtZipEntry *const entry);
     std::string getZlibError(const int err);
     void reportZlibError(const std::string &text,
                          const int err);

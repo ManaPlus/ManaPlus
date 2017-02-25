@@ -555,8 +555,6 @@ TEST_CASE("VirtFsDir openRead")
     REQUIRE(file == nullptr);
     file = VirtFsDir::openRead("units.xml");
     REQUIRE(file == nullptr);
-//    file = VirtFsDir::openRead("test");
-//    REQUIRE(file == nullptr);
     file = VirtFsDir::openRead("testQ");
     REQUIRE(file == nullptr);
 
@@ -577,8 +575,6 @@ TEST_CASE("VirtFsDir openRead")
     file = VirtFsDir::openRead("units.xml");
     REQUIRE(file != nullptr);
     VirtFsDir::close(file);
-//    file = VirtFsDir::openRead("test");
-//    REQUIRE(file == nullptr);
     file = VirtFsDir::openRead("testQ");
     REQUIRE(file == nullptr);
 
@@ -594,8 +590,6 @@ TEST_CASE("VirtFsDir openRead")
     REQUIRE(file == nullptr);
     file = VirtFsDir::openRead("units.xml");
     REQUIRE(file == nullptr);
-//    file = VirtFsDir::openRead("test");
-//    REQUIRE(file == nullptr);
     file = VirtFsDir::openRead("testQ");
     REQUIRE(file == nullptr);
 

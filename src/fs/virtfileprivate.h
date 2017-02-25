@@ -36,12 +36,22 @@ struct VirtFilePrivate final
 
     explicit VirtFilePrivate(const int fd);
 
+    VirtFilePrivate(uint8_t *restrict const buf,
+                    const size_t sz);
+
     A_DELETE_COPY(VirtFilePrivate)
 
     ~VirtFilePrivate();
 
     // physfs fields
     PHYSFS_file *mFile;
+
+    // zipfs fields
+    uint8_t *mBuf;
+
+    // zipfs fields
+    size_t mPos;
+    size_t mSize;
 
     // dirfs fields
     int mFd;

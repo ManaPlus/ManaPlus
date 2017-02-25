@@ -25,22 +25,16 @@
 
 #include <string>
 
+struct VirtZipEntry;
+
 struct ZipLocalHeader final
 {
-    ZipLocalHeader() :
-        archiveName(),
-        fileName(),
-        dataOffset(0U),
-        compressSize(0U),
-        uncompressSize(0U),
-        compressed(false)
-    {
-    }
+    ZipLocalHeader();
 
     A_DELETE_COPY(ZipLocalHeader)
 
-    std::string archiveName;
     std::string fileName;
+    VirtZipEntry *zipEntry;
     uint32_t dataOffset;
     uint32_t compressSize;
     uint32_t uncompressSize;

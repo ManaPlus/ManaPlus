@@ -893,12 +893,17 @@ SET(SRCS
     fs/virtfsrwops.h
     fs/virtfstools.cpp
     fs/virtfstools.h
+    fs/virtfszip.cpp
+    fs/virtfszip.h
     fs/virtlist.cpp
     fs/virtlist.h
+    fs/virtzipentry.cpp
+    fs/virtzipentry.h
     fs/virtfs.cpp
     fs/virtfs.h
     fs/zip.cpp
     fs/zip.h
+    fs/ziplocalheader.cpp
     fs/ziplocalheader.h
     utils/process.cpp
     utils/process.h
@@ -1786,12 +1791,17 @@ SET(DYE_CMD_SRCS
     fs/virtfsrwops.h
     fs/virtfstools.cpp
     fs/virtfstools.h
+    fs/virtfszip.cpp
+    fs/virtfszip.h
     fs/virtlist.cpp
     fs/virtlist.h
+    fs/virtzipentry.cpp
+    fs/virtzipentry.h
     fs/virtfs.cpp
     fs/virtfs.h
     fs/zip.cpp
     fs/zip.h
+    fs/ziplocalheader.cpp
     fs/ziplocalheader.h
     utils/sdl2helper.cpp
     utils/sdl2helper.h

@@ -557,12 +557,17 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtfsrwops.h \
 	      fs/virtfstools.cpp \
 	      fs/virtfstools.h \
+	      fs/virtfszip.cpp \
+	      fs/virtfszip.h \
 	      fs/virtlist.cpp \
 	      fs/virtlist.h \
+	      fs/virtzipentry.cpp \
+	      fs/virtzipentry.h \
 	      fs/virtfs.cpp \
 	      fs/virtfs.h \
 	      fs/zip.cpp \
 	      fs/zip.h \
+	      fs/ziplocalheader.cpp \
 	      fs/ziplocalheader.h \
 	      utils/process.cpp \
 	      utils/process.h \
@@ -1929,6 +1934,7 @@ manaplustests_SOURCES = ${SRC} \
 	      fs/virtfs_unittest.cc \
 	      fs/zip_unittest.cc \
 	      fs/virtfsdir_unittest.cc \
+	      fs/virtfszip_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/timer_unittest.cc \
 	      utils/xmlutils_unittest.cc \

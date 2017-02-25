@@ -30,6 +30,7 @@
 #include "fs/virtlist.h"
 
 #include "utils/checkutils.h"
+#include "utils/dtor.h"
 #include "utils/stringutils.h"
 
 #include <dirent.h>
@@ -39,10 +40,6 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
-
-#ifdef ANDROID
-#include "fs/paths.h"
-#endif  // ANDROID
 
 #include "debug.h"
 
@@ -249,6 +246,7 @@ namespace VirtFsDir
 
     void deinit()
     {
+        delete_all(mEntries);
         mEntries.clear();
     }
 
@@ -525,7 +523,7 @@ namespace VirtFsDir
              const uint64_t pos)
     {
         if (file == nullptr)
-            return -1;
+            return 0;
 
         const int fd = file->mPrivate->mFd;
         if (fd == -1)

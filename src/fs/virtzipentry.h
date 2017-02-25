@@ -18,18 +18,28 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfile.h"
+#ifndef UTILS_VIRTZIPENTRY_H
+#define UTILS_VIRTZIPENTRY_H
 
-#include "fs/virtfileprivate.h"
+#include <string>
+#include <vector>
 
-#include "debug.h"
+#include "localconsts.h"
 
-VirtFile::VirtFile() :
-    mPrivate(nullptr)
+struct ZipLocalHeader;
+
+struct VirtZipEntry final
 {
-}
+    VirtZipEntry(const std::string &restrict archiveName);
 
-VirtFile::~VirtFile()
-{
-    delete mPrivate;
-}
+    A_DELETE_COPY(VirtZipEntry)
+
+    ~VirtZipEntry();
+
+    std::string mArchiveName;
+
+    std::vector<ZipLocalHeader*> mHeaders;
+    std::vector<std::string> mDirs;
+};
+
+#endif  // UTILS_VIRTZIPENTRY_H

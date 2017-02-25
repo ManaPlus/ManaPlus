@@ -18,18 +18,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfile.h"
+#include "fs/ziplocalheader.h"
 
-#include "fs/virtfileprivate.h"
+#include "fs/virtzipentry.h"
 
-#include "debug.h"
+#include "localconsts.h"
 
-VirtFile::VirtFile() :
-    mPrivate(nullptr)
+#include <string>
+
+ZipLocalHeader::ZipLocalHeader() :
+    fileName(),
+    zipEntry(nullptr),
+    dataOffset(0U),
+    compressSize(0U),
+    uncompressSize(0U),
+    compressed(false)
 {
-}
-
-VirtFile::~VirtFile()
-{
-    delete mPrivate;
 }

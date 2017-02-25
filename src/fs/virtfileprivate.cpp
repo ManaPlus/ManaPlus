@@ -27,18 +27,37 @@
 
 VirtFilePrivate::VirtFilePrivate() :
     mFile(nullptr),
+    mBuf(nullptr),
+    mPos(0U),
+    mSize(0U),
     mFd(-1)
 {
 }
 
 VirtFilePrivate::VirtFilePrivate(const int fd) :
     mFile(nullptr),
+    mBuf(nullptr),
+    mPos(0U),
+    mSize(0U),
     mFd(fd)
 {
 }
 
 VirtFilePrivate::VirtFilePrivate(PHYSFS_file *restrict const file) :
     mFile(file),
+    mBuf(nullptr),
+    mPos(0U),
+    mSize(0U),
+    mFd(-1)
+{
+}
+
+VirtFilePrivate::VirtFilePrivate(uint8_t *restrict const buf,
+                                 const size_t sz) :
+    mFile(nullptr),
+    mBuf(buf),
+    mPos(0U),
+    mSize(sz),
     mFd(-1)
 {
 }
@@ -49,4 +68,6 @@ VirtFilePrivate::~VirtFilePrivate()
         PHYSFS_close(mFile);
     if (mFd != -1)
         close(mFd);
+    if (mBuf)
+        delete [] mBuf;
 }
