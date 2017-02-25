@@ -81,7 +81,8 @@ namespace VirtFsZip
         }
         if (findLast(newDir, ".zip") == false)
         {
-            reportAlways("Called VirtFsZip::addToSearchPath without zip archive");
+            reportAlways("Called VirtFsZip::addToSearchPath without "
+                "zip archive");
             return false;
         }
         VirtZipEntry *entry = VirtFsZip::searchEntryByArchive(newDir);
@@ -120,7 +121,8 @@ namespace VirtFsZip
         }
         if (findLast(newDir, ".zip") == false)
         {
-            reportAlways("Called VirtFsZip::addToSearchPath without zip archive");
+            reportAlways("Called VirtFsZip::addToSearchPath without "
+                "zip archive");
             return false;
         }
         VirtZipEntry *entry = VirtFsZip::searchEntryByArchive(newDir);

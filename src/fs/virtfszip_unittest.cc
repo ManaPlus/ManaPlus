@@ -229,7 +229,8 @@ TEST_CASE("VirtFsZip removeFromSearchPath")
         REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
             Append_true));
         REQUIRE(VirtFsZip::getEntries().size() == 1);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName == prefix + "test.zip");
+        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+            prefix + "test.zip");
     }
 
     VirtFsZip::deinit();

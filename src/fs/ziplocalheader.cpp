@@ -26,6 +26,8 @@
 
 #include <string>
 
+#include "debug.h"
+
 ZipLocalHeader::ZipLocalHeader() :
     fileName(),
     zipEntry(nullptr),
