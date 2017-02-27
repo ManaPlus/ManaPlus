@@ -50,7 +50,7 @@ void CharDB::load()
 
     XML::Document *doc = new XML::Document(
         paths.getStringValue("charCreationFile"),
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_false);
     const XmlNodePtrConst root = doc->rootNode();
 

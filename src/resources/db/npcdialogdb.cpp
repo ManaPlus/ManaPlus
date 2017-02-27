@@ -151,7 +151,7 @@ void NpcDialogDB::loadXmlFile(const std::string &fileName,
                               const SkipError skipError)
 {
     XML::Document *const doc = new XML::Document(fileName,
-        UseResman_true,
+        UseVirtFs_true,
         skipError);
 
     const XmlNodePtrConst root = doc->rootNode();

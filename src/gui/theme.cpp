@@ -402,7 +402,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     if (!VirtFs::exists(path))
         return nullptr;
     XML::Document *const doc = Loader::getXml(path,
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_true);
     if (!doc)
         return nullptr;
@@ -1007,7 +1007,7 @@ void Theme::loadColors(std::string file)
         file.append("/colors.xml");
 
     XML::Document *const doc = Loader::getXml(resolveThemePath(file),
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_false);
     if (!doc)
         return;
@@ -1216,7 +1216,7 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
     }
     logger->log("loading: " + path);
     XML::Document *const doc = Loader::getXml(path,
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_false);
     if (!doc)
         return nullptr;

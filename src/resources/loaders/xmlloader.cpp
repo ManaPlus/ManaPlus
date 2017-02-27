@@ -35,7 +35,7 @@ namespace
         A_DEFAULT_COPY(ResourceLoader)
 
         const std::string path;
-        const UseResman useResman;
+        const UseVirtFs useResman;
         const SkipError skipError;
 
         static Resource *load(const void *const v)
@@ -54,7 +54,7 @@ namespace
 }  // namespace
 
 XML::Document *Loader::getXml(const std::string &idPath,
-                              const UseResman useResman,
+                              const UseVirtFs useResman,
                               const SkipError skipError)
 {
     ResourceLoader rl = { idPath, useResman, skipError };

@@ -413,7 +413,7 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
     const std::string dyePalettes = (pos != std::string::npos)
         ? particleEffectFile.substr(pos + 1) : "";
     XML::Document *doc = Loader::getXml(particleEffectFile.substr(0, pos),
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_false);
     if (!doc)
         return nullptr;

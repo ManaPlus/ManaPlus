@@ -56,7 +56,7 @@ void SkillUnitDb::load()
 void SkillUnitDb::loadXmlFile(const std::string &fileName,
                               const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, skipError);
+    XML::Document doc(fileName, UseVirtFs_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "skillunits"))

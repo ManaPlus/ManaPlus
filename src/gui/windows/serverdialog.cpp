@@ -480,7 +480,7 @@ void ServerDialog::loadServers(const bool addNew)
 {
     XML::Document doc(std::string(mDir).append("/").append(
         branding.getStringValue("onlineServerFile")),
-        UseResman_false,
+        UseVirtFs_false,
         SkipError_false);
     const XmlNodePtr rootNode = doc.rootNode();
 

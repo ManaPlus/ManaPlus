@@ -190,7 +190,7 @@ static void loadCurrencies(XmlNodePtr parentNode)
 void UnitsDb::loadXmlFile(const std::string &fileName,
                           const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, skipError);
+    XML::Document doc(fileName, UseVirtFs_true, skipError);
     const XmlNodePtrConst root = doc.rootNode();
 
     if (!root || !xmlNameEqual(root, "units"))

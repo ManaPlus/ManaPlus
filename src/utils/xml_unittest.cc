@@ -75,7 +75,7 @@ TEST_CASE("xml doc")
     SECTION("load1")
     {
         XML::Document doc("graphics/gui/browserbox.xml",
-            UseResman_true,
+            UseVirtFs_true,
             SkipError_false);
         REQUIRE(doc.isLoaded() == true);
         REQUIRE(doc.isValid() == true);
@@ -140,7 +140,7 @@ TEST_CASE("xml doc")
     SECTION("properties")
     {
         XML::Document doc("graphics/gui/browserbox.xml",
-            UseResman_true,
+            UseVirtFs_true,
             SkipError_false);
 
         const XmlNodePtr rootNode = doc.rootNode();
@@ -150,7 +150,7 @@ TEST_CASE("xml doc")
     SECTION("for each")
     {
         XML::Document doc("graphics/gui/browserbox.xml",
-            UseResman_true,
+            UseVirtFs_true,
             SkipError_false);
 
         const XmlNodePtr rootNode = doc.rootNode();
@@ -190,7 +190,7 @@ TEST_CASE("xml doc")
     SECTION("child1")
     {
         XML::Document doc("graphics/gui/browserbox.xml",
-            UseResman_true,
+            UseVirtFs_true,
             SkipError_false);
 
         const XmlNodePtr rootNode = doc.rootNode();
@@ -294,7 +294,7 @@ TEST_CASE("xml doc")
 
         // load
         XML::Document doc(tempXmlName,
-            UseResman_false,
+            UseVirtFs_false,
             SkipError_false);
         REQUIRE(doc.isLoaded() == true);
         REQUIRE(doc.isValid() == true);
@@ -334,7 +334,7 @@ TEST_CASE("xml doc")
 
         // load
         XML::Document doc(tempXmlName,
-            UseResman_false,
+            UseVirtFs_false,
             SkipError_false);
         REQUIRE(doc.isLoaded() == true);
         REQUIRE(doc.isValid() == true);

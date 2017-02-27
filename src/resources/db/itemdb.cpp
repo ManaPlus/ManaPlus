@@ -241,7 +241,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
     }
 
     XML::Document doc(fileName,
-        UseResman_true,
+        UseVirtFs_true,
         skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 

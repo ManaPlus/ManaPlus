@@ -248,7 +248,7 @@ class Configuration final : public ConfigurationObject
          * @param useResManager Make use of the resource manager.
          */
         void init(const std::string &filename,
-                  const UseResman useResManager = UseResman_false,
+                  const UseVirtFs useResManager = UseVirtFs_false,
                   const SkipError skipError = SkipError_false);
 
         void reInit();
@@ -383,7 +383,7 @@ class Configuration final : public ConfigurationObject
         DefaultsData *mDefaultsData;
         std::string mDirectory;
         std::string mFilename;
-        UseResman mUseResManager;
+        UseVirtFs mUseResManager;
         bool mUpdated;
 };
 

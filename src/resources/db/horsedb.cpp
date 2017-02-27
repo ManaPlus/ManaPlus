@@ -149,7 +149,7 @@ void HorseDB::loadXmlFile(const std::string &fileName,
                           const SkipError skipError)
 {
     XML::Document doc(fileName,
-        UseResman_true,
+        UseVirtFs_true,
         skipError);
     XmlNodePtrConst rootNode = doc.rootNode();
 

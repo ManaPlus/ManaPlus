@@ -1337,7 +1337,7 @@ SET(SRCS
     enums/simpletypes/tryremovecolors.h
     enums/simpletypes/useargs.h
     enums/simpletypes/usebase64.h
-    enums/simpletypes/useresman.h
+    enums/simpletypes/usevirtfs.h
     enums/simpletypes/visible.h
     statuseffect.cpp
     statuseffect.h

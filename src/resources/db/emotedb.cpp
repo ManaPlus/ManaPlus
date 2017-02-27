@@ -72,7 +72,7 @@ void EmoteDB::load()
 void EmoteDB::loadXmlFile(const std::string &fileName,
                           const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, skipError);
+    XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "emotes"))
@@ -149,7 +149,7 @@ void EmoteDB::loadXmlFile(const std::string &fileName,
 void EmoteDB::loadSpecialXmlFile(const std::string &fileName,
                                  const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, skipError);
+    XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "emotes"))

@@ -55,7 +55,7 @@ void AvatarDB::loadXmlFile(const std::string &fileName,
                            const SkipError skipError)
 {
     XML::Document doc(fileName,
-        UseResman_true,
+        UseVirtFs_true,
         skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 

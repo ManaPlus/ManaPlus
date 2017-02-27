@@ -24,7 +24,7 @@
 #ifdef ENABLE_PUGIXML
 
 #include "enums/simpletypes/skiperror.h"
-#include "enums/simpletypes/useresman.h"
+#include "enums/simpletypes/usevirtfs.h"
 
 #include "utils/xml/pugixml.h"
 

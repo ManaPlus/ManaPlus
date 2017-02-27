@@ -26,7 +26,7 @@
 PRAGMA6(GCC diagnostic push)
 PRAGMA6(GCC diagnostic ignored "-Wunused-const-variable")
 
-defBoolEnum(UseResman);
+defBoolEnum(UseVirtFs);
 
 PRAGMA6(GCC diagnostic pop)
 

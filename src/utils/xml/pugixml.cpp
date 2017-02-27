@@ -58,7 +58,7 @@ namespace XML
     }
 
     Document::Document(const std::string &filename,
-                       const UseResman useResman,
+                       const UseVirtFs useResman,
                        const SkipError skipError) :
         Resource(),
         mDoc(),
@@ -74,7 +74,7 @@ namespace XML
         int size = 0;
         char *data = nullptr;
         valid = true;
-        if (useResman == UseResman_true)
+        if (useResman == UseVirtFs_true)
         {
             data = static_cast<char*>(VirtFs::loadFile(
                 filename.c_str(), size));

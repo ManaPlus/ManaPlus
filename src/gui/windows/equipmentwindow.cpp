@@ -628,7 +628,7 @@ void EquipmentWindow::fillBoxes()
 {
     XML::Document *const doc = new XML::Document(
         paths.getStringValue("equipmentWindowFile"),
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_false);
     const XmlNodePtr root = doc->rootNode();
     if (!root)
@@ -737,7 +737,7 @@ void EquipmentWindow::prepareSlotNames()
 {
     mSlotNames.clear();
     XML::Document doc(paths.getStringValue("equipmentSlotsFile"),
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_false);
     const XmlNodePtrConst root = doc.rootNode();
     if (!root)

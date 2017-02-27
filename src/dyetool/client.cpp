@@ -650,7 +650,7 @@ int Client::gameExec()
                     }
 
                     logger->log("Init paths");
-                    paths.init("paths.xml", UseResman_true);
+                    paths.init("paths.xml", UseVirtFs_true);
                     paths.setDefaultValues(getPathsDefaults());
                     initPaths();
                     TranslationManager::loadCurrentLang();

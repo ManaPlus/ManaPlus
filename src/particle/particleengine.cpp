@@ -137,7 +137,7 @@ Particle *ParticleEngine::addEffect(const std::string &restrict
         ? particleEffectFile.substr(pos + 1) : "";
     XML::Document *doc = Loader::getXml(
         particleEffectFile.substr(0, pos),
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_false);
     if (!doc)
         return nullptr;

@@ -30,7 +30,7 @@
 namespace Loader
 {
     XML::Document *getXml(const std::string &idPath,
-                          const UseResman useResman,
+                          const UseVirtFs useResman,
                           const SkipError skipError) A_WARN_UNUSED;
 
 }  // namespace Loader

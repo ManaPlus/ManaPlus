@@ -34,7 +34,7 @@ void readXmlIntVector(const std::string &fileName,
                       std::vector<int> &arr,
                       const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, skipError);
+    XML::Document doc(fileName, UseVirtFs_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))
@@ -85,7 +85,7 @@ void readXmlStringMap(const std::string &fileName,
                       std::map<std::string, std::string> &arr,
                       const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, skipError);
+    XML::Document doc(fileName, UseVirtFs_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))
@@ -139,7 +139,7 @@ void readXmlIntMap(const std::string &fileName,
                    std::map<int32_t, int32_t> &arr,
                    const SkipError skipError)
 {
-    XML::Document doc(fileName, UseResman_true, skipError);
+    XML::Document doc(fileName, UseVirtFs_true, skipError);
     const XmlNodePtrConst rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))

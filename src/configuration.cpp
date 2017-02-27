@@ -362,7 +362,7 @@ Configuration::Configuration() :
     mDefaultsData(nullptr),
     mDirectory(),
     mFilename(),
-    mUseResManager(UseResman_false),
+    mUseResManager(UseVirtFs_false),
     mUpdated(false)
 {
 #ifdef DEBUG_CONFIG
@@ -397,7 +397,7 @@ void Configuration::unload()
     mConfigPath.clear();
     mDirectory.clear();
     mFilename.clear();
-    mUseResManager = UseResman_false;
+    mUseResManager = UseVirtFs_false;
     ConfigurationObject::clear();
 }
 
@@ -739,7 +739,7 @@ void ConfigurationObject::initFromXML(const XmlNodePtrConst parentNode)
 }
 
 void Configuration::init(const std::string &filename,
-                         const UseResman useResManager,
+                         const UseVirtFs useResManager,
                          const SkipError skipError)
 {
     cleanDefaults();
@@ -749,7 +749,7 @@ void Configuration::init(const std::string &filename,
     mFilename = filename;
     mUseResManager = useResManager;
 
-    if (useResManager == UseResman_true)
+    if (useResManager == UseVirtFs_true)
     {
         mConfigPath = "PhysFS://" + filename;
         mDirectory.clear();

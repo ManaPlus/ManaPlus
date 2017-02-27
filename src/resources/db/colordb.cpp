@@ -79,7 +79,7 @@ void ColorDB::loadHair(const std::string &fileName,
                        const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
-        UseResman_true,
+        UseVirtFs_true,
         skipError);
     const XmlNodePtrConst root = doc->rootNode();
 
@@ -125,7 +125,7 @@ void ColorDB::loadColorLists(const std::string &fileName,
                              const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
-        UseResman_true,
+        UseVirtFs_true,
         skipError);
     const XmlNodePtrConst root = doc->rootNode();
     if (!root)

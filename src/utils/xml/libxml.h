@@ -28,7 +28,7 @@
 #define XML_INCLUDE_DEFINE
 
 #include "enums/simpletypes/skiperror.h"
-#include "enums/simpletypes/useresman.h"
+#include "enums/simpletypes/usevirtfs.h"
 
 #include "utils/xml/libxml.inc"
 
@@ -57,7 +57,7 @@ namespace XML
              * resource manager. Logs errors.
              */
             Document(const std::string &filename,
-                     const UseResman useResman,
+                     const UseVirtFs useResman,
                      const SkipError skipError);
 
             /**

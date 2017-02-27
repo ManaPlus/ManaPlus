@@ -1327,7 +1327,7 @@ int Client::gameExec()
                     }
 
                     logger->log("Init paths");
-                    paths.init("paths.xml", UseResman_true);
+                    paths.init("paths.xml", UseVirtFs_true);
                     paths.setDefaultValues(getPathsDefaults());
                     initPaths();
                     if (!SpriteReference::Empty)
@@ -1857,7 +1857,7 @@ void Client::action(const ActionEvent &event)
 void Client::initFeatures()
 {
     features.init(paths.getStringValue("featuresFile"),
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_true);
     features.setDefaultValues(getFeaturesDefaults());
     settings.fixDeadAnimation = features.getBoolValue("fixDeadAnimation");

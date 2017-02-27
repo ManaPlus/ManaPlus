@@ -95,7 +95,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
         palettes = animationFile.substr(pos + 1);
 
     XML::Document *const doc = Loader::getXml(animationFile.substr(0, pos),
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_false);
     if (!doc)
         return nullptr;
@@ -489,7 +489,7 @@ void SpriteDef::includeSprite(const XmlNodePtr includeNode, const int variant)
     mProcessedFiles.insert(filename);
 
     XML::Document *const doc = Loader::getXml(filename,
-        UseResman_true,
+        UseVirtFs_true,
         SkipError_false);
     if (!doc)
         return;

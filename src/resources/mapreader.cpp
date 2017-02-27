@@ -226,7 +226,7 @@ void MapReader::addLayerToList(const std::string &fileName,
                                const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
-        UseResman_true,
+        UseVirtFs_true,
         skipError);
     XmlNodePtrConst node = doc->rootNode();
     if (!node)
@@ -259,7 +259,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
     BLOCK_START("MapReader::readMap str")
     logger->log("Attempting to read map %s", realFilename.c_str());
 
-    XML::Document doc(realFilename, UseResman_true, SkipError_false);
+    XML::Document doc(realFilename, UseVirtFs_true, SkipError_false);
     if (!doc.isLoaded())
     {
         BLOCK_END("MapReader::readMap str")
@@ -1070,7 +1070,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
         std::string filename = XML::getProperty(node, "source", "");
         filename = resolveRelativePath(path, filename);
 
-        doc = new XML::Document(filename, UseResman_true, SkipError_false);
+        doc = new XML::Document(filename, UseVirtFs_true, SkipError_false);
         node = doc->rootNode();
         if (!node)
         {
