@@ -372,14 +372,16 @@ TEST_CASE("VirtFsPhys getRealDir")
         REQUIRE(VirtFsPhys::getRealDir("test") == "data");
         REQUIRE(VirtFsPhys::getRealDir("test/test.txt") ==
             "data");
-        REQUIRE(VirtFsPhys::getRealDir("dir/hide.png") == "data/test/test.zip");
+        REQUIRE(VirtFsPhys::getRealDir("dir/hide.png") ==
+            "data/test/test.zip");
     }
     else
     {
         REQUIRE(VirtFsPhys::getRealDir("test") == "../data");
         REQUIRE(VirtFsPhys::getRealDir("test/test.txt") ==
             "../data");
-        REQUIRE(VirtFsPhys::getRealDir("dir/hide.png") == "../data/test/test.zip");
+        REQUIRE(VirtFsPhys::getRealDir("dir/hide.png") ==
+            "../data/test/test.zip");
     }
     REQUIRE(VirtFsPhys::exists("dir/hide.png"));
     REQUIRE(VirtFsPhys::getRealDir("zzz") == "");
