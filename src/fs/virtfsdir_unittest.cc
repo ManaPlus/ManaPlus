@@ -93,7 +93,7 @@ TEST_CASE("VirtFsDir addToSearchPath")
 
     SECTION("simple 4")
     {
-        REQUIRE(VirtFsDir::addToSearchPathSilent("dir1",
+        REQUIRE(VirtFsDir::addToSearchPathSilent("dir1\\",
             Append_true,
             SkipError_true));
         REQUIRE(VirtFsDir::addToSearchPathSilent("dir2",
@@ -105,7 +105,7 @@ TEST_CASE("VirtFsDir addToSearchPath")
         REQUIRE(VirtFsDir::getEntries().size() == 2);
         REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[1]->mRootDir == "dir2/");
-        REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir1");
+        REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[1]->mUserDir == "dir2");
     }
 
@@ -169,6 +169,7 @@ TEST_CASE("VirtFsDir removeFromSearchPath")
     SECTION("simple 1")
     {
         REQUIRE_THROWS(VirtFsDir::removeFromSearchPath("dir1"));
+        REQUIRE_THROWS(VirtFsDir::removeFromSearchPath("dir1/"));
     }
 
     SECTION("simple 2")
@@ -185,7 +186,7 @@ TEST_CASE("VirtFsDir removeFromSearchPath")
         REQUIRE(VirtFsDir::addToSearchPathSilent("dir1",
             Append_true,
             SkipError_true));
-        REQUIRE(VirtFsDir::addToSearchPathSilent("dir2/dir3",
+        REQUIRE(VirtFsDir::addToSearchPathSilent("dir2//dir3",
             Append_true,
             SkipError_true));
         REQUIRE(VirtFsDir::addToSearchPathSilent("dir3",
@@ -239,26 +240,26 @@ TEST_CASE("VirtFsDir exists")
 {
     VirtFsDir::init(".");
     logger = new Logger();
-    VirtFsDir::addToSearchPathSilent("data",
+    VirtFsDir::addToSearchPathSilent("data/",
         Append_false,
         SkipError_false);
-    VirtFsDir::addToSearchPathSilent("../data",
+    VirtFsDir::addToSearchPathSilent("..\\data",
         Append_false,
         SkipError_false);
 
-    REQUIRE(VirtFsDir::exists("test/units.xml") == true);
-    REQUIRE(VirtFsDir::exists("test/units123.xml") == false);
+    REQUIRE(VirtFsDir::exists("test//units.xml") == true);
+    REQUIRE(VirtFsDir::exists("test/\\units123.xml") == false);
     REQUIRE(VirtFsDir::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsDir::exists("units.xml") == false);
 
-    VirtFsDir::addToSearchPathSilent("data/test",
+    VirtFsDir::addToSearchPathSilent("data//test",
         Append_false,
         SkipError_false);
-    VirtFsDir::addToSearchPathSilent("../data/test",
+    VirtFsDir::addToSearchPathSilent("..//data\\test",
         Append_false,
         SkipError_false);
 
-    REQUIRE(VirtFsDir::exists("test/units.xml") == true);
+    REQUIRE(VirtFsDir::exists("test\\units.xml") == true);
     REQUIRE(VirtFsDir::exists("test/units123.xml") == false);
     REQUIRE(VirtFsDir::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsDir::exists("units.xml") == true);
@@ -266,7 +267,7 @@ TEST_CASE("VirtFsDir exists")
     VirtFsDir::removeFromSearchPathSilent("data/test");
     VirtFsDir::removeFromSearchPathSilent("../data/test");
 
-    REQUIRE(VirtFsDir::exists("test/units.xml") == true);
+    REQUIRE(VirtFsDir::exists("test\\units.xml") == true);
     REQUIRE(VirtFsDir::exists("test/units123.xml") == false);
     REQUIRE(VirtFsDir::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsDir::exists("units.xml") == false);
@@ -320,11 +321,19 @@ TEST_CASE("VirtFsDir getRealDir")
         REQUIRE(VirtFsDir::getRealDir("test") == "data");
         REQUIRE(VirtFsDir::getRealDir("test/test.txt") ==
             "data");
+        REQUIRE(VirtFsDir::getRealDir("test\\test.txt") ==
+            "data");
+        REQUIRE(VirtFsDir::getRealDir("test//test.txt") ==
+            "data");
     }
     else
     {
         REQUIRE(VirtFsDir::getRealDir("test") == "../data");
         REQUIRE(VirtFsDir::getRealDir("test/test.txt") ==
+            "../data");
+        REQUIRE(VirtFsDir::getRealDir("test\\test.txt") ==
+            "../data");
+        REQUIRE(VirtFsDir::getRealDir("test//test.txt") ==
             "../data");
     }
     REQUIRE(VirtFsDir::getRealDir("zzz") == "");
@@ -340,6 +349,8 @@ TEST_CASE("VirtFsDir getRealDir")
         REQUIRE(VirtFsDir::getRealDir("test") == "data");
         REQUIRE(VirtFsDir::getRealDir("test/test.txt") ==
             "data");
+        REQUIRE(VirtFsDir::getRealDir("test\\test.txt") ==
+            "data");
         REQUIRE(VirtFsDir::getRealDir("test.txt") ==
             "data/test");
     }
@@ -347,6 +358,8 @@ TEST_CASE("VirtFsDir getRealDir")
     {
         REQUIRE(VirtFsDir::getRealDir("test") == "../data");
         REQUIRE(VirtFsDir::getRealDir("test/test.txt") ==
+            "../data");
+        REQUIRE(VirtFsDir::getRealDir("test\\test.txt") ==
             "../data");
         REQUIRE(VirtFsDir::getRealDir("test.txt") ==
             "../data/test");
@@ -412,13 +425,13 @@ TEST_CASE("VirtFsDir enumerateFiles1")
     VirtFsDir::freeList(list);
 
     VirtFsDir::permitLinks(true);
-    list = VirtFsDir::enumerateFiles("test");
+    list = VirtFsDir::enumerateFiles("test/");
     removeTemp(list->names);
     REQUIRE(list->names.size() == cnt2);
     VirtFsDir::freeList(list);
 
     VirtFsDir::permitLinks(false);
-    list = VirtFsDir::enumerateFiles("test");
+    list = VirtFsDir::enumerateFiles("test\\");
     removeTemp(list->names);
     REQUIRE(list->names.size() == cnt1);
     VirtFsDir::freeList(list);
@@ -509,7 +522,7 @@ TEST_CASE("VirtFsDir isDirectory")
     REQUIRE(VirtFsDir::isDirectory("test//dir1") == true);
     REQUIRE(VirtFsDir::isDirectory("test//dir1/") == true);
     REQUIRE(VirtFsDir::isDirectory("test//dir1//") == true);
-    REQUIRE(VirtFsDir::isDirectory("test/dir1/") == true);
+    REQUIRE(VirtFsDir::isDirectory("test\\dir1/") == true);
     REQUIRE(VirtFsDir::isDirectory("test/dir1//") == true);
     REQUIRE(VirtFsDir::isDirectory("testQ") == false);
     REQUIRE(VirtFsDir::isDirectory("testQ/") == false);
@@ -531,6 +544,7 @@ TEST_CASE("VirtFsDir isDirectory")
     REQUIRE(VirtFsDir::isDirectory("test") == true);
     REQUIRE(VirtFsDir::isDirectory("testQ") == false);
     REQUIRE(VirtFsDir::isDirectory("test/dir1") == true);
+    REQUIRE(VirtFsDir::isDirectory("test\\dir1") == true);
 
     VirtFsDir::removeFromSearchPathSilent("data/test");
     VirtFsDir::removeFromSearchPathSilent("../data/test");
@@ -565,6 +579,9 @@ TEST_CASE("VirtFsDir openRead")
     VirtFile *file = nullptr;
 
     file = VirtFsDir::openRead("test/units.xml");
+    REQUIRE(file != nullptr);
+    VirtFsDir::close(file);
+    file = VirtFsDir::openRead("test\\units.xml");
     REQUIRE(file != nullptr);
     VirtFsDir::close(file);
     file = VirtFsDir::openRead("test/units123.xml");

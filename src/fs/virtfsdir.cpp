@@ -60,7 +60,7 @@ namespace VirtFsDir
 {
     namespace
     {
-        static VirtFile *openFile(const std::string &restrict filename,
+        static VirtFile *openFile(std::string filename,
                                   const int mode)
         {
             if (checkPath(filename) == false)
@@ -69,6 +69,7 @@ namespace VirtFsDir
                     filename.c_str());
                 return nullptr;
             }
+            prepareFsPath(filename);
             VirtDirEntry *const entry = searchEntryByPath(filename);
             if (entry == nullptr)
                 return nullptr;
@@ -111,10 +112,11 @@ namespace VirtFsDir
         return nullptr;
     }
 
-    bool addToSearchPathSilent(const std::string &newDir,
+    bool addToSearchPathSilent(std::string newDir,
                                const Append append,
                                const SkipError skipError)
     {
+        prepareFsPath(newDir);
         if (skipError == SkipError_false &&
             Files::existsLocal(newDir) == false)
         {
@@ -152,9 +154,10 @@ namespace VirtFsDir
         return true;
     }
 
-    bool addToSearchPath(const std::string &newDir,
+    bool addToSearchPath(std::string newDir,
                          const Append append)
     {
+        prepareFsPath(newDir);
         if (Files::existsLocal(newDir) == false)
         {
             reportAlways("VirtFsDir::addToSearchPath directory not exists: %s",
@@ -193,6 +196,7 @@ namespace VirtFsDir
 
     bool removeFromSearchPathSilent(std::string oldDir)
     {
+        prepareFsPath(oldDir);
         if (oldDir.find(".zip") != std::string::npos)
         {
             reportAlways("Called removeFromSearchPath with zip archive");
@@ -219,6 +223,7 @@ namespace VirtFsDir
 
     bool removeFromSearchPath(std::string oldDir)
     {
+        prepareFsPath(oldDir);
         if (oldDir.find(".zip") != std::string::npos)
         {
             reportAlways("Called removeFromSearchPath with zip archive");
@@ -269,7 +274,9 @@ namespace VirtFsDir
         mBaseDir = getRealPath(getFileDir(name));
 #endif  // defined(__native_client__)
 
+        prepareFsPath(mBaseDir);
         mUserDir = getHomePath();
+        prepareFsPath(mUserDir);
         initFuncs(&funcs);
     }
 
@@ -294,8 +301,9 @@ namespace VirtFsDir
         return mUserDir.c_str();
     }
 
-    std::string getRealDir(const std::string &restrict filename)
+    std::string getRealDir(std::string filename)
     {
+        prepareFsPath(filename);
         if (checkPath(filename) == false)
         {
             reportAlways("VirtFsDir::exists invalid path: %s",
@@ -312,8 +320,9 @@ namespace VirtFsDir
         return std::string();
     }
 
-    bool exists(const std::string &restrict name)
+    bool exists(std::string name)
     {
+        prepareFsPath(name);
         if (checkPath(name) == false)
         {
             reportAlways("VirtFsDir::exists invalid path: %s",
@@ -329,8 +338,9 @@ namespace VirtFsDir
         return false;
     }
 
-    VirtList *enumerateFiles(const std::string &restrict dirName)
+    VirtList *enumerateFiles(std::string dirName)
     {
+        prepareFsPath(dirName);
         VirtList *const list = new VirtList;
         if (checkPath(dirName) == false)
         {
@@ -382,8 +392,9 @@ namespace VirtFsDir
         return list;
     }
 
-    bool isDirectory(const std::string &restrict dirName)
+    bool isDirectory(std::string dirName)
     {
+        prepareFsPath(dirName);
         if (checkPath(dirName) == false)
         {
             reportAlways("VirtFsDir::isDirectory invalid path: %s",
@@ -407,8 +418,9 @@ namespace VirtFsDir
         return false;
     }
 
-    bool isSymbolicLink(const std::string &restrict name)
+    bool isSymbolicLink(std::string name)
     {
+        prepareFsPath(name);
         if (checkPath(name) == false)
         {
             reportAlways("VirtFsDir::isSymbolicLink invalid path: %s",
@@ -443,16 +455,18 @@ namespace VirtFsDir
         return openFile(filename, O_WRONLY | O_CREAT | O_APPEND);
     }
 
-    bool setWriteDir(const std::string &restrict newDir)
+    bool setWriteDir(std::string newDir)
     {
+        prepareFsPath(newDir);
         mWriteDir = newDir;
         if (findLast(mWriteDir, std::string(dirSeparator)) == false)
             mWriteDir += dirSeparator;
         return true;
     }
 
-    bool mkdir(const std::string &restrict dirname)
+    bool mkdir(std::string dirname)
     {
+        prepareFsPath(dirname);
         if (mWriteDir.empty())
         {
             reportAlways("VirtFsDir::mkdir write dir is empty");
@@ -461,8 +475,9 @@ namespace VirtFsDir
         return mkdir_r((mWriteDir + dirname).c_str()) != -1;
     }
 
-    bool remove(const std::string &restrict filename)
+    bool remove(std::string filename)
     {
+        prepareFsPath(filename);
         if (mWriteDir.empty())
         {
             reportAlways("VirtFsDir::remove write dir is empty");

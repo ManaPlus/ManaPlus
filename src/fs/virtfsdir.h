@@ -40,9 +40,9 @@ namespace VirtFsDir
     VirtDirEntry *searchEntryByPath(const std::string &restrict path);
     const char *getBaseDir();
     const char *getUserDir();
-    bool addToSearchPath(const std::string &newDir,
+    bool addToSearchPath(std::string newDir,
                          const Append append);
-    bool addToSearchPathSilent(const std::string &newDir,
+    bool addToSearchPathSilent(std::string newDir,
                                const Append append,
                                const SkipError skipError);
     bool removeFromSearchPath(std::string oldDir);
@@ -51,18 +51,18 @@ namespace VirtFsDir
     void initFuncs(VirtFsFuncs *restrict const ptr);
     void deinit();
     std::vector<VirtDirEntry*> &getEntries();
-    bool exists(const std::string &restrict name);
-    VirtList *enumerateFiles(const std::string &restrict dir) RETURNS_NONNULL;
-    bool isDirectory(const std::string &restrict dirName);
-    bool isSymbolicLink(const std::string &restrict name);
+    bool exists(std::string name);
+    VirtList *enumerateFiles(std::string dir) RETURNS_NONNULL;
+    bool isDirectory(std::string dirName);
+    bool isSymbolicLink(std::string name);
     void freeList(VirtList *restrict const handle);
     VirtFile *openRead(const std::string &restrict filename);
     VirtFile *openWrite(const std::string &restrict filename);
     VirtFile *openAppend(const std::string &restrict filename);
-    bool setWriteDir(const std::string &restrict newDir);
-    std::string getRealDir(const std::string &restrict filename);
-    bool mkdir(const std::string &restrict dirName);
-    bool remove(const std::string &restrict filename);
+    bool setWriteDir(std::string newDir);
+    std::string getRealDir(std::string filename);
+    bool mkdir(std::string dirName);
+    bool remove(std::string filename);
     void permitLinks(const bool val);
     const char *getLastError();
     int64_t read(VirtFile *restrict const handle,

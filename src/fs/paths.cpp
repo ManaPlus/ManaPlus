@@ -27,6 +27,7 @@
 #include "fs/paths.h"
 #include "fs/virtfs.h"
 
+#include "utils/checkutils.h"
 #include "utils/stringutils.h"
 
 #ifdef USE_X11
@@ -99,6 +100,19 @@ bool checkPath(const std::string &path)
         && path.find("..\\") == std::string::npos
         && path.find("/..") == std::string::npos
         && path.find("\\..") == std::string::npos;
+}
+
+void prepareFsPath(std::string &path)
+{
+    std::string path2 = path;
+    sanitizePath(path);
+// can be enabled for debugging
+//    if (path != path2)
+//    {
+//        reportAlways("Path can be improved: '%s' -> '%s'",
+//            path2.c_str(),
+//            path0.c_str());
+//    }
 }
 
 std::string &fixDirSeparators(std::string &str)

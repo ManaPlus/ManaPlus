@@ -31,6 +31,8 @@ bool isRealPath(const std::string &str) A_WARN_UNUSED;
 
 bool checkPath(const std::string &path) A_WARN_UNUSED;
 
+void prepareFsPath(std::string &path);
+
 std::string &fixDirSeparators(std::string &str);
 
 std::string removeLast(const std::string &str) A_WARN_UNUSED;
