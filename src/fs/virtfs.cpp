@@ -20,6 +20,7 @@
 
 #include "fs/virtfs.h"
 
+#include "fs/virtfsdir.h"
 #include "fs/virtfsphys.h"
 #include "fs/virtfile.h"
 #include "fs/virtfsfuncs.h"
@@ -34,6 +35,7 @@ namespace VirtFs
     void init(const std::string &restrict name)
     {
         VirtFsPhys::init(name);
+        VirtFsDir::init(name);
         updateDirSeparator();
     }
 
@@ -53,12 +55,12 @@ namespace VirtFs
 
     const char *getBaseDir()
     {
-        return VirtFsPhys::getBaseDir();
+        return VirtFsDir::getBaseDir();
     }
 
     const char *getUserDir()
     {
-        return VirtFsPhys::getUserDir();
+        return VirtFsDir::getUserDir();
     }
 
     bool exists(const std::string &restrict name)
