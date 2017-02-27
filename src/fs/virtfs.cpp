@@ -39,7 +39,11 @@ namespace VirtFs
 
     void updateDirSeparator()
     {
-        dirSeparator = VirtFsPhys::getDirSeparator();
+#ifdef WIN32
+        dirSeparator = "\\";
+#else  // WIN32
+        dirSeparator = "/";
+#endif  // WIN32
     }
 
     const char *getDirSeparator()
