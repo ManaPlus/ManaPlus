@@ -50,6 +50,7 @@ namespace
 {
     std::vector<VirtDirEntry*> mEntries;
     std::string mWriteDir;
+    std::string mBaseDir;
     bool mPermitLinks = false;
     VirtFsFuncs funcs;
 }  // namespace
@@ -252,8 +253,21 @@ namespace VirtFsDir
         mEntries.clear();
     }
 
-    void init()
+#if defined(__native_client__)
+    void init(const std::string &restrict name A_UNUSED)
     {
+        mBaseDir = "/";
+#elif defined(ANDROID)
+    void init(const std::string &restrict name A_UNUSED)
+    {
+        mBaseDir = getRealPath(".");
+#else  // defined(__native_client__)
+
+    void init(const std::string &restrict name)
+    {
+        mBaseDir = getRealPath(getFileDir(name));
+#endif  // defined(__native_client__)
+
         initFuncs(&funcs);
     }
 
@@ -266,6 +280,11 @@ namespace VirtFsDir
         ptr->tell = &VirtFsDir::tell;
         ptr->seek = &VirtFsDir::seek;
         ptr->eof = &VirtFsDir::eof;
+    }
+
+    const char *getBaseDir()
+    {
+        return mBaseDir.c_str();
     }
 
     std::string getRealDir(const std::string &restrict filename)

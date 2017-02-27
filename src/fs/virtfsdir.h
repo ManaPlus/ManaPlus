@@ -38,6 +38,7 @@ namespace VirtFsDir
 {
     VirtDirEntry *searchEntryByRoot(const std::string &restrict root);
     VirtDirEntry *searchEntryByPath(const std::string &restrict path);
+    const char *getBaseDir();
     bool addToSearchPath(const std::string &newDir,
                          const Append append);
     bool addToSearchPathSilent(const std::string &newDir,
@@ -45,7 +46,7 @@ namespace VirtFsDir
                                const SkipError skipError);
     bool removeFromSearchPath(std::string oldDir);
     bool removeFromSearchPathSilent(std::string oldDir);
-    void init();
+    void init(const std::string &restrict name);
     void initFuncs(VirtFsFuncs *restrict const ptr);
     void deinit();
     std::vector<VirtDirEntry*> &getEntries();
