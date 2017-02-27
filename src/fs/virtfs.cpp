@@ -22,6 +22,7 @@
 
 #include "fs/virtfsphys.h"
 #include "fs/virtfile.h"
+#include "fs/virtfsfuncs.h"
 #include "fs/virtlist.h"
 
 #include "debug.h"
@@ -157,8 +158,7 @@ namespace VirtFs
     {
         if (file == nullptr)
             return 0;
-        delete file;
-        return 1;
+        return file->funcs->close(file);
     }
 
     int64_t read(VirtFile *restrict const file,
@@ -166,7 +166,7 @@ namespace VirtFs
                  const uint32_t objSize,
                  const uint32_t objCount)
     {
-        return VirtFsPhys::read(file,
+        return file->funcs->read(file,
             buffer,
             objSize,
             objCount);
@@ -177,7 +177,7 @@ namespace VirtFs
                   const uint32_t objSize,
                   const uint32_t objCount)
     {
-        return VirtFsPhys::write(file,
+        return file->funcs->write(file,
             buffer,
             objSize,
             objCount);
@@ -185,23 +185,23 @@ namespace VirtFs
 
     int64_t fileLength(VirtFile *restrict const file)
     {
-        return VirtFsPhys::fileLength(file);
+        return file->funcs->fileLength(file);
     }
 
     int64_t tell(VirtFile *restrict const file)
     {
-        return VirtFsPhys::tell(file);
+        return file->funcs->tell(file);
     }
 
     int seek(VirtFile *restrict const file,
              const uint64_t pos)
     {
-        return VirtFsPhys::seek(file,
+        return file->funcs->seek(file,
             pos);
     }
 
     int eof(VirtFile *restrict const file)
     {
-        return VirtFsPhys::eof(file);
+        return file->funcs->eof(file);
     }
 }  // namespace VirtFs

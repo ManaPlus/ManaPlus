@@ -32,12 +32,15 @@
 
 TEST_CASE("VirtFsDir getEntries")
 {
+    VirtFsDir::init();
     REQUIRE(VirtFsDir::getEntries().empty());
     REQUIRE(VirtFsDir::searchEntryByRoot("test") == nullptr);
+    VirtFsDir::deinit();
 }
 
 TEST_CASE("VirtFsDir addToSearchPath")
 {
+    VirtFsDir::init();
     logger = new Logger();
     SECTION("simple 1")
     {
@@ -153,6 +156,7 @@ TEST_CASE("VirtFsDir addToSearchPath")
 
 TEST_CASE("VirtFsDir removeFromSearchPath")
 {
+    VirtFsDir::init();
     logger = new Logger();
 
     SECTION("simple 1")
@@ -226,6 +230,7 @@ TEST_CASE("VirtFsDir removeFromSearchPath")
 
 TEST_CASE("VirtFsDir exists")
 {
+    VirtFsDir::init();
     logger = new Logger();
     VirtFsDir::addToSearchPathSilent("data",
         Append_false,
@@ -293,6 +298,7 @@ static void removeTemp(StringVect &restrict list)
 
 TEST_CASE("VirtFsDir getRealDir")
 {
+    VirtFsDir::init();
     logger = new Logger();
     REQUIRE(VirtFsDir::getRealDir(".") == "");
     REQUIRE(VirtFsDir::getRealDir("..") == "");
@@ -376,6 +382,7 @@ static bool inList(VirtList *list,
 
 TEST_CASE("VirtFsDir enumerateFiles1")
 {
+    VirtFsDir::init();
     logger = new Logger;
 
     VirtFsDir::addToSearchPathSilent("data",
@@ -417,6 +424,7 @@ TEST_CASE("VirtFsDir enumerateFiles1")
 
 TEST_CASE("VirtFsDir enumerateFiles2")
 {
+    VirtFsDir::init();
     logger = new Logger;
 
     VirtFsDir::addToSearchPathSilent("data/test/dir1",
@@ -440,6 +448,7 @@ TEST_CASE("VirtFsDir enumerateFiles2")
 
 TEST_CASE("VirtFsDir enumerateFiles3")
 {
+    VirtFsDir::init();
     logger = new Logger;
 
     VirtFsDir::addToSearchPathSilent("data/test/dir1",
@@ -469,6 +478,7 @@ TEST_CASE("VirtFsDir enumerateFiles3")
 
 TEST_CASE("VirtFsDir isDirectory")
 {
+    VirtFsDir::init();
     logger = new Logger();
     VirtFsDir::addToSearchPathSilent("data",
         Append_false,
@@ -536,6 +546,7 @@ TEST_CASE("VirtFsDir isDirectory")
 
 TEST_CASE("VirtFsDir openRead")
 {
+    VirtFsDir::init();
     logger = new Logger();
     VirtFsDir::addToSearchPathSilent("data",
         Append_false,
@@ -602,6 +613,7 @@ TEST_CASE("VirtFsDir openRead")
 
 TEST_CASE("VirtFsDir permitLinks")
 {
+    VirtFsDir::init();
     logger = new Logger();
     VirtFsDir::addToSearchPathSilent("data",
         Append_false,
@@ -634,11 +646,13 @@ TEST_CASE("VirtFsDir permitLinks")
 
     VirtFsDir::removeFromSearchPathSilent("data");
     VirtFsDir::removeFromSearchPathSilent("../data");
+    VirtFsDir::deinit();
     delete2(logger);
 }
 
 TEST_CASE("VirtFsDir read")
 {
+    VirtFsDir::init();
     logger = new Logger();
     VirtFsDir::addToSearchPathSilent("data",
         Append_false,
@@ -674,5 +688,6 @@ TEST_CASE("VirtFsDir read")
 
     VirtFsDir::removeFromSearchPathSilent("data");
     VirtFsDir::removeFromSearchPathSilent("../data");
+    VirtFsDir::deinit();
     delete2(logger);
 }

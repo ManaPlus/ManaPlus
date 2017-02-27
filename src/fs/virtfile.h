@@ -24,15 +24,17 @@
 #include "localconsts.h"
 
 struct VirtFilePrivate;
+struct VirtFsFuncs;
 
 struct VirtFile final
 {
-    VirtFile();
+    explicit VirtFile(const VirtFsFuncs *restrict const funcs0);
 
     A_DELETE_COPY(VirtFile)
 
     ~VirtFile();
 
+    const VirtFsFuncs *funcs;
     VirtFilePrivate *mPrivate;
 };
 

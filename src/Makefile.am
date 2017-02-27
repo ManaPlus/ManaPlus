@@ -553,6 +553,7 @@ BASE_SRC += events/actionevent.h \
 	      utils/debugmemoryobject.h \
 	      fs/virtfsdir.cpp \
 	      fs/virtfsdir.h \
+	      fs/virtfsfuncs.h \
 	      fs/virtfsphys.cpp \
 	      fs/virtfsphys.h \
 	      fs/virtfsrwops.cpp \

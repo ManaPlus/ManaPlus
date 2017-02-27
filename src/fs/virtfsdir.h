@@ -31,6 +31,7 @@
 
 struct VirtDirEntry;
 struct VirtFile;
+struct VirtFsFuncs;
 struct VirtList;
 
 namespace VirtFsDir
@@ -44,6 +45,8 @@ namespace VirtFsDir
                                const SkipError skipError);
     bool removeFromSearchPath(std::string oldDir);
     bool removeFromSearchPathSilent(std::string oldDir);
+    void init();
+    void initFuncs(VirtFsFuncs *restrict const ptr);
     void deinit();
     std::vector<VirtDirEntry*> &getEntries();
     bool exists(const std::string &restrict name);

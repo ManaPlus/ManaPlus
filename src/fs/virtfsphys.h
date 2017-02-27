@@ -28,11 +28,14 @@
 #include <string>
 
 struct VirtFile;
+struct VirtFsFuncs;
 struct VirtList;
 
 namespace VirtFsPhys
 {
     void init(const std::string &restrict name);
+    void initFuncs(VirtFsFuncs *restrict const ptr);
+    void initFuncs();
     void updateDirSeparator();
     const char *getDirSeparator();
     const char *getBaseDir();

@@ -31,6 +31,7 @@
 
 struct VirtFile;
 struct VirtList;
+struct VirtFsFuncs;
 struct VirtZipEntry;
 struct ZipLocalHeader;
 
@@ -44,6 +45,8 @@ namespace VirtFsZip
                                const Append append);
     bool removeFromSearchPath(std::string oldDir);
     bool removeFromSearchPathSilent(std::string oldDir);
+    void init();
+    void initFuncs(VirtFsFuncs *restrict const ptr);
     void deinit();
     std::vector<VirtZipEntry*> &getEntries();
     bool exists(const std::string &restrict name);

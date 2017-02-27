@@ -24,6 +24,7 @@
 #include "fs/paths.h"
 #include "fs/virtfile.h"
 #include "fs/virtfileprivate.h"
+#include "fs/virtfsfuncs.h"
 #include "fs/virtlist.h"
 #include "fs/virtzipentry.h"
 #include "fs/zip.h"
@@ -40,6 +41,7 @@ extern const char *dirSeparator;
 namespace
 {
     std::vector<VirtZipEntry*> mEntries;
+    VirtFsFuncs funcs;
 }  // namespace
 
 namespace VirtFsZip
@@ -209,6 +211,22 @@ namespace VirtFsZip
         mEntries.clear();
     }
 
+    void init()
+    {
+        initFuncs(&funcs);
+    }
+
+    void initFuncs(VirtFsFuncs *restrict const ptr)
+    {
+        ptr->close = &VirtFsZip::close;
+        ptr->read = &VirtFsZip::read;
+        ptr->write = &VirtFsZip::write;
+        ptr->fileLength = &VirtFsZip::fileLength;
+        ptr->tell = &VirtFsZip::tell;
+        ptr->seek = &VirtFsZip::seek;
+        ptr->eof = &VirtFsZip::eof;
+    }
+
     std::string getRealDir(const std::string &restrict filename)
     {
         if (checkPath(filename) == false)
@@ -337,7 +355,7 @@ namespace VirtFsZip
             uint8_t *restrict const buf = Zip::readFile(header);
             if (buf == nullptr)
                 return nullptr;
-            VirtFile *restrict const file = new VirtFile;
+            VirtFile *restrict const file = new VirtFile(&funcs);
             file->mPrivate = new VirtFilePrivate(buf,
                 header->uncompressSize);
             return file;

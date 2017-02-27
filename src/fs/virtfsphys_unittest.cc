@@ -32,6 +32,7 @@
 
 TEST_CASE("VirtFsPhys dirSeparator")
 {
+    VirtFsPhys::initFuncs();
     REQUIRE(VirtFs::getDirSeparator() != nullptr);
     REQUIRE(VirtFsPhys::getDirSeparator() ==
         std::string(VirtFs::getDirSeparator()));
@@ -43,16 +44,19 @@ TEST_CASE("VirtFsPhys dirSeparator")
 
 TEST_CASE("VirtFsPhys getBaseDir")
 {
+    VirtFsPhys::initFuncs();
     REQUIRE(VirtFsPhys::getBaseDir() != nullptr);
 }
 
 TEST_CASE("VirtFsPhys getUserDir")
 {
+    VirtFsPhys::initFuncs();
     REQUIRE(VirtFsPhys::getUserDir() != nullptr);
 }
 
 TEST_CASE("VirtFsPhys exists")
 {
+    VirtFsPhys::initFuncs();
     logger = new Logger();
     VirtFsPhys::addDirToSearchPath("data", Append_false);
     VirtFsPhys::addDirToSearchPath("../data", Append_false);
@@ -111,6 +115,7 @@ static void removeTemp(StringVect &restrict list)
 
 TEST_CASE("VirtFsPhys enumerateFiles1")
 {
+    VirtFsPhys::initFuncs();
     logger = new Logger;
 
     VirtFsPhys::addDirToSearchPath("data", Append_false);
@@ -147,6 +152,7 @@ TEST_CASE("VirtFsPhys enumerateFiles1")
 
 TEST_CASE("VirtFsPhys enumerateFiles2")
 {
+    VirtFsPhys::initFuncs();
     logger = new Logger;
 
     VirtFsPhys::addDirToSearchPath("data/test/dir1",
@@ -168,6 +174,7 @@ TEST_CASE("VirtFsPhys enumerateFiles2")
 
 TEST_CASE("VirtFsPhys isDirectory")
 {
+    VirtFsPhys::initFuncs();
     logger = new Logger();
     VirtFsPhys::addDirToSearchPath("data", Append_false);
     VirtFsPhys::addDirToSearchPath("../data", Append_false);
@@ -226,6 +233,7 @@ TEST_CASE("VirtFsPhys isDirectory")
 
 TEST_CASE("VirtFsPhys openRead")
 {
+    VirtFsPhys::initFuncs();
     logger = new Logger();
     VirtFsPhys::addDirToSearchPath("data", Append_false);
     VirtFsPhys::addDirToSearchPath("../data", Append_false);
@@ -298,6 +306,7 @@ TEST_CASE("VirtFsPhys removeZipFromSearchPath")
 
 TEST_CASE("VirtFsPhys getRealDir")
 {
+    VirtFsPhys::initFuncs();
     logger = new Logger();
     REQUIRE(VirtFsPhys::getRealDir(".") == "");
     REQUIRE(VirtFsPhys::getRealDir("..") == "");
@@ -382,6 +391,7 @@ TEST_CASE("VirtFsPhys getRealDir")
 
 TEST_CASE("VirtFsPhys permitLinks")
 {
+    VirtFsPhys::initFuncs();
     logger = new Logger();
     VirtFsPhys::addDirToSearchPath("data", Append_false);
     VirtFsPhys::addDirToSearchPath("../data", Append_false);
@@ -415,6 +425,7 @@ TEST_CASE("VirtFsPhys permitLinks")
 
 TEST_CASE("VirtFsPhys read")
 {
+    VirtFsPhys::initFuncs();
     logger = new Logger();
     VirtFsPhys::addDirToSearchPath("data", Append_false);
     VirtFsPhys::addDirToSearchPath("../data", Append_false);

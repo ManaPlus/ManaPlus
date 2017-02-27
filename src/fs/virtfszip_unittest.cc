@@ -32,12 +32,15 @@
 
 TEST_CASE("VirtFsZip getEntries")
 {
+    VirtFsZip::init();
     REQUIRE(VirtFsZip::getEntries().empty());
     REQUIRE(VirtFsZip::searchEntryByArchive("test.zip") == nullptr);
+    VirtFsZip::deinit();
 }
 
 TEST_CASE("VirtFsZip addToSearchPath")
 {
+    VirtFsZip::init();
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix("data/test/");
@@ -165,6 +168,7 @@ TEST_CASE("VirtFsZip addToSearchPath")
 
 TEST_CASE("VirtFsZip removeFromSearchPath")
 {
+    VirtFsZip::init();
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix("data/test/");
@@ -238,6 +242,7 @@ TEST_CASE("VirtFsZip removeFromSearchPath")
 
 TEST_CASE("VirtFsZip exists")
 {
+    VirtFsZip::init();
     logger = new Logger();
     VirtFsZip::addToSearchPathSilent("data/test/test2.zip",
         Append_false);
@@ -281,6 +286,7 @@ TEST_CASE("VirtFsZip exists")
 
 TEST_CASE("VirtFsZip getRealDir")
 {
+    VirtFsZip::init();
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix("data/test/");
@@ -332,6 +338,7 @@ static bool inList(VirtList *list,
 
 TEST_CASE("VirtFsZip enumerateFiles1")
 {
+    VirtFsZip::init();
     logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix("data/test/");
@@ -356,6 +363,7 @@ TEST_CASE("VirtFsZip enumerateFiles1")
 
 TEST_CASE("VirtFsZip enumerateFiles2")
 {
+    VirtFsZip::init();
     logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix("data/test/");
@@ -391,6 +399,7 @@ TEST_CASE("VirtFsZip enumerateFiles2")
 
 TEST_CASE("VirtFsZip isDirectory")
 {
+    VirtFsZip::init();
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix("data/test/");
@@ -476,6 +485,7 @@ TEST_CASE("VirtFsZip isDirectory")
 
 TEST_CASE("VirtFsZip openRead")
 {
+    VirtFsZip::init();
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix("data/test/");
@@ -543,6 +553,7 @@ TEST_CASE("VirtFsZip openRead")
 
 TEST_CASE("VirtFsZip read")
 {
+    VirtFsZip::init();
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix("data/test/");
@@ -667,5 +678,6 @@ TEST_CASE("VirtFsZip read")
     VirtFsZip::close(file);
     free(buffer);
     VirtFsZip::removeFromSearchPathSilent(prefix + "test2.zip");
+    VirtFsZip::deinit();
     delete2(logger);
 }

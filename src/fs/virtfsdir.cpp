@@ -27,6 +27,7 @@
 #include "fs/virtfs.h"
 #include "fs/virtfile.h"
 #include "fs/virtfileprivate.h"
+#include "fs/virtfsfuncs.h"
 #include "fs/virtlist.h"
 
 #include "utils/checkutils.h"
@@ -50,6 +51,7 @@ namespace
     std::vector<VirtDirEntry*> mEntries;
     std::string mWriteDir;
     bool mPermitLinks = false;
+    VirtFsFuncs funcs;
 }  // namespace
 
 namespace VirtFsDir
@@ -79,7 +81,7 @@ namespace VirtFsDir
                     filename.c_str());
                 return nullptr;
             }
-            VirtFile *restrict const file = new VirtFile;
+            VirtFile *restrict const file = new VirtFile(&funcs);
             file->mPrivate = new VirtFilePrivate(fd);
 
             return file;
@@ -248,6 +250,22 @@ namespace VirtFsDir
     {
         delete_all(mEntries);
         mEntries.clear();
+    }
+
+    void init()
+    {
+        initFuncs(&funcs);
+    }
+
+    void initFuncs(VirtFsFuncs *restrict const ptr)
+    {
+        ptr->close = &VirtFsDir::close;
+        ptr->read = &VirtFsDir::read;
+        ptr->write = &VirtFsDir::write;
+        ptr->fileLength = &VirtFsDir::fileLength;
+        ptr->tell = &VirtFsDir::tell;
+        ptr->seek = &VirtFsDir::seek;
+        ptr->eof = &VirtFsDir::eof;
     }
 
     std::string getRealDir(const std::string &restrict filename)

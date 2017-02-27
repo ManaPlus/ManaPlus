@@ -22,6 +22,7 @@
 
 #include "fs/virtfile.h"
 #include "fs/virtfileprivate.h"
+#include "fs/virtfsfuncs.h"
 #include "fs/virtlist.h"
 
 #include "utils/checkutils.h"
@@ -38,6 +39,7 @@
 namespace
 {
     const char *dirSeparator = nullptr;
+    VirtFsFuncs funcs;
 }  // namespace
 
 namespace VirtFsPhys
@@ -63,6 +65,23 @@ namespace VirtFsPhys
         }
         updateDirSeparator();
         atexit(reinterpret_cast<void(*)()>(PHYSFS_deinit));
+        initFuncs(&funcs);
+    }
+
+    void initFuncs()
+    {
+        initFuncs(&funcs);
+    }
+
+    void initFuncs(VirtFsFuncs *restrict const ptr)
+    {
+        ptr->close = &VirtFsPhys::close;
+        ptr->read = &VirtFsPhys::read;
+        ptr->write = &VirtFsPhys::write;
+        ptr->fileLength = &VirtFsPhys::fileLength;
+        ptr->tell = &VirtFsPhys::tell;
+        ptr->seek = &VirtFsPhys::seek;
+        ptr->eof = &VirtFsPhys::eof;
     }
 
     void updateDirSeparator()
@@ -126,7 +145,7 @@ namespace VirtFsPhys
             filename.c_str());
         if (!handle)
             return nullptr;
-        VirtFile *restrict const file = new VirtFile;
+        VirtFile *restrict const file = new VirtFile(&funcs);
         file->mPrivate = new VirtFilePrivate(handle);
         return file;
     }
@@ -137,7 +156,7 @@ namespace VirtFsPhys
             filename.c_str());
         if (!handle)
             return nullptr;
-        VirtFile *restrict const file = new VirtFile;
+        VirtFile *restrict const file = new VirtFile(&funcs);
         file->mPrivate = new VirtFilePrivate(handle);
         return file;
     }
@@ -148,7 +167,7 @@ namespace VirtFsPhys
             filename.c_str());
         if (!handle)
             return nullptr;
-        VirtFile *restrict const file = new VirtFile;
+        VirtFile *restrict const file = new VirtFile(&funcs);
         file->mPrivate = new VirtFilePrivate(handle);
         return file;
     }

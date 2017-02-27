@@ -21,10 +21,12 @@
 #include "fs/virtfile.h"
 
 #include "fs/virtfileprivate.h"
+#include "fs/virtfsfuncs.h"
 
 #include "debug.h"
 
-VirtFile::VirtFile() :
+VirtFile::VirtFile(const VirtFsFuncs *restrict const funcs0) :
+    funcs(funcs0),
     mPrivate(nullptr)
 {
 }
