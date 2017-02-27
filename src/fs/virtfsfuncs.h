@@ -42,6 +42,8 @@ struct VirtFsFuncs final
     {
     }
 
+    A_DELETE_COPY(VirtFsFuncs)
+
     int (*close) (VirtFile *restrict const file);
     int64_t (*read) (VirtFile *restrict const file,
                      void *restrict const buffer,
