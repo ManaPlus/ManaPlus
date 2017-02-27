@@ -20,6 +20,7 @@
 
 #include "catch.hpp"
 
+#include "fs/paths.h"
 #include "fs/virtfs.h"
 #include "fs/virtfsphys.h"
 #include "fs/virtfstools.h"
@@ -52,6 +53,7 @@ TEST_CASE("VirtFsPhys getUserDir")
 {
     VirtFsPhys::initFuncs();
     REQUIRE(VirtFsPhys::getUserDir() != nullptr);
+    REQUIRE(VirtFsPhys::getUserDir() == getHomePath());
 }
 
 TEST_CASE("VirtFsPhys exists")

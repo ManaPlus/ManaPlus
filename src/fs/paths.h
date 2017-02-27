@@ -47,4 +47,6 @@ std::string getPackageDir() A_WARN_UNUSED;
 
 void setPackageDir(const std::string &dir);
 
+std::string getHomePath();
+
 #endif  // UTILS_PATHS_H

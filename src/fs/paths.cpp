@@ -47,6 +47,11 @@
 #include <limits.h>
 #endif  // WIN32
 
+#ifndef WIN32
+#include <sys/types.h>
+#include <pwd.h>
+#endif  // WIN32
+
 #ifdef ANDROID
 #ifdef USE_SDL2
 #include <SDL_system.h>
@@ -200,6 +205,33 @@ std::string getPicturesDir()
 #else  // WIN32
 
     return std::string(VirtFs::getUserDir()).append("Desktop");
+#endif  // WIN32
+}
+
+std::string getHomePath()
+{
+#ifdef WIN32
+    return getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
+#else
+    const char *path = getenv("HOME");
+    if (path == nullptr)
+    {
+        uid_t uid = getuid();
+        struct passwd *pw;
+
+        pw = getpwuid(uid);
+        if (pw != NULL &&
+            pw->pw_dir != nullptr)
+        {
+            path = pw->pw_dir;
+        }
+        if (path == nullptr)
+            return "/";
+    }
+    std::string dir = path;
+    if (findLast(dir, "/") == false)
+        dir += "/";
+    return dir;
 #endif  // WIN32
 }
 
