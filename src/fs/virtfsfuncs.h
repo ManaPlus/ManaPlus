@@ -29,8 +29,19 @@
 
 struct VirtFile;
 
-struct VirtFsFuncs
+struct VirtFsFuncs final
 {
+    VirtFsFuncs() :
+        close(nullptr),
+        read(nullptr),
+        write(nullptr),
+        fileLength(nullptr),
+        tell(nullptr),
+        seek(nullptr),
+        eof(nullptr)
+    {
+    }
+
     int (*close) (VirtFile *restrict const file);
     int64_t (*read) (VirtFile *restrict const file,
                      void *restrict const buffer,
