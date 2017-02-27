@@ -147,6 +147,7 @@ namespace VirtFs
 
     bool deinit()
     {
+        VirtFsDir::deinit();
         return VirtFsPhys::deinit();
     }
 
