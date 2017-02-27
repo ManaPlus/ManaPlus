@@ -25,6 +25,7 @@
 #include "fs/paths.h"
 #include "fs/virtfs.h"
 #include "fs/virtfsdir.h"
+#include "fs/virtfsphys.h"
 #include "fs/virtlist.h"
 
 #include "utils/stringutils.h"
@@ -236,5 +237,21 @@ namespace VirtFsDir
                 list.push_back(*i);
         }
         VirtFsDir::freeList(fonts);
+    }
+}  // namespace VirtFs
+
+// +++ temporary add it here
+namespace VirtFsPhys
+{
+    void getFiles(const std::string &path,
+                  StringVect &list)
+    {
+        VirtList *const fonts = VirtFsPhys::enumerateFiles(path);
+        FOR_EACH (StringVectCIter, i, fonts->names)
+        {
+            if (!VirtFsPhys::isDirectory(path + dirSeparator + *i))
+                list.push_back(*i);
+        }
+        VirtFsPhys::freeList(fonts);
     }
 }  // namespace VirtFs

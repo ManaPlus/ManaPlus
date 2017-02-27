@@ -58,4 +58,11 @@ namespace VirtFsDir
                   StringVect &list);
 }  // namespace VirtFs
 
+// +++ temporary add it here
+namespace VirtFsPhys
+{
+    void getFiles(const std::string &path,
+                  StringVect &list);
+}  // namespace VirtFs
+
 #endif  // UTILS_VIRTFSTOOLS_H

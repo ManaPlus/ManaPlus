@@ -553,6 +553,8 @@ BASE_SRC += events/actionevent.h \
 	      utils/debugmemoryobject.h \
 	      fs/virtfsdir.cpp \
 	      fs/virtfsdir.h \
+	      fs/virtfsphys.cpp \
+	      fs/virtfsphys.h \
 	      fs/virtfsrwops.cpp \
 	      fs/virtfsrwops.h \
 	      fs/virtfstools.cpp \
@@ -1932,6 +1934,7 @@ manaplustests_SOURCES = ${SRC} \
 	      utils/dumplibs_unittest.cc \
 	      utils/checkutils_unittest.cc \
 	      fs/virtfs_unittest.cc \
+	      fs/virtfsphys_unittest.cc \
 	      fs/zip_unittest.cc \
 	      fs/virtfsdir_unittest.cc \
 	      fs/virtfszip_unittest.cc \
