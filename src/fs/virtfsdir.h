@@ -39,6 +39,7 @@ namespace VirtFsDir
     VirtDirEntry *searchEntryByRoot(const std::string &restrict root);
     VirtDirEntry *searchEntryByPath(const std::string &restrict path);
     const char *getBaseDir();
+    const char *getUserDir();
     bool addToSearchPath(const std::string &newDir,
                          const Append append);
     bool addToSearchPathSilent(const std::string &newDir,

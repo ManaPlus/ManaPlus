@@ -51,6 +51,7 @@ namespace
     std::vector<VirtDirEntry*> mEntries;
     std::string mWriteDir;
     std::string mBaseDir;
+    std::string mUserDir;
     bool mPermitLinks = false;
     VirtFsFuncs funcs;
 }  // namespace
@@ -268,6 +269,7 @@ namespace VirtFsDir
         mBaseDir = getRealPath(getFileDir(name));
 #endif  // defined(__native_client__)
 
+        mUserDir = getHomePath();
         initFuncs(&funcs);
     }
 
@@ -285,6 +287,11 @@ namespace VirtFsDir
     const char *getBaseDir()
     {
         return mBaseDir.c_str();
+    }
+
+    const char *getUserDir()
+    {
+        return mUserDir.c_str();
     }
 
     std::string getRealDir(const std::string &restrict filename)
