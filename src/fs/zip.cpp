@@ -20,6 +20,7 @@
 
 #include "fs/zip.h"
 
+#include "fs/paths.h"
 #include "fs/virtzipentry.h"
 #include "fs/ziplocalheader.h"
 
@@ -123,6 +124,7 @@ namespace Zip
                 buf[fileNameLen] = 0;
                 header->fileName = std::string(
                     reinterpret_cast<char*>(buf));
+                prepareFsPath(header->fileName);
                 header->dataOffset = ftell(arcFile) + extraFieldLen;
                 fseek(arcFile, extraFieldLen + header->compressSize, SEEK_CUR);
                 // pointer on 30 + fileNameLen + extraFieldLen + compressSize

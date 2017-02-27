@@ -50,7 +50,7 @@ TEST_CASE("VirtFsZip addToSearchPath")
 
     SECTION("simple 1")
     {
-        REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
+        REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "/test.zip",
             Append_false));
         REQUIRE(VirtFsZip::searchEntryByArchive(
             prefix + "test.zip") != nullptr);
@@ -63,7 +63,7 @@ TEST_CASE("VirtFsZip addToSearchPath")
 
     SECTION("simple 2")
     {
-        REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
+        REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "\\test.zip",
             Append_true));
         REQUIRE(VirtFsZip::searchEntryByArchive(
             prefix + "test.zip") != nullptr);
@@ -212,7 +212,7 @@ TEST_CASE("VirtFsZip removeFromSearchPath")
             prefix + "test3.zip");
         REQUIRE(VirtFsZip::getEntries()[1]->mArchiveName ==
             prefix + "test2.zip");
-        REQUIRE(VirtFsZip::removeFromSearchPath(prefix + "test2.zip"));
+        REQUIRE(VirtFsZip::removeFromSearchPath(prefix + "//test2.zip"));
         REQUIRE_THROWS(VirtFsZip::removeFromSearchPath(prefix + "test2.zip"));
         REQUIRE(VirtFsZip::getEntries().size() == 1);
         REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
@@ -221,13 +221,13 @@ TEST_CASE("VirtFsZip removeFromSearchPath")
 
     SECTION("simple 4")
     {
-        REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
+        REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "\\test.zip",
             Append_true));
         REQUIRE(VirtFsZip::getEntries().size() == 1);
         REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
             prefix + "test.zip");
         REQUIRE_THROWS(VirtFsZip::removeFromSearchPath(prefix + "test2.zip"));
-        REQUIRE(VirtFsZip::removeFromSearchPath(prefix + "test.zip"));
+        REQUIRE(VirtFsZip::removeFromSearchPath(prefix + "\\test.zip"));
         REQUIRE(VirtFsZip::getEntries().size() == 0);
         REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
             Append_true));
@@ -244,12 +244,12 @@ TEST_CASE("VirtFsZip exists")
 {
     VirtFsZip::init();
     logger = new Logger();
-    VirtFsZip::addToSearchPathSilent("data/test/test2.zip",
+    VirtFsZip::addToSearchPathSilent("data\\test/test2.zip",
         Append_false);
-    VirtFsZip::addToSearchPathSilent("../data/test/test2.zip",
+    VirtFsZip::addToSearchPathSilent("../data\\test/test2.zip",
         Append_false);
 
-    REQUIRE(VirtFsZip::exists("dir2/units.xml") == true);
+    REQUIRE(VirtFsZip::exists("dir2//units.xml") == true);
     REQUIRE(VirtFsZip::exists("test/units123.xml") == false);
     REQUIRE(VirtFsZip::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsZip::exists("units1.xml") == false);
@@ -261,7 +261,7 @@ TEST_CASE("VirtFsZip exists")
     VirtFsZip::addToSearchPathSilent("../data/test/test.zip",
         Append_false);
 
-    REQUIRE(VirtFsZip::exists("dir2/units.xml") == true);
+    REQUIRE(VirtFsZip::exists("dir2\\units.xml") == true);
     REQUIRE(VirtFsZip::exists("test/units123.xml") == false);
     REQUIRE(VirtFsZip::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsZip::exists("units1.xml") == false);
@@ -271,11 +271,11 @@ TEST_CASE("VirtFsZip exists")
     VirtFsZip::removeFromSearchPathSilent("data/test/test2.zip");
     VirtFsZip::removeFromSearchPathSilent("../data/test/test2.zip");
 
-    REQUIRE(VirtFsZip::exists("dir2/units.xml") == false);
+    REQUIRE(VirtFsZip::exists("dir2//units.xml") == false);
     REQUIRE(VirtFsZip::exists("test/units123.xml") == false);
     REQUIRE(VirtFsZip::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsZip::exists("units1.xml") == false);
-    REQUIRE(VirtFsZip::exists("dir/hide.png") == true);
+    REQUIRE(VirtFsZip::exists("dir/\\/hide.png") == true);
     REQUIRE(VirtFsZip::exists("dir/brimmedhat.png") == true);
 
     REQUIRE_THROWS(VirtFsZip::exists("test/../units.xml"));
@@ -298,17 +298,17 @@ TEST_CASE("VirtFsZip getRealDir")
     REQUIRE(VirtFsZip::getRealDir(".") == "");
     REQUIRE(VirtFsZip::getRealDir("..") == "");
     REQUIRE(VirtFsZip::getRealDir("test.txt") == prefix + "test2.zip");
-    REQUIRE(VirtFsZip::getRealDir("dir/dye.png") ==
+    REQUIRE(VirtFsZip::getRealDir("dir\\dye.png") ==
         prefix + "test2.zip");
     REQUIRE(VirtFsZip::getRealDir("zzz") == "");
 
     VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
         Append_false);
-    REQUIRE(VirtFsZip::getRealDir("dir/dye.png") ==
+    REQUIRE(VirtFsZip::getRealDir("dir//dye.png") ==
         prefix + "test2.zip");
-    REQUIRE(VirtFsZip::getRealDir("dir/hide.png") ==
+    REQUIRE(VirtFsZip::getRealDir("dir///hide.png") ==
         prefix + "test.zip");
-    REQUIRE(VirtFsZip::getRealDir("dir/brimmedhat.png") ==
+    REQUIRE(VirtFsZip::getRealDir("dir\\\\brimmedhat.png") ==
         prefix + "test.zip");
     REQUIRE(VirtFsZip::getRealDir("zzz") == "");
 
@@ -316,7 +316,7 @@ TEST_CASE("VirtFsZip getRealDir")
 
     REQUIRE(VirtFsZip::getRealDir("dir/brimmedhat.png") == "");
     REQUIRE(VirtFsZip::getRealDir("test.txt") == prefix + "test2.zip");
-    REQUIRE(VirtFsZip::getRealDir("dir/dye.png") ==
+    REQUIRE(VirtFsZip::getRealDir("dir//dye.png") ==
         prefix + "test2.zip");
     REQUIRE(VirtFsZip::getRealDir("zzz") == "");
 
@@ -341,7 +341,7 @@ TEST_CASE("VirtFsZip enumerateFiles1")
     VirtFsZip::init();
     logger = new Logger;
     std::string name("data/test/test.zip");
-    std::string prefix("data/test/");
+    std::string prefix("data\\test/");
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
@@ -366,7 +366,7 @@ TEST_CASE("VirtFsZip enumerateFiles2")
     VirtFsZip::init();
     logger = new Logger;
     std::string name("data/test/test.zip");
-    std::string prefix("data/test/");
+    std::string prefix("data//test/");
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
@@ -409,74 +409,73 @@ TEST_CASE("VirtFsZip isDirectory")
     VirtFsZip::addToSearchPathSilent(prefix + "test2.zip",
         Append_false);
 
-// +++ need uncomment this lines after path sanitization will be added
     REQUIRE(VirtFsZip::isDirectory("dir2/units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("dir2/units.xml/") == false);
-//    REQUIRE(VirtFsZip::isDirectory("dir2//units.xml") == false);
+    REQUIRE(VirtFsZip::isDirectory("dir2//units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("dir2/units123.xml") == false);
-//    REQUIRE(VirtFsZip::isDirectory("dir2//units123.xml") == false);
+    REQUIRE(VirtFsZip::isDirectory("dir2//units123.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("tesQ/units.xml") == false);
-//    REQUIRE(VirtFsZip::isDirectory("tesQ//units.xml") == false);
+    REQUIRE(VirtFsZip::isDirectory("tesQ//units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("dir") == true);
-//    REQUIRE(VirtFsZip::isDirectory("dir2/") == true);
-//    REQUIRE(VirtFsZip::isDirectory("dir2//") == true);
+    REQUIRE(VirtFsZip::isDirectory("dir2/") == true);
+    REQUIRE(VirtFsZip::isDirectory("dir2//") == true);
     REQUIRE(VirtFsZip::isDirectory("dir/1") == true);
-//    REQUIRE(VirtFsZip::isDirectory("dir//1") == true);
-//    REQUIRE(VirtFsZip::isDirectory("dir//1/") == true);
+    REQUIRE(VirtFsZip::isDirectory("dir//1") == true);
+    REQUIRE(VirtFsZip::isDirectory("dir\\1/") == true);
     REQUIRE(VirtFsZip::isDirectory("dir/1") == true);
     REQUIRE(VirtFsZip::isDirectory("dir/1/zzz") == false);
-//    REQUIRE(VirtFsZip::isDirectory("test/dir1//") == false);
+    REQUIRE(VirtFsZip::isDirectory("test/dir1\\") == false);
     REQUIRE(VirtFsZip::isDirectory("testQ") == false);
     REQUIRE(VirtFsZip::isDirectory("testQ/") == false);
-//    REQUIRE(VirtFsZip::isDirectory("testQ//") == false);
+    REQUIRE(VirtFsZip::isDirectory("testQ//") == false);
 
     VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
         Append_false);
 
     REQUIRE(VirtFsZip::isDirectory("dir2/units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("dir2/units.xml/") == false);
-//    REQUIRE(VirtFsZip::isDirectory("dir2//units.xml") == false);
+    REQUIRE(VirtFsZip::isDirectory("dir2\\units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("dir2/units123.xml") == false);
-//    REQUIRE(VirtFsZip::isDirectory("dir2//units123.xml") == false);
+    REQUIRE(VirtFsZip::isDirectory("dir2//units123.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("tesQ/units.xml") == false);
-//    REQUIRE(VirtFsZip::isDirectory("tesQ//units.xml") == false);
+    REQUIRE(VirtFsZip::isDirectory("tesQ//units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("dir") == true);
     REQUIRE(VirtFsZip::isDirectory("dir2/") == true);
-//    REQUIRE(VirtFsZip::isDirectory("dir2//") == true);
+    REQUIRE(VirtFsZip::isDirectory("dir2\\") == true);
     REQUIRE(VirtFsZip::isDirectory("dir/1") == true);
-//    REQUIRE(VirtFsZip::isDirectory("dir//1") == true);
-//    REQUIRE(VirtFsZip::isDirectory("dir//1/") == true);
+    REQUIRE(VirtFsZip::isDirectory("dir//1") == true);
+    REQUIRE(VirtFsZip::isDirectory("dir//1/") == true);
     REQUIRE(VirtFsZip::isDirectory("dir/1") == true);
     REQUIRE(VirtFsZip::isDirectory("dir/1/zzz") == false);
-//    REQUIRE(VirtFsZip::isDirectory("test/dir1//") == false);
+    REQUIRE(VirtFsZip::isDirectory("test/dir1//") == false);
     REQUIRE(VirtFsZip::isDirectory("testQ") == false);
     REQUIRE(VirtFsZip::isDirectory("testQ/") == false);
-//    REQUIRE(VirtFsZip::isDirectory("testQ//") == false);
+    REQUIRE(VirtFsZip::isDirectory("testQ//") == false);
 
     VirtFsZip::removeFromSearchPathSilent(prefix + "test2.zip");
 
     REQUIRE(VirtFsZip::isDirectory("dir2/units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("dir2/units.xml/") == false);
-//    REQUIRE(VirtFsZip::isDirectory("dir2//units.xml") == false);
+    REQUIRE(VirtFsZip::isDirectory("dir2//units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("dir2/units123.xml") == false);
-//    REQUIRE(VirtFsZip::isDirectory("dir2//units123.xml") == false);
+    REQUIRE(VirtFsZip::isDirectory("dir2//units123.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("tesQ/units.xml") == false);
-//    REQUIRE(VirtFsZip::isDirectory("tesQ//units.xml") == false);
+    REQUIRE(VirtFsZip::isDirectory("tesQ//units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("units.xml") == false);
     REQUIRE(VirtFsZip::isDirectory("dir") == true);
     REQUIRE(VirtFsZip::isDirectory("dir2/") == false);
-//    REQUIRE(VirtFsZip::isDirectory("dir2//") == false);
+    REQUIRE(VirtFsZip::isDirectory("dir2//") == false);
     REQUIRE(VirtFsZip::isDirectory("dir/1") == false);
-//    REQUIRE(VirtFsZip::isDirectory("dir//1") == false);
-//    REQUIRE(VirtFsZip::isDirectory("dir//1/") == false);
+    REQUIRE(VirtFsZip::isDirectory("dir\\1") == false);
+    REQUIRE(VirtFsZip::isDirectory("dir//1/") == false);
     REQUIRE(VirtFsZip::isDirectory("dir/1") == false);
     REQUIRE(VirtFsZip::isDirectory("dir/1/zzz") == false);
-//    REQUIRE(VirtFsZip::isDirectory("test/dir1//") == false);
+    REQUIRE(VirtFsZip::isDirectory("test/dir1//") == false);
     REQUIRE(VirtFsZip::isDirectory("testQ") == false);
     REQUIRE(VirtFsZip::isDirectory("testQ/") == false);
-//    REQUIRE(VirtFsZip::isDirectory("testQ//") == false);
+    REQUIRE(VirtFsZip::isDirectory("testQ//") == false);
 
     VirtFsZip::removeFromSearchPathSilent(prefix + "test.zip");
     VirtFsZip::deinit();
@@ -500,6 +499,9 @@ TEST_CASE("VirtFsZip openRead")
     file = VirtFsZip::openRead("dir2/units.xml");
     REQUIRE(file != nullptr);
     VirtFsZip::close(file);
+    file = VirtFsZip::openRead("dir2\\units.xml");
+    REQUIRE(file != nullptr);
+    VirtFsZip::close(file);
     file = VirtFsZip::openRead("dir2/units123.xml");
     REQUIRE(file == nullptr);
     file = VirtFsZip::openRead("tesQ/units.xml");
@@ -510,11 +512,16 @@ TEST_CASE("VirtFsZip openRead")
     REQUIRE(file == nullptr);
     file = VirtFsZip::openRead("dir/brimmedhat.png");
     REQUIRE(file == nullptr);
+    file = VirtFsZip::openRead("dir//brimmedhat.png");
+    REQUIRE(file == nullptr);
 
     VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
         Append_false);
 
     file = VirtFsZip::openRead("dir2/units.xml");
+    REQUIRE(file != nullptr);
+    VirtFsZip::close(file);
+    file = VirtFsZip::openRead("dir2//units.xml");
     REQUIRE(file != nullptr);
     VirtFsZip::close(file);
     file = VirtFsZip::openRead("dir2/units123.xml");
@@ -532,6 +539,9 @@ TEST_CASE("VirtFsZip openRead")
     VirtFsZip::removeFromSearchPathSilent(prefix + "test.zip");
 
     file = VirtFsZip::openRead("dir2/units.xml");
+    REQUIRE(file != nullptr);
+    VirtFsZip::close(file);
+    file = VirtFsZip::openRead("dir2\\/\\units.xml");
     REQUIRE(file != nullptr);
     VirtFsZip::close(file);
     file = VirtFsZip::openRead("dir2/units123.xml");
@@ -567,7 +577,7 @@ TEST_CASE("VirtFsZip read")
 
     SECTION("test 1")
     {
-        file = VirtFsZip::openRead("dir2/test.txt");
+        file = VirtFsZip::openRead("dir2//test.txt");
         REQUIRE(file != nullptr);
         REQUIRE(VirtFsZip::fileLength(file) == 23);
         const int fileSize = VirtFsZip::fileLength(file);
@@ -582,7 +592,7 @@ TEST_CASE("VirtFsZip read")
 
     SECTION("test 2")
     {
-        file = VirtFsZip::openRead("dir2/test.txt");
+        file = VirtFsZip::openRead("dir2\\/test.txt");
         REQUIRE(file != nullptr);
         REQUIRE(VirtFsZip::fileLength(file) == 23);
         const int fileSize = VirtFsZip::fileLength(file);
@@ -599,7 +609,7 @@ TEST_CASE("VirtFsZip read")
 
     SECTION("test 3")
     {
-        file = VirtFsZip::openRead("dir2/test.txt");
+        file = VirtFsZip::openRead("dir2//test.txt");
         REQUIRE(file != nullptr);
         const int fileSize = VirtFsZip::fileLength(file);
 
@@ -634,7 +644,7 @@ TEST_CASE("VirtFsZip read")
 
     SECTION("test 5")
     {
-        file = VirtFsZip::openRead("dir2/test.txt");
+        file = VirtFsZip::openRead("dir2\\\\test.txt");
         REQUIRE(file != nullptr);
         const int fileSize = VirtFsZip::fileLength(file);
         const char *restrict const str = "test line 1\ntest line 2";
@@ -655,7 +665,7 @@ TEST_CASE("VirtFsZip read")
 
     SECTION("test 6")
     {
-        file = VirtFsZip::openRead("dir2/test.txt");
+        file = VirtFsZip::openRead("dir2//test.txt");
         REQUIRE(file != nullptr);
         const int fileSize = VirtFsZip::fileLength(file);
         const char *restrict const str = "test line 1\ntest line 2";

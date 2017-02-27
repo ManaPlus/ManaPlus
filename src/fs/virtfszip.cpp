@@ -72,9 +72,10 @@ namespace VirtFsZip
         return nullptr;
     }
 
-    bool addToSearchPathSilent(const std::string &newDir,
+    bool addToSearchPathSilent(std::string newDir,
                                const Append append)
     {
+        prepareFsPath(newDir);
         if (Files::existsLocal(newDir) == false)
         {
             logger->log("VirtFsZip::addToSearchPath file not exists: %s",
@@ -112,9 +113,10 @@ namespace VirtFsZip
         return true;
     }
 
-    bool addToSearchPath(const std::string &newDir,
+    bool addToSearchPath(std::string newDir,
                          const Append append)
     {
+        prepareFsPath(newDir);
         if (Files::existsLocal(newDir) == false)
         {
             reportAlways("VirtFsZip::addToSearchPath directory not exists: %s",
@@ -154,6 +156,7 @@ namespace VirtFsZip
 
     bool removeFromSearchPathSilent(std::string oldDir)
     {
+        prepareFsPath(oldDir);
         if (findLast(oldDir, ".zip") == false)
         {
             reportAlways("Called removeFromSearchPath without zip archive");
@@ -178,6 +181,7 @@ namespace VirtFsZip
 
     bool removeFromSearchPath(std::string oldDir)
     {
+        prepareFsPath(oldDir);
         if (findLast(oldDir, ".zip") == false)
         {
             reportAlways("Called removeFromSearchPath without zip archive");
@@ -227,8 +231,9 @@ namespace VirtFsZip
         ptr->eof = &VirtFsZip::eof;
     }
 
-    std::string getRealDir(const std::string &restrict filename)
+    std::string getRealDir(std::string filename)
     {
+        prepareFsPath(filename);
         if (checkPath(filename) == false)
         {
             reportAlways("VirtFsZip::exists invalid path: %s",
@@ -241,8 +246,9 @@ namespace VirtFsZip
         return std::string();
     }
 
-    bool exists(const std::string &restrict name)
+    bool exists(std::string name)
     {
+        prepareFsPath(name);
         if (checkPath(name) == false)
         {
             reportAlways("VirtFsZip::exists invalid path: %s",
@@ -257,6 +263,7 @@ namespace VirtFsZip
 
     VirtList *enumerateFiles(std::string dirName)
     {
+        prepareFsPath(dirName);
         VirtList *const list = new VirtList;
         if (checkPath(dirName) == false)
         {
@@ -302,6 +309,7 @@ namespace VirtFsZip
 
     bool isDirectory(std::string dirName)
     {
+        prepareFsPath(dirName);
         if (checkPath(dirName) == false)
         {
             reportAlways("VirtFsZip::isDirectory invalid path: %s",
@@ -324,8 +332,9 @@ namespace VirtFsZip
         return false;
     }
 
-    bool isSymbolicLink(const std::string &restrict name)
+    bool isSymbolicLink(std::string name)
     {
+        prepareFsPath(name);
         if (checkPath(name) == false)
         {
             reportAlways("VirtFsZip::isSymbolicLink invalid path: %s",
@@ -341,8 +350,9 @@ namespace VirtFsZip
         delete handle;
     }
 
-    VirtFile *openRead(const std::string &restrict filename)
+    VirtFile *openRead(std::string filename)
     {
+        prepareFsPath(filename);
         if (checkPath(filename) == false)
         {
             reportAlways("VirtFsZip::openRead invalid path: %s",
