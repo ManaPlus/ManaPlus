@@ -163,8 +163,13 @@ std::string getFileName(const std::string &path) A_WARN_UNUSED;
 
 std::string getFileDir(const std::string &path) A_WARN_UNUSED;
 
-std::string& replaceAll(std::string& context, const std::string &restrict from,
+std::string& replaceAll(std::string& context,
+                        const std::string &restrict from,
                         const std::string &restrict to);
+
+void replaceRecursiveAll(std::string& context,
+                         const std::string &restrict from,
+                         const char to);
 
 /**
  * Returns a bool value depending on the given string value.
@@ -267,5 +272,7 @@ std::string timeDiffToString(int timeDiff);
 void replaceItemLinks(std::string &msg);
 
 std::string escapeString(std::string str);
+
+void sanitizePath(std::string &path);
 
 #endif  // UTILS_STRINGUTILS_H

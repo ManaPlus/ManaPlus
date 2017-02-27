@@ -545,6 +545,50 @@ TEST_CASE("stringuntils replaceAll 1")
     REQUIRE("this is test line" == replaceAll(str1, str2, str3));
 }
 
+TEST_CASE("stringuntils replaceRecursiveAll 1")
+{
+    std::string str;
+    str = "";
+    replaceRecursiveAll(str, "line", '.');
+    REQUIRE(str == "");
+    str = "test line";
+    replaceRecursiveAll(str, "line", '.');
+    REQUIRE(str == "test .");
+    str = "11112222";
+    replaceRecursiveAll(str, "11", '1');
+    REQUIRE(str == "12222");
+    str = "122221";
+    replaceRecursiveAll(str, "11", '1');
+    REQUIRE(str == "122221");
+    str = "1222211";
+    replaceRecursiveAll(str, "11", '1');
+    REQUIRE(str == "122221");
+    str = "11112222";
+    replaceRecursiveAll(str, "112", '1');
+    REQUIRE(str == "111222");
+    str = "111122224";
+    replaceRecursiveAll(str, "112", '1');
+    REQUIRE(str == "1112224");
+    str = "3111122224";
+    replaceRecursiveAll(str, "112", '1');
+    REQUIRE(str == "31112224");
+    str = "121212";
+    replaceRecursiveAll(str, "12", '1');
+    REQUIRE(str == "111");
+    str = "1121212";
+    replaceRecursiveAll(str, "12", '1');
+    REQUIRE(str == "1111");
+    str = "11212122";
+    replaceRecursiveAll(str, "12", '1');
+    REQUIRE(str == "1111");
+    str = "112121222";
+    replaceRecursiveAll(str, "12", '1');
+    REQUIRE(str == "1111");
+    str = "112211221122";
+    replaceRecursiveAll(str, "12", '1');
+    REQUIRE(str == "111111");
+}
+
 TEST_CASE("stringuntils getBoolFromString 1")
 {
     REQUIRE(getBoolFromString("true"));
@@ -1207,6 +1251,89 @@ TEST_CASE("stringuntils escapeString")
     REQUIRE(escapeString("\"123\"") == "\"\\\"123\\\"\"");
     REQUIRE(escapeString("\\") == "\"\\\"");
     REQUIRE(escapeString("12\\3") == "\"12\\3\"");
+}
+
+TEST_CASE("stringuntils sanitizePath")
+{
+    std::string path;
+    path = "";
+    sanitizePath(path);
+    REQUIRE(path == "");
+    path = "/";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "/\\";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "\\/";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "//";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "///";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "//\\/";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "///\\";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "\\";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "\\\\";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "\\/\\";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "\\\\/";
+    sanitizePath(path);
+    REQUIRE(path == "/");
+    path = "test";
+    sanitizePath(path);
+    REQUIRE(path == "test");
+    path = "./test";
+    sanitizePath(path);
+    REQUIRE(path == "./test");
+    path = "test line";
+    sanitizePath(path);
+    REQUIRE(path == "test line");
+    path = "dir/test";
+    sanitizePath(path);
+    REQUIRE(path == "dir/test");
+    path = "/dir/test";
+    sanitizePath(path);
+    REQUIRE(path == "/dir/test");
+    path = "dir//test";
+    sanitizePath(path);
+    REQUIRE(path == "dir/test");
+    path = "dir///test";
+    sanitizePath(path);
+    REQUIRE(path == "dir/test");
+    path = "dir///\\test";
+    sanitizePath(path);
+    REQUIRE(path == "dir/test");
+    path = "dir/\\//test";
+    sanitizePath(path);
+    REQUIRE(path == "dir/test");
+    path = "dir\\test";
+    sanitizePath(path);
+    REQUIRE(path == "dir/test");
+    path = "dir/test/";
+    sanitizePath(path);
+    REQUIRE(path == "dir/test/");
+    path = "dir/test\\";
+    sanitizePath(path);
+    REQUIRE(path == "dir/test/");
+    path = "/very\\long/dir\\with\\sepa/ra/tors";
+    sanitizePath(path);
+    REQUIRE(path == "/very/long/dir/with/sepa/ra/tors");
+    path = "/very\\long/dir\\\\with\\sepa//ra/tors";
+    sanitizePath(path);
+    REQUIRE(path == "/very/long/dir/with/sepa/ra/tors");
 }
 
 TEST_CASE("stringuntils secureChatCommand")

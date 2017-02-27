@@ -385,6 +385,20 @@ std::string& replaceAll(std::string& context,
     return context;
 }
 
+void replaceRecursiveAll(std::string& context,
+                         const std::string &restrict from,
+                         const char to)
+{
+    size_t lookHere = 0;
+    size_t foundHere;
+    const size_t fromSize = from.size();
+    while ((foundHere = context.find(from, lookHere)) != std::string::npos)
+    {
+        context.replace(foundHere, fromSize, 1, to);
+        lookHere = foundHere;
+    }
+}
+
 bool getBoolFromString(const std::string &text)
 {
     std::string txt = text;
@@ -1013,6 +1027,21 @@ std::string escapeString(std::string str)
 {
     replaceAll(str, "\"", "\\\"");
     return "\"" + str + "\"";
+}
+
+void sanitizePath(std::string &path)
+{
+#ifdef WIN32
+    const char sepStr = '\\';
+    const std::string sep2Str = "\\\\";
+    const std::string sepWrongStr = "/";
+#else
+    const char sepStr = '/';
+    const std::string sep2Str = "//";
+    const std::string sepWrongStr = "\\";
+#endif
+    replaceRecursiveAll(path, sepWrongStr, sepStr);
+    replaceRecursiveAll(path, sep2Str, sepStr);
 }
 
 #ifndef DYECMD
