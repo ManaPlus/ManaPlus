@@ -87,12 +87,23 @@ namespace VirtFs
 
     bool exists(const std::string &restrict name)
     {
+#ifdef USE_PHYSFS
         return VirtFsPhys::exists(name);
+#else  // USE_PHYSFS
+        return VirtFsDir::exists(name) || VirtFsZip::exists(name);
+#endif  // USE_PHYSFS
     }
 
-    VirtList *enumerateFiles(const std::string &restrict dir)
+    VirtList *enumerateFiles(const std::string &restrict dirName)
     {
+#ifdef USE_PHYSFS
         return VirtFsPhys::enumerateFiles(dir);
+#else  // USE_PHYSFS
+        VirtList *const list = new VirtList;
+        VirtFsDir::enumerateFiles(dirName, list);
+        VirtFsZip::enumerateFiles(dirName, list);
+        return list;
+#endif  // USE_PHYSFS
     }
 
     bool isDirectory(const std::string &restrict name)

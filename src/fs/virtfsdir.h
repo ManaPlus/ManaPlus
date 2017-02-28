@@ -52,7 +52,9 @@ namespace VirtFsDir
     void deinit();
     std::vector<VirtDirEntry*> &getEntries();
     bool exists(std::string name);
-    VirtList *enumerateFiles(std::string dir) RETURNS_NONNULL;
+    VirtList *enumerateFiles(const std::string &dirName) RETURNS_NONNULL;
+    VirtList *enumerateFiles(std::string dirName,
+                             VirtList *const list) RETURNS_NONNULL;
     bool isDirectory(std::string dirName);
     bool isSymbolicLink(std::string name);
     void freeList(VirtList *restrict const handle);

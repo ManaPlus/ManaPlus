@@ -338,10 +338,16 @@ namespace VirtFsDir
         return false;
     }
 
-    VirtList *enumerateFiles(std::string dirName)
+    VirtList *enumerateFiles(const std::string &dirName)
+    {
+        VirtList *const list = new VirtList;
+        return enumerateFiles(dirName, list);
+    }
+
+    VirtList *enumerateFiles(std::string dirName,
+                             VirtList *const list)
     {
         prepareFsPath(dirName);
-        VirtList *const list = new VirtList;
         if (checkPath(dirName) == false)
         {
             reportAlways("VirtFsDir::enumerateFiles invalid path: %s",

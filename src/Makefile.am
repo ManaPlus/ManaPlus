@@ -582,8 +582,6 @@ BASE_SRC += events/actionevent.h \
 	      utils/stringvector.h \
 	      utils/timer.cpp \
 	      utils/timer.h \
-	      fs/virtdirentry.cpp \
-	      fs/virtdirentry.h \
 	      fs/virtfile.cpp \
 	      fs/virtfile.h \
 	      fs/virtfileprivate.cpp \
@@ -834,6 +832,8 @@ BASE_SRC +=  \
 	      fs/virtfsphys.h
 else
 BASE_SRC +=  \
+	      fs/virtdirentry.cpp \
+	      fs/virtdirentry.h \
 	      fs/virtfsdir.cpp \
 	      fs/virtfsdir.h \
 	      fs/virtfszip.cpp \
