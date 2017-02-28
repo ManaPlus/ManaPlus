@@ -397,6 +397,57 @@ TEST_CASE("VirtFsZip enumerateFiles2")
     delete2(logger);
 }
 
+TEST_CASE("VirtFsZip enumerateFiles3")
+{
+    VirtFsZip::init();
+    logger = new Logger;
+    std::string name("data/test/test.zip");
+    std::string prefix("data\\test/");
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
+        Append_false);
+
+    VirtList *list = nullptr;
+
+    list = VirtFsZip::enumerateFiles("/");
+    REQUIRE(list->names.size() == 1);
+    REQUIRE(inList(list, "dir"));
+    VirtFsZip::freeList(list);
+
+    VirtFsZip::removeFromSearchPathSilent(prefix + "test.zip");
+    VirtFsZip::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFsZip enumerateFiles4")
+{
+    VirtFsZip::init();
+    logger = new Logger;
+    std::string name("data/test/test.zip");
+    std::string prefix("data\\test/");
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFsZip::addToSearchPathSilent(prefix + "test2.zip",
+        Append_false);
+
+    VirtList *list = nullptr;
+
+    list = VirtFsZip::enumerateFiles("/");
+    REQUIRE(list->names.size() == 4);
+    REQUIRE(inList(list, "dir"));
+    REQUIRE(inList(list, "dir2"));
+    REQUIRE(inList(list, "test.txt"));
+    REQUIRE(inList(list, "units.xml"));
+    VirtFsZip::freeList(list);
+
+    VirtFsZip::removeFromSearchPathSilent(prefix + "test2.zip");
+    VirtFsZip::deinit();
+    delete2(logger);
+}
+
 TEST_CASE("VirtFsZip isDirectory")
 {
     VirtFsZip::init();

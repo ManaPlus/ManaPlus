@@ -274,17 +274,17 @@ namespace VirtFsZip
         if (findLast(dirName, std::string(dirSeparator)) == false)
             dirName += dirSeparator;
         StringVect &names = list->names;
-        FOR_EACH (std::vector<VirtZipEntry*>::const_iterator, it, mEntries)
+        if (dirName == "/")
         {
-            VirtZipEntry *const entry = *it;
-            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
-                      it2,
-                      entry->mHeaders)
+            FOR_EACH (std::vector<VirtZipEntry*>::const_iterator, it, mEntries)
             {
-                ZipLocalHeader *const header = *it2;
-                std::string fileName = header->fileName;
-                if (findCutFirst(fileName, dirName) == true)
+                VirtZipEntry *const entry = *it;
+                FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                          it2,
+                          entry->mHeaders)
                 {
+                    ZipLocalHeader *const header = *it2;
+                    std::string fileName = header->fileName;
                     // skip subdirs from enumeration
                     const size_t idx = fileName.find(dirSeparator);
                     if (idx != std::string::npos)
@@ -300,6 +300,38 @@ namespace VirtFsZip
                     }
                     if (found == false)
                         names.push_back(fileName);
+                }
+            }
+        }
+        else
+        {
+            FOR_EACH (std::vector<VirtZipEntry*>::const_iterator, it, mEntries)
+            {
+                VirtZipEntry *const entry = *it;
+                FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                          it2,
+                          entry->mHeaders)
+                {
+                    ZipLocalHeader *const header = *it2;
+                    std::string fileName = header->fileName;
+                    if (findCutFirst(fileName, dirName) == true)
+                    {
+                        // skip subdirs from enumeration
+                        const size_t idx = fileName.find(dirSeparator);
+                        if (idx != std::string::npos)
+                            fileName.erase(idx);
+                        bool found(false);
+                        FOR_EACH (StringVectCIter, itn, names)
+                        {
+                            if (*itn == fileName)
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (found == false)
+                            names.push_back(fileName);
+                    }
                 }
             }
         }

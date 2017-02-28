@@ -106,6 +106,17 @@ static void removeTemp(StringVect &restrict list)
     }
 }
 
+static bool inList(VirtList *list,
+                   const std::string &name)
+{
+    FOR_EACH (StringVectCIter, it, list->names)
+    {
+        if (*it == name)
+            return true;
+    }
+    return false;
+}
+
 TEST_CASE("VirtFs enumerateFiles1")
 {
     logger = new Logger;
@@ -160,6 +171,51 @@ TEST_CASE("VirtFs enumerateFiles2")
 
     VirtFs::removeDirFromSearchPath("data/test/dir1");
     VirtFs::removeDirFromSearchPath("../data/test/dir1");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs enumerateFiles3")
+{
+    logger = new Logger;
+
+    VirtFs::addZipToSearchPath("data/test/test.zip",
+        Append_false);
+    VirtFs::addZipToSearchPath("../data/test/test.zip",
+        Append_false);
+
+    VirtList *list = nullptr;
+
+    list = VirtFs::enumerateFiles("/");
+    REQUIRE(list->names.size() == 1);
+    REQUIRE(inList(list, "dir"));
+    VirtFs::freeList(list);
+
+    VirtFs::removeZipFromSearchPath("data/test/test.zip");
+    VirtFs::removeZipFromSearchPath("../data/test/test.zip");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs enumerateFiles4")
+{
+    logger = new Logger;
+
+    VirtFs::addZipToSearchPath("data/test/test2.zip",
+        Append_false);
+    VirtFs::addZipToSearchPath("../data/test/test2.zip",
+        Append_false);
+
+    VirtList *list = nullptr;
+
+    list = VirtFs::enumerateFiles("/");
+    REQUIRE(list->names.size() == 4);
+    REQUIRE(inList(list, "dir"));
+    REQUIRE(inList(list, "dir2"));
+    REQUIRE(inList(list, "test.txt"));
+    REQUIRE(inList(list, "units.xml"));
+    VirtFs::freeList(list);
+
+    VirtFs::removeZipFromSearchPath("data/test/test2.zip");
+    VirtFs::removeZipFromSearchPath("../data/test/test2.zip");
     delete2(logger);
 }
 
