@@ -75,6 +75,7 @@ class Settings final
             cameraMode(0U),
             crazyMoveState(0U),
             targetingType(0U),
+            overweightPercent(50U),
             mapDrawType(MapType::NORMAL),
             emoteType(EmoteType::Player),
             persistentIp(true),
@@ -135,6 +136,7 @@ class Settings final
         unsigned int cameraMode;
         unsigned int crazyMoveState;
         unsigned int targetingType;
+        unsigned int overweightPercent;
         MapTypeT mapDrawType;
         EmoteTypeT emoteType;
         bool persistentIp;

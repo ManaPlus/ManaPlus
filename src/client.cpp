@@ -1870,6 +1870,7 @@ void Client::initPaths()
     settings.linkCommandSymbol = paths.getStringValue("linkCommandSymbol");
     if (settings.linkCommandSymbol.empty())
         settings.linkCommandSymbol = "=";
+    settings.overweightPercent = paths.getIntValue("overweightPercent");
 }
 
 void Client::initTradeFilter()

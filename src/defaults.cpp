@@ -670,6 +670,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");
 
+    AddDEF("overweightPercent", 50);
+
     return configData;
 }
 

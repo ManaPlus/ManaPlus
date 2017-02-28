@@ -166,8 +166,11 @@ void DialogsManager::attributeChanged(const AttributesT id,
     {
         if (!weightNotice && config.getBoolValue("weightMsg"))
         {
+            int percent = settings.overweightPercent;
+            if (percent < 1)
+                percent = 50;
             const int max = PlayerInfo::getAttribute(
-                Attributes::MAX_WEIGHT) / 2;
+                Attributes::MAX_WEIGHT) * percent / 100;
             const int total = oldVal;
             if (newVal >= max && total < max)
             {

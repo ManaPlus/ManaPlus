@@ -275,7 +275,6 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable weight notifications"), "",
         "weightMsg", this, "weightMsgEvent");
 
-
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Shop"), "", this);
 
