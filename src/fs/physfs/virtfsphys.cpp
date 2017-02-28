@@ -18,12 +18,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfsphys.h"
+#include "fs/physfs/virtfsphys.h"
 
 #include "fs/virtfile.h"
-#include "fs/virtfileprivate.h"
 #include "fs/virtfsfuncs.h"
 #include "fs/virtlist.h"
+
+#include "fs/physfs/virtfileprivate.h"
 
 #include "utils/checkutils.h"
 

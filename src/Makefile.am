@@ -563,7 +563,6 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtfstools.h \
 	      fs/virtlist.cpp \
 	      fs/virtlist.h \
-	      fs/virtfs.cpp \
 	      fs/virtfs.h \
 	      utils/process.cpp \
 	      utils/process.h \
@@ -584,8 +583,6 @@ BASE_SRC += events/actionevent.h \
 	      utils/timer.h \
 	      fs/virtfile.cpp \
 	      fs/virtfile.h \
-	      fs/virtfileprivate.cpp \
-	      fs/virtfileprivate.h \
 	      utils/mutex.h \
 	      utils/naclmessages.cpp \
 	      utils/naclmessages.h \
@@ -828,22 +825,28 @@ BASE_SRC += events/actionevent.h \
 
 if USE_PHYSFS
 BASE_SRC +=  \
-	      fs/virtfsphys.cpp \
-	      fs/virtfsphys.h
+	      fs/physfs/virtfileprivate.cpp \
+	      fs/physfs/virtfileprivate.h \
+	      fs/physfs/virtfs.cpp \
+	      fs/physfs/virtfsphys.cpp \
+	      fs/physfs/virtfsphys.h
 else
 BASE_SRC +=  \
-	      fs/virtdirentry.cpp \
-	      fs/virtdirentry.h \
-	      fs/virtfsdir.cpp \
-	      fs/virtfsdir.h \
-	      fs/virtfszip.cpp \
-	      fs/virtfszip.h \
-	      fs/virtzipentry.cpp \
-	      fs/virtzipentry.h \
-	      fs/zip.cpp \
-	      fs/zip.h \
-	      fs/ziplocalheader.cpp \
-	      fs/ziplocalheader.h
+	      fs/virtfs/virtdirentry.cpp \
+	      fs/virtfs/virtdirentry.h \
+	      fs/virtfs/virtfileprivate.cpp \
+	      fs/virtfs/virtfileprivate.h \
+	      fs/virtfs/virtfs.cpp \
+	      fs/virtfs/virtfsdir.cpp \
+	      fs/virtfs/virtfsdir.h \
+	      fs/virtfs/virtfszip.cpp \
+	      fs/virtfs/virtfszip.h \
+	      fs/virtfs/virtzipentry.cpp \
+	      fs/virtfs/virtzipentry.h \
+	      fs/virtfs/zip.cpp \
+	      fs/virtfs/zip.h \
+	      fs/virtfs/ziplocalheader.cpp \
+	      fs/virtfs/ziplocalheader.h
 endif
 
 if ENABLE_PUGIXML
@@ -1951,12 +1954,12 @@ manaplustests_SOURCES = ${SRC} \
 
 if USE_PHYSFS
 manaplustests_SOURCES += \
-	      fs/virtfsphys_unittest.cc
+	      fs/physfs/virtfsphys_unittest.cc
 else
 manaplustests_SOURCES += \
-	      fs/virtfsdir_unittest.cc \
-	      fs/zip_unittest.cc \
-	      fs/virtfszip_unittest.cc
+	      fs/virtfs/virtfsdir_unittest.cc \
+	      fs/virtfs/zip_unittest.cc \
+	      fs/virtfs/virtfszip_unittest.cc
 endif
 
 manaplustests_SOURCES += \

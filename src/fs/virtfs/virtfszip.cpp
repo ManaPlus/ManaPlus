@@ -18,17 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfszip.h"
+#include "fs/virtfs/virtfszip.h"
 
 #include "fs/files.h"
 #include "fs/paths.h"
-#include "fs/virtfile.h"
-#include "fs/virtfileprivate.h"
 #include "fs/virtfsfuncs.h"
+#include "fs/virtfile.h"
 #include "fs/virtlist.h"
-#include "fs/virtzipentry.h"
-#include "fs/zip.h"
-#include "fs/ziplocalheader.h"
+
+#include "fs/virtfs/virtfileprivate.h"
+#include "fs/virtfs/virtzipentry.h"
+#include "fs/virtfs/zip.h"
+#include "fs/virtfs/ziplocalheader.h"
 
 #include "utils/checkutils.h"
 #include "utils/dtor.h"
@@ -240,6 +241,11 @@ namespace VirtFsZip
                 filename.c_str());
             return std::string();
         }
+        return getRealDirInternal(filename);
+    }
+
+    std::string getRealDirInternal(const std::string &filename)
+    {
         ZipLocalHeader *restrict const header = searchHeaderByName(filename);
         if (header != nullptr)
             return header->zipEntry->mArchiveName;
@@ -261,23 +267,22 @@ namespace VirtFsZip
         return false;
     }
 
-    VirtList *enumerateFiles(const std::string &dirName)
+    VirtList *enumerateFiles(std::string dirName)
     {
         VirtList *const list = new VirtList;
-        return enumerateFiles(dirName, list);
-    }
-
-    VirtList *enumerateFiles(std::string dirName,
-                             VirtList *const list)
-    {
         prepareFsPath(dirName);
-        VirtList *const list = new VirtList;
         if (checkPath(dirName) == false)
         {
             reportAlways("VirtFsZip::enumerateFiles invalid path: %s",
                 dirName.c_str());
             return list;
         }
+        return enumerateFiles(dirName, list);
+    }
+
+    VirtList *enumerateFiles(std::string dirName,
+                             VirtList *restrict const list)
+    {
         if (findLast(dirName, std::string(dirSeparator)) == false)
             dirName += dirSeparator;
         StringVect &names = list->names;
@@ -355,6 +360,11 @@ namespace VirtFsZip
                 dirName.c_str());
             return false;
         }
+        return isDirectoryInternal(dirName);
+    }
+
+    bool isDirectoryInternal(std::string dirName)
+    {
         if (findLast(dirName, std::string(dirSeparator)) == false)
             dirName += dirSeparator;
         FOR_EACH (std::vector<VirtZipEntry*>::const_iterator, it, mEntries)
@@ -398,6 +408,11 @@ namespace VirtFsZip
                 filename.c_str());
             return nullptr;
         }
+        return openReadInternal(filename);
+    }
+
+    VirtFile *openReadInternal(const std::string &filename)
+    {
         ZipLocalHeader *restrict const header = searchHeaderByName(filename);
         if (header != nullptr)
         {

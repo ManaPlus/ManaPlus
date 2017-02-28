@@ -31,7 +31,9 @@ PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
 PRAGMACLANG6(GCC diagnostic pop)
 #include <SDL_ttf.h>
+#ifdef USE_PHYSFS
 #include <physfs.h>
+#endif  // USE_PHYSFS
 #include <zlib.h>
 
 #include "debug.h"
@@ -47,6 +49,7 @@ TEST_CASE("dumplibs tests")
         REQUIRE(build == link);
     }
 
+#ifdef USE_PHYSFS
     SECTION("physfs")
     {
         PHYSFS_Version buildVersion;
@@ -65,6 +68,7 @@ TEST_CASE("dumplibs tests")
 
         REQUIRE(build == link);
     }
+#endif  // USE_PHYSFS
 
     SECTION("sdl")
     {

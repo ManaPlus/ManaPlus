@@ -18,17 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfsdir.h"
+#include "fs/virtfs/virtfsdir.h"
 
 #include "fs/files.h"
 #include "fs/mkdir.h"
 #include "fs/paths.h"
-#include "fs/virtdirentry.h"
 #include "fs/virtfs.h"
 #include "fs/virtfile.h"
-#include "fs/virtfileprivate.h"
 #include "fs/virtfsfuncs.h"
 #include "fs/virtlist.h"
+
+#include "fs/virtfs/virtdirentry.h"
+#include "fs/virtfs/virtfileprivate.h"
 
 #include "utils/checkutils.h"
 #include "utils/dtor.h"
@@ -63,13 +64,13 @@ namespace VirtFsDir
         static VirtFile *openFile(std::string filename,
                                   const int mode)
         {
+            prepareFsPath(filename);
             if (checkPath(filename) == false)
             {
                 reportAlways("VirtFsDir::openFile invalid path: %s",
                     filename.c_str());
                 return nullptr;
             }
-            prepareFsPath(filename);
             VirtDirEntry *const entry = searchEntryByPath(filename);
             if (entry == nullptr)
                 return nullptr;
@@ -90,6 +91,25 @@ namespace VirtFsDir
             return file;
         }
     }  // namespace
+
+    VirtFile *openReadDirEntry(VirtDirEntry *const entry,
+                               const std::string &filename)
+    {
+        const std::string path = entry->mRootDir + filename;
+        const int fd = open(path.c_str(),
+            O_RDONLY,
+            S_IRUSR | S_IWUSR);
+        if (fd == -1)
+        {
+            reportAlways("VirtFsDir::openReadDirEntry file open error: %s",
+                filename.c_str());
+            return nullptr;
+        }
+        VirtFile *restrict const file = new VirtFile(&funcs);
+        file->mPrivate = new VirtFilePrivate(fd);
+
+        return file;
+    }
 
     VirtDirEntry *searchEntryByRoot(const std::string &restrict root)
     {
@@ -338,15 +358,9 @@ namespace VirtFsDir
         return false;
     }
 
-    VirtList *enumerateFiles(const std::string &dirName)
+    VirtList *enumerateFiles(std::string dirName)
     {
         VirtList *const list = new VirtList;
-        return enumerateFiles(dirName, list);
-    }
-
-    VirtList *enumerateFiles(std::string dirName,
-                             VirtList *const list)
-    {
         prepareFsPath(dirName);
         if (checkPath(dirName) == false)
         {
@@ -354,6 +368,12 @@ namespace VirtFsDir
                 dirName.c_str());
             return list;
         }
+        return enumerateFiles(dirName, list);
+    }
+
+    VirtList *enumerateFiles(const std::string &restrict dirName,
+                             VirtList *restrict const list)
+    {
         StringVect &names = list->names;
         FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
         {
@@ -407,6 +427,11 @@ namespace VirtFsDir
                 dirName.c_str());
             return false;
         }
+        return isDirectoryInternal(dirName);
+    }
+
+    bool isDirectoryInternal(const std::string &restrict dirName)
+    {
         FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
         {
             VirtDirEntry *const entry = *it;

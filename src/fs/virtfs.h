@@ -38,11 +38,11 @@ namespace VirtFs
     const char *getBaseDir();
     const char *getUserDir();
     bool exists(const std::string &restrict name);
-    VirtList *enumerateFiles(const std::string &restrict dir) RETURNS_NONNULL;
-    bool isDirectory(const std::string &restrict name);
+    VirtList *enumerateFiles(std::string dir) RETURNS_NONNULL;
+    bool isDirectory(std::string name);
     bool isSymbolicLink(const std::string &restrict name);
     void freeList(VirtList *restrict const handle);
-    VirtFile *openRead(const std::string &restrict filename);
+    VirtFile *openRead(std::string filename);
     VirtFile *openWrite(const std::string &restrict filename);
     VirtFile *openAppend(const std::string &restrict filename);
     bool setWriteDir(const std::string &restrict newDir);
@@ -52,7 +52,7 @@ namespace VirtFs
     bool addZipToSearchPath(const std::string &restrict newDir,
                             const Append append);
     bool removeZipFromSearchPath(const std::string &restrict oldDir);
-    std::string getRealDir(const std::string &restrict filename);
+    std::string getRealDir(std::string filename);
     bool mkdir(const std::string &restrict dirName);
     bool remove(const std::string &restrict filename);
     bool deinit();

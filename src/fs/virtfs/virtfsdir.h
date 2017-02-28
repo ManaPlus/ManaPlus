@@ -38,6 +38,8 @@ namespace VirtFsDir
 {
     VirtDirEntry *searchEntryByRoot(const std::string &restrict root);
     VirtDirEntry *searchEntryByPath(const std::string &restrict path);
+    VirtFile *openReadDirEntry(VirtDirEntry *const entry,
+                               const std::string &filename);
     const char *getBaseDir();
     const char *getUserDir();
     bool addToSearchPath(std::string newDir,
@@ -52,10 +54,11 @@ namespace VirtFsDir
     void deinit();
     std::vector<VirtDirEntry*> &getEntries();
     bool exists(std::string name);
-    VirtList *enumerateFiles(const std::string &dirName) RETURNS_NONNULL;
-    VirtList *enumerateFiles(std::string dirName,
-                             VirtList *const list) RETURNS_NONNULL;
+    VirtList *enumerateFiles(std::string dirName) RETURNS_NONNULL;
+    VirtList *enumerateFiles(const std::string &restrict dirName,
+                             VirtList *restrict const list) RETURNS_NONNULL;
     bool isDirectory(std::string dirName);
+    bool isDirectoryInternal(const std::string &restrict dirName);
     bool isSymbolicLink(std::string name);
     void freeList(VirtList *restrict const handle);
     VirtFile *openRead(const std::string &restrict filename);

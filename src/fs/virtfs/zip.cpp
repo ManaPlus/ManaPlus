@@ -18,11 +18,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/zip.h"
+#include "fs/virtfs/zip.h"
 
 #include "fs/paths.h"
-#include "fs/virtzipentry.h"
-#include "fs/ziplocalheader.h"
+
+#include "fs/virtfs/virtzipentry.h"
+#include "fs/virtfs/ziplocalheader.h"
 
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"

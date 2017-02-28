@@ -18,22 +18,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/ziplocalheader.h"
-
-#include "fs/virtzipentry.h"
-
-#include "localconsts.h"
-
-#include <string>
+#include "fs/virtfs/virtdirentry.h"
 
 #include "debug.h"
 
-ZipLocalHeader::ZipLocalHeader() :
-    fileName(),
-    zipEntry(nullptr),
-    dataOffset(0U),
-    compressSize(0U),
-    uncompressSize(0U),
-    compressed(false)
+VirtDirEntry::VirtDirEntry(const std::string &userDir,
+                           const std::string &rootDir) :
+    mUserDir(userDir),
+    mRootDir(rootDir)
+{
+}
+
+VirtDirEntry::~VirtDirEntry()
 {
 }

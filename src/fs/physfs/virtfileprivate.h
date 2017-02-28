@@ -18,21 +18,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtzipentry.h"
+#ifndef UTILS_VIRTFILEPRIVATE_H
+#define UTILS_VIRTFILEPRIVATE_H
 
-#include "fs/ziplocalheader.h"
+#include "localconsts.h"
 
-#include "utils/dtor.h"
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wlong-long")
+#include <physfs.h>
+PRAGMA45(GCC diagnostic pop)
 
-#include "debug.h"
-
-VirtZipEntry::VirtZipEntry(const std::string &restrict archiveName) :
-    mArchiveName(archiveName),
-    mHeaders()
+struct VirtFilePrivate final
 {
-}
+    explicit VirtFilePrivate(PHYSFS_file *restrict const file);
 
-VirtZipEntry::~VirtZipEntry()
-{
-    delete_all(mHeaders);
-}
+    A_DELETE_COPY(VirtFilePrivate)
+
+    ~VirtFilePrivate();
+
+    // physfs fields
+    PHYSFS_file *mFile;
+};
+
+#endif  // UTILS_VIRTFILEPRIVATE_H

@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfileprivate.h"
+#include "fs/virtfs/virtfileprivate.h"
 
 #include <unistd.h>
 #include <zlib.h>
@@ -26,7 +26,6 @@
 #include "debug.h"
 
 VirtFilePrivate::VirtFilePrivate() :
-    mFile(nullptr),
     mBuf(nullptr),
     mPos(0U),
     mSize(0U),
@@ -35,7 +34,6 @@ VirtFilePrivate::VirtFilePrivate() :
 }
 
 VirtFilePrivate::VirtFilePrivate(const int fd) :
-    mFile(nullptr),
     mBuf(nullptr),
     mPos(0U),
     mSize(0U),
@@ -43,18 +41,8 @@ VirtFilePrivate::VirtFilePrivate(const int fd) :
 {
 }
 
-VirtFilePrivate::VirtFilePrivate(PHYSFS_file *restrict const file) :
-    mFile(file),
-    mBuf(nullptr),
-    mPos(0U),
-    mSize(0U),
-    mFd(-1)
-{
-}
-
 VirtFilePrivate::VirtFilePrivate(uint8_t *restrict const buf,
                                  const size_t sz) :
-    mFile(nullptr),
     mBuf(buf),
     mPos(0U),
     mSize(sz),
@@ -64,8 +52,6 @@ VirtFilePrivate::VirtFilePrivate(uint8_t *restrict const buf,
 
 VirtFilePrivate::~VirtFilePrivate()
 {
-    if (mFile != nullptr)
-        PHYSFS_close(mFile);
     if (mFd != -1)
         close(mFd);
     if (mBuf)

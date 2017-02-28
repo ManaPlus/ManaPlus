@@ -22,8 +22,9 @@
 
 #include "fs/files.h"
 #include "fs/virtlist.h"
-#include "fs/virtfszip.h"
-#include "fs/virtzipentry.h"
+
+#include "fs/virtfs/virtfszip.h"
+#include "fs/virtfs/virtzipentry.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"

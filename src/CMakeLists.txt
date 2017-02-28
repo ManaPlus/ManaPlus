@@ -887,27 +887,17 @@ SET(SRCS
     utils/perfomance.cpp
     utils/perfomance.h
     utils/debugmemoryobject.h
-    fs/virtfsdir.cpp
-    fs/virtfsdir.h
     fs/virtfsfuncs.h
-    fs/virtfsphys.cpp
-    fs/virtfsphys.h
+    fs/physfs/virtfsphys.cpp
+    fs/physfs/virtfsphys.h
     fs/virtfsrwops.cpp
     fs/virtfsrwops.h
     fs/virtfstools.cpp
     fs/virtfstools.h
-    fs/virtfszip.cpp
-    fs/virtfszip.h
     fs/virtlist.cpp
     fs/virtlist.h
-    fs/virtzipentry.cpp
-    fs/virtzipentry.h
-    fs/virtfs.cpp
+    fs/physfs/virtfs.cpp
     fs/virtfs.h
-    fs/zip.cpp
-    fs/zip.h
-    fs/ziplocalheader.cpp
-    fs/ziplocalheader.h
     utils/process.cpp
     utils/process.h
     utils/sdl2helper.cpp
@@ -923,12 +913,10 @@ SET(SRCS
     utils/stringvector.h
     utils/timer.cpp
     utils/timer.h
-    fs/virtdirentry.cpp
-    fs/virtdirentry.h
     fs/virtfile.cpp
     fs/virtfile.h
-    fs/virtfileprivate.cpp
-    fs/virtfileprivate.h
+    fs/physfs/virtfileprivate.cpp
+    fs/physfs/virtfileprivate.h
     utils/mutex.h
     utils/naclmessages.cpp
     utils/naclmessages.h
@@ -1788,27 +1776,17 @@ SET(DYE_CMD_SRCS
     fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
-    fs/virtfsdir.cpp
-    fs/virtfsdir.h
     fs/virtfsfuncs.h
-    fs/virtfsphys.cpp
-    fs/virtfsphys.h
+    fs/physfs/virtfsphys.cpp
+    fs/physfs/virtfsphys.h
     fs/virtfsrwops.cpp
     fs/virtfsrwops.h
     fs/virtfstools.cpp
     fs/virtfstools.h
-    fs/virtfszip.cpp
-    fs/virtfszip.h
     fs/virtlist.cpp
     fs/virtlist.h
-    fs/virtzipentry.cpp
-    fs/virtzipentry.h
-    fs/virtfs.cpp
+    fs/physfs/virtfs.cpp
     fs/virtfs.h
-    fs/zip.cpp
-    fs/zip.h
-    fs/ziplocalheader.cpp
-    fs/ziplocalheader.h
     utils/sdl2helper.cpp
     utils/sdl2helper.h
     utils/sdlcheckutils.cpp
@@ -1820,12 +1798,10 @@ SET(DYE_CMD_SRCS
     utils/stringutils.h
     utils/timer.cpp
     utils/timer.h
-    fs/virtdirentry.cpp
-    fs/virtdirentry.h
     fs/virtfile.cpp
     fs/virtfile.h
-    fs/virtfileprivate.cpp
-    fs/virtfileprivate.h
+    fs/physfs/virtfileprivate.cpp
+    fs/physfs/virtfileprivate.h
     utils/xml.cpp
     utils/xml.h
     utils/xml.inc

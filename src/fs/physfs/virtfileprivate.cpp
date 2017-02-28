@@ -18,25 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfile.h"
-
-#include "fs/virtfsfuncs.h"
-
-#ifdef USE_PHYSFS
 #include "fs/physfs/virtfileprivate.h"
-#else  // USE_PHYSFS
-#include "fs/virtfs/virtfileprivate.h"
-#endif  // USE_PHYSFS
 
 #include "debug.h"
 
-VirtFile::VirtFile(const VirtFsFuncs *restrict const funcs0) :
-    funcs(funcs0),
-    mPrivate(nullptr)
+VirtFilePrivate::VirtFilePrivate(PHYSFS_file *restrict const file) :
+    mFile(file)
 {
-}
-
-VirtFile::~VirtFile()
-{
-    delete mPrivate;
 }

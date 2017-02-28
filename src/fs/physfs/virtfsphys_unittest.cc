@@ -22,9 +22,10 @@
 
 #include "fs/paths.h"
 #include "fs/virtfs.h"
-#include "fs/virtfsphys.h"
 #include "fs/virtfstools.h"
 #include "fs/virtlist.h"
+
+#include "fs/physfs/virtfsphys.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"

@@ -45,7 +45,9 @@
 #include "utils/env.h"
 #include "utils/delete2.h"
 
+#ifdef USE_PHYSFS
 #include <physfs.h>
+#endif  // USE_PHYSFS
 #include <SDL_image.h>
 
 #include "debug.h"
@@ -260,6 +262,7 @@ TEST_CASE("integrity tests", "integrity")
         REQUIRE(compareBuffers(buf) == true);
     }
 
+#ifdef USE_PHYSFS
     SECTION("integrity Loader::getImage test 5")
     {
         VirtFs::addZipToSearchPath("data/test/test.zip", Append_false);
@@ -402,6 +405,7 @@ TEST_CASE("integrity tests", "integrity")
         VirtFs::removeZipFromSearchPath("../data/test/test.zip");
         REQUIRE(compareBuffers(buf) == true);
     }
+#endif  // USE_PHYSFS
 
     SECTION("integrity Loader::getImage test 7")
     {

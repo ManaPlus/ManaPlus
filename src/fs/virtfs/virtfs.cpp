@@ -20,14 +20,16 @@
 
 #include "fs/virtfs.h"
 
-#ifdef USE_PHYSFS
-#include "fs/virtfsphys.h"
-#else  // USE_PHYSFS
-#include "fs/virtfsdir.h"
-#endif  // USE_PHYSFS
+#include "fs/paths.h"
 #include "fs/virtfile.h"
 #include "fs/virtfsfuncs.h"
 #include "fs/virtlist.h"
+
+#include "fs/virtfs/virtdirentry.h"
+#include "fs/virtfs/virtfsdir.h"
+#include "fs/virtfs/virtfszip.h"
+
+#include "utils/checkutils.h"
 
 #include "debug.h"
 
@@ -37,83 +39,71 @@ namespace VirtFs
 {
     void init(const std::string &restrict name)
     {
-#ifdef USE_PHYSFS
-        VirtFsPhys::init(name);
-#else  // USE_PHYSFS
         VirtFsDir::init(name);
-#endif  // USE_PHYSFS
         updateDirSeparator();
     }
 
     void updateDirSeparator()
     {
-#ifdef USE_PHYSFS
-        dirSeparator = VirtFsPhys::getDirSeparator();
-#else  // USE_PHYSFS
 #ifdef WIN32
         dirSeparator = "\\";
 #else  // WIN32
         dirSeparator = "/";
 #endif  // WIN32
-#endif  // USE_PHYSFS
     }
 
     const char *getDirSeparator()
     {
-#ifdef USE_PHYSFS
-        return VirtFsPhys::getDirSeparator();
-#else  // USE_PHYSFS
         return dirSeparator;
-#endif  // USE_PHYSFS
     }
 
     const char *getBaseDir()
     {
-#ifdef USE_PHYSFS
-        return VirtFsPhys::getBaseDir();
-#else  // USE_PHYSFS
         return VirtFsDir::getBaseDir();
-#endif  // USE_PHYSFS
     }
 
     const char *getUserDir()
     {
-#ifdef USE_PHYSFS
-        return VirtFsPhys::getUserDir();
-#else  // USE_PHYSFS
         return VirtFsDir::getUserDir();
-#endif  // USE_PHYSFS
     }
 
     bool exists(const std::string &restrict name)
     {
-#ifdef USE_PHYSFS
-        return VirtFsPhys::exists(name);
-#else  // USE_PHYSFS
         return VirtFsDir::exists(name) || VirtFsZip::exists(name);
-#endif  // USE_PHYSFS
     }
 
-    VirtList *enumerateFiles(const std::string &restrict dirName)
+    VirtList *enumerateFiles(std::string dirName)
     {
-#ifdef USE_PHYSFS
-        return VirtFsPhys::enumerateFiles(dir);
-#else  // USE_PHYSFS
         VirtList *const list = new VirtList;
+        prepareFsPath(dirName);
+        if (checkPath(dirName) == false)
+        {
+            reportAlways("VirtFs::enumerateFiles invalid path: %s",
+                dirName.c_str());
+            return list;
+        }
+
         VirtFsDir::enumerateFiles(dirName, list);
         VirtFsZip::enumerateFiles(dirName, list);
         return list;
-#endif  // USE_PHYSFS
     }
 
-    bool isDirectory(const std::string &restrict name)
+    bool isDirectory(std::string name)
     {
-        return VirtFsPhys::isDirectory(name);
+        prepareFsPath(name);
+        if (checkPath(name) == false)
+        {
+            reportAlways("VirtFs::isDirectory invalid path: %s",
+                name.c_str());
+            return false;
+        }
+        return VirtFsDir::isDirectoryInternal(name) ||
+            VirtFsZip::isDirectoryInternal(name);
     }
 
     bool isSymbolicLink(const std::string &restrict name)
     {
-        return VirtFsPhys::isSymbolicLink(name);
+        return VirtFsDir::isSymbolicLink(name);
     }
 
     void freeList(VirtList *restrict const handle)
@@ -121,81 +111,97 @@ namespace VirtFs
         delete handle;
     }
 
-    VirtFile *openRead(const std::string &restrict filename)
+    VirtFile *openRead(std::string filename)
     {
-        return VirtFsPhys::openRead(filename);
+        prepareFsPath(filename);
+        if (checkPath(filename) == false)
+        {
+            reportAlways("VirtFs::openRead invalid path: %s",
+                filename.c_str());
+            return nullptr;
+        }
+        VirtDirEntry *const entry = VirtFsDir::searchEntryByPath(filename);
+        if (entry == nullptr)
+            return VirtFsZip::openReadInternal(filename);
+        return VirtFsDir::openReadDirEntry(entry, filename);
     }
 
     VirtFile *openWrite(const std::string &restrict filename)
     {
-        return VirtFsPhys::openWrite(filename);
+        return VirtFsDir::openWrite(filename);
     }
 
     VirtFile *openAppend(const std::string &restrict filename)
     {
-        return VirtFsPhys::openAppend(filename);
+        return VirtFsDir::openAppend(filename);
     }
 
     bool setWriteDir(const std::string &restrict newDir)
     {
-        return VirtFsPhys::setWriteDir(newDir);
+        return VirtFsDir::setWriteDir(newDir);
     }
 
     bool addDirToSearchPath(const std::string &restrict newDir,
                             const Append append)
     {
-        return VirtFsPhys::addDirToSearchPath(newDir, append);
+        return VirtFsDir::addToSearchPath(newDir, append);
     }
 
     bool removeDirFromSearchPath(const std::string &restrict oldDir)
     {
-        return VirtFsPhys::removeDirFromSearchPath(oldDir);
+        return VirtFsDir::removeFromSearchPath(oldDir);
     }
 
     bool addZipToSearchPath(const std::string &restrict newDir,
                             const Append append)
     {
-        return VirtFsPhys::addZipToSearchPath(newDir, append);
+        return VirtFsZip::addToSearchPath(newDir, append);
     }
 
     bool removeZipFromSearchPath(const std::string &restrict oldDir)
     {
-        return VirtFsPhys::removeZipFromSearchPath(oldDir);
+        return VirtFsZip::removeFromSearchPath(oldDir);
     }
 
-    std::string getRealDir(const std::string &restrict filename)
+    std::string getRealDir(std::string filename)
     {
-        return VirtFsPhys::getRealDir(filename);
+        prepareFsPath(filename);
+        if (checkPath(filename) == false)
+        {
+            reportAlways("VirtFs::getRealDir invalid path: %s",
+                filename.c_str());
+            return std::string();
+        }
+        VirtDirEntry *const entry = VirtFsDir::searchEntryByPath(filename);
+        if (entry == nullptr)
+            return VirtFsZip::getRealDirInternal(filename);
+        return entry->mUserDir;
     }
 
     bool mkdir(const std::string &restrict dirname)
     {
-        return VirtFsPhys::mkdir(dirname);
+        return VirtFsDir::mkdir(dirname);
     }
 
     bool remove(const std::string &restrict filename)
     {
-        return VirtFsPhys::remove(filename);
+        return VirtFsDir::remove(filename);
     }
 
     bool deinit()
     {
-#ifdef USE_PHYSFS
-        return VirtFsPhys::deinit();
-#else  // USE_PHYSFS
         VirtFsDir::deinit();
         return true;
-#endif  // USE_PHYSFS
     }
 
     void permitLinks(const bool val)
     {
-        VirtFsPhys::permitLinks(val);
+        VirtFsDir::permitLinks(val);
     }
 
     const char *getLastError()
     {
-        return VirtFsPhys::getLastError();
+        return "";
     }
 
     int close(VirtFile *restrict const file)

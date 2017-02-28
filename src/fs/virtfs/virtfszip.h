@@ -37,7 +37,8 @@ struct ZipLocalHeader;
 
 namespace VirtFsZip
 {
-    VirtZipEntry *searchEntryByArchive(const std::string &restrict archiveName);
+    VirtZipEntry *searchEntryByArchive(const std::string &restrict
+                                       archiveName);
     ZipLocalHeader *searchHeaderByName(const std::string &restrict filename);
     bool addToSearchPath(std::string newDir,
                          const Append append);
@@ -50,17 +51,20 @@ namespace VirtFsZip
     void deinit();
     std::vector<VirtZipEntry*> &getEntries();
     bool exists(std::string name);
-    VirtList *enumerateFiles(const std::string &dirName) RETURNS_NONNULL;
+    VirtList *enumerateFiles(std::string dirName) RETURNS_NONNULL;
     VirtList *enumerateFiles(std::string dirName,
-                             VirtList *const list) RETURNS_NONNULL;
+                             VirtList *restrict const list) RETURNS_NONNULL;
     bool isDirectory(std::string dirName);
+    bool isDirectoryInternal(std::string dirName);
     bool isSymbolicLink(std::string name);
     void freeList(VirtList *restrict const handle);
     VirtFile *openRead(std::string filename);
+    VirtFile *openReadInternal(const std::string &filename);
     VirtFile *openWrite(const std::string &restrict filename);
     VirtFile *openAppend(const std::string &restrict filename);
     bool setWriteDir(const std::string &restrict newDir);
     std::string getRealDir(std::string filename);
+    std::string getRealDirInternal(const std::string &filename);
     bool mkdir(const std::string &restrict dirName);
     bool remove(const std::string &restrict filename);
     void permitLinks(const bool val);

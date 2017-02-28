@@ -23,9 +23,10 @@
 #include "logger.h"
 
 #include "fs/files.h"
-#include "fs/virtzipentry.h"
-#include "fs/zip.h"
-#include "fs/ziplocalheader.h"
+
+#include "fs/virtfs/virtzipentry.h"
+#include "fs/virtfs/zip.h"
+#include "fs/virtfs/ziplocalheader.h"
 
 #include "utils/delete2.h"
 

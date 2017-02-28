@@ -18,43 +18,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_VIRTFILEPRIVATE_H
-#define UTILS_VIRTFILEPRIVATE_H
+#include "fs/virtfs/ziplocalheader.h"
+
+#include "fs/virtfs/virtzipentry.h"
 
 #include "localconsts.h"
 
-PRAGMA45(GCC diagnostic push)
-PRAGMA45(GCC diagnostic ignored "-Wlong-long")
-#include <physfs.h>
-PRAGMA45(GCC diagnostic pop)
+#include <string>
 
-struct VirtFilePrivate final
+#include "debug.h"
+
+ZipLocalHeader::ZipLocalHeader() :
+    fileName(),
+    zipEntry(nullptr),
+    dataOffset(0U),
+    compressSize(0U),
+    uncompressSize(0U),
+    compressed(false)
 {
-    VirtFilePrivate();
-
-    explicit VirtFilePrivate(PHYSFS_file *restrict const file);
-
-    explicit VirtFilePrivate(const int fd);
-
-    VirtFilePrivate(uint8_t *restrict const buf,
-                    const size_t sz);
-
-    A_DELETE_COPY(VirtFilePrivate)
-
-    ~VirtFilePrivate();
-
-    // physfs fields
-    PHYSFS_file *mFile;
-
-    // zipfs fields
-    uint8_t *mBuf;
-
-    // zipfs fields
-    size_t mPos;
-    size_t mSize;
-
-    // dirfs fields
-    int mFd;
-};
-
-#endif  // UTILS_VIRTFILEPRIVATE_H
+}
