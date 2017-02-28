@@ -89,6 +89,24 @@ TEST_CASE("VirtFsPhys exists")
     delete2(logger);
 }
 
+TEST_CASE("VirtFsPhys exists2")
+{
+    VirtFsPhys::initFuncs();
+    logger = new Logger();
+    VirtFsPhys::addZipToSearchPath("data/test/test2.zip", Append_false);
+    VirtFsPhys::addZipToSearchPath("../data/test/test2.zip", Append_false);
+
+    REQUIRE(VirtFsPhys::exists("test/units.xml") == false);
+    REQUIRE(VirtFsPhys::exists("test.txt") == true);
+    REQUIRE(VirtFsPhys::exists("units123.xml") == false);
+    REQUIRE(VirtFsPhys::exists("tesQ/units.xml") == false);
+    REQUIRE(VirtFsPhys::exists("units.xml") == true);
+
+    VirtFsPhys::removeZipFromSearchPath("data/test/test2.zip");
+    VirtFsPhys::removeZipFromSearchPath("../data/test/test2.zip");
+    delete2(logger);
+}
+
 static void removeTemp(StringVect &restrict list)
 {
     int cnt = 0;
