@@ -51,18 +51,20 @@ namespace VirtFs
     std::string loadTextFileString(const std::string &fileName);
 }  // namespace VirtFs
 
-// +++ temporary add it here
-namespace VirtFsDir
-{
-    void getFiles(const std::string &path,
-                  StringVect &list);
-}  // namespace VirtFs
-
+#ifdef USE_PHYSFS
 // +++ temporary add it here
 namespace VirtFsPhys
 {
     void getFiles(const std::string &path,
                   StringVect &list);
 }  // namespace VirtFs
+#else // USE_PHYSFS
+// +++ temporary add it here
+namespace VirtFsDir
+{
+    void getFiles(const std::string &path,
+                  StringVect &list);
+}  // namespace VirtFs
+#endif  // USE_PHYSFS
 
 #endif  // UTILS_VIRTFSTOOLS_H

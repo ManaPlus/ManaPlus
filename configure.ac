@@ -260,10 +260,18 @@ fi
 AC_CHECK_LIB([z], [inflate], ,
 AC_MSG_ERROR([ *** Unable to find zlib (http://www.gzip.org/zlib/)]))
 
-AC_CHECK_LIB([physfs], [PHYSFS_init], ,
-AC_MSG_ERROR([ *** Unable to find PhysFS library (http://icculus.org/physfs/)]))
-AC_CHECK_HEADERS([physfs.h], ,
-AC_MSG_ERROR([ *** PhysFS library found but cannot find headers (http://icculus.org/physfs/)]))
+# Option to enable physfs.
+AC_ARG_WITH(physfs,[  --without-physfs        don't use physfs ] )
+if test "x$with_physfs" == "xno"; then
+    with_physfs=no
+else
+    with_physfs=yes
+    AC_CHECK_LIB([physfs], [PHYSFS_init], ,
+    AC_MSG_ERROR([ *** Unable to find PhysFS library (http://icculus.org/physfs/)]))
+    AC_CHECK_HEADERS([physfs.h], ,
+    AC_MSG_ERROR([ *** PhysFS library found but cannot find headers (http://icculus.org/physfs/)]))
+fi
+AM_CONDITIONAL(USE_PHYSFS, test x$with_physfs = xyes)
 
 if test -n "$CURL_CONFIG"; then
     LIBS="$LIBS `$CURL_CONFIG --libs`"
@@ -604,6 +612,7 @@ if test "$unittests_enabled" == true; then
 fi
 
 echo "Build with OpenGL: $with_opengl"
+echo "Build with physfs: $with_physfs"
 echo
 echo "LIBS: $LIBS"
 echo "CPPFLAGS: $CPPFLAGS"

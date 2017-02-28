@@ -20,8 +20,11 @@
 
 #include "fs/virtfs.h"
 
-#include "fs/virtfsdir.h"
+#ifdef USE_PHYSFS
 #include "fs/virtfsphys.h"
+#else  // USE_PHYSFS
+#include "fs/virtfsdir.h"
+#endif  // USE_PHYSFS
 #include "fs/virtfile.h"
 #include "fs/virtfsfuncs.h"
 #include "fs/virtlist.h"
@@ -34,33 +37,52 @@ namespace VirtFs
 {
     void init(const std::string &restrict name)
     {
+#ifdef USE_PHYSFS
         VirtFsPhys::init(name);
+#else  // USE_PHYSFS
         VirtFsDir::init(name);
+#endif  // USE_PHYSFS
         updateDirSeparator();
     }
 
     void updateDirSeparator()
     {
+#ifdef USE_PHYSFS
+        dirSeparator = VirtFsPhys::getDirSeparator();
+#else  // USE_PHYSFS
 #ifdef WIN32
         dirSeparator = "\\";
 #else  // WIN32
         dirSeparator = "/";
 #endif  // WIN32
+#endif  // USE_PHYSFS
     }
 
     const char *getDirSeparator()
     {
+#ifdef USE_PHYSFS
+        return VirtFsPhys::getDirSeparator();
+#else  // USE_PHYSFS
         return dirSeparator;
+#endif  // USE_PHYSFS
     }
 
     const char *getBaseDir()
     {
+#ifdef USE_PHYSFS
+        return VirtFsPhys::getBaseDir();
+#else  // USE_PHYSFS
         return VirtFsDir::getBaseDir();
+#endif  // USE_PHYSFS
     }
 
     const char *getUserDir()
     {
+#ifdef USE_PHYSFS
+        return VirtFsPhys::getUserDir();
+#else  // USE_PHYSFS
         return VirtFsDir::getUserDir();
+#endif  // USE_PHYSFS
     }
 
     bool exists(const std::string &restrict name)
@@ -147,8 +169,12 @@ namespace VirtFs
 
     bool deinit()
     {
-        VirtFsDir::deinit();
+#ifdef USE_PHYSFS
         return VirtFsPhys::deinit();
+#else  // USE_PHYSFS
+        VirtFsDir::deinit();
+        return true;
+#endif  // USE_PHYSFS
     }
 
     void permitLinks(const bool val)

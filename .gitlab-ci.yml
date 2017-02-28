@@ -187,7 +187,7 @@ cpplint:
 gcc-5_h_all:
   stage: prebuild
   script:
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUSE_PHYSFS
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -198,7 +198,7 @@ gcc-5_h_all:
 gcc-5_h_all_i386:
   stage: prebuild
   script:
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUSE_PHYSFS
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -1313,7 +1313,7 @@ gcc-4.9_sdl2:
 gcc-5_h_eathena_tmwa:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -DUSE_PHYSFS
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1972,7 +1972,7 @@ gcc-6_SDL_default_old_test:
 deheader_gui_windows_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1982,7 +1982,7 @@ deheader_gui_windows_cpp:
 deheader_sdl2_gui_windows_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -1992,7 +1992,7 @@ deheader_sdl2_gui_windows_cpp:
 deheader_gui_windows_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2002,7 +2002,7 @@ deheader_gui_windows_withoutopengl_cpp:
 deheader_sdl2_gui_windows_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2012,7 +2012,7 @@ deheader_sdl2_gui_windows_withoutopengl_cpp:
 deheader_gui_widgets_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2022,7 +2022,7 @@ deheader_gui_widgets_cpp:
 deheader_sdl2_gui_widgets_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2032,7 +2032,7 @@ deheader_sdl2_gui_widgets_cpp:
 deheader_gui_widgets_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2042,7 +2042,7 @@ deheader_gui_widgets_withoutopengl_cpp:
 deheader_sdl2_gui_widgets_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2052,7 +2052,7 @@ deheader_sdl2_gui_widgets_withoutopengl_cpp:
 deheader_gui_models_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2062,7 +2062,7 @@ deheader_gui_models_cpp:
 deheader_sdl2_gui_models_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2072,7 +2072,7 @@ deheader_sdl2_gui_models_cpp:
 deheader_gui_models_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2082,7 +2082,7 @@ deheader_gui_models_withoutopengl_cpp:
 deheader_sdl2_gui_models_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2092,7 +2092,7 @@ deheader_sdl2_gui_models_withoutopengl_cpp:
 deheader_actions_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2102,7 +2102,7 @@ deheader_actions_cpp:
 deheader_actions_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2112,7 +2112,7 @@ deheader_actions_h:
 deheader_being_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2122,7 +2122,7 @@ deheader_being_cpp:
 deheader_being_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2132,7 +2132,7 @@ deheader_being_h:
 deheader_const_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2142,7 +2142,7 @@ deheader_const_h:
 deheader_dyecmd_cpp:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2152,7 +2152,7 @@ deheader_dyecmd_cpp:
 deheader_dyecmd_h:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2162,7 +2162,7 @@ deheader_dyecmd_h:
 deheader_enums_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2172,7 +2172,7 @@ deheader_enums_h:
 deheader_events_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2182,7 +2182,7 @@ deheader_events_h:
 deheader_gui_fonts_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2192,7 +2192,7 @@ deheader_gui_fonts_cpp:
 deheader_gui_fonts_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2202,7 +2202,7 @@ deheader_gui_fonts_h:
 deheader_gui_models_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2212,7 +2212,7 @@ deheader_gui_models_h:
 deheader_gui_popups_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2222,7 +2222,7 @@ deheader_gui_popups_cpp:
 deheader_gui_popups_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2232,7 +2232,7 @@ deheader_gui_popups_h:
 deheader_gui_shortcut_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2242,7 +2242,7 @@ deheader_gui_shortcut_cpp:
 deheader_gui_shortcut_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2252,7 +2252,7 @@ deheader_gui_shortcut_h:
 deheader_gui_widgets_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2262,7 +2262,7 @@ deheader_gui_widgets_h:
 deheader_gui_windows_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2272,7 +2272,7 @@ deheader_gui_windows_h:
 deheader_gui_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2282,7 +2282,7 @@ deheader_gui_cpp:
 deheader_gui_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2292,7 +2292,7 @@ deheader_gui_h:
 deheader_input_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2302,7 +2302,7 @@ deheader_input_cpp:
 deheader_input_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2312,7 +2312,7 @@ deheader_input_h:
 deheader_listeners_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2322,7 +2322,7 @@ deheader_listeners_cpp:
 deheader_listeners_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2332,7 +2332,7 @@ deheader_listeners_h:
 deheader_net_ea_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2342,7 +2342,7 @@ deheader_net_ea_cpp:
 deheader_net_ea_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2352,7 +2352,7 @@ deheader_net_ea_h:
 deheader_net_eathena_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2362,7 +2362,7 @@ deheader_net_eathena_cpp:
 deheader_net_eathena_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2372,7 +2372,7 @@ deheader_net_eathena_h:
 deheader_net_tmwa_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2382,7 +2382,7 @@ deheader_net_tmwa_cpp:
 deheader_net_tmwa_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2392,7 +2392,7 @@ deheader_net_tmwa_h:
 deheader_net_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2402,7 +2402,7 @@ deheader_net_cpp:
 deheader_net_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2412,7 +2412,7 @@ deheader_net_h:
 deheader_particle_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2422,7 +2422,7 @@ deheader_particle_cpp:
 deheader_particle_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2432,7 +2432,7 @@ deheader_particle_h:
 deheader_render_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2442,7 +2442,7 @@ deheader_render_cpp:
 deheader_render_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2452,7 +2452,7 @@ deheader_render_h:
 deheader_resources_db_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2462,7 +2462,7 @@ deheader_resources_db_cpp:
 deheader_resources_db_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2472,7 +2472,7 @@ deheader_resources_db_h:
 deheader_resources_map_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2482,7 +2482,7 @@ deheader_resources_map_cpp:
 deheader_resources_map_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2492,7 +2492,7 @@ deheader_resources_map_h:
 deheader_resources_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2502,7 +2502,7 @@ deheader_resources_cpp:
 deheader_resources_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2512,7 +2512,7 @@ deheader_resources_h:
 deheader_test_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2522,7 +2522,7 @@ deheader_test_cpp:
 deheader_test_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2532,7 +2532,7 @@ deheader_test_h:
 deheader_utils_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2542,7 +2542,7 @@ deheader_utils_cpp:
 deheader_utils_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2552,7 +2552,7 @@ deheader_utils_h:
 deheader_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2562,7 +2562,7 @@ deheader_cpp:
 deheader_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2572,7 +2572,7 @@ deheader_h:
 deheader_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2584,7 +2584,7 @@ deheader_cc:
 deheader_sdl2_actions_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2594,7 +2594,7 @@ deheader_sdl2_actions_cpp:
 deheader_sdl2_actions_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2604,7 +2604,7 @@ deheader_sdl2_actions_h:
 deheader_sdl2_being_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2614,7 +2614,7 @@ deheader_sdl2_being_cpp:
 deheader_sdl2_being_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2624,7 +2624,7 @@ deheader_sdl2_being_h:
 deheader_sdl2_const_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2634,7 +2634,7 @@ deheader_sdl2_const_h:
 deheader_sdl2_dyecmd_cpp:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2644,7 +2644,7 @@ deheader_sdl2_dyecmd_cpp:
 deheader_sdl2_dyecmd_h:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2654,7 +2654,7 @@ deheader_sdl2_dyecmd_h:
 deheader_sdl2_enums_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2664,7 +2664,7 @@ deheader_sdl2_enums_h:
 deheader_sdl2_events_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2674,7 +2674,7 @@ deheader_sdl2_events_h:
 deheader_sdl2_gui_fonts_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2684,7 +2684,7 @@ deheader_sdl2_gui_fonts_cpp:
 deheader_sdl2_gui_fonts_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2694,7 +2694,7 @@ deheader_sdl2_gui_fonts_h:
 deheader_sdl2_gui_models_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2704,7 +2704,7 @@ deheader_sdl2_gui_models_h:
 deheader_sdl2_gui_popups_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2714,7 +2714,7 @@ deheader_sdl2_gui_popups_cpp:
 deheader_sdl2_gui_popups_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2724,7 +2724,7 @@ deheader_sdl2_gui_popups_h:
 deheader_sdl2_gui_shortcut_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2734,7 +2734,7 @@ deheader_sdl2_gui_shortcut_cpp:
 deheader_sdl2_gui_shortcut_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2744,7 +2744,7 @@ deheader_sdl2_gui_shortcut_h:
 deheader_sdl2_gui_widgets_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2754,7 +2754,7 @@ deheader_sdl2_gui_widgets_h:
 deheader_sdl2_gui_windows_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2764,7 +2764,7 @@ deheader_sdl2_gui_windows_h:
 deheader_sdl2_gui_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2774,7 +2774,7 @@ deheader_sdl2_gui_cpp:
 deheader_sdl2_gui_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2784,7 +2784,7 @@ deheader_sdl2_gui_h:
 deheader_sdl2_input_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2794,7 +2794,7 @@ deheader_sdl2_input_cpp:
 deheader_sdl2_input_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2804,7 +2804,7 @@ deheader_sdl2_input_h:
 deheader_sdl2_listeners_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2814,7 +2814,7 @@ deheader_sdl2_listeners_cpp:
 deheader_sdl2_listeners_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2824,7 +2824,7 @@ deheader_sdl2_listeners_h:
 deheader_sdl2_net_ea_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2834,7 +2834,7 @@ deheader_sdl2_net_ea_cpp:
 deheader_sdl2_net_ea_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2844,7 +2844,7 @@ deheader_sdl2_net_ea_h:
 deheader_sdl2_net_eathena_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2854,7 +2854,7 @@ deheader_sdl2_net_eathena_cpp:
 deheader_sdl2_net_eathena_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2864,7 +2864,7 @@ deheader_sdl2_net_eathena_h:
 deheader_sdl2_net_tmwa_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2874,7 +2874,7 @@ deheader_sdl2_net_tmwa_cpp:
 deheader_sdl2_net_tmwa_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2884,7 +2884,7 @@ deheader_sdl2_net_tmwa_h:
 deheader_sdl2_net_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2894,7 +2894,7 @@ deheader_sdl2_net_cpp:
 deheader_sdl2_net_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2904,7 +2904,7 @@ deheader_sdl2_net_h:
 deheader_sdl2_particle_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2914,7 +2914,7 @@ deheader_sdl2_particle_cpp:
 deheader_sdl2_particle_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2924,7 +2924,7 @@ deheader_sdl2_particle_h:
 deheader_sdl2_render_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2934,7 +2934,7 @@ deheader_sdl2_render_cpp:
 deheader_sdl2_render_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2944,7 +2944,7 @@ deheader_sdl2_render_h:
 deheader_sdl2_resources_db_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2954,7 +2954,7 @@ deheader_sdl2_resources_db_cpp:
 deheader_sdl2_resources_db_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2964,7 +2964,7 @@ deheader_sdl2_resources_db_h:
 deheader_sdl2_resources_map_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2974,7 +2974,7 @@ deheader_sdl2_resources_map_cpp:
 deheader_sdl2_resources_map_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2984,7 +2984,7 @@ deheader_sdl2_resources_map_h:
 deheader_sdl2_resources_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -2994,7 +2994,7 @@ deheader_sdl2_resources_cpp:
 deheader_sdl2_resources_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3004,7 +3004,7 @@ deheader_sdl2_resources_h:
 deheader_sdl2_test_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3014,7 +3014,7 @@ deheader_sdl2_test_cpp:
 deheader_sdl2_test_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3024,7 +3024,7 @@ deheader_sdl2_test_h:
 deheader_sdl2_utils_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3034,7 +3034,7 @@ deheader_sdl2_utils_cpp:
 deheader_sdl2_utils_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3044,7 +3044,7 @@ deheader_sdl2_utils_h:
 deheader_sdl2_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3054,7 +3054,7 @@ deheader_sdl2_cpp:
 deheader_sdl2_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3064,7 +3064,7 @@ deheader_sdl2_h:
 deheader_sdl2_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3076,7 +3076,7 @@ deheader_sdl2_cc:
 deheader_actions_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3086,7 +3086,7 @@ deheader_actions_withoutopengl_cpp:
 deheader_actions_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3096,7 +3096,7 @@ deheader_actions_withoutopengl_h:
 deheader_being_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3106,7 +3106,7 @@ deheader_being_withoutopengl_cpp:
 deheader_being_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3116,7 +3116,7 @@ deheader_being_withoutopengl_h:
 deheader_const_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3126,7 +3126,7 @@ deheader_const_withoutopengl_h:
 deheader_dyecmd_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3136,7 +3136,7 @@ deheader_dyecmd_withoutopengl_cpp:
 deheader_dyecmd_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3146,7 +3146,7 @@ deheader_dyecmd_withoutopengl_h:
 deheader_enums_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3156,7 +3156,7 @@ deheader_enums_withoutopengl_h:
 deheader_events_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3166,7 +3166,7 @@ deheader_events_withoutopengl_h:
 deheader_gui_fonts_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3176,7 +3176,7 @@ deheader_gui_fonts_withoutopengl_cpp:
 deheader_gui_fonts_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3186,7 +3186,7 @@ deheader_gui_fonts_withoutopengl_h:
 deheader_gui_models_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3196,7 +3196,7 @@ deheader_gui_models_withoutopengl_h:
 deheader_gui_popups_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3206,7 +3206,7 @@ deheader_gui_popups_withoutopengl_cpp:
 deheader_gui_popups_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3216,7 +3216,7 @@ deheader_gui_popups_withoutopengl_h:
 deheader_gui_shortcut_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3226,7 +3226,7 @@ deheader_gui_shortcut_withoutopengl_cpp:
 deheader_gui_shortcut_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3236,7 +3236,7 @@ deheader_gui_shortcut_withoutopengl_h:
 deheader_gui_widgets_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3246,7 +3246,7 @@ deheader_gui_widgets_withoutopengl_h:
 deheader_gui_windows_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3256,7 +3256,7 @@ deheader_gui_windows_withoutopengl_h:
 deheader_gui_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3266,7 +3266,7 @@ deheader_gui_withoutopengl_cpp:
 deheader_gui_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3276,7 +3276,7 @@ deheader_gui_withoutopengl_h:
 deheader_input_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3286,7 +3286,7 @@ deheader_input_withoutopengl_cpp:
 deheader_input_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3296,7 +3296,7 @@ deheader_input_withoutopengl_h:
 deheader_listeners_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3306,7 +3306,7 @@ deheader_listeners_withoutopengl_cpp:
 deheader_listeners_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3316,7 +3316,7 @@ deheader_listeners_withoutopengl_h:
 deheader_net_ea_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3326,7 +3326,7 @@ deheader_net_ea_withoutopengl_cpp:
 deheader_net_ea_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3336,7 +3336,7 @@ deheader_net_ea_withoutopengl_h:
 deheader_net_eathena_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3346,7 +3346,7 @@ deheader_net_eathena_withoutopengl_cpp:
 deheader_net_eathena_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3356,7 +3356,7 @@ deheader_net_eathena_withoutopengl_h:
 deheader_net_tmwa_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3366,7 +3366,7 @@ deheader_net_tmwa_withoutopengl_cpp:
 deheader_net_tmwa_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3376,7 +3376,7 @@ deheader_net_tmwa_withoutopengl_h:
 deheader_net_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3386,7 +3386,7 @@ deheader_net_withoutopengl_cpp:
 deheader_net_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3396,7 +3396,7 @@ deheader_net_withoutopengl_h:
 deheader_particle_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3406,7 +3406,7 @@ deheader_particle_withoutopengl_cpp:
 deheader_particle_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3416,7 +3416,7 @@ deheader_particle_withoutopengl_h:
 deheader_render_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3426,7 +3426,7 @@ deheader_render_withoutopengl_cpp:
 deheader_render_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3436,7 +3436,7 @@ deheader_render_withoutopengl_h:
 deheader_resources_db_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3446,7 +3446,7 @@ deheader_resources_db_withoutopengl_cpp:
 deheader_resources_db_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3456,7 +3456,7 @@ deheader_resources_db_withoutopengl_h:
 deheader_resources_map_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3466,7 +3466,7 @@ deheader_resources_map_withoutopengl_cpp:
 deheader_resources_map_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3476,7 +3476,7 @@ deheader_resources_map_withoutopengl_h:
 deheader_resources_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3486,7 +3486,7 @@ deheader_resources_withoutopengl_cpp:
 deheader_resources_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3496,7 +3496,7 @@ deheader_resources_withoutopengl_h:
 deheader_test_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3506,7 +3506,7 @@ deheader_test_withoutopengl_cpp:
 deheader_test_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3516,7 +3516,7 @@ deheader_test_withoutopengl_h:
 deheader_utils_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3526,7 +3526,7 @@ deheader_utils_withoutopengl_cpp:
 deheader_utils_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3536,7 +3536,7 @@ deheader_utils_withoutopengl_h:
 deheader_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3546,7 +3546,7 @@ deheader_withoutopengl_cpp:
 deheader_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3556,7 +3556,7 @@ deheader_withoutopengl_h:
 deheader_withoutopengl_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3568,7 +3568,7 @@ deheader_withoutopengl_cc:
 deheader_sdl2_actions_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3578,7 +3578,7 @@ deheader_sdl2_actions_withoutopengl_cpp:
 deheader_sdl2_actions_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/actions -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3588,7 +3588,7 @@ deheader_sdl2_actions_withoutopengl_h:
 deheader_sdl2_being_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3598,7 +3598,7 @@ deheader_sdl2_being_withoutopengl_cpp:
 deheader_sdl2_being_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/being -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3608,7 +3608,7 @@ deheader_sdl2_being_withoutopengl_h:
 deheader_sdl2_const_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/const -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3618,7 +3618,7 @@ deheader_sdl2_const_withoutopengl_h:
 deheader_sdl2_dyecmd_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3628,7 +3628,7 @@ deheader_sdl2_dyecmd_withoutopengl_cpp:
 deheader_sdl2_dyecmd_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3638,7 +3638,7 @@ deheader_sdl2_dyecmd_withoutopengl_h:
 deheader_sdl2_enums_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/enums -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3648,7 +3648,7 @@ deheader_sdl2_enums_withoutopengl_h:
 deheader_sdl2_events_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/events -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3658,7 +3658,7 @@ deheader_sdl2_events_withoutopengl_h:
 deheader_sdl2_gui_fonts_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3668,7 +3668,7 @@ deheader_sdl2_gui_fonts_withoutopengl_cpp:
 deheader_sdl2_gui_fonts_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/fonts -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3678,7 +3678,7 @@ deheader_sdl2_gui_fonts_withoutopengl_h:
 deheader_sdl2_gui_models_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/models -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3688,7 +3688,7 @@ deheader_sdl2_gui_models_withoutopengl_h:
 deheader_sdl2_gui_popups_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3698,7 +3698,7 @@ deheader_sdl2_gui_popups_withoutopengl_cpp:
 deheader_sdl2_gui_popups_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/popups -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3708,7 +3708,7 @@ deheader_sdl2_gui_popups_withoutopengl_h:
 deheader_sdl2_gui_shortcut_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3718,7 +3718,7 @@ deheader_sdl2_gui_shortcut_withoutopengl_cpp:
 deheader_sdl2_gui_shortcut_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/shortcut -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3728,7 +3728,7 @@ deheader_sdl2_gui_shortcut_withoutopengl_h:
 deheader_sdl2_gui_widgets_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/widgets -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3738,7 +3738,7 @@ deheader_sdl2_gui_widgets_withoutopengl_h:
 deheader_sdl2_gui_windows_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui/windows -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3748,7 +3748,7 @@ deheader_sdl2_gui_windows_withoutopengl_h:
 deheader_sdl2_gui_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.cpp" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3758,7 +3758,7 @@ deheader_sdl2_gui_withoutopengl_cpp:
 deheader_sdl2_gui_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/gui -type f -name "*.h" ! -path "./src/gui/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3768,7 +3768,7 @@ deheader_sdl2_gui_withoutopengl_h:
 deheader_sdl2_input_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3778,7 +3778,7 @@ deheader_sdl2_input_withoutopengl_cpp:
 deheader_sdl2_input_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/input -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3788,7 +3788,7 @@ deheader_sdl2_input_withoutopengl_h:
 deheader_sdl2_listeners_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3798,7 +3798,7 @@ deheader_sdl2_listeners_withoutopengl_cpp:
 deheader_sdl2_listeners_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/listeners -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3808,7 +3808,7 @@ deheader_sdl2_listeners_withoutopengl_h:
 deheader_sdl2_net_ea_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3818,7 +3818,7 @@ deheader_sdl2_net_ea_withoutopengl_cpp:
 deheader_sdl2_net_ea_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/ea -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3828,7 +3828,7 @@ deheader_sdl2_net_ea_withoutopengl_h:
 deheader_sdl2_net_eathena_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3838,7 +3838,7 @@ deheader_sdl2_net_eathena_withoutopengl_cpp:
 deheader_sdl2_net_eathena_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/eathena -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3848,7 +3848,7 @@ deheader_sdl2_net_eathena_withoutopengl_h:
 deheader_sdl2_net_tmwa_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3858,7 +3858,7 @@ deheader_sdl2_net_tmwa_withoutopengl_cpp:
 deheader_sdl2_net_tmwa_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net/tmwa -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3868,7 +3868,7 @@ deheader_sdl2_net_tmwa_withoutopengl_h:
 deheader_sdl2_net_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.cpp" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3878,7 +3878,7 @@ deheader_sdl2_net_withoutopengl_cpp:
 deheader_sdl2_net_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/net -type f -name "*.h" ! -path "./src/net/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3888,7 +3888,7 @@ deheader_sdl2_net_withoutopengl_h:
 deheader_sdl2_particle_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3898,7 +3898,7 @@ deheader_sdl2_particle_withoutopengl_cpp:
 deheader_sdl2_particle_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/particle -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3908,7 +3908,7 @@ deheader_sdl2_particle_withoutopengl_h:
 deheader_sdl2_render_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3918,7 +3918,7 @@ deheader_sdl2_render_withoutopengl_cpp:
 deheader_sdl2_render_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/render -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3928,7 +3928,7 @@ deheader_sdl2_render_withoutopengl_h:
 deheader_sdl2_resources_db_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3938,7 +3938,7 @@ deheader_sdl2_resources_db_withoutopengl_cpp:
 deheader_sdl2_resources_db_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/db -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3948,7 +3948,7 @@ deheader_sdl2_resources_db_withoutopengl_h:
 deheader_sdl2_resources_map_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3958,7 +3958,7 @@ deheader_sdl2_resources_map_withoutopengl_cpp:
 deheader_sdl2_resources_map_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources/map -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3968,7 +3968,7 @@ deheader_sdl2_resources_map_withoutopengl_h:
 deheader_sdl2_resources_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.cpp" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3978,7 +3978,7 @@ deheader_sdl2_resources_withoutopengl_cpp:
 deheader_sdl2_resources_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/resources -type f -name "*.h" ! -path "./src/resources/db/*" ! -path "./src/resources/map/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3988,7 +3988,7 @@ deheader_sdl2_resources_withoutopengl_h:
 deheader_sdl2_test_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3998,7 +3998,7 @@ deheader_sdl2_test_withoutopengl_cpp:
 deheader_sdl2_test_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/test -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4008,7 +4008,7 @@ deheader_sdl2_test_withoutopengl_h:
 deheader_sdl2_utils_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4018,7 +4018,7 @@ deheader_sdl2_utils_withoutopengl_cpp:
 deheader_sdl2_utils_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src/utils -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4028,7 +4028,7 @@ deheader_sdl2_utils_withoutopengl_h:
 deheader_sdl2_withoutopengl_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cpp" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4038,7 +4038,7 @@ deheader_sdl2_withoutopengl_cpp:
 deheader_sdl2_withoutopengl_h:
   stage: build
   script:
-  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.h" ! -path "./src/*/*" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4048,7 +4048,7 @@ deheader_sdl2_withoutopengl_h:
 deheader_sdl2_withoutopengl_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2 -DUSE_PHYSFS"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh

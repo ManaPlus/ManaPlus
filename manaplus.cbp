@@ -20,6 +20,7 @@
 					<Add option="-DUSE_MUMBLE" />
 					<Add option="-DTMWA_SUPPORT" />
 					<Add option="-DENABLE_LIBXML" />
+					<Add option="-DUSE_PHYSFS" />
 					<Add directory="src/" />
 					<Add directory="include" />
 					<Add directory="../winlibs/include/libxml2" />

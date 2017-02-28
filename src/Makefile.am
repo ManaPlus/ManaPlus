@@ -76,6 +76,11 @@ dyecmd_CXXFLAGS += -DUSE_OPENGL
 manaplus_CXXFLAGS += -DUSE_OPENGL
 endif
 
+if USE_PHYSFS
+dyecmd_CXXFLAGS += -DUSE_PHYSFS
+manaplus_CXXFLAGS += -DUSE_PHYSFS
+endif
+
 if ENABLE_MEM_DEBUG
 dyecmd_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
 manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
@@ -551,27 +556,15 @@ BASE_SRC += events/actionevent.h \
 	      utils/perfomance.cpp \
 	      utils/perfomance.h \
 	      utils/debugmemoryobject.h \
-	      fs/virtfsdir.cpp \
-	      fs/virtfsdir.h \
 	      fs/virtfsfuncs.h \
-	      fs/virtfsphys.cpp \
-	      fs/virtfsphys.h \
 	      fs/virtfsrwops.cpp \
 	      fs/virtfsrwops.h \
 	      fs/virtfstools.cpp \
 	      fs/virtfstools.h \
-	      fs/virtfszip.cpp \
-	      fs/virtfszip.h \
 	      fs/virtlist.cpp \
 	      fs/virtlist.h \
-	      fs/virtzipentry.cpp \
-	      fs/virtzipentry.h \
 	      fs/virtfs.cpp \
 	      fs/virtfs.h \
-	      fs/zip.cpp \
-	      fs/zip.h \
-	      fs/ziplocalheader.cpp \
-	      fs/ziplocalheader.h \
 	      utils/process.cpp \
 	      utils/process.h \
 	      utils/sdl2helper.cpp \
@@ -834,6 +827,24 @@ BASE_SRC += events/actionevent.h \
 	      resources/memorymanager.cpp \
 	      resources/memorymanager.h \
 	      winver.h
+
+if USE_PHYSFS
+BASE_SRC +=  \
+	      fs/virtfsphys.cpp \
+	      fs/virtfsphys.h
+else
+BASE_SRC +=  \
+	      fs/virtfsdir.cpp \
+	      fs/virtfsdir.h \
+	      fs/virtfszip.cpp \
+	      fs/virtfszip.h \
+	      fs/virtzipentry.cpp \
+	      fs/virtzipentry.h \
+	      fs/zip.cpp \
+	      fs/zip.h \
+	      fs/ziplocalheader.cpp \
+	      fs/ziplocalheader.h
+endif
 
 if ENABLE_PUGIXML
 BASE_SRC += utils/xml/pugixml.cpp \
@@ -1909,6 +1920,9 @@ TESTS = manaplustests
 check_PROGRAMS = manaplustests
 manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
+if USE_PHYSFS
+manaplustests_CXXFLAGS += -DUSE_PHYSFS
+endif
 if USE_SDL2
 manaplustests_CXXFLAGS += -DUSE_SDL2
 endif
@@ -1933,12 +1947,20 @@ manaplustests_SOURCES = ${SRC} \
 	      render/mockgraphics.h \
 	      enums/enums_unittest.cc \
 	      utils/dumplibs_unittest.cc \
-	      utils/checkutils_unittest.cc \
-	      fs/virtfs_unittest.cc \
-	      fs/virtfsphys_unittest.cc \
-	      fs/zip_unittest.cc \
+	      utils/checkutils_unittest.cc
+
+if USE_PHYSFS
+manaplustests_SOURCES += \
+	      fs/virtfsphys_unittest.cc
+else
+manaplustests_SOURCES += \
 	      fs/virtfsdir_unittest.cc \
-	      fs/virtfszip_unittest.cc \
+	      fs/zip_unittest.cc \
+	      fs/virtfszip_unittest.cc
+endif
+
+manaplustests_SOURCES += \
+	      fs/virtfs_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/timer_unittest.cc \
 	      utils/xmlutils_unittest.cc \
