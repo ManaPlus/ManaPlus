@@ -60,6 +60,8 @@ TEST_CASE("DyePalette tests")
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
     VirtFs::addDirToSearchPath("data/test", Append_false);
     VirtFs::addDirToSearchPath("../data/test", Append_false);
 
@@ -382,6 +384,10 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[3] == 0x77);
     }
     delete2(client);
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPath("data/test");
+    VirtFs::removeDirFromSearchPath("../data/test");
     delete2(logger);
 //    VirtFs::deinit();
 }

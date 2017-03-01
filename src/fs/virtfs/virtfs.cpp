@@ -144,23 +144,41 @@ namespace VirtFs
     bool addDirToSearchPath(const std::string &restrict newDir,
                             const Append append)
     {
+#ifdef UNITTESTS
+        return VirtFsDir::addToSearchPathSilent(newDir,
+            append,
+            SkipError_false);
+#else  // UNITTESTS
         return VirtFsDir::addToSearchPath(newDir, append);
+#endif  // UNITTESTS
     }
 
     bool removeDirFromSearchPath(const std::string &restrict oldDir)
     {
+#ifdef UNITTESTS
+        return VirtFsDir::removeFromSearchPathSilent(oldDir);
+#else  // UNITTESTS
         return VirtFsDir::removeFromSearchPath(oldDir);
+#endif  // UNITTESTS
     }
 
     bool addZipToSearchPath(const std::string &restrict newDir,
                             const Append append)
     {
+#ifdef UNITTESTS
+        return VirtFsZip::addToSearchPathSilent(newDir, append);
+#else  // UNITTESTS
         return VirtFsZip::addToSearchPath(newDir, append);
+#endif  // UNITTESTS
     }
 
     bool removeZipFromSearchPath(const std::string &restrict oldDir)
     {
+#ifdef UNITTESTS
+        return VirtFsZip::removeFromSearchPathSilent(oldDir);
+#else  // UNITTESTS
         return VirtFsZip::removeFromSearchPath(oldDir);
+#endif  // UNITTESTS
     }
 
     std::string getRealDir(std::string filename)

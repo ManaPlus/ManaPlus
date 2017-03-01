@@ -221,7 +221,7 @@ TEST_CASE("integrity tests", "integrity")
         VirtFs::addZipToSearchPath("data/test/test.zip", Append_false);
         VirtFs::addZipToSearchPath("../data/test/test.zip", Append_false);
         Image *const image = Loader::getImage(
-            "hide.png");
+            "dir/hide.png");
         VirtFs::removeZipFromSearchPath("data/test/test.zip");
         VirtFs::removeZipFromSearchPath("../data/test/test.zip");
         REQUIRE(image != nullptr);
@@ -259,7 +259,11 @@ TEST_CASE("integrity tests", "integrity")
         SDL_RWclose(rw);
         VirtFs::removeZipFromSearchPath("data/test/test.zip");
         VirtFs::removeZipFromSearchPath("../data/test/test.zip");
+        VirtFs::addDirToSearchPath("data/test", Append_true);
+        VirtFs::addDirToSearchPath("../data/test", Append_true);
         REQUIRE(compareBuffers(buf) == true);
+        VirtFs::removeDirFromSearchPath("data/test");
+        VirtFs::removeDirFromSearchPath("../data/test");
     }
 
 #ifdef USE_PHYSFS
@@ -403,7 +407,11 @@ TEST_CASE("integrity tests", "integrity")
 
         VirtFs::removeZipFromSearchPath("data/test/test.zip");
         VirtFs::removeZipFromSearchPath("../data/test/test.zip");
+        VirtFs::addDirToSearchPath("data/test", Append_true);
+        VirtFs::addDirToSearchPath("../data/test", Append_true);
         REQUIRE(compareBuffers(buf) == true);
+        VirtFs::removeDirFromSearchPath("data/test");
+        VirtFs::removeDirFromSearchPath("../data/test");
     }
 #endif  // USE_PHYSFS
 
@@ -439,7 +447,11 @@ TEST_CASE("integrity tests", "integrity")
         SDL_RWclose(rw);
         VirtFs::removeZipFromSearchPath("data/test/test.zip");
         VirtFs::removeZipFromSearchPath("../data/test/test.zip");
+        VirtFs::addDirToSearchPath("data/test", Append_true);
+        VirtFs::addDirToSearchPath("../data/test", Append_true);
         REQUIRE(compareBuffers(buf) == true);
+        VirtFs::removeDirFromSearchPath("data/test");
+        VirtFs::removeDirFromSearchPath("../data/test");
     }
 
     SECTION("integrity Loader::getImage test 8")
@@ -498,6 +510,8 @@ TEST_CASE("integrity tests", "integrity")
     delete client;
     client = nullptr;
 
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

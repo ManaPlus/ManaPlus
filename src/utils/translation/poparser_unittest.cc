@@ -123,6 +123,8 @@ TEST_CASE("PoParser tests", "PoParser")
         delete dict;
     }
     delete2(client);
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

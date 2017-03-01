@@ -175,6 +175,8 @@ TEST_CASE("BrowserBox tests", "browserbox")
     Widget::setGlobalFont(nullptr);
     delete box;
     delete2(client);
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

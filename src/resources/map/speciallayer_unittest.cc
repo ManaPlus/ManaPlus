@@ -262,5 +262,7 @@ TEST_CASE("SpecialLayer updateCache")
     delete layer;
     resourceManager->cleanOrphans();
     delete2(client);
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 }

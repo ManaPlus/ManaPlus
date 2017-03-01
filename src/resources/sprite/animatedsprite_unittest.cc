@@ -182,6 +182,8 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     }
 
     delete2(client);
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

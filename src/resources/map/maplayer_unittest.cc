@@ -1994,6 +1994,8 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
     delete map;
     delete mock;
     GraphicsManager::deleteRenderers();
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 }
 
@@ -2351,6 +2353,8 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
     delete map;
     delete mock;
     GraphicsManager::deleteRenderers();
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 }
 
@@ -3236,5 +3240,7 @@ TEST_CASE("MapLayer drawFringe")
     delete mock;
     delete2(theme);
     GraphicsManager::deleteRenderers();
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 }

@@ -690,6 +690,10 @@ TEST_CASE("Windows tests", "windowmanager")
     delete2(inventoryHandler);
     delete2(charServerHandler);
     delete2(playerHandler);
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPath("data/test");
+    VirtFs::removeDirFromSearchPath("../data/test");
     delete2(logger);
 
 //    VirtFs::deinit();

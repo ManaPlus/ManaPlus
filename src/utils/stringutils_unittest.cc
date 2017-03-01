@@ -1615,9 +1615,13 @@ TEST_CASE("stringuntils replaceItemLinks")
         REQUIRE(str == "[[test name 1 ,test name2[] test name 1]");
     }
     ResourceManager::deleteInstance();
-    delete2(logger);
     delete_all(infos);
     infos.clear();
     namedInfos.clear();
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPath("data/test");
+    VirtFs::removeDirFromSearchPath("../data/test");
+    delete2(logger);
 //    VirtFs::deinit();
 }

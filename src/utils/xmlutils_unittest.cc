@@ -45,6 +45,8 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
@@ -58,9 +60,6 @@ TEST_CASE("xmlutils readXmlIntVector 1")
 #endif  // USE_SDL2
 
     ActorSprite::load();
-
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
 
     std::vector<int> arr;
 
@@ -80,6 +79,8 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     REQUIRE(1 == arr[4]);
     delete2(client);
     ResourceManager::deleteInstance();
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
@@ -91,6 +92,8 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
@@ -104,9 +107,6 @@ TEST_CASE("xmlutils readXmlStringMap 1")
 #endif  // USE_SDL2
 
     ActorSprite::load();
-
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
 
     std::map<std::string, std::string> arr;
 
@@ -125,6 +125,8 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     REQUIRE(arr["Metal"] == "26");
     delete2(client);
     ResourceManager::deleteInstance();
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
@@ -136,6 +138,10 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
+    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPath("data/test", Append_false);
+    VirtFs::addDirToSearchPath("../data/test", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
@@ -149,9 +155,6 @@ TEST_CASE("xmlutils readXmlIntMap 1")
 #endif  // USE_SDL2
 
     ActorSprite::load();
-
-    VirtFs::addDirToSearchPath("data/test", Append_false);
-    VirtFs::addDirToSearchPath("../data/test", Append_false);
 
     std::map<int32_t, int32_t> arr;
 
@@ -170,6 +173,10 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     REQUIRE(arr[3] == 0);
     delete2(client);
     ResourceManager::deleteInstance();
+    VirtFs::removeDirFromSearchPath("data/test");
+    VirtFs::removeDirFromSearchPath("../data/test");
+    VirtFs::removeDirFromSearchPath("data");
+    VirtFs::removeDirFromSearchPath("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
