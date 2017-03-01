@@ -189,9 +189,9 @@ void Dirs::extractDataDir()
 
 void Dirs::mountDataDir()
 {
-    VirtFs::addDirToSearchPath(PKG_DATADIR "data/perserver/default",
+    VirtFs::addDirToSearchPathSilent(PKG_DATADIR "data/perserver/default",
         Append_false);
-    VirtFs::addDirToSearchPath("data/perserver/default",
+    VirtFs::addDirToSearchPathSilent("data/perserver/default",
         Append_false);
 
 #if defined __APPLE__
@@ -213,9 +213,9 @@ void Dirs::mountDataDir()
 //    mPackageDir = path;
 #endif  // defined __APPLE__
 
-    VirtFs::addDirToSearchPath(PKG_DATADIR "data", Append_false);
+    VirtFs::addDirToSearchPathSilent(PKG_DATADIR "data", Append_false);
     setPackageDir(PKG_DATADIR "data");
-    VirtFs::addDirToSearchPath("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
 
 #ifdef ANDROID
 #ifdef USE_SDL2

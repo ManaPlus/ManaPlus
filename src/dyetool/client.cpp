@@ -476,6 +476,7 @@ void Client::gameClear()
 
 //    delete2(chatLogger);
     TranslationManager::close();
+    VirtFs::deinit();
 }
 
 #define ADDBUTTON(var, object) var = object; \

@@ -799,7 +799,7 @@ void UpdaterWindow::addUpdateFile(const std::string &restrict path,
     if (!stat(fixFile.c_str(), &statbuf))
         VirtFs::addZipToSearchPath(fixFile, append);
 
-    if (append == Append_false)
+    if (append == Append_true)
         VirtFs::addZipToSearchPath(tmpPath, append);
 }
 

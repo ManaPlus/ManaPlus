@@ -110,7 +110,18 @@ namespace VirtFs
         return VirtFsPhys::addDirToSearchPath(newDir, append);
     }
 
+    bool addDirToSearchPathSilent(const std::string &restrict newDir,
+                                  const Append append)
+    {
+        return VirtFsPhys::addDirToSearchPath(newDir, append);
+    }
+
     bool removeDirFromSearchPath(const std::string &restrict oldDir)
+    {
+        return VirtFsPhys::removeDirFromSearchPath(oldDir);
+    }
+
+    bool removeDirFromSearchPathSilent(const std::string &restrict oldDir)
     {
         return VirtFsPhys::removeDirFromSearchPath(oldDir);
     }

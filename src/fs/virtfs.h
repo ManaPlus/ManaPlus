@@ -48,7 +48,10 @@ namespace VirtFs
     bool setWriteDir(const std::string &restrict newDir);
     bool addDirToSearchPath(const std::string &restrict newDir,
                             const Append append);
+    bool addDirToSearchPathSilent(const std::string &restrict newDir,
+                                  const Append append);
     bool removeDirFromSearchPath(const std::string &restrict oldDir);
+    bool removeDirFromSearchPathSilent(const std::string &restrict oldDir);
     bool addZipToSearchPath(const std::string &restrict newDir,
                             const Append append);
     bool removeZipFromSearchPath(const std::string &restrict oldDir);

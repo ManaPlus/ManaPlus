@@ -42,6 +42,7 @@ namespace VirtFs
     void init(const std::string &restrict name)
     {
         VirtFsDir::init(name);
+        VirtFsZip::init();
         updateDirSeparator();
     }
 
@@ -155,6 +156,14 @@ namespace VirtFs
 #endif  // UNITTESTS
     }
 
+    bool addDirToSearchPathSilent(const std::string &restrict newDir,
+                                  const Append append)
+    {
+        return VirtFsDir::addToSearchPathSilent(newDir,
+            append,
+            SkipError_false);
+    }
+
     bool removeDirFromSearchPath(const std::string &restrict oldDir)
     {
 #ifdef UNITTESTS
@@ -162,6 +171,11 @@ namespace VirtFs
 #else  // UNITTESTS
         return VirtFsDir::removeFromSearchPath(oldDir);
 #endif  // UNITTESTS
+    }
+
+    bool removeDirFromSearchPathSilent(const std::string &restrict oldDir)
+    {
+        return VirtFsDir::removeFromSearchPathSilent(oldDir);
     }
 
     bool addZipToSearchPath(const std::string &restrict newDir,
@@ -211,6 +225,7 @@ namespace VirtFs
     bool deinit()
     {
         VirtFsDir::deinit();
+        VirtFsZip::deinit();
         return true;
     }
 

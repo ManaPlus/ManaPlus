@@ -757,6 +757,7 @@ void Client::gameClear()
 
     delete2(chatLogger);
     TranslationManager::close();
+    VirtFs::deinit();
 }
 
 int Client::testsExec()
@@ -1095,7 +1096,7 @@ int Client::gameExec()
                             "/local/",
                             "zip");
 
-                        VirtFs::removeDirFromSearchPath(
+                        VirtFs::removeDirFromSearchPathSilent(
                             settings.localDataDir +
                             dirSeparator +
                             settings.updatesDir +

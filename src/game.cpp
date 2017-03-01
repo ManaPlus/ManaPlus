@@ -475,6 +475,7 @@ Game::~Game()
 #endif  // USE_MUMBLE
 
     delete2(crazyMoves);
+    delete2(emptyBeingSlot);
 
     Being::clearCache();
     mInstance = nullptr;
