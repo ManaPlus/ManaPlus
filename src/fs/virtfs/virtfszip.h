@@ -40,6 +40,8 @@ namespace VirtFsZip
     VirtZipEntry *searchEntryByArchive(const std::string &restrict
                                        archiveName);
     ZipLocalHeader *searchHeaderByName(const std::string &restrict filename);
+    VirtZipEntry *searchZipEntryByNameWithDir(const std::string &restrict
+                                              filename);
     bool addToSearchPath(std::string newDir,
                          const Append append);
     bool addToSearchPathSilent(std::string newDir,

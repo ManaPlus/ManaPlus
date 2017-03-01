@@ -247,6 +247,9 @@ TEST_CASE("VirtFsDir exists")
         Append_false,
         SkipError_false);
 
+    REQUIRE(VirtFsDir::exists("test") == true);
+    REQUIRE(VirtFsDir::exists("test/dir1"));
+    REQUIRE(VirtFsDir::exists("test/dir") == false);
     REQUIRE(VirtFsDir::exists("test//units.xml") == true);
     REQUIRE(VirtFsDir::exists("test/\\units123.xml") == false);
     REQUIRE(VirtFsDir::exists("tesQ/units.xml") == false);
@@ -259,6 +262,9 @@ TEST_CASE("VirtFsDir exists")
         Append_false,
         SkipError_false);
 
+    REQUIRE(VirtFsDir::exists("test") == true);
+    REQUIRE(VirtFsDir::exists("test/dir1"));
+    REQUIRE(VirtFsDir::exists("test/dir") == false);
     REQUIRE(VirtFsDir::exists("test\\units.xml") == true);
     REQUIRE(VirtFsDir::exists("test/units123.xml") == false);
     REQUIRE(VirtFsDir::exists("tesQ/units.xml") == false);
@@ -267,6 +273,9 @@ TEST_CASE("VirtFsDir exists")
     VirtFsDir::removeFromSearchPathSilent("data/test");
     VirtFsDir::removeFromSearchPathSilent("../data/test");
 
+    REQUIRE(VirtFsDir::exists("test") == true);
+    REQUIRE(VirtFsDir::exists("test/dir1"));
+    REQUIRE(VirtFsDir::exists("test/dir") == false);
     REQUIRE(VirtFsDir::exists("test\\units.xml") == true);
     REQUIRE(VirtFsDir::exists("test/units123.xml") == false);
     REQUIRE(VirtFsDir::exists("tesQ/units.xml") == false);
@@ -428,6 +437,11 @@ TEST_CASE("VirtFsDir enumerateFiles1")
     list = VirtFsDir::enumerateFiles("test/");
     removeTemp(list->names);
     REQUIRE(list->names.size() == cnt2);
+    VirtFsDir::freeList(list);
+
+    VirtFsDir::permitLinks(true);
+    list = VirtFsDir::enumerateFiles("test/units.xml");
+    REQUIRE(list->names.size() == 0);
     VirtFsDir::freeList(list);
 
     VirtFsDir::permitLinks(false);

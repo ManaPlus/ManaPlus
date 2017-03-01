@@ -256,6 +256,7 @@ TEST_CASE("VirtFsZip exists")
     REQUIRE(VirtFsZip::exists("units1.xml") == false);
     REQUIRE(VirtFsZip::exists("dir/hide.png") == true);
     REQUIRE(VirtFsZip::exists("dir/brimmedhat.png") == false);
+    REQUIRE(VirtFsZip::exists("dir\\1"));
 
     VirtFsZip::addToSearchPathSilent("data/test/test.zip",
         Append_false);
@@ -268,6 +269,7 @@ TEST_CASE("VirtFsZip exists")
     REQUIRE(VirtFsZip::exists("units1.xml") == false);
     REQUIRE(VirtFsZip::exists("dir/hide.png") == true);
     REQUIRE(VirtFsZip::exists("dir/brimmedhat.png") == true);
+    REQUIRE(VirtFsZip::exists("dir\\1"));
 
     VirtFsZip::removeFromSearchPathSilent("data/test/test2.zip");
     VirtFsZip::removeFromSearchPathSilent("../data/test/test2.zip");
@@ -278,6 +280,7 @@ TEST_CASE("VirtFsZip exists")
     REQUIRE(VirtFsZip::exists("units1.xml") == false);
     REQUIRE(VirtFsZip::exists("dir/\\/hide.png") == true);
     REQUIRE(VirtFsZip::exists("dir/brimmedhat.png") == true);
+    REQUIRE(VirtFsZip::exists("dir\\1") == false);
 
     REQUIRE_THROWS(VirtFsZip::exists("test/../units.xml"));
 
@@ -299,6 +302,7 @@ TEST_CASE("VirtFsZip getRealDir")
     REQUIRE(VirtFsZip::getRealDir(".") == "");
     REQUIRE(VirtFsZip::getRealDir("..") == "");
     REQUIRE(VirtFsZip::getRealDir("test.txt") == prefix + "test2.zip");
+    REQUIRE(VirtFsZip::getRealDir("dir/1") == prefix + "test2.zip");
     REQUIRE(VirtFsZip::getRealDir("dir\\dye.png") ==
         prefix + "test2.zip");
     REQUIRE(VirtFsZip::getRealDir("zzz") == "");

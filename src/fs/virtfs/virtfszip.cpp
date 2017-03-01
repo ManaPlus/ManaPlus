@@ -67,7 +67,34 @@ namespace VirtFsZip
                       entry->mHeaders)
             {
                 if ((*it2)->fileName == filename)
-                    return *it2;;
+                    return *it2;
+            }
+        }
+        return nullptr;
+    }
+
+    VirtZipEntry *searchZipEntryByNameWithDir(const std::string &restrict
+                                              filename)
+    {
+        std::string dirName = filename;
+        if (findLast(dirName, std::string(dirSeparator)) == false)
+            dirName += dirSeparator;
+        FOR_EACH (std::vector<VirtZipEntry*>::const_iterator, it, mEntries)
+        {
+            VirtZipEntry *const entry = *it;
+            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                      it2,
+                      entry->mHeaders)
+            {
+                if ((*it2)->fileName == filename)
+                    return entry;
+            }
+            FOR_EACH (std::vector<std::string>::const_iterator,
+                      it2,
+                      entry->mDirs)
+            {
+                if (*it2 == dirName)
+                    return entry;
             }
         }
         return nullptr;
@@ -246,9 +273,10 @@ namespace VirtFsZip
 
     std::string getRealDirInternal(const std::string &filename)
     {
-        ZipLocalHeader *restrict const header = searchHeaderByName(filename);
-        if (header != nullptr)
-            return header->zipEntry->mArchiveName;
+        VirtZipEntry *restrict const entry = searchZipEntryByNameWithDir(
+            filename);
+        if (entry != nullptr)
+            return entry->mArchiveName;
         return std::string();
     }
 
@@ -261,10 +289,9 @@ namespace VirtFsZip
                 name.c_str());
             return false;
         }
-        ZipLocalHeader *restrict const header = searchHeaderByName(name);
-        if (header != nullptr)
-            return true;
-        return false;
+        VirtZipEntry *restrict const entry = searchZipEntryByNameWithDir(
+            name);
+        return entry != nullptr;
     }
 
     VirtList *enumerateFiles(std::string dirName)
