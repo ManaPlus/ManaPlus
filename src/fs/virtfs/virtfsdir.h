@@ -20,6 +20,7 @@
 
 #ifndef UTILS_VIRTFSDIR_H
 #define UTILS_VIRTFSDIR_H
+#ifndef USE_PHYSFS
 
 #include "enums/simpletypes/append.h"
 #include "enums/simpletypes/skiperror.h"
@@ -86,4 +87,5 @@ namespace VirtFsDir
     int eof(VirtFile *restrict const file);
 }  // namespace VirtFsDir
 
+#endif  // USE_PHYSFS
 #endif  // UTILS_VIRTFSDIR_H

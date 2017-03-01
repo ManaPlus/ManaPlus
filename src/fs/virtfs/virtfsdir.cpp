@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef USE_PHYSFS
+
 #include "fs/virtfs/virtfsdir.h"
 
 #include "fs/files.h"
@@ -649,3 +651,4 @@ namespace VirtFsDir
         return pos < 0 || len < 0 || pos >= len;
     }
 }  // namespace VirtFs
+#endif  // USE_PHYSFS

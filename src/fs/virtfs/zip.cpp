@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef USE_PHYSFS
+
 #include "fs/virtfs/zip.h"
 
 #include "fs/paths.h"
@@ -289,3 +291,4 @@ namespace Zip
         return out;
     }
 }  // namespace Zip
+#endif  // USE_PHYSFS

@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef USE_PHYSFS
+
 #include "fs/virtfs.h"
 
 #include "fs/paths.h"
@@ -273,3 +275,4 @@ namespace VirtFs
         return file->funcs->eof(file);
     }
 }  // namespace VirtFs
+#endif  // USE_PHYSFS

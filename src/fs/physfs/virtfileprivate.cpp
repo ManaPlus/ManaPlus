@@ -18,6 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef USE_PHYSFS
 #include "fs/physfs/virtfileprivate.h"
 
 #include "debug.h"
@@ -32,3 +33,4 @@ VirtFilePrivate::~VirtFilePrivate()
     if (mFile != nullptr)
         PHYSFS_close(mFile);
 }
+#endif  // USE_PHYSFS

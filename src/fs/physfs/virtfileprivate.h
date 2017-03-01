@@ -20,6 +20,7 @@
 
 #ifndef UTILS_VIRTFILEPRIVATE_H
 #define UTILS_VIRTFILEPRIVATE_H
+#ifdef USE_PHYSFS
 
 #include "localconsts.h"
 
@@ -40,4 +41,5 @@ struct VirtFilePrivate final
     PHYSFS_file *mFile;
 };
 
+#endif  // USE_PHYSFS
 #endif  // UTILS_VIRTFILEPRIVATE_H

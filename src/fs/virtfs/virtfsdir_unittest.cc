@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef USE_PHYSFS
+
 #include "catch.hpp"
 
 #include "fs/virtfs/virtdirentry.h"
@@ -729,3 +731,4 @@ TEST_CASE("VirtFsDir read")
     VirtFsDir::deinit();
     delete2(logger);
 }
+#endif  // USE_PHYSFS

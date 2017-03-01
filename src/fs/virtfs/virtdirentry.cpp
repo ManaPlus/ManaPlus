@@ -18,6 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef USE_PHYSFS
 #include "fs/virtfs/virtdirentry.h"
 
 #include "debug.h"
@@ -32,3 +33,4 @@ VirtDirEntry::VirtDirEntry(const std::string &userDir,
 VirtDirEntry::~VirtDirEntry()
 {
 }
+#endif  // USE_PHYSFS

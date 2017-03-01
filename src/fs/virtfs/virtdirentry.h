@@ -20,6 +20,7 @@
 
 #ifndef UTILS_VIRTDIRENTRY_H
 #define UTILS_VIRTDIRENTRY_H
+#ifndef USE_PHYSFS
 
 #include <string>
 
@@ -38,4 +39,5 @@ struct VirtDirEntry final
     std::string mRootDir;
 };
 
+#endif  // USE_PHYSFS
 #endif  // UTILS_VIRTDIRENTRY_H

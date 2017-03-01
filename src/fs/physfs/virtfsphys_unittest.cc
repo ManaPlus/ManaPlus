@@ -18,6 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef USE_PHYSFS
 #include "catch.hpp"
 
 #include "fs/paths.h"
@@ -537,3 +538,4 @@ TEST_CASE("VirtFsPhys read")
     VirtFsPhys::removeDirFromSearchPath("../data");
     delete2(logger);
 }
+#endif  // USE_PHYSFS

@@ -18,6 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef USE_PHYSFS
 #include "fs/virtfs/virtfileprivate.h"
 
 #include <unistd.h>
@@ -57,3 +58,4 @@ VirtFilePrivate::~VirtFilePrivate()
     if (mBuf)
         delete [] mBuf;
 }
+#endif  // USE_PHYSFS

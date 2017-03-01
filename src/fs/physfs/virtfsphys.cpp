@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef USE_PHYSFS
+
 #include "fs/physfs/virtfsphys.h"
 
 #include "fs/virtfile.h"
@@ -349,3 +351,4 @@ namespace VirtFsPhys
         return PHYSFS_eof(file->mPrivate->mFile);
     }
 }  // namespace VirtFsPhys
+#endif  // USE_PHYSFS

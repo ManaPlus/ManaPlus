@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef USE_PHYSFS
+
 #include "catch.hpp"
 
 #include "fs/files.h"
@@ -747,3 +749,4 @@ TEST_CASE("VirtFsZip read")
     VirtFsZip::deinit();
     delete2(logger);
 }
+#endif  // USE_PHYSFS

@@ -18,6 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef USE_PHYSFS
 #ifndef UTILS_VIRTFSPHYS_H
 #define UTILS_VIRTFSPHYS_H
 
@@ -78,3 +79,4 @@ namespace VirtFsPhys
 }  // namespace VirtFsPhys
 
 #endif  // UTILS_VIRTFSPHYS_H
+#endif  // USE_PHYSFS
