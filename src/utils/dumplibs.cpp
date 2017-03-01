@@ -32,10 +32,12 @@ PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
 PRAGMACLANG6(GCC diagnostic pop)
 #include <SDL_ttf.h>
+#ifdef USE_PHYSFS
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wlong-long")
 #include <physfs.h>
 PRAGMA45(GCC diagnostic pop)
+#endif  // USE_PHYSFS
 #include <zlib.h>
 
 #include <curl/curl.h>
