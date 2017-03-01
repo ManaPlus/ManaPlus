@@ -187,8 +187,14 @@ namespace VirtFsPhys
             reportAlways("Called addDirToSearchPath with zip archive");
             return false;
         }
-        return PHYSFS_addToSearchPath(newDir.c_str(),
+        const int ret = PHYSFS_addToSearchPath(newDir.c_str(),
             append == Append_true ? 1 : 0);
+        if (ret == 0)
+        {
+            logger->log("addDirToSearchPath error: %s",
+                VirtFsPhys::getLastError());
+        }
+        return ret;
     }
 
     bool removeDirFromSearchPath(const std::string &restrict oldDir)
@@ -199,7 +205,13 @@ namespace VirtFsPhys
             reportAlways("Called removeDirFromSearchPath with zip archive");
             return false;
         }
-        return PHYSFS_removeFromSearchPath(oldDir.c_str());
+        const int ret = PHYSFS_removeFromSearchPath(oldDir.c_str());
+        if (ret == 0)
+        {
+            logger->log("removeDirFromSearchPath error: %s",
+                VirtFsPhys::getLastError());
+        }
+        return ret;
     }
 
     bool addZipToSearchPath(const std::string &restrict newDir,
@@ -211,8 +223,14 @@ namespace VirtFsPhys
             reportAlways("Called addZipToSearchPath without zip archive");
             return false;
         }
-        return PHYSFS_addToSearchPath(newDir.c_str(),
+        const int ret = PHYSFS_addToSearchPath(newDir.c_str(),
             append == Append_true ? 1 : 0);
+        if (ret == 0)
+        {
+            logger->log("addZipToSearchPath error: %s",
+                VirtFsPhys::getLastError());
+        }
+        return ret;
     }
 
     bool removeZipFromSearchPath(const std::string &restrict oldDir)
@@ -223,7 +241,13 @@ namespace VirtFsPhys
             reportAlways("Called removeZipFromSearchPath without zip archive");
             return false;
         }
-        return PHYSFS_removeFromSearchPath(oldDir.c_str());
+        const int ret = PHYSFS_removeFromSearchPath(oldDir.c_str());
+        if (ret == 0)
+        {
+            logger->log("removeZipFromSearchPath error: %s",
+                VirtFsPhys::getLastError());
+        }
+        return ret;
     }
 
     std::string getRealDir(const std::string &restrict filename)
