@@ -26,3 +26,9 @@ VirtFilePrivate::VirtFilePrivate(PHYSFS_file *restrict const file) :
     mFile(file)
 {
 }
+
+VirtFilePrivate::~VirtFilePrivate()
+{
+    if (mFile != nullptr)
+        PHYSFS_close(mFile);
+}
