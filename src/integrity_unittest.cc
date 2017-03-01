@@ -46,7 +46,10 @@
 #include "utils/delete2.h"
 
 #ifdef USE_PHYSFS
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wlong-long")
 #include <physfs.h>
+PRAGMA45(GCC diagnostic pop)
 #endif  // USE_PHYSFS
 #include <SDL_image.h>
 
