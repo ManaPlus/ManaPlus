@@ -58,7 +58,7 @@ namespace VirtFsPhys
     void getFiles(const std::string &path,
                   StringVect &list);
 }  // namespace VirtFs
-#else // USE_PHYSFS
+#else  // USE_PHYSFS
 // +++ temporary add it here
 namespace VirtFsDir
 {
