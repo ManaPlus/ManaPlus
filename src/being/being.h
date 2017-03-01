@@ -900,7 +900,7 @@ class Being notfinal : public ActorSprite,
         { return mOwner; }
 
         void playSfx(const SoundInfo &sound,
-                     Being *restrict const being,
+                     Being *const being,
                      const bool main,
                      const int x, const int y) const restrict2;
 
