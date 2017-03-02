@@ -510,9 +510,11 @@ TEST_CASE("integrity tests", "integrity")
 
     resourceManager->cleanOrphans(true);
 
+    delete client;
+    client = nullptr;
+
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
-    delete2(client);
     delete2(logger);
 //    VirtFs::deinit();
 }

@@ -2393,11 +2393,11 @@ TEST_CASE("Dye real dye")
     {
         dyeCheck("|A:#0000FFFF,FF000050", "arrow_up_A.png");
     }
+    delete2(client);
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
     VirtFs::removeDirFromSearchPath("data/test");
     VirtFs::removeDirFromSearchPath("../data/test");
-    delete2(client);
     delete2(logger);
 //    VirtFs::deinit();
 }

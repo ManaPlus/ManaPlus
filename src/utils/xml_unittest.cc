@@ -358,9 +358,10 @@ TEST_CASE("xml doc")
         ::remove(tempXmlName);
     }
     delete2(theme);
+    delete2(client);
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
-    delete2(client);
+
     delete2(logger);
 //    VirtFs::deinit();
 }

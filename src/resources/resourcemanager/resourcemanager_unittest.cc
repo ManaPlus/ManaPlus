@@ -659,9 +659,9 @@ TEST_CASE("resourcemanager", "resourcemanager")
 
     delete resourceManager;
     resourceManager = safeResman;
+    delete2(client);
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
-    delete2(client);
     delete2(logger);
 //    VirtFs::deinit();
 }

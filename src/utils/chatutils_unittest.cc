@@ -237,9 +237,9 @@ TEST_CASE("chatutils replaceVars")
 
     delete2(actorManager);
     delete2(localPlayer);
+    delete2(client);
     VirtFs::removeDirFromSearchPath("data");
     VirtFs::removeDirFromSearchPath("../data");
-    delete2(client);
     delete2(logger);
 //    VirtFs::deinit();
 }
