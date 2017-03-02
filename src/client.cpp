@@ -757,7 +757,6 @@ void Client::gameClear()
 
     delete2(chatLogger);
     TranslationManager::close();
-    VirtFs::deinit();
 }
 
 int Client::testsExec()

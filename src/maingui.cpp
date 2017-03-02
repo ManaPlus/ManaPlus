@@ -124,6 +124,7 @@ int mainGui(int argc, char *argv[])
         ret = client->testsExec();
     }
     delete2(client);
+    VirtFs::deinit();
 
 #if SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
     Mix_Quit();
