@@ -145,8 +145,8 @@ TEST_CASE("VirtFsPhys enumerateFiles1")
 
     VirtList *list = nullptr;
 
-    const int cnt1 = VirtFsPhys::exists("test/test2.txt") ? 27 : 26;
-    const int cnt2 = 27;
+    const int cnt1 = VirtFsPhys::exists("test/test2.txt") ? 28 : 27;
+    const int cnt2 = 28;
 
     VirtFsPhys::permitLinks(false);
     list = VirtFsPhys::enumerateFiles("test");
@@ -475,8 +475,8 @@ TEST_CASE("VirtFsPhys permitLinks")
     VirtFsPhys::addDirToSearchPath("data", Append_false);
     VirtFsPhys::addDirToSearchPath("../data", Append_false);
 
-    const int cnt1 = VirtFsPhys::exists("test/test2.txt") ? 25 : 24;
-    const int cnt2 = 25;
+    const int cnt1 = VirtFsPhys::exists("test/test2.txt") ? 26 : 25;
+    const int cnt2 = 26;
 
     StringVect list;
     VirtFsPhys::permitLinks(false);
