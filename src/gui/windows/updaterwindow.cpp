@@ -345,7 +345,8 @@ void UpdaterWindow::keyPressed(KeyEvent &event)
              actionId == InputAction::GUI_SELECT2)
     {
         if (mDownloadStatus == UpdateDownloadStatus::UPDATE_COMPLETE ||
-            mDownloadStatus == UpdateDownloadStatus::UPDATE_ERROR)
+            mDownloadStatus == UpdateDownloadStatus::UPDATE_ERROR ||
+            mDownloadStatus == UpdateDownloadStatus::UPDATE_IDLE)
         {
             action(ActionEvent(nullptr, mPlayButton->getActionEventId()));
         }
