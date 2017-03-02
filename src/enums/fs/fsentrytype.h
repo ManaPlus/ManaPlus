@@ -26,7 +26,7 @@
 enumStart(FsEntryType)
 {
     Dir = 0,
-    Zip = 1,
+    Zip = 1
 }
 enumEnd(FsEntryType);
 
