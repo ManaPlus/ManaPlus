@@ -30,7 +30,7 @@
 
 struct VirtFsEntry notfinal
 {
-    VirtFsEntry(const FsEntryType &type0);
+    explicit VirtFsEntry(const FsEntryType &type0);
 
     A_DELETE_COPY(VirtFsEntry)
 
