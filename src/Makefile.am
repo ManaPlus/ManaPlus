@@ -832,6 +832,7 @@ BASE_SRC +=  \
 	      fs/physfs/virtfsphys.h
 else
 BASE_SRC +=  \
+	      enums/fs/fsentrytype.h \
 	      fs/virtfs/virtdirentry.cpp \
 	      fs/virtfs/virtdirentry.h \
 	      fs/virtfs/virtfileprivate.cpp \
@@ -839,6 +840,8 @@ BASE_SRC +=  \
 	      fs/virtfs/virtfs.cpp \
 	      fs/virtfs/virtfsdir.cpp \
 	      fs/virtfs/virtfsdir.h \
+	      fs/virtfs/virtfsentry.cpp \
+	      fs/virtfs/virtfsentry.h \
 	      fs/virtfs/virtfszip.cpp \
 	      fs/virtfs/virtfszip.h \
 	      fs/virtfs/virtzipentry.cpp \

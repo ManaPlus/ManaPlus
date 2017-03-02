@@ -53,7 +53,7 @@ namespace VirtFsZip
     {
         FOR_EACH (std::vector<VirtZipEntry*>::const_iterator, it, mEntries)
         {
-            if ((*it)->mArchiveName == archiveName)
+            if ((*it)->root == archiveName)
                 return *it;
         }
         return nullptr;
@@ -195,7 +195,7 @@ namespace VirtFsZip
         FOR_EACH (std::vector<VirtZipEntry*>::iterator, it, mEntries)
         {
             VirtZipEntry *const entry = *it;
-            if (entry->mArchiveName == oldDir)
+            if (entry->root == oldDir)
             {
                 logger->log("Remove virtual zip: " + oldDir);
                 mEntries.erase(it);
@@ -220,7 +220,7 @@ namespace VirtFsZip
         FOR_EACH (std::vector<VirtZipEntry*>::iterator, it, mEntries)
         {
             VirtZipEntry *const entry = *it;
-            if (entry->mArchiveName == oldDir)
+            if (entry->root == oldDir)
             {
                 logger->log("Remove virtual zip: " + oldDir);
                 mEntries.erase(it);
@@ -278,7 +278,7 @@ namespace VirtFsZip
         VirtZipEntry *restrict const entry = searchZipEntryByNameWithDir(
             filename);
         if (entry != nullptr)
-            return entry->mArchiveName;
+            return entry->root;
         return std::string();
     }
 

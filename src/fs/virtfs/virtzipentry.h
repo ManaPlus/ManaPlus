@@ -22,6 +22,8 @@
 #define UTILS_VIRTZIPENTRY_H
 #ifndef USE_PHYSFS
 
+#include "fs/virtfs/virtfsentry.h"
+
 #include <string>
 #include <vector>
 
@@ -29,15 +31,13 @@
 
 struct ZipLocalHeader;
 
-struct VirtZipEntry final
+struct VirtZipEntry final : public VirtFsEntry
 {
     explicit VirtZipEntry(const std::string &restrict archiveName);
 
     A_DELETE_COPY(VirtZipEntry)
 
     ~VirtZipEntry();
-
-    std::string mArchiveName;
 
     std::vector<ZipLocalHeader*> mHeaders;
     std::vector<std::string> mDirs;

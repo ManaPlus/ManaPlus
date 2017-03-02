@@ -57,7 +57,7 @@ namespace Zip
             reportAlways("Entry is null.");
             return false;
         }
-        const std::string archiveName = entry->mArchiveName;
+        const std::string archiveName = entry->root;
         std::vector<ZipLocalHeader*> &restrict headers = entry->mHeaders;
         std::vector<std::string> &restrict dirs = entry->mDirs;
         FILE *restrict const arcFile = fopen(archiveName.c_str(),
@@ -215,12 +215,12 @@ namespace Zip
             return nullptr;
         }
         FILE *restrict const arcFile = fopen(
-            header->zipEntry->mArchiveName.c_str(),
+            header->zipEntry->root.c_str(),
             "r");
         if (arcFile == nullptr)
         {
             reportAlways("Can't open zip file %s",
-                header->zipEntry->mArchiveName.c_str());
+                header->zipEntry->root.c_str());
             return nullptr;
         }
 
@@ -231,7 +231,7 @@ namespace Zip
             compressSize)
         {
             reportAlways("Read zip compressed file error from archive: %s",
-                header->zipEntry->mArchiveName.c_str());
+                header->zipEntry->root.c_str());
             fclose(arcFile);
             delete [] buf;
             return nullptr;
@@ -269,7 +269,7 @@ namespace Zip
         int ret = inflateInit2(&strm, -MAX_WBITS);
         if (ret != Z_OK)
         {
-            reportZlibError(header->zipEntry->mArchiveName, ret);
+            reportZlibError(header->zipEntry->root, ret);
             delete [] in;
             delete [] out;
             return nullptr;

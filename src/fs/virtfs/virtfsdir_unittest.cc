@@ -59,7 +59,7 @@ TEST_CASE("VirtFsDir addToSearchPath")
         REQUIRE(VirtFsDir::searchEntryByRoot("dir1/") != nullptr);
         REQUIRE(VirtFsDir::searchEntryByRoot("test/") == nullptr);
         REQUIRE(VirtFsDir::getEntries().size() == 1);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir1/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir1");
     }
 
@@ -71,7 +71,7 @@ TEST_CASE("VirtFsDir addToSearchPath")
         REQUIRE(VirtFsDir::searchEntryByRoot("dir1/") != nullptr);
         REQUIRE(VirtFsDir::searchEntryByRoot("test/") == nullptr);
         REQUIRE(VirtFsDir::getEntries().size() == 1);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir1/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir1/");
     }
 
@@ -87,8 +87,8 @@ TEST_CASE("VirtFsDir addToSearchPath")
         REQUIRE(VirtFsDir::searchEntryByRoot("dir2/") != nullptr);
         REQUIRE(VirtFsDir::searchEntryByRoot("test/") == nullptr);
         REQUIRE(VirtFsDir::getEntries().size() == 2);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir2/");
-        REQUIRE(VirtFsDir::getEntries()[1]->mRootDir == "dir1/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir2/");
+        REQUIRE(VirtFsDir::getEntries()[1]->root == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir2");
         REQUIRE(VirtFsDir::getEntries()[1]->mUserDir == "dir1");
     }
@@ -105,8 +105,8 @@ TEST_CASE("VirtFsDir addToSearchPath")
         REQUIRE(VirtFsDir::searchEntryByRoot("dir2/") != nullptr);
         REQUIRE(VirtFsDir::searchEntryByRoot("test/") == nullptr);
         REQUIRE(VirtFsDir::getEntries().size() == 2);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir1/");
-        REQUIRE(VirtFsDir::getEntries()[1]->mRootDir == "dir2/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir1/");
+        REQUIRE(VirtFsDir::getEntries()[1]->root == "dir2/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[1]->mUserDir == "dir2");
     }
@@ -127,11 +127,11 @@ TEST_CASE("VirtFsDir addToSearchPath")
         REQUIRE(VirtFsDir::searchEntryByRoot("dir3/test/") != nullptr);
         REQUIRE(VirtFsDir::searchEntryByRoot("test/") == nullptr);
         REQUIRE(VirtFsDir::getEntries().size() == 3);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir1/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir1");
-        REQUIRE(VirtFsDir::getEntries()[1]->mRootDir == "dir2/");
+        REQUIRE(VirtFsDir::getEntries()[1]->root == "dir2/");
         REQUIRE(VirtFsDir::getEntries()[1]->mUserDir == "dir2");
-        REQUIRE(VirtFsDir::getEntries()[2]->mRootDir == "dir3/test/");
+        REQUIRE(VirtFsDir::getEntries()[2]->root == "dir3/test/");
         REQUIRE(VirtFsDir::getEntries()[2]->mUserDir == "dir3/test");
     }
 
@@ -151,11 +151,11 @@ TEST_CASE("VirtFsDir addToSearchPath")
         REQUIRE(VirtFsDir::searchEntryByRoot("dir3/test/") != nullptr);
         REQUIRE(VirtFsDir::searchEntryByRoot("test/") == nullptr);
         REQUIRE(VirtFsDir::getEntries().size() == 3);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir3/test/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir3/test/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir3/test");
-        REQUIRE(VirtFsDir::getEntries()[1]->mRootDir == "dir1/");
+        REQUIRE(VirtFsDir::getEntries()[1]->root == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[1]->mUserDir == "dir1");
-        REQUIRE(VirtFsDir::getEntries()[2]->mRootDir == "dir2/");
+        REQUIRE(VirtFsDir::getEntries()[2]->root == "dir2/");
         REQUIRE(VirtFsDir::getEntries()[2]->mUserDir == "dir2");
     }
 
@@ -198,20 +198,20 @@ TEST_CASE("VirtFsDir removeFromSearchPath")
         REQUIRE_THROWS(VirtFsDir::removeFromSearchPath("dir2"));
         REQUIRE(VirtFsDir::removeFromSearchPath("dir1"));
         REQUIRE(VirtFsDir::getEntries().size() == 2);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir3/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir3/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir3");
-        REQUIRE(VirtFsDir::getEntries()[1]->mRootDir == "dir2/dir3/");
+        REQUIRE(VirtFsDir::getEntries()[1]->root == "dir2/dir3/");
         REQUIRE(VirtFsDir::getEntries()[1]->mUserDir == "dir2/dir3");
         REQUIRE_THROWS(VirtFsDir::removeFromSearchPath("dir1"));
         REQUIRE(VirtFsDir::getEntries().size() == 2);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir3/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir3/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir3");
-        REQUIRE(VirtFsDir::getEntries()[1]->mRootDir == "dir2/dir3/");
+        REQUIRE(VirtFsDir::getEntries()[1]->root == "dir2/dir3/");
         REQUIRE(VirtFsDir::getEntries()[1]->mUserDir == "dir2/dir3");
         REQUIRE(VirtFsDir::removeFromSearchPath("dir2/dir3"));
         REQUIRE_THROWS(VirtFsDir::removeFromSearchPath("dir2/dir3/"));
         REQUIRE(VirtFsDir::getEntries().size() == 1);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir3/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir3/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir3");
     }
 
@@ -221,7 +221,7 @@ TEST_CASE("VirtFsDir removeFromSearchPath")
             Append_true,
             SkipError_true));
         REQUIRE(VirtFsDir::getEntries().size() == 1);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir1/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir1");
         REQUIRE_THROWS(VirtFsDir::removeFromSearchPath("dir2"));
         REQUIRE(VirtFsDir::removeFromSearchPath("dir1"));
@@ -230,7 +230,7 @@ TEST_CASE("VirtFsDir removeFromSearchPath")
             Append_true,
             SkipError_true));
         REQUIRE(VirtFsDir::getEntries().size() == 1);
-        REQUIRE(VirtFsDir::getEntries()[0]->mRootDir == "dir1/");
+        REQUIRE(VirtFsDir::getEntries()[0]->root == "dir1/");
         REQUIRE(VirtFsDir::getEntries()[0]->mUserDir == "dir1");
     }
 

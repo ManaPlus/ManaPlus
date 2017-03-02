@@ -29,9 +29,10 @@
 #include "debug.h"
 
 VirtZipEntry::VirtZipEntry(const std::string &restrict archiveName) :
-    mArchiveName(archiveName),
+    VirtFsEntry(FsEntryType::Zip),
     mHeaders()
 {
+    root = archiveName;
 }
 
 VirtZipEntry::~VirtZipEntry()

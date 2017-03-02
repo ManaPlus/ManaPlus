@@ -25,9 +25,10 @@
 
 VirtDirEntry::VirtDirEntry(const std::string &userDir,
                            const std::string &rootDir) :
-    mUserDir(userDir),
-    mRootDir(rootDir)
+    VirtFsEntry(FsEntryType::Dir),
+    mUserDir(userDir)
 {
+    root = rootDir;
 }
 
 VirtDirEntry::~VirtDirEntry()

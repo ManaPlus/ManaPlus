@@ -51,7 +51,7 @@ TEST_CASE("Zip readArchiveInfo")
 
         REQUIRE(Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 2);
-        REQUIRE(entry->mArchiveName == name);
+        REQUIRE(entry->root == name);
         REQUIRE(headers[0]->fileName == "dir/hide.png");
         REQUIRE(headers[0]->compressSize == 365);
         REQUIRE(headers[0]->uncompressSize == 368);
@@ -71,7 +71,7 @@ TEST_CASE("Zip readArchiveInfo")
 
         REQUIRE(Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 11);
-        REQUIRE(entry->mArchiveName == name);
+        REQUIRE(entry->root == name);
         REQUIRE(headers[0]->fileName == "test.txt");
         REQUIRE(headers[0]->compressSize == 17);
         REQUIRE(headers[0]->uncompressSize == 23);
@@ -128,7 +128,7 @@ TEST_CASE("Zip readArchiveInfo")
 
         REQUIRE(Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 2);
-        REQUIRE(entry->mArchiveName == name);
+        REQUIRE(entry->root == name);
         REQUIRE(headers[0]->fileName == "test.txt");
         REQUIRE(headers[0]->compressSize == 17);
         REQUIRE(headers[0]->uncompressSize == 23);
@@ -147,7 +147,7 @@ TEST_CASE("Zip readArchiveInfo")
         std::vector<ZipLocalHeader*> &headers = entry->mHeaders;
 
         REQUIRE(Zip::readArchiveInfo(entry));
-        REQUIRE(entry->mArchiveName == name);
+        REQUIRE(entry->root == name);
         REQUIRE(headers.size() == 0);
 
         delete entry;
@@ -178,7 +178,7 @@ TEST_CASE("Zip readCompressedFile")
 
         REQUIRE(Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 11);
-        REQUIRE(entry->mArchiveName == name);
+        REQUIRE(entry->root == name);
         // test.txt
         uint8_t *const buf = Zip::readCompressedFile(headers[0]);
         REQUIRE(buf != nullptr);
@@ -211,7 +211,7 @@ TEST_CASE("Zip readFile")
 
         REQUIRE(Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 2);
-        REQUIRE(entry->mArchiveName == name);
+        REQUIRE(entry->root == name);
         for (int f = 0; f < 2; f ++)
         {
             logger->log("test header: %s, %u, %u",
@@ -234,7 +234,7 @@ TEST_CASE("Zip readFile")
 
         REQUIRE(Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 11);
-        REQUIRE(entry->mArchiveName == name);
+        REQUIRE(entry->root == name);
         // test.txt
         uint8_t *buf = Zip::readFile(headers[0]);
         REQUIRE(buf != nullptr);
@@ -264,7 +264,7 @@ TEST_CASE("Zip readFile")
 
         REQUIRE(Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 2);
-        REQUIRE(entry->mArchiveName == name);
+        REQUIRE(entry->root == name);
         for (int f = 0; f < 2; f ++)
         {
             logger->log("test header: %s, %u, %u",

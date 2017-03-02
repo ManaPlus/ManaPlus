@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2017  The ManaPlus Developers
+ *  Copyright (C) 2011-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,27 +18,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_VIRTDIRENTRY_H
-#define UTILS_VIRTDIRENTRY_H
-#ifndef USE_PHYSFS
+#ifndef ENUMS_FS_FSENTRYTYPE_H
+#define ENUMS_FS_FSENTRYTYPE_H
 
-#include "fs/virtfs/virtfsentry.h"
+#include "enums/simpletypes/enumdefines.h"
 
-#include <string>
-
-#include "localconsts.h"
-
-struct VirtDirEntry final : public VirtFsEntry
+enumStart(FsEntryType)
 {
-    VirtDirEntry(const std::string &userDir,
-                 const std::string &rootDir);
+    Dir = 0,
+    Zip = 1,
+}
+enumEnd(FsEntryType);
 
-    A_DELETE_COPY(VirtDirEntry)
-
-    ~VirtDirEntry();
-
-    std::string mUserDir;
-};
-
-#endif  // USE_PHYSFS
-#endif  // UTILS_VIRTDIRENTRY_H
+#endif  // ENUMS_FS_FSENTRYTYPE_H

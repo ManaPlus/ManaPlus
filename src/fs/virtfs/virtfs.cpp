@@ -28,6 +28,7 @@
 #include "fs/virtlist.h"
 
 #include "fs/virtfs/virtdirentry.h"
+#include "fs/virtfs/virtfsentry.h"
 #include "fs/virtfs/virtfsdir.h"
 #include "fs/virtfs/virtfszip.h"
 
@@ -36,6 +37,11 @@
 #include "debug.h"
 
 const char *dirSeparator = nullptr;
+
+namespace
+{
+    std::vector<VirtFsEntry*> mEntries;
+}  // namespace
 
 namespace VirtFs
 {

@@ -60,7 +60,7 @@ TEST_CASE("VirtFsZip addToSearchPath")
         REQUIRE(VirtFsZip::searchEntryByArchive(
             prefix + "file2.zip") == nullptr);
         REQUIRE(VirtFsZip::getEntries().size() == 1);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test.zip");
     }
 
@@ -73,7 +73,7 @@ TEST_CASE("VirtFsZip addToSearchPath")
         REQUIRE(VirtFsZip::searchEntryByArchive(
             prefix + "file2.zip") == nullptr);
         REQUIRE(VirtFsZip::getEntries().size() == 1);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test.zip");
     }
 
@@ -90,9 +90,9 @@ TEST_CASE("VirtFsZip addToSearchPath")
         REQUIRE(VirtFsZip::searchEntryByArchive(
             prefix + "test3.zip") == nullptr);
         REQUIRE(VirtFsZip::getEntries().size() == 2);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test2.zip");
-        REQUIRE(VirtFsZip::getEntries()[1]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[1]->root ==
             prefix + "test.zip");
     }
 
@@ -109,9 +109,9 @@ TEST_CASE("VirtFsZip addToSearchPath")
         REQUIRE(VirtFsZip::searchEntryByArchive(
             prefix + "test3.zip") == nullptr);
         REQUIRE(VirtFsZip::getEntries().size() == 2);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test.zip");
-        REQUIRE(VirtFsZip::getEntries()[1]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[1]->root ==
             prefix + "test2.zip");
     }
 
@@ -132,11 +132,11 @@ TEST_CASE("VirtFsZip addToSearchPath")
         REQUIRE(VirtFsZip::searchEntryByArchive(
             prefix + "test4.zip") == nullptr);
         REQUIRE(VirtFsZip::getEntries().size() == 3);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test.zip");
-        REQUIRE(VirtFsZip::getEntries()[1]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[1]->root ==
             prefix + "test2.zip");
-        REQUIRE(VirtFsZip::getEntries()[2]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[2]->root ==
             prefix + "test3.zip");
     }
 
@@ -157,11 +157,11 @@ TEST_CASE("VirtFsZip addToSearchPath")
         REQUIRE(VirtFsZip::searchEntryByArchive(
             prefix + "test4.zip") == nullptr);
         REQUIRE(VirtFsZip::getEntries().size() == 3);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test3.zip");
-        REQUIRE(VirtFsZip::getEntries()[1]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[1]->root ==
             prefix + "test.zip");
-        REQUIRE(VirtFsZip::getEntries()[2]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[2]->root ==
             prefix + "test2.zip");
     }
 
@@ -205,20 +205,20 @@ TEST_CASE("VirtFsZip removeFromSearchPath")
         REQUIRE_THROWS(VirtFsZip::removeFromSearchPath(prefix + "test4.zip"));
         REQUIRE(VirtFsZip::removeFromSearchPath(prefix + "test.zip"));
         REQUIRE(VirtFsZip::getEntries().size() == 2);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test3.zip");
-        REQUIRE(VirtFsZip::getEntries()[1]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[1]->root ==
             prefix + "test2.zip");
         REQUIRE_THROWS(VirtFsZip::removeFromSearchPath(prefix + "test.zip"));
         REQUIRE(VirtFsZip::getEntries().size() == 2);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test3.zip");
-        REQUIRE(VirtFsZip::getEntries()[1]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[1]->root ==
             prefix + "test2.zip");
         REQUIRE(VirtFsZip::removeFromSearchPath(prefix + "//test2.zip"));
         REQUIRE_THROWS(VirtFsZip::removeFromSearchPath(prefix + "test2.zip"));
         REQUIRE(VirtFsZip::getEntries().size() == 1);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test3.zip");
     }
 
@@ -227,7 +227,7 @@ TEST_CASE("VirtFsZip removeFromSearchPath")
         REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "\\test.zip",
             Append_true));
         REQUIRE(VirtFsZip::getEntries().size() == 1);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test.zip");
         REQUIRE_THROWS(VirtFsZip::removeFromSearchPath(prefix + "test2.zip"));
         REQUIRE(VirtFsZip::removeFromSearchPath(prefix + "\\test.zip"));
@@ -235,7 +235,7 @@ TEST_CASE("VirtFsZip removeFromSearchPath")
         REQUIRE(VirtFsZip::addToSearchPathSilent(prefix + "test.zip",
             Append_true));
         REQUIRE(VirtFsZip::getEntries().size() == 1);
-        REQUIRE(VirtFsZip::getEntries()[0]->mArchiveName ==
+        REQUIRE(VirtFsZip::getEntries()[0]->root ==
             prefix + "test.zip");
     }
 

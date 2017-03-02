@@ -77,7 +77,7 @@ namespace VirtFsDir
             if (entry == nullptr)
                 return nullptr;
 
-            const std::string path = entry->mRootDir + filename;
+            const std::string path = entry->root + filename;
             const int fd = open(path.c_str(),
                 mode,
                 S_IRUSR | S_IWUSR);
@@ -97,7 +97,7 @@ namespace VirtFsDir
     VirtFile *openReadDirEntry(VirtDirEntry *const entry,
                                const std::string &filename)
     {
-        const std::string path = entry->mRootDir + filename;
+        const std::string path = entry->root + filename;
         const int fd = open(path.c_str(),
             O_RDONLY,
             S_IRUSR | S_IWUSR);
@@ -117,7 +117,7 @@ namespace VirtFsDir
     {
         FOR_EACH (std::vector<VirtDirEntry*>::const_iterator, it, mEntries)
         {
-            if ((*it)->mRootDir == root)
+            if ((*it)->root == root)
                 return *it;
         }
         return nullptr;
@@ -128,7 +128,7 @@ namespace VirtFsDir
         FOR_EACH (std::vector<VirtDirEntry*>::const_iterator, it, mEntries)
         {
             VirtDirEntry *const entry = *it;
-            if (Files::existsLocal(entry->mRootDir + path))
+            if (Files::existsLocal(entry->root + path))
                 return entry;
         }
         return nullptr;
@@ -229,7 +229,7 @@ namespace VirtFsDir
         FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
         {
             VirtDirEntry *const entry = *it;
-            if (entry->mRootDir == oldDir)
+            if (entry->root == oldDir)
             {
                 logger->log("Remove virtual directory: " + oldDir);
                 mEntries.erase(it);
@@ -256,7 +256,7 @@ namespace VirtFsDir
         FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
         {
             VirtDirEntry *const entry = *it;
-            if (entry->mRootDir == oldDir)
+            if (entry->root == oldDir)
             {
                 logger->log("Remove virtual directory: " + oldDir);
                 mEntries.erase(it);
@@ -335,7 +335,7 @@ namespace VirtFsDir
         FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
         {
             VirtDirEntry *const entry = *it;
-            const std::string path = entry->mRootDir + filename;
+            const std::string path = entry->root + filename;
             if (Files::existsLocal(path))
                 return entry->mUserDir;
         }
@@ -354,7 +354,7 @@ namespace VirtFsDir
         FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
         {
             VirtDirEntry *const entry = *it;
-            if (Files::existsLocal(entry->mRootDir + name))
+            if (Files::existsLocal(entry->root + name))
                 return true;
         }
         return false;
@@ -381,7 +381,7 @@ namespace VirtFsDir
         {
             VirtDirEntry *const entry = *it;
             StringVect files;
-            std::string path = entry->mRootDir + dirName;
+            std::string path = entry->root + dirName;
             if (findLast(path, std::string(dirSeparator)) == false)
                 path += dirSeparator;
             const struct dirent *next_file = nullptr;
@@ -437,7 +437,7 @@ namespace VirtFsDir
         FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
         {
             VirtDirEntry *const entry = *it;
-            std::string path = entry->mRootDir + dirName;
+            std::string path = entry->root + dirName;
             if (findLast(path, std::string(dirSeparator)) == false)
                 path += dirSeparator;
 
