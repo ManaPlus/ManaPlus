@@ -148,3 +148,15 @@ bugtracker (http://bugs.evolonline.org) or IRC on irc.freenode.net in the #manap
 
 If you have feedback about a specific game that uses the ManaPlus client, be sure
 to contact the developers of the game instead.
+
+5. Licenses
+-----------
+
+All code in this repository under GPL 2+ license. Art can be under CC-BY-SA or GPL 2+.
+
+Github, Bitbucked or other non free hostings may use strange TOS what may violate this licenses.
+If any of this hostings want to violate GPL or/and CC-BY-SA licenses,
+they not have any rights to do so.
+This hostings have rights to remove ManaPlus repositories if they want violate given licenses.
+
+ManaPlus main repository hosted on https://gitlab.com/manaplus/manaplus/
