@@ -261,7 +261,7 @@ AC_CHECK_LIB([z], [inflate], ,
 AC_MSG_ERROR([ *** Unable to find zlib (http://www.gzip.org/zlib/)]))
 
 # Option to enable physfs.
-AC_ARG_WITH(physfs,[  --without-physfs        don't use physfs ] )
+AC_ARG_WITH(physfs,[  --without-physfs        don't use physfs (experimental) ] )
 if test "x$with_physfs" == "xno"; then
     with_physfs=no
 else
