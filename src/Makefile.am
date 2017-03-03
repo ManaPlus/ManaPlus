@@ -1961,9 +1961,7 @@ manaplustests_SOURCES += \
 else
 manaplustests_SOURCES += \
 	      fs/virtfs/virtfs_unittest.cc \
-	      fs/virtfs/virtfsdir_unittest.cc \
-	      fs/virtfs/zip_unittest.cc \
-	      fs/virtfs/virtfszip_unittest.cc
+	      fs/virtfs/zip_unittest.cc
 endif
 
 manaplustests_SOURCES += \
