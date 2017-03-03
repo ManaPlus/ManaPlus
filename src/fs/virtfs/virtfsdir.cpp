@@ -51,7 +51,6 @@ extern const char *dirSeparator;
 
 namespace
 {
-    std::vector<VirtDirEntry*> mEntries;
     std::string mWriteDir;
     std::string mBaseDir;
     std::string mUserDir;
@@ -61,39 +60,6 @@ namespace
 
 namespace VirtFsDir
 {
-    namespace
-    {
-        static VirtFile *openFile(std::string filename,
-                                  const int mode)
-        {
-            prepareFsPath(filename);
-            if (checkPath(filename) == false)
-            {
-                reportAlways("VirtFsDir::openFile invalid path: %s",
-                    filename.c_str());
-                return nullptr;
-            }
-            VirtDirEntry *const entry = searchEntryByPath(filename);
-            if (entry == nullptr)
-                return nullptr;
-
-            const std::string path = entry->root + filename;
-            const int fd = open(path.c_str(),
-                mode,
-                S_IRUSR | S_IWUSR);
-            if (fd == -1)
-            {
-                reportAlways("VirtFsDir::openFile file open error: %s",
-                    filename.c_str());
-                return nullptr;
-            }
-            VirtFile *restrict const file = new VirtFile(&funcs);
-            file->mPrivate = new VirtFilePrivate(fd);
-
-            return file;
-        }
-    }  // namespace
-
     VirtFile *openInternal(VirtFsEntry *restrict const entry,
                            const std::string &filename,
                            const int mode)
@@ -134,195 +100,8 @@ namespace VirtFsDir
         return openInternal(entry, filename, O_WRONLY | O_CREAT | O_APPEND);
     }
 
-    VirtFile *openReadDirEntry(VirtDirEntry *const entry,
-                               const std::string &filename)
-    {
-        const std::string path = entry->root + filename;
-        const int fd = open(path.c_str(),
-            O_RDONLY,
-            S_IRUSR | S_IWUSR);
-        if (fd == -1)
-        {
-            reportAlways("VirtFsDir::openReadDirEntry file open error: %s",
-                filename.c_str());
-            return nullptr;
-        }
-        VirtFile *restrict const file = new VirtFile(&funcs);
-        file->mPrivate = new VirtFilePrivate(fd);
-
-        return file;
-    }
-
-    VirtDirEntry *searchEntryByRoot(const std::string &restrict root)
-    {
-        FOR_EACH (std::vector<VirtDirEntry*>::const_iterator, it, mEntries)
-        {
-            if ((*it)->root == root)
-                return *it;
-        }
-        return nullptr;
-    }
-
-    VirtDirEntry *searchEntryByPath(const std::string &restrict path)
-    {
-        FOR_EACH (std::vector<VirtDirEntry*>::const_iterator, it, mEntries)
-        {
-            VirtDirEntry *const entry = *it;
-            if (Files::existsLocal(entry->root + path))
-                return entry;
-        }
-        return nullptr;
-    }
-
-    bool addToSearchPathSilent(std::string newDir,
-                               const Append append,
-                               const SkipError skipError)
-    {
-        prepareFsPath(newDir);
-        if (skipError == SkipError_false &&
-            Files::existsLocal(newDir) == false)
-        {
-            logger->log("VirtFsDir::addToSearchPath directory not exists: %s",
-                newDir.c_str());
-            return false;
-        }
-        if (newDir.find(".zip") != std::string::npos)
-        {
-            reportAlways("Called VirtFsDir::addToSearchPath with zip archive");
-            return false;
-        }
-        std::string rootDir = newDir;
-        if (findLast(rootDir, std::string(dirSeparator)) == false)
-            rootDir += dirSeparator;
-        VirtDirEntry *const entry = VirtFsDir::searchEntryByRoot(rootDir);
-        if (entry != nullptr)
-        {
-            reportAlways("VirtFsDir::addToSearchPath already exists: %s",
-                newDir.c_str());
-            return false;
-        }
-        logger->log("Add virtual directory: " + newDir);
-        if (append == Append_true)
-        {
-            mEntries.push_back(new VirtDirEntry(newDir,
-                rootDir,
-                &funcs));
-        }
-        else
-        {
-            mEntries.insert(mEntries.begin(),
-                new VirtDirEntry(newDir,
-                rootDir,
-                &funcs));
-        }
-        return true;
-    }
-
-    bool addToSearchPath(std::string newDir,
-                         const Append append)
-    {
-        prepareFsPath(newDir);
-        if (Files::existsLocal(newDir) == false)
-        {
-            reportAlways("VirtFsDir::addToSearchPath directory not exists: %s",
-                newDir.c_str());
-            return false;
-        }
-        if (newDir.find(".zip") != std::string::npos)
-        {
-            reportAlways("Called VirtFsDir::addToSearchPath with zip archive");
-            return false;
-        }
-        std::string rootDir = newDir;
-        if (findLast(rootDir, std::string(dirSeparator)) == false)
-            rootDir += dirSeparator;
-        VirtDirEntry *const entry = VirtFsDir::searchEntryByRoot(rootDir);
-        if (entry != nullptr)
-        {
-            reportAlways("VirtFsDir::addToSearchPath already exists: %s",
-                newDir.c_str());
-            return false;
-        }
-        logger->log("Add virtual directory: " + newDir);
-        if (append == Append_true)
-        {
-            mEntries.push_back(new VirtDirEntry(newDir,
-                rootDir,
-                &funcs));
-        }
-        else
-        {
-            mEntries.insert(mEntries.begin(),
-                new VirtDirEntry(newDir,
-                rootDir,
-                &funcs));
-        }
-        return true;
-    }
-
-    bool removeFromSearchPathSilent(std::string oldDir)
-    {
-        prepareFsPath(oldDir);
-        if (oldDir.find(".zip") != std::string::npos)
-        {
-            reportAlways("Called removeFromSearchPath with zip archive");
-            return false;
-        }
-        if (findLast(oldDir, std::string(dirSeparator)) == false)
-            oldDir += dirSeparator;
-        FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
-        {
-            VirtDirEntry *const entry = *it;
-            if (entry->root == oldDir)
-            {
-                logger->log("Remove virtual directory: " + oldDir);
-                mEntries.erase(it);
-                delete entry;
-                return true;
-            }
-        }
-
-        logger->log("VirtFsDir::removeFromSearchPath not exists: %s",
-            oldDir.c_str());
-        return false;
-    }
-
-    bool removeFromSearchPath(std::string oldDir)
-    {
-        prepareFsPath(oldDir);
-        if (oldDir.find(".zip") != std::string::npos)
-        {
-            reportAlways("Called removeFromSearchPath with zip archive");
-            return false;
-        }
-        if (findLast(oldDir, std::string(dirSeparator)) == false)
-            oldDir += dirSeparator;
-        FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
-        {
-            VirtDirEntry *const entry = *it;
-            if (entry->root == oldDir)
-            {
-                logger->log("Remove virtual directory: " + oldDir);
-                mEntries.erase(it);
-                delete entry;
-                return true;
-            }
-        }
-
-        reportAlways("VirtFsDir::removeFromSearchPath not exists: %s",
-            oldDir.c_str());
-        return false;
-    }
-
-    std::vector<VirtDirEntry*> &getEntries()
-    {
-        return mEntries;
-    }
-
     void deinit()
     {
-        delete_all(mEntries);
-        mEntries.clear();
     }
 
 #if defined(__native_client__)
@@ -379,25 +158,6 @@ namespace VirtFsDir
         return mUserDir.c_str();
     }
 
-    std::string getRealDir(std::string filename)
-    {
-        prepareFsPath(filename);
-        if (checkPath(filename) == false)
-        {
-            reportAlways("VirtFsDir::exists invalid path: %s",
-                filename.c_str());
-            return std::string();
-        }
-        FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
-        {
-            VirtDirEntry *const entry = *it;
-            const std::string path = entry->root + filename;
-            if (Files::existsLocal(path))
-                return entry->userDir;
-        }
-        return std::string();
-    }
-
     bool getRealDir(VirtFsEntry *restrict const entry,
                     const std::string &filename,
                     const std::string &dirName A_UNUSED,
@@ -413,42 +173,11 @@ namespace VirtFsDir
         return false;
     }
 
-    bool exists(std::string name)
-    {
-        prepareFsPath(name);
-        if (checkPath(name) == false)
-        {
-            reportAlways("VirtFsDir::exists invalid path: %s",
-                name.c_str());
-            return false;
-        }
-        FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
-        {
-            VirtDirEntry *const entry = *it;
-            if (Files::existsLocal(entry->root + name))
-                return true;
-        }
-        return false;
-    }
-
     bool exists(VirtFsEntry *restrict const entry,
                 const std::string &fileName,
                 const std::string &dirName A_UNUSED)
     {
         return Files::existsLocal(entry->root + fileName);
-    }
-
-    VirtList *enumerateFiles(std::string dirName)
-    {
-        VirtList *const list = new VirtList;
-        prepareFsPath(dirName);
-        if (checkPath(dirName) == false)
-        {
-            reportAlways("VirtFsDir::enumerateFiles invalid path: %s",
-                dirName.c_str());
-            return list;
-        }
-        return enumerateFiles(dirName, list);
     }
 
     void enumerate(VirtFsEntry *restrict const entry,
@@ -490,53 +219,6 @@ namespace VirtFsDir
         }
     }
 
-    VirtList *enumerateFiles(const std::string &restrict dirName,
-                             VirtList *restrict const list)
-    {
-        StringVect &names = list->names;
-        FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
-        {
-            VirtDirEntry *const entry = *it;
-            StringVect files;
-            std::string path = entry->root + dirName;
-            if (findLast(path, std::string(dirSeparator)) == false)
-                path += dirSeparator;
-            const struct dirent *next_file = nullptr;
-            DIR *const dir = opendir(path.c_str());
-            if (dir)
-            {
-                while ((next_file = readdir(dir)))
-                {
-                    const std::string file = next_file->d_name;
-                    if (file == "." || file == "..")
-                        continue;
-                    if (mPermitLinks == false)
-                    {
-                        struct stat statbuf;
-                        if (lstat(path.c_str(), &statbuf) == 0 &&
-                            S_ISLNK(statbuf.st_mode) != 0)
-                        {
-                            continue;
-                        }
-                    }
-                    bool found(false);
-                    FOR_EACH (StringVectCIter, itn, names)
-                    {
-                        if (*itn == file)
-                        {
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (found == false)
-                        names.push_back(file);
-                }
-                closedir(dir);
-            }
-        }
-        return list;
-    }
-
     bool isDirectory(VirtFsEntry *restrict const entry,
                      const std::string &dirName,
                      bool &isDirFlag)
@@ -548,25 +230,6 @@ namespace VirtFsDir
         {
             isDirFlag = (S_ISDIR(statbuf.st_mode) != 0);
             return true;
-        }
-        return false;
-    }
-
-    bool isDirectoryInternal(const std::string &restrict dirName)
-    {
-        FOR_EACH (std::vector<VirtDirEntry*>::iterator, it, mEntries)
-        {
-            VirtDirEntry *const entry = *it;
-            std::string path = entry->root + dirName;
-            if (findLast(path, std::string(dirSeparator)) == false)
-                path += dirSeparator;
-
-            struct stat statbuf;
-            if (stat(path.c_str(), &statbuf) == 0 &&
-                S_ISDIR(statbuf.st_mode) != 0)
-            {
-                return true;
-            }
         }
         return false;
     }
@@ -591,21 +254,6 @@ namespace VirtFsDir
     void freeList(VirtList *restrict const handle)
     {
         delete handle;
-    }
-
-    VirtFile *openRead(const std::string &restrict filename)
-    {
-        return openFile(filename, O_RDONLY);
-    }
-
-    VirtFile *openWrite(const std::string &restrict filename)
-    {
-        return openFile(filename, O_WRONLY | O_CREAT | O_TRUNC);
-    }
-
-    VirtFile *openAppend(const std::string &restrict filename)
-    {
-        return openFile(filename, O_WRONLY | O_CREAT | O_APPEND);
     }
 
     bool setWriteDir(std::string newDir)
@@ -642,11 +290,6 @@ namespace VirtFsDir
     void permitLinks(const bool val)
     {
         mPermitLinks = val;
-    }
-
-    const char *getLastError()
-    {
-        return nullptr;
     }
 
     int close(VirtFile *restrict const file)
