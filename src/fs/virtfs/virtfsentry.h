@@ -28,9 +28,12 @@
 
 #include "localconsts.h"
 
+struct VirtFsFuncs;
+
 struct VirtFsEntry notfinal
 {
-    explicit VirtFsEntry(const FsEntryType &type0);
+    VirtFsEntry(const FsEntryType &type0,
+                VirtFsFuncs *restrict const funcs);
 
     A_DELETE_COPY(VirtFsEntry)
 
@@ -39,6 +42,8 @@ struct VirtFsEntry notfinal
     std::string root;
 
     FsEntryType type;
+
+    VirtFsFuncs *funcs;
 };
 
 #endif  // USE_PHYSFS

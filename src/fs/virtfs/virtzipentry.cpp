@@ -28,8 +28,9 @@
 
 #include "debug.h"
 
-VirtZipEntry::VirtZipEntry(const std::string &restrict archiveName) :
-    VirtFsEntry(FsEntryType::Zip),
+VirtZipEntry::VirtZipEntry(const std::string &restrict archiveName,
+                           VirtFsFuncs *restrict const funcs0) :
+    VirtFsEntry(FsEntryType::Zip, funcs0),
     mHeaders()
 {
     root = archiveName;

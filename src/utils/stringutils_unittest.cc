@@ -1394,10 +1394,10 @@ TEST_CASE("stringuntils replaceItemLinks")
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
-    VirtFs::addDirToSearchPath("data/test", Append_false);
-    VirtFs::addDirToSearchPath("../data/test", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data/test", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data/test", Append_false);
 
     ItemDB::NamedItemInfos &namedInfos = ItemDB::getNamedItemInfosTest();
     ItemDB::ItemInfos &infos = ItemDB::getItemInfosTest();
@@ -1618,10 +1618,10 @@ TEST_CASE("stringuntils replaceItemLinks")
     delete_all(infos);
     infos.clear();
     namedInfos.clear();
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
-    VirtFs::removeDirFromSearchPath("data/test");
-    VirtFs::removeDirFromSearchPath("../data/test");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
+    VirtFs::removeDirFromSearchPathSilent("data/test");
+    VirtFs::removeDirFromSearchPathSilent("../data/test");
     delete2(logger);
 //    VirtFs::deinit();
 }

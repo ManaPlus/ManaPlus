@@ -59,7 +59,7 @@ namespace VirtFs
         return VirtFsPhys::getUserDir();
     }
 
-    bool exists(const std::string &restrict name)
+    bool exists(std::string name)
     {
         return VirtFsPhys::exists(name);
     }
@@ -89,12 +89,12 @@ namespace VirtFs
         return VirtFsPhys::openRead(filename);
     }
 
-    VirtFile *openWrite(const std::string &restrict filename)
+    VirtFile *openWrite(std::string filename)
     {
         return VirtFsPhys::openWrite(filename);
     }
 
-    VirtFile *openAppend(const std::string &restrict filename)
+    VirtFile *openAppend(std::string filename)
     {
         return VirtFsPhys::openAppend(filename);
     }
@@ -104,35 +104,35 @@ namespace VirtFs
         return VirtFsPhys::setWriteDir(newDir);
     }
 
-    bool addDirToSearchPath(const std::string &restrict newDir,
+    bool addDirToSearchPath(std::string newDir,
                             const Append append)
     {
         return VirtFsPhys::addDirToSearchPath(newDir, append);
     }
 
-    bool addDirToSearchPathSilent(const std::string &restrict newDir,
+    bool addDirToSearchPathSilent(std::string newDir,
                                   const Append append)
     {
         return VirtFsPhys::addDirToSearchPath(newDir, append);
     }
 
-    bool removeDirFromSearchPath(const std::string &restrict oldDir)
+    bool removeDirFromSearchPath(std::string oldDir)
     {
         return VirtFsPhys::removeDirFromSearchPath(oldDir);
     }
 
-    bool removeDirFromSearchPathSilent(const std::string &restrict oldDir)
+    bool removeDirFromSearchPathSilent(std::string oldDir)
     {
         return VirtFsPhys::removeDirFromSearchPath(oldDir);
     }
 
-    bool addZipToSearchPath(const std::string &restrict newDir,
+    bool addZipToSearchPath(std::string newDir,
                             const Append append)
     {
         return VirtFsPhys::addZipToSearchPath(newDir, append);
     }
 
-    bool removeZipFromSearchPath(const std::string &restrict oldDir)
+    bool removeZipFromSearchPath(std::string oldDir)
     {
         return VirtFsPhys::removeZipFromSearchPath(oldDir);
     }

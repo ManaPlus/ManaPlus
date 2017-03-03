@@ -23,11 +23,14 @@
 
 #include "enums/simpletypes/append.h"
 
+#include "utils/stringvector.h"
+
 #include "localconsts.h"
 
-#include <string>
-
 struct VirtFile;
+#ifndef USE_PHYSFS
+struct VirtFsEntry;
+#endif  // USE_PHYSFS
 
 struct VirtFsFuncs final
 {
@@ -58,6 +61,27 @@ struct VirtFsFuncs final
     int (*seek) (VirtFile *restrict const file,
                  const uint64_t pos);
     int (*eof) (VirtFile *restrict const file);
+#ifndef USE_PHYSFS
+    bool (*exists) (VirtFsEntry *restrict const entry,
+                    const std::string &filename,
+                    const std::string &dirName);
+    bool (*getRealDir) (VirtFsEntry *restrict const entry,
+                        const std::string &filename,
+                        const std::string &dirName,
+                        std::string &realDir);
+    void (*enumerate) (VirtFsEntry *restrict const entry,
+                       const std::string &dirName,
+                       StringVect &names);
+    bool (*isDirectory) (VirtFsEntry *restrict const entry,
+                         const std::string &dirName,
+                         bool &isDirFlag);
+    VirtFile *(*openRead) (VirtFsEntry *restrict const entry,
+                         const std::string &filename);
+    VirtFile *(*openWrite) (VirtFsEntry *restrict const entry,
+                            const std::string &filename);
+    VirtFile *(*openAppend) (VirtFsEntry *restrict const entry,
+                             const std::string &filename);
+#endif  // USE_PHYSFS
 };
 
 #endif  // UTILS_VIRTFSFUNCS_H

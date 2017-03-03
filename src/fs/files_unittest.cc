@@ -37,8 +37,8 @@ TEST_CASE("Files renameFile")
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
 
     const int sz = 1234567;
     char *buf = new char[sz];
@@ -66,8 +66,8 @@ TEST_CASE("Files renameFile")
     delete [] buf;
     delete [] buf2;
     ResourceManager::deleteInstance();
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
@@ -77,14 +77,14 @@ TEST_CASE("Files existsLocal")
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
     REQUIRE(Files::existsLocal(VirtFs::getPath("help/about.txt")) == true);
     REQUIRE_FALSE(Files::existsLocal(VirtFs::getPath("help/about1.txt")));
     REQUIRE_FALSE(Files::existsLocal(VirtFs::getPath("help1/about.txt")));
     ResourceManager::deleteInstance();
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
@@ -94,13 +94,13 @@ TEST_CASE("Files loadTextFileString")
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
     REQUIRE(VirtFs::loadTextFileString("test/simplefile.txt") ==
         "this is test \nfile.");
     ResourceManager::deleteInstance();
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
@@ -110,8 +110,8 @@ TEST_CASE("Files loadTextFile")
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
 
     StringVect lines;
     VirtFs::loadTextFile("test/simplefile.txt", lines);
@@ -119,8 +119,8 @@ TEST_CASE("Files loadTextFile")
     REQUIRE(lines[0] == "this is test ");
     REQUIRE(lines[1] == "file.");
     ResourceManager::deleteInstance();
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
@@ -130,8 +130,8 @@ TEST_CASE("Files saveTextFile")
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
 
     const std::string dir = VirtFs::getPath("test");
     REQUIRE(dir.size() > 0);
@@ -140,8 +140,8 @@ TEST_CASE("Files saveTextFile")
     ::remove((dir + "/tempfile.txt").c_str());
     REQUIRE(data == "test line\ntext line2\n");
     ResourceManager::deleteInstance();
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
@@ -151,8 +151,8 @@ TEST_CASE("Files getFilesInDir")
     dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
 
     StringVect list;
     VirtFs::getFilesInDir("test",
@@ -172,8 +172,8 @@ TEST_CASE("Files getFilesInDir")
     REQUIRE(list[3] == "perserver/default/features.xml");
     REQUIRE(list[4] == "perserver/default/weapons.xml");
     ResourceManager::deleteInstance();
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

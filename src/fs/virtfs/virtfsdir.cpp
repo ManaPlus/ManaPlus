@@ -94,6 +94,46 @@ namespace VirtFsDir
         }
     }  // namespace
 
+    VirtFile *openInternal(VirtFsEntry *restrict const entry,
+                           const std::string &filename,
+                           const int mode)
+    {
+        const std::string path = entry->root + filename;
+        if (Files::existsLocal(path) == false)
+            return nullptr;
+        const int fd = open(path.c_str(),
+            mode,
+            S_IRUSR | S_IWUSR);
+        if (fd == -1)
+        {
+            reportAlways("VirtFs::open file open error: %s",
+                filename.c_str());
+            return nullptr;
+        }
+        VirtFile *restrict const file = new VirtFile(&funcs);
+        file->mPrivate = new VirtFilePrivate(fd);
+
+        return file;
+    }
+
+    VirtFile *openRead(VirtFsEntry *restrict const entry,
+                       const std::string &filename)
+    {
+        return openInternal(entry, filename, O_RDONLY);
+    }
+
+    VirtFile *openWrite(VirtFsEntry *restrict const entry,
+                        const std::string &filename)
+    {
+        return openInternal(entry, filename, O_WRONLY | O_CREAT | O_TRUNC);
+    }
+
+    VirtFile *openAppend(VirtFsEntry *restrict const entry,
+                         const std::string &filename)
+    {
+        return openInternal(entry, filename, O_WRONLY | O_CREAT | O_APPEND);
+    }
+
     VirtFile *openReadDirEntry(VirtDirEntry *const entry,
                                const std::string &filename)
     {
@@ -165,13 +205,15 @@ namespace VirtFsDir
         if (append == Append_true)
         {
             mEntries.push_back(new VirtDirEntry(newDir,
-                rootDir));
+                rootDir,
+                &funcs));
         }
         else
         {
             mEntries.insert(mEntries.begin(),
                 new VirtDirEntry(newDir,
-                rootDir));
+                rootDir,
+                &funcs));
         }
         return true;
     }
@@ -205,13 +247,15 @@ namespace VirtFsDir
         if (append == Append_true)
         {
             mEntries.push_back(new VirtDirEntry(newDir,
-                rootDir));
+                rootDir,
+                &funcs));
         }
         else
         {
             mEntries.insert(mEntries.begin(),
                 new VirtDirEntry(newDir,
-                rootDir));
+                rootDir,
+                &funcs));
         }
         return true;
     }
@@ -311,6 +355,18 @@ namespace VirtFsDir
         ptr->tell = &VirtFsDir::tell;
         ptr->seek = &VirtFsDir::seek;
         ptr->eof = &VirtFsDir::eof;
+        ptr->exists = &VirtFsDir::exists;
+        ptr->getRealDir = &VirtFsDir::getRealDir;
+        ptr->enumerate = &VirtFsDir::enumerate;
+        ptr->isDirectory = &VirtFsDir::isDirectory;
+        ptr->openRead = &VirtFsDir::openRead;
+        ptr->openWrite = &VirtFsDir::openWrite;
+        ptr->openAppend = &VirtFsDir::openAppend;
+    }
+
+    VirtFsFuncs *getFuncs()
+    {
+        return &funcs;
     }
 
     const char *getBaseDir()
@@ -337,9 +393,24 @@ namespace VirtFsDir
             VirtDirEntry *const entry = *it;
             const std::string path = entry->root + filename;
             if (Files::existsLocal(path))
-                return entry->mUserDir;
+                return entry->userDir;
         }
         return std::string();
+    }
+
+    bool getRealDir(VirtFsEntry *restrict const entry,
+                    const std::string &filename,
+                    const std::string &dirName A_UNUSED,
+                    std::string &realDir)
+    {
+        VirtDirEntry *const dirEntry = static_cast<VirtDirEntry*>(entry);
+        const std::string path = dirEntry->root + filename;
+        if (Files::existsLocal(dirEntry->root + filename))
+        {
+            realDir = dirEntry->userDir;
+            return true;
+        }
+        return false;
     }
 
     bool exists(std::string name)
@@ -360,6 +431,13 @@ namespace VirtFsDir
         return false;
     }
 
+    bool exists(VirtFsEntry *restrict const entry,
+                const std::string &fileName,
+                const std::string &dirName A_UNUSED)
+    {
+        return Files::existsLocal(entry->root + fileName);
+    }
+
     VirtList *enumerateFiles(std::string dirName)
     {
         VirtList *const list = new VirtList;
@@ -371,6 +449,45 @@ namespace VirtFsDir
             return list;
         }
         return enumerateFiles(dirName, list);
+    }
+
+    void enumerate(VirtFsEntry *restrict const entry,
+                   const std::string &dirName,
+                   StringVect &names)
+    {
+        const std::string path = entry->root + dirName;
+        const struct dirent *next_file = nullptr;
+        DIR *const dir = opendir(path.c_str());
+        if (dir)
+        {
+            while ((next_file = readdir(dir)))
+            {
+                const std::string file = next_file->d_name;
+                if (file == "." || file == "..")
+                    continue;
+                if (mPermitLinks == false)
+                {
+                    struct stat statbuf;
+                    if (lstat(path.c_str(), &statbuf) == 0 &&
+                        S_ISLNK(statbuf.st_mode) != 0)
+                    {
+                        continue;
+                    }
+                }
+                bool found(false);
+                FOR_EACH (StringVectCIter, itn, names)
+                {
+                    if (*itn == file)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found == false)
+                    names.push_back(file);
+            }
+            closedir(dir);
+        }
     }
 
     VirtList *enumerateFiles(const std::string &restrict dirName,
@@ -420,16 +537,19 @@ namespace VirtFsDir
         return list;
     }
 
-    bool isDirectory(std::string dirName)
+    bool isDirectory(VirtFsEntry *restrict const entry,
+                     const std::string &dirName,
+                     bool &isDirFlag)
     {
-        prepareFsPath(dirName);
-        if (checkPath(dirName) == false)
+        std::string path = entry->root + dirName;
+
+        struct stat statbuf;
+        if (stat(path.c_str(), &statbuf) == 0)
         {
-            reportAlways("VirtFsDir::isDirectory invalid path: %s",
-                dirName.c_str());
-            return false;
+            isDirFlag = (S_ISDIR(statbuf.st_mode) != 0);
+            return true;
         }
-        return isDirectoryInternal(dirName);
+        return false;
     }
 
     bool isDirectoryInternal(const std::string &restrict dirName)

@@ -227,37 +227,3 @@ namespace VirtFs
         return true;
     }
 }  // namespace VirtFs
-
-#ifdef USE_PHYSFS
-// +++ temporary add it here
-namespace VirtFsPhys
-{
-    void getFiles(const std::string &path,
-                  StringVect &list)
-    {
-        VirtList *const fonts = VirtFsPhys::enumerateFiles(path);
-        FOR_EACH (StringVectCIter, i, fonts->names)
-        {
-            if (!VirtFsPhys::isDirectory(path + dirSeparator + *i))
-                list.push_back(*i);
-        }
-        VirtFsPhys::freeList(fonts);
-    }
-}  // namespace VirtFs
-#else  // USE_PHYSFS
-// +++ temporary add it here
-namespace VirtFsDir
-{
-    void getFiles(const std::string &path,
-                  StringVect &list)
-    {
-        VirtList *const fonts = VirtFsDir::enumerateFiles(path);
-        FOR_EACH (StringVectCIter, i, fonts->names)
-        {
-            if (!VirtFsDir::isDirectory(path + dirSeparator + *i))
-                list.push_back(*i);
-        }
-        VirtFsDir::freeList(fonts);
-    }
-}  // namespace VirtFs
-#endif  // USE_PHYSFS

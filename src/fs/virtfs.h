@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_VIRTFS_H
-#define UTILS_VIRTFS_H
+#ifndef FS_VIRTFS_H
+#define FS_VIRTFS_H
 
 #include "enums/simpletypes/append.h"
 
@@ -37,24 +37,24 @@ namespace VirtFs
     const char *getDirSeparator();
     const char *getBaseDir();
     const char *getUserDir();
-    bool exists(const std::string &restrict name);
+    bool exists(std::string name);
     VirtList *enumerateFiles(std::string dir) RETURNS_NONNULL;
     bool isDirectory(std::string name);
     bool isSymbolicLink(const std::string &restrict name);
     void freeList(VirtList *restrict const handle);
     VirtFile *openRead(std::string filename);
-    VirtFile *openWrite(const std::string &restrict filename);
-    VirtFile *openAppend(const std::string &restrict filename);
+    VirtFile *openWrite(std::string filename);
+    VirtFile *openAppend(std::string filename);
     bool setWriteDir(const std::string &restrict newDir);
-    bool addDirToSearchPath(const std::string &restrict newDir,
+    bool addDirToSearchPath(std::string newDir,
                             const Append append);
-    bool addDirToSearchPathSilent(const std::string &restrict newDir,
+    bool addDirToSearchPathSilent(std::string newDir,
                                   const Append append);
-    bool removeDirFromSearchPath(const std::string &restrict oldDir);
-    bool removeDirFromSearchPathSilent(const std::string &restrict oldDir);
-    bool addZipToSearchPath(const std::string &restrict newDir,
+    bool removeDirFromSearchPath(std::string oldDir);
+    bool removeDirFromSearchPathSilent(std::string oldDir);
+    bool addZipToSearchPath(std::string newDir,
                             const Append append);
-    bool removeZipFromSearchPath(const std::string &restrict oldDir);
+    bool removeZipFromSearchPath(std::string oldDir);
     std::string getRealDir(std::string filename);
     bool mkdir(const std::string &restrict dirName);
     bool remove(const std::string &restrict filename);
@@ -79,4 +79,4 @@ namespace VirtFs
 
 extern const char *dirSeparator;
 
-#endif  // UTILS_VIRTFS_H
+#endif  // FS_VIRTFS_H

@@ -468,40 +468,6 @@ TEST_CASE("VirtFsPhys getRealDir")
     delete2(logger);
 }
 
-TEST_CASE("VirtFsPhys permitLinks")
-{
-    VirtFsPhys::initFuncs();
-    logger = new Logger();
-    VirtFsPhys::addDirToSearchPath("data", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data", Append_false);
-
-    const int cnt1 = VirtFsPhys::exists("test/test2.txt") ? 26 : 25;
-    const int cnt2 = 26;
-
-    StringVect list;
-    VirtFsPhys::permitLinks(false);
-    VirtFsPhys::getFiles("test", list);
-    removeTemp(list);
-    const size_t sz = list.size();
-    REQUIRE(sz == cnt1);
-
-    list.clear();
-    VirtFsPhys::permitLinks(true);
-    VirtFsPhys::getFiles("test", list);
-    removeTemp(list);
-    REQUIRE(list.size() == cnt2);
-
-    list.clear();
-    VirtFsPhys::permitLinks(false);
-    VirtFsPhys::getFiles("test", list);
-    removeTemp(list);
-    REQUIRE(list.size() == cnt1);
-
-    VirtFsPhys::removeDirFromSearchPath("data");
-    VirtFsPhys::removeDirFromSearchPath("../data");
-    delete2(logger);
-}
-
 TEST_CASE("VirtFsPhys read")
 {
     VirtFsPhys::initFuncs();

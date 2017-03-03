@@ -102,6 +102,11 @@ namespace VirtFsZip
         return nullptr;
     }
 
+    VirtFsFuncs *getFuncs()
+    {
+        return &funcs;
+    }
+
     bool addToSearchPathSilent(std::string newDir,
                                const Append append)
     {
@@ -125,7 +130,7 @@ namespace VirtFsZip
                 newDir.c_str());
             return false;
         }
-        entry = new VirtZipEntry(newDir);
+        entry = new VirtZipEntry(newDir, &funcs);
         if (Zip::readArchiveInfo(entry) == false)
         {
             delete entry;
@@ -166,7 +171,7 @@ namespace VirtFsZip
                 newDir.c_str());
             return false;
         }
-        entry = new VirtZipEntry(newDir);
+        entry = new VirtZipEntry(newDir, &funcs);
         if (Zip::readArchiveInfo(entry) == false)
         {
             delete entry;
@@ -259,6 +264,13 @@ namespace VirtFsZip
         ptr->tell = &VirtFsZip::tell;
         ptr->seek = &VirtFsZip::seek;
         ptr->eof = &VirtFsZip::eof;
+        ptr->exists = &VirtFsZip::exists;
+        ptr->getRealDir = &VirtFsZip::getRealDir;
+        ptr->enumerate = &VirtFsZip::enumerate;
+        ptr->isDirectory = &VirtFsZip::isDirectory;
+        ptr->openRead = &VirtFsZip::openRead;
+        ptr->openWrite = &VirtFsZip::openWrite;
+        ptr->openAppend = &VirtFsZip::openAppend;
     }
 
     std::string getRealDir(std::string filename)
@@ -282,6 +294,35 @@ namespace VirtFsZip
         return std::string();
     }
 
+    bool getRealDir(VirtFsEntry *restrict const entry,
+                    const std::string &filename,
+                    const std::string &dirName,
+                    std::string &realDir)
+    {
+        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                  it2,
+                  zipEntry->mHeaders)
+        {
+            if ((*it2)->fileName == filename)
+            {
+                realDir = entry->root;
+                return true;
+            }
+        }
+        FOR_EACH (std::vector<std::string>::const_iterator,
+                  it2,
+                  zipEntry->mDirs)
+        {
+            if (*it2 == dirName)
+            {
+                realDir = entry->root;
+                return true;
+            }
+        }
+        return false;
+    }
+
     bool exists(std::string name)
     {
         prepareFsPath(name);
@@ -296,6 +337,28 @@ namespace VirtFsZip
         return entry != nullptr;
     }
 
+    bool exists(VirtFsEntry *restrict const entry,
+                const std::string &filename,
+                const std::string &dirName)
+    {
+        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                  it2,
+                  zipEntry->mHeaders)
+        {
+            if ((*it2)->fileName == filename)
+                return true;
+        }
+        FOR_EACH (std::vector<std::string>::const_iterator,
+                  it2,
+                  zipEntry->mDirs)
+        {
+            if (*it2 == dirName)
+                return true;
+        }
+        return false;
+    }
+
     VirtList *enumerateFiles(std::string dirName)
     {
         VirtList *const list = new VirtList;
@@ -307,6 +370,66 @@ namespace VirtFsZip
             return list;
         }
         return enumerateFiles(dirName, list);
+    }
+
+    void enumerate(VirtFsEntry *restrict const entry,
+                   const std::string &dirName,
+                   StringVect &names)
+    {
+        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        if (dirName == "/")
+        {
+            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                      it2,
+                      zipEntry->mHeaders)
+            {
+                ZipLocalHeader *const header = *it2;
+                std::string fileName = header->fileName;
+                // skip subdirs from enumeration
+                const size_t idx = fileName.find(dirSeparator);
+                if (idx != std::string::npos)
+                    fileName.erase(idx);
+                bool found(false);
+                FOR_EACH (StringVectCIter, itn, names)
+                {
+                    if (*itn == fileName)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found == false)
+                    names.push_back(fileName);
+            }
+        }
+        else
+        {
+            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                      it2,
+                      zipEntry->mHeaders)
+            {
+                ZipLocalHeader *const header = *it2;
+                std::string fileName = header->fileName;
+                if (findCutFirst(fileName, dirName) == true)
+                {
+                    // skip subdirs from enumeration
+                    const size_t idx = fileName.find(dirSeparator);
+                    if (idx != std::string::npos)
+                        fileName.erase(idx);
+                    bool found(false);
+                    FOR_EACH (StringVectCIter, itn, names)
+                    {
+                        if (*itn == fileName)
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found == false)
+                        names.push_back(fileName);
+                }
+            }
+        }
     }
 
     VirtList *enumerateFiles(std::string dirName,
@@ -380,16 +503,22 @@ namespace VirtFsZip
         return list;
     }
 
-    bool isDirectory(std::string dirName)
+    bool isDirectory(VirtFsEntry *restrict const entry,
+                     const std::string &dirName,
+                     bool &isDirFlag)
     {
-        prepareFsPath(dirName);
-        if (checkPath(dirName) == false)
+        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        FOR_EACH (std::vector<std::string>::const_iterator,
+                  it2,
+                  zipEntry->mDirs)
         {
-            reportAlways("VirtFsZip::isDirectory invalid path: %s",
-                dirName.c_str());
-            return false;
+            if (*it2 == dirName)
+            {
+                isDirFlag = true;
+                return true;
+            }
         }
-        return isDirectoryInternal(dirName);
+        return false;
     }
 
     bool isDirectoryInternal(std::string dirName)
@@ -438,6 +567,43 @@ namespace VirtFsZip
             return nullptr;
         }
         return openReadInternal(filename);
+    }
+
+    VirtFile *openRead(VirtFsEntry *restrict const entry,
+                       const std::string &filename)
+    {
+        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                  it2,
+                  zipEntry->mHeaders)
+        {
+            ZipLocalHeader *restrict const header = *it2;
+            if (header->fileName == filename)
+            {
+                uint8_t *restrict const buf = Zip::readFile(header);
+                if (buf == nullptr)
+                    return nullptr;
+                VirtFile *restrict const file = new VirtFile(&funcs);
+                file->mPrivate = new VirtFilePrivate(buf,
+                    header->uncompressSize);
+                return file;
+            }
+        }
+        return nullptr;
+    }
+
+    VirtFile *openWrite(VirtFsEntry *restrict const entry,
+                        const std::string &filename)
+    {
+        reportAlways("VirtFs::openWrite for zip not implemented.");
+        return nullptr;
+    }
+
+    VirtFile *openAppend(VirtFsEntry *restrict const entry,
+                         const std::string &filename)
+    {
+        reportAlways("VirtFs::openAppend for zip not implemented.");
+        return nullptr;
     }
 
     VirtFile *openReadInternal(const std::string &filename)

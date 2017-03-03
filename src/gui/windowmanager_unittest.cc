@@ -139,10 +139,10 @@ TEST_CASE("Windows tests", "windowmanager")
     resourceManager = nullptr;
     ResourceManager::init();
     resourceManager->cleanOrphans(true);
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
-    VirtFs::addDirToSearchPath("data/test", Append_false);
-    VirtFs::addDirToSearchPath("../data/test", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data/test", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data/test", Append_false);
     paths.setDefaultValues(getPathsDefaults());
     branding.setValue("onlineServerFile", "test/serverlistplus.xml");
     mainGraphics = new SDLGraphics;
@@ -690,10 +690,10 @@ TEST_CASE("Windows tests", "windowmanager")
     delete2(inventoryHandler);
     delete2(charServerHandler);
     delete2(playerHandler);
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
-    VirtFs::removeDirFromSearchPath("data/test");
-    VirtFs::removeDirFromSearchPath("../data/test");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
+    VirtFs::removeDirFromSearchPathSilent("data/test");
+    VirtFs::removeDirFromSearchPathSilent("../data/test");
     delete2(logger);
 
 //    VirtFs::deinit();

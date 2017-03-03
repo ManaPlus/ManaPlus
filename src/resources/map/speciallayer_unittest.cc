@@ -45,8 +45,8 @@ TEST_CASE("SpecialLayer updateCache")
     logger = new Logger;
     client = new Client;
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
 
     imageHelper = new SDLImageHelper;
 #ifdef USE_SDL2
@@ -262,7 +262,7 @@ TEST_CASE("SpecialLayer updateCache")
     delete layer;
     resourceManager->cleanOrphans();
     delete2(client);
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 }

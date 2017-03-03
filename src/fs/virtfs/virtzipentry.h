@@ -33,7 +33,8 @@ struct ZipLocalHeader;
 
 struct VirtZipEntry final : public VirtFsEntry
 {
-    explicit VirtZipEntry(const std::string &restrict archiveName);
+    VirtZipEntry(const std::string &restrict archiveName,
+                 VirtFsFuncs *restrict const funcs);
 
     A_DELETE_COPY(VirtZipEntry)
 

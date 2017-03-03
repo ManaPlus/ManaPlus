@@ -1960,6 +1960,7 @@ manaplustests_SOURCES += \
 	      fs/physfs/virtfsphys_unittest.cc
 else
 manaplustests_SOURCES += \
+	      fs/virtfs/virtfs_unittest.cc \
 	      fs/virtfs/virtfsdir_unittest.cc \
 	      fs/virtfs/zip_unittest.cc \
 	      fs/virtfs/virtfszip_unittest.cc

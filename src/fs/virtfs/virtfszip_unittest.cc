@@ -32,7 +32,7 @@
 #include "utils/delete2.h"
 
 #include "debug.h"
-
+/*
 TEST_CASE("VirtFsZip getEntries")
 {
     VirtFsZip::init();
@@ -749,4 +749,5 @@ TEST_CASE("VirtFsZip read")
     VirtFsZip::deinit();
     delete2(logger);
 }
+*/
 #endif  // USE_PHYSFS

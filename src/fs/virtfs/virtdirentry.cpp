@@ -23,10 +23,11 @@
 
 #include "debug.h"
 
-VirtDirEntry::VirtDirEntry(const std::string &userDir,
-                           const std::string &rootDir) :
-    VirtFsEntry(FsEntryType::Dir),
-    mUserDir(userDir)
+VirtDirEntry::VirtDirEntry(const std::string &userDir0,
+                           const std::string &rootDir,
+                           VirtFsFuncs *restrict const funcs0) :
+    VirtFsEntry(FsEntryType::Dir, funcs0),
+    userDir(userDir0)
 {
     root = rootDir;
 }

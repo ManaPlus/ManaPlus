@@ -25,19 +25,20 @@
 #include "enums/simpletypes/append.h"
 #include "enums/simpletypes/skiperror.h"
 
-#include "localconsts.h"
+#include "utils/stringvector.h"
 
-#include <vector>
-#include <string>
+#include "localconsts.h"
 
 struct VirtFile;
 struct VirtList;
 struct VirtFsFuncs;
+struct VirtFsEntry;
 struct VirtZipEntry;
 struct ZipLocalHeader;
 
 namespace VirtFsZip
 {
+    VirtFsFuncs *getFuncs();
     VirtZipEntry *searchEntryByArchive(const std::string &restrict
                                        archiveName);
     ZipLocalHeader *searchHeaderByName(const std::string &restrict filename);
@@ -54,20 +55,38 @@ namespace VirtFsZip
     void deinit();
     std::vector<VirtZipEntry*> &getEntries();
     bool exists(std::string name);
+    bool exists(VirtFsEntry *restrict const entry,
+                const std::string &filename,
+                const std::string &dirName);
+    void enumerate(VirtFsEntry *restrict const entry,
+                   const std::string &dirName,
+                   StringVect &names);
     VirtList *enumerateFiles(std::string dirName) RETURNS_NONNULL;
     VirtList *enumerateFiles(std::string dirName,
                              VirtList *restrict const list) RETURNS_NONNULL;
-    bool isDirectory(std::string dirName);
+    bool isDirectory(VirtFsEntry *restrict const entry,
+                     const std::string &dirName,
+                     bool &isDirFlag);
     bool isDirectoryInternal(std::string dirName);
     bool isSymbolicLink(std::string name);
     void freeList(VirtList *restrict const handle);
     VirtFile *openRead(std::string filename);
+    VirtFile *openRead(VirtFsEntry *restrict const entry,
+                       const std::string &filename);
+    VirtFile *openWrite(VirtFsEntry *restrict const entry,
+                        const std::string &filename);
+    VirtFile *openAppend(VirtFsEntry *restrict const entry,
+                         const std::string &filename);
     VirtFile *openReadInternal(const std::string &filename);
     VirtFile *openWrite(const std::string &restrict filename);
     VirtFile *openAppend(const std::string &restrict filename);
     bool setWriteDir(const std::string &restrict newDir);
     std::string getRealDir(std::string filename);
     std::string getRealDirInternal(const std::string &filename);
+    bool getRealDir(VirtFsEntry *restrict const entry,
+                    const std::string &filename,
+                    const std::string &dirName,
+                    std::string &realDir);
     bool mkdir(const std::string &restrict dirName);
     bool remove(const std::string &restrict filename);
     void permitLinks(const bool val);

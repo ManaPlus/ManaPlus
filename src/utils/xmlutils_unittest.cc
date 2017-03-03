@@ -45,8 +45,8 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
@@ -79,8 +79,8 @@ TEST_CASE("xmlutils readXmlIntVector 1")
     REQUIRE(1 == arr[4]);
     delete2(client);
     ResourceManager::deleteInstance();
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
@@ -92,8 +92,8 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
@@ -125,8 +125,8 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     REQUIRE(arr["Metal"] == "26");
     delete2(client);
     ResourceManager::deleteInstance();
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
@@ -138,10 +138,10 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPath("data", Append_false);
-    VirtFs::addDirToSearchPath("../data", Append_false);
-    VirtFs::addDirToSearchPath("data/test", Append_false);
-    VirtFs::addDirToSearchPath("../data/test", Append_false);
+    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data", Append_false);
+    VirtFs::addDirToSearchPathSilent("data/test", Append_false);
+    VirtFs::addDirToSearchPathSilent("../data/test", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
@@ -173,10 +173,10 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     REQUIRE(arr[3] == 0);
     delete2(client);
     ResourceManager::deleteInstance();
-    VirtFs::removeDirFromSearchPath("data/test");
-    VirtFs::removeDirFromSearchPath("../data/test");
-    VirtFs::removeDirFromSearchPath("data");
-    VirtFs::removeDirFromSearchPath("../data");
+    VirtFs::removeDirFromSearchPathSilent("data/test");
+    VirtFs::removeDirFromSearchPathSilent("../data/test");
+    VirtFs::removeDirFromSearchPathSilent("data");
+    VirtFs::removeDirFromSearchPathSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

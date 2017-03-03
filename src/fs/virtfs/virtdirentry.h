@@ -31,13 +31,14 @@
 struct VirtDirEntry final : public VirtFsEntry
 {
     VirtDirEntry(const std::string &userDir,
-                 const std::string &rootDir);
+                 const std::string &rootDir,
+                 VirtFsFuncs *restrict const funcs);
 
     A_DELETE_COPY(VirtDirEntry)
 
     ~VirtDirEntry();
 
-    std::string mUserDir;
+    std::string userDir;
 };
 
 #endif  // USE_PHYSFS

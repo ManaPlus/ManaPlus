@@ -22,11 +22,15 @@
 
 #include "fs/virtfs/virtfsentry.h"
 
+#include "fs/virtfsfuncs.h"
+
 #include "debug.h"
 
-VirtFsEntry::VirtFsEntry(const FsEntryType &type0) :
+VirtFsEntry::VirtFsEntry(const FsEntryType &type0,
+                         VirtFsFuncs *restrict const funcs0) :
     root(),
-    type(type0)
+    type(type0),
+    funcs(funcs0)
 {
 }
 
