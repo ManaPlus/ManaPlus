@@ -1929,7 +1929,8 @@ gcc-6_SDL_default_test:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2_old:
+# disabled _old jobs due physfs bugs.
+.gcc-6_SDL_SDL-1.2_old:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -1951,7 +1952,8 @@ gcc-6_SDL_SDL-1.2_old:
   tags:
     - docker
 
-gcc-6_SDL_default_old:
+# disabled _old jobs due physfs bugs.
+.gcc-6_SDL_default_old:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -1972,7 +1974,8 @@ gcc-6_SDL_default_old:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2_old_sanitize_test:
+# disabled _old jobs due physfs bugs.
+.gcc-6_SDL_SDL-1.2_old_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -1996,7 +1999,8 @@ gcc-6_SDL_SDL-1.2_old_sanitize_test:
   tags:
     - docker
 
-gcc-6_SDL_default_old_sanitize_test:
+# disabled _old jobs due physfs bugs.
+.gcc-6_SDL_default_old_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -2018,7 +2022,8 @@ gcc-6_SDL_default_old_sanitize_test:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2_old_test:
+# disabled _old jobs due physfs bugs.
+.gcc-6_SDL_SDL-1.2_old_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -2042,7 +2047,8 @@ gcc-6_SDL_SDL-1.2_old_test:
   tags:
     - docker
 
-gcc-6_SDL_default_old_test:
+# disabled _old jobs due physfs bugs.
+.gcc-6_SDL_default_old_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
