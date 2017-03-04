@@ -102,10 +102,10 @@ gcc-6:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
-gcc-6_virtfs:
+gcc-6_physfs:
   stage: prebuild
   script:
-  - ./tools/ci/jobs/gcc6.sh --without-physfs
+  - ./tools/ci/jobs/gcc6.sh --with-physfs
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -456,10 +456,10 @@ gcc-6_tests_no_opengl_i386:
   tags:
     - docker
 
-gcc-6_tests_virtfs:
+gcc-6_tests_physfs:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --without-physfs
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --with-physfs
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -470,10 +470,10 @@ gcc-6_tests_virtfs:
   tags:
     - docker
 
-gcc-6_tests_virtfs_i386:
+gcc-6_tests_physfs_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --without-physfs
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --with-physfs
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -515,10 +515,10 @@ gcc-6_sdl2_tests_i386:
   tags:
     - docker
 
-gcc-6_sdl2_tests_virtfs:
+gcc-6_sdl2_tests_physfs:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sdl2_tests_gcov.sh --without-dyecmd --without-manaplusgame --without-physfs
+  - ./tools/ci/jobs/gcc6_sdl2_tests_gcov.sh --without-dyecmd --without-manaplusgame --with-physfs
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -530,10 +530,10 @@ gcc-6_sdl2_tests_virtfs:
   tags:
     - docker
 
-gcc-6_sdl2_tests_virtfs_i386:
+gcc-6_sdl2_tests_physfs_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sdl2_tests.sh --without-dyecmd --without-manaplusgame --without-physfs
+  - ./tools/ci/jobs/gcc6_sdl2_tests.sh --without-dyecmd --without-manaplusgame --with-physfs
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -1197,10 +1197,10 @@ gcc-6_sanitize_i386:
   tags:
     - docker
 
-gcc-6_sanitize_virtfs:
+gcc-6_sanitize_physfs:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sanitize.sh --without-physfs
+  - ./tools/ci/jobs/gcc6_sanitize.sh --with-physfs
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1210,10 +1210,10 @@ gcc-6_sanitize_virtfs:
   tags:
     - docker
 
-gcc-6_sanitize_virtfs_i386:
+gcc-6_sanitize_physfs_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sanitize.sh --without-physfs
+  - ./tools/ci/jobs/gcc6_sanitize.sh --with-physfs
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -1929,8 +1929,7 @@ gcc-6_SDL_default_test:
   tags:
     - docker
 
-# disabled _old jobs due physfs bugs.
-.gcc-6_SDL_SDL-1.2_old:
+gcc-6_SDL_SDL-1.2_old:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -1952,8 +1951,7 @@ gcc-6_SDL_default_test:
   tags:
     - docker
 
-# disabled _old jobs due physfs bugs.
-.gcc-6_SDL_default_old:
+gcc-6_SDL_default_old:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -1974,8 +1972,7 @@ gcc-6_SDL_default_test:
   tags:
     - docker
 
-# disabled _old jobs due physfs bugs.
-.gcc-6_SDL_SDL-1.2_old_sanitize_test:
+gcc-6_SDL_SDL-1.2_old_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -1999,8 +1996,7 @@ gcc-6_SDL_default_test:
   tags:
     - docker
 
-# disabled _old jobs due physfs bugs.
-.gcc-6_SDL_default_old_sanitize_test:
+gcc-6_SDL_default_old_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -2022,8 +2018,7 @@ gcc-6_SDL_default_test:
   tags:
     - docker
 
-# disabled _old jobs due physfs bugs.
-.gcc-6_SDL_SDL-1.2_old_test:
+gcc-6_SDL_SDL-1.2_old_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -2047,8 +2042,7 @@ gcc-6_SDL_default_test:
   tags:
     - docker
 
-# disabled _old jobs due physfs bugs.
-.gcc-6_SDL_default_old_test:
+gcc-6_SDL_default_old_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
