@@ -194,6 +194,7 @@ namespace VirtFsDir
                 const std::string file = next_file->d_name;
                 if (file == "." || file == "..")
                     continue;
+#ifndef WIN32
                 if (mPermitLinks == false)
                 {
                     struct stat statbuf;
@@ -203,6 +204,8 @@ namespace VirtFsDir
                         continue;
                     }
                 }
+#endif  // WIN32
+
                 bool found(false);
                 FOR_EACH (StringVectCIter, itn, names)
                 {
@@ -243,12 +246,16 @@ namespace VirtFsDir
                 name.c_str());
             return false;
         }
+#ifndef WIN32
         if (mPermitLinks == false)
             return false;
 
         struct stat statbuf;
         return lstat(name.c_str(), &statbuf) == 0 &&
             S_ISLNK(statbuf.st_mode) != 0;
+#else
+        return false;
+#endif  // WIN32
     }
 
     void freeList(VirtList *restrict const handle)
