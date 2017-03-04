@@ -6,7 +6,6 @@ FIND_PACKAGE(SDL_ttf REQUIRED)
 FIND_PACKAGE(SDL_gfx REQUIRED)
 FIND_PACKAGE(CURL REQUIRED)
 FIND_PACKAGE(LibXml2 REQUIRED)
-FIND_PACKAGE(PhysFS REQUIRED)
 FIND_PACKAGE(PNG REQUIRED)
 FIND_PACKAGE(Gettext REQUIRED)
 FIND_PACKAGE(ZLIB REQUIRED)
@@ -30,7 +29,7 @@ IF (ENABLE_TMWA)
     SET(FLAGS "${FLAGS} -DTMWA_SUPPORT=1")
 ENDIF()
 
-SET(FLAGS "${FLAGS} -DENABLE_LIBXML -DENABLE_ASSERTS -DUSE_PHYSFS")
+SET(FLAGS "${FLAGS} -DENABLE_LIBXML -DENABLE_ASSERTS")
 
 IF (CMAKE_BUILD_TYPE)
     STRING(TOLOWER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE_TOLOWER)
@@ -77,7 +76,6 @@ INCLUDE_DIRECTORIES(
     ${SDLTTF_INCLUDE_DIR}
     ${SDLGFX_INCLUDE_DIR}
     ${PNG_INCLUDE_DIR}
-    ${PHYSFS_INCLUDE_DIR}
     ${CURL_INCLUDE_DIR}
     ${LIBXML2_INCLUDE_DIR}
     )
@@ -99,8 +97,6 @@ IF (MINGW)
 ENDIF()
 
 # Fix some stuff that gets not hidden by mainline modules
-MARK_AS_ADVANCED(PHYSFS_INCLUDE_DIR)
-MARK_AS_ADVANCED(PHYSFS_LIBRARY)
 MARK_AS_ADVANCED(SDLIMAGE_INCLUDE_DIR)
 MARK_AS_ADVANCED(SDLIMAGE_LIBRARY)
 MARK_AS_ADVANCED(SDLMAIN_LIBRARY)
@@ -888,16 +884,31 @@ SET(SRCS
     utils/perfomance.h
     utils/debugmemoryobject.h
     fs/virtfsfuncs.h
-    fs/physfs/virtfsphys.cpp
-    fs/physfs/virtfsphys.h
     fs/virtfsrwops.cpp
     fs/virtfsrwops.h
     fs/virtfstools.cpp
     fs/virtfstools.h
     fs/virtlist.cpp
     fs/virtlist.h
-    fs/physfs/virtfs.cpp
     fs/virtfs.h
+    fs/virtfs/virtfs.cpp
+    fs/virtfs/virtfs.h
+    fs/virtfs/virtdirentry.cpp
+    fs/virtfs/virtdirentry.h
+    fs/virtfs/virtfileprivate.cpp
+    fs/virtfs/virtfileprivate.h
+    fs/virtfs/virtfsdir.cpp
+    fs/virtfs/virtfsdir.h
+    fs/virtfs/virtfsentry.cpp
+    fs/virtfs/virtfsentry.h
+    fs/virtfs/virtfszip.cpp
+    fs/virtfs/virtfszip.h
+    fs/virtfs/virtzipentry.cpp
+    fs/virtfs/virtzipentry.h
+    fs/virtfs/zip.cpp
+    fs/virtfs/zip.h
+    fs/virtfs/ziplocalheader.cpp
+    fs/virtfs/ziplocalheader.h
     utils/process.cpp
     utils/process.h
     utils/sdl2helper.cpp
@@ -915,8 +926,6 @@ SET(SRCS
     utils/timer.h
     fs/virtfile.cpp
     fs/virtfile.h
-    fs/physfs/virtfileprivate.cpp
-    fs/physfs/virtfileprivate.h
     utils/mutex.h
     utils/naclmessages.cpp
     utils/naclmessages.h
@@ -1777,16 +1786,31 @@ SET(DYE_CMD_SRCS
     utils/perfomance.cpp
     utils/perfomance.h
     fs/virtfsfuncs.h
-    fs/physfs/virtfsphys.cpp
-    fs/physfs/virtfsphys.h
     fs/virtfsrwops.cpp
     fs/virtfsrwops.h
     fs/virtfstools.cpp
     fs/virtfstools.h
     fs/virtlist.cpp
     fs/virtlist.h
-    fs/physfs/virtfs.cpp
     fs/virtfs.h
+    fs/virtfs/virtfs.cpp
+    fs/virtfs/virtfs.h
+    fs/virtfs/virtdirentry.cpp
+    fs/virtfs/virtdirentry.h
+    fs/virtfs/virtfileprivate.cpp
+    fs/virtfs/virtfileprivate.h
+    fs/virtfs/virtfsdir.cpp
+    fs/virtfs/virtfsdir.h
+    fs/virtfs/virtfsentry.cpp
+    fs/virtfs/virtfsentry.h
+    fs/virtfs/virtfszip.cpp
+    fs/virtfs/virtfszip.h
+    fs/virtfs/virtzipentry.cpp
+    fs/virtfs/virtzipentry.h
+    fs/virtfs/zip.cpp
+    fs/virtfs/zip.h
+    fs/virtfs/ziplocalheader.cpp
+    fs/virtfs/ziplocalheader.h
     utils/sdl2helper.cpp
     utils/sdl2helper.h
     utils/sdlcheckutils.cpp
@@ -1800,8 +1824,6 @@ SET(DYE_CMD_SRCS
     utils/timer.h
     fs/virtfile.cpp
     fs/virtfile.h
-    fs/physfs/virtfileprivate.cpp
-    fs/physfs/virtfileprivate.h
     utils/xml.cpp
     utils/xml.h
     utils/xml.inc
@@ -2036,7 +2058,6 @@ TARGET_LINK_LIBRARIES(manaplus
     ${SDLNET_LIBRARY}
     ${SDLTTF_LIBRARY}
     ${PNG_LIBRARIES}
-    ${PHYSFS_LIBRARY}
     ${ZLIB_LIBRARIES}
     ${CURL_LIBRARIES}
     ${LIBXML2_LIBRARIES}
@@ -2053,7 +2074,6 @@ INSTALL(TARGETS manaplus RUNTIME DESTINATION ${PKG_BINDIR})
 #    ${SDLNET_LIBRARY}
 #    ${SDLTTF_LIBRARY}
 #    ${PNG_LIBRARIES}
-#    ${PHYSFS_LIBRARY}
 #    ${ZLIB_LIBRARIES}
 #    ${CURL_LIBRARIES}
 #    ${LIBXML2_LIBRARIES}
