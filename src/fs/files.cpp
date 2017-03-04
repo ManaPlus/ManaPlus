@@ -281,6 +281,7 @@ void Files::enumFiles(StringVect &files,
             const std::string file = next_file->d_name;
             if (file == "." || file == "..")
                 continue;
+#ifndef WIN32
             if (skipSymlinks == true)
             {
                 struct stat statbuf;
@@ -290,6 +291,7 @@ void Files::enumFiles(StringVect &files,
                     continue;
                 }
             }
+#endif  // WIN32
             files.push_back(file);
         }
         closedir(dir);
