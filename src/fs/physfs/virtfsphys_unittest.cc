@@ -23,7 +23,6 @@
 
 #include "fs/paths.h"
 #include "fs/virtfs.h"
-#include "fs/virtfstools.h"
 #include "fs/virtlist.h"
 
 #include "fs/physfs/virtfsphys.h"
