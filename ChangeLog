@@ -1,3 +1,10 @@
+2017-03-04 New release 1.7.3.4
+fix: memory leaks in xml parsing.
+fix: pointers alias issues.
+fix: space and enter key press in updates window.
+add: option in client data for set overwight percent for message.
+add: option to build without physfs (experimantal).
+
 2017-02-18 New release 1.7.2.18
 fix: wrong buffer access.
 fix: custom currency in shop items list.

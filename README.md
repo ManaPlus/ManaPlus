@@ -2,7 +2,7 @@
 
 ![ManaPlus logo](data/icons/manaplus.png)
 
-Version: 1.7.2.18        Date: 2017-02-18
+Version: 1.7.3.4        Date: 2017-03-04
 
 ### Build status
 
