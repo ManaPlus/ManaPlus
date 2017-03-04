@@ -83,6 +83,9 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/net/ea/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/test/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/debug/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/fs/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/fs/physfs/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/fs/virtfs/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/being/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/render/*.cpp) \
@@ -93,6 +96,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/enums/gui/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/input/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/net/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/enums/fs/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/simpletypes/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/particle/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/events/*.cpp) \
