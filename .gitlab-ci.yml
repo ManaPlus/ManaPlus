@@ -35,7 +35,6 @@ variables:
     CXX: g++-5
     PACKAGES: python wget 
               gcc-5 g++-5 
-              libphysfs-dev 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -46,7 +45,6 @@ variables:
     CXX: g++-5
     PACKAGES: python wget 
               gcc-5 g++-5 
-              libphysfs-dev 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
@@ -60,7 +58,7 @@ gcc-5_c++11_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -74,7 +72,7 @@ gcc-6-i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -87,7 +85,7 @@ clang-3.9:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -98,7 +96,7 @@ gcc-6:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -109,6 +107,7 @@ gcc-6_physfs:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
+              libphysfs-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -121,7 +120,7 @@ gcc-4.4:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.4 g++-4.4 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -134,7 +133,7 @@ gcc-5_sdl2:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
@@ -145,7 +144,7 @@ gcc-6_game_only:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -156,7 +155,7 @@ gcc-6_dyecmd_only:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -202,7 +201,7 @@ gcc-5_h_all:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -214,7 +213,7 @@ gcc-5_h_all_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -245,7 +244,7 @@ gcc-5_sanitize_tests:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -259,7 +258,7 @@ gcc-6_tests_simd:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -274,7 +273,7 @@ gcc-5_sanitize_tests_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -288,7 +287,7 @@ gcc-5_sanitize_no_opengl_tests:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -303,7 +302,7 @@ gcc-5_sanitize_no_opengltests_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -317,7 +316,7 @@ gcc-5_tests:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -332,7 +331,7 @@ gcc-5_tests_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -346,7 +345,7 @@ gcc-6_tests_gcov:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               gcovr 
@@ -362,7 +361,7 @@ gcc-6_tests_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -376,7 +375,7 @@ gcc-6_tests_glibcdebug:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -390,7 +389,7 @@ gcc-6_pugixml_tests:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -405,7 +404,7 @@ gcc-6_pugixml_tests_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -420,7 +419,7 @@ gcc-6_tests_glibcdebug_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -434,7 +433,7 @@ gcc-6_tests_no_opengl:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -449,7 +448,7 @@ gcc-6_tests_no_opengl_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -463,6 +462,7 @@ gcc-6_tests_physfs:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
+              libphysfs-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -478,6 +478,7 @@ gcc-6_tests_physfs_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
+              libphysfs-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -492,7 +493,7 @@ gcc-6_sdl2_tests_gcov:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
               gcovr
@@ -508,7 +509,7 @@ gcc-6_sdl2_tests_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
               valgrind
@@ -522,6 +523,7 @@ gcc-6_sdl2_tests_physfs:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
+              libphysfs-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
@@ -538,6 +540,7 @@ gcc-6_sdl2_tests_physfs_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
+              libphysfs-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
@@ -552,7 +555,7 @@ gcc-5_sdl2_tests_glibcdebug:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               valgrind
@@ -567,7 +570,7 @@ gcc-5_sdl2_tests_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               valgrind
@@ -581,7 +584,7 @@ gcc-5_sdl2_no_opengl_tests:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               valgrind
@@ -596,7 +599,7 @@ gcc-5_sdl2_no_opengl_tests_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               valgrind
@@ -610,7 +613,7 @@ gcc-6_lto:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -622,7 +625,7 @@ gcc-6_lto_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -635,7 +638,7 @@ gcc-5_tarball_tests:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
@@ -650,7 +653,7 @@ gcc-4.4_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.4 g++-4.4 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -664,7 +667,7 @@ gcc-4.5:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.5 g++-4.5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -678,7 +681,7 @@ gcc-4.6:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.6 g++-4.6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -692,7 +695,7 @@ gcc-4.6_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.6 g++-4.6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -706,7 +709,7 @@ gcc-4.7:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.7 g++-4.7 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -720,7 +723,7 @@ gcc-4.7_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.7 g++-4.7 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -734,7 +737,7 @@ gcc-4.7_c++11:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.7 g++-4.7 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -748,7 +751,7 @@ gcc-4.8:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.8 g++-4.8 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -760,7 +763,7 @@ gcc-4.8_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.8 g++-4.8 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -774,7 +777,7 @@ clang-3.0:
   <<: *job-shared
   variables:
     PACKAGES: clang libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -788,7 +791,7 @@ clang-3.0_i386:
   <<: *job-shared
   variables:
     PACKAGES: clang libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -802,7 +805,7 @@ clang-3.3:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.3 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -816,7 +819,7 @@ clang-3.3_i386:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.3 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -830,7 +833,7 @@ clang-3.4:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.4 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -842,7 +845,7 @@ clang-3.4_i386:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.4 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -856,7 +859,7 @@ clang-3.5:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.5 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -868,7 +871,7 @@ clang-3.5_i386:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.5 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -882,7 +885,7 @@ clang-3.6:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.6 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -896,7 +899,7 @@ clang-3.6_i386:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.6 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -910,7 +913,7 @@ clang-3.7:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.7 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -924,7 +927,7 @@ clang-3.7_i386:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.7 libc++-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -938,7 +941,7 @@ clang-3.8:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.8 libc++-dev libc++abi-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -952,7 +955,7 @@ clang-3.8_i386:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.8 libc++-dev libc++abi-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -965,7 +968,7 @@ clang-3.8_i386:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -977,7 +980,7 @@ clang-3.8_i386:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -991,7 +994,7 @@ gcc-4.8_c++11:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.8 g++-4.8 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1003,7 +1006,7 @@ gcc-4.9:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1015,7 +1018,7 @@ gcc-4.9_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -1029,7 +1032,7 @@ gcc-4.9_c++11:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1041,7 +1044,7 @@ cmake_gcc-4.9:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
-              make cmake gettext libphysfs-dev 
+              make cmake gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -1054,7 +1057,7 @@ cmake_gcc-4.9:
   <<: *job-shared
   variables:
     PACKAGES: clang-4.0 libc++-dev libc++abi-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -1067,7 +1070,7 @@ gcc-5:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1078,7 +1081,7 @@ gcc-5_c++11:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1089,7 +1092,7 @@ gcc-5_sdl2_c++11:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
@@ -1101,7 +1104,7 @@ gcc-5_sdl2_c++11_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
   tags:
@@ -1114,7 +1117,7 @@ gcc-snapshot:
   <<: *job-shared
   variables:
     PACKAGES: gcc-snapshot 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1126,7 +1129,7 @@ gcc-snapshot_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-snapshot 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -1139,7 +1142,7 @@ gcc-snapshot_sdl2:
   <<: *job-shared
   variables:
     PACKAGES: gcc-snapshot 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
@@ -1151,7 +1154,7 @@ gcc-snapshot_sdl2_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-snapshot 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
   tags:
@@ -1164,7 +1167,7 @@ gcc-5_sanitize:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -1177,7 +1180,7 @@ gcc-6_sanitize:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -1191,7 +1194,7 @@ gcc-6_sanitize_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
@@ -1204,6 +1207,7 @@ gcc-6_sanitize_physfs:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
+              libphysfs-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -1218,6 +1222,7 @@ gcc-6_sanitize_physfs_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
+              libphysfs-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -1231,7 +1236,7 @@ gcc_without_mumble:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1242,7 +1247,7 @@ gcc_without_customnls:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1253,7 +1258,7 @@ gcc_without_customnls_nonls:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1264,7 +1269,7 @@ gcc_without_opengl:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1276,7 +1281,7 @@ gcc49_cilkplus:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1287,7 +1292,7 @@ gcc-5_cilkplus:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1298,7 +1303,7 @@ gcc-6_cilkplus:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1309,7 +1314,7 @@ gcc-6_pugixml:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1321,7 +1326,7 @@ gcc-6_pugixml_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1332,7 +1337,7 @@ gcc-6_pugixml_sdl2:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
@@ -1343,7 +1348,7 @@ gcc-6_pugixml_sdl2_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
@@ -1354,7 +1359,7 @@ gcc_portable:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1365,7 +1370,7 @@ clang-3.9_sdl2:
   <<: *job-shared
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
@@ -1376,7 +1381,7 @@ gcc-6_no_asserts:
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1388,7 +1393,7 @@ gcc-4.8_sdl2:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.8 g++-4.8 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
@@ -1400,7 +1405,7 @@ gcc-4.9_sdl2:
   <<: *job-shared
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
@@ -1414,7 +1419,7 @@ gcc-5_h_eathena_tmwa:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1425,7 +1430,7 @@ gcc-5_h_pugi_all:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1436,7 +1441,7 @@ gcc-5_tarball:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
@@ -1525,7 +1530,7 @@ gcc-6_zlib_v1.2.3.9:
     LIBNAME: zlib
     LIBVERSION: v1.2.3.9
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1544,7 +1549,7 @@ gcc-6_zlib_v1.2.6.1:
     LIBNAME: zlib
     LIBVERSION: v1.2.6.1
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1563,7 +1568,7 @@ gcc-6_zlib_v1.2.9:
     LIBNAME: zlib
     LIBVERSION: v1.2.9
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1581,7 +1586,7 @@ gcc-6_zlib_v1.2.10:
     LIBNAME: zlib
     LIBVERSION: v1.2.10
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1599,7 +1604,7 @@ gcc-6_zlib_v1.2.11:
     LIBNAME: zlib
     LIBVERSION: v1.2.11
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1618,7 +1623,7 @@ gcc-6_zlib_v1.2.11:
     LIBNAME: zlib_ng
     LIBVERSION: develop
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1636,7 +1641,7 @@ gcc-6_libpng_master:
     LIBNAME: libpng
     LIBVERSION: master
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1654,7 +1659,7 @@ gcc-6_libpng_libpng17:
     LIBNAME: libpng
     LIBVERSION: libpng17
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1672,7 +1677,7 @@ gcc-6_libpng_libpng16:
     LIBNAME: libpng
     LIBVERSION: libpng16
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1690,7 +1695,7 @@ gcc-6_libpng_libpng15:
     LIBNAME: libpng
     LIBVERSION: libpng15
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1708,7 +1713,7 @@ gcc-6_libpng_libpng14:
     LIBNAME: libpng
     LIBVERSION: libpng14
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1726,7 +1731,7 @@ gcc-6_libpng_libpng12:
     LIBNAME: libpng
     LIBVERSION: libpng12
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1744,7 +1749,7 @@ gcc-6_libpng_libpng10:
     LIBNAME: libpng
     LIBVERSION: libpng10
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1762,7 +1767,7 @@ gcc-6_curl_curl-7_9_8:
     LIBNAME: curl
     LIBVERSION: curl-7_9_8
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1780,7 +1785,7 @@ gcc-6_curl_curl-7_40_0:
     LIBNAME: curl
     LIBVERSION: curl-7_40_0
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -1798,7 +1803,7 @@ gcc-6_curl_curl-7_52_1:
     LIBNAME: curl
     LIBVERSION: curl-7_52_1
     PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext libphysfs-dev 
+              make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               wget unzip
@@ -4164,7 +4169,6 @@ doxygen:
   dependencies: []
   variables:
     PACKAGES: doxygen graphviz 
-              libphysfs-dev 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
