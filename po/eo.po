@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011,2016
 # Rubén Leal Coba <mekjotradukoj@outlook.com>, 2013
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-02-18 15:49+0300\n"
+"POT-Creation-Date: 2017-02-04 16:21+0300\n"
 "PO-Revision-Date: 2017-02-15 22:33+0000\n"
 "Last-Translator: Fendo <fendo@posteo.ru>\n"
-"Language-Team: Esperanto (http://www.transifex.com/akaras/manaplus/language/"
-"eo/)\n"
-"Language: eo\n"
+"Language-Team: Esperanto (http://www.transifex.com/akaras/manaplus/language/eo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: eo\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS: file uploaded message
@@ -34,7 +33,7 @@ msgstr "Dosiero alŝutita"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:167 src/client.cpp:1604 src/client.cpp:1639
+#: src/actions/actions.cpp:167 src/client.cpp:1601 src/client.cpp:1636
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:183
 #: src/gui/dialogsmanager.cpp:203 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
@@ -105,9 +104,7 @@ msgstr "Protokolo alŝutita al:"
 #: src/actions/actions.cpp:1764
 msgid ""
 "Last seen disabled. Enable in players / collect players id and seen log."
-msgstr ""
-"Lastatempa vido malŝaltita. Ŝalti en ludantoj / kolekti identigaĵojn kaj "
-"vidajn protokolojn de ludantoj."
+msgstr "Lastatempa vido malŝaltita. Ŝalti en ludantoj / kolekti identigaĵojn kaj vidajn protokolojn de ludantoj."
 
 #. TRANSLATORS: last seen error
 #: src/actions/actions.cpp:1783 src/actions/actions.cpp:1797
@@ -392,12 +389,12 @@ msgid "miss"
 msgstr "preter"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2435 src/gui/windows/whoisonline.cpp:890
+#: src/being/being.cpp:2435 src/gui/windows/whoisonline.cpp:891
 msgid "A"
 msgstr "F"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2440 src/gui/windows/whoisonline.cpp:895
+#: src/being/being.cpp:2440 src/gui/windows/whoisonline.cpp:896
 msgid "I"
 msgstr "N"
 
@@ -553,41 +550,41 @@ msgstr "Glita bobelo"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
-#: src/client.cpp:899 src/dyetool/client.cpp:501 src/gui/windowmenu.cpp:192
+#: src/client.cpp:896 src/dyetool/client.cpp:499 src/gui/windowmenu.cpp:192
 #: src/gui/windows/setupwindow.cpp:66
 msgid "Setup"
 msgstr "Agordoj"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:902 src/dyetool/client.cpp:504
+#: src/client.cpp:899 src/dyetool/client.cpp:502
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr "Rendimento"
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:905 src/dyetool/client.cpp:507
+#: src/client.cpp:902 src/dyetool/client.cpp:505
 #: src/gui/widgets/tabs/setup_video.cpp:111
 msgid "Video"
 msgstr "Video"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:908 src/dyetool/client.cpp:510
+#: src/client.cpp:905 src/dyetool/client.cpp:508
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Etoso"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:911 src/dyetool/client.cpp:513
+#: src/client.cpp:908 src/dyetool/client.cpp:511
 msgid "About"
 msgstr "Pri"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
-#: src/client.cpp:914 src/dyetool/client.cpp:516 src/gui/windowmenu.cpp:75
+#: src/client.cpp:911 src/dyetool/client.cpp:514 src/gui/windowmenu.cpp:75
 #: src/gui/windows/helpwindow.cpp:54
 msgid "Help"
 msgstr "Helpo"
@@ -608,45 +605,45 @@ msgstr "Helpo"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:918 src/client.cpp:1518 src/client.cpp:1537
-#: src/dyetool/client.cpp:520 src/gui/dialogsmanager.cpp:117
+#: src/client.cpp:915 src/client.cpp:1515 src/client.cpp:1534
+#: src/dyetool/client.cpp:518 src/gui/dialogsmanager.cpp:117
 #: src/gui/popups/popupmenu.cpp:765 src/gui/popups/popupmenu.cpp:850
 #: src/gui/popups/popupmenu.cpp:1104 src/gui/windows/didyouknowwindow.cpp:84
 #: src/gui/windows/inventorywindow.cpp:272
 #: src/gui/windows/inventorywindow.cpp:295
 #: src/gui/windows/maileditwindow.cpp:53 src/gui/windows/mailviewwindow.cpp:61
 #: src/gui/windows/npcdialog.cpp:87 src/gui/windows/npcdialog.cpp:132
-#: src/gui/windows/questswindow.cpp:79 src/gui/windows/shopwindow.cpp:109
+#: src/gui/windows/questswindow.cpp:81 src/gui/windows/shopwindow.cpp:109
 msgid "Close"
 msgstr "Fermi"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1145
+#: src/client.cpp:1142
 msgid "Connecting to server"
 msgstr "Konektanta al servilo"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1202 src/gui/windowmanager_unittest.cc:673
+#: src/client.cpp:1199 src/gui/windowmanager_unittest.cc:673
 msgid "Logging in"
 msgstr "Ensalutanta"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1251
+#: src/client.cpp:1248
 msgid "Entering game world"
 msgstr "Eniranta ludan mondon"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1403
+#: src/client.cpp:1400
 msgid "Requesting characters"
 msgstr "Petanta avatarojn"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1446
+#: src/client.cpp:1443
 msgid "Connecting to the game server"
 msgstr "Konektanta al la luda servilo"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1458
+#: src/client.cpp:1455
 msgid "Changing game servers"
 msgstr "Ŝanĝanta ludajn servilojn"
 
@@ -662,7 +659,7 @@ msgstr "Ŝanĝanta ludajn servilojn"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1515 src/client.cpp:1534 src/client.cpp:1739
+#: src/client.cpp:1512 src/client.cpp:1531 src/client.cpp:1736
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:471
@@ -676,27 +673,27 @@ msgid "Error"
 msgstr "Eraro"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1553
+#: src/client.cpp:1550
 msgid "Requesting registration details"
 msgstr "Petanta detalojn de registrado"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1600
+#: src/client.cpp:1597
 msgid "Password Change"
 msgstr "Ŝanĝo de Pasvorto"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1602
+#: src/client.cpp:1599
 msgid "Password changed successfully!"
 msgstr "Sukcese ŝanĝis pasvorton!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1635
+#: src/client.cpp:1632
 msgid "Email Change"
 msgstr "Ŝanĝo de Retpoŝtadreso"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1637
+#: src/client.cpp:1634
 msgid "Email changed successfully!"
 msgstr "Sukcese ŝanĝis retpoŝtadreson!"
 
@@ -788,8 +785,7 @@ msgstr "  -H --update-host    : Uzu tiun ĉi gastigan komputilon"
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:89
 msgid "  -D --default        : Choose default character server and character"
-msgstr ""
-"  -D --default        : Elekti defaŭltan avataran servilon kaj avataron"
+msgstr "  -D --default        : Elekti defaŭltan avataran servilon kaj avataron"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:93
@@ -824,8 +820,7 @@ msgstr "     --renderer       : Agordi tipon de bildigilo"
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:112
 msgid "  -T --tests          : Start testing drivers and auto configuring"
-msgstr ""
-"  -T --tests          : Komenci testadon de peliloj kaj aŭtomate sinadapti"
+msgstr "  -T --tests          : Komenci testadon de peliloj kaj aŭtomate sinadapti"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:118
@@ -833,30 +828,30 @@ msgid "  -O --no-opengl      : Disable OpenGL for this session"
 msgstr "  -O --no-opengl      : Masŝalti OpenGL dum tiu ĉi seanco"
 
 #. TRANSLATORS: directory creation error
-#: src/configmanager.cpp:61 src/dirs.cpp:359 src/dirs.cpp:374 src/dirs.cpp:421
+#: src/configmanager.cpp:61 src/dirs.cpp:361 src/dirs.cpp:376 src/dirs.cpp:423
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s ne ekzistas kaj ne povas estiĝi! Eliranta."
 
 #. TRANSLATORS: update server initialisation error
-#: src/dirs.cpp:471
+#: src/dirs.cpp:473
 #, c-format
 msgid "Invalid update host: %s."
 msgstr "Nevalida ĝisdatiga gastiga komputilo: %s."
 
 #. TRANSLATORS: update server initialisation error
-#: src/dirs.cpp:513 src/dirs.cpp:521
+#: src/dirs.cpp:515 src/dirs.cpp:523
 msgid "Error creating updates directory!"
 msgstr "Eraro kreante ĝisdatigan dosierujon!"
 
 #. TRANSLATORS: directory creation error
-#: src/dirs.cpp:543 src/dirs.cpp:564
+#: src/dirs.cpp:545 src/dirs.cpp:566
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Eraro: %s ne ekzistas kaj ne povas estiĝi! Eliranta."
 
 #. TRANSLATORS: directory creation error
-#: src/dirs.cpp:595 src/dirs.cpp:603 src/dirs.cpp:611
+#: src/dirs.cpp:597 src/dirs.cpp:605 src/dirs.cpp:613
 #, c-format
 msgid "%s doesn't exist and can't be created!"
 msgstr "%s ne ekzistas kaj ne povas estiĝi!"
@@ -1322,7 +1317,8 @@ msgstr "Revivigi"
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:179
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr "Vi portas pli ol duonon de via pezo. Vi ne povas resaniĝi."
 
 #. TRANSLATORS: weight message
@@ -1339,7 +1335,8 @@ msgstr "Vi portas malpli ol duonon de via pezo. Vi povas resaniĝi."
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:32
 #: src/gui/widgets/tabs/setup_other.cpp:79
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:665 src/gui/windows/serverdialog.cpp:600
+#: src/gui/windows/equipmentwindow.cpp:665
+#: src/gui/windows/serverdialog.cpp:600
 msgid "default"
 msgstr "defaŭlta"
 
@@ -1961,8 +1958,8 @@ msgstr "Paroli"
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:277 src/gui/popups/popupmenu.cpp:2711
 #: src/gui/windows/buydialog.cpp:210 src/gui/windows/buydialog.cpp:233
-#: src/gui/windows/buydialog.cpp:257 src/gui/windows/buydialog.cpp:335
-#: src/gui/windows/buydialog.cpp:339 src/gui/windows/buyselldialog.cpp:73
+#: src/gui/windows/buydialog.cpp:257 src/gui/windows/buydialog.cpp:334
+#: src/gui/windows/buydialog.cpp:338 src/gui/windows/buyselldialog.cpp:73
 #: src/gui/windows/shopwindow.cpp:166 src/input/pages/basic.cpp:250
 #: src/resources/db/npcdb.cpp:166
 msgid "Buy"
@@ -1979,8 +1976,8 @@ msgstr "Aĉeti"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:280 src/gui/popups/popupmenu.cpp:2723
-#: src/gui/widgets/selldialog.cpp:57 src/gui/widgets/selldialog.cpp:113
-#: src/gui/widgets/selldialog.cpp:151 src/gui/windows/buyselldialog.cpp:75
+#: src/gui/widgets/selldialog.cpp:55 src/gui/widgets/selldialog.cpp:110
+#: src/gui/widgets/selldialog.cpp:148 src/gui/windows/buyselldialog.cpp:75
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:256
 #: src/resources/db/npcdb.cpp:168
 msgid "Sell"
@@ -2141,7 +2138,7 @@ msgstr "Aldoni nomon al retbabilo"
 #: src/gui/windows/itemamountwindow.cpp:193 src/gui/windows/quitdialog.cpp:69
 #: src/gui/windows/registerdialog.cpp:64 src/gui/windows/setupwindow.cpp:105
 #: src/gui/windows/textcommandeditor.cpp:98 src/gui/windows/textdialog.cpp:60
-#: src/gui/windows/updaterwindow.cpp:191 src/input/pages/gui.cpp:103
+#: src/gui/windows/updaterwindow.cpp:192 src/input/pages/gui.cpp:103
 msgid "Cancel"
 msgstr "Rezigni"
 
@@ -3575,7 +3572,7 @@ msgstr "Vojpunkto"
 #. TRANSLATORS: status bar label
 #: src/gui/widgets/attrs/changedisplay.cpp:48
 #: src/gui/widgets/attrs/changedisplay.cpp:70
-#: src/gui/widgets/selldialog.cpp:139 src/gui/windows/buydialog.cpp:349
+#: src/gui/widgets/selldialog.cpp:136 src/gui/windows/buydialog.cpp:348
 #: src/gui/windows/statuswindow.cpp:444 src/gui/windows/statuswindow.cpp:500
 msgid "Max"
 msgstr "Maksimume"
@@ -3587,7 +3584,7 @@ msgstr "Maksimume"
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
 #: src/gui/widgets/attrs/changedisplay.cpp:50
-#: src/gui/widgets/selldialog.cpp:135 src/gui/windows/buydialog.cpp:329
+#: src/gui/widgets/selldialog.cpp:132 src/gui/windows/buydialog.cpp:328
 #: src/gui/windows/itemamountwindow.cpp:189
 #: src/gui/windows/itemamountwindow.cpp:225 src/gui/windows/npcdialog.cpp:125
 msgid "+"
@@ -3615,12 +3612,12 @@ msgid "Eq."
 msgstr "Ek."
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:87
+#: src/gui/widgets/itemlinkhandler.cpp:86
 msgid "Run command"
 msgstr "Komandi"
 
 #. TRANSLATORS: dialog message
-#: src/gui/widgets/itemlinkhandler.cpp:118
+#: src/gui/widgets/itemlinkhandler.cpp:117
 msgid "Open url"
 msgstr "Malfermi url"
 
@@ -3630,7 +3627,7 @@ msgstr "Malfermi url"
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: trade window button
-#: src/gui/widgets/selldialog.cpp:113 src/gui/windows/buydialog.cpp:335
+#: src/gui/widgets/selldialog.cpp:110 src/gui/windows/buydialog.cpp:334
 #: src/gui/windows/maileditwindow.cpp:55 src/gui/windows/npcdialog.cpp:134
 #: src/gui/windows/serverdialog.cpp:110 src/gui/windows/shopwindow.cpp:122
 #: src/gui/windows/tradewindow.cpp:87
@@ -3644,7 +3641,7 @@ msgstr "Aldoni"
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: input action name
-#: src/gui/widgets/selldialog.cpp:117 src/gui/windows/buydialog.cpp:347
+#: src/gui/widgets/selldialog.cpp:114 src/gui/windows/buydialog.cpp:346
 #: src/gui/windows/quitdialog.cpp:51 src/gui/windows/quitdialog.cpp:56
 #: src/gui/windows/quitdialog.cpp:58 src/gui/windows/serverdialog.cpp:106
 #: src/gui/windows/textselectdialog.cpp:93 src/input/pages/basic.cpp:226
@@ -3656,7 +3653,7 @@ msgstr "Eliri"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
-#: src/gui/widgets/selldialog.cpp:137 src/gui/windows/buydialog.cpp:332
+#: src/gui/widgets/selldialog.cpp:134 src/gui/windows/buydialog.cpp:331
 #: src/gui/windows/itemamountwindow.cpp:187
 #: src/gui/windows/itemamountwindow.cpp:222 src/gui/windows/npcdialog.cpp:127
 msgid "-"
@@ -3664,8 +3661,8 @@ msgstr "-"
 
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
-#: src/gui/widgets/selldialog.cpp:146 src/gui/widgets/selldialog.cpp:363
-#: src/gui/windows/buydialog.cpp:315 src/gui/windows/buydialog.cpp:748
+#: src/gui/widgets/selldialog.cpp:143 src/gui/widgets/selldialog.cpp:360
+#: src/gui/windows/buydialog.cpp:314 src/gui/windows/buydialog.cpp:747
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Kosto: %s / Entute: %s"
@@ -3678,7 +3675,8 @@ msgid "Edit"
 msgstr "Redakti"
 
 #. TRANSLATORS: status window label
-#: src/gui/widgets/statspagebasic.cpp:70 src/gui/widgets/statspagebasic.cpp:101
+#: src/gui/widgets/statspagebasic.cpp:70
+#: src/gui/widgets/statspagebasic.cpp:101
 #, c-format
 msgid "Character points: %d"
 msgstr "Avataraj poentoj: %d"
@@ -4163,10 +4161,7 @@ msgid ""
 "Chat window will be automatically hidden when not in use.\n"
 "\n"
 "Hit Enter or hover mouse to show chat again."
-msgstr ""
-"Retbabila fenestro neuzata aŭtomate kaŝiĝos.\n"
-"\n"
-"Premu enigan klavon por remontri ĝin."
+msgstr "Retbabila fenestro neuzata aŭtomate kaŝiĝos.\n\nPremu enigan klavon por remontri ĝin."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:58
@@ -4178,19 +4173,15 @@ msgstr "Protekti retbabilan fokuson"
 msgid ""
 "Enables aggressive protection of input focus in chat window.\n"
 "\n"
-"Note: no other text inputs will be allowed to receive text input when you "
-"typing in chat window."
-msgstr ""
-"Ŝaltas agresan protekton de eniga fokuso en retbabila fenestro\n"
-"\n"
-"Komento: neniu alia enigo povos ricevi tekston dum via tajpado en retbabilan "
-"fenestron."
+"Note: no other text inputs will be allowed to receive text input when you typing in chat window."
+msgstr "Ŝaltas agresan protekton de eniga fokuso en retbabila fenestro\n\nKomento: neniu alia enigo povos ricevi tekston dum via tajpado en retbabilan fenestron."
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: settings colors tab name
 #. TRANSLATORS: emotes tab name
 #: src/gui/widgets/tabs/setup_chat.cpp:67
-#: src/gui/widgets/tabs/setup_colors.cpp:86 src/gui/windows/emotewindow.cpp:119
+#: src/gui/widgets/tabs/setup_colors.cpp:86
+#: src/gui/windows/emotewindow.cpp:119
 msgid "Colors"
 msgstr "Koloroj"
 
@@ -4204,9 +4195,7 @@ msgstr "Forigi kolorojn de ricevitaj retbabilaj mesaĝoj"
 msgid ""
 "Enable this setting to strip colors from incoming chat messages. All "
 "messages will use default chat text color if this enabled."
-msgstr ""
-"Ŝalti tiun ĉi agordon por forigi kolorojn de envenaj retbabilaj mesaĝoj. "
-"Ĉiuj mesaĝoj uzos la defaŭltan koloron de teksto se tio ĉi estos ŝaltita."
+msgstr "Ŝalti tiun ĉi agordon por forigi kolorojn de envenaj retbabilaj mesaĝoj. Ĉiuj mesaĝoj uzos la defaŭltan koloron de teksto se tio ĉi estos ŝaltita."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:77
@@ -4216,16 +4205,10 @@ msgstr "Montru liston de retbabilaj koloroj."
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:79
 msgid ""
-"Enable this setting to show color selection drop-down in chat window. Chat "
-"window will display color selection drop-down.\n"
+"Enable this setting to show color selection drop-down in chat window. Chat window will display color selection drop-down.\n"
 "\n"
-"It allows one to select default color of outgoing chat messages easily, but "
-"also occupies some space in chat window."
-msgstr ""
-"Ŝalti tiun ĉi agordon por montri elekton de koloroj en retbabila fenestro.\n"
-"\n"
-"Ĝi permesas elekti la defaŭltan koloron de elirantaj mesaĝoj facile, sed "
-"ankaŭ okupas spacon en la fenestro."
+"It allows one to select default color of outgoing chat messages easily, but also occupies some space in chat window."
+msgstr "Ŝalti tiun ĉi agordon por montri elekton de koloroj en retbabila fenestro.\n\nĜi permesas elekti la defaŭltan koloron de elirantaj mesaĝoj facile, sed ankaŭ okupas spacon en la fenestro."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:90
@@ -4236,9 +4219,7 @@ msgstr "Permesu sorĉojn kaj LG komandojn en ĉiuj langetoj"
 #: src/gui/widgets/tabs/setup_chat.cpp:92
 msgid ""
 "Enable this setting to be able to type spells and GM commands in any tab."
-msgstr ""
-"Ŝaltu tiun ĉi agordon por entajpi sorĉojn kaj LG komandojn en iu ajn "
-"langeton."
+msgstr "Ŝaltu tiun ĉi agordon por entajpi sorĉojn kaj LG komandojn en iu ajn langeton."
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_chat.cpp:98
@@ -4253,17 +4234,10 @@ msgstr "Limigi maksimumajn signojn en retbabila linio"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:103
 msgid ""
-"Limits how many characters will be shown in longest lines of text displayed "
-"in chat.\n"
+"Limits how many characters will be shown in longest lines of text displayed in chat.\n"
 "\n"
-"Note: long lines can make client slower. Lines longer than this limit will "
-"be truncated."
-msgstr ""
-"Limigas kiam da signoj montritos en la plej longaj linioj de teksto montrita "
-"en retbabilo.\n"
-"\n"
-"Komento: longaj linioj povas malrapidigi la klienton. Linioj pli longaj ol "
-"la limo estos mallongigitaj."
+"Note: long lines can make client slower. Lines longer than this limit will be truncated."
+msgstr "Limigas kiam da signoj montritos en la plej longaj linioj de teksto montrita en retbabilo.\n\nKomento: longaj linioj povas malrapidigi la klienton. Linioj pli longaj ol la limo estos mallongigitaj."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:110
@@ -4273,18 +4247,10 @@ msgstr "Limigi maksimumaj linioj en retbabilo"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:112
 msgid ""
-"Limits how many lines chat will keep in scrollback buffer. Chat keeps "
-"specified number of last lines of text. Oldest lines exceeding this limit "
-"are discarded from scrollback buffer.\n"
+"Limits how many lines chat will keep in scrollback buffer. Chat keeps specified number of last lines of text. Oldest lines exceeding this limit are discarded from scrollback buffer.\n"
 "\n"
 "Note: keeping too many lines in scroll buffer can slow client down."
-msgstr ""
-"Limigas kiom da linioj restos en ruluma bufro. Retbabilo konservas difinitan "
-"numeron da lastaj linioj de teksto. La malnovaj linioj super la limo estos "
-"forigitaj de la bufro.\n"
-"\n"
-"Komento: konservado de troaj linioj en la bufro povas malrapidigi la "
-"klienton."
+msgstr "Limigas kiom da linioj restos en ruluma bufro. Retbabilo konservas difinitan numeron da lastaj linioj de teksto. La malnovaj linioj super la limo estos forigitaj de la bufro.\n\nKomento: konservado de troaj linioj en la bufro povas malrapidigi la klienton."
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_chat.cpp:120
@@ -4302,10 +4268,7 @@ msgid ""
 "If you enable this setting, chat logs will be written to disk.\n"
 "\n"
 "Note: chat logs can take noticeable amount of disk space over time."
-msgstr ""
-"Se ŝaltita, retbabilaj protokoloj estos skribitaj al la disko.\n"
-"\n"
-"Komento: retbabilaj protokoloj povas plenigi multe da spacon tempe."
+msgstr "Se ŝaltita, retbabilaj protokoloj estos skribitaj al la disko.\n\nKomento: retbabilaj protokoloj povas plenigi multe da spacon tempe."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:130
@@ -4315,9 +4278,7 @@ msgstr "Ŝalti sencimigan retbabilan Protokolon"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:132
 msgid "If you enable this, debug chat tab also will be logged to disk."
-msgstr ""
-"Se ŝaltita, ankaŭ la sencimiga retbabila langeto estos protokolita al la "
-"disko."
+msgstr "Se ŝaltita, ankaŭ la sencimiga retbabila langeto estos protokolita al la disko."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:136
@@ -4327,11 +4288,9 @@ msgstr "Montri historion de retbabilo"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:138
 msgid ""
-"If this setting enabled, client will load old chat tabs content from logs on "
-"startup instead of starting with empty chat tabs."
-msgstr ""
-"Se ŝaltita, la kliento ŝarĝos protokolojn de retbabilaj langedoj anstataŭ "
-"komenco kun malplenaj langetoj."
+"If this setting enabled, client will load old chat tabs content from logs on"
+" startup instead of starting with empty chat tabs."
+msgstr "Se ŝaltita, la kliento ŝarĝos protokolojn de retbabilaj langedoj anstataŭ komenco kun malplenaj langetoj."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:143
@@ -4341,17 +4300,10 @@ msgstr "Montri mesaĝojn pri partiaj enretiĝoj"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:145
 msgid ""
-"If this setting is enabled, online status changes of party members will be "
-"shown in party tab of chat.\n"
+"If this setting is enabled, online status changes of party members will be shown in party tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows one to see when your buddies "
-"are coming online."
-msgstr ""
-"Se ŝaltita, ŝanĝoj de enreta stato de partianoj montriĝos en la partia "
-"langeto de retbabilo.\n"
-"\n"
-"Tio ĉi aldonas iom bruo al la retbabilo, set permasas vin vidi kiam viaj "
-"kompanoj enretiĝas."
+"This adds some extra noise to chat, but allows one to see when your buddies are coming online."
+msgstr "Se ŝaltita, ŝanĝoj de enreta stato de partianoj montriĝos en la partia langeto de retbabilo.\n\nTio ĉi aldonas iom bruo al la retbabilo, set permasas vin vidi kiam viaj kompanoj enretiĝas."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:151
@@ -4361,17 +4313,10 @@ msgstr "Montri mesaĝojn pri partiaj enretiĝoj"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:153
 msgid ""
-"If this setting is enabled, online status changes of guild members will be "
-"shown in guild tab of chat.\n"
+"If this setting is enabled, online status changes of guild members will be shown in guild tab of chat.\n"
 "\n"
-"This adds some extra noise to chat, but allows one to see when your buddies "
-"are coming online."
-msgstr ""
-"Se ŝaltita, ŝanĝoj de enreta stato de gildanoj montriĝos en la gilda langeto "
-"de retbabilo.\n"
-"\n"
-"Tio ĉi aldonas iom bruo al la retbabilo, set permasas vin vidi kiam viaj "
-"kompanoj enretiĝas."
+"This adds some extra noise to chat, but allows one to see when your buddies are coming online."
+msgstr "Se ŝaltita, ŝanĝoj de enreta stato de gildanoj montriĝos en la gilda langeto de retbabilo.\n\nTio ĉi aldonas iom bruo al la retbabilo, set permasas vin vidi kiam viaj kompanoj enretiĝas."
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_chat.cpp:160
@@ -4386,20 +4331,10 @@ msgstr "Kaŝi butikajn mesaĝojn"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:165
 msgid ""
-"If this setting enabled, no messages related to built-in ManaPlus shop will "
-"be displayed in chat. Disable this setting if you want to see shop-related "
-"messages.\n"
+"If this setting enabled, no messages related to built-in ManaPlus shop will be displayed in chat. Disable this setting if you want to see shop-related messages.\n"
 "\n"
-"Note: technically, ManaPlus shop implemented as usual private messages with "
-"special content. If you disable this setting, you will be able to see these "
-"messages and get idea when other players are looking at your shop."
-msgstr ""
-"Se ŝaltita, neniu mesaĝo pri la integrita ManaPlus butiko montriĝos en "
-"retbabilejo. Malŝaltu ĝin se vi volas vidi mesaĝojn pri aĉetado.\n"
-"\n"
-"Komento: teknike, ManaPlus vendejo funkcias kiel normalaj personaj mesaĝoj "
-"kun speciala enhavo. Se vi malŝaltos la agordon, vi povos vidi tiujn "
-"mesaĝojn kaj scii kiam aliaj ludantoj rigardas vian vendejon / aĉetejon."
+"Note: technically, ManaPlus shop implemented as usual private messages with special content. If you disable this setting, you will be able to see these messages and get idea when other players are looking at your shop."
+msgstr "Se ŝaltita, neniu mesaĝo pri la integrita ManaPlus butiko montriĝos en retbabilejo. Malŝaltu ĝin se vi volas vidi mesaĝojn pri aĉetado.\n\nKomento: teknike, ManaPlus vendejo funkcias kiel normalaj personaj mesaĝoj kun speciala enhavo. Se vi malŝaltos la agordon, vi povos vidi tiujn mesaĝojn kaj scii kiam aliaj ludantoj rigardas vian vendejon / aĉetejon."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:174
@@ -4411,13 +4346,8 @@ msgstr "Montri PVL mesaĝojn"
 msgid ""
 "Enable this setting to see MVP messages from server.\n"
 "\n"
-"Note: MVP messages are not used on TMW/Evol/etc servers, so this feature "
-"usually makes little difference."
-msgstr ""
-"Ŝaltu tion ĉi por vidi PLV (Plej Valora Ludanto) mesaĝojn de servilo.\n"
-"\n"
-"Komento: PLV mesaĝoj ne estas uzataj de TMW/Evol/ktp serviloj, do tiu ĉi "
-"agordo kutime ne gravas."
+"Note: MVP messages are not used on TMW/Evol/etc servers, so this feature usually makes little difference."
+msgstr "Ŝaltu tion ĉi por vidi PLV (Plej Valora Ludanto) mesaĝojn de servilo.\n\nKomento: PLV mesaĝoj ne estas uzataj de TMW/Evol/ktp serviloj, do tiu ĉi agordo kutime ne gravas."
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: input action group
@@ -4435,18 +4365,10 @@ msgstr "Enmeti ĉiujn flustrojn en propraj langetojn"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:188
 msgid ""
-"If this setting enabled, all whispers (private messages) will be placed in "
-"separate tabs, separate tab for each player. If this setting disabled, all "
-"whispers will appear in General tab.\n"
+"If this setting enabled, all whispers (private messages) will be placed in separate tabs, separate tab for each player. If this setting disabled, all whispers will appear in General tab.\n"
 "\n"
-"Note: putting all whispers to single General tab is known to be confusing. "
-"Think twice before disabling this feature."
-msgstr ""
-"Se ŝaltita, ĉiuj flustroj (personaj mesaĝoj) aperos en malsamajn langetojn, "
-"unu po ludanto. Se malŝaltita, ĉiuj flustroj aperos en la Ĝenerala langeto.\n"
-"\n"
-"Komento: montrado de ĉiuj flustroj en la Ĝenerala langeto kutime estas "
-"konfuza."
+"Note: putting all whispers to single General tab is known to be confusing. Think twice before disabling this feature."
+msgstr "Se ŝaltita, ĉiuj flustroj (personaj mesaĝoj) aperos en malsamajn langetojn, unu po ludanto. Se malŝaltita, ĉiuj flustroj aperos en la Ĝenerala langeto.\n\nKomento: montrado de ĉiuj flustroj en la Ĝenerala langeto kutime estas konfuza."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:196
@@ -4456,15 +4378,10 @@ msgstr "Protokoli sorĉajn mesaĝojn en sencimigan langeton"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:198
 msgid ""
-"If this setting is enabled, spell invocation will be shown in Debug tab. If "
-"disabled, it will be shown in General tab instead.\n"
+"If this setting is enabled, spell invocation will be shown in Debug tab. If disabled, it will be shown in General tab instead.\n"
 "\n"
 "Note: it does not affects server replies related to spells."
-msgstr ""
-"Se ŝaltita, sorĉado montriĝos en la Sencimiga langeto. Se malŝaltita, ĝi "
-"anstataŭ montriĝos en la Ĝenerala langeto.\n"
-"\n"
-"Komento: Ĝi ne influos servilajn respondojn al sorĉoj."
+msgstr "Se ŝaltita, sorĉado montriĝos en la Sencimiga langeto. Se malŝaltita, ĝi anstataŭ montriĝos en la Ĝenerala langeto.\n\nKomento: Ĝi ne influos servilajn respondojn al sorĉoj."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:204
@@ -4474,17 +4391,10 @@ msgstr "Montru servilajn mesaĝojn en sencimiga langeto"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:206
 msgid ""
-"If this setting is enabled, server messages will be shown in Debug tab of "
-"chat. If disabled, server messages will appear in General chat instead.\n"
+"If this setting is enabled, server messages will be shown in Debug tab of chat. If disabled, server messages will appear in General chat instead.\n"
 "\n"
-"Note: according to 4144, disabling this could also make you to lose some "
-"debug messages from client in Debug tab since these are fake server messages."
-msgstr ""
-"Se ŝaltita, servilaj mesaĝoj montriĝos en Sencimiga langeto de retbabilo. Se "
-"malŝaltita, servilaj mesaĝoj anstataŭ aperos en Ĝenerala retbabilo.\n"
-"\n"
-"Komento: Laŭ 4144 (programisto de ManaPlus), malŝalti tion ĉi povas mankigi "
-"iom da sencimigaj mesaĝoj de la kliento en la Sencimiga langeto."
+"Note: according to 4144, disabling this could also make you to lose some debug messages from client in Debug tab since these are fake server messages."
+msgstr "Se ŝaltita, servilaj mesaĝoj montriĝos en Sencimiga langeto de retbabilo. Se malŝaltita, servilaj mesaĝoj anstataŭ aperos en Ĝenerala retbabilo.\n\nKomento: Laŭ 4144 (programisto de ManaPlus), malŝalti tion ĉi povas mankigi iom da sencimigaj mesaĝoj de la kliento en la Sencimiga langeto."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:214
@@ -4498,11 +4408,7 @@ msgid ""
 "words typical for trades will go to Trade tab. This will make General tab "
 "less noisy. If this setting is disabled, all trade related players messages "
 "will stay in General tab."
-msgstr ""
-"Ŝaltas negocan langeton. Negoca langeto filtros en sin mesaĝojn kun vortoj "
-"kutimaj al negocoj. Tio senbruas la Ĝeneralan langeton, sed ankaŭ povas "
-"erare movi mesaĝojn. Se malŝaltita, ĉiuj mesaĝoj eble rilataj al negoco "
-"restos en la Ĝenerala langeto."
+msgstr "Ŝaltas negocan langeton. Negoca langeto filtros en sin mesaĝojn kun vortoj kutimaj al negocoj. Tio senbruas la Ĝeneralan langeton, sed ankaŭ povas erare movi mesaĝojn. Se malŝaltita, ĉiuj mesaĝoj eble rilataj al negoco restos en la Ĝenerala langeto."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:223
@@ -4512,16 +4418,10 @@ msgstr "Ŝaltu lg langeton"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:225
 msgid ""
-"If enabled, GM tab will appear in chat. It displays text related GM "
-"activity.\n"
+"If enabled, GM tab will appear in chat. It displays text related GM activity.\n"
 "\n"
-"Note: this setting only makes difference for GMs (Game Masters) since this "
-"tab only appears for GMs."
-msgstr ""
-"Se ŝaltita, LG langeto aperos en retbabilejo. Ĝi montras agoj de LG-oj.\n"
-"\n"
-"Komento: Tiu ĉi agordo nur ŝanĝas ion por LG-oj (Ludo-Gvidantoj), ĉar ĝi nur "
-"aperas por LG-oj."
+"Note: this setting only makes difference for GMs (Game Masters) since this tab only appears for GMs."
+msgstr "Se ŝaltita, LG langeto aperos en retbabilejo. Ĝi montras agoj de LG-oj.\n\nKomento: Tiu ĉi agordo nur ŝanĝas ion por LG-oj (Ludo-Gvidantoj), ĉar ĝi nur aperas por LG-oj."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:231
@@ -4531,14 +4431,10 @@ msgstr "Ŝalti lingvan langeton"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:233
 msgid ""
-"If this feature enabled, language tab will appear if server supports this "
-"feature.\n"
+"If this feature enabled, language tab will appear if server supports this feature.\n"
 "\n"
 "Note: only supported by Evol server yet."
-msgstr ""
-"Se ŝaltita, lingva langeto aperos se la servilo subtenas tiun ĉi funkcion.\n"
-"\n"
-"Komento: ĝis nun subtenata nur de la Evol servilo."
+msgstr "Se ŝaltita, lingva langeto aperos se la servilo subtenas tiun ĉi funkcion.\n\nKomento: ĝis nun subtenata nur de la Evol servilo."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:239
@@ -4548,17 +4444,10 @@ msgstr "Montri mesaĝojn en ĉiu lingvo"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:241
 msgid ""
-"If this setting enabled and server supports different chats for different "
-"languages, you will see messages for all languages, regardless of your "
-"language preferences.\n"
+"If this setting enabled and server supports different chats for different languages, you will see messages for all languages, regardless of your language preferences.\n"
 "\n"
 "Note: it only works on servers supporting language tabs feature, like Evol."
-msgstr ""
-"Se ŝaltita kaj subtenata, vi vidos mesaĝojn de ĉiu lingvo, senrilate al via "
-"agordita lingvo.\n"
-"\n"
-"Komento: ĝi nur funkcias je serviloj subtenataj la lingajn tabletojn, kiel "
-"Evol."
+msgstr "Se ŝaltita kaj subtenata, vi vidos mesaĝojn de ĉiu lingvo, senrilate al via agordita lingvo.\n\nKomento: ĝi nur funkcias je serviloj subtenataj la lingajn tabletojn, kiel Evol."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:249
@@ -4568,17 +4457,10 @@ msgstr "Ŝalti batalan langeton"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:251
 msgid ""
-"If this setting enabled, Battle tab will appear in chat. This tab will "
-"contain messages related to battles, like damage and experience gain, if "
-"battle messages are enabled.\n"
+"If this setting enabled, Battle tab will appear in chat. This tab will contain messages related to battles, like damage and experience gain, if battle messages are enabled.\n"
 "\n"
 "Note: client restart required to take effect."
-msgstr ""
-"Se ŝaltita, Batala langeto aperos en retbabilo. Tiu langeto enhavos mesaĝojn "
-"rilatajn al bataloj, kiel difekto kaj sperto, se batalaj mesaĝoj estas "
-"ŝaltitaj.\n"
-"\n"
-"Komento: necesas rekomencigo por efektivigi."
+msgstr "Se ŝaltita, Batala langeto aperos en retbabilo. Tiu langeto enhavos mesaĝojn rilatajn al bataloj, kiel difekto kaj sperto, se batalaj mesaĝoj estas ŝaltitaj.\n\nKomento: necesas rekomencigo por efektivigi."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:258
@@ -4591,10 +4473,7 @@ msgid ""
 "If this setting enabled, messages related to battle like damage or "
 "experience gain will be displayed in Debug or Battle tab. If disabled, no "
 "battle messages will be displayed."
-msgstr ""
-"Se ŝaltita, mesaĝoj rilataj al batalo, kiel difekto kaj sperto montriĝos en "
-"Sencimiga aŭ Batala langetoj. Se malŝaltita, neniuj batalaj mesaĝoj "
-"montriĝos."
+msgstr "Se ŝaltita, mesaĝoj rilataj al batalo, kiel difekto kaj sperto montriĝos en Sencimiga aŭ Batala langetoj. Se malŝaltita, neniuj batalaj mesaĝoj montriĝos."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:266
@@ -4604,20 +4483,10 @@ msgstr "Regrandigi retbabilaj langetoj se bezonata"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:268
 msgid ""
-"If this feature enabled, text in chat will be automatically adjusted to "
-"adapt to appearance of chat input field when you typing message and when "
-"input field of chat disappears. If disabled, chat input area will always "
-"occupy its place, which could be otherwise usable for text.\n"
+"If this feature enabled, text in chat will be automatically adjusted to adapt to appearance of chat input field when you typing message and when input field of chat disappears. If disabled, chat input area will always occupy its place, which could be otherwise usable for text.\n"
 "\n"
 "Note: its mostly about jumpy attitude vs less usable space for text."
-msgstr ""
-"Se ŝaltita, teksto en retbabilejo aŭtomate adaptiĝos al stato de retbabila "
-"enigejo kiam vi entajpantos mesaĝon kaj kiam la enigejo de retbabilejo "
-"malaperos (neentajpata). Se malŝaltita, enigejo ĉiam okupos sian spacon, kiu "
-"aliel povus okupitiĝi per teksto.\n"
-"\n"
-"Komento: plejparte temas pri saltema fasado kontraŭ malpli da spaco por "
-"teksto."
+msgstr "Se ŝaltita, teksto en retbabilejo aŭtomate adaptiĝos al stato de retbabila enigejo kiam vi entajpantos mesaĝon kaj kiam la enigejo de retbabilejo malaperos (neentajpata). Se malŝaltita, enigejo ĉiam okupos sian spacon, kiu aliel povus okupitiĝi per teksto.\n\nKomento: plejparte temas pri saltema fasado kontraŭ malpli da spaco por teksto."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:278
@@ -4639,9 +4508,7 @@ msgstr "Uzi lokan tempon"
 msgid ""
 "If this feature enabled, timestamps in chat will use local times. If "
 "disabled, server time will be used (often it is GMT+0)."
-msgstr ""
-"Se ŝaltita, tempindikoj en retbabilejo uzos la lokajn tempojn. Se "
-"malŝaltita, servila tempo estos uzata (ofte en UTC +0)."
+msgstr "Se ŝaltita, tempindikoj en retbabilejo uzos la lokajn tempojn. Se malŝaltita, servila tempo estos uzata (ofte en UTC +0)."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:296
@@ -4651,15 +4518,10 @@ msgstr "Markigaj vortoj (perkome disigitaj)"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:298
 msgid ""
-"Here you can specify some extra words which will also cause highlighting. "
-"Use comma to separate words.\n"
+"Here you can specify some extra words which will also cause highlighting. Use comma to separate words.\n"
 "\n"
 "Note: frequent highlights are annoying - use it with caution."
-msgstr ""
-"Tie ĉi vi povas specifi iom da kromajn vortojn, kiuj ankaŭ kaŭzos markadon. "
-"Uzu komon por disigi vortojn.\n"
-"\n"
-"Komento: ofta markado povas onin agaci - bone pripensu."
+msgstr "Tie ĉi vi povas specifi iom da kromajn vortojn, kiuj ankaŭ kaŭzos markadon. Uzu komon por disigi vortojn.\n\nKomento: ofta markado povas onin agaci - bone pripensu."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:304
@@ -4669,15 +4531,10 @@ msgstr "Malatenti avizojn laŭ nomoj (perkome disigitaj)"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:306
 msgid ""
-"This setting allows you to ignore some global messages if particular sender "
-"(NPC, GM) annoys you too much. Global will be moved to Debug instead.\n"
+"This setting allows you to ignore some global messages if particular sender (NPC, GM) annoys you too much. Global will be moved to Debug instead.\n"
 "\n"
 "Note: careless use of this feature can make you to miss important announces!"
-msgstr ""
-"Tiu ĉi agordo permesas al vi ignori iom da tutludaj mesaĝoj, se iu sendanto "
-"(NLA, LG) vin tro enuigas. Tutludaj moviĝos al Sencimiga langeto.\n"
-"\n"
-"Komento: senzorga uzado povas kaŭzi, ke vi mankos gravajn anoncojn!"
+msgstr "Tiu ĉi agordo permesas al vi ignori iom da tutludaj mesaĝoj, se iu sendanto (NLA, LG) vin tro enuigas. Tutludaj moviĝos al Sencimiga langeto.\n\nKomento: senzorga uzado povas kaŭzi, ke vi mankos gravajn anoncojn!"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:313
@@ -4687,19 +4544,10 @@ msgstr "Montri mienan butonon en retbabilejo"
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:315
 msgid ""
-"If this setting enabled, button will appear near text input field. This "
-"button allows one to invoke composing window, which allows one to insert "
-"smiles and text formatting easily.\n"
+"If this setting enabled, button will appear near text input field. This button allows one to invoke composing window, which allows one to insert smiles and text formatting easily.\n"
 "\n"
-"Note: same window can also be invoked by hotkey when typing, usually F1 by "
-"default."
-msgstr ""
-"Se ŝaltita, butono aperos apud tekst-enigejo. Tiu ĉi butono alvokas "
-"fenestreton, kie oni povas facile enmeti eksentojn mienetojn kaj aranĝi "
-"tekston.\n"
-"\n"
-"Komento: la saman fenestreton oni povas alvoki dum tajpado, defaŭlte per la "
-"F1 klavo."
+"Note: same window can also be invoked by hotkey when typing, usually F1 by default."
+msgstr "Se ŝaltita, butono aperos apud tekst-enigejo. Tiu ĉi butono alvokas fenestreton, kie oni povas facile enmeti eksentojn mienetojn kaj aranĝi tekston.\n\nKomento: la saman fenestreton oni povas alvoki dum tajpado, defaŭlte per la F1 klavo."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:323
@@ -4711,9 +4559,7 @@ msgstr "Montru mdlt servilan mesaĝon je lanĉo."
 msgid ""
 "If this setting enabled, client will display server MOTD (message of the "
 "day) once you connect to server. Disable it to hide MOTD."
-msgstr ""
-"Se ŝaltita, la kliento montros la servilan MDLT (mesaĝon de la tago) kiam vi "
-"konektos al la servilo. Malŝalti ĝin por kaŝi MDLT."
+msgstr "Se ŝaltita, la kliento montros la servilan MDLT (mesaĝon de la tago) kiam vi konektos al la servilo. Malŝalti ĝin por kaŝi MDLT."
 
 #. TRANSLATORS: color selection preview message
 #: src/gui/widgets/tabs/setup_colors.cpp:50
@@ -4809,14 +4655,12 @@ msgstr "Detektitaj konfliktoj de klavoj."
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
-msgstr ""
-"Konflikto inter \"%s\" kaj \"%s\" klavoj. Solvi ilin, aŭ la ludo povos agi "
-"strange."
+msgstr "Konflikto inter \"%s\" kaj \"%s\" klavoj. Solvi ilin, aŭ la ludo povos agi strange."
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
-#: src/gui/widgets/tabs/setup_input.cpp:333 src/resources/db/questdb.cpp:61
-#: src/resources/db/questdb.cpp:252 src/resources/db/questdb.cpp:258
+#: src/gui/widgets/tabs/setup_input.cpp:333
+#: src/gui/windows/questswindow.cpp:211
 msgid "unknown"
 msgstr "nekonata"
 
@@ -5196,8 +5040,7 @@ msgstr "Subteno de robotoj"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:307
 msgid "Enable guild bot support and disable native guild support"
-msgstr ""
-"Ŝalti subtenon de gildaj robotoj kaj malŝalti indiĝenan subtenon de gildoj"
+msgstr "Ŝalti subtenon de gildaj robotoj kaj malŝalti indiĝenan subtenon de gildoj"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_other.cpp:313
@@ -5598,8 +5441,7 @@ msgstr "Krei ekrankopion por ĉiu finita negoco"
 #: src/gui/widgets/tabs/setup_players.cpp:159
 msgid ""
 "Emulate right mouse button by long mouse click (useful for touch interfaces)"
-msgstr ""
-"Imiti dekstran musbutonon per longtempa klako (utila por tuŝaj fasadoj)"
+msgstr "Imiti dekstran musbutonon per longtempa klako (utila por tuŝaj fasadoj)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:164
@@ -5878,17 +5720,13 @@ msgstr "Nenia"
 #: src/gui/widgets/tabs/setup_video.cpp:236
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
-msgstr ""
-"Malsukcesis ŝanĝo al fenestra reĝimo kaj ankaŭ restaŭro de malnova reĝimo "
-"malsukcesis!"
+msgstr "Malsukcesis ŝanĝo al fenestra reĝimo kaj ankaŭ restaŭro de malnova reĝimo malsukcesis!"
 
 #. TRANSLATORS: video error message
 #: src/gui/widgets/tabs/setup_video.cpp:243
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
-msgstr ""
-"Malsukcesis ŝanĝo al tutekrana reĝimo kaj ankaŭ restaŭro de malnova reĝimo "
-"malsukcesis!"
+msgstr "Malsukcesis ŝanĝo al tutekrana reĝimo kaj ankaŭ restaŭro de malnova reĝimo malsukcesis!"
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:256
@@ -5929,8 +5767,7 @@ msgstr "Distingivo de Ekrano Ŝanĝita"
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:405
 msgid "Some windows may be moved to fit the lowered resolution."
-msgstr ""
-"Iaj fenestroj eble moviĝos por konformi al la pli malgranda distingivo."
+msgstr "Iaj fenestroj eble moviĝos por konformi al la pli malgranda distingivo."
 
 #. TRANSLATORS: speach type
 #: src/gui/widgets/tabs/setup_visual.cpp:43
@@ -6257,7 +6094,7 @@ msgstr "TAS"
 
 #. TRANSLATORS: long button name for quests window.
 #. TRANSLATORS: quests window name
-#: src/gui/windowmenu.cpp:79 src/gui/windows/questswindow.cpp:64
+#: src/gui/windowmenu.cpp:79 src/gui/windows/questswindow.cpp:66
 msgid "Quests"
 msgstr "Taskoj"
 
@@ -6456,20 +6293,20 @@ msgid "Create items"
 msgstr "Krei objektojn"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:324
+#: src/gui/windows/buydialog.cpp:323
 msgid "Amount:"
 msgstr "Kvanto:"
 
 #. TRANSLATORS: buy dialog button
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/buydialog.cpp:335 src/gui/windows/charcreatedialog.cpp:112
+#: src/gui/windows/buydialog.cpp:334 src/gui/windows/charcreatedialog.cpp:112
 #: src/gui/windows/charselectdialog.cpp:610
 msgid "Create"
 msgstr "Krei"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:386
+#: src/gui/windows/buydialog.cpp:385
 msgid "Filter:"
 msgstr "Filtrilo:"
 
@@ -6581,7 +6418,8 @@ msgstr "^"
 #: src/gui/windows/charcreatedialog.cpp:196
 #: src/gui/windows/charcreatedialog.cpp:209
 #: src/gui/windows/charcreatedialog.cpp:220
-#: src/gui/windows/charcreatedialog.cpp:230 src/gui/windows/outfitwindow.cpp:66
+#: src/gui/windows/charcreatedialog.cpp:230
+#: src/gui/windows/outfitwindow.cpp:66
 msgid ">"
 msgstr ">"
 
@@ -6599,7 +6437,8 @@ msgstr "Bonvolu disdoni %d poentojn"
 #: src/gui/windows/charcreatedialog.cpp:200
 #: src/gui/windows/charcreatedialog.cpp:211
 #: src/gui/windows/charcreatedialog.cpp:222
-#: src/gui/windows/charcreatedialog.cpp:232 src/gui/windows/outfitwindow.cpp:64
+#: src/gui/windows/charcreatedialog.cpp:232
+#: src/gui/windows/outfitwindow.cpp:64
 msgid "<"
 msgstr "<"
 
@@ -6625,7 +6464,8 @@ msgstr "Aspekto:"
 
 #. TRANSLATORS: one char size female character gender
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/windows/charcreatedialog.cpp:251 src/gui/windows/socialwindow.cpp:70
+#: src/gui/windows/charcreatedialog.cpp:251
+#: src/gui/windows/socialwindow.cpp:70
 msgid "F"
 msgstr "A"
 
@@ -6695,7 +6535,7 @@ msgstr "Pasvorto"
 #. TRANSLATORS: updater window button
 #: src/gui/windows/charselectdialog.cpp:73
 #: src/gui/windows/charselectdialog.cpp:600
-#: src/gui/windows/updaterwindow.cpp:193
+#: src/gui/windows/updaterwindow.cpp:194
 msgid "Play"
 msgstr "Ludi"
 
@@ -6724,12 +6564,7 @@ msgid ""
 "Level: %u\n"
 "Experience: %u\n"
 "Money: %s"
-msgstr ""
-"Sano: %u/%u\n"
-"Energio: %u/%u\n"
-"Nivelo: %u\n"
-"Sperto: %u\n"
-"Mono: %s"
+msgstr "Sano: %u/%u\nEnergio: %u/%u\nNivelo: %u\nSperto: %u\nMono: %s"
 
 #. TRANSLATORS: error message
 #: src/gui/windows/charselectdialog.cpp:300
@@ -6820,7 +6655,8 @@ msgstr "Redakti Servilon"
 
 #. TRANSLATORS: edit server dialog button
 #. TRANSLATORS: servers dialog button
-#: src/gui/windows/editserverdialog.cpp:57 src/gui/windows/serverdialog.cpp:108
+#: src/gui/windows/editserverdialog.cpp:57
+#: src/gui/windows/serverdialog.cpp:108
 msgid "Connect"
 msgstr "Konekti"
 
@@ -6890,8 +6726,9 @@ msgstr "Tiparoj"
 #. TRANSLATORS: unknown hosts group name
 #. TRANSLATORS: unknown skills tab name
 #. TRANSLATORS: Skill type
-#: src/gui/windows/equipmentwindow.cpp:674 src/gui/windows/serverdialog.cpp:458
-#: src/gui/windows/skilldialog.cpp:146 src/resources/skill/skillinfo.cpp:124
+#: src/gui/windows/equipmentwindow.cpp:674
+#: src/gui/windows/serverdialog.cpp:458 src/gui/windows/skilldialog.cpp:146
+#: src/resources/skill/skillinfo.cpp:124
 msgid "Unknown"
 msgstr "Nekonata"
 
@@ -7187,13 +7024,15 @@ msgstr "Temo:"
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:61 src/gui/windows/mailviewwindow.cpp:105
+#: src/gui/windows/maileditwindow.cpp:61
+#: src/gui/windows/mailviewwindow.cpp:105
 msgid "Money:"
 msgstr "Mono:"
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view item label
-#: src/gui/windows/maileditwindow.cpp:63 src/gui/windows/mailviewwindow.cpp:124
+#: src/gui/windows/maileditwindow.cpp:63
+#: src/gui/windows/mailviewwindow.cpp:124
 #: src/gui/windows/mailviewwindow.cpp:133
 msgid "Item:"
 msgstr "Objekto:"
@@ -7367,22 +7206,22 @@ msgid "Away outfit"
 msgstr "Forvestaro"
 
 #. TRANSLATORS: quest reward
-#: src/gui/windows/questswindow.cpp:339
+#: src/gui/windows/questswindow.cpp:503
 msgid "Reward:"
 msgstr "Premio:"
 
 #. TRANSLATORS: quest giver name
-#: src/gui/windows/questswindow.cpp:346
+#: src/gui/windows/questswindow.cpp:510
 msgid "Quest Giver:"
 msgstr "Doninto de Tasko:"
 
 #. TRANSLATORS: quest npc name
-#: src/gui/windows/questswindow.cpp:353
+#: src/gui/windows/questswindow.cpp:517
 msgid "Npc:"
 msgstr "Nla:"
 
 #. TRANSLATORS: quest coordinates
-#: src/gui/windows/questswindow.cpp:361
+#: src/gui/windows/questswindow.cpp:525
 msgid "Coordinates:"
 msgstr "Koordinatoj:"
 
@@ -7519,7 +7358,7 @@ msgid "Reset Windows"
 msgstr "Rekomencigi Fenestrojn"
 
 #. TRANSLATORS: shop window name
-#: src/gui/windows/shopwindow.cpp:101 src/gui/windows/shopwindow.cpp:1119
+#: src/gui/windows/shopwindow.cpp:101 src/gui/windows/shopwindow.cpp:1118
 msgid "Personal Shop"
 msgstr "Persona Butiko"
 
@@ -7556,35 +7395,35 @@ msgid "error: player busy"
 msgstr "eraro: ludanto okupita"
 
 #. TRANSLATORS: error buy/sell shop request
-#: src/gui/windows/shopwindow.cpp:968
+#: src/gui/windows/shopwindow.cpp:967
 msgid "error: Can't sell this item"
 msgstr "eraro: Ne eblas vendi tiun ĉi objekton"
 
 #. TRANSLATORS: error buy/sell shop request
-#: src/gui/windows/shopwindow.cpp:980
+#: src/gui/windows/shopwindow.cpp:979
 msgid "error: Can't buy this item"
 msgstr "eraro: Ne eblas aĉeti tiun ĉi objekton"
 
 #. TRANSLATORS: buy shop request (nick, item)
-#: src/gui/windows/shopwindow.cpp:1000
+#: src/gui/windows/shopwindow.cpp:999
 #, c-format
 msgid "%s wants to buy %s do you accept?"
 msgstr "%s volas aĉeti %s ĉu vi akceptas?"
 
 #. TRANSLATORS: sell shop request (nick, item)
-#: src/gui/windows/shopwindow.cpp:1007
+#: src/gui/windows/shopwindow.cpp:1006
 #, c-format
 msgid "%s wants to sell %s do you accept?"
 msgstr "%s volas vendi %s ĉu vi akceptas?"
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
-#: src/gui/windows/shopwindow.cpp:1014 src/net/ea/traderecv.cpp:163
+#: src/gui/windows/shopwindow.cpp:1013 src/net/ea/traderecv.cpp:163
 msgid "Request for Trade"
 msgstr "Negoca Peto"
 
 #. TRANSLATORS: shop window name
-#: src/gui/windows/shopwindow.cpp:1124
+#: src/gui/windows/shopwindow.cpp:1123
 #, c-format
 msgid "Personal Shop - %s"
 msgstr "Persona Butiko - %s"
@@ -7866,74 +7705,72 @@ msgstr "Vi ne havas sufiĉe da mono."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:528
-msgid "Failed adding item. You can not overlap one kind of item on the window."
-msgstr ""
-"Malsukcesis aldoni objekton. Vi ne povas sinkovri unu specon de objekto sur "
-"la fenestron."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
+msgstr "Malsukcesis aldoni objekton. Vi ne povas sinkovri unu specon de objekto sur la fenestron."
 
 #. TRANSLATORS: trade error
 #: src/gui/windows/tradewindow.cpp:541
 msgid "Failed adding item. You can not trade equipped items."
-msgstr ""
-"Malsukcesis aldoni objekton. Vi ne povas transdoni ekipitajn objektojn."
+msgstr "Malsukcesis aldoni objekton. Vi ne povas transdoni ekipitajn objektojn."
 
 #. TRANSLATORS: updater window name
-#: src/gui/windows/updaterwindow.cpp:171
+#: src/gui/windows/updaterwindow.cpp:172
 msgid "Updating..."
 msgstr "Ĝisdatiganta..."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:189
+#: src/gui/windows/updaterwindow.cpp:190
 msgid "Connecting..."
 msgstr "Konektanta..."
 
 #. TRANSLATORS: updater window checkbox
-#: src/gui/windows/updaterwindow.cpp:415
+#: src/gui/windows/updaterwindow.cpp:416
 msgid "Show all news (can be slow)"
 msgstr "Montru ĉiujn novaĵojn (povas esti malrapida)"
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:853
+#: src/gui/windows/updaterwindow.cpp:851
 msgid "##1  The update process is incomplete."
 msgstr "##1  Ĝisdatigo nefinfarita."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:855
+#: src/gui/windows/updaterwindow.cpp:853
 msgid "##1  It is strongly recommended that"
 msgstr "##1  Estas ege rekomendita, ke"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:857
+#: src/gui/windows/updaterwindow.cpp:855
 msgid "##1  you try again later."
 msgstr "##1  vi reprovu pli malfrue."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:1042
+#: src/gui/windows/updaterwindow.cpp:1040
 msgid "Completed"
 msgstr "Finfarita"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:94 src/gui/windows/whoisonline.cpp:661
+#: src/gui/windows/whoisonline.cpp:95 src/gui/windows/whoisonline.cpp:662
 msgid "Who Is Online - Updating"
 msgstr "Kiu Estas Enreta - Ĝisdatigata"
 
 #. TRANSLATORS: who is online. button.
-#: src/gui/windows/whoisonline.cpp:106
+#: src/gui/windows/whoisonline.cpp:107
 msgid "Update"
 msgstr "Ĝisdatigi"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:236
+#: src/gui/windows/whoisonline.cpp:237
 msgid "Who Is Online - "
 msgstr "Kiu Estas Konektita - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:677
+#: src/gui/windows/whoisonline.cpp:678
 msgid "Who Is Online - error"
 msgstr "Kiu Estas Konektita - eraro"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:724
+#: src/gui/windows/whoisonline.cpp:725
 msgid "Who Is Online - Update"
 msgstr "Kiu Estas Konektita - Ĝisdatigo"
 
@@ -9129,8 +8966,7 @@ msgstr "Vakigi demetan fenestron"
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:50
 msgid "Access denied. Most likely, there are too many players on this server."
-msgstr ""
-"Atingo rifuzita. Probable estas tro multe da ludantoj en tiu ĉi servilo."
+msgstr "Atingo rifuzita. Probable estas tro multe da ludantoj en tiu ĉi servilo."
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:55
@@ -9241,9 +9077,7 @@ msgstr "Vi estis daŭre forbarita de la ludo. Bonvolu kontakti la LG teamon."
 msgid ""
 "Client too old or wrong server type.\n"
 "Please update client on http://manaplus.org"
-msgstr ""
-"Tro malnova kliento aŭ malĝusta tipo de servilo.\n"
-"Bonvolu ĝisdatigi klienton ĉe http://manaplus.org"
+msgstr "Tro malnova kliento aŭ malĝusta tipo de servilo.\nBonvolu ĝisdatigi klienton ĉe http://manaplus.org"
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:146 src/net/eathena/loginrecv.cpp:84
@@ -9251,9 +9085,7 @@ msgstr ""
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
-msgstr ""
-"Vi estis nedaŭre forbarita de la ludo ĝis %s.\n"
-"Bonvolu kontakti la LG teamon per la retforumo."
+msgstr "Vi estis nedaŭre forbarita de la ludo ĝis %s.\nBonvolu kontakti la LG teamon per la retforumo."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:152 src/net/eathena/loginrecv.cpp:93
@@ -10456,9 +10288,7 @@ msgstr "Malsukcesis negoco."
 msgid ""
 "The trade failed, because the entered amount of item is higher, than the "
 "buyer is willing to buy."
-msgstr ""
-"Malsukcesis negoco, ĉar la enmetita nombro da objektoj estas pli granda ol "
-"kiom la aĉetanto volas aĉeti."
+msgstr "Malsukcesis negoco, ĉar la enmetita nombro da objektoj estas pli granda ol kiom la aĉetanto volas aĉeti."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:467
@@ -10964,8 +10794,7 @@ msgstr "CelKaptilo"
 #: src/utils/booleanoptions.h:29
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Opcioj al /%s estas \"jes\", \"ne\", \"vera\", \"malvera\", \"1\", \"0\"."
+msgstr "Opcioj al /%s estas \"jes\", \"ne\", \"vera\", \"malvera\", \"1\", \"0\"."
 
 #. TRANSLATORS: uptime command
 #: src/utils/stringutils.cpp:959
