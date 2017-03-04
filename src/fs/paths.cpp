@@ -49,6 +49,7 @@
 #endif  // WIN32
 
 #ifndef WIN32
+#include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
 #endif  // WIN32
