@@ -41,7 +41,7 @@ namespace VirtFs
     VirtFsEntry *searchEntryByRootInternal(const std::string &restrict
                                            root);
     VirtFsEntry *searchEntryInternal(const std::string &restrict root,
-                                     const FsEntryType type);
+                                     const FsEntryTypeT type);
     void addEntry(VirtFsEntry *const entry,
                   const Append append);
 #ifdef UNITTESTS

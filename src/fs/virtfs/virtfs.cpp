@@ -103,7 +103,7 @@ namespace VirtFs
     }
 
     VirtFsEntry *searchEntryInternal(const std::string &restrict root,
-                                     const FsEntryType type)
+                                     const FsEntryTypeT type)
     {
         FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
         {

@@ -32,7 +32,7 @@ struct VirtFsFuncs;
 
 struct VirtFsEntry notfinal
 {
-    VirtFsEntry(const FsEntryType &type0,
+    VirtFsEntry(const FsEntryTypeT &type0,
                 VirtFsFuncs *restrict const funcs);
 
     A_DELETE_COPY(VirtFsEntry)
@@ -41,7 +41,7 @@ struct VirtFsEntry notfinal
 
     std::string root;
 
-    FsEntryType type;
+    FsEntryTypeT type;
 
     VirtFsFuncs *funcs;
 };

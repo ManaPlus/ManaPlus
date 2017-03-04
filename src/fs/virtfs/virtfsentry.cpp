@@ -26,7 +26,7 @@
 
 #include "debug.h"
 
-VirtFsEntry::VirtFsEntry(const FsEntryType &type0,
+VirtFsEntry::VirtFsEntry(const FsEntryTypeT &type0,
                          VirtFsFuncs *restrict const funcs0) :
     root(),
     type(type0),
