@@ -261,15 +261,15 @@ AC_CHECK_LIB([z], [inflate], ,
 AC_MSG_ERROR([ *** Unable to find zlib (http://www.gzip.org/zlib/)]))
 
 # Option to enable physfs.
-AC_ARG_WITH(physfs,[  --without-physfs        don't use physfs (experimental) ] )
-if test "x$with_physfs" == "xno"; then
-    with_physfs=no
-else
+AC_ARG_WITH(physfs,[  --with-physfs        use physfs (experimental) ] )
+if test "x$with_physfs" == "xyes"; then
     with_physfs=yes
     AC_CHECK_LIB([physfs], [PHYSFS_init], ,
     AC_MSG_ERROR([ *** Unable to find PhysFS library (http://icculus.org/physfs/)]))
     AC_CHECK_HEADERS([physfs.h], ,
     AC_MSG_ERROR([ *** PhysFS library found but cannot find headers (http://icculus.org/physfs/)]))
+else
+    with_physfs=no
 fi
 AM_CONDITIONAL(USE_PHYSFS, test x$with_physfs = xyes)
 

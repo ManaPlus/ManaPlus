@@ -20,7 +20,6 @@
 					<Add option="-DUSE_MUMBLE" />
 					<Add option="-DTMWA_SUPPORT" />
 					<Add option="-DENABLE_LIBXML" />
-					<Add option="-DUSE_PHYSFS" />
 					<Add directory="src/" />
 					<Add directory="include" />
 					<Add directory="../winlibs/include/libxml2" />
@@ -42,7 +41,6 @@
 					<Add library="opengl32" />
 					<Add library="png15.dll" />
 					<Add library="z.dll" />
-					<Add library="physfs" />
 					<Add library="curl.dll" />
 					<Add library="intl" />
 					<Add library="ws2_32" />
@@ -62,13 +60,11 @@
 					<Add option="`sdl-config --cflags`" />
 					<Add option="-DMANASERV_SUPPORT" />
 					<Add option="-DUSE_OPENGL" />
-					<Add option="-DUSE_PHYSFS" />
 					<Add directory="/usr/include/libxml2" />
 				</Compiler>
 				<Linker>
 					<Add option="`sdl-config --libs`" />
 					<Add library="GL" />
-					<Add library="physfs" />
 					<Add library="curl" />
 					<Add library="xml2" />
 					<Add library="SDL_mixer" />

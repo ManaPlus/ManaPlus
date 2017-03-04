@@ -12,16 +12,15 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(SDL_PATH)/include \
     $(ROOT_PATH)/xml2/include \
     $(ROOT_PATH)/gettext-0.18/gettext-runtime/intl \
     $(ROOT_PATH)/sdl_gfx \
-    $(ROOT_PATH)/physfs/include \
     $(ROOT_PATH)/curl/include \
     $(ROOT_PATH)/SDL2_net-2.0.0
 
-LOCAL_CPPFLAGS += -DUSE_SDL2 -DTMWA_SUPPORT -DUSE_OPENGL -DENABLE_NLS -DENABLE_LIBXML -DUSE_PHYSFS
+LOCAL_CPPFLAGS += -DUSE_SDL2 -DTMWA_SUPPORT -DUSE_OPENGL -DENABLE_NLS -DENABLE_LIBXML
 LOCAL_CPPFLAGS += -frtti -fexceptions -Wno-error=format-security -fvisibility=hidden
 LOCAL_CPPFLAGS += -ffast-math -funswitch-loops -pedantic -Wall -Wc++11-compat -std=c++0x -funsafe-loop-optimizations -flto -fwhole-program
 LOCAL_CPPFLAGS += -fpic -fpie
 
-LOCAL_SHARED_LIBRARIES := SDL2 SDL2_mixer sdl_net SDL2_ttf SDL2_image libcurl intl png physfs sdl2_gfx xml2
+LOCAL_SHARED_LIBRARIES := SDL2 SDL2_mixer sdl_net SDL2_ttf SDL2_image libcurl intl png sdl2_gfx xml2
 
 LOCAL_LDLIBS := -lGLESv1_CM -lEGL -llog -lz
 
