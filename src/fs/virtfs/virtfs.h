@@ -21,6 +21,8 @@
 #ifndef UTILS_FS_VIRTFS_VIRTFS_H
 #define UTILS_FS_VIRTFS_VIRTFS_H
 
+#include "enums/fs/fsentrytype.h"
+
 #include "enums/simpletypes/append.h"
 
 #include "localconsts.h"
