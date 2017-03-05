@@ -237,6 +237,56 @@ icccheck:
 
 # tests
 
+# disabled due memory issue. Probably out of memory of gcc issues
+.gcc-6_SDL_SDL-1.2_sanitize2_test:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
+  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.3
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
+  - export LD_PRELOAD
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: SDL-1.2_asan
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              valgrind 
+              wget unzip
+    ASAN_OPTIONS: "detect_leaks=0"
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
+  tags:
+    - docker
+
+# disabled due memory issue. Probably out of memory of gcc issues
+.gcc-6_SDL_default_sanitize2_test:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.3
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - export LD_PRELOAD
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: default_asan
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              valgrind 
+              wget unzip
+    ASAN_OPTIONS: "detect_leaks=0"
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
+  tags:
+    - docker
+
 gcc-5_sanitize_tests:
   stage: build
   script:
