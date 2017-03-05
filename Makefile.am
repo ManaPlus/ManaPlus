@@ -16,7 +16,6 @@ EXTRA_DIST = $(desktop_DATA) \
 	     CMakeLists.txt \
 	     po/CMakeLists.txt \
 	     po/*.po \
-	     CMake/Modules/FindENet.cmake \
 	     CMake/Modules/FindLibIntl.cmake \
 	     CMake/Modules/FindSDL_gfx.cmake \
 	     Android.mk \
