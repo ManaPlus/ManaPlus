@@ -77,6 +77,7 @@
 
 #ifdef WIN32
 #include <SDL_syswm.h>
+#include <sys/time.h>
 #include "fs/specialfolder.h"
 #undef ERROR
 #endif  // WIN32
