@@ -22,6 +22,10 @@
 
 #include "maingui.h"
 
+#ifdef WIN32
+#include "SDL.h"
+#endif  // WIN32
+
 #include "debug.h"
 
 #if !defined(UNITTESTS) && !defined(ANDROID)
