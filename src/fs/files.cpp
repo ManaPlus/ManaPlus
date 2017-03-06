@@ -30,6 +30,7 @@
 #include "fs/virtlist.h"
 #endif  // defined(ANDROID) || defined(__native_client__)
 
+#include "utils/checkutils.h"
 #include "utils/stringutils.h"
 
 #include <dirent.h>
@@ -223,7 +224,8 @@ bool Files::loadTextFileLocal(const std::string &fileName,
 
     if (!file.is_open())
     {
-        logger->log("Couldn't load text file: %s", fileName.c_str());
+        reportAlways("Couldn't load text file: %s",
+            fileName.c_str());
         return false;
     }
 
@@ -240,9 +242,17 @@ void Files::saveTextFile(std::string path,
     if (!mkdir_r(path.c_str()))
     {
         std::ofstream file;
-        file.open((path.append("/").append(name)).c_str(), std::ios::out);
+        std::string fileName = path.append("/").append(name);
+        file.open(fileName.c_str(), std::ios::out);
         if (file.is_open())
+        {
             file << text << std::endl;
+        }
+        else
+        {
+            reportAlways("Error opening file for writing: %s",
+                fileName.c_str());
+        }
         file.close();
     }
 }

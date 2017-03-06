@@ -23,6 +23,7 @@
 #include "configuration.h"
 #include "settings.h"
 
+#include "utils/checkutils.h"
 #include "utils/timer.h"
 
 #include <fstream>
@@ -228,6 +229,8 @@ void PacketLimiter::writePacketLimits(const std::string &packetLimitsName)
     outPacketFile.open(packetLimitsName.c_str(), std::ios::out);
     if (!outPacketFile.is_open())
     {
+        reportAlways("Error opening file for writing: %s",
+            packetLimitsName.c_str());
         outPacketFile.close();
         return;
     }

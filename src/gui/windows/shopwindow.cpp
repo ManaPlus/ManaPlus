@@ -75,6 +75,7 @@
 #include "net/tradehandler.h"
 #endif  // TMWA_SUPPORT
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
@@ -535,6 +536,8 @@ void ShopWindow::loadList()
         shopFile.open(shopListName.c_str(), std::ios::in);
         if (!shopFile.is_open())
         {
+            reportAlways("Error opening file for reading: %s",
+                shopListName.c_str());
             shopFile.close();
             return;
         }
@@ -589,7 +592,8 @@ void ShopWindow::saveList() const
     shopFile.open(shopListName.c_str(), std::ios::binary);
     if (!shopFile.is_open())
     {
-        logger->log1("Unable to open shoplist.txt for writing");
+        reportAlways("Error opening file writing: %s",
+            shopListName.c_str());
         return;
     }
 

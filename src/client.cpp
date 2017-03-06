@@ -135,6 +135,7 @@
 
 #include "resources/sprite/spritereference.h"
 
+#include "utils/checkutils.h"
 #include "utils/cpu.h"
 #include "utils/delete2.h"
 #include "utils/dumplibs.h"
@@ -1903,6 +1904,11 @@ void Client::initTradeFilter()
             tradeFile << "i'm sell" << std::endl;
             tradeFile << "i'm trade" << std::endl;
             tradeFile << "i'm trading" << std::endl;
+        }
+        else
+        {
+            reportAlways("Error opening file for writing: %s",
+                tradeListName.c_str());
         }
         tradeFile.close();
     }

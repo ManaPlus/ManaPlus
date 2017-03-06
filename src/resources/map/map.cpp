@@ -63,6 +63,7 @@
 #include "render/renderers.h"
 #endif  // USE_OPENGL
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/timer.h"
@@ -1221,7 +1222,8 @@ void Map::saveExtraLayer() const restrict2
     mapFile.open(mapFileName.c_str(), std::ios::binary);
     if (!mapFile.is_open())
     {
-        logger->log1("Unable to open extralayer.txt for writing");
+        reportAlways("Error opening file for writing: %s",
+            mapFileName.c_str());
         return;
     }
 
