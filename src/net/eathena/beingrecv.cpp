@@ -498,6 +498,9 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     if (msg.getVersion() >= 20150513)
     {
         msg.readInt16("body2");
+    }
+    if (msg.getVersion() >= 20131223)
+    {
         msg.readString(24, "name");
     }
 
@@ -724,6 +727,9 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     if (msg.getVersion() >= 20150513)
     {
         msg.readInt16("body2");
+    }
+    if (msg.getVersion() >= 20131223)
+    {
         msg.readString(24, "name");
     }
 
@@ -925,6 +931,9 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     if (msg.getVersion() >= 20150513)
     {
         msg.readInt16("body2");
+    }
+    if (msg.getVersion() >= 20131223)
+    {
         msg.readString(24, "name");
     }
 
