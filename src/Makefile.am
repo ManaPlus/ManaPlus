@@ -841,6 +841,7 @@ BASE_SRC +=  \
 else
 BASE_SRC +=  \
 	      enums/fs/fsentrytype.h \
+	      fs/virtfs/fileapi.h \
 	      fs/virtfs/virtdirentry.cpp \
 	      fs/virtfs/virtdirentry.h \
 	      fs/virtfs/virtfileprivate.cpp \
