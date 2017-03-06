@@ -45,8 +45,6 @@
 
 #ifdef HAVE_CONFIG_H
 #include "../config.h"
-#elif defined WIN32
-#include "winver.h"
 #else  // HAVE_CONFIG_H
 #ifdef PACKAGE_VERSION
 #undef PACKAGE_VERSION
