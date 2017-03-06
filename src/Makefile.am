@@ -46,8 +46,10 @@ endif
 if ENABLE_ASSERTS
 manaplus_CXXFLAGS += -DENABLE_ASSERTS
 dyecmd_CXXFLAGS += -DENABLE_ASSERTS
+if HAVE_RDYNAMIC
 manaplus_LDFLAGS = -rdynamic
 dyecmd_LDFLAGS = -rdynamic
+endif
 endif
 
 if ENABLE_PUGIXML
@@ -1947,7 +1949,9 @@ manaplustests_CXXFLAGS += -Werror
 endif
 if ENABLE_ASSERTS
 manaplustests_CXXFLAGS += -DENABLE_ASSERTS
+if HAVE_RDYNAMIC
 manaplustests_LDFLAGS = -rdynamic
+endif
 endif
 if ENABLE_GLIBCDEBUG
 manaplustests_CXXFLAGS += -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC

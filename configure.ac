@@ -580,6 +580,60 @@ if test "x$naclbuild_enabled" == "xtrue"; then
     AC_CHECK_SDL()
 fi
 
+AC_DEFUN([AC_CHECK_CXX_FLAG],
+    [
+        AC_MSG_CHECKING([whether $CC supports $1])
+        OLD_CXXFLAGS="$CXXFLAGS"
+        CXXFLAGS="$CXXFLAGS -Werror $1"
+        test_flag=no
+        AC_COMPILE_IFELSE(
+            [AC_LANG_SOURCE([int foo;])],
+            [
+                AC_MSG_RESULT([yes])
+                test_flag=yes
+            ],
+            [
+                AC_MSG_RESULT([no])
+                test_flag=no
+            ]
+            CXXFLAGS="$OLD_CXXFLAGS"
+        )
+        AM_CONDITIONAL($2, test x$test_flag = xtrue)
+    ]
+)
+
+AC_DEFUN([AC_CHECK_LD_FLAG],
+    [
+        AC_MSG_CHECKING([whether $LD supports $1])
+        OLD_CXXFLAGS="$CXXFLAGS"
+        OLD_LDFLAGS="$LDFLAGS"
+        CXXFLAGS=""
+        LDFLAGS="$LDFLAGS $1"
+        test_flag=no
+        AC_LINK_IFELSE(
+            [AC_LANG_SOURCE([
+                int main(int argc, char **argv)
+                {
+                    return 0;
+                }
+            ])],
+            [
+                AC_MSG_RESULT([yes])
+                test_flag=yes
+            ],
+            [
+                AC_MSG_RESULT([no])
+                test_flag=no
+            ]
+            CXXFLAGS="$OLD_CXXFLAGS"
+            LDFLAGS="$OLD_LDFLAGS"
+        )
+        AM_CONDITIONAL($2, test x$test_flag = xyes)
+    ]
+)
+
+AC_CHECK_LD_FLAG(-rdynamic, HAVE_RDYNAMIC)
+
 AC_CONFIG_FILES([
 manaplus.spec
 Makefile
