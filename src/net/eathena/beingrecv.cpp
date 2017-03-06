@@ -495,13 +495,25 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         msg.readInt8("is boss");
     }
 
-    if (msg.getVersion() >= 20150513)
+    if (serverVersion == 0 ||
+        serverVersion >= 16)
     {
-        msg.readInt16("body2");
+        if (msg.getVersion() >= 20150513)
+        {
+            msg.readInt16("body2");
+        }
+        if (msg.getVersion() >= 20131223)
+        {
+            msg.readString(24, "name");
+        }
     }
-    if (msg.getVersion() >= 20131223)
+    else
     {
-        msg.readString(24, "name");
+        if (msg.getVersion() >= 20150513)
+        {
+            msg.readInt16("body2");
+            msg.readString(24, "name");
+        }
     }
 
     dstBeing->setStatusEffectOpitons(option,
@@ -724,13 +736,25 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         dstBeing->setHP(hp);
         msg.readInt8("is boss");
     }
-    if (msg.getVersion() >= 20150513)
+    if (serverVersion == 0 ||
+        serverVersion >= 16)
     {
-        msg.readInt16("body2");
+        if (msg.getVersion() >= 20150513)
+        {
+            msg.readInt16("body2");
+        }
+        if (msg.getVersion() >= 20131223)
+        {
+            msg.readString(24, "name");
+        }
     }
-    if (msg.getVersion() >= 20131223)
+    else
     {
-        msg.readString(24, "name");
+        if (msg.getVersion() >= 20150513)
+        {
+            msg.readInt16("body2");
+            msg.readString(24, "name");
+        }
     }
 
     dstBeing->setStatusEffectOpitons(option,
@@ -928,13 +952,25 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         dstBeing->setHP(hp);
         msg.readInt8("is boss");
     }
-    if (msg.getVersion() >= 20150513)
+    if (serverVersion == 0 ||
+        serverVersion >= 16)
     {
-        msg.readInt16("body2");
+        if (msg.getVersion() >= 20150513)
+        {
+            msg.readInt16("body2");
+        }
+        if (msg.getVersion() >= 20131223)
+        {
+            msg.readString(24, "name");
+        }
     }
-    if (msg.getVersion() >= 20131223)
+    else
     {
-        msg.readString(24, "name");
+        if (msg.getVersion() >= 20150513)
+        {
+            msg.readInt16("body2");
+            msg.readString(24, "name");
+        }
     }
 
     dstBeing->setStatusEffectOpitons(option,
