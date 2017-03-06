@@ -23,7 +23,7 @@
 #include "maingui.h"
 
 #ifdef WIN32
-#include "SDL.h"
+#include <SDL.h>
 #endif  // WIN32
 
 #include "debug.h"
