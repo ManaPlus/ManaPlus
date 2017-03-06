@@ -34,6 +34,7 @@
 #include "fs/mkdir.h"
 #include "fs/paths.h"
 
+#include "utils/checkutils.h"
 #include "utils/gettext.h"
 
 #include "render/renderers.h"
@@ -75,6 +76,11 @@ void ConfigManager::initServerConfig(const std::string &serverName)
         serverConfig.init(configPath);
         serverConfig.setDefaultValues(getConfigDefaults());
         logger->log("serverConfigPath: " + configPath);
+    }
+    else
+    {
+        reportAlways("Error creating server config: %s",
+            configPath.c_str());
     }
 
     const bool val = client->isTmw();
@@ -135,7 +141,7 @@ void ConfigManager::initConfiguration()
     }
     if (!configFile)
     {
-        logger->log("Can't create %s. Using defaults.",
+        reportAlways("Can't create %s. Using defaults.",
             configPath.c_str());
     }
     else

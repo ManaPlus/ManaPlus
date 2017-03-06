@@ -29,6 +29,7 @@
 
 #include "listeners/configlistener.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #ifdef DEBUG_CONFIG
 #include "utils/stringmap.h"
@@ -859,8 +860,8 @@ void Configuration::write()
     FILE *const testFile = fopen(mConfigPath.c_str(), "w");
     if (!testFile)
     {
-        logger->log("Configuration::write() couldn't open %s for writing",
-                    mConfigPath.c_str());
+        reportAlways("Configuration::write() couldn't open %s for writing",
+            mConfigPath.c_str());
         BLOCK_END("Configuration::write")
         return;
     }

@@ -24,6 +24,8 @@
 
 #include "logger.h"
 
+#include "utils/checkutils.h"
+
 #include <png.h>
 #include <SDL_video.h>
 
@@ -43,7 +45,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
         nullptr, nullptr, nullptr);
     if (!png_ptr)
     {
-        logger->log1("Had trouble creating png_structp");
+        reportAlways("Had trouble creating png_structp");
         return false;
     }
 
@@ -51,21 +53,22 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
     if (!info_ptr)
     {
         png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
-        logger->log1("Could not create png_info");
+        reportAlways("Could not create png_info");
         return false;
     }
 
     if (setjmp(png_jmpbuf(png_ptr)))
     {
         png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
-        logger->log("problem writing to %s", filename.c_str());
+        reportAlways("problem writing to %s", filename.c_str());
         return false;
     }
 
     FILE *const fp = fopen(filename.c_str(), "wb");
     if (!fp)
     {
-        logger->log("could not open file %s for writing", filename.c_str());
+        reportAlways("could not open file %s for writing",
+            filename.c_str());
         return false;
     }
 
