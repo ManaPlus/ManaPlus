@@ -128,9 +128,17 @@ AC_TYPE_INT64_T
 AC_TYPE_SSIZE_T
 
 case $host in 
-  (*mingw*) skip_check_lib="yes" ;;
-  (*)       skip_check_lib="no"
+  (*mingw*)
+    skip_check_lib="yes"
+    mingw=true
+    ;;
+  (*)
+    skip_check_lib="no"
+    mingw=false
+    ;;
 esac
+
+AM_CONDITIONAL(MINGW, test x$mingw = xtrue)
 
 # Search for *-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config)

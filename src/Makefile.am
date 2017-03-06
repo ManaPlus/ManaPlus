@@ -1,5 +1,8 @@
 AUTOMAKE_OPTIONS = subdir-objects
 
+.rc.o:
+	      ${WINDRES} -o $@ $<
+
 # this need for enable asan in tests
 #AM_TESTS_ENVIRONMENT = \
 #	     ASAN_OPTIONS=detect_leaks=1
@@ -96,6 +99,11 @@ dyecmd_SOURCES = debug/debug_new.cpp \
 else
 manaplus_SOURCES =
 dyecmd_SOURCES =
+endif
+
+if MINGW
+manaplus_SOURCES += manaplus.rc
+dyecmd_SOURCES += manaplus.rc
 endif
 
 if ENABLE_CILKPLUS
@@ -1955,6 +1963,10 @@ manaplustests_SOURCES = ${SRC} \
 	      enums/enums_unittest.cc \
 	      utils/dumplibs_unittest.cc \
 	      utils/checkutils_unittest.cc
+
+if MINGW
+manaplustests_SOURCES += manaplus.rc
+endif
 
 if USE_PHYSFS
 manaplustests_SOURCES += \
