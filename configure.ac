@@ -127,6 +127,11 @@ AC_TYPE_UINT32_T
 AC_TYPE_INT64_T
 AC_TYPE_SSIZE_T
 
+case $host in 
+  (*mingw*) skip_check_lib="yes" ;;
+  (*)       skip_check_lib="no"
+esac
+
 # Search for *-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
 AC_PATH_PROG(CURL_CONFIG, curl-config)
@@ -161,22 +166,22 @@ if test "x$with_sdl2" == "xyes"; then
     LIBS="$LIBS `$PKG_CONFIG --libs SDL2_ttf`"
     CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags SDL2_ttf`"
 
-    AC_CHECK_LIB([SDL2], [SDL_Init], ,
-    AC_MSG_ERROR([ *** Unable to find SDL2 library (http://www.libsdl.org/)]))
+    if test "$skip_check_lib" == "no"; then
+        AC_CHECK_LIB([SDL2], [SDL_Init], ,
+        AC_MSG_ERROR([ *** Unable to find SDL2 library (http://www.libsdl.org/)]))
 
-    AC_CHECK_LIB(SDL2_image, IMG_LoadPNG_RW, ,
-    AC_MSG_ERROR([ *** Unable to find SDL2_image library with PNG support
-    (http://www.libsdl.org/projects/SDL_image/)]))
+        AC_CHECK_LIB(SDL2_image, IMG_LoadPNG_RW, ,
+        AC_MSG_ERROR([ *** Unable to find SDL2_image library with PNG support (http://www.libsdl.org/projects/SDL_image/)]))
 
-    AC_CHECK_LIB(SDL2_ttf, TTF_Quit, ,
-    AC_MSG_ERROR([ *** Unable to find SDL2_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
+        AC_CHECK_LIB(SDL2_ttf, TTF_Quit, ,
+        AC_MSG_ERROR([ *** Unable to find SDL2_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
 
-    AC_CHECK_LIB([SDL2_mixer], [Mix_OpenAudio], ,
-    AC_MSG_ERROR([ *** Unable to find SDL2_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
+        AC_CHECK_LIB([SDL2_mixer], [Mix_OpenAudio], ,
+        AC_MSG_ERROR([ *** Unable to find SDL2_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
 
-    AC_CHECK_LIB(SDL2_net, SDLNet_Init, ,
-    AC_MSG_ERROR([ *** Unable to find SDL2_net library]))
-
+        AC_CHECK_LIB(SDL2_net, SDLNet_Init, ,
+        AC_MSG_ERROR([ *** Unable to find SDL2_net library]))
+    fi
     with_sdl2=yes
 else
     AC_PATH_PROG(SDL_CONFIG, sdl-config)
@@ -196,25 +201,26 @@ else
     CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags SDL_ttf`"
 
     if test "x$naclbuild_enabled" == "xfalse"; then
-        AC_CHECK_LIB([SDL], [SDL_Init], ,
-        AC_MSG_ERROR([ *** Unable to find SDL library (http://www.libsdl.org/)]))
+        if test "$skip_check_lib" == "no"; then
+            AC_CHECK_LIB([SDL], [SDL_Init], ,
+            AC_MSG_ERROR([ *** Unable to find SDL library (http://www.libsdl.org/)]))
 
-        AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, ,
-        AC_MSG_ERROR([ *** Unable to find SDL_image library with PNG support
-        (http://www.libsdl.org/projects/SDL_image/)]))
+            AC_CHECK_LIB(SDL_image, IMG_LoadPNG_RW, ,
+            AC_MSG_ERROR([ *** Unable to find SDL_image library with PNG support (http://www.libsdl.org/projects/SDL_image/)]))
 
-        AC_CHECK_LIB(SDL_ttf, TTF_Quit, ,
-        AC_MSG_ERROR([ *** Unable to find SDL_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
+            AC_CHECK_LIB(SDL_ttf, TTF_Quit, ,
+            AC_MSG_ERROR([ *** Unable to find SDL_ttf library (http://www.libsdl.org/projects/SDL_ttf/)]))
 
-        AC_CHECK_LIB([SDL_mixer], [Mix_OpenAudio], ,
-        AC_MSG_ERROR([ *** Unable to find SDL_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
+            AC_CHECK_LIB([SDL_mixer], [Mix_OpenAudio], ,
+            AC_MSG_ERROR([ *** Unable to find SDL_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
 
-        AC_CHECK_LIB(SDL_gfx, rotozoomSurfaceXY, ,
-        AC_MSG_ERROR([ *** Unable to find SDL_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
+            AC_CHECK_LIB(SDL_gfx, rotozoomSurfaceXY, ,
+            AC_MSG_ERROR([ *** Unable to find SDL_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
+
+            AC_CHECK_LIB(SDL_net, SDLNet_Init, ,
+            AC_MSG_ERROR([ *** Unable to find SDL_net library]))
+        fi
         AC_CHECK_HEADERS(SDL_rotozoom.h, ,)
-
-        AC_CHECK_LIB(SDL_net, SDLNet_Init, ,
-        AC_MSG_ERROR([ *** Unable to find SDL_net library]))
     fi
 
     with_sdl2=no
@@ -227,8 +233,10 @@ AC_ARG_WITH(internalsdlgfx,[  --without-internalsdlgfx        don't use internal
 if test "x$with_internalsdlgfx" == "xno"; then
     with_internalsdlgfx=no
 
-    AC_CHECK_LIB(SDL2_gfx, rotozoomSurfaceXY, ,
-    AC_MSG_ERROR([ *** Unable to find SDL2_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
+    if test "$skip_check_lib" == "no"; then
+        AC_CHECK_LIB(SDL2_gfx, rotozoomSurfaceXY, ,
+        AC_MSG_ERROR([ *** Unable to find SDL2_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
+    fi
     AC_CHECK_HEADERS(SDL2_rotozoom.h, ,)
 else
     with_internalsdlgfx=yes
@@ -250,22 +258,27 @@ if test "x$with_pthread" == "xno"; then
     without_pthread=yes
 else
     if test "x$androidbuild_enabled" == "xfalse"; then
-        AC_CHECK_LIB([pthread], [pthread_create], ,
-        AC_MSG_ERROR([ *** Unable to find pthread library]))
+        if test "$skip_check_lib" == "no"; then
+            AC_CHECK_LIB([pthread], [pthread_create], ,
+            AC_MSG_ERROR([ *** Unable to find pthread library]))
+        fi
     fi
     withoud_pthread=no
 fi
 
-
-AC_CHECK_LIB([z], [inflate], ,
-AC_MSG_ERROR([ *** Unable to find zlib (http://www.gzip.org/zlib/)]))
+if test "$skip_check_lib" == "no"; then
+    AC_CHECK_LIB([z], [inflate], ,
+    AC_MSG_ERROR([ *** Unable to find zlib (http://www.gzip.org/zlib/)]))
+fi
 
 # Option to enable physfs.
 AC_ARG_WITH(physfs,[  --with-physfs        use physfs (experimental) ] )
 if test "x$with_physfs" == "xyes"; then
     with_physfs=yes
-    AC_CHECK_LIB([physfs], [PHYSFS_init], ,
-    AC_MSG_ERROR([ *** Unable to find PhysFS library (http://icculus.org/physfs/)]))
+    if test "$skip_check_lib" == "no"; then
+        AC_CHECK_LIB([physfs], [PHYSFS_init], ,
+        AC_MSG_ERROR([ *** Unable to find PhysFS library (http://icculus.org/physfs/)]))
+    fi
     AC_CHECK_HEADERS([physfs.h], ,
     AC_MSG_ERROR([ *** PhysFS library found but cannot find headers (http://icculus.org/physfs/)]))
 else
@@ -277,8 +290,10 @@ if test -n "$CURL_CONFIG"; then
     LIBS="$LIBS `$CURL_CONFIG --libs`"
     CPPFLAGS="$CPPFLAGS `$CURL_CONFIG --cflags`"
 fi
-AC_CHECK_LIB([curl], [curl_global_init], ,
-AC_MSG_ERROR([ *** Unable to find CURL library (http://curl.haxx.se/)]))
+if test "$skip_check_lib" == "no"; then
+    AC_CHECK_LIB([curl], [curl_global_init], ,
+    AC_MSG_ERROR([ *** Unable to find CURL library (http://curl.haxx.se/)]))
+fi
 AC_CHECK_HEADERS([curl/curl.h], ,
 AC_MSG_ERROR([ *** CURL library found but cannot find headers (http://curl.haxx.se/)]))
 
@@ -314,22 +329,27 @@ if test "$xmllib" == "libxml"; then
         LIBS="$LIBS `$PKG_CONFIG --libs libxml-2.0`"
         CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags libxml-2.0`"
     fi
-    AC_CHECK_LIB([xml2], [xmlInitParser], ,
-    AC_MSG_ERROR([ *** Unable to find libxml2 library (http://xmlsoft.org/)]))
+    if test "$skip_check_lib" == "no"; then
+        AC_CHECK_LIB([xml2], [xmlInitParser], ,
+        AC_MSG_ERROR([ *** Unable to find libxml2 library (http://xmlsoft.org/)]))
+    fi
     AC_CHECK_HEADERS([libxml/xmlreader.h], ,
     AC_MSG_ERROR([ *** libxml2 library found but cannot find headers (http://xmlsoft.org/)]))
 fi
 
 if test "$xmllib" == "pugixml"; then
-    AC_CHECK_LIB([pugixml], [main], ,
-    AC_MSG_ERROR([ *** Unable to find pugixml library (http://pugixml.org/)]))
+    if test "$skip_check_lib" == "no"; then
+        AC_CHECK_LIB([pugixml], [main], ,
+        AC_MSG_ERROR([ *** Unable to find pugixml library (http://pugixml.org/)]))
+    fi
     AC_CHECK_HEADERS([pugixml.hpp], ,
     AC_MSG_ERROR([ *** pugixml library found but cannot find headers (http://pugixml.org/)]))
 fi
 
-AC_CHECK_LIB(png, png_write_info, ,
-AC_MSG_ERROR([ *** Unable to find png library]))
-
+if test "$skip_check_lib" == "no"; then
+    AC_CHECK_LIB(png, png_write_info, ,
+    AC_MSG_ERROR([ *** Unable to find png library]))
+fi
 
 use_x11=no
 # === Check for X11 (check borrowed from Wormux) ========================
@@ -390,8 +410,10 @@ else
     if test "x$applebuild_enabled" == "xfalse"; then
         if test "x$androidbuild_enabled" == "xfalse"; then
             if test "x$naclbuild_enabled" == "xfalse"; then
-                AC_CHECK_LIB([GL], [glBegin], ,
-                AC_MSG_ERROR([ *** Unable to find OpenGL library]))
+                if test "$skip_check_lib" == "no"; then
+                    AC_CHECK_LIB([GL], [glBegin], ,
+                    AC_MSG_ERROR([ *** Unable to find OpenGL library]))
+                fi
             fi
         else
             LDFLAGS="$LDFLAGS -lGLESv1_CM -lEGL"
@@ -399,6 +421,10 @@ else
     else
         LDFLAGS="$LDFLAGS -framework OpenGL"
     fi
+case $host in 
+  (*mingw*) LIBS="$LIBS `$PKG_CONFIG --libs gl`"
+esac
+
 fi
 AM_CONDITIONAL(USE_OPENGL, test x$with_opengl = xyes)
 
