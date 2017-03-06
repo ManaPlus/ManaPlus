@@ -24,11 +24,17 @@
 
 #include "localconsts.h"
 
+#include "fs/virtfs/fileapi.h"
+
+#ifdef USE_FILE_FOPEN
+#include <stdio.h>
+#endif  // USE_FILE_FOPEN
+
 struct VirtFilePrivate final
 {
     VirtFilePrivate();
 
-    explicit VirtFilePrivate(const int fd);
+    explicit VirtFilePrivate(FILEHTYPE fd);
 
     VirtFilePrivate(uint8_t *restrict const buf,
                     const size_t sz);
@@ -45,7 +51,7 @@ struct VirtFilePrivate final
     size_t mSize;
 
     // dirfs fields
-    int mFd;
+    FILEHTYPE mFd;
 };
 
 #endif  // USE_PHYSFS

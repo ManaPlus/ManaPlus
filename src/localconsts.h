@@ -349,6 +349,8 @@ PRAGMA45(GCC diagnostic pop)
 // debug animations
 // #define DEBUG_ANIMATIONS 1
 
+#define USE_FILE_FOPEN 1
+
 #ifdef DYECMD
 #undef USE_FUZZER
 #endif  // DYECMD

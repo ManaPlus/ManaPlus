@@ -42,6 +42,10 @@
 #include <iostream>
 #include <unistd.h>
 
+#ifdef USE_FILE_FOPEN
+#include <stdio.h>
+#endif  // USE_FILE_FOPEN
+
 #include <sys/types.h>
 #include <sys/stat.h>
 
@@ -62,15 +66,14 @@ namespace VirtFsDir
 {
     VirtFile *openInternal(VirtFsEntry *restrict const entry,
                            const std::string &filename,
-                           const int mode)
+                           const FILEMTYPE mode)
     {
         const std::string path = entry->root + filename;
         if (Files::existsLocal(path) == false)
             return nullptr;
-        const int fd = open(path.c_str(),
-            mode,
-            S_IRUSR | S_IWUSR);
-        if (fd == -1)
+        FILEHTYPE fd = FILEOPEN(path.c_str(),
+            mode);
+        if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFs::open file open error: %s",
                 filename.c_str());
@@ -85,19 +88,19 @@ namespace VirtFsDir
     VirtFile *openRead(VirtFsEntry *restrict const entry,
                        const std::string &filename)
     {
-        return openInternal(entry, filename, O_RDONLY);
+        return openInternal(entry, filename, FILEOPEN_FLAG_READ);
     }
 
     VirtFile *openWrite(VirtFsEntry *restrict const entry,
                         const std::string &filename)
     {
-        return openInternal(entry, filename, O_WRONLY | O_CREAT | O_TRUNC);
+        return openInternal(entry, filename, FILEOPEN_FLAG_WRITE);
     }
 
     VirtFile *openAppend(VirtFsEntry *restrict const entry,
                          const std::string &filename)
     {
-        return openInternal(entry, filename, O_WRONLY | O_CREAT | O_APPEND);
+        return openInternal(entry, filename, FILEOPEN_FLAG_APPEND);
     }
 
     void deinit()
@@ -314,17 +317,21 @@ namespace VirtFsDir
     {
         if (file == nullptr)
             return 0;
-        const int fd = file->mPrivate->mFd;
-        if (fd == -1)
+        FILEHTYPE fd = file->mPrivate->mFd;
+        if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::read file not opened.");
             return 0;
         }
+#ifdef USE_FILE_FOPEN
+        return fread(buffer, objSize, objCount, fd);
+#else  // USE_FILE_FOPEN
         int max = objSize * objCount;
         int cnt = ::read(fd, buffer, max);
         if (cnt <= 0)
             return cnt;
         return cnt / objSize;
+#endif  // USE_FILE_FOPEN
     }
 
     int64_t write(VirtFile *restrict const file,
@@ -334,29 +341,40 @@ namespace VirtFsDir
     {
         if (file == nullptr)
             return 0;
-        const int fd = file->mPrivate->mFd;
-        if (fd == -1)
+        FILEHTYPE fd = file->mPrivate->mFd;
+        if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::write file not opened.");
             return 0;
         }
+#ifdef USE_FILE_FOPEN
+        return fwrite(buffer, objSize, objCount, fd);
+#else  // USE_FILE_FOPEN
         int max = objSize * objCount;
         int cnt = ::write(fd, buffer, max);
         if (cnt <= 0)
             return cnt;
         return cnt / objSize;
+#endif  // USE_FILE_FOPEN
     }
 
     int64_t fileLength(VirtFile *restrict const file)
     {
         if (file == nullptr)
             return -1;
-        const int fd = file->mPrivate->mFd;
-        if (fd == -1)
+        FILEHTYPE fd = file->mPrivate->mFd;
+        if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::fileLength file not opened.");
             return 0;
         }
+#ifdef USE_FILE_FOPEN
+        const long pos = ftell(fd);
+        fseek(fd, 0, SEEK_END);
+        const long sz = ftell(fd);
+        fseek(fd, pos, SEEK_SET);
+        return sz;
+#else  // USE_FILE_FOPEN
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
         {
@@ -364,6 +382,7 @@ namespace VirtFsDir
             return -1;
         }
         return static_cast<int64_t>(statbuf.st_size);
+#endif  // USE_FILE_FOPEN
     }
 
     int64_t tell(VirtFile *restrict const file)
@@ -371,13 +390,17 @@ namespace VirtFsDir
         if (file == nullptr)
             return -1;
 
-        const int fd = file->mPrivate->mFd;
-        if (fd == -1)
+        FILEHTYPE fd = file->mPrivate->mFd;
+        if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::tell file not opened.");
             return 0;
         }
+#ifdef USE_FILE_FOPEN
+        const int64_t pos = ftell(fd);
+#else  // USE_FILE_FOPEN
         const int64_t pos = lseek(fd, 0, SEEK_CUR);
+#endif  // USE_FILE_FOPEN
         return pos;
     }
 
@@ -387,13 +410,13 @@ namespace VirtFsDir
         if (file == nullptr)
             return 0;
 
-        const int fd = file->mPrivate->mFd;
-        if (fd == -1)
+        FILEHTYPE fd = file->mPrivate->mFd;
+        if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::seek file not opened.");
             return 0;
         }
-        const int64_t res = lseek(fd, pos, SEEK_SET);
+        const int64_t res = FILESEEK(fd, pos, SEEK_SET);
         if (res == -1)
             return 0;
         return 1;
@@ -404,12 +427,19 @@ namespace VirtFsDir
         if (file == nullptr)
             return -1;
 
-        const int fd = file->mPrivate->mFd;
-        if (fd == -1)
+        FILEHTYPE fd = file->mPrivate->mFd;
+        if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::eof file not opened.");
             return 0;
         }
+#ifdef USE_FILE_FOPEN
+        const int flag = feof(fd);
+        if (flag != 0)
+            return 1;
+        const int64_t pos = ftell(fd);
+        const int64_t len = fileLength(file);
+#else  // USE_FILE_FOPEN
         const int64_t pos = lseek(fd, 0, SEEK_CUR);
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
@@ -418,6 +448,7 @@ namespace VirtFsDir
             return -1;
         }
         const int64_t len = static_cast<int64_t>(statbuf.st_size);
+#endif  // USE_FILE_FOPEN
         return pos < 0 || len < 0 || pos >= len;
     }
 }  // namespace VirtFs

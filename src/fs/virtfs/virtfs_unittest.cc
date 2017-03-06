@@ -1267,17 +1267,17 @@ TEST_CASE("VirtFs1 read1")
     REQUIRE(strcmp(static_cast<char*>(buffer),
         "test line 1\ntest line 2") == 0);
     REQUIRE(VirtFs::tell(file) == fileSize);
-    REQUIRE(VirtFs::eof(file) == true);
+    REQUIRE(VirtFs::eof(file) != 0);
 
     free(buffer);
     buffer = calloc(fileSize + 1, 1);
     REQUIRE(VirtFs::seek(file, 12) != 0);
-    REQUIRE(VirtFs::eof(file) == false);
+    REQUIRE(VirtFs::eof(file) == 0);
     REQUIRE(VirtFs::tell(file) == 12);
     REQUIRE(VirtFs::read(file, buffer, 1, 11) == 11);
     REQUIRE(strcmp(static_cast<char*>(buffer),
         "test line 2") == 0);
-    REQUIRE(VirtFs::eof(file) == true);
+    REQUIRE(VirtFs::eof(file) != 0);
 
     VirtFs::close(file);
     free(buffer);
@@ -1313,7 +1313,7 @@ TEST_CASE("VirtFs1 read2")
         REQUIRE(strcmp(static_cast<char*>(buffer),
             "test line 1\ntest line 2") == 0);
         REQUIRE(VirtFs::tell(file) == fileSize);
-        REQUIRE(VirtFs::eof(file) == true);
+        REQUIRE(VirtFs::eof(file) != 0);
     }
 
     SECTION("test 2")
@@ -1325,12 +1325,12 @@ TEST_CASE("VirtFs1 read2")
 
         buffer = calloc(fileSize + 1, 1);
         REQUIRE(VirtFs::seek(file, 12) != 0);
-        REQUIRE(VirtFs::eof(file) == false);
+        REQUIRE(VirtFs::eof(file) == 0);
         REQUIRE(VirtFs::tell(file) == 12);
         REQUIRE(VirtFs::read(file, buffer, 1, 11) == 11);
         REQUIRE(strcmp(static_cast<char*>(buffer),
             "test line 2") == 0);
-        REQUIRE(VirtFs::eof(file) == true);
+        REQUIRE(VirtFs::eof(file) != 0);
     }
 
     SECTION("test 3")
@@ -1343,7 +1343,7 @@ TEST_CASE("VirtFs1 read2")
         for (int f = 0; f < fileSize; f ++)
         {
             REQUIRE(VirtFs::seek(file, f) != 0);
-            REQUIRE(VirtFs::eof(file) == false);
+            REQUIRE(VirtFs::eof(file) == 0);
             REQUIRE(VirtFs::tell(file) == f);
         }
     }
@@ -1359,12 +1359,12 @@ TEST_CASE("VirtFs1 read2")
         {
             REQUIRE(VirtFs::read(file, buffer, 1, 1) == 1);
             REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
-            REQUIRE(VirtFs::eof(file) == false);
+            REQUIRE(VirtFs::eof(file) == 0);
             REQUIRE(VirtFs::tell(file) == f + 1);
         }
         REQUIRE(VirtFs::read(file, buffer, 1, 1) == 1);
         REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
-        REQUIRE(VirtFs::eof(file) == true);
+        REQUIRE(VirtFs::eof(file) != 0);
         REQUIRE(VirtFs::tell(file) == fileSize);
     }
 
@@ -1380,13 +1380,13 @@ TEST_CASE("VirtFs1 read2")
             REQUIRE(VirtFs::read(file, buffer, 2, 1) == 1);
             REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
             REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
-            REQUIRE(VirtFs::eof(file) == false);
+            REQUIRE(VirtFs::eof(file) == 0);
             REQUIRE(VirtFs::tell(file) == f + 2);
         }
-        REQUIRE(VirtFs::eof(file) == false);
+        REQUIRE(VirtFs::eof(file) == 0);
         REQUIRE(VirtFs::tell(file) == 22);
         REQUIRE(VirtFs::read(file, buffer, 2, 1) == 0);
-        REQUIRE(VirtFs::eof(file) == false);
+        REQUIRE(VirtFs::eof(file) == 0);
     }
 
     SECTION("test 6")
@@ -1401,14 +1401,14 @@ TEST_CASE("VirtFs1 read2")
             REQUIRE(VirtFs::read(file, buffer, 1, 2) == 2);
             REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
             REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
-            REQUIRE(VirtFs::eof(file) == false);
+            REQUIRE(VirtFs::eof(file) == 0);
             REQUIRE(VirtFs::tell(file) == f + 2);
         }
-        REQUIRE(VirtFs::eof(file) == false);
+        REQUIRE(VirtFs::eof(file) == 0);
         REQUIRE(VirtFs::tell(file) == 22);
         REQUIRE(VirtFs::read(file, buffer, 1, 2) == 1);
         REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
-        REQUIRE(VirtFs::eof(file) == true);
+        REQUIRE(VirtFs::eof(file) != 0);
     }
 
     VirtFs::close(file);

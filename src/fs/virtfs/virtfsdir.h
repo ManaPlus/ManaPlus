@@ -25,6 +25,8 @@
 #include "enums/simpletypes/append.h"
 #include "enums/simpletypes/skiperror.h"
 
+#include "fs/virtfs/fileapi.h"
+
 #include "utils/stringvector.h"
 
 #include "localconsts.h"
@@ -38,7 +40,7 @@ namespace VirtFsDir
 {
     VirtFile *openInternal(VirtFsEntry *restrict const entry,
                            const std::string &filename,
-                           const int mode);
+                           const FILEMTYPE mode);
     VirtFile *openRead(VirtFsEntry *restrict const entry,
                        const std::string &filename);
     VirtFile *openWrite(VirtFsEntry *restrict const entry,

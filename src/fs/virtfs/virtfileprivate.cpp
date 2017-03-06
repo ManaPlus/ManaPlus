@@ -30,11 +30,11 @@ VirtFilePrivate::VirtFilePrivate() :
     mBuf(nullptr),
     mPos(0U),
     mSize(0U),
-    mFd(-1)
+    mFd(FILEHDEFAULT)
 {
 }
 
-VirtFilePrivate::VirtFilePrivate(const int fd) :
+VirtFilePrivate::VirtFilePrivate(FILEHTYPE fd) :
     mBuf(nullptr),
     mPos(0U),
     mSize(0U),
@@ -47,14 +47,14 @@ VirtFilePrivate::VirtFilePrivate(uint8_t *restrict const buf,
     mBuf(buf),
     mPos(0U),
     mSize(sz),
-    mFd(-1)
+    mFd(FILEHDEFAULT)
 {
 }
 
 VirtFilePrivate::~VirtFilePrivate()
 {
-    if (mFd != -1)
-        close(mFd);
+    if (mFd != FILEHDEFAULT)
+        FILECLOSE(mFd);
     if (mBuf)
         delete [] mBuf;
 }
