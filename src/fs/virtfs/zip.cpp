@@ -61,7 +61,7 @@ namespace Zip
         std::vector<ZipLocalHeader*> &restrict headers = entry->mHeaders;
         std::vector<std::string> &restrict dirs = entry->mDirs;
         FILE *restrict const arcFile = fopen(archiveName.c_str(),
-            "r");
+            "rb");
         if (arcFile == nullptr)
         {
             reportAlways("Can't open zip file %s",
@@ -216,7 +216,7 @@ namespace Zip
         }
         FILE *restrict const arcFile = fopen(
             header->zipEntry->root.c_str(),
-            "r");
+            "rb");
         if (arcFile == nullptr)
         {
             reportAlways("Can't open zip file %s",
