@@ -838,6 +838,7 @@ BASE_SRC +=  \
 	      fs/virtfs/virtfileprivate.cpp \
 	      fs/virtfs/virtfileprivate.h \
 	      fs/virtfs/virtfs.cpp \
+	      fs/virtfs/virtfs.h \
 	      fs/virtfs/virtfsdir.cpp \
 	      fs/virtfs/virtfsdir.h \
 	      fs/virtfs/virtfsentry.cpp \
