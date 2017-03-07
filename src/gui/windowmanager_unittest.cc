@@ -20,7 +20,9 @@
 
 #include "catch.hpp"
 #include "client.h"
+#include "configmanager.h"
 #include "configuration.h"
+#include "dirs.h"
 #include "graphicsmanager.h"
 #include "settings.h"
 #include "textcommand.h"
@@ -122,6 +124,8 @@
 
 #include "utils/translation/translationmanager.h"
 
+#include <stdio.h>
+
 #include "debug.h"
 
 extern QuitDialog *quitDialog;
@@ -160,6 +164,16 @@ TEST_CASE("Windows tests", "windowmanager")
     config.setValue("fontSize", 16);
     theme = new Theme;
     Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    const std::string cfgName = settings.configDir +
+        "/nonexistserver/config.xml";
+    ::remove(cfgName.c_str());
+
+    ConfigManager::initConfiguration();
+    ConfigManager::initServerConfig("nonexistserver");
 
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
         BeingTypeId_zero);

@@ -69,6 +69,12 @@ void ConfigManager::initServerConfig(const std::string &serverName)
     {
         configFile = fopen(configPath.c_str(), "wt");
         logger->log("Creating new server config: " + configPath);
+        if (configFile)
+        {
+            fputs("<?xml version=\"1.0\"?>\n", configFile);
+            fputs("<configuration>\n", configFile);
+            fputs("</configuration>\n", configFile);
+        }
     }
     if (configFile)
     {
