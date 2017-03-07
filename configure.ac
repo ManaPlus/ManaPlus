@@ -32,7 +32,7 @@ AC_DEFUN([AC_CHECK_LD_FLAG],
         OLD_LDFLAGS="$LDFLAGS"
         CXXFLAGS=""
         LDFLAGS="$LDFLAGS $1"
-        test_flag=no
+        $2=no
         AC_LINK_IFELSE(
             [AC_LANG_SOURCE([
                 int main(int argc, char **argv)
@@ -42,16 +42,15 @@ AC_DEFUN([AC_CHECK_LD_FLAG],
             ])],
             [
                 AC_MSG_RESULT([yes])
-                test_flag=yes
+                $2=yes
             ],
             [
                 AC_MSG_RESULT([no])
-                test_flag=no
+                $2=no
             ]
             CXXFLAGS="$OLD_CXXFLAGS"
             LDFLAGS="$OLD_LDFLAGS"
         )
-        AM_CONDITIONAL($2, test x$test_flag = xyes)
     ]
 )
 
@@ -508,7 +507,7 @@ if test "x$with_librt" == "xno"; then
 else
     if test "x$applebuild_enabled" == "xfalse"; then
         if test "x$androidbuild_enabled" == "xfalse"; then
-            AC_CHECK_LD_FLAG(-lrt, USE_LIBRT)
+            AC_CHECK_LD_FLAG(-lrt, use_librt)
             if test "x$test_flag" == "xyes"; then
                 AC_CHECK_LIB(rt, shm_open, ,
                 AC_MSG_ERROR([ *** Unable to find librt library]))
@@ -517,6 +516,8 @@ else
     fi
     without_librt=no
 fi
+
+AM_CONDITIONAL(USE_LIBRT, test x$use_librt = xyes)
 
 # Enable tmwA
 AC_ARG_ENABLE(tmwa,
@@ -635,8 +636,8 @@ if test "x$naclbuild_enabled" == "xtrue"; then
     AC_CHECK_SDL()
 fi
 
-
-AC_CHECK_LD_FLAG(-rdynamic, HAVE_RDYNAMIC)
+AC_CHECK_LD_FLAG(-rdynamic, have_rdynamic)
+AM_CONDITIONAL(HAVE_RDYNAMIC, test x$have_rdynamic = xyes)
 
 AC_CONFIG_FILES([
 manaplus.spec
