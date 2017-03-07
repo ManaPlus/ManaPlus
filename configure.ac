@@ -508,7 +508,7 @@ else
     if test "x$applebuild_enabled" == "xfalse"; then
         if test "x$androidbuild_enabled" == "xfalse"; then
             AC_CHECK_LD_FLAG(-lrt, use_librt)
-            if test "x$test_flag" == "xyes"; then
+            if test "x$use_librt" == "xyes"; then
                 AC_CHECK_LIB(rt, shm_open, ,
                 AC_MSG_ERROR([ *** Unable to find librt library]))
             fi
