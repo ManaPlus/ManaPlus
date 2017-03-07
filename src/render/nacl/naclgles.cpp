@@ -47,7 +47,9 @@ void NaclGles::initGles()
         PSGetInterface(PPB_GRAPHICS_3D_INTERFACE_1_0));
     gles2Context = glGetCurrentContextPPAPI();
 
-    logger->log("InitGles: %p, %d", gles2Interface, gles2Context);
+    logger->log("InitGles: %p, %d",
+        static_cast<void*>(gles2Interface),
+        gles2Context);
 }
 
 #endif  // defined(__native_client__) && defined(USE_OPENGL)
