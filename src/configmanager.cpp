@@ -142,8 +142,14 @@ void ConfigManager::initConfiguration()
     FILE *configFile = fopen(configPath.c_str(), "r");
     if (!configFile)
     {
-        configFile = fopen(configPath.c_str(), "wt");
+        configFile = fopen(configPath.c_str(), "wb");
         logger->log1("Creating new config");
+        if (configFile)
+        {
+            fputs("<?xml version=\"1.0\"?>\n", configFile);
+            fputs("<configuration>\n", configFile);
+            fputs("</configuration>\n", configFile);
+        }
     }
     if (!configFile)
     {
