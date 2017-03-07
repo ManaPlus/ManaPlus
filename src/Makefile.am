@@ -1938,6 +1938,7 @@ TESTS = manaplustests
 check_PROGRAMS = manaplustests
 manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
+manaplustests_LDFLAGS = 
 if USE_PHYSFS
 manaplustests_CXXFLAGS += -DUSE_PHYSFS
 endif
@@ -1950,7 +1951,7 @@ endif
 if ENABLE_ASSERTS
 manaplustests_CXXFLAGS += -DENABLE_ASSERTS
 if HAVE_RDYNAMIC
-manaplustests_LDFLAGS = -rdynamic
+manaplustests_LDFLAGS += -rdynamic
 endif
 endif
 if ENABLE_GLIBCDEBUG
@@ -1971,6 +1972,7 @@ manaplustests_SOURCES = ${SRC} \
 
 if MINGW
 manaplustests_SOURCES += manaplus.rc
+manaplustests_LDFLAGS += -mconsole
 endif
 
 if USE_PHYSFS
