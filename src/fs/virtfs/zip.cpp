@@ -36,6 +36,8 @@
 
 #include "debug.h"
 
+//#define DEBUG_ZIP
+
 extern const char *dirSeparator;
 
 #define readVal(val, sz, msg) \
@@ -136,6 +138,7 @@ namespace Zip
                 if (findLast(header->fileName, dirSeparator) == false)
                 {
                     headers.push_back(header);
+#ifdef DEBUG_ZIP
                     logger->log(" file name: %s",
                         header->fileName.c_str());
                     logger->log(" compression method: %u",
@@ -144,11 +147,14 @@ namespace Zip
                         header->compressSize);
                     logger->log(" uncompressed size: %u",
                         header->uncompressSize);
+#endif  // DEBUG_ZIP
                 }
                 else
                 {
+#ifdef DEBUG_ZIP
                     logger->log(" dir name: %s",
                         header->fileName.c_str());
+#endif  // DEBUG_ZIP
                     dirs.push_back(header->fileName);
                     delete header;
                 }
