@@ -48,7 +48,6 @@ TEST_CASE("PoParser tests", "PoParser")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     VirtFs::addDirToSearchPathSilent("data", Append_false);

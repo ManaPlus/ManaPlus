@@ -38,6 +38,8 @@
 
 #include "debug.h"
 
+extern const char *dirSeparator;
+
 #ifdef ANDROID
 void Files::extractLocale()
 {
@@ -211,7 +213,21 @@ int Files::copyFile(const std::string &restrict srcName,
 bool Files::existsLocal(const std::string &path)
 {
     struct stat statbuf;
+#ifdef WIN32
+    // in windows path\file.ext\ by default detected as exists
+    // if file.ext is not directory, need return false
+    const bool res = (stat(path.c_str(), &statbuf) == 0);
+    if (res == false)
+        return false;
+    if ((findLast(path, "/") == true || findLast(path, "\\") == true) &&
+        S_ISDIR(statbuf.st_mode) == 0)
+    {
+        return false;
+    }
+    return true;
+#else  // WIN32
     return stat(path.c_str(), &statbuf) == 0;
+#endif  // WIN32
 }
 
 bool Files::loadTextFileLocal(const std::string &fileName,

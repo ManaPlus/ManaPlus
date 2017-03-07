@@ -599,6 +599,7 @@ TEST_CASE("VirtFs openRead3")
 TEST_CASE("VirtFs getRealDir1")
 {
     logger = new Logger();
+    const std::string sep = dirSeparator;
     REQUIRE(VirtFs::getRealDir(".") == "");
     REQUIRE(VirtFs::getRealDir("..") == "");
     const bool dir1 = VirtFs::addDirToSearchPathSilent("data", Append_false);
@@ -626,15 +627,15 @@ TEST_CASE("VirtFs getRealDir1")
         REQUIRE(VirtFs::getRealDir("test/test.txt") ==
             "data");
         REQUIRE(VirtFs::getRealDir("test.txt") ==
-            "data/test");
+            "data" + sep + "test");
     }
     else
     {
-        REQUIRE(VirtFs::getRealDir("test") == "../data");
+        REQUIRE(VirtFs::getRealDir("test") == ".." + sep + "data");
         REQUIRE(VirtFs::getRealDir("test/test.txt") ==
-            "../data");
+            ".." + sep + "data");
         REQUIRE(VirtFs::getRealDir("test.txt") ==
-            "../data/test");
+            ".." + sep + "data" + sep + "test");
     }
     REQUIRE(VirtFs::getRealDir("zzz") == "");
 
@@ -642,15 +643,17 @@ TEST_CASE("VirtFs getRealDir1")
     {
         VirtFs::addZipToSearchPath("data/test/test.zip", Append_false);
         REQUIRE(VirtFs::getRealDir("dir/brimmedhat.png") ==
-            "data/test/test.zip");
-        REQUIRE(VirtFs::getRealDir("hide.png") == "data/test");
+            "data" + sep + "test" + sep + "test.zip");
+        REQUIRE(VirtFs::getRealDir("hide.png") ==
+            "data" + sep + "test");
     }
     else
     {
         VirtFs::addZipToSearchPath("../data/test/test.zip", Append_false);
         REQUIRE(VirtFs::getRealDir("dir/brimmedhat.png") ==
-            "../data/test/test.zip");
-        REQUIRE(VirtFs::getRealDir("hide.png") == "../data/test");
+            ".." + sep + "data" + sep + "test" + sep + "test.zip");
+        REQUIRE(VirtFs::getRealDir("hide.png") ==
+            ".." + sep + "data" + sep + "test");
     }
 
     VirtFs::removeDirFromSearchPathSilent("data/test");
@@ -661,14 +664,16 @@ TEST_CASE("VirtFs getRealDir1")
         REQUIRE(VirtFs::getRealDir("test") == "data");
         REQUIRE(VirtFs::getRealDir("test/test.txt") ==
             "data");
-        REQUIRE(VirtFs::getRealDir("dir/hide.png") == "data/test/test.zip");
+        REQUIRE(VirtFs::getRealDir("dir/hide.png") ==
+            "data" + sep + "test" + sep + "test.zip");
     }
     else
     {
-        REQUIRE(VirtFs::getRealDir("test") == "../data");
+        REQUIRE(VirtFs::getRealDir("test") == ".." + sep + "data");
         REQUIRE(VirtFs::getRealDir("test/test.txt") ==
-            "../data");
-        REQUIRE(VirtFs::getRealDir("dir/hide.png") == "../data/test/test.zip");
+            ".." + sep + "data");
+        REQUIRE(VirtFs::getRealDir("dir/hide.png") ==
+            ".." + sep + "data" + sep + "test" + sep + "test.zip");
     }
     REQUIRE(VirtFs::exists("dir/hide.png"));
     REQUIRE(VirtFs::getRealDir("zzz") == "");
@@ -685,6 +690,7 @@ TEST_CASE("VirtFs getRealDir1")
 TEST_CASE("VirtFs getrealDir2")
 {
     logger = new Logger();
+    const std::string sep = dirSeparator;
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
@@ -697,12 +703,13 @@ TEST_CASE("VirtFs getrealDir2")
     REQUIRE(VirtFs::getRealDir("zzz") == "");
 
     REQUIRE(VirtFs::getRealDir("dir1/file1.txt") ==
-        prefix + "data/test");
-    REQUIRE(VirtFs::getRealDir("hide.png") == prefix + "data/test");
+        prefix + "data" + sep + "test");
+    REQUIRE(VirtFs::getRealDir("hide.png") ==
+        prefix + "data" + sep + "test");
     REQUIRE(VirtFs::getRealDir("dir//hide.png") ==
-        prefix + "data/test/test2.zip");
+        prefix + "data" + sep + "test" + sep + "test2.zip");
     REQUIRE(VirtFs::getRealDir("dir/1//test.txt") ==
-        prefix + "data/test/test2.zip");
+        prefix + "data" + sep + "test" + sep + "test2.zip");
 
     VirtFs::removeZipFromSearchPath(prefix + "data/test/test2.zip");
     VirtFs::removeDirFromSearchPath(prefix + "data/test");

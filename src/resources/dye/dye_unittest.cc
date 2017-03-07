@@ -2355,7 +2355,6 @@ TEST_CASE("Dye real dye")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    dirSeparator = "/";
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();

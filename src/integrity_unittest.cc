@@ -112,7 +112,6 @@ TEST_CASE("integrity tests", "integrity")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    dirSeparator = "/";
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();

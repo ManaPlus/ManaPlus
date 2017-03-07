@@ -50,7 +50,6 @@
 TEST_CASE("chatutils replaceVars")
 {
     client = new Client;
-    dirSeparator = "/";
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();

@@ -34,7 +34,6 @@
 
 TEST_CASE("Files renameFile")
 {
-    dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     VirtFs::addDirToSearchPathSilent("data", Append_false);
@@ -74,7 +73,6 @@ TEST_CASE("Files renameFile")
 
 TEST_CASE("Files existsLocal")
 {
-    dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     VirtFs::addDirToSearchPathSilent("data", Append_false);
@@ -91,7 +89,6 @@ TEST_CASE("Files existsLocal")
 
 TEST_CASE("Files loadTextFileString")
 {
-    dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     VirtFs::addDirToSearchPathSilent("data", Append_false);
@@ -107,7 +104,6 @@ TEST_CASE("Files loadTextFileString")
 
 TEST_CASE("Files loadTextFile")
 {
-    dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     VirtFs::addDirToSearchPathSilent("data", Append_false);
@@ -127,7 +123,6 @@ TEST_CASE("Files loadTextFile")
 
 TEST_CASE("Files saveTextFile")
 {
-    dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     VirtFs::addDirToSearchPathSilent("data", Append_false);
@@ -138,7 +133,13 @@ TEST_CASE("Files saveTextFile")
     Files::saveTextFile(dir, "tempfile.txt", "test line\ntext line2");
     std::string data = VirtFs::loadTextFileString("test/tempfile.txt");
     ::remove((dir + "/tempfile.txt").c_str());
+#ifdef WIN32
+    REQUIRE(data == "test line\r\ntext line2\r\n");
+#else  // WIN32
+
     REQUIRE(data == "test line\ntext line2\n");
+#endif  // WIN32
+
     ResourceManager::deleteInstance();
     VirtFs::removeDirFromSearchPathSilent("data");
     VirtFs::removeDirFromSearchPathSilent("../data");
@@ -148,7 +149,6 @@ TEST_CASE("Files saveTextFile")
 
 TEST_CASE("Files getFilesInDir")
 {
-    dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     VirtFs::addDirToSearchPathSilent("data", Append_false);

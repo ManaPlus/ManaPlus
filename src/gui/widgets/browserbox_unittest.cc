@@ -46,7 +46,6 @@ extern const char *dirSeparator;
 
 TEST_CASE("BrowserBox tests", "browserbox")
 {
-    dirSeparator = "/";
     client = new Client;
     logger = new Logger();
     ResourceManager::init();

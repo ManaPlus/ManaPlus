@@ -36,6 +36,8 @@
 
 #include "debug.h"
 
+extern const char *dirSeparator;
+
 #define readVal(val, sz, msg) \
     cnt = fread(static_cast<void*>(val), 1, sz, arcFile); \
     if (cnt != sz) \
@@ -131,7 +133,7 @@ namespace Zip
                 header->dataOffset = ftell(arcFile) + extraFieldLen;
                 fseek(arcFile, extraFieldLen + header->compressSize, SEEK_CUR);
                 // pointer on 30 + fileNameLen + extraFieldLen + compressSize
-                if (findLast(header->fileName, "/") == false)
+                if (findLast(header->fileName, dirSeparator) == false)
                 {
                     headers.push_back(header);
                     logger->log(" file name: %s",
@@ -145,6 +147,8 @@ namespace Zip
                 }
                 else
                 {
+                    logger->log(" dir name: %s",
+                        header->fileName.c_str());
                     dirs.push_back(header->fileName);
                     delete header;
                 }

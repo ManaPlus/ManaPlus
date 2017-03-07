@@ -67,7 +67,7 @@ void ConfigManager::initServerConfig(const std::string &serverName)
     FILE *configFile = fopen(configPath.c_str(), "r");
     if (!configFile)
     {
-        configFile = fopen(configPath.c_str(), "wt");
+        configFile = fopen(configPath.c_str(), "wb");
         logger->log("Creating new server config: " + configPath);
         if (configFile)
         {

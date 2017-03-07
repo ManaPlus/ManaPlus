@@ -48,7 +48,6 @@ TEST_CASE("xml doc")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    dirSeparator = "/";
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();

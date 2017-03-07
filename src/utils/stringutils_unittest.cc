@@ -1256,84 +1256,87 @@ TEST_CASE("stringuntils escapeString")
 TEST_CASE("stringuntils sanitizePath")
 {
     std::string path;
+    const std::string sep = dirSeparator;
     path = "";
     sanitizePath(path);
     REQUIRE(path == "");
     path = "/";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "/\\";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "\\/";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "//";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "///";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "//\\/";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "///\\";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "\\";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "\\\\";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "\\/\\";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "\\\\/";
     sanitizePath(path);
-    REQUIRE(path == "/");
+    REQUIRE(path == dirSeparator);
     path = "test";
     sanitizePath(path);
     REQUIRE(path == "test");
     path = "./test";
     sanitizePath(path);
-    REQUIRE(path == "./test");
+    REQUIRE(path == "." + sep + "test");
     path = "test line";
     sanitizePath(path);
     REQUIRE(path == "test line");
     path = "dir/test";
     sanitizePath(path);
-    REQUIRE(path == "dir/test");
+    REQUIRE(path == "dir" + sep + "test");
     path = "/dir/test";
     sanitizePath(path);
-    REQUIRE(path == "/dir/test");
+    REQUIRE(path == sep + "dir" + sep + "test");
     path = "dir//test";
     sanitizePath(path);
-    REQUIRE(path == "dir/test");
+    REQUIRE(path == "dir" + sep + "test");
     path = "dir///test";
     sanitizePath(path);
-    REQUIRE(path == "dir/test");
+    REQUIRE(path == "dir" + sep + "test");
     path = "dir///\\test";
     sanitizePath(path);
-    REQUIRE(path == "dir/test");
+    REQUIRE(path == "dir" + sep + "test");
     path = "dir/\\//test";
     sanitizePath(path);
-    REQUIRE(path == "dir/test");
+    REQUIRE(path == "dir" + sep + "test");
     path = "dir\\test";
     sanitizePath(path);
-    REQUIRE(path == "dir/test");
+    REQUIRE(path == "dir" + sep + "test");
     path = "dir/test/";
     sanitizePath(path);
-    REQUIRE(path == "dir/test/");
+    REQUIRE(path == "dir" + sep + "test" + sep);
     path = "dir/test\\";
     sanitizePath(path);
-    REQUIRE(path == "dir/test/");
+    REQUIRE(path == "dir" + sep + "test" + sep);
     path = "/very\\long/dir\\with\\sepa/ra/tors";
     sanitizePath(path);
-    REQUIRE(path == "/very/long/dir/with/sepa/ra/tors");
+    REQUIRE(path == sep + "very" + sep + "long" + sep + \
+        "dir" + sep + "with" + sep + "sepa" + sep + "ra" + sep + "tors");
     path = "/very\\long/dir\\\\with\\sepa//ra/tors";
     sanitizePath(path);
-    REQUIRE(path == "/very/long/dir/with/sepa/ra/tors");
+    REQUIRE(path == sep + "very" + sep + "long" + sep + \
+        "dir" + sep + "with" + sep + "sepa" + sep + "ra" + sep + "tors");
 }
 
 TEST_CASE("stringuntils secureChatCommand")
@@ -1358,6 +1361,8 @@ TEST_CASE("stringuntils secureChatCommand")
     REQUIRE(str == "_#test");
 }
 
+#ifndef WIN32
+// disabled on windows for now, because no gettext
 TEST_CASE("stringuntils timeDiffToString")
 {
     REQUIRE(timeDiffToString(60 * 60 * 24 * 7) == "1 week");
@@ -1388,10 +1393,10 @@ TEST_CASE("stringuntils timeDiffToString")
     REQUIRE(timeDiffToString(60 * 7
         ) == "7 minutes");
 }
+#endif  // WIN32
 
 TEST_CASE("stringuntils replaceItemLinks")
 {
-    dirSeparator = "/";
     logger = new Logger();
     ResourceManager::init();
     VirtFs::addDirToSearchPathSilent("data", Append_false);

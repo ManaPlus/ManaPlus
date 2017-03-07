@@ -136,7 +136,7 @@ namespace VirtFsZip
                    StringVect &names)
     {
         VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
-        if (dirName == "/")
+        if (dirName == dirSeparator)
         {
             FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                       it2,

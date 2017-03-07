@@ -35,11 +35,14 @@
 
 #include "debug.h"
 
+extern const char *dirSeparator;
+
 TEST_CASE("Zip readArchiveInfo")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix;
+    const std::string sep = dirSeparator;
     if (Files::existsLocal(name) == false)
         prefix = "../";
 
@@ -54,10 +57,10 @@ TEST_CASE("Zip readArchiveInfo")
         REQUIRE(Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 2);
         REQUIRE(entry->root == name);
-        REQUIRE(headers[0]->fileName == "dir/hide.png");
+        REQUIRE(headers[0]->fileName == "dir" + sep + "hide.png");
         REQUIRE(headers[0]->compressSize == 365);
         REQUIRE(headers[0]->uncompressSize == 368);
-        REQUIRE(headers[1]->fileName == "dir/brimmedhat.png");
+        REQUIRE(headers[1]->fileName == "dir" + sep + "brimmedhat.png");
         REQUIRE(headers[1]->compressSize == 1959);
         REQUIRE(headers[1]->uncompressSize == 1959);
 
@@ -79,39 +82,43 @@ TEST_CASE("Zip readArchiveInfo")
         REQUIRE(headers[0]->compressSize == 17);
         REQUIRE(headers[0]->uncompressSize == 23);
 
-        REQUIRE(headers[1]->fileName == "dir2/hide.png");
+        REQUIRE(headers[1]->fileName == "dir2" + sep + "hide.png");
         REQUIRE(headers[1]->compressSize == 365);
         REQUIRE(headers[1]->uncompressSize == 368);
 
-        REQUIRE(headers[2]->fileName == "dir2/test.txt");
+        REQUIRE(headers[2]->fileName == "dir2" + sep + "test.txt");
         REQUIRE(headers[2]->compressSize == 17);
         REQUIRE(headers[2]->uncompressSize == 23);
 
-        REQUIRE(headers[3]->fileName == "dir2/paths.xml");
+        REQUIRE(headers[3]->fileName == "dir2" + sep + "paths.xml");
         REQUIRE(headers[3]->compressSize == 154);
         REQUIRE(headers[3]->uncompressSize == 185);
 
-        REQUIRE(headers[4]->fileName == "dir2/units.xml");
+        REQUIRE(headers[4]->fileName == "dir2" + sep + "units.xml");
         REQUIRE(headers[4]->compressSize == 202);
         REQUIRE(headers[4]->uncompressSize == 306);
 
-        REQUIRE(headers[5]->fileName == "dir/hide.png");
+        REQUIRE(headers[5]->fileName == "dir" + sep + "hide.png");
         REQUIRE(headers[5]->compressSize == 365);
         REQUIRE(headers[5]->uncompressSize == 368);
 
-        REQUIRE(headers[6]->fileName == "dir/1/test.txt");
+        REQUIRE(headers[6]->fileName ==
+            "dir" + sep + "1" + sep + "test.txt");
         REQUIRE(headers[6]->compressSize == 17);
         REQUIRE(headers[6]->uncompressSize == 23);
 
-        REQUIRE(headers[7]->fileName == "dir/1/file1.txt");
+        REQUIRE(headers[7]->fileName ==
+            "dir" + sep + "1" + sep + "file1.txt");
         REQUIRE(headers[7]->compressSize == 17);
         REQUIRE(headers[7]->uncompressSize == 23);
 
-        REQUIRE(headers[8]->fileName == "dir/gpl/palette.gpl");
+        REQUIRE(headers[8]->fileName ==
+            "dir" + sep + "gpl" + sep + "palette.gpl");
         REQUIRE(headers[8]->compressSize == 128);
         REQUIRE(headers[8]->uncompressSize == 213);
 
-        REQUIRE(headers[9]->fileName == "dir/dye.png");
+        REQUIRE(headers[9]->fileName ==
+            "dir" + sep + "dye.png");
         REQUIRE(headers[9]->compressSize == 794);
         REQUIRE(headers[9]->uncompressSize == 794);
 

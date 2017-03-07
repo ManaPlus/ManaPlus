@@ -41,7 +41,6 @@
 TEST_CASE("xmlutils readXmlIntVector 1")
 {
     client = new Client;
-    dirSeparator = "/";
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
@@ -88,7 +87,6 @@ TEST_CASE("xmlutils readXmlIntVector 1")
 TEST_CASE("xmlutils readXmlStringMap 1")
 {
     client = new Client;
-    dirSeparator = "/";
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
@@ -134,7 +132,6 @@ TEST_CASE("xmlutils readXmlStringMap 1")
 TEST_CASE("xmlutils readXmlIntMap 1")
 {
     client = new Client;
-    dirSeparator = "/";
     XML::initXML();
     logger = new Logger();
     ResourceManager::init();
