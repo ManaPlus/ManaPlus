@@ -8,20 +8,19 @@ AC_DEFUN([AC_CHECK_CXX_FLAG],
         AC_MSG_CHECKING([whether $CC supports $1])
         OLD_CXXFLAGS="$CXXFLAGS"
         CXXFLAGS="$CXXFLAGS -Werror $1"
-        test_flag=no
+        $2=no
         AC_COMPILE_IFELSE(
             [AC_LANG_SOURCE([int foo;])],
             [
                 AC_MSG_RESULT([yes])
-                test_flag=yes
+                $2=yes
             ],
             [
                 AC_MSG_RESULT([no])
-                test_flag=no
+                $2=no
             ]
-            CXXFLAGS="$OLD_CXXFLAGS"
         )
-        AM_CONDITIONAL($2, test x$test_flag = xtrue)
+        CXXFLAGS="$OLD_CXXFLAGS"
     ]
 )
 
@@ -48,9 +47,9 @@ AC_DEFUN([AC_CHECK_LD_FLAG],
                 AC_MSG_RESULT([no])
                 $2=no
             ]
-            CXXFLAGS="$OLD_CXXFLAGS"
-            LDFLAGS="$OLD_LDFLAGS"
         )
+        CXXFLAGS="$OLD_CXXFLAGS"
+        LDFLAGS="$OLD_LDFLAGS"
     ]
 )
 
