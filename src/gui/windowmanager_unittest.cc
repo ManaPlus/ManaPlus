@@ -171,6 +171,7 @@ TEST_CASE("Windows tests", "windowmanager")
     ::remove(cfgName.c_str());
 
     ConfigManager::initConfiguration();
+    getConfigDefaults2(config.getDefaultValues());
     ConfigManager::initServerConfig("nonexistserver");
 
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
