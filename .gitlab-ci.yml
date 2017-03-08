@@ -304,20 +304,6 @@ gcc-5_sanitize_tests:
   tags:
     - docker
 
-gcc-6_tests_simd:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc6_tests_simd.sh --without-dyecmd --without-manaplusgame
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
 gcc-5_sanitize_tests_i386:
   stage: build
   script:
@@ -358,6 +344,214 @@ gcc-5_sanitize_no_opengltests_i386:
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+
+gcc-5_sanitize:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_sanitize.sh
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+  tags:
+    - docker
+
+gcc-6_sanitize:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sanitize.sh
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+  tags:
+    - docker
+
+gcc-6_sanitize_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sanitize.sh
+  - ldd ./src/manaplustests | grep "libasan"
+  image: vicamo/debian:sid-i386
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+  tags:
+    - docker
+
+gcc-6_sanitize_physfs:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sanitize.sh --with-physfs
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              libphysfs-dev 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+  tags:
+    - docker
+
+gcc-6_sanitize_physfs_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sanitize.sh --with-physfs
+  - ldd ./src/manaplustests | grep "libasan"
+  image: vicamo/debian:sid-i386
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              libphysfs-dev 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+  tags:
+    - docker
+
+.fedora_gcc-snapshot_sanitize_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gccsnapshot_sanitize_tests.sh --without-dyecmd --without-manaplusgame
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-shared
+  image: fedora:rawhide
+  variables:
+    PMUPDATE: "dnf install --refresh -y @development-tools"
+    PMINSTALL: "dnf install -y bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc physfs-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf valgrind libasan liblsan libubsan"
+  tags:
+  - docker
+
+.fedora_gcc-snapshot_sanitize_sdl2_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gccsnapshot_sanitize_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-shared
+  image: fedora:rawhide
+  variables:
+    PMUPDATE: "dnf install --refresh -y @development-tools"
+    PMINSTALL: "dnf install -y bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc physfs-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf valgrind libasan liblsan libubsan"
+  tags:
+  - docker
+
+
+gcc-6_SDL_SDL-1.2_sanitize_test:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: SDL-1.2
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              valgrind 
+              wget unzip
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
+  tags:
+    - docker
+
+gcc-6_SDL_default_sanitize_test:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: default
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              valgrind 
+              wget unzip
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
+  tags:
+    - docker
+
+
+gcc-6_SDL_SDL-1.2_old_sanitize_test:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: SDL-1.2_old
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              valgrind 
+              libjpeg-dev libtiff-dev
+              wget unzip
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
+    POST_CXXFLAGS: "-Wno-undef"
+  tags:
+    - docker
+
+gcc-6_SDL_default_old_sanitize_test:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-shared
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: default_old
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              valgrind 
+              libjpeg-dev libtiff-dev
+              wget unzip
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
+    POST_CXXFLAGS: "-Wno-undef"
+  tags:
+    - docker
+
+gcc-6_tests_simd:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests_simd.sh --without-dyecmd --without-manaplusgame
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -1251,79 +1445,6 @@ gcc-snapshot_sdl2_i386:
   tags:
     - docker
 
-gcc-5_sanitize:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5_sanitize.sh
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-  tags:
-    - docker
-
-gcc-6_sanitize:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc6_sanitize.sh
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-  tags:
-    - docker
-
-gcc-6_sanitize_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc6_sanitize.sh
-  - ldd ./src/manaplustests | grep "libasan"
-  image: vicamo/debian:sid-i386
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-  tags:
-    - docker
-
-gcc-6_sanitize_physfs:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc6_sanitize.sh --with-physfs
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-6 g++-6 
-              libphysfs-dev 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-  tags:
-    - docker
-
-gcc-6_sanitize_physfs_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc6_sanitize.sh --with-physfs
-  - ldd ./src/manaplustests | grep "libasan"
-  image: vicamo/debian:sid-i386
-  <<: *job-shared
-  variables:
-    PACKAGES: gcc-6 g++-6 
-              libphysfs-dev 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-  tags:
-    - docker
-
 gcc_without_mumble:
   stage: build
   script:
@@ -1504,9 +1625,6 @@ gcc-4.9_sdl2:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
-
-# different tools
-
 gcc-5_h_eathena_tmwa:
   stage: build
   script:
@@ -1539,33 +1657,6 @@ gcc-5_tarball:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-
-.fedora_gcc-snapshot_sanitize_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gccsnapshot_sanitize_tests.sh --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-shared
-  image: fedora:rawhide
-  variables:
-    PMUPDATE: "dnf install --refresh -y @development-tools"
-    PMINSTALL: "dnf install -y bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc physfs-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf valgrind libasan liblsan libubsan"
-  tags:
-  - docker
-
-.fedora_gcc-snapshot_sanitize_sdl2_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gccsnapshot_sanitize_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-shared
-  image: fedora:rawhide
-  variables:
-    PMUPDATE: "dnf install --refresh -y @development-tools"
-    PMINSTALL: "dnf install -y bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc physfs-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf valgrind libasan liblsan libubsan"
-  tags:
-  - docker
-
 fedora_gcc-snapshot_tests:
   stage: build
   script:
@@ -1947,50 +2038,6 @@ gcc-6_SDL_default:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2_sanitize_test:
-  stage: build
-  script:
-  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-shared
-  variables:
-    LIBNAME: SDL
-    LIBVERSION: SDL-1.2
-    PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
-              valgrind 
-              wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
-    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
-  tags:
-    - docker
-
-gcc-6_SDL_default_sanitize_test:
-  stage: build
-  script:
-  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-shared
-  variables:
-    LIBNAME: SDL
-    LIBVERSION: default
-    PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
-              valgrind 
-              wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
-    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
-  tags:
-    - docker
-
 gcc-6_SDL_SDL-1.2_test:
   stage: build
   script:
@@ -2068,54 +2115,6 @@ gcc-6_SDL_default_old:
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev
-              libjpeg-dev libtiff-dev
-              wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
-    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
-    POST_CXXFLAGS: "-Wno-undef"
-  tags:
-    - docker
-
-gcc-6_SDL_SDL-1.2_old_sanitize_test:
-  stage: build
-  script:
-  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-shared
-  variables:
-    LIBNAME: SDL
-    LIBVERSION: SDL-1.2_old
-    PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
-              valgrind 
-              libjpeg-dev libtiff-dev
-              wget unzip
-    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
-    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
-    POST_CXXFLAGS: "-Wno-undef"
-  tags:
-    - docker
-
-gcc-6_SDL_default_old_sanitize_test:
-  stage: build
-  script:
-  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-shared
-  variables:
-    LIBNAME: SDL
-    LIBVERSION: default_old
-    PACKAGES: gcc-6 g++-6 
-              make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
-              valgrind 
               libjpeg-dev libtiff-dev
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
