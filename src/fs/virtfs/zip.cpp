@@ -36,7 +36,7 @@
 
 #include "debug.h"
 
-//#define DEBUG_ZIP
+// #define DEBUG_ZIP
 
 extern const char *dirSeparator;
 
