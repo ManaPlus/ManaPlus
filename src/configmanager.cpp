@@ -134,10 +134,15 @@ void ConfigManager::initConfiguration()
 
     std::string configPath;
 
+#ifndef UNITTESTS
     if (settings.options.test.empty())
         configPath = settings.configDir + "/config.xml";
     else
         configPath = settings.configDir + "/test.xml";
+#else  // UNITTESTS
+
+    configPath = settings.configDir + "/unittestconfig.xml";
+#endif  // UNITTESTS
 
     FILE *configFile = fopen(configPath.c_str(), "r");
     if (!configFile)
