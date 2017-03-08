@@ -356,7 +356,6 @@ gcc-5_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize.sh
-  - ldd ./src/manaplustests | grep "libasan"
   <<: *job-shared
   variables:
     PACKAGES: gcc-5 g++-5 
