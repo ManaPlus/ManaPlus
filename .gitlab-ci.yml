@@ -1298,7 +1298,6 @@ gcc-6_sanitize_physfs:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh --with-physfs
-  - ldd ./src/manaplustests | grep "libasan"
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1956,7 +1955,6 @@ gcc-6_SDL_SDL-1.2_sanitize_test:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests libasan
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-shared
   variables:
@@ -1978,7 +1976,6 @@ gcc-6_SDL_default_sanitize_test:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests libasan
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-shared
   variables:
@@ -2087,7 +2084,6 @@ gcc-6_SDL_SDL-1.2_old_sanitize_test:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests libasan
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-shared
   variables:
@@ -2111,7 +2107,6 @@ gcc-6_SDL_default_old_sanitize_test:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests libasan
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-shared
   variables:
