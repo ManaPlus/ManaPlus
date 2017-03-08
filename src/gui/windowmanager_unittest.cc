@@ -138,8 +138,7 @@ TEST_CASE("Windows tests", "windowmanager")
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
-    delete resourceManager;
-    resourceManager = nullptr;
+    ResourceManager::deleteInstance();
     ResourceManager::init();
     resourceManager->cleanOrphans(true);
     VirtFs::addDirToSearchPathSilent("data", Append_false);
@@ -703,6 +702,8 @@ TEST_CASE("Windows tests", "windowmanager")
     delete2(inventoryHandler);
     delete2(charServerHandler);
     delete2(playerHandler);
+    delete2(gui);
+    ResourceManager::deleteInstance();
     VirtFs::removeDirFromSearchPathSilent("data");
     VirtFs::removeDirFromSearchPathSilent("../data");
     VirtFs::removeDirFromSearchPathSilent("data/test");
