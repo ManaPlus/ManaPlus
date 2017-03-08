@@ -124,8 +124,6 @@
 
 #include "utils/translation/translationmanager.h"
 
-#include <stdio.h>
-
 #include "debug.h"
 
 extern QuitDialog *quitDialog;

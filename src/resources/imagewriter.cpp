@@ -22,8 +22,6 @@
 
 #include "resources/imagewriter.h"
 
-#include "logger.h"
-
 #include "utils/checkutils.h"
 
 #include <png.h>

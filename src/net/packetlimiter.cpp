@@ -26,8 +26,6 @@
 #include "utils/checkutils.h"
 #include "utils/timer.h"
 
-#include <fstream>
-
 #include <sys/stat.h>
 
 #include "debug.h"
