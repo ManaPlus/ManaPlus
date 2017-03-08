@@ -66,6 +66,7 @@
 
 #include "gui/fonts/font.h"
 
+#include "fs/files.h"
 #include "fs/paths.h"
 #include "fs/virtfstools.h"
 
@@ -77,6 +78,7 @@
 
 #include "resources/image/image.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/stringutils.h"
@@ -127,14 +129,33 @@ Font::Font(std::string filename,
 
     if (!mFont)
     {
-        logger->log("Error finding font " + filename);
-        std::string backFile("fonts/dejavusans.ttf");
-        mFont = openFont(fixDirSeparators(backFile).c_str(), size);
+#ifdef UNITTESTS
+        logger->log("Error normal loading font " + filename);
+#endif  // UNITTESTS
+
+        filename = "fonts/dejavusans.ttf";
+        mFont = openFont(fixDirSeparators(filename).c_str(), size);
         if (!mFont)
         {
+#ifdef UNITTESTS
+            reportAlways("Font load failed %s",
+                filename.c_str());
+#endif  // UNITTESTS
             logger->error("Font::Font: " +
-                          std::string(TTF_GetError()));
+                std::string(TTF_GetError()));
         }
+        else
+        {
+            logger->log("Loaded fallback font %s, %d",
+                filename.c_str(),
+                size);
+        }
+    }
+    else
+    {
+        logger->log("Loaded font %s, %d",
+            filename.c_str(),
+            size);
     }
 
     TTF_SetFontStyle(mFont, style);
@@ -154,16 +175,27 @@ Font::~Font()
     }
 }
 
-TTF_Font *Font::openFont(const char *const name, const int size)
+TTF_Font *Font::openFont(const char *const name,
+                         const int size)
 {
-// disabled for now because some systems like gentoo can't use it
+// disabled for now because some systems can't use it. why?
 // #ifdef USE_SDL2
 //    SDL_RWops *const rw = VirtFs::RWopsOpenRead(name);
 //    if (!rw)
 //        return nullptr;
 //    return TTF_OpenFontIndexRW(rw, 1, size, 0);
 // #else
-    return TTF_OpenFontIndex(VirtFs::getPath(name).c_str(),
+    const std::string path = VirtFs::getPath(name);
+    if (Files::existsLocal(path) == false)
+    {
+#ifndef UNITTESTS
+        // +++ in future need trigger assert in unit tests here too
+        reportAlways("Font::openFont font not exists: %s",
+            path.c_str());
+#endif  // UNITTESTS
+        return nullptr;
+    }
+    return TTF_OpenFontIndex(path.c_str(),
         size, 0);
 // #endif
 }
