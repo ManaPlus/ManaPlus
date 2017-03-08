@@ -86,7 +86,7 @@ class Font final
 {
     public:
         Font(std::string filename,
-             const int size,
+             int size,
              const int style = 0);
 
         A_DELETE_COPY(Font)

@@ -99,7 +99,7 @@ extern char *strBuf;
 static int fontCounter;
 
 Font::Font(std::string filename,
-           const int size,
+           int size,
            const int style) :
     mFont(nullptr),
     mCreateCounter(0),
@@ -114,6 +114,14 @@ Font::Font(std::string filename,
             logger->error("Unable to initialize SDL_ttf: " +
                 std::string(TTF_GetError()));
         }
+    }
+
+    if (size < 4)
+    {
+        reportAlways("Error: requested load font %s with size %d",
+            filename.c_str(),
+            size);
+        size = 4;
     }
 
     if (!fontCounter)
