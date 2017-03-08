@@ -294,6 +294,7 @@ Gui::~Gui()
     delete2(mFocusHandler);
     Label::finalCleanup();
     Tab::finalCleanup();
+    Widget::cleanGlobalFont();
 }
 
 void Gui::logic()

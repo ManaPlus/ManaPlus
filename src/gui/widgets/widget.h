@@ -644,6 +644,9 @@ class Widget notfinal : public Widget2
         static Font *getGloablFont()
         { return mGlobalFont; }
 
+        static void cleanGlobalFont()
+        { mGlobalFont = nullptr; }
+
         /**
           * Sets the font for the widget. If NULL is passed, the global font
           * will be used.
