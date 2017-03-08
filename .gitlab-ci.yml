@@ -9,8 +9,8 @@ before_script:
   - pwd
   - mkdir logs || true
   - ${UPDATEREPOS}
-  - tools/ci/scripts/dockerretry.sh ${PMUPDATE}
-  - tools/ci/scripts/dockerretry.sh ${PMINSTALL} ${PACKAGES}
+  - tools/ci/scripts/dockerretry.sh ${PMUPDATE} >logs/apt.log
+  - tools/ci/scripts/dockerretry.sh ${PMINSTALL} ${PACKAGES} >>logs/apt.log
 
 image: debian:unstable
 variables:
