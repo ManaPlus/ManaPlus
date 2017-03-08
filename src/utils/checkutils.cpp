@@ -24,11 +24,9 @@
 
 #include "logger.h"
 
-#ifndef ANDROID
-#if defined __linux__ || defined __linux
+#ifdef HAVE_EXECINFO
 #include <execinfo.h>
-#endif  // defined __linux__ || defined __linux
-#endif  // ANDROID
+#endif  // HAVE_EXECINFO
 
 #include "debug.h"
 
@@ -45,11 +43,9 @@ void reportAssertStack(const char *const file,
         line,
         text,
         func);
-#ifndef ANDROID
-#if defined __linux__ || defined __linux
+#ifdef HAVE_EXECINFO
     reportStack();
-#endif  // defined __linux__ || defined __linux
-#endif  // ANDROID
+#endif  // HAVE_EXECINFO
 }
 
 void reportLogStack(const char *const file,
@@ -60,25 +56,21 @@ void reportLogStack(const char *const file,
         file,
         line,
         func);
-#ifndef ANDROID
-#if defined __linux__ || defined __linux
+#ifdef HAVE_EXECINFO
     reportStack();
-#endif  // defined __linux__ || defined __linux
-#endif  // ANDROID
+#endif  // HAVE_EXECINFO
 }
 
 void reportStack()
 {
-#ifndef ANDROID
-#if defined __linux__ || defined __linux
+#ifdef HAVE_EXECINFO
     void *array[15];
     const int size = static_cast<int>(backtrace(array, 15));
     char **strings = backtrace_symbols(array, size);
     for (int i = 0; i < size; i++)
         logger->log1(strings[i]);
     free(strings);
-#endif  // defined __linux__ || defined __linux
-#endif  // ANDROID
+#endif  // HAVE_EXECINFO
 }
 
 #endif  // ENABLE_ASSERTS

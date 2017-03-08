@@ -52,6 +52,11 @@ dyecmd_LDFLAGS = -rdynamic
 endif
 endif
 
+if HAVE_EXECINFO
+manaplus_CXXFLAGS += -DHAVE_EXECINFO
+dyecmd_CXXFLAGS += -DHAVE_EXECINFO
+endif
+
 if ENABLE_PUGIXML
 manaplus_CXXFLAGS += -DENABLE_PUGIXML
 dyecmd_CXXFLAGS += -DENABLE_PUGIXML
@@ -1953,6 +1958,9 @@ manaplustests_CXXFLAGS += -DENABLE_ASSERTS
 if HAVE_RDYNAMIC
 manaplustests_LDFLAGS += -rdynamic
 endif
+endif
+if HAVE_EXECINFO
+manaplustests_CXXFLAGS += -DHAVE_EXECINFO
 endif
 if ENABLE_GLIBCDEBUG
 manaplustests_CXXFLAGS += -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC

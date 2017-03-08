@@ -638,6 +638,22 @@ fi
 AC_CHECK_LD_FLAG(-rdynamic, have_rdynamic)
 AM_CONDITIONAL(HAVE_RDYNAMIC, test x$have_rdynamic = xyes)
 
+AC_CHECK_HEADERS([execinfo.h],
+    [
+        AC_SEARCH_LIBS([backtrace],
+            [execinfo],
+            [
+                have_execinfo=yes
+            ],
+            [
+                have_execinfo=no
+            ]
+        )
+    ],
+    []
+)
+AM_CONDITIONAL(HAVE_EXECINFO, test x$have_execinfo = xyes)
+
 AC_CONFIG_FILES([
 manaplus.spec
 Makefile

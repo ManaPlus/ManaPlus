@@ -6073,8 +6073,7 @@ namespace Catch {
             resultBuilder.setResultType( ResultWas::FatalErrorCondition );
             resultBuilder << message;
 // stack
-#ifndef ANDROID
-#if defined __linux__ || defined __linux
+#ifdef HAVE_EXECINFO
             {
             void *array[15];
             const int size = static_cast<int>(backtrace(array, 15));
@@ -6083,8 +6082,7 @@ namespace Catch {
                 resultBuilder << strings[i];
             free(strings);
             }
-#endif  // defined __linux__ || defined __linux
-#endif  // ANDROID
+#endif  // HAVE_EXECINFO
 // stack
 
             resultBuilder.captureExpression();
