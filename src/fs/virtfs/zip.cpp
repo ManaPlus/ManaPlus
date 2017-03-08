@@ -78,7 +78,10 @@ namespace Zip
         uint16_t method = 0U;
         ZipLocalHeader *header = nullptr;
 
+#ifdef DEBUG_ZIP
         logger->log("Read archive: %s", archiveName.c_str());
+#endif  // DEBUG_ZIP
+
         // format source https://en.wikipedia.org/wiki/Zip_%28file_format%29
         while (feof(arcFile) == 0)
         {
