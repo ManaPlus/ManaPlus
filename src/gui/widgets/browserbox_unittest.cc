@@ -20,6 +20,9 @@
 
 #include "catch.hpp"
 #include "client.h"
+#include "configuration.h"
+#include "configmanager.h"
+#include "dirs.h"
 #include "graphicsmanager.h"
 
 #include "being/actorsprite.h"
@@ -65,6 +68,13 @@ TEST_CASE("BrowserBox tests", "browserbox")
 
     theme = new Theme;
     Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    ConfigManager::initConfiguration();
+    getConfigDefaults2(config.getDefaultValues());
+
     ActorSprite::load();
     gui = new Gui();
     gui->postInit(mainGraphics);

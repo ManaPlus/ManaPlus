@@ -20,6 +20,9 @@
 
 #include "catch.hpp"
 #include "client.h"
+#include "configuration.h"
+#include "configmanager.h"
+#include "dirs.h"
 #include "graphicsmanager.h"
 
 #include "being/actorsprite.h"
@@ -66,6 +69,13 @@ TEST_CASE("xml doc")
 
     theme = new Theme;
     Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    ConfigManager::initConfiguration();
+    getConfigDefaults2(config.getDefaultValues());
+
     const char *const tempXmlName = "tempxml.xml";
     ActorSprite::load();
     gui = new Gui();

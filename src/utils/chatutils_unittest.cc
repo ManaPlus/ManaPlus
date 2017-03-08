@@ -20,6 +20,9 @@
 
 #include "catch.hpp"
 #include "client.h"
+#include "configuration.h"
+#include "configmanager.h"
+#include "dirs.h"
 
 #include "actormanager.h"
 #include "graphicsmanager.h"
@@ -61,8 +64,6 @@ TEST_CASE("chatutils replaceVars")
     imageHelper = new SDLImageHelper();
     mainGraphics = new SDLGraphics;
 
-    gui = new Gui();
-    gui->postInit(mainGraphics);
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
@@ -71,6 +72,15 @@ TEST_CASE("chatutils replaceVars")
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    ConfigManager::initConfiguration();
+    getConfigDefaults2(config.getDefaultValues());
+
+    gui = new Gui();
+    gui->postInit(mainGraphics);
 
     ActorSprite::load();
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
