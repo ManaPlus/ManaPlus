@@ -1,6 +1,7 @@
 stages:
   - prebuild
   - build
+  - failbuild
   - stats
 
 before_script:
@@ -4263,6 +4264,44 @@ gitstats:
     - docker
   only:
     - master
+
+# failed build checks
+gcc-6_tests_valgrind:
+  stage: failbuild
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame || true
+  - echo test valgrind
+  - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
+  - grep "invalid" logs/valg.log && exit 1 || true
+  <<: *job-shared
+  when: on_failure
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-6_tests_valgrind_i386:
+  stage: failbuild
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame || true
+  - echo test valgrind
+  - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
+  - grep "invalid" logs/valg.log && exit 1 || true
+  image: vicamo/debian:sid-i386
+  <<: *job-shared
+  when: on_failure
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
 
 # stats
 
