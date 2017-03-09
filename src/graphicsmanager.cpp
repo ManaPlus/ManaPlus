@@ -1516,6 +1516,7 @@ void GraphicsManager::detectVideoSettings()
         config.setValue("textureSize", conf.getValue("textureSize",
             "1024,1024,1024,1024,1024,1024"));
         config.setValue("testInfo", conf.getValue("testInfo", ""));
+        config.setValue("sound", conf.getValue("sound", 0));
         delete test;
     }
 }

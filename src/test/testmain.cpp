@@ -101,7 +101,7 @@ int TestMain::exec(const bool testAudio)
     if (testAudio)
         soundTest = invokeTest4();
     else
-        soundTest = 1;
+        soundTest = 0;
 
     info.append(strprintf("%d.%d,%d,%d,%d.", soundTest, softwareTest,
         normalOpenGLTest, safeOpenGLTest, modernOpenGLTest));
