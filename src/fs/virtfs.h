@@ -46,15 +46,15 @@ namespace VirtFs
     VirtFile *openWrite(std::string filename);
     VirtFile *openAppend(std::string filename);
     bool setWriteDir(const std::string &restrict newDir);
-    bool addDirToSearchPath(std::string newDir,
-                            const Append append);
-    bool addDirToSearchPathSilent(std::string newDir,
-                                  const Append append);
-    bool removeDirFromSearchPath(std::string oldDir);
-    bool removeDirFromSearchPathSilent(std::string oldDir);
-    bool addZipToSearchPath(std::string newDir,
-                            const Append append);
-    bool removeZipFromSearchPath(std::string oldDir);
+    bool mountDir(std::string newDir,
+                  const Append append);
+    bool mountDirSilent(std::string newDir,
+                        const Append append);
+    bool unmountDir(std::string oldDir);
+    bool unmountDirSilent(std::string oldDir);
+    bool mountZip(std::string newDir,
+                  const Append append);
+    bool unmountZip(std::string oldDir);
     std::string getRealDir(std::string filename);
     bool mkdir(const std::string &restrict dirName);
     bool remove(const std::string &restrict filename);

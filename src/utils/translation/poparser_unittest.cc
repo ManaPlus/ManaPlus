@@ -53,8 +53,8 @@ TEST_CASE("PoParser tests", "PoParser")
     client = new Client;
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPathSilent("data", Append_false);
-    VirtFs::addDirToSearchPathSilent("../data", Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
@@ -132,8 +132,8 @@ TEST_CASE("PoParser tests", "PoParser")
         delete dict;
     }
     delete2(client);
-    VirtFs::removeDirFromSearchPathSilent("data");
-    VirtFs::removeDirFromSearchPathSilent("../data");
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

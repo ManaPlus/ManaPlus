@@ -104,37 +104,37 @@ namespace VirtFs
         return VirtFsPhys::setWriteDir(newDir);
     }
 
-    bool addDirToSearchPath(std::string newDir,
-                            const Append append)
+    bool mountDir(std::string newDir,
+                  const Append append)
     {
-        return VirtFsPhys::addDirToSearchPath(newDir, append);
+        return VirtFsPhys::mountDir(newDir, append);
     }
 
-    bool addDirToSearchPathSilent(std::string newDir,
-                                  const Append append)
+    bool mountDirSilent(std::string newDir,
+                        const Append append)
     {
-        return VirtFsPhys::addDirToSearchPath(newDir, append);
+        return VirtFsPhys::mountDir(newDir, append);
     }
 
-    bool removeDirFromSearchPath(std::string oldDir)
+    bool unmountDir(std::string oldDir)
     {
-        return VirtFsPhys::removeDirFromSearchPath(oldDir);
+        return VirtFsPhys::unmountDir(oldDir);
     }
 
-    bool removeDirFromSearchPathSilent(std::string oldDir)
+    bool unmountDirSilent(std::string oldDir)
     {
-        return VirtFsPhys::removeDirFromSearchPath(oldDir);
+        return VirtFsPhys::unmountDir(oldDir);
     }
 
-    bool addZipToSearchPath(std::string newDir,
-                            const Append append)
+    bool mountZip(std::string newDir,
+                  const Append append)
     {
-        return VirtFsPhys::addZipToSearchPath(newDir, append);
+        return VirtFsPhys::mountZip(newDir, append);
     }
 
-    bool removeZipFromSearchPath(std::string oldDir)
+    bool unmountZip(std::string oldDir)
     {
-        return VirtFsPhys::removeZipFromSearchPath(oldDir);
+        return VirtFsPhys::unmountZip(oldDir);
     }
 
     std::string getRealDir(std::string filename)

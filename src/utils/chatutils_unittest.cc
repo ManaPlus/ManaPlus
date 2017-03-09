@@ -57,8 +57,8 @@ TEST_CASE("chatutils replaceVars")
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPathSilent("data", Append_false);
-    VirtFs::addDirToSearchPathSilent("../data", Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
     theme = new Theme;
     Theme::selectSkin();
     imageHelper = new SDLImageHelper();
@@ -247,8 +247,8 @@ TEST_CASE("chatutils replaceVars")
     delete2(actorManager);
     delete2(localPlayer);
     delete2(client);
-    VirtFs::removeDirFromSearchPathSilent("data");
-    VirtFs::removeDirFromSearchPathSilent("../data");
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

@@ -50,12 +50,12 @@ namespace VirtFsPhys
     VirtFile *openWrite(const std::string &restrict filename);
     VirtFile *openAppend(const std::string &restrict filename);
     bool setWriteDir(const std::string &restrict newDir);
-    bool addDirToSearchPath(const std::string &restrict newDir,
-                            const Append append);
-    bool removeDirFromSearchPath(const std::string &restrict oldDir);
-    bool addZipToSearchPath(const std::string &restrict newDir,
-                            const Append append);
-    bool removeZipFromSearchPath(const std::string &restrict oldDir);
+    bool mountDir(const std::string &restrict newDir,
+                  const Append append);
+    bool unmountDir(const std::string &restrict oldDir);
+    bool mountZip(const std::string &restrict newDir,
+                  const Append append);
+    bool unmountZip(const std::string &restrict oldDir);
     std::string getRealDir(const std::string &restrict filename);
     bool mkdir(const std::string &restrict dirName);
     bool remove(const std::string &restrict filename);

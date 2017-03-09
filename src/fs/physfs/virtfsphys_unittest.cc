@@ -61,32 +61,32 @@ TEST_CASE("VirtFsPhys exists")
 {
     VirtFsPhys::initFuncs();
     logger = new Logger();
-    VirtFsPhys::addDirToSearchPath("data", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data", Append_false);
+    VirtFsPhys::mountDir("data", Append_false);
+    VirtFsPhys::mountDir("../data", Append_false);
 
     REQUIRE(VirtFsPhys::exists("test/units.xml") == true);
     REQUIRE(VirtFsPhys::exists("test/units123.xml") == false);
     REQUIRE(VirtFsPhys::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsPhys::exists("units.xml") == false);
 
-    VirtFsPhys::addDirToSearchPath("data/test", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data/test", Append_false);
+    VirtFsPhys::mountDir("data/test", Append_false);
+    VirtFsPhys::mountDir("../data/test", Append_false);
 
     REQUIRE(VirtFsPhys::exists("test/units.xml") == true);
     REQUIRE(VirtFsPhys::exists("test/units123.xml") == false);
     REQUIRE(VirtFsPhys::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsPhys::exists("units.xml") == true);
 
-    VirtFsPhys::removeDirFromSearchPath("data/test");
-    VirtFsPhys::removeDirFromSearchPath("../data/test");
+    VirtFsPhys::unmountDir("data/test");
+    VirtFsPhys::unmountDir("../data/test");
 
     REQUIRE(VirtFsPhys::exists("test/units.xml") == true);
     REQUIRE(VirtFsPhys::exists("test/units123.xml") == false);
     REQUIRE(VirtFsPhys::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsPhys::exists("units.xml") == false);
 
-    VirtFsPhys::removeDirFromSearchPath("data");
-    VirtFsPhys::removeDirFromSearchPath("../data");
+    VirtFsPhys::unmountDir("data");
+    VirtFsPhys::unmountDir("../data");
     delete2(logger);
 }
 
@@ -94,8 +94,8 @@ TEST_CASE("VirtFsPhys exists2")
 {
     VirtFsPhys::initFuncs();
     logger = new Logger();
-    VirtFsPhys::addZipToSearchPath("data/test/test2.zip", Append_false);
-    VirtFsPhys::addZipToSearchPath("../data/test/test2.zip", Append_false);
+    VirtFsPhys::mountZip("data/test/test2.zip", Append_false);
+    VirtFsPhys::mountZip("../data/test/test2.zip", Append_false);
 
     REQUIRE(VirtFsPhys::exists("test/units.xml") == false);
     REQUIRE(VirtFsPhys::exists("test.txt") == true);
@@ -103,8 +103,8 @@ TEST_CASE("VirtFsPhys exists2")
     REQUIRE(VirtFsPhys::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFsPhys::exists("units.xml") == true);
 
-    VirtFsPhys::removeZipFromSearchPath("data/test/test2.zip");
-    VirtFsPhys::removeZipFromSearchPath("../data/test/test2.zip");
+    VirtFsPhys::unmountZip("data/test/test2.zip");
+    VirtFsPhys::unmountZip("../data/test/test2.zip");
     delete2(logger);
 }
 
@@ -139,8 +139,8 @@ TEST_CASE("VirtFsPhys enumerateFiles1")
     VirtFsPhys::initFuncs();
     logger = new Logger;
 
-    VirtFsPhys::addDirToSearchPath("data", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data", Append_false);
+    VirtFsPhys::mountDir("data", Append_false);
+    VirtFsPhys::mountDir("../data", Append_false);
 
     VirtList *list = nullptr;
 
@@ -166,8 +166,8 @@ TEST_CASE("VirtFsPhys enumerateFiles1")
     REQUIRE(list->names.size() == cnt1);
     VirtFsPhys::freeList(list);
 
-    VirtFsPhys::removeDirFromSearchPath("data");
-    VirtFsPhys::removeDirFromSearchPath("../data");
+    VirtFsPhys::unmountDir("data");
+    VirtFsPhys::unmountDir("../data");
     delete2(logger);
 }
 
@@ -176,9 +176,9 @@ TEST_CASE("VirtFsPhys enumerateFiles2")
     VirtFsPhys::initFuncs();
     logger = new Logger;
 
-    VirtFsPhys::addDirToSearchPath("data/test/dir1",
+    VirtFsPhys::mountDir("data/test/dir1",
         Append_false);
-    VirtFsPhys::addDirToSearchPath("../data/test/dir1",
+    VirtFsPhys::mountDir("../data/test/dir1",
         Append_false);
 
     VirtList *list = nullptr;
@@ -188,8 +188,8 @@ TEST_CASE("VirtFsPhys enumerateFiles2")
     REQUIRE(list->names.size() == 5);
     VirtFsPhys::freeList(list);
 
-    VirtFsPhys::removeDirFromSearchPath("data/test/dir1");
-    VirtFsPhys::removeDirFromSearchPath("../data/test/dir1");
+    VirtFsPhys::unmountDir("data/test/dir1");
+    VirtFsPhys::unmountDir("../data/test/dir1");
     delete2(logger);
 }
 
@@ -209,9 +209,9 @@ TEST_CASE("VirtFsPhys enumerateFiles3")
     VirtFsPhys::initFuncs();
     logger = new Logger;
 
-    VirtFsPhys::addZipToSearchPath("data/test/test.zip",
+    VirtFsPhys::mountZip("data/test/test.zip",
         Append_false);
-    VirtFsPhys::addZipToSearchPath("../data/test/test.zip",
+    VirtFsPhys::mountZip("../data/test/test.zip",
         Append_false);
 
     VirtList *list = nullptr;
@@ -221,8 +221,8 @@ TEST_CASE("VirtFsPhys enumerateFiles3")
     REQUIRE(inList(list, "test.txt") == false);
     VirtFsPhys::freeList(list);
 
-    VirtFsPhys::removeZipFromSearchPath("data/test/test.zip");
-    VirtFsPhys::removeZipFromSearchPath("../data/test/test.zip");
+    VirtFsPhys::unmountZip("data/test/test.zip");
+    VirtFsPhys::unmountZip("../data/test/test.zip");
     delete2(logger);
 }
 
@@ -231,9 +231,9 @@ TEST_CASE("VirtFsPhys enumerateFiles4")
     VirtFsPhys::initFuncs();
     logger = new Logger;
 
-    VirtFsPhys::addZipToSearchPath("data/test/test2.zip",
+    VirtFsPhys::mountZip("data/test/test2.zip",
         Append_false);
-    VirtFsPhys::addZipToSearchPath("../data/test/test2.zip",
+    VirtFsPhys::mountZip("../data/test/test2.zip",
         Append_false);
 
     VirtList *list = nullptr;
@@ -243,8 +243,8 @@ TEST_CASE("VirtFsPhys enumerateFiles4")
     REQUIRE(inList(list, "test.txt") == true);
     VirtFsPhys::freeList(list);
 
-    VirtFsPhys::removeZipFromSearchPath("data/test/test2.zip");
-    VirtFsPhys::removeZipFromSearchPath("../data/test/test2.zip");
+    VirtFsPhys::unmountZip("data/test/test2.zip");
+    VirtFsPhys::unmountZip("../data/test/test2.zip");
     delete2(logger);
 }
 
@@ -252,8 +252,8 @@ TEST_CASE("VirtFsPhys isDirectory")
 {
     VirtFsPhys::initFuncs();
     logger = new Logger();
-    VirtFsPhys::addDirToSearchPath("data", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data", Append_false);
+    VirtFsPhys::mountDir("data", Append_false);
+    VirtFsPhys::mountDir("../data", Append_false);
 
     REQUIRE(VirtFsPhys::isDirectory("test/units.xml") == false);
     REQUIRE(VirtFsPhys::isDirectory("test/units.xml/") == false);
@@ -276,8 +276,8 @@ TEST_CASE("VirtFsPhys isDirectory")
     REQUIRE(VirtFsPhys::isDirectory("testQ/") == false);
     REQUIRE(VirtFsPhys::isDirectory("testQ//") == false);
 
-    VirtFsPhys::addDirToSearchPath("data/test", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data/test", Append_false);
+    VirtFsPhys::mountDir("data/test", Append_false);
+    VirtFsPhys::mountDir("../data/test", Append_false);
 
     REQUIRE(VirtFsPhys::isDirectory("test/units.xml") == false);
     REQUIRE(VirtFsPhys::isDirectory("test/units.xml/") == false);
@@ -289,8 +289,8 @@ TEST_CASE("VirtFsPhys isDirectory")
     REQUIRE(VirtFsPhys::isDirectory("testQ") == false);
     REQUIRE(VirtFsPhys::isDirectory("test/dir1") == true);
 
-    VirtFsPhys::removeDirFromSearchPath("data/test");
-    VirtFsPhys::removeDirFromSearchPath("../data/test");
+    VirtFsPhys::unmountDir("data/test");
+    VirtFsPhys::unmountDir("../data/test");
 
     REQUIRE(VirtFsPhys::isDirectory("test/units.xml") == false);
     REQUIRE(VirtFsPhys::isDirectory("test/units123.xml") == false);
@@ -302,8 +302,8 @@ TEST_CASE("VirtFsPhys isDirectory")
     REQUIRE(VirtFsPhys::isDirectory("testQ") == false);
     REQUIRE(VirtFsPhys::isDirectory("test/dir1") == true);
 
-    VirtFsPhys::removeDirFromSearchPath("data");
-    VirtFsPhys::removeDirFromSearchPath("../data");
+    VirtFsPhys::unmountDir("data");
+    VirtFsPhys::unmountDir("../data");
     delete2(logger);
 }
 
@@ -311,8 +311,8 @@ TEST_CASE("VirtFsPhys openRead")
 {
     VirtFsPhys::initFuncs();
     logger = new Logger();
-    VirtFsPhys::addDirToSearchPath("data", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data", Append_false);
+    VirtFsPhys::mountDir("data", Append_false);
+    VirtFsPhys::mountDir("../data", Append_false);
 
     VirtFile *file = nullptr;
 
@@ -330,8 +330,8 @@ TEST_CASE("VirtFsPhys openRead")
     file = VirtFsPhys::openRead("testQ");
     REQUIRE(file == nullptr);
 
-    VirtFsPhys::addDirToSearchPath("data/test", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data/test", Append_false);
+    VirtFsPhys::mountDir("data/test", Append_false);
+    VirtFsPhys::mountDir("../data/test", Append_false);
 
     file = VirtFsPhys::openRead("test/units.xml");
     REQUIRE(file != nullptr);
@@ -348,8 +348,8 @@ TEST_CASE("VirtFsPhys openRead")
     file = VirtFsPhys::openRead("testQ");
     REQUIRE(file == nullptr);
 
-    VirtFsPhys::removeDirFromSearchPath("data/test");
-    VirtFsPhys::removeDirFromSearchPath("../data/test");
+    VirtFsPhys::unmountDir("data/test");
+    VirtFsPhys::unmountDir("../data/test");
 
     file = VirtFsPhys::openRead("test/units.xml");
     REQUIRE(file != nullptr);
@@ -365,17 +365,17 @@ TEST_CASE("VirtFsPhys openRead")
     file = VirtFsPhys::openRead("testQ");
     REQUIRE(file == nullptr);
 
-    VirtFsPhys::removeDirFromSearchPath("data");
-    VirtFsPhys::removeDirFromSearchPath("../data");
+    VirtFsPhys::unmountDir("data");
+    VirtFsPhys::unmountDir("../data");
     delete2(logger);
 }
 
-TEST_CASE("VirtFsPhys addZipToSearchPath")
+TEST_CASE("VirtFsPhys mountZip")
 {
     // +++ need implement
 }
 
-TEST_CASE("VirtFsPhys removeZipFromSearchPath")
+TEST_CASE("VirtFsPhys unmountZip")
 {
     // +++ need implement
 }
@@ -386,8 +386,8 @@ TEST_CASE("VirtFsPhys getRealDir")
     logger = new Logger();
     REQUIRE(VirtFsPhys::getRealDir(".") == "");
     REQUIRE(VirtFsPhys::getRealDir("..") == "");
-    const bool dir1 = VirtFsPhys::addDirToSearchPath("data", Append_false);
-    REQUIRE((dir1 || VirtFsPhys::addDirToSearchPath(
+    const bool dir1 = VirtFsPhys::mountDir("data", Append_false);
+    REQUIRE((dir1 || VirtFsPhys::mountDir(
         "../data", Append_false)) == true);
     if (dir1 == true)
     {
@@ -403,8 +403,8 @@ TEST_CASE("VirtFsPhys getRealDir")
     }
     REQUIRE(VirtFsPhys::getRealDir("zzz") == "");
 
-    VirtFsPhys::addDirToSearchPath("data/test", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data/test", Append_false);
+    VirtFsPhys::mountDir("data/test", Append_false);
+    VirtFsPhys::mountDir("../data/test", Append_false);
     if (dir1 == true)
     {
         REQUIRE(VirtFsPhys::getRealDir("test") == "data");
@@ -425,21 +425,21 @@ TEST_CASE("VirtFsPhys getRealDir")
 
     if (dir1 == true)
     {
-        VirtFsPhys::addZipToSearchPath("data/test/test.zip", Append_false);
+        VirtFsPhys::mountZip("data/test/test.zip", Append_false);
         REQUIRE(VirtFsPhys::getRealDir("dir/brimmedhat.png") ==
             "data/test/test.zip");
         REQUIRE(VirtFsPhys::getRealDir("hide.png") == "data/test");
     }
     else
     {
-        VirtFsPhys::addZipToSearchPath("../data/test/test.zip", Append_false);
+        VirtFsPhys::mountZip("../data/test/test.zip", Append_false);
         REQUIRE(VirtFsPhys::getRealDir("dir/brimmedhat.png") ==
             "../data/test/test.zip");
         REQUIRE(VirtFsPhys::getRealDir("hide.png") == "../data/test");
     }
 
-    VirtFsPhys::removeDirFromSearchPath("data/test");
-    VirtFsPhys::removeDirFromSearchPath("../data/test");
+    VirtFsPhys::unmountDir("data/test");
+    VirtFsPhys::unmountDir("../data/test");
 
     if (dir1 == true)
     {
@@ -460,10 +460,10 @@ TEST_CASE("VirtFsPhys getRealDir")
     REQUIRE(VirtFsPhys::exists("dir/hide.png"));
     REQUIRE(VirtFsPhys::getRealDir("zzz") == "");
 
-    VirtFsPhys::removeDirFromSearchPath("data");
-    VirtFsPhys::removeDirFromSearchPath("../data");
-    VirtFsPhys::removeZipFromSearchPath("data/test/test.zip");
-    VirtFsPhys::removeZipFromSearchPath("../data/test/test.zip");
+    VirtFsPhys::unmountDir("data");
+    VirtFsPhys::unmountDir("../data");
+    VirtFsPhys::unmountZip("data/test/test.zip");
+    VirtFsPhys::unmountZip("../data/test/test.zip");
     delete2(logger);
 }
 
@@ -471,8 +471,8 @@ TEST_CASE("VirtFsPhys read")
 {
     VirtFsPhys::initFuncs();
     logger = new Logger();
-    VirtFsPhys::addDirToSearchPath("data", Append_false);
-    VirtFsPhys::addDirToSearchPath("../data", Append_false);
+    VirtFsPhys::mountDir("data", Append_false);
+    VirtFsPhys::mountDir("../data", Append_false);
 
     VirtFile *file = VirtFsPhys::openRead("test/test.txt");
     REQUIRE(file != nullptr);
@@ -499,8 +499,8 @@ TEST_CASE("VirtFsPhys read")
     VirtFsPhys::close(file);
     free(buffer);
 
-    VirtFsPhys::removeDirFromSearchPath("data");
-    VirtFsPhys::removeDirFromSearchPath("../data");
+    VirtFsPhys::unmountDir("data");
+    VirtFsPhys::unmountDir("../data");
     delete2(logger);
 }
 #endif  // USE_PHYSFS

@@ -2358,10 +2358,10 @@ TEST_CASE("Dye real dye")
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPathSilent("data", Append_false);
-    VirtFs::addDirToSearchPathSilent("../data", Append_false);
-    VirtFs::addDirToSearchPathSilent("data/test", Append_false);
-    VirtFs::addDirToSearchPathSilent("../data/test", Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
+    VirtFs::mountDirSilent("data/test", Append_false);
+    VirtFs::mountDirSilent("../data/test", Append_false);
 
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;
@@ -2393,10 +2393,10 @@ TEST_CASE("Dye real dye")
         dyeCheck("|A:#0000FFFF,FF000050", "arrow_up_A.png");
     }
     delete2(client);
-    VirtFs::removeDirFromSearchPathSilent("data");
-    VirtFs::removeDirFromSearchPathSilent("../data");
-    VirtFs::removeDirFromSearchPathSilent("data/test");
-    VirtFs::removeDirFromSearchPathSilent("../data/test");
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
+    VirtFs::unmountDirSilent("data/test");
+    VirtFs::unmountDirSilent("../data/test");
     delete2(logger);
 //    VirtFs::deinit();
 }

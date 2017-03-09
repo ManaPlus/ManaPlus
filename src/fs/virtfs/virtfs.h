@@ -34,9 +34,9 @@ struct VirtFsEntry;
 
 namespace VirtFs
 {
-    bool addDirToSearchPathInternal(const std::string &restrict newDir,
-                                    const Append append);
-    bool removeDirFromSearchPathInternal(std::string oldDir);
+    bool mountDirInternal(const std::string &restrict newDir,
+                          const Append append);
+    bool unmountDirInternal(std::string oldDir);
     std::vector<VirtFsEntry*> &getEntries();
     VirtFsEntry *searchEntryByRootInternal(const std::string &restrict
                                            root);
@@ -45,8 +45,8 @@ namespace VirtFs
     void addEntry(VirtFsEntry *const entry,
                   const Append append);
 #ifdef UNITTESTS
-    bool addDirToSearchPathSilent2(std::string newDir,
-                                   const Append append);
+    bool mountDirSilent2(std::string newDir,
+                         const Append append);
 #endif  // UNITTESTS
 }  // namespace VirtFs
 

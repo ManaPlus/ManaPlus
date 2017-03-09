@@ -271,8 +271,8 @@ namespace VirtFs
             mEntries.insert(mEntries.begin(), entry);
     }
 
-    bool addDirToSearchPathInternal(const std::string &restrict newDir,
-                                    const Append append)
+    bool mountDirInternal(const std::string &restrict newDir,
+                          const Append append)
     {
         if (newDir.find(".zip") != std::string::npos)
         {
@@ -295,8 +295,8 @@ namespace VirtFs
         return true;
     }
 
-    bool addDirToSearchPath(std::string newDir,
-                            const Append append)
+    bool mountDir(std::string newDir,
+                  const Append append)
     {
         prepareFsPath(newDir);
         if (Files::existsLocal(newDir) == false)
@@ -305,11 +305,11 @@ namespace VirtFs
                 newDir.c_str());
             return false;
         }
-        return addDirToSearchPathInternal(newDir, append);
+        return mountDirInternal(newDir, append);
     }
 
-    bool addDirToSearchPathSilent(std::string newDir,
-                                  const Append append)
+    bool mountDirSilent(std::string newDir,
+                        const Append append)
     {
         prepareFsPath(newDir);
         if (Files::existsLocal(newDir) == false)
@@ -318,12 +318,12 @@ namespace VirtFs
                 newDir.c_str());
             return false;
         }
-        return addDirToSearchPathInternal(newDir, append);
+        return mountDirInternal(newDir, append);
     }
 
 #ifdef UNITTESTS
-    bool addDirToSearchPathSilent2(std::string newDir,
-                                   const Append append)
+    bool mountDirSilent2(std::string newDir,
+                         const Append append)
     {
         prepareFsPath(newDir);
         if (Files::existsLocal(newDir) == false)
@@ -331,11 +331,11 @@ namespace VirtFs
             logger->log("VirtFs::addToSearchPath directory not exists: %s",
                 newDir.c_str());
         }
-        return addDirToSearchPathInternal(newDir, append);
+        return mountDirInternal(newDir, append);
     }
 #endif  // UNITTESTS
 
-    bool removeDirFromSearchPathInternal(std::string oldDir)
+    bool unmountDirInternal(std::string oldDir)
     {
         if (findLast(oldDir, std::string(dirSeparator)) == false)
             oldDir += dirSeparator;
@@ -356,7 +356,7 @@ namespace VirtFs
         return false;
     }
 
-    bool removeDirFromSearchPath(std::string oldDir)
+    bool unmountDir(std::string oldDir)
     {
         prepareFsPath(oldDir);
         if (oldDir.find(".zip") != std::string::npos)
@@ -364,16 +364,16 @@ namespace VirtFs
             reportAlways("Called removeFromSearchPath with zip archive");
             return false;
         }
-        if (removeDirFromSearchPathInternal(oldDir) == false)
+        if (unmountDirInternal(oldDir) == false)
         {
-            reportAlways("VirtFs::removeDirFromSearchPath not exists: %s",
+            reportAlways("VirtFs::unmountDir not exists: %s",
                 oldDir.c_str());
             return false;
         }
         return true;
     }
 
-    bool removeDirFromSearchPathSilent(std::string oldDir)
+    bool unmountDirSilent(std::string oldDir)
     {
         prepareFsPath(oldDir);
         if (oldDir.find(".zip") != std::string::npos)
@@ -381,17 +381,17 @@ namespace VirtFs
             reportAlways("Called removeFromSearchPath with zip archive");
             return false;
         }
-        if (removeDirFromSearchPathInternal(oldDir) == false)
+        if (unmountDirInternal(oldDir) == false)
         {
-            logger->log("VirtFs::removeDirFromSearchPath not exists: %s",
+            logger->log("VirtFs::unmountDir not exists: %s",
                 oldDir.c_str());
             return false;
         }
         return true;
     }
 
-    bool addZipToSearchPath(std::string newDir,
-                            const Append append)
+    bool mountZip(std::string newDir,
+                  const Append append)
     {
         prepareFsPath(newDir);
         if (Files::existsLocal(newDir) == false)
@@ -425,7 +425,7 @@ namespace VirtFs
         return true;
     }
 
-    bool removeZipFromSearchPath(std::string oldDir)
+    bool unmountZip(std::string oldDir)
     {
         prepareFsPath(oldDir);
         if (findLast(oldDir, ".zip") == false)
@@ -448,7 +448,7 @@ namespace VirtFs
             }
         }
 
-        reportAlways("VirtFs::removeZipFromSearchPath not exists: %s",
+        reportAlways("VirtFs::unmountZip not exists: %s",
             oldDir.c_str());
         return false;
     }

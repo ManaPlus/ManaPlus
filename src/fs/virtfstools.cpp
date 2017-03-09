@@ -83,7 +83,7 @@ namespace VirtFs
             {
                 const std::string file = path + str;
                 const std::string realPath = VirtFs::getRealDir(file);
-                VirtFs::addZipToSearchPath(std::string(realPath).append(
+                VirtFs::mountZip(std::string(realPath).append(
                     dirSeparator).append(file), append);
             }
         }
@@ -103,7 +103,7 @@ namespace VirtFs
             {
                 const std::string file = path + str;
                 const std::string realPath = VirtFs::getRealDir(file);
-                VirtFs::removeZipFromSearchPath(std::string(
+                VirtFs::unmountZip(std::string(
                     realPath).append(
                     dirSeparator).append(
                     file));

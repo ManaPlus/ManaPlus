@@ -51,14 +51,14 @@ TEST_CASE("VirtFs1 getBaseDir")
     VirtFs::deinit();
 }
 
-TEST_CASE("VirtFs1 addDirToSearchPath")
+TEST_CASE("VirtFs1 mountDir")
 {
     VirtFs::init(".");
     logger = new Logger();
     const std::string sep = dirSeparator;
     SECTION("simple 1")
     {
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilent2("dir1",
             Append_false));
         REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
         REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
@@ -71,7 +71,7 @@ TEST_CASE("VirtFs1 addDirToSearchPath")
 
     SECTION("simple 2")
     {
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1/",
+        REQUIRE(VirtFs::mountDirSilent2("dir1/",
             Append_true));
         REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
         REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
@@ -84,9 +84,9 @@ TEST_CASE("VirtFs1 addDirToSearchPath")
 
     SECTION("simple 3")
     {
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilent2("dir1",
             Append_false));
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir2",
+        REQUIRE(VirtFs::mountDirSilent2("dir2",
             Append_false));
         REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
         REQUIRE(VirtFs::searchEntryByRootInternal("dir2" + sep) != nullptr);
@@ -104,9 +104,9 @@ TEST_CASE("VirtFs1 addDirToSearchPath")
 
     SECTION("simple 4")
     {
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1\\",
+        REQUIRE(VirtFs::mountDirSilent2("dir1\\",
             Append_true));
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir2",
+        REQUIRE(VirtFs::mountDirSilent2("dir2",
             Append_true));
         REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
         REQUIRE(VirtFs::searchEntryByRootInternal("dir2" + sep) != nullptr);
@@ -124,11 +124,11 @@ TEST_CASE("VirtFs1 addDirToSearchPath")
 
     SECTION("simple 5")
     {
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilent2("dir1",
             Append_true));
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir2",
+        REQUIRE(VirtFs::mountDirSilent2("dir2",
             Append_true));
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir3/test",
+        REQUIRE(VirtFs::mountDirSilent2("dir3/test",
             Append_true));
         REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
         REQUIRE(VirtFs::searchEntryByRootInternal("dir2" + sep) != nullptr);
@@ -152,11 +152,11 @@ TEST_CASE("VirtFs1 addDirToSearchPath")
 
     SECTION("simple 6")
     {
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilent2("dir1",
             Append_true));
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir2",
+        REQUIRE(VirtFs::mountDirSilent2("dir2",
             Append_true));
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir3\\test",
+        REQUIRE(VirtFs::mountDirSilent2("dir3\\test",
             Append_false));
         REQUIRE(VirtFs::searchEntryByRootInternal(
             "dir1" + sep + "") != nullptr);
@@ -185,7 +185,7 @@ TEST_CASE("VirtFs1 addDirToSearchPath")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 addZipToSearchPath")
+TEST_CASE("VirtFs1 mountZip")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -198,7 +198,7 @@ TEST_CASE("VirtFs1 addZipToSearchPath")
 
     SECTION("simple 1")
     {
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
             Append_false));
         REQUIRE(VirtFs::searchEntryByRootInternal(
             prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
@@ -212,9 +212,9 @@ TEST_CASE("VirtFs1 addZipToSearchPath")
 
     SECTION("simple 2")
     {
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
             Append_false));
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test2.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_false));
         REQUIRE(VirtFs::searchEntryByRootInternal(
             prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
@@ -231,9 +231,9 @@ TEST_CASE("VirtFs1 addZipToSearchPath")
 
     SECTION("simple 3")
     {
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
             Append_true));
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test2.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_true));
         REQUIRE(VirtFs::searchEntryByRootInternal(
             prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
@@ -250,11 +250,11 @@ TEST_CASE("VirtFs1 addZipToSearchPath")
 
     SECTION("simple 4")
     {
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
             Append_false));
-        REQUIRE(VirtFs::addDirToSearchPath(prefix + "data/test",
+        REQUIRE(VirtFs::mountDir(prefix + "data/test",
             Append_false));
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test2.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_false));
         REQUIRE(VirtFs::searchEntryByRootInternal(
             prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
@@ -276,11 +276,11 @@ TEST_CASE("VirtFs1 addZipToSearchPath")
 
     SECTION("simple 5")
     {
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
             Append_false));
-        REQUIRE(VirtFs::addDirToSearchPath(prefix + "data/test",
+        REQUIRE(VirtFs::mountDir(prefix + "data/test",
             Append_false));
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test2.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_true));
         REQUIRE(VirtFs::searchEntryByRootInternal(
             prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
@@ -317,29 +317,29 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
 
     SECTION("simple 1")
     {
-        REQUIRE_THROWS(VirtFs::removeDirFromSearchPath("dir1"));
-        REQUIRE_THROWS(VirtFs::removeDirFromSearchPath("dir1/"));
+        REQUIRE_THROWS(VirtFs::unmountDir("dir1"));
+        REQUIRE_THROWS(VirtFs::unmountDir("dir1/"));
     }
 
     SECTION("simple 2")
     {
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilent2("dir1",
             Append_true));
-        REQUIRE_THROWS(VirtFs::removeDirFromSearchPath("dir2"));
-        REQUIRE(VirtFs::removeDirFromSearchPath("dir1"));
+        REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
+        REQUIRE(VirtFs::unmountDir("dir1"));
     }
 
     SECTION("simple 3")
     {
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilent2("dir1",
             Append_true));
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir2//dir3",
+        REQUIRE(VirtFs::mountDirSilent2("dir2//dir3",
             Append_true));
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir3",
+        REQUIRE(VirtFs::mountDirSilent2("dir3",
             Append_false));
         REQUIRE(VirtFs::getEntries().size() == 3);
-        REQUIRE_THROWS(VirtFs::removeDirFromSearchPath("dir2"));
-        REQUIRE(VirtFs::removeDirFromSearchPath("dir1"));
+        REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
+        REQUIRE(VirtFs::unmountDir("dir1"));
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
@@ -349,7 +349,7 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtDirEntry*>(
             VirtFs::getEntries()[1])->userDir == "dir2" + sep + "dir3");
-        REQUIRE_THROWS(VirtFs::removeDirFromSearchPath("dir1"));
+        REQUIRE_THROWS(VirtFs::unmountDir("dir1"));
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
@@ -359,8 +359,8 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtDirEntry*>(
             VirtFs::getEntries()[1])->userDir == "dir2" + sep + "dir3");
-        REQUIRE(VirtFs::removeDirFromSearchPath("dir2/dir3"));
-        REQUIRE_THROWS(VirtFs::removeDirFromSearchPath("dir2/dir3" + sep));
+        REQUIRE(VirtFs::unmountDir("dir2/dir3"));
+        REQUIRE_THROWS(VirtFs::unmountDir("dir2/dir3" + sep));
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
@@ -370,17 +370,17 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
 
     SECTION("simple 4")
     {
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilent2("dir1",
             Append_true));
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtDirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
-        REQUIRE_THROWS(VirtFs::removeDirFromSearchPath("dir2"));
-        REQUIRE(VirtFs::removeDirFromSearchPath("dir1"));
+        REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
+        REQUIRE(VirtFs::unmountDir("dir1"));
         REQUIRE(VirtFs::getEntries().size() == 0);
-        REQUIRE(VirtFs::addDirToSearchPathSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilent2("dir1",
             Append_true));
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
@@ -391,9 +391,9 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
 
     SECTION("simple 5")
     {
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
             Append_true));
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test2.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_true));
 
         REQUIRE(VirtFs::searchEntryByRootInternal(
@@ -408,7 +408,7 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
             prefix + "data" + sep + "test" + sep + "test2.zip");
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
 
-        VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
+        VirtFs::unmountZip(prefix + "data/test/test.zip");
         REQUIRE(VirtFs::searchEntryByRootInternal(
             prefix + "data" + sep + "test" + sep + "test.zip") == nullptr);
         REQUIRE(VirtFs::searchEntryByRootInternal(
@@ -421,11 +421,11 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
 
     SECTION("simple 6")
     {
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data/test/test.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
             Append_false));
-        REQUIRE(VirtFs::addDirToSearchPath(prefix + "data/test",
+        REQUIRE(VirtFs::mountDir(prefix + "data/test",
             Append_false));
-        REQUIRE(VirtFs::addZipToSearchPath(prefix + "data\\test/test2.zip",
+        REQUIRE(VirtFs::mountZip(prefix + "data\\test/test2.zip",
             Append_false));
 
         REQUIRE(VirtFs::searchEntryByRootInternal(
@@ -445,7 +445,7 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
             prefix + "data" + sep + "test" + sep + "test.zip");
         REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Zip);
 
-        VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
+        VirtFs::unmountZip(prefix + "data/test/test.zip");
         REQUIRE(VirtFs::searchEntryByRootInternal(
             prefix + "data" + sep + "test" + sep + "test.zip") == nullptr);
         REQUIRE(VirtFs::searchEntryByRootInternal(
@@ -469,9 +469,9 @@ TEST_CASE("VirtFs1 exists")
 {
     VirtFs::init(".");
     logger = new Logger();
-    const bool dir1 = VirtFs::addDirToSearchPathSilent("data/",
+    const bool dir1 = VirtFs::mountDirSilent("data/",
         Append_false);
-    VirtFs::addDirToSearchPathSilent("..\\data",
+    VirtFs::mountDirSilent("..\\data",
         Append_false);
 
     REQUIRE(VirtFs::exists("test"));
@@ -486,12 +486,12 @@ TEST_CASE("VirtFs1 exists")
 
     if (dir1 == true)
     {
-        VirtFs::addDirToSearchPath("data//test",
+        VirtFs::mountDir("data//test",
             Append_false);
     }
     else
     {
-        VirtFs::addDirToSearchPathSilent("..//data\\test",
+        VirtFs::mountDirSilent("..//data\\test",
             Append_false);
     }
 
@@ -506,9 +506,9 @@ TEST_CASE("VirtFs1 exists")
     REQUIRE(VirtFs::exists("units.xml/") == false);
 
     if (dir1 == true)
-        VirtFs::removeDirFromSearchPathSilent("data/test");
+        VirtFs::unmountDirSilent("data/test");
     else
-        VirtFs::removeDirFromSearchPathSilent("../data/test");
+        VirtFs::unmountDirSilent("../data/test");
 
     REQUIRE(VirtFs::exists("test") == true);
     REQUIRE(VirtFs::exists("test/dir1"));
@@ -558,9 +558,9 @@ TEST_CASE("VirtFs1 getRealDir1")
     const std::string sep = dirSeparator;
     REQUIRE(VirtFs::getRealDir(".") == "");
     REQUIRE(VirtFs::getRealDir("..") == "");
-    const bool dir1 = VirtFs::addDirToSearchPathSilent("data",
+    const bool dir1 = VirtFs::mountDirSilent("data",
         Append_false);
-    REQUIRE((dir1 || VirtFs::addDirToSearchPathSilent("../data",
+    REQUIRE((dir1 || VirtFs::mountDirSilent("../data",
         Append_false)) == true);
     if (dir1 == true)
     {
@@ -584,9 +584,9 @@ TEST_CASE("VirtFs1 getRealDir1")
     }
     REQUIRE(VirtFs::getRealDir("zzz") == "");
 
-    VirtFs::addDirToSearchPathSilent("data/test",
+    VirtFs::mountDirSilent("data/test",
         Append_false);
-    VirtFs::addDirToSearchPathSilent("../data/test",
+    VirtFs::mountDirSilent("../data/test",
         Append_false);
     if (dir1 == true)
     {
@@ -610,8 +610,8 @@ TEST_CASE("VirtFs1 getRealDir1")
     }
     REQUIRE(VirtFs::getRealDir("zzz") == "");
 
-    VirtFs::removeDirFromSearchPathSilent("data/test");
-    VirtFs::removeDirFromSearchPathSilent("../data/test");
+    VirtFs::unmountDirSilent("data/test");
+    VirtFs::unmountDirSilent("../data/test");
 
     if (dir1 == true)
     {
@@ -627,8 +627,8 @@ TEST_CASE("VirtFs1 getRealDir1")
     }
     REQUIRE(VirtFs::getRealDir("zzz") == "");
 
-    VirtFs::removeDirFromSearchPathSilent("data");
-    VirtFs::removeDirFromSearchPathSilent("../data");
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -642,7 +642,7 @@ TEST_CASE("VirtFs1 getRealDir2")
     std::string prefix("data" + sep + "test" + sep);
     if (Files::existsLocal(name) == false)
         prefix = ".." + sep + prefix;
-    VirtFs::addZipToSearchPath(prefix + "test2.zip",
+    VirtFs::mountZip(prefix + "test2.zip",
         Append_false);
 
     REQUIRE(VirtFs::getRealDir(".") == "");
@@ -653,7 +653,7 @@ TEST_CASE("VirtFs1 getRealDir2")
         prefix + "test2.zip");
     REQUIRE(VirtFs::getRealDir("zzz") == "");
 
-    VirtFs::addZipToSearchPath(prefix + "test.zip",
+    VirtFs::mountZip(prefix + "test.zip",
         Append_false);
     REQUIRE(VirtFs::getRealDir("dir//dye.png") ==
         prefix + "test2.zip");
@@ -663,7 +663,7 @@ TEST_CASE("VirtFs1 getRealDir2")
         prefix + "test.zip");
     REQUIRE(VirtFs::getRealDir("zzz") == "");
 
-    VirtFs::removeZipFromSearchPath(prefix + "test.zip");
+    VirtFs::unmountZip(prefix + "test.zip");
 
     REQUIRE(VirtFs::getRealDir("dir/brimmedhat.png") == "");
     REQUIRE(VirtFs::getRealDir("test.txt") == prefix + "test2.zip");
@@ -671,7 +671,7 @@ TEST_CASE("VirtFs1 getRealDir2")
         prefix + "test2.zip");
     REQUIRE(VirtFs::getRealDir("zzz") == "");
 
-    VirtFs::removeZipFromSearchPath(prefix + "test2.zip");
+    VirtFs::unmountZip(prefix + "test2.zip");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -692,9 +692,9 @@ TEST_CASE("VirtFs1 enumerateFiles1")
     VirtFs::init(".");
     logger = new Logger;
 
-    VirtFs::addDirToSearchPathSilent("data",
+    VirtFs::mountDirSilent("data",
         Append_false);
-    VirtFs::addDirToSearchPathSilent("../data",
+    VirtFs::mountDirSilent("../data",
         Append_false);
 
     VirtList *list = nullptr;
@@ -726,8 +726,8 @@ TEST_CASE("VirtFs1 enumerateFiles1")
     REQUIRE(list->names.size() == cnt1);
     VirtFs::freeList(list);
 
-    VirtFs::removeDirFromSearchPathSilent("data");
-    VirtFs::removeDirFromSearchPathSilent("../data");
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -737,9 +737,9 @@ TEST_CASE("VirtFs1 enumerateFiles2")
     VirtFs::init(".");
     logger = new Logger;
 
-    VirtFs::addDirToSearchPathSilent("data/test/dir1",
+    VirtFs::mountDirSilent("data/test/dir1",
         Append_false);
-    VirtFs::addDirToSearchPathSilent("../data/test/dir1",
+    VirtFs::mountDirSilent("../data/test/dir1",
         Append_false);
 
     VirtList *list = nullptr;
@@ -759,13 +759,13 @@ TEST_CASE("VirtFs1 enumerateFiles3")
     VirtFs::init(".");
     logger = new Logger;
 
-    VirtFs::addDirToSearchPathSilent("data/test/dir1",
+    VirtFs::mountDirSilent("data/test/dir1",
         Append_false);
-    VirtFs::addDirToSearchPathSilent("../data/test/dir1",
+    VirtFs::mountDirSilent("../data/test/dir1",
         Append_false);
-    VirtFs::addDirToSearchPathSilent("data/test/dir2",
+    VirtFs::mountDirSilent("data/test/dir2",
         Append_false);
-    VirtFs::addDirToSearchPathSilent("../data/test/dir2",
+    VirtFs::mountDirSilent("../data/test/dir2",
         Append_false);
 
     VirtList *list = nullptr;
@@ -789,7 +789,7 @@ TEST_CASE("VirtFsZip enumerateFiles4")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addZipToSearchPath(prefix + "test.zip",
+    VirtFs::mountZip(prefix + "test.zip",
         Append_false);
 
     VirtList *list = nullptr;
@@ -800,7 +800,7 @@ TEST_CASE("VirtFsZip enumerateFiles4")
     REQUIRE(inList(list, "hide.png"));
     VirtFs::freeList(list);
 
-    VirtFs::removeZipFromSearchPath(prefix + "test.zip");
+    VirtFs::unmountZip(prefix + "test.zip");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -814,9 +814,9 @@ TEST_CASE("VirtFsZip enumerateFiles5")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addZipToSearchPath(prefix + "test.zip",
+    VirtFs::mountZip(prefix + "test.zip",
         Append_true);
-    VirtFs::addZipToSearchPath(prefix + "test2.zip",
+    VirtFs::mountZip(prefix + "test2.zip",
         Append_true);
 
     VirtList *list = nullptr;
@@ -835,8 +835,8 @@ TEST_CASE("VirtFsZip enumerateFiles5")
     REQUIRE(inList(list, "dye.png"));
     VirtFs::freeList(list);
 
-    VirtFs::removeZipFromSearchPath(prefix + "test.zip");
-    VirtFs::removeZipFromSearchPath(prefix + "test2.zip");
+    VirtFs::unmountZip(prefix + "test.zip");
+    VirtFs::unmountZip(prefix + "test2.zip");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -850,7 +850,7 @@ TEST_CASE("VirtFsZip enumerateFiles6")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addZipToSearchPath(prefix + "test.zip",
+    VirtFs::mountZip(prefix + "test.zip",
         Append_false);
 
     VirtList *list = nullptr;
@@ -860,7 +860,7 @@ TEST_CASE("VirtFsZip enumerateFiles6")
     REQUIRE(inList(list, "dir"));
     VirtFs::freeList(list);
 
-    VirtFs::removeZipFromSearchPath(prefix + "test.zip");
+    VirtFs::unmountZip(prefix + "test.zip");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -874,7 +874,7 @@ TEST_CASE("VirtFsZip enumerateFiles7")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addZipToSearchPath(prefix + "test2.zip",
+    VirtFs::mountZip(prefix + "test2.zip",
         Append_false);
 
     VirtList *list = nullptr;
@@ -887,7 +887,7 @@ TEST_CASE("VirtFsZip enumerateFiles7")
     REQUIRE(inList(list, "units.xml"));
     VirtFs::freeList(list);
 
-    VirtFs::removeZipFromSearchPath(prefix + "test2.zip");
+    VirtFs::unmountZip(prefix + "test2.zip");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -901,9 +901,9 @@ TEST_CASE("VirtFsZip enumerateFiles8")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addZipToSearchPath(prefix + "data/test/test2.zip",
+    VirtFs::mountZip(prefix + "data/test/test2.zip",
         Append_false);
-    VirtFs::addDirToSearchPathSilent(prefix + "data/test",
+    VirtFs::mountDirSilent(prefix + "data/test",
         Append_false);
 
     VirtList *list = nullptr;
@@ -918,8 +918,8 @@ TEST_CASE("VirtFsZip enumerateFiles8")
     REQUIRE(inList(list, "units.xml"));
     VirtFs::freeList(list);
 
-    VirtFs::removeZipFromSearchPath(prefix + "data/test/test2.zip");
-    VirtFs::removeDirFromSearchPath(prefix + "data/test");
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::unmountDir(prefix + "data/test");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -933,7 +933,7 @@ TEST_CASE("VirtFs1 isDirectory1")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addDirToSearchPath(prefix + "data",
+    VirtFs::mountDir(prefix + "data",
         Append_false);
 
     REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
@@ -957,7 +957,7 @@ TEST_CASE("VirtFs1 isDirectory1")
     REQUIRE(VirtFs::isDirectory("testQ/") == false);
     REQUIRE(VirtFs::isDirectory("testQ//") == false);
 
-    VirtFs::addDirToSearchPath(prefix + "data/test",
+    VirtFs::mountDir(prefix + "data/test",
         Append_false);
 
     REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
@@ -971,7 +971,7 @@ TEST_CASE("VirtFs1 isDirectory1")
     REQUIRE(VirtFs::isDirectory("test/dir1") == true);
     REQUIRE(VirtFs::isDirectory("test\\dir1") == true);
 
-    VirtFs::removeDirFromSearchPath(prefix + "data/test");
+    VirtFs::unmountDir(prefix + "data/test");
 
     REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
     REQUIRE(VirtFs::isDirectory("test/units123.xml") == false);
@@ -983,7 +983,7 @@ TEST_CASE("VirtFs1 isDirectory1")
     REQUIRE(VirtFs::isDirectory("testQ") == false);
     REQUIRE(VirtFs::isDirectory("test/dir1") == true);
 
-    VirtFs::removeDirFromSearchPathSilent(prefix + "data");
+    VirtFs::unmountDirSilent(prefix + "data");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -997,7 +997,7 @@ TEST_CASE("VirtFs1 isDirectory2")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addZipToSearchPath(prefix + "data/test/test2.zip",
+    VirtFs::mountZip(prefix + "data/test/test2.zip",
         Append_false);
 
     REQUIRE(VirtFs::isDirectory("dir2/units.xml") == false);
@@ -1021,7 +1021,7 @@ TEST_CASE("VirtFs1 isDirectory2")
     REQUIRE(VirtFs::isDirectory("testQ/") == false);
     REQUIRE(VirtFs::isDirectory("testQ//") == false);
 
-    VirtFs::addZipToSearchPath(prefix + "data/test/test.zip",
+    VirtFs::mountZip(prefix + "data/test/test.zip",
         Append_false);
 
     REQUIRE(VirtFs::isDirectory("dir2/units.xml") == false);
@@ -1045,7 +1045,7 @@ TEST_CASE("VirtFs1 isDirectory2")
     REQUIRE(VirtFs::isDirectory("testQ/") == false);
     REQUIRE(VirtFs::isDirectory("testQ//") == false);
 
-    VirtFs::removeZipFromSearchPath(prefix + "data/test/test2.zip");
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
 
     REQUIRE(VirtFs::isDirectory("dir2/units.xml") == false);
     REQUIRE(VirtFs::isDirectory("dir2/units.xml/") == false);
@@ -1068,7 +1068,7 @@ TEST_CASE("VirtFs1 isDirectory2")
     REQUIRE(VirtFs::isDirectory("testQ/") == false);
     REQUIRE(VirtFs::isDirectory("testQ//") == false);
 
-    VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
+    VirtFs::unmountZip(prefix + "data/test/test.zip");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -1082,7 +1082,7 @@ TEST_CASE("VirtFs1 openRead1")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addDirToSearchPath(prefix + "data",
+    VirtFs::mountDir(prefix + "data",
         Append_false);
 
     VirtFile *file = nullptr;
@@ -1102,7 +1102,7 @@ TEST_CASE("VirtFs1 openRead1")
     file = VirtFs::openRead("testQ");
     REQUIRE(file == nullptr);
 
-    VirtFs::addDirToSearchPath(prefix + "data/test",
+    VirtFs::mountDir(prefix + "data/test",
         Append_false);
 
     file = VirtFs::openRead("test/units.xml");
@@ -1118,7 +1118,7 @@ TEST_CASE("VirtFs1 openRead1")
     file = VirtFs::openRead("testQ");
     REQUIRE(file == nullptr);
 
-    VirtFs::removeDirFromSearchPath(prefix + "data/test");
+    VirtFs::unmountDir(prefix + "data/test");
 
     file = VirtFs::openRead("test/units.xml");
     REQUIRE(file != nullptr);
@@ -1132,7 +1132,7 @@ TEST_CASE("VirtFs1 openRead1")
     file = VirtFs::openRead("testQ");
     REQUIRE(file == nullptr);
 
-    VirtFs::removeDirFromSearchPath(prefix + "data");
+    VirtFs::unmountDir(prefix + "data");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -1146,7 +1146,7 @@ TEST_CASE("VirtFs1 openRead2")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addZipToSearchPath(prefix + "test2.zip",
+    VirtFs::mountZip(prefix + "test2.zip",
         Append_false);
 
     VirtFile *file = nullptr;
@@ -1170,7 +1170,7 @@ TEST_CASE("VirtFs1 openRead2")
     file = VirtFs::openRead("dir//brimmedhat.png");
     REQUIRE(file == nullptr);
 
-    VirtFs::addZipToSearchPath(prefix + "test.zip",
+    VirtFs::mountZip(prefix + "test.zip",
         Append_false);
 
     file = VirtFs::openRead("dir2/units.xml");
@@ -1191,7 +1191,7 @@ TEST_CASE("VirtFs1 openRead2")
     REQUIRE(file != nullptr);
     VirtFs::close(file);
 
-    VirtFs::removeZipFromSearchPath(prefix + "test.zip");
+    VirtFs::unmountZip(prefix + "test.zip");
 
     file = VirtFs::openRead("dir2/units.xml");
     REQUIRE(file != nullptr);
@@ -1210,7 +1210,7 @@ TEST_CASE("VirtFs1 openRead2")
     file = VirtFs::openRead("dir/brimmedhat.png");
     REQUIRE(file == nullptr);
 
-    VirtFs::removeZipFromSearchPath(prefix + "test2.zip");
+    VirtFs::unmountZip(prefix + "test2.zip");
 
     VirtFs::deinit();
     delete2(logger);
@@ -1225,7 +1225,7 @@ TEST_CASE("VirtFs1 permitLinks")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addDirToSearchPath(prefix + "data",
+    VirtFs::mountDir(prefix + "data",
         Append_false);
 
     const int cnt1 = VirtFs::exists("test/test2.txt") ? 26 : 25;
@@ -1250,7 +1250,7 @@ TEST_CASE("VirtFs1 permitLinks")
     removeTemp(list);
     REQUIRE(list.size() == cnt1);
 
-    VirtFs::removeDirFromSearchPathSilent(prefix + "data");
+    VirtFs::unmountDirSilent(prefix + "data");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -1264,7 +1264,7 @@ TEST_CASE("VirtFs1 read1")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addDirToSearchPath(prefix + "data",
+    VirtFs::mountDir(prefix + "data",
         Append_false);
 
     VirtFile *file = VirtFs::openRead("test/test.txt");
@@ -1292,7 +1292,7 @@ TEST_CASE("VirtFs1 read1")
     VirtFs::close(file);
     free(buffer);
 
-    VirtFs::removeDirFromSearchPath(prefix + "data");
+    VirtFs::unmountDir(prefix + "data");
     VirtFs::deinit();
     delete2(logger);
 }
@@ -1306,7 +1306,7 @@ TEST_CASE("VirtFs1 read2")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addZipToSearchPath(prefix + "test2.zip",
+    VirtFs::mountZip(prefix + "test2.zip",
         Append_false);
     VirtFile *file = nullptr;
     void *restrict buffer = nullptr;
@@ -1423,7 +1423,7 @@ TEST_CASE("VirtFs1 read2")
 
     VirtFs::close(file);
     free(buffer);
-    VirtFs::removeZipFromSearchPath(prefix + "test2.zip");
+    VirtFs::unmountZip(prefix + "test2.zip");
     VirtFs::deinit();
     delete2(logger);
 }

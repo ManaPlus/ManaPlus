@@ -180,73 +180,73 @@ namespace VirtFsPhys
         return PHYSFS_setWriteDir(newDir.c_str());
     }
 
-    bool addDirToSearchPath(const std::string &restrict newDir,
-                            const Append append)
+    bool mountDir(const std::string &restrict newDir,
+                  const Append append)
     {
         logger->log("Add virtual directory: " + newDir);
         if (newDir.find(".zip") != std::string::npos)
         {
-            reportAlways("Called addDirToSearchPath with zip archive");
+            reportAlways("Called mountDir with zip archive");
             return false;
         }
         const int ret = PHYSFS_addToSearchPath(newDir.c_str(),
             append == Append_true ? 1 : 0);
         if (ret == 0)
         {
-            logger->log("addDirToSearchPath error: %s",
+            logger->log("mountDir error: %s",
                 VirtFsPhys::getLastError());
         }
         return ret;
     }
 
-    bool removeDirFromSearchPath(const std::string &restrict oldDir)
+    bool unmountDir(const std::string &restrict oldDir)
     {
         logger->log("Remove virtual directory: " + oldDir);
         if (oldDir.find(".zip") != std::string::npos)
         {
-            reportAlways("Called removeDirFromSearchPath with zip archive");
+            reportAlways("Called unmountDir with zip archive");
             return false;
         }
         const int ret = PHYSFS_removeFromSearchPath(oldDir.c_str());
         if (ret == 0)
         {
-            logger->log("removeDirFromSearchPath error: %s",
+            logger->log("unmountDir error: %s",
                 VirtFsPhys::getLastError());
         }
         return ret;
     }
 
-    bool addZipToSearchPath(const std::string &restrict newDir,
-                            const Append append)
+    bool mountZip(const std::string &restrict newDir,
+                  const Append append)
     {
         logger->log("Add virtual zip: " + newDir);
         if (newDir.find(".zip") == std::string::npos)
         {
-            reportAlways("Called addZipToSearchPath without zip archive");
+            reportAlways("Called mountZip without zip archive");
             return false;
         }
         const int ret = PHYSFS_addToSearchPath(newDir.c_str(),
             append == Append_true ? 1 : 0);
         if (ret == 0)
         {
-            logger->log("addZipToSearchPath error: %s",
+            logger->log("mountZip error: %s",
                 VirtFsPhys::getLastError());
         }
         return ret;
     }
 
-    bool removeZipFromSearchPath(const std::string &restrict oldDir)
+    bool unmountZip(const std::string &restrict oldDir)
     {
         logger->log("Remove virtual zip: " + oldDir);
         if (oldDir.find(".zip") == std::string::npos)
         {
-            reportAlways("Called removeZipFromSearchPath without zip archive");
+            reportAlways("Called unmountZip without zip archive");
             return false;
         }
         const int ret = PHYSFS_removeFromSearchPath(oldDir.c_str());
         if (ret == 0)
         {
-            logger->log("removeZipFromSearchPath error: %s",
+            logger->log("unmountZip error: %s",
                 VirtFsPhys::getLastError());
         }
         return ret;

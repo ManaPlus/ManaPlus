@@ -189,9 +189,9 @@ void Dirs::extractDataDir()
 
 void Dirs::mountDataDir()
 {
-    VirtFs::addDirToSearchPathSilent(PKG_DATADIR "data/perserver/default",
+    VirtFs::mountDirSilent(PKG_DATADIR "data/perserver/default",
         Append_false);
-    VirtFs::addDirToSearchPathSilent("data/perserver/default",
+    VirtFs::mountDirSilent("data/perserver/default",
         Append_false);
 
 #if defined __APPLE__
@@ -208,29 +208,29 @@ void Dirs::mountDataDir()
     CFRelease(resourcesURL);
     // possible crash
     strncat(path, "/data", PATH_MAX - 1);
-    VirtFs::addDirToSearchPath(path, Append_false);
+    VirtFs::mountDir(path, Append_false);
 // possible this need for support run client from dmg images.
 //    mPackageDir = path;
 #endif  // defined __APPLE__
 
-    VirtFs::addDirToSearchPathSilent(PKG_DATADIR "data", Append_false);
+    VirtFs::mountDirSilent(PKG_DATADIR "data", Append_false);
     setPackageDir(PKG_DATADIR "data");
-    VirtFs::addDirToSearchPathSilent("data", Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
 
 #ifdef ANDROID
 #ifdef USE_SDL2
     if (getenv("APPDIR"))
     {
         const std::string appDir = getenv("APPDIR");
-        VirtFs::addDirToSearchPath(appDir + "/data", Append_false);
-        VirtFs::addDirToSearchPath(appDir + "/data/perserver/default",
+        VirtFs::mountDir(appDir + "/data", Append_false);
+        VirtFs::mountDir(appDir + "/data/perserver/default",
             Append_false);
     }
 #endif  // USE_SDL2
 #endif  // ANDROID
 
 #if defined __native_client__
-    VirtFs::addZipToSearchPath("/http/data.zip", Append_false);
+    VirtFs::mountZip("/http/data.zip", Append_false);
 #endif  // defined __native_client__
 
     // Add branding/data to PhysFS search path
@@ -250,7 +250,7 @@ void Dirs::mountDataDir()
 
         if (loc > 0)
         {
-            VirtFs::addDirToSearchPath(path.substr(
+            VirtFs::mountDir(path.substr(
                 0, loc + 1).append("data"),
                 Append_false);
         }

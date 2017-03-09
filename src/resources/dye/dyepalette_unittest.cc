@@ -61,10 +61,10 @@ TEST_CASE("DyePalette tests")
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPathSilent("data", Append_false);
-    VirtFs::addDirToSearchPathSilent("../data", Append_false);
-    VirtFs::addDirToSearchPathSilent("data/test", Append_false);
-    VirtFs::addDirToSearchPathSilent("../data/test", Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
+    VirtFs::mountDirSilent("data/test", Append_false);
+    VirtFs::mountDirSilent("../data/test", Append_false);
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
@@ -392,10 +392,10 @@ TEST_CASE("DyePalette tests")
         REQUIRE(palette.mColors[0].value[3] == 0x77);
     }
     delete2(client);
-    VirtFs::removeDirFromSearchPathSilent("data");
-    VirtFs::removeDirFromSearchPathSilent("../data");
-    VirtFs::removeDirFromSearchPathSilent("data/test");
-    VirtFs::removeDirFromSearchPathSilent("../data/test");
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
+    VirtFs::unmountDirSilent("data/test");
+    VirtFs::unmountDirSilent("../data/test");
     delete2(logger);
 //    VirtFs::deinit();
 }

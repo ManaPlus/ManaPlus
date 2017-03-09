@@ -121,8 +121,8 @@ TEST_CASE("integrity tests", "integrity")
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::addDirToSearchPathSilent("data", Append_false);
-    VirtFs::addDirToSearchPathSilent("../data", Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
 
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;
@@ -226,10 +226,10 @@ TEST_CASE("integrity tests", "integrity")
 
     SECTION("integrity Loader::getImage test 2")
     {
-        VirtFs::addZipToSearchPath(prefix + "data/test/test.zip", Append_false);
+        VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
         Image *const image = Loader::getImage(
             "dir/hide.png");
-        VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
+        VirtFs::unmountZip(prefix + "data/test/test.zip");
         REQUIRE(image != nullptr);
         REQUIRE(image->getSDLSurface() != nullptr);
         image->decRef();
@@ -237,10 +237,10 @@ TEST_CASE("integrity tests", "integrity")
 
     SECTION("integrity Loader::getImage test 3")
     {
-        VirtFs::addZipToSearchPath(prefix + "data/test/test.zip", Append_false);
+        VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
         Image *const image = Loader::getImage(
             "dir/brimmedhat.png");
-        VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
+        VirtFs::unmountZip(prefix + "data/test/test.zip");
         REQUIRE(image != nullptr);
         REQUIRE(image->getSDLSurface() != nullptr);
         image->decRef();
@@ -248,7 +248,7 @@ TEST_CASE("integrity tests", "integrity")
 
     SECTION("integrity Loader::getImage test 4")
     {
-        VirtFs::addZipToSearchPath(prefix + "data/test/test.zip", Append_false);
+        VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
 
         SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
         if (!rw)
@@ -260,17 +260,17 @@ TEST_CASE("integrity tests", "integrity")
             SDL_RWclose(rw);
         REQUIRE(sz == size1);
         SDL_RWclose(rw);
-        VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
-        VirtFs::addDirToSearchPathSilent(prefix + "data/test", Append_true);
+        VirtFs::unmountZip(prefix + "data/test/test.zip");
+        VirtFs::mountDirSilent(prefix + "data/test", Append_true);
         REQUIRE(compareBuffers(buf) == true);
-        VirtFs::removeDirFromSearchPathSilent(prefix + "data/test");
+        VirtFs::unmountDirSilent(prefix + "data/test");
     }
 
 #ifdef USE_PHYSFS
     SECTION("integrity Loader::getImage test 5")
     {
-        VirtFs::addZipToSearchPath("data/test/test.zip", Append_false);
-        VirtFs::addZipToSearchPath("../data/test/test.zip", Append_false);
+        VirtFs::mountZip("data/test/test.zip", Append_false);
+        VirtFs::mountZip("../data/test/test.zip", Append_false);
 
         PHYSFS_file *handle = PHYSFS_openRead(name1);
         REQUIRE(handle != nullptr);
@@ -325,14 +325,14 @@ TEST_CASE("integrity tests", "integrity")
 //        rw->close(rw);
         REQUIRE(PHYSFS_close(handle) != 0);
 
-        VirtFs::removeZipFromSearchPath("data/test/test.zip");
-        VirtFs::removeZipFromSearchPath("../data/test/test.zip");
+        VirtFs::unmountZip("data/test/test.zip");
+        VirtFs::unmountZip("../data/test/test.zip");
     }
 
     SECTION("integrity Loader::getImage test 6")
     {
-        VirtFs::addZipToSearchPath("data/test/test.zip", Append_false);
-        VirtFs::addZipToSearchPath("../data/test/test.zip", Append_false);
+        VirtFs::mountZip("data/test/test.zip", Append_false);
+        VirtFs::mountZip("../data/test/test.zip", Append_false);
 
         PHYSFS_file *handle = PHYSFS_openRead(name1);
         REQUIRE(handle != nullptr);
@@ -405,19 +405,19 @@ TEST_CASE("integrity tests", "integrity")
 //        rw->close(rw);
         REQUIRE(PHYSFS_close(handle) != 0);
 
-        VirtFs::removeZipFromSearchPath("data/test/test.zip");
-        VirtFs::removeZipFromSearchPath("../data/test/test.zip");
-        VirtFs::addDirToSearchPathSilent("data/test", Append_true);
-        VirtFs::addDirToSearchPathSilent("../data/test", Append_true);
+        VirtFs::unmountZip("data/test/test.zip");
+        VirtFs::unmountZip("../data/test/test.zip");
+        VirtFs::mountDirSilent("data/test", Append_true);
+        VirtFs::mountDirSilent("../data/test", Append_true);
         REQUIRE(compareBuffers(buf) == true);
-        VirtFs::removeDirFromSearchPathSilent("data/test");
-        VirtFs::removeDirFromSearchPathSilent("../data/test");
+        VirtFs::unmountDirSilent("data/test");
+        VirtFs::unmountDirSilent("../data/test");
     }
 #endif  // USE_PHYSFS
 
     SECTION("integrity Loader::getImage test 7")
     {
-        VirtFs::addZipToSearchPath(prefix + "data/test/test.zip", Append_false);
+        VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
 
         SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
         if (!rw)
@@ -444,17 +444,17 @@ TEST_CASE("integrity tests", "integrity")
         REQUIRE(sz == size1);
 
         SDL_RWclose(rw);
-        VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
-        VirtFs::addDirToSearchPathSilent("data/test", Append_true);
-        VirtFs::addDirToSearchPathSilent("../data/test", Append_true);
+        VirtFs::unmountZip(prefix + "data/test/test.zip");
+        VirtFs::mountDirSilent("data/test", Append_true);
+        VirtFs::mountDirSilent("../data/test", Append_true);
         REQUIRE(compareBuffers(buf) == true);
-        VirtFs::removeDirFromSearchPathSilent("data/test");
-        VirtFs::removeDirFromSearchPathSilent("../data/test");
+        VirtFs::unmountDirSilent("data/test");
+        VirtFs::unmountDirSilent("../data/test");
     }
 
     SECTION("integrity Loader::getImage test 8")
     {
-        VirtFs::addZipToSearchPath(prefix + "data/test/test.zip", Append_false);
+        VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
 
         SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
         if (!rw)
@@ -467,31 +467,31 @@ TEST_CASE("integrity tests", "integrity")
         }
         SDL_Surface *const tmpImage = IMG_LoadPNG_RW(rw);
         SDL_RWclose(rw);
-        VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
+        VirtFs::unmountZip(prefix + "data/test/test.zip");
         REQUIRE(tmpImage != nullptr);
         SDL_FreeSurface(tmpImage);
     }
 
     SECTION("integrity Loader::getImage test 9")
     {
-        VirtFs::addZipToSearchPath(prefix + "data/test/test.zip", Append_false);
+        VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
 
         SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
         if (!rw)
             logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
         Resource *const res = imageHelper->load(rw);
-        VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
+        VirtFs::unmountZip(prefix + "data/test/test.zip");
         REQUIRE(res != nullptr);
         delete res;
     }
 
     SECTION("integrity Loader::getImage test 10")
     {
-        VirtFs::addZipToSearchPath(prefix + "data/test/test.zip", Append_false);
+        VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
         Image *const image = Loader::getImage(
             name1);
-        VirtFs::removeZipFromSearchPath(prefix + "data/test/test.zip");
+        VirtFs::unmountZip(prefix + "data/test/test.zip");
         REQUIRE(image != nullptr);
         REQUIRE(image->getSDLSurface() != nullptr);
         image->decRef();
@@ -502,8 +502,8 @@ TEST_CASE("integrity tests", "integrity")
     delete client;
     client = nullptr;
 
-    VirtFs::removeDirFromSearchPathSilent("data");
-    VirtFs::removeDirFromSearchPathSilent("../data");
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

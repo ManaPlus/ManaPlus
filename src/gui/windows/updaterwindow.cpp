@@ -756,7 +756,7 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
                 "/").append(name);
             if (!stat(fileName.c_str(), &statbuf))
             {
-                VirtFs::addZipToSearchPath(fileName,
+                VirtFs::mountZip(fileName,
                     Append_false);
             }
         }
@@ -781,7 +781,7 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir)
             const std::string file = std::string(
                 fixPath).append("/").append(name);
             if (!stat(file.c_str(), &statbuf))
-                VirtFs::removeZipFromSearchPath(file);
+                VirtFs::unmountZip(file);
         }
     }
 }
@@ -793,27 +793,27 @@ void UpdaterWindow::addUpdateFile(const std::string &restrict path,
 {
     const std::string tmpPath = std::string(path).append("/").append(file);
     if (append == Append_false)
-        VirtFs::addZipToSearchPath(tmpPath, append);
+        VirtFs::mountZip(tmpPath, append);
 
     const std::string fixFile = std::string(fixPath).append("/").append(file);
     struct stat statbuf;
     if (!stat(fixFile.c_str(), &statbuf))
-        VirtFs::addZipToSearchPath(fixFile, append);
+        VirtFs::mountZip(fixFile, append);
 
     if (append == Append_true)
-        VirtFs::addZipToSearchPath(tmpPath, append);
+        VirtFs::mountZip(tmpPath, append);
 }
 
 void UpdaterWindow::removeUpdateFile(const std::string &restrict path,
                                      const std::string &restrict fixPath,
                                      const std::string &restrict file)
 {
-    VirtFs::removeZipFromSearchPath(
+    VirtFs::unmountZip(
         std::string(path).append("/").append(file));
     const std::string fixFile = std::string(fixPath).append("/").append(file);
     struct stat statbuf;
     if (!stat(fixFile.c_str(), &statbuf))
-        VirtFs::removeZipFromSearchPath(fixFile);
+        VirtFs::unmountZip(fixFile);
 }
 
 void UpdaterWindow::logic()
@@ -1139,7 +1139,7 @@ void UpdaterWindow::loadMods(const std::string &dir,
                     "/").append(name);
                 if (!stat(fileName.c_str(), &statbuf))
                 {
-                    VirtFs::addZipToSearchPath(fileName,
+                    VirtFs::mountZip(fileName,
                         Append_false);
                 }
             }
@@ -1169,7 +1169,7 @@ void UpdaterWindow::loadDirMods(const std::string &dir)
             const std::string &localDir = mod->getLocalDir();
             if (!localDir.empty())
             {
-                VirtFs::addDirToSearchPath(dir + "/" + localDir,
+                VirtFs::mountDir(dir + "/" + localDir,
                     Append_false);
             }
         }
@@ -1193,7 +1193,7 @@ void UpdaterWindow::unloadMods(const std::string &dir)
         {
             const std::string &localDir = mod->getLocalDir();
             if (!localDir.empty())
-                VirtFs::removeDirFromSearchPath(dir + "/" + localDir);
+                VirtFs::unmountDir(dir + "/" + localDir);
         }
     }
 }

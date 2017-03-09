@@ -64,8 +64,8 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
     ResourceManager::init();
-    VirtFs::addDirToSearchPathSilent("data", Append_false);
-    VirtFs::addDirToSearchPathSilent("../data", Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2
@@ -191,8 +191,8 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     }
 
     delete2(client);
-    VirtFs::removeDirFromSearchPathSilent("data");
-    VirtFs::removeDirFromSearchPathSilent("../data");
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }

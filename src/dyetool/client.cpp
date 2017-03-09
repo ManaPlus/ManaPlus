@@ -269,12 +269,12 @@ void Client::gameInit()
     // Add the main data directories to our PhysicsFS search path
     if (!settings.options.dataPath.empty())
     {
-        VirtFs::addDirToSearchPath(settings.options.dataPath,
+        VirtFs::mountDir(settings.options.dataPath,
             Append_false);
     }
 
     // Add the local data directory to PhysicsFS search path
-    VirtFs::addDirToSearchPath(settings.localDataDir,
+    VirtFs::mountDir(settings.localDataDir,
         Append_false);
     TranslationManager::loadCurrentLang();
 #ifdef ENABLE_CUSTOMNLS
@@ -645,7 +645,7 @@ int Client::gameExec()
                             "zip",
                             Append_false);
 
-                        VirtFs::addDirToSearchPath(
+                        VirtFs::mountDir(
                             settings.localDataDir
                             + dirSeparator + settings.updatesDir + "/local/",
                             Append_false);

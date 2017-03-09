@@ -95,8 +95,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
     logger = new Logger();
     ResourceManager::init();
     ResourceManager *safeResman = resourceManager;
-    VirtFs::addDirToSearchPathSilent("data", Append_false);
-    VirtFs::addDirToSearchPathSilent("../data", Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
 
     imageHelper = new SDLImageHelper();
 #ifdef USE_SDL2
@@ -659,8 +659,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
     delete resourceManager;
     resourceManager = safeResman;
     delete2(client);
-    VirtFs::removeDirFromSearchPathSilent("data");
-    VirtFs::removeDirFromSearchPathSilent("../data");
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
 }
