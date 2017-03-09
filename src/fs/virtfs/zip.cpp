@@ -35,15 +35,15 @@
 #include <zlib.h>
 #include <SDL_endian.h>
 
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+#include <byteswap.h>
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
 #include "debug.h"
 
 #ifndef SDL_BIG_ENDIAN
 #error missing SDL_endian.h
 #endif  // SDL_BYTEORDER
-
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-#include <byteswap.h>
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
 // #define DEBUG_ZIP
 
