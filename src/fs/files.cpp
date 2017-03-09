@@ -293,7 +293,7 @@ void Files::deleteFilesInDirectory(std::string path)
 
 void Files::enumFiles(StringVect &files,
                       std::string path,
-                      const bool skipSymlinks)
+                      const bool skipSymlinks A_WIN_UNUSED)
 {
     if (findLast(path, "/") == false)
         path += "/";

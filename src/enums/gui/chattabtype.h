@@ -23,6 +23,13 @@
 
 #include "enums/simpletypes/enumdefines.h"
 
+#ifdef INPUT
+#undef INPUT
+#endif  // INPUT
+
+PRAGMAMINGW(GCC diagnostic push)
+PRAGMAMINGW(GCC diagnostic ignored "-Wshadow")
+
 enumStart(ChatTabType)
 {
     UNKNOWN = 0,
@@ -38,5 +45,7 @@ enumStart(ChatTabType)
     CHANNEL
 }
 enumEnd(ChatTabType);
+
+PRAGMAMINGW(GCC diagnostic pop)
 
 #endif  // ENUMS_GUI_CHATTABTYPE_H

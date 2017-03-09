@@ -351,6 +351,14 @@ PRAGMA45(GCC diagnostic pop)
 
 #define USE_FILE_FOPEN 1
 
+#ifdef __MINGW32__
+#define PRAGMAMINGW(str) _Pragma(#str)
+#define A_WIN_UNUSED __attribute__ ((unused))
+#else  // __MINGW32__
+#define PRAGMAMINGW(str)
+#define A_WIN_UNUSED
+#endif  // __MINGW32__
+
 #ifdef DYECMD
 #undef USE_FUZZER
 #endif  // DYECMD

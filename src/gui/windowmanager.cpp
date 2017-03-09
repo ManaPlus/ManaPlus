@@ -374,8 +374,11 @@ void WindowManager::setIcon()
     else
         SDL::getWindowWMInfo(nullptr, &pInfo);
     // Attempt to load icon from .ico file
-    HICON icon = (HICON) LoadImage(nullptr, iconFile.c_str(),
-        IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
+    HICON icon = static_cast<HICON>(LoadImage(nullptr,
+        iconFile.c_str(),
+        IMAGE_ICON,
+        64, 64,
+        LR_LOADFROMFILE));
     // If it's failing, we load the default resource file.
     if (!icon)
     {

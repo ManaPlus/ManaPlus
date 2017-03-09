@@ -26,8 +26,11 @@
 #include "enums/simpletypes/enumdefines.h"
 
 #ifdef INPUT
-#undef
+#undef INPUT
 #endif  // INPUT
+
+PRAGMAMINGW(GCC diagnostic push)
+PRAGMAMINGW(GCC diagnostic ignored "-Wshadow")
 
 enumStart(NpcActionState)
 {
@@ -37,5 +40,7 @@ enumStart(NpcActionState)
     CLOSE
 }
 enumEnd(NpcActionState);
+
+PRAGMAMINGW(GCC diagnostic pop)
 
 #endif  // ENUMS_GUI_NPCACTIONSTATE_H
