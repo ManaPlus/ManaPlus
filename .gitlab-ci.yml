@@ -369,7 +369,6 @@ gcc-6_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh
-  - ldd ./src/manaplustests | grep "libasan"
   <<: *job-shared
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -383,7 +382,6 @@ gcc-6_sanitize_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh
-  - ldd ./src/manaplustests | grep "libasan"
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
@@ -412,7 +410,6 @@ gcc-6_sanitize_physfs_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh --with-physfs
-  - ldd ./src/manaplustests | grep "libasan"
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
