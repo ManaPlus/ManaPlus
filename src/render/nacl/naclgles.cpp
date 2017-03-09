@@ -48,7 +48,7 @@ void NaclGles::initGles()
     gles2Context = glGetCurrentContextPPAPI();
 
     logger->log("InitGles: %p, %d",
-        static_cast<void*>(gles2Interface),
+        static_cast<const void*>(gles2Interface),
         gles2Context);
 }
 
