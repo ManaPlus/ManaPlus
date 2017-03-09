@@ -1,0 +1,18 @@
+#!/bin/bash
+
+source ./winvars.sh
+source ./mingw5flags.sh
+
+mkdir tmp
+cd ..
+
+dir=`pwd`
+
+
+autoreconf -i
+cd build/tmp
+../../configure \
+--host=${CROSS} \
+--enable-werror
+
+make -j9 2>../make2.log
