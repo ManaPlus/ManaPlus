@@ -33,8 +33,17 @@
 #include <iostream>
 #include <unistd.h>
 #include <zlib.h>
+#include <SDL_endian.h>
 
 #include "debug.h"
+
+#ifndef SDL_BIG_ENDIAN
+#error missing SDL_endian.h
+#endif  // SDL_BYTEORDER
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+#include <byteswap.h>
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
 // #define DEBUG_ZIP
 
@@ -50,7 +59,15 @@ extern const char *dirSeparator;
         delete [] buf; \
         fclose(arcFile); \
         return false; \
-    } \
+    }
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+#define swapVal16(val) val = bswap_16(val);
+#define swapVal32(val) val = bswap_32(val);
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+#define swapVal16(val)
+#define swapVal32(val)
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
 namespace Zip
 {
@@ -100,21 +117,22 @@ namespace Zip
                 // skip useless fields
                 fseek(arcFile, 4, SEEK_CUR);  // + 4
                 // file header pointer on 8
-                // +++ need add endian specific decoding for method
                 readVal(&method, 2, "compression method")  // + 2
+                swapVal16(method)
                 header->compressed = (method != 0);
                 // file header pointer on 10
                 fseek(arcFile, 8, SEEK_CUR);  // + 8
                 // file header pointer on 18
                 readVal(&header->compressSize, 4,
                     "zip compressed size")  // + 4
+                swapVal32(header->compressSize)
                 // file header pointer on 22
-                // +++ need add endian specific decoding for val32
                 readVal(&header->uncompressSize, 4,
                     "zip uncompressed size")  // + 4
+                swapVal32(header->uncompressSize)
                 // file header pointer on 26
-                // +++ need add endian specific decoding for val32
                 readVal(&val16, 2, "file name length")  // + 2
+                swapVal16(val16)
                 // file header pointer on 28
                 const uint32_t fileNameLen = CAST_U32(val16);
                 if (fileNameLen > 1000)
@@ -127,6 +145,7 @@ namespace Zip
                     return false;
                 }
                 readVal(&val16, 2, "extra field length")  // + 2
+                swapVal16(val16)
                 // file header pointer on 30
                 const uint32_t extraFieldLen = CAST_U32(val16);
                 readVal(buf, fileNameLen, "file name");
