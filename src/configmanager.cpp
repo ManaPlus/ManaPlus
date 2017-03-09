@@ -175,6 +175,12 @@ void ConfigManager::backupConfig(const std::string &name)
     const std::string fileName3 = std::string(settings.configDir).append(
         "/").append(name);
     StringVect arr;
+    if (Files::existsLocal(fileName3) == false)
+    {
+        logger->log("Config %s not exists, backup skipped.",
+            name.c_str());
+        return;
+    }
     if (Files::loadTextFileLocal(fileName3, arr) == true)
     {
         if (arr.size() == 0)
