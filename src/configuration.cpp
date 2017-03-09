@@ -523,6 +523,11 @@ std::string Configuration::getStringValue(const std::string &key) const
                     defaultValue = toString((static_cast<const IntData*>(
                         data))->getData());
                 }
+                else if (type == VariableData::DATA_FLOAT)
+                {
+                    defaultValue = toString((static_cast<const FloatData*>(
+                        data))->getData());
+                }
             }
             else
             {
