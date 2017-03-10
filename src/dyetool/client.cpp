@@ -295,7 +295,7 @@ void Client::gameInit()
 //    emoteShortcut = new EmoteShortcut;
 //    dropShortcut = new DropShortcut;
 
-    gui = new Gui();
+    gui = new Gui;
     gui->postInit(mainGraphics);
     dialogsManager = new DialogsManager;
     popupManager = new PopupManager;

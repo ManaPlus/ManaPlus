@@ -465,7 +465,7 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
         // Other
         else
         {
-            newParticle = new Particle();
+            newParticle = new Particle;
             newParticle->setMap(mMap);
         }
 

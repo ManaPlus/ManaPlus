@@ -554,7 +554,7 @@ void ParticleEmitter::createParticles(const int tick,
         }
         else
         {
-            newParticle = new Particle();
+            newParticle = new Particle;
             newParticle->setMap(mMap);
         }
 

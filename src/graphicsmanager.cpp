@@ -167,7 +167,7 @@ GraphicsManager::~GraphicsManager()
 #ifdef USE_OPENGL
 TestMain *GraphicsManager::startDetection()
 {
-    TestMain *const test = new TestMain();
+    TestMain *const test = new TestMain;
     test->exec(false);
     return test;
 }

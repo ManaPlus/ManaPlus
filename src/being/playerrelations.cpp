@@ -361,7 +361,7 @@ void PlayerRelationsManager::setRelation(const std::string &player_name,
 
 StringVect *PlayerRelationsManager::getPlayers() const
 {
-    StringVect *const retval = new StringVect();
+    StringVect *const retval = new StringVect;
 
     FOR_EACH (PlayerRelationsCIter, it, mRelations)
     {
@@ -377,7 +377,7 @@ StringVect *PlayerRelationsManager::getPlayers() const
 StringVect *PlayerRelationsManager::getPlayersByRelation(
     const RelationT rel) const
 {
-    StringVect *const retval = new StringVect();
+    StringVect *const retval = new StringVect;
 
     FOR_EACH (PlayerRelationsCIter, it, mRelations)
     {

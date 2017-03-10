@@ -56,7 +56,7 @@ static void loadQuest(const int var,
 {
     if (!node)
         return;
-    QuestItem *const quest = new QuestItem();
+    QuestItem *const quest = new QuestItem;
     // TRANSLATORS: quests window quest name
     quest->name = XML::langProperty(node, "name", _("unknown"));
     quest->group = XML::getProperty(node, "group", "");

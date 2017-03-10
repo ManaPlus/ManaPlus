@@ -212,7 +212,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
     int x = 0;
     int y = 0;
     int tempHeight = 0;
-    TextureAtlas *atlas = new TextureAtlas();
+    TextureAtlas *atlas = new TextureAtlas;
     std::vector<Image*>::const_iterator it = images.begin();
     const std::vector<Image*>::const_iterator it_end = images.end();
     for (it = images.begin(); it != it_end; ++ it)
@@ -247,7 +247,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
                 x = 0;
                 y = 0;
                 atlases.push_back(atlas);
-                atlas = new TextureAtlas();
+                atlas = new TextureAtlas;
                 atlas->name = std::string("atlas_").append(name).append(
                     "_").append(img->getIdPath());
             }

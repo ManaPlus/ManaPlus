@@ -464,7 +464,7 @@ void stateChange(const StateT state)
         if (!mInventory)
         {
             mInventory = new Inventory(InventoryType::Inventory);
-            mEquipment = new Equipment();
+            mEquipment = new Equipment;
             mCartInventory = new Inventory(InventoryType::Cart);
         }
     }

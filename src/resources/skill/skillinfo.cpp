@@ -67,7 +67,7 @@ SkillInfo::SkillInfo() :
     alwaysVisible(Visible_false),
     useTextParameter(false)
 {
-    dataMap[0] = new SkillData();
+    dataMap[0] = new SkillData;
     data = dataMap[0];
 }
 

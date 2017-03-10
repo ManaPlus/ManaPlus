@@ -91,7 +91,7 @@ void GuildManager::init()
     if (mEnableGuildBot)
     {
         if (!guildManager)
-            guildManager = new GuildManager();
+            guildManager = new GuildManager;
         else
             guildManager->reload();
     }

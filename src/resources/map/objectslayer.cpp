@@ -64,7 +64,7 @@ void ObjectsLayer::addObject(const std::string &name, const int type,
         for (unsigned i = idx1; i < idx2; i ++)
         {
             if (!mTiles[i])
-                mTiles[i] = new MapObjectList();
+                mTiles[i] = new MapObjectList;
             mTiles[i]->objects.push_back(MapObject(type, name));
         }
     }

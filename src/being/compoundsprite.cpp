@@ -337,7 +337,7 @@ void CompoundSprite::redraw() const
     if (!surface)
         return;
 
-    SurfaceGraphics *graphics = new SurfaceGraphics();
+    SurfaceGraphics *graphics = new SurfaceGraphics;
     graphics->setBlitMode(BlitMode::BLIT_GFX);
     graphics->setTarget(surface);
     graphics->beginDraw();
@@ -521,7 +521,7 @@ bool CompoundSprite::updateFromCache() const
 void CompoundSprite::initCurrentCacheItem() const
 {
     delete mCacheItem;
-    mCacheItem = new CompoundItem();
+    mCacheItem = new CompoundItem;
     mCacheItem->image = mImage;
     mCacheItem->alphaImage = mAlphaImage;
 //    mCacheItem->alpha = mAlpha;

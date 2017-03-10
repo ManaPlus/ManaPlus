@@ -565,7 +565,7 @@ void SpriteDef::addAction(const unsigned hp, const std::string &name,
 {
     const Actions::const_iterator i = mActions.find(hp);
     if (i == mActions.end())
-        mActions[hp] = new ActionMap();
+        mActions[hp] = new ActionMap;
 
     (*mActions[hp])[name] = action;
 }

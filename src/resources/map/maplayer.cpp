@@ -230,7 +230,7 @@ void MapLayer::updateSDL(const Graphics *const graphics,
 
     for (int y = startY; y < endY; y++)
     {
-        MapRowVertexes *const row = new MapRowVertexes();
+        MapRowVertexes *const row = new MapRowVertexes;
         mTempRows.push_back(row);
 
         const Image *lastImage = nullptr;
@@ -252,7 +252,7 @@ void MapLayer::updateSDL(const Graphics *const graphics,
             {
                 if (lastImage != img)
                 {
-                    imgVert = new ImageVertexes();
+                    imgVert = new ImageVertexes;
                     imgVert->image = img;
                     row->images.push_back(imgVert);
                     lastImage = img;
@@ -293,7 +293,7 @@ void MapLayer::updateOGL(Graphics *const graphics,
     const int dx = mPixelX - scrollX;
     const int dy = mPixelY - scrollY;
 
-    MapRowVertexes *const row = new MapRowVertexes();
+    MapRowVertexes *const row = new MapRowVertexes;
     mTempRows.push_back(row);
     Image *lastImage = nullptr;
     ImageVertexes *imgVert = nullptr;
@@ -330,7 +330,7 @@ void MapLayer::updateOGL(Graphics *const graphics,
                     {
                         if (lastImage)
                             imgSet[lastImage->mGLImage] = imgVert;
-                        imgVert = new ImageVertexes();
+                        imgVert = new ImageVertexes;
                         imgVert->ogl.init();
                         imgVert->image = img;
                         row->images.push_back(imgVert);

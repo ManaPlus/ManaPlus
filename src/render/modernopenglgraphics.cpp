@@ -675,7 +675,7 @@ void ModernOpenGLGraphics::calcTileCollection(ImageCollection *
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
-        ImageVertexes *const vert = new ImageVertexes();
+        ImageVertexes *const vert = new ImageVertexes;
         vertCol->currentGLImage = image->mGLImage;
         vertCol->currentVert = vert;
         vert->image = image;
@@ -729,7 +729,7 @@ void ModernOpenGLGraphics::calcPattern(ImageCollection *restrict const vertCol,
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
     {
-        vert = new ImageVertexes();
+        vert = new ImageVertexes;
         vertCol->currentGLImage = image->mGLImage;
         vertCol->currentVert = vert;
         vert->image = image;
@@ -827,7 +827,7 @@ void ModernOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol,
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
-        vert = new ImageVertexes();
+        vert = new ImageVertexes;
         vertCol->currentGLImage = image->mGLImage;
         vertCol->currentVert = vert;
         vert->image = image;

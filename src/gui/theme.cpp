@@ -1228,7 +1228,7 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
         return nullptr;
     }
 
-    ThemeInfo *const info = new ThemeInfo();
+    ThemeInfo *const info = new ThemeInfo;
 
     const std::string fontSize2("fontSize_" + mScreenDensity);
     const std::string npcfontSize2("npcfontSize_" + mScreenDensity);

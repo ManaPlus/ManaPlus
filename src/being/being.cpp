@@ -4496,7 +4496,7 @@ void Being::updateHit(const int amount) restrict2
 
 Equipment *Being::getEquipment() restrict2
 {
-    Equipment *restrict const eq = new Equipment();
+    Equipment *restrict const eq = new Equipment;
     Equipment::Backend *restrict const bk = new BeingEquipBackend(this);
     eq->setBackend(bk);
     return eq;
@@ -4845,7 +4845,7 @@ void Being::addItemParticles(const int id,
     ParticleInfo *restrict pi = nullptr;
     if (it == mSpriteParticles.end())
     {
-        pi = new ParticleInfo();
+        pi = new ParticleInfo;
         mSpriteParticles[id] = pi;
     }
     else
@@ -4883,7 +4883,7 @@ void Being::addItemParticlesCards(const int id,
     ParticleInfo *restrict pi = nullptr;
     if (it == mSpriteParticles.end())
     {
-        pi = new ParticleInfo();
+        pi = new ParticleInfo;
         mSpriteParticles[id] = pi;
     }
     else

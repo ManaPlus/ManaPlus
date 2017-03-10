@@ -622,7 +622,7 @@ void SDLGraphics::calcPatternInline(ImageVertexes *restrict const vert,
             const int dw = (px + iw >= w) ? w - px : iw;
             const int dstX = px + xOffset;
 
-            DoubleRect *const r = new DoubleRect();
+            DoubleRect *const r = new DoubleRect;
             SDL_Rect &srcRect = r->src;
             srcRect.x = CAST_S16(srcX);
             srcRect.y = CAST_S16(srcY);
@@ -656,7 +656,7 @@ void SDLGraphics::calcPattern(ImageCollection *restrict const vertCol,
     ImageVertexes *vert = nullptr;
     if (vertCol->currentImage != image)
     {
-        vert = new ImageVertexes();
+        vert = new ImageVertexes;
         vertCol->currentImage = image;
         vertCol->currentVert = vert;
         vert->image = image;
@@ -697,7 +697,7 @@ void SDLGraphics::calcTileSDL(ImageVertexes *restrict const vert,
     const ClipRect &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
 
-    DoubleRect *rect = new DoubleRect();
+    DoubleRect *rect = new DoubleRect;
     rect->src.x = CAST_S16(bounds.x);
     rect->src.y = CAST_S16(bounds.y);
     rect->src.w = CAST_U16(bounds.w);
@@ -723,7 +723,7 @@ void SDLGraphics::calcTileCollection(ImageCollection *restrict const vertCol,
         return;
     if (vertCol->currentImage != image)
     {
-        ImageVertexes *const vert = new ImageVertexes();
+        ImageVertexes *const vert = new ImageVertexes;
         vertCol->currentImage = image;
         vertCol->currentVert = vert;
         vert->image = image;
@@ -800,7 +800,7 @@ void SDLGraphics::calcWindow(ImageCollection *restrict const vertCol,
         return;
     if (vertCol->currentImage != image)
     {
-        vert = new ImageVertexes();
+        vert = new ImageVertexes;
         vertCol->currentImage = image;
         vertCol->currentVert = vert;
         vert->image = image;

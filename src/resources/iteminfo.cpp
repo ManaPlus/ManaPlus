@@ -178,7 +178,7 @@ IntMap *ItemInfo::addReplaceSprite(const int sprite,
 
     if (!spMap)
     {
-        spMap = new SpriteToItemMap();
+        spMap = new SpriteToItemMap;
         mSpriteToItemReplaceMap[direction] = spMap;
         mSpriteToItemReplaceList.push_back(spMap);
     }

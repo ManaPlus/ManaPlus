@@ -445,7 +445,7 @@ void Client::gameInit()
     emoteShortcut = new EmoteShortcut;
     dropShortcut = new DropShortcut;
 
-    gui = new Gui();
+    gui = new Gui;
     gui->postInit(mainGraphics);
     dialogsManager = new DialogsManager;
     popupManager = new PopupManager;
@@ -527,7 +527,7 @@ void Client::gameInit()
 
 #ifdef USE_MUMBLE
     if (!mumbleManager)
-        mumbleManager = new MumbleManager();
+        mumbleManager = new MumbleManager;
 #endif  // USE_MUMBLE
 
     mSkin = theme->load("windowmenu.xml", "");

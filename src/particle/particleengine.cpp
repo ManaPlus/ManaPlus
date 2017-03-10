@@ -118,7 +118,7 @@ bool ParticleEngine::update() restrict2
 
 Particle *ParticleEngine::createChild() restrict2
 {
-    Particle *const newParticle = new Particle();
+    Particle *const newParticle = new Particle;
     newParticle->setMap(mMap);
     mChildParticles.push_back(newParticle);
     return newParticle;
@@ -190,7 +190,7 @@ Particle *ParticleEngine::addEffect(const std::string &restrict
         // Other
         else
         {
-            newParticle = new Particle();
+            newParticle = new Particle;
             newParticle->setMap(mMap);
         }
 
