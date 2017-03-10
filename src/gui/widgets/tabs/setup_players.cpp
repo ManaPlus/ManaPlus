@@ -165,6 +165,10 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
         "", "enableRemoteCommands", this, "enableRemoteCommandsEvent",
         MainConfig_false);
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Allow move character by mouse"),
+        "", "allowMoveByMouse", this, "allowMoveByMouseEvent");
+
     setDimension(Rect(0, 0, 550, 350));
 }
 

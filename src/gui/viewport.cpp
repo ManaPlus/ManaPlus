@@ -93,6 +93,7 @@ Viewport::Viewport() :
     mEnableLazyScrolling(config.getBoolValue("enableLazyScrolling")),
     mMouseDirectionMove(config.getBoolValue("mouseDirectionMove")),
     mLongMouseClick(config.getBoolValue("longmouseclick")),
+    mAllowMoveByMouse(config.getBoolValue("allowMoveByMouse")),
     mMouseClicked(false),
     mPlayerFollowMouse(false)
 {
@@ -106,6 +107,7 @@ Viewport::Viewport() :
     config.addListener("enableLazyScrolling", this);
     config.addListener("mouseDirectionMove", this);
     config.addListener("longmouseclick", this);
+    config.addListener("allowMoveByMouse", this);
 
     setFocusable(true);
     updateMidVars();
@@ -524,10 +526,12 @@ bool Viewport::leftMouseAction()
         validateSpeed();
         localPlayer->stopAttack();
         localPlayer->cancelFollow();
-        mPlayerFollowMouse = true;
-
-        // Make the player go to the mouse position
-        followMouse();
+        mPlayerFollowMouse = mAllowMoveByMouse;
+        if (mPlayerFollowMouse)
+        {
+            // Make the player go to the mouse position
+            followMouse();
+        }
     }
     return false;
 }
@@ -833,7 +837,8 @@ void Viewport::mouseDragged(MouseEvent &event)
         mPlayerFollowMouse = false;
         return;
     }
-    if (mMouseClicked &&
+    if (mAllowMoveByMouse &&
+        mMouseClicked &&
         localPlayer &&
         localPlayer->canMove())
     {
@@ -894,6 +899,8 @@ void Viewport::optionChanged(const std::string &name)
         mMouseDirectionMove = config.getBoolValue("mouseDirectionMove");
     else if (name == "longmouseclick")
         mLongMouseClick = config.getBoolValue("longmouseclick");
+    else if (name == "allowMoveByMouse")
+        mAllowMoveByMouse = config.getBoolValue("allowMoveByMouse");
 }
 
 void Viewport::mouseMoved(MouseEvent &event)

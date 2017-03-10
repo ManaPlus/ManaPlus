@@ -244,6 +244,7 @@ class Viewport final : public WindowContainer,
         bool mEnableLazyScrolling;
         bool mMouseDirectionMove;
         bool mLongMouseClick;
+        bool mAllowMoveByMouse;
         bool mMouseClicked;
         bool mPlayerFollowMouse;
 };

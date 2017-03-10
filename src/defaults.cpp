@@ -400,6 +400,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("enableIdCollecting", false);
     AddDEF("checkOpenGLVersion", true);
     AddDEF("openglContext", false);
+    AddDEF("allowMoveByMouse", true);
     return configData;
 }
 
