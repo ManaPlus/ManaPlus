@@ -275,4 +275,11 @@ std::string escapeString(std::string str);
 
 void sanitizePath(std::string &path);
 
+std::string pathJoin(std::string str1,
+                     const std::string &str2);
+
+std::string pathJoin(std::string str1,
+                     const std::string &str2,
+                     const std::string &str3);
+
 #endif  // UTILS_STRINGUTILS_H

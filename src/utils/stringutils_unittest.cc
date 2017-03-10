@@ -1339,6 +1339,83 @@ TEST_CASE("stringuntils sanitizePath")
         "dir" + sep + "with" + sep + "sepa" + sep + "ra" + sep + "tors");
 }
 
+TEST_CASE("stringuntils pathJoin1")
+{
+    const std::string sep = dirSeparator;
+
+    REQUIRE(pathJoin("", "") == sep);
+    REQUIRE(pathJoin(sep, "") == sep);
+    REQUIRE(pathJoin("", sep) == sep);
+    REQUIRE(pathJoin(sep, sep) == sep);
+    REQUIRE(pathJoin("dir1", "dir2") == "dir1" + sep + "dir2");
+    REQUIRE(pathJoin("dir1" + sep, "dir2") == "dir1" + sep + "dir2");
+    REQUIRE(pathJoin("dir1", sep + "dir2") == "dir1" + sep + "dir2");
+    REQUIRE(pathJoin("dir1" + sep, sep + "dir2") == "dir1" + sep + "dir2");
+    REQUIRE(pathJoin("dir1" + sep + "dir2" + sep + "dir3", "dir4") ==
+        "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4");
+    REQUIRE(pathJoin("dir1" + sep + "dir2" + sep, "dir3" + sep + "dir4") ==
+        "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4");
+    REQUIRE(pathJoin("dir1" + sep + "dir2", "dir3" + sep + "dir4") ==
+        "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4");
+    REQUIRE(pathJoin("dir1" + sep + "dir2", sep + "dir3" + sep + "dir4") ==
+        "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4");
+}
+
+TEST_CASE("stringuntils pathJoin2")
+{
+    const std::string sep = dirSeparator;
+
+    REQUIRE(pathJoin("", "", "") == sep);
+    REQUIRE(pathJoin(sep, "", "") == sep);
+    REQUIRE(pathJoin("", sep, "") == sep);
+    REQUIRE(pathJoin("", "", sep) == sep);
+    REQUIRE(pathJoin(sep, sep, "") == sep);
+    REQUIRE(pathJoin(sep, "", sep) == sep);
+    REQUIRE(pathJoin("", sep, sep) == sep);
+    REQUIRE(pathJoin(sep, sep, sep) == sep);
+
+    REQUIRE(pathJoin("dir1", "dir2", "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1" + sep, "dir2", "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1", sep + "dir2", "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1", "dir2" + sep, "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1", "dir2", sep + "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1", "dir2", "dir3" + sep) ==
+        "dir1" + sep + "dir2" + sep + "dir3" + sep);
+    REQUIRE(pathJoin("dir1" + sep, sep + "dir2", "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1" + sep, "dir2" + sep, "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1" + sep, "dir2", sep + "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1" + sep, sep + "dir2" + sep, "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1" + sep, sep + "dir2", sep + "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1" + sep, sep + "dir2" + sep, "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1" + sep, sep + "dir2" + sep, sep + "dir3") ==
+        "dir1" + sep + "dir2" + sep + "dir3");
+    REQUIRE(pathJoin("dir1" + sep + "dir2" + sep + "dir3", "dir4", "dir5") ==
+        "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4" + sep + "dir5");
+    REQUIRE(pathJoin("dir1" + sep + "dir2" + sep,
+        "dir3" + sep + "dir4",
+        "dir5") ==
+        "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4" + sep + "dir5");
+    REQUIRE(pathJoin("dir1" + sep + "dir2",
+        "dir3",
+        sep + "dir4" + sep + "dir5") ==
+        "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4" + sep + "dir5");
+    REQUIRE(pathJoin("dir1" + sep + "dir2",
+        sep + "dir3" + sep + "dir4",
+        sep + "dir5") ==
+        "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4" + sep + "dir5");
+}
+
 TEST_CASE("stringuntils secureChatCommand")
 {
     std::string str;
