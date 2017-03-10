@@ -177,19 +177,6 @@ AC_TYPE_UINT32_T
 AC_TYPE_INT64_T
 AC_TYPE_SSIZE_T
 
-case $host in 
-  (*mingw*)
-    skip_check_lib="yes"
-    mingw=true
-    ;;
-  (*)
-    skip_check_lib="no"
-    mingw=false
-    ;;
-esac
-
-AM_CONDITIONAL(MINGW, test x$mingw = xtrue)
-
 # Search for *-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
 AC_PATH_PROG(CURL_CONFIG, curl-config)
@@ -202,6 +189,21 @@ CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags libpng`"
 # Checks for internationalization support
 AM_GNU_GETTEXT([external],[need-ngettext])
 AM_GNU_GETTEXT_VERSION([0.16.1])
+
+case $host in 
+  (*mingw*)
+    skip_check_lib="yes"
+    mingw=true
+    LIBS="$LIBS -lintl"
+    ;;
+  (*)
+    skip_check_lib="no"
+    mingw=false
+    ;;
+esac
+
+AM_CONDITIONAL(MINGW, test x$mingw = xtrue)
+
 
 AC_DEFUN([AC_CHECK_SDL],
 [
