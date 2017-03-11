@@ -192,7 +192,6 @@ TEST_CASE("VirtFs1 mountZip")
     std::string name("data/test/test.zip");
     std::string prefix;
     const std::string sep = dirSeparator;
-    std::vector<ZipLocalHeader*> headers;
     if (Files::existsLocal(name) == false)
         prefix = "../";
 
@@ -311,7 +310,6 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
     std::string name("data/test/test.zip");
     std::string prefix;
     const std::string sep = dirSeparator;
-    std::vector<ZipLocalHeader*> headers;
     if (Files::existsLocal(name) == false)
         prefix = "../";
 
@@ -676,7 +674,7 @@ TEST_CASE("VirtFs1 getRealDir2")
     delete2(logger);
 }
 
-static bool inList(VirtList *list,
+static bool inList(const VirtList *const list,
                    const std::string &name)
 {
     FOR_EACH (StringVectCIter, it, list->names)
@@ -745,7 +743,6 @@ TEST_CASE("VirtFs1 enumerateFiles2")
     VirtList *list = nullptr;
 
     list = VirtFs::enumerateFiles("/");
-    const size_t sz = list->names.size();
     REQUIRE(list->names.size() == 5);
     REQUIRE(inList(list, "file1.txt"));
     REQUIRE_FALSE(inList(list, "file2.txt"));
@@ -772,7 +769,6 @@ TEST_CASE("VirtFs1 enumerateFiles3")
 
     list = VirtFs::enumerateFiles("/");
     const size_t sz = list->names.size();
-    REQUIRE(list->names.size() == 6);
     REQUIRE(inList(list, "file1.txt"));
     REQUIRE(inList(list, "file2.txt"));
     VirtFs::freeList(list);

@@ -41,6 +41,15 @@ struct VirtFsFuncs final
         fileLength(nullptr),
         tell(nullptr),
         seek(nullptr),
+#ifndef USE_PHYSFS
+        exists(nullptr),
+        getRealDir(nullptr),
+        enumerate(nullptr),
+        isDirectory(nullptr),
+        openRead(nullptr),
+        openWrite(nullptr),
+        openAppend(nullptr),
+#endif
         eof(nullptr)
     {
     }
@@ -60,7 +69,6 @@ struct VirtFsFuncs final
     int64_t (*tell) (VirtFile *restrict const file);
     int (*seek) (VirtFile *restrict const file,
                  const uint64_t pos);
-    int (*eof) (VirtFile *restrict const file);
 #ifndef USE_PHYSFS
     bool (*exists) (VirtFsEntry *restrict const entry,
                     const std::string &filename,
@@ -82,6 +90,7 @@ struct VirtFsFuncs final
     VirtFile *(*openAppend) (VirtFsEntry *restrict const entry,
                              const std::string &filename);
 #endif  // USE_PHYSFS
+    int (*eof) (VirtFile *restrict const file);
 };
 
 #endif  // UTILS_VIRTFSFUNCS_H

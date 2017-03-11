@@ -292,7 +292,7 @@ void Viewport::followMouse()
     if (mPlayerFollowMouse && (button & SDL_BUTTON(1)))
     {
         // We create a mouse event and send it to mouseDragged.
-        MouseEvent event(nullptr,
+        const MouseEvent event(nullptr,
             MouseEventType::DRAGGED,
             MouseButton::LEFT,
             mMouseX,

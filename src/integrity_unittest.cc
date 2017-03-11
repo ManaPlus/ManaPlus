@@ -262,7 +262,7 @@ TEST_CASE("integrity tests", "integrity")
         SDL_RWclose(rw);
         VirtFs::unmountZip(prefix + "data/test/test.zip");
         VirtFs::mountDirSilent(prefix + "data/test", Append_true);
-        REQUIRE(compareBuffers(buf) == true);
+        REQUIRE(compareBuffers(buf));
         VirtFs::unmountDirSilent(prefix + "data/test");
     }
 
@@ -409,7 +409,7 @@ TEST_CASE("integrity tests", "integrity")
         VirtFs::unmountZip("../data/test/test.zip");
         VirtFs::mountDirSilent("data/test", Append_true);
         VirtFs::mountDirSilent("../data/test", Append_true);
-        REQUIRE(compareBuffers(buf) == true);
+        REQUIRE(compareBuffers(buf));
         VirtFs::unmountDirSilent("data/test");
         VirtFs::unmountDirSilent("../data/test");
     }
@@ -447,7 +447,7 @@ TEST_CASE("integrity tests", "integrity")
         VirtFs::unmountZip(prefix + "data/test/test.zip");
         VirtFs::mountDirSilent("data/test", Append_true);
         VirtFs::mountDirSilent("../data/test", Append_true);
-        REQUIRE(compareBuffers(buf) == true);
+        REQUIRE(compareBuffers(buf));
         VirtFs::unmountDirSilent("data/test");
         VirtFs::unmountDirSilent("../data/test");
     }

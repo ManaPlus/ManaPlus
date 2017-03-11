@@ -35,7 +35,6 @@
 #include "fs/paths.h"
 #endif  // ANDROID
 #include "utils/process.h"
-#include "utils/xml.h"
 
 #ifdef __MINGW32__
 #include <windows.h>
@@ -53,6 +52,8 @@
 #ifdef UNITTESTS
 #define CATCH_CONFIG_RUNNER
 #include "catch.hpp"
+#else  // UNITTESTS
+#include "utils/xml.h"
 #endif  // UNITTESTS
 
 #define SDL_IMAGE_COMPILEDVERSION \

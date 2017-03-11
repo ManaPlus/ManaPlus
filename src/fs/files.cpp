@@ -190,7 +190,7 @@ int Files::copyFile(const std::string &restrict srcName,
         return -1;
     }
 
-    const int chunkSize = 500000;
+    const int chunkSize = 512000;
     char *buf = new char[chunkSize];
     size_t sz = 0;
     while ((sz = fread(buf, 1, chunkSize, srcFile)))

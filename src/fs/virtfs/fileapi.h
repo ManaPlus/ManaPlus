@@ -22,6 +22,8 @@
 #define UTILS_VIRTFS_FILEAPI_H
 #ifndef USE_PHYSFS
 
+#include "localconsts.h"
+
 #ifdef USE_FILE_FOPEN
 #define FILEHTYPE FILE *const
 #define FILEMTYPE char *

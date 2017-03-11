@@ -31,7 +31,8 @@
 VirtZipEntry::VirtZipEntry(const std::string &restrict archiveName,
                            VirtFsFuncs *restrict const funcs0) :
     VirtFsEntry(FsEntryType::Zip, funcs0),
-    mHeaders()
+    mHeaders(),
+    mDirs()
 {
     root = archiveName;
 }

@@ -78,11 +78,11 @@ std::string getRealPath(const std::string &str)
        // defined(__native_client__)
 
     char *realPath = realpath(str.c_str(), nullptr);
+    if (!realPath)
+        return "";
 #endif  // defined(__OpenBSD__) || defined(__ANDROID__) ||
         // defined(__native_client__)
 
-    if (!realPath)
-        return "";
     std::string path = realPath;
     free(realPath);
     return path;
@@ -105,7 +105,7 @@ bool checkPath(const std::string &path)
 
 void prepareFsPath(std::string &path)
 {
-    std::string path2 = path;
+//    std::string path2 = path;
     sanitizePath(path);
 // can be enabled for debugging
 //    if (path != path2)
@@ -231,11 +231,9 @@ std::string getHomePath()
     const char *path = getenv("HOME");
     if (path == nullptr)
     {
-        uid_t uid = getuid();
-        struct passwd *pw;
-
-        pw = getpwuid(uid);
-        if (pw != NULL &&
+        const uid_t uid = getuid();
+        const struct passwd *const pw = getpwuid(uid);
+        if (pw != nullptr &&
             pw->pw_dir != nullptr)
         {
             path = pw->pw_dir;

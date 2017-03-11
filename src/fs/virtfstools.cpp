@@ -25,11 +25,6 @@
 #include "fs/paths.h"
 #include "fs/virtfs.h"
 
-#ifdef USE_PHYSFS
-#include "fs/physfs/virtfsphys.h"
-#else  // USE_PHYSFS
-#include "fs/virtfs/virtfsdir.h"
-#endif  // USE_PHYSFS
 #include "fs/virtlist.h"
 
 #include "utils/stringutils.h"

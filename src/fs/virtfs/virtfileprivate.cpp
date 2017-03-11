@@ -22,7 +22,6 @@
 #include "fs/virtfs/virtfileprivate.h"
 
 #include <unistd.h>
-#include <zlib.h>
 
 #include "debug.h"
 
@@ -55,7 +54,6 @@ VirtFilePrivate::~VirtFilePrivate()
 {
     if (mFd != FILEHDEFAULT)
         FILECLOSE(mFd);
-    if (mBuf)
-        delete [] mBuf;
+    delete [] mBuf;
 }
 #endif  // USE_PHYSFS

@@ -42,8 +42,8 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/desktop.h"
-#include "gui/widgets/windowcontainer.h"
 #include "gui/widgets/window.h"
+#include "gui/widgets/windowcontainer.h"
 
 #include "input/inputmanager.h"
 #include "input/joystick.h"

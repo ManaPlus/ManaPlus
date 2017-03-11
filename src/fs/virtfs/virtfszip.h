@@ -22,9 +22,6 @@
 #define UTILS_VIRTFSZIP_H
 #ifndef USE_PHYSFS
 
-#include "enums/simpletypes/append.h"
-#include "enums/simpletypes/skiperror.h"
-
 #include "utils/stringvector.h"
 
 #include "localconsts.h"

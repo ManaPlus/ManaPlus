@@ -18,9 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef USE_PHYSFS
 #ifndef UTILS_VIRTFSPHYS_H
 #define UTILS_VIRTFSPHYS_H
+
+#ifdef USE_PHYSFS
 
 #include "enums/simpletypes/append.h"
 
@@ -78,5 +79,5 @@ namespace VirtFsPhys
     int eof(VirtFile *restrict const file);
 }  // namespace VirtFsPhys
 
-#endif  // UTILS_VIRTFSPHYS_H
 #endif  // USE_PHYSFS
+#endif  // UTILS_VIRTFSPHYS_H

@@ -216,7 +216,7 @@ static void removeTemp(StringVect &restrict list)
     }
 }
 
-static bool inList(VirtList *list,
+static bool inList(const VirtList *const list,
                    const std::string &name)
 {
     FOR_EACH (StringVectCIter, it, list->names)
@@ -280,7 +280,6 @@ TEST_CASE("VirtFs enumerateFiles2")
     VirtList *list = nullptr;
 
     list = VirtFs::enumerateFiles("/");
-    const size_t sz = list->names.size();
     REQUIRE(list->names.size() == 5);
     VirtFs::freeList(list);
 

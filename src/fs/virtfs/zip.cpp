@@ -89,7 +89,6 @@ namespace Zip
                 archiveName.c_str());
             return false;
         }
-        size_t cnt = 0U;
         uint8_t *const buf = new uint8_t[65535 + 10];
         uint16_t val16 = 0U;
         uint16_t method = 0U;
@@ -102,6 +101,7 @@ namespace Zip
         // format source https://en.wikipedia.org/wiki/Zip_%28file_format%29
         while (feof(arcFile) == 0)
         {
+            size_t cnt = 0U;
             // file header pointer on 0
             // read file header signature
             readVal(buf, 4, "zip file header");  // + 4

@@ -26,8 +26,6 @@
 
 #include "localconsts.h"
 
-#include <string>
-
 #include "debug.h"
 
 ZipLocalHeader::ZipLocalHeader() :

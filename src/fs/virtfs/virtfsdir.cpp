@@ -25,7 +25,6 @@
 #include "fs/files.h"
 #include "fs/mkdir.h"
 #include "fs/paths.h"
-#include "fs/virtfs.h"
 #include "fs/virtfile.h"
 #include "fs/virtfsfuncs.h"
 #include "fs/virtlist.h"
@@ -34,7 +33,6 @@
 #include "fs/virtfs/virtfileprivate.h"
 
 #include "utils/checkutils.h"
-#include "utils/dtor.h"
 #include "utils/stringutils.h"
 
 #include <dirent.h>
@@ -167,7 +165,6 @@ namespace VirtFsDir
                     std::string &realDir)
     {
         VirtDirEntry *const dirEntry = static_cast<VirtDirEntry*>(entry);
-        const std::string path = dirEntry->root + filename;
         if (Files::existsLocal(dirEntry->root + filename))
         {
             realDir = dirEntry->userDir;

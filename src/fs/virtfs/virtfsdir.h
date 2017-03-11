@@ -22,9 +22,6 @@
 #define UTILS_VIRTFSDIR_H
 #ifndef USE_PHYSFS
 
-#include "enums/simpletypes/append.h"
-#include "enums/simpletypes/skiperror.h"
-
 #include "fs/virtfs/fileapi.h"
 
 #include "utils/stringvector.h"

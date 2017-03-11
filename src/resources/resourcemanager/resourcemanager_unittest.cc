@@ -76,7 +76,6 @@ namespace
             const TestLoader *const rl
                 = static_cast<const TestLoader *const>(v);
 
-            std::string path1 = rl->path;
             Resource *const res = new TestResource();
             BLOCK_END("TestLoader::load")
             return res;

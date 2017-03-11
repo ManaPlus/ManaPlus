@@ -25,7 +25,6 @@
 #include "localconsts.h"
 
 #include <string>
-#include <vector>
 
 struct VirtZipEntry;
 struct ZipLocalHeader;

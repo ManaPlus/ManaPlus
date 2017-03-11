@@ -36,7 +36,6 @@
 #include "fs/virtfs/zip.h"
 
 #include "utils/checkutils.h"
-#include "utils/dtor.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -107,7 +106,7 @@ namespace VirtFs
     {
         FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            const VirtFsEntry *const entry = *it;
             if (entry->root == root &&
                 entry->type == type)
             {
@@ -282,7 +281,7 @@ namespace VirtFs
         std::string rootDir = newDir;
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
-        VirtFsEntry *const entry = searchEntryByRootInternal(rootDir);
+        const VirtFsEntry *const entry = searchEntryByRootInternal(rootDir);
         if (entry != nullptr)
         {
             reportAlways("VirtFs::addToSearchPath already exists: %s",
@@ -506,7 +505,6 @@ namespace VirtFs
             else
                 delete entry;
         }
-//        delete_all(mEntries);
         mEntries.clear();
         return true;
     }

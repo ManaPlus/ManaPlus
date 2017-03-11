@@ -184,7 +184,6 @@ TEST_CASE("VirtFsPhys enumerateFiles2")
     VirtList *list = nullptr;
 
     list = VirtFsPhys::enumerateFiles("/");
-    const size_t sz = list->names.size();
     REQUIRE(list->names.size() == 5);
     VirtFsPhys::freeList(list);
 

@@ -22,8 +22,6 @@
 
 #include "fs/virtfs/virtfszip.h"
 
-#include "fs/files.h"
-#include "fs/paths.h"
 #include "fs/virtfsfuncs.h"
 #include "fs/virtfile.h"
 #include "fs/virtlist.h"
@@ -34,7 +32,6 @@
 #include "fs/virtfs/ziplocalheader.h"
 
 #include "utils/checkutils.h"
-#include "utils/dtor.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -222,7 +219,7 @@ namespace VirtFsZip
                   it2,
                   zipEntry->mHeaders)
         {
-            ZipLocalHeader *restrict const header = *it2;
+            const ZipLocalHeader *restrict const header = *it2;
             if (header->fileName == filename)
             {
                 uint8_t *restrict const buf = Zip::readFile(header);
