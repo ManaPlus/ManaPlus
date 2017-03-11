@@ -22,8 +22,6 @@
 
 #include "fs/virtfs/virtfsentry.h"
 
-#include "fs/virtfsfuncs.h"
-
 #include "debug.h"
 
 VirtFsEntry::VirtFsEntry(const FsEntryTypeT &type0,

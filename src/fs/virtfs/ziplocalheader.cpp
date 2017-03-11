@@ -22,8 +22,6 @@
 
 #include "fs/virtfs/ziplocalheader.h"
 
-#include "fs/virtfs/virtzipentry.h"
-
 #include "localconsts.h"
 
 #include "debug.h"

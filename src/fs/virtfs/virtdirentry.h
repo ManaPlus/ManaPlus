@@ -24,8 +24,6 @@
 
 #include "fs/virtfs/virtfsentry.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 struct VirtDirEntry final : public VirtFsEntry

@@ -21,8 +21,6 @@
 #ifndef USE_PHYSFS
 #include "fs/virtfs/virtfileprivate.h"
 
-#include <unistd.h>
-
 #include "debug.h"
 
 VirtFilePrivate::VirtFilePrivate() :

@@ -26,10 +26,6 @@
 
 #include "fs/virtfs/fileapi.h"
 
-#ifdef USE_FILE_FOPEN
-#include <stdio.h>
-#endif  // USE_FILE_FOPEN
-
 struct VirtFilePrivate final
 {
     VirtFilePrivate();

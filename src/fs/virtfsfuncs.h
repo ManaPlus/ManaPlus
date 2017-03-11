@@ -21,8 +21,6 @@
 #ifndef UTILS_VIRTFSFUNCS_H
 #define UTILS_VIRTFSFUNCS_H
 
-#include "enums/simpletypes/append.h"
-
 #include "utils/stringvector.h"
 
 #include "localconsts.h"

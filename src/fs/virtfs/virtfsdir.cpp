@@ -36,8 +36,6 @@
 #include "utils/stringutils.h"
 
 #include <dirent.h>
-#include <fcntl.h>
-#include <iostream>
 #include <unistd.h>
 
 #ifdef USE_FILE_FOPEN

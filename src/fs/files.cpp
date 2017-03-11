@@ -20,8 +20,6 @@
 
 #include "fs/files.h"
 
-#include "logger.h"
-
 #include "fs/mkdir.h"
 #if defined(ANDROID) || defined(__native_client__)
 #include "fs/paths.h"

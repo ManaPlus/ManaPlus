@@ -30,8 +30,6 @@
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"
 
-#include <iostream>
-#include <unistd.h>
 #include <zlib.h>
 #include <SDL_endian.h>
 
