@@ -126,6 +126,19 @@ gcc-4.4:
   tags:
     - docker
 
+mxe_gcc5_shared_32:
+  stage: prebuild
+  script:
+  - ls /mxe
+  - ./tools/ci/jobs/mxe_gcc5.sh
+  <<: *job-shared
+  image: registry.gitlab.com/manaplus/mxe:gcc5_shared
+  variables:
+    PACKAGES: bash
+    CROSS: i686-w64-mingw32.shared
+  tags:
+    - docker
+
 gcc-5_sdl2:
   stage: prebuild
   script:
