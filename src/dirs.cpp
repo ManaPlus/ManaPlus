@@ -233,20 +233,14 @@ void Dirs::mountDataDir()
     VirtFs::mountZip("/http/data.zip", Append_false);
 #endif  // defined __native_client__
 
+#ifndef WIN32
     // Add branding/data to PhysFS search path
     if (!settings.options.brandingPath.empty())
     {
         std::string path = settings.options.brandingPath;
 
         // Strip blah.manaplus from the path
-#ifdef WIN32
-        const int loc1 = path.find_last_of('/');
-        const int loc2 = path.find_last_of('\\');
-        const int loc = CAST_S32(std::max(loc1, loc2));
-#else  // WIN32
-
         const int loc = CAST_S32(path.find_last_of('/'));
-#endif  // WIN32
 
         if (loc > 0)
         {
@@ -255,6 +249,7 @@ void Dirs::mountDataDir()
                 Append_false);
         }
     }
+#endif  // WIN32
 }
 
 void Dirs::initRootDir()
