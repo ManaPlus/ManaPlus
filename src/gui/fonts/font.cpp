@@ -133,13 +133,13 @@ Font::Font(std::string filename,
     ++fontCounter;
 
     fixDirSeparators(filename);
+    logger->log("Attempt to load font: %s",
+        filename.c_str());
     mFont = openFont(filename.c_str(), size);
 
     if (!mFont)
     {
-#ifdef UNITTESTS
         logger->log("Error normal loading font " + filename);
-#endif  // UNITTESTS
 
         filename = "fonts/dejavusans.ttf";
         mFont = openFont(fixDirSeparators(filename).c_str(), size);
@@ -203,6 +203,8 @@ TTF_Font *Font::openFont(const char *const name,
 #endif  // UNITTESTS
         return nullptr;
     }
+    logger->log("Loading physical font file: %s",
+        path.c_str());
     return TTF_OpenFontIndex(path.c_str(),
         size, 0);
 // #endif
