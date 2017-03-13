@@ -118,10 +118,11 @@ void prepareFsPath(std::string &path)
 
 std::string &fixDirSeparators(std::string &str)
 {
-    if (dirSeparator[0] == '/')
-        return str;
-
+#ifdef WIN32
     return replaceAll(str, "/", "\\");
+#else
+    return str;
+#endif
 }
 
 std::string removeLast(const std::string &str)
