@@ -265,7 +265,7 @@ Section "Core files (required)" SecCore
   File "${DLLDIR}\libfreetype-6.dll"
   File "${DLLDIR}\libiconv-2.dll"
   File "${DLLDIR}\libintl-8.dll"
-  File "${DLLDIR}\libjpeg-8.dll"
+  File "${DLLDIR}\libjpeg-9.dll"
   File "${DLLDIR}\libogg-0.dll"
   File "${DLLDIR}\libpng15-15.dll"
   File "${DLLDIR}\libSDL_gfx-13.dll"
