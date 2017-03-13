@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source ./winvars.sh || exit 1
+
+mkdir tmp
+cd ..
+
+dir=`pwd`
+
+autoreconf -i || exit 1
+cd build/tmp
+../../configure \
+--host=${CROSS} \
+--enable-werror || exit 1
+
+make -j9 2>../make2.log || exit 1

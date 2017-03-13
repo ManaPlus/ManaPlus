@@ -1,17 +1,4 @@
 #!/bin/bash
 
-source ./winvars.sh
-
-mkdir tmp
-cd ..
-
-dir=`pwd`
-
-autoreconf -i
-cd build/tmp
-
-../../configure \
---host=${CROSS} \
---enable-unittests
-
-make check -j8 2>../make2.log
+export CXXFLAGS="-Wall -g1 -O5 -ffast-math -std=gnu++1z -funswitch-loops -funsafe-loop-optimizations -pipe"
+./win_tests
