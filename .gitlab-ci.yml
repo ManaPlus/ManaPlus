@@ -132,10 +132,23 @@ mxe_gcc5_shared_32:
   - ls /mxe
   - ./tools/ci/jobs/mxe_gcc5.sh
   <<: *job-shared
-  image: registry.gitlab.com/manaplus/mxe:gcc5_shared
+  image: registry.gitlab.com/manaplus/mxe:gcc5_shared_32
   variables:
     PACKAGES: bash
     CROSS: i686-w64-mingw32.shared
+  tags:
+    - docker
+
+mxe_gcc5_shared_64:
+  stage: build
+  script:
+  - ls /mxe
+  - ./tools/ci/jobs/mxe_gcc5.sh
+  <<: *job-shared
+  image: registry.gitlab.com/manaplus/mxe:gcc5_shared_64
+  variables:
+    PACKAGES: bash
+    CROSS: x86_64-w64-mingw32.shared
   tags:
     - docker
 
