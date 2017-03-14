@@ -138,8 +138,8 @@ TEST_CASE("stringuntils toString 1")
         static_cast<signed int>(30000000)));
     REQUIRE(strprintf("%d", 3000) == toString(CAST_U16(3000)));
     REQUIRE(strprintf("%d", 123) == toString(CAST_U8(123)));
-    REQUIRE(strprintf("%ld", static_cast<unsigned long>(30000000)) == toString(
-        static_cast<unsigned long>(30000000)));
+    REQUIRE(strprintf("%ld", static_cast<uint32_t>(30000000)) == toString(
+        static_cast<uint32_t>(30000000)));
     REQUIRE(strprintf("%f", 3.1f) == toString(3.1f));
     REQUIRE(strprintf("%f", 3.1) == toString(3.1));
 }
