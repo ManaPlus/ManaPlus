@@ -79,7 +79,6 @@ class Desktop final : public Container,
         Image *mWallpaper;
         BrowserBox *mVersionLabel;
         Skin *mSkin;
-        Color mBackgroundColor;
         Color mBackgroundGrayColor;
         bool mShowBackground;
 };

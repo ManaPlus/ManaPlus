@@ -55,10 +55,11 @@ Desktop::Desktop(const Widget2 *const widget) :
     mVersionLabel(new BrowserBox(this, BrowserBoxMode::AUTO_WRAP, Opaque_false,
         "browserbox.xml")),
     mSkin(nullptr),
-    mBackgroundColor(getThemeColor(ThemeColorId::BACKGROUND, 128)),
     mBackgroundGrayColor(getThemeColor(ThemeColorId::BACKGROUND_GRAY)),
     mShowBackground(true)
 {
+    mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND, 128);
+
     addWidgetListener(this);
 
     Wallpaper::loadWallpapers();

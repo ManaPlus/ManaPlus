@@ -115,7 +115,7 @@ PopupMenu::PopupMenu() :
     mMapItem(nullptr),
     mTab(nullptr),
     mSpell(nullptr),
-    mWindow(nullptr),
+    mCallerWindow(nullptr),
     mRenameListener(),
     mPlayerListener(),
     mDialog(nullptr),
@@ -733,7 +733,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
     mY = y2;
 
     if (isMinimap)
-        mWindow = minimap;
+        mCallerWindow = minimap;
 
     mBrowserBox->clearRows();
 
@@ -776,7 +776,7 @@ void PopupMenu::showOutfitsWindowPopup(const int x, const int y)
 {
     mX = x;
     mY = y;
-    mWindow = outfitWindow;
+    mCallerWindow = outfitWindow;
 
     mBrowserBox->clearRows();
 
@@ -838,7 +838,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
     mTab = tab;
     mX = x;
     mY = y;
-    mWindow = chatWindow;
+    mCallerWindow = chatWindow;
 
     mBrowserBox->clearRows();
 
@@ -1078,7 +1078,7 @@ void PopupMenu::showWindowPopup(Window *const window)
         return;
 
     setMousePos();
-    mWindow = window;
+    mCallerWindow = window;
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("window"));
@@ -1478,20 +1478,20 @@ void PopupMenu::handleLink(const std::string &link,
         showPlayerMenu();
         return;
     }
-    else if (link == "window close" && mWindow)
+    else if (link == "window close" && mCallerWindow)
     {
-        if (Widget::widgetExists(mWindow))
-            mWindow->close();
+        if (Widget::widgetExists(mCallerWindow))
+            mCallerWindow->close();
     }
-    else if (link == "window unlock" && mWindow)
+    else if (link == "window unlock" && mCallerWindow)
     {
-        if (Widget::widgetExists(mWindow))
-            mWindow->setSticky(false);
+        if (Widget::widgetExists(mCallerWindow))
+            mCallerWindow->setSticky(false);
     }
-    else if (link == "window lock" && mWindow)
+    else if (link == "window lock" && mCallerWindow)
     {
-        if (Widget::widgetExists(mWindow))
-            mWindow->setSticky(true);
+        if (Widget::widgetExists(mCallerWindow))
+            mCallerWindow->setSticky(true);
     }
     else if (link == "join chat" && being)
     {
@@ -1715,7 +1715,7 @@ void PopupMenu::handleLink(const std::string &link,
     mMapItem = nullptr;
     mTab = nullptr;
     mSpell = nullptr;
-    mWindow = nullptr;
+    mCallerWindow = nullptr;
     mDialog = nullptr;
     mButton = nullptr;
     mName.clear();
@@ -1740,7 +1740,7 @@ void PopupMenu::showPopup(Window *const parent,
     for (int f = 0; f < maxCards; f ++)
         mItemCards[f] = item->getCard(f);
     mItemColor = item->getColor();
-    mWindow = parent;
+    mCallerWindow = parent;
     mX = x;
     mY = y;
     mName.clear();
@@ -2876,7 +2876,7 @@ void PopupMenu::clear()
     mMapItem = nullptr;
     mTab = nullptr;
     mSpell = nullptr;
-    mWindow = nullptr;
+    mCallerWindow = nullptr;
     mButton = nullptr;
     mTextField = nullptr;
 }

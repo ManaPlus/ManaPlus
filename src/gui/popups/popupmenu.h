@@ -280,7 +280,7 @@ class PopupMenu final : public Popup, public LinkHandler
         MapItem *mMapItem;
         ChatTab *mTab;
         TextCommand *mSpell;
-        Window *mWindow;
+        Window *mCallerWindow;
         RenameListener mRenameListener;
         PlayerListener mPlayerListener;
         TextDialog *mDialog;
