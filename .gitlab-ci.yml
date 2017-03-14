@@ -51,7 +51,7 @@ variables:
 # pre build
 
 gcc-5_c++11_i386:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
   image: vicamo/debian:sid-i386
@@ -65,7 +65,7 @@ gcc-5_c++11_i386:
     - docker
 
 gcc-6-i386:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh
   image: vicamo/debian:sid-i386
@@ -79,7 +79,7 @@ gcc-6-i386:
     - docker
 
 clang-3.9:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/clang39.sh
   <<: *job-shared
@@ -90,7 +90,7 @@ clang-3.9:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-6:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh
   <<: *job-shared
@@ -101,7 +101,7 @@ gcc-6:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-6_physfs:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --with-physfs
   <<: *job-shared
@@ -113,7 +113,7 @@ gcc-6_physfs:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-4.4:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc44.sh
   image: debian:oldstable
@@ -127,7 +127,7 @@ gcc-4.4:
     - docker
 
 mxe_gcc5_shared_32:
-  stage: prebuild
+  stage: build
   script:
   - ls /mxe
   - ./tools/ci/jobs/mxe_gcc5.sh
@@ -140,7 +140,7 @@ mxe_gcc5_shared_32:
     - docker
 
 gcc-5_sdl2:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh
   <<: *job-shared
@@ -151,7 +151,7 @@ gcc-5_sdl2:
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 gcc-6_game_only:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --without-dyecmd
   <<: *job-shared
@@ -162,7 +162,7 @@ gcc-6_game_only:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-6_dyecmd_only:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --without-manaplusgame
   <<: *job-shared
@@ -173,7 +173,7 @@ gcc-6_dyecmd_only:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 mplint_po:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/mplint.sh po
   <<: *job-shared
@@ -182,7 +182,7 @@ mplint_po:
               make autoconf automake autopoint gettext
 
 mplint_src:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/mplint.sh src
   <<: *job-shared
@@ -191,7 +191,7 @@ mplint_src:
               make autoconf automake autopoint gettext
 
 mplint_data:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/mplint.sh data
   <<: *job-shared
@@ -200,7 +200,7 @@ mplint_data:
               make autoconf automake autopoint gettext
 
 cpplint:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/cpplint.sh
   <<: *job-shared
@@ -208,7 +208,7 @@ cpplint:
     PACKAGES: python wget
 
 gcc-5_h_all:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
   <<: *job-shared
@@ -219,7 +219,7 @@ gcc-5_h_all:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_h_all_i386:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
   image: vicamo/debian:sid-i386
@@ -233,7 +233,7 @@ gcc-5_h_all_i386:
     - docker
 
 pngcheck:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/pngcheck.sh
   <<: *job-shared
@@ -241,7 +241,7 @@ pngcheck:
     PACKAGES: pngcheck
 
 icccheck:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/imagemagiccheck.sh
   <<: *job-shared
@@ -1356,7 +1356,7 @@ cmake_gcc-4.9:
     - docker
 
 .clang-4.0:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/clang40.sh
   <<: *job-shared
