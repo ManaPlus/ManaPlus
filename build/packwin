@@ -11,5 +11,6 @@ makensis -DDLLDIR=$dir/../libs/dll/ \
     -DEXESUFFIX=/src \
     -DUPX=true \
     -DBITS=${BITS} \
+    -DSEHDLL=${SEHDLL} \
     setup.nsi
 

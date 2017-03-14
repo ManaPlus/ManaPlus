@@ -41,6 +41,10 @@ RequestExecutionLevel admin
   !define BITS 32
 !endif
 
+!ifndef SEHDLL
+  !define SEHDLL "libgcc_s_sjlj-1.dll"
+!endif
+
 ;--- (and without !defines ) ---
 !System "${UPX} --best --crp-ms=999999 --compress-icons=0 --nrv2d ${EXEDIR}\manaplus.exe"
 
@@ -263,7 +267,7 @@ Section "Core files (required)" SecCore
   File "${DLLDIR}\libSDL_gfx-15.dll"
   File "${DLLDIR}\libcurl-4.dll"
   File "${DLLDIR}\libfreetype-6.dll"
-  File "${DLLDIR}\libgcc_s_sjlj-1.dll"
+  File "${DLLDIR}\${SEHDLL}"
   File "${DLLDIR}\libiconv-2.dll"
   File "${DLLDIR}\libintl-8.dll"
   File "${DLLDIR}\libjpeg-9.dll"
