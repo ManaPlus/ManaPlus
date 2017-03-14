@@ -69,13 +69,13 @@ unsigned int atox(const std::string &str) A_WARN_UNUSED;
  * @param num the value to convert to a string
  * @return the string representation of arg
  */
-std::string toString(unsigned int num);
+std::string toString(uint32_t num);
 
-std::string toString(unsigned long num);
+std::string toString(uint64_t num);
 
 std::string toString(unsigned char num);
 
-std::string toString(int num);
+std::string toString(int32_t num);
 
 std::string toString(uint16_t num);
 

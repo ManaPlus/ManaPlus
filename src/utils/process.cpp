@@ -241,10 +241,17 @@ bool execFile(const std::string &pathName A_UNUSED,
 
 #endif  // WIN32
 
-#ifdef WIN32
+#if defined WIN64
 bool openBrowser(std::string url)
 {
-    return reinterpret_cast<int>(ShellExecute(nullptr, "open",
+    return reinterpret_cast<int64_t>(ShellExecute(nullptr, "open",
+        replaceAll(url, " ", "").c_str(),
+        nullptr, nullptr, SW_SHOWNORMAL)) > 32;
+}
+#elif defined WIN32
+bool openBrowser(std::string url)
+{
+    return reinterpret_cast<int32_t>(ShellExecute(nullptr, "open",
         replaceAll(url, " ", "").c_str(),
         nullptr, nullptr, SW_SHOWNORMAL)) > 32;
 }

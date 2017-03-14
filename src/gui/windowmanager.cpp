@@ -386,7 +386,13 @@ void WindowManager::setIcon()
         icon = LoadIcon(GetModuleHandle(nullptr), "A");
     }
     if (icon)
+    {
+#ifdef WIN64
+        SetClassLongPtr(pInfo.window, GCLP_HICON, reinterpret_cast<LONG_PTR>(icon));
+#else  // WIN64
         SetClassLong(pInfo.window, GCL_HICON, reinterpret_cast<LONG>(icon));
+#endif  // WIN64
+    }
 #else  // WIN32
 
     mIcon = MIMG_Load(iconFile.c_str());

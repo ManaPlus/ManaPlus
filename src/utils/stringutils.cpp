@@ -791,7 +791,7 @@ std::string toStringPrint(const unsigned int val)
     return str;
 }
 
-std::string toString(unsigned int num)
+std::string toString(uint32_t num)
 {
     char buf[30];
     buf[29] = '\0';
@@ -802,7 +802,7 @@ std::string toString(unsigned int num)
     return buf + idx + 1;
 }
 
-std::string toString(unsigned long num)
+std::string toString(uint64_t num)
 {
     char buf[100];
     buf[99] = '\0';
@@ -835,7 +835,7 @@ std::string toString(unsigned char num)
     return buf + idx + 1;
 }
 
-std::string toString(int num)
+std::string toString(int32_t num)
 {
     char buf[30];
     bool useSign(false);
