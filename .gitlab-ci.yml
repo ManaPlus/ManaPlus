@@ -1355,7 +1355,7 @@ cmake_gcc-4.9:
   tags:
     - docker
 
-.clang-4.0:
+clang-4.0:
   stage: build
   script:
   - ./tools/ci/jobs/clang40.sh
