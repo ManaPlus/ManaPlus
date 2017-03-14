@@ -10,5 +10,6 @@ makensis -DDLLDIR=$dir/../libs/dll/ \
     -DPRODUCT_VERSION="1.7.3.4" \
     -DEXESUFFIX=/src \
     -DUPX=true \
+    -DBITS=${BITS} \
     evol.nsi
 

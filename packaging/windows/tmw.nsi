@@ -37,6 +37,10 @@ RequestExecutionLevel admin
   !define DLLDIR ${SRCDIR}/dll
 !endif
 
+!ifndef BITS
+  !define BITS 32
+!endif
+
 ;--- (and without !defines ) ---
 !System "${UPX} --best --crp-ms=999999 --compress-icons=0 --nrv2d ${EXEDIR}\manaplus.exe"
 
@@ -170,7 +174,7 @@ ReserveFile "setup_finish.bmp"
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "tmw-${PRODUCT_VERSION}-win32.exe"
+OutFile "tmw-${PRODUCT_VERSION}-win${BITS}.exe"
 InstallDir "$PROGRAMFILES\The Mana World"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
