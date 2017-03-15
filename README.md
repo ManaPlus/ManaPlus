@@ -17,9 +17,9 @@ Travis: [![build status](https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=mast
 
  - [SDL](http://libsdl.org/), SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
  - [libxml2](http://xmlsoft.org/) or [pugixml](http://pugixml.org/) (XML parsing and writing)
- - [PhysFS](https://icculus.org/physfs/) (Data files)
  - [libcurl](http://curl.haxx.se/) (HTTP downloads)
  - [zlib](http://zlib.net/) (Archives)
+ - [PhysFS](https://icculus.org/physfs/) (not used by default)
 
 ### Additional run time deps:
  - xsel (for clipboard access, used only in SDL 1.2)
