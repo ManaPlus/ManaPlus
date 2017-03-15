@@ -76,11 +76,9 @@
 #include <algorithm>
 
 // stack
-#ifndef ANDROID
-#if defined __linux__ || defined __linux
+#ifdef HAVE_EXECINFO
 #include <execinfo.h>
-#endif  // defined __linux__ || defined __linux
-#endif  // ANDROID
+#endif  // HAVE_EXECINFO
 // stack
 
 // #included from: catch_compiler_capabilities.h
