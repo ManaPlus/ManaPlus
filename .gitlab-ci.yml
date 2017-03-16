@@ -14,8 +14,8 @@ before_script:
 
 image: debian:unstable
 variables:
-#  GET_SOURCES_ATTEMPTS: "5"
-#  ARTIFACT_DOWNLOAD_ATTEMPTS: "5"
+  GET_SOURCES_ATTEMPTS: "5"
+  ARTIFACT_DOWNLOAD_ATTEMPTS: "5"
   UPDATEREPOS: "tools/ci/scripts/updaterepos.sh"
   PMUPDATE: "apt-get update"
   PMINSTALL: "apt-get install -y -qq"
