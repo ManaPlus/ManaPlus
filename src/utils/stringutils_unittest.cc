@@ -1438,8 +1438,7 @@ TEST_CASE("stringuntils secureChatCommand")
     REQUIRE(str == "_#test");
 }
 
-#ifndef WIN32
-// disabled on windows for now, because no gettext
+#ifdef ENABLE_NLS
 TEST_CASE("stringuntils timeDiffToString")
 {
     REQUIRE(timeDiffToString(60 * 60 * 24 * 7) == "1 week");
@@ -1470,7 +1469,7 @@ TEST_CASE("stringuntils timeDiffToString")
     REQUIRE(timeDiffToString(60 * 7
         ) == "7 minutes");
 }
-#endif  // WIN32
+#endif  // ENABLE_NLS
 
 TEST_CASE("stringuntils replaceItemLinks")
 {
