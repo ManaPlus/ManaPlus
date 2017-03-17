@@ -103,7 +103,6 @@ class ShopListBox final : public ListBox
          */
         ShopItems *mShopItems;
 
-        Color mBackgroundColor;
         Color mWarningColor;
         ShopListBoxTypeT mType;
 
