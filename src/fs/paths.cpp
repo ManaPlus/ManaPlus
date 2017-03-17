@@ -153,7 +153,6 @@ std::string getSelfName()
 }
 
 #elif defined __linux__ || defined __linux
-#include <unistd.h>
 
 std::string getSelfName()
 {
