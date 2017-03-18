@@ -1,3 +1,19 @@
+2017-03-18 New release 1.7.3.18
+fix: add missing include for BSD systems.
+fix: some issues in unit tests in some systems.
+fix: unit tests on windows.
+fix: zip archives reading on big endian systems.
+fix: sound at first run.
+fix: wrong transparency level if open and close setting at first run.
+fix: compilation autoconf files with mingw.
+fix: memory leak in buy dialog.
+add: stack generation in asserts for all supported platforms.
+add: update hercules packets for prevent warnings from new hercules builds.
+add: option for disable moving character by mouse.
+add: report about depricated sfx file paths.
+add: windows 64 builds.
+remove: physfs from dependencies.
+
 2017-03-04 New release 1.7.3.4
 fix: memory leaks in xml parsing.
 fix: pointers alias issues.
