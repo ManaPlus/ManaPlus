@@ -1630,6 +1630,7 @@
 		<Unit filename="src/fs/virtfs/virtdirentry.h" />
 		<Unit filename="src/fs/virtfs/virtfs.h" />
 		<Unit filename="src/fs/virtfs/virtfsentry.h" />
+		<Unit filename="src/fs/virtfs/fileapi.h" />
 		<Unit filename="src/fs/virtfs/virtfszip.h" />
 		<Unit filename="src/fs/mkdir.h" />
 		<Unit filename="src/fs/paths.h" />
