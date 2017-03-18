@@ -233,7 +233,7 @@ void WhoIsOnline::updateWindow(size_t numOnline)
 {
     // Set window caption
     // TRANSLATORS: who is online window name
-    setCaption(_("Who Is Online - ") + toString(numOnline));
+    setCaption(_("Who Is Online - ") + toString(CAST_U32(numOnline)));
 
     // List the online people
     std::sort(mFriends.begin(), mFriends.end(), nameCompare);
