@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-03-06 22:27+0300\n"
+"POT-Creation-Date: 2017-03-18 16:22+0300\n"
 "PO-Revision-Date: 2017-02-05 09:50+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (http://www.transifex.com/akaras/manaplus/language/"
@@ -37,7 +37,7 @@ msgstr ""
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:168 src/client.cpp:1605 src/client.cpp:1640
+#: src/actions/actions.cpp:168 src/client.cpp:1606 src/client.cpp:1641
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:186
 #: src/gui/dialogsmanager.cpp:206 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
@@ -554,41 +554,41 @@ msgstr "Bolha Flutuante"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
-#: src/client.cpp:900 src/dyetool/client.cpp:503 src/gui/windowmenu.cpp:192
+#: src/client.cpp:901 src/dyetool/client.cpp:504 src/gui/windowmenu.cpp:192
 #: src/gui/windows/setupwindow.cpp:66
 msgid "Setup"
 msgstr "Configurar"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:903 src/dyetool/client.cpp:506
+#: src/client.cpp:904 src/dyetool/client.cpp:507
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:906 src/dyetool/client.cpp:509
+#: src/client.cpp:907 src/dyetool/client.cpp:510
 #: src/gui/widgets/tabs/setup_video.cpp:111
 msgid "Video"
 msgstr "Vídeo"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:909 src/dyetool/client.cpp:512
+#: src/client.cpp:910 src/dyetool/client.cpp:513
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:912 src/dyetool/client.cpp:515
+#: src/client.cpp:913 src/dyetool/client.cpp:516
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
-#: src/client.cpp:915 src/dyetool/client.cpp:518 src/gui/windowmenu.cpp:75
+#: src/client.cpp:916 src/dyetool/client.cpp:519 src/gui/windowmenu.cpp:75
 #: src/gui/windows/helpwindow.cpp:55
 msgid "Help"
 msgstr "Ajuda"
@@ -609,45 +609,45 @@ msgstr "Ajuda"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:919 src/client.cpp:1519 src/client.cpp:1538
-#: src/dyetool/client.cpp:522 src/gui/dialogsmanager.cpp:117
+#: src/client.cpp:920 src/client.cpp:1520 src/client.cpp:1539
+#: src/dyetool/client.cpp:523 src/gui/dialogsmanager.cpp:117
 #: src/gui/popups/popupmenu.cpp:765 src/gui/popups/popupmenu.cpp:850
 #: src/gui/popups/popupmenu.cpp:1104 src/gui/windows/didyouknowwindow.cpp:84
 #: src/gui/windows/inventorywindow.cpp:272
 #: src/gui/windows/inventorywindow.cpp:295
 #: src/gui/windows/maileditwindow.cpp:53 src/gui/windows/mailviewwindow.cpp:61
 #: src/gui/windows/npcdialog.cpp:87 src/gui/windows/npcdialog.cpp:132
-#: src/gui/windows/questswindow.cpp:79 src/gui/windows/shopwindow.cpp:109
+#: src/gui/windows/questswindow.cpp:79 src/gui/windows/shopwindow.cpp:110
 msgid "Close"
 msgstr "Fechar"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1146
+#: src/client.cpp:1147
 msgid "Connecting to server"
 msgstr "Conectando ao servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1203 src/gui/windowmanager_unittest.cc:679
+#: src/client.cpp:1204 src/gui/windowmanager_unittest.cc:690
 msgid "Logging in"
 msgstr "Efetuando login"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1252
+#: src/client.cpp:1253
 msgid "Entering game world"
 msgstr "Entrando no domínio do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1404
+#: src/client.cpp:1405
 msgid "Requesting characters"
 msgstr "Requisitando personagens"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1447
+#: src/client.cpp:1448
 msgid "Connecting to the game server"
 msgstr "Conectando ao servidor do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1459
+#: src/client.cpp:1460
 msgid "Changing game servers"
 msgstr "Mudando servidores do jogo"
 
@@ -663,7 +663,7 @@ msgstr "Mudando servidores do jogo"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1516 src/client.cpp:1535 src/client.cpp:1740
+#: src/client.cpp:1517 src/client.cpp:1536 src/client.cpp:1741
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:471
@@ -677,27 +677,27 @@ msgid "Error"
 msgstr "Erro"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1554
+#: src/client.cpp:1555
 msgid "Requesting registration details"
 msgstr "Requisitando detalhes do registro"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1601
+#: src/client.cpp:1602
 msgid "Password Change"
 msgstr "Mudar senha"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1603
+#: src/client.cpp:1604
 msgid "Password changed successfully!"
 msgstr "Senha modificada com sucesso!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1636
+#: src/client.cpp:1637
 msgid "Email Change"
 msgstr "Mudar email"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1638
+#: src/client.cpp:1639
 msgid "Email changed successfully!"
 msgstr "Email modificado com sucesso!"
 
@@ -837,30 +837,30 @@ msgid "  -O --no-opengl      : Disable OpenGL for this session"
 msgstr "  -O --no-opengl : Desabilita OpenGL nesta sessão"
 
 #. TRANSLATORS: directory creation error
-#: src/configmanager.cpp:62 src/dirs.cpp:360 src/dirs.cpp:375 src/dirs.cpp:422
+#: src/configmanager.cpp:62 src/dirs.cpp:355 src/dirs.cpp:370 src/dirs.cpp:417
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s não existe e não pode ser criado! Saindo."
 
 #. TRANSLATORS: update server initialisation error
-#: src/dirs.cpp:472
+#: src/dirs.cpp:467
 #, c-format
 msgid "Invalid update host: %s."
 msgstr ""
 
 #. TRANSLATORS: update server initialisation error
-#: src/dirs.cpp:514 src/dirs.cpp:522
+#: src/dirs.cpp:509 src/dirs.cpp:517
 msgid "Error creating updates directory!"
 msgstr "Erro ao criar pasta de atualizações!"
 
 #. TRANSLATORS: directory creation error
-#: src/dirs.cpp:544 src/dirs.cpp:565
+#: src/dirs.cpp:539 src/dirs.cpp:560
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Erro: %s não existe e não pode se criado! Saindo."
 
 #. TRANSLATORS: directory creation error
-#: src/dirs.cpp:596 src/dirs.cpp:604 src/dirs.cpp:612
+#: src/dirs.cpp:591 src/dirs.cpp:599 src/dirs.cpp:607
 #, c-format
 msgid "%s doesn't exist and can't be created!"
 msgstr ""
@@ -1971,7 +1971,7 @@ msgstr "Falar"
 #: src/gui/windows/buydialog.cpp:210 src/gui/windows/buydialog.cpp:233
 #: src/gui/windows/buydialog.cpp:257 src/gui/windows/buydialog.cpp:335
 #: src/gui/windows/buydialog.cpp:339 src/gui/windows/buyselldialog.cpp:73
-#: src/gui/windows/shopwindow.cpp:166 src/input/pages/basic.cpp:250
+#: src/gui/windows/shopwindow.cpp:167 src/input/pages/basic.cpp:250
 #: src/resources/db/npcdb.cpp:166
 msgid "Buy"
 msgstr "Comprar"
@@ -1989,7 +1989,7 @@ msgstr "Comprar"
 #: src/gui/popups/popupmenu.cpp:280 src/gui/popups/popupmenu.cpp:2723
 #: src/gui/widgets/selldialog.cpp:57 src/gui/widgets/selldialog.cpp:113
 #: src/gui/widgets/selldialog.cpp:151 src/gui/windows/buyselldialog.cpp:75
-#: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:256
+#: src/gui/windows/shopwindow.cpp:169 src/input/pages/basic.cpp:256
 #: src/resources/db/npcdb.cpp:168
 msgid "Sell"
 msgstr "Vender"
@@ -2057,7 +2057,7 @@ msgstr ""
 #. TRANSLATORS: shop window button
 #: src/gui/popups/popupmenu.cpp:362 src/gui/popups/popupmenu.cpp:388
 #: src/gui/popups/popupmenu.cpp:708 src/gui/windows/charselectdialog.cpp:106
-#: src/gui/windows/shopwindow.cpp:192
+#: src/gui/windows/shopwindow.cpp:193
 msgid "Rename"
 msgstr "Renomear"
 
@@ -3640,7 +3640,7 @@ msgstr "Abrir URL"
 #. TRANSLATORS: trade window button
 #: src/gui/widgets/selldialog.cpp:113 src/gui/windows/buydialog.cpp:335
 #: src/gui/windows/maileditwindow.cpp:55 src/gui/windows/npcdialog.cpp:134
-#: src/gui/windows/serverdialog.cpp:111 src/gui/windows/shopwindow.cpp:122
+#: src/gui/windows/serverdialog.cpp:111 src/gui/windows/shopwindow.cpp:123
 #: src/gui/windows/tradewindow.cpp:87
 msgid "Add"
 msgstr "Adicionar"
@@ -3673,7 +3673,7 @@ msgstr "-"
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
 #: src/gui/widgets/selldialog.cpp:146 src/gui/widgets/selldialog.cpp:363
-#: src/gui/windows/buydialog.cpp:315 src/gui/windows/buydialog.cpp:748
+#: src/gui/windows/buydialog.cpp:315 src/gui/windows/buydialog.cpp:749
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Preço: %s / Total: %s"
@@ -5496,6 +5496,11 @@ msgstr ""
 msgid "Enable remote commands"
 msgstr ""
 
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_players.cpp:169
+msgid "Allow move character by mouse"
+msgstr ""
+
 #. TRANSLATORS: relations table header
 #: src/gui/widgets/tabs/setup_relations.cpp:58
 msgid "Name"
@@ -5525,7 +5530,7 @@ msgstr "Permitir mensagens particulares"
 #. TRANSLATORS: input action name
 #: src/gui/widgets/tabs/setup_relations.cpp:78
 #: src/gui/windows/charselectdialog.cpp:77 src/gui/windows/mailwindow.cpp:68
-#: src/gui/windows/serverdialog.cpp:115 src/gui/windows/shopwindow.cpp:124
+#: src/gui/windows/serverdialog.cpp:115 src/gui/windows/shopwindow.cpp:125
 #: src/gui/windows/textcommandeditor.cpp:102 src/input/pages/gui.cpp:109
 msgid "Delete"
 msgstr "Excluir"
@@ -7408,72 +7413,72 @@ msgid "Reset Windows"
 msgstr "Restaurar janelas"
 
 #. TRANSLATORS: shop window name
-#: src/gui/windows/shopwindow.cpp:101 src/gui/windows/shopwindow.cpp:1119
+#: src/gui/windows/shopwindow.cpp:102 src/gui/windows/shopwindow.cpp:1123
 msgid "Personal Shop"
 msgstr "Loja pessoal"
 
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: publish shop button
-#: src/gui/windows/shopwindow.cpp:190 src/gui/windows/shopwindow.cpp:436
-#: src/gui/windows/shopwindow.cpp:461
+#: src/gui/windows/shopwindow.cpp:191 src/gui/windows/shopwindow.cpp:437
+#: src/gui/windows/shopwindow.cpp:462
 msgid "Publish"
 msgstr ""
 
 #. TRANSLATORS: shop window button
-#: src/gui/windows/shopwindow.cpp:199
+#: src/gui/windows/shopwindow.cpp:200
 msgid "Announce"
 msgstr "Anúncio"
 
 #. TRANSLATORS: shop window checkbox
-#: src/gui/windows/shopwindow.cpp:201
+#: src/gui/windows/shopwindow.cpp:202
 msgid "Show links in announce"
 msgstr "Mostrar links em anúncio"
 
 #. TRANSLATORS: shop rename dialog title
-#: src/gui/windows/shopwindow.cpp:370
+#: src/gui/windows/shopwindow.cpp:371
 msgid "Please enter new shop name"
 msgstr ""
 
 #. TRANSLATORS: unpublish shop button
-#: src/gui/windows/shopwindow.cpp:431 src/gui/windows/shopwindow.cpp:456
+#: src/gui/windows/shopwindow.cpp:432 src/gui/windows/shopwindow.cpp:457
 msgid "Unpublish"
 msgstr ""
 
 #. TRANSLATORS: error buy/sell shop request
-#: src/gui/windows/shopwindow.cpp:920
+#: src/gui/windows/shopwindow.cpp:924
 msgid "error: player busy"
 msgstr ""
 
 #. TRANSLATORS: error buy/sell shop request
-#: src/gui/windows/shopwindow.cpp:968
+#: src/gui/windows/shopwindow.cpp:972
 msgid "error: Can't sell this item"
 msgstr ""
 
 #. TRANSLATORS: error buy/sell shop request
-#: src/gui/windows/shopwindow.cpp:980
+#: src/gui/windows/shopwindow.cpp:984
 msgid "error: Can't buy this item"
 msgstr ""
 
 #. TRANSLATORS: buy shop request (nick, item)
-#: src/gui/windows/shopwindow.cpp:1000
+#: src/gui/windows/shopwindow.cpp:1004
 #, c-format
 msgid "%s wants to buy %s do you accept?"
 msgstr ""
 
 #. TRANSLATORS: sell shop request (nick, item)
-#: src/gui/windows/shopwindow.cpp:1007
+#: src/gui/windows/shopwindow.cpp:1011
 #, c-format
 msgid "%s wants to sell %s do you accept?"
 msgstr ""
 
 #. TRANSLATORS: shop window dialog
 #. TRANSLATORS: trade message
-#: src/gui/windows/shopwindow.cpp:1014 src/net/ea/traderecv.cpp:163
+#: src/gui/windows/shopwindow.cpp:1018 src/net/ea/traderecv.cpp:163
 msgid "Request for Trade"
 msgstr "Proposta de negociação"
 
 #. TRANSLATORS: shop window name
-#: src/gui/windows/shopwindow.cpp:1124
+#: src/gui/windows/shopwindow.cpp:1128
 #, c-format
 msgid "Personal Shop - %s"
 msgstr ""
