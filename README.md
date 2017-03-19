@@ -6,9 +6,11 @@ Version: 1.7.3.18        Date: 2017-03-18
 
 ### Build status
 
-Gitlab CI: [![build status](https://gitlab.com/manaplus/manaplus/badges/master/build.svg)](https://gitlab.com/manaplus/manaplus/commits/master)
+Gitlab CI: [![gitlab build status](https://gitlab.com/manaplus/manaplus/badges/master/build.svg)](https://gitlab.com/manaplus/manaplus/commits/master)
 
-Travis: [![build status](https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master)](https://gitlab.com/manaplus/manaplus/commits/master)
+Travis CI: [![travis build status](https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master)](https://gitlab.com/manaplus/manaplus/commits/master)
+
+Coverage: [![coverage report](https://gitlab.com/manaplus/manaplus/badges/master/coverage.svg)](http://stats.manaplus.org/gcov/gcc-6.html)
 
 ### Development team:
  - See [AUTHORS](AUTHORS) file for a list
