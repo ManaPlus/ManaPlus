@@ -145,7 +145,7 @@ Whispers:
 ## 4. Support
 
 If you're having issues with this client, feel free to report them to us.
-You can report on [forum](http://forums.themanaworld.org/viewforum.php?f=12),
+You can report on [![forum](https://img.shields.io/badge/forum-forums.themanaworld.org-yellow.svg)](http://forums.themanaworld.org/viewforum.php?f=12),
 [bugtracker](http://bugs.evolonline.org) or
 [![IRC](https://img.shields.io/badge/IRC-FreeNode/manaplus-yellow.svg)](webchat.freenode.net/?channels=manaplus)
 on irc.freenode.net in the #manaplus channel.
@@ -155,9 +155,9 @@ to contact the developers of the game instead.
 
 ## 5. Licenses
 
-All code in this repository under GPL 2+ license. Art can be under CC-BY-SA or GPL 2+.
+All code in this repository under ![GPL 2+](https://img.shields.io/badge/license-GPL2+-blue.svg) license. Art can be under ![CC-BY-SA](https://img.shields.io/badge/license-CC BY SA-blue.svg) or ![GPL 2+](https://img.shields.io/badge/license-GPL2+-blue.svg).
 
 Github, Bitbucked or other non free hostings may use strange TOS what may violate this licenses. If any of this hostings want to violate GPL or/and CC-BY-SA licenses,
 they not have any rights to do so. This hostings have rights to remove ManaPlus repositories if they want violate given licenses.
 
-ManaPlus main repository hosted on [Gitlab](https://gitlab.com/manaplus/manaplus/)
+ManaPlus main repository hosted on [gitlab.com](https://gitlab.com/manaplus/manaplus/)
