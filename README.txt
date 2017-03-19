@@ -10,6 +10,7 @@ THE MANA PLUS CLIENT
   Gitlab CI: https://gitlab.com/manaplus/manaplus/badges/master/build.svg
   Travis: https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master
   Coverage: http://stats.manaplus.org/gcov/gcc-6.html
+  Doxygen: http://stats.manaplus.org/docs/index.html
 
  Powered by:
 

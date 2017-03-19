@@ -12,6 +12,8 @@ Travis CI: [![travis build status](https://travis-ci.org/ManaPlus/ManaPlus.svg?b
 
 Coverage: [![coverage report](https://gitlab.com/manaplus/manaplus/badges/master/coverage.svg)](http://stats.manaplus.org/gcov/gcc-6.html)
 
+Doxygen: [![doxygen](https://img.shields.io/badge/Docs-Doxygen/manaplus-blue.svg)](http://stats.manaplus.org/docs/index.html)
+
 ### Development team:
  - See [AUTHORS](AUTHORS) file for a list
 
