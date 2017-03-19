@@ -226,6 +226,8 @@ function run_gcov {
     check_error $?
     gcovr -r . --gcov-executable=$1 -o logs/$2.txt
     check_error $?
+    cat logs/$2.txt
+    check_error $?
 }
 
 function run_check_warnings {
