@@ -44,6 +44,7 @@
 #include "debug.h"
 
 extern Net::NpcHandler *npcHandler;
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -107,10 +108,19 @@ void NpcHandler::stringInput(const BeingId npcId,
                              const std::string &value) const
 {
     createOutPacket(CMSG_NPC_STR_RESPONSE);
-    outMsg.writeInt16(CAST_S16(value.length() + 9), "len");
-    outMsg.writeBeingId(npcId, "npc id");
-    outMsg.writeString(value, CAST_S32(value.length()), "value");
-    outMsg.writeInt8(0, "null byte");
+    if (packetVersion >= 20151029)
+    {
+        outMsg.writeInt16(CAST_S16(value.length() + 8), "len");
+        outMsg.writeBeingId(npcId, "npc id");
+        outMsg.writeString(value, CAST_S32(value.length()), "value");
+    }
+    else
+    {
+        outMsg.writeInt16(CAST_S16(value.length() + 9), "len");
+        outMsg.writeBeingId(npcId, "npc id");
+        outMsg.writeString(value, CAST_S32(value.length()), "value");
+        outMsg.writeInt8(0, "null byte");
+    }
 }
 
 void NpcHandler::buy(const Being *const being) const
