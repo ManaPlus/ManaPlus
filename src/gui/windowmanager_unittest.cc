@@ -813,7 +813,6 @@ TEST_CASE("WindowManager", "create windows")
             branding.getStringValue("appName").c_str(),
             SMALL_VERSION,
             settings.serverName.c_str()));
-
     }
 
     SECTION("updateTitle3")
