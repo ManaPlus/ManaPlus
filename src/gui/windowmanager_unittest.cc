@@ -24,6 +24,7 @@
 #include "configuration.h"
 #include "dirs.h"
 #include "graphicsmanager.h"
+#include "main.h"
 #include "settings.h"
 #include "textcommand.h"
 
@@ -36,6 +37,7 @@
 #include "gui/gui.h"
 #include "gui/mailmessage.h"
 #include "gui/userpalette.h"
+#include "gui/windowmanager.h"
 
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/itempopup.h"
@@ -696,6 +698,163 @@ TEST_CASE("Windows tests", "windowmanager")
 
     delete2(localPlayer);
     delete2(userPalette);
+    delete2(client);
+    delete2(serverFeatures);
+    delete2(inventoryHandler);
+    delete2(charServerHandler);
+    delete2(playerHandler);
+    delete2(gui);
+    ResourceManager::deleteInstance();
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
+    VirtFs::unmountDirSilent("data/test");
+    VirtFs::unmountDirSilent("../data/test");
+    delete2(logger);
+
+//    VirtFs::deinit();
+}
+
+TEST_CASE("WindowManager", "create windows")
+{
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
+    client = new Client;
+    XML::initXML();
+    SDL_Init(SDL_INIT_VIDEO);
+    logger = new Logger();
+    ResourceManager::deleteInstance();
+    ResourceManager::init();
+    resourceManager->cleanOrphans(true);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
+    VirtFs::mountDirSilent("data/test", Append_false);
+    VirtFs::mountDirSilent("../data/test", Append_false);
+    paths.setDefaultValues(getPathsDefaults());
+    branding.setValue("onlineServerFile", "test/serverlistplus.xml");
+    mainGraphics = new SDLGraphics;
+    imageHelper = new SDLImageHelper;
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else  // USE_SDL2
+
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif  // USE_SDL2
+
+    config.setValue("fontSize", 16);
+    theme = new Theme;
+    Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    const std::string cfgName = settings.configDir +
+        "/nonexistserver/config.xml";
+    ::remove(cfgName.c_str());
+
+    ConfigManager::initConfiguration();
+    getConfigDefaults2(config.getDefaultValues());
+    ConfigManager::initServerConfig("nonexistserver");
+
+    localPlayer = new LocalPlayer(static_cast<BeingId>(1),
+        BeingTypeId_zero);
+
+    ActorSprite::load();
+    gui = new Gui();
+    gui->postInit(mainGraphics);
+    touchManager.init();
+    UnitsDb::loadUnits();
+    charServerHandler = new EAthena::CharServerHandler;
+    serverFeatures = new EAthena::ServerFeatures;
+    inventoryHandler = new EAthena::InventoryHandler;
+    playerHandler = new EAthena::PlayerHandler;
+    paths.setValue("itemIcons", "");
+
+    TranslationManager::init();
+
+    mainGraphics->setVideoMode(640, 480, 1, 8, false, false, false, false);
+
+    SECTION("create windows")
+    {
+        WindowManager::createWindows();
+        WindowManager::deleteWindows();
+    }
+
+    SECTION("init")
+    {
+        WindowManager::init();
+    }
+
+    SECTION("initTitle")
+    {
+        WindowManager::initTitle();
+        REQUIRE(settings.windowCaption == strprintf("%s %s",
+            branding.getStringValue("appName").c_str(),
+            SMALL_VERSION));
+    }
+
+    SECTION("updateTitle1")
+    {
+        settings.serverName = std::string();
+        settings.login = std::string();
+        WindowManager::updateTitle();
+        REQUIRE(settings.windowCaption == strprintf("%s %s",
+            branding.getStringValue("appName").c_str(),
+            SMALL_VERSION));
+    }
+
+    SECTION("updateTitle2")
+    {
+        settings.serverName = "server";
+        settings.login = std::string();
+        WindowManager::updateTitle();
+        REQUIRE(settings.windowCaption == strprintf("%s %s - %s",
+            branding.getStringValue("appName").c_str(),
+            SMALL_VERSION,
+            settings.serverName.c_str()));
+
+    }
+
+    SECTION("updateTitle3")
+    {
+        settings.serverName = "server";
+        settings.login = "login";
+        WindowManager::updateTitle();
+        REQUIRE(settings.windowCaption == strprintf("%s %s - %s %s",
+            branding.getStringValue("appName").c_str(),
+            SMALL_VERSION,
+            settings.login.c_str(),
+            settings.serverName.c_str()));
+    }
+
+    SECTION("setFramerate1")
+    {
+        settings.limitFps = true;
+        WindowManager::setFramerate(60);
+        REQUIRE(WindowManager::getFramerate() == 60);
+        WindowManager::setFramerate(10);
+        REQUIRE(WindowManager::getFramerate() == 10);
+        WindowManager::setFramerate(0);
+        REQUIRE(WindowManager::getFramerate() == 10);
+    }
+
+    SECTION("setFramerate2")
+    {
+        settings.limitFps = false;
+        WindowManager::setFramerate(60);
+        REQUIRE(WindowManager::getFramerate() == 0);
+        WindowManager::setFramerate(10);
+        REQUIRE(WindowManager::getFramerate() == 0);
+        WindowManager::setFramerate(0);
+        REQUIRE(WindowManager::getFramerate() == 0);
+    }
+
+    settings.serverName = std::string();
+    settings.login = std::string();
+    settings.limitFps = true;
+
+    delete2(localPlayer);
     delete2(client);
     delete2(serverFeatures);
     delete2(inventoryHandler);
