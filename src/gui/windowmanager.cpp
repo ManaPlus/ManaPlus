@@ -439,4 +439,5 @@ void WindowManager::updateScreenKeyboard(const int height)
 void WindowManager::deleteIcon()
 {
     MSDL_FreeSurface(mIcon);
+    mIcon = nullptr;
 }
