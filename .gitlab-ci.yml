@@ -683,6 +683,35 @@ gcc-6_pugixml_tests_i386:
   tags:
     - docker
 
+gcc-6_tinyxml2_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=tinyxml2
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-6_tinyxml2_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
+  image: vicamo/debian:sid-i386
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
 gcc-6_tests_glibcdebug_i386:
   stage: build
   script:
@@ -1590,6 +1619,51 @@ gcc-6_pugixml_sdl2_i386:
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
+gcc-6_tinyxml2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+gcc-6_tinyxml2_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  image: vicamo/debian:sid-i386
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+gcc-6_tinyxml2_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-libxml=tinyxml2
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+
+gcc-6_tinyxml2_sdl2_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-libxml=tinyxml2
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+
 gcc_portable:
   stage: build
   script:
@@ -1667,6 +1741,17 @@ gcc-5_h_pugi_all:
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+gcc-5_h_tinyxml2_all:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_TINYXML2
+  <<: *job-shared
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext 
+              libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_tarball:
