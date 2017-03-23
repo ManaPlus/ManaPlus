@@ -23,7 +23,11 @@
 
 #ifdef ENABLE_TINYXML2
 
+PRAGMA49(GCC diagnostic push)
+PRAGMA49(GCC diagnostic ignored "-Wzero-as-null-pointer-constant")
+PRAGMA49(GCC diagnostic ignored "-Wsuggest-override")
 #include <tinyxml2.h>
+PRAGMA49(GCC diagnostic pop)
 
 TINYXML2_INCLUDED
 
