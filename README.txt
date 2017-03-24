@@ -12,13 +12,17 @@ THE MANA PLUS CLIENT
   Coverage: http://stats.manaplus.org/gcov/gcc-6.html
   Doxygen: http://stats.manaplus.org/docs/index.html
 
- Powered by:
+ Dependencies:
 
   - SDL, SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
   - libxml2 or pugixml (XML parsing and writing)
   - libcurl (HTTP downloads)
   - libpng (save screenshots)
   - zlib (Archives)
+
+ Optional dependencies:
+
+  - gettext (translations)
   - PhysFS (not used by default)
 
  Additiona run time deps:

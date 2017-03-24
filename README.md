@@ -17,14 +17,19 @@ Doxygen: [![doxygen](https://img.shields.io/badge/Docs-Doxygen/manaplus-blue.svg
 ### Development team:
  - See [AUTHORS](AUTHORS) file for a list
 
-### Powered by:
+### Dependencies:
 
  - [SDL](http://libsdl.org/), SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
  - [libxml2](http://xmlsoft.org/) or [pugixml](http://pugixml.org/) (XML parsing and writing)
  - [libcurl](http://curl.haxx.se/) (HTTP downloads)
  - [libpng](http://www.libpng.org/) (save screenshots)
  - [zlib](http://zlib.net/) (Archives)
- - [PhysFS](https://icculus.org/physfs/) (not used by default)
+
+#### Optional dependencies:
+
+ - [gettext](https://www.gnu.org/software/gettext/) (translations)
+
+ - [PhysFS](https://icculus.org/physfs/)
 
 ### Additional run time deps:
  - xsel (for clipboard access, used only in SDL 1.2)
