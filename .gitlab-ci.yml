@@ -969,6 +969,30 @@ gcc-5_tarball_tests:
 
 # simple builds
 
+gcc-3_sdl1:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc3.sh
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl1
+  <<: *job-shared
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+  tags:
+    - docker
+
+gcc-3_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc3.sh --with-sdl2
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl2
+  <<: *job-shared
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+  tags:
+    - docker
+
 gcc-4.4_i386:
   stage: build
   script:
