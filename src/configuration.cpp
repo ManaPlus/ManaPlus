@@ -804,7 +804,7 @@ void Configuration::reInit()
     initFromXML(rootNode);
 }
 
-void ConfigurationObject::writeToXML(XmlTextWriterPtr writer A_UNUSED)
+void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
 {
     FOR_EACH (Options::const_iterator, i, mOptions)
     {
