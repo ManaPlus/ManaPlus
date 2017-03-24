@@ -22,6 +22,7 @@ Doxygen: [![doxygen](https://img.shields.io/badge/Docs-Doxygen/manaplus-blue.svg
  - [SDL](http://libsdl.org/), SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
  - [libxml2](http://xmlsoft.org/) or [pugixml](http://pugixml.org/) (XML parsing and writing)
  - [libcurl](http://curl.haxx.se/) (HTTP downloads)
+ - [libpng](http://www.libpng.org/) (save screenshots)
  - [zlib](http://zlib.net/) (Archives)
  - [PhysFS](https://icculus.org/physfs/) (not used by default)
 

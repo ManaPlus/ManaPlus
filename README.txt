@@ -17,6 +17,7 @@ THE MANA PLUS CLIENT
   - SDL, SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
   - libxml2 or pugixml (XML parsing and writing)
   - libcurl (HTTP downloads)
+  - libpng (save screenshots)
   - zlib (Archives)
   - PhysFS (not used by default)
 
