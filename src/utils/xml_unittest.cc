@@ -300,7 +300,6 @@ TEST_CASE("xml doc")
         XmlTextWriterStartRootElement(writer, "root");
         XmlTextWriterEndDocument(writer);
         XmlSaveTextWriterFilename(writer, tempXmlName);
-        logger->log("xml test: %s", writer->CStr());
         XmlFreeTextWriter(writer);
 
         // load
