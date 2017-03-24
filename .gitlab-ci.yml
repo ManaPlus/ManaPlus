@@ -688,7 +688,7 @@ gcc-6_tinyxml2_tests:
 gcc-6_tinyxml2_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=tinyxml2
   image: vicamo/debian:sid-i386
   <<: *job-shared
   variables:
