@@ -186,6 +186,7 @@ function run_make {
     rm $ERRFILE
     if [ "$JOBS" == "" ]; then
         export JOBS=2
+        echo "No JOBS defined"
     fi
 
     echo "make -j${JOBS} V=0 $*"
@@ -197,6 +198,7 @@ function run_make_check {
     rm $ERRFILE
     if [ "$JOBS" == "" ]; then
         export JOBS=2
+        echo "No JOBS defined"
     fi
     echo "make -j${JOBS} V=0 check $*"
     make -j${JOBS} V=0 check $* 2>$ERRFILE
