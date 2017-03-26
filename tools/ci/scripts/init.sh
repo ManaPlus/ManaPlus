@@ -184,7 +184,7 @@ function run_cmake {
 
 function run_make {
     rm $ERRFILE
-    if [ "$JOBS" == "" ];
+    if [ "$JOBS" == "" ]; then
         export JOBS=2
     fi
 
@@ -195,7 +195,7 @@ function run_make {
 
 function run_make_check {
     rm $ERRFILE
-    if [ "$JOBS" == "" ];
+    if [ "$JOBS" == "" ]; then
         export JOBS=2
     fi
     echo "make -j${JOBS} V=0 check $*"
