@@ -184,15 +184,22 @@ function run_cmake {
 
 function run_make {
     rm $ERRFILE
-    echo "make -j2 V=0 $*"
-    make -j2 V=0 $* 2>$ERRFILE
+    if [ "$JOBS" == "" ];
+        export JOBS=2
+    fi
+
+    echo "make -j${JOBS} V=0 $*"
+    make -j${JOBS} V=0 $* 2>$ERRFILE
     check_error $?
 }
 
 function run_make_check {
     rm $ERRFILE
-    echo "make -j2 V=0 check $*"
-    make -j2 V=0 check $* 2>$ERRFILE
+    if [ "$JOBS" == "" ];
+        export JOBS=2
+    fi
+    echo "make -j${JOBS} V=0 check $*"
+    make -j${JOBS} V=0 check $* 2>$ERRFILE
     export ERR=$?
     if [ "${ERR}" != 0 ]; then
         cat $ERRFILE
