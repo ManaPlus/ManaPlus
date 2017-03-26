@@ -12,14 +12,8 @@ before_script:
   - sudo apt-get install docker
 
 script:
-  - docker pull ${IMAGE}
   - travis_wait 50 sleep infinity &
-  - docker run
-    --volume=$(pwd):/build:rw
-    -e PACKAGES="${PACKAGES}"
-    -e COMMAND="${COMMAND}"
-    ${IMAGE}
-    /bin/sh -x -c "cd /build; pwd; ./tools/ci/scripts/travis.docker.sh"
+  - ./tools/ci/scripts/docker_run.sh
   - docker ps -a
 
 env:
