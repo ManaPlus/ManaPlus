@@ -197,12 +197,6 @@
 
 #define const2 const
 
-#if GCC_VERSION >= 49000
-#define PRAGMA49(str) _Pragma(#str)
-#else  // GCC_VERSION > 49000
-#define PRAGMA49(str)
-#endif  // GCC_VERSION > 49000
-
 #if GCC_VERSION >= 60000
 #define PRAGMA6(str) _Pragma(#str)
 #else  // GCC_VERSION > 60000
@@ -220,6 +214,12 @@
 #define PRAGMA6(str)
 #define A_FALLTHROUGH
 #endif  // ADVGCC
+
+#if GCC_VERSION >= 49000
+#define PRAGMA49(str) _Pragma(#str)
+#else  // GCC_VERSION > 49000
+#define PRAGMA49(str)
+#endif  // GCC_VERSION > 49000
 
 #ifdef __clang__
 #define PRAGMACLANG(str) _Pragma(#str)
