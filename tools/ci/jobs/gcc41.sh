@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export CC=gcc-3.4.6
-export CXX=g++-3.4.6
+export CC=gcc-4.1
+export CXX=g++-4.1
 
 if [ "$NEWCC" != "" ]; then
     export CC="$NEWCC"
@@ -10,7 +10,7 @@ if [ "$NEWCXX" != "" ]; then
     export CXX="$NEWCXX"
 fi
 
-export LOGFILE=gcc3.log
+export LOGFILE=gcc41.log
 
 source ./tools/ci/scripts/init.sh
 

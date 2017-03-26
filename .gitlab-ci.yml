@@ -967,6 +967,34 @@ gcc-5_tarball_tests:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
 
+.gentoo_gcc-5_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_tests.sh --without-dyecmd --without-manaplusgame
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc54_sdl1
+  <<: *job-shared
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+    NEWCC: gcc-5.4.0
+    NEWCXX: g++-5.4.0-r3
+  tags:
+    - docker
+
+.gentoo_gcc-5_tests_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_tests.sh --without-dyecmd --without-manaplusgame --with-sdl2
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc54_sdl2
+  <<: *job-shared
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+    NEWCC: gcc-5.4.0
+    NEWCXX: g++-5.4.0-r3
+  tags:
+    - docker
+
 # simple builds
 
 gcc-3_sdl1:
@@ -990,6 +1018,62 @@ gcc-3_sdl2:
   variables:
     PMUPDATE: "echo"
     PMINSTALL: "echo"
+  tags:
+    - docker
+
+gcc-4.1_sdl1:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc41.sh
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc41_sdl1
+  <<: *job-shared
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+    NEWCC: gcc-4.1.2
+    NEWCXX: g++-4.1.2
+  tags:
+    - docker
+
+gcc-4.1_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc41.sh --with-sdl2
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc41_sdl2
+  <<: *job-shared
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+    NEWCC: gcc-4.1.2
+    NEWCXX: g++-4.1.2
+  tags:
+    - docker
+
+gcc-4.3_sdl1:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc43.sh
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc43_sdl1
+  <<: *job-shared
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+    NEWCC: gcc-4.3.6
+    NEWCXX: g++-4.3.6
+  tags:
+    - docker
+
+gcc-4.3_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc43.sh --with-sdl2
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc43_sdl2
+  <<: *job-shared
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+    NEWCC: gcc-4.3.6
+    NEWCXX: g++-4.3.6
   tags:
     - docker
 
