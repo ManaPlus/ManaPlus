@@ -8,6 +8,7 @@ THE MANA PLUS CLIENT
 
  Build status:
   Gitlab CI: https://gitlab.com/manaplus/manaplus/badges/master/build.svg
+  Semaphore CI https://semaphoreci.com/4144/manaplus
   Travis: https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master
   Coverage: http://stats.manaplus.org/gcov/gcc-6.html
   Doxygen: http://stats.manaplus.org/docs/index.html
