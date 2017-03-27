@@ -1,5 +1,10 @@
 #!/bin/bash -x
 
+echo "IMAGE: ${IMAGE}"
+echo "PACKAGES: ${PACKAGES}"
+echo "COMMAND: ${COMMAND}"
+echo "JOBS: ${JOBS}"
+
 docker pull ${IMAGE}
 docker run \
     --volume=$(pwd):/build:rw \
