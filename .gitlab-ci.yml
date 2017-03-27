@@ -967,31 +967,31 @@ gcc-5_tarball_tests:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
 
-.gentoo_gcc-5_tests:
+gentoo_gcc-4.9_tests:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_tests.sh --without-dyecmd --without-manaplusgame
-  image: registry.gitlab.com/manaplus/images:gentoo_gcc54_sdl1
+  - ./tools/ci/jobs/gcc49_tests.sh --without-dyecmd --without-manaplusgame
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc49_sdl1
   <<: *job-shared
   variables:
     PMUPDATE: "echo"
     PMINSTALL: "echo"
-    NEWCC: gcc-5.4.0
-    NEWCXX: g++-5.4.0-r3
+    NEWCC: gcc-4.9.4
+    NEWCXX: g++-4.9.4
   tags:
     - docker
 
-.gentoo_gcc-5_tests_sdl2:
+gentoo_gcc-4.9_tests_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_tests.sh --without-dyecmd --without-manaplusgame --with-sdl2
-  image: registry.gitlab.com/manaplus/images:gentoo_gcc54_sdl2
+  - ./tools/ci/jobs/gcc49_tests.sh --without-dyecmd --without-manaplusgame --with-sdl2
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc49_sdl2
   <<: *job-shared
   variables:
     PMUPDATE: "echo"
     PMINSTALL: "echo"
-    NEWCC: gcc-5.4.0
-    NEWCXX: g++-5.4.0-r3
+    NEWCC: gcc-4.9.4
+    NEWCXX: g++-4.9.4
   tags:
     - docker
 
