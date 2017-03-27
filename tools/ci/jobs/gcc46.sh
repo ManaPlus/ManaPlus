@@ -2,6 +2,14 @@
 
 export CC=gcc-4.6
 export CXX=g++-4.6
+
+if [ "$NEWCC" != "" ]; then
+    export CC="$NEWCC"
+fi
+if [ "$NEWCXX" != "" ]; then
+    export CXX="$NEWCXX"
+fi
+
 export LOGFILE=gcc46.log
 
 source ./tools/ci/scripts/init.sh

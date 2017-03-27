@@ -2,6 +2,14 @@
 
 export CC=gcc-6
 export CXX=g++-6
+
+if [ "$NEWCC" != "" ]; then
+    export CC="$NEWCC"
+fi
+if [ "$NEWCXX" != "" ]; then
+    export CXX="$NEWCXX"
+fi
+
 export LOGFILE=gcc6_tarballtests.log
 
 source ./tools/ci/scripts/init.sh

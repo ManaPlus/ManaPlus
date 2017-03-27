@@ -2,6 +2,14 @@
 
 export CC=clang-4.0
 export CXX=clang++-4.0
+
+if [ "$NEWCC" != "" ]; then
+    export CC="$NEWCC"
+fi
+if [ "$NEWCXX" != "" ]; then
+    export CXX="$NEWCXX"
+fi
+
 export LOGFILE=clang40.log
 
 source ./tools/ci/scripts/init.sh

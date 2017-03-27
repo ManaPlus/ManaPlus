@@ -2,6 +2,14 @@
 
 export CC=gcc
 export CXX=g++
+
+if [ "$NEWCC" != "" ]; then
+    export CC="$NEWCC"
+fi
+if [ "$NEWCXX" != "" ]; then
+    export CXX="$NEWCXX"
+fi
+
 export LOGFILE=mplint_po.log
 
 source ./tools/ci/scripts/init.sh

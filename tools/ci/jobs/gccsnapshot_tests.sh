@@ -2,6 +2,14 @@
 
 export CC=gcc
 export CXX=g++
+
+if [ "$NEWCC" != "" ]; then
+    export CC="$NEWCC"
+fi
+if [ "$NEWCXX" != "" ]; then
+    export CXX="$NEWCXX"
+fi
+
 export LOGFILE=gcc-snapshot.log
 export PATH=/usr/lib/gcc-snapshot/bin:$PATH
 

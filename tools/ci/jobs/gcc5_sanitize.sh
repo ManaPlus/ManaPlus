@@ -2,6 +2,14 @@
 
 export CC=gcc-5
 export CXX=g++-5
+
+if [ "$NEWCC" != "" ]; then
+    export CC="$NEWCC"
+fi
+if [ "$NEWCXX" != "" ]; then
+    export CXX="$NEWCXX"
+fi
+
 export LOGFILE=gcc5_sanitize.log
 
 source ./tools/ci/scripts/init.sh

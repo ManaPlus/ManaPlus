@@ -3,6 +3,14 @@
 export CC=gcc
 export CXX=g++
 export LOGFILE=gcc-snapshot.log
+
+if [ "$NEWCC" != "" ]; then
+    export CC="$NEWCC"
+fi
+if [ "$NEWCXX" != "" ]; then
+    export CXX="$NEWCXX"
+fi
+
 export PATH=/usr/lib/gcc-snapshot/bin:$PATH
 
 source ./tools/ci/scripts/init.sh
