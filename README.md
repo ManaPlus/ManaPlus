@@ -8,9 +8,11 @@ Version: 1.7.3.18        Date: 2017-03-18
 
 Gitlab CI: [![gitlab build status](https://gitlab.com/manaplus/manaplus/badges/master/build.svg)](https://gitlab.com/manaplus/manaplus/commits/master)
 
+Cicle CI: [![CircleCI](https://circleci.com/gh/ManaPlus/ManaPlus/tree/master.svg?style=svg)](https://circleci.com/gh/ManaPlus/ManaPlus/tree/master)
+
 Semaphore CI: [![Build Status](https://semaphoreci.com/api/v1/4144/manaplus/branches/master/badge.svg)](https://semaphoreci.com/4144/manaplus)
 
-Travis CI: [![travis build status](https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master)](https://gitlab.com/manaplus/manaplus/commits/master)
+Travis CI: [![travis build status](https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master)](https://travis-ci.org/ManaPlus/ManaPlus/builds/)
 
 Coverage: [![coverage report](https://gitlab.com/manaplus/manaplus/badges/master/coverage.svg)](http://stats.manaplus.org/gcov/gcc-6.html)
 
