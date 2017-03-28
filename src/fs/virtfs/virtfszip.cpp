@@ -20,11 +20,10 @@
 
 #include "fs/virtfs/virtfszip.h"
 
-#include "fs/virtfsfuncs.h"
-#include "fs/virtfile.h"
-#include "fs/virtlist.h"
-
+#include "fs/virtfs/virtfile.h"
 #include "fs/virtfs/virtfileprivate.h"
+#include "fs/virtfsfuncs.h"
+#include "fs/virtlist.h"
 #include "fs/virtfs/virtzipentry.h"
 #include "fs/virtfs/zip.h"
 #include "fs/virtfs/ziplocalheader.h"

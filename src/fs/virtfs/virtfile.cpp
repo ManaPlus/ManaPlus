@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfile.h"
+#include "fs/virtfs/virtfile.h"
 
 #include "fs/virtfs/virtfileprivate.h"
 

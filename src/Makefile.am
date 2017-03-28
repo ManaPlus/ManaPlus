@@ -594,8 +594,8 @@ BASE_SRC += events/actionevent.h \
 	      utils/stringvector.h \
 	      utils/timer.cpp \
 	      utils/timer.h \
-	      fs/virtfile.cpp \
-	      fs/virtfile.h \
+	      fs/virtfs/virtfile.cpp \
+	      fs/virtfs/virtfile.h \
 	      utils/mutex.h \
 	      utils/naclmessages.cpp \
 	      utils/naclmessages.h \

@@ -23,12 +23,12 @@
 #include "fs/files.h"
 #include "fs/mkdir.h"
 #include "fs/paths.h"
-#include "fs/virtfile.h"
-#include "fs/virtfsfuncs.h"
-#include "fs/virtlist.h"
 
 #include "fs/virtfs/virtdirentry.h"
+#include "fs/virtfs/virtfile.h"
 #include "fs/virtfs/virtfileprivate.h"
+#include "fs/virtfsfuncs.h"
+#include "fs/virtlist.h"
 
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"

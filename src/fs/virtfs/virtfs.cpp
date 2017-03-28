@@ -22,13 +22,13 @@
 
 #include "fs/files.h"
 #include "fs/paths.h"
-#include "fs/virtfile.h"
-#include "fs/virtfsfuncs.h"
-#include "fs/virtlist.h"
 
 #include "fs/virtfs/virtdirentry.h"
+#include "fs/virtfs/virtfile.h"
 #include "fs/virtfs/virtfsdir.h"
+#include "fs/virtfsfuncs.h"
 #include "fs/virtfs/virtfszip.h"
+#include "fs/virtlist.h"
 #include "fs/virtfs/virtzipentry.h"
 #include "fs/virtfs/zip.h"
 
