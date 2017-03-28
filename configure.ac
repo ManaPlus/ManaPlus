@@ -331,21 +331,6 @@ if test "$skip_check_lib" == "no"; then
     AC_MSG_ERROR([ *** Unable to find zlib (http://www.gzip.org/zlib/)]))
 fi
 
-# Option to enable physfs.
-AC_ARG_WITH(physfs,[  --with-physfs        use physfs (experimental) ] )
-if test "x$with_physfs" == "xyes"; then
-    with_physfs=yes
-    if test "$skip_check_lib" == "no"; then
-        AC_CHECK_LIB([physfs], [PHYSFS_init], ,
-        AC_MSG_ERROR([ *** Unable to find PhysFS library (http://icculus.org/physfs/)]))
-    fi
-    AC_CHECK_HEADERS([physfs.h], ,
-    AC_MSG_ERROR([ *** PhysFS library found but cannot find headers (http://icculus.org/physfs/)]))
-else
-    with_physfs=no
-fi
-AM_CONDITIONAL(USE_PHYSFS, test x$with_physfs = xyes)
-
 if test -n "$CURL_CONFIG"; then
     LIBS="$LIBS `$CURL_CONFIG --libs`"
     CPPFLAGS="$CPPFLAGS `$CURL_CONFIG --cflags`"
@@ -738,7 +723,6 @@ if test "$unittests_enabled" == true; then
 fi
 
 echo "Build with OpenGL: $with_opengl"
-echo "Build with physfs: $with_physfs"
 echo
 echo "LIBS: $LIBS"
 echo "CPPFLAGS: $CPPFLAGS"

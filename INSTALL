@@ -1,7 +1,7 @@
 How to compile and run ManaPlus on your GNU/Linux Box
 =================================================
 
-Homepage:  http://manaplus.evolonline.org/
+Homepage:  http://manaplus.org/
 IRC:       irc.freenode.net / #manaplus
 
 1) Requirements
@@ -23,7 +23,6 @@ and some libraries. The required libraries are:
 * SDL_ttf           http://www.libsdl.org/projects/SDL_ttf/
 * SDL_gfx           http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx
 * libxml2           http://www.xmlsoft.org/
-* physfs 1.x        http://icculus.org/physfs/
 * zlib 1.2.x        http://www.gzip.org/zlib/
 * libcurl           http://curl.haxx.se/libcurl/
 

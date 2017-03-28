@@ -21,7 +21,6 @@ function run {
         -i "\"sdlshared.h\"" \
         -i "\"localconsts.h\"" \
         -i "\"utils/fuzzer.h\"" \
-        -i "\"utils/physfscheckutils.h\"" \
         -i "\"$name\"" \
         -c "$CXX" \
         -d "$1" \

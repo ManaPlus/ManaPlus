@@ -32,12 +32,6 @@ PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
 PRAGMACLANG6(GCC diagnostic pop)
 #include <SDL_ttf.h>
-#ifdef USE_PHYSFS
-PRAGMA45(GCC diagnostic push)
-PRAGMA45(GCC diagnostic ignored "-Wlong-long")
-#include <physfs.h>
-PRAGMA45(GCC diagnostic pop)
-#endif  // USE_PHYSFS
 #include <zlib.h>
 
 #include <curl/curl.h>
@@ -120,15 +114,6 @@ void dumpLibs()
 
     logger->log(" libcurl: %s", LIBCURL_VERSION);
     logger->log(" libpng: %s", PNG_LIBPNG_VER_STRING);
-#ifdef USE_PHYSFS
-    PHYSFS_Version physfsVersion;
-    PHYSFS_VERSION(&physfsVersion);
-    const std::string physfsCompiled = strprintf("%d.%d.%d",
-        physfsVersion.major,
-        physfsVersion.minor,
-        physfsVersion.patch);
-    logger->log(" libphysfs: %s", physfsCompiled.c_str());
-#endif  // USE_PHYSFS
 
     dumpCompiledSdlVersion("SDL", SDL);
     dumpCompiledSdlVersion("SDL_net", SDL_NET);
@@ -140,14 +125,6 @@ void dumpLibs()
 #if ZLIB_VERNUM >= 0x1020
     logger->log(" zLib: %s", zlibVersion());
 #endif  // ZLIB_VERNUM >= 0x1020
-#ifdef USE_PHYSFS
-    PHYSFS_getLinkedVersion(&physfsVersion);
-    const std::string physfsLinked = strprintf("%d.%d.%d",
-        physfsVersion.major,
-        physfsVersion.minor,
-        physfsVersion.patch);
-    logger->log(" libphysfs: %s", physfsLinked.c_str());
-#endif  // USE_PHYSFS
 #ifdef LIBXML_TEST_VERSION
     LIBXML_TEST_VERSION
 #endif  // LIBXML_TEST_VERSION
@@ -167,9 +144,6 @@ void dumpLibs()
     dumpLinkedSdlVersion("SDL_ttf", TTF_Linked_Version());
 
     compareVersions("zLib", ZLIB_VERSION, zlibVersion());
-#ifdef USE_PHYSFS
-    compareVersions("libphysfs", physfsCompiled.c_str(), physfsLinked.c_str());
-#endif  // USE_PHYSFS
 #ifdef USE_SDL2
     compareSDLVersions("SDL", sdlVersionJoin(SDL), &sdlVersion);
 #else  // USE_SDL2

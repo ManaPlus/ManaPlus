@@ -90,11 +90,6 @@ dyecmd_CXXFLAGS += -DUSE_OPENGL
 manaplus_CXXFLAGS += -DUSE_OPENGL
 endif
 
-if USE_PHYSFS
-dyecmd_CXXFLAGS += -DUSE_PHYSFS
-manaplus_CXXFLAGS += -DUSE_PHYSFS
-endif
-
 if ENABLE_MEM_DEBUG
 dyecmd_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
 manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
@@ -840,17 +835,7 @@ BASE_SRC += events/actionevent.h \
 	      resources/memorycounter.h \
 	      resources/memorymanager.cpp \
 	      resources/memorymanager.h \
-	      winver.h
-
-if USE_PHYSFS
-BASE_SRC +=  \
-	      fs/physfs/virtfileprivate.cpp \
-	      fs/physfs/virtfileprivate.h \
-	      fs/physfs/virtfs.cpp \
-	      fs/physfs/virtfsphys.cpp \
-	      fs/physfs/virtfsphys.h
-else
-BASE_SRC +=  \
+	      winver.h \
 	      enums/fs/fsentrytype.h \
 	      fs/virtfs/fileapi.h \
 	      fs/virtfs/virtdirentry.cpp \
@@ -871,7 +856,6 @@ BASE_SRC +=  \
 	      fs/virtfs/zip.h \
 	      fs/virtfs/ziplocalheader.cpp \
 	      fs/virtfs/ziplocalheader.h
-endif
 
 if ENABLE_PUGIXML
 BASE_SRC += utils/xml/pugixml.cpp \
@@ -1962,9 +1946,6 @@ endif
 if ENABLE_TINYXML2
 manaplustests_CXXFLAGS += -DENABLE_TINYXML2
 endif
-if USE_PHYSFS
-manaplustests_CXXFLAGS += -DUSE_PHYSFS
-endif
 if USE_SDL2
 manaplustests_CXXFLAGS += -DUSE_SDL2
 endif
@@ -2001,16 +1982,9 @@ manaplustests_SOURCES += manaplus.rc
 manaplustests_LDFLAGS += -mconsole
 endif
 
-if USE_PHYSFS
-manaplustests_SOURCES += \
-	      fs/physfs/virtfsphys_unittest.cc
-else
 manaplustests_SOURCES += \
 	      fs/virtfs/virtfs_unittest.cc \
-	      fs/virtfs/zip_unittest.cc
-endif
-
-manaplustests_SOURCES += \
+	      fs/virtfs/zip_unittest.cc \
 	      fs/virtfs_unittest.cc \
 	      utils/xml_unittest.cc \
 	      utils/timer_unittest.cc \

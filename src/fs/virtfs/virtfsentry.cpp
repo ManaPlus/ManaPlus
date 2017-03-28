@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef USE_PHYSFS
-
 #include "fs/virtfs/virtfsentry.h"
 
 #include "debug.h"
@@ -35,5 +33,3 @@ VirtFsEntry::VirtFsEntry(const FsEntryTypeT &type0,
 VirtFsEntry::~VirtFsEntry()
 {
 }
-
-#endif  // USE_PHYSFS

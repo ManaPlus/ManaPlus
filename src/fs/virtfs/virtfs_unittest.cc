@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef USE_PHYSFS
-
 #include "catch.hpp"
 
 #include "fs/files.h"
@@ -1422,5 +1420,3 @@ TEST_CASE("VirtFs1 read2")
     VirtFs::deinit();
     delete2(logger);
 }
-
-#endif  // USE_PHYSFS

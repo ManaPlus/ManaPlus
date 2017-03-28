@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef USE_PHYSFS
-
 #include "fs/virtfs/ziplocalheader.h"
 
 #include "localconsts.h"
@@ -35,4 +33,3 @@ ZipLocalHeader::ZipLocalHeader() :
     compressed(false)
 {
 }
-#endif  // USE_PHYSFS

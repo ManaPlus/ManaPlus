@@ -16,7 +16,6 @@ BuildRequires:	SDL_mixer-devel
 Buildrequires:	SDL_net-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	SDL_gfx-devel
-BuildRequires:	physfs-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libpng-devel

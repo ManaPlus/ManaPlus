@@ -20,11 +20,7 @@
 
 #include "fs/virtfile.h"
 
-#ifdef USE_PHYSFS
-#include "fs/physfs/virtfileprivate.h"
-#else  // USE_PHYSFS
 #include "fs/virtfs/virtfileprivate.h"
-#endif  // USE_PHYSFS
 
 #include "debug.h"
 

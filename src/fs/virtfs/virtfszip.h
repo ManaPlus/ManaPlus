@@ -20,7 +20,6 @@
 
 #ifndef UTILS_VIRTFSZIP_H
 #define UTILS_VIRTFSZIP_H
-#ifndef USE_PHYSFS
 
 #include "utils/stringvector.h"
 
@@ -74,5 +73,4 @@ namespace VirtFsZip
     int eof(VirtFile *restrict const file);
 }  // namespace VirtFsZip
 
-#endif  // USE_PHYSFS
 #endif  // UTILS_VIRTFSZIP_H

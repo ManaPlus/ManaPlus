@@ -42,8 +42,8 @@
  *  Copyright (C) 2012-2017  The ManaPlus Developers
  */
 
-#ifndef UTILS_PHYSFSRWOPS_H
-#define UTILS_PHYSFSRWOPS_H
+#ifndef SRC_FS_VIRTFSRWOPS_H
+#define SRC_FS_VIRTFSRWOPS_H
 
 #include "localconsts.h"
 
@@ -72,4 +72,4 @@ namespace VirtFs
 #endif  // DUMP_LEAKED_RESOURCES
 }  // namespace VirtFs
 
-#endif  // UTILS_PHYSFSRWOPS_H
+#endif  // SRC_FS_VIRTFSRWOPS_H

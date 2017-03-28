@@ -25,7 +25,6 @@ THE MANA PLUS CLIENT
  Optional dependencies:
 
   - gettext (translations)
-  - PhysFS (not used by default)
 
  Additiona run time deps:
   - xsel (for clipboard access, used only in SDL 1.2)
@@ -34,9 +33,6 @@ THE MANA PLUS CLIENT
  Images and fonts sources:
   - data/icons
   - data/fonts/src
-
- Run time issues:
-   due PhysFS bug with recent zlib versions, need apply patch to PhysFS from packaging/patches/physfs/zip_seek.diff
 
 
 0. Index

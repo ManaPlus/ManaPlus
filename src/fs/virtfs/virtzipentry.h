@@ -20,7 +20,6 @@
 
 #ifndef UTILS_VIRTZIPENTRY_H
 #define UTILS_VIRTZIPENTRY_H
-#ifndef USE_PHYSFS
 
 #include "fs/virtfs/virtfsentry.h"
 
@@ -43,5 +42,4 @@ struct VirtZipEntry final : public VirtFsEntry
     std::vector<std::string> mDirs;
 };
 
-#endif  // USE_PHYSFS
 #endif  // UTILS_VIRTZIPENTRY_H

@@ -20,7 +20,6 @@
 
 #ifndef UTILS_ZIPLOCALHEADER_H
 #define UTILS_ZIPLOCALHEADER_H
-#ifndef USE_PHYSFS
 
 #include "localconsts.h"
 
@@ -42,5 +41,4 @@ struct ZipLocalHeader final
     bool compressed;
 };
 
-#endif  // USE_PHYSFS
 #endif  // UTILS_ZIPLOCALHEADER_H

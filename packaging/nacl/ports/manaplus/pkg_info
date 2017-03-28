@@ -2,5 +2,5 @@ NAME=manaplus
 VERSION=1
 #URL=https://gitlab.com/manaplus/manaplus.git@master
 LICENSE=GPL
-DEPENDS=(sdl sdl-gfx sdl-mixer sdl-ttf sdl-image sdl-net physfs curl libxml2 libwebp zlib)
+DEPENDS=(sdl sdl-gfx sdl-mixer sdl-ttf sdl-image sdl-net curl libxml2 libwebp zlib)
 SHA1=4178d0c709b34b811d1781fc6dc183ea4979c2b5

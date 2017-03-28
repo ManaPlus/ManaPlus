@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef USE_PHYSFS
-
 #include "fs/virtfs/virtzipentry.h"
 
 #include "fs/virtfs/ziplocalheader.h"
@@ -41,4 +39,3 @@ VirtZipEntry::~VirtZipEntry()
 {
     delete_all(mHeaders);
 }
-#endif  // USE_PHYSFS

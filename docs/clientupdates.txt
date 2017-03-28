@@ -18,7 +18,7 @@ this functionality:
     from where to get the the missing packages
  6. Client downloads them and puts them in "data" directory (~/.mana/data on
     Linux, cause that's writable)
- 7. Client loads the list of files server mentioned in PhysFS virtual
+ 7. Client loads the list of files server mentioned in VirtFS virtual
     filesystem
  8. Client tells server that it is up to date
  9. Client could load some common data like item definitions here

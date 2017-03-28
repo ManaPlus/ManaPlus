@@ -20,7 +20,6 @@
 
 #ifndef UTILS_VIRTFSENTRY_H
 #define UTILS_VIRTFSENTRY_H
-#ifndef USE_PHYSFS
 
 #include "enums/fs/fsentrytype.h"
 
@@ -46,5 +45,4 @@ struct VirtFsEntry notfinal
     VirtFsFuncs *funcs;
 };
 
-#endif  // USE_PHYSFS
 #endif  // UTILS_VIRTFSENTRY_H

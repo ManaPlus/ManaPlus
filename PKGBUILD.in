@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="ManaPlus is a 2D MMORPG game advanced client for games based on eAthena fork The Mana World (tAthena) also for other forks like Evol. More info here: http://manaplus.evolonline.org"
 arch=('i686' 'x86_64')
 url="http://manaplus.org"
-depends=('libxml2' 'physfs' 'sdl_image' 'sdl_mixer' 'sdl_net' 'sdl_ttf' 'sdl_gfx')
+depends=('libxml2' 'sdl_image' 'sdl_mixer' 'sdl_net' 'sdl_ttf' 'sdl_gfx')
 license=('GPL2')
 
 build() {

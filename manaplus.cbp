@@ -707,9 +707,6 @@
 		<Unit filename="src/fs/virtfstools.cpp" />
 		<Unit filename="src/fs/mkdir.cpp" />
 		<Unit filename="src/fs/virtfsrwops.cpp" />
-		<Unit filename="src/fs/physfs/virtfsphys.cpp" />
-		<Unit filename="src/fs/physfs/virtfs.cpp" />
-		<Unit filename="src/fs/physfs/virtfileprivate.cpp" />
 		<Unit filename="src/fs/virtfs/virtdirentry.cpp" />
 		<Unit filename="src/fs/virtfs/virtfs.cpp" />
 		<Unit filename="src/fs/virtfs/virtfszip.cpp" />
@@ -1616,8 +1613,6 @@
 		<Unit filename="src/vector.h" />
 		<Unit filename="src/main.h" />
 		<Unit filename="src/fs/virtfstools.h" />
-		<Unit filename="src/fs/physfs/virtfileprivate.h" />
-		<Unit filename="src/fs/physfs/virtfsphys.h" />
 		<Unit filename="src/fs/files.h" />
 		<Unit filename="src/fs/specialfolder.h" />
 		<Unit filename="src/fs/virtfsfuncs.h" />

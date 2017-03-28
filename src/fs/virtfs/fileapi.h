@@ -20,7 +20,6 @@
 
 #ifndef UTILS_VIRTFS_FILEAPI_H
 #define UTILS_VIRTFS_FILEAPI_H
-#ifndef USE_PHYSFS
 
 #include "localconsts.h"
 
@@ -46,5 +45,4 @@
 #define FILEOPEN_FLAG_APPEND O_WRONLY | O_CREAT | O_APPEND
 #endif  // USE_FILE_FOPEN
 
-#endif  // USE_PHYSFS
 #endif  // UTILS_VIRTFS_FILEAPI_H

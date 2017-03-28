@@ -20,7 +20,6 @@
 
 #ifndef UTILS_VIRTDIRENTRY_H
 #define UTILS_VIRTDIRENTRY_H
-#ifndef USE_PHYSFS
 
 #include "fs/virtfs/virtfsentry.h"
 
@@ -39,5 +38,4 @@ struct VirtDirEntry final : public VirtFsEntry
     std::string userDir;
 };
 
-#endif  // USE_PHYSFS
 #endif  // UTILS_VIRTDIRENTRY_H

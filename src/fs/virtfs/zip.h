@@ -20,7 +20,6 @@
 
 #ifndef UTILS_ZIP_H
 #define UTILS_ZIP_H
-#ifndef USE_PHYSFS
 
 #include "localconsts.h"
 
@@ -39,5 +38,4 @@ namespace Zip
     uint8_t *readFile(const ZipLocalHeader *restrict const header);
 }  // namespace Zip
 
-#endif  // USE_PHYSFS
 #endif  // UTILS_ZIP_H

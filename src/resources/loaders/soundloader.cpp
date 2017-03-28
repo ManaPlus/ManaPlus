@@ -50,7 +50,6 @@ namespace
             SDL_RWops *const rw = VirtFs::RWopsOpenRead(rl->path);
             if (!rw)
             {
-                reportAlways("Physfs error: %s", VirtFs::getLastError());
                 reportAlways("Error loading resource: %s",
                     rl->path.c_str());
                 return nullptr;

@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef USE_PHYSFS
-
 #include "fs/virtfs/virtfszip.h"
 
 #include "fs/virtfsfuncs.h"
@@ -340,4 +338,3 @@ namespace VirtFsZip
         return file->mPrivate->mPos >= file->mPrivate->mSize;
     }
 }  // namespace VirtFsZip
-#endif  // USE_PHYSFS

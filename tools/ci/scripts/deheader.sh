@@ -15,7 +15,6 @@ ${dir}/deheader -q -i "\"debug.h\"" \
 -i "\"sdlshared.h\"" \
 -i "\"localconsts.h\"" \
 -i "\"utils/fuzzer.h\"" \
--i "\"utils/physfscheckutils.h\"" \
 -i "\"$name\"" \
 -c "$CXX" \
 -d "$FLAGS" \

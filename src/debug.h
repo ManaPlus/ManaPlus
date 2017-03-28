@@ -66,4 +66,4 @@
 
 #ifdef DEBUG_VIRTFS
 #define RWopsOpenRead(name) RWopsOpenRead(name, __FILE__, __LINE__)
-#endif  // DEBUG_PHYSFS
+#endif  // DEBUG_VIRTFS

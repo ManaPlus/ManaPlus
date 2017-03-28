@@ -234,7 +234,7 @@ void Dirs::mountDataDir()
 #endif  // defined __native_client__
 
 #ifndef WIN32
-    // Add branding/data to PhysFS search path
+    // Add branding/data to VirtFS search path
     if (!settings.options.brandingPath.empty())
     {
         std::string path = settings.options.brandingPath;

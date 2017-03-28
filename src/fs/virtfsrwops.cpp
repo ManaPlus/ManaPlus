@@ -431,4 +431,4 @@ void VirtFs::reportRWops()
 }
 #endif  // DUMP_LEAKED_RESOURCES
 
-/* end of physfsrwops.c ... */
+/* end of virtfsrwops.c ... */

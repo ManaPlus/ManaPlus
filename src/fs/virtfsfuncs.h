@@ -26,9 +26,7 @@
 #include "localconsts.h"
 
 struct VirtFile;
-#ifndef USE_PHYSFS
 struct VirtFsEntry;
-#endif  // USE_PHYSFS
 
 struct VirtFsFuncs final
 {
@@ -39,7 +37,6 @@ struct VirtFsFuncs final
         fileLength(nullptr),
         tell(nullptr),
         seek(nullptr),
-#ifndef USE_PHYSFS
         exists(nullptr),
         getRealDir(nullptr),
         enumerate(nullptr),
@@ -47,7 +44,6 @@ struct VirtFsFuncs final
         openRead(nullptr),
         openWrite(nullptr),
         openAppend(nullptr),
-#endif
         eof(nullptr)
     {
     }
@@ -67,7 +63,6 @@ struct VirtFsFuncs final
     int64_t (*tell) (VirtFile *restrict const file);
     int (*seek) (VirtFile *restrict const file,
                  const uint64_t pos);
-#ifndef USE_PHYSFS
     bool (*exists) (VirtFsEntry *restrict const entry,
                     const std::string &filename,
                     const std::string &dirName);
@@ -87,7 +82,6 @@ struct VirtFsFuncs final
                             const std::string &filename);
     VirtFile *(*openAppend) (VirtFsEntry *restrict const entry,
                              const std::string &filename);
-#endif  // USE_PHYSFS
     int (*eof) (VirtFile *restrict const file);
 };
 
