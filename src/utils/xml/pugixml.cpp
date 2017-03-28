@@ -76,8 +76,9 @@ namespace XML
         valid = true;
         if (useResman == UseVirtFs_true)
         {
-            data = static_cast<char*>(VirtFs::loadFile(
-                filename.c_str(), size));
+            data = VirtFs::loadFile(
+                filename.c_str(),
+                size);
         }
         else
         {
@@ -97,7 +98,7 @@ namespace XML
                 else
                 {
                     file.seekg(0, std::ios::beg);
-                    data = static_cast<char*>(malloc(size));
+                    data = new char[size];
                     file.read(data, size);
                 }
                 file.close();
@@ -119,7 +120,7 @@ namespace XML
             if (result.status != pugi::status_ok)
             {
                 showErrorStatus(result);
-                free(data);
+                delete [] data;
             }
             else
             {
@@ -145,7 +146,7 @@ namespace XML
         if (!data)
             return;
 
-        char *buf = static_cast<char*>(calloc(size + 1, 1));
+        char *buf = new char[size + 1];
         strncpy(buf, data, size);
         buf[size] = 0;
         pugi::xml_parse_result result = mDoc.load_buffer_inplace(buf,
@@ -155,7 +156,7 @@ namespace XML
         if (result.status != pugi::status_ok)
         {
             showErrorStatus(result);
-            free(buf);
+            delete [] buf;
         }
         else
         {
@@ -165,10 +166,8 @@ namespace XML
 
     Document::~Document()
     {
-        free(mData);
+        delete [] mData);
         mData = nullptr;
-//        if (mDoc)
-//            xmlFreeDoc(mDoc);
     }
 
     XmlNodePtr Document::rootNode()

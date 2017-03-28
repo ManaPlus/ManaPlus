@@ -47,12 +47,12 @@ PoParser::PoParser() :
 void PoParser::openFile(const std::string &name)
 {
     int size;
-    char *buf = static_cast<char*>(VirtFs::loadFile(getFileName(name), size));
+    char *buf = VirtFs::loadFile(getFileName(name), size);
 
     if (buf)
     {
         mFile.str(std::string(buf, size));
-        free(buf);
+        delete [] buf;
     }
     else
     {

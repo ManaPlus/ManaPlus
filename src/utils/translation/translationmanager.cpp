@@ -93,8 +93,7 @@ bool TranslationManager::translateFile(const std::string &fileName,
         return false;
 
     int contentsLength;
-    char *fileContents = static_cast<char*>(
-        VirtFs::loadFile(fileName, contentsLength));
+    char *fileContents = VirtFs::loadFile(fileName, contentsLength);
 
     if (!fileContents)
     {
@@ -127,6 +126,6 @@ bool TranslationManager::translateFile(const std::string &fileName,
     while (getline(iss, line))
         lines.push_back(line);
 
-    free(fileContents);
+    delete [] fileContents;
     return true;
 }

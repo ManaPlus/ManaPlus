@@ -1070,11 +1070,12 @@ bool UpdaterWindow::validateFile(const std::string &filePath,
 unsigned long UpdaterWindow::getFileHash(const std::string &filePath)
 {
     int size = 0;
-    const char *const buf = static_cast<const char*>(
-        VirtFs::loadFile(filePath, size));
-    if (!buf)
+    char *const buf = VirtFs::loadFile(filePath, size);
+    if (buf == nullptr)
         return 0;
-    return Net::Download::adlerBuffer(buf, size);
+    unsigned long res = Net::Download::adlerBuffer(buf, size);
+    delete [] buf;
+    return res;
 }
 
 void UpdaterWindow::loadFile(std::string file)

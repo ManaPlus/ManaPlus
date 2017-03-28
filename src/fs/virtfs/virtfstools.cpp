@@ -36,7 +36,7 @@
 
 namespace VirtFs
 {
-    void *loadFile(const std::string &restrict fileName,
+    char *loadFile(const std::string &restrict fileName,
                    int &restrict fileSize)
     {
         // Attempt to open the specified file using PhysicsFS
@@ -55,7 +55,9 @@ namespace VirtFs
 
         fileSize = CAST_S32(VirtFs::fileLength(file));
         // Allocate memory and load the file
-        void *restrict const buffer = calloc(fileSize, 1);
+        char *restrict const buffer = new char[fileSize];
+        if (fileSize > 0)
+            buffer[fileSize - 1] = 0;
         VirtFs::read(file, buffer, 1, fileSize);
         VirtFs::close(file);
 
@@ -185,8 +187,7 @@ namespace VirtFs
     std::string loadTextFileString(const std::string &fileName)
     {
         int contentsLength;
-        char *fileContents = static_cast<char*>(
-            VirtFs::loadFile(fileName, contentsLength));
+        char *fileContents = VirtFs::loadFile(fileName, contentsLength);
 
         if (!fileContents)
         {
@@ -194,7 +195,7 @@ namespace VirtFs
             return std::string();
         }
         const std::string str = std::string(fileContents, contentsLength);
-        free(fileContents);
+        delete [] fileContents;
         return str;
     }
 
@@ -202,8 +203,7 @@ namespace VirtFs
                       StringVect &lines)
     {
         int contentsLength;
-        char *fileContents = static_cast<char*>(
-            VirtFs::loadFile(fileName, contentsLength));
+        char *fileContents = VirtFs::loadFile(fileName, contentsLength);
 
         if (!fileContents)
         {
@@ -217,7 +217,7 @@ namespace VirtFs
         while (getline(iss, line))
             lines.push_back(line);
 
-        free(fileContents);
+        delete [] fileContents;
         return true;
     }
 }  // namespace VirtFs

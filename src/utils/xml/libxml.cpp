@@ -98,8 +98,9 @@ namespace XML
         valid = true;
         if (useResman == UseVirtFs_true)
         {
-            data = static_cast<char*>(VirtFs::loadFile(
-                filename.c_str(), size));
+            data = VirtFs::loadFile(
+                filename.c_str(),
+                size);
         }
         else
         {
@@ -119,7 +120,7 @@ namespace XML
                 else
                 {
                     file.seekg(0, std::ios::beg);
-                    data = static_cast<char*>(malloc(size));
+                    data = new char[size];
                     file.read(data, size);
                 }
                 file.close();
@@ -133,7 +134,7 @@ namespace XML
         if (data)
         {
             mDoc = xmlParseMemory(data, size);
-            free(data);
+            delete [] data;
 
             if (!mDoc)
             {

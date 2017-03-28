@@ -91,11 +91,11 @@ void Files::copyVirtFsFile(const std::string &restrict inFile,
                            const std::string &restrict outFile)
 {
     int size = 0;
-    void *const buf = VirtFs::loadFile(inFile, size);
+    char *const buf = VirtFs::loadFile(inFile, size);
     FILE *const file = fopen(outFile.c_str(), "w");
     fwrite(buf, 1, size, file);
     fclose(file);
-    free(buf);
+    delete [] buf;
 #ifdef ANDROID
     if (mCallbackPtr)
     {
