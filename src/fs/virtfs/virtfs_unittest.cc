@@ -21,8 +21,8 @@
 #include "catch.hpp"
 
 #include "fs/files.h"
+#include "fs/paths.h"
 
-#include "fs/virtfs/virtdirentry.h"
 #include "fs/virtfs/virtfs.h"
 #include "fs/virtfs/virtfstools.h"
 #include "fs/virtfs/virtlist.h"
@@ -32,490 +32,162 @@
 
 #include "debug.h"
 
-TEST_CASE("VirtFs1 getEntries")
+TEST_CASE("VirtFs dirSeparator")
 {
-    VirtFs::init(".");
-    REQUIRE(VirtFs::getEntries().empty());
-    REQUIRE(VirtFs::searchEntryByRootInternal("test") == nullptr);
-    VirtFs::deinit();
+    REQUIRE(dirSeparator != nullptr);
+    REQUIRE(VirtFs::getDirSeparator() == std::string(dirSeparator));
+    VirtFs::updateDirSeparator();
+    REQUIRE(dirSeparator != nullptr);
+    REQUIRE(VirtFs::getDirSeparator() == std::string(dirSeparator));
 }
 
-TEST_CASE("VirtFs1 getBaseDir")
+TEST_CASE("VirtFs getBaseDir")
 {
-    VirtFs::init(".");
     REQUIRE(VirtFs::getBaseDir() != nullptr);
-    VirtFs::deinit();
 }
 
-TEST_CASE("VirtFs1 mountDir")
+TEST_CASE("VirtFs getUserDir")
 {
-    VirtFs::init(".");
-    logger = new Logger();
-    const std::string sep = dirSeparator;
-    SECTION("simple 1")
-    {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
-            Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 1);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir1");
-    }
-
-    SECTION("simple 2")
-    {
-        REQUIRE(VirtFs::mountDirSilent2("dir1/",
-            Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 1);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir1" + sep);
-    }
-
-    SECTION("simple 3")
-    {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
-            Append_false));
-        REQUIRE(VirtFs::mountDirSilent2("dir2",
-            Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir2" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 2);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir2" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir2");
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[1])->userDir == "dir1");
-    }
-
-    SECTION("simple 4")
-    {
-        REQUIRE(VirtFs::mountDirSilent2("dir1\\",
-            Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir2",
-            Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir2" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 2);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir1" + sep);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[1])->userDir == "dir2");
-    }
-
-    SECTION("simple 5")
-    {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
-            Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir2",
-            Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir3/test",
-            Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir2" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "dir3" + sep + "test" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 3);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep);
-        REQUIRE(VirtFs::getEntries()[2]->root == "dir3" + sep + "test" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir1");
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[1])->userDir == "dir2");
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[2])->userDir == "dir3" + sep + "test");
-    }
-
-    SECTION("simple 6")
-    {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
-            Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir2",
-            Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir3\\test",
-            Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "dir1" + sep + "") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "dir2" + sep + "") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "dir3" + sep + "test" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "test" + sep + "") == nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 3);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep + "test" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[2]->root == "dir2" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir3" + sep + "test");
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[1])->userDir == "dir1");
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[2])->userDir == "dir2");
-    }
-
-    VirtFs::deinit();
-    delete2(logger);
+    REQUIRE(VirtFs::getUserDir() != nullptr);
 }
 
-TEST_CASE("VirtFs1 mountZip")
+TEST_CASE("VirtFs exists1")
 {
-    VirtFs::init(".");
     logger = new Logger();
-    std::string name("data/test/test.zip");
-    std::string prefix;
-    const std::string sep = dirSeparator;
-    if (Files::existsLocal(name) == false)
-        prefix = "../";
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
 
-    SECTION("simple 1")
-    {
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
-            Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") == nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 1);
-        REQUIRE(VirtFs::getEntries()[0]->root ==
-            prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-    }
-
-    SECTION("simple 2")
-    {
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
-            Append_false));
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
-            Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 2);
-        REQUIRE(VirtFs::getEntries()[0]->root ==
-            prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[1]->root ==
-            prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
-    }
-
-    SECTION("simple 3")
-    {
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
-            Append_true));
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
-            Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 2);
-        REQUIRE(VirtFs::getEntries()[0]->root ==
-            prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[1]->root ==
-            prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
-    }
-
-    SECTION("simple 4")
-    {
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
-            Append_false));
-        REQUIRE(VirtFs::mountDir(prefix + "data/test",
-            Append_false));
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
-            Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "") != nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 3);
-        REQUIRE(VirtFs::getEntries()[0]->root ==
-            prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[1]->root ==
-            prefix + "data" + sep + "test" + sep + "");
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[2]->root ==
-            prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Zip);
-    }
-
-    SECTION("simple 5")
-    {
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
-            Append_false));
-        REQUIRE(VirtFs::mountDir(prefix + "data/test",
-            Append_false));
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
-            Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "") != nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 3);
-        REQUIRE(VirtFs::getEntries()[0]->root ==
-            prefix + "data" + sep + "test" + sep + "");
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[1]->root ==
-            prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[2]->root ==
-            prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Zip);
-    }
-
-    VirtFs::deinit();
-    delete2(logger);
-}
-
-TEST_CASE("VirtFs1 removeFromSearchPath")
-{
-    VirtFs::init(".");
-    logger = new Logger();
-    std::string name("data/test/test.zip");
-    std::string prefix;
-    const std::string sep = dirSeparator;
-    if (Files::existsLocal(name) == false)
-        prefix = "../";
-
-    SECTION("simple 1")
-    {
-        REQUIRE_THROWS(VirtFs::unmountDir("dir1"));
-        REQUIRE_THROWS(VirtFs::unmountDir("dir1/"));
-    }
-
-    SECTION("simple 2")
-    {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
-            Append_true));
-        REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
-        REQUIRE(VirtFs::unmountDir("dir1"));
-    }
-
-    SECTION("simple 3")
-    {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
-            Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir2//dir3",
-            Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir3",
-            Append_false));
-        REQUIRE(VirtFs::getEntries().size() == 3);
-        REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
-        REQUIRE(VirtFs::unmountDir("dir1"));
-        REQUIRE(VirtFs::getEntries().size() == 2);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir3");
-        REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep + "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[1])->userDir == "dir2" + sep + "dir3");
-        REQUIRE_THROWS(VirtFs::unmountDir("dir1"));
-        REQUIRE(VirtFs::getEntries().size() == 2);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir3");
-        REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep + "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[1])->userDir == "dir2" + sep + "dir3");
-        REQUIRE(VirtFs::unmountDir("dir2/dir3"));
-        REQUIRE_THROWS(VirtFs::unmountDir("dir2/dir3" + sep));
-        REQUIRE(VirtFs::getEntries().size() == 1);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir3");
-    }
-
-    SECTION("simple 4")
-    {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
-            Append_true));
-        REQUIRE(VirtFs::getEntries().size() == 1);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir1");
-        REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
-        REQUIRE(VirtFs::unmountDir("dir1"));
-        REQUIRE(VirtFs::getEntries().size() == 0);
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
-            Append_true));
-        REQUIRE(VirtFs::getEntries().size() == 1);
-        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(static_cast<VirtDirEntry*>(
-            VirtFs::getEntries()[0])->userDir == "dir1");
-    }
-
-    SECTION("simple 5")
-    {
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
-            Append_true));
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
-            Append_true));
-
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 2);
-        REQUIRE(VirtFs::getEntries()[0]->root ==
-            prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[1]->root ==
-            prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
-
-        VirtFs::unmountZip(prefix + "data/test/test.zip");
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") == nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 1);
-        REQUIRE(VirtFs::getEntries()[0]->root ==
-            prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-    }
-
-    SECTION("simple 6")
-    {
-        REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
-            Append_false));
-        REQUIRE(VirtFs::mountDir(prefix + "data/test",
-            Append_false));
-        REQUIRE(VirtFs::mountZip(prefix + "data\\test/test2.zip",
-            Append_false));
-
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "") != nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 3);
-        REQUIRE(VirtFs::getEntries()[0]->root ==
-            prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[1]->root ==
-            prefix + "data" + sep + "test" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[2]->root ==
-            prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Zip);
-
-        VirtFs::unmountZip(prefix + "data/test/test.zip");
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") == nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "") != nullptr);
-        REQUIRE(VirtFs::getEntries().size() == 2);
-        REQUIRE(VirtFs::getEntries()[0]->root ==
-            prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[1]->root ==
-            prefix + "data" + sep + "test" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-    }
-
-    VirtFs::deinit();
-    delete2(logger);
-}
-
-TEST_CASE("VirtFs1 exists")
-{
-    VirtFs::init(".");
-    logger = new Logger();
-    const bool dir1 = VirtFs::mountDirSilent("data/",
-        Append_false);
-    VirtFs::mountDirSilent("..\\data",
-        Append_false);
-
-    REQUIRE(VirtFs::exists("test"));
-    REQUIRE(VirtFs::exists("test/"));
-    REQUIRE(VirtFs::exists("test/dir1"));
-    REQUIRE(VirtFs::exists("test/dir1/"));
+    REQUIRE(VirtFs::exists("test") == true);
+    REQUIRE(VirtFs::exists("test/dir1") == true);
     REQUIRE(VirtFs::exists("test/dir") == false);
-    REQUIRE(VirtFs::exists("test//units.xml") == true);
-    REQUIRE(VirtFs::exists("test/\\units123.xml") == false);
+    REQUIRE(VirtFs::exists("test/units.xml") == true);
+    REQUIRE(VirtFs::exists("test/units123.xml") == false);
     REQUIRE(VirtFs::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFs::exists("units.xml") == false);
 
-    if (dir1 == true)
-    {
-        VirtFs::mountDir("data//test",
-            Append_false);
-    }
-    else
-    {
-        VirtFs::mountDirSilent("..//data\\test",
-            Append_false);
-    }
+    VirtFs::mountDirSilent("data/test", Append_false);
+    VirtFs::mountDirSilent("../data/test", Append_false);
 
     REQUIRE(VirtFs::exists("test") == true);
-    REQUIRE(VirtFs::exists("test/dir1"));
-    REQUIRE(VirtFs::exists("test/dir1\\"));
+    REQUIRE(VirtFs::exists("test/dir1") == true);
     REQUIRE(VirtFs::exists("test/dir") == false);
-    REQUIRE(VirtFs::exists("test\\units.xml") == true);
+    REQUIRE(VirtFs::exists("test/units.xml") == true);
     REQUIRE(VirtFs::exists("test/units123.xml") == false);
     REQUIRE(VirtFs::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFs::exists("units.xml") == true);
-    REQUIRE(VirtFs::exists("units.xml/") == false);
 
-    if (dir1 == true)
-        VirtFs::unmountDirSilent("data/test");
-    else
-        VirtFs::unmountDirSilent("../data/test");
+    VirtFs::unmountDirSilent("data/test");
+    VirtFs::unmountDirSilent("../data/test");
 
     REQUIRE(VirtFs::exists("test") == true);
-    REQUIRE(VirtFs::exists("test/dir1"));
+    REQUIRE(VirtFs::exists("test/dir1") == true);
     REQUIRE(VirtFs::exists("test/dir") == false);
-    REQUIRE(VirtFs::exists("test\\units.xml") == true);
+    REQUIRE(VirtFs::exists("test/units.xml") == true);
     REQUIRE(VirtFs::exists("test/units123.xml") == false);
     REQUIRE(VirtFs::exists("tesQ/units.xml") == false);
     REQUIRE(VirtFs::exists("units.xml") == false);
-    REQUIRE(VirtFs::exists("units.xml/") == false);
 
-    REQUIRE_THROWS(VirtFs::exists("test/../units.xml"));
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
+    delete2(logger);
+}
 
-    VirtFs::deinit();
+TEST_CASE("VirtFs exists2")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
+
+    REQUIRE(VirtFs::exists("test") == false);
+    REQUIRE(VirtFs::exists("test/units.xml") == false);
+    REQUIRE(VirtFs::exists("test.txt") == true);
+    REQUIRE(VirtFs::exists("dir/hide.png") == true);
+    REQUIRE(VirtFs::exists("dir/gpl") == true);
+    REQUIRE(VirtFs::exists("dir/gpl/zzz") == false);
+    REQUIRE(VirtFs::exists("units.xml") == true);
+    REQUIRE(VirtFs::exists("units.xml.") == false);
+    REQUIRE(VirtFs::exists("units.xml2") == false);
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs exists3")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
+    VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
+
+    REQUIRE(VirtFs::exists("test") == false);
+    REQUIRE(VirtFs::exists("test/units.xml") == false);
+    REQUIRE(VirtFs::exists("dir/brimmedhat.png"));
+    REQUIRE(VirtFs::exists("dir//brimmedhat.png"));
+    REQUIRE(VirtFs::exists("dir//hide.png"));
+    REQUIRE(VirtFs::exists("dir/1"));
+    REQUIRE(VirtFs::exists("dir/gpl"));
+    REQUIRE(VirtFs::exists("dir/dye.png"));
+    REQUIRE(VirtFs::exists("dir/2") == false);
+    REQUIRE(VirtFs::exists("dir2/2") == false);
+    REQUIRE(VirtFs::exists("dir2/paths.xml"));
+
+    VirtFs::unmountZip(prefix + "data/test/test.zip");
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs exists4")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
+    VirtFs::mountDirSilent(prefix + "data/test", Append_false);
+
+    REQUIRE(VirtFs::exists("test") == false);
+    REQUIRE(VirtFs::exists("test/units.xml") == false);
+    REQUIRE(VirtFs::exists("dir/brimmedhat.png"));
+    REQUIRE(VirtFs::exists("dir//brimmedhat.png"));
+    REQUIRE(VirtFs::exists("dir//hide.png"));
+    REQUIRE(VirtFs::exists("dir/1") == false);
+    REQUIRE(VirtFs::exists("dir/gpl") == false);
+    REQUIRE(VirtFs::exists("dir/dye.png") == false);
+    REQUIRE(VirtFs::exists("dir/2") == false);
+    REQUIRE(VirtFs::exists("dir2/2") == false);
+    REQUIRE(VirtFs::exists("dir2/paths.xml") == false);
+    REQUIRE(VirtFs::exists("units.xml"));
+    REQUIRE(VirtFs::exists("dir1/file1.txt"));
+    REQUIRE(VirtFs::exists("dir2/file2.txt"));
+    REQUIRE(VirtFs::exists("dir2/file3.txt") == false);
+
+    VirtFs::unmountZip(prefix + "data/test/test.zip");
+    VirtFs::unmountDirSilent(prefix + "data/test");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs exists5")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    const std::string realDir = getRealPath(prefix + "data");
+    logger->log("real dir: " + realDir);
+    REQUIRE_FALSE(VirtFs::exists(realDir));
+
     delete2(logger);
 }
 
@@ -545,131 +217,6 @@ static void removeTemp(StringVect &restrict list)
     }
 }
 
-TEST_CASE("VirtFs1 getRealDir1")
-{
-    VirtFs::init(".");
-    logger = new Logger();
-    const std::string sep = dirSeparator;
-    REQUIRE(VirtFs::getRealDir(".") == "");
-    REQUIRE(VirtFs::getRealDir("..") == "");
-    const bool dir1 = VirtFs::mountDirSilent("data",
-        Append_false);
-    REQUIRE((dir1 || VirtFs::mountDirSilent("../data",
-        Append_false)) == true);
-    if (dir1 == true)
-    {
-        REQUIRE(VirtFs::getRealDir("test") == "data");
-        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
-            "data");
-        REQUIRE(VirtFs::getRealDir("test\\test.txt") ==
-            "data");
-        REQUIRE(VirtFs::getRealDir("test//test.txt") ==
-            "data");
-    }
-    else
-    {
-        REQUIRE(VirtFs::getRealDir("test") == "../data");
-        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
-            "../data");
-        REQUIRE(VirtFs::getRealDir("test\\test.txt") ==
-            "../data");
-        REQUIRE(VirtFs::getRealDir("test//test.txt") ==
-            "../data");
-    }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
-
-    VirtFs::mountDirSilent("data/test",
-        Append_false);
-    VirtFs::mountDirSilent("../data/test",
-        Append_false);
-    if (dir1 == true)
-    {
-        REQUIRE(VirtFs::getRealDir("test") == "data");
-        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
-            "data");
-        REQUIRE(VirtFs::getRealDir("test\\test.txt") ==
-            "data");
-        REQUIRE(VirtFs::getRealDir("test.txt") ==
-            "data" + sep + "test");
-    }
-    else
-    {
-        REQUIRE(VirtFs::getRealDir("test") == ".." + sep + "data");
-        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
-            ".." + sep + "data");
-        REQUIRE(VirtFs::getRealDir("test\\test.txt") ==
-            ".." + sep + "data");
-        REQUIRE(VirtFs::getRealDir("test.txt") ==
-            ".." + sep + "data" + sep + "test");
-    }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
-
-    VirtFs::unmountDirSilent("data/test");
-    VirtFs::unmountDirSilent("../data/test");
-
-    if (dir1 == true)
-    {
-        REQUIRE(VirtFs::getRealDir("test") == "data");
-        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
-            "data");
-    }
-    else
-    {
-        REQUIRE(VirtFs::getRealDir("test") == ".." + sep + "data");
-        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
-            ".." + sep + "data");
-    }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
-
-    VirtFs::unmountDirSilent("data");
-    VirtFs::unmountDirSilent("../data");
-    VirtFs::deinit();
-    delete2(logger);
-}
-
-TEST_CASE("VirtFs1 getRealDir2")
-{
-    VirtFs::init(".");
-    logger = new Logger();
-    const std::string sep = dirSeparator;
-    std::string name("data/test/test.zip");
-    std::string prefix("data" + sep + "test" + sep);
-    if (Files::existsLocal(name) == false)
-        prefix = ".." + sep + prefix;
-    VirtFs::mountZip(prefix + "test2.zip",
-        Append_false);
-
-    REQUIRE(VirtFs::getRealDir(".") == "");
-    REQUIRE(VirtFs::getRealDir("..") == "");
-    REQUIRE(VirtFs::getRealDir("test.txt") == prefix + "test2.zip");
-    REQUIRE(VirtFs::getRealDir("dir/1") == prefix + "test2.zip");
-    REQUIRE(VirtFs::getRealDir("dir\\dye.png") ==
-        prefix + "test2.zip");
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
-
-    VirtFs::mountZip(prefix + "test.zip",
-        Append_false);
-    REQUIRE(VirtFs::getRealDir("dir//dye.png") ==
-        prefix + "test2.zip");
-    REQUIRE(VirtFs::getRealDir("dir///hide.png") ==
-        prefix + "test.zip");
-    REQUIRE(VirtFs::getRealDir("dir\\\\brimmedhat.png") ==
-        prefix + "test.zip");
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
-
-    VirtFs::unmountZip(prefix + "test.zip");
-
-    REQUIRE(VirtFs::getRealDir("dir/brimmedhat.png") == "");
-    REQUIRE(VirtFs::getRealDir("test.txt") == prefix + "test2.zip");
-    REQUIRE(VirtFs::getRealDir("dir//dye.png") ==
-        prefix + "test2.zip");
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
-
-    VirtFs::unmountZip(prefix + "test2.zip");
-    VirtFs::deinit();
-    delete2(logger);
-}
-
 static bool inList(const VirtList *const list,
                    const std::string &name)
 {
@@ -681,15 +228,12 @@ static bool inList(const VirtList *const list,
     return false;
 }
 
-TEST_CASE("VirtFs1 enumerateFiles1")
+TEST_CASE("VirtFs enumerateFiles1")
 {
-    VirtFs::init(".");
     logger = new Logger;
 
-    VirtFs::mountDirSilent("data",
-        Append_false);
-    VirtFs::mountDirSilent("../data",
-        Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
 
     VirtList *list = nullptr;
 
@@ -704,31 +248,29 @@ TEST_CASE("VirtFs1 enumerateFiles1")
     VirtFs::freeList(list);
 
     VirtFs::permitLinks(true);
-    list = VirtFs::enumerateFiles("test/");
+    list = VirtFs::enumerateFiles("test");
     removeTemp(list->names);
     REQUIRE(list->names.size() == cnt2);
     VirtFs::freeList(list);
 
-    VirtFs::permitLinks(true);
-    list = VirtFs::enumerateFiles("test/units.xml");
-    REQUIRE(list->names.size() == 0);
-    VirtFs::freeList(list);
-
     VirtFs::permitLinks(false);
-    list = VirtFs::enumerateFiles("test\\");
+    list = VirtFs::enumerateFiles("test");
     removeTemp(list->names);
     REQUIRE(list->names.size() == cnt1);
     VirtFs::freeList(list);
 
+    list = VirtFs::enumerateFiles("test/units.xml");
+    removeTemp(list->names);
+    REQUIRE(list->names.size() == 0);
+    VirtFs::freeList(list);
+
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    VirtFs::deinit();
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 enumerateFiles2")
+TEST_CASE("VirtFs enumerateFiles2")
 {
-    VirtFs::init(".");
     logger = new Logger;
 
     VirtFs::mountDirSilent("data/test/dir1",
@@ -740,109 +282,22 @@ TEST_CASE("VirtFs1 enumerateFiles2")
 
     list = VirtFs::enumerateFiles("/");
     REQUIRE(list->names.size() == 5);
-    REQUIRE(inList(list, "file1.txt"));
-    REQUIRE_FALSE(inList(list, "file2.txt"));
     VirtFs::freeList(list);
-    VirtFs::deinit();
+
+    VirtFs::unmountDirSilent("data/test/dir1");
+    VirtFs::unmountDirSilent("../data/test/dir1");
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 enumerateFiles3")
+TEST_CASE("VirtFs enumerateFiles3")
 {
-    VirtFs::init(".");
-    logger = new Logger;
-
-    VirtFs::mountDirSilent("data/test/dir1",
-        Append_false);
-    VirtFs::mountDirSilent("../data/test/dir1",
-        Append_false);
-    VirtFs::mountDirSilent("data/test/dir2",
-        Append_false);
-    VirtFs::mountDirSilent("../data/test/dir2",
-        Append_false);
-
-    VirtList *list = nullptr;
-
-    list = VirtFs::enumerateFiles("/");
-    const size_t sz = list->names.size();
-    REQUIRE(inList(list, "file1.txt"));
-    REQUIRE(inList(list, "file2.txt"));
-    VirtFs::freeList(list);
-    VirtFs::deinit();
-    delete2(logger);
-}
-
-TEST_CASE("VirtFsZip enumerateFiles4")
-{
-    VirtFs::init(".");
     logger = new Logger;
     std::string name("data/test/test.zip");
-    std::string prefix("data\\test/");
+    std::string prefix;
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::mountZip(prefix + "test.zip",
-        Append_false);
-
-    VirtList *list = nullptr;
-
-    list = VirtFs::enumerateFiles("dir");
-    REQUIRE(list->names.size() == 2);
-    REQUIRE(inList(list, "brimmedhat.png"));
-    REQUIRE(inList(list, "hide.png"));
-    VirtFs::freeList(list);
-
-    VirtFs::unmountZip(prefix + "test.zip");
-    VirtFs::deinit();
-    delete2(logger);
-}
-
-TEST_CASE("VirtFsZip enumerateFiles5")
-{
-    VirtFs::init(".");
-    logger = new Logger;
-    std::string name("data/test/test.zip");
-    std::string prefix("data//test/");
-    if (Files::existsLocal(name) == false)
-        prefix = "../" + prefix;
-
-    VirtFs::mountZip(prefix + "test.zip",
-        Append_true);
-    VirtFs::mountZip(prefix + "test2.zip",
-        Append_true);
-
-    VirtList *list = nullptr;
-
-    list = VirtFs::enumerateFiles("dir");
-    FOR_EACH (StringVectCIter, it, list->names)
-    {
-        logger->log("filename: " + *it);
-    }
-
-    REQUIRE(list->names.size() == 5);
-    REQUIRE(inList(list, "brimmedhat.png"));
-    REQUIRE(inList(list, "hide.png"));
-    REQUIRE(inList(list, "1"));
-    REQUIRE(inList(list, "gpl"));
-    REQUIRE(inList(list, "dye.png"));
-    VirtFs::freeList(list);
-
-    VirtFs::unmountZip(prefix + "test.zip");
-    VirtFs::unmountZip(prefix + "test2.zip");
-    VirtFs::deinit();
-    delete2(logger);
-}
-
-TEST_CASE("VirtFsZip enumerateFiles6")
-{
-    VirtFs::init(".");
-    logger = new Logger;
-    std::string name("data/test/test.zip");
-    std::string prefix("data\\test/");
-    if (Files::existsLocal(name) == false)
-        prefix = "../" + prefix;
-
-    VirtFs::mountZip(prefix + "test.zip",
+    VirtFs::mountZip(prefix + "data/test/test.zip",
         Append_false);
 
     VirtList *list = nullptr;
@@ -852,21 +307,19 @@ TEST_CASE("VirtFsZip enumerateFiles6")
     REQUIRE(inList(list, "dir"));
     VirtFs::freeList(list);
 
-    VirtFs::unmountZip(prefix + "test.zip");
-    VirtFs::deinit();
+    VirtFs::unmountZip(prefix + "data/test/test.zip");
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles7")
+TEST_CASE("VirtFs enumerateFiles4")
 {
-    VirtFs::init(".");
     logger = new Logger;
     std::string name("data/test/test.zip");
-    std::string prefix("data\\test/");
+    std::string prefix;
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::mountZip(prefix + "test2.zip",
+    VirtFs::mountZip(prefix + "data/test/test2.zip",
         Append_false);
 
     VirtList *list = nullptr;
@@ -879,14 +332,12 @@ TEST_CASE("VirtFsZip enumerateFiles7")
     REQUIRE(inList(list, "units.xml"));
     VirtFs::freeList(list);
 
-    VirtFs::unmountZip(prefix + "test2.zip");
-    VirtFs::deinit();
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles8")
+TEST_CASE("VirtFs enumerateFiles5")
 {
-    VirtFs::init(".");
     logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix;
@@ -895,13 +346,11 @@ TEST_CASE("VirtFsZip enumerateFiles8")
 
     VirtFs::mountZip(prefix + "data/test/test2.zip",
         Append_false);
-    VirtFs::mountDirSilent(prefix + "data/test",
-        Append_false);
+    VirtFs::mountDirSilent(prefix + "data/test", Append_false);
 
     VirtList *list = nullptr;
 
     list = VirtFs::enumerateFiles("dir2");
-    REQUIRE(list->names.size() >= 6);
     REQUIRE(inList(list, "file1.txt"));
     REQUIRE(inList(list, "file2.txt"));
     REQUIRE(inList(list, "hide.png"));
@@ -911,22 +360,15 @@ TEST_CASE("VirtFsZip enumerateFiles8")
     VirtFs::freeList(list);
 
     VirtFs::unmountZip(prefix + "data/test/test2.zip");
-    VirtFs::unmountDir(prefix + "data/test");
-    VirtFs::deinit();
+    VirtFs::unmountDirSilent(prefix + "data/test");
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 isDirectory1")
+TEST_CASE("VirtFs isDirectory1")
 {
-    VirtFs::init(".");
     logger = new Logger();
-    std::string name("data/test/test.zip");
-    std::string prefix;
-    if (Files::existsLocal(name) == false)
-        prefix = "../" + prefix;
-
-    VirtFs::mountDir(prefix + "data",
-        Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
 
     REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
     REQUIRE(VirtFs::isDirectory("test/units.xml/") == false);
@@ -943,14 +385,14 @@ TEST_CASE("VirtFs1 isDirectory1")
     REQUIRE(VirtFs::isDirectory("test//dir1") == true);
     REQUIRE(VirtFs::isDirectory("test//dir1/") == true);
     REQUIRE(VirtFs::isDirectory("test//dir1//") == true);
-    REQUIRE(VirtFs::isDirectory("test\\dir1/") == true);
+    REQUIRE(VirtFs::isDirectory("test/dir1/") == true);
     REQUIRE(VirtFs::isDirectory("test/dir1//") == true);
     REQUIRE(VirtFs::isDirectory("testQ") == false);
     REQUIRE(VirtFs::isDirectory("testQ/") == false);
     REQUIRE(VirtFs::isDirectory("testQ//") == false);
 
-    VirtFs::mountDir(prefix + "data/test",
-        Append_false);
+    VirtFs::mountDirSilent("data/test", Append_false);
+    VirtFs::mountDirSilent("../data/test", Append_false);
 
     REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
     REQUIRE(VirtFs::isDirectory("test/units.xml/") == false);
@@ -961,9 +403,9 @@ TEST_CASE("VirtFs1 isDirectory1")
     REQUIRE(VirtFs::isDirectory("test") == true);
     REQUIRE(VirtFs::isDirectory("testQ") == false);
     REQUIRE(VirtFs::isDirectory("test/dir1") == true);
-    REQUIRE(VirtFs::isDirectory("test\\dir1") == true);
 
-    VirtFs::unmountDir(prefix + "data/test");
+    VirtFs::unmountDirSilent("data/test");
+    VirtFs::unmountDirSilent("../data/test");
 
     REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
     REQUIRE(VirtFs::isDirectory("test/units123.xml") == false);
@@ -975,250 +417,311 @@ TEST_CASE("VirtFs1 isDirectory1")
     REQUIRE(VirtFs::isDirectory("testQ") == false);
     REQUIRE(VirtFs::isDirectory("test/dir1") == true);
 
-    VirtFs::unmountDirSilent(prefix + "data");
-    VirtFs::deinit();
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 isDirectory2")
+TEST_CASE("VirtFs isDirectory2")
 {
-    VirtFs::init(".");
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::mountZip(prefix + "data/test/test2.zip",
-        Append_false);
+    VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
 
-    REQUIRE(VirtFs::isDirectory("dir2/units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir2/units.xml/") == false);
-    REQUIRE(VirtFs::isDirectory("dir2//units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir2/units123.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir2//units123.xml") == false);
-    REQUIRE(VirtFs::isDirectory("tesQ/units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("tesQ//units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
     REQUIRE(VirtFs::isDirectory("dir") == true);
-    REQUIRE(VirtFs::isDirectory("dir2/") == true);
-    REQUIRE(VirtFs::isDirectory("dir2//") == true);
-    REQUIRE(VirtFs::isDirectory("dir/1") == true);
-    REQUIRE(VirtFs::isDirectory("dir//1") == true);
-    REQUIRE(VirtFs::isDirectory("dir\\1/") == true);
-    REQUIRE(VirtFs::isDirectory("dir/1") == true);
-    REQUIRE(VirtFs::isDirectory("dir/1/zzz") == false);
-    REQUIRE(VirtFs::isDirectory("test/dir1\\") == false);
-    REQUIRE(VirtFs::isDirectory("testQ") == false);
-    REQUIRE(VirtFs::isDirectory("testQ/") == false);
-    REQUIRE(VirtFs::isDirectory("testQ//") == false);
-
-    VirtFs::mountZip(prefix + "data/test/test.zip",
-        Append_false);
-
-    REQUIRE(VirtFs::isDirectory("dir2/units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir2/units.xml/") == false);
-    REQUIRE(VirtFs::isDirectory("dir2\\units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir2/units123.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir2//units123.xml") == false);
-    REQUIRE(VirtFs::isDirectory("tesQ/units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("tesQ//units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir") == true);
-    REQUIRE(VirtFs::isDirectory("dir2/") == true);
-    REQUIRE(VirtFs::isDirectory("dir2\\") == true);
-    REQUIRE(VirtFs::isDirectory("dir/1") == true);
-    REQUIRE(VirtFs::isDirectory("dir//1") == true);
-    REQUIRE(VirtFs::isDirectory("dir//1/") == true);
-    REQUIRE(VirtFs::isDirectory("dir/1") == true);
-    REQUIRE(VirtFs::isDirectory("dir/1/zzz") == false);
-    REQUIRE(VirtFs::isDirectory("test/dir1//") == false);
-    REQUIRE(VirtFs::isDirectory("testQ") == false);
-    REQUIRE(VirtFs::isDirectory("testQ/") == false);
-    REQUIRE(VirtFs::isDirectory("testQ//") == false);
+    REQUIRE(VirtFs::isDirectory("dir/") == true);
+    REQUIRE(VirtFs::isDirectory("dir//") == true);
+    REQUIRE(VirtFs::isDirectory("dir2") == true);
+    REQUIRE(VirtFs::isDirectory("dir3") == false);
+    REQUIRE(VirtFs::isDirectory("test.txt") == false);
 
     VirtFs::unmountZip(prefix + "data/test/test2.zip");
-
-    REQUIRE(VirtFs::isDirectory("dir2/units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir2/units.xml/") == false);
-    REQUIRE(VirtFs::isDirectory("dir2//units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir2/units123.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir2//units123.xml") == false);
-    REQUIRE(VirtFs::isDirectory("tesQ/units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("tesQ//units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("units.xml") == false);
-    REQUIRE(VirtFs::isDirectory("dir") == true);
-    REQUIRE(VirtFs::isDirectory("dir2/") == false);
-    REQUIRE(VirtFs::isDirectory("dir2//") == false);
-    REQUIRE(VirtFs::isDirectory("dir/1") == false);
-    REQUIRE(VirtFs::isDirectory("dir\\1") == false);
-    REQUIRE(VirtFs::isDirectory("dir//1/") == false);
-    REQUIRE(VirtFs::isDirectory("dir/1") == false);
-    REQUIRE(VirtFs::isDirectory("dir/1/zzz") == false);
-    REQUIRE(VirtFs::isDirectory("test/dir1//") == false);
-    REQUIRE(VirtFs::isDirectory("testQ") == false);
-    REQUIRE(VirtFs::isDirectory("testQ/") == false);
-    REQUIRE(VirtFs::isDirectory("testQ//") == false);
-
-    VirtFs::unmountZip(prefix + "data/test/test.zip");
-    VirtFs::deinit();
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 openRead1")
+TEST_CASE("VirtFs isDirectory3")
 {
-    VirtFs::init(".");
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::mountDir(prefix + "data",
-        Append_false);
+    VirtFs::mountDir(prefix + "data", Append_false);
+    VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
 
-    VirtFile *file = nullptr;
+    REQUIRE(VirtFs::isDirectory("test/units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("test"));
+    REQUIRE(VirtFs::isDirectory("test//dye.png") == false);
+    REQUIRE(VirtFs::isDirectory("dir"));
+    REQUIRE(VirtFs::isDirectory("dir/"));
+    REQUIRE(VirtFs::isDirectory("dir//"));
+    REQUIRE(VirtFs::isDirectory("dir2"));
+    REQUIRE(VirtFs::isDirectory("dir3") == false);
+    REQUIRE(VirtFs::isDirectory("test.txt") == false);
+    REQUIRE(VirtFs::isDirectory("dir/hide.png") == false);
 
-    file = VirtFs::openRead("test/units.xml");
-    REQUIRE(file != nullptr);
-    VirtFs::close(file);
-    file = VirtFs::openRead("test\\units.xml");
-    REQUIRE(file != nullptr);
-    VirtFs::close(file);
-    file = VirtFs::openRead("test/units123.xml");
-    REQUIRE(file == nullptr);
-    file = VirtFs::openRead("tesQ/units.xml");
-    REQUIRE(file == nullptr);
-    file = VirtFs::openRead("units.xml");
-    REQUIRE(file == nullptr);
-    file = VirtFs::openRead("testQ");
-    REQUIRE(file == nullptr);
-
-    VirtFs::mountDir(prefix + "data/test",
-        Append_false);
-
-    file = VirtFs::openRead("test/units.xml");
-    REQUIRE(file != nullptr);
-    VirtFs::close(file);
-    file = VirtFs::openRead("test/units123.xml");
-    REQUIRE(file == nullptr);
-    file = VirtFs::openRead("tesQ/units.xml");
-    REQUIRE(file == nullptr);
-    file = VirtFs::openRead("units.xml");
-    REQUIRE(file != nullptr);
-    VirtFs::close(file);
-    file = VirtFs::openRead("testQ");
-    REQUIRE(file == nullptr);
-
-    VirtFs::unmountDir(prefix + "data/test");
-
-    file = VirtFs::openRead("test/units.xml");
-    REQUIRE(file != nullptr);
-    VirtFs::close(file);
-    file = VirtFs::openRead("test/units123.xml");
-    REQUIRE(file == nullptr);
-    file = VirtFs::openRead("tesQ/units.xml");
-    REQUIRE(file == nullptr);
-    file = VirtFs::openRead("units.xml");
-    REQUIRE(file == nullptr);
-    file = VirtFs::openRead("testQ");
-    REQUIRE(file == nullptr);
-
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
     VirtFs::unmountDir(prefix + "data");
-    VirtFs::deinit();
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 openRead2")
+TEST_CASE("VirtFs openRead1")
 {
-    VirtFs::init(".");
     logger = new Logger();
-    std::string name("data/test/test.zip");
-    std::string prefix("data/test/");
-    if (Files::existsLocal(name) == false)
-        prefix = "../" + prefix;
-
-    VirtFs::mountZip(prefix + "test2.zip",
-        Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
 
     VirtFile *file = nullptr;
 
-    file = VirtFs::openRead("dir2/units.xml");
+    file = VirtFs::openRead("test/units.xml");
     REQUIRE(file != nullptr);
     VirtFs::close(file);
-    file = VirtFs::openRead("dir2\\units.xml");
-    REQUIRE(file != nullptr);
-    VirtFs::close(file);
-    file = VirtFs::openRead("dir2/units123.xml");
+    file = VirtFs::openRead("test/units123.xml");
     REQUIRE(file == nullptr);
     file = VirtFs::openRead("tesQ/units.xml");
     REQUIRE(file == nullptr);
-    file = VirtFs::openRead("units.xml1");
+    file = VirtFs::openRead("units.xml");
     REQUIRE(file == nullptr);
+//    file = VirtFs::openRead("test");
+//    REQUIRE(file == nullptr);
     file = VirtFs::openRead("testQ");
     REQUIRE(file == nullptr);
-    file = VirtFs::openRead("dir/brimmedhat.png");
-    REQUIRE(file == nullptr);
-    file = VirtFs::openRead("dir//brimmedhat.png");
-    REQUIRE(file == nullptr);
 
-    VirtFs::mountZip(prefix + "test.zip",
-        Append_false);
+    VirtFs::mountDirSilent("data/test", Append_false);
+    VirtFs::mountDirSilent("../data/test", Append_false);
 
-    file = VirtFs::openRead("dir2/units.xml");
+    file = VirtFs::openRead("test/units.xml");
     REQUIRE(file != nullptr);
     VirtFs::close(file);
-    file = VirtFs::openRead("dir2//units.xml");
-    REQUIRE(file != nullptr);
-    VirtFs::close(file);
-    file = VirtFs::openRead("dir2/units123.xml");
+    file = VirtFs::openRead("test/units123.xml");
     REQUIRE(file == nullptr);
     file = VirtFs::openRead("tesQ/units.xml");
     REQUIRE(file == nullptr);
-    file = VirtFs::openRead("units.xml1");
-    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("units.xml");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+//    file = VirtFs::openRead("test");
+//    REQUIRE(file == nullptr);
     file = VirtFs::openRead("testQ");
     REQUIRE(file == nullptr);
-    file = VirtFs::openRead("dir/brimmedhat.png");
-    REQUIRE(file != nullptr);
-    VirtFs::close(file);
 
-    VirtFs::unmountZip(prefix + "test.zip");
+    VirtFs::unmountDirSilent("data/test");
+    VirtFs::unmountDirSilent("../data/test");
 
-    file = VirtFs::openRead("dir2/units.xml");
+    file = VirtFs::openRead("test/units.xml");
     REQUIRE(file != nullptr);
     VirtFs::close(file);
-    file = VirtFs::openRead("dir2\\/\\units.xml");
-    REQUIRE(file != nullptr);
-    VirtFs::close(file);
-    file = VirtFs::openRead("dir2/units123.xml");
+    file = VirtFs::openRead("test/units123.xml");
     REQUIRE(file == nullptr);
     file = VirtFs::openRead("tesQ/units.xml");
     REQUIRE(file == nullptr);
-    file = VirtFs::openRead("units.xml1");
+    file = VirtFs::openRead("units.xml");
     REQUIRE(file == nullptr);
+//    file = VirtFs::openRead("test");
+//    REQUIRE(file == nullptr);
     file = VirtFs::openRead("testQ");
     REQUIRE(file == nullptr);
-    file = VirtFs::openRead("dir/brimmedhat.png");
-    REQUIRE(file == nullptr);
 
-    VirtFs::unmountZip(prefix + "test2.zip");
-
-    VirtFs::deinit();
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 permitLinks")
+TEST_CASE("VirtFs openRead2")
 {
-    VirtFs::init(".");
     logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::mountDir(prefix + "data",
-        Append_false);
+    VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
+
+    VirtFile *file = nullptr;
+
+    file = VirtFs::openRead("test/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("units.xml");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("dir/hide.png");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("dir//hide.png");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs openRead3")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
+    VirtFs::mountDir(prefix + "data/test", Append_false);
+
+    VirtFile *file = nullptr;
+
+    file = VirtFs::openRead("test/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("units.xml");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("dir/hide.png");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("dir//hide.png");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("dir/dye.png");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("dir/dye.pn_");
+    REQUIRE(file == nullptr);
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::unmountDir(prefix + "data/test");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs getRealDir1")
+{
+    logger = new Logger();
+    const std::string sep = dirSeparator;
+    REQUIRE(VirtFs::getRealDir(".") == "");
+    REQUIRE(VirtFs::getRealDir("..") == "");
+    const bool dir1 = VirtFs::mountDirSilent("data", Append_false);
+    REQUIRE((dir1 || VirtFs::mountDirSilent("../data", Append_false))
+        == true);
+    if (dir1 == true)
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "data");
+    }
+    else
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "../data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "../data");
+    }
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    VirtFs::mountDirSilent("data/test", Append_false);
+    VirtFs::mountDirSilent("../data/test", Append_false);
+    if (dir1 == true)
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "data");
+        REQUIRE(VirtFs::getRealDir("test.txt") ==
+            "data" + sep + "test");
+    }
+    else
+    {
+        REQUIRE(VirtFs::getRealDir("test") == ".." + sep + "data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            ".." + sep + "data");
+        REQUIRE(VirtFs::getRealDir("test.txt") ==
+            ".." + sep + "data" + sep + "test");
+    }
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    if (dir1 == true)
+    {
+        VirtFs::mountZip("data/test/test.zip", Append_false);
+        REQUIRE(VirtFs::getRealDir("dir/brimmedhat.png") ==
+            "data" + sep + "test" + sep + "test.zip");
+        REQUIRE(VirtFs::getRealDir("hide.png") ==
+            "data" + sep + "test");
+    }
+    else
+    {
+        VirtFs::mountZip("../data/test/test.zip", Append_false);
+        REQUIRE(VirtFs::getRealDir("dir/brimmedhat.png") ==
+            ".." + sep + "data" + sep + "test" + sep + "test.zip");
+        REQUIRE(VirtFs::getRealDir("hide.png") ==
+            ".." + sep + "data" + sep + "test");
+    }
+
+    VirtFs::unmountDirSilent("data/test");
+    VirtFs::unmountDirSilent("../data/test");
+
+    if (dir1 == true)
+    {
+        REQUIRE(VirtFs::getRealDir("test") == "data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            "data");
+        REQUIRE(VirtFs::getRealDir("dir/hide.png") ==
+            "data" + sep + "test" + sep + "test.zip");
+    }
+    else
+    {
+        REQUIRE(VirtFs::getRealDir("test") == ".." + sep + "data");
+        REQUIRE(VirtFs::getRealDir("test/test.txt") ==
+            ".." + sep + "data");
+        REQUIRE(VirtFs::getRealDir("dir/hide.png") ==
+            ".." + sep + "data" + sep + "test" + sep + "test.zip");
+    }
+    REQUIRE(VirtFs::exists("dir/hide.png"));
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
+    if (dir1 == true)
+        VirtFs::unmountZip("data/test/test.zip");
+    else
+        VirtFs::unmountZip("../data/test/test.zip");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs getrealDir2")
+{
+    logger = new Logger();
+    const std::string sep = dirSeparator;
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
+    VirtFs::mountDir(prefix + "data/test", Append_false);
+    VirtFs::mountDir(prefix + "data", Append_false);
+
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    REQUIRE(VirtFs::getRealDir("dir1/file1.txt") ==
+        prefix + "data" + sep + "test");
+    REQUIRE(VirtFs::getRealDir("hide.png") ==
+        prefix + "data" + sep + "test");
+    REQUIRE(VirtFs::getRealDir("dir//hide.png") ==
+        prefix + "data" + sep + "test" + sep + "test2.zip");
+    REQUIRE(VirtFs::getRealDir("dir/1//test.txt") ==
+        prefix + "data" + sep + "test" + sep + "test2.zip");
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::unmountDir(prefix + "data/test");
+    VirtFs::unmountDir(prefix + "data");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs permitLinks")
+{
+    logger = new Logger();
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
 
     const int cnt1 = VirtFs::exists("test/test2.txt") ? 26 : 25;
     const int cnt2 = 26;
@@ -1242,22 +745,16 @@ TEST_CASE("VirtFs1 permitLinks")
     removeTemp(list);
     REQUIRE(list.size() == cnt1);
 
-    VirtFs::unmountDirSilent(prefix + "data");
-    VirtFs::deinit();
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 read1")
+TEST_CASE("VirtFs read1")
 {
-    VirtFs::init(".");
     logger = new Logger();
-    std::string name("data/test/test.zip");
-    std::string prefix;
-    if (Files::existsLocal(name) == false)
-        prefix = "../" + prefix;
-
-    VirtFs::mountDir(prefix + "data",
-        Append_false);
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
 
     VirtFile *file = VirtFs::openRead("test/test.txt");
     REQUIRE(file != nullptr);
@@ -1269,153 +766,184 @@ TEST_CASE("VirtFs1 read1")
     REQUIRE(strcmp(static_cast<char*>(buffer),
         "test line 1\ntest line 2") == 0);
     REQUIRE(VirtFs::tell(file) == fileSize);
-    REQUIRE(VirtFs::eof(file) != 0);
+    REQUIRE(VirtFs::eof(file) == true);
 
     free(buffer);
     buffer = calloc(fileSize + 1, 1);
     REQUIRE(VirtFs::seek(file, 12) != 0);
-    REQUIRE(VirtFs::eof(file) == 0);
+    REQUIRE(VirtFs::eof(file) == false);
     REQUIRE(VirtFs::tell(file) == 12);
     REQUIRE(VirtFs::read(file, buffer, 1, 11) == 11);
     REQUIRE(strcmp(static_cast<char*>(buffer),
         "test line 2") == 0);
-    REQUIRE(VirtFs::eof(file) != 0);
+    REQUIRE(VirtFs::eof(file) == true);
 
     VirtFs::close(file);
     free(buffer);
 
-    VirtFs::unmountDir(prefix + "data");
-    VirtFs::deinit();
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 read2")
+TEST_CASE("VirtFs read2")
 {
-    VirtFs::init(".");
     logger = new Logger();
     std::string name("data/test/test.zip");
-    std::string prefix("data/test/");
+    std::string prefix;
     if (Files::existsLocal(name) == false)
         prefix = "../" + prefix;
 
-    VirtFs::mountZip(prefix + "test2.zip",
-        Append_false);
-    VirtFile *file = nullptr;
-    void *restrict buffer = nullptr;
+    VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
 
-    SECTION("test 1")
-    {
-        file = VirtFs::openRead("dir2//test.txt");
-        REQUIRE(file != nullptr);
-        REQUIRE(VirtFs::fileLength(file) == 23);
-        const int fileSize = VirtFs::fileLength(file);
+    VirtFile *file = VirtFs::openRead("dir2/test.txt");
+    REQUIRE(file != nullptr);
+    REQUIRE(VirtFs::fileLength(file) == 23);
+    const int fileSize = VirtFs::fileLength(file);
 
-        buffer = calloc(fileSize + 1, 1);
-        REQUIRE(VirtFs::read(file, buffer, 1, fileSize) == fileSize);
-        REQUIRE(strcmp(static_cast<char*>(buffer),
-            "test line 1\ntest line 2") == 0);
-        REQUIRE(VirtFs::tell(file) == fileSize);
-        REQUIRE(VirtFs::eof(file) != 0);
-    }
+    void *restrict buffer = calloc(fileSize + 1, 1);
+    REQUIRE(VirtFs::read(file, buffer, 1, fileSize) == fileSize);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 1\ntest line 2") == 0);
+    REQUIRE(VirtFs::tell(file) == fileSize);
+    REQUIRE(VirtFs::eof(file) == true);
 
-    SECTION("test 2")
-    {
-        file = VirtFs::openRead("dir2\\/test.txt");
-        REQUIRE(file != nullptr);
-        REQUIRE(VirtFs::fileLength(file) == 23);
-        const int fileSize = VirtFs::fileLength(file);
-
-        buffer = calloc(fileSize + 1, 1);
-        REQUIRE(VirtFs::seek(file, 12) != 0);
-        REQUIRE(VirtFs::eof(file) == 0);
-        REQUIRE(VirtFs::tell(file) == 12);
-        REQUIRE(VirtFs::read(file, buffer, 1, 11) == 11);
-        REQUIRE(strcmp(static_cast<char*>(buffer),
-            "test line 2") == 0);
-        REQUIRE(VirtFs::eof(file) != 0);
-    }
-
-    SECTION("test 3")
-    {
-        file = VirtFs::openRead("dir2//test.txt");
-        REQUIRE(file != nullptr);
-        const int fileSize = VirtFs::fileLength(file);
-
-        buffer = calloc(fileSize + 1, 1);
-        for (int f = 0; f < fileSize; f ++)
-        {
-            REQUIRE(VirtFs::seek(file, f) != 0);
-            REQUIRE(VirtFs::eof(file) == 0);
-            REQUIRE(VirtFs::tell(file) == f);
-        }
-    }
-
-    SECTION("test 4")
-    {
-        file = VirtFs::openRead("dir2/test.txt");
-        REQUIRE(file != nullptr);
-        const int fileSize = VirtFs::fileLength(file);
-        const char *restrict const str = "test line 1\ntest line 2";
-        buffer = calloc(fileSize + 1, 1);
-        for (int f = 0; f < fileSize - 1; f ++)
-        {
-            REQUIRE(VirtFs::read(file, buffer, 1, 1) == 1);
-            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
-            REQUIRE(VirtFs::eof(file) == 0);
-            REQUIRE(VirtFs::tell(file) == f + 1);
-        }
-        REQUIRE(VirtFs::read(file, buffer, 1, 1) == 1);
-        REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
-        REQUIRE(VirtFs::eof(file) != 0);
-        REQUIRE(VirtFs::tell(file) == fileSize);
-    }
-
-    SECTION("test 5")
-    {
-        file = VirtFs::openRead("dir2\\\\test.txt");
-        REQUIRE(file != nullptr);
-        const int fileSize = VirtFs::fileLength(file);
-        const char *restrict const str = "test line 1\ntest line 2";
-        buffer = calloc(fileSize + 1, 1);
-        for (int f = 0; f < fileSize - 1; f += 2)
-        {
-            REQUIRE(VirtFs::read(file, buffer, 2, 1) == 1);
-            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
-            REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
-            REQUIRE(VirtFs::eof(file) == 0);
-            REQUIRE(VirtFs::tell(file) == f + 2);
-        }
-        REQUIRE(VirtFs::eof(file) == 0);
-        REQUIRE(VirtFs::tell(file) == 22);
-        REQUIRE(VirtFs::read(file, buffer, 2, 1) == 0);
-        REQUIRE(VirtFs::eof(file) == 0);
-    }
-
-    SECTION("test 6")
-    {
-        file = VirtFs::openRead("dir2//test.txt");
-        REQUIRE(file != nullptr);
-        const int fileSize = VirtFs::fileLength(file);
-        const char *restrict const str = "test line 1\ntest line 2";
-        buffer = calloc(fileSize + 1, 1);
-        for (int f = 0; f < fileSize - 1; f += 2)
-        {
-            REQUIRE(VirtFs::read(file, buffer, 1, 2) == 2);
-            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
-            REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
-            REQUIRE(VirtFs::eof(file) == 0);
-            REQUIRE(VirtFs::tell(file) == f + 2);
-        }
-        REQUIRE(VirtFs::eof(file) == 0);
-        REQUIRE(VirtFs::tell(file) == 22);
-        REQUIRE(VirtFs::read(file, buffer, 1, 2) == 1);
-        REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
-        REQUIRE(VirtFs::eof(file) != 0);
-    }
+    free(buffer);
+    buffer = calloc(fileSize + 1, 1);
+    REQUIRE(VirtFs::seek(file, 12) != 0);
+    REQUIRE(VirtFs::eof(file) == false);
+    REQUIRE(VirtFs::tell(file) == 12);
+    REQUIRE(VirtFs::read(file, buffer, 1, 11) == 11);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 2") == 0);
+    REQUIRE(VirtFs::eof(file) == true);
 
     VirtFs::close(file);
     free(buffer);
-    VirtFs::unmountZip(prefix + "test2.zip");
-    VirtFs::deinit();
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs read3")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
+    VirtFs::mountDir(prefix + "data", Append_false);
+
+    VirtFile *file = VirtFs::openRead("dir2/test.txt");
+    REQUIRE(file != nullptr);
+    REQUIRE(VirtFs::fileLength(file) == 23);
+    const int fileSize = VirtFs::fileLength(file);
+
+    void *restrict buffer = calloc(fileSize + 1, 1);
+    REQUIRE(VirtFs::read(file, buffer, 1, fileSize) == fileSize);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 1\ntest line 2") == 0);
+    REQUIRE(VirtFs::tell(file) == fileSize);
+    REQUIRE(VirtFs::eof(file) == true);
+
+    free(buffer);
+    buffer = calloc(fileSize + 1, 1);
+    REQUIRE(VirtFs::seek(file, 12) != 0);
+    REQUIRE(VirtFs::eof(file) == false);
+    REQUIRE(VirtFs::tell(file) == 12);
+    REQUIRE(VirtFs::read(file, buffer, 1, 11) == 11);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 2") == 0);
+    REQUIRE(VirtFs::eof(file) == true);
+
+    VirtFs::close(file);
+    free(buffer);
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::unmountDir(prefix + "data");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs read4")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountDir(prefix + "data/test", Append_true);
+    VirtFs::mountZip(prefix + "data/test/test5.zip", Append_true);
+
+    VirtFile *file = VirtFs::openRead("dir1/file1.txt");
+    REQUIRE(file != nullptr);
+    REQUIRE(VirtFs::fileLength(file) == 23);
+    const int fileSize = VirtFs::fileLength(file);
+
+    void *restrict buffer = calloc(fileSize + 1, 1);
+    REQUIRE(VirtFs::read(file, buffer, 1, fileSize) == fileSize);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 1\ntest line 2") == 0);
+    REQUIRE(VirtFs::tell(file) == fileSize);
+    REQUIRE(VirtFs::eof(file) == true);
+
+    free(buffer);
+    buffer = calloc(fileSize + 1, 1);
+    REQUIRE(VirtFs::seek(file, 12) != 0);
+    REQUIRE(VirtFs::eof(file) == false);
+    REQUIRE(VirtFs::tell(file) == 12);
+    REQUIRE(VirtFs::read(file, buffer, 1, 11) == 11);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 2") == 0);
+    REQUIRE(VirtFs::eof(file) == true);
+
+    VirtFs::close(file);
+    free(buffer);
+
+    VirtFs::unmountZip(prefix + "data/test/test5.zip");
+    VirtFs::unmountDir(prefix + "data/test");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs read5")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test5.zip", Append_true);
+    VirtFs::mountDir(prefix + "data/test", Append_true);
+
+    VirtFile *file = VirtFs::openRead("dir1/file1.txt");
+    REQUIRE(file != nullptr);
+    REQUIRE(VirtFs::fileLength(file) == 23);
+    const int fileSize = VirtFs::fileLength(file);
+
+    void *restrict buffer = calloc(fileSize + 1, 1);
+    REQUIRE(VirtFs::read(file, buffer, 1, fileSize) == fileSize);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 3\ntest line 4") == 0);
+    REQUIRE(VirtFs::tell(file) == fileSize);
+    REQUIRE(VirtFs::eof(file) == true);
+
+    free(buffer);
+    buffer = calloc(fileSize + 1, 1);
+    REQUIRE(VirtFs::seek(file, 12) != 0);
+    REQUIRE(VirtFs::eof(file) == false);
+    REQUIRE(VirtFs::tell(file) == 12);
+    REQUIRE(VirtFs::read(file, buffer, 1, 11) == 11);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 4") == 0);
+    REQUIRE(VirtFs::eof(file) == true);
+
+    VirtFs::close(file);
+    free(buffer);
+
+    VirtFs::unmountZip(prefix + "data/test/test5.zip");
+    VirtFs::unmountDir(prefix + "data/test");
     delete2(logger);
 }
