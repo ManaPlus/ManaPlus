@@ -60,7 +60,6 @@ namespace VirtFs
     bool remove(const std::string &restrict filename);
     bool deinit();
     void permitLinks(const bool val);
-    const char *getLastError();
     int64_t read(VirtFile *restrict const handle,
                  void *restrict const buffer,
                  const uint32_t objSize,

@@ -512,11 +512,6 @@ namespace VirtFs
         VirtFsDir::permitLinks(val);
     }
 
-    const char *getLastError()
-    {
-        return "";
-    }
-
     int close(VirtFile *restrict const file)
     {
         if (file == nullptr)

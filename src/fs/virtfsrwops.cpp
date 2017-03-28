@@ -154,8 +154,7 @@ static RWOPSINT virtfsrwops_seek(SDL_RWops *const rw,
         if (current == -1)
         {
             logger->assertLog(
-                "virtfsrwops_seek: Can't find position in file: %s",
-                VirtFs::getLastError());
+                "virtfsrwops_seek: Can't find position in file.");
             return -1;
         } /* if */
 
@@ -177,8 +176,7 @@ static RWOPSINT virtfsrwops_seek(SDL_RWops *const rw,
         const int64_t len = VirtFs::fileLength(handle);
         if (len == -1)
         {
-            logger->assertLog("virtfsrwops_seek:Can't find end of file: %s",
-                VirtFs::getLastError());
+            logger->assertLog("virtfsrwops_seek:Can't find end of file.");
             return -1;
         } /* if */
 
@@ -207,8 +205,7 @@ static RWOPSINT virtfsrwops_seek(SDL_RWops *const rw,
 
     if (!VirtFs::seek(handle, static_cast<uint64_t>(pos)))
     {
-        logger->assertLog("virtfsrwops_seek: seek error: %s",
-            VirtFs::getLastError());
+        logger->assertLog("virtfsrwops_seek: seek error.");
         return -1;
     } /* if */
 
@@ -231,8 +228,7 @@ static RWOPSSIZE virtfsrwops_read(SDL_RWops *const rw,
     {
         if (!VirtFs::eof(handle)) /* not EOF? Must be an error. */
         {
-            logger->assertLog("virtfsrwops_seek: read error: %s",
-                VirtFs::getLastError());
+            logger->assertLog("virtfsrwops_seek: read error.");
         }
     } /* if */
 
@@ -253,8 +249,7 @@ static RWOPSSIZE virtfsrwops_write(SDL_RWops *const rw,
         CAST_U32(num));
     if (rc != static_cast<int64_t>(num))
     {
-        logger->assertLog("virtfsrwops_seek: write error: %s",
-            VirtFs::getLastError());
+        logger->assertLog("virtfsrwops_seek: write error.");
     }
 
     return CAST_S32(rc);
@@ -268,8 +263,7 @@ static int virtfsrwops_close(SDL_RWops *const rw)
         rw->hidden.unknown.data1);
     if (!VirtFs::close(handle))
     {
-        logger->assertLog("virtfsrwops_seek: close error: %s",
-            VirtFs::getLastError());
+        logger->assertLog("virtfsrwops_seek: close error.");
         return -1;
     } /* if */
 
@@ -301,8 +295,7 @@ static SDL_RWops *create_rwops(VirtFile *const file)
 
     if (!file)
     {
-        logger->assertLog("virtfsrwops_seek: create rwops error: %s",
-            VirtFs::getLastError());
+        logger->assertLog("virtfsrwops_seek: create rwops error.");
     }
     else
     {

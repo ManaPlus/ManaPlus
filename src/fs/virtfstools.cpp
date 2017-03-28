@@ -44,9 +44,8 @@ namespace VirtFs
 
         if (!file)
         {
-            logger->log("Warning: Failed to load %s: %s",
-                fileName.c_str(),
-                VirtFs::getLastError());
+            logger->log("Warning: Failed to load %s.",
+                fileName.c_str());
             return nullptr;
         }
 
