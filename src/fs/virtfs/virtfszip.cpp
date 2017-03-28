@@ -22,7 +22,7 @@
 
 #include "fs/virtfs/virtfile.h"
 #include "fs/virtfs/virtfileprivate.h"
-#include "fs/virtfsfuncs.h"
+#include "fs/virtfs/virtfsfuncs.h"
 #include "fs/virtlist.h"
 #include "fs/virtfs/virtzipentry.h"
 #include "fs/virtfs/zip.h"
