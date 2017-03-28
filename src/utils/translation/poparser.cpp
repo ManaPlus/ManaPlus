@@ -20,7 +20,7 @@
 
 #include "utils/translation/poparser.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 #include "fs/virtfstools.h"
 
 #include "utils/stringutils.h"

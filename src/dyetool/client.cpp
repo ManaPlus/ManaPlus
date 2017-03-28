@@ -30,7 +30,7 @@
 #include "settings.h"
 #include "soundmanager.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 #include "fs/virtfstools.h"
 
 #include "gui/dialogsmanager.h"

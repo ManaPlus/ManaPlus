@@ -25,7 +25,8 @@
 #endif  // _MSC_VER
 
 #include "fs/paths.h"
-#include "fs/virtfs.h"
+
+#include "fs/virtfs/virtfs.h"
 
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"

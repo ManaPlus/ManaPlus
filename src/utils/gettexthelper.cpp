@@ -28,7 +28,7 @@
 #include "client.h"
 #include "logger.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 
 #include <libintl.h>
 

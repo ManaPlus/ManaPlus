@@ -24,7 +24,7 @@
 
 #include "logger.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 
 #include "utils/delete2.h"
 #include "utils/fuzzer.h"

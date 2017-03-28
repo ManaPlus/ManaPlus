@@ -24,7 +24,7 @@
 
 #include "const/utils/utf8.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"

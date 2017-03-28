@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_FS_VIRTFS_VIRTFS_H
-#define UTILS_FS_VIRTFS_VIRTFS_H
+#ifndef FS_VIRTFS_H
+#define FS_VIRTFS_H
 
 #include "enums/fs/fsentrytype.h"
 
@@ -30,10 +30,55 @@
 #include <string>
 #include <vector>
 
+struct VirtFile;
 struct VirtFsEntry;
+struct VirtList;
 
 namespace VirtFs
 {
+    void init(const std::string &restrict name);
+    void updateDirSeparator();
+    const char *getDirSeparator();
+    const char *getBaseDir();
+    const char *getUserDir();
+    bool exists(std::string name);
+    VirtList *enumerateFiles(std::string dir) RETURNS_NONNULL;
+    bool isDirectory(std::string name);
+    bool isSymbolicLink(const std::string &restrict name);
+    void freeList(VirtList *restrict const handle);
+    VirtFile *openRead(std::string filename);
+    VirtFile *openWrite(std::string filename);
+    VirtFile *openAppend(std::string filename);
+    bool setWriteDir(const std::string &restrict newDir);
+    bool mountDir(std::string newDir,
+                  const Append append);
+    bool mountDirSilent(std::string newDir,
+                        const Append append);
+    bool unmountDir(std::string oldDir);
+    bool unmountDirSilent(std::string oldDir);
+    bool mountZip(std::string newDir,
+                  const Append append);
+    bool unmountZip(std::string oldDir);
+    std::string getRealDir(std::string filename);
+    bool mkdir(const std::string &restrict dirName);
+    bool remove(const std::string &restrict filename);
+    bool deinit();
+    void permitLinks(const bool val);
+    int64_t read(VirtFile *restrict const handle,
+                 void *restrict const buffer,
+                 const uint32_t objSize,
+                 const uint32_t objCount);
+    int64_t write(VirtFile *restrict const file,
+                  const void *restrict const buffer,
+                  const uint32_t objSize,
+                  const uint32_t objCount);
+    int close(VirtFile *restrict const file);
+    int64_t fileLength(VirtFile *restrict const file);
+    int64_t tell(VirtFile *restrict const file);
+    int seek(VirtFile *restrict const file,
+             const uint64_t pos);
+    int eof(VirtFile *restrict const file);
+
     bool mountDirInternal(const std::string &restrict newDir,
                           const Append append);
     bool unmountDirInternal(std::string oldDir);
@@ -50,4 +95,6 @@ namespace VirtFs
 #endif  // UNITTESTS
 }  // namespace VirtFs
 
-#endif  // UTILS_FS_VIRTFS_VIRTFS_H
+extern const char *dirSeparator;
+
+#endif  // FS_VIRTFS_H

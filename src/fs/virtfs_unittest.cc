@@ -22,7 +22,8 @@
 
 #include "fs/files.h"
 #include "fs/paths.h"
-#include "fs/virtfs.h"
+
+#include "fs/virtfs/virtfs.h"
 #include "fs/virtfstools.h"
 #include "fs/virtlist.h"
 

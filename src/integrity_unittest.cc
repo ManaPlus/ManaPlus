@@ -26,7 +26,8 @@
 #include "being/actorsprite.h"
 
 #include "fs/files.h"
-#include "fs/virtfs.h"
+
+#include "fs/virtfs/virtfs.h"
 #include "fs/virtfsrwops.h"
 #include "fs/virtfstools.h"
 

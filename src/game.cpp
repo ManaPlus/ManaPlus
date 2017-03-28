@@ -42,7 +42,8 @@
 #include "enums/being/beingdirection.h"
 
 #include "fs/mkdir.h"
-#include "fs/virtfs.h"
+
+#include "fs/virtfs/virtfs.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"

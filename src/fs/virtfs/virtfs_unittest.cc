@@ -21,12 +21,11 @@
 #include "catch.hpp"
 
 #include "fs/files.h"
-#include "fs/virtfs.h"
-#include "fs/virtfstools.h"
-#include "fs/virtlist.h"
 
 #include "fs/virtfs/virtdirentry.h"
 #include "fs/virtfs/virtfs.h"
+#include "fs/virtfstools.h"
+#include "fs/virtlist.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"

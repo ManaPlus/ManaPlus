@@ -46,7 +46,7 @@
 
 #include "logger.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 
 #ifdef DEBUG_VIRTFS
 #include "utils/debugmemoryobject.h"

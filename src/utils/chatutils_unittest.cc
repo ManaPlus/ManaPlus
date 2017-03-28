@@ -30,7 +30,7 @@
 
 #include "being/localplayer.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 
 #include "gui/gui.h"
 #include "gui/theme.h"

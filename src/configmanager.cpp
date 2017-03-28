@@ -29,9 +29,10 @@
 #include "being/beingspeech.h"
 
 #include "fs/files.h"
-#include "fs/virtfs.h"
 #include "fs/mkdir.h"
 #include "fs/paths.h"
+
+#include "fs/virtfs/virtfs.h"
 
 #include "utils/checkutils.h"
 #include "utils/gettext.h"

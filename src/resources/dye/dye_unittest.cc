@@ -26,7 +26,7 @@
 
 #include "being/actorsprite.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 
 #include "resources/sdlimagehelper.h"
 #ifdef USE_SDL2

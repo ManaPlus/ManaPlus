@@ -23,7 +23,7 @@
 #include "catch.hpp"
 #include "logger.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 #include "fs/virtfstools.h"
 
 #include "utils/delete2.h"

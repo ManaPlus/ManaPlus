@@ -24,7 +24,7 @@
 #include "maingui.h"
 #include "sdlshared.h"
 
-#include "fs/virtfs.h"
+#include "fs/virtfs/virtfs.h"
 
 #include "resources/imagewriter.h"
 

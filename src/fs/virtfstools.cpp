@@ -23,8 +23,8 @@
 #include "logger.h"
 
 #include "fs/paths.h"
-#include "fs/virtfs.h"
 
+#include "fs/virtfs/virtfs.h"
 #include "fs/virtlist.h"
 
 #include "utils/stringutils.h"
