@@ -72,6 +72,7 @@ namespace VirtFsZip
         ptr->openRead = &VirtFsZip::openRead;
         ptr->openWrite = &VirtFsZip::openWrite;
         ptr->openAppend = &VirtFsZip::openAppend;
+        ptr->loadFile = &VirtFsZip::loadFile;
     }
 
     bool getRealDir(VirtFsEntry *restrict const entry,
@@ -335,5 +336,37 @@ namespace VirtFsZip
             return -1;
 
         return file->mPrivate->mPos >= file->mPrivate->mSize;
+    }
+
+    char *loadFile(VirtFsEntry *restrict const entry,
+                   const std::string &restrict filename,
+                   int &restrict fileSize)
+    {
+        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                  it2,
+                  zipEntry->mHeaders)
+        {
+            const ZipLocalHeader *restrict const header = *it2;
+            if (header->fileName == filename)
+            {
+                uint8_t *restrict const buf = Zip::readFile(header);
+                if (buf == nullptr)
+                    return nullptr;
+
+                logger->log("Loaded %s/%s",
+                    entry->root.c_str(),
+                    filename.c_str());
+
+                fileSize = header->uncompressSize;
+                // Allocate memory and load the file
+                char *restrict const buffer = new char[fileSize];
+                if (fileSize > 0)
+                    buffer[fileSize - 1] = 0;
+                memcpy(buffer, buf, fileSize);
+                return buffer;
+            }
+        }
+        return nullptr;
     }
 }  // namespace VirtFsZip

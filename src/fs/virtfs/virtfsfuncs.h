@@ -44,7 +44,8 @@ struct VirtFsFuncs final
         openRead(nullptr),
         openWrite(nullptr),
         openAppend(nullptr),
-        eof(nullptr)
+        eof(nullptr),
+        loadFile(nullptr)
     {
     }
 
@@ -83,6 +84,9 @@ struct VirtFsFuncs final
     VirtFile *(*openAppend) (VirtFsEntry *restrict const entry,
                              const std::string &filename);
     int (*eof) (VirtFile *restrict const file);
+    char *(*loadFile) (VirtFsEntry *restrict const entry,
+                       const std::string &restrict fileName,
+                       int &restrict fileSize);
 };
 
 #endif  // UTILS_VIRTFSFUNCS_H

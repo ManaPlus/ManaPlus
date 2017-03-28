@@ -138,6 +138,7 @@ namespace VirtFsDir
         ptr->openRead = &VirtFsDir::openRead;
         ptr->openWrite = &VirtFsDir::openWrite;
         ptr->openAppend = &VirtFsDir::openAppend;
+        ptr->loadFile = &VirtFsDir::loadFile;
     }
 
     VirtFsFuncs *getFuncs()
@@ -443,5 +444,66 @@ namespace VirtFsDir
         const int64_t len = static_cast<int64_t>(statbuf.st_size);
 #endif  // USE_FILE_FOPEN
         return pos < 0 || len < 0 || pos >= len;
+    }
+
+    char *loadFile(VirtFsEntry *restrict const entry,
+                   const std::string &restrict filename,
+                   int &restrict fileSize)
+    {
+        VirtDirEntry *const dirEntry = static_cast<VirtDirEntry*>(entry);
+        const std::string path = entry->root + filename;
+        if (Files::existsLocal(path) == false)
+            return nullptr;
+        FILEHTYPE fd = FILEOPEN(path.c_str(),
+            FILEOPEN_FLAG_READ);
+        if (fd == FILEHDEFAULT)
+        {
+            reportAlways("VirtFs::loadFile file open error: %s",
+                filename.c_str());
+            return nullptr;
+        }
+
+        logger->log("Loaded %s/%s",
+            dirEntry->userDir.c_str(),
+            filename.c_str());
+
+#ifdef USE_FILE_FOPEN
+        fseek(fd, 0, SEEK_END);
+        const long sz = ftell(fd);
+        fseek(fd, 0, SEEK_SET);
+        fileSize = static_cast<int>(sz);
+#else  // USE_FILE_FOPEN
+        struct stat statbuf;
+        if (fstat(fd, &statbuf) == -1)
+        {
+            reportAlways("VirtFsDir::fileLength error.");
+            return -1;
+        }
+        fileSize = static_cast<int>(statbuf.st_size);
+#endif  // USE_FILE_FOPEN
+
+        // Allocate memory and load the file
+        char *restrict const buffer = new char[fileSize];
+        if (fileSize > 0)
+            buffer[fileSize - 1] = 0;
+
+#ifdef USE_FILE_FOPEN
+        int cnt = fread(buffer, 1, fileSize, fd);
+#else  // USE_FILE_FOPEN
+        int cnt = ::read(fd, buffer, fileSize);
+#endif  // USE_FILE_FOPEN
+
+        if (cnt <= 0)
+        {
+            delete [] buffer;
+            if (fd != FILEHDEFAULT)
+                FILECLOSE(fd);
+            return nullptr;
+        }
+
+        if (fd != FILEHDEFAULT)
+            FILECLOSE(fd);
+
+        return buffer;
     }
 }  // namespace VirtFs
