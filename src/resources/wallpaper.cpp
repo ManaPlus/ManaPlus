@@ -25,7 +25,7 @@
 #include "configuration.h"
 
 #include "fs/virtfs/virtfs.h"
-#include "fs/virtlist.h"
+#include "fs/virtfs/virtlist.h"
 
 #include "resources/wallpaperdata.h"
 

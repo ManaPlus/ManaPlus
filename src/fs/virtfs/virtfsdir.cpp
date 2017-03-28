@@ -28,7 +28,7 @@
 #include "fs/virtfs/virtfile.h"
 #include "fs/virtfs/virtfileprivate.h"
 #include "fs/virtfs/virtfsfuncs.h"
-#include "fs/virtlist.h"
+#include "fs/virtfs/virtlist.h"
 
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"

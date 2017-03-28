@@ -31,7 +31,7 @@
 
 #include "fs/virtfs/virtfs.h"
 #include "fs/virtfs/virtfstools.h"
-#include "fs/virtlist.h"
+#include "fs/virtfs/virtlist.h"
 
 #include "gui/skin.h"
 #include "gui/themeinfo.h"

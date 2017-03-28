@@ -23,9 +23,10 @@
 #include "fs/mkdir.h"
 #if defined(ANDROID) || defined(__native_client__)
 #include "fs/paths.h"
+
 #include "fs/virtfs/virtfs.h"
 #include "fs/virtfs/virtfstools.h"
-#include "fs/virtlist.h"
+#include "fs/virtfs/virtlist.h"
 #endif  // defined(ANDROID) || defined(__native_client__)
 
 #include "utils/checkutils.h"

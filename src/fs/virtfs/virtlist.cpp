@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtlist.h"
+#include "fs/virtfs/virtlist.h"
 
 #include "debug.h"
 
