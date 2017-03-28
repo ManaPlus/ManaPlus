@@ -29,8 +29,6 @@
 
 namespace VirtFs
 {
-    char *loadFile(const std::string &restrict fileName,
-                   int &restrict fileSize);
     void searchAndAddArchives(const std::string &restrict path,
                               const std::string &restrict ext,
                               const Append append);

@@ -36,34 +36,6 @@
 
 namespace VirtFs
 {
-    char *loadFile(const std::string &restrict fileName,
-                   int &restrict fileSize)
-    {
-        // Attempt to open the specified file using PhysicsFS
-        VirtFile *restrict const file = VirtFs::openRead(fileName);
-
-        if (!file)
-        {
-            logger->log("Warning: Failed to load %s.",
-                fileName.c_str());
-            return nullptr;
-        }
-
-        logger->log("Loaded %s/%s",
-            VirtFs::getRealDir(fileName).c_str(),
-            fileName.c_str());
-
-        fileSize = CAST_S32(VirtFs::fileLength(file));
-        // Allocate memory and load the file
-        char *restrict const buffer = new char[fileSize];
-        if (fileSize > 0)
-            buffer[fileSize - 1] = 0;
-        VirtFs::read(file, buffer, 1, fileSize);
-        VirtFs::close(file);
-
-        return buffer;
-    }
-
     void searchAndAddArchives(const std::string &restrict path,
                               const std::string &restrict ext,
                               const Append append)

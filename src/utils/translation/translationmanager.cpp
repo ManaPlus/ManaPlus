@@ -20,7 +20,7 @@
 
 #include "utils/translation/translationmanager.h"
 
-#include "fs/virtfs/virtfstools.h"
+#include "fs/virtfs/virtfs.h"
 
 #include "utils/delete2.h"
 #include "utils/stringutils.h"
