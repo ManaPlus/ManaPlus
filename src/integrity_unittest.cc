@@ -237,8 +237,6 @@ TEST_CASE("integrity tests", "integrity")
         VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
 
         SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
-        if (!rw)
-            logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
         unsigned char buf[size1];
         const size_t sz = SDL_RWread(rw, buf, 1, size1);
@@ -257,8 +255,6 @@ TEST_CASE("integrity tests", "integrity")
         VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
 
         SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
-        if (!rw)
-            logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
         int64_t seek = SDL_RWseek(rw, 0, RW_SEEK_END);
         if (seek == -1)
@@ -294,8 +290,6 @@ TEST_CASE("integrity tests", "integrity")
         VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
 
         SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
-        if (!rw)
-            logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
         if (IMG_isPNG(rw) == false)
         {
@@ -314,8 +308,6 @@ TEST_CASE("integrity tests", "integrity")
         VirtFs::mountZip(prefix + "data/test/test.zip", Append_false);
 
         SDL_RWops *const rw = VirtFs::RWopsOpenRead(name1);
-        if (!rw)
-            logger->log("Physfs error: %s", VirtFs::getLastError());
         REQUIRE(rw != nullptr);
         Resource *const res = imageHelper->load(rw);
         VirtFs::unmountZip(prefix + "data/test/test.zip");

@@ -756,7 +756,7 @@ void Configuration::init(const std::string &filename,
 
     if (useResManager == UseVirtFs_true)
     {
-        mConfigPath = "PhysFS://" + filename;
+        mConfigPath = "virtfs://" + filename;
         mDirectory.clear();
     }
     else

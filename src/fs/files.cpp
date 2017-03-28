@@ -60,7 +60,7 @@ void Files::extractLocale()
                 const std::string localFile = localDir + moFile;
                 const std::string localDir2 = localDir + dir + "/LC_MESSAGES";
                 mkdir_r(localDir2.c_str());
-                copyPhysFsFile(moFile, localFile);
+                copyVirtFsFile(moFile, localFile);
             }
         }
     }
@@ -86,7 +86,7 @@ void Files::setCopyCallBack(Files::CopyFileCallbackPtr callback)
     mCallbackPtr = callback;
 }
 
-void Files::copyPhysFsFile(const std::string &restrict inFile,
+void Files::copyVirtFsFile(const std::string &restrict inFile,
                            const std::string &restrict outFile)
 {
     int size = 0;
@@ -104,7 +104,7 @@ void Files::copyPhysFsFile(const std::string &restrict inFile,
 #endif  // ANDROID
 }
 
-void Files::copyPhysFsDir(const std::string &restrict inDir,
+void Files::copyVirtFsDir(const std::string &restrict inDir,
                           const std::string &restrict outDir)
 {
     mkdir_r(outDir.c_str());
@@ -114,9 +114,9 @@ void Files::copyPhysFsDir(const std::string &restrict inDir,
         const std::string file = std::string(inDir).append("/").append(*i);
         const std::string outDir2 = std::string(outDir).append("/").append(*i);
         if (VirtFs::isDirectory(file))
-            copyPhysFsDir(file, outDir2);
+            copyVirtFsDir(file, outDir2);
         else
-            copyPhysFsFile(file, outDir2);
+            copyVirtFsFile(file, outDir2);
     }
     VirtFs::freeList(files);
 }
@@ -126,7 +126,7 @@ void Files::extractZip(const std::string &restrict zipName,
                        const std::string &restrict outDir)
 {
     VirtFs::mountZip(zipName, Append_false);
-    copyPhysFsDir(inDir, outDir);
+    copyVirtFsDir(inDir, outDir);
     VirtFs::unmountZip(zipName);
     remove(zipName.c_str());
 }

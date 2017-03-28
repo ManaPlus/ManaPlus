@@ -36,10 +36,10 @@ namespace Files
 
     void setCopyCallBack(CopyFileCallbackPtr callback);
 
-    void copyPhysFsFile(const std::string &restrict inFile,
+    void copyVirtFsFile(const std::string &restrict inFile,
                         const std::string &restrict outFile);
 
-    void copyPhysFsDir(const std::string &restrict inDir,
+    void copyVirtFsDir(const std::string &restrict inDir,
                        const std::string &restrict outDir);
 
     void extractZip(const std::string &restrict zipName,
