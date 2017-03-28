@@ -24,7 +24,7 @@
 
 #include "fs/virtfs/virtdirentry.h"
 #include "fs/virtfs/virtfs.h"
-#include "fs/virtfstools.h"
+#include "fs/virtfs/virtfstools.h"
 #include "fs/virtlist.h"
 
 #include "utils/checkutils.h"

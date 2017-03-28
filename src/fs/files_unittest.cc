@@ -24,7 +24,7 @@
 #include "logger.h"
 
 #include "fs/virtfs/virtfs.h"
-#include "fs/virtfstools.h"
+#include "fs/virtfs/virtfstools.h"
 
 #include "utils/delete2.h"
 

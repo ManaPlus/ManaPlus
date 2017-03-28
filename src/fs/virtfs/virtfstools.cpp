@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfstools.h"
+#include "fs/virtfs/virtfstools.h"
 
 #include "logger.h"
 

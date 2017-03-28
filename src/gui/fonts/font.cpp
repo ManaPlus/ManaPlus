@@ -68,7 +68,8 @@
 
 #include "fs/files.h"
 #include "fs/paths.h"
-#include "fs/virtfstools.h"
+
+#include "fs/virtfs/virtfstools.h"
 
 #include "gui/fonts/textchunk.h"
 

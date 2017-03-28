@@ -25,7 +25,7 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "fs/virtfstools.h"
+#include "fs/virtfs/virtfstools.h"
 
 #include "render/opengl/mgl.h"
 #ifdef __native_client__

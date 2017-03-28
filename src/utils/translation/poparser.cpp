@@ -21,7 +21,7 @@
 #include "utils/translation/poparser.h"
 
 #include "fs/virtfs/virtfs.h"
-#include "fs/virtfstools.h"
+#include "fs/virtfs/virtfstools.h"
 
 #include "utils/stringutils.h"
 

@@ -34,7 +34,7 @@
 #include "fs/paths.h"
 
 #include "fs/virtfs/virtfs.h"
-#include "fs/virtfstools.h"
+#include "fs/virtfs/virtfstools.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"

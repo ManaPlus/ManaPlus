@@ -28,7 +28,7 @@
 
 #include "enums/resources/spritedirection.h"
 
-#include "fs/virtfstools.h"
+#include "fs/virtfs/virtfstools.h"
 
 #include "resources/iteminfo.h"
 #include "resources/itemtypemapdata.h"
