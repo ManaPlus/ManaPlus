@@ -571,8 +571,8 @@ BASE_SRC += events/actionevent.h \
 	      utils/perfomance.h \
 	      utils/debugmemoryobject.h \
 	      fs/virtfs/virtfsfuncs.h \
-	      fs/virtfsrwops.cpp \
-	      fs/virtfsrwops.h \
+	      fs/virtfs/virtfsrwops.cpp \
+	      fs/virtfs/virtfsrwops.h \
 	      fs/virtfstools.cpp \
 	      fs/virtfstools.h \
 	      fs/virtlist.cpp \

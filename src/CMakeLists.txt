@@ -884,8 +884,8 @@ SET(SRCS
     utils/perfomance.h
     utils/debugmemoryobject.h
     fs/virtfs/virtfsfuncs.h
-    fs/virtfsrwops.cpp
-    fs/virtfsrwops.h
+    fs/virtfs/virtfsrwops.cpp
+    fs/virtfs/virtfsrwops.h
     fs/virtfstools.cpp
     fs/virtfstools.h
     fs/virtlist.cpp
@@ -1785,8 +1785,8 @@ SET(DYE_CMD_SRCS
     utils/perfomance.cpp
     utils/perfomance.h
     fs/virtfs/virtfsfuncs.h
-    fs/virtfsrwops.cpp
-    fs/virtfsrwops.h
+    fs/virtfs/virtfsrwops.cpp
+    fs/virtfs/virtfsrwops.h
     fs/virtfstools.cpp
     fs/virtfstools.h
     fs/virtlist.cpp

@@ -27,7 +27,7 @@
 #include "settings.h"
 
 #include "fs/virtfs/virtfs.h"
-#include "fs/virtfsrwops.h"
+#include "fs/virtfs/virtfsrwops.h"
 
 #include "utils/delete2.h"
 #ifdef ANDROID

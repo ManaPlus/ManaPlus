@@ -26,7 +26,7 @@
 #include "settings.h"
 #include "soundmanager.h"
 
-#include "fs/virtfsrwops.h"
+#include "fs/virtfs/virtfsrwops.h"
 
 #include "gui/skin.h"
 #include "gui/theme.h"

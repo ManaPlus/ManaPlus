@@ -42,7 +42,7 @@
  *  Copyright (C) 2012-2017  The ManaPlus Developers
  */
 
-#include "fs/virtfsrwops.h"
+#include "fs/virtfs/virtfsrwops.h"
 
 #include "logger.h"
 
