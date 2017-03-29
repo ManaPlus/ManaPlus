@@ -20,17 +20,32 @@
 
 #include "fs/virtfs/virtfile.h"
 
-#include "fs/virtfs/virtfileprivate.h"
-
 #include "debug.h"
 
-VirtFile::VirtFile(const VirtFsFuncs *restrict const funcs0) :
+VirtFile::VirtFile(const VirtFsFuncs *restrict const funcs0,
+                   const uint8_t *restrict const buf,
+                   const size_t sz) :
     funcs(funcs0),
-    mPrivate(nullptr)
+    mBuf(buf),
+    mPos(0U),
+    mSize(sz),
+    mFd(FILEHDEFAULT)
+{
+}
+
+VirtFile::VirtFile(const VirtFsFuncs *restrict const funcs0,
+                   FILEHTYPE fd) :
+    funcs(funcs0),
+    mBuf(nullptr),
+    mPos(0U),
+    mSize(0U),
+    mFd(fd)
 {
 }
 
 VirtFile::~VirtFile()
 {
-    delete mPrivate;
+    if (mFd != FILEHDEFAULT)
+        FILECLOSE(mFd);
+    delete [] mBuf;
 }

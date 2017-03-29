@@ -894,8 +894,6 @@ SET(SRCS
     fs/virtfs/virtfs.h
     fs/virtfs/virtdirentry.cpp
     fs/virtfs/virtdirentry.h
-    fs/virtfs/virtfileprivate.cpp
-    fs/virtfs/virtfileprivate.h
     fs/virtfs/virtfsdir.cpp
     fs/virtfs/virtfsdir.h
     fs/virtfs/virtfsentry.cpp
@@ -1795,8 +1793,6 @@ SET(DYE_CMD_SRCS
     fs/virtfs/virtfs.h
     fs/virtfs/virtdirentry.cpp
     fs/virtfs/virtdirentry.h
-    fs/virtfs/virtfileprivate.cpp
-    fs/virtfs/virtfileprivate.h
     fs/virtfs/virtfsdir.cpp
     fs/virtfs/virtfsdir.h
     fs/virtfs/virtfsentry.cpp

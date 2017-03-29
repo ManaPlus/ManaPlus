@@ -21,7 +21,6 @@
 #include "fs/virtfs/virtfszip.h"
 
 #include "fs/virtfs/virtfile.h"
-#include "fs/virtfs/virtfileprivate.h"
 #include "fs/virtfs/virtfsfuncs.h"
 #include "fs/virtfs/virtlist.h"
 #include "fs/virtfs/virtzipentry.h"
@@ -223,8 +222,8 @@ namespace VirtFsZip
                 const uint8_t *restrict const buf = Zip::readFile(header);
                 if (buf == nullptr)
                     return nullptr;
-                VirtFile *restrict const file = new VirtFile(&funcs);
-                file->mPrivate = new VirtFilePrivate(buf,
+                VirtFile *restrict const file = new VirtFile(&funcs,
+                    buf,
                     header->uncompressSize);
                 return file;
             }
@@ -270,14 +269,13 @@ namespace VirtFsZip
             reportAlways("VirtFsZip::read buffer is null");
             return 0;
         }
-        VirtFilePrivate *restrict const priv = file->mPrivate;
-        const uint32_t pos = priv->mPos;
-        const uint32_t sz = priv->mSize;
+        const uint32_t pos = file->mPos;
+        const uint32_t sz = file->mSize;
         // if outside of buffer, return
         if (pos >= sz)
             return 0;
         // pointer to start for buffer ready to read
-        const uint8_t *restrict const memPtr = priv->mBuf + pos;
+        const uint8_t *restrict const memPtr = file->mBuf + pos;
         // left buffer size from pos to end
         const uint32_t memSize = sz - pos;
         // number of objects possible to read
@@ -290,7 +288,7 @@ namespace VirtFsZip
         // number of bytes to read from buffer
         const uint32_t memEnd = memCount * objSize;
         memcpy(buffer, memPtr, memEnd);
-        priv->mPos += memEnd;
+        file->mPos += memEnd;
         return memCount;
     }
 
@@ -307,7 +305,7 @@ namespace VirtFsZip
         if (file == nullptr)
             return -1;
 
-        return file->mPrivate->mSize;
+        return file->mSize;
     }
 
     int64_t tell(VirtFile *restrict const file)
@@ -315,7 +313,7 @@ namespace VirtFsZip
         if (file == nullptr)
             return -1;
 
-        return file->mPrivate->mPos;
+        return file->mPos;
     }
 
     int seek(VirtFile *restrict const file,
@@ -324,9 +322,9 @@ namespace VirtFsZip
         if (file == nullptr)
             return 0;
 
-        if (pos > file->mPrivate->mSize)
+        if (pos > file->mSize)
             return 0;
-        file->mPrivate->mPos = pos;
+        file->mPos = pos;
         return 1;
     }
 
@@ -335,7 +333,7 @@ namespace VirtFsZip
         if (file == nullptr)
             return -1;
 
-        return file->mPrivate->mPos >= file->mPrivate->mSize;
+        return file->mPos >= file->mSize;
     }
 
     char *loadFile(VirtFsEntry *restrict const entry,

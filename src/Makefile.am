@@ -839,8 +839,6 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtfs/fileapi.h \
 	      fs/virtfs/virtdirentry.cpp \
 	      fs/virtfs/virtdirentry.h \
-	      fs/virtfs/virtfileprivate.cpp \
-	      fs/virtfs/virtfileprivate.h \
 	      fs/virtfs/virtfs.cpp \
 	      fs/virtfs/virtfs.h \
 	      fs/virtfs/virtfsdir.cpp \

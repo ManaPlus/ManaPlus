@@ -23,19 +23,34 @@
 
 #include "localconsts.h"
 
-struct VirtFilePrivate;
+#include "fs/virtfs/fileapi.h"
+
 struct VirtFsFuncs;
 
 struct VirtFile final
 {
-    explicit VirtFile(const VirtFsFuncs *restrict const funcs0);
+    VirtFile(const VirtFsFuncs *restrict const funcs0,
+             const uint8_t *restrict const buf,
+             const size_t sz);
+
+    VirtFile(const VirtFsFuncs *restrict const funcs0,
+             FILEHTYPE fd);
 
     A_DELETE_COPY(VirtFile)
 
     ~VirtFile();
 
     const VirtFsFuncs *funcs;
-    VirtFilePrivate *mPrivate;
+
+    // zipfs fields
+    const uint8_t *mBuf;
+
+    // zipfs fields
+    size_t mPos;
+    size_t mSize;
+
+    // dirfs fields
+    FILEHTYPE mFd;
 };
 
 #endif  // UTILS_VIRTFILE_H

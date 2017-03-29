@@ -26,7 +26,6 @@
 
 #include "fs/virtfs/virtdirentry.h"
 #include "fs/virtfs/virtfile.h"
-#include "fs/virtfs/virtfileprivate.h"
 #include "fs/virtfs/virtfsfuncs.h"
 #include "fs/virtfs/virtlist.h"
 
@@ -73,9 +72,7 @@ namespace VirtFsDir
                 filename.c_str());
             return nullptr;
         }
-        VirtFile *restrict const file = new VirtFile(&funcs);
-        file->mPrivate = new VirtFilePrivate(fd);
-
+        VirtFile *restrict const file = new VirtFile(&funcs, fd);
         return file;
     }
 
@@ -311,7 +308,7 @@ namespace VirtFsDir
     {
         if (file == nullptr)
             return 0;
-        FILEHTYPE fd = file->mPrivate->mFd;
+        FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::read file not opened.");
@@ -335,7 +332,7 @@ namespace VirtFsDir
     {
         if (file == nullptr)
             return 0;
-        FILEHTYPE fd = file->mPrivate->mFd;
+        FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::write file not opened.");
@@ -356,7 +353,7 @@ namespace VirtFsDir
     {
         if (file == nullptr)
             return -1;
-        FILEHTYPE fd = file->mPrivate->mFd;
+        FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::fileLength file not opened.");
@@ -384,7 +381,7 @@ namespace VirtFsDir
         if (file == nullptr)
             return -1;
 
-        FILEHTYPE fd = file->mPrivate->mFd;
+        FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::tell file not opened.");
@@ -404,7 +401,7 @@ namespace VirtFsDir
         if (file == nullptr)
             return 0;
 
-        FILEHTYPE fd = file->mPrivate->mFd;
+        FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::seek file not opened.");
@@ -421,7 +418,7 @@ namespace VirtFsDir
         if (file == nullptr)
             return -1;
 
-        FILEHTYPE fd = file->mPrivate->mFd;
+        FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFsDir::eof file not opened.");
