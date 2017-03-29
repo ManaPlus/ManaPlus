@@ -349,7 +349,7 @@ PRAGMA45(GCC diagnostic pop)
 // debug SDL surfaces
 // #define DEBUG_SDL_SURFACES 1
 
-// debug RWops usage
+// debug virtfs usage
 // #define DEBUG_VIRTFS 1
 
 // use file access fuzzer

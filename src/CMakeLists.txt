@@ -882,7 +882,6 @@ SET(SRCS
     fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
-    utils/debugmemoryobject.h
     fs/virtfs/virtfsfuncs.h
     fs/virtfs/virtfsrwops.cpp
     fs/virtfs/virtfsrwops.h

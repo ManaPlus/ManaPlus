@@ -48,12 +48,6 @@
 
 #include "fs/virtfs/virtfs.h"
 
-#ifdef DEBUG_VIRTFS
-#include "utils/debugmemoryobject.h"
-
-#include <map>
-#endif  // DEBUG_VIRTFS
-
 #include "utils/fuzzer.h"
 
 #include "debug.h"
@@ -69,70 +63,6 @@
 #ifdef DUMP_LEAKED_RESOURCES
 static int openedRWops = 0;
 #endif  // DUMP_LEAKED_RESOURCES
-
-#ifdef DEBUG_VIRTFS
-namespace
-{
-    std::map<void*, VirtFs::DebugMemoryObject*> mRWops;
-}  // namespace
-
-static SDL_RWops *addDebugRWops(SDL_RWops *restrict const rwops,
-                                const char *restrict const name,
-                                const char *restrict const file,
-                                const unsigned line)
-{
-    if (!rwops)
-        return nullptr;
-
-    mRWops[rwops] = new VirtFs::DebugMemoryObject(name, file, line);
-    return rwops;
-}
-
-static void deleteDebugRWops(SDL_RWops *const rwops)
-{
-    if (!rwops)
-        return;
-
-    std::map<void*, VirtFs::DebugMemoryObject*>::iterator it =
-        mRWops.find(rwops);
-    if (it == mRWops.end())
-    {
-        logger->log("bad RWops delete: %p", static_cast<void*>(rwops));
-    }
-    else
-    {
-        VirtFs::DebugMemoryObject *const obj = (*it).second;
-        if (obj)
-        {
-            mRWops.erase(rwops);
-            delete obj;
-        }
-    }
-}
-
-void VirtFs::reportLeaks()
-{
-    if (!mRWops.empty())
-    {
-        logger->log("RWops leaks detected");
-        std::map<void*, VirtFs::DebugMemoryObject*>::iterator it =
-            mRWops.begin();
-        const std::map<void*, VirtFs::DebugMemoryObject*>::iterator
-            it_end = mRWops.end();
-        for (; it != it_end; ++it)
-        {
-            VirtFs::DebugMemoryObject *obj = (*it).second;
-            if (obj)
-            {
-                logger->log("file: %s at %s", obj->mName.c_str(),
-                    obj->mAddFile.c_str());
-                delete obj;
-            }
-        }
-        mRWops.clear();
-    }
-}
-#endif  // DEBUG_VIRTFS
 
 static RWOPSINT virtfsrwops_seek(SDL_RWops *const rw,
                                  const RWOPSINT offset,
@@ -273,9 +203,6 @@ static int virtfsrwops_close(SDL_RWops *const rw)
         logger->assertLog("virtfsrwops_seek: closing already closed RWops");
     openedRWops --;
 #endif  // DUMP_LEAKED_RESOURCES
-#ifdef DEBUG_VIRTFS
-    deleteDebugRWops(rw);
-#endif  // DEBUG_VIRTFS
 
     return 0;
 } /* virtfsrwops_close */
@@ -347,14 +274,7 @@ static bool checkFilePath(const std::string &restrict fname)
 }
 #endif  // __APPLE__
 
-#ifdef DEBUG_VIRTFS
-#undef RWopsOpenRead
-SDL_RWops *VirtFs::RWopsOpenRead(const std::string &restrict fname,
-                                 const char *restrict const file,
-                                 const unsigned line)
-#else  // DEBUG_VIRTFS
 SDL_RWops *VirtFs::RWopsOpenRead(const std::string &restrict fname)
-#endif  // DEBUG_VIRTFS
 {
     BLOCK_START("RWopsopenRead")
 #ifdef __APPLE__
@@ -367,29 +287,13 @@ SDL_RWops *VirtFs::RWopsOpenRead(const std::string &restrict fname)
 #endif  // USE_FUZZER
 #ifdef USE_PROFILER
 
-#ifdef DEBUG_VIRTFS
-    SDL_RWops *const ret = addDebugRWops(
-        create_rwops(VirtFs::openRead(fname)),
-        fname,
-        file,
-        line);
-#else  // DEBUG_VIRTFS
     SDL_RWops *const ret = create_rwops(VirtFs::openRead(fname));
-#endif  // DEBUG_VIRTFS
 
     BLOCK_END("RWopsopenRead")
     return ret;
 #else  // USE_PROFILER
 
-#ifdef DEBUG_VIRTFS
-    return addDebugRWops(
-        create_rwops(VirtFs::openRead(fname)),
-        fname,
-        file,
-        line);
-#else  // DEBUG_VIRTFS
     return create_rwops(VirtFs::openRead(fname));
-#endif  // DEBUG_VIRTFS
 #endif  // USE_PROFILER
 } /* RWopsopenRead */
 

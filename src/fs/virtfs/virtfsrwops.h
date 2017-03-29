@@ -54,15 +54,7 @@ struct VirtFile;
 
 namespace VirtFs
 {
-#ifdef DEBUG_VIRTFS
-    SDL_RWops *RWopsOpenRead(const std::string &restrict fname,
-                             const char *restrict const file,
-                             const unsigned line);
-    void reportLeaks();
-#else  // DEBUG_VIRTFS
     SDL_RWops *RWopsOpenRead(const std::string &restrict fname);
-#endif  // DEBUG_VIRTFS
-
     SDL_RWops *RWopsOpenWrite(const std::string &restrict fname) A_WARN_UNUSED;
     SDL_RWops *RWopsOpenAppend(const std::string &restrict fname)
                                A_WARN_UNUSED;

@@ -62,8 +62,3 @@
 #define MSDL_DisplayFormat(surface) SDL_DisplayFormat(surface)
 
 #endif  // ENABLE_SDL_DEBUG
-
-
-#ifdef DEBUG_VIRTFS
-#define RWopsOpenRead(name) RWopsOpenRead(name, __FILE__, __LINE__)
-#endif  // DEBUG_VIRTFS
