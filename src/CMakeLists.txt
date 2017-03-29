@@ -891,6 +891,7 @@ SET(SRCS
     fs/virtfs/virtlist.h
     fs/virtfs/virtfs.cpp
     fs/virtfs/virtfs.h
+    fs/virtfs/rwopstypes.h
     fs/virtfs/virtdirentry.cpp
     fs/virtfs/virtdirentry.h
     fs/virtfs/virtfsdir.cpp
@@ -1790,6 +1791,7 @@ SET(DYE_CMD_SRCS
     fs/virtfs/virtlist.h
     fs/virtfs/virtfs.cpp
     fs/virtfs/virtfs.h
+    fs/virtfs/rwopstypes.h
     fs/virtfs/virtdirentry.cpp
     fs/virtfs/virtdirentry.h
     fs/virtfs/virtfsdir.cpp

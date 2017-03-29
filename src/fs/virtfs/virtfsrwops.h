@@ -47,16 +47,10 @@
 
 #include "localconsts.h"
 
+#include "fs/virtfs/rwopstypes.h"
+
 #include <string>
 #include <SDL_rwops.h>
-
-#ifdef USE_SDL2
-#define RWOPSINT int64_t
-#define RWOPSSIZE size_t
-#else  // USE_SDL2
-#define RWOPSINT int32_t
-#define RWOPSSIZE int
-#endif  // USE_SDL2
 
 struct VirtFile;
 

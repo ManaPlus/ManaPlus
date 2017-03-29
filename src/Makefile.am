@@ -836,6 +836,7 @@ BASE_SRC += events/actionevent.h \
 	      winver.h \
 	      enums/fs/fsentrytype.h \
 	      fs/virtfs/fileapi.h \
+	      fs/virtfs/rwopstypes.h \
 	      fs/virtfs/virtdirentry.cpp \
 	      fs/virtfs/virtdirentry.h \
 	      fs/virtfs/virtfs.cpp \
