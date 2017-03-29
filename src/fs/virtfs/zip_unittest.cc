@@ -230,7 +230,7 @@ TEST_CASE("Zip readFile")
                 headers[f]->fileName.c_str(),
                 headers[f]->compressSize,
                 headers[f]->uncompressSize);
-            uint8_t *const buf = Zip::readFile(headers[f]);
+            const uint8_t *const buf = Zip::readFile(headers[f]);
             REQUIRE(buf != nullptr);
             delete [] buf;
         }
@@ -249,9 +249,9 @@ TEST_CASE("Zip readFile")
         REQUIRE(headers.size() == 11);
         REQUIRE(entry->root == name);
         // test.txt
-        uint8_t *buf = Zip::readFile(headers[0]);
+        const uint8_t *buf = Zip::readFile(headers[0]);
         REQUIRE(buf != nullptr);
-        const std::string str = std::string(reinterpret_cast<char*>(buf),
+        const std::string str = std::string(reinterpret_cast<const char*>(buf),
             headers[0]->uncompressSize);
         REQUIRE(str == "test line 1\ntest line 2");
         delete [] buf;
@@ -285,7 +285,7 @@ TEST_CASE("Zip readFile")
                 headers[f]->fileName.c_str(),
                 headers[f]->compressSize,
                 headers[f]->uncompressSize);
-            uint8_t *const buf = Zip::readFile(headers[f]);
+            const uint8_t *const buf = Zip::readFile(headers[f]);
             REQUIRE(buf != nullptr);
             delete [] buf;
         }
