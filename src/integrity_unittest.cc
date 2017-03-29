@@ -29,7 +29,6 @@
 
 #include "fs/virtfs/virtfs.h"
 #include "fs/virtfs/virtfsrwops.h"
-#include "fs/virtfs/virtfstools.h"
 
 #include "input/inputactionmap.h"
 
