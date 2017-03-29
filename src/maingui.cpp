@@ -134,10 +134,6 @@ int mainGui(int argc, char *argv[])
     IMG_Quit();
 #endif  // SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
 
-#ifdef DUMP_LEAKED_RESOURCES
-    VirtFs::reportRWops();
-#endif  // DUMP_LEAKED_RESOURCES
-
     return ret;
 }
 #else  // UNITTESTS

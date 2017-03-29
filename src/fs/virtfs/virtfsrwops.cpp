@@ -60,10 +60,6 @@
 #define RWOPSSIZE int
 #endif  // USE_SDL2
 
-#ifdef DUMP_LEAKED_RESOURCES
-static int openedRWops = 0;
-#endif  // DUMP_LEAKED_RESOURCES
-
 static RWOPSINT virtfsrwops_seek(SDL_RWops *const rw,
                                  const RWOPSINT offset,
                                  const int whence)
@@ -198,12 +194,6 @@ static int virtfsrwops_close(SDL_RWops *const rw)
     } /* if */
 
     SDL_FreeRW(rw);
-#ifdef DUMP_LEAKED_RESOURCES
-    if (openedRWops <= 0)
-        logger->assertLog("virtfsrwops_seek: closing already closed RWops");
-    openedRWops --;
-#endif  // DUMP_LEAKED_RESOURCES
-
     return 0;
 } /* virtfsrwops_close */
 
@@ -239,9 +229,6 @@ static SDL_RWops *create_rwops(VirtFile *const file)
             retval->close = &virtfsrwops_close;
             retval->hidden.unknown.data1 = file;
         } /* if */
-#ifdef DUMP_LEAKED_RESOURCES
-        openedRWops ++;
-#endif  // DUMP_LEAKED_RESOURCES
     } /* else */
 
     return retval;
@@ -316,16 +303,5 @@ SDL_RWops *VirtFs::RWopsOpenAppend(const std::string &restrict fname)
 
     return create_rwops(VirtFs::openAppend(fname));
 } /* RWopsopenAppend */
-
-#ifdef DUMP_LEAKED_RESOURCES
-void VirtFs::reportRWops()
-{
-    if (openedRWops)
-    {
-        logger->assertLog("virtfsrwops_seek: leaking RWops: %d",
-            openedRWops);
-    }
-}
-#endif  // DUMP_LEAKED_RESOURCES
 
 /* end of virtfsrwops.c ... */

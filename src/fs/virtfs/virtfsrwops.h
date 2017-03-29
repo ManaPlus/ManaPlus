@@ -59,9 +59,6 @@ namespace VirtFs
     SDL_RWops *RWopsOpenAppend(const std::string &restrict fname)
                                A_WARN_UNUSED;
     SDL_RWops *MakeRWops(VirtFile *const handle) A_WARN_UNUSED;
-#ifdef DUMP_LEAKED_RESOURCES
-    void reportRWops();
-#endif  // DUMP_LEAKED_RESOURCES
 }  // namespace VirtFs
 
 #endif  // SRC_FS_VIRTFSRWOPS_H
