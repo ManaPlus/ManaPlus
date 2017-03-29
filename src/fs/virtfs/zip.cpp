@@ -268,7 +268,7 @@ namespace Zip
         return buf;
     }
 
-    uint8_t *readFile(const ZipLocalHeader *restrict const header)
+    const uint8_t *readFile(const ZipLocalHeader *restrict const header)
     {
         if (header == nullptr)
         {

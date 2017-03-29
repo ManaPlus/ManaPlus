@@ -31,7 +31,7 @@ struct VirtFilePrivate final
 
     explicit VirtFilePrivate(FILEHTYPE fd);
 
-    VirtFilePrivate(uint8_t *restrict const buf,
+    VirtFilePrivate(const uint8_t *restrict const buf,
                     const size_t sz);
 
     A_DELETE_COPY(VirtFilePrivate)
@@ -39,7 +39,7 @@ struct VirtFilePrivate final
     ~VirtFilePrivate();
 
     // zipfs fields
-    uint8_t *mBuf;
+    const uint8_t *mBuf;
 
     // zipfs fields
     size_t mPos;

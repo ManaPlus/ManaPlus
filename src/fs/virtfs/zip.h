@@ -35,7 +35,7 @@ namespace Zip
     void reportZlibError(const std::string &text,
                          const int err);
     uint8_t *readCompressedFile(const ZipLocalHeader *restrict const header);
-    uint8_t *readFile(const ZipLocalHeader *restrict const header);
+    const uint8_t *readFile(const ZipLocalHeader *restrict const header);
 }  // namespace Zip
 
 #endif  // UTILS_ZIP_H

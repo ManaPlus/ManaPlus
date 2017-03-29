@@ -220,7 +220,7 @@ namespace VirtFsZip
             const ZipLocalHeader *restrict const header = *it2;
             if (header->fileName == filename)
             {
-                uint8_t *restrict const buf = Zip::readFile(header);
+                const uint8_t *restrict const buf = Zip::readFile(header);
                 if (buf == nullptr)
                     return nullptr;
                 VirtFile *restrict const file = new VirtFile(&funcs);
@@ -350,7 +350,7 @@ namespace VirtFsZip
             const ZipLocalHeader *restrict const header = *it2;
             if (header->fileName == filename)
             {
-                uint8_t *restrict const buf = Zip::readFile(header);
+                const uint8_t *restrict const buf = Zip::readFile(header);
                 if (buf == nullptr)
                     return nullptr;
 

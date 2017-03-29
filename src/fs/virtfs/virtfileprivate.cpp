@@ -38,7 +38,7 @@ VirtFilePrivate::VirtFilePrivate(FILEHTYPE fd) :
 {
 }
 
-VirtFilePrivate::VirtFilePrivate(uint8_t *restrict const buf,
+VirtFilePrivate::VirtFilePrivate(const uint8_t *restrict const buf,
                                  const size_t sz) :
     mBuf(buf),
     mPos(0U),
