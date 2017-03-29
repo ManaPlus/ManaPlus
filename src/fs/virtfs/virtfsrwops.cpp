@@ -226,22 +226,6 @@ SDL_RWops *VirtFs::create_rwops(VirtFile *const file)
     return retval;
 } /* VirtFs::create_rwops */
 
-SDL_RWops *VirtFs::makeRwops(VirtFile *const handle)
-{
-    SDL_RWops *retval = nullptr;
-    if (!handle)
-    {
-        logger->assertLog("VirtFs::rwops_seek: NULL pointer passed to "
-            "RWopsmakeRWops().");
-    }
-    else
-    {
-        retval = VirtFs::create_rwops(handle);
-    }
-
-    return retval;
-} /* RWopsmakeRWops */
-
 #ifdef __APPLE__
 static bool checkFilePath(const std::string &restrict fname)
 {

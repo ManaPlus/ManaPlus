@@ -77,7 +77,6 @@ namespace VirtFs
     SDL_RWops *rwopsOpenWrite(const std::string &restrict fname) A_WARN_UNUSED;
     SDL_RWops *rwopsOpenAppend(const std::string &restrict fname)
                                A_WARN_UNUSED;
-    SDL_RWops *makeRwops(VirtFile *const handle) A_WARN_UNUSED;
 }  // namespace VirtFs
 
 #endif  // SRC_FS_VIRTFSRWOPS_H
