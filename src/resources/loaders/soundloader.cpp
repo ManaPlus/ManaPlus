@@ -46,7 +46,7 @@ namespace
                 return nullptr;
             const ResourceLoader *const
                 rl = static_cast<const ResourceLoader *const>(v);
-            SDL_RWops *const rw = VirtFs::RWopsOpenRead(rl->path);
+            SDL_RWops *const rw = VirtFs::rwopsOpenRead(rl->path);
             if (!rw)
             {
                 reportAlways("Error loading resource: %s",

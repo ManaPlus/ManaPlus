@@ -432,7 +432,7 @@ PRAGMA45(GCC diagnostic pop)
 
 int TestLauncher::testDye()
 {
-    SDL_RWops *rw = VirtFs::RWopsOpenRead(
+    SDL_RWops *rw = VirtFs::rwopsOpenRead(
         "graphics/sprites/arrow_up.png");
     Dye *d = nullptr;
 
@@ -455,7 +455,7 @@ int TestLauncher::testDye()
                     settings.tempDir + "/testimage2.png");
             }
 
-            rw = VirtFs::RWopsOpenRead(
+            rw = VirtFs::rwopsOpenRead(
                 "graphics/sprites/arrow_up.png");
             d = new Dye("S:#0000ff,00ff00,5c5cff,ff0000");
             image = surfaceImageHelper->load(rw, *d);

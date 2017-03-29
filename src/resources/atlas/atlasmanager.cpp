@@ -149,7 +149,7 @@ void AtlasManager::loadImages(const StringVect &files,
             path = path.substr(0, p);
         }
 
-        SDL_RWops *const rw = VirtFs::RWopsOpenRead(path);
+        SDL_RWops *const rw = VirtFs::rwopsOpenRead(path);
         if (rw)
         {
             Image *const image = d ? surfaceImageHelper->load(rw, *d)

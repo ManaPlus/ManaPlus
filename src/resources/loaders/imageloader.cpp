@@ -63,7 +63,7 @@ namespace
                 d = new Dye(path1.substr(p + 1));
                 path1 = path1.substr(0, p);
             }
-            SDL_RWops *const rw = VirtFs::RWopsOpenRead(path1);
+            SDL_RWops *const rw = VirtFs::rwopsOpenRead(path1);
             if (!rw)
             {
                 delete d;

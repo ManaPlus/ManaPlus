@@ -50,15 +50,40 @@
 #include <string>
 #include <SDL_rwops.h>
 
+#ifdef USE_SDL2
+#define RWOPSINT int64_t
+#define RWOPSSIZE size_t
+#else  // USE_SDL2
+#define RWOPSINT int32_t
+#define RWOPSSIZE int
+#endif  // USE_SDL2
+
 struct VirtFile;
 
 namespace VirtFs
 {
-    SDL_RWops *RWopsOpenRead(const std::string &restrict fname);
-    SDL_RWops *RWopsOpenWrite(const std::string &restrict fname) A_WARN_UNUSED;
-    SDL_RWops *RWopsOpenAppend(const std::string &restrict fname)
+    SDL_RWops *create_rwops(VirtFile *const file);
+    RWOPSINT rwops_seek(SDL_RWops *const rw,
+                        const RWOPSINT offset,
+                        const int whence);
+    RWOPSSIZE rwops_read(SDL_RWops *const rw,
+                         void *const ptr,
+                         const RWOPSSIZE size,
+                         const RWOPSSIZE maxnum);
+    RWOPSSIZE rwops_write(SDL_RWops *const rw,
+                          const void *const ptr,
+                          const RWOPSSIZE size,
+                          const RWOPSSIZE num);
+    int rwops_close(SDL_RWops *const rw);
+#ifdef USE_SDL2
+    RWOPSINT rwops_size(SDL_RWops *const rw);
+#endif  // USE_SDL2
+
+    SDL_RWops *rwopsOpenRead(const std::string &restrict fname);
+    SDL_RWops *rwopsOpenWrite(const std::string &restrict fname) A_WARN_UNUSED;
+    SDL_RWops *rwopsOpenAppend(const std::string &restrict fname)
                                A_WARN_UNUSED;
-    SDL_RWops *MakeRWops(VirtFile *const handle) A_WARN_UNUSED;
+    SDL_RWops *makeRwops(VirtFile *const handle) A_WARN_UNUSED;
 }  // namespace VirtFs
 
 #endif  // SRC_FS_VIRTFSRWOPS_H
