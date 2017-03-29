@@ -39,7 +39,7 @@ namespace VirtFsDir
     RWOPSSIZE rwops_write(SDL_RWops *const rw,
                           const void *const ptr,
                           const RWOPSSIZE size,
-                          const RWOPSSIZE num);
+                          const RWOPSSIZE maxnum);
     int rwops_close(SDL_RWops *const rw);
 #ifdef USE_SDL2
     RWOPSINT rwops_size(SDL_RWops *const rw);

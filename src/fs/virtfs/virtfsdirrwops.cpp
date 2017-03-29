@@ -181,20 +181,36 @@ namespace VirtFsDir
     RWOPSSIZE rwops_write(SDL_RWops *const rw,
                           const void *const ptr,
                           const RWOPSSIZE size,
-                          const RWOPSSIZE num)
+                          const RWOPSSIZE maxnum)
     {
         if (!rw)
             return 0;
         VirtFile *const handle = static_cast<VirtFile *const>(
             rw->hidden.unknown.data1);
-        const int64_t rc = VirtFs::write(handle, ptr,
-            CAST_U32(size),
-            CAST_U32(num));
-        if (rc != static_cast<int64_t>(num))
-        {
-            logger->assertLog("VirtFs::rwops_seek: write error.");
-        }
+        FILEHTYPE fd = handle->mFd;
 
+#ifdef USE_FILE_FOPEN
+        const int64_t rc = fwrite(ptr, size, maxnum, fd);
+#else  // USE_FILE_FOPEN
+        int max = size * maxnum;
+        int cnt = ::write(fd, ptr, max);
+        if (cnt <= 0)
+            return cnt;
+        const int64_t rc = cnt / size;
+#endif  // USE_FILE_FOPEN
+
+        if (rc != static_cast<int64_t>(maxnum))
+        {
+#ifndef USE_FILE_FOPEN
+            const int64_t pos = lseek(fd, 0, SEEK_CUR);
+            struct stat statbuf;
+            if (fstat(fd, &statbuf) == -1)
+            {
+                reportAlways("VirtFsDir::fileLength error.");
+                return CAST_S32(rc);
+            }
+#endif  // USE_FILE_FOPEN
+        }
         return CAST_S32(rc);
     }
 
