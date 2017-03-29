@@ -39,6 +39,7 @@ namespace VirtFsDir
             return -1;
         VirtFile *const handle = static_cast<VirtFile *const>(
             rw->hidden.unknown.data1);
+        FILEHTYPE fd = handle->mFd;
         RWOPSINT pos = 0;
 
         if (whence == SEEK_SET)
@@ -47,7 +48,12 @@ namespace VirtFsDir
         }
         else if (whence == SEEK_CUR)
         {
-            const int64_t current = VirtFs::tell(handle);
+#ifdef USE_FILE_FOPEN
+            const int64_t current = ftell(fd);
+#else  // USE_FILE_FOPEN
+            const int64_t current = lseek(fd, 0, SEEK_CUR);
+#endif  // USE_FILE_FOPEN
+
             if (current == -1)
             {
                 logger->assertLog(
@@ -70,9 +76,30 @@ namespace VirtFsDir
         }
         else if (whence == SEEK_END)
         {
-            const int64_t len = VirtFs::fileLength(handle);
+            int64_t len = 0;
+#ifdef USE_FILE_FOPEN
+            const long curpos = ftell(fd);
+            fseek(fd, 0, SEEK_END);
+            len = ftell(fd);
+//            fseek(fd, curpos, SEEK_SET);
+#else  // USE_FILE_FOPEN
+            struct stat statbuf;
+            if (fstat(fd, &statbuf) == -1)
+            {
+                reportAlways("VirtFsDir::fileLength error.");
+                len = -1;
+            }
+            else
+            {
+                len = static_cast<int64_t>(statbuf.st_size);
+            }
+#endif  // USE_FILE_FOPEN
+
             if (len == -1)
             {
+#ifdef USE_FILE_FOPEN
+                fseek(fd, curpos, SEEK_SET);
+#endif  // USE_FILE_FOPEN
                 logger->assertLog(
                     "VirtFs::rwops_seek:Can't find end of file.");
                 return -1;
@@ -81,6 +108,9 @@ namespace VirtFsDir
             pos = static_cast<RWOPSINT>(len);
             if (static_cast<int64_t>(pos) != len)
             {
+#ifdef USE_FILE_FOPEN
+                fseek(fd, curpos, SEEK_SET);
+#endif  // USE_FILE_FOPEN
                 logger->assertLog("VirtFs::rwops_seek: "
                     "Can't fit end-of-file position in an int!");
                 return -1;
@@ -102,7 +132,8 @@ namespace VirtFsDir
             return -1;
         }
 
-        if (!VirtFs::seek(handle, static_cast<uint64_t>(pos)))
+        const int64_t res = FILESEEK(fd, pos, SEEK_SET);
+        if (res == -1)
         {
             logger->assertLog("VirtFs::rwops_seek: seek error.");
             return -1;
