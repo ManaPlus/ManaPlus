@@ -76,9 +76,9 @@ namespace XML
         valid = true;
         if (useResman == UseVirtFs_true)
         {
-            data = VirtFs::loadFile(
+            data = const_cast<char*>(VirtFs::loadFile(
                 filename.c_str(),
-                size);
+                size));
         }
         else
         {

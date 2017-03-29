@@ -1069,7 +1069,7 @@ bool UpdaterWindow::validateFile(const std::string &filePath,
 unsigned long UpdaterWindow::getFileHash(const std::string &filePath)
 {
     int size = 0;
-    char *const buf = VirtFs::loadFile(filePath, size);
+    const char *const buf = VirtFs::loadFile(filePath, size);
     if (buf == nullptr)
         return 0;
     unsigned long res = Net::Download::adlerBuffer(buf, size);

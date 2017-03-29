@@ -159,7 +159,7 @@ namespace VirtFs
     std::string loadTextFileString(const std::string &fileName)
     {
         int contentsLength;
-        char *fileContents = VirtFs::loadFile(fileName, contentsLength);
+        const char *fileContents = VirtFs::loadFile(fileName, contentsLength);
 
         if (!fileContents)
         {
@@ -175,7 +175,7 @@ namespace VirtFs
                       StringVect &lines)
     {
         int contentsLength;
-        char *fileContents = VirtFs::loadFile(fileName, contentsLength);
+        const char *fileContents = VirtFs::loadFile(fileName, contentsLength);
 
         if (!fileContents)
         {

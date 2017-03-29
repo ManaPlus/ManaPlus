@@ -76,7 +76,7 @@ static bool compareBuffers(const unsigned char *const buf2)
 {
     bool isCorrect(true);
     int sz = 0;
-    unsigned char *buf1 = reinterpret_cast<unsigned char*>(
+    const unsigned char *buf1 = reinterpret_cast<const unsigned char*>(
         VirtFs::loadFile("hide.png", sz));
     REQUIRE(buf1 != nullptr);
     REQUIRE(sz == 368);

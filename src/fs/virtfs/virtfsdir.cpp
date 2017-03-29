@@ -443,9 +443,9 @@ namespace VirtFsDir
         return pos < 0 || len < 0 || pos >= len;
     }
 
-    char *loadFile(VirtFsEntry *restrict const entry,
-                   const std::string &restrict filename,
-                   int &restrict fileSize)
+    const char *loadFile(VirtFsEntry *restrict const entry,
+                         const std::string &restrict filename,
+                         int &restrict fileSize)
     {
         VirtDirEntry *const dirEntry = static_cast<VirtDirEntry*>(entry);
         const std::string path = entry->root + filename;

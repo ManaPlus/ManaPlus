@@ -46,7 +46,7 @@ PoParser::PoParser() :
 void PoParser::openFile(const std::string &name)
 {
     int size;
-    char *buf = VirtFs::loadFile(getFileName(name), size);
+    const char *buf = VirtFs::loadFile(getFileName(name), size);
 
     if (buf)
     {

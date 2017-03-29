@@ -336,9 +336,9 @@ namespace VirtFsZip
         return file->mPos >= file->mSize;
     }
 
-    char *loadFile(VirtFsEntry *restrict const entry,
-                   const std::string &restrict filename,
-                   int &restrict fileSize)
+    const char *loadFile(VirtFsEntry *restrict const entry,
+                         const std::string &restrict filename,
+                         int &restrict fileSize)
     {
         VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
@@ -357,12 +357,7 @@ namespace VirtFsZip
                     filename.c_str());
 
                 fileSize = header->uncompressSize;
-                // Allocate memory and load the file
-                char *restrict const buffer = new char[fileSize];
-                if (fileSize > 0)
-                    buffer[fileSize - 1] = 0;
-                memcpy(buffer, buf, fileSize);
-                return buffer;
+                return reinterpret_cast<const char*>(buf);
             }
         }
         return nullptr;

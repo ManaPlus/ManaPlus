@@ -93,7 +93,8 @@ bool TranslationManager::translateFile(const std::string &fileName,
         return false;
 
     int contentsLength;
-    char *fileContents = VirtFs::loadFile(fileName, contentsLength);
+    const char *fileContents = VirtFs::loadFile(fileName,
+        contentsLength);
 
     if (!fileContents)
     {

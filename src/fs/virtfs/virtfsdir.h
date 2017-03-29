@@ -82,9 +82,9 @@ namespace VirtFsDir
     int seek(VirtFile *restrict const file,
              const uint64_t pos);
     int eof(VirtFile *restrict const file);
-    char *loadFile(VirtFsEntry *restrict const entry,
-                   const std::string &restrict fileName,
-                   int &restrict fileSize);
+    const char *loadFile(VirtFsEntry *restrict const entry,
+                         const std::string &restrict fileName,
+                         int &restrict fileSize);
 }  // namespace VirtFsDir
 
 #endif  // UTILS_VIRTFSDIR_H

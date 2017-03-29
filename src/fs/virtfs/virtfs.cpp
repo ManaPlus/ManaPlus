@@ -562,8 +562,8 @@ namespace VirtFs
         return file->funcs->eof(file);
     }
 
-    char *loadFile(std::string filename,
-                   int &restrict fileSize)
+    const char *loadFile(std::string filename,
+                         int &restrict fileSize)
     {
         prepareFsPath(filename);
         if (checkPath(filename) == false)
@@ -575,7 +575,9 @@ namespace VirtFs
         FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
         {
             VirtFsEntry *const entry = *it;
-            char *const buf = entry->funcs->loadFile(entry, filename, fileSize);
+            const char *const buf = entry->funcs->loadFile(entry,
+                filename,
+                fileSize);
             if (buf != nullptr)
                 return buf;
         }

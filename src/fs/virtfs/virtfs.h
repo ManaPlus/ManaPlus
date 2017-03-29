@@ -93,8 +93,8 @@ namespace VirtFs
     bool mountDirSilent2(std::string newDir,
                          const Append append);
 #endif  // UNITTESTS
-    char *loadFile(std::string filename,
-                   int &restrict fileSize);
+    const char *loadFile(std::string filename,
+                         int &restrict fileSize);
 }  // namespace VirtFs
 
 extern const char *dirSeparator;

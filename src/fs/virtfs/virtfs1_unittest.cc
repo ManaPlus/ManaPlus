@@ -1433,8 +1433,8 @@ TEST_CASE("VirtFs1 loadFile1")
     VirtFs::mountDir(prefix + "data",
         Append_false);
 
-    char *const buffer = VirtFs::loadFile("test/test.txt", fileSize);
-    REQUIRE(static_cast<void*>(buffer) != nullptr);
+    const char *const buffer = VirtFs::loadFile("test/test.txt", fileSize);
+    REQUIRE(static_cast<const void*>(buffer) != nullptr);
     REQUIRE(fileSize == 23);
     REQUIRE(strncmp(buffer, "test line 1\ntest line 2", 23) == 0);
     delete [] buffer;
@@ -1459,8 +1459,9 @@ TEST_CASE("VirtFs1 loadFile2")
 
     SECTION("test 1")
     {
-        char *restrict buffer = VirtFs::loadFile("dir2//test.txt", fileSize);
-        REQUIRE(static_cast<void*>(buffer) != nullptr);
+        const char *restrict buffer = VirtFs::loadFile("dir2//test.txt",
+            fileSize);
+        REQUIRE(static_cast<const void*>(buffer) != nullptr);
         REQUIRE(fileSize == 23);
         REQUIRE(strncmp(buffer, "test line 1\ntest line 2", 23) == 0);
         delete [] buffer;
@@ -1468,8 +1469,9 @@ TEST_CASE("VirtFs1 loadFile2")
 
     SECTION("test 2")
     {
-        char *restrict buffer = VirtFs::loadFile("dir2\\/test.txt", fileSize);
-        REQUIRE(static_cast<void*>(buffer) != nullptr);
+        const char *restrict buffer = VirtFs::loadFile("dir2\\/test.txt",
+            fileSize);
+        REQUIRE(static_cast<const void*>(buffer) != nullptr);
         REQUIRE(fileSize == 23);
         REQUIRE(strncmp(buffer, "test line 1\ntest line 2", 23) == 0);
         delete [] buffer;
