@@ -151,17 +151,30 @@ namespace VirtFsDir
             return 0;
         VirtFile *const handle = static_cast<VirtFile *const>(
             rw->hidden.unknown.data1);
-        const int64_t rc = VirtFs::read(handle, ptr,
-            CAST_U32(size),
-            CAST_U32(maxnum));
+        FILEHTYPE fd = handle->mFd;
+
+#ifdef USE_FILE_FOPEN
+        const int64_t rc = fread(ptr, size, maxnum, fd);
+#else  // USE_FILE_FOPEN
+        int max = size * maxnum;
+        int cnt = ::read(fd, ptr, max);
+        if (cnt <= 0)
+            return cnt;
+        const int64_t rc = cnt / size;
+#endif  // USE_FILE_FOPEN
+
         if (rc != static_cast<int64_t>(maxnum))
         {
-            if (!VirtFs::eof(handle)) /* not EOF? Must be an error. */
+#ifndef USE_FILE_FOPEN
+            const int64_t pos = lseek(fd, 0, SEEK_CUR);
+            struct stat statbuf;
+            if (fstat(fd, &statbuf) == -1)
             {
-                logger->assertLog("VirtFs::rwops_seek: read error.");
+                reportAlways("VirtFsDir::fileLength error.");
+                return CAST_S32(rc);
             }
+#endif  // USE_FILE_FOPEN
         }
-
         return CAST_S32(rc);
     }
 
