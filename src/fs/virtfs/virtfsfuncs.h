@@ -21,12 +21,15 @@
 #ifndef UTILS_VIRTFSFUNCS_H
 #define UTILS_VIRTFSFUNCS_H
 
+#include "fs/virtfs/rwopstypes.h"
+
 #include "utils/stringvector.h"
 
 #include "localconsts.h"
 
 struct VirtFile;
 struct VirtFsEntry;
+struct SDL_RWops;
 
 struct VirtFsFuncs final
 {
@@ -45,7 +48,14 @@ struct VirtFsFuncs final
         openWrite(nullptr),
         openAppend(nullptr),
         eof(nullptr),
-        loadFile(nullptr)
+        loadFile(nullptr),
+        rwops_seek(nullptr),
+        rwops_read(nullptr),
+        rwops_write(nullptr),
+#ifdef USE_SDL2
+        rwops_size(nullptr),
+#endif  // USE_SDL2
+        rwops_close(nullptr)
     {
     }
 
@@ -87,6 +97,22 @@ struct VirtFsFuncs final
     const char *(*loadFile) (VirtFsEntry *restrict const entry,
                              const std::string &restrict fileName,
                              int &restrict fileSize);
+
+    RWOPSINT (*rwops_seek) (SDL_RWops *const rw,
+                            const RWOPSINT offset,
+                            const int whence);
+    RWOPSSIZE (*rwops_read) (SDL_RWops *const rw,
+                             void *const ptr,
+                             const RWOPSSIZE size,
+                             const RWOPSSIZE maxnum);
+    RWOPSSIZE (*rwops_write) (SDL_RWops *const rw,
+                              const void *const ptr,
+                              const RWOPSSIZE size,
+                              const RWOPSSIZE num);
+#ifdef USE_SDL2
+    RWOPSINT (*rwops_size) (SDL_RWops *const rw);
+#endif  // USE_SDL2
+    int (*rwops_close) (SDL_RWops *const rw);
 };
 
 #endif  // UTILS_VIRTFSFUNCS_H

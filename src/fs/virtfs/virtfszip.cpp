@@ -22,6 +22,7 @@
 
 #include "fs/virtfs/virtfile.h"
 #include "fs/virtfs/virtfsfuncs.h"
+#include "fs/virtfs/virtfsziprwops.h"
 #include "fs/virtfs/virtlist.h"
 #include "fs/virtfs/virtzipentry.h"
 #include "fs/virtfs/zip.h"
@@ -72,6 +73,13 @@ namespace VirtFsZip
         ptr->openWrite = &VirtFsZip::openWrite;
         ptr->openAppend = &VirtFsZip::openAppend;
         ptr->loadFile = &VirtFsZip::loadFile;
+        ptr->rwops_seek = &VirtFsZip::rwops_seek;
+        ptr->rwops_read = &VirtFsZip::rwops_read;
+        ptr->rwops_write = &VirtFsZip::rwops_write;
+        ptr->rwops_close = &VirtFsZip::rwops_close;
+#ifdef USE_SDL2
+        ptr->rwops_size = &VirtFsZip::rwops_size;
+#endif  // USE_SDL2
     }
 
     bool getRealDir(VirtFsEntry *restrict const entry,

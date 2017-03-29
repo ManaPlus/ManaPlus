@@ -843,10 +843,14 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtfs/virtfs.h \
 	      fs/virtfs/virtfsdir.cpp \
 	      fs/virtfs/virtfsdir.h \
+	      fs/virtfs/virtfsdirrwops.cpp \
+	      fs/virtfs/virtfsdirrwops.h \
 	      fs/virtfs/virtfsentry.cpp \
 	      fs/virtfs/virtfsentry.h \
 	      fs/virtfs/virtfszip.cpp \
 	      fs/virtfs/virtfszip.h \
+	      fs/virtfs/virtfsziprwops.cpp \
+	      fs/virtfs/virtfsziprwops.h \
 	      fs/virtfs/virtzipentry.cpp \
 	      fs/virtfs/virtzipentry.h \
 	      fs/virtfs/zip.cpp \

@@ -46,157 +46,13 @@
 
 #include "logger.h"
 
+#include "fs/virtfs/virtfile.h"
 #include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/virtfsfuncs.h"
 
 #include "utils/fuzzer.h"
 
 #include "debug.h"
-
-RWOPSINT VirtFs::rwops_seek(SDL_RWops *const rw,
-                            const RWOPSINT offset,
-                            const int whence)
-{
-    if (!rw)
-        return -1;
-    VirtFile *const handle = static_cast<VirtFile *const>(
-        rw->hidden.unknown.data1);
-    RWOPSINT pos = 0;
-
-    if (whence == SEEK_SET)
-    {
-        pos = offset;
-    } /* if */
-    else if (whence == SEEK_CUR)
-    {
-        const int64_t current = VirtFs::tell(handle);
-        if (current == -1)
-        {
-            logger->assertLog(
-                "VirtFs::rwops_seek: Can't find position in file.");
-            return -1;
-        } /* if */
-
-        pos = CAST_S32(current);
-        if (static_cast<int64_t>(pos) != current)
-        {
-            logger->assertLog("VirtFs::rwops_seek: "
-                "Can't fit current file position in an int!");
-            return -1;
-        } /* if */
-
-        if (offset == 0)  /* this is a "tell" call. We're done. */
-            return pos;
-
-        pos += offset;
-    } /* else if */
-    else if (whence == SEEK_END)
-    {
-        const int64_t len = VirtFs::fileLength(handle);
-        if (len == -1)
-        {
-            logger->assertLog("VirtFs::rwops_seek:Can't find end of file.");
-            return -1;
-        } /* if */
-
-        pos = static_cast<RWOPSINT>(len);
-        if (static_cast<int64_t>(pos) != len)
-        {
-            logger->assertLog("VirtFs::rwops_seek: "
-                "Can't fit end-of-file position in an int!");
-            return -1;
-        } /* if */
-
-        pos += offset;
-    } /* else if */
-    else
-    {
-        logger->assertLog("VirtFs::rwops_seek: Invalid 'whence' parameter.");
-        return -1;
-    } /* else */
-
-    if (pos < 0)
-    {
-        logger->assertLog("VirtFs::rwops_seek: "
-            "Attempt to seek past start of file.");
-        return -1;
-    } /* if */
-
-    if (!VirtFs::seek(handle, static_cast<uint64_t>(pos)))
-    {
-        logger->assertLog("VirtFs::rwops_seek: seek error.");
-        return -1;
-    } /* if */
-
-    return pos;
-} /* VirtFs::rwops_seek */
-
-RWOPSSIZE VirtFs::rwops_read(SDL_RWops *const rw,
-                             void *const ptr,
-                             const RWOPSSIZE size,
-                             const RWOPSSIZE maxnum)
-{
-    if (!rw)
-        return 0;
-    VirtFile *const handle = static_cast<VirtFile *const>(
-        rw->hidden.unknown.data1);
-    const int64_t rc = VirtFs::read(handle, ptr,
-        CAST_U32(size),
-        CAST_U32(maxnum));
-    if (rc != static_cast<int64_t>(maxnum))
-    {
-        if (!VirtFs::eof(handle)) /* not EOF? Must be an error. */
-        {
-            logger->assertLog("VirtFs::rwops_seek: read error.");
-        }
-    } /* if */
-
-    return CAST_S32(rc);
-} /* VirtFs::rwops_read */
-
-RWOPSSIZE VirtFs::rwops_write(SDL_RWops *const rw,
-                              const void *const ptr,
-                              const RWOPSSIZE size,
-                              const RWOPSSIZE num)
-{
-    if (!rw)
-        return 0;
-    VirtFile *const handle = static_cast<VirtFile *const>(
-        rw->hidden.unknown.data1);
-    const int64_t rc = VirtFs::write(handle, ptr,
-        CAST_U32(size),
-        CAST_U32(num));
-    if (rc != static_cast<int64_t>(num))
-    {
-        logger->assertLog("VirtFs::rwops_seek: write error.");
-    }
-
-    return CAST_S32(rc);
-} /* VirtFs::rwops_write */
-
-int VirtFs::rwops_close(SDL_RWops *const rw)
-{
-    if (!rw)
-        return 0;
-    VirtFile *const handle = static_cast<VirtFile*>(
-        rw->hidden.unknown.data1);
-    if (!VirtFs::close(handle))
-    {
-        logger->assertLog("VirtFs::rwops_seek: close error.");
-        return -1;
-    } /* if */
-
-    SDL_FreeRW(rw);
-    return 0;
-} /* VirtFs::rwops_close */
-
-#ifdef USE_SDL2
-RWOPSINT VirtFs::rwops_size(SDL_RWops *const rw)
-{
-    VirtFile *const handle = static_cast<VirtFile *const>(
-        rw->hidden.unknown.data1);
-    return VirtFs::fileLength(handle);
-} /* VirtFs::rwops_size */
-#endif  // USE_SDL2
 
 SDL_RWops *VirtFs::create_rwops(VirtFile *const file)
 {
@@ -212,13 +68,13 @@ SDL_RWops *VirtFs::create_rwops(VirtFile *const file)
         if (retval)
         {
 #ifdef USE_SDL2
-            retval->size  = &VirtFs::rwops_size;
+            retval->size  = file->funcs->rwops_size;
 #endif  // USE_SDL2
 
-            retval->seek  = &VirtFs::rwops_seek;
-            retval->read  = &VirtFs::rwops_read;
-            retval->write = &VirtFs::rwops_write;
-            retval->close = &VirtFs::rwops_close;
+            retval->seek  = file->funcs->rwops_seek;
+            retval->read  = file->funcs->rwops_read;
+            retval->write = file->funcs->rwops_write;
+            retval->close = file->funcs->rwops_close;
             retval->hidden.unknown.data1 = file;
         } /* if */
     } /* else */

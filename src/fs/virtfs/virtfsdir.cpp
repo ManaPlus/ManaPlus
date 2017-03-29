@@ -26,6 +26,7 @@
 
 #include "fs/virtfs/virtdirentry.h"
 #include "fs/virtfs/virtfile.h"
+#include "fs/virtfs/virtfsdirrwops.h"
 #include "fs/virtfs/virtfsfuncs.h"
 #include "fs/virtfs/virtlist.h"
 
@@ -136,6 +137,13 @@ namespace VirtFsDir
         ptr->openWrite = &VirtFsDir::openWrite;
         ptr->openAppend = &VirtFsDir::openAppend;
         ptr->loadFile = &VirtFsDir::loadFile;
+        ptr->rwops_seek = &VirtFsDir::rwops_seek;
+        ptr->rwops_read = &VirtFsDir::rwops_read;
+        ptr->rwops_write = &VirtFsDir::rwops_write;
+        ptr->rwops_close = &VirtFsDir::rwops_close;
+#ifdef USE_SDL2
+        ptr->rwops_size = &VirtFsDir::rwops_size;
+#endif  // USE_SDL2
     }
 
     VirtFsFuncs *getFuncs()
