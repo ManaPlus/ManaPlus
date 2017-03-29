@@ -24,11 +24,14 @@
 
 #include "fs/virtfs/virtdirentry.h"
 #include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/virtfsrwops.h"
 #include "fs/virtfs/virtfstools.h"
 #include "fs/virtfs/virtlist.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
+
+#include <SDL_rwops.h>
 
 #include "debug.h"
 
@@ -1478,6 +1481,392 @@ TEST_CASE("VirtFs1 loadFile2")
     }
 
     VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 rwops_read1")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountDir(prefix + "data",
+        Append_false);
+
+    SDL_RWops *file = VirtFs::rwopsOpenRead("test/test.txt");
+    REQUIRE(file != nullptr);
+#ifdef USE_SDL2
+    REQUIRE(file->size(file) == 23);
+#endif  // USE_SDL2
+
+    const int fileSize = 23;
+
+    void *restrict buffer = calloc(fileSize + 1, 1);
+    REQUIRE(file->read(file, buffer, 1, fileSize) == fileSize);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 1\ntest line 2") == 0);
+    REQUIRE(file->seek(file, 0, SEEK_CUR) == fileSize);
+
+    free(buffer);
+    buffer = calloc(fileSize + 1, 1);
+    REQUIRE(file->seek(file, 12, SEEK_SET) != 0);
+    REQUIRE(file->seek(file, 0, SEEK_CUR) == 12);
+    REQUIRE(file->read(file, buffer, 1, 11) == 11);
+    REQUIRE(strcmp(static_cast<char*>(buffer),
+        "test line 2") == 0);
+
+    file->close(file);
+    free(buffer);
+
+    VirtFs::unmountDir(prefix + "data");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 rwops_read2")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix("data/test/");
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "test2.zip",
+        Append_false);
+    SDL_RWops *file = nullptr;
+    void *restrict buffer = nullptr;
+
+    SECTION("test 1")
+    {
+        file = VirtFs::rwopsOpenRead("dir2//test.txt");
+        REQUIRE(file != nullptr);
+#ifdef USE_SDL2
+        REQUIRE(VirtFs::fileLength(file) == 23);
+#endif  // USE_SDL2
+        const int fileSize = 23;
+
+        buffer = calloc(fileSize + 1, 1);
+        REQUIRE(file->read(file, buffer, 1, fileSize) == fileSize);
+        REQUIRE(strcmp(static_cast<char*>(buffer),
+            "test line 1\ntest line 2") == 0);
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == fileSize);
+    }
+
+    SECTION("test 2")
+    {
+        file = VirtFs::rwopsOpenRead("dir2\\/test.txt");
+        REQUIRE(file != nullptr);
+#ifdef USE_SDL2
+        REQUIRE(VirtFs::fileLength(file) == 23);
+#endif  // USE_SDL2
+        const int fileSize = 23;
+
+        buffer = calloc(fileSize + 1, 1);
+        REQUIRE(file->seek(file, 12, SEEK_SET) != 0);
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == 12);
+        REQUIRE(file->read(file, buffer, 1, 11) == 11);
+        REQUIRE(strcmp(static_cast<char*>(buffer),
+            "test line 2") == 0);
+    }
+
+    SECTION("test 3")
+    {
+        file = VirtFs::rwopsOpenRead("dir2//test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize; f ++)
+        {
+            REQUIRE(file->seek(file, f, SEEK_SET) == f);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f);
+        }
+    }
+
+    SECTION("test 4")
+    {
+        file = VirtFs::rwopsOpenRead("dir2/test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f ++)
+        {
+            REQUIRE(file->read(file, buffer, 1, 1) == 1);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f + 1);
+        }
+        REQUIRE(file->read(file, buffer, 1, 1) == 1);
+        REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == fileSize);
+    }
+
+    SECTION("test 5")
+    {
+        file = VirtFs::rwopsOpenRead("dir2\\\\test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f += 2)
+        {
+            REQUIRE(file->read(file, buffer, 2, 1) == 1);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
+            REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f + 2);
+        }
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == 22);
+        REQUIRE(file->read(file, buffer, 2, 1) == 0);
+    }
+
+    SECTION("test 6")
+    {
+        file = VirtFs::rwopsOpenRead("dir2//test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f += 2)
+        {
+            REQUIRE(file->read(file, buffer, 1, 2) == 2);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
+            REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f + 2);
+        }
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == 22);
+        REQUIRE(file->read(file, buffer, 1, 2) == 1);
+        REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
+    }
+
+    SECTION("test 7")
+    {
+        file = VirtFs::rwopsOpenRead("dir2//test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f += 2)
+        {
+            REQUIRE(file->read(file, buffer, 1, 2) == 2);
+            REQUIRE(file->seek(file, -2, SEEK_CUR) == f);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f);
+            REQUIRE(file->seek(file, 2, SEEK_CUR) == f + 2);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
+            REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f + 2);
+        }
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == 22);
+        REQUIRE(file->read(file, buffer, 1, 2) == 1);
+        REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
+    }
+
+    SECTION("test 8")
+    {
+        file = VirtFs::rwopsOpenRead("dir2//test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f += 2)
+        {
+            REQUIRE(file->seek(file, -f - 2, SEEK_END) == 23 - f - 2);
+            REQUIRE(file->read(file, buffer, 1, 2) == 2);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[23 - f - 2]);
+            REQUIRE(static_cast<char*>(buffer)[1] == str[23 - f - 2 + 1]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == 23 - f);
+        }
+        // 3
+        REQUIRE(file->seek(file, 1, SEEK_CUR) == 4);
+        // 4
+        REQUIRE(file->read(file, buffer, 1, 2) == 2);
+        // 6
+        REQUIRE(static_cast<char*>(buffer)[0] == str[4]);
+        REQUIRE(static_cast<char*>(buffer)[1] == str[5]);
+        REQUIRE(file->seek(file, -7, SEEK_CUR) == -1);
+        REQUIRE(file->seek(file, 6, SEEK_SET) == 6);
+        REQUIRE(file->seek(file, -6, SEEK_CUR) == 0);
+    }
+
+    file->close(file);
+    free(buffer);
+    VirtFs::unmountZip(prefix + "test2.zip");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 rwops_read3")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountDir(prefix + "data",
+        Append_false);
+    SDL_RWops *file = nullptr;
+    void *restrict buffer = nullptr;
+
+    SECTION("test 1")
+    {
+        file = VirtFs::rwopsOpenRead("test/test.txt");
+        REQUIRE(file != nullptr);
+#ifdef USE_SDL2
+        REQUIRE(VirtFs::fileLength(file) == 23);
+#endif  // USE_SDL2
+        const int fileSize = 23;
+
+        buffer = calloc(fileSize + 1, 1);
+        REQUIRE(file->read(file, buffer, 1, fileSize) == fileSize);
+        REQUIRE(strcmp(static_cast<char*>(buffer),
+            "test line 1\ntest line 2") == 0);
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == fileSize);
+    }
+
+    SECTION("test 2")
+    {
+        file = VirtFs::rwopsOpenRead("test\\test.txt");
+        REQUIRE(file != nullptr);
+#ifdef USE_SDL2
+        REQUIRE(VirtFs::fileLength(file) == 23);
+#endif  // USE_SDL2
+        const int fileSize = 23;
+
+        buffer = calloc(fileSize + 1, 1);
+        REQUIRE(file->seek(file, 12, SEEK_SET) != 0);
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == 12);
+        REQUIRE(file->read(file, buffer, 1, 11) == 11);
+        REQUIRE(strcmp(static_cast<char*>(buffer),
+            "test line 2") == 0);
+    }
+
+    SECTION("test 3")
+    {
+        file = VirtFs::rwopsOpenRead("test\\/test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize; f ++)
+        {
+            REQUIRE(file->seek(file, f, SEEK_SET) == f);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f);
+        }
+    }
+
+    SECTION("test 4")
+    {
+        file = VirtFs::rwopsOpenRead("test/test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f ++)
+        {
+            REQUIRE(file->read(file, buffer, 1, 1) == 1);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f + 1);
+        }
+        REQUIRE(file->read(file, buffer, 1, 1) == 1);
+        REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == fileSize);
+    }
+
+    SECTION("test 5")
+    {
+        file = VirtFs::rwopsOpenRead("test///test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f += 2)
+        {
+            REQUIRE(file->read(file, buffer, 2, 1) == 1);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
+            REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f + 2);
+        }
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == 22);
+        REQUIRE(file->read(file, buffer, 2, 1) == 0);
+    }
+
+    SECTION("test 6")
+    {
+        file = VirtFs::rwopsOpenRead("test\\\\test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f += 2)
+        {
+            REQUIRE(file->read(file, buffer, 1, 2) == 2);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
+            REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f + 2);
+        }
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == 22);
+        REQUIRE(file->read(file, buffer, 1, 2) == 1);
+        REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
+    }
+
+    SECTION("test 7")
+    {
+        file = VirtFs::rwopsOpenRead("test//test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f += 2)
+        {
+            REQUIRE(file->read(file, buffer, 1, 2) == 2);
+            REQUIRE(file->seek(file, -2, SEEK_CUR) == f);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f);
+            REQUIRE(file->seek(file, 2, SEEK_CUR) == f + 2);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[f]);
+            REQUIRE(static_cast<char*>(buffer)[1] == str[f + 1]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == f + 2);
+        }
+        REQUIRE(file->seek(file, 0, SEEK_CUR) == 22);
+        REQUIRE(file->read(file, buffer, 1, 2) == 1);
+        REQUIRE(static_cast<char*>(buffer)[0] == str[22]);
+    }
+
+    SECTION("test 8")
+    {
+        file = VirtFs::rwopsOpenRead("test/test.txt");
+        REQUIRE(file != nullptr);
+        const int fileSize = 23;
+        const char *restrict const str = "test line 1\ntest line 2";
+        buffer = calloc(fileSize + 1, 1);
+        for (int f = 0; f < fileSize - 1; f += 2)
+        {
+            REQUIRE(file->seek(file, -f - 2, SEEK_END) == 23 - f - 2);
+            REQUIRE(file->read(file, buffer, 1, 2) == 2);
+            REQUIRE(static_cast<char*>(buffer)[0] == str[23 - f - 2]);
+            REQUIRE(static_cast<char*>(buffer)[1] == str[23 - f - 2 + 1]);
+            REQUIRE(file->seek(file, 0, SEEK_CUR) == 23 - f);
+        }
+        // 3
+        REQUIRE(file->seek(file, 1, SEEK_CUR) == 4);
+        // 4
+        REQUIRE(file->read(file, buffer, 1, 2) == 2);
+        // 6
+        REQUIRE(static_cast<char*>(buffer)[0] == str[4]);
+        REQUIRE(static_cast<char*>(buffer)[1] == str[5]);
+        REQUIRE(file->seek(file, -7, SEEK_CUR) == -1);
+        REQUIRE(file->seek(file, 6, SEEK_SET) == 6);
+        REQUIRE(file->seek(file, -6, SEEK_CUR) == 0);
+    }
+
+    file->close(file);
+    free(buffer);
+    VirtFs::unmountDir(prefix + "data");
     VirtFs::deinit();
     delete2(logger);
 }
