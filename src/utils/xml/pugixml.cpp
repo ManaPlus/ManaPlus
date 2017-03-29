@@ -166,7 +166,7 @@ namespace XML
 
     Document::~Document()
     {
-        delete [] mData);
+        delete [] mData;
         mData = nullptr;
     }
 
