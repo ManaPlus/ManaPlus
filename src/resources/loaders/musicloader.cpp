@@ -22,7 +22,6 @@
 
 #include "resources/sdlmusic.h"
 
-#include "fs/virtfs/virtfs.h"
 #include "fs/virtfs/virtfsrwops.h"
 
 #include "resources/loaders/musicloader.h"

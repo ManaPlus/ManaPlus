@@ -28,7 +28,6 @@
 #include "logger.h"
 #endif  // DEBUG_IMAGES
 
-#include "fs/virtfs/virtfs.h"
 #include "fs/virtfs/virtfsrwops.h"
 
 #include "utils/mathutils.h"
