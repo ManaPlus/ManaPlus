@@ -115,24 +115,12 @@ namespace VirtFsZip
         return CAST_S32(rc);
     }
 
-    RWOPSSIZE rwops_write(SDL_RWops *const rw,
-                          const void *const ptr,
-                          const RWOPSSIZE size,
-                          const RWOPSSIZE num)
+    RWOPSSIZE rwops_write(SDL_RWops *const rw A_UNUSED,
+                          const void *const ptr A_UNUSED,
+                          const RWOPSSIZE size A_UNUSED,
+                          const RWOPSSIZE num A_UNUSED)
     {
-        if (!rw)
-            return 0;
-        VirtFile *const handle = static_cast<VirtFile *const>(
-            rw->hidden.unknown.data1);
-        const int64_t rc = VirtFs::write(handle, ptr,
-            CAST_U32(size),
-            CAST_U32(num));
-        if (rc != static_cast<int64_t>(num))
-        {
-            logger->assertLog("VirtFs::rwops_seek: write error.");
-        }
-
-        return CAST_S32(rc);
+        return 0;
     }
 
     int rwops_close(SDL_RWops *const rw)
