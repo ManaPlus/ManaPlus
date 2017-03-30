@@ -230,7 +230,22 @@ namespace VirtFsDir
     {
         VirtFile *const handle = static_cast<VirtFile *const>(
             rw->hidden.unknown.data1);
-        return VirtFs::fileLength(handle);
+        FILEHTYPE fd = handle->mFd;
+#ifdef USE_FILE_FOPEN
+        const long pos = ftell(fd);
+        fseek(fd, 0, SEEK_END);
+        const long sz = ftell(fd);
+        fseek(fd, pos, SEEK_SET);
+        return sz;
+#else  // USE_FILE_FOPEN
+        struct stat statbuf;
+        if (fstat(fd, &statbuf) == -1)
+        {
+            reportAlways("VirtFsDir::fileLength error.");
+            return -1;
+        }
+        return static_cast<int64_t>(statbuf.st_size);
+#endif  // USE_FILE_FOPEN
     }
 #endif  // USE_SDL2
 
