@@ -39,6 +39,10 @@ namespace VirtFsZip
             return -1;
         VirtFile *const handle = static_cast<VirtFile *const>(
             rw->hidden.unknown.data1);
+//        const uint8_t *mBuf = handle->mBuf;
+        size_t mPos = handle->mPos;
+        size_t mSize = handle->mSize;
+
         RWOPSINT pos = 0;
 
         if (whence == SEEK_SET)
@@ -47,7 +51,7 @@ namespace VirtFsZip
         }
         else if (whence == SEEK_CUR)
         {
-            const int64_t current = VirtFs::tell(handle);
+            const int64_t current = mPos;
             if (current == -1)
             {
                 logger->assertLog(
@@ -70,23 +74,7 @@ namespace VirtFsZip
         }
         else if (whence == SEEK_END)
         {
-            const int64_t len = VirtFs::fileLength(handle);
-            if (len == -1)
-            {
-                logger->assertLog(
-                    "VirtFs::rwops_seek:Can't find end of file.");
-                return -1;
-            }
-
-            pos = static_cast<RWOPSINT>(len);
-            if (static_cast<int64_t>(pos) != len)
-            {
-                logger->assertLog("VirtFs::rwops_seek: "
-                    "Can't fit end-of-file position in an int!");
-                return -1;
-            }
-
-            pos += offset;
+            pos = mSize + offset;
         }
         else
         {
@@ -102,7 +90,9 @@ namespace VirtFsZip
             return -1;
         }
 
-        if (!VirtFs::seek(handle, static_cast<uint64_t>(pos)))
+        handle->mPos = pos;
+
+        if (pos > static_cast<RWOPSINT>(mSize))
         {
             logger->assertLog("VirtFs::rwops_seek: seek error.");
             return -1;
