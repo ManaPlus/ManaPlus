@@ -39,7 +39,6 @@ namespace VirtFsZip
             return -1;
         VirtFile *const handle = static_cast<VirtFile *const>(
             rw->hidden.unknown.data1);
-//        const uint8_t *mBuf = handle->mBuf;
         size_t mPos = handle->mPos;
         size_t mSize = handle->mSize;
 
@@ -113,14 +112,6 @@ namespace VirtFsZip
         const int64_t rc = VirtFs::read(handle, ptr,
             CAST_U32(size),
             CAST_U32(maxnum));
-        if (rc != static_cast<int64_t>(maxnum))
-        {
-            if (!VirtFs::eof(handle)) /* not EOF? Must be an error. */
-            {
-                logger->assertLog("VirtFs::rwops_seek: read error.");
-            }
-        }
-
         return CAST_S32(rc);
     }
 
