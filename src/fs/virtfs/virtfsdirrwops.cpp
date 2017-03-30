@@ -220,12 +220,7 @@ namespace VirtFsDir
             return 0;
         VirtFile *const handle = static_cast<VirtFile*>(
             rw->hidden.unknown.data1);
-        if (!VirtFs::close(handle))
-        {
-            logger->assertLog("VirtFs::rwops_seek: close error.");
-            return -1;
-        }
-
+        delete handle;
         SDL_FreeRW(rw);
         return 0;
     }
