@@ -140,6 +140,44 @@ mxe_gcc5_shared_64:
   tags:
     - docker
 
+mxe_gcc5_shared_32_testsbin:
+  stage: prebuild
+  script:
+  - ls /mxe
+  - ./tools/ci/jobs/mxe_gcc5_tests.sh --without-manaplusgame --without-dyecmd
+  artifacts:
+    paths:
+    - logs
+    untracked: true
+    when: always
+    expire_in: 1 week
+  dependencies: []
+  image: registry.gitlab.com/manaplus/mxe:gcc5_shared_32
+  variables:
+    PACKAGES: bash
+    CROSS: i686-w64-mingw32.shared
+  tags:
+    - docker
+
+mxe_gcc5_shared_64_testsbin:
+  stage: prebuild
+  script:
+  - ls /mxe
+  - ./tools/ci/jobs/mxe_gcc5_tests.sh --without-manaplusgame --without-dyecmd
+  artifacts:
+    paths:
+    - logs
+    untracked: true
+    when: always
+    expire_in: 1 week
+  dependencies: []
+  image: registry.gitlab.com/manaplus/mxe:gcc5_shared_64
+  variables:
+    PACKAGES: bash
+    CROSS: x86_64-w64-mingw32.shared
+  tags:
+    - docker
+
 gcc-5_sdl2:
   stage: prebuild
   script:
