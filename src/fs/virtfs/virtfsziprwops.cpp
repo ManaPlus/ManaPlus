@@ -139,7 +139,9 @@ namespace VirtFsZip
     {
         VirtFile *const handle = static_cast<VirtFile *const>(
             rw->hidden.unknown.data1);
-        return VirtFs::fileLength(handle);
+        if (!rw)
+            return 0;
+        return handle->mSize;
     }
 #endif  // USE_SDL2
 
