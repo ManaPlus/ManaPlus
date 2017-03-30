@@ -572,10 +572,22 @@ AC_ARG_ENABLE(unittests,
   yes) unittests_enabled=true
  ;;
   no)  unittests_enabled=false ;;
-  *) AC_MSG_ERROR(bad value ${enableval} for --enable-tests) ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-unittests) ;;
 esac],[unittests_enabled=false])
 
 AM_CONDITIONAL(ENABLE_UNITTESTS, test x$unittests_enabled = xtrue)
+
+# Enable unit tests binaries only
+AC_ARG_ENABLE(unittestsbin,
+[  --enable-unittestsbin    Turn on unit tests binary compilation only],
+[case "${enableval}" in
+  yes) unittestsbin_enabled=true
+ ;;
+  no)  unittestsbin_enabled=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-unittestsbin) ;;
+esac],[unittestsbin_enabled=false])
+
+AM_CONDITIONAL(ENABLE_UNITTESTSBIN, test x$unittestsbin_enabled = xtrue)
 
 # Enable tcmalloc
 AC_ARG_ENABLE(tcmalloc,

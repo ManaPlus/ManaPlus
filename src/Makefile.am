@@ -20,6 +20,9 @@ else
 bin_PROGRAMS = 
 endif
 endif
+if ENABLE_UNITTESTSBIN
+bin_PROGRAMS += manaplustests
+endif
 
 dyecmd_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
@@ -1932,9 +1935,6 @@ if ENABLE_MANAPLUSGAME
 manaplus_SOURCES += ${SRC}
 endif
 
-if ENABLE_UNITTESTS
-TESTS = manaplustests
-check_PROGRAMS = manaplustests
 manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 manaplustests_LDFLAGS = 
@@ -2008,8 +2008,11 @@ manaplustests_SOURCES += \
 	      resources/map/maplayer_unittest.cc \
 	      resources/resourcemanager/resourcemanager_unittest.cc \
 	      gui/windowmanager_unittest.cc
-endif
 
+if ENABLE_UNITTESTS
+TESTS = manaplustests
+check_PROGRAMS = manaplustests
+endif
 
 EXTRA_DIST = CMakeLists.txt \
 	     winver.h.in \
