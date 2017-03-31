@@ -47,11 +47,9 @@
 
 #include "localconsts.h"
 
-#include "fs/virtfs/rwopstypes.h"
-
 #include <string>
-#include <SDL_rwops.h>
 
+struct SDL_RWops;
 struct VirtFile;
 
 namespace VirtFs

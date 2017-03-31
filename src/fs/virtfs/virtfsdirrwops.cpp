@@ -23,7 +23,6 @@
 #include "logger.h"
 
 #include "fs/virtfs/virtfile.h"
-#include "fs/virtfs/virtfs.h"
 
 #include <SDL_rwops.h>
 

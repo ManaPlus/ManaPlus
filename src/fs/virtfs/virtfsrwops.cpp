@@ -52,6 +52,8 @@
 
 #include "utils/fuzzer.h"
 
+#include <SDL_rwops.h>
+
 #include "debug.h"
 
 SDL_RWops *VirtFs::create_rwops(VirtFile *const file)
