@@ -91,7 +91,7 @@ void Files::copyVirtFsFile(const std::string &restrict inFile,
                            const std::string &restrict outFile)
 {
     int size = 0;
-    char *const buf = VirtFs::loadFile(inFile, size);
+    const char *const buf = VirtFs::loadFile(inFile, size);
     FILE *const file = fopen(outFile.c_str(), "w");
     fwrite(buf, 1, size, file);
     fclose(file);

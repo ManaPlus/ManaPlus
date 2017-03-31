@@ -137,10 +137,10 @@ namespace VirtFsZip
 #ifdef USE_SDL2
     RWOPSINT rwops_size(SDL_RWops *const rw)
     {
-        VirtFile *const handle = static_cast<VirtFile *const>(
-            rw->hidden.unknown.data1);
         if (!rw)
             return 0;
+        VirtFile *const handle = static_cast<VirtFile *const>(
+            rw->hidden.unknown.data1);
         return handle->mSize;
     }
 #endif  // USE_SDL2

@@ -455,7 +455,7 @@ namespace VirtFsDir
                          const std::string &restrict filename,
                          int &restrict fileSize)
     {
-        VirtDirEntry *const dirEntry = static_cast<VirtDirEntry*>(entry);
+        const VirtDirEntry *const dirEntry = static_cast<VirtDirEntry*>(entry);
         const std::string path = entry->root + filename;
         if (Files::existsLocal(path) == false)
             return nullptr;
@@ -493,9 +493,9 @@ namespace VirtFsDir
             buffer[fileSize - 1] = 0;
 
 #ifdef USE_FILE_FOPEN
-        int cnt = fread(buffer, 1, fileSize, fd);
+        const int cnt = fread(buffer, 1, fileSize, fd);
 #else  // USE_FILE_FOPEN
-        int cnt = ::read(fd, buffer, fileSize);
+        const int cnt = ::read(fd, buffer, fileSize);
 #endif  // USE_FILE_FOPEN
 
         if (cnt <= 0)
