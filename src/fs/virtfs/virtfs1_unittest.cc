@@ -1546,7 +1546,7 @@ TEST_CASE("VirtFs1 rwops_read2")
         file = VirtFs::rwopsOpenRead("dir2//test.txt");
         REQUIRE(file != nullptr);
 #ifdef USE_SDL2
-        REQUIRE(VirtFs::fileLength(file) == 23);
+        REQUIRE(file->size(file) == 23);
 #endif  // USE_SDL2
         const int fileSize = 23;
 
@@ -1562,7 +1562,7 @@ TEST_CASE("VirtFs1 rwops_read2")
         file = VirtFs::rwopsOpenRead("dir2\\/test.txt");
         REQUIRE(file != nullptr);
 #ifdef USE_SDL2
-        REQUIRE(VirtFs::fileLength(file) == 23);
+        REQUIRE(file->size(file) == 23);
 #endif  // USE_SDL2
         const int fileSize = 23;
 
@@ -1718,7 +1718,7 @@ TEST_CASE("VirtFs1 rwops_read3")
         file = VirtFs::rwopsOpenRead("test/test.txt");
         REQUIRE(file != nullptr);
 #ifdef USE_SDL2
-        REQUIRE(VirtFs::fileLength(file) == 23);
+        REQUIRE(file->size(file) == 23);
 #endif  // USE_SDL2
         const int fileSize = 23;
 
@@ -1734,7 +1734,7 @@ TEST_CASE("VirtFs1 rwops_read3")
         file = VirtFs::rwopsOpenRead("test\\test.txt");
         REQUIRE(file != nullptr);
 #ifdef USE_SDL2
-        REQUIRE(VirtFs::fileLength(file) == 23);
+        REQUIRE(file->size(file) == 23);
 #endif  // USE_SDL2
         const int fileSize = 23;
 
