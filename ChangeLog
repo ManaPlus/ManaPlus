@@ -1,3 +1,10 @@
+2017-04-01 New release 1.7.4.1
+add: optional support for tinyxml2 (by default used libxml2)
+add: update readme.
+add: improve some file operations.
+add: configure flag for build binary for unit tests but not run it.
+remove: completly remove physfs usage.
+
 2017-03-18 New release 1.7.3.18
 fix: add missing include for BSD systems.
 fix: some issues in unit tests in some systems.
