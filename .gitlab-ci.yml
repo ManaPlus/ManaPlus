@@ -4451,6 +4451,9 @@ ok_job:
   when: on_success
   variables:
     GIT_STRATEGY: none
+    UPDATEREPOS: ""
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
 
 fail_job:
   stage: fail
@@ -4461,3 +4464,6 @@ fail_job:
   when: on_failure
   variables:
     GIT_STRATEGY: none
+    UPDATEREPOS: ""
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
