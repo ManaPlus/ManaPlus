@@ -1692,7 +1692,8 @@ TEST_CASE("VirtFs1 rwops_read2")
         REQUIRE(file->seek(file, -6, SEEK_CUR) == 0);
     }
 
-    file->close(file);
+    if (file != nullptr)
+        file->close(file);
     free(buffer);
     VirtFs::unmountZip(prefix + "test2.zip");
     VirtFs::deinit();
@@ -1864,7 +1865,8 @@ TEST_CASE("VirtFs1 rwops_read3")
         REQUIRE(file->seek(file, -6, SEEK_CUR) == 0);
     }
 
-    file->close(file);
+    if (file != nullptr)
+        file->close(file);
     free(buffer);
     VirtFs::unmountDir(prefix + "data");
     VirtFs::deinit();
