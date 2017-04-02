@@ -50,8 +50,8 @@ void EmoteDB::load()
         unload();
 
     EmoteSprite *const unknownSprite = new EmoteSprite;
-    unknownSprite->sprite = AnimatedSprite::load(paths.getStringValue(
-        "sprites").append(paths.getStringValue(
+    unknownSprite->sprite = AnimatedSprite::load(pathJoin(paths.getStringValue(
+        "sprites"), paths.getStringValue(
         "spriteErrorFile")));
     unknownSprite->name = "unknown";
     unknownSprite->id = 0;
@@ -126,9 +126,9 @@ void EmoteDB::loadXmlFile(const std::string &fileName,
             if (xmlNameEqual(spriteNode, "sprite"))
             {
                 EmoteSprite *const currentSprite = new EmoteSprite;
-                currentSprite->sprite = AnimatedSprite::load(
-                    paths.getStringValue("sprites").append(std::string(
-                    XmlChildContent(spriteNode))),
+                currentSprite->sprite = AnimatedSprite::load(pathJoin(
+                    paths.getStringValue("sprites"),
+                    XmlChildContent(spriteNode)),
                     XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::langProperty(
                     spriteNode, "name", "");
@@ -199,9 +199,9 @@ void EmoteDB::loadSpecialXmlFile(const std::string &fileName,
             if (xmlNameEqual(spriteNode, "sprite"))
             {
                 EmoteSprite *const currentSprite = new EmoteSprite;
-                currentSprite->sprite = AnimatedSprite::load(
-                    paths.getStringValue("sprites").append(std::string(
-                    XmlChildContent(spriteNode))),
+                currentSprite->sprite = AnimatedSprite::load(pathJoin(
+                    paths.getStringValue("sprites"),
+                    XmlChildContent(spriteNode)),
                     XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::langProperty(
                     spriteNode, "name", "");

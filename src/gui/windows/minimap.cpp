@@ -176,7 +176,7 @@ void Minimap::setMap(const Map *const map)
         }
         else
         {
-            std::string tempname = paths.getStringValue("minimaps").append(
+            std::string tempname = pathJoin(paths.getStringValue("minimaps"),
                 map->getFilename()).append(".png");
 
             std::string minimapName = map->getProperty("minimap");
@@ -187,7 +187,7 @@ void Minimap::setMap(const Map *const map)
             if (minimapName.empty())
             {
                 tempname = pathJoin("graphics/minimaps",
-                    std::string(map->getFilename()).append(".png"));
+                    map->getFilename()).append(".png");
                 if (VirtFs::exists(tempname))
                     minimapName = tempname;
             }

@@ -92,8 +92,8 @@ AnimatedSprite *StatusEffect::getIcon() const
     }
     else
     {
-        return AnimatedSprite::load(paths.getStringValue(
-            "sprites").append(mIcon));
+        return AnimatedSprite::load(pathJoin(paths.getStringValue("sprites"),
+            mIcon));
     }
 }
 

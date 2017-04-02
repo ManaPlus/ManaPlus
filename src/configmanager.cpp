@@ -173,8 +173,7 @@ void ConfigManager::initConfiguration()
 
 void ConfigManager::backupConfig(const std::string &name)
 {
-    const std::string fileName3 = std::string(settings.configDir).append(
-        "/").append(name);
+    const std::string fileName3 = pathJoin(settings.configDir, name);
     StringVect arr;
     if (Files::existsLocal(fileName3) == false)
     {
@@ -188,11 +187,8 @@ void ConfigManager::backupConfig(const std::string &name)
             return;
 
         arr.clear();
-        const std::string tmpName = std::string(
-            settings.configDir).append(
-            "/").append(
-            name).append(
-            ".tmp");
+        const std::string tmpName = pathJoin(settings.configDir,
+            name).append(".tmp");
         Files::copyFile(fileName3, tmpName);
         if (Files::loadTextFileLocal(tmpName, arr) == false ||
             arr.size() == 0)
@@ -203,11 +199,8 @@ void ConfigManager::backupConfig(const std::string &name)
         arr.clear();
     }
 
-    const std::string confName = std::string(
-        settings.configDir).append(
-        "/").append(
-        name).append(
-        ".bak");
+    const std::string confName = pathJoin(settings.configDir,
+        name).append(".bak");
     const int maxFileIndex = 5;
     ::remove((confName + toString(maxFileIndex)).c_str());
     for (int f = maxFileIndex; f > 1; f --)

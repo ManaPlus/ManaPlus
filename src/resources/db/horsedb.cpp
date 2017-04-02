@@ -43,8 +43,8 @@ namespace
 #define loadSprite(name) \
     { \
         SpriteReference *const currentSprite = new SpriteReference; \
-        currentSprite->sprite = paths.getStringValue("sprites").append( \
-            std::string(XmlChildContent(spriteNode))); \
+        currentSprite->sprite = pathJoin(paths.getStringValue("sprites"), \
+            XmlChildContent(spriteNode)); \
         currentSprite->variant = XML::getProperty( \
             spriteNode, "variant", 0); \
         currentInfo->name.push_back(currentSprite); \
@@ -62,13 +62,13 @@ void HorseDB::load()
         unload();
 
     SpriteReference *currentSprite = new SpriteReference;
-    currentSprite->sprite = paths.getStringValue("sprites").append(
+    currentSprite->sprite = pathJoin(paths.getStringValue("sprites"),
         paths.getStringValue("spriteErrorFile"));
     currentSprite->variant = 0;
     mUnknown.downSprites.push_back(currentSprite);
 
     currentSprite = new SpriteReference;
-    currentSprite->sprite = paths.getStringValue("sprites").append(
+    currentSprite->sprite = pathJoin(paths.getStringValue("sprites"),
         paths.getStringValue("spriteErrorFile"));
     currentSprite->variant = 0;
     mUnknown.upSprites.push_back(currentSprite);

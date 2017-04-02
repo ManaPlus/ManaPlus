@@ -2146,10 +2146,9 @@ void ActorManager::updateNameId(const std::string &name,
         std::string dir;
         if (beingId != BeingId_zero)
         {
-            dir = settings.usersIdDir;
-            dir.append(idStr);
-            dir.append("/");
-            dir.append(stringToHexPath(name));
+            dir = pathJoin(settings.usersIdDir,
+                idStr,
+                stringToHexPath(name));
             Files::saveTextFile(dir,
                 "info.txt",
                 (name + "\n").append(dateStr));

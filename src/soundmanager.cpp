@@ -325,7 +325,8 @@ void SoundManager::setSfxVolume(const int volume)
 static SDLMusic *loadMusic(const std::string &fileName,
                            const SkipError skipError)
 {
-    const std::string path = paths.getStringValue("music").append(fileName);
+    const std::string path = pathJoin(paths.getStringValue("music"),
+        fileName);
     if (!VirtFs::exists(path))
     {
         if (skipError == SkipError_false)
@@ -460,7 +461,7 @@ void SoundManager::playSfx(const std::string &path,
     }
     else
     {
-        tmpPath = paths.getValue("sfx", "sfx/").append(path);
+        tmpPath = pathJoin(paths.getValue("sfx", "sfx"), path);
     }
     SoundEffect *const sample = Loader::getSoundEffect(tmpPath);
     if (sample)
@@ -493,8 +494,8 @@ void SoundManager::playGuiSound(const std::string &name)
     const std::string sound = config.getStringValue(name);
     if (sound == "(no sound)")
         return;
-    playGuiSfx(branding.getStringValue("systemsounds").append(
-        sound).append(".ogg"));
+    playGuiSfx(pathJoin(branding.getStringValue("systemsounds"),
+        std::string(sound).append(".ogg")));
 }
 
 void SoundManager::playGuiSfx(const std::string &path)
@@ -510,7 +511,7 @@ void SoundManager::playGuiSfx(const std::string &path)
     if (!path.compare(0, 4, "sfx/"))
         tmpPath = path;
     else
-        tmpPath = paths.getValue("sfx", "sfx/").append(path);
+        tmpPath = pathJoin(paths.getValue("sfx", "sfx"), path);
     SoundEffect *const sample = Loader::getSoundEffect(tmpPath);
     if (sample)
     {

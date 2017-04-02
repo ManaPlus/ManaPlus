@@ -1167,8 +1167,9 @@ void SetupItemSound::action(const ActionEvent &event)
     {
         if (mSlider && mSlider->getSelected())
         {
-            soundManager.playGuiSfx(branding.getStringValue("systemsounds")
-                .append(mSlider->getSelectedString()).append(".ogg"));
+            soundManager.playGuiSfx(pathJoin(branding.getStringValue(
+                "systemsounds"),
+                mSlider->getSelectedString()).append(".ogg"));
         }
     }
     else

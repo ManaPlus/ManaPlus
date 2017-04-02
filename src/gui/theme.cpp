@@ -644,13 +644,13 @@ std::string Theme::resolveThemePath(const std::string &path)
     }
 
     // Try the theme
-    file = getThemePath().append("/").append(file);
+    file = pathJoin(getThemePath(), file);
 
     if (VirtFs::exists(file))
-        return getThemePath().append("/").append(path);
+        return pathJoin(getThemePath(), path);
 
     // Backup
-    return branding.getStringValue("guiPath").append(path);
+    return pathJoin(branding.getStringValue("guiPath"), path);
 }
 
 Image *Theme::getImageFromTheme(const std::string &path)

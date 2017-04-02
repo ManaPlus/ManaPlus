@@ -156,7 +156,7 @@ std::string Wallpaper::getWallpaper(const int width, const int height)
 
     // Return the backup file if everything else failed...
     if (haveBackup)
-        return std::string(wallpaperPath).append(wallpaperFile);
+        return pathJoin(wallpaperPath, wallpaperFile);
 
     // Return an empty string if everything else failed
     return std::string();

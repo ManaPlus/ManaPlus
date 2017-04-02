@@ -1135,8 +1135,8 @@ void Map::addExtraLayer() restrict2
         BLOCK_END("Map::addExtraLayer")
         return;
     }
-    const std::string mapFileName = getUserMapDirectory().append(
-        "/extralayer.txt");
+    const std::string mapFileName = pathJoin(getUserMapDirectory(),
+        "extralayer.txt");
     logger->log("loading extra layer: " + mapFileName);
     struct stat statbuf;
     if (!stat(mapFileName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
@@ -1208,8 +1208,8 @@ void Map::saveExtraLayer() const restrict2
         logger->log1("No special layer");
         return;
     }
-    const std::string mapFileName = getUserMapDirectory().append(
-        "/extralayer.txt");
+    const std::string mapFileName = pathJoin(getUserMapDirectory(),
+        "extralayer.txt");
     logger->log("saving extra layer: " + mapFileName);
 
     if (mkdir_r(getUserMapDirectory().c_str()))

@@ -1053,9 +1053,9 @@ void Game::changeMap(const std::string &mapPath)
 
     mMapName = mapPath;
 
-    std::string fullMap = paths.getValue("maps", "maps/").append(
+    std::string fullMap = pathJoin(paths.getValue("maps", "maps/"),
         mMapName).append(".tmx");
-    std::string realFullMap = paths.getValue("maps", "maps/").append(
+    std::string realFullMap = pathJoin(paths.getValue("maps", "maps/"),
         MapDB::getMapName(mMapName)).append(".tmx");
 
     if (!VirtFs::exists(realFullMap))

@@ -191,12 +191,12 @@ std::string getPicturesDir()
     std::string file;
     if (!xdg)
     {
-        file = std::string(VirtFs::getUserDir()).append(
-            "/.config/user-dirs.dirs");
+        file = pathJoin(VirtFs::getUserDir(),
+            ".config/user-dirs.dirs");
     }
     else
     {
-        file = std::string(xdg).append("/user-dirs.dirs");
+        file = pathJoin(xdg, "user-dirs.dirs");
     }
 
     StringVect arr;
@@ -212,16 +212,13 @@ std::string getPicturesDir()
             replaceAll(str, "$HOME/", VirtFs::getUserDir());
             str = getRealPath(str);
             if (str.empty())
-                str = std::string(VirtFs::getUserDir()).append("Desktop");
+                str = pathJoin(VirtFs::getUserDir(), "Desktop");
             return str;
         }
     }
-
-    return std::string(VirtFs::getUserDir()).append("Desktop");
-#else  // WIN32
-
-    return std::string(VirtFs::getUserDir()).append("Desktop");
 #endif  // WIN32
+
+    return pathJoin(VirtFs::getUserDir(), "Desktop");
 }
 
 std::string getHomePath()

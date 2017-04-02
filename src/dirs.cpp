@@ -103,8 +103,8 @@ void extractAssets()
         logger->log("error: APPDIR is not set!");
         return;
     }
-    const std::string fileName = std::string(getenv(
-        "APPDIR")).append("/data.zip");
+    const std::string fileName = pathJoin(getenv("APPDIR"),
+        "data.zip");
     logger->log("Extracting asset into: " + fileName);
     uint8_t *buf = new uint8_t[1000000];
 
@@ -132,8 +132,8 @@ void extractAssets()
     }
     fclose(file);
 
-    const std::string fileName2 = std::string(getenv(
-        "APPDIR")).append("/locale.zip");
+    const std::string fileName2 = pathJoin(getenv("APPDIR"),
+        "locale.zip");
     FILE *const file2 = fopen(fileName2.c_str(), "w");
     SDL_RWops *const rw = SDL_RWFromFile("manaplus-locale.zip", "r");
     if (rw)
@@ -177,12 +177,8 @@ void Dirs::extractDataDir()
     resetProgress();
     extractAssets();
 
-    const std::string zipName = std::string(getenv(
-        "APPDIR")).append(
-        "/data.zip");
-    const std::string dirName = std::string(getenv(
-        "APPDIR")).append(
-        "/data");
+    const std::string zipName = pathJoin(getenv("APPDIR"), "data.zip");
+    const std::string dirName = pathJoin(getenv("APPDIR"), "data");
     Files::extractZip(zipName, "data", dirName);
     Files::extractLocale();
 #endif  // defined(ANDROID) && defined(USE_SDL2)
@@ -397,18 +393,21 @@ void Dirs::initConfigDir()
         }
         else
         {
-            settings.configDir.append("/mana/").append(branding.getValue(
-                "appShort", "mana"));
+            settings.configDir = pathJoin(settings.configDir,
+                "mana",
+                branding.getValue("appShort", "mana"));
         }
 #elif defined __ANDROID__
-        settings.configDir = getSdStoragePath() + branding.getValue(
-            "appShort", "ManaPlus").append("/config");
+        settings.configDir = pathJoin(getSdStoragePath(),
+            branding.getValue("appShort", "ManaPlus"),
+            "config");
 #elif defined __native_client__
         settings.configDir = pathJoin(_nacl_dir, "config");
 #else  // __APPLE__
 
-        settings.configDir = std::string(VirtFs::getUserDir()).append(
-            "/.config/mana/").append(branding.getValue("appShort", "mana"));
+        settings.configDir = pathJoin(VirtFs::getUserDir(),
+            ".config/mana",
+            branding.getValue("appShort", "mana"));
 #endif  // __APPLE__
 
         logger->log("Generating config dir: " + settings.configDir);
@@ -440,10 +439,7 @@ void Dirs::initUpdatesDir()
     if (settings.updateHost.length() < 2)
     {
         if (settings.updatesDir.empty())
-        {
-            settings.updatesDir = std::string("updates/").append(
-                settings.serverName);
-        }
+            settings.updatesDir = pathJoin("updates", settings.serverName);
         return;
     }
 

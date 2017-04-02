@@ -2671,7 +2671,7 @@ void Being::setSpriteId(const unsigned int slot,
         if (!filename.empty())
         {
             equipmentSprite = AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites").append(filename));
+                pathJoin(paths.getStringValue("sprites"), filename));
         }
 
         if (equipmentSprite)
@@ -2776,7 +2776,7 @@ void Being::setSpriteColor(const unsigned int slot,
         if (!filename.empty())
         {
             equipmentSprite = AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites").append(
+                pathJoin(paths.getStringValue("sprites"),
                 combineDye(filename, color)));
         }
 
@@ -2856,7 +2856,7 @@ void Being::setSpriteColorId(const unsigned int slot,
         {
             color = info.getDyeColorsString(colorId);
             equipmentSprite = AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites").append(
+                pathJoin(paths.getStringValue("sprites"),
                 combineDye(filename, color)));
         }
 
@@ -2942,7 +2942,7 @@ void Being::setSpriteCards(const unsigned int slot,
                 color = info.getDyeColorsString(colorId);
 
             equipmentSprite = AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites").append(
+                pathJoin(paths.getStringValue("sprites"),
                 combineDye(filename, color)));
         }
 
@@ -3034,7 +3034,7 @@ void Being::setTempSprite(const unsigned int slot,
                 color = info.getDyeColorsString(colorId);
 
             equipmentSprite = AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites").append(
+                pathJoin(paths.getStringValue("sprites"),
                 combineDye(filename, color)));
         }
 
@@ -3107,7 +3107,7 @@ void Being::setHairTempSprite(const unsigned int slot,
                 color = info.getDyeColorsString(colorId);
 
             equipmentSprite = AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites").append(
+                pathJoin(paths.getStringValue("sprites"),
                 combineDye(filename, color)));
         }
 
@@ -3179,7 +3179,7 @@ void Being::setSpriteColor(const unsigned int slot,
         if (!filename.empty())
         {
             equipmentSprite = AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites").append(
+                pathJoin(paths.getStringValue("sprites"),
                 combineDye(filename, color)));
         }
 
@@ -3445,7 +3445,7 @@ void Being::setGender(const GenderT gender) restrict2
                 if (!filename.empty())
                 {
                     equipmentSprite = AnimatedSprite::delayedLoad(
-                        paths.getStringValue("sprites").append(
+                        pathJoin(paths.getStringValue("sprites"),
                         combineDye(filename, beingSlot.color)));
                 }
 
@@ -4557,7 +4557,7 @@ std::string Being::loadComment(const std::string &restrict name,
             return "";
     }
 
-    str.append(stringToHexPath(name)).append("/comment.txt");
+    str = pathJoin(str, stringToHexPath(name), "comment.txt");
     if (Files::existsLocal(str))
     {
         StringVect lines;
@@ -4594,7 +4594,7 @@ void Being::saveComment(const std::string &restrict name,
         default:
             return;
     }
-    dir.append(stringToHexPath(name));
+    dir = pathJoin(dir, stringToHexPath(name));
     Files::saveTextFile(dir,
         "comment.txt",
         (name + "\n").append(comment));

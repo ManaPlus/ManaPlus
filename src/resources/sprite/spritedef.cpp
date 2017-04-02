@@ -105,7 +105,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     {
         reportAlways("Error, failed to parse sprite %s",
             animationFile.c_str());
-        const std::string errorFile = paths.getStringValue("sprites").append(
+        const std::string errorFile = pathJoin(paths.getStringValue("sprites"),
             paths.getStringValue("spriteErrorFile"));
         BLOCK_END("SpriteDef::load")
         doc->decRef();

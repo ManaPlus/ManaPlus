@@ -337,8 +337,8 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     const int tileh = XML::getProperty(node, "tileheight", -1);
 
     const bool showWarps = config.getBoolValue("warpParticle");
-    const std::string warpPath = paths.getStringValue("particles")
-        .append(paths.getStringValue("portalEffectFile"));
+    const std::string warpPath = pathJoin(paths.getStringValue("particles"),
+        paths.getStringValue("portalEffectFile"));
 
     if (tilew < 0 || tileh < 0)
     {
@@ -1280,7 +1280,7 @@ void MapReader::updateMusic(Map *const map)
     if (p != std::string::npos)
         name = name.substr(0, p);
     name.append(".ogg");
-    if (VirtFs::exists(paths.getStringValue("music").append(name)))
+    if (VirtFs::exists(pathJoin(paths.getStringValue("music"), name)))
         map->setProperty("music", name);
 }
 

@@ -152,7 +152,8 @@ void ItemInfo::addSound(const ItemSoundEvent::Type event,
                         const std::string &filename, const int delay)
 {
     mSounds[event].push_back(SoundInfo(
-        paths.getStringValue("sfx").append(filename), delay));
+        pathJoin(paths.getStringValue("sfx"), filename),
+        delay));
 }
 
 const SoundInfo &ItemInfo::getSound(const ItemSoundEvent::Type event) const

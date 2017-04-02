@@ -44,15 +44,14 @@ void Files::extractLocale()
 {
     // in future need also remove all locales in local dir
 
-    const std::string fileName2 = std::string(getenv(
-        "APPDIR")).append("/locale.zip");
+    const std::string fileName2 = pathJoin(getenv("APPDIR"), "locale.zip");
     VirtFs::mountZip(fileName2, Append_false);
 
     const std::string localDir = std::string(getenv("APPDIR")).append("/");
     VirtList *const rootDirs = VirtFs::enumerateFiles("locale");
     FOR_EACH (StringVectCIter, i, rootDirs->names)
     {
-        const std::string dir = std::string("locale/").append(*i);
+        const std::string dir = pathJoin("locale", *i);
         if (VirtFs::isDirectory(dir))
         {
             const std::string moFile = dir + "/LC_MESSAGES/manaplus.mo";
@@ -112,8 +111,8 @@ void Files::copyVirtFsDir(const std::string &restrict inDir,
     VirtList *const files = VirtFs::enumerateFiles(inDir);
     FOR_EACH (StringVectCIter, i, files->names)
     {
-        const std::string file = std::string(inDir).append("/").append(*i);
-        const std::string outDir2 = std::string(outDir).append("/").append(*i);
+        const std::string file = pathJoin(inDir, *i);
+        const std::string outDir2 = pathJoin(outDir, *i);
         if (VirtFs::isDirectory(file))
             copyVirtFsDir(file, outDir2);
         else
@@ -257,7 +256,7 @@ void Files::saveTextFile(std::string path,
     if (!mkdir_r(path.c_str()))
     {
         std::ofstream file;
-        std::string fileName = path.append("/").append(name);
+        std::string fileName = pathJoin(path, name);
         file.open(fileName.c_str(), std::ios::out);
         if (file.is_open())
         {

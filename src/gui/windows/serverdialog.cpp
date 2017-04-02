@@ -440,7 +440,7 @@ void ServerDialog::downloadServerList()
 
     mDownload = new Net::Download(this, listFile,
         &downloadUpdate, false, false, true);
-    mDownload->setFile(std::string(mDir).append("/").append(
+    mDownload->setFile(pathJoin(mDir,
         branding.getStringValue("onlineServerFile")));
     if (!listFile2.empty())
         mDownload->addMirror(listFile2);
@@ -478,7 +478,7 @@ static void loadHostsGroup(XmlNodeConstPtr node,
 
 void ServerDialog::loadServers(const bool addNew)
 {
-    XML::Document doc(std::string(mDir).append("/").append(
+    XML::Document doc(pathJoin(mDir,
         branding.getStringValue("onlineServerFile")),
         UseVirtFs_false,
         SkipError_false);

@@ -51,6 +51,7 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include <sys/stat.h>
 
@@ -596,7 +597,7 @@ void UpdaterWindow::download()
     else
     {
         mDownload = new Net::Download(this,
-            std::string(mUpdateHost).append("/").append(mCurrentFile),
+            pathJoin(mUpdateHost, mCurrentFile),
             &updateProgress,
             false, false, mValidateXml);
 
@@ -613,8 +614,8 @@ void UpdaterWindow::download()
             const std::vector<std::string> &mirrors = settings.updateMirrors;
             FOR_EACH (std::vector<std::string>::const_iterator, it, mirrors)
             {
-                mDownload->addMirror(std::string(*it).append(
-                    "/").append(mCurrentFile));
+                mDownload->addMirror(pathJoin(*it,
+                    mCurrentFile));
             }
         }
     }
@@ -627,13 +628,13 @@ void UpdaterWindow::download()
     {
         if (mDownloadStatus == UpdateDownloadStatus::UPDATE_RESOURCES)
         {
-            mDownload->setFile(std::string(mUpdatesDir).append("/").append(
-                mCurrentFile), mCurrentChecksum);
+            mDownload->setFile(pathJoin(mUpdatesDir, mCurrentFile),
+                mCurrentChecksum);
         }
         else
         {
-            mDownload->setFile(std::string(mUpdatesDir).append(
-                "/").append(mCurrentFile));
+            mDownload->setFile(pathJoin(mUpdatesDir,
+                mCurrentFile));
         }
     }
 
@@ -650,15 +651,15 @@ void UpdaterWindow::loadUpdates()
 {
     if (mUpdateFiles.empty())
     {   // updates not downloaded
-        mUpdateFiles = loadXMLFile(std::string(mUpdatesDir).append(
-            "/").append(xmlUpdateFile), false);
+        mUpdateFiles = loadXMLFile(pathJoin(mUpdatesDir, xmlUpdateFile),
+            false);
         if (mUpdateFiles.empty())
         {
             logger->log("Warning this server does not have a"
                         " %s file falling back to %s", xmlUpdateFile.c_str(),
                         txtUpdateFile.c_str());
-            mUpdateFiles = loadTxtFile(std::string(mUpdatesDir).append(
-                "/").append(txtUpdateFile));
+            mUpdateFiles = loadTxtFile(pathJoin(mUpdatesDir,
+                txtUpdateFile));
         }
     }
 
@@ -681,15 +682,16 @@ void UpdaterWindow::loadUpdates()
 void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 {
     std::vector<UpdateFile> updateFiles = loadXMLFile(
-        std::string(dir).append("/").append(xmlUpdateFile), false);
+        pathJoin(dir, xmlUpdateFile),
+        false);
 
     if (updateFiles.empty())
     {
         logger->log("Warning this server does not have a"
                     " %s file falling back to %s", xmlUpdateFile.c_str(),
                     txtUpdateFile.c_str());
-        updateFiles = loadTxtFile(std::string(dir).append(
-            "/").append(txtUpdateFile));
+        updateFiles = loadTxtFile(pathJoin(dir,
+            txtUpdateFile));
     }
 
     const std::string fixPath = dir + "/fix";
@@ -713,12 +715,13 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 void UpdaterWindow::unloadUpdates(const std::string &dir)
 {
     std::vector<UpdateFile> updateFiles = loadXMLFile(
-        std::string(dir).append("/").append(xmlUpdateFile), true);
+        pathJoin(dir, xmlUpdateFile),
+        true);
 
     if (updateFiles.empty())
     {
-        updateFiles = loadTxtFile(std::string(dir).append(
-            "/").append(txtUpdateFile));
+        updateFiles = loadTxtFile(pathJoin(dir,
+            txtUpdateFile));
     }
 
     const std::string fixPath = dir + "/fix";
@@ -738,7 +741,8 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
 {
     std::string fixPath = dir + "/fix";
     std::vector<UpdateFile> updateFiles = loadXMLFile(
-        std::string(fixPath).append("/").append(xmlUpdateFile), false);
+        pathJoin(fixPath, xmlUpdateFile),
+        false);
 
     for (unsigned int updateIndex = 0,
          fsz = CAST_U32(updateFiles.size());
@@ -752,8 +756,8 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
         if (strStartWith(name, "manaplus_"))
         {
             struct stat statbuf;
-            std::string fileName = std::string(fixPath).append(
-                "/").append(name);
+            std::string fileName = pathJoin(fixPath,
+                name);
             if (!stat(fileName.c_str(), &statbuf))
             {
                 VirtFs::mountZip(fileName,
@@ -767,7 +771,8 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir)
 {
     const std::string fixPath = dir + "/fix";
     const std::vector<UpdateFile> updateFiles = loadXMLFile(
-        std::string(fixPath).append("/").append(xmlUpdateFile), true);
+        pathJoin(fixPath, xmlUpdateFile),
+        true);
 
     for (unsigned int updateIndex = 0,
          fsz = CAST_U32(updateFiles.size());
@@ -778,8 +783,8 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir)
         if (strStartWith(name, "manaplus_"))
         {
             struct stat statbuf;
-            const std::string file = std::string(
-                fixPath).append("/").append(name);
+            const std::string file = pathJoin(
+                fixPath, name);
             if (!stat(file.c_str(), &statbuf))
                 VirtFs::unmountZip(file);
         }
@@ -791,11 +796,11 @@ void UpdaterWindow::addUpdateFile(const std::string &restrict path,
                                   const std::string &restrict file,
                                   const Append append)
 {
-    const std::string tmpPath = std::string(path).append("/").append(file);
+    const std::string tmpPath = pathJoin(path, file);
     if (append == Append_false)
         VirtFs::mountZip(tmpPath, append);
 
-    const std::string fixFile = std::string(fixPath).append("/").append(file);
+    const std::string fixFile = pathJoin(fixPath, file);
     struct stat statbuf;
     if (!stat(fixFile.c_str(), &statbuf))
         VirtFs::mountZip(fixFile, append);
@@ -808,9 +813,8 @@ void UpdaterWindow::removeUpdateFile(const std::string &restrict path,
                                      const std::string &restrict fixPath,
                                      const std::string &restrict file)
 {
-    VirtFs::unmountZip(
-        std::string(path).append("/").append(file));
-    const std::string fixFile = std::string(fixPath).append("/").append(file);
+    VirtFs::unmountZip(pathJoin(path, file));
+    const std::string fixFile = pathJoin(fixPath, file);
     struct stat statbuf;
     if (!stat(fixFile.c_str(), &statbuf))
         VirtFs::unmountZip(fixFile);
@@ -883,7 +887,7 @@ void UpdaterWindow::logic()
                 loadPatch();
 
                 mUpdateHost = updateServer2 + mUpdateServerPath;
-                mUpdatesDir.append("/fix");
+                mUpdatesDir = pathJoin(mUpdatesDir, "fix");
                 mCurrentFile = xmlUpdateFile;
                 mValidateXml = true;
                 mStoreInMemory = false;
@@ -897,8 +901,9 @@ void UpdaterWindow::logic()
             {
                 if (mCurrentFile == xmlUpdateFile)
                 {
-                    mUpdateFiles = loadXMLFile(std::string(mUpdatesDir).append(
-                        "/").append(xmlUpdateFile), true);
+                    mUpdateFiles = loadXMLFile(pathJoin(
+                        mUpdatesDir, xmlUpdateFile),
+                        true);
 
                     if (mUpdateFiles.empty())
                     {
@@ -920,8 +925,8 @@ void UpdaterWindow::logic()
                 else if (mCurrentFile == txtUpdateFile)
                 {
                     mValidateXml = true;
-                    mUpdateFiles = loadTxtFile(std::string(mUpdatesDir).append(
-                        "/").append(txtUpdateFile));
+                    mUpdateFiles = loadTxtFile(pathJoin(mUpdatesDir,
+                        txtUpdateFile));
                 }
                 mStoreInMemory = false;
                 mDownloadStatus = UpdateDownloadStatus::UPDATE_RESOURCES;
@@ -945,12 +950,12 @@ void UpdaterWindow::logic()
                     std::stringstream ss(checksum);
                     ss >> std::hex >> mCurrentChecksum;
 
-                    std::ifstream temp((std::string(mUpdatesDir).append(
-                        "/").append(mCurrentFile)).c_str());
+                    std::ifstream temp(pathJoin(mUpdatesDir,
+                        mCurrentFile).c_str());
 
                     mValidateXml = false;
-                    if (!temp.is_open() || !validateFile(std::string(
-                        mUpdatesDir).append("/").append(mCurrentFile),
+                    if (!temp.is_open() || !validateFile(pathJoin(
+                        mUpdatesDir, mCurrentFile),
                         mCurrentChecksum))
                     {
                         temp.close();
@@ -988,8 +993,9 @@ void UpdaterWindow::logic()
             {
                 if (mCurrentFile == xmlUpdateFile)
                 {
-                    mTempUpdateFiles = loadXMLFile(std::string(
-                        mUpdatesDir).append("/").append(xmlUpdateFile), true);
+                    mTempUpdateFiles = loadXMLFile(pathJoin(
+                        mUpdatesDir, xmlUpdateFile),
+                        true);
                 }
                 mUpdateIndexOffset = mUpdateIndex;
                 mUpdateIndex = 0;
@@ -1013,11 +1019,11 @@ void UpdaterWindow::logic()
                     std::stringstream ss(checksum);
                     ss >> std::hex >> mCurrentChecksum;
 
-                    std::ifstream temp((std::string(mUpdatesDir).append(
-                        "/").append(mCurrentFile)).c_str());
+                    std::ifstream temp((pathJoin(mUpdatesDir,
+                        mCurrentFile)).c_str());
 
-                    if (!temp.is_open() || !validateFile(std::string(
-                        mUpdatesDir).append("/").append(mCurrentFile),
+                    if (!temp.is_open() || !validateFile(pathJoin(
+                        mUpdatesDir, mCurrentFile),
                         mCurrentChecksum))
                     {
                         temp.close();
@@ -1118,7 +1124,8 @@ void UpdaterWindow::loadMods(const std::string &dir,
     }
 
     std::vector<UpdateFile> updateFiles2 = loadXMLFile(
-        std::string(fixPath).append("/").append(xmlUpdateFile), true);
+        pathJoin(fixPath, xmlUpdateFile),
+        true);
 
     for (unsigned int updateIndex = 0,
          fsz = CAST_U32(updateFiles2.size());
@@ -1136,8 +1143,8 @@ void UpdaterWindow::loadMods(const std::string &dir,
             if (it != modsList.end())
             {
                 struct stat statbuf;
-                std::string fileName = std::string(fixPath).append(
-                    "/").append(name);
+                std::string fileName = pathJoin(fixPath,
+                    name);
                 if (!stat(fileName.c_str(), &statbuf))
                 {
                     VirtFs::mountZip(fileName,
