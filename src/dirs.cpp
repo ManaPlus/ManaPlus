@@ -163,8 +163,8 @@ void Dirs::updateDataPath()
         }
         else
         {
-            settings.options.dataPath = branding.getDirectory().append(
-                dirSeparator) + branding.getStringValue("dataPath");
+            settings.options.dataPath = pathJoin(branding.getDirectory(),
+                branding.getStringValue("dataPath"));
         }
         settings.options.skipUpdate = true;
     }
@@ -327,26 +327,28 @@ void Dirs::initLocalDataDir()
     {
 #ifdef __APPLE__
         // Use Application Directory instead of .mana
-        settings.localDataDir = std::string(VirtFs::getUserDir()) +
-            "/Library/Application Support/" +
-            branding.getValue("appName", "ManaPlus");
+        settings.localDataDir = pathJoin(VirtFs::getUserDir(),
+            "Library/Application Support",
+            branding.getValue("appName", "ManaPlus"));
 #elif defined __HAIKU__
-        settings.localDataDir = std::string(VirtFs::getUserDir()) +
-           "/config/data/Mana";
+        settings.localDataDir = pathJoin(VirtFs::getUserDir(),
+           "config/data/Mana");
 #elif defined WIN32
         settings.localDataDir = getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
         if (settings.localDataDir.empty())
-            settings.localDataDir = std::string(VirtFs::getUserDir());
-        settings.localDataDir.append("/Mana");
+            settings.localDataDir = VirtFs::getUserDir();
+        settings.localDataDir = pathJoin(settings.localDataDir,
+            "Mana");
 #elif defined __ANDROID__
-        settings.localDataDir = getSdStoragePath() + branding.getValue(
-            "appShort", "ManaPlus") + "/local";
+        settings.localDataDir = pathJoin(getSdStoragePath(),
+            branding.getValue("appShort", "ManaPlus"),
+            "local");
 #elif defined __native_client__
-        settings.localDataDir = _nacl_dir.append("/local");
+        settings.localDataDir = pathJoin(_nacl_dir, "local");
 #else  // __APPLE__
 
-        settings.localDataDir = std::string(VirtFs::getUserDir()) +
-            ".local/share/mana";
+        settings.localDataDir = pathJoin(VirtFs::getUserDir(),
+            ".local/share/mana");
 #endif  // __APPLE__
     }
 
@@ -357,13 +359,13 @@ void Dirs::initLocalDataDir()
             "Exiting."), settings.localDataDir.c_str()));
     }
 #ifdef USE_PROFILER
-    Perfomance::init(settings.localDataDir + "/profiler.log");
+    Perfomance::init(pathJoin(settings.localDataDir, "profiler.log"));
 #endif  // USE_PROFILER
 }
 
 void Dirs::initTempDir()
 {
-    settings.tempDir = settings.localDataDir + dirSeparator + "temp";
+    settings.tempDir = pathJoin(settings.localDataDir, "temp");
 
     if (mkdir_r(settings.tempDir.c_str()))
     {
@@ -381,12 +383,12 @@ void Dirs::initConfigDir()
     if (settings.configDir.empty())
     {
 #ifdef __APPLE__
-        settings.configDir = settings.localDataDir + dirSeparator
-            + branding.getValue("appShort", "mana");
+        settings.configDir = pathJoin(settings.localDataDir,
+            branding.getValue("appShort", "mana"));
 #elif defined __HAIKU__
-        settings.configDir = std::string(VirtFs::getUserDir()) +
-           "/config/settings/Mana" +
-           branding.getValue("appName", "ManaPlus");
+        settings.configDir = pathJoin(VirtFs::getUserDir(),
+           "config/settings/Mana",
+           branding.getValue("appName", "ManaPlus"));
 #elif defined WIN32
         settings.configDir = getSpecialFolderLocation(CSIDL_APPDATA);
         if (settings.configDir.empty())
@@ -402,7 +404,7 @@ void Dirs::initConfigDir()
         settings.configDir = getSdStoragePath() + branding.getValue(
             "appShort", "ManaPlus").append("/config");
 #elif defined __native_client__
-        settings.configDir = _nacl_dir.append("/config");
+        settings.configDir = pathJoin(_nacl_dir, "config");
 #else  // __APPLE__
 
         settings.configDir = std::string(VirtFs::getUserDir()).append(
@@ -490,17 +492,8 @@ void Dirs::initUpdatesDir()
         if (!VirtFs::mkdir(updateDir))
         {
 #if defined WIN32
-            std::string newDir = settings.localDataDir +
-                "\\" +
-                settings.updatesDir;
-            size_t loc = newDir.find("/", 0);
-
-            while (loc != std::string::npos)
-            {
-                newDir.replace(loc, 1, "\\");
-                loc = newDir.find("/", loc);
-            }
-
+            std::string newDir = pathJoin(settings.localDataDir,
+                settings.updatesDir);
             if (!CreateDirectory(newDir.c_str(), nullptr) &&
                 GetLastError() != ERROR_ALREADY_EXISTS)
             {
@@ -513,7 +506,8 @@ void Dirs::initUpdatesDir()
 #else  // defined WIN32
 
             logger->log("Error: %s/%s can't be made, but doesn't exist!",
-                settings.localDataDir.c_str(), settings.updatesDir.c_str());
+                settings.localDataDir.c_str(),
+                settings.updatesDir.c_str());
             // TRANSLATORS: update server initialisation error
             errorMessage = _("Error creating updates directory!");
             client->setState(State::ERROR);
@@ -544,7 +538,7 @@ void Dirs::initScreenshotDir()
     else if (settings.screenshotDir.empty())
     {
 #ifdef __native_client__
-        settings.screenshotDir = _nacl_dir + "/screenshots/";
+        settings.screenshotDir = pathJoin(_nacl_dir, "screenshots/");
 #else  // __native_client__
         settings.screenshotDir = decodeBase64String(
             config.getStringValue("screenshotDirectory3"));
@@ -571,7 +565,7 @@ void Dirs::initScreenshotDir()
 
                 if (!configScreenshotSuffix.empty())
                 {
-                    settings.screenshotDir.append(dirSeparator).append(
+                    settings.screenshotDir = pathJoin(settings.screenshotDir,
                         configScreenshotSuffix);
                 }
             }

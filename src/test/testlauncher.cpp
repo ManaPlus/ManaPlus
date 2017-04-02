@@ -33,6 +33,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "utils/stringutils.h"
+
 #include "render/graphics.h"
 
 #include "render/vertexes/imagecollection.h"
@@ -65,7 +67,7 @@ TestLauncher::TestLauncher(std::string test) :
     mTest(test),
     file()
 {
-    file.open((settings.localDataDir + std::string("/test.log")).c_str(),
+    file.open(pathJoin(settings.localDataDir, "test.log").c_str(),
         std::ios::out);
 }
 

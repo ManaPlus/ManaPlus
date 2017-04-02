@@ -159,9 +159,14 @@ void Client::gameInit()
 
     // Configure logger
     if (!settings.options.logFileName.empty())
+    {
         settings.logFileName = settings.options.logFileName;
+    }
     else
-        settings.logFileName = settings.localDataDir + "/manaplus.log";
+    {
+        settings.logFileName = pathJoin(settings.localDataDir,
+            "manaplus.log");
+    }
     logger->setLogFile(settings.logFileName);
 
 #ifdef USE_FUZZER
@@ -640,14 +645,15 @@ int Client::gameExec()
 
                     if (!settings.options.skipUpdate)
                     {
-                        VirtFs::searchAndAddArchives(
-                            settings.updatesDir + "/local/",
+                        VirtFs::searchAndAddArchives(pathJoin(
+                            settings.updatesDir, "local/"),
                             "zip",
                             Append_false);
 
-                        VirtFs::mountDir(
-                            settings.localDataDir
-                            + dirSeparator + settings.updatesDir + "/local/",
+                        VirtFs::mountDir(pathJoin(
+                            settings.localDataDir,
+                            settings.updatesDir,
+                            "local/"),
                             Append_false);
                     }
 

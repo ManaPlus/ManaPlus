@@ -1250,8 +1250,8 @@ void Map::saveExtraLayer() const restrict2
 
 std::string Map::getUserMapDirectory() const restrict2
 {
-    return settings.serverConfigDir +
-        dirSeparator + getProperty("_realfilename");
+    return pathJoin(settings.serverConfigDir,
+        getProperty("_realfilename"));
 }
 
 void Map::addRange(const std::string &restrict name,

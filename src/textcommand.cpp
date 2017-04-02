@@ -129,7 +129,7 @@ void TextCommand::loadImage()
         return;
 
     const SpriteDisplay display = ItemDB::get(getIcon()).getDisplay();
-    mImage = Loader::getImage(paths.getStringValue("itemIcons").append(
+    mImage = Loader::getImage(pathJoin(paths.getStringValue("itemIcons"),
         display.image));
 
     if (!mImage)

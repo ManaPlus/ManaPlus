@@ -97,15 +97,15 @@ void Item::setId(const int id,
     const ItemInfo &info = getInfo();
     mTags = info.getTags();
 
-    const std::string dye = combineDye2(paths.getStringValue(
-        "itemIcons").append(info.getDisplay().image),
+    const std::string dye = combineDye2(pathJoin(
+        paths.getStringValue("itemIcons"), info.getDisplay().image),
         info.getDyeIconColorsString(color));
     mImage = Loader::getImage(dye);
 
     if (!mImage)
     {
         mImage = Theme::getImageFromTheme(paths.getValue("unknownItemFile",
-                                          "unknown-item.png"));
+            "unknown-item.png"));
     }
 }
 
@@ -121,8 +121,8 @@ Image *Item::getImage(const int id,
                       const ItemColor color)
 {
     const ItemInfo &info = ItemDB::get(id);
-    Image *image = Loader::getImage(combineDye2(paths.getStringValue(
-        "itemIcons").append(info.getDisplay().image),
+    Image *image = Loader::getImage(combineDye2(pathJoin(paths.getStringValue(
+        "itemIcons"), info.getDisplay().image),
         info.getDyeIconColorsString(color)));
 
     if (!image)

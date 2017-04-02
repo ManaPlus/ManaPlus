@@ -298,9 +298,14 @@ void Client::gameInit()
 
     // Configure logger
     if (!settings.options.logFileName.empty())
+    {
         settings.logFileName = settings.options.logFileName;
+    }
     else
-        settings.logFileName = settings.localDataDir + "/manaplus.log";
+    {
+        settings.logFileName = pathJoin(settings.localDataDir,
+            "manaplus.log");
+    }
     logger->log("Log file: " + settings.logFileName);
     logger->setLogFile(settings.logFileName);
 
@@ -1092,15 +1097,13 @@ int Client::gameExec()
                     if (!settings.options.skipUpdate)
                     {
                         VirtFs::searchAndRemoveArchives(
-                            settings.updatesDir +
-                            "/local/",
+                            pathJoin(settings.updatesDir, "local/"),
                             "zip");
 
-                        VirtFs::unmountDirSilent(
-                            settings.localDataDir +
-                            dirSeparator +
-                            settings.updatesDir +
-                            "/local/");
+                        VirtFs::unmountDirSilent(pathJoin(
+                            settings.localDataDir,
+                            settings.updatesDir,
+                            "local/"));
                     }
 
                     resourceManager->clearCache();
@@ -1277,16 +1280,15 @@ int Client::gameExec()
                     }
                     else if (loginData.updateType & UpdateType::Skip)
                     {
-                        settings.oldUpdates = settings.localDataDir
-                            + dirSeparator + settings.updatesDir;
+                        settings.oldUpdates = pathJoin(settings.localDataDir,
+                            settings.updatesDir);
                         UpdaterWindow::loadLocalUpdates(settings.oldUpdates);
                         mState = State::LOAD_DATA;
                     }
                     else
                     {
-                        settings.oldUpdates = settings.localDataDir +
-                            dirSeparator +
-                            settings.updatesDir;
+                        settings.oldUpdates = pathJoin(settings.localDataDir,
+                            settings.updatesDir);
                         CREATEWIDGETV(mCurrentDialog, UpdaterWindow,
                             settings.updateHost,
                             settings.oldUpdates,
@@ -1319,11 +1321,10 @@ int Client::gameExec()
                             "zip",
                             Append_false);
 
-                        VirtFs::mountDir(
-                            settings.localDataDir +
-                            dirSeparator +
-                            settings.updatesDir +
-                            "/local/",
+                        VirtFs::mountDir(pathJoin(
+                            settings.localDataDir,
+                            settings.updatesDir,
+                            "local/"),
                             Append_false);
                     }
 

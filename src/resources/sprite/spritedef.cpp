@@ -477,7 +477,7 @@ void SpriteDef::includeSprite(XmlNodeConstPtr includeNode, const int variant)
 
     if (filename.empty())
         return;
-    filename = paths.getStringValue("sprites").append(filename);
+    filename = pathJoin(paths.getStringValue("sprites"), filename);
 
     if (mProcessedFiles.find(filename) != mProcessedFiles.end())
     {

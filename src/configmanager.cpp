@@ -55,7 +55,7 @@ static void setDefaultOption(const char *const name,
  */
 void ConfigManager::initServerConfig(const std::string &serverName)
 {
-    settings.serverConfigDir = settings.configDir + dirSeparator + serverName;
+    settings.serverConfigDir = pathJoin(settings.configDir, serverName);
 
     if (mkdir_r(settings.serverConfigDir.c_str()))
     {

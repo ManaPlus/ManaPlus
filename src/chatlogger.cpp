@@ -185,11 +185,10 @@ void ChatLogger::setServerName(const std::string &serverName)
     secureName(mServerName);
     if (!mLogDir.empty())
     {
-        const char *const name = (std::string(mLogDir).append(dirSeparator)
-            .append(mServerName)).c_str();
-        DIR *const dir = opendir(name);
+        const std::string name = pathJoin(mLogDir, mServerName);
+        DIR *const dir = opendir(name.c_str());
         if (!dir)
-            mkdir_r(name);
+            mkdir_r(name.c_str());
         else
             closedir(dir);
     }

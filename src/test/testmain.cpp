@@ -40,7 +40,7 @@ TestMain::TestMain() :
     mConfig()
 {
     fileName = getSelfName();
-    log->setLogFile(settings.localDataDir + std::string("/manaplustest.log"));
+    log->setLogFile(pathJoin(settings.localDataDir, "manaplustest.log"));
 }
 
 TestMain::~TestMain()
@@ -320,7 +320,7 @@ int TestMain::readValue(const int ver, int def)
     std::string tmp;
     int var;
     std::ifstream file;
-    file.open((settings.localDataDir + std::string("/test.log")).c_str(),
+    file.open(pathJoin(settings.localDataDir, "test.log").c_str(),
         std::ios::in);
     if (!getline(file, tmp))
     {

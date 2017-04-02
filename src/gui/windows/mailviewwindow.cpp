@@ -112,7 +112,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
         const ItemInfo &item = ItemDB::get(message->itemId);
         // +++ need use message->cards and ItemColorManager for colors
         Image *const image = Loader::getImage(combineDye2(
-            paths.getStringValue("itemIcons").append(
+            pathJoin(paths.getStringValue("itemIcons"),
             item.getDisplay().image),
             item.getDyeIconColorsString(ItemColor_one)));
 

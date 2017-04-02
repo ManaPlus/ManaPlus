@@ -39,7 +39,7 @@ namespace
 void Fuzzer::init()
 {
     fuzz = new Logger;
-    fuzz->setLogFile(settings.localDataDir + "/fuzzer.log");
+    fuzz->setLogFile(pathJoin(settings.localDataDir, "fuzzer.log"));
     unsigned int sr = time(nullptr);
 
     fuzz->log("Srand: %u", sr);

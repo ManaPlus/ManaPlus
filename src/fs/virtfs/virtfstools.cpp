@@ -51,8 +51,7 @@ namespace VirtFs
             {
                 const std::string file = path + str;
                 const std::string realPath = VirtFs::getRealDir(file);
-                VirtFs::mountZip(std::string(realPath).append(
-                    dirSeparator).append(file), append);
+                VirtFs::mountZip(pathJoin(realPath, file), append);
             }
         }
         VirtFs::freeList(list);
@@ -71,10 +70,7 @@ namespace VirtFs
             {
                 const std::string file = path + str;
                 const std::string realPath = VirtFs::getRealDir(file);
-                VirtFs::unmountZip(std::string(
-                    realPath).append(
-                    dirSeparator).append(
-                    file));
+                VirtFs::unmountZip(pathJoin(realPath, file));
             }
         }
         VirtFs::freeList(list);
@@ -114,7 +110,7 @@ namespace VirtFs
         VirtList *const fonts = VirtFs::enumerateFiles(path);
         FOR_EACH (StringVectCIter, i, fonts->names)
         {
-            if (!VirtFs::isDirectory(path + dirSeparator + *i))
+            if (!VirtFs::isDirectory(pathJoin(path, *i)))
                 list.push_back(*i);
         }
         VirtFs::freeList(fonts);
@@ -125,7 +121,7 @@ namespace VirtFs
         VirtList *const fonts = VirtFs::enumerateFiles(path);
         FOR_EACH (StringVectCIter, i, fonts->names)
         {
-            if (VirtFs::isDirectory(path + dirSeparator + *i))
+            if (VirtFs::isDirectory(pathJoin(path, *i)))
                 list.push_back(*i);
         }
         VirtFs::freeList(fonts);
@@ -140,7 +136,7 @@ namespace VirtFs
         // if the file is not in the search path, then its empty
         if (!tmp.empty())
         {
-            path = std::string(tmp).append(dirSeparator).append(file);
+            path = pathJoin(tmp, file);
 #if defined __native_client__
             std::string dataZip = "/http/data.zip/";
             if (path.substr(0, dataZip.length()) == dataZip)
@@ -150,7 +146,7 @@ namespace VirtFs
         else
         {
             // if not found in search path return the default path
-            path = getPackageDir().append(dirSeparator).append(file);
+            path = pathJoin(getPackageDir(), file);
         }
 
         return path;

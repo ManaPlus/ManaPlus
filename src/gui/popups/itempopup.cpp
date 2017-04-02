@@ -182,7 +182,7 @@ void ItemPopup::setItem(const ItemInfo &item,
     if (showImage)
     {
         Image *const image = Loader::getImage(combineDye2(
-            paths.getStringValue("itemIcons").append(item.getDisplay().image),
+            pathJoin(paths.getStringValue("itemIcons"), item.getDisplay().image),
             item.getDyeIconColorsString(color)));
 
         mIcon->setImage(image);

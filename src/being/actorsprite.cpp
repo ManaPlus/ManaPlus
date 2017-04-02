@@ -438,7 +438,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     {
         if (!*it)
             continue;
-        const std::string file = paths.getStringValue("sprites").append(
+        const std::string file = pathJoin(paths.getStringValue("sprites"),
             combineDye3((*it)->sprite, color));
 
         const int variant = (*it)->variant;
@@ -450,8 +450,8 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     {
         if (display.image.empty())
         {
-            addSprite(AnimatedSprite::delayedLoad(
-                paths.getStringValue("sprites").append(
+            addSprite(AnimatedSprite::delayedLoad(pathJoin(
+                paths.getStringValue("sprites"),
                 paths.getStringValue("spriteErrorFile"))));
         }
         else
@@ -461,11 +461,11 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
             {
                 case 0:
                 default:
-                    imagePath = paths.getStringValue("itemIcons").append(
+                    imagePath = pathJoin(paths.getStringValue("itemIcons"),
                         display.image);
                     break;
                 case 1:
-                    imagePath = paths.getStringValue("itemIcons").append(
+                    imagePath = pathJoin(paths.getStringValue("itemIcons"),
                         display.floor);
                     break;
             }

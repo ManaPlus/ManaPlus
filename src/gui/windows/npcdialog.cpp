@@ -717,8 +717,8 @@ void NpcDialog::parseListItems(const std::string &itemString)
         else
         {
             mItems.push_back(tmp.substr(pos + 1));
-            Image *const img = Loader::getImage(std::string(
-                path).append(tmp.substr(0, pos)).append(".png"));
+            Image *const img = Loader::getImage(pathJoin(path,
+                std::string(tmp.substr(0, pos)).append(".png")));
             mImages.push_back(img);
         }
     }

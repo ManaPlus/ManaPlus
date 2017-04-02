@@ -1004,7 +1004,7 @@ void Theme::loadColors(std::string file)
     if (file.empty())
         file = "colors.xml";
     else
-        file.append("/colors.xml");
+        file = pathJoin(file, "colors.xml");
 
     XML::Document *const doc = Loader::getXml(resolveThemePath(file),
         UseVirtFs_true,
@@ -1211,8 +1211,9 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
     }
     else
     {
-        path = std::string(defaultThemePath).append(
-            themeName).append("/info.xml");
+        path = pathJoin(defaultThemePath,
+            themeName,
+            "info.xml");
     }
     logger->log("loading: " + path);
     XML::Document *const doc = Loader::getXml(path,
