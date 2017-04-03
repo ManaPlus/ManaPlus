@@ -54,7 +54,7 @@ variables:
 # pre build
 
 gcc-5_c++11_i386:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
   image: vicamo/debian:sid-i386
@@ -68,7 +68,7 @@ gcc-5_c++11_i386:
     - docker
 
 gcc-6-i386:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6.sh
   image: vicamo/debian:sid-i386
@@ -82,7 +82,7 @@ gcc-6-i386:
     - docker
 
 clang-3.9:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/clang39.sh
   <<: *job-shared
@@ -93,7 +93,7 @@ clang-3.9:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-6:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6.sh
   <<: *job-shared
@@ -104,7 +104,7 @@ gcc-6:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-4.4:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc44.sh
   image: debian:oldstable
@@ -118,7 +118,7 @@ gcc-4.4:
     - docker
 
 mxe_gcc5_shared_32:
-  stage: build
+  stage: prebuild
   script:
   - ls /mxe
   - ./tools/ci/jobs/mxe_gcc5.sh
@@ -131,7 +131,7 @@ mxe_gcc5_shared_32:
     - docker
 
 mxe_gcc5_shared_64:
-  stage: build
+  stage: prebuild
   script:
   - ls /mxe
   - ./tools/ci/jobs/mxe_gcc5.sh
@@ -144,7 +144,7 @@ mxe_gcc5_shared_64:
     - docker
 
 mxe_gcc5_shared_32_testsbin:
-  stage: build
+  stage: prebuild
   script:
   - ls /mxe
   - ./tools/ci/jobs/mxe_gcc5_tests.sh --without-manaplusgame --without-dyecmd
@@ -163,7 +163,7 @@ mxe_gcc5_shared_32_testsbin:
     - docker
 
 mxe_gcc5_shared_64_testsbin:
-  stage: build
+  stage: prebuild
   script:
   - ls /mxe
   - ./tools/ci/jobs/mxe_gcc5_tests.sh --without-manaplusgame --without-dyecmd
@@ -182,7 +182,7 @@ mxe_gcc5_shared_64_testsbin:
     - docker
 
 gcc-5_sdl2:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh
   <<: *job-shared
@@ -193,7 +193,7 @@ gcc-5_sdl2:
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 gcc-6_game_only:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6.sh --without-dyecmd
   <<: *job-shared
@@ -204,7 +204,7 @@ gcc-6_game_only:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-6_dyecmd_only:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6.sh --without-manaplusgame
   <<: *job-shared
@@ -215,7 +215,7 @@ gcc-6_dyecmd_only:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-6_unittestsbin:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6_silent.sh --enable-unittestsbin --without-manaplusgame --without-dyecmd
   <<: *job-shared
@@ -226,7 +226,7 @@ gcc-6_unittestsbin:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 mplint_po:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh po
   <<: *job-shared
@@ -235,7 +235,7 @@ mplint_po:
               make autoconf automake autopoint gettext
 
 mplint_src:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh src
   <<: *job-shared
@@ -244,7 +244,7 @@ mplint_src:
               make autoconf automake autopoint gettext
 
 mplint_data:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh data
   <<: *job-shared
@@ -253,7 +253,7 @@ mplint_data:
               make autoconf automake autopoint gettext
 
 cpplint:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/cpplint.sh
   <<: *job-shared
@@ -261,7 +261,7 @@ cpplint:
     PACKAGES: python wget
 
 gcc-5_h_all:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
   <<: *job-shared
@@ -272,7 +272,7 @@ gcc-5_h_all:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
 gcc-5_h_all_i386:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
   image: vicamo/debian:sid-i386
@@ -286,7 +286,7 @@ gcc-5_h_all_i386:
     - docker
 
 pngcheck:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/pngcheck.sh
   <<: *job-shared
@@ -294,7 +294,7 @@ pngcheck:
     PACKAGES: pngcheck
 
 icccheck:
-  stage: build
+  stage: prebuild
   script:
   - ./tools/ci/jobs/imagemagiccheck.sh
   <<: *job-shared
