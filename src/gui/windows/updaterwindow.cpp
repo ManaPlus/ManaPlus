@@ -51,7 +51,6 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include <sys/stat.h>
 

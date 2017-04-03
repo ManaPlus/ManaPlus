@@ -36,8 +36,6 @@
 
 #include "fs/mkdir.h"
 
-#include "fs/virtfs/virtfs.h"
-
 #include "gui/userpalette.h"
 
 #include "particle/particle.h"
