@@ -640,6 +640,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("badgesFile", "badges.xml");
     AddDEF("badgesPatchFile", "badges_patch.xml");
     AddDEF("badgesPatchDir", "badges.d");
+    AddDEF("languagesFile", "languages.xml");
+    AddDEF("languagesPatchFile", "languages_patch.xml");
+    AddDEF("languagesPatchDir", "languages.d");
     AddDEF("networkFile", "network.xml");
     AddDEF("networkPatchFile", "network_patch.xml");
     AddDEF("networkPatchDir", "network.d");
@@ -667,6 +670,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("linkCommandSymbol", "=");
     AddDEF("emptyAtlasName", "ignored");
     AddDEF("skillCastingAnimation", "");
+    AddDEF("languageIcons", "graphics/flags");
 
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");

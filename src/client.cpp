@@ -115,6 +115,7 @@
 #include "resources/db/horsedb.h"
 #include "resources/db/itemdb.h"
 #include "resources/db/itemfielddb.h"
+#include "resources/db/languagedb.h"
 #include "resources/db/sounddb.h"
 #include "resources/db/mapdb.h"
 #include "resources/db/mercenarydb.h"
@@ -632,6 +633,7 @@ void Client::gameClear()
     DeadDB::unload();
     ColorDB::unload();
     SoundDB::unload();
+    LanguageDb::unload();
     EmoteDB::unload();
     ItemDB::unload();
     ItemFieldDb::unload();
@@ -1359,6 +1361,7 @@ int Client::gameExec()
                     PaletteDB::load();
                     ColorDB::load();
                     SoundDB::load();
+                    LanguageDb::load();
                     MapDB::load();
                     ItemFieldDb::load();
                     ItemDB::load();

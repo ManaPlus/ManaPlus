@@ -1354,6 +1354,8 @@ SRC = ${BASE_SRC} \
 	      resources/basicstat.h \
 	      resources/db/itemfielddb.cpp \
 	      resources/db/itemfielddb.h \
+	      resources/db/languagedb.cpp \
+	      resources/db/languagedb.h \
 	      resources/db/mapdb.cpp \
 	      resources/db/mapdb.h \
 	      resources/db/mercenarydb.cpp \
