@@ -670,7 +670,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("linkCommandSymbol", "=");
     AddDEF("emptyAtlasName", "ignored");
     AddDEF("skillCastingAnimation", "");
-    AddDEF("languageIcons", "graphics/flags");
+    AddDEF("languageIcons", "graphics/badges/flags");
 
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");
