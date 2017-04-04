@@ -25,15 +25,15 @@
 
 enum2Start(BadgeIndex)
 {
-    Away     = 0,
-    Inactive = 1,
-    Team     = 2,
-    Shop     = 3,
-    Gm       = 4,
-    Guild    = 5,
-    Party    = 6,
-    Name     = 7,
-    Lang     = 8,
+    Lang     = 0,
+    Away     = 1,
+    Inactive = 2,
+    Team     = 3,
+    Shop     = 4,
+    Gm       = 5,
+    Guild    = 6,
+    Party    = 7,
+    Name     = 8,
 
     BadgeIndexSize
 }
