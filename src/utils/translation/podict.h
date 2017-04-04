@@ -45,6 +45,7 @@ class PoDict final
     protected:
 #endif  // UNITTESTS
         friend class PoParser;
+        friend class TranslationManager;
 
         PoMap *getMap()
         { return &mPoLines; }
@@ -62,6 +63,7 @@ class PoDict final
 
 extern PoDict *translator;
 extern PoDict *dictionary;
+extern PoDict *reverseDictionary;
 #ifdef ENABLE_CUSTOMNLS
 extern PoDict *mainTranslator;
 #endif  // ENABLE_CUSTOMNLS

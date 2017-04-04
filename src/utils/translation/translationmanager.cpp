@@ -44,6 +44,7 @@ void TranslationManager::loadCurrentLang()
     translator = loadLang(getLang(), "");
     translator = loadLang(getLang(), "help/", translator);
     dictionary = loadLang(getLang(), "dict/");
+    reverseDictionary = reverseLang(dictionary);
 }
 
 #ifdef ENABLE_CUSTOMNLS
@@ -57,6 +58,8 @@ void TranslationManager::loadGettextLang()
 void TranslationManager::close()
 {
     delete2(translator);
+    delete2(dictionary);
+    delete2(reverseDictionary);
 }
 
 PoDict *TranslationManager::loadLang(const LangVect &lang,
@@ -130,4 +133,14 @@ bool TranslationManager::translateFile(const std::string &fileName,
 
     delete [] fileContents;
     return true;
+}
+
+PoDict *TranslationManager::reverseLang(const PoDict *const dict)
+{
+    PoDict *const revDict = new PoDict(dict->mLang);
+    FOR_EACH (PoMap::const_iterator, it, dict->mPoLines)
+    {
+        revDict->set((*it).second, (*it).first);
+    }
+    return revDict;
 }

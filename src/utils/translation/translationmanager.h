@@ -50,6 +50,7 @@ class TranslationManager final
         static bool translateFile(const std::string &fileName,
                                   PoDict *const dict,
                                   StringVect &lines);
+        static PoDict *reverseLang(const PoDict *const dict);
 };
 
 #endif  // UTILS_TRANSLATION_TRANSLATIONMANAGER_H
