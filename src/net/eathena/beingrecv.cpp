@@ -1744,6 +1744,8 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
     uint16_t mount = 0;
     if (haveMount)
         mount = msg.readInt16("mount");
+    if (serverVersion >= 17)
+        msg.readInt16("language");
     if (dstBeing)
     {
         if (gmLevel)
