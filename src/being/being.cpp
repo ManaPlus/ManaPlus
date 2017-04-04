@@ -89,6 +89,7 @@
 #include "resources/db/emotedb.h"
 #include "resources/db/homunculusdb.h"
 #include "resources/db/horsedb.h"
+#include "resources/db/languagedb.h"
 #include "resources/db/mercenarydb.h"
 #include "resources/db/monsterdb.h"
 #include "resources/db/npcdb.h"
@@ -248,6 +249,7 @@ Being::Being(const BeingId id,
     mManner(0),
     mAreaSize(11),
     mCastEndTime(0),
+    mLanguageId(-1),
     mCreatorId(BeingId_zero),
     mTeamId(0U),
     mLook(0U),
@@ -5324,5 +5326,22 @@ void Being::fixDirectionOffsets(int &offsetX,
         const int tmp = offsetY;
         offsetY = -offsetX;
         offsetX = tmp;
+    }
+}
+
+void Being::setLanguageId(const int lang) restrict2 noexcept2
+{
+    if (lang != mLanguageId)
+    {
+        delete2(mBadges[BadgeIndex::Lang]);
+        const std::string badge = LanguageDb::getIcon(lang);
+        if (!badge.empty())
+        {
+            mBadges[BadgeIndex::Lang] = AnimatedSprite::load(pathJoin(
+                paths.getStringValue("languageIcons"),
+                badge));
+        }
+
+        mLanguageId = lang;
     }
 }

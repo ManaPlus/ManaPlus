@@ -1744,8 +1744,9 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
     uint16_t mount = 0;
     if (haveMount)
         mount = msg.readInt16("mount");
+    int language = -1;
     if (serverVersion >= 17)
-        msg.readInt16("language");
+        language = msg.readInt16("language");
     if (dstBeing)
     {
         if (gmLevel)
@@ -1764,6 +1765,7 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
         {
             dstBeing->setHorse(mount);
         }
+        dstBeing->setLanguageId(language);
     }
 }
 

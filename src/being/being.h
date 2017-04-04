@@ -1061,6 +1061,8 @@ class Being notfinal : public ActorSprite,
 
         void showBadges(const bool show) restrict2;
 
+        void setLanguageId(const int lang) restrict2 noexcept2;
+
         uint16_t getTeamId() const restrict2 noexcept2 A_WARN_UNUSED
         { return mTeamId; }
 
@@ -1323,6 +1325,7 @@ class Being notfinal : public ActorSprite,
         int mManner;
         int mAreaSize;
         int mCastEndTime;
+        int mLanguageId;
         BeingId mCreatorId;
         uint16_t mTeamId;
         uint16_t mLook;

@@ -33,6 +33,7 @@ enum2Start(BadgeIndex)
     Guild    = 5,
     Party    = 6,
     Name     = 7,
+    Lang     = 8,
 
     BadgeIndexSize
 }
