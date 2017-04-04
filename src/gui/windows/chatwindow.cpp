@@ -1637,6 +1637,10 @@ bool ChatWindow::resortChatLog(std::string line,
                 // Do nothing. Before was local pet talk
                 return false;
             }
+            if (line.find(": \302\202\304") != std::string::npos)
+            {
+                replaceAll(line, ": \302\202\304", ": ");
+            }
 
             if (tradeChatTab)
             {
