@@ -25,6 +25,7 @@
 std::string empty;
 
 PoDict *translator = nullptr;
+PoDict *dictionary = nullptr;
 #ifdef ENABLE_CUSTOMNLS
 PoDict *mainTranslator = nullptr;
 #endif  // ENABLE_CUSTOMNLS

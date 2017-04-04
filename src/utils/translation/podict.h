@@ -61,6 +61,7 @@ class PoDict final
 };
 
 extern PoDict *translator;
+extern PoDict *dictionary;
 #ifdef ENABLE_CUSTOMNLS
 extern PoDict *mainTranslator;
 #endif  // ENABLE_CUSTOMNLS

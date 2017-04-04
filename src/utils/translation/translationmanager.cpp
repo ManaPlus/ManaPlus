@@ -43,6 +43,7 @@ void TranslationManager::loadCurrentLang()
     delete translator;
     translator = loadLang(getLang(), "");
     translator = loadLang(getLang(), "help/", translator);
+    dictionary = loadLang(getLang(), "dict/");
 }
 
 #ifdef ENABLE_CUSTOMNLS
