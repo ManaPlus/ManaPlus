@@ -68,11 +68,15 @@
 
 #include "render/opengl/opengldebug.h"
 
+#include "resources/db/textdb.h"
+
 #include "net/chathandler.h"
 #include "net/serverfeatures.h"
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"
+
+#include "utils/translation/podict.h"
 
 #include <sys/stat.h>
 
@@ -495,6 +499,20 @@ void ChatWindow::action(const ActionEvent &event)
                 addInputText(str, false);
                 emoteWindow->clearFont();
             }
+        }
+    }
+    else if (eventId == "text")
+    {
+        if (emoteWindow && reverseDictionary)
+        {
+            const int idx = emoteWindow->getSelectedTextIndex();
+            if (idx >= 0)
+            {
+                const std::string str = TextDb::getByIndex(idx);
+                const std::string enStr = reverseDictionary->getStr(str);
+                addInputText(enStr, false);
+            }
+            emoteWindow->clearText();
         }
     }
     else if (eventId == ACTION_COLOR_PICKER)

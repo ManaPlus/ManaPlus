@@ -23,7 +23,7 @@
 
 #include "enums/simpletypes/skiperror.h"
 
-#include <string>
+#include "utils/stringvector.h"
 
 #include "localconsts.h"
 
@@ -33,6 +33,10 @@ namespace TextDb
 
     void loadXmlFile(const std::string &fileName,
                      const SkipError skipError);
+
+    std::string getByIndex(const int index);
+
+    const StringVect &getTexts();
 
     void unload();
 }  // namespace LanguageDB

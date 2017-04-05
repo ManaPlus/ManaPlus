@@ -57,7 +57,11 @@ class EmoteWindow final : public Window
 
         std::string getSelectedFont() const;
 
+        int getSelectedTextIndex() const;
+
         void clearFont();
+
+        void clearText();
 
         void addListeners(ActionListener *const listener);
 
@@ -74,6 +78,9 @@ class EmoteWindow final : public Window
         NamesModel *mFontModel A_NONNULLPOINTER;
         ListBox *mFontPage A_NONNULLPOINTER;
         ScrollArea *mScrollFontPage A_NONNULLPOINTER;
+        NamesModel *mTextModel A_NONNULLPOINTER;
+        ListBox *mTextPage A_NONNULLPOINTER;
+        ScrollArea *mScrollTextPage A_NONNULLPOINTER;
         ImageSet *mImageSet;
 };
 

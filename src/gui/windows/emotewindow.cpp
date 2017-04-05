@@ -34,7 +34,11 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
+#include "utils/translation/podict.h"
+
 #include "resources/imageset.h"
+
+#include "resources/db/textdb.h"
 
 #include "resources/image/image.h"
 
@@ -64,6 +68,10 @@ EmoteWindow::EmoteWindow() :
     mFontPage(CREATEWIDGETR(ListBox, this, mFontModel, "")),
     mScrollFontPage(new ScrollArea(this, mFontPage, Opaque_false,
         "fontpage.xml")),
+    mTextModel(new NamesModel),
+    mTextPage(CREATEWIDGETR(ListBox, this, mTextModel, "")),
+    mScrollTextPage(new ScrollArea(this, mTextPage, Opaque_false,
+        "textpage.xml")),
     mImageSet(Theme::getImageSetFromThemeXml("emotetabs.xml", "", 17, 16))
 {
     setShowTitle(false);
@@ -94,9 +102,13 @@ void EmoteWindow::postInit()
     mScrollColorPage->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mScrollFontPage->setVerticalScrollPolicy(ScrollArea::SHOW_NEVER);
     mScrollFontPage->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mScrollTextPage->setVerticalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mScrollTextPage->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     mFontModel->fillFromArray(&fontSizeList[0], fontSizeListSize);
+
     mFontPage->setCenter(true);
+    mTextPage->setCenter(true);
 
     if (mImageSet && mImageSet->size() >= 3)
     {
@@ -120,10 +132,13 @@ void EmoteWindow::postInit()
         // TRANSLATORS: emotes tab name
         mTabs->addTab(_("Fonts"), mScrollFontPage);
     }
+    // TRANSLATORS: emotes tab name
+    mTabs->addTab(_("T"), mScrollTextPage);
 
     mEmotePage->setActionEventId("emote");
     mColorPage->setActionEventId("color");
     mFontPage->setActionEventId("font");
+    mTextPage->setActionEventId("text");
 }
 
 EmoteWindow::~EmoteWindow()
@@ -137,6 +152,9 @@ EmoteWindow::~EmoteWindow()
     delete2(mFontPage);
     delete2(mFontModel);
     delete2(mScrollFontPage);
+    delete2(mTextPage);
+    delete2(mTextModel);
+    delete2(mScrollTextPage);
     if (mImageSet)
     {
         mImageSet->decRef();
@@ -147,6 +165,15 @@ EmoteWindow::~EmoteWindow()
 void EmoteWindow::show()
 {
     setVisible(Visible_true);
+    if (dictionary != nullptr)
+    {
+        mTextModel->clear();
+        const std::vector<std::string> &texts = TextDb::getTexts();
+        FOR_EACH (StringVectCIter, it, texts)
+        {
+            mTextModel->add(dictionary->getStr(*it));
+        }
+    }
 }
 
 void EmoteWindow::hide()
@@ -186,6 +213,11 @@ std::string EmoteWindow::getSelectedColor() const
     return std::string("##").append(&chr[0]);
 }
 
+int EmoteWindow::getSelectedTextIndex() const
+{
+    return mTextPage->getSelected();
+}
+
 void EmoteWindow::clearColor()
 {
     mColorPage->resetAction();
@@ -210,11 +242,18 @@ void EmoteWindow::clearFont()
     setVisible(Visible_false);
 }
 
+void EmoteWindow::clearText()
+{
+    mTextPage->setSelected(-1);
+    setVisible(Visible_false);
+}
+
 void EmoteWindow::addListeners(ActionListener *const listener)
 {
     mEmotePage->addActionListener(listener);
     mColorPage->addActionListener(listener);
     mFontPage->addActionListener(listener);
+    mTextPage->addActionListener(listener);
 }
 
 void EmoteWindow::widgetResized(const Event &event)

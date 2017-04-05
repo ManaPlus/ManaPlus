@@ -30,7 +30,7 @@
 
 namespace
 {
-    std::vector<std::string> mTexts;
+    StringVect mTexts;
 }  // namespace
 
 void TextDb::load()
@@ -84,4 +84,19 @@ void TextDb::loadXmlFile(const std::string &fileName,
 void TextDb::unload()
 {
     mTexts.clear();
+}
+
+const StringVect &TextDb::getTexts()
+{
+    return mTexts;
+}
+
+std::string TextDb::getByIndex(const int index)
+{
+    if (index < 0 ||
+        static_cast<size_t>(index) >= mTexts.size())
+    {
+        return std::string();
+    }
+    return mTexts[index];
 }
