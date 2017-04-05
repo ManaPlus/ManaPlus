@@ -20,7 +20,15 @@
 
 #include "utils/langs.h"
 
+#include "logger.h"
+
 #include "configuration.h"
+
+#ifndef DYECMD
+#include "being/playerinfo.h"
+
+#include "resources/db/languagedb.h"
+#endif  // DYECMD
 
 #include "debug.h"
 
@@ -55,6 +63,23 @@ LangVect getLang()
     dot = lang.find('_');
     if (dot != std::string::npos)
         langs.push_back(lang.substr(0, dot));
+    return langs;
+}
+
+LangVect getServerLang()
+{
+    LangVect langs;
+#ifndef DYECMD
+    const int id = PlayerInfo::getServerLanguage();
+    std::string lang = LanguageDb::getPo(id);
+    if (lang.empty())
+        return langs;
+    langs.push_back(lang);
+    const size_t idx = lang.find('_');
+    if (idx != std::string::npos)
+        langs.push_back(lang.substr(0, idx));
+#endif  // DYECMD
+
     return langs;
 }
 

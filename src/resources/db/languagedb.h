@@ -37,6 +37,8 @@ namespace LanguageDb
     void unload();
 
     const std::string &getIcon(const int id);
+
+    const std::string &getPo(const int id);
 }  // namespace LanguageDB
 
 #endif  // RESOURCES_DB_LANGUAGEDB_H

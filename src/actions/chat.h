@@ -61,6 +61,7 @@ namespace Actions
     decHandler(hat);
     decHandler(chatClipboard);
     decHandler(guildNotice);
+    decHandler(translate);
 }  // namespace Actions
 
 #undef decHandler

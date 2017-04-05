@@ -31,6 +31,8 @@ typedef LangVect::const_iterator LangIter;
 
 LangVect getLang() A_WARN_UNUSED;
 
+LangVect getServerLang() A_WARN_UNUSED;
+
 std::string getLangSimple() A_WARN_UNUSED;
 
 std::string getLangShort() A_WARN_UNUSED;

@@ -1766,6 +1766,8 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
             dstBeing->setHorse(mount);
         }
         dstBeing->setLanguageId(language);
+        if (dstBeing == localPlayer)
+            PlayerInfo::setServerLanguage(language);
     }
 }
 

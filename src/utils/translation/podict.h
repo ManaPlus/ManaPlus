@@ -41,6 +41,8 @@ class PoDict final
 
         const char *getChar(const char *const str);
 
+        bool haveStr(const std::string &str) const;
+
 #ifndef UNITTESTS
     protected:
 #endif  // UNITTESTS

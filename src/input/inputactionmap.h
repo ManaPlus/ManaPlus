@@ -5606,6 +5606,12 @@ static const InputActionData inputActionData
         "outfittochat|copyoutfittochat",
         UseArgs_false,
         Protected_true},
+    {"keyCommandTranslate",
+        defaultAction(&Actions::translate),
+        InputCondition::INGAME,
+        "translate|trans|tran",
+        UseArgs_false,
+        Protected_true},
 };
 
 #undef defaultAction

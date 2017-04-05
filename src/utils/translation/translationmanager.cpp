@@ -43,7 +43,13 @@ void TranslationManager::loadCurrentLang()
     delete translator;
     translator = loadLang(getLang(), "");
     translator = loadLang(getLang(), "help/", translator);
-    dictionary = loadLang(getLang(), "dict/");
+}
+
+void TranslationManager::loadDictionaryLang()
+{
+    delete dictionary;
+    delete reverseDictionary;
+    dictionary = loadLang(getServerLang(), "dict/");
     reverseDictionary = reverseLang(dictionary);
 }
 

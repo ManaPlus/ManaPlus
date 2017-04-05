@@ -686,6 +686,7 @@ enumStart(InputAction)
     PARTY_AUTO_ITEM_SHARE,
     CREATE_ITEM,
     COPY_OUTFIT_TO_CHAT,
+    COMMAND_TRANSLATE,
     TOTAL
 }
 enumEnd(InputAction);

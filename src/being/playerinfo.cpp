@@ -42,6 +42,8 @@
 
 #include "utils/delete2.h"
 
+#include "utils/translation/translationmanager.h"
+
 #include "debug.h"
 
 namespace PlayerInfo
@@ -64,6 +66,7 @@ BeingId mElementalId = BeingId_zero;
 Trading mTrading = Trading_false;
 bool mVending = false;
 int mLevelProgress = 0;
+int mServerLanguage = -1;
 std::set<int> mProtectedItems;
 
 // --- Triggers ---------------------------------------------------------------
@@ -637,6 +640,20 @@ void enableVending(const bool b)
 bool isVending()
 {
     return mVending;
+}
+
+void setServerLanguage(const int lang)
+{
+    if (lang != mServerLanguage)
+    {
+        mServerLanguage = lang;
+        TranslationManager::loadDictionaryLang();
+    }
+}
+
+int getServerLanguage()
+{
+    return mServerLanguage;
 }
 
 }  // namespace PlayerInfo

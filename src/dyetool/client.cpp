@@ -282,6 +282,7 @@ void Client::gameInit()
     VirtFs::mountDir(settings.localDataDir,
         Append_false);
     TranslationManager::loadCurrentLang();
+    TranslationManager::loadDictionaryLang();
 #ifdef ENABLE_CUSTOMNLS
     TranslationManager::loadGettextLang();
 #endif  // ENABLE_CUSTOMNLS
@@ -662,6 +663,7 @@ int Client::gameExec()
                     paths.setDefaultValues(getPathsDefaults());
                     initPaths();
                     TranslationManager::loadCurrentLang();
+                    TranslationManager::loadDictionaryLang();
 
                     if (desktop)
                         desktop->reloadWallpaper();

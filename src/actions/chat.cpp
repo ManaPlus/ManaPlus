@@ -49,6 +49,8 @@
 #include "utils/booleanoptions.h"
 #include "utils/chatutils.h"
 
+#include "utils/translation/podict.h"
+
 #include "debug.h"
 
 const int DEFAULT_CHAT_WINDOW_SCROLL = 7;
@@ -668,6 +670,49 @@ impHandler(guildNotice)
     const Guild *const guild = localPlayer->getGuild();
     if (guild)
         guildHandler->changeNotice(guild->getId(), str1, str2);
+    return true;
+}
+
+impHandler(translate)
+{
+    if (reverseDictionary == nullptr ||
+        localPlayer == nullptr ||
+        event.args.empty())
+    {
+        return false;
+    }
+
+    ChatTab *const tab = event.tab;
+    if (tab == nullptr)
+        return false;
+
+    std::string srcStr = event.args;
+    std::string enStr;
+    toLower(srcStr);
+    if (localPlayer->getLanguageId() > 0)
+    {
+        if (reverseDictionary->haveStr(srcStr))
+            enStr = reverseDictionary->getStr(srcStr);
+        else if (dictionary->haveStr(srcStr))
+            enStr = srcStr;
+    }
+    else
+    {
+        if (dictionary->haveStr(srcStr))
+            enStr = srcStr;
+    }
+
+    if (enStr.empty())
+    {
+        tab->chatLog(
+            // TRANSLATORS: translation error message
+            strprintf(_("No translation found for string: %s"),
+            srcStr.c_str()),
+            ChatMsgType::BY_SERVER);
+        return true;
+    }
+
+    tab->chatInput(enStr);
     return true;
 }
 

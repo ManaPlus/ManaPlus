@@ -432,6 +432,7 @@ void Client::gameInit()
     VirtFs::mountDir(settings.localDataDir,
         Append_false);
     TranslationManager::loadCurrentLang();
+    TranslationManager::loadDictionaryLang();
 #ifdef ENABLE_CUSTOMNLS
     TranslationManager::loadGettextLang();
 #endif  // ENABLE_CUSTOMNLS
@@ -1152,6 +1153,7 @@ int Client::gameExec()
                         _("Connecting to server"),
                         State::SWITCH_SERVER);
                     TranslationManager::loadCurrentLang();
+                    TranslationManager::loadDictionaryLang();
                     BLOCK_END("Client::gameExec State::CONNECT_SERVER")
                     break;
 
@@ -1218,6 +1220,7 @@ int Client::gameExec()
                     logger->log1("State: WORLD SELECT");
                     {
                         TranslationManager::loadCurrentLang();
+                        TranslationManager::loadDictionaryLang();
                         if (!loginHandler)
                         {
                             BLOCK_END("Client::gameExec State::WORLD_SELECT")
@@ -1346,6 +1349,7 @@ int Client::gameExec()
 
                     initFeatures();
                     TranslationManager::loadCurrentLang();
+                    TranslationManager::loadDictionaryLang();
                     PlayerInfo::stateChange(mState);
 
                     delete spellManager;

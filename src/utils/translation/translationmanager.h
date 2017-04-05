@@ -43,6 +43,8 @@ class TranslationManager final
 
         static void loadCurrentLang();
 
+        static void loadDictionaryLang();
+
 #ifdef ENABLE_CUSTOMNLS
         static void loadGettextLang();
 #endif  // ENABLE_CUSTOMNLS

@@ -31,7 +31,9 @@
 namespace
 {
     std::string mDefaultIcon;
-    std::map<int, std::string> mLanguages;
+    std::string mDefaultPo;
+    std::map<int, std::string> mIcons;
+    std::map<int, std::string> mPo;
 }  // namespace
 
 void LanguageDb::load()
@@ -74,7 +76,23 @@ void LanguageDb::loadXmlFile(const std::string &fileName,
                 continue;
             }
             const std::string icon = XML::getProperty(node, "icon", "");
-            mLanguages[id] = icon;
+            const std::string po = XML::getProperty(node, "po", "");
+            if (icon.empty())
+            {
+                reportAlways("LanguageDb: empty icon field");
+            }
+            else
+            {
+                mIcons[id] = icon;
+            }
+            if (po.empty())
+            {
+                reportAlways("LanguageDb: empty po field");
+            }
+            else
+            {
+                mPo[id] = po;
+            }
         }
     }
 
@@ -83,13 +101,22 @@ void LanguageDb::loadXmlFile(const std::string &fileName,
 
 void LanguageDb::unload()
 {
-    mLanguages.clear();
+    mIcons.clear();
+    mPo.clear();
 }
 
 const std::string &LanguageDb::getIcon(const int id)
 {
-    std::map<int, std::string>::const_iterator it = mLanguages.find(id);
-    if (it == mLanguages.end())
+    std::map<int, std::string>::const_iterator it = mIcons.find(id);
+    if (it == mIcons.end())
         return mDefaultIcon;
+    return (*it).second;
+}
+
+const std::string &LanguageDb::getPo(const int id)
+{
+    std::map<int, std::string>::const_iterator it = mPo.find(id);
+    if (it == mPo.end())
+        return mDefaultPo;
     return (*it).second;
 }

@@ -1063,6 +1063,9 @@ class Being notfinal : public ActorSprite,
 
         void setLanguageId(const int lang) restrict2 noexcept2;
 
+        int getLanguageId() restrict2 noexcept2 A_WARN_UNUSED
+        { return mLanguageId; }
+
         uint16_t getTeamId() const restrict2 noexcept2 A_WARN_UNUSED
         { return mTeamId; }
 
