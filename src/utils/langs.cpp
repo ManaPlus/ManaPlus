@@ -20,8 +20,6 @@
 
 #include "utils/langs.h"
 
-#include "logger.h"
-
 #include "configuration.h"
 
 #ifndef DYECMD
