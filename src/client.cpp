@@ -129,6 +129,7 @@
 #include "resources/db/skillunitdb.h"
 #include "resources/db/statdb.h"
 #include "resources/db/statuseffectdb.h"
+#include "resources/db/textdb.h"
 #include "resources/db/unitsdb.h"
 #include "resources/db/weaponsdb.h"
 
@@ -635,6 +636,7 @@ void Client::gameClear()
     ColorDB::unload();
     SoundDB::unload();
     LanguageDb::unload();
+    TextDb::unload();
     EmoteDB::unload();
     ItemDB::unload();
     ItemFieldDb::unload();
@@ -1366,6 +1368,7 @@ int Client::gameExec()
                     ColorDB::load();
                     SoundDB::load();
                     LanguageDb::load();
+                    TextDb::load();
                     MapDB::load();
                     ItemFieldDb::load();
                     ItemDB::load();

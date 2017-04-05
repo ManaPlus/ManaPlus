@@ -643,6 +643,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("languagesFile", "languages.xml");
     AddDEF("languagesPatchFile", "languages_patch.xml");
     AddDEF("languagesPatchDir", "languages.d");
+    AddDEF("textsFile", "texts.xml");
+    AddDEF("textsPatchFile", "texts_patch.xml");
+    AddDEF("textsPatchDir", "texts.d");
     AddDEF("networkFile", "network.xml");
     AddDEF("networkPatchFile", "network_patch.xml");
     AddDEF("networkPatchDir", "network.d");

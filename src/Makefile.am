@@ -1384,6 +1384,8 @@ SRC = ${BASE_SRC} \
 	      resources/db/statdb.h \
 	      resources/db/statuseffectdb.cpp \
 	      resources/db/statuseffectdb.h \
+	      resources/db/textdb.cpp \
+	      resources/db/textdb.h \
 	      resources/db/unitsdb.cpp \
 	      resources/db/unitsdb.h \
 	      resources/db/weaponsdb.cpp \
