@@ -73,6 +73,6 @@ namespace
 SoundEffect *Loader::getSoundEffect(const std::string &idPath)
 {
     ResourceLoader rl = { idPath };
-    return static_cast<SoundEffect*>(resourceManager->get(
+    return static_cast<SoundEffect*>(ResourceManager::get(
         idPath, ResourceLoader::load, &rl));
 }

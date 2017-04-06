@@ -215,7 +215,7 @@ void Image::SDLCleanCache()
          i != i_end; ++i)
     {
         if (mSDLSurface != i->second)
-            resourceManager->scheduleDelete(i->second);
+            ResourceManager::scheduleDelete(i->second);
         i->second = nullptr;
     }
     mAlphaCache.clear();

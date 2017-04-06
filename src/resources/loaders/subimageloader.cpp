@@ -85,6 +85,6 @@ Image *Loader::getSubImage(Image *const parent,
         "x").append(
         toString(height)).append(
         "]");
-    return static_cast<Image*>(resourceManager->get(str,
+    return static_cast<Image*>(ResourceManager::get(str,
         SubImageLoader::load, &rl));
 }

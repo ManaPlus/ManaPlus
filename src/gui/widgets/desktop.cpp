@@ -182,7 +182,7 @@ void Desktop::setBestFittingWallpaper()
     {
         if (mWallpaper)
         {
-            resourceManager->decRefDelete(mWallpaper);
+            ResourceManager::decRefDelete(mWallpaper);
             mWallpaper = nullptr;
         }
 
@@ -200,7 +200,7 @@ void Desktop::setBestFittingWallpaper()
 
             if (newRsclWlPpr)
             {
-                resourceManager->decRefDelete(nWallPaper);
+                ResourceManager::decRefDelete(nWallPaper);
                 // We replace the resource in the resource manager
                 mWallpaper = newRsclWlPpr;
             }

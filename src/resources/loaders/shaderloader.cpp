@@ -61,7 +61,7 @@ Resource *Loader::getShader(const unsigned int type,
                             const std::string &name)
 {
     ShaderLoader rl = { name, type };
-    return resourceManager->get("shader_" + name, ShaderLoader::load, &rl);
+    return ResourceManager::get("shader_" + name, ShaderLoader::load, &rl);
 }
 
 #endif  // USE_OPENGL

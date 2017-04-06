@@ -80,14 +80,12 @@ void MemoryManager::printAllMemory(ChatTab *const tab A_DYECMD_UNUSED)
 {
     if (!logger)
         return;
+
 #ifdef DYECMD
-    if (resourceManager)
-        resourceManager->calcMemory(0);
+    ResourceManager::calcMemory(0);
 #else  // DYECMD
 
-    int sz = 0;
-    if (resourceManager)
-        sz += resourceManager->calcMemory(0);
+    int sz = ResourceManager::calcMemory(0);
     if (tab)
     {
         // TRANSLATORS: memory usage chat message

@@ -78,6 +78,6 @@ namespace
 SDLMusic *Loader::getMusic(const std::string &idPath)
 {
     ResourceLoader rl = { idPath };
-    return static_cast<SDLMusic*>(resourceManager->get(
+    return static_cast<SDLMusic*>(ResourceManager::get(
         idPath, ResourceLoader::load, &rl));
 }

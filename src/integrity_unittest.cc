@@ -30,6 +30,8 @@
 #include "fs/virtfs/virtfs.h"
 #include "fs/virtfs/virtfsrwops.h"
 
+#include "gui/gui.h"
+
 #include "input/inputactionmap.h"
 
 #include "resources/image/image.h"
@@ -93,6 +95,15 @@ static bool compareBuffers(const unsigned char *const buf2)
     return isCorrect;
 }
 
+TEST_CASE("integrity leak test1")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
+}
+
 TEST_CASE("integrity tests", "integrity")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
@@ -101,7 +112,6 @@ TEST_CASE("integrity tests", "integrity")
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
-    ResourceManager::init();
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
@@ -326,7 +336,7 @@ TEST_CASE("integrity tests", "integrity")
         image->decRef();
     }
 
-    resourceManager->cleanOrphans(true);
+    ResourceManager::cleanOrphans(true);
 
     delete client;
     client = nullptr;
@@ -335,4 +345,13 @@ TEST_CASE("integrity tests", "integrity")
     VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
+}
+
+TEST_CASE("integrity leak test2")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
 }

@@ -56,7 +56,7 @@ Resource *Loader::getAtlas(const std::string &name,
                            const StringVect &files)
 {
     AtlasLoader rl = { name, &files };
-    return resourceManager->get("atlas_" + name, AtlasLoader::load, &rl);
+    return ResourceManager::get("atlas_" + name, AtlasLoader::load, &rl);
 }
 
 #endif  // USE_OPENGL

@@ -72,6 +72,6 @@ Image *Loader::getRescaled(const Image *const image,
         "_rescaled%dx%d", width, height);
     const RescaledLoader rl = { image, width, height };
     Image *const img = static_cast<Image *const>(
-        resourceManager->get(idPath, RescaledLoader::load, &rl));
+        ResourceManager::get(idPath, RescaledLoader::load, &rl));
     return img;
 }

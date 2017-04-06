@@ -189,7 +189,6 @@ void Client::gameInit()
         ConfigManager::storeSafeParameters();
 #endif  // ANDROID
 
-    ResourceManager::init();
     if (!VirtFs::setWriteDir(settings.localDataDir))
     {
         logger->error(strprintf("%s couldn't be set as home directory! "

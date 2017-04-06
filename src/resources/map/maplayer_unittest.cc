@@ -1649,7 +1649,6 @@ TEST_CASE("MapLayer draw")
 TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
 {
     logger = new Logger;
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -2002,7 +2001,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
 TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
 {
     logger = new Logger;
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -2361,7 +2359,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
 TEST_CASE("MapLayer drawFringe")
 {
     logger = new Logger;
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 

@@ -66,7 +66,7 @@ void Resource::decRef()
     if (mRefCount == 0 && !mNotCount)
     {
         // Warn the manager that this resource is no longer used.
-        resourceManager->release(this);
+        ResourceManager::release(this);
     }
 }
 

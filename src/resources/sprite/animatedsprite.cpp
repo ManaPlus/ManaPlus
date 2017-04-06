@@ -90,7 +90,7 @@ AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &restrict
 {
     if (!mEnableCache)
         return load(filename, variant);
-    Resource *restrict const res = resourceManager->getFromCache(
+    Resource *restrict const res = ResourceManager::getFromCache(
         filename, variant);
     if (res)
     {

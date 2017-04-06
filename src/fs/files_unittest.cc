@@ -35,7 +35,6 @@
 TEST_CASE("Files renameFile")
 {
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -74,7 +73,6 @@ TEST_CASE("Files renameFile")
 TEST_CASE("Files existsLocal")
 {
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     REQUIRE(Files::existsLocal(VirtFs::getPath("help/about.txt")) == true);
@@ -90,7 +88,6 @@ TEST_CASE("Files existsLocal")
 TEST_CASE("Files loadTextFileString")
 {
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     REQUIRE(VirtFs::loadTextFileString("test/simplefile.txt") ==
@@ -105,7 +102,6 @@ TEST_CASE("Files loadTextFileString")
 TEST_CASE("Files loadTextFile")
 {
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -124,7 +120,6 @@ TEST_CASE("Files loadTextFile")
 TEST_CASE("Files saveTextFile")
 {
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -150,7 +145,6 @@ TEST_CASE("Files saveTextFile")
 TEST_CASE("Files getFilesInDir")
 {
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 

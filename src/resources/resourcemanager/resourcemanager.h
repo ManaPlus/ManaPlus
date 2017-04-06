@@ -23,8 +23,6 @@
 #ifndef RESOURCES_RESOURCEMANAGER_RESOURCEMANAGER_H
 #define RESOURCES_RESOURCEMANAGER_RESOURCEMANAGER_H
 
-#include "resources/memorycounter.h"
-
 #include <map>
 #include <set>
 
@@ -35,124 +33,97 @@ class Resource;
 struct SDL_Surface;
 struct SDL_RWops;
 
-/**
- * A class for loading and managing resources.
- */
-class ResourceManager final : public MemoryCounter
+namespace ResourceManager
 {
-    friend class Resource;
+    typedef Resource *(*loader)(SDL_RWops *rw,
+                                const std::string &name);
+    typedef Resource *(&generator)(const void *const data);
 
-    public:
-        typedef Resource *(*loader)(SDL_RWops *rw,
-                                    const std::string &name);
-        typedef Resource *(&generator)(const void *const data);
+    typedef std::map<std::string, Resource*> Resources;
+    typedef Resources::iterator ResourceIterator;
+    typedef Resources::const_iterator ResourceCIterator;
 
-        ResourceManager();
+    /**
+     * Cleans up remaining resources, warning about resources
+     * that were still referenced.
+     */
+    void deleteResourceManager();
 
-        A_DELETE_COPY(ResourceManager)
+    /**
+     * Creates a resource and adds it to the resource map.
+     *
+     * @param idPath The resource identifier path.
+     * @param fun    A function for generating the resource.
+     * @param data   Extra parameters for the generator.
+     * @return A valid resource or <code>NULL</code> if the resource could
+     *         not be generated.
+     */
+    Resource *get(const std::string &idPath,
+                  generator fun,
+                  const void *const data) A_WARN_UNUSED;
 
-        /**
-         * Destructor. Cleans up remaining resources, warning about resources
-         * that were still referenced.
-         */
-        ~ResourceManager();
+    Resource *getFromCache(const std::string &idPath) A_WARN_UNUSED;
 
-        /**
-         * Creates a resource and adds it to the resource map.
-         *
-         * @param idPath The resource identifier path.
-         * @param fun    A function for generating the resource.
-         * @param data   Extra parameters for the generator.
-         * @return A valid resource or <code>NULL</code> if the resource could
-         *         not be generated.
-         */
-        Resource *get(const std::string &idPath,
-                      generator fun,
-                      const void *const data) A_WARN_UNUSED;
+    Resource *getFromCache(const std::string &filename,
+                           const int variant) A_WARN_UNUSED;
 
-        Resource *getFromCache(const std::string &idPath) A_WARN_UNUSED;
+    bool addResource(const std::string &idPath,
+                     Resource *const resource);
 
-        Resource *getFromCache(const std::string &filename,
-                               const int variant) A_WARN_UNUSED;
+    /**
+     * Releases a resource, placing it in the set of orphaned resources.
+     */
+    void release(Resource *const res);
 
-        bool addResource(const std::string &idPath,
-                         Resource *const resource);
+    void clearDeleted(const bool full = true);
 
-        /**
-         * Releases a resource, placing it in the set of orphaned resources.
-         */
-        void release(Resource *const res);
+    void decRefDelete(Resource *const res);
 
-        void clearDeleted(const bool full = true);
+    /**
+     * Move resource to deleted resources list.
+     */
+    void moveToDeleted(Resource *const res);
 
-        void decRefDelete(Resource *const res);
+    void scheduleDelete(SDL_Surface *const surface);
 
-        /**
-         * Move resource to deleted resources list.
-         */
-        void moveToDeleted(Resource *const res);
+    void clearScheduled();
 
-        void scheduleDelete(SDL_Surface *const surface);
+    /**
+     * Deletes the class instance if it exists.
+     */
+    void deleteInstance();
 
-        void clearScheduled();
+    int size() noexcept2 A_WARN_UNUSED;
 
-        /**
-         * Deletes the class instance if it exists.
-         */
-        static void deleteInstance();
+#if defined(DEBUG_DUMP_LEAKS) || defined(UNITTESTS)
+    Resources &getResources() A_WARN_UNUSED;
 
-        int size() const noexcept2 A_WARN_UNUSED
-        { return CAST_S32(mResources.size()); }
+    Resources &getOrphanedResources() A_WARN_UNUSED;
 
-        typedef std::map<std::string, Resource*> Resources;
-        typedef Resources::iterator ResourceIterator;
-        typedef Resources::const_iterator ResourceCIterator;
+    const std::set<Resource*> &getDeletedResources() A_WARN_UNUSED;
+#endif  // defined(DEBUG_DUMP_LEAKS) || defined(UNITTESTS)
 
-#ifdef DEBUG_DUMP_LEAKS
-        Resources* getResources() A_WARN_UNUSED
-        { return &mResources; }
+    bool cleanOrphans(const bool always = false);
 
-        Resources* getOrphanedResources() A_WARN_UNUSED
-        { return &mOrphanedResources; }
-#endif  // DEBUG_DUMP_LEAKS
+    void cleanProtected();
 
-        bool cleanOrphans(const bool always = false);
+    bool isInCache(const std::string &idPath) A_WARN_UNUSED;
 
-        void cleanProtected();
+    Resource *getTempResource(const std::string &idPath) A_WARN_UNUSED;
 
-        bool isInCache(const std::string &idPath) const A_WARN_UNUSED;
+    void clearCache();
 
-        Resource *getTempResource(const std::string &idPath) A_WARN_UNUSED;
+    int calcMemoryLocal();
 
-        void clearCache();
+    int calcMemoryChilds(const int level);
 
-        int calcMemoryLocal() const override final;
+    int calcMemory(const int level);
 
-        int calcMemoryChilds(const int level) const override final;
+    void cleanUp(Resource *const resource);
 
-        std::string getCounterName() const override final
-        { return "ResourceManager"; }
+    void logResource(const Resource *const res);
 
-        static void init();
-
-#ifndef UNITTESTS
-    private:
-#endif  // UNITTESTS
-        /**
-         * Deletes the resource after logging a cleanup message.
-         */
-        static void cleanUp(Resource *const resource);
-
-        static void logResource(const Resource *const res);
-
-        std::set<SDL_Surface*> deletedSurfaces;
-        Resources mResources;
-        Resources mOrphanedResources;
-        std::set<Resource*> mDeletedResources;
-        time_t mOldestOrphan;
-        bool mDestruction;
-};
-
-extern ResourceManager *resourceManager;
+    void logResources(const std::string &msg);
+}  // namespace ResourceManager
 
 #endif  // RESOURCES_RESOURCEMANAGER_RESOURCEMANAGER_H

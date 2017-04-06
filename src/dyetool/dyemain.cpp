@@ -87,7 +87,6 @@ int main(int argc, char **argv)
     imageHelper = new SDLImageHelper;
 #endif  // USE_SDL2
 
-    ResourceManager::init();
     VirtFs::setWriteDir(".");
     VirtFs::mountDir(".", Append_false);
     VirtFs::mountDir("/", Append_false);

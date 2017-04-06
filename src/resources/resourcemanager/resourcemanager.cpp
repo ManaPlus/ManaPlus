@@ -46,20 +46,17 @@
 
 #include "debug.h"
 
-ResourceManager *resourceManager = nullptr;
-
-ResourceManager::ResourceManager() :
-    deletedSurfaces(),
-    mResources(),
-    mOrphanedResources(),
-    mDeletedResources(),
-    mOldestOrphan(0),
-    mDestruction(0)
+namespace ResourceManager
 {
-    logger->log1("Initializing resource manager...");
-}
 
-ResourceManager::~ResourceManager()
+std::set<SDL_Surface*> deletedSurfaces;
+Resources mResources;
+Resources mOrphanedResources;
+std::set<Resource*> mDeletedResources;
+time_t mOldestOrphan = 0;
+bool mDestruction = false;
+
+void deleteResourceManager()
 {
     mDestruction = true;
     mResources.insert(mOrphanedResources.begin(), mOrphanedResources.end());
@@ -171,26 +168,22 @@ ResourceManager::~ResourceManager()
     }
     clearDeleted();
     clearScheduled();
+    mDestruction = false;
 }
 
-void ResourceManager::init()
-{
-    if (!resourceManager)
-        resourceManager = new ResourceManager;
-}
-
-void ResourceManager::cleanUp(Resource *const res)
+void cleanUp(Resource *const res)
 {
     if (!res)
         return;
 
-    if (res->mRefCount > 0)
+    const unsigned refCount = res->getRefCount();
+    if (refCount > 0)
     {
         logger->log("ResourceManager::~ResourceManager() cleaning up %u "
                 "reference%s to %s",
-                res->mRefCount,
-                (res->mRefCount == 1) ? "" : "s",
-                res->mIdPath.c_str());
+                refCount,
+                (refCount == 1) ? "" : "s",
+                res->getIdPath().c_str());
     }
 
     delete res;
@@ -199,7 +192,7 @@ void ResourceManager::cleanUp(Resource *const res)
 #endif  // DEBUG_LEAKS
 }
 
-void ResourceManager::cleanProtected()
+void cleanProtected()
 {
     ResourceIterator iter = mResources.begin();
     while (iter != mResources.end())
@@ -222,7 +215,7 @@ void ResourceManager::cleanProtected()
     }
 }
 
-bool ResourceManager::cleanOrphans(const bool always)
+bool cleanOrphans(const bool always)
 {
     timeval tv;
     gettimeofday(&tv, nullptr);
@@ -266,7 +259,7 @@ bool ResourceManager::cleanOrphans(const bool always)
     return status;
 }
 
-void ResourceManager::logResource(const Resource *const res)
+void logResource(const Resource *const res)
 {
     if (!res)
         return;
@@ -278,7 +271,7 @@ void ResourceManager::logResource(const Resource *const res)
         const int count = image->getRefCount();
         if (count)
             src.append(" ").append(toString(count));
-        logger->log("resource(%s, %u) %s", res->mIdPath.c_str(),
+        logger->log("resource(%s, %u) %s", res->getIdPath().c_str(),
             image->getGLImage(), src.c_str());
     }
     else
@@ -287,15 +280,36 @@ void ResourceManager::logResource(const Resource *const res)
         const int count = res->getRefCount();
         if (count > 0)
             src.append(" ").append(toString(count));
-        logger->log("resource(%s) %s", res->mIdPath.c_str(), src.c_str());
+        logger->log("resource(%s) %s", res->getIdPath().c_str(), src.c_str());
     }
 #else  // USE_OPENGL
 
-    logger->log("resource(%s)", res->mIdPath.c_str());
+    logger->log("resource(%s)", res->getIdPath().c_str());
 #endif  // USE_OPENGL
 }
 
-void ResourceManager::clearDeleted(const bool full)
+void logResources(const std::string &msg)
+{
+    logger->log("start of resources: " + msg);
+    logger->log("resouces");
+    FOR_EACH(ResourceIterator, it, mResources)
+    {
+        logResource((*it).second);
+    }
+    logger->log("orphaned resouces");
+    FOR_EACH(ResourceIterator, it, mOrphanedResources)
+    {
+        logResource((*it).second);
+    }
+    logger->log("deleted resouces");
+    FOR_EACH(std::set<Resource*>::iterator, it, mDeletedResources)
+    {
+        logResource(*it);
+    }
+    logger->log("end of resources");
+}
+
+void clearDeleted(const bool full)
 {
     bool status(true);
     logger->log1("clear deleted");
@@ -334,17 +348,16 @@ void ResourceManager::clearDeleted(const bool full)
     }
 }
 
-
-bool ResourceManager::addResource(const std::string &idPath,
-                                  Resource *const resource)
+bool addResource(const std::string &idPath,
+                 Resource *const resource)
 {
     if (resource)
     {
         resource->incRef();
-        resource->mIdPath = idPath;
+        resource->setIdPath(idPath);
 #ifdef DEBUG_IMAGES
         logger->log("set name %p, %s", static_cast<void*>(resource),
-            resource->mIdPath.c_str());
+            resource->getIdPath().c_str());
 #endif  // DEBUG_IMAGES
 
         mResources[idPath] = resource;
@@ -353,21 +366,21 @@ bool ResourceManager::addResource(const std::string &idPath,
     return false;
 }
 
-Resource *ResourceManager::getFromCache(const std::string &filename,
-                                        const int variant)
+Resource *getFromCache(const std::string &filename,
+                       const int variant)
 {
     std::stringstream ss;
     ss << filename << "[" << variant << "]";
     return getFromCache(ss.str());
 }
 
-bool ResourceManager::isInCache(const std::string &idPath) const
+bool isInCache(const std::string &idPath)
 {
     const ResourceCIterator &resIter = mResources.find(idPath);
     return (resIter != mResources.end() && resIter->second);
 }
 
-Resource *ResourceManager::getTempResource(const std::string &idPath)
+Resource *getTempResource(const std::string &idPath)
 {
     const ResourceCIterator &resIter = mResources.find(idPath);
     if (resIter != mResources.end())
@@ -379,7 +392,7 @@ Resource *ResourceManager::getTempResource(const std::string &idPath)
     return nullptr;
 }
 
-Resource *ResourceManager::getFromCache(const std::string &idPath)
+Resource *getFromCache(const std::string &idPath)
 {
     // Check if the id exists, and return the value if it does.
     ResourceIterator resIter = mResources.find(idPath);
@@ -403,9 +416,9 @@ Resource *ResourceManager::getFromCache(const std::string &idPath)
     return nullptr;
 }
 
-Resource *ResourceManager::get(const std::string &idPath,
-                               generator fun,
-                               const void *const data)
+Resource *get(const std::string &idPath,
+              generator fun,
+              const void *const data)
 {
 #ifndef DISABLE_RESOURCE_CACHING
     Resource *resource = getFromCache(idPath);
@@ -416,10 +429,10 @@ Resource *ResourceManager::get(const std::string &idPath,
     if (resource)
     {
         resource->incRef();
-        resource->mIdPath = idPath;
+        resource->setIdPath(idPath);
 #ifdef DEBUG_IMAGES
         logger->log("set name %p, %s", static_cast<void*>(resource),
-            resource->mIdPath.c_str());
+            resource->getIdPath().c_str());
 #endif  // DEBUG_IMAGES
 
         mResources[idPath] = resource;
@@ -435,10 +448,10 @@ Resource *ResourceManager::get(const std::string &idPath,
     if (resource)
     {
         resource->incRef();
-        resource->mIdPath = idPath;
+        resource->setIdPath(idPath);
 #ifdef DEBUG_IMAGES
         logger->log("set name %p, %s", static_cast<void*>(resource),
-            resource->mIdPath.c_str());
+            resource->getIdPath().c_str());
 #endif  // DEBUG_IMAGES
     }
     else
@@ -451,7 +464,7 @@ Resource *ResourceManager::get(const std::string &idPath,
     return resource;
 }
 
-void ResourceManager::release(Resource *const res)
+void release(Resource *const res)
 {
     if (!res || mDestruction)
         return;
@@ -466,19 +479,19 @@ void ResourceManager::release(Resource *const res)
         return;
     }
 
-    ResourceIterator resIter = mResources.find(res->mIdPath);
+    ResourceIterator resIter = mResources.find(res->getIdPath());
 
     if (resIter == mResources.end())
     {
         reportAlways("no resource in cache: %s",
-            res->mIdPath.c_str());
+            res->getIdPath().c_str());
         delete res;
         return;
     }
     if (resIter->second != res)
     {
         reportAlways("in cache other image: %s",
-            res->mIdPath.c_str());
+            res->getIdPath().c_str());
         delete res;
         return;
     }
@@ -499,7 +512,7 @@ void ResourceManager::release(Resource *const res)
 #endif  // DISABLE_RESOURCE_CACHING
 }
 
-void ResourceManager::moveToDeleted(Resource *const res)
+void moveToDeleted(Resource *const res)
 {
     if (!res)
         return;
@@ -509,7 +522,7 @@ void ResourceManager::moveToDeleted(Resource *const res)
     if (count == 1)
         logResource(res);
     res->decRef();
-    ResourceIterator resIter = mResources.find(res->mIdPath);
+    ResourceIterator resIter = mResources.find(res->getIdPath());
     if (resIter != mResources.end() && resIter->second == res)
     {
         mResources.erase(resIter);
@@ -517,7 +530,7 @@ void ResourceManager::moveToDeleted(Resource *const res)
     }
     else
     {
-        resIter = mOrphanedResources.find(res->mIdPath);
+        resIter = mOrphanedResources.find(res->getIdPath());
         if (resIter != mOrphanedResources.end() && resIter->second == res)
         {
             mOrphanedResources.erase(resIter);
@@ -533,7 +546,7 @@ void ResourceManager::moveToDeleted(Resource *const res)
     }
 }
 
-void ResourceManager::decRefDelete(Resource *const res)
+void decRefDelete(Resource *const res)
 {
     if (!res)
         return;
@@ -543,14 +556,14 @@ void ResourceManager::decRefDelete(Resource *const res)
     {
         logResource(res);
 
-        ResourceIterator resIter = mResources.find(res->mIdPath);
+        ResourceIterator resIter = mResources.find(res->getIdPath());
         if (resIter != mResources.end() && resIter->second == res)
         {
             mResources.erase(resIter);
         }
         else
         {
-            resIter = mOrphanedResources.find(res->mIdPath);
+            resIter = mOrphanedResources.find(res->getIdPath());
             if (resIter != mOrphanedResources.end() && resIter->second == res)
                 mOrphanedResources.erase(resIter);
         }
@@ -563,55 +576,52 @@ void ResourceManager::decRefDelete(Resource *const res)
     }
 }
 
-void ResourceManager::deleteInstance()
+void deleteInstance()
 {
 #ifdef DUMP_LEAKED_RESOURCES
-    if (resourceManager)
+    logger->log1("clean orphans start");
+    ResourceManager::cleanProtected();
+    while (ResourceManager::cleanOrphans(true))
+        continue;
+    logger->log1("clean orphans end");
+    ResourceIterator iter = ResourceManager::mResources.begin();
+
+#ifdef UNITTESTS
+    bool status(false);
+#endif  // UNITTESTS
+
+    while (iter != ResourceManager::mResources.end())
     {
-        logger->log1("clean orphans start");
-        resourceManager->cleanProtected();
-        while (resourceManager->cleanOrphans(true))
-            continue;
-        logger->log1("clean orphans end");
-        ResourceIterator iter = resourceManager->mResources.begin();
-
-#ifdef UNITTESTS
-        bool status(false);
-#endif  // UNITTESTS
-
-        while (iter != resourceManager->mResources.end())
+        const Resource *const res = iter->second;
+        if (res)
         {
-            const Resource *const res = iter->second;
-            if (res)
+            if (res->getRefCount())
             {
-                if (res->getRefCount())
-                {
-                    logger->log(std::string("ResourceLeak: ").append(
-                        res->getIdPath()).append(" (").append(toString(
-                        res->getRefCount())).append(")"));
+                logger->log(std::string("ResourceLeak: ").append(
+                    res->getIdPath()).append(" (").append(toString(
+                    res->getRefCount())).append(")"));
 #ifdef UNITTESTS
-                    status = true;
+                status = true;
 #endif  // UNITTESTS
-                }
             }
-            ++iter;
         }
-#ifdef UNITTESTS
-        if (status)
-            reportAlways("Found leaked resources.");
-#endif  // UNITTESTS
+        ++iter;
     }
+#ifdef UNITTESTS
+    if (status)
+        reportAlways("Found leaked resources.");
+#endif  // UNITTESTS
 #endif  // DUMP_LEAKED_RESOURCES
 
-    delete2(resourceManager);
+    deleteResourceManager();
 }
 
-void ResourceManager::scheduleDelete(SDL_Surface *const surface)
+void scheduleDelete(SDL_Surface *const surface)
 {
     deletedSurfaces.insert(surface);
 }
 
-void ResourceManager::clearScheduled()
+void clearScheduled()
 {
     BLOCK_START("ResourceManager::clearScheduled")
     FOR_EACH (std::set<SDL_Surface*>::iterator, i, deletedSurfaces)
@@ -620,16 +630,16 @@ void ResourceManager::clearScheduled()
     BLOCK_END("ResourceManager::clearScheduled")
 }
 
-void ResourceManager::clearCache()
+void clearCache()
 {
     cleanProtected();
     while (cleanOrphans(true))
         continue;
 }
 
-int ResourceManager::calcMemoryLocal() const
+int calcMemoryLocal()
 {
-    int sz = sizeof(ResourceManager);
+    int sz = 24;
     FOR_EACH (std::set<SDL_Surface*>::iterator, it, deletedSurfaces)
     {
         sz += memoryManager.getSurfaceSize(*it);
@@ -637,7 +647,7 @@ int ResourceManager::calcMemoryLocal() const
     return sz;
 }
 
-int ResourceManager::calcMemoryChilds(const int level) const
+int calcMemoryChilds(const int level)
 {
     int sz = 0;
     FOR_EACH (ResourceCIterator, it, mResources)
@@ -656,3 +666,38 @@ int ResourceManager::calcMemoryChilds(const int level) const
     }
     return sz;
 }
+
+int calcMemory(const int level)
+{
+    const int sumLocal = calcMemoryLocal();
+    const int sumChilds = calcMemoryChilds(0);
+    memoryManager.printMemory("resource manager",
+        level,
+        sumLocal,
+        sumChilds);
+    return sumLocal + sumChilds;
+}
+
+int size() noexcept2
+{
+    return CAST_S32(mResources.size());
+}
+
+#if defined(DEBUG_DUMP_LEAKS) || defined(UNITTESTS)
+Resources &getResources()
+{
+    return mResources;
+}
+
+Resources &getOrphanedResources()
+{
+    return mOrphanedResources;
+}
+
+const std::set<Resource*> &getDeletedResources()
+{
+    return mDeletedResources;
+}
+#endif  // defined(DEBUG_DUMP_LEAKS) || defined(UNITTESTS)
+
+}  // namespace ResourceManager

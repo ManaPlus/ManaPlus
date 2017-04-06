@@ -47,11 +47,19 @@
 
 extern const char *dirSeparator;
 
+TEST_CASE("BrowserBox leak test1")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
+}
+
 TEST_CASE("BrowserBox tests", "browserbox")
 {
     client = new Client;
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -188,4 +196,13 @@ TEST_CASE("BrowserBox tests", "browserbox")
     VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
+}
+
+TEST_CASE("BrowserBox leak test2")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
 }

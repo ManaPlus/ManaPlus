@@ -74,6 +74,6 @@ ImageSet *Loader::getImageSet(const std::string &imagePath,
         "x").append(toString(
         h)).append(
         "]");
-    return static_cast<ImageSet*>(resourceManager->get(str,
+    return static_cast<ImageSet*>(ResourceManager::get(str,
         ImageSetLoader::load, &rl));
 }

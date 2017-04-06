@@ -300,7 +300,7 @@ Gui::~Gui()
 void Gui::logic()
 {
     BLOCK_START("Gui::logic")
-    resourceManager->clearScheduled();
+    ResourceManager::clearScheduled();
 
     if (!mTop)
     {
@@ -359,8 +359,7 @@ void Gui::slowLogic()
         if (time > mTime10 || mTime10 - time > 10)
         {
             mTime10 = time + 10;
-            if (resourceManager)
-                resourceManager->cleanOrphans();
+            ResourceManager::cleanOrphans();
         }
     }
 

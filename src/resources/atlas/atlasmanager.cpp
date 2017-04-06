@@ -132,12 +132,12 @@ void AtlasManager::loadImages(const StringVect &files,
         const std::string str = *it;
         // check is image with same name already in cache
         // and if yes, move it to deleted set
-        Resource *const res = resourceManager->getTempResource(str);
+        Resource *const res = ResourceManager::getTempResource(str);
         if (res)
         {
             // increase counter because in moveToDeleted it will be decreased.
             res->incRef();
-            resourceManager->moveToDeleted(res);
+            ResourceManager::moveToDeleted(res);
         }
 
         std::string path = str;
@@ -181,12 +181,12 @@ void AtlasManager::loadEmptyImages(const StringVect &files,
         const std::string str = *it;
         // check is image with same name already in cache
         // and if yes, move it to deleted set
-        Resource *const res = resourceManager->getTempResource(str);
+        Resource *const res = ResourceManager::getTempResource(str);
         if (res)
         {
             // increase counter because in moveToDeleted it will be decreased.
             res->incRef();
-            resourceManager->moveToDeleted(res);
+            ResourceManager::moveToDeleted(res);
         }
 
         Image *const image = new Image(0,
@@ -395,14 +395,14 @@ void AtlasManager::injectToResources(const AtlasResource *const resource)
         {
             Image *const image = atlas->atlasImage;
             if (image)
-                resourceManager->addResource(atlas->name, image);
+                ResourceManager::addResource(atlas->name, image);
             FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
                 if (!item)
                     continue;
                 // add each atlas sub image to resources
-                resourceManager->addResource(item->name, item->image);
+                ResourceManager::addResource(item->name, item->image);
             }
         }
     }
@@ -422,7 +422,7 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
             if (image)
             {
                 // move each atlas image to deleted
-                resourceManager->moveToDeleted(image);
+                ResourceManager::moveToDeleted(image);
             }
             FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
@@ -433,7 +433,7 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
                     if (image2)
                     {
                         // move each atlas sub image to deleted
-                        resourceManager->moveToDeleted(image2);
+                        ResourceManager::moveToDeleted(image2);
                     }
                 }
             }

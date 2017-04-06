@@ -28,6 +28,8 @@
 
 #include "fs/virtfs/virtfs.h"
 
+#include "gui/gui.h"
+
 #include "utils/delete2.h"
 
 #include "render/sdlgraphics.h"
@@ -38,12 +40,20 @@
 
 #include "debug.h"
 
+TEST_CASE("xmlutils leak test1")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
+}
+
 TEST_CASE("xmlutils readXmlIntVector 1")
 {
     client = new Client;
     XML::initXML();
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -89,7 +99,6 @@ TEST_CASE("xmlutils readXmlStringMap 1")
     client = new Client;
     XML::initXML();
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -134,7 +143,6 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     client = new Client;
     XML::initXML();
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     VirtFs::mountDirSilent("data/test", Append_false);
@@ -176,4 +184,13 @@ TEST_CASE("xmlutils readXmlIntMap 1")
     VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
+}
+
+TEST_CASE("xmlutils leak test2")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
 }

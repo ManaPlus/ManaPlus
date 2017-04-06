@@ -63,6 +63,6 @@ SpriteDef *Loader::getSprite(const std::string &path,
         "[").append(toString(
         variant).append(
         "]"));
-    return static_cast<SpriteDef*>(resourceManager->get(str,
+    return static_cast<SpriteDef*>(ResourceManager::get(str,
         SpriteDefLoader::load, &rl));
 }

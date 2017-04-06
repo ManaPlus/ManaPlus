@@ -66,7 +66,7 @@ Resource *Loader::getShaderProgram(const std::string &vertex,
                                    const bool isNewShader)
 {
     ShaderProgramLoader rl = { vertex, fragment, isNewShader };
-    return resourceManager->get("program_" + vertex + " + " + fragment,
+    return ResourceManager::get("program_" + vertex + " + " + fragment,
         ShaderProgramLoader::load, &rl);
 }
 

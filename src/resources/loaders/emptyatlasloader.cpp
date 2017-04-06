@@ -57,7 +57,7 @@ Resource *Loader::getEmptyAtlas(const std::string &name,
                                 const StringVect &files)
 {
     EmptyAtlasLoader rl = { name, &files };
-    return resourceManager->get("atlas_" + name, EmptyAtlasLoader::load, &rl);
+    return ResourceManager::get("atlas_" + name, EmptyAtlasLoader::load, &rl);
 }
 
 #endif  // USE_OPENGL

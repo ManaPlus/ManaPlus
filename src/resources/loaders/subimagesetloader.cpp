@@ -73,6 +73,6 @@ ImageSet *Loader::getSubImageSet(Image *const parent,
         "x").append(toString(
         height)).append(
         "]");
-    return static_cast<ImageSet*>(resourceManager->get(str,
+    return static_cast<ImageSet*>(ResourceManager::get(str,
         SubImageSetLoader::load, &rl));
 }

@@ -1474,7 +1474,6 @@ TEST_CASE("stringuntils timeDiffToString")
 TEST_CASE("stringuntils replaceItemLinks")
 {
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     VirtFs::mountDirSilent("data/test", Append_false);

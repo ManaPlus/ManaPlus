@@ -50,13 +50,21 @@
 
 #include "debug.h"
 
+TEST_CASE("chatutils leak test1")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
+}
+
 TEST_CASE("chatutils replaceVars")
 {
     client = new Client;
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     theme = new Theme;
@@ -259,4 +267,13 @@ TEST_CASE("chatutils textToMe")
     REQUIRE(textToMe("123") == "*123*");
     REQUIRE(textToMe("*") == "***");
     REQUIRE(textToMe("test line") == "*test line*");
+}
+
+TEST_CASE("chatutils leak test2")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
 }

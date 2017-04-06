@@ -334,7 +334,6 @@ void Client::gameInit()
         ConfigManager::storeSafeParameters();
 #endif  // ANDROID
 
-    ResourceManager::init();
     if (!VirtFs::setWriteDir(settings.localDataDir))
     {
         logger->error(strprintf("%s couldn't be set as home directory! "
@@ -1039,7 +1038,7 @@ int Client::gameExec()
                 delete2(mGame);
                 assertListener = new AssertListener;
                 Game::clearInstance();
-                resourceManager->cleanOrphans();
+                ResourceManager::cleanOrphans();
                 Party::clearParties();
                 Guild::clearGuilds();
                 NpcDialog::clearDialogs();
@@ -1111,7 +1110,7 @@ int Client::gameExec()
                             "local/"));
                     }
 
-                    resourceManager->clearCache();
+                    ResourceManager::clearCache();
 
                     loginData.clearUpdateHost();
                     serverVersion = 0;

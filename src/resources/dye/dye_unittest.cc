@@ -28,6 +28,8 @@
 
 #include "fs/virtfs/virtfs.h"
 
+#include "gui/gui.h"
+
 #include "resources/sdlimagehelper.h"
 #ifdef USE_SDL2
 #include "resources/surfaceimagehelper.h"
@@ -52,6 +54,15 @@
 #include "debug.h"
 
 #ifdef USE_OPENGL
+
+TEST_CASE("Dye leak test1")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
+}
 
 TEST_CASE("Dye replaceSOGLColor 1 1")
 {
@@ -2357,7 +2368,6 @@ TEST_CASE("Dye real dye")
     client = new Client;
     SDL_Init(SDL_INIT_VIDEO);
     logger = new Logger();
-    ResourceManager::init();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     VirtFs::mountDirSilent("data/test", Append_false);
@@ -2399,4 +2409,13 @@ TEST_CASE("Dye real dye")
     VirtFs::unmountDirSilent("../data/test");
     delete2(logger);
 //    VirtFs::deinit();
+}
+
+TEST_CASE("Dye leak test2")
+{
+    logger = new Logger();
+    REQUIRE(gui == nullptr);
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
+    delete2(logger);
 }

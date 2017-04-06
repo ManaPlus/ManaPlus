@@ -32,17 +32,15 @@
  */
 class Resource notfinal : public MemoryCounter
 {
-    friend class ResourceManager;
-
     public:
         /**
          * Constructor
          */
         Resource() :
             MemoryCounter(),
+            mTimeStamp(0),
             mIdPath(),
             mSource(),
-            mTimeStamp(0),
             mRefCount(0),
             mProtected(false),
 #ifdef DEBUG_DUMP_LEAKS
@@ -55,6 +53,11 @@ class Resource notfinal : public MemoryCounter
         }
 
         A_DELETE_COPY(Resource)
+
+        /**
+         * Destructor.
+         */
+        virtual ~Resource();
 
         /**
          * Increments the internal reference count.
@@ -75,6 +78,9 @@ class Resource notfinal : public MemoryCounter
          */
         const std::string &getIdPath() const noexcept2 A_WARN_UNUSED
         { return mIdPath; }
+
+        void setIdPath(const std::string &path)
+        { mIdPath = path; }
 
         /**
          * Return refCount for this resource.
@@ -110,19 +116,15 @@ class Resource notfinal : public MemoryCounter
         { mDumped = n; }
 #endif  // DEBUG_DUMP_LEAKS
 
+        time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
+
 #ifndef UNITTESTS
     protected:
 #endif  // UNITTESTS
-        /**
-         * Destructor.
-         */
-        virtual ~Resource();
-
         std::string mIdPath; /**< Path identifying this resource. */
         std::string mSource;
 
     private:
-        time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
         unsigned int mRefCount;  /**< Reference count. */
         bool mProtected;
         bool mNotCount;

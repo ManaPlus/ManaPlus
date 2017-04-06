@@ -53,7 +53,7 @@ AtlasResource::~AtlasResource()
             delete atlas;
         }
     }
-    resourceManager->clearDeleted(false);
+    ResourceManager::clearDeleted(false);
 }
 
 void AtlasResource::incRef()
