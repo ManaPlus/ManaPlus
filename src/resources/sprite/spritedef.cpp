@@ -125,7 +125,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     if (prot)
     {
         def->incRef();
-        def->setProtected(true);
+        def->mProtected = true;
     }
     doc->decRef();
     BLOCK_END("SpriteDef::load")
@@ -269,7 +269,7 @@ const ImageSet *SpriteDef::getImageSet(const std::string &imageSetName) const
         reportAlways("%s: Imageset \"%s\" not defined in %s",
             mSource.c_str(),
             imageSetName.c_str(),
-            getIdPath().c_str());
+            mIdPath.c_str());
         return nullptr;
     }
     return si->second;
@@ -291,7 +291,7 @@ void SpriteDef::loadAction(XmlNodeConstPtr node,
         reportAlways("%s: Unknown action \"%s\" defined in %s",
             mSource.c_str(),
             actionName.c_str(),
-            getIdPath().c_str());
+            mIdPath.c_str());
         return;
     }
     Action *const action = new Action(actionName);
@@ -333,7 +333,7 @@ void SpriteDef::loadAnimation(XmlNodeConstPtr animationNode,
         reportAlways("%s: Unknown direction \"%s\" used in %s",
             mSource.c_str(),
             directionName.c_str(),
-            getIdPath().c_str());
+            mIdPath.c_str());
         return;
     }
 

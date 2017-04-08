@@ -149,13 +149,13 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
     }
 
     SECTION("resourcemanager get 2")
@@ -165,9 +165,9 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
-        res->setSource("source 1");
-        REQUIRE(res->getSource() == "source 1");
+        REQUIRE(res->mRefCount == 1);
+        res->mSource = "source 1";
+        REQUIRE(res->mSource == "source 1");
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -176,17 +176,17 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 2);
-        REQUIRE(res2->getRefCount() == 2);
-        REQUIRE(res->getIdPath() == res2->getIdPath());
-        REQUIRE(res2->getSource() == "source 1");
+        REQUIRE(res->mRefCount == 2);
+        REQUIRE(res2->mRefCount == 2);
+        REQUIRE(res->mIdPath == res2->mIdPath);
+        REQUIRE(res2->mSource == "source 1");
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res->decRef();
         res2->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
     }
 
     SECTION("resourcemanager get 3")
@@ -196,17 +196,17 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
-        res->setSource("source 1");
+        res->mSource = "source 1";
         res->decRef();
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
         REQUIRE(ResourceManager::getOrphanedResources()["test1"] == res);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
     }
 
     SECTION("resourcemanager get 4")
@@ -216,14 +216,14 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
-        res->setSource("source 1");
+        res->mSource = "source 1";
         res->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
         REQUIRE(ResourceManager::getOrphanedResources()["test1"] == res);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
@@ -232,15 +232,15 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res2->getRefCount() == 1);
-        REQUIRE(res->getIdPath() == res2->getIdPath());
-        REQUIRE(res2->getSource() == "source 1");
+        REQUIRE(res2->mRefCount == 1);
+        REQUIRE(res->mIdPath == res2->mIdPath);
+        REQUIRE(res2->mSource == "source 1");
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res2->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
     }
 
     SECTION("resourcemanager get 5")
@@ -251,14 +251,14 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::isInCache("test1") == true);
         REQUIRE(res != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
-        res->setSource("source 1");
+        res->mSource = "source 1";
         res->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
         REQUIRE(ResourceManager::getOrphanedResources().size() == 1);
         REQUIRE(ResourceManager::getOrphanedResources()["test1"] == res);
@@ -277,14 +277,14 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::isInCache("test1") == true);
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res2->getRefCount() == 1);
-        REQUIRE(res2->getSource() == "");
+        REQUIRE(res2->mRefCount == 1);
+        REQUIRE(res2->mSource == "");
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res2->decRef();
-        REQUIRE(res2->getRefCount() == 0);
+        REQUIRE(res2->mRefCount == 0);
     }
 
     SECTION("resourcemanager get 6")
@@ -294,8 +294,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
-        res->setSource("source 1");
+        REQUIRE(res->mRefCount == 1);
+        res->mSource = "source 1";
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -305,8 +305,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 2);
-        REQUIRE(res2->getRefCount() == 1);
-        REQUIRE(res2->getSource() == "");
+        REQUIRE(res2->mRefCount == 1);
+        REQUIRE(res2->mSource == "");
         REQUIRE(ResourceManager::getResources().size() == 2 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getResources()["test2"] == res2);
@@ -314,8 +314,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res->decRef();
         res2->decRef();
-        REQUIRE(res->getRefCount() == 0);
-        REQUIRE(res2->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
+        REQUIRE(res2->mRefCount == 0);
     }
 
     SECTION("resourcemanager getFromCache 1")
@@ -325,7 +325,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -333,16 +333,16 @@ TEST_CASE("resourcemanager", "resourcemanager")
         Resource *const res2 = ResourceManager::getFromCache("test1");
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res2->getRefCount() == 2);
+        REQUIRE(res2->mRefCount == 2);
         REQUIRE(res == res2);
-        REQUIRE(res2->getSource() == "");
+        REQUIRE(res2->mSource == "");
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res->decRef();
         res->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
     }
 
     SECTION("resourcemanager getFromCache 2")
@@ -352,25 +352,25 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
         Resource *const res2 = ResourceManager::getFromCache("test1");
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res2->getRefCount() == 1);
+        REQUIRE(res2->mRefCount == 1);
         REQUIRE(res == res2);
-        REQUIRE(res2->getSource() == "");
+        REQUIRE(res2->mSource == "");
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
     }
 
     SECTION("resourcemanager getFromCache 3")
@@ -380,8 +380,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
-        res->setSource("source 1");
+        REQUIRE(res->mRefCount == 1);
+        res->mSource = "source 1";
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -391,8 +391,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 2);
-        REQUIRE(res2->getRefCount() == 1);
-        REQUIRE(res2->getSource() == "");
+        REQUIRE(res2->mRefCount == 1);
+        REQUIRE(res2->mSource == "");
         REQUIRE(ResourceManager::getResources().size() == 2 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getResources()["test2"] == res2);
@@ -406,8 +406,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(testResouceCounter == 2);
         REQUIRE(res == resC);
         REQUIRE(res2 == res2C);
-        REQUIRE(resC->getRefCount() == 2);
-        REQUIRE(res2C->getRefCount() == 2);
+        REQUIRE(resC->mRefCount == 2);
+        REQUIRE(res2C->mRefCount == 2);
         REQUIRE(ResourceManager::getResources().size() == 2 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == resC);
         REQUIRE(ResourceManager::getResources()["test2"] == res2C);
@@ -418,8 +418,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
         res->decRef();
         res2->decRef();
         res2->decRef();
-        REQUIRE(res->getRefCount() == 0);
-        REQUIRE(res2->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
+        REQUIRE(res2->mRefCount == 0);
     }
 
     SECTION("resourcemanager addResource 1")
@@ -429,13 +429,13 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(testResouceCounter == 1);
         ResourceManager::addResource("test1", res);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
     }
 
     SECTION("resourcemanager isInCache 1")
@@ -449,13 +449,13 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::isInCache("test2") == false);
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
     }
 
     SECTION("resourcemanager getTempResource 1")
@@ -466,7 +466,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(res != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -475,15 +475,15 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::getTempResource("test2") == nullptr);
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res2->getRefCount() == 1);
+        REQUIRE(res2->mRefCount == 1);
         REQUIRE(res == res2);
-        REQUIRE(res2->getSource() == "");
+        REQUIRE(res2->mSource == "");
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         res->decRef();
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
     }
 
     SECTION("resourcemanager moveToDeleted 1")
@@ -494,7 +494,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -515,14 +515,14 @@ TEST_CASE("resourcemanager", "resourcemanager")
         res->incRef();
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 2);
+        REQUIRE(res->mRefCount == 2);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         ResourceManager::moveToDeleted(res);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().size() == 1);
@@ -537,7 +537,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -545,7 +545,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
 
         res->decRef();
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 0);
+        REQUIRE(res->mRefCount == 0);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
         REQUIRE(ResourceManager::getOrphanedResources().size() == 1);
         REQUIRE(ResourceManager::getOrphanedResources()["test1"] == res);
@@ -566,7 +566,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -587,7 +587,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -610,12 +610,12 @@ TEST_CASE("resourcemanager", "resourcemanager")
             TestLoader::load, &rl);
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
-        res->setProtected(true);
+        res->mProtected = true;
         ResourceManager::cleanProtected();
 
         REQUIRE(testResouceCounter == 1);
@@ -635,21 +635,21 @@ TEST_CASE("resourcemanager", "resourcemanager")
         res->incRef();
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 2);
+        REQUIRE(res->mRefCount == 2);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         ResourceManager::moveToDeleted(res);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().size() == 1);
 
         ResourceManager::clearDeleted();
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().size() == 1);
@@ -665,14 +665,14 @@ TEST_CASE("resourcemanager", "resourcemanager")
         res->incRef();
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res != nullptr);
-        REQUIRE(res->getRefCount() == 2);
+        REQUIRE(res->mRefCount == 2);
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
         ResourceManager::moveToDeleted(res);
         REQUIRE(testResouceCounter == 1);
-        REQUIRE(res->getRefCount() == 1);
+        REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().size() == 1);

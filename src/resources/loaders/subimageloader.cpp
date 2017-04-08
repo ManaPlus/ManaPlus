@@ -57,7 +57,7 @@ namespace
             if (!res)
             {
                 reportAlways("SubImage loading error: %s",
-                    rl->parent->getSource().c_str());
+                    rl->parent->mSource.c_str());
             }
             return res;
         }
@@ -75,7 +75,7 @@ Image *Loader::getSubImage(Image *const parent,
 
     const SubImageLoader rl = { parent, x, y, width, height};
 
-    const std::string str = std::string(parent->getIdPath()).append(
+    const std::string str = std::string(parent->mIdPath).append(
         ",[").append(
         toString(x)).append(
         ",").append(

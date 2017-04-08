@@ -1240,7 +1240,7 @@ static void showRes(std::string str, ResourceManager::Resources *res)
     const ResourceManager::ResourceIterator iter_end = res->end();
     while (iter != iter_end)
     {
-        if (iter->second && iter->second->getRefCount())
+        if (iter->second && iter->second->mRefCount)
         {
             char type = ' ';
             char isNew = 'N';
@@ -1261,7 +1261,7 @@ static void showRes(std::string str, ResourceManager::Resources *res)
                 id = image->getGLImage();
             logger->log("Resource %c%c: %s (%d) id=%d", type,
                 isNew, iter->second->getIdPath().c_str(),
-                iter->second->getRefCount(), id);
+                iter->second->mRefCount, id);
         }
         ++ iter;
     }

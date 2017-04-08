@@ -527,7 +527,7 @@ void ParticleEmitter::createParticles(const int tick,
         Particle *newParticle = nullptr;
         if (mParticleImage)
         {
-            const std::string &name = mParticleImage->getIdPath();
+            const std::string &name = mParticleImage->mIdPath;
             if (ImageParticle::imageParticleCountByName.find(name) ==
                 ImageParticle::imageParticleCountByName.end())
             {

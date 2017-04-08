@@ -39,7 +39,7 @@ ImageParticle::ImageParticle(Image *restrict const image) :
     {
         mImage->incRef();
 
-        const std::string &restrict name = mImage->getIdPath();
+        const std::string &restrict name = mImage->mIdPath;
         StringIntMapIter it
             = ImageParticle::imageParticleCountByName.find(name);
         if (it == ImageParticle::imageParticleCountByName.end())

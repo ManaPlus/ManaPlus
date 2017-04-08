@@ -53,7 +53,7 @@ namespace
             if (!rescaled)
             {
                 reportAlways("Rescale image failed: %s",
-                    rl->image->getIdPath().c_str());
+                    rl->image->mIdPath.c_str());
                 return nullptr;
             }
             return rescaled;
@@ -68,7 +68,7 @@ Image *Loader::getRescaled(const Image *const image,
     if (!image)
         return nullptr;
 
-    const std::string idPath = image->getIdPath() + strprintf(
+    const std::string idPath = image->mIdPath + strprintf(
         "_rescaled%dx%d", width, height);
     const RescaledLoader rl = { image, width, height };
     Image *const img = static_cast<Image *const>(

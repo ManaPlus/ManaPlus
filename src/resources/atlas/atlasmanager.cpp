@@ -216,7 +216,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
         if (img)
         {
             atlas->name = std::string("atlas_").append(name).append(
-                "_").append(img->getIdPath());
+                "_").append(img->mIdPath);
             break;
         }
     }
@@ -227,7 +227,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
         if (img)
         {
             AtlasItem *const item = new AtlasItem(img);
-            item->name = img->getIdPath();
+            item->name = img->mIdPath;
             // start next line
             if (x + img->mBounds.w > size)
             {
@@ -244,7 +244,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
                 atlases.push_back(atlas);
                 atlas = new TextureAtlas;
                 atlas->name = std::string("atlas_").append(name).append(
-                    "_").append(img->getIdPath());
+                    "_").append(img->mIdPath);
             }
 
             if (img->mBounds.h > tempHeight)

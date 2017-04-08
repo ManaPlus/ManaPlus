@@ -117,8 +117,8 @@ ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
     mglGetProgramInfoLog(programId, len, &len, buf);
     buf[len] = 0;
     logger->log("Program '%s, %s' compilation error: %s",
-        vertexShader->getIdPath().c_str(),
-        fragmentShader->getIdPath().c_str(),
+        vertexShader->mIdPath.c_str(),
+        fragmentShader->mIdPath.c_str(),
         buf);
     delete [] buf;
     mglDeleteProgram(programId);

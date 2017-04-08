@@ -67,7 +67,7 @@ ImageSet *Loader::getSubImageSet(Image *const parent,
 
     const SubImageSetLoader rl = { parent, width, height };
     std::string str = std::string(
-        parent->getIdPath()).append(
+        parent->mIdPath).append(
         ", set[").append(toString(
         width)).append(
         "x").append(toString(

@@ -50,7 +50,7 @@ ImageSet::ImageSet(Image *const img, const int width, const int height,
                  x += wAdd)
             {
                 Image *const image = img->getSubImage(x, y, width, height);
-                image->setNotCount(true);
+                image->mNotCount = true;
                 mImages.push_back(image);
             }
         }

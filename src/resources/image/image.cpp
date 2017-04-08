@@ -519,7 +519,7 @@ int Image::calcMemoryLocal() const
 #ifdef USE_OPENGL
 void Image::decRef()
 {
-    if (mGLImage && getRefCount() <= 1)
+    if (mGLImage && mRefCount <= 1)
         OpenGLImageHelper::invalidate(mGLImage);
     Resource::decRef();
 }

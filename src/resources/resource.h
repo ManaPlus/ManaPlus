@@ -73,61 +73,20 @@ class Resource notfinal : public MemoryCounter
          */
         virtual void decRef();
 
-        /**
-         * Return the path identifying this resource.
-         */
-        const std::string &getIdPath() const noexcept2 A_WARN_UNUSED
-        { return mIdPath; }
-
-        void setIdPath(const std::string &path)
-        { mIdPath = path; }
-
-        /**
-         * Return refCount for this resource.
-         */
-        unsigned getRefCount() const noexcept2 A_WARN_UNUSED
-        { return mRefCount; }
-
-        void setSource(const std::string &str) noexcept2
-        { mSource = str; }
-
-        std::string getSource() const noexcept2 A_WARN_UNUSED
-        { return mSource; }
-
-        void setProtected(const bool b) noexcept2
-        { mProtected = b; }
-
-        bool isProtected() const noexcept2
-        { return mProtected; }
-
-        void setNotCount(const bool b) noexcept2
-        { mNotCount = b; }
-
         int calcMemoryLocal() const override;
 
         std::string getCounterName() const override
         { return mIdPath + "-" + mSource; }
 
-#ifdef DEBUG_DUMP_LEAKS
-        bool getDumped() const noexcept2 A_WARN_UNUSED
-        { return mDumped; }
-
-        void setDumped(const bool n) noexcept2
-        { mDumped = n; }
-#endif  // DEBUG_DUMP_LEAKS
-
         time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
 
-#ifndef UNITTESTS
-    protected:
-#endif  // UNITTESTS
         std::string mIdPath; /**< Path identifying this resource. */
         std::string mSource;
 
-    private:
         unsigned int mRefCount;  /**< Reference count. */
         bool mProtected;
         bool mNotCount;
+
 #ifdef DEBUG_DUMP_LEAKS
         bool mDumped;
 #endif  // DEBUG_DUMP_LEAKS
