@@ -24,9 +24,12 @@
 #define RESOURCES_RESOURCEMANAGER_RESOURCEMANAGER_H
 
 #include "resources/resourcefunctiontypes.h"
+
+#if defined(DEBUG_DUMP_LEAKS) || defined(UNITTESTS)
 #include "resources/resourcetypes.h"
 
 #include <set>
+#endif  // defined(DEBUG_DUMP_LEAKS) || defined(UNITTESTS)
 
 #include "localconsts.h"
 

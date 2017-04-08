@@ -35,7 +35,6 @@
 #include "resources/sprite/spritedef.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
 
 #ifndef USE_OPENGL
 #include <SDL_image.h>
