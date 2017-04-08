@@ -58,7 +58,7 @@ WalkLayer *Loader::getWalkLayer(const std::string &name,
                                 Map *const map)
 {
     WalkLayerLoader rl = {name, map};
-    return static_cast<WalkLayer*>(ResourceManager::get("map_" + name,
+    return static_cast<WalkLayer*>(ResourceManager::get("walklayer_" + name,
         WalkLayerLoader::load, &rl));
 }
 #else  // DYECMD

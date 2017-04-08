@@ -79,5 +79,5 @@ SDLMusic *Loader::getMusic(const std::string &idPath)
 {
     ResourceLoader rl = { idPath };
     return static_cast<SDLMusic*>(ResourceManager::get(
-        idPath, ResourceLoader::load, &rl));
+        "music_" + idPath, ResourceLoader::load, &rl));
 }

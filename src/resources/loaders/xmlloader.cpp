@@ -59,6 +59,6 @@ XML::Document *Loader::getXml(const std::string &idPath,
 {
     ResourceLoader rl = { idPath, useResman, skipError };
     return static_cast<XML::Document*>(ResourceManager::get(
-        idPath, ResourceLoader::load, &rl));
+        "xml_" + idPath, ResourceLoader::load, &rl));
 }
 

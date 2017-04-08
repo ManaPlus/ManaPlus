@@ -59,6 +59,7 @@ SpriteDef *Loader::getSprite(const std::string &path,
 {
     SpriteDefLoader rl = { path, variant};
     const std::string str = std::string(
+        "sprite_").append(
         path).append(
         "[").append(toString(
         variant).append(
