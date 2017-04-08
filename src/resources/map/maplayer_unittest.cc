@@ -42,8 +42,6 @@
 #include "resources/map/maplayer.h"
 #include "resources/map/speciallayer.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #include "debug.h"
 
 TEST_CASE("MapLayer getTileDrawWidth")

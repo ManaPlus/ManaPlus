@@ -36,8 +36,6 @@
 
 #include "resources/loaders/imageloader.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #include "utils/gettext.h"
 
 #include <iostream>

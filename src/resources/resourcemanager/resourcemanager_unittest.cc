@@ -20,8 +20,6 @@
 
 #include "catch.hpp"
 #include "client.h"
-#include "configmanager.h"
-#include "configuration.h"
 #include "dirs.h"
 #include "logger.h"
 #include "graphicsmanager.h"
