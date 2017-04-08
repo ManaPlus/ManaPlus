@@ -1327,7 +1327,7 @@ void MobileOpenGLGraphics::clearScreen() const restrict2
 void MobileOpenGLGraphics::debugBindTexture(const Image *restrict const image)
                                             restrict2
 {
-    const std::string texture = image->getIdPath();
+    const std::string texture = image->mIdPath;
     if (mOldTexture != texture)
     {
         if ((!mOldTexture.empty() || !texture.empty())

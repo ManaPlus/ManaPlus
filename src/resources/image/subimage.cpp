@@ -44,12 +44,12 @@ SubImage::SubImage(Image *const parent,
         mHasAlphaChannel = mParent->hasAlphaChannel();
         mIsAlphaVisible = mHasAlphaChannel;
         mAlphaChannel = mParent->SDLgetAlphaChannel();
-        mSource = parent->getIdPath();
+        mSource = parent->mIdPath;
 #ifdef DEBUG_IMAGES
         logger->log("set name2 %p, %s", this, mSource.c_str());
 #endif  // DEBUG_IMAGES
 #ifdef DEBUG_BIND_TEXTURE
-        mIdPath = parent->getIdPath();
+        mIdPath = parent->mIdPath;
 #endif  // DEBUG_BIND_TEXTURE
     }
     else

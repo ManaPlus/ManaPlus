@@ -1321,7 +1321,7 @@ void MobileOpenGL2Graphics::drawLineArrays(const int size) restrict2
 void MobileOpenGL2Graphics::debugBindTexture(const Image *restrict const image)
                                              restrict2
 {
-    const std::string texture = image->getIdPath();
+    const std::string texture = image->mIdPath;
     if (mOldTexture != texture)
     {
         if ((!mOldTexture.empty() || !texture.empty())
