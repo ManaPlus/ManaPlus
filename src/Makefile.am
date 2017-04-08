@@ -457,6 +457,8 @@ BASE_SRC += events/actionevent.h \
 	      enums/resources/questtype.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
+	      resources/resourcefunctiontypes.h \
+	      resources/resourcetypes.h \
 	      resources/loaders/atlasloader.cpp \
 	      resources/loaders/atlasloader.h \
 	      resources/loaders/emptyatlasloader.cpp \

@@ -23,9 +23,10 @@
 #ifndef RESOURCES_RESOURCEMANAGER_RESOURCEMANAGER_H
 #define RESOURCES_RESOURCEMANAGER_RESOURCEMANAGER_H
 
-#include <map>
+#include "resources/resourcefunctiontypes.h"
+#include "resources/resourcetypes.h"
+
 #include <set>
-#include <string>
 
 #include "localconsts.h"
 
@@ -36,14 +37,6 @@ struct SDL_RWops;
 
 namespace ResourceManager
 {
-    typedef Resource *(*loader)(SDL_RWops *rw,
-                                const std::string &name);
-    typedef Resource *(&generator)(const void *const data);
-
-    typedef std::map<std::string, Resource*> Resources;
-    typedef Resources::iterator ResourceIterator;
-    typedef Resources::const_iterator ResourceCIterator;
-
     /**
      * Cleans up remaining resources, warning about resources
      * that were still referenced.
