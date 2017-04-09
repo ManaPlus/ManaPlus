@@ -36,6 +36,10 @@
 
 #include "utils/checkutils.h"
 
+#if !defined(DEBUG_DUMP_LEAKS) && !defined(UNITTESTS)
+#include "resources/resourcetypes.h"
+#endif  // defined(DEBUG_DUMP_LEAKS) || defined(UNITTESTS)
+
 #ifndef USE_OPENGL
 #include <SDL_image.h>
 #endif  // USE_OPENGL
