@@ -291,6 +291,11 @@ packet(CMSG_GUILD_INVITE2,                0x0000,   0, nullptr);
 packet(CMSG_STORAGE_PASSWORD,             0x0000,   0, nullptr);
 packet(CMSG_ITEM_LIST_WINDOW_SELECT,      0x0000,   0, nullptr);
 packet(CMSG_SELECT_CART,                  0x0000,   0, nullptr);
+packet(CMSG_ROULETTE_INFO,                0x0000,   0, nullptr);
+packet(CMSG_ROULETTE_GENERATE,            0x0000,   0, nullptr);
+packet(CMSG_ROULETTE_OPEN,                0x0000,   0, nullptr);
+packet(CMSG_ROULETTE_CLOSE,               0x0000,   0, nullptr);
+packet(CMSG_ROULETTE_RECV_ITEM,           0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1158,6 +1163,12 @@ if (packetVersion >= 20140115)
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x0965,  -1, clif->pItemListWindowSelected);
 }
 
+// 20140129
+if (packetVersion >= 20140129)
+{
+    packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0a01,   3, clif->pHotkeyRowShift);
+}
+
 // 20140205
 if (packetVersion >= 20140205)
 {
@@ -1257,6 +1268,26 @@ if (packetVersion >= 20140416)
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x0281,  -1, clif->pItemListWindowSelected);
 }
 
+// 20140605
+if (packetVersion >= 20140605)
+{
+    packet(CMSG_ROULETTE_INFO,            0x0a1b,   2, clif->pRouletteInfo);
+}
+
+// 20140611
+if (packetVersion >= 20140611)
+{
+    packet(CMSG_ROULETTE_GENERATE,        0x0a1f,   2, clif->pRouletteGenerate);
+    packet(CMSG_ROULETTE_OPEN,            0x0a19,   2, clif->pRouletteOpen);
+    packet(CMSG_ROULETTE_CLOSE,           0x0a1d,   2, clif->pRouletteClose);
+}
+
+// 20140618
+if (packetVersion >= 20140618)
+{
+    packet(CMSG_ROULETTE_RECV_ITEM,       0x0a21,   3, clif->pRouletteRecvItem);
+}
+
 // 20141016
 if (packetVersion >= 20141016)
 {
@@ -1283,14 +1314,18 @@ if (packetVersion >= 20141022)
     packet(CMSG_MAP_SERVER_CONNECT,       0x093b,  19, clif->pWantToConnection);
     packet(CMSG_PARTY_INVITE2,            0x0896,  26, clif->pPartyInvite2);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x091a,  26, clif->pFriendsListAdd);
-    packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0a01,   3, clif->pHotkeyRowShift);
     packet(CMSG_STORAGE_PASSWORD,         0x0438,  36, clif->pStoragePassword);
+}
+
+// 20141119
+if (packetVersion >= 20141119)
+{
+    packet(CMSG_QUICK_IDENTIFY_ITEM,      0x0a35,   4, clif->pOneClick_ItemIdentify);
 }
 
 // 20150513
 if (packetVersion >= 20150513)
 {
-    packet(CMSG_QUICK_IDENTIFY_ITEM,      0x0a35,   4, clif->pOneClick_ItemIdentify);
     packet(CMSG_BUYINGSTORE_CLOSE,        0x022d,   2, clif->pReqCloseBuyingStore);
     packet(CMSG_HOMUNCULUS_MENU,          0x0817,   5, clif->pHomMenu);
     packet(CMSG_SEARCHSTORE_CLICK,        0x0838,  12, clif->pSearchStoreInfoListItemClick);

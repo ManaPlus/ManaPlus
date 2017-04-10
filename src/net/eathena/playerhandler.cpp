@@ -457,7 +457,7 @@ void PlayerHandler::setShortcut(const int idx,
 
 void PlayerHandler::shortcutShiftRow(const int row) const
 {
-    if (packetVersion < 20141022)
+    if (packetVersion < 20140129)
         return;
     if (serverVersion != 0 && serverVersion < 11)
         return;
