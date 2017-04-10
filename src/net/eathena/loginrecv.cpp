@@ -157,10 +157,16 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
         {
             packetVersion = msg.readInt32("packet version");
             logger->log("Hercules packet version: %d", packetVersion);
+            if (packetVersion == 20150000)
+            {
+                packetVersion = 20141022;
+                logger->log("autofix Hercules packet version to: %d",
+                    packetVersion);
+            }
         }
         else
         {
-            packetVersion = 20150000;
+            packetVersion = 20141022;
             logger->log("Possible hercules packet version: %d", packetVersion);
         }
     }
