@@ -4523,7 +4523,6 @@ ok_job:
   dependencies: []
   when: on_success
   variables:
-    GIT_STRATEGY: none
     UPDATEREPOS: ""
     PMUPDATE: "echo"
     PMINSTALL: "echo"
@@ -4536,7 +4535,6 @@ fail_job:
   dependencies: []
   when: on_failure
   variables:
-    GIT_STRATEGY: none
     UPDATEREPOS: ""
     PMUPDATE: "echo"
     PMINSTALL: "echo"
