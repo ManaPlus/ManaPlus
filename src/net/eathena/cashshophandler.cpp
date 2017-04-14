@@ -91,7 +91,7 @@ void CashShopHandler::buyItems(const int points,
     createOutPacket(CMSG_NPC_CASH_SHOP_BUY);
     outMsg.writeInt16(CAST_S16(10 + pairSize * cnt), "len");
     outMsg.writeInt32(points, "points");
-    outMsg.writeInt16(cnt, "count");
+    outMsg.writeInt16(CAST_S16(cnt), "count");
     FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         ShopItem *const item = *it;
