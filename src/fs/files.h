@@ -58,7 +58,7 @@ namespace Files
     bool loadTextFileLocal(const std::string &fileName,
                            StringVect &lines);
 
-    void saveTextFile(std::string path,
+    void saveTextFile(const std::string &path,
                       const std::string &restrict name,
                       const std::string &restrict text);
 

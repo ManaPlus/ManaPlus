@@ -150,7 +150,7 @@ namespace Zip
                 header->fileName = std::string(
                     reinterpret_cast<char*>(buf));
                 prepareFsPath(header->fileName);
-                header->dataOffset = ftell(arcFile) + extraFieldLen;
+                header->dataOffset = CAST_S32(ftell(arcFile) + extraFieldLen);
                 fseek(arcFile, extraFieldLen + header->compressSize, SEEK_CUR);
                 // pointer on 30 + fileNameLen + extraFieldLen + compressSize
                 if (findLast(header->fileName, dirSeparator) == false)
@@ -292,7 +292,7 @@ namespace Zip
         strm.next_in = in;
         strm.avail_in = header->compressSize;
         strm.next_out = out;
-        strm.avail_out = outSize;
+        strm.avail_out = CAST_U32(outSize);
 
         int ret = inflateInit2(&strm, -MAX_WBITS);
         if (ret != Z_OK)

@@ -73,7 +73,7 @@ namespace VirtFsZip
         }
         else if (whence == SEEK_END)
         {
-            pos = mSize + offset;
+            pos = static_cast<RWOPSINT>(mSize + offset);
         }
         else
         {

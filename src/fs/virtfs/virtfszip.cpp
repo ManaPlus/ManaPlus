@@ -277,8 +277,8 @@ namespace VirtFsZip
             reportAlways("VirtFsZip::read buffer is null");
             return 0;
         }
-        const uint32_t pos = file->mPos;
-        const uint32_t sz = file->mSize;
+        const uint32_t pos = CAST_S32(file->mPos);
+        const uint32_t sz = CAST_S32(file->mSize);
         // if outside of buffer, return
         if (pos >= sz)
             return 0;

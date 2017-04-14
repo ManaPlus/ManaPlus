@@ -42,7 +42,7 @@ void TextDb::load()
 }
 
 void TextDb::loadXmlFile(const std::string &fileName,
-                             const SkipError skipError)
+                         const SkipError skipError)
 {
     XML::Document *doc = new XML::Document(fileName,
         UseVirtFs_true,

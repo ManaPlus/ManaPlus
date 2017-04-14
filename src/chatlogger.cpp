@@ -36,8 +36,6 @@
 
 #include "fs/mkdir.h"
 
-#include "fs/virtfs/virtfs.h"
-
 #include "debug.h"
 
 ChatLogger *chatLogger = nullptr;

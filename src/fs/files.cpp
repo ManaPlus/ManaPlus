@@ -249,7 +249,7 @@ bool Files::loadTextFileLocal(const std::string &fileName,
     return true;
 }
 
-void Files::saveTextFile(std::string path,
+void Files::saveTextFile(const std::string &path,
                          const std::string &restrict name,
                          const std::string &restrict text)
 {

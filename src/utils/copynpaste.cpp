@@ -470,8 +470,8 @@ static bool runxsel(const std::string &text, const char *p1, const char *p2)
 
     // parent
     close(fd[0]);
-    const int len = text.length();
-    if (write(fd[1], text.c_str(), len) != len)
+    const size_t len = text.length();
+    if (write(fd[1], text.c_str(), len) != static_cast<ssize_t>(len))
     {
         close(fd[1]);
         return false;

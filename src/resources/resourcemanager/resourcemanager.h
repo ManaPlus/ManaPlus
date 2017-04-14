@@ -36,7 +36,6 @@
 class Resource;
 
 struct SDL_Surface;
-struct SDL_RWops;
 
 namespace ResourceManager
 {

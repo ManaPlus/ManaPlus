@@ -493,7 +493,7 @@ namespace VirtFsDir
             buffer[fileSize - 1] = 0;
 
 #ifdef USE_FILE_FOPEN
-        const int cnt = fread(buffer, 1, fileSize, fd);
+        const int cnt = CAST_S32(fread(buffer, 1, fileSize, fd));
 #else  // USE_FILE_FOPEN
         const int cnt = ::read(fd, buffer, fileSize);
 #endif  // USE_FILE_FOPEN
