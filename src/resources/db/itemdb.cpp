@@ -59,7 +59,6 @@ namespace
     StringIntMap mTags;
     std::map<std::string, ItemSoundEvent::Type> mSoundNames;
     int mNumberOfHairstyles = 1;
-    int mNumberOfRaces = 1;
 }  // namespace
 
 // Forward declarations
@@ -227,7 +226,6 @@ void ItemDB::load()
     {
         races ++;
     }
-    mNumberOfRaces = races - 100;
 }
 
 void ItemDB::loadXmlFile(const std::string &fileName,
