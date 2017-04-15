@@ -1,3 +1,8 @@
+2017-04-15 New release 1.7.4.15
+add: server language flag on client
+add: quick messages with auto translation from player server language to english.
+add: update packets acording to hercules changes.
+
 2017-04-01 New release 1.7.4.1
 add: optional support for tinyxml2 (by default used libxml2)
 add: update readme.
