@@ -282,4 +282,7 @@ std::string pathJoin(std::string str1,
                      const std::string &str2,
                      const std::string &str3);
 
+std::string urlJoin(std::string str1,
+                    const std::string &str2);
+
 #endif  // UTILS_STRINGUTILS_H

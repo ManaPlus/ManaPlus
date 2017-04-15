@@ -596,7 +596,7 @@ void UpdaterWindow::download()
     else
     {
         mDownload = new Net::Download(this,
-            pathJoin(mUpdateHost, mCurrentFile),
+            urlJoin(mUpdateHost, mCurrentFile),
             &updateProgress,
             false, false, mValidateXml);
 

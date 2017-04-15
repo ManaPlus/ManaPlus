@@ -1143,6 +1143,43 @@ std::string pathJoin(std::string str1,
     }
 }
 
+std::string urlJoin(std::string str1,
+                    const std::string &str2)
+{
+    const char sep = '/';
+    std::string sepStr = "/";
+
+    if (str1.empty())
+    {
+        if (str2[0] == sep)
+            return str2;
+        else
+            return sepStr.append(str2);
+    }
+    const size_t sz1 = str1.size();
+    if (str2.empty())
+    {
+        if (str1[sz1 - 1] == sep)
+            return str1;
+        else
+            return str1.append(sepStr);
+    }
+    if (str1[sz1 - 1] == sep)
+    {
+        if (str2[0] == sep)
+            return str1.append(str2.substr(1));
+        else
+            return str1.append(str2);
+    }
+    else
+    {
+        if (str2[0] == sep)
+            return str1.append(str2);
+        else
+            return str1.append(sepStr).append(str2);
+    }
+}
+
 #ifndef DYECMD
 void replaceItemLinks(std::string &msg)
 {
