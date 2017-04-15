@@ -10980,7 +10980,7 @@ msgstr "CelKaptilo"
 #: src/utils/booleanoptions.h:29
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Opcioj por /%s estas «jes,» «ne,» «vera,» «malvera,» «1,» kaj «0.»"
+msgstr "Opcioj por /%s estas «jes,» «ne,» «vera,» «malvera,» «1,» kaj «0»."
 
 #. TRANSLATORS: uptime command
 #: src/utils/stringutils.cpp:973
