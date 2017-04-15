@@ -228,6 +228,7 @@
 		<Unit filename="src/resources/db/commandsdb.cpp" />
 		<Unit filename="src/resources/db/skillunitdb.cpp" />
 		<Unit filename="src/resources/db/deaddb.cpp" />
+		<Unit filename="src/resources/db/textdb.cpp" />
 		<Unit filename="src/resources/db/palettedb.cpp" />
 		<Unit filename="src/resources/db/moddb.cpp" />
 		<Unit filename="src/resources/db/emotedb.cpp" />
@@ -242,6 +243,7 @@
 		<Unit filename="src/resources/db/badgesdb.cpp" />
 		<Unit filename="src/resources/db/mapdb.cpp" />
 		<Unit filename="src/resources/db/avatardb.cpp" />
+		<Unit filename="src/resources/db/languagedb.cpp" />
 		<Unit filename="src/resources/db/colordb.cpp" />
 		<Unit filename="src/resources/db/statdb.cpp" />
 		<Unit filename="src/resources/db/horsedb.cpp" />
@@ -954,6 +956,7 @@
 		<Unit filename="src/resources/npcdialoginfo.h" />
 		<Unit filename="src/resources/sdlmusic.h" />
 		<Unit filename="src/resources/db/weaponsdb.h" />
+		<Unit filename="src/resources/db/textdb.h" />
 		<Unit filename="src/resources/db/commandsdb.h" />
 		<Unit filename="src/resources/db/itemdb.h" />
 		<Unit filename="src/resources/db/elementaldb.h" />
@@ -972,6 +975,7 @@
 		<Unit filename="src/resources/db/emotedb.h" />
 		<Unit filename="src/resources/db/palettedb.h" />
 		<Unit filename="src/resources/db/statdb.h" />
+		<Unit filename="src/resources/db/languagedb.h" />
 		<Unit filename="src/resources/db/homunculusdb.h" />
 		<Unit filename="src/resources/db/chardb.h" />
 		<Unit filename="src/resources/db/npcdb.h" />
@@ -1045,6 +1049,7 @@
 		<Unit filename="src/resources/sdl2imagehelper.h" />
 		<Unit filename="src/resources/emoteinfo.h" />
 		<Unit filename="src/resources/mapreader.h" />
+		<Unit filename="src/resources/resourcetypes.h" />
 		<Unit filename="src/resources/beingmenuitem.h" />
 		<Unit filename="src/resources/item/complexitem.h" />
 		<Unit filename="src/resources/item/item.h" />
@@ -1053,6 +1058,7 @@
 		<Unit filename="src/resources/item/cardslist.h" />
 		<Unit filename="src/resources/openglscreenshothelper.h" />
 		<Unit filename="src/resources/memorymanager.h" />
+		<Unit filename="src/resources/resourcefunctiontypes.h" />
 		<Unit filename="src/resources/fboinfo.h" />
 		<Unit filename="src/resources/imageset.h" />
 		<Unit filename="src/resources/surfaceimagehelper.h" />
