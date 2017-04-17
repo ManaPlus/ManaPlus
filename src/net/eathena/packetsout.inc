@@ -1136,6 +1136,11 @@ if (packetVersion >= 20131218)
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x0281,  -1, clif->pItemListWindowSelected);
 }
 
+if (packetVersion >= 20131218)
+{
+    packet(CMSG_ADMIN_MONSTER_ITEM,       0x09ce, 102, clif->pGM_Monster_Item);
+}
+
 // 20131223
 if (packetVersion >= 20131223)
 {
