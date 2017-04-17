@@ -1554,6 +1554,11 @@ if (packetVersion == 20151001)
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
 }
 
+if (packetVersion >= 20151001)
+{
+    packet(CMSG_CHAR_CREATE,              0x0a39,  36, chr->parse_char_create_new_char);
+}
+
 // 20151029
 if (packetVersion == 20151029)
 {
@@ -1586,11 +1591,6 @@ if (packetVersion == 20151029)
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
     packet(CMSG_STORAGE_PASSWORD,         0x0860,  36, clif->pStoragePassword);
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
-}
-
-if (packetVersion >= 20151029)
-{
-    packet(CMSG_CHAR_CREATE,              0x0a39,  36, chr->parse_char_create_new_char);
 }
 
 // 20151104
