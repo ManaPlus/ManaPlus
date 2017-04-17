@@ -57,7 +57,7 @@ void GameRecv::processMapLogin(Net::MessageIn &msg)
         x, y, direction);
     if (msg.getVersion() >= 20080102)
         msg.readInt16("font");
-    if (msg.getVersion() >= 20141022)
+    if (msg.getVersion() >= 20141022 && msg.getVersion() < 20160330)
         msg.readUInt8("sex");
 
     mLastHost &= 0xffffff;
