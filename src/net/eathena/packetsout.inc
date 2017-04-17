@@ -38,21 +38,21 @@ packet(CMSG_NAME_REQUEST,                 0x0094,   6, clif->pGetCharNameRequest
 
 packet(CMSG_CHAR_PASSWORD_CHANGE,         0x0061,   0, nullptr);
 packet(CMSG_CHAR_SERVER_CONNECT,          0x0065,   0, chr->parse_char_connect);
-packet(CMSG_CHAR_SELECT,                  0x0066,   0, chr->parse_char_select);
+packet(CMSG_CHAR_SELECT,                  0x0066,   3, chr->parse_char_select);
 packet(CMSG_CHAR_CREATE,                  0x0067,   0, chr->parse_make_char_0067);
-packet(CMSG_CHAR_DELETE,                  0x0068,   0, chr->parse_char_delete_char_0068);
+packet(CMSG_CHAR_DELETE,                  0x0068,  56, chr->parse_char_delete_char_0068);
 packet(CMSG_CHAR_DELETE2_REQ,             0x0827,   6, chr->parse_char_delete2_req);
 packet(CMSG_CHAR_DELETE2_ACCEPT,          0x0829,  12, chr->parse_char_delete2_accept);
 packet(CMSG_CHAR_DELETE2_CANCEL,          0x082b,   6, chr->parse_char_delete2_cancel);
-packet(CMSG_CHAR_CREATE_PIN,              0x08ba,   0, chr->parse_char_pincode_first_pin);
+packet(CMSG_CHAR_CREATE_PIN,              0x08ba,  10, chr->parse_char_pincode_first_pin);
 packet(CMSG_CHAR_PIN_CHECK,               0x08b8,  10, chr->parse_char_pincode_check);
 packet(CMSG_CHAR_PIN_CHANGE,              0x08be,  14, chr->parse_char_pincode_change);
 packet(CMSG_CHAR_PIN_WINDOW,              0x08c5,   6, chr->parse_char_pincode_window);
 packet(CMSG_CHAR_REQUEST_CHARS,           0x09a1,   2, chr->parse_char_request_chars);
-packet(CMSG_CHAR_CHECK_RENAME,            0x08fc,   0, chr->parse_char_rename_char);
+packet(CMSG_CHAR_CHECK_RENAME,            0x08fc,  30, chr->parse_char_rename_char);
 packet(CMSG_CHAR_CHECK_RENAME2,           0x028d,  34, chr->parse_char_rename_char2);
-packet(CMSG_CHAR_RENAME,                  0x028f,   0, chr->parse_char_rename_char_confirm);
-packet(CMSG_CHAR_CHANGE_SLOT,             0x08d4,   0, chr->parse_char_move_character);
+packet(CMSG_CHAR_RENAME,                  0x028f,   6, chr->parse_char_rename_char_confirm);
+packet(CMSG_CHAR_CHANGE_SLOT,             0x08d4,   8, chr->parse_char_move_character);
 packet(CMSG_CHAR_REQUEST_CAPTCHA,         0x07e5,   8, chr->parse_char_request_captcha);
 packet(CMSG_CHAR_CHECK_CAPTCHA,           0x07e7,  32, chr->parse_char_check_captcha);
 
@@ -61,7 +61,7 @@ packet(CMSG_MAP_PING,                     0x007e,   6, clif->pTickSend);
 packet(CMSG_LOGIN_PING,                   0x0200,   0, lclif->p->parse_CA_CONNECT_INFO_CHANGED);
 packet(CMSG_LOGIN_HASH_CHECK,             0x0204,   0, lclif->p->parse_CA_EXE_HASHCHECK);
 
-packet(CMSG_CHAR_PING,                    0x0187,   0, chr->parse_char_ping);
+packet(CMSG_CHAR_PING,                    0x0187,  56, chr->parse_char_ping);
 packet(CMSG_MAP_LOADED,                   0x007d,   2, clif->pLoadEndAck);
 packet(CMSG_CLIENT_QUIT,                  0x018A,   4, clif->pQuitGame);
 
