@@ -1994,6 +1994,7 @@ manaplustests_SOURCES += \
 	      fs/virtfs/zip_unittest.cc \
 	      fs/virtfs/virtfs_unittest.cc \
 	      utils/xml_unittest.cc \
+	      configuration_unittest.cc \
 	      utils/timer_unittest.cc \
 	      utils/xmlutils_unittest.cc \
 	      utils/mathutils_unittest.cc \
