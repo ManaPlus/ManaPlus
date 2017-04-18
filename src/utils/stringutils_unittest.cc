@@ -1416,6 +1416,22 @@ TEST_CASE("stringuntils pathJoin2")
         "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4" + sep + "dir5");
 }
 
+TEST_CASE("stringuntils urlJoin")
+{
+    REQUIRE(urlJoin("", "") == "/");
+    REQUIRE(urlJoin("/", "") == "/");
+    REQUIRE(urlJoin("", "/") == "/");
+    REQUIRE(urlJoin("/", "/") == "/");
+    REQUIRE(urlJoin("dir1", "dir2") == "dir1/dir2");
+    REQUIRE(urlJoin("dir1/", "dir2") == "dir1/dir2");
+    REQUIRE(urlJoin("dir1", "/dir2") == "dir1/dir2");
+    REQUIRE(urlJoin("dir1/", "/dir2") == "dir1/dir2");
+    REQUIRE(urlJoin("dir1/dir2/dir3", "dir4") == "dir1/dir2/dir3/dir4");
+    REQUIRE(urlJoin("dir1/dir2/", "dir3/dir4") == "dir1/dir2/dir3/dir4");
+    REQUIRE(urlJoin("dir1/dir2", "dir3/dir4") == "dir1/dir2/dir3/dir4");
+    REQUIRE(urlJoin("dir1/dir2", "/dir3/dir4") == "dir1/dir2/dir3/dir4");
+}
+
 TEST_CASE("stringuntils secureChatCommand")
 {
     std::string str;
