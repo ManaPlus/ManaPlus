@@ -153,21 +153,13 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
     if (serverVersion > 0)
     {
         logger->log("Evol2 server version: %d", serverVersion);
-        if (serverVersion >= 8)
-        {
-            packetVersion = msg.readInt32("packet version");
-            logger->log("Hercules packet version: %d", packetVersion);
-            if (packetVersion == 20150000)
-            {
-                packetVersion = 20141022;
-                logger->log("autofix Hercules packet version to: %d",
-                    packetVersion);
-            }
-        }
-        else
+        packetVersion = msg.readInt32("packet version");
+        logger->log("Hercules packet version: %d", packetVersion);
+        if (packetVersion == 20150000)
         {
             packetVersion = 20141022;
-            logger->log("Possible hercules packet version: %d", packetVersion);
+            logger->log("autofix Hercules packet version to: %d",
+                packetVersion);
         }
     }
     else

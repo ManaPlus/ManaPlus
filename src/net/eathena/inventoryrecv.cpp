@@ -156,8 +156,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
             msg.readInt16("equip type");
         if (msg.getVersion() >= 20100629)
             msg.readInt16("item sprite number");
-        if ((serverVersion >= 8 || serverVersion == 0) &&
-            msg.getVersion() >= 20150226)
+        if (msg.getVersion() >= 20150226)
         {
             msg.readUInt8("option count");
             for (int f = 0; f < 5; f ++)
@@ -231,8 +230,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
         msg.readInt32("hire expire date");
     if (msg.getVersion() >= 20071002)
         msg.readInt16("bind on equip");
-    if ((serverVersion >= 8 || serverVersion == 0) &&
-        msg.getVersion() >= 20150226)
+    if (msg.getVersion() >= 20150226)
     {
         for (int f = 0; f < 5; f ++)
         {
@@ -687,8 +685,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
             msg.readInt16("bind on equip");
         if (msg.getVersion() >= 20100629)
             msg.readInt16("sprite");
-        if ((serverVersion >= 8 || serverVersion == 0) &&
-            msg.getVersion() >= 20150226)
+        if (msg.getVersion() >= 20150226)
         {
             msg.readUInt8("option count");
             for (int f = 0; f < 5; f ++)
@@ -739,8 +736,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readUInt16("card");
-    if ((serverVersion >= 8 || serverVersion == 0) &&
-        msg.getVersion() >= 20150226)
+    if (msg.getVersion() >= 20150226)
     {
         for (int f = 0; f < 5; f ++)
         {
@@ -946,8 +942,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readUInt16("card");
-    if ((serverVersion >= 8 || serverVersion == 0) &&
-        msg.getVersion() >= 20150226)
+    if (msg.getVersion() >= 20150226)
     {
         for (int f = 0; f < 5; f ++)
         {
@@ -1044,8 +1039,7 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
             msg.readInt16("bind on equip");
         if (msg.getVersion() >= 20100629)
             msg.readInt16("sprite");
-        if ((serverVersion >= 8 || serverVersion == 0) &&
-            msg.getVersion() >= 20150226)
+        if (msg.getVersion() >= 20150226)
         {
             msg.readUInt8("option count");
             for (int f = 0; f < 5; f ++)

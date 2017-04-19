@@ -87,8 +87,7 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readUInt16("card");
-    if ((serverVersion >= 8 || serverVersion == 0) &&
-        msg.getVersion() >= 20150226)
+    if (msg.getVersion() >= 20150226)
     {
         for (int f = 0; f < 5; f ++)
         {

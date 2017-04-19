@@ -96,11 +96,8 @@ void VendingRecv::processHideBoard(Net::MessageIn &msg)
 void VendingRecv::processItemsList(Net::MessageIn &msg)
 {
     int packetLen = 22;
-    if ((serverVersion >= 8 || serverVersion == 0) &&
-        msg.getVersion() >= 20150226)
-    {
+    if (msg.getVersion() >= 20150226)
         packetLen += 25;
-    }
     int offset = 8;
     if (msg.getVersion() >= 20100105)
         offset += 4;
@@ -128,9 +125,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
             cards[d] = msg.readUInt16("card");
-        // ++ need change to msg.getVersion()
-        if ((serverVersion >= 8 || serverVersion == 0) &&
-            msg.getVersion() >= 20150226)
+        if (msg.getVersion() >= 20150226)
         {
             for (int d = 0; d < 5; d ++)
             {
@@ -184,11 +179,8 @@ void VendingRecv::processBuyAck(Net::MessageIn &msg)
 void VendingRecv::processOpen(Net::MessageIn &msg)
 {
     int packetLen = 22;
-    if ((serverVersion >= 8 || serverVersion == 0) &&
-        msg.getVersion() >= 20150226)
-    {
+    if (msg.getVersion() >= 20150226)
         packetLen += 25;
-    }
 
     const int count = (msg.readInt16("len") - 8) / packetLen;
     msg.readInt32("id");
@@ -204,9 +196,7 @@ void VendingRecv::processOpen(Net::MessageIn &msg)
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
             msg.readUInt16("card");
-        // ++ need change to msg.getVersion()
-        if ((serverVersion >= 8 || serverVersion == 0) &&
-            msg.getVersion() >= 20150226)
+        if (msg.getVersion() >= 20150226)
         {
             for (int d = 0; d < 5; d ++)
             {
