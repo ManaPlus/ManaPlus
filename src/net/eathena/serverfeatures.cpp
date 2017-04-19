@@ -118,7 +118,7 @@ bool ServerFeatures::haveAccountOtherGender() const
 
 bool ServerFeatures::haveCharOtherGender() const
 {
-    return serverVersion >= 10;
+    return true;
 }
 
 bool ServerFeatures::haveMonsterAttackRange() const
@@ -248,7 +248,7 @@ bool ServerFeatures::haveAdvancedBuySell() const
 
 bool ServerFeatures::haveSlide() const
 {
-    return serverVersion >= 10;
+    return true;
 }
 
 bool ServerFeatures::haveExtendedDropsPosition() const
