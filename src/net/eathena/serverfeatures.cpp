@@ -238,7 +238,7 @@ bool ServerFeatures::haveTeamId() const
 
 bool ServerFeatures::haveExtendedRiding() const
 {
-    return serverVersion >= 9;
+    return true;
 }
 
 bool ServerFeatures::haveAdvancedBuySell() const
