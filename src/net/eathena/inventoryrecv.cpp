@@ -159,12 +159,12 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         if ((serverVersion >= 8 || serverVersion == 0) &&
             msg.getVersion() >= 20150226)
         {
-            msg.readUInt8("rnd count");
+            msg.readUInt8("option count");
             for (int f = 0; f < 5; f ++)
             {
-                msg.readInt16("rnd index");
-                msg.readInt16("rnd value");
-                msg.readUInt8("rnd param");
+                msg.readInt16("option index");
+                msg.readInt16("option value");
+                msg.readUInt8("option param");
             }
         }
         ItemFlags flags;
@@ -236,9 +236,9 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     {
         for (int f = 0; f < 5; f ++)
         {
-            msg.readInt16("rnd index");
-            msg.readInt16("rnd value");
-            msg.readUInt8("rnd param");
+            msg.readInt16("option index");
+            msg.readInt16("option value");
+            msg.readUInt8("option param");
         }
     }
 
@@ -690,12 +690,12 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         if ((serverVersion >= 8 || serverVersion == 0) &&
             msg.getVersion() >= 20150226)
         {
-            msg.readUInt8("rnd count");
+            msg.readUInt8("option count");
             for (int f = 0; f < 5; f ++)
             {
-                msg.readInt16("rnd index");
-                msg.readInt16("rnd value");
-                msg.readUInt8("rnd param");
+                msg.readInt16("option index");
+                msg.readInt16("option value");
+                msg.readUInt8("option param");
             }
         }
 
@@ -744,9 +744,9 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     {
         for (int f = 0; f < 5; f ++)
         {
-            msg.readInt16("rnd index");
-            msg.readInt16("rnd value");
-            msg.readUInt8("rnd param");
+            msg.readInt16("option index");
+            msg.readInt16("option value");
+            msg.readUInt8("option param");
         }
     }
 
@@ -951,9 +951,9 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     {
         for (int f = 0; f < 5; f ++)
         {
-            msg.readInt16("rnd index");
-            msg.readInt16("rnd value");
-            msg.readUInt8("rnd param");
+            msg.readInt16("option index");
+            msg.readInt16("option value");
+            msg.readUInt8("option param");
         }
     }
 
@@ -1047,12 +1047,12 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
         if ((serverVersion >= 8 || serverVersion == 0) &&
             msg.getVersion() >= 20150226)
         {
-            msg.readUInt8("rnd count");
+            msg.readUInt8("option count");
             for (int f = 0; f < 5; f ++)
             {
-                msg.readInt16("rnd index");
-                msg.readInt16("rnd value");
-                msg.readUInt8("rnd param");
+                msg.readInt16("option index");
+                msg.readInt16("option value");
+                msg.readUInt8("option param");
             }
         }
         ItemFlags flags;

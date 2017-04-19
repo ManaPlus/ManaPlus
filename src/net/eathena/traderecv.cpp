@@ -92,9 +92,9 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
     {
         for (int f = 0; f < 5; f ++)
         {
-            msg.readInt16("rnd index");
-            msg.readInt16("rnd value");
-            msg.readUInt8("rnd param");
+            msg.readInt16("option index");
+            msg.readInt16("option value");
+            msg.readUInt8("option param");
         }
     }
 

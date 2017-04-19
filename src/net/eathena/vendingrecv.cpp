@@ -134,9 +134,9 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         {
             for (int d = 0; d < 5; d ++)
             {
-                msg.readInt16("rnd index");
-                msg.readInt16("rnd value");
-                msg.readUInt8("rnd param");
+                msg.readInt16("option index");
+                msg.readInt16("option value");
+                msg.readUInt8("option param");
             }
         }
 
@@ -210,9 +210,9 @@ void VendingRecv::processOpen(Net::MessageIn &msg)
         {
             for (int d = 0; d < 5; d ++)
             {
-                msg.readInt16("rnd index");
-                msg.readInt16("rnd value");
-                msg.readUInt8("rnd param");
+                msg.readInt16("option index");
+                msg.readInt16("option value");
+                msg.readUInt8("option param");
             }
         }
     }
