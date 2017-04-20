@@ -684,6 +684,8 @@ SET(SRCS
     resources/basicstat.h
     resources/db/itemfielddb.cpp
     resources/db/itemfielddb.h
+    resources/db/itemoptiondb.cpp
+    resources/db/itemoptiondb.h
     resources/db/languagedb.cpp
     resources/db/languagedb.h
     resources/iteminfo.h

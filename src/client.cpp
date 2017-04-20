@@ -115,6 +115,7 @@
 #include "resources/db/horsedb.h"
 #include "resources/db/itemdb.h"
 #include "resources/db/itemfielddb.h"
+#include "resources/db/itemoptiondb.h"
 #include "resources/db/languagedb.h"
 #include "resources/db/sounddb.h"
 #include "resources/db/mapdb.h"
@@ -638,6 +639,7 @@ void Client::gameClear()
     TextDb::unload();
     EmoteDB::unload();
     ItemDB::unload();
+    ItemOptionDb::unload();
     ItemFieldDb::unload();
     const ServerTypeT type = Net::getNetworkType();
     if (type == ServerType::EATHENA ||
@@ -1370,6 +1372,7 @@ int Client::gameExec()
                     TextDb::load();
                     MapDB::load();
                     ItemFieldDb::load();
+                    ItemOptionDb::load();
                     ItemDB::load();
                     Being::load();
                     const ServerTypeT type = Net::getNetworkType();
