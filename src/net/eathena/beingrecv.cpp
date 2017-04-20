@@ -304,11 +304,8 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 
     // Information about a being in range
     const BeingId id = msg.readBeingId("being id");
-    if (msg.getVersion() >= 20131223 &&
-        (serverVersion == 0 || serverVersion >= 11))
-    {
+    if (msg.getVersion() >= 20131223)
         msg.readBeingId("char id");
-    }
     BeingId spawnId;
     if (id == Ea::BeingRecv::mSpawnId)
         spawnId = Ea::BeingRecv::mSpawnId;
@@ -543,11 +540,8 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 
     // Information about a being in range
     const BeingId id = msg.readBeingId("being id");
-    if (msg.getVersion() >= 20131223 &&
-        (serverVersion == 0 || serverVersion >= 11))
-    {
+    if (msg.getVersion() >= 20131223)
         msg.readBeingId("char id");
-    }
     BeingId spawnId;
     if (id == Ea::BeingRecv::mSpawnId)
         spawnId = Ea::BeingRecv::mSpawnId;
@@ -779,8 +773,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 
     // Information about a being in range
     const BeingId id = msg.readBeingId("being id");
-    if (msg.getVersion() >= 20131223 &&
-        (serverVersion == 0 || serverVersion >= 11))
+    if (msg.getVersion() >= 20131223)
     {
         msg.readBeingId("char id");
     }
