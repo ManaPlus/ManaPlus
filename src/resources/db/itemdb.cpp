@@ -46,6 +46,8 @@
 #include "utils/dtor.h"
 #include "utils/stringmap.h"
 
+#include "utils/translation/podict.h"
+
 #include "debug.h"
 
 namespace
@@ -127,6 +129,9 @@ static void readFields(std::string &effect,
                        XmlNodeConstPtr node,
                        const ItemFieldDb::FieldInfos &fields)
 {
+    if (!translator)
+        return;
+
     FOR_EACH (ItemFieldDb::FieldInfos::const_iterator, it, fields)
     {
         const std::string fieldName = (*it).first;
@@ -141,7 +146,8 @@ static void readFields(std::string &effect,
             effect.append(" / ");
         if (field->sign && isDigit(value))
             value = "+" + value;
-        effect.append(strprintf(gettext(field->description.c_str()),
+        const std::string format = translator->getStr(field->description);
+        effect.append(strprintf(format.c_str(),
             value.c_str()));
     }
 }

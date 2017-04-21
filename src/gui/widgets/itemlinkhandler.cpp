@@ -154,7 +154,8 @@ void ItemLinkHandler::handleItemLink(const std::string &link)
             ItemColorManager::getColorFromCards(&str[0]);
 
         const ItemInfo &itemInfo = ItemDB::get(id);
-        itemPopup->setItem(itemInfo, color, true, -1, &str[0]);
+        // +++ need add support for options.
+        itemPopup->setItem(itemInfo, color, true, -1, &str[0], nullptr);
         if (itemPopup->isPopupVisible())
         {
             itemPopup->setVisible(Visible_false);

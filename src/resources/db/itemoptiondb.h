@@ -40,6 +40,8 @@ namespace ItemOptionDb
     void loadXmlFile(const std::string &fileName,
                      const SkipError skipError);
 
+    const std::vector<ItemFieldType*> &getFields(const int id);
+
     typedef std::map<int, std::vector<ItemFieldType*> > OptionInfos;
 }  // namespace ItemOptionDb
 

@@ -36,6 +36,8 @@ class ItemInfo;
 class Label;
 class TextBox;
 
+struct ItemOptionsList;
+
 /**
  * A popup that displays information about an item.
  */
@@ -63,7 +65,8 @@ class ItemPopup final : public Popup
                      const ItemColor color,
                      const bool showImage,
                      int id,
-                     const int *const cards);
+                     const int *const cards,
+                     const ItemOptionsList *const options);
 
         void setItem(const Item *const item,
                      const bool showImage);
@@ -75,11 +78,14 @@ class ItemPopup final : public Popup
     private:
         std::string getCardsString(const int *const cards);
 
+        std::string getOptionsString(const ItemOptionsList *const options);
+
         Label *mItemName A_NONNULLPOINTER;
         TextBox *mItemDesc A_NONNULLPOINTER;
         TextBox *mItemEffect A_NONNULLPOINTER;
         TextBox *mItemWeight A_NONNULLPOINTER;
         TextBox *mItemCards A_NONNULLPOINTER;
+        TextBox *mItemOptions A_NONNULLPOINTER;
         ItemDbTypeT mItemType;
         Icon *mIcon A_NONNULLPOINTER;
         std::string mLastName;

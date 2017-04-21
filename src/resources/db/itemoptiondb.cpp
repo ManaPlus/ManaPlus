@@ -36,6 +36,7 @@
 namespace
 {
     ItemOptionDb::OptionInfos mOptions;
+    const std::vector<ItemFieldType*> mEmptyOption;
     bool mLoaded = false;
 }  // namespace
 
@@ -140,4 +141,12 @@ void ItemOptionDb::unload()
 {
     mOptions.clear();
     mLoaded = false;
+}
+
+const std::vector<ItemFieldType*> &ItemOptionDb::getFields(const int id)
+{
+    OptionInfos::const_iterator it = mOptions.find(id);
+    if (it == mOptions.end())
+        return mEmptyOption;
+    return (*it).second;
 }
