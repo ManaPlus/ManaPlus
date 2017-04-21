@@ -54,8 +54,6 @@
 
 #include "resources/iteminfo.h"
 
-#include "resources/item/itemoptionslist.h"
-
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 

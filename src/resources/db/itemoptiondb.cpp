@@ -23,13 +23,10 @@
 #include "configuration.h"
 
 #include "utils/checkutils.h"
-#include "utils/dtor.h"
 
 #include "resources/beingcommon.h"
 
 #include "resources/db/itemfielddb.h"
-
-#include "resources/item/itemfieldtype.h"
 
 #include "debug.h"
 

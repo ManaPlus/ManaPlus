@@ -31,7 +31,6 @@
 #include "resources/iteminfo.h"
 
 #include "resources/item/item.h"
-#include "resources/item/itemoptionslist.h"
 
 #include "listeners/inventorylistener.h"
 

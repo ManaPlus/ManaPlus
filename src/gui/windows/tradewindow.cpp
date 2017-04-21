@@ -52,7 +52,6 @@
 #include "resources/db/unitsdb.h"
 
 #include "resources/item/item.h"
-#include "resources/item/itemoptionslist.h"
 
 #include "net/serverfeatures.h"
 #include "net/tradehandler.h"
