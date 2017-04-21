@@ -38,6 +38,7 @@
 #include "resources/inventory/inventory.h"
 
 #include "resources/item/item.h"
+#include "resources/item/itemoptionslist.h"
 
 #include "debug.h"
 
@@ -87,13 +88,16 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readUInt16("card");
+    ItemOptionsList *options = nullptr;
     if (msg.getVersion() >= 20150226)
     {
+        options = new ItemOptionsList;
         for (int f = 0; f < 5; f ++)
         {
-            msg.readInt16("option index");
-            msg.readInt16("option value");
+            const uint16_t idx = msg.readInt16("option index");
+            const uint16_t val = msg.readInt16("option value");
             msg.readUInt8("option param");
+            options->add(idx, val);
         }
     }
 
@@ -108,6 +112,7 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
             tradeWindow->addItem2(type,
                 itemType,
                 cards,
+                options,
                 4,
                 false,
                 amount,
@@ -119,6 +124,7 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
                 Equipm_false);
         }
     }
+    delete options;
 }
 
 void TradeRecv::processTradeItemAddResponse(Net::MessageIn &msg)
@@ -139,6 +145,7 @@ void TradeRecv::processTradeItemAddResponse(Net::MessageIn &msg)
                 tradeWindow->addItem2(item->getId(),
                     item->getType(),
                     item->getCards(),
+                    item->getOptions(),
                     4,
                     true,
                     mQuantity,

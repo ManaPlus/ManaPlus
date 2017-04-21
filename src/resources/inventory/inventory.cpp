@@ -31,6 +31,7 @@
 #include "resources/iteminfo.h"
 
 #include "resources/item/item.h"
+#include "resources/item/itemoptionslist.h"
 
 #include "listeners/inventorylistener.h"
 
@@ -202,6 +203,19 @@ void Inventory::setCards(const int index,
     Item *const item1 = mItems[index];
     if (item1)
         item1->setCards(cards, size);
+}
+
+void Inventory::setOptions(const int index,
+                           const ItemOptionsList *const options)
+{
+    if (index < 0 || index >= CAST_S32(mSize))
+    {
+        logger->log("Warning: invalid inventory index: %d", index);
+        return;
+    }
+    Item *const item1 = mItems[index];
+    if (item1)
+        item1->setOptions(options);
 }
 
 void Inventory::clear()

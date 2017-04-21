@@ -52,6 +52,7 @@
 #include "resources/db/unitsdb.h"
 
 #include "resources/item/item.h"
+#include "resources/item/itemoptionslist.h"
 
 #include "net/serverfeatures.h"
 #include "net/tradehandler.h"
@@ -222,6 +223,7 @@ void TradeWindow::addItem(const int id,
 void TradeWindow::addItem2(const int id,
                            const ItemTypeT type,
                            const int *const cards,
+                           const ItemOptionsList *const options,
                            const int sz,
                            const bool own,
                            const int quantity,
@@ -244,7 +246,10 @@ void TradeWindow::addItem2(const int id,
         equipment,
         Equipped_false);
     if (slot >= 0)
+    {
         inv->setCards(slot, cards, sz);
+        inv->setOptions(slot, options);
+    }
 }
 
 void TradeWindow::changeQuantity(const int index, const bool own,

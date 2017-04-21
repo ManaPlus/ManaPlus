@@ -40,6 +40,8 @@
 
 class Image;
 
+struct ItemOptionsList;
+
 /**
  * Represents one or more instances of a certain item type.
  */
@@ -211,6 +213,11 @@ class Item notfinal
         const int *getCards() const noexcept2 A_WARN_UNUSED
         { return mCards; }
 
+        void setOptions(const ItemOptionsList *const options);
+
+        const ItemOptionsList *getOptions() const noexcept2 A_WARN_UNUSED
+        { return mOptions; }
+
         void setType(const ItemTypeT type) noexcept2
         { mType = type; }
 
@@ -245,6 +252,7 @@ class Item notfinal
         std::string mDescription;
         std::map <int, int> mTags;
         int mCards[maxCards];
+        const ItemOptionsList *mOptions;
         uint8_t mRefine;      /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
         ItemTypeT mType;      /**< Item type. */

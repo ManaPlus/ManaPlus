@@ -47,6 +47,8 @@
 class InventoryListener;
 class Item;
 
+struct ItemOptionsList;
+
 class Inventory notfinal
 {
     public:
@@ -120,6 +122,9 @@ class Inventory notfinal
         void setCards(const int index,
                       const int *const cards,
                       const int size) const;
+
+        void setOptions(const int index,
+                        const ItemOptionsList *const options);
 
         void moveItem(const int index1,
                       const int index2);

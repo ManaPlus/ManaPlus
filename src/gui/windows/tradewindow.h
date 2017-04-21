@@ -43,6 +43,8 @@ class ItemContainer;
 class Label;
 class TextField;
 
+struct ItemOptionsList;
+
 /**
  * Trade dialog.
  *
@@ -94,6 +96,7 @@ class TradeWindow final : public Window,
         void addItem2(const int id,
                       const ItemTypeT type,
                       const int *const cards,
+                      const ItemOptionsList *const options,
                       const int sz,
                       const bool own,
                       const int quantity,

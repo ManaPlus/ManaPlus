@@ -1103,6 +1103,8 @@ SET(SRCS
     resources/item/item.cpp
     resources/item/item.h
     resources/item/itemfieldtype.h
+    resources/item/itemoption.h
+    resources/item/itemoptionslist.h
     itemcolormanager.cpp
     itemcolormanager.h
     gui/shortcut/itemshortcut.cpp
@@ -1157,6 +1159,7 @@ SET(SRCS
     resources/map/map.cpp
     resources/map/map.h
     const/resources/item/cards.h
+    const/resources/item/itemoptions.h
     const/resources/map/map.h
     resources/map/mapheights.cpp
     resources/map/mapheights.h

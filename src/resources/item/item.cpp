@@ -30,9 +30,13 @@
 
 #include "resources/iteminfo.h"
 
+#include "resources/item/itemoptionslist.h"
+
 #include "resources/loaders/imageloader.h"
 
 #include "net/serverfeatures.h"
+
+#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -56,6 +60,7 @@ Item::Item(const int id,
     mDescription(),
     mTags(),
     mCards(),
+    mOptions(nullptr),
     mRefine(refine),
     mInvIndex(0),
     mType(type),
@@ -78,6 +83,7 @@ Item::~Item()
         mImage->decRef();
         mImage = nullptr;
     }
+    delete2(mOptions);
     dragDrop.clearItem(this);
 }
 
@@ -174,6 +180,11 @@ void Item::addCard(const int card)
             return;
         }
     }
+}
+
+void Item::setOptions(const ItemOptionsList *const options)
+{
+    mOptions = ItemOptionsList::copy(options);
 }
 
 void Item::updateColor()

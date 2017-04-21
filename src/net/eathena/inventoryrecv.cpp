@@ -54,6 +54,8 @@
 
 #include "resources/iteminfo.h"
 
+#include "resources/item/itemoptionslist.h"
+
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -156,14 +158,16 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
             msg.readInt16("equip type");
         if (msg.getVersion() >= 20100629)
             msg.readInt16("item sprite number");
+        ItemOptionsList *options = nullptr;
         if (msg.getVersion() >= 20150226)
         {
-            msg.readUInt8("option count");
+            options = new ItemOptionsList(msg.readUInt8("option count"));
             for (int f = 0; f < 5; f ++)
             {
-                msg.readInt16("option index");
-                msg.readInt16("option value");
+                const uint16_t idx = msg.readInt16("option index");
+                const uint16_t val = msg.readInt16("option value");
                 msg.readUInt8("option param");
+                options->add(idx, val);
             }
         }
         ItemFlags flags;
@@ -185,7 +189,9 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
                 Equipm_true,
                 Equipped_false);
             inventory->setCards(index, cards, 4);
+            inventory->setOptions(index, options);
         }
+        delete options;
 
         if (equipType)
         {
@@ -230,13 +236,16 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
         msg.readInt32("hire expire date");
     if (msg.getVersion() >= 20071002)
         msg.readInt16("bind on equip");
+    ItemOptionsList *options = nullptr;
     if (msg.getVersion() >= 20150226)
     {
+        options = new ItemOptionsList;
         for (int f = 0; f < 5; f ++)
         {
-            msg.readInt16("option index");
-            msg.readInt16("option value");
+            const uint16_t idx = msg.readInt16("option index");
+            const uint16_t val = msg.readInt16("option value");
             msg.readUInt8("option param");
+            options->add(idx, val);
         }
     }
 
@@ -341,9 +350,11 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
                 fromBool(equipType, Equipm),
                 Equipped_false);
             inventory->setCards(index, cards, 4);
+            inventory->setOptions(index, options);
         }
         ArrowsListener::distributeEvent();
     }
+    delete options;
     BLOCK_END("InventoryRecv::processPlayerInventoryAdd")
 }
 
@@ -492,6 +503,7 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
             itemId,
             itemType,
             cards,
+            nullptr,
             amount,
             0,
             ItemColorManager::getColorFromCards(&cards[0]),
@@ -685,14 +697,16 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
             msg.readInt16("bind on equip");
         if (msg.getVersion() >= 20100629)
             msg.readInt16("sprite");
+        ItemOptionsList *options = nullptr;
         if (msg.getVersion() >= 20150226)
         {
-            msg.readUInt8("option count");
+            options = new ItemOptionsList(msg.readUInt8("option count"));
             for (int f = 0; f < 5; f ++)
             {
-                msg.readInt16("option index");
-                msg.readInt16("option value");
+                const uint16_t idx = msg.readInt16("option index");
+                const uint16_t val = msg.readInt16("option value");
                 msg.readUInt8("option param");
+                options->add(idx, val);
             }
         }
 
@@ -707,6 +721,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
             itemId,
             itemType,
             cards,
+            options,
             amount,
             refine,
             ItemColorManager::getColorFromCards(&cards[0]),
@@ -736,13 +751,16 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readUInt16("card");
+    ItemOptionsList *options = nullptr;
     if (msg.getVersion() >= 20150226)
     {
+        options = new ItemOptionsList;
         for (int f = 0; f < 5; f ++)
         {
-            msg.readInt16("option index");
-            msg.readInt16("option value");
+            const uint16_t idx = msg.readInt16("option index");
+            const uint16_t val = msg.readInt16("option value");
             msg.readUInt8("option param");
+            options->add(idx, val);
         }
     }
 
@@ -768,6 +786,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
                 Equipm_false,
                 Equipped_false);
             Ea::InventoryRecv::mStorage->setCards(index, cards, 4);
+            Ea::InventoryRecv::mStorage->setOptions(index, options);
         }
     }
     BLOCK_END("InventoryRecv::processPlayerStorageAdd")
@@ -942,13 +961,16 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readUInt16("card");
+    ItemOptionsList *options = nullptr;
     if (msg.getVersion() >= 20150226)
     {
+        options = new ItemOptionsList;
         for (int f = 0; f < 5; f ++)
         {
-            msg.readInt16("option index");
-            msg.readInt16("option value");
+            const uint16_t idx = msg.readInt16("option index");
+            const uint16_t val = msg.readInt16("option value");
             msg.readUInt8("option param");
+            options->add(idx, val);
         }
     }
 
@@ -972,6 +994,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
             Equipm_false,
             Equipped_false);
         inventory->setCards(index, cards, 4);
+        inventory->setOptions(index, options);
     }
     else
     {
@@ -979,6 +1002,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
             itemId,
             itemType,
             cards,
+            options,
             amount,
             refine,
             ItemColorManager::getColorFromCards(&cards[0]),
@@ -1039,14 +1063,16 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
             msg.readInt16("bind on equip");
         if (msg.getVersion() >= 20100629)
             msg.readInt16("sprite");
+        ItemOptionsList *options = nullptr;
         if (msg.getVersion() >= 20150226)
         {
-            msg.readUInt8("option count");
+            options = new ItemOptionsList(msg.readUInt8("option count"));
             for (int f = 0; f < 5; f ++)
             {
-                msg.readInt16("option index");
-                msg.readInt16("option value");
+                const uint16_t idx = msg.readInt16("option index");
+                const uint16_t val = msg.readInt16("option value");
                 msg.readUInt8("option param");
+                options->add(idx, val);
             }
         }
         ItemFlags flags;
@@ -1059,6 +1085,7 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
             itemId,
             itemType,
             cards,
+            options,
             amount,
             refine,
             ItemColorManager::getColorFromCards(&cards[0]),
@@ -1122,6 +1149,7 @@ void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
             itemId,
             itemType,
             cards,
+            nullptr,
             amount,
             0,
             ItemColorManager::getColorFromCards(&cards[0]),

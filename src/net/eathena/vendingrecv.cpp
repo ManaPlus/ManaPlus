@@ -48,6 +48,7 @@
 
 #include "resources/inventory/inventory.h"
 
+#include "resources/item/itemoptionslist.h"
 #include "resources/item/shopitem.h"
 
 #include "utils/gettext.h"
@@ -125,13 +126,16 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
             cards[d] = msg.readUInt16("card");
+        ItemOptionsList *options = nullptr;
         if (msg.getVersion() >= 20150226)
         {
+            options = new ItemOptionsList;
             for (int d = 0; d < 5; d ++)
             {
-                msg.readInt16("option index");
-                msg.readInt16("option value");
+                const uint16_t idx = msg.readInt16("option index");
+                const uint16_t val = msg.readInt16("option value");
                 msg.readUInt8("option param");
+                options->add(idx, val);
             }
         }
 
@@ -139,7 +143,11 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         ShopItem *const item = mBuyDialog->addItem(itemId, type,
             color, amount, value);
         if (item)
+        {
             item->setInvIndex(index);
+            item->setOptions(options);
+        }
+        delete options;
     }
     mBuyDialog->sort();
 }

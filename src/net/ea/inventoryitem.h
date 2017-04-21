@@ -33,6 +33,8 @@
 #include "enums/simpletypes/identified.h"
 #include "enums/simpletypes/itemcolor.h"
 
+#include "resources/item/itemoptionslist.h"
+
 #include <vector>
 
 #include "localconsts.h"
@@ -50,6 +52,7 @@ class InventoryItem final
         int id;
         ItemTypeT type;
         int cards[maxCards];
+        ItemOptionsList *options;
         int quantity;
         uint8_t refine;
         ItemColor color;
@@ -62,6 +65,7 @@ class InventoryItem final
                       const int id0,
                       const ItemTypeT type0,
                       const int *const cards0,
+                      ItemOptionsList *options0,
                       const int quantity0,
                       const uint8_t refine0,
                       const ItemColor color0,
@@ -72,6 +76,8 @@ class InventoryItem final
             slot(slot0),
             id(id0),
             type(type0),
+            cards(),
+            options(ItemOptionsList::copy(options0)),
             quantity(quantity0),
             refine(refine0),
             color(color0),
@@ -87,6 +93,11 @@ class InventoryItem final
         }
 
         A_DEFAULT_COPY(InventoryItem)
+
+        ~InventoryItem()
+        {
+            delete [] options;
+        }
 };
 
 typedef std::vector<InventoryItem> InventoryItems;
