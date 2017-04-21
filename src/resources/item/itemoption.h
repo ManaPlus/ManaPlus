@@ -25,6 +25,11 @@
 
 struct ItemOption final
 {
+    ItemOption()
+    { }
+
+    A_DELETE_COPY(ItemOption)
+
     uint16_t index;
     int16_t value;
 };
