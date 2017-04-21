@@ -27,6 +27,7 @@
 #include "fs/virtfs/virtfstools.h"
 
 #include "utils/delete2.h"
+#include "utils/stringutils.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
 
@@ -134,6 +135,67 @@ TEST_CASE("Files saveTextFile")
 
     REQUIRE(data == "test line\ntext line2\n");
 #endif  // WIN32
+
+    ResourceManager::deleteInstance();
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
+    delete2(logger);
+//    VirtFs::deinit();
+}
+
+TEST_CASE("Files copyFile1")
+{
+    logger = new Logger();
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
+
+    const std::string dir = VirtFs::getPath("test");
+    REQUIRE(dir.size() > 0);
+    SECTION("copy")
+    {
+        REQUIRE(Files::copyFile(pathJoin(dir, "test.txt"),
+            pathJoin(dir, "tempfile.txt")) == 0);
+        std::string data = VirtFs::loadTextFileString("test/tempfile.txt");
+        ::remove((dir + "/tempfile.txt").c_str());
+#ifdef WIN32
+        REQUIRE(data == "test line 1\r\ntest line 2");
+#else  // WIN32
+
+        REQUIRE(data == "test line 1\ntest line 2");
+#endif  // WIN32
+    }
+
+    SECTION("errors")
+    {
+        REQUIRE(Files::copyFile(pathJoin(dir, "test_not_exists.txt"),
+            pathJoin(dir, "tempfile.txt")) == -1);
+        REQUIRE(Files::copyFile(pathJoin(dir, "test.txt"),
+            "/nonexist/root/dir123") == -1);
+    }
+
+    ResourceManager::deleteInstance();
+    VirtFs::unmountDirSilent("data");
+    VirtFs::unmountDirSilent("../data");
+    delete2(logger);
+//    VirtFs::deinit();
+}
+
+TEST_CASE("Files loadTextFileLocal")
+{
+    logger = new Logger();
+    VirtFs::mountDirSilent("data", Append_false);
+    VirtFs::mountDirSilent("../data", Append_false);
+
+    const std::string dir = VirtFs::getPath("test");
+    REQUIRE(dir.size() > 0);
+    Files::saveTextFile(dir, "tempfile.txt", "test line\ntext line2");
+    StringVect lines;
+    REQUIRE(Files::loadTextFileLocal(pathJoin(dir, "tempfile.txt"),
+        lines));
+    ::remove((dir + "/tempfile.txt").c_str());
+    REQUIRE(lines.size() == 2);
+    REQUIRE(lines[0] == "test line");
+    REQUIRE(lines[1] == "text line2");
 
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
