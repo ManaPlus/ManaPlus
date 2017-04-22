@@ -761,7 +761,8 @@ void Configuration::init(const std::string &filename,
         mDirectory.clear();
         if (VirtFs::exists(filename) == false)
         {
-            logger->log("Warning: No configuration file (%s)", filename.c_str());
+            logger->log("Warning: No configuration file (%s)",
+                filename.c_str());
             return;
         }
     }
@@ -772,7 +773,8 @@ void Configuration::init(const std::string &filename,
         mDirectory = getRealPath(getFileDir(filename));
         if (Files::existsLocal(filename) == false)
         {
-            logger->log("Warning: No configuration file (%s)", filename.c_str());
+            logger->log("Warning: No configuration file (%s)",
+                filename.c_str());
             return;
         }
     }
