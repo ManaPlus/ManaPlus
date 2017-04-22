@@ -157,12 +157,7 @@ TEST_CASE("Files copyFile1")
             pathJoin(dir, "tempfile.txt")) == 0);
         std::string data = VirtFs::loadTextFileString("test/tempfile.txt");
         ::remove((dir + "/tempfile.txt").c_str());
-#ifdef WIN32
-        REQUIRE(data == "test line 1\r\ntest line 2");
-#else  // WIN32
-
         REQUIRE(data == "test line 1\ntest line 2");
-#endif  // WIN32
     }
 
     SECTION("errors")
