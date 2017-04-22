@@ -402,6 +402,7 @@ void Client::gameInit()
 #if !defined(ANDROID) && !defined(__APPLE__) && \
     !defined(__native_client__) && !defined(UNITTESTS)
     if (!settings.options.safeMode &&
+        settings.options.renderer < 0 &&
         settings.options.test.empty() &&
         !config.getBoolValue("videodetected"))
     {
