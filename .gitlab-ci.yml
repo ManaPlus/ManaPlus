@@ -67,6 +67,7 @@ gcc-5_c++11_i386:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -81,6 +82,7 @@ gcc-6-i386:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -95,6 +97,7 @@ clang-3.9:
   stage: prebuild
   script:
   - ./tools/ci/jobs/clang39.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
@@ -106,6 +109,7 @@ gcc-6:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -117,6 +121,7 @@ gcc-4.4:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc44.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:oldstable
   <<: *job-push
   variables:
@@ -199,6 +204,7 @@ gcc-5_sdl2:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -210,6 +216,7 @@ gcc-6_game_only:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc6.sh --without-dyecmd
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -436,6 +443,7 @@ gcc-5_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -449,6 +457,7 @@ gcc-6_sanitize:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -462,6 +471,7 @@ gcc-6_sanitize_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -920,6 +930,7 @@ gcc-6_lto:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_lto.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -931,6 +942,7 @@ gcc-6_lto_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_lto.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -987,6 +999,7 @@ gcc-3_sdl1:
   stage: build
   script:
   - ./tools/ci/jobs/gcc3.sh
+  - ./tools/ci/scripts/runtest.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl1
   <<: *job-push
   variables:
@@ -999,6 +1012,7 @@ gcc-3_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc3.sh --with-sdl2
+  - ./tools/ci/scripts/runtest.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl2
   <<: *job-push
   variables:
@@ -1011,6 +1025,7 @@ gcc-4.1_sdl1:
   stage: build
   script:
   - ./tools/ci/jobs/gcc41.sh
+  - ./tools/ci/scripts/runtest.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc41_sdl1
   <<: *job-push
   variables:
@@ -1025,6 +1040,7 @@ gcc-4.1_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc41.sh --with-sdl2
+  - ./tools/ci/scripts/runtest.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc41_sdl2
   <<: *job-push
   variables:
@@ -1039,6 +1055,7 @@ gcc-4.3_sdl1:
   stage: build
   script:
   - ./tools/ci/jobs/gcc43.sh
+  - ./tools/ci/scripts/runtest.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc43_sdl1
   <<: *job-push
   variables:
@@ -1053,6 +1070,7 @@ gcc-4.3_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc43.sh --with-sdl2
+  - ./tools/ci/scripts/runtest.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc43_sdl2
   <<: *job-push
   variables:
@@ -1067,6 +1085,7 @@ gcc-4.4_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc44.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:oldstable-i386
   <<: *job-push
   variables:
@@ -1081,6 +1100,7 @@ gcc-4.5:
   stage: build
   script:
   - ./tools/ci/jobs/gcc45.sh
+  - ./tools/ci/scripts/runtest.sh
   image: ubuntu:12.04
   <<: *job-push
   variables:
@@ -1095,6 +1115,7 @@ gcc-4.6:
   stage: build
   script:
   - ./tools/ci/jobs/gcc46.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:oldstable
   <<: *job-push
   variables:
@@ -1109,6 +1130,7 @@ gcc-4.6_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc46.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:oldstable-i386
   <<: *job-push
   variables:
@@ -1123,6 +1145,7 @@ gcc-4.7:
   stage: build
   script:
   - ./tools/ci/jobs/gcc47.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:oldstable
   <<: *job-push
   variables:
@@ -1137,6 +1160,7 @@ gcc-4.7_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc47.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:oldstable-i386
   <<: *job-push
   variables:
@@ -1151,6 +1175,7 @@ gcc-4.7_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc47_c++11.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:oldstable
   <<: *job-push
   variables:
@@ -1165,6 +1190,7 @@ gcc-4.8:
   stage: build
   script:
   - ./tools/ci/jobs/gcc48.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1177,6 +1203,7 @@ gcc-4.8_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc48.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:stable-i386
   <<: *job-push
   variables:
@@ -1191,6 +1218,7 @@ clang-3.0:
   stage: build
   script:
   - ./tools/ci/jobs/clang.sh clang
+  - ./tools/ci/scripts/runtest.sh
   image: debian:oldstable
   <<: *job-push
   variables:
@@ -1205,6 +1233,7 @@ clang-3.0_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang.sh clang
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:oldstable-i386
   <<: *job-push
   variables:
@@ -1219,6 +1248,7 @@ clang-3.3:
   stage: build
   script:
   - ./tools/ci/jobs/clang.sh clang-3.3
+  - ./tools/ci/scripts/runtest.sh
   image: ubuntu:12.04
   <<: *job-push
   variables:
@@ -1233,6 +1263,7 @@ clang-3.3_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang.sh clang-3.3
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/ubuntu:precise-i386
   <<: *job-push
   variables:
@@ -1247,6 +1278,7 @@ clang-3.4:
   stage: build
   script:
   - ./tools/ci/jobs/clang34.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1259,6 +1291,7 @@ clang-3.4_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang34.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:stable-i386
   <<: *job-push
   variables:
@@ -1273,6 +1306,7 @@ clang-3.5:
   stage: build
   script:
   - ./tools/ci/jobs/clang35.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1285,6 +1319,7 @@ clang-3.5_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang35.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:stable-i386
   <<: *job-push
   variables:
@@ -1299,6 +1334,7 @@ clang-3.6:
   stage: build
   script:
   - ./tools/ci/jobs/clang36.sh
+  - ./tools/ci/scripts/runtest.sh
   image: ubuntu:14.04
   <<: *job-push
   variables:
@@ -1313,6 +1349,7 @@ clang-3.6_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang36.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/ubuntu:trusty-i386
   <<: *job-push
   variables:
@@ -1327,6 +1364,7 @@ clang-3.7:
   stage: build
   script:
   - ./tools/ci/jobs/clang37.sh
+  - ./tools/ci/scripts/runtest.sh
   image: ubuntu:16.04
   <<: *job-push
   variables:
@@ -1341,6 +1379,7 @@ clang-3.7_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang37.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/ubuntu:xenial-i386
   <<: *job-push
   variables:
@@ -1355,6 +1394,7 @@ clang-3.8:
   stage: build
   script:
   - ./tools/ci/jobs/clang38.sh
+  - ./tools/ci/scripts/runtest.sh
   image: ubuntu:16.04
   <<: *job-push
   variables:
@@ -1369,6 +1409,7 @@ clang-3.8_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang38.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/ubuntu:xenial-i386
   <<: *job-push
   variables:
@@ -1383,6 +1424,7 @@ clang-3.8_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang39.sh_c++11.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
@@ -1394,6 +1436,7 @@ clang-3.8_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang39.sh_c++11.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -1408,6 +1451,7 @@ gcc-6_all_and_unittestsbin:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_silent.sh --enable-unittestsbin
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1419,6 +1463,7 @@ gcc-4.8_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc48_c++11.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1431,6 +1476,7 @@ gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1443,6 +1489,7 @@ gcc-4.9_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:stable-i386
   <<: *job-push
   variables:
@@ -1457,6 +1504,7 @@ gcc-4.9_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49_c++11.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1469,6 +1517,7 @@ cmake_gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/cmake_gcc49.sh
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1483,6 +1532,7 @@ clang-4.0:
   stage: build
   script:
   - ./tools/ci/jobs/clang40.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: clang-4.0 libc++-dev libc++abi-dev 
@@ -1496,6 +1546,7 @@ gcc-5:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --enable-werror
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1507,6 +1558,7 @@ gcc-5_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1518,6 +1570,7 @@ gcc-5_sdl2_c++11:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1529,6 +1582,7 @@ gcc-5_sdl2_c++11_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -1543,6 +1597,7 @@ gcc-snapshot:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-snapshot 
@@ -1554,6 +1609,7 @@ gcc-snapshot_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -1568,6 +1624,7 @@ gcc-snapshot_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-snapshot 
@@ -1579,6 +1636,7 @@ gcc-snapshot_sdl2_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -1593,6 +1651,7 @@ gcc_without_mumble:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --without-mumble --enable-werror
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1600,10 +1659,11 @@ gcc_without_mumble:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
-gcc_without_customnls:
+gcc_with_customnls:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --enable-customnls --enable-werror
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1611,10 +1671,11 @@ gcc_without_customnls:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
-gcc_without_customnls_nonls:
+gcc_wit_customnls_nonls:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --enable-customnls --disable-nls --enable-werror
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1626,6 +1687,7 @@ gcc49_cilkplus:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh --enable-cilkplus
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1638,6 +1700,7 @@ gcc-5_cilkplus:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5.sh --enable-cilkplus
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1649,6 +1712,7 @@ gcc-6_cilkplus:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --enable-cilkplus
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1660,6 +1724,7 @@ gcc-6_pugixml:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --enable-libxml=pugixml
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1671,6 +1736,7 @@ gcc-6_pugixml_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --enable-libxml=pugixml
+  - ./tools/ci/scripts/runtest.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -1683,6 +1749,7 @@ gcc-6_pugixml_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-libxml=pugixml
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1694,6 +1761,7 @@ gcc-6_pugixml_sdl2_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-libxml=pugixml
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1705,6 +1773,7 @@ gcc_portable:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --with-opengl --enable-tmwa --enable-portable=yes
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1716,6 +1785,7 @@ clang-3.9_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/clang39_sdl2.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
@@ -1727,6 +1797,7 @@ gcc-6_no_asserts:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6.sh --disable-asserts
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -1738,6 +1809,7 @@ gcc-4.8_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc48.sh --with-sdl2
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1750,6 +1822,7 @@ gcc-4.9_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh --with-sdl2
+  - ./tools/ci/scripts/runtest.sh
   image: debian:stable
   <<: *job-push
   variables:
@@ -1829,6 +1902,7 @@ fedora_gcc-snapshot:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot.sh
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   image: fedora:rawhide
   variables:
@@ -1841,6 +1915,7 @@ fedora_gcc-snapshot_sdl2:
   stage: build
   script:
   - ./tools/ci/jobs/gccsnapshot.sh --with-sdl2
+  - ./tools/ci/scripts/runtest.sh
   <<: *job-push
   image: fedora:rawhide
   variables:
@@ -1857,6 +1932,7 @@ gcc-6_zlib_v1.2.3.9:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
@@ -1876,6 +1952,7 @@ gcc-6_zlib_v1.2.6.1:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
@@ -1895,6 +1972,7 @@ gcc-6_zlib_v1.2.9:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
@@ -1913,6 +1991,7 @@ gcc-6_zlib_v1.2.10:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
@@ -1931,6 +2010,7 @@ gcc-6_zlib_v1.2.11:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
@@ -1949,6 +2029,7 @@ gcc-6_zlib_master:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
@@ -1967,6 +2048,7 @@ gcc-6_zlib_develop:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
@@ -1986,6 +2068,7 @@ gcc-6_zlib_develop:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: zlib_ng
@@ -2004,6 +2087,7 @@ gcc-6_libpng_master:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
@@ -2022,6 +2106,7 @@ gcc-6_libpng_libpng17:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
@@ -2040,6 +2125,7 @@ gcc-6_libpng_libpng16:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
@@ -2058,6 +2144,7 @@ gcc-6_libpng_libpng15:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
@@ -2076,6 +2163,7 @@ gcc-6_libpng_libpng14:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
@@ -2094,6 +2182,7 @@ gcc-6_libpng_libpng12:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
@@ -2112,6 +2201,7 @@ gcc-6_libpng_libpng10:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
@@ -2130,6 +2220,7 @@ gcc-6_curl_curl-7_9_8:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: curl
@@ -2148,6 +2239,7 @@ gcc-6_curl_curl-7_40_0:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: curl
@@ -2166,6 +2258,7 @@ gcc-6_curl_curl-7_52_1:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: curl
@@ -2184,6 +2277,7 @@ gcc-6_curl_curl-7_53_1:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: curl
@@ -2204,6 +2298,7 @@ gcc-6_SDL_SDL-1.2:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: SDL
@@ -2223,6 +2318,7 @@ gcc-6_SDL_default:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh --with-sdl2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: SDL
@@ -2285,6 +2381,7 @@ gcc-6_SDL_SDL-1.2_old:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: SDL
@@ -2306,6 +2403,7 @@ gcc-6_SDL_default_old:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh --with-sdl2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtest.sh
   <<: *job-push
   variables:
     LIBNAME: SDL
