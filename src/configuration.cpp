@@ -24,7 +24,10 @@
 
 #include "variabledata.h"
 
+#include "fs/files.h"
 #include "fs/paths.h"
+
+#include "fs/virtfs/virtfs.h"
 
 #include "listeners/configlistener.h"
 
@@ -748,9 +751,7 @@ void Configuration::init(const std::string &filename,
                          const SkipError skipError)
 {
     cleanDefaults();
-    XML::Document doc(filename,
-        useResManager,
-        skipError);
+    clear();
     mFilename = filename;
     mUseResManager = useResManager;
 
@@ -758,15 +759,28 @@ void Configuration::init(const std::string &filename,
     {
         mConfigPath = "virtfs://" + filename;
         mDirectory.clear();
+        if (VirtFs::exists(filename) == false)
+        {
+            logger->log("Warning: No configuration file (%s)", filename.c_str());
+            return;
+        }
     }
     else
     {
         mConfigPath = filename;
         logger->log1("init 1");
         mDirectory = getRealPath(getFileDir(filename));
+        if (Files::existsLocal(filename) == false)
+        {
+            logger->log("Warning: No configuration file (%s)", filename.c_str());
+            return;
+        }
     }
-    logger->log1("init 2");
 
+    XML::Document doc(filename,
+        useResManager,
+        skipError);
+    logger->log1("init 2");
     if (!doc.rootNode())
     {
         logger->log("Couldn't open configuration file: %s", filename.c_str());
