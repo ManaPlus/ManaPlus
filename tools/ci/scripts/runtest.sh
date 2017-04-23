@@ -10,6 +10,8 @@ kill -0 ${PID}
 if [ "$?" != 0 ]; then
     echo "Error: process look like crashed"
     cat logs/run.log
+    echo "Run with gdb"
+    gdb -ex=run --args ./src/manaplus
     exit 1
 fi
 kill -s SIGTERM ${PID}
