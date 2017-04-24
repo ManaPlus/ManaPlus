@@ -21,7 +21,6 @@
 #include "fs/virtfs/virtfszip.h"
 
 #include "fs/virtfs/virtfile.h"
-#include "fs/virtfs/virtfs.h"
 #include "fs/virtfs/virtfsfuncs.h"
 #include "fs/virtfs/virtfsziprwops.h"
 #include "fs/virtfs/virtlist.h"
