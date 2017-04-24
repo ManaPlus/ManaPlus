@@ -1935,13 +1935,88 @@ TEST_CASE("VirtFs1 getFiles zip")
 
     list.clear();
     VirtFs::getFiles("dir2", list);
+    REQUIRE(list.size() == 4);
     REQUIRE(inList(list, "hide.png"));
     REQUIRE(inList(list, "paths.xml"));
     REQUIRE(inList(list, "test.txt"));
     REQUIRE(inList(list, "units.xml"));
-    REQUIRE(list.size() == 4);
 
     VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 getDirs1")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test2.zip",
+        Append_false);
+
+    StringVect list;
+    VirtFs::getDirs("dir", list);
+    REQUIRE(list.size() == 2);
+    REQUIRE(inList(list, "1"));
+    REQUIRE(inList(list, "gpl"));
+    list.clear();
+
+    VirtFs::getDirs("dir2", list);
+    REQUIRE(list.size() == 0);
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 getDirs2")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+    StringVect list;
+
+    SECTION("dir1")
+    {
+        VirtFs::mountDir(prefix + "data/test",
+            Append_false);
+
+        VirtFs::getDirs("/", list);
+//        REQUIRE(list.size() == 2);
+        REQUIRE(inList(list, "dir1"));
+        REQUIRE(inList(list, "dir2"));
+        list.clear();
+
+        VirtFs::getDirs("dir1", list);
+        REQUIRE(list.size() == 0);
+
+        VirtFs::unmountDir(prefix + "data/test");
+    }
+
+    SECTION("dir2")
+    {
+        VirtFs::mountDir(prefix + "data",
+            Append_false);
+
+        VirtFs::getDirs("sfx", list);
+        REQUIRE(inList(list, "system"));
+        list.clear();
+
+        VirtFs::getDirs("evol", list);
+        REQUIRE(list.size() == 2);
+        REQUIRE(inList(list, "icons"));
+        REQUIRE(inList(list, "images"));
+
+        VirtFs::unmountDir(prefix + "data");
+    }
+
     VirtFs::deinit();
     delete2(logger);
 }

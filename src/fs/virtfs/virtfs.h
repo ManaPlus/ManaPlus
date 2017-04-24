@@ -94,8 +94,10 @@ namespace VirtFs
 #endif  // UNITTESTS
     const char *loadFile(std::string filename,
                          int &restrict fileSize);
-    void getFiles(std::string path,
+    void getFiles(std::string dirName,
                   StringVect &list);
+    void getDirs(std::string dirName,
+                 StringVect &list);
 }  // namespace VirtFs
 
 extern const char *dirSeparator;
