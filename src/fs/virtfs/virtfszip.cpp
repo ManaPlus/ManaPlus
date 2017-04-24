@@ -269,8 +269,11 @@ namespace VirtFsZip
                     if (found == false)
                     {
                         std::string dirName2 = pathJoin(dirName, fileName);
-                        if (findLast(dirName2, std::string(dirSeparator)) == false)
+                        if (findLast(dirName2, std::string(dirSeparator)) ==
+                            false)
+                        {
                             dirName2 += dirSeparator;
+                        }
                         FOR_EACH (std::vector<std::string>::const_iterator,
                                   it,
                                   zipEntry->mDirs)
@@ -361,8 +364,11 @@ namespace VirtFsZip
                     if (found == false)
                     {
                         std::string dirName2 = pathJoin(dirName, fileName);
-                        if (findLast(dirName2, std::string(dirSeparator)) == false)
+                        if (findLast(dirName2, std::string(dirSeparator)) ==
+                            false)
+                        {
                             dirName2 += dirSeparator;
+                        }
                         FOR_EACH (std::vector<std::string>::const_iterator,
                                   it,
                                   zipEntry->mDirs)
@@ -453,8 +459,11 @@ namespace VirtFsZip
                     if (found == false)
                     {
                         std::string dirName2 = pathJoin(dirName, fileName);
-                        if (findLast(dirName2, std::string(dirSeparator)) == false)
+                        if (findLast(dirName2, std::string(dirSeparator)) ==
+                            false)
+                        {
                             dirName2 += dirSeparator;
+                        }
                         FOR_EACH (std::vector<std::string>::const_iterator,
                                   it,
                                   zipEntry->mDirs)
