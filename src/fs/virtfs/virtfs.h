@@ -96,6 +96,8 @@ namespace VirtFs
                          int &restrict fileSize);
     void getFiles(std::string dirName,
                   StringVect &list);
+    void getFilesWithDir(std::string dirName,
+                         StringVect &list);
     void getDirs(std::string dirName,
                  StringVect &list);
 }  // namespace VirtFs

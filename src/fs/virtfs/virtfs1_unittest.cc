@@ -30,6 +30,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
+#include "utils/stringutils.h"
 
 #include <SDL_rwops.h>
 
@@ -690,6 +691,19 @@ static bool inList(StringVect list,
     FOR_EACH (StringVectCIter, it, list)
     {
         if (*it == name)
+            return true;
+    }
+    return false;
+}
+
+static bool inList(StringVect list,
+                   const std::string &dir,
+                   const std::string &name)
+{
+    const std::string path = pathJoin(dir, name);
+    FOR_EACH (StringVectCIter, it, list)
+    {
+        if (*it == path)
             return true;
     }
     return false;
@@ -2013,6 +2027,88 @@ TEST_CASE("VirtFs1 getDirs2")
         REQUIRE(list.size() == 2);
         REQUIRE(inList(list, "icons"));
         REQUIRE(inList(list, "images"));
+
+        VirtFs::unmountDir(prefix + "data");
+    }
+
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 getFilesWithDir1")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test2.zip",
+        Append_false);
+
+    StringVect list;
+    VirtFs::getFilesWithDir("dir", list);
+    REQUIRE(list.size() == 2);
+    REQUIRE(inList(list, "dir", "dye.png"));
+    REQUIRE(inList(list, "dir", "hide.png"));
+    list.clear();
+
+    VirtFs::getFilesWithDir("dir2", list);
+    REQUIRE(list.size() == 4);
+    REQUIRE(inList(list, "dir2", "hide.png"));
+    REQUIRE(inList(list, "dir2", "paths.xml"));
+    REQUIRE(inList(list, "dir2", "test.txt"));
+    REQUIRE(inList(list, "dir2", "units.xml"));
+    list.clear();
+
+    VirtFs::getFilesWithDir("/", list);
+    REQUIRE(list.size() > 2);
+    REQUIRE(inList(list, "/", "test.txt"));
+    REQUIRE(inList(list, "/", "units.xml"));
+    list.clear();
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 getFilesWithDir2")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+    StringVect list;
+
+    SECTION("dir1")
+    {
+        VirtFs::mountDir(prefix + "data/graphics",
+            Append_false);
+
+        VirtFs::getFilesWithDir("/", list);
+        REQUIRE(list.size() <= 5);
+        VirtFs::unmountDir(prefix + "data/graphics");
+    }
+
+    SECTION("dir2")
+    {
+        VirtFs::mountDir(prefix + "data",
+            Append_false);
+
+        VirtFs::getFilesWithDir("music", list);
+        REQUIRE(list.size() <= 5);
+        REQUIRE(list.size() >= 1);
+        REQUIRE(inList(list, "music", "keprohm.ogg"));
+        list.clear();
+
+        VirtFs::getFilesWithDir(pathJoin("evol", "icons"), list);
+        REQUIRE(list.size() == 3);
+        REQUIRE(inList(list, pathJoin("evol" , "icons"), "evol-client.ico"));
+        REQUIRE(inList(list, pathJoin("evol" , "icons"), "evol-client.png"));
+        REQUIRE(inList(list, pathJoin("evol" , "icons"), "evol-client.xpm"));
 
         VirtFs::unmountDir(prefix + "data");
     }

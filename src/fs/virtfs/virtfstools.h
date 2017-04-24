@@ -37,8 +37,6 @@ namespace VirtFs
     void getFilesInDir(const std::string &dir,
                        StringVect &list,
                        const std::string &ext);
-    void getFilesWithDir(const std::string &restrict path,
-                         StringVect &restrict list);
     std::string getPath(const std::string &file);
     bool loadTextFile(const std::string &fileName,
                       StringVect &lines);

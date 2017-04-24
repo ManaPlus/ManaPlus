@@ -183,6 +183,29 @@ namespace VirtFs
         }
     }
 
+    void getFilesWithDir(std::string dirName,
+                         StringVect &list)
+    {
+        prepareFsPath(dirName);
+        if (checkPath(dirName) == false)
+        {
+            reportAlways("VirtFs::enumerateFiles invalid path: %s",
+                dirName.c_str());
+            return;
+        }
+
+        std::string rootDir = dirName;
+        if (findLast(rootDir, std::string(dirSeparator)) == false)
+            rootDir += dirSeparator;
+
+        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        {
+            VirtFsEntry *const entry = *it;
+            entry->funcs->getFilesWithDir(entry, rootDir, list);
+        }
+    }
+
+
     void getDirs(std::string dirName,
                  StringVect &list)
     {

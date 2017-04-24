@@ -76,18 +76,6 @@ namespace VirtFs
         VirtFs::freeList(list);
     }
 
-    void getFilesWithDir(const std::string &path,
-                         StringVect &list)
-    {
-        VirtList *const fonts = VirtFs::enumerateFiles(path);
-        FOR_EACH (StringVectCIter, i, fonts->names)
-        {
-            if (!VirtFs::isDirectory(path + *i))
-                list.push_back(path + *i);
-        }
-        VirtFs::freeList(fonts);
-    }
-
     void getFilesInDir(const std::string &dir,
                        StringVect &list,
                        const std::string &ext)

@@ -58,6 +58,9 @@ namespace VirtFsDir
     void getFiles(VirtFsEntry *restrict const entry,
                   const std::string &dirName,
                   StringVect &names);
+    void getFilesWithDir(VirtFsEntry *restrict const entry,
+                         const std::string &dirName,
+                         StringVect &names);
     void getDirs(VirtFsEntry *restrict const entry,
                  const std::string &dirName,
                  StringVect &names);

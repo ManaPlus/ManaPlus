@@ -138,6 +138,7 @@ namespace VirtFsDir
         ptr->openAppend = &VirtFsDir::openAppend;
         ptr->loadFile = &VirtFsDir::loadFile;
         ptr->getFiles = &VirtFsDir::getFiles;
+        ptr->getFilesWithDir = &VirtFsDir::getFilesWithDir;
         ptr->getDirs = &VirtFsDir::getDirs;
         ptr->rwops_seek = &VirtFsDir::rwops_seek;
         ptr->rwops_read = &VirtFsDir::rwops_read;
@@ -558,6 +559,55 @@ namespace VirtFsDir
                 }
                 if (found == false)
                     names.push_back(file);
+            }
+            closedir(dir);
+        }
+    }
+
+    void getFilesWithDir(VirtFsEntry *restrict const entry,
+                         const std::string &dirName,
+                         StringVect &names)
+    {
+        const std::string path = entry->root + dirName;
+        const struct dirent *next_file = nullptr;
+        DIR *const dir = opendir(path.c_str());
+        if (dir)
+        {
+            while ((next_file = readdir(dir)))
+            {
+                struct stat statbuf;
+                const std::string file = next_file->d_name;
+                if (file == "." || file == "..")
+                    continue;
+#ifndef WIN32
+                if (mPermitLinks == false)
+                {
+                    if (lstat(path.c_str(), &statbuf) == 0 &&
+                        S_ISLNK(statbuf.st_mode) != 0)
+                    {
+                        continue;
+                    }
+                }
+#endif  // WIN32
+
+                const std::string filePath = pathJoin(path, file);
+                if (stat(filePath.c_str(), &statbuf) == 0)
+                {
+                    if (S_ISDIR(statbuf.st_mode) != 0)
+                        continue;
+                }
+
+                bool found(false);
+                FOR_EACH (StringVectCIter, itn, names)
+                {
+                    if (*itn == file)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found == false)
+                    names.push_back(pathJoin(dirName, file));
             }
             closedir(dir);
         }

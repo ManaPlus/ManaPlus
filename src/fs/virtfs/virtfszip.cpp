@@ -75,6 +75,7 @@ namespace VirtFsZip
         ptr->openAppend = &VirtFsZip::openAppend;
         ptr->loadFile = &VirtFsZip::loadFile;
         ptr->getFiles = &VirtFsZip::getFiles;
+        ptr->getFilesWithDir = &VirtFsZip::getFilesWithDir;
         ptr->getDirs = &VirtFsZip::getDirs;
         ptr->rwops_seek = &VirtFsZip::rwops_seek;
         ptr->rwops_read = &VirtFsZip::rwops_read;
@@ -282,6 +283,98 @@ namespace VirtFsZip
                         }
                         if (found == false)
                             names.push_back(fileName);
+                    }
+                }
+            }
+        }
+    }
+
+    void getFilesWithDir(VirtFsEntry *restrict const entry,
+                         const std::string &dirName,
+                         StringVect &names)
+    {
+        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        if (dirName == dirSeparator)
+        {
+            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                      it2,
+                      zipEntry->mHeaders)
+            {
+                ZipLocalHeader *const header = *it2;
+                std::string fileName = header->fileName;
+                // skip subdirs from enumeration
+                const size_t idx = fileName.find(dirSeparator);
+                if (idx != std::string::npos)
+                    fileName.erase(idx);
+                bool found(false);
+                FOR_EACH (StringVectCIter, itn, names)
+                {
+                    if (*itn == fileName)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found == false)
+                {
+                    std::string dirName2 = pathJoin(dirName, fileName);
+                    if (findLast(dirName2, std::string(dirSeparator)) == false)
+                        dirName2 += dirSeparator;
+                    FOR_EACH (std::vector<std::string>::const_iterator,
+                              it,
+                              zipEntry->mDirs)
+                    {
+                        if (*it == dirName2)
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found == false)
+                        names.push_back(pathJoin(dirName, fileName));
+                }
+            }
+        }
+        else
+        {
+            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+                      it2,
+                      zipEntry->mHeaders)
+            {
+                ZipLocalHeader *const header = *it2;
+                std::string fileName = header->fileName;
+                if (findCutFirst(fileName, dirName) == true)
+                {
+                    // skip subdirs from enumeration
+                    const size_t idx = fileName.find(dirSeparator);
+                    if (idx != std::string::npos)
+                        fileName.erase(idx);
+                    bool found(false);
+                    FOR_EACH (StringVectCIter, itn, names)
+                    {
+                        if (*itn == fileName)
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found == false)
+                    {
+                        std::string dirName2 = pathJoin(dirName, fileName);
+                        if (findLast(dirName2, std::string(dirSeparator)) == false)
+                            dirName2 += dirSeparator;
+                        FOR_EACH (std::vector<std::string>::const_iterator,
+                                  it,
+                                  zipEntry->mDirs)
+                        {
+                            if (*it == dirName2)
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (found == false)
+                            names.push_back(pathJoin(dirName, fileName));
                     }
                 }
             }
