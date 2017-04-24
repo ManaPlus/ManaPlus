@@ -39,7 +39,7 @@ BankHandler::BankHandler() :
 
 void BankHandler::deposit(const int money) const
 {
-    if (packetVersion < 20130724)
+    if (packetVersion < 20130320)
         return;
     createOutPacket(CMSG_BANK_DEPOSIT);
     outMsg.writeInt32(0, "account id");
@@ -48,7 +48,7 @@ void BankHandler::deposit(const int money) const
 
 void BankHandler::withdraw(const int money) const
 {
-    if (packetVersion < 20130724)
+    if (packetVersion < 20130320)
         return;
     createOutPacket(CMSG_BANK_WITHDRAW);
     outMsg.writeInt32(0, "account id");
@@ -57,7 +57,7 @@ void BankHandler::withdraw(const int money) const
 
 void BankHandler::check() const
 {
-    if (packetVersion < 20130724)
+    if (packetVersion < 20130320)
         return;
     createOutPacket(CMSG_BANK_CHECK);
     outMsg.writeInt32(0, "account id");
@@ -65,7 +65,7 @@ void BankHandler::check() const
 
 void BankHandler::open() const
 {
-    if (packetVersion < 20130724)
+    if (packetVersion < 20130417)
         return;
     createOutPacket(CMSG_BANK_OPEN);
     outMsg.writeInt32(0, "unused");
@@ -73,7 +73,7 @@ void BankHandler::open() const
 
 void BankHandler::close() const
 {
-    if (packetVersion < 20130724)
+    if (packetVersion < 20130417)
         return;
     createOutPacket(CMSG_BANK_CLOSE);
     outMsg.writeInt32(0, "unused");

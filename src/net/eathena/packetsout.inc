@@ -810,6 +810,12 @@ if (packetVersion >= 20120716)
     packet(CMSG_STORAGE_PASSWORD,         0x0819,  36, clif->pStoragePassword);
 }
 
+// 20120925
+if (packetVersion >= 20120925)
+{
+    packet(CMSG_PLAYER_EQUIP,             0x0998,   8, clif->pEquipItem);
+}
+
 // 20130320
 if (packetVersion >= 20130320)
 {
@@ -836,10 +842,24 @@ if (packetVersion >= 20130320)
     packet(CMSG_HOMUNCULUS_MENU,          0x093f,   5, clif->pHomMenu);
     packet(CMSG_BUYINGSTORE_CREATE,       0x0938,  -1, clif->pReqOpenBuyingStore);
     packet(CMSG_SKILL_USE_BEING,          0x089b,  10, clif->pUseSkillToId);
-    packet(CMSG_PLAYER_EQUIP,             0x0998,   8, clif->pEquipItem);
     packet(CMSG_PARTY_INVITE2,            0x086d,  26, clif->pPartyInvite2);
     packet(CMSG_STORAGE_PASSWORD,         0x0947,  36, clif->pStoragePassword);
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x0868,  -1, clif->pItemListWindowSelected);
+}
+
+// 20130320
+if (packetVersion >= 20130320)
+{
+    packet(CMSG_BANK_DEPOSIT,             0x09a7,  10, clif->pBankDeposit);
+    packet(CMSG_BANK_WITHDRAW,            0x09a9,  10, clif->pBankWithdraw);
+    packet(CMSG_BANK_CHECK,               0x09ab,   6, clif->pBankCheck);
+}
+
+// 20130417
+if (packetVersion >= 20130417)
+{
+    packet(CMSG_BANK_OPEN,                0x09b6,   6, clif->pBankOpen);
+    packet(CMSG_BANK_CLOSE,               0x09b8,   6, clif->pBankClose);
 }
 
 // 20130515
@@ -1057,16 +1077,6 @@ if (packetVersion >= 20130703)
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x0281,  -1, clif->pItemListWindowSelected);
 }
 
-// 20130724
-if (packetVersion >= 20130724)
-{
-    packet(CMSG_BANK_DEPOSIT,             0x09a7,  10, clif->pBankDeposit);
-    packet(CMSG_BANK_WITHDRAW,            0x09a9,  10, clif->pBankWithdraw);
-    packet(CMSG_BANK_CHECK,               0x09ab,   6, clif->pBankCheck);
-    packet(CMSG_BANK_OPEN,                0x09b6,   6, clif->pBankOpen);
-    packet(CMSG_BANK_CLOSE,               0x09b8,   6, clif->pBankClose);
-}
-
 // 20130807
 if (packetVersion >= 20130807)
 {
@@ -1108,6 +1118,12 @@ if (packetVersion >= 20130814)
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x08a4,  -1, clif->pItemListWindowSelected);
 }
 
+// 20130814
+if (packetVersion >= 20130814)
+{
+    packet(CMSG_ADMIN_MONSTER_ITEM,       0x09ce, 102, clif->pGM_Monster_Item);
+}
+
 // 20131218
 if (packetVersion >= 20131218)
 {
@@ -1140,11 +1156,6 @@ if (packetVersion >= 20131218)
     packet(CMSG_PARTY_INVITE2,            0x0802,  26, clif->pPartyInvite2);
     packet(CMSG_STORAGE_PASSWORD,         0x085c,  36, clif->pStoragePassword);
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x0281,  -1, clif->pItemListWindowSelected);
-}
-
-if (packetVersion >= 20131218)
-{
-    packet(CMSG_ADMIN_MONSTER_ITEM,       0x09ce, 102, clif->pGM_Monster_Item);
 }
 
 // 20131223
