@@ -43,6 +43,7 @@ struct VirtFsFuncs final
         exists(nullptr),
         getRealDir(nullptr),
         enumerate(nullptr),
+        getFiles(nullptr),
         isDirectory(nullptr),
         openRead(nullptr),
         openWrite(nullptr),
@@ -84,6 +85,9 @@ struct VirtFsFuncs final
     void (*enumerate) (VirtFsEntry *restrict const entry,
                        const std::string &dirName,
                        StringVect &names);
+    void (*getFiles) (VirtFsEntry *restrict const entry,
+                      const std::string &dirName,
+                      StringVect &names);
     bool (*isDirectory) (VirtFsEntry *restrict const entry,
                          const std::string &dirName,
                          bool &isDirFlag);

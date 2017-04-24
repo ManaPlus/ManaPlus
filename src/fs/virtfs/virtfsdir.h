@@ -55,6 +55,9 @@ namespace VirtFsDir
     void enumerate(VirtFsEntry *restrict const entry,
                    const std::string &dirName,
                    StringVect &names);
+    void getFiles(VirtFsEntry *restrict const entry,
+                  const std::string &dirName,
+                  StringVect &names);
     bool isDirectory(VirtFsEntry *restrict const entry,
                      const std::string &dirName,
                      bool &isDirFlag);

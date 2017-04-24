@@ -25,10 +25,9 @@
 
 #include "enums/simpletypes/append.h"
 
-#include "localconsts.h"
+#include "utils/stringvector.h"
 
-#include <string>
-#include <vector>
+#include "localconsts.h"
 
 struct VirtFile;
 struct VirtFsEntry;
@@ -95,6 +94,8 @@ namespace VirtFs
 #endif  // UNITTESTS
     const char *loadFile(std::string filename,
                          int &restrict fileSize);
+    void getFiles(std::string path,
+                  StringVect &list);
 }  // namespace VirtFs
 
 extern const char *dirSeparator;

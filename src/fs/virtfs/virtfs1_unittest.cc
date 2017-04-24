@@ -684,6 +684,17 @@ static bool inList(const VirtList *const list,
     return false;
 }
 
+static bool inList(StringVect list,
+                   const std::string &name)
+{
+    FOR_EACH (StringVectCIter, it, list)
+    {
+        if (*it == name)
+            return true;
+    }
+    return false;
+}
+
 TEST_CASE("VirtFs1 enumerateFiles1")
 {
     VirtFs::init(".");
@@ -918,6 +929,37 @@ TEST_CASE("VirtFsZip enumerateFiles8")
     VirtFs::deinit();
     delete2(logger);
 }
+
+TEST_CASE("VirtFsZip enumerateFiles9")
+{
+    VirtFs::init(".");
+    logger = new Logger;
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test2.zip",
+        Append_false);
+    VirtFs::mountDirSilent(prefix + "data/test",
+        Append_false);
+
+    VirtList *list = nullptr;
+
+    list = VirtFs::enumerateFiles("dir");
+    REQUIRE(list->names.size() == 4);
+    REQUIRE(inList(list, "1"));
+    REQUIRE(inList(list, "gpl"));
+    REQUIRE(inList(list, "dye.png"));
+    REQUIRE(inList(list, "hide.png"));
+    VirtFs::freeList(list);
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::unmountDir(prefix + "data/test");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
 
 TEST_CASE("VirtFs1 isDirectory1")
 {
@@ -1869,6 +1911,37 @@ TEST_CASE("VirtFs1 rwops_read3")
         file->close(file);
     free(buffer);
     VirtFs::unmountDir(prefix + "data");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 getFiles zip")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip(prefix + "data/test/test2.zip",
+        Append_false);
+
+    StringVect list;
+    VirtFs::getFiles("dir", list);
+    REQUIRE(list.size() == 2);
+    REQUIRE(inList(list, "dye.png"));
+    REQUIRE(inList(list, "hide.png"));
+
+    list.clear();
+    VirtFs::getFiles("dir2", list);
+    REQUIRE(inList(list, "hide.png"));
+    REQUIRE(inList(list, "paths.xml"));
+    REQUIRE(inList(list, "test.txt"));
+    REQUIRE(inList(list, "units.xml"));
+    REQUIRE(list.size() == 4);
+
+    VirtFs::unmountZip(prefix + "data/test/test2.zip");
     VirtFs::deinit();
     delete2(logger);
 }

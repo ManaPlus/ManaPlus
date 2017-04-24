@@ -104,18 +104,6 @@ namespace VirtFs
         std::sort(list.begin(), list.end());
     }
 
-    void getFiles(const std::string &path,
-                  StringVect &list)
-    {
-        VirtList *const fonts = VirtFs::enumerateFiles(path);
-        FOR_EACH (StringVectCIter, i, fonts->names)
-        {
-            if (!VirtFs::isDirectory(pathJoin(path, *i)))
-                list.push_back(*i);
-        }
-        VirtFs::freeList(fonts);
-    }
-
     void getDirs(const std::string &path, StringVect &list)
     {
         VirtList *const fonts = VirtFs::enumerateFiles(path);
