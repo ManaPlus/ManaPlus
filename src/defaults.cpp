@@ -401,7 +401,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("checkOpenGLVersion", true);
     AddDEF("openglContext", false);
     AddDEF("allowMoveByMouse", true);
-    AddDEF("enableDSA", false);
+    AddDEF("enableDSA", true);
     return configData;
 }
 
