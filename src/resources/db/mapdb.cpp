@@ -136,7 +136,7 @@ void MapDB::readAtlas(XmlNodePtrConst node)
             mAtlases[atlas].push_back(file);
         }
     }
-    if (atlas != "all")
+    if (atlas != "all" && atlas != paths.getStringValue("emptyAtlasName"))
     {
         const AtlasCIter &allAtlas = mAtlases.find("all");
         if (allAtlas != mAtlases.end())
