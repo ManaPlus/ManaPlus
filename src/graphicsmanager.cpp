@@ -1058,27 +1058,35 @@ void GraphicsManager::initOpenGLFunctions()
 */
     {   // not for NVIDIA. in NVIDIA atleast in windows drivers DSA is broken
         // Mesa 10.6.3 show support for DSA, but it broken. Works in 10.7 dev
-        if (is45)
+        if (config.getBoolValue("enableDSA") == true)
         {
-            logger->log1("found GL_EXT_direct_state_access");
-            assignFunction(glTextureSubImage2D);
-        }
-        else if (supportExtension("GL_EXT_direct_state_access"))
-        {
-            logger->log1("found GL_EXT_direct_state_access");
-            assignFunctionEmu2(glTextureSubImage2DEXT,
-                "glTextureSubImage2DEXT");
-        }
-        else if (supportExtension("GL_ARB_direct_state_access"))
-        {
-            logger->log1("found GL_ARB_direct_state_access");
-            logger->log1("GL_EXT_direct_state_access not found");
-            assignFunction(glTextureSubImage2D);
+            if (is45)
+            {
+                logger->log1("found GL_EXT_direct_state_access");
+                assignFunction(glTextureSubImage2D);
+            }
+            else if (supportExtension("GL_EXT_direct_state_access"))
+            {
+                logger->log1("found GL_EXT_direct_state_access");
+                assignFunctionEmu2(glTextureSubImage2DEXT,
+                    "glTextureSubImage2DEXT");
+            }
+            else if (supportExtension("GL_ARB_direct_state_access"))
+            {
+                logger->log1("found GL_ARB_direct_state_access");
+                logger->log1("GL_EXT_direct_state_access not found");
+                assignFunction(glTextureSubImage2D);
+            }
+            else
+            {
+                logger->log1("GL_EXT_direct_state_access not found");
+                logger->log1("GL_ARB_direct_state_access not found");
+                emulateFunction(glTextureSubImage2DEXT);
+            }
         }
         else
         {
-            logger->log1("GL_EXT_direct_state_access not found");
-            logger->log1("GL_ARB_direct_state_access not found");
+            logger->log1("Direct state access disabled in settings");
             emulateFunction(glTextureSubImage2DEXT);
         }
     }

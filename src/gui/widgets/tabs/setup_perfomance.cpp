@@ -96,6 +96,10 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable OpenGL context creation"),
         "", "openglContext", this, "openglContextEvent");
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable OpenGL direct state access"),
+        "", "enableDSA", this, "enableDSAEvent");
+
 
     // TRANSLATORS: settings option
     new SetupItemLabel(_("Better quality (disable for better performance)"),
