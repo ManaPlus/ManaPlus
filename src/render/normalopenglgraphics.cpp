@@ -24,6 +24,10 @@
 
 #include "render/normalopenglgraphics.h"
 
+#ifdef OPENGLERRORS
+#include "graphicsmanager.h"
+#endif  // OPENGLERRORS
+
 #ifdef DEBUG_OPENGL
 #include "render/opengl/mgl.h"
 #endif  // DEBUG_OPENGL

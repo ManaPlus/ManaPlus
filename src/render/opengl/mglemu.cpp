@@ -22,6 +22,10 @@
 
 #include "render/opengl/mglemu.h"
 
+#ifdef OPENGLERRORS
+#include "graphicsmanager.h"
+#endif  // OPENGLERRORS
+
 #include "resources/openglimagehelper.h"
 
 #include "debug.h"

@@ -24,6 +24,10 @@
 
 #include "render/mobileopenglgraphics.h"
 
+#ifdef OPENGLERRORS
+#include "graphicsmanager.h"
+#endif  // OPENGLERRORS
+
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"

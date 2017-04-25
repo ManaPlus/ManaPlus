@@ -313,6 +313,10 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     }
     BLOCK_END("AtlasManager::createSDLAtlas create surface")
 
+#ifdef OPENGLERRORS
+    logger->log("OpenGL debug: creating atlase %dx%d", width, height);
+#endif  // OPENGLERRORS
+
     Image *image = imageHelper->loadSurface(surface);
     // free SDL atlas surface
     MSDL_FreeSurface(surface);
@@ -330,6 +334,25 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
         AtlasItem *const item = *it;
         imageHelper->copySurfaceToImage(image, item->x, item->y,
             item->image->mSDLSurface);
+#ifdef OPENGLERRORS
+        logger->log("OpenGL debug:  put atlas image %s (size %dx%d),"
+            " into %d,%d to %d,%d",
+            item->name.c_str(),
+            item->image->mSDLSurface->w,
+            item->image->mSDLSurface->h,
+            item->x,
+            item->y,
+            item->x + item->image->mSDLSurface->w - 1,
+            item->y + item->image->mSDLSurface->h - 1);
+        if (item->x >= width)
+            logger->log("OpenGL error: start x position outside of atlas");
+        if (item->y >= height)
+            logger->log("OpenGL error: start y position outside of atlas");
+        if (item->x + item->image->mSDLSurface->w - 1 >= width)
+            logger->log("OpenGL error: end x position outside of atlas");
+        if (item->y + item->image->mSDLSurface->h - 1 >= height)
+            logger->log("OpenGL error: end y position outside of atlas");
+#endif  // OPENGLERRORS
     }
     atlas->atlasImage = image;
     BLOCK_END("AtlasManager::createSDLAtlas")
