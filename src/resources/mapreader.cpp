@@ -356,7 +356,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         w, h,
         tilew, tileh);
 
-    const std::string fileName = path.substr(path.rfind('/') + 1);
+    const std::string fileName = path.substr(path.rfind(dirSeparator) + 1);
     map->setProperty("shortName", fileName);
 
 #ifdef USE_OPENGL
