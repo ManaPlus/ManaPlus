@@ -98,10 +98,9 @@ AtlasResource *AtlasManager::loadEmptyAtlas(const std::string &name,
     AtlasResource *resource = new AtlasResource;
 
     loadEmptyImages(files, images);
-    int maxSize = OpenGLImageHelper::getTextureSize();
 
     // sorting images on atlases.
-    simpleSort(name, atlases, images, maxSize);
+    emptySort(name, atlases, images);
 
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
     {
@@ -110,10 +109,10 @@ AtlasResource *AtlasManager::loadEmptyAtlas(const std::string &name,
             continue;
 
         atlas->atlasImage = new Image(0,
-            8192, 8192,
-            8192, 8192);
+            1024, 1024,
+            1024, 1024);
         // convert SDL images to OpenGL
-        convertAtlas(atlas);
+        convertEmptyAtlas(atlas);
 
         resource->atlases.push_back(atlas);
     }
@@ -269,6 +268,44 @@ void AtlasManager::simpleSort(const std::string &restrict name,
     BLOCK_END("AtlasManager::simpleSort")
 }
 
+void AtlasManager::emptySort(const std::string &restrict name,
+                             std::vector<TextureAtlas*> &restrict atlases,
+                             const std::vector<Image*> &restrict images)
+{
+    BLOCK_START("AtlasManager::simpleSort")
+    TextureAtlas *atlas = new TextureAtlas;
+    std::vector<Image*>::const_iterator it = images.begin();
+    const std::vector<Image*>::const_iterator it_end = images.end();
+    for (it = images.begin(); it != it_end; ++ it)
+    {
+        const Image *const img = *it;
+        if (img)
+        {
+            atlas->name = std::string("atlas_").append(name).append(
+                "_").append(img->mIdPath);
+            break;
+        }
+    }
+
+    for (it = images.begin(); it != it_end; ++ it)
+    {
+        Image *const img = *it;
+        if (img)
+        {
+            AtlasItem *const item = new AtlasItem(img);
+            item->name = img->mIdPath;
+            item->x = 0;
+            item->y = 0;
+            atlas->items.push_back(item);
+        }
+    }
+    if (!atlas->items.empty())
+        atlases.push_back(atlas);
+    else
+        delete atlas;
+    BLOCK_END("AtlasManager::simpleSort")
+}
+
 void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 {
     BLOCK_START("AtlasManager::createSDLAtlas")
@@ -356,6 +393,53 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     }
     atlas->atlasImage = image;
     BLOCK_END("AtlasManager::createSDLAtlas")
+}
+
+void AtlasManager::convertEmptyAtlas(TextureAtlas *const atlas)
+{
+    // no check for null pointer in atlas because it was in caller
+    // convert surface to OpemGL image
+    Image *const oldImage = atlas->atlasImage;
+
+    if (oldImage->mSDLSurface)
+    {
+        atlas->atlasImage = imageHelper->loadSurface(
+            atlas->atlasImage->mSDLSurface);
+        oldImage->decRef();
+    }
+
+    Image *const image = atlas->atlasImage;
+    if (!image)
+        return;
+
+    image->mIdPath = atlas->name;
+#ifdef DEBUG_IMAGES
+    logger->log("set name %p, %s", static_cast<void*>(image),
+        image->mIdPath.c_str());
+#endif  // DEBUG_IMAGES
+
+    image->incRef();
+
+    FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
+    {
+        AtlasItem *const item = *it;
+        // delete SDL Image
+        delete item->image;
+        // store OpenGL image
+        item->image = image->getSubImage(item->x, item->y,
+            item->width, item->height);
+        Image *const image2 = item->image;
+        if (image2)
+        {
+            image2->mIdPath = item->name;
+#ifdef DEBUG_IMAGES
+            logger->log("set empty name %p, %s", static_cast<void*>(image2),
+                image2->mIdPath.c_str());
+#endif  // DEBUG_IMAGES
+
+            image2->incRef();
+        }
+    }
 }
 
 void AtlasManager::convertAtlas(TextureAtlas *const atlas)

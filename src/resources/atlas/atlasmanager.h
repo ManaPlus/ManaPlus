@@ -58,6 +58,10 @@ class AtlasManager final
         static void loadEmptyImages(const StringVect &files,
                                     std::vector<Image*> &images);
 
+        static void emptySort(const std::string &restrict name,
+                              std::vector<TextureAtlas*> &restrict atlases,
+                              const std::vector<Image*> &restrict images);
+
         static void simpleSort(const std::string &restrict name,
                                std::vector<TextureAtlas*> &restrict atlases,
                                const std::vector<Image*> &restrict images,
@@ -66,6 +70,8 @@ class AtlasManager final
         static void createSDLAtlas(TextureAtlas *const atlas) A_NONNULL(1);
 
         static void convertAtlas(TextureAtlas *const atlas) A_NONNULL(1);
+
+        static void convertEmptyAtlas(TextureAtlas *const atlas) A_NONNULL(1);
 };
 
 #endif  // USE_OPENGL
