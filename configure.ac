@@ -92,6 +92,19 @@ esac],[glibcdebug_enabled=false])
 
 AM_CONDITIONAL(ENABLE_GLIBCDEBUG, test x$glibcdebug_enabled = xtrue)
 
+# Enable OpenGL error reporting
+AC_ARG_ENABLE(openglerrors,
+[  --enable-openglerrors    Enable OpenGL errors reporting],
+[case "${enableval}" in
+  yes) openglerrors_enabled=true
+ ;;
+  no)  openglerrors_enabled=false
+ ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-openglerrors) ;;
+esac],[openglerrors_enabled=false])
+
+AM_CONDITIONAL(ENABLE_OPENGLERRORS, test x$openglerrors_enabled = xtrue)
+
 # Checks for android.
 AC_ARG_ENABLE(androidbuild,
 [  --enable-androidbuild    Turn on android building],
