@@ -287,6 +287,9 @@ void ModernOpenGLGraphics::drawQuad(const int srcX,
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void ModernOpenGLGraphics::drawRescaledQuad(const int srcX, const int srcY,
@@ -315,6 +318,9 @@ void ModernOpenGLGraphics::drawRescaledQuad(const int srcX, const int srcY,
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void ModernOpenGLGraphics::drawImage(const Image *restrict const image,
@@ -373,6 +379,9 @@ void ModernOpenGLGraphics::testDraw() restrict2
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 //    glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void ModernOpenGLGraphics::drawImageCached(const Image *restrict const image
@@ -594,6 +603,9 @@ inline void ModernOpenGLGraphics::drawVertexes(const
 #endif  // DEBUG_DRAW_CALLS
 //        logger->log("draw from array: %u", *ivbo);
         mglDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
 }
 
@@ -914,6 +926,9 @@ void ModernOpenGLGraphics::drawPoint(int x, int y) restrict2
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_POINTS, 0, 1);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void ModernOpenGLGraphics::drawLine(int x1, int y1,
@@ -934,6 +949,9 @@ void ModernOpenGLGraphics::drawLine(int x1, int y1,
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_LINES, 0, 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void ModernOpenGLGraphics::drawRectangle(const Rect &restrict rect) restrict2
@@ -960,6 +978,9 @@ void ModernOpenGLGraphics::drawRectangle(const Rect &restrict rect) restrict2
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_LINE_LOOP, 0, 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void ModernOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
@@ -986,6 +1007,9 @@ void ModernOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
@@ -1304,6 +1328,9 @@ void ModernOpenGLGraphics::drawTriangleArray(const int size) restrict2
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLES, 0, size / 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void ModernOpenGLGraphics::drawTriangleArray(const GLint *restrict const array,
@@ -1316,6 +1343,9 @@ void ModernOpenGLGraphics::drawTriangleArray(const GLint *restrict const array,
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLES, 0, size / 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void ModernOpenGLGraphics::drawLineArrays(const int size)
@@ -1327,6 +1357,9 @@ void ModernOpenGLGraphics::drawLineArrays(const int size)
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_LINES, 0, size / 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 #ifdef DEBUG_BIND_TEXTURE

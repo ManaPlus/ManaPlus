@@ -289,6 +289,9 @@ void MobileOpenGL2Graphics::drawQuad(const int srcX,
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGL2Graphics::drawRescaledQuad(const int srcX, const int srcY,
@@ -320,6 +323,9 @@ void MobileOpenGL2Graphics::drawRescaledQuad(const int srcX, const int srcY,
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGL2Graphics::drawImage(const Image *restrict const image,
@@ -378,6 +384,9 @@ void MobileOpenGL2Graphics::testDraw() restrict2
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 //    glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGL2Graphics::drawImageCached(const Image *restrict const image
@@ -603,6 +612,9 @@ inline void MobileOpenGL2Graphics::drawVertexes(const
         mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
         mglDrawArrays(GL_TRIANGLES, 0, *ivp / 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
 }
 
@@ -927,6 +939,9 @@ void MobileOpenGL2Graphics::drawPoint(int x, int y) restrict2
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_POINTS, 0, 1);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGL2Graphics::drawLine(int x1, int y1,
@@ -946,6 +961,9 @@ void MobileOpenGL2Graphics::drawLine(int x1, int y1,
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_LINES, 0, 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGL2Graphics::drawRectangle(const Rect &restrict rect) restrict2
@@ -971,6 +989,9 @@ void MobileOpenGL2Graphics::drawRectangle(const Rect &restrict rect) restrict2
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_LINE_LOOP, 0, 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGL2Graphics::fillRectangle(const Rect &restrict rect) restrict2
@@ -996,6 +1017,9 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect &restrict rect) restrict2
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGL2Graphics::setTexturingAndBlending(const bool enable)
@@ -1293,6 +1317,9 @@ void MobileOpenGL2Graphics::drawTriangleArray(const int size) restrict2
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLES, 0, size / 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGL2Graphics::drawTriangleArray(const GLfloat *restrict const
@@ -1305,6 +1332,9 @@ void MobileOpenGL2Graphics::drawTriangleArray(const GLfloat *restrict const
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_TRIANGLES, 0, size / 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGL2Graphics::drawLineArrays(const int size) restrict2
@@ -1315,6 +1345,9 @@ void MobileOpenGL2Graphics::drawLineArrays(const int size) restrict2
     mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
     mglDrawArrays(GL_LINES, 0, size / 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 #ifdef DEBUG_BIND_TEXTURE

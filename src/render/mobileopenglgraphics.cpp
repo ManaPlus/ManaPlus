@@ -207,6 +207,9 @@ static inline void drawQuad(const Image *restrict const image,
         MobileOpenGLGraphics::mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
         mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
 }
 
@@ -260,6 +263,9 @@ static inline void drawRescaledQuad(const Image *restrict const image,
         MobileOpenGLGraphics::mDrawCalls ++;
 #endif  // DEBUG_DRAW_CALLS
         mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
 }
 
@@ -1120,6 +1126,9 @@ void MobileOpenGLGraphics::drawRectangle(const Rect &restrict rect,
 #endif  // DEBUG_DRAW_CALLS
 
         mglDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
     else
     {
@@ -1137,6 +1146,9 @@ void MobileOpenGLGraphics::drawRectangle(const Rect &restrict rect,
 #endif  // DEBUG_DRAW_CALLS
 
         mglDrawArrays(GL_LINE_LOOP, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
     BLOCK_END("Graphics::drawRectangle")
 }
@@ -1214,6 +1226,9 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(const int size) restrict2
 #endif  // DEBUG_DRAW_CALLS
 
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void MobileOpenGLGraphics::drawTriangleArrayfsCached(const int size)
@@ -1227,6 +1242,9 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfsCached(const int size)
 #endif  // DEBUG_DRAW_CALLS
 
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void MobileOpenGLGraphics::drawTriangleArrayfs(const GLshort *restrict
@@ -1243,6 +1261,9 @@ inline void MobileOpenGLGraphics::drawTriangleArrayfs(const GLshort *restrict
 #endif  // DEBUG_DRAW_CALLS
 
     mglDrawArrays(GL_TRIANGLES, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void MobileOpenGLGraphics::drawLineArrays(const int size) restrict2
@@ -1254,6 +1275,9 @@ inline void MobileOpenGLGraphics::drawLineArrays(const int size) restrict2
 #endif  // DEBUG_DRAW_CALLS
 
     mglDrawArrays(GL_LINES, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void MobileOpenGLGraphics::dumpSettings()

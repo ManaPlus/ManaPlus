@@ -1490,7 +1490,7 @@ std::string GraphicsManager::errorToString(const GLenum error)
             default:
                 break;
         }
-        return errmsg;
+        return "OpenGL error: " + errmsg;
     }
     return "";
 }

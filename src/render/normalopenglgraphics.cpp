@@ -253,6 +253,9 @@ static inline void drawQuad(const Image *restrict const image,
 #endif  // DEBUG_DRAW_CALLS
 
         glDrawArrays(GL_QUADS, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
     else
     {
@@ -277,6 +280,9 @@ static inline void drawQuad(const Image *restrict const image,
 #endif  // DEBUG_DRAW_CALLS
 
         glDrawArrays(GL_QUADS, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
 }
 
@@ -327,6 +333,9 @@ static inline void drawRescaledQuad(const Image *restrict const image,
 #endif  // DEBUG_DRAW_CALLS
 
         glDrawArrays(GL_QUADS, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
     else
     {
@@ -351,6 +360,9 @@ static inline void drawRescaledQuad(const Image *restrict const image,
 #endif  // DEBUG_DRAW_CALLS
 
         glDrawArrays(GL_QUADS, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
 }
 
@@ -412,6 +424,9 @@ void NormalOpenGLGraphics::testDraw() restrict2
 #endif  // DEBUG_DRAW_CALLS
 
         glDrawArrays(GL_QUADS, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
     else
     {
@@ -437,6 +452,9 @@ void NormalOpenGLGraphics::testDraw() restrict2
 #endif  // DEBUG_DRAW_CALLS
 
         glDrawArrays(GL_QUADS, 0, 4);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
 }
 
@@ -1470,6 +1488,9 @@ void NormalOpenGLGraphics::drawRectangle(const Rect &restrict rect,
 #endif  // DEBUG_DRAW_CALLS
 
     glDrawArrays(filled ? GL_QUADS : GL_LINE_LOOP, 0, 4);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
     BLOCK_END("Graphics::drawRectangle")
 }
 
@@ -1545,6 +1566,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const int size) restrict2
 #endif  // DEBUG_DRAW_CALLS
 
     glDrawArrays(GL_QUADS, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void NormalOpenGLGraphics::drawQuadArrayfiCached(const int size)
@@ -1556,6 +1580,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayfiCached(const int size)
 #endif  // DEBUG_DRAW_CALLS
 
     glDrawArrays(GL_QUADS, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *restrict const
@@ -1572,6 +1599,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayfi(const GLint *restrict const
 #endif  // DEBUG_DRAW_CALLS
 
     glDrawArrays(GL_QUADS, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void NormalOpenGLGraphics::drawQuadArrayii(const int size) restrict2
@@ -1582,6 +1612,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const int size) restrict2
 #endif  // DEBUG_DRAW_CALLS
 
     glDrawArrays(GL_QUADS, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void NormalOpenGLGraphics::drawQuadArrayiiCached(const int size)
@@ -1593,6 +1626,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayiiCached(const int size)
 #endif  // DEBUG_DRAW_CALLS
 
     glDrawArrays(GL_QUADS, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *restrict const
@@ -1609,6 +1645,9 @@ inline void NormalOpenGLGraphics::drawQuadArrayii(const GLint *restrict const
 #endif  // DEBUG_DRAW_CALLS
 
     glDrawArrays(GL_QUADS, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void NormalOpenGLGraphics::drawLineArrayi(const int size) restrict2
@@ -1620,6 +1659,9 @@ inline void NormalOpenGLGraphics::drawLineArrayi(const int size) restrict2
 #endif  // DEBUG_DRAW_CALLS
 
     glDrawArrays(GL_LINES, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 inline void NormalOpenGLGraphics::drawLineArrayf(const int size) restrict2
@@ -1631,6 +1673,9 @@ inline void NormalOpenGLGraphics::drawLineArrayf(const int size) restrict2
 #endif  // DEBUG_DRAW_CALLS
 
     glDrawArrays(GL_LINES, 0, size / 2);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void NormalOpenGLGraphics::dumpSettings()

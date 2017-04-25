@@ -38,6 +38,9 @@ void APIENTRY emuglTextureSubImage2DEXT(GLuint texture, GLenum target,
         xoffset, yoffset,
         width, height,
         format, type, pixels);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 }
 
 void APIENTRY emuglActiveTexture(GLenum texture A_UNUSED)

@@ -339,6 +339,9 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         mUseOpenGL != RENDER_GLES2_OPENGL)
     {
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+#ifdef OPENGLERRORS
+        graphicsManager.logError();
+#endif  // OPENGLERRORS
     }
 
     if (!mUseTextureSampler)
@@ -346,12 +349,26 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         if (mBlur)
         {
             mglTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+#ifdef OPENGLERRORS
+            graphicsManager.logError();
+#endif  // OPENGLERRORS
+
             mglTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+#ifdef OPENGLERRORS
+            graphicsManager.logError();
+#endif  // OPENGLERRORS
         }
         else
         {
             mglTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+#ifdef OPENGLERRORS
+            graphicsManager.logError();
+#endif  // OPENGLERRORS
+
             mglTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+#ifdef OPENGLERRORS
+            graphicsManager.logError();
+#endif  // OPENGLERRORS
         }
     }
 #if !defined(ANDROID) && !defined(__native_client__)
@@ -361,6 +378,9 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     mglTexImage2D(mTextureType, 0, mInternalTextureType,
         tmpImage->w, tmpImage->h,
         0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 
 #ifdef DEBUG_OPENGL
 /*
@@ -499,6 +519,9 @@ void OpenGLImageHelper::copySurfaceToImage(const Image *const image,
             surface->w, surface->h,
             GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
     }
+#ifdef OPENGLERRORS
+    graphicsManager.logError();
+#endif  // OPENGLERRORS
 
     if (surface != oldSurface)
         MSDL_FreeSurface(surface);
