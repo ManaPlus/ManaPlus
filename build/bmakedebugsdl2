@@ -5,9 +5,9 @@ mkdir tmp
 cd ..
 dir=`pwd`
 
-export CC=gcc
-export CXX=g++
-
+export CCACHE_DIR="${dir}/build/ccache/bmakedebugsdl2"
+export CC="ccache gcc"
+export CXX="ccache g++"
 export LANG=C
 
 export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \

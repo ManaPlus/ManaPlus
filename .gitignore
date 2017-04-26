@@ -115,6 +115,7 @@ build/clmake
 build/bmakesnapshot
 build/checkplugin.so
 build/tmp
+build/ccache
 
 # debian
 debian/*

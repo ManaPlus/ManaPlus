@@ -5,8 +5,9 @@ cd ..
 
 dir=`pwd`
 
-export CC=gcc
-export CXX=g++
+export CCACHE_DIR="${dir}/build/ccache/bmake"
+export CC="ccache gcc"
+export CXX="ccache g++"
 
 export LANG=C
 

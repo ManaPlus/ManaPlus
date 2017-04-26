@@ -5,9 +5,9 @@ cd ..
 
 dir=`pwd`
 
-export CC=gcc
-export CXX=g++
-
+export CCACHE_DIR="${dir}/build/ccache/bmakespeed"
+export CC="ccache gcc"
+export CXX="ccache g++"
 export LANG=C
 
 export CXXFLAGS="-pedantic -ggdb3 -O5 -pipe -ffast-math \
