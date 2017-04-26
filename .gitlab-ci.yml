@@ -2532,6 +2532,33 @@ gcc-6_SDL_default_old_test:
   tags:
     - docker
 
+gcc-6_openglerrors_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --enable-openglerrors
+  - ./tools/ci/scripts/runtest.sh
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb
+
+gcc-6_openglerrors:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6.sh --enable-openglerrors
+  - ./tools/ci/scripts/runtest.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb
+
 # deheader default
 
 deheader_gui_windows_cpp:
