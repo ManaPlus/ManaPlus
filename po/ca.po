@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-04-15 18:28+0300\n"
-"PO-Revision-Date: 2017-03-19 08:16+0000\n"
+"POT-Creation-Date: 2017-04-27 17:58+0300\n"
+"PO-Revision-Date: 2017-04-16 09:17+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Catalan (http://www.transifex.com/akaras/manaplus/language/"
 "ca/)\n"
@@ -33,7 +33,7 @@ msgstr "Arxiu enviat"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/actions/actions.cpp:168 src/client.cpp:1616 src/client.cpp:1651
+#: src/actions/actions.cpp:168 src/client.cpp:1620 src/client.cpp:1655
 #: src/gamemodifiers.cpp:451 src/gui/dialogsmanager.cpp:186
 #: src/gui/dialogsmanager.cpp:206 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
@@ -557,41 +557,41 @@ msgstr "Bombolla flotant"
 #. TRANSLATORS: setup tab quick button
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
-#: src/client.cpp:910 src/dyetool/client.cpp:509 src/gui/windowmenu.cpp:192
+#: src/client.cpp:913 src/dyetool/client.cpp:509 src/gui/windowmenu.cpp:192
 #: src/gui/windows/setupwindow.cpp:66
 msgid "Setup"
 msgstr "Configuració"
 
 #. TRANSLATORS: perfoamance tab quick button
 #. TRANSLATORS: settings tab name
-#: src/client.cpp:913 src/dyetool/client.cpp:512
+#: src/client.cpp:916 src/dyetool/client.cpp:512
 #: src/gui/widgets/tabs/setup_perfomance.cpp:54
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: video tab quick button
 #. TRANSLATORS: video settings tab name
-#: src/client.cpp:916 src/dyetool/client.cpp:515
+#: src/client.cpp:919 src/dyetool/client.cpp:515
 #: src/gui/widgets/tabs/setup_video.cpp:111
 msgid "Video"
 msgstr "Vídeo"
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: theme settings tab name
-#: src/client.cpp:919 src/dyetool/client.cpp:518
+#: src/client.cpp:922 src/dyetool/client.cpp:518
 #: src/gui/widgets/tabs/setup_theme.cpp:121
 msgid "Theme"
 msgstr "Tema"
 
 #. TRANSLATORS: theme tab quick button
-#: src/client.cpp:922 src/dyetool/client.cpp:521
+#: src/client.cpp:925 src/dyetool/client.cpp:521
 msgid "About"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
-#: src/client.cpp:925 src/dyetool/client.cpp:524 src/gui/windowmenu.cpp:75
+#: src/client.cpp:928 src/dyetool/client.cpp:524 src/gui/windowmenu.cpp:75
 #: src/gui/windows/helpwindow.cpp:56
 msgid "Help"
 msgstr "Ajuda"
@@ -612,7 +612,7 @@ msgstr "Ajuda"
 #. TRANSLATORS: npc dialog button
 #. TRANSLATORS: quests window button
 #. TRANSLATORS: shop window button
-#: src/client.cpp:929 src/client.cpp:1530 src/client.cpp:1549
+#: src/client.cpp:932 src/client.cpp:1534 src/client.cpp:1553
 #: src/dyetool/client.cpp:528 src/gui/dialogsmanager.cpp:117
 #: src/gui/popups/popupmenu.cpp:765 src/gui/popups/popupmenu.cpp:850
 #: src/gui/popups/popupmenu.cpp:1104 src/gui/windows/didyouknowwindow.cpp:84
@@ -625,32 +625,32 @@ msgid "Close"
 msgstr "Tancar"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1154
+#: src/client.cpp:1157
 msgid "Connecting to server"
 msgstr "Connectant al servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1212 src/gui/windowmanager_unittest.cc:700
+#: src/client.cpp:1215 src/gui/windowmanager_unittest.cc:700
 msgid "Logging in"
 msgstr "Iniciant sessió"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1262
+#: src/client.cpp:1265
 msgid "Entering game world"
 msgstr "Entrant al mon de joc"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1415
+#: src/client.cpp:1419
 msgid "Requesting characters"
 msgstr "Sol·licitant personatges"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1458
+#: src/client.cpp:1462
 msgid "Connecting to the game server"
 msgstr "Connectant al servidor de joc"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1470
+#: src/client.cpp:1474
 msgid "Changing game servers"
 msgstr "Canviant servidors de joc"
 
@@ -666,7 +666,7 @@ msgstr "Canviant servidors de joc"
 #. TRANSLATORS: error header
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: error header
-#: src/client.cpp:1527 src/client.cpp:1546 src/client.cpp:1751
+#: src/client.cpp:1531 src/client.cpp:1550 src/client.cpp:1755
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:471
@@ -680,27 +680,27 @@ msgid "Error"
 msgstr "Error"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1565
+#: src/client.cpp:1569
 msgid "Requesting registration details"
 msgstr "Sol·licitant detalls de registre"
 
 #. TRANSLATORS: password change message header
-#: src/client.cpp:1612
+#: src/client.cpp:1616
 msgid "Password Change"
 msgstr "Canvi de contrasenya"
 
 #. TRANSLATORS: password change message text
-#: src/client.cpp:1614
+#: src/client.cpp:1618
 msgid "Password changed successfully!"
 msgstr "Contrasenya canviada amb èxit!"
 
 #. TRANSLATORS: email change message header
-#: src/client.cpp:1647
+#: src/client.cpp:1651
 msgid "Email Change"
 msgstr "Canvi de correu"
 
 #. TRANSLATORS: email change message text
-#: src/client.cpp:1649
+#: src/client.cpp:1653
 msgid "Email changed successfully!"
 msgstr "Correu canviat amb èxit!"
 
@@ -1835,21 +1835,27 @@ msgid "Particles: %u"
 msgstr ""
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:226
+#: src/gui/popups/itempopup.cpp:241
 #, c-format
 msgid "Weight: %s"
 msgstr "Pes: %s"
 
 #. TRANSLATORS: named item description
-#: src/gui/popups/itempopup.cpp:290
+#: src/gui/popups/itempopup.cpp:314
 #, c-format
 msgid "Item named: %s"
 msgstr ""
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:317
+#: src/gui/popups/itempopup.cpp:341
 msgid "Cards: "
 msgstr ""
+
+#. TRANSLATORS: popup label
+#: src/gui/popups/itempopup.cpp:378
+#, fuzzy
+msgid "Options: "
+msgstr "Opcions:"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
@@ -1857,7 +1863,7 @@ msgstr ""
 #. TRANSLATORS: inventory type name
 #: src/gui/popups/popupmenu.cpp:176 src/gui/popups/popupmenu.cpp:926
 #: src/gui/widgets/tabs/chat/tradetab.cpp:39
-#: src/resources/inventory/inventory.cpp:360
+#: src/resources/inventory/inventory.cpp:373
 msgid "Trade"
 msgstr "Intercanvi"
 
@@ -2848,14 +2854,14 @@ msgstr ""
 #. TRANSLATORS: inventory type name
 #: src/gui/popups/popupmenu.cpp:2971 src/gui/windowmenu.cpp:108
 #: src/gui/windows/inventorywindow.cpp:149
-#: src/resources/inventory/inventory.cpp:330
+#: src/resources/inventory/inventory.cpp:343
 msgid "Inventory"
 msgstr "Inventari"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show player storage list
 #. TRANSLATORS: inventory type name
-#: src/gui/popups/popupmenu.cpp:2974 src/resources/inventory/inventory.cpp:335
+#: src/gui/popups/popupmenu.cpp:2974 src/resources/inventory/inventory.cpp:348
 msgid "Storage"
 msgstr "Emmagatzematge"
 
@@ -2866,7 +2872,7 @@ msgstr "Emmagatzematge"
 #. TRANSLATORS: inventory type name
 #: src/gui/popups/popupmenu.cpp:2977 src/gui/windowmenu.cpp:112
 #: src/gui/windows/inventorywindow.cpp:238
-#: src/resources/inventory/inventory.cpp:345
+#: src/resources/inventory/inventory.cpp:358
 msgid "Cart"
 msgstr "Motxilla"
 
@@ -3234,7 +3240,7 @@ msgstr ""
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: inventory type name
-#: src/gui/setupinputpages.cpp:54 src/resources/inventory/inventory.cpp:355
+#: src/gui/setupinputpages.cpp:54 src/resources/inventory/inventory.cpp:368
 msgid "Craft"
 msgstr ""
 
@@ -5273,82 +5279,87 @@ msgid "Enable OpenGL context creation"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:101
-msgid "Better quality (disable for better performance)"
+#: src/gui/widgets/tabs/setup_perfomance.cpp:100
+msgid "Enable OpenGL direct state access"
 msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:105
+msgid "Better quality (disable for better performance)"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_perfomance.cpp:109
 msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:110
+#: src/gui/widgets/tabs/setup_perfomance.cpp:114
 msgid "Show beings transparency"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:114
+#: src/gui/widgets/tabs/setup_perfomance.cpp:118
 msgid "Enable reorder sprites (need for mods support)."
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:119
+#: src/gui/widgets/tabs/setup_perfomance.cpp:123
 msgid "Small memory (enable for lower memory usage)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:124
+#: src/gui/widgets/tabs/setup_perfomance.cpp:128
 msgid "Disable advanced beings caching (Software)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:128
+#: src/gui/widgets/tabs/setup_perfomance.cpp:132
 msgid "Disable beings caching (Software)"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_perfomance.cpp:133
+#: src/gui/widgets/tabs/setup_perfomance.cpp:137
 msgid "Different options (enable or disable can improve performance)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:138
+#: src/gui/widgets/tabs/setup_perfomance.cpp:142
 msgid "Enable texture compression (OpenGL)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:142
+#: src/gui/widgets/tabs/setup_perfomance.cpp:146
 msgid "Enable rectangular texture extension (OpenGL)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:146
+#: src/gui/widgets/tabs/setup_perfomance.cpp:150
 msgid "Use new texture internal format (OpenGL)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:150
+#: src/gui/widgets/tabs/setup_perfomance.cpp:154
 msgid "Enable texture atlases (OpenGL)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:154
+#: src/gui/widgets/tabs/setup_perfomance.cpp:158
 msgid "Cache all sprites per map (can use additional memory)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:159
+#: src/gui/widgets/tabs/setup_perfomance.cpp:163
 msgid "Cache all sounds (can use additional memory)"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_perfomance.cpp:164
+#: src/gui/widgets/tabs/setup_perfomance.cpp:168
 msgid "Critical options (DO NOT change if you don't know what you're doing)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:168
+#: src/gui/widgets/tabs/setup_perfomance.cpp:172
 msgid "Disable logging in game (do not enable)"
 msgstr ""
 
@@ -6296,7 +6307,7 @@ msgstr ""
 #. TRANSLATORS: mail window name
 #. TRANSLATORS: inventory type name
 #: src/gui/windowmenu.cpp:172 src/gui/windows/mailwindow.cpp:53
-#: src/resources/inventory/inventory.cpp:350
+#: src/resources/inventory/inventory.cpp:363
 msgid "Mail"
 msgstr ""
 
@@ -7749,19 +7760,19 @@ msgid "You give:"
 msgstr "Ofereixes:"
 
 #. TRANSLATORS: trade error
-#: src/gui/windows/tradewindow.cpp:439
+#: src/gui/windows/tradewindow.cpp:443
 msgid "You don't have enough money."
 msgstr "No tens diners suficients."
 
 #. TRANSLATORS: trade error
-#: src/gui/windows/tradewindow.cpp:528
+#: src/gui/windows/tradewindow.cpp:532
 msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "No s'ha pogut afegir objecte. No es pot afegir més d'un mateix tipus "
 "d'objecte a la finestra."
 
 #. TRANSLATORS: trade error
-#: src/gui/windows/tradewindow.cpp:541
+#: src/gui/windows/tradewindow.cpp:545
 msgid "Failed adding item. You can not trade equipped items."
 msgstr ""
 
@@ -9155,7 +9166,7 @@ msgstr ""
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:173 src/net/eathena/loginrecv.cpp:118
-#: src/net/eathena/loginrecv.cpp:217 src/net/tmwa/loginrecv.cpp:120
+#: src/net/eathena/loginrecv.cpp:209 src/net/tmwa/loginrecv.cpp:120
 msgid "Unknown error."
 msgstr "Error desconegut."
 
@@ -9459,7 +9470,7 @@ msgid "Guild castle: %s"
 msgstr ""
 
 #. TRANSLATORS: notification message
-#: src/net/eathena/inventoryrecv.cpp:844
+#: src/net/eathena/inventoryrecv.cpp:857
 #, c-format
 msgid "Left %s rental time for item %s."
 msgstr ""
@@ -9467,23 +9478,23 @@ msgstr ""
 #. TRANSLATORS: unknown item
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: item name
-#: src/net/eathena/inventoryrecv.cpp:1197
-#: src/net/eathena/inventoryrecv.cpp:1330 src/resources/db/itemdb.cpp:190
+#: src/net/eathena/inventoryrecv.cpp:1217
+#: src/net/eathena/inventoryrecv.cpp:1350 src/resources/db/itemdb.cpp:196
 msgid "Unknown item"
 msgstr "Objecte desconegut"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:205 src/net/tmwa/loginrecv.cpp:108
+#: src/net/eathena/loginrecv.cpp:197 src/net/tmwa/loginrecv.cpp:108
 msgid "Account was not found. Please re-login."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:209 src/net/tmwa/loginrecv.cpp:112
+#: src/net/eathena/loginrecv.cpp:201 src/net/tmwa/loginrecv.cpp:112
 msgid "Old password incorrect."
 msgstr "Antiga contrasenya incorrecta."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:213 src/net/tmwa/loginrecv.cpp:116
+#: src/net/eathena/loginrecv.cpp:205 src/net/tmwa/loginrecv.cpp:116
 msgid "New password too short."
 msgstr ""
 
@@ -9605,13 +9616,13 @@ msgid "Select warp target"
 msgstr ""
 
 #. TRANSLATORS: vending sold item message
-#: src/net/eathena/vendingrecv.cpp:246
+#: src/net/eathena/vendingrecv.cpp:244
 #, c-format
 msgid "Sold item %s amount %d. You got: %s"
 msgstr ""
 
 #. TRANSLATORS: vending sold item message
-#: src/net/eathena/vendingrecv.cpp:254
+#: src/net/eathena/vendingrecv.cpp:252
 #, c-format
 msgid "Sold item %s amount %d"
 msgstr ""
@@ -9756,8 +9767,8 @@ msgstr ""
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:55 src/resources/db/avatardb.cpp:93
-#: src/resources/db/homunculusdb.cpp:99 src/resources/db/itemdb.cpp:375
-#: src/resources/db/itemdb.cpp:379 src/resources/db/mercenarydb.cpp:101
+#: src/resources/db/homunculusdb.cpp:99 src/resources/db/itemdb.cpp:381
+#: src/resources/db/itemdb.cpp:385 src/resources/db/mercenarydb.cpp:101
 #: src/resources/db/moddb.cpp:79 src/resources/db/monsterdb.cpp:103
 #: src/resources/modinfo.cpp:29
 msgid "unnamed"
@@ -9809,7 +9820,7 @@ msgid "Extended"
 msgstr ""
 
 #. TRANSLATORS: inventory type name
-#: src/resources/inventory/inventory.cpp:340
+#: src/resources/inventory/inventory.cpp:353
 msgid "Npc"
 msgstr ""
 
