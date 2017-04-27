@@ -294,17 +294,17 @@ void logResource(const Resource *const res)
 void logResources(const std::string &msg)
 {
     logger->log("start of resources: " + msg);
-    logger->log("resouces");
+    logger->log("resources");
     FOR_EACH(ResourceIterator, it, mResources)
     {
         logResource((*it).second);
     }
-    logger->log("orphaned resouces");
+    logger->log("orphaned resources");
     FOR_EACH(ResourceIterator, it, mOrphanedResources)
     {
         logResource((*it).second);
     }
-    logger->log("deleted resouces");
+    logger->log("deleted resources");
     FOR_EACH(std::set<Resource*>::iterator, it, mDeletedResources)
     {
         logResource(*it);

@@ -46,7 +46,7 @@ class ObjectsLayer final : public MemoryCounter
         int calcMemoryLocal() const override final;
 
         std::string getCounterName() const override final
-        { return "objects leyer"; }
+        { return "objects layer"; }
 
     private:
         MapObjectList **mTiles;

@@ -45,7 +45,7 @@ class MapHeights final : public MemoryCounter
         int calcMemoryLocal() const override final;
 
         std::string getCounterName() const override final
-        { return "heights leyer"; }
+        { return "heights layer"; }
 
     private:
         int mWidth;
