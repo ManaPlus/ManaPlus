@@ -16,7 +16,7 @@ while true; do
         exit 1
     fi
     if [[ $n -ge 5 ]]; then
-        exit 0
+        break
     fi
     sleep 5s
     n=$((n+1))
