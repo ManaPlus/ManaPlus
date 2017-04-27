@@ -2,6 +2,7 @@
 
 export SDL_VIDEODRIVER="dummy"
 ulimit -c unlimited -S
+ulimit -c unlimited
 rm -rf core*
 
 ./src/manaplus --renderer=0 >logs/run.log 2>&1 &
@@ -13,6 +14,8 @@ if [ "$?" != 0 ]; then
     echo "Error: process look like crashed"
     cat logs/run.log
     echo "Run with gdb"
+    cp ./src/manaplus ./logs/
+    cp -r core* ./logs/
     COREFILE=$(find . -maxdepth 1 -name "core*" | head -n 1)
     if [[ -f "$COREFILE" ]]; then
         gdb -c "$COREFILE" ./src/manaplus -ex "thread apply all bt" -ex "set pagination 0" -batch
