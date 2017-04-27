@@ -1,10 +1,5 @@
 #!/bin/bash
 
-export SDL_VIDEODRIVER="dummy"
-ulimit -c unlimited -S
-ulimit -c unlimited
-rm -rf core*
-
 ./src/manaplus --renderer=0 >logs/run.log 2>&1 &
 export PID=$!
 sleep 12s
