@@ -14,6 +14,8 @@ export LOGFILE=gcc3.log
 
 source ./tools/ci/scripts/init.sh
 
+export CXXFLAGS="$CXXFLAGS -fno-omit-frame-pointer -ggdb3 $POST_CXXFLAGS"
+
 do_init
 run_configure $*
 run_make

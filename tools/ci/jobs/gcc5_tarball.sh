@@ -14,7 +14,7 @@ export LOGFILE=gcc5_tarball.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
+export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -pipe -ffast-math \
 -fno-omit-frame-pointer -funswitch-loops \
 -Wvariadic-macros -Wvla -Wredundant-decls \
 -Wpacked-bitfield-compat -Wtrampolines \
@@ -45,7 +45,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -fno-var-tracking -Wno-attributes \
 -Wopenmp-simd -Wformat-signedness \
 -Wswitch-bool -Wmemset-transposed-args -Wchkp -Wc++14-compat -Wsized-deallocation \
--Wlogical-not-parentheses -Woverloaded-virtual"
+-Wlogical-not-parentheses -Woverloaded-virtual $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror

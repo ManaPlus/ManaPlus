@@ -14,9 +14,10 @@ export LOGFILE=gcc47.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
+export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -pipe -ffast-math \
 -funswitch-loops \
--std=c++0x"
+-std=c++0x \
+-fno-omit-frame-pointer $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*

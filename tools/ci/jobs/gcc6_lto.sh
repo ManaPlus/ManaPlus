@@ -14,11 +14,13 @@ export LOGFILE=gcc6.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-ggdb3 -pipe -ffast-math -O9 -flto -fwhole-program \
+export CXXFLAGS="$CXXFLAGS -ggdb3 -pipe -ffast-math -O9 -flto -fwhole-program \
 -fno-omit-frame-pointer -funswitch-loops -D_FORTIFY_SOURCE=2 -std=gnu++1z \
--Wno-attributes"
+-Wno-attributes -fno-omit-frame-pointer"
 
 source ./tools/ci/flags/gcc6.sh
+
+export CXXFLAGS="$CXXFLAGS $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*

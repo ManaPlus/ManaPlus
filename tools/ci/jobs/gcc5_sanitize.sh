@@ -14,7 +14,7 @@ export LOGFILE=gcc5_sanitize.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
+export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -pipe -ffast-math \
 -fsanitize=address -fsanitize=undefined \
 -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable \
 -fsanitize=vla-bound -fsanitize=null -fsanitize=return \
@@ -55,7 +55,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Woverloaded-virtual -Warray-bounds -Wbool-compare -Wchar-subscripts \
 -Wcomment -Wmissing-braces -Wnonnull -Wopenmp-simd -Wparentheses \
 -Wreturn-type -Wsequence-point -Wswitch \
--Wno-attributes"
+-Wno-attributes $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*

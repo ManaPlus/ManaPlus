@@ -14,7 +14,7 @@ export LOGFILE=gcc49.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-fno-var-tracking"
+export CXXFLAGS="$CXXFLAGS -fno-var-tracking -fno-omit-frame-pointer -ggdb3 $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*

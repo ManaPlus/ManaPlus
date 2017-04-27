@@ -14,7 +14,7 @@ export LOGFILE=gcc49_c++11.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
+export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -pipe -ffast-math \
 -funswitch-loops \
 -Wvariadic-macros -Wvla -Wredundant-decls \
 -Wpacked-bitfield-compat -Wtrampolines \
@@ -41,7 +41,8 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable \
 -fno-var-tracking -Wno-attributes \
--Woverloaded-virtual"
+-Woverloaded-virtual \
+-fno-omit-frame-pointer $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*

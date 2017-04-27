@@ -15,7 +15,7 @@ export PATH=/usr/lib/gcc-snapshot/bin:$PATH
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
+export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 -fno-omit-frame-pointer \
 -Wstrict-overflow=1 -Wformat=1 -D_FORTIFY_SOURCE=2 \
 -fsanitize=address -fsanitize=undefined \
@@ -29,6 +29,8 @@ export CXXFLAGS="-pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 -Wno-attributes"
 
 source ./tools/ci/flags/gcc6.sh
+
+export CXXFLAGS="$CXXFLAGS $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-unittests=yes $*

@@ -14,8 +14,9 @@ export LOGFILE=gcc48_c++11.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
+export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -pipe -ffast-math \
 -funswitch-loops \
+-fno-omit-frame-pointer \
 -Wvariadic-macros -Wvla -Wredundant-decls \
 -Wpacked-bitfield-compat -Wtrampolines \
 -Wsuggest-attribute=noreturn -Wunused -Wstrict-aliasing=2 \
@@ -40,7 +41,7 @@ export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -Wsuggest-attribute=format -Wtype-limits -Wuninitialized \
 -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
 -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable \
--Wno-attributes"
+-Wno-attributes $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*

@@ -14,7 +14,7 @@ export LOGFILE=clang34.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-stdlib=libc++"
+export CXXFLAGS="$CXXFLAGS -stdlib=libc++ -fno-omit-frame-pointer -ggdb3 $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*

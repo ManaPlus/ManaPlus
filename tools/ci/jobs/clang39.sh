@@ -14,14 +14,14 @@ export LOGFILE=clang39.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="-Weverything -Wno-documentation -Wno-padded -Wno-sign-conversion \
+export CXXFLAGS="$CXXFLAGS -Weverything -Wno-documentation -Wno-padded -Wno-sign-conversion \
 -Wno-global-constructors -Wno-exit-time-destructors -Wno-weak-vtables \
 -Wno-overloaded-virtual -Wno-covered-switch-default -Wno-float-equal -Wno-conversion \
 -Wno-shorten-64-to-32 -Wno-missing-variable-declarations \
 -Wno-disabled-macro-expansion -Wno-format-nonliteral -stdlib=libc++ \
 -Wno-reserved-id-macro -Wno-packed -Wno-documentation-unknown-command \
 -Wno-variadic-macros -Wno-double-promotion -Wno-attributes \
--Wpointer-bool-conversion"
+-Wpointer-bool-conversion -fno-omit-frame-pointer -ggdb3 $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*
