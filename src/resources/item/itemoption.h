@@ -25,7 +25,9 @@
 
 struct ItemOption final
 {
-    ItemOption()
+    ItemOption() :
+        index(0U),
+        value(0)
     { }
 
     A_DELETE_COPY(ItemOption)

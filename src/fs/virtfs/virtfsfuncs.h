@@ -44,6 +44,8 @@ struct VirtFsFuncs final
         getRealDir(nullptr),
         enumerate(nullptr),
         getFiles(nullptr),
+        getFilesWithDir(nullptr),
+        getDirs(nullptr),
         isDirectory(nullptr),
         openRead(nullptr),
         openWrite(nullptr),

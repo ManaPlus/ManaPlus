@@ -2105,9 +2105,9 @@ TEST_CASE("VirtFs1 getFilesWithDir2")
 
         VirtFs::getFilesWithDir(pathJoin("evol", "icons"), list);
         REQUIRE(list.size() == 3);
-        REQUIRE(inList(list, pathJoin("evol" , "icons"), "evol-client.ico"));
-        REQUIRE(inList(list, pathJoin("evol" , "icons"), "evol-client.png"));
-        REQUIRE(inList(list, pathJoin("evol" , "icons"), "evol-client.xpm"));
+        REQUIRE(inList(list, pathJoin("evol", "icons"), "evol-client.ico"));
+        REQUIRE(inList(list, pathJoin("evol", "icons"), "evol-client.png"));
+        REQUIRE(inList(list, pathJoin("evol", "icons"), "evol-client.xpm"));
 
         VirtFs::unmountDir(prefix + "data");
     }

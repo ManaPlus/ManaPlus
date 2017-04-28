@@ -565,15 +565,15 @@ namespace VirtFsZip
             reportAlways("VirtFsZip::read buffer is null");
             return 0;
         }
-        const uint32_t pos = CAST_S32(file->mPos);
-        const uint32_t sz = CAST_S32(file->mSize);
+        const size_t pos = file->mPos;
+        const size_t sz = file->mSize;
         // if outside of buffer, return
         if (pos >= sz)
             return 0;
         // pointer to start for buffer ready to read
         const uint8_t *restrict const memPtr = file->mBuf + pos;
         // left buffer size from pos to end
-        const uint32_t memSize = sz - pos;
+        const uint32_t memSize = CAST_U32(sz - pos);
         // number of objects possible to read
         uint32_t memCount = memSize / objSize;
         if (memCount == 0)
@@ -582,7 +582,7 @@ namespace VirtFsZip
         if (memCount > objCount)
             memCount = objCount;
         // number of bytes to read from buffer
-        const uint32_t memEnd = memCount * objSize;
+        const size_t memEnd = memCount * objSize;
         memcpy(buffer, memPtr, memEnd);
         file->mPos += memEnd;
         return memCount;

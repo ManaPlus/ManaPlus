@@ -36,11 +36,12 @@ namespace
 
     class TestConfigListener : public ConfigListener
     {
-        void optionChanged(const std::string &name) override final
-        {
-            if (name == "testkey123")
-                mCalled ++;
-        }
+        public:
+            void optionChanged(const std::string &name) override final
+            {
+                if (name == "testkey123")
+                    mCalled ++;
+            }
     } testListener;
 }  // namespace
 

@@ -485,13 +485,15 @@ namespace VirtFsDir
         if (fstat(fd, &statbuf) == -1)
         {
             reportAlways("VirtFsDir::fileLength error.");
-            return -1;
+            if (fd != FILEHDEFAULT)
+                FILECLOSE(fd);
+            return nullptr;
         }
         fileSize = static_cast<int>(statbuf.st_size);
 #endif  // USE_FILE_FOPEN
 
         // Allocate memory and load the file
-        char *restrict const buffer = new char[fileSize];
+        char *restrict const buffer = new char[CAST_SIZE(fileSize)];
         if (fileSize > 0)
             buffer[fileSize - 1] = 0;
 

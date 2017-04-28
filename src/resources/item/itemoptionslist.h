@@ -31,7 +31,8 @@
 
 struct ItemOptionsList final
 {
-    explicit ItemOptionsList(const int amount0) :
+    explicit ItemOptionsList(const size_t amount0) :
+        options(nullptr),
         amount(amount0),
         pointer(0U)
     {
@@ -39,6 +40,7 @@ struct ItemOptionsList final
     }
 
     ItemOptionsList() :
+        options(nullptr),
         amount(maxItemOptions),
         pointer(0U)
     {
@@ -68,9 +70,9 @@ struct ItemOptionsList final
         if (options0 == nullptr)
             return nullptr;
 
-        const int amount0 = options0->amount;
+        const size_t amount0 = options0->amount;
         ItemOptionsList *const obj = new ItemOptionsList(amount0);
-        for (int f = 0; f < amount0; f ++)
+        for (size_t f = 0; f < amount0; f ++)
         {
             obj->options[f].index = options0->options[f].index;
             obj->options[f].value = options0->options[f].value;
