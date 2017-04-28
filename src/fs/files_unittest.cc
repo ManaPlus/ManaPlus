@@ -210,7 +210,7 @@ TEST_CASE("Files getFilesInDir")
         list,
         ".gpl");
     REQUIRE(list.size() == 1);
-    REQUIRE(list[0] == "test/palette.gpl");
+    REQUIRE(list[0] == pathJoin("test", "palette.gpl"));
 
     list.clear();
     VirtFs::getFilesInDir("perserver/default",
