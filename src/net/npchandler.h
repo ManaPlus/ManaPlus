@@ -76,6 +76,8 @@ class NpcHandler notfinal
 
         virtual void buy(const Being *const being) const = 0;
 
+        virtual void buy(const BeingId beingId) const = 0;
+
         virtual void sell(const BeingId beingId) const = 0;
 
         virtual void buyItem(const BeingId beingId,

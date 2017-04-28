@@ -117,6 +117,13 @@ void NpcHandler::buy(const Being *const being) const
     outMsg.writeInt8(0, "action");
 }
 
+void NpcHandler::buy(const BeingId beingId) const
+{
+    createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
+    outMsg.writeBeingId(beingId, "npc id");
+    outMsg.writeInt8(0, "action");
+}
+
 void NpcHandler::sell(const BeingId beingId) const
 {
     createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);

@@ -133,7 +133,10 @@ void BuySellDialog::action(const ActionEvent &event)
         if (mNpcId != BeingId_negOne)
         {
             const Being *const being = actorManager->findBeing(mNpcId);
-            npcHandler->buy(being);
+            if (being)
+                npcHandler->buy(being);
+            else
+                npcHandler->buy(mNpcId);
         }
         else
         {

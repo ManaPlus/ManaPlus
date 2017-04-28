@@ -133,6 +133,14 @@ void NpcHandler::buy(const Being *const being) const
     EAthena::NpcRecv::mNpcTypeId = being->getSubType();
 }
 
+void NpcHandler::buy(const BeingId beingId) const
+{
+    createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
+    outMsg.writeBeingId(beingId, "npc id");
+    outMsg.writeInt8(0, "action");
+    EAthena::NpcRecv::mNpcTypeId = BeingTypeId_zero;
+}
+
 void NpcHandler::sell(const BeingId beingId) const
 {
     createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);

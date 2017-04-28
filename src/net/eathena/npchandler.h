@@ -52,6 +52,8 @@ class NpcHandler final : public Ea::NpcHandler
 
         void buy(const Being *const being) const override final;
 
+        void buy(const BeingId beingId) const override final;
+
         void sell(const BeingId beingId) const override final;
 
         void buyItem(const BeingId beingId,
