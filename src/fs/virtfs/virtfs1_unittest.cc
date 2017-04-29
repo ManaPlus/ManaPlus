@@ -2061,10 +2061,10 @@ TEST_CASE("VirtFs1 getFilesWithDir1")
     REQUIRE(inList(list, "dir2", "units.xml"));
     list.clear();
 
-    VirtFs::getFilesWithDir("/", list);
+    VirtFs::getFilesWithDir(dirSeparator, list);
     REQUIRE(list.size() > 2);
-    REQUIRE(inList(list, "/", "test.txt"));
-    REQUIRE(inList(list, "/", "units.xml"));
+    REQUIRE(inList(list, dirSeparator, "test.txt"));
+    REQUIRE(inList(list, dirSeparator, "units.xml"));
     list.clear();
 
     VirtFs::unmountZip(prefix + "data/test/test2.zip");
