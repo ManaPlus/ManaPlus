@@ -42,7 +42,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2017-04-27 17:58+0300\n"
-"PO-Revision-Date: 2017-04-16 09:17+0000\n"
+"PO-Revision-Date: 2017-04-28 03:04+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/akaras/manaplus/language/"
 "de/)\n"
@@ -1897,9 +1897,8 @@ msgstr "Karten: "
 
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:378
-#, fuzzy
 msgid "Options: "
-msgstr "Optionen:"
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
@@ -5461,9 +5460,8 @@ msgstr "ObenGL Kontext-Erstellung aktivieren"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:100
-#, fuzzy
 msgid "Enable OpenGL direct state access"
-msgstr "ObenGL Kontext-Erstellung aktivieren"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:105

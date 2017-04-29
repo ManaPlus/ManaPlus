@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2017-04-27 17:58+0300\n"
-"PO-Revision-Date: 2017-04-16 09:17+0000\n"
+"PO-Revision-Date: 2017-04-29 12:46+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/akaras/manaplus/language/"
 "ru/)\n"
@@ -207,7 +207,7 @@ msgstr "Сообщение гильдии"
 #: src/actions/chat.cpp:709
 #, c-format
 msgid "No translation found for string: %s"
-msgstr ""
+msgstr "Перевод не найден для строки: %s"
 
 #. TRANSLATORS: change relation
 #: src/actions/commands.cpp:139
@@ -1876,9 +1876,8 @@ msgstr "Карты: "
 
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:378
-#, fuzzy
 msgid "Options: "
-msgstr "Опции:"
+msgstr "Опции: "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
@@ -5317,9 +5316,8 @@ msgstr "Включить создание контекста OpenGL"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:100
-#, fuzzy
 msgid "Enable OpenGL direct state access"
-msgstr "Включить создание контекста OpenGL"
+msgstr "Включить OpenGL расширения DSA"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:105
@@ -5547,7 +5545,7 @@ msgstr "Включить возможность получения удален�
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:169
 msgid "Allow move character by mouse"
-msgstr ""
+msgstr "Включить возможность двигаться при помощи мыши"
 
 #. TRANSLATORS: relations table header
 #: src/gui/widgets/tabs/setup_relations.cpp:58
@@ -6833,7 +6831,7 @@ msgstr "Шрифты"
 #. TRANSLATORS: emotes tab name
 #: src/gui/windows/emotewindow.cpp:136
 msgid "T"
-msgstr ""
+msgstr "Т"
 
 #. TRANSLATORS: unknown equipment page name
 #. TRANSLATORS: unknown hosts group name
@@ -10854,17 +10852,17 @@ msgstr "Невозможно покупать в режиме обмена."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:842
 msgid "Unable to buy. Npc not found."
-msgstr ""
+msgstr "Невозможно купить. НИП не найден."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:846
 msgid "Unable to buy. Shop system error."
-msgstr ""
+msgstr "Невозможно купить. Ошибка магазина."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:850
 msgid "Unable to buy. Wrong items selected."
-msgstr ""
+msgstr "Невозможно купить. Выбраны недопустимые предметы."
 
 #. TRANSLATORS: skill level
 #: src/resources/skill/skillinfo.cpp:112

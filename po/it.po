@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2017-04-27 17:58+0300\n"
-"PO-Revision-Date: 2017-04-25 12:08+0000\n"
+"PO-Revision-Date: 2017-04-28 03:04+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Italian (http://www.transifex.com/akaras/manaplus/language/"
 "it/)\n"
@@ -1869,9 +1869,8 @@ msgstr ""
 
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:378
-#, fuzzy
 msgid "Options: "
-msgstr "Opzioni:"
+msgstr ""
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
