@@ -217,11 +217,12 @@ TEST_CASE("Files getFilesInDir")
         list,
         ".xml");
     REQUIRE(list.size() == 5);
-    REQUIRE(list[0] == pathJoin("perserver", "default", "charcreation.xml");
-    REQUIRE(list[1] == pathJoin("perserver", "default", "deadmessages.xml");
-    REQUIRE(list[2] == pathJoin("perserver", "default", "defaultcommands.xml");
-    REQUIRE(list[3] == pathJoin("perserver", "default", "features.xml");
-    REQUIRE(list[4] == pathJoin("perserver", "default", "weapons.xml");
+    REQUIRE(list[0] == pathJoin("perserver", "default", "charcreation.xml"));
+    REQUIRE(list[1] == pathJoin("perserver", "default", "deadmessages.xml"));
+    REQUIRE(list[2] ==
+        pathJoin("perserver", "default", "defaultcommands.xml"));
+    REQUIRE(list[3] == pathJoin("perserver", "default", "features.xml"));
+    REQUIRE(list[4] == pathJoin("perserver", "default", "weapons.xml"));
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
