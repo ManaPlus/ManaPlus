@@ -243,6 +243,7 @@
 		<Unit filename="src/resources/db/badgesdb.cpp" />
 		<Unit filename="src/resources/db/mapdb.cpp" />
 		<Unit filename="src/resources/db/avatardb.cpp" />
+		<Unit filename="src/resources/db/itemoptiondb.cpp" />
 		<Unit filename="src/resources/db/languagedb.cpp" />
 		<Unit filename="src/resources/db/colordb.cpp" />
 		<Unit filename="src/resources/db/statdb.cpp" />
@@ -908,6 +909,7 @@
 		<Unit filename="src/const/resources/spriteaction.h" />
 		<Unit filename="src/const/resources/skill.h" />
 		<Unit filename="src/const/resources/map/map.h" />
+		<Unit filename="src/const/resources/item/itemoptions.h" />
 		<Unit filename="src/const/resources/item/cards.h" />
 		<Unit filename="src/const/resources/currency.h" />
 		<Unit filename="src/const/sound.h" />
@@ -980,6 +982,7 @@
 		<Unit filename="src/resources/db/chardb.h" />
 		<Unit filename="src/resources/db/npcdb.h" />
 		<Unit filename="src/resources/db/sounddb.h" />
+		<Unit filename="src/resources/db/itemoptiondb.h" />
 		<Unit filename="src/resources/db/unitsdb.h" />
 		<Unit filename="src/resources/db/petdb.h" />
 		<Unit filename="src/resources/db/avatardb.h" />
@@ -1051,6 +1054,8 @@
 		<Unit filename="src/resources/mapreader.h" />
 		<Unit filename="src/resources/resourcetypes.h" />
 		<Unit filename="src/resources/beingmenuitem.h" />
+		<Unit filename="src/resources/item/itemoption.h" />
+		<Unit filename="src/resources/item/itemoptionslist.h" />
 		<Unit filename="src/resources/item/complexitem.h" />
 		<Unit filename="src/resources/item/item.h" />
 		<Unit filename="src/resources/item/itemfieldtype.h" />
