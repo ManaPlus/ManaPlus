@@ -1,3 +1,11 @@
+2017-04-29 New release 1.7.4.29
+fix: loading map atlases on windows.
+fix: slow or wrong drawing with atlases enabled but without atlas for current map.
+fix: opening npc buy shop from invisible npc.
+add: support for item options.
+add: improve performance in some files operations.
+remove: drop support for old hercules plugin versions (before 2016 year)
+
 2017-04-15 New release 1.7.4.15
 add: server language flag on client
 add: quick messages with auto translation from player server language to english.
