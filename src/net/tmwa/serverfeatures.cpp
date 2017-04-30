@@ -39,11 +39,6 @@ bool ServerFeatures::haveServerOnlineList() const
     return false;
 }
 
-bool ServerFeatures::haveOnlineList() const
-{
-    return true;
-}
-
 bool ServerFeatures::havePartyNickInvite() const
 {
     return false;

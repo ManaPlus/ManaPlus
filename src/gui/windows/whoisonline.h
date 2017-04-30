@@ -172,7 +172,9 @@ class WhoIsOnline final : public Window,
         bool mUpdateOnlineList;
         bool mGroupFriends;
         bool mServerSideList;
+#ifdef TMWA_SUPPORT
         bool mWebList;
+#endif
 };
 
 extern WhoIsOnline *whoIsOnline;

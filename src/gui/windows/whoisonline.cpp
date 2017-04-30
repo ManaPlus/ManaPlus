@@ -58,6 +58,8 @@
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
+#include "net/net.h"
+
 #ifndef TMWA_SUPPORT
 #include <curl/curl.h>
 #endif  // TMWA_SUPPORT
@@ -118,7 +120,9 @@ WhoIsOnline::WhoIsOnline() :
     mUpdateOnlineList(config.getBoolValue("updateOnlineList")),
     mGroupFriends(true),
     mServerSideList(serverFeatures->haveServerOnlineList()),
-    mWebList(serverFeatures->haveOnlineList())
+#ifdef TMWA_SUPPORT
+    mWebList(Net::getNetworkType() == ServerType::TMWATHENA)
+#endif
 {
     mCurlError[0] = 0;
     setWindowName("WhoIsOnline");
