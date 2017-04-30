@@ -34,6 +34,7 @@
 
 #include "input/inputmanager.h"
 
+#include "net/net.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
 
@@ -100,8 +101,8 @@ bool PartyTab::handleCommand(const std::string &restrict type,
             args,
             this);
     }
-    else if (type == "setleader"
-             && serverFeatures->haveChangePartyLeader())
+    else if (type == "setleader" &&
+             Net::getNetworkType() == ServerType::EATHENA)
     {
         inputManager.executeChatCommand(
             InputAction::COMMAND_CHANGE_PARTY_LEADER,
@@ -135,7 +136,7 @@ void PartyTab::getAutoCompleteCommands(StringVect &names) const
     names.push_back("/kick ");
     names.push_back("/item");
     names.push_back("/exp");
-    if (serverFeatures->haveChangePartyLeader())
+    if (Net::getNetworkType() == ServerType::EATHENA)
         names.push_back("/setleader ");
 }
 

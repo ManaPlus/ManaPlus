@@ -38,8 +38,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool havePartyNickInvite() const override final A_CONST;
 
-        bool haveChangePartyLeader() const override final A_CONST;
-
         bool haveServerHp() const override final A_CONST;
 
         bool havePlayerStatusUpdate() const override final;

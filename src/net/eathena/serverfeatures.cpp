@@ -46,11 +46,6 @@ bool ServerFeatures::havePartyNickInvite() const
     return true;
 }
 
-bool ServerFeatures::haveChangePartyLeader() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveServerHp() const
 {
     return true;

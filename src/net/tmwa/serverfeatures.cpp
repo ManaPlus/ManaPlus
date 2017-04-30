@@ -44,11 +44,6 @@ bool ServerFeatures::havePartyNickInvite() const
     return false;
 }
 
-bool ServerFeatures::haveChangePartyLeader() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveServerHp() const
 {
     return tmwServerVersion > 0x0f0513;
