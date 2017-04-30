@@ -1285,8 +1285,8 @@ void LocalPlayer::moveToTarget(int dist)
         dist = settings.moveToTargetType;
         if (dist != 0)
         {
-            const bool broken = serverFeatures
-                ->haveBrokenPlayerAttackDistance();
+            const bool broken = (Net::getNetworkType() ==
+                ServerType::TMWATHENA);
             switch (dist)
             {
                 case 10:
@@ -2254,8 +2254,7 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
     if (!dontChangeEquipment && target)
         changeEquipmentBeforeAttack(target);
 
-    const bool broken = serverFeatures
-        ->haveBrokenPlayerAttackDistance();
+    const bool broken = (Net::getNetworkType() == ServerType::TMWATHENA);
 
     // probably need cache getPathLength(target)
     if ((!target || settings.attackType == 0 || settings.attackType == 3)

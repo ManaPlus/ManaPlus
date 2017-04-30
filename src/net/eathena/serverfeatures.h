@@ -40,8 +40,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool havePlayerStatusUpdate() const override final;
 
-        bool haveBrokenPlayerAttackDistance() const override final A_CONST;
-
         bool haveNativeGuilds() const override final A_CONST;
 
         bool haveIncompleteChatMessages() const override final A_CONST;

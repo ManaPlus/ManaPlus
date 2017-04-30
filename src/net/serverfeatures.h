@@ -42,8 +42,6 @@ class ServerFeatures notfinal
 
         virtual bool havePlayerStatusUpdate() const = 0;
 
-        virtual bool haveBrokenPlayerAttackDistance() const = 0;
-
         virtual bool haveNativeGuilds() const = 0;
 
         virtual bool haveIncompleteChatMessages() const = 0;

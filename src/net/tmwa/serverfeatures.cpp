@@ -49,11 +49,6 @@ bool ServerFeatures::havePlayerStatusUpdate() const
     return false;
 }
 
-bool ServerFeatures::haveBrokenPlayerAttackDistance() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveNativeGuilds() const
 {
     return false;
