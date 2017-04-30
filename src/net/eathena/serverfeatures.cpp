@@ -41,11 +41,6 @@ bool ServerFeatures::haveServerOnlineList() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::havePartyNickInvite() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveServerHp() const
 {
     return true;

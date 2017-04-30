@@ -1013,7 +1013,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             }
             addPlayerMisc();
             addBuySellDefault();
-            if (serverFeatures->havePartyNickInvite())
+            if (Net::getNetworkType() == ServerType::EATHENA)
                 addParty(wTab->getNick());
             mBrowserBox->addRow("##3---");
         }
