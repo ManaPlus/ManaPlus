@@ -46,8 +46,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveLookSelection() const override final A_CONST;
 
-        bool haveServerIgnore() const override final;
-
         bool haveMove3() const override final;
 
         bool haveItemColors() const override final A_CONST;

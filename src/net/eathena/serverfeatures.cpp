@@ -66,11 +66,6 @@ bool ServerFeatures::haveLookSelection() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveServerIgnore() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveMove3() const
 {
     return serverVersion > 0;

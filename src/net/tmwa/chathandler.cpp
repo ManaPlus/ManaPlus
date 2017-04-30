@@ -180,18 +180,10 @@ void ChatHandler::processRaw(MessageOut &restrict outMsg,
 
 void ChatHandler::ignoreAll() const
 {
-    if (!serverFeatures->haveServerIgnore())
-        return;
-    createOutPacket(CMSG_IGNORE_ALL);
-    outMsg.writeInt8(0, "flag");
 }
 
 void ChatHandler::unIgnoreAll() const
 {
-    if (!serverFeatures->haveServerIgnore())
-        return;
-    createOutPacket(CMSG_IGNORE_ALL);
-    outMsg.writeInt8(1, "flag");
 }
 
 void ChatHandler::ignore(const std::string &nick) const

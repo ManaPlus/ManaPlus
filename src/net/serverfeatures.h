@@ -48,8 +48,6 @@ class ServerFeatures notfinal
 
         virtual bool haveLookSelection() const = 0;
 
-        virtual bool haveServerIgnore() const = 0;
-
         virtual bool haveMove3() const = 0;
 
         virtual bool haveItemColors() const = 0;
