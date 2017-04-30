@@ -4093,6 +4093,7 @@ void Being::drawHpBar(Graphics *restrict const graphics,
 
     const int dx = static_cast<const int>(static_cast<float>(width) / p);
 
+#ifdef TMWA_SUPPORT
     if (!serverFeatures->haveServerHp())
     {   // old servers
         if ((!damage && (this != localPlayer || hp == maxHP))
@@ -4112,6 +4113,7 @@ void Being::drawHpBar(Graphics *restrict const graphics,
         }
     }
     else
+#endif  // TMWA_SUPPORT
     {
         if (hp == maxHP)
         {
