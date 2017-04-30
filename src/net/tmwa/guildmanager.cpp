@@ -18,6 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"
 
 #include "actormanager.h"
@@ -548,3 +549,5 @@ ChatTab *GuildManager::getTab()
 {
     return mTab;
 }
+
+#endif // TMWA_SUPPORT

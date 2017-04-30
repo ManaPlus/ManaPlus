@@ -20,6 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef TMWA_SUPPORT
+
 #include "gui/widgets/tabs/chat/emulateguildtab.h"
 
 #include "configuration.h"
@@ -102,3 +104,5 @@ void EmulateGuildTab::optionChanged(const std::string &value)
     if (value == "showGuildOnline")
         mShowOnline = config.getBoolValue("showGuildOnline");
 }
+
+#endif  // TMWA_SUPPORT
