@@ -49,11 +49,6 @@ bool ServerFeatures::havePlayerStatusUpdate() const
     return false;
 }
 
-bool ServerFeatures::haveNativeGuilds() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveIncompleteChatMessages() const
 {
     return tmwServerVersion <= 0x100209;
@@ -65,11 +60,6 @@ bool ServerFeatures::haveRaceSelection() const
 }
 
 bool ServerFeatures::haveLookSelection() const
-{
-    return false;
-}
-
-bool ServerFeatures::haveChatChannels() const
 {
     return false;
 }

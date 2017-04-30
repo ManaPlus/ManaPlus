@@ -3430,7 +3430,7 @@ void PopupMenu::addSocialMenu()
         mBrowserBox->addRow("/createparty", _("Create party"));
     }
 
-    if (serverFeatures->haveNativeGuilds())
+    if (Net::getNetworkType() == ServerType::EATHENA)
     {
         const Guild *const guild = localPlayer->getGuild();
         if (guild)

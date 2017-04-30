@@ -569,8 +569,7 @@ impHandler(info)
 {
     if (!event.tab ||
         !localPlayer ||
-        !serverFeatures ||
-        !serverFeatures->haveNativeGuilds())
+        Net::getNetworkType() == ServerType::TMWATHENA)
     {
         return false;
     }

@@ -42,15 +42,11 @@ class ServerFeatures notfinal
 
         virtual bool havePlayerStatusUpdate() const = 0;
 
-        virtual bool haveNativeGuilds() const = 0;
-
         virtual bool haveIncompleteChatMessages() const = 0;
 
         virtual bool haveRaceSelection() const = 0;
 
         virtual bool haveLookSelection() const = 0;
-
-        virtual bool haveChatChannels() const = 0;
 
         virtual bool haveServerIgnore() const = 0;
 

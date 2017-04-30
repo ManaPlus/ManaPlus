@@ -40,15 +40,11 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool havePlayerStatusUpdate() const override final;
 
-        bool haveNativeGuilds() const override final A_CONST;
-
         bool haveIncompleteChatMessages() const override final A_CONST;
 
         bool haveRaceSelection() const override final;
 
         bool haveLookSelection() const override final;
-
-        bool haveChatChannels() const override final A_CONST;
 
         bool haveServerIgnore() const override final A_CONST;
 

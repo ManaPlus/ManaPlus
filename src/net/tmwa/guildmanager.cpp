@@ -72,23 +72,16 @@ GuildManager::~GuildManager()
 
 void GuildManager::init()
 {
-    if (serverFeatures->haveNativeGuilds())
+    int val = serverConfig.getValue("enableGuildBot", -1);
+    if (val == -1)
     {
-        mEnableGuildBot = false;
+        if (client->isTmw())
+            val = 1;
+        else
+            val = 0;
+        serverConfig.setValue("enableGuildBot", val);
     }
-    else
-    {
-        int val = serverConfig.getValue("enableGuildBot", -1);
-        if (val == -1)
-        {
-            if (client->isTmw())
-                val = 1;
-            else
-                val = 0;
-            serverConfig.setValue("enableGuildBot", val);
-        }
-        mEnableGuildBot = val;
-    }
+    mEnableGuildBot = val;
     if (mEnableGuildBot)
     {
         if (!guildManager)

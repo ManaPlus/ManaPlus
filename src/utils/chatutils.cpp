@@ -31,6 +31,7 @@
 
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
+#include "net/net.h"
 #include "net/partyhandler.h"
 #include "net/serverfeatures.h"
 
@@ -67,17 +68,21 @@ void outStringNormal(ChatTab *const tab,
             const Guild *const guild = localPlayer->getGuild();
             if (guild)
             {
+#ifdef TMWA_SUPPORT
                 if (guild->getServerGuild())
                 {
-                    if (!serverFeatures->haveNativeGuilds())
+                    if (Net::getNetworkType() == ServerType::TMWATHENA)
                         return;
                     guildHandler->chat(str);
                 }
-#ifdef TMWA_SUPPORT
                 else if (guildManager)
                 {
                     guildManager->chat(str);
                 }
+#else  // TMWA_SUPPORT
+
+                if (guild->getServerGuild())
+                    guildHandler->chat(str);
 #endif  // TMWA_SUPPORT
             }
             break;

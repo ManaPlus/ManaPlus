@@ -51,11 +51,6 @@ bool ServerFeatures::havePlayerStatusUpdate() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveNativeGuilds() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveIncompleteChatMessages() const
 {
     return false;
@@ -69,11 +64,6 @@ bool ServerFeatures::haveRaceSelection() const
 bool ServerFeatures::haveLookSelection() const
 {
     return serverVersion > 0;
-}
-
-bool ServerFeatures::haveChatChannels() const
-{
-    return true;
 }
 
 bool ServerFeatures::haveServerIgnore() const

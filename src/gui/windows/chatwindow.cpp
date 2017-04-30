@@ -71,6 +71,7 @@
 #include "resources/db/textdb.h"
 
 #include "net/chathandler.h"
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "utils/copynpaste.h"
@@ -1299,8 +1300,9 @@ ChatTab *ChatWindow::addChatTab(const std::string &name,
                                 const bool switchTo,
                                 const bool join)
 {
-    if (serverFeatures->haveChatChannels() && name.size() > 1
-        && name[0] == '#')
+    if (Net::getNetworkType() == ServerType::EATHENA &&
+        name.size() > 1 &&
+        name[0] == '#')
     {
         ChatTab *const tab = addChannelTab(name, switchTo);
         if (tab && join)
@@ -1696,7 +1698,7 @@ bool ChatWindow::resortChatLog(std::string line,
                     tryRemoveColors);
             }
         }
-        else if (serverFeatures->haveChatChannels())
+        else if (Net::getNetworkType() == ServerType::EATHENA)
         {
             channelChatLog(channel, line, own, ignoreRecord, tryRemoveColors);
             return false;
