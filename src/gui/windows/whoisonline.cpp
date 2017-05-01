@@ -119,10 +119,10 @@ WhoIsOnline::WhoIsOnline() :
     mShowLevel(false),
     mUpdateOnlineList(config.getBoolValue("updateOnlineList")),
     mGroupFriends(true),
-    mServerSideList(serverFeatures->haveServerOnlineList()),
 #ifdef TMWA_SUPPORT
-    mWebList(Net::getNetworkType() == ServerType::TMWATHENA)
+    mWebList(Net::getNetworkType() == ServerType::TMWATHENA),
 #endif
+    mServerSideList(serverFeatures->haveServerOnlineList())
 {
     mCurlError[0] = 0;
     setWindowName("WhoIsOnline");
