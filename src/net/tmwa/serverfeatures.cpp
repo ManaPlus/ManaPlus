@@ -89,11 +89,6 @@ bool ServerFeatures::haveEmailOnDelete() const
     return false;
 }
 
-bool ServerFeatures::haveEightDirections() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveCharRename() const
 {
     return false;

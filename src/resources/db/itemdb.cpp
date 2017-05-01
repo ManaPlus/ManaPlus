@@ -39,6 +39,7 @@
 
 #include "resources/sprite/spritereference.h"
 
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "utils/checkutils.h"
@@ -780,10 +781,12 @@ static int parseDirectionName(const std::string &name)
     int id = -1;
     if (name == "down")
     {
-        if (serverFeatures->haveEightDirections())
-            id = SpriteDirection::DOWN;
-        else
+#ifdef TMWA_SUPPORT
+        if (Net::getNetworkType() == ServerType::TMWATHENA)
             id = -2;
+        else
+#endif
+            id = SpriteDirection::DOWN;
     }
     else if (name == "downleft" || name == "leftdown")
     {
@@ -799,10 +802,12 @@ static int parseDirectionName(const std::string &name)
     }
     else if (name == "up")
     {
-        if (serverFeatures->haveEightDirections())
-            id = SpriteDirection::UP;
-        else
+#ifdef TMWA_SUPPORT
+        if (Net::getNetworkType() == ServerType::TMWATHENA)
             id = -3;
+        else
+#endif
+            id = SpriteDirection::UP;
     }
     else if (name == "upright" || name == "rightup")
     {
