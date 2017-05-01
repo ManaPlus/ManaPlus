@@ -38,6 +38,7 @@
 
 #include "gui/windows/itemamountwindow.h"
 
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "resources/inventory/inventory.h"
@@ -253,7 +254,7 @@ void ShopListBox::mouseReleased(MouseEvent& event)
             return;
         }
         if (mType == ShopListBoxType::SellShop &&
-            serverFeatures->haveCart() &&
+            Net::getNetworkType() == ServerType::EATHENA &&
             src != DragDropSource::Cart)
         {
             return;

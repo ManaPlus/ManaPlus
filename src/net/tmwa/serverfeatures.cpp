@@ -114,11 +114,6 @@ bool ServerFeatures::haveCreateCharGender() const
     return tmwServerVersion > 0x0f0b17;
 }
 
-bool ServerFeatures::haveCart() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveCards() const
 {
     return false;

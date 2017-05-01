@@ -278,8 +278,7 @@ impHandler0(bankWindowShow)
 
 impHandler0(cartWindowShow)
 {
-    if (!serverFeatures ||
-        !serverFeatures->haveCart() ||
+    if (Net::getNetworkType() == ServerType::TMWATHENA ||
         !localPlayer ||
         !localPlayer->getHaveCart())
     {

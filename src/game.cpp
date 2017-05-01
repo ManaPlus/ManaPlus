@@ -104,6 +104,7 @@
 
 #include "net/generalhandler.h"
 #include "net/gamehandler.h"
+#include "net/net.h"
 #include "net/packetcounters.h"
 #include "net/serverfeatures.h"
 
@@ -210,7 +211,7 @@ static void createGuiWindows()
     CREATEWIDGETV0(miniStatusWindow, MiniStatusWindow);
     CREATEWIDGETV(inventoryWindow, InventoryWindow,
         PlayerInfo::getInventory());
-    if (serverFeatures && serverFeatures->haveCart())
+    if (Net::getNetworkType() == ServerType::EATHENA)
     {
         CREATEWIDGETV(cartWindow, InventoryWindow,
             PlayerInfo::getCartInventory());
