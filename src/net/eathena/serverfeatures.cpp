@@ -131,11 +131,6 @@ bool ServerFeatures::haveServerWarpNames() const
     return serverVersion == 0;
 }
 
-bool ServerFeatures::haveTeamId() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveExtendedRiding() const
 {
     return true;

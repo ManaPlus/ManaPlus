@@ -74,8 +74,6 @@ class ServerFeatures notfinal
 
         virtual bool haveServerWarpNames() const = 0;
 
-        virtual bool haveTeamId() const = 0;
-
         virtual bool haveExtendedRiding() const = 0;
 
         virtual bool haveAdvancedBuySell() const = 0;

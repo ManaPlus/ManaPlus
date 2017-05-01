@@ -1382,10 +1382,7 @@ void BeingRecv::processPvpSet(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("being id");
     const int rank = msg.readInt32("rank");
     int teamId = 0;
-    if (serverFeatures->haveTeamId())
-        teamId = msg.readInt32("team");
-    else
-        msg.readInt32("num");
+    teamId = msg.readInt32("team");
     if (actorManager)
     {
         Being *const dstBeing = actorManager->findBeing(id);
