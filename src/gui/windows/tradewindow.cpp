@@ -53,6 +53,7 @@
 
 #include "resources/item/item.h"
 
+#include "net/net.h"
 #include "net/serverfeatures.h"
 #include "net/tradehandler.h"
 
@@ -535,7 +536,7 @@ bool TradeWindow::checkItem(const Item *const item) const
         }
         return false;
     }
-    if (serverFeatures->haveSecureTrades() &&
+    if (Net::getNetworkType() == ServerType::EATHENA &&
         item->isEquipped() == Equipped_true)
     {
         if (localChatTab)
