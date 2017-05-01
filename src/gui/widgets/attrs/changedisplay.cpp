@@ -30,6 +30,7 @@
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/layouthelper.h"
 
+#include "net/net.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
@@ -102,7 +103,7 @@ void ChangeDisplay::action(const ActionEvent &event)
         const int newbase = PlayerInfo::getStatBase(mId) + cnt;
         PlayerInfo::setStatBase(mId, newbase);
 
-        if (serverFeatures->haveMultyStatusUp())
+        if (Net::getNetworkType() == ServerType::EATHENA)
         {
             playerHandler->increaseAttribute(mId, cnt);
         }

@@ -141,11 +141,6 @@ bool ServerFeatures::haveExtendedDropsPosition() const
     return serverVersion >= 12;
 }
 
-bool ServerFeatures::haveMultyStatusUp() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveMail() const
 {
     return true;

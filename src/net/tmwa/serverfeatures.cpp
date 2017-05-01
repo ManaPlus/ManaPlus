@@ -139,11 +139,6 @@ bool ServerFeatures::haveExtendedDropsPosition() const
     return false;
 }
 
-bool ServerFeatures::haveMultyStatusUp() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveMail() const
 {
     return false;
