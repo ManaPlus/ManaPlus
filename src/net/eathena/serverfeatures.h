@@ -64,8 +64,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveJoinChannel() const override final;
 
-        bool haveNpcWhispers() const override final A_CONST;
-
         bool haveCreateCharGender() const override final;
 
         bool haveAttackDirections() const override final A_CONST;

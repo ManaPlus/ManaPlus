@@ -66,8 +66,6 @@ class ServerFeatures notfinal
 
         virtual bool haveJoinChannel() const = 0;
 
-        virtual bool haveNpcWhispers() const = 0;
-
         virtual bool haveCreateCharGender() const = 0;
 
         virtual bool haveAttackDirections() const = 0;

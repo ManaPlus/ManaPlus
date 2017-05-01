@@ -265,7 +265,9 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: talk with npc
                 mBrowserBox->addRow("/talk 'NAME'", _("Talk"));
-                if (serverFeatures->haveNpcWhispers())
+#ifdef TMWA_SUPPORT
+                if (Net::getNetworkType() == ServerType::EATHENA)
+#endif
                 {
                     mBrowserBox->addRow("/whispertext NPC:'NAME'",
                         // TRANSLATORS: popup menu item

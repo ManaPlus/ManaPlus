@@ -109,11 +109,6 @@ bool ServerFeatures::haveJoinChannel() const
     return false;
 }
 
-bool ServerFeatures::haveNpcWhispers() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveCreateCharGender() const
 {
     return tmwServerVersion > 0x0f0b17;
