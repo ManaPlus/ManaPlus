@@ -66,8 +66,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveCreateCharGender() const override final;
 
-        bool haveAttackDirections() const override final A_CONST;
-
         bool haveVending() const override final A_CONST;
 
         bool haveCart() const override final A_CONST;

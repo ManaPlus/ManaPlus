@@ -116,11 +116,6 @@ bool ServerFeatures::haveCreateCharGender() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveAttackDirections() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveVending() const
 {
     return true;

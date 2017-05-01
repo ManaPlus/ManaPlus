@@ -69,6 +69,7 @@
 #include "net/gamehandler.h"
 #include "net/homunculushandler.h"
 #include "net/mercenaryhandler.h"
+#include "net/net.h"
 #include "net/npchandler.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
@@ -949,8 +950,7 @@ void Being::handleAttack(Being *restrict const victim,
     reset();
     mActionTime = tick_time;
 
-    if (serverFeatures &&
-        !serverFeatures->haveAttackDirections() &&
+    if (Net::getNetworkType() == ServerType::TMWATHENA &&
         this != localPlayer)
     {
         const uint8_t dir = calcDirection(victim->mX,
@@ -1053,7 +1053,8 @@ void Being::handleSkill(Being *restrict const victim,
     reset();
     mActionTime = tick_time;
 
-    if (!serverFeatures->haveAttackDirections() && this != localPlayer)
+    if (Net::getNetworkType() == ServerType::TMWATHENA &&
+        this != localPlayer)
     {
         const uint8_t dir = calcDirection(victim->mX,
             victim->mY);

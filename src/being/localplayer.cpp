@@ -797,7 +797,8 @@ void LocalPlayer::attack(Being *const target, const bool keep,
         return;
     }
 
-    if (!serverFeatures->haveAttackDirections())
+#ifdef TMWA_SUPPORT
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
     {
         if (abs(dist_y) >= abs(dist_x))
         {
@@ -814,6 +815,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
                 setDirection(BeingDirection::LEFT);
         }
     }
+#endif  // TMWA_SUPPORT
 
     mActionTime = tick_time;
 
