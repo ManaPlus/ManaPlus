@@ -74,8 +74,6 @@ class ServerFeatures notfinal
 
         virtual bool haveServerWarpNames() const = 0;
 
-        virtual bool haveExpPacket() const = 0;
-
         virtual bool haveMute() const = 0;
 
         virtual bool haveTeamId() const = 0;

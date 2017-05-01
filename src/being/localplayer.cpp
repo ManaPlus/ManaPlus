@@ -1231,7 +1231,7 @@ void LocalPlayer::statChanged(const AttributesT id,
 {
     if (!mShowJobExp ||
         id != Attributes::PLAYER_JOB ||
-        serverFeatures->haveExpPacket())
+        Net::getNetworkType() == ServerType::EATHENA)
     {
         return;
     }
@@ -1254,7 +1254,7 @@ void LocalPlayer::attributeChanged(const AttributesT id,
     {
         case Attributes::PLAYER_EXP:
         {
-            if (serverFeatures->haveExpPacket())
+            if (Net::getNetworkType() == ServerType::EATHENA)
                 break;
             if (oldVal > newVal)
                 break;
