@@ -51,6 +51,7 @@
 
 #include "utils/gettext.h"
 
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"
@@ -266,8 +267,10 @@ impHandler0(questsWindowShow)
 
 impHandler0(bankWindowShow)
 {
-    if (!serverFeatures || !serverFeatures->haveBankApi())
+#ifdef TMWA_SUPPORT
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
         return false;
+#endif  // TMWA_SUPPORT
 
     showHideWindow(bankWindow);
     return true;

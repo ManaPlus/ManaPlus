@@ -91,11 +91,6 @@ bool ServerFeatures::haveEmailOnDelete() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveBankApi() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveServerVersion() const
 {
     return Net::getNetworkType() == ServerType::EVOL2;
