@@ -91,11 +91,6 @@ bool ServerFeatures::haveEmailOnDelete() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveCharRename() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveBankApi() const
 {
     return true;

@@ -58,8 +58,6 @@ class ServerFeatures notfinal
 
         virtual bool haveEmailOnDelete() const = 0;
 
-        virtual bool haveCharRename() const = 0;
-
         virtual bool haveBankApi() const = 0;
 
         virtual bool haveServerVersion() const = 0;

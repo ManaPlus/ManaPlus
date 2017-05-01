@@ -56,8 +56,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveEmailOnDelete() const override final;
 
-        bool haveCharRename() const override final A_CONST;
-
         bool haveBankApi() const override final A_CONST;
 
         bool haveServerVersion() const override final;

@@ -45,6 +45,7 @@
 #include "net/character.h"
 #include "net/charserverhandler.h"
 #include "net/logindata.h"
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "resources/db/unitsdb.h"
@@ -99,7 +100,9 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
     n ++;
     placer(n, 0, mDeleteButton);
     n ++;
-    if (serverFeatures->haveCharRename())
+#ifdef TMWA_SUPPORT
+    if (Net::getNetworkType() == ServerType::EATHENA)
+#endif
     {
         mRenameButton = new Button(this,
             // TRANSLATORS: character rename button
