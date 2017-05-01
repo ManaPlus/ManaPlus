@@ -76,8 +76,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveExtendedDropsPosition() const override final A_CONST;
 
-        bool haveFamily() const override final A_CONST;
-
         bool haveMoveWhileSit() const override final A_CONST;
 
         bool haveKillerId() const override final A_CONST;

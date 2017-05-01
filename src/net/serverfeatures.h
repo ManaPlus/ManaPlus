@@ -78,8 +78,6 @@ class ServerFeatures notfinal
 
         virtual bool haveExtendedDropsPosition() const = 0;
 
-        virtual bool haveFamily() const = 0;
-
         virtual bool haveMoveWhileSit() const = 0;
 
         virtual bool haveKillerId() const = 0;

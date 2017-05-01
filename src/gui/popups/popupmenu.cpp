@@ -3408,7 +3408,7 @@ void PopupMenu::addCatchPetCommands()
 
 void PopupMenu::showAdoptCommands()
 {
-    if (!serverFeatures->haveFamily())
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
         return;
     // TRANSLATORS: popup menu item
     // TRANSLATORS: adopt child command

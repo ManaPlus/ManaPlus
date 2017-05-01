@@ -141,11 +141,6 @@ bool ServerFeatures::haveExtendedDropsPosition() const
     return serverVersion >= 12;
 }
 
-bool ServerFeatures::haveFamily() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveMoveWhileSit() const
 {
     return serverVersion > 0;
