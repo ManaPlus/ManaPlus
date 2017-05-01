@@ -133,7 +133,7 @@ bool ServerFeatures::haveServerWarpNames() const
 
 bool ServerFeatures::haveExtendedRiding() const
 {
-    return true;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveAdvancedBuySell() const

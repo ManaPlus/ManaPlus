@@ -1725,18 +1725,14 @@ void BeingRecv::processMobInfo(Net::MessageIn &msg)
 void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
 {
     const int len = msg.readInt16("len");
-    if (len < 12)
-        return;
-    const bool haveMount = serverFeatures->haveExtendedRiding();
-    if (haveMount && len < 14)
+    if (len < 14)
         return;
 
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("player id"));
     const int gmLevel = msg.readInt32("gm level");
     uint16_t mount = 0;
-    if (haveMount)
-        mount = msg.readInt16("mount");
+    mount = msg.readInt16("mount");
     int language = -1;
     if (serverVersion >= 17)
         language = msg.readInt16("language");
@@ -1754,10 +1750,7 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
                 localPlayer->setGMLevel(0);
             dstBeing->setGM(false);
         }
-        if (haveMount)
-        {
-            dstBeing->setHorse(mount);
-        }
+        dstBeing->setHorse(mount);
         dstBeing->setLanguageId(language);
         if (dstBeing == localPlayer)
             PlayerInfo::setServerLanguage(language);
