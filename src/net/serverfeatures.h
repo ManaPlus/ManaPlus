@@ -68,8 +68,6 @@ class ServerFeatures notfinal
 
         virtual bool haveCreateCharGender() const = 0;
 
-        virtual bool haveCards() const = 0;
-
         virtual bool haveTalkPet() const = 0;
 
         virtual bool haveMovePet() const = 0;

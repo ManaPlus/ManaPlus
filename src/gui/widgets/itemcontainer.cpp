@@ -46,6 +46,7 @@
 #include "input/inputmanager.h"
 
 #include "net/inventoryhandler.h"
+#include "net/net.h"
 #include "net/npchandler.h"
 #include "net/serverfeatures.h"
 #include "net/tradehandler.h"
@@ -797,7 +798,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         if (src == DragDropSource::Inventory
             && dst == DragDropSource::Inventory)
         {
-            if (!serverFeatures->haveCards())
+            if (Net::getNetworkType() == ServerType::TMWATHENA)
                 return;
             const int index = getSlotIndex(event.getX(), event.getY());
             if (index == Inventory::NO_SLOT_INDEX)
