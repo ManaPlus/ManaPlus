@@ -297,8 +297,12 @@ Being *ActorManager::createBeing(const BeingId id,
                 localPlayer->checkNewName(being);
             break;
         case ActorType::Monster:
-            if (serverFeatures && serverFeatures->haveMonsterName())
+#ifdef TMWA_SUPPORT
+            if (Net::getNetworkType() == ServerType::EATHENA)
+#endif  // TMWA_SUPPORT
+            {
                 beingHandler->requestNameById(id);
+            }
             break;
         case ActorType::Portal:
             if (beingHandler &&

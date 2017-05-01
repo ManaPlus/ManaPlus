@@ -52,8 +52,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveMonsterAttackRange() const override final;
 
-        bool haveMonsterName() const override final A_CONST;
-
         bool haveEmailOnRegister() const override final A_CONST;
 
         bool haveEmailOnDelete() const override final A_CONST;

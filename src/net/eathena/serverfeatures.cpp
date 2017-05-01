@@ -101,11 +101,6 @@ bool ServerFeatures::haveCharRename() const
     return true;
 }
 
-bool ServerFeatures::haveMonsterName() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveBankApi() const
 {
     return true;
