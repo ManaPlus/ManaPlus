@@ -67,6 +67,7 @@
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
 #include "net/inventoryhandler.h"
+#include "net/net.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
@@ -931,10 +932,16 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
     else
     {
         std::string str;
-        if (serverFeatures->haveItemColors())
-            str = itemInfo.getName(color);
-        else
+#ifdef TMWA_SUPPORT
+        if (Net::getNetworkType() == ServerType::TMWATHENA)
+        {
             str = itemInfo.getName();
+        }
+        else
+#endif  // TMWA_SUPPORT
+        {
+            str = itemInfo.getName(color);
+        }
 
         if (config.getBoolValue("showpickupchat") && localChatTab)
         {

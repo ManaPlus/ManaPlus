@@ -37,6 +37,7 @@
 
 #include "resources/map/map.h"
 
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "debug.h"
@@ -142,10 +143,16 @@ const ItemInfo &FloorItem::getInfo() const
 std::string FloorItem::getName() const
 {
     const ItemInfo &info = ItemDB::get(mItemId);
-    if (serverFeatures->haveItemColors())
-        return info.getName(mColor);
-    else
+#ifdef TMWA_SUPPORT
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
+    {
         return info.getName();
+    }
+    else
+#endif  // TMWA_SUPPORT
+    {
+        return info.getName(mColor);
+    }
 }
 
 void FloorItem::draw(Graphics *const graphics,

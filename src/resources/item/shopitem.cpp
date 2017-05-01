@@ -26,6 +26,7 @@
 
 #include "utils/stringutils.h"
 
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "resources/db/unitsdb.h"
@@ -96,10 +97,12 @@ ShopItem::~ShopItem()
 
 void ShopItem::updateDisplayName(const int quantity)
 {
-    if (serverFeatures->haveItemColors())
-        mDisplayName = std::string(getInfo().getName(mColor));
-    else
+#ifdef TMWA_SUPPORT
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
         mDisplayName = std::string(getInfo().getName());
+    else
+#endif  // TMWA_SUPPORT
+        mDisplayName = std::string(getInfo().getName(mColor));
     if (mPrice)
     {
         mDisplayName.append(" (").append(

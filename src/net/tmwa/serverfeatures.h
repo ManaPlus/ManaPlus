@@ -48,8 +48,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveMove3() const override final;
 
-        bool haveItemColors() const override final A_CONST;
-
         bool haveAccountOtherGender() const override final A_CONST;
 
         bool haveCharOtherGender() const override final;

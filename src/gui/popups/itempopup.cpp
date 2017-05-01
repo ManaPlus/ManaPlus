@@ -50,6 +50,7 @@
 #include "resources/loaders/imageloader.h"
 
 #include "net/beinghandler.h"
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "utils/translation/podict.h"
@@ -151,17 +152,19 @@ void ItemPopup::setItem(const Item *const item,
         mLastName = ii.getName();
         mLastColor = item->getColor();
         mLastId = item->getId();
-        if (serverFeatures->haveItemColors())
+#ifdef TMWA_SUPPORT
+        if (Net::getNetworkType() == ServerType::TMWATHENA)
         {
             mItemName->setCaption(strprintf("%s (+%u), %d",
-                ii.getName(item->getColor()).c_str(),
+                ii.getName().c_str(),
                 CAST_U32(item->getRefine()),
                 ii.getId()));
         }
         else
+#endif  // TMWA_SUPPORT
         {
             mItemName->setCaption(strprintf("%s (+%u), %d",
-                ii.getName().c_str(),
+                ii.getName(item->getColor()).c_str(),
                 CAST_U32(item->getRefine()),
                 ii.getId()));
         }
@@ -219,17 +222,19 @@ void ItemPopup::setItem(const ItemInfo &item,
     mLastColor = color;
     mLastId = id;
 
-    if (serverFeatures->haveItemColors())
-    {
-        mItemName->setCaption(strprintf("%s, %d",
-            item.getName(color).c_str(), id));
-        mItemDesc->setTextWrapped(item.getDescription(color), 196);
-    }
-    else
+#ifdef TMWA_SUPPORT
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
     {
         mItemName->setCaption(strprintf("%s, %d",
             item.getName().c_str(), id));
         mItemDesc->setTextWrapped(item.getDescription(), 196);
+    }
+    else
+#endif  // TMWA_SUPPORT
+    {
+        mItemName->setCaption(strprintf("%s, %d",
+            item.getName(color).c_str(), id));
+        mItemDesc->setTextWrapped(item.getDescription(color), 196);
     }
 
     mItemName->adjustSize();

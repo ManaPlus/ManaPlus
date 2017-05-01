@@ -34,6 +34,7 @@
 
 #include "resources/loaders/imageloader.h"
 
+#include "net/net.h"
 #include "net/serverfeatures.h"
 
 #include "utils/delete2.h"
@@ -139,10 +140,16 @@ Image *Item::getImage(const int id,
 std::string Item::getName() const
 {
     const ItemInfo &info = ItemDB::get(mId);
-    if (serverFeatures->haveItemColors())
-        return info.getName(mColor);
-    else
+#ifdef TMWA_SUPPORT
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
+    {
         return info.getName();
+    }
+    else
+#endif  // TWMA_SUPPORT
+    {
+        return info.getName(mColor);
+    }
 }
 
 void Item::setCard(const int index, const int id)
@@ -189,6 +196,6 @@ void Item::setOptions(const ItemOptionsList *const options)
 
 void Item::updateColor()
 {
-    if (serverFeatures && serverFeatures->haveItemColors())
+    if (Net::getNetworkType() == ServerType::EATHENA)
         setId(mId, ItemColorManager::getColorFromCards(&mCards[0]));
 }

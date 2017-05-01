@@ -69,11 +69,6 @@ bool ServerFeatures::haveMove3() const
     return tmwServerVersion >= 0x0f0512 && tmwServerVersion <= 0xf0706;
 }
 
-bool ServerFeatures::haveItemColors() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveAccountOtherGender() const
 {
     return false;
