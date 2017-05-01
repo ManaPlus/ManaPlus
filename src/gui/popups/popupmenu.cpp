@@ -3141,7 +3141,7 @@ void PopupMenu::showMuteCommands()
     mBrowserBox->addRow(strprintf(_("Mute %s"),
         mName.c_str()));
     if (mBeingId != BeingId_zero &&
-        serverFeatures->haveMute())
+        Net::getNetworkType() == ServerType::EATHENA)
     {
         mBrowserBox->addRow("mute_+1",
             // TRANSLATORS: popup menu item

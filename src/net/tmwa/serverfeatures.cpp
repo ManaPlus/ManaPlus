@@ -129,11 +129,6 @@ bool ServerFeatures::haveServerWarpNames() const
     return false;
 }
 
-bool ServerFeatures::haveMute() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveTeamId() const
 {
     return true;

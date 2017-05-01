@@ -72,8 +72,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveServerWarpNames() const override final;
 
-        bool haveMute() const override final A_CONST;
-
         bool haveTeamId() const override final A_CONST;
 
         bool haveExtendedRiding() const override final;
