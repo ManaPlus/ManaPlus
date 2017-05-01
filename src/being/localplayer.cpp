@@ -2755,7 +2755,7 @@ void LocalPlayer::updateStatus() const
     if (serverFeatures->havePlayerStatusUpdate() && mEnableAdvert)
     {
         uint8_t status = 0;
-        if (!serverFeatures->haveVending())
+        if (Net::getNetworkType() == ServerType::TMWATHENA)
         {
             if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
                 status |= BeingFlag::SHOP;

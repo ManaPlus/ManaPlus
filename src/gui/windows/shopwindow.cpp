@@ -70,6 +70,7 @@
 #endif  // TMWA_SUPPORT
 #include "net/buyingstorehandler.h"
 #include "net/vendinghandler.h"
+#include "net/net.h"
 #include "net/serverfeatures.h"
 #ifdef TMWA_SUPPORT
 #include "net/tradehandler.h"
@@ -140,7 +141,7 @@ ShopWindow::ShopWindow() :
     mSellShopSize(0),
     mBuyShopSize(0),
     isBuySelected(true),
-    mHaveVending(serverFeatures->haveVending()),
+    mHaveVending(Net::getNetworkType() == ServerType::EATHENA),
     mEnableBuyingStore(false),
     mEnableVending(false)
 {

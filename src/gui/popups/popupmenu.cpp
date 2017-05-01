@@ -2705,7 +2705,8 @@ void PopupMenu::addBuySell(const Being *const being)
     if (player_relations.getDefault() & PlayerRelation::TRADE)
     {
         mBrowserBox->addRow("##3---");
-        const bool haveVending = serverFeatures->haveVending();
+        const bool haveVending =
+            (Net::getNetworkType() == ServerType::EATHENA);
         if (being->isSellShopEnabled())
         {
             // TRANSLATORS: popup menu item

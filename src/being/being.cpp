@@ -3321,8 +3321,11 @@ bool Being::updateFromCache() restrict2
         if (mAdvanced)
         {
             const int flags = entry->getFlags();
-            if (serverFeatures && !serverFeatures->haveVending())
+            if (serverFeatures &&
+                Net::getNetworkType() == ServerType::TMWATHENA)
+            {
                 mShop = ((flags & BeingFlag::SHOP) != 0);
+            }
             mAway = ((flags & BeingFlag::AWAY) != 0);
             mInactive = ((flags & BeingFlag::INACTIVE) != 0);
             if (mShop || mAway || mInactive)
@@ -3330,7 +3333,7 @@ bool Being::updateFromCache() restrict2
         }
         else
         {
-            if (serverFeatures && !serverFeatures->haveVending())
+            if (Net::getNetworkType() == ServerType::TMWATHENA)
                 mShop = false;
             mAway = false;
             mInactive = false;
@@ -3379,7 +3382,7 @@ void Being::addToCache() const restrict2
     if (isAdvanced())
     {
         int flags = 0;
-        if (serverFeatures && !serverFeatures->haveVending() && mShop)
+        if (Net::getNetworkType() == ServerType::TMWATHENA && mShop)
             flags += BeingFlag::SHOP;
         if (mAway)
             flags += BeingFlag::AWAY;
@@ -4613,7 +4616,7 @@ void Being::setState(const uint8_t state) restrict2
     const bool needUpdate = (shop != mShop || away != mAway
         || inactive != mInactive);
 
-    if (!serverFeatures->haveVending())
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
         mShop = shop;
     mAway = away;
     mInactive = inactive;
@@ -5133,12 +5136,14 @@ void Being::enableShop(const bool b) restrict2
 
 bool Being::isBuyShopEnabled() const restrict2
 {
-    return mShop && (!serverFeatures->haveVending() || !mBuyBoard.empty());
+    return mShop && (Net::getNetworkType() == ServerType::TMWATHENA ||
+        !mBuyBoard.empty());
 }
 
 bool Being::isSellShopEnabled() const restrict2
 {
-    return mShop && (!serverFeatures->haveVending() || !mSellBoard.empty());
+    return mShop && (Net::getNetworkType() == ServerType::TMWATHENA ||
+        !mSellBoard.empty());
 }
 
 void Being::serverRemove() restrict2 noexcept2

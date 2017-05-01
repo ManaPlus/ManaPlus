@@ -116,11 +116,6 @@ bool ServerFeatures::haveCreateCharGender() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveVending() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveCart() const
 {
     return true;

@@ -703,7 +703,7 @@ impHandler(buy)
         return false;
     const std::string args = event.args;
     Being *being = findBeing(args, false);
-    if (!being && !serverFeatures->haveVending())
+    if (!being && Net::getNetworkType() == ServerType::TMWATHENA)
     {
         if (whoIsOnline)
         {
@@ -733,7 +733,7 @@ impHandler(buy)
     }
     else if (being->getType() == ActorType::Player)
     {
-        if (vendingHandler && serverFeatures->haveVending())
+        if (vendingHandler && Net::getNetworkType() == ServerType::EATHENA)
             vendingHandler->open(being);
         else if (buySellHandler)
             buySellHandler->requestSellList(being->getName());
@@ -749,7 +749,7 @@ impHandler(sell)
 
     const std::string args = event.args;
     Being *being = findBeing(args, false);
-    if (!being && !serverFeatures->haveVending())
+    if (!being && Net::getNetworkType() == ServerType::TMWATHENA)
     {
         if (whoIsOnline)
         {
@@ -779,7 +779,7 @@ impHandler(sell)
     }
     else if (being->getType() == ActorType::Player)
     {
-        if (buyingStoreHandler && serverFeatures->haveVending())
+        if (buyingStoreHandler && Net::getNetworkType() == ServerType::EATHENA)
             buyingStoreHandler->open(being);
         else if (buySellHandler)
             buySellHandler->requestBuyList(being->getName());

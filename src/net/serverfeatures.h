@@ -68,8 +68,6 @@ class ServerFeatures notfinal
 
         virtual bool haveCreateCharGender() const = 0;
 
-        virtual bool haveVending() const = 0;
-
         virtual bool haveCart() const = 0;
 
         virtual bool haveCards() const = 0;
