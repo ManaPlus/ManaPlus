@@ -71,11 +71,6 @@ bool ServerFeatures::haveMove3() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveAccountOtherGender() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveCharOtherGender() const
 {
     return true;

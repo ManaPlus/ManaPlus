@@ -64,7 +64,6 @@ RegisterDialog::RegisterDialog(LoginData &data) :
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
     mMaleButton(nullptr),
     mFemaleButton(nullptr),
-    mOtherButton(nullptr),
     mWrongDataNoticeListener(new WrongDataNoticeListener)
 {
     setCloseButton(true);
@@ -94,19 +93,8 @@ RegisterDialog::RegisterDialog(LoginData &data) :
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
         // TRANSLATORS: register dialog. button.
         mFemaleButton = new RadioButton(this, _("Female"), "sex", false);
-        if (serverFeatures->haveAccountOtherGender())
-        {
-            // TRANSLATORS: register dialog. button.
-            mOtherButton = new RadioButton(this, _("Other"), "sex", false);
-            placer(0, row, mMaleButton);
-            placer(1, row, mFemaleButton);
-            placer(2, row, mOtherButton);
-        }
-        else
-        {
-            placer(1, row, mMaleButton);
-            placer(2, row, mFemaleButton);
-        }
+        placer(1, row, mMaleButton);
+        placer(2, row, mFemaleButton);
 
         row++;
     }
@@ -271,8 +259,6 @@ void RegisterDialog::action(const ActionEvent &event)
             {
                 if (mFemaleButton && mFemaleButton->isSelected())
                     mLoginData->gender = Gender::FEMALE;
-                else if (mOtherButton && mOtherButton->isSelected())
-                    mLoginData->gender = Gender::OTHER;
                 else
                     mLoginData->gender = Gender::MALE;
             }

@@ -89,7 +89,6 @@ class RegisterDialog final : public Window,
         Button *mCancelButton A_NONNULLPOINTER;
         RadioButton *mMaleButton;
         RadioButton *mFemaleButton;
-        RadioButton *mOtherButton;
         WrongDataNoticeListener *mWrongDataNoticeListener A_NONNULLPOINTER;
 };
 
