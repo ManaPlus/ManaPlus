@@ -139,11 +139,6 @@ bool ServerFeatures::haveExtendedDropsPosition() const
     return false;
 }
 
-bool ServerFeatures::haveServerPets() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveFamily() const
 {
     return false;

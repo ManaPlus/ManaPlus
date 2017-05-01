@@ -1139,7 +1139,7 @@ void PopupMenu::showEmoteType()
     // TRANSLATORS: show emotes for pet
     mBrowserBox->addRow("/setemotetype pet", _("Pet"));
 
-    if (serverFeatures->haveServerPets())
+    if (Net::getNetworkType() == ServerType::EATHENA)
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: show emotes for homuncules
@@ -3399,7 +3399,7 @@ void PopupMenu::addMailCommands()
 
 void PopupMenu::addCatchPetCommands()
 {
-    if (!serverFeatures->haveServerPets())
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
         return;
     // TRANSLATORS: popup menu item
     // TRANSLATORS: catch pet command
