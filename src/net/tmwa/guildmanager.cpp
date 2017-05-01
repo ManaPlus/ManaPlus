@@ -543,4 +543,4 @@ ChatTab *GuildManager::getTab()
     return mTab;
 }
 
-#endif // TMWA_SUPPORT
+#endif  // TMWA_SUPPORT
