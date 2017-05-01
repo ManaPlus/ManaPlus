@@ -3389,7 +3389,7 @@ void PopupMenu::showCraftPopup()
 
 void PopupMenu::addMailCommands()
 {
-    if (!serverFeatures->haveMail())
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
         return;
 
     // TRANSLATORS: popup menu item

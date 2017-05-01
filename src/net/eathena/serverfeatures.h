@@ -76,8 +76,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveExtendedDropsPosition() const override final;
 
-        bool haveMail() const override final;
-
         bool haveServerPets() const override final;
 
         bool haveFamily() const override final;
