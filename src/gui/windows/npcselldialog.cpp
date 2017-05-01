@@ -34,6 +34,7 @@
 #include "gui/widgets/slider.h"
 
 #include "net/buysellhandler.h"
+#include "net/net.h"
 #include "net/npchandler.h"
 #include "net/serverfeatures.h"
 
@@ -46,7 +47,7 @@
 
 NpcSellDialog::NpcSellDialog(const BeingId npcId) :
     SellDialog(IsSell_true,
-        (serverFeatures && serverFeatures->haveAdvancedBuySell()) ?
+        (Net::getNetworkType() == ServerType::EATHENA) ?
         Advanced_true : Advanced_false),
     mNpcId(npcId)
 {

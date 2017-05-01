@@ -50,6 +50,7 @@
 #include "net/buysellhandler.h"
 #include "net/cashshophandler.h"
 #include "net/markethandler.h"
+#include "net/net.h"
 #include "net/vendinghandler.h"
 #include "net/serverfeatures.h"
 #include "net/npchandler.h"
@@ -221,7 +222,7 @@ BuyDialog::BuyDialog(const BeingId npcId,
     mMoney(0),
     mAmountItems(0),
     mMaxItems(0),
-    mAdvanced(serverFeatures ? serverFeatures->haveAdvancedBuySell() : false)
+    mAdvanced(Net::getNetworkType() == ServerType::EATHENA)
 {
     init();
 }
