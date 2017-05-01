@@ -22,8 +22,6 @@
 
 #include "net/ea/adminhandler.h"
 
-#include "game.h"
-
 #include "net/serverfeatures.h"
 
 #include "utils/gmfunctions.h"
@@ -70,19 +68,6 @@ void AdminHandler::createItems(const int id,
 {
     Gm::runCommand("item",
         strprintf("%d %d", id, amount));
-}
-
-void AdminHandler::slide(const int x, const int y) const
-{
-    if (serverFeatures->haveSlide())
-    {
-        Gm::runCommand("slide",
-            strprintf("%d %d", x, y));
-    }
-    else
-    {
-        warp(Game::instance()->getCurrentMapName(), x, y);
-    }
 }
 
 void AdminHandler::spawn(const std::string &name) const

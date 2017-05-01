@@ -134,11 +134,6 @@ bool ServerFeatures::haveExtendedRiding() const
     return false;
 }
 
-bool ServerFeatures::haveSlide() const
-{
-    return false;
-}
-
 bool ServerFeatures::haveExtendedDropsPosition() const
 {
     return false;

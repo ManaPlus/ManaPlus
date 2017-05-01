@@ -22,6 +22,8 @@
 
 #include "net/tmwa/adminhandler.h"
 
+#include "game.h"
+
 #include "net/tmwa/messageout.h"
 #include "net/tmwa/protocolout.h"
 
@@ -285,6 +287,11 @@ void AdminHandler::breakGuild(const std::string &name A_UNUSED) const
 
 void AdminHandler::guildRecall(const std::string &name A_UNUSED) const
 {
+}
+
+void AdminHandler::slide(const int x, const int y) const
+{
+    warp(Game::instance()->getCurrentMapName(), x, y);
 }
 
 }  // namespace TmwAthena

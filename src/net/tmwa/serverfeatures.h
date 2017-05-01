@@ -74,8 +74,6 @@ class ServerFeatures final : public Net::ServerFeatures
 
         bool haveExtendedRiding() const override final A_CONST;
 
-        bool haveSlide() const override final A_CONST;
-
         bool haveExtendedDropsPosition() const override final A_CONST;
 
         bool haveSecureTrades() const override final A_CONST;

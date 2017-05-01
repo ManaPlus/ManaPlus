@@ -136,11 +136,6 @@ bool ServerFeatures::haveExtendedRiding() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveSlide() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveExtendedDropsPosition() const
 {
     return serverVersion >= 12;

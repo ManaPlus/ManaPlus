@@ -367,4 +367,10 @@ void AdminHandler::guildRecall(const std::string &name) const
     Gm::runCommand("guildrecall", name);
 }
 
+void AdminHandler::slide(const int x, const int y) const
+{
+    Gm::runCommand("slide",
+        strprintf("%d %d", x, y));
+}
+
 }  // namespace EAthena
