@@ -38,7 +38,6 @@
 
 #include "net/chathandler.h"
 #include "net/packetlimiter.h"
-#include "net/serverfeatures.h"
 
 #include "utils/delete2.h"
 #include "utils/timer.h"

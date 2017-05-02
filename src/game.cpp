@@ -106,7 +106,6 @@
 #include "net/gamehandler.h"
 #include "net/net.h"
 #include "net/packetcounters.h"
-#include "net/serverfeatures.h"
 
 #include "particle/particleengine.h"
 

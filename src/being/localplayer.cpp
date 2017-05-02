@@ -64,6 +64,8 @@
 
 #include "gui/widgets/tabs/chat/whispertab.h"
 
+#include "listeners/awaylistener.h"
+
 #include "net/beinghandler.h"
 #include "net/chathandler.h"
 #include "net/inventoryhandler.h"
@@ -83,11 +85,7 @@
 #include "resources/map/speciallayer.h"
 #include "resources/map/walklayer.h"
 
-#include "listeners/awaylistener.h"
-
 #include "resources/sprite/animatedsprite.h"
-
-#include "net/net.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

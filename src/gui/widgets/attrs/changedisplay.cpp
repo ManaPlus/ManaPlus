@@ -32,7 +32,6 @@
 
 #include "net/net.h"
 #include "net/playerhandler.h"
-#include "net/serverfeatures.h"
 
 #include "utils/gettext.h"
 

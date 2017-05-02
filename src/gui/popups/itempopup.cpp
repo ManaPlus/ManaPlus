@@ -51,7 +51,6 @@
 
 #include "net/beinghandler.h"
 #include "net/net.h"
-#include "net/serverfeatures.h"
 
 #include "utils/translation/podict.h"
 

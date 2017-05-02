@@ -39,7 +39,6 @@
 #include "gui/windows/itemamountwindow.h"
 
 #include "net/net.h"
-#include "net/serverfeatures.h"
 
 #include "resources/inventory/inventory.h"
 

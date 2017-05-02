@@ -26,8 +26,6 @@
 
 #include "const/gui/chat.h"
 
-#include "net/serverfeatures.h"
-
 #include "net/ea/chatrecv.h"
 
 #include "net/tmwa/messageout.h"

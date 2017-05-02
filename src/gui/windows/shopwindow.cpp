@@ -71,7 +71,6 @@
 #include "net/buyingstorehandler.h"
 #include "net/vendinghandler.h"
 #include "net/net.h"
-#include "net/serverfeatures.h"
 #ifdef TMWA_SUPPORT
 #include "net/tradehandler.h"
 #endif  // TMWA_SUPPORT

@@ -48,7 +48,6 @@
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
-#include "net/serverfeatures.h"
 #include "net/tradehandler.h"
 
 #include "utils/delete2.h"

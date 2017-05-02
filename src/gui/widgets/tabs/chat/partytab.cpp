@@ -36,7 +36,6 @@
 
 #include "net/net.h"
 #include "net/partyhandler.h"
-#include "net/serverfeatures.h"
 
 #include "utils/gettext.h"
 

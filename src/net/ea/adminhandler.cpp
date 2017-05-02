@@ -22,8 +22,6 @@
 
 #include "net/ea/adminhandler.h"
 
-#include "net/serverfeatures.h"
-
 #include "utils/gmfunctions.h"
 #include "utils/stringutils.h"
 

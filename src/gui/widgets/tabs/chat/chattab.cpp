@@ -45,7 +45,6 @@
 
 #include "net/chathandler.h"
 #include "net/net.h"
-#include "net/serverfeatures.h"
 
 #include "utils/chatutils.h"
 #include "utils/delete2.h"

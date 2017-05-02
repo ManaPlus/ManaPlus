@@ -52,7 +52,6 @@
 #include "net/markethandler.h"
 #include "net/net.h"
 #include "net/vendinghandler.h"
-#include "net/serverfeatures.h"
 #include "net/npchandler.h"
 
 #include "resources/iteminfo.h"

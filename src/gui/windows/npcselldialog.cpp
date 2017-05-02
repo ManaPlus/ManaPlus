@@ -36,7 +36,6 @@
 #include "net/buysellhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
-#include "net/serverfeatures.h"
 
 #include "resources/iteminfo.h"
 

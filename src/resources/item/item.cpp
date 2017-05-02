@@ -35,7 +35,6 @@
 #include "resources/loaders/imageloader.h"
 
 #include "net/net.h"
-#include "net/serverfeatures.h"
 
 #include "utils/delete2.h"
 

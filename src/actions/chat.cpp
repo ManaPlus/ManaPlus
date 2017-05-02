@@ -37,7 +37,6 @@
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
-#include "net/serverfeatures.h"
 
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"

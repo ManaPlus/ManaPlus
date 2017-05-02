@@ -72,7 +72,6 @@
 
 #include "net/chathandler.h"
 #include "net/net.h"
-#include "net/serverfeatures.h"
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"

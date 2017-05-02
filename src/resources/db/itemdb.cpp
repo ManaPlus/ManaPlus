@@ -40,7 +40,6 @@
 #include "resources/sprite/spritereference.h"
 
 #include "net/net.h"
-#include "net/serverfeatures.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"

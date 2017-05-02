@@ -54,7 +54,6 @@
 #include "resources/item/item.h"
 
 #include "net/net.h"
-#include "net/serverfeatures.h"
 #include "net/tradehandler.h"
 
 #include "utils/delete2.h"
