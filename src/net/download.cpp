@@ -37,6 +37,8 @@
 const char *DOWNLOAD_ERROR_MESSAGE_THREAD
     = "Could not create download thread!";
 
+extern volatile bool isTerminate;
+
 enum
 {
     OPTIONS_NONE = 0,
@@ -270,11 +272,14 @@ int Download::downloadThread(void *ptr)
         d->mUrlQueue.pop();
 
         logger->log_r("selected url: %s", d->mUrl.c_str());
-        while (attempts < 3 && !complete && !d->mOptions.cancel)
+        while (attempts < 3 &&
+               !complete &&
+               !d->mOptions.cancel &&
+               isTerminate == false)
         {
             d->mUpdateFunction(d->mPtr, DownloadStatus::Starting, 0, 0);
 
-            if (d->mOptions.cancel)
+            if (d->mOptions.cancel || isTerminate == true)
             {
                 // need terminate thread?
                 d->mThread = nullptr;
@@ -282,7 +287,7 @@ int Download::downloadThread(void *ptr)
             }
             d->mCurl = curl_easy_init();
 
-            if (d->mCurl && !d->mOptions.cancel)
+            if (d->mCurl && !d->mOptions.cancel && isTerminate == false)
             {
                 FILE *file = nullptr;
 
@@ -337,8 +342,9 @@ int Download::downloadThread(void *ptr)
                     secureCurl(d->mCurl);
                 }
 
-                if ((res = curl_easy_perform(d->mCurl)) != 0
-                    && !d->mOptions.cancel)
+                if ((res = curl_easy_perform(d->mCurl)) != 0 &&
+                    !d->mOptions.cancel &&
+                    isTerminate == false)
                 {
                     PRAGMA45(GCC diagnostic push)
                     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
@@ -364,7 +370,7 @@ int Download::downloadThread(void *ptr)
                         continue;
                     }
 
-                    if (d->mOptions.cancel)
+                    if (d->mOptions.cancel || isTerminate == true)
                         break;
 
 //                    d->mUpdateFunction(d->mPtr, DownloadStatus::Error, 0, 0);
@@ -429,7 +435,7 @@ int Download::downloadThread(void *ptr)
 
                         // Any existing file with this name is deleted first,
                         // otherwise the rename will fail on Windows.
-                        if (!d->mOptions.cancel)
+                        if (!d->mOptions.cancel && isTerminate == false)
                         {
                             if (d->mIsXml)
                             {
@@ -469,7 +475,7 @@ int Download::downloadThread(void *ptr)
                 d->mCurl = nullptr;
             }
 
-            if (d->mOptions.cancel)
+            if (d->mOptions.cancel || isTerminate == true)
             {
                 // need ternibate thread?
                 d->mThread = nullptr;
@@ -484,7 +490,7 @@ int Download::downloadThread(void *ptr)
 
     d->mThread = nullptr;
 
-    if (d->mOptions.cancel)
+    if (d->mOptions.cancel || isTerminate == true)
     {
         // Nothing to do...
     }

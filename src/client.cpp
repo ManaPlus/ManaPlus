@@ -208,6 +208,7 @@ time_t start_time;
 unsigned int mLastHost = 0;
 unsigned long mSearchHash = 0;
 int textures_count = 0;
+volatile bool isTerminate = false;
 
 namespace
 {
@@ -619,6 +620,7 @@ void Client::gameClear()
 {
     if (logger)
         logger->log1("Quitting1");
+    isTerminate = true;
     config.removeListeners(this);
 
     delete2(assertListener);
