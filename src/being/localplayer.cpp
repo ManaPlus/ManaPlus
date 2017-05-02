@@ -784,9 +784,6 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     if (mTarget != target)
         setTarget(target);
 
-    const int dist_x = target->mX - mX;
-    const int dist_y = target->mY - mY;
-
     // Must be standing or sitting or casting to attack
     if (mAction != BeingAction::STAND &&
         mAction != BeingAction::SIT &&
@@ -796,6 +793,9 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     }
 
 #ifdef TMWA_SUPPORT
+    const int dist_x = target->mX - mX;
+    const int dist_y = target->mY - mY;
+
     if (Net::getNetworkType() == ServerType::TMWATHENA)
     {
         if (abs(dist_y) >= abs(dist_x))
