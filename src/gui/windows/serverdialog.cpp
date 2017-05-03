@@ -391,6 +391,7 @@ void ServerDialog::logic()
         MutexLocker tempLock(&mMutex);
         if (mDownloadStatus == ServerDialogDownloadStatus::COMPLETE)
         {
+            loadServers();
             mDownloadStatus = ServerDialogDownloadStatus::OVER;
             mDescription->setCaption(std::string());
         }
@@ -783,7 +784,6 @@ int ServerDialog::downloadUpdate(void *ptr,
 
     if (finished)
     {
-        sd->loadServers();
         MutexLocker lock1(&sd->mMutex);
         sd->mDownloadStatus = ServerDialogDownloadStatus::COMPLETE;
     }
