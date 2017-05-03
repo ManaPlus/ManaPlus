@@ -329,6 +329,14 @@ icccheck:
   variables:
     PACKAGES: imagemagick
 
+nsiqcppstyle:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/nsiqcppstyle.sh
+  <<: *job-push
+  variables:
+    PACKAGES: "git python grep"
+
 # tests
 
 # disabled due memory issue. Probably out of memory of gcc issues
