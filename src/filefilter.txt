@@ -1,6 +1,5 @@
 ~ RULE_3_1_A_do_not_start_filename_with_underbar
 ~ RULE_3_2_CD_do_not_use_special_characters_in_filename
-~ RULE_3_2_F_use_representitive_classname_for_cpp_filename
 ~ RULE_3_2_H_do_not_use_uppercase_for_c_filename
 ~ RULE_4_1_A_B_use_space_for_indentation
 ~ RULE_4_1_B_indent_each_enum_item_in_enum_block
@@ -17,10 +16,7 @@
 ~ RULE_4_5_A_matching_braces_inside_of_function_should_be_located_same_column
 ~ RULE_6_1_A_do_not_omit_function_parameter_names
 ~ RULE_6_4_B_initialize_first_item_of_enum
-~ RULE_6_5_B_do_not_use_lowercase_for_macro_constants
-~ RULE_7_1_B_A_do_not_use_double_assignment
 ~ RULE_7_2_B_do_not_use_goto_statement
 ~ RULE_8_1_A_provide_file_info_comment
 ~ RULE_9_1_A_do_not_use_hardcorded_include_path
-~ RULE_9_2_D_use_reentrant_function
 
