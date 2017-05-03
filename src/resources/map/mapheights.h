@@ -39,8 +39,10 @@ class MapHeights final : public MemoryCounter
         void setHeight(const int x, const int y, const uint8_t height);
 
         uint8_t getHeight(const int x, const int y) const
-        { return x < mWidth && y < mHeight ? mTiles[x + y * mWidth]
-            : CAST_U8(0U); }
+        {
+            return x < mWidth &&
+                y < mHeight ? mTiles[x + y * mWidth] : CAST_U8(0U);
+        }
 
         int calcMemoryLocal() const override final;
 

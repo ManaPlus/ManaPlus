@@ -375,8 +375,10 @@ class Widget notfinal : public Widget2
           * @see setVisible
           */
         bool isVisible() const A_WARN_UNUSED
-        { return mVisible == Visible_true &&
-            (!mParent || mParent->isVisible()); }
+        {
+            return mVisible == Visible_true &&
+                (!mParent || mParent->isVisible());
+        }
 
         /**
           * Sets the base color of the widget.
