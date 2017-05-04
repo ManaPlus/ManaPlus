@@ -54,9 +54,9 @@ namespace VirtFs
 {
     void init(const std::string &restrict name)
     {
+        updateDirSeparator();
         VirtFsDir::init(name);
         VirtFsZip::init();
-        updateDirSeparator();
     }
 
     void updateDirSeparator()
