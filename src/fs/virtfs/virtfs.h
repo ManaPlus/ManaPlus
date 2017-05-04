@@ -32,7 +32,7 @@
 namespace VirtFs
 {
     struct File;
-    struct VirtFsEntry;
+    struct FsEntry;
     struct VirtList;
 
     void init(const std::string &restrict name);
@@ -81,12 +81,12 @@ namespace VirtFs
     bool mountDirInternal(const std::string &restrict newDir,
                           const Append append);
     bool unmountDirInternal(std::string oldDir);
-    std::vector<VirtFsEntry*> &getEntries();
-    VirtFsEntry *searchEntryByRootInternal(const std::string &restrict
-                                           root);
-    VirtFsEntry *searchEntryInternal(const std::string &restrict root,
-                                     const FsEntryTypeT type);
-    void addEntry(VirtFsEntry *const entry,
+    std::vector<FsEntry*> &getEntries();
+    FsEntry *searchEntryByRootInternal(const std::string &restrict
+                                       root);
+    FsEntry *searchEntryInternal(const std::string &restrict root,
+                                 const FsEntryTypeT type);
+    void addEntry(FsEntry *const entry,
                   const Append append);
 #ifdef UNITTESTS
     bool mountDirSilent2(std::string newDir,

@@ -18,23 +18,36 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfs/virtfsentry.h"
+#ifndef UTILS_VIRTFSENTRY_H
+#define UTILS_VIRTFSENTRY_H
 
-#include "debug.h"
+#include "enums/fs/fsentrytype.h"
+
+#include <string>
+
+#include "localconsts.h"
 
 namespace VirtFs
 {
 
-VirtFsEntry::VirtFsEntry(const FsEntryTypeT &type0,
-                         VirtFsFuncs *restrict const funcs0) :
-    root(),
-    type(type0),
-    funcs(funcs0)
-{
-}
+struct VirtFsFuncs;
 
-VirtFsEntry::~VirtFsEntry()
+struct FsEntry notfinal
 {
-}
+    FsEntry(const FsEntryTypeT &type0,
+            VirtFsFuncs *restrict const funcs);
+
+    A_DELETE_COPY(FsEntry)
+
+    ~FsEntry();
+
+    std::string root;
+
+    FsEntryTypeT type;
+
+    VirtFsFuncs *funcs;
+};
 
 }  // namespace VirtFs
+
+#endif  // UTILS_VIRTFSENTRY_H

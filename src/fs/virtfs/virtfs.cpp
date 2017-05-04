@@ -49,7 +49,7 @@ namespace VirtFs
 {
     namespace
     {
-        std::vector<VirtFsEntry*> mEntries;
+        std::vector<FsEntry*> mEntries;
     }  // namespace
 
     void init(const std::string &restrict name)
@@ -83,14 +83,14 @@ namespace VirtFs
         return VirtFsDir::getUserDir();
     }
 
-    std::vector<VirtFsEntry*> &getEntries()
+    std::vector<FsEntry*> &getEntries()
     {
         return mEntries;
     }
 
-    VirtFsEntry *searchEntryByRootInternal(const std::string &restrict root)
+    FsEntry *searchEntryByRootInternal(const std::string &restrict root)
     {
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
             if ((*it)->root == root)
                 return *it;
@@ -98,12 +98,12 @@ namespace VirtFs
         return nullptr;
     }
 
-    VirtFsEntry *searchEntryInternal(const std::string &restrict root,
-                                     const FsEntryTypeT type)
+    FsEntry *searchEntryInternal(const std::string &restrict root,
+                                 const FsEntryTypeT type)
     {
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            const VirtFsEntry *const entry = *it;
+            const FsEntry *const entry = *it;
             if (entry->root == root &&
                 entry->type == type)
             {
@@ -127,9 +127,9 @@ namespace VirtFs
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
 
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             if (entry->funcs->exists(entry, name, rootDir) == true)
                 return true;
         }
@@ -152,9 +152,9 @@ namespace VirtFs
             rootDir += dirSeparator;
         StringVect &names = list->names;
 
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             entry->funcs->enumerate(entry, rootDir, names);
         }
 
@@ -176,9 +176,9 @@ namespace VirtFs
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
 
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             entry->funcs->getFiles(entry, rootDir, list);
         }
     }
@@ -198,9 +198,9 @@ namespace VirtFs
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
 
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             entry->funcs->getFilesWithDir(entry, rootDir, list);
         }
     }
@@ -221,9 +221,9 @@ namespace VirtFs
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
 
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             entry->funcs->getDirs(entry, rootDir, list);
         }
     }
@@ -241,9 +241,9 @@ namespace VirtFs
         if (findLast(dirName, std::string(dirSeparator)) == false)
             dirName += dirSeparator;
 
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             bool isDirFlag(false);
             if (entry->funcs->isDirectory(entry, dirName, isDirFlag) == true)
             {
@@ -272,9 +272,9 @@ namespace VirtFs
                 filename.c_str());
             return nullptr;
         }
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             File *const file = entry->funcs->openRead(entry, filename);
             if (file != nullptr)
                 return file;
@@ -291,9 +291,9 @@ namespace VirtFs
                 filename.c_str());
             return nullptr;
         }
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             File *const file = entry->funcs->openWrite(entry, filename);
             if (file != nullptr)
                 return file;
@@ -310,9 +310,9 @@ namespace VirtFs
                 filename.c_str());
             return nullptr;
         }
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             File *const file = entry->funcs->openAppend(entry, filename);
             if (file != nullptr)
                 return file;
@@ -325,7 +325,7 @@ namespace VirtFs
         return VirtFsDir::setWriteDir(newDir);
     }
 
-    void addEntry(VirtFsEntry *const entry,
+    void addEntry(FsEntry *const entry,
                   const Append append)
     {
         if (append == Append_true)
@@ -345,7 +345,7 @@ namespace VirtFs
         std::string rootDir = newDir;
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
-        const VirtFsEntry *const entry = searchEntryByRootInternal(rootDir);
+        const FsEntry *const entry = searchEntryByRootInternal(rootDir);
         if (entry != nullptr)
         {
             reportAlways("VirtFs::addToSearchPath already exists: %s",
@@ -402,9 +402,9 @@ namespace VirtFs
     {
         if (findLast(oldDir, std::string(dirSeparator)) == false)
             oldDir += dirSeparator;
-        FOR_EACH (std::vector<VirtFsEntry*>::iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             if (entry->root == oldDir &&
                 entry->type == FsEntryType::Dir)
             {
@@ -496,9 +496,9 @@ namespace VirtFs
             reportAlways("Called removeFromSearchPath without zip archive");
             return false;
         }
-        FOR_EACH (std::vector<VirtFsEntry*>::iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             if (entry->root == oldDir &&
                 entry->type == FsEntryType::Zip)
             {
@@ -530,9 +530,9 @@ namespace VirtFs
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
 
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             std::string realDir;
             if (entry->funcs->getRealDir(entry,
                 fileName,
@@ -559,9 +559,9 @@ namespace VirtFs
     {
         VirtFsDir::deinit();
         VirtFsZip::deinit();
-        FOR_EACH (std::vector<VirtFsEntry*>::iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             if (entry->type == FsEntryType::Dir)
                 delete static_cast<DirEntry*>(entry);
             else if (entry->type == FsEntryType::Zip)
@@ -639,9 +639,9 @@ namespace VirtFs
                 filename.c_str());
             return nullptr;
         }
-        FOR_EACH (std::vector<VirtFsEntry*>::const_iterator, it, mEntries)
+        FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            VirtFsEntry *const entry = *it;
+            FsEntry *const entry = *it;
             const char *const buf = entry->funcs->loadFile(entry,
                 filename,
                 fileSize);

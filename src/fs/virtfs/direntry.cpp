@@ -28,7 +28,7 @@ namespace VirtFs
 DirEntry::DirEntry(const std::string &userDir0,
                    const std::string &rootDir,
                    VirtFsFuncs *restrict const funcs0) :
-    VirtFsEntry(FsEntryType::Dir, funcs0),
+    FsEntry(FsEntryType::Dir, funcs0),
     userDir(userDir0)
 {
     root = rootDir;

@@ -31,20 +31,20 @@ namespace VirtFs
 {
 
 struct File;
-struct VirtFsEntry;
+struct FsEntry;
 struct VirtFsFuncs;
 struct VirtList;
 
 namespace VirtFsDir
 {
-    File *openInternal(VirtFsEntry *restrict const entry,
+    File *openInternal(FsEntry *restrict const entry,
                        const std::string &filename,
                        const FILEMTYPE mode);
-    File *openRead(VirtFsEntry *restrict const entry,
+    File *openRead(FsEntry *restrict const entry,
                    const std::string &filename);
-    File *openWrite(VirtFsEntry *restrict const entry,
+    File *openWrite(FsEntry *restrict const entry,
                     const std::string &filename);
-    File *openAppend(VirtFsEntry *restrict const entry,
+    File *openAppend(FsEntry *restrict const entry,
                      const std::string &filename);
     const char *getBaseDir();
     const char *getUserDir();
@@ -52,28 +52,28 @@ namespace VirtFsDir
     void init(const std::string &restrict name);
     void initFuncs(VirtFsFuncs *restrict const ptr);
     void deinit();
-    bool exists(VirtFsEntry *restrict const entry,
+    bool exists(FsEntry *restrict const entry,
                 const std::string &fileName,
                 const std::string &dirName);
-    void enumerate(VirtFsEntry *restrict const entry,
+    void enumerate(FsEntry *restrict const entry,
                    const std::string &dirName,
                    StringVect &names);
-    void getFiles(VirtFsEntry *restrict const entry,
+    void getFiles(FsEntry *restrict const entry,
                   const std::string &dirName,
                   StringVect &names);
-    void getFilesWithDir(VirtFsEntry *restrict const entry,
+    void getFilesWithDir(FsEntry *restrict const entry,
                          const std::string &dirName,
                          StringVect &names);
-    void getDirs(VirtFsEntry *restrict const entry,
+    void getDirs(FsEntry *restrict const entry,
                  const std::string &dirName,
                  StringVect &names);
-    bool isDirectory(VirtFsEntry *restrict const entry,
+    bool isDirectory(FsEntry *restrict const entry,
                      const std::string &dirName,
                      bool &isDirFlag);
     bool isSymbolicLink(std::string name);
     void freeList(VirtList *restrict const handle);
     bool setWriteDir(std::string newDir);
-    bool getRealDir(VirtFsEntry *restrict const entry,
+    bool getRealDir(FsEntry *restrict const entry,
                     const std::string &filename,
                     const std::string &dirName,
                     std::string &realDir);
@@ -94,7 +94,7 @@ namespace VirtFsDir
     int seek(File *restrict const file,
              const uint64_t pos);
     int eof(File *restrict const file);
-    const char *loadFile(VirtFsEntry *restrict const entry,
+    const char *loadFile(FsEntry *restrict const entry,
                          const std::string &restrict fileName,
                          int &restrict fileSize);
 }  // namespace VirtFsDir

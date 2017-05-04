@@ -33,7 +33,7 @@ namespace VirtFs
 {
 
 struct File;
-struct VirtFsEntry;
+struct FsEntry;
 
 struct VirtFsFuncs final
 {
@@ -81,36 +81,36 @@ struct VirtFsFuncs final
     int64_t (*tell) (File *restrict const file);
     int (*seek) (File *restrict const file,
                  const uint64_t pos);
-    bool (*exists) (VirtFsEntry *restrict const entry,
+    bool (*exists) (FsEntry *restrict const entry,
                     const std::string &filename,
                     const std::string &dirName);
-    bool (*getRealDir) (VirtFsEntry *restrict const entry,
+    bool (*getRealDir) (FsEntry *restrict const entry,
                         const std::string &filename,
                         const std::string &dirName,
                         std::string &realDir);
-    void (*enumerate) (VirtFsEntry *restrict const entry,
+    void (*enumerate) (FsEntry *restrict const entry,
                        const std::string &dirName,
                        StringVect &names);
-    void (*getFiles) (VirtFsEntry *restrict const entry,
+    void (*getFiles) (FsEntry *restrict const entry,
                       const std::string &dirName,
                       StringVect &names);
-    void (*getFilesWithDir) (VirtFsEntry *restrict const entry,
+    void (*getFilesWithDir) (FsEntry *restrict const entry,
                              const std::string &dirName,
                              StringVect &names);
-    void (*getDirs) (VirtFsEntry *restrict const entry,
+    void (*getDirs) (FsEntry *restrict const entry,
                      const std::string &dirName,
                      StringVect &names);
-    bool (*isDirectory) (VirtFsEntry *restrict const entry,
+    bool (*isDirectory) (FsEntry *restrict const entry,
                          const std::string &dirName,
                          bool &isDirFlag);
-    File *(*openRead) (VirtFsEntry *restrict const entry,
+    File *(*openRead) (FsEntry *restrict const entry,
                        const std::string &filename);
-    File *(*openWrite) (VirtFsEntry *restrict const entry,
+    File *(*openWrite) (FsEntry *restrict const entry,
                         const std::string &filename);
-    File *(*openAppend) (VirtFsEntry *restrict const entry,
+    File *(*openAppend) (FsEntry *restrict const entry,
                          const std::string &filename);
     int (*eof) (File *restrict const file);
-    const char *(*loadFile) (VirtFsEntry *restrict const entry,
+    const char *(*loadFile) (FsEntry *restrict const entry,
                              const std::string &restrict fileName,
                              int &restrict fileSize);
 

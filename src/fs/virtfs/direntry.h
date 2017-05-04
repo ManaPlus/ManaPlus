@@ -21,14 +21,14 @@
 #ifndef UTILS_VIRTDIRENTRY_H
 #define UTILS_VIRTDIRENTRY_H
 
-#include "fs/virtfs/virtfsentry.h"
+#include "fs/virtfs/fsentry.h"
 
 #include "localconsts.h"
 
 namespace VirtFs
 {
 
-struct DirEntry final : public VirtFsEntry
+struct DirEntry final : public FsEntry
 {
     DirEntry(const std::string &userDir,
                  const std::string &rootDir,

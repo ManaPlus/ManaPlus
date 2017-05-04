@@ -88,7 +88,7 @@ namespace VirtFsZip
 #endif  // USE_SDL2
     }
 
-    bool getRealDir(VirtFsEntry *restrict const entry,
+    bool getRealDir(FsEntry *restrict const entry,
                     const std::string &filename,
                     const std::string &dirName,
                     std::string &realDir)
@@ -117,7 +117,7 @@ namespace VirtFsZip
         return false;
     }
 
-    bool exists(VirtFsEntry *restrict const entry,
+    bool exists(FsEntry *restrict const entry,
                 const std::string &filename,
                 const std::string &dirName)
     {
@@ -139,7 +139,7 @@ namespace VirtFsZip
         return false;
     }
 
-    void enumerate(VirtFsEntry *restrict const entry,
+    void enumerate(FsEntry *restrict const entry,
                    const std::string &dirName,
                    StringVect &names)
     {
@@ -199,7 +199,7 @@ namespace VirtFsZip
         }
     }
 
-    void getFiles(VirtFsEntry *restrict const entry,
+    void getFiles(FsEntry *restrict const entry,
                   const std::string &dirName,
                   StringVect &names)
     {
@@ -294,7 +294,7 @@ namespace VirtFsZip
         }
     }
 
-    void getFilesWithDir(VirtFsEntry *restrict const entry,
+    void getFilesWithDir(FsEntry *restrict const entry,
                          const std::string &dirName,
                          StringVect &names)
     {
@@ -389,7 +389,7 @@ namespace VirtFsZip
         }
     }
 
-    void getDirs(VirtFsEntry *restrict const entry,
+    void getDirs(FsEntry *restrict const entry,
                  const std::string &dirName,
                  StringVect &names)
     {
@@ -484,7 +484,7 @@ namespace VirtFsZip
         }
     }
 
-    bool isDirectory(VirtFsEntry *restrict const entry,
+    bool isDirectory(FsEntry *restrict const entry,
                      const std::string &dirName,
                      bool &isDirFlag)
     {
@@ -507,7 +507,7 @@ namespace VirtFsZip
         delete handle;
     }
 
-    File *openRead(VirtFsEntry *restrict const entry,
+    File *openRead(FsEntry *restrict const entry,
                    const std::string &filename)
     {
         VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
@@ -530,14 +530,14 @@ namespace VirtFsZip
         return nullptr;
     }
 
-    File *openWrite(VirtFsEntry *restrict const entry A_UNUSED,
+    File *openWrite(FsEntry *restrict const entry A_UNUSED,
                     const std::string &filename A_UNUSED)
     {
         reportAlways("VirtFs::openWrite for zip not implemented.");
         return nullptr;
     }
 
-    File *openAppend(VirtFsEntry *restrict const entry A_UNUSED,
+    File *openAppend(FsEntry *restrict const entry A_UNUSED,
                      const std::string &filename A_UNUSED)
     {
         reportAlways("VirtFs::openAppend for zip not implemented.");
@@ -635,7 +635,7 @@ namespace VirtFsZip
         return file->mPos >= file->mSize;
     }
 
-    const char *loadFile(VirtFsEntry *restrict const entry,
+    const char *loadFile(FsEntry *restrict const entry,
                          const std::string &restrict filename,
                          int &restrict fileSize)
     {

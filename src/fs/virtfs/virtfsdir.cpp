@@ -61,7 +61,7 @@ namespace
 
 namespace VirtFsDir
 {
-    File *openInternal(VirtFsEntry *restrict const entry,
+    File *openInternal(FsEntry *restrict const entry,
                        const std::string &filename,
                        const FILEMTYPE mode)
     {
@@ -80,19 +80,19 @@ namespace VirtFsDir
         return file;
     }
 
-    File *openRead(VirtFsEntry *restrict const entry,
+    File *openRead(FsEntry *restrict const entry,
                    const std::string &filename)
     {
         return openInternal(entry, filename, FILEOPEN_FLAG_READ);
     }
 
-    File *openWrite(VirtFsEntry *restrict const entry,
+    File *openWrite(FsEntry *restrict const entry,
                     const std::string &filename)
     {
         return openInternal(entry, filename, FILEOPEN_FLAG_WRITE);
     }
 
-    File *openAppend(VirtFsEntry *restrict const entry,
+    File *openAppend(FsEntry *restrict const entry,
                      const std::string &filename)
     {
         return openInternal(entry, filename, FILEOPEN_FLAG_APPEND);
@@ -167,7 +167,7 @@ namespace VirtFsDir
         return mUserDir.c_str();
     }
 
-    bool getRealDir(VirtFsEntry *restrict const entry,
+    bool getRealDir(FsEntry *restrict const entry,
                     const std::string &filename,
                     const std::string &dirName A_UNUSED,
                     std::string &realDir)
@@ -181,14 +181,14 @@ namespace VirtFsDir
         return false;
     }
 
-    bool exists(VirtFsEntry *restrict const entry,
+    bool exists(FsEntry *restrict const entry,
                 const std::string &fileName,
                 const std::string &dirName A_UNUSED)
     {
         return Files::existsLocal(entry->root + fileName);
     }
 
-    void enumerate(VirtFsEntry *restrict const entry,
+    void enumerate(FsEntry *restrict const entry,
                    const std::string &dirName,
                    StringVect &names)
     {
@@ -230,7 +230,7 @@ namespace VirtFsDir
         }
     }
 
-    bool isDirectory(VirtFsEntry *restrict const entry,
+    bool isDirectory(FsEntry *restrict const entry,
                      const std::string &dirName,
                      bool &isDirFlag)
     {
@@ -457,7 +457,7 @@ namespace VirtFsDir
         return pos < 0 || len < 0 || pos >= len;
     }
 
-    const char *loadFile(VirtFsEntry *restrict const entry,
+    const char *loadFile(FsEntry *restrict const entry,
                          const std::string &restrict filename,
                          int &restrict fileSize)
     {
@@ -520,7 +520,7 @@ namespace VirtFsDir
         return buffer;
     }
 
-    void getFiles(VirtFsEntry *restrict const entry,
+    void getFiles(FsEntry *restrict const entry,
                   const std::string &dirName,
                   StringVect &names)
     {
@@ -569,7 +569,7 @@ namespace VirtFsDir
         }
     }
 
-    void getFilesWithDir(VirtFsEntry *restrict const entry,
+    void getFilesWithDir(FsEntry *restrict const entry,
                          const std::string &dirName,
                          StringVect &names)
     {
@@ -618,7 +618,7 @@ namespace VirtFsDir
         }
     }
 
-    void getDirs(VirtFsEntry *restrict const entry,
+    void getDirs(FsEntry *restrict const entry,
                  const std::string &dirName,
                  StringVect &names)
     {

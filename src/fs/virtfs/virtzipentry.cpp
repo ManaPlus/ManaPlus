@@ -31,7 +31,7 @@ namespace VirtFs
 
 VirtZipEntry::VirtZipEntry(const std::string &restrict archiveName,
                            VirtFsFuncs *restrict const funcs0) :
-    VirtFsEntry(FsEntryType::Zip, funcs0),
+    FsEntry(FsEntryType::Zip, funcs0),
     mHeaders(),
     mDirs()
 {

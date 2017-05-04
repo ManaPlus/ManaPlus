@@ -21,7 +21,7 @@
 #ifndef UTILS_VIRTZIPENTRY_H
 #define UTILS_VIRTZIPENTRY_H
 
-#include "fs/virtfs/virtfsentry.h"
+#include "fs/virtfs/fsentry.h"
 
 #include <vector>
 
@@ -32,7 +32,7 @@ namespace VirtFs
 
 struct ZipLocalHeader;
 
-struct VirtZipEntry final : public VirtFsEntry
+struct VirtZipEntry final : public FsEntry
 {
     VirtZipEntry(const std::string &restrict archiveName,
                  VirtFsFuncs *restrict const funcs);
