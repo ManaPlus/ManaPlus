@@ -35,9 +35,9 @@ namespace VirtFs
 struct File;
 struct FsEntry;
 
-struct VirtFsFuncs final
+struct FsFuncs final
 {
-    VirtFsFuncs() :
+    FsFuncs() :
         close(nullptr),
         read(nullptr),
         write(nullptr),
@@ -66,7 +66,7 @@ struct VirtFsFuncs final
     {
     }
 
-    A_DELETE_COPY(VirtFsFuncs)
+    A_DELETE_COPY(FsFuncs)
 
     int (*close) (File *restrict const file);
     int64_t (*read) (File *restrict const file,

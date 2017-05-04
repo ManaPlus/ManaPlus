@@ -26,7 +26,7 @@ namespace VirtFs
 {
 
 FsEntry::FsEntry(const FsEntryTypeT &type0,
-                 VirtFsFuncs *restrict const funcs0) :
+                 FsFuncs *restrict const funcs0) :
     root(),
     type(type0),
     funcs(funcs0)

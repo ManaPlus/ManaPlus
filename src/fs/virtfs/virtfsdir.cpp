@@ -27,7 +27,7 @@
 #include "fs/virtfs/direntry.h"
 #include "fs/virtfs/file.h"
 #include "fs/virtfs/virtfsdirrwops.h"
-#include "fs/virtfs/virtfsfuncs.h"
+#include "fs/virtfs/fsfuncs.h"
 #include "fs/virtfs/virtlist.h"
 
 #include "utils/checkutils.h"
@@ -56,7 +56,7 @@ namespace
     std::string mBaseDir;
     std::string mUserDir;
     bool mPermitLinks = false;
-    VirtFsFuncs funcs;
+    FsFuncs funcs;
 }  // namespace
 
 namespace VirtFsDir
@@ -123,7 +123,7 @@ namespace VirtFsDir
         initFuncs(&funcs);
     }
 
-    void initFuncs(VirtFsFuncs *restrict const ptr)
+    void initFuncs(FsFuncs *restrict const ptr)
     {
         ptr->close = &VirtFsDir::close;
         ptr->read = &VirtFsDir::read;
@@ -152,7 +152,7 @@ namespace VirtFsDir
 #endif  // USE_SDL2
     }
 
-    VirtFsFuncs *getFuncs()
+    FsFuncs *getFuncs()
     {
         return &funcs;
     }

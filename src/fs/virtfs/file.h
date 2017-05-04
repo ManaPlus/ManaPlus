@@ -28,22 +28,22 @@
 namespace VirtFs
 {
 
-struct VirtFsFuncs;
+struct FsFuncs;
 
 struct File final
 {
-    File(const VirtFsFuncs *restrict const funcs0,
+    File(const FsFuncs *restrict const funcs0,
          const uint8_t *restrict const buf,
          const size_t sz);
 
-    File(const VirtFsFuncs *restrict const funcs0,
+    File(const FsFuncs *restrict const funcs0,
          FILEHTYPE fd);
 
     A_DELETE_COPY(File)
 
     ~File();
 
-    const VirtFsFuncs *funcs;
+    const FsFuncs *funcs;
 
     // zipfs fields
     const uint8_t *mBuf;

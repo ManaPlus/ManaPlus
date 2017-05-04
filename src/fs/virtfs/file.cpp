@@ -25,7 +25,7 @@
 namespace VirtFs
 {
 
-File::File(const VirtFsFuncs *restrict const funcs0,
+File::File(const FsFuncs *restrict const funcs0,
            const uint8_t *restrict const buf,
            const size_t sz) :
     funcs(funcs0),
@@ -36,7 +36,7 @@ File::File(const VirtFsFuncs *restrict const funcs0,
 {
 }
 
-File::File(const VirtFsFuncs *restrict const funcs0,
+File::File(const FsFuncs *restrict const funcs0,
            FILEHTYPE fd) :
     funcs(funcs0),
     mBuf(nullptr),

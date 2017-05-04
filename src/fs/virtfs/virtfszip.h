@@ -30,14 +30,14 @@ namespace VirtFs
 
 struct File;
 struct VirtList;
-struct VirtFsFuncs;
+struct FsFuncs;
 struct FsEntry;
 
 namespace VirtFsZip
 {
-    VirtFsFuncs *getFuncs();
+    FsFuncs *getFuncs();
     void init();
-    void initFuncs(VirtFsFuncs *restrict const ptr);
+    void initFuncs(FsFuncs *restrict const ptr);
     void deinit();
     bool exists(FsEntry *restrict const entry,
                 const std::string &filename,

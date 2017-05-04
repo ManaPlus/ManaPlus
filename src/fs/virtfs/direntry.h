@@ -32,7 +32,7 @@ struct DirEntry final : public FsEntry
 {
     DirEntry(const std::string &userDir,
                  const std::string &rootDir,
-                 VirtFsFuncs *restrict const funcs);
+                 FsFuncs *restrict const funcs);
 
     A_DELETE_COPY(DirEntry)
 

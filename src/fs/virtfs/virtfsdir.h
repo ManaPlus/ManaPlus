@@ -32,7 +32,7 @@ namespace VirtFs
 
 struct File;
 struct FsEntry;
-struct VirtFsFuncs;
+struct FsFuncs;
 struct VirtList;
 
 namespace VirtFsDir
@@ -48,9 +48,9 @@ namespace VirtFsDir
                      const std::string &filename);
     const char *getBaseDir();
     const char *getUserDir();
-    VirtFsFuncs *getFuncs();
+    FsFuncs *getFuncs();
     void init(const std::string &restrict name);
-    void initFuncs(VirtFsFuncs *restrict const ptr);
+    void initFuncs(FsFuncs *restrict const ptr);
     void deinit();
     bool exists(FsEntry *restrict const entry,
                 const std::string &fileName,

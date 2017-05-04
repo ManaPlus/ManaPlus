@@ -30,12 +30,12 @@
 namespace VirtFs
 {
 
-struct VirtFsFuncs;
+struct FsFuncs;
 
 struct FsEntry notfinal
 {
     FsEntry(const FsEntryTypeT &type0,
-            VirtFsFuncs *restrict const funcs);
+            FsFuncs *restrict const funcs);
 
     A_DELETE_COPY(FsEntry)
 
@@ -45,7 +45,7 @@ struct FsEntry notfinal
 
     FsEntryTypeT type;
 
-    VirtFsFuncs *funcs;
+    FsFuncs *funcs;
 };
 
 }  // namespace VirtFs

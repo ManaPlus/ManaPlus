@@ -890,7 +890,7 @@ SET(SRCS
     fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
-    fs/virtfs/virtfsfuncs.h
+    fs/virtfs/fsfuncs.h
     fs/virtfs/virtfsrwops.cpp
     fs/virtfs/virtfsrwops.h
     fs/virtfs/virtfstools.cpp
@@ -1799,7 +1799,7 @@ SET(DYE_CMD_SRCS
     fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
-    fs/virtfs/virtfsfuncs.h
+    fs/virtfs/fsfuncs.h
     fs/virtfs/virtfsrwops.cpp
     fs/virtfs/virtfsrwops.h
     fs/virtfs/virtfstools.cpp
