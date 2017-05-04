@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfs/virtdirentry.h"
+#include "fs/virtfs/direntry.h"
 
 #include "debug.h"
 

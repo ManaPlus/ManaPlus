@@ -23,7 +23,7 @@
 #include "fs/files.h"
 #include "fs/paths.h"
 
-#include "fs/virtfs/virtdirentry.h"
+#include "fs/virtfs/direntry.h"
 #include "fs/virtfs/file.h"
 #include "fs/virtfs/virtfsdir.h"
 #include "fs/virtfs/virtfsfuncs.h"
