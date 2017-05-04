@@ -20,7 +20,7 @@
 
 #include "fs/virtfs/virtfszip.h"
 
-#include "fs/virtfs/virtfile.h"
+#include "fs/virtfs/file.h"
 #include "fs/virtfs/virtfsfuncs.h"
 #include "fs/virtfs/virtfsziprwops.h"
 #include "fs/virtfs/virtlist.h"
@@ -507,8 +507,8 @@ namespace VirtFsZip
         delete handle;
     }
 
-    VirtFile *openRead(VirtFsEntry *restrict const entry,
-                       const std::string &filename)
+    File *openRead(VirtFsEntry *restrict const entry,
+                   const std::string &filename)
     {
         VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
@@ -521,7 +521,7 @@ namespace VirtFsZip
                 const uint8_t *restrict const buf = Zip::readFile(header);
                 if (buf == nullptr)
                     return nullptr;
-                VirtFile *restrict const file = new VirtFile(&funcs,
+                File *restrict const file = new File(&funcs,
                     buf,
                     header->uncompressSize);
                 return file;
@@ -530,21 +530,21 @@ namespace VirtFsZip
         return nullptr;
     }
 
-    VirtFile *openWrite(VirtFsEntry *restrict const entry A_UNUSED,
-                        const std::string &filename A_UNUSED)
+    File *openWrite(VirtFsEntry *restrict const entry A_UNUSED,
+                    const std::string &filename A_UNUSED)
     {
         reportAlways("VirtFs::openWrite for zip not implemented.");
         return nullptr;
     }
 
-    VirtFile *openAppend(VirtFsEntry *restrict const entry A_UNUSED,
-                         const std::string &filename A_UNUSED)
+    File *openAppend(VirtFsEntry *restrict const entry A_UNUSED,
+                     const std::string &filename A_UNUSED)
     {
         reportAlways("VirtFs::openAppend for zip not implemented.");
         return nullptr;
     }
 
-    int close(VirtFile *restrict const file)
+    int close(File *restrict const file)
     {
         if (file == nullptr)
             return 0;
@@ -552,7 +552,7 @@ namespace VirtFsZip
         return 1;
     }
 
-    int64_t read(VirtFile *restrict const file,
+    int64_t read(File *restrict const file,
                  void *restrict const buffer,
                  const uint32_t objSize,
                  const uint32_t objCount)
@@ -591,7 +591,7 @@ namespace VirtFsZip
         return memCount;
     }
 
-    int64_t write(VirtFile *restrict const file A_UNUSED,
+    int64_t write(File *restrict const file A_UNUSED,
                   const void *restrict const buffer A_UNUSED,
                   const uint32_t objSize A_UNUSED,
                   const uint32_t objCount A_UNUSED)
@@ -599,7 +599,7 @@ namespace VirtFsZip
         return 0;
     }
 
-    int64_t fileLength(VirtFile *restrict const file)
+    int64_t fileLength(File *restrict const file)
     {
         if (file == nullptr)
             return -1;
@@ -607,7 +607,7 @@ namespace VirtFsZip
         return file->mSize;
     }
 
-    int64_t tell(VirtFile *restrict const file)
+    int64_t tell(File *restrict const file)
     {
         if (file == nullptr)
             return -1;
@@ -615,7 +615,7 @@ namespace VirtFsZip
         return file->mPos;
     }
 
-    int seek(VirtFile *restrict const file,
+    int seek(File *restrict const file,
              const uint64_t pos)
     {
         if (file == nullptr)
@@ -627,7 +627,7 @@ namespace VirtFsZip
         return 1;
     }
 
-    int eof(VirtFile *restrict const file)
+    int eof(File *restrict const file)
     {
         if (file == nullptr)
             return -1;

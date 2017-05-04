@@ -30,22 +30,22 @@
 namespace VirtFs
 {
 
-struct VirtFile;
+struct File;
 struct VirtFsEntry;
 struct VirtFsFuncs;
 struct VirtList;
 
 namespace VirtFsDir
 {
-    VirtFile *openInternal(VirtFsEntry *restrict const entry,
-                           const std::string &filename,
-                           const FILEMTYPE mode);
-    VirtFile *openRead(VirtFsEntry *restrict const entry,
-                       const std::string &filename);
-    VirtFile *openWrite(VirtFsEntry *restrict const entry,
-                        const std::string &filename);
-    VirtFile *openAppend(VirtFsEntry *restrict const entry,
-                         const std::string &filename);
+    File *openInternal(VirtFsEntry *restrict const entry,
+                       const std::string &filename,
+                       const FILEMTYPE mode);
+    File *openRead(VirtFsEntry *restrict const entry,
+                   const std::string &filename);
+    File *openWrite(VirtFsEntry *restrict const entry,
+                    const std::string &filename);
+    File *openAppend(VirtFsEntry *restrict const entry,
+                     const std::string &filename);
     const char *getBaseDir();
     const char *getUserDir();
     VirtFsFuncs *getFuncs();
@@ -80,20 +80,20 @@ namespace VirtFsDir
     bool mkdir(std::string dirName);
     bool remove(std::string filename);
     void permitLinks(const bool val);
-    int64_t read(VirtFile *restrict const handle,
+    int64_t read(File *restrict const handle,
                  void *restrict const buffer,
                  const uint32_t objSize,
                  const uint32_t objCount);
-    int64_t write(VirtFile *restrict const file,
+    int64_t write(File *restrict const file,
                   const void *restrict const buffer,
                   const uint32_t objSize,
                   const uint32_t objCount);
-    int close(VirtFile *restrict const file);
-    int64_t fileLength(VirtFile *restrict const file);
-    int64_t tell(VirtFile *restrict const file);
-    int seek(VirtFile *restrict const file,
+    int close(File *restrict const file);
+    int64_t fileLength(File *restrict const file);
+    int64_t tell(File *restrict const file);
+    int seek(File *restrict const file,
              const uint64_t pos);
-    int eof(VirtFile *restrict const file);
+    int eof(File *restrict const file);
     const char *loadFile(VirtFsEntry *restrict const entry,
                          const std::string &restrict fileName,
                          int &restrict fileSize);

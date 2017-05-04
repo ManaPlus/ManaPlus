@@ -933,8 +933,8 @@ SET(SRCS
     utils/stringvector.h
     utils/timer.cpp
     utils/timer.h
-    fs/virtfs/virtfile.cpp
-    fs/virtfs/virtfile.h
+    fs/virtfs/file.cpp
+    fs/virtfs/file.h
     utils/mutex.h
     utils/naclmessages.cpp
     utils/naclmessages.h

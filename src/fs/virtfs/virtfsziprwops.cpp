@@ -22,7 +22,7 @@
 
 #include "logger.h"
 
-#include "fs/virtfs/virtfile.h"
+#include "fs/virtfs/file.h"
 #include "fs/virtfs/virtfs.h"
 
 #include <SDL_rwops.h>
@@ -40,7 +40,7 @@ namespace VirtFsZip
     {
         if (!rw)
             return -1;
-        VirtFile *const handle = static_cast<VirtFile *const>(
+        File *const handle = static_cast<File *const>(
             rw->hidden.unknown.data1);
         size_t mPos = handle->mPos;
         size_t mSize = handle->mSize;
@@ -110,7 +110,7 @@ namespace VirtFsZip
     {
         if (!rw)
             return 0;
-        VirtFile *const handle = static_cast<VirtFile *const>(
+        File *const handle = static_cast<File *const>(
             rw->hidden.unknown.data1);
         const int64_t rc = VirtFs::read(handle, ptr,
             CAST_U32(size),
@@ -130,7 +130,7 @@ namespace VirtFsZip
     {
         if (!rw)
             return 0;
-        VirtFile *const handle = static_cast<VirtFile*>(
+        File *const handle = static_cast<File*>(
             rw->hidden.unknown.data1);
         delete handle;
         SDL_FreeRW(rw);
@@ -142,7 +142,7 @@ namespace VirtFsZip
     {
         if (!rw)
             return 0;
-        VirtFile *const handle = static_cast<VirtFile *const>(
+        File *const handle = static_cast<File *const>(
             rw->hidden.unknown.data1);
         return handle->mSize;
     }

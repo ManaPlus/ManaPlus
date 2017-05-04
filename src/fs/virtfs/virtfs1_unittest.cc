@@ -1135,7 +1135,7 @@ TEST_CASE("VirtFs1 openRead1")
     VirtFs::mountDir(prefix + "data",
         Append_false);
 
-    VirtFs::VirtFile *file = nullptr;
+    VirtFs::File *file = nullptr;
 
     file = VirtFs::openRead("test/units.xml");
     REQUIRE(file != nullptr);
@@ -1199,7 +1199,7 @@ TEST_CASE("VirtFs1 openRead2")
     VirtFs::mountZip(prefix + "test2.zip",
         Append_false);
 
-    VirtFs::VirtFile *file = nullptr;
+    VirtFs::File *file = nullptr;
 
     file = VirtFs::openRead("dir2/units.xml");
     REQUIRE(file != nullptr);
@@ -1317,7 +1317,7 @@ TEST_CASE("VirtFs1 read1")
     VirtFs::mountDir(prefix + "data",
         Append_false);
 
-    VirtFs::VirtFile *file = VirtFs::openRead("test/test.txt");
+    VirtFs::File *file = VirtFs::openRead("test/test.txt");
     REQUIRE(file != nullptr);
     REQUIRE(VirtFs::fileLength(file) == 23);
     const int fileSize = VirtFs::fileLength(file);
@@ -1358,7 +1358,7 @@ TEST_CASE("VirtFs1 read2")
 
     VirtFs::mountZip(prefix + "test2.zip",
         Append_false);
-    VirtFs::VirtFile *file = nullptr;
+    VirtFs::File *file = nullptr;
     void *restrict buffer = nullptr;
 
     SECTION("test 1")

@@ -476,7 +476,7 @@ TEST_CASE("VirtFs openRead1")
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
-    VirtFs::VirtFile *file = nullptr;
+    VirtFs::File *file = nullptr;
 
     file = VirtFs::openRead("test/units.xml");
     REQUIRE(file != nullptr);
@@ -542,7 +542,7 @@ TEST_CASE("VirtFs openRead2")
 
     VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
 
-    VirtFs::VirtFile *file = nullptr;
+    VirtFs::File *file = nullptr;
 
     file = VirtFs::openRead("test/units.xml");
     REQUIRE(file == nullptr);
@@ -571,7 +571,7 @@ TEST_CASE("VirtFs openRead3")
     VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
     VirtFs::mountDir(prefix + "data/test", Append_false);
 
-    VirtFs::VirtFile *file = nullptr;
+    VirtFs::File *file = nullptr;
 
     file = VirtFs::openRead("test/units.xml");
     REQUIRE(file == nullptr);
@@ -755,7 +755,7 @@ TEST_CASE("VirtFs read1")
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
-    VirtFs::VirtFile *file = VirtFs::openRead("test/test.txt");
+    VirtFs::File *file = VirtFs::openRead("test/test.txt");
     REQUIRE(file != nullptr);
     REQUIRE(VirtFs::fileLength(file) == 23);
     const int fileSize = VirtFs::fileLength(file);
@@ -795,7 +795,7 @@ TEST_CASE("VirtFs read2")
 
     VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
 
-    VirtFs::VirtFile *file = VirtFs::openRead("dir2/test.txt");
+    VirtFs::File *file = VirtFs::openRead("dir2/test.txt");
     REQUIRE(file != nullptr);
     REQUIRE(VirtFs::fileLength(file) == 23);
     const int fileSize = VirtFs::fileLength(file);
@@ -835,7 +835,7 @@ TEST_CASE("VirtFs read3")
     VirtFs::mountZip(prefix + "data/test/test2.zip", Append_false);
     VirtFs::mountDir(prefix + "data", Append_false);
 
-    VirtFs::VirtFile *file = VirtFs::openRead("dir2/test.txt");
+    VirtFs::File *file = VirtFs::openRead("dir2/test.txt");
     REQUIRE(file != nullptr);
     REQUIRE(VirtFs::fileLength(file) == 23);
     const int fileSize = VirtFs::fileLength(file);
@@ -876,7 +876,7 @@ TEST_CASE("VirtFs read4")
     VirtFs::mountDir(prefix + "data/test", Append_true);
     VirtFs::mountZip(prefix + "data/test/test5.zip", Append_true);
 
-    VirtFs::VirtFile *file = VirtFs::openRead("dir1/file1.txt");
+    VirtFs::File *file = VirtFs::openRead("dir1/file1.txt");
     REQUIRE(file != nullptr);
     REQUIRE(VirtFs::fileLength(file) == 23);
     const int fileSize = VirtFs::fileLength(file);
@@ -917,7 +917,7 @@ TEST_CASE("VirtFs read5")
     VirtFs::mountZip(prefix + "data/test/test5.zip", Append_true);
     VirtFs::mountDir(prefix + "data/test", Append_true);
 
-    VirtFs::VirtFile *file = VirtFs::openRead("dir1/file1.txt");
+    VirtFs::File *file = VirtFs::openRead("dir1/file1.txt");
     REQUIRE(file != nullptr);
     REQUIRE(VirtFs::fileLength(file) == 23);
     const int fileSize = VirtFs::fileLength(file);

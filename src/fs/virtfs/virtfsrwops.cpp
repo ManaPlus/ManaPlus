@@ -46,7 +46,7 @@
 
 #include "logger.h"
 
-#include "fs/virtfs/virtfile.h"
+#include "fs/virtfs/file.h"
 #include "fs/virtfs/virtfs.h"
 #include "fs/virtfs/virtfsfuncs.h"
 
@@ -59,7 +59,7 @@
 namespace VirtFs
 {
 
-SDL_RWops *create_rwops(VirtFile *const file)
+SDL_RWops *create_rwops(File *const file)
 {
     SDL_RWops *retval = nullptr;
 

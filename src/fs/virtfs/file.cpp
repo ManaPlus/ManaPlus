@@ -18,44 +18,39 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_VIRTFILE_H
-#define UTILS_VIRTFILE_H
+#include "fs/virtfs/file.h"
 
-#include "localconsts.h"
-
-#include "fs/virtfs/fileapi.h"
+#include "debug.h"
 
 namespace VirtFs
 {
 
-struct VirtFsFuncs;
-
-struct VirtFile final
+File::File(const VirtFsFuncs *restrict const funcs0,
+           const uint8_t *restrict const buf,
+           const size_t sz) :
+    funcs(funcs0),
+    mBuf(buf),
+    mPos(0U),
+    mSize(sz),
+    mFd(FILEHDEFAULT)
 {
-    VirtFile(const VirtFsFuncs *restrict const funcs0,
-             const uint8_t *restrict const buf,
-             const size_t sz);
+}
 
-    VirtFile(const VirtFsFuncs *restrict const funcs0,
-             FILEHTYPE fd);
+File::File(const VirtFsFuncs *restrict const funcs0,
+           FILEHTYPE fd) :
+    funcs(funcs0),
+    mBuf(nullptr),
+    mPos(0U),
+    mSize(0U),
+    mFd(fd)
+{
+}
 
-    A_DELETE_COPY(VirtFile)
-
-    ~VirtFile();
-
-    const VirtFsFuncs *funcs;
-
-    // zipfs fields
-    const uint8_t *mBuf;
-
-    // zipfs fields
-    size_t mPos;
-    size_t mSize;
-
-    // dirfs fields
-    FILEHTYPE mFd;
-};
+File::~File()
+{
+    if (mFd != FILEHDEFAULT)
+        FILECLOSE(mFd);
+    delete [] mBuf;
+}
 
 }  // namespace VirtFs
-
-#endif  // UTILS_VIRTFILE_H

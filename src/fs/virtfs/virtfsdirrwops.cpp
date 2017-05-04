@@ -22,7 +22,7 @@
 
 #include "logger.h"
 
-#include "fs/virtfs/virtfile.h"
+#include "fs/virtfs/file.h"
 
 #include <SDL_rwops.h>
 
@@ -39,7 +39,7 @@ namespace VirtFsDir
     {
         if (!rw)
             return -1;
-        VirtFile *const handle = static_cast<VirtFile *const>(
+        File *const handle = static_cast<File *const>(
             rw->hidden.unknown.data1);
         FILEHTYPE fd = handle->mFd;
         RWOPSINT pos = 0;
@@ -151,7 +151,7 @@ namespace VirtFsDir
     {
         if (!rw)
             return 0;
-        VirtFile *const handle = static_cast<VirtFile *const>(
+        File *const handle = static_cast<File *const>(
             rw->hidden.unknown.data1);
         FILEHTYPE fd = handle->mFd;
 
@@ -187,7 +187,7 @@ namespace VirtFsDir
     {
         if (!rw)
             return 0;
-        VirtFile *const handle = static_cast<VirtFile *const>(
+        File *const handle = static_cast<File *const>(
             rw->hidden.unknown.data1);
         FILEHTYPE fd = handle->mFd;
 
@@ -220,7 +220,7 @@ namespace VirtFsDir
     {
         if (!rw)
             return 0;
-        VirtFile *const handle = static_cast<VirtFile*>(
+        File *const handle = static_cast<File*>(
             rw->hidden.unknown.data1);
         delete handle;
         SDL_FreeRW(rw);
@@ -230,7 +230,7 @@ namespace VirtFsDir
 #ifdef USE_SDL2
     RWOPSINT rwops_size(SDL_RWops *const rw)
     {
-        VirtFile *const handle = static_cast<VirtFile *const>(
+        File *const handle = static_cast<File *const>(
             rw->hidden.unknown.data1);
         FILEHTYPE fd = handle->mFd;
 #ifdef USE_FILE_FOPEN

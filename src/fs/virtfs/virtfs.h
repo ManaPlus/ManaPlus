@@ -31,7 +31,7 @@
 
 namespace VirtFs
 {
-    struct VirtFile;
+    struct File;
     struct VirtFsEntry;
     struct VirtList;
 
@@ -45,9 +45,9 @@ namespace VirtFs
     bool isDirectory(std::string name);
     bool isSymbolicLink(const std::string &restrict name);
     void freeList(VirtList *restrict const handle);
-    VirtFile *openRead(std::string filename);
-    VirtFile *openWrite(std::string filename);
-    VirtFile *openAppend(std::string filename);
+    File *openRead(std::string filename);
+    File *openWrite(std::string filename);
+    File *openAppend(std::string filename);
     bool setWriteDir(const std::string &restrict newDir);
     bool mountDir(std::string newDir,
                   const Append append);
@@ -63,20 +63,20 @@ namespace VirtFs
     bool remove(const std::string &restrict filename);
     bool deinit();
     void permitLinks(const bool val);
-    int64_t read(VirtFile *restrict const handle,
+    int64_t read(File *restrict const handle,
                  void *restrict const buffer,
                  const uint32_t objSize,
                  const uint32_t objCount);
-    int64_t write(VirtFile *restrict const file,
+    int64_t write(File *restrict const file,
                   const void *restrict const buffer,
                   const uint32_t objSize,
                   const uint32_t objCount);
-    int close(VirtFile *restrict const file);
-    int64_t fileLength(VirtFile *restrict const file);
-    int64_t tell(VirtFile *restrict const file);
-    int seek(VirtFile *restrict const file,
+    int close(File *restrict const file);
+    int64_t fileLength(File *restrict const file);
+    int64_t tell(File *restrict const file);
+    int seek(File *restrict const file,
              const uint64_t pos);
-    int eof(VirtFile *restrict const file);
+    int eof(File *restrict const file);
 
     bool mountDirInternal(const std::string &restrict newDir,
                           const Append append);

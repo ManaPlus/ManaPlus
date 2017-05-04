@@ -25,7 +25,7 @@
 #include "fs/paths.h"
 
 #include "fs/virtfs/virtdirentry.h"
-#include "fs/virtfs/virtfile.h"
+#include "fs/virtfs/file.h"
 #include "fs/virtfs/virtfsdirrwops.h"
 #include "fs/virtfs/virtfsfuncs.h"
 #include "fs/virtfs/virtlist.h"
@@ -61,9 +61,9 @@ namespace
 
 namespace VirtFsDir
 {
-    VirtFile *openInternal(VirtFsEntry *restrict const entry,
-                           const std::string &filename,
-                           const FILEMTYPE mode)
+    File *openInternal(VirtFsEntry *restrict const entry,
+                       const std::string &filename,
+                       const FILEMTYPE mode)
     {
         const std::string path = entry->root + filename;
         if (Files::existsLocal(path) == false)
@@ -76,24 +76,24 @@ namespace VirtFsDir
                 filename.c_str());
             return nullptr;
         }
-        VirtFile *restrict const file = new VirtFile(&funcs, fd);
+        File *restrict const file = new File(&funcs, fd);
         return file;
     }
 
-    VirtFile *openRead(VirtFsEntry *restrict const entry,
-                       const std::string &filename)
+    File *openRead(VirtFsEntry *restrict const entry,
+                   const std::string &filename)
     {
         return openInternal(entry, filename, FILEOPEN_FLAG_READ);
     }
 
-    VirtFile *openWrite(VirtFsEntry *restrict const entry,
-                        const std::string &filename)
+    File *openWrite(VirtFsEntry *restrict const entry,
+                    const std::string &filename)
     {
         return openInternal(entry, filename, FILEOPEN_FLAG_WRITE);
     }
 
-    VirtFile *openAppend(VirtFsEntry *restrict const entry,
-                         const std::string &filename)
+    File *openAppend(VirtFsEntry *restrict const entry,
+                     const std::string &filename)
     {
         return openInternal(entry, filename, FILEOPEN_FLAG_APPEND);
     }
@@ -307,7 +307,7 @@ namespace VirtFsDir
         mPermitLinks = val;
     }
 
-    int close(VirtFile *restrict const file)
+    int close(File *restrict const file)
     {
         if (file == nullptr)
             return 0;
@@ -315,7 +315,7 @@ namespace VirtFsDir
         return 1;
     }
 
-    int64_t read(VirtFile *restrict const file,
+    int64_t read(File *restrict const file,
                  void *restrict const buffer,
                  const uint32_t objSize,
                  const uint32_t objCount)
@@ -339,7 +339,7 @@ namespace VirtFsDir
 #endif  // USE_FILE_FOPEN
     }
 
-    int64_t write(VirtFile *restrict const file,
+    int64_t write(File *restrict const file,
                   const void *restrict const buffer,
                   const uint32_t objSize,
                   const uint32_t objCount)
@@ -363,7 +363,7 @@ namespace VirtFsDir
 #endif  // USE_FILE_FOPEN
     }
 
-    int64_t fileLength(VirtFile *restrict const file)
+    int64_t fileLength(File *restrict const file)
     {
         if (file == nullptr)
             return -1;
@@ -390,7 +390,7 @@ namespace VirtFsDir
 #endif  // USE_FILE_FOPEN
     }
 
-    int64_t tell(VirtFile *restrict const file)
+    int64_t tell(File *restrict const file)
     {
         if (file == nullptr)
             return -1;
@@ -409,7 +409,7 @@ namespace VirtFsDir
         return pos;
     }
 
-    int seek(VirtFile *restrict const file,
+    int seek(File *restrict const file,
              const uint64_t pos)
     {
         if (file == nullptr)
@@ -427,7 +427,7 @@ namespace VirtFsDir
         return 1;
     }
 
-    int eof(VirtFile *restrict const file)
+    int eof(File *restrict const file)
     {
         if (file == nullptr)
             return -1;
