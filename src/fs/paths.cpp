@@ -106,15 +106,19 @@ bool checkPath(const std::string &path)
 
 void prepareFsPath(std::string &path)
 {
-//    std::string path2 = path;
+#ifdef DEBUGFS
+    std::string path2 = path;
+#endif
     sanitizePath(path);
 // can be enabled for debugging
-//    if (path != path2)
-//    {
-//        reportAlways("Path can be improved: '%s' -> '%s'",
-//            path2.c_str(),
-//            path0.c_str());
-//    }
+#ifdef DEBUGFS
+    if (path != path2)
+    {
+        reportAlways("Path can be improved: '%s' -> '%s'",
+            path2.c_str(),
+            path.c_str());
+    }
+#endif
 }
 
 std::string &fixDirSeparators(std::string &str)
@@ -237,11 +241,11 @@ std::string getHomePath()
             path = pw->pw_dir;
         }
         if (path == nullptr)
-            return "/";
+            return dirSeparator;
     }
     std::string dir = path;
-    if (findLast(dir, "/") == false)
-        dir += "/";
+    if (findLast(dir, std::string(dirSeparator)) == false)
+        dir += dirSeparator;
     return dir;
 #endif  // WIN32
 }

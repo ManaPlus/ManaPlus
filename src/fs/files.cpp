@@ -47,7 +47,7 @@ void Files::extractLocale()
     const std::string fileName2 = pathJoin(getenv("APPDIR"), "locale.zip");
     VirtFs::mountZip(fileName2, Append_false);
 
-    const std::string localDir = std::string(getenv("APPDIR")).append("/");
+    const std::string localDir = std::string(getenv("APPDIR"));
     VirtList *const rootDirs = VirtFs::enumerateFiles("locale");
     FOR_EACH (StringVectCIter, i, rootDirs->names)
     {
@@ -57,8 +57,10 @@ void Files::extractLocale()
             const std::string moFile = dir + "/LC_MESSAGES/manaplus.mo";
             if (VirtFs::exists((moFile)))
             {
-                const std::string localFile = localDir + moFile;
-                const std::string localDir2 = localDir + dir + "/LC_MESSAGES";
+                const std::string localFile = pathJoin(localDir, moFile);
+                const std::string localDir2 = pathJoin(localDir,
+                    dir,
+                    "LC_MESSAGES");
                 mkdir_r(localDir2.c_str());
                 copyVirtFsFile(moFile, localFile);
             }
@@ -273,7 +275,7 @@ void Files::saveTextFile(const std::string &path,
 
 void Files::deleteFilesInDirectory(std::string path)
 {
-    path += "/";
+    path == pathJoin(path, dirSeparator);
     const struct dirent *next_file = nullptr;
     DIR *const dir = opendir(path.c_str());
 
@@ -293,8 +295,8 @@ void Files::enumFiles(StringVect &files,
                       std::string path,
                       const bool skipSymlinks A_WIN_UNUSED)
 {
-    if (findLast(path, "/") == false)
-        path += "/";
+    if (findLast(path, dirSeparator) == false)
+        path += dirSeparator;
     const struct dirent *next_file = nullptr;
     DIR *const dir = opendir(path.c_str());
 

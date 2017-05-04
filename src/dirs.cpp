@@ -510,8 +510,8 @@ void Dirs::initUpdatesDir()
 #endif  // defined WIN32
         }
     }
-    const std::string updateLocal = updateDir + "/local";
-    const std::string updateFix = updateDir + "/fix";
+    const std::string updateLocal = pathJoin(updateDir, "local");
+    const std::string updateFix = pathJoin(updateDir, "fix");
     if (!VirtFs::isDirectory(updateLocal))
         VirtFs::mkdir(updateLocal);
     if (!VirtFs::isDirectory(updateFix))

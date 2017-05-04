@@ -80,7 +80,7 @@ namespace VirtFs
                        StringVect &list,
                        const std::string &ext)
     {
-        const std::string path = dir + "/";
+        const std::string path = dir;
         StringVect tempList;
         VirtFs::getFilesWithDir(path, tempList);
         FOR_EACH (StringVectCIter, it, tempList)

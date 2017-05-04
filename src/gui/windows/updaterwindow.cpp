@@ -603,7 +603,7 @@ void UpdaterWindow::download()
         if (mDownloadStatus == UpdateDownloadStatus::UPDATE_LIST2 ||
             mDownloadStatus == UpdateDownloadStatus::UPDATE_RESOURCES2)
         {
-            const std::string str = mUpdateServerPath + "/" + mCurrentFile;
+            const std::string str = urlJoin(mUpdateServerPath, mCurrentFile);
             mDownload->addMirror(updateServer3 + str);
             mDownload->addMirror(updateServer4 + str);
             mDownload->addMirror(updateServer5 + str);
@@ -1176,7 +1176,7 @@ void UpdaterWindow::loadDirMods(const std::string &dir)
             const std::string &localDir = mod->getLocalDir();
             if (!localDir.empty())
             {
-                VirtFs::mountDir(dir + "/" + localDir,
+                VirtFs::mountDir(pathJoin(dir, localDir),
                     Append_false);
             }
         }
@@ -1200,7 +1200,7 @@ void UpdaterWindow::unloadMods(const std::string &dir)
         {
             const std::string &localDir = mod->getLocalDir();
             if (!localDir.empty())
-                VirtFs::unmountDir(dir + "/" + localDir);
+                VirtFs::unmountDir(pathJoin(dir, localDir));
         }
     }
 }
