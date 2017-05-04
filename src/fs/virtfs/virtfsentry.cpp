@@ -22,6 +22,9 @@
 
 #include "debug.h"
 
+namespace VirtFs
+{
+
 VirtFsEntry::VirtFsEntry(const FsEntryTypeT &type0,
                          VirtFsFuncs *restrict const funcs0) :
     root(),
@@ -33,3 +36,5 @@ VirtFsEntry::VirtFsEntry(const FsEntryTypeT &type0,
 VirtFsEntry::~VirtFsEntry()
 {
 }
+
+}  // namespace VirtFs

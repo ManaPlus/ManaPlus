@@ -29,6 +29,9 @@
 
 #include "debug.h"
 
+namespace VirtFs
+{
+
 namespace VirtFsZip
 {
     RWOPSINT rwops_seek(SDL_RWops *const rw,
@@ -146,3 +149,5 @@ namespace VirtFsZip
 #endif  // USE_SDL2
 
 }  // namespace VirtFsZip
+
+}  // namespace VirtFs

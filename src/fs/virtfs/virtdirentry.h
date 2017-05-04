@@ -25,17 +25,22 @@
 
 #include "localconsts.h"
 
-struct VirtDirEntry final : public VirtFsEntry
+namespace VirtFs
 {
-    VirtDirEntry(const std::string &userDir,
+
+struct DirEntry final : public VirtFsEntry
+{
+    DirEntry(const std::string &userDir,
                  const std::string &rootDir,
                  VirtFsFuncs *restrict const funcs);
 
-    A_DELETE_COPY(VirtDirEntry)
+    A_DELETE_COPY(DirEntry)
 
-    ~VirtDirEntry();
+    ~DirEntry();
 
     std::string userDir;
 };
+
+}  // namespace VirtFs
 
 #endif  // UTILS_VIRTDIRENTRY_H

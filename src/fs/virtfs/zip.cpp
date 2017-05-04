@@ -65,6 +65,9 @@ extern const char *dirSeparator;
 #define swapVal32(val)
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
+namespace VirtFs
+{
+
 namespace Zip
 {
     bool readArchiveInfo(VirtZipEntry *const entry)
@@ -319,3 +322,5 @@ namespace Zip
         return out;
     }
 }  // namespace Zip
+
+}  // namespace VirtFs

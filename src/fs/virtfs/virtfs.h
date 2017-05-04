@@ -29,12 +29,12 @@
 
 #include "localconsts.h"
 
-struct VirtFile;
-struct VirtFsEntry;
-struct VirtList;
-
 namespace VirtFs
 {
+    struct VirtFile;
+    struct VirtFsEntry;
+    struct VirtList;
+
     void init(const std::string &restrict name);
     void updateDirSeparator();
     const char *getDirSeparator();

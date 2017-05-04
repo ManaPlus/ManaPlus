@@ -48,11 +48,11 @@ TEST_CASE("Zip readArchiveInfo")
     {
         name = prefix + "data/test/test.zip";
 
-        VirtZipEntry *const entry = new VirtZipEntry(name,
-            VirtFsZip::getFuncs());
-        std::vector<ZipLocalHeader*> &headers = entry->mHeaders;
+        VirtFs::VirtZipEntry *const entry = new VirtFs::VirtZipEntry(name,
+            VirtFs::VirtFsZip::getFuncs());
+        std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
-        REQUIRE(Zip::readArchiveInfo(entry));
+        REQUIRE(VirtFs::Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 2);
         REQUIRE(entry->root == name);
         REQUIRE(headers[0]->fileName == "dir" + sep + "hide.png");
@@ -69,11 +69,11 @@ TEST_CASE("Zip readArchiveInfo")
     {
         name = prefix + "data/test/test2.zip";
 
-        VirtZipEntry *const entry = new VirtZipEntry(name,
-            VirtFsZip::getFuncs());
-        std::vector<ZipLocalHeader*> &headers = entry->mHeaders;
+        VirtFs::VirtZipEntry *const entry = new VirtFs::VirtZipEntry(name,
+            VirtFs::VirtFsZip::getFuncs());
+        std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
-        REQUIRE(Zip::readArchiveInfo(entry));
+        REQUIRE(VirtFs::Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 11);
         REQUIRE(entry->root == name);
         REQUIRE(headers[0]->fileName == "test.txt");
@@ -131,11 +131,11 @@ TEST_CASE("Zip readArchiveInfo")
     {
         name = prefix + "data/test/test3.zip";
 
-        VirtZipEntry *const entry = new VirtZipEntry(name,
-            VirtFsZip::getFuncs());
-        std::vector<ZipLocalHeader*> &headers = entry->mHeaders;
+        VirtFs::VirtZipEntry *const entry = new VirtFs::VirtZipEntry(name,
+            VirtFs::VirtFsZip::getFuncs());
+        std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
-        REQUIRE(Zip::readArchiveInfo(entry));
+        REQUIRE(VirtFs::Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 2);
         REQUIRE(entry->root == name);
         REQUIRE(headers[0]->fileName == "test.txt");
@@ -152,11 +152,11 @@ TEST_CASE("Zip readArchiveInfo")
     {
         name = prefix + "data/test/test4.zip";
 
-        VirtZipEntry *const entry = new VirtZipEntry(name,
-            VirtFsZip::getFuncs());
-        std::vector<ZipLocalHeader*> &headers = entry->mHeaders;
+        VirtFs::VirtZipEntry *const entry = new VirtFs::VirtZipEntry(name,
+            VirtFs::VirtFsZip::getFuncs());
+        std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
-        REQUIRE(Zip::readArchiveInfo(entry));
+        REQUIRE(VirtFs::Zip::readArchiveInfo(entry));
         REQUIRE(entry->root == name);
         REQUIRE(headers.size() == 0);
 
@@ -176,22 +176,22 @@ TEST_CASE("Zip readCompressedFile")
 
     SECTION("empty")
     {
-        REQUIRE_THROWS(Zip::readCompressedFile(nullptr));
+        REQUIRE_THROWS(VirtFs::Zip::readCompressedFile(nullptr));
     }
 
     SECTION("test2.zip")
     {
         name = prefix + "data/test/test2.zip";
 
-        VirtZipEntry *const entry = new VirtZipEntry(name,
-            VirtFsZip::getFuncs());
-        std::vector<ZipLocalHeader*> &headers = entry->mHeaders;
+        VirtFs::VirtZipEntry *const entry = new VirtFs::VirtZipEntry(name,
+            VirtFs::VirtFsZip::getFuncs());
+        std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
-        REQUIRE(Zip::readArchiveInfo(entry));
+        REQUIRE(VirtFs::Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 11);
         REQUIRE(entry->root == name);
         // test.txt
-        uint8_t *const buf = Zip::readCompressedFile(headers[0]);
+        uint8_t *const buf = VirtFs::Zip::readCompressedFile(headers[0]);
         REQUIRE(buf != nullptr);
         delete [] buf;
         delete entry;
@@ -210,18 +210,18 @@ TEST_CASE("Zip readFile")
 
     SECTION("empty")
     {
-        REQUIRE_THROWS(Zip::readFile(nullptr));
+        REQUIRE_THROWS(VirtFs::Zip::readFile(nullptr));
     }
 
     SECTION("test.zip")
     {
         name = prefix + "data/test/test.zip";
 
-        VirtZipEntry *const entry = new VirtZipEntry(name,
-            VirtFsZip::getFuncs());
-        std::vector<ZipLocalHeader*> &headers = entry->mHeaders;
+        VirtFs::VirtZipEntry *const entry = new VirtFs::VirtZipEntry(name,
+            VirtFs::VirtFsZip::getFuncs());
+        std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
-        REQUIRE(Zip::readArchiveInfo(entry));
+        REQUIRE(VirtFs::Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 2);
         REQUIRE(entry->root == name);
         for (int f = 0; f < 2; f ++)
@@ -230,7 +230,7 @@ TEST_CASE("Zip readFile")
                 headers[f]->fileName.c_str(),
                 headers[f]->compressSize,
                 headers[f]->uncompressSize);
-            const uint8_t *const buf = Zip::readFile(headers[f]);
+            const uint8_t *const buf = VirtFs::Zip::readFile(headers[f]);
             REQUIRE(buf != nullptr);
             delete [] buf;
         }
@@ -241,15 +241,15 @@ TEST_CASE("Zip readFile")
     {
         name = prefix + "data/test/test2.zip";
 
-        VirtZipEntry *const entry = new VirtZipEntry(name,
-            VirtFsZip::getFuncs());
-        std::vector<ZipLocalHeader*> &headers = entry->mHeaders;
+        VirtFs::VirtZipEntry *const entry = new VirtFs::VirtZipEntry(name,
+            VirtFs::VirtFsZip::getFuncs());
+        std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
-        REQUIRE(Zip::readArchiveInfo(entry));
+        REQUIRE(VirtFs::Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 11);
         REQUIRE(entry->root == name);
         // test.txt
-        const uint8_t *buf = Zip::readFile(headers[0]);
+        const uint8_t *buf = VirtFs::Zip::readFile(headers[0]);
         REQUIRE(buf != nullptr);
         const std::string str = std::string(reinterpret_cast<const char*>(buf),
             headers[0]->uncompressSize);
@@ -261,7 +261,7 @@ TEST_CASE("Zip readFile")
                 headers[f]->fileName.c_str(),
                 headers[f]->compressSize,
                 headers[f]->uncompressSize);
-            buf = Zip::readFile(headers[f]);
+            buf = VirtFs::Zip::readFile(headers[f]);
             REQUIRE(buf != nullptr);
             delete [] buf;
         }
@@ -272,11 +272,11 @@ TEST_CASE("Zip readFile")
     {
         name = prefix + "data/test/test3.zip";
 
-        VirtZipEntry *const entry = new VirtZipEntry(name,
-            VirtFsZip::getFuncs());
-        std::vector<ZipLocalHeader*> &headers = entry->mHeaders;
+        VirtFs::VirtZipEntry *const entry = new VirtFs::VirtZipEntry(name,
+            VirtFs::VirtFsZip::getFuncs());
+        std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
-        REQUIRE(Zip::readArchiveInfo(entry));
+        REQUIRE(VirtFs::Zip::readArchiveInfo(entry));
         REQUIRE(headers.size() == 2);
         REQUIRE(entry->root == name);
         for (int f = 0; f < 2; f ++)
@@ -285,7 +285,7 @@ TEST_CASE("Zip readFile")
                 headers[f]->fileName.c_str(),
                 headers[f]->compressSize,
                 headers[f]->uncompressSize);
-            const uint8_t *const buf = Zip::readFile(headers[f]);
+            const uint8_t *const buf = VirtFs::Zip::readFile(headers[f]);
             REQUIRE(buf != nullptr);
             delete [] buf;
         }

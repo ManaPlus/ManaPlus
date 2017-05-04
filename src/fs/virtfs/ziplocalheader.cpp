@@ -24,6 +24,9 @@
 
 #include "debug.h"
 
+namespace VirtFs
+{
+
 ZipLocalHeader::ZipLocalHeader() :
     fileName(),
     zipEntry(nullptr),
@@ -33,3 +36,5 @@ ZipLocalHeader::ZipLocalHeader() :
     compressed(false)
 {
 }
+
+}  // namespace VirtFs

@@ -50,10 +50,11 @@
 #include <string>
 
 struct SDL_RWops;
-struct VirtFile;
 
 namespace VirtFs
 {
+    struct VirtFile;
+
     SDL_RWops *create_rwops(VirtFile *const file);
 
     SDL_RWops *rwopsOpenRead(const std::string &restrict fname);

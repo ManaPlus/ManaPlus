@@ -85,7 +85,7 @@ void Wallpaper::loadWallpapers()
 {
     wallpaperData.clear();
     initDefaultWallpaperPaths();
-    VirtList *const imgs = VirtFs::enumerateFiles(wallpaperPath);
+    VirtFs::VirtList *const imgs = VirtFs::enumerateFiles(wallpaperPath);
 
     FOR_EACH (StringVectCIter, i, imgs->names)
     {

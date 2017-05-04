@@ -25,6 +25,9 @@
 
 #include <string>
 
+namespace VirtFs
+{
+
 struct VirtZipEntry;
 struct ZipLocalHeader;
 
@@ -37,5 +40,7 @@ namespace Zip
     uint8_t *readCompressedFile(const ZipLocalHeader *restrict const header);
     const uint8_t *readFile(const ZipLocalHeader *restrict const header);
 }  // namespace Zip
+
+}  // namespace VirtFs
 
 #endif  // UTILS_ZIP_H

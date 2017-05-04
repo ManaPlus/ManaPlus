@@ -37,8 +37,11 @@ extern const char *dirSeparator;
 
 namespace
 {
-    VirtFsFuncs funcs;
+    VirtFs::VirtFsFuncs funcs;
 }  // namespace
+
+namespace VirtFs
+{
 
 namespace VirtFsZip
 {
@@ -659,3 +662,5 @@ namespace VirtFsZip
         return nullptr;
     }
 }  // namespace VirtFsZip
+
+}  // namespace VirtFs

@@ -22,6 +22,9 @@
 
 #include "debug.h"
 
+namespace VirtFs
+{
+
 VirtFile::VirtFile(const VirtFsFuncs *restrict const funcs0,
                    const uint8_t *restrict const buf,
                    const size_t sz) :
@@ -49,3 +52,5 @@ VirtFile::~VirtFile()
         FILECLOSE(mFd);
     delete [] mBuf;
 }
+
+}  // namespace VirtFs

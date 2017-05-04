@@ -25,6 +25,9 @@
 
 #include "fs/virtfs/fileapi.h"
 
+namespace VirtFs
+{
+
 struct VirtFsFuncs;
 
 struct VirtFile final
@@ -52,5 +55,7 @@ struct VirtFile final
     // dirfs fields
     FILEHTYPE mFd;
 };
+
+}  // namespace VirtFs
 
 #endif  // UTILS_VIRTFILE_H

@@ -47,6 +47,9 @@
 
 extern const char *dirSeparator;
 
+namespace VirtFs
+{
+
 namespace
 {
     std::string mWriteDir;
@@ -169,7 +172,7 @@ namespace VirtFsDir
                     const std::string &dirName A_UNUSED,
                     std::string &realDir)
     {
-        VirtDirEntry *const dirEntry = static_cast<VirtDirEntry*>(entry);
+        DirEntry *const dirEntry = static_cast<DirEntry*>(entry);
         if (Files::existsLocal(dirEntry->root + filename))
         {
             realDir = dirEntry->userDir;
@@ -458,7 +461,7 @@ namespace VirtFsDir
                          const std::string &restrict filename,
                          int &restrict fileSize)
     {
-        const VirtDirEntry *const dirEntry = static_cast<VirtDirEntry*>(entry);
+        const DirEntry *const dirEntry = static_cast<DirEntry*>(entry);
         const std::string path = entry->root + filename;
         if (Files::existsLocal(path) == false)
             return nullptr;
@@ -663,4 +666,6 @@ namespace VirtFsDir
             closedir(dir);
         }
     }
+}  // namespace VirtFsDir
+
 }  // namespace VirtFs

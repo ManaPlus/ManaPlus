@@ -27,6 +27,9 @@
 
 #include "localconsts.h"
 
+namespace VirtFs
+{
+
 struct ZipLocalHeader;
 
 struct VirtZipEntry final : public VirtFsEntry
@@ -41,5 +44,7 @@ struct VirtZipEntry final : public VirtFsEntry
     std::vector<ZipLocalHeader*> mHeaders;
     std::vector<std::string> mDirs;
 };
+
+}  // namespace VirtFs
 
 #endif  // UTILS_VIRTZIPENTRY_H

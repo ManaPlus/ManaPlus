@@ -27,9 +27,13 @@
 
 #include "localconsts.h"
 
+struct SDL_RWops;
+
+namespace VirtFs
+{
+
 struct VirtFile;
 struct VirtFsEntry;
-struct SDL_RWops;
 
 struct VirtFsFuncs final
 {
@@ -126,5 +130,7 @@ struct VirtFsFuncs final
 #endif  // USE_SDL2
     int (*rwops_close) (SDL_RWops *const rw);
 };
+
+}  // namespace VirtFs
 
 #endif  // UTILS_VIRTFSFUNCS_H

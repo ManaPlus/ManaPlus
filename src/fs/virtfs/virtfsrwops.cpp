@@ -56,7 +56,10 @@
 
 #include "debug.h"
 
-SDL_RWops *VirtFs::create_rwops(VirtFile *const file)
+namespace VirtFs
+{
+
+SDL_RWops *create_rwops(VirtFile *const file)
 {
     SDL_RWops *retval = nullptr;
 
@@ -89,13 +92,13 @@ static bool checkFilePath(const std::string &restrict fname)
 {
     if (fname.empty())
         return false;
-    if (!VirtFs::exists(fname) || VirtFs::isDirectory(fname))
+    if (!exists(fname) || isDirectory(fname))
         return false;
     return true;
 }
 #endif  // __APPLE__
 
-SDL_RWops *VirtFs::rwopsOpenRead(const std::string &restrict fname)
+SDL_RWops *rwopsOpenRead(const std::string &restrict fname)
 {
     BLOCK_START("RWopsopenRead")
 #ifdef __APPLE__
@@ -108,34 +111,36 @@ SDL_RWops *VirtFs::rwopsOpenRead(const std::string &restrict fname)
 #endif  // USE_FUZZER
 #ifdef USE_PROFILER
 
-    SDL_RWops *const ret = VirtFs::create_rwops(VirtFs::openRead(fname));
+    SDL_RWops *const ret = create_rwops(openRead(fname));
 
     BLOCK_END("RWopsopenRead")
     return ret;
 #else  // USE_PROFILER
 
-    return VirtFs::create_rwops(VirtFs::openRead(fname));
+    return create_rwops(openRead(fname));
 #endif  // USE_PROFILER
 } /* RWopsopenRead */
 
-SDL_RWops *VirtFs::rwopsOpenWrite(const std::string &restrict fname)
+SDL_RWops *rwopsOpenWrite(const std::string &restrict fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))
         return nullptr;
 #endif  // __APPLE__
 
-    return VirtFs::create_rwops(VirtFs::openWrite(fname));
+    return create_rwops(openWrite(fname));
 } /* RWopsopenWrite */
 
-SDL_RWops *VirtFs::rwopsOpenAppend(const std::string &restrict fname)
+SDL_RWops *rwopsOpenAppend(const std::string &restrict fname)
 {
 #ifdef __APPLE__
     if (!checkFilePath(fname))
         return nullptr;
 #endif  // __APPLE__
 
-    return VirtFs::create_rwops(VirtFs::openAppend(fname));
+    return create_rwops(openAppend(fname));
 } /* RWopsopenAppend */
+
+}  // namespace VirtFs
 
 /* end of virtfsrwops.c ... */

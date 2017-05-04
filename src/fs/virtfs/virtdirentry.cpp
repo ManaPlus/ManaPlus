@@ -22,15 +22,20 @@
 
 #include "debug.h"
 
-VirtDirEntry::VirtDirEntry(const std::string &userDir0,
-                           const std::string &rootDir,
-                           VirtFsFuncs *restrict const funcs0) :
+namespace VirtFs
+{
+
+DirEntry::DirEntry(const std::string &userDir0,
+                   const std::string &rootDir,
+                   VirtFsFuncs *restrict const funcs0) :
     VirtFsEntry(FsEntryType::Dir, funcs0),
     userDir(userDir0)
 {
     root = rootDir;
 }
 
-VirtDirEntry::~VirtDirEntry()
+DirEntry::~DirEntry()
 {
 }
+
+}  // namespace VirtFs

@@ -39,11 +39,6 @@
 
 const char *dirSeparator = nullptr;
 
-namespace
-{
-    std::vector<VirtFsEntry*> mEntries;
-}  // namespace
-
 #ifdef UNITTESTS
 #define reportNonTests logger->log
 #else  // UNITTESTS
@@ -52,6 +47,11 @@ namespace
 
 namespace VirtFs
 {
+    namespace
+    {
+        std::vector<VirtFsEntry*> mEntries;
+    }  // namespace
+
     void init(const std::string &restrict name)
     {
         updateDirSeparator();
@@ -353,7 +353,7 @@ namespace VirtFs
             return false;
         }
         logger->log("Add virtual directory: " + newDir);
-        addEntry(new VirtDirEntry(newDir, rootDir, VirtFsDir::getFuncs()),
+        addEntry(new DirEntry(newDir, rootDir, VirtFsDir::getFuncs()),
             append);
         return true;
     }
@@ -408,7 +408,7 @@ namespace VirtFs
             if (entry->root == oldDir &&
                 entry->type == FsEntryType::Dir)
             {
-                VirtDirEntry *const dirEntry = static_cast<VirtDirEntry*>(
+                DirEntry *const dirEntry = static_cast<DirEntry*>(
                     entry);
                     logger->log("Remove virtual directory: " + oldDir);
                     mEntries.erase(it);
@@ -563,7 +563,7 @@ namespace VirtFs
         {
             VirtFsEntry *const entry = *it;
             if (entry->type == FsEntryType::Dir)
-                delete static_cast<VirtDirEntry*>(entry);
+                delete static_cast<DirEntry*>(entry);
             else if (entry->type == FsEntryType::Zip)
                 delete static_cast<VirtZipEntry*>(entry);
             else

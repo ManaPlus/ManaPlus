@@ -27,6 +27,9 @@
 
 #include "localconsts.h"
 
+namespace VirtFs
+{
+
 struct VirtFsFuncs;
 
 struct VirtFsEntry notfinal
@@ -44,5 +47,7 @@ struct VirtFsEntry notfinal
 
     VirtFsFuncs *funcs;
 };
+
+}  // namespace VirtFs
 
 #endif  // UTILS_VIRTFSENTRY_H

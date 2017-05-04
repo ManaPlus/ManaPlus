@@ -28,6 +28,9 @@
 
 #include "debug.h"
 
+namespace VirtFs
+{
+
 namespace VirtFsDir
 {
     RWOPSINT rwops_seek(SDL_RWops *const rw,
@@ -249,3 +252,5 @@ namespace VirtFsDir
 #endif  // USE_SDL2
 
 }  // namespace VirtFsDir
+
+}  // namespace VirtFs

@@ -25,6 +25,9 @@
 
 #include <string>
 
+namespace VirtFs
+{
+
 struct VirtZipEntry;
 
 struct ZipLocalHeader final
@@ -40,5 +43,7 @@ struct ZipLocalHeader final
     uint32_t uncompressSize;
     bool compressed;
 };
+
+}  // namespace VirtFs
 
 #endif  // UTILS_ZIPLOCALHEADER_H

@@ -578,7 +578,7 @@ void Theme::fillFontsList(StringVect &list)
 
 void Theme::fillSoundsList(StringVect &list)
 {
-    VirtList *const skins = VirtFs::enumerateFiles(
+    VirtFs::VirtList *const skins = VirtFs::enumerateFiles(
         branding.getStringValue("systemsounds"));
 
     FOR_EACH (StringVectCIter, i, skins->names)

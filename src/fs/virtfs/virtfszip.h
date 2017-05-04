@@ -25,6 +25,9 @@
 
 #include "localconsts.h"
 
+namespace VirtFs
+{
+
 struct VirtFile;
 struct VirtList;
 struct VirtFsFuncs;
@@ -84,5 +87,7 @@ namespace VirtFsZip
                          const std::string &restrict fileName,
                          int &restrict fileSize);
 }  // namespace VirtFsZip
+
+}  // namespace VirtFs
 
 #endif  // UTILS_VIRTFSZIP_H

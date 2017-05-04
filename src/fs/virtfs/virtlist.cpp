@@ -22,6 +22,9 @@
 
 #include "debug.h"
 
+namespace VirtFs
+{
+
 VirtList::VirtList() :
     names()
 {
@@ -30,3 +33,5 @@ VirtList::VirtList() :
 VirtList::~VirtList()
 {
 }
+
+}  // namespace VirtFs

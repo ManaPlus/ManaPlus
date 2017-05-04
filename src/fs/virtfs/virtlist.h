@@ -25,6 +25,9 @@
 
 #include "localconsts.h"
 
+namespace VirtFs
+{
+
 struct VirtList final
 {
     VirtList();
@@ -35,5 +38,7 @@ struct VirtList final
 
     StringVect names;
 };
+
+}  // namespace VirtFs
 
 #endif  // UTILS_VIRTLIST_H
