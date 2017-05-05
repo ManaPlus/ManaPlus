@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfs/virtfsziprwops.h"
+#include "fs/virtfs/fsziprwops.h"
 
 #include "logger.h"
 
