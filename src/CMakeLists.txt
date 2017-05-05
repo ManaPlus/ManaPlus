@@ -897,8 +897,8 @@ SET(SRCS
     fs/virtfs/tools.h
     fs/virtfs/virtlist.cpp
     fs/virtfs/virtlist.h
-    fs/virtfs/virtfs.cpp
-    fs/virtfs/virtfs.h
+    fs/virtfs/fs.cpp
+    fs/virtfs/fs.h
     fs/virtfs/rwopstypes.h
     fs/virtfs/direntry.cpp
     fs/virtfs/direntry.h
@@ -1806,8 +1806,8 @@ SET(DYE_CMD_SRCS
     fs/virtfs/tools.h
     fs/virtfs/virtlist.cpp
     fs/virtfs/virtlist.h
-    fs/virtfs/virtfs.cpp
-    fs/virtfs/virtfs.h
+    fs/virtfs/fs.cpp
+    fs/virtfs/fs.h
     fs/virtfs/rwopstypes.h
     fs/virtfs/direntry.cpp
     fs/virtfs/direntry.h

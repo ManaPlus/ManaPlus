@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "fs/files.h"
 #include "fs/paths.h"

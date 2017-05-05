@@ -848,8 +848,8 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtfs/rwopstypes.h \
 	      fs/virtfs/direntry.cpp \
 	      fs/virtfs/direntry.h \
-	      fs/virtfs/virtfs.cpp \
-	      fs/virtfs/virtfs.h \
+	      fs/virtfs/fs.cpp \
+	      fs/virtfs/fs.h \
 	      fs/virtfs/virtfsdir.cpp \
 	      fs/virtfs/virtfsdir.h \
 	      fs/virtfs/virtfsdirrwops.cpp \

@@ -28,7 +28,7 @@
 #include "being/localplayer.h"
 #endif  // DYECMD
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"

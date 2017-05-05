@@ -28,7 +28,7 @@
 
 #include "enums/resources/map/mapitemtype.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "gui/gui.h"
 

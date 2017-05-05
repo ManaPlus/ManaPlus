@@ -31,7 +31,7 @@
 #include "fs/mkdir.h"
 #include "fs/paths.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "utils/base64.h"
 #if defined(__native_client__) || (defined(ANDROID) && defined(USE_SDL2))

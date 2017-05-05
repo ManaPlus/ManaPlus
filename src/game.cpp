@@ -43,7 +43,7 @@
 
 #include "fs/mkdir.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"

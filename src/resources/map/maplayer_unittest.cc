@@ -26,7 +26,7 @@
 #include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "gui/theme.h"
 

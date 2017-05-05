@@ -33,7 +33,7 @@
 #include "enums/resources/map/collisiontype.h"
 #include "enums/resources/map/mapitemtype.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "resources/map/map.h"
 #include "resources/map/mapheights.h"

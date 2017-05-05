@@ -24,7 +24,7 @@
 
 #include "utils/xml/tinyxml2.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "utils/checkutils.h"
 #include "utils/fuzzer.h"

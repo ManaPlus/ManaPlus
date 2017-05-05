@@ -31,7 +31,7 @@
 
 #include "being/actorsprite.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "gui/gui.h"
 #include "gui/theme.h"

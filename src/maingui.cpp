@@ -26,7 +26,7 @@
 #include "commandline.h"
 #include "settings.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "utils/delete2.h"
 #ifdef ANDROID

@@ -33,7 +33,7 @@
 #include "fs/mkdir.h"
 #include "fs/paths.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"

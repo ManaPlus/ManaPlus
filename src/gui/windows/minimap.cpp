@@ -31,7 +31,7 @@
 
 #include "enums/resources/map/blockmask.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "gui/popupmanager.h"
 #include "gui/viewport.h"

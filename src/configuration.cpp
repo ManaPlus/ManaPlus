@@ -27,7 +27,7 @@
 #include "fs/files.h"
 #include "fs/paths.h"
 
-#include "fs/virtfs/virtfs.h"
+#include "fs/virtfs/fs.h"
 
 #include "listeners/configlistener.h"
 
