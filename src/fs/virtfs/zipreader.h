@@ -28,12 +28,12 @@
 namespace VirtFs
 {
 
-struct VirtZipEntry;
+struct ZipEntry;
 struct ZipLocalHeader;
 
 namespace ZipReader
 {
-    bool readArchiveInfo(VirtZipEntry *const entry);
+    bool readArchiveInfo(ZipEntry *const entry);
     std::string getZlibError(const int err);
     void reportZlibError(const std::string &text,
                          const int err);

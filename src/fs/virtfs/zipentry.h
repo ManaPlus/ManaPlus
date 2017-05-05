@@ -32,14 +32,14 @@ namespace VirtFs
 
 struct ZipLocalHeader;
 
-struct VirtZipEntry final : public FsEntry
+struct ZipEntry final : public FsEntry
 {
-    VirtZipEntry(const std::string &restrict archiveName,
-                 FsFuncs *restrict const funcs);
+    ZipEntry(const std::string &restrict archiveName,
+             FsFuncs *restrict const funcs);
 
-    A_DELETE_COPY(VirtZipEntry)
+    A_DELETE_COPY(ZipEntry)
 
-    ~VirtZipEntry();
+    ~ZipEntry();
 
     std::vector<ZipLocalHeader*> mHeaders;
     std::vector<std::string> mDirs;

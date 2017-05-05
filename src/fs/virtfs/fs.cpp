@@ -29,7 +29,7 @@
 #include "fs/virtfs/fsfuncs.h"
 #include "fs/virtfs/fszip.h"
 #include "fs/virtfs/list.h"
-#include "fs/virtfs/virtzipentry.h"
+#include "fs/virtfs/zipentry.h"
 #include "fs/virtfs/zipreader.h"
 
 #include "utils/checkutils.h"
@@ -475,7 +475,7 @@ namespace VirtFs
                 newDir.c_str());
             return false;
         }
-        VirtZipEntry *const entry = new VirtZipEntry(newDir,
+        ZipEntry *const entry = new ZipEntry(newDir,
             FsZip::getFuncs());
         if (ZipReader::readArchiveInfo(entry) == false)
         {
@@ -502,7 +502,7 @@ namespace VirtFs
             if (entry->root == oldDir &&
                 entry->type == FsEntryType::Zip)
             {
-                VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(
+                ZipEntry *const zipEntry = static_cast<ZipEntry*>(
                     entry);
                 logger->log("Remove virtual zip: " + oldDir);
                 mEntries.erase(it);
@@ -565,7 +565,7 @@ namespace VirtFs
             if (entry->type == FsEntryType::Dir)
                 delete static_cast<DirEntry*>(entry);
             else if (entry->type == FsEntryType::Zip)
-                delete static_cast<VirtZipEntry*>(entry);
+                delete static_cast<ZipEntry*>(entry);
             else
                 delete entry;
         }

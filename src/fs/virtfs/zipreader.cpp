@@ -22,7 +22,7 @@
 
 #include "fs/paths.h"
 
-#include "fs/virtfs/virtzipentry.h"
+#include "fs/virtfs/zipentry.h"
 #include "fs/virtfs/ziplocalheader.h"
 
 #include "utils/checkutils.h"
@@ -70,7 +70,7 @@ namespace VirtFs
 
 namespace ZipReader
 {
-    bool readArchiveInfo(VirtZipEntry *const entry)
+    bool readArchiveInfo(ZipEntry *const entry)
     {
         if (entry == nullptr)
         {

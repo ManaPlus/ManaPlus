@@ -28,7 +28,7 @@
 namespace VirtFs
 {
 
-struct VirtZipEntry;
+struct ZipEntry;
 
 struct ZipLocalHeader final
 {
@@ -37,7 +37,7 @@ struct ZipLocalHeader final
     A_DELETE_COPY(ZipLocalHeader)
 
     std::string fileName;
-    VirtZipEntry *zipEntry;
+    ZipEntry *zipEntry;
     uint32_t dataOffset;
     uint32_t compressSize;
     uint32_t uncompressSize;

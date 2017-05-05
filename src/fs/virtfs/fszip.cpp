@@ -24,7 +24,7 @@
 #include "fs/virtfs/fsfuncs.h"
 #include "fs/virtfs/fsziprwops.h"
 #include "fs/virtfs/list.h"
-#include "fs/virtfs/virtzipentry.h"
+#include "fs/virtfs/zipentry.h"
 #include "fs/virtfs/zipreader.h"
 #include "fs/virtfs/ziplocalheader.h"
 
@@ -93,7 +93,7 @@ namespace FsZip
                     const std::string &dirName,
                     std::string &realDir)
     {
-        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)
@@ -121,7 +121,7 @@ namespace FsZip
                 const std::string &filename,
                 const std::string &dirName)
     {
-        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)
@@ -143,7 +143,7 @@ namespace FsZip
                    const std::string &dirName,
                    StringVect &names)
     {
-        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         if (dirName == dirSeparator)
         {
             FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
@@ -203,7 +203,7 @@ namespace FsZip
                   const std::string &dirName,
                   StringVect &names)
     {
-        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         if (dirName == dirSeparator)
         {
             FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
@@ -298,7 +298,7 @@ namespace FsZip
                          const std::string &dirName,
                          StringVect &names)
     {
-        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         if (dirName == dirSeparator)
         {
             FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
@@ -393,7 +393,7 @@ namespace FsZip
                  const std::string &dirName,
                  StringVect &names)
     {
-        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         if (dirName == dirSeparator)
         {
             FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
@@ -488,7 +488,7 @@ namespace FsZip
                      const std::string &dirName,
                      bool &isDirFlag)
     {
-        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         FOR_EACH (std::vector<std::string>::const_iterator,
                   it2,
                   zipEntry->mDirs)
@@ -510,7 +510,7 @@ namespace FsZip
     File *openRead(FsEntry *restrict const entry,
                    const std::string &filename)
     {
-        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)
@@ -640,7 +640,7 @@ namespace FsZip
                          const std::string &restrict filename,
                          int &restrict fileSize)
     {
-        VirtZipEntry *const zipEntry = static_cast<VirtZipEntry*>(entry);
+        ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)

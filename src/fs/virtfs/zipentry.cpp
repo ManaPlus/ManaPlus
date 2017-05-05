@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfs/virtzipentry.h"
+#include "fs/virtfs/zipentry.h"
 
 #include "fs/virtfs/ziplocalheader.h"
 
@@ -29,8 +29,8 @@
 namespace VirtFs
 {
 
-VirtZipEntry::VirtZipEntry(const std::string &restrict archiveName,
-                           FsFuncs *restrict const funcs0) :
+ZipEntry::ZipEntry(const std::string &restrict archiveName,
+                   FsFuncs *restrict const funcs0) :
     FsEntry(FsEntryType::Zip, funcs0),
     mHeaders(),
     mDirs()
@@ -38,7 +38,7 @@ VirtZipEntry::VirtZipEntry(const std::string &restrict archiveName,
     root = archiveName;
 }
 
-VirtZipEntry::~VirtZipEntry()
+ZipEntry::~ZipEntry()
 {
     delete_all(mHeaders);
 }
