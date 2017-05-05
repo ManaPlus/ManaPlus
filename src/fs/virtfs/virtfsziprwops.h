@@ -30,7 +30,7 @@ struct SDL_RWops;
 namespace VirtFs
 {
 
-namespace VirtFsZip
+namespace FsZip
 {
     RWOPSINT rwops_seek(SDL_RWops *const rw,
                         const RWOPSINT offset,
@@ -48,7 +48,7 @@ namespace VirtFsZip
     RWOPSINT rwops_size(SDL_RWops *const rw);
 #endif  // USE_SDL2
 
-}  // namespace VirtFsZip
+}  // namespace FsZip
 
 }  // namespace VirtFs
 

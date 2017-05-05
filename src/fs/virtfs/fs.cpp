@@ -27,7 +27,7 @@
 #include "fs/virtfs/file.h"
 #include "fs/virtfs/fsdir.h"
 #include "fs/virtfs/fsfuncs.h"
-#include "fs/virtfs/virtfszip.h"
+#include "fs/virtfs/fszip.h"
 #include "fs/virtfs/virtlist.h"
 #include "fs/virtfs/virtzipentry.h"
 #include "fs/virtfs/zipreader.h"
@@ -56,7 +56,7 @@ namespace VirtFs
     {
         updateDirSeparator();
         FsDir::init(name);
-        VirtFsZip::init();
+        FsZip::init();
     }
 
     void updateDirSeparator()
@@ -459,7 +459,7 @@ namespace VirtFs
         prepareFsPath(newDir);
         if (Files::existsLocal(newDir) == false)
         {
-            reportNonTests("VirtFsZip::addToSearchPath file not exists: %s",
+            reportNonTests("FsZip::addToSearchPath file not exists: %s",
                 newDir.c_str());
             return false;
         }
@@ -471,12 +471,12 @@ namespace VirtFs
         }
         if (searchEntryByRootInternal(newDir) != nullptr)
         {
-            reportAlways("VirtFsZip::addToSearchPath already exists: %s",
+            reportAlways("FsZip::addToSearchPath already exists: %s",
                 newDir.c_str());
             return false;
         }
         VirtZipEntry *const entry = new VirtZipEntry(newDir,
-            VirtFsZip::getFuncs());
+            FsZip::getFuncs());
         if (ZipReader::readArchiveInfo(entry) == false)
         {
             delete entry;
@@ -558,7 +558,7 @@ namespace VirtFs
     bool deinit()
     {
         FsDir::deinit();
-        VirtFsZip::deinit();
+        FsZip::deinit();
         FOR_EACH (std::vector<FsEntry*>::iterator, it, mEntries)
         {
             FsEntry *const entry = *it;

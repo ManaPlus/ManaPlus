@@ -33,7 +33,7 @@ struct VirtList;
 struct FsFuncs;
 struct FsEntry;
 
-namespace VirtFsZip
+namespace FsZip
 {
     FsFuncs *getFuncs();
     void init();
@@ -86,7 +86,7 @@ namespace VirtFsZip
     const char *loadFile(FsEntry *restrict const entry,
                          const std::string &restrict fileName,
                          int &restrict fileSize);
-}  // namespace VirtFsZip
+}  // namespace FsZip
 
 }  // namespace VirtFs
 

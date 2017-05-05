@@ -32,7 +32,7 @@
 namespace VirtFs
 {
 
-namespace VirtFsZip
+namespace FsZip
 {
     RWOPSINT rwops_seek(SDL_RWops *const rw,
                         const RWOPSINT offset,
@@ -148,6 +148,6 @@ namespace VirtFsZip
     }
 #endif  // USE_SDL2
 
-}  // namespace VirtFsZip
+}  // namespace FsZip
 
 }  // namespace VirtFs

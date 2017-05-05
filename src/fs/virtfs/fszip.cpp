@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfs/virtfszip.h"
+#include "fs/virtfs/fszip.h"
 
 #include "fs/virtfs/file.h"
 #include "fs/virtfs/fsfuncs.h"
@@ -43,7 +43,7 @@ namespace
 namespace VirtFs
 {
 
-namespace VirtFsZip
+namespace FsZip
 {
     FsFuncs *getFuncs()
     {
@@ -61,30 +61,30 @@ namespace VirtFsZip
 
     void initFuncs(FsFuncs *restrict const ptr)
     {
-        ptr->close = &VirtFsZip::close;
-        ptr->read = &VirtFsZip::read;
-        ptr->write = &VirtFsZip::write;
-        ptr->fileLength = &VirtFsZip::fileLength;
-        ptr->tell = &VirtFsZip::tell;
-        ptr->seek = &VirtFsZip::seek;
-        ptr->eof = &VirtFsZip::eof;
-        ptr->exists = &VirtFsZip::exists;
-        ptr->getRealDir = &VirtFsZip::getRealDir;
-        ptr->enumerate = &VirtFsZip::enumerate;
-        ptr->isDirectory = &VirtFsZip::isDirectory;
-        ptr->openRead = &VirtFsZip::openRead;
-        ptr->openWrite = &VirtFsZip::openWrite;
-        ptr->openAppend = &VirtFsZip::openAppend;
-        ptr->loadFile = &VirtFsZip::loadFile;
-        ptr->getFiles = &VirtFsZip::getFiles;
-        ptr->getFilesWithDir = &VirtFsZip::getFilesWithDir;
-        ptr->getDirs = &VirtFsZip::getDirs;
-        ptr->rwops_seek = &VirtFsZip::rwops_seek;
-        ptr->rwops_read = &VirtFsZip::rwops_read;
-        ptr->rwops_write = &VirtFsZip::rwops_write;
-        ptr->rwops_close = &VirtFsZip::rwops_close;
+        ptr->close = &FsZip::close;
+        ptr->read = &FsZip::read;
+        ptr->write = &FsZip::write;
+        ptr->fileLength = &FsZip::fileLength;
+        ptr->tell = &FsZip::tell;
+        ptr->seek = &FsZip::seek;
+        ptr->eof = &FsZip::eof;
+        ptr->exists = &FsZip::exists;
+        ptr->getRealDir = &FsZip::getRealDir;
+        ptr->enumerate = &FsZip::enumerate;
+        ptr->isDirectory = &FsZip::isDirectory;
+        ptr->openRead = &FsZip::openRead;
+        ptr->openWrite = &FsZip::openWrite;
+        ptr->openAppend = &FsZip::openAppend;
+        ptr->loadFile = &FsZip::loadFile;
+        ptr->getFiles = &FsZip::getFiles;
+        ptr->getFilesWithDir = &FsZip::getFilesWithDir;
+        ptr->getDirs = &FsZip::getDirs;
+        ptr->rwops_seek = &FsZip::rwops_seek;
+        ptr->rwops_read = &FsZip::rwops_read;
+        ptr->rwops_write = &FsZip::rwops_write;
+        ptr->rwops_close = &FsZip::rwops_close;
 #ifdef USE_SDL2
-        ptr->rwops_size = &VirtFsZip::rwops_size;
+        ptr->rwops_size = &FsZip::rwops_size;
 #endif  // USE_SDL2
     }
 
@@ -566,7 +566,7 @@ namespace VirtFsZip
         }
         if (buffer == nullptr)
         {
-            reportAlways("VirtFsZip::read buffer is null");
+            reportAlways("FsZip::read buffer is null");
             return 0;
         }
         const size_t pos = file->mPos;
@@ -663,6 +663,6 @@ namespace VirtFsZip
         }
         return nullptr;
     }
-}  // namespace VirtFsZip
+}  // namespace FsZip
 
 }  // namespace VirtFs
