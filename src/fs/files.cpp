@@ -275,7 +275,7 @@ void Files::saveTextFile(const std::string &path,
 
 void Files::deleteFilesInDirectory(std::string path)
 {
-    path == pathJoin(path, dirSeparator);
+    path = pathJoin(path, dirSeparator);
     const struct dirent *next_file = nullptr;
     DIR *const dir = opendir(path.c_str());
 
