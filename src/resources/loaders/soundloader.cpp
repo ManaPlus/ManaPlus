@@ -22,7 +22,7 @@
 
 #include "resources/soundeffect.h"
 
-#include "fs/virtfs/virtfsrwops.h"
+#include "fs/virtfs/rwops.h"
 
 #include "resources/loaders/soundloader.h"
 

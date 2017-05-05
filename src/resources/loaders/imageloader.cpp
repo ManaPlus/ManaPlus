@@ -22,7 +22,7 @@
 
 #include "resources/imagehelper.h"
 
-#include "fs/virtfs/virtfsrwops.h"
+#include "fs/virtfs/rwops.h"
 
 #include "resources/image/image.h"
 

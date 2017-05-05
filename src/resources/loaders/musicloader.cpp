@@ -22,7 +22,7 @@
 
 #include "resources/sdlmusic.h"
 
-#include "fs/virtfs/virtfsrwops.h"
+#include "fs/virtfs/rwops.h"
 
 #include "resources/loaders/musicloader.h"
 

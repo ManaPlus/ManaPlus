@@ -28,7 +28,7 @@
 #include "fs/files.h"
 
 #include "fs/virtfs/virtfs.h"
-#include "fs/virtfs/virtfsrwops.h"
+#include "fs/virtfs/rwops.h"
 
 #include "gui/gui.h"
 

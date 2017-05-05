@@ -28,7 +28,7 @@
 #include "logger.h"
 #endif  // DEBUG_IMAGES
 
-#include "fs/virtfs/virtfsrwops.h"
+#include "fs/virtfs/rwops.h"
 
 #include "utils/mathutils.h"
 #include "utils/sdlcheckutils.h"
