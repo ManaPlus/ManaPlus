@@ -28,7 +28,7 @@
 
 #include "fs/paths.h"
 
-#include "fs/virtfs/virtfstools.h"
+#include "fs/virtfs/tools.h"
 
 #include "gui/gui.h"
 

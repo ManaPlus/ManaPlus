@@ -22,7 +22,7 @@
 
 #include "configuration.h"
 
-#include "fs/virtfs/virtfstools.h"
+#include "fs/virtfs/tools.h"
 
 #include "utils/xmlutils.h"
 

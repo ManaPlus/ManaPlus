@@ -43,7 +43,7 @@
 #include "enums/being/attributesstrings.h"
 
 #include "fs/virtfs/virtfs.h"
-#include "fs/virtfs/virtfstools.h"
+#include "fs/virtfs/tools.h"
 
 #include "gui/dialogsmanager.h"
 #include "gui/gui.h"

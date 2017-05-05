@@ -21,7 +21,7 @@
 #ifndef RESOURCES_BEINGCOMMON_H
 #define RESOURCES_BEINGCOMMON_H
 
-#include "fs/virtfs/virtfstools.h"
+#include "fs/virtfs/tools.h"
 
 #include "utils/xml.h"
 

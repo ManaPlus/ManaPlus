@@ -581,8 +581,8 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtfs/fsfuncs.h \
 	      fs/virtfs/virtfsrwops.cpp \
 	      fs/virtfs/virtfsrwops.h \
-	      fs/virtfs/virtfstools.cpp \
-	      fs/virtfs/virtfstools.h \
+	      fs/virtfs/tools.cpp \
+	      fs/virtfs/tools.h \
 	      fs/virtfs/virtlist.cpp \
 	      fs/virtfs/virtlist.h \
 	      utils/process.cpp \

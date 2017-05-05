@@ -35,7 +35,7 @@
 
 #include "const/gui/chat.h"
 
-#include "fs/virtfs/virtfstools.h"
+#include "fs/virtfs/tools.h"
 
 #include "input/inputmanager.h"
 

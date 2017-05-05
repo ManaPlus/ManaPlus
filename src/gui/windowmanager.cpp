@@ -29,7 +29,7 @@
 #include "settings.h"
 #include "spellmanager.h"
 
-#include "fs/virtfs/virtfstools.h"
+#include "fs/virtfs/tools.h"
 
 #include "gui/gui.h"
 #include "gui/userpalette.h"
