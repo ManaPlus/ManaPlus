@@ -862,8 +862,8 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtfs/virtfsziprwops.h \
 	      fs/virtfs/virtzipentry.cpp \
 	      fs/virtfs/virtzipentry.h \
-	      fs/virtfs/zip.cpp \
-	      fs/virtfs/zip.h \
+	      fs/virtfs/zipreader.cpp \
+	      fs/virtfs/zipreader.h \
 	      fs/virtfs/ziplocalheader.cpp \
 	      fs/virtfs/ziplocalheader.h
 

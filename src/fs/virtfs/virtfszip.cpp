@@ -25,7 +25,7 @@
 #include "fs/virtfs/virtfsziprwops.h"
 #include "fs/virtfs/virtlist.h"
 #include "fs/virtfs/virtzipentry.h"
-#include "fs/virtfs/zip.h"
+#include "fs/virtfs/zipreader.h"
 #include "fs/virtfs/ziplocalheader.h"
 
 #include "utils/checkutils.h"
@@ -518,7 +518,8 @@ namespace VirtFsZip
             const ZipLocalHeader *restrict const header = *it2;
             if (header->fileName == filename)
             {
-                const uint8_t *restrict const buf = Zip::readFile(header);
+                const uint8_t *restrict const buf =
+                    ZipReader::readFile(header);
                 if (buf == nullptr)
                     return nullptr;
                 File *restrict const file = new File(&funcs,
@@ -647,7 +648,8 @@ namespace VirtFsZip
             const ZipLocalHeader *restrict const header = *it2;
             if (header->fileName == filename)
             {
-                const uint8_t *restrict const buf = Zip::readFile(header);
+                const uint8_t *restrict const buf =
+                    ZipReader::readFile(header);
                 if (buf == nullptr)
                     return nullptr;
 

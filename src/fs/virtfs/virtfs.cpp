@@ -30,7 +30,7 @@
 #include "fs/virtfs/virtfszip.h"
 #include "fs/virtfs/virtlist.h"
 #include "fs/virtfs/virtzipentry.h"
-#include "fs/virtfs/zip.h"
+#include "fs/virtfs/zipreader.h"
 
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"
@@ -477,7 +477,7 @@ namespace VirtFs
         }
         VirtZipEntry *const entry = new VirtZipEntry(newDir,
             VirtFsZip::getFuncs());
-        if (Zip::readArchiveInfo(entry) == false)
+        if (ZipReader::readArchiveInfo(entry) == false)
         {
             delete entry;
             return false;

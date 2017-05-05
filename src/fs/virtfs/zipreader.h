@@ -31,7 +31,7 @@ namespace VirtFs
 struct VirtZipEntry;
 struct ZipLocalHeader;
 
-namespace Zip
+namespace ZipReader
 {
     bool readArchiveInfo(VirtZipEntry *const entry);
     std::string getZlibError(const int err);
@@ -39,7 +39,7 @@ namespace Zip
                          const int err);
     uint8_t *readCompressedFile(const ZipLocalHeader *restrict const header);
     const uint8_t *readFile(const ZipLocalHeader *restrict const header);
-}  // namespace Zip
+}  // namespace ZipReader
 
 }  // namespace VirtFs
 

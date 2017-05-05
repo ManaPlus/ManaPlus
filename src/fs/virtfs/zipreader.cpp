@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfs/zip.h"
+#include "fs/virtfs/zipreader.h"
 
 #include "fs/paths.h"
 
@@ -68,7 +68,7 @@ extern const char *dirSeparator;
 namespace VirtFs
 {
 
-namespace Zip
+namespace ZipReader
 {
     bool readArchiveInfo(VirtZipEntry *const entry)
     {
@@ -242,7 +242,7 @@ namespace Zip
     {
         if (header == nullptr)
         {
-            reportAlways("Zip::readCompressedFile: header is null");
+            reportAlways("ZipReader::readCompressedFile: header is null");
             return nullptr;
         }
         FILE *restrict const arcFile = fopen(
@@ -321,6 +321,6 @@ namespace Zip
         delete [] in;
         return out;
     }
-}  // namespace Zip
+}  // namespace ZipReader
 
 }  // namespace VirtFs
