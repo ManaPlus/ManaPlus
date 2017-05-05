@@ -18,19 +18,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfs/virtlist.h"
+#include "fs/virtfs/list.h"
 
 #include "debug.h"
 
 namespace VirtFs
 {
 
-VirtList::VirtList() :
+List::List() :
     names()
 {
 }
 
-VirtList::~VirtList()
+List::~List()
 {
 }
 

@@ -30,7 +30,7 @@
 #include "const/gui/theme.h"
 
 #include "fs/virtfs/fs.h"
-#include "fs/virtfs/virtlist.h"
+#include "fs/virtfs/list.h"
 
 #include "gui/skin.h"
 #include "gui/themeinfo.h"
@@ -578,7 +578,7 @@ void Theme::fillFontsList(StringVect &list)
 
 void Theme::fillSoundsList(StringVect &list)
 {
-    VirtFs::VirtList *const skins = VirtFs::enumerateFiles(
+    VirtFs::List *const skins = VirtFs::enumerateFiles(
         branding.getStringValue("systemsounds"));
 
     FOR_EACH (StringVectCIter, i, skins->names)

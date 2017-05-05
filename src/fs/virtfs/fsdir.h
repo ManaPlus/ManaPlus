@@ -33,7 +33,7 @@ namespace VirtFs
 struct File;
 struct FsEntry;
 struct FsFuncs;
-struct VirtList;
+struct List;
 
 namespace FsDir
 {
@@ -71,7 +71,7 @@ namespace FsDir
                      const std::string &dirName,
                      bool &isDirFlag);
     bool isSymbolicLink(std::string name);
-    void freeList(VirtList *restrict const handle);
+    void freeList(List *restrict const handle);
     bool setWriteDir(std::string newDir);
     bool getRealDir(FsEntry *restrict const entry,
                     const std::string &filename,

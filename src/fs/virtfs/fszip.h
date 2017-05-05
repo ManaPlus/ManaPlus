@@ -29,7 +29,7 @@ namespace VirtFs
 {
 
 struct File;
-struct VirtList;
+struct List;
 struct FsFuncs;
 struct FsEntry;
 
@@ -57,7 +57,7 @@ namespace FsZip
     bool isDirectory(FsEntry *restrict const entry,
                      const std::string &dirName,
                      bool &isDirFlag);
-    void freeList(VirtList *restrict const handle);
+    void freeList(List *restrict const handle);
     File *openRead(FsEntry *restrict const entry,
                    const std::string &filename);
     File *openWrite(FsEntry *restrict const entry,

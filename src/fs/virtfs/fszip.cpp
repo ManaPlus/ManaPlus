@@ -23,7 +23,7 @@
 #include "fs/virtfs/file.h"
 #include "fs/virtfs/fsfuncs.h"
 #include "fs/virtfs/fsziprwops.h"
-#include "fs/virtfs/virtlist.h"
+#include "fs/virtfs/list.h"
 #include "fs/virtfs/virtzipentry.h"
 #include "fs/virtfs/zipreader.h"
 #include "fs/virtfs/ziplocalheader.h"
@@ -502,7 +502,7 @@ namespace FsZip
         return false;
     }
 
-    void freeList(VirtList *restrict const handle)
+    void freeList(List *restrict const handle)
     {
         delete handle;
     }

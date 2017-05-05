@@ -33,7 +33,7 @@ namespace VirtFs
 {
     struct File;
     struct FsEntry;
-    struct VirtList;
+    struct List;
 
     void init(const std::string &restrict name);
     void updateDirSeparator();
@@ -41,10 +41,10 @@ namespace VirtFs
     const char *getBaseDir();
     const char *getUserDir();
     bool exists(std::string name);
-    VirtList *enumerateFiles(std::string dir) RETURNS_NONNULL;
+    List *enumerateFiles(std::string dir) RETURNS_NONNULL;
     bool isDirectory(std::string name);
     bool isSymbolicLink(const std::string &restrict name);
-    void freeList(VirtList *restrict const handle);
+    void freeList(List *restrict const handle);
     File *openRead(std::string filename);
     File *openWrite(std::string filename);
     File *openAppend(std::string filename);

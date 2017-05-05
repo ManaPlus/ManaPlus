@@ -24,7 +24,7 @@
 #include "fs/paths.h"
 
 #include "fs/virtfs/fs.h"
-#include "fs/virtfs/virtlist.h"
+#include "fs/virtfs/list.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
@@ -216,7 +216,7 @@ static void removeTemp(StringVect &restrict list)
     }
 }
 
-static bool inList(const VirtFs::VirtList *const list,
+static bool inList(const VirtFs::List *const list,
                    const std::string &name)
 {
     FOR_EACH (StringVectCIter, it, list->names)
@@ -234,7 +234,7 @@ TEST_CASE("VirtFs enumerateFiles1")
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
-    VirtFs::VirtList *list = nullptr;
+    VirtFs::List *list = nullptr;
 
     const int cnt1 = VirtFs::exists("test/test2.txt") ? 28 : 27;
     const int cnt2 = 28;
@@ -277,7 +277,7 @@ TEST_CASE("VirtFs enumerateFiles2")
     VirtFs::mountDirSilent("../data/test/dir1",
         Append_false);
 
-    VirtFs::VirtList *list = nullptr;
+    VirtFs::List *list = nullptr;
 
     list = VirtFs::enumerateFiles("/");
     REQUIRE(list->names.size() == 5);
@@ -299,7 +299,7 @@ TEST_CASE("VirtFs enumerateFiles3")
     VirtFs::mountZip(prefix + "data/test/test.zip",
         Append_false);
 
-    VirtFs::VirtList *list = nullptr;
+    VirtFs::List *list = nullptr;
 
     list = VirtFs::enumerateFiles("/");
     REQUIRE(list->names.size() == 1);
@@ -321,7 +321,7 @@ TEST_CASE("VirtFs enumerateFiles4")
     VirtFs::mountZip(prefix + "data/test/test2.zip",
         Append_false);
 
-    VirtFs::VirtList *list = nullptr;
+    VirtFs::List *list = nullptr;
 
     list = VirtFs::enumerateFiles("/");
     REQUIRE(list->names.size() == 4);
@@ -347,7 +347,7 @@ TEST_CASE("VirtFs enumerateFiles5")
         Append_false);
     VirtFs::mountDirSilent(prefix + "data/test", Append_false);
 
-    VirtFs::VirtList *list = nullptr;
+    VirtFs::List *list = nullptr;
 
     list = VirtFs::enumerateFiles("dir2");
     REQUIRE(inList(list, "file1.txt"));

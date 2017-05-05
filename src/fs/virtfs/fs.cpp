@@ -28,7 +28,7 @@
 #include "fs/virtfs/fsdir.h"
 #include "fs/virtfs/fsfuncs.h"
 #include "fs/virtfs/fszip.h"
-#include "fs/virtfs/virtlist.h"
+#include "fs/virtfs/list.h"
 #include "fs/virtfs/virtzipentry.h"
 #include "fs/virtfs/zipreader.h"
 
@@ -136,9 +136,9 @@ namespace VirtFs
         return false;
     }
 
-    VirtList *enumerateFiles(std::string dirName)
+    List *enumerateFiles(std::string dirName)
     {
-        VirtList *const list = new VirtList;
+        List *const list = new List;
         prepareFsPath(dirName);
         if (checkPath(dirName) == false)
         {
@@ -258,7 +258,7 @@ namespace VirtFs
         return FsDir::isSymbolicLink(name);
     }
 
-    void freeList(VirtList *restrict const handle)
+    void freeList(List *restrict const handle)
     {
         delete handle;
     }

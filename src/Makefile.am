@@ -583,8 +583,8 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtfs/rwops.h \
 	      fs/virtfs/tools.cpp \
 	      fs/virtfs/tools.h \
-	      fs/virtfs/virtlist.cpp \
-	      fs/virtfs/virtlist.h \
+	      fs/virtfs/list.cpp \
+	      fs/virtfs/list.h \
 	      utils/process.cpp \
 	      utils/process.h \
 	      utils/sdl2helper.cpp \

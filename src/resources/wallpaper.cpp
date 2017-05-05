@@ -25,7 +25,7 @@
 #include "configuration.h"
 
 #include "fs/virtfs/fs.h"
-#include "fs/virtfs/virtlist.h"
+#include "fs/virtfs/list.h"
 
 #include "resources/wallpaperdata.h"
 
@@ -85,7 +85,7 @@ void Wallpaper::loadWallpapers()
 {
     wallpaperData.clear();
     initDefaultWallpaperPaths();
-    VirtFs::VirtList *const imgs = VirtFs::enumerateFiles(wallpaperPath);
+    VirtFs::List *const imgs = VirtFs::enumerateFiles(wallpaperPath);
 
     FOR_EACH (StringVectCIter, i, imgs->names)
     {

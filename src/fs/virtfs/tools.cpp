@@ -25,7 +25,7 @@
 #include "fs/paths.h"
 
 #include "fs/virtfs/fs.h"
-#include "fs/virtfs/virtlist.h"
+#include "fs/virtfs/list.h"
 
 #include "utils/stringutils.h"
 
@@ -40,7 +40,7 @@ namespace VirtFs
                               const std::string &restrict ext,
                               const Append append)
     {
-        VirtList *const list = VirtFs::enumerateFiles(path);
+        List *const list = VirtFs::enumerateFiles(path);
         FOR_EACH (StringVectCIter, i, list->names)
         {
             const std::string str = *i;
@@ -60,7 +60,7 @@ namespace VirtFs
     void searchAndRemoveArchives(const std::string &restrict path,
                                  const std::string &restrict ext)
     {
-        VirtList *const list = VirtFs::enumerateFiles(path);
+        List *const list = VirtFs::enumerateFiles(path);
         FOR_EACH (StringVectCIter, i, list->names)
         {
             const std::string str = *i;

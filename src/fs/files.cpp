@@ -26,7 +26,7 @@
 
 #include "fs/virtfs/fs.h"
 #include "fs/virtfs/tools.h"
-#include "fs/virtfs/virtlist.h"
+#include "fs/virtfs/list.h"
 #endif  // defined(ANDROID) || defined(__native_client__)
 
 #include "utils/checkutils.h"
@@ -48,7 +48,7 @@ void Files::extractLocale()
     VirtFs::mountZip(fileName2, Append_false);
 
     const std::string localDir = std::string(getenv("APPDIR"));
-    VirtFs::VirtList *const rootDirs = VirtFs::enumerateFiles("locale");
+    VirtFs::List *const rootDirs = VirtFs::enumerateFiles("locale");
     FOR_EACH (StringVectCIter, i, rootDirs->names)
     {
         const std::string dir = pathJoin("locale", *i);
@@ -110,7 +110,7 @@ void Files::copyVirtFsDir(const std::string &restrict inDir,
                           const std::string &restrict outDir)
 {
     mkdir_r(outDir.c_str());
-    VirtFs::VirtList *const files = VirtFs::enumerateFiles(inDir);
+    VirtFs::List *const files = VirtFs::enumerateFiles(inDir);
     FOR_EACH (StringVectCIter, i, files->names)
     {
         const std::string file = pathJoin(inDir, *i);

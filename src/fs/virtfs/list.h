@@ -28,13 +28,13 @@
 namespace VirtFs
 {
 
-struct VirtList final
+struct List final
 {
-    VirtList();
+    List();
 
-    A_DELETE_COPY(VirtList)
+    A_DELETE_COPY(List)
 
-    ~VirtList();
+    ~List();
 
     StringVect names;
 };

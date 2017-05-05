@@ -28,7 +28,7 @@
 #include "fs/virtfs/file.h"
 #include "fs/virtfs/fsdirrwops.h"
 #include "fs/virtfs/fsfuncs.h"
-#include "fs/virtfs/virtlist.h"
+#include "fs/virtfs/list.h"
 
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"
@@ -266,7 +266,7 @@ namespace FsDir
 #endif  // WIN32
     }
 
-    void freeList(VirtList *restrict const handle)
+    void freeList(List *restrict const handle)
     {
         delete handle;
     }
