@@ -31,7 +31,7 @@
 namespace VirtFs
 {
 
-namespace VirtFsDir
+namespace FsDir
 {
     RWOPSINT rwops_seek(SDL_RWops *const rw,
                         const RWOPSINT offset,
@@ -88,7 +88,7 @@ namespace VirtFsDir
             struct stat statbuf;
             if (fstat(fd, &statbuf) == -1)
             {
-                reportAlways("VirtFsDir::fileLength error.");
+                reportAlways("FsDir::fileLength error.");
                 len = -1;
             }
             else
@@ -172,7 +172,7 @@ namespace VirtFsDir
             struct stat statbuf;
             if (fstat(fd, &statbuf) == -1)
             {
-                reportAlways("VirtFsDir::fileLength error.");
+                reportAlways("FsDir::fileLength error.");
                 return CAST_S32(rc);
             }
 #endif  // USE_FILE_FOPEN
@@ -208,7 +208,7 @@ namespace VirtFsDir
             struct stat statbuf;
             if (fstat(fd, &statbuf) == -1)
             {
-                reportAlways("VirtFsDir::fileLength error.");
+                reportAlways("FsDir::fileLength error.");
                 return CAST_S32(rc);
             }
 #endif  // USE_FILE_FOPEN
@@ -243,7 +243,7 @@ namespace VirtFsDir
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
         {
-            reportAlways("VirtFsDir::fileLength error.");
+            reportAlways("FsDir::fileLength error.");
             return -1;
         }
         return static_cast<int64_t>(statbuf.st_size);
@@ -251,6 +251,6 @@ namespace VirtFsDir
     }
 #endif  // USE_SDL2
 
-}  // namespace VirtFsDir
+}  // namespace FsDir
 
 }  // namespace VirtFs

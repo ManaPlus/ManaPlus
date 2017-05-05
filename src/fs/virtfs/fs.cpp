@@ -25,7 +25,7 @@
 
 #include "fs/virtfs/direntry.h"
 #include "fs/virtfs/file.h"
-#include "fs/virtfs/virtfsdir.h"
+#include "fs/virtfs/fsdir.h"
 #include "fs/virtfs/fsfuncs.h"
 #include "fs/virtfs/virtfszip.h"
 #include "fs/virtfs/virtlist.h"
@@ -55,7 +55,7 @@ namespace VirtFs
     void init(const std::string &restrict name)
     {
         updateDirSeparator();
-        VirtFsDir::init(name);
+        FsDir::init(name);
         VirtFsZip::init();
     }
 
@@ -75,12 +75,12 @@ namespace VirtFs
 
     const char *getBaseDir()
     {
-        return VirtFsDir::getBaseDir();
+        return FsDir::getBaseDir();
     }
 
     const char *getUserDir()
     {
-        return VirtFsDir::getUserDir();
+        return FsDir::getUserDir();
     }
 
     std::vector<FsEntry*> &getEntries()
@@ -118,7 +118,7 @@ namespace VirtFs
         prepareFsPath(name);
         if (checkPath(name) == false)
         {
-            reportAlways("VirtFsDir::exists invalid path: %s",
+            reportAlways("FsDir::exists invalid path: %s",
                 name.c_str());
             return false;
         }
@@ -255,7 +255,7 @@ namespace VirtFs
 
     bool isSymbolicLink(const std::string &restrict name)
     {
-        return VirtFsDir::isSymbolicLink(name);
+        return FsDir::isSymbolicLink(name);
     }
 
     void freeList(VirtList *restrict const handle)
@@ -322,7 +322,7 @@ namespace VirtFs
 
     bool setWriteDir(const std::string &restrict newDir)
     {
-        return VirtFsDir::setWriteDir(newDir);
+        return FsDir::setWriteDir(newDir);
     }
 
     void addEntry(FsEntry *const entry,
@@ -339,7 +339,7 @@ namespace VirtFs
     {
         if (newDir.find(".zip") != std::string::npos)
         {
-            reportAlways("Called VirtFsDir::addToSearchPath with zip archive");
+            reportAlways("Called FsDir::addToSearchPath with zip archive");
             return false;
         }
         std::string rootDir = newDir;
@@ -353,7 +353,7 @@ namespace VirtFs
             return false;
         }
         logger->log("Add virtual directory: " + newDir);
-        addEntry(new DirEntry(newDir, rootDir, VirtFsDir::getFuncs()),
+        addEntry(new DirEntry(newDir, rootDir, FsDir::getFuncs()),
             append);
         return true;
     }
@@ -521,7 +521,7 @@ namespace VirtFs
         prepareFsPath(fileName);
         if (checkPath(fileName) == false)
         {
-            reportAlways("VirtFsDir::getRealDir invalid path: %s",
+            reportAlways("FsDir::getRealDir invalid path: %s",
                 fileName.c_str());
             return std::string();
         }
@@ -547,17 +547,17 @@ namespace VirtFs
 
     bool mkdir(const std::string &restrict dirname)
     {
-        return VirtFsDir::mkdir(dirname);
+        return FsDir::mkdir(dirname);
     }
 
     bool remove(const std::string &restrict filename)
     {
-        return VirtFsDir::remove(filename);
+        return FsDir::remove(filename);
     }
 
     bool deinit()
     {
-        VirtFsDir::deinit();
+        FsDir::deinit();
         VirtFsZip::deinit();
         FOR_EACH (std::vector<FsEntry*>::iterator, it, mEntries)
         {
@@ -575,7 +575,7 @@ namespace VirtFs
 
     void permitLinks(const bool val)
     {
-        VirtFsDir::permitLinks(val);
+        FsDir::permitLinks(val);
     }
 
     int close(File *restrict const file)

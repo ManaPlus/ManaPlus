@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/virtfs/virtfsdir.h"
+#include "fs/virtfs/fsdir.h"
 
 #include "fs/files.h"
 #include "fs/mkdir.h"
@@ -59,7 +59,7 @@ namespace
     FsFuncs funcs;
 }  // namespace
 
-namespace VirtFsDir
+namespace FsDir
 {
     File *openInternal(FsEntry *restrict const entry,
                        const std::string &filename,
@@ -125,30 +125,30 @@ namespace VirtFsDir
 
     void initFuncs(FsFuncs *restrict const ptr)
     {
-        ptr->close = &VirtFsDir::close;
-        ptr->read = &VirtFsDir::read;
-        ptr->write = &VirtFsDir::write;
-        ptr->fileLength = &VirtFsDir::fileLength;
-        ptr->tell = &VirtFsDir::tell;
-        ptr->seek = &VirtFsDir::seek;
-        ptr->eof = &VirtFsDir::eof;
-        ptr->exists = &VirtFsDir::exists;
-        ptr->getRealDir = &VirtFsDir::getRealDir;
-        ptr->enumerate = &VirtFsDir::enumerate;
-        ptr->isDirectory = &VirtFsDir::isDirectory;
-        ptr->openRead = &VirtFsDir::openRead;
-        ptr->openWrite = &VirtFsDir::openWrite;
-        ptr->openAppend = &VirtFsDir::openAppend;
-        ptr->loadFile = &VirtFsDir::loadFile;
-        ptr->getFiles = &VirtFsDir::getFiles;
-        ptr->getFilesWithDir = &VirtFsDir::getFilesWithDir;
-        ptr->getDirs = &VirtFsDir::getDirs;
-        ptr->rwops_seek = &VirtFsDir::rwops_seek;
-        ptr->rwops_read = &VirtFsDir::rwops_read;
-        ptr->rwops_write = &VirtFsDir::rwops_write;
-        ptr->rwops_close = &VirtFsDir::rwops_close;
+        ptr->close = &FsDir::close;
+        ptr->read = &FsDir::read;
+        ptr->write = &FsDir::write;
+        ptr->fileLength = &FsDir::fileLength;
+        ptr->tell = &FsDir::tell;
+        ptr->seek = &FsDir::seek;
+        ptr->eof = &FsDir::eof;
+        ptr->exists = &FsDir::exists;
+        ptr->getRealDir = &FsDir::getRealDir;
+        ptr->enumerate = &FsDir::enumerate;
+        ptr->isDirectory = &FsDir::isDirectory;
+        ptr->openRead = &FsDir::openRead;
+        ptr->openWrite = &FsDir::openWrite;
+        ptr->openAppend = &FsDir::openAppend;
+        ptr->loadFile = &FsDir::loadFile;
+        ptr->getFiles = &FsDir::getFiles;
+        ptr->getFilesWithDir = &FsDir::getFilesWithDir;
+        ptr->getDirs = &FsDir::getDirs;
+        ptr->rwops_seek = &FsDir::rwops_seek;
+        ptr->rwops_read = &FsDir::rwops_read;
+        ptr->rwops_write = &FsDir::rwops_write;
+        ptr->rwops_close = &FsDir::rwops_close;
 #ifdef USE_SDL2
-        ptr->rwops_size = &VirtFsDir::rwops_size;
+        ptr->rwops_size = &FsDir::rwops_size;
 #endif  // USE_SDL2
     }
 
@@ -250,7 +250,7 @@ namespace VirtFsDir
         prepareFsPath(name);
         if (checkPath(name) == false)
         {
-            reportAlways("VirtFsDir::isSymbolicLink invalid path: %s",
+            reportAlways("FsDir::isSymbolicLink invalid path: %s",
                 name.c_str());
             return false;
         }
@@ -285,7 +285,7 @@ namespace VirtFsDir
         prepareFsPath(dirname);
         if (mWriteDir.empty())
         {
-            reportAlways("VirtFsDir::mkdir write dir is empty");
+            reportAlways("FsDir::mkdir write dir is empty");
             return false;
         }
         return mkdir_r((mWriteDir + dirname).c_str()) != -1;
@@ -296,7 +296,7 @@ namespace VirtFsDir
         prepareFsPath(filename);
         if (mWriteDir.empty())
         {
-            reportAlways("VirtFsDir::remove write dir is empty");
+            reportAlways("FsDir::remove write dir is empty");
             return false;
         }
         return ::remove((mWriteDir + filename).c_str()) != 0;
@@ -325,7 +325,7 @@ namespace VirtFsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("VirtFsDir::read file not opened.");
+            reportAlways("FsDir::read file not opened.");
             return 0;
         }
 #ifdef USE_FILE_FOPEN
@@ -349,7 +349,7 @@ namespace VirtFsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("VirtFsDir::write file not opened.");
+            reportAlways("FsDir::write file not opened.");
             return 0;
         }
 #ifdef USE_FILE_FOPEN
@@ -370,7 +370,7 @@ namespace VirtFsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("VirtFsDir::fileLength file not opened.");
+            reportAlways("FsDir::fileLength file not opened.");
             return 0;
         }
 #ifdef USE_FILE_FOPEN
@@ -383,7 +383,7 @@ namespace VirtFsDir
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
         {
-            reportAlways("VirtFsDir::fileLength error.");
+            reportAlways("FsDir::fileLength error.");
             return -1;
         }
         return static_cast<int64_t>(statbuf.st_size);
@@ -398,7 +398,7 @@ namespace VirtFsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("VirtFsDir::tell file not opened.");
+            reportAlways("FsDir::tell file not opened.");
             return 0;
         }
 #ifdef USE_FILE_FOPEN
@@ -418,7 +418,7 @@ namespace VirtFsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("VirtFsDir::seek file not opened.");
+            reportAlways("FsDir::seek file not opened.");
             return 0;
         }
         const int64_t res = FILESEEK(fd, pos, SEEK_SET);
@@ -435,7 +435,7 @@ namespace VirtFsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("VirtFsDir::eof file not opened.");
+            reportAlways("FsDir::eof file not opened.");
             return 0;
         }
 #ifdef USE_FILE_FOPEN
@@ -449,7 +449,7 @@ namespace VirtFsDir
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
         {
-            reportAlways("VirtFsDir::fileLength error.");
+            reportAlways("FsDir::fileLength error.");
             return -1;
         }
         const int64_t len = static_cast<int64_t>(statbuf.st_size);
@@ -487,7 +487,7 @@ namespace VirtFsDir
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
         {
-            reportAlways("VirtFsDir::fileLength error.");
+            reportAlways("FsDir::fileLength error.");
             if (fd != FILEHDEFAULT)
                 FILECLOSE(fd);
             return nullptr;
@@ -666,6 +666,6 @@ namespace VirtFsDir
             closedir(dir);
         }
     }
-}  // namespace VirtFsDir
+}  // namespace FsDir
 
 }  // namespace VirtFs

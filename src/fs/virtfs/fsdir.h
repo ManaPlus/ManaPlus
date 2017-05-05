@@ -35,7 +35,7 @@ struct FsEntry;
 struct FsFuncs;
 struct VirtList;
 
-namespace VirtFsDir
+namespace FsDir
 {
     File *openInternal(FsEntry *restrict const entry,
                        const std::string &filename,
@@ -97,7 +97,7 @@ namespace VirtFsDir
     const char *loadFile(FsEntry *restrict const entry,
                          const std::string &restrict fileName,
                          int &restrict fileSize);
-}  // namespace VirtFsDir
+}  // namespace FsDir
 
 }  // namespace VirtFs
 

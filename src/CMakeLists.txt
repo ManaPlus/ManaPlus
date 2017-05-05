@@ -902,8 +902,8 @@ SET(SRCS
     fs/virtfs/rwopstypes.h
     fs/virtfs/direntry.cpp
     fs/virtfs/direntry.h
-    fs/virtfs/virtfsdir.cpp
-    fs/virtfs/virtfsdir.h
+    fs/virtfs/fsdir.cpp
+    fs/virtfs/fsdir.h
     fs/virtfs/virtfsdirrwops.cpp
     fs/virtfs/virtfsdirrwops.h
     fs/virtfs/fsentry.cpp
@@ -1811,8 +1811,8 @@ SET(DYE_CMD_SRCS
     fs/virtfs/rwopstypes.h
     fs/virtfs/direntry.cpp
     fs/virtfs/direntry.h
-    fs/virtfs/virtfsdir.cpp
-    fs/virtfs/virtfsdir.h
+    fs/virtfs/fsdir.cpp
+    fs/virtfs/fsdir.h
     fs/virtfs/virtfsdirrwops.cpp
     fs/virtfs/virtfsdirrwops.h
     fs/virtfs/fsentry.cpp
