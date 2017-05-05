@@ -852,8 +852,8 @@ BASE_SRC += events/actionevent.h \
 	      fs/virtfs/fs.h \
 	      fs/virtfs/fsdir.cpp \
 	      fs/virtfs/fsdir.h \
-	      fs/virtfs/virtfsdirrwops.cpp \
-	      fs/virtfs/virtfsdirrwops.h \
+	      fs/virtfs/fsdirrwops.cpp \
+	      fs/virtfs/fsdirrwops.h \
 	      fs/virtfs/fsentry.cpp \
 	      fs/virtfs/fsentry.h \
 	      fs/virtfs/virtfszip.cpp \

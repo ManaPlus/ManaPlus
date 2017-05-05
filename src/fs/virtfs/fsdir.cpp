@@ -26,7 +26,7 @@
 
 #include "fs/virtfs/direntry.h"
 #include "fs/virtfs/file.h"
-#include "fs/virtfs/virtfsdirrwops.h"
+#include "fs/virtfs/fsdirrwops.h"
 #include "fs/virtfs/fsfuncs.h"
 #include "fs/virtfs/virtlist.h"
 
