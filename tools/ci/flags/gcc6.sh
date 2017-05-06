@@ -23,7 +23,7 @@ export CXXFLAGS="${CXXFLAGS} -Warray-bounds=2"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Warray-temporaries"
 #export CXXFLAGS="${CXXFLAGS} -Wassign-intercept"
-# show warning for padding
+# show warnings for padding
 #export CXXFLAGS="${CXXFLAGS} -Wattributes"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wbad-function-cast"
@@ -86,7 +86,7 @@ export CXXFLAGS="${CXXFLAGS} -Wextra"
 #export CXXFLAGS="${CXXFLAGS} -Wfloat-conversion"
 # +++ need fix in future
 #export CXXFLAGS="${CXXFLAGS} -Wfloat-equal"
-export CXXFLAGS="${CXXFLAGS} -Wformat"
+export CXXFLAGS="${CXXFLAGS} -Wformat=1"
 export CXXFLAGS="${CXXFLAGS} -Wformat-contains-nul"
 export CXXFLAGS="${CXXFLAGS} -Wformat-extra-args"
 # +++ ignoring. probably need use some times
@@ -223,12 +223,11 @@ export CXXFLAGS="${CXXFLAGS} -Wsizeof-array-argument"
 export CXXFLAGS="${CXXFLAGS} -Wsizeof-pointer-memaccess"
 export CXXFLAGS="${CXXFLAGS} -Wstack-protector"
 #export CXXFLAGS="${CXXFLAGS} -Wstack-usage="
-export CXXFLAGS="${CXXFLAGS} -Wstrict-aliasing"
+export CXXFLAGS="${CXXFLAGS} -Wstrict-aliasing=2"
 #export CXXFLAGS="${CXXFLAGS} -Wstrict-aliasing="
 export CXXFLAGS="${CXXFLAGS} -Wstrict-null-sentinel"
-# used before
 #export CXXFLAGS="${CXXFLAGS} -Wstrict-overflow"
-#export CXXFLAGS="${CXXFLAGS} -Wstrict-overflow="
+export CXXFLAGS="${CXXFLAGS} -Wstrict-overflow=1"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wstrict-prototypes"
 #export CXXFLAGS="${CXXFLAGS} -Wstrict-selector-match"

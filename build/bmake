@@ -16,7 +16,7 @@ export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \
 -std=gnu++1z \
 -fno-var-tracking -Wno-attributes"
 
-source ./build/gcc6flags.sh
+source ./tools/ci/flags/gcc6.sh
 
 autoreconf -i
 cd build/tmp
