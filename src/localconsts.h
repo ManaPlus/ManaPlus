@@ -236,6 +236,14 @@
 #define CLANG_FALLTHROUGH
 #endif  // __clang__
 
+#if GCC_VERSION >= 40000
+#define PRAGMACLANG6GCC(str) _Pragma(#str)
+#elif defined(__clang__) && CLANG_VERSION >= 30800
+#define PRAGMACLANG6GCC(str) _Pragma(#str)
+#else  // __clang__
+#define PRAGMACLANG6GCC(str)
+#endif  // __clang__
+
 #ifdef __GNUC__
 #if GCC_VERSION >= 40600
 #define PRAGMA45(str) _Pragma(#str)

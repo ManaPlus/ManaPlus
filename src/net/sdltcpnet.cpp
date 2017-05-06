@@ -41,10 +41,10 @@
 
 #endif  // defined __linux__ || defined __linux
 
-PRAGMACLANG6(GCC diagnostic push)
-PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
+PRAGMACLANG6GCC(GCC diagnostic push)
+PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
 #include "net/sdltcpnet.h"
-PRAGMACLANG6(GCC diagnostic pop)
+PRAGMACLANG6GCC(GCC diagnostic pop)
 
 #include "debug.h"
 
@@ -151,10 +151,10 @@ int TcpNet::addSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock)
 
 int TcpNet::socketReady(const TcpNet::Socket sock)
 {
-    PRAGMACLANG6(GCC diagnostic push)
-    PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
+    PRAGMACLANG6GCC(GCC diagnostic push)
+    PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
     return SDLNet_SocketReady(sock);
-    PRAGMACLANG6(GCC diagnostic pop)
+    PRAGMACLANG6GCC(GCC diagnostic pop)
 }
 
 int TcpNet::checkSockets(const TcpNet::SocketSet set, const Uint32 timeout)

@@ -26,10 +26,10 @@
 
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-PRAGMACLANG6(GCC diagnostic push)
-PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
+PRAGMACLANG6GCC(GCC diagnostic push)
+PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
-PRAGMACLANG6(GCC diagnostic pop)
+PRAGMACLANG6GCC(GCC diagnostic pop)
 #include <SDL_ttf.h>
 #include <zlib.h>
 

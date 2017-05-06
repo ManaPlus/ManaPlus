@@ -25,10 +25,10 @@
 
 #include "net/serverinfo.h"
 
-PRAGMACLANG6(GCC diagnostic push)
-PRAGMACLANG6(GCC diagnostic ignored "-Wold-style-cast")
+PRAGMACLANG6GCC(GCC diagnostic push)
+PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
 #include "net/sdltcpnet.h"
-PRAGMACLANG6(GCC diagnostic pop)
+PRAGMACLANG6GCC(GCC diagnostic pop)
 
 struct PacketInfo;
 
