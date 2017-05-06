@@ -162,7 +162,7 @@ to contact the developers of the game instead.
 
 ## 5. Licenses
 
-All code in this repository under ![GPL 2+](https://img.shields.io/badge/license-GPL2+-blue.svg) license. Art can be under ![CC-BY-SA](https://img.shields.io/badge/license-CC BY SA-blue.svg) or ![GPL 2+](https://img.shields.io/badge/license-GPL2+-blue.svg).
+All code in this repository under ![GPL 2+](https://img.shields.io/badge/license-GPL2+-blue.svg) license. Art can be under ![CC-BY-SA](https://img.shields.io/badge/license-CC_BY_SA-blue.svg) or ![GPL 2+](https://img.shields.io/badge/license-GPL2+-blue.svg).
 
 Github, Bitbucked or other non free hostings may use strange TOS what may violate this licenses. If any of this hostings want to violate GPL or/and CC-BY-SA licenses,
 they not have any rights to do so. This hostings have rights to remove ManaPlus repositories if they want violate given licenses.
