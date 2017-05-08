@@ -535,7 +535,7 @@ bool TradeWindow::checkItem(const Item *const item) const
         }
         return false;
     }
-    if (Net::getNetworkType() == ServerType::EATHENA &&
+    if (Net::getNetworkType() != ServerType::TMWATHENA &&
         item->isEquipped() == Equipped_true)
     {
         if (localChatTab)

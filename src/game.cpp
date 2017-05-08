@@ -210,7 +210,7 @@ static void createGuiWindows()
     CREATEWIDGETV0(miniStatusWindow, MiniStatusWindow);
     CREATEWIDGETV(inventoryWindow, InventoryWindow,
         PlayerInfo::getInventory());
-    if (Net::getNetworkType() == ServerType::EATHENA)
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
     {
         CREATEWIDGETV(cartWindow, InventoryWindow,
             PlayerInfo::getCartInventory());

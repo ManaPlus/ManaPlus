@@ -1299,7 +1299,7 @@ ChatTab *ChatWindow::addChatTab(const std::string &name,
                                 const bool switchTo,
                                 const bool join)
 {
-    if (Net::getNetworkType() == ServerType::EATHENA &&
+    if (Net::getNetworkType() != ServerType::TMWATHENA &&
         name.size() > 1 &&
         name[0] == '#')
     {
@@ -1697,7 +1697,7 @@ bool ChatWindow::resortChatLog(std::string line,
                     tryRemoveColors);
             }
         }
-        else if (Net::getNetworkType() == ServerType::EATHENA)
+        else if (Net::getNetworkType() != ServerType::TMWATHENA)
         {
             channelChatLog(channel, line, own, ignoreRecord, tryRemoveColors);
             return false;

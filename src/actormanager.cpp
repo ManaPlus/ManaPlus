@@ -298,7 +298,7 @@ Being *ActorManager::createBeing(const BeingId id,
             break;
         case ActorType::Monster:
 #ifdef TMWA_SUPPORT
-            if (Net::getNetworkType() == ServerType::EATHENA)
+            if (Net::getNetworkType() != ServerType::TMWATHENA)
 #endif  // TMWA_SUPPORT
             {
                 beingHandler->requestNameById(id);

@@ -102,7 +102,7 @@ void ChangeDisplay::action(const ActionEvent &event)
         const int newbase = PlayerInfo::getStatBase(mId) + cnt;
         PlayerInfo::setStatBase(mId, newbase);
 
-        if (Net::getNetworkType() == ServerType::EATHENA)
+        if (Net::getNetworkType() != ServerType::TMWATHENA)
         {
             playerHandler->increaseAttribute(mId, cnt);
         }

@@ -733,7 +733,7 @@ impHandler(buy)
     }
     else if (being->getType() == ActorType::Player)
     {
-        if (vendingHandler && Net::getNetworkType() == ServerType::EATHENA)
+        if (vendingHandler && Net::getNetworkType() != ServerType::TMWATHENA)
             vendingHandler->open(being);
         else if (buySellHandler)
             buySellHandler->requestSellList(being->getName());
@@ -779,10 +779,15 @@ impHandler(sell)
     }
     else if (being->getType() == ActorType::Player)
     {
-        if (buyingStoreHandler && Net::getNetworkType() == ServerType::EATHENA)
+        if (buyingStoreHandler &&
+            Net::getNetworkType() != ServerType::TMWATHENA)
+        {
             buyingStoreHandler->open(being);
+        }
         else if (buySellHandler)
+        {
             buySellHandler->requestBuyList(being->getName());
+        }
         return true;
     }
     return false;

@@ -101,7 +101,7 @@ bool PartyTab::handleCommand(const std::string &restrict type,
             this);
     }
     else if (type == "setleader" &&
-             Net::getNetworkType() == ServerType::EATHENA)
+             Net::getNetworkType() != ServerType::TMWATHENA)
     {
         inputManager.executeChatCommand(
             InputAction::COMMAND_CHANGE_PARTY_LEADER,
@@ -135,7 +135,7 @@ void PartyTab::getAutoCompleteCommands(StringVect &names) const
     names.push_back("/kick ");
     names.push_back("/item");
     names.push_back("/exp");
-    if (Net::getNetworkType() == ServerType::EATHENA)
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
         names.push_back("/setleader ");
 }
 

@@ -101,7 +101,7 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
     placer(n, 0, mDeleteButton);
     n ++;
 #ifdef TMWA_SUPPORT
-    if (Net::getNetworkType() == ServerType::EATHENA)
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
 #endif
     {
         mRenameButton = new Button(this,

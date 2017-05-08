@@ -140,7 +140,7 @@ ShopWindow::ShopWindow() :
     mSellShopSize(0),
     mBuyShopSize(0),
     isBuySelected(true),
-    mHaveVending(Net::getNetworkType() == ServerType::EATHENA),
+    mHaveVending(Net::getNetworkType() != ServerType::TMWATHENA),
     mEnableBuyingStore(false),
     mEnableVending(false)
 {

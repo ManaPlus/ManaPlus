@@ -265,7 +265,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 // TRANSLATORS: talk with npc
                 mBrowserBox->addRow("/talk 'NAME'", _("Talk"));
 #ifdef TMWA_SUPPORT
-                if (Net::getNetworkType() == ServerType::EATHENA)
+                if (Net::getNetworkType() != ServerType::TMWATHENA)
 #endif
                 {
                     mBrowserBox->addRow("/whispertext NPC:'NAME'",
@@ -1014,7 +1014,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             }
             addPlayerMisc();
             addBuySellDefault();
-            if (Net::getNetworkType() == ServerType::EATHENA)
+            if (Net::getNetworkType() != ServerType::TMWATHENA)
                 addParty(wTab->getNick());
             mBrowserBox->addRow("##3---");
         }
@@ -1138,7 +1138,7 @@ void PopupMenu::showEmoteType()
     // TRANSLATORS: show emotes for pet
     mBrowserBox->addRow("/setemotetype pet", _("Pet"));
 
-    if (Net::getNetworkType() == ServerType::EATHENA)
+    if (Net::getNetworkType() == ServerType::EVOL2)
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: show emotes for homuncules
@@ -2705,7 +2705,7 @@ void PopupMenu::addBuySell(const Being *const being)
     {
         mBrowserBox->addRow("##3---");
         const bool haveVending =
-            (Net::getNetworkType() == ServerType::EATHENA);
+            (Net::getNetworkType() != ServerType::TMWATHENA);
         if (being->isSellShopEnabled())
         {
             // TRANSLATORS: popup menu item
@@ -3140,7 +3140,7 @@ void PopupMenu::showMuteCommands()
     mBrowserBox->addRow(strprintf(_("Mute %s"),
         mName.c_str()));
     if (mBeingId != BeingId_zero &&
-        Net::getNetworkType() == ServerType::EATHENA)
+        Net::getNetworkType() != ServerType::TMWATHENA)
     {
         mBrowserBox->addRow("mute_+1",
             // TRANSLATORS: popup menu item
@@ -3432,7 +3432,7 @@ void PopupMenu::addSocialMenu()
         mBrowserBox->addRow("/createparty", _("Create party"));
     }
 
-    if (Net::getNetworkType() == ServerType::EATHENA)
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
     {
         const Guild *const guild = localPlayer->getGuild();
         if (guild)

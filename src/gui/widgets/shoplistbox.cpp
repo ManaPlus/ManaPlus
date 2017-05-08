@@ -253,7 +253,7 @@ void ShopListBox::mouseReleased(MouseEvent& event)
             return;
         }
         if (mType == ShopListBoxType::SellShop &&
-            Net::getNetworkType() == ServerType::EATHENA &&
+            Net::getNetworkType() != ServerType::TMWATHENA &&
             src != DragDropSource::Cart)
         {
             return;

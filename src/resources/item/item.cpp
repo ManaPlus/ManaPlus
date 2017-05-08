@@ -195,6 +195,6 @@ void Item::setOptions(const ItemOptionsList *const options)
 
 void Item::updateColor()
 {
-    if (Net::getNetworkType() == ServerType::EATHENA)
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
         setId(mId, ItemColorManager::getColorFromCards(&mCards[0]));
 }

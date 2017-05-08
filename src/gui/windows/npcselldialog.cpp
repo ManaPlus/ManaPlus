@@ -46,7 +46,7 @@
 
 NpcSellDialog::NpcSellDialog(const BeingId npcId) :
     SellDialog(IsSell_true,
-        (Net::getNetworkType() == ServerType::EATHENA) ?
+        (Net::getNetworkType() != ServerType::TMWATHENA) ?
         Advanced_true : Advanced_false),
     mNpcId(npcId)
 {

@@ -221,7 +221,7 @@ BuyDialog::BuyDialog(const BeingId npcId,
     mMoney(0),
     mAmountItems(0),
     mMaxItems(0),
-    mAdvanced(Net::getNetworkType() == ServerType::EATHENA)
+    mAdvanced(Net::getNetworkType() != ServerType::TMWATHENA)
 {
     init();
 }
