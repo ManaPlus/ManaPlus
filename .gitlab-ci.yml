@@ -2365,6 +2365,25 @@ gcc-6_curl_curl-7_53_1:
   tags:
     - docker
 
+gcc-6_curl_curl-7_54_0:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LIBNAME: curl
+    LIBVERSION: curl-7_54_0
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libpng-dev zlib1g-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip gdb valgrind
+  tags:
+    - docker
+
 gcc-6_SDL_SDL-1.2:
   stage: build
   script:
