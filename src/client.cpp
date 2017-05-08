@@ -317,6 +317,8 @@ void Client::gameInit()
     Fuzzer::init();
 #endif  // USE_FUZZER
 
+    if (settings.options.ipc == true)
+        IPC::start();
     if (settings.options.test.empty())
         ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();

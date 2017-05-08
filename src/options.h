@@ -63,7 +63,8 @@ struct Options final
         chooseDefault(false),
         noOpenGL(false),
         safeMode(false),
-        testMode(false)
+        testMode(false),
+        ipc(false)
     {}
 
     A_DELETE_COPY(Options)
@@ -92,6 +93,7 @@ struct Options final
     bool noOpenGL;
     bool safeMode;
     bool testMode;
+    bool ipc;
 };
 
 #endif  // OPTIONS_H

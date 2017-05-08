@@ -117,6 +117,7 @@ int IPC::acceptLoop(void *ptr)
 
         std::string req(data);
         trim(req);
+        logger->log_r("IPC command: %s", req.c_str());
 
         ipc1->mThreadLocked = true;
         SDL_mutexP(ipc1->mMutex);

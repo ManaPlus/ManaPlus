@@ -157,6 +157,7 @@ void parseOptions(const int argc, char *const argv[])
         { "test",           required_argument, nullptr, 't' },
         { "renderer",       required_argument, nullptr, 'r' },
         { "server-type",    required_argument, nullptr, 'y' },
+        { "enable-ipc",     no_argument,       nullptr, 'I' },
         { nullptr,          0,                 nullptr, 0 }
     };
 
@@ -248,6 +249,8 @@ void parseOptions(const int argc, char *const argv[])
             case 'y':
                 options.serverType = optarg;
                 break;
+            case 'I':
+                options.ipc = true;
             default:
                 break;
         }
