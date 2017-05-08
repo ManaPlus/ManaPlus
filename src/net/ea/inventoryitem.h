@@ -106,8 +106,6 @@ class InventoryItem final
             favorite(c.favorite),
             equip(c.equip)
         {
-            if (!c.cards)
-                return;
             for (int f = 0; f < 4; f ++)
                 cards[f] = c.cards[f];
         }
