@@ -5,12 +5,13 @@ cd ..
 
 dir=`pwd`
 
-export CC=gcc
-export CXX=g++
+export CCACHE_DIR="${dir}/build/ccache/pmake"
+export CC="ccache gcc"
+export CXX="ccache g++"
 
 export LANG=C
 
-export CXXFLAGS="-g -pg -fno-inline -fno-omit-frame-pointer -Wno-attributes"
+export CXXFLAGS="-g -pg -fno-inline -fno-omit-frame-pointer"
 
 autoreconf -i
 cd build/tmp
