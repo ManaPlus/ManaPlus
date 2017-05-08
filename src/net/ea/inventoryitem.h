@@ -92,11 +92,31 @@ class InventoryItem final
                 cards[f] = cards0[f];
         }
 
+        InventoryItem(const InventoryItem &c) :
+            slot(c.slot),
+            id(c.id),
+            type(c.type),
+            cards(),
+            options(ItemOptionsList::copy(c.options)),
+            quantity(c.quantity),
+            refine(c.refine),
+            color(c.color),
+            identified(c.identified),
+            damaged(c.damaged),
+            favorite(c.favorite),
+            equip(c.equip)
+        {
+            if (!c.cards)
+                return;
+            for (int f = 0; f < 4; f ++)
+                cards[f] = c.cards[f];
+        }
+
         A_DEFAULT_COPY(InventoryItem)
 
         ~InventoryItem()
         {
-            delete [] options;
+            delete options;
         }
 };
 

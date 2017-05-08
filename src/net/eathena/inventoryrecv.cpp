@@ -727,6 +727,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
             Equipm_false));
+        delete options;
     }
     BLOCK_END("InventoryRecv::processPlayerStorageEquip")
 }
@@ -787,6 +788,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
             Ea::InventoryRecv::mStorage->setOptions(index, options);
         }
     }
+    delete options;
     BLOCK_END("InventoryRecv::processPlayerStorageAdd")
 }
 
@@ -1009,6 +1011,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
             Favorite_false,
             Equipm_false));
     }
+    delete options;
     BLOCK_END("InventoryRecv::processPlayerCartAdd")
 }
 
@@ -1091,6 +1094,7 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
             Equipm_false));
+        delete options;
     }
     BLOCK_END("InventoryRecv::processPlayerCartEquip")
 }
