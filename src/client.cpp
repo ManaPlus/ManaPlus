@@ -627,6 +627,8 @@ void Client::gameClear()
 
     delete2(assertListener);
 
+    if (ipc)
+        ipc->stop();
     eventsManager.shutdown();
     WindowManager::deleteWindows();
     if (windowContainer)

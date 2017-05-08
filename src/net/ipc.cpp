@@ -145,6 +145,7 @@ int IPC::acceptLoop(void *ptr)
         TcpNet::closeSocket(sock);
     }
     TcpNet::closeSocket(ipc1->mSocket);
+    TcpNet::freeSocketSet(set);
     ipc1->mSocket = nullptr;
     ipc1->mThread = nullptr;
     return 0;
