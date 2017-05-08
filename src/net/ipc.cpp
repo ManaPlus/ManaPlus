@@ -22,6 +22,10 @@
 
 #include "gui/windows/chatwindow.h"
 
+#ifndef DYECMD
+#include "input/inputmanager.h"
+#endif  // DYECMD
+
 #include "utils/delete2.h"
 #include "utils/sdlhelper.h"
 #include "utils/stringutils.h"
@@ -196,6 +200,23 @@ void IPC::flush()
                       mDelayedCommands)
             {
                 chatWindow->chatInput(*it);
+            }
+        }
+        else
+        {
+            FOR_EACH (std::vector<std::string>::const_iterator, it,
+                      mDelayedCommands)
+            {
+                std::string msg = *it;
+                if (msg.empty() || msg[0] != '/')
+                    continue;
+                msg = msg.substr(1);
+                const size_t pos = msg.find(' ');
+                const std::string type(msg, 0, pos);
+                std::string args(msg,
+                    pos == std::string::npos ? msg.size() : pos + 1);
+                args = trim(args);
+                inputManager.executeChatCommand(type, args, nullptr);
             }
         }
 #endif  // DYECMD
