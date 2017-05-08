@@ -307,7 +307,7 @@ class Window notfinal : public BasicContainer2,
          * @return The parent window or <code>NULL</code> if there is none.
          */
         Window *getParentWindow() const
-        { return mParent; }
+        { return mParentWindow; }
 
         /**
          * Schedule this window for deletion. It will be deleted at the start
@@ -678,7 +678,7 @@ class Window notfinal : public BasicContainer2,
         int getResizeHandles(const MouseEvent &event) A_WARN_UNUSED;
 
         Image *mGrip;                 /**< Resize grip */
-        Window *mParent;              /**< The parent window */
+        Window *mParentWindow;        /**< The parent window */
         Layout *mLayout;              /**< Layout handler */
         Rect mCloseRect;    /**< Close button rectangle */
         Rect mStickyRect;   /**< Sticky button rectangle */
