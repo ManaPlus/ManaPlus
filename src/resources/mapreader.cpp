@@ -415,7 +415,8 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
             const int tileOffsetY = XML::getProperty(childNode, "y", 0);
             const int offsetX = tileOffsetX * tilew;
             const int offsetY = tileOffsetY * tileh;
-            const bool showParticles = config.getBoolValue("mapparticleeffects");
+            const bool showParticles =
+                config.getBoolValue("mapparticleeffects");
 
             for_each_xml_child_node(objectNode, childNode)
             {

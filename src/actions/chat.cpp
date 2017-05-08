@@ -719,7 +719,7 @@ impHandler(translate)
     return true;
 }
 
-impHandler0(sendGuiKey)
+impHandler(sendGuiKey)
 {
     if (!guiInput)
         return false;
