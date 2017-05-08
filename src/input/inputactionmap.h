@@ -5612,6 +5612,12 @@ static const InputActionData inputActionData
         "translate|trans|tran",
         UseArgs_false,
         Protected_true},
+    {"keyCommandSendGuiKey",
+        defaultAction(&Actions::sendGuiKey),
+        InputCondition::ENABLED,
+        "guikey|sendguikey",
+        UseArgs_false,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -1019,6 +1019,18 @@ InputActionT InputManager::getActionByKey(const SDL_Event &restrict event)
     return InputAction::NO_VALUE;
 }
 
+InputActionT InputManager::getActionByConfigField(const std::string &field)
+                                                  const restrict2
+{
+    for (int i = 0; i < CAST_S32(InputAction::TOTAL); i ++)
+    {
+        const std::string cf = inputActionData[i].configField;
+        if (field == cf)
+            return static_cast<InputActionT>(i);
+    }
+    return InputAction::NO_VALUE;
+}
+
 void InputManager::addChatCommands(std::list<std::string> &restrict arr)
                                    restrict
 {

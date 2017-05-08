@@ -359,3 +359,14 @@ void SDLInput::simulateMouseMove()
     mouseInput.setTimeStamp(SDL_GetTicks());
     mMouseInputQueue.push(mouseInput);
 }
+
+void SDLInput::simulateKey(const int guiKey,
+                           const InputActionT actionId)
+{
+    KeyInput keyInput;
+    keyInput.setType(KeyEventType::PRESSED);
+    keyInput.setKey(Key(guiKey));
+    if (actionId > InputAction::NO_VALUE)
+        keyInput.setActionId(actionId);
+    mKeyInputQueue.push(keyInput);
+}

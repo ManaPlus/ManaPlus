@@ -687,6 +687,7 @@ enumStart(InputAction)
     CREATE_ITEM,
     COPY_OUTFIT_TO_CHAT,
     COMMAND_TRANSLATE,
+    COMMAND_SEND_GUI_KEY,
     TOTAL
 }
 enumEnd(InputAction);

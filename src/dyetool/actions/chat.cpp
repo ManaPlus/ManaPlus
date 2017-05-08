@@ -62,5 +62,6 @@ impHandlerVoid(hat)
 impHandlerVoid(chatClipboard)
 impHandlerVoid(guildNotice)
 impHandlerVoid(translate)
+impHandlerVoid(sendGuiKey)
 
 }  // namespace Actions

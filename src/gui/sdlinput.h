@@ -128,6 +128,9 @@ class SDLInput final
 
         void simulateMouseMove();
 
+        void simulateKey(const int guiKey,
+                         const InputActionT actionId);
+
     protected:
         /**
          * Converts a mouse button from SDL to a Guichan mouse button

@@ -62,6 +62,7 @@ namespace Actions
     decHandler(chatClipboard);
     decHandler(guildNotice);
     decHandler(translate);
+    decHandler(sendGuiKey);
 }  // namespace Actions
 
 #undef decHandler

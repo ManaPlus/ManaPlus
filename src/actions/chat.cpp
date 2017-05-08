@@ -28,6 +28,8 @@
 
 #include "being/localplayer.h"
 
+#include "gui/sdlinput.h"
+
 #include "gui/windows/chatwindow.h"
 
 #include "listeners/inputactionreplaylistener.h"
@@ -48,6 +50,7 @@
 
 #include "utils/booleanoptions.h"
 #include "utils/chatutils.h"
+#include "utils/parameters.h"
 
 #include "utils/translation/podict.h"
 
@@ -713,6 +716,40 @@ impHandler(translate)
     }
 
     tab->chatInput(enStr);
+    return true;
+}
+
+impHandler0(sendGuiKey)
+{
+    if (!guiInput)
+        return false;
+
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    StringVect pars;
+    if (!splitParameters(pars, args, " ,", '\"'))
+        return false;
+    const int sz = CAST_S32(pars.size());
+    if (sz < 1)
+        return false;
+
+    int keyValue = atoi(pars[0].c_str());
+    if (keyValue == 0 &&
+        pars[0].size() == 1)
+    {
+        keyValue = CAST_S32(pars[0][0]);
+    }
+    if (sz == 2)
+    {
+        const InputActionT actionId = inputManager.getActionByConfigField(
+            pars[1]);
+        guiInput->simulateKey(keyValue, actionId);
+    }
+    else
+    {
+        guiInput->simulateKey(keyValue, InputAction::NO_VALUE);
+    }
     return true;
 }
 

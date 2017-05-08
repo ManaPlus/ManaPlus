@@ -139,6 +139,9 @@ class InputManager final
         InputActionT getActionByKey(const SDL_Event &restrict event)
                                     const restrict2 A_WARN_UNUSED;
 
+        InputActionT getActionByConfigField(const std::string &field)
+                                            const restrict2 A_WARN_UNUSED;
+
         void executeAction(const InputActionT keyNum) restrict2;
 
         bool executeChatCommand(const std::string &restrict cmd,
