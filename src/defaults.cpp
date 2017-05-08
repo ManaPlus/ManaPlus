@@ -117,6 +117,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("particleFastPhysics", 1);
     AddDEF("particleEmitterSkip", 1);
     AddDEF("particleeffects", true);
+    AddDEF("mapparticleeffects", true);
     AddDEF("logToStandardOut", false);
     AddDEF("opengl", 0);
 #ifdef ANDROID

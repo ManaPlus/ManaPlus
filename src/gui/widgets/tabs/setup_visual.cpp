@@ -160,8 +160,12 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
         "OverlayDetailEvent", mAmbientFxList, 100);
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Particle effects"), "",
+    new SetupItemCheckBox(_("Show particle effects"), "",
         "particleeffects", this, "particleeffectsEvent");
+
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Show particle effects from maps"), "",
+        "mapparticleeffects", this, "mapparticleeffectsEvent");
 
     // TRANSLATORS: particle details
     mParticleList->push_back(_("low"));

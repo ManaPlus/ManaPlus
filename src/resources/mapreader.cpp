@@ -415,6 +415,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
             const int tileOffsetY = XML::getProperty(childNode, "y", 0);
             const int offsetX = tileOffsetX * tilew;
             const int offsetY = tileOffsetY * tileh;
+            const bool showParticles = config.getBoolValue("mapparticleeffects");
 
             for_each_xml_child_node(objectNode, childNode)
             {
@@ -454,10 +455,18 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
                             continue;
                         }
 
-                        map->addParticleEffect(objName,
-                                               objX + offsetX,
-                                               objY + offsetY,
-                                               objW, objH);
+                        if (showParticles)
+                        {
+                            map->addParticleEffect(objName,
+                                objX + offsetX,
+                                objY + offsetY,
+                                objW,
+                                objH);
+                        }
+                        else
+                        {
+                            logger->log("Ignore particle effect: " + objName);
+                        }
                     }
                     else if (objType == "WARP")
                     {
