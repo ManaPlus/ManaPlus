@@ -688,6 +688,7 @@ enumStart(InputAction)
     COPY_OUTFIT_TO_CHAT,
     COMMAND_TRANSLATE,
     COMMAND_SEND_GUI_KEY,
+    MOVE_ATTACK_UP,
     TOTAL
 }
 enumEnd(InputAction);

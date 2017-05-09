@@ -1895,4 +1895,35 @@ impHandler0(outfitToChat)
     return true;
 }
 
+impHandler(moveAttackUp)
+{
+    const std::string args = event.args;
+    const int idx = actorManager->getAttackMobIndex(args);
+    if (idx > 0)
+    {
+        std::list<std::string> mobs
+            = actorManager->getAttackMobs();
+        std::list<std::string>::iterator it = mobs.begin();
+        std::list<std::string>::iterator it2 = it;
+        while (it != mobs.end())
+        {
+            if (*it == args)
+            {
+                -- it2;
+                mobs.splice(it2, mobs, it);
+                actorManager->setAttackMobs(mobs);
+                actorManager->rebuildAttackMobs();
+                break;
+            }
+            ++ it;
+            ++ it2;
+        }
+
+        if (socialWindow)
+            socialWindow->updateAttackFilter();
+        return true;
+    }
+    return false;
+}
+
 }  // namespace Actions

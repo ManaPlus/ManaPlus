@@ -153,6 +153,7 @@ namespace Actions
     decHandler(partyExpShare);
     decHandler(partyAutoItemShare);
     decHandler(outfitToChat);
+    decHandler(moveAttackUp);
 }  // namespace Actions
 
 #undef decHandler

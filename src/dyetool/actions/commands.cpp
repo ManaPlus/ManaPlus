@@ -153,5 +153,6 @@ impHandlerVoid(partyItemShare)
 impHandlerVoid(partyExpShare)
 impHandlerVoid(partyAutoItemShare)
 impHandlerVoid(outfitToChat)
+impHandlerVoid(moveAttackUp)
 
 }  // namespace Actions

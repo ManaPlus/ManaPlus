@@ -5616,7 +5616,13 @@ static const InputActionData inputActionData
         defaultAction(&Actions::sendGuiKey),
         InputCondition::ENABLED,
         "guikey|sendguikey",
-        UseArgs_false,
+        UseArgs_true,
+        Protected_true},
+    {"keyMoveAttackUp",
+        defaultAction(&Actions::moveAttackUp),
+        InputCondition::ENABLED,
+        "attackmoveup|moveattackup",
+        UseArgs_true,
         Protected_true},
 };
 

@@ -1239,36 +1239,6 @@ void PopupMenu::handleLink(const std::string &link,
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);
     }
-    else if (link == "attack moveup")
-    {
-        if (actorManager)
-        {
-            const int idx = actorManager->getAttackMobIndex(mName);
-            if (idx > 0)
-            {
-                std::list<std::string> mobs
-                    = actorManager->getAttackMobs();
-                std::list<std::string>::iterator it = mobs.begin();
-                std::list<std::string>::iterator it2 = it;
-                while (it != mobs.end())
-                {
-                    if (*it == mName)
-                    {
-                        -- it2;
-                        mobs.splice(it2, mobs, it);
-                        actorManager->setAttackMobs(mobs);
-                        actorManager->rebuildAttackMobs();
-                        break;
-                    }
-                    ++ it;
-                    ++ it2;
-                }
-
-                if (socialWindow)
-                    socialWindow->updateAttackFilter();
-            }
-        }
-    }
     else if (link == "priority moveup")
     {
         if (actorManager)
@@ -2146,7 +2116,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: move attack target up
-                mBrowserBox->addRow("attack moveup", _("Move up"));
+                mBrowserBox->addRow("/moveattackup 'NAME'", _("Move up"));
             }
             if (idx + 1 < size)
             {
