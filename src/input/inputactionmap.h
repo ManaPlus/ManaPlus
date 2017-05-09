@@ -5630,6 +5630,12 @@ static const InputActionData inputActionData
         "attackmovedown|moveattackdown",
         UseArgs_true,
         Protected_true},
+    {"keyMovePriorityAttackUp",
+        defaultAction(&Actions::movePriorityAttackUp),
+        InputCondition::ENABLED,
+        "attackmovepriorityup|movepriorityattackup",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

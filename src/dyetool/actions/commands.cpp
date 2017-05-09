@@ -155,5 +155,6 @@ impHandlerVoid(partyAutoItemShare)
 impHandlerVoid(outfitToChat)
 impHandlerVoid(moveAttackUp)
 impHandlerVoid(moveAttackDown)
+impHandlerVoid(movePriorityAttackUp)
 
 }  // namespace Actions

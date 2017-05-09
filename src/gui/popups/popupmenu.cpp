@@ -1239,37 +1239,6 @@ void PopupMenu::handleLink(const std::string &link,
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);
     }
-    else if (link == "priority moveup")
-    {
-        if (actorManager)
-        {
-            const int idx = actorManager->
-                getPriorityAttackMobIndex(mName);
-            if (idx > 0)
-            {
-                std::list<std::string> mobs
-                    = actorManager->getPriorityAttackMobs();
-                std::list<std::string>::iterator it = mobs.begin();
-                std::list<std::string>::iterator it2 = it;
-                while (it != mobs.end())
-                {
-                    if (*it == mName)
-                    {
-                        -- it2;
-                        mobs.splice(it2, mobs, it);
-                        actorManager->setPriorityAttackMobs(mobs);
-                        actorManager->rebuildPriorityAttackMobs();
-                        break;
-                    }
-                    ++ it;
-                    ++ it2;
-                }
-
-                if (socialWindow)
-                    socialWindow->updateAttackFilter();
-            }
-        }
-    }
     else if (link == "priority movedown")
     {
         if (localPlayer && actorManager)
@@ -2099,9 +2068,10 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
             const int size = actorManager->getPriorityAttackMobsSize();
             if (idx > 0)
             {
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: move attack target up
-                mBrowserBox->addRow("priority moveup", _("Move up"));
+                mBrowserBox->addRow("/movepriorityattackup 'NAME'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: move attack target up
+                    _("Move up"));
             }
             if (idx + 1 < size)
             {

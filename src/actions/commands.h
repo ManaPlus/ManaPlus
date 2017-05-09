@@ -155,6 +155,7 @@ namespace Actions
     decHandler(outfitToChat);
     decHandler(moveAttackUp);
     decHandler(moveAttackDown);
+    decHandler(movePriorityAttackUp);
 }  // namespace Actions
 
 #undef decHandler
