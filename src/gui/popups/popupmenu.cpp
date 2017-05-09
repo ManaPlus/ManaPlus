@@ -848,7 +848,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: close chat tab
-        mBrowserBox->addRow("chat close", _("Close"));
+        mBrowserBox->addRow("/close", _("Close"));
     }
 
     // TRANSLATORS: popup menu item
@@ -860,37 +860,37 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: disable chat tab highlight
-        mBrowserBox->addRow("disable highlight", _("Disable highlight"));
+        mBrowserBox->addRow("/disablehighlight", _("Disable highlight"));
     }
     else
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: enable chat tab highlight
-        mBrowserBox->addRow("enable highlight", _("Enable highlight"));
+        mBrowserBox->addRow("/enablehighlight", _("Enable highlight"));
     }
     if (tab->getRemoveNames())
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: do not remove player names from chat tab
-        mBrowserBox->addRow("dont remove name", _("Don't remove name"));
+        mBrowserBox->addRow("/dontremovename", _("Don't remove name"));
     }
     else
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: remove player names from chat tab
-        mBrowserBox->addRow("remove name", _("Remove name"));
+        mBrowserBox->addRow("/removename", _("Remove name"));
     }
     if (tab->getNoAway())
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: enable away messages in chat tab
-        mBrowserBox->addRow("enable away", _("Enable away"));
+        mBrowserBox->addRow("/enableaway", _("Enable away"));
     }
     else
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: disable away messages in chat tab
-        mBrowserBox->addRow("disable away", _("Disable away"));
+        mBrowserBox->addRow("/disableaway", _("Disable away"));
     }
     mBrowserBox->addRow("##3---");
     if (type == ChatTabType::PARTY)
@@ -1166,12 +1166,7 @@ void PopupMenu::handleLink(const std::string &link,
 
     mAllowCleanMenu = true;
 
-    if (link == "chat close" && mTab)
-    {
-        inputManager.executeChatCommand(InputAction::CLOSE_CHAT_TAB,
-            std::string(), mTab);
-    }
-    else if (link == "remove map" && mMapItem)
+    if (link == "remove map" && mMapItem)
     {
         if (viewport)
         {
@@ -1243,36 +1238,6 @@ void PopupMenu::handleLink(const std::string &link,
         }
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);
-    }
-    else if (link == "enable highlight" && mTab)
-    {
-        inputManager.executeChatCommand(InputAction::ENABLE_HIGHLIGHT,
-            std::string(), mTab);
-    }
-    else if (link == "disable highlight" && mTab)
-    {
-        inputManager.executeChatCommand(InputAction::DISABLE_HIGHLIGHT,
-            std::string(), mTab);
-    }
-    else if (link == "dont remove name" && mTab)
-    {
-        inputManager.executeChatCommand(InputAction::DONT_REMOVE_NAME,
-            std::string(), mTab);
-    }
-    else if (link == "remove name" && mTab)
-    {
-        inputManager.executeChatCommand(InputAction::REMOVE_NAME,
-            std::string(), mTab);
-    }
-    else if (link == "disable away" && mTab)
-    {
-        inputManager.executeChatCommand(InputAction::DISABLE_AWAY,
-            std::string(), mTab);
-    }
-    else if (link == "enable away" && mTab)
-    {
-        inputManager.executeChatCommand(InputAction::ENABLE_AWAY,
-            std::string(), mTab);
     }
     else if (link == "attack moveup")
     {
