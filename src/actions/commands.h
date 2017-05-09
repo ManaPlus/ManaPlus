@@ -156,6 +156,7 @@ namespace Actions
     decHandler(moveAttackUp);
     decHandler(moveAttackDown);
     decHandler(movePriorityAttackUp);
+    decHandler(movePriorityAttackDown);
 }  // namespace Actions
 
 #undef decHandler

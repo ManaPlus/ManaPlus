@@ -156,5 +156,6 @@ impHandlerVoid(outfitToChat)
 impHandlerVoid(moveAttackUp)
 impHandlerVoid(moveAttackDown)
 impHandlerVoid(movePriorityAttackUp)
+impHandlerVoid(movePriorityAttackDown)
 
 }  // namespace Actions

@@ -1239,41 +1239,6 @@ void PopupMenu::handleLink(const std::string &link,
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);
     }
-    else if (link == "priority movedown")
-    {
-        if (localPlayer && actorManager)
-        {
-            const int idx = actorManager
-                ->getPriorityAttackMobIndex(mName);
-            const int size = actorManager->getPriorityAttackMobsSize();
-            if (idx + 1 < size)
-            {
-                std::list<std::string> mobs
-                    = actorManager->getPriorityAttackMobs();
-                std::list<std::string>::iterator it = mobs.begin();
-                std::list<std::string>::iterator it2 = it;
-                while (it != mobs.end())
-                {
-                    if (*it == mName)
-                    {
-                        ++ it2;
-                        if (it2 == mobs.end())
-                            break;
-
-                        mobs.splice(it, mobs, it2);
-                        actorManager->setPriorityAttackMobs(mobs);
-                        actorManager->rebuildPriorityAttackMobs();
-                        break;
-                    }
-                    ++ it;
-                    ++ it2;
-                }
-
-                if (socialWindow)
-                    socialWindow->updateAttackFilter();
-            }
-        }
-    }
     else if (link == "items" && being)
     {
         if (being == localPlayer)
@@ -2075,9 +2040,10 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
             }
             if (idx + 1 < size)
             {
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: move attack target down
-                mBrowserBox->addRow("priority movedown", _("Move down"));
+                mBrowserBox->addRow("/movepriorityattackdown 'NAME'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: move attack target down
+                    _("Move down"));
             }
             break;
         }

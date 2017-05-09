@@ -691,6 +691,7 @@ enumStart(InputAction)
     MOVE_ATTACK_UP,
     MOVE_ATTACK_DOWN,
     MOVE_PRIORITY_ATTACK_UP,
+    MOVE_PRIORITY_ATTACK_DOWN,
     TOTAL
 }
 enumEnd(InputAction);

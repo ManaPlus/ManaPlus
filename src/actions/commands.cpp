@@ -1996,6 +1996,45 @@ impHandler(movePriorityAttackUp)
             socialWindow->updateAttackFilter();
         return true;
     }
+    return false;
+}
+
+impHandler(movePriorityAttackDown)
+{
+    if (!actorManager)
+        return false;
+    const std::string args = event.args;
+    const int idx = actorManager
+        ->getPriorityAttackMobIndex(args);
+    const int size = actorManager->getPriorityAttackMobsSize();
+    if (idx + 1 < size)
+    {
+        std::list<std::string> mobs
+            = actorManager->getPriorityAttackMobs();
+        std::list<std::string>::iterator it = mobs.begin();
+        std::list<std::string>::iterator it2 = it;
+        while (it != mobs.end())
+        {
+            if (*it == args)
+            {
+                ++ it2;
+                if (it2 == mobs.end())
+                    break;
+
+                mobs.splice(it, mobs, it2);
+                actorManager->setPriorityAttackMobs(mobs);
+                actorManager->rebuildPriorityAttackMobs();
+                break;
+            }
+            ++ it;
+            ++ it2;
+        }
+
+        if (socialWindow)
+            socialWindow->updateAttackFilter();
+        return true;
+    }
+    return false;
 }
 
 }  // namespace Actions
