@@ -1270,40 +1270,6 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
     }
-    else if (link == "attack movedown")
-    {
-        if (actorManager)
-        {
-            const int idx = actorManager->getAttackMobIndex(mName);
-            const int size = actorManager->getAttackMobsSize();
-            if (idx + 1 < size)
-            {
-                std::list<std::string> mobs
-                    = actorManager->getAttackMobs();
-                std::list<std::string>::iterator it = mobs.begin();
-                std::list<std::string>::iterator it2 = it;
-                while (it != mobs.end())
-                {
-                    if (*it == mName)
-                    {
-                        ++ it2;
-                        if (it2 == mobs.end())
-                            break;
-
-                        mobs.splice(it, mobs, it2);
-                        actorManager->setAttackMobs(mobs);
-                        actorManager->rebuildAttackMobs();
-                        break;
-                    }
-                    ++ it;
-                    ++ it2;
-                }
-
-                if (socialWindow)
-                    socialWindow->updateAttackFilter();
-            }
-        }
-    }
     else if (link == "priority movedown")
     {
         if (localPlayer && actorManager)
@@ -2122,7 +2088,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: move attack target down
-                mBrowserBox->addRow("attack movedown", _("Move down"));
+                mBrowserBox->addRow("/moveattackdown 'NAME'", _("Move down"));
             }
             break;
         }

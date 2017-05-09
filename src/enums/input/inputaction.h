@@ -689,6 +689,7 @@ enumStart(InputAction)
     COMMAND_TRANSLATE,
     COMMAND_SEND_GUI_KEY,
     MOVE_ATTACK_UP,
+    MOVE_ATTACK_DOWN,
     TOTAL
 }
 enumEnd(InputAction);

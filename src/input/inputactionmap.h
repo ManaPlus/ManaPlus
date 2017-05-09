@@ -5624,6 +5624,12 @@ static const InputActionData inputActionData
         "attackmoveup|moveattackup",
         UseArgs_true,
         Protected_true},
+    {"keyMoveAttackDown",
+        defaultAction(&Actions::moveAttackDown),
+        InputCondition::ENABLED,
+        "attackmovedown|moveattackdown",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

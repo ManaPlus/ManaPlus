@@ -1897,6 +1897,8 @@ impHandler0(outfitToChat)
 
 impHandler(moveAttackUp)
 {
+    if (!actorManager)
+        return false;
     const std::string args = event.args;
     const int idx = actorManager->getAttackMobIndex(args);
     if (idx > 0)
@@ -1922,6 +1924,42 @@ impHandler(moveAttackUp)
         if (socialWindow)
             socialWindow->updateAttackFilter();
         return true;
+    }
+    return false;
+}
+
+impHandler(moveAttackDown)
+{
+    if (!actorManager)
+        return false;
+    const std::string args = event.args;
+    const int idx = actorManager->getAttackMobIndex(args);
+    const int size = actorManager->getAttackMobsSize();
+    if (idx + 1 < size)
+    {
+        std::list<std::string> mobs
+            = actorManager->getAttackMobs();
+        std::list<std::string>::iterator it = mobs.begin();
+        std::list<std::string>::iterator it2 = it;
+        while (it != mobs.end())
+        {
+            if (*it == args)
+            {
+                ++ it2;
+                if (it2 == mobs.end())
+                    break;
+
+                mobs.splice(it, mobs, it2);
+                actorManager->setAttackMobs(mobs);
+                actorManager->rebuildAttackMobs();
+                break;
+            }
+            ++ it;
+            ++ it2;
+        }
+
+        if (socialWindow)
+            socialWindow->updateAttackFilter();
     }
     return false;
 }
