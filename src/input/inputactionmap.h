@@ -5642,6 +5642,12 @@ static const InputActionData inputActionData
         "attackmoveprioritydown|movepriorityattackdown",
         UseArgs_true,
         Protected_true},
+    {"keyShowItems",
+        defaultAction(&Actions::showItems),
+        InputCondition::INGAME,
+        "showitems|items|itemsshow",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -1239,22 +1239,6 @@ void PopupMenu::handleLink(const std::string &link,
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);
     }
-    else if (link == "items" && being)
-    {
-        if (being == localPlayer)
-        {
-            if (equipmentWindow && !equipmentWindow->isWindowVisible())
-                equipmentWindow->setVisible(Visible_true);
-        }
-        else
-        {
-            if (beingEquipmentWindow)
-            {
-                beingEquipmentWindow->setBeing(being);
-                beingEquipmentWindow->setVisible(Visible_true);
-            }
-        }
-    }
     else if (link == "undress item" && being && mItemId)
     {
         being->undressItemById(mItemId);
@@ -2651,7 +2635,7 @@ void PopupMenu::addChat(const Being *const being)
 void PopupMenu::addPlayerMisc()
 {
     // TRANSLATORS: popup menu item
-    mBrowserBox->addRow("items", _("Show Items"));
+    mBrowserBox->addRow("/showitems :'BEINGID'", _("Show Items"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: undress player
     mBrowserBox->addRow("/undress :'BEINGID'", _("Undress"));

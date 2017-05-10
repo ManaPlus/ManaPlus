@@ -20,6 +20,8 @@
 
 #include "actions/windows.h"
 
+#include "actormanager.h"
+
 #include "actions/actiondef.h"
 
 #include "being/localplayer.h"
@@ -317,6 +319,42 @@ impHandler0(quickWindowShow)
 impHandler0(mailWindowShow)
 {
     showHideWindow(mailWindow);
+    return true;
+}
+
+impHandler(showItems)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+
+    Being *being = nullptr;
+    if (args[0] == ':')
+    {
+        being = actorManager->findBeing(fromInt(atoi(
+            args.substr(1).c_str()), BeingId));
+        if (being && being->getType() == ActorType::Monster)
+            being = nullptr;
+    }
+    else
+    {
+        being = actorManager->findBeingByName(args, ActorType::Player);
+    }
+    if (!being)
+        return true;
+    if (being == localPlayer)
+    {
+        if (equipmentWindow && !equipmentWindow->isWindowVisible())
+            equipmentWindow->setVisible(Visible_true);
+    }
+    else
+    {
+        if (beingEquipmentWindow)
+        {
+            beingEquipmentWindow->setBeing(being);
+            beingEquipmentWindow->setVisible(Visible_true);
+        }
+    }
     return true;
 }
 
