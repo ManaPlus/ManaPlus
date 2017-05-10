@@ -45,7 +45,6 @@
 #include "gui/windowmenu.h"
 
 #include "gui/windows/chatwindow.h"
-#include "gui/windows/equipmentwindow.h"
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/minimap.h"
 #include "gui/windows/ministatuswindow.h"
