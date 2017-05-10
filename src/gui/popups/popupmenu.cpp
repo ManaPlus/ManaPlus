@@ -1238,10 +1238,6 @@ void PopupMenu::handleLink(const std::string &link,
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);
     }
-    else if (link == "undress item" && being && mItemId)
-    {
-        being->undressItemById(mItemId);
-    }
     else if (link == "guild-pos" && !mName.empty())
     {
         showChangePos(getX(), getY());
@@ -2103,7 +2099,7 @@ void PopupMenu::showUndressPopup(const int x, const int y,
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: undress item from player
-    mBrowserBox->addRow("undress item", _("Undress"));
+    mBrowserBox->addRow("/undress :'BEINGID' 'ITEMID'", _("Undress"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add item name to chat
     mBrowserBox->addRow("/addchat 'ITEMID''CARDS'", _("Add to chat"));

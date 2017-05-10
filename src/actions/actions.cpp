@@ -104,8 +104,9 @@
 #include "utils/chatutils.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
-#include "utils/timer.h"
 #include "utils/mathutils.h"
+#include "utils/parameters.h"
+#include "utils/timer.h"
 
 #ifdef ANDROID
 #ifndef USE_SDL2
@@ -1166,27 +1167,43 @@ impHandler(undress)
         return false;
 
     const std::string args = event.args;
-
+    StringVect pars;
+    if (!splitParameters(pars, args, " ,", '\"'))
+        return false;
     Being *target = nullptr;
-    if (!args.empty())
+    const size_t sz = pars.size();
+    if (sz == 0)
     {
-        if (args[0] == ':')
+        if (!target)
+            target = localPlayer->getTarget();
+    }
+    else
+    {
+        if (pars[0][0] == ':')
         {
             target = actorManager->findBeing(fromInt(atoi(
-                args.substr(1).c_str()), BeingId));
+                pars[0].substr(1).c_str()), BeingId));
             if (target && target->getType() == ActorType::Monster)
                 target = nullptr;
         }
         else
         {
-            target = actorManager->findNearestByName(event.args);
+            target = actorManager->findNearestByName(args);
         }
     }
 
-    if (!target)
-        target = localPlayer->getTarget();
-    if (target && beingHandler)
-        beingHandler->undress(target);
+    if (sz == 2)
+    {
+        const int itemId = atoi(pars[1].c_str());
+        if (target)
+            target->undressItemById(itemId);
+    }
+    else
+    {
+        if (target && beingHandler)
+            beingHandler->undress(target);
+    }
+
     return true;
 }
 
