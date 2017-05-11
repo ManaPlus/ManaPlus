@@ -1949,6 +1949,7 @@ gcc-5_tarball:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
 fedora_gcc-snapshot_tests:
   stage: build
   script:
@@ -1982,7 +1983,7 @@ fedora_gcc-snapshot:
   image: fedora:rawhide
   variables:
     PMUPDATE: "dnf install --refresh -y @development-tools"
-    PMINSTALL: "dnf install -y bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf"
+    PMINSTALL: "dnf install -y nc bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf"
   tags:
   - docker
 
@@ -1995,7 +1996,7 @@ fedora_gcc-snapshot_sdl2:
   image: fedora:rawhide
   variables:
     PMUPDATE: "dnf install --refresh -y @development-tools"
-    PMINSTALL: "dnf install -y bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf"
+    PMINSTALL: "dnf install -y nc bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel libxml2-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf"
   tags:
   - docker
 
