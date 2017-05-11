@@ -17,7 +17,7 @@ while true; do
     if [ "$?" != 0 ]; then
         exit 1
     fi
-    if [[ $n -ge 5 ]]; then
+    if [[ $n -ge 1 ]]; then
         break
     fi
     sleep 5s
@@ -32,7 +32,7 @@ while true; do
     if [ "$?" != 0 ]; then
         exit 1
     fi
-    if [[ $n -ge 5 ]]; then
+    if [[ $n -ge 1 ]]; then
         exit 0
     fi
     sleep 5s
