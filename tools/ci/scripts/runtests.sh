@@ -5,7 +5,7 @@ ulimit -c unlimited -S
 ulimit -c unlimited
 rm -rf core*
 
-export HOME="$(pwd)"
+export HOME="logs/home"
 
 echo "clean config runs"
 n=0
