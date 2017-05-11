@@ -75,7 +75,7 @@ gcc-5_c++11_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -91,7 +91,7 @@ gcc-6-i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -106,7 +106,7 @@ clang-3.9:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6:
   stage: prebuild
@@ -119,7 +119,7 @@ gcc-6:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-4.4:
   stage: prebuild
@@ -133,7 +133,7 @@ gcc-4.4:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -216,7 +216,7 @@ gcc-5_sdl2:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_game_only:
   stage: prebuild
@@ -229,7 +229,7 @@ gcc-6_game_only:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_dyecmd_only:
   stage: prebuild
@@ -465,7 +465,7 @@ gcc-5_sanitize:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -480,7 +480,7 @@ gcc-6_sanitize:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -496,7 +496,7 @@ gcc-6_sanitize_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -955,7 +955,7 @@ gcc-6_lto:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_lto_i386:
   stage: build
@@ -969,7 +969,7 @@ gcc-6_lto_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1113,7 +1113,7 @@ gcc-4.4_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1129,7 +1129,7 @@ gcc-4.5:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1145,7 +1145,7 @@ gcc-4.6:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1161,7 +1161,7 @@ gcc-4.6_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1177,7 +1177,7 @@ gcc-4.7:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1193,7 +1193,7 @@ gcc-4.7_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1209,7 +1209,7 @@ gcc-4.7_c++11:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1225,7 +1225,7 @@ gcc-4.8:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-4.8_i386:
   stage: build
@@ -1239,7 +1239,7 @@ gcc-4.8_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1255,7 +1255,7 @@ clang-3.0:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1271,7 +1271,7 @@ clang-3.0_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1287,7 +1287,7 @@ clang-3.3:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1303,7 +1303,7 @@ clang-3.3_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1319,7 +1319,7 @@ clang-3.4:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 clang-3.4_i386:
   stage: build
@@ -1333,7 +1333,7 @@ clang-3.4_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1349,7 +1349,7 @@ clang-3.5:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 clang-3.5_i386:
   stage: build
@@ -1363,7 +1363,7 @@ clang-3.5_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1379,7 +1379,7 @@ clang-3.6:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1395,7 +1395,7 @@ clang-3.6_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1411,7 +1411,7 @@ clang-3.7:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1427,7 +1427,7 @@ clang-3.7_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1443,7 +1443,7 @@ clang-3.8:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1459,7 +1459,7 @@ clang-3.8_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1474,7 +1474,7 @@ clang-3.8_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 .clang-3.9_c++11_i386:
   stage: build
@@ -1488,7 +1488,7 @@ clang-3.8_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1503,7 +1503,7 @@ gcc-6_all_and_unittestsbin:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-4.8_c++11:
   stage: build
@@ -1517,7 +1517,7 @@ gcc-4.8_c++11:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-4.9:
   stage: build
@@ -1531,7 +1531,7 @@ gcc-4.9:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-4.9_i386:
   stage: build
@@ -1545,7 +1545,7 @@ gcc-4.9_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1561,7 +1561,7 @@ gcc-4.9_c++11:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 cmake_gcc-4.9:
   stage: build
@@ -1575,7 +1575,7 @@ cmake_gcc-4.9:
               make cmake gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1590,7 +1590,7 @@ clang-4.0:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1605,7 +1605,7 @@ gcc-5:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-5_c++11:
   stage: build
@@ -1618,7 +1618,7 @@ gcc-5_c++11:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-5_sdl2_c++11:
   stage: build
@@ -1631,7 +1631,7 @@ gcc-5_sdl2_c++11:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-5_sdl2_c++11_i386:
   stage: build
@@ -1645,7 +1645,7 @@ gcc-5_sdl2_c++11_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1660,7 +1660,7 @@ gcc-snapshot:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-snapshot_i386:
   stage: build
@@ -1674,7 +1674,7 @@ gcc-snapshot_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1689,7 +1689,7 @@ gcc-snapshot_sdl2:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-snapshot_sdl2_i386:
   stage: build
@@ -1703,7 +1703,7 @@ gcc-snapshot_sdl2_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -1718,7 +1718,7 @@ gcc_without_mumble:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc_with_customnls:
   stage: build
@@ -1731,7 +1731,7 @@ gcc_with_customnls:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc_with_customnls_nonls:
   stage: build
@@ -1744,7 +1744,7 @@ gcc_with_customnls_nonls:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc49_cilkplus:
   stage: build
@@ -1758,7 +1758,7 @@ gcc49_cilkplus:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-5_cilkplus:
   stage: build
@@ -1771,7 +1771,7 @@ gcc-5_cilkplus:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_cilkplus:
   stage: build
@@ -1784,7 +1784,7 @@ gcc-6_cilkplus:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_pugixml:
   stage: build
@@ -1797,7 +1797,7 @@ gcc-6_pugixml:
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_pugixml_i386:
   stage: build
@@ -1811,7 +1811,7 @@ gcc-6_pugixml_i386:
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_pugixml_sdl2:
   stage: build
@@ -1824,7 +1824,7 @@ gcc-6_pugixml_sdl2:
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_pugixml_sdl2_i386:
   stage: build
@@ -1837,7 +1837,7 @@ gcc-6_pugixml_sdl2_i386:
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc_portable:
   stage: build
@@ -1850,7 +1850,7 @@ gcc_portable:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 clang-3.9_sdl2:
   stage: build
@@ -1863,7 +1863,7 @@ clang-3.9_sdl2:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_no_asserts:
   stage: build
@@ -1876,7 +1876,7 @@ gcc-6_no_asserts:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-4.8_sdl2:
   stage: build
@@ -1890,7 +1890,7 @@ gcc-4.8_sdl2:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-4.9_sdl2:
   stage: build
@@ -1904,7 +1904,7 @@ gcc-4.9_sdl2:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-5_h_eathena_tmwa:
   stage: build
@@ -2016,7 +2016,7 @@ gcc-6_zlib_v1.2.3.9:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
     POST_CXXFLAGS: "-Wno-undef"
   tags:
     - docker
@@ -2036,7 +2036,7 @@ gcc-6_zlib_v1.2.6.1:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
     POST_CXXFLAGS: "-Wno-undef"
   tags:
     - docker
@@ -2056,7 +2056,7 @@ gcc-6_zlib_v1.2.9:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2075,7 +2075,7 @@ gcc-6_zlib_v1.2.10:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2094,7 +2094,7 @@ gcc-6_zlib_v1.2.11:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2113,7 +2113,7 @@ gcc-6_zlib_master:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2132,7 +2132,7 @@ gcc-6_zlib_develop:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2152,7 +2152,7 @@ gcc-6_zlib_develop:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2171,7 +2171,7 @@ gcc-6_libpng_master:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2190,7 +2190,7 @@ gcc-6_libpng_libpng17:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2209,7 +2209,7 @@ gcc-6_libpng_libpng16:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2228,7 +2228,7 @@ gcc-6_libpng_libpng15:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2247,7 +2247,7 @@ gcc-6_libpng_libpng14:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2266,7 +2266,7 @@ gcc-6_libpng_libpng12:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2285,7 +2285,7 @@ gcc-6_libpng_libpng10:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2304,7 +2304,7 @@ gcc-6_curl_curl-7_9_8:
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2323,7 +2323,7 @@ gcc-6_curl_curl-7_40_0:
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2342,7 +2342,7 @@ gcc-6_curl_curl-7_52_1:
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2361,7 +2361,7 @@ gcc-6_curl_curl-7_53_1:
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2380,7 +2380,7 @@ gcc-6_curl_curl-7_54_0:
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
   tags:
     - docker
 
@@ -2400,7 +2400,7 @@ gcc-6_SDL_SDL-1.2:
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
@@ -2420,7 +2420,7 @@ gcc-6_SDL_default:
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
@@ -2484,7 +2484,7 @@ gcc-6_SDL_SDL-1.2_old:
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
               libjpeg-dev libtiff-dev 
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
     POST_CXXFLAGS: "-Wno-undef"
@@ -2506,7 +2506,7 @@ gcc-6_SDL_default_old:
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev
               libjpeg-dev libtiff-dev
-              wget unzip gdb valgrind
+              wget unzip gdb valgrind netcat-openbsd
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_v2.9.1.sh
     POST_CXXFLAGS: "-Wno-undef"
@@ -2664,7 +2664,7 @@ gcc-6_openglerrors_i386:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 gcc-6_openglerrors:
   stage: build
@@ -2677,7 +2677,7 @@ gcc-6_openglerrors:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind
+              gdb valgrind netcat-openbsd
 
 # deheader default
 
