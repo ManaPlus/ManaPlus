@@ -122,11 +122,12 @@ class Game final
 
         static void moveInDirection(const unsigned char direction);
 
-        static bool createScreenshot();
+        static bool createScreenshot(const std::string &prefix);
 
         static void addWatermark();
 
-        static bool saveScreenshot(SDL_Surface *const screenshot);
+        static bool saveScreenshot(SDL_Surface *const screenshot,
+                                   const std::string &prefix);
 
         void updateHistory(const SDL_Event &event);
 

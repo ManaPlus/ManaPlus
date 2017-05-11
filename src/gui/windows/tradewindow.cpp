@@ -308,7 +308,7 @@ void TradeWindow::receivedOk(const bool own)
 void TradeWindow::completeTrade()
 {
     if (config.getBoolValue("tradescreenshot"))
-        Game::createScreenshot();
+        Game::createScreenshot(std::string());
     setVisible(Visible_false);
     reset();
 }

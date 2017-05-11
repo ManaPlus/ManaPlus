@@ -687,9 +687,9 @@ impHandler0(sit)
     return false;
 }
 
-impHandler0(screenshot)
+impHandler(screenshot)
 {
-    Game::createScreenshot();
+    Game::createScreenshot(event.args);
     return true;
 }
 

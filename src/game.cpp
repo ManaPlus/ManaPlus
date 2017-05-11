@@ -498,7 +498,7 @@ void Game::addWatermark()
         100, 50);
 }
 
-bool Game::createScreenshot()
+bool Game::createScreenshot(const std::string &prefix)
 {
     if (!mainGraphics || !screenshortHelper)
         return false;
@@ -523,10 +523,11 @@ bool Game::createScreenshot()
     if (!screenshot)
         return false;
 
-    return saveScreenshot(screenshot);
+    return saveScreenshot(screenshot, prefix);
 }
 
-bool Game::saveScreenshot(SDL_Surface *const screenshot)
+bool Game::saveScreenshot(SDL_Surface *const screenshot,
+                          const std::string &prefix)
 {
     std::string screenshotDirectory = settings.screenshotDir;
     if (mkdir_r(screenshotDirectory.c_str()) != 0)
@@ -553,13 +554,15 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot)
     std::string screenShortStr;
     if (serverName.empty())
     {
-        screenShortStr = strprintf("%s_Screenshot_%s_",
+        screenShortStr = strprintf("%s%s_Screenshot_%s_",
+            prefix.c_str(),
             branding.getValue("appName", "ManaPlus").c_str(),
             buffer);
     }
     else
     {
-        screenShortStr = strprintf("%s_Screenshot_%s_%s_",
+        screenShortStr = strprintf("%s%s_Screenshot_%s_%s_",
+            prefix.c_str(),
             branding.getValue("appName", "ManaPlus").c_str(),
             serverName.c_str(), buffer);
     }
