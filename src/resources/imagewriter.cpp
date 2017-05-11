@@ -47,7 +47,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
         return false;
     }
 
-    const png_infop info_ptr = png_create_info_struct(png_ptr);
+    png_infop info_ptr = png_create_info_struct(png_ptr);
     if (!info_ptr)
     {
         png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
@@ -57,7 +57,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
 
     if (setjmp(png_jmpbuf(png_ptr)))
     {
-        png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
+        png_destroy_write_struct(&png_ptr, &info_ptr);
         reportAlways("problem writing to %s", filename.c_str());
         return false;
     }
@@ -107,7 +107,8 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
 
     delete [] row_pointers;
 
-    png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
+    png_destroy_write_struct(&png_ptr,
+        &info_ptr);
 
     if (SDL_MUSTLOCK(surface))
         SDL_UnlockSurface(surface);
