@@ -552,32 +552,40 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot,
 
     const std::string serverName = settings.serverName;
     std::string screenShortStr;
-    if (serverName.empty())
+    if (prefix.empty())
     {
-        screenShortStr = strprintf("%s%s_Screenshot_%s_",
-            prefix.c_str(),
-            branding.getValue("appName", "ManaPlus").c_str(),
-            buffer);
+        if (serverName.empty())
+        {
+            screenShortStr = strprintf("%s_Screenshot_%s_",
+                branding.getValue("appName", "ManaPlus").c_str(),
+                buffer);
+        }
+        else
+        {
+            screenShortStr = strprintf("%s_Screenshot_%s_%s_",
+                branding.getValue("appName", "ManaPlus").c_str(),
+                serverName.c_str(), buffer);
+        }
+
+        do
+        {
+            screenshotCount++;
+            filename.str("");
+            filename << screenshotDirectory << "/";
+            filename << screenShortStr << screenshotCount << ".png";
+            testExists.open(filename.str().c_str(), std::ios::in);
+            found = !testExists.is_open();
+            testExists.close();
+        }
+        while (!found);
     }
     else
     {
-        screenShortStr = strprintf("%s%s_Screenshot_%s_%s_",
-            prefix.c_str(),
-            branding.getValue("appName", "ManaPlus").c_str(),
-            serverName.c_str(), buffer);
-    }
-
-    do
-    {
-        screenshotCount++;
+        screenShortStr = prefix;
         filename.str("");
         filename << screenshotDirectory << "/";
-        filename << screenShortStr << screenshotCount << ".png";
-        testExists.open(filename.str().c_str(), std::ios::in);
-        found = !testExists.is_open();
-        testExists.close();
+        filename << screenShortStr;
     }
-    while (!found);
 
     const std::string fileNameStr = filename.str();
     const bool success = ImageWriter::writePNG(screenshot, fileNameStr);
