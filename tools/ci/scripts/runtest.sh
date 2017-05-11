@@ -17,7 +17,7 @@ function check_is_run {
 }
 
 function run {
-    ./src/manaplus --enable-ipc --renderer=0 >logs/run.log 2>&1 &
+    ./src/manaplus --default-cursor --enable-ipc --renderer=0 >logs/run.log 2>&1 &
     export PID=$!
     sleep 12s
 }

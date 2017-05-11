@@ -257,7 +257,8 @@ void Gui::postInit(Graphics *const graphics)
     Widget::setGlobalFont(mGuiFont);
 
     // Initialize mouse cursor and listen for changes to the option
-    setUseCustomCursor(config.getBoolValue("customcursor"));
+    setUseCustomCursor(config.getBoolValue("customcursor") &&
+        !settings.options.defaultCursor);
     setDoubleClick(config.getBoolValue("doubleClick"));
     config.addListener("customcursor", mConfigListener);
     config.addListener("doubleClick", mConfigListener);

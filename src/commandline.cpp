@@ -158,6 +158,7 @@ void parseOptions(const int argc, char *const argv[])
         { "renderer",       required_argument, nullptr, 'r' },
         { "server-type",    required_argument, nullptr, 'y' },
         { "enable-ipc",     no_argument,       nullptr, 'I' },
+        { "default-cursor", no_argument,       nullptr, 'q' },
         { nullptr,          0,                 nullptr, 0 }
     };
 
@@ -251,6 +252,10 @@ void parseOptions(const int argc, char *const argv[])
                 break;
             case 'I':
                 options.ipc = true;
+                break;
+            case 'q':
+                options.defaultCursor = true;
+                break;
             default:
                 break;
         }
