@@ -1886,7 +1886,7 @@ msgstr "Karten: "
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:378
 msgid "Options: "
-msgstr "Optionen:"
+msgstr "Optionen: "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
