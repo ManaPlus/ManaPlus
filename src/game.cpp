@@ -541,8 +541,6 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot,
     // Search for an unused screenshot name
     std::stringstream filename;
     std::fstream testExists;
-    bool found = false;
-    static unsigned int screenshotCount = 0;
 
     time_t rawtime;
     char buffer [100];
@@ -567,6 +565,8 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot,
                 serverName.c_str(), buffer);
         }
 
+        bool found = false;
+        static unsigned int screenshotCount = 0;
         do
         {
             screenshotCount++;

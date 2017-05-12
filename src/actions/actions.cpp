@@ -1174,8 +1174,7 @@ impHandler(undress)
     const size_t sz = pars.size();
     if (sz == 0)
     {
-        if (!target)
-            target = localPlayer->getTarget();
+        target = localPlayer->getTarget();
     }
     else
     {

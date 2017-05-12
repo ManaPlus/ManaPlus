@@ -47,7 +47,7 @@ struct ItemOptionsList final
         options = new ItemOption[amount];
     }
 
-    A_DEFAULT_COPY(ItemOptionsList)
+    A_DELETE_COPY(ItemOptionsList)
 
     ~ItemOptionsList()
     {

@@ -31,8 +31,8 @@ namespace VirtFs
 struct DirEntry final : public FsEntry
 {
     DirEntry(const std::string &userDir,
-                 const std::string &rootDir,
-                 FsFuncs *restrict const funcs);
+             const std::string &rootDir,
+             FsFuncs *restrict const funcs);
 
     A_DELETE_COPY(DirEntry)
 
