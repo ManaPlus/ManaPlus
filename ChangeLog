@@ -1,3 +1,15 @@
+2017-05-14 New release 1.7.5.14
+fix: possible crash if exit while downloading servers list.
+fix: crashes in cart and some other inventories.
+fix: socket leak in ipc.
+fix: memory leak in screenshots.
+add: option for enable / disable particle effects located on map.
+add: use ccache in some build scripts.
+add: allow run ipc commands before connecting to server.
+add: different chat commands.
+add: support for 2016 packet versions.
+add: basic functional testing based on ipc and screenshots.
+
 2017-04-29 New release 1.7.4.29
 fix: loading map atlases on windows.
 fix: slow or wrong drawing with atlases enabled but without atlas for current map.
