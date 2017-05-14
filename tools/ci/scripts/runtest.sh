@@ -119,6 +119,10 @@ send_command "/setup"
 send_command "/screenshot run4.png"
 imagessame run3.png run4.png
 
+# other comparisions
+imagesdiff downkey.png help.png
+imagesdiff help.png setup.png
+
 # final delay
 sleep 5s
 
