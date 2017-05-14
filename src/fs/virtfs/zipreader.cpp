@@ -297,7 +297,11 @@ namespace ZipReader
         strm.next_out = out;
         strm.avail_out = CAST_U32(outSize);
 
+PRAGMACLANG6GCC(GCC diagnostic push)
+PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
         int ret = inflateInit2(&strm, -MAX_WBITS);
+PRAGMACLANG6GCC(GCC diagnostic pop)
+
         if (ret != Z_OK)
         {
             reportZlibError(header->zipEntry->root, ret);

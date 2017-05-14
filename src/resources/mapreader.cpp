@@ -137,7 +137,11 @@ int inflateMemory(unsigned char *restrict const in,
     strm.next_out = out;
     strm.avail_out = bufferSize;
 
+PRAGMACLANG6GCC(GCC diagnostic push)
+PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
     int ret = inflateInit2(&strm, 15 + 32);
+PRAGMACLANG6GCC(GCC diagnostic pop)
+
     if (ret != Z_OK)
         return ret;
 
