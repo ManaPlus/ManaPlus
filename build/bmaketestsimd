@@ -17,7 +17,7 @@ export CXXFLAGS="-pedantic -ggdb3 -O5 -pipe -Wstrict-aliasing=2 \
 -std=gnu++1z -Wformat=1 \
 -fno-var-tracking -Wno-attributes"
 
-source ./tools/ci/flags/gcc6.sh
+source ./tools/ci/flags/gcc7.sh
 
 autoreconf -i
 ./configure --prefix=$dir/run \
