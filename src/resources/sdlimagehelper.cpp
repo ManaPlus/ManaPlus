@@ -202,6 +202,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
 
     if (tmpImage->format->BitsPerPixel != 32)
     {
+        reportAlways("Non 32 bit image detected");
         tmpImage = convertTo32Bit(tmpImage);
 
         if (!tmpImage)
