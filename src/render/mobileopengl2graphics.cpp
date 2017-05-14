@@ -345,7 +345,7 @@ void MobileOpenGL2Graphics::drawImageInline(const Image *restrict const image,
     debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture2(GL_TEXTURE_2D, image);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
@@ -433,7 +433,7 @@ void MobileOpenGL2Graphics::drawRescaledImage(const Image *
     debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture2(GL_TEXTURE_2D, image);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
 
     const ClipRect &clipArea = mClipStack.top();
@@ -484,7 +484,7 @@ void MobileOpenGL2Graphics::drawPatternInline(const Image *
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture2(GL_TEXTURE_2D, image);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
@@ -548,7 +548,7 @@ void MobileOpenGL2Graphics::drawRescaledPattern(const Image *
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture2(GL_TEXTURE_2D, image);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
@@ -719,7 +719,7 @@ void MobileOpenGL2Graphics::drawTileCollection(const ImageCollection
                                                *restrict const vertCol)
                                                restrict2
 {
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     const ImageVertexesVector &draws = vertCol->draws;
     const ImageCollectionCIter it_end = draws.end();
     for (ImageCollectionCIter it = draws.begin(); it != it_end; ++ it)
@@ -833,7 +833,7 @@ void MobileOpenGL2Graphics::drawTileVertexes(const ImageVertexes *
     debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture2(GL_TEXTURE_2D, image);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
 
     drawVertexes(vert->ogl);
@@ -926,7 +926,7 @@ void MobileOpenGL2Graphics::popClipArea() restrict2
 
 void MobileOpenGL2Graphics::drawPoint(int x, int y) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     GLfloat vertices[] =
@@ -947,7 +947,7 @@ void MobileOpenGL2Graphics::drawPoint(int x, int y) restrict2
 void MobileOpenGL2Graphics::drawLine(int x1, int y1,
                                      int x2, int y2) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     GLfloat vertices[] =
@@ -968,7 +968,7 @@ void MobileOpenGL2Graphics::drawLine(int x1, int y1,
 
 void MobileOpenGL2Graphics::drawRectangle(const Rect &restrict rect) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     const GLfloat x1 = static_cast<GLfloat>(rect.x + clipArea.xOffset);
@@ -996,7 +996,7 @@ void MobileOpenGL2Graphics::drawRectangle(const Rect &restrict rect) restrict2
 
 void MobileOpenGL2Graphics::fillRectangle(const Rect &restrict rect) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     const GLfloat x1 = static_cast<GLfloat>(rect.x + clipArea.xOffset);
@@ -1022,39 +1022,36 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect &restrict rect) restrict2
 #endif  // OPENGLERRORS
 }
 
-void MobileOpenGL2Graphics::setTexturingAndBlending(const bool enable)
-                                                    restrict2
+void MobileOpenGL2Graphics::enableTexturingAndBlending() restrict2
 {
-    if (enable)
+    if (!mTextureDraw)
     {
-        if (!mTextureDraw)
-        {
-            mTextureDraw = true;
-            mglUniform1f(mDrawTypeUniform, 1.0f);
-        }
-        if (!mAlpha)
-        {
-            mglEnable(GL_BLEND);
-            mAlpha = true;
-        }
+        mTextureDraw = true;
+        mglUniform1f(mDrawTypeUniform, 1.0f);
     }
-    else
+    if (!mAlpha)
     {
-        if (mTextureDraw)
-        {
-            mTextureDraw = false;
-            mglUniform1f(mDrawTypeUniform, 0.0f);
-        }
-        if (mAlpha && !mColorAlpha)
-        {
-            mglDisable(GL_BLEND);
-            mAlpha = false;
-        }
-        else if (!mAlpha && mColorAlpha)
-        {
-            mglEnable(GL_BLEND);
-            mAlpha = true;
-        }
+        mglEnable(GL_BLEND);
+        mAlpha = true;
+    }
+}
+
+void MobileOpenGL2Graphics::disableTexturingAndBlending() restrict2
+{
+    if (mTextureDraw)
+    {
+        mTextureDraw = false;
+        mglUniform1f(mDrawTypeUniform, 0.0f);
+    }
+    if (mAlpha && !mColorAlpha)
+    {
+        mglDisable(GL_BLEND);
+        mAlpha = false;
+    }
+    else if (!mAlpha && mColorAlpha)
+    {
+        mglEnable(GL_BLEND);
+        mAlpha = true;
     }
 }
 
@@ -1073,7 +1070,7 @@ void MobileOpenGL2Graphics::drawNet(const int x1,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     const GLfloat dx = static_cast<GLfloat>(clipArea.xOffset);

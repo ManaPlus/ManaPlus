@@ -389,7 +389,7 @@ void NormalOpenGLGraphics::drawImageInline(const Image *restrict const image,
 #endif  // DEBUG_BIND_TEXTURE
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     const SDL_Rect &imageRect = image->mBounds;
     drawQuad(image, imageRect.x, imageRect.y,
@@ -632,7 +632,7 @@ void NormalOpenGLGraphics::completeCache() restrict2
 #endif  // DEBUG_BIND_TEXTURE
 
     bindTexture(OpenGLImageHelper::mTextureType, mImageCached);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
         drawQuadArrayfiCached(mVpCached);
@@ -667,7 +667,7 @@ void NormalOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
 #endif  // DEBUG_BIND_TEXTURE
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     // Draw a textured quad.
     drawRescaledQuad(image, imageRect.x, imageRect.y, dstX, dstY,
@@ -711,7 +711,7 @@ void NormalOpenGLGraphics::drawPatternInline(const Image *restrict const image,
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
@@ -805,7 +805,7 @@ void NormalOpenGLGraphics::drawRescaledPattern(const Image *
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
@@ -1096,7 +1096,7 @@ void NormalOpenGLGraphics::drawTileCollection(const ImageCollection
 #endif  // DEBUG_BIND_TEXTURE
 
         bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-        setTexturingAndBlending(true);
+        enableTexturingAndBlending();
         drawVertexes(vert->ogl);
     }
 }
@@ -1219,7 +1219,7 @@ void NormalOpenGLGraphics::drawTileVertexes(const ImageVertexes *
 #endif  // DEBUG_BIND_TEXTURE
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     drawVertexes(vert->ogl);
 }
 
@@ -1387,7 +1387,7 @@ void NormalOpenGLGraphics::popClipArea() restrict2
 
 void NormalOpenGLGraphics::drawPoint(int x, int y) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
 #ifdef ANDROID
@@ -1403,7 +1403,7 @@ void NormalOpenGLGraphics::drawPoint(int x, int y) restrict2
 void NormalOpenGLGraphics::drawLine(int x1, int y1,
                                     int x2, int y2) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     mFloatTexArray[0] = static_cast<float>(x1) + 0.5F;
@@ -1424,43 +1424,41 @@ void NormalOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
     drawRectangle(rect, true);
 }
 
-void NormalOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
+void NormalOpenGLGraphics::enableTexturingAndBlending() restrict2
 {
-    if (enable)
+    if (!mTexture)
     {
-        if (!mTexture)
-        {
-            glEnable(OpenGLImageHelper::mTextureType);
-            glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-            mTexture = true;
-        }
-
-        if (!mAlpha)
-        {
-            glEnable(GL_BLEND);
-            mAlpha = true;
-        }
+        glEnable(OpenGLImageHelper::mTextureType);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        mTexture = true;
     }
-    else
-    {
-        mTextureBinded = 0;
-        if (mAlpha && !mColorAlpha)
-        {
-            glDisable(GL_BLEND);
-            mAlpha = false;
-        }
-        else if (!mAlpha && mColorAlpha)
-        {
-            glEnable(GL_BLEND);
-            mAlpha = true;
-        }
 
-        if (mTexture)
-        {
-            glDisable(OpenGLImageHelper::mTextureType);
-            glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-            mTexture = false;
-        }
+    if (!mAlpha)
+    {
+        glEnable(GL_BLEND);
+        mAlpha = true;
+    }
+}
+
+void NormalOpenGLGraphics::disableTexturingAndBlending() restrict2
+{
+    mTextureBinded = 0;
+    if (mAlpha && !mColorAlpha)
+    {
+        glDisable(GL_BLEND);
+        mAlpha = false;
+    }
+    else if (!mAlpha && mColorAlpha)
+    {
+        glEnable(GL_BLEND);
+        mAlpha = true;
+    }
+
+    if (mTexture)
+    {
+        glDisable(OpenGLImageHelper::mTextureType);
+        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+        mTexture = false;
     }
 }
 
@@ -1474,7 +1472,7 @@ void NormalOpenGLGraphics::drawRectangle(const Rect &restrict rect,
     const float width = static_cast<float>(rect.width);
     const float height = static_cast<float>(rect.height);
 
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     GLfloat vert[] =
@@ -1505,7 +1503,7 @@ void NormalOpenGLGraphics::drawNet(const int x1, const int y1,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     const float xf1 = static_cast<float>(x1);

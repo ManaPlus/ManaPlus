@@ -340,7 +340,7 @@ void ModernOpenGLGraphics::drawImageInline(const Image *restrict const image,
     debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture(GL_TEXTURE_2D, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
@@ -426,7 +426,7 @@ void ModernOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
     debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
 
     const ClipRect &clipArea = mClipStack.top();
@@ -472,7 +472,7 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *restrict const image,
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
@@ -535,7 +535,7 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     setColorAlpha(image->mAlpha);
 
@@ -704,7 +704,7 @@ void ModernOpenGLGraphics::drawTileCollection(const ImageCollection
                                               *restrict const vertCol)
                                               restrict2
 {
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 /*
     if (!vertCol)
     {
@@ -821,7 +821,7 @@ void ModernOpenGLGraphics::drawTileVertexes(const ImageVertexes *
 #endif  // DEBUG_BIND_TEXTURE
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
 
     drawVertexes(vert->ogl);
@@ -912,7 +912,7 @@ void ModernOpenGLGraphics::popClipArea() restrict2
 
 void ModernOpenGLGraphics::drawPoint(int x, int y) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     GLint vertices[] =
@@ -934,7 +934,7 @@ void ModernOpenGLGraphics::drawPoint(int x, int y) restrict2
 void ModernOpenGLGraphics::drawLine(int x1, int y1,
                                     int x2, int y2) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     GLint vertices[] =
@@ -956,7 +956,7 @@ void ModernOpenGLGraphics::drawLine(int x1, int y1,
 
 void ModernOpenGLGraphics::drawRectangle(const Rect &restrict rect) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     const int x1 = rect.x + clipArea.xOffset;
@@ -985,7 +985,7 @@ void ModernOpenGLGraphics::drawRectangle(const Rect &restrict rect) restrict2
 
 void ModernOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     const int x1 = rect.x + clipArea.xOffset;
@@ -1012,38 +1012,36 @@ void ModernOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
 #endif  // OPENGLERRORS
 }
 
-void ModernOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
+void ModernOpenGLGraphics::enableTexturingAndBlending() restrict2
 {
-    if (enable)
+    if (!mTextureDraw)
     {
-        if (!mTextureDraw)
-        {
-            mTextureDraw = true;
-            mglUniform1f(mDrawTypeUniform, 1.0f);
-        }
-        if (!mAlpha)
-        {
-            mglEnable(GL_BLEND);
-            mAlpha = true;
-        }
+        mTextureDraw = true;
+        mglUniform1f(mDrawTypeUniform, 1.0f);
     }
-    else
+    if (!mAlpha)
     {
-        if (mTextureDraw)
-        {
-            mTextureDraw = false;
-            mglUniform1f(mDrawTypeUniform, 0.0f);
-        }
-        if (mAlpha && !mColorAlpha)
-        {
-            mglDisable(GL_BLEND);
-            mAlpha = false;
-        }
-        else if (!mAlpha && mColorAlpha)
-        {
-            mglEnable(GL_BLEND);
-            mAlpha = true;
-        }
+        mglEnable(GL_BLEND);
+        mAlpha = true;
+    }
+}
+
+void ModernOpenGLGraphics::disableTexturingAndBlending() restrict2
+{
+    if (mTextureDraw)
+    {
+        mTextureDraw = false;
+        mglUniform1f(mDrawTypeUniform, 0.0f);
+    }
+    if (mAlpha && !mColorAlpha)
+    {
+        mglDisable(GL_BLEND);
+        mAlpha = false;
+    }
+    else if (!mAlpha && mColorAlpha)
+    {
+        mglEnable(GL_BLEND);
+        mAlpha = true;
     }
 }
 
@@ -1059,7 +1057,7 @@ void ModernOpenGLGraphics::drawNet(const int x1, const int y1,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     bindArrayBufferAndAttributes(mVbo);
     const ClipRect &clipArea = mClipStack.top();
     const GLint dx = clipArea.xOffset;

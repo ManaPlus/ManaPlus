@@ -181,7 +181,7 @@ void SafeOpenGLGraphics::drawImageInline(const Image *restrict const image,
 
     setColorAlpha(image->mAlpha);
     bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     const SDL_Rect &bounds = image->mBounds;
     // Draw a textured quad.
@@ -236,7 +236,7 @@ void SafeOpenGLGraphics::drawImageCached(const Image *restrict const image,
 
     setColorAlpha(image->mAlpha);
     bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     const SDL_Rect &bounds = image->mBounds;
     // Draw a textured quad.
@@ -264,7 +264,7 @@ void SafeOpenGLGraphics::drawPatternCached(const Image *restrict const image,
 
     setColorAlpha(image->mAlpha);
     bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     // Draw a set of textured rectangles
     glBegin(GL_QUADS);
@@ -308,7 +308,7 @@ void SafeOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
 
     setColorAlpha(image->mAlpha);
     bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     // Draw a textured quad.
     glBegin(GL_QUADS);
@@ -343,7 +343,7 @@ void SafeOpenGLGraphics::drawPatternInline(const Image *restrict const image,
 
     setColorAlpha(image->mAlpha);
     bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     // Draw a set of textured rectangles
     glBegin(GL_QUADS);
@@ -383,7 +383,7 @@ void SafeOpenGLGraphics::drawRescaledPattern(const Image *restrict const image,
 
     setColorAlpha(image->mAlpha);
     bindTexture(SafeOpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     // Draw a set of textured rectangles
     glBegin(GL_QUADS);
@@ -583,7 +583,7 @@ void SafeOpenGLGraphics::popClipArea() restrict2
 
 void SafeOpenGLGraphics::drawPoint(int x, int y) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     glBegin(GL_POINTS);
@@ -595,7 +595,7 @@ void SafeOpenGLGraphics::drawNet(const int x1, const int y1,
                                  const int x2, const int y2,
                                  const int width, const int height) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     glBegin(GL_LINES);
@@ -620,7 +620,7 @@ void SafeOpenGLGraphics::drawNet(const int x1, const int y1,
 void SafeOpenGLGraphics::drawLine(int x1, int y1,
                                   int x2, int y2) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     glBegin(GL_LINES);
@@ -639,41 +639,39 @@ void SafeOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
     drawRectangle(rect, true);
 }
 
-void SafeOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
+void SafeOpenGLGraphics::enableTexturingAndBlending() restrict2
 {
-    if (enable)
+    if (!mTexture)
     {
-        if (!mTexture)
-        {
-            glEnable(SafeOpenGLImageHelper::mTextureType);
-            mTexture = true;
-        }
-
-        if (!mAlpha)
-        {
-            glEnable(GL_BLEND);
-            mAlpha = true;
-        }
+        glEnable(SafeOpenGLImageHelper::mTextureType);
+        mTexture = true;
     }
-    else
-    {
-        mTextureBinded = 0;
-        if (mAlpha && !mColorAlpha)
-        {
-            glDisable(GL_BLEND);
-            mAlpha = false;
-        }
-        else if (!mAlpha && mColorAlpha)
-        {
-            glEnable(GL_BLEND);
-            mAlpha = true;
-        }
 
-        if (mTexture)
-        {
-            glDisable(SafeOpenGLImageHelper::mTextureType);
-            mTexture = false;
-        }
+    if (!mAlpha)
+    {
+        glEnable(GL_BLEND);
+        mAlpha = true;
+    }
+}
+
+void SafeOpenGLGraphics::disableTexturingAndBlending() restrict2
+{
+    mTextureBinded = 0;
+    if (mAlpha && !mColorAlpha)
+    {
+        glDisable(GL_BLEND);
+        mAlpha = false;
+    }
+    else if (!mAlpha && mColorAlpha)
+    {
+        glEnable(GL_BLEND);
+        mAlpha = true;
+    }
+
+    if (mTexture)
+    {
+        glDisable(SafeOpenGLImageHelper::mTextureType);
+        mTexture = false;
     }
 }
 
@@ -683,7 +681,7 @@ void SafeOpenGLGraphics::drawRectangle(const Rect &restrict rect,
     BLOCK_START("Graphics::drawRectangle")
     const float offset = filled ? 0 : 0.5F;
 
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     glBegin(filled ? GL_QUADS : GL_LINE_LOOP);

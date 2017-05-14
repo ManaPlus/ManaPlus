@@ -48,7 +48,9 @@ public:
     static GLuint mTextureBinded;
 
 protected:
-    void setTexturingAndBlending(const bool enable) restrict2;
+    void enableTexturingAndBlending() restrict2;
+
+    void disableTexturingAndBlending() restrict2;
 
 private:
     void inline setColorAlpha(const float alpha) restrict2 A_INLINE;

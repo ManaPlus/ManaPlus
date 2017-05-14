@@ -291,7 +291,7 @@ void MobileOpenGLGraphics::drawImageInline(const Image *restrict const image,
     debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     const SDL_Rect &imageRect = image->mBounds;
     drawQuad(image, imageRect.x, imageRect.y,
@@ -427,7 +427,7 @@ void MobileOpenGLGraphics::completeCache() restrict2
 //    debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, mImageCached);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     drawTriangleArrayfsCached(mVpCached);
     mImageCached = 0;
@@ -457,7 +457,7 @@ void MobileOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
     debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     // Draw a textured quad.
     drawRescaledQuad(image, imageRect.x, imageRect.y, dstX, dstY,
@@ -500,7 +500,7 @@ void MobileOpenGLGraphics::drawPatternInline(const Image *restrict const image,
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
@@ -565,7 +565,7 @@ void MobileOpenGLGraphics::drawRescaledPattern(const Image *
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
@@ -757,7 +757,7 @@ void MobileOpenGLGraphics::drawTileCollection(const ImageCollection *
         debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
         bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-        setTexturingAndBlending(true);
+        enableTexturingAndBlending();
         drawVertexes(vert->ogl);
     }
 }
@@ -860,7 +860,7 @@ void MobileOpenGLGraphics::drawTileVertexes(const ImageVertexes *
     debugBindTexture(image);
 #endif  // DEBUG_BIND_TEXTURE
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     drawVertexes(vert->ogl);
 }
 
@@ -1023,7 +1023,7 @@ void MobileOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED) restrict2
 void MobileOpenGLGraphics::drawPoint(int x, int y) restrict2
 #endif  // ANDROID
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
 #ifdef ANDROID
@@ -1039,7 +1039,7 @@ void MobileOpenGLGraphics::drawPoint(int x, int y) restrict2
 void MobileOpenGLGraphics::drawLine(int x1, int y1,
                                     int x2, int y2) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     mShortVertArray[0] = static_cast<GLshort>(x1);
@@ -1060,43 +1060,41 @@ void MobileOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
     drawRectangle(rect, true);
 }
 
-void MobileOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
+void MobileOpenGLGraphics::enableTexturingAndBlending() restrict2
 {
-    if (enable)
+    if (!mTexture)
     {
-        if (!mTexture)
-        {
-            mglEnable(OpenGLImageHelper::mTextureType);
-            glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-            mTexture = true;
-        }
-
-        if (!mAlpha)
-        {
-            mglEnable(GL_BLEND);
-            mAlpha = true;
-        }
+        mglEnable(OpenGLImageHelper::mTextureType);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        mTexture = true;
     }
-    else
-    {
-        mTextureBinded = 0;
-        if (mAlpha && !mColorAlpha)
-        {
-            mglDisable(GL_BLEND);
-            mAlpha = false;
-        }
-        else if (!mAlpha && mColorAlpha)
-        {
-            mglEnable(GL_BLEND);
-            mAlpha = true;
-        }
 
-        if (mTexture)
-        {
-            mglDisable(OpenGLImageHelper::mTextureType);
-            glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-            mTexture = false;
-        }
+    if (!mAlpha)
+    {
+        mglEnable(GL_BLEND);
+        mAlpha = true;
+    }
+}
+
+void MobileOpenGLGraphics::disableTexturingAndBlending() restrict2
+{
+    mTextureBinded = 0;
+    if (mAlpha && !mColorAlpha)
+    {
+        mglDisable(GL_BLEND);
+        mAlpha = false;
+    }
+    else if (!mAlpha && mColorAlpha)
+    {
+        mglEnable(GL_BLEND);
+        mAlpha = true;
+    }
+
+    if (mTexture)
+    {
+        mglDisable(OpenGLImageHelper::mTextureType);
+        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+        mTexture = false;
     }
 }
 
@@ -1104,7 +1102,7 @@ void MobileOpenGLGraphics::drawRectangle(const Rect &restrict rect,
                                          const bool filled) restrict2
 {
     BLOCK_START("Graphics::drawRectangle")
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     const GLshort x = static_cast<GLshort>(rect.x);
@@ -1164,7 +1162,7 @@ void MobileOpenGLGraphics::drawNet(const int x1, const int y1,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     const GLshort xs1 = static_cast<GLshort>(x1);

@@ -181,7 +181,7 @@ void NullOpenGLGraphics::drawImageInline(const Image *restrict const image,
 #endif  // DEBUG_BIND_TEXTURE
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     const SDL_Rect &imageRect = image->mBounds;
     drawQuad(image, imageRect.x, imageRect.y, dstX, dstY,
@@ -232,7 +232,7 @@ void NullOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
 #endif  // DEBUG_BIND_TEXTURE
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     // Draw a textured quad.
     drawRescaledQuad(image, imageRect.x, imageRect.y, dstX, dstY,
@@ -274,7 +274,7 @@ void NullOpenGLGraphics::drawPatternInline(const Image *restrict const image,
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
@@ -408,7 +408,7 @@ void NullOpenGLGraphics::drawRescaledPattern(const Image *restrict const image,
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
 
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
@@ -755,7 +755,7 @@ void NullOpenGLGraphics::drawTileCollection(const ImageCollection
 #endif  // DEBUG_BIND_TEXTURE
 
         bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-        setTexturingAndBlending(true);
+        enableTexturingAndBlending();
         drawVertexes(vert->ogl);
     }
 }
@@ -917,7 +917,7 @@ void NullOpenGLGraphics::drawTileVertexes(const ImageVertexes *
 #endif  // DEBUG_BIND_TEXTURE
 
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
-    setTexturingAndBlending(true);
+    enableTexturingAndBlending();
     drawVertexes(vert->ogl);
 }
 
@@ -996,14 +996,14 @@ void NullOpenGLGraphics::popClipArea() restrict2
 
 void NullOpenGLGraphics::drawPoint(int x A_UNUSED, int y A_UNUSED) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 }
 
 void NullOpenGLGraphics::drawLine(int x1, int y1,
                                   int x2, int y2) restrict2
 {
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     mFloatTexArray[0] = static_cast<float>(x1) + 0.5F;
@@ -1024,34 +1024,32 @@ void NullOpenGLGraphics::fillRectangle(const Rect &restrict rect) restrict2
     drawRectangle(rect, true);
 }
 
-void NullOpenGLGraphics::setTexturingAndBlending(const bool enable) restrict2
+void NullOpenGLGraphics::enableTexturingAndBlending() restrict2
 {
-    if (enable)
-    {
-        if (!mTexture)
-            mTexture = true;
+    if (!mTexture)
+        mTexture = true;
 
-        if (!mAlpha)
-            mAlpha = true;
-    }
-    else
-    {
-        mTextureBinded = 0;
-        if (mAlpha && !mColorAlpha)
-            mAlpha = false;
-        else if (!mAlpha && mColorAlpha)
-            mAlpha = true;
+    if (!mAlpha)
+        mAlpha = true;
+}
 
-        if (mTexture)
-            mTexture = false;
-    }
+void NullOpenGLGraphics::disableTexturingAndBlending() restrict2
+{
+    mTextureBinded = 0;
+    if (mAlpha && !mColorAlpha)
+        mAlpha = false;
+    else if (!mAlpha && mColorAlpha)
+        mAlpha = true;
+
+    if (mTexture)
+        mTexture = false;
 }
 
 void NullOpenGLGraphics::drawRectangle(const Rect &restrict rect A_UNUSED,
                                        const bool filled A_UNUSED) restrict2
 {
     BLOCK_START("Graphics::drawRectangle")
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
 #ifdef DEBUG_DRAW_CALLS
@@ -1068,7 +1066,7 @@ void NullOpenGLGraphics::drawNet(const int x1, const int y1,
     unsigned int vp = 0;
     const unsigned int vLimit = mMaxVertices * 4;
 
-    setTexturingAndBlending(false);
+    disableTexturingAndBlending();
     restoreColor();
 
     const float xf1 = static_cast<float>(x1);
