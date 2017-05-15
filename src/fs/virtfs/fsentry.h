@@ -43,6 +43,8 @@ struct FsEntry notfinal
 
     std::string root;
 
+    std::string subDir;
+
     FsEntryTypeT type;
 
     FsFuncs *funcs;

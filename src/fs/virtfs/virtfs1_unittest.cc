@@ -39,7 +39,7 @@ TEST_CASE("VirtFs1 getEntries")
 {
     VirtFs::init(".");
     REQUIRE(VirtFs::getEntries().empty());
-    REQUIRE(VirtFs::searchEntryByRootInternal("test") == nullptr);
+    REQUIRE(VirtFs::searchByRootInternal("test", dirSeparator) == nullptr);
     VirtFs::deinit();
 }
 
@@ -57,10 +57,12 @@ TEST_CASE("VirtFs1 mountDir")
     const std::string sep = dirSeparator;
     SECTION("simple 1")
     {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
             Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, dirSeparator) ==
+            nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
@@ -70,10 +72,12 @@ TEST_CASE("VirtFs1 mountDir")
 
     SECTION("simple 2")
     {
-        REQUIRE(VirtFs::mountDirSilent2("dir1/",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1/",
             Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, dirSeparator) ==
+            nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
@@ -83,13 +87,16 @@ TEST_CASE("VirtFs1 mountDir")
 
     SECTION("simple 3")
     {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
             Append_false));
-        REQUIRE(VirtFs::mountDirSilent2("dir2",
+        REQUIRE(VirtFs::mountDirSilentTest("dir2",
             Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir2" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir2" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, dirSeparator) ==
+            nullptr);
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir2" + sep);
         REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
@@ -103,13 +110,16 @@ TEST_CASE("VirtFs1 mountDir")
 
     SECTION("simple 4")
     {
-        REQUIRE(VirtFs::mountDirSilent2("dir1\\",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1\\",
             Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir2",
+        REQUIRE(VirtFs::mountDirSilentTest("dir2",
             Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir2" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir2" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, dirSeparator) ==
+            nullptr);
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
         REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep);
@@ -123,17 +133,20 @@ TEST_CASE("VirtFs1 mountDir")
 
     SECTION("simple 5")
     {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
             Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir2",
+        REQUIRE(VirtFs::mountDirSilentTest("dir2",
             Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir3/test",
+        REQUIRE(VirtFs::mountDirSilentTest("dir3/test",
             Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir1" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("dir2" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "dir3" + sep + "test" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal("test" + sep) == nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir2" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            "dir3" + sep + "test" + sep, dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, dirSeparator) ==
+            nullptr);
         REQUIRE(VirtFs::getEntries().size() == 3);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
         REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep);
@@ -151,20 +164,20 @@ TEST_CASE("VirtFs1 mountDir")
 
     SECTION("simple 6")
     {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
             Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir2",
+        REQUIRE(VirtFs::mountDirSilentTest("dir2",
             Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir3\\test",
+        REQUIRE(VirtFs::mountDirSilentTest("dir3\\test",
             Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "dir1" + sep + "") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "dir2" + sep + "") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "dir3" + sep + "test" + sep) != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            "test" + sep + "") == nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            "dir1" + sep + "", dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            "dir2" + sep + "", dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            "dir3" + sep + "test" + sep, dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            "test" + sep + "", dirSeparator) == nullptr);
         REQUIRE(VirtFs::getEntries().size() == 3);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep + "test" + sep);
         REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
@@ -198,10 +211,12 @@ TEST_CASE("VirtFs1 mountZip")
     {
         REQUIRE(VirtFs::mountZip(prefix + "data/test/test.zip",
             Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") == nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test.zip", dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test2.zip", dirSeparator) ==
+            nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
@@ -214,10 +229,12 @@ TEST_CASE("VirtFs1 mountZip")
             Append_false));
         REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test.zip", dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test2.zip",
+            dirSeparator) != nullptr);
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
@@ -233,10 +250,12 @@ TEST_CASE("VirtFs1 mountZip")
             Append_true));
         REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test.zip",
+            dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test2.zip",
+            dirSeparator) != nullptr);
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
@@ -254,12 +273,15 @@ TEST_CASE("VirtFs1 mountZip")
             Append_false));
         REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_false));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test.zip",
+            dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test2.zip",
+            dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "",
+            dirSeparator) != nullptr);
         REQUIRE(VirtFs::getEntries().size() == 3);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
@@ -280,12 +302,15 @@ TEST_CASE("VirtFs1 mountZip")
             Append_false));
         REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_true));
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test.zip",
+            dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test2.zip",
+            dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "",
+            dirSeparator) != nullptr);
         REQUIRE(VirtFs::getEntries().size() == 3);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "");
@@ -320,7 +345,7 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
 
     SECTION("simple 2")
     {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
             Append_true));
         REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
         REQUIRE(VirtFs::unmountDir("dir1"));
@@ -328,11 +353,11 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
 
     SECTION("simple 3")
     {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
             Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir2//dir3",
+        REQUIRE(VirtFs::mountDirSilentTest("dir2//dir3",
             Append_true));
-        REQUIRE(VirtFs::mountDirSilent2("dir3",
+        REQUIRE(VirtFs::mountDirSilentTest("dir3",
             Append_false));
         REQUIRE(VirtFs::getEntries().size() == 3);
         REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
@@ -367,7 +392,7 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
 
     SECTION("simple 4")
     {
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
             Append_true));
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
@@ -377,7 +402,7 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
         REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
         REQUIRE(VirtFs::unmountDir("dir1"));
         REQUIRE(VirtFs::getEntries().size() == 0);
-        REQUIRE(VirtFs::mountDirSilent2("dir1",
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
             Append_true));
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
@@ -393,10 +418,12 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
         REQUIRE(VirtFs::mountZip(prefix + "data/test/test2.zip",
             Append_true));
 
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test.zip",
+            dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test2.zip",
+            dirSeparator) != nullptr);
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
@@ -406,10 +433,12 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
 
         VirtFs::unmountZip(prefix + "data/test/test.zip");
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") == nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test.zip",
+            dirSeparator) == nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test2.zip",
+            dirSeparator) != nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
@@ -425,12 +454,15 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
         REQUIRE(VirtFs::mountZip(prefix + "data\\test/test2.zip",
             Append_false));
 
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test.zip",
+            dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test2.zip",
+            dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "",
+            dirSeparator) != nullptr);
         REQUIRE(VirtFs::getEntries().size() == 3);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
@@ -443,12 +475,15 @@ TEST_CASE("VirtFs1 removeFromSearchPath")
         REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Zip);
 
         VirtFs::unmountZip(prefix + "data/test/test.zip");
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test.zip") == nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip") != nullptr);
-        REQUIRE(VirtFs::searchEntryByRootInternal(
-            prefix + "data" + sep + "test" + sep + "") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test.zip",
+            dirSeparator) == nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "test2.zip",
+            dirSeparator) != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            prefix + "data" + sep + "test" + sep + "",
+            dirSeparator) != nullptr);
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");

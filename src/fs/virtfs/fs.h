@@ -51,10 +51,20 @@ namespace VirtFs
     bool setWriteDir(const std::string &restrict newDir);
     bool mountDir(std::string newDir,
                   const Append append);
+    bool mountDir2(std::string newDir,
+                   std::string subDir,
+                   const Append append);
     bool mountDirSilent(std::string newDir,
                         const Append append);
+    bool mountDirSilent2(std::string newDir,
+                         std::string subDir,
+                         const Append append);
     bool unmountDir(std::string oldDir);
+    bool unmountDir2(std::string oldDir,
+                     std::string subDir);
     bool unmountDirSilent(std::string oldDir);
+    bool unmountDirSilent2(std::string oldDir,
+                           std::string subDir);
     bool mountZip(std::string newDir,
                   const Append append);
     bool unmountZip(std::string oldDir);
@@ -79,18 +89,23 @@ namespace VirtFs
     int eof(File *restrict const file);
 
     bool mountDirInternal(const std::string &restrict newDir,
+                          const std::string &restrict subDir,
                           const Append append);
-    bool unmountDirInternal(std::string oldDir);
+    bool unmountDirInternal(std::string oldDir,
+                            const std::string &restrict subDir);
     std::vector<FsEntry*> &getEntries();
-    FsEntry *searchEntryByRootInternal(const std::string &restrict
-                                       root);
-    FsEntry *searchEntryInternal(const std::string &restrict root,
-                                 const FsEntryTypeT type);
+    FsEntry *searchByRootInternal(const std::string &restrict root,
+                                  const std::string &restrict subDir);
+    FsEntry *searchByTypeInternal(const std::string &restrict root,
+                                  const FsEntryTypeT type);
     void addEntry(FsEntry *const entry,
                   const Append append);
 #ifdef UNITTESTS
-    bool mountDirSilent2(std::string newDir,
-                         const Append append);
+    bool mountDirSilentTest(std::string newDir,
+                            const Append append);
+    bool mountDirSilentTest2(std::string newDir,
+                             std::string subDir,
+                             const Append append);
 #endif  // UNITTESTS
     const char *loadFile(std::string filename,
                          int &restrict fileSize);

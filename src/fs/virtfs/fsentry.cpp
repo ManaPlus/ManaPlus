@@ -28,6 +28,7 @@ namespace VirtFs
 FsEntry::FsEntry(const FsEntryTypeT &type0,
                  FsFuncs *restrict const funcs0) :
     root(),
+    subDir(),
     type(type0),
     funcs(funcs0)
 {

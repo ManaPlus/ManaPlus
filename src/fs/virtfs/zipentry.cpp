@@ -30,12 +30,14 @@ namespace VirtFs
 {
 
 ZipEntry::ZipEntry(const std::string &restrict archiveName,
+                   const std::string &subDir0,
                    FsFuncs *restrict const funcs0) :
     FsEntry(FsEntryType::Zip, funcs0),
     mHeaders(),
     mDirs()
 {
     root = archiveName;
+    subDir = subDir0;
 }
 
 ZipEntry::~ZipEntry()

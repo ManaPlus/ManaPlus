@@ -49,6 +49,7 @@ TEST_CASE("Zip readArchiveInfo")
         name = prefix + "data/test/test.zip";
 
         VirtFs::ZipEntry *const entry = new VirtFs::ZipEntry(name,
+            dirSeparator,
             VirtFs::FsZip::getFuncs());
         std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
@@ -70,6 +71,7 @@ TEST_CASE("Zip readArchiveInfo")
         name = prefix + "data/test/test2.zip";
 
         VirtFs::ZipEntry *const entry = new VirtFs::ZipEntry(name,
+            dirSeparator,
             VirtFs::FsZip::getFuncs());
         std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
@@ -132,6 +134,7 @@ TEST_CASE("Zip readArchiveInfo")
         name = prefix + "data/test/test3.zip";
 
         VirtFs::ZipEntry *const entry = new VirtFs::ZipEntry(name,
+            dirSeparator,
             VirtFs::FsZip::getFuncs());
         std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
@@ -153,6 +156,7 @@ TEST_CASE("Zip readArchiveInfo")
         name = prefix + "data/test/test4.zip";
 
         VirtFs::ZipEntry *const entry = new VirtFs::ZipEntry(name,
+            dirSeparator,
             VirtFs::FsZip::getFuncs());
         std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
@@ -184,6 +188,7 @@ TEST_CASE("Zip readCompressedFile")
         name = prefix + "data/test/test2.zip";
 
         VirtFs::ZipEntry *const entry = new VirtFs::ZipEntry(name,
+            dirSeparator,
             VirtFs::FsZip::getFuncs());
         std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
@@ -218,6 +223,7 @@ TEST_CASE("Zip readFile")
         name = prefix + "data/test/test.zip";
 
         VirtFs::ZipEntry *const entry = new VirtFs::ZipEntry(name,
+            dirSeparator,
             VirtFs::FsZip::getFuncs());
         std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
@@ -242,6 +248,7 @@ TEST_CASE("Zip readFile")
         name = prefix + "data/test/test2.zip";
 
         VirtFs::ZipEntry *const entry = new VirtFs::ZipEntry(name,
+            dirSeparator,
             VirtFs::FsZip::getFuncs());
         std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 
@@ -273,6 +280,7 @@ TEST_CASE("Zip readFile")
         name = prefix + "data/test/test3.zip";
 
         VirtFs::ZipEntry *const entry = new VirtFs::ZipEntry(name,
+            dirSeparator,
             VirtFs::FsZip::getFuncs());
         std::vector<VirtFs::ZipLocalHeader*> &headers = entry->mHeaders;
 

@@ -88,18 +88,23 @@ namespace VirtFs
         return mEntries;
     }
 
-    FsEntry *searchEntryByRootInternal(const std::string &restrict root)
+    FsEntry *searchByRootInternal(const std::string &restrict root,
+                                  const std::string &restrict subDir)
     {
         FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
-            if ((*it)->root == root)
+            const FsEntry *const entry = *it;
+            if (entry->root == root &&
+                entry->subDir == subDir)
+            {
                 return *it;
+            }
         }
         return nullptr;
     }
 
-    FsEntry *searchEntryInternal(const std::string &restrict root,
-                                 const FsEntryTypeT type)
+    FsEntry *searchByTypeInternal(const std::string &restrict root,
+                                  const FsEntryTypeT type)
     {
         FOR_EACH (std::vector<FsEntry*>::const_iterator, it, mEntries)
         {
@@ -335,6 +340,7 @@ namespace VirtFs
     }
 
     bool mountDirInternal(const std::string &restrict newDir,
+                          const std::string &restrict subDir,
                           const Append append)
     {
         if (newDir.find(".zip") != std::string::npos)
@@ -345,7 +351,7 @@ namespace VirtFs
         std::string rootDir = newDir;
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
-        const FsEntry *const entry = searchEntryByRootInternal(rootDir);
+        const FsEntry *const entry = searchByRootInternal(rootDir, subDir);
         if (entry != nullptr)
         {
             reportAlways("VirtFs::mount already exists: %s",
@@ -353,7 +359,7 @@ namespace VirtFs
             return false;
         }
         logger->log("Add virtual directory: " + newDir);
-        addEntry(new DirEntry(newDir, rootDir, FsDir::getFuncs()),
+        addEntry(new DirEntry(newDir, rootDir, subDir, FsDir::getFuncs()),
             append);
         return true;
     }
@@ -368,7 +374,22 @@ namespace VirtFs
                 newDir.c_str());
             return false;
         }
-        return mountDirInternal(newDir, append);
+        return mountDirInternal(newDir, dirSeparator, append);
+    }
+
+    bool mountDir2(std::string newDir,
+                   std::string subDir,
+                   const Append append)
+    {
+        prepareFsPath(newDir);
+        prepareFsPath(subDir);
+        if (Files::existsLocal(newDir) == false)
+        {
+            reportNonTests("VirtFs::mount directory not exists: %s",
+                newDir.c_str());
+            return false;
+        }
+        return mountDirInternal(newDir, subDir, append);
     }
 
     bool mountDirSilent(std::string newDir,
@@ -381,12 +402,27 @@ namespace VirtFs
                 newDir.c_str());
             return false;
         }
-        return mountDirInternal(newDir, append);
+        return mountDirInternal(newDir, dirSeparator, append);
+    }
+
+    bool mountDirSilent2(std::string newDir,
+                         std::string subDir,
+                         const Append append)
+    {
+        prepareFsPath(newDir);
+        prepareFsPath(subDir);
+        if (Files::existsLocal(newDir) == false)
+        {
+            logger->log("VirtFs::mount directory not exists: %s",
+                newDir.c_str());
+            return false;
+        }
+        return mountDirInternal(newDir, subDir, append);
     }
 
 #ifdef UNITTESTS
-    bool mountDirSilent2(std::string newDir,
-                         const Append append)
+    bool mountDirSilentTest(std::string newDir,
+                            const Append append)
     {
         prepareFsPath(newDir);
         if (Files::existsLocal(newDir) == false)
@@ -394,11 +430,26 @@ namespace VirtFs
             logger->log("VirtFs::mount directory not exists: %s",
                 newDir.c_str());
         }
-        return mountDirInternal(newDir, append);
+        return mountDirInternal(newDir, dirSeparator,append);
+    }
+
+    bool mountDirSilentTest2(std::string newDir,
+                             std::string subDir,
+                             const Append append)
+    {
+        prepareFsPath(newDir);
+        prepareFsPath(subDir);
+        if (Files::existsLocal(newDir) == false)
+        {
+            logger->log("VirtFs::mount directory not exists: %s",
+                newDir.c_str());
+        }
+        return mountDirInternal(newDir, subDir, append);
     }
 #endif  // UNITTESTS
 
-    bool unmountDirInternal(std::string oldDir)
+    bool unmountDirInternal(std::string oldDir,
+                            const std::string &restrict subDir)
     {
         if (findLast(oldDir, std::string(dirSeparator)) == false)
             oldDir += dirSeparator;
@@ -406,7 +457,8 @@ namespace VirtFs
         {
             FsEntry *const entry = *it;
             if (entry->root == oldDir &&
-                entry->type == FsEntryType::Dir)
+                entry->type == FsEntryType::Dir &&
+                entry->subDir == subDir)
             {
                 DirEntry *const dirEntry = static_cast<DirEntry*>(
                     entry);
@@ -427,7 +479,26 @@ namespace VirtFs
             reportAlways("Called unmount with zip archive");
             return false;
         }
-        if (unmountDirInternal(oldDir) == false)
+        if (unmountDirInternal(oldDir, dirSeparator) == false)
+        {
+            reportAlways("VirtFs::unmountDir not exists: %s",
+                oldDir.c_str());
+            return false;
+        }
+        return true;
+    }
+
+    bool unmountDir2(std::string oldDir,
+                     std::string subDir)
+    {
+        prepareFsPath(oldDir);
+        if (oldDir.find(".zip") != std::string::npos)
+        {
+            reportAlways("Called unmount with zip archive");
+            return false;
+        }
+        prepareFsPath(subDir);
+        if (unmountDirInternal(oldDir, subDir) == false)
         {
             reportAlways("VirtFs::unmountDir not exists: %s",
                 oldDir.c_str());
@@ -444,7 +515,26 @@ namespace VirtFs
             reportAlways("Called unmount with zip archive");
             return false;
         }
-        if (unmountDirInternal(oldDir) == false)
+        if (unmountDirInternal(oldDir, dirSeparator) == false)
+        {
+            logger->log("VirtFs::unmountDir not exists: %s",
+                oldDir.c_str());
+            return false;
+        }
+        return true;
+    }
+
+    bool unmountDirSilent2(std::string oldDir,
+                           std::string subDir)
+    {
+        prepareFsPath(oldDir);
+        if (oldDir.find(".zip") != std::string::npos)
+        {
+            reportAlways("Called unmount with zip archive");
+            return false;
+        }
+        prepareFsPath(subDir);
+        if (unmountDirInternal(oldDir, subDir) == false)
         {
             logger->log("VirtFs::unmountDir not exists: %s",
                 oldDir.c_str());
@@ -469,13 +559,14 @@ namespace VirtFs
                 "zip archive");
             return false;
         }
-        if (searchEntryByRootInternal(newDir) != nullptr)
+        if (searchByRootInternal(newDir, dirSeparator) != nullptr)
         {
             reportAlways("FsZip::mount already exists: %s",
                 newDir.c_str());
             return false;
         }
         ZipEntry *const entry = new ZipEntry(newDir,
+            dirSeparator,
             FsZip::getFuncs());
         if (ZipReader::readArchiveInfo(entry) == false)
         {

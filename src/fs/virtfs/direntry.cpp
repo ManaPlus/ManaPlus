@@ -27,11 +27,13 @@ namespace VirtFs
 
 DirEntry::DirEntry(const std::string &userDir0,
                    const std::string &rootDir,
+                   const std::string &subDir0,
                    FsFuncs *restrict const funcs0) :
     FsEntry(FsEntryType::Dir, funcs0),
     userDir(userDir0)
 {
     root = rootDir;
+    subDir = subDir0;
 }
 
 DirEntry::~DirEntry()
