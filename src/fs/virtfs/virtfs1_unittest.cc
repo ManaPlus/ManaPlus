@@ -1404,6 +1404,56 @@ TEST_CASE("VirtFs1 getRealDir2")
     delete2(logger);
 }
 
+TEST_CASE("VirtFs1 getRealDir3")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    const std::string sep = dirSeparator;
+    REQUIRE(VirtFs::getRealDir(".") == "");
+    REQUIRE(VirtFs::getRealDir("..") == "");
+    const bool dir1 = VirtFs::mountDirSilent2("data",
+        "test",
+        Append_false);
+    REQUIRE((dir1 || VirtFs::mountDirSilent2("../data",
+        "test",
+        Append_false)) == true);
+    REQUIRE(VirtFs::getRealDir("file1.txt") == "");
+    if (dir1 == true)
+    {
+        REQUIRE(VirtFs::getRealDir("dir1") == "data");
+        REQUIRE(VirtFs::getRealDir("simplefile.txt") == "data");
+    }
+    else
+    {
+        REQUIRE(VirtFs::getRealDir("dir1") == ".." + sep + "data");
+        REQUIRE(VirtFs::getRealDir("simplefile.txt") == ".." + sep + "data");
+    }
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    VirtFs::mountDirSilent2("data/test",
+        "dir2",
+        Append_false);
+    VirtFs::mountDirSilent2("../data/test",
+        "dir2",
+        Append_false);
+    REQUIRE(VirtFs::getRealDir("dir") == "");
+    if (dir1 == true)
+    {
+        REQUIRE(VirtFs::getRealDir("file1.txt") == "data");
+        REQUIRE(VirtFs::getRealDir("simplefile.txt") == "data" + sep + "test");
+    }
+    else
+    {
+        REQUIRE(VirtFs::getRealDir("file1.txt") ==
+            ".." + sep + "data" + sep + "test");
+        REQUIRE(VirtFs::getRealDir("simplefile.txt") == ".." + sep + "data");
+    }
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    VirtFs::deinit();
+    delete2(logger);
+}
+
 static bool inList(const VirtFs::List *const list,
                    const std::string &name)
 {

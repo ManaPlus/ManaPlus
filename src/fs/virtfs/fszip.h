@@ -66,8 +66,8 @@ namespace FsZip
                      const std::string &filename);
     File *openReadInternal(const std::string &filename);
     bool getRealDir(FsEntry *restrict const entry,
-                    const std::string &filename,
-                    const std::string &dirName,
+                    std::string filename,
+                    std::string dirName,
                     std::string &realDir);
     int64_t read(File *restrict const handle,
                  void *restrict const buffer,

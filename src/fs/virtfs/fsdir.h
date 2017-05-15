@@ -74,8 +74,8 @@ namespace FsDir
     void freeList(List *restrict const handle);
     bool setWriteDir(std::string newDir);
     bool getRealDir(FsEntry *restrict const entry,
-                    const std::string &filename,
-                    const std::string &dirName,
+                    std::string filename,
+                    std::string dirName,
                     std::string &realDir);
     bool mkdir(std::string dirName);
     bool remove(std::string filename);

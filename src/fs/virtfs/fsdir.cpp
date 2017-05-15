@@ -168,12 +168,12 @@ namespace FsDir
     }
 
     bool getRealDir(FsEntry *restrict const entry,
-                    const std::string &filename,
-                    const std::string &dirName A_UNUSED,
+                    std::string filename,
+                    std::string dirName A_UNUSED,
                     std::string &realDir)
     {
         DirEntry *const dirEntry = static_cast<DirEntry*>(entry);
-        if (Files::existsLocal(dirEntry->root + filename))
+        if (Files::existsLocal(dirEntry->root + entry->subDir + filename))
         {
             realDir = dirEntry->userDir;
             return true;

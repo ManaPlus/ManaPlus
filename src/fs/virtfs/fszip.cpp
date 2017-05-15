@@ -89,11 +89,17 @@ namespace FsZip
     }
 
     bool getRealDir(FsEntry *restrict const entry,
-                    const std::string &filename,
-                    const std::string &dirName,
+                    std::string filename,
+                    std::string dirName,
                     std::string &realDir)
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
+        std::string subDir = zipEntry->subDir;
+        if (subDir != dirSeparator)
+        {
+            filename = pathJoin(subDir, filename);
+            dirName = pathJoin(subDir, dirName);
+        }
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)
@@ -128,8 +134,6 @@ namespace FsZip
             filename = pathJoin(subDir, filename);
             dirName = pathJoin(subDir, dirName);
         }
-        if (subDir == dirSeparator)
-            subDir.clear();
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)

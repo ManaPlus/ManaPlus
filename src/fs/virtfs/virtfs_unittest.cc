@@ -747,6 +747,37 @@ TEST_CASE("VirtFs getrealDir2")
     delete2(logger);
 }
 
+TEST_CASE("VirtFs getrealDir3")
+{
+    logger = new Logger();
+    const std::string sep = dirSeparator;
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip2(prefix + "data/test/test2.zip",
+        "dir",
+        Append_false);
+    VirtFs::mountDir(prefix + "data/test", Append_false);
+
+    REQUIRE(VirtFs::getRealDir("zzz") == "");
+
+    REQUIRE(VirtFs::getRealDir("dir1/file1.txt") ==
+        prefix + "data" + sep + "test");
+    REQUIRE(VirtFs::getRealDir("hide.png") ==
+        prefix + "data" + sep + "test");
+    REQUIRE(VirtFs::getRealDir("hide.png") ==
+        prefix + "data" + sep + "test");
+    REQUIRE(VirtFs::getRealDir("1//test.txt") ==
+        prefix + "data" + sep + "test" + sep + "test2.zip");
+
+    VirtFs::unmountZip2(prefix + "data/test/test2.zip",
+        "dir");
+    VirtFs::unmountDir(prefix + "data/test");
+    delete2(logger);
+}
+
 TEST_CASE("VirtFs permitLinks")
 {
     logger = new Logger();

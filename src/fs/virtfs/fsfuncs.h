@@ -85,8 +85,8 @@ struct FsFuncs final
                     std::string filename,
                     std::string dirName);
     bool (*getRealDir) (FsEntry *restrict const entry,
-                        const std::string &filename,
-                        const std::string &dirName,
+                        std::string filename,
+                        std::string dirName,
                         std::string &realDir);
     void (*enumerate) (FsEntry *restrict const entry,
                        const std::string &dirName,
