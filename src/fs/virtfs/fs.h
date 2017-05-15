@@ -94,10 +94,10 @@ namespace VirtFs
     int eof(File *restrict const file);
 
     bool mountDirInternal(const std::string &restrict newDir,
-                          const std::string &restrict subDir,
+                          std::string subDir,
                           const Append append);
     bool unmountDirInternal(std::string oldDir,
-                            const std::string &restrict subDir);
+                            std::string subDir);
     std::vector<FsEntry*> &getEntries();
     FsEntry *searchByRootInternal(const std::string &restrict root,
                                   const std::string &restrict subDir);

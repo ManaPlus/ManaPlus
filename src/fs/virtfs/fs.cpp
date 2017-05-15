@@ -340,7 +340,7 @@ namespace VirtFs
     }
 
     bool mountDirInternal(const std::string &restrict newDir,
-                          const std::string &restrict subDir,
+                          std::string subDir,
                           const Append append)
     {
         if (newDir.find(".zip") != std::string::npos)
@@ -351,6 +351,8 @@ namespace VirtFs
         std::string rootDir = newDir;
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
+        if (findLast(subDir, std::string(dirSeparator)) == false)
+            subDir += dirSeparator;
         const FsEntry *const entry = searchByRootInternal(rootDir, subDir);
         if (entry != nullptr)
         {
@@ -449,10 +451,12 @@ namespace VirtFs
 #endif  // UNITTESTS
 
     bool unmountDirInternal(std::string oldDir,
-                            const std::string &restrict subDir)
+                            std::string subDir)
     {
         if (findLast(oldDir, std::string(dirSeparator)) == false)
             oldDir += dirSeparator;
+        if (findLast(subDir, std::string(dirSeparator)) == false)
+            subDir += dirSeparator;
         FOR_EACH (std::vector<FsEntry*>::iterator, it, mEntries)
         {
             FsEntry *const entry = *it;
@@ -597,6 +601,8 @@ namespace VirtFs
             return false;
         }
         prepareFsPath(subDir);
+        if (findLast(subDir, std::string(dirSeparator)) == false)
+            subDir += dirSeparator;
         if (searchByRootInternal(newDir, subDir) != nullptr)
         {
             reportAlways("FsZip::mount already exists: %s",
@@ -656,6 +662,8 @@ namespace VirtFs
             return false;
         }
         prepareFsPath(subDir);
+        if (findLast(subDir, std::string(dirSeparator)) == false)
+            subDir += dirSeparator;
         FOR_EACH (std::vector<FsEntry*>::iterator, it, mEntries)
         {
             FsEntry *const entry = *it;

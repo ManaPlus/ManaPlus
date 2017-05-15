@@ -40,8 +40,8 @@ namespace FsZip
     void initFuncs(FsFuncs *restrict const ptr);
     void deinit();
     bool exists(FsEntry *restrict const entry,
-                const std::string &filename,
-                const std::string &dirName);
+                std::string filename,
+                std::string dirName);
     void enumerate(FsEntry *restrict const entry,
                    const std::string &dirName,
                    StringVect &names);

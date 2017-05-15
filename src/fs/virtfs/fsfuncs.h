@@ -82,8 +82,8 @@ struct FsFuncs final
     int (*seek) (File *restrict const file,
                  const uint64_t pos);
     bool (*exists) (FsEntry *restrict const entry,
-                    const std::string &filename,
-                    const std::string &dirName);
+                    std::string filename,
+                    std::string dirName);
     bool (*getRealDir) (FsEntry *restrict const entry,
                         const std::string &filename,
                         const std::string &dirName,

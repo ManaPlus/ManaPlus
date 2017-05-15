@@ -182,10 +182,10 @@ namespace FsDir
     }
 
     bool exists(FsEntry *restrict const entry,
-                const std::string &fileName,
-                const std::string &dirName A_UNUSED)
+                std::string fileName,
+                std::string dirName A_UNUSED)
     {
-        return Files::existsLocal(entry->root + fileName);
+        return Files::existsLocal(entry->root + entry->subDir + fileName);
     }
 
     void enumerate(FsEntry *restrict const entry,

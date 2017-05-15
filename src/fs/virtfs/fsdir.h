@@ -53,8 +53,8 @@ namespace FsDir
     void initFuncs(FsFuncs *restrict const ptr);
     void deinit();
     bool exists(FsEntry *restrict const entry,
-                const std::string &fileName,
-                const std::string &dirName);
+                std::string fileName,
+                std::string dirName);
     void enumerate(FsEntry *restrict const entry,
                    const std::string &dirName,
                    StringVect &names);

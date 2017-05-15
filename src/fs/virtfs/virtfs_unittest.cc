@@ -190,6 +190,37 @@ TEST_CASE("VirtFs exists5")
     delete2(logger);
 }
 
+TEST_CASE("VirtFs exists6")
+{
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip2(prefix + "data/test/test2.zip",
+        "dir",
+        Append_false);
+
+    REQUIRE(VirtFs::exists("test") == false);
+    REQUIRE(VirtFs::exists("test/units.xml") == false);
+    REQUIRE(VirtFs::exists("test.txt") == false);
+    REQUIRE(VirtFs::exists("dir/hide.png") == false);
+    REQUIRE(VirtFs::exists("dir/gpl") == false);
+    REQUIRE(VirtFs::exists("dir/gpl/zzz") == false);
+    REQUIRE(VirtFs::exists("units.xml") == false);
+    REQUIRE(VirtFs::exists("units.xml.") == false);
+    REQUIRE(VirtFs::exists("units.xml2") == false);
+    REQUIRE(VirtFs::exists("hide.png"));
+    REQUIRE(VirtFs::exists("dye.png"));
+    REQUIRE(VirtFs::exists("gpl"));
+    REQUIRE(VirtFs::exists("gpl/zzz") == false);
+
+    VirtFs::unmountZip2(prefix + "data/test/test2.zip",
+        "dir");
+    delete2(logger);
+}
+
 static void removeTemp(StringVect &restrict list)
 {
     int cnt = 0;
