@@ -67,7 +67,12 @@ namespace VirtFs
                            std::string subDir);
     bool mountZip(std::string newDir,
                   const Append append);
+    bool mountZip2(std::string newDir,
+                   std::string subDir,
+                   const Append append);
     bool unmountZip(std::string oldDir);
+    bool unmountZip2(std::string oldDir,
+                     std::string subDir);
     std::string getRealDir(std::string filename);
     bool mkdir(const std::string &restrict dirName);
     bool remove(const std::string &restrict filename);

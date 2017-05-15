@@ -579,6 +579,44 @@ namespace VirtFs
         return true;
     }
 
+    bool mountZip2(std::string newDir,
+                   std::string subDir,
+                   const Append append)
+    {
+        prepareFsPath(newDir);
+        if (Files::existsLocal(newDir) == false)
+        {
+            reportNonTests("FsZip::mount file not exists: %s",
+                newDir.c_str());
+            return false;
+        }
+        if (findLast(newDir, ".zip") == false)
+        {
+            reportAlways("Called VirtFs::mount without "
+                "zip archive");
+            return false;
+        }
+        prepareFsPath(subDir);
+        if (searchByRootInternal(newDir, subDir) != nullptr)
+        {
+            reportAlways("FsZip::mount already exists: %s",
+                newDir.c_str());
+            return false;
+        }
+        ZipEntry *const entry = new ZipEntry(newDir,
+            subDir,
+            FsZip::getFuncs());
+        if (ZipReader::readArchiveInfo(entry) == false)
+        {
+            delete entry;
+            return false;
+        }
+
+        logger->log("Add virtual zip: " + newDir);
+        addEntry(entry, append);
+        return true;
+    }
+
     bool unmountZip(std::string oldDir)
     {
         prepareFsPath(oldDir);
@@ -591,7 +629,39 @@ namespace VirtFs
         {
             FsEntry *const entry = *it;
             if (entry->root == oldDir &&
-                entry->type == FsEntryType::Zip)
+                entry->type == FsEntryType::Zip &&
+                entry->subDir == dirSeparator)
+            {
+                ZipEntry *const zipEntry = static_cast<ZipEntry*>(
+                    entry);
+                logger->log("Remove virtual zip: " + oldDir);
+                mEntries.erase(it);
+                delete zipEntry;
+                return true;
+            }
+        }
+
+        reportAlways("VirtFs::unmountZip not exists: %s",
+            oldDir.c_str());
+        return false;
+    }
+
+    bool unmountZip2(std::string oldDir,
+                     std::string subDir)
+    {
+        prepareFsPath(oldDir);
+        if (findLast(oldDir, ".zip") == false)
+        {
+            reportAlways("Called unmount without zip archive");
+            return false;
+        }
+        prepareFsPath(subDir);
+        FOR_EACH (std::vector<FsEntry*>::iterator, it, mEntries)
+        {
+            FsEntry *const entry = *it;
+            if (entry->root == oldDir &&
+                entry->type == FsEntryType::Zip &&
+                entry->subDir == subDir)
             {
                 ZipEntry *const zipEntry = static_cast<ZipEntry*>(
                     entry);
