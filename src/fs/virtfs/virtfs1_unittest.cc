@@ -61,10 +61,13 @@ TEST_CASE("VirtFs1 mountDir")
             Append_false));
         REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
             nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir1") ==
+            nullptr);
         REQUIRE(VirtFs::searchByRootInternal("test" + sep, dirSeparator) ==
             nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
@@ -76,10 +79,13 @@ TEST_CASE("VirtFs1 mountDir")
             Append_true));
         REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
             nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir1") ==
+            nullptr);
         REQUIRE(VirtFs::searchByRootInternal("test" + sep, dirSeparator) ==
             nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1" + sep);
@@ -93,6 +99,8 @@ TEST_CASE("VirtFs1 mountDir")
             Append_false));
         REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
             nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir1") ==
+            nullptr);
         REQUIRE(VirtFs::searchByRootInternal("dir2" + sep, dirSeparator) !=
             nullptr);
         REQUIRE(VirtFs::searchByRootInternal("test" + sep, dirSeparator) ==
@@ -102,6 +110,8 @@ TEST_CASE("VirtFs1 mountDir")
         REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == sep);
+        REQUIRE(VirtFs::getEntries()[1]->subDir == sep);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir2");
         REQUIRE(static_cast<VirtFs::DirEntry*>(
@@ -125,6 +135,8 @@ TEST_CASE("VirtFs1 mountDir")
         REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == sep);
+        REQUIRE(VirtFs::getEntries()[1]->subDir == sep);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1" + sep);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
@@ -154,6 +166,9 @@ TEST_CASE("VirtFs1 mountDir")
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == sep);
+        REQUIRE(VirtFs::getEntries()[1]->subDir == sep);
+        REQUIRE(VirtFs::getEntries()[2]->subDir == sep);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
         REQUIRE(static_cast<VirtFs::DirEntry*>(
@@ -185,12 +200,270 @@ TEST_CASE("VirtFs1 mountDir")
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == sep);
+        REQUIRE(VirtFs::getEntries()[1]->subDir == sep);
+        REQUIRE(VirtFs::getEntries()[2]->subDir == sep);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir3" + sep + "test");
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[1])->userDir == "dir1");
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[2])->userDir == "dir2");
+    }
+
+    SECTION("subDir 1")
+    {
+        REQUIRE(VirtFs::mountDirSilentTest2("dir1",
+            dirSeparator,
+            Append_false));
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, dirSeparator) ==
+            nullptr);
+        REQUIRE(VirtFs::getEntries().size() == 1);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == sep);
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir1");
+    }
+
+    SECTION("subDir 1.2")
+    {
+        REQUIRE(VirtFs::mountDirSilentTest2("dir1",
+            "dir2",
+            Append_false));
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir2") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir1") ==
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, "dir2") ==
+            nullptr);
+        REQUIRE(VirtFs::getEntries().size() == 1);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == "dir2");
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir1");
+    }
+
+    SECTION("subDir 2")
+    {
+        REQUIRE(VirtFs::mountDirSilentTest2("dir1/",
+            "dir2",
+            Append_true));
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir2") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, "dir2") ==
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir1") ==
+            nullptr);
+        REQUIRE(VirtFs::getEntries().size() == 1);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == "dir2");
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir1" + sep);
+    }
+
+    SECTION("subDir 3")
+    {
+        REQUIRE(VirtFs::mountDirSilentTest2("dir1",
+            "dir3",
+            Append_false));
+        REQUIRE(VirtFs::mountDirSilentTest2("dir2",
+            "dir4",
+            Append_false));
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir3") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir1") ==
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir2" + sep, "dir4") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, "dir3") ==
+            nullptr);
+        REQUIRE(VirtFs::getEntries().size() == 2);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir2" + sep);
+        REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == "dir4");
+        REQUIRE(VirtFs::getEntries()[1]->subDir == "dir3");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir2");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[1])->userDir == "dir1");
+    }
+
+    SECTION("subDir 4")
+    {
+        REQUIRE(VirtFs::mountDirSilentTest2("dir1\\",
+            "dir3",
+            Append_true));
+        REQUIRE(VirtFs::mountDirSilentTest2("dir2",
+            "dir4",
+            Append_true));
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir3") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir1") ==
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir2" + sep, "dir4") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, "dir3") ==
+            nullptr);
+        REQUIRE(VirtFs::getEntries().size() == 2);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == "dir3");
+        REQUIRE(VirtFs::getEntries()[1]->subDir == "dir4");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir1" + sep);
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[1])->userDir == "dir2");
+    }
+
+    SECTION("subDir 5")
+    {
+        REQUIRE(VirtFs::mountDirSilentTest2("dir1",
+            "dir3",
+            Append_true));
+        REQUIRE(VirtFs::mountDirSilentTest2("dir2",
+            "dir4",
+            Append_true));
+        REQUIRE(VirtFs::mountDirSilentTest2("dir3/test",
+            "dir5",
+            Append_true));
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir3") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir2" + sep, "dir4") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            "dir3" + sep + "test" + sep, "dir5") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, "dir3") ==
+            nullptr);
+        REQUIRE(VirtFs::getEntries().size() == 3);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep);
+        REQUIRE(VirtFs::getEntries()[2]->root == "dir3" + sep + "test" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == "dir3");
+        REQUIRE(VirtFs::getEntries()[1]->subDir == "dir4");
+        REQUIRE(VirtFs::getEntries()[2]->subDir == "dir5");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir1");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[1])->userDir == "dir2");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[2])->userDir == "dir3" + sep + "test");
+    }
+
+    SECTION("subDir 6")
+    {
+        REQUIRE(VirtFs::mountDirSilentTest2("dir1",
+            "dir1",
+            Append_true));
+        REQUIRE(VirtFs::mountDirSilentTest2("dir2",
+            "dir2",
+            Append_true));
+        REQUIRE(VirtFs::mountDirSilentTest2("dir3\\test",
+            "dir3\\test",
+            Append_false));
+        REQUIRE(VirtFs::searchByRootInternal(
+            "dir1" + sep + "", "dir1") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            "dir2" + sep + "", "dir2") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            "dir3" + sep + "test" + sep, "dir3" + sep + "test") != nullptr);
+        REQUIRE(VirtFs::searchByRootInternal(
+            "test" + sep + "", "dir1") == nullptr);
+        REQUIRE(VirtFs::getEntries().size() == 3);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep + "test" + sep);
+        REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[2]->root == "dir2" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == "dir3" + sep + "test");
+        REQUIRE(VirtFs::getEntries()[1]->subDir == "dir1");
+        REQUIRE(VirtFs::getEntries()[2]->subDir == "dir2");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir3" + sep + "test");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[1])->userDir == "dir1");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[2])->userDir == "dir2");
+    }
+
+    SECTION("subDir 7")
+    {
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
+            Append_true));
+        REQUIRE(VirtFs::mountDirSilentTest2("dir1",
+            "dir2",
+            Append_true));
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir2") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, "dir2") ==
+            nullptr);
+        REQUIRE(VirtFs::getEntries().size() == 2);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == sep);
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[1]->subDir == "dir2");
+        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir1");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[1])->userDir == "dir1");
+
+        REQUIRE(VirtFs::unmountDirSilent("dir1"));
+        REQUIRE(VirtFs::getEntries().size() == 1);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == "dir2");
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir1");
+    }
+
+    SECTION("subDir 8")
+    {
+        REQUIRE(VirtFs::mountDirSilentTest("dir1",
+            Append_true));
+        REQUIRE(VirtFs::mountDirSilentTest2("dir1",
+            "dir2",
+            Append_true));
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, dirSeparator) !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("dir1" + sep, "dir2") !=
+            nullptr);
+        REQUIRE(VirtFs::searchByRootInternal("test" + sep, "dir2") ==
+            nullptr);
+        REQUIRE(VirtFs::getEntries().size() == 2);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == sep);
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[1]->subDir == "dir2");
+        REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir1");
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[1])->userDir == "dir1");
+
+        REQUIRE(VirtFs::unmountDirSilent2("dir1", "dir2"));
+        REQUIRE(VirtFs::getEntries().size() == 1);
+        REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
+        REQUIRE(VirtFs::getEntries()[0]->subDir == dirSeparator);
+        REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
+        REQUIRE(static_cast<VirtFs::DirEntry*>(
+            VirtFs::getEntries()[0])->userDir == "dir1");
     }
 
     VirtFs::deinit();
