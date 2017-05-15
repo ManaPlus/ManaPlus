@@ -97,7 +97,9 @@ export CXXFLAGS="${CXXFLAGS} -Wenum-compare"
 export CXXFLAGS="${CXXFLAGS} -Werror-implicit-function-declaration"
 export CXXFLAGS="${CXXFLAGS} -Wexpansion-to-defined"
 export CXXFLAGS="${CXXFLAGS} -Wextra"
-export CXXFLAGS="${CXXFLAGS} -Wextra-semi"
+
+# not in all snapshots. need return after
+#export CXXFLAGS="${CXXFLAGS} -Wextra-semi"
 # +++ need fix in future
 #export CXXFLAGS="${CXXFLAGS} -Wfloat-conversion"
 # +++ need fix in future
