@@ -2216,6 +2216,165 @@ TEST_CASE("VirtFs1 openRead2")
     delete2(logger);
 }
 
+TEST_CASE("VirtFs1 openRead3")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountDir2(prefix + "data",
+        "test",
+        Append_false);
+
+    VirtFs::File *file = nullptr;
+
+    file = VirtFs::openRead("units.xml");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("test/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("units123.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("tesQ/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("testQ");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("file1.txt");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("file2.txt");
+    REQUIRE(file == nullptr);
+
+    VirtFs::mountDir2(prefix + "data/test",
+        "dir2",
+        Append_false);
+
+    file = VirtFs::openRead("units.xml");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("test/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("units123.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("tesQ/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("testQ");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("file1.txt");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("file2.txt");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+
+    VirtFs::unmountDir2(prefix + "data/test",
+        "dir2");
+
+    file = VirtFs::openRead("units.xml");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("test/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("units123.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("tesQ/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("testQ");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("file1.txt");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("file2.txt");
+    REQUIRE(file == nullptr);
+
+    VirtFs::unmountDir2(prefix + "data",
+        "test");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 openRead4")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix("data/test/");
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip2(prefix + "test2.zip",
+        "dir",
+        Append_false);
+
+    VirtFs::File *file = nullptr;
+
+    file = VirtFs::openRead("dye.png");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("1\\test.txt");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("dir/dye.png");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("tesQ/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("dye.png1");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("testQ");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("brimmedhat.png");
+    REQUIRE(file == nullptr);
+
+    VirtFs::mountZip2(prefix + "test.zip",
+        "dir",
+        Append_false);
+
+    file = VirtFs::openRead("dye.png");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("1\\test.txt");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("dir/dye.png");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("tesQ/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("dye.png1");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("testQ");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("brimmedhat.png");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+
+    VirtFs::unmountZip2(prefix + "test.zip",
+        "dir");
+
+    file = VirtFs::openRead("dye.png");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("1\\test.txt");
+    REQUIRE(file != nullptr);
+    VirtFs::close(file);
+    file = VirtFs::openRead("dir/dye.png");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("tesQ/units.xml");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("dye.png1");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("testQ");
+    REQUIRE(file == nullptr);
+    file = VirtFs::openRead("brimmedhat.png");
+    REQUIRE(file == nullptr);
+
+    VirtFs::unmountZip2(prefix + "test2.zip",
+        "dir");
+
+    VirtFs::deinit();
+    delete2(logger);
+}
+
 TEST_CASE("VirtFs1 permitLinks")
 {
     VirtFs::init(".");

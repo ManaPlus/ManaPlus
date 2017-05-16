@@ -526,9 +526,12 @@ namespace FsZip
     }
 
     File *openRead(FsEntry *restrict const entry,
-                   const std::string &filename)
+                   std::string filename)
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
+        std::string subDir = zipEntry->subDir;
+        if (subDir != dirSeparator)
+            filename = pathJoin(subDir, filename);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)

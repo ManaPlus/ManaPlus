@@ -104,7 +104,7 @@ struct FsFuncs final
                          std::string dirName,
                          bool &isDirFlag);
     File *(*openRead) (FsEntry *restrict const entry,
-                       const std::string &filename);
+                       std::string filename);
     File *(*openWrite) (FsEntry *restrict const entry,
                         const std::string &filename);
     File *(*openAppend) (FsEntry *restrict const entry,

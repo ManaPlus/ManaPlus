@@ -59,7 +59,7 @@ namespace FsZip
                      bool &isDirFlag);
     void freeList(List *restrict const handle);
     File *openRead(FsEntry *restrict const entry,
-                   const std::string &filename);
+                   std::string filename);
     File *openWrite(FsEntry *restrict const entry,
                     const std::string &filename);
     File *openAppend(FsEntry *restrict const entry,

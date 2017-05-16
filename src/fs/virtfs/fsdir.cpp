@@ -65,7 +65,7 @@ namespace FsDir
                        const std::string &filename,
                        const FILEMTYPE mode)
     {
-        const std::string path = entry->root + filename;
+        const std::string path = entry->root + entry->subDir + filename;
         if (Files::existsLocal(path) == false)
             return nullptr;
         FILEHTYPE fd = FILEOPEN(path.c_str(),
@@ -81,7 +81,7 @@ namespace FsDir
     }
 
     File *openRead(FsEntry *restrict const entry,
-                   const std::string &filename)
+                   std::string filename)
     {
         return openInternal(entry, filename, FILEOPEN_FLAG_READ);
     }
