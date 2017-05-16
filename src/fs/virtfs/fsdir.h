@@ -59,7 +59,7 @@ namespace FsDir
                    std::string dirName,
                    StringVect &names);
     void getFiles(FsEntry *restrict const entry,
-                  const std::string &dirName,
+                  std::string dirName,
                   StringVect &names);
     void getFilesWithDir(FsEntry *restrict const entry,
                          const std::string &dirName,

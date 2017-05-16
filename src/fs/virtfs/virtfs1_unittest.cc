@@ -3103,7 +3103,7 @@ TEST_CASE("VirtFs1 rwops_read3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getFiles zip")
+TEST_CASE("VirtFs1 getFiles zip1")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3130,6 +3130,37 @@ TEST_CASE("VirtFs1 getFiles zip")
     REQUIRE(inList(list, "units.xml"));
 
     VirtFs::unmountZip(prefix + "data/test/test2.zip");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 getFiles zip2")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip2(prefix + "data/test/test2.zip",
+        "dir",
+        Append_false);
+
+    StringVect list;
+    VirtFs::getFiles(dirSeparator, list);
+    REQUIRE(list.size() == 2);
+    REQUIRE(inList(list, "dye.png"));
+    REQUIRE(inList(list, "hide.png"));
+
+    list.clear();
+    VirtFs::getFiles("1", list);
+    REQUIRE(list.size() == 2);
+    REQUIRE(inList(list, "file1.txt"));
+    REQUIRE(inList(list, "test.txt"));
+
+    VirtFs::unmountZip2(prefix + "data/test/test2.zip",
+        "dir");
     VirtFs::deinit();
     delete2(logger);
 }

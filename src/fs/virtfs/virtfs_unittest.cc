@@ -778,7 +778,7 @@ TEST_CASE("VirtFs getrealDir3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs permitLinks")
+TEST_CASE("VirtFs permitLinks1")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -808,6 +808,45 @@ TEST_CASE("VirtFs permitLinks")
 
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs permitLinks2")
+{
+    logger = new Logger();
+    VirtFs::mountDirSilent2("data",
+        "test",
+        Append_false);
+    VirtFs::mountDirSilent2("../data",
+        "test",
+        Append_false);
+
+    const int cnt1 = VirtFs::exists("test2.txt") ? 26 : 25;
+    const int cnt2 = 26;
+
+    StringVect list;
+    VirtFs::permitLinks(false);
+    VirtFs::getFiles(dirSeparator, list);
+    removeTemp(list);
+    const size_t sz = list.size();
+    REQUIRE(sz == cnt1);
+
+    list.clear();
+    VirtFs::permitLinks(true);
+    VirtFs::getFiles(dirSeparator, list);
+    removeTemp(list);
+    REQUIRE(list.size() == cnt2);
+
+    list.clear();
+    VirtFs::permitLinks(false);
+    VirtFs::getFiles(dirSeparator, list);
+    removeTemp(list);
+    REQUIRE(list.size() == cnt1);
+
+    VirtFs::unmountDirSilent2("data",
+        "test");
+    VirtFs::unmountDirSilent2("../data",
+        "test");
     delete2(logger);
 }
 

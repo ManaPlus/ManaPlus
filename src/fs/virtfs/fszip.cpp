@@ -156,7 +156,7 @@ namespace FsZip
                    StringVect &names)
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
-        std::string subDir = zipEntry->subDir;
+        const std::string subDir = zipEntry->subDir;
         if (subDir != dirSeparator)
             dirName = pathJoin(subDir, dirName);
         if (dirName == dirSeparator)
@@ -215,10 +215,13 @@ namespace FsZip
     }
 
     void getFiles(FsEntry *restrict const entry,
-                  const std::string &dirName,
+                  std::string dirName,
                   StringVect &names)
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
+        const std::string subDir = zipEntry->subDir;
+        if (subDir != dirSeparator)
+            dirName = pathJoin(subDir, dirName);
         if (dirName == dirSeparator)
         {
             FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
