@@ -317,7 +317,13 @@ namespace FsZip
                          StringVect &names)
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
-        if (dirName == dirSeparator)
+        const std::string subDir = zipEntry->subDir;
+        std::string dirNameFull;
+        if (subDir != dirSeparator)
+            dirNameFull = pathJoin(subDir, dirName);
+        else
+            dirNameFull = dirName;
+        if (dirNameFull == dirSeparator)
         {
             FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                       it2,
@@ -340,7 +346,7 @@ namespace FsZip
                 }
                 if (found == false)
                 {
-                    std::string dirName2 = pathJoin(dirName, fileName);
+                    std::string dirName2 = pathJoin(dirNameFull, fileName);
                     if (findLast(dirName2, std::string(dirSeparator)) == false)
                         dirName2 += dirSeparator;
                     FOR_EACH (std::vector<std::string>::const_iterator,
@@ -366,7 +372,7 @@ namespace FsZip
             {
                 ZipLocalHeader *const header = *it2;
                 std::string fileName = header->fileName;
-                if (findCutFirst(fileName, dirName) == true)
+                if (findCutFirst(fileName, dirNameFull) == true)
                 {
                     // skip subdirs from enumeration
                     const size_t idx = fileName.find(dirSeparator);
@@ -383,7 +389,7 @@ namespace FsZip
                     }
                     if (found == false)
                     {
-                        std::string dirName2 = pathJoin(dirName, fileName);
+                        std::string dirName2 = pathJoin(dirNameFull, fileName);
                         if (findLast(dirName2, std::string(dirSeparator)) ==
                             false)
                         {

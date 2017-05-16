@@ -573,7 +573,7 @@ namespace FsDir
                          const std::string &dirName,
                          StringVect &names)
     {
-        const std::string path = entry->root + dirName;
+        const std::string path = entry->root + entry->subDir + dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir)
