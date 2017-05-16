@@ -18,6 +18,8 @@ export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \
 
 source ./tools/ci/flags/gcc7.sh
 
+export CXXFLAGS="$CXXFLAGS -Wno-null-dereference"
+
 autoreconf -i
 cd build/tmp
 ../../configure --prefix=$dir/run \
