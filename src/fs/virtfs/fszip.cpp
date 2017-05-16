@@ -95,7 +95,7 @@ namespace FsZip
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         std::string subDir = zipEntry->subDir;
-        if (subDir != dirSeparator)
+        if (!subDir.empty())
         {
             filename = pathJoin(subDir, filename);
             dirName = pathJoin(subDir, dirName);
@@ -129,7 +129,7 @@ namespace FsZip
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         std::string subDir = zipEntry->subDir;
-        if (subDir != dirSeparator)
+        if (!subDir.empty())
         {
             filename = pathJoin(subDir, filename);
             dirName = pathJoin(subDir, dirName);
@@ -157,7 +157,7 @@ namespace FsZip
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         const std::string subDir = zipEntry->subDir;
-        if (subDir != dirSeparator)
+        if (!subDir.empty())
             dirName = pathJoin(subDir, dirName);
         if (dirName == dirSeparator)
         {
@@ -220,7 +220,7 @@ namespace FsZip
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         const std::string subDir = zipEntry->subDir;
-        if (subDir != dirSeparator)
+        if (!subDir.empty())
             dirName = pathJoin(subDir, dirName);
         if (dirName == dirSeparator)
         {
@@ -319,7 +319,7 @@ namespace FsZip
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         const std::string subDir = zipEntry->subDir;
         std::string dirNameFull;
-        if (subDir != dirSeparator)
+        if (!subDir.empty())
             dirNameFull = pathJoin(subDir, dirName);
         else
             dirNameFull = dirName;
@@ -419,7 +419,7 @@ namespace FsZip
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         const std::string subDir = zipEntry->subDir;
-        if (subDir != dirSeparator)
+        if (!subDir.empty())
             dirName = pathJoin(subDir, dirName);
         if (dirName == dirSeparator)
         {
@@ -517,7 +517,7 @@ namespace FsZip
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         std::string subDir = zipEntry->subDir;
-        if (subDir != dirSeparator)
+        if (!subDir.empty())
             dirName = pathJoin(subDir, dirName);
         FOR_EACH (std::vector<std::string>::const_iterator,
                   it2,
@@ -542,7 +542,7 @@ namespace FsZip
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         std::string subDir = zipEntry->subDir;
-        if (subDir != dirSeparator)
+        if (!subDir.empty())
             filename = pathJoin(subDir, filename);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
@@ -675,7 +675,7 @@ namespace FsZip
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
         const std::string subDir = zipEntry->subDir;
-        if (subDir != dirSeparator)
+        if (!subDir.empty())
             filename = pathJoin(subDir, filename);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
