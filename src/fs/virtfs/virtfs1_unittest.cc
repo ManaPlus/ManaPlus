@@ -509,8 +509,8 @@ TEST_CASE("VirtFs1 mountZip")
             prefix + "data" + sep + "test" + sep + "test.zip", std::string()) !=
             nullptr);
         REQUIRE(VirtFs::searchByRootInternal(
-            prefix + "data" + sep + "test" + sep + "test2.zip", std::string()) ==
-            nullptr);
+            prefix + "data" + sep + "test" + sep + "test2.zip",
+            std::string()) == nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
