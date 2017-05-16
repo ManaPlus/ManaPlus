@@ -1754,6 +1754,106 @@ TEST_CASE("VirtFsZip enumerateFiles9")
     delete2(logger);
 }
 
+TEST_CASE("VirtFsZip enumerateFiles10")
+{
+    VirtFs::init(".");
+    logger = new Logger;
+    std::string name("data/test/test.zip");
+    std::string prefix("data\\test/");
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip2(prefix + "test.zip",
+        "dir",
+        Append_false);
+
+    VirtFs::List *list = nullptr;
+
+    list = VirtFs::enumerateFiles("/");
+    REQUIRE(list->names.size() == 2);
+    REQUIRE(inList(list, "brimmedhat.png"));
+    REQUIRE(inList(list, "hide.png"));
+    VirtFs::freeList(list);
+
+    VirtFs::unmountZip2(prefix + "test.zip",
+        "dir");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFsZip enumerateFiles11")
+{
+    VirtFs::init(".");
+    logger = new Logger;
+    std::string name("data/test/test.zip");
+    std::string prefix("data\\test/");
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip2(prefix + "test2.zip",
+        "dir",
+        Append_false);
+
+    VirtFs::List *list = nullptr;
+
+    list = VirtFs::enumerateFiles("1");
+    REQUIRE(list->names.size() == 2);
+    REQUIRE(inList(list, "file1.txt"));
+    REQUIRE(inList(list, "test.txt"));
+    VirtFs::freeList(list);
+
+    VirtFs::unmountZip2(prefix + "test2.zip",
+        "dir");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 enumerateFiles12")
+{
+    VirtFs::init(".");
+    logger = new Logger;
+
+    VirtFs::mountDirSilent2("data/test",
+        "dir2",
+        Append_false);
+    VirtFs::mountDirSilent2("../data/test",
+        "dir2",
+        Append_false);
+
+    VirtFs::List *list = nullptr;
+
+    list = VirtFs::enumerateFiles("/");
+    REQUIRE(inList(list, "file1.txt"));
+    REQUIRE(inList(list, "file2.txt"));
+    VirtFs::freeList(list);
+
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 enumerateFiles13")
+{
+    VirtFs::init(".");
+    logger = new Logger;
+
+    VirtFs::mountDirSilent2("data",
+        "test",
+        Append_false);
+    VirtFs::mountDirSilent2("../data",
+        "test",
+        Append_false);
+
+    VirtFs::List *list = nullptr;
+
+    list = VirtFs::enumerateFiles("dir2");
+    REQUIRE(inList(list, "file1.txt"));
+    REQUIRE(inList(list, "file2.txt"));
+    VirtFs::freeList(list);
+
+    VirtFs::deinit();
+    delete2(logger);
+}
+
 
 TEST_CASE("VirtFs1 isDirectory1")
 {

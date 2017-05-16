@@ -43,7 +43,7 @@ namespace FsZip
                 std::string filename,
                 std::string dirName);
     void enumerate(FsEntry *restrict const entry,
-                   const std::string &dirName,
+                   std::string dirName,
                    StringVect &names);
     void getFiles(FsEntry *restrict const entry,
                   const std::string &dirName,
