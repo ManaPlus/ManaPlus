@@ -619,10 +619,10 @@ namespace FsDir
     }
 
     void getDirs(FsEntry *restrict const entry,
-                 const std::string &dirName,
+                 std::string dirName,
                  StringVect &names)
     {
-        const std::string path = entry->root + dirName;
+        const std::string path = entry->root + entry->subDir + dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir)

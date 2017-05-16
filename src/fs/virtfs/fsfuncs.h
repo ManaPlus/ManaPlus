@@ -98,7 +98,7 @@ struct FsFuncs final
                              const std::string &dirName,
                              StringVect &names);
     void (*getDirs) (FsEntry *restrict const entry,
-                     const std::string &dirName,
+                     std::string dirName,
                      StringVect &names);
     bool (*isDirectory) (FsEntry *restrict const entry,
                          std::string dirName,

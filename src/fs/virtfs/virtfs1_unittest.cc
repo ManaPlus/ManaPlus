@@ -3240,6 +3240,67 @@ TEST_CASE("VirtFs1 getDirs2")
     delete2(logger);
 }
 
+TEST_CASE("VirtFs1 getDirs3")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip2(prefix + "data/test/test2.zip",
+        "dir",
+        Append_false);
+
+    StringVect list;
+    VirtFs::getDirs(dirSeparator, list);
+    REQUIRE(list.size() == 2);
+    REQUIRE(inList(list, "1"));
+    REQUIRE(inList(list, "gpl"));
+    list.clear();
+
+    VirtFs::getDirs("1", list);
+    REQUIRE(list.size() == 0);
+
+    VirtFs::unmountZip2(prefix + "data/test/test2.zip",
+        "dir");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 getDirs4")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+    StringVect list;
+
+    SECTION("dir1")
+    {
+        VirtFs::mountDir2(prefix + "data",
+            "test",
+            Append_false);
+
+        VirtFs::getDirs("/", list);
+        REQUIRE(inList(list, "dir1"));
+        REQUIRE(inList(list, "dir2"));
+        list.clear();
+
+        VirtFs::getDirs("dir1", list);
+        REQUIRE(list.size() == 0);
+
+        VirtFs::unmountDir2(prefix + "data",
+            "test");
+    }
+
+    VirtFs::deinit();
+    delete2(logger);
+}
+
 TEST_CASE("VirtFs1 getFilesWithDir1")
 {
     VirtFs::init(".");
