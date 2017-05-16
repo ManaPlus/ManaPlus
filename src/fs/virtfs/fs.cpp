@@ -439,7 +439,7 @@ namespace VirtFs
             logger->log("VirtFs::mount directory not exists: %s",
                 newDir.c_str());
         }
-        return mountDirInternal(newDir, std::string() ,append);
+        return mountDirInternal(newDir, std::string(), append);
     }
 
     bool mountDirSilentTest2(std::string newDir,
