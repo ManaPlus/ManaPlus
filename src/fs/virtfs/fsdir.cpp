@@ -231,10 +231,10 @@ namespace FsDir
     }
 
     bool isDirectory(FsEntry *restrict const entry,
-                     const std::string &dirName,
+                     std::string dirName,
                      bool &isDirFlag)
     {
-        std::string path = entry->root + dirName;
+        std::string path = entry->root + entry->subDir + dirName;
 
         struct stat statbuf;
         if (stat(path.c_str(), &statbuf) == 0)

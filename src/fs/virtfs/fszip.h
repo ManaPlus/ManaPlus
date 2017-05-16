@@ -55,7 +55,7 @@ namespace FsZip
                  const std::string &dirName,
                  StringVect &names);
     bool isDirectory(FsEntry *restrict const entry,
-                     const std::string &dirName,
+                     std::string dirName,
                      bool &isDirFlag);
     void freeList(List *restrict const handle);
     File *openRead(FsEntry *restrict const entry,

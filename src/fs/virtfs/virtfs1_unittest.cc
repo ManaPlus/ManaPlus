@@ -2004,6 +2004,75 @@ TEST_CASE("VirtFs1 isDirectory2")
     delete2(logger);
 }
 
+TEST_CASE("VirtFs1 isDirectory3")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountDir2(prefix + "data",
+        "test",
+        Append_false);
+
+    REQUIRE(VirtFs::isDirectory("units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("units.xml/") == false);
+    REQUIRE(VirtFs::isDirectory("units123.xml") == false);
+    REQUIRE(VirtFs::isDirectory("tesQ/units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("tesQ//units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("test") == false);
+    REQUIRE(VirtFs::isDirectory("dir1") == true);
+    REQUIRE(VirtFs::isDirectory("dir2//") == true);
+    REQUIRE(VirtFs::isDirectory("test/dir1") == false);
+    REQUIRE(VirtFs::isDirectory("testQ") == false);
+    REQUIRE(VirtFs::isDirectory("testQ/") == false);
+    REQUIRE(VirtFs::isDirectory("testQ//") == false);
+
+    VirtFs::unmountDirSilent2(prefix + "data",
+        "test");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 isDirectory4")
+{
+    VirtFs::init(".");
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip2(prefix + "data/test/test2.zip",
+        "dir",
+        Append_false);
+
+    REQUIRE(VirtFs::isDirectory("dir2/units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("dir2/units.xml/") == false);
+    REQUIRE(VirtFs::isDirectory("dir2//units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("dir2/units123.xml") == false);
+    REQUIRE(VirtFs::isDirectory("dir2//units123.xml") == false);
+    REQUIRE(VirtFs::isDirectory("tesQ/units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("tesQ//units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("units.xml") == false);
+    REQUIRE(VirtFs::isDirectory("1") == true);
+    REQUIRE(VirtFs::isDirectory("gpl") == true);
+    REQUIRE(VirtFs::isDirectory("dir2/") == false);
+    REQUIRE(VirtFs::isDirectory("dir/1") == false);
+    REQUIRE(VirtFs::isDirectory("dir/1/zzz") == false);
+    REQUIRE(VirtFs::isDirectory("test/dir1\\") == false);
+    REQUIRE(VirtFs::isDirectory("testQ") == false);
+    REQUIRE(VirtFs::isDirectory("testQ/") == false);
+    REQUIRE(VirtFs::isDirectory("testQ//") == false);
+
+    VirtFs::unmountZip2(prefix + "data/test/test2.zip",
+        "dir");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
 TEST_CASE("VirtFs1 openRead1")
 {
     VirtFs::init(".");

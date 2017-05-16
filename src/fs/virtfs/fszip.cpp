@@ -500,10 +500,13 @@ namespace FsZip
     }
 
     bool isDirectory(FsEntry *restrict const entry,
-                     const std::string &dirName,
+                     std::string dirName,
                      bool &isDirFlag)
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
+        std::string subDir = zipEntry->subDir;
+        if (subDir != dirSeparator)
+            dirName = pathJoin(subDir, dirName);
         FOR_EACH (std::vector<std::string>::const_iterator,
                   it2,
                   zipEntry->mDirs)

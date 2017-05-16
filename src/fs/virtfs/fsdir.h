@@ -68,7 +68,7 @@ namespace FsDir
                  const std::string &dirName,
                  StringVect &names);
     bool isDirectory(FsEntry *restrict const entry,
-                     const std::string &dirName,
+                     std::string dirName,
                      bool &isDirFlag);
     bool isSymbolicLink(std::string name);
     void freeList(List *restrict const handle);

@@ -101,7 +101,7 @@ struct FsFuncs final
                      const std::string &dirName,
                      StringVect &names);
     bool (*isDirectory) (FsEntry *restrict const entry,
-                         const std::string &dirName,
+                         std::string dirName,
                          bool &isDirFlag);
     File *(*openRead) (FsEntry *restrict const entry,
                        const std::string &filename);
