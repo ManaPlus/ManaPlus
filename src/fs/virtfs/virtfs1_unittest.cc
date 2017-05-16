@@ -1476,7 +1476,7 @@ TEST_CASE("VirtFs1 getRealDir3")
     if (dir1 == true)
     {
         REQUIRE(VirtFs::getRealDir("file1.txt") == "data" + sep + "test");
-        REQUIRE(VirtFs::getRealDir("simplefile.txt") == "data" + sep + "test");
+        REQUIRE(VirtFs::getRealDir("simplefile.txt") == "data");
     }
     else
     {
