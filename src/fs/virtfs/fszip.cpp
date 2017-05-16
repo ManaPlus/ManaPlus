@@ -658,10 +658,13 @@ namespace FsZip
     }
 
     const char *loadFile(FsEntry *restrict const entry,
-                         const std::string &restrict filename,
+                         std::string filename,
                          int &restrict fileSize)
     {
         ZipEntry *const zipEntry = static_cast<ZipEntry*>(entry);
+        const std::string subDir = zipEntry->subDir;
+        if (subDir != dirSeparator)
+            filename = pathJoin(subDir, filename);
         FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)

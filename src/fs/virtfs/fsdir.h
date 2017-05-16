@@ -95,7 +95,7 @@ namespace FsDir
              const uint64_t pos);
     int eof(File *restrict const file);
     const char *loadFile(FsEntry *restrict const entry,
-                         const std::string &restrict fileName,
+                         std::string fileName,
                          int &restrict fileSize);
 }  // namespace FsDir
 

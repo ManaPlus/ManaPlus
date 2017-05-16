@@ -458,11 +458,11 @@ namespace FsDir
     }
 
     const char *loadFile(FsEntry *restrict const entry,
-                         const std::string &restrict filename,
+                         std::string filename,
                          int &restrict fileSize)
     {
         const DirEntry *const dirEntry = static_cast<DirEntry*>(entry);
-        const std::string path = entry->root + filename;
+        const std::string path = entry->root + entry->subDir + filename;
         if (Files::existsLocal(path) == false)
             return nullptr;
         FILEHTYPE fd = FILEOPEN(path.c_str(),

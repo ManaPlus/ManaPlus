@@ -2649,6 +2649,72 @@ TEST_CASE("VirtFs1 loadFile2")
     delete2(logger);
 }
 
+TEST_CASE("VirtFs1 loadFile3")
+{
+    VirtFs::init(".");
+    int fileSize = 0;
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountDir2(prefix + "data",
+        "test",
+        Append_false);
+
+    const char *const buffer = VirtFs::loadFile("test.txt", fileSize);
+    REQUIRE(static_cast<const void*>(buffer) != nullptr);
+    REQUIRE(fileSize == 23);
+    REQUIRE(strncmp(buffer, "test line 1\ntest line 2", 23) == 0);
+    delete [] buffer;
+
+    VirtFs::unmountDir2(prefix + "data",
+        "test");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("VirtFs1 loadFile4")
+{
+    VirtFs::init(".");
+    int fileSize = 0;
+    logger = new Logger();
+    std::string name("data/test/test.zip");
+    std::string prefix;
+    if (Files::existsLocal(name) == false)
+        prefix = "../" + prefix;
+
+    VirtFs::mountZip2(prefix + "data/test/test2.zip",
+        "dir2",
+        Append_false);
+
+    SECTION("test 1")
+    {
+        const char *restrict buffer = VirtFs::loadFile("test.txt",
+            fileSize);
+        REQUIRE(static_cast<const void*>(buffer) != nullptr);
+        REQUIRE(fileSize == 23);
+        REQUIRE(strncmp(buffer, "test line 1\ntest line 2", 23) == 0);
+        delete [] buffer;
+    }
+
+    SECTION("test 2")
+    {
+        const char *restrict buffer = VirtFs::loadFile("test.txt",
+            fileSize);
+        REQUIRE(static_cast<const void*>(buffer) != nullptr);
+        REQUIRE(fileSize == 23);
+        REQUIRE(strncmp(buffer, "test line 1\ntest line 2", 23) == 0);
+        delete [] buffer;
+    }
+
+    VirtFs::unmountZip2(prefix + "data/test/test2.zip",
+        "dir2");
+    VirtFs::deinit();
+    delete2(logger);
+}
+
 TEST_CASE("VirtFs1 rwops_read1")
 {
     VirtFs::init(".");

@@ -111,7 +111,7 @@ struct FsFuncs final
                          const std::string &filename);
     int (*eof) (File *restrict const file);
     const char *(*loadFile) (FsEntry *restrict const entry,
-                             const std::string &restrict fileName,
+                             std::string fileName,
                              int &restrict fileSize);
 
     RWOPSINT (*rwops_seek) (SDL_RWops *const rw,
