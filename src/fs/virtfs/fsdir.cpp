@@ -65,7 +65,8 @@ namespace FsDir
                        const std::string &filename,
                        const FILEMTYPE mode)
     {
-        const std::string path = entry->root + entry->subDir + filename;
+        const std::string path = static_cast<DirEntry*>(entry)->rootSubDir +
+            filename;
         if (Files::existsLocal(path) == false)
             return nullptr;
         FILEHTYPE fd = FILEOPEN(path.c_str(),
@@ -173,7 +174,7 @@ namespace FsDir
                     std::string &realDir)
     {
         DirEntry *const dirEntry = static_cast<DirEntry*>(entry);
-        if (Files::existsLocal(dirEntry->root + entry->subDir + filename))
+        if (Files::existsLocal(dirEntry->rootSubDir + filename))
         {
             realDir = dirEntry->userDir;
             return true;
@@ -185,14 +186,16 @@ namespace FsDir
                 std::string fileName,
                 std::string dirName A_UNUSED)
     {
-        return Files::existsLocal(entry->root + entry->subDir + fileName);
+        return Files::existsLocal(static_cast<DirEntry*>(entry)->rootSubDir +
+            fileName);
     }
 
     void enumerate(FsEntry *restrict const entry,
                    std::string dirName,
                    StringVect &names)
     {
-        const std::string path = entry->root + entry->subDir + dirName;
+        const std::string path = static_cast<DirEntry*>(entry)->rootSubDir +
+            dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir)
@@ -234,7 +237,7 @@ namespace FsDir
                      std::string dirName,
                      bool &isDirFlag)
     {
-        std::string path = entry->root + entry->subDir + dirName;
+        std::string path = static_cast<DirEntry*>(entry)->rootSubDir + dirName;
 
         struct stat statbuf;
         if (stat(path.c_str(), &statbuf) == 0)
@@ -462,7 +465,7 @@ namespace FsDir
                          int &restrict fileSize)
     {
         const DirEntry *const dirEntry = static_cast<DirEntry*>(entry);
-        const std::string path = entry->root + entry->subDir + filename;
+        const std::string path = dirEntry->rootSubDir + filename;
         if (Files::existsLocal(path) == false)
             return nullptr;
         FILEHTYPE fd = FILEOPEN(path.c_str(),
@@ -524,7 +527,8 @@ namespace FsDir
                   std::string dirName,
                   StringVect &names)
     {
-        const std::string path = entry->root + entry->subDir + dirName;
+        const std::string path = static_cast<DirEntry*>(entry)->rootSubDir +
+            dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir)
@@ -573,7 +577,8 @@ namespace FsDir
                          const std::string &dirName,
                          StringVect &names)
     {
-        const std::string path = entry->root + entry->subDir + dirName;
+        const std::string path = static_cast<DirEntry*>(entry)->rootSubDir +
+            dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir)
@@ -622,7 +627,8 @@ namespace FsDir
                  std::string dirName,
                  StringVect &names)
     {
-        const std::string path = entry->root + entry->subDir + dirName;
+        const std::string path = static_cast<DirEntry*>(entry)->rootSubDir +
+            dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir)

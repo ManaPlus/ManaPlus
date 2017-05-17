@@ -368,7 +368,11 @@ namespace VirtFs
             return false;
         }
         logger->log("Add virtual directory: " + newDir);
-        addEntry(new DirEntry(newDir, rootDir, subDir, FsDir::getFuncs()),
+        addEntry(new DirEntry(newDir,
+            rootDir,
+            subDir,
+            rootDir + subDir,
+            FsDir::getFuncs()),
             append);
         return true;
     }
