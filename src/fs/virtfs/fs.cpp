@@ -367,7 +367,17 @@ namespace VirtFs
                 newDir.c_str());
             return false;
         }
-        logger->log("Add virtual directory: " + newDir);
+        if (subDir.empty())
+        {
+            logger->log("Add virtual directory: " + newDir);
+        }
+        else
+        {
+            logger->log("Add virtual directory: %s with dir %s",
+                newDir.c_str(),
+                subDir.c_str());
+        }
+
         addEntry(new DirEntry(newDir,
             rootDir,
             subDir,
@@ -484,10 +494,19 @@ namespace VirtFs
             {
                 DirEntry *const dirEntry = static_cast<DirEntry*>(
                     entry);
+                if (subDir.empty())
+                {
                     logger->log("Remove virtual directory: " + oldDir);
-                    mEntries.erase(it);
-                    delete dirEntry;
-                    return true;
+                }
+                else
+                {
+                    logger->log("Remove virtual directory: %s with dir %s",
+                        oldDir.c_str(),
+                        subDir.c_str());
+                }
+                mEntries.erase(it);
+                delete dirEntry;
+                return true;
             }
         }
         return false;
@@ -643,7 +662,9 @@ namespace VirtFs
             return false;
         }
 
-        logger->log("Add virtual zip: " + newDir);
+        logger->log("Add virtual zip: %s with dir %s",
+            newDir.c_str(),
+            subDir.c_str());
         addEntry(entry, append);
         return true;
     }
@@ -705,7 +726,9 @@ namespace VirtFs
             {
                 ZipEntry *const zipEntry = static_cast<ZipEntry*>(
                     entry);
-                logger->log("Remove virtual zip: " + oldDir);
+                logger->log("Remove virtual zip: %s with dir %s",
+                    oldDir.c_str(),
+                    subDir.c_str());
                 mEntries.erase(it);
                 delete zipEntry;
                 return true;
