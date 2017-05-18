@@ -32,7 +32,7 @@ source ./tools/ci/flags/gcc6.sh
 export CXXFLAGS="$CXXFLAGS $POST_CXXFLAGS"
 
 do_init
-run_configure --enable-unittests=yes $*
+run_configure $*
 export SDL_VIDEODRIVER=dummy
 export ASAN_OPTIONS=detect_leaks=0
 export LSAN_OPTIONS=suppressions=$(pwd)/tools/ci/scripts/lsansuppression_tests.txt

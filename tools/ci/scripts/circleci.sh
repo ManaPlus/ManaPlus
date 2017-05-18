@@ -21,7 +21,7 @@ case $CIRCLE_NODE_INDEX in
         ./tools/ci/scripts/docker_run.sh
 
         export IMAGE=debian:unstable
-        export COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --without-dyecmd --without-manaplusgame --without-opengl"
+        export COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-dyecmd --without-manaplusgame --without-opengl"
         export PACKAGES="gcc-6 g++-6 ${LIBS_PACKAGES} ${SDL1} valgrind"
         ./tools/ci/scripts/docker_run.sh
 
@@ -47,7 +47,7 @@ case $CIRCLE_NODE_INDEX in
         ./tools/ci/scripts/docker_run.sh
 
         export IMAGE=vicamo/debian:sid-i386
-        export COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --without-dyecmd --without-manaplusgame --without-opengl"
+        export COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-dyecmd --without-manaplusgame --without-opengl"
         export PACKAGES="gcc-6 g++-6 ${LIBS_PACKAGES} ${SDL1} valgrind"
         ./tools/ci/scripts/docker_run.sh
 
@@ -73,7 +73,7 @@ case $CIRCLE_NODE_INDEX in
         ./tools/ci/scripts/docker_run.sh
 
         export IMAGE=debian:unstable
-        export COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --without-dyecmd --without-manaplusgame --without-opengl --with-sdl2"
+        export COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-dyecmd --without-manaplusgame --without-opengl --with-sdl2"
         export PACKAGES="gcc-6 g++-6 ${LIBS_PACKAGES} ${SDL2} valgrind"
         ./tools/ci/scripts/docker_run.sh
 
@@ -99,7 +99,7 @@ case $CIRCLE_NODE_INDEX in
         ./tools/ci/scripts/docker_run.sh
 
         export IMAGE=vicamo/debian:sid-i386
-        export COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --without-dyecmd --without-manaplusgame --without-opengl --with-sdl2"
+        export COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-dyecmd --without-manaplusgame --without-opengl --with-sdl2"
         export PACKAGES="gcc-6 g++-6 ${LIBS_PACKAGES} ${SDL2} valgrind"
         ./tools/ci/scripts/docker_run.sh
 

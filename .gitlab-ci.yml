@@ -347,7 +347,7 @@ nsiqcppstyle:
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.3
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
   - export LD_PRELOAD
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
@@ -372,7 +372,7 @@ nsiqcppstyle:
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.3
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
   - export LD_PRELOAD
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
@@ -533,7 +533,7 @@ gcc-6_SDL_SDL-1.2_sanitize_test:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
@@ -554,7 +554,7 @@ gcc-6_SDL_default_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
@@ -578,7 +578,7 @@ gcc-6_SDL_SDL-1.2_old_sanitize_test:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
@@ -601,7 +601,7 @@ gcc-6_SDL_default_old_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
