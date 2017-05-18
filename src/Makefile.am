@@ -24,6 +24,7 @@ if ENABLE_UNITTESTSBIN
 bin_PROGRAMS += manaplustests
 endif
 
+manaplustests_CXXFLAGS = 
 if ENABLE_UNITTESTS_CATCH
 manaplustests_CXXFLAGS += -DUNITTESTS_CATCH
 endif
@@ -1962,7 +1963,7 @@ if ENABLE_MANAPLUSGAME
 manaplus_SOURCES += ${SRC}
 endif
 
-manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
+manaplustests_CXXFLAGS += ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 manaplustests_LDFLAGS = 
 if ENABLE_PUGIXML
