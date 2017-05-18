@@ -152,7 +152,7 @@ int main(int argc, char *argv[])
     doctest::Context context;
     context.applyCommandLine(argc, argv);
     return context.run();
-#else // UNITTESTS_CATCH
+#else  // UNITTESTS_CATCH
     return 1;
 #endif  // UNITTESTS_CATCH
 }
