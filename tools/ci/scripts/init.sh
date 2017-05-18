@@ -276,7 +276,7 @@ function run_tarball {
 function run_mplint {
     rm $ERRFILE
     echo "mplint/src/mplint $*"
-    mplint/src/mplint $* >$ERRFILE
+    mplint/src/mplint $* | grep -v "src/test/doctest.h" >$ERRFILE
     check_error $?
     run_check_warnings
 }
