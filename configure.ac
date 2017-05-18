@@ -610,13 +610,29 @@ AM_CONDITIONAL(ENABLE_UNITTESTS_DOCTEST, test x$unittests_doctest = xtrue)
 AC_ARG_ENABLE(unittestsbin,
 [  --enable-unittestsbin    Turn on unit tests binary compilation only],
 [case "${enableval}" in
-  yes) unittestsbin_enabled=true
+  yes)
+    unittestsbin_enabled=true
+    unittestsbin_catch=true
+    unittestsbin_doctest=false
  ;;
-  no)  unittestsbin_enabled=false ;;
+  catch)
+    unittestsbin_enabled=true
+    unittestsbin_catch=true
+    unittestsbin_doctest=false
+ ;;
+  doctest)
+    unittestsbin_enabled=true
+    unittestsbin_catch=false
+    unittestsbin_doctest=true
+ ;;
+  no)
+    unittestsbin_enabled=false ;;
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-unittestsbin) ;;
 esac],[unittestsbin_enabled=false])
 
 AM_CONDITIONAL(ENABLE_UNITTESTSBIN, test x$unittestsbin_enabled = xtrue)
+AM_CONDITIONAL(ENABLE_UNITTESTSBIN_CATCH, test x$unittestsbin_catch = xtrue)
+AM_CONDITIONAL(ENABLE_UNITTESTSBIN_DOCTEST, test x$unittestsbin_doctest = xtrue)
 
 # Enable tcmalloc
 AC_ARG_ENABLE(tcmalloc,

@@ -24,6 +24,19 @@ if ENABLE_UNITTESTSBIN
 bin_PROGRAMS += manaplustests
 endif
 
+if ENABLE_UNITTESTS_CATCH
+manaplustests_CXXFLAGS += -DUNITTESTS_CATCH
+endif
+if ENABLE_UNITTESTSBIN_CATCH
+manaplustests_CXXFLAGS += -DUNITTESTS_CATCH
+endif
+if ENABLE_UNITTESTS_DOCTEST
+manaplustests_CXXFLAGS += -DUNITTESTS_DOCTEST
+endif
+if ENABLE_UNITTESTSBIN_DOCTEST
+manaplustests_CXXFLAGS += -DUNITTESTS_DOCTEST
+endif
+
 dyecmd_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
 		-Wall
@@ -1952,12 +1965,6 @@ endif
 manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 manaplustests_LDFLAGS = 
-if ENABLE_UNITTESTS_CATCH
-manaplustests_CXXFLAGS += -DUNITTESTS_CATCH
-endif
-if ENABLE_UNITTESTS_DOCTEST
-manaplustests_CXXFLAGS += -DUNITTESTS_DOCTEST
-endif
 if ENABLE_PUGIXML
 manaplustests_CXXFLAGS += -DENABLE_PUGIXML
 endif
