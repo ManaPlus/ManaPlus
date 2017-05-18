@@ -34,7 +34,7 @@
 
 #include "debug.h"
 
-TEST_CASE("Files renameFile")
+TEST_CASE("Files renameFile", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -72,7 +72,7 @@ TEST_CASE("Files renameFile")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("Files existsLocal")
+TEST_CASE("Files existsLocal", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -87,7 +87,7 @@ TEST_CASE("Files existsLocal")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("Files loadTextFileString")
+TEST_CASE("Files loadTextFileString", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -101,7 +101,7 @@ TEST_CASE("Files loadTextFileString")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("Files loadTextFile")
+TEST_CASE("Files loadTextFile", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -119,7 +119,7 @@ TEST_CASE("Files loadTextFile")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("Files saveTextFile")
+TEST_CASE("Files saveTextFile", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -144,7 +144,7 @@ TEST_CASE("Files saveTextFile")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("Files copyFile1")
+TEST_CASE("Files copyFile1", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -176,7 +176,7 @@ TEST_CASE("Files copyFile1")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("Files loadTextFileLocal")
+TEST_CASE("Files loadTextFileLocal", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -200,7 +200,7 @@ TEST_CASE("Files loadTextFileLocal")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("Files getFilesInDir")
+TEST_CASE("Files getFilesInDir", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);

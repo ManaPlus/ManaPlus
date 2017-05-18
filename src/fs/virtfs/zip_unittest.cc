@@ -35,7 +35,7 @@
 
 extern const char *dirSeparator;
 
-TEST_CASE("Zip readArchiveInfo")
+TEST_CASE("Zip readArchiveInfo", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -170,7 +170,7 @@ TEST_CASE("Zip readArchiveInfo")
     delete2(logger);
 }
 
-TEST_CASE("Zip readCompressedFile")
+TEST_CASE("Zip readCompressedFile", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -205,7 +205,7 @@ TEST_CASE("Zip readCompressedFile")
     delete2(logger);
 }
 
-TEST_CASE("Zip readFile")
+TEST_CASE("Zip readFile", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");

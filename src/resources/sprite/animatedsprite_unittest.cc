@@ -55,7 +55,7 @@
 
 #include "debug.h"
 
-TEST_CASE("AnimatedSprite leak test1")
+TEST_CASE("AnimatedSprite leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -206,7 +206,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("AnimatedSprite leak test2")
+TEST_CASE("AnimatedSprite leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

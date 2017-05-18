@@ -49,8 +49,14 @@
 #endif  // SDL_VERSIONNUM
 
 #ifdef UNITTESTS
+#ifdef UNITTESTS_CATCH
 #define CATCH_CONFIG_RUNNER
 #include "test/catch.hpp"
+#endif  // UNITTESTS_CATCH
+#ifdef UNITTESTS_DOCTEST
+#define DOCTEST_CONFIG_IMPLEMENT
+#include "test/doctest.h"
+#endif  // UNITTESTS_DOCTEST
 #else  // UNITTESTS
 #include "utils/xml.h"
 #endif  // UNITTESTS
@@ -140,7 +146,15 @@ int mainGui(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
     VirtFs::init(argv[0]);
+#ifdef UNITTESTS_CATCH
     return Catch::Session().run(argc, argv);
+#elif defined(UNITTESTS_DOCTEST)
+    doctest::Context context;
+    context.applyCommandLine(argc, argv);
+    return context.run();
+#else // UNITTESTS_CATCH
+    return 1;
+#endif  // UNITTESTS_CATCH
 }
 
 #endif  // UNITTESTS

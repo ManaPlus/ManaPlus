@@ -36,7 +36,7 @@ PRAGMACLANG6GCC(GCC diagnostic pop)
 
 #include "debug.h"
 
-TEST_CASE("dumplibs tests")
+TEST_CASE("dumplibs tests", "")
 {
     logger = new Logger();
 

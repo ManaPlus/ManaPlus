@@ -34,6 +34,7 @@
 #include "gui/gui.h"
 
 #include "utils/delete2.h"
+#include "utils/env.h"
 
 #include "resources/sdlimagehelper.h"
 
@@ -43,7 +44,7 @@
 
 #include "debug.h"
 
-TEST_CASE("SpecialLayer leak test1")
+TEST_CASE("SpecialLayer leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -52,8 +53,10 @@ TEST_CASE("SpecialLayer leak test1")
     delete2(logger);
 }
 
-TEST_CASE("SpecialLayer updateCache")
+TEST_CASE("SpecialLayer updateCache", "")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     logger = new Logger;
     client = new Client;
     VirtFs::mountDirSilent("data", Append_false);
@@ -278,7 +281,7 @@ TEST_CASE("SpecialLayer updateCache")
     delete2(logger);
 }
 
-TEST_CASE("SpecialLayer leak test2")
+TEST_CASE("SpecialLayer leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

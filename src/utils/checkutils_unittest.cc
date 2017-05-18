@@ -81,7 +81,7 @@ static bool testFailAlways2()
     return false;
 }
 
-TEST_CASE("CheckUtils")
+TEST_CASE("CheckUtils", "")
 {
     logger = new Logger;
 

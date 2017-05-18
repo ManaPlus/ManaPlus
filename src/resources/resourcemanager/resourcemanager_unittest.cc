@@ -88,7 +88,7 @@ namespace
 
 }  // namespace
 
-TEST_CASE("resourcemanager leak test1")
+TEST_CASE("resourcemanager leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -691,7 +691,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("resourcemanager leak test2")
+TEST_CASE("resourcemanager leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

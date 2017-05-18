@@ -26,7 +26,7 @@
 
 #include "debug.h"
 
-TEST_CASE("mstack push 1")
+TEST_CASE("mstack push 1", "")
 {
     MStack<ClipRect> stack(10);
     REQUIRE(-1 == (stack.mPointer - stack.mStack));
@@ -44,7 +44,7 @@ TEST_CASE("mstack push 1")
     REQUIRE(2 == val1.yOffset);
 }
 
-TEST_CASE("mstack push 2")
+TEST_CASE("mstack push 2", "")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
@@ -58,7 +58,7 @@ TEST_CASE("mstack push 2")
     REQUIRE(2 == stack.mStack[0].yOffset);
 }
 
-TEST_CASE("mstack push 3")
+TEST_CASE("mstack push 3", "")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
@@ -68,7 +68,7 @@ TEST_CASE("mstack push 3")
     REQUIRE(10 == stack.mStack[0].xOffset);
 }
 
-TEST_CASE("mstack push 4")
+TEST_CASE("mstack push 4", "")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
@@ -93,7 +93,7 @@ TEST_CASE("mstack push 4")
     REQUIRE(30 == stack.mStack[2].xOffset);
 }
 
-TEST_CASE("mstack pop 1")
+TEST_CASE("mstack pop 1", "")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
@@ -104,7 +104,7 @@ TEST_CASE("mstack pop 1")
     REQUIRE(-1 == stack.mPointer - stack.mStack);
 }
 
-TEST_CASE("mstack pop 2")
+TEST_CASE("mstack pop 2", "")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();
@@ -135,7 +135,7 @@ TEST_CASE("mstack pop 2")
     REQUIRE(0 == stack.mStack[2].xOffset);
 }
 
-TEST_CASE("mstack clear 1")
+TEST_CASE("mstack clear 1", "")
 {
     MStack<ClipRect> stack(10);
     REQUIRE(-1 == stack.mPointer - stack.mStack);
@@ -150,7 +150,7 @@ TEST_CASE("mstack clear 1")
     REQUIRE(0 == stack.mStack[1].xOffset);
 }
 
-TEST_CASE("mstack getpop 1")
+TEST_CASE("mstack getpop 1", "")
 {
     MStack<ClipRect> stack(10);
     ClipRect &val1 = stack.push();

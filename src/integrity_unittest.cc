@@ -51,6 +51,10 @@
 
 #include <SDL_image.h>
 
+#ifndef UNITTESTS_CATCH
+#include <algorithm>
+#endif  // UNITTESTS_CATCH
+
 #include "debug.h"
 
 namespace
@@ -96,7 +100,7 @@ static bool compareBuffers(const unsigned char *const buf2)
     return isCorrect;
 }
 
-TEST_CASE("integrity leak test1")
+TEST_CASE("integrity leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -348,7 +352,7 @@ TEST_CASE("integrity tests", "integrity")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("integrity leak test2")
+TEST_CASE("integrity leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

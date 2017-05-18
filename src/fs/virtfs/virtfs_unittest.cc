@@ -29,9 +29,13 @@
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 
+#ifndef UNITTESTS_CATCH
+#include <algorithm>
+#endif  // UNITTESTS_CATCH
+
 #include "debug.h"
 
-TEST_CASE("VirtFs dirSeparator")
+TEST_CASE("VirtFs dirSeparator", "")
 {
     REQUIRE(dirSeparator != nullptr);
     REQUIRE(VirtFs::getDirSeparator() == std::string(dirSeparator));
@@ -40,17 +44,17 @@ TEST_CASE("VirtFs dirSeparator")
     REQUIRE(VirtFs::getDirSeparator() == std::string(dirSeparator));
 }
 
-TEST_CASE("VirtFs getBaseDir")
+TEST_CASE("VirtFs getBaseDir", "")
 {
     REQUIRE(VirtFs::getBaseDir() != nullptr);
 }
 
-TEST_CASE("VirtFs getUserDir")
+TEST_CASE("VirtFs getUserDir", "")
 {
     REQUIRE(VirtFs::getUserDir() != nullptr);
 }
 
-TEST_CASE("VirtFs exists1")
+TEST_CASE("VirtFs exists1", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -91,7 +95,7 @@ TEST_CASE("VirtFs exists1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs exists2")
+TEST_CASE("VirtFs exists2", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -115,7 +119,7 @@ TEST_CASE("VirtFs exists2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs exists3")
+TEST_CASE("VirtFs exists3", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -143,7 +147,7 @@ TEST_CASE("VirtFs exists3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs exists4")
+TEST_CASE("VirtFs exists4", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -175,7 +179,7 @@ TEST_CASE("VirtFs exists4")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs exists5")
+TEST_CASE("VirtFs exists5", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -190,7 +194,7 @@ TEST_CASE("VirtFs exists5")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs exists6")
+TEST_CASE("VirtFs exists6", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -258,7 +262,7 @@ static bool inList(const VirtFs::List *const list,
     return false;
 }
 
-TEST_CASE("VirtFs enumerateFiles1")
+TEST_CASE("VirtFs enumerateFiles1", "")
 {
     logger = new Logger;
 
@@ -299,7 +303,7 @@ TEST_CASE("VirtFs enumerateFiles1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs enumerateFiles2")
+TEST_CASE("VirtFs enumerateFiles2", "")
 {
     logger = new Logger;
 
@@ -319,7 +323,7 @@ TEST_CASE("VirtFs enumerateFiles2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs enumerateFiles3")
+TEST_CASE("VirtFs enumerateFiles3", "")
 {
     logger = new Logger;
     std::string name("data/test/test.zip");
@@ -341,7 +345,7 @@ TEST_CASE("VirtFs enumerateFiles3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs enumerateFiles4")
+TEST_CASE("VirtFs enumerateFiles4", "")
 {
     logger = new Logger;
     std::string name("data/test/test.zip");
@@ -366,7 +370,7 @@ TEST_CASE("VirtFs enumerateFiles4")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs enumerateFiles5")
+TEST_CASE("VirtFs enumerateFiles5", "")
 {
     logger = new Logger;
     std::string name("data/test/test.zip");
@@ -394,7 +398,7 @@ TEST_CASE("VirtFs enumerateFiles5")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs isDirectory1")
+TEST_CASE("VirtFs isDirectory1", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -452,7 +456,7 @@ TEST_CASE("VirtFs isDirectory1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs isDirectory2")
+TEST_CASE("VirtFs isDirectory2", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -474,7 +478,7 @@ TEST_CASE("VirtFs isDirectory2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs isDirectory3")
+TEST_CASE("VirtFs isDirectory3", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -501,7 +505,7 @@ TEST_CASE("VirtFs isDirectory3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs openRead1")
+TEST_CASE("VirtFs openRead1", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -563,7 +567,7 @@ TEST_CASE("VirtFs openRead1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs openRead2")
+TEST_CASE("VirtFs openRead2", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -591,7 +595,7 @@ TEST_CASE("VirtFs openRead2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs openRead3")
+TEST_CASE("VirtFs openRead3", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -626,7 +630,7 @@ TEST_CASE("VirtFs openRead3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs getRealDir1")
+TEST_CASE("VirtFs getRealDir1", "")
 {
     logger = new Logger();
     const std::string sep = dirSeparator;
@@ -717,7 +721,7 @@ TEST_CASE("VirtFs getRealDir1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs getrealDir2")
+TEST_CASE("VirtFs getrealDir2", "")
 {
     logger = new Logger();
     const std::string sep = dirSeparator;
@@ -747,7 +751,7 @@ TEST_CASE("VirtFs getrealDir2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs getrealDir3")
+TEST_CASE("VirtFs getrealDir3", "")
 {
     logger = new Logger();
     const std::string sep = dirSeparator;
@@ -778,7 +782,7 @@ TEST_CASE("VirtFs getrealDir3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs permitLinks1")
+TEST_CASE("VirtFs permitLinks1", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -811,7 +815,7 @@ TEST_CASE("VirtFs permitLinks1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs permitLinks2")
+TEST_CASE("VirtFs permitLinks2", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent2("data",
@@ -850,7 +854,7 @@ TEST_CASE("VirtFs permitLinks2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs read1")
+TEST_CASE("VirtFs read1", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -886,7 +890,7 @@ TEST_CASE("VirtFs read1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs read2")
+TEST_CASE("VirtFs read2", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -925,7 +929,7 @@ TEST_CASE("VirtFs read2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs read3")
+TEST_CASE("VirtFs read3", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -966,7 +970,7 @@ TEST_CASE("VirtFs read3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs read4")
+TEST_CASE("VirtFs read4", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");
@@ -1007,7 +1011,7 @@ TEST_CASE("VirtFs read4")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs read5")
+TEST_CASE("VirtFs read5", "")
 {
     logger = new Logger();
     std::string name("data/test/test.zip");

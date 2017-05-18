@@ -37,6 +37,7 @@
 #include "gui/widgets/browserbox.h"
 
 #include "utils/delete2.h"
+#include "utils/env.h"
 
 #include "render/sdlgraphics.h"
 
@@ -48,7 +49,7 @@
 
 extern const char *dirSeparator;
 
-TEST_CASE("BrowserBox leak test1")
+TEST_CASE("BrowserBox leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -59,6 +60,8 @@ TEST_CASE("BrowserBox leak test1")
 
 TEST_CASE("BrowserBox tests", "browserbox")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     client = new Client;
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
@@ -199,7 +202,7 @@ TEST_CASE("BrowserBox tests", "browserbox")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("BrowserBox leak test2")
+TEST_CASE("BrowserBox leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

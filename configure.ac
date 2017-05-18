@@ -582,13 +582,29 @@ AM_CONDITIONAL(ENABLE_MEM_DEBUG, test x$memdebug_enabled = xtrue)
 AC_ARG_ENABLE(unittests,
 [  --enable-unittests    Turn on unit tests],
 [case "${enableval}" in
-  yes) unittests_enabled=true
+  yes)
+       unittests_enabled=true
+       unittests_catch=true
+       unittests_doctest=false
  ;;
-  no)  unittests_enabled=false ;;
+  catch)
+       unittests_enabled=true
+       unittests_catch=true
+       unittests_doctest=false
+ ;;
+  doctest)
+       unittests_enabled=true
+       unittests_catch=false
+       unittests_doctest=true
+ ;;
+  no)  unittests_enabled=false
+ ;;
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-unittests) ;;
 esac],[unittests_enabled=false])
 
 AM_CONDITIONAL(ENABLE_UNITTESTS, test x$unittests_enabled = xtrue)
+AM_CONDITIONAL(ENABLE_UNITTESTS_CATCH, test x$unittests_catch = xtrue)
+AM_CONDITIONAL(ENABLE_UNITTESTS_DOCTEST, test x$unittests_doctest = xtrue)
 
 # Enable unit tests binaries only
 AC_ARG_ENABLE(unittestsbin,

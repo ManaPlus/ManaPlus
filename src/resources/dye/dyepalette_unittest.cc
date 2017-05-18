@@ -52,7 +52,7 @@
 
 #include "debug.h"
 
-TEST_CASE("DyePalette leak test1")
+TEST_CASE("DyePalette leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -61,7 +61,7 @@ TEST_CASE("DyePalette leak test1")
     delete2(logger);
 }
 
-TEST_CASE("DyePalette tests")
+TEST_CASE("DyePalette tests", "")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
 
@@ -408,7 +408,7 @@ TEST_CASE("DyePalette tests")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("DyePalette leak test2")
+TEST_CASE("DyePalette leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

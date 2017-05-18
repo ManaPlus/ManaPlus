@@ -47,7 +47,7 @@
 
 #include "debug.h"
 
-TEST_CASE("PoParser leak test1")
+TEST_CASE("PoParser leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -147,7 +147,7 @@ TEST_CASE("PoParser tests", "PoParser")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("PoParser leak test2")
+TEST_CASE("PoParser leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

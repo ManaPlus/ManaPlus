@@ -131,7 +131,7 @@
 
 extern QuitDialog *quitDialog;
 
-TEST_CASE("windows leak test1")
+TEST_CASE("windows leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -878,7 +878,7 @@ TEST_CASE("WindowManager", "create windows")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("windows leak test2")
+TEST_CASE("windows leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

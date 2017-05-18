@@ -30,12 +30,12 @@
 
 static const int MAX_TICK_VALUE = INT_MAX / 2;
 
-TEST_CASE("timer const")
+TEST_CASE("timer const", "")
 {
     REQUIRE(MILLISECONDS_IN_A_TICK != 0);
 }
 
-TEST_CASE("timer get_elapsed_time")
+TEST_CASE("timer get_elapsed_time", "")
 {
     tick_time = 0;
     REQUIRE(get_elapsed_time(0) == 0);
@@ -62,7 +62,7 @@ TEST_CASE("timer get_elapsed_time")
         10001 * MILLISECONDS_IN_A_TICK);
 }
 
-TEST_CASE("timer get_elapsed_time1")
+TEST_CASE("timer get_elapsed_time1", "")
 {
     tick_time = 0;
     REQUIRE(get_elapsed_time1(0) == 0);

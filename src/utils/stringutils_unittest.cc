@@ -38,7 +38,7 @@
 
 #include "debug.h"
 
-TEST_CASE("stringuntils  trim 1")
+TEST_CASE("stringuntils  trim 1", "")
 {
     std::string str = "str";
     REQUIRE("str" == trim(str));
@@ -56,7 +56,7 @@ TEST_CASE("stringuntils  trim 1")
     REQUIRE("" == trim(str));
 }
 
-TEST_CASE("stringuntils toLower 1")
+TEST_CASE("stringuntils toLower 1", "")
 {
     std::string str = "str";
     REQUIRE("str" == toLower(str));
@@ -74,7 +74,7 @@ TEST_CASE("stringuntils toLower 1")
     REQUIRE("" == toLower(str));
 }
 
-TEST_CASE("stringuntils toUpper 1")
+TEST_CASE("stringuntils toUpper 1", "")
 {
     std::string str = "str";
     REQUIRE("STR" == toUpper(str));
@@ -92,7 +92,7 @@ TEST_CASE("stringuntils toUpper 1")
     REQUIRE("" == toUpper(str));
 }
 
-TEST_CASE("stringuntils atox 1")
+TEST_CASE("stringuntils atox 1", "")
 {
     std::string str = "0x10";
     REQUIRE(16 == atox(str));
@@ -123,13 +123,13 @@ TEST_CASE("stringuntils atox 1")
     REQUIRE(0 == atox(str));
 }
 
-TEST_CASE("stringuntils ipToString 1")
+TEST_CASE("stringuntils ipToString 1", "")
 {
     REQUIRE("0.0.0.0" == std::string(ipToString(0)));
     REQUIRE("219.255.210.73" == std::string(ipToString(1238564827)));
 }
 
-TEST_CASE("stringuntils toString 1")
+TEST_CASE("stringuntils toString 1", "")
 {
     REQUIRE(strprintf("%d", 0) == toString(0));
     REQUIRE(strprintf("%d", -1) == toString(-1));
@@ -145,14 +145,14 @@ TEST_CASE("stringuntils toString 1")
     REQUIRE(strprintf("%f", 3.1) == toString(3.1));
 }
 
-TEST_CASE("stringuntils toStringPrint 1")
+TEST_CASE("stringuntils toStringPrint 1", "")
 {
     REQUIRE(toStringPrint(0) == "0 0x0");
     REQUIRE(toStringPrint(10) == "10 0xa");
     REQUIRE(toStringPrint(255) == "255 0xff");
 }
 
-TEST_CASE("stringuntils parse2Int 1")
+TEST_CASE("stringuntils parse2Int 1", "")
 {
     int a = -1;
     int b = -1;
@@ -186,7 +186,7 @@ TEST_CASE("stringuntils parse2Int 1")
     REQUIRE(b == 0);
 }
 
-TEST_CASE("stringuntils parse2Str 1")
+TEST_CASE("stringuntils parse2Str 1", "")
 {
     std::string str1 = "-";
     std::string str2 = "-";
@@ -212,7 +212,7 @@ TEST_CASE("stringuntils parse2Str 1")
     REQUIRE(str2 == "line");
 }
 
-TEST_CASE("stringuntils parseNumber 1")
+TEST_CASE("stringuntils parseNumber 1", "")
 {
     REQUIRE(parseNumber("") == 0);
     REQUIRE(parseNumber("0x") == 0);
@@ -222,7 +222,7 @@ TEST_CASE("stringuntils parseNumber 1")
     REQUIRE(parseNumber("0x20") == 32);
 }
 
-TEST_CASE("stringuntils removeToken 1")
+TEST_CASE("stringuntils removeToken 1", "")
 {
     std::string str = "";
 
@@ -250,7 +250,7 @@ TEST_CASE("stringuntils removeToken 1")
     REQUIRE(str == "");
 }
 
-TEST_CASE("stringuntils strprintf 1")
+TEST_CASE("stringuntils strprintf 1", "")
 {
     REQUIRE(strprintf("%s very long string. 123456789012345678901234567890"
         "+++++++++++++++++++++++++++++++++++++++"
@@ -268,7 +268,7 @@ TEST_CASE("stringuntils strprintf 1")
         "end of test");
 }
 
-TEST_CASE("stringuntils toString 2")
+TEST_CASE("stringuntils toString 2", "")
 {
     for (int f = 0; f < 10000000; f += 123)
     {
@@ -276,7 +276,7 @@ TEST_CASE("stringuntils toString 2")
     }
 }
 
-TEST_CASE("stringuntils removeColors 1")
+TEST_CASE("stringuntils removeColors 1", "")
 {
     REQUIRE("" == removeColors(""));
     REQUIRE("#" == removeColors("#"));
@@ -290,7 +290,7 @@ TEST_CASE("stringuntils removeColors 1")
     REQUIRE("#1" == removeColors("#1##2"));
 }
 
-TEST_CASE("stringuntils compareStrI 1")
+TEST_CASE("stringuntils compareStrI 1", "")
 {
     std::string str1 = "";
     std::string str2 = "";
@@ -313,7 +313,7 @@ TEST_CASE("stringuntils compareStrI 1")
     REQUIRE(0 < compareStrI(str1, str2));
 }
 
-TEST_CASE("stringuntils isWordSeparator 1")
+TEST_CASE("stringuntils isWordSeparator 1", "")
 {
     REQUIRE(isWordSeparator(' '));
     REQUIRE(isWordSeparator(','));
@@ -324,7 +324,7 @@ TEST_CASE("stringuntils isWordSeparator 1")
     REQUIRE(!isWordSeparator('-'));
 }
 
-TEST_CASE("stringuntils findSameSubstring")
+TEST_CASE("stringuntils findSameSubstring", "")
 {
     std::string str1 = "";
     std::string str2 = "";
@@ -344,7 +344,7 @@ TEST_CASE("stringuntils findSameSubstring")
     REQUIRE("" == findSameSubstring(str1, str2));
 }
 
-TEST_CASE("stringuntils findSameSubstringI")
+TEST_CASE("stringuntils findSameSubstringI", "")
 {
     std::string str1 = "";
     std::string str2 = "";
@@ -368,7 +368,7 @@ TEST_CASE("stringuntils findSameSubstringI")
     REQUIRE("" == findSameSubstringI(str1, str2));
 }
 
-TEST_CASE("stringuntils findI 1")
+TEST_CASE("stringuntils findI 1", "")
 {
     REQUIRE(0 == findI("", ""));
     REQUIRE(std::string::npos == findI("test", "line"));
@@ -377,7 +377,7 @@ TEST_CASE("stringuntils findI 1")
     REQUIRE(3 == findI("test line", "t l"));
 }
 
-TEST_CASE("stringuntils findI 2")
+TEST_CASE("stringuntils findI 2", "")
 {
     std::vector <std::string> vect1;
     vect1.push_back("test");
@@ -391,7 +391,7 @@ TEST_CASE("stringuntils findI 2")
     REQUIRE(std::string::npos == findI("zzz", vect1));
 }
 
-TEST_CASE("stringuntils encodeStr 1")
+TEST_CASE("stringuntils encodeStr 1", "")
 {
     std::string str = encodeStr(10, 1);
     REQUIRE(10 == decodeStr(str));
@@ -409,7 +409,7 @@ TEST_CASE("stringuntils encodeStr 1")
     REQUIRE(1000 == decodeStr(str));
 }
 
-TEST_CASE("stringuntils extractNameFromSprite 1")
+TEST_CASE("stringuntils extractNameFromSprite 1", "")
 {
     REQUIRE("" == extractNameFromSprite(""));
     REQUIRE("test" == extractNameFromSprite("test"));
@@ -420,7 +420,7 @@ TEST_CASE("stringuntils extractNameFromSprite 1")
     REQUIRE("line" == extractNameFromSprite("test\\test2/line.zzz"));
 }
 
-TEST_CASE("stringuntils removeSpriteIndex 1")
+TEST_CASE("stringuntils removeSpriteIndex 1", "")
 {
     REQUIRE("" == removeSpriteIndex(""));
     REQUIRE("test" == removeSpriteIndex("test"));
@@ -431,7 +431,7 @@ TEST_CASE("stringuntils removeSpriteIndex 1")
     REQUIRE("line" == removeSpriteIndex("test\\test2/line[1]"));
 }
 
-TEST_CASE("stringutils getSafeUtf8String 1")
+TEST_CASE("stringutils getSafeUtf8String 1", "")
 {
     const char *str;
     str = getSafeUtf8String("");
@@ -456,7 +456,7 @@ TEST_CASE("stringutils getSafeUtf8String 1")
     delete [] str;
 }
 
-TEST_CASE("stringutils getSafeUtf8String 2")
+TEST_CASE("stringutils getSafeUtf8String 2", "")
 {
     char *str;
 
@@ -502,7 +502,7 @@ TEST_CASE("stringutils getSafeUtf8String 2")
     delete [] str;
 }
 
-TEST_CASE("stringuntils getFileName 1")
+TEST_CASE("stringuntils getFileName 1", "")
 {
     REQUIRE("" == getFileName(""));
     REQUIRE("file" == getFileName("file"));
@@ -512,7 +512,7 @@ TEST_CASE("stringuntils getFileName 1")
     REQUIRE("file" == getFileName("/file"));
 }
 
-TEST_CASE("stringuntils getFileDir 1")
+TEST_CASE("stringuntils getFileDir 1", "")
 {
     REQUIRE("" == getFileDir(""));
     REQUIRE("file" == getFileDir("file"));
@@ -522,7 +522,7 @@ TEST_CASE("stringuntils getFileDir 1")
     REQUIRE("" == getFileDir("/file"));
 }
 
-TEST_CASE("stringuntils replaceAll 1")
+TEST_CASE("stringuntils replaceAll 1", "")
 {
     std::string str1 = "";
     std::string str2 = "";
@@ -546,7 +546,7 @@ TEST_CASE("stringuntils replaceAll 1")
     REQUIRE("this is test line" == replaceAll(str1, str2, str3));
 }
 
-TEST_CASE("stringuntils replaceRecursiveAll 1")
+TEST_CASE("stringuntils replaceRecursiveAll 1", "")
 {
     std::string str;
     str = "";
@@ -590,7 +590,7 @@ TEST_CASE("stringuntils replaceRecursiveAll 1")
     REQUIRE(str == "111111");
 }
 
-TEST_CASE("stringuntils getBoolFromString 1")
+TEST_CASE("stringuntils getBoolFromString 1", "")
 {
     REQUIRE(getBoolFromString("true"));
     REQUIRE(getBoolFromString("yes"));
@@ -620,7 +620,7 @@ TEST_CASE("stringuntils getBoolFromString 1")
     REQUIRE(!getBoolFromString(" oFF"));
 }
 
-TEST_CASE("stringuntils parseBoolean 1")
+TEST_CASE("stringuntils parseBoolean 1", "")
 {
     REQUIRE(parseBoolean("true") == 1);
     REQUIRE(parseBoolean("yes") == 1);
@@ -655,7 +655,7 @@ TEST_CASE("stringuntils parseBoolean 1")
     REQUIRE(parseBoolean(" tEst") == -1);
 }
 
-TEST_CASE("stringuntils splitToIntSet 1")
+TEST_CASE("stringuntils splitToIntSet 1", "")
 {
     std::set<int> tokens;
     splitToIntSet(tokens, "", ',');
@@ -696,7 +696,7 @@ TEST_CASE("stringuntils splitToIntSet 1")
     REQUIRE(tokens.find(30) != tokens.end());
 }
 
-TEST_CASE("stringuntils splitToIntList 1")
+TEST_CASE("stringuntils splitToIntList 1", "")
 {
     std::list<int> tokens;
     tokens = splitToIntList("", ',');
@@ -751,7 +751,7 @@ TEST_CASE("stringuntils splitToIntList 1")
     tokens.pop_front();
 }
 
-TEST_CASE("stringuntils splitToStringSet 1")
+TEST_CASE("stringuntils splitToStringSet 1", "")
 {
     std::set<std::string> tokens;
     splitToStringSet(tokens, "", ',');
@@ -798,7 +798,7 @@ TEST_CASE("stringuntils splitToStringSet 1")
     REQUIRE(tokens.find("30e") != tokens.end());
 }
 
-TEST_CASE("stringuntils splitToIntVector 1")
+TEST_CASE("stringuntils splitToIntVector 1", "")
 {
     std::vector<int> tokens;
     splitToIntVector(tokens, "", ',');
@@ -845,7 +845,7 @@ TEST_CASE("stringuntils splitToIntVector 1")
     REQUIRE(tokens[2] == 30);
 }
 
-TEST_CASE("stringuntils splitToStringVector 1")
+TEST_CASE("stringuntils splitToStringVector 1", "")
 {
     std::vector<std::string> tokens;
     splitToStringVector(tokens, "", ',');
@@ -885,7 +885,7 @@ TEST_CASE("stringuntils splitToStringVector 1")
     REQUIRE(tokens[2] == "3line");
 }
 
-TEST_CASE("stringuntils replaceSpecialChars 1")
+TEST_CASE("stringuntils replaceSpecialChars 1", "")
 {
     std::string str;
 
@@ -934,7 +934,7 @@ TEST_CASE("stringuntils replaceSpecialChars 1")
     REQUIRE("test line!" == str);
 }
 
-TEST_CASE("stringuntils normalize 1")
+TEST_CASE("stringuntils normalize 1", "")
 {
     REQUIRE(normalize("") == "");
     REQUIRE(normalize("test") == "test");
@@ -945,7 +945,7 @@ TEST_CASE("stringuntils normalize 1")
     REQUIRE(normalize("test lIne ") == "test line");
 }
 
-TEST_CASE("stringuntils combineDye 1")
+TEST_CASE("stringuntils combineDye 1", "")
 {
     REQUIRE("" == combineDye("", ""));
     REQUIRE("test" == combineDye("test", ""));
@@ -956,7 +956,7 @@ TEST_CASE("stringuntils combineDye 1")
     REQUIRE("test|line" == combineDye("test|w", "line"));
 }
 
-TEST_CASE("stringuntils combineDye 2")
+TEST_CASE("stringuntils combineDye 2", "")
 {
     REQUIRE("" == combineDye2("", ""));
     REQUIRE("test" == combineDye2("test", ""));
@@ -971,7 +971,7 @@ TEST_CASE("stringuntils combineDye 2")
         combineDye2("test.xml|#43413d,59544f,7a706c;#123456", "W;B"));
 }
 
-TEST_CASE("stringuntils combineDye 3")
+TEST_CASE("stringuntils combineDye 3", "")
 {
     REQUIRE("" == combineDye3("", ""));
     REQUIRE("test" == combineDye3("test", ""));
@@ -985,7 +985,7 @@ TEST_CASE("stringuntils combineDye 3")
         combineDye3("test.xml|#43413d,59544f,7a706c;#123456", "W;B"));
 }
 
-TEST_CASE("stringuntils packList 1")
+TEST_CASE("stringuntils packList 1", "")
 {
     std::list <std::string> list;
     REQUIRE("" == packList(list));
@@ -1009,7 +1009,7 @@ TEST_CASE("stringuntils packList 1")
     REQUIRE("|test|line" == packList(list));
 }
 
-TEST_CASE("stringuntils stringToHexPath 1")
+TEST_CASE("stringuntils stringToHexPath 1", "")
 {
     std::string str;
 
@@ -1029,7 +1029,7 @@ TEST_CASE("stringuntils stringToHexPath 1")
     REQUIRE("%61/%62%63%64" == stringToHexPath(str));
 }
 
-TEST_CASE("stringuntils deleteCharLeft 1")
+TEST_CASE("stringuntils deleteCharLeft 1", "")
 {
     std::string str;
     unsigned int pos = 0;
@@ -1054,7 +1054,7 @@ TEST_CASE("stringuntils deleteCharLeft 1")
     REQUIRE("tes line\x0" == str);
 }
 
-TEST_CASE("stringuntils findLast 1")
+TEST_CASE("stringuntils findLast 1", "")
 {
     std::string str;
 
@@ -1068,7 +1068,7 @@ TEST_CASE("stringuntils findLast 1")
     REQUIRE(!findLast(str, "lin"));
 }
 
-TEST_CASE("stringuntils findFirst 1")
+TEST_CASE("stringuntils findFirst 1", "")
 {
     std::string str;
 
@@ -1085,7 +1085,7 @@ TEST_CASE("stringuntils findFirst 1")
     REQUIRE(findFirst(str, "est") == false);
 }
 
-TEST_CASE("stringuntils findCutLast 1")
+TEST_CASE("stringuntils findCutLast 1", "")
 {
     std::string str;
 
@@ -1106,7 +1106,7 @@ TEST_CASE("stringuntils findCutLast 1")
     REQUIRE("test" == str);
 }
 
-TEST_CASE("stringuntils CutLast 1")
+TEST_CASE("stringuntils CutLast 1", "")
 {
     std::string str;
 
@@ -1127,7 +1127,7 @@ TEST_CASE("stringuntils CutLast 1")
     REQUIRE("test" == str);
 }
 
-TEST_CASE("stringuntils findCutFirst 1")
+TEST_CASE("stringuntils findCutFirst 1", "")
 {
     std::string str;
 
@@ -1148,7 +1148,7 @@ TEST_CASE("stringuntils findCutFirst 1")
     REQUIRE("test" == str);
 }
 
-TEST_CASE("stringuntils cutFirst 1")
+TEST_CASE("stringuntils cutFirst 1", "")
 {
     std::string str;
 
@@ -1169,7 +1169,7 @@ TEST_CASE("stringuntils cutFirst 1")
     REQUIRE("test" == str);
 }
 
-TEST_CASE("stringuntils removeProtocol 1")
+TEST_CASE("stringuntils removeProtocol 1", "")
 {
     std::string str;
 
@@ -1183,7 +1183,7 @@ TEST_CASE("stringuntils removeProtocol 1")
     REQUIRE("test" == removeProtocol(str));
 }
 
-TEST_CASE("stringuntils strStartWith 1")
+TEST_CASE("stringuntils strStartWith 1", "")
 {
     REQUIRE(strStartWith("", ""));
     REQUIRE(!strStartWith("", "1"));
@@ -1192,7 +1192,7 @@ TEST_CASE("stringuntils strStartWith 1")
     REQUIRE(!strStartWith("test line", "est"));
 }
 
-TEST_CASE("stringuntils encodeLinkText")
+TEST_CASE("stringuntils encodeLinkText", "")
 {
     std::string str;
 
@@ -1204,7 +1204,7 @@ TEST_CASE("stringuntils encodeLinkText")
     REQUIRE(str == "test\342\235\230\342\235\230line");
 }
 
-TEST_CASE("stringuntils decodeLinkText")
+TEST_CASE("stringuntils decodeLinkText", "")
 {
     std::string str;
 
@@ -1214,7 +1214,7 @@ TEST_CASE("stringuntils decodeLinkText")
     REQUIRE(str == "test|line");
 }
 
-TEST_CASE("stringuntils isDigit")
+TEST_CASE("stringuntils isDigit", "")
 {
     std::string str;
 
@@ -1227,7 +1227,7 @@ TEST_CASE("stringuntils isDigit")
     REQUIRE_FALSE(isDigit("12-34"));
 }
 
-TEST_CASE("stringuntils findAny")
+TEST_CASE("stringuntils findAny", "")
 {
     std::string str;
 
@@ -1240,7 +1240,7 @@ TEST_CASE("stringuntils findAny")
     REQUIRE(findAny("\"one\",,two, tree", ",", 5) == 5U);
 }
 
-TEST_CASE("stringuntils escapeString")
+TEST_CASE("stringuntils escapeString", "")
 {
     REQUIRE(escapeString("") == "\"\"");
     REQUIRE(escapeString("1") == "\"1\"");
@@ -1254,7 +1254,7 @@ TEST_CASE("stringuntils escapeString")
     REQUIRE(escapeString("12\\3") == "\"12\\3\"");
 }
 
-TEST_CASE("stringuntils sanitizePath")
+TEST_CASE("stringuntils sanitizePath", "")
 {
     std::string path;
     const std::string sep = dirSeparator;
@@ -1340,7 +1340,7 @@ TEST_CASE("stringuntils sanitizePath")
         "dir" + sep + "with" + sep + "sepa" + sep + "ra" + sep + "tors");
 }
 
-TEST_CASE("stringuntils pathJoin1")
+TEST_CASE("stringuntils pathJoin1", "")
 {
     const std::string sep = dirSeparator;
 
@@ -1362,7 +1362,7 @@ TEST_CASE("stringuntils pathJoin1")
         "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4");
 }
 
-TEST_CASE("stringuntils pathJoin2")
+TEST_CASE("stringuntils pathJoin2", "")
 {
     const std::string sep = dirSeparator;
 
@@ -1417,7 +1417,7 @@ TEST_CASE("stringuntils pathJoin2")
         "dir1" + sep + "dir2" + sep + "dir3" + sep + "dir4" + sep + "dir5");
 }
 
-TEST_CASE("stringuntils urlJoin")
+TEST_CASE("stringuntils urlJoin", "")
 {
     REQUIRE(urlJoin("", "") == "/");
     REQUIRE(urlJoin("/", "") == "/");
@@ -1433,7 +1433,7 @@ TEST_CASE("stringuntils urlJoin")
     REQUIRE(urlJoin("dir1/dir2", "/dir3/dir4") == "dir1/dir2/dir3/dir4");
 }
 
-TEST_CASE("stringuntils secureChatCommand")
+TEST_CASE("stringuntils secureChatCommand", "")
 {
     std::string str;
     secureChatCommand(str);
@@ -1456,7 +1456,7 @@ TEST_CASE("stringuntils secureChatCommand")
 }
 
 #ifdef ENABLE_NLS
-TEST_CASE("stringuntils timeDiffToString")
+TEST_CASE("stringuntils timeDiffToString", "")
 {
     REQUIRE(timeDiffToString(60 * 60 * 24 * 7) == "1 week");
     REQUIRE(timeDiffToString(60 * 60 * 24 * 7 * 2 +
@@ -1488,7 +1488,7 @@ TEST_CASE("stringuntils timeDiffToString")
 }
 #endif  // ENABLE_NLS
 
-TEST_CASE("stringuntils replaceItemLinks")
+TEST_CASE("stringuntils replaceItemLinks", "")
 {
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);

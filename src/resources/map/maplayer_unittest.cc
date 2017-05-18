@@ -32,6 +32,7 @@
 #include "gui/theme.h"
 
 #include "utils/delete2.h"
+#include "utils/env.h"
 
 #include "render/mockgraphics.h"
 
@@ -45,7 +46,7 @@
 
 #include "debug.h"
 
-TEST_CASE("MapLayer getTileDrawWidth")
+TEST_CASE("MapLayer getTileDrawWidth", "")
 {
     Image *const img1 = new Image(32, 32);
     Image *const img2 = new Image(32, 32);
@@ -410,7 +411,7 @@ TEST_CASE("MapLayer getTileDrawWidth")
 }
 
 
-TEST_CASE("MapLayer getEmptyTileDrawWidth")
+TEST_CASE("MapLayer getEmptyTileDrawWidth", "")
 {
     Image *const img1 = new Image(32, 32);
     Image *const img2 = new Image(32, 32);
@@ -538,7 +539,7 @@ TEST_CASE("MapLayer getEmptyTileDrawWidth")
 }
 
 
-TEST_CASE("MapLayer updateCache")
+TEST_CASE("MapLayer updateCache", "")
 {
     Image *const img1 = new Image(32, 32);
     Image *const img2 = new Image(32, 32);
@@ -902,7 +903,7 @@ TEST_CASE("MapLayer updateCache")
     delete img3;
 }
 
-TEST_CASE("MapLayer updateConditionTiles")
+TEST_CASE("MapLayer updateConditionTiles", "")
 {
     Image *const img1 = new Image(32, 32);
     Map *map = nullptr;
@@ -1095,7 +1096,7 @@ TEST_CASE("MapLayer updateConditionTiles")
     delete img1;
 }
 
-TEST_CASE("MapLayer draw")
+TEST_CASE("MapLayer draw", "")
 {
     Image *const img1 = new Image(32, 32);
     Image *const img2 = new Image(32, 32);
@@ -1645,8 +1646,10 @@ TEST_CASE("MapLayer draw")
     delete mock;
 }
 
-TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
+TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     logger = new Logger;
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
@@ -1997,8 +2000,10 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)")
     delete2(logger);
 }
 
-TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
+TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     logger = new Logger;
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
@@ -2355,8 +2360,10 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)")
     delete2(logger);
 }
 
-TEST_CASE("MapLayer drawFringe")
+TEST_CASE("MapLayer drawFringe", "")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     logger = new Logger;
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);

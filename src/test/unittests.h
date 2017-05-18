@@ -21,6 +21,32 @@
 #ifndef UNITTESTS_H
 #define UNITTESTS_H
 
+#include "localconsts.h"
+
+#ifdef UNITTESTS_CATCH
 #include "test/catch.hpp"
+#endif  // UNITTESTS_CATCH
+
+#ifdef UNITTESTS_DOCTEST
+
+#ifdef __GNUC__
+#if GCC_VERSION >= 50000
+#define PRAGMA5(str) _Pragma(#str)
+#elif defined(__clang__)
+#define PRAGMA5(str) _Pragma(#str)
+#else  // GCC_VERSION > 50000
+#define PRAGMA5(str)
+#endif  // GCC_VERSION > 50000
+#endif  // __GNUC__
+
+PRAGMA5(GCC diagnostic push)
+PRAGMA5(GCC diagnostic ignored "-Wsuggest-override")
+#include "test/doctest.h"
+PRAGMA5(GCC diagnostic pop)
+
+#undef TEST_CASE
+#define TEST_CASE(name, tags) DOCTEST_TEST_CASE(tags " " name)
+#define SECTION(name) DOCTEST_SUBCASE(name)
+#endif  // UNITTESTS_DOCTEST
 
 #endif  // UNITTESTS_H

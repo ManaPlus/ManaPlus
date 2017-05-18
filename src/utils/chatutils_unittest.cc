@@ -38,6 +38,7 @@
 
 #include "utils/chatutils.h"
 #include "utils/delete2.h"
+#include "utils/env.h"
 
 #include "render/sdlgraphics.h"
 
@@ -51,7 +52,7 @@
 
 #include "debug.h"
 
-TEST_CASE("chatutils leak test1")
+TEST_CASE("chatutils leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -60,8 +61,10 @@ TEST_CASE("chatutils leak test1")
     delete2(logger);
 }
 
-TEST_CASE("chatutils replaceVars")
+TEST_CASE("chatutils replaceVars", "")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     client = new Client;
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
@@ -262,7 +265,7 @@ TEST_CASE("chatutils replaceVars")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("chatutils textToMe")
+TEST_CASE("chatutils textToMe", "")
 {
     REQUIRE(textToMe("") == "**");
     REQUIRE(textToMe("123") == "*123*");
@@ -270,7 +273,7 @@ TEST_CASE("chatutils textToMe")
     REQUIRE(textToMe("test line") == "*test line*");
 }
 
-TEST_CASE("chatutils leak test2")
+TEST_CASE("chatutils leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

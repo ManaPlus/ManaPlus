@@ -33,9 +33,13 @@
 
 #include <SDL_rwops.h>
 
+#ifndef UNITTESTS_CATCH
+#include <algorithm>
+#endif  // UNITTESTS_CATCH
+
 #include "debug.h"
 
-TEST_CASE("VirtFs1 getEntries")
+TEST_CASE("VirtFs1 getEntries", "")
 {
     VirtFs::init(".");
     REQUIRE(VirtFs::getEntries().empty());
@@ -43,14 +47,14 @@ TEST_CASE("VirtFs1 getEntries")
     VirtFs::deinit();
 }
 
-TEST_CASE("VirtFs1 getBaseDir")
+TEST_CASE("VirtFs1 getBaseDir", "")
 {
     VirtFs::init(".");
     REQUIRE(VirtFs::getBaseDir() != nullptr);
     VirtFs::deinit();
 }
 
-TEST_CASE("VirtFs1 mountDir")
+TEST_CASE("VirtFs1 mountDir", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -491,7 +495,7 @@ TEST_CASE("VirtFs1 mountDir")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 mountZip")
+TEST_CASE("VirtFs1 mountZip", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -788,7 +792,7 @@ TEST_CASE("VirtFs1 mountZip")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 unmount")
+TEST_CASE("VirtFs1 unmount", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -1158,7 +1162,7 @@ TEST_CASE("VirtFs1 unmount")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 exists1")
+TEST_CASE("VirtFs1 exists1", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -1218,7 +1222,7 @@ TEST_CASE("VirtFs1 exists1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 exists2")
+TEST_CASE("VirtFs1 exists2", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -1315,7 +1319,7 @@ static void removeTemp(StringVect &restrict list)
     }
 }
 
-TEST_CASE("VirtFs1 getRealDir1")
+TEST_CASE("VirtFs1 getRealDir1", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -1397,7 +1401,7 @@ TEST_CASE("VirtFs1 getRealDir1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getRealDir2")
+TEST_CASE("VirtFs1 getRealDir2", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -1440,7 +1444,7 @@ TEST_CASE("VirtFs1 getRealDir2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getRealDir3")
+TEST_CASE("VirtFs1 getRealDir3", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -1525,7 +1529,7 @@ static bool inList(StringVect list,
     return false;
 }
 
-TEST_CASE("VirtFs1 enumerateFiles1")
+TEST_CASE("VirtFs1 enumerateFiles1", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1570,7 +1574,7 @@ TEST_CASE("VirtFs1 enumerateFiles1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 enumerateFiles2")
+TEST_CASE("VirtFs1 enumerateFiles2", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1591,7 +1595,7 @@ TEST_CASE("VirtFs1 enumerateFiles2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 enumerateFiles3")
+TEST_CASE("VirtFs1 enumerateFiles3", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1616,7 +1620,7 @@ TEST_CASE("VirtFs1 enumerateFiles3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles4")
+TEST_CASE("VirtFsZip enumerateFiles4", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1641,7 +1645,7 @@ TEST_CASE("VirtFsZip enumerateFiles4")
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles5")
+TEST_CASE("VirtFsZip enumerateFiles5", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1677,7 +1681,7 @@ TEST_CASE("VirtFsZip enumerateFiles5")
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles6")
+TEST_CASE("VirtFsZip enumerateFiles6", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1701,7 +1705,7 @@ TEST_CASE("VirtFsZip enumerateFiles6")
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles7")
+TEST_CASE("VirtFsZip enumerateFiles7", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1728,7 +1732,7 @@ TEST_CASE("VirtFsZip enumerateFiles7")
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles8")
+TEST_CASE("VirtFsZip enumerateFiles8", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1760,7 +1764,7 @@ TEST_CASE("VirtFsZip enumerateFiles8")
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles9")
+TEST_CASE("VirtFsZip enumerateFiles9", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1790,7 +1794,7 @@ TEST_CASE("VirtFsZip enumerateFiles9")
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles10")
+TEST_CASE("VirtFsZip enumerateFiles10", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1817,7 +1821,7 @@ TEST_CASE("VirtFsZip enumerateFiles10")
     delete2(logger);
 }
 
-TEST_CASE("VirtFsZip enumerateFiles11")
+TEST_CASE("VirtFsZip enumerateFiles11", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1844,7 +1848,7 @@ TEST_CASE("VirtFsZip enumerateFiles11")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 enumerateFiles12")
+TEST_CASE("VirtFs1 enumerateFiles12", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1867,7 +1871,7 @@ TEST_CASE("VirtFs1 enumerateFiles12")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 enumerateFiles13")
+TEST_CASE("VirtFs1 enumerateFiles13", "")
 {
     VirtFs::init(".");
     logger = new Logger;
@@ -1891,7 +1895,7 @@ TEST_CASE("VirtFs1 enumerateFiles13")
 }
 
 
-TEST_CASE("VirtFs1 isDirectory1")
+TEST_CASE("VirtFs1 isDirectory1", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -1955,7 +1959,7 @@ TEST_CASE("VirtFs1 isDirectory1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 isDirectory2")
+TEST_CASE("VirtFs1 isDirectory2", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2040,7 +2044,7 @@ TEST_CASE("VirtFs1 isDirectory2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 isDirectory3")
+TEST_CASE("VirtFs1 isDirectory3", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2072,7 +2076,7 @@ TEST_CASE("VirtFs1 isDirectory3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 isDirectory4")
+TEST_CASE("VirtFs1 isDirectory4", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2109,7 +2113,7 @@ TEST_CASE("VirtFs1 isDirectory4")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 openRead1")
+TEST_CASE("VirtFs1 openRead1", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2173,7 +2177,7 @@ TEST_CASE("VirtFs1 openRead1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 openRead2")
+TEST_CASE("VirtFs1 openRead2", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2252,7 +2256,7 @@ TEST_CASE("VirtFs1 openRead2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 openRead3")
+TEST_CASE("VirtFs1 openRead3", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2330,7 +2334,7 @@ TEST_CASE("VirtFs1 openRead3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 openRead4")
+TEST_CASE("VirtFs1 openRead4", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2411,7 +2415,7 @@ TEST_CASE("VirtFs1 openRead4")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 permitLinks")
+TEST_CASE("VirtFs1 permitLinks", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2450,7 +2454,7 @@ TEST_CASE("VirtFs1 permitLinks")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 read1")
+TEST_CASE("VirtFs1 read1", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2492,7 +2496,7 @@ TEST_CASE("VirtFs1 read1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 read2")
+TEST_CASE("VirtFs1 read2", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2623,7 +2627,7 @@ TEST_CASE("VirtFs1 read2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 loadFile1")
+TEST_CASE("VirtFs1 loadFile1", "")
 {
     VirtFs::init(".");
     int fileSize = 0;
@@ -2647,7 +2651,7 @@ TEST_CASE("VirtFs1 loadFile1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 loadFile2")
+TEST_CASE("VirtFs1 loadFile2", "")
 {
     VirtFs::init(".");
     int fileSize = 0;
@@ -2685,7 +2689,7 @@ TEST_CASE("VirtFs1 loadFile2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 loadFile3")
+TEST_CASE("VirtFs1 loadFile3", "")
 {
     VirtFs::init(".");
     int fileSize = 0;
@@ -2711,7 +2715,7 @@ TEST_CASE("VirtFs1 loadFile3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 loadFile4")
+TEST_CASE("VirtFs1 loadFile4", "")
 {
     VirtFs::init(".");
     int fileSize = 0;
@@ -2751,7 +2755,7 @@ TEST_CASE("VirtFs1 loadFile4")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 rwops_read1")
+TEST_CASE("VirtFs1 rwops_read1", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2793,7 +2797,7 @@ TEST_CASE("VirtFs1 rwops_read1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 rwops_read2")
+TEST_CASE("VirtFs1 rwops_read2", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -2966,7 +2970,7 @@ TEST_CASE("VirtFs1 rwops_read2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 rwops_read3")
+TEST_CASE("VirtFs1 rwops_read3", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3139,7 +3143,7 @@ TEST_CASE("VirtFs1 rwops_read3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getFiles zip1")
+TEST_CASE("VirtFs1 getFiles zip1", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3170,7 +3174,7 @@ TEST_CASE("VirtFs1 getFiles zip1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getFiles zip2")
+TEST_CASE("VirtFs1 getFiles zip2", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3201,7 +3205,7 @@ TEST_CASE("VirtFs1 getFiles zip2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getDirs1")
+TEST_CASE("VirtFs1 getDirs1", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3228,7 +3232,7 @@ TEST_CASE("VirtFs1 getDirs1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getDirs2")
+TEST_CASE("VirtFs1 getDirs2", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3276,7 +3280,7 @@ TEST_CASE("VirtFs1 getDirs2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getDirs3")
+TEST_CASE("VirtFs1 getDirs3", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3305,7 +3309,7 @@ TEST_CASE("VirtFs1 getDirs3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getDirs4")
+TEST_CASE("VirtFs1 getDirs4", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3337,7 +3341,7 @@ TEST_CASE("VirtFs1 getDirs4")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getFilesWithDir1")
+TEST_CASE("VirtFs1 getFilesWithDir1", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3375,7 +3379,7 @@ TEST_CASE("VirtFs1 getFilesWithDir1")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getFilesWithDir2")
+TEST_CASE("VirtFs1 getFilesWithDir2", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3425,7 +3429,7 @@ TEST_CASE("VirtFs1 getFilesWithDir2")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getFilesWithDir3")
+TEST_CASE("VirtFs1 getFilesWithDir3", "")
 {
     VirtFs::init(".");
     logger = new Logger();
@@ -3457,7 +3461,7 @@ TEST_CASE("VirtFs1 getFilesWithDir3")
     delete2(logger);
 }
 
-TEST_CASE("VirtFs1 getFilesWithDir4")
+TEST_CASE("VirtFs1 getFilesWithDir4", "")
 {
     VirtFs::init(".");
     logger = new Logger();

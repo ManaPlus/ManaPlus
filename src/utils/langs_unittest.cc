@@ -27,7 +27,7 @@
 
 #include "debug.h"
 
-TEST_CASE("Langs getLang")
+TEST_CASE("Langs getLang", "")
 {
     LangVect langs;
 
@@ -68,7 +68,7 @@ TEST_CASE("Langs getLang")
     REQUIRE(langs[1] == "ru");
 }
 
-TEST_CASE("Langs getLangSimple")
+TEST_CASE("Langs getLangSimple", "")
 {
     config.setValue("lang", "C");
     REQUIRE(getLangSimple() == "C");
@@ -91,7 +91,7 @@ TEST_CASE("Langs getLangSimple")
     REQUIRE(getLangSimple() == "ru_RU.UTF-8");
 }
 
-TEST_CASE("Langs getLangShort")
+TEST_CASE("Langs getLangShort", "")
 {
     config.setValue("lang", "C");
     REQUIRE(getLangShort() == "C");

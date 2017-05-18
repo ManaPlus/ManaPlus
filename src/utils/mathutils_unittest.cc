@@ -24,7 +24,7 @@
 
 #include "debug.h"
 
-TEST_CASE("MathUtils powerOfTwo")
+TEST_CASE("MathUtils powerOfTwo", "")
 {
     REQUIRE(powerOfTwo(0) == 1);
     REQUIRE(powerOfTwo(1) == 1);
@@ -95,7 +95,7 @@ TEST_CASE("MathUtils powerOfTwo")
     REQUIRE(powerOfTwo(1000000) == 1048576);
 }
 
-TEST_CASE("MathUtils tests fastSqrtInt")
+TEST_CASE("MathUtils tests fastSqrtInt", "")
 {
     for (int f = 0; f < 1005; f ++)
         REQUIRE(fastSqrtInt(f) == CAST_S32(sqrt(f)));

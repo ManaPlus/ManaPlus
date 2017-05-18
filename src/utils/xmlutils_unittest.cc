@@ -30,6 +30,7 @@
 #include "gui/gui.h"
 
 #include "utils/delete2.h"
+#include "utils/env.h"
 #include "utils/xmlutils.h"
 
 #include "render/sdlgraphics.h"
@@ -40,7 +41,7 @@
 
 #include "debug.h"
 
-TEST_CASE("xmlutils leak test1")
+TEST_CASE("xmlutils leak test1", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);
@@ -49,8 +50,10 @@ TEST_CASE("xmlutils leak test1")
     delete2(logger);
 }
 
-TEST_CASE("xmlutils readXmlIntVector 1")
+TEST_CASE("xmlutils readXmlIntVector 1", "")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     client = new Client;
     XML::initXML();
     logger = new Logger();
@@ -94,8 +97,10 @@ TEST_CASE("xmlutils readXmlIntVector 1")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("xmlutils readXmlStringMap 1")
+TEST_CASE("xmlutils readXmlStringMap 1", "")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     client = new Client;
     XML::initXML();
     logger = new Logger();
@@ -138,8 +143,10 @@ TEST_CASE("xmlutils readXmlStringMap 1")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("xmlutils readXmlIntMap 1")
+TEST_CASE("xmlutils readXmlIntMap 1", "")
 {
+    setEnv("SDL_VIDEODRIVER", "dummy");
+
     client = new Client;
     XML::initXML();
     logger = new Logger();
@@ -186,7 +193,7 @@ TEST_CASE("xmlutils readXmlIntMap 1")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("xmlutils leak test2")
+TEST_CASE("xmlutils leak test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

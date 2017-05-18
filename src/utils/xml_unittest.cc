@@ -47,7 +47,7 @@
 
 #include "debug.h"
 
-TEST_CASE("xml test1")
+TEST_CASE("xml test1", "")
 {
     logger = new Logger();
     REQUIRE(client == nullptr);
@@ -57,7 +57,7 @@ TEST_CASE("xml test1")
     delete2(logger);
 }
 
-TEST_CASE("xml doc")
+TEST_CASE("xml doc", "")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
 
@@ -389,7 +389,7 @@ TEST_CASE("xml doc")
 //    VirtFs::deinit();
 }
 
-TEST_CASE("xml test2")
+TEST_CASE("xml test2", "")
 {
     logger = new Logger();
     REQUIRE(gui == nullptr);

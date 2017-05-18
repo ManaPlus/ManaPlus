@@ -1952,6 +1952,12 @@ endif
 manaplustests_CXXFLAGS = ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
 manaplustests_LDFLAGS = 
+if ENABLE_UNITTESTS_CATCH
+manaplustests_CXXFLAGS += -DUNITTESTS_CATCH
+endif
+if ENABLE_UNITTESTS_DOCTEST
+manaplustests_CXXFLAGS += -DUNITTESTS_DOCTEST
+endif
 if ENABLE_PUGIXML
 manaplustests_CXXFLAGS += -DENABLE_PUGIXML
 endif
@@ -1987,7 +1993,6 @@ manaplustests_CXXFLAGS += -DOPENGLERRORS
 endif
 
 manaplustests_SOURCES = ${SRC} \
-	      test/catch.hpp \
 	      test/unittests.h \
 	      enums/render/mockdrawtype.h \
 	      render/mockdrawitem.h \
@@ -1996,6 +2001,15 @@ manaplustests_SOURCES = ${SRC} \
 	      enums/enums_unittest.cc \
 	      utils/dumplibs_unittest.cc \
 	      utils/checkutils_unittest.cc
+
+if ENABLE_UNITTESTS_CATCH
+manaplustests_SOURCES += \
+	      test/catch.hpp
+endif
+if ENABLE_UNITTESTS_DOCTEST
+manaplustests_SOURCES += \
+	      test/doctest.h
+endif
 
 if MINGW
 manaplustests_SOURCES += manaplus.rc
