@@ -228,6 +228,9 @@ void Dirs::mountDataDir()
 
 #if defined __native_client__
     VirtFs::mountZip("/http/data.zip", Append_false);
+    VirtFs::mountZip2("/http/data.zip",
+        "perserver/default",
+        Append_false);
 #endif  // defined __native_client__
 
 #ifndef WIN32
