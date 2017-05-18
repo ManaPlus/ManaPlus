@@ -8,7 +8,6 @@ src/actormanager.cpp
 src/being/being.cpp
 src/being/localplayer.cpp
 src/being/playerrelations.cpp
-src/catch.hpp
 src/client.cpp
 src/commandline.cpp
 src/configmanager.cpp
@@ -188,6 +187,8 @@ src/resources/modinfo.cpp
 src/resources/notifications.h
 src/resources/skill/skillinfo.cpp
 src/resources/skill/skilltypelist.h
+src/test/catch.hpp
+src/test/doctest.h
 src/utils/booleanoptions.h
 src/utils/gettext.h
 src/utils/stringutils.cpp
