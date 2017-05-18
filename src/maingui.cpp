@@ -50,7 +50,7 @@
 
 #ifdef UNITTESTS
 #define CATCH_CONFIG_RUNNER
-#include "catch.hpp"
+#include "test/catch.hpp"
 #else  // UNITTESTS
 #include "utils/xml.h"
 #endif  // UNITTESTS

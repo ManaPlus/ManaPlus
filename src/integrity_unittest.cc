@@ -18,7 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "catch.hpp"
+#include "test/unittests.h"
+
 #include "client.h"
 #include "logger.h"
 #include "graphicsmanager.h"

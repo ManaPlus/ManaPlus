@@ -18,9 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/mathutils.h"
+#include "test/unittests.h"
 
-#include "catch.hpp"
+#include "utils/mathutils.h"
 
 #include "debug.h"
 

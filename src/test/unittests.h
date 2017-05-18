@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2015-2017  The ManaPlus Developers
+ *  Copyright (C) 2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,16 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "test/unittests.h"
+#ifndef UNITTESTS_H
+#define UNITTESTS_H
 
-#include "enums/being/gender.h"
+#include "test/catch.hpp"
 
-#include "debug.h"
-
-TEST_CASE("Gender", "Enums")
-{
-    REQUIRE(CAST_S32(Gender::FEMALE) == 1);
-    REQUIRE(Gender::FEMALE == static_cast<GenderT>(1));
-    REQUIRE(CAST_S32(Gender::MALE) == 0);
-    REQUIRE(Gender::MALE == static_cast<GenderT>(0));
-}
+#endif  // UNITTESTS_H

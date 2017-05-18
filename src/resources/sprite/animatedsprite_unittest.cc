@@ -18,9 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/sprite/animatedsprite.h"
+#include "test/unittests.h"
 
-#include "catch.hpp"
 #include "configuration.h"
 #include "configmanager.h"
 #include "client.h"
@@ -43,6 +42,8 @@
 #include "resources/animation/animation.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
+
+#include "resources/sprite/animatedsprite.h"
 
 #include "utils/env.h"
 #include "utils/delete2.h"

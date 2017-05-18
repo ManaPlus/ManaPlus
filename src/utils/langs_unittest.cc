@@ -18,12 +18,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/langs.h"
+#include "test/unittests.h"
 
-#include "catch.hpp"
 #include "configuration.h"
 
 #include "utils/env.h"
+#include "utils/langs.h"
 
 #include "debug.h"
 

@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "catch.hpp"
+#include "test/unittests.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"

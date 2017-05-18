@@ -987,7 +987,6 @@ SRC = ${BASE_SRC} \
 	      guild.h \
 	      spellmanager.cpp \
 	      spellmanager.h \
-	      catch.hpp \
 	      chatlogger.cpp \
 	      chatlogger.h \
 	      gui/shortcut/shortcutbase.cpp \
@@ -1988,6 +1987,8 @@ manaplustests_CXXFLAGS += -DOPENGLERRORS
 endif
 
 manaplustests_SOURCES = ${SRC} \
+	      test/catch.hpp \
+	      test/unittests.h \
 	      enums/render/mockdrawtype.h \
 	      render/mockdrawitem.h \
 	      render/mockgraphics.cc \

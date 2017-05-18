@@ -18,10 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "fs/files.h"
+#include "test/unittests.h"
 
-#include "catch.hpp"
 #include "logger.h"
+
+#include "fs/files.h"
 
 #include "fs/virtfs/fs.h"
 #include "fs/virtfs/tools.h"

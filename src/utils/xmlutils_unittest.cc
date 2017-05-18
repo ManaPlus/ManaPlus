@@ -18,9 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "utils/xmlutils.h"
+#include "test/unittests.h"
 
-#include "catch.hpp"
 #include "client.h"
 #include "graphicsmanager.h"
 
@@ -31,6 +30,7 @@
 #include "gui/gui.h"
 
 #include "utils/delete2.h"
+#include "utils/xmlutils.h"
 
 #include "render/sdlgraphics.h"
 
