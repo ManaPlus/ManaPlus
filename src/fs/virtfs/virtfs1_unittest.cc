@@ -1612,7 +1612,6 @@ TEST_CASE("VirtFs1 enumerateFiles3", "")
     VirtFs::List *list = nullptr;
 
     list = VirtFs::enumerateFiles("/");
-    const size_t sz = list->names.size();
     REQUIRE(inList(list, "file1.txt"));
     REQUIRE(inList(list, "file2.txt"));
     VirtFs::freeList(list);

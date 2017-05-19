@@ -104,24 +104,33 @@ TEST_CASE("CheckUtils", "")
 
     SECTION("failFalse")
     {
-        REQUIRE_THROWS(failFalse(false) == false);
+PRAGMA4(GCC diagnostic push)
+PRAGMA4(GCC diagnostic ignored "-Wunused-value")
+        REQUIRE_THROWS(failFalse(false));
         REQUIRE(failFalse(true) == true);
-        REQUIRE_THROWS(reportFalse(false) == false);
+        REQUIRE_THROWS(reportFalse(false));
         REQUIRE(reportFalse(true) == true);
+PRAGMA4(GCC diagnostic pop)
     }
 
     SECTION("failTrue")
     {
+PRAGMA4(GCC diagnostic push)
+PRAGMA4(GCC diagnostic ignored "-Wunused-value")
         REQUIRE(failTrue(false) == false);
-        REQUIRE_THROWS(failTrue(true) == true);
+        REQUIRE_THROWS(failTrue(true));
         REQUIRE(reportTrue(false) == false);
-        REQUIRE_THROWS(reportTrue(true) == true);
+        REQUIRE_THROWS(reportTrue(true));
+PRAGMA4(GCC diagnostic pop)
     }
 
     SECTION("failAlways")
     {
-        REQUIRE_THROWS(testFailAlways1() == true);
-        REQUIRE_THROWS(testFailAlways2() == true);
+PRAGMA4(GCC diagnostic push)
+PRAGMA4(GCC diagnostic ignored "-Wunused-value")
+        REQUIRE_THROWS(testFailAlways1());
+        REQUIRE_THROWS(testFailAlways2());
+PRAGMA4(GCC diagnostic pop)
     }
 
     SECTION("returnFalseV")

@@ -1118,7 +1118,6 @@ TEST_CASE("MapLayer draw", "")
             0);
         layer->setTile(0, 0, img1);
         map->addLayer(layer);
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(1, 1);
 
         layer->draw(mock,
@@ -1167,7 +1166,6 @@ TEST_CASE("MapLayer draw", "")
             0);
         layer->setTile(0, 0, img1);
         map->addLayer(layer);
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(2, 1);
 
         layer->draw(mock,
@@ -1218,7 +1216,6 @@ TEST_CASE("MapLayer draw", "")
         layer->setTile(0, 0, img1);
         layer->setTile(1, 0, img2);
         map->addLayer(layer);
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(2, 1);
 
         layer->draw(mock,
@@ -1265,7 +1262,6 @@ TEST_CASE("MapLayer draw", "")
         layer->setTile(0, 0, img1);
         layer->setTile(1, 0, img1);
         map->addLayer(layer);
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(2, 1);
 
         layer->draw(mock,
@@ -1308,7 +1304,6 @@ TEST_CASE("MapLayer draw", "")
         layer->setTile(0, 0, img1);
         layer->setTile(2, 0, img1);
         map->addLayer(layer);
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(3, 1);
 
         layer->draw(mock,
@@ -1355,7 +1350,6 @@ TEST_CASE("MapLayer draw", "")
         layer->setTile(0, 0, img1);
         layer->setTile(1, 0, img1);
         map->addLayer(layer);
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(3, 1);
 
         layer->draw(mock,
@@ -1399,7 +1393,6 @@ TEST_CASE("MapLayer draw", "")
         layer->setTile(1, 0, img1);
         layer->setTile(2, 0, img2);
         map->addLayer(layer);
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(3, 1);
 
         layer->draw(mock,
@@ -1516,7 +1509,6 @@ TEST_CASE("MapLayer draw", "")
         layer->setTile(16, 10, img1);
         layer->setTile(17, 10, img1);
         map->addLayer(layer);
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(maxX, maxY);
 
         layer->draw(mock,
@@ -1684,7 +1676,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getSpecialLayer();
 
         layer->drawSpecialLayer(mock,
@@ -1715,7 +1706,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getSpecialLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->updateCache();
@@ -1744,7 +1734,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getSpecialLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->updateCache();
@@ -1773,7 +1762,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getSpecialLayer();
         specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
         specialLayer->updateCache();
@@ -1802,7 +1790,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getSpecialLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
@@ -1835,7 +1822,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getSpecialLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
@@ -1868,7 +1854,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getSpecialLayer();
         specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
         specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
@@ -1901,7 +1886,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getSpecialLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->setTile(1, 0, MapItemType::ARROW_DOWN);
@@ -1940,7 +1924,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getSpecialLayer();
         specialLayer->setTile(0, 5, MapItemType::ARROW_UP);
         specialLayer->setTile(1, 5, MapItemType::ARROW_DOWN);
@@ -2038,7 +2021,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
 
         layer->drawSpecialLayer(mock,
@@ -2069,7 +2051,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->updateCache();
@@ -2098,7 +2079,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->updateCache();
@@ -2127,7 +2107,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
         const int *const cache = specialLayer->getCache();
         REQUIRE(cache[0] == 10000);
@@ -2162,7 +2141,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
@@ -2195,7 +2173,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
@@ -2228,7 +2205,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
         specialLayer->setTile(1, 0, MapItemType::ARROW_UP);
         specialLayer->setTile(2, 0, MapItemType::ARROW_UP);
@@ -2261,7 +2237,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         specialLayer->setTile(1, 0, MapItemType::ARROW_DOWN);
@@ -2300,7 +2275,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         specialLayer = map->getTempLayer();
         specialLayer->setTile(0, 5, MapItemType::ARROW_UP);
         specialLayer->setTile(1, 5, MapItemType::ARROW_DOWN);
@@ -2407,7 +2381,6 @@ TEST_CASE("MapLayer drawFringe", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(1, 1);
 
         layer->drawFringe(mock,
@@ -2461,7 +2434,6 @@ TEST_CASE("MapLayer drawFringe", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(2, 1);
 
         layer->drawFringe(mock,
@@ -2517,7 +2489,6 @@ TEST_CASE("MapLayer drawFringe", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(2, 1);
 
         layer->drawFringe(mock,
@@ -2568,7 +2539,6 @@ TEST_CASE("MapLayer drawFringe", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(2, 1);
 
         layer->drawFringe(mock,
@@ -2615,7 +2585,6 @@ TEST_CASE("MapLayer drawFringe", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(3, 1);
 
         layer->drawFringe(mock,
@@ -2666,7 +2635,6 @@ TEST_CASE("MapLayer drawFringe", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(3, 1);
 
         layer->drawFringe(mock,
@@ -2714,7 +2682,6 @@ TEST_CASE("MapLayer drawFringe", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(3, 1);
 
         layer->drawFringe(mock,
@@ -2839,7 +2806,6 @@ TEST_CASE("MapLayer drawFringe", "")
         map->addLayer(layer);
         layer->setSpecialLayer(map->getSpecialLayer());
         layer->setTempLayer(map->getTempLayer());
-        TileInfo *const tiles = layer->getTiles();
         layer->updateCache(maxX, maxY);
 
         layer->drawFringe(mock,
@@ -3003,7 +2969,6 @@ TEST_CASE("MapLayer drawFringe", "")
         SpecialLayer *const tempLayer = map->getTempLayer();
         layer->setSpecialLayer(specialLayer);
         layer->setTempLayer(tempLayer);
-        TileInfo *const tiles = layer->getTiles();
         specialLayer->setTile(1, 10, MapItemType::ARROW_UP);
         specialLayer->setTile(10, 10, MapItemType::ARROW_DOWN);
         specialLayer->updateCache();
@@ -3136,7 +3101,6 @@ TEST_CASE("MapLayer drawFringe", "")
         SpecialLayer *const tempLayer = map->getTempLayer();
         layer->setSpecialLayer(specialLayer);
         layer->setTempLayer(tempLayer);
-        TileInfo *const tiles = layer->getTiles();
         specialLayer->setTile(0, 10, MapItemType::ARROW_UP);
         specialLayer->setTile(10, 10, MapItemType::ARROW_DOWN);
         specialLayer->setTile(90, 10, MapItemType::ARROW_DOWN);

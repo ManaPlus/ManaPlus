@@ -77,9 +77,6 @@ namespace
                 return nullptr;
             }
 
-            const TestLoader *const rl
-                = static_cast<const TestLoader *const>(v);
-
             Resource *const res = new TestResource();
             BLOCK_END("TestLoader::load")
             return res;
