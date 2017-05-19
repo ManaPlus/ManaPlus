@@ -3333,10 +3333,10 @@ deheader_h:
   <<: *job-push
   <<: *job-deheader_shared
 
-deheader_cc:
+deheader_catch_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DUNITTESTS -DUNITTESTS_CATCH -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -3825,10 +3825,10 @@ deheader_sdl2_h:
   <<: *job-push
   <<: *job-deheader_sdl2_shared
 
-deheader_sdl2_cc:
+deheader_sdl2_catch_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DUNITTESTS -DUNITTESTS_CATCH -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4317,10 +4317,10 @@ deheader_withoutopengl_h:
   <<: *job-push
   <<: *job-deheader_shared
 
-deheader_withoutopengl_cc:
+deheader_withoutopengl_catch_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DUNITTESTS -DUNITTESTS_CATCH -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
@@ -4809,10 +4809,10 @@ deheader_sdl2_withoutopengl_h:
   <<: *job-push
   <<: *job-deheader_sdl2_shared
 
-deheader_sdl2_withoutopengl_cc:
+deheader_sdl2_withoutopengl_catch_cc:
   stage: build
   script:
-  - export FLAGS="-DUNITTESTS -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DUNITTESTS -DUNITTESTS_CATCH -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f -name "*.cc" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
