@@ -121,6 +121,23 @@ gcc-6:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               gdb valgrind netcat-openbsd
 
+gcc-6_default:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/any_compiler.sh --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LOGFILE: gcc6.log
+    CC: gcc-6
+    CXX: g++-6
+    CXXFLAGS: "-Wall -Wextra"
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd
+
 gcc-4.4:
   stage: prebuild
   script:
@@ -1936,6 +1953,63 @@ gcc-4.9_sdl2:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               gdb valgrind netcat-openbsd
+
+gcc-6_default_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/any_compiler.sh --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    LOGFILE: gcc6.log
+    CC: gcc-6
+    CXX: g++-6
+    CXXFLAGS: "-Wall -Wextra"
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd
+  tags:
+    - docker
+
+gcc-5_default:
+  stage: build
+  script:
+  - ./tools/ci/jobs/any_compiler.sh --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LOGFILE: gcc5.log
+    CC: gcc-5
+    CXX: g++-5
+    CXXFLAGS: "-Wall -Wextra"
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd
+
+gcc-5_default_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/any_compiler.sh --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    LOGFILE: gcc5.log
+    CC: gcc-5
+    CXX: g++-5
+    CXXFLAGS: "-Wall -Wextra"
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd
+  tags:
+    - docker
 
 gcc-5_h_eathena_tmwa:
   stage: build
