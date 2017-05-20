@@ -173,7 +173,7 @@ namespace FsDir
                     std::string dirName A_UNUSED,
                     std::string &realDir)
     {
-        DirEntry *const dirEntry = static_cast<DirEntry*>(entry);
+        const DirEntry *const dirEntry = static_cast<const DirEntry*>(entry);
         if (Files::existsLocal(dirEntry->rootSubDir + filename))
         {
             realDir = dirEntry->userDir;
