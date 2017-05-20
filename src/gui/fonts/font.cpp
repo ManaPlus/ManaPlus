@@ -70,6 +70,9 @@
 #include "fs/paths.h"
 
 #include "fs/virtfs/tools.h"
+#ifdef USE_SDL2
+#include "fs/virtfs/rwops.h"
+#endif  // USE_SDL2
 
 #include "gui/fonts/textchunk.h"
 
@@ -187,13 +190,20 @@ Font::~Font()
 TTF_Font *Font::openFont(const char *const name,
                          const int size)
 {
-// disabled for now because some systems can't use it. why?
-// #ifdef USE_SDL2
-//    SDL_RWops *const rw = VirtFs::rwopsOpenRead(name);
-//    if (!rw)
-//        return nullptr;
-//    return TTF_OpenFontIndexRW(rw, 1, size, 0);
-// #else
+#ifdef USE_SDL2
+    SDL_RWops *const rw = VirtFs::rwopsOpenRead(name);
+    if (rw)
+    {
+        logger->log("Loading virtfs font file: %s",
+            name);
+        return TTF_OpenFontIndexRW(rw, 1, size, 0);
+    }
+    else
+    {
+        reportAlways("Error: Loading virtfs font file: %s",
+            name);
+    }
+#endif
     const std::string path = VirtFs::getPath(name);
     if (Files::existsLocal(path) == false)
     {
@@ -208,7 +218,6 @@ TTF_Font *Font::openFont(const char *const name,
         path.c_str());
     return TTF_OpenFontIndex(path.c_str(),
         size, 0);
-// #endif
 }
 
 void Font::loadFont(std::string filename,
