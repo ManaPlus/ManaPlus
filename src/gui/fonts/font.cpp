@@ -198,11 +198,6 @@ TTF_Font *Font::openFont(const char *const name,
             name);
         return TTF_OpenFontIndexRW(rw, 1, size, 0);
     }
-    else
-    {
-        reportAlways("Error: Loading virtfs font file: %s",
-            name);
-    }
 #endif
     const std::string path = VirtFs::getPath(name);
     if (Files::existsLocal(path) == false)
