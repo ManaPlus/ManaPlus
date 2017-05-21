@@ -24,6 +24,7 @@
 
 #include "fs/virtfs/file.h"
 #include "fs/virtfs/fs.h"
+#include "fs/virtfs/fsfuncs.h"
 
 #include <SDL_rwops.h>
 
@@ -112,7 +113,9 @@ namespace FsZip
             return 0;
         File *const handle = static_cast<File *const>(
             rw->hidden.unknown.data1);
-        const int64_t rc = VirtFs::read(handle, ptr,
+
+        const int64_t rc = handle->funcs->read(handle,
+            ptr,
             CAST_U32(size),
             CAST_U32(maxnum));
         return CAST_S32(rc);
