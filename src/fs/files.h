@@ -42,9 +42,6 @@ namespace Files
     void copyVirtFsDir(const std::string &restrict inDir,
                        const std::string &restrict outDir);
 
-    void extractZip(const std::string &restrict zipName,
-                    const std::string &restrict inDir,
-                    const std::string &restrict outDir);
 #endif  // ANDROID __native_client__
 
     int renameFile(const std::string &restrict pFrom,

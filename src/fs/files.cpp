@@ -123,16 +123,6 @@ void Files::copyVirtFsDir(const std::string &restrict inDir,
     VirtFs::freeList(files);
 }
 
-void Files::extractZip(const std::string &restrict zipName,
-                       const std::string &restrict inDir,
-                       const std::string &restrict outDir)
-{
-    VirtFs::mountZip(zipName, Append_false);
-    copyVirtFsDir(inDir, outDir);
-    VirtFs::unmountZip(zipName);
-    remove(zipName.c_str());
-}
-
 #endif  // ANDROID __native_client__
 
 int Files::renameFile(const std::string &restrict srcName,

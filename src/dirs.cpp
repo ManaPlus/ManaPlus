@@ -179,7 +179,9 @@ void Dirs::extractDataDir()
 
     const std::string zipName = pathJoin(getenv("APPDIR"), "data.zip");
     const std::string dirName = pathJoin(getenv("APPDIR"), "data");
-    Files::extractZip(zipName, "data", dirName);
+    VirtFs::mountZip2(zipName,
+        "data",
+        Append_false);
     Files::extractLocale();
 #endif  // defined(ANDROID) && defined(USE_SDL2)
 }
