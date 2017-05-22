@@ -182,6 +182,9 @@ void Dirs::extractDataDir()
     VirtFs::mountZip2(zipName,
         "data",
         Append_false);
+    VirtFs::mountZip2(zipName,
+        "data/perserver/default",
+        Append_false);
     Files::extractLocale();
 #endif  // defined(ANDROID) && defined(USE_SDL2)
 }
