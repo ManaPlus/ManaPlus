@@ -64,6 +64,7 @@ namespace Actions
     decHandler(translate);
     decHandler(sendGuiKey);
     decHandler(sendMouseKey);
+    decHandler(sendChars);
 }  // namespace Actions
 
 #undef decHandler

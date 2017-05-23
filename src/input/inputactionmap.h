@@ -5654,6 +5654,12 @@ static const InputActionData inputActionData
         "mousekey|sendmousekey",
         UseArgs_true,
         Protected_true},
+    {"keyCommandSendChars",
+        defaultAction(&Actions::sendChars),
+        InputCondition::ENABLED,
+        "sendchar|sendchars|charsend",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

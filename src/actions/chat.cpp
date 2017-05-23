@@ -780,4 +780,23 @@ impHandler(sendMouseKey)
     return true;
 }
 
+impHandler(sendChars)
+{
+    if (!guiInput)
+        return false;
+
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+
+    const size_t sz = args.size();
+    for (size_t f = 0; f < sz; f ++)
+    {
+        guiInput->simulateKey(CAST_S32(args[f]),
+            InputAction::NO_VALUE);
+    }
+
+    return true;
+}
+
 }  // namespace Actions
