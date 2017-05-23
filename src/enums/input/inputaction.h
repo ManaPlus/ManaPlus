@@ -693,6 +693,7 @@ enumStart(InputAction)
     MOVE_PRIORITY_ATTACK_UP,
     MOVE_PRIORITY_ATTACK_DOWN,
     SHOW_ITEMS,
+    COMMAND_SEND_MOUSE_KEY,
     TOTAL
 }
 enumEnd(InputAction);

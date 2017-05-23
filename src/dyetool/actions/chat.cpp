@@ -63,5 +63,6 @@ impHandlerVoid(chatClipboard)
 impHandlerVoid(guildNotice)
 impHandlerVoid(translate)
 impHandlerVoid(sendGuiKey)
+impHandlerVoid(sendMouseKey)
 
 }  // namespace Actions

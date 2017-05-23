@@ -753,4 +753,31 @@ impHandler(sendGuiKey)
     return true;
 }
 
+impHandler(sendMouseKey)
+{
+    if (!guiInput)
+        return false;
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    StringVect pars;
+    if (!splitParameters(pars, args, " ,", '\"'))
+        return false;
+    const int sz = CAST_S32(pars.size());
+    if (sz != 3)
+        return false;
+
+    const int x = atoi(pars[0].c_str());
+    const int y = atoi(pars[1].c_str());
+    const int key1 = CAST_S32(MouseButton::LEFT);
+    const int key2 = CAST_S32(MouseButton::MIDDLE);
+    const int key = atoi(pars[2].c_str());
+    if (key < key1 || key > key2)
+        return false;
+    guiInput->simulateMouseClick(x,
+        y,
+        static_cast<MouseButtonT>(key));
+    return true;
+}
+
 }  // namespace Actions

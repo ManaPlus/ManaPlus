@@ -5648,6 +5648,12 @@ static const InputActionData inputActionData
         "showitems|items|itemsshow",
         UseArgs_true,
         Protected_true},
+    {"keyCommandSendMouseKey",
+        defaultAction(&Actions::sendMouseKey),
+        InputCondition::ENABLED,
+        "mousekey|sendmousekey",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

@@ -63,6 +63,7 @@ namespace Actions
     decHandler(guildNotice);
     decHandler(translate);
     decHandler(sendGuiKey);
+    decHandler(sendMouseKey);
 }  // namespace Actions
 
 #undef decHandler
