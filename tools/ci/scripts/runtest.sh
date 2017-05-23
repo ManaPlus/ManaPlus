@@ -119,9 +119,90 @@ send_command "/setup"
 send_command "/screenshot run4.png"
 imagessame run3.png run4.png
 
+# set focus to servers window
+send_command "/sendmousekey 400 300 1"
+send_command "/screenshot center_click.png"
+imagesdiff run4.png center_click.png
+
+send_command "/guikey -989 keyGUIHome"
+send_command "/screenshot run5.png"
+imagesdiff run4.png run5.png
+
+# open add server dialog
+send_command "/guikey -990 keyGUIInsert"
+send_command "/screenshot add_server_empty.png"
+imagesdiff run5.png add_server_empty.png
+
+send_command "/sendchars local"
+send_command "/screenshot add_server_name.png"
+imagesdiff add_server_empty.png add_server_name.png
+
+send_command "/guikey 9 keyGUITab"
+send_command "/screenshot add_server_adress1.png"
+imagesdiff add_server_name.png add_server_adress1.png
+
+send_command "/sendchars 127.0.0.1"
+send_command "/screenshot add_server_adress2.png"
+imagesdiff add_server_adress1.png add_server_adress2.png
+
+send_command "/guikey 9 keyGUITab"
+send_command "/screenshot add_server_port.png"
+imagesdiff add_server_adress2.png add_server_port.png
+
+send_command "/guikey 9 keyGUITab"
+send_command "/screenshot add_server_type.png"
+imagesdiff add_server_port.png add_server_type.png
+
+send_command "/guikey 9 keyGUITab"
+send_command "/screenshot add_server_description1.png"
+imagesdiff add_server_type.png add_server_description1.png
+
+send_command "/sendchars local server"
+send_command "/screenshot add_server_description2.png"
+imagesdiff add_server_description1.png add_server_description2.png
+
+send_command "/guikey 9 keyGUITab"
+send_command "/screenshot add_server_url1.png"
+imagesdiff add_server_description2.png add_server_url1.png
+
+send_command "/sendchars http://localhost/"
+send_command "/screenshot add_server_url2.png"
+imagesdiff add_server_url1.png add_server_url2.png
+
+send_command "/guikey 9 keyGUITab"
+send_command "/guikey 9 keyGUITab"
+send_command "/guikey 9 keyGUITab"
+send_command "/guikey 9 keyGUITab"
+
+# add new server
+send_command "/guikey 13 keyGUISelect2"
+send_command "/screenshot new_server.png"
+imagesdiff add_server_url2.png new_server.png
+
 # other comparisions
 imagesdiff downkey.png help.png
 imagesdiff help.png setup.png
+imagesdiff run5.png add_server_name.png
+imagesdiff run5.png add_server_adress1.png
+imagesdiff run5.png add_server_adress2.png
+imagesdiff run5.png add_server_port.png
+imagesdiff run5.png add_server_type.png
+imagesdiff run5.png add_server_description1.png
+imagesdiff run5.png add_server_description2.png
+imagesdiff run5.png add_server_url1.png
+imagesdiff run5.png add_server_url2.png
+imagesdiff run5.png new_server.png
+
+imagesdiff run4.png add_server_name.png
+imagesdiff run4.png add_server_adress1.png
+imagesdiff run4.png add_server_adress2.png
+imagesdiff run4.png add_server_port.png
+imagesdiff run4.png add_server_type.png
+imagesdiff run4.png add_server_description1.png
+imagesdiff run4.png add_server_description2.png
+imagesdiff run4.png add_server_url1.png
+imagesdiff run4.png add_server_url2.png
+imagesdiff run4.png new_server.png
 
 # final delay
 sleep 5s
