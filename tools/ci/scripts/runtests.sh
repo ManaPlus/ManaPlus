@@ -11,6 +11,7 @@ ulimit -c unlimited
 rm -rf core*
 
 export HOME="logs/home"
+rm -rf $HOME
 
 echo "clean config runs"
 n=0
@@ -33,6 +34,7 @@ echo "existing config runs"
 n=0
 while true; do
     echo "run test ${n}"
+    rm "${HOME}/.config/mana/mana/config.xml"
     ./tools/ci/scripts/runtest.sh
     if [ "$?" != 0 ]; then
         exit 1
