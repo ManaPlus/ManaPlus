@@ -641,9 +641,6 @@ SET(SRCS
     resources/dye/dyepalette.cpp
     resources/dye/dyepalette.h
     resources/dye/dyepalette_replaceacolor.cpp
-    resources/dye/dyepalette_replaceacolor_avx2.hpp
-    resources/dye/dyepalette_replaceacolor_default.hpp
-    resources/dye/dyepalette_replaceacolor_sse2.hpp
     resources/dye/dyepalette_replaceaoglcolor.cpp
     resources/dye/dyepalette_replaceaoglcolor_avx2.hpp
     resources/dye/dyepalette_replaceaoglcolor_default.hpp

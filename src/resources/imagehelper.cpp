@@ -110,7 +110,7 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         {
             const DyePalette *const pal = dye.getAPalete();
             if (pal)
-                pal->replaceAColor(pixels, surf->w * surf->h);
+                DYEPALETTEP(pal, AColor)(pixels, surf->w * surf->h);
             break;
         }
         case 0:

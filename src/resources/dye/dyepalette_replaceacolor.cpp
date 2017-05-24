@@ -33,20 +33,96 @@
 
 #include "debug.h"
 
-void DyePalette::replaceAColor(uint32_t *restrict pixels,
-                               const int bufSize) const restrict2
-{
-#ifdef SIMD_SUPPORTED
-    replaceAColorSimd(pixels, bufSize);
-#else  // SIMD_SUPPORTED
-#include "resources/dye/dyepalette_replaceacolor_default.hpp"
-#endif  // SIMD_SUPPORTED
-}
-
 void DyePalette::replaceAColorDefault(uint32_t *restrict pixels,
                                       const int bufSize) const restrict2
 {
-#include "resources/dye/dyepalette_replaceacolor_default.hpp"
+    std::vector<DyeColor>::const_iterator it_end = mColors.end();
+    const size_t sz = mColors.size();
+    if (!sz || !pixels)
+        return;
+    if (sz % 2)
+        -- it_end;
+
+#ifdef ENABLE_CILKPLUS
+    cilk_for (int ptr = 0; ptr < bufSize; ptr ++)
+    {
+        uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
+        const unsigned int data = pixels[ptr];
+
+        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        while (it != it_end)
+        {
+            const DyeColor &col = *it;
+            ++ it;
+            const DyeColor &col2 = *it;
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            const unsigned int coldata = (col.value[3] << 24U)
+                | (col.value[2] << 16U)
+                | (col.value[1] << 8U)
+                | (col.value[0]);
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+            const unsigned int coldata = (col.value[3])
+                | (col.value[2] << 8U)
+                | (col.value[1] << 16U) |
+                (col.value[0] << 24U);
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+            if (data == coldata)
+            {
+                p[3] = col2.value[0];
+                p[2] = col2.value[1];
+                p[1] = col2.value[2];
+                p[0] = col2.value[3];
+                break;
+            }
+
+            ++ it;
+        }
+    }
+
+#else  // ENABLE_CILKPLUS
+
+    for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
+         pixels != p_end;
+         ++pixels)
+    {
+        uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
+        const unsigned int data = *pixels;
+
+        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        while (it != it_end)
+        {
+            const DyeColor &col = *it;
+            ++ it;
+            const DyeColor &col2 = *it;
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            const unsigned int coldata = (col.value[3] << 24U)
+                | (col.value[2] << 16U)
+                | (col.value[1] << 8U)
+                | (col.value[0]);
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+            const unsigned int coldata = (col.value[3])
+                | (col.value[2] << 8U)
+                | (col.value[1] << 16U) |
+                (col.value[0] << 24U);
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+            if (data == coldata)
+            {
+                p[3] = col2.value[0];
+                p[2] = col2.value[1];
+                p[1] = col2.value[2];
+                p[0] = col2.value[3];
+                break;
+            }
+
+            ++ it;
+        }
+    }
+#endif  // ENABLE_CILKPLUS
 }
 
 #ifdef SIMD_SUPPORTED
@@ -59,52 +135,145 @@ static void print256(const char *const text, const __m256i &val)
 */
 
 __attribute__ ((target ("sse2")))
-void DyePalette::replaceAColorSimd(uint32_t *restrict pixels,
-                                   const int bufSize) const restrict2
-{
-#include "resources/dye/dyepalette_replaceacolor_sse2.hpp"
-}
-
-__attribute__ ((target ("avx2")))
-void DyePalette::replaceAColorSimd(uint32_t *restrict pixels,
-                                   const int bufSize) const restrict2
-{
-#include "resources/dye/dyepalette_replaceacolor_avx2.hpp"
-}
-
-__attribute__ ((target ("sse2")))
 void DyePalette::replaceAColorSse2(uint32_t *restrict pixels,
                                    const int bufSize) const restrict2
 {
-#include "resources/dye/dyepalette_replaceacolor_sse2.hpp"
+    std::vector<DyeColor>::const_iterator it_end = mColors.end();
+    const size_t sz = mColors.size();
+    if (!sz || !pixels)
+        return;
+    if (sz % 2)
+        -- it_end;
+    const int mod = bufSize % 4;
+    const int bufEnd = bufSize - mod;
+
+    for (int ptr = 0; ptr < bufEnd; ptr += 4)
+    {
+//        __m128i base = _mm_load_si128(reinterpret_cast<__m128i*>(pixels));
+        __m128i base = _mm_loadu_si128(reinterpret_cast<__m128i*>(
+            &pixels[ptr]));
+
+        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        while (it != it_end)
+        {
+            const DyeColor &col = *it;
+            ++ it;
+            const DyeColor &col2 = *it;
+
+            __m128i newMask = _mm_set1_epi32(col2.valueA);
+            __m128i cmpMask = _mm_set1_epi32(col.valueA);
+            __m128i cmpRes = _mm_cmpeq_epi32(base, cmpMask);
+            __m128i srcAnd = _mm_andnot_si128(cmpRes, base);
+            __m128i dstAnd = _mm_and_si128(cmpRes, newMask);
+            base = _mm_or_si128(srcAnd, dstAnd);
+
+            ++ it;
+        }
+//        _mm_store_si128(reinterpret_cast<__m128i*>(pixels), base);
+        _mm_storeu_si128(reinterpret_cast<__m128i*>(&pixels[ptr]), base);
+    }
+
+    // complete end without simd
+    for (int ptr = bufSize - mod; ptr < bufSize; ptr ++)
+    {
+        uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
+        const unsigned int data = pixels[ptr];
+
+        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        while (it != it_end)
+        {
+            const DyeColor &col = *it;
+            ++ it;
+            const DyeColor &col2 = *it;
+
+            const unsigned int coldata = (col.value[3]) |
+                (col.value[2] << 8U) |
+                (col.value[1] << 16U) |
+                (col.value[0] << 24U);
+
+            if (data == coldata)
+            {
+                p[3] = col2.value[0];
+                p[2] = col2.value[1];
+                p[1] = col2.value[2];
+                p[0] = col2.value[3];
+                break;
+            }
+
+            ++ it;
+        }
+    }
 }
 
 __attribute__ ((target ("avx2")))
 void DyePalette::replaceAColorAvx2(uint32_t *restrict pixels,
                                    const int bufSize) const restrict2
 {
-#include "resources/dye/dyepalette_replaceacolor_avx2.hpp"
+    std::vector<DyeColor>::const_iterator it_end = mColors.end();
+    const size_t sz = mColors.size();
+    if (!sz || !pixels)
+        return;
+    if (sz % 2)
+        -- it_end;
+    const int mod = bufSize % 8;
+    const int bufEnd = bufSize - mod;
+
+    for (int ptr = 0; ptr < bufEnd; ptr += 8)
+    {
+//        __m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
+        __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(
+            &pixels[ptr]));
+
+        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        while (it != it_end)
+        {
+            const DyeColor &col = *it;
+            ++ it;
+            const DyeColor &col2 = *it;
+
+            __m256i newMask = _mm256_set1_epi32(col2.valueA);
+            __m256i cmpMask = _mm256_set1_epi32(col.valueA);
+            __m256i cmpRes = _mm256_cmpeq_epi32(base, cmpMask);
+            __m256i srcAnd = _mm256_andnot_si256(cmpRes, base);
+            __m256i dstAnd = _mm256_and_si256(cmpRes, newMask);
+            base = _mm256_or_si256(srcAnd, dstAnd);
+
+            ++ it;
+        }
+//        _mm256_store_si256(reinterpret_cast<__m256i*>(pixels), base);
+        _mm256_storeu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
+    }
+
+    // complete end without simd
+    for (int ptr = bufSize - mod; ptr < bufSize; ptr ++)
+    {
+        uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
+        const unsigned int data = pixels[ptr];
+
+        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        while (it != it_end)
+        {
+            const DyeColor &col = *it;
+            ++ it;
+            const DyeColor &col2 = *it;
+
+            const unsigned int coldata = (col.value[3]) |
+                (col.value[2] << 8U) |
+                (col.value[1] << 16U) |
+                (col.value[0] << 24U);
+
+            if (data == coldata)
+            {
+                p[3] = col2.value[0];
+                p[2] = col2.value[1];
+                p[1] = col2.value[2];
+                p[0] = col2.value[3];
+                break;
+            }
+
+            ++ it;
+        }
+    }
 }
 
 #endif  // SIMD_SUPPORTED
-
-FUNCTION_SIMD_DEFAULT
-void DyePalette::replaceAColorSimd(uint32_t *restrict pixels,
-                                   const int bufSize) const restrict2
-{
-#include "resources/dye/dyepalette_replaceacolor_default.hpp"
-}
-
-FUNCTION_SIMD_DEFAULT
-void DyePalette::replaceAColorSse2(uint32_t *restrict pixels,
-                                   const int bufSize) const restrict2
-{
-#include "resources/dye/dyepalette_replaceacolor_default.hpp"
-}
-
-FUNCTION_SIMD_DEFAULT
-void DyePalette::replaceAColorAvx2(uint32_t *restrict pixels,
-                                   const int bufSize) const restrict2
-{
-#include "resources/dye/dyepalette_replaceacolor_default.hpp"
-}

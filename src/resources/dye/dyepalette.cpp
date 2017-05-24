@@ -50,6 +50,9 @@ DyeFunctionPtr DyePalette::funcReplaceSColorAvx2 = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceSOGLColor = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceSOGLColorSse2 = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceSOGLColorAvx2 = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceAColor = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceAColorSse2 = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceAColorAvx2 = nullptr;
 
 DyePalette::DyePalette(const std::string &restrict description,
                        const uint8_t blockSize) :
@@ -248,6 +251,9 @@ void DyePalette::initFunctions()
         funcReplaceSOGLColor = &DyePalette::replaceSOGLColorAvx2;
         funcReplaceSOGLColorAvx2 = &DyePalette::replaceSOGLColorAvx2;
         funcReplaceSOGLColorSse2 = &DyePalette::replaceSOGLColorSse2;
+        funcReplaceAColor = &DyePalette::replaceAColorAvx2;
+        funcReplaceAColorAvx2 = &DyePalette::replaceAColorAvx2;
+        funcReplaceAColorSse2 = &DyePalette::replaceAColorSse2;
     }
     else if (flags & Cpu::FEATURE_SSE2)
     {
@@ -257,6 +263,9 @@ void DyePalette::initFunctions()
         funcReplaceSOGLColor = &DyePalette::replaceSOGLColorSse2;
         funcReplaceSOGLColorAvx2 = &DyePalette::replaceSOGLColorSse2;
         funcReplaceSOGLColorSse2 = &DyePalette::replaceSOGLColorSse2;
+        funcReplaceAColor = &DyePalette::replaceAColorSse2;
+        funcReplaceAColorAvx2 = &DyePalette::replaceAColorSse2;
+        funcReplaceAColorSse2 = &DyePalette::replaceAColorSse2;
     }
     else
 #endif  // SIMD_SUPPORTED
@@ -267,5 +276,8 @@ void DyePalette::initFunctions()
         funcReplaceSOGLColor = &DyePalette::replaceSOGLColorDefault;
         funcReplaceSOGLColorAvx2 = &DyePalette::replaceSOGLColorDefault;
         funcReplaceSOGLColorSse2 = &DyePalette::replaceSOGLColorDefault;
+        funcReplaceAColor = &DyePalette::replaceAColorDefault;
+        funcReplaceAColorAvx2 = &DyePalette::replaceAColorDefault;
+        funcReplaceAColorSse2 = &DyePalette::replaceAColorDefault;
     }
 }
