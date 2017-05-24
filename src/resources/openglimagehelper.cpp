@@ -96,7 +96,7 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         {
             const DyePalette *const pal = dye.getAPalete();
             if (pal)
-                pal->replaceAOGLColor(pixels, surf->w * surf->h);
+                DYEPALETTEP(pal, AOGLColor)(pixels, surf->w * surf->h);
             break;
         }
         case 0:

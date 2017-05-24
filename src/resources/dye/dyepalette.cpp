@@ -53,6 +53,9 @@ DyeFunctionPtr DyePalette::funcReplaceSOGLColorAvx2 = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceAColor = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceAColorSse2 = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceAColorAvx2 = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceAOGLColor = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceAOGLColorSse2 = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceAOGLColorAvx2 = nullptr;
 
 DyePalette::DyePalette(const std::string &restrict description,
                        const uint8_t blockSize) :
@@ -254,6 +257,9 @@ void DyePalette::initFunctions()
         funcReplaceAColor = &DyePalette::replaceAColorAvx2;
         funcReplaceAColorAvx2 = &DyePalette::replaceAColorAvx2;
         funcReplaceAColorSse2 = &DyePalette::replaceAColorSse2;
+        funcReplaceAOGLColor = &DyePalette::replaceAOGLColorAvx2;
+        funcReplaceAOGLColorAvx2 = &DyePalette::replaceAOGLColorAvx2;
+        funcReplaceAOGLColorSse2 = &DyePalette::replaceAOGLColorSse2;
     }
     else if (flags & Cpu::FEATURE_SSE2)
     {
@@ -266,6 +272,9 @@ void DyePalette::initFunctions()
         funcReplaceAColor = &DyePalette::replaceAColorSse2;
         funcReplaceAColorAvx2 = &DyePalette::replaceAColorSse2;
         funcReplaceAColorSse2 = &DyePalette::replaceAColorSse2;
+        funcReplaceAOGLColor = &DyePalette::replaceAOGLColorSse2;
+        funcReplaceAOGLColorAvx2 = &DyePalette::replaceAOGLColorSse2;
+        funcReplaceAOGLColorSse2 = &DyePalette::replaceAOGLColorSse2;
     }
     else
 #endif  // SIMD_SUPPORTED
@@ -279,5 +288,8 @@ void DyePalette::initFunctions()
         funcReplaceAColor = &DyePalette::replaceAColorDefault;
         funcReplaceAColorAvx2 = &DyePalette::replaceAColorDefault;
         funcReplaceAColorSse2 = &DyePalette::replaceAColorDefault;
+        funcReplaceAOGLColor = &DyePalette::replaceAOGLColorDefault;
+        funcReplaceAOGLColorAvx2 = &DyePalette::replaceAOGLColorDefault;
+        funcReplaceAOGLColorSse2 = &DyePalette::replaceAOGLColorDefault;
     }
 }

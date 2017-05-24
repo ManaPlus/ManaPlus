@@ -426,9 +426,6 @@ BASE_SRC += events/actionevent.h \
 	      resources/dye/dyepalette.h \
 	      resources/dye/dyepalette_replaceacolor.cpp \
 	      resources/dye/dyepalette_replaceaoglcolor.cpp \
-	      resources/dye/dyepalette_replaceaoglcolor_avx2.hpp \
-	      resources/dye/dyepalette_replaceaoglcolor_default.hpp \
-	      resources/dye/dyepalette_replaceaoglcolor_sse2.hpp \
 	      resources/dye/dyepalette_replacescolor.cpp \
 	      resources/dye/dyepalette_replacesoglcolor.cpp \
 	      resources/dye/dyepaletteptr.h \

@@ -268,7 +268,7 @@ TEST_CASE("Dye replaceAOGLColor 1 1", "")
     DyePalette palette("#00ff0010,00001120", 8);
     uint32_t data[1];
     data[0] = buildHex(0x10, 0x03, 0x02, 0x01);
-    palette.replaceAOGLColor(&data[0], 1);
+    DYEPALETTE(palette, AOGLColor)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x10, 0x03, 0x02, 0x01));
 }
 
@@ -277,7 +277,7 @@ TEST_CASE("Dye replaceAOGLColor 1 2", "")
     DyePalette palette("#00ff0120,020311ff", 8);
     uint32_t data[1];
     data[0] = buildHex(0x20, 0x01, 0xff, 0x00);
-    palette.replaceAOGLColor(&data[0], 1);
+    DYEPALETTE(palette, AOGLColor)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0xff, 0x11, 0x03, 0x02));
 }
 
@@ -286,7 +286,7 @@ TEST_CASE("Dye replaceAOGLColor 1 3", "")
     DyePalette palette("#40404040,20000000,0100ee40,102030ff", 8);
     uint32_t data[1];
     data[0] = buildHex(0x40, 0xee, 0x00, 0x01);
-    palette.replaceAOGLColor(&data[0], 1);
+    DYEPALETTE(palette, AOGLColor)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0xff, 0x30, 0x20, 0x10));
 }
 
@@ -296,7 +296,7 @@ TEST_CASE("Dye replaceAOGLColor 2 1", "")
     uint32_t data[2];
     data[0] = buildHex(0x40, 0xee, 0x00, 0x01);
     data[1] = buildHex(0x40, 0xee, 0x00, 0x01);
-    palette.replaceAOGLColor(&data[0], 2);
+    DYEPALETTE(palette, AOGLColor)(&data[0], 2);
     REQUIRE(data[0] == buildHex(0xff, 0x30, 0x20, 0x10));
     REQUIRE(data[1] == buildHex(0xff, 0x30, 0x20, 0x10));
 }
@@ -309,7 +309,7 @@ TEST_CASE("Dye replaceAOGLColor 4 1", "")
     data[1] = buildHex(0x40, 0xee, 0x00, 0x01);
     data[2] = buildHex(0x41, 0xee, 0x00, 0x01);
     data[3] = buildHex(0x40, 0xee, 0x00, 0x01);
-    palette.replaceAOGLColor(&data[0], 4);
+    DYEPALETTE(palette, AOGLColor)(&data[0], 4);
     REQUIRE(data[0] == buildHex(0xff, 0x30, 0x20, 0x10));
     REQUIRE(data[1] == buildHex(0xff, 0x30, 0x20, 0x10));
     REQUIRE(data[2] == buildHex(0x41, 0xee, 0x00, 0x01));
@@ -328,7 +328,7 @@ TEST_CASE("Dye replaceAOGLColor 8 1", "")
     data[5] = buildHex(0x40, 0x40, 0x40, 0x40);
     data[6] = buildHex(0x41, 0xe0, 0x00, 0x01);
     data[7] = buildHex(0x40, 0xee, 0x00, 0x01);
-    palette.replaceAOGLColor(&data[0], 8);
+    DYEPALETTE(palette, AOGLColor)(&data[0], 8);
     REQUIRE(data[0] == buildHex(0xff, 0x30, 0x20, 0x10));
     REQUIRE(data[1] == buildHex(0xff, 0x30, 0x20, 0x10));
     REQUIRE(data[2] == buildHex(0x41, 0xee, 0x00, 0x01));
@@ -415,29 +415,6 @@ TEST_CASE("Dye replaceAOGLColor 8 1 default", "")
     REQUIRE(data[7] == buildHex(0xff, 0x30, 0x20, 0x10));
 }
 
-TEST_CASE("Dye replaceAOGLColor 8 1 simd", "")
-{
-    DyePalette palette("#40404040,20000000,0100ee40,102030ff", 8);
-    uint32_t data[8];
-    data[0] = buildHex(0x40, 0xee, 0x00, 0x01);
-    data[1] = buildHex(0x40, 0xee, 0x00, 0x01);
-    data[2] = buildHex(0x41, 0xee, 0x00, 0x01);
-    data[3] = buildHex(0x40, 0xee, 0x00, 0x01);
-    data[4] = buildHex(0x40, 0xee, 0x00, 0x01);
-    data[5] = buildHex(0x40, 0x40, 0x40, 0x40);
-    data[6] = buildHex(0x41, 0xe0, 0x00, 0x01);
-    data[7] = buildHex(0x40, 0xee, 0x00, 0x01);
-    palette.replaceAOGLColorSimd(&data[0], 8);
-    REQUIRE(data[0] == buildHex(0xff, 0x30, 0x20, 0x10));
-    REQUIRE(data[1] == buildHex(0xff, 0x30, 0x20, 0x10));
-    REQUIRE(data[2] == buildHex(0x41, 0xee, 0x00, 0x01));
-    REQUIRE(data[3] == buildHex(0xff, 0x30, 0x20, 0x10));
-    REQUIRE(data[4] == buildHex(0xff, 0x30, 0x20, 0x10));
-    REQUIRE(data[5] == buildHex(0x00, 0x00, 0x00, 0x20));
-    REQUIRE(data[6] == buildHex(0x41, 0xe0, 0x00, 0x01));
-    REQUIRE(data[7] == buildHex(0xff, 0x30, 0x20, 0x10));
-}
-
 TEST_CASE("Dye replaceAOGLColor 8 1 sse2", "")
 {
     DyePalette palette("#40404040,20000000,0100ee40,102030ff", 8);
@@ -450,7 +427,7 @@ TEST_CASE("Dye replaceAOGLColor 8 1 sse2", "")
     data[5] = buildHex(0x40, 0x40, 0x40, 0x40);
     data[6] = buildHex(0x41, 0xe0, 0x00, 0x01);
     data[7] = buildHex(0x40, 0xee, 0x00, 0x01);
-    palette.replaceAOGLColorSse2(&data[0], 8);
+    DYEPALETTE(palette, AOGLColorSse2)(&data[0], 8);
     REQUIRE(data[0] == buildHex(0xff, 0x30, 0x20, 0x10));
     REQUIRE(data[1] == buildHex(0xff, 0x30, 0x20, 0x10));
     REQUIRE(data[2] == buildHex(0x41, 0xee, 0x00, 0x01));
@@ -473,7 +450,7 @@ TEST_CASE("Dye replaceAOGLColor 8 1 avx2", "")
     data[5] = buildHex(0x40, 0x40, 0x40, 0x40);
     data[6] = buildHex(0x41, 0xe0, 0x00, 0x01);
     data[7] = buildHex(0x40, 0xee, 0x00, 0x01);
-    palette.replaceAOGLColorAvx2(&data[0], 8);
+    DYEPALETTE(palette, AOGLColorAvx2)(&data[0], 8);
     REQUIRE(data[0] == buildHex(0xff, 0x30, 0x20, 0x10));
     REQUIRE(data[1] == buildHex(0xff, 0x30, 0x20, 0x10));
     REQUIRE(data[2] == buildHex(0x41, 0xee, 0x00, 0x01));
