@@ -47,6 +47,9 @@
 DyeFunctionPtr DyePalette::funcReplaceSColor = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceSColorSse2 = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceSColorAvx2 = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceSOGLColor = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceSOGLColorSse2 = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceSOGLColorAvx2 = nullptr;
 
 DyePalette::DyePalette(const std::string &restrict description,
                        const uint8_t blockSize) :
@@ -242,12 +245,18 @@ void DyePalette::initFunctions()
         funcReplaceSColor = &DyePalette::replaceSColorAvx2;
         funcReplaceSColorAvx2 = &DyePalette::replaceSColorAvx2;
         funcReplaceSColorSse2 = &DyePalette::replaceSColorSse2;
+        funcReplaceSOGLColor = &DyePalette::replaceSOGLColorAvx2;
+        funcReplaceSOGLColorAvx2 = &DyePalette::replaceSOGLColorAvx2;
+        funcReplaceSOGLColorSse2 = &DyePalette::replaceSOGLColorSse2;
     }
     else if (flags & Cpu::FEATURE_SSE2)
     {
         funcReplaceSColor = &DyePalette::replaceSColorSse2;
         funcReplaceSColorAvx2 = &DyePalette::replaceSColorSse2;
         funcReplaceSColorSse2 = &DyePalette::replaceSColorSse2;
+        funcReplaceSOGLColor = &DyePalette::replaceSOGLColorSse2;
+        funcReplaceSOGLColorAvx2 = &DyePalette::replaceSOGLColorSse2;
+        funcReplaceSOGLColorSse2 = &DyePalette::replaceSOGLColorSse2;
     }
     else
 #endif  // SIMD_SUPPORTED
@@ -255,5 +264,8 @@ void DyePalette::initFunctions()
         funcReplaceSColor = &DyePalette::replaceSColorDefault;
         funcReplaceSColorAvx2 = &DyePalette::replaceSColorDefault;
         funcReplaceSColorSse2 = &DyePalette::replaceSColorDefault;
+        funcReplaceSOGLColor = &DyePalette::replaceSOGLColorDefault;
+        funcReplaceSOGLColorAvx2 = &DyePalette::replaceSOGLColorDefault;
+        funcReplaceSOGLColorSse2 = &DyePalette::replaceSOGLColorDefault;
     }
 }

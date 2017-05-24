@@ -69,7 +69,7 @@ TEST_CASE("Dye replaceSOGLColor 1 1", "")
     DyePalette palette("#00ff00,000011", 6);
     uint32_t data[1];
     data[0] = buildHex(0x01, 0x02, 0x03, 0x10);
-    palette.replaceSOGLColor(&data[0], 1);
+    DYEPALETTE(palette, SOGLColor)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x01, 0x02, 0x03, 0x10));
 }
 
@@ -78,7 +78,7 @@ TEST_CASE("Dye replaceSOGLColor 1 2", "")
     DyePalette palette("#01ff02,030411", 6);
     uint32_t data[1];
     data[0] = buildHex(0x20, 0x02, 0xff, 0x01);
-    palette.replaceSOGLColor(&data[0], 1);
+    DYEPALETTE(palette, SOGLColor)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x20, 0x11, 0x04, 0x03));
 }
 
@@ -87,7 +87,7 @@ TEST_CASE("Dye replaceSOGLColor 1 3", "")
     DyePalette palette("#404040,200000,0100ee,102030", 6);
     uint32_t data[1];
     data[0] = buildHex(0x40, 0xee, 0x00, 0x01);
-    palette.replaceSOGLColor(&data[0], 1);
+    DYEPALETTE(palette, SOGLColor)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x40, 0x30, 0x20, 0x10));
 }
 
@@ -97,7 +97,7 @@ TEST_CASE("Dye replaceSOGLColor 2 1", "")
     uint32_t data[2];
     data[0] = buildHex(0x20, 0x02, 0xff, 0x01);
     data[1] = buildHex(0x30, 0x02, 0xff, 0x01);
-    palette.replaceSOGLColor(&data[0], 2);
+    DYEPALETTE(palette, SOGLColor)(&data[0], 2);
     REQUIRE(data[0] == buildHex(0x20, 0x11, 0x04, 0x03));
     REQUIRE(data[1] == buildHex(0x30, 0x11, 0x04, 0x03));
 }
@@ -110,7 +110,7 @@ TEST_CASE("Dye replaceSOGLColor 4 1", "")
     data[1] = buildHex(0x30, 0x02, 0xff, 0x01);
     data[2] = buildHex(0x40, 0x02, 0xff, 0x01);
     data[3] = buildHex(0x50, 0x02, 0xff, 0x02);
-    palette.replaceSOGLColor(&data[0], 4);
+    DYEPALETTE(palette, SOGLColor)(&data[0], 4);
     REQUIRE(data[0] == buildHex(0x20, 0x11, 0x04, 0x03));
     REQUIRE(data[1] == buildHex(0x30, 0x11, 0x04, 0x03));
     REQUIRE(data[2] == buildHex(0x40, 0x11, 0x04, 0x03));
@@ -129,7 +129,7 @@ TEST_CASE("Dye replaceSOGLColor 8 1", "")
     data[5] = buildHex(0x30, 0x02, 0xff, 0x01);
     data[6] = buildHex(0x40, 0x02, 0xff, 0x01);
     data[7] = buildHex(0x60, 0x02, 0xff, 0x02);
-    palette.replaceSOGLColor(&data[0], 8);
+    DYEPALETTE(palette, SOGLColor)(&data[0], 8);
     REQUIRE(data[0] == buildHex(0x20, 0x11, 0x04, 0x03));
     REQUIRE(data[1] == buildHex(0x30, 0x11, 0x04, 0x03));
     REQUIRE(data[2] == buildHex(0x40, 0x11, 0x04, 0x03));
@@ -216,29 +216,6 @@ TEST_CASE("Dye replaceSOGLColor 8 1 default", "")
     REQUIRE(data[7] == buildHex(0x60, 0x02, 0xff, 0x02));
 }
 
-TEST_CASE("Dye replaceSOGLColor 8 1 simd", "")
-{
-    DyePalette palette("#01ff02,030411,01ee02,010203", 6);
-    uint32_t data[8];
-    data[0] = buildHex(0x20, 0x02, 0xff, 0x01);
-    data[1] = buildHex(0x30, 0x02, 0xff, 0x01);
-    data[2] = buildHex(0x40, 0x02, 0xff, 0x01);
-    data[3] = buildHex(0x50, 0x02, 0xff, 0x02);
-    data[4] = buildHex(0x20, 0x02, 0xff, 0x01);
-    data[5] = buildHex(0x30, 0x02, 0xff, 0x01);
-    data[6] = buildHex(0x40, 0x02, 0xff, 0x01);
-    data[7] = buildHex(0x60, 0x02, 0xff, 0x02);
-    palette.replaceSOGLColorSimd(&data[0], 8);
-    REQUIRE(data[0] == buildHex(0x20, 0x11, 0x04, 0x03));
-    REQUIRE(data[1] == buildHex(0x30, 0x11, 0x04, 0x03));
-    REQUIRE(data[2] == buildHex(0x40, 0x11, 0x04, 0x03));
-    REQUIRE(data[3] == buildHex(0x50, 0x02, 0xff, 0x02));
-    REQUIRE(data[4] == buildHex(0x20, 0x11, 0x04, 0x03));
-    REQUIRE(data[5] == buildHex(0x30, 0x11, 0x04, 0x03));
-    REQUIRE(data[6] == buildHex(0x40, 0x11, 0x04, 0x03));
-    REQUIRE(data[7] == buildHex(0x60, 0x02, 0xff, 0x02));
-}
-
 TEST_CASE("Dye replaceSOGLColor 8 1 sse2", "")
 {
     DyePalette palette("#01ff02,030411,01ee02,010203", 6);
@@ -251,7 +228,7 @@ TEST_CASE("Dye replaceSOGLColor 8 1 sse2", "")
     data[5] = buildHex(0x30, 0x02, 0xff, 0x01);
     data[6] = buildHex(0x40, 0x02, 0xff, 0x01);
     data[7] = buildHex(0x60, 0x02, 0xff, 0x02);
-    palette.replaceSOGLColorSse2(&data[0], 8);
+    DYEPALETTE(palette, SOGLColorSse2)(&data[0], 8);
     REQUIRE(data[0] == buildHex(0x20, 0x11, 0x04, 0x03));
     REQUIRE(data[1] == buildHex(0x30, 0x11, 0x04, 0x03));
     REQUIRE(data[2] == buildHex(0x40, 0x11, 0x04, 0x03));
@@ -274,7 +251,7 @@ TEST_CASE("Dye replaceSOGLColor 8 1 avx2", "")
     data[5] = buildHex(0x30, 0x02, 0xff, 0x01);
     data[6] = buildHex(0x40, 0x02, 0xff, 0x01);
     data[7] = buildHex(0x60, 0x02, 0xff, 0x02);
-    palette.replaceSOGLColorAvx2(&data[0], 8);
+    DYEPALETTE(palette, SOGLColorAvx2)(&data[0], 8);
     REQUIRE(data[0] == buildHex(0x20, 0x11, 0x04, 0x03));
     REQUIRE(data[1] == buildHex(0x30, 0x11, 0x04, 0x03));
     REQUIRE(data[2] == buildHex(0x40, 0x11, 0x04, 0x03));

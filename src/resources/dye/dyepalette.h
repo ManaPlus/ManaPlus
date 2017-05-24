@@ -155,49 +155,9 @@ class DyePalette final
         /**
          * replace colors for OpenGL for S dye.
          */
-        void replaceSOGLColor(uint32_t *restrict pixels,
-                              const int bufSize) const restrict2;
-
-        /**
-         * replace colors for OpenGL for S dye.
-         */
         void replaceSOGLColorDefault(uint32_t *restrict pixels,
                                      const int bufSize) const restrict2;
-
-        /**
-         * replace colors for OpenGL for S dye.
-         */
-        FUNCTION_SIMD_DEFAULT
-        void replaceSOGLColorSimd(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2;
-
-        /**
-         * replace colors for OpenGL for S dye.
-         */
-        FUNCTION_SIMD_DEFAULT
-        void replaceSOGLColorSse2(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2;
-
-        /**
-         * replace colors for OpenGL for S dye.
-         */
-        FUNCTION_SIMD_DEFAULT
-        void replaceSOGLColorAvx2(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2;
-
 #ifdef SIMD_SUPPORTED
-        /**
-         * replace colors for OpenGL for S dye.
-         */
-        __attribute__ ((target ("sse2")))
-        void replaceSOGLColorSimd(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2;
-        /**
-         * replace colors for OpenGL for S dye.
-         */
-        __attribute__ ((target ("avx2")))
-        void replaceSOGLColorSimd(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2;
         /**
          * replace colors for OpenGL for S dye.
          */
@@ -285,6 +245,9 @@ class DyePalette final
         static DyeFunctionPtr funcReplaceSColor;
         static DyeFunctionPtr funcReplaceSColorSse2;
         static DyeFunctionPtr funcReplaceSColorAvx2;
+        static DyeFunctionPtr funcReplaceSOGLColor;
+        static DyeFunctionPtr funcReplaceSOGLColorSse2;
+        static DyeFunctionPtr funcReplaceSOGLColorAvx2;
 
 #ifndef UNITTESTS
     private:

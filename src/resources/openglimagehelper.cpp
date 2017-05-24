@@ -89,7 +89,7 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         {
             const DyePalette *const pal = dye.getSPalete();
             if (pal)
-                pal->replaceSOGLColor(pixels, surf->w * surf->h);
+                DYEPALETTEP(pal, SOGLColor)(pixels, surf->w * surf->h);
             break;
         }
         case 2:
