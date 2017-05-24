@@ -365,7 +365,19 @@ void SDLInput::simulateKey(const int guiKey,
 {
     KeyInput keyInput;
     keyInput.setType(KeyEventType::PRESSED);
+#ifdef USE_SDL2
+    char str[2];
+    str[0] = guiKey;
+    str[1] = 0;
+
+    keyInput.setKey(Key(KeyValue::TEXTINPUT));
+    keyInput.setText(str);
+#else  // USE_SDL2
+
     keyInput.setKey(Key(guiKey));
+
+#endif  // USE_SDL2
+
     if (actionId > InputAction::NO_VALUE)
         keyInput.setActionId(actionId);
     mKeyInputQueue.push(keyInput);
