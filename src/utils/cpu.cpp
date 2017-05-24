@@ -32,7 +32,10 @@
 
 #include "debug.h"
 
-int mCpuFlags = 0;
+namespace
+{
+    uint32_t mCpuFlags;
+}  // namespace
 
 void Cpu::detect()
 {
@@ -99,16 +102,20 @@ void Cpu::detect()
         }
     }
     fclose(file);
-    logger->log("cpu features was not detected");
+    if (logger)
+        logger->log("cpu features was not detected");
 #else  // OTHER
 
-    logger->log("cpu features not supported");
+    if (logger)
+        logger->log("cpu features not supported");
 #endif  // (defined(__amd64__) || defined(__i386__)) && defined(__GNUC__)
         // && (GCC_VERSION >= 40800) && !defined(ANDROID)
 }
 
 void Cpu::printFlags()
 {
+    if (!logger)
+        return;
     std::string str("CPU features:");
     if (mCpuFlags & FEATURE_MMX)
         str.append(" mmx");
@@ -127,4 +134,9 @@ void Cpu::printFlags()
     if (mCpuFlags & FEATURE_AVX2)
         str.append(" avx2");
     logger->log(str);
+}
+
+uint32_t Cpu::getFlags()
+{
+    return mCpuFlags;
 }

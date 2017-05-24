@@ -49,6 +49,8 @@
 #endif  // SDL_VERSIONNUM
 
 #ifdef UNITTESTS
+#include "utils/cpu.h"
+#include "resources/dye/dyepalette.h"
 #ifdef UNITTESTS_CATCH
 #define CATCH_CONFIG_RUNNER
 #include "test/catch.hpp"
@@ -146,6 +148,8 @@ int mainGui(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
     VirtFs::init(argv[0]);
+    Cpu::detect();
+    DyePalette::initFunctions();
 #ifdef UNITTESTS_CATCH
     return Catch::Session().run(argc, argv);
 #elif defined(UNITTESTS_DOCTEST)

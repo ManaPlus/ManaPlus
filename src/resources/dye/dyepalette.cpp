@@ -38,7 +38,15 @@
 #include <SDL_endian.h>
 #endif  // SDL_BYTEORDER
 
+#ifdef SIMD_SUPPORTED
+#include "utils/cpu.h"
+#endif  // SIMD_SUPPORTED
+
 #include "debug.h"
+
+DyeFunctionPtr DyePalette::funcReplaceSColor = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceSColorSse2 = nullptr;
+DyeFunctionPtr DyePalette::funcReplaceSColorAvx2 = nullptr;
 
 DyePalette::DyePalette(const std::string &restrict description,
                        const uint8_t blockSize) :
@@ -223,4 +231,29 @@ void DyePalette::getColor(double intensity,
         intensity * colorJ.value[1]);
     color[2] = CAST_S32(rest * colorI.value[2] +
         intensity * colorJ.value[2]);
+}
+
+void DyePalette::initFunctions()
+{
+#ifdef SIMD_SUPPORTED
+    const uint32_t flags = Cpu::getFlags();
+    if (flags & Cpu::FEATURE_AVX2)
+    {
+        funcReplaceSColor = &DyePalette::replaceSColorAvx2;
+        funcReplaceSColorAvx2 = &DyePalette::replaceSColorAvx2;
+        funcReplaceSColorSse2 = &DyePalette::replaceSColorSse2;
+    }
+    else if (flags & Cpu::FEATURE_SSE2)
+    {
+        funcReplaceSColor = &DyePalette::replaceSColorSse2;
+        funcReplaceSColorAvx2 = &DyePalette::replaceSColorSse2;
+        funcReplaceSColorSse2 = &DyePalette::replaceSColorSse2;
+    }
+    else
+#endif  // SIMD_SUPPORTED
+    {
+        funcReplaceSColor = &DyePalette::replaceSColorDefault;
+        funcReplaceSColorAvx2 = &DyePalette::replaceSColorDefault;
+        funcReplaceSColorSse2 = &DyePalette::replaceSColorDefault;
+    }
 }

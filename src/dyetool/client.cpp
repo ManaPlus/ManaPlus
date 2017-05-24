@@ -53,6 +53,8 @@
 
 #include "resources/imagehelper.h"
 
+#include "resources/dye/dyepalette.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/cpu.h"
@@ -249,6 +251,7 @@ void Client::gameInit()
     ConfigManager::checkConfigVersion();
     logVars();
     Cpu::detect();
+    DyePalette::initFunctions();
 #if defined(USE_OPENGL)
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
     if (!settings.options.safeMode && settings.options.test.empty()

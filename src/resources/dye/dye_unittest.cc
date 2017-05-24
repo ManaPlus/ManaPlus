@@ -514,7 +514,7 @@ TEST_CASE("Dye replaceSColor 1 1", "")
     DyePalette palette("#00ff00,000011", 6);
     uint32_t data[1];
     data[0] = buildHex(0x10, 0x03, 0x02, 0x01);
-    palette.replaceSColor(&data[0], 1);
+    DYEPALETTE(palette, SColor)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x10, 0x03, 0x02, 0x01));
 }
 
@@ -523,7 +523,7 @@ TEST_CASE("Dye replaceSColor 1 2", "")
     DyePalette palette("#403020,706050", 6);
     uint32_t data[1];
     data[0] = buildHex(0x40, 0x30, 0x20, 0x10);
-    palette.replaceSColor(&data[0], 1);
+    DYEPALETTE(palette, SColor)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
 }
 
@@ -532,7 +532,7 @@ TEST_CASE("Dye replaceSColor 1 3", "")
     DyePalette palette("#123456,000000,ff3020,706050", 6);
     uint32_t data[1];
     data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    palette.replaceSColor(&data[0], 1);
+    DYEPALETTE(palette, SColor)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
 }
 
@@ -542,7 +542,7 @@ TEST_CASE("Dye replaceSColor 2 1", "")
     uint32_t data[2];
     data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
     data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColor(&data[0], 2);
+    DYEPALETTE(palette, SColor)(&data[0], 2);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
 }
@@ -554,7 +554,7 @@ TEST_CASE("Dye replaceSColor 3 1", "")
     data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
     data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
     data[2] = buildHex(0xff, 0x30, 0x20, 0x30);
-    palette.replaceSColor(&data[0], 3);
+    DYEPALETTE(palette, SColor)(&data[0], 3);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0x70, 0x60, 0x50, 0x30));
@@ -568,7 +568,7 @@ TEST_CASE("Dye replaceSColor 4 1", "")
     data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
     data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
     data[3] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColor(&data[0], 4);
+    DYEPALETTE(palette, SColor)(&data[0], 4);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -584,7 +584,7 @@ TEST_CASE("Dye replaceSColor 5 1", "")
     data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
     data[3] = buildHex(0xff, 0x30, 0x20, 0x30);
     data[4] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColor(&data[0], 5);
+    DYEPALETTE(palette, SColor)(&data[0], 5);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -603,7 +603,7 @@ TEST_CASE("Dye replaceSColor 7 1", "")
     data[4] = buildHex(0xff, 0x30, 0x20, 0x10);
     data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
     data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
-    palette.replaceSColor(&data[0], 7);
+    DYEPALETTE(palette, SColor)(&data[0], 7);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -625,7 +625,7 @@ TEST_CASE("Dye replaceSColor 8 1", "")
     data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
     data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
     data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
-    palette.replaceSColor(&data[0], 8);
+    DYEPALETTE(palette, SColor)(&data[0], 8);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -649,7 +649,7 @@ TEST_CASE("Dye replaceSColor 9 1", "")
     data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
     data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
     data[8] = buildHex(0xff, 0x30, 0x20, 0x70);
-    palette.replaceSColor(&data[0], 9);
+    DYEPALETTE(palette, SColor)(&data[0], 9);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -675,7 +675,7 @@ TEST_CASE("Dye replaceSColor 10 1", "")
     data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
     data[8] = buildHex(0x12, 0x34, 0x56, 0x70);
     data[9] = buildHex(0xff, 0x30, 0x20, 0x80);
-    palette.replaceSColor(&data[0], 10);
+    DYEPALETTE(palette, SColor)(&data[0], 10);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -867,191 +867,12 @@ TEST_CASE("Dye replaceSColor 10 1 default", "")
     REQUIRE(data[9] == buildHex(0x70, 0x60, 0x50, 0x80));
 }
 
-TEST_CASE("Dye replaceSColor 1 1 simd", "")
-{
-    DyePalette palette("#00ff00,000011", 6);
-    uint32_t data[1];
-    data[0] = buildHex(0x10, 0x03, 0x02, 0x01);
-    palette.replaceSColorSimd(&data[0], 1);
-    REQUIRE(data[0] == buildHex(0x10, 0x03, 0x02, 0x01));
-}
-
-TEST_CASE("Dye replaceSColor 1 2 simd", "")
-{
-    DyePalette palette("#403020,706050", 6);
-    uint32_t data[1];
-    data[0] = buildHex(0x40, 0x30, 0x20, 0x10);
-    palette.replaceSColorSimd(&data[0], 1);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-}
-
-TEST_CASE("Dye replaceSColor 1 3 simd", "")
-{
-    DyePalette palette("#123456,000000,ff3020,706050", 6);
-    uint32_t data[1];
-    data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    palette.replaceSColorSimd(&data[0], 1);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-}
-
-TEST_CASE("Dye replaceSColor 2 1 simd", "")
-{
-    DyePalette palette("#123456,000000,ff3020,706050", 6);
-    uint32_t data[2];
-    data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColorSimd(&data[0], 2);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
-}
-
-TEST_CASE("Dye replaceSColor 3 1 simd", "")
-{
-    DyePalette palette("#123456,000000,ff3020,706050", 6);
-    uint32_t data[3];
-    data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[2] = buildHex(0xff, 0x30, 0x20, 0x30);
-    palette.replaceSColorSimd(&data[0], 3);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[2] == buildHex(0x70, 0x60, 0x50, 0x30));
-}
-
-TEST_CASE("Dye replaceSColor 4 1 simd", "")
-{
-    DyePalette palette("#123456,000000,ff3020,706050", 6);
-    uint32_t data[4];
-    data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
-    data[3] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColorSimd(&data[0], 4);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
-    REQUIRE(data[3] == buildHex(0x70, 0x60, 0x50, 0x20));
-}
-
-TEST_CASE("Dye replaceSColor 5 1 simd", "")
-{
-    DyePalette palette("#123456,000000,ff3020,706050", 6);
-    uint32_t data[5];
-    data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
-    data[3] = buildHex(0xff, 0x30, 0x20, 0x30);
-    data[4] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColorSimd(&data[0], 5);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
-    REQUIRE(data[3] == buildHex(0x70, 0x60, 0x50, 0x30));
-    REQUIRE(data[4] == buildHex(0x70, 0x60, 0x50, 0x20));
-}
-
-TEST_CASE("Dye replaceSColor 7 1 simd", "")
-{
-    DyePalette palette("#123456,000000,ff3020,706050", 6);
-    uint32_t data[7];
-    data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
-    data[3] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[4] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
-    data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
-    palette.replaceSColorSimd(&data[0], 7);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
-    REQUIRE(data[3] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[4] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[5] == buildHex(0x70, 0x60, 0x50, 0x40));
-    REQUIRE(data[6] == buildHex(0xff, 0x40, 0x20, 0x50));
-}
-
-TEST_CASE("Dye replaceSColor 8 1 simd", "")
-{
-    DyePalette palette("#123456,000000,ff3020,706050", 6);
-    uint32_t data[8];
-    data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
-    data[3] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[4] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
-    data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
-    data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
-    palette.replaceSColorSimd(&data[0], 8);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
-    REQUIRE(data[3] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[4] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[5] == buildHex(0x70, 0x60, 0x50, 0x40));
-    REQUIRE(data[6] == buildHex(0xff, 0x40, 0x20, 0x50));
-    REQUIRE(data[7] == buildHex(0x70, 0x60, 0x50, 0x60));
-}
-
-TEST_CASE("Dye replaceSColor 9 1 simd", "")
-{
-    DyePalette palette("#123456,000000,ff3020,706050", 6);
-    uint32_t data[9];
-    data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
-    data[3] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[4] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
-    data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
-    data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
-    data[8] = buildHex(0xff, 0x30, 0x20, 0x70);
-    palette.replaceSColorSimd(&data[0], 9);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
-    REQUIRE(data[3] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[4] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[5] == buildHex(0x70, 0x60, 0x50, 0x40));
-    REQUIRE(data[6] == buildHex(0xff, 0x40, 0x20, 0x50));
-    REQUIRE(data[7] == buildHex(0x70, 0x60, 0x50, 0x60));
-    REQUIRE(data[8] == buildHex(0x70, 0x60, 0x50, 0x70));
-}
-
-TEST_CASE("Dye replaceSColor 10 1 simd", "")
-{
-    DyePalette palette("#123456,000000,ff3020,706050", 6);
-    uint32_t data[10];
-    data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
-    data[3] = buildHex(0xff, 0x30, 0x20, 0x20);
-    data[4] = buildHex(0xff, 0x30, 0x20, 0x10);
-    data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
-    data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
-    data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
-    data[8] = buildHex(0x12, 0x34, 0x56, 0x70);
-    data[9] = buildHex(0xff, 0x30, 0x20, 0x80);
-    palette.replaceSColorSimd(&data[0], 10);
-    REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
-    REQUIRE(data[3] == buildHex(0x70, 0x60, 0x50, 0x20));
-    REQUIRE(data[4] == buildHex(0x70, 0x60, 0x50, 0x10));
-    REQUIRE(data[5] == buildHex(0x70, 0x60, 0x50, 0x40));
-    REQUIRE(data[6] == buildHex(0xff, 0x40, 0x20, 0x50));
-    REQUIRE(data[7] == buildHex(0x70, 0x60, 0x50, 0x60));
-    REQUIRE(data[8] == buildHex(0x00, 0x00, 0x00, 0x70));
-    REQUIRE(data[9] == buildHex(0x70, 0x60, 0x50, 0x80));
-}
-
 TEST_CASE("Dye replaceSColor 1 1 sse2", "")
 {
     DyePalette palette("#00ff00,000011", 6);
     uint32_t data[1];
     data[0] = buildHex(0x10, 0x03, 0x02, 0x01);
-    palette.replaceSColorSse2(&data[0], 1);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x10, 0x03, 0x02, 0x01));
 }
 
@@ -1060,7 +881,7 @@ TEST_CASE("Dye replaceSColor 1 2 sse2", "")
     DyePalette palette("#403020,706050", 6);
     uint32_t data[1];
     data[0] = buildHex(0x40, 0x30, 0x20, 0x10);
-    palette.replaceSColorSse2(&data[0], 1);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
 }
 
@@ -1069,7 +890,7 @@ TEST_CASE("Dye replaceSColor 1 3 sse2", "")
     DyePalette palette("#123456,000000,ff3020,706050", 6);
     uint32_t data[1];
     data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    palette.replaceSColorSse2(&data[0], 1);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
 }
 
@@ -1079,7 +900,7 @@ TEST_CASE("Dye replaceSColor 2 1 sse2", "")
     uint32_t data[2];
     data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
     data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColorSse2(&data[0], 2);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 2);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
 }
@@ -1091,7 +912,7 @@ TEST_CASE("Dye replaceSColor 3 1 sse2", "")
     data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
     data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
     data[2] = buildHex(0xff, 0x30, 0x20, 0x30);
-    palette.replaceSColorSse2(&data[0], 3);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 3);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0x70, 0x60, 0x50, 0x30));
@@ -1105,7 +926,7 @@ TEST_CASE("Dye replaceSColor 4 1 sse2", "")
     data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
     data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
     data[3] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColorSse2(&data[0], 4);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 4);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1121,7 +942,7 @@ TEST_CASE("Dye replaceSColor 5 1 sse2", "")
     data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
     data[3] = buildHex(0xff, 0x30, 0x20, 0x30);
     data[4] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColorSse2(&data[0], 5);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 5);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1140,7 +961,7 @@ TEST_CASE("Dye replaceSColor 7 1 sse2", "")
     data[4] = buildHex(0xff, 0x30, 0x20, 0x10);
     data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
     data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
-    palette.replaceSColorSse2(&data[0], 7);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 7);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1162,7 +983,7 @@ TEST_CASE("Dye replaceSColor 8 1 sse2", "")
     data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
     data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
     data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
-    palette.replaceSColorSse2(&data[0], 8);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 8);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1186,7 +1007,7 @@ TEST_CASE("Dye replaceSColor 9 1 sse2", "")
     data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
     data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
     data[8] = buildHex(0xff, 0x30, 0x20, 0x70);
-    palette.replaceSColorSse2(&data[0], 9);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 9);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1212,7 +1033,7 @@ TEST_CASE("Dye replaceSColor 10 1 sse2", "")
     data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
     data[8] = buildHex(0x12, 0x34, 0x56, 0x70);
     data[9] = buildHex(0xff, 0x30, 0x20, 0x80);
-    palette.replaceSColorSse2(&data[0], 10);
+    DYEPALETTE(palette, SColorSse2)(&data[0], 10);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1230,7 +1051,7 @@ TEST_CASE("Dye replaceSColor 1 1 avx2", "")
     DyePalette palette("#00ff00,000011", 6);
     uint32_t data[1];
     data[0] = buildHex(0x10, 0x03, 0x02, 0x01);
-    palette.replaceSColorAvx2(&data[0], 1);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x10, 0x03, 0x02, 0x01));
 }
 
@@ -1239,7 +1060,7 @@ TEST_CASE("Dye replaceSColor 1 2 avx2", "")
     DyePalette palette("#403020,706050", 6);
     uint32_t data[1];
     data[0] = buildHex(0x40, 0x30, 0x20, 0x10);
-    palette.replaceSColorAvx2(&data[0], 1);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
 }
 
@@ -1248,7 +1069,7 @@ TEST_CASE("Dye replaceSColor 1 3 avx2", "")
     DyePalette palette("#123456,000000,ff3020,706050", 6);
     uint32_t data[1];
     data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
-    palette.replaceSColorAvx2(&data[0], 1);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 1);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
 }
 
@@ -1258,7 +1079,7 @@ TEST_CASE("Dye replaceSColor 2 1 avx2", "")
     uint32_t data[2];
     data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
     data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColorAvx2(&data[0], 2);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 2);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
 }
@@ -1270,7 +1091,7 @@ TEST_CASE("Dye replaceSColor 3 1 avx2", "")
     data[0] = buildHex(0xff, 0x30, 0x20, 0x10);
     data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
     data[2] = buildHex(0xff, 0x30, 0x20, 0x30);
-    palette.replaceSColorAvx2(&data[0], 3);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 3);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0x70, 0x60, 0x50, 0x30));
@@ -1284,7 +1105,7 @@ TEST_CASE("Dye replaceSColor 4 1 avx2", "")
     data[1] = buildHex(0xff, 0x30, 0x20, 0x20);
     data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
     data[3] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColorAvx2(&data[0], 4);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 4);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1300,7 +1121,7 @@ TEST_CASE("Dye replaceSColor 5 1 avx2", "")
     data[2] = buildHex(0xff, 0x40, 0x20, 0x10);
     data[3] = buildHex(0xff, 0x30, 0x20, 0x30);
     data[4] = buildHex(0xff, 0x30, 0x20, 0x20);
-    palette.replaceSColorAvx2(&data[0], 5);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 5);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1319,7 +1140,7 @@ TEST_CASE("Dye replaceSColor 7 1 avx2", "")
     data[4] = buildHex(0xff, 0x30, 0x20, 0x10);
     data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
     data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
-    palette.replaceSColorAvx2(&data[0], 7);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 7);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1341,7 +1162,7 @@ TEST_CASE("Dye replaceSColor 8 1 avx2", "")
     data[5] = buildHex(0xff, 0x30, 0x20, 0x40);
     data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
     data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
-    palette.replaceSColorAvx2(&data[0], 8);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 8);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1365,7 +1186,7 @@ TEST_CASE("Dye replaceSColor 9 1 avx2", "")
     data[6] = buildHex(0xff, 0x40, 0x20, 0x50);
     data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
     data[8] = buildHex(0xff, 0x30, 0x20, 0x70);
-    palette.replaceSColorAvx2(&data[0], 9);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 9);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));
@@ -1391,7 +1212,7 @@ TEST_CASE("Dye replaceSColor 10 1 avx2", "")
     data[7] = buildHex(0xff, 0x30, 0x20, 0x60);
     data[8] = buildHex(0x12, 0x34, 0x56, 0x70);
     data[9] = buildHex(0xff, 0x30, 0x20, 0x80);
-    palette.replaceSColorAvx2(&data[0], 10);
+    DYEPALETTE(palette, SColorAvx2)(&data[0], 10);
     REQUIRE(data[0] == buildHex(0x70, 0x60, 0x50, 0x10));
     REQUIRE(data[1] == buildHex(0x70, 0x60, 0x50, 0x20));
     REQUIRE(data[2] == buildHex(0xff, 0x40, 0x20, 0x10));

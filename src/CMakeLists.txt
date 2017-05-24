@@ -649,13 +649,11 @@ SET(SRCS
     resources/dye/dyepalette_replaceaoglcolor_default.hpp
     resources/dye/dyepalette_replaceaoglcolor_sse2.hpp
     resources/dye/dyepalette_replacescolor.cpp
-    resources/dye/dyepalette_replacescolor_avx2.hpp
-    resources/dye/dyepalette_replacescolor_default.hpp
-    resources/dye/dyepalette_replacescolor_sse2.hpp
     resources/dye/dyepalette_replacesoglcolor.cpp
     resources/dye/dyepalette_replacesoglcolor_avx2.hpp
     resources/dye/dyepalette_replacesoglcolor_default.hpp
     resources/dye/dyepalette_replacesoglcolor_sse2.hpp
+    resources/dye/dyepaletteptr.h
     resources/effectdescription.h
     resources/emoteinfo.h
     resources/emotesprite.h

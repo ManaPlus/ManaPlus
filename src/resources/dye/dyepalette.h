@@ -25,10 +25,18 @@
 
 #include "resources/dye/dyecolor.h"
 
+#include "resources/dye/dyepaletteptr.h"
+
 #include <string>
 #include <vector>
 
 #include "localconsts.h"
+
+#define DYEPALETTE(palette, color) \
+    ((palette).*DyePalette::funcReplace##color)
+
+#define DYEPALETTEP(palette, color) \
+    ((palette)->*DyePalette::funcReplace##color)
 
 /**
  * Class for performing a linear interpolation between colors.
@@ -62,51 +70,10 @@ class DyePalette final
         /**
          * replace colors for SDL for S dye.
          */
-        void replaceSColor(uint32_t *restrict pixels,
-                           const int bufSize) const restrict2;
-
-        /**
-         * replace colors for SDL for S dye.
-         */
         void replaceSColorDefault(uint32_t *restrict pixels,
                                   const int bufSize) const restrict2;
 
-        /**
-         * replace colors for SDL for S dye.
-         */
-        FUNCTION_SIMD_DEFAULT
-        void replaceSColorSimd(uint32_t *restrict pixels,
-                               const int bufSize) const restrict2;
-
-        /**
-         * replace colors for SDL for S dye.
-         */
-        FUNCTION_SIMD_DEFAULT
-        void replaceSColorSse2(uint32_t *restrict pixels,
-                               const int bufSize) const restrict2;
-
-        /**
-         * replace colors for SDL for S dye.
-         */
-        FUNCTION_SIMD_DEFAULT
-        void replaceSColorAvx2(uint32_t *restrict pixels,
-                               const int bufSize) const restrict2;
-
 #ifdef SIMD_SUPPORTED
-        /**
-         * replace colors for SDL for S dye.
-         */
-        __attribute__ ((target ("sse2")))
-        void replaceSColorSimd(uint32_t *restrict pixels,
-                               const int bufSize) const restrict2;
-
-        /**
-         * replace colors for SDL for S dye.
-         */
-        __attribute__ ((target ("avx2")))
-        void replaceSColorSimd(uint32_t *restrict pixels,
-                               const int bufSize) const restrict2;
-
         /**
          * replace colors for SDL for S dye.
          */
@@ -312,6 +279,12 @@ class DyePalette final
         static void hexToColor(const std::string &restrict hexStr,
                                const uint8_t blockSize,
                                DyeColor &color) noexcept2;
+
+        static void initFunctions();
+
+        static DyeFunctionPtr funcReplaceSColor;
+        static DyeFunctionPtr funcReplaceSColorSse2;
+        static DyeFunctionPtr funcReplaceSColorAvx2;
 
 #ifndef UNITTESTS
     private:

@@ -519,6 +519,7 @@ static void calcTime(const char *const msg1,
 
 int TestLauncher::testDyeSSpeed()
 {
+/*
 #if defined __linux__ || defined __linux
     const int sz = 100000;
     uint32_t buf[sz];
@@ -532,12 +533,13 @@ int TestLauncher::testDyeSSpeed()
     runDyeTest("dye s salt", "sse2 time   ", replaceSColorSse2);
     runDyeTest("dye s salt", "avx2 time   ", replaceSColorAvx2);
 #endif  // defined __linux__ || defined __linux
-
+*/
     return 0;
 }
 
 int TestLauncher::testDyeASpeed()
 {
+/*
 #if defined __linux__ || defined __linux
     const int sz = 100000;
     uint32_t buf[sz];
@@ -551,7 +553,7 @@ int TestLauncher::testDyeASpeed()
     runDyeTest("dye a salt", "sse2 time   ", replaceAColorSse2);
     runDyeTest("dye a salt", "avx2 time   ", replaceAColorAvx2);
 #endif  // defined __linux__ || defined __linux
-
+*/
     return 0;
 }
 

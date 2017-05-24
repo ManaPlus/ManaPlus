@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2013-2017  The ManaPlus Developers
+ *  Copyright (C) 2011-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,31 +18,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_CPU_H
-#define UTILS_CPU_H
+#ifndef RESOURCES_DYE_DYEPALETTEPTR_H
+#define RESOURCES_DYE_DYEPALETTEPTR_H
 
 #include "localconsts.h"
 
-namespace Cpu
-{
-    enum
-    {
-        FEATURE_EMPTY = 0,
-        FEATURE_MMX   = 1,
-        FEATURE_SSE   = 2,
-        FEATURE_SSE2  = 4,
-        FEATURE_SSSE3 = 8,
-        FEATURE_SSE4  = 16,
-        FEATURE_SSE42 = 32,
-        FEATURE_AVX   = 64,
-        FEATURE_AVX2  = 128
-    };
+class DyePalette;
 
-    void detect();
+typedef void (DyePalette::*DyeFunctionPtr) (uint32_t *restrict pixels,
+                                            const int bufSize) const restrict2;
 
-    void printFlags();
-
-    uint32_t getFlags();
-}  // namespace Cpu
-
-#endif  // UTILS_CPU_H
+#endif  // RESOURCES_DYE_DYEPALETTEPTR_H

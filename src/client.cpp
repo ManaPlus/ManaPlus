@@ -134,6 +134,8 @@
 #include "resources/db/unitsdb.h"
 #include "resources/db/weaponsdb.h"
 
+#include "resources/dye/dyepalette.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "resources/sprite/spritereference.h"
@@ -401,6 +403,7 @@ void Client::gameInit()
     ConfigManager::checkConfigVersion();
     logVars();
     Cpu::detect();
+    DyePalette::initFunctions();
 #if defined(USE_OPENGL)
 #if !defined(ANDROID) && !defined(__APPLE__) && \
     !defined(__native_client__) && !defined(UNITTESTS)
