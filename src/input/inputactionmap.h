@@ -5672,6 +5672,12 @@ static const InputActionData inputActionData
         "clipboardcopy|copyclipboard",
         UseArgs_true,
         Protected_true},
+    {"keyGotoPc",
+        defaultAction(&Actions::commandGotoPc),
+        InputCondition::INGAME,
+        "goto|gotopc",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

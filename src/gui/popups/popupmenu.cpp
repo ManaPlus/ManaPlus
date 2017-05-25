@@ -1253,10 +1253,6 @@ void PopupMenu::handleLink(const std::string &link,
         if (mTextField)
             mTextField->handlePaste();
     }
-    else if (link == "goto" && !mName.empty())
-    {
-        adminHandler->gotoName(mName);
-    }
     else if (link == "recall" && !mName.empty())
     {
         adminHandler->recallName(mName);
@@ -2812,7 +2808,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: go to player position
-    mBrowserBox->addRow("goto", _("Goto"));
+    mBrowserBox->addRow("/gotopc 'NAME'", _("Goto"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: recall player to current position
     mBrowserBox->addRow("recall", _("Recall"));

@@ -123,6 +123,7 @@ namespace Actions
     decHandler(commandLoadPosition);
     decHandler(commandRandomWarp);
     decHandler(commandGotoNpc);
+    decHandler(commandGotoPc);
     decHandler(commandKiller);
     decHandler(commandKillable);
     decHandler(commandHeal);

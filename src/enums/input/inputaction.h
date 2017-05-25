@@ -697,6 +697,7 @@ enumStart(InputAction)
     COMMAND_SEND_CHARS,
     CLEAR_OUTFIT,
     CLIPBOARD_COPY,
+    COMMAND_GOTO_PC,
     TOTAL
 }
 enumEnd(InputAction);

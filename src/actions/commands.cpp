@@ -1438,6 +1438,15 @@ impHandler(commandGotoNpc)
     return true;
 }
 
+impHandler(commandGotoPc)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->gotoName(args);
+    return true;
+}
+
 impHandler(commandKiller)
 {
     adminHandler->killer(event.args);
