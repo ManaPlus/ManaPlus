@@ -1456,6 +1456,15 @@ impHandler(commandRecallPc)
     return true;
 }
 
+impHandler(commandIpCheck)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->ipcheckName(args);
+    return true;
+}
+
 impHandler(commandKiller)
 {
     adminHandler->killer(event.args);

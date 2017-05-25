@@ -1253,10 +1253,6 @@ void PopupMenu::handleLink(const std::string &link,
         if (mTextField)
             mTextField->handlePaste();
     }
-    else if (link == "ipcheck" && !mName.empty())
-    {
-        adminHandler->ipcheckName(mName);
-    }
     else if (link == "gm" && !mName.empty())
     {
         showGMPopup(mName);
@@ -2800,7 +2796,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: check player ip
-        mBrowserBox->addRow("ipcheck", _("Check ip"));
+        mBrowserBox->addRow("/ipcheck 'NAME'", _("Check ip"));
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: go to player position

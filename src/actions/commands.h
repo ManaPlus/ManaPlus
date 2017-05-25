@@ -125,6 +125,7 @@ namespace Actions
     decHandler(commandGotoNpc);
     decHandler(commandGotoPc);
     decHandler(commandRecallPc);
+    decHandler(commandIpCheck);
     decHandler(commandKiller);
     decHandler(commandKillable);
     decHandler(commandHeal);

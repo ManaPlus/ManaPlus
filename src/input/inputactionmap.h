@@ -5684,6 +5684,12 @@ static const InputActionData inputActionData
         "recall|recallpc",
         UseArgs_true,
         Protected_true},
+    {"keyCommandIpCheck",
+        defaultAction(&Actions::commandIpCheck),
+        InputCondition::INGAME,
+        "ipcheck|checkip",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

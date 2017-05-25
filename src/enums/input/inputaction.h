@@ -699,6 +699,7 @@ enumStart(InputAction)
     CLIPBOARD_COPY,
     COMMAND_GOTO_PC,
     COMMAND_RECALL_PC,
+    COMMAND_IP_CHECK,
     TOTAL
 }
 enumEnd(InputAction);
