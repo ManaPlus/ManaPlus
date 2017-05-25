@@ -1253,10 +1253,6 @@ void PopupMenu::handleLink(const std::string &link,
         if (mTextField)
             mTextField->handlePaste();
     }
-    else if (link == "open link" && !mName.empty())
-    {
-        openBrowser(mName);
-    }
     else if (link == "clipboard link" && !mName.empty())
     {
         sendBuffer(mName);
@@ -2138,7 +2134,7 @@ void PopupMenu::showLinkPopup(const std::string &link)
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: open link in browser
-    mBrowserBox->addRow("open link", _("Open link"));
+    mBrowserBox->addRow("/open 'NAME'", _("Open link"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy link to clipboard
     mBrowserBox->addRow("clipboard link", _("Copy to clipboard"));
