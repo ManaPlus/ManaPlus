@@ -696,6 +696,7 @@ enumStart(InputAction)
     COMMAND_SEND_MOUSE_KEY,
     COMMAND_SEND_CHARS,
     CLEAR_OUTFIT,
+    CLIPBOARD_COPY,
     TOTAL
 }
 enumEnd(InputAction);

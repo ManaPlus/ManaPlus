@@ -5666,6 +5666,12 @@ static const InputActionData inputActionData
         "clearoutfit|outfitclear",
         UseArgs_false,
         Protected_true},
+    {"keyClipboardCopy",
+        defaultAction(&Actions::clipboardCopy),
+        InputCondition::INGAME,
+        "clipboardcopy|copyclipboard",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

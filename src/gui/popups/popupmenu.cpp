@@ -1253,10 +1253,6 @@ void PopupMenu::handleLink(const std::string &link,
         if (mTextField)
             mTextField->handlePaste();
     }
-    else if (link == "clipboard link" && !mName.empty())
-    {
-        sendBuffer(mName);
-    }
     else if (link == "goto" && !mName.empty())
     {
         adminHandler->gotoName(mName);
@@ -2137,7 +2133,7 @@ void PopupMenu::showLinkPopup(const std::string &link)
     mBrowserBox->addRow("/open 'NAME'", _("Open link"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy link to clipboard
-    mBrowserBox->addRow("clipboard link", _("Copy to clipboard"));
+    mBrowserBox->addRow("/clipboardcopy 'NAME'", _("Copy to clipboard"));
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu

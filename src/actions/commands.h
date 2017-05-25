@@ -96,6 +96,7 @@ namespace Actions
     decHandler(skill);
     decHandler(craft);
     decHandler(npcClipboard);
+    decHandler(clipboardCopy);
     decHandler(addPickup);
     decHandler(removePickup);
     decHandler(ignorePickup);

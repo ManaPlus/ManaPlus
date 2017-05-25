@@ -73,6 +73,7 @@
 
 #include "utils/booleanoptions.h"
 #include "utils/chatutils.h"
+#include "utils/copynpaste.h"
 #include "utils/gmfunctions.h"
 #include "utils/parameters.h"
 #include "utils/process.h"
@@ -1195,6 +1196,15 @@ impHandler(npcClipboard)
         }
     }
     return false;
+}
+
+impHandler(clipboardCopy)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    sendBuffer(args);
+    return true;
 }
 
 impHandler(addPickup)
