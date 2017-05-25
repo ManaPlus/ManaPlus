@@ -682,6 +682,37 @@ gcc-6_tests_simd:
   tags:
     - docker
 
+gcc-6_tests_lto:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  variables:
+    POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-6_tests_lto_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
 gcc-5_tests:
   stage: build
   script:
