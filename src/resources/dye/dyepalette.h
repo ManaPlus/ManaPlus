@@ -73,6 +73,12 @@ class DyePalette final
         void replaceSColorDefault(uint32_t *restrict pixels,
                                   const int bufSize) const restrict2;
 
+        /**
+         * replace colors for SDL for A dye.
+         */
+        void replaceAColorDefault(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2;
+
 #ifdef SIMD_SUPPORTED
         /**
          * replace colors for SDL for S dye.
@@ -87,15 +93,7 @@ class DyePalette final
         __attribute__ ((target ("avx2")))
         void replaceSColorAvx2(uint32_t *restrict pixels,
                                const int bufSize) const restrict2;
-#endif  // SIMD_SUPPORTED
 
-        /**
-         * replace colors for SDL for A dye.
-         */
-        void replaceAColorDefault(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2;
-
-#ifdef SIMD_SUPPORTED
         /**
          * replace colors for SDL for A dye.
          */
@@ -119,6 +117,13 @@ class DyePalette final
                                      const int bufSize) const restrict2;
 #ifdef SIMD_SUPPORTED
         /**
+         * replace colors for OpenGL for A dye.
+         */
+        __attribute__ ((target ("avx2")))
+        void replaceAOGLColorAvx2(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2;
+
+        /**
          * replace colors for OpenGL for S dye.
          */
         __attribute__ ((target ("sse2")))
@@ -130,6 +135,13 @@ class DyePalette final
         __attribute__ ((target ("avx2")))
         void replaceSOGLColorAvx2(uint32_t *restrict pixels,
                                   const int bufSize) const restrict2;
+
+        /**
+         * replace colors for OpenGL for A dye.
+         */
+        __attribute__ ((target ("sse2")))
+        void replaceAOGLColorSse2(uint32_t *restrict pixels,
+                                  const int bufSize) const restrict2;
 #endif  // SIMD_SUPPORTED
 
         /**
@@ -138,20 +150,6 @@ class DyePalette final
         void replaceAOGLColorDefault(uint32_t *restrict pixels,
                                      const int bufSize) const restrict2;
 
-#ifdef SIMD_SUPPORTED
-        /**
-         * replace colors for OpenGL for A dye.
-         */
-        __attribute__ ((target ("sse2")))
-        void replaceAOGLColorSse2(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2;
-        /**
-         * replace colors for OpenGL for A dye.
-         */
-        __attribute__ ((target ("avx2")))
-        void replaceAOGLColorAvx2(uint32_t *restrict pixels,
-                                  const int bufSize) const restrict2;
-#endif  // SIMD_SUPPORTED
 #endif  // USE_OPENGL
 
         static unsigned int hexDecode(const signed char c)
@@ -163,18 +161,23 @@ class DyePalette final
 
         static void initFunctions();
 
-        static DyeFunctionPtr funcReplaceSColor;
-        static DyeFunctionPtr funcReplaceSColorSse2;
-        static DyeFunctionPtr funcReplaceSColorAvx2;
+#ifdef SIMD_SUPPORTED
+#ifdef USE_OPENGL
         static DyeFunctionPtr funcReplaceSOGLColor;
         static DyeFunctionPtr funcReplaceSOGLColorSse2;
         static DyeFunctionPtr funcReplaceSOGLColorAvx2;
-        static DyeFunctionPtr funcReplaceAColor;
-        static DyeFunctionPtr funcReplaceAColorSse2;
-        static DyeFunctionPtr funcReplaceAColorAvx2;
         static DyeFunctionPtr funcReplaceAOGLColor;
         static DyeFunctionPtr funcReplaceAOGLColorSse2;
         static DyeFunctionPtr funcReplaceAOGLColorAvx2;
+#endif  // USE_OPENGL
+
+        static DyeFunctionPtr funcReplaceSColor;
+        static DyeFunctionPtr funcReplaceSColorSse2;
+        static DyeFunctionPtr funcReplaceSColorAvx2;
+        static DyeFunctionPtr funcReplaceAColor;
+        static DyeFunctionPtr funcReplaceAColorSse2;
+        static DyeFunctionPtr funcReplaceAColorAvx2;
+#endif  // SIMD_SUPPORTED
 
 #ifndef UNITTESTS
     private:
