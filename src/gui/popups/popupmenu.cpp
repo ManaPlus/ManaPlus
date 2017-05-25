@@ -89,10 +89,8 @@
 
 #include "resources/skill/skillinfo.h"
 
-#include "utils/copynpaste.h"
 #include "utils/checkutils.h"
 #include "utils/gettext.h"
-#include "utils/process.h"
 
 #include "debug.h"
 
