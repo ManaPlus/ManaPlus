@@ -519,7 +519,6 @@ static void calcTime(const char *const msg1,
 
 int TestLauncher::testDyeSSpeed()
 {
-/*
 #if defined __linux__ || defined __linux
     const int sz = 100000;
     uint32_t buf[sz];
@@ -529,17 +528,14 @@ int TestLauncher::testDyeSSpeed()
     DyePalette pal("#0000ff,000000,000020,706050", 6);
 
     runDyeTest("dye s salt", "default time", replaceSColorDefault);
-    runDyeTest("dye s salt", "simd time   ", replaceSColorSimd);
     runDyeTest("dye s salt", "sse2 time   ", replaceSColorSse2);
     runDyeTest("dye s salt", "avx2 time   ", replaceSColorAvx2);
 #endif  // defined __linux__ || defined __linux
-*/
     return 0;
 }
 
 int TestLauncher::testDyeASpeed()
 {
-/*
 #if defined __linux__ || defined __linux
     const int sz = 100000;
     uint32_t buf[sz];
@@ -549,11 +545,9 @@ int TestLauncher::testDyeASpeed()
     DyePalette pal("#0000ffff,00000000,000020ff,70605040", 8);
 
     runDyeTest("dye a salt", "default time", replaceAColorDefault);
-    runDyeTest("dye a salt", "simd time   ", replaceAColorSimd);
     runDyeTest("dye a salt", "sse2 time   ", replaceAColorSse2);
     runDyeTest("dye a salt", "avx2 time   ", replaceAColorAvx2);
 #endif  // defined __linux__ || defined __linux
-*/
     return 0;
 }
 
