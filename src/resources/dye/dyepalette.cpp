@@ -44,7 +44,6 @@
 
 #include "debug.h"
 
-#ifdef SIMD_SUPPORTED
 DyeFunctionPtr DyePalette::funcReplaceSColor = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceSColorSse2 = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceSColorAvx2 = nullptr;
@@ -60,7 +59,6 @@ DyeFunctionPtr DyePalette::funcReplaceAOGLColor = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceAOGLColorSse2 = nullptr;
 DyeFunctionPtr DyePalette::funcReplaceAOGLColorAvx2 = nullptr;
 #endif  // USE_OPENGL
-#endif  // SIMD_SUPPORTED
 
 DyePalette::DyePalette(const std::string &restrict description,
                        const uint8_t blockSize) :

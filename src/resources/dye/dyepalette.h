@@ -161,7 +161,6 @@ class DyePalette final
 
         static void initFunctions();
 
-#ifdef SIMD_SUPPORTED
 #ifdef USE_OPENGL
         static DyeFunctionPtr funcReplaceSOGLColor;
         static DyeFunctionPtr funcReplaceSOGLColorSse2;
@@ -177,7 +176,6 @@ class DyePalette final
         static DyeFunctionPtr funcReplaceAColor;
         static DyeFunctionPtr funcReplaceAColorSse2;
         static DyeFunctionPtr funcReplaceAColorAvx2;
-#endif  // SIMD_SUPPORTED
 
 #ifndef UNITTESTS
     private:
