@@ -503,6 +503,7 @@ static void calcTime(const char *const msg1,
     printf("%s: %011ld\n", msg2, diff);
 }
 
+#ifdef SIMD_SUPPORTED
 #define runDyeTest(msg1, msg2, func) \
     initBuffer(buf, sz); \
     pal.func(buf, sz); \
@@ -514,12 +515,13 @@ static void calcTime(const char *const msg1,
         time1, \
         time2, \
         buf)
-
+#endif  // SIMD_SUPPORTED
 #endif  // defined __linux__ || defined __linux
 
 int TestLauncher::testDyeSSpeed()
 {
 #if defined __linux__ || defined __linux
+#ifdef SIMD_SUPPORTED
     const int sz = 100000;
     uint32_t buf[sz];
     timespec time1;
@@ -530,6 +532,7 @@ int TestLauncher::testDyeSSpeed()
     runDyeTest("dye s salt", "default time", replaceSColorDefault);
     runDyeTest("dye s salt", "sse2 time   ", replaceSColorSse2);
     runDyeTest("dye s salt", "avx2 time   ", replaceSColorAvx2);
+#endif  // SIMD_SUPPORTED
 #endif  // defined __linux__ || defined __linux
     return 0;
 }
@@ -537,6 +540,7 @@ int TestLauncher::testDyeSSpeed()
 int TestLauncher::testDyeASpeed()
 {
 #if defined __linux__ || defined __linux
+#ifdef SIMD_SUPPORTED
     const int sz = 100000;
     uint32_t buf[sz];
     timespec time1;
@@ -547,6 +551,7 @@ int TestLauncher::testDyeASpeed()
     runDyeTest("dye a salt", "default time", replaceAColorDefault);
     runDyeTest("dye a salt", "sse2 time   ", replaceAColorSse2);
     runDyeTest("dye a salt", "avx2 time   ", replaceAColorAvx2);
+#endif  // SIMD_SUPPORTED
 #endif  // defined __linux__ || defined __linux
     return 0;
 }
