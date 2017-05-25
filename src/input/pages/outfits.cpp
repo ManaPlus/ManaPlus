@@ -44,6 +44,12 @@ SetupActionData setupActionDataOutfits[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Clear outfit"),
+        InputAction::CLEAR_OUTFIT,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Copy Outfit to other outfit"),
         InputAction::COPY_OUTFIT,
         "",

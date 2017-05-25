@@ -792,7 +792,7 @@ void PopupMenu::showOutfitsWindowPopup(const int x, const int y)
     mBrowserBox->addRow("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: clear selected outfit
-    mBrowserBox->addRow("clear outfit", _("Clear outfit"));
+    mBrowserBox->addRow("/clearoutfit", _("Clear outfit"));
     mBrowserBox->addRow("##3---");
 
     addWindowMenu(outfitWindow);
@@ -1242,11 +1242,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         showChangePos(getX(), getY());
         return;
-    }
-    else if (link == "clear outfit")
-    {
-        if (outfitWindow)
-            outfitWindow->clearCurrentOutfit();
     }
     else if (link == "clipboard copy")
     {

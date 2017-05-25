@@ -695,6 +695,7 @@ enumStart(InputAction)
     SHOW_ITEMS,
     COMMAND_SEND_MOUSE_KEY,
     COMMAND_SEND_CHARS,
+    CLEAR_OUTFIT,
     TOTAL
 }
 enumEnd(InputAction);

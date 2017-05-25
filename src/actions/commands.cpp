@@ -1895,6 +1895,15 @@ impHandler0(outfitToChat)
     return true;
 }
 
+impHandler0(outfitClear)
+{
+    if (!outfitWindow)
+        return false;
+
+    outfitWindow->clearCurrentOutfit();
+    return true;
+}
+
 impHandler(moveAttackUp)
 {
     if (!actorManager)

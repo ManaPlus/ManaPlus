@@ -5660,6 +5660,12 @@ static const InputActionData inputActionData
         "sendchar|sendchars|charsend",
         UseArgs_true,
         Protected_true},
+    {"keyClearOutfit",
+        defaultAction(&Actions::outfitClear),
+        InputCondition::DEFAULT | InputCondition::INGAME,
+        "clearoutfit|outfitclear",
+        UseArgs_false,
+        Protected_true},
 };
 
 #undef defaultAction
