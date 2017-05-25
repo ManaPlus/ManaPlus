@@ -1447,6 +1447,15 @@ impHandler(commandGotoPc)
     return true;
 }
 
+impHandler(commandRecallPc)
+{
+    const std::string args = event.args;
+    if (args.empty())
+        return false;
+    adminHandler->recallName(args);
+    return true;
+}
+
 impHandler(commandKiller)
 {
     adminHandler->killer(event.args);

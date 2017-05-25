@@ -698,6 +698,7 @@ enumStart(InputAction)
     CLEAR_OUTFIT,
     CLIPBOARD_COPY,
     COMMAND_GOTO_PC,
+    COMMAND_RECALL_PC,
     TOTAL
 }
 enumEnd(InputAction);

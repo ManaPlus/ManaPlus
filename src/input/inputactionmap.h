@@ -5678,6 +5678,12 @@ static const InputActionData inputActionData
         "goto|gotopc",
         UseArgs_true,
         Protected_true},
+    {"keyCommandRecallPc",
+        defaultAction(&Actions::commandRecallPc),
+        InputCondition::INGAME,
+        "recall|recallpc",
+        UseArgs_true,
+        Protected_true},
 };
 
 #undef defaultAction

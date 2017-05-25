@@ -1253,10 +1253,6 @@ void PopupMenu::handleLink(const std::string &link,
         if (mTextField)
             mTextField->handlePaste();
     }
-    else if (link == "recall" && !mName.empty())
-    {
-        adminHandler->recallName(mName);
-    }
     else if (link == "ipcheck" && !mName.empty())
     {
         adminHandler->ipcheckName(mName);
@@ -2811,7 +2807,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
     mBrowserBox->addRow("/gotopc 'NAME'", _("Goto"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: recall player to current position
-    mBrowserBox->addRow("recall", _("Recall"));
+    mBrowserBox->addRow("/recallpc 'NAME'", _("Recall"));
     // TRANSLATORS: popup menu item
     // TRANSLATORS: revive player
     mBrowserBox->addRow("/alive 'NAME'", _("Revive"));
