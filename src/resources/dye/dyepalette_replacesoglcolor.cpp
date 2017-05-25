@@ -303,8 +303,10 @@ void DyePalette::replaceSOGLColorAvx2(uint32_t *restrict pixels,
                 base = _mm256_or_si256(srcAnd, dstAnd);
                 ++ it;
             }
-//            _mm256_store_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
-            _mm256_storeu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]), base);
+//            _mm256_store_si256(reinterpret_cast<__m256i*>(&pixels[ptr]),
+//                base);
+            _mm256_storeu_si256(reinterpret_cast<__m256i*>(&pixels[ptr]),
+                base);
         }
     }
     else
