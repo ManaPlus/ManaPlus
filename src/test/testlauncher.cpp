@@ -481,6 +481,7 @@ int TestLauncher::testDye()
 }
 
 #if defined __linux__ || defined __linux
+#ifdef SIMD_SUPPORTED
 static void initBuffer(uint32_t *const buf,
                        const int sz)
 {
@@ -503,7 +504,6 @@ static void calcTime(const char *const msg1,
     printf("%s: %011ld\n", msg2, diff);
 }
 
-#ifdef SIMD_SUPPORTED
 #define runDyeTest(msg1, msg2, func) \
     initBuffer(buf, sz); \
     pal.func(buf, sz); \
