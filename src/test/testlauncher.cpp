@@ -46,7 +46,11 @@
 #include "resources/wallpaper.h"
 
 #include "resources/dye/dye.h"
+#if defined __linux__ || defined __linux
+#ifdef SIMD_SUPPORTED
 #include "resources/dye/dyepalette.h"
+#endif  // SIMD_SUPPORTED
+#endif  // defined __linux__ || defined __linux
 
 #include "resources/image/image.h"
 
@@ -645,14 +649,15 @@ int TestLauncher::testDraw()
     img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_left.png");
     img[1] = Theme::getImageFromTheme("graphics/sprites/arrow_right.png");
     img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_up.png");
+    Skin *skin = theme->load("button.xml", "button.xml");
+    if (!skin)
+        return 0;
+
     ImageCollection *const col = new ImageCollection;
     ImageCollection *const col2 = new ImageCollection;
     ImageVertexes *const vert = new ImageVertexes;
     vert->image = img[2];
-    Skin *skin = theme->load("button.xml", "button.xml");
 
-    if (!skin)
-        return 0;
     mainGraphics->pushClipArea(Rect(10, 20, 790, 580));
     mainGraphics->setColor(Color(0xFFU, 0xFFU, 0x00U, 0xFFU));
     mainGraphics->drawRectangle(Rect(0, 0, 400, 200));
@@ -712,6 +717,8 @@ int TestLauncher::testDraw()
     sleep(10);
 
     delete col;
+    delete col2;
+    delete vert;
     return 0;
 }
 

@@ -367,7 +367,7 @@ void SDLInput::simulateKey(const int guiKey,
     keyInput.setType(KeyEventType::PRESSED);
 #ifdef USE_SDL2
     char str[2];
-    str[0] = guiKey;
+    str[0] = CAST_S8(guiKey);
     str[1] = 0;
 
     keyInput.setKey(Key(KeyValue::TEXTINPUT));

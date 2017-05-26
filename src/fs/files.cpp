@@ -287,11 +287,11 @@ void Files::enumFiles(StringVect &files,
 {
     if (findLast(path, dirSeparator) == false)
         path += dirSeparator;
-    const struct dirent *next_file = nullptr;
     DIR *const dir = opendir(path.c_str());
 
     if (dir)
     {
+        const struct dirent *next_file = nullptr;
         while ((next_file = readdir(dir)))
         {
             const std::string file = next_file->d_name;
@@ -313,4 +313,3 @@ void Files::enumFiles(StringVect &files,
         closedir(dir);
     }
 }
-
