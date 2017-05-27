@@ -143,9 +143,9 @@
 #if GCC_VERSION >= 40900
 #define SIMD_SUPPORTED
 #endif  // GCC_VERSION > 40900
-#if defined(__clang__) && CLANG_VERSION >= 30600
+#if defined(__clang__) && CLANG_VERSION >= 30800
 #define SIMD_SUPPORTED
-#endif  // defined(__clang__) && CLANG_VERSION >= 30600
+#endif  // defined(__clang__) && CLANG_VERSION >= 30800
 #endif  // __x86_64__
 
 #ifdef SIMD_SUPPORTED
