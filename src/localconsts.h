@@ -142,13 +142,10 @@
 #if !defined(__clang__) && defined(__GNUC__)
 // not for FreeBSD
 #if !defined(__FreeBSD_kernel__) || !defined(__GLIBC__)
-// not works in mingw
-#ifndef WIN64
 // gcc 4.8 look like support avx2, but need global define for enable any SIMD
 #if GCC_VERSION >= 40900
 #define SIMD_SUPPORTED
 #endif  // GCC_VERSION > 40900
-#endif  // WIN64
 #endif  // !defined(__FreeBSD_kernel__) || !defined(__GLIBC__)
 #endif  // !defined(__clang__) && defined(__GNUC__)
 #endif  // __x86_64__
