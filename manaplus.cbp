@@ -1026,6 +1026,7 @@
 		<Unit filename="src/resources/dye/dye.h" />
 		<Unit filename="src/resources/dye/dyepalette.h" />
 		<Unit filename="src/resources/dye/dyecolor.h" />
+		<Unit filename="src/resources/dye/dyepaletteptr.h" />
 		<Unit filename="src/resources/map/tileanimation.h" />
 		<Unit filename="src/resources/map/tileinfo.h" />
 		<Unit filename="src/resources/map/mapitem.h" />
@@ -1615,6 +1616,8 @@
 		<Unit filename="src/winver.h" />
 		<Unit filename="src/textcommand.h" />
 		<Unit filename="src/statuseffect.h" />
+		<Unit filename="src/test/unittests.h" />
+		<Unit filename="src/test/doctest.h" />
 		<Unit filename="src/test/testmain.h" />
 		<Unit filename="src/test/testlauncher.h" />
 		<Unit filename="src/position.h" />
