@@ -139,13 +139,10 @@
 #endif  // ENABLE_CILKPLUS
 
 #ifdef __x86_64__
-// not for FreeBSD
-#if !defined(__FreeBSD_kernel__) || !defined(__GLIBC__)
 // gcc 4.8 look like support avx2, but need global define for enable any SIMD
 #if GCC_VERSION >= 40900
 #define SIMD_SUPPORTED
 #endif  // GCC_VERSION > 40900
-#endif  // !defined(__FreeBSD_kernel__) || !defined(__GLIBC__)
 #if defined(__clang__) && CLANG_VERSION >= 30600
 #define SIMD_SUPPORTED
 #endif  // defined(__clang__) && CLANG_VERSION >= 30600
