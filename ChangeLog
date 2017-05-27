@@ -1,3 +1,11 @@
+2017-05-27 New release 1.7.5.27
+fix: default configuration files in NaCl builds.
+fix: simd functions working with LTO compilation flags.
+add: assert in debug tab about non 32 bit images.
+add: support for testing library doctest.
+add: improve load speed in Android builds.
+add: different chat commands.
+
 2017-05-14 New release 1.7.5.14
 fix: possible crash if exit while downloading servers list.
 fix: crashes in cart and some other inventories.
