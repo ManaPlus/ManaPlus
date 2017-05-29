@@ -208,9 +208,9 @@ void Dirs::mountDataDir()
         fprintf(stderr, "Can't find Resources directory\n");
     }
     CFRelease(resourcesURL);
-    // possible crash
-    strncat(path, "/data", PATH_MAX - 1);
-    VirtFs::mountDir(path, Append_false);
+    std::string path2 = pathJoin(path, "data");
+    VirtFs::mountDir(pathJoin(path2, "perserver/default"), Append_false);
+    VirtFs::mountDir(path2, Append_false);
 // possible this need for support run client from dmg images.
 //    mPackageDir = path;
 #endif  // defined __APPLE__
