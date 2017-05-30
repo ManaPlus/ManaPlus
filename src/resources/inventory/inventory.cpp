@@ -22,8 +22,6 @@
 
 #include "resources/inventory/inventory.h"
 
-#include "logger.h"
-
 #include "being/playerinfo.h"
 
 #include "net/inventoryhandler.h"
