@@ -190,6 +190,7 @@ void Item::addCard(const int card)
 
 void Item::setOptions(const ItemOptionsList *const options)
 {
+    delete2(mOptions);
     mOptions = ItemOptionsList::copy(options);
 }
 
