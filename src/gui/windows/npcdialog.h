@@ -278,12 +278,12 @@ class NpcDialog final : public Window,
         std::string mNewText;
 
         // Used for choice input
+        StringVect mItems;
+        std::vector<Image *> mImages;
         ExtendedListBox *mItemList A_NONNULLPOINTER;
         ScrollArea *mListScrollArea A_NONNULLPOINTER;
         Container *mSkinContainer A_NONNULLPOINTER;
         ScrollArea *mSkinScrollArea A_NONNULLPOINTER;
-        StringVect mItems;
-        std::vector<Image *> mImages;
         ItemLinkHandler *mItemLinkHandler A_NONNULLPOINTER;
 
         // Used for string and integer input
