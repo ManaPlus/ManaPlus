@@ -79,6 +79,7 @@
 #include "gui/windows/mailwindow.h"
 #include "gui/windows/minimap.h"
 #include "gui/windows/ministatuswindow.h"
+#include "gui/windows/npcdialog.h"
 #include "gui/windows/npcselldialog.h"
 #include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
@@ -477,11 +478,10 @@ TEST_CASE("Windows tests", "windowmanager")
     }
     SECTION("NpcDialog")
     {
-//  for now have random issue. Almost impossible to reproduce.
-//        NpcDialog *dialog = CREATEWIDGETR(NpcDialog, BeingId_zero);
-//        gui->draw();
-//        mainGraphics->updateScreen();
-//        delete2(dialog);
+        NpcDialog *dialog = CREATEWIDGETR(NpcDialog, BeingId_zero);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(dialog);
     }
     SECTION("NpcSellDialog")
     {
