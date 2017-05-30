@@ -34,6 +34,7 @@
 
 #include "listeners/inventorylistener.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -151,7 +152,8 @@ void Inventory::setItem(const int index,
 {
     if (index < 0 || index >= CAST_S32(mSize))
     {
-        logger->log("Warning: invalid inventory index: %d", index);
+        reportAlways("Warning: invalid inventory index: %d",
+            index);
         return;
     }
 
@@ -195,7 +197,8 @@ void Inventory::setCards(const int index,
 {
     if (index < 0 || index >= CAST_S32(mSize))
     {
-        logger->log("Warning: invalid inventory index: %d", index);
+        reportAlways("Warning: invalid inventory index: %d",
+            index);
         return;
     }
 
@@ -209,7 +212,8 @@ void Inventory::setOptions(const int index,
 {
     if (index < 0 || index >= CAST_S32(mSize))
     {
-        logger->log("Warning: invalid inventory index: %d", index);
+        reportAlways("Warning: invalid inventory index: %d",
+            index);
         return;
     }
     Item *const item1 = mItems[index];
@@ -467,10 +471,8 @@ void Inventory::restoreVirtuals()
 {
     const int sz = CAST_S32(mSize);
 
-    logger->log("Inventory::restoreVirtuals 1");
     FOR_EACH (IntMapCIter, it, mVirtualRemove)
     {
-        logger->log("Inventory::restoreVirtuals 2");
         const int index = (*it).first;
         if (index < 0 || index >= sz)
             continue;
