@@ -280,6 +280,11 @@ ItemContainer::~ItemContainer()
         mProtectedImg->decRef();
         mProtectedImg = nullptr;
     }
+    if (mCellBackgroundImg)
+    {
+        mCellBackgroundImg->decRef();
+        mCellBackgroundImg = nullptr;
+    }
 
     if (theme)
         theme->unload(mSkin);
