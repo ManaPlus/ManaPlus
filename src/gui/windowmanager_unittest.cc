@@ -43,7 +43,10 @@
 #include "gui/popups/beingpopup.h"
 #include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
+#include "gui/popups/skillpopup.h"
 #include "gui/popups/spellpopup.h"
+#include "gui/popups/speechbubble.h"
+#include "gui/popups/statuspopup.h"
 #include "gui/popups/textboxpopup.h"
 #include "gui/popups/textpopup.h"
 
@@ -652,6 +655,20 @@ TEST_CASE("Windows tests", "windowmanager")
         mainGraphics->updateScreen();
         delete2(popupMenu);
     }
+    SECTION("skillPopup")
+    {
+        CREATEWIDGETV0(skillPopup, SkillPopup);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(skillPopup);
+    }
+    SECTION("SpeechBubble")
+    {
+        SpeechBubble *bubble = CREATEWIDGETR0(SpeechBubble);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(bubble);
+    }
     SECTION("beingPopup")
     {
         CREATEWIDGETV0(beingPopup, BeingPopup);
@@ -686,6 +703,13 @@ TEST_CASE("Windows tests", "windowmanager")
         gui->draw();
         mainGraphics->updateScreen();
         delete2(spellPopup);
+    }
+    SECTION("StatusPopup")
+    {
+        StatusPopup *status = CREATEWIDGETR0(StatusPopup);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(status);
     }
     SECTION("desktop")
     {
