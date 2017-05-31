@@ -51,6 +51,7 @@
 #include "gui/popups/textpopup.h"
 
 #include "gui/widgets/desktop.h"
+#include "gui/widgets/emoteshortcutcontainer.h"
 #include "gui/widgets/createwidget.h"
 
 #include "gui/windows/bankwindow.h"
@@ -212,7 +213,15 @@ TEST_CASE("Windows tests", "windowmanager")
         mainGraphics->updateScreen();
         delete2(bankWindow);
     }
-    SECTION("buyDialog")
+    SECTION("buyDialog1")
+    {
+        BuyDialog *dialog;
+        CREATEWIDGETV0(dialog, BuyDialog);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(dialog);
+    }
+    SECTION("buyDialog2")
     {
         BuyDialog *dialog;
         CREATEWIDGETV(dialog, BuyDialog,
@@ -221,6 +230,37 @@ TEST_CASE("Windows tests", "windowmanager")
         gui->draw();
         mainGraphics->updateScreen();
         delete2(dialog);
+    }
+#ifdef TMWA_SUPPORT
+    SECTION("buyDialog3")
+    {
+        BuyDialog *dialog;
+        CREATEWIDGETV(dialog, BuyDialog,
+            "user",
+            DEFAULT_CURRENCY);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(dialog);
+    }
+#endif  // TMWA_SUPPORT
+    SECTION("buyDialog4")
+    {
+        BuyDialog *dialog;
+        BeingTypeId id = static_cast<BeingTypeId>(1);
+        Map *map = new Map("test map",
+            10, 10,
+            32, 32);
+        Being *being = new Being(BeingId_zero,
+            ActorType::Avatar,
+            id,
+            map);
+        CREATEWIDGETV(dialog, BuyDialog,
+            being,
+            DEFAULT_CURRENCY);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(dialog);
+        delete2(being);
     }
     SECTION("BuyingStoreSellDialog")
     {
@@ -231,10 +271,18 @@ TEST_CASE("Windows tests", "windowmanager")
         mainGraphics->updateScreen();
         delete2(dialog);
     }
-    SECTION("BuySellDialog")
+    SECTION("BuySellDialog1")
     {
         BuySellDialog *dialog;
         CREATEWIDGETV(dialog, BuySellDialog, BeingId_zero);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(dialog);
+    }
+    SECTION("BuySellDialog2")
+    {
+        BuySellDialog *dialog;
+        CREATEWIDGETV(dialog, BuySellDialog, "user");
         gui->draw();
         mainGraphics->updateScreen();
         delete2(dialog);
@@ -561,7 +609,18 @@ TEST_CASE("Windows tests", "windowmanager")
         mainGraphics->updateScreen();
         delete2(shopWindow);
     }
-    SECTION("ShortcutWindow")
+    SECTION("ShortcutWindow1")
+    {
+        EmoteShortcutContainer *container =
+            new EmoteShortcutContainer(nullptr);
+        CREATEWIDGETV(itemShortcutWindow, ShortcutWindow,
+            "name",
+            container);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(itemShortcutWindow);
+    }
+    SECTION("ShortcutWindow2")
     {
         CREATEWIDGETV(itemShortcutWindow, ShortcutWindow, "");
         gui->draw();
