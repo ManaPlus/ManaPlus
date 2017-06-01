@@ -2038,6 +2038,7 @@ manaplustests_SOURCES += \
 	      resources/map/speciallayer_unittest.cc \
 	      resources/map/maplayer_unittest.cc \
 	      resources/resourcemanager/resourcemanager_unittest.cc \
+	      resources/sdlimagehelper_unittest.cc \
 	      gui/windowmanager_unittest.cc
 
 if ENABLE_UNITTESTS
