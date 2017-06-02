@@ -32,14 +32,21 @@
 #include "utils/checkutils.h"
 #include "utils/sdlcheckutils.h"
 
-#include <SDL_gfxBlitFunc.h>
 #include <SDL_image.h>
 
-#include "debug.h"
+#include "localconsts.h"
+
+#if SDL_BYTEORDER == SDL_LIL_ENDIAN
+#include "resources/sdlgfxblitfunc.h"
+#else  // SDL_BYTEORDER == SDL_LIL_ENDIAN
+#include <SDL_gfxBlitFunc.h>
+#endif  // SDL_BYTEORDER == SDL_LIL_ENDIAN
 
 #ifndef SDL_BIG_ENDIAN
 #error missing SDL_endian.h
 #endif  // SDL_BYTEORDER
+
+#include "debug.h"
 
 bool SDLImageHelper::mEnableAlphaCache = false;
 
@@ -289,7 +296,12 @@ int SDLImageHelper::combineSurface(SDL_Surface *restrict const src,
                                    SDL_Surface *restrict const dst,
                                    SDL_Rect *restrict const dstrect)
 {
+#if SDL_BYTEORDER == SDL_LIL_ENDIAN
+    return SDLgfxBlitRGBA(src, srcrect, dst, dstrect);
+#else  // SDL_BYTEORDER == SDL_LIL_ENDIAN
+
     return SDL_gfxBlitRGBA(src, srcrect, dst, dstrect);
+#endif  // SDL_BYTEORDER == SDL_LIL_ENDIAN
 }
 
 void SDLImageHelper::copySurfaceToImage(const Image *const image,

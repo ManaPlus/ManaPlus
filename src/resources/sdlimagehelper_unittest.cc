@@ -450,6 +450,84 @@ TEST_CASE("sdlimagehelper combineSurface", "")
         MSDL_FreeSurface(surface2);
     }
 
+    SECTION("part mix 3")
+    {
+        SDL_Surface *surface1 = createSoftware32BitSurface(4, 4);
+        uint32_t *ptr1 = static_cast<uint32_t*>(surface1->pixels);
+
+        ptr1[0] = 0x10203040;
+        ptr1[1] = 0x20304050;
+        ptr1[2] = 0x30405060;
+        ptr1[3] = 0x708090a0;
+        ptr1[4] = 0x8090a0b0;
+        ptr1[5] = 0x10112233;
+        ptr1[6] = 0x20003344;
+        ptr1[7] = 0x90a0b0c0;
+        ptr1[8] = 0xa0b0c0d0;
+        ptr1[9] = 0x30330055;
+        ptr1[10] = 0x40445500;
+        ptr1[11] = 0xb0c0d0e0;
+        ptr1[12] = 0xc0d0e0f0;
+        ptr1[13] = 0xd0e0f000;
+        ptr1[14] = 0xe0f00010;
+        ptr1[15] = 0xf0001020;
+
+        SDL_Surface *surface2 = createSoftware32BitSurface(4, 4);
+        uint32_t *ptr2 = static_cast<uint32_t*>(surface2->pixels);
+
+        ptr2[0] = 0x50003344;
+        ptr2[1] = 0x60330055;
+        ptr2[2] = 0x70445500;
+        ptr2[3] = 0x80112233;
+        ptr2[4] = 0x90111111;
+        ptr2[5] = 0x90111111;
+        ptr2[6] = 0xff000000;
+        ptr2[7] = 0xff000000;
+        ptr2[8] = 0xff000000;
+        ptr2[9] = 0xff000000;
+        ptr2[10] = 0xff000000;
+        ptr2[11] = 0xff000000;
+        ptr2[12] = 0xff000000;
+        ptr2[13] = 0xff000000;
+        ptr2[14] = 0xff000000;
+        ptr2[15] = 0xff000000;
+
+        SDL_Rect rect1;
+        SDL_Rect rect2;
+        rect1.x = 1;
+        rect1.y = 1;
+        rect1.w = 2;
+        rect1.h = 2;
+        rect2.x = 0;
+        rect2.y = 0;
+        rect2.w = 2;
+        rect2.h = 2;
+        SDLImageHelper::combineSurface(surface2,
+            &rect2,
+            surface1,
+            &rect1);
+
+        REQUIRE(ptr1[0] == 0x10203040);
+        REQUIRE(ptr1[1] == 0x20304050);
+        REQUIRE(ptr1[2] == 0x30405060);
+        REQUIRE(ptr1[3] == 0x708090a0);
+        REQUIRE(ptr1[4] == 0x8090a0b0);
+        REQUIRE(ptr1[5] == 0x9f082b3c);
+        REQUIRE(ptr1[6] == 0xbd1f144e);
+        REQUIRE(ptr1[7] == 0x90a0b0c0);
+        REQUIRE(ptr1[8] == 0xa0b0c0d0);
+        REQUIRE(ptr1[9] == 0xbf1b0d23);
+        REQUIRE(ptr1[10] == 0xff1f230c);
+        REQUIRE(ptr1[11] == 0xb0c0d0e0);
+        REQUIRE(ptr1[12] == 0xc0d0e0f0);
+        REQUIRE(ptr1[13] == 0xd0e0f000);
+        REQUIRE(ptr1[14] == 0xe0f00010);
+        REQUIRE(ptr1[15] == 0xf0001020);
+
+        MSDL_FreeSurface(surface1);
+        MSDL_FreeSurface(surface2);
+    }
+
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");

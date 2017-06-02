@@ -505,6 +505,8 @@ BASE_SRC += events/actionevent.h \
 	      resources/sdl2softwareimagehelper.h \
 	      resources/sdl2softwarescreenshothelper.cpp \
 	      resources/sdl2softwarescreenshothelper.h \
+	      resources/sdlgfxblitfunc.cpp \
+	      resources/sdlgfxblitfunc.h \
 	      resources/sdlimagehelper.cpp \
 	      resources/sdlimagehelper.h \
 	      resources/sdlmusic.cpp \
