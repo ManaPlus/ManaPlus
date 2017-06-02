@@ -19,6 +19,8 @@
  */
 
 #ifndef USE_SDL2
+#include <SDL_endian.h>
+#if SDL_BYTEORDER == SDL_LIL_ENDIAN
 
 #include "test/unittests.h"
 
@@ -36,7 +38,6 @@
 
 #include "resources/sdlimagehelper.h"
 
-#include <SDL_endian.h>
 
 #include "debug.h"
 
@@ -455,4 +456,5 @@ TEST_CASE("sdlimagehelper combineSurface", "")
     delete2(logger);
 }
 
+#endif  // SDL_BYTEORDER == SDL_LIL_ENDIAN
 #endif  // USE_SDL2
