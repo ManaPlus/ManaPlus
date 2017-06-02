@@ -34,8 +34,6 @@
 
 #include "render/sdlgraphics.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #include "resources/sdlimagehelper.h"
 
 #include <SDL_endian.h>
