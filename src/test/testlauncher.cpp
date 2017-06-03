@@ -54,6 +54,9 @@
 
 #include "resources/image/image.h"
 
+
+#include <SDL_gfxBlitFunc.h>
+
 #include <unistd.h>
 
 #ifdef WIN32
@@ -62,6 +65,18 @@
 #endif  // WIN32
 
 #include <sys/time.h>
+
+#include "localconsts.h"
+
+#ifndef SDL_BIG_ENDIAN
+#error missing SDL_endian.h
+#endif  // SDL_BYTEORDER
+
+#if SDL_BYTEORDER == SDL_LIL_ENDIAN
+#ifndef USE_SDL2
+#include "resources/sdlgfxblitfunc.h"
+#endif  // USE_SDL2
+#endif  // SDL_BYTEORDER == SDL_LIL_ENDIAN
 
 #include "debug.h"
 
@@ -112,6 +127,8 @@ int TestLauncher::exec()
         return testStackSpeed();
     else if (mTest == "107")
         return testDyeASpeed();
+    else if (mTest == "108")
+        return testBlitSpeed();
 
     return -1;
 }
@@ -485,14 +502,6 @@ int TestLauncher::testDye()
 }
 
 #if defined __linux__ || defined __linux
-#ifdef SIMD_SUPPORTED
-static void initBuffer(uint32_t *const buf,
-                       const int sz)
-{
-    for (int f = 0; f < sz; f ++)
-        buf[f] = f;
-}
-
 static void calcTime(const char *const msg1,
                      const char *const msg2,
                      const timespec &time1,
@@ -506,6 +515,14 @@ static void calcTime(const char *const msg1,
         + static_cast<long int>(time1.tv_nsec)) / 1);
     printf("%s: %u\n", msg1, buf[0]);
     printf("%s: %011ld\n", msg2, diff);
+}
+
+#ifdef SIMD_SUPPORTED
+static void initBuffer(uint32_t *const buf,
+                       const int sz)
+{
+    for (int f = 0; f < sz; f ++)
+        buf[f] = f;
 }
 
 #define runDyeTest(msg1, msg2, func) \
@@ -556,6 +573,67 @@ int TestLauncher::testDyeASpeed()
     runDyeTest("dye a salt", "sse2 time   ", replaceAColorSse2);
     runDyeTest("dye a salt", "avx2 time   ", replaceAColorAvx2);
 #endif  // SIMD_SUPPORTED
+#endif  // defined __linux__ || defined __linux
+    return 0;
+}
+
+int TestLauncher::testBlitSpeed()
+{
+#if defined __linux__ || defined __linux
+#if SDL_BYTEORDER == SDL_LIL_ENDIAN
+#ifndef USE_SDL2
+
+    timespec time1;
+    timespec time2;
+    const int cnt1 = 10000;
+    const int cnt2 = 10;
+
+    SDL_Surface *const srcSurface = imageHelper->create32BitSurface(
+        64, 64);
+    SDL_Surface *const dstSurface = imageHelper->create32BitSurface(
+        512, 512);
+    for (int f = 0; f < 64 * 64; f ++)
+        static_cast<uint32_t*>(srcSurface->pixels)[f] = 0x11223344;
+    clock_gettime(CLOCK_MONOTONIC, &time1);
+    for (int d = 0; d < cnt2; d ++)
+    {
+        for (int f = 0; f < 512 * 512; f ++)
+            static_cast<uint32_t*>(dstSurface->pixels)[f] = 0x55667788;
+        for (int f = 0; f < cnt1; f ++)
+        {
+            SDLgfxBlitRGBA(srcSurface,
+                nullptr,
+                dstSurface,
+                nullptr);
+        }
+    }
+    calcTime("blit test",
+        "custom time",
+        time1,
+        time2,
+        static_cast<uint32_t*>(dstSurface->pixels));
+
+    clock_gettime(CLOCK_MONOTONIC, &time1);
+    for (int d = 0; d < cnt2; d ++)
+    {
+        for (int f = 0; f < 512 * 512; f ++)
+            static_cast<uint32_t*>(dstSurface->pixels)[f] = 0x55667788;
+        for (int f = 0; f < cnt1; f ++)
+        {
+            SDL_gfxBlitRGBA(srcSurface,
+                nullptr,
+                dstSurface,
+                nullptr);
+        }
+    }
+    calcTime("blit test",
+        "SDL_gfx time",
+        time1,
+        time2,
+        static_cast<uint32_t*>(dstSurface->pixels));
+
+#endif  // USE_SDL2
+#endif  // SDL_BYTEORDER == SDL_LIL_ENDIAN
 #endif  // defined __linux__ || defined __linux
     return 0;
 }

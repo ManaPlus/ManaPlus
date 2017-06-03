@@ -80,6 +80,8 @@ class TestLauncher final
 
         int testStackSpeed();
 
+        int testBlitSpeed();
+
     private:
         std::string mTest;
 
