@@ -366,20 +366,15 @@ void CompoundSprite::redraw() const
 
     delete2(graphics);
 
-    SDL_Surface *const surfaceA = MSDL_CreateRGBSurface(SDL_HWSURFACE,
-        BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
-
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
-    SDL_BlitSurface(surface, nullptr, surfaceA, nullptr);
 
-    delete mImage;
     delete mAlphaImage;
-
-    mImage = imageHelper->loadSurface(surface);
-    MSDL_FreeSurface(surface);
 
     if (ImageHelper::mEnableAlpha)
     {
+        SDL_Surface *const surfaceA = MSDL_CreateRGBSurface(SDL_HWSURFACE,
+            BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
+        SDL_BlitSurface(surface, nullptr, surfaceA, nullptr);
         mAlphaImage = imageHelper->loadSurface(surfaceA);
         MSDL_FreeSurface(surfaceA);
     }
@@ -387,6 +382,10 @@ void CompoundSprite::redraw() const
     {
         mAlphaImage = nullptr;
     }
+
+    delete mImage;
+    mImage = imageHelper->loadSurface(surface);
+    MSDL_FreeSurface(surface);
 #endif  // USE_SDL2
 }
 
