@@ -50,7 +50,7 @@ LGPL (c) A. Schiffler
 
 namespace
 {
-    struct SDL_gfxBlitInfo
+    struct SDL_gfxBlitInfo final
     {
         Uint8    *s_pixels;
         int       s_width;
