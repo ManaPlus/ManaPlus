@@ -193,7 +193,7 @@ void ShortcutWindow::widgetHidden(const Event &event)
         mItems->widgetHidden(event);
     if (mTabs)
     {
-        ScrollArea *const scroll = static_cast<ScrollArea *const>(
+        ScrollArea *const scroll = static_cast<ScrollArea *>(
             mTabs->getCurrentWidget());
         if (scroll)
         {

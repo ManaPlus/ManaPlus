@@ -4095,7 +4095,7 @@ void Being::drawHpBar(Graphics *restrict const graphics,
     if (p <= 0 || p > width)
         return;
 
-    const int dx = static_cast<const int>(static_cast<float>(width) / p);
+    const int dx = static_cast<int>(static_cast<float>(width) / p);
 
 #ifdef TMWA_SUPPORT
     if (!serverFeatures->haveServerHp())

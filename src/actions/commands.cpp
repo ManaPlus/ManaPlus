@@ -91,7 +91,7 @@ static std::string getNick(const InputEvent &event)
         if (!event.tab || event.tab->getType() != ChatTabType::WHISPER)
             return std::string();
 
-        WhisperTab *const whisper = static_cast<WhisperTab* const>(event.tab);
+        WhisperTab *const whisper = static_cast<WhisperTab *>(event.tab);
         if (whisper->getNick().empty())
         {
             // TRANSLATORS: change relation

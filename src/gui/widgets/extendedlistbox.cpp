@@ -55,7 +55,7 @@ void ExtendedListBox::draw(Graphics *const graphics)
         return;
 
     BLOCK_START("ExtendedListBox::draw")
-    ExtendedListModel *const model = static_cast<ExtendedListModel* const>(
+    ExtendedListModel *const model = static_cast<ExtendedListModel *>(
         mListModel);
 
     updateAlpha();

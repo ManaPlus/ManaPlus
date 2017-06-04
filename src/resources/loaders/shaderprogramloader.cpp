@@ -49,7 +49,7 @@ namespace
                 return nullptr;
 
             const ShaderProgramLoader *const rl
-                = static_cast<const ShaderProgramLoader *const>(v);
+                = static_cast<const ShaderProgramLoader *>(v);
             ShaderProgram *const resource = shaders.createProgram(
                 rl->vertex,
                 rl->fragment,

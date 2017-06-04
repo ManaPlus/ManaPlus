@@ -48,7 +48,7 @@ struct ImageSetLoader final
             return nullptr;
 
         const ImageSetLoader *const
-            rl = static_cast<const ImageSetLoader *const>(v);
+            rl = static_cast<const ImageSetLoader *>(v);
 
         Image *const img = Loader::getImage(rl->path);
         if (!img)

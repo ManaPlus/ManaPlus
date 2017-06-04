@@ -220,7 +220,7 @@ const char *Download::getError() const
 int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
                                double ultotal A_UNUSED, double ulnow A_UNUSED)
 {
-    Download *const d = reinterpret_cast<Download *const>(clientp);
+    Download *const d = reinterpret_cast<Download *>(clientp);
 
     if (!d)
         return -5;

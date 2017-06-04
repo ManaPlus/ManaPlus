@@ -281,7 +281,7 @@ bool Particle::update() restrict2
                     if (rad < 0)
                         rad = PI2 + rad;
 
-                    const float range = static_cast<const float>(PI / size);
+                    const float range = static_cast<float>(PI / size);
 
                     // Determines which frame the particle should play
                     if (A_UNLIKELY(rad < range || rad > PI2 - range))

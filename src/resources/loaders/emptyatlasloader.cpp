@@ -44,7 +44,7 @@ struct EmptyAtlasLoader final
             return nullptr;
 
         const EmptyAtlasLoader *const rl =
-            static_cast<const EmptyAtlasLoader *const>(v);
+            static_cast<const EmptyAtlasLoader *>(v);
         AtlasResource *const resource = AtlasManager::loadEmptyAtlas(
             rl->name, *rl->files);
         if (!resource)

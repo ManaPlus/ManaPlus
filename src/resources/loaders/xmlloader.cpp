@@ -43,7 +43,7 @@ namespace
             if (!v)
                 return nullptr;
             const ResourceLoader *const
-                rl = static_cast<const ResourceLoader *const>(v);
+                rl = static_cast<const ResourceLoader *>(v);
             Resource *const res = new XML::Document(rl->path,
                 rl->useResman,
                 rl->skipError);

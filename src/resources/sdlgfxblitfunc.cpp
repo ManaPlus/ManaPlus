@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* 
+/*
 
 SDL_gfxBlitFunc: custom blitters (part of SDL_gfx library)
 
@@ -31,13 +31,12 @@ LGPL (c) A. Schiffler
 
 #include "utils/checkutils.h"
 
-#include <SDL.h>
 #include <SDL_video.h>
 
 #include "debug.h"
 
 #define GFX_DUFFS_LOOP4(pixel_copy_increment, width) \
-    int n = (width+3)/4; \
+    int n = (width + 3) / 4; \
     switch (width & 3) \
     { \
         case 0: do { \
@@ -51,7 +50,7 @@ LGPL (c) A. Schiffler
 
 namespace
 {
-    typedef struct
+    struct SDL_gfxBlitInfo
     {
         Uint8    *s_pixels;
         int       s_width;
@@ -65,7 +64,7 @@ namespace
         SDL_PixelFormat *src;
         Uint8    *table;
         SDL_PixelFormat *dst;
-    } SDL_gfxBlitInfo;
+    };
 
     static unsigned int GFX_ALPHA_ADJUST_ARRAY[256] =
     {
@@ -330,12 +329,12 @@ namespace
 
 static void _SDL_gfxBlitBlitterRGBA(SDL_gfxBlitInfo *info)
 {
-    int width = info->d_width;
+    const int width = info->d_width;
     int height = info->d_height;
     Uint8 *src = info->s_pixels;
-    int srcskip = info->s_skip;
+    const int srcskip = info->s_skip;
     Uint8 *dst = info->d_pixels;
-    int dstskip = info->d_skip;
+    const int dstskip = info->d_skip;
     SDL_PixelFormat *srcfmt = info->src;
 
     while (height--)
@@ -384,20 +383,20 @@ static void _SDL_gfxBlitBlitterRGBA(SDL_gfxBlitInfo *info)
     }
 }
 
-static int _SDL_gfxBlitRGBACall(SDL_Surface *src,
-                                SDL_Rect *srcrect,
-                                SDL_Surface *dst,
-                                SDL_Rect *dstrect)
+static int _SDL_gfxBlitRGBACall(SDL_Surface *const src,
+                                SDL_Rect *const srcrect,
+                                SDL_Surface *const dst,
+                                SDL_Rect *const dstrect)
 {
     /*
-    * Set up source and destination buffer pointers, then blit 
+    * Set up source and destination buffer pointers, then blit
     */
     if (srcrect->w && srcrect->h)
     {
         SDL_gfxBlitInfo info;
 
         /*
-        * Set up the blit information 
+        * Set up the blit information
         */
         info.s_pixels = static_cast<Uint8 *>(src->pixels) + src->offset +
             static_cast<Uint16>(srcrect->y) * src->pitch +
@@ -413,13 +412,13 @@ static int _SDL_gfxBlitRGBACall(SDL_Surface *src,
         info.d_height = dstrect->h;
         info.d_skip = CAST_S32(dst->pitch - info.d_width *
             dst->format->BytesPerPixel);
-        info.aux_data = NULL;
+        info.aux_data = nullptr;
         info.src = src->format;
-        info.table = NULL;
+        info.table = nullptr;
         info.dst = dst->format;
 
         /*
-        * Run the actual software blitter 
+        * Run the actual software blitter
         */
         _SDL_gfxBlitBlitterRGBA(&info);
         return 1;
@@ -428,10 +427,10 @@ static int _SDL_gfxBlitRGBACall(SDL_Surface *src,
     return (0);
 }
 
-int SDLgfxBlitRGBA(SDL_Surface *src,
-                   SDL_Rect *srcrect,
-                   SDL_Surface *dst,
-                   SDL_Rect *dstrect)
+int SDLgfxBlitRGBA(SDL_Surface *const src,
+                   SDL_Rect *const srcrect,
+                   SDL_Surface *const dst,
+                   SDL_Rect *const dstrect)
 {
     SDL_Rect sr;
     SDL_Rect dr;
@@ -441,7 +440,7 @@ int SDLgfxBlitRGBA(SDL_Surface *src,
     int h;
 
     /*
-    * Make sure the surfaces aren't locked 
+    * Make sure the surfaces aren't locked
     */
     if (!src || !dst)
     {
@@ -450,14 +449,14 @@ int SDLgfxBlitRGBA(SDL_Surface *src,
     }
 
     /*
-    * If the destination rectangle is NULL, use the entire dest surface 
+    * If the destination rectangle is NULL, use the entire dest surface
     */
     if (dstrect == nullptr)
     {
         dr.x = 0;
         dr.y = 0;
-        dr.w = dst->w;
-        dr.h = dst->h;
+        dr.w = CAST_U16(dst->w);
+        dr.h = CAST_U16(dst->h);
     }
     else
     {
@@ -465,7 +464,7 @@ int SDLgfxBlitRGBA(SDL_Surface *src,
     }
 
     /*
-    * Clip the source rectangle to the source surface 
+    * Clip the source rectangle to the source surface
     */
     if (srcrect)
     {
@@ -483,7 +482,6 @@ int SDLgfxBlitRGBA(SDL_Surface *src,
         maxh = src->h - srcy;
         if (maxh < h)
             h = maxh;
-
     }
     else
     {
@@ -494,7 +492,7 @@ int SDLgfxBlitRGBA(SDL_Surface *src,
     }
 
     /*
-    * Clip the destination rectangle against the clip rectangle 
+    * Clip the destination rectangle against the clip rectangle
     */
     SDL_Rect *clip = &dst->clip_rect;
     int dx;
@@ -505,7 +503,7 @@ int SDLgfxBlitRGBA(SDL_Surface *src,
     {
         w -= dx;
         dr.x += dx;
-        srcx += dx;
+        srcx += CAST_S16(dx);
     }
     dx = dr.x + w - clip->x - clip->w;
     if (dx > 0)
@@ -516,7 +514,7 @@ int SDLgfxBlitRGBA(SDL_Surface *src,
     {
         h -= dy;
         dr.y += dy;
-        srcy += dy;
+        srcy += CAST_S16(dy);
     }
     dy = dr.y + h - clip->y - clip->h;
     if (dy > 0)
@@ -524,10 +522,10 @@ int SDLgfxBlitRGBA(SDL_Surface *src,
 
     if (w > 0 && h > 0)
     {
-        sr.x = srcx;
-        sr.y = srcy;
-        sr.w = dr.w = w;
-        sr.h = dr.h = h;
+        sr.x = CAST_S16(srcx);
+        sr.y = CAST_S16(srcy);
+        sr.w = dr.w = CAST_U16(w);
+        sr.h = dr.h = CAST_U16(h);
         return _SDL_gfxBlitRGBACall(src, &sr, dst, &dr);
     }
 

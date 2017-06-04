@@ -267,7 +267,7 @@ void logResource(const Resource *const res)
     if (!res)
         return;
 #ifdef USE_OPENGL
-    const Image *const image = dynamic_cast<const Image *const>(res);
+    const Image *const image = dynamic_cast<const Image *>(res);
     if (image)
     {
         std::string src = image->mSource;

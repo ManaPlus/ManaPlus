@@ -89,7 +89,7 @@ void outStringNormal(ChatTab *const tab,
         case ChatTabType::WHISPER:
         {
             const WhisperTab *const whisper
-                = static_cast<const WhisperTab *const>(tab);
+                = static_cast<const WhisperTab *>(tab);
             tab->chatLog(localPlayer->getName(), str);
             chatHandler->privateMessage(whisper->getNick(), str);
             break;

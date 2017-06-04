@@ -232,7 +232,7 @@ std::string MessageIn::readString(int length, const char *const dstr)
     // Read the string
     const char *const stringBeg = mData + CAST_SIZE(mPos);
     const char *const stringEnd
-        = static_cast<const char *const>(memchr(stringBeg, '\0', length));
+        = static_cast<const char *>(memchr(stringBeg, '\0', length));
 
     const std::string str(stringBeg, stringEnd
         ? stringEnd - stringBeg : CAST_SIZE(length));
@@ -258,7 +258,7 @@ std::string MessageIn::readRawString(int length, const char *const dstr)
     // Read the string
     const char *const stringBeg = mData + CAST_SIZE(mPos);
     const char *const stringEnd
-        = static_cast<const char *const>(memchr(stringBeg, '\0', length));
+        = static_cast<const char *>(memchr(stringBeg, '\0', length));
     std::string str(stringBeg, stringEnd
         ? stringEnd - stringBeg : CAST_SIZE(length));
 
@@ -270,7 +270,7 @@ std::string MessageIn::readRawString(int length, const char *const dstr)
             - (stringEnd - stringBeg) - 1;
         const char *const stringBeg2 = stringEnd + 1;
         const char *const stringEnd2
-            = static_cast<const char *const>(memchr(stringBeg2, '\0', len2));
+            = static_cast<const char *>(memchr(stringBeg2, '\0', len2));
         const std::string hiddenPart = std::string(stringBeg2,
             stringEnd2 ? stringEnd2 - stringBeg2 : len2);
         if (hiddenPart.length() > 0)

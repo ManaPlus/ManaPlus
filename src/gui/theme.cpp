@@ -906,7 +906,7 @@ static int readColorType(const std::string &type)
 
 static Color readColor(const std::string &description)
 {
-    const int size = static_cast<const int>(description.length());
+    const int size = static_cast<int>(description.length());
     if (size < 7 || description[0] != '#')
     {
         logger->log("Error, invalid theme color palette: %s",

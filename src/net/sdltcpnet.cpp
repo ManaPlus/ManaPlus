@@ -107,7 +107,7 @@ TcpNet::Socket TcpNet::open(IPaddress *const ip)
     if (sock && ip)
     {
         const TCPsocketHack *const hack
-            = reinterpret_cast<const TCPsocketHack *const>(sock);
+            = reinterpret_cast<const TCPsocketHack *>(sock);
         // here we using some magic to compare TCPsocket and own padding
         // because actual struct TCPsocket not in headers
         if (hack)

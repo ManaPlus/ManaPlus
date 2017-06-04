@@ -39,7 +39,7 @@ namespace FsDir
     {
         if (!rw)
             return -1;
-        File *const handle = static_cast<File *const>(
+        File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
         FILEHTYPE fd = handle->mFd;
         RWOPSINT pos = 0;
@@ -151,7 +151,7 @@ namespace FsDir
     {
         if (!rw)
             return 0;
-        File *const handle = static_cast<File *const>(
+        File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
         FILEHTYPE fd = handle->mFd;
 
@@ -187,7 +187,7 @@ namespace FsDir
     {
         if (!rw)
             return 0;
-        File *const handle = static_cast<File *const>(
+        File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
         FILEHTYPE fd = handle->mFd;
 
@@ -230,7 +230,7 @@ namespace FsDir
 #ifdef USE_SDL2
     RWOPSINT rwops_size(SDL_RWops *const rw)
     {
-        File *const handle = static_cast<File *const>(
+        File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
         FILEHTYPE fd = handle->mFd;
 #ifdef USE_FILE_FOPEN

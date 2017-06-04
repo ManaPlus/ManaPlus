@@ -1175,8 +1175,8 @@ void PopupMenu::handleLink(const std::string &link,
                 {
                     const bool isHome = (mMapItem->getType()
                         == CAST_S32(MapItemType::HOME));
-                    const int x = static_cast<const int>(mMapItem->getX());
-                    const int y = static_cast<const int>(mMapItem->getY());
+                    const int x = static_cast<int>(mMapItem->getX());
+                    const int y = static_cast<int>(mMapItem->getY());
                     specialLayer->setTile(x, y,
                         CAST_S32(MapItemType::EMPTY));
                     specialLayer->updateCache();

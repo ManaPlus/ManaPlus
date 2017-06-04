@@ -94,7 +94,7 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     if (!surf)
         return nullptr;
 
-    uint32_t *const pixels = static_cast<uint32_t *const>(surf->pixels);
+    uint32_t *const pixels = static_cast<uint32_t *>(surf->pixels);
     const int type = dye.getType();
 
     switch (type)

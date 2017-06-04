@@ -45,7 +45,7 @@ namespace
             if (!v)
                 return nullptr;
             const ResourceLoader *const
-                rl = static_cast<const ResourceLoader *const>(v);
+                rl = static_cast<const ResourceLoader *>(v);
             SDL_RWops *const rw = VirtFs::rwopsOpenRead(rl->path);
             if (!rw)
             {

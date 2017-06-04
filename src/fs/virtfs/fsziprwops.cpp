@@ -40,7 +40,7 @@ namespace FsZip
     {
         if (!rw)
             return -1;
-        File *const handle = static_cast<File *const>(
+        File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
         size_t mPos = handle->mPos;
         size_t mSize = handle->mSize;
@@ -110,7 +110,7 @@ namespace FsZip
     {
         if (!rw)
             return 0;
-        File *const handle = static_cast<File *const>(
+        File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
 
         const int64_t rc = handle->funcs->read(handle,
@@ -144,7 +144,7 @@ namespace FsZip
     {
         if (!rw)
             return 0;
-        File *const handle = static_cast<File *const>(
+        File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
         return handle->mSize;
     }

@@ -55,7 +55,7 @@ void ColorPage::draw(Graphics *const graphics)
 {
     BLOCK_START("ColorPage::draw")
 
-    const ColorModel *const model = static_cast<ColorModel* const>(
+    const ColorModel *const model = static_cast<const ColorModel*>(
         mListModel);
 
     mHighlightColor.a = CAST_U32(mAlpha * 255.0F);

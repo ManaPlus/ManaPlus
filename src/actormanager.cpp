@@ -87,7 +87,7 @@ class FindBeingFunctor final
             {
                 return false;
             }
-            const Being *const b = static_cast<const Being* const>(actor);
+            const Being *const b = static_cast<const Being *>(actor);
 
             const unsigned other_y = y
                 + ((b->getType() == ActorType::Npc) ? 1 : 0);

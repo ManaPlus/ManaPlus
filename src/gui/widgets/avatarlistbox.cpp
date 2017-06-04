@@ -112,7 +112,7 @@ void AvatarListBox::draw(Graphics *const graphics)
     if (!parent)
         return;
 
-    AvatarListModel *const model = static_cast<AvatarListModel *const>(
+    AvatarListModel *const model = static_cast<AvatarListModel *>(
         mListModel);
     updateAlpha();
 
@@ -357,7 +357,7 @@ void AvatarListBox::safeDraw(Graphics *const graphics)
     if (!parent)
         return;
 
-    AvatarListModel *const model = static_cast<AvatarListModel *const>(
+    AvatarListModel *const model = static_cast<AvatarListModel *>(
         mListModel);
     updateAlpha();
 
@@ -598,7 +598,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
     setSelected(y);
     distributeActionEvent();
     const int selected = getSelected();
-    AvatarListModel *const model = static_cast<AvatarListModel *const>(
+    AvatarListModel *const model = static_cast<AvatarListModel *>(
         mListModel);
     if (!model)
         return;

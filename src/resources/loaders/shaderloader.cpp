@@ -48,7 +48,7 @@ namespace
                 return nullptr;
 
             const ShaderLoader *const rl
-                = static_cast<const ShaderLoader *const>(v);
+                = static_cast<const ShaderLoader *>(v);
             Shader *const resource = shaders.createShader(rl->type, rl->name);
             if (!resource)
                 reportAlways("Shader creation error: %s", rl->name.c_str());

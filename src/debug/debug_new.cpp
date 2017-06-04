@@ -624,7 +624,7 @@ int check_leaks()
 
     while (ptr != &new_ptr_list)
     {
-        const char* const pointer = reinterpret_cast<const char *const>(ptr)
+        const char* const pointer = reinterpret_cast<const char *>(ptr)
             + ALIGNED_LIST_ITEM_SIZE;
         if (ptr->magic != MAGIC)
         {

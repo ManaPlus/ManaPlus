@@ -46,7 +46,7 @@ namespace
                 return nullptr;
 
             const SpriteDefLoader *const
-                rl = static_cast<const SpriteDefLoader *const>(v);
+                rl = static_cast<const SpriteDefLoader *>(v);
             return SpriteDef::load(rl->path,
                 rl->variant,
                 settings.uselonglivesprites);

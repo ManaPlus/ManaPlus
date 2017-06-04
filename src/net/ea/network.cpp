@@ -49,7 +49,7 @@ const unsigned int BUFFER_LIMIT = 930000;
 
 int networkThread(void *data)
 {
-    Network *const network = static_cast<Network *const>(data);
+    Network *const network = static_cast<Network *>(data);
 
     if (!network || !network->realConnect())
         return -1;

@@ -145,7 +145,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
             uint32_t c = (static_cast<uint32_t*>(tmpImage->pixels))[i];
 
             const unsigned v = (c & fmt->Amask) >> fmt->Ashift;
-            const uint8_t a = static_cast<const uint8_t>((v << fmt->Aloss)
+            const uint8_t a = static_cast<uint8_t>((v << fmt->Aloss)
                 + (v >> (8 - (fmt->Aloss << 1))));
 
             const uint8_t a2 = CAST_U8(
@@ -235,7 +235,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
             cilk_for (size_t i = 0; i < sz; ++ i)
             {
                 const unsigned v = (pixels[i] & amask) >> ashift;
-                const uint8_t a = static_cast<const uint8_t>((v << aloss)
+                const uint8_t a = static_cast<uint8_t>((v << aloss)
                     + (v >> (8 - (aloss << 1))));
 
                 if (a != 255)

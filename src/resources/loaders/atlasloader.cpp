@@ -43,7 +43,7 @@ struct AtlasLoader final
         if (!v)
             return nullptr;
 
-        const AtlasLoader *const rl = static_cast<const AtlasLoader *const>(v);
+        const AtlasLoader *const rl = static_cast<const AtlasLoader *>(v);
         AtlasResource *const resource = AtlasManager::loadTextureAtlas(
             rl->name, *rl->files);
         if (!resource)

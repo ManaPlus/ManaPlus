@@ -234,7 +234,7 @@ void DropDown::draw(Graphics *const graphics)
         {
             const int sel = mPopup->getSelected();
             ExtendedListModel *const model2
-                = static_cast<ExtendedListModel *const>(model);
+                = static_cast<ExtendedListModel *>(model);
             const Image *const image = model2->getImageAt(sel);
             if (!image)
             {

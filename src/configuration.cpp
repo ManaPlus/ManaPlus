@@ -425,7 +425,7 @@ int Configuration::getIntValue(const std::string &key) const
             if (itdef != mDefaultsData->end() && itdef->second)
             {
                 const VariableData *const data = itdef->second;
-                const VariableData::DataType type = static_cast<const
+                const VariableData::DataType type = static_cast<
                     VariableData::DataType>(data->getType());
                 if (type == VariableData::DATA_INT)
                 {
@@ -507,7 +507,7 @@ std::string Configuration::getStringValue(const std::string &key) const
                 itdef->second)
             {
                 const VariableData *const data = itdef->second;
-                const VariableData::DataType type = static_cast<const
+                const VariableData::DataType type = static_cast<
                     VariableData::DataType>(data->getType());
                 if (type == VariableData::DATA_STRING)
                 {

@@ -158,7 +158,7 @@ void SkillDialog::action(const ActionEvent &event)
     {
         if (!playerHandler)
             return;
-        const SkillTab *const tab = static_cast<const SkillTab *const>(
+        const SkillTab *const tab = static_cast<const SkillTab *>(
             mTabs->getSelectedTab());
         if (tab)
         {
@@ -168,7 +168,7 @@ void SkillDialog::action(const ActionEvent &event)
     }
     else if (eventId == "sel")
     {
-        const SkillTab *const tab = static_cast<const SkillTab *const>(
+        const SkillTab *const tab = static_cast<const SkillTab *>(
             mTabs->getSelectedTab());
         if (tab)
         {
@@ -196,7 +196,7 @@ void SkillDialog::action(const ActionEvent &event)
     }
     else if (eventId == "use")
     {
-        const SkillTab *const tab = static_cast<const SkillTab *const>(
+        const SkillTab *const tab = static_cast<const SkillTab *>(
             mTabs->getSelectedTab());
         if (tab)
         {

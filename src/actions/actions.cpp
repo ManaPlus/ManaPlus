@@ -1270,9 +1270,9 @@ static void showRes(std::string str, ResourceManager::Resources *res)
             else
                 iter->second->setDumped(true);
 
-            SubImage *const subImage = dynamic_cast<SubImage *const>(
+            SubImage *const subImage = dynamic_cast<SubImage *>(
                 iter->second);
-            Image *const image = dynamic_cast<Image *const>(iter->second);
+            Image *const image = dynamic_cast<Image *>(iter->second);
             int id = 0;
             if (subImage)
                 type = 'S';

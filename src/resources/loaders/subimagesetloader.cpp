@@ -47,7 +47,7 @@ namespace
                 return nullptr;
 
             const SubImageSetLoader *const
-                rl = static_cast<const SubImageSetLoader *const>(v);
+                rl = static_cast<const SubImageSetLoader *>(v);
 
             if (!rl->parent)
                 return nullptr;

@@ -305,7 +305,7 @@ void WindowMenu::mouseMoved(MouseEvent &event)
         return;
     }
 
-    const Button *const btn = dynamic_cast<const Button *const>(
+    const Button *const btn = dynamic_cast<const Button *>(
         event.getSource());
 
     if (!btn)

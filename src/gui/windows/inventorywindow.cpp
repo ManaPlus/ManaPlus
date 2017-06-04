@@ -707,7 +707,7 @@ void InventoryWindow::mouseMoved(MouseEvent &event)
     }
     else
     {
-        const Button *const btn = dynamic_cast<const Button *const>(src);
+        const Button *const btn = dynamic_cast<const Button *>(src);
         if (!btn)
         {
             textPopup->hide();

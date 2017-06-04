@@ -319,7 +319,7 @@ void Minimap::draw2(Graphics *const graphics)
         if (!(*it) || (*it)->getType() == ActorType::FloorItem)
             continue;
 
-        const Being *const being = static_cast<const Being *const>(*it);
+        const Being *const being = static_cast<const Being *>(*it);
         if (!being)
             continue;
 

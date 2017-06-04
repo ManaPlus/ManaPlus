@@ -51,7 +51,7 @@ class ServersListBox final : public ListBox
                 return;
 
             ServersListModel *const model
-                = static_cast<ServersListModel *const>(mListModel);
+                = static_cast<ServersListModel *>(mListModel);
 
             updateAlpha();
 

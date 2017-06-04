@@ -54,8 +54,9 @@
 
 #include "resources/image/image.h"
 
-
+#ifndef USE_SDL2
 #include <SDL_gfxBlitFunc.h>
+#endif  // USE_SDL2
 
 #include <unistd.h>
 

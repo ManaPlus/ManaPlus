@@ -384,7 +384,7 @@ void TabbedArea::mousePressed(MouseEvent &event)
     {
         Widget *const widget = mTabContainer->getWidgetAt(
             event.getX(), event.getY());
-        Tab *const tab = dynamic_cast<Tab *const>(widget);
+        Tab *const tab = dynamic_cast<Tab *>(widget);
 
         if (tab)
         {
@@ -475,7 +475,7 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
         - mWidgetContainer->getY() - widgetFrameSize;
 
     Widget *const w = getCurrentWidget();
-    ScrollArea *const scr = dynamic_cast<ScrollArea *const>(w);
+    ScrollArea *const scr = dynamic_cast<ScrollArea *>(w);
     if (scr)
     {
         if (mFollowDownScroll && height != 0)
@@ -638,7 +638,7 @@ void TabbedArea::adjustTabPositions()
 void TabbedArea::action(const ActionEvent& actionEvent)
 {
     Widget *const source = actionEvent.getSource();
-    Tab *const tab = dynamic_cast<Tab *const>(source);
+    Tab *const tab = dynamic_cast<Tab *>(source);
 
     if (tab)
     {

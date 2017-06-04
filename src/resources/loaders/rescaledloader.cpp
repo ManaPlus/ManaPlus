@@ -45,7 +45,7 @@ namespace
             if (!v)
                 return nullptr;
             const RescaledLoader *const rl
-                = static_cast<const RescaledLoader *const>(v);
+                = static_cast<const RescaledLoader *>(v);
             if (!rl->image)
                 return nullptr;
             Image *const rescaled = rl->image->SDLgetScaledImage(
@@ -71,7 +71,7 @@ Image *Loader::getRescaled(const Image *const image,
     const std::string idPath = image->mIdPath + strprintf(
         "_rescaled%dx%d", width, height);
     const RescaledLoader rl = { image, width, height };
-    Image *const img = static_cast<Image *const>(
+    Image *const img = static_cast<Image *>(
         ResourceManager::get(idPath, RescaledLoader::load, &rl));
     return img;
 }

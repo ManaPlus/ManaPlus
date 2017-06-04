@@ -530,7 +530,7 @@ void Gui::draw()
 
 void Gui::videoResized() const
 {
-    WindowContainer *const top = static_cast<WindowContainer* const>(getTop());
+    WindowContainer *const top = static_cast<WindowContainer *>(getTop());
 
     if (top)
     {

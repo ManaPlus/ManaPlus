@@ -53,7 +53,7 @@ namespace
             }
 
             const DyedImageLoader *const rl
-                = static_cast<const DyedImageLoader *const>(v);
+                = static_cast<const DyedImageLoader *>(v);
 
             std::string path1 = rl->path;
             const size_t p = path1.find('|');
