@@ -52,6 +52,8 @@ namespace
 {
     struct SDL_gfxBlitInfo final
     {
+        A_DEFAULT_COPY(SDL_gfxBlitInfo)
+
         Uint8    *s_pixels;
         int       s_width;
         int       s_height;
