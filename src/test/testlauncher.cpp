@@ -503,6 +503,8 @@ int TestLauncher::testDye()
 }
 
 #if defined __linux__ || defined __linux
+#if defined(SIMD_SUPPORTED) || (SDL_BYTEORDER == SDL_LIL_ENDIAN \
+&& !defined(USE_SDL2))
 static void calcTime(const char *const msg1,
                      const char *const msg2,
                      const timespec &time1,
@@ -517,6 +519,7 @@ static void calcTime(const char *const msg1,
     printf("%s: %u\n", msg1, buf[0]);
     printf("%s: %011ld\n", msg2, diff);
 }
+#endif  // defined(SIMD_SUPPORTED) || (SDL_BYTEORDER == SDL_LIL_ENDIAN
 
 #ifdef SIMD_SUPPORTED
 static void initBuffer(uint32_t *const buf,
