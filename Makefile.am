@@ -19,7 +19,6 @@ EXTRA_DIST = $(desktop_DATA) \
 	     CMake/Modules/FindLibIntl.cmake \
 	     CMake/Modules/FindSDL_gfx.cmake \
 	     Android.mk \
-	     manaplus.cbp \
 	     manaplus.menu \
 	     manaplus.spec \
 	     AUTHORS \
