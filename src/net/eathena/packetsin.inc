@@ -887,6 +887,12 @@ if (packetVersion >= 20160330)
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  13, &GameRecv::processMapLogin,                     20080102);
 }
 
+// 20170329
+if (packetVersion >= 20170329)
+{
+    packet(SMSG_CHAR_MAP_INFO,             0x0ac5, 156, &CharServerRecv::processCharMapInfo,            20170329);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
