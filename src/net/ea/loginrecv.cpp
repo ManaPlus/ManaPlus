@@ -31,7 +31,6 @@
 #include "utils/gettext.h"
 
 #include "net/logindata.h"
-#include "net/loginhandler.h"
 #include "net/messagein.h"
 
 #include "debug.h"
