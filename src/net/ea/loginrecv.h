@@ -43,7 +43,6 @@ namespace Ea
         extern bool mRegistrationEnabled;
 
         void processUpdateHost(Net::MessageIn &msg);
-        void processLoginData(Net::MessageIn &msg);
         void processLoginError(Net::MessageIn &msg);
     }  // namespace LoginRecv
 }  // namespace Ea

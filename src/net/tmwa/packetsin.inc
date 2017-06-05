@@ -55,7 +55,7 @@ packet(SMSG_ITEM_DROPPED,                  0x009e,  17, &ItemRecv::processItemDr
 packet(SMSG_ITEM_REMOVE,                   0x00a1,   6, &Ea::ItemRecv::processItemRemove,               0);
 packet(SMSG_ITEM_USE_RESPONSE,             0x00a8,   7, &Ea::InventoryRecv::processItemUseResponse,     0);
 packet(SMSG_ITEM_VISIBLE,                  0x009d,  17, &ItemRecv::processItemVisible,                  0);
-packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
+packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &LoginRecv::processLoginData,                   0);
 packet(SMSG_LOGIN_ERROR,                   0x006a,  23, &Ea::LoginRecv::processLoginError,              0);
 packet(SMSG_MAP_LOGIN_SUCCESS,             0x0073,  11, &GameRecv::processMapLogin,                     0);
 packet(SMSG_MAP_MUSIC,                     0x0227,  -1, &Ea::PlayerRecv::processMapMusic,               0);

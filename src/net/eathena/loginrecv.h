@@ -37,6 +37,7 @@ namespace EAthena
         void processServerVersion(Net::MessageIn &msg);
         void processCondingKey(Net::MessageIn &msg);
         void processCharPasswordResponse(Net::MessageIn &msg);
+        void processLoginData(Net::MessageIn &msg);
     }  // namespace LoginRecv
 }  // namespace EAthena
 

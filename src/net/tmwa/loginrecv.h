@@ -34,6 +34,7 @@ namespace TmwAthena
     {
         void processServerVersion(Net::MessageIn &msg);
         void processCharPasswordResponse(Net::MessageIn &msg);
+        void processLoginData(Net::MessageIn &msg);
     }  // namespace LoginRecv
 }  // namespace TmwAthena
 

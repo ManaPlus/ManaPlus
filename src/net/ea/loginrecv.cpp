@@ -23,9 +23,6 @@
 #include "net/ea/loginrecv.h"
 
 #include "client.h"
-#include "configuration.h"
-
-#include "being/being.h"
 
 #include "fs/paths.h"
 
@@ -65,46 +62,6 @@ void LoginRecv::processUpdateHost(Net::MessageIn &msg)
 
     logger->log("Received update host \"%s\" from login server.",
         mUpdateHost.c_str());
-}
-
-void LoginRecv::processLoginData(Net::MessageIn &msg)
-{
-    msg.readInt16("len");
-
-    loginHandler->clearWorlds();
-
-    const int worldCount = (msg.getLength() - 47) / 32;
-
-    mToken.session_ID1 = msg.readInt32("session id1");
-    mToken.account_ID = msg.readBeingId("accound id");
-    mToken.session_ID2 = msg.readInt32("session id2");
-    msg.readInt32("old ip");
-    loginData.lastLogin = msg.readString(24, "last login");
-    msg.readInt16("unused");
-
-    // reserve bits for future usage
-    mToken.sex = Being::intToGender(CAST_U8(
-        msg.readUInt8("gender") & 3U));
-
-    for (int i = 0; i < worldCount; i++)
-    {
-        WorldInfo *const world = new WorldInfo;
-
-        world->address = msg.readInt32("ip address");
-        world->port = msg.readInt16("port");
-        world->name = msg.readString(20, "name");
-        world->online_users = msg.readInt16("online number");
-        config.setValue("updatehost", mUpdateHost);
-        world->updateHost = mUpdateHost;
-        msg.readInt16("maintenance");
-        msg.readInt16("new");
-
-        logger->log("Network: Server: %s (%s:%d)", world->name.c_str(),
-            ipToString(world->address), world->port);
-
-        mWorlds.push_back(world);
-    }
-    client->setState(State::WORLD_SELECT);
 }
 
 void LoginRecv::processLoginError(Net::MessageIn &msg)

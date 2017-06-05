@@ -67,7 +67,7 @@ packet(SMSG_RANKS_LIST,                    0x0000,   0, nullptr,                
 packet(SMSG_CHAR_CHARACTERS,               0x0000,   0, nullptr,                                        0);
 
 // login server, unknown version
-packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &Ea::LoginRecv::processLoginData,               0);
+packet(SMSG_LOGIN_DATA,                    0x0069,  -1, &LoginRecv::processLoginData,                   0);
 packet(SMSG_LOGIN_CODING_KEY,              0x01dc,  -1, &LoginRecv::processCondingKey,                  0);
 packet(SMSG_LOGIN_ERROR,                   0x006a,  23, &Ea::LoginRecv::processLoginError,              0);
 
@@ -885,6 +885,12 @@ if (packetVersion >= 20150805)
 if (packetVersion >= 20160330)
 {
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  13, &GameRecv::processMapLogin,                     20080102);
+}
+
+// 20170315
+if (packetVersion >= 20170315)
+{
+    packet(SMSG_LOGIN_DATA,                0x0ac4,  -1, &LoginRecv::processLoginData,                   20170315);
 }
 
 // 20170329
